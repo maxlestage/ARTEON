@@ -38,6 +38,21 @@ struct File {
     oeuvres: Vec<Oeuvre>,
     #[serde(default)]
     sculptures: Vec<SculptureToml>,
+    #[serde(default)]
+    artistes: Vec<Artiste>,
+}
+
+/// Un artiste de l'exposition : sa vie et sa manière.
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Artiste {
+    nom: String,
+    #[serde(default)]
+    vie: String,
+    #[serde(default)]
+    biographie: String,
+    #[serde(default)]
+    style: String,
 }
 
 #[derive(Deserialize)]
@@ -106,6 +121,22 @@ struct Oeuvre {
     collection: String,
     #[serde(default)]
     note: String,
+    /// La notice complète : ce que l'on voit, ce qu'elle évoque, son histoire, la
+    /// manière, les détails à regarder, les thèmes et une anecdote.
+    #[serde(default)]
+    description: String,
+    #[serde(default)]
+    evocation: String,
+    #[serde(default)]
+    histoire: String,
+    #[serde(default)]
+    facture: String,
+    #[serde(default)]
+    details: Vec<String>,
+    #[serde(default)]
+    themes: Vec<String>,
+    #[serde(default)]
+    anecdote: String,
     salle: usize,
     mur: String,
     place: Option<u8>,
@@ -126,6 +157,22 @@ struct SculptureToml {
     collection: String,
     #[serde(default)]
     note: String,
+    /// La notice complète : ce que l'on voit, ce qu'elle évoque, son histoire, la
+    /// manière, les détails à regarder, les thèmes et une anecdote.
+    #[serde(default)]
+    description: String,
+    #[serde(default)]
+    evocation: String,
+    #[serde(default)]
+    histoire: String,
+    #[serde(default)]
+    facture: String,
+    #[serde(default)]
+    details: Vec<String>,
+    #[serde(default)]
+    themes: Vec<String>,
+    #[serde(default)]
+    anecdote: String,
     salle: usize,
     #[serde(default)]
     x: f32,
@@ -140,6 +187,44 @@ struct SculptureToml {
     /// L'axe du fichier qui pointe vers le haut : "y" (par défaut), "z" ou "-z".
     #[serde(default = "default_up")]
     haut: String,
+}
+
+/// Le code Rust d'une notice.
+fn notice_code(
+    description: &str,
+    evocation: &str,
+    histoire: &str,
+    facture: &str,
+    details: &[String],
+    themes: &[String],
+    anecdote: &str,
+) -> String {
+    let list = |items: &[String]| {
+        items
+            .iter()
+            .map(|t| format!("{:?}", t.trim()))
+            .collect::<Vec<_>>()
+            .join(", ")
+    };
+    format!(
+        "Notice {{ description: {:?}, evocation: {:?}, story: {:?}, manner: {:?}, details: &[{}], themes: &[{}], anecdote: {:?} }}",
+        description.trim(),
+        evocation.trim(),
+        histoire.trim(),
+        facture.trim(),
+        list(details),
+        list(themes),
+        anecdote.trim(),
+    )
+}
+
+/// L'adresse d'une œuvre dans son exposition : le nom de son fichier, sans extension.
+fn work_slug(file: &str) -> String {
+    Path::new(file)
+        .file_stem()
+        .and_then(|s| s.to_str())
+        .unwrap_or(file)
+        .to_owned()
 }
 
 fn default_matiere() -> String {
@@ -544,10 +629,11 @@ fn exhibition(
         }
         let _ = writeln!(
             artworks,
-            "            Artwork {{ title: {:?}, artist: {:?}, year: {:?}, image: {:?}, technique: {:?}, collection: {:?}, note: {:?}, \
+            "            Artwork {{ title: {:?}, slug: {:?}, artist: {:?}, year: {:?}, image: {:?}, technique: {:?}, collection: {:?}, note: {:?}, notice: {}, \
              width: {:?}, height: {:?}, hook: Hook {{ room: {r}, side: Side::{}, position: {position:?}, center: {center:?}, place: {place} }}, \
              mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], offset: {offset} }} }},",
             art.titre.trim(),
+            work_slug(&art.image),
             art.artiste
                 .as_deref()
                 .map(str::trim)
@@ -557,6 +643,15 @@ fn exhibition(
             art.technique.trim(),
             art.collection.trim(),
             art.note.trim(),
+            notice_code(
+                &art.description,
+                &art.evocation,
+                &art.histoire,
+                &art.facture,
+                &art.details,
+                &art.themes,
+                &art.anecdote
+            ),
             art.largeur,
             (height * 1000.0).round() / 1000.0,
             side.name(),
@@ -678,19 +773,73 @@ fn exhibition(
         data.extend_from_slice(&bytes);
         let _ = writeln!(
             sculptures,
-            "            Sculpture {{ title: {:?}, artist: {:?}, year: {:?}, technique: {:?}, collection: {:?}, note: {:?}, image: {picture:?}, room: {r}, \
+            "            Sculpture {{ title: {:?}, slug: {:?}, artist: {:?}, year: {:?}, technique: {:?}, collection: {:?}, note: {:?}, notice: {}, image: {picture:?}, room: {r}, \
              x: {x:?}, z: {z:?}, height: {:?}, rotation: {:?}, plinth: {plinth:?}, radius: {radius:?}, color: {color:?}, \
              roughness: {roughness:?}, metallic: {metallic:?}, mesh: MeshRef {{ offset: {offset}, size: {}, bounds: {bounds:?} }} }},",
             sc.titre.trim(),
+            work_slug(&sc.modele),
             sc.artiste.trim(),
             sc.annee.trim(),
             sc.technique.trim(),
             sc.collection.trim(),
             sc.note.trim(),
+            notice_code(
+                &sc.description,
+                &sc.evocation,
+                &sc.histoire,
+                &sc.facture,
+                &sc.details,
+                &sc.themes,
+                &sc.anecdote
+            ),
             sc.hauteur,
             sc.rotation.to_radians(),
             bytes.len(),
         );
+    }
+
+    // Chaque œuvre a sa page (/<exposition>/oeuvres/<nom>) : les noms sont uniques.
+    let mut slugs: Vec<(String, &str)> = Vec::new();
+    let works = file
+        .oeuvres
+        .iter()
+        .map(|o| (work_slug(&o.image), o.titre.as_str()))
+        .chain(
+            file.sculptures
+                .iter()
+                .map(|s| (work_slug(&s.modele), s.titre.as_str())),
+        );
+    for (s, title) in works {
+        if let Some((_, other)) = slugs.iter().find(|(o, _)| *o == s) {
+            fail(
+                name,
+                format!(
+                    "« {other} » et « {title} » auraient la même page « {s} » : renommez l'image ou le modèle de l'une des deux"
+                ),
+            );
+        }
+        slugs.push((s, title));
+    }
+    // Un bloc [[artistes]] par nom, et chacun pour un artiste de l'exposition.
+    let painters: Vec<&str> = file
+        .oeuvres
+        .iter()
+        .map(|o| o.artiste.as_deref().unwrap_or(&file.exposition.artiste).trim())
+        .chain(file.sculptures.iter().map(|s| s.artiste.trim()))
+        .collect();
+    for (i, a) in file.artistes.iter().enumerate() {
+        let n = a.nom.trim();
+        if file.artistes[..i].iter().any(|b| b.nom.trim() == n) {
+            fail(name, format!("l'artiste « {n} » a deux blocs [[artistes]]"));
+        }
+        if !painters.contains(&n) {
+            fail(
+                name,
+                format!(
+                    "le bloc [[artistes]] « {n} » ne correspond à aucune œuvre : son nom doit être celui du champ artiste des œuvres"
+                ),
+            );
+        }
     }
 
     let e = &file.exposition;
@@ -737,5 +886,16 @@ fn exhibition(
     out.push_str(&artworks);
     out.push_str("        ],\n        sculptures: &[\n");
     out.push_str(&sculptures);
+    out.push_str("        ],\n        artists: &[\n");
+    for a in &file.artistes {
+        let _ = writeln!(
+            out,
+            "            Artist {{ name: {:?}, life: {:?}, biography: {:?}, style: {:?} }},",
+            a.nom.trim(),
+            a.vie.trim(),
+            a.biographie.trim(),
+            a.style.trim(),
+        );
+    }
     out.push_str("        ],\n    },\n");
 }

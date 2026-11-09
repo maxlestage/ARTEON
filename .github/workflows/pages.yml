@@ -99,7 +99,14 @@ jobs:
             for src in $(grep -o 'src="[^"]*/tableaux/[^"]*"' "dist/$slug/oeuvres/index.html" | sed 's/.*\/tableaux\///; s/"$//'); do
               test -s "dist/tableaux/$src" || { echo "image manquante : $src"; exit 1; }
             done
-            echo "✓ $slug"
+            # Chaque œuvre a sa page, liée depuis le catalogue.
+            pages=0
+            for href in $(grep -o "href=\"[^\"]*/$slug/oeuvres/[^\"#][^\"#]*\"" "dist/$slug/oeuvres/index.html" | sed "s/.*\/$slug\/oeuvres\///; s/\"$//" | sort -u); do
+              test -s "dist/$slug/oeuvres/$href/index.html" || test -s "dist/$slug/oeuvres/${href}index.html" || { echo "page d'œuvre manquante : $slug/oeuvres/$href"; exit 1; }
+              pages=$((pages + 1))
+            done
+            test "$pages" -gt 0 || { echo "aucune page d'œuvre pour $slug"; exit 1; }
+            echo "✓ $slug ($pages pages d'œuvres)"
           done
 
       - uses: actions/upload-pages-artifact@v3

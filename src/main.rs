@@ -7,7 +7,7 @@
 
 use paquets::prelude::*;
 
-use arteon::artworks::{Artwork, EXHIBITIONS, Exhibition, Sculpture, Side};
+use arteon::artworks::{Artist, Artwork, EXHIBITIONS, Exhibition, Notice, Sculpture, Side, Work};
 use arteon::tour::tour_duration;
 use arteon::{gallery_scene, showcase_scene};
 
@@ -257,8 +257,12 @@ fn sculpture_card(ex: &Exhibition, s: &Sculpture, index: usize) -> Element {
     article()
         .class("art-card sculpture-card reveal")
         .style(format!("animation-delay:{}ms", 60 * index))
-        .child(div().class("plinth").child(sculpture_picture(s, true)))
-        .child(h3().text(s.title))
+        .child(
+            a().href(work_url(ex, s.slug))
+                .class("plinth")
+                .child(sculpture_picture(s, true)),
+        )
+        .child(h3().child(a().href(work_url(ex, s.slug)).text(s.title)))
         .child(
             p().child(strong().text(s.artist))
                 .child(span().class("muted").text(format!(" · {}", s.year))),
@@ -271,6 +275,22 @@ fn sculpture_card(ex: &Exhibition, s: &Sculpture, index: usize) -> Element {
         .child(p().class("tag").text(
             format!("{} · sculpture, {:.2} m", ex.rooms[s.room].name, s.height).replace('.', ","),
         ))
+        .child(more_link(ex, s.slug, &s.notice))
+}
+
+/// L'adresse de la page d'une œuvre.
+fn work_url(ex: &Exhibition, slug: &str) -> String {
+    format!("/{}/oeuvres/{slug}", ex.slug)
+}
+
+/// Le lien vers la notice complète d'une œuvre.
+fn more_link(ex: &Exhibition, slug: &str, notice: &Notice) -> Element {
+    let label = if notice.is_empty() {
+        "Sa page →"
+    } else {
+        "Tout savoir sur l'œuvre →"
+    };
+    a().class("more").href(work_url(ex, slug)).text(label)
 }
 
 /// Le cartel d'une œuvre.
@@ -278,8 +298,12 @@ fn artwork_card(ex: &Exhibition, art: &Artwork, index: usize) -> Element {
     article()
         .class("art-card reveal")
         .style(format!("animation-delay:{}ms", 60 * index))
-        .child(div().class("frame").child(picture(ex, art, true)))
-        .child(h3().text(art.title))
+        .child(
+            a().href(work_url(ex, art.slug))
+                .class("frame")
+                .child(picture(ex, art, true)),
+        )
+        .child(h3().child(a().href(work_url(ex, art.slug)).text(art.title)))
         .child(
             p().child(strong().text(art.artist_in(ex)))
                 .child(span().class("muted").text(format!(" · {}", art.year))),
@@ -290,6 +314,7 @@ fn artwork_card(ex: &Exhibition, art: &Artwork, index: usize) -> Element {
         )
         .child(p().text(art.note))
         .child(p().class("tag").text(location(ex, art)))
+        .child(more_link(ex, art.slug, &art.notice))
 }
 
 /// Un cube en CSS 3D, aux couleurs du musée, qui tourne dans l'en-tête.
@@ -540,12 +565,12 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                                     div()
                                         .class("step-works")
                                         .children(works.iter().map(|art| {
-                                            a().href(format!("/{}/oeuvres", ex.slug))
+                                            a().href(work_url(ex, art.slug))
                                                 .attr("title", art.title)
                                                 .child(picture(ex, art, true))
                                         }))
                                         .children(statues.iter().map(|s| {
-                                            a().href(format!("/{}/oeuvres", ex.slug))
+                                            a().href(work_url(ex, s.slug))
                                                 .attr("title", s.title)
                                                 .child(sculpture_picture(s, true))
                                         })),
@@ -563,7 +588,7 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                 .child(h2().class("section-title").text("Quelques chefs-d'œuvre"))
                 .child(div().class("preview-strip").children(
                     ex.artworks.iter().take(8).enumerate().map(|(i, art)| {
-                        a().href(format!("/{}/oeuvres", ex.slug))
+                        a().href(work_url(ex, art.slug))
                             .class("tilt reveal")
                             .style(format!("animation-delay:{}ms", 90 * i))
                             .child(picture(ex, art, true))
@@ -575,6 +600,19 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                     }),
                 )),
         )
+        .child(if ex.artists.is_empty() {
+            div()
+        } else {
+            section()
+                .class("artists")
+                .id("artistes")
+                .child(h2().class("section-title").text(if ex.artists.len() > 1 {
+                    "Les artistes"
+                } else {
+                    "L'artiste"
+                }))
+                .child(div().class("artist-list").children(ex.artists.iter().map(artist_card)))
+        })
         .child(others(ex));
     layout(ex.title, ex.introduction, &here, Some(ex.accent), content)
 }
@@ -675,7 +713,8 @@ async fn catalogue(_req: Request, ex: &'static Exhibition) -> Page {
                 .child(p().class("kicker").text(format!("Catalogue · {}", ex.short_name)))
                 .child(h1().text("Les œuvres"))
                 .child(p().class("lead").text(format!(
-                    "{} toiles de {} ({}), dans l'ordre de l'accrochage, avec leur cartel et leur place dans la galerie.",
+                    "{} toiles de {} ({}), dans l'ordre de l'accrochage, avec leur cartel et leur place dans la galerie. \
+                     Chaque œuvre a sa page : ce que l'on voit, ce qu'elle évoque, son histoire, la manière de l'artiste.",
                     ex.artworks.len(),
                     ex.artist,
                     ex.artist_dates
@@ -696,6 +735,165 @@ async fn catalogue(_req: Request, ex: &'static Exhibition) -> Page {
             ex.title
         ),
         &here,
+        Some(ex.accent),
+        content,
+    )
+}
+
+/// La vie et la manière d'un artiste.
+fn artist_card(artist: &Artist) -> Element {
+    let block = article()
+        .class("card artist-card reveal")
+        .child(h3().text(artist.name));
+    let block = if artist.life.is_empty() {
+        block
+    } else {
+        block.child(p().class("muted small").text(artist.life))
+    };
+    let block = if artist.biography.is_empty() {
+        block
+    } else {
+        block.child(p().text(artist.biography))
+    };
+    if artist.style.is_empty() {
+        block
+    } else {
+        block
+            .child(h4().text("Sa manière"))
+            .child(p().text(artist.style))
+    }
+}
+
+/// La page d'une œuvre : sa reproduction, son cartel, et tout ce qu'il faut savoir.
+async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
+    let catalogue = format!("/{}/oeuvres", ex.slug);
+    let artist = work.artist(ex);
+    let notice = work.notice();
+    let works: Vec<Work> = ex.works().collect();
+    let index = works.iter().position(|w| w.slug() == work.slug()).unwrap_or(0);
+    let (year, technique, collection, note, place) = match work {
+        Work::Art(art) => (art.year, art.technique, art.collection, art.note, location(ex, art)),
+        Work::Sculpture(s) => (
+            s.year,
+            s.technique,
+            s.collection,
+            s.note,
+            format!("{} · sculpture de {:.2} m, sur un socle", ex.rooms[s.room].name, s.height)
+                .replace('.', ","),
+        ),
+    };
+    let image = match work {
+        Work::Art(art) => a()
+            .href(art.image_url())
+            .class("frame work-frame")
+            .attr("title", "Ouvrir la reproduction en grand")
+            .child(picture(ex, art, false)),
+        Work::Sculpture(s) => div().class("plinth work-frame").child(sculpture_picture(s, false)),
+    };
+    let fact = |label: &'static str, value: String| {
+        div().class("fact").child(dt().text(label)).child(dd().text(value))
+    };
+    let mut facts = dl()
+        .class("facts")
+        .child(fact("Artiste", artist.to_owned()))
+        .child(fact("Date", year.to_owned()));
+    if !technique.is_empty() {
+        facts = facts.child(fact("Technique", technique.to_owned()));
+    }
+    if !collection.is_empty() {
+        facts = facts.child(fact("Collection", collection.to_owned()));
+    }
+    facts = facts.child(fact("Dans le musée", place));
+    let cartel = div()
+        .class("work-cartel")
+        .child(p().class("lead").text(note))
+        .child(facts)
+        .child(
+            div()
+                .class("row")
+                .child(
+                    a().class("button")
+                        .href(format!("/{}/galerie#{}", ex.slug, work.slug()))
+                        .text("La voir dans le musée 3D"),
+                )
+                .child(a().class("button ghost").href(catalogue.clone()).text("Toutes les œuvres")),
+        );
+    let cartel = if notice.themes.is_empty() {
+        cartel
+    } else {
+        cartel.child(
+            div()
+                .class("themes")
+                .children(notice.themes.iter().map(|t| span().class("chip").text(*t))),
+        )
+    };
+    let mut body = div().class("notice");
+    for (title, text) in notice.sections() {
+        body = body.child(
+            section()
+                .class("notice-part reveal")
+                .child(h2().text(title))
+                .child(p().text(text)),
+        );
+    }
+    if !notice.details.is_empty() {
+        body = body.child(
+            section()
+                .class("notice-part reveal")
+                .child(h2().text("À regarder de près"))
+                .child(ul().class("details").children(notice.details.iter().map(|d| li().text(*d)))),
+        );
+    }
+    if !notice.anecdote.is_empty() {
+        body = body.child(
+            aside()
+                .class("anecdote reveal")
+                .child(strong().text("Le saviez-vous ? "))
+                .child(span().text(notice.anecdote)),
+        );
+    }
+    let neighbour = |w: Work, label: &'static str, class: &'static str| {
+        a().class(class)
+            .href(work_url(ex, w.slug()))
+            .child(span().class("muted small").text(label))
+            .child(strong().text(w.title()))
+    };
+    let previous = works[(index + works.len() - 1) % works.len()];
+    let next = works[(index + 1) % works.len()];
+    let content = div()
+        .child(tabs(ex, &catalogue))
+        .child(
+            section()
+                .class("page-intro")
+                .child(
+                    p().class("kicker")
+                        .child(a().href(catalogue.clone()).text(format!("Œuvres · {}", ex.short_name)))
+                        .child(span().text(format!(" · {} / {}", index + 1, works.len()))),
+                )
+                .child(h1().text(work.title()))
+                .child(p().class("work-byline").text(format!("{artist} · {year}"))),
+        )
+        .child(div().class("work-head").child(image).child(cartel))
+        .child(body)
+        .child(match ex.artist_named(artist) {
+            Some(about) => section()
+                .class("artists")
+                .child(h2().class("section-title").text("L'artiste"))
+                .child(artist_card(about)),
+            None => section(),
+        })
+        .child(
+            nav()
+                .class("work-nav")
+                .attr("aria-label", "Œuvre précédente et suivante")
+                .child(neighbour(previous, "← Précédente", "prev"))
+                .child(neighbour(next, "Suivante →", "next")),
+        );
+    let summary = if notice.description.is_empty() { note } else { notice.description };
+    layout(
+        format!("{} · {}", work.title(), artist),
+        summary.chars().take(155).collect::<String>(),
+        &catalogue,
         Some(ex.accent),
         content,
     )
@@ -799,6 +997,30 @@ hauteur = 1.66               # la sculpture, sans le socle
 rotation = 0                 # 0 : elle regarde le sud (l'entrée)
 matiere = "marbre"           # marbre, platre, pierre, bronze, or ou #rrggbb
 socle = 0.6"##;
+    const NOTICE: &str = r##"# Dans le bloc [[oeuvres]] (ou [[sculptures]]), après note :
+description = """
+Ce que l'on voit : la scène, les personnages, la composition…"""
+evocation = """
+Ce qu'elle évoque : le sens, les émotions, les symboles…"""
+histoire = """
+Son histoire : pourquoi, pour qui, l'accueil, le parcours jusqu'au musée…"""
+facture = """
+La manière : la touche, les couleurs, la lumière, le cadrage…"""
+details = [
+  "Un détail précis à repérer dans l'œuvre.",
+  "Un autre.",
+]
+themes = ["nuit", "paysage", "japonisme"]
+anecdote = "Le saviez-vous ? Un fait marquant."
+
+# À la fin du fichier, un bloc par artiste (le nom exact des œuvres) :
+[[artistes]]
+nom = "Vincent van Gogh"
+vie = "Groot-Zundert, 1853 – Auvers-sur-Oise, 1890"
+biographie = """
+Sa vie…"""
+style = """
+Sa manière…""""##;
     let step = |n: &'static str, title: &'static str, body: Element| {
         div()
             .class("card how-step reveal")
@@ -872,6 +1094,13 @@ socle = 0.6"##;
                 .child(li().child(strong().text("Une nouvelle exposition")).child(span().text(" : copier un fichier de expositions/ sous un autre nom (par exemple renoir.toml : l'exposition sera à l'adresse /renoir), créer le dossier public/tableaux/renoir/ pour ses images, et changer les textes et les œuvres. Elle apparaît d'elle-même sur l'accueil et dans le menu.")))
                 .child(li().child(strong().text("Une erreur ?")).child(span().text(" La compilation s'arrête avec un message en français qui dit quoi corriger (image introuvable, place déjà prise, toiles qui se chevauchent, tableau sur une porte, salles qui se chevauchent, sculpture contre un mur…), et le site en ligne reste tel quel."))),
         )
+        .child(h2().class("section-title").text("Écrire la notice complète"))
+        .child(p().class("lead").text(
+            "Chaque œuvre a sa page (/<exposition>/oeuvres/<nom de l'image>) et son panneau « Tout savoir » dans le musée 3D. \
+             Ils affichent les champs facultatifs ci-dessous : ce que l'on voit, ce qu'elle évoque, son histoire, la manière, \
+             les détails à regarder, les thèmes et une anecdote, ainsi que la biographie de l'artiste.",
+        ))
+        .child(pre().class("example").child(code().text(NOTICE)))
         .child(h2().class("section-title").text("Dessiner le plan du musée"))
         .child(p().class("lead").text(
             "Sans plan, les salles s'enchaînent en enfilade, reliées par des couloirs. Avec un plan, chaque salle a sa place \
@@ -940,6 +1169,9 @@ pub(crate) fn routes() -> Vec<String> {
         list.push(format!("/{}", ex.slug));
         list.push(format!("/{}/galerie", ex.slug));
         list.push(format!("/{}/oeuvres", ex.slug));
+        for work in ex.works() {
+            list.push(format!("/{}/oeuvres/{}", ex.slug, work.slug()));
+        }
     }
     list
 }
@@ -959,6 +1191,12 @@ fn app() -> App {
         app.get(&format!("/{}/oeuvres", ex.slug), move |req: Request| {
             catalogue(req, ex)
         });
+        for work in ex.works() {
+            app.get(
+                &format!("/{}/oeuvres/{}", ex.slug, work.slug()),
+                move |req: Request| work_page(req, ex, work),
+            );
+        }
     }
     // Les fichiers de données des expositions (mosaïques, sculptures, vignettes).
     app.static_dir("/donnees", arteon::artworks::DATA_DIR);
