@@ -61,7 +61,8 @@ struct Musee {
 }
 
 /// Les styles de cadre, et leur nom dans le code.
-const FRAMES: [(&str, &str); 8] = [
+const FRAMES: [(&str, &str); 9] = [
+    ("vitrine", "Showcase"),
     ("dore", "Gilded"),
     ("baroque", "Baroque"),
     ("ebene", "Ebony"),
@@ -81,7 +82,7 @@ fn frame_code(file: &str, value: &str, who: &str) -> &'static str {
             fail(
                 file,
                 format!(
-                    "{who} : cadre = \"{value}\" : dore, baroque, ebene, bois, blanc, noir, estampe ou aucun"
+                    "{who} : cadre = \"{value}\" : dore, baroque, ebene, bois, blanc, noir, estampe, vitrine ou aucun"
                 ),
             )
         })
@@ -200,6 +201,14 @@ struct Oeuvre {
     largeur: f32,
     /// Le cadre de cette œuvre, s'il diffère de celui de l'exposition.
     cadre: Option<String>,
+    /// L'auteur de la reproduction (photographe), sa licence et sa source : obligatoires
+    /// pour une image sous licence libre (CC BY, CC BY-SA…).
+    #[serde(default)]
+    credit: String,
+    #[serde(default)]
+    licence: String,
+    #[serde(default)]
+    source: String,
 }
 
 #[derive(Deserialize)]
@@ -596,6 +605,18 @@ fn exhibition(
             ),
         };
 
+        let free = ["", "CC0", "Domaine public", "PD"];
+        if !free.contains(&art.licence.trim())
+            && (art.credit.trim().is_empty() || art.source.trim().is_empty())
+        {
+            fail(
+                name,
+                format!(
+                    "{who} : licence = \"{}\" : il faut aussi credit (l'auteur de la photo) et source (l'adresse du fichier)",
+                    art.licence
+                ),
+            );
+        }
         let folder = format!("public/tableaux/{slug}");
         let path = Path::new(&folder).join(&art.image);
         if art.image.contains('/') || art.image.contains('\\') || !path.is_file() {
@@ -687,7 +708,7 @@ fn exhibition(
         }
         let _ = writeln!(
             artworks,
-            "            Artwork {{ title: {:?}, slug: {:?}, artist: {:?}, year: {:?}, image: {:?}, technique: {:?}, collection: {:?}, note: {:?}, notice: {}, frame: Frame::{}, \
+            "            Artwork {{ title: {:?}, slug: {:?}, artist: {:?}, year: {:?}, image: {:?}, technique: {:?}, collection: {:?}, note: {:?}, notice: {}, frame: Frame::{}, credit: Credit {{ author: {:?}, licence: {:?}, source: {:?} }}, \
              width: {:?}, height: {:?}, hook: Hook {{ room: {r}, side: Side::{}, position: {position:?}, center: {center:?}, place: {place} }}, \
              mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], offset: {offset} }} }},",
             art.titre.trim(),
@@ -715,6 +736,9 @@ fn exhibition(
                 art.cadre.as_deref().unwrap_or(&file.exposition.cadre),
                 &who
             ),
+            art.credit.trim(),
+            art.licence.trim(),
+            art.source.trim(),
             art.largeur,
             (height * 1000.0).round() / 1000.0,
             side.name(),
