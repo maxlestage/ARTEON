@@ -1,0 +1,946 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ARTS D'ASIE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/arts-asie/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /arts-asie.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 25
+nom_court = "Arts d'Asie"
+mouvement = "Peinture chinoise, persane et moghole"
+couleur = "#9a3324"
+titre = "Monts, jardins et empereurs : la peinture d'Asie"
+artiste = "Fan Kuan, Guo Xi, Zhao Mengfu, Behzad, Reza Abbasi, Bichitr…"
+dates = "vers 1000–1630"
+accroche = "Exposition virtuelle · Musée Guimet, Paris"
+introduction = """
+Six siècles de peinture d'Asie, de la Chine des Song à l'Inde des Grands Moghols. En \
+Chine, des paysages à l'encre sur soie ou sur papier, peints sur des rouleaux que l'on \
+déroule et que l'on contemple comme on voyage. En Iran et en Inde, des miniatures de \
+manuscrits et d'albums, aux couleurs de pierres précieuses, faites pour des princes \
+lettrés. Le bâtiment s'inspire du musée Guimet à Paris, fondé par Émile Guimet et \
+ouvert en 1889 : un vestibule, la haute rotonde de la bibliothèque, puis des salles \
+consacrées chacune à un pays."""
+vitrine = "voyageurs-monts-ruisseaux.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée Guimet, place d'Iéna à Paris : un vestibule d'entrée, puis la
+# rotonde de la bibliothèque d'Émile Guimet (ici une haute salle carrée), autour de
+# laquelle s'ouvrent les salles par pays : la Chine à l'ouest, l'Iran à l'est, l'Inde
+# au nord. x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ;
+# une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule d'Iéna"
+theme = "L'entrée sur la place d'Iéna, comme dans le musée qu'Émile Guimet fit construire pour ses collections, ouvert en 1889."
+murs = "#ece6da"
+x = 0
+z = 0
+largeur = 14
+profondeur = 8
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La rotonde · Les grands paysages Song"
+theme = "Vers 1000–1072 : sous la haute voûte de la bibliothèque, les montagnes monumentales de Fan Kuan et de Guo Xi."
+murs = "#e9dcc3"
+x = 0
+z = -12
+largeur = 16
+profondeur = 16
+hauteur = 10
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "Salle de la Chine · Yuan et Ming"
+theme = "1295–1467 : les peintres lettrés, Zhao Mengfu et Shen Zhou, peignent des montagnes pour leurs amis et leurs maîtres."
+murs = "#e8e3d6"
+x = -14
+z = -12
+largeur = 12
+profondeur = 16
+hauteur = 6
+
+[[salles]]
+nom = "Salle de l'Iran · Hérat, Tabriz, Ispahan"
+theme = "1488–1630 : les miniatures persanes, de Behzad au Shâhnâmeh de Shah Tahmasp et aux amants de Reza Abbasi."
+murs = "#ede2cc"
+x = 14
+z = -12
+largeur = 12
+profondeur = 16
+hauteur = 6
+
+[[salles]]
+nom = "Salle de l'Inde · Les Grands Moghols"
+theme = "Vers 1615–1620 : les pages d'album peintes pour l'empereur Jahangir, entre rêves politiques et visites aux saints."
+murs = "#efe0cb"
+x = 0
+z = -26
+largeur = 16
+profondeur = 12
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Voyageurs parmi monts et ruisseaux"
+artiste = "Fan Kuan"
+annee = "vers 1000"
+image = "voyageurs-monts-ruisseaux.jpg"
+technique = "Rouleau vertical, encre et couleurs légères sur soie, 206,3 × 103,3 cm"
+collection = "Musée national du Palais, Taipei"
+note = "Une montagne immense, presque verticale, domine une minuscule caravane de mulets : l'image fondatrice du grand paysage chinois."
+description = """
+Le rouleau, haut de plus de deux mètres, se lit de bas en haut. Au premier plan, de \
+gros rochers arrondis barrent le chemin. Juste au-dessus, une colline couverte \
+d'arbres noueux occupe la largeur du tableau ; à droite, au pied des arbres, une \
+petite caravane de mulets chargés avance sur un sentier, menée par deux hommes, et \
+l'on devine les toits d'un temple entre les feuillages. Puis vient une bande de brume \
+pâle, comme un vide. Au-delà se dresse la montagne principale, une paroi énorme et \
+frontale qui remplit les deux tiers supérieurs du rouleau, couronnée de buissons \
+sombres. Sur son flanc droit, une cascade tombe en un mince filet blanc, presque \
+invisible dans la masse du rocher."""
+evocation = """
+Tout est fait pour que le spectateur se sente minuscule : les voyageurs ne mesurent \
+que quelques centimètres face à une montagne qui semble surgir devant lui. On y a vu \
+l'expression d'un ordre du monde cher aux lettrés des Song du Nord, où chaque chose \
+occupe sa place, de la pierre au sommet, et où l'homme n'est qu'une part d'un ensemble \
+qui le dépasse. La montagne centrale, entourée de collines plus basses, a souvent été \
+comparée à un souverain entouré de ses ministres. La tradition rapporte que Fan Kuan \
+aurait renoncé à imiter les maîtres pour prendre la nature, puis son propre cœur, pour \
+modèles : le tableau passe ainsi pour l'image même d'une peinture née de la \
+contemplation directe des montagnes."""
+histoire = """
+Fan Kuan vit au tournant de l'an mil, sous la dynastie des Song du Nord, retiré dans \
+les montagnes du Shaanxi, près de l'ancienne capitale Chang'an. Le rouleau n'est pas \
+daté et l'on ignore pour qui il fut peint. Il passe par de nombreuses collections \
+avant d'entrer dans celle des Qing. Au XXᵉ siècle, il suit le long exil des trésors du \
+palais impérial de Pékin, emballés en caisses en 1933 pour échapper à l'armée \
+japonaise, déplacés à travers la Chine pendant la guerre, puis transportés à Taïwan en \
+1948-1949. Il est aujourd'hui l'un des joyaux du musée national du Palais de Taipei, \
+qui, pour le protéger de la lumière, ne l'expose que quelques semaines, à plusieurs \
+années d'intervalle."""
+facture = """
+La roche est construite par une multitude de petites touches verticales, serrées comme \
+des gouttes de pluie : les historiens chinois parlent de « rides en gouttes de \
+pluie », une manière associée au nom de Fan Kuan. Elles rendent le grain et la masse \
+de la pierre mieux qu'aucun contour. L'encre, posée en couches sur la soie aujourd'hui \
+assombrie, va du gris léger au noir profond des feuillages. La composition, frontale \
+et symétrique, superpose trois plans séparés par la brume, sans perspective unique : \
+le regard monte, plan après plan, jusqu'au sommet."""
+details = [
+  "La caravane de mulets et ses deux conducteurs, en bas à droite.",
+  "Les toits d'un temple qui pointent entre les arbres, à droite de la colline.",
+  "La cascade, simple trait blanc sur le flanc droit de la grande paroi.",
+  "La bande de brume au pied de la montagne, qui crée un vide entre les plans.",
+  "Les milliers de petites touches verticales qui forment la roche.",
+]
+themes = ["montagne", "paysage", "voyage", "nature", "song du nord"]
+anecdote = """
+La signature du peintre est restée cachée près de mille ans. Ce n'est qu'en 1958 qu'un \
+chercheur du musée, Li Lin-ts'an, découvre les deux caractères de son nom, Fan Kuan, \
+dissimulés dans les feuillages, en bas à droite, tout près des voyageurs."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.05
+
+[[oeuvres]]
+titre = "Début du printemps"
+artiste = "Guo Xi"
+annee = "1072"
+image = "debut-du-printemps.jpg"
+technique = "Rouleau vertical, encre et couleurs légères sur soie, 158,3 × 108,1 cm"
+collection = "Musée national du Palais, Taipei"
+note = "Signé et daté par le peintre de la cour de l'empereur Shenzong : la montagne s'éveille dans la brume, encore nue, au premier souffle du printemps."
+description = """
+Une montagne s'élève en ondulant au centre du rouleau, comme une colonne de nuages \
+pétrifiés. Ses rochers aux formes molles s'enroulent les uns sur les autres et \
+s'estompent dans la brume, qui monte des vallées. Au premier plan, sur des blocs \
+arrondis, des arbres encore dépouillés tordent leurs branches. Partout se cachent de \
+petites scènes : en bas à gauche, des pêcheurs dans une barque amarrée ; en bas à \
+droite, une famille qui débarque sur la rive ; plus haut, à droite, les toits d'un \
+temple ou d'un pavillon nichés dans un vallon, et des cascades qui dévalent la pente. \
+À gauche, le regard s'échappe vers une vallée lointaine. En haut à droite, un poème a \
+été ajouté bien plus tard."""
+evocation = """
+Le tableau saisit un moment précis : la fin de l'hiver, quand la vie revient, que la \
+brume se lève et que les hommes reprennent leurs activités. Guo Xi a laissé des \
+réflexions sur son art, réunies par son fils dans un traité, le Haut Message des \
+forêts et des sources : il y explique qu'un bon paysage doit permettre au \
+fonctionnaire retenu en ville d'y voyager, d'y contempler, d'y flâner et d'y demeurer \
+en esprit. On a aussi lu cette montagne comme une image politique : un pic dominant, \
+entouré de sommets ordonnés, à la manière de l'empereur entouré de sa cour, à l'époque \
+où l'empereur Shenzong lançait de grandes réformes."""
+histoire = """
+Guo Xi est appelé à la cour vers 1068 par le jeune empereur Shenzong, qui admire son \
+talent au point de lui confier la décoration de nombreux murs et écrans du palais. Le \
+rouleau porte, sur son bord gauche, une courte inscription du peintre : le titre et la \
+date, l'année renzi, qui correspond à 1072. Après la mort de Shenzong en 1085, le goût \
+de la cour change et ses peintures sont décrochées. Le Début du printemps passe \
+pourtant dans les collections impériales ; au XVIIIᵉ siècle, l'empereur Qianlong y \
+fait inscrire un poème de sa main, en haut à droite. Avec les trésors de la Cité \
+interdite, il gagne Taïwan en 1948-1949."""
+facture = """
+Guo Xi réunit dans une seule image les « trois distances » qu'il décrit dans son \
+traité : la distance en hauteur, quand on lève les yeux vers le sommet, la distance en \
+profondeur, quand on plonge dans les vallées, et la distance à plat, quand le regard \
+file vers l'horizon. Les rochers sont modelés par des lavis d'encre dégradés et des \
+traits enroulés qui leur donnent l'aspect de nuages. Les branches des arbres, crochues \
+comme des pinces de crabe, viennent de la tradition du peintre Li Cheng. Quelques \
+touches de couleur légère animent la soie."""
+details = [
+  "La courte inscription du peintre, avec le titre et la date, sur le bord gauche.",
+  "Les pêcheurs dans leur barque amarrée, en bas à gauche.",
+  "La famille qui arrive sur la rive, en bas à droite.",
+  "Les branches crochues des arbres nus, au premier plan.",
+  "Le poème de l'empereur Qianlong et son sceau, en haut à droite.",
+]
+themes = ["printemps", "montagne", "brume", "cour impériale", "song du nord"]
+anecdote = """
+Selon le critique Deng Chun, au XIIᵉ siècle, les peintures de Guo Xi tombèrent si bien \
+en disgrâce après la mort de Shenzong qu'on les vit servir de chiffons pour essuyer \
+les tables du palais. Le père de Deng Chun obtint alors de l'empereur le droit de les \
+recueillir."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Couleurs d'automne sur les monts Qiao et Hua"
+artiste = "Zhao Mengfu"
+annee = "1295"
+image = "couleurs-automne-qiao-hua.jpg"
+technique = "Rouleau horizontal, encre et couleurs sur papier, 28,4 × 93,2 cm"
+collection = "Musée national du Palais, Taipei"
+note = "Peint pour un ami qui n'avait jamais vu la terre de ses ancêtres : deux montagnes du Shandong au milieu des marais, en automne."
+description = """
+Le rouleau horizontal se déroule de droite à gauche, comme on lit un texte chinois. \
+Une vaste plaine humide, couverte de roseaux et de marais, s'étend sous un ciel pâle. \
+À droite se dresse un pic bleu en forme de triangle pointu : le mont Hua. À gauche, \
+une montagne basse et arrondie, d'un bleu-vert sombre, presque en forme de miche : le \
+mont Que, ou Qiao. Entre les deux, des bouquets d'arbres aux feuilles rouges et \
+jaunes, des saules, quelques maisons basses, un petit troupeau. En bas à gauche, des \
+pêcheurs tendent leurs filets depuis des barques. Le ciel est envahi d'inscriptions et \
+de sceaux rouges, ajoutés par les collectionneurs successifs."""
+evocation = """
+Le tableau est un cadeau d'amitié et un objet de mémoire. Son destinataire, le lettré \
+Zhou Mi, descendait d'une famille du Shandong, mais il vivait dans le Sud et n'avait \
+jamais vu la région de ses ancêtres. Zhao Mengfu, qui venait d'y servir comme \
+fonctionnaire, lui peint ce paysage pour le lui raconter. On y a vu aussi un \
+manifeste : sous la domination mongole, Zhao revient volontairement à la manière des \
+peintres anciens, des Tang et des Cinq Dynasties, et affirme ainsi la continuité de la \
+culture chinoise. Le calme du paysage, sans drame ni montagne écrasante, traduit \
+l'idéal d'une vie retirée, simple et lettrée."""
+histoire = """
+Zhao Mengfu, descendant de la famille impériale des Song, a accepté de servir la \
+nouvelle dynastie mongole des Yuan, ce que certains de ses contemporains lui \
+reprochèrent. Nommé dans la région de Jinan, au Shandong, il rentre dans le Sud en \
+1295 et peint ce rouleau pour Zhou Mi. Sa propre inscription, au centre gauche, \
+raconte cette histoire et date l'œuvre du douzième mois de la première année de l'ère \
+Yuanzhen, à la fin de 1295. Le rouleau passe ensuite de collection en collection, \
+chaque propriétaire y apposant son sceau, avant d'entrer au palais impérial. \
+L'empereur Qianlong le couvre de ses poèmes et de ses cachets. Il est aujourd'hui \
+conservé à Taipei."""
+facture = """
+Zhao Mengfu choisit une naïveté apparente : les arbres sont presque plus grands que \
+les maisons, la plaine est vue de haut sans profondeur réelle, les montagnes sont \
+posées comme des objets. Ce style archaïsant imite les maîtres anciens, notamment Dong \
+Yuan, dont il reprend les longues touches souples, en fibres de chanvre. Le bleu \
+minéral des deux sommets rappelle la peinture « bleu et vert » des Tang. Pour Zhao, \
+peinture et calligraphie relèvent du même pinceau : chaque tronc, chaque roseau est un \
+trait d'écriture, posé à l'encre presque sèche sur le papier."""
+details = [
+  "À droite, le pic triangulaire du mont Hua ; à gauche, la masse arrondie du mont Qiao.",
+  "Les pêcheurs et leurs filets, dans les barques, en bas à gauche.",
+  "Les feuilles rouges et jaunes de l'automne parmi les arbres de la plaine.",
+  "L'inscription de Zhao Mengfu, à gauche du centre, qui raconte la genèse du tableau.",
+  "Les dizaines de sceaux rouges des collectionneurs, dont ceux de l'empereur Qianlong.",
+]
+themes = ["paysage", "automne", "amitié", "lettrés", "dynastie yuan"]
+anecdote = """
+Au printemps 1748, l'empereur Qianlong, qui voyage alors au Shandong, la région peinte \
+par Zhao Mengfu, ajoute sur le rouleau un poème consacré au mont Qiao, daté de cette \
+saison : il est inscrit en haut à gauche, au-dessus de la montagne arrondie."""
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Le Haut Mont Lu"
+artiste = "Shen Zhou"
+annee = "1467"
+image = "mont-lu.jpg"
+technique = "Rouleau vertical, encre et couleurs légères sur papier, 193,8 × 98,1 cm"
+collection = "Musée national du Palais, Taipei"
+note = "Offert par Shen Zhou à son maître Chen Kuan pour ses soixante-dix ans : une montagne qu'il n'avait jamais vue, image de la vertu du vieux lettré."
+description = """
+Les montagnes s'empilent jusqu'en haut du rouleau, haut de près de deux mètres. À \
+gauche, une longue cascade blanche tombe par paliers le long d'une falaise, près d'une \
+passerelle de bois accrochée à la paroi, puis se perd dans un torrent qui serpente \
+jusqu'au bas du tableau. À droite, au premier plan, de grands pins aux troncs tordus \
+s'accrochent aux rochers. Tout en bas, minuscule, un lettré en robe claire se tient \
+debout sur une avancée de rocher et regarde la chute d'eau. En haut à droite, des \
+pitons rocheux émergent des nuages. Le titre, trois grands caractères, et un long \
+poème de la main du peintre occupent le ciel, en haut à droite."""
+evocation = """
+Le mont Lu, dans la province du Jiangxi, est l'une des montagnes les plus célèbres de \
+Chine, chantée par les poètes depuis des siècles. Shen Zhou l'associe à son maître \
+Chen Kuan, dont la famille était originaire de cette région : dans son poème, la \
+hauteur de la montagne devient l'image de la grandeur morale du vieil homme. Le \
+tableau n'est donc pas une vue, mais un hommage, et le petit personnage au pied de la \
+cascade a parfois été interprété comme le maître lui-même, ou comme le disciple qui le \
+contemple. On y lit l'idéal des peintres lettrés : peindre un paysage pour exprimer \
+une pensée, une amitié, une admiration."""
+histoire = """
+En 1467, Shen Zhou a quarante ans. Il vit près de Suzhou, la grande ville lettrée du \
+bas Yangzi, et n'a jamais occupé de poste officiel. Pour le soixante-dixième \
+anniversaire de Chen Kuan, son ancien professeur, il peint ce rouleau de grand format, \
+le plus ambitieux de ses débuts, et y inscrit un poème composé pour l'occasion. Shen \
+Zhou deviendra ensuite le fondateur de l'école de Wu, qui domine la peinture lettrée \
+de la région de Suzhou pendant plus d'un siècle. Le rouleau entre plus tard dans les \
+collections impériales des Qing, puis gagne Taïwan avec les trésors du palais. Il est \
+conservé au musée national du Palais de Taipei."""
+facture = """
+Shen Zhou rend hommage au peintre Wang Meng, l'un des grands maîtres des Yuan, dont il \
+reprend la composition dense, sans vide, et les innombrables petites touches enroulées \
+qui donnent aux rochers une texture frémissante. Le pinceau est minutieux, presque \
+nerveux, bien loin de la manière ample et rapide de ses œuvres plus tardives. L'encre \
+domine, rehaussée de teintes légères, ocre et bleu pâle. La composition en zigzag \
+conduit le regard du torrent à la cascade, puis jusqu'aux sommets, où la calligraphie \
+du poème prolonge la peinture."""
+details = [
+  "Le minuscule lettré debout au pied de la cascade, tout en bas.",
+  "La longue chute d'eau qui tombe par paliers, à gauche.",
+  "La passerelle de bois accrochée à la falaise, près de la cascade.",
+  "Les grands pins aux troncs tordus, en bas à droite.",
+  "Le titre en trois grands caractères et le long poème, en haut à droite.",
+]
+themes = ["montagne", "hommage", "cascade", "lettrés", "dynastie ming"]
+anecdote = """
+Shen Zhou n'est jamais allé au mont Lu. Il a composé cette montagne de mémoire et \
+d'imagination, à partir des poèmes qui la célèbrent et du style de Wang Meng : pour un \
+peintre lettré, la vérité d'un paysage tenait à son sens plus qu'à sa ressemblance."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Séduction de Yusuf"
+artiste = "Behzad"
+annee = "1488"
+image = "yusuf-et-zuleykha.jpg"
+technique = "Pigments, encre et or sur papier, page d'un manuscrit du Bustan de Saadi"
+collection = "Bibliothèque nationale d'Égypte (Dar al-Kutub), Le Caire"
+note = "Dans un palais aux portes verrouillées, le beau Yusuf échappe à Zuleykha : une architecture vertigineuse, peinte à Hérat pour le sultan Husayn Bayqara."
+description = """
+Un palais est montré en coupe, comme une maison de poupée : on voit à la fois ses \
+façades, ses escaliers et ses pièces. À gauche, un escalier de bois rouge monte en \
+zigzag d'un étage à l'autre. Partout, des murs couverts de carreaux de céramique \
+bleus, turquoise et blancs, des portes fermées, des fenêtres grillagées, des niches. \
+Tout en haut, dans la pièce centrale, un jeune homme en robe verte, la tête entourée \
+d'un nimbe de flammes d'or, s'arrache à une femme en rouge qui tente de le retenir par \
+son vêtement. Des panneaux de poésie calligraphiée sont insérés dans le décor. Le \
+palais déborde du cadre : un pavillon en coupole et un balcon rouge s'avancent dans la \
+marge mouchetée d'or."""
+evocation = """
+L'histoire vient du Coran et de la Bible : Yusuf, le Joseph de la Genèse, est désiré \
+par Zuleykha, l'épouse de son maître égyptien. Le poète Saadi la raconte dans le \
+Bustan, et Jami, contemporain de Behzad, l'a développée peu avant : Zuleykha fait \
+construire un palais aux sept chambres, dont elle ferme chaque porte, mais les portes \
+s'ouvrent devant Yusuf qui s'enfuit. Dans la culture soufie, le récit a un sens \
+spirituel : Yusuf est l'âme qui résiste au désir, et la grâce divine ouvre les portes \
+du piège. Le labyrinthe de pièces fermées, sans issue apparente, a souvent été lu \
+comme l'image du monde et de ses tentations."""
+histoire = """
+La page appartient à un manuscrit du Bustan, « le Verger », recueil de récits moraux \
+composé par Saadi en 1257. Il est copié et illustré en 1488 à Hérat, dans l'actuel \
+Afghanistan, alors capitale brillante des derniers princes timourides, pour la \
+bibliothèque du sultan Husayn Bayqara, dont le portrait orne le double frontispice. Le \
+peintre Behzad, alors en pleine maturité, y signe plusieurs peintures, dont celle-ci, \
+qui comptent parmi les rares œuvres que les historiens lui attribuent avec certitude. \
+Le manuscrit, l'un des plus importants de la peinture persane, est aujourd'hui \
+conservé au Caire, à la Bibliothèque nationale d'Égypte."""
+facture = """
+Behzad emploie les couleurs les plus précieuses de son temps : le bleu de \
+lapis-lazuli, le vert de malachite, le vermillon et l'or. Les motifs des carreaux, \
+entrelacs géométriques et arabesques florales, reproduisent fidèlement le décor de \
+l'architecture timouride. La perspective n'a pas de point de fuite : chaque pièce est \
+vue sous l'angle qui la montre le mieux, et les plans s'emboîtent comme des tiroirs. \
+Les diagonales de l'escalier et du corps de Yusuf donnent son mouvement à une image \
+par ailleurs immobile. Les figures, petites, se distinguent par leurs gestes \
+expressifs."""
+details = [
+  "Le nimbe de flammes d'or qui entoure la tête de Yusuf.",
+  "Zuleykha, en rouge, qui agrippe le vêtement du jeune homme.",
+  "L'escalier de bois rouge qui monte en zigzag, à gauche.",
+  "Le balcon rouge et le pavillon à coupole qui débordent du cadre.",
+  "Les vers calligraphiés, insérés dans les murs comme de vraies inscriptions.",
+]
+themes = ["tentation", "architecture", "poésie", "soufisme", "hérat"]
+anecdote = """
+Babur, le fondateur de l'empire moghol, a jugé Behzad dans ses mémoires : il loue la \
+grande délicatesse de son travail, mais trouve qu'il réussissait mal les visages sans \
+barbe, auxquels il donnait un double menton trop long, alors que ses visages barbus \
+étaient admirables."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Cour de Gayumars"
+artiste = "Sultan Muhammad"
+annee = "vers 1522–1525"
+image = "cour-de-gayumars.jpg"
+technique = "Pigments, encre et or sur papier, page du Shâhnâmeh de Shah Tahmasp"
+collection = "Aga Khan Museum, Toronto"
+note = "Le premier roi du monde, vêtu de peaux de léopard, règne sur les hommes et les bêtes : la page la plus célèbre du Shâhnâmeh de Shah Tahmasp."
+description = """
+Au centre de la page, sur un rocher en forme de trône, le roi Gayumars est assis en \
+tailleur, vêtu de peaux de léopard. Autour de lui, les montagnes forment un \
+amphithéâtre de roches aux couleurs irréelles, rose, mauve, bleu, turquoise, ocre, \
+d'où jaillit une cascade. Les deux figures qui l'encadrent, debout à gauche et \
+agenouillée à droite, sont identifiées à son fils Siyamak et à son petit-fils Hushang. \
+Sur les pentes, des dizaines de courtisans, eux aussi vêtus de peaux de bêtes, forment \
+un cercle. Lions, léopards, cerfs et renards se mêlent aux hommes sans crainte. Le \
+ciel est d'or, parcouru de nuages à la chinoise. Les vers du poème encadrent la scène, \
+et un arbre s'échappe du cadre vers le haut de la marge."""
+evocation = """
+Le Shâhnâmeh, le « Livre des rois » achevé par le poète Ferdowsi vers l'an 1010, \
+raconte l'histoire de l'Iran depuis la création du monde. Gayumars en est le premier \
+roi : il vit dans les montagnes, apprend aux hommes à se vêtir de peaux, et les \
+animaux viennent d'eux-mêmes lui rendre hommage. La page montre un âge d'or, une \
+harmonie entre les hommes, les bêtes et la nature, juste avant la tragédie : Siyamak \
+sera tué par un démon. On y a vu une image idéale de la royauté, peinte pour \
+l'éducation du jeune prince Tahmasp. Le grand spécialiste Stuart Cary Welch y voyait \
+l'un des sommets de toute la peinture persane."""
+histoire = """
+Le Shâhnâmeh de Shah Tahmasp est le manuscrit le plus ambitieux de la peinture \
+persane : plus de 250 peintures réalisées à Tabriz, dans l'atelier royal des \
+Safavides, à partir des années 1520. Sultan Muhammad, chef de l'atelier, peint cette \
+page parmi les premières. Vers 1544, le chroniqueur Dust Muhammad la cite comme une \
+œuvre devant laquelle les plus grands peintres s'inclinaient. En 1568, Shah Tahmasp \
+offre le manuscrit au sultan ottoman Selim II. Acheté au début du XXᵉ siècle par le \
+baron Edmond de Rothschild, il est acquis en 1959 par le collectionneur américain \
+Arthur Houghton, qui le démembre. La page appartient aujourd'hui au musée Aga Khan de \
+Toronto, ouvert en 2014."""
+facture = """
+La page fond deux traditions : la peinture visionnaire de Tabriz, aux rochers \
+tourmentés et aux couleurs éclatantes, et la précision raffinée de l'école de Hérat, \
+héritée de Behzad. Le pinceau, parfois réduit à quelques poils, trace des centaines de \
+figures et d'animaux, dont certains ne mesurent que quelques millimètres. Les roches, \
+modelées en dégradés pastel, semblent faites d'éponge ou de corail. Le ciel est posé à \
+la feuille d'or, et la marge est semée de paillettes d'or. Une loupe révèle des \
+détails invisibles à l'œil nu."""
+details = [
+  "Les visages humains et animaux cachés dans les formes des rochers.",
+  "Gayumars, assis en tailleur, vêtu de peaux de léopard.",
+  "Les lions et les léopards couchés tranquillement parmi les courtisans.",
+  "Le ciel d'or et ses nuages tourbillonnants à la chinoise.",
+  "L'arbre qui s'échappe du cadre, au-dessus du texte.",
+]
+themes = ["mythe", "royauté", "âge d'or", "animaux", "épopée"]
+anecdote = """
+En 1994, l'Iran a échangé un tableau de Willem de Kooning, Woman III, conservé au \
+musée d'Art contemporain de Téhéran, contre les 118 pages restantes du Shâhnâmeh de \
+Shah Tahmasp, qui ont ainsi regagné l'Iran."""
+salle = 4
+mur = "est"
+position = 0
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Les Deux Amants"
+artiste = "Reza Abbasi"
+annee = "1630"
+image = "deux-amants.jpg"
+technique = "Pigments, encre et or sur papier, 18,1 × 11,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Signée et datée, une étreinte peinte à Ispahan à la fin de la vie du peintre : une feuille isolée, faite pour être collectionnée dans un album."
+description = """
+Deux jeunes gens sont assis, enlacés, si serrés qu'ils ne forment plus qu'une seule \
+masse. Le premier porte un manteau brun doublé de vert et une écharpe orangée ; le \
+second, vêtu de vert, est coiffé d'un foulard bleu. Leurs deux visages ronds, joue \
+contre joue, se ressemblent presque. Autour d'eux, le fond ocre est couvert d'une \
+végétation peinte à l'or : de hautes herbes en panaches, des feuillages, des nuages \
+stylisés en haut. Au sol, une bouteille de vin, une coupe, des fruits épars et un plat \
+de grenades. À gauche, quelques lignes d'écriture donnent la date et la signature. Une \
+bordure bleue ornée de rinceaux d'or encadre la scène."""
+evocation = """
+L'image respire la sensualité de la cour safavide d'Ispahan au début du XVIIᵉ siècle. \
+Le vin, les fruits et l'étreinte évoquent la poésie persane, où l'amour humain et \
+l'ivresse sont aussi, souvent, des métaphores de l'amour divin. Reza Abbasi laisse \
+volontairement planer une ambiguïté : les deux amants se ressemblent tant qu'on a \
+longtemps débattu de leur identité. L'œuvre témoigne aussi d'un changement d'époque : \
+on ne peint plus seulement des manuscrits pour le roi, mais des feuilles isolées, \
+achetées par des courtisans et des marchands pour leurs albums, où l'on admire avant \
+tout la main de l'artiste."""
+histoire = """
+Reza Abbasi est alors le peintre le plus célèbre d'Iran. Il a servi Shah Abbas Iᵉʳ, \
+qui a fait d'Ispahan sa capitale et lui a donné le droit de porter son nom. Le roi \
+meurt en 1629 ; l'année suivante, Reza, devenu un vieil homme, signe et date cette \
+page. L'inscription, à gauche, indique qu'elle a été achevée au mois de chawwal de \
+l'an 1039 de l'hégire, soit au printemps 1630, et se termine par sa signature. Comme \
+beaucoup de ces feuilles, elle a sans doute été montée dans un album. Elle entre au \
+Metropolitan Museum of Art de New York en 1950."""
+facture = """
+La ligne est la grande force de Reza Abbasi : un trait calligraphique qui s'épaissit \
+et s'amincit, s'enroule dans les plis des vêtements et donne aux corps leur souplesse. \
+Les deux figures s'inscrivent dans une forme compacte, presque une pyramide. La gamme \
+est restreinte, brun, vert, orangé et bleu, posée sur un fond ocre où la végétation \
+est dessinée à l'or, d'un pinceau rapide. Ce style, élégant et nerveux, a été imité \
+par des générations de peintres d'Ispahan."""
+details = [
+  "La bouteille de vin et la coupe posées au sol, à gauche.",
+  "L'inscription à gauche, avec la date et la signature du peintre.",
+  "Les deux visages joue contre joue, presque identiques.",
+  "Les herbes et les feuillages dessinés à l'or sur le fond ocre.",
+  "Le plat de grenades et les fruits éparpillés au bas de la page.",
+]
+themes = ["amour", "étreinte", "vin", "ispahan", "album"]
+anecdote = """
+Le chroniqueur de Shah Abbas, Iskandar Beg Munshi, reproche à Reza Abbasi d'avoir un \
+temps délaissé son art et la cour pour fréquenter des lutteurs et des gens de peu, \
+ajoutant qu'il avait un caractère difficile. Le peintre finit pourtant par revenir au \
+service du roi."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jahangir préférant un cheikh soufi aux rois"
+artiste = "Bichitr"
+annee = "vers 1615–1618"
+image = "jahangir-cheikh-soufi.jpg"
+technique = "Pigments, encre et or sur papier, 25,3 × 18,1 cm"
+collection = "Freer Gallery of Art, Washington"
+note = "Assis sur un sablier, l'empereur tend un livre à un vieux soufi et ignore le sultan ottoman et le roi d'Angleterre qui attendent à ses pieds."
+description = """
+L'empereur Jahangir, assis sur un trône en forme de sablier, est entouré d'un immense \
+disque d'or associant le soleil et le croissant de lune. Il tend un livre à un \
+vieillard à la longue barbe blanche, un cheikh soufi. Sous lui, en file, attendent un \
+sultan ottoman coiffé d'un turban, le roi Jacques Iᵉʳ d'Angleterre avec sa fraise et \
+son chapeau à plume, et, tout en bas, un homme en turban rouge qui tient une petite \
+peinture : le peintre lui-même. Au pied du sablier, deux petits anges écrivent sur sa \
+base, tandis que deux autres volent en haut de la page, l'un armé d'un arc, l'autre le \
+visage dans les mains. Une large bordure de fleurs encadre le tout."""
+evocation = """
+Le message est inscrit en haut et en bas de l'image : si les rois se tiennent devant \
+lui, l'empereur tourne son regard vers les derviches. Jahangir se présente ainsi comme \
+un souverain mystique, qui préfère la sagesse spirituelle au pouvoir terrestre. Mais \
+c'est aussi une image de propagande : le nom de Jahangir, « Nur al-Din », signifie \
+« lumière de la foi », d'où l'auréole solaire. Le sablier rappelle la fuite du temps, \
+et les anges y inscrivent le vœu que la vie de l'empereur dure mille ans. Les deux \
+souverains étrangers, relégués sur le côté, disent la place que Jahangir pensait tenir \
+dans le monde."""
+histoire = """
+La page est peinte vers 1615-1618, alors que la cour séjourne souvent à Ajmer, près du \
+sanctuaire du saint soufi Muin al-Din Chishti, que vénère l'empereur ; le vieillard \
+est généralement identifié comme le cheikh Husain, gardien de ce sanctuaire. C'est \
+aussi l'époque où l'ambassadeur anglais Sir Thomas Roe séjourne à la cour, de 1615 à \
+1619, et offre à l'empereur des portraits européens : celui de Jacques Iᵉʳ a servi de \
+modèle. Au XVIIIᵉ siècle, la page est montée dans un grand album réuni en Iran, dit \
+« album de Saint-Pétersbourg ». La Freer Gallery of Art de Washington l'acquiert en \
+1942."""
+facture = """
+Bichitr pousse jusqu'à la perfection le fini des peintres moghols : chaque visage est \
+un portrait individualisé, chaque bijou est rendu avec une précision d'orfèvre, et \
+l'or illumine l'immense auréole. Il emprunte à l'art européen, découvert par les \
+gravures et les tableaux apportés par les jésuites et les ambassadeurs, le modelé des \
+visages, les petits anges et le portrait du roi d'Angleterre. Ces éléments étrangers \
+se mêlent sans heurt au tapis bleu à arabesques, aux couleurs intenses et à la bordure \
+florale persane."""
+details = [
+  "Le sablier qui sert de trône, et le sable qui s'écoule.",
+  "Le roi Jacques Iᵉʳ d'Angleterre, sa fraise blanche et ses bijoux.",
+  "L'autoportrait de Bichitr, en turban rouge, en bas à gauche.",
+  "Les deux angelots qui écrivent sur la base du sablier.",
+  "En haut, l'angelot à l'arc et celui qui se cache le visage.",
+]
+themes = ["pouvoir", "mysticisme", "temps", "portrait", "empire moghol"]
+anecdote = """
+Sir Thomas Roe raconte qu'il avait présenté à Jahangir une miniature anglaise, \
+persuadé qu'aucun peintre indien ne pourrait l'égaler. L'empereur en fit faire des \
+copies si fidèles que l'ambassadeur, à la lumière d'une chandelle, eut du mal à \
+reconnaître l'original."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Le Rêve de Jahangir"
+artiste = "Abu'l Hasan"
+annee = "vers 1618"
+image = "jahangir-shah-abbas.jpg"
+technique = "Pigments, encre et or sur papier, 23,8 × 15,4 cm"
+collection = "Freer Gallery of Art, Washington"
+note = "Debout sur un lion, l'empereur moghol serre dans ses bras le shah d'Iran, posé sur un agneau : un rêve de Jahangir, mis en images par son peintre favori."
+description = """
+Deux souverains s'étreignent, debout sur un globe terrestre où l'on reconnaît des \
+continents. À droite, plus grand, l'empereur Jahangir, en veste verte et turban \
+blanc ; à gauche, plus petit, Shah Abbas, roi d'Iran, en robe rose. Sous leurs pieds, \
+un lion et un agneau sont couchés côte à côte, paisibles. Derrière eux, un immense \
+disque d'or rayonnant, posé sur un croissant de lune dont les pointes sont tenues par \
+deux têtes d'angelots ailés, se détache sur un ciel turquoise. De petites inscriptions \
+en persan sont réparties dans l'image. L'ensemble est monté sur une page d'album \
+encadrée de rinceaux, de fleurs et d'oiseaux."""
+evocation = """
+Selon une inscription, l'image illustre un rêve de Jahangir, dans lequel Shah Abbas \
+lui était apparu. Sous l'apparence de l'amitié, c'est une image de domination : \
+Jahangir est plus grand, c'est lui qui accueille, et son lion, image de la force, \
+occupe une large part du globe, jusqu'à pousser l'agneau vers l'ouest. Le lion couché \
+près de l'agneau évoque aussi la justice du règne, si parfaite que le fort ne dévore \
+plus le faible. Les deux empires se disputaient alors la ville de Kandahar, dans \
+l'actuel Afghanistan : on y a vu le désir de Jahangir de régler cette rivalité, au \
+moins en rêve."""
+histoire = """
+La page est peinte vers 1618 par Abu'l Hasan, que Jahangir avait honoré du titre de \
+« Nadir al-Zaman », la merveille de l'époque. Elle fait partie d'une série d'images \
+allégoriques que l'empereur commande à la fin des années 1610 pour exprimer sa vision \
+du pouvoir. Après le pillage de Delhi par le roi d'Iran Nadir Shah en 1739, de \
+nombreuses peintures mogholes partent en Iran ; celle-ci est montée au XVIIIᵉ siècle, \
+avec sa bordure fleurie, dans l'album dit « de Saint-Pétersbourg ». La Freer Gallery \
+of Art de Washington l'acquiert en 1945."""
+facture = """
+Abu'l Hasan associe la précision du portrait moghol, attentif aux traits de chaque \
+visage, à des motifs venus d'Europe : le globe terrestre copié sur les cartes et les \
+globes européens, les têtes d'angelots, le modelé des corps. Le grand disque d'or, \
+finement strié de rayons, donne à l'image son éclat. Les couleurs sont claires et \
+franches, vert, rose, turquoise, sur lesquelles se détachent les deux silhouettes. La \
+bordure, avec ses fleurs et ses oiseaux, a été ajoutée plus tard."""
+details = [
+  "Le lion et l'agneau couchés côte à côte sur le globe.",
+  "La carte du globe, avec ses continents et ses mers.",
+  "Les deux têtes d'angelots ailés aux pointes du croissant de lune.",
+  "La différence de taille entre Jahangir et Shah Abbas.",
+  "Les oiseaux cachés dans la bordure fleurie.",
+]
+themes = ["pouvoir", "rêve", "diplomatie", "symbole", "empire moghol"]
+anecdote = """
+Les deux souverains ne se sont jamais rencontrés. L'étreinte peinte n'a rien changé à \
+leur rivalité : en 1622, quatre ans à peine après cette image, Shah Abbas s'empare de \
+Kandahar, que les Moghols ne parviendront à reprendre que pour peu de temps."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Jahangir rendant visite à l'ascète Jadrup"
+artiste = "Govardhan"
+annee = "vers 1616–1620"
+image = "jahangir-jadrup.jpg"
+technique = "Pigments, encre et or sur papier, page d'album (attribuée à Govardhan)"
+collection = "Musée Guimet, Paris"
+note = "Laissant sa suite et son cheval au pied de la colline, l'empereur s'assoit humblement devant la grotte d'un ascète hindou."
+description = """
+La page est divisée en deux. En haut, sur une colline, devant l'entrée sombre et \
+étroite d'une grotte, deux hommes sont assis face à face. À gauche, l'ascète Jadrup, \
+d'une maigreur extrême, presque nu, ne porte qu'un pagne et parle en levant les mains. \
+À droite, l'empereur Jahangir, auréolé, en vêtements blancs et turban orange, \
+l'écoute. Derrière, des arbres et, au loin, une ville bleutée. Au milieu de la page, \
+une étendue de terre nue sépare les deux mondes. En bas, la suite impériale attend : \
+des dizaines de courtisans en turbans, chacun avec un visage distinct, un cheval gris \
+paré d'un tapis de selle doré, un parasol et un étendard. Une bordure de vigne et \
+d'oiseaux encadre la scène."""
+evocation = """
+Jahangir, musulman, s'intéresse comme son père Akbar aux sagesses de l'Inde. Dans ses \
+mémoires, il raconte ses entretiens avec Jadrup, un ascète hindou qu'il admire pour sa \
+connaissance des textes philosophiques du Vedanta. Le peintre traduit cette admiration \
+en images : l'empereur a laissé derrière lui cheval, armes et courtisans, et s'assoit \
+à même le sol, à la hauteur du saint homme. Le grand vide du milieu de la page marque \
+la distance entre le monde du pouvoir et celui du renoncement. On y lit la tolérance \
+religieuse de la cour moghole, où l'on cherchait des vérités communes aux différentes \
+traditions."""
+histoire = """
+Jahangir rencontre Jadrup vers 1616-1617 près d'Ujjain, dans le centre de l'Inde, et \
+lui rend visite à plusieurs reprises ; il le reverra plus tard à Mathura, où l'ascète \
+s'est installé. Il consigne ces rencontres dans ses mémoires, qu'il fait illustrer par \
+les peintres de son atelier. Cette page est attribuée à Govardhan, connu pour ses \
+portraits de saints hommes et d'ascètes. Elle appartient aujourd'hui au musée Guimet, \
+à Paris, qui conserve l'une des plus importantes collections de peinture indienne en \
+France ; une autre version de la scène se trouve aux Harvard Art Museums."""
+facture = """
+Govardhan excelle dans le rendu des corps : le torse décharné de Jadrup, ses côtes \
+saillantes et ses bras maigres sont modelés avec une douceur presque tactile. Dans la \
+foule, chaque visage est un véritable portrait, de profil ou de trois quarts, avec ses \
+nuances de teint. La ville lointaine, estompée dans une brume bleue, montre \
+l'influence de la peinture européenne, connue par les gravures. Les couleurs de terre, \
+ocre et sable, dominent ; elles mettent en valeur la tache claire des vêtements \
+impériaux."""
+details = [
+  "L'entrée étroite et sombre de la grotte, entre les deux hommes.",
+  "Le corps décharné de l'ascète, ses côtes visibles.",
+  "Le cheval gris de l'empereur et son tapis de selle doré.",
+  "Le parasol et l'étendard royal au-dessus de la foule.",
+  "La ville lointaine, estompée dans une brume bleue, à droite.",
+]
+themes = ["spiritualité", "ascète", "empereur", "tolérance", "empire moghol"]
+anecdote = """
+Dans ses mémoires, Jahangir décrit la retraite de Jadrup comme un simple trou creusé \
+dans le flanc d'une colline, à l'ouverture si étroite qu'on n'y entrait qu'avec peine. \
+L'ascète y vivait seul, nu, et l'empereur dit avoir pris un grand plaisir à leurs \
+conversations."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 1.0
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Fan Kuan"
+vie = "Huayuan (Shaanxi), actif vers 990 – vers 1030"
+biographie = """
+On sait peu de chose de Fan Kuan, l'un des plus grands peintres de paysage de \
+l'histoire chinoise. Son vrai nom était Fan Zhongzheng ; « Kuan », qui signifie \
+« large » ou « indulgent », serait un surnom lié à son caractère accommodant. \
+Originaire de Huayuan, dans la province du Shaanxi, il vit sous les premiers empereurs \
+de la dynastie des Song du Nord. Les textes anciens le décrivent comme un homme \
+simple, aimant le vin, attiré par le taoïsme et indifférent aux honneurs. Il aurait \
+d'abord étudié la peinture de Li Cheng, puis, selon la tradition, décidé que la nature \
+était un meilleur maître que les hommes. Il se retire alors dans les montagnes \
+Zhongnan et Taihua, près de l'ancienne capitale Chang'an, où il passe des journées à \
+observer les rochers, les nuages et la lumière. Dès le XIᵉ siècle, le critique Guo \
+Ruoxu le range, avec Li Cheng et Guan Tong, parmi les trois grands maîtres du paysage \
+de son temps. Très peu d'œuvres peuvent lui être attribuées avec certitude : Voyageurs \
+parmi monts et ruisseaux est la seule qui fasse l'unanimité. Ses dates de naissance et \
+de mort restent inconnues ; il était encore vivant au début du XIᵉ siècle."""
+style = """
+Fan Kuan est le peintre de la montagne monumentale, frontale, écrasante, vue comme un \
+monde en soi. Ses roches sont construites par d'innombrables petites touches \
+verticales qui en rendent la densité et le grain. Ses compositions, symétriques et \
+étagées, séparent les plans par la brume. Il a fixé pour des siècles l'idéal du grand \
+paysage des Song du Nord, que copièrent et réinterprétèrent les peintres des Yuan, des \
+Ming et des Qing."""
+
+[[artistes]]
+nom = "Guo Xi"
+vie = "Wenxian (Henan), vers 1020 – vers 1090"
+biographie = """
+Guo Xi naît vers 1020 à Wenxian, dans la province du Henan, sous la dynastie des Song \
+du Nord. Formé, semble-t-il, en partie par lui-même, il étudie les œuvres du grand \
+paysagiste Li Cheng et se fait connaître par ses peintures murales. Vers 1068, il est \
+appelé à la cour de Kaifeng par le jeune empereur Shenzong, qui l'admire au point de \
+lui confier la décoration de nombreux bâtiments du palais et des administrations. Il \
+devient l'un des peintres les plus en vue de l'Académie impériale et forme des élèves. \
+Ses idées sur la peinture sont rassemblées par son fils Guo Si dans un traité, le Haut \
+Message des forêts et des sources, l'un des textes les plus importants de la théorie \
+chinoise du paysage. Il y décrit l'observation des saisons, des heures et des \
+distances, et le rôle consolateur du paysage pour l'homme retenu en ville par ses \
+devoirs. À la mort de Shenzong, en 1085, le goût de la cour change et son œuvre tombe \
+en défaveur. Il meurt vers 1090. Son influence reste immense : le style dit \
+« Li-Guo », qui réunit son nom à celui de Li Cheng, domine le paysage du Nord pendant \
+plusieurs siècles."""
+style = """
+Guo Xi peint des montagnes vivantes, presque mouvantes, faites de rochers en forme de \
+nuages et d'arbres aux branches crochues. Il joue de la brume et des lavis d'encre \
+dégradés pour faire sentir l'air, la saison et l'heure. Théoricien des « trois \
+distances », il compose des paysages où le regard peut monter, plonger et s'éloigner à \
+la fois. Sa peinture allie la grandeur du paysage monumental à une observation très \
+fine de la nature."""
+
+[[artistes]]
+nom = "Zhao Mengfu"
+vie = "Huzhou (Zhejiang), 1254 – Huzhou, 1322"
+biographie = """
+Zhao Mengfu naît en 1254 à Huzhou, au sud du lac Tai, dans une branche de la famille \
+impériale des Song. Il a vingt-cinq ans quand, en 1279, les Mongols de Kubilai Khan \
+achèvent la conquête de la Chine et fondent la dynastie des Yuan. Il vit d'abord \
+retiré, puis, en 1286, accepte l'invitation de Kubilai et part servir à la nouvelle \
+capitale, Dadu, l'actuelle Pékin. Ce choix lui vaut le mépris de certains lettrés \
+restés fidèles aux Song. Il occupe des postes en province, notamment au Shandong, puis \
+gravit les échelons jusqu'à la direction de l'Académie Hanlin, au plus haut rang de \
+l'administration. Son épouse, Guan Daosheng, est elle-même peintre et calligraphe, et \
+leur fils Zhao Yong suit leur voie. Calligraphe de génie, Zhao Mengfu a créé un style \
+d'écriture qui reste un modèle jusqu'à nos jours. En peinture, il pratique tous les \
+genres, paysages, chevaux, bambous, rochers, et prône le retour à l'esprit des maîtres \
+anciens. Il meurt à Huzhou en 1322, comblé d'honneurs posthumes."""
+style = """
+Zhao Mengfu refuse la virtuosité décorative de l'Académie des Song du Sud et revient \
+aux maîtres des Tang et des Cinq Dynasties, avec une simplicité volontairement \
+archaïque. Pour lui, peindre et écrire relèvent du même geste : il dit que les rochers \
+doivent être tracés comme l'écriture « blanc volant » et les arbres comme l'écriture \
+sigillaire. Il a fondé l'esthétique de la peinture lettrée, qui domine l'art chinois \
+jusqu'au XXᵉ siècle."""
+
+[[artistes]]
+nom = "Shen Zhou"
+vie = "Xiangcheng, près de Suzhou, 1427 – 1509"
+biographie = """
+Shen Zhou naît en 1427 à Xiangcheng, près de Suzhou, dans une famille aisée de \
+propriétaires terriens et de lettrés, sous la dynastie des Ming. Son grand-père et son \
+père sont poètes, peintres et collectionneurs, et il grandit entouré de livres et \
+d'œuvres anciennes. Contrairement à la plupart des lettrés de son temps, il ne passe \
+jamais les examens impériaux et refuse les fonctions officielles ; on rapporte qu'il \
+voulait rester auprès de sa mère, qu'il soigna jusqu'à un âge très avancé. Il consacre \
+sa vie à la poésie, à la calligraphie, à la peinture et à la collection, recevant amis \
+et disciples dans sa propriété. Il étudie de près les maîtres des Yuan, Wang Meng, \
+Huang Gongwang, Ni Zan et Wu Zhen, dont il possède ou copie des œuvres. Sa réputation \
+attire de nombreux élèves, dont Wen Zhengming, qui prolongera son enseignement. Shen \
+Zhou est considéré comme le fondateur de l'école de Wu, du nom ancien de la région de \
+Suzhou. Il meurt en 1509, à plus de quatre-vingts ans, figure respectée de toute la \
+société lettrée."""
+style = """
+Shen Zhou commence par une manière minutieuse, dense, inspirée de Wang Meng, puis \
+évolue vers un pinceau plus large, plus libre et plus rapide. Ses paysages, souvent \
+accompagnés de ses propres poèmes, montrent les promenades et les amitiés des lettrés \
+de Suzhou. Il a aussi peint des fleurs, des oiseaux et des scènes de la vie \
+quotidienne. Avec ses élèves, il a fait de Suzhou le centre de la peinture lettrée des \
+Ming."""
+
+[[artistes]]
+nom = "Behzad"
+vie = "Hérat, vers 1450-1460 – Tabriz, vers 1535"
+biographie = """
+Kamal al-Din Behzad naît à Hérat, dans l'actuel Afghanistan, vers le milieu du XVᵉ \
+siècle. Orphelin très jeune, il est élevé, selon les sources anciennes, par le peintre \
+Mirak Naqqash, directeur de la bibliothèque royale. Hérat est alors la capitale des \
+derniers princes timourides et l'un des grands foyers de la culture persane. Behzad y \
+bénéficie de la protection du sultan Husayn Bayqara et de son ministre Mir Ali Shir \
+Navai, poète et mécène. Il illustre les manuscrits les plus luxueux de la bibliothèque \
+royale, dont le Bustan de Saadi de 1488. Au début du XVIᵉ siècle, Hérat tombe aux \
+mains des Ouzbeks, puis des Safavides d'Iran. Behzad gagne Tabriz, où, en 1522, un \
+décret de Shah Ismail le nomme directeur de la bibliothèque et de l'atelier royal. Il \
+y forme une nouvelle génération de peintres et contribue à l'essor de la peinture \
+safavide. Il meurt vers 1535, entouré d'une immense réputation : on lui attribua \
+longtemps bien plus d'œuvres qu'il n'en a peint, et son nom est devenu synonyme de \
+perfection dans tout le monde persan, de l'Empire ottoman à l'Inde."""
+style = """
+Behzad renouvelle la miniature persane en donnant vie à ses personnages : postures \
+variées, gestes expressifs, scènes de la vie quotidienne glissées dans les récits. Ses \
+compositions, très construites, s'organisent autour de diagonales et d'architectures \
+complexes, aux décors fidèlement reproduits. Ses couleurs sont intenses mais \
+harmonieuses. Son influence s'étend à toute la peinture persane, ottomane et moghole \
+du XVIᵉ siècle."""
+
+[[artistes]]
+nom = "Sultan Muhammad"
+vie = "Tabriz, actif vers 1505 – vers 1545"
+biographie = """
+Sultan Muhammad est le plus grand peintre de la première génération safavide, mais sa \
+vie reste mal connue. Il se forme sans doute à Tabriz, dans la tradition des peintres \
+turkmènes qui travaillaient pour les princes Aq Qoyunlu, avant l'arrivée au pouvoir de \
+Shah Ismail Iᵉʳ, fondateur de la dynastie safavide, en 1501. Au début des années 1520, \
+il dirige l'atelier royal de Tabriz et joue un rôle majeur dans le grand projet du \
+Shâhnâmeh destiné au prince Tahmasp, dont il aurait été l'un des maîtres de dessin. Il \
+y peint, entre autres, la Cour de Gayumars, page qui lui vaut l'admiration de ses \
+contemporains. On lui attribue aussi des peintures d'un célèbre Divan du poète Hafez, \
+vers 1527, et d'une Khamseh de Nizami réalisée pour Shah Tahmasp entre 1539 et 1543, \
+aujourd'hui à la British Library de Londres. Son fils, Mirza Ali, devient lui aussi un \
+peintre important de l'atelier royal. On perd sa trace dans les années 1540, quand \
+Shah Tahmasp, gagné par la dévotion, se détourne peu à peu de la peinture."""
+style = """
+Sultan Muhammad unit l'imagination débridée de la peinture turkmène de Tabriz, ses \
+rochers fantastiques et ses couleurs vives, à la rigueur de l'école de Hérat. Ses \
+pages fourmillent de détails minuscules, de visages cachés dans les rochers, de \
+personnages pleins d'humour. Sa palette, riche en roses, mauves et turquoises, et son \
+sens du mouvement font de lui le maître du premier style safavide."""
+
+[[artistes]]
+nom = "Reza Abbasi"
+vie = "Kashan ?, vers 1565 – Ispahan, 1635"
+biographie = """
+Reza Abbasi, ou Riza-yi Abbasi, naît vers 1565, sans doute à Kashan, fils d'Ali \
+Asghar, peintre au service des souverains safavides. Il entre jeune à l'atelier de \
+Shah Abbas Iᵉʳ, monté sur le trône en 1588, qui fait d'Ispahan sa nouvelle capitale et \
+la couvre de mosquées, de palais et de jardins. Le roi lui accorde le titre d'Abbasi, \
+qui associe son nom à celui du souverain. Au début du XVIIᵉ siècle, il s'éloigne un \
+temps de la cour, ce que lui reproche le chroniqueur Iskandar Beg Munshi, puis y \
+revient et reste le peintre le plus renommé du royaume. Plutôt que d'illustrer de \
+grands manuscrits, il se consacre surtout aux feuilles isolées, dessins et peintures \
+destinés aux albums des collectionneurs : jeunes élégants, amants, derviches, \
+vieillards, scènes pastorales. Il forme de nombreux élèves, dont Muin Musavvir, qui a \
+laissé de lui un portrait. Son fils, Shafi Abbasi, devient à son tour un peintre \
+réputé, spécialiste des fleurs et des oiseaux. Reza Abbasi meurt à Ispahan en 1635, au \
+sommet de sa gloire."""
+style = """
+Reza Abbasi est avant tout un dessinateur. Sa ligne calligraphique, souple et \
+nerveuse, s'enfle et s'amincit pour suivre les plis des vêtements et les courbes des \
+corps. Ses figures, élégantes, nonchalantes, souvent sensuelles, se détachent sur des \
+fonds simples rehaussés d'or. Il a imposé à Ispahan le goût de la page d'album et \
+défini le style de la peinture safavide du XVIIᵉ siècle, imité pendant des \
+générations."""
+
+[[artistes]]
+nom = "Bichitr"
+vie = "Inde moghole, actif vers 1610 – vers 1660"
+biographie = """
+Bichitr est un peintre hindou de la cour moghole, dont on ne connaît que ce que \
+révèlent ses œuvres signées. Son nom, d'origine sanskrite, signifie « merveilleux » ou \
+« étonnant ». Formé dans l'atelier impérial sous le règne de Jahangir, empereur de \
+1605 à 1627, il se fait remarquer par des portraits et des allégories politiques d'une \
+extrême finesse, comme celle où l'empereur préfère un cheikh soufi aux rois. Il s'y \
+représente lui-même, ce qui montre l'estime dont il jouissait. Il devient l'un des \
+peintres favoris de Shah Jahan, le fils de Jahangir, empereur de 1628 à 1658 et \
+bâtisseur du Taj Mahal. Il participe à l'illustration de la grande chronique \
+officielle du règne, le Padshahnama, conservée aujourd'hui dans la collection royale \
+britannique, et peint de nombreux portraits de l'empereur, des princes et des \
+dignitaires. Ses œuvres datées s'étendent sur plusieurs décennies, jusque vers le \
+milieu du XVIIᵉ siècle. On ignore les dates de sa naissance et de sa mort."""
+style = """
+Bichitr pousse à son sommet le fini de la peinture moghole : portraits d'une précision \
+saisissante, bijoux et tissus rendus au détail près, couleurs lumineuses. Il intègre \
+avec aisance des motifs européens, angelots, paysages en perspective atmosphérique, \
+modelé des visages, dans des compositions solennelles et symboliques. Ses images \
+servent la gloire impériale tout en gardant une grande humanité dans les visages."""
+
+[[artistes]]
+nom = "Abu'l Hasan"
+vie = "Cour moghole, 1588 ou 1589 – après 1630"
+biographie = """
+Abu'l Hasan naît en 1588 ou 1589 dans l'entourage du prince Salim, le futur empereur \
+Jahangir, qui le dit « né dans sa maison ». Son père, Aqa Riza, était un peintre venu \
+de Hérat, entré au service du prince. Précoce, il signe vers l'âge de treize ans un \
+dessin d'après une gravure d'Albrecht Dürer représentant saint Jean, aujourd'hui à \
+l'Ashmolean Museum d'Oxford. Quand Salim devient empereur en 1605, Abu'l Hasan \
+s'impose comme l'un des premiers peintres de l'atelier impérial. Il peint l'image de \
+l'avènement de Jahangir, de nombreux portraits et les grandes allégories politiques du \
+règne, où l'empereur triomphe de ses ennemis ou embrasse le roi d'Iran. Jahangir écrit \
+dans ses mémoires que son œuvre est sans égale et lui donne le titre de Nadir \
+al-Zaman, « la merveille de l'époque ». On lui attribue aussi des Écureuils dans un \
+platane, vers 1610, aujourd'hui à la British Library, célèbres pour leur naturalisme. \
+Après la mort de Jahangir en 1627, on perd peu à peu sa trace."""
+style = """
+Abu'l Hasan est un portraitiste d'une grande sûreté, capable de saisir la psychologie \
+d'un visage. Il a assimilé très tôt les leçons de la gravure européenne, qu'il fond \
+dans la tradition persane et indienne : modelé, globes, angelots, auréoles \
+rayonnantes. Ses allégories, riches de symboles, ont donné à l'art moghol une \
+dimension politique et visionnaire nouvelle."""
+
+[[artistes]]
+nom = "Govardhan"
+vie = "Inde moghole, actif vers 1596 – vers 1645"
+biographie = """
+Govardhan est un peintre hindou de la cour moghole, fils d'un peintre de l'atelier de \
+l'empereur Akbar. Il commence à travailler à la fin du XVIᵉ siècle, sous Akbar, en \
+participant à l'illustration de manuscrits historiques et littéraires. Il poursuit sa \
+carrière sous Jahangir, puis sous Shah Jahan, soit près d'un demi-siècle au service \
+des empereurs. Vers 1610, le peintre Daulat le représente, avec d'autres maîtres de \
+l'atelier impérial, dans un portrait de groupe des artistes de la cour. Govardhan se \
+distingue par ses portraits pleins de chaleur et surtout par ses images de saints \
+hommes, d'ascètes, de musiciens et de derviches, sujets qu'il traite avec une \
+sympathie particulière. Il peint aussi des scènes de cour et des portraits de \
+l'empereur et des princes, dont un célèbre double portrait de Shah Jahan et de son \
+fils Dara Shikoh. Plusieurs de ses œuvres sont conservées au musée Guimet à Paris. On \
+perd sa trace vers le milieu du XVIIᵉ siècle ; ses dates de naissance et de mort ne \
+sont pas connues."""
+style = """
+Govardhan est le peintre de la douceur et de l'intériorité. Son modelé, subtil, rend \
+la texture de la peau, la maigreur des ascètes, le poids des corps. Ses visages, \
+attentifs et graves, semblent toujours habités d'une pensée. Il compose des scènes \
+calmes, aux couleurs de terre, où la lumière et l'espace jouent un grand rôle, et \
+reste l'un des grands portraitistes de l'art moghol."""
