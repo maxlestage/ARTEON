@@ -128,6 +128,8 @@ impl Mosaic {
 #[derive(Clone, Copy, Debug)]
 pub struct Artwork {
     pub title: &'static str,
+    /// Le peintre, quand ce n'est pas celui de l'exposition : voir [`Artwork::artist_in`].
+    pub artist: Option<&'static str>,
     pub year: &'static str,
     /// Le chemin de l'image dans `public/tableaux/` (`van-gogh/iris.jpg`, servi à
     /// `/tableaux/van-gogh/iris.jpg`).
@@ -143,6 +145,11 @@ pub struct Artwork {
 }
 
 impl Artwork {
+    /// Le peintre de l'œuvre : le sien s'il est donné, sinon celui de l'exposition.
+    pub fn artist_in(&self, ex: &Exhibition) -> &'static str {
+        self.artist.unwrap_or(ex.artist)
+    }
+
     /// L'adresse de l'image, pour les pages.
     pub fn image_url(&self) -> String {
         format!("/tableaux/{}", self.image)

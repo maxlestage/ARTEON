@@ -131,7 +131,7 @@ pub fn attach(
                 let _ = image.set_attribute("src", &format!("{base}{}", art.image_url()));
                 let _ = image.set_attribute(
                     "alt",
-                    &format!("{}, {} ({})", art.title, ex.artist, art.year),
+                    &format!("{}, {} ({})", art.title, art.artist_in(ex), art.year),
                 );
             }
             if let Some(title) = find(&shell, "hd-title") {
@@ -166,7 +166,9 @@ pub fn attach(
             if let Some(meta) = find(&shell, "cap-meta") {
                 meta.set_text_content(Some(&format!(
                     "{} · {} · {}",
-                    ex.artist, art.year, art.collection
+                    art.artist_in(ex),
+                    art.year,
+                    art.collection
                 )));
             }
         }));

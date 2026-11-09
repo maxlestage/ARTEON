@@ -1,0 +1,133 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « KLIMT » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/klimt/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /klimt.
+#
+#  Pour ajouter une œuvre :
+#    1. déposer son image (JPEG ou PNG) dans public/tableaux/klimt/ ;
+#    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
+#  Au prochain push sur master, le site est reconstruit et republié tout seul.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 6
+nom_court = "Klimt"
+couleur = "#a8821c"
+titre = "Klimt, l'or et la vie"
+artiste = "Gustav Klimt"
+dates = "1862–1918"
+accroche = "Exposition virtuelle · Gustav Klimt"
+introduction = """
+Dans la Vienne de 1900, Gustav Klimt fonde la Sécession et couvre ses toiles \
+d'or, de spirales et de mosaïques. Le Baiser, Adele Bloch-Bauer, les allégories \
+de la vie et de la mort : sept toiles, des paysages du lac Attersee jusqu'aux \
+dernières grandes compositions."""
+vitrine = "baiser.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+
+[[salles]]
+nom = "Salle I · La Sécession"
+theme = "1900–1905 : les premiers paysages carrés et les grandes allégories de la vie."
+murs = "#eae5dc"
+
+[[salles]]
+nom = "Salle II · La période dorée"
+theme = "1907–1908 : la feuille d'or, les motifs byzantins et les portraits de la société viennoise."
+murs = "#e9e1cf"
+
+[[salles]]
+nom = "Salle III · Le Baiser et les dernières allégories"
+theme = "1907–1915 : la vie, la mort, et le Baiser au fond de la galerie."
+murs = "#e6e3ea"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Attersee"
+annee = "1900"
+image = "attersee.jpg"
+technique = "Huile sur toile, 80 × 80 cm"
+collection = "Leopold Museum, Vienne"
+note = "Rien que l'eau du lac, en touches turquoise : le premier de ses paysages carrés, presque abstrait."
+salle = 1
+mur = "gauche"
+place = 1
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Les Trois Âges de la femme"
+annee = "1905"
+image = "trois-ages.jpg"
+technique = "Huile sur toile, 180 × 180 cm"
+collection = "Galleria Nazionale d'Arte Moderna, Rome"
+note = "L'enfant, la mère et la vieille femme : une méditation sur le temps qui passe."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Adele Bloch-Bauer I"
+annee = "1907"
+image = "adele.jpg"
+technique = "Huile, argent et or sur toile, 138 × 138 cm"
+collection = "Neue Galerie, New York"
+note = "Le portrait d'or de la femme d'un industriel viennois, volé par les nazis puis rendu à ses héritiers en 2006."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 1.5
+
+[[oeuvres]]
+titre = "L'Espérance II"
+annee = "1907–1908"
+image = "esperance.jpg"
+technique = "Huile, or et platine sur toile, 110,5 × 110,5 cm"
+collection = "Museum of Modern Art, New York"
+note = "Une femme enceinte, les yeux baissés, enveloppée d'une robe de motifs : à ses pieds, des femmes en prière."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Mort et Vie"
+annee = "1910–1915"
+image = "mort-vie.jpg"
+technique = "Huile sur toile, 178 × 198 cm"
+collection = "Leopold Museum, Vienne"
+note = "À gauche, la mort en manteau de croix ; à droite, l'enchevêtrement des vivants, qui dorment sans la voir."
+salle = 3
+mur = "gauche"
+place = 1
+largeur = 1.8
+
+[[oeuvres]]
+titre = "La Vierge"
+annee = "1913"
+image = "la-vierge.jpg"
+technique = "Huile sur toile, 190 × 200 cm"
+collection = "Galerie nationale de Prague"
+note = "Des jeunes femmes endormies, emmêlées dans une spirale de tissus colorés : le rêve d'une jeune fille."
+salle = 3
+mur = "droite"
+place = 1
+largeur = 1.8
+
+[[oeuvres]]
+titre = "Le Baiser"
+annee = "1907–1908"
+image = "baiser.jpg"
+technique = "Huile et feuille d'or sur toile, 180 × 180 cm"
+collection = "Österreichische Galerie Belvedere, Vienne"
+note = "Deux amants enlacés au bord d'un pré fleuri, enveloppés d'or : l'œuvre la plus célèbre de Vienne."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 1.9

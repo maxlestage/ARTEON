@@ -1,0 +1,177 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « VERMEER ET REMBRANDT » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/vermeer-rembrandt/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /vermeer-rembrandt.
+#
+#  Une exposition à deux peintres : chaque œuvre précise son « artiste » (sinon,
+#  c'est celui de la section [exposition]).
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 7
+nom_court = "Vermeer & Rembrandt"
+couleur = "#7a5a2e"
+titre = "Vermeer et Rembrandt, le siècle d'or hollandais"
+artiste = "Vermeer et Rembrandt"
+dates = "XVIIᵉ siècle"
+accroche = "Exposition virtuelle · Vermeer et Rembrandt"
+introduction = """
+Deux géants de la peinture hollandaise du XVIIᵉ siècle : Rembrandt et son \
+clair-obscur dramatique, Vermeer et sa lumière tranquille qui entre par la \
+fenêtre. Dix toiles, de la Leçon d'anatomie à la Jeune Fille à la perle, jusqu'à \
+la Ronde de nuit au fond de la galerie."""
+vitrine = "jeune-fille-perle.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+
+[[salles]]
+nom = "Salle I · Rembrandt, le clair-obscur"
+theme = "1632–1668 : des visages qui surgissent de l'ombre, du portrait de groupe aux derniers autoportraits."
+murs = "#e4ddd2"
+
+[[salles]]
+nom = "Salle II · Vermeer, la lumière de Delft"
+theme = "Vers 1658–1668 : des intérieurs silencieux, une lumière douce venue de la gauche."
+murs = "#e3e6e8"
+
+[[salles]]
+nom = "Salle III · La Ronde de nuit"
+theme = "1642 : la compagnie du capitaine Banninck Cocq, l'immense toile du Rijksmuseum."
+murs = "#ddd2c9"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "La Leçon d'anatomie du docteur Tulp"
+artiste = "Rembrandt"
+annee = "1632"
+image = "lecon-anatomie.jpg"
+technique = "Huile sur toile, 169,5 × 216,5 cm"
+collection = "Mauritshuis, La Haye"
+note = "Rembrandt a 26 ans : sa première grande commande, un portrait de groupe saisi en pleine dissection."
+salle = 1
+mur = "gauche"
+place = 1
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Autoportrait"
+artiste = "Rembrandt"
+annee = "1659"
+image = "autoportrait-rembrandt.jpg"
+technique = "Huile sur toile, 84,5 × 66 cm"
+collection = "National Gallery of Art, Washington"
+note = "Ruiné, à 53 ans, Rembrandt se peint sans complaisance : un visage marqué, éclairé dans l'ombre."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Bethsabée au bain"
+artiste = "Rembrandt"
+annee = "1654"
+image = "bethsabee.jpg"
+technique = "Huile sur toile, 142 × 142 cm"
+collection = "Musée du Louvre, Paris"
+note = "Bethsabée tient la lettre du roi David : un nu pensif, peint d'après sa compagne Hendrickje."
+salle = 1
+mur = "gauche"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Le Retour du fils prodigue"
+artiste = "Rembrandt"
+annee = "vers 1668"
+image = "fils-prodigue.jpg"
+technique = "Huile sur toile, 262 × 205 cm"
+collection = "Musée de l'Ermitage, Saint-Pétersbourg"
+note = "Le père pose ses mains sur les épaules du fils agenouillé : l'une des dernières toiles, et des plus bouleversantes."
+salle = 1
+mur = "droite"
+place = 3
+largeur = 1.25
+
+[[oeuvres]]
+titre = "La Laitière"
+artiste = "Johannes Vermeer"
+annee = "vers 1658"
+image = "laitiere.jpg"
+technique = "Huile sur toile, 45,5 × 41 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une servante verse du lait, dans la lumière de la fenêtre : le pain semble saupoudré de points lumineux."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Vue de Delft"
+artiste = "Johannes Vermeer"
+annee = "vers 1660–1661"
+image = "vue-delft.jpg"
+technique = "Huile sur toile, 96,5 × 115,7 cm"
+collection = "Mauritshuis, La Haye"
+note = "Sa ville, vue de l'autre rive, sous un grand ciel : Proust la tenait pour le plus beau tableau du monde."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 1.6
+
+[[oeuvres]]
+titre = "La Jeune Fille à la perle"
+artiste = "Johannes Vermeer"
+annee = "vers 1665"
+image = "jeune-fille-perle.jpg"
+technique = "Huile sur toile, 44,5 × 39 cm"
+collection = "Mauritshuis, La Haye"
+note = "Un turban bleu, une perle, un regard par-dessus l'épaule : un visage imaginaire devenu l'un des plus célèbres."
+salle = 2
+mur = "gauche"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "L'Art de la peinture"
+artiste = "Johannes Vermeer"
+annee = "vers 1666–1668"
+image = "art-peinture.jpg"
+technique = "Huile sur toile, 120 × 100 cm"
+collection = "Kunsthistorisches Museum, Vienne"
+note = "Un peintre de dos peint la muse de l'Histoire : Vermeer garda ce tableau toute sa vie."
+salle = 2
+mur = "gauche"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "L'Astronome"
+artiste = "Johannes Vermeer"
+annee = "1668"
+image = "astronome.jpg"
+technique = "Huile sur toile, 51 × 45 cm"
+collection = "Musée du Louvre, Paris"
+note = "Un savant tend la main vers un globe céleste, dans la lumière de la fenêtre."
+salle = 2
+mur = "droite"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "La Ronde de nuit"
+artiste = "Rembrandt"
+annee = "1642"
+image = "ronde-nuit.jpg"
+technique = "Huile sur toile, 379,5 × 453,5 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "La milice du capitaine Banninck Cocq se met en marche : un portrait de groupe devenu une scène de théâtre."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 2.6

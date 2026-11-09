@@ -34,6 +34,26 @@ fn nav_link(href: String, label: &'static str, current: &str) -> Element {
     }
 }
 
+/// Le menu déroulant des expositions (`<details>` : il s'ouvre sans JavaScript).
+fn exhibitions_menu(current: &str) -> Element {
+    let inside = EXHIBITIONS.iter().any(|ex| {
+        let href = format!("/{}", ex.slug);
+        current == href || current.starts_with(&format!("{href}/"))
+    });
+    let summary = summary().text("Expositions");
+    details()
+        .class("nav-menu")
+        .child(if inside {
+            summary.class("current")
+        } else {
+            summary
+        })
+        .child(ul().children(EXHIBITIONS.iter().map(|ex| {
+            li().child(nav_link(format!("/{}", ex.slug), ex.short_name, current))
+                .child(span().class("nav-artist").text(ex.artist_dates))
+        })))
+}
+
 /// Le logo : un petit soleil sur un ciel bleu, puis le nom.
 fn logo() -> Element {
     a().href("/")
@@ -77,11 +97,7 @@ fn layout(
             header().class("site-header").id("top").child(logo()).child(
                 nav()
                     .child(nav_link("/".into(), "Accueil", current))
-                    .children(
-                        EXHIBITIONS
-                            .iter()
-                            .map(|ex| nav_link(format!("/{}", ex.slug), ex.short_name, current)),
-                    )
+                    .child(exhibitions_menu(current))
                     .child(
                         nav_link("/ajouter".into(), "Ajouter", current)
                             .child(span().class("nav-long").text(" une œuvre")),
@@ -115,7 +131,11 @@ fn site_footer() -> Element {
                 span()
                     .class("marquee-item")
                     .child(strong().text(art.title))
-                    .child(span().text(format!(" · {}, {}", ex.short_name, art.year)))
+                    .child(span().text(format!(
+                        " · {}, {}",
+                        art.artist.unwrap_or(ex.short_name),
+                        art.year
+                    )))
             })
         })
     };
@@ -189,7 +209,7 @@ fn picture(ex: &Exhibition, art: &Artwork, lazy: bool) -> Element {
         .attr("src", art.image_url())
         .attr(
             "alt",
-            format!("{}, {} ({})", art.title, ex.artist, art.year),
+            format!("{}, {} ({})", art.title, art.artist_in(ex), art.year),
         )
         .attr("decoding", "async")
         .style(format!("aspect-ratio:{:.4}", art.width / art.height));
@@ -226,7 +246,7 @@ fn artwork_card(ex: &Exhibition, art: &Artwork, index: usize) -> Element {
         .child(div().class("frame").child(picture(ex, art, true)))
         .child(h3().text(art.title))
         .child(
-            p().child(strong().text(ex.artist))
+            p().child(strong().text(art.artist_in(ex)))
                 .child(span().class("muted").text(format!(" · {}", art.year))),
         )
         .child(
