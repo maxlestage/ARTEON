@@ -1,0 +1,1014 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « TRÉSORS DE LA TERRE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/tresors-de-la-terre/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /tresors-de-la-terre.
+#
+#  Ici, l'« artiste » est la nature : le champ artiste nomme le lieu de
+#  découverte ou la formation géologique, et chaque bloc [[artistes]] présente
+#  ce lieu et son époque. Les objets sont montrés en vitrine (cadre = « vitrine ») ;
+#  la photographie ancienne du diplodocus a un cadre noir. Les images viennent
+#  de Wikimedia Commons : domaine public, CC0, ou licences CC BY / CC BY-SA, dont
+#  l'auteur est crédité dans le bloc de l'œuvre.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 300
+nom_court = "Trésors de la Terre"
+mouvement = "Histoire naturelle : minéraux, fossiles et météorites"
+cadre = "vitrine"
+couleur = "#5b4b78"
+titre = "Trésors de la Terre, minéraux, fossiles et météorites"
+artiste = "Golconde, le Mont-Blanc, Solnhofen, Whitby, la mer Baltique, Gibeon…"
+dates = "Il y a 4,5 milliards d'années – aujourd'hui"
+accroche = "Exposition virtuelle · Muséum national d'Histoire naturelle, Paris"
+introduction = """
+Ici, l'artiste est la nature, et chaque œuvre porte le nom du lieu qui l'a livrée : \
+les mines de Golconde, les fissures du Mont-Blanc, les carrières de Solnhofen, les \
+falaises de Whitby, les plages de la Baltique. La visite réunit dix trésors, d'une \
+météorite plus ancienne que la Terre au diamant Hope, d'un trilobite de plus de 500 \
+millions d'années à l'archéoptéryx, mi-oiseau, mi-dinosaure. Le bâtiment s'inspire du \
+Muséum national d'Histoire naturelle, au Jardin des Plantes de Paris : une haute nef \
+sous verrière, comme celle de la Grande Galerie de l'Évolution, ouvre à l'ouest sur \
+une galerie de minéralogie et à l'est sur la salle des mers anciennes. Chaque objet y \
+est présenté dans une vitrine profonde, souvent agrandi pour que l'œil en saisisse les \
+détails."""
+vitrine = "diamant-hope.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Grande Galerie de l'Évolution"
+ville = "Paris, France (Jardin des Plantes)"
+architecte = "Jules André ; rénovation : Paul Chemetov et Borja Huidobro"
+construction = "1877–1889 ; rouverte en 1994"
+presentation = """
+Le Muséum national d'Histoire naturelle naît en 1793 dans l'ancien Jardin royal des \
+plantes médicinales, fondé au XVIIᵉ siècle sur la rive gauche de la Seine. Pour ses \
+collections de zoologie, l'architecte Jules André élève, de 1877 à 1889, une vaste \
+galerie : une nef couverte d'une immense verrière, bordée de balcons superposés portés \
+par des colonnes de fonte. Fermée en 1965, faute d'entretien, elle est rénovée par \
+Paul Chemetov et Borja Huidobro et rouvre en 1994 sous le nom de Grande Galerie de \
+l'Évolution. Dans la nef, une caravane d'animaux naturalisés de la savane africaine \
+défile sous une lumière qui varie comme celle du ciel. Le jardin compte d'autres \
+galeries : celle de Minéralogie et de Géologie, bâtie sous la monarchie de Juillet par \
+Charles Rohault de Fleury, qui expose météorites, gemmes et cristaux géants, et celle \
+de Paléontologie et d'Anatomie comparée, ouverte en 1898, où se dresse toujours le \
+diplodocus offert par Andrew Carnegie en 1908."""
+ici = """
+Le bâtiment d'ARTEON réunit en un seul édifice les galeries du Jardin des Plantes. On \
+entre par le sud dans le vestibule, couleur de pierre, où attend une météorite. Il \
+ouvre au nord sur la grande nef, longue de 24 mètres et haute de 14, comme la nef sous \
+verrière de la Grande Galerie de l'Évolution. À l'ouest, une porte mène à la galerie \
+de Minéralogie, plus basse, aux murs gris perle, où brillent les gemmes et les \
+cristaux. À l'est, la salle des mers anciennes, d'un vert d'eau pâle, rassemble \
+trilobite, ammonite et nautile. On revient enfin dans la nef, où attendent le \
+diplodocus, l'archéoptéryx et l'ambre."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Muséum national d'Histoire naturelle, au Jardin des Plantes de Paris :
+# une haute nef centrale, comme celle, sous verrière, de la Grande Galerie de
+# l'Évolution, ouvre à l'ouest sur une galerie de minéralogie plus basse (qui
+# évoque la galerie de Minéralogie et de Géologie) et à l'est sur la salle des
+# mers anciennes. On entre par le vestibule, au sud. x et z : le centre de la
+# salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul
+# côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, où une tranche de météorite rappelle que la Terre est née, comme elle, il y a 4,5 milliards d'années."
+murs = "#e6dfd2"
+x = 0
+z = 0
+largeur = 12
+profondeur = 6
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La grande nef"
+theme = "La vie sur la terre ferme au Jurassique et à l'Éocène : le diplodocus de Carnegie, l'archéoptéryx et un insecte pris dans l'ambre."
+murs = "#e3dccb"
+x = 0
+z = -15
+largeur = 13
+profondeur = 24
+hauteur = 14
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "La galerie de Minéralogie"
+theme = "Les trésors minéraux : le diamant Hope, une fluorite rose du Mont-Blanc et une géode d'améthyste du Brésil."
+murs = "#dcd8d2"
+x = -15
+z = -15
+largeur = 17
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "Les mers anciennes"
+theme = "La vie dans les océans, du trilobite du Cambrien à l'ammonite du Jurassique et au nautile d'aujourd'hui."
+murs = "#d3e0da"
+x = 13
+z = -15
+largeur = 13
+profondeur = 10
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Tranche de la météorite de Gibeon"
+artiste = "Gibeon, Namibie"
+annee = "Formée il y a environ 4,5 milliards d'années"
+image = "meteorite-gibeon.jpg"
+credit = "Photo : Kevin Walsh"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg"
+technique = "Fer météoritique (alliage de fer et de nickel), octaédrite fine du groupe IVA ; tranche sciée, polie et attaquée à l'acide"
+collection = "Collection non précisée (photographie de Kevin Walsh, 2002)"
+note = "Une tranche de fer tombé du ciel, sciée, polie puis attaquée à l'acide : apparaît alors un entrelacs de lames métalliques, les figures de Widmanstätten, qui ne se forment qu'au cœur d'un astéroïde."
+description = """
+Sur un fond noir se détache une plaque de métal au contour irrégulier, découpée à la \
+scie dans un bloc plus grand. Sa surface, d'un gris argenté, n'est pas lisse : elle \
+est entièrement couverte d'un réseau de bandes droites et étroites, qui se croisent \
+selon trois ou quatre directions. Elles dessinent des triangles, des losanges et des \
+parallélogrammes, comme les fils tirés d'un tissu ou les brindilles d'un fagot. \
+Certaines bandes brillent, d'autres paraissent plus sombres selon la manière dont \
+elles renvoient la lumière ; les petits espaces qu'elles enferment ont une texture \
+plus fine, presque granuleuse. Sur les bords, la tranche s'effrange en pointes et en \
+échancrures, là où passait la surface brute de la météorite."""
+evocation = """
+Ce dessin géométrique est l'archive d'un monde disparu. Il y a environ 4,5 milliards \
+d'années, à la naissance du système solaire, de petites planètes se forment autour du \
+jeune Soleil ; dans certaines, le métal fondu tombe au centre et forme un noyau. Les \
+figures de Widmanstätten ne naissent que si ce métal refroidit avec une extrême \
+lenteur, de quelques degrés par million d'années, dans un corps enfoui sous des \
+kilomètres de roche. Une collision a ensuite brisé cet astéroïde, et l'un de ses \
+fragments a fini par croiser la route de la Terre. Toucher une telle tranche, c'est \
+toucher le cœur d'un astre, que nul forage ne permettra jamais d'atteindre sur notre \
+propre planète."""
+histoire = """
+Les météorites de Gibeon sont tombées bien avant l'histoire écrite, en une pluie de \
+fragments dispersés sur des centaines de kilomètres dans le sud de la Namibie, autour \
+de la petite ville de Gibeon qui leur a donné son nom. Les Nama, qui vivent dans la \
+région, en tiraient du fer pour fabriquer des outils et des pointes d'armes. Les \
+Européens les découvrent au XIXᵉ siècle : dans les années 1830, des échantillons \
+rapportés par un explorateur britannique sont reconnus à Londres comme du fer venu de \
+l'espace. Des centaines de masses, de quelques grammes à plusieurs centaines de kilos, \
+ont été recueillies depuis. La Namibie les protège aujourd'hui comme un patrimoine \
+national, et une trentaine des plus grosses sont exposées en plein air, sur une place \
+de la capitale, Windhoek."""
+facture = """
+Le fer de Gibeon contient environ 8 % de nickel. En refroidissant, il s'est séparé en \
+deux alliages : la kamacite, pauvre en nickel, en larges lames, et la taénite, plus \
+riche, en minces liserés. Pour les révéler, on scie la météorite, on polit la tranche \
+comme un miroir, puis on l'attaque avec un acide dilué, qui ronge les deux métaux à \
+des vitesses différentes. Les lames s'orientent selon les faces d'un octaèdre : d'où \
+le nom d'octaédrite. Celles de Gibeon sont très étroites, moins d'un demi-millimètre, \
+ce qui la classe parmi les octaédrites fines."""
+details = [
+  "Les bandes parallèles qui reviennent selon trois ou quatre directions seulement.",
+  "Les petits triangles entre les lames, remplis d'une texture plus fine.",
+  "Le contraste entre lames brillantes et lames mates, qui change avec la lumière.",
+  "Le contour déchiqueté, qui suit la forme du bloc d'origine.",
+]
+themes = ["météorite", "espace", "fer", "cristal", "système solaire"]
+anecdote = """
+On parle de « figures de Widmanstätten », du nom du comte autrichien Alois von \
+Beckh-Widmanstätten, qui les observa à Vienne en 1808. Mais le Britannique William \
+Thomson les avait déjà décrites quelques années plus tôt, à Naples : on les appelle \
+parfois, pour cette raison, « structures de Thomson »."""
+salle = 1
+mur = "est"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Le diamant Hope"
+artiste = "Mines de Golconde, Inde"
+annee = "Diamant indien connu dès le XVIIᵉ siècle ; taille actuelle attestée en 1812 ; photographie de 1974"
+image = "diamant-hope.jpg"
+credit = "Photo : Smithsonian Institution Archives"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Hope_Diamond_-_SIA.jpg"
+technique = "Diamant bleu de 45,52 carats (25,6 × 21,8 mm), serti dans un pendentif entouré de seize diamants blancs"
+collection = "National Museum of Natural History, Smithsonian Institution, Washington"
+note = "Le plus célèbre diamant bleu du monde : 45,52 carats pour un peu plus de 2,5 cm de long, montré ici très agrandi. Il a été taillé dans le « Bleu de France » de Louis XIV, volé en 1792."
+description = """
+Au centre d'un pendentif, une pierre ovale d'un bleu profond, presque noir dans ses \
+parties sombres, renvoie la lumière par ses facettes : des triangles et des losanges \
+plus clairs, d'un bleu d'acier, s'allument à sa surface. Son contour n'est pas tout à \
+fait régulier, légèrement renflé d'un côté. Autour d'elle, une couronne de seize \
+diamants incolores, taillés les uns en poire, les autres en coussin, scintille de \
+reflets blancs et violets. En haut, une bélière relie le bijou à une chaîne de \
+diamants, floue à l'arrière-plan ; en bas pend un petit anneau. La photographie, prise \
+en 1974 par les services du Smithsonian, montre le joyau posé sur un fond de tissu \
+gris-bleu."""
+evocation = """
+Peu de pierres ont autant fait rêver. Le diamant Hope résume trois siècles d'histoire \
+: la splendeur de Louis XIV, la chute de la monarchie, la fortune des banquiers et des \
+héritières américaines. Les journaux du début du XXᵉ siècle lui ont inventé une \
+malédiction, qui aurait frappé tous ses propriétaires ; on pense qu'elle a été \
+entretenue par les marchands eux-mêmes, pour rendre la pierre plus désirable. Il \
+incarne aussi une idée démocratique : le diamant le plus célèbre du monde appartient \
+aujourd'hui au public et se regarde gratuitement, dans un musée national. Enfin, il \
+pose une énigme de physique : un diamant est du carbone pur, et sa couleur bleue tient \
+à quelques atomes étrangers seulement."""
+histoire = """
+En 1668, le marchand français Jean-Baptiste Tavernier vend à Louis XIV un grand \
+diamant bleu acheté en Inde, de plus de 110 carats. En 1673, le joaillier de la cour, \
+Jean Pittan, le retaille en une pierre d'environ 69 carats, le « Bleu de France ». \
+Louis XV le fait monter en 1749 dans un insigne de l'ordre de la Toison d'or. En \
+septembre 1792, il est volé avec les joyaux de la Couronne au Garde-Meuble, à Paris. \
+Une pierre bleue de 45 carats réapparaît à Londres en 1812, puis entre dans la \
+collection du banquier Henry Philip Hope, dont elle garde le nom. Pierre Cartier la \
+vend en 1911 à Evalyn Walsh McLean ; après sa mort, Harry Winston l'achète et l'offre \
+au Smithsonian en 1958. En 2007, un moulage en plomb du Bleu de France, retrouvé au \
+Muséum à Paris, a confirmé que le Hope en était issu."""
+facture = """
+Le diamant Hope est taillé en coussin, avec une couronne de facettes au-dessus et un \
+pavillon plus profond au-dessous, qui renvoie la lumière vers l'œil. Sa couleur vient \
+de traces de bore, quelques atomes pour un million d'atomes de carbone : elles \
+absorbent une partie de la lumière rouge et jaune et ne laissent passer que le bleu. \
+C'est un diamant dit de type IIb, une catégorie très rare. Il a une autre propriété \
+étonnante : éclairé par des rayons ultraviolets, puis replongé dans le noir, il luit \
+quelques secondes d'une lueur rouge orangé. Le bijou qui l'entoure, une monture de \
+seize diamants blancs et une chaîne de quarante-cinq diamants, met en valeur sa \
+couleur sombre."""
+details = [
+  "Le contour un peu dissymétrique de la pierre bleue.",
+  "Les facettes du pavillon, qui s'éclairent en triangles d'un bleu plus clair.",
+  "Les seize diamants blancs, où alternent tailles en poire et en coussin.",
+  "La bélière, en haut, qui rattache le pendentif à la chaîne.",
+]
+themes = ["diamant", "bleu", "louis xiv", "légende", "gemme"]
+anecdote = """
+En 1958, Harry Winston envoya le diamant au Smithsonian par la poste, en recommandé, \
+dans un simple paquet de papier kraft assuré pour un million de dollars. L'emballage, \
+avec ses timbres et son cachet, est aujourd'hui conservé au musée national de la \
+Poste, à Washington."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Fluorite rose sur quartz fumé"
+artiste = "Massif du Mont-Blanc, France"
+annee = "Cristallisée dans une fissure du granite, pendant le soulèvement des Alpes"
+image = "fluorite-aiguille-verte.jpg"
+credit = "Photo : Marie-Lan Taÿ Pamart"
+licence = "CC BY 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Fluorite_on_smoky_quartz_Aiguille_Verte_MNHN_Minéralogie.jpg"
+technique = "Fluorite (fluorure de calcium) en octaèdres, sur un cristal de quartz fumé ; provenant de l'Aiguille Verte (Haute-Savoie)"
+collection = "Galerie de Minéralogie et de Géologie, Muséum national d'Histoire naturelle, Paris"
+note = "Des octaèdres de fluorite rose orangé posés sur un cristal de quartz fumé : l'un des trésors des fissures à cristaux du massif du Mont-Blanc, recueilli sur l'Aiguille Verte."
+description = """
+Un amas de cristaux rose saumon, presque orangés, s'accroche à un cristal plus sombre, \
+gris-brun, qui se dresse en haut de la composition : un quartz fumé, dont on voit la \
+face plate et la pointe. Les cristaux roses ont des faces triangulaires bien nettes ; \
+plusieurs sont des octaèdres presque parfaits, comme deux pyramides collées par leur \
+base. Ils s'empilent et se chevauchent, de tailles diverses, les plus gros au centre, \
+les plus petits en grappe sur les bords. Leur surface n'est pas polie : elle paraît \
+givrée, finement striée ou creusée de petites marches. Traversés par la lumière de la \
+vitrine, les bords des cristaux deviennent translucides et s'éclairent d'un rose plus \
+vif sur le socle gris pâle."""
+evocation = """
+Cet objet raconte la haute montagne. Il vient d'une fissure du granite, à plusieurs \
+milliers de mètres d'altitude, où il a fallu grimper, creuser et redescendre avec la \
+pierre sur le dos. Pour les cristalliers de Chamonix, la fluorite rose est le plus \
+beau trésor du massif, bien plus rare que le quartz. Sa géométrie fascine aussi : \
+l'octaèdre, aux huit faces triangulaires égales, est l'un des cinq solides réguliers \
+que Platon associait aux éléments du monde, et la nature le produit ici sans l'aide \
+d'aucune main. Le contraste entre le rose tendre et le quartz sombre, enfin, a quelque \
+chose d'une composition de peintre, comme une fleur posée sur un rocher."""
+histoire = """
+L'Aiguille Verte, haute de 4 122 mètres, domine la vallée de Chamonix ; l'Anglais \
+Edward Whymper en fait la première ascension en 1865, avec deux guides suisses. Bien \
+avant les alpinistes, des chasseurs de cristaux, les cristalliers, parcouraient déjà \
+les glaciers et les parois du massif à la recherche des « fours » : des cavités du \
+granite tapissées de quartz, que l'on repère à une veine blanche dans la roche. Les \
+fluorites roses y sont rares et recherchées. Ce spécimen appartient aux collections du \
+Muséum national d'Histoire naturelle et il est exposé dans sa galerie de Minéralogie \
+et de Géologie, au Jardin des Plantes, aux côtés d'autres minéraux des Alpes \
+françaises."""
+facture = """
+La fluorite est un fluorure de calcium. Dans les fissures des Alpes, elle cristallise \
+souvent en octaèdres plutôt qu'en cubes. Sa couleur rose, rare, est attribuée à de \
+minuscules défauts de l'édifice cristallin, liés à des traces de terres rares et à la \
+radioactivité naturelle du granite. Le quartz fumé doit, lui aussi, sa teinte brune à \
+cette radioactivité, qui agit sur des traces d'aluminium. Les deux minéraux ont grandi \
+lentement dans des eaux chaudes chargées d'éléments dissous qui circulaient dans la \
+roche fissurée, pendant que la chaîne des Alpes se soulevait."""
+details = [
+  "Les faces triangulaires des octaèdres roses, nettes comme des facettes taillées.",
+  "La surface givrée et striée des cristaux, qui n'a jamais été polie.",
+  "Le cristal de quartz fumé, gris-brun, qui sert de support à l'ensemble.",
+  "Les bords translucides où la lumière fait virer le rose à l'orangé.",
+]
+themes = ["minéral", "cristal", "montagne", "alpes", "couleur"]
+anecdote = """
+La fluorite a donné son nom à la fluorescence. En 1852, le physicien britannique \
+George Gabriel Stokes forge ce mot en étudiant la lueur que certaines fluorites \
+émettent lorsqu'on les éclaire de lumière ultraviolette."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Géode d'améthyste"
+artiste = "Coulées de lave de la Serra Geral, Brésil"
+annee = "Début du Crétacé, il y a environ 130 millions d'années"
+image = "geode-amethyste.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Amethyst_geode_(Serra_Geral_Formation,_Lower_Cretaceous;_southeastern_Brazil)_1_(32934451701).jpg"
+technique = "Quartz (variété améthyste) et calcédoine, dans une cavité d'une coulée de basalte"
+collection = "Mineral Museum, Montana Bureau of Mines and Geology, Butte (Montana)"
+note = "Une bulle de gaz prisonnière d'une coulée de lave, tapissée peu à peu de milliers de cristaux violets : les géodes d'améthyste du sud du Brésil comptent parmi les plus grandes du monde."
+description = """
+La géode a été ouverte et se présente comme un grand ovale creux, couché sur son \
+socle. À l'extérieur, une croûte de roche d'un gris verdâtre forme la coquille. Juste \
+à l'intérieur court une bordure blanche et grise, lisse, comme un liseré de \
+porcelaine. Puis viennent les cristaux : des milliers de petites pyramides serrées, \
+pointées vers le centre, d'un violet pâle près du bord, de plus en plus sombre vers le \
+fond de la cavité, où certaines zones paraissent grises ou presque noires. En haut à \
+droite, un petit groupe de cristaux blancs et brillants, sans doute de la calcite, se \
+détache sur le violet. La lumière accroche les pointes et fait scintiller toute la \
+paroi."""
+evocation = """
+La géode est le trésor caché par excellence : une pierre banale et grise au-dehors, \
+une grotte de cristaux au-dedans. Elle a nourri les légendes de cavernes merveilleuses \
+et de pierres qui renferment un monde. Sa couleur, le violet, a longtemps été celle du \
+pouvoir et de l'Église : les évêques portaient une bague d'améthyste. Mais la géode \
+dit surtout le temps : chaque cristal a grandi atome par atome, à partir d'une eau qui \
+suintait dans la lave refroidie, pendant des durées qui dépassent l'imagination. Elle \
+rappelle aussi que la beauté minérale naît parfois des cataclysmes : ici, de l'une des \
+plus grandes éruptions de l'histoire de la Terre."""
+histoire = """
+Il y a environ 130 millions d'années, quand l'Amérique du Sud et l'Afrique commencent \
+à se séparer, d'immenses coulées de basalte se répandent sur le sud du continent, en \
+couches successives qui forment aujourd'hui la Serra Geral. Dans la lave encore \
+liquide, des bulles de gaz restent piégées ; bien plus tard, des eaux chargées de \
+silice s'y infiltrent et les remplissent de cristaux. Dans l'État du Rio Grande do \
+Sul, au Brésil, et dans la région voisine d'Artigas, en Uruguay, des mineurs suivent \
+la couche de lave riche en géodes en creusant des galeries à flanc de colline. Les \
+géodes, dégagées au marteau-piqueur, sont sciées et vendues dans le monde entier. \
+Celle-ci est exposée au musée de minéralogie de Butte, dans le Montana."""
+facture = """
+La croissance suit un ordre précis. Les eaux qui circulent dans la cavité déposent \
+d'abord une mince couche de calcédoine, une silice aux cristaux invisibles à l'œil nu \
+: c'est la bordure blanche. Puis le quartz cristallise en prismes dont seule la pointe \
+dépasse, toutes tournées vers le vide central. La couleur de l'améthyste vient de \
+traces de fer, transformées par la radioactivité naturelle des roches. Elle est \
+fragile : chauffée à quelques centaines de degrés, l'améthyste devient jaune orangé, \
+et une grande partie des « citrines » vendues en joaillerie sont des améthystes \
+chauffées."""
+details = [
+  "La croûte de basalte gris-vert, qui formait la paroi de la bulle de gaz.",
+  "Le liseré blanc de calcédoine, première couche déposée dans la cavité.",
+  "Les pointes des cristaux, toutes dirigées vers le centre.",
+  "Le petit groupe de cristaux blancs, en haut à droite.",
+  "Le violet qui s'assombrit vers le fond de la géode.",
+]
+themes = ["minéral", "géode", "cristal", "violet", "volcan"]
+anecdote = """
+Le mot améthyste vient du grec amethystos, « qui n'est pas ivre ». Les Grecs croyaient \
+que cette pierre protégeait de l'ivresse, et l'on raconte qu'ils buvaient le vin dans \
+des coupes d'améthyste."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Trilobite Elrathia kingii"
+artiste = "Schistes de Wheeler, Utah"
+annee = "Cambrien moyen, il y a un peu plus de 500 millions d'années"
+image = "trilobite-elrathia.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Elrathia_kingii_(fossil_trilobite)_(Wheeler_Formation,_Middle_Cambrian;_House_Range,_western_Utah,_USA)_3.jpg"
+technique = "Carapace fossilisée (calcite) dans un schiste argileux ; environ 2,6 cm de large"
+collection = "Collection non précisée (photographie de James St. John)"
+note = "Large d'à peine 2,6 cm, montré ici très agrandi, ce trilobite vivait sur le fond d'une mer du Cambrien, il y a plus de 500 millions d'années. C'est l'un des fossiles les plus répandus au monde."
+description = """
+Sur la pierre grise, un petit animal ovale, d'un noir brillant, semble encore posé sur \
+le fond de la mer. Son corps se divise en trois bandes dans la longueur : un axe \
+central bombé et deux lobes latéraux plus plats, d'où le nom de trilobite, « à trois \
+lobes ». En haut, la tête forme un large croissant ; en son milieu se dresse un \
+renflement allongé, la glabelle. Le corps est fait d'une douzaine d'anneaux articulés, \
+serrés comme les lames d'une armure, qui se terminent de chaque côté par une pointe \
+arrondie. En bas, une petite queue en forme de bouclier ferme l'ensemble. La carapace, \
+noire, se détache nettement sur la roche plus claire, légèrement fendillée."""
+evocation = """
+Le trilobite est l'un des premiers grands succès de la vie animale. Il apparaît au \
+Cambrien, au moment où les océans se peuplent d'une diversité soudaine de formes, et \
+il fut l'un des premiers animaux à posséder de vrais yeux. Les trilobites ont vécu \
+près de 270 millions d'années avant de disparaître lors de la grande extinction de la \
+fin du Permien. Celui-ci n'a rien d'exceptionnel : ni épines, ni yeux géants. Les \
+paléontologues américains le surnomment avec affection « Joe Trilobite », le trilobite \
+ordinaire. C'est précisément ce qui le rend émouvant : il donne à voir la vie \
+quotidienne d'un fond marin, plus de deux cents millions d'années avant les premiers \
+dinosaures."""
+histoire = """
+Elrathia kingii a été décrit en 1870 par le paléontologue américain Fielding Meek, qui \
+lui donna le nom de Clarence King, le géologue qui dirigeait alors le relevé du 40ᵉ \
+parallèle à travers l'Ouest américain. Il provient des schistes de Wheeler, dans les \
+monts de la House Range, à l'ouest de l'Utah. Les carrières de la région en ont livré \
+des quantités considérables : des exploitants fendent la roche en plaques et en \
+extraient des milliers de spécimens chaque année. C'est pourquoi Elrathia est le \
+trilobite que l'on trouve le plus souvent dans les boutiques de fossiles et les \
+collections d'amateurs du monde entier. Ce spécimen a été photographié par le géologue \
+James St. John."""
+facture = """
+Comme les insectes et les crabes, les trilobites étaient des arthropodes : leur corps \
+était protégé par une carapace articulée, renforcée de calcite, qu'ils devaient \
+abandonner pour grandir. Beaucoup de fossiles sont d'ailleurs des mues, et non des \
+animaux morts. Seule cette carapace minéralisée s'est conservée ; les pattes, les \
+antennes et les branchies ont disparu. Dans les schistes de Wheeler, une boue fine \
+déposée dans une eau calme et pauvre en oxygène a recouvert les carapaces sans les \
+disperser. La roche se fend selon ses couches et révèle le fossile intact, souvent \
+d'un noir qui tranche sur le gris du schiste."""
+details = [
+  "Les trois lobes dans la longueur du corps, qui ont donné son nom au groupe.",
+  "La glabelle, le renflement allongé au milieu de la tête.",
+  "Les anneaux articulés du thorax, terminés par des pointes arrondies.",
+  "La petite queue en bouclier, au bas du fossile.",
+]
+themes = ["fossile", "cambrien", "mer", "trilobite", "arthropode"]
+anecdote = """
+Selon des témoignages recueillis au XXᵉ siècle, les Utes de l'Utah portaient des \
+trilobites en amulette, pour se protéger de la maladie. Le nom qu'ils leur donnaient \
+évoquait de petits insectes d'eau logés dans une maison de pierre."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Ammonite Dactylioceras commune"
+artiste = "Falaises de Whitby, Angleterre"
+annee = "Jurassique inférieur, il y a environ 180 millions d'années"
+image = "ammonite-whitby.jpg"
+credit = "Photo : Fred Cherrygarden"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Dactylioceras_commune.jpg"
+technique = "Coquille fossilisée dans une roche argileuse ; 7 cm de diamètre"
+collection = "Collection particulière (collection Cherrygarden)"
+note = "Une ammonite de 7 cm, montrée ici agrandie, trouvée à Whitby, sur la côte du Yorkshire. Ces coquilles enroulées étaient pour les habitants des serpents changés en pierre."
+description = """
+Une coquille enroulée en spirale plate, d'un gris anthracite, se détache sur un fond \
+blanc. On compte plusieurs tours, de plus en plus larges du centre vers l'extérieur, \
+emboîtés les uns dans les autres comme une corde lovée. Chaque tour est orné de côtes \
+fines et serrées, régulières comme les dents d'un peigne, qui rayonnent du centre vers \
+le bord ; près de l'extérieur, elles se dédoublent. Le centre de la spirale, \
+minuscule, forme un petit creux. À droite, la coquille disparaît en partie dans la \
+roche qui l'enveloppe encore, une gangue grise et lisse ; en bas, le dernier tour, \
+plus usé, laisse voir le relief des côtes vu de profil."""
+evocation = """
+L'ammonite est l'une des formes les plus familières de la paléontologie, et l'une des \
+plus mystérieuses pour ceux qui la trouvaient sans la comprendre. Sa spirale a évoqué \
+un serpent enroulé, une corne de bélier, une roue. Pour les géologues, elle est aussi \
+une horloge : les espèces d'ammonites se sont succédé si vite et ont été si répandues \
+qu'elles permettent de dater les roches à moins d'un million d'années près. Leur \
+disparition, il y a 66 millions d'années, en même temps que celle des grands \
+dinosaures, rappelle enfin la fragilité des groupes les plus prospères : les ammonites \
+avaient peuplé les mers pendant plus de trois cents millions d'années."""
+histoire = """
+Les falaises de Whitby, sur la côte du Yorkshire du Nord, livrent des ammonites depuis \
+des siècles : les tempêtes et les éboulements les détachent de la roche, et on les \
+ramasse sur la plage. Une légende les rattache à sainte Hilda, l'abbesse qui fonda au \
+VIIᵉ siècle l'abbaye de Whitby : elle aurait changé en pierre les serpents qui \
+infestaient le lieu. Les marchands sculptaient parfois une tête de serpent au bout de \
+la spirale pour vendre ces « pierres de serpent » aux visiteurs, et trois ammonites \
+figurent sur les armoiries de la ville. Ce spécimen, trouvé à Whitby, appartient à une \
+collection privée et a été photographié par son propriétaire."""
+facture = """
+L'ammonite était un mollusque céphalopode, cousin des pieuvres, des seiches et du \
+nautile. Sa coquille était divisée en loges par des cloisons ; l'animal vivait dans la \
+dernière, la plus grande, et réglait sa flottaison en remplissant les autres de gaz ou \
+de liquide. Le nom Dactylioceras signifie à peu près « corne en anneaux » : il fait \
+allusion aux côtes serrées qui cerclent chaque tour. À Whitby, les ammonites sont \
+souvent conservées dans des nodules, des boules de roche plus dure formées autour \
+d'elles dans la boue du fond marin, qui les ont protégées de l'écrasement."""
+details = [
+  "Les côtes serrées qui rayonnent sur chaque tour de spire.",
+  "Le dédoublement des côtes près du bord extérieur.",
+  "Le minuscule creux du centre, là où l'animal a commencé sa coquille.",
+  "La gangue de roche grise, encore attachée sur la droite.",
+]
+themes = ["fossile", "jurassique", "mer", "spirale", "légende"]
+anecdote = """
+Le mot ammonite vient du dieu égyptien Amon, représenté avec des cornes de bélier. \
+L'écrivain romain Pline l'Ancien appelait ces fossiles « cornes d'Ammon », à cause de \
+leur ressemblance avec une corne enroulée."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Coquille de nautile, en coupe"
+artiste = "Récifs de l'Indo-Pacifique"
+annee = "Espèce actuelle, d'une lignée vieille de près de 500 millions d'années"
+image = "nautile.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_(YPM_IZ_047418).jpeg"
+technique = "Coquille de Nautilus pompilius sciée en deux (aragonite et nacre) ; environ 18 cm"
+collection = "Yale Peabody Museum, New Haven (Connecticut)"
+note = "Une coquille de nautile sciée en deux, longue d'environ 18 cm : ses loges successives dessinent une spirale parfaite, et la grande chambre où vivait l'animal brille de nacre."
+description = """
+La coquille, coupée en deux dans sa longueur, se présente sur un fond noir. À droite, \
+une spirale de cloisons courbes, d'un brun doré, s'enroule autour d'un minuscule \
+centre blanc : on y compte une trentaine de loges en forme de croissant, de plus en \
+plus grandes à mesure que l'on s'éloigne du cœur. À gauche s'ouvre la dernière \
+chambre, de loin la plus vaste, lisse et vide, tapissée d'une nacre crème qui se \
+teinte de reflets roses, verts et dorés selon la lumière. Le bord extérieur de la \
+coquille, plus mat, dessine une courbe continue, du bec pointu de l'ouverture, en bas \
+à gauche, jusqu'au sommet de la spirale."""
+evocation = """
+Le nautile est l'un des emblèmes de la beauté naturelle. Sa spirale, qui grandit sans \
+changer de forme, a fasciné les mathématiciens comme les artistes. À la Renaissance, \
+les orfèvres montaient des coquilles de nautile sur des pieds d'argent doré pour en \
+faire des coupes d'apparat, fierté des cabinets de curiosités des princes. Jules Verne \
+donna son nom au sous-marin du capitaine Nemo. Pour les biologistes, c'est aussi un \
+témoin : le nautile est le dernier représentant d'une lignée de céphalopodes à \
+coquille qui existait déjà avant les ammonites et leur a survécu. Couper sa coquille, \
+c'est rendre visible l'histoire d'une vie entière, loge après loge."""
+histoire = """
+Le nautile chambré vit dans l'Indo-Pacifique, des Philippines et de l'Indonésie à \
+l'Australie et aux îles Fidji, le long des pentes abruptes des récifs coralliens, \
+souvent à plusieurs centaines de mètres de profondeur ; il remonte la nuit pour se \
+nourrir. Ses coquilles, très recherchées, ont longtemps été pêchées en grand nombre \
+pour le commerce des souvenirs et de la nacre. Comme il grandit lentement et se \
+reproduit peu, ses populations ont décliné ; en 2016, il a été inscrit à l'annexe II \
+de la convention de Washington (CITES), qui encadre son commerce international. Ce \
+spécimen appartient au Yale Peabody Museum ; sa photographie a été publiée par le \
+musée dans le domaine public."""
+facture = """
+La coquille est faite d'aragonite, une forme du carbonate de calcium. À mesure qu'il \
+grandit, l'animal avance dans sa coquille et construit derrière lui une nouvelle \
+cloison : les loges vides, remplies de gaz et d'un peu de liquide, servent de \
+flotteur. Un fin tube de tissu vivant, le siphon, les traverse toutes et permet de \
+régler la quantité de liquide, comme les ballasts d'un sous-marin. L'intérieur de la \
+grande chambre est tapissé de nacre, faite de minuscules plaquettes empilées qui \
+décomposent la lumière en reflets irisés."""
+details = [
+  "La trentaine de loges en croissant, de plus en plus grandes vers l'extérieur.",
+  "Le minuscule centre blanc, première loge de l'animal.",
+  "Les reflets roses et verts de la nacre dans la grande chambre.",
+  "Le bec pointu de l'ouverture, en bas à gauche.",
+]
+themes = ["coquillage", "spirale", "mer", "nacre", "céphalopode"]
+anecdote = """
+On lit souvent que la spirale du nautile suit le nombre d'or. C'est une idée reçue : \
+les mesures de nombreuses coquilles montrent que leur spirale s'élargit selon un \
+rapport différent, et variable d'un individu à l'autre."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "L'archéoptéryx de Berlin"
+artiste = "Gisement de Solnhofen, Allemagne"
+annee = "Jurassique supérieur, il y a environ 150 millions d'années ; découvert vers 1876"
+image = "archeopteryx-berlin.jpg"
+credit = "Photo : H. Raab"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Archaeopteryx_lithographica_(Berlin_specimen).jpg"
+technique = "Squelette et empreintes de plumes dans une plaque de calcaire lithographique"
+collection = "Museum für Naturkunde, Berlin"
+note = "Des plumes et des ailes d'oiseau, mais des dents, des doigts griffus et une longue queue osseuse de reptile : le spécimen de Berlin, le plus complet des archéoptéryx, est l'un des fossiles les plus célèbres du monde."
+description = """
+Sur une plaque de calcaire beige, fendue de longues fissures, un animal de la taille \
+d'un pigeon est étendu, les ailes grandes ouvertes. On distingue nettement les os, \
+fins et clairs, et tout autour l'empreinte des plumes, qui rayonnent en éventail de \
+chaque bras. La tête, petite, est rejetée en arrière, à gauche, le cou recourbé \
+au-dessus du dos ; on devine les dents dans le museau. Les deux pattes, repliées, \
+descendent vers le bas de la plaque et se terminent par des pieds aux doigts griffus. \
+Entre elles, une longue queue faite de vertèbres file vers le bas à gauche, bordée de \
+chaque côté d'une rangée de plumes qui dessine une traîne."""
+evocation = """
+L'archéoptéryx est devenu le symbole de l'évolution. Le premier squelette est \
+découvert en 1861, deux ans à peine après la parution de L'Origine des espèces de \
+Charles Darwin, et il offre ce que réclamaient ses adversaires : une forme \
+intermédiaire entre deux grands groupes. On sait aujourd'hui qu'il n'est pas l'ancêtre \
+direct des oiseaux, mais l'un des représentants d'une famille de petits dinosaures à \
+plumes dont les oiseaux descendent. La posture du spécimen de Berlin, tête renversée \
+et cou arqué, est celle de nombreux fossiles d'animaux morts dans l'eau : elle donne à \
+cette plaque une intensité dramatique, comme un instant figé."""
+histoire = """
+Le spécimen de Berlin est mis au jour vers 1876 près d'Eichstätt, en Bavière, dans une \
+carrière de calcaire. Il passe entre plusieurs mains, puis la famille Häberlein, qui \
+avait déjà vendu le premier squelette au British Museum, le met en vente. Pour qu'il \
+ne quitte pas l'Allemagne, l'industriel Werner von Siemens l'achète en 1880 ; le musée \
+d'histoire naturelle de l'université de Berlin le lui rachète l'année suivante. C'est \
+le premier archéoptéryx découvert avec sa tête complète. Il est aujourd'hui exposé \
+dans une salle du Museum für Naturkunde de Berlin. La photographie montre l'original, \
+et non l'un des nombreux moulages qui en circulent."""
+facture = """
+Le calcaire de Solnhofen est d'un grain extraordinairement fin : il s'est formé à \
+partir d'une boue calcaire déposée au fond de lagunes aux eaux stagnantes, si salées \
+et pauvres en oxygène que les charognards n'y vivaient pas. Les cadavres tombés au \
+fond y étaient recouverts sans être déchiquetés, et la boue a pu garder la trace de \
+chaque plume, jusqu'aux barbes. Le fossile a été dégagé de la pierre à l'aiguille, \
+grain par grain. On distingue ici deux sortes de plumes : les grandes plumes \
+asymétriques des ailes, semblables à celles des oiseaux volants, et celles, disposées \
+par paires, de la queue."""
+details = [
+  "Les plumes des ailes, dont l'empreinte rayonne en éventail autour des bras.",
+  "La tête rejetée en arrière, au bout du cou recourbé.",
+  "Les griffes au bout des doigts des pieds, en bas de la plaque.",
+  "La longue queue osseuse, bordée d'une plume de chaque côté de chaque vertèbre.",
+]
+themes = ["fossile", "dinosaure", "oiseau", "évolution", "jurassique"]
+anecdote = """
+Selon un récit souvent répété, le paysan qui découvrit le spécimen de Berlin, Jakob \
+Niemeyer, l'aurait cédé pour pouvoir acheter une vache. Quelques années plus tard, le \
+fossile se vendait pour 20 000 marks."""
+salle = 2
+mur = "ouest"
+place = 6
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Coléoptère pris dans l'ambre de la Baltique"
+artiste = "Forêts d'ambre de la Baltique"
+annee = "Éocène, il y a environ 45 millions d'années"
+image = "ambre-coleoptere.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Beetle_in_amber_(Amber_Formation,_Middle_Eocene;_Yantarnyi,_Samland_Peninsula_along_the_Baltic_Sea,_far-western_Russia)_(15111983330).jpg"
+technique = "Ambre (résine fossile) contenant un coléoptère d'environ 3,5 mm ; vue au microscope"
+collection = "Collection non précisée (photographie de James St. John)"
+note = "Un coléoptère de 3,5 mm englué dans une coulée de résine il y a quelque 45 millions d'années, vu ici au microscope : l'ambre l'a conservé avec ses moindres reliefs."
+description = """
+L'image est un très fort agrandissement. Dans une matière translucide d'un jaune doré, \
+qui vire à l'orange et au brun sur les bords, un petit insecte allongé occupe le \
+centre. C'est un coléoptère, vu de dos, la tête en haut : son corps brun sombre est \
+couvert de rangées régulières de minuscules points en creux, alignés comme les mailles \
+d'un tricot. On devine la tête, le corselet et les deux élytres, les ailes dures qui \
+protègent le dos. Autour de lui, la résine n'est pas uniforme : des zones plus \
+claires, presque lumineuses, alternent avec des voiles plus sombres. En haut à droite, \
+une tache rouge marque la courbe du bord de la pierre."""
+evocation = """
+L'ambre est une capsule temporelle. L'insecte s'est posé sur une coulée de résine, s'y \
+est englué, et la résine l'a recouvert : 45 millions d'années plus tard, il est là, \
+intact, comme s'il venait de mourir. Rien n'évoque mieux l'immobilité du temps \
+géologique. Ces inclusions ont fait rêver bien avant la science : on y voyait des \
+mouches et des fourmis mises au tombeau dans l'or, et les poètes latins s'en \
+émerveillaient déjà. Elles font rêver encore, depuis qu'un roman puis un film ont \
+imaginé de faire renaître des dinosaures à partir d'un moustique conservé dans \
+l'ambre, idée que l'état réel de l'ADN fossile rend impossible."""
+histoire = """
+Il y a environ 45 millions d'années, à l'Éocène, de vastes forêts de conifères \
+couvraient le nord de l'Europe, sous un climat plus chaud qu'aujourd'hui. Leur résine, \
+emportée par les rivières, s'est accumulée dans une couche de sable argileux que les \
+mineurs appellent la « terre bleue ». Le plus grand gisement se trouve sur la \
+presqu'île de Sambie, près de Kaliningrad, en Russie, où la mine à ciel ouvert de \
+Iantarny fournit l'essentiel de l'ambre mondial. Ce coléoptère vient de là. Depuis la \
+préhistoire, la mer arrache aussi des morceaux d'ambre aux couches sous-marines et les \
+rejette sur les plages après les tempêtes : on le ramassait déjà pour le faire \
+voyager, par la route de l'ambre, jusqu'à la Méditerranée."""
+facture = """
+Fraîche, la résine est collante et visqueuse. Enfouie, elle perd peu à peu ses \
+éléments volatils, ses molécules se lient en longues chaînes, et elle durcit en copal, \
+puis, au fil de millions d'années, en ambre. L'insecte englouti se dessèche dans cet \
+écrin sans air, et la résine en moule chaque relief, jusqu'aux poils et aux \
+ponctuations de la carapace. L'ambre est léger : il flotte dans l'eau très salée, \
+propriété qu'on utilise pour le distinguer de ses imitations. La photographie, prise à \
+travers un microscope, montre l'insecte bien plus grand qu'une lettre de ce texte."""
+details = [
+  "Les rangées de petits points en creux sur les élytres du coléoptère.",
+  "La tête et le corselet, en haut du corps.",
+  "Les zones claires et sombres de la résine autour de l'insecte.",
+  "La courbe rougeâtre du bord de la pierre, en haut à droite.",
+]
+themes = ["ambre", "insecte", "forêt", "éocène", "temps"]
+anecdote = """
+Les Grecs appelaient l'ambre êlektron. Ils avaient remarqué qu'une fois frotté, il \
+attire les brindilles et les poussières : c'est de ce mot que vient, bien plus tard, \
+le mot électricité."""
+salle = 2
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Le Diplodocus de Carnegie, monté au Muséum en 1908"
+artiste = "Formation de Morrison, Wyoming"
+annee = "Jurassique supérieur, il y a environ 150 millions d'années ; moulage et photographie de 1908"
+image = "diplodocus-paris.jpg"
+cadre = "noir"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Carnegie_Diplodocus,_Paris_LCCN2014681898_(cropped).jpg"
+technique = "Photographie (négatif sur verre) de l'agence Bain News Service ; moulage en plâtre d'un squelette d'environ 25 m de long"
+collection = "Library of Congress, Washington (photographie) ; galerie de Paléontologie et d'Anatomie comparée, Muséum national d'Histoire naturelle, Paris (moulage)"
+note = "En 1908, le milliardaire américain Andrew Carnegie offre à la France le moulage de son diplodocus. On le voit ici en cours de montage dans la galerie de Paléontologie du Muséum, où il se trouve toujours."
+description = """
+La photographie est prise d'en haut, depuis le balcon d'une galerie de musée. Au \
+centre, le squelette d'un dinosaure géant est en cours d'assemblage sur une estrade de \
+bois. On reconnaît l'énorme bassin et les pattes arrière, droites comme des colonnes, \
+puis la cage thoracique, à droite, dont les côtes descendent comme les membrures d'une \
+coque de navire. La longue queue s'abaisse en courbe vers le bas à gauche jusqu'au \
+sol. Autour, des ouvriers en blouse et des messieurs en costume observent ou \
+travaillent ; un homme est juché tout en haut, près du dos. Des échelles, des vitrines \
+remplies de fossiles et de hautes fenêtres complètent la scène. En haut, une \
+inscription blanche indique : Carnegie Diplodocus, Paris."""
+evocation = """
+Cette image raconte la naissance d'une passion : celle du public pour les dinosaures. \
+Au début du XXᵉ siècle, ces géants venus d'Amérique attirent les foules dans les \
+musées d'Europe. Elle dit aussi l'époque des grands mécènes : en offrant des moulages \
+de son diplodocus aux souverains et aux chefs d'État, Andrew Carnegie, roi de l'acier \
+devenu philanthrope et militant de la paix, faisait de la science un instrument de \
+diplomatie. Les ouvriers, minuscules au pied du squelette, donnent l'échelle du \
+monstre. Et le lieu lui-même parle : c'est la galerie que les visiteurs du Jardin des \
+Plantes parcourent encore aujourd'hui, avec le même diplodocus au centre."""
+histoire = """
+En juillet 1899, une équipe du Carnegie Museum de Pittsburgh découvre un squelette de \
+sauropode à Sheep Creek, dans le Wyoming. Le paléontologue John Bell Hatcher le décrit \
+en 1901 sous le nom de Diplodocus carnegii, en l'honneur de son mécène. Le roi Édouard \
+VII, qui en a vu un dessin chez Carnegie, en souhaite un pour Londres : un moulage \
+complet est inauguré en 1905 au musée d'histoire naturelle de Londres. D'autres \
+suivent, à Berlin, à Paris, à Vienne, à Bologne, à Saint-Pétersbourg, à La Plata, à \
+Madrid ou à Mexico. Le moulage parisien est monté en 1908 par une équipe venue de \
+Pittsburgh, sous la direction du directeur du Carnegie Museum, William Jacob Holland. \
+Il se dresse toujours dans la galerie de Paléontologie, ouverte en 1898."""
+facture = """
+Chaque os a été moulé, puis reproduit en plâtre renforcé, avant d'être assemblé sur \
+une armature de fer qui supporte l'ensemble. La pose est celle qu'on imaginait alors : \
+pattes droites sous le corps, queue traînant jusqu'au sol. Les paléontologues pensent \
+aujourd'hui que la queue était tenue à l'horizontale, au-dessus du sol, pour \
+équilibrer le long cou. La photographie, prise sur une plaque de verre par l'agence \
+new-yorkaise Bain News Service, fait partie d'un immense fonds conservé à la \
+Bibliothèque du Congrès ; sa légende a été inscrite directement sur le négatif. Elle \
+est ici présentée dans un cadre noir."""
+details = [
+  "Les pattes arrière, droites comme des colonnes, sur l'estrade de bois.",
+  "Les épines des vertèbres, dressées le long du dos.",
+  "La queue qui descend jusqu'au sol, en bas à gauche.",
+  "L'homme juché tout en haut du squelette, près du dos.",
+  "L'inscription blanche, en haut, gravée sur le négatif.",
+]
+themes = ["dinosaure", "jurassique", "musée", "photographie", "mécénat"]
+anecdote = """
+Le moulage de Londres, surnommé Dippy, a accueilli les visiteurs du musée d'histoire \
+naturelle pendant plus d'un siècle. En 2017, il a cédé sa place dans le grand hall au \
+squelette d'une baleine bleue, puis il est parti en tournée à travers le Royaume-Uni."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Gibeon, Namibie"
+vie = "Sud de la Namibie, autour de la ville de Gibeon ; chute préhistorique"
+biographie = """
+Le champ de météorites de Gibeon s'étend dans le sud de la Namibie, dans la région de \
+Hardap, au cœur du Grand Namaqualand, un pays de plateaux arides. La chute a eu lieu \
+bien avant l'histoire écrite : un gros bloc de fer, entré dans l'atmosphère, s'est \
+brisé en une pluie de fragments répandus sur des centaines de kilomètres. Les Nama, \
+éleveurs de la région, connaissaient ces pierres lourdes et en tiraient du métal pour \
+leurs outils et leurs armes. Au XIXᵉ siècle, des échantillons rapportés en Europe sont \
+reconnus comme du fer météoritique, et la région devient l'un des lieux les plus \
+riches du monde en météorites métalliques. Des centaines de masses ont été \
+recueillies, certaines de plusieurs centaines de kilos. Le corps d'origine était le \
+noyau métallique d'un petit astéroïde, formé dans les premiers millions d'années du \
+système solaire, puis mis à nu et fragmenté par des collisions. Pour enrayer le \
+pillage, la Namibie a fait des météorites de Gibeon un patrimoine protégé ; une \
+trentaine de grandes masses sont exposées à Windhoek, la capitale."""
+style = """
+Le fer de Gibeon est une octaédrite fine du groupe IVA, un alliage de fer et de nickel \
+à environ 8 % de nickel. Une fois scié, poli et attaqué à l'acide, il révèle des \
+figures de Widmanstätten très serrées, aux lames étroites et régulières, d'une grande \
+élégance. Il est relativement stable et se prête au polissage : les joailliers, les \
+horlogers et les couteliers l'utilisent pour des cadrans, des bagues ou des lames, ce \
+qui en a fait l'une des météorites les plus répandues sur le marché."""
+
+[[artistes]]
+nom = "Mines de Golconde, Inde"
+vie = "Vallée de la Krishna, Deccan (Inde du Sud) ; diamants exploités de l'Antiquité au XIXᵉ siècle"
+biographie = """
+Pendant des siècles, l'Inde a été la seule source de diamants connue au monde. Les \
+pierres étaient extraites des alluvions de la vallée de la Krishna, dans le Deccan, où \
+des milliers de mineurs creusaient et lavaient les graviers. Elles étaient taillées et \
+vendues à Golconde, une forteresse et une ville marchande proche de l'actuelle \
+Hyderabad, capitale du sultanat des Qutb Shahi de 1518 jusqu'à sa conquête par \
+l'empereur moghol Aurangzeb en 1687. Le nom de Golconde a fini par désigner toutes les \
+mines de la région, et par devenir synonyme de richesse fabuleuse. Au XVIIᵉ siècle, le \
+marchand français Jean-Baptiste Tavernier y fait plusieurs voyages et décrit les \
+mines, dont celle de Kollur, sur la Krishna, d'où viendrait le grand diamant bleu \
+vendu à Louis XIV. Les plus célèbres diamants historiques sont nés là : le Koh-i-Noor, \
+aujourd'hui dans les joyaux de la couronne britannique, le Régent, exposé au Louvre, \
+et le diamant Hope. La découverte de gisements au Brésil, au XVIIIᵉ siècle, puis en \
+Afrique du Sud, au XIXᵉ, met fin à la suprématie indienne."""
+style = """
+Les diamants de Golconde sont réputés pour leur limpidité exceptionnelle : beaucoup \
+appartiennent au type IIa, presque dépourvus d'azote, d'une transparence que les \
+joailliers comparent à celle de l'eau. Certains sont colorés, comme le bleu du Hope. \
+Taillés d'abord en Inde selon des formes qui conservaient le plus de matière, ils ont \
+souvent été retaillés en Europe. L'expression « diamant de Golconde » désigne encore \
+aujourd'hui, dans les ventes aux enchères, une pierre ancienne d'une pureté rare."""
+
+[[artistes]]
+nom = "Massif du Mont-Blanc, France"
+vie = "Alpes occidentales, entre la France, l'Italie et la Suisse ; granite d'environ 300 millions d'années, fissures nées du soulèvement des Alpes"
+biographie = """
+Le massif du Mont-Blanc, qui culmine à plus de 4 800 mètres, est fait pour l'essentiel \
+d'un granite très ancien, né il y a environ 300 millions d'années dans les profondeurs \
+d'une chaîne de montagnes aujourd'hui disparue. Lors de la formation des Alpes, ce \
+granite a été repris, soulevé et fracturé. Dans les fissures ouvertes par ces \
+mouvements ont circulé des eaux chaudes, chargées d'éléments dissous, qui ont tapissé \
+les cavités de cristaux : quartz limpides ou fumés, fluorites roses, adulaires. Les \
+habitants de la vallée de Chamonix les cherchent depuis des siècles. Ces cristalliers, \
+qui parcouraient les glaciers bien avant les alpinistes, sont parmi les premiers à \
+connaître la haute montagne ; le savant genevois Horace-Bénédict de Saussure, qui \
+atteint le sommet du Mont-Blanc en 1787, en parle dans ses récits de voyage. Le métier \
+se perpétue aujourd'hui, encadré par des règles locales, et les plus belles pièces \
+rejoignent les musées : la galerie de Minéralogie du Muséum, à Paris, en présente \
+plusieurs."""
+style = """
+Les cristaux du Mont-Blanc sont des cristaux de fissure : ils ont grandi librement \
+dans le vide d'une cavité, ce qui leur donne des formes nettes et des faces \
+brillantes. Le massif est célèbre pour ses quartz fumés, parfois presque noirs, et \
+surtout pour ses fluorites roses en octaèdres, parmi les plus belles du monde. Leur \
+association, le rose sur le brun, est la signature des grandes trouvailles des \
+cristalliers."""
+
+[[artistes]]
+nom = "Coulées de lave de la Serra Geral, Brésil"
+vie = "Bassin du Paraná (sud du Brésil, Uruguay, Paraguay, Argentine) ; début du Crétacé, il y a environ 130 millions d'années"
+biographie = """
+Il y a environ 130 millions d'années, le supercontinent du Gondwana commence à se \
+déchirer : l'Amérique du Sud et l'Afrique s'éloignent, et l'océan Atlantique Sud \
+s'ouvre peu à peu entre elles. Ce déchirement s'accompagne d'éruptions d'une ampleur \
+inouïe. Par de longues fissures, d'immenses volumes de lave basaltique se répandent en \
+coulées successives sur le sud de l'Amérique du Sud, et sur la région qui deviendra la \
+Namibie, de l'autre côté du futur océan. Empilées, ces coulées forment aujourd'hui la \
+Serra Geral, des plateaux de roche sombre épais par endroits de plus d'un kilomètre ; \
+les chutes d'Iguaçu, à la frontière du Brésil et de l'Argentine, se jettent du haut de \
+ces basaltes. Dans certaines coulées, la lave était truffée de bulles de gaz. Bien \
+plus tard, des eaux souterraines riches en silice ont rempli ces cavités de \
+calcédoine, d'agate et de quartz. Le Rio Grande do Sul, au Brésil, et la région \
+d'Artigas, en Uruguay, sont devenus les premiers producteurs mondiaux de géodes \
+d'améthyste."""
+style = """
+Les géodes de la Serra Geral se reconnaissent à leur coque de basalte gris-vert, à \
+leur liseré de calcédoine et à leurs cristaux d'améthyste serrés, d'un violet souvent \
+profond. Certaines, allongées comme des grottes, dépassent la taille d'un homme. On en \
+tire aussi les agates rubanées du Brésil, souvent teintes, et des cristaux de calcite \
+qui se posent sur l'améthyste."""
+
+[[artistes]]
+nom = "Schistes de Wheeler, Utah"
+vie = "House Range, ouest de l'Utah (États-Unis) ; Cambrien moyen, il y a un peu plus de 500 millions d'années"
+biographie = """
+Il y a un peu plus de 500 millions d'années, l'ouest de l'actuelle Amérique du Nord \
+était bordé par une mer tropicale, proche de l'équateur. Au pied d'une plate-forme \
+calcaire, dans une dépression où l'eau était calme et pauvre en oxygène, une boue fine \
+s'accumulait lentement. Elle a recouvert les animaux qui vivaient ou mouraient sur le \
+fond, et elle est devenue une roche feuilletée, les schistes de Wheeler, qui \
+affleurent aujourd'hui dans les monts de la House Range, à l'ouest de l'Utah, dans un \
+paysage de désert. C'est l'époque de l'« explosion cambrienne », où apparaissent en \
+peu de temps la plupart des grands groupes d'animaux. Les trilobites dominent ces \
+fonds marins, mais les schistes de Wheeler ont aussi livré des éponges, des méduses et \
+des animaux à corps mou, conservés comme dans les célèbres schistes de Burgess, au \
+Canada. Exploités par des carrières commerciales, ils fournissent à eux seuls une \
+grande partie des trilobites vendus dans le monde, et continuent d'intéresser les \
+chercheurs."""
+style = """
+Les fossiles des schistes de Wheeler se reconnaissent à leur carapace noire et \
+brillante, de calcite, qui tranche sur un schiste gris clair et se détache facilement \
+quand on fend la roche. Les trilobites y sont nombreux, complets et bien articulés, \
+souvent d'espèces de petite taille, comme Elrathia kingii. Leur abondance en fait une \
+porte d'entrée idéale vers la paléontologie."""
+
+[[artistes]]
+nom = "Falaises de Whitby, Angleterre"
+vie = "Côte du Yorkshire du Nord ; Jurassique inférieur, il y a environ 180 millions d'années"
+biographie = """
+Les falaises de Whitby, sur la côte de la mer du Nord, sont faites de roches sombres \
+déposées il y a environ 180 millions d'années, au Jurassique inférieur, au fond d'une \
+mer peu oxygénée. Elles regorgent de fossiles : ammonites, bélemnites, poissons et \
+grands reptiles marins comme les ichtyosaures et les plésiosaures. Leur histoire \
+humaine est liée à ces pierres. Au VIIᵉ siècle, sainte Hilda fonde sur la falaise une \
+abbaye dont les ruines dominent encore la ville. Du XVIIᵉ au XIXᵉ siècle, on exploite \
+les schistes pour en tirer l'alun, utilisé pour fixer les teintures, et les carriers \
+mettent au jour de nombreux squelettes. Whitby est aussi célèbre pour son jais, un \
+bois fossile noir et brillant ; après la mort du prince Albert en 1861, la reine \
+Victoria en lance la mode pour les bijoux de deuil. Enfin, c'est sur cette côte que \
+Bram Stoker, dans son roman Dracula paru en 1897, fait débarquer le vampire. Les \
+éboulements renouvellent sans cesse les fossiles, que les promeneurs ramassent sur les \
+plages."""
+style = """
+Les fossiles de Whitby se distinguent par leur conservation dans des nodules, des \
+boules de roche dure, et par leur teinte sombre, parfois dorée par la pyrite. Les \
+ammonites y sont si nombreuses que les géologues ont pu découper le temps en zones \
+portant leurs noms. Dactylioceras, aux côtes fines et serrées, en est l'espèce la plus \
+typique, celle des « pierres de serpent » de la légende."""
+
+[[artistes]]
+nom = "Récifs de l'Indo-Pacifique"
+vie = "Pentes des récifs coralliens, des Philippines aux îles Fidji et à l'Australie ; aujourd'hui"
+biographie = """
+Le nautile chambré vit dans les eaux tropicales de l'Indo-Pacifique, des Philippines \
+et de l'Indonésie à la Nouvelle-Guinée, au nord de l'Australie et aux îles Fidji. Il \
+fréquente les pentes abruptes qui bordent les récifs coralliens, à des profondeurs \
+souvent de plusieurs centaines de mètres, et remonte la nuit vers des eaux moins \
+profondes pour chasser ou charognarder. Il porte autour de la bouche des dizaines de \
+tentacules sans ventouses et voit le monde à travers des yeux très simples, sans \
+cristallin, qui fonctionnent comme une chambre noire. Sa lignée, celle des \
+nautiloïdes, remonte à près de 500 millions d'années : leurs coquilles, droites ou \
+enroulées, peuplaient déjà les mers de l'époque des trilobites, et elles ont survécu \
+aux grandes extinctions qui ont emporté les ammonites. Le nautile grandit lentement, \
+vit une vingtaine d'années et pond peu d'œufs. La pêche intensive pour ses coquilles a \
+fait reculer ses populations : depuis 2017, son commerce international est soumis à \
+des permis."""
+style = """
+Vue de l'extérieur, la coquille du nautile est blanche, rayée de flammes brun-roux qui \
+s'estompent vers l'ouverture. En coupe, elle révèle sa beauté cachée : une spirale de \
+loges régulières, d'un brun doré, et une grande chambre tapissée de nacre irisée. Les \
+orfèvres de la Renaissance la polissaient pour faire paraître la nacre et la montaient \
+en coupe précieuse."""
+
+[[artistes]]
+nom = "Gisement de Solnhofen, Allemagne"
+vie = "Vallée de l'Altmühl, Bavière ; Jurassique supérieur, il y a environ 150 millions d'années"
+biographie = """
+Il y a environ 150 millions d'années, la Bavière était couverte par une mer chaude \
+parsemée d'îles et de récifs, en bordure de l'océan Téthys. Entre les récifs \
+s'étendaient des lagunes aux eaux stagnantes, très salées et privées d'oxygène au \
+fond. Une boue calcaire très fine s'y déposait en couches minces, qui ont donné le \
+calcaire de Solnhofen, exploité aujourd'hui dans les carrières de la vallée de \
+l'Altmühl, autour de Solnhofen et d'Eichstätt. On en tire depuis l'époque romaine des \
+dalles de sol et de toiture. En 1796, Alois Senefelder découvre qu'on peut imprimer à \
+partir de ces pierres parfaitement lisses : c'est l'invention de la lithographie, qui \
+fera la fortune des carrières. Les ouvriers qui fendent les plaques mettent au jour \
+des fossiles d'une finesse inégalée : poissons, crabes, limules, libellules, \
+ptérosaures, le petit dinosaure Compsognathus et surtout l'archéoptéryx. Une plume \
+isolée est décrite en 1861, et le premier squelette est découvert la même année ; on \
+en connaît aujourd'hui une douzaine."""
+style = """
+Les fossiles de Solnhofen ressemblent à des gravures : aplatis entre deux feuillets de \
+calcaire beige, ils conservent les contours les plus délicats, ailes d'insectes, \
+membranes de ptérosaures, plumes. On y trouve même des traces de pas, et la piste \
+d'une limule qui s'achève sur le corps de l'animal mort. Ce gisement est l'un des \
+grands modèles de ce que les paléontologues appellent une conservation exceptionnelle."""
+
+[[artistes]]
+nom = "Forêts d'ambre de la Baltique"
+vie = "Nord de l'Europe, à l'Éocène, il y a environ 45 millions d'années ; gisements de la presqu'île de Sambie (Kaliningrad, Russie)"
+biographie = """
+Il y a environ 45 millions d'années, à l'Éocène, le climat de la Terre était bien plus \
+chaud qu'aujourd'hui, et de grandes forêts de conifères et de feuillus couvraient le \
+nord de l'Europe, sur les terres de l'actuelle Scandinavie. Leurs arbres produisaient \
+de la résine en abondance. Charriée par les rivières, elle s'est accumulée dans les \
+sédiments d'un delta, où elle s'est lentement transformée en ambre. Ces dépôts \
+affleurent aujourd'hui autour de la mer Baltique, surtout sur la presqu'île de Sambie, \
+près de Kaliningrad, où la mine de Iantarny exploite la couche de « terre bleue ». La \
+mer en arrache aussi des morceaux qu'elle rejette sur les plages après les tempêtes. \
+Depuis la préhistoire, l'ambre baltique est recherché et échangé : il voyageait \
+jusqu'à la Méditerranée par la route de l'ambre, et les Romains l'appréciaient. Au \
+Moyen Âge, les chevaliers Teutoniques en contrôlent la récolte. Au XVIIIᵉ siècle, la \
+Chambre d'ambre, offerte par le roi de Prusse au tsar Pierre le Grand, est l'un des \
+plus fameux décors de l'Europe ; elle disparaît pendant la Seconde Guerre mondiale."""
+style = """
+L'ambre de la Baltique, appelé succinite, va du jaune miel au brun rouge, transparent \
+ou laiteux. Il est célèbre pour la richesse de ses inclusions : insectes, araignées, \
+fleurs, plumes, poils de mammifères, conservés en trois dimensions avec une précision \
+que nul autre fossile n'atteint. Les scientifiques y ont décrit des milliers d'espèces \
+disparues, qui font revivre la forêt de l'Éocène."""
+
+[[artistes]]
+nom = "Formation de Morrison, Wyoming"
+vie = "Ouest des États-Unis, du Montana au Nouveau-Mexique ; Jurassique supérieur, il y a environ 155 à 148 millions d'années"
+biographie = """
+La formation de Morrison est un ensemble de couches de grès, d'argiles et de calcaires \
+qui affleure dans l'ouest des États-Unis, du Montana au Nouveau-Mexique. Elle porte le \
+nom de la petite ville de Morrison, dans le Colorado, près de laquelle on découvre des \
+os de dinosaures en 1877. Il y a environ 150 millions d'années, c'était une vaste \
+plaine traversée de rivières, au climat chaud et sec, ponctuée de lacs et de forêts de \
+conifères et de fougères. C'est le gisement de dinosaures le plus célèbre d'Amérique : \
+il a livré Diplodocus, Apatosaurus, Brontosaurus, Camarasaurus, Stegosaurus et \
+Allosaurus. À la fin du XIXᵉ siècle, il est le théâtre de la « guerre des os » entre \
+les paléontologues rivaux Othniel Marsh et Edward Drinker Cope, qui se disputent les \
+meilleures carrières, notamment dans le Wyoming. En 1909, un chercheur du Carnegie \
+Museum, Earl Douglass, découvre dans l'Utah un mur entier d'ossements, aujourd'hui \
+protégé au sein du Dinosaur National Monument."""
+style = """
+La formation de Morrison est le royaume des sauropodes, ces géants au long cou et à la \
+longue queue, et de leurs prédateurs. Ses os, souvent bien conservés et parfois \
+retrouvés en squelettes presque complets, ont permis les premiers grands montages de \
+dinosaures dans les musées. Diplodocus, Stegosaurus ou Allosaurus, tous venus de ces \
+couches, ont fixé pour le grand public l'image même du dinosaure."""
