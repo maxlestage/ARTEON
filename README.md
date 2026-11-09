@@ -4,27 +4,39 @@
 
 ARTEON est un musée qui n'existe pas. Chaque exposition occupe un bâtiment dessiné sur plan, souvent inspiré d'un vrai musée (la galerie d'honneur du Rijksmuseum, la nef d'Orsay, le Belvédère, la cour du Smithsonian) : les toiles sont accrochées aux murs, les sculptures — de vrais scans 3D — posées sur leurs socles. On s'y promène librement ou on suit la visite guidée, et un éditeur permet de déplacer les œuvres depuis le musée lui-même. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML, les scènes 3D (`paquets::ecs`) et l'interface de visite ([egui](https://github.com/emilk/egui)), compilées en WebAssembly et rendues en WebGL 2.
 
-Huit expositions sont ouvertes (77 toiles et 8 sculptures) :
+18 expositions sont ouvertes (177 toiles, 8 sculptures, 109 artistes), de la Renaissance à l'expressionnisme, dans l'ordre de l'histoire de l'art :
 
-- **Van Gogh, la couleur en mouvement** — douze toiles de Vincent van Gogh (1885–1890), des *Mangeurs de pommes de terre* au *Champ de blé aux corbeaux* ;
-- **Monet, la lumière à l'œuvre** — douze toiles de Claude Monet (1866–1922), de *Femmes au jardin* et *Impression, soleil levant* jusqu'aux *Nymphéas* et au *Pont japonais* ;
-- **Renoir, le bonheur de peindre** — dix toiles de Pierre-Auguste Renoir (1874–1892), de *La Loge* au *Bal du moulin de la Galette* et aux trois grandes *Danses* ;
-- **Cézanne, la construction de la couleur** — neuf toiles de Paul Cézanne (1877–1906), des *Joueurs de cartes* aux *Grandes Baigneuses* ;
-- **Gauguin, l'ailleurs en couleurs** — neuf toiles de Paul Gauguin (1888–1898), de la *Vision après le sermon* à *D'où venons-nous ?* ;
-- **Klimt, l'or et la vie** — sept toiles de Gustav Klimt (1900–1915), d'*Attersee* au *Baiser* ;
-- **Vermeer et Rembrandt, le siècle d'or hollandais** — dix toiles (1632–1668), de la *Leçon d'anatomie* à *La Jeune Fille à la perle* et à *La Ronde de nuit*, dans une galerie d'honneur inspirée du Rijksmuseum ;
-- **L'Amérique au XIXᵉ siècle, peinture et sculpture** — huit toiles (Cole, Church, Bierstadt, Whistler, Eakins, Sargent, Cassatt, Homer) et cinq sculptures (le *George Washington* de Greenough, deux groupes de John Rogers, le masque de Lincoln, un Bouddha de la dynastie des Qi du Nord), autour d'une cour couverte inspirée du Smithsonian.
+| Exposition | Style | Dates | Artistes |
+|---|---|---|---|
+| [La Renaissance italienne, l'invention de l'homme](expositions/renaissance.toml) | Renaissance italienne | 1460–1538 | Filippo Lippi, Piero della Francesca, Andrea Mantegna, Sandro Botticelli, Léonard de Vinci, Michel-Ange, Raphaël, Giorgione, Titien |
+| [Monts, jardins et empereurs : la peinture d'Asie](expositions/arts-asie.toml) | Peinture chinoise, persane et moghole | vers 1000–1630 | Fan Kuan, Guo Xi, Zhao Mengfu, Shen Zhou, Behzad, Sultan Muhammad, Reza Abbasi, Bichitr, Abu'l Hasan, Govardhan |
+| [Primitifs flamands et Renaissance du Nord, le monde au plus près](expositions/renaissance-nord.toml) | Primitifs flamands et Renaissance du Nord | 1434–1568 | Jan van Eyck, Rogier van der Weyden, Hans Memling, Jérôme Bosch, Albrecht Dürer, Lucas Cranach l'Ancien, Hans Holbein le Jeune, Pieter Bruegel l'Ancien |
+| [Le Baroque, le théâtre de la lumière](expositions/baroque.toml) | Baroque | 1599–1678 | Le Caravage, Artemisia Gentileschi, Georges de La Tour, Pierre Paul Rubens, Bartolomé Esteban Murillo, Francisco de Zurbarán, Diego Velázquez, Nicolas Poussin, Claude Lorrain |
+| [Vermeer et Rembrandt, le siècle d'or hollandais](expositions/vermeer-rembrandt.toml) | Siècle d'or hollandais | XVIIᵉ siècle | Rembrandt, Johannes Vermeer |
+| [Le siècle des Lumières, du rococo au néoclassicisme](expositions/lumieres.toml) | Rococo et néoclassicisme | 1717–1814 | Antoine Watteau, François Boucher, Jean-Honoré Fragonard, Jean Siméon Chardin, Giovanni Antonio Canal, dit Canaletto, Thomas Gainsborough, Élisabeth Vigée Le Brun, Jacques-Louis David, Jean-Auguste-Dominique Ingres |
+| [Le Romantisme, la tempête et le rêve](expositions/romantisme.toml) | Romantisme | 1781–1839 | Johann Heinrich Füssli, William Blake, Francisco de Goya, Théodore Géricault, Eugène Delacroix, Caspar David Friedrich, Joseph Mallord William Turner, John Constable |
+| [Du réalisme à la vie moderne](expositions/realisme.toml) | Réalisme et impressionnisme | 1849–1882 | Édouard Manet, Gustave Courbet, Rosa Bonheur, Jean-François Millet, Gustave Caillebotte, Edgar Degas, Camille Pissarro |
+| [Monet, la lumière à l'œuvre](expositions/monet.toml) | Impressionnisme | 1840–1926 | Claude Monet, Hiram Powers, Ferdinand Pettrich, Edmonia Lewis |
+| [Renoir, le bonheur de peindre](expositions/renoir.toml) | Impressionnisme | 1841–1919 | Pierre-Auguste Renoir |
+| [L'Amérique au XIXᵉ siècle, peinture et sculpture](expositions/smithsonian.toml) | Art américain du XIXᵉ siècle | 1836–1899 | Thomas Cole, Albert Bierstadt, Frederic Edwin Church, James McNeill Whistler, Thomas Eakins, John Singer Sargent, Mary Cassatt, Winslow Homer, Horatio Greenough, John Rogers, Clark Mills, Chine, dynastie des Qi du Nord |
+| [Cézanne, la construction de la couleur](expositions/cezanne.toml) | Post-impressionnisme | 1839–1906 | Paul Cézanne |
+| [Après l'impressionnisme, points, aplats et rêves](expositions/post-impressionnisme.toml) | Néo-impressionnisme, Nabis et art naïf | 1884–1910 | Georges Seurat, Paul Signac, Henri de Toulouse-Lautrec, Paul Sérusier, Émile Bernard, Pierre Bonnard, Édouard Vuillard, Henri Rousseau |
+| [Van Gogh, la couleur en mouvement](expositions/van-gogh.toml) | Post-impressionnisme | 1853–1890 | Vincent van Gogh |
+| [Gauguin, l'ailleurs en couleurs](expositions/gauguin.toml) | Synthétisme et primitivisme | 1848–1903 | Paul Gauguin |
+| [Le Symbolisme, rêves, mythes et visions](expositions/symbolisme.toml) | Symbolisme et Art nouveau | 1851–1914 | Alfons Mucha, Pierre Puvis de Chavannes, Gustave Moreau, Odilon Redon, John Everett Millais, Dante Gabriel Rossetti, John William Waterhouse, Arnold Böcklin, Edvard Munch, Fernand Khnopff |
+| [Klimt, l'or et la vie](expositions/klimt.toml) | Sécession viennoise | 1862–1918 | Gustav Klimt |
+| [Fauves et expressionnistes, la couleur libérée](expositions/expressionnisme.toml) | Fauvisme et expressionnisme | 1904–1919 | Henri Matisse, André Derain, Franz Marc, August Macke, Ernst Ludwig Kirchner, Paula Modersohn-Becker, Egon Schiele, Amedeo Modigliani |
 
 L'exposition Monet est installée dans une nef inspirée du musée d'Orsay, avec trois sculptures américaines contemporaines de ses toiles (*The Greek Slave* de Hiram Powers, *The Dying Tecumseh* de Ferdinand Pettrich, *Old Arrow Maker* d'Edmonia Lewis).
 
-Seuls des peintres du **domaine public** (morts depuis plus de 70 ans) sont exposés : c'est pourquoi il n'y a pas, par exemple, d'exposition Picasso (mort en 1973, ses œuvres sont protégées jusqu'en 2044).
+Seules des œuvres du **domaine public** sont exposées : l'artiste est mort en 1955 ou avant (70 ans après sa mort, en Europe) et l'œuvre date d'avant 1931 (aux États-Unis). C'est pourquoi il n'y a ni Picasso (protégé jusqu'en 2044), ni Dalí, Magritte, Chagall, Frida Kahlo, ni pop art ou street art : Andy Warhol est protégé jusqu'en 2057, Keith Haring jusqu'en 2060.
 
 ## Les pages
 
 | Route | Contenu |
 |---|---|
 | `/` | L'accueil du musée : le concept, les chiffres clés, les expositions et comment c'est fait |
-| `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/monet`, `/renoir`, `/cezanne`, `/gauguin`, `/klimt`, `/vermeer-rembrandt`, `/smithsonian`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
+| `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/renaissance`, `/baroque`, `/estampes-japonaises`…, le nom du fichier `.toml`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
 | `/<exposition>/galerie` | Le musée en 3D : visite guidée ou libre, plan, éditeur |
 | `/<exposition>/oeuvres` | Le catalogue : chaque toile et chaque sculpture, son cartel (technique, collection, note) et sa place dans le musée |
 | `/<exposition>/oeuvres/<œuvre>` | Tout sur une œuvre : la reproduction, le cartel, ce que l'on voit, ce qu'elle évoque, son histoire, la manière, les détails à regarder, une anecdote et la biographie de l'artiste ; un lien l'ouvre dans le musée 3D, devant elle |
@@ -147,58 +159,9 @@ Dans la scène, les cases voisines de même couleur sont fusionnées en rectangl
 
 ## Les œuvres (domaine public)
 
-Tous les peintres exposés sont morts depuis plus de 70 ans : Rembrandt (1669), Vermeer (1675), Van Gogh (1890), Gauguin (1903), Cézanne (1906), Klimt (1918), Renoir (1919) et Monet (1926). Leurs œuvres sont dans le domaine public, comme celles des peintres américains de l'exposition Smithsonian (tous morts avant 1930). Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/). Les sculptures sont des scans du [Smithsonian 3D](https://3d.si.edu/) publiés en CC0 (domaine public), réduits pour le navigateur dans [`modeles/`](modeles). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
+Tous les artistes exposés sont morts en 1955 ou avant, et toutes les œuvres datent d'avant 1931 : elles sont dans le domaine public en Europe comme aux États-Unis. Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/). Les sculptures sont des scans du [Smithsonian 3D](https://3d.si.edu/) publiés en CC0 (domaine public), réduits pour le navigateur dans [`modeles/`](modeles). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
 
-**Van Gogh, la couleur en mouvement**
-
-| Salle | Œuvre | Année | Collection |
-|---|---|---|---|
-| I · Nuenen et Paris | Les Mangeurs de pommes de terre | 1885 | Van Gogh Museum, Amsterdam |
-| | Autoportrait | 1887 | Art Institute of Chicago |
-| | Autoportrait au chapeau de feutre gris | 1887 | Van Gogh Museum, Amsterdam |
-| II · Arles | Les Tournesols | 1888 | National Gallery, Londres |
-| | La Nuit étoilée sur le Rhône | 1888 | Musée d'Orsay, Paris |
-| | La Chambre à Arles | 1888 | Van Gogh Museum, Amsterdam |
-| | Terrasse du café le soir | 1888 | Musée Kröller-Müller, Otterlo |
-| | Le Café de nuit | 1888 | Yale University Art Gallery |
-| III · Saint-Rémy et Auvers | Les Iris | 1889 | J. Paul Getty Museum, Los Angeles |
-| | La Nuit étoilée | 1889 | Museum of Modern Art, New York |
-| | Amandier en fleurs | 1890 | Van Gogh Museum, Amsterdam |
-| | Champ de blé aux corbeaux | 1890 | Van Gogh Museum, Amsterdam |
-
-**Monet, la lumière à l'œuvre**
-
-| Salle | Œuvre | Année | Collection |
-|---|---|---|---|
-| I · La naissance de l'impressionnisme | Femmes au jardin | 1866 | Musée d'Orsay, Paris |
-| | La Pie | 1868–1869 | Musée d'Orsay, Paris |
-| | Impression, soleil levant | 1872 | Musée Marmottan Monet, Paris |
-| | Coquelicots | 1873 | Musée d'Orsay, Paris |
-| | La Promenade, la femme à l'ombrelle | 1875 | National Gallery of Art, Washington |
-| II · La ville et les séries | La Gare Saint-Lazare | 1877 | Musée d'Orsay, Paris |
-| | La Rue Montorgueil, fête du 30 juin 1878 | 1878 | Musée d'Orsay, Paris |
-| | Meules, fin de l'été | 1890–1891 | Art Institute of Chicago |
-| | La Cathédrale de Rouen, harmonie bleue | 1893 | Musée d'Orsay, Paris |
-| III · Londres et Giverny | Le Parlement de Londres, soleil couchant | 1903 | National Gallery of Art, Washington |
-| | Nymphéas | 1906 | Art Institute of Chicago |
-| | Le Pont japonais | 1920–1922 | Museum of Modern Art, New York |
-
-**Renoir, le bonheur de peindre**
-
-| Salle | Œuvre | Année | Collection |
-|---|---|---|---|
-| I · Les années impressionnistes | La Loge | 1874 | The Courtauld, Londres |
-| | La Fillette à l'arrosoir | 1876 | National Gallery of Art, Washington |
-| | Bal du moulin de la Galette | 1876 | Musée d'Orsay, Paris |
-| II · La vie moderne | Le Déjeuner des canotiers | 1880–1881 | The Phillips Collection, Washington |
-| | Deux Sœurs (Sur la terrasse) | 1881 | Art Institute of Chicago |
-| | Les Parapluies | vers 1881–1886 | National Gallery, Londres |
-| III · Danses et jeunes filles | Danse à Bougival | 1883 | Museum of Fine Arts, Boston |
-| | Danse à la ville | 1883 | Musée d'Orsay, Paris |
-| | Danse à la campagne | 1883 | Musée d'Orsay, Paris |
-| | Jeunes filles au piano | 1892 | Musée d'Orsay, Paris |
-
-Les cartels complets (technique, collection, note) des quatre dernières expositions sont dans leurs fichiers : [`cezanne.toml`](expositions/cezanne.toml), [`gauguin.toml`](expositions/gauguin.toml), [`klimt.toml`](expositions/klimt.toml), [`vermeer-rembrandt.toml`](expositions/vermeer-rembrandt.toml). Une exposition peut réunir plusieurs peintres : chaque œuvre précise alors son `artiste`.
+Le catalogue complet de chaque exposition est sur le site (`/<exposition>/oeuvres`), avec une page par œuvre ; les cartels, notices et biographies sont dans les fichiers [`expositions/*.toml`](expositions). Une exposition peut réunir plusieurs artistes : chaque œuvre précise alors son `artiste`.
 
 ## Architecture
 
