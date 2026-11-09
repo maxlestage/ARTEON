@@ -1,14 +1,17 @@
 # ─────────────────────────────────────────────────────────────────────────────
-#  L'EXPOSITION D'ARTEON
+#  EXPOSITION « VAN GOGH » D'ARTEON
 #
-#  Tout le contenu du musée est décrit ici : les textes, les salles et les œuvres.
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/van-gogh/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /van-gogh.
+#
 #  Pour ajouter une œuvre :
-#    1. déposer son image (JPEG ou PNG) dans le dossier public/tableaux/ ;
+#    1. déposer son image (JPEG ou PNG) dans public/tableaux/van-gogh/ ;
 #    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
 #  Au prochain push sur master, le site est reconstruit et republié tout seul.
 #
 #  L'image sert deux fois : telle quelle dans le catalogue, et transformée en
-#  mosaïque en relief (une touche de couleur par case) pour la galerie en 3D.
+#  mosaïque en relief (des touches de 1 cm) pour la galerie en 3D.
 #
 #  Si une valeur est fausse (salle qui n'existe pas, image introuvable, deux
 #  œuvres au même endroit…), la compilation s'arrête avec un message en français
@@ -16,6 +19,11 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 [exposition]
+# L'ordre de l'exposition sur l'accueil, et son nom court dans le menu.
+ordre = 1
+nom_court = "Van Gogh"
+# La couleur d'accent des pages de l'exposition.
+couleur = "#1d3f8f"
 titre = "Van Gogh, la couleur en mouvement"
 artiste = "Vincent van Gogh"
 dates = "1853–1890"
@@ -48,7 +56,7 @@ theme = "1889–1890 : les ciels qui tourbillonnent, les fleurs de l'asile et le
 murs = "#dfe4e8"
 
 # ─── Les œuvres ──────────────────────────────────────────────────────────────
-# image    : le nom du fichier dans public/tableaux/
+# image    : le nom du fichier dans public/tableaux/van-gogh/
 # salle    : le numéro de la salle (1, 2, 3…)
 # mur      : "gauche", "droite" (en avançant dans la galerie) ou "fond"
 # place    : 1, 2 ou 3. Sur les murs gauche et droit, 1 est près de l'entrée de

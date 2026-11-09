@@ -1,7 +1,7 @@
 # Publie ARTEON sur GitHub Pages : le site complet (présentation, galerie 3D, catalogue,
 # guide « Ajouter une œuvre ») exporté en fichiers statiques, avec les îlots 3D
-# compilés en WebAssembly. Modifier exposition.toml ou public/tableaux/ sur master
-# republie l'exposition.
+# compilés en WebAssembly. Modifier expositions/*.toml ou public/tableaux/ sur master
+# republie le musée.
 #
 # - À chaque push, le site est compilé, testé et exporté (vérifie que tout marche).
 # - Sur la branche par défaut (et à la demande), il est en plus déployé sur Pages.
@@ -85,13 +85,20 @@ jobs:
 
       - name: Vérifier l'export
         run: |
-          for f in index.html galerie/index.html oeuvres/index.html ajouter/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm; do
+          for f in index.html ajouter/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm; do
             test -e "dist/$f" || { echo "manquant : dist/$f"; exit 1; }
           done
-          grep -q 'pkg/arteon_bg.wasm' dist/galerie/index.html
-          # Chaque image citée par le catalogue est bien publiée.
-          for src in $(grep -o 'src="[^"]*/tableaux/[^"]*"' dist/oeuvres/index.html | sed 's/.*\/tableaux\///; s/"$//'); do
-            test -s "dist/tableaux/$src" || { echo "image manquante : $src"; exit 1; }
+          # Chaque exposition a ses trois pages, sa scène 3D et toutes ses images.
+          for toml in expositions/*.toml; do
+            slug=$(basename "$toml" .toml)
+            for f in "$slug/index.html" "$slug/galerie/index.html" "$slug/oeuvres/index.html"; do
+              test -e "dist/$f" || { echo "manquant : dist/$f"; exit 1; }
+            done
+            grep -q 'pkg/arteon_bg.wasm' "dist/$slug/galerie/index.html"
+            for src in $(grep -o 'src="[^"]*/tableaux/[^"]*"' "dist/$slug/oeuvres/index.html" | sed 's/.*\/tableaux\///; s/"$//'); do
+              test -s "dist/tableaux/$src" || { echo "image manquante : $src"; exit 1; }
+            done
+            echo "✓ $slug"
           done
 
       - uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,193 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « MONET » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/monet/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /monet.
+#
+#  Pour ajouter une œuvre :
+#    1. déposer son image (JPEG ou PNG) dans public/tableaux/monet/ ;
+#    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
+#  Au prochain push sur master, le site est reconstruit et republié tout seul.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 2
+nom_court = "Monet"
+couleur = "#2f7d6d"
+titre = "Monet, la lumière à l'œuvre"
+artiste = "Claude Monet"
+dates = "1840–1926"
+accroche = "Exposition virtuelle · Claude Monet"
+introduction = """
+Du jardin de Ville-d'Avray aux nymphéas de Giverny, suivez soixante ans de \
+peinture à la poursuite de la lumière : le soleil levant qui a donné son nom à \
+l'impressionnisme, les gares et les rues pavoisées, les séries des meules et des \
+cathédrales, puis l'eau et les fleurs du jardin, jusqu'à l'abstraction."""
+vitrine = "nympheas.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+
+[[salles]]
+nom = "Salle I · La naissance de l'impressionnisme"
+theme = "1866–1875 : peindre en plein air, saisir un instant de lumière ; un tableau de 1872 donne son nom au mouvement."
+murs = "#efe9dc"
+
+[[salles]]
+nom = "Salle II · La ville et les séries"
+theme = "1877–1894 : la vapeur des gares, les rues en fête, puis le même motif peint à toutes les heures du jour."
+murs = "#e3e6ea"
+
+[[salles]]
+nom = "Salle III · Londres et Giverny"
+theme = "1903–1922 : les brumes de la Tamise, puis l'étang aux nymphéas, peint jusqu'à l'abstraction."
+murs = "#e1ebe2"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Femmes au jardin"
+annee = "1866"
+image = "femmes-jardin.jpg"
+technique = "Huile sur toile, 255 × 205 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une toile immense peinte en plein air : Monet creuse une tranchée dans le jardin pour atteindre le haut du tableau."
+salle = 1
+mur = "gauche"
+place = 1
+largeur = 1.25
+
+[[oeuvres]]
+titre = "La Pie"
+annee = "1868–1869"
+image = "la-pie.jpg"
+technique = "Huile sur toile, 89 × 130 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un paysage de neige près d'Étretat, où les ombres sont bleues : le Salon le refuse."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Impression, soleil levant"
+annee = "1872"
+image = "impression-soleil-levant.jpg"
+technique = "Huile sur toile, 48 × 63 cm"
+collection = "Musée Marmottan Monet, Paris"
+note = "Le port du Havre dans la brume. Un critique moqueur tire de son titre le nom d'« impressionnistes »."
+salle = 1
+mur = "gauche"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Coquelicots"
+annee = "1873"
+image = "coquelicots.jpg"
+technique = "Huile sur toile, 50 × 65 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Près d'Argenteuil, Camille et leur fils Jean traversent un champ semé de taches rouges."
+salle = 1
+mur = "droite"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "La Promenade, la femme à l'ombrelle"
+annee = "1875"
+image = "femme-ombrelle.jpg"
+technique = "Huile sur toile, 100 × 81 cm"
+collection = "National Gallery of Art, Washington"
+note = "Camille et Jean vus d'en bas, contre le ciel : le vent, les nuages et l'ombre verte de l'ombrelle."
+salle = 1
+mur = "gauche"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Gare Saint-Lazare"
+annee = "1877"
+image = "gare-saint-lazare.jpg"
+technique = "Huile sur toile, 75 × 104 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Sous la verrière, la vapeur des locomotives devient lumière : Monet en peint douze versions."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 1.5
+
+[[oeuvres]]
+titre = "La Rue Montorgueil, fête du 30 juin 1878"
+annee = "1878"
+image = "rue-montorgueil.jpg"
+technique = "Huile sur toile, 81 × 50 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une rue de Paris pavoisée pour l'Exposition universelle : une foule et des drapeaux en touches vibrantes."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Meules, fin de l'été"
+annee = "1890–1891"
+image = "meules.jpg"
+technique = "Huile sur toile, 60 × 100 cm"
+collection = "Art Institute of Chicago"
+note = "Deux meules de blé à Giverny : la première des grandes séries, où seul le moment de la journée change."
+salle = 2
+mur = "gauche"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "La Cathédrale de Rouen, harmonie bleue"
+annee = "1893"
+image = "cathedrale-rouen.jpg"
+technique = "Huile sur toile, 91 × 63 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Le portail au soleil du matin, peint d'une fenêtre en face : la pierre se dissout dans la lumière."
+salle = 2
+mur = "droite"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Le Parlement de Londres, soleil couchant"
+annee = "1903"
+image = "parlement-londres.jpg"
+technique = "Huile sur toile, 81 × 92 cm"
+collection = "National Gallery of Art, Washington"
+note = "Peint de l'hôpital Saint-Thomas : la silhouette du Parlement noyée dans le brouillard orangé de la Tamise."
+salle = 3
+mur = "droite"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Nymphéas"
+annee = "1906"
+image = "nympheas.jpg"
+technique = "Huile sur toile, 89,9 × 94,1 cm"
+collection = "Art Institute of Chicago"
+note = "Plus de rive ni de ciel : seulement la surface de l'étang de Giverny, ses fleurs et les reflets des nuages."
+salle = 3
+mur = "gauche"
+place = 1
+largeur = 1.35
+
+[[oeuvres]]
+titre = "Le Pont japonais"
+annee = "1920–1922"
+image = "pont-japonais.jpg"
+technique = "Huile sur toile, 89 × 116 cm"
+collection = "Museum of Modern Art, New York"
+note = "Presque aveugle, Monet peint de mémoire le pont de son jardin : des rouges et des ors qui annoncent l'abstraction."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 2.0

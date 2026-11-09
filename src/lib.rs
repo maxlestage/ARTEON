@@ -1,57 +1,73 @@
 //! ARTEON, partagé par le serveur et le navigateur : le catalogue, les scènes 3D et
 //! les îlots qui les font tourner dans un `<canvas>`.
 //!
-//! Le serveur rend les îlots en HTML (src/main.rs) ; `paquets build` compile ce
-//! fichier en WebAssembly pour que le navigateur lance les scènes.
+//! Le serveur rend les îlots en HTML (src/main.rs) avec, pour paramètre, l'adresse de
+//! l'exposition (`van-gogh`, `monet`…) ; `paquets build` compile ce fichier en
+//! WebAssembly pour que le navigateur lance les scènes.
 
 use paquets::prelude::*;
 
 pub mod artworks;
 pub mod gallery;
 
-/// L'îlot de la galerie : les salles, leurs couloirs et une visite guidée en 3D.
-pub fn gallery_scene(_props: &str) -> Node {
+use artworks::{EXHIBITIONS, Exhibition};
+
+/// L'exposition nommée par les paramètres de l'îlot (la première si elle est inconnue).
+fn exhibition(props: &str) -> &'static Exhibition {
+    Exhibition::find(props.trim()).unwrap_or(&EXHIBITIONS[0])
+}
+
+/// L'îlot de la galerie : les salles d'une exposition, leurs couloirs et la visite guidée.
+pub fn gallery_scene(props: &str) -> Node {
+    let ex = exhibition(props);
     canvas()
         .class("scene scene-gallery")
         .attr(
             "aria-label",
-            "Visite guidée en 3D de l'exposition Van Gogh d'ARTEON",
+            format!("Visite guidée en 3D de l'exposition {}", ex.title),
         )
-        .use_action(play_gallery)
+        .use_action(move |canvas| play_gallery(canvas, ex))
         .into()
 }
 
-/// L'îlot de la page de présentation : l'œuvre de la vitrine sur un chevalet tournant.
-pub fn showcase_scene(_props: &str) -> Node {
+/// L'îlot de la présentation d'une exposition : l'œuvre de la vitrine sur un chevalet.
+pub fn showcase_scene(props: &str) -> Node {
+    let ex = exhibition(props);
     canvas()
         .class("scene scene-showcase")
         .attr(
             "aria-label",
-            "Une toile de l'exposition sur un chevalet tournant, en 3D",
+            format!(
+                "Une toile de l'exposition {} sur un chevalet tournant, en 3D",
+                ex.title
+            ),
         )
-        .use_action(play_showcase)
+        .use_action(move |canvas| play_showcase(canvas, ex))
         .into()
 }
 
 #[cfg(target_arch = "wasm32")]
-fn play_gallery(canvas: &paquets::active::Dom) -> impl FnOnce() + use<> {
-    let running = gallery::tour_app().run_in(canvas).ok();
+fn play_gallery(canvas: &paquets::active::Dom, ex: &'static Exhibition) -> impl FnOnce() + use<> {
+    let running = gallery::tour_app(ex).run_in(canvas).ok();
     move || drop(running) // arrête la visite quand l'îlot s'en va
 }
 
 #[cfg(not(target_arch = "wasm32"))]
-fn play_gallery(_canvas: &paquets::active::Dom) -> impl FnOnce() + use<> {
+fn play_gallery(_canvas: &paquets::active::Dom, _ex: &'static Exhibition) -> impl FnOnce() + use<> {
     || {}
 }
 
 #[cfg(target_arch = "wasm32")]
-fn play_showcase(canvas: &paquets::active::Dom) -> impl FnOnce() + use<> {
-    let running = gallery::showcase_app().run_in(canvas).ok();
+fn play_showcase(canvas: &paquets::active::Dom, ex: &'static Exhibition) -> impl FnOnce() + use<> {
+    let running = gallery::showcase_app(ex).run_in(canvas).ok();
     move || drop(running)
 }
 
 #[cfg(not(target_arch = "wasm32"))]
-fn play_showcase(_canvas: &paquets::active::Dom) -> impl FnOnce() + use<> {
+fn play_showcase(
+    _canvas: &paquets::active::Dom,
+    _ex: &'static Exhibition,
+) -> impl FnOnce() + use<> {
     || {}
 }
 

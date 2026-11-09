@@ -1,20 +1,78 @@
-//! Le catalogue d'ARTEON : l'exposition, ses salles et ses œuvres.
+//! Le catalogue d'ARTEON : les expositions, leurs salles et leurs œuvres.
 //!
-//! Le contenu vient de `exposition.toml` et des images de `public/tableaux/` : `build.rs`
-//! les vérifie et les écrit en Rust (avec la mosaïque de chaque tableau), inclus
-//! ci-dessous. Ce module est partagé par la scène 3D (src/gallery.rs) et par les pages
+//! Le contenu vient de `expositions/<nom>.toml` et des images de
+//! `public/tableaux/<nom>/` : `build.rs` les vérifie et les écrit en Rust (avec la
+//! mosaïque de chaque tableau), inclus ci-dessous. Ce module est partagé par la scène 3D (src/gallery.rs) et par les pages
 //! rendues sur le serveur.
 
-/// L'exposition : ses textes et l'œuvre de la vitrine (page d'accueil).
+/// Une exposition : ses textes, ses salles, ses œuvres et l'œuvre de la vitrine.
 #[derive(Clone, Copy, Debug)]
 pub struct Exhibition {
+    /// Le nom du fichier `.toml`, et l'adresse de l'exposition (`/{slug}`).
+    pub slug: &'static str,
+    /// Son nom dans le menu (« Van Gogh »).
+    pub short_name: &'static str,
     pub title: &'static str,
     pub artist: &'static str,
     pub artist_dates: &'static str,
     pub kicker: &'static str,
     pub introduction: &'static str,
-    /// L'index, dans `ARTWORKS`, de l'œuvre qui tourne sur le chevalet de l'accueil.
+    /// La couleur d'accent de ses pages.
+    pub accent: [u8; 3],
+    /// L'index, dans `artworks`, de l'œuvre qui tourne sur le chevalet de sa présentation.
     pub showcase: Option<usize>,
+    /// Les salles, dans l'ordre de la visite.
+    pub rooms: &'static [Room],
+    /// Les œuvres, dans l'ordre du fichier.
+    pub artworks: &'static [Artwork],
+}
+
+impl Exhibition {
+    /// L'exposition dont l'adresse est `/{slug}`.
+    pub fn find(slug: &str) -> Option<&'static Exhibition> {
+        EXHIBITIONS.iter().find(|e| e.slug == slug)
+    }
+
+    /// L'œuvre de la vitrine, ou la première.
+    pub fn cover(&self) -> Option<&'static Artwork> {
+        self.showcase
+            .or(if self.artworks.is_empty() {
+                None
+            } else {
+                Some(0)
+            })
+            .map(|i| &self.artworks[i])
+    }
+
+    /// Les œuvres d'une salle, dans l'ordre de la visite : les murs latéraux de
+    /// l'entrée vers la sortie (gauche puis droite à chaque place), puis le mur du fond.
+    pub fn works_in_room(&self, room: usize) -> Vec<&'static Artwork> {
+        let mut works: Vec<&Artwork> = self
+            .artworks
+            .iter()
+            .filter(|a| a.hook.room == room)
+            .collect();
+        works.sort_by_key(|a| match a.hook.wall {
+            Wall::Left => (0, a.hook.place, 0),
+            Wall::Right => (0, a.hook.place, 1),
+            Wall::Back => (1, a.hook.place, 0),
+        });
+        works
+    }
+
+    /// Les années couvertes par ses œuvres (« 1885–1890 »).
+    pub fn years(&self) -> String {
+        let numbers: Vec<u32> = self
+            .artworks
+            .iter()
+            .filter_map(|a| a.year.get(..4)?.parse().ok())
+            .collect();
+        match (numbers.iter().min(), numbers.iter().max()) {
+            (Some(first), Some(last)) if first != last => format!("{first}–{last}"),
+            (Some(year), _) => year.to_string(),
+            _ => "—".into(),
+        }
+    }
 }
 
 /// Le mur d'une salle qui porte un tableau.
@@ -42,7 +100,7 @@ impl Hook {
     pub fn along(&self) -> f32 {
         let step = f32::from(self.place) - 2.0;
         match self.wall {
-            Wall::Left | Wall::Right => ROOMS[self.room].center_z - step * PLACE_SPACING,
+            Wall::Left | Wall::Right => room_center_z(self.room) - step * PLACE_SPACING,
             Wall::Back => step * PLACE_SPACING,
         }
     }
@@ -71,7 +129,8 @@ impl Mosaic {
 pub struct Artwork {
     pub title: &'static str,
     pub year: &'static str,
-    /// Le nom du fichier dans `public/tableaux/` (servi à `/tableaux/…`).
+    /// Le chemin de l'image dans `public/tableaux/` (`van-gogh/iris.jpg`, servi à
+    /// `/tableaux/van-gogh/iris.jpg`).
     pub image: &'static str,
     pub technique: &'static str,
     pub collection: &'static str,
@@ -113,19 +172,13 @@ pub const HANGING_HEIGHT: f32 = 1.8;
 /// L'écart entre deux places voisines sur un mur (doit correspondre à build.rs).
 pub const PLACE_SPACING: f32 = 3.0;
 
-include!(concat!(env!("OUT_DIR"), "/exposition.rs"));
-
-/// Les œuvres d'une salle, dans l'ordre de la visite : les murs latéraux de l'entrée
-/// vers la sortie (gauche puis droite à chaque place), puis le mur du fond.
-pub fn works_in_room(room: usize) -> Vec<&'static Artwork> {
-    let mut works: Vec<&Artwork> = ARTWORKS.iter().filter(|a| a.hook.room == room).collect();
-    works.sort_by_key(|a| match a.hook.wall {
-        Wall::Left => (0, a.hook.place, 0),
-        Wall::Right => (0, a.hook.place, 1),
-        Wall::Back => (1, a.hook.place, 0),
-    });
-    works
+/// Le centre de la salle `room` sur l'axe z : une salle (10 m) et un couloir (6 m) plus
+/// loin que la précédente (doit correspondre à build.rs).
+pub fn room_center_z(room: usize) -> f32 {
+    -(room as f32) * (2.0 * ROOM_HALF_DEPTH + CORRIDOR_LENGTH)
 }
+
+include!(concat!(env!("OUT_DIR"), "/expositions.rs"));
 
 /// `rgb(…)` pour le CSS.
 pub fn css_rgb([r, g, b]: [u8; 3]) -> String {
@@ -137,38 +190,41 @@ mod tests {
     use super::*;
 
     #[test]
-    fn the_exhibition_is_complete() {
-        assert!(!ROOMS.is_empty());
-        for art in ARTWORKS {
-            assert!(art.hook.room < ROOMS.len(), "{}", art.title);
-            let m = &art.mosaic;
-            assert_eq!(
-                m.cells.len(),
-                usize::from(m.cols) * usize::from(m.rows),
-                "{}",
-                art.title
-            );
-            assert!(
-                m.cells.iter().all(|&c| usize::from(c) < m.palette.len()),
-                "{}",
-                art.title
-            );
-            assert!(
-                std::path::Path::new("public/tableaux")
-                    .join(art.image)
-                    .is_file(),
-                "{}",
-                art.image
-            );
+    fn every_exhibition_is_complete() {
+        assert!(!EXHIBITIONS.is_empty());
+        for ex in EXHIBITIONS {
+            assert!(!ex.rooms.is_empty(), "{}", ex.slug);
+            assert_eq!(Exhibition::find(ex.slug).map(|e| e.slug), Some(ex.slug));
+            for (i, room) in ex.rooms.iter().enumerate() {
+                assert_eq!(room.center_z, room_center_z(i));
+            }
+            for art in ex.artworks {
+                assert!(art.hook.room < ex.rooms.len(), "{}", art.title);
+                let m = &art.mosaic;
+                assert_eq!(
+                    m.cells.len(),
+                    usize::from(m.cols) * usize::from(m.rows),
+                    "{}",
+                    art.title
+                );
+                assert!(
+                    m.cells.iter().all(|&c| usize::from(c) < m.palette.len()),
+                    "{}",
+                    art.title
+                );
+                assert!(
+                    std::path::Path::new("public/tableaux")
+                        .join(art.image)
+                        .is_file(),
+                    "{}",
+                    art.image
+                );
+            }
+            if let Some(i) = ex.showcase {
+                assert!(i < ex.artworks.len());
+            }
+            let visited: usize = (0..ex.rooms.len()).map(|r| ex.works_in_room(r).len()).sum();
+            assert_eq!(visited, ex.artworks.len());
         }
-        if let Some(i) = EXHIBITION.showcase {
-            assert!(i < ARTWORKS.len());
-        }
-    }
-
-    #[test]
-    fn every_work_appears_once_in_the_visit() {
-        let visited: usize = (0..ROOMS.len()).map(|r| works_in_room(r).len()).sum();
-        assert_eq!(visited, ARTWORKS.len());
     }
 }

@@ -11,7 +11,7 @@ use std::path::{Path, PathBuf};
 
 use paquets::App;
 
-use crate::ROUTES;
+use crate::routes;
 
 /// Écrit le site dans `out`, avec les liens derrière `base` (`""` ou `/ARTEON`).
 /// Renvoie le nombre de fichiers écrits.
@@ -40,7 +40,9 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
         Ok(())
     };
 
-    for route in ROUTES {
+    let pages = routes();
+    for route in &pages {
+        let route = route.as_str();
         let res = client.get(route).await;
         if res.status() != 200 {
             return Err(io::Error::other(format!(
@@ -49,9 +51,13 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             )));
         }
         let html = res.text();
-        // La présentation et la galerie contiennent une scène 3D : sans le bundle, elles
-        // resteraient vides.
-        if ["/", "/galerie"].contains(&route) && !html.contains("/pkg/") {
+        // La présentation et la galerie de chaque exposition contiennent une scène 3D :
+        // sans le bundle, elles resteraient vides.
+        let is_scene = route.ends_with("/galerie")
+            || arteon::artworks::EXHIBITIONS
+                .iter()
+                .any(|e| route == format!("/{}", e.slug));
+        if is_scene && !html.contains("/pkg/") {
             return Err(io::Error::other(format!(
                 "GET {route} : la page ne charge pas les îlots"
             )));
@@ -61,7 +67,7 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
         } else {
             format!("{route}/index.html")
         };
-        write(&file, with_base(&html, &base).as_bytes())?;
+        write(&file, with_base(&html, &base, &pages).as_bytes())?;
     }
 
     // La page « introuvable », servie par GitHub Pages pour toute adresse inconnue.
@@ -72,7 +78,7 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             res.status()
         )));
     }
-    write("404.html", with_base(&res.text(), &base).as_bytes())?;
+    write("404.html", with_base(&res.text(), &base, &pages).as_bytes())?;
 
     // Les fichiers statiques (`public/` : les images des tableaux, servies à `/…`) et le
     // bundle du navigateur (`pkg/` : les îlots compilés en WebAssembly).
@@ -109,7 +115,7 @@ fn normalize_base(base: &str) -> String {
 /// Place les URL absolues de la page (`"/…"`) derrière `base`. Les liens vers une page
 /// (`/galerie`) prennent la forme d'un dossier (`/ARTEON/galerie/`), comme les fichiers
 /// exportés : GitHub Pages n'a pas à les rediriger.
-pub fn with_base(html: &str, base: &str) -> String {
+pub fn with_base(html: &str, base: &str, pages: &[String]) -> String {
     let mut out = String::with_capacity(html.len() + 256);
     let mut rest = html;
     while let Some(i) = rest.find("=\"/") {
@@ -121,7 +127,7 @@ pub fn with_base(html: &str, base: &str) -> String {
         if url.starts_with("//") {
             out.push_str(url);
         } else {
-            out.push_str(&rewrite(url, base));
+            out.push_str(&rewrite(url, base, pages));
         }
         rest = &rest[end..];
     }
@@ -132,12 +138,12 @@ pub fn with_base(html: &str, base: &str) -> String {
         .replace("from \"/pkg/", &format!("from \"{base}/pkg/"))
 }
 
-fn rewrite(url: &str, base: &str) -> String {
+fn rewrite(url: &str, base: &str, pages: &[String]) -> String {
     let (path, suffix) = match url.find(['#', '?']) {
         Some(i) => (&url[..i], &url[i..]),
         None => (url, ""),
     };
-    let is_page = ROUTES.contains(&path) && path != "/";
+    let is_page = path != "/" && pages.iter().any(|p| p == path);
     let path = if is_page {
         format!("{path}/")
     } else {
@@ -170,11 +176,23 @@ mod tests {
 
     #[test]
     fn prefixes_links_and_the_islands_loader() {
-        let html = r##"<a href="/">a</a><a href="/galerie">b</a><a href="/oeuvres#x">c</a><a href="#top">d</a><a href="https://github.com/x">e</a><link rel="modulepreload" href="/pkg/a.js"/><script type="module">import init from "/pkg/a.js";init({module_or_path:"/pkg/a_bg.wasm"});</script>"##;
-        let out = with_base(html, "/ARTEON");
+        let html = r##"<a href="/">a</a><a href="/van-gogh/galerie">b</a><a href="/van-gogh/oeuvres#x">c</a><img src="/tableaux/van-gogh/iris.jpg"/><a href="#top">d</a><a href="https://github.com/x">e</a><link rel="modulepreload" href="/pkg/a.js"/><script type="module">import init from "/pkg/a.js";init({module_or_path:"/pkg/a_bg.wasm"});</script>"##;
+        let pages = vec![
+            "/".to_owned(),
+            "/van-gogh/galerie".to_owned(),
+            "/van-gogh/oeuvres".to_owned(),
+        ];
+        let out = with_base(html, "/ARTEON", &pages);
         assert!(out.contains(r#"href="/ARTEON/""#), "{out}");
-        assert!(out.contains(r#"href="/ARTEON/galerie/""#), "{out}");
-        assert!(out.contains(r#"href="/ARTEON/oeuvres/#x""#), "{out}");
+        assert!(out.contains(r#"href="/ARTEON/van-gogh/galerie/""#), "{out}");
+        assert!(
+            out.contains(r#"href="/ARTEON/van-gogh/oeuvres/#x""#),
+            "{out}"
+        );
+        assert!(
+            out.contains(r#"src="/ARTEON/tableaux/van-gogh/iris.jpg""#),
+            "{out}"
+        );
         assert!(out.contains(r##"href="#top""##), "{out}");
         assert!(out.contains(r#"href="https://github.com/x""#), "{out}");
         assert_eq!(out.matches("\"/ARTEON/pkg/").count(), 3, "{out}");
@@ -182,8 +200,16 @@ mod tests {
 
     #[test]
     fn without_base_only_pages_become_folders() {
-        let out = with_base(r#"<a href="/galerie">g</a><a href="/">h</a>"#, "");
-        assert_eq!(out, r#"<a href="/galerie/">g</a><a href="/">h</a>"#);
+        let pages = vec!["/".to_owned(), "/van-gogh/galerie".to_owned()];
+        let out = with_base(
+            r#"<a href="/van-gogh/galerie">g</a><a href="/">h</a>"#,
+            "",
+            &pages,
+        );
+        assert_eq!(
+            out,
+            r#"<a href="/van-gogh/galerie/">g</a><a href="/">h</a>"#
+        );
     }
 
     #[test]

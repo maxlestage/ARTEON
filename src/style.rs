@@ -44,7 +44,7 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .hero-title { font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: .02em; margin: .3rem 0; line-height: 1.02; }
 .hero-title .word { display: inline-block; white-space: nowrap; margin-right: .28em; }
 .hero-title .letter { display: inline-block; opacity: 0; animation: drop .8s cubic-bezier(.2,.9,.3,1.3) forwards; }
-.hero-title .word:nth-child(3n+1) .letter { color: var(--blue); }
+.hero-title .word:nth-child(3n+1) .letter { color: var(--accent); }
 .hero-title .word:nth-child(3n+2) .letter { color: var(--fg); }
 .hero-title .word:nth-child(3n) .letter { color: var(--yellow); text-shadow: 0 2px 0 rgba(15,26,58,.25); }
 .hero-sub { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.6rem); margin: .2rem 0 .8rem; color: var(--red); }
@@ -105,6 +105,44 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .viewer { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
 .scene-gallery { height: min(72vh, 620px); background: linear-gradient(#1a1b22, #0b0b10); }
 .room-legend { margin-top: 2rem; }
+
+/* ─── Accueil du musée : couvertures, expositions ─────────────────────── */
+.hero-covers { min-height: 440px; perspective: 1200px; }
+.cover-frame { position: absolute; padding: 9px; background: linear-gradient(135deg, #c99b45, #8a6326 45%, #d6ad5a 70%, #8a6326);
+  box-shadow: 0 30px 60px -28px rgba(0,0,0,.7); transition: transform .5s cubic-bezier(.2,.8,.2,1); animation: rise 1s cubic-bezier(.2,.8,.2,1) both; }
+.cover-frame img { display: block; width: 100%; height: auto; }
+.cover-frame.c0 { width: 58%; left: 4%; top: 8%; transform: rotateY(14deg) rotate(-4deg); z-index: 2; }
+.cover-frame.c1 { width: 50%; right: 2%; top: 26%; transform: rotateY(-16deg) rotate(3deg); z-index: 3; animation-delay: .15s; }
+.cover-frame.c2 { width: 36%; left: 30%; bottom: 0; transform: rotate(-1deg); z-index: 1; animation-delay: .3s; }
+.hero-covers:hover .c0 { transform: rotateY(4deg) rotate(-2deg) translateY(-6px); }
+.hero-covers:hover .c1 { transform: rotateY(-6deg) rotate(1deg) translateY(-6px); }
+.ex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.6rem; }
+.ex-card { display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden; background: var(--card);
+  border: 1px solid var(--line); border-top: 6px solid var(--accent); transition: transform .35s ease, box-shadow .35s ease; }
+.ex-card:hover { transform: translateY(-6px); box-shadow: 0 28px 50px -30px rgba(0,0,0,.55); }
+.ex-cover { display: block; height: 260px; overflow: hidden; background: #111; }
+.ex-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+.ex-card:hover .ex-cover img { transform: scale(1.05); }
+.ex-body { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; }
+.ex-body h3 { margin: 0; font-size: 1.5rem; }
+.ex-body h3 a { color: var(--fg); text-decoration: none; }
+.ex-body .kicker { color: var(--accent); }
+.ex-body .row { justify-content: flex-start; gap: .7rem; margin-top: .4rem; }
+
+/* ─── Onglets d'une exposition et autres expositions ──────────────────── */
+.ex-tabs { display: flex; gap: .4rem; flex-wrap: wrap; margin: 1.4rem 0 0; padding: .35rem; width: fit-content;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
+.ex-tabs a { padding: .4rem 1rem; border-radius: 999px; color: var(--fg); text-decoration: none; font-size: .92rem; }
+.ex-tabs a:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.ex-tabs a.current { background: var(--accent); color: #fff; }
+.others-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.2rem; }
+.other { position: relative; display: block; height: 200px; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; }
+.other img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+.other:hover img { transform: scale(1.06); }
+.other-text { position: absolute; inset: auto 0 0 0; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+  background: linear-gradient(transparent, rgba(0,0,0,.75)); }
+.other-text strong { font-size: 1.4rem; }
+.slots-block h3 { font-size: 1rem; margin: 1.6rem 0 .6rem; }
 
 /* ─── Ajouter une œuvre ───────────────────────────────────────────────── */
 .how { margin-top: 1rem; }
@@ -168,6 +206,7 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
   .cube-stage { width: 60px; height: 60px; right: 6px; top: -24px; }
   .cube .face { border-width: 2px; }
   .tilt img { height: 170px; }
+  .hero-covers { min-height: 300px; margin-top: 1rem; }
   .cube .front { transform: translateZ(30px); } .cube .back { transform: rotateY(180deg) translateZ(30px); }
   .cube .right { transform: rotateY(90deg) translateZ(30px); } .cube .left { transform: rotateY(-90deg) translateZ(30px); }
   .cube .top { transform: rotateX(90deg) translateZ(30px); } .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }

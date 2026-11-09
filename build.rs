@@ -1,16 +1,17 @@
-//! Lit `exposition.toml` et les images de `public/tableaux/`, vérifie tout, puis écrit
-//! le catalogue en Rust (`$OUT_DIR/exposition.rs`, inclus par `src/artworks.rs`).
+//! Lit les expositions (`expositions/<nom>.toml`) et leurs images
+//! (`public/tableaux/<nom>/`), vérifie tout, puis écrit le catalogue en Rust
+//! (`$OUT_DIR/expositions.rs`, inclus par `src/artworks.rs`).
 //!
-//! Chaque image devient une mosaïque : réduite à une grille (une case ≈ 2,8 cm dans la
-//! galerie), puis ramenée à une palette de quelques couleurs. La scène 3D construit
-//! une touche en relief par case, et un seul maillage par couleur.
+//! Chaque image devient une mosaïque : réduite à une grille (une case = 1 cm dans la
+//! galerie), puis ramenée à une palette de 64 couleurs. Les cases sont écrites dans un
+//! fichier binaire à côté (`include_bytes!`). La scène 3D en fait des touches en relief.
 //!
-//! Une erreur dans le fichier arrête la compilation avec un message qui dit quoi
+//! Une erreur dans un fichier arrête la compilation avec un message qui dit quoi
 //! corriger : le site publié n'est jamais cassé.
 
 use std::collections::HashSet;
 use std::fmt::Write as _;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use serde::Deserialize;
 
@@ -20,11 +21,10 @@ const MIN_WIDTH: f32 = 0.6;
 const MAX_WIDTH: f32 = 2.6;
 const MAX_HEIGHT: f32 = 2.6;
 /// La largeur d'une case de la mosaïque, en mètres.
-const CELL: f32 = 0.028;
-const MAX_COLS: u32 = 96;
-const MAX_ROWS: u32 = 96;
+const CELL: f32 = 0.01;
+const MAX_CELLS: u32 = 240;
 /// Le nombre de couleurs de la palette de chaque tableau.
-const COLORS: usize = 20;
+const COLORS: usize = 64;
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -39,12 +39,25 @@ struct File {
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct Exposition {
+    #[serde(default = "last")]
+    ordre: i64,
+    nom_court: String,
+    #[serde(default = "default_color")]
+    couleur: String,
     titre: String,
     artiste: String,
     dates: String,
     accroche: String,
     introduction: String,
     vitrine: Option<String>,
+}
+
+fn last() -> i64 {
+    i64::MAX
+}
+
+fn default_color() -> String {
+    "#1d3f8f".into()
 }
 
 #[derive(Deserialize)]
@@ -73,119 +86,202 @@ struct Oeuvre {
     largeur: f32,
 }
 
-fn fail(message: String) -> ! {
-    eprintln!("\n\n  ✖ exposition.toml : {message}\n\n");
-    panic!("exposition.toml : {message}");
+fn fail(file: &str, message: String) -> ! {
+    eprintln!("\n\n  ✖ {file} : {message}\n\n");
+    panic!("{file} : {message}");
 }
 
-fn hex(color: &str, context: &str) -> [u8; 3] {
+fn hex(file: &str, color: &str, context: &str) -> [u8; 3] {
     let h = color.trim().trim_start_matches('#');
     let ok = h.len() == 6 && h.chars().all(|c| c.is_ascii_hexdigit());
     if !ok {
-        fail(format!(
-            "{context} : la couleur « {color} » doit s'écrire #rrggbb, par exemple #e7e1d3"
-        ));
+        fail(
+            file,
+            format!(
+                "{context} : la couleur « {color} » doit s'écrire #rrggbb, par exemple #e7e1d3"
+            ),
+        );
     }
     let byte = |i: usize| u8::from_str_radix(&h[i..i + 2], 16).unwrap_or(0);
     [byte(0), byte(2), byte(4)]
 }
 
 fn main() {
-    println!("cargo::rerun-if-changed=exposition.toml");
+    println!("cargo::rerun-if-changed=expositions");
     println!("cargo::rerun-if-changed=public/tableaux");
+    let out_dir = PathBuf::from(std::env::var("OUT_DIR").expect("OUT_DIR"));
 
-    let text = std::fs::read_to_string("exposition.toml")
-        .unwrap_or_else(|e| fail(format!("fichier illisible ({e})")));
-    let file: File =
-        toml::from_str(&text).unwrap_or_else(|e| fail(format!("le fichier est mal écrit :\n{e}")));
-    if file.salles.is_empty() {
-        fail("il faut au moins une salle ([[salles]])".into());
+    let mut files: Vec<PathBuf> = std::fs::read_dir("expositions")
+        .unwrap_or_else(|e| fail("expositions/", format!("dossier illisible ({e})")))
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.extension().is_some_and(|x| x == "toml"))
+        .collect();
+    files.sort();
+    let mut parsed = Vec::new();
+    for path in &files {
+        let name = path.display().to_string();
+        println!("cargo::rerun-if-changed={name}");
+        let slug = path
+            .file_stem()
+            .unwrap_or_default()
+            .to_string_lossy()
+            .to_string();
+        let ok = !slug.is_empty()
+            && slug
+                .chars()
+                .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-')
+            && !["ajouter", "pkg", "tableaux", "404"].contains(&slug.as_str());
+        if !ok {
+            fail(
+                &name,
+                "le nom du fichier donne l'adresse de l'exposition : minuscules sans accents, chiffres et tirets \
+                 seulement (par exemple monet.toml), et pas ajouter, pkg, tableaux ou 404"
+                    .into(),
+            );
+        }
+        let text = std::fs::read_to_string(path)
+            .unwrap_or_else(|e| fail(&name, format!("fichier illisible ({e})")));
+        let file: File = toml::from_str(&text)
+            .unwrap_or_else(|e| fail(&name, format!("le fichier est mal écrit :\n{e}")));
+        parsed.push((name, slug, file));
     }
+    if parsed.is_empty() {
+        fail(
+            "expositions/",
+            "il faut au moins une exposition (un fichier .toml)".into(),
+        );
+    }
+    parsed.sort_by(|a, b| {
+        a.2.exposition
+            .ordre
+            .cmp(&b.2.exposition.ordre)
+            .then(a.1.cmp(&b.1))
+    });
 
+    let mut out = String::from(
+        "// Écrit par build.rs à partir de expositions/*.toml : ne pas modifier.\n\n\
+         /// Les expositions, dans l'ordre de l'accueil.\npub static EXHIBITIONS: &[Exhibition] = &[\n",
+    );
+    for (name, slug, file) in &parsed {
+        exhibition(&mut out, &out_dir, name, slug, file);
+    }
+    out.push_str("];\n");
+    std::fs::write(out_dir.join("expositions.rs"), out).expect("écriture de expositions.rs");
+}
+
+/// Vérifie une exposition et écrit son code (et les mosaïques de ses œuvres).
+fn exhibition(out: &mut String, out_dir: &Path, name: &str, slug: &str, file: &File) {
+    if file.salles.is_empty() {
+        fail(name, "il faut au moins une salle ([[salles]])".into());
+    }
     let rooms = file.salles.len();
     let mut used = HashSet::new();
-    let mut out =
-        String::from("// Écrit par build.rs à partir de exposition.toml : ne pas modifier.\n\n");
-
     let mut artworks = String::new();
     let mut showcase = None;
     for (index, art) in file.oeuvres.iter().enumerate() {
         let who = format!("l'œuvre « {} »", art.titre);
         if art.salle == 0 || art.salle > rooms {
-            fail(format!(
-                "{who} : salle = {}, mais les salles vont de 1 à {rooms}",
-                art.salle
-            ));
+            fail(
+                name,
+                format!(
+                    "{who} : salle = {}, mais les salles vont de 1 à {rooms}",
+                    art.salle
+                ),
+            );
         }
         let wall = match art.mur.trim() {
             "gauche" => "Left",
             "droite" => "Right",
             "fond" => "Back",
-            other => fail(format!(
-                "{who} : mur = \"{other}\", il faut \"gauche\", \"droite\" ou \"fond\""
-            )),
+            other => fail(
+                name,
+                format!("{who} : mur = \"{other}\", il faut \"gauche\", \"droite\" ou \"fond\""),
+            ),
         };
         if !(1..=3).contains(&art.place) {
-            fail(format!("{who} : place = {}, il faut 1, 2 ou 3", art.place));
+            fail(
+                name,
+                format!("{who} : place = {}, il faut 1, 2 ou 3", art.place),
+            );
         }
         if wall == "Back" && art.place == 2 && art.salle < rooms {
-            fail(format!(
-                "{who} : le milieu du mur du fond de la salle {} est une porte ; choisir la place 1 ou 3",
-                art.salle
-            ));
+            fail(
+                name,
+                format!(
+                    "{who} : le milieu du mur du fond de la salle {} est une porte ; choisir la place 1 ou 3",
+                    art.salle
+                ),
+            );
         }
         if !used.insert((art.salle, wall, art.place)) {
-            fail(format!(
-                "{who} : la salle {}, mur {}, place {} est déjà occupée par une autre œuvre",
-                art.salle, art.mur, art.place
-            ));
+            fail(
+                name,
+                format!(
+                    "{who} : la salle {}, mur {}, place {} est déjà occupée par une autre œuvre",
+                    art.salle, art.mur, art.place
+                ),
+            );
         }
         if !(MIN_WIDTH..=MAX_WIDTH).contains(&art.largeur) {
-            fail(format!(
-                "{who} : largeur = {}, il faut entre {MIN_WIDTH} et {MAX_WIDTH} mètres",
-                art.largeur
-            ));
+            fail(
+                name,
+                format!(
+                    "{who} : largeur = {}, il faut entre {MIN_WIDTH} et {MAX_WIDTH} mètres",
+                    art.largeur
+                ),
+            );
         }
 
-        let path = Path::new("public/tableaux").join(&art.image);
+        let folder = format!("public/tableaux/{slug}");
+        let path = Path::new(&folder).join(&art.image);
         if art.image.contains('/') || art.image.contains('\\') || !path.is_file() {
-            fail(format!(
-                "{who} : l'image « {} » est introuvable dans public/tableaux/",
-                art.image
-            ));
+            fail(
+                name,
+                format!(
+                    "{who} : l'image « {} » est introuvable dans {folder}/",
+                    art.image
+                ),
+            );
         }
         let image = image::open(&path)
             .unwrap_or_else(|e| {
-                fail(format!(
-                    "{who} : l'image « {} » ne peut pas être lue ({e})",
-                    art.image
-                ))
+                fail(
+                    name,
+                    format!(
+                        "{who} : l'image « {} » ne peut pas être lue ({e})",
+                        art.image
+                    ),
+                )
             })
             .to_rgb8();
         let ratio = image.height() as f32 / image.width().max(1) as f32;
         let height = art.largeur * ratio;
         if height > MAX_HEIGHT {
-            fail(format!(
-                "{who} : avec largeur = {}, le tableau ferait {height:.2} m de haut (au plus {MAX_HEIGHT} m) ; réduire la largeur",
-                art.largeur
-            ));
+            fail(
+                name,
+                format!(
+                    "{who} : avec largeur = {}, le tableau ferait {height:.2} m de haut (au plus {MAX_HEIGHT} m) ; réduire la largeur",
+                    art.largeur
+                ),
+            );
         }
         if file.exposition.vitrine.as_deref() == Some(art.image.as_str()) && showcase.is_none() {
             showcase = Some(index);
         }
 
         let (cols, rows, palette, cells) = mosaic(&image, art.largeur, height);
+        let bin = format!("mosaic-{slug}-{index}.bin");
+        std::fs::write(out_dir.join(&bin), &cells).expect("écriture d'une mosaïque");
         let mut palette_code = String::new();
         for [r, g, b] in &palette {
             let _ = write!(palette_code, "[{r}, {g}, {b}], ");
         }
-        let cells_code: Vec<String> = cells.iter().map(u8::to_string).collect();
         let _ = writeln!(
             artworks,
-            "    Artwork {{\n        title: {:?},\n        year: {:?},\n        image: {:?},\n        technique: {:?},\n        collection: {:?},\n        note: {:?},\n        width: {:?},\n        height: {:?},\n        hook: Hook {{ room: {}, wall: Wall::{wall}, place: {} }},\n        mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], cells: &[{}] }},\n    }},",
+            "        Artwork {{\n            title: {:?},\n            year: {:?},\n            image: {:?},\n            technique: {:?},\n            collection: {:?},\n            note: {:?},\n            width: {:?},\n            height: {:?},\n            hook: Hook {{ room: {}, wall: Wall::{wall}, place: {} }},\n            mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], cells: include_bytes!(concat!(env!(\"OUT_DIR\"), \"/{bin}\")) }},\n        }},",
             art.titre.trim(),
             art.annee.trim(),
-            art.image,
+            format!("{slug}/{}", art.image),
             art.technique.trim(),
             art.collection.trim(),
             art.note.trim(),
@@ -193,7 +289,6 @@ fn main() {
             (height * 1000.0).round() / 1000.0,
             art.salle - 1,
             art.place,
-            cells_code.join(",")
         );
     }
 
@@ -209,25 +304,31 @@ fn main() {
             }
             let gap = PLACE_SPACING * f32::from(b.place - a.place);
             if gap < (a.largeur + b.largeur) / 2.0 + 0.7 {
-                fail(format!(
-                    "« {} » et « {} » se chevauchent sur le mur {} de la salle {} : réduire leurs largeurs ou les écarter (places 1 et 3)",
-                    a.titre, b.titre, a.mur, a.salle
-                ));
+                fail(
+                    name,
+                    format!(
+                        "« {} » et « {} » se chevauchent sur le mur {} de la salle {} : réduire leurs largeurs ou les écarter (places 1 et 3)",
+                        a.titre, b.titre, a.mur, a.salle
+                    ),
+                );
             }
         }
     }
     if let Some(vitrine) = &file.exposition.vitrine
         && showcase.is_none()
     {
-        fail(format!(
-            "vitrine = \"{vitrine}\" : aucune œuvre n'utilise cette image"
-        ));
+        fail(
+            name,
+            format!("vitrine = \"{vitrine}\" : aucune œuvre n'utilise cette image"),
+        );
     }
 
     let e = &file.exposition;
+    let [ar, ag, ab] = hex(name, &e.couleur, "couleur");
     let _ = writeln!(
         out,
-        "/// L'exposition.\npub static EXHIBITION: Exhibition = Exhibition {{\n    title: {:?},\n    artist: {:?},\n    artist_dates: {:?},\n    kicker: {:?},\n    introduction: {:?},\n    showcase: {:?},\n}};\n",
+        "    Exhibition {{\n        slug: {slug:?},\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        rooms: &[",
+        e.nom_court.trim(),
         e.titre.trim(),
         e.artiste.trim(),
         e.dates.trim(),
@@ -235,33 +336,27 @@ fn main() {
         e.introduction.trim(),
         showcase,
     );
-    out.push_str("/// Les salles, dans l'ordre de la visite.\npub static ROOMS: &[Room] = &[\n");
     for (i, salle) in file.salles.iter().enumerate() {
-        let [r, g, b] = hex(&salle.murs, &format!("la salle « {} »", salle.nom));
+        let [r, g, b] = hex(name, &salle.murs, &format!("la salle « {} »", salle.nom));
         let _ = writeln!(
             out,
-            "    Room {{ name: {:?}, theme: {:?}, walls: [{r}, {g}, {b}], center_z: {:?} }},",
+            "            Room {{ name: {:?}, theme: {:?}, walls: [{r}, {g}, {b}], center_z: {:?} }},",
             salle.nom.trim(),
             salle.theme.trim(),
             -(i as f32) * 16.0
         );
     }
-    out.push_str(
-        "];\n\n/// Les œuvres, dans l'ordre du fichier.\npub static ARTWORKS: &[Artwork] = &[\n",
-    );
+    out.push_str("        ],\n        artworks: &[\n");
     out.push_str(&artworks);
-    out.push_str("];\n");
-
-    let dest = Path::new(&std::env::var("OUT_DIR").expect("OUT_DIR")).join("exposition.rs");
-    std::fs::write(dest, out).expect("écriture de exposition.rs");
+    out.push_str("        ],\n    },\n");
 }
 
 /// La grille de l'image et sa palette : (colonnes, lignes, palette, une couleur par case,
 /// ligne par ligne depuis le haut).
 fn mosaic(image: &image::RgbImage, width: f32, height: f32) -> (u32, u32, Vec<[u8; 3]>, Vec<u8>) {
-    let cols = ((width / CELL).round() as u32).clamp(12, MAX_COLS);
-    let rows = ((height / width * cols as f32).round() as u32).clamp(8, MAX_ROWS);
-    let small = image::imageops::resize(image, cols, rows, image::imageops::FilterType::Triangle);
+    let cols = ((width / CELL).round() as u32).clamp(16, MAX_CELLS);
+    let rows = ((height / width * cols as f32).round() as u32).clamp(8, MAX_CELLS);
+    let small = image::imageops::resize(image, cols, rows, image::imageops::FilterType::Lanczos3);
     let pixels: Vec<[f32; 3]> = small
         .pixels()
         .map(|p| [p[0] as f32, p[1] as f32, p[2] as f32])
@@ -322,7 +417,7 @@ fn kmeans(pixels: &[[f32; 3]], k: usize) -> Vec<[f32; 3]> {
             *d = d.min(distance(p, &c));
         }
     }
-    for _ in 0..16 {
+    for _ in 0..12 {
         let mut sums = vec![[0.0f32; 4]; centers.len()];
         for p in pixels {
             let s = &mut sums[nearest(&centers, p)];
