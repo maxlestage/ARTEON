@@ -1779,7 +1779,11 @@ fn app() -> App {
         }
     }
     // Les fichiers de données des expositions (mosaïques, sculptures, vignettes).
-    app.static_dir("/donnees", arteon::artworks::DATA_DIR);
+    // Sur Heroku, la compilation a lieu ailleurs : heroku-build.sh copie les données dans
+    // donnees/ et le Procfile l'indique par ARTEON_DONNEES.
+    let data =
+        std::env::var("ARTEON_DONNEES").unwrap_or_else(|_| arteon::artworks::DATA_DIR.to_owned());
+    app.static_dir("/donnees", &data);
     app.fallback(not_found);
     app
 }

@@ -1,0 +1,10 @@
+# Heroku, avec le buildpack emk/rust
+# (https://elements.heroku.com/buildpacks/emk/heroku-buildpack-rust), sur la pile heroku-26.
+#
+# Le buildpack lit ce fichier, installe Rust, puis lancerait un simple `cargo build
+# --release` à la racine. Ce n'est pas assez pour ARTEON : il faut aussi les îlots 3D en
+# WebAssembly et les données des expositions. Le build du buildpack est donc sauté, et
+# heroku-build.sh fait tout, une fois Rust installé (comme pour le site de Paquets).
+VERSION=stable
+RUST_SKIP_BUILD=1
+trap 'status=$?; if [ "$status" -eq 0 ]; then ENV_DIR="$ENV_DIR" bash "$BUILD_DIR/heroku-build.sh" || exit 1; fi' EXIT
