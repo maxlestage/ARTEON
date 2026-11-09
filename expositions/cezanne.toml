@@ -1,0 +1,156 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « CÉZANNE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/cezanne/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /cezanne.
+#
+#  Pour ajouter une œuvre :
+#    1. déposer son image (JPEG ou PNG) dans public/tableaux/cezanne/ ;
+#    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
+#  Au prochain push sur master, le site est reconstruit et republié tout seul.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 4
+nom_court = "Cézanne"
+couleur = "#b8642a"
+titre = "Cézanne, la construction de la couleur"
+artiste = "Paul Cézanne"
+dates = "1839–1906"
+accroche = "Exposition virtuelle · Paul Cézanne"
+introduction = """
+Des pommes que l'on croirait taillées dans la pierre, des joueurs de cartes \
+immobiles, la mer à l'Estaque et la montagne Sainte-Victoire peinte encore et \
+encore : Cézanne construit le monde avec la couleur. Picasso l'appelait « notre \
+père à tous »."""
+vitrine = "panier-pommes.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+
+[[salles]]
+nom = "Salle I · Les êtres et les choses"
+theme = "1877–1895 : les portraits, les joueurs de cartes et les natures mortes, construits touche par touche."
+murs = "#ece4d6"
+
+[[salles]]
+nom = "Salle II · La Provence"
+theme = "1885–1904 : la mer à l'Estaque, le Château Noir et la montagne Sainte-Victoire."
+murs = "#e6e8df"
+
+[[salles]]
+nom = "Salle III · Les Grandes Baigneuses"
+theme = "1900–1906 : la dernière grande toile, inachevée, qui ouvre la voie au cubisme."
+murs = "#e3e4ea"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Autoportrait"
+annee = "1878–1880"
+image = "autoportrait.jpg"
+technique = "Huile sur toile, 60,3 × 46,9 cm"
+collection = "The Phillips Collection, Washington"
+note = "Un regard de biais, une tête solide comme un bloc : Cézanne se peint comme il peint une montagne."
+salle = 1
+mur = "gauche"
+place = 1
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Madame Cézanne au fauteuil rouge"
+annee = "vers 1877"
+image = "madame-cezanne.jpg"
+technique = "Huile sur toile, 72,4 × 56 cm"
+collection = "Museum of Fine Arts, Boston"
+note = "Hortense Fiquet, sa compagne, posée comme une nature morte dans le grand fauteuil rouge."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Le Garçon au gilet rouge"
+annee = "1888–1890"
+image = "gilet-rouge.jpg"
+technique = "Huile sur toile, 89,5 × 72,4 cm"
+collection = "National Gallery of Art, Washington"
+note = "Un jeune modèle italien, accoudé : le bras démesuré sert l'équilibre du tableau plus que l'anatomie."
+salle = 1
+mur = "gauche"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Les Joueurs de cartes"
+annee = "1890–1895"
+image = "joueurs-cartes.jpg"
+technique = "Huile sur toile, 47,5 × 57 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Deux paysans d'Aix face à face, absorbés et immobiles : une partie qui semble durer pour l'éternité."
+salle = 1
+mur = "droite"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Le Panier de pommes"
+annee = "vers 1893"
+image = "panier-pommes.jpg"
+technique = "Huile sur toile, 65 × 80 cm"
+collection = "Art Institute of Chicago"
+note = "La table penche, la bouteille aussi : Cézanne montre les objets de plusieurs points de vue à la fois."
+salle = 1
+mur = "gauche"
+place = 3
+largeur = 1.3
+
+[[oeuvres]]
+titre = "La Baie de Marseille, vue de l'Estaque"
+annee = "vers 1885"
+image = "estaque.jpg"
+technique = "Huile sur toile, 80,2 × 100,6 cm"
+collection = "Art Institute of Chicago"
+note = "Les toits ocre, le bleu dense de la mer et les collines : un paysage bâti en plans de couleur."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Le Château Noir"
+annee = "1900–1904"
+image = "chateau-noir.jpg"
+technique = "Huile sur toile, 73,7 × 96,6 cm"
+collection = "National Gallery of Art, Washington"
+note = "Une bâtisse ocre au milieu des pins, près d'Aix, sous un ciel bleu outremer."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 1.45
+
+[[oeuvres]]
+titre = "La Montagne Sainte-Victoire"
+annee = "1904"
+image = "sainte-victoire.jpg"
+technique = "Huile sur toile"
+note = "Vue des Lauves, son dernier atelier : Cézanne a peint la montagne plus de quatre-vingts fois."
+salle = 2
+mur = "gauche"
+place = 3
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Les Grandes Baigneuses"
+annee = "1900–1906"
+image = "grandes-baigneuses.jpg"
+technique = "Huile sur toile, 210,5 × 250,8 cm"
+collection = "Philadelphia Museum of Art"
+note = "Des corps et des arbres qui forment une cathédrale : la dernière grande toile, laissée inachevée."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 2.6

@@ -29,6 +29,19 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .site-header nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%;
   background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
 .site-header nav a:hover::after, .site-header nav a.current::after { transform: scaleX(1); }
+.site-header nav { align-items: center; }
+.nav-menu { position: relative; }
+.nav-menu summary { list-style: none; cursor: pointer; padding: .2rem 0; position: relative; }
+.nav-menu summary::-webkit-details-marker { display: none; }
+.nav-menu summary::after { content: " ▾"; font-size: .8em; }
+.nav-menu summary.current { box-shadow: inset 0 -2px 0 var(--accent); }
+.nav-menu ul { position: absolute; right: 0; top: calc(100% + .6rem); z-index: 20; min-width: 15rem; list-style: none; margin: 0; padding: .5rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.45); }
+.nav-menu li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .45rem .6rem; border-radius: 8px; }
+.nav-menu li:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.nav-menu li a::after { display: none; }
+.nav-menu li a.current { font-weight: 700; color: var(--accent); }
+.nav-artist { font-size: .78rem; color: var(--muted); white-space: nowrap; }
 .logo { display: inline-flex; align-items: center; gap: .6rem; color: var(--fg); text-decoration: none; letter-spacing: .2em; }
 .logo-mark { position: relative; width: 28px; height: 28px; border-radius: 7px; display: inline-block; overflow: hidden;
   background: radial-gradient(circle at 70% 30%, #3d63c9, var(--blue) 55%, var(--ink)); }
@@ -255,6 +268,11 @@ body.viewer-open { overflow: hidden; }
   .site-header nav { gap: .7rem; font-size: .9rem; }
 }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } .nav-long { display: none; } }
+/* Sur un téléphone, le menu des expositions s'ouvre sous l'en-tête, sur toute la largeur. */
+@media (max-width: 640px) {
+  .nav-menu { position: static; }
+  .nav-menu ul { left: 12px; right: 12px; top: calc(100% - .3rem); min-width: 0; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

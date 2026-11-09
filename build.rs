@@ -72,6 +72,9 @@ struct Salle {
 #[serde(deny_unknown_fields)]
 struct Oeuvre {
     titre: String,
+    /// Le peintre, quand ce n'est pas celui de l'exposition (une exposition à plusieurs).
+    #[serde(default)]
+    artiste: Option<String>,
     annee: String,
     image: String,
     #[serde(default)]
@@ -278,8 +281,12 @@ fn exhibition(out: &mut String, out_dir: &Path, name: &str, slug: &str, file: &F
         }
         let _ = writeln!(
             artworks,
-            "        Artwork {{\n            title: {:?},\n            year: {:?},\n            image: {:?},\n            technique: {:?},\n            collection: {:?},\n            note: {:?},\n            width: {:?},\n            height: {:?},\n            hook: Hook {{ room: {}, wall: Wall::{wall}, place: {} }},\n            mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], cells: include_bytes!(concat!(env!(\"OUT_DIR\"), \"/{bin}\")) }},\n        }},",
+            "        Artwork {{\n            title: {:?},\n            artist: {:?},\n            year: {:?},\n            image: {:?},\n            technique: {:?},\n            collection: {:?},\n            note: {:?},\n            width: {:?},\n            height: {:?},\n            hook: Hook {{ room: {}, wall: Wall::{wall}, place: {} }},\n            mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], cells: include_bytes!(concat!(env!(\"OUT_DIR\"), \"/{bin}\")) }},\n        }},",
             art.titre.trim(),
+            art.artiste
+                .as_deref()
+                .map(str::trim)
+                .filter(|a| !a.is_empty()),
             art.annee.trim(),
             format!("{slug}/{}", art.image),
             art.technique.trim(),

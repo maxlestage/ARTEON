@@ -4,11 +4,15 @@
 
 ARTEON est un musée qui n'existe pas. Chaque exposition est consacrée à un peintre : ses toiles sont accrochées dans des salles reliées par des couloirs, et une caméra fait la visite guidée en boucle, en s'arrêtant devant chaque œuvre. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML et les scènes 3D, compilées en WebAssembly et rendues en WebGL 2.
 
-Trois expositions sont ouvertes :
+Sept expositions sont ouvertes (69 toiles) :
 
 - **Van Gogh, la couleur en mouvement** — douze toiles de Vincent van Gogh (1885–1890), des *Mangeurs de pommes de terre* au *Champ de blé aux corbeaux* ;
 - **Monet, la lumière à l'œuvre** — douze toiles de Claude Monet (1866–1922), de *Femmes au jardin* et *Impression, soleil levant* jusqu'aux *Nymphéas* et au *Pont japonais* ;
-- **Renoir, le bonheur de peindre** — dix toiles de Pierre-Auguste Renoir (1874–1892), de *La Loge* au *Bal du moulin de la Galette* et aux trois grandes *Danses*.
+- **Renoir, le bonheur de peindre** — dix toiles de Pierre-Auguste Renoir (1874–1892), de *La Loge* au *Bal du moulin de la Galette* et aux trois grandes *Danses* ;
+- **Cézanne, la construction de la couleur** — neuf toiles de Paul Cézanne (1877–1906), des *Joueurs de cartes* aux *Grandes Baigneuses* ;
+- **Gauguin, l'ailleurs en couleurs** — neuf toiles de Paul Gauguin (1888–1898), de la *Vision après le sermon* à *D'où venons-nous ?* ;
+- **Klimt, l'or et la vie** — sept toiles de Gustav Klimt (1900–1915), d'*Attersee* au *Baiser* ;
+- **Vermeer et Rembrandt, le siècle d'or hollandais** — dix toiles (1632–1668), de la *Leçon d'anatomie* à *La Jeune Fille à la perle* et à *La Ronde de nuit*.
 
 Seuls des peintres du **domaine public** (morts depuis plus de 70 ans) sont exposés : c'est pourquoi il n'y a pas, par exemple, d'exposition Picasso (mort en 1973, ses œuvres sont protégées jusqu'en 2044).
 
@@ -17,7 +21,7 @@ Seuls des peintres du **domaine public** (morts depuis plus de 70 ans) sont expo
 | Route | Contenu |
 |---|---|
 | `/` | L'accueil du musée : le concept, les chiffres clés, les expositions et comment c'est fait |
-| `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/monet`, `/renoir`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
+| `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/monet`, `/renoir`, `/cezanne`, `/gauguin`, `/klimt`, `/vermeer-rembrandt`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
 | `/<exposition>/galerie` | La visite guidée en 3D de l'exposition |
 | `/<exposition>/oeuvres` | Le catalogue : chaque toile, son cartel (technique, collection, note) et sa place dans la galerie |
 | `/ajouter` | Le guide pour ajouter, déplacer ou modifier une œuvre, ou créer une exposition, avec le plan des emplacements libres |
@@ -73,7 +77,7 @@ Dans la scène, les cases voisines de même couleur sont fusionnées en rectangl
 
 ## Les œuvres (domaine public)
 
-Vincent van Gogh (mort en 1890), Claude Monet (mort en 1926) et Pierre-Auguste Renoir (mort en 1919) sont dans le domaine public. Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
+Tous les peintres exposés sont morts depuis plus de 70 ans : Rembrandt (1669), Vermeer (1675), Van Gogh (1890), Gauguin (1903), Cézanne (1906), Klimt (1918), Renoir (1919) et Monet (1926). Leurs œuvres sont dans le domaine public. Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
 
 **Van Gogh, la couleur en mouvement**
 
@@ -124,6 +128,8 @@ Vincent van Gogh (mort en 1890), Claude Monet (mort en 1926) et Pierre-Auguste R
 | | Danse à la campagne | 1883 | Musée d'Orsay, Paris |
 | | Jeunes filles au piano | 1892 | Musée d'Orsay, Paris |
 
+Les cartels complets (technique, collection, note) des quatre dernières expositions sont dans leurs fichiers : [`cezanne.toml`](expositions/cezanne.toml), [`gauguin.toml`](expositions/gauguin.toml), [`klimt.toml`](expositions/klimt.toml), [`vermeer-rembrandt.toml`](expositions/vermeer-rembrandt.toml). Une exposition peut réunir plusieurs peintres : chaque œuvre précise alors son `artiste`.
+
 ## Architecture
 
 - `expositions/*.toml` : le contenu de chaque exposition (textes, salles, œuvres).
@@ -171,4 +177,4 @@ Chaque page est rendue par le serveur lui-même (le client de test en mémoire d
 
 ## Licence
 
-Le code d'ARTEON est sous licence MIT. Il dépend de [Paquets](https://github.com/maxlestage/Paquets), un logiciel propriétaire qui peut être utilisé librement comme dépendance (voir sa licence). Les œuvres de Vincent van Gogh, de Claude Monet et de Pierre-Auguste Renoir appartiennent au domaine public.
+Le code d'ARTEON est sous licence MIT. Il dépend de [Paquets](https://github.com/maxlestage/Paquets), un logiciel propriétaire qui peut être utilisé librement comme dépendance (voir sa licence). Les œuvres exposées appartiennent au domaine public.

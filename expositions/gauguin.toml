@@ -1,0 +1,157 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « GAUGUIN » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/gauguin/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /gauguin.
+#
+#  Pour ajouter une œuvre :
+#    1. déposer son image (JPEG ou PNG) dans public/tableaux/gauguin/ ;
+#    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
+#  Au prochain push sur master, le site est reconstruit et republié tout seul.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 5
+nom_court = "Gauguin"
+couleur = "#c0472a"
+titre = "Gauguin, l'ailleurs en couleurs"
+artiste = "Paul Gauguin"
+dates = "1848–1903"
+accroche = "Exposition virtuelle · Paul Gauguin"
+introduction = """
+De Pont-Aven à Tahiti, Gauguin quitte tout pour trouver une peinture plus libre : \
+des aplats de couleurs pures cernés de noir, des rouges et des jaunes impossibles, \
+des visions et des mythes. Neuf toiles, de la Vision après le sermon jusqu'à son \
+grand testament, D'où venons-nous ?"""
+vitrine = "nafea.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+
+[[salles]]
+nom = "Salle I · Pont-Aven"
+theme = "1888–1889 : en Bretagne, Gauguin invente le synthétisme, des couleurs pures cernées comme des vitraux."
+murs = "#ece6da"
+
+[[salles]]
+nom = "Salle II · Le premier séjour à Tahiti"
+theme = "1891–1892 : les femmes, les fruits et les dieux de Polynésie, dans des couleurs éclatantes."
+murs = "#f1e3cf"
+
+[[salles]]
+nom = "Salle III · Le testament"
+theme = "1897–1898 : la grande frise de la vie, et le cheval blanc qui boit dans la rivière."
+murs = "#e2e6e0"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "La Vision après le sermon"
+annee = "1888"
+image = "vision-sermon.jpg"
+technique = "Huile sur toile, 72,2 × 91 cm"
+collection = "National Galleries of Scotland, Édimbourg"
+note = "Des Bretonnes en coiffe voient Jacob lutter avec l'ange, sur un champ entièrement rouge."
+salle = 1
+mur = "gauche"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Autoportrait à l'auréole et au serpent"
+annee = "1889"
+image = "autoportrait-aureole.jpg"
+technique = "Huile sur bois, 79,2 × 51,3 cm"
+collection = "National Gallery of Art, Washington"
+note = "Mi-saint, mi-diable : une auréole, un serpent et des pommes, peints sur un placard d'auberge au Pouldu."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Femmes de Tahiti"
+annee = "1891"
+image = "femmes-tahiti.jpg"
+technique = "Huile sur toile, 69 × 91,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Deux femmes assises sur le sable, l'une en paréo, l'autre en robe rose : la Polynésie telle que Gauguin la découvre."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Ia Orana Maria (Je te salue Marie)"
+annee = "1891"
+image = "ia-orana-maria.jpg"
+technique = "Huile sur toile, 113,7 × 87,6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une Annonciation tahitienne : la Vierge et l'Enfant au paréo rouge, auréolés, parmi les fruits."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Arearea (Joyeusetés)"
+annee = "1892"
+image = "arearea.jpg"
+technique = "Huile sur toile, 75 × 94 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un chien rouge au premier plan, une flûtiste, et au loin des femmes qui dansent devant une idole."
+salle = 2
+mur = "gauche"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Nafea Faa Ipoipo ? (Quand te maries-tu ?)"
+annee = "1892"
+image = "nafea.jpg"
+technique = "Huile sur toile, 101 × 77 cm"
+collection = "Collection particulière"
+note = "Deux jeunes Tahitiennes, l'une en robe missionnaire, l'autre une fleur à l'oreille, devant un paysage jaune et vert."
+salle = 2
+mur = "droite"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Manaò tupapaú (L'esprit des morts veille)"
+annee = "1892"
+image = "manao-tupapau.jpg"
+technique = "Huile sur toile, 73 × 92 cm"
+collection = "Buffalo AKG Art Museum"
+note = "Sa jeune compagne, effrayée, allongée dans le noir : derrière elle, l'esprit des morts veille."
+salle = 2
+mur = "gauche"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Le Cheval blanc"
+annee = "1898"
+image = "cheval-blanc.jpg"
+technique = "Huile sur toile, 140 × 91,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un cheval qui boit, dans une rivière où le blanc devient vert sous les feuillages : refusé par son commanditaire."
+salle = 3
+mur = "gauche"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "D'où venons-nous ? Que sommes-nous ? Où allons-nous ?"
+annee = "1897–1898"
+image = "dou-venons-nous.jpg"
+technique = "Huile sur toile, 139 × 374,6 cm"
+collection = "Museum of Fine Arts, Boston"
+note = "Sa plus grande toile, à lire de droite à gauche : de la naissance à la mort. Il la voulait son testament."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 2.6
