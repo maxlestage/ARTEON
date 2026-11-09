@@ -1,0 +1,1036 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « LE SALON ET L'ART ACADÉMIQUE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/salon-academique/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site : /salon-academique.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 112
+nom_court = "Art académique"
+mouvement = "Le Salon et l'art académique"
+cadre = "baroque"
+couleur = "#7a5418"
+titre = "Le Salon, triomphe de l'art académique"
+artiste = "Bouguereau, Cabanel, Gérôme, Alma-Tadema, Leighton…"
+dates = "1833–1895"
+accroche = "Exposition virtuelle · Petit Palais, Paris"
+introduction = """
+Au XIXᵉ siècle, le Salon de Paris, grande exposition officielle dont le jury est \
+dominé par l'Académie des beaux-arts, fait et défait les carrières ; la Royal Academy \
+joue le même rôle à Londres. Il impose un idéal : dessin impeccable, surface lisse, \
+grands sujets tirés de la mythologie, de la Bible et de l'histoire. La visite réunit \
+dix toiles de ses vedettes, françaises, anglaises et américaine, de Delaroche à \
+Leighton, sans taire ce que cette peinture dit de son temps, de son regard sur le \
+corps des femmes et sur l'« Orient ». Le bâtiment s'inspire du Petit Palais, construit \
+à Paris pour l'Exposition universelle de 1900 : un porche à coupole, deux longues \
+galeries le long de la façade et, à leurs extrémités, deux pavillons."""
+vitrine = "naissance-de-venus-bouguereau.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Petit Palais"
+ville = "Paris, France"
+architecte = "Charles Girault"
+construction = "1897–1900"
+presentation = """
+Pour l'Exposition universelle de 1900, on remplace le vieux Palais de l'Industrie, \
+démoli en 1896, par deux palais qui se font face de part et d'autre d'une avenue \
+nouvelle ouverte vers le pont Alexandre-III et les Invalides : le Grand et le Petit \
+Palais. Lauréat du concours, Charles Girault élève le second de l'automne 1897 au \
+printemps 1900. Sa façade, longue d'environ 125 mètres, est centrée sur un porche \
+monumental surmonté d'une coupole ; derrière, les galeries entourent un jardin \
+semi-circulaire bordé d'un péristyle. Girault les a voulues éclairées par la seule \
+lumière du jour, grâce à des verrières, des coupoles transparentes et de hautes \
+fenêtres. Devenu le musée des Beaux-Arts de la Ville de Paris, le Petit Palais ouvre \
+le 11 décembre 1902 et reçoit la même année l'immense collection Dutuit. Rénové de \
+2001 à 2005, il présente gratuitement ses collections permanentes, de l'Antiquité au \
+début du XXᵉ siècle ; les plus vastes toiles y ont leur galerie des grands formats."""
+ici = """
+Le bâtiment d'ARTEON reprend l'ordonnance du Petit Palais : un porche central d'où \
+partent deux longues galeries, et deux pavillons qui reviennent vers le nord comme les \
+ailes autour du jardin. On entre par le sud sous « Le porche à coupole », haut de \
+seize mètres. À l'ouest s'étire « La galerie des grands formats », longue de \
+trente-deux mètres, aux murs rouge Salon ; au nord de son extrémité s'ouvre le \
+pavillon ocre « L'Antiquité et l'Orient rêvés ». À l'est, « La galerie de l'idéal », \
+vert de gris, conduit au pavillon clair « Bergers et faneurs »."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Petit Palais à Paris (Charles Girault, 1900) : on entre par un porche
+# monumental à coupole, au milieu d'une longue façade ; de part et d'autre partent
+# deux galeries de 32 m, hautes de 13 m, comme les galeries de la façade du Petit
+# Palais ; à leurs extrémités, deux pavillons reviennent vers le nord, comme les
+# ailes qui entourent le jardin semi-circulaire. x et z : le centre de la salle
+# (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le porche à coupole"
+theme = "L'entrée sous la coupole, comme le porche monumental du Petit Palais sur l'avenue Winston-Churchill."
+murs = "#ece4d3"
+x = 0
+z = 0
+largeur = 14
+profondeur = 12
+hauteur = 16
+portes = ["sud", "ouest", "est"]
+
+[[salles]]
+nom = "La galerie des grands formats"
+theme = "La peinture d'histoire : l'orgie romaine de Couture, l'exécution de Lady Jane Grey, Napoléon dans la neige."
+murs = "#b06a5c"
+x = -23
+z = 0
+largeur = 32
+profondeur = 12
+hauteur = 13
+
+[[salles]]
+nom = "L'Antiquité et l'Orient rêvés"
+theme = "Une Rome de pétales chez Alma-Tadema, un « Orient » composé en atelier chez Gérôme."
+murs = "#c9b48a"
+x = -33
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["sud"]
+
+[[salles]]
+nom = "La galerie de l'idéal"
+theme = "Le corps idéal : les deux Vénus de Cabanel et de Bouguereau, et la dormeuse de Leighton."
+murs = "#9fae9c"
+x = 23
+z = 0
+largeur = 32
+profondeur = 12
+hauteur = 13
+
+[[salles]]
+nom = "Bergers et faneurs"
+theme = "Deux campagnes du Salon : le berger biblique d'Elizabeth Gardner et les faneurs de Bastien-Lepage."
+murs = "#e2d6bd"
+x = 33
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["sud"]
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Les Romains de la décadence"
+artiste = "Thomas Couture"
+annee = "1847"
+image = "romains-de-la-decadence.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Thomas_Couture_-_Romans_during_the_Decadence_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 472 × 772 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une orgie sous les colonnes d'un temple, sous le regard de pierre des grands ancêtres : le triomphe du Salon de 1847. La toile, longue de près de huit mètres, est montrée ici réduite."
+description = """
+Dans une vaste salle à colonnades corinthiennes, ouverte au fond sur le ciel et sur \
+des édifices de marbre, une foule de Romains achève une nuit de fête. Sur des lits \
+couverts d'étoffes, hommes et femmes à demi nus s'enlacent, boivent ou s'effondrent. \
+Au centre, une femme vêtue de blanc, allongée, fixe le vide d'un air las. Au premier \
+plan, un homme ivre s'est écroulé sur le dallage, la tête renversée ; plus haut, à \
+droite, un autre, grimpé sur un socle, tend une coupe aux lèvres d'une statue. \
+Partout, les statues des héros et des sages dominent la scène de leur blancheur \
+immobile. À droite, deux hommes drapés, debout, regardent l'orgie sans y prendre part \
+; à gauche, un jeune homme assis sur un haut socle reste à l'écart, l'air sombre. Au \
+sol traînent amphores, fleurs et linges."""
+evocation = """
+Couture place en exergue, dans le livret du Salon, des vers du poète latin Juvénal : \
+plus cruel que les armes, le luxe s'est abattu sur Rome et venge l'univers vaincu. Le \
+tableau est une leçon de morale : un peuple qui a conquis le monde se perd dans le \
+plaisir, sous les yeux de ses ancêtres de pierre, images des vertus oubliées de la \
+République. Les critiques de 1847 y ont vu une allusion à leur propre époque : la \
+France de Louis-Philippe, dominée par une bourgeoisie enrichie et secouée par des \
+scandales, à quelques mois de la révolution de février 1848. On peut aussi y lire \
+l'ambiguïté de bien des tableaux académiques : la toile condamne la débauche tout en \
+offrant au regard, avec complaisance, les corps qu'elle dénonce."""
+histoire = """
+Thomas Couture n'a obtenu qu'un second grand prix de Rome et cherche un coup d'éclat. \
+Il travaille plusieurs années à cette immense toile, qu'il présente au Salon de 1847. \
+Le succès est considérable : la critique salue un nouveau maître, capable d'unir la \
+rigueur du dessin classique et la couleur des Vénitiens, et le tableau entre dans les \
+collections de l'État. Il est aujourd'hui au musée d'Orsay, où son format de près de \
+huit mètres de large en fait l'une des plus grandes toiles du musée. Ce triomphe fait \
+aussi de Couture un professeur recherché : dans l'atelier libre qu'il ouvre peu après, \
+indépendant de l'École des beaux-arts, il forme Édouard Manet et accueille Puvis de \
+Chavannes, l'Allemand Anselm Feuerbach et de nombreux élèves venus d'Amérique."""
+facture = """
+Couture compose comme un metteur en scène : une architecture symétrique, des colonnes \
+qui rythment la toile, une trouée de ciel au centre, et des figures disposées en \
+frise, comme sur un bas-relief antique. Il emprunte aux Vénitiens, et surtout aux \
+grands banquets de Véronèse, l'ampleur du décor et la richesse des étoffes. Mais son \
+exécution est personnelle : des tons posés franchement, une touche parfois visible, \
+des glacis légers sur une ébauche rapide. Il a exposé cette méthode dans un livre, \
+Méthode et entretiens d'atelier, publié en 1867. La palette reste retenue : ivoire, \
+ocres, gris des marbres, relevés de quelques rouges et bleus profonds."""
+details = [
+  "En haut à droite, le fêtard grimpé sur un socle qui tend une coupe à la bouche d'une statue.",
+  "Les deux hommes drapés, debout à l'extrême droite, qui observent la fête sans y participer.",
+  "Le jeune homme assis à gauche sur un haut socle, enveloppé dans son manteau, à l'écart.",
+  "La femme en blanc au centre, accoudée, dont le regard las semble ne rien voir.",
+  "Au premier plan, l'amphore, les fleurs et les linges abandonnés sur le dallage.",
+]
+themes = ["antiquité", "décadence", "morale", "fête", "peinture d'histoire"]
+anecdote = """
+Édouard Manet passe six ans dans l'atelier de Thomas Couture. Les rapports sont \
+orageux : le maître juge l'élève trop audacieux, l'élève se moque des poses apprêtées \
+des modèles. Quinze ans après le triomphe des Romains, Manet sera le peintre le plus \
+contesté du Salon."""
+salle = 2
+mur = "sud"
+position = 0.0
+largeur = 4.5
+
+[[oeuvres]]
+titre = "L'Exécution de Lady Jane Grey"
+artiste = "Paul Delaroche"
+annee = "1833"
+image = "execution-de-lady-jane-grey.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:PAUL_DELAROCHE_-_Ejecución_de_Lady_Jane_Grey_(National_Gallery_de_Londres,_1834).jpg"
+technique = "Huile sur toile, 246 × 297 cm"
+collection = "National Gallery, Londres"
+note = "Les yeux bandés, la reine de neuf jours cherche à tâtons le billot : Delaroche fait de l'histoire anglaise un drame de théâtre."
+description = """
+Dans une salle sombre aux piliers massifs, une jeune femme en robe de satin blanc est \
+à genoux sur un coussin, les yeux bandés d'un linge. Elle tend les mains devant elle, \
+à tâtons, vers le billot de bois posé sur la paille. Un homme âgé, en manteau noir \
+doublé de fourrure, se penche sur elle et guide doucement sa main. À droite, debout, \
+le bourreau attend, en pourpoint brun et chausses rouges, une corde et un poignard à \
+la ceinture, la main posée sur le manche de sa hache. À gauche, deux dames d'honneur \
+s'effondrent : l'une, assise contre un pilier, a perdu connaissance, des vêtements et \
+des bijoux sur les genoux ; l'autre, debout, se cache le visage contre le mur. \
+L'estrade est tendue de drap noir."""
+evocation = """
+Arrière-petite-fille du roi Henri VII, Lady Jane Grey est proclamée reine d'Angleterre \
+en juillet 1553 par des nobles protestants qui veulent écarter du trône Marie Tudor, \
+catholique. Neuf jours plus tard, elle est déposée, puis emprisonnée à la Tour de \
+Londres ; elle est décapitée le 12 février 1554, à seize ou dix-sept ans. Delaroche en \
+fait l'image même de l'innocence sacrifiée à la politique : blancheur de la robe, \
+cécité du bandeau, mains qui hésitent. Pour le public parisien de 1834, la scène \
+réveillait aussi des souvenirs proches : les échafauds de la Révolution, \
+Marie-Antoinette, et, quatre ans après la révolution de 1830, la chute d'une autre \
+dynastie. On a souvent comparé le tableau à une scène de mélodrame, figée juste avant \
+le coup."""
+histoire = """
+Delaroche, alors au sommet de sa gloire, s'est fait une spécialité de l'histoire \
+d'Angleterre, avec Les Enfants d'Édouard ou Cromwell et Charles Iᵉʳ. Achevée en 1833, \
+la toile fait sensation au Salon de 1834. Achetée par le prince russe Anatole \
+Demidoff, elle passe ensuite en Angleterre chez Lord Cheylesmore, dont le fils la \
+lègue à la National Gallery en 1902. Conservée à la Tate Gallery, elle passe pour \
+détruite lors de l'inondation de la Tamise de 1928, qui envahit les réserves. En 1973, \
+un conservateur de la Tate, Christopher Johnstone, la retrouve roulée, abîmée mais \
+sauvée, en cherchant une toile de John Martin enroulée à l'intérieur. Restaurée, elle \
+est de nouveau exposée à partir de 1975 et compte aujourd'hui parmi les tableaux les \
+plus aimés du musée."""
+facture = """
+Delaroche peint avec un fini lisse, presque sans trace de pinceau. Le tableau est \
+construit sur le contraste de l'ombre et de la lumière : la robe de satin, rendue avec \
+une virtuosité d'illusionniste, concentre la clarté au centre, tandis que les fonds, \
+le drap noir et les vêtements sombres l'enserrent. Quelques notes chaudes relancent le \
+regard : la fourrure orangée, les chausses rouges du bourreau, l'or des cheveux repris \
+par la paille. Les personnages, presque grandeur nature, sont alignés sur une estrade \
+étroite devant un décor d'arcades, comme des acteurs sur une scène."""
+details = [
+  "Le bandeau blanc, la tache la plus lumineuse du tableau.",
+  "Les anneaux de fer fixés au billot, et la paille fraîche répandue pour boire le sang.",
+  "La hache au tranchant usé, appuyée au sol à côté du bourreau.",
+  "La main de Sir John Brydges, lieutenant de la Tour, qui guide celle de Jane.",
+  "Les vêtements et les bijoux posés sur les genoux de la dame d'honneur évanouie.",
+]
+themes = ["histoire", "angleterre", "exécution", "innocence", "théâtre"]
+anecdote = """
+Delaroche a pris des libertés avec l'histoire : Jane Grey fut exécutée en plein air, \
+dans l'enceinte de la Tour de Londres, près de la chapelle Saint-Pierre-aux-Liens, et \
+non dans une salle aux piliers romans. Le peintre a préféré la pénombre d'un \
+intérieur, plus propice au drame."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 2.97
+
+[[oeuvres]]
+titre = "1814, Campagne de France"
+artiste = "Ernest Meissonier"
+annee = "1864"
+image = "campagne-de-france-1814.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meissonier_-_1814,_Campagne_de_France.jpg"
+technique = "Huile sur bois, 51,5 × 76,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Napoléon, sombre, sur son cheval blanc, à la tête de son état-major dans la neige boueuse : un petit panneau de 76 cm de large, montré ici agrandi."
+description = """
+Sur une route de campagne défoncée, où la neige se mêle à la boue gelée, une colonne \
+de cavaliers avance vers le spectateur sous un ciel gris et bas. En tête, un peu \
+détaché, Napoléon monte un cheval blanc. Il porte sa redingote grise boutonnée et son \
+bicorne noir ; le visage est fermé, le regard fixe, le corps tassé sur la selle. \
+Derrière lui, en file serrée, ses maréchaux et ses officiers, en manteaux sombres et \
+bicornes, chevauchent en silence ; l'un d'eux, enveloppé dans une cape brune, semble \
+dormir sur sa monture. À droite, au loin, une longue colonne de fantassins se détache \
+sur la plaine blanche. Au premier plan, de profondes ornières entaillent le chemin."""
+evocation = """
+Au début de 1814, la France est envahie par les armées coalisées. Napoléon, avec des \
+troupes épuisées et de très jeunes conscrits, remporte encore des victoires en \
+Champagne, mais ne peut empêcher la chute de Paris, fin mars, puis son abdication. \
+Meissonier ne peint ni une bataille ni un triomphe, mais un moment de doute : \
+l'empereur, seul avec ses pensées, mène vers la défaite des hommes qui le suivent \
+encore. Le paysage gelé et le ciel plombé disent la fin de l'épopée. Sous le Second \
+Empire, gouverné par le neveu de Napoléon, l'image prenait une résonance particulière \
+: une légende vue dans sa grandeur et dans sa solitude. On y a vu le portrait d'un \
+homme plus que celui d'un héros."""
+histoire = """
+Célèbre pour ses scènes de genre minuscules, Meissonier entreprend dans les années \
+1860 un cycle consacré à l'épopée napoléonienne, dont ce panneau, daté de 1864, et \
+Friedland, 1807, aujourd'hui au Metropolitan Museum de New York, sont les pièces \
+maîtresses. D'une exactitude maniaque, il emprunte la selle de l'empereur au prince \
+Napoléon, cousin de Napoléon III, et fait faire une copie de la célèbre redingote \
+grise, qu'il enfile lui-même pour poser devant un miroir. Vendu en 1866 à un banquier, \
+le tableau change plusieurs fois de mains à des prix croissants, jusqu'au \
+collectionneur Alfred Chauchard, cofondateur des grands magasins du Louvre, qui le \
+lègue au Louvre ; il y entre en 1909 et rejoint le musée d'Orsay en 1986."""
+facture = """
+Meissonier peint sur un panneau de bois, au pinceau fin, avec une précision qui permet \
+de compter les boutons des uniformes et les boucles des harnais. Chaque cheval a sa \
+robe, son caractère, sa démarche : passionné par l'anatomie et le mouvement du cheval, \
+le peintre multipliait les études d'après nature et les petits modèles sculptés. La \
+virtuosité n'empêche pas une vraie atmosphère : la lumière froide, sans soleil, la \
+boue grise et ocre et le ciel couvert unifient la scène. La composition, une diagonale \
+qui part du fond à gauche et aboutit au cheval blanc, donne au cortège un mouvement \
+lent et inexorable."""
+details = [
+  "Le visage fermé de Napoléon, dans l'ombre du bicorne.",
+  "Le cheval blanc de l'empereur, qui avance d'un pas égal dans la neige fondue.",
+  "Le cavalier enveloppé d'une cape brune, derrière l'empereur, la tête rentrée dans les épaules.",
+  "La colonne de fantassins, à l'horizon à droite.",
+  "La signature et la date, en bas à droite.",
+]
+themes = ["napoléon", "histoire", "hiver", "défaite", "chevaux"]
+anecdote = """
+En 1890, Alfred Chauchard paie ce petit tableau 850 000 francs, un record pour l'œuvre \
+d'un peintre vivant. La même année, il avait acquis L'Angélus de Millet pour une somme \
+comparable : les deux toiles entrent ensemble au Louvre avec son legs."""
+salle = 2
+mur = "nord"
+position = 3.0
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Les Roses d'Héliogabale"
+artiste = "Lawrence Alma-Tadema"
+annee = "1888"
+image = "roses-d-heliogabale.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Roses_of_Heliogabalus.jpg"
+technique = "Huile sur toile, 132,7 × 214,4 cm"
+collection = "Collection Juan Antonio Pérez Simón, Mexico"
+note = "L'empereur Héliogabale regarde ses invités disparaître sous une pluie de pétales de roses : un banquet romain d'une beauté vénéneuse."
+description = """
+La moitié inférieure du tableau disparaît sous des milliers de pétales roses, qui \
+pleuvent encore d'une grande toile tendue au plafond, en haut à gauche, que l'on vient \
+d'ouvrir. Des convives couronnés de fleurs, allongés sur des coussins, y sont à demi \
+ensevelis : une femme au visage pâle, un homme couronné de feuillage, une jeune femme \
+en robe vert d'eau qui, à droite, regarde le spectateur. Au-dessus d'eux, sur une \
+estrade de marbre, l'empereur, en robe d'or, est étendu à table avec ses proches \
+devant les fruits du dessert ; ils contemplent la scène, amusés. À gauche, près d'une \
+colonne, une musicienne joue de la double flûte ; au fond, une statue de bronze de \
+Dionysos se détache sur le ciel et sur des montagnes bleues."""
+evocation = """
+L'épisode vient de l'Histoire Auguste, recueil tardif et peu fiable de vies \
+d'empereurs : Héliogabale, empereur de 218 à 222, aurait fait tomber d'un plafond \
+mobile tant de violettes et de fleurs sur ses invités que certains, ne pouvant s'en \
+dégager, seraient morts étouffés. Alma-Tadema remplace les violettes par des roses et \
+change une cruauté en féerie : rien ne montre la mort, seulement la beauté et \
+l'indifférence des puissants qui regardent. Le tableau reprend le vieux thème de la \
+décadence romaine, mais sans la leçon de morale de Couture : il séduit avant de \
+troubler. On y a lu un miroir de la société victorienne, fascinée par le luxe, et une \
+méditation sur la beauté qui étouffe."""
+histoire = """
+La toile est commandée en 1888 par Sir John Aird, entrepreneur de grands travaux \
+publics, pour 4 000 livres, et exposée la même année à la Royal Academy de Londres. \
+Après la mort du peintre, en 1912, la peinture victorienne passe de mode : la famille \
+Aird vend le tableau en 1935 pour 483 guinées, et en 1960, aux enchères, il ne trouve \
+même pas d'acheteur. Le producteur de télévision américain Allen Funt, créateur de \
+l'émission Candid Camera et collectionneur d'Alma-Tadema quand personne n'en voulait, \
+l'acquiert ensuite, avant de le revendre en 1973. Adjugé 1,5 million de livres à \
+Londres en 1993, il appartient aujourd'hui au collectionneur hispano-mexicain Juan \
+Antonio Pérez Simón."""
+facture = """
+Alma-Tadema peint avec une minutie d'archéologue : le marbre veiné des colonnes, le \
+bronze de la statue, l'argent du trépied, les tissus brodés sont rendus avec une \
+précision qui rend la scène crédible, comme une photographie de l'Antiquité. La \
+composition est audacieuse : l'empereur, sujet du tableau, est rejeté au second plan, \
+et le premier plan est livré à une masse presque abstraite de pétales, peints un à un \
+dans toutes les nuances du rose au blanc. La lumière claire et égale de la \
+Méditerranée remplace le clair-obscur des maîtres anciens."""
+details = [
+  "La toile ouverte au plafond, en haut à gauche, d'où les pétales continuent de pleuvoir.",
+  "La joueuse de double flûte, vêtue d'une peau de panthère comme une ménade.",
+  "La statue de bronze de Dionysos, dieu du vin, au fond, inspirée du Dionysos Ludovisi.",
+  "L'homme barbu en tunique verte, à droite, debout près d'une colonne de marbre rose.",
+  "La jeune femme sur ses coussins, en bas à droite, la seule qui regarde le spectateur.",
+]
+themes = ["antiquité", "rome", "fleurs", "décadence", "luxe"]
+anecdote = """
+Il n'y avait pas de roses en Angleterre pendant l'hiver où Alma-Tadema peignait le \
+tableau : selon le récit transmis, il s'en fit envoyer du midi de la France chaque \
+semaine, pendant quatre mois, pour peindre ses pétales d'après nature."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.14
+
+[[oeuvres]]
+titre = "Le Charmeur de serpents"
+artiste = "Jean-Léon Gérôme"
+annee = "vers 1879"
+image = "charmeur-de-serpents.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jean-Léon_Gérôme_-_Le_charmeur_de_serpents.jpg"
+technique = "Huile sur toile, 82,2 × 121 cm"
+collection = "Clark Art Institute, Williamstown (Massachusetts)"
+note = "Devant un mur de faïences bleues, un garçon nu présente un serpent à des hommes armés : une image qui se donne pour un document et qui est entièrement composée en atelier."
+description = """
+Dans une salle aux murs couverts de carreaux de céramique bleus et blancs, sous une \
+longue frise d'inscriptions en écriture arabe, un jeune garçon nu, vu de dos, se tient \
+debout sur un petit tapis. Un grand serpent s'enroule autour de sa taille et de ses \
+épaules ; il en présente la tête à bout de bras. À droite, un vieil homme barbu, assis \
+par terre, joue de la flûte. Face à eux, adossés au mur, une dizaine d'hommes armés de \
+lances et de sabres, aux costumes variés, regardent la scène, assis sur le sol ; au \
+milieu, un vieillard au turban vert, appuyé sur des coussins, semble présider. Sur le \
+dallage usé, au premier plan, deux paniers d'osier et une petite gourde. Au mur sont \
+accrochés un bouclier rond et des lances."""
+evocation = """
+Le tableau se présente comme une scène vue, en Égypte ou à Istanbul. En réalité, \
+Gérôme l'a composé à Paris en assemblant des éléments de provenances diverses, et n'a \
+pu en être le témoin. Il incarne ce qu'on appelle depuis les années 1970 \
+l'orientalisme : une image de l'« Orient » fabriquée par et pour des Européens, où les \
+peuples d'Afrique du Nord et du Proche-Orient paraissent exotiques, sensuels ou \
+menaçants, au moment même où la France et l'Angleterre étendent leur domination sur \
+ces régions. En 1978, Edward Said le fait reproduire sur la couverture de son livre \
+L'Orientalisme ; en 1983, l'historienne Linda Nochlin montre comment son réalisme \
+minutieux rend crédible un Orient imaginaire, sans Européens visibles et comme hors du \
+temps. La nudité du garçon, offerte au spectateur, a aussi été lue comme un \
+sous-entendu érotique."""
+histoire = """
+Élève de Delaroche, Gérôme découvre Constantinople en 1853, puis passe huit mois en \
+Égypte en 1856, d'où il rapporte croquis, costumes et armes ; il y retournera souvent, \
+avec d'autres artistes et des photographes. Le Charmeur de serpents est peint vers \
+1879. Son marchand et beau-père, Adolphe Goupil, le vend en 1880 à un collectionneur \
+new-yorkais, Albert Spencer ; en 1888, Alfred Corning Clark l'achète aux enchères et \
+le prête en 1893 à l'Exposition universelle de Chicago. Revendu par sa veuve, le \
+tableau réapparaît en 1942 dans une vente à New York : le fils d'Alfred, Sterling \
+Clark, qui l'avait admiré enfant dans la maison familiale, l'acquiert alors. Il entre \
+en 1955 dans le musée que Sterling Clark et sa femme Francine fondent à Williamstown."""
+facture = """
+Gérôme peint avec un fini lisse et précis, presque photographique, qui donne à chaque \
+détail l'autorité d'un document. Mais ce document est un montage. Les faïences du fond \
+copient, sans doute d'après des photographies, des panneaux du « Passage doré » du \
+harem du palais de Topkapi, à Istanbul ; la frise mêle ces carreaux à un bandeau de \
+versets coraniques du kiosque de Bagdad, dans le même palais, et certaines \
+inscriptions, fidèles par endroits, deviennent ailleurs des signes sans signification. \
+Le dallage vient d'une mosquée du Caire, et le charmeur de serpents relève de \
+traditions égyptiennes, non ottomanes. La lumière bleutée et froide unifie ce collage."""
+details = [
+  "Les carreaux tombés du mur, à gauche, que Linda Nochlin a lus comme le signe d'une négligence prêtée aux habitants.",
+  "La frise d'inscriptions en haut du tableau, en partie copiée fidèlement, en partie illisible.",
+  "Le casque à pointe d'un des spectateurs, un objet persan que Gérôme a peint dans plusieurs tableaux.",
+  "Le serpent enroulé autour du garçon, dont l'espèce ne peut être identifiée avec certitude.",
+  "Le vieux flûtiste à droite, la flûte aux lèvres, à côté de son tambour.",
+]
+themes = ["orientalisme", "regard", "mise en scène", "colonialisme", "nudité"]
+anecdote = """
+En 1888, Alfred Corning Clark avait payé ce tableau 19 500 dollars ; en 1942, Gérôme \
+est si démodé que son fils Sterling l'obtient pour 500 dollars. Sterling Clark le \
+tenait pourtant pour un chef-d'œuvre dans son genre."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.45
+
+[[oeuvres]]
+titre = "La Naissance de Vénus"
+artiste = "Alexandre Cabanel"
+annee = "1863"
+image = "naissance-de-venus-cabanel.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Alexandre_Cabanel_-_The_Birth_of_Venus_-_Google_Art_Project_2.jpg"
+technique = "Huile sur toile, 130 × 225 cm"
+collection = "Musée d'Orsay, Paris"
+note = "La toile triomphe au Salon de 1863 et Napoléon III l'achète, l'année même où le Déjeuner sur l'herbe de Manet fait scandale au Salon des refusés."
+description = """
+Couchée sur la crête d'une vague, une femme nue s'étire, comme au sortir du sommeil. \
+Son corps, d'une blancheur nacrée, occupe presque toute la largeur du tableau, des \
+pieds qui effleurent l'écume jusqu'au bras replié sur le front. Ses yeux sont mi-clos \
+; sa longue chevelure rousse se répand dans l'eau. La mer, d'un bleu-vert sombre, \
+ondule doucement, et l'écume blanche soulève la déesse comme un lit. Au-dessus d'elle, \
+dans un ciel bleu pâle traversé de nuages légers, cinq petits amours ailés volent en \
+farandole ; certains soufflent dans des conques. À l'horizon, à gauche, se dessine une \
+côte lointaine. La signature, Alex. Cabanel, est inscrite en bas à gauche."""
+evocation = """
+Selon le mythe, Vénus, déesse de l'amour, naît de l'écume de la mer. Cabanel ne montre \
+ni coquille ni cortège divin : une femme alanguie, offerte au regard, dont l'abandon \
+évoque le plaisir plus que la naissance. C'est tout le paradoxe du nu académique : \
+l'alibi de la fable rend acceptable au Salon un corps que la pudeur de l'époque \
+refuserait s'il était celui d'une contemporaine. Les critiques ne s'y sont pas trompés \
+: Émile Zola, en 1867, voit dans la déesse une lorette parisienne, faite d'« une sorte \
+de pâte d'amande blanche et rose ». Aujourd'hui, l'œuvre est souvent citée pour \
+interroger le regard masculin porté sur les corps féminins, qui dominait les \
+expositions officielles."""
+histoire = """
+Le Salon de 1863 est resté comme celui des Vénus : Cabanel, Paul Baudry et \
+Amaury-Duval y exposent chacun un grand nu mythologique. Celui de Cabanel triomphe, et \
+l'empereur Napoléon III l'achète pour sa collection personnelle. La même année, le \
+jury refuse tant d'œuvres que l'empereur autorise une exposition des recalés, le Salon \
+des refusés, où le Déjeuner sur l'herbe de Manet fait scandale. Cabanel, lui, est élu \
+à l'Académie des beaux-arts et nommé professeur à l'École des beaux-arts. Il a peint \
+en 1875 une réplique réduite du tableau, aujourd'hui au Metropolitan Museum de New \
+York ; l'original est au musée d'Orsay."""
+facture = """
+Formé à l'École des beaux-arts dans l'atelier de François-Édouard Picot, Cabanel \
+soigne le dessin et le modelé : la peau est lisse, polie, sans trace de pinceau, d'un \
+rose de porcelaine à peine ombré. Cette surface léchée, idéal des élèves de l'École, \
+est l'inverse de la touche visible que défendront les impressionnistes. La composition \
+repose sur une longue horizontale, le corps de la déesse, qui double la ligne de \
+l'horizon, et sur la courbe des amours qui lui répond dans le ciel. Les couleurs sont \
+peu nombreuses et douces : bleus de la mer et du ciel, ivoire de la chair, roux de la \
+chevelure."""
+details = [
+  "Les yeux de la déesse, mi-clos sous son bras : dort-elle ou regarde-t-elle ?",
+  "La chevelure rousse qui se mêle à l'écume et aux vagues.",
+  "Les amours qui soufflent dans des conques, comme des tritons miniatures.",
+  "Les pieds de Vénus, à gauche, qui effleurent la crête d'une vague.",
+  "La signature « Alex. Cabanel », en bas à gauche.",
+]
+themes = ["mythologie", "nu", "vénus", "mer", "regard"]
+anecdote = """
+Quand Manet expose Olympia au Salon de 1865, deux ans après le triomphe de Cabanel, on \
+y a souvent vu une réponse aux Vénus de 1863 : une femme nue, bien réelle et de son \
+temps, qui regarde le spectateur en face. Le public, lui, s'en indigne."""
+salle = 4
+mur = "sud"
+position = 0.0
+largeur = 2.25
+
+[[oeuvres]]
+titre = "La Naissance de Vénus"
+artiste = "William Bouguereau"
+annee = "1879"
+image = "naissance-de-venus-bouguereau.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:William-Adolphe_Bouguereau_(1825-1905)_-_The_Birth_of_Venus_(1879).jpg"
+technique = "Huile sur toile, 300 × 218 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Debout sur sa coquille, la déesse tord sa chevelure au milieu des nymphes, des tritons et des amours : la grande toile de Bouguereau au Salon de 1879."
+description = """
+Au centre d'une mer agitée, Vénus, nue, se tient debout sur une grande coquille. Le \
+poids du corps sur une jambe, elle lève les deux bras pour tordre sa longue chevelure \
+châtain, la tête inclinée, les yeux baissés. Autour d'elle, un cortège tourbillonne : \
+à droite, un triton souffle dans une conque, une nymphe allongée tend le bras vers la \
+déesse, une autre, couronnée de feuillage, lève les yeux vers le ciel ; à gauche, un \
+triton barbu enlace une nymphe vue de dos. Au premier plan, un homme dans l'eau, de \
+dos, brandit une conque, et deux petits amours jouent sur un dauphin. Dans le ciel, \
+une nuée d'amours ailés, certains armés de flèches, forme une couronne au-dessus de la \
+déesse."""
+evocation = """
+Bouguereau reprend un sujet traité par Botticelli et surtout par Raphaël, dont il \
+avait pu admirer à Rome le Triomphe de Galatée, à la villa Farnésine : même figure au \
+centre, même ronde de nymphes, de tritons et d'amours. Il en donne une version \
+idéalisée à l'extrême, où le corps féminin, sans le moindre défaut, devient une statue \
+vivante. Pour ses admirateurs, c'était la perfection même de l'art ; pour les peintres \
+de l'avant-garde, à commencer par les impressionnistes, le symbole d'une peinture de \
+convention, plaisante et vide. Aujourd'hui, on y voit autant la virtuosité d'un \
+dessinateur exceptionnel que la mise en scène d'un idéal féminin conçu par et pour les \
+hommes de son temps."""
+histoire = """
+Bouguereau a cinquante-trois ans et compte parmi les peintres les plus honorés de \
+France quand il présente La Naissance de Vénus au Salon de 1879. L'État l'achète pour \
+le musée du Luxembourg, alors consacré aux artistes vivants. Ses tableaux se vendent \
+très cher, notamment aux collectionneurs américains, et son enseignement à l'Académie \
+Julian attire des élèves du monde entier. Après sa mort, en 1905, son œuvre tombe \
+pourtant dans un long discrédit. L'ouverture du musée d'Orsay, en 1986, qui choisit de \
+montrer l'art académique à côté des impressionnistes, contribue à sa redécouverte : La \
+Naissance de Vénus y est devenue l'une des images les plus connues de la peinture du \
+Salon."""
+facture = """
+Bouguereau prépare ses grandes toiles par de nombreux dessins et études d'après le \
+modèle, puis peint par couches fines et lisses, effaçant toute trace de pinceau. Le \
+modelé des corps, d'une douceur de porcelaine, contraste avec le teint hâlé des \
+tritons. La composition est savamment réglée : la déesse forme un axe vertical au \
+centre, prolongé par ses bras levés, et les autres figures s'enroulent autour d'elle \
+jusqu'à la couronne des amours dans le ciel. Les couleurs nacrées et froides, bleus et \
+mauves de la mer et des nuages, roses des chairs, accentuent le caractère irréel de la \
+scène. Trois mètres de haut : c'est le format des grands tableaux d'histoire."""
+details = [
+  "La coquille ouverte sous les pieds de Vénus, à peine visible dans l'écume.",
+  "Le dauphin noir, au premier plan, sur lequel jouent deux amours.",
+  "La nymphe couronnée de feuillage, à droite, qui lève les yeux vers le ciel.",
+  "Les amours armés de flèches, en haut à droite.",
+  "La signature et la date, en bas à gauche, presque noyées dans l'eau.",
+]
+themes = ["mythologie", "nu", "vénus", "idéal", "mer"]
+anecdote = """
+En 1896, Bouguereau épouse l'une de ses anciennes élèves de l'Académie Julian, la \
+peintre américaine Elizabeth Jane Gardner, dont une toile est exposée plus loin dans \
+cette visite. Ils étaient liés depuis près de vingt ans, mais ne se marient qu'après \
+la mort de la mère du peintre."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.18
+
+[[oeuvres]]
+titre = "Flaming June"
+artiste = "Frederic Leighton"
+annee = "1895"
+image = "flaming-june.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Frederic_Leighton_-_Flaming_June_(1895)_-_Museo_de_Arte_de_Ponce.jpg"
+technique = "Huile sur toile, 120 × 120 cm"
+collection = "Museo de Arte de Ponce, Porto Rico"
+note = "Une femme endormie, enveloppée d'une robe orange transparente, au bord d'une mer qui brille au soleil de juin : l'image la plus célèbre de la peinture victorienne."
+description = """
+Sur une banquette de marbre recouverte d'étoffes sombres, une jeune femme dort, \
+recroquevillée sur elle-même : la tête posée sur son bras replié, les genoux ramenés \
+vers la poitrine, un pied nu dépassant de la robe. Une robe orange, si fine qu'elle \
+laisse deviner le corps, l'enveloppe de plis innombrables, et ses cheveux roux se \
+répandent sur les coussins. Derrière elle, au-delà d'une balustrade de marbre, la mer \
+scintille sous un soleil de plein été, et une côte se dessine à l'horizon. En haut, \
+une frise ornementale ferme la composition ; à droite, une branche de laurier-rose en \
+fleurs dépasse de la balustrade. Au sol, sur le dallage clair, traîne le bord d'une \
+étoffe rouge."""
+evocation = """
+Leighton ne raconte aucune histoire : pas de mythe, pas de héros, seulement le \
+sommeil, la chaleur et la couleur. On a souvent rapproché la figure de la Nuit \
+sculptée par Michel-Ange pour le tombeau des Médicis, à Florence, que le peintre \
+admirait : un corps puissant replié dans le repos. La branche de laurier-rose, plante \
+toxique, a été lue comme une allusion à la frontière fragile entre le sommeil et la \
+mort. Le titre évoque la lumière brûlante de juin, qui semble passer dans l'étoffe \
+orange. Peint quelques mois avant la mort de Leighton, le tableau a parfois été vu \
+comme un adieu, une image de l'oubli voluptueux propre à l'esthétisme de la fin du \
+siècle, où la beauté se suffit à elle-même."""
+histoire = """
+Le motif est né d'un détail : Leighton avait imaginé cette dormeuse pour orner une \
+baignoire de marbre dans un autre tableau, Summer Slumber, et il en fit un sujet à \
+part entière. Exposé à la Royal Academy en 1895, Flaming June est acheté par le \
+magazine illustré The Graphic, qui en offre une reproduction à ses lecteurs pour Noël. \
+Après la mort de Leighton, en janvier 1896, la toile disparaît de la vue, puis subit \
+le discrédit de toute la peinture victorienne. Retrouvée au début des années 1960 dans \
+une maison de Londres, elle ne trouve pas preneur aux enchères. En 1963, l'industriel \
+portoricain Luis A. Ferré, qui réunit les collections du musée qu'il a fondé à Ponce, \
+l'achète à Amsterdam pour moins de mille dollars. Elle est devenue l'emblème du musée."""
+facture = """
+Le format carré, rare, enferme la figure comme dans un écrin : le corps, plié en une \
+suite de courbes, remplit presque tout l'espace. Leighton a préparé la pose par \
+plusieurs études, d'abord nues, puis drapées, pour trouver la position exacte des \
+membres. Il peint ensuite l'étoffe en couches transparentes qui laissent paraître la \
+chair par endroits, et donne à la toile une dominante chaude, du rouge au jaune d'or. \
+La mer, au fond, est faite de minces traits lumineux, comme un métal en fusion. Le \
+marbre, la frise et le dallage rappellent sa culture classique, nourrie de sculpture \
+grecque."""
+details = [
+  "La branche de laurier-rose en fleurs, plante vénéneuse, en haut à droite.",
+  "Le pied nu qui dépasse de la robe, au bas du tableau.",
+  "La bande de mer qui scintille derrière la balustrade.",
+  "La transparence de l'étoffe, qui laisse deviner la jambe et la poitrine.",
+  "Le bord de l'étoffe rouge qui traîne sur le dallage, en bas à gauche.",
+]
+themes = ["sommeil", "été", "couleur", "esthétisme", "femme"]
+anecdote = """
+Adolescent, le compositeur Andrew Lloyd Webber vit le tableau dans une boutique de \
+Londres, peu après sa redécouverte, et demanda à sa grand-mère de lui prêter les 50 \
+livres qu'on en demandait. Elle refusa : elle ne voulait pas, dit-elle, de cette \
+camelote victorienne chez elle."""
+salle = 4
+mur = "nord"
+position = -3.0
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Le Berger David"
+artiste = "Elizabeth Jane Gardner"
+annee = "vers 1895"
+image = "berger-david.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:David_the_Shepherd,_Elizabeth_Jane_Gardner.jpg"
+technique = "Huile sur toile, 153,7 × 105,1 cm"
+collection = "National Museum of Women in the Arts, Washington"
+note = "Agenouillé sur le lion qu'il vient de tuer, le jeune berger serre l'agneau sauvé et lève le bras vers le ciel : l'œuvre la plus connue d'une Américaine qui s'est imposée au Salon."
+description = """
+Dans un paysage aride, au pied de hautes falaises bleutées, un adolescent aux cheveux \
+noirs bouclés est agenouillé sur le corps d'un lion mort. Il porte une simple tunique \
+blanche nouée à la taille, et ses pieds sont nus. De son bras droit, il serre contre \
+lui un agneau blanc, qui regarde le spectateur. Il lève le bras gauche vers le ciel, \
+la main ouverte, et tourne vers le haut un regard grave. Sous son genou, la tête du \
+lion, gueule ouverte, montre encore ses crocs ; sa crinière fauve et ses pattes \
+s'étalent sur la terre pâle. Au fond, le ciel s'éclaircit derrière les montagnes ; \
+quelques herbes sèches poussent entre les pierres. La signature de la peintre est \
+inscrite en bas à gauche."""
+evocation = """
+Le premier livre de Samuel raconte que le jeune David, berger avant d'être roi, a \
+arraché un agneau à la gueule d'un lion et tué le fauve : il le rappelle au roi Saül \
+pour obtenir le droit d'affronter Goliath. Gardner peint l'instant qui suit la \
+victoire, quand le berger rend grâce. L'image associe la force et la douceur, le fauve \
+terrassé et l'agneau protégé ; on peut y lire la figure du bon pasteur, que la \
+tradition chrétienne rattache à la lignée de David. Pour une femme peintre, ce choix \
+n'était pas anodin : la peinture religieuse et l'histoire, genres les plus \
+prestigieux, étaient en pratique l'affaire des hommes, et Gardner s'y mesure sur leur \
+propre terrain."""
+histoire = """
+Née dans le New Hampshire, Elizabeth Jane Gardner s'installe à Paris en 1864. L'École \
+des beaux-arts étant fermée aux femmes, elle se forme dans des ateliers privés, puis, \
+à partir de 1873, à l'Académie Julian, auprès de Jules Lefebvre et de William \
+Bouguereau. Elle expose au Salon à partir de 1868 et y sera admise plus de vingt fois. \
+Peint vers 1895, Le Berger David compte parmi ses œuvres les plus admirées de son \
+vivant ; l'année suivante, elle épouse Bouguereau. Le tableau a été offert au National \
+Museum of Women in the Arts de Washington par ses fondateurs, Wallace et Wilhelmina \
+Holladay, qui ont ouvert en 1987 ce musée consacré aux femmes artistes."""
+facture = """
+Gardner a fait sienne la manière de Bouguereau : dessin rigoureux, modelé lisse, \
+chairs lumineuses qui se détachent sur un fond sombre. Elle soigne la texture de \
+chaque matière : la laine bouclée de l'agneau, la toile de la tunique, la crinière du \
+lion, la peau du garçon. La composition est pyramidale, du bras levé jusqu'aux pattes \
+du lion étalées au sol, et la diagonale du bras dirige le regard vers le ciel. Les \
+couleurs sont sobres, blancs, ocres et gris bleutés, pour concentrer la lumière sur le \
+groupe de l'enfant et de l'agneau."""
+details = [
+  "Le regard de l'agneau, tourné vers le spectateur.",
+  "La gueule ouverte du lion mort, sous le genou de David.",
+  "Le pied nu du berger, au premier plan à gauche.",
+  "Les falaises bleutées, en haut à gauche, sous un ciel qui s'éclaircit.",
+  "La main gauche de David, ouverte vers le ciel.",
+]
+themes = ["bible", "berger", "innocence", "femmes peintres", "courage"]
+anecdote = """
+Comme Rosa Bonheur, Elizabeth Jane Gardner demanda à la préfecture de police \
+l'autorisation de porter des vêtements d'homme. Ainsi vêtue, elle aurait suivi les \
+cours de dessin de la manufacture des Gobelins, réservés aux hommes."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.05
+
+[[oeuvres]]
+titre = "Les Foins"
+artiste = "Jules Bastien-Lepage"
+annee = "1877"
+image = "les-foins.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jules_Bastien-Lepage_-_Hay_making_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 160 × 195 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une faneuse épuisée, assise dans l'herbe coupée, regarde dans le vide pendant que son compagnon dort : le naturalisme entre au Salon de 1878."
+description = """
+Dans un pré fraîchement fauché, sous un ciel pâle, deux paysans se reposent après le \
+repas de midi. Au premier plan, une jeune femme est assise dans l'herbe, les jambes \
+allongées devant elle, les mains posées sur les genoux, ouvertes, inertes. Elle porte \
+une chemise blanche, un corselet gris et un tablier de toile ; ses gros souliers sont \
+couverts de poussière. Elle fixe le vide, la bouche entrouverte, le visage hâlé, comme \
+hébétée de fatigue. Derrière elle, un homme est étendu dans le foin, son chapeau de \
+paille rabattu sur le visage. Une gamelle de fer-blanc est posée près des pieds de la \
+jeune femme. Au fond, le pré s'étend jusqu'à des collines, ponctué de meules, d'arbres \
+grêles et de faneurs minuscules."""
+evocation = """
+Le tableau ne raconte presque rien, et c'est sa force : une pause au milieu d'une \
+journée de travail, le corps vidé par l'effort. Bastien-Lepage, enfant d'un village \
+lorrain, montre la campagne sans l'embellir ni la dramatiser, loin des bergères \
+gracieuses de la peinture académique comme de la grandeur biblique des paysans de \
+Millet. Le regard absent de la faneuse a dérouté une partie de la critique, qui l'a \
+jugée laide ou abrutie ; d'autres y ont vu une vérité nouvelle, la fatigue même du \
+travail des champs. L'œuvre montre que le Salon pouvait accueillir la modernité : la \
+technique est académique, mais le sujet, la lumière et le cadrage regardent vers la \
+photographie et le plein air."""
+histoire = """
+Élève de Cabanel à l'École des beaux-arts, Bastien-Lepage a échoué au prix de Rome, \
+mais il s'est fait connaître au Salon par des portraits d'une vérité saisissante. En \
+1877, il peint Les Foins à Damvillers, son village natal de la Meuse, dans les prés \
+qu'il connaît depuis l'enfance. Exposé au Salon de 1878, le tableau fait de lui le \
+chef de file d'une nouvelle peinture, le naturalisme, qui concilie le métier enseigné \
+à l'École et l'observation de la vie rurale. Après la mort prématurée du peintre, en \
+1884, la toile est achetée en 1885, à la vente de son atelier, pour le musée du \
+Luxembourg ; elle est aujourd'hui au musée d'Orsay."""
+facture = """
+Bastien-Lepage combine deux manières. Les visages et les mains sont peints avec la \
+précision d'un portraitiste ; l'herbe, le foin et le pré sont brossés en longues \
+touches vives et libres, dans une gamme claire de verts argentés, de blonds et de \
+gris. L'horizon est placé très haut : le pré monte comme un mur derrière les \
+personnages et les pousse vers le spectateur, un cadrage qui supprime presque le ciel \
+et rappelle la photographie. La lumière est diffuse, sans ombres marquées, celle d'un \
+jour d'été voilé. Le grand format, celui d'un tableau d'histoire, donne aux paysans \
+une présence monumentale."""
+details = [
+  "Les mains ouvertes de la faneuse, abandonnées sur ses genoux.",
+  "Le chapeau de paille rabattu sur le visage du faucheur endormi.",
+  "La gamelle de fer-blanc posée dans l'herbe, à droite.",
+  "Les petites meules et les faneurs au loin, au pied des collines.",
+  "L'inscription « Damvillers » et la signature, en bas à gauche.",
+]
+themes = ["paysans", "travail", "naturalisme", "campagne", "fatigue"]
+anecdote = """
+La manière de Bastien-Lepage a fait école bien au-delà de la France : des peintres \
+écossais, les « Glasgow Boys », des Anglais installés à Newlyn, en Cornouailles, et de \
+nombreux Scandinaves adoptèrent ses paysans grandeur nature et ses lumières grises de \
+plein air."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.95
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Thomas Couture"
+vie = "Senlis, 21 décembre 1815 – Villiers-le-Bel, 30 mars 1879"
+biographie = """
+Né à Senlis, Thomas Couture grandit à Paris, où il se forme dans l'atelier \
+d'Antoine-Jean Gros, puis dans celui de Paul Delaroche. Il obtient en 1837 le second \
+grand prix de Rome, mais jamais le premier, échec qu'il ressent comme une injustice. \
+Il se fait connaître au Salon par des tableaux de genre et des portraits, avant le \
+triomphe des Romains de la décadence, en 1847. Il ouvre alors un atelier libre, \
+indépendant de l'École des beaux-arts, qui attire de très nombreux élèves, français, \
+allemands et américains : Édouard Manet y reste six ans, Puvis de Chavannes et Anselm \
+Feuerbach y passent. L'État lui commande ensuite de grandes compositions, comme \
+L'Enrôlement des volontaires de 1792, qu'il ne parvient pas à achever ; déçu par les \
+commandes officielles et les querelles, il s'éloigne peu à peu de la scène parisienne. \
+En 1867, il publie Méthode et entretiens d'atelier, un recueil de conseils pratiques \
+qui connaît un grand succès, notamment aux États-Unis. Il passe ses dernières années à \
+Villiers-le-Bel, au nord de Paris, où il meurt en 1879."""
+style = """
+Couture veut réconcilier la tradition classique et la couleur : un dessin solide \
+hérité de David et de Gros, une composition théâtrale, mais une exécution rapide, aux \
+tons francs et à la touche parfois visible, inspirée des Vénitiens. Son enseignement, \
+plus libre que celui de l'École, valorisait l'esquisse et la fraîcheur du premier jet. \
+Il fait ainsi le lien entre la grande peinture d'histoire et la génération de Manet."""
+
+[[artistes]]
+nom = "Paul Delaroche"
+vie = "Paris, 17 juillet 1797 – Paris, 4 novembre 1856"
+biographie = """
+Hippolyte, dit Paul Delaroche, naît à Paris et se forme dans l'atelier d'Antoine-Jean \
+Gros. Il débute au Salon en 1822 et s'impose en quelques années avec des scènes \
+d'histoire, souvent anglaises, d'une grande puissance dramatique : Les Enfants \
+d'Édouard, aujourd'hui au Louvre, Cromwell et Charles Iᵉʳ, L'Exécution de Lady Jane \
+Grey. Élu à l'Académie des beaux-arts en 1832, il devient professeur à l'École des \
+beaux-arts. En 1835, il épouse Louise Vernet, fille du peintre Horace Vernet ; sa \
+mort, dix ans plus tard, l'affecte profondément. De 1837 à 1841, il peint l'Hémicycle \
+de l'amphithéâtre de l'École des beaux-arts, immense composition qui réunit les grands \
+artistes de tous les temps. Son atelier, l'un des plus fréquentés de Paris, forme \
+Jean-Léon Gérôme, Jean-François Millet, Thomas Couture et plusieurs pionniers de la \
+photographie, comme Gustave Le Gray. Après 1843, il cesse de travailler pour le Salon \
+et se consacre à des tableaux plus intimes, religieux ou napoléoniens, comme Napoléon \
+à Fontainebleau. Il meurt à Paris en 1856."""
+style = """
+Delaroche invente une peinture d'histoire nouvelle, entre le classicisme de David et \
+le romantisme : des sujets tirés de l'histoire moderne, anglaise et française, traités \
+avec l'exactitude d'un décorateur de théâtre et le fini lisse de l'École. Il choisit \
+l'instant qui précède le drame plutôt que l'action elle-même, et s'adresse à l'émotion \
+du spectateur. Diffusé par la gravure, son art fut immensément populaire ; on y voit \
+souvent une préfiguration de la mise en scène du cinéma historique."""
+
+[[artistes]]
+nom = "Ernest Meissonier"
+vie = "Lyon, 21 février 1815 – Paris, 31 janvier 1891"
+biographie = """
+Jean-Louis-Ernest Meissonier naît à Lyon dans une famille de commerçants et grandit à \
+Paris. Il se forme en grande partie seul, après un bref passage dans l'atelier de Léon \
+Cogniet, et gagne d'abord sa vie en illustrant des livres. Au Salon, où il expose à \
+partir de 1834, il se fait une spécialité de petits tableaux de genre, liseurs, \
+fumeurs ou joueurs d'échecs en costumes du XVIIᵉ et du XVIIIᵉ siècle, peints avec une \
+minutie qui rappelle les maîtres hollandais. Le succès est immense, et ses toiles \
+atteignent des prix jamais vus pour un peintre vivant. Témoin des journées de juin \
+1848, il peint La Barricade, souvenir saisissant de la répression. Il suit Napoléon \
+III pendant la campagne d'Italie de 1859, puis entreprend le cycle napoléonien qui \
+comprend 1814 et Friedland, 1807. Pendant le siège de Paris, en 1870, il sert comme \
+officier dans la garde nationale. En 1889, il préside le jury des beaux-arts de \
+l'Exposition universelle ; l'année suivante, il prend la tête de la Société nationale \
+des beaux-arts, qui organise un Salon rival du Salon officiel. Il meurt à Paris en \
+1891."""
+style = """
+Meissonier est le maître du petit format : des scènes minuscules, peintes au pinceau \
+fin sur bois, où chaque bouton, chaque harnais, chaque pli est exact. Cette précision \
+d'orfèvre, servie par une documentation obsessionnelle, s'applique aussi à l'histoire \
+militaire et au cheval, qu'il étudie sans relâche. Les critiques réalistes lui \
+reprochaient une perfection de miniaturiste ; ses admirateurs le comparaient aux \
+petits maîtres hollandais. Sa cote, la plus haute de son temps, s'est effondrée au XXᵉ \
+siècle."""
+
+[[artistes]]
+nom = "Lawrence Alma-Tadema"
+vie = "Dronrijp (Pays-Bas), 8 janvier 1836 – Wiesbaden (Allemagne), 25 juin 1912"
+biographie = """
+Lourens Alma Tadema naît dans un village de Frise, aux Pays-Bas, fils d'un notaire. Il \
+étudie à l'Académie des beaux-arts d'Anvers, puis travaille auprès du baron Henri \
+Leys, peintre de l'histoire flamande. Ses premiers succès sont des scènes de l'Égypte \
+ancienne et de l'époque mérovingienne. Un voyage en Italie en 1863, au cours duquel il \
+visite Pompéi, décide de sa carrière : désormais, il peindra la vie quotidienne de la \
+Grèce et de la Rome antiques. Le marchand Ernest Gambart, qui lui achète de nombreuses \
+toiles, le fait connaître en Angleterre. Veuf, il s'installe à Londres en 1870 avec \
+ses deux filles, épouse l'année suivante la peintre Laura Epps et devient sujet \
+britannique en 1873. Membre de la Royal Academy, anobli en 1899, décoré de l'ordre du \
+Mérite en 1905, il mène une vie fastueuse dans une maison-atelier qu'il décore \
+lui-même. Il numérote ses œuvres en chiffres romains, comme des opus, jusqu'à plus de \
+quatre cents. Il meurt en 1912 lors d'une cure à Wiesbaden et est enterré dans la \
+cathédrale Saint-Paul de Londres."""
+style = """
+Alma-Tadema fait revivre l'Antiquité dans son quotidien : bains, banquets, jardins, \
+rendez-vous d'amour au bord de la mer, peuplés de figures qui ressemblent aux Anglais \
+de son temps. Sa réputation repose sur la virtuosité de ses matières, surtout le \
+marbre, et sur une érudition archéologique nourrie de photographies. Méprisé après sa \
+mort, il passe pour avoir inspiré les décors des grands films historiques d'Hollywood."""
+
+[[artistes]]
+nom = "Jean-Léon Gérôme"
+vie = "Vesoul, 11 mai 1824 – Paris, 10 janvier 1904"
+biographie = """
+Fils d'un orfèvre de Vesoul, Jean-Léon Gérôme entre à seize ans dans l'atelier de Paul \
+Delaroche, à Paris, et l'accompagne en Italie en 1843. Il débute au Salon de 1847 avec \
+Jeunes Grecs faisant battre des coqs, qui le rend aussitôt célèbre et fait de lui le \
+chef de file des « néo-grecs », peintres d'une Antiquité aimable et familière. En \
+1853, il découvre Constantinople, puis l'Égypte en 1856 : l'« Orient » devient l'un de \
+ses sujets favoris, aux côtés de l'histoire romaine et de l'histoire de France. En \
+1863, il épouse Marie Goupil, fille du grand marchand Adolphe Goupil, dont la maison \
+diffuse ses œuvres en gravures et en photographies dans le monde entier. Nommé \
+professeur à l'École des beaux-arts en 1864, il y enseigne près de quarante ans et \
+forme des centaines d'élèves, dont l'Américain Thomas Eakins. Membre de l'Institut, \
+couvert d'honneurs, il se met tardivement à la sculpture. Adversaire résolu de \
+l'impressionnisme, il proteste en 1894 contre l'entrée de la collection Caillebotte au \
+musée du Luxembourg. Il meurt à Paris en 1904."""
+style = """
+Gérôme pousse à l'extrême le fini lisse de l'École : touche invisible, dessin précis, \
+détails d'une exactitude archéologique ou ethnographique qui donnent à ses scènes \
+l'apparence de documents. Il compose en metteur en scène, choisissant souvent \
+l'instant qui suit l'action. Ses tableaux orientalistes, très diffusés, ont fixé pour \
+longtemps l'image européenne de l'« Orient » ; ses scènes antiques, comme Pollice \
+Verso, ont inspiré le cinéma, jusqu'au Gladiator de Ridley Scott."""
+
+[[artistes]]
+nom = "Alexandre Cabanel"
+vie = "Montpellier, 28 septembre 1823 – Paris, 23 janvier 1889"
+biographie = """
+Né à Montpellier dans un milieu modeste, Alexandre Cabanel montre très tôt des dons \
+pour le dessin et part étudier à Paris. Élève de François-Édouard Picot à l'École des \
+beaux-arts, il obtient en 1845 un second grand prix de Rome qui lui ouvre néanmoins \
+les portes de la villa Médicis. Revenu à Paris, il mène une carrière exemplaire : \
+peintures religieuses et mythologiques, grands décors, comme la Vie de saint Louis au \
+Panthéon, et surtout portraits de la haute société française et américaine, dont il \
+devient l'un des peintres favoris. Le triomphe de La Naissance de Vénus, en 1863, \
+coïncide avec son élection à l'Académie des beaux-arts et sa nomination comme \
+professeur à l'École. Pendant plus de vingt-cinq ans, il y dirige l'un des ateliers \
+les plus recherchés, où passent Jules Bastien-Lepage, Henri Gervex et de nombreux \
+étrangers. Souvent membre du jury du Salon, il incarne aux yeux des impressionnistes \
+l'art officiel qui les refuse. Il meurt à Paris en 1889 ; le musée Fabre de \
+Montpellier, sa ville natale, conserve un important ensemble de ses œuvres."""
+style = """
+Cabanel est le peintre académique par excellence : dessin impeccable, modelé lisse, \
+couleurs douces, sujets nobles empruntés à la mythologie, à la Bible et à la \
+littérature. Ses nus, d'une sensualité tempérée par l'alibi de la fable, lui valurent \
+la faveur de Napoléon III et du public ; ses portraits flattaient l'élégance de leurs \
+modèles. Pour Zola et les défenseurs de Manet, il devint le symbole d'une peinture de \
+convention."""
+
+[[artistes]]
+nom = "William Bouguereau"
+vie = "La Rochelle, 30 novembre 1825 – La Rochelle, 19 août 1905"
+biographie = """
+William-Adolphe Bouguereau naît à La Rochelle dans une famille de négociants. Destiné \
+au commerce, il suit des cours de dessin à Bordeaux, puis gagne Paris en 1846 et entre \
+à l'École des beaux-arts, dans l'atelier de François-Édouard Picot. En 1850, il \
+remporte le grand prix de Rome et séjourne à la villa Médicis, où il étudie Raphaël et \
+les peintures antiques. De retour à Paris, il obtient des commandes de décors, puis \
+s'impose au Salon, où il expose presque chaque année pendant un demi-siècle des sujets \
+mythologiques et religieux et des scènes de jeunes paysannes idéalisées. Ses tableaux, \
+diffusés par les marchands Paul Durand-Ruel puis Goupil, se vendent très cher, en \
+particulier aux collectionneurs américains. Professeur à l'Académie Julian, puis à \
+l'École des beaux-arts, il forme des centaines d'élèves, dont beaucoup de femmes. \
+Membre de l'Institut à partir de 1876, il est l'un des piliers du Salon officiel. Il \
+perd plusieurs de ses enfants et sa première épouse ; en 1896, il épouse Elizabeth \
+Jane Gardner. Il meurt dans sa ville natale en 1905."""
+style = """
+Bouguereau porte à la perfection la technique enseignée par l'École : dessin d'une \
+sûreté absolue, modelé de porcelaine, surface lisse d'où toute trace de pinceau a \
+disparu. Ses nymphes, ses Vénus et ses petites paysannes obéissent à un même idéal de \
+beauté, sentimental et sans aspérité. Adulé de son vivant, il devint pour les modernes \
+le symbole de l'art officiel à combattre ; redécouvert depuis les années 1980, il \
+reste admiré pour sa virtuosité et discuté pour son idéal."""
+
+[[artistes]]
+nom = "Frederic Leighton"
+vie = "Scarborough (Angleterre), 3 décembre 1830 – Londres, 25 janvier 1896"
+biographie = """
+Fils d'un médecin, Frederic Leighton grandit en voyageant à travers l'Europe avec sa \
+famille et reçoit une éducation cosmopolite. Il étudie la peinture à Francfort, à \
+l'institut Städel, auprès d'Edward von Steinle, puis à Bruxelles, à Paris et à Rome. \
+En 1855, son premier grand tableau, La Madone de Cimabue portée en procession dans les \
+rues de Florence, est exposé à la Royal Academy et acheté par la reine Victoria. \
+Installé à Londres à la fin des années 1850, il devient la figure centrale du \
+classicisme victorien, avec des sujets tirés de la mythologie grecque et de la Bible. \
+Il se fait construire à Holland Park une maison-atelier dont le salon arabe, revêtu de \
+carreaux de céramique rapportés du Proche-Orient, est aujourd'hui un musée. Élu \
+président de la Royal Academy en 1878, il est fait chevalier, puis baronnet en 1886, \
+et enfin pair du royaume en janvier 1896 : il meurt le lendemain, ce qui fait de sa \
+pairie la plus brève de l'histoire britannique. Il ne s'est jamais marié. Il est \
+enterré dans la cathédrale Saint-Paul de Londres."""
+style = """
+Leighton est le grand classique de la peinture victorienne : un dessin rigoureux \
+appris en Allemagne et en Italie, des figures sculpturales inspirées de la statuaire \
+grecque et de Michel-Ange, des draperies aux plis innombrables et des couleurs chaudes \
+et saturées. Proche du mouvement esthétique, il recherche la beauté pour elle-même \
+plutôt que la leçon morale. Sculpteur aussi, il a signé l'Athlète luttant avec un \
+python, qui a renouvelé la sculpture anglaise."""
+
+[[artistes]]
+nom = "Elizabeth Jane Gardner"
+vie = "Exeter (New Hampshire, États-Unis), 4 octobre 1837 – Paris, 28 janvier 1922"
+biographie = """
+Elizabeth Jane Gardner grandit en Nouvelle-Angleterre et étudie l'art et les langues \
+au séminaire de Lasell, près de Boston, dont elle sort diplômée en 1856. En 1864, elle \
+part pour Paris avec son ancienne professeure Imogene Robinson. L'École des beaux-arts \
+refuse alors les femmes, qui n'y seront admises qu'en 1897 : Gardner copie des \
+tableaux au Louvre et au musée du Luxembourg pour des clients américains, puis \
+fréquente des ateliers privés et, à partir de 1873, l'Académie Julian, où elle étudie \
+avec Jules Lefebvre et William Bouguereau. En 1868, elle est l'une des premières \
+Américaines exposées au Salon, où elle sera admise plus de vingt fois et obtiendra une \
+médaille. Polyglotte et femme d'affaires avisée, elle écrit pour des journaux \
+américains et sert d'intermédiaire entre collectionneurs américains et artistes \
+français. Liée pendant près de vingt ans à Bouguereau, son voisin, elle ne l'épouse \
+qu'en 1896, après la mort de la mère du peintre. Veuve en 1905, elle continue de \
+peindre à Paris, où elle meurt en 1922."""
+style = """
+Gardner a adopté la manière de Bouguereau : dessin précis, modelé lisse, sujets \
+mythologiques, bibliques et scènes d'enfance idéalisées. La critique l'a longtemps \
+réduite au rôle d'imitatrice de son maître, et elle disait préférer être la meilleure \
+imitatrice de Bouguereau plutôt que de n'être personne. Son parcours, celui d'une \
+Américaine qui s'impose dans le monde fermé de l'art officiel parisien, intéresse \
+aujourd'hui autant que ses tableaux."""
+
+[[artistes]]
+nom = "Jules Bastien-Lepage"
+vie = "Damvillers (Meuse), 1ᵉʳ novembre 1848 – Paris, 10 décembre 1884"
+biographie = """
+Jules Bastien-Lepage naît à Damvillers, village de la Meuse, dans une famille de \
+cultivateurs qui encourage ses goûts artistiques. Après le collège de Verdun, il part \
+pour Paris, travaille un temps dans l'administration des postes, puis entre à l'École \
+des beaux-arts dans l'atelier d'Alexandre Cabanel. Blessé pendant la guerre de 1870, \
+il reprend ensuite ses études. Il échoue au prix de Rome, mais connaît la célébrité au \
+Salon de 1874 avec le Portrait de mon grand-père, d'une vérité saisissante. Il partage \
+dès lors sa vie entre Paris, où il peint les portraits de personnalités, et \
+Damvillers, où il peint les paysans de son village : Les Foins, puis une Jeanne d'Arc \
+écoutant les voix, aujourd'hui au Metropolitan Museum de New York. Il travaille aussi \
+à Londres et voyage en Italie et en Algérie. Gravement malade, il meurt à Paris en \
+1884, à trente-six ans, et est enterré à Damvillers. La jeune peintre Marie \
+Bashkirtseff, qui l'admirait et qui fut son amie, était morte quelques semaines plus \
+tôt."""
+style = """
+Bastien-Lepage invente un naturalisme de Salon : des paysans grandeur nature, peints \
+dans leur cadre réel, avec la précision d'un portraitiste pour les visages et une \
+touche plus libre pour les fonds. Sa lumière grise et diffuse, son horizon placé très \
+haut et ses figures saisies sans pose ont marqué toute une génération européenne. Il \
+prouve qu'on peut être moderne sans renoncer au métier académique."""
