@@ -1,0 +1,884 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « RÉALISME » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/realisme/). Le nom
+#  du fichier donne l'adresse de l'exposition sur le site : /realisme.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 80
+nom_court = "Réalisme"
+mouvement = "Réalisme et impressionnisme"
+couleur = "#3d5a4c"
+titre = "Du réalisme à la vie moderne"
+artiste = "Courbet, Millet, Rosa Bonheur, Manet, Degas, Caillebotte, Pissarro"
+dates = "1849–1882"
+accroche = "Exposition virtuelle · National Gallery of Art, Washington"
+introduction = """
+Au milieu du XIXᵉ siècle, le réalisme fait descendre la grande peinture de l'Olympe : \
+place aux paysans, aux ouvriers, aux enterrements de village et aux rues de Paris. \
+Courbet, Millet et Rosa Bonheur montrent la campagne telle qu'elle est ; Manet, Degas, \
+Caillebotte et Pissarro peignent la vie moderne et ouvrent la voie à \
+l'impressionnisme. Le bâtiment s'inspire du West Building de la National Gallery of \
+Art de Washington : une haute rotonde à colonnes au centre, et des galeries en \
+enfilade de part et d'autre."""
+vitrine = "dejeuner-sur-l-herbe.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du West Building de la National Gallery of Art de Washington : on
+# entre côté Mall, au sud, et l'on monte vers la rotonde coiffée d'une coupole,
+# entourée de colonnes de marbre vert ; de part et d'autre, comme les longues
+# galeries du musée, une enfilade de salles vers l'ouest et vers l'est. x et z :
+# le centre de la salle (x vers l'est, z vers le sud), en mètres ; une porte se
+# déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule du Mall"
+theme = "L'entrée côté Mall, comme à Washington : un escalier mène à la rotonde."
+murs = "#ebe3d6"
+x = 0
+z = 0
+largeur = 14
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La rotonde"
+theme = "1863 : sous la coupole, les deux toiles de Manet qui firent scandale, Le Déjeuner sur l'herbe et Olympia."
+murs = "#e2dccd"
+x = 0
+z = -12
+largeur = 16
+profondeur = 16
+hauteur = 14
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "Galerie ouest · Le réalisme"
+theme = "1849–1857 : Courbet, Millet et Rosa Bonheur peignent la campagne, ses paysans, ses bêtes et ses deuils."
+murs = "#e9dfcc"
+x = -17
+z = -12
+largeur = 18
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "Galerie est · La vie moderne"
+theme = "1873–1882 : des ouvriers dans un appartement parisien, une classe de danse à l'Opéra et le bar des Folies-Bergère."
+murs = "#e7e0d0"
+x = 17
+z = -12
+largeur = 18
+profondeur = 10
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "Le cabinet est · La ville et le village"
+theme = "1877 : la même année, une rue de Paris sous la pluie et un village de Pontoise en hiver."
+murs = "#ece4d4"
+x = 32
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Déjeuner sur l'herbe"
+artiste = "Édouard Manet"
+annee = "1863"
+image = "dejeuner-sur-l-herbe.jpg"
+technique = "Huile sur toile, 208 × 264,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une femme nue entre deux hommes en costume moderne : refusé au Salon de 1863, le tableau fit scandale au Salon des refusés."
+description = """
+Dans une clairière, au bord d'une rivière, trois personnages sont assis dans l'herbe. \
+Une jeune femme nue, le menton posé sur la main, nous regarde droit dans les yeux, \
+sans gêne. À côté d'elle, deux jeunes gens vêtus à la mode des années 1860, veste \
+sombre et pantalon clair, poursuivent leur conversation ; celui de droite, coiffé \
+d'une calotte à gland, tend la main dans un geste d'orateur. Au premier plan, à \
+gauche, les vêtements de la femme, une robe bleue et un chapeau de paille, ont été \
+jetés pêle-mêle à côté d'un panier renversé d'où roulent des fruits et un petit pain \
+rond. Plus loin, une seconde femme en chemise se penche vers l'eau. Les arbres \
+encadrent la scène comme un rideau de théâtre."""
+evocation = """
+Le scandale ne vient pas du nu, omniprésent dans la peinture de Salon, mais de son \
+contexte : ce n'est ni une nymphe ni une déesse, c'est une Parisienne d'aujourd'hui, \
+assise près de deux hommes habillés comme des étudiants ou des artistes, et qui fixe \
+le spectateur. Le public y voit une partie de campagne aux mœurs douteuses. Manet, \
+lui, reprend un thème consacré par les maîtres, la fête champêtre, que le Louvre \
+illustre avec le Concert champêtre attribué à Titien, pour montrer qu'on peut peindre \
+son époque avec la même ambition. On y a lu un défi lancé à l'académisme, un hommage \
+ironique à la tradition, ou une réflexion sur le regard : la femme nous observe autant \
+que nous l'observons."""
+histoire = """
+Manet présente la toile au Salon de 1863 sous le titre Le Bain. Le jury la refuse, \
+comme des milliers d'autres œuvres cette année-là. Devant les protestations, Napoléon \
+III autorise une exposition des tableaux rejetés, que l'on appellera le Salon des \
+refusés. Le Déjeuner y attire la foule, les rires et les sarcasmes, et fait de Manet, \
+malgré lui, le chef de file d'une jeune génération. La femme a pour modèle Victorine \
+Meurent ; les hommes sont un frère du peintre et le sculpteur néerlandais Ferdinand \
+Leenhoff, dont Manet épouse la sœur Suzanne quelques mois plus tard. Acheté en 1878 \
+par le baryton Jean-Baptiste Faure, le tableau est donné à l'État en 1906 par le \
+collectionneur Étienne Moreau-Nélaton ; il entre au Louvre en 1934, puis au musée \
+d'Orsay en 1986."""
+facture = """
+Manet peint par larges plans de couleur, sans les transitions douces du modelé \
+académique : le corps de la femme, d'un blanc cru, éclairé de face, paraît presque \
+plat sur le fond sombre. Les noirs des vestes, profonds et veloutés, viennent de \
+Velázquez et de Goya, qu'il admire. Le paysage, brossé rapidement, ressemble à un \
+décor peint, et la baigneuse du fond, trop grande pour sa place, défie la perspective. \
+Le groupe des trois personnages reprend celui de trois divinités dans une gravure de \
+Marcantonio Raimondi d'après Raphaël, Le Jugement de Pâris. La nature morte du premier \
+plan est un morceau de bravoure."""
+details = [
+  "Le bouvreuil qui vole tout en haut, au centre, entre les branches.",
+  "La petite grenouille cachée dans l'herbe, en bas à gauche.",
+  "Les cerises, les figues et le petit pain rond échappés du panier.",
+  "La barque amarrée au bord de l'eau, à droite.",
+  "La canne que tient négligemment l'homme de droite.",
+]
+themes = ["scandale", "nu", "modernité", "nature", "regard"]
+anecdote = """
+Piqué au vif, Claude Monet entreprit en 1865 son propre Déjeuner sur l'herbe, une \
+immense toile de plein air, sans nu. Abîmée par l'humidité, elle fut découpée par le \
+peintre lui-même : deux grands fragments en subsistent au musée d'Orsay."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Olympia"
+artiste = "Édouard Manet"
+annee = "1863"
+image = "olympia.jpg"
+technique = "Huile sur toile, 130,5 × 190 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une femme de son temps dans la pose d'une Vénus de Titien : au Salon de 1865, la toile déchaîna les insultes."
+description = """
+Une jeune femme nue est allongée sur un lit aux draps et aux oreillers blancs, adossée \
+à de gros coussins, un châle à fleurs glissé sous elle. Elle ne porte qu'un ruban de \
+velours noir noué au cou, un bracelet d'or, une orchidée rose dans ses cheveux roux et \
+une mule dorée ; l'autre mule a glissé sur le drap. Sa main gauche est posée à plat \
+sur sa cuisse. Elle nous regarde, calme, sans sourire. Derrière elle, une servante \
+noire en robe rose lui présente un gros bouquet enveloppé de papier blanc. Au pied du \
+lit, à droite, un chat noir, la queue dressée, fixe le spectateur de ses yeux jaunes. \
+Le fond est fermé par une tenture sombre et un rideau vert."""
+evocation = """
+Pour les contemporains, le titre et les accessoires ne laissent aucun doute : Olympia \
+est une courtisane, et l'on voit dans le bouquet l'hommage d'un client, qui se \
+tiendrait à la place du spectateur. Manet reprend la pose de la Vénus d'Urbino de \
+Titien, mais remplace la déesse par une femme réelle, au corps sans idéalisation, et \
+le petit chien endormi, symbole de fidélité, par un chat noir aux aguets, associé à la \
+nuit et au désir. Le regard direct d'Olympia renverse les rôles : c'est elle qui jauge \
+celui qui la regarde. Depuis quelques décennies, les historiens s'intéressent aussi à \
+la servante, longtemps ignorée, et à son modèle, une femme nommée Laure, qui vivait à \
+Paris et posa plusieurs fois pour Manet."""
+histoire = """
+Peinte en 1863, la même année que Le Déjeuner sur l'herbe, avec le même modèle, \
+Victorine Meurent, Olympia n'est exposée qu'au Salon de 1865. Le scandale est immédiat \
+: des visiteurs menacent la toile, l'administration la fait garder puis accrocher très \
+haut, et la presse se moque d'une femme jugée laide et indécente. Manet garde le \
+tableau jusqu'à sa mort, en 1883. En 1889 et 1890, Claude Monet organise une \
+souscription auprès d'amis et d'amateurs pour l'acheter à la veuve du peintre, éviter \
+qu'il ne parte à l'étranger et l'offrir à l'État. Olympia entre alors au musée du \
+Luxembourg, réservé aux artistes vivants ou récemment disparus, puis au Louvre, avant \
+de rejoindre le musée d'Orsay en 1986."""
+facture = """
+Manet supprime presque le modelé : le corps d'Olympia est une forme claire, cernée \
+d'un trait sombre, éclairée de face, ce que les critiques lui reprochèrent comme un \
+manque de relief. Il joue sur des accords hardis entre les blancs du drap, de \
+l'oreiller et du papier du bouquet, et les noirs et les verts sombres du fond, où le \
+chat et la servante se fondent presque. Le bouquet, peint en touches rapides et \
+libres, est un petit tableau dans le tableau. La toile dialogue avec Titien, que Manet \
+avait copié aux Offices de Florence, et avec Goya, dont La Maja nue offre un autre nu \
+au regard franc."""
+details = [
+  "La signature et la date, en bas à gauche, au bord du lit.",
+  "Le chat noir aux yeux jaunes, tout à droite, au pied du lit.",
+  "L'orchidée rose piquée dans les cheveux roux.",
+  "La mule dorée restée au pied, et celle qui a glissé sur le drap.",
+  "Le mince ruban de velours noir noué autour du cou.",
+]
+themes = ["nu", "scandale", "regard", "courtisane", "modernité"]
+anecdote = """
+C'est Georges Clemenceau, président du Conseil et ami de Monet, qui ordonna en 1907 le \
+transfert d'Olympia du musée du Luxembourg au Louvre : quarante-deux ans après le \
+scandale du Salon, la courtisane entrait parmi les maîtres."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Un enterrement à Ornans"
+artiste = "Gustave Courbet"
+annee = "1849–1850"
+image = "enterrement-a-ornans.jpg"
+technique = "Huile sur toile, 315 × 668 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un enterrement de village peint au format d'un tableau d'histoire : avec cette toile, Courbet fait entrer la vie ordinaire dans la grande peinture."
+description = """
+Sur une toile de près de sept mètres de long, une foule en deuil se tient autour d'une \
+fosse fraîchement creusée, dans le cimetière d'Ornans, en Franche-Comté. À gauche, les \
+porteurs tiennent le cercueil couvert d'un drap blanc, précédés du crucifix levé haut \
+contre le ciel gris. Au centre, le curé lit l'office, entouré d'enfants de chœur et de \
+deux bedeaux en robe rouge ; devant lui, le fossoyeur, un genou à terre, attend. À \
+droite, les hommes en habit noir puis les femmes en coiffe blanche, mouchoir à la \
+main, forment un long mur sombre. Un chien blanc s'est glissé au premier plan. \
+Derrière, les falaises calcaires qui dominent la vallée de la Loue ferment l'horizon. \
+Les personnages, grandeur nature, s'alignent comme une frise, sans héros principal."""
+evocation = """
+Courbet donne à des gens ordinaires, le curé, des notables, des vignerons, ses propres \
+sœurs, la dignité et le format réservés jusque-là aux scènes religieuses, \
+mythologiques ou historiques. Il n'y a ni ciel ouvert, ni ange, ni consolation : \
+seulement la mort telle qu'on la vit dans une petite ville de province, avec ses \
+distractions et ses mouchoirs. Courbet aurait dit plus tard que ce tableau était en \
+réalité l'enterrement du romantisme. On y a lu aussi un manifeste politique : peint au \
+lendemain de la révolution de 1848 et de l'instauration du suffrage universel \
+masculin, il fait du peuple d'une commune rurale le sujet d'une toile monumentale. Le \
+crâne posé au bord de la fosse rappelle la fragilité de la vie, sans emphase, comme un \
+simple fait."""
+histoire = """
+Courbet peint la toile à Ornans, sa ville natale, entre l'été 1849 et 1850, dans une \
+pièce de la maison familiale si étroite qu'il ne peut prendre aucun recul pour juger \
+l'ensemble. Les habitants viennent poser un à un ; on reconnaît parmi les femmes les \
+trois sœurs du peintre. Le tableau est exposé au Salon qui s'ouvre à Paris à la fin de \
+l'année 1850. Les critiques s'indignent de la laideur des visages et de la trivialité \
+du sujet, traité à une échelle jugée démesurée ; d'autres saluent un art nouveau, \
+fidèle au réel, et Courbet devient le chef de file du réalisme. Resté dans sa famille \
+après sa mort, le tableau est donné à l'État en 1881 par sa sœur Juliette ; il entre \
+au Louvre, puis au musée d'Orsay à son ouverture, en 1986."""
+facture = """
+Courbet travaille sur une préparation sombre, d'où il fait surgir les visages et les \
+blancs : surplis, coiffes, drap mortuaire, bas du fossoyeur. La palette, \
+volontairement austère, est dominée par les noirs, qu'il module avec une grande \
+richesse, rehaussés seulement par le rouge des bedeaux. La pâte est épaisse et \
+généreuse. La composition refuse la pyramide classique : les figures s'étirent en une \
+longue frise horizontale, serrées les unes contre les autres sous une bande de ciel \
+bas. Courbet s'inspire des images populaires et des grands portraits de groupe \
+hollandais plutôt que des modèles académiques."""
+details = [
+  "Le crâne posé sur la terre, au bord de la fosse, au centre du premier plan.",
+  "Le drap mortuaire blanc, semé de larmes et d'os croisés noirs, à gauche.",
+  "Les deux bedeaux aux visages rougeauds et aux robes rouges, derrière le curé.",
+  "Le crucifix qui se découpe seul sur le ciel, au-dessus de la foule.",
+  "Le chien blanc, au premier plan à droite, indifférent à la cérémonie.",
+]
+themes = ["mort", "province", "peuple", "religion", "manifeste"]
+anecdote = """
+Pour l'Exposition universelle de 1855, le jury refuse cette toile et L'Atelier du \
+peintre. Courbet construit alors à ses frais, tout près, son propre pavillon, qu'il \
+baptise « Du Réalisme » : l'une des premières expositions personnelles organisées par \
+un artiste lui-même."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Labourage nivernais"
+artiste = "Rosa Bonheur"
+annee = "1849"
+image = "labourage-nivernais.jpg"
+technique = "Huile sur toile, 134 × 260 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Deux attelages de bœufs retournent la terre d'un coteau de la Nièvre : la commande de l'État qui fit de Rosa Bonheur une célébrité."
+description = """
+Sur un coteau, sous un grand ciel clair, deux attelages de bœufs avancent de gauche à \
+droite en traçant leur sillon. Le premier occupe toute la moitié droite du tableau : \
+des bêtes massives, blanches et fauves, liées deux à deux par un joug fixé aux cornes, \
+la tête basse sous l'effort. Un bouvier au chapeau noir lève son long aiguillon au \
+milieu d'elles ; derrière, un laboureur en chemise blanche guide la charrue de bois. \
+Plus loin à gauche, le second attelage suit, mené par d'autres paysans. Au premier \
+plan, la terre fraîchement retournée forme de grosses mottes brunes. Au-delà, une \
+colline boisée, quelques nuages et un vaste ciel bleu pâle occupent plus de la moitié \
+de la toile."""
+evocation = """
+Le tableau célèbre la terre et ceux qui la travaillent, au lendemain de la révolution \
+de 1848, quand la République cherche des images du peuple et de la France rurale. On \
+l'a souvent rapproché des premières pages du roman de George Sand, La Mare au diable \
+(1846), où le narrateur contemple un laboureur menant ses bœufs dans le Berry. Mais \
+chez Rosa Bonheur, les véritables héros sont les animaux : leur force, leur poids, \
+leur patience sont rendus avec un respect presque fraternel, sans sentimentalité. \
+L'œuvre traduit sa conviction que les bêtes méritent d'être étudiées avec autant \
+d'attention que les hommes. Pour une femme, peindre à cette échelle, dans un genre \
+jugé viril, était en soi une affirmation."""
+histoire = """
+En 1848, Rosa Bonheur, âgée de vingt-six ans, obtient une médaille de première classe \
+au Salon, et l'État lui commande un tableau. Elle choisit de peindre le Nivernais, \
+dont elle étudie sur place les bœufs et les paysages, et un moment précis du travail \
+agricole : le sombrage, le premier labour, qui retourne et aère la terre. Exposée au \
+Salon de 1849, la toile connaît un grand succès et assoit sa réputation, qui gagnera \
+bientôt l'Angleterre et les États-Unis. Le tableau est exposé au musée du Luxembourg, \
+consacré aux artistes vivants, puis rejoint les collections du Louvre ; il est \
+présenté au musée d'Orsay depuis 1986."""
+facture = """
+Rosa Bonheur peint avec la précision d'une naturaliste : chaque bœuf a sa robe, sa \
+musculature, son regard, fruit d'innombrables études faites dans les fermes, les \
+foires et les abattoirs. La touche est lisse et soignée pour les animaux, plus libre \
+pour la terre, où des empâtements bruns donnent du relief aux mottes. La composition \
+en longue frise, les bêtes défilant de profil, rappelle les bas-reliefs antiques. La \
+lumière franche accroche le pelage clair des bœufs, qui se détache sur la colline \
+verte et sur le ciel immense."""
+details = [
+  "Le bouvier qui brandit son aiguillon au milieu du premier attelage.",
+  "Le bœuf roux, seule bête sombre parmi les robes claires.",
+  "Les jougs attachés aux cornes, à la manière du Nivernais.",
+  "Les mottes de terre retournée, peintes une à une au premier plan.",
+  "La signature de l'artiste, tout en bas à droite.",
+]
+themes = ["animaux", "labour", "campagne", "travail", "terre"]
+anecdote = """
+Pour étudier les animaux sans être importunée dans les foires aux bestiaux et les \
+abattoirs, Rosa Bonheur obtint de la préfecture de police une « permission de \
+travestissement », qui l'autorisait à porter le pantalon, interdit aux femmes à Paris \
+sans dérogation."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Les Glaneuses"
+artiste = "Jean-François Millet"
+annee = "1857"
+image = "glaneuses.jpg"
+technique = "Huile sur toile, 83,5 × 110 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Trois paysannes ramassent les épis oubliés après la moisson : Millet donne aux plus pauvres de la campagne une grandeur de statue."
+description = """
+Au premier plan d'un champ moissonné, trois femmes ramassent les épis restés sur le \
+chaume. Deux d'entre elles sont courbées jusqu'au sol, l'une tendant la main vers un \
+épi, l'autre serrant déjà une poignée de tiges ; la troisième, à demi relevée, \
+s'apprête à se pencher à son tour. Leurs coiffes bleue, rouge et ocre sont les seules \
+notes vives du tableau. Derrière elles, dans une lumière dorée de fin d'été, la plaine \
+s'étend à perte de vue : d'énormes meules, une charrette chargée de gerbes, une foule \
+de moissonneurs au travail, une ferme. À droite, un homme à cheval surveille la \
+récolte. Toute la largeur du champ sépare les glaneuses de cette abondance."""
+evocation = """
+Le glanage était un droit ancien accordé aux plus pauvres : après la moisson, ils \
+pouvaient ramasser ce que les moissonneurs avaient laissé. Millet en fait l'image du \
+travail le plus humble, répété sans fin, le dos courbé. Il ne raconte pas d'anecdote : \
+les visages restent dans l'ombre, les corps massifs et lents ont la gravité de figures \
+bibliques, et l'on a souvent rapproché la scène de l'histoire de Ruth glanant dans le \
+champ de Booz, qu'il avait peinte quelques années plus tôt. Sous le Second Empire, une \
+partie de la critique y voit pourtant une provocation, presque un appel à la révolte, \
+à cause du contraste entre la misère du premier plan et la richesse du fond. Millet, \
+lui, se défendait de faire de la politique."""
+histoire = """
+Installé depuis 1849 à Barbizon, en lisière de la forêt de Fontainebleau, Millet \
+observe pendant des années les glaneuses de la plaine de Chailly. Il en tire des \
+dessins, puis une eau-forte, avant de peindre cette toile, exposée au Salon de 1857. \
+Le critique Paul de Saint-Victor y voit « les trois Parques du paupérisme ». Le \
+tableau se vend à un prix modeste. Mais la réputation de Millet grandit après sa mort, \
+en 1875, et ses œuvres atteignent alors des sommes considérables. En 1890, la toile \
+entre au Louvre grâce à Jeanne-Alexandrine Pommery, veuve d'un négociant en champagne \
+de Reims, qui l'offre à l'État. Elle est présentée au musée d'Orsay depuis 1986."""
+facture = """
+Millet construit la toile en deux registres nettement séparés : en bas, dans une ombre \
+légère, les trois figures massives aux contours simplifiés ; en haut, la plaine \
+baignée de lumière, peinte en touches fines et claires qui se perdent dans la brume de \
+chaleur. Les trois corps forment une frise rythmée, comme un mouvement décomposé : se \
+pencher, ramasser, se relever. La gamme est dominée par les ocres, les bruns et les \
+ors du chaume, relevés par trois notes de couleur sur les coiffes et les manches. Le \
+modelé doux, presque sculpté, doit beaucoup à Michel-Ange et à Poussin, que Millet \
+admirait."""
+details = [
+  "Le cavalier minuscule qui surveille la moisson, à l'extrême droite.",
+  "Les meules et la charrette chargée de gerbes, à gauche, dans la lumière.",
+  "La poignée d'épis que serre la glaneuse du milieu.",
+  "La main de la glaneuse de gauche, qui effleure le sol.",
+  "Le vol d'oiseaux qui tourne dans le ciel, en haut à droite.",
+]
+themes = ["travail", "paysans", "pauvreté", "moisson", "campagne"]
+anecdote = """
+En 2000, la cinéaste Agnès Varda s'inspire de ce tableau pour son documentaire Les \
+Glaneurs et la Glaneuse, consacré à ceux qui, aujourd'hui encore, ramassent les restes \
+des champs, des marchés et des poubelles."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Les Raboteurs de parquet"
+artiste = "Gustave Caillebotte"
+annee = "1875"
+image = "raboteurs-de-parquet.jpg"
+technique = "Huile sur toile, 102 × 146,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Trois ouvriers torse nu raclent le plancher d'un appartement parisien : refusé au Salon, le tableau fut l'une des révélations de l'exposition impressionniste de 1876."
+description = """
+Dans la pièce vide d'un appartement bourgeois, aux murs couverts de boiseries grises, \
+trois ouvriers à genoux, torse nu, raclent le vieux vernis du parquet. Deux d'entre \
+eux, au centre et à droite, tirent côte à côte leur racloir vers eux ; le troisième, à \
+gauche, travaille seul, penché vers le sol. De longs copeaux clairs s'enroulent autour \
+d'eux. Au fond, une porte-fenêtre ouverte sur un balcon de fer forgé laisse entrer une \
+lumière douce qui glisse sur les lattes et fait briller les parties déjà grattées. À \
+droite, une bouteille de vin et un verre attendent la pause ; un marteau a été posé \
+sur le plancher, et des vêtements entassés dans le coin de la pièce."""
+evocation = """
+Caillebotte, fils d'une riche famille parisienne, regarde le travail manuel là où il \
+se fait, dans un intérieur bourgeois en pleine rénovation. Il le peint sans \
+pittoresque, sans misérabilisme et sans message moral, comme un spectacle de corps en \
+mouvement, de gestes répétés et précis. On y a vu un hommage au métier, mais aussi une \
+image du Paris haussmannien, où l'on bâtit et rénove sans cesse. Les corps maigres, \
+l'effort, le vin rappellent la dureté du labeur ; en même temps, la lumière et le \
+rythme des bras donnent à la scène une beauté presque chorégraphique. Les critiques de \
+l'époque, eux, furent surtout frappés par l'audace du sujet et l'étrangeté du point de \
+vue."""
+histoire = """
+Caillebotte peint la scène dans l'hôtel particulier familial de la rue de Miromesnil, \
+à Paris, où il a installé son atelier. En 1875, il présente la toile au Salon, où le \
+jury la refuse, jugeant le sujet vulgaire. L'année suivante, invité par ses amis Degas \
+et Renoir, il l'expose avec les impressionnistes, à leur deuxième exposition, dans la \
+galerie du marchand Durand-Ruel. Elle y est très remarquée ; Émile Zola lui reproche \
+pourtant une exactitude trop photographique, qu'il juge bourgeoise. Après la mort de \
+Caillebotte, en 1894, ses héritiers, son frère Martial et le peintre Auguste Renoir, \
+exécuteur testamentaire, offrent le tableau à l'État. Il entre au musée du Luxembourg, \
+puis au Louvre, avant de rejoindre le musée d'Orsay en 1986."""
+facture = """
+Caillebotte adopte un point de vue plongeant, comme si le spectateur se tenait debout \
+au-dessus des ouvriers : le parquet monte presque jusqu'en haut du tableau et ses \
+lattes filent en diagonale vers la fenêtre, accentuant la perspective. Formé dans \
+l'atelier du peintre académique Léon Bonnat, il peint avec une précision et un fini \
+soignés qui le distinguent de ses amis impressionnistes. La lumière à contre-jour, \
+venue de la fenêtre, pose des reflets argentés sur le bois et modèle les dos et les \
+bras. La palette se limite aux bruns, aux gris et aux ocres."""
+details = [
+  "Les copeaux de bois qui s'enroulent sur le plancher.",
+  "La bouteille de vin et le verre, posés à droite.",
+  "Le balcon de fer forgé, à contre-jour, derrière la porte-fenêtre.",
+  "Le contraste entre les lattes déjà grattées, claires, et celles encore sombres.",
+  "La signature et la date, en bas à droite.",
+]
+themes = ["travail", "ouvriers", "paris", "lumière", "perspective"]
+anecdote = """
+On considère cette toile comme l'une des toutes premières représentations des ouvriers \
+des villes dans la peinture française : jusque-là, les peintres réalistes avaient \
+surtout montré les travailleurs des champs, comme les glaneuses de Millet."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "La Classe de danse"
+artiste = "Edgar Degas"
+annee = "1873–1876"
+image = "classe-de-danse.jpg"
+technique = "Huile sur toile, 85 × 75 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Fin de leçon à l'Opéra : autour du vieux maître de ballet Jules Perrot, les danseuses s'étirent, bavardent et attendent."
+description = """
+Dans une haute salle aux murs vert pâle, ornée de pilastres de faux marbre et d'un \
+grand encadrement de porte, une vingtaine de jeunes danseuses en tutu blanc entourent \
+un vieux maître de ballet appuyé sur un long bâton. Au centre, une élève prend la pose \
+pour exécuter un pas devant lui. Mais la plupart ne regardent pas : à gauche, l'une, \
+assise sur le piano, se gratte le dos, une autre s'évente ; au premier plan, une jeune \
+fille vue de dos, nœud rouge dans les cheveux et large ceinture verte, ajuste sa \
+tenue. Au fond, à droite, des mères attendent leurs filles. Le plancher, vu d'en haut, \
+occupe tout le bas du tableau, avec un arrosoir dans l'angle gauche."""
+evocation = """
+Degas ne montre pas le spectacle mais ses coulisses : la fatigue, l'attente, l'ennui, \
+les petits gestes que personne n'est censé voir. Les élèves de l'Opéra, souvent issues \
+de familles modestes, sont ici des travailleuses en apprentissage, celles que l'on \
+surnommait les « petits rats ». La présence des mères, au fond, rappelle les espoirs, \
+et parfois les calculs, qui entouraient ces jeunes filles. Le vieux maître, figure de \
+l'âge d'or du ballet romantique, incarne une discipline et une tradition face à une \
+jeunesse distraite. Pour Degas, ce monde est surtout un laboratoire du mouvement : il \
+y observe comment un corps se tient, se tord, se relâche."""
+histoire = """
+Degas commence le tableau vers 1873 et l'achève en 1876, après de nombreuses études de \
+danseuses, dessinées d'après des modèles qui posent dans son atelier. La salle évoque \
+l'ancien Opéra de la rue Le Peletier, détruit par un incendie en octobre 1873 : Degas \
+la recompose donc en partie de mémoire. Le maître de ballet est Jules Perrot, célèbre \
+danseur et chorégraphe, qui avait réglé une partie des danses de Giselle en 1841. Une \
+autre version, de composition différente, est conservée au Metropolitan Museum of Art \
+de New York. La toile est léguée au Louvre en 1911 par le collectionneur Isaac de \
+Camondo, avec d'autres œuvres de Degas, et se trouve au musée d'Orsay depuis 1986."""
+facture = """
+Degas compose comme un photographe ou un graveur japonais : point de vue en hauteur, \
+plancher en diagonale qui fuit vers le fond, figures coupées par le bord du cadre, \
+vide au centre. Les lattes du parquet conduisent le regard vers le maître de ballet. \
+La couleur, très claire, repose sur l'harmonie des blancs vaporeux des tutus et du \
+vert pâle des murs, relevée par les rubans, vert, bleu, rouge, et par le noir du \
+piano. La touche, fine et nerveuse, garde la précision du dessin, que Degas plaçait \
+au-dessus de tout."""
+details = [
+  "La danseuse assise sur le piano, qui se gratte le dos.",
+  "Le petit chien aux pieds de la danseuse à la ceinture verte.",
+  "L'éventail rouge ouvert, juste derrière la jeune fille vue de dos.",
+  "Les mères des danseuses, groupées au fond à droite.",
+  "Le grand encadrement de porte, au centre, qui laisse voir une fenêtre au-dehors.",
+]
+themes = ["danse", "opéra", "mouvement", "coulisses", "jeunesse"]
+anecdote = """
+L'arrosoir vert du premier plan n'est pas là par hasard : on arrosait le plancher des \
+salles de répétition pour abattre la poussière et empêcher les danseuses de glisser. \
+Degas y a malicieusement peint sa signature."""
+salle = 4
+mur = "sud"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Un bar aux Folies-Bergère"
+artiste = "Édouard Manet"
+annee = "1882"
+image = "bar-aux-folies-bergere.jpg"
+technique = "Huile sur toile, 96 × 130 cm"
+collection = "Courtauld Gallery, Londres"
+note = "La dernière grande toile de Manet : une serveuse lasse, face à nous, et derrière elle, dans un miroir, tout l'éclat d'un café-concert parisien."
+description = """
+Une jeune serveuse se tient derrière le comptoir de marbre d'un bar, les mains posées \
+sur le rebord, face à nous. Elle porte une veste de velours bleu nuit bordée de \
+dentelle, un médaillon au cou et un petit bouquet au corsage. Sur le comptoir \
+s'alignent des bouteilles de champagne, de bière anglaise et de liqueur verte, une \
+coupe de cristal pleine d'oranges et un verre où trempent deux roses. Derrière elle, \
+un immense miroir reflète la salle des Folies-Bergère : les lustres, les globes \
+lumineux, la foule du balcon et, en haut à gauche, les pieds chaussés de vert d'une \
+acrobate sur son trapèze. À droite, le reflet de la serveuse se penche vers un client \
+en chapeau haut-de-forme."""
+evocation = """
+Au milieu du bruit et de la lumière, la serveuse paraît absente, perdue dans ses \
+pensées, isolée de la fête qu'elle sert. Son reflet, lui, semble engagé dans une \
+conversation avec le client : deux attitudes, deux moments, peut-être la femme \
+publique et la femme intime. Aux Folies-Bergère, certaines serveuses passaient pour se \
+laisser courtiser, et l'on s'est demandé si elle ne faisait pas partie, comme les \
+bouteilles et les fruits, de ce qui s'offre au client. Le tableau parle aussi de la \
+ville moderne, de ses plaisirs et de la solitude qu'on y éprouve au milieu de la \
+foule. Peint par un Manet déjà très malade, il a souvent été lu comme un adieu à la \
+vie parisienne qu'il avait tant aimée."""
+histoire = """
+Manet, gravement malade, peint la toile pendant l'hiver 1881-1882 dans son atelier de \
+la rue d'Amsterdam, après avoir pris des croquis sur place, dans le célèbre \
+café-concert de la rue Richer. Il y fait reconstituer un comptoir avec ses bouteilles, \
+et une véritable serveuse des Folies-Bergère, prénommée Suzon, vient poser. Le tableau \
+est exposé au Salon de 1882, le dernier auquel Manet participe ; il meurt l'année \
+suivante, à cinquante et un ans. La toile appartient ensuite au compositeur Emmanuel \
+Chabrier, ami du peintre, puis passe par plusieurs collections avant d'être achetée en \
+1926 par l'industriel britannique Samuel Courtauld. Elle est aujourd'hui l'œuvre phare \
+de la Courtauld Gallery, à Londres."""
+facture = """
+Manet peint vite et franchement, d'une touche large et visible qui fait vibrer les \
+reflets du miroir, tandis que la nature morte du comptoir, au premier plan, est d'une \
+netteté éclatante : verre, étiquettes, peau des fruits. La lumière artificielle, \
+froide et diffuse, efface presque les ombres. Toute la composition repose sur un \
+paradoxe optique : le reflet de la serveuse et du client est décalé vers la droite, ce \
+qui serait impossible si nous nous tenions en face d'elle. Manet sacrifie \
+volontairement la vraisemblance à l'effet, et laisse le spectateur dans le trouble."""
+details = [
+  "Les petits pieds chaussés de vert d'une acrobate, en haut à gauche.",
+  "La signature et la date, peintes sur l'étiquette d'une bouteille, à gauche.",
+  "La coupe de cristal pleine d'oranges, à droite du comptoir.",
+  "La spectatrice en robe blanche accoudée au balcon, à gauche.",
+  "Le client à moustache et haut-de-forme, qui n'existe que dans le miroir.",
+]
+themes = ["paris", "café-concert", "miroir", "solitude", "vie moderne"]
+anecdote = """
+Les bouteilles marquées d'un triangle rouge sont de la bière anglaise Bass : ce \
+triangle fut, en 1876, la toute première marque enregistrée au Royaume-Uni. Manet a \
+ainsi glissé dans son tableau l'un des premiers logos de l'histoire."""
+salle = 4
+mur = "nord"
+place = 4
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Rue de Paris, temps de pluie"
+artiste = "Gustave Caillebotte"
+annee = "1877"
+image = "rue-de-paris-temps-de-pluie.jpg"
+technique = "Huile sur toile, 212,2 × 276,2 cm"
+collection = "Art Institute of Chicago"
+note = "Un carrefour neuf du quartier de l'Europe, sous la pluie : la grande ville moderne, ses perspectives et ses passants, peinte à l'échelle d'un tableau d'histoire."
+description = """
+Un carrefour parisien, un jour de pluie. Les pavés mouillés luisent sous un ciel gris. \
+Au premier plan à droite, un couple élégant marche sous un même parapluie : l'homme en \
+haut-de-forme et redingote, la femme en manteau sombre, une voilette sur le visage et \
+une perle à l'oreille. Ils vont croiser un passant, coupé par le bord du tableau, dont \
+on ne voit que le dos et le parapluie. Au centre, un grand réverbère vert partage la \
+toile en deux. À gauche, de l'autre côté de la chaussée, des passants isolés \
+traversent, une voiture à cheval attend, et un immeuble à l'angle aigu, comme une \
+proue de navire, sépare deux rues qui fuient vers le fond."""
+evocation = """
+Caillebotte peint le Paris transformé par le baron Haussmann sous le Second Empire : \
+rues larges, immeubles de pierre de taille alignés, réverbères, trottoirs. C'est la \
+ville des bourgeois qui se promènent, mais aussi celle de l'anonymat : chacun s'abrite \
+sous son parapluie, personne ne se regarde, le couple semble absorbé dans ses pensées. \
+On y a vu une image de la solitude moderne au milieu de la foule, et un portrait du \
+milieu social auquel appartenait le peintre. La pluie, qui unifie tout dans une même \
+lumière grise, transforme la rue en un espace presque abstrait, où les lignes droites \
+des façades répondent aux courbes des parapluies."""
+histoire = """
+La scène se situe au carrefour formé par les rues de Turin, de Moscou et de \
+Saint-Pétersbourg, près de la gare Saint-Lazare, dans le quartier de l'Europe, alors \
+tout récent. Caillebotte prépare la toile par de nombreux dessins et une esquisse \
+peinte. Il la présente en 1877 à la troisième exposition impressionniste, qu'il a \
+largement financée et organisée, aux côtés d'œuvres de Monet, Renoir, Pissarro et \
+Degas. La critique remarque surtout ses grandes dimensions et sa perspective \
+étonnante. Après être passé par des collections particulières, le tableau est acquis \
+en 1964 par l'Art Institute of Chicago, dont il est devenu l'une des œuvres les plus \
+célèbres."""
+facture = """
+Le format monumental, plus de deux mètres sur près de trois, fait entrer le spectateur \
+dans la rue, à hauteur de passants grandeur nature. La perspective est très accentuée, \
+et le cadrage, avec ses figures coupées par le bord, évoque la photographie. Le \
+réverbère et sa ligne verticale divisent la toile en deux parties, l'une ouverte et \
+profonde, l'autre fermée par les figures proches. La facture est lisse et précise au \
+premier plan, plus floue au loin, comme dans l'air humide d'un jour de pluie. Les \
+gris, les bleus et les beiges dominent, rehaussés par le vert du réverbère."""
+details = [
+  "La perle à l'oreille de la femme, sous sa voilette.",
+  "Le réverbère vert, au centre, qui partage le tableau en deux.",
+  "La signature et la date, en bas à gauche, sur les pavés.",
+  "La roue rouge de la voiture à cheval, à gauche.",
+  "Les pavés, plus gros au premier plan, qui rapetissent vers le fond.",
+]
+themes = ["ville", "pluie", "paris", "solitude", "perspective"]
+anecdote = """
+Le carrefour existe toujours : c'est aujourd'hui la place de Dublin, dans le 8ᵉ \
+arrondissement de Paris. L'immeuble en forme de proue est encore debout, et l'on peut \
+y retrouver presque exactement le point de vue du peintre."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Les Toits rouges, coin de village, effet d'hiver"
+artiste = "Camille Pissarro"
+annee = "1877"
+image = "toits-rouges.jpg"
+technique = "Huile sur toile, 54,5 × 65,6 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un hameau de Pontoise vu à travers un rideau d'arbres nus : le paysage tissé de petites touches de Pissarro, l'aîné et le pilier du groupe impressionniste."
+description = """
+Au pied d'une colline, un groupe de maisons paysannes aux murs clairs et aux toits de \
+tuiles rouges se serre au milieu d'un verger. C'est l'hiver : les arbres fruitiers, \
+sans feuilles, dressent devant les maisons un réseau de troncs minces et de branches \
+fines, à travers lequel on devine les pignons, les cheminées, une fenêtre. Au premier \
+plan, de l'herbe verte et un chemin de terre brune. Au-dessus des toits, la pente de \
+la colline, couverte de champs roux et de haies, monte presque jusqu'en haut du \
+tableau et ne laisse qu'un étroit morceau de ciel gris-bleu. Tout vibre dans une \
+lumière froide et claire."""
+evocation = """
+Pissarro peint la campagne la plus ordinaire, celle des environs de Paris, sans \
+monument ni événement : un coin de village, des arbres, une saison. Ce qui \
+l'intéresse, c'est la manière dont la lumière d'hiver fait chanter les tuiles rouges \
+contre les verts et les gris. Son regard, profondément attaché à la vie rurale, ne \
+cherche ni le pittoresque ni l'anecdote. Le réseau d'arbres placé entre nous et les \
+maisons crée une impression d'intimité, comme si l'on découvrait le hameau en marchant \
+dans le verger. On y voit souvent l'une des plus belles réussites de la période de \
+Pontoise, quand Pissarro travaille aux côtés de Cézanne."""
+histoire = """
+Installé à Pontoise de 1872 à 1882, Pissarro peint inlassablement ce bourg du Vexin et \
+ses environs. Cette toile représente la côte des Bœufs, au hameau de l'Hermitage, où \
+il habite. Le tableau appartient ensuite à Gustave Caillebotte, qui achète beaucoup \
+d'œuvres à ses amis pour les soutenir. À sa mort, en 1894, Caillebotte lègue sa \
+collection à l'État : après de longues négociations et une vive polémique, une partie \
+seulement est acceptée et présentée en 1897 au musée du Luxembourg. Les Toits rouges \
+en fait partie. La toile rejoint ensuite le Louvre, puis le musée d'Orsay en 1986."""
+facture = """
+Pissarro construit la toile par une multitude de petites touches épaisses, posées en \
+tous sens, qui donnent à la surface une texture serrée, presque tissée. Il superpose \
+deux plans : le réseau linéaire des arbres au premier plan et, derrière, les volumes \
+simples des maisons, pignons et toits traités comme des blocs de couleur. Cette \
+attention à la structure rappelle ses échanges avec Cézanne à la même époque. Les \
+complémentaires, rouge des tuiles et vert de l'herbe, s'exaltent mutuellement, tandis \
+que l'horizon placé très haut réduit le ciel à une mince bande."""
+details = [
+  "Les cheminées blanches qui pointent entre les branches.",
+  "L'étroite bande de ciel, tout en haut.",
+  "Les troncs fins et clairs des arbres fruitiers, comme une grille devant les maisons.",
+  "La signature et la date, en bas à droite.",
+]
+themes = ["paysage", "hiver", "village", "campagne", "lumière"]
+anecdote = """
+Pissarro est le seul peintre à avoir participé aux huit expositions impressionnistes, \
+de 1874 à 1886. Cézanne, qui travailla à ses côtés à Pontoise, se présentera plus tard \
+comme « élève de Pissarro »."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Gustave Courbet"
+vie = "Ornans (Doubs), 10 juin 1819 – La Tour-de-Peilz (Suisse), 31 décembre 1877"
+biographie = """
+Fils d'un riche propriétaire terrien d'Ornans, en Franche-Comté, Gustave Courbet \
+arrive à Paris en 1839, officiellement pour étudier le droit. Il se forme surtout \
+seul, en copiant au Louvre les maîtres espagnols, flamands et hollandais, et peint de \
+nombreux autoportraits romantiques. Admis au Salon dès 1844, il s'impose après la \
+révolution de 1848 avec L'Après-dînée à Ornans, Les Casseurs de pierres et Un \
+enterrement à Ornans, qui font scandale. Ami de Baudelaire, de Champfleury et du \
+penseur socialiste Proudhon, il revendique le nom de « réaliste ». En 1855, refusé en \
+partie à l'Exposition universelle, il ouvre son propre pavillon. Paysages du Jura, \
+scènes de chasse, nus et marines font ensuite sa fortune. Républicain, il refuse la \
+Légion d'honneur en 1870 et participe à la Commune de Paris en 1871. Tenu pour \
+responsable de la destruction de la colonne Vendôme, il est emprisonné, puis condamné \
+à payer sa reconstruction. Ruiné, il s'exile en Suisse en 1873 et meurt à La \
+Tour-de-Peilz, au bord du Léman."""
+style = """
+Courbet veut peindre ce qu'il voit et rien d'autre : ni anges, ni dieux, ni histoire \
+ancienne. Sa peinture est solide et terrienne, construite sur des fonds sombres, avec \
+une pâte épaisse qu'il étale souvent au couteau, surtout dans ses paysages de rochers \
+et de vagues. En donnant à la vie ordinaire les dimensions de la grande peinture, il a \
+ouvert la voie à Manet et aux impressionnistes, et fait du réalisme un combat \
+artistique et politique."""
+
+[[artistes]]
+nom = "Jean-François Millet"
+vie = "Gruchy, Gréville-Hague (Manche), 4 octobre 1814 – Barbizon, 20 janvier 1875"
+biographie = """
+Né dans une famille de paysans aisés du Cotentin, Jean-François Millet travaille aux \
+champs avant d'apprendre la peinture à Cherbourg. Une bourse de la ville lui permet de \
+partir en 1837 pour Paris, où il entre dans l'atelier de Paul Delaroche. Il vit \
+d'abord difficilement de portraits et de scènes pastorales gracieuses. Veuf en 1844, \
+il partage ensuite sa vie avec Catherine Lemaire, qui lui donnera neuf enfants. En \
+1849, il s'installe à Barbizon, en lisière de la forêt de Fontainebleau, aux côtés de \
+son ami le paysagiste Théodore Rousseau. Il y consacre désormais son œuvre aux paysans \
+: Le Semeur, Les Glaneuses, L'Angélus. Longtemps pauvre, critiqué par ceux qui voient \
+en lui un peintre socialiste, il est enfin reconnu à l'Exposition universelle de 1867 \
+et reçoit la Légion d'honneur l'année suivante. Il meurt à Barbizon en 1875. Sa gloire \
+posthume est immense, et Van Gogh, qui le vénérait, copiera nombre de ses \
+compositions."""
+style = """
+Millet simplifie les formes pour donner aux paysans la grandeur de statues : contours \
+fermes, gestes lents, visages souvent dans l'ombre. Ses couleurs sourdes, ocres, bruns \
+et gris dorés, et ses lumières de crépuscule créent une atmosphère grave, presque \
+religieuse. Excellent dessinateur, pastelliste et graveur, il a fait du travail des \
+champs un sujet noble, et son influence a marqué Van Gogh, Pissarro et Seurat."""
+
+[[artistes]]
+nom = "Rosa Bonheur"
+vie = "Bordeaux, 16 mars 1822 – Thomery (Seine-et-Marne), 25 mai 1899"
+biographie = """
+Fille du peintre Raymond Bonheur, adepte des idées saint-simoniennes qui prônent \
+l'égalité des sexes, Rosa Bonheur grandit à Paris, où son père lui enseigne le dessin. \
+Elle copie les maîtres au Louvre et étudie inlassablement les animaux, dans les \
+fermes, les marchés aux chevaux et les abattoirs. Elle expose au Salon dès 1841 et \
+obtient une médaille de première classe en 1848. Labourage nivernais, en 1849, puis Le \
+Marché aux chevaux, aujourd'hui au Metropolitan Museum de New York, font d'elle l'une \
+des artistes les plus célèbres de son temps, en France, en Grande-Bretagne et aux \
+États-Unis. En 1860, elle s'installe au château de By, à Thomery, près de la forêt de \
+Fontainebleau, avec sa compagne Nathalie Micas et toute une ménagerie. En 1865, elle \
+est la première femme artiste décorée de la Légion d'honneur. Elle reçoit Buffalo Bill \
+en 1889 et fait son portrait. À la fin de sa vie, la peintre américaine Anna Klumpke \
+devient sa compagne et sa biographe."""
+style = """
+Rosa Bonheur est la grande peintre animalière du XIXᵉ siècle. Son art repose sur une \
+observation scientifique de l'anatomie et du comportement des bêtes, rendue par un \
+dessin précis, une touche soignée et un sens du mouvement des masses. Ses compositions \
+en frise, ses grands formats et ses lumières claires donnent aux chevaux et aux bœufs \
+la noblesse que d'autres réservaient aux héros. Elle reste aussi une figure pionnière \
+de l'indépendance des femmes artistes."""
+
+[[artistes]]
+nom = "Édouard Manet"
+vie = "Paris, 23 janvier 1832 – Paris, 30 avril 1883"
+biographie = """
+Fils d'un haut magistrat parisien, Édouard Manet échoue au concours de l'École navale \
+et embarque en 1848 comme élève pilote pour Rio de Janeiro. À son retour, son père \
+accepte qu'il devienne peintre : il passe six ans dans l'atelier de Thomas Couture, \
+copie les maîtres au Louvre et voyage en Hollande et en Italie. Il admire Velázquez et \
+Goya, qu'il découvre en Espagne en 1865. Remarqué au Salon de 1861, il fait scandale \
+avec Le Déjeuner sur l'herbe en 1863, puis avec Olympia en 1865. Défendu par \
+Baudelaire et par Émile Zola, il devient la figure de référence des jeunes peintres \
+qui fréquentent le café Guerbois, Monet, Renoir, Degas, Bazille. Pourtant, il refuse \
+d'exposer avec les impressionnistes et continue de chercher la reconnaissance du \
+Salon. Il épouse en 1863 Suzanne Leenhoff. Dans les années 1870, il éclaircit sa \
+palette et peint en plein air avec Monet à Argenteuil. Atteint d'une grave maladie, il \
+reçoit la Légion d'honneur en 1881 et meurt à cinquante et un ans."""
+style = """
+Manet peint son époque avec les moyens des maîtres anciens : grands formats, \
+compositions empruntées à Titien, Raphaël ou Velázquez, mais sujets modernes et \
+regards directs. Il simplifie le modelé, pose des couleurs franches en larges aplats \
+et fait des noirs une véritable couleur. Cette peinture plate et lumineuse, qui assume \
+sa touche, a libéré ses cadets : on le tient souvent pour le premier peintre moderne."""
+
+[[artistes]]
+nom = "Edgar Degas"
+vie = "Paris, 19 juillet 1834 – Paris, 27 septembre 1917"
+biographie = """
+Fils d'un banquier parisien, Edgar Degas renonce au droit pour la peinture, entre \
+brièvement à l'École des beaux-arts en 1855 et vénère Ingres. Il passe trois ans en \
+Italie, où il copie les maîtres de la Renaissance et peint La Famille Bellelli, \
+portrait de sa tante et de sa famille. Revenu à Paris, il abandonne peu à peu la \
+peinture d'histoire pour la vie moderne : champs de courses, cafés, blanchisseuses, \
+modistes et surtout danseuses de l'Opéra. En 1872-1873, il séjourne à La \
+Nouvelle-Orléans, berceau de la famille de sa mère. Il participe à sept des huit \
+expositions impressionnistes, tout en refusant l'étiquette et en préférant se dire \
+réaliste. Il pratique le pastel, le monotype, la photographie et la sculpture : sa \
+Petite Danseuse de quatorze ans, en cire habillée de vrais tissus, fait sensation en \
+1881. Sa vue décline à partir des années 1870. Misanthrope, brouillé avec plusieurs \
+amis au moment de l'affaire Dreyfus, il vit ses dernières années presque aveugle et \
+meurt à Paris en 1917."""
+style = """
+Degas est un dessinateur avant tout. Il compose ses scènes comme des instantanés : \
+cadrages décentrés, figures coupées, vues plongeantes, influencés par les estampes \
+japonaises et la photographie. Il observe le corps au travail, danseuses, repasseuses, \
+jockeys, avec une précision presque scientifique. Peintre d'atelier plutôt que de \
+plein air, il invente sans cesse des techniques, notamment dans le pastel, qu'il \
+pousse jusqu'à des couleurs éclatantes."""
+
+[[artistes]]
+nom = "Gustave Caillebotte"
+vie = "Paris, 19 août 1848 – Gennevilliers (Hauts-de-Seine), 21 février 1894"
+biographie = """
+Fils d'un riche industriel parisien, Gustave Caillebotte obtient une licence en droit \
+en 1868, puis sert dans la garde nationale mobile pendant la guerre de 1870. Il étudie \
+ensuite la peinture dans l'atelier de Léon Bonnat et entre à l'École des beaux-arts en \
+1873. La mort de son père lui laisse une grande fortune. Refusé au Salon en 1875, il \
+rejoint les impressionnistes, expose avec eux dès 1876 et devient leur principal \
+organisateur et mécène : il finance des expositions, achète des toiles de Monet, \
+Renoir, Pissarro, Degas, Sisley et Cézanne, paie parfois le loyer de ses amis. Ses \
+grandes toiles, Le Pont de l'Europe et Rue de Paris, temps de pluie, montrent le Paris \
+haussmannien. Il peint aussi la campagne de la propriété familiale de Yerres. \
+Passionné de navigation, il dessine et construit des voiliers au Petit-Gennevilliers, \
+où il s'installe, cultive un jardin et rassemble avec son frère Martial une célèbre \
+collection de timbres. Il meurt à quarante-cinq ans, léguant sa collection \
+impressionniste à l'État."""
+style = """
+Caillebotte unit la précision du dessin académique et les sujets des impressionnistes. \
+Ses perspectives plongeantes ou fuyantes, ses cadrages audacieux et ses figures \
+coupées rappellent la photographie. Il peint la ville moderne, ses rues, ses ponts, \
+ses balcons, et le travail des ouvriers, avec une facture lisse et des tons gris-bleu. \
+Longtemps éclipsé par son rôle de mécène, il est aujourd'hui reconnu comme un grand \
+peintre du Paris moderne."""
+
+[[artistes]]
+nom = "Camille Pissarro"
+vie = "Charlotte-Amalie, Saint-Thomas (Antilles danoises), 10 juillet 1830 – Paris, 13 novembre 1903"
+biographie = """
+Né aux Antilles dans une famille juive de négociants, Camille Pissarro est envoyé en \
+pension près de Paris, puis revient travailler dans le commerce paternel. En 1852, il \
+part dessiner au Venezuela avec le peintre danois Fritz Melbye, avant de s'installer à \
+Paris en 1855. Il y reçoit les conseils de Corot et rencontre à l'Académie Suisse \
+Monet et Cézanne. Pendant la guerre de 1870, il se réfugie à Londres ; sa maison de \
+Louveciennes est pillée et une grande partie de ses toiles détruites. De 1872 à 1882, \
+il vit à Pontoise, où il travaille avec Cézanne et Gauguin, puis s'installe à Éragny, \
+dans l'Oise. Vers 1885, il adopte pour quelques années la technique pointilliste de \
+Seurat. Père de huit enfants, longtemps dans la gêne, proche des idées anarchistes, il \
+souffre à la fin de sa vie d'une maladie des yeux qui l'oblige à peindre derrière une \
+fenêtre : il en tire ses grandes séries de boulevards parisiens et de ports. Il meurt \
+à Paris en 1903."""
+style = """
+Pissarro est le peintre de la campagne habitée : vergers, chemins, villages, marchés, \
+paysans au travail. Sa touche, faite de petites hachures serrées, tisse des surfaces \
+vibrantes, et sa construction solide des formes a nourri Cézanne. Ouvert à toutes les \
+recherches, il est passé par le néo-impressionnisme avant d'y renoncer. Patient et \
+généreux, il a été le maître et le soutien de plusieurs générations de peintres."""
