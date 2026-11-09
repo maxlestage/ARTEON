@@ -1,0 +1,931 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « EXPRESSIONNISME » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/expressionnisme/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site : /expressionnisme.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 180
+nom_court = "Expressionnisme"
+mouvement = "Fauvisme et expressionnisme"
+couleur = "#2b4c9b"
+titre = "Fauves et expressionnistes, la couleur libérée"
+artiste = "Matisse, Derain, Kirchner, Marc, Macke, Schiele, Modigliani…"
+dates = "1904–1919"
+accroche = "Exposition virtuelle · Lenbachhaus, Munich"
+introduction = """
+Au début du XXe siècle, une génération de peintres libère la couleur de son rôle \
+descriptif : à Paris, les « fauves » Matisse et Derain peignent des visages verts et \
+des montagnes orange ; en Allemagne et en Autriche, Kirchner, Marc, Macke ou Schiele en \
+font le langage de l'émotion, de l'angoisse et de l'esprit. La visite suit cette onde \
+de choc de Collioure à Berlin, de Munich à Vienne et à Montparnasse, avec Modigliani et \
+Paula Modersohn-Becker. Le bâtiment s'inspire de la Lenbachhaus de Munich, la maison du \
+Cavalier bleu : un haut foyer contemporain comme celui de l'aile dessinée par Norman \
+Foster, des salles blanches baignées de lumière et l'enfilade de la villa du peintre \
+Franz von Lenbach."""
+vitrine = "cheval-bleu.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la Lenbachhaus de Munich : on entre par le haut foyer de l'aile
+# contemporaine de Norman Foster (2013) ; à l'ouest, une salle pour les fauves ;
+# au nord, une salle blanche et lumineuse pour le Cavalier bleu, comme les
+# galeries hautes de l'aile neuve ; à l'est, l'enfilade de deux salles de la villa
+# ocre de Franz von Lenbach. x et z : le centre de la salle (x vers l'est, z vers
+# le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le foyer"
+theme = "Le haut foyer de l'aile contemporaine, d'où l'on rejoint les fauves, le Cavalier bleu et la villa."
+murs = "#f1eee8"
+x = 0
+z = 0
+largeur = 16
+profondeur = 10
+hauteur = 11
+portes = ["sud", "nord", "ouest", "est"]
+
+[[salles]]
+nom = "Salle I · Les fauves"
+theme = "1904–1908 : Matisse et Derain, de Saint-Tropez à Collioure, la couleur pure qui fit scandale au Salon d'Automne."
+murs = "#f3eee4"
+x = -14
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Salle II · Le Cavalier bleu"
+theme = "1911–1913 : Franz Marc et August Macke, au cœur de la collection munichoise du Blaue Reiter."
+murs = "#f6f4ef"
+x = 0
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Salle III · Worpswede et Berlin"
+theme = "1906–1914 : Paula Modersohn-Becker et Ernst Ludwig Kirchner, le corps et la grande ville."
+murs = "#efe8dc"
+x = 13
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 5
+portes = ["est"]
+
+[[salles]]
+nom = "Salle IV · Vienne et Montparnasse"
+theme = "1912–1919 : les visages tourmentés de Schiele et les figures mélancoliques de Modigliani."
+murs = "#f0e9df"
+x = 23
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Luxe, calme et volupté"
+artiste = "Henri Matisse"
+annee = "1904"
+image = "luxe-calme-volupte.jpg"
+technique = "Huile sur toile, 98,5 × 118,5 cm"
+collection = "Centre Pompidou, Musée national d'art moderne, Paris (déposé au musée d'Orsay)"
+note = "Un pique-nique au bord de la mer, à Saint-Tropez, peint en petites touches de couleur pure : le titre vient d'un poème de Baudelaire."
+description = """
+Au bord d'une baie, à l'heure où le soleil couchant embrase le ciel, un petit groupe \
+s'est installé sur la plage. À gauche, une femme vêtue d'une robe sombre et coiffée \
+d'un chapeau est assise près d'une nappe blanche où sont posées des tasses et une \
+théière. Autour d'elle, des baigneuses nues se reposent, s'allongent ou se sèchent ; \
+l'une, debout à droite, laisse pendre sa longue chevelure devant elle. Au centre, le \
+mât d'une barque tirée sur le sable trace une grande diagonale. Un pin élancé ferme la \
+composition à droite, ses branches dessinant des arabesques dans un ciel rose et jaune. \
+Au fond, des collines bleues bordent l'autre rive de la baie. Toute la scène est faite \
+de petites touches de couleur pure, rouges, orangées, bleues et vertes, qui scintillent \
+comme une mosaïque."""
+evocation = """
+Le titre reprend le refrain de « L'Invitation au voyage » de Baudelaire, qui rêve d'un \
+pays où « tout n'est qu'ordre et beauté, luxe, calme et volupté ». Matisse transpose ce \
+rêve dans une scène moderne : un goûter en famille côtoie des nymphes nues, comme si la \
+vie quotidienne s'ouvrait sur un âge d'or. On y a vu une réponse aux grandes pastorales \
+de Puvis de Chavannes et aux baigneuses de Cézanne, que Matisse admirait. La femme \
+habillée, que l'on identifie d'ordinaire à Amélie, l'épouse du peintre, relie le mythe \
+à sa propre vie. Ce paradis paisible annonce un thème qui ne quittera plus Matisse : le \
+bonheur de vivre, la joie de la lumière et des corps au repos, qu'il développera dès \
+l'année suivante dans Le Bonheur de vivre."""
+histoire = """
+Au cours de l'été 1904, Matisse séjourne à Saint-Tropez, où Paul Signac, chef de file \
+du néo-impressionnisme, possède une maison, La Hune. Au contact de Signac et \
+d'Henri-Edmond Cross, il s'essaie à la touche divisée. De retour à Paris, il compose à \
+l'atelier, d'après une esquisse peinte sur place, ce grand tableau qu'il expose au \
+Salon des Indépendants au printemps 1905. Signac l'achète et l'accroche chez lui à \
+Saint-Tropez. La toile, qui fit forte impression sur de jeunes peintres comme Raoul \
+Dufy, reste longtemps dans la famille de Signac avant d'entrer dans les collections \
+nationales au début des années 1980. Propriété du Centre Pompidou, elle est exposée au \
+musée d'Orsay, où elle marque la charnière entre le néo-impressionnisme et le fauvisme."""
+facture = """
+Matisse adopte la méthode de Seurat et de Signac : la couleur est posée en touches \
+séparées, sans mélange sur la palette, pour que l'œil recompose les tons. Mais il en \
+fait un usage très libre. Ses touches sont plus larges, presque des tesselles de \
+mosaïque, et ses couleurs plus violentes que celles de ses aînés : orangés, roses et \
+bleus vifs. Surtout, il cerne les corps d'un trait bleu ou rouge continu, qui contredit \
+le principe même de la division. Ce conflit entre la ligne et la couleur le conduira \
+l'été suivant, à Collioure, à abandonner la touche divisée pour les aplats éclatants du \
+fauvisme."""
+details = [
+  "À gauche, la femme en robe sombre et chapeau, seule figure habillée de la scène.",
+  "Sur la nappe blanche, les tasses et la petite théière du goûter.",
+  "La grande diagonale du mât de la barque, au centre du tableau.",
+  "Les contours bleus et rouges qui cernent le corps des baigneuses.",
+  "La signature, en bas à droite, presque noyée dans les touches.",
+]
+themes = ["baigneuses", "mer", "âge d'or", "néo-impressionnisme", "poésie"]
+anecdote = """
+En 1899, presque sans le sou, Matisse avait acheté au marchand Vollard un petit tableau \
+de Cézanne, Trois Baigneuses. Il le garda trente-sept ans avant de l'offrir en 1936 à \
+la Ville de Paris, en expliquant qu'il l'avait soutenu moralement dans les moments \
+critiques de sa vie d'artiste."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "La Femme au chapeau"
+artiste = "Henri Matisse"
+annee = "1905"
+image = "femme-au-chapeau.jpg"
+technique = "Huile sur toile, 80,7 × 59,7 cm"
+collection = "San Francisco Museum of Modern Art"
+note = "Le portrait d'Amélie Matisse qui fit scandale au Salon d'Automne de 1905, celui où naquit le mot « fauves »."
+description = """
+Une femme est vue à mi-corps, le buste tourné vers la gauche et le visage vers nous. \
+Elle tient un éventail devant elle et porte un énorme chapeau chargé de fleurs, de \
+plumes et de rubans, peint en bleus, violets, verts et touches orangées. Son visage \
+étroit est zébré de vert sur le front et l'arête du nez, de jaune et de rose sur les \
+joues ; ses sourcils noirs et ses lèvres rouges ressortent avec force. Sa chevelure est \
+d'un roux orangé. Le fond ne figure aucune pièce reconnaissable : ce sont des plages \
+libres de vert, de rose, de mauve et de jaune, posées à larges coups de pinceau, avec \
+des parties où la toile reste à nu. En haut à gauche, la signature Henri-Matisse est \
+écrite en lettres vertes."""
+evocation = """
+Le modèle est Amélie Matisse, l'épouse du peintre, et pourtant le tableau dit moins une \
+ressemblance qu'une sensation. Matisse ne cherche pas à reproduire la couleur réelle de \
+la peau ou de la robe : il choisit chaque teinte pour sa force et pour son accord avec \
+les autres. Le vert sur le visage, qui choqua tant, n'est pas une provocation gratuite \
+mais une façon de construire le volume et la lumière par la seule couleur. Pour le \
+public de 1905, habitué aux portraits mondains soignés, ce visage barbouillé \
+ressemblait à une caricature, voire à une insulte. Les historiens y voient au contraire \
+l'acte de naissance d'une peinture où la couleur devient autonome. Le chapeau \
+extravagant, à la mode du temps, devient lui-même un bouquet de couleurs pures."""
+histoire = """
+Le portrait est peint à Paris à l'automne 1905, au retour de l'été passé à Collioure. \
+Matisse l'envoie au Salon d'Automne, où il est accroché dans la salle VII avec les \
+toiles de Derain, Manguin, Camoin, Marquet et de leurs amis. Le public s'esclaffe, et \
+le critique Louis Vauxcelles, apercevant au milieu de ces couleurs violentes des bustes \
+de facture classique, écrit dans le journal Gil Blas : « Donatello parmi les fauves ! » \
+Le mot restera. Le tableau trouve pourtant acheteur : Leo et Gertrude Stein, deux \
+jeunes Américains installés à Paris, l'accrochent dans leur appartement de la rue de \
+Fleurus, où défile l'avant-garde. Il passe ensuite à Michael et Sarah Stein, qui \
+l'emportent en Californie, puis est légué au musée de San Francisco par la \
+collectionneuse Elise S. Haas."""
+facture = """
+Matisse pose la couleur par larges coups de brosse, rapides et visibles, parfois \
+juxtaposés sans se toucher, en laissant respirer la toile nue entre eux. Il n'y a ni \
+modelé traditionnel ni ombre portée : le volume naît du contraste entre tons chauds et \
+froids, le vert de l'arête du nez s'opposant au rose et au jaune des joues. Le dessin, \
+réduit à quelques traits sombres pour les sourcils, les yeux et le contour de l'épaule, \
+reste libre. La touche dérive encore des expériences néo-impressionnistes de l'année \
+précédente, mais éclatée, élargie, presque sauvage. Le fond, traité avec la même \
+énergie que la figure, refuse toute profondeur."""
+details = [
+  "La bande verte qui descend du front sur l'arête du nez.",
+  "Les sourcils noirs, tracés d'un seul geste au-dessus des yeux sombres.",
+  "L'éventail, simple éclat de blanc, de rose et de vert au premier plan.",
+  "Les zones où la toile reste nue, notamment dans le fond.",
+  "La signature Henri-Matisse, en vert, dans le coin supérieur gauche.",
+]
+themes = ["portrait", "couleur pure", "scandale", "mode", "fauvisme"]
+anecdote = """
+Selon un souvenir souvent rapporté, quelqu'un demanda un jour à Matisse de quelle \
+couleur était vraiment la robe que portait sa femme pendant les séances de pose. Il \
+aurait répondu : « Noire, bien sûr. »"""
+salle = 2
+mur = "sud"
+place = 1
+largeur = 0.8
+
+[[oeuvres]]
+titre = "La Desserte rouge (Harmonie en rouge)"
+artiste = "Henri Matisse"
+annee = "1908"
+image = "desserte-rouge.jpg"
+technique = "Huile sur toile, 180 × 220 cm"
+collection = "Musée de l'Ermitage, Saint-Pétersbourg"
+note = "Commandée par le collectionneur moscovite Sergueï Chtchoukine, la toile fut peinte d'abord en bleu, puis entièrement repeinte en rouge."
+description = """
+Une servante, en corsage bleu nuit et tablier blanc, dispose des fruits dans un \
+compotier sur une table dressée. La nappe rouge et le mur rouge se confondent en un \
+seul plan, couverts du même motif : de grandes arabesques bleues et des corbeilles de \
+fleurs. Sur la table, deux carafes, l'une de vin rouge, l'autre d'une liqueur dorée, un \
+compotier sur pied, un vase de fleurs, des citrons et des oranges éparpillés. À gauche, \
+une chaise au dossier à barreaux et au siège de paille jaune. En haut à gauche, une \
+fenêtre ouvre sur un jardin vert où fleurissent des arbres blancs, sous un ciel bleu, \
+avec le toit d'une petite maison rose. La signature et la date, en bas à gauche, sont \
+discrètement inscrites."""
+evocation = """
+Le sujet est presque banal, une servante qui prépare le dessert, mais Matisse en fait \
+une démonstration : la couleur peut organiser à elle seule tout un tableau. Le rouge \
+saturé abolit la distinction entre le mur et la table, entre le haut et le bas, et \
+transforme la pièce en surface décorative. Les arabesques bleues semblent s'échapper de \
+la nappe pour grimper au mur, comme des plantes vivantes. La fenêtre fait contrepoint : \
+un jardin printanier, frais et vert, oppose la nature au décor. La même année, dans ses \
+« Notes d'un peintre », Matisse dit rêver d'un art d'équilibre et de sérénité, reposant \
+pour l'esprit. On y a vu l'un des premiers grands accomplissements de cet idéal, et le \
+point de départ des intérieurs décoratifs qui jalonnent toute sa carrière."""
+histoire = """
+Le tableau est une commande de Sergueï Chtchoukine, riche marchand de textiles de \
+Moscou et l'un des premiers grands collectionneurs de Matisse, qui le destinait à la \
+salle à manger de son hôtel particulier. Matisse le peint en 1908 dans une harmonie \
+bleu-vert, puis le repeint entièrement en rouge ; le collectionneur accepte ce \
+changement et reçoit la toile à Moscou. Elle reprend un sujet que Matisse avait traité \
+en 1897 dans La Desserte, tableau encore marqué par l'impressionnisme. Après la \
+révolution de 1917, la collection Chtchoukine est nationalisée et devient un musée \
+d'art occidental moderne. Quand celui-ci est dissous en 1948, ses œuvres sont partagées \
+entre le musée Pouchkine de Moscou et l'Ermitage de Saint-Pétersbourg, où la Desserte \
+rouge se trouve depuis."""
+facture = """
+Matisse supprime presque toute profondeur : ni perspective ni ombre, le plan rouge \
+court du bas au haut de la toile. L'espace n'est suggéré que par quelques indices, la \
+chaise, le bord de la table, la fenêtre. Le motif bleu, agrandi et simplifié, vient \
+d'un tissu imprimé que le peintre possédait. Les couleurs sont posées en aplats francs, \
+cernés de traits sombres, à la manière des tissus et des céramiques décoratives qu'il \
+aimait. Le rouge, le bleu et le vert, presque purs, s'équilibrent par leurs surfaces, \
+et la ligne souple des arabesques répond à la courbe du dos de la servante."""
+details = [
+  "Le motif de la nappe, qui continue sans rupture sur le mur.",
+  "Les deux carafes de verre, l'une rouge, l'autre d'un jaune doré.",
+  "La servante penchée, dont le chignon reprend les courbes des arabesques.",
+  "Les arbres en fleurs blancs du jardin, derrière la fenêtre.",
+  "La signature et la date 1908, en bas à gauche.",
+]
+themes = ["intérieur", "décor", "rouge", "nature morte", "collectionneur"]
+anecdote = """
+Le tissu imprimé de motifs bleus, une toile de Jouy, Matisse l'aurait aperçu, \
+raconte-t-on, depuis l'impériale d'un omnibus, dans une boutique parisienne. Il le \
+garda toute sa vie et le fit figurer dans plusieurs autres tableaux."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Montagnes à Collioure"
+artiste = "André Derain"
+annee = "1905"
+image = "montagnes-collioure.jpg"
+technique = "Huile sur toile, 81,3 × 100,3 cm"
+collection = "National Gallery of Art, Washington"
+note = "L'été 1905, Derain peint aux côtés de Matisse à Collioure : des arbres aux troncs rouges, des feuillages bleus, des montagnes orange."
+description = """
+Au premier plan, un champ d'herbe jaune-vert est traversé d'un sentier violet. Au \
+milieu, un bosquet de petits arbres méditerranéens dresse des troncs tortueux d'un \
+rouge vif et des feuillages bleus et verts, posés en courtes touches disposées en \
+éventail. Derrière, les collines s'étagent en grandes bandes orange, jaunes et rouges, \
+et les montagnes du fond, bleu outremer et violettes, découpent leurs crêtes sur un \
+ciel vert d'eau traversé de nuées claires. Aucun personnage, aucune maison : seulement \
+la végétation et le relief, sous une lumière qui semble venir de partout à la fois et \
+ne projette aucune ombre. La signature de Derain apparaît en bas à gauche, à demi \
+perdue dans l'herbe."""
+evocation = """
+Pour Derain, la couleur ne copie pas la nature : elle traduit la sensation de la \
+lumière du Midi, si intense qu'elle semble dévorer les ombres. Dans une lettre à son \
+ami Vlaminck, il évoque cette lumière blonde et dorée qui supprime les ombres, et son \
+désir de la rendre par la couleur pure. Le tableau en est la mise en œuvre : les troncs \
+rouges, les feuillages bleus et les montagnes orange n'existent pas tels quels, mais \
+ensemble ils rendent l'éblouissement d'un après-midi d'été. On y lit aussi la \
+jubilation d'une découverte partagée : pendant ces semaines à Collioure, Derain et \
+Matisse s'entraînent l'un l'autre vers une audace que ni l'un ni l'autre n'aurait \
+peut-être osée seul. L'œuvre résume l'été où naquit le fauvisme."""
+histoire = """
+En mai 1905, Matisse s'installe à Collioure, petit port catalan des \
+Pyrénées-Orientales, et invite Derain à le rejoindre. Celui-ci arrive au début de \
+l'été, et les deux amis peignent côte à côte le port, les barques, les toits et les \
+collines plantées de vignes et d'oliviers. Derain, alors âgé de vingt-cinq ans, \
+rapporte à Paris de nombreuses toiles, dessins et esquisses. Plusieurs paysages de \
+Collioure figurent au Salon d'Automne de 1905, dans la salle VII qui vaut à ses \
+occupants le surnom de « fauves ». Le marchand Ambroise Vollard, qui soutient alors le \
+jeune peintre, l'enverra peu après peindre Londres. Le tableau a appartenu au \
+collectionneur américain John Hay Whitney, avant d'entrer en 1982 à la National Gallery \
+of Art de Washington avec la collection Whitney."""
+facture = """
+Derain mêle deux manières. Dans les feuillages et l'herbe, il garde de la leçon \
+néo-impressionniste la touche séparée, mais l'allonge en virgules et en hachures \
+nerveuses qui rappellent Van Gogh, dont il avait vu la rétrospective à Paris en 1901. \
+Dans les montagnes et le ciel, au contraire, il étale la couleur en larges aplats \
+sinueux, cernés de bleu. Les complémentaires se heurtent sans transition : rouge contre \
+vert, orange contre bleu. Par endroits, la toile laissée nue entre les touches ajoute \
+sa lumière blanche à l'ensemble. Le résultat tient à la fois de la tapisserie et du \
+vitrail."""
+details = [
+  "Les troncs rouges et sinueux des arbres, qui se tordent comme des flammes.",
+  "Les feuillages bleus, faits de petites touches disposées en éventail.",
+  "Le sentier violet qui traverse l'herbe au premier plan.",
+  "Les collines orange et rouges, cernées d'un trait bleu.",
+  "La signature de Derain, en bas à gauche.",
+]
+themes = ["paysage", "méditerranée", "lumière", "fauvisme", "collioure"]
+anecdote = """
+À Collioure, un « chemin du fauvisme » balisé à travers la ville présente des \
+reproductions des tableaux de Matisse et de Derain aux endroits mêmes où ils ont posé \
+leur chevalet en 1905. On peut ainsi comparer leurs couleurs au paysage réel."""
+salle = 2
+mur = "sud"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Cheval bleu I"
+artiste = "Franz Marc"
+annee = "1911"
+image = "cheval-bleu.jpg"
+technique = "Huile sur toile, 112 × 84,5 cm"
+collection = "Städtische Galerie im Lenbachhaus, Munich"
+note = "Un jeune cheval bleu, tête penchée, devant des collines rouges et jaunes : l'image même du Cavalier bleu."
+description = """
+Un jeune cheval bleu se tient debout, presque de face, et occupe toute la hauteur de la \
+toile. Sa tête, inclinée vers le sol et tournée vers la gauche, est encadrée par une \
+crinière bleu nuit ; ses longues pattes fines et un peu raides sont celles d'un \
+poulain. Son corps passe du bleu le plus clair, presque blanc sur le poitrail et \
+l'encolure, au bleu profond des flancs et des sabots. Autour de lui, le paysage est \
+fait de grandes collines arrondies : rose et violette à droite, jaune au centre, bleue \
+en haut, sous un ciel rose. Au premier plan, le sol est rouge et vert, et une plante \
+aux larges feuilles vertes se dresse à droite, comme pour répondre à la courbe de \
+l'animal."""
+evocation = """
+Pour Franz Marc, l'animal est plus pur que l'homme et plus proche de l'harmonie du \
+monde : peindre un cheval, c'est tenter de voir la nature à travers ses yeux. Dans une \
+lettre à August Macke de décembre 1910, il expose sa symbolique des couleurs : le bleu \
+est le principe masculin, austère et spirituel, le jaune le principe féminin, doux et \
+sensuel, et le rouge la matière, brutale et lourde, que les deux autres doivent \
+combattre. Le cheval bleu, au milieu des collines jaunes et rouges, devient ainsi \
+l'image d'une âme jeune et méditative dans un monde chargé de matière. On y a vu une \
+sorte d'autoportrait spirituel du peintre, et un manifeste du Cavalier bleu, le groupe \
+qu'il fonde la même année avec Kandinsky."""
+histoire = """
+Marc peint ce tableau en 1911 à Sindelsdorf, village de Haute-Bavière où il s'est \
+installé avec Maria Franck au pied des Préalpes, et où il observe longuement les \
+chevaux dans les prés. Cette même année, avec Vassily Kandinsky, il fonde le Cavalier \
+bleu, Der Blaue Reiter, dont la première exposition s'ouvre à Munich en décembre 1911, \
+et prépare l'almanach qui paraît au printemps 1912. Le tableau entre dans la collection \
+de Bernhard Koehler, industriel berlinois et mécène de Marc et de Macke. En 1965, la \
+fondation Bernhard Koehler l'offre à la Lenbachhaus, qui avait reçu en 1957 la donation \
+de Gabriele Münter, peintre et compagne de Kandinsky. C'est ainsi que Munich est \
+devenue la grande maison du Cavalier bleu."""
+facture = """
+Marc a longtemps étudié et enseigné l'anatomie des animaux, mais ici il simplifie la \
+forme en grandes courbes. Le corps du cheval est modelé par des dégradés de bleu, du \
+blanc au bleu sombre, alors que le paysage est traité en aplats presque purs. Les \
+collines reprennent le dessin arrondi de l'encolure et du dos, si bien que l'animal et \
+le paysage forment une seule composition rythmée. Le point de vue, bas et rapproché, \
+rend le jeune cheval monumental. La couleur, libérée de toute vraisemblance, doit \
+beaucoup à Gauguin et au fauvisme, mais elle est ici chargée d'un sens symbolique."""
+details = [
+  "La tête penchée et le regard baissé, comme perdu dans ses pensées.",
+  "Le poitrail presque blanc, qui accroche la lumière.",
+  "Les longues pattes fines du poulain, un peu gauches.",
+  "La plante verte à droite, dont les feuilles répondent à la courbe du cheval.",
+  "Les collines jaunes, roses et violettes qui ondulent derrière lui.",
+]
+themes = ["animal", "cheval", "spiritualité", "couleur symbolique", "cavalier bleu"]
+anecdote = """
+Le plus célèbre tableau de chevaux de Marc, La Tour des chevaux bleus (1913), fut \
+confisqué par les nazis en 1937 à la Nationalgalerie de Berlin comme « art dégénéré ». \
+Sa trace se perd à la fin de la Seconde Guerre mondiale : on le recherche toujours."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Promenade"
+artiste = "August Macke"
+annee = "1913"
+image = "promenade.jpg"
+technique = "Huile sur carton, 51 × 57 cm"
+collection = "Städtische Galerie im Lenbachhaus, Munich"
+note = "Des promeneurs sans visage sous les arbres d'un parc : le monde paisible et lumineux d'August Macke, un an avant sa mort."
+description = """
+Sous de grands arbres aux troncs violets et bleus, un couple se promène dans un parc. \
+L'homme, de profil, porte un canotier et un costume sombre ; la femme, de dos, vêtue \
+d'une longue robe bleue et rouge et coiffée d'un chapeau rouge, tient une ombrelle \
+blanche. Plus loin, deux silhouettes accoudées à un muret regardent au loin. À droite, \
+une femme coiffée de blanc, au visage à peine indiqué, est coupée par le bord du \
+tableau. Le feuillage forme au-dessus d'eux une voûte de verts lumineux, et le sol \
+jaune et rose semble baigné de soleil. Personne ne nous regarde : chacun est absorbé \
+dans sa marche ou sa contemplation, et la scène respire le calme d'un après-midi d'été."""
+evocation = """
+Macke peint un monde sans drame : des promeneurs du dimanche, des femmes à ombrelle, \
+des enfants devant les vitrines ou au bord des lacs. Là où Kirchner voit dans la ville \
+un lieu d'angoisse, lui voit un lieu d'harmonie, où l'homme vit en accord avec la \
+nature. Les figures sans visage ne sont pas inquiétantes : elles deviennent des types \
+universels, des formes colorées parmi les arbres, et chacun peut s'y reconnaître. On y \
+a vu une vision presque idyllique de la vie bourgeoise d'avant 1914, comme un paradis \
+profane. Ce bonheur tranquille prend après coup une valeur poignante : un an plus tard, \
+la guerre éclate et Macke est tué dès les premières semaines, à vingt-sept ans."""
+histoire = """
+En 1913, Macke est au sommet de son art. Lié depuis 1910 à Franz Marc, il a pris part à \
+l'aventure du Cavalier bleu et à son almanach, avant de prendre ses distances avec le \
+mysticisme de Kandinsky. À Paris, en 1912, il a rencontré Robert Delaunay, dont les \
+recherches sur la couleur l'ont profondément marqué. À l'automne 1913, il s'installe \
+avec sa famille à Hilterfingen, au bord du lac de Thoune, en Suisse, où il peint de \
+nombreuses scènes de promeneurs, de lacs et de vitrines. Comme le Cheval bleu de Marc, \
+ce tableau a appartenu à Bernhard Koehler, oncle de l'épouse du peintre et mécène du \
+groupe ; il est entré à la Lenbachhaus en 1965 avec la donation de sa fondation."""
+facture = """
+Macke simplifie les formes en grands plans colorés, cernés de contours souples. Les \
+visages sont supprimés ou réduits à une tache, les corps à des silhouettes. Il emprunte \
+au cubisme la géométrie des formes et à Delaunay l'idée que la couleur, par ses \
+contrastes, crée à elle seule la lumière et le mouvement : le rouge de la robe vibre \
+contre le vert du feuillage, le bleu contre le jaune du sol. La touche reste visible et \
+rapide, mais la composition est rigoureusement construite, les troncs encadrant la \
+scène comme des coulisses de théâtre. Sur le carton, la peinture s'est craquelée par \
+endroits."""
+details = [
+  "L'ombrelle blanche de la femme, tache la plus claire du tableau.",
+  "Le canotier de l'homme, cerclé d'un ruban noir.",
+  "Les deux silhouettes accoudées au muret, au centre droit.",
+  "Les troncs violets et bleus qui encadrent la scène comme un rideau.",
+  "Les fines craquelures de la peinture, visibles sur le carton.",
+]
+themes = ["promenade", "parc", "loisirs", "harmonie", "cavalier bleu"]
+anecdote = """
+Apprenant la mort de son ami, Franz Marc écrivit un hommage où il affirmait que, privée \
+des harmonies de Macke, la couleur de l'art allemand allait pâlir de plusieurs tons. \
+Marc lui-même fut tué dix-huit mois plus tard, devant Verdun."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Potsdamer Platz"
+artiste = "Ernst Ludwig Kirchner"
+annee = "1914"
+image = "potsdamer-platz.jpg"
+technique = "Huile sur toile, 200 × 150 cm"
+collection = "Neue Nationalgalerie, Berlin"
+note = "Deux prostituées sur un îlot de la place la plus animée de Berlin, à la veille de la Grande Guerre."
+description = """
+Au premier plan, deux femmes élégantes se tiennent sur un îlot circulaire, au milieu de \
+la chaussée verte de la place. Celle de droite, en manteau bleu à col blanc, porte un \
+chapeau à plumes et regarde droit devant elle, le visage verdâtre et les lèvres rouges. \
+Celle de gauche, de profil, est enveloppée de noir et voilée d'une voilette. Derrière \
+elles, la place s'ouvre en perspective plongeante : des passants en noir, silhouettes \
+anguleuses, traversent la chaussée ou longent les trottoirs. Au fond, à gauche, se \
+dressent un bâtiment à coupole et la façade rose à arcades de la gare de Potsdam ; à \
+droite, une rangée de maisons blanches. Les deux femmes semblent isolées sur leur \
+socle, tandis que les hommes tournent autour d'elles."""
+evocation = """
+Les deux femmes sont des prostituées, figures que Kirchner peint sans relâche dans ses \
+scènes de rue berlinoises : objets de désir et de transaction, elles incarnent pour lui \
+la ville moderne, fascinante et inquiétante. Isolées sur leur îlot comme sur une scène \
+ou un piédestal, elles s'offrent aux regards des hommes en noir qui les frôlent. La \
+perspective basculée, les corps étirés et les couleurs acides traduisent la nervosité, \
+l'anonymat et la vitesse de la métropole. On a vu dans la voilette noire de la femme de \
+gauche un déguisement de veuve, dont usaient certaines prostituées pour échapper à la \
+police, et qui prend une résonance sinistre en 1914, l'année où éclate la guerre. Le \
+tableau dit l'angoisse d'un monde au bord de l'effondrement."""
+histoire = """
+Kirchner quitte Dresde pour Berlin à l'automne 1911. Le groupe Die Brücke, qu'il avait \
+fondé en 1905 avec Erich Heckel, Karl Schmidt-Rottluff et Fritz Bleyl, se dissout en \
+1913. Livré à lui-même, il entreprend une série d'une dizaine de grandes scènes de rue, \
+peintes entre 1913 et 1915, dont Potsdamer Platz est l'une des plus ambitieuses. La \
+place, carrefour de lignes de tramway et de gares, est alors l'un des lieux les plus \
+animés d'Europe. Mobilisé en 1915, Kirchner s'effondre physiquement et moralement, et \
+part se soigner en Suisse, où il passera le reste de sa vie. Déclaré « dégénéré » par \
+les nazis, il se donne la mort en 1938. Le tableau est aujourd'hui à la Neue \
+Nationalgalerie, à quelques centaines de mètres de la place qu'il représente."""
+facture = """
+Kirchner peint vite, en longs traits hachés et anguleux qui donnent aux formes une \
+énergie nerveuse. Les figures s'allongent, les visages deviennent des masques. La \
+perspective est volontairement faussée : la place bascule vers le spectateur, tandis \
+que l'îlot circulaire, vu d'en haut, contredit la vue de face des deux femmes. La \
+palette est dominée par des verts et des bleus froids, rehaussés du rose de la gare et \
+du blanc des cols. On y reconnaît l'influence de la gravure sur bois, que Kirchner \
+pratiquait intensément, avec ses contours tranchants, et celle des sculptures \
+africaines et océaniennes qu'il avait étudiées au musée d'ethnographie de Dresde."""
+details = [
+  "Les visages verdâtres et les lèvres rouges des deux femmes, comme des masques.",
+  "La voilette noire qui couvre le visage de la femme de gauche.",
+  "L'îlot circulaire, vu d'en haut, sur lequel elles se tiennent.",
+  "Les silhouettes noires des passants, étirées comme des ombres.",
+  "Au fond, la façade rose à arcades de la gare de Potsdam.",
+]
+themes = ["ville", "prostitution", "modernité", "berlin", "angoisse"]
+anecdote = """
+La circulation de la Potsdamer Platz était telle qu'on y installa en 1924 l'un des \
+premiers feux de signalisation d'Europe, une tour surmontée d'une horloge. Une réplique \
+de cette tour se dresse aujourd'hui sur la place reconstruite."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Autoportrait au sixième anniversaire de mariage"
+artiste = "Paula Modersohn-Becker"
+annee = "1906"
+image = "sixieme-anniversaire.jpg"
+technique = "Huile sur carton, 101,8 × 70,2 cm"
+collection = "Paula Modersohn-Becker Museum, Brême"
+note = "Paula se peint nue jusqu'aux hanches, les mains sur un ventre arrondi : un geste d'une audace inouïe pour une femme peintre en 1906."
+description = """
+La jeune femme se tient debout, de trois quarts, nue jusqu'aux hanches, un drap blanc \
+noué à la taille. Elle porte un long collier d'ambre aux grosses perles ovales. Ses \
+mains entourent son ventre arrondi, comme pour le soutenir ou le protéger. Elle tourne \
+la tête vers nous, le regard direct mais doux, un léger sourire aux lèvres ; ses \
+cheveux châtain roux, séparés par une raie au milieu, sont tirés en arrière. Le fond, \
+d'un vert pâle, est semé de petites taches vertes et jaunes, comme un papier peint \
+fleuri. En bas à droite, une inscription en allemand, signée de ses initiales, indique \
+qu'elle a peint ce tableau à trente ans, le jour de son sixième anniversaire de \
+mariage."""
+evocation = """
+Ce tableau est souvent considéré comme le premier autoportrait nu peint par une femme \
+dans l'histoire de l'art occidental. Paula ne s'y montre ni en muse ni en objet de \
+désir, mais en sujet : elle se regarde et nous regarde, sereine et sûre d'elle. Le \
+ventre arrondi a beaucoup intrigué, car elle n'était pas enceinte à ce moment-là. On y \
+a vu l'expression d'un désir d'enfant, ou bien une métaphore de la création : en \
+quittant son mari pour Paris, elle se sentait enfin devenir elle-même et porter son \
+œuvre. Le tableau unit ainsi l'intime et l'affirmation de soi, la fécondité et la \
+liberté. Il devance de plusieurs décennies les questions que l'art féministe posera sur \
+le corps des femmes et le regard porté sur elles."""
+histoire = """
+En février 1906, après cinq ans de mariage avec le peintre Otto Modersohn, Paula quitte \
+Worpswede, la colonie d'artistes proche de Brême où vit le couple, pour s'installer \
+seule à Paris. Elle veut travailler, étudier les maîtres modernes et vivre de sa \
+peinture. C'est là, au printemps 1906, qu'elle peint cet autoportrait. L'inscription \
+parle d'un sixième anniversaire, alors que le couple s'était marié en mai 1901, ce qui \
+a fait couler beaucoup d'encre. Otto la rejoint à Paris à l'automne, et elle accepte de \
+rentrer avec lui à Worpswede au printemps 1907. Le tableau est aujourd'hui conservé à \
+Brême, au Paula Modersohn-Becker Museum, ouvert en 1927 dans la Böttcherstraße à \
+l'initiative du négociant en café Ludwig Roselius, et considéré comme le premier musée \
+au monde consacré à une femme peintre."""
+facture = """
+Paula simplifie les formes en grands volumes calmes, à la manière de Gauguin et de \
+Cézanne, qu'elle avait étudiés à Paris. Le corps est modelé par des tons chauds et \
+mats, rose ocré et jaune pâle, sans brillant ni détail anecdotique. La matière, posée \
+sur le carton en couches sèches et grenues, évoque la fresque ou la détrempe. Les \
+contours sont cernés d'un trait sombre. Le fond décoratif, traité en taches régulières, \
+aplatit l'espace et fait ressortir la figure comme une icône. On pense aussi aux \
+portraits funéraires du Fayoum, peints sur bois dans l'Égypte romaine, qu'elle avait \
+admirés au Louvre."""
+details = [
+  "Le long collier d'ambre aux grosses perles, sa seule parure.",
+  "Les deux mains posées sur le ventre arrondi.",
+  "Le drap blanc noué aux hanches, peint en larges coups de pinceau.",
+  "Le fond vert pâle semé de petites taches, comme un papier peint.",
+  "L'inscription manuscrite en allemand, en bas à droite, signée P. B.",
+]
+themes = ["autoportrait", "nu", "maternité", "femme artiste", "liberté"]
+anecdote = """
+Le poète Rainer Maria Rilke, son ami depuis Worpswede, lui consacra en 1908, un an \
+après sa mort, l'un de ses plus beaux poèmes, Requiem pour une amie."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Autoportrait aux physalis"
+artiste = "Egon Schiele"
+annee = "1912"
+image = "autoportrait-physalis.jpg"
+technique = "Huile et gouache sur bois, 32,2 × 39,8 cm"
+collection = "Leopold Museum, Vienne"
+note = "Schiele à vingt-deux ans, le visage tourmenté et le regard en coin, à côté d'une branche de physalis aux lanternes rouges."
+description = """
+Le jeune peintre se montre en buste, vêtu d'un gilet noir boutonné jusqu'au cou, le \
+corps tourné vers la droite et la tête légèrement rejetée en arrière. Il nous regarde \
+de biais, les sourcils levés, avec une expression à la fois hautaine, inquiète et \
+provocante. Ses cheveux sombres se dressent en mèches hirsutes. Son visage, peint en \
+tons de chair, de gris, de bleu et de rouge, semble meurtri. À gauche, une branche de \
+physalis, plante aux fruits enveloppés d'une lanterne rouge vif, déploie ses tiges \
+fines et ses feuilles fanées sur un fond blanc. Une forme grise, comme une ombre, \
+s'étend derrière la tête. En bas à droite, la signature et la date sont inscrites en \
+capitales dans un bloc carré."""
+evocation = """
+Schiele a peint et dessiné plus d'une centaine d'autoportraits, où il se met en scène \
+sans complaisance, maigre, crispé, parfois nu. Celui-ci est l'un des plus célèbres. Le \
+regard en coin, à la fois méfiant et défiant, semble jauger le spectateur. On y a vu \
+l'image de l'artiste comme un être à part, incompris de la société, fragile et \
+orgueilleux à la fois. Les physalis, fruits d'automne aux enveloppes rouges, \
+introduisent une note de couleur vive, que certains interprètent comme une allusion au \
+passage du temps. Peint en pendant d'un portrait de sa compagne Wally Neuzil, de même \
+format, le tableau forme avec lui un couple qui reste l'une des images les plus fortes \
+de la Vienne de 1912, inquiète et sensuelle."""
+histoire = """
+En 1912, Schiele a vingt-deux ans. Il a quitté l'Académie des beaux-arts de Vienne dès \
+1909 et s'est affranchi de l'influence de Klimt, qui le soutient pourtant. Cette année \
+est aussi celle d'une épreuve : installé à Neulengbach, à l'ouest de Vienne, avec Wally \
+Neuzil, il est arrêté au printemps, accusé d'avoir détourné une mineure ; l'accusation \
+tombe, mais il est condamné pour avoir laissé des dessins érotiques à la vue d'enfants \
+et passe vingt-quatre jours en prison. Le tableau a appartenu plus tard au \
+collectionneur viennois Rudolf Leopold, ophtalmologue, qui rassembla à partir des \
+années 1950 la plus grande collection d'œuvres de Schiele au monde. Il est aujourd'hui \
+l'une des pièces maîtresses du Leopold Museum, ouvert en 2001."""
+facture = """
+Schiele travaille sur un petit panneau de bois, à la surface lisse, où chaque coup de \
+pinceau reste visible. Le visage est construit par des touches nerveuses de couleurs \
+inattendues, bleus, rouges, violets, qui lui donnent l'aspect d'une chair à vif. Le \
+dessin, son domaine de prédilection, reste prépondérant : contours anguleux, lignes \
+tendues de la nuque et des épaules. Le fond blanc, travaillé en larges coups de brosse, \
+isole la figure comme sur une feuille de papier. La composition est décentrée : le \
+corps est repoussé vers la droite et coupé par le bord, laissant la branche occuper la \
+moitié gauche, un cadrage qui rappelle les estampes japonaises."""
+details = [
+  "Les yeux tournés de côté, sous des sourcils levés.",
+  "Les touches bleues et rouges qui marbrent le visage.",
+  "Les petites lanternes rouges des physalis, en haut et en bas à gauche.",
+  "La forme grise qui flotte derrière la tête, comme une ombre.",
+  "La signature EGON SCHIELE 1912, inscrite en carré en bas à droite.",
+]
+themes = ["autoportrait", "identité", "vienne", "angoisse", "physalis"]
+anecdote = """
+Son pendant, le Portrait de Wally Neuzil, fut saisi à New York en 1998, à la fin d'un \
+prêt au MoMA, à la demande des héritiers d'une marchande d'art spoliée sous le nazisme. \
+Après douze ans de procédure, un accord permit son retour à Vienne en 2010."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jeanne Hébuterne"
+artiste = "Amedeo Modigliani"
+annee = "1919"
+image = "jeanne-hebuterne.jpg"
+technique = "Huile sur toile, 91,4 × 73 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La compagne de Modigliani, assise, la joue appuyée sur la main : l'un des derniers portraits qu'il fit d'elle."
+description = """
+Une jeune femme aux longs cheveux auburn est assise de trois quarts, le coude appuyé \
+sur le dossier d'un fauteuil ocre, la tête légèrement penchée contre sa main repliée. \
+Elle porte une ample chemise blanche à fines bretelles, qui découvre ses épaules et ses \
+bras. Son cou est très long, son visage ovale, son nez droit et étiré, sa bouche petite \
+et rouge. Ses yeux en amande, bleu pâle, n'ont pas de pupilles. Son autre bras descend \
+le long du corps jusqu'au bas du tableau. Le fond est fait de deux plans de couleur, \
+l'un brun-vert à gauche, l'autre bleu-gris à droite, posés en touches libres. En haut à \
+droite, le peintre a signé modigliani, en minuscules."""
+evocation = """
+Modigliani a peint Jeanne Hébuterne plus d'une vingtaine de fois, et aucun de ces \
+portraits ne cherche la ressemblance photographique. L'étirement du cou et du visage, \
+les yeux vides, la pose songeuse en font une figure presque intemporelle, entre l'icône \
+et la madone de la Renaissance, que le peintre, né à Livourne, connaissait depuis \
+l'enfance. Les yeux sans pupilles, fréquents chez lui, donnent au modèle un air de \
+rêverie intérieure, comme si elle regardait en elle-même. On a souvent rapproché la \
+douceur mélancolique de ce portrait du destin tragique du couple : en 1919, Jeanne \
+attend leur second enfant, et ni l'un ni l'autre ne vivra au-delà de janvier 1920. Le \
+tableau dit la tendresse, mais aussi une forme de retrait."""
+histoire = """
+Jeanne Hébuterne, élève de l'académie Colarossi, rencontre Modigliani en 1917 ; elle \
+n'a pas vingt ans, lui en a trente-deux. Malgré l'opposition de sa famille, catholique \
+et bourgeoise, elle s'installe avec lui. En 1918, le couple part pour Nice, où naît en \
+novembre leur fille, prénommée Jeanne elle aussi. Revenus à Paris en 1919, ils vivent \
+rue de la Grande-Chaumière, à Montparnasse. Rongé par la tuberculose, Modigliani meurt \
+le 24 janvier 1920 à l'hôpital de la Charité. Le lendemain, Jeanne, enceinte de huit \
+mois, se jette par la fenêtre de l'appartement de ses parents. Le tableau a appartenu \
+aux collectionneurs new-yorkais Nate B. Spingold et son épouse, qui l'offrirent au \
+Metropolitan Museum en 1956."""
+facture = """
+Modigliani simplifie les formes selon un canon très personnel : ovale du visage, cou en \
+colonne, épaules tombantes, mains effilées. Ce vocabulaire vient de sa pratique de la \
+sculpture, entre 1909 et 1914, quand, encouragé par Brancusi, il taillait dans la \
+pierre des têtes allongées inspirées des masques africains et de l'art archaïque. La \
+couleur est posée en couches fines et sourdes, ocres, blancs, bleus gris, sans éclat \
+fauve. Le contour, souple et continu, enveloppe la figure comme un trait de dessin. \
+L'influence de Cézanne se lit dans la construction du fond en plans de couleur \
+juxtaposés et dans la pose inclinée du modèle."""
+details = [
+  "Les yeux bleu pâle, sans pupilles.",
+  "La main repliée contre la joue, aux doigts très longs.",
+  "Le cou étiré, presque en colonne.",
+  "Le fond partagé en deux plans de couleur, brun-vert et bleu-gris.",
+  "La signature modigliani, en minuscules, en haut à droite.",
+]
+themes = ["portrait", "amour", "mélancolie", "montparnasse", "tragédie"]
+anecdote = """
+Enterrée d'abord à Bagneux par sa famille, Jeanne Hébuterne ne fut réunie à Modigliani \
+au cimetière du Père-Lachaise qu'en 1930. Sur leur tombe commune, une épitaphe en \
+italien la salue comme sa compagne dévouée jusqu'au sacrifice extrême."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 0.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Henri Matisse"
+vie = "Le Cateau-Cambrésis (Nord), 31 décembre 1869 – Nice, 3 novembre 1954"
+biographie = """
+Fils d'un marchand de grains du Nord, Henri Matisse se destine d'abord au droit et \
+travaille comme clerc d'avoué. En 1890, immobilisé par une appendicite, il reçoit de sa \
+mère une boîte de couleurs : c'est une révélation. Il part pour Paris, entre en 1895 à \
+l'École des beaux-arts dans l'atelier de Gustave Moreau, découvre l'impressionnisme et \
+Cézanne, puis la lumière du Midi en Corse. En 1898, il épouse Amélie Parayre. Après un \
+été à Saint-Tropez auprès de Signac en 1904, il peint à Collioure avec Derain, en 1905, \
+les toiles qui font scandale au Salon d'Automne et font de lui le chef des « fauves ». \
+Soutenu par les Stein, puis par les collectionneurs russes Chtchoukine et Morozov, il \
+ouvre une académie et voyage au Maroc. À partir de 1917, il travaille surtout à Nice, \
+où il peint ses odalisques. Gravement malade en 1941, il invente dans ses dernières \
+années les gouaches découpées et conçoit la chapelle du Rosaire de Vence. Il meurt à \
+Nice en 1954."""
+style = """
+Matisse fait de la couleur le moteur de la peinture : posée en aplats purs, elle \
+construit l'espace, la lumière et l'émotion sans recourir au modelé ni à la \
+perspective. Son dessin, d'une grande économie, cherche l'arabesque essentielle. Il \
+rêvait d'un art d'équilibre et de sérénité, décoratif au sens le plus noble. Il est \
+l'un des grands inventeurs de la peinture du XXe siècle ; ses intérieurs, ses papiers \
+découpés et sa liberté chromatique ont nourri l'abstraction américaine et des \
+générations de peintres et de créateurs."""
+
+[[artistes]]
+nom = "André Derain"
+vie = "Chatou (Yvelines), 10 juin 1880 – Garches (Hauts-de-Seine), 8 septembre 1954"
+biographie = """
+Fils d'un commerçant aisé de Chatou, André Derain renonce aux études d'ingénieur pour \
+la peinture. En 1900, il rencontre Maurice de Vlaminck, avec qui il partage un atelier \
+à Chatou, puis Henri Matisse, qui convainc ses parents de le laisser peindre. Après son \
+service militaire, il passe l'été 1905 avec Matisse à Collioure et expose au Salon \
+d'Automne parmi les « fauves ». Le marchand Ambroise Vollard l'envoie peindre Londres : \
+ses vues de la Tamise comptent parmi les sommets du fauvisme. Dès 1907, proche de \
+Picasso, il se tourne vers une peinture plus construite, inspirée de Cézanne et de \
+l'art africain, puis vers un retour à la tradition des maîtres anciens. Mobilisé \
+pendant toute la Grande Guerre, il connaît ensuite un grand succès et crée des décors \
+pour les Ballets russes. Son voyage en Allemagne en 1941, à l'invitation des autorités \
+nazies, ternit durablement sa réputation. Il meurt en 1954 des suites d'un accident de \
+la route."""
+style = """
+Derain est, avec Matisse, l'inventeur du fauvisme : couleurs pures et arbitraires, \
+touches larges ou fragmentées, contrastes de complémentaires qui rendent \
+l'éblouissement de la lumière. Mais il ne s'en tient pas là : curieux de tout, il passe \
+ensuite par une géométrie cézannienne, puis cherche dans les primitifs, les icônes et \
+les maîtres classiques un art plus grave et plus solide. Ses toiles de 1905 et 1906, à \
+Collioure et à Londres, restent les plus célèbres et comptent parmi les images les plus \
+vives du début du siècle."""
+
+[[artistes]]
+nom = "Ernst Ludwig Kirchner"
+vie = "Aschaffenbourg (Bavière), 6 mai 1880 – Frauenkirch, près de Davos (Suisse), 15 juin 1938"
+biographie = """
+Fils d'un chimiste spécialiste du papier, Ernst Ludwig Kirchner étudie l'architecture à \
+l'École technique supérieure de Dresde, où il se lie avec Erich Heckel, Karl \
+Schmidt-Rottluff et Fritz Bleyl. Ensemble, ils fondent en 1905 le groupe Die Brücke, « \
+le pont », qui veut jeter un pont vers l'art de l'avenir. Dans leurs ateliers et au \
+bord des lacs de Moritzburg, ils peignent des nus en plein air, gravent sur bois et \
+vivent en communauté. Kirchner découvre l'art africain et océanien au musée \
+d'ethnographie de Dresde. En 1911, il s'installe à Berlin, où il peint les scènes de \
+rue qui font sa célébrité. Sa Chronique de Die Brücke, jugée trop personnelle par ses \
+camarades, provoque la dissolution du groupe en 1913. Mobilisé en 1915, il s'effondre \
+et part en 1917 se soigner en Suisse, près de Davos, où il peint les montagnes et les \
+paysans. En 1937, les nazis retirent des musées allemands plus de six cents de ses \
+œuvres. L'année suivante, il se donne la mort à Frauenkirch."""
+style = """
+Kirchner est la figure centrale de l'expressionnisme allemand. Sa peinture repose sur \
+un trait anguleux et rapide, des formes étirées et des couleurs crues, souvent acides, \
+qui traduisent une tension psychologique plus qu'une apparence. La gravure sur bois, \
+qu'il pratique avec passion, nourrit ses contrastes tranchants. Ses scènes de rue \
+berlinoises sont devenues l'image même de la métropole moderne, nerveuse et \
+inquiétante, et ont marqué durablement l'art figuratif allemand, jusqu'aux \
+néo-expressionnistes des années 1980."""
+
+[[artistes]]
+nom = "Franz Marc"
+vie = "Munich, 8 février 1880 – Braquis, près de Verdun, 4 mars 1916"
+biographie = """
+Fils du peintre paysagiste Wilhelm Marc, Franz Marc songe d'abord à la théologie avant \
+d'entrer en 1900 à l'Académie des beaux-arts de Munich. Deux séjours à Paris, en 1903 \
+et 1907, lui font découvrir l'impressionnisme puis Van Gogh et Gauguin. Il traverse une \
+longue période de doute et vit en partie de cours d'anatomie animale. En 1910, il \
+rencontre August Macke, puis Vassily Kandinsky, et s'installe à Sindelsdorf, en \
+Haute-Bavière, avec Maria Franck, qu'il épouse en 1911. Cette année-là, il fonde avec \
+Kandinsky le Cavalier bleu et prépare l'exposition et l'almanach qui portent ce nom. \
+Ses chevaux, ses chevreuils, ses tigres et ses vaches aux couleurs symboliques \
+l'imposent comme l'un des grands peintres de sa génération. Au contact de Delaunay et \
+des futuristes, ses compositions se fragmentent en prismes, jusqu'à l'abstraction en \
+1914. Mobilisé dès le début de la guerre, il est tué par un éclat d'obus près de Verdun \
+en mars 1916, à trente-six ans."""
+style = """
+Marc a voulu peindre le monde tel que le perçoivent les animaux, qu'il jugeait plus \
+purs et plus proches de l'harmonie de la nature que les hommes. Ses couleurs ne \
+décrivent pas : elles signifient, selon une symbolique précise où le bleu est l'esprit, \
+le jaune la douceur et le rouge la matière. Ses compositions rythmées de courbes, puis \
+de plans prismatiques, mènent de la figuration à l'abstraction. Figure majeure du \
+Cavalier bleu, il a contribué à faire de la couleur un langage spirituel."""
+
+[[artistes]]
+nom = "August Macke"
+vie = "Meschede (Westphalie), 3 janvier 1887 – Perthes-lès-Hurlus (Marne), 26 septembre 1914"
+biographie = """
+Né en Westphalie et élevé à Cologne puis à Bonn, August Macke étudie à l'Académie des \
+beaux-arts et à l'École des arts appliqués de Düsseldorf. Il voyage en Italie, aux \
+Pays-Bas, en Belgique et à Paris, où il découvre les impressionnistes en 1907. Il \
+épouse en 1909 Elisabeth Gerhardt, dont l'oncle, l'industriel berlinois Bernhard \
+Koehler, devient son mécène. Lors d'un séjour au bord du Tegernsee, il rencontre Franz \
+Marc en 1910 ; l'amitié des deux peintres sera l'une des plus fécondes de l'époque. Il \
+participe au Cavalier bleu et à son almanach, avant de prendre ses distances avec le \
+mysticisme de Kandinsky. En 1912, avec Marc, il rend visite à Robert Delaunay à Paris, \
+une rencontre décisive. Il organise à Bonn en 1913 une exposition d'expressionnistes \
+rhénans, puis passe quelques mois au bord du lac de Thoune. En avril 1914, il voyage en \
+Tunisie avec Paul Klee et Louis Moilliet et en rapporte des dizaines d'aquarelles. \
+Mobilisé en août, il est tué en Champagne quelques semaines plus tard, à vingt-sept \
+ans."""
+style = """
+Macke est le plus lumineux des expressionnistes allemands. Moins tourmenté que \
+Kirchner, moins mystique que Kandinsky ou Marc, il peint un monde de promeneurs, de \
+parcs, de vitrines et de jardins, où la couleur vive exprime la joie de vivre. Il fait \
+la synthèse du fauvisme, du cubisme et des contrastes simultanés de Delaunay : plans \
+colorés transparents, figures simplifiées, couleurs qui créent la lumière. Ses \
+aquarelles de Tunisie, d'une grande liberté, comptent parmi les sommets de l'aquarelle \
+moderne."""
+
+[[artistes]]
+nom = "Egon Schiele"
+vie = "Tulln (Basse-Autriche), 12 juin 1890 – Vienne, 31 octobre 1918"
+biographie = """
+Fils d'un chef de gare de Tulln, Egon Schiele perd son père à quatorze ans et entre à \
+seize ans à l'Académie des beaux-arts de Vienne, qu'il quitte en 1909, lassé de son \
+conservatisme. Gustav Klimt, qui l'admire, le présente à des collectionneurs et aux \
+ateliers de la Wiener Werkstätte. Schiele s'affranchit vite de l'ornement klimtien pour \
+une peinture du corps et de l'angoisse. En 1911, il s'installe avec Wally Neuzil à \
+Krumau, en Bohême, puis à Neulengbach, d'où les rumeurs les chassent ; en 1912, il y \
+fait vingt-quatre jours de prison pour des dessins jugés immoraux. En 1915, il épouse \
+Edith Harms et est mobilisé, affecté le plus souvent à l'arrière. En 1918, l'exposition \
+de la Sécession, où il occupe la salle principale, lui apporte enfin le succès. Mais la \
+grippe espagnole emporte Edith, enceinte de six mois, le 28 octobre 1918, puis Schiele \
+lui-même trois jours plus tard. Il avait vingt-huit ans."""
+style = """
+Schiele est d'abord un dessinateur virtuose : sa ligne tendue, anguleuse, parfois \
+brisée, suffit à faire surgir un corps et un tourment. Dans ses portraits, ses \
+autoportraits et ses nus, il montre les corps maigres, crispés, exposés sans fard, avec \
+une franchise qui fit scandale. Ses couleurs, souvent terreuses et rehaussées de rouges \
+et d'orangés, accentuent l'impression de chair vive. Figure majeure de \
+l'expressionnisme viennois, il a vu son influence grandir sans cesse depuis les années \
+1960."""
+
+[[artistes]]
+nom = "Amedeo Modigliani"
+vie = "Livourne (Italie), 12 juillet 1884 – Paris, 24 janvier 1920"
+biographie = """
+Né à Livourne dans une famille juive séfarade cultivée mais ruinée, Amedeo Modigliani, \
+de santé fragile, étudie la peinture à Livourne, Florence et Venise, nourri des maîtres \
+de la Renaissance. En 1906, il s'installe à Paris, d'abord à Montmartre puis à \
+Montparnasse. Entre 1909 et 1914, encouragé par le sculpteur Constantin Brancusi, il se \
+consacre surtout à la sculpture et taille des têtes de pierre allongées, avant que sa \
+santé ne l'oblige à y renoncer. Revenu à la peinture, il réalise les portraits de ses \
+amis, Soutine, Max Jacob, Cocteau, et une série de nus ; lors de leur exposition à la \
+galerie Berthe Weill, en 1917, la police exige leur retrait dès le jour du vernissage. \
+Ses marchands, Paul Guillaume puis Léopold Zborowski, le soutiennent. En 1917, il \
+rencontre Jeanne Hébuterne, qui lui donne une fille en 1918. Miné par la tuberculose, \
+l'alcool et la misère, il meurt en 1920 à trente-cinq ans, au moment où sa peinture \
+commence à se vendre."""
+style = """
+Modigliani a créé une figure humaine immédiatement reconnaissable : visage ovale, cou \
+étiré, nez long, yeux en amande souvent sans pupilles, épaules tombantes. Ce canon unit \
+la grâce des peintres siennois et de Botticelli, la simplification de la sculpture \
+africaine et archaïque et la construction de Cézanne. Ni fauve ni cubiste, il reste en \
+marge des mouvements de son temps, mais partage avec les expressionnistes la volonté de \
+traduire une présence intérieure plutôt qu'une ressemblance."""
+
+[[artistes]]
+nom = "Paula Modersohn-Becker"
+vie = "Dresde, 8 février 1876 – Worpswede (près de Brême), 20 novembre 1907"
+biographie = """
+Née à Dresde dans une famille cultivée installée à Brême en 1888, Paula Becker suit une \
+formation d'institutrice, comme le souhaitent ses parents, tout en prenant des cours de \
+dessin et de peinture à Londres et à Berlin. En 1898, elle rejoint Worpswede, colonie \
+d'artistes nichée dans les tourbières près de Brême, où elle se lie avec la sculptrice \
+Clara Westhoff, future épouse du poète Rilke. Entre 1900 et 1907, elle fait quatre \
+séjours à Paris, où elle découvre Cézanne, Gauguin, les Nabis et les portraits du \
+Fayoum. En 1901, elle épouse le peintre Otto Modersohn, veuf et père d'une petite \
+fille. Étouffant dans la vie conjugale et dans le cercle de Worpswede, qui juge sa \
+peinture maladroite, elle part seule pour Paris en 1906, où elle peint des \
+autoportraits et des natures mortes d'une liberté nouvelle. Revenue à Worpswede, elle \
+meurt en novembre 1907, dix-huit jours après la naissance de sa fille Mathilde, à \
+trente et un ans. Elle n'avait vendu que quelques tableaux ; elle en laissait plus de \
+sept cents."""
+style = """
+Paula Modersohn-Becker a dépassé le réalisme sentimental des peintres de Worpswede pour \
+une peinture de formes simples et massives, aux couleurs sourdes et à la matière \
+grenue. Inspirée par Cézanne, Gauguin et l'art archaïque, elle peint les paysannes, les \
+enfants, les mères et surtout elle-même, avec une gravité et une franchise inédites. \
+Pionnière de l'expressionnisme allemand, elle est aussi l'une des premières femmes à \
+avoir fait de son propre corps le sujet de son art."""
