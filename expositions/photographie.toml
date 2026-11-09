@@ -1,0 +1,985 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « LES DÉBUTS DE LA PHOTOGRAPHIE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/photographie/). Le nom
+#  du fichier donne l'adresse de l'exposition sur le site : /photographie.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 115
+nom_court = "Photographie"
+mouvement = "Les débuts de la photographie"
+cadre = "noir"
+couleur = "#6b4f35"
+titre = "Les débuts de la photographie, l'empreinte de la lumière"
+artiste = "Niépce, Daguerre, Talbot, Nadar, Cameron, Le Gray, Muybridge, Atget, Stieglitz…"
+dates = "1827–1911"
+accroche = "Exposition virtuelle · George Eastman Museum, Rochester"
+introduction = """
+En moins d'un siècle, la photographie passe de l'expérience de laboratoire à l'art \
+moderne : une plaque d'étain exposée des jours entiers, le premier passant saisi sur \
+un boulevard de Paris, le négatif sur papier, le portrait, la marine, le mouvement \
+décomposé, la rue et, enfin, la couleur. La visite réunit dix pionniers, de Niépce à \
+Prokoudine-Gorski, en dix images. Le bâtiment s'inspire du George Eastman Museum de \
+Rochester, le plus ancien musée de la photographie, installé dans la maison du \
+fondateur de Kodak : un vestibule, un jardin d'hiver au centre et trois salons autour."""
+vitrine = "grande-vague.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "George Eastman Museum"
+ville = "Rochester, New York, États-Unis"
+architecte = "J. Foster Warner"
+construction = "1902–1905 (la maison) ; musée ouvert en 1949"
+presentation = """
+George Eastman, le fondateur de la société Kodak, fait construire de 1902 à 1905, au \
+900 East Avenue à Rochester, une vaste demeure néogéorgienne dessinée par l'architecte \
+J. Foster Warner : une cinquantaine de pièces sur une structure de béton armé à \
+l'épreuve du feu, entourée de jardins, de serres et d'une petite ferme. Derrière la \
+façade classique, la maison est d'une modernité rare pour l'époque : générateur \
+électrique, téléphone intérieur, ascenseur, aspiration centrale et un grand orgue, \
+autour duquel Eastman anime la vie musicale de la ville jusqu'à sa mort en 1932. \
+Léguée à l'université de Rochester, la propriété est cédée en 1948 au musée fondé \
+l'année précédente, qui ouvre le 9 novembre 1949 dans les anciens salons. C'est le \
+plus ancien musée consacré à la photographie. Il conserve plus de 400 000 \
+photographies et négatifs, des milliers d'appareils et une grande cinémathèque, que \
+l'on découvre au Dryden Theatre. L'historien Beaumont Newhall l'a dirigé de 1958 à \
+1971."""
+ici = """
+Le bâtiment d'ARTEON emprunte à la maison Eastman ses pièces d'habitation aux murs \
+clairs et chauds et son jardin d'hiver, placé ici au cœur du plan. On entre par le sud \
+dans « Le vestibule », bas de plafond, où attend la première photographie de \
+l'histoire. Il ouvre au nord sur « Le jardin d'hiver », une salle carrée de douze \
+mètres de côté et de neuf mètres de haut, aux murs vert pâle. À l'ouest s'ouvre la \
+salle « Les inventeurs », à l'est « Le portrait », et au nord « Le siècle nouveau », \
+où la photographie devient moderne et passe à la couleur."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du George Eastman Museum de Rochester, la demeure du fondateur de Kodak
+# devenue en 1949 le premier musée de la photographie : un vestibule d'entrée au
+# sud, un jardin d'hiver haut et clair au centre, et trois salons aux murs crème
+# autour (à l'ouest, à l'est et au nord). x et z : le centre de la salle (x vers
+# l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée : la plus ancienne photographie conservée, une vue de toits prise par Niépce en 1827."
+murs = "#ebe3d3"
+x = 0
+z = 0
+largeur = 10
+profondeur = 6
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Le jardin d'hiver"
+theme = "Au cœur de la maison, la mer de Le Gray et le cheval au galop de Muybridge : la photographie saisit l'instant."
+murs = "#dfe6d6"
+x = 0
+z = -9
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Les inventeurs"
+theme = "1838-1844 : le daguerréotype sur métal de Daguerre et le négatif sur papier de Talbot."
+murs = "#e8dcc6"
+x = -12
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Le portrait"
+theme = "Nadar à Paris et Julia Margaret Cameron sur l'île de Wight : deux manières de saisir un visage."
+murs = "#e6d6c4"
+x = 12
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Le siècle nouveau"
+theme = "Atget dans les rues de Paris, Stieglitz sur un paquebot, Prokoudine-Gorski et la couleur."
+murs = "#e5e2da"
+x = 0
+z = -20
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Point de vue du Gras"
+artiste = "Nicéphore Niépce"
+annee = "1827"
+image = "point-de-vue-du-gras.jpg"
+cadre = "vitrine"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Untitled_(point_de_vue),_Niépce_1827_—_HRC_2020_(cropped).jpg"
+technique = "Héliographie : bitume de Judée sur plaque d'étain, 16,7 × 20,3 cm"
+collection = "Harry Ransom Center, université du Texas, Austin"
+note = "La plus ancienne photographie conservée : la vue qu'avait Niépce depuis une fenêtre de sa maison de Bourgogne, fixée au terme d'une pose de plusieurs jours."
+description = """
+Une plaque de métal grise aux coins arrondis, rayée et piquée, sur laquelle il faut \
+chercher l'image. Peu à peu, une vue se dessine : celle que Niépce avait depuis une \
+fenêtre à l'étage de sa maison du Gras, à Saint-Loup-de-Varennes, près de \
+Chalon-sur-Saône. À gauche se dresse un bâtiment haut et sombre, que l'on identifie \
+d'ordinaire au pigeonnier ; à droite, une autre aile de la maison ; au centre, un toit \
+en pente, la masse ronde d'un arbre et, au loin, une ligne d'horizon pâle sous un ciel \
+clair. Rien ne bouge, personne n'apparaît. Les murs de gauche et ceux de droite sont \
+éclairés en même temps, comme si le soleil avait frappé la scène des deux côtés. Aux \
+coins, des bosses dans le métal accrochent la lumière."""
+evocation = """
+Ce paysage banal de toits et de murs est le premier morceau du monde fixé par la seule \
+action de la lumière, sans la main d'un dessinateur. Niépce appelait son procédé \
+héliographie, l'écriture du soleil. L'image a quelque chose de fantomatique : elle \
+tient à peine sur la plaque, et sa lumière venue des deux côtés rappelle qu'elle \
+n'enregistre pas un instant mais une durée, le passage du soleil d'est en ouest. On y \
+voit le point de départ d'une révolution du regard : pour la première fois, une \
+machine garde la trace exacte d'un lieu. Elle dit aussi la ténacité d'un inventeur de \
+province, qui cherchait depuis 1816 à fixer l'image de la chambre noire, et la \
+modestie de ses débuts : une vue de chez soi, la plus simple qui soit."""
+histoire = """
+D'après sa correspondance, Niépce réalise l'image à l'été 1827. À l'automne, il se \
+rend en Angleterre et la montre au botaniste Francis Bauer, qui l'encourage à \
+présenter son invention à la Royal Society ; mais Niépce refuse d'en dévoiler le \
+secret, et la société ne donne pas suite. Il laisse la plaque à Bauer. Quand Daguerre \
+et Talbot annoncent leurs procédés en 1839, Bauer la fait exposer à la Royal Society \
+pour rappeler l'antériorité de Niépce. Elle passe ensuite de main en main, puis tombe \
+dans l'oubli après 1898. En 1952, les historiens Helmut et Alison Gernsheim la \
+retrouvent ; leur collection est achetée en 1963 par l'université du Texas. La plaque \
+est exposée dans le hall du Harry Ransom Center d'Austin, dans une vitrine scellée qui \
+la protège de l'air."""
+facture = """
+Niépce enduit une plaque d'étain allié de plomb d'une fine couche de bitume de Judée, \
+un asphalte naturel qui durcit à la lumière. Placée au fond d'une chambre noire \
+tournée vers la cour, la plaque reste exposée très longtemps : on a longtemps parlé de \
+huit heures, mais le chercheur Jean-Louis Marignier, qui a refait l'expérience, estime \
+qu'il fallut plusieurs jours. Un bain d'essence de lavande et de pétrole blanc dissout \
+ensuite le bitume resté tendre. Là où il a durci, il forme les clairs ; le métal mis à \
+nu donne les ombres. L'image est unique, sans négatif, et ne se lit bien que sous une \
+lumière rasante."""
+details = [
+  "Les deux bâtiments sombres qui encadrent la vue, à gauche et à droite.",
+  "Le toit en pente, au centre, qui dessine une large diagonale claire.",
+  "La silhouette ronde d'un arbre, juste à gauche du centre.",
+  "Les bosses brillantes aux coins de la plaque, traces de chocs survenus après 1952.",
+  "Les rayures et les piqûres du métal, qui se mêlent à l'image.",
+]
+themes = ["invention", "lumière", "fenêtre", "campagne", "héliographie"]
+anecdote = """
+Pendant un quart de siècle, on n'a connu cette image que par une copie lourdement \
+retouchée à la main par Helmut Gernsheim pour la rendre lisible. Ce n'est qu'à partir \
+de la fin des années 1970 que la plaque elle-même a été reproduite telle qu'elle est."""
+salle = 1
+mur = "ouest"
+place = 1
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Boulevard du Temple"
+artiste = "Louis Daguerre"
+annee = "1838"
+image = "boulevard-du-temple.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Boulevard_du_Temple_by_Daguerre.jpg"
+technique = "Daguerréotype, plaque de cuivre argenté, environ 13 × 16 cm"
+collection = "Munich (plaque originale très abîmée) ; image connue par les copies de Beaumont Newhall"
+note = "Un boulevard de Paris vu d'une fenêtre, un matin de printemps : sur le trottoir, un homme qui fait cirer ses bottes est sans doute le premier être humain photographié."
+description = """
+Vu d'en haut, un grand boulevard parisien bordé d'arbres file en diagonale vers le \
+fond, entre des immeubles de plusieurs étages hérissés de cheminées. Au premier plan, \
+à droite, un immeuble clair et des toits ; à gauche, les façades, les auvents des \
+boutiques et le trottoir planté. La chaussée paraît vide : pas une voiture, pas un \
+cheval, pas un passant. Pourtant, en bas à gauche, à l'angle du trottoir, se tient une \
+petite silhouette sombre : un homme debout, une jambe posée sur un support, devant une \
+autre forme penchée, sans doute un cireur de bottes. Le détail est infime, mais l'œil, \
+une fois qu'il l'a trouvé, ne voit plus que lui. Le ciel, blanc, est zébré de traces \
+laissées sur la plaque."""
+evocation = """
+Le boulevard du Temple était l'une des rues les plus animées de Paris, celle des \
+théâtres de mélodrame, que l'on surnommait le boulevard du Crime. Sur la plaque, toute \
+cette foule a disparu : piétons et fiacres bougeaient trop vite pour laisser une trace \
+pendant les minutes de pose. Seuls restent ceux qui sont demeurés immobiles. L'image \
+dit ainsi le paradoxe de la photographie naissante : elle enregistre ce qui est \
+immobile et efface le mouvement, au point de transformer une ville vivante en ville \
+déserte. Le petit homme aux bottes, entré par hasard dans l'histoire, est devenu le \
+symbole de l'anonyme que la photographie rend durable. Il rappelle aussi que l'image \
+est un temps condensé, non un instant."""
+histoire = """
+Daguerre, peintre de décors et inventeur du Diorama, poursuit depuis 1829 le procédé \
+commencé avec Niépce. Au printemps 1838, il photographie le boulevard depuis une \
+fenêtre voisine de son Diorama, à plusieurs heures de la journée ; la vue du matin et \
+celle de midi sont conservées. En janvier 1839, Arago annonce l'invention à l'Académie \
+des sciences ; en mars, Daguerre montre la plaque à l'Américain Samuel Morse, qui la \
+décrit dans une lettre publiée à New York. En octobre, il l'offre, dans un triptyque, \
+au roi Louis Iᵉʳ de Bavière. Conservées à Munich, les plaques se dégradent, et une \
+restauration tentée vers 1970 les ruine. On les connaît grâce aux copies faites vers \
+1937 par Beaumont Newhall, futur directeur du George Eastman House."""
+facture = """
+Le daguerréotype est une plaque de cuivre couverte d'argent poli comme un miroir, \
+rendue sensible par des vapeurs d'iode. Après la pose dans la chambre noire, l'image \
+encore invisible est révélée par des vapeurs de mercure, puis fixée dans un bain salé. \
+Le résultat est une image unique, d'une finesse extraordinaire, qu'on ne peut \
+reproduire qu'en la rephotographiant et qu'il faut incliner pour la voir en positif. \
+Comme presque tous les daguerréotypes, elle est inversée de gauche à droite, comme \
+dans un miroir. Ici, la pose a duré plusieurs minutes, assez pour effacer tout ce qui \
+bougeait."""
+details = [
+  "En bas à gauche, l'homme immobile qui fait cirer ses bottes, une jambe levée.",
+  "La forme penchée devant lui, celle du cireur, plus floue.",
+  "Les cheminées innombrables qui hérissent les toits, à droite.",
+  "Les arbres alignés du boulevard, qui se perdent dans la brume vers le fond.",
+  "Les rayures et les taches de la plaque, visibles dans le ciel.",
+]
+themes = ["paris", "rue", "invention", "daguerréotype", "temps de pose"]
+anecdote = """
+L'État français achète le procédé en 1839 et le déclare libre pour le monde entier. \
+Mais quelques jours plus tôt, l'agent de Daguerre l'avait fait breveter en Angleterre \
+: le Royaume-Uni fut ainsi presque le seul pays où il fallut payer une licence pour \
+faire des daguerréotypes."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "La Porte ouverte"
+artiste = "William Henry Fox Talbot"
+annee = "1844"
+image = "porte-ouverte.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:The_Open_Door_MET_DP148629.jpg"
+technique = "Épreuve sur papier salé d'après un négatif sur papier (calotype), 14,3 × 19,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un balai appuyé contre une porte de l'abbaye de Lacock : la planche VI du Crayon de la nature, le premier livre illustré de photographies vendu au public."
+description = """
+Une porte de bois clouté s'ouvre vers l'intérieur, dans un mur de pierre, sur une \
+pièce obscure. Contre le battant, un balai de branchages est appuyé en oblique, son \
+long manche traversant l'image. Au-dessus, accroché à la porte, pend un harnais. À \
+droite, sur le pilier de pierre, une lanterne est suspendue à un crochet ; des tiges \
+de vigne grimpante, sans feuilles, s'enroulent de part et d'autre de l'entrée. Dans \
+l'ombre, au fond, on devine une fenêtre à petits carreaux qui laisse passer un peu de \
+jour. Au sol, le soleil dessine nettement l'ombre du balai. Toute l'image baigne dans \
+un ton brun doré, propre au papier salé."""
+evocation = """
+Talbot accompagne la planche d'un court texte où il invoque l'exemple de la peinture \
+hollandaise, qui prenait pour sujets des scènes de la vie quotidienne, et remarque \
+qu'un œil de peintre s'arrête souvent là où les gens ordinaires ne voient rien de \
+remarquable. La Porte ouverte est l'une des premières photographies conçues comme une \
+œuvre d'art plutôt que comme un document. Le seuil entre lumière et obscurité, l'objet \
+humble laissé là, l'absence de personnage donnent à la scène une poésie silencieuse : \
+on y a lu une invitation à entrer, ou la présence discrète des domestiques qui \
+viennent de quitter les lieux. Elle annonce une photographie qui sait regarder les \
+choses simples."""
+histoire = """
+Savant et propriétaire de l'abbaye de Lacock, dans le Wiltshire, Talbot cherche depuis \
+1834 à fixer les images sur du papier. En 1841, il fait breveter le calotype, qui \
+permet de tirer autant de positifs qu'on veut d'un même négatif. Pour en montrer les \
+usages, il publie de 1844 à 1846, en six fascicules, The Pencil of Nature, « le crayon \
+de la nature » : vingt-quatre épreuves collées à la main, chacune accompagnée d'un \
+texte. La Porte ouverte y figure en planche VI ; il en existe plusieurs variantes. Le \
+livre fut un échec commercial, mais il marque une date dans l'histoire du livre. Cette \
+épreuve vient de la collection Gilman, achetée par le Metropolitan Museum en 2005."""
+facture = """
+Le calotype repose sur une feuille de papier à lettres imprégnée d'iodure d'argent. \
+Après une pose d'une ou deux minutes au soleil, l'image encore invisible est révélée à \
+l'acide gallique : c'est la découverte décisive de l'image latente. On obtient un \
+négatif sur papier, que l'on tire ensuite par contact sur une feuille de papier salé. \
+Les fibres du papier adoucissent les contours et donnent aux images un grain velouté, \
+moins précis que le daguerréotype mais plus proche du dessin. Talbot cadre ici en \
+peintre, avec une grande diagonale et un fort contraste d'ombre et de lumière."""
+details = [
+  "Le balai de brindilles, dont l'ombre se projette nettement au sol.",
+  "La lanterne de métal accrochée au pilier de droite.",
+  "Le harnais suspendu en haut à gauche, au-dessus du battant.",
+  "La fenêtre à petits carreaux qui luit au fond de la pièce obscure.",
+  "Les têtes de clous alignées sur le bois de la porte.",
+]
+themes = ["calotype", "quotidien", "seuil", "lumière", "nature morte"]
+anecdote = """
+En octobre 1833, au bord du lac de Côme, Talbot peine à dessiner le paysage à l'aide \
+d'une chambre claire. De cet échec naît son idée : obtenir que les images de la nature \
+s'impriment d'elles-mêmes, durablement, sur le papier."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Sarah Bernhardt"
+artiste = "Nadar"
+annee = "vers 1864"
+image = "sarah-bernhardt.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Sarah_Bernhardt,_par_Nadar,_1864.jpg"
+technique = "Épreuve gélatino-argentique d'après un négatif sur verre, 21,1 × 16,2 cm"
+collection = "J. Paul Getty Museum, Los Angeles"
+note = "La jeune Sarah Bernhardt, vingt ans, drapée de velours dans l'atelier de Nadar : un portrait d'une sobriété toute moderne, avant la gloire."
+description = """
+Une jeune femme, accoudée à un socle de bois, a le visage tourné de profil vers la \
+gauche, le regard perdu au loin. Sa chevelure sombre et frisée forme une masse épaisse \
+autour du visage ; une petite boucle d'oreille brille au lobe. Elle est enveloppée \
+d'un ample manteau de velours noir, glissé sur une épaule qu'il laisse nue, et dont \
+les plis lourds, luisants par endroits, occupent tout le bas de l'image. Le fond est \
+un simple mur gris, sans décor ni accessoire. La lumière, venue de la gauche, modèle \
+doucement le front, la joue, le cou et la clavicule, seules zones claires au milieu \
+des noirs et des gris."""
+evocation = """
+Nadar a écrit que le plus difficile, en photographie, n'est pas la technique mais de \
+saisir le caractère de celui que l'on photographie. Ici, pas de colonnes ni de rideaux \
+peints comme chez les fabricants de cartes de visite : rien que la jeune femme, le \
+velours et la lumière. Le profil grave, l'épaule dénudée, le regard absent composent \
+une image à la fois sensuelle et mélancolique. On y devine déjà la tragédienne qui \
+allait devenir la plus célèbre actrice de son temps. Le portrait montre aussi comment \
+la photographie s'est vite affranchie de la peinture d'apparat pour chercher, dans un \
+visage, une présence intérieure."""
+histoire = """
+Vers 1864, Sarah Bernhardt a une vingtaine d'années. Formée au Conservatoire, elle a \
+débuté à la Comédie-Française en 1862, mais en est partie après une querelle, et sa \
+carrière se cherche encore. Elle pose chez Nadar, qui travaille depuis 1860 dans un \
+vaste atelier vitré au 35, boulevard des Capucines, où défile le Tout-Paris des arts \
+et des lettres. Au cours de la séance, plusieurs clichés sont pris, avec des poses et \
+des drapés différents ; ils comptent aujourd'hui parmi les images les plus célèbres de \
+Nadar. Les négatifs de l'atelier appartiennent aujourd'hui à l'État français ; ce \
+tirage, fait plus tard d'après le négatif, appartient au J. Paul Getty Museum."""
+facture = """
+Nadar utilise le négatif sur verre au collodion humide, qui donne des images nettes et \
+riches en demi-teintes au prix d'une pose de plusieurs secondes : le modèle doit \
+s'appuyer pour rester immobile, ce que justifie ici le socle. Il travaille à la \
+lumière du jour, dans un atelier vitré. Le fond neutre, le cadrage à mi-corps et le \
+jeu des masses sombres du velours contre la peau claire concentrent l'attention sur le \
+visage. Cette sobriété, héritée de son métier de caricaturiste attentif aux \
+physionomies, est sa signature."""
+details = [
+  "La boucle d'oreille ronde qui accroche la lumière.",
+  "Les reflets satinés sur les plis du velours.",
+  "L'épaule nue, seule tache claire dans la masse sombre du manteau.",
+  "Le socle de bois à panneaux, en bas à gauche, où elle s'accoude.",
+]
+themes = ["portrait", "théâtre", "femme", "profil", "velours"]
+anecdote = """
+Le 15 avril 1874, l'ancien atelier de Nadar, au 35, boulevard des Capucines, accueille \
+la première exposition des peintres bientôt appelés impressionnistes, dont Monet, \
+Renoir, Degas et Berthe Morisot. Nadar n'avait fait que louer les lieux."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Julia Jackson"
+artiste = "Julia Margaret Cameron"
+annee = "1867"
+image = "julia-jackson.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Julia_Jackson_MET_DT1121.jpg"
+technique = "Épreuve sur papier albuminé d'après un négatif sur verre au collodion, 27,4 × 20,6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La nièce de la photographe, future mère de Virginia Woolf : un visage à demi dans l'ombre, saisi de très près."
+description = """
+Un visage de jeune femme occupe presque toute l'image, vu de face et de très près. La \
+lumière vient de la droite et n'éclaire qu'une moitié du visage : le front, l'œil, la \
+joue et l'aile du nez sortent de l'ombre, tandis que l'autre côté se fond dans le \
+noir. Les longs cheveux, défaits, tombent en vagues sur les épaules et se perdent dans \
+le fond sombre. Les yeux, grands, fixent le spectateur sans sourire. Pas de décor, pas \
+de bijou, pas de vêtement lisible : seulement le visage, le cou et une masse d'ombre. \
+La netteté est faible et les contours flottent légèrement, comme si l'image respirait."""
+evocation = """
+Julia Margaret Cameron cherchait moins la ressemblance que la beauté et la vie \
+intérieure de ses modèles. Ce portrait frontal, sans artifice, a une intensité presque \
+sacrée : le visage émerge de l'ombre comme une apparition. Ses contemporains, habitués \
+aux portraits nets et posés, lui reprochaient ce flou et ces cadrages serrés ; on y \
+voit aujourd'hui une modernité étonnante, une manière de faire sentir une présence \
+plutôt qu'une surface. Julia Jackson était célèbre pour sa beauté. L'image prend un \
+sens de plus quand on sait qu'elle sera la mère de Virginia Woolf et de la peintre \
+Vanessa Bell : morte en 1895, elle inspirera à sa fille le personnage de Mrs Ramsay \
+dans La Promenade au phare."""
+histoire = """
+En 1867, Julia Jackson a vingt et un ans ; elle est la fille de Maria Pattle, l'une \
+des sœurs de la photographe, qui est aussi sa marraine. Cameron, installée depuis 1860 \
+à Freshwater, sur l'île de Wight, la photographie à plusieurs reprises cette année-là, \
+celle où la jeune femme épouse l'avocat Herbert Duckworth. Veuve trois ans plus tard, \
+elle se remarie en 1878 avec l'écrivain Leslie Stephen. Cameron, qui vendait ses \
+épreuves par l'intermédiaire de marchands londoniens, fit de sa nièce l'un de ses \
+modèles de prédilection. Cette épreuve a été achetée par le Metropolitan Museum en \
+1996."""
+facture = """
+Cameron travaille au collodion humide, sur de grandes plaques de verre, avec des \
+objectifs qui imposent des poses longues dans son atelier, un ancien poulailler vitré. \
+Elle a raconté qu'elle arrêtait la mise au point dès que l'image lui paraissait belle, \
+au lieu de la pousser jusqu'à la netteté parfaite exigée par les autres photographes. \
+Elle accepte aussi les accidents du tirage, taches, coulures ou rayures. Le cadrage \
+très serré, comme un détail de tableau, et l'éclairage latéral qui plonge la moitié du \
+visage dans l'ombre rappellent les peintres italiens qu'elle admirait."""
+details = [
+  "La ligne d'ombre qui partage le visage, du front au menton.",
+  "Le reflet de lumière dans l'œil éclairé.",
+  "Les mèches plus claires qui se détachent à droite.",
+  "Les petites taches et éraflures du tirage, laissées telles quelles.",
+]
+themes = ["portrait", "beauté", "ombre", "famille", "flou"]
+anecdote = """
+En 1926, Virginia Woolf et le critique Roger Fry publient à la Hogarth Press, la \
+maison d'édition des Woolf, un recueil des photographies de Cameron, Victorian \
+Photographs of Famous Men and Fair Women : la petite-nièce rend hommage à sa \
+grand-tante."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Grande Vague, Sète"
+artiste = "Gustave Le Gray"
+annee = "1857"
+image = "grande-vague.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:-The_Great_Wave,_Sète-_MET_DT1167.jpg"
+technique = "Épreuve sur papier albuminé d'après négatif sur verre au collodion, 33,7 × 41,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une vague déferle devant le brise-lames du port de Sète, sous un ciel d'orage percé par le soleil : la marine photographique qui éblouit le Second Empire."
+description = """
+La mer occupe toute la moitié inférieure de l'image. Au premier plan, des rochers \
+noirs et luisants sur lesquels l'écume se brise en traînées blanches. Plus loin, une \
+longue vague horizontale roule vers le rivage, crête blanche sur eau sombre. À gauche, \
+la masse rectangulaire et noire du brise-lames barre l'horizon ; une gerbe d'écume \
+jaillit à son extrémité. Au-dessus, le ciel est immense : des nuages lourds, presque \
+noirs à droite, déchirés et lumineux au centre, où le soleil caché fait rayonner une \
+lumière argentée qui se reflète sur la mer. En bas à droite, on lit la signature du \
+photographe."""
+evocation = """
+Le Gray rivalise ici avec les peintres de marine. La photographie, réputée froide et \
+documentaire, devient un spectacle romantique : la puissance de la mer, la lumière \
+dramatique, le contraste entre la vague éphémère et la masse immobile de la jetée. On \
+y a vu une méditation sur le temps, l'instant fugitif de la vague sous un ciel qui \
+semble éternel. Ces images frappèrent les contemporains parce qu'elles semblaient \
+faire l'impossible : figer l'eau en mouvement tout en gardant un ciel aux nuages \
+détaillés, alors que les photographies de l'époque montraient d'ordinaire des ciels \
+blancs et vides. Elles ont rendu à la photographie l'ambition des grands tableaux."""
+histoire = """
+Peintre formé dans l'atelier de Paul Delaroche, Le Gray devient l'un des grands \
+photographes du Second Empire. Vers 1856-1857, il réalise une série de marines en \
+Normandie puis sur la Méditerranée, à Sète, où il photographie en 1857 le port et son \
+brise-lames sous différents ciels. Ces grandes épreuves, exposées et vendues à Paris \
+et à Londres, connaissent un succès considérable. Mais son atelier parisien, luxueux \
+et mal géré, s'effondre en 1860 ; Le Gray quitte la France et finit sa vie en Égypte. \
+Ses marines, longtemps oubliées du grand public, ont été redécouvertes à la fin du XXᵉ \
+siècle. Cette épreuve a été donnée au Metropolitan Museum en 1976."""
+facture = """
+Le Gray, inventeur d'un négatif sur papier ciré, utilise ici le collodion sur verre, \
+plus sensible et plus précis. La difficulté des marines est connue : le ciel, bien \
+plus lumineux que la mer, est déjà surexposé quand la mer commence à peine à \
+apparaître. Pour plusieurs de ses vues, Le Gray tire ensemble deux négatifs, l'un pour \
+le ciel, l'autre pour la mer, en raccordant soigneusement l'horizon. La pose, assez \
+courte pour saisir la vague, laisse l'écume des rochers en traînées soyeuses. Le grand \
+format et le ton chaud de l'albumine donnent à l'image la présence d'un tableau."""
+details = [
+  "La gerbe d'écume qui jaillit au bout du brise-lames, à gauche.",
+  "La crête de la grande vague, nette d'un bord à l'autre de l'image.",
+  "Les rochers du premier plan, luisants d'eau.",
+  "Le soleil caché, dont la lumière perce les nuages au centre.",
+  "La signature de Le Gray, en bas à droite.",
+]
+themes = ["mer", "ciel", "marine", "lumière", "port"]
+anecdote = """
+En octobre 1999, à Paris, lors de la vente chez Sotheby's de la collection d'André et \
+Marie-Thérèse Jammes, une épreuve de la Grande Vague, Sète est adjugée 5,5 millions de \
+francs : un record mondial, alors, pour une photographie vendue aux enchères."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Le Cheval en mouvement (Sallie Gardner au galop)"
+artiste = "Eadweard Muybridge"
+annee = "1878"
+image = "cheval-en-mouvement.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Horse_in_Motion_high_res.jpg"
+technique = "Carte photographique réunissant douze vues instantanées, environ 14 × 22 cm"
+collection = "Library of Congress, Washington"
+note = "Douze images prises en moins d'une seconde montrent ce que l'œil ne pouvait voir : un cheval au galop quitte entièrement le sol, les jambes rassemblées sous lui."
+description = """
+Sur une carte imprimée, douze petites images sont rangées en trois rangées de quatre. \
+Chacune montre la même jument noire, Sallie Gardner, montée par un jockey, qui galope \
+de gauche à droite devant un fond blanc strié de lignes verticales numérotées. D'une \
+image à l'autre, la position des jambes change : repliées sous le ventre, lancées vers \
+l'avant, posées une à une. Sur la deuxième et la troisième image, aucun sabot ne \
+touche le sol. La dernière case, en bas à droite, montre le cheval à l'arrêt. Sous les \
+images, un texte imprimé en anglais donne le nom de la jument, celui de son \
+propriétaire, Leland Stanford, la piste de Palo Alto et la date : 19 juin 1878."""
+evocation = """
+Depuis des siècles, les peintres représentaient le cheval au galop les jambes écartées \
+vers l'avant et vers l'arrière, dans la pose dite du galop volant. Les images de \
+Muybridge montrent que c'est faux : le cheval quitte bien le sol, mais quand ses \
+jambes sont rassemblées sous lui. La photographie devient un instrument de \
+connaissance qui corrige l'œil humain. Ces vignettes ont fasciné les savants comme les \
+artistes ; Degas, notamment, s'en est inspiré pour ses chevaux. Surtout, en découpant \
+le mouvement en instants successifs, elles ouvrent la voie au cinéma : il suffit de \
+les faire défiler rapidement pour voir la jument galoper."""
+histoire = """
+Leland Stanford, magnat des chemins de fer et ancien gouverneur de Californie, élève \
+des chevaux de course dans son domaine de Palo Alto. Convaincu que les peintres se \
+trompent sur les allures du cheval, il fait appel au début des années 1870 à Eadweard \
+Muybridge, connu pour ses vues de la vallée de Yosemite. Les premiers essais restent \
+flous. En juin 1878, Muybridge aligne douze appareils le long de la piste ; des fils \
+tendus en travers déclenchent les obturateurs au passage du cheval. Les cartes, \
+publiées par une galerie de San Francisco, sont aussitôt reproduites dans la presse du \
+monde entier. On raconte souvent que Stanford avait parié une grosse somme sur la \
+question ; rien ne l'atteste."""
+facture = """
+Pour obtenir des images nettes d'un cheval lancé à pleine vitesse, il faut des temps \
+de pose très brefs, que Muybridge évalue à moins d'un deux-millième de seconde. Il \
+installe le long de la piste un fond blanc marqué de lignes verticales espacées de 27 \
+pouces, et des obturateurs à ressort déclenchés électriquement. Les négatifs au \
+collodion, exposés en plein soleil californien, ne donnent guère que des silhouettes. \
+Sur cette édition de la carte, les contours ont été retouchés et le fond redessiné \
+pour rendre l'ensemble plus lisible."""
+details = [
+  "La deuxième et la troisième image, où les quatre sabots sont en l'air, jambes repliées.",
+  "Les lignes verticales numérotées du fond, espacées d'environ 69 cm.",
+  "La silhouette du jockey, presque immobile d'une image à l'autre.",
+  "La dernière vignette, où la jument est arrêtée.",
+  "La mention de copyright de 1878, en bas à gauche.",
+]
+themes = ["mouvement", "cheval", "science", "instant", "cinéma"]
+anecdote = """
+En 1874, Muybridge tua d'un coup de revolver l'amant de sa femme. Jugé l'année \
+suivante, il fut acquitté par un jury qui jugea le meurtre justifié, puis partit \
+plusieurs mois photographier l'Amérique centrale."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Avenue des Gobelins"
+artiste = "Eugène Atget"
+annee = "1925"
+image = "avenue-des-gobelins.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Avenue_des_Gobelins_MET_DP105534.jpg"
+technique = "Épreuve gélatino-argentique d'après un négatif sur verre, 21,9 × 17,3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La vitrine d'un tailleur, où mannequins souriants et pantalons étiquetés se mêlent aux reflets de la rue : le Paris le plus ordinaire devenu étrange."
+description = """
+Derrière une grande vitre, des vêtements d'homme sont exposés à la vente. Au premier \
+plan, des pantalons rayés, pliés sur des supports, portent de grandes étiquettes de \
+prix ; au centre, un veston de tweed sans tête tend des mains de cire. Plus haut, des \
+bustes de mannequins aux visages poudrés, moustachus, coiffés de canotiers ou de \
+chapeaux mous, regardent dans tous les sens. Mais sur la vitre se superposent les \
+reflets de la rue : les arbres de l'avenue, les façades des immeubles d'en face, le \
+trottoir. Mannequins et façades se confondent, au point qu'on ne sait plus ce qui est \
+dedans et ce qui est dehors. À gauche, un montant de la vitrine est orné d'un motif de \
+losanges."""
+evocation = """
+Atget se présentait comme un simple fournisseur de « documents pour artistes ». \
+Pourtant ses vitrines, avec leurs mannequins figés dans des sourires de cire et leurs \
+reflets fantomatiques, ont fasciné les surréalistes, qui y voyaient l'étrangeté surgir \
+du quotidien. L'image superpose deux mondes : la marchandise, avec ses prix et ses \
+poses de convention, et la ville réelle, qui la traverse en transparence. On y lit \
+aussi la fin d'une époque : Atget, à près de soixante-dix ans, photographie un Paris \
+de petits commerces que la modernité commence à effacer. Le philosophe Walter Benjamin \
+a écrit qu'il photographiait les rues comme on photographie le lieu d'un crime."""
+histoire = """
+Ancien marin et comédien, Atget s'installe comme photographe à Paris vers 1890 et vend \
+ses images aux peintres et aux décorateurs, puis aux bibliothèques et aux musées de la \
+ville. Dans les années 1920, il photographie de plus en plus les devantures et les \
+vitrines des boutiques, dont celles de l'avenue des Gobelins. En 1925, la jeune \
+Américaine Berenice Abbott, alors assistante de Man Ray, lui rend visite et lui achète \
+des tirages. Après la mort d'Atget en 1927, elle acquiert une grande partie de son \
+fonds, le fait connaître par des livres et des expositions, et le cède en 1968 au \
+Museum of Modern Art de New York. Cette épreuve est entrée au Metropolitan Museum en \
+1987."""
+facture = """
+Atget travaille jusqu'au bout avec une lourde chambre de bois à soufflet, sur trépied, \
+et des plaques de verre de 18 × 24 cm, un matériel déjà démodé dans les années 1920. \
+Ses poses, assez longues, demandent des rues calmes, qu'il photographie souvent tôt le \
+matin. Face à une vitrine, il ne cherche pas à éliminer les reflets comme le ferait un \
+photographe de catalogue : il les laisse envahir l'image et compose avec eux. Le \
+cadrage frontal, serré sur la vitre, aplatit l'espace et met sur le même plan le \
+mannequin, l'étiquette et l'arbre de l'avenue."""
+details = [
+  "Le mannequin de gauche, au sourire figé, tourné vers ses voisins.",
+  "Les étiquettes de prix : 42 F, 35, 49 F, 32…",
+  "Le reflet des arbres de l'avenue dans le haut de la vitrine.",
+  "Les mains de cire qui sortent des manches du veston central.",
+  "Le montant décoré de losanges, à gauche.",
+]
+themes = ["paris", "vitrine", "reflet", "mannequin", "surréalisme"]
+anecdote = """
+En 1926, Man Ray publie dans La Révolution surréaliste une photographie d'Atget \
+montrant des Parisiens qui observent une éclipse. Atget aurait demandé qu'on ne mette \
+pas son nom : ce n'étaient, disait-il, que des documents qu'il faisait."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "L'Entrepont (The Steerage)"
+artiste = "Alfred Stieglitz"
+annee = "1907"
+image = "entrepont.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:The_Steerage_MET_DP232922.jpg"
+technique = "Photogravure tirée en 1913 ou avant, 32,2 × 25,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Les passagers les plus pauvres d'un paquebot, vus d'en haut : une scène saisie au vol, à la fois document et composition de formes, et l'une des premières photographies modernes."
+description = """
+L'image est coupée en deux par une passerelle blanche qui la traverse en oblique. En \
+haut, sur le pont supérieur, une foule d'hommes en casquette et en chapeau se presse \
+contre une rambarde de chaînes ; au milieu, un jeune homme coiffé d'un canotier clair \
+regarde vers le bas. En dessous, sur le pont inférieur, des femmes en châle et en \
+foulard, des enfants, un homme aux bretelles croisées dans le dos, du linge qui sèche, \
+une grande marmite. À gauche, un mât cylindrique ; à droite, une échelle de métal \
+monte vers le pont supérieur. Les deux groupes, très proches, ne se rejoignent pas : \
+la passerelle, vide, les sépare."""
+evocation = """
+Stieglitz a raconté qu'il avait vu là un ensemble de formes liées les unes aux autres \
+: le rond du chapeau de paille, l'oblique du mât, la diagonale de l'échelle, le blanc \
+de la passerelle, et, sous ces formes, le sentiment qu'il avait de la vie. L'Entrepont \
+est ainsi à la fois un document sur les migrants de son temps et une composition \
+presque abstraite, découpée en plans comme une toile cubiste. Picasso, à qui on la \
+montra, aurait reconnu dans ce photographe quelqu'un qui travaillait dans le même \
+esprit que lui. On l'a souvent prise pour une image d'immigrants arrivant en Amérique \
+; le navire, en réalité, partait pour l'Europe."""
+histoire = """
+En juin 1907, Stieglitz part pour l'Europe avec sa femme et sa fille à bord du Kaiser \
+Wilhelm II, l'un des plus grands paquebots de l'époque. Voyageant en première classe, \
+il découvre depuis le pont la partie réservée aux passagers les plus pauvres, court \
+chercher son appareil et prend un seul cliché. Il laisse pourtant le négatif de côté \
+pendant quatre ans, occupé notamment par l'autochrome, le nouveau procédé en couleur \
+des frères Lumière. Il ne le publie qu'en octobre 1911, dans sa revue Camera Work, \
+l'expose en 1913 dans sa galerie 291 et lui consacre en 1915 un numéro entier de la \
+revue 291. Cette épreuve fait partie de la collection Stieglitz entrée au Metropolitan \
+Museum en 1933."""
+facture = """
+Stieglitz se sert d'un appareil à main à plaques de verre, un Auto-Graflex, qui lui \
+permet de saisir la scène sans trépied ; il ne disposait, a-t-il dit, que d'une seule \
+plaque prête. L'image est présentée ici en photogravure, une impression à l'encre à \
+partir d'une plaque de cuivre gravée photographiquement, procédé qu'il employait pour \
+Camera Work et pour ses grands tirages, et dont il aimait les noirs profonds. La \
+composition repose sur des diagonales contrariées, passerelle, mât et échelle, et sur \
+un cadrage qui coupe les personnages aux bords, sans centre ni point de fuite."""
+details = [
+  "Le canotier rond et clair du jeune homme accoudé en haut, au centre.",
+  "Les chaînes de la rambarde, qui dessinent des festons réguliers.",
+  "Les bretelles croisées dans le dos d'un homme, en bas à droite.",
+  "Le linge suspendu à gauche, sous la passerelle.",
+  "L'échelle de métal qui monte en diagonale, à droite.",
+]
+themes = ["migration", "paquebot", "foule", "modernité", "géométrie"]
+anecdote = """
+Faute de laboratoire à bord, Stieglitz ne put développer sa plaque qu'à Paris, près \
+d'une semaine plus tard, dans la chambre noire d'un photographe resté anonyme, qui lui \
+aurait dit que c'était un honneur de l'accueillir."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Alim Khan, émir de Boukhara"
+artiste = "Sergueï Prokoudine-Gorski"
+annee = "1911"
+image = "emir-de-boukhara.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Alim_Khan_(1880–1944),_Emir_of_Bukhara,_photographed_by_S.M._Prokudin-Gorskiy_in_1911.jpg"
+technique = "Trois négatifs sur verre pris derrière des filtres bleu, vert et rouge ; couleurs recomposées numériquement"
+collection = "Library of Congress, Washington"
+note = "Le dernier émir de Boukhara pose dans sa robe de soie bleue : l'une des premières grandes photographies en couleur, prise trois fois en noir et blanc."
+description = """
+Un homme corpulent, à la barbe noire, coiffé d'un turban blanc, est assis, jambes \
+écartées, devant un mur de terre gris. Il porte une longue robe de soie d'un bleu \
+intense, semée de grandes fleurs mauves, roses et vertes et bordée d'un galon rouge. \
+Sur sa poitrine brillent des plaques de décorations et une aiguillette ; une large \
+ceinture d'or ciselé lui serre la taille. D'une main, il tient la poignée dorée d'un \
+sabre dont le fourreau descend jusqu'au sol, près de ses bottes noires. De part et \
+d'autre, deux portes de bois sculpté, d'un orange chaud, encadrent la scène. Le regard \
+est grave, un peu las."""
+evocation = """
+Le portrait montre un souverain d'Asie centrale à la veille de la disparition de son \
+monde. Alim Khan, monté sur le trône au début de 1911, règne sur un émirat placé sous \
+protectorat russe ; les décorations à l'européenne de sa poitrine voisinent avec la \
+soie et l'or de la cour de Boukhara. Neuf ans plus tard, l'Armée rouge prendra la \
+ville et l'émir s'enfuira en Afghanistan, où il mourra en exil. Pour nous, habitués au \
+noir et blanc des débuts de la photographie, la couleur produit un choc : elle abolit \
+la distance du siècle et rend la scène soudain proche, presque contemporaine."""
+histoire = """
+Chimiste formé à Saint-Pétersbourg, Prokoudine-Gorski se passionne pour la \
+photographie en couleur. En 1909, le tsar Nicolas II lui accorde son soutien et un \
+wagon aménagé en laboratoire pour photographier l'Empire russe dans toute sa \
+diversité. En 1911, il voyage en Asie centrale et photographie l'émir à Boukhara. Ses \
+vues étaient destinées à être projetées en couleur devant un public. Après la \
+révolution, il quitte la Russie en 1918 et s'installe à Paris en 1922. En 1948, quatre \
+ans après sa mort, la Library of Congress achète à ses héritiers près de 1 900 \
+négatifs. Numérisés à partir de 2000, ils ont été recomposés en couleur et sont \
+accessibles librement."""
+facture = """
+La méthode, proposée par le physicien James Clerk Maxwell dès 1855, consiste à prendre \
+successivement trois photographies en noir et blanc, à travers un filtre bleu, un vert \
+et un rouge. Prokoudine-Gorski les enregistre sur une même plaque de verre allongée, \
+que l'appareil fait glisser entre les poses. Projetées ensemble à travers les mêmes \
+filtres et superposées, les trois images reconstituent les couleurs. Comme les poses \
+se suivent pendant plusieurs secondes, tout ce qui bouge se dédouble en franges \
+colorées : l'émir a dû rester parfaitement immobile. L'image présentée est une \
+recomposition numérique des trois négatifs."""
+details = [
+  "Les grandes fleurs mauves et roses semées sur la soie bleue.",
+  "La ceinture d'or ciselé, faite de plaques bombées.",
+  "Les étoiles des décorations, sur la poitrine.",
+  "Les portes de bois sculptées de motifs géométriques, de chaque côté.",
+  "Les fissures du mur de terre, derrière l'émir.",
+]
+themes = ["couleur", "portrait", "asie centrale", "pouvoir", "empire russe"]
+anecdote = """
+Avant ce voyage, Prokoudine-Gorski avait fait sensation avec un portrait en couleur de \
+Léon Tolstoï, pris en 1908 à Iasnaïa Poliana et diffusé en cartes postales : c'est ce \
+succès qui lui ouvrit les portes de la famille impériale."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.6
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Nicéphore Niépce"
+vie = "Chalon-sur-Saône, 7 mars 1765 – Saint-Loup-de-Varennes, 5 juillet 1833"
+biographie = """
+Joseph Niépce, qui prendra le prénom de Nicéphore, naît dans une famille aisée de \
+Chalon-sur-Saône. Après des études chez les oratoriens, il sert dans l'armée de la \
+Révolution, puis devient administrateur à Nice, avant de revenir en Bourgogne au début \
+du XIXᵉ siècle. Avec son frère Claude, il invente le pyréolophore, un moteur à \
+combustion qui fait avancer un bateau sur la Saône et reçoit un brevet en 1807. À \
+partir de 1816, dans sa propriété du Gras, à Saint-Loup-de-Varennes, il cherche à \
+fixer l'image de la chambre noire. Il parvient vers 1822 à copier une gravure par \
+l'action de la lumière, puis obtient en 1827 la vue de sa fenêtre, la plus ancienne \
+photographie conservée. Faute d'appuis en Angleterre, il s'associe en 1829 avec Louis \
+Daguerre, qui travaille aux mêmes recherches. Il meurt subitement en 1833, ruiné par \
+ses inventions, sans avoir vu le succès du procédé. En 1839, l'État accorde une \
+pension à son fils Isidore, en reconnaissance de sa part dans l'invention."""
+style = """
+Niépce est un inventeur plus qu'un artiste : il cherche un procédé, non un style. Ses \
+images, héliographies sur métal, verre ou pierre, sont rares, floues et presque \
+illisibles. Leur importance est ailleurs : elles prouvent qu'on peut fixer durablement \
+une image par la seule lumière, idée d'où sortiront le daguerréotype et, de proche en \
+proche, toute la photographie."""
+
+[[artistes]]
+nom = "Louis Daguerre"
+vie = "Cormeilles-en-Parisis, 18 novembre 1787 – Bry-sur-Marne, 10 juillet 1851"
+biographie = """
+Louis Jacques Mandé Daguerre commence comme apprenti dessinateur d'architecture, puis \
+travaille chez le peintre de panoramas Pierre Prévost et devient un décorateur de \
+théâtre recherché à Paris. En 1822, il ouvre avec Charles Bouton le Diorama, un \
+spectacle de grands tableaux transparents dont l'éclairage change sous les yeux du \
+public. Intéressé par la chambre noire, il apprend les recherches de Niépce et \
+s'associe avec lui en 1829. Après la mort de son associé, il découvre qu'une image \
+invisible peut être révélée par des vapeurs de mercure, puis trouve le moyen de la \
+fixer. Le 7 janvier 1839, le savant François Arago annonce l'invention à l'Académie \
+des sciences ; l'État achète le procédé contre des pensions versées à Daguerre et au \
+fils de Niépce, et le rend public en août. Le daguerréotype conquiert le monde en \
+quelques mois. La même année, un incendie détruit le Diorama. Daguerre se retire à \
+Bry-sur-Marne, où il peint encore un trompe-l'œil pour l'église du village."""
+style = """
+Daguerre arrive à la photographie par le spectacle : il connaît la lumière et \
+l'illusion du décor. Le daguerréotype qu'il met au point donne des images uniques sur \
+métal, d'une netteté stupéfiante, mais impossibles à multiplier. Il impose pour vingt \
+ans le portrait photographique et fait de la photographie un phénomène populaire, \
+avant d'être supplanté par les procédés à négatif."""
+
+[[artistes]]
+nom = "William Henry Fox Talbot"
+vie = "Melbury (Dorset), 11 février 1800 – Lacock (Wiltshire), 17 septembre 1877"
+biographie = """
+Fils d'une famille de l'aristocratie anglaise, Talbot grandit à l'abbaye de Lacock, \
+dans le Wiltshire. Élève de Harrow puis de Trinity College, à Cambridge, il devient \
+mathématicien, membre de la Royal Society et, de 1832 à 1835, député de Chippenham. En \
+1833, ses difficultés à dessiner au lac de Côme lui donnent l'idée de fixer les images \
+sur papier. Dès 1834-1835, il obtient des « dessins photogéniques » et un petit \
+négatif d'une fenêtre de Lacock. L'annonce du daguerréotype, en janvier 1839, le \
+pousse à présenter ses travaux à Londres. En 1841, il fait breveter le calotype, \
+procédé à négatif sur papier qui permet de tirer plusieurs épreuves, puis publie The \
+Pencil of Nature, le premier livre illustré de photographies mis en vente. Ses \
+brevets, qu'il défend en justice, freinent la diffusion du procédé en Angleterre \
+jusqu'à un procès perdu en 1854. Esprit universel, il étudie aussi la lumière, invente \
+un procédé de gravure photographique et participe au déchiffrement des écritures \
+cunéiformes."""
+style = """
+Talbot a inventé le principe qui a dominé la photographie jusqu'à l'ère numérique : un \
+négatif dont on tire autant de positifs qu'on veut. Ses calotypes, au grain doux et \
+aux tons bruns, ont la poésie du dessin. Il photographie sa maison, ses objets, les \
+gens de Lacock, et pressent tous les usages du médium, de l'art au document."""
+
+[[artistes]]
+nom = "Nadar"
+vie = "Paris, 6 avril 1820 – Paris, 20 mars 1910"
+biographie = """
+Gaspard-Félix Tournachon commence des études de médecine à Lyon, qu'il abandonne à la \
+mort de son père, en 1837, pour faire vivre sa famille. Journaliste et caricaturiste \
+de la bohème parisienne, il signe Nadar et publie en 1854 le Panthéon Nadar, une \
+immense lithographie où figurent des centaines de célébrités. La même année, il ouvre \
+un atelier de photographie rue Saint-Lazare et photographie Baudelaire, Delacroix, \
+George Sand ou Gérard de Nerval. En 1858, il réalise depuis un ballon la première \
+photographie aérienne. En 1860, il s'installe au 35, boulevard des Capucines, puis \
+photographie les catacombes et les égouts de Paris à la lumière artificielle. En 1863, \
+il fait construire le Géant, un ballon gigantesque ; Jules Verne s'inspire de lui pour \
+Michel Ardan, anagramme de Nadar. Pendant le siège de Paris, en 1870, il organise des \
+ballons pour transporter le courrier. Son fils Paul reprend l'atelier ; Nadar meurt à \
+près de quatre-vingt-dix ans."""
+style = """
+Nadar fait du portrait photographique un art. Fond neutre, lumière du jour, cadrage à \
+mi-corps, refus des accessoires : tout est fait pour révéler le caractère du modèle, \
+que son œil de caricaturiste sait lire. Ses portraits d'écrivains et d'artistes \
+composent la grande galerie de son siècle. Curieux de tout, il fut aussi un pionnier \
+de la photographie aérienne et de l'éclairage artificiel."""
+
+[[artistes]]
+nom = "Julia Margaret Cameron"
+vie = "Calcutta, 11 juin 1815 – Kalutara (Ceylan), 26 janvier 1879"
+biographie = """
+Julia Margaret Pattle naît à Calcutta dans une famille liée à la Compagnie des Indes. \
+Lors d'un séjour au cap de Bonne-Espérance, elle se lie avec l'astronome John \
+Herschel, qui lui fera connaître la photographie. Mariée en 1838 à Charles Hay \
+Cameron, juriste, elle tient un salon en vue à Calcutta, puis s'installe en \
+Angleterre. En 1860, la famille achète une maison à Freshwater, sur l'île de Wight, \
+voisine de celle du poète Alfred Tennyson. Vers la fin de 1863, à quarante-huit ans, \
+elle reçoit de sa fille et de son gendre un appareil photographique. Elle transforme \
+un poulailler en atelier, la remise à charbon en chambre noire, et réalise en une \
+douzaine d'années quelque neuf cents photographies : portraits de Tennyson, de \
+Herschel, de Darwin, de Carlyle, scènes inspirées de la Bible et de la poésie. Dès \
+1865, le South Kensington Museum, l'actuel Victoria and Albert Museum, achète ses \
+œuvres. En 1875, elle part avec son mari pour Ceylan, où elle meurt quatre ans plus \
+tard."""
+style = """
+Cameron refuse la netteté et la politesse du portrait commercial. Elle cadre de très \
+près, accepte le flou, les taches et les accidents, et cherche dans les visages la \
+beauté et la grandeur morale. Longtemps moquée comme une amatrice, elle est \
+aujourd'hui regardée comme l'une des grandes portraitistes de l'histoire de la \
+photographie."""
+
+[[artistes]]
+nom = "Gustave Le Gray"
+vie = "Villiers-le-Bel, 30 août 1820 – Le Caire, 30 juillet 1884"
+biographie = """
+Fils unique d'un mercier, Gustave Le Gray est d'abord clerc de notaire, puis étudie la \
+peinture dans l'atelier de Paul Delaroche, à Paris, et séjourne en Italie. Il réalise \
+ses premiers daguerréotypes vers 1847, mais c'est la photographie sur papier qui \
+l'intéresse : il met au point un négatif sur papier ciré, qu'il publie en 1851. Il \
+enseigne la photographie à de nombreux élèves, dont Charles Nègre, Henri Le Secq et \
+Maxime Du Camp. En 1851, il participe à la Mission héliographique, chargée de \
+photographier les monuments de France, et contribue à fonder la Société \
+héliographique. Il ouvre en 1855 un atelier luxueux à Paris, devient le photographe de \
+Napoléon III et réalise ses célèbres marines et ses vues de la forêt de Fontainebleau. \
+Mais son entreprise, mal gérée, fait faillite. En 1860, il part en Méditerranée avec \
+Alexandre Dumas, photographie Garibaldi et Palerme, puis s'établit en Égypte, où il \
+enseigne le dessin au Caire jusqu'à sa mort."""
+style = """
+Le Gray est à la fois un technicien inventif et un artiste formé à la peinture. Il \
+cherche dans la photographie les effets de la grande peinture de paysage : ciels \
+dramatiques, contre-jours, masses d'ombre. Ses marines et ses forêts ont donné à la \
+photographie française du Second Empire son ambition artistique."""
+
+[[artistes]]
+nom = "Eadweard Muybridge"
+vie = "Kingston upon Thames, 9 avril 1830 – Kingston upon Thames, 8 mai 1904"
+biographie = """
+Né Edward James Muggeridge près de Londres, il part jeune pour les États-Unis et \
+devient libraire à San Francisco. Grièvement blessé dans un accident de diligence en \
+1860, il rentre en Angleterre, où il apprend la photographie. De retour en Californie, \
+il se fait connaître, sous le nom d'Eadweard Muybridge, par de grandes vues de la \
+vallée de Yosemite. Au début des années 1870, Leland Stanford lui demande de \
+photographier ses chevaux en mouvement. En 1874, il tue l'amant de sa femme ; \
+acquitté, il voyage en Amérique centrale. En 1878, à Palo Alto, ses séries de chevaux \
+au galop font le tour du monde. Il invente ensuite le zoopraxiscope, qui projette ses \
+images en mouvement, et donne des conférences en Amérique et en Europe. De 1884 à \
+1886, à l'université de Pennsylvanie, il photographie des milliers de mouvements \
+d'hommes, de femmes et d'animaux, publiés en 1887 sous le titre Animal Locomotion. Il \
+finit sa vie dans sa ville natale."""
+style = """
+Muybridge a transformé la photographie en instrument d'analyse : ses séries \
+décomposent le mouvement en instants que l'œil ne peut saisir. Ses grilles d'images, \
+sur fond quadrillé, ont nourri les savants, les peintres, de Degas à Marcel Duchamp et \
+Francis Bacon, et les inventeurs du cinéma. Il a aussi montré, avec son zoopraxiscope, \
+qu'une suite d'images fixes projetées rapidement recrée l'illusion du mouvement."""
+
+[[artistes]]
+nom = "Eugène Atget"
+vie = "Libourne, 12 février 1857 – Paris, 4 août 1927"
+biographie = """
+Orphelin très jeune, Jean-Eugène-Auguste Atget est élevé par ses grands-parents à \
+Bordeaux, puis s'engage dans la marine marchande. Il devient ensuite comédien dans une \
+troupe ambulante, où il rencontre Valentine Delafosse Compagnon, sa compagne jusqu'à \
+la mort de celle-ci, en 1926. Une maladie de la gorge le force à quitter la scène ; \
+après un essai dans la peinture, il se tourne vers la photographie. Vers 1890, il \
+s'installe à Paris et accroche à sa porte l'enseigne « Documents pour artistes ». \
+Pendant plus de trente ans, il photographie méthodiquement le vieux Paris : rues, \
+cours, escaliers, boutiques, petits métiers, jardins de Versailles et de Saint-Cloud. \
+Le musée Carnavalet et la Bibliothèque historique de la Ville de Paris lui achètent \
+des milliers d'images. À la fin de sa vie, il est remarqué par Man Ray, son voisin de \
+la rue Campagne-Première, et par Berenice Abbott, qui sauvera et fera connaître son \
+œuvre après sa mort."""
+style = """
+Atget photographie sans effet, à la chambre et en lumière naturelle, des rues souvent \
+vides. Son objectif est de documenter, et ses quelque dix mille images forment un \
+immense inventaire de Paris. Mais la précision de son regard, ses vitrines et ses \
+reflets ont séduit les surréalistes, puis les photographes documentaires américains, \
+qui ont vu en lui un père de la photographie moderne."""
+
+[[artistes]]
+nom = "Alfred Stieglitz"
+vie = "Hoboken (New Jersey), 1ᵉʳ janvier 1864 – New York, 13 juillet 1946"
+biographie = """
+Fils d'immigrés allemands, Alfred Stieglitz part étudier à Berlin dans les années \
+1880, d'abord l'ingénierie, puis la photochimie, et commence à photographier. Rentré à \
+New York en 1890, il se bat pour que la photographie soit reconnue comme un art. En \
+1902, il fonde la Photo-Secession, puis lance en 1903 la revue Camera Work, imprimée \
+en photogravure avec un soin extrême. En 1905, il ouvre au 291 Fifth Avenue une petite \
+galerie, appelée 291, où il expose des photographes mais aussi, parmi les premiers aux \
+États-Unis, Matisse, Rodin, Picasso ou Cézanne. Sa propre photographie évolue d'un \
+style pictorialiste vers des images nettes et construites, comme L'Entrepont. En 1924, \
+il épouse la peintre Georgia O'Keeffe, qu'il photographie pendant des années. Dans les \
+années 1920, il réalise ses Equivalents, des photographies de nuages, puis dirige \
+d'autres galeries jusqu'à sa mort, en 1946."""
+style = """
+Stieglitz est à la fois photographe, éditeur et marchand. Son œuvre suit l'évolution \
+de la photographie : d'abord des images vaporeuses imitant la peinture, puis une \
+photographie franche, qui assume la netteté, le cadrage et la géométrie du réel. Par \
+sa revue et ses galeries, il a fait entrer la photographie et l'art moderne européen \
+dans les musées américains."""
+
+[[artistes]]
+nom = "Sergueï Prokoudine-Gorski"
+vie = "Funikova Gora (gouvernement de Vladimir), 30 août 1863 – Paris, 27 septembre 1944"
+biographie = """
+Issu de la noblesse russe, Sergueï Mikhaïlovitch Prokoudine-Gorski étudie la chimie à \
+Saint-Pétersbourg, auprès de Dmitri Mendeleïev selon ses biographes, ainsi que la \
+musique et la peinture. Il dirige l'usine métallurgique de son beau-père et devient un \
+membre actif de la section photographique de la Société technique impériale russe. En \
+1901, il ouvre un atelier et un laboratoire à Saint-Pétersbourg ; l'année suivante, il \
+étudie la photographie en trois couleurs à Berlin auprès du professeur Adolf Miethe. \
+Son portrait en couleur de Tolstoï, en 1908, le rend célèbre. En 1909, Nicolas II lui \
+confie la mission de photographier l'Empire russe : il parcourt pendant des années la \
+Russie, le Caucase et l'Asie centrale. Après la révolution, il quitte le pays en 1918 \
+avec une partie de ses plaques et s'installe à Paris en 1922, où il ouvre un atelier \
+avec ses enfants. Il meurt quelques semaines après la libération de Paris."""
+style = """
+Prokoudine-Gorski n'invente pas la photographie en couleur, mais il la porte à un \
+niveau de qualité et d'ambition inédit. Ses milliers de vues, d'une précision et d'une \
+fraîcheur saisissantes, forment un portrait unique de l'Empire russe à la veille de la \
+révolution : paysages, églises, paysans, ouvriers, peuples d'Asie centrale."""
