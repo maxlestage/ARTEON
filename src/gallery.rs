@@ -7,7 +7,7 @@
 //! - `showcase_app(ex)` : l'œuvre de la vitrine sur un chevalet tournant.
 //!
 //! Le moteur n'affiche pas d'images (pas de textures) : un tableau est une grille de
-//! touches de couleur de 1 cm. Les touches voisines de même couleur sont fusionnées en
+//! touches de couleur de 7 mm. Les touches voisines de même couleur sont fusionnées en
 //! rectangles, et chaque couleur de la palette forme un seul maillage (64 au plus par
 //! tableau) : la scène reste fluide malgré la finesse de la mosaïque.
 //!
@@ -19,8 +19,10 @@
 //! - le shader n'éclaire qu'avec 8 lampes ponctuelles au plus (les suivantes sont
 //!   ignorées) : `lamp_plan` répartit ces 8 lampes entre les salles et les couloirs.
 
+use std::cell::RefCell;
 use std::collections::{BTreeMap, HashMap};
 use std::f32::consts::FRAC_PI_2;
+use std::rc::Rc;
 use std::sync::OnceLock;
 
 use paquets::ecs::prelude::*;
@@ -464,7 +466,7 @@ fn setup_tour(
     for art in ex.artworks {
         hang(&mut commands, &mut meshes, &mut materials, art);
     }
-    let (eye, look) = tour_pose(ex, 0.0);
+    let Pose { eye, look, .. } = tour_pose(ex, 0.0, 16.0 / 9.0);
     commands.spawn((
         Camera3d::default(),
         Transform::from_xyz(eye[0], eye[1], eye[2])
@@ -475,30 +477,83 @@ fn setup_tour(
 
 // ─── La visite guidée ────────────────────────────────────────────────────────
 
-/// Un arrêt de la visite : où se tient le visiteur, ce qu'il regarde, combien de temps.
+/// Les commandes de la visite, partagées entre la scène et la page (boutons, clavier,
+/// cartel). La page écrit `paused` et `jump` ; la scène écrit `current`, l'œuvre devant
+/// laquelle se tient le visiteur, et prévient la page par `on_change`.
+#[derive(Default)]
+pub struct TourControl {
+    /// La visite est arrêtée (la caméra ne bouge plus).
+    pub paused: bool,
+    /// Le nombre d'œuvres à sauter : +1 la suivante, -1 la précédente.
+    pub jump: i32,
+    /// L'index, dans `artworks`, de l'œuvre regardée.
+    pub current: Option<usize>,
+    /// Appelé quand l'œuvre regardée change.
+    pub on_change: Option<Rc<dyn Fn(Option<usize>)>>,
+}
+
+/// Les commandes, partagées (`Rc<RefCell<…>>`) entre la page et la scène.
+pub type SharedControl = Rc<RefCell<TourControl>>;
+
+struct Control(SharedControl);
+paquets::active::resource!(Control);
+
+/// Un arrêt de la visite : où se tient le visiteur, ce qu'il regarde, combien de temps,
+/// et l'œuvre qu'il regarde (son index dans `artworks`), s'il y en a une.
 #[derive(Clone, Copy, Debug)]
 struct Stop {
     eye: [f32; 3],
     look: [f32; 3],
     hold: f32,
+    art: Option<usize>,
 }
 
 const EYE: f32 = 1.65;
+/// La tangente de la moitié du champ de vision vertical de la caméra (45°).
+const HALF_FOV_TAN: f32 = 0.414_213_56;
+/// Le visiteur ne recule jamais plus loin que ça du tableau (le mur d'en face est à 9,8 m).
+const MAX_DISTANCE: f32 = 8.6;
 
 fn stop(eye: [f32; 3], look: [f32; 3], hold: f32) -> Stop {
-    Stop { eye, look, hold }
+    Stop {
+        eye,
+        look,
+        hold,
+        art: None,
+    }
 }
 
-/// L'arrêt devant une œuvre : face à elle, d'autant plus loin qu'elle est grande.
-fn stop_at(art: &Artwork) -> Stop {
-    let distance = (art.width.max(art.height) * 1.3).clamp(1.8, 3.4);
+/// La distance à laquelle regarder une œuvre sur un écran de proportions `aspect`
+/// (largeur / hauteur) : assez loin pour qu'elle tienne dans l'image avec de l'air
+/// autour. Sur un téléphone en portrait, le visiteur recule : la toile reste entière et
+/// ses touches restent fines à l'écran.
+fn distance_for(art: &Artwork, aspect: f32) -> f32 {
+    let fit_width = (art.width / 2.0) / (HALF_FOV_TAN * aspect.max(0.2) * 0.62);
+    let fit_height = (art.height / 2.0) / (HALF_FOV_TAN * 0.72);
+    fit_width.max(fit_height).clamp(1.8, MAX_DISTANCE)
+}
+
+/// Où se tient le visiteur pour regarder `art` à `distance` mètres.
+fn eye_at(art: &Artwork, distance: f32) -> ([f32; 3], [f32; 3]) {
     let (center, _) = on_wall(art.hook, 0.0, 0.0, 0.0);
     let eye = match art.hook.wall {
         Wall::Left => [center[0] + distance, EYE, center[2]],
         Wall::Right => [center[0] - distance, EYE, center[2]],
         Wall::Back => [center[0], EYE, center[2] + distance],
     };
-    stop(eye, center, 3.5)
+    (eye, center)
+}
+
+/// L'arrêt devant une œuvre, pour un écran paysage (16/9) ; `pose` l'adapte à l'écran.
+fn stop_at(ex: &Exhibition, art: &Artwork) -> Stop {
+    let (eye, look) = eye_at(art, distance_for(art, 16.0 / 9.0));
+    let index = ex.artworks.iter().position(|a| std::ptr::eq(a, art));
+    Stop {
+        eye,
+        look,
+        hold: 4.0,
+        art: index,
+    }
 }
 
 /// Le parcours d'une exposition, calculé à partir des œuvres accrochées : l'entrée,
@@ -512,7 +567,7 @@ fn plan(ex: &Exhibition) -> Vec<Stop> {
         if i > 0 {
             list.push(stop([0.0, EYE, cz + 3.6], [0.0, 1.4, cz - 2.0], 1.2));
         }
-        list.extend(ex.works_in_room(i).into_iter().map(stop_at));
+        list.extend(ex.works_in_room(i).into_iter().map(|art| stop_at(ex, art)));
         if i < last {
             // Dans l'axe de la porte avant de la passer : la caméra ne frôle pas les murs.
             let ahead = [0.0, EYE, cz - 16.0];
@@ -564,6 +619,14 @@ pub fn tour_duration(ex: &Exhibition) -> f32 {
         .sum()
 }
 
+/// Le moment de la visite où le visiteur arrive devant l'arrêt `index`.
+fn arrival(ex: &Exhibition, index: usize) -> f32 {
+    let list = stops(ex);
+    (0..index)
+        .map(|i| list[i].hold + travel(&list[i], &list[(i + 1) % list.len()]))
+        .sum()
+}
+
 fn lerp3(a: [f32; 3], b: [f32; 3], k: f32) -> [f32; 3] {
     [
         a[0] + (b[0] - a[0]) * k,
@@ -572,13 +635,9 @@ fn lerp3(a: [f32; 3], b: [f32; 3], k: f32) -> [f32; 3] {
     ]
 }
 
-/// La direction du regard d'un arrêt : (cap autour de y, inclinaison), en radians.
-fn heading(stop: &Stop) -> (f32, f32) {
-    let d = [
-        stop.look[0] - stop.eye[0],
-        stop.look[1] - stop.eye[1],
-        stop.look[2] - stop.eye[2],
-    ];
+/// La direction du regard : (cap autour de y, inclinaison), en radians.
+fn heading(eye: [f32; 3], look: [f32; 3]) -> (f32, f32) {
+    let d = [look[0] - eye[0], look[1] - eye[1], look[2] - eye[2]];
     let flat = (d[0] * d[0] + d[2] * d[2]).sqrt();
     (d[0].atan2(d[2]), d[1].atan2(flat))
 }
@@ -586,9 +645,9 @@ fn heading(stop: &Stop) -> (f32, f32) {
 /// Le regard entre deux arrêts : le cap tourne par le plus court chemin. On interpole la
 /// direction et non le point regardé : entre deux murs opposés, ce point passerait par
 /// l'œil, et la caméra basculerait vers le plafond.
-fn blend_look(eye: [f32; 3], a: &Stop, b: &Stop, k: f32) -> [f32; 3] {
+fn blend_look(eye: [f32; 3], a: ([f32; 3], [f32; 3]), b: ([f32; 3], [f32; 3]), k: f32) -> [f32; 3] {
     use std::f32::consts::{PI, TAU};
-    let ((yaw_a, pitch_a), (yaw_b, pitch_b)) = (heading(a), heading(b));
+    let ((yaw_a, pitch_a), (yaw_b, pitch_b)) = (heading(a.0, a.1), heading(b.0, b.1));
     let turn = (yaw_b - yaw_a + PI).rem_euclid(TAU) - PI;
     let (yaw, pitch) = (yaw_a + turn * k, pitch_a + (pitch_b - pitch_a) * k);
     [
@@ -598,39 +657,134 @@ fn blend_look(eye: [f32; 3], a: &Stop, b: &Stop, k: f32) -> [f32; 3] {
     ]
 }
 
-/// La position de l'œil et le point regardé au temps `t` de la visite (en boucle).
-/// Une fonction pure : elle se teste sans navigateur.
-pub fn tour_pose(ex: &Exhibition, t: f32) -> ([f32; 3], [f32; 3]) {
+/// Ce que voit le visiteur à un moment de la visite.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Pose {
+    pub eye: [f32; 3],
+    pub look: [f32; 3],
+    /// L'œuvre regardée (son index dans `artworks`), s'il y en a une.
+    pub art: Option<usize>,
+}
+
+/// L'œil et le point regardé d'un arrêt, sur un écran de proportions `aspect`.
+fn placed(ex: &Exhibition, stop: &Stop, aspect: f32) -> ([f32; 3], [f32; 3]) {
+    match stop.art {
+        Some(i) => eye_at(&ex.artworks[i], distance_for(&ex.artworks[i], aspect)),
+        None => (stop.eye, stop.look),
+    }
+}
+
+/// Ce que voit le visiteur au temps `t` de la visite (en boucle), sur un écran de
+/// proportions `aspect` (largeur / hauteur). Une fonction pure : elle se teste sans
+/// navigateur.
+pub fn tour_pose(ex: &Exhibition, t: f32, aspect: f32) -> Pose {
     let list = stops(ex);
     let mut rest = t.rem_euclid(tour_duration(ex));
     for (i, here) in list.iter().enumerate() {
+        let a = placed(ex, here, aspect);
         if rest < here.hold {
-            return (here.eye, here.look);
+            return Pose {
+                eye: a.0,
+                look: a.1,
+                art: here.art,
+            };
         }
         rest -= here.hold;
         let next = &list[(i + 1) % list.len()];
         let duration = travel(here, next);
         if rest < duration {
+            let b = placed(ex, next, aspect);
             let k = rest / duration;
+            // Le cartel garde l'œuvre quittée jusqu'à mi-chemin, puis montre la suivante ;
+            // vers une porte (sans œuvre), il garde l'œuvre quittée jusqu'au bout.
+            let art = if k < 0.5 {
+                here.art
+            } else {
+                next.art.or(here.art)
+            };
             let k = k * k * (3.0 - 2.0 * k); // départ et arrivée en douceur
-            let eye = lerp3(here.eye, next.eye, k);
-            return (eye, blend_look(eye, here, next, k));
+            let eye = lerp3(a.0, b.0, k);
+            return Pose {
+                eye,
+                look: blend_look(eye, a, b, k),
+                art,
+            };
         }
         rest -= duration;
     }
-    (list[0].eye, list[0].look)
+    let (eye, look) = placed(ex, &list[0], aspect);
+    Pose {
+        eye,
+        look,
+        art: list[0].art,
+    }
+}
+
+/// Le moment où l'on arrive devant l'œuvre suivante (`step` > 0) ou précédente
+/// (`step` < 0), à partir du temps `t`.
+pub fn jump_time(ex: &Exhibition, t: f32, step: i32) -> f32 {
+    let list = stops(ex);
+    let total = tour_duration(ex);
+    let now = t.rem_euclid(total);
+    let mut works: Vec<f32> = (0..list.len())
+        .filter(|&i| list[i].art.is_some())
+        .map(|i| arrival(ex, i))
+        .collect();
+    if works.is_empty() || step == 0 {
+        return t;
+    }
+    works.sort_by(f32::total_cmp);
+    // L'œuvre devant laquelle on est (ou la dernière passée), puis on avance de `step`.
+    let here = works.iter().rposition(|&w| w <= now + 0.01);
+    let target = match here {
+        Some(i) => (i as i32 + step).rem_euclid(works.len() as i32) as usize,
+        None if step > 0 => (step as usize - 1) % works.len(),
+        None => (works.len() as i32 + step).rem_euclid(works.len() as i32) as usize,
+    };
+    t - now + works[target]
 }
 
 fn walk(
     current: Res<Current>,
+    control: Option<Res<Control>>,
     time: Res<Time>,
+    windows: Query<&Window>,
     mut visitors: Query<(&mut Transform, &mut Visitor)>,
 ) {
+    let ex = current.0;
+    let aspect = windows.iter().next().map_or(16.0 / 9.0, |w| {
+        w.resolution.width / w.resolution.height.max(1.0)
+    });
+    let (paused, jump) = control.as_ref().map_or((false, 0), |c| {
+        let mut c = c.0.borrow_mut();
+        (c.paused, std::mem::take(&mut c.jump))
+    });
     for (mut transform, mut visitor) in &mut visitors {
-        visitor.t += time.delta_secs();
-        let (eye, look) = tour_pose(current.0, visitor.t);
-        *transform = Transform::from_xyz(eye[0], eye[1], eye[2])
-            .looking_at(Vec3::new(look[0], look[1], look[2]), Vec3::Y);
+        if jump != 0 {
+            visitor.t = jump_time(ex, visitor.t, jump);
+        } else if !paused {
+            visitor.t += time.delta_secs();
+        }
+        let pose = tour_pose(ex, visitor.t, aspect);
+        *transform = Transform::from_xyz(pose.eye[0], pose.eye[1], pose.eye[2])
+            .looking_at(Vec3::new(pose.look[0], pose.look[1], pose.look[2]), Vec3::Y);
+        if let Some(control) = control.as_ref() {
+            // Le cartel garde la dernière œuvre vue jusqu'à la suivante, couloirs compris :
+            // le bouton « Voir en HD » reste toujours utilisable.
+            let callback = {
+                let mut c = control.0.borrow_mut();
+                match pose.art {
+                    Some(art) if c.current != Some(art) => {
+                        c.current = Some(art);
+                        c.on_change.clone().map(|f| (f, art))
+                    }
+                    _ => None,
+                }
+            };
+            if let Some((callback, art)) = callback {
+                callback(Some(art));
+            }
+        }
     }
 }
 
@@ -655,6 +809,13 @@ pub fn tour_app(ex: &'static Exhibition) -> App {
         .insert_resource(Current(ex))
         .add_systems(Startup, setup_tour)
         .add_systems(Update, walk);
+    app
+}
+
+/// La galerie, pilotée par la page : pause, œuvre suivante ou précédente, cartel.
+pub fn tour_app_with(ex: &'static Exhibition, control: SharedControl) -> App {
+    let mut app = tour_app(ex);
+    app.insert_resource(Control(control));
     app
 }
 
@@ -759,19 +920,23 @@ pub fn showcase_app(ex: &'static Exhibition) -> App {
 mod tests {
     use super::*;
 
+    /// Un téléphone en portrait, un écran carré, un écran large.
+    const ASPECTS: [f32; 3] = [0.46, 1.0, 16.0 / 9.0];
+
     #[test]
     fn the_tour_starts_at_the_entrance_and_loops() {
         for ex in EXHIBITIONS {
-            assert_eq!(tour_pose(ex, 0.0).0, stops(ex)[0].eye);
-            assert_eq!(tour_pose(ex, tour_duration(ex)).0, stops(ex)[0].eye);
+            assert_eq!(tour_pose(ex, 0.0, 1.5).eye, stops(ex)[0].eye);
+            assert_eq!(tour_pose(ex, tour_duration(ex), 1.5).eye, stops(ex)[0].eye);
         }
     }
 
     #[test]
     fn the_tour_stops_in_front_of_every_work() {
         for ex in EXHIBITIONS {
-            for art in ex.artworks {
-                let target = stop_at(art);
+            for (i, art) in ex.artworks.iter().enumerate() {
+                let target = stop_at(ex, art);
+                assert_eq!(target.art, Some(i));
                 assert!(
                     stops(ex).iter().any(|s| s.eye == target.eye),
                     "{}",
@@ -781,30 +946,78 @@ mod tests {
         }
     }
 
+    /// Les boutons « suivante » et « précédente » passent d'une œuvre à l'autre, dans
+    /// l'ordre de la visite, en boucle.
+    #[test]
+    fn next_and_previous_go_from_work_to_work() {
+        for ex in EXHIBITIONS {
+            let order: Vec<Option<usize>> = stops(ex)
+                .iter()
+                .filter(|s| s.art.is_some())
+                .map(|s| s.art)
+                .collect();
+            let mut t = 0.0;
+            for expected in order.iter().chain(order.iter().take(1)) {
+                t = jump_time(ex, t, 1);
+                assert_eq!(tour_pose(ex, t + 0.01, 1.5).art, *expected, "{}", ex.slug);
+            }
+            let back = jump_time(ex, t, -1);
+            assert_eq!(
+                tour_pose(ex, back + 0.01, 1.5).art,
+                *order.last().unwrap(),
+                "{}",
+                ex.slug
+            );
+        }
+    }
+
+    /// Sur tous les écrans, l'œuvre regardée tient dans l'image.
+    #[test]
+    fn every_work_fits_the_screen() {
+        for ex in EXHIBITIONS {
+            for art in ex.artworks {
+                for aspect in ASPECTS {
+                    let d = distance_for(art, aspect);
+                    let visible_width = 2.0 * d * HALF_FOV_TAN * aspect;
+                    let visible_height = 2.0 * d * HALF_FOV_TAN;
+                    let fits =
+                        art.width <= visible_width * 0.95 && art.height <= visible_height * 0.95;
+                    assert!(fits || d >= MAX_DISTANCE, "{} ({aspect})", art.title);
+                }
+            }
+        }
+    }
+
     #[test]
     fn the_visitor_stays_inside_the_gallery() {
         for ex in EXHIBITIONS {
             let last = ex.rooms[ex.rooms.len() - 1].center_z - ROOM_HALF_DEPTH;
-            let mut t = 0.0;
-            while t < tour_duration(ex) {
-                let ([x, y, z], _) = tour_pose(ex, t);
-                assert!(
-                    x.abs() < INNER - 0.5 && y > 0.0 && y < WALL_HEIGHT,
-                    "{} t = {t}",
-                    ex.slug
-                );
-                assert!(z < ROOM_HALF_DEPTH && z > last, "{} t = {t}", ex.slug);
-                // Dans un couloir, le visiteur reste au milieu.
-                let in_room = ex
-                    .rooms
-                    .iter()
-                    .any(|r| (z - r.center_z).abs() <= ROOM_HALF_DEPTH);
-                assert!(
-                    in_room || x.abs() < CORRIDOR_HALF_WIDTH - 0.3,
-                    "{} t = {t} : x = {x}, z = {z}",
-                    ex.slug
-                );
-                t += 0.05;
+            for aspect in ASPECTS {
+                let mut t = 0.0;
+                while t < tour_duration(ex) {
+                    let [x, y, z] = tour_pose(ex, t, aspect).eye;
+                    assert!(
+                        x.abs() < INNER - 0.5 && y > 0.0 && y < WALL_HEIGHT,
+                        "{} t = {t}",
+                        ex.slug
+                    );
+                    assert!(
+                        z < ROOM_HALF_DEPTH - 0.3 && z > last + 0.3,
+                        "{} t = {t}",
+                        ex.slug
+                    );
+                    // Dans un couloir, le visiteur reste au milieu.
+                    let in_room = ex
+                        .rooms
+                        .iter()
+                        .any(|r| (z - r.center_z).abs() <= ROOM_HALF_DEPTH);
+                    assert!(
+                        in_room || x.abs() < CORRIDOR_HALF_WIDTH - 0.3,
+                        "{} t = {t} : x = {x}, z = {z}",
+                        ex.slug
+                    );
+                    t += 0.05;
+                }
             }
         }
     }
@@ -813,17 +1026,19 @@ mod tests {
     #[test]
     fn the_camera_never_looks_at_the_ceiling() {
         for ex in EXHIBITIONS {
-            let mut t = 0.0;
-            while t < tour_duration(ex) {
-                let (eye, look) = tour_pose(ex, t);
-                let d = [look[0] - eye[0], look[1] - eye[1], look[2] - eye[2]];
-                let pitch = d[1].atan2((d[0] * d[0] + d[2] * d[2]).sqrt()).to_degrees();
-                assert!(
-                    pitch.abs() < 25.0,
-                    "{} t = {t} : inclinaison {pitch:.0}°",
-                    ex.slug
-                );
-                t += 0.05;
+            for aspect in ASPECTS {
+                let mut t = 0.0;
+                while t < tour_duration(ex) {
+                    let Pose { eye, look, .. } = tour_pose(ex, t, aspect);
+                    let d = [look[0] - eye[0], look[1] - eye[1], look[2] - eye[2]];
+                    let pitch = d[1].atan2((d[0] * d[0] + d[2] * d[2]).sqrt()).to_degrees();
+                    assert!(
+                        pitch.abs() < 25.0,
+                        "{} t = {t} : inclinaison {pitch:.0}°",
+                        ex.slug
+                    );
+                    t += 0.05;
+                }
             }
         }
     }

@@ -104,6 +104,46 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .page-intro { padding: 3rem 0 1.5rem; }
 .viewer { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
 .scene-gallery { height: min(72vh, 620px); background: linear-gradient(#1a1b22, #0b0b10); }
+
+/* ─── Les commandes de la galerie et le plein écran ───────────────────── */
+.viewer-shell { position: relative; }
+.scene-gallery { cursor: zoom-in; }
+.viewer-shell button { font: inherit; border: 0; cursor: pointer; color: #fff; -webkit-tap-highlight-color: transparent; }
+.viewer-full { position: absolute; top: 14px; right: 14px; padding: .55rem .95rem; border-radius: 999px; font-size: .9rem !important;
+  background: rgba(10,14,30,.62); backdrop-filter: blur(8px); box-shadow: 0 8px 24px -10px rgba(0,0,0,.6); }
+.viewer-full:hover { background: rgba(10,14,30,.85); }
+.viewer-caption { position: absolute; left: 14px; bottom: 14px; max-width: min(28rem, calc(100% - 13rem)); padding: .75rem 1rem;
+  border-radius: 14px; color: #fff; background: rgba(10,14,30,.62); backdrop-filter: blur(10px);
+  opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; pointer-events: none; }
+.has-art .viewer-caption { opacity: 1; transform: none; pointer-events: auto; }
+.cap-title { margin: 0; font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.cap-meta { margin: .15rem 0 .5rem; font-size: .82rem; color: #d4d6e2; line-height: 1.4; }
+.cap-hd { padding: .35rem .8rem; border-radius: 999px; font-size: .82rem !important; background: var(--accent); }
+.viewer-controls { position: absolute; right: 14px; bottom: 14px; display: flex; gap: .4rem; }
+.viewer-controls button { width: 44px; height: 44px; border-radius: 50%; font-size: 1.25rem; line-height: 1;
+  background: rgba(10,14,30,.62); backdrop-filter: blur(8px); }
+.viewer-controls button:hover { background: rgba(10,14,30,.85); }
+.viewer-controls .ctl-exit { display: none; }
+.is-paused .ctl-play { background: var(--accent); }
+
+.viewer-shell.is-fullscreen { position: fixed; inset: 0; z-index: 1000; background: #000; }
+.is-fullscreen .scene-gallery { height: 100vh; height: 100dvh; border-radius: 0; cursor: pointer; }
+.is-fullscreen .viewer-full { display: none; }
+.is-fullscreen .viewer-controls .ctl-exit { display: block; }
+.is-fullscreen .viewer-controls { top: max(14px, env(safe-area-inset-top)); bottom: auto; right: max(14px, env(safe-area-inset-right)); }
+.is-fullscreen .viewer-caption { left: max(14px, env(safe-area-inset-left)); bottom: max(18px, env(safe-area-inset-bottom)); max-width: min(34rem, calc(100% - 28px)); }
+body.viewer-open { overflow: hidden; }
+
+.viewer-hd { display: none; }
+.hd-open .viewer-hd { position: fixed; inset: 0; z-index: 1001; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .8rem; padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); background: rgba(0,0,0,.94); }
+.hd-img { max-width: 100%; max-height: calc(100dvh - 9rem); object-fit: contain; box-shadow: 0 30px 80px -20px rgba(0,0,0,.9); }
+.hd-title { margin: 0; color: #e8e8ee; text-align: center; font-size: .92rem; }
+.hd-close { padding: .55rem 1.1rem; border-radius: 999px; background: rgba(255,255,255,.14) !important; }
+@media (max-width: 640px) {
+  .viewer-caption { max-width: calc(100% - 28px); bottom: 70px; }
+  .viewer-full { top: 10px; right: 10px; }
+}
 .room-legend { margin-top: 2rem; }
 
 /* ─── Accueil du musée : couvertures, expositions ─────────────────────── */

@@ -2,7 +2,7 @@
 //! (`public/tableaux/<nom>/`), vérifie tout, puis écrit le catalogue en Rust
 //! (`$OUT_DIR/expositions.rs`, inclus par `src/artworks.rs`).
 //!
-//! Chaque image devient une mosaïque : réduite à une grille (une case = 1 cm dans la
+//! Chaque image devient une mosaïque : réduite à une grille (une case = 7 mm dans la
 //! galerie), puis ramenée à une palette de 64 couleurs. Les cases sont écrites dans un
 //! fichier binaire à côté (`include_bytes!`). La scène 3D en fait des touches en relief.
 //!
@@ -21,8 +21,8 @@ const MIN_WIDTH: f32 = 0.6;
 const MAX_WIDTH: f32 = 2.6;
 const MAX_HEIGHT: f32 = 2.6;
 /// La largeur d'une case de la mosaïque, en mètres.
-const CELL: f32 = 0.01;
-const MAX_CELLS: u32 = 240;
+const CELL: f32 = 0.007;
+const MAX_CELLS: u32 = 340;
 /// Le nombre de couleurs de la palette de chaque tableau.
 const COLORS: usize = 64;
 
