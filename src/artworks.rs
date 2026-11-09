@@ -27,6 +27,8 @@ pub struct Exhibition {
     pub accent: [u8; 3],
     /// L'index, dans `artworks`, de l'œuvre qui tourne sur le chevalet de sa présentation.
     pub showcase: Option<usize>,
+    /// Le bâtiment : le vrai musée dont il s'inspire.
+    pub museum: Option<Museum>,
     /// La taille de son fichier de données, en octets.
     pub data_size: u32,
     /// Les salles du musée, dans l'ordre de la visite (couloirs compris).
@@ -37,6 +39,41 @@ pub struct Exhibition {
     pub sculptures: &'static [Sculpture],
     /// Les artistes exposés : leur vie et leur manière.
     pub artists: &'static [Artist],
+}
+
+/// Le bâtiment d'une exposition (section `[musee]`) : le vrai musée dont il s'inspire.
+#[derive(Clone, Copy, Debug)]
+pub struct Museum {
+    pub name: &'static str,
+    pub city: &'static str,
+    pub architect: &'static str,
+    /// Les dates de construction ou d'ouverture.
+    pub built: &'static str,
+    /// Le vrai musée.
+    pub presentation: &'static str,
+    /// Ce que le bâtiment d'ARTEON lui emprunte.
+    pub here: &'static str,
+}
+
+/// Le cadre d'un tableau.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Frame {
+    /// Doré, à moulures classiques.
+    Gilded,
+    /// Doré, large et sculpté.
+    Baroque,
+    /// Noir d'ébène, filet doré (les cadres hollandais).
+    Ebony,
+    /// Bois naturel, simple.
+    Wood,
+    /// Caisse blanche.
+    White,
+    /// Baguette noire, fine.
+    Black,
+    /// Passe-partout et baguette fine (estampes, dessins, miniatures).
+    Print,
+    /// Sans cadre : la toile seule.
+    Bare,
 }
 
 /// Un artiste de l'exposition (bloc `[[artistes]]`).
@@ -392,6 +429,7 @@ pub struct Artwork {
     pub collection: &'static str,
     pub note: &'static str,
     pub notice: Notice,
+    pub frame: Frame,
     /// Largeur et hauteur dans la galerie, en mètres.
     pub width: f32,
     pub height: f32,

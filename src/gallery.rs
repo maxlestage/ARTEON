@@ -25,7 +25,7 @@ use std::rc::Rc;
 use paquets::ecs::prelude::*;
 use paquets::scene::BufferGeometry;
 
-use crate::artworks::{Artwork, Exhibition, Mosaic};
+use crate::artworks::{Artwork, Exhibition, Frame, Mosaic};
 use crate::data::ExhibitionData;
 use crate::editor::{self, Edits};
 use crate::museum::{self, Block};
@@ -117,6 +117,8 @@ paquets::active::resource!(Applied);
 struct Turntable {
     center: [f32; 3],
     offset: [f32; 3],
+    /// Son orientation propre (un montant penché), avant la rotation du plateau.
+    base: Quat,
     speed: f32,
     angle: f32,
 }
@@ -169,7 +171,6 @@ fn plugins() -> PluginGroupBuilder {
     DefaultPlugins.disable::<PhysicsPlugin>()
 }
 
-const GILDING: [u8; 3] = [168, 128, 56];
 const CANVAS_BACK: [u8; 3] = [92, 84, 72];
 const PLAQUE: [u8; 3] = [244, 240, 228];
 const PLINTH: [u8; 3] = [214, 208, 196];
@@ -200,6 +201,61 @@ impl Builder {
         }
         self.indices
             .extend_from_slice(&[base, base + 1, base + 2, base, base + 2, base + 3]);
+    }
+
+    /// Un quadrilatère quelconque, tourné du côté de `outward`.
+    fn quad(&mut self, mut p: [[f32; 3]; 4], outward: [f32; 3]) {
+        let sub = |a: [f32; 3], b: [f32; 3]| [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+        let (u, v) = (sub(p[1], p[0]), sub(p[3], p[0]));
+        let mut n = [
+            u[1] * v[2] - u[2] * v[1],
+            u[2] * v[0] - u[0] * v[2],
+            u[0] * v[1] - u[1] * v[0],
+        ];
+        if n[0] * outward[0] + n[1] * outward[1] + n[2] * outward[2] < 0.0 {
+            p.swap(1, 3);
+            n = [-n[0], -n[1], -n[2]];
+        }
+        let len = (n[0] * n[0] + n[1] * n[1] + n[2] * n[2]).sqrt();
+        if len < 1e-9 {
+            return;
+        }
+        let n = [n[0] / len, n[1] / len, n[2] / len];
+        let base = (self.positions.len() / 3) as u32;
+        for q in p {
+            self.positions.extend_from_slice(&q);
+            self.normals.extend_from_slice(&n);
+        }
+        self.indices
+            .extend_from_slice(&[base, base + 1, base + 2, base, base + 2, base + 3]);
+    }
+
+    /// Un pavé de `x0..x1` × `y0..y1` × `z0..z1`, ses six faces vers l'extérieur.
+    fn cuboid(&mut self, x0: f32, x1: f32, y0: f32, y1: f32, z0: f32, z1: f32) {
+        self.quad(
+            [[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]],
+            [0.0, 0.0, 1.0],
+        );
+        self.quad(
+            [[x0, y0, z0], [x1, y0, z0], [x1, y1, z0], [x0, y1, z0]],
+            [0.0, 0.0, -1.0],
+        );
+        self.quad(
+            [[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1]],
+            [0.0, 1.0, 0.0],
+        );
+        self.quad(
+            [[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1]],
+            [0.0, -1.0, 0.0],
+        );
+        self.quad(
+            [[x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [x1, y0, z1]],
+            [1.0, 0.0, 0.0],
+        );
+        self.quad(
+            [[x0, y0, z0], [x0, y1, z0], [x0, y1, z1], [x0, y0, z1]],
+            [-1.0, 0.0, 0.0],
+        );
     }
 
     fn mesh(self) -> Mesh {
@@ -272,6 +328,162 @@ fn mosaic_meshes(mosaic: &Mosaic, cells: &[u8], width: f32, height: f32) -> Vec<
         .collect()
 }
 
+// ─── Les cadres ───────────────────────────────────────────────────────────────
+
+/// La profondeur de la toile dans son cadre : la peinture est à `CANVAS_Z` du mur, le
+/// cadre monte plus haut tout autour.
+const CANVAS_Z: f32 = 0.03;
+
+/// Le profil d'une moulure, du bord de la toile vers l'extérieur : des points (d, z, c),
+/// d la distance au bord de la toile et z la hauteur au-dessus du mur, en mètres ; le
+/// segment qui mène à un point prend la couleur `c` de la palette du cadre.
+type Profile = (&'static [(f32, f32, u8)], &'static [[u8; 3]]);
+
+fn profile(frame: Frame) -> Profile {
+    const GOLD: [[u8; 3]; 3] = [[198, 156, 74], [146, 104, 44], [228, 192, 108]];
+    match frame {
+        Frame::Gilded => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.042, 0),
+                (0.012, 0.05, 2),
+                (0.022, 0.05, 0),
+                (0.045, 0.04, 1),
+                (0.07, 0.058, 0),
+                (0.085, 0.062, 2),
+                (0.1, 0.05, 0),
+                (0.1, 0.0, 1),
+            ],
+            &GOLD,
+        ),
+        Frame::Baroque => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.045, 0),
+                (0.015, 0.056, 2),
+                (0.03, 0.05, 1),
+                (0.06, 0.04, 1),
+                (0.09, 0.062, 0),
+                (0.11, 0.076, 2),
+                (0.13, 0.07, 0),
+                (0.15, 0.055, 1),
+                (0.17, 0.066, 2),
+                (0.18, 0.05, 0),
+                (0.18, 0.0, 1),
+            ],
+            &GOLD,
+        ),
+        Frame::Ebony => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.04, 1),
+                (0.008, 0.046, 1),
+                (0.012, 0.046, 0),
+                (0.05, 0.062, 0),
+                (0.09, 0.062, 0),
+                (0.11, 0.05, 0),
+                (0.11, 0.0, 0),
+            ],
+            &[[30, 26, 24], [196, 156, 76]],
+        ),
+        Frame::Wood => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.05, 0),
+                (0.01, 0.056, 1),
+                (0.06, 0.056, 0),
+                (0.07, 0.046, 0),
+                (0.07, 0.0, 0),
+            ],
+            &[[112, 76, 46], [146, 104, 66]],
+        ),
+        Frame::White => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.062, 0),
+                (0.045, 0.062, 0),
+                (0.045, 0.0, 0),
+            ],
+            &[[238, 236, 230]],
+        ),
+        Frame::Black => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.056, 0),
+                (0.025, 0.056, 0),
+                (0.025, 0.0, 0),
+            ],
+            &[[32, 32, 34]],
+        ),
+        Frame::Print => (
+            &[
+                (0.0, 0.0, 0),
+                (0.0, 0.034, 0),
+                (0.11, 0.034, 0),
+                (0.11, 0.05, 1),
+                (0.135, 0.05, 1),
+                (0.135, 0.0, 1),
+            ],
+            &[[238, 232, 216], [36, 32, 30]],
+        ),
+        Frame::Bare => (&[(0.0, 0.0, 0), (0.0, CANVAS_Z, 0)], &[[214, 204, 184]]),
+    }
+}
+
+/// La largeur visible d'un cadre, autour de la toile.
+pub fn frame_width(frame: Frame) -> f32 {
+    profile(frame).0.last().map_or(0.0, |p| p.0)
+}
+
+/// Les maillages du cadre d'une toile de `w` × `h`, centrée sur l'origine et tournée
+/// vers +z (le mur en z = 0) : les moulures, coupées d'onglet aux angles, un maillage par
+/// couleur ; avec `back`, le dos du cadre aussi (pour le chevalet, vu de derrière).
+fn frame_meshes(frame: Frame, w: f32, h: f32, back: bool) -> Vec<([u8; 3], Mesh)> {
+    let (points, palette) = profile(frame);
+    let mut parts: Vec<Builder> = palette.iter().map(|_| Builder::default()).collect();
+    let (a, b) = (w / 2.0, h / 2.0);
+    // Une bande de moulure entre deux points du profil, sur les quatre côtés.
+    let band = |out: &mut Builder, (d0, z0): (f32, f32), (d1, z1): (f32, f32), up: Option<f32>| {
+        let (dd, dz) = (d1 - d0, z1 - z0);
+        // La normale de la bande : vers le centre quand elle monte, vers l'avant à plat.
+        let (inward, front) = match up {
+            Some(f) => (0.0, f),
+            None => (dz, dd),
+        };
+        let (ia, ib, oa, ob) = (a + d0, b + d0, a + d1, b + d1);
+        out.quad(
+            [[-ia, ib, z0], [ia, ib, z0], [oa, ob, z1], [-oa, ob, z1]],
+            [0.0, -inward, front],
+        );
+        out.quad(
+            [[-ia, -ib, z0], [ia, -ib, z0], [oa, -ob, z1], [-oa, -ob, z1]],
+            [0.0, inward, front],
+        );
+        out.quad(
+            [[-ia, -ib, z0], [-ia, ib, z0], [-oa, ob, z1], [-oa, -ob, z1]],
+            [inward, 0.0, front],
+        );
+        out.quad(
+            [[ia, -ib, z0], [ia, ib, z0], [oa, ob, z1], [oa, -ob, z1]],
+            [-inward, 0.0, front],
+        );
+    };
+    for pair in points.windows(2) {
+        let (p, q) = (pair[0], pair[1]);
+        band(&mut parts[usize::from(q.2)], (p.0, p.1), (q.0, q.1), None);
+    }
+    if back {
+        let outer = points.last().map_or(0.0, |p| p.0);
+        band(&mut parts[0], (0.0, 0.0), (outer, 0.0), Some(-1.0));
+    }
+    palette
+        .iter()
+        .zip(parts)
+        .filter(|(_, b)| !b.indices.is_empty())
+        .map(|(rgb, b)| (*rgb, b.mesh()))
+        .collect()
+}
+
 /// Accroche un tableau : un cadre doré, le fond de la toile, la mosaïque et un cartel.
 fn hang(
     commands: &mut Commands,
@@ -282,20 +494,21 @@ fn hang(
     art: &Artwork,
 ) {
     let (w, h) = (art.width, art.height);
-    let parts: [([f32; 3], f32, [u8; 3]); 2] = [
-        ([w + 0.16, h + 0.16, 0.06], 0.03, GILDING),
-        ([w + 0.01, h + 0.01, 0.01], 0.065, CANVAS_BACK),
-    ];
-    for (size, layer, rgb) in parts {
-        let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, layer);
+    // Le cadre, posé contre le mur, puis le fond de la toile et la peinture, en retrait.
+    let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, 0.0);
+    let mut back = Builder::default();
+    back.rect(-w / 2.0, w / 2.0, -h / 2.0, h / 2.0, CANVAS_Z);
+    let mut parts = frame_meshes(art.frame, w, h, false);
+    parts.push((CANVAS_BACK, back.mesh()));
+    for (rgb, mesh) in parts {
         commands.spawn((
-            Mesh3d(meshes.add(Cuboid::new(size[0], size[1], size[2]))),
+            Mesh3d(meshes.add(mesh)),
             MeshMaterial3d(materials.add(color(rgb))),
             turned(pos, angle),
             Exhibit,
         ));
     }
-    let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, 0.07);
+    let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, CANVAS_Z);
     for (rgb, mesh) in mosaic_meshes(&art.mosaic, data.cells(&art.mosaic), w, h) {
         commands.spawn((
             Mesh3d(meshes.add(mesh)),
@@ -305,7 +518,13 @@ fn hang(
         ));
     }
     let plaque_height = 1.45 - art.hook.center;
-    let (pos, angle) = museum::on_wall(ex, art.hook, w / 2.0 + 0.32, plaque_height, 0.01);
+    let (pos, angle) = museum::on_wall(
+        ex,
+        art.hook,
+        w / 2.0 + frame_width(art.frame).max(0.1) + 0.2,
+        plaque_height,
+        0.01,
+    );
     commands.spawn((
         Mesh3d(meshes.add(Cuboid::new(0.24, 0.15, 0.02))),
         MeshMaterial3d(materials.add(color(PLAQUE))),
@@ -637,6 +856,7 @@ fn turn(time: Res<Time>, mut parts: Query<(&mut Transform, &mut Turntable)>) {
         let [cx, cy, cz] = part.center;
         let mut next =
             Transform::from_xyz(cx + ox * cos + oz * sin, cy + oy, cz - ox * sin + oz * cos);
+        next.rotation = part.base;
         next.rotate_y(part.angle);
         *transform = next;
     }
@@ -675,73 +895,186 @@ fn setup_showcase(
 ) {
     let center = [0.0, 0.0, 0.0];
     let speed = 0.4;
-    let mut part = |commands: &mut Commands, mesh: Mesh, rgb: [u8; 3], offset: [f32; 3]| {
-        commands.spawn((
-            Mesh3d(meshes.add(mesh)),
-            MeshMaterial3d(materials.add(color(rgb))),
-            Transform::from_xyz(offset[0], offset[1], offset[2]),
-            Turntable {
-                center,
-                offset,
-                speed,
-                angle: 0.0,
-            },
-        ));
-    };
-    // Le socle tournant et le chevalet : deux montants, un pied arrière et la tablette.
-    const WOOD: [u8; 3] = [120, 78, 40];
+    let mut part =
+        |commands: &mut Commands, mesh: Mesh, rgb: [u8; 3], offset: [f32; 3], base: Quat| {
+            commands.spawn((
+                Mesh3d(meshes.add(mesh)),
+                MeshMaterial3d(materials.add(color(rgb))),
+                Transform::from_xyz(offset[0], offset[1], offset[2]),
+                Turntable {
+                    center,
+                    offset,
+                    base,
+                    speed,
+                    angle: 0.0,
+                },
+            ));
+        };
+    const WOOD: [u8; 3] = [126, 84, 48];
+    const WOOD_LIGHT: [u8; 3] = [152, 106, 64];
+    const LINEN: [u8; 3] = [216, 202, 172];
+    // Le chevalet penche en arrière ; z à la hauteur y, sur le plan des montants avant.
+    let tilt = 9f32.to_radians();
+    let lean = |y: f32| -y * tilt.tan();
+    let back_tilt = Quat::from_rotation_x(-tilt);
+
+    // Le plateau tournant.
     part(
         &mut commands,
-        Cuboid::new(2.4, 0.16, 1.4).into(),
+        Cylinder::new(1.15, 0.1).into(),
         [26, 28, 40],
-        [0.0, -0.08, 0.0],
-    );
-    for x in [-0.55, 0.55] {
-        part(
-            &mut commands,
-            Cuboid::new(0.07, 2.3, 0.07).into(),
-            WOOD,
-            [x, 1.15, -0.12],
-        );
-    }
-    part(
-        &mut commands,
-        Cuboid::new(0.07, 2.1, 0.07).into(),
-        WOOD,
-        [0.0, 1.05, -0.5],
+        [0.0, -0.05, 0.0],
+        Quat::IDENTITY,
     );
     part(
         &mut commands,
-        Cuboid::new(1.3, 0.06, 0.12).into(),
-        WOOD,
-        [0.0, 0.45, -0.06],
+        Cylinder::new(1.18, 0.03).into(),
+        [168, 128, 56],
+        [0.0, -0.085, 0.0],
+        Quat::IDENTITY,
     );
 
-    // L'œuvre de la vitrine, au plus 1,4 m de large et 1,7 m de haut.
+    // Les deux montants avant, écartés en bas, réunis en haut.
+    let (foot, top, height) = (0.52f32, 0.1f32, 2.6f32);
+    let splay = ((foot - top) / height).atan();
+    let length = height / splay.cos() / tilt.cos();
+    for side in [-1.0f32, 1.0] {
+        let x = side * (foot + top) / 2.0;
+        part(
+            &mut commands,
+            Cuboid::new(0.06, length, 0.05).into(),
+            WOOD,
+            [x, height / 2.0, lean(height / 2.0)],
+            back_tilt * Quat::from_rotation_z(side * splay),
+        );
+    }
+    // Le mât central, derrière la toile, et le pied arrière.
+    part(
+        &mut commands,
+        Cuboid::new(0.05, height - 0.5, 0.04).into(),
+        WOOD_LIGHT,
+        [
+            0.0,
+            0.5 + (height - 0.5) / 2.0,
+            lean(0.5 + (height - 0.5) / 2.0) - 0.05,
+        ],
+        back_tilt,
+    );
+    let (rear_z, joint_y) = (-0.85f32, height - 0.15);
+    let joint_z = lean(joint_y) - 0.04;
+    let rear_len = (joint_y * joint_y + (joint_z - rear_z).powi(2)).sqrt();
+    part(
+        &mut commands,
+        Cuboid::new(0.05, rear_len, 0.05).into(),
+        WOOD,
+        [0.0, joint_y / 2.0, (joint_z + rear_z) / 2.0],
+        Quat::from_rotation_x(((joint_z - rear_z) / joint_y).atan()),
+    );
+    // La traverse basse, entre les montants.
+    let bar_y = 0.32;
+    let bar_w = 2.0 * (foot - (foot - top) * bar_y / height);
+    part(
+        &mut commands,
+        Cuboid::new(bar_w, 0.05, 0.05).into(),
+        WOOD,
+        [0.0, bar_y, lean(bar_y)],
+        back_tilt,
+    );
+
+    // L'œuvre de la vitrine, au plus 1,4 m de large et 1,7 m de haut, dans son cadre.
     let art = current.0.cover();
+    let frame = art.map_or(Frame::Gilded, |a| a.frame);
     let ratio = art.map_or(0.8, |a| a.height / a.width);
     let w = 1.4f32.min(1.7 / ratio);
     let h = w * ratio;
-    let y = 0.48 + h / 2.0;
+    let fw = frame_width(frame);
+    // La tablette qui porte le tableau, et sa lèvre.
+    let ledge_y = 0.62;
     part(
         &mut commands,
-        Cuboid::new(w + 0.12, h + 0.12, 0.05).into(),
-        GILDING,
-        [0.0, y, -0.02],
+        Cuboid::new(w + 2.0 * fw + 0.2, 0.04, 0.16).into(),
+        WOOD_LIGHT,
+        [0.0, ledge_y, lean(ledge_y) + 0.06],
+        back_tilt,
     );
+    part(
+        &mut commands,
+        Cuboid::new(w + 2.0 * fw + 0.2, 0.07, 0.02).into(),
+        WOOD_LIGHT,
+        [0.0, ledge_y + 0.035, lean(ledge_y) + 0.14],
+        back_tilt,
+    );
+    // Le tableau, posé sur la tablette et penché comme le chevalet : son centre, puis
+    // chaque pièce décalée le long de sa normale (vers l'avant, penchée elle aussi).
+    let cy = ledge_y + 0.02 + h / 2.0 + fw;
+    let cz = lean(cy) + 0.03;
+    let along = |z: f32| [0.0, cy + z * tilt.sin(), cz + z * tilt.cos()];
+    for (rgb, mesh) in frame_meshes(frame, w, h, true) {
+        part(&mut commands, mesh, rgb, along(0.0), back_tilt);
+    }
+    // Le dos : la toile de lin et son châssis en bois.
+    let mut linen = Builder::default();
+    linen.quad(
+        [
+            [-w / 2.0, -h / 2.0, 0.0],
+            [w / 2.0, -h / 2.0, 0.0],
+            [w / 2.0, h / 2.0, 0.0],
+            [-w / 2.0, h / 2.0, 0.0],
+        ],
+        [0.0, 0.0, -1.0],
+    );
+    part(
+        &mut commands,
+        linen.mesh(),
+        LINEN,
+        along(CANVAS_Z - 0.002),
+        back_tilt,
+    );
+    let mut stretcher = Builder::default();
+    let (bw, bd) = (0.045, 0.02);
+    let (x0, x1, y0, y1) = (-w / 2.0, w / 2.0, -h / 2.0, h / 2.0);
+    stretcher.cuboid(x0, x1, y1 - bw, y1, -bd, 0.0);
+    stretcher.cuboid(x0, x1, y0, y0 + bw, -bd, 0.0);
+    stretcher.cuboid(x0, x0 + bw, y0 + bw, y1 - bw, -bd, 0.0);
+    stretcher.cuboid(x1 - bw, x1, y0 + bw, y1 - bw, -bd, 0.0);
+    if w > 0.8 {
+        stretcher.cuboid(-bw / 2.0, bw / 2.0, y0 + bw, y1 - bw, -bd, 0.0);
+    }
+    part(
+        &mut commands,
+        stretcher.mesh(),
+        WOOD_LIGHT,
+        along(CANVAS_Z - 0.003),
+        back_tilt,
+    );
+    // La peinture, devant.
     match art {
         Some(art) => {
             for (rgb, mesh) in mosaic_meshes(&art.mosaic, current.1.cells(&art.mosaic), w, h) {
-                part(&mut commands, mesh, rgb, [0.0, y, 0.005]);
+                part(&mut commands, mesh, rgb, along(CANVAS_Z), back_tilt);
             }
         }
-        None => part(
-            &mut commands,
-            Cuboid::new(w, h, 0.02).into(),
-            [242, 236, 220],
-            [0.0, y, 0.01],
-        ),
+        None => {
+            let mut blank = Builder::default();
+            blank.rect(-w / 2.0, w / 2.0, -h / 2.0, h / 2.0, 0.001);
+            part(
+                &mut commands,
+                blank.mesh(),
+                [242, 236, 220],
+                along(CANVAS_Z),
+                back_tilt,
+            );
+        }
     }
+    // Une petite pince en haut du tableau, sur le mât.
+    let clamp_y = cy + (h / 2.0 + fw) * tilt.cos();
+    part(
+        &mut commands,
+        Cuboid::new(0.1, 0.08, 0.12).into(),
+        WOOD_LIGHT,
+        [0.0, clamp_y + 0.03, lean(clamp_y) + 0.02],
+        back_tilt,
+    );
 
     lamp(&mut commands, [2.5, 3.5, 3.5], 700_000.0);
     lamp(&mut commands, [-3.0, 2.5, 2.5], 350_000.0);

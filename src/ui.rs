@@ -49,6 +49,8 @@ pub struct MuseumUi {
     notice: Option<String>,
     /// La notice complète de l'œuvre regardée est-elle ouverte ?
     reading: bool,
+    /// La présentation du bâtiment est-elle ouverte ?
+    building: bool,
 }
 
 impl MuseumUi {
@@ -71,6 +73,7 @@ impl MuseumUi {
             selected: None,
             notice: None,
             reading: false,
+            building: false,
         }
     }
 
@@ -132,6 +135,9 @@ impl MuseumUi {
                     }
                     if self.toggle(ui, self.show_list, "☰ Œuvres").clicked() {
                         self.show_list = !self.show_list;
+                    }
+                    if self.toggle(ui, self.building, "🏛 Le musée").on_hover_text("Le bâtiment et ses salles").clicked() {
+                        self.building = !self.building;
                     }
                     if self.toggle(ui, self.editing, "✏ Éditer").on_hover_text("Déplacer les œuvres, puis télécharger le fichier de l'exposition").clicked() {
                         self.editing = !self.editing;
@@ -381,6 +387,106 @@ impl MuseumUi {
             });
         if !open {
             self.reading = false;
+        }
+    }
+
+    /// Le bâtiment : le vrai musée dont il s'inspire, ce qu'il en garde, et ses salles.
+    fn building_window(&mut self, ctx: &egui::Context) {
+        let ex = self.ex;
+        let screen = ctx.content_rect();
+        let width = (screen.width() - 24.0).min(500.0);
+        let mut open = true;
+        let text = |t: &str| {
+            RichText::new(t.to_owned())
+                .size(14.5)
+                .color(Color32::from_gray(230))
+        };
+        let heading = |t: &str| {
+            RichText::new(t.to_owned())
+                .strong()
+                .size(15.5)
+                .color(self.accent.gamma_multiply(1.6))
+        };
+        egui::Window::new("Le musée")
+            .id(egui::Id::unique("batiment"))
+            .open(&mut open)
+            .collapsible(false)
+            .anchor(Align2::RIGHT_TOP, [-12.0, 64.0])
+            .fixed_size([width, (screen.height() - 90.0).max(200.0)])
+            .frame(self.frame())
+            .show(ctx, |ui| {
+                egui::ScrollArea::vertical()
+                    .auto_shrink(false)
+                    .show(ui, |ui| {
+                        ui.set_max_width(width - 16.0);
+                        match ex.museum {
+                            Some(m) => {
+                                ui.label(
+                                    RichText::new("Inspiré de")
+                                        .small()
+                                        .color(Color32::from_gray(170)),
+                                );
+                                ui.label(
+                                    RichText::new(m.name)
+                                        .strong()
+                                        .size(19.0)
+                                        .color(Color32::WHITE),
+                                );
+                                let facts: Vec<&str> = [m.city, m.architect, m.built]
+                                    .into_iter()
+                                    .filter(|t| !t.is_empty())
+                                    .collect();
+                                if !facts.is_empty() {
+                                    ui.label(
+                                        RichText::new(facts.join(" · "))
+                                            .color(Color32::from_gray(200)),
+                                    );
+                                }
+                                if !m.presentation.is_empty() {
+                                    ui.add_space(8.0);
+                                    ui.label(text(m.presentation));
+                                }
+                                if !m.here.is_empty() {
+                                    ui.add_space(10.0);
+                                    ui.label(heading("Dans ARTEON"));
+                                    ui.label(text(m.here));
+                                }
+                            }
+                            None => {
+                                ui.label(
+                                    RichText::new(ex.title)
+                                        .strong()
+                                        .size(19.0)
+                                        .color(Color32::WHITE),
+                                );
+                            }
+                        }
+                        ui.add_space(10.0);
+                        ui.label(heading("Les salles"));
+                        for (n, (i, room)) in ex.galleries().enumerate() {
+                            let works = ex.works_in_room(i).len() + ex.sculptures_in_room(i).len();
+                            let line = format!("{}. {} · {works} œuvre(s)", n + 1, room.name);
+                            if ui
+                                .add(egui::Label::new(text(&line)).sense(Sense::click()))
+                                .on_hover_text("S'y rendre")
+                                .clicked()
+                            {
+                                self.set_mode(Mode::Free);
+                                self.control.borrow_mut().teleport = Some((room.x, room.z));
+                            }
+                        }
+                        ui.add_space(6.0);
+                        ui.label(
+                            RichText::new(
+                                "Le plan (bouton 🗺) montre les salles, les portes et les œuvres.",
+                            )
+                            .small()
+                            .color(Color32::from_gray(170)),
+                        );
+                    });
+            });
+        if !open {
+            self.building = false;
         }
     }
 
@@ -823,6 +929,9 @@ impl eframe::App for MuseumUi {
         }
         if self.reading {
             self.reader(&ctx);
+        }
+        if self.building {
+            self.building_window(&ctx);
         }
         self.busy
             .set(ctx.is_pointer_over_egui() || ctx.egui_wants_pointer_input());

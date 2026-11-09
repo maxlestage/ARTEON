@@ -23,6 +23,7 @@
 ordre = 140
 nom_court = "Van Gogh"
 mouvement = "Post-impressionnisme"
+cadre = "bois"
 # La couleur d'accent des pages de l'exposition.
 couleur = "#1d3f8f"
 titre = "Van Gogh, la couleur en mouvement"
@@ -33,9 +34,37 @@ introduction = """
 Des mangeurs de pommes de terre de Nuenen au dernier champ de blé d'Auvers, \
 parcourez en 3D cinq années de peinture qui ont changé la couleur pour toujours. \
 Chaque toile est reconstruite touche par touche, en relief, dans trois salles \
-reliées par des couloirs."""
+disposées autour d'un atrium haut et clair."""
 # L'œuvre (son image) qui tourne sur un chevalet en page d'accueil.
 vitrine = "nuit-etoilee.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Musée Van Gogh"
+ville = "Amsterdam, Pays-Bas"
+architecte = "Gerrit Rietveld"
+construction = "ouvert en 1973"
+presentation = """
+À la mort de Vincent en 1890, ses toiles reviennent à son frère Théo, puis à la veuve de \
+celui-ci, Johanna van Gogh-Bonger, qui consacre sa vie à les faire connaître. Leur fils, \
+Vincent Willem, cède la collection à une fondation, et l'État néerlandais construit pour \
+elle un musée sur le Museumplein d'Amsterdam. Dessiné par Gerrit Rietveld, figure du \
+mouvement De Stijl, et achevé après sa mort, survenue en 1964, le bâtiment ouvre en \
+1973 : un volume simple de béton et de verre, organisé autour d'un haut espace central \
+baigné de lumière zénithale, d'où un escalier dessert les étages. En 1999 s'y ajoute une \
+aile ovale signée Kisho Kurokawa, pour les expositions temporaires. Le musée conserve le \
+plus grand ensemble au monde d'œuvres de Van Gogh : plus de deux cents tableaux, quelque \
+cinq cents dessins et l'essentiel de ses lettres, des Mangeurs de pommes de terre aux \
+Tournesols."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée maîtresse de Rietveld. L'atrium, un carré de \
+10 mètres de côté, haut de 9 mètres, aux murs presque blancs, où l'on entre par le sud, \
+distribue toutes les salles. La visite suit la vie du peintre : à l'ouest, la \
+Salle I · Nuenen et Paris, aux murs beiges ; on revient dans l'atrium pour gagner au \
+nord la Salle II · Arles, la plus grande, d'un jaune de paille pâle ; enfin, à l'est, la \
+Salle III · Saint-Rémy et Auvers, aux murs gris bleuté. Hautes de 5 mètres, les trois \
+salles paraissent intimes après l'élan de l'atrium."""
 
 # ─── Le plan du musée ────────────────────────────────────────────────────────
 # Inspiré du musée Van Gogh d'Amsterdam (le bâtiment de Rietveld) : un atrium haut

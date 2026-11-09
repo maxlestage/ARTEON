@@ -587,6 +587,7 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                         .child(span().text("de visite guidée")),
                 ),
         )
+        .child(building(ex))
         .child(
             section()
                 .class("rooms")
@@ -794,6 +795,186 @@ async fn catalogue(_req: Request, ex: &'static Exhibition) -> Page {
         Some(ex.accent),
         content,
     )
+}
+
+/// Le plan du musée, dessiné en SVG (en mètres) : les salles à la couleur de leurs
+/// murs, leurs portes, les tableaux le long des murs, les sculptures, et l'entrée.
+fn plan_svg(ex: &'static Exhibition) -> Element {
+    let (x0, x1, z0, z1) = ex.rooms.iter().fold(
+        (f32::MAX, f32::MIN, f32::MAX, f32::MIN),
+        |(a, b, c, d), r| {
+            (
+                a.min(r.x - r.width / 2.0),
+                b.max(r.x + r.width / 2.0),
+                c.min(r.z - r.depth / 2.0),
+                d.max(r.z + r.depth / 2.0),
+            )
+        },
+    );
+    let pad = 2.5;
+    let view = format!(
+        "{:.2} {:.2} {:.2} {:.2}",
+        x0 - pad,
+        z0 - pad,
+        x1 - x0 + 2.0 * pad,
+        z1 - z0 + 2.0 * pad
+    );
+    let number: std::collections::HashMap<usize, usize> = ex
+        .galleries()
+        .enumerate()
+        .map(|(n, (i, _))| (i, n + 1))
+        .collect();
+    let mut plan = svg()
+        .class("plan")
+        .attr("viewBox", view)
+        .attr("role", "img")
+        .attr(
+            "aria-label",
+            format!("Le plan du musée : {} salles", number.len()),
+        );
+    for r in ex.rooms {
+        plan = plan.child(
+            rect()
+                .class(if r.corridor {
+                    "plan-room corridor"
+                } else {
+                    "plan-room"
+                })
+                .attr("x", format!("{:.2}", r.x - r.width / 2.0))
+                .attr("y", format!("{:.2}", r.z - r.depth / 2.0))
+                .attr("width", format!("{:.2}", r.width))
+                .attr("height", format!("{:.2}", r.depth))
+                .attr("fill", rgb(r.walls)),
+        );
+    }
+    // Les portes : une ouverture dans le trait du mur.
+    for r in ex.rooms {
+        for d in r.doors {
+            let (ax, az) = r.point_on(d.side, d.position - d.width / 2.0);
+            let (bx, bz) = r.point_on(d.side, d.position + d.width / 2.0);
+            plan = plan.child(
+                line()
+                    .class("plan-door")
+                    .attr("x1", format!("{ax:.2}"))
+                    .attr("y1", format!("{az:.2}"))
+                    .attr("x2", format!("{bx:.2}"))
+                    .attr("y2", format!("{bz:.2}")),
+            );
+        }
+    }
+    // Les tableaux, le long de leur mur, un peu en retrait.
+    for art in ex.artworks {
+        let r = &ex.rooms[art.hook.room];
+        let (ix, iz) = art.hook.side.inward();
+        let (ax, az) = r.point_on(art.hook.side, art.hook.position - art.width / 2.0);
+        let (bx, bz) = r.point_on(art.hook.side, art.hook.position + art.width / 2.0);
+        plan = plan.child(
+            line()
+                .class("plan-art")
+                .attr("x1", format!("{:.2}", ax + ix * 0.35))
+                .attr("y1", format!("{:.2}", az + iz * 0.35))
+                .attr("x2", format!("{:.2}", bx + ix * 0.35))
+                .attr("y2", format!("{:.2}", bz + iz * 0.35)),
+        );
+    }
+    for s in ex.sculptures {
+        plan = plan.child(
+            circle()
+                .class("plan-sculpture")
+                .attr("cx", format!("{:.2}", s.x))
+                .attr("cy", format!("{:.2}", s.z))
+                .attr("r", format!("{:.2}", s.radius.max(0.5))),
+        );
+    }
+    // Les numéros des salles, ceux du parcours.
+    for (i, r) in ex.rooms.iter().enumerate() {
+        if let Some(n) = number.get(&i) {
+            let size = (r.width.min(r.depth) * 0.45).clamp(1.2, 3.2);
+            plan = plan.child(
+                text_svg()
+                    .class("plan-number")
+                    .attr("x", format!("{:.2}", r.x))
+                    .attr("y", format!("{:.2}", r.z + size * 0.35))
+                    .attr("font-size", format!("{size:.2}"))
+                    .text(n.to_string()),
+            );
+        }
+    }
+    if let Some((_, x, z, side)) = arteon::museum::entrance(ex) {
+        let (ix, iz) = side.inward();
+        let (ox, oz) = (x - ix * 1.6, z - iz * 1.6);
+        plan = plan.child(
+            text_svg()
+                .class("plan-entrance")
+                .attr("x", format!("{ox:.2}"))
+                .attr("y", format!("{:.2}", oz + 0.5))
+                .attr("font-size", "1.3")
+                .text("▲ Entrée"),
+        );
+    }
+    plan
+}
+
+/// Le bâtiment de l'exposition : le vrai musée dont il s'inspire, ce qu'il en garde,
+/// et le plan des salles.
+fn building(ex: &'static Exhibition) -> Element {
+    let rooms = ol()
+        .class("plan-legend")
+        .children(ex.galleries().map(|(i, room)| {
+            let works = ex.works_in_room(i).len() + ex.sculptures_in_room(i).len();
+            li().child(strong().text(room.name)).child(
+                span().class("muted small").text(
+                    format!(
+                        " · {:.0} × {:.0} m, {:.1} m sous plafond · {works} œuvre(s)",
+                        room.width, room.depth, room.height
+                    )
+                    .replace('.', ","),
+                ),
+            )
+        }));
+    let text = match ex.museum {
+        Some(m) => {
+            let facts: Vec<&str> = [m.city, m.architect, m.built]
+                .into_iter()
+                .filter(|t| !t.is_empty())
+                .collect();
+            let card = div()
+                .class("building-text")
+                .child(p().class("kicker").text("Inspiré de"))
+                .child(h3().text(m.name));
+            let card = if facts.is_empty() {
+                card
+            } else {
+                card.child(p().class("muted").text(facts.join(" · ")))
+            };
+            let card = if m.presentation.is_empty() {
+                card
+            } else {
+                card.child(p().text(m.presentation))
+            };
+            if m.here.is_empty() {
+                card
+            } else {
+                card.child(h4().text("Dans ARTEON")).child(p().text(m.here))
+            }
+        }
+        None => div().class("building-text").child(p().text(format!(
+            "Un bâtiment de {} salles, dessiné pour cette exposition.",
+            ex.galleries().count()
+        ))),
+    };
+    section()
+        .class("building")
+        .id("batiment")
+        .child(h2().class("section-title").text("Le bâtiment"))
+        .child(
+            div().class("building-grid").child(text).child(
+                figure()
+                    .class("building-plan reveal")
+                    .child(plan_svg(ex))
+                    .child(figcaption().child(rooms)),
+            ),
+        )
 }
 
 /// La vie et la manière d'un artiste.
@@ -1195,6 +1376,13 @@ Sa manière…""""##;
              galerie d'honneur, une nef, un atrium… Une porte se déclare d'un seul côté : la salle voisine reçoit la sienne.",
         ))
         .child(pre().class("example").child(code().text(PLAN)))
+        .child(h2().class("section-title").text("Présenter le bâtiment, choisir les cadres"))
+        .child(p().class("lead").text(
+            "Une section [musee] (nom, ville, architecte, construction, presentation, ici) présente le vrai musée dont \
+             le bâtiment s'inspire, et ce qu'il lui emprunte : elle s'affiche dans « Le bâtiment », avec le plan des salles, \
+             et dans le musée 3D. Le cadre des tableaux se choisit avec cadre = \"dore\" dans [exposition] (ou dans une \
+             œuvre) : dore, baroque, ebene, bois, blanc, noir, estampe ou aucun.",
+        ))
         .child(h2().class("section-title").text("Ajouter une sculpture"))
         .child(p().class("lead").text(
             "Déposer le modèle 3D (STL, OBJ ou glTF) dans le dossier modeles/ : il est simplifié à la compilation pour \
