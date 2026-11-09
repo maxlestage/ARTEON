@@ -1,0 +1,999 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ANTIQUITÉ » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/antiquite/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /antiquite.
+#
+#  Les objets sont présentés en vitrine (cadre = "vitrine") ; les peintures et
+#  les reliefs ont leur propre cadre. Les photographies viennent des musées
+#  (Metropolitan Museum of Art, en CC0) et du British Museum (domaine public).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 5
+nom_court = "Antiquité"
+mouvement = "Antiquité : Égypte, Orient, Grèce, Rome"
+cadre = "vitrine"
+couleur = "#8a5416"
+titre = "L'Antiquité, des bords du Nil à la baie de Naples"
+artiste = "Égypte, Sumer, Assyrie, Grèce, Rome…"
+dates = "vers 2090 av. J.-C. – 120 apr. J.-C."
+accroche = "Exposition virtuelle · British Museum, Londres"
+introduction = """
+Deux mille ans d'art autour de la Méditerranée et du Proche-Orient : un hippopotame \
+de faïence bleue et un Livre des morts égyptiens, un prince sumérien en prière et un \
+génie ailé du palais de Nimroud, des vases grecs à figures noires et rouges, une \
+danseuse de bronze, une fresque peinte près de Pompéi, un pichet de verre signé et un \
+portrait du Fayoum. Ces dix objets, faits par des artisans le plus souvent anonymes, \
+racontent la mort et l'au-delà, le pouvoir des rois, la musique et les fêtes. Le \
+bâtiment s'inspire du British Museum à Londres : on franchit un portique, puis on \
+débouche dans une vaste cour couverte, la Great Court, sur laquelle s'ouvrent les \
+galeries de l'Égypte, de la Grèce et de Rome."""
+vitrine = "hippopotame-william.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "British Museum"
+ville = "Londres, Royaume-Uni"
+architecte = "Robert Smirke ; Foster + Partners pour la Great Court"
+construction = "1823–1852 ; Great Court ouverte en 2000"
+presentation = """
+Le British Museum naît en 1753, par une loi du Parlement, des collections léguées \
+par le médecin Hans Sloane, et ouvre en 1759 dans un hôtel particulier du quartier \
+de Bloomsbury. Les acquisitions affluent, de la pierre de Rosette aux sculptures du \
+Parthénon : à partir de 1823, l'architecte Robert Smirke élève un vaste quadrilatère \
+de style néo-grec, dont la façade sud aligne une colonnade ionique, autour d'une \
+cour intérieure. En 1857, son frère Sydney y construit la salle de lecture ronde, \
+sous une coupole, bientôt entourée de magasins de livres. Après le départ de la \
+British Library, l'agence de Norman Foster dégage la cour et la couvre d'une \
+verrière de plus de trois mille vitres triangulaires : la Great Court, ouverte en \
+2000, est présentée comme la plus grande place couverte d'Europe. Tout autour, les \
+galeries égyptiennes, assyriennes, grecques et romaines comptent parmi les plus \
+riches du monde, et l'entrée est gratuite."""
+ici = """
+Le bâtiment d'ARTEON reprend l'enchaînement du British Museum : un portique, puis une \
+grande cour couverte d'où partent les galeries. On entre par le sud dans le Portique, \
+aux murs de pierre claire, puis dans la Great Court, carrée, haute de seize mètres, où \
+attendent les reliefs de l'Orient. À l'ouest, la Galerie égyptienne, longue de \
+vingt-quatre mètres et couleur de sable ; au nord, la Salle grecque, aux murs ocre \
+rose ; à l'est, la Salle romaine, d'un rouge pompéien adouci."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du British Museum à Londres : un portique d'entrée au sud, comme la
+# colonnade de Robert Smirke ; une grande cour carrée et très haute, comme la
+# Great Court sous sa verrière ; à l'ouest, une longue galerie égyptienne, comme
+# la salle des sculptures égyptiennes qui longe la cour ; au nord et à l'est, la
+# Grèce et Rome. x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le Portique"
+theme = "L'entrée, comme la colonnade ionique qui borde la façade du British Museum."
+murs = "#e8e1d3"
+x = 0
+z = 0
+largeur = 16
+profondeur = 8
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La Great Court"
+theme = "Sous la verrière, l'Orient ancien : un prince sumérien en prière et un génie ailé du palais de Nimroud."
+murs = "#ece8df"
+x = 0
+z = -16
+largeur = 24
+profondeur = 24
+hauteur = 16
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La Galerie égyptienne"
+theme = "L'Égypte et l'au-delà : l'hippopotame bleu, la pesée du cœur et un portrait du Fayoum."
+murs = "#e6d6b8"
+x = -17
+z = -16
+largeur = 10
+profondeur = 24
+hauteur = 9
+
+[[salles]]
+nom = "La Salle grecque"
+theme = "Les vases d'Athènes, à figures noires puis rouges, et une danseuse de bronze d'époque hellénistique."
+murs = "#e2c7b0"
+x = 0
+z = -34
+largeur = 16
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "La Salle romaine"
+theme = "Une fresque d'une villa voisine de Pompéi et un pichet de verre signé par son créateur."
+murs = "#e0b9a6"
+x = 17
+z = -16
+largeur = 10
+profondeur = 16
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Statue de Goudéa"
+artiste = "Mésopotamie, époque néo-sumérienne"
+annee = "vers 2090 av. J.-C."
+image = "statue-de-goudea.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Statue_of_Gudea_MET_DT861.jpg"
+technique = "Diorite, 44 × 21,5 × 29,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le prince de Lagash, assis, les mains jointes : sa statue priait pour lui, jour et nuit, dans le temple. Elle mesure 44 cm de haut."
+description = """
+Un homme est assis sur un siège bas et cubique, les pieds nus posés côte à côte sur \
+le socle. Il est vu de face, immobile, le buste droit. Ses mains sont jointes devant \
+la poitrine, l'une serrée dans l'autre. Il porte une longue robe qui laisse l'épaule \
+et le bras droits découverts, et dont le bord, sur l'autre épaule, est souligné de \
+fines franges. Sur sa tête, un bonnet à large bord est couvert de petites boucles \
+régulières, comme une toison. Le visage est plein et paisible, avec de grands yeux \
+en amande cernés d'un trait, des sourcils dessinés en relief et une bouche fermée. \
+Sur toute la partie de la robe qui couvre les genoux, des colonnes de signes \
+cunéiformes sont gravées avec soin dans la pierre noire."""
+evocation = """
+La statue n'est pas un simple portrait : elle est un substitut. Placée dans un \
+temple, face à la divinité, elle devait prier sans relâche à la place du prince \
+et lui assurer la faveur des dieux. Les mains jointes, le regard fixe et les yeux \
+très ouverts traduisent cette attention perpétuelle. Goudéa ne se montre pas en \
+guerrier, mais en souverain pieux et bâtisseur : les inscriptions de ses statues \
+rappellent les temples qu'il a construits ou restaurés. L'inscription de celle-ci \
+lui donne même un nom, que le musée traduit par « Goudéa, l'homme qui a bâti le \
+temple, que sa vie soit longue ». La pierre la plus dure, choisie pour durer, dit \
+le vœu d'une présence éternelle devant les dieux."""
+histoire = """
+Goudéa gouverne l'État de Lagash, dans le sud de la Mésopotamie, à la fin du \
+IIIᵉ millénaire avant notre ère. Il fait sculpter de nombreuses statues de lui-même, \
+destinées aux temples de sa capitale, Girsu, l'actuelle Tello, en Irak. C'est de là \
+que provient probablement celle-ci. À partir de 1877, les fouilles françaises \
+d'Ernest de Sarzec à Tello mettent au jour une série de ces statues, aujourd'hui au \
+musée du Louvre, qui révèlent au monde la civilisation sumérienne. D'autres \
+apparaissent ensuite sur le marché de l'art. Celle-ci entre au Metropolitan Museum \
+de New York en 1959, achetée grâce au fonds Harris Brisbane Dick."""
+facture = """
+La diorite est une pierre noire, dense et très dure, difficile à tailler : selon ses \
+propres inscriptions, Goudéa la faisait venir de Magan, une région lointaine qu'on \
+situe vers l'actuel Oman. Le sculpteur a gardé une forme compacte, presque un bloc, \
+sans parties fragiles qui dépassent. Il a poli les surfaces lisses, le visage, les \
+bras, les pieds, et réservé la gravure fine aux détails : boucles du bonnet, \
+franges, ongles et signes d'écriture. Les proportions sont volontairement trapues, \
+avec une tête large et des mains puissantes."""
+details = [
+  "Les petites boucles du bonnet, gravées une à une comme une toison de laine.",
+  "Les doigts de la main droite, serrés dans la main gauche, au geste de la prière.",
+  "Les colonnes de signes cunéiformes qui couvrent les genoux.",
+  "Le bord frangé de la robe qui descend de l'épaule gauche.",
+  "Les orteils détaillés des pieds nus, posés à plat sur le socle.",
+]
+themes = ["sumer", "prière", "souverain", "écriture", "pierre"]
+anecdote = """
+Goudéa a aussi laissé deux grands cylindres d'argile, conservés au Louvre, qui \
+racontent comment un rêve lui ordonna de rebâtir le temple du dieu Ningirsu. C'est \
+le plus long texte littéraire en langue sumérienne que l'on connaisse."""
+salle = 2
+mur = "nord"
+place = 5
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Génie ailé à tête d'aigle"
+artiste = "Assyrie, règne d'Assurnasirpal II"
+annee = "vers 883–859 av. J.-C."
+image = "genie-a-tete-d-aigle.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Relief_panel_MET_DP375422.jpg"
+technique = "Albâtre gypseux, 236,2 × 177,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une dalle du palais du roi Assurnasirpal II à Nimroud : un esprit protecteur ailé, à tête d'aigle, veille sur la demeure du roi."
+description = """
+Sur une grande dalle de pierre claire, un être debout marche de profil vers la \
+gauche. Il a un corps d'homme, musclé, mais une tête d'aigle au bec crochu, surmontée \
+d'une crête de plumes, et deux grandes ailes déployées dans son dos. Il porte une \
+tunique courte et, par-dessus, un long manteau à franges qui s'ouvre sur sa jambe \
+avancée ; ses pieds sont chaussés de sandales. Une de ses mains est levée et tient \
+entre ses doigts un petit objet arrondi ; l'autre, abaissée, porte un seau par son \
+anse. Des bracelets ornés d'une rosette entourent ses poignets, et un collier pend à \
+son cou. Une bande d'écriture cunéiforme traverse toute la dalle à mi-hauteur, \
+gravée par-dessus le corps et le manteau."""
+evocation = """
+Ces êtres hybrides, que les textes assyriens nomment apkallu, sont des sages et des \
+esprits protecteurs. Sur les murs du palais, ils montaient la garde, souvent près des \
+portes ou autour de l'image du roi. On interprète le petit objet qu'ils tiennent \
+comme une sorte de goupillon, trempé dans le seau pour asperger et purifier : le \
+geste écarterait les mauvais esprits. D'autres y ont vu la pollinisation de l'arbre \
+sacré, symbole de fertilité. L'inscription qui court sur la dalle, répétée sur tout \
+le palais, énumère les titres et les conquêtes du roi : l'image protège, le texte \
+proclame. Ensemble, ils disent un pouvoir royal placé sous la garde des dieux."""
+histoire = """
+Assurnasirpal II, roi d'Assyrie de 883 à 859 avant notre ère, fait de Kalhu, \
+l'actuelle Nimroud, au nord de l'Irak, sa nouvelle capitale. Il y bâtit un immense \
+palais, le Palais nord-ouest, dont les murs sont couverts de dalles sculptées. \
+Ensevelies sous les ruines, elles sont dégagées à partir de 1845 par l'Anglais \
+Austen Henry Layard, qui en envoie un grand nombre au British Museum. D'autres sont \
+distribuées ensuite à des musées et à des universités, en Europe et aux États-Unis. \
+Celle-ci entre au Metropolitan Museum en 1932, don de John D. Rockefeller Jr., avec \
+d'autres reliefs du palais et deux colosses gardiens des portes, un taureau et un \
+lion ailés à tête humaine."""
+facture = """
+Le relief est sculpté dans l'albâtre gypseux, une pierre tendre de la région, que \
+l'on pouvait tailler en grandes dalles et graver finement. Le sculpteur combine \
+plusieurs points de vue : la tête et les jambes sont de profil, les épaules presque \
+de face. Il détaille avec une précision ornementale les plumes des ailes, les \
+franges du manteau et les muscles du mollet, gonflés jusqu'à l'abstraction. Le \
+relief est bas et régulier, pensé pour être vu de près, le long des murs. À \
+l'origine, les dalles étaient rehaussées de couleurs."""
+details = [
+  "Le bec crochu de l'aigle, ouvert, et l'œil rond cerclé d'un bourrelet.",
+  "La rosette gravée sur chacun des bracelets.",
+  "Le seau tenu par son anse, décoré de lignes horizontales.",
+  "Les signes cunéiformes qui passent sans s'interrompre sur le manteau.",
+  "Le mollet découpé en masses musculaires presque géométriques.",
+]
+themes = ["assyrie", "palais", "protection", "écriture", "hybride"]
+anecdote = """
+Pour inaugurer son palais de Kalhu, Assurnasirpal II offrit, selon une stèle \
+retrouvée sur le site, un banquet de dix jours à 69 574 invités, dont il fait \
+dresser l'inventaire des viandes, du pain et des jarres de vin."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.78
+
+[[oeuvres]]
+titre = "Hippopotame « William »"
+artiste = "Égypte, Moyen Empire"
+annee = "vers 1961–1878 av. J.-C."
+image = "hippopotame-william.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Standing_Hippopotamus_MET_DP248993.jpg"
+technique = "Faïence égyptienne, 11,2 × 20 × 7,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un hippopotame de faïence bleue, couvert de fleurs de lotus, déposé dans une tombe : la mascotte du Metropolitan Museum. Il mesure 20 cm de long."
+description = """
+Un hippopotame se tient debout sur ses quatre pattes courtes, la tête légèrement \
+baissée, comme s'il avançait lentement dans l'eau. Son corps massif et arrondi est \
+d'un bleu turquoise lumineux. Sur ce fond, des traits noirs dessinent des plantes \
+du marais : de grandes fleurs de lotus épanouies, des boutons, des feuilles et de \
+longues tiges qui s'enroulent sur ses flancs, son dos et sa tête. On distingue ses \
+petits yeux saillants, ses oreilles rondes et ses narines au bout du large museau. \
+La surface brillante est par endroits usée et tachée, et l'on voit sur les pattes la \
+trace de restaurations : trois d'entre elles ont été reconstituées."""
+evocation = """
+Pour les Égyptiens, l'hippopotame est un animal ambigu. Dans le Nil, il est l'un des \
+plus dangereux, capable de renverser une barque, et il peut incarner les forces du \
+désordre. Mais la femelle, qui protège farouchement ses petits, est aussi associée à \
+la naissance et à la fertilité. Les plantes peintes sur son corps transforment \
+l'animal en paysage : il porte sur lui le marais où il vit, lieu de vie foisonnante, \
+que les Égyptiens liaient à la création du monde et à la renaissance. Déposé dans la \
+tombe, il évoquait ce monde aquatique dont le défunt espérait renaître. Ses pattes \
+ont probablement été brisées volontairement, pour qu'il ne puisse pas nuire au mort."""
+histoire = """
+L'hippopotame date de la XIIᵉ dynastie, au Moyen Empire, entre les règnes de \
+Sésostris Iᵉʳ et de Sésostris II. Il a été trouvé en 1910 à Meir, en Moyenne-Égypte, \
+dans un puits funéraire associé à la chapelle de l'intendant Senbi II, avec un \
+second hippopotame. Il entre au Metropolitan Museum en 1917, don d'Edward S. \
+Harkness. Son surnom vient d'Angleterre : en 1931, le magazine humoristique Punch \
+publie l'histoire d'une famille qui consulte comme un oracle une reproduction en \
+couleurs de l'hippopotame, qu'elle appelle « William ». Le Metropolitan reprend le \
+récit dans son bulletin la même année, et le nom reste attaché à la statuette."""
+facture = """
+La faïence égyptienne n'est pas de la céramique d'argile : c'est une pâte de quartz \
+broyé, modelée puis cuite, qui se couvre en surface d'une glaçure vitreuse. Le cuivre \
+qu'elle contient lui donne ce bleu-vert intense, la couleur de l'eau, de la \
+végétation et de la régénération. Le décor a été peint en noir avant la cuisson. \
+L'artisan a simplifié les formes de l'animal en volumes pleins et ronds, tout en \
+observant justement sa posture, sa tête lourde et ses yeux placés haut sur le \
+crâne, ceux d'un animal qui vit à fleur d'eau."""
+details = [
+  "Les fleurs de lotus épanouies, peintes en noir sur les flancs.",
+  "Les petits yeux saillants et les oreilles rondes, au sommet de la tête.",
+  "La patte avant gauche, d'origine, et les trois autres, restaurées.",
+  "Les tiges qui serpentent jusque sur le museau.",
+  "Les zones où la glaçure, usée, laisse voir un bleu plus pâle.",
+]
+themes = ["égypte", "animal", "nil", "au-delà", "faïence"]
+anecdote = """
+Devenu la mascotte officieuse du Metropolitan Museum, « William » apparaît sur des \
+affiches, des cartes et des peluches. Ses trois pattes restaurées sont \
+d'une teinte un peu différente : on les distingue de la patte d'origine en \
+regardant de près."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Pesée du cœur, Livre des morts de Hounefer"
+artiste = "Égypte, Nouvel Empire"
+annee = "vers 1275 av. J.-C."
+image = "papyrus-hounefer.jpg"
+cadre = "bois"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_judgement_of_the_dead_in_the_presence_of_Osiris.jpg"
+technique = "Encre et pigments sur papyrus"
+collection = "British Museum, Londres"
+note = "Le jugement du scribe Hounefer : son cœur est pesé contre la plume de la vérité, avant qu'il soit présenté à Osiris, roi de l'au-delà."
+description = """
+La scène se lit de gauche à droite. Hounefer, vêtu de lin blanc, est conduit par la \
+main par Anubis, le dieu à tête de chacal. Au centre se dresse une grande balance : \
+Anubis, agenouillé, en surveille le fléau. Sur un plateau repose le cœur du mort, \
+dans un petit vase ; sur l'autre, une plume. Près de la balance attend Ammit, \
+monstre à tête de crocodile. Thot, le dieu à tête d'ibis, note le résultat sur sa \
+palette de scribe. Puis Horus, à tête de faucon, mène Hounefer devant Osiris, assis \
+dans une chapelle, la peau verte, coiffé d'une haute couronne blanche. Derrière lui se \
+tiennent Isis et Nephtys. Au registre supérieur, Hounefer agenouillé prie devant une \
+rangée de dieux assis, juges du tribunal."""
+evocation = """
+Pour les Égyptiens, le cœur est le siège de la pensée, de la mémoire et de la \
+conscience. Sur la balance, il est comparé à la plume de Maât, déesse de la vérité \
+et de l'ordre du monde : il doit être aussi léger qu'elle, c'est-à-dire pur de \
+fautes. Si le cœur pèse trop lourd, Ammit, la « dévoreuse », l'engloutit, et le \
+mort disparaît à jamais. Ici, l'épreuve est réussie : Hounefer est déclaré « juste \
+de voix » et admis auprès d'Osiris, le dieu mort et ressuscité qui règne sur l'au-delà. \
+L'image ne raconte pas un espoir incertain : en peignant le verdict favorable, elle \
+devait aussi, par sa seule présence dans la tombe, en garantir l'issue."""
+histoire = """
+Hounefer était scribe des offrandes divines et intendant du roi Séthi Iᵉʳ, au début \
+de la XIXᵉ dynastie. Son Livre des morts, un rouleau de papyrus long de plusieurs \
+mètres, a été déposé dans sa tombe à Thèbes, l'actuelle Louxor. Ces rouleaux, que \
+les Égyptiens appelaient « Formules pour sortir au jour », réunissaient des \
+incantations destinées à guider le défunt dans l'au-delà. Celui de Hounefer, \
+particulièrement soigné, a été acheté en 1852 par le British Museum à Antoine \
+Clot, dit Clot Bey, médecin français au service du vice-roi d'Égypte. Le rouleau a \
+été découpé en feuilles, aujourd'hui conservées sous verre ; la pesée du cœur en est \
+la page la plus célèbre."""
+facture = """
+Le papyrus est fait de fines lamelles tirées de la tige de la plante, posées en deux \
+couches croisées puis pressées et séchées : on en voit les fibres horizontales. Le \
+peintre trace d'abord les contours à l'encre, puis pose des couleurs franches en à \
+plat : blanc du lin, ocres des peaux, vert et bleu des perruques et des coiffes, noir \
+de carbone. Les figures suivent les conventions égyptiennes : tête et jambes de \
+profil, épaules de face, taille selon l'importance. Le texte hiéroglyphique, en \
+colonnes, s'intègre à l'image et l'encadre."""
+details = [
+  "La plume de Maât, sur le plateau de la balance, face au cœur dans son petit vase.",
+  "Ammit, la dévoreuse, à tête de crocodile, assise au pied de la balance.",
+  "Thot à tête d'ibis, qui note le verdict sur sa palette.",
+  "Les quatre fils d'Horus debout sur une fleur de lotus, devant le trône d'Osiris.",
+  "Hounefer agenouillé, en haut à gauche, devant les dieux du tribunal.",
+]
+themes = ["égypte", "au-delà", "jugement", "dieux", "écriture"]
+anecdote = """
+Lors de la momification, les embaumeurs retiraient la plupart des organes, mais \
+laissaient le cœur en place, parce qu'il serait pesé au jugement. Un scarabée de \
+pierre, gravé d'une formule, était parfois posé sur la poitrine pour qu'il ne \
+témoigne pas contre son propriétaire."""
+salle = 3
+mur = "ouest"
+place = 4
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Portrait d'une jeune femme en rouge"
+artiste = "Égypte romaine"
+annee = "90–120 apr. J.-C."
+image = "jeune-femme-en-rouge.jpg"
+cadre = "bois"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Portrait_of_a_young_woman_in_red_MET_09.181.6_EGDP011294.jpg"
+technique = "Encaustique et feuille d'or sur bois de tilleul, 38,1 × 18,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un portrait du Fayoum : peint sur bois, il était posé sur le visage de la momie, à la place des anciens masques."
+description = """
+Sur une planche étroite, arrondie en haut, une jeune femme nous regarde de face. Son \
+visage ovale, au teint mat, est éclairé de reflets clairs sur le nez, le front et le \
+menton. Elle a de très grands yeux sombres, soulignés de cils noirs et surmontés de \
+sourcils épais. Ses cheveux noirs, bouclés, encadrent son front ; une couronne de \
+feuilles dorées les ceint. Elle porte des boucles d'oreilles et un collier, et elle \
+est vêtue d'une tunique et d'un manteau d'un rouge profond, avec une bande sombre \
+qui descend de l'épaule. Le bas de la planche, nu, montre le bois, taché par les \
+résines et les bandelettes qui l'enserraient."""
+evocation = """
+Ces portraits mêlent trois mondes. Le rite est égyptien : le corps est momifié, et le \
+visage doit rester présent pour l'éternité. La technique et le style sont grecs, et \
+la mode, coiffure, bijoux et vêtements, est celle de l'Empire romain. La couronne \
+d'or, posée sur une chevelure peinte, a été rapprochée des couronnes que l'on plaçait \
+sur la tête des morts, signe de leur victoire sur la mort. Le regard frontal, \
+intense, semble s'adresser directement aux vivants. Ce qui frappe aujourd'hui, c'est \
+l'individualité du visage : une personne précise, qu'on croirait reconnaître, et \
+dont le nom pourtant est perdu."""
+histoire = """
+Depuis la conquête de 30 avant notre ère, l'Égypte est une province romaine, où \
+vivent ensemble Égyptiens, Grecs et Romains. Aux Iᵉʳ et IIᵉ siècles, des familles \
+aisées font peindre des portraits sur bois, glissés dans les bandelettes au-dessus du \
+visage de la momie. On les appelle portraits du Fayoum, du nom de l'oasis où l'on en \
+a découvert beaucoup, à la fin du XIXᵉ siècle. On en connaît environ un millier, \
+dispersés dans les musées du monde. Ce portrait est entré au Metropolitan Museum en \
+1909, acquis grâce au fonds Rogers. Les historiens discutent encore : certains \
+portraits ont-ils été peints du vivant du modèle, et retaillés à sa mort ?"""
+facture = """
+Le portrait est peint à l'encaustique : les pigments sont mêlés à de la cire \
+d'abeille, appliquée chaude ou sous forme d'émulsion, qui donne aux couleurs leur \
+éclat et leur profondeur. Le peintre pose la cire en touches épaisses, visibles sur \
+la joue et le cou, et modèle le visage par la lumière, en ombres et en reflets, à la \
+manière de la peinture grecque. Les feuilles de la couronne sont faites de feuille \
+d'or, collée directement sur la planche. Le support est une fine planche de \
+tilleul."""
+details = [
+  "Les feuilles d'or de la couronne, posées en losanges sur les boucles noires.",
+  "Le petit reflet blanc dans chaque œil, qui anime le regard.",
+  "Les touches de cire épaisse sur la joue et dans le cou.",
+  "La boucle d'oreille dorée, à droite, sous les cheveux.",
+  "Le bas de la planche, sans peinture, taché par l'embaumement.",
+]
+themes = ["portrait", "au-delà", "égypte", "rome", "regard"]
+anecdote = """
+Les portraits du Fayoum sont presque les seuls portraits peints de l'Antiquité \
+gréco-romaine parvenus jusqu'à nous : les tableaux sur bois des grands peintres \
+grecs, admirés par les auteurs anciens, ont tous disparu."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Lécythe : le cortège nuptial"
+artiste = "Peintre d'Amasis"
+annee = "vers 550–530 av. J.-C."
+image = "lecythe-du-peintre-d-amasis.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Terracotta_lekythos_(oil_flask)_MET_DT5501.jpg"
+technique = "Terre cuite à figures noires, hauteur 17,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un petit flacon à huile athénien : des mariés en char, escortés à la lueur des torches vers leur nouvelle maison. Il mesure 17,5 cm."
+description = """
+Sur la panse de ce petit flacon à une anse, une frise de figures noires se détache sur \
+le fond orangé de l'argile. À gauche, un char à deux roues, tiré par des mules, \
+emporte un couple ; une femme y tient une couronne. Le cortège avance vers la \
+droite : une femme marche le long de l'attelage, un homme barbu suit, et une autre \
+femme brandit deux torches allumées. À droite, un montant décoré d'un damier figure \
+la porte de la maison où l'on se rend. La peau des femmes est peinte en blanc. Sur \
+l'épaule du vase, une file de jeunes femmes danse, et une frise de points sépare les \
+deux scènes."""
+evocation = """
+À Athènes, le mariage culmine avec un cortège : le soir, la mariée quitte la maison \
+de son père et est conduite en char à celle de son époux, à la lumière des torches, \
+avec chants et danses. Le peintre en donne une image ordonnée et joyeuse, où chaque \
+personnage a son rôle. Le Metropolitan conserve un second lécythe du même peintre, \
+de même taille, consacré au travail de la laine par des femmes. Réunis, les deux \
+vases montrent les moments forts de la vie d'une Athénienne : le mariage et le \
+travail du foyer. On a supposé qu'ils avaient été faits pour une femme, peut-être à \
+l'occasion de ses noces."""
+histoire = """
+Le lécythe est un flacon destiné à l'huile, parfumée ou non, dont les Grecs se \
+servaient pour la toilette, les offrandes et les rites funéraires. Celui-ci a été \
+fabriqué à Athènes vers le milieu du VIᵉ siècle avant notre ère, quand les vases \
+attiques s'exportaient dans tout le monde méditerranéen. Il est attribué au peintre \
+d'Amasis, l'un des grands maîtres de la figure noire. Le Metropolitan Museum l'a \
+acheté en 1956 grâce à un don de Walter C. Baker ; le lécythe aux fileuses y était \
+entré dès 1931. Les deux vases sont aujourd'hui exposés ensemble, dans les galeries \
+grecques du musée."""
+facture = """
+La technique de la figure noire est née à Corinthe et a été perfectionnée à Athènes. \
+Le peintre pose les silhouettes avec un engobe d'argile très fine, qui deviendra \
+noir et brillant à la cuisson, puis il grave les détails à la pointe, laissant \
+apparaître l'argile claire : plis, crinières, harnais. Il ajoute du blanc pour la \
+peau des femmes et du rouge pour certains vêtements. Le peintre d'Amasis se \
+distingue par un dessin précis et soigné, des figures élégantes et une attention \
+aux motifs des étoffes."""
+details = [
+  "La roue du char, aux rayons fins incisés dans le noir.",
+  "Les deux torches à flammes multiples, levées au-dessus des mules.",
+  "Le damier noir et blanc du montant de la porte, à droite.",
+  "Les visages blancs des femmes, face au visage noir de l'homme barbu.",
+  "La file de jeunes danseuses sur l'épaule du vase.",
+]
+themes = ["mariage", "cortège", "athènes", "femmes", "figures noires"]
+anecdote = """
+Le peintre d'Amasis tire son nom du potier Amasis, qui a signé plusieurs des vases \
+qu'il a décorés. Peut-être étaient-ils un seul et même homme. Amasis est la forme \
+grecque d'un nom égyptien, porté aussi par un pharaon de la même époque."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Amphore : le joueur de cithare"
+artiste = "Peintre de Berlin"
+annee = "vers 490 av. J.-C."
+image = "amphore-du-peintre-de-berlin.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Terracotta_amphora_(jar)_MET_DT272.jpg"
+technique = "Terre cuite à figures rouges, hauteur 41,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un jeune musicien chante, la tête renversée, en jouant de la cithare : une seule figure, posée sur le noir brillant du vase."
+description = """
+Sur la panse noire et lustrée d'une grande amphore à deux anses, un seul personnage \
+se détache, de la couleur orangée de l'argile. C'est un jeune homme vêtu d'une longue \
+tunique fine et d'un manteau aux plis serrés. Il tient contre lui une grande cithare, \
+l'instrument à cordes des concours, dont pend une étoffe brodée à franges. Sa tête \
+est renversée en arrière, la bouche entrouverte : il chante en s'accompagnant. Son \
+corps se cambre légèrement, comme porté par la musique, et ses pieds nus semblent \
+flotter sur le fond noir. Sur l'autre face du vase, un homme barbu, appuyé sur un \
+bâton, l'écoute : on l'interprète comme un juge du concours."""
+evocation = """
+Le chanteur à la cithare, ou citharède, est l'un des musiciens les plus admirés de \
+la Grèce. À Athènes, de grands concours de musique avaient lieu lors des \
+Panathénées, la fête de la déesse Athéna, et les vainqueurs recevaient des prix \
+importants. Le vase saisit l'instant où le musicien, emporté par son chant, oublie \
+tout ce qui l'entoure. Le juge, sur l'autre face, rappelle qu'il s'agit d'une \
+compétition. Mais l'image dépasse l'anecdote : en isolant une silhouette sur le \
+noir, le peintre fait de la musique une présence presque divine, qui rappelle \
+Apollon, le dieu citharède."""
+histoire = """
+L'amphore a été peinte à Athènes vers 490 avant notre ère, les années de la bataille \
+de Marathon, par l'un des meilleurs peintres de son temps. Son nom ne nous est pas \
+parvenu : on l'appelle le peintre de Berlin, d'après une amphore conservée aux musées \
+de Berlin. C'est l'archéologue britannique John Beazley qui a reconnu sa main, au \
+début du XXᵉ siècle, en comparant le dessin des yeux, des mains et des plis. Le \
+Metropolitan Museum a acheté ce vase en 1956, grâce au fonds Fletcher. Il compte \
+parmi les œuvres les plus célèbres de ses galeries grecques."""
+facture = """
+La figure rouge, inventée à Athènes vers 530 avant notre ère, inverse la figure \
+noire : le peintre laisse les personnages en réserve, de la couleur de l'argile, et \
+peint le fond en noir. Les détails ne sont plus gravés mais tracés au pinceau, en \
+lignes fines et en légers reliefs, ou en engobe dilué pour les nuances. Le peintre \
+de Berlin aime les figures isolées, sans cadre ni sol, qui se détachent sur toute la \
+hauteur du vase. Son dessin est souple et nerveux, attentif au mouvement des \
+étoffes."""
+details = [
+  "La tête renversée du chanteur et sa bouche entrouverte.",
+  "L'étoffe brodée de points et frangée qui pend de la cithare.",
+  "Les plis fins de la tunique, tracés en lignes parallèles.",
+  "Les pieds nus, posés sans aucune ligne de sol.",
+  "Les éclats du vernis noir, qui laissent voir l'argile par endroits.",
+]
+themes = ["musique", "concours", "athènes", "figures rouges", "chant"]
+anecdote = """
+John Beazley a attribué des centaines de vases à des peintres anonymes en étudiant \
+leur façon de dessiner les détails, comme un expert en écritures : le peintre de \
+Berlin est l'un des premiers qu'il ait ainsi identifiés, dans un article de 1911."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Danseuse voilée et masquée"
+artiste = "Grèce hellénistique"
+annee = "IIIᵉ–IIᵉ siècle av. J.-C."
+image = "danseuse-voilee.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bronze_statuette_of_a_veiled_and_masked_dancer_MET_DP118070.jpg"
+technique = "Bronze, hauteur 20,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une danseuse enveloppée de voiles tourne sur elle-même : tout le mouvement passe par les plis de l'étoffe. Elle mesure 20,5 cm."
+description = """
+Une femme danse, le corps entièrement enveloppé d'étoffes. Un voile léger couvre sa \
+tête et son visage, sous lequel on devine un masque. Son corps se tord : la tête \
+s'incline vers une épaule, le buste pivote, les hanches partent dans l'autre sens. \
+Un bras, caché sous le manteau, le tend contre sa poitrine ; l'autre main, dans son \
+dos, tire un pan de l'étoffe vers l'arrière, ce qui plaque le tissu sur ses formes \
+et fait naître un réseau de plis tendus. Sous le manteau, une robe plus épaisse \
+tombe en plis profonds jusqu'au sol. Un pied s'avance, chaussé d'une fine sandale. \
+Le bronze, sombre et patiné, garde des traces vertes de corrosion."""
+evocation = """
+La statuette montre sans doute une danseuse professionnelle, l'une de ces artistes \
+de mime et de danse qui se produisaient dans les grandes villes du monde grec, et \
+dont Alexandrie était célèbre. Le voile et le masque cachent son identité : elle \
+n'est plus une personne, mais un personnage, et son corps devient tout entier \
+expression. On y a vu l'esprit de l'époque hellénistique, qui succède à Alexandre le \
+Grand : un goût nouveau pour le mouvement, le spectacle et la vie quotidienne. Le \
+sculpteur cherche moins la beauté idéale que l'instant fugace d'un tour de danse."""
+histoire = """
+Après les conquêtes d'Alexandre, la culture grecque s'étend de l'Égypte à l'Asie \
+centrale, et de grandes capitales comme Alexandrie deviennent des foyers d'art. La \
+statuette passerait pour provenir d'Alexandrie, mais son lieu de découverte n'est \
+pas assuré. Elle a appartenu au marchand d'art Joseph Brummer, puis au collectionneur \
+new-yorkais Walter C. Baker, qui l'achète en 1948 et la lègue au Metropolitan Museum. \
+Elle y entre en 1972, d'où le surnom de « danseuse Baker » qu'on lui donne souvent. \
+Elle est aujourd'hui l'un des bronzes grecs les plus admirés du musée."""
+facture = """
+La statuette est coulée en bronze selon la technique de la cire perdue : le sculpteur \
+modèle la figure en cire, l'enrobe d'argile, puis fait fondre la cire et coule le \
+métal à sa place. Toute la virtuosité est dans le drapé : deux épaisseurs d'étoffe \
+superposées, un voile fin qui épouse le corps et laisse deviner la robe en dessous. \
+Les plis rayonnent depuis la main qui tire le tissu. La statuette est conçue pour \
+être vue de tous les côtés, en tournant autour."""
+details = [
+  "Le voile tendu sur le visage, sous lequel se devine le masque.",
+  "La main cachée dans le dos, qui tire le manteau vers l'arrière.",
+  "Le réseau de plis tendus qui part de cette main vers l'épaule.",
+  "Le pied chaussé qui dépasse de la robe.",
+  "Les taches vertes de corrosion, au bas de l'étoffe.",
+]
+themes = ["danse", "mouvement", "drapé", "spectacle", "bronze"]
+anecdote = """
+Les bronzes grecs ont rarement survécu : le métal, précieux, était le plus souvent \
+refondu. La plupart des grandes statues de bronze ne sont connues que par des copies \
+romaines en marbre, ce qui rend chaque original, même petit, précieux."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Femme jouant de la cithare"
+artiste = "Rome, fin de la République"
+annee = "vers 50–40 av. J.-C."
+image = "joueuse-de-cithare-boscoreale.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Wall_painting_from_Room_H_of_the_Villa_of_P._Fannius_Synistor_at_Boscoreale_MET_DP105943.jpg"
+technique = "Fresque, 186,7 × 186,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une fresque de la villa de Publius Fannius Synistor à Boscoreale, ensevelie par le Vésuve en 79 comme Pompéi toute proche."
+description = """
+Sur un fond rouge vif, une femme est assise sur un siège richement tourné, au dossier \
+ajouré, garni d'un coussin bleu. Elle porte une robe pourpre et un ample manteau \
+blanc qui couvre ses genoux ; un diadème d'or ceint ses cheveux, et des boucles \
+d'oreilles brillent à ses oreilles. Elle tient contre elle une grande cithare dorée, \
+dont elle effleure les cordes, mais elle ne regarde pas l'instrument : ses yeux \
+fixent le spectateur. Derrière le dossier du siège, une fillette se penche et \
+regarde, elle aussi, droit devant elle. En bas court une bande de sol clair ; en \
+haut, une corniche peinte, ornée de denticules, couronne le mur."""
+evocation = """
+La scène appartient à une grande frise de personnages, peinte presque à taille \
+réelle, dont le sens a beaucoup été discuté. Selon l'interprétation qu'en donne le \
+Metropolitan Museum, ces panneaux reprennent des peintures faites pour une cour \
+royale de Macédoine, au début de l'époque hellénistique, et célébreraient un \
+mariage dynastique. Le diadème et le siège quasi royal font de la musicienne une \
+personne de haut rang : on a proposé d'y voir une reine ou une princesse \
+macédonienne, avec sa fille ou sa jeune sœur. Pour le riche propriétaire romain, \
+ces images disaient sa culture grecque et son goût du faste."""
+histoire = """
+La villa de Publius Fannius Synistor se trouvait à Boscoreale, à quelques kilomètres \
+au nord de Pompéi. Ses peintures ont été exécutées vers 50–40 avant notre ère, puis \
+la maison a été ensevelie sous les cendres lors de l'éruption du Vésuve, en 79 de \
+notre ère. Mise au jour en 1900, elle est dépouillée de ses fresques, découpées et \
+vendues aux enchères à Paris en 1903. Le Metropolitan Museum en achète alors un \
+ensemble important, dont ce panneau, qui ornait la grande salle appelée salle H. \
+Les autres panneaux de cette salle sont aujourd'hui dispersés entre plusieurs \
+musées, en Italie et en Europe."""
+facture = """
+La peinture est une fresque : les couleurs, délayées dans l'eau, sont posées sur un \
+enduit de chaux encore frais, avec lequel elles font corps en séchant. Le fond, d'un \
+rouge éclatant, était ensuite lissé avec soin. C'est le deuxième style \
+pompéien, qui ouvre le mur par de fausses architectures et de grandes figures. Le \
+peintre modèle les visages par la lumière, en touches rapides, et rend la matière des \
+étoffes et le métal doré de l'instrument. Les fissures du panneau témoignent de \
+son âge et de sa dépose."""
+details = [
+  "Le regard de la fillette, au-dessus du dossier, tourné vers nous.",
+  "Le diadème d'or et la boucle d'oreille de la musicienne.",
+  "Les pieds tournés du siège, peints comme du bois rouge et doré.",
+  "La corniche peinte à denticules, tout en haut du panneau.",
+  "Les fissures de l'enduit, qui dessinent un réseau sur le fond rouge.",
+]
+themes = ["musique", "fresque", "pompéi", "portrait", "rouge"]
+anecdote = """
+Le Metropolitan Museum a remonté une chambre entière de la même villa, avec ses \
+murs peints de vues d'architecture, de jardins et de portiques : on peut y entrer \
+et se tenir à l'intérieur d'une pièce romaine telle qu'on la voyait avant 79."""
+salle = 5
+mur = "est"
+position = 0
+largeur = 1.87
+
+[[oeuvres]]
+titre = "Pichet signé par Ennion"
+artiste = "Ennion"
+annee = "première moitié du Iᵉʳ siècle apr. J.-C."
+image = "cruche-d-ennion.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Glass_jug_MET_DP121998.jpg"
+technique = "Verre soufflé dans un moule, hauteur 18,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un pichet de verre ambré dont le décor porte, dans un petit cartouche, le nom de son créateur : Ennion, l'un des premiers artistes verriers connus. Il mesure 18,4 cm."
+description = """
+Un petit pichet de verre brun ambré, à large col, se tient sur sa base. Une anse \
+claire, presque blanche, part de l'épaule, monte jusqu'à la lèvre et s'y replie en \
+une petite boucle. La surface est entièrement couverte d'un décor en relief, disposé \
+en bandes superposées. Sur le col, des côtes verticales ; sur l'épaule, une frise de \
+feuilles et de motifs en éventail logés dans des arceaux ; au milieu de la panse, un \
+réseau de losanges, interrompu par un petit cartouche rectangulaire où se lisent des \
+lettres grecques ; plus bas, de longues cannelures verticales. Par endroits, une \
+pellicule blanchâtre et irisée voile le verre."""
+evocation = """
+Le cartouche porte, en grec, le nom d'Ennion et le verbe « a fait » : c'est une \
+signature, insérée dans le décor comme une marque de fabrique. À une époque où les \
+artisans restent presque toujours anonymes, Ennion revendique son œuvre et en fait \
+un argument de prestige. Le pichet imite par son décor la vaisselle de métal \
+précieux, mais dans une matière nouvelle, légère et translucide. Il témoigne d'une \
+révolution technique : en quelques décennies, le verre, autrefois rare, devient un \
+objet de table répandu dans tout l'Empire romain."""
+histoire = """
+Ennion a travaillé dans la première moitié du Iᵉʳ siècle de notre ère, probablement \
+à Sidon, sur la côte de l'actuel Liban, l'un des grands centres du verre antique. \
+Ses œuvres signées, coupes, gobelets et pichets, ont été retrouvées en plusieurs \
+points de la Méditerranée, en particulier en Italie du Nord, ce qui a fait supposer \
+qu'il y avait installé un atelier. Ce pichet est entré au Metropolitan Museum en \
+1917, don du banquier et collectionneur J. Pierpont Morgan. En 2014, le musée a \
+consacré une exposition à Ennion, en réunissant une grande partie de ses œuvres \
+connues."""
+facture = """
+Le soufflage du verre a été inventé au Iᵉʳ siècle avant notre ère, sur la côte \
+syro-palestinienne. Ennion l'a combiné avec le moule : le verrier souffle une \
+paraison de verre chaud dans un moule en plusieurs parties, dont le décor en creux \
+s'imprime en relief sur la paroi. Il peut ainsi reproduire le même modèle, avec sa \
+signature. L'anse, faite d'un verre d'une autre couleur, est ajoutée à chaud, \
+étirée puis repliée. La finesse des reliefs suppose des moules d'une grande \
+précision."""
+details = [
+  "Le petit cartouche aux lettres grecques, à gauche du réseau de losanges.",
+  "La boucle que forme l'anse en se repliant sur la lèvre.",
+  "Les motifs en éventail logés sous des arceaux, sur l'épaule.",
+  "Les cannelures verticales du bas, comme celles d'une colonne.",
+  "La pellicule irisée laissée par l'altération du verre dans le sol.",
+]
+themes = ["verre", "signature", "artisanat", "rome", "table"]
+anecdote = """
+Sur certaines de ses coupes, Ennion ajoute à sa signature une courte formule grecque \
+que l'on traduit par « que l'acheteur se souvienne » : une manière, déjà, de \
+fidéliser sa clientèle."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.75
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Mésopotamie, époque néo-sumérienne"
+vie = "Sud de la Mésopotamie (Irak actuel), vers 2150–2000 av. J.-C."
+biographie = """
+Dans la plaine du Tigre et de l'Euphrate, les Sumériens ont fondé, dès le IVᵉ \
+millénaire avant notre ère, les premières villes et inventé l'écriture cunéiforme, \
+tracée avec un roseau sur des tablettes d'argile. Vers 2350, Sargon d'Akkad unifie la \
+région sous son empire ; à sa chute, les cités sumériennes retrouvent leur \
+indépendance. C'est l'époque dite néo-sumérienne, qui voit d'abord briller l'État de \
+Lagash et sa capitale Girsu, sous le prince Goudéa, puis la troisième dynastie d'Ur, \
+dont les rois bâtissent de grandes ziggurats. Les souverains se présentent alors \
+moins comme des conquérants que comme des bergers de leur peuple, pieux et \
+bâtisseurs de temples. Leurs ateliers produisent des statues de pierre dure, des \
+reliefs, des sceaux-cylindres finement gravés et une abondante littérature. Vers \
+2000 avant notre ère, Ur tombe sous les coups des Élamites, et la langue sumérienne \
+cesse peu à peu d'être parlée, tout en restant pendant près de deux millénaires \
+la langue savante et religieuse de la Mésopotamie."""
+style = """
+La sculpture néo-sumérienne recherche le calme, la stabilité et la durée. Les \
+statues, souvent en diorite, ont des formes compactes et fermées, des surfaces \
+polies, des mains jointes et de grands yeux ouverts, tournés vers la divinité. \
+L'écriture fait partie de l'œuvre : gravée sur la robe ou le dos, elle nomme le \
+modèle et dit sa piété. Cette sobriété majestueuse a fait de Goudéa l'une des \
+figures les plus reconnaissables de l'Orient ancien."""
+
+[[artistes]]
+nom = "Assyrie, règne d'Assurnasirpal II"
+vie = "Nord de la Mésopotamie (Irak actuel), 883–859 av. J.-C."
+biographie = """
+L'Assyrie occupe le nord de la Mésopotamie, autour du Tigre et de la ville \
+d'Assur, qui lui donne son nom. Au IXᵉ siècle avant notre ère, ses rois lancent \
+chaque année des campagnes militaires et bâtissent un empire qui s'étendra, deux \
+siècles plus tard, de l'Iran à l'Égypte. Assurnasirpal II, qui règne de 883 à 859, \
+en est l'un des fondateurs. Il choisit pour capitale Kalhu, l'actuelle Nimroud, \
+qu'il entoure de remparts et peuple de déportés. Il y élève le Palais nord-ouest, \
+décoré de centaines de dalles sculptées : scènes de guerre et de chasse, cortèges \
+de tributaires, génies protecteurs et taureaux ailés à tête humaine gardant les \
+portes. Ses successeurs poursuivent cette tradition à Khorsabad et à Ninive. \
+L'empire s'effondre en 612 avant notre ère, quand Ninive tombe sous les coups des \
+Babyloniens et des Mèdes. Redécouverts au XIXᵉ siècle, ces palais ont révélé à \
+l'Europe un art jusque-là connu seulement par la Bible ; les sites de Nimroud ont \
+été gravement endommagés en 2015."""
+style = """
+Le relief assyrien sert le pouvoir royal. Les dalles, alignées le long des murs, \
+forment des récits continus ou des rangées de figures protectrices, souvent \
+traversées par une inscription. Le style est précis et décoratif : profils nets, \
+muscles stylisés, chevelures et barbes bouclées en rangs réguliers, plumes et \
+franges ciselées. Cette clarté majestueuse, faite pour impressionner les \
+visiteurs du palais, a marqué l'art de la Perse achéménide."""
+
+[[artistes]]
+nom = "Égypte, Moyen Empire"
+vie = "Vallée du Nil, vers 2030–1650 av. J.-C."
+biographie = """
+Le Moyen Empire commence quand Montouhotep II, prince de Thèbes, réunifie l'Égypte \
+après une période de divisions, vers 2030 avant notre ère. Sous la XIIᵉ dynastie, \
+celle des Amenemhat et des Sésostris, le pays connaît une longue prospérité : les \
+rois aménagent l'oasis du Fayoum, construisent des forteresses en Nubie et des \
+pyramides de brique près de Memphis. Les gouverneurs de province, comme ceux de \
+Meir en Moyenne-Égypte, se font creuser de riches tombes décorées. La littérature \
+égyptienne connaît alors son âge classique, avec des contes et des enseignements \
+recopiés pendant des siècles. Dans les tombes, on dépose des modèles en bois de \
+greniers, de bateaux et d'ateliers, des statuettes de serviteurs et des figurines \
+de faïence, comme les hippopotames bleus, destinées à accompagner le mort dans \
+l'au-delà. Les croyances funéraires s'élargissent : le salut éternel, autrefois \
+réservé au roi, devient l'espoir de tous ceux qui peuvent s'offrir une tombe. La \
+période se clôt avec l'arrivée au pouvoir des Hyksos, venus d'Asie, dans le nord \
+du pays."""
+style = """
+L'art du Moyen Empire allie la rigueur des conventions égyptiennes à une \
+observation nouvelle de la nature et des visages. Les portraits royaux montrent des \
+traits marqués, parfois las. Les petits objets des tombes, en bois peint ou en \
+faïence, sont d'une grande fraîcheur : formes simples et pleines, couleurs vives, \
+décor tiré de la vie du Nil. Ils montrent un art destiné à l'éternité, mais \
+attentif au monde vivant."""
+
+[[artistes]]
+nom = "Égypte, Nouvel Empire"
+vie = "Vallée du Nil, vers 1550–1070 av. J.-C."
+biographie = """
+Le Nouvel Empire s'ouvre vers 1550 avant notre ère, quand les princes de Thèbes \
+chassent les Hyksos et réunifient l'Égypte. Pendant cinq siècles, sous les XVIIIᵉ, \
+XIXᵉ et XXᵉ dynasties, le pays devient une puissance impériale, de la Nubie à la \
+Syrie. C'est l'époque d'Hatchepsout, de Thoutmosis III, d'Akhenaton et de \
+Toutankhamon, puis des Ramsès. Thèbes, l'actuelle Louxor, en est la capitale \
+religieuse : on y agrandit les temples de Karnak et de Louxor, et les rois se font \
+enterrer dans la Vallée des rois. Les hauts fonctionnaires, scribes et intendants, \
+comme Hounefer sous Séthi Iᵉʳ, disposent eux aussi de tombes peintes et d'un \
+mobilier funéraire soigné. C'est alors que se diffuse le Livre des morts : un \
+recueil d'environ deux cents formules, copiées sur papyrus et illustrées de \
+vignettes, que chacun choisissait selon ses moyens. Des ateliers de scribes et de \
+peintres en préparaient des exemplaires, parfois à l'avance, en laissant la place \
+d'inscrire le nom du futur défunt."""
+style = """
+La peinture du Nouvel Empire suit les règles fixées depuis l'Ancien Empire : \
+figures vues de profil avec les épaules de face, couleurs posées en à-plat, \
+personnages alignés sur des registres, texte et image mêlés. À l'intérieur de ce \
+cadre, les artistes atteignent une grande élégance : lignes souples, détails des \
+vêtements de lin, harmonies de blanc, d'ocre, de vert et de bleu. Les vignettes du \
+Livre des morts ont fixé pour toujours notre image de l'au-delà égyptien."""
+
+[[artistes]]
+nom = "Égypte romaine"
+vie = "Égypte, province de l'Empire romain, Iᵉʳ–IIIᵉ siècle apr. J.-C."
+biographie = """
+En 30 avant notre ère, après la mort de Cléopâtre, l'Égypte devient une province \
+romaine, gouvernée au nom de l'empereur et chargée de nourrir Rome de son blé. Elle \
+hérite de trois siècles de domination grecque, sous les rois Ptolémées : les villes \
+abritent une population mêlée d'Égyptiens, de Grecs et de Romains, qui parlent grec, \
+vénèrent à la fois les dieux égyptiens et grecs, et suivent la mode de l'Empire. \
+Dans le Fayoum, grande oasis agricole à l'ouest du Nil, et dans d'autres régions, \
+les familles aisées continuent de faire momifier leurs morts, selon la tradition \
+égyptienne, mais remplacent souvent les masques par des portraits peints sur bois. \
+Ces portraits, produits surtout aux Iᵉʳ et IIᵉ siècles, ont été retrouvés en grand \
+nombre à partir des années 1880, notamment par l'archéologue britannique Flinders \
+Petrie à Hawara et par le marchand Theodor Graf. Leurs auteurs sont restés anonymes, \
+mais l'on distingue des ateliers et des mains différentes. La pratique décline au \
+IIIᵉ siècle, puis disparaît."""
+style = """
+Les portraits du Fayoum appliquent à un rite égyptien la peinture grecque de \
+chevalet. Le visage est vu de face, souvent légèrement de trois quarts, avec de \
+grands yeux qui fixent le spectateur. Le modelé par la lumière, les reflets et les \
+touches de cire donnent une présence saisissante. Redécouverts à la fin du XIXᵉ \
+siècle, ils ont souvent été rapprochés des icônes byzantines, dont ils annoncent \
+le regard frontal."""
+
+[[artistes]]
+nom = "Peintre d'Amasis"
+vie = "Athènes, actif vers 560–515 av. J.-C."
+biographie = """
+On ne connaît ni le nom véritable ni la vie de ce peintre athénien. Les archéologues \
+l'appellent le peintre d'Amasis parce que plusieurs vases qu'il a décorés portent la \
+signature d'un potier nommé Amasis, qui les a façonnés : on se demande depuis \
+longtemps s'il s'agit du même homme, à la fois potier et peintre. Le nom d'Amasis, \
+forme grecque d'un nom égyptien, a fait supposer une origine étrangère, ou des \
+liens avec l'Égypte, mais rien n'est prouvé. Actif pendant près d'un demi-siècle, il \
+est, avec Exékias, le plus grand maître de la figure noire attique, à l'époque où \
+Athènes s'impose sur le marché des vases peints, exportés jusqu'en Étrurie. Plus \
+d'une centaine de vases lui sont attribués : amphores, coupes, cruches et lécythes. \
+Il y peint des dieux, en particulier Dionysos et son cortège de satyres et de \
+ménades, des héros, mais aussi des scènes de la vie quotidienne, plus rares à son \
+époque, comme le mariage et le travail de la laine. Il assiste, à la fin de sa \
+carrière, à l'apparition de la figure rouge."""
+style = """
+Le peintre d'Amasis a un dessin net, précis et plein d'esprit. Ses figures, souvent \
+petites et élégantes, se répartissent avec équilibre sur le vase. Il soigne les \
+motifs des étoffes, les gestes et les attitudes, et sait rendre la vie d'un cortège \
+ou d'une danse. Son humour et sa fraîcheur d'observation le distinguent de son \
+contemporain Exékias, plus solennel."""
+
+[[artistes]]
+nom = "Peintre de Berlin"
+vie = "Athènes, actif vers 500–460 av. J.-C."
+biographie = """
+Comme la plupart des peintres de vases grecs, ce maître n'a pas signé ses œuvres et \
+son nom est perdu. Au début du XXᵉ siècle, l'archéologue britannique John Beazley \
+reconnaît sa main sur une amphore conservée à Berlin, qui montre Hermès accompagné \
+d'un satyre, et lui donne le nom de ce musée. Par la comparaison patiente des \
+détails, il lui attribue ensuite des centaines de vases. Le peintre de Berlin \
+travaille à Athènes pendant une quarantaine d'années, à l'époque des guerres \
+médiques, quand la ville repousse les Perses à Marathon et à Salamine. Il appartient \
+à la génération qui suit les inventeurs de la figure rouge et la porte à sa \
+perfection. Il décore surtout de grands vases, amphores, cratères et hydries, mais \
+aussi des amphores panathénaïques en figure noire, offertes aux vainqueurs des jeux \
+d'Athènes. Ses sujets sont des dieux, des héros, des athlètes et des musiciens. Ses \
+œuvres, très recherchées, ont été retrouvées en Grèce comme en Italie, où les \
+Étrusques importaient les vases athéniens."""
+style = """
+Le peintre de Berlin se reconnaît à ses figures isolées, souvent une seule par face, \
+qui se détachent sur le vernis noir sans cadre ni sol. Son dessin est fluide et \
+élégant, ses silhouettes élancées suivent la courbe du vase. Il est attentif aux \
+plis des étoffes et au mouvement des corps. Cette mise en page dépouillée, d'une \
+grande force, est l'une des réussites de la peinture grecque archaïque."""
+
+[[artistes]]
+nom = "Grèce hellénistique"
+vie = "Monde grec, de la Grèce à l'Égypte et à l'Asie, 323–31 av. J.-C."
+biographie = """
+L'époque hellénistique commence à la mort d'Alexandre le Grand, en 323 avant notre \
+ère. Ses conquêtes ont porté la langue et la culture grecques de l'Égypte jusqu'à \
+l'Inde ; ses généraux se partagent l'empire et fondent des royaumes, comme celui \
+des Ptolémées en Égypte ou celui des Séleucides en Asie. De nouvelles capitales, \
+Alexandrie, Antioche, Pergame, rivalisent de bibliothèques, de théâtres et \
+d'ateliers d'artistes. Alexandrie, avec son phare et son Musée, devient la plus \
+grande ville du monde grec, carrefour de savants, de poètes et d'artistes, et une \
+cité de spectacles. Les sculpteurs y travaillent le marbre et le bronze pour les \
+rois, les sanctuaires et une clientèle privée qui recherche de petites statuettes \
+pour orner les maisons. Peu à peu, Rome étend sa domination sur ces royaumes ; \
+l'époque s'achève en 31 avant notre ère, à la bataille d'Actium, qui précède la \
+fin de l'Égypte des Ptolémées et de Cléopâtre."""
+style = """
+La sculpture hellénistique élargit le répertoire grec : à côté des dieux et des \
+héros idéalisés, elle montre des enfants, des vieillards, des musiciens, des \
+danseurs, des souffrances et des émotions. Elle aime le mouvement, les torsions du \
+corps, les drapés virtuoses et les effets théâtraux. Cette liberté a été admirée par \
+les Romains, qui en ont multiplié les copies, puis par les sculpteurs de la \
+Renaissance et du baroque."""
+
+[[artistes]]
+nom = "Rome, fin de la République"
+vie = "Italie romaine, IIᵉ–Iᵉʳ siècle av. J.-C."
+biographie = """
+Aux IIᵉ et Iᵉʳ siècles avant notre ère, Rome, maîtresse de l'Italie, conquiert la \
+Grèce et l'Orient hellénistique. Le butin, les œuvres d'art et les artistes grecs \
+affluent : l'aristocratie romaine adopte avec passion la culture grecque, sa \
+littérature, sa philosophie et ses arts. Les familles riches se font construire, \
+dans la baie de Naples, autour du Vésuve, de luxueuses villas de campagne et de \
+bord de mer, où elles se retirent loin des affaires de Rome. Pompéi, Herculanum, \
+Stabies, Boscoreale ou Oplontis en ont conservé de nombreux exemples. Leurs murs \
+sont entièrement peints par des équipes d'artisans, souvent anonymes, qui \
+travaillent d'après des modèles grecs. La période est aussi celle des guerres \
+civiles, de Marius et Sylla à César, qui s'achèvent avec la victoire d'Octave, le \
+futur Auguste. L'éruption du Vésuve, en 79 de notre ère, a figé sous la cendre ces \
+décors, redécouverts à partir du XVIIIᵉ siècle."""
+style = """
+La peinture murale romaine de cette époque relève du deuxième style pompéien : le mur \
+ne se contente plus d'imiter des plaques de marbre, il s'ouvre en trompe-l'œil sur \
+des colonnades, des jardins, des paysages ou de grandes figures. Les couleurs sont \
+intenses, le rouge et le noir dominent, et le modelé par la lumière vient de la \
+peinture grecque. Ces fresques sont presque tout ce qui nous reste de la grande \
+peinture antique."""
+
+[[artistes]]
+nom = "Ennion"
+vie = "Probablement Sidon (Liban actuel), actif dans la première moitié du Iᵉʳ siècle apr. J.-C."
+biographie = """
+Ennion est l'un des premiers verriers de l'histoire dont on connaisse le nom, \
+parce qu'il l'a inscrit, en grec, dans le décor de ses œuvres. Sa vie n'est connue \
+que par ses objets. Il travaille au début de l'Empire romain, sous les empereurs \
+julio-claudiens, peu après l'invention du soufflage du verre sur la côte du Levant. \
+On le situe le plus souvent à Sidon, ville phénicienne réputée pour son verre. Ses \
+coupes, gobelets, pichets et petites amphores, soufflés dans des moules, ont été \
+retrouvés en plusieurs points de la Méditerranée, du Proche-Orient à l'Italie du \
+Nord, où ils sont particulièrement nombreux : on en a déduit qu'il avait pu y \
+ouvrir un atelier, ou que ses œuvres y étaient très recherchées. Les techniques \
+qu'il maîtrisait se sont diffusées dans tout l'Empire, faisant du verre un objet du \
+quotidien. En 2014–2015, le Metropolitan Museum de New York a réuni une grande \
+partie de ses œuvres connues dans l'exposition « Ennion: Master of Roman Glass »."""
+style = """
+Ennion est un maître du verre soufflé dans un moule. Ses vases, aux parois fines, \
+portent un décor en relief serré, réparti en bandes : côtes, feuillages, réseaux de \
+losanges, cannelures, inspirés de l'orfèvrerie. Il joue sur des verres colorés, \
+ambre, bleu, vert, pourpre, avec des anses d'une autre teinte. Sa signature, prise \
+dans le décor, fait de l'objet de série une œuvre d'auteur."""

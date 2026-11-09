@@ -1,0 +1,886 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « POP ART » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/pop-art/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /pop-art.
+#
+#  Les œuvres du pop art sont protégées par le droit d'auteur. Cette exposition ne
+#  montre donc que des photographies publiées sous licence libre sur Wikimedia
+#  Commons, d'œuvres installées en permanence dans l'espace public de pays où la
+#  liberté de panorama le permet (Allemagne, Espagne, Royaume-Uni). Chaque image
+#  porte le nom de son photographe, sa licence et sa source.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 200
+nom_court = "Pop art"
+mouvement = "Pop art et néo-pop"
+cadre = "noir"
+couleur = "#b3122e"
+titre = "Le pop art dans la ville, des objets géants aux icônes"
+artiste = "Lichtenstein, Oldenburg et van Bruggen, Haring, Koons, Indiana…"
+dates = "1966–2006"
+accroche = "Exposition virtuelle · Museum Ludwig, Cologne"
+introduction = """
+Né à Londres et à New York à la fin des années 1950, le pop art fait entrer dans le \
+musée la bande dessinée, la publicité, les objets de tous les jours et les vedettes de \
+l'écran : Andy Warhol, Roy Lichtenstein, Claes Oldenburg, Robert Indiana. Ses \
+héritiers des années 1980, Keith Haring ou Jeff Koons, le portent dans la rue. Ces \
+œuvres étant protégées par le droit d'auteur, la visite montre, en dix photographies \
+libres, des sculptures et une fresque installées dans les villes d'Europe, de \
+Barcelone à Berlin. Le bâtiment s'inspire du Museum Ludwig de Cologne, l'une des \
+grandes collections de pop art en Europe : un hall, une grande halle haute de douze \
+mètres et trois salles blanches autour."""
+vitrine = "barcelona-head.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Museum Ludwig"
+ville = "Cologne, Allemagne"
+architecte = "Peter Busmann et Godfrid Haberer"
+construction = "ouvert en 1986"
+presentation = """
+En 1976, les collectionneurs Peter et Irene Ludwig, industriels du chocolat \
+d'Aix-la-Chapelle, donnent à la ville de Cologne quelque 350 œuvres d'art moderne, \
+dont un ensemble exceptionnel de pop art américain ; en échange, la ville s'engage à \
+construire un musée qui portera leur nom. Le bâtiment, dessiné par Peter Busmann et \
+Godfrid Haberer, ouvre en 1986 entre la cathédrale et le Rhin. Il abrite d'abord aussi \
+le Wallraf-Richartz-Museum, qui le quitte en 2001 pour son propre édifice. On le \
+reconnaît à ses toitures en dents de scie, dont les verrières répandent dans les \
+salles une lumière égale ; sous la place voisine se trouve la salle de concert de la \
+Philharmonie. On y voit aujourd'hui Warhol, Lichtenstein, Rauschenberg, Johns et \
+Oldenburg, l'une des plus importantes collections de Picasso, l'avant-garde russe et \
+une riche collection de photographies."""
+ici = """
+Comme au Museum Ludwig, de grands volumes blancs s'ouvrent les uns sur les autres. On \
+entre par le sud dans le hall, sobre, haut de sept mètres, puis dans la grande halle, \
+large de vingt mètres et haute de douze, où se dressent la tête de Lichtenstein et le \
+LOVE d'Indiana. À l'ouest, la salle « Les objets géants » réunit Claes Oldenburg et \
+Coosje van Bruggen ; à l'est, la salle « Keith Haring, l'art dans la rue » ; au nord, \
+la salle « Le néo-pop, fleurs et Nanas ». Tous les murs sont d'un blanc chaud."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Museum Ludwig de Cologne (Busmann et Haberer, 1986) : des salles
+# blanches, hautes et lumineuses, qui s'ouvrent les unes sur les autres autour
+# d'une grande halle centrale. On entre au sud par un hall ; la grande halle
+# (20 × 16 m, 12 m de haut) distribue trois salles : Oldenburg et van Bruggen à
+# l'ouest, Keith Haring à l'est, Koons et Niki de Saint Phalle au nord. x et z : le
+# centre de la salle (x vers l'est, z vers le sud), en mètres ; une porte se
+# déclare d'un seul côté.
+
+[[salles]]
+nom = "Le hall"
+theme = "L'entrée, sobre et blanche, comme le foyer du musée de Cologne, entre la cathédrale et le Rhin."
+murs = "#ece8e1"
+x = 0
+z = 0
+largeur = 14
+profondeur = 10
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La grande halle"
+theme = "Les icônes : la tête de bande dessinée de Lichtenstein à Barcelone et le LOVE d'Indiana à Berlin."
+murs = "#f2eee6"
+x = 0
+z = -13
+largeur = 20
+profondeur = 16
+hauteur = 12
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Les objets géants"
+theme = "Claes Oldenburg et Coosje van Bruggen : un cornet de glace, une pioche, des outils et une bouteille à la mer, agrandis à l'échelle de la ville."
+murs = "#eee8dd"
+x = -18
+z = -13
+largeur = 16
+profondeur = 16
+hauteur = 10
+
+[[salles]]
+nom = "Keith Haring, l'art dans la rue"
+theme = "Les boxeurs de Berlin et la fresque de Barcelone contre le sida : le trait de Haring, du métro aux murs des villes."
+murs = "#f1ebe2"
+x = 18
+z = -13
+largeur = 16
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "Le néo-pop, fleurs et Nanas"
+theme = "Le chiot fleuri de Jeff Koons à Bilbao et les Nanas de Niki de Saint Phalle à Hanovre."
+murs = "#efe8dc"
+x = 0
+z = -27
+largeur = 16
+profondeur = 12
+hauteur = 9
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Barcelona Head (El Cap de Barcelona)"
+artiste = "Roy Lichtenstein"
+annee = "1991–1992"
+image = "barcelona-head.jpg"
+credit = "Photo : Tony Hisgett"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Lichtenstein_-_The_Head_Barcelona_(5832886106).jpg"
+technique = "Béton revêtu de mosaïque de céramique, environ 20 m de haut"
+collection = "Espace public, Passeig de Colom (Moll de la Fusta), Barcelone"
+note = "Pour les Jeux olympiques de 1992, Lichtenstein dresse face au vieux port une tête de femme de bande dessinée, faite de béton et d'éclats de céramique."
+description = """
+Sur un gros socle cylindrique de béton gris se dresse un visage de femme, haut comme \
+un immeuble de six étages. Il n'a ni volume ni rondeur : c'est un assemblage de \
+plaques découpées, comme une image de bande dessinée qu'on aurait mise debout. On \
+reconnaît un œil mi-clos aux cils noirs, une bouche rouge entrouverte, une joue \
+couverte de pastilles rouges régulières sur fond blanc. Le contour du visage, à \
+droite, est déchiqueté en pointes, comme l'éclat d'une explosion dessinée. À gauche, \
+une grande forme rose pâle évoque la chevelure, traversée de longs traits bleus. En \
+bas, des bandes ondulées jaunes, bleues et noires, et une seconde flamme à pois, font \
+penser à un coup de pinceau géant. Toute la surface scintille de petits éclats de \
+céramique."""
+evocation = """
+Lichtenstein a passé trente ans à agrandir les cases des comics et à imiter leur trame \
+d'imprimerie. Ici, la jeune femme des romances dessinées des années 1960 devient un \
+monument public, un visage pour la ville qui accueille le monde. Le geste est aussi un \
+salut à Barcelone : la mosaïque de céramique brisée rappelle le trencadís de Gaudí au \
+parc Güell, et les couleurs franches font penser à Miró. On y a vu une rencontre entre \
+l'Amérique de la culture de masse et la tradition moderniste catalane. Le visage n'a \
+pas de modèle précis ; il ressemble à toutes les héroïnes de Lichtenstein, ce qui en \
+fait moins un portrait qu'un signe, aussi immédiatement lisible qu'une affiche ou \
+qu'un logo."""
+histoire = """
+À la fin des années 1980, Barcelone se transforme pour les Jeux olympiques de 1992 : \
+on rouvre la ville sur la mer, on réaménage le vieux port et le Moll de la Fusta, et \
+la municipalité commande des sculptures à des artistes du monde entier. Lichtenstein \
+dessine la tête dans son atelier new-yorkais ; la maquette est ensuite agrandie et \
+réalisée sur place, à Barcelone, avec sa mosaïque de céramique. L'œuvre est inaugurée \
+en 1992, au pied du Passeig de Colom, face au port et près du grand bâtiment de la \
+Poste centrale. Elle fait partie depuis lors du patrimoine d'art public de la ville, \
+qui la désigne sous son nom catalan, El Cap de Barcelona, la tête de Barcelone."""
+facture = """
+Lichtenstein reprend dans l'espace les procédés de ses tableaux : formes cernées de \
+noir, aplats de couleurs primaires, et surtout les points Benday, la trame que les \
+imprimeurs utilisaient pour obtenir des teintes avec peu d'encre. Ces points, qu'il \
+peignait à la main à travers un pochoir, deviennent ici des pastilles de céramique \
+rouge. Le volume est volontairement plat : une suite de profils découpés, comme les \
+décors d'un théâtre de papier. La mosaïque de carreaux brisés, irrégulière de près, se \
+fond de loin dans une image nette et graphique."""
+details = [
+  "Les pastilles rouges, alignées comme la trame d'une bande dessinée imprimée.",
+  "L'œil mi-clos aux cils noirs, tracé d'un seul trait épais.",
+  "Les éclats de céramique, visibles de près, qui rappellent le trencadís de Gaudí.",
+  "Le bord du visage découpé en pointes, comme une onomatopée de comics.",
+  "Les bandes jaunes, bleues et noires du bas, qui imitent un coup de pinceau.",
+]
+themes = ["bande dessinée", "visage", "jeux olympiques", "céramique", "espace public"]
+anecdote = """
+Selon un récit souvent rapporté, Lichtenstein aurait peint son premier tableau de \
+bande dessinée, Look Mickey (1961), après qu'un de ses fils lui eut lancé, un illustré \
+de Mickey à la main, qu'il ne saurait jamais dessiner aussi bien."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Imperial Love"
+artiste = "Robert Indiana"
+annee = "1966–2006"
+image = "imperial-love.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Skulptur_Imperial_Love_Robert_Indiana_Neue_Nationalgalerie_Berlin-Tiergarten.jpg"
+technique = "Acier Corten"
+collection = "Neue Nationalgalerie, Berlin (terrasse), acquis par les Amis de la Nationalgalerie"
+note = "Deux fois le mot LOVE, dont l'un retourné comme dans un miroir : le motif le plus célèbre d'Indiana, en acier rouillé, sur la terrasse du musée de Mies van der Rohe."
+description = """
+Sur un socle noir, posé sur les dalles de la terrasse, deux blocs de lettres en acier \
+couleur de rouille se tiennent dos à dos. Chacun reprend la composition inventée par \
+Indiana : les lettres L et O sur la première ligne, V et E sur la seconde, serrées \
+dans un carré, avec le O penché de biais. Le bloc de droite se lit normalement ; celui \
+de gauche est son reflet inversé. Les deux L se rejoignent au centre et forment un \
+pilier commun, si bien que l'ensemble paraît symétrique, presque héraldique, avec ses \
+deux O inclinés comme des yeux. Les lettres ont une vraie épaisseur : on voit leurs \
+flancs, leurs creux, l'ombre à l'intérieur des O. Derrière, on aperçoit le clocher de \
+brique de l'église Saint-Matthieu et les chantiers du Kulturforum."""
+evocation = """
+LOVE est l'un des mots les plus reproduits de l'art du XXᵉ siècle. Indiana, qui aimait \
+les enseignes, les panneaux de signalisation et les lettres au pochoir, voulait faire \
+d'un seul mot une image, comme le ferait une publicité. Le choix de LOVE, dans \
+l'Amérique des années 1960, rejoignait le vocabulaire de la contre-culture et des \
+opposants à la guerre du Viêt Nam. Mais l'artiste y mettait aussi des souvenirs \
+personnels, liés à son enfance et à l'église chrétienne scientiste de sa famille. En \
+doublant le mot et en le retournant, Imperial Love lui donne une allure d'emblème ou \
+d'armoiries : on y a vu un amour qui se regarde dans un miroir, ou deux amoureux face \
+à face."""
+histoire = """
+Indiana dessine la composition LOVE en 1964 ; en 1965, le Museum of Modern Art de New \
+York en fait sa carte de vœux, et le motif se répand. Les premières sculptures \
+monumentales en acier Corten apparaissent en 1970, puis un timbre-poste américain \
+reprend l'image en 1973. Imperial Love, qui double le mot en miroir, porte la double \
+date 1966/2006 : celle de son dessin et celle de sa réalisation en grand. L'œuvre a \
+été acquise pour la Neue Nationalgalerie de Berlin par l'association des Amis de la \
+Nationalgalerie, comme l'indique la plaque posée à ses pieds. Elle se dresse sur la \
+terrasse de granit du bâtiment de verre et d'acier construit par Ludwig Mies van der \
+Rohe et inauguré en 1968."""
+facture = """
+L'acier Corten se couvre en quelques mois d'une couche de rouille brun orangé, qui le \
+protège ensuite de la corrosion : la couleur de la sculpture est celle du métal \
+lui-même. Indiana emploie des capitales à empattements, dessinées comme des caractères \
+d'imprimerie, et les serre au maximum dans un carré. Le O incliné casse la rigidité de \
+la grille et donne au mot son mouvement. Ici, la symétrie du doublement transforme le \
+logotype en architecture, avec un pilier central et deux ailes."""
+details = [
+  "Les deux L adossés qui forment, au centre, un seul pilier.",
+  "Les O penchés, dont l'intérieur creux laisse passer le ciel.",
+  "Les lettres de gauche, écrites à l'envers comme dans un miroir.",
+  "La patine rouille de l'acier Corten, plus sombre dans les creux.",
+]
+themes = ["mot", "amour", "typographie", "symétrie", "acier"]
+anecdote = """
+Indiana n'avait pas fait protéger son motif : LOVE a été copié sur des affiches, des \
+tasses et des bijoux du monde entier, sans qu'il en touche les bénéfices, ce qui l'a \
+longtemps rendu amer."""
+salle = 2
+mur = "nord"
+place = 5
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Dropped Cone"
+artiste = "Claes Oldenburg et Coosje van Bruggen"
+annee = "2001"
+image = "dropped-cone.jpg"
+credit = "Photo : Frank Schwichtenberg"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Köln_–_Dropped_Cone_2016_03.jpg"
+technique = "Acier, plastique renforcé de fibres, peints ; environ 12 m de haut"
+collection = "Espace public, toit de la Neumarkt-Galerie, Cologne"
+note = "Un cornet de glace géant, tombé la pointe en l'air, s'écrase sur l'angle d'un centre commercial de Cologne."
+description = """
+Sur l'angle d'un immeuble de verre bleu-vert, au-dessus des vitrines, un cornet de \
+glace gigantesque est planté la tête en bas. On voit le biscuit doré, quadrillé de \
+losanges en relief, qui se dresse vers le ciel comme un clocher. À sa base, la boule \
+de glace vanille s'est écrasée sur le toit : elle déborde en vagues crémeuses et coule \
+en larges dégoulinures le long de la façade. La photographie, prise d'en bas, cadre la \
+sculpture contre un ciel gris pâle, si bien qu'on en oublie l'échelle : seules les \
+fenêtres de l'immeuble rappellent que le cornet mesure une douzaine de mètres. La \
+scène est celle d'un accident d'enfant, une glace qui tombe, figée au moment exact où \
+elle touche le sol."""
+evocation = """
+Le centre commercial domine le Neumarkt, au bout de la Schildergasse, l'une des rues \
+commerçantes les plus fréquentées d'Allemagne. Le cornet renversé a été lu comme une \
+image ironique de la consommation : la friandise achetée, aussitôt perdue, et \
+l'abondance qui déborde. On a aussi rapproché sa pointe des flèches des églises de \
+Cologne, la ville aux douze grandes églises romanes et à la cathédrale gothique. Comme \
+souvent chez Oldenburg et van Bruggen, l'objet banal agrandi devient un monument \
+comique, qui fait sourire le passant et le force à regarder autrement un bâtiment \
+ordinaire. La glace qui fond est aussi une image du temps qui passe, à la manière des \
+vanités anciennes."""
+histoire = """
+La sculpture est commandée par les propriétaires de la Neumarkt-Galerie, un centre \
+commercial du cœur de Cologne, et installée en 2001 sur l'angle de son toit. Oldenburg \
+avait dessiné et sculpté des cornets de glace dès les années 1960 ; le couple reprend \
+ici ce motif à l'échelle d'un immeuble. L'œuvre a d'abord suscité des réactions \
+partagées : publicité géante pour un magasin, ou véritable œuvre d'art ? Elle est \
+devenue un repère de la ville, visible de loin depuis la place, souvent photographiée \
+par les visiteurs, et un rappel, en pleine rue commerçante, du goût de la ville pour \
+le pop art, dont le Museum Ludwig, tout proche, conserve un grand ensemble."""
+facture = """
+Comme pour leurs autres sculptures monumentales, Oldenburg et van Bruggen partent de \
+dessins et de maquettes, puis confient la fabrication à des ateliers industriels. La \
+structure d'acier est habillée de plastique renforcé de fibres, modelé pour rendre le \
+quadrillage du biscuit et les plis de la crème, puis peint de couleurs lisses et \
+brillantes. La forme est simplifiée, presque dessinée, et les coulures de glace sont \
+traitées comme des drapés de sculpture classique."""
+details = [
+  "Les losanges en relief du biscuit, comme sur un vrai cornet.",
+  "Les coulées de glace qui débordent du toit sur la façade.",
+  "La pointe du cornet, dressée vers le ciel comme une flèche d'église.",
+  "Le contraste entre la crème molle et le verre rigide de l'immeuble.",
+]
+themes = ["glace", "objet géant", "consommation", "humour", "ville"]
+anecdote = """
+Oldenburg avait déjà fait d'un aliment une sculpture molle en 1962 : un énorme cornet \
+de glace en toile rembourrée, Floor Cone, conservé aujourd'hui au Museum of Modern Art \
+de New York."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Bottle of Notes"
+artiste = "Claes Oldenburg et Coosje van Bruggen"
+annee = "1993"
+image = "bottle-of-notes.jpg"
+credit = "Photo : Lee Bunce"
+licence = "CC BY 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Claes_Oldenburg's_Bottle_O'_Notes.jpg"
+technique = "Acier peint, environ 10 m de haut"
+collection = "Espace public, Central Gardens, Middlesbrough (Royaume-Uni)"
+note = "Une bouteille à la mer géante, faite de lettres d'écriture découpées dans l'acier, en hommage au capitaine Cook, né près de Middlesbrough."
+description = """
+Sur un tertre de copeaux de bois, au bord d'une place, se dresse une bouteille haute \
+d'une dizaine de mètres, légèrement penchée, fermée par un bouchon noir. Ses parois ne \
+sont pas pleines : elles sont faites de lignes d'écriture cursive, découpées dans \
+l'acier peint en blanc, dont les boucles et les jambages s'entrelacent comme une \
+dentelle. À travers ces mots, on aperçoit une seconde paroi, intérieure, peinte en \
+bleu, elle aussi formée de phrases. La bouteille paraît à la fois lourde et \
+transparente ; le ciel et les façades de brique passent à travers. Le photographe l'a \
+prise en contre-plongée, ce qui accentue sa silhouette inclinée, comme si la mer \
+venait de la déposer sur le rivage."""
+evocation = """
+Le message dans une bouteille est l'image même de la parole confiée au hasard, envoyée \
+vers un destinataire inconnu. Les artistes l'associent ici à James Cook, le navigateur \
+né en 1728 à Marton, aujourd'hui un quartier de Middlesbrough, qui explora le \
+Pacifique et tint des journaux de bord précis. La paroi extérieure reprend une phrase \
+de l'un de ses journaux, la paroi intérieure un texte de Coosje van Bruggen : \
+l'écriture du marin et celle de l'artiste s'emboîtent. On y a vu un hommage à une \
+ville industrielle tournée vers la mer et l'aventure, et une réflexion sur l'écriture \
+elle-même, qui devient ici une architecture qu'on peut regarder sans pouvoir tout \
+lire."""
+histoire = """
+L'œuvre est commandée au début des années 1990 par la municipalité de Middlesbrough, \
+ville de la sidérurgie du nord-est de l'Angleterre, pour embellir son centre. \
+Installée en 1993, elle est l'une des rares sculptures monumentales d'Oldenburg et van \
+Bruggen en Grande-Bretagne. Elle a d'abord été accueillie avec scepticisme, comme \
+beaucoup d'œuvres d'art public, avant de devenir l'un des symboles de la ville. \
+Lorsque le Middlesbrough Institute of Modern Art, le MIMA, ouvre en 2007 juste à côté, \
+la bouteille se retrouve sur son parvis, au cœur du quartier culturel réaménagé."""
+facture = """
+Pour réaliser des lettres capables de porter la structure, les mots ont été découpés \
+dans des plaques d'acier puis soudés entre eux, les boucles des lettres servant de \
+points d'appui. Les deux parois, blanche dehors et bleue dedans, créent un effet de \
+profondeur et de vibration quand on tourne autour. L'inclinaison de la bouteille évite \
+la raideur d'un monument dressé et suggère un objet échoué, posé là par accident."""
+details = [
+  "Les boucles de l'écriture cursive qui forment la paroi extérieure.",
+  "La seconde paroi bleue, visible à travers les lettres blanches.",
+  "Le bouchon noir, plein, seul élément opaque de la sculpture.",
+  "L'inclinaison de la bouteille, comme rejetée sur la plage.",
+]
+themes = ["écriture", "mer", "capitaine cook", "objet géant", "ville industrielle"]
+anecdote = """
+Le titre détourne l'image de la bouteille à la mer : au lieu de contenir un message, \
+la bouteille de Middlesbrough est elle-même faite de notes écrites, comme celles que \
+Cook consignait chaque jour dans ses journaux de bord."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Spitzhacke (La Pioche)"
+artiste = "Claes Oldenburg et Coosje van Bruggen"
+annee = "1982"
+image = "spitzhacke.jpg"
+credit = "Photo : Cherubino"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Spitzhacke_(Claes_Oldenburg)_02.JPG"
+technique = "Acier peint"
+collection = "Espace public, rive de la Fulda, Kassel (Allemagne)"
+note = "Une pioche géante plantée dans la rive de la Fulda, comme lancée par l'Hercule qui domine Kassel : l'œuvre créée pour la documenta 7."
+description = """
+Sur une pelouse en pente, au bord d'une rivière, une pioche gigantesque est fichée en \
+biais dans le sol. Son long manche d'acier bleu gris s'élève en diagonale vers le \
+ciel, plus haut que les arbres de l'autre rive. Le fer, en forme de croissant, est à \
+demi enfoncé dans la terre : une de ses pointes disparaît dans le gazon, l'autre se \
+dresse en l'air. À gauche, au loin, on aperçoit des bateaux amarrés, un pont et les \
+premiers immeubles de la ville ; au bord de l'eau, une silhouette minuscule donne \
+l'échelle. Le ciel est couvert, la lumière douce. L'outil paraît être tombé du ciel à \
+l'instant, et s'être planté là par la seule force de sa chute."""
+evocation = """
+Kassel est dominée, à l'ouest, par le parc de la Wilhelmshöhe et la statue colossale \
+d'Hercule qui couronne ses cascades. Oldenburg a imaginé que le héros, depuis sa \
+colline, avait lancé sa pioche à travers la ville, et qu'elle était retombée au bord \
+de la Fulda, à l'autre bout. L'œuvre relie ainsi deux lieux de la ville par une \
+histoire de géant, avec l'humour propre au couple d'artistes. La pioche est aussi \
+l'outil des terrassiers et des mineurs : on y a vu un hommage au travail manuel, et \
+une allusion à une ville largement détruite pendant la guerre puis reconstruite. Elle \
+invite enfin à regarder le paysage comme un décor, où un objet familier change soudain \
+de taille."""
+histoire = """
+La sculpture est créée pour la documenta 7, la grande exposition d'art contemporain \
+qui se tient à Kassel tous les cinq ans, en 1982. Coosje van Bruggen faisait partie de \
+l'équipe du commissaire Rudi Fuchs pour cette édition. Installée sur la rive de la \
+Fulda, près du parc de la Karlsaue, la pioche suscite à l'époque des débats animés \
+parmi les habitants. Elle est pourtant restée en place après l'exposition, comme \
+d'autres œuvres des documenta successives, et fait désormais partie du paysage de la \
+ville. Elle est devenue l'un des repères de Kassel, au même titre que les chênes \
+plantés par Joseph Beuys."""
+facture = """
+La pioche est construite en acier, peinte d'un bleu gris uniforme, sans détail \
+superflu : comme dans les dessins d'Oldenburg, l'objet est réduit à sa silhouette. \
+Toute la force de l'œuvre tient dans l'angle d'inclinaison du manche et dans \
+l'enfoncement du fer, calculés pour donner l'impression d'un impact. Le choix du site \
+compte autant que l'objet : la sculpture dialogue avec la rivière, la pente de la rive \
+et la ligne des arbres."""
+details = [
+  "Le fer enfoncé dans le gazon, comme après un choc violent.",
+  "Le manche oblique, plus haut que les arbres de la rive opposée.",
+  "La minuscule silhouette humaine au bord de l'eau, qui donne l'échelle.",
+  "Le pont et les bateaux de la Fulda, à l'arrière-plan à gauche.",
+]
+themes = ["outil", "objet géant", "paysage", "documenta", "mythologie"]
+anecdote = """
+C'est aussi pour la documenta 7, en 1982, que Joseph Beuys lança son projet 7000 \
+Chênes : sept mille arbres plantés dans Kassel, chacun accompagné d'une colonne de \
+basalte."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Balancing Tools"
+artiste = "Claes Oldenburg et Coosje van Bruggen"
+annee = "1984"
+image = "balancing-tools.jpg"
+credit = "Photo : Choinowski"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Balancing_Tools.jpg"
+technique = "Acier peint"
+collection = "Vitra Campus, Weil am Rhein (Allemagne)"
+note = "Un marteau, une pince et un tournevis géants en équilibre : la première œuvre installée sur le site de l'entreprise de mobilier Vitra."
+description = """
+Sur une pelouse, devant une rangée d'arbres et une colline boisée, trois outils géants \
+s'appuient les uns sur les autres. À gauche, une pince bleue, les branches écartées, \
+se tient debout sur ses mâchoires. À droite, un tournevis au manche rouge et à la tige \
+d'acier se dresse en oblique. Posé en travers, au sommet, un marteau au manche de bois \
+brun relie les deux : sa tête noire repose sur l'extrémité du tournevis, son manche \
+sur la pince. L'ensemble forme une sorte de portique instable, une architecture faite \
+d'objets qui ne devraient pas tenir debout. Le ciel est d'un bleu d'été, et un sentier \
+traverse l'herbe au premier plan."""
+evocation = """
+Les outils renvoient au métier de l'entreprise qui les a fait dresser : Vitra fabrique \
+des meubles, et le marteau, la pince et le tournevis sont les instruments de \
+l'atelier, du menuisier et de l'aménageur de magasins que fut d'abord son fondateur. \
+L'équilibre précaire a été lu comme une image de l'entreprise elle-même, de l'entente \
+entre plusieurs forces, ou de la famille. Comme souvent chez Oldenburg et van Bruggen, \
+l'humour naît du changement d'échelle et du jeu : les outils semblent avoir été \
+abandonnés par un géant au milieu d'une construction, ou disposés comme un jeu de \
+mikado."""
+histoire = """
+En 1984, Rolf Fehlbaum, à la tête de Vitra, commande l'œuvre pour l'offrir à son père, \
+Willi Fehlbaum, fondateur de l'entreprise, à l'occasion de son soixante-dixième \
+anniversaire. Elle est installée à l'entrée du site de production de Weil am Rhein, à \
+la frontière suisse, peu après un incendie qui avait détruit une grande partie des \
+bâtiments en 1981. Le site devient ensuite le Vitra Campus, où des architectes de \
+renom construisent tour à tour : Frank Gehry y élève en 1989 le Vitra Design Museum, \
+juste à côté de la sculpture, puis viennent Zaha Hadid, Tadao Ando, Álvaro Siza et \
+Herzog & de Meuron."""
+facture = """
+Les trois outils sont fabriqués en acier, puis peints de couleurs franches : bleu, \
+rouge, brun et noir. Leurs formes sont simplifiées, à la manière des dessins \
+d'Oldenburg, et légèrement déformées : la pince est arquée, le manche du marteau est \
+plat et épais. Tout le travail porte sur l'équilibre apparent, soigneusement calculé \
+par les ingénieurs pour que la structure, qui semble pouvoir s'effondrer, résiste au \
+vent et au temps."""
+details = [
+  "La tête noire du marteau, posée en équilibre sur le bout du tournevis.",
+  "Les mâchoires de la pince, plantées dans l'herbe comme des pieds.",
+  "Le manche rouge du tournevis, couleur de jouet.",
+  "Le manche brun du marteau, posé en travers comme une poutre.",
+]
+themes = ["outils", "équilibre", "design", "humour", "objet géant"]
+anecdote = """
+Selon l'histoire du Vitra Campus, c'est par l'intermédiaire de Claes Oldenburg et de \
+Coosje van Bruggen que Rolf Fehlbaum rencontra leur ami l'architecte américain Frank \
+Gehry, à qui il confia ensuite le Vitra Design Museum."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Todos juntos podemos parar el sida"
+artiste = "Keith Haring"
+annee = "1989 (reproduction de 2014)"
+image = "todos-juntos.jpg"
+credit = "Photo : Alberto-g-rovi"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Mural_de_Keith_Haring.JPG"
+technique = "Peinture murale ; reproduction de 2014 d'après l'original de 1989"
+collection = "Espace public, mur voisin du MACBA, quartier du Raval, Barcelone"
+note = "Tous ensemble, nous pouvons arrêter le sida : la fresque peinte par Haring à Barcelone en 1989, un an avant sa mort, reproduite près du musée d'art contemporain."
+description = """
+Sur un long mur de béton gris, de grands traits rouges dessinent une frise. En haut, \
+en lettres capitales cernées, l'inscription TODOS JUNTOS PODEMOS PARAR EL SIDA court \
+sur deux lignes. En dessous, une chaîne de silhouettes sans visage se tient par la \
+main : l'une lève le bras, d'autres dansent, s'accroupissent ou s'emboîtent comme des \
+pièces de puzzle. De petits traits autour des têtes et des corps les font vibrer, \
+comme s'ils bougeaient. À droite, la signature K. HARING 89 ferme la frise. À gauche, \
+on devine le début d'une autre partie de la fresque, avec de grandes formes \
+ondulantes. Sur la photographie, le mur fuit en perspective, et le trottoir rappelle \
+qu'il s'agit d'une rue."""
+evocation = """
+En 1989, l'épidémie de sida frappe durement le Raval, quartier pauvre du centre de \
+Barcelone, alors marqué par l'héroïne et la prostitution. Haring, lui-même atteint de \
+la maladie, écrit son message en espagnol, en grandes lettres, pour parler à tous. \
+Dans la partie de la fresque que l'on ne voit pas ici, un grand serpent est transpercé \
+par une seringue, image de la drogue et de la contamination qu'il faut combattre. La \
+chaîne de personnages, elle, dit la solidarité : ensemble, nous pouvons. La fresque \
+est à la fois un appel à la prévention et un autoportrait discret de l'artiste, qui \
+savait ses jours comptés."""
+histoire = """
+Haring peint la fresque originale le 27 février 1989, en une journée, sur un mur de la \
+plaça de Salvador Seguí, au cœur du Raval. Elle disparaît quelques années plus tard, \
+avec la transformation du quartier. En 2014, pour les vingt-cinq ans de l'œuvre, elle \
+est reproduite à l'identique sur un mur voisin du Musée d'art contemporain de \
+Barcelone, le MACBA, à l'initiative du musée et de la ville, d'après les documents de \
+l'époque. Elle est depuis l'une des images familières du quartier. Haring est mort le \
+16 février 1990 à New York, moins d'un an après l'avoir peinte."""
+facture = """
+Haring dessine directement sur le mur, sans esquisse, d'un trait continu et rapide, \
+d'une épaisseur constante. Il réduit la figure humaine à un contour simple, sans \
+visage, que chacun peut s'approprier, et il ajoute de petits traits rayonnants pour \
+suggérer le mouvement, comme dans la bande dessinée. Une seule couleur, le rouge, \
+suffit à la fresque ; les lettres sont dessinées de la même main que les corps, de \
+sorte que le texte et l'image ne font qu'un."""
+details = [
+  "Les petits traits autour des têtes, qui font vibrer les silhouettes.",
+  "La chaîne de figures qui se tiennent par la main sous l'inscription.",
+  "La signature K. HARING 89, en bas à droite.",
+  "Les lettres capitales cernées, dessinées du même trait que les corps.",
+]
+themes = ["sida", "solidarité", "fresque", "message", "ville"]
+anecdote = """
+Haring a commencé en 1980 par dessiner à la craie blanche sur les panneaux \
+publicitaires vides du métro de New York, couverts de papier noir : il en aurait \
+réalisé des centaines, et fut plusieurs fois arrêté pour vandalisme."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 3.6
+
+[[oeuvres]]
+titre = "Untitled (Boxers)"
+artiste = "Keith Haring"
+annee = "1987"
+image = "the-boxers.jpg"
+credit = "Photo : neeel"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Keith_Haring_Berlin-Tiergarten.jpg"
+technique = "Acier laqué"
+collection = "Daimler Art Collection, espace public, Potsdamer Straße, Berlin"
+note = "Deux figures, l'une rouge, l'autre bleue, s'empoignent ou s'enlacent, près de la Potsdamer Platz, là où passait le mur de Berlin."
+description = """
+Sur un socle de pierre sombre, posé dans un bassin bordé de roseaux, deux grandes \
+silhouettes plates se tiennent face à face. L'une est bleue, l'autre rouge ; elles ont \
+la même forme, celle des personnages de Haring : une tête ronde évidée, un corps sans \
+visage, des jambes un peu fléchies. Leurs bras se croisent et se nouent en un X \
+compliqué, si bien qu'on ne sait plus quel membre appartient à qui. Les deux corps \
+s'interpénètrent, l'un passant à travers l'autre, comme s'ils étaient découpés dans la \
+même plaque. Derrière, on aperçoit des immeubles de bureaux et des arbres. Vue de \
+face, la sculpture ressemble à un dessin de Haring découpé et dressé dans la rue."""
+evocation = """
+Le titre parle de boxeurs, mais le geste reste ambigu : est-ce un combat, une \
+étreinte, une danse ? Chez Haring, les figures enlacées disent souvent à la fois la \
+lutte et l'amour. À Berlin, près de l'endroit où passait le mur, beaucoup y ont vu une \
+image de la ville et du pays divisés, deux moitiés de même forme et de couleurs \
+différentes qui s'affrontent et ne peuvent pourtant pas se séparer. La sculpture, \
+installée après la chute du mur, a pris ainsi valeur de symbole de réconciliation, \
+deux adversaires devenus inséparables, liés par les bras comme par un nœud."""
+histoire = """
+Haring conçoit cette sculpture en 1987, à une époque où il passe de plus en plus du \
+dessin aux grandes pièces d'acier peint, destinées à l'extérieur. Elle appartient \
+aujourd'hui à la collection d'art du groupe Daimler, qui l'a installée dans le nouveau \
+quartier construit dans les années 1990 autour de la Potsdamer Platz, sur l'ancien no \
+man's land du mur. Elle se dresse au bord de l'eau, le long de la Potsdamer Straße, où \
+une plaque de bronze indique son titre, sa date et la collection. Elle est devenue \
+l'une des œuvres d'art public les plus photographiées de ce quartier de Berlin."""
+facture = """
+Haring traduit son dessin en volume sans le changer : deux plaques d'acier découpées \
+suivant le contour de ses figures, assemblées en croix pour être vues de tous les \
+côtés, puis laquées de couleurs pures. Le rouge et le bleu, couleurs primaires, \
+s'opposent et se complètent. Pas de modelé ni de détail : la sculpture garde l'énergie \
+du trait, et sa lisibilité immédiate, comme un pictogramme."""
+details = [
+  "Les têtes rondes et évidées, à travers lesquelles passe le ciel.",
+  "Les bras croisés en X, impossibles à démêler.",
+  "Le corps bleu qui traverse le corps rouge, découpés dans la même forme.",
+  "Le bassin et les roseaux qui entourent le socle.",
+]
+themes = ["combat", "étreinte", "berlin", "couleur", "pictogramme"]
+anecdote = """
+En 1986, Haring a peint sur le mur de Berlin, côté ouest, une frise d'une centaine de \
+mètres de figures enchaînées aux couleurs du drapeau allemand ; elle fut recouverte de \
+graffitis puis disparut avec la chute du mur."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Puppy"
+artiste = "Jeff Koons"
+annee = "1992"
+image = "puppy.jpg"
+credit = "Photo : kallerna"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Puppy_Jeff_Koons.jpg"
+technique = "Acier inoxydable, bois, terre, géotextile, système d'arrosage interne et plantes à fleurs ; environ 12 m de haut"
+collection = "Musée Guggenheim, Bilbao (terrasse extérieure)"
+note = "Un chiot west highland terrier de douze mètres, couvert de dizaines de milliers de fleurs, veille sur l'entrée du Guggenheim de Bilbao."
+description = """
+Sur le parvis de pierre d'un musée, un chiot géant est assis, la tête tournée vers la \
+gauche, les oreilles dressées. C'est un west highland terrier, reconnaissable à son \
+museau court et à sa silhouette trapue. Il est entièrement couvert de plantes : un \
+pelage vert piqué de petites fleurs, qui change de couleur selon les saisons. Une \
+grille basse l'entoure, et des passants minuscules, à ses pieds, donnent l'échelle. À \
+gauche se dresse une tour de bureaux de verre ; à droite, le ciel est d'un bleu \
+d'hiver. La photographie a été prise en février, quand la floraison est encore \
+discrète : au printemps et en été, le chien se couvre de fleurs rouges, roses, \
+blanches et violettes."""
+evocation = """
+Koons dit avoir voulu une image d'optimisme et de confiance, simple et accessible à \
+tous, comme une peluche ou une carte de vœux. Mais le chiot joue aussi sur l'histoire \
+de l'art : il réunit la topiaire des jardins à la française du XVIIIᵉ siècle, l'art de \
+tailler les arbustes, et l'imagerie kitsch des bibelots et des cartes postales. On y a \
+vu une réflexion sur le contrôle et le hasard, puisque l'artiste fixe la forme mais \
+que les fleurs poussent à leur guise ; et une ironie sur le goût populaire, que Koons \
+revendique sans moquerie. Face aux courbes de titane de Frank Gehry, le chien fleuri \
+oppose la douceur d'un jouet à la puissance de l'architecture."""
+histoire = """
+Koons crée une première version de Puppy en 1992, dans le parc du château d'Arolsen, \
+en Allemagne, puis une deuxième à Sydney en 1995. La Fondation Guggenheim acquiert \
+ensuite une version permanente, installée devant le musée de Bilbao, conçu par Frank \
+Gehry, pour son ouverture en octobre 1997. Quelques jours avant l'inauguration, le 13 \
+octobre 1997, un policier basque, José María Aguirre, est tué en interceptant des \
+membres de l'ETA déguisés en jardiniers, qui tentaient de dissimuler des explosifs \
+dans des jardinières près de la sculpture. Puppy est depuis devenu le symbole du musée \
+et de la ville."""
+facture = """
+Sous les fleurs, une structure d'acier inoxydable porte un réseau de compartiments \
+remplis de terre et enveloppés de géotextile, irrigués par un système d'arrosage \
+intérieur. Les jardiniers y repiquent des dizaines de milliers de plantes, deux fois \
+par an, au printemps et à l'automne : bégonias, pétunias, œillets d'Inde, impatiences. \
+La forme du chiot a été modélisée par ordinateur, procédé encore rare au début des \
+années 1990."""
+details = [
+  "Les oreilles pointues du terrier, dressées au-dessus du museau.",
+  "Le pelage végétal, fait de milliers de plantes repiquées à la main.",
+  "Les passants au pied de la sculpture, qui révèlent sa taille.",
+  "La tour de bureaux, à gauche, qui fait face au chien.",
+]
+themes = ["chien", "fleurs", "kitsch", "jardin", "néo-pop"]
+anecdote = """
+En 2019, la sculpture Rabbit (1986) de Jeff Koons, un lapin gonflable en acier \
+inoxydable poli comme un miroir, a été vendue aux enchères 91,1 millions de dollars, \
+un record pour une œuvre d'un artiste vivant."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Les Nanas (Charlotte, Caroline et Sophie)"
+artiste = "Niki de Saint Phalle"
+annee = "1974"
+image = "nanas.jpg"
+credit = "Photo : ChristianSchd"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Sculptures_Nanas_Niki_de_Saint_Phalle_Leibnizufer_Hanover_Germany_01.jpg"
+technique = "Polyester peint"
+collection = "Espace public, Leibnizufer, Hanovre (Allemagne)"
+note = "Trois femmes géantes aux formes rondes et aux couleurs vives, installées au bord de la Leine en 1974 : un scandale à l'époque, aujourd'hui l'emblème de Hanovre."
+description = """
+Au bord d'une allée, devant un rideau d'arbres, deux des trois Nanas de Hanovre \
+occupent l'image. À gauche, une figure massive, accroupie ou penchée en avant, \
+présente des rondeurs énormes peintes de motifs : cercles rouges et jaunes, fleurs \
+blanches sur fond noir, bandes vertes et bleues, et une petite tête verte, minuscule \
+par rapport au corps. À droite, sur un socle de béton, une figure blanche se dresse \
+comme une flamme ou une main ouverte, les bras levés, le corps ceint de couleurs vives \
+et orné d'une grosse fleur violette. Les formes sont pleines, lisses et brillantes. \
+Aucun visage, aucun détail anatomique précis : ce sont des corps de femmes devenus \
+jouets, totems et paysages."""
+evocation = """
+Les Nanas, que Niki de Saint Phalle crée à partir de 1965, célèbrent la femme libre, \
+joyeuse et puissante, loin des canons de minceur et des rôles traditionnels. Le mot \
+nana, en argot, désigne une femme ou une fille. Leurs corps immenses, colorés, \
+dansants ou acrobatiques, renversent l'image de la femme comme objet du regard : elles \
+occupent l'espace public avec assurance. L'artiste y voyait l'annonce d'un monde où \
+les femmes prendraient le pouvoir. Les trois Nanas de Hanovre portent les prénoms de \
+trois femmes liées à l'histoire de la ville : Charlotte Kestner, l'amie de jeunesse de \
+Goethe, l'astronome Caroline Herschel, et l'électrice Sophie de Hanovre."""
+histoire = """
+Au début des années 1970, la ville de Hanovre lance un programme d'art dans la rue, \
+destiné à animer le centre reconstruit après la guerre. Les trois Nanas sont \
+installées en 1974 sur la Leibnizufer, au bord de la Leine. Leur arrivée provoque une \
+véritable tempête : lettres indignées, pétitions, débats dans la presse sur le prix et \
+le bon goût de ces grosses femmes colorées. Peu à peu, la ville les adopte, au point \
+qu'elles deviennent son emblème. En 2000, Niki de Saint Phalle fait don de plusieurs \
+centaines de ses œuvres au Sprengel Museum de Hanovre et devient citoyenne d'honneur \
+de la ville ; elle conçoit aussi le décor de la grotte des jardins de Herrenhausen, \
+inaugurée en 2003."""
+facture = """
+Les premières Nanas étaient faites de laine, de tissu et de papier mâché sur une \
+armature de grillage. Pour les grandes figures d'extérieur, Niki de Saint Phalle \
+adopte le polyester, une résine moulée et stratifiée, résistante aux intempéries, \
+qu'elle peint ensuite de couleurs vives et de motifs décoratifs : cœurs, fleurs, \
+spirales, damiers. Les corps sont gonflés, les têtes réduites, les membres simplifiés, \
+pour que la forme d'ensemble se lise de loin, comme un signe."""
+details = [
+  "La petite tête verte de la Nana de gauche, minuscule sur ce corps immense.",
+  "Les fleurs blanches sur fond noir qui couvrent ses épaules.",
+  "La grosse fleur violette peinte sur la Nana blanche de droite.",
+  "Les bras levés de la figure blanche, comme les doigts d'une main ouverte.",
+]
+themes = ["femme", "couleur", "corps", "joie", "espace public"]
+anecdote = """
+Selon l'artiste, l'idée des Nanas lui serait venue en 1965 en voyant le ventre rond de \
+son amie Clarice Rivers, enceinte, l'épouse du peintre Larry Rivers."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 3.2
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Roy Lichtenstein"
+vie = "New York, 27 octobre 1923 – New York, 29 septembre 1997"
+biographie = """
+Roy Lichtenstein grandit à Manhattan dans une famille aisée et étudie l'art à \
+l'université d'État de l'Ohio, études interrompues par la Seconde Guerre mondiale, \
+qu'il fait dans l'armée américaine en Europe. Il enseigne ensuite dans l'Ohio, dans \
+l'État de New York puis au New Jersey, et peint dans un style proche de \
+l'expressionnisme abstrait. En 1961, il change brusquement de manière : Look Mickey \
+reproduit une case de bande dessinée, avec ses couleurs primaires, ses bulles et ses \
+points d'imprimerie. Exposé à la galerie Leo Castelli à New York dès 1962, il devient \
+l'un des chefs de file du pop art, aux côtés de Warhol. Ses héroïnes en larmes, ses \
+scènes de guerre aériennes comme Whaam! (1963), puis ses séries de coups de pinceau, \
+de miroirs et d'intérieurs lui valent une célébrité internationale, mais aussi les \
+critiques de ceux qui lui reprochent de copier des dessinateurs anonymes. Il réalise \
+aussi des sculptures et des œuvres publiques, dont la tête de Barcelone. Il meurt à \
+New York en 1997, d'une pneumonie."""
+style = """
+Lichtenstein imite les procédés de l'imprimerie bon marché : contours noirs épais, \
+couleurs primaires en aplat, trame de points Benday, mais tout est peint à la main, \
+recomposé et agrandi. Cette distance froide transforme l'image populaire en objet \
+d'étude. Il a appliqué ce langage à toute l'histoire de l'art, de Picasso à Monet, et \
+influencé durablement la peinture, le graphisme et la publicité."""
+
+[[artistes]]
+nom = "Robert Indiana"
+vie = "New Castle (Indiana), 13 septembre 1928 – Vinalhaven (Maine), 19 mai 2018"
+biographie = """
+Né Robert Clark, il est adopté bébé et passe une enfance itinérante dans l'Indiana, au \
+gré des déménagements de ses parents adoptifs. Après son service dans l'armée de \
+l'air, il étudie à l'École de l'Art Institute de Chicago, puis en Écosse et à Londres. \
+En 1954, il s'installe à New York, où il vit à Coenties Slip, près du port, parmi un \
+groupe d'artistes qui comprend Ellsworth Kelly et Agnes Martin. Il y récupère des \
+enseignes, des pochoirs et des pièces de bois, et prend le nom de son État natal. Ses \
+tableaux aux mots et aux chiffres, inspirés des panneaux routiers et des enseignes, le \
+rattachent au pop art. En 1964, il dessine LOVE, qui devient en quelques années l'une \
+des images les plus copiées au monde. Lassé de New York, il s'installe en 1978 sur \
+l'île de Vinalhaven, dans le Maine, où il vit jusqu'à sa mort. En 2008, il crée une \
+image semblable, HOPE, pour la campagne présidentielle de Barack Obama."""
+style = """
+Indiana est le peintre des mots : il compose des tableaux et des sculptures à partir \
+de lettres, de chiffres et de formules courtes, avec la netteté des enseignes et des \
+pochoirs. Ses couleurs franches et ses formes géométriques parlent pourtant d'histoire \
+américaine, de foi, de mort et d'amour. Il a montré qu'un seul mot pouvait devenir une \
+image aussi forte qu'un visage."""
+
+[[artistes]]
+nom = "Claes Oldenburg et Coosje van Bruggen"
+vie = "Claes Oldenburg : Stockholm, 28 janvier 1929 – New York, 18 juillet 2022 ; Coosje van Bruggen : Groningue (Pays-Bas), 6 juin 1942 – Los Angeles, 10 janvier 2009"
+biographie = """
+Claes Oldenburg, fils d'un diplomate suédois, grandit à Oslo puis à Chicago. Après des \
+études à Yale, il s'installe à New York en 1956 et participe aux happenings. En 1961, \
+il ouvre The Store, une boutique où il vend des gâteaux, des vêtements et des \
+hamburgers en plâtre peint, puis il invente les sculptures molles : téléphones, \
+toilettes ou cornets de glace en toile et en vinyle rembourrés. Il rêve aussi de \
+monuments géants, comme son rouge à lèvres sur chenilles dressé à Yale en 1969. Coosje \
+van Bruggen, historienne de l'art et critique néerlandaise, a travaillé au Stedelijk \
+Museum d'Amsterdam. Ils se rencontrent en 1970, collaborent à partir de 1976 et se \
+marient en 1977. Ensemble, ils réalisent plus de quarante grands projets dans le monde \
+: Spoonbridge and Cherry à Minneapolis, des jumelles géantes à Los Angeles avec Frank \
+Gehry, une bicyclette ensevelie à Paris. Coosje van Bruggen meurt en 2009 ; Oldenburg, \
+en 2022, à New York."""
+style = """
+Le couple agrandit des objets ordinaires, outils, aliments, accessoires, jusqu'à \
+l'échelle d'un immeuble, et les place dans la ville comme des monuments. Le choix de \
+l'objet, de son site et de son attitude, tombé, penché, renversé, crée un récit et un \
+humour qui transforment le paysage. Ils ont renouvelé la sculpture publique, rompant \
+avec la statue commémorative et l'abstraction monumentale."""
+
+[[artistes]]
+nom = "Keith Haring"
+vie = "Reading (Pennsylvanie), 4 mai 1958 – New York, 16 février 1990"
+biographie = """
+Keith Haring grandit à Kutztown, en Pennsylvanie, où son père, amateur de dessins \
+humoristiques, l'initie au dessin. Après une courte formation d'arts graphiques à \
+Pittsburgh, il s'installe en 1978 à New York et entre à la School of Visual Arts. Il \
+se lie avec Jean-Michel Basquiat et Kenny Scharf, fréquente les clubs et la scène \
+hip-hop, et dessine à la craie dans le métro à partir de 1980. Ses figures simples, le \
+bébé rayonnant, le chien qui aboie, deviennent vite familières aux New-Yorkais. Exposé \
+dans les galeries et les musées dès 1982, il réalise aussi des dizaines de fresques \
+publiques dans le monde, souvent avec des enfants, et ouvre en 1986 le Pop Shop, une \
+boutique où il vend ses images à petits prix. Homosexuel, il s'engage contre \
+l'homophobie, la drogue et l'apartheid. Atteint du sida, diagnostiqué en 1988, il crée \
+l'année suivante une fondation pour soutenir la lutte contre la maladie et les \
+enfants. Il meurt à New York à trente et un ans."""
+style = """
+Haring dessine d'un trait continu, rapide et sûr, sans repentir, des figures sans \
+visage entourées de petits traits qui les font vibrer. Ce langage de pictogrammes, \
+issu du graffiti, de la bande dessinée et des signes de l'écriture, se lit en un \
+instant et se prête à tous les supports, du mur du métro à la sculpture d'acier. Il a \
+fait entrer l'art de la rue dans les musées et l'engagement social dans le pop art."""
+
+[[artistes]]
+nom = "Jeff Koons"
+vie = "York (Pennsylvanie), 21 janvier 1955"
+biographie = """
+Jeff Koons grandit à York, en Pennsylvanie, où son père tient un magasin de meubles et \
+de décoration. Il étudie la peinture à Baltimore et à Chicago, puis s'installe à New \
+York en 1977. Il travaille d'abord au service des membres du Museum of Modern Art, \
+puis comme courtier en matières premières à Wall Street, pour financer ses œuvres. Il \
+se fait connaître dans les années 1980 avec des aspirateurs neufs exposés dans des \
+vitrines, des ballons de basket flottant dans des aquariums, puis des copies en acier \
+inoxydable d'objets gonflables, comme le Rabbit de 1986. La série Banality (1988), en \
+porcelaine et en bois polychrome, fait scandale. Avec Celebration, lancée dans les \
+années 1990, il réalise des chiens en ballon, des cœurs et des œufs géants en acier \
+poli et coloré, qui atteignent des prix records. Il dirige un vaste atelier où de \
+nombreux assistants fabriquent ses œuvres, selon des procédés industriels d'une grande \
+précision."""
+style = """
+Héritier de Warhol et de Duchamp, Koons fait de l'objet kitsch, du jouet et du bibelot \
+une œuvre d'art, avec une perfection de fabrication qui fascine et dérange. Ses \
+surfaces lisses, brillantes, réfléchissantes renvoient au spectateur sa propre image \
+et son désir. On le range dans le néo-pop : il affirme accepter sans ironie la culture \
+populaire et vouloir libérer le public du jugement de goût."""
+
+[[artistes]]
+nom = "Niki de Saint Phalle"
+vie = "Neuilly-sur-Seine, 29 octobre 1930 – La Jolla (Californie), 21 mai 2002"
+biographie = """
+Catherine Marie-Agnès Fal de Saint Phalle grandit entre la France et les États-Unis, \
+dans une famille aristocratique. Mannequin à dix-huit ans, mariée jeune, elle commence \
+à peindre en autodidacte au début des années 1950, notamment pour surmonter une grave \
+dépression. Installée à Paris, elle rencontre le sculpteur suisse Jean Tinguely, qui \
+devient son compagnon puis son mari en 1971. En 1961, ses Tirs, des tableaux-reliefs \
+qu'elle crible de balles pour faire éclater des poches de peinture, la rendent célèbre \
+et la rapprochent des Nouveaux Réalistes. À partir de 1965, elle crée les Nanas, puis, \
+en 1966, Hon, une Nana couchée géante dans laquelle les visiteurs du Moderna Museet de \
+Stockholm entraient. Elle réalise avec Tinguely la fontaine Stravinsky près du Centre \
+Pompidou, et consacre une grande partie de sa vie au Jardin des Tarots, en Toscane. \
+Elle meurt en Californie en 2002, de problèmes respiratoires dus en partie aux résines \
+qu'elle avait longtemps travaillées."""
+style = """
+Niki de Saint Phalle mêle la violence et la fête, l'autobiographie et le conte. Ses \
+sculptures aux formes généreuses, couvertes de couleurs vives, de mosaïques et de \
+miroirs, empruntent à l'art populaire, à Gaudí et au facteur Cheval. Proche du pop art \
+par ses couleurs et sa culture de l'image, elle en fait un instrument d'émancipation \
+féminine et un art joyeux, offert à tous dans l'espace public."""
