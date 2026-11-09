@@ -122,6 +122,10 @@ struct Exposition {
     /// Le style ou le mouvement (« Renaissance italienne »), pour l'accueil.
     #[serde(default)]
     mouvement: String,
+    /// Une exposition éphémère, refaite chaque semaine par outils/ephemeres.py : ses
+    /// œuvres n'ont pas de notice complète ni de biographie d'artiste.
+    #[serde(default)]
+    ephemere: bool,
 }
 
 fn default_frame() -> String {
@@ -938,12 +942,13 @@ fn exhibition(
     let [ar, ag, ab] = hex(name, &e.couleur, "couleur");
     let _ = writeln!(
         out,
-        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        museum: {},\n        data_size: {},\n        rooms: &[",
+        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        ephemeral: {},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        museum: {},\n        data_size: {},\n        rooms: &[",
         e.nom_court.trim(),
         e.titre.trim(),
         e.artiste.trim(),
         e.dates.trim(),
         e.mouvement.trim(),
+        e.ephemere,
         e.accroche.trim(),
         e.introduction.trim(),
         showcase,

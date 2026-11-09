@@ -1,0 +1,1078 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « PEINTURE NORDIQUE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/peinture-nordique/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site : /peinture-nordique.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 155
+nom_court = "Peinture nordique"
+mouvement = "La lumière du Nord, peinture scandinave"
+cadre = "bois"
+couleur = "#2f5470"
+titre = "La lumière du Nord, peinture scandinave et finlandaise"
+artiste = "Krøyer, Hammershøi, Larsson, Zorn, Schjerfbeck, Gallen-Kallela, Simberg…"
+dates = "1883–1926"
+accroche = "Exposition virtuelle · Ateneum, Helsinki"
+introduction = """
+Entre 1880 et 1920, les peintres du Danemark, de Suède, de Norvège et de Finlande, \
+formés à Paris, rentrent chez eux pour peindre ce qui n'appartient qu'au Nord : les \
+soirs d'été qui ne finissent pas, la lumière rasante des intérieurs d'hiver, les fêtes \
+de la Saint-Jean et les mythes du Kalevala. La visite réunit onze peintres, de la plage \
+de Skagen aux rives du lac de Jølster, en onze tableaux. Le bâtiment s'inspire de \
+l'Ateneum d'Helsinki, le palais des arts néo-Renaissance de la place de la Gare : un \
+vestibule, une grande salle centrale haute et symétrique, deux galeries latérales et, \
+au fond, une salle consacrée aux trésors finlandais du musée."""
+vitrine = "soiree-ete-skagen.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Ateneum"
+ville = "Helsinki, Finlande"
+architecte = "Theodor Höijer"
+construction = "1887"
+presentation = """
+Au XIXᵉ siècle, les milieux artistiques finlandais se battent longtemps pour obtenir un \
+bâtiment qui réunisse leur école de dessin et leurs collections. L'Ateneum, dessiné par \
+l'architecte Theodor Höijer, est achevé en 1887 au bord de la place de la Gare, au cœur \
+d'Helsinki. Son nom évoque l'Athénée antique, et sa façade néo-Renaissance, \
+parfaitement symétrique, est un programme sculpté : les bustes de l'architecte \
+Bramante, du peintre Raphaël et du sculpteur Phidias au-dessus de l'entrée, quatre \
+cariatides figurant les arts, et au fronton la devise latine Concordia res parvae \
+crescunt, « par la concorde, les petites choses grandissent », sculptures de Carl Eneas \
+Sjöstrand ; entre les fenêtres, seize médaillons de Ville Vallgren. Le bâtiment a \
+longtemps abrité aussi des écoles d'art. Rénové de 1985 à 1991, il est aujourd'hui l'un \
+des musées de la Galerie nationale de Finlande et conserve les grands tableaux de l'âge \
+d'or finlandais, de Gallen-Kallela, Schjerfbeck ou Simberg. En 1903, la Rue à \
+Auvers-sur-Oise y fit de sa collection la première au monde à compter une toile de Van \
+Gogh."""
+ici = """
+Le bâtiment d'ARTEON reprend la symétrie de l'Ateneum autour d'un axe central. On entre \
+par le sud dans le vestibule, aux murs crème, qui ouvre sur la grande salle, carrée, \
+haute de onze mètres, consacrée à Skagen et à Sundborn. De part et d'autre s'ouvrent \
+deux galeries jumelles : à l'ouest, « Les intérieurs », aux murs gris perle, consacrés \
+aux pièces silencieuses de Copenhague, de Skagen et de Paris ; à l'est, « Les nuits \
+claires », d'un bleu pâle, pour les fêtes et les nuits de l'été nordique. Au fond, au \
+nord, la salle finlandaise, aux murs ocre clair, réunit trois tableaux phares de \
+l'Ateneum."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de l'Ateneum d'Helsinki (Theodor Höijer, 1887) : un bâtiment symétrique
+# organisé autour d'un axe central. Vestibule au sud, grande salle haute au centre,
+# deux galeries jumelles à l'ouest et à l'est, salle finlandaise au nord.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une
+# porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, au pied de l'axe central, comme sous la façade aux cariatides de l'Ateneum."
+murs = "#ece5d8"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La grande salle"
+theme = "L'été au bord de la mer et au jardin : Skagen selon Krøyer et la maison de Sundborn selon Carl Larsson."
+murs = "#e3dccd"
+x = 0
+z = -11
+largeur = 14
+profondeur = 14
+hauteur = 11
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "Les intérieurs"
+theme = "Des pièces silencieuses où la lumière est le vrai sujet : Hammershøi, Anna Ancher et Harriet Backer."
+murs = "#e2e1da"
+x = -13
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Les nuits claires"
+theme = "La Saint-Jean et les nuits bleues : la danse de Zorn, le feu d'Astrup, Stockholm la nuit par Eugène Jansson."
+murs = "#d9dfe3"
+x = 13
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "La salle finlandaise"
+theme = "Trois tableaux phares de l'Ateneum : le Kalevala de Gallen-Kallela, Schjerfbeck et l'Ange blessé de Simberg."
+murs = "#e0d3bf"
+x = 0
+z = -23
+largeur = 12
+profondeur = 10
+hauteur = 8
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Soirée d'été sur la plage de Skagen"
+artiste = "Peder Severin Krøyer"
+annee = "1893"
+image = "soiree-ete-skagen.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:P.S._Krøyer_-_Summer_evening_on_Skagen's_Beach._Anna_Ancher_and_Marie_Krøyer_walking_together._-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 100 × 150 cm"
+collection = "Skagens Museum, Skagen (Danemark)"
+note = "Anna Ancher et Marie Krøyer, l'épouse du peintre, se promènent bras dessus bras dessous au bord de la mer, à l'heure bleue d'un soir d'été."
+description = """
+Deux femmes en longues robes blanches marchent côte à côte le long du rivage, bras \
+dessus bras dessous, et s'éloignent de nous. L'une, en cheveux, porte un chignon \
+sombre ; l'autre est coiffée d'un chapeau de paille jaune. Elles avancent sur le sable \
+mouillé, au bord d'une mer parfaitement calme dont les vaguelettes déposent un mince \
+liseré d'écume. Le reste de la toile est presque vide : à droite, la grande plage \
+claire, où le sable garde l'empreinte de pas ; à gauche, l'eau d'un bleu laiteux qui se \
+confond avec le ciel, sans ligne d'horizon nette. Tout au fond, à droite, une bande de \
+dunes vertes ferme la vue. Les deux promeneuses, petites dans l'immensité, sont placées \
+au tiers gauche du tableau, là où le regard les trouve aussitôt."""
+evocation = """
+Krøyer peint l'heure bleue, ce moment des soirs d'été scandinaves où le soleil couché \
+laisse la mer et le ciel baigner dans une même lumière froide et douce, et qui \
+fascinait les peintres de Skagen. Les deux femmes sont deux artistes, amies, les \
+épouses de deux peintres de la colonie : Anna Ancher, née à Skagen, et Marie Krøyer. Le \
+tableau célèbre leur complicité, mais il a aussi quelque chose de mélancolique : elles \
+nous tournent le dos, et le paysage semble suspendu hors du temps. On l'a souvent relu \
+à la lumière de ce qui suivit, l'éloignement du couple Krøyer et la maladie du peintre. \
+Il est devenu l'image même de l'été danois et de Skagen, reproduite à l'infini."""
+histoire = """
+Krøyer découvre Skagen, village de pêcheurs à la pointe nord du Jutland, en 1882 ; il \
+s'y installe avec Marie en 1891. Pour ce tableau, il photographie au moins deux fois \
+Anna Ancher et Marie marchant bras dessus bras dessous au bord de l'eau, et peint \
+plusieurs esquisses du motif, dont deux sont à la Collection Hirschsprung de \
+Copenhague. La grande toile est achetée en 1895, lors d'une exposition à Munich, par \
+une cantatrice allemande ; elle passe ensuite des années dans un chalet de montagne en \
+Autriche et tombe dans l'oubli. Quand elle reparaît, en 1978, à une vente aux enchères \
+de Copenhague, l'éditeur de presse allemand Axel Springer l'achète. Sa veuve l'offre au \
+musée de Skagen, qui la reçoit en 1986, en remerciement du sauvetage des Juifs du \
+Danemark par les Danois en 1943."""
+facture = """
+Krøyer, formé à Paris auprès de Léon Bonnat, a retenu des impressionnistes le goût du \
+plein air, mais il garde un dessin précis. La palette est réduite à des bleus, des \
+mauves et des blancs, que réchauffent quelques touches jaunes sur le sable. La \
+composition repose sur la grande diagonale du rivage, qui part du bas à gauche et file \
+vers le fond à droite, et sur le contraste entre les deux figures nettes et l'espace \
+vaporeux qui les entoure. Les robes blanches, qui accrochent la dernière lumière, sont \
+le point le plus clair du tableau."""
+details = [
+  "Les traces de pas dans le sable, au premier plan à droite.",
+  "Le chapeau de paille jaune, seule couleur chaude du groupe.",
+  "Le mince liseré d'écume qui suit la ligne du rivage.",
+  "La signature, en bas à gauche : S. Krøyer, Skagen, 93.",
+]
+themes = ["plage", "heure bleue", "amitié", "été", "skagen"]
+anecdote = """
+Lors de la restauration du tableau, en 2005, on a trouvé des grains de sable pris dans \
+la peinture sur toute la surface de la toile : la preuve que Krøyer l'avait au moins en \
+partie peinte sur la plage même."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Le Petit Déjeuner sous le grand bouleau"
+artiste = "Carl Larsson"
+annee = "1896"
+image = "petit-dejeuner-bouleau.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Breakfast_under_the_Big_Birch._From_A_Home_(26_watercolours)_(Carl_Larsson)_-_Nationalmuseum_-_24220.tif"
+technique = "Aquarelle sur papier, 32 × 43 cm"
+collection = "Nationalmuseum, Stockholm"
+note = "La famille Larsson prend son petit déjeuner dans le jardin de sa maison de Sundborn : une des aquarelles qui ont fait rêver la Suède entière."
+description = """
+Dans un jardin d'été, une longue table de bois est dressée dans l'herbe, à l'ombre d'un \
+grand bouleau dont le tronc blanc occupe toute la gauche de l'image. Autour, une \
+famille nombreuse est attablée : deux garçons en chemise rayée et casquette, vus de dos \
+sur le banc, des fillettes en robe rouge et bonnet blanc, une petite fille au chapeau \
+rouge qui se retourne vers nous, et, au bout de la table, la mère en robe grise et \
+chapeau à plume. Un grand chien roux pose la tête sur la table, parmi les convives. \
+Derrière, la maison de bois peinte en rouge, avec une jardinière verte sous la fenêtre, \
+et une palissade grise. À gauche, une chaise orangée est restée vide ; une poule picore \
+dans l'herbe, et deux bouteilles traînent au pied de l'arbre."""
+evocation = """
+Larsson peint sa propre famille, sa femme Karin et leurs enfants, dans la maison de \
+Lilla Hyttnäs, à Sundborn, en Dalécarlie. La scène dit le bonheur simple de l'été \
+suédois : manger dehors, les enfants, les bêtes, la lumière filtrée par les feuilles. \
+La chaise vide, au premier plan, est souvent comprise comme celle du peintre lui-même, \
+qui s'est levé pour nous montrer les siens. Mais cette idylle est aussi un programme : \
+une vie saine, sans luxe ni façade, proche de la nature et de l'artisanat. Larsson, qui \
+avait connu une enfance très pauvre et malheureuse à Stockholm, construit dans ces \
+images le foyer heureux qu'il n'avait pas eu. Elles ont façonné l'idée que les Suédois, \
+et bien d'autres, se font de la maison idéale."""
+histoire = """
+En 1888, le père de Karin, Adolf Bergöö, offre au jeune couple une petite maison de \
+bois à Sundborn, près de Falun. Carl et Karin la transforment et la décorent eux-mêmes, \
+mêlant tradition paysanne suédoise et goût nouveau de l'Art nouveau. Dans les années \
+1890, Larsson consacre à la maison et à la vie familiale une série d'aquarelles, dont \
+celle-ci, aujourd'hui conservée au Nationalmuseum de Stockholm. En 1899, l'éditeur \
+Bonnier en publie vingt-quatre, en couleurs, dans un album intitulé Ett hem (Une \
+maison). Le livre connaît un immense succès et influence durablement l'aménagement des \
+intérieurs suédois. Une anthologie allemande, Das Haus in der Sonne (La maison au \
+soleil), en diffuse ensuite les images dans toute l'Europe."""
+facture = """
+Larsson, illustrateur de métier, cerne chaque forme d'un trait d'encre fin et souple, \
+puis pose l'aquarelle en teintes claires et transparentes. Les aplats de couleur, le \
+contour appuyé et le cadrage, avec le tronc coupé au bord gauche et le grand premier \
+plan d'herbe presque vide, rappellent les estampes japonaises que collectionnaient les \
+artistes de sa génération. L'herbe est faite de longs traits rapides, presque \
+calligraphiques. Le rouge des robes et de la maison répond au vert tendre du feuillage."""
+details = [
+  "Deux cœurs, des initiales entrelacées et une date gravés dans l'écorce du bouleau.",
+  "Le chien roux qui pose la tête sur la table, parmi les enfants.",
+  "Les deux bouteilles couchées dans l'herbe, au pied de l'arbre.",
+  "La poule blanche qui picore à côté de la chaise vide.",
+  "Le monogramme du peintre, C L, en bas au centre.",
+]
+themes = ["famille", "jardin", "été", "repas", "maison"]
+anecdote = """
+Carl et Karin Larsson ont eu huit enfants, qui sont les modèles de presque toutes ces \
+aquarelles. Leur maison de Sundborn, devenue Carl Larsson-gården, appartient toujours à \
+leurs descendants, qui l'ouvrent aux visiteurs chaque été."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Intérieur de Strandgade, soleil sur le plancher"
+artiste = "Vilhelm Hammershøi"
+annee = "1901"
+image = "strandgade-soleil.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Stue_i_Strandgade_med_solskin_på_gulvet.jpg"
+technique = "Huile sur toile, 46,5 × 52 cm"
+collection = "SMK – Galerie nationale du Danemark, Copenhague"
+note = "Le salon du peintre à Copenhague, sa femme Ida de dos, et le soleil qui dessine la fenêtre sur le plancher."
+description = """
+Une pièce presque vide, aux murs lambrissés d'un gris très clair. À gauche, une femme \
+en robe noire est assise de dos sur une chaise, penchée sur une petite table d'acajou \
+en demi-lune ; on ne voit que sa nuque et la masse sombre de sa robe. Au mur, au-dessus \
+d'elle, deux petits cadres. Au centre, une haute fenêtre à petits carreaux, voilée de \
+rideaux de mousseline blanche relevés sur les côtés, laisse entrer le soleil, qui \
+projette sur le plancher gris la forme lumineuse des carreaux. À droite, une grande \
+porte blanche à panneaux, fermée, occupe tout un pan du mur. Aucun objet ne raconte une \
+histoire, aucun bruit ne semble possible : la lumière est le seul événement du tableau."""
+evocation = """
+La femme vue de dos est Ida, l'épouse du peintre, qu'il représente souvent ainsi, \
+absorbée dans une occupation que nous ne voyons pas. Cette figure qui se dérobe donne \
+au tableau son mystère : le spectateur est admis dans la pièce sans y être accueilli. \
+On a beaucoup rapproché ces intérieurs de ceux de Vermeer et des peintres hollandais du \
+XVIIᵉ siècle, avec leurs femmes silencieuses près d'une fenêtre ; mais chez Hammershøi, \
+il n'y a ni lettre ni instrument de musique, rien qu'une attente. Il disait aimer, pour \
+eux-mêmes, les vieilles demeures, les vieux meubles et l'atmosphère très particulière \
+qui les entoure. Le poète Rainer Maria Rilke, qui lui rendit visite, voyait en lui un \
+peintre dont on ne peut parler vite."""
+histoire = """
+De 1898 à 1908 environ, Hammershøi et Ida habitent au 30 de la rue Strandgade, dans une \
+maison ancienne du quartier de Christianshavn, à Copenhague. L'appartement est à la \
+fois son atelier et son motif : il y peint une soixantaine d'intérieurs, en variant \
+légèrement la place d'un meuble, d'une porte ou de la lumière. Ces tableaux ne sont pas \
+des relevés fidèles : il supprime des poignées, coupe des meubles, laisse des zones \
+vides. Longtemps, une partie du public et des institutions est restée déconcertée par \
+cet art ; dès 1888, le jury de l'exposition de Charlottenborg avait refusé de \
+l'exposer. Ce tableau entre en 1924 au musée national de Copenhague, par legs. Il \
+compte aujourd'hui parmi les œuvres les plus célèbres du musée."""
+facture = """
+Hammershøi peint en couches fines, avec une touche douce qui laisse voir le grain de la \
+toile. Sa palette se limite au noir, au blanc, aux gris et aux bruns, mais elle est \
+d'une grande subtilité : lors du nettoyage du tableau, en 2012, la restauratrice a \
+compté plus de quarante blancs différents. La composition est faite de verticales et de \
+rectangles, portes, fenêtre, cadres, lambris, et de la grande tache lumineuse du sol. \
+La figure, rejetée sur le bord gauche, équilibre à elle seule la masse claire de la \
+porte."""
+details = [
+  "Sur le plancher, l'image des carreaux de la fenêtre, déformée par la perspective.",
+  "Les deux petits cadres accrochés au mur au-dessus de la femme.",
+  "La nuque inclinée d'Ida, seule partie visible de son visage.",
+  "Le monogramme V H, discret, en bas à droite.",
+]
+themes = ["intérieur", "silence", "lumière", "solitude", "copenhague"]
+anecdote = """
+Interrogé en 1907 sur ses couleurs rares et sourdes, Hammershøi répondit qu'il ne \
+savait pas pourquoi il les choisissait : cela lui était naturel, et il pensait qu'un \
+tableau fonctionne d'autant mieux, pour la couleur, qu'il en contient moins."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Jeune Fille dans la cuisine"
+artiste = "Anna Ancher"
+annee = "1883–1886"
+image = "fille-cuisine.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Girl_in_the_Kitchen_(Anna_Ancher).jpg"
+technique = "Huile sur toile, 87,7 × 68,5 cm"
+collection = "Collection Hirschsprung, Copenhague"
+note = "Une servante de dos, devant la fenêtre d'une cuisine de Skagen : le soleil traverse le rideau jaune et embrase la pièce."
+description = """
+Une jeune femme se tient debout, de dos, devant le plan de travail d'une petite \
+cuisine. Elle porte une jupe d'un rouge vif et un corsage vert sombre ; ses cheveux \
+sont tirés en chignon. Devant elle, une fenêtre à petits carreaux est à moitié masquée \
+par un rideau jaune pâle que le soleil traverse et rend presque incandescent. Sur le \
+plan de travail, des bols et des linges ; sur l'étagère du dessous, un mortier jaune et \
+son pilon. À droite, une porte de bois brun est grande ouverte sur une autre pièce, \
+elle aussi lumineuse. Au premier plan à gauche, sur un banc, des choux, des carottes et \
+des poissons plats posés sur un plat. Le plancher de larges planches s'étend jusqu'à \
+nous. En bas à droite, la peintre a signé et inscrit deux dates."""
+evocation = """
+Anna Ancher peint un geste ordinaire, accompli par une femme dont on ne voit pas le \
+visage, et en fait un moment de recueillement. Le véritable sujet est la lumière : \
+celle qui embrase le rideau, celle qui entre par la porte, et celle qui se pose sur le \
+mur de gauche. On pense aux servantes de Vermeer et de Pieter de Hooch, que les \
+peintres danois admiraient. Mais la scène appartient à la vie modeste de Skagen, où la \
+peintre a grandi. Dans un milieu artistique dominé par les hommes, Anna Ancher, épouse \
+et mère, choisit de peindre le monde des femmes et le travail domestique, avec gravité \
+et sans anecdote. Le tableau compte parmi les œuvres qui marquent, au Danemark, la \
+percée d'une peinture plus vraie, attentive à la vie quotidienne."""
+histoire = """
+Comme l'indiquent les deux dates de la signature, Anna Ancher a travaillé à ce tableau \
+pendant plusieurs années, entre 1883 et 1886, à Skagen, où elle vivait avec son mari, \
+le peintre Michael Ancher. Une étude préparatoire pour cette composition est conservée \
+au musée de Skagen. La toile est acquise en 1904 par la collection réunie par Heinrich \
+Hirschsprung, un fabricant de tabac de Copenhague, mécène et ami des peintres danois de \
+son temps, qui avait aussi soutenu Krøyer dès ses débuts. Hirschsprung donne sa \
+collection à l'État danois ; elle devient un musée, installé dans un petit bâtiment au \
+bord du parc Østre Anlæg, à Copenhague, où le tableau est toujours exposé."""
+facture = """
+Le tableau est construit en contre-jour : la figure se détache en silhouette sombre sur \
+la fenêtre, et la lumière vient vers nous. Anna Ancher rend le rideau ensoleillé par \
+des touches épaisses de jaune, d'orangé et de blanc, presque en relief. Le rouge de la \
+jupe, seule couleur saturée, attire l'œil au centre. Les murs blanchis à la chaux \
+prennent selon l'éclairage des tons gris, roses ou bleutés : la peintre étudie, en \
+coloriste, la manière dont la lumière naturelle change les couleurs d'une pièce."""
+details = [
+  "Le rideau jaune traversé par le soleil, au-dessus de la tête de la servante.",
+  "Le mortier jaune et son pilon, sur l'étagère du bas.",
+  "Les choux, les carottes et les poissons plats posés sur le banc, à gauche.",
+  "La signature en bas à droite, avec deux dates : 1883 et 1886.",
+]
+themes = ["intérieur", "travail", "contre-jour", "cuisine", "skagen"]
+anecdote = """
+Anna Ancher est la seule des peintres de Skagen à y être née : elle est la fille du \
+propriétaire de l'hôtel Brøndum, où logeaient les artistes venus de Copenhague. C'est \
+là qu'elle rencontre la peinture, et son futur mari."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Intérieur bleu"
+artiste = "Harriet Backer"
+annee = "1883"
+image = "interieur-bleu.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Harriet_Backer_-_Blue_Interior_-_NG.M.02582_-_National_Museum_of_Art,_Architecture_and_Design.jpg"
+technique = "Huile sur toile, 84 × 66 cm"
+collection = "Nasjonalmuseet, Oslo"
+note = "La peintre Asta Nørregaard, amie de l'artiste, dans un appartement parisien baigné d'une lumière bleue."
+description = """
+Dans un salon bourgeois, une jeune femme en robe sombre est assise dans un fauteuil \
+bleu, absorbée par ce qu'elle tient entre les mains. La lumière vient de la droite, par \
+une fenêtre que masque en partie un lourd rideau bleu nuit. Au fond, contre le mur, un \
+secrétaire d'un rouge orangé, surmonté d'un petit tableau encadré qui montre un voilier \
+sur une mer bleue. À gauche, un grand miroir au cadre doré reflète des pots de fleurs \
+roses. À droite, une plante verte aux larges feuilles se dresse dans un cache-pot \
+clair, près de deux chaises aux coussins bleus. Sur le parquet, au premier plan, un \
+coussin et quelques objets colorés semblent avoir été abandonnés. Tout baigne dans une \
+même atmosphère bleutée."""
+evocation = """
+Le titre parle d'un intérieur bleu, mais, comme le souligne le musée d'Oslo, la pièce \
+n'est pas bleue en elle-même : c'est la lumière du jour, tamisée par le rideau, qui \
+teinte les murs, les meubles et les ombres. Harriet Backer s'intéresse moins à son \
+modèle qu'à la manière dont la lumière fait exister un lieu. Le tableau montre aussi un \
+monde de femmes artistes : le modèle est Asta Nørregaard, peintre norvégienne, qui \
+vivait comme Backer à Paris. Backer comparait les taches de couleur d'un tableau aux \
+étoiles d'une constellation, qui doivent tenir ensemble en un accord parfait, comme les \
+notes d'une musique."""
+histoire = """
+Harriet Backer s'installe à Paris en 1878 ; elle y étudie auprès de Léon Bonnat et de \
+Jean-Léon Gérôme, et y découvre la peinture de plein air et l'impressionnisme. Elle \
+abandonne alors les sujets historiques pour des scènes de la vie contemporaine : \
+Intérieur bleu, peint dans l'appartement parisien de son amie, en est l'un des premiers \
+exemples. Le tableau est exposé la même année à Copenhague et à l'exposition d'automne \
+de Kristiania, l'actuelle Oslo, où il est bien reçu. Il entre en 1964 dans les \
+collections de la Galerie nationale d'Oslo, aujourd'hui le Nasjonalmuseet. En \
+1982-1983, il voyage aux États-Unis, à Washington, New York et Minneapolis, dans \
+l'exposition Northern Light, qui fait découvrir au public américain la peinture \
+nordique."""
+facture = """
+Backer travaille lentement, par touches libres et distinctes, en cherchant l'accord \
+juste de chaque couleur avec ses voisines. Le bleu domine, du rideau presque noir aux \
+reflets pâles du plafond, mais il est relevé par le rouge du secrétaire, le vert de la \
+plante et le doré du miroir. Elle étudie le contraste entre la lumière froide qui vient \
+de la fenêtre et l'ombre de la pièce, et suggère la profondeur par la seule couleur, \
+sans dessin appuyé."""
+details = [
+  "Le grand miroir doré, à gauche, où se reflètent des fleurs roses.",
+  "Le petit tableau d'un voilier, accroché au-dessus du secrétaire rouge.",
+  "Les objets colorés posés sur un coussin, sur le parquet.",
+  "Le rideau bleu nuit qui ferme le tableau à droite.",
+]
+themes = ["intérieur", "bleu", "lumière", "femmes", "paris"]
+anecdote = """
+Harriet Backer, qui travaillait très lentement, n'a laissé qu'environ cent \
+quatre-vingts tableaux. De 1889 à 1912, elle dirige une école de peinture à Kristiania, \
+où étudie notamment le jeune Nikolai Astrup, présent lui aussi dans cette exposition."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Danse de la Saint-Jean"
+artiste = "Anders Zorn"
+annee = "1897"
+image = "danse-saint-jean.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Midsummer_Dance_(Anders_Zorn)_-_Nationalmuseum_-_18607.tif"
+technique = "Huile sur toile, 140 × 98 cm"
+collection = "Nationalmuseum, Stockholm"
+note = "Dans un village de Dalécarlie, les couples dansent toute la nuit de la Saint-Jean, dans la lumière qui ne s'éteint pas."
+description = """
+Dans la cour herbeuse d'une ferme, des couples dansent. Au premier plan, une jeune \
+femme en jupe noire, corsage blanc à bretelles rouges et fichu blanc tourne dans les \
+bras d'un homme au chapeau noir ; leurs visages sont presque cachés, tout est dans le \
+mouvement. Derrière eux, d'autres couples et des spectateurs se pressent dans une \
+semi-obscurité. À gauche, une grange de rondins gris dont la porte ouverte laisse voir \
+d'autres silhouettes ; au fond, une maison peinte en rouge, aux fenêtres blanches, dont \
+le pignon s'éclaire. À droite, le mât de la Saint-Jean, orné de couronnes, s'élève dans \
+un ciel pâle et porte à son sommet le drapeau suédois. Le sol est piétiné, les jupes \
+tourbillonnent."""
+evocation = """
+La Saint-Jean, ou Midsommar, est en Suède la grande fête de la lumière : la nuit la \
+plus courte de l'année, où le jour ne finit pas. Zorn, qui avait grandi à Mora, y \
+voyait la survivance d'un très ancien culte de la nature, plus païen que chrétien. \
+Comme le souligne le Nationalmuseum, il ne place pas le mât au centre : ce qu'il peint, \
+c'est l'expérience même de la danse, les parfums de la nuit d'été et la lumière. Le \
+tableau est aussi un manifeste : en Dalécarlie, un mouvement de réveil religieux avait \
+fait reculer les fêtes et la musique populaires, et Zorn, riche et célèbre, s'emploie à \
+les défendre. Le premier rayon de l'aube, sur le pignon rouge, annonce que la danse a \
+duré toute la nuit."""
+histoire = """
+En 1896, après des années passées à l'étranger, surtout à Paris, Zorn s'installe avec \
+sa femme Emma à Mora, son village natal. Selon ses notes, il visite cette année-là le \
+village voisin de Morkarlby avec le prince Eugène de Suède, lui-même peintre ; Zorn \
+fait venir un violoneux, la danse commence dans une cour, et le prince, enthousiasmé, \
+le presse de peindre la scène. Zorn la peint l'année suivante, en juin et une partie de \
+juillet 1897, après le coucher du soleil. Le tableau est offert au Nationalmuseum en \
+1903 par l'Académie royale des beaux-arts. Il en existe une autre version, peinte à peu \
+près en même temps, au musée Pouchkine de Moscou, et une réplique plus petite commandée \
+en 1903 par un collectionneur américain."""
+facture = """
+Zorn peint vite, à grands coups de brosse chargés de matière, qui laissent les formes \
+floues comme si elles bougeaient encore. Les blancs des corsages et des fichus \
+accrochent la lumière diffuse de la nuit claire ; le noir des jupes et des chapeaux \
+donne au tableau sa structure. Le grand format vertical et le couple placé tout près de \
+nous, coupé par le bas du cadre, font entrer le spectateur dans la ronde. La lumière, \
+très particulière, a été observée sur place, la nuit, pendant des semaines."""
+details = [
+  "Le drapeau suédois au sommet du mât, à droite.",
+  "Le pignon de la maison rouge, éclairé par la première lumière du matin.",
+  "La porte ouverte de la grange, où se tiennent des spectateurs.",
+  "Les bretelles rouges du costume traditionnel de la danseuse.",
+]
+themes = ["danse", "saint-jean", "nuit claire", "fête", "dalécarlie"]
+anecdote = """
+Pour faire vivre la tradition, Zorn offrait au village de Morkarlby un mât de la \
+Saint-Jean, repeint en rouge chaque année. Il écrit qu'il considérait comme un devoir \
+sacré d'être présent pour l'habiller de feuillage, avant qu'on le dresse à minuit."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Feu de la Saint-Jean"
+artiste = "Nikolai Astrup"
+annee = "1912 et 1926"
+image = "feux-saint-jean.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Nikolai_Astrup_-_Bonfire_celebrating_Midsummer_Night_-_NG.M.03609_-_National_Museum_of_Art,_Architecture_and_Design.jpg"
+technique = "Huile sur papier marouflé sur panneau de fibres, 89 × 105 cm"
+collection = "Nasjonalmuseet, Oslo"
+note = "Le grand feu de la Saint-Jean sur la rive du lac de Jølster, dans l'ouest de la Norvège, au milieu des montagnes."
+description = """
+Au centre d'une vallée encaissée, un immense feu de joie s'élève sur une butte \
+herbeuse. Ses flammes jaunes et orangées se tordent en volutes, comme des langues ou \
+des crêtes d'animaux fantastiques, et une énorme colonne de fumée grise monte jusqu'au \
+haut du tableau, où elle s'étale en nuages. Devant le brasier, une silhouette sombre se \
+découpe, seule. Plus loin, sur la pente à droite, une foule de petits personnages se \
+tient en groupes. Autour, de hautes montagnes vert sombre ferment l'horizon ; leurs \
+sommets portent encore de la neige, et une cascade blanche descend sur la droite. En \
+contrebas, on devine l'eau du lac. En bas à gauche, un second feu, plus petit, fume \
+dans l'herbe."""
+evocation = """
+La nuit de la Saint-Jean, en Norvège, on allume des feux et l'on se rassemble pour \
+jouer, danser et cueillir des fleurs. Pour Astrup, attaché à l'idée d'une communion \
+entre les hommes et la nature, ces rites rappelaient les forces magiques de la nature : \
+selon le musée d'Oslo, les feux, la danse et les fleurs y servaient à la fois à \
+protéger et à conjurer. Le tableau oppose la figure solitaire, face au feu, à la foule \
+qui bavarde et flirte sur la pente. Les flammes y prennent une vie presque animale. Le \
+mélange de réalisme dans le paysage et de rêverie romantique dans le feu est, selon le \
+même musée, caractéristique de son art."""
+histoire = """
+Après ses études, Astrup revient en 1902 dans la vallée de Jølster, où il avait grandi \
+au presbytère d'Ålhus ; en 1913, il s'installe avec sa famille à Sandalstrand, sur la \
+rive sud du lac Jølstravatnet. Il ne cesse de reprendre ses motifs préférés, en \
+peinture comme en gravure sur bois en couleurs : il a peint plusieurs versions du feu \
+de la Saint-Jean à Sandalstrand. Celle-ci a été commencée en 1912 puis reprise en 1926, \
+deux ans avant sa mort. Le Nasjonalmuseet d'Oslo l'a achetée en 1984. En 2015, elle a \
+été présentée à Oslo et à Helsinki dans l'exposition Le Nord magique, consacrée à l'art \
+finlandais et norvégien autour de 1900."""
+facture = """
+Astrup peint ici à l'huile sur papier, ensuite collé sur un panneau. Il cerne les \
+formes, simplifie les montagnes en grandes masses sombres et réserve les couleurs les \
+plus vives au feu, dont les flammes sont stylisées en arabesques décoratives. La \
+matière est épaisse, travaillée en couches successives, car il retouchait ses tableaux \
+pendant des années. Le contraste entre les verts profonds de la nuit claire et l'orangé \
+du brasier fait de la flamme une source de lumière qui irradie tout le tableau."""
+details = [
+  "La silhouette solitaire, noire, debout devant le brasier.",
+  "Les flammes qui se recourbent en crochets, comme des têtes de dragons.",
+  "La cascade blanche sur la pente de droite.",
+  "Le petit feu qui fume en bas à gauche, à l'écart.",
+]
+themes = ["saint-jean", "feu", "montagne", "fête", "norvège"]
+anecdote = """
+Fils de pasteur, Astrup souffrait d'asthme et d'une santé fragile. Il meurt d'une \
+pneumonie en 1928, à quarante-sept ans. Sa ferme de Sandalstrand, où il vécut avec sa \
+femme Engel et leurs huit enfants, est aujourd'hui connue sous le nom d'Astruptunet."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.15
+
+[[oeuvres]]
+titre = "Riddarfjärden à Stockholm"
+artiste = "Eugène Jansson"
+annee = "1898"
+image = "riddarfjarden.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Riddarfjärden,_Stockholm_(Eugène_Jansson)_-_Nationalmuseum_-_18703.tif"
+technique = "Huile sur toile, 150 × 135 cm"
+collection = "Nationalmuseum, Stockholm"
+note = "Stockholm la nuit, vu depuis les hauteurs de Södermalm : la baie de Riddarfjärden et les lumières de la ville, tout en bleu."
+description = """
+La vue plonge d'une hauteur sur une vaste étendue d'eau nocturne, d'un bleu profond, \
+qui occupe presque tout le tableau. Au loin, la ville n'est qu'une bande sombre \
+ponctuée de lumières, dont les reflets descendent dans l'eau en longues traînées \
+verticales. Quelques clochers pointus se découpent sur une mince bande de ciel \
+rougeoyant, dernier reste du crépuscule ou premier signe de l'aube. Au-dessus, le ciel \
+est un tourbillon de traits bleu-gris. Au premier plan, en contrebas, une rive sombre \
+longe l'eau ; les réverbères y forment de grandes spirales de lumière blanche, comme \
+des galaxies. Tout à gauche, la silhouette d'un bâtiment, avec son toit et sa cheminée, \
+se détache sur ce halo. En bas à droite, la signature et la date."""
+evocation = """
+Jansson peint la ville qu'il voit de chez lui, mais il en fait une vision presque \
+cosmique : l'eau devient un gouffre, les lampes deviennent des astres. Le bleu, qui \
+envahit tout, dit la mélancolie des nuits de Stockholm, leur silence et leur beauté. \
+Ses contemporains l'ont surnommé le « peintre bleu ». Les historiens soulignent dans \
+ces nocturnes l'influence d'Edvard Munch, et rapprochent les spirales de lumière de \
+celles de Van Gogh. Jansson, socialiste convaincu, issu d'un milieu modeste, montre \
+aussi une ville moderne, éclairée par ses réverbères, ses quais et ses bateaux, où \
+l'activité humaine ne se devine plus que par la lumière."""
+histoire = """
+Faute d'argent, Jansson n'a pas fait, comme la plupart des peintres de sa génération, \
+le voyage d'études à Paris ; il ne quitte les pays nordiques qu'en 1900. Après la mort \
+de son père, en 1891, il s'installe avec sa mère et son frère à Södermalm, le quartier \
+populaire du sud de Stockholm, dans un appartement de la rue Bastugatan perché sur les \
+hauteurs, avec vue sur la baie de Riddarfjärden et la vieille ville. Jusqu'en 1904 \
+environ, la plupart de ses tableaux sont des vues nocturnes prises de sa fenêtre ou des \
+rues voisines. En 1898, l'année de ce tableau, le banquier et collectionneur Ernest \
+Thiel visite son atelier et lui achète trois toiles : c'est le début de la \
+reconnaissance."""
+facture = """
+Le tableau est presque monochrome : des bleus, du noir, quelques blancs et une seule \
+note rouge à l'horizon. Jansson laisse ses coups de pinceau bien visibles, en longs \
+traits parallèles dans l'eau et en courbes croisées dans le ciel, si bien que toute la \
+surface vibre. Les reflets des lumières sont posés en tirets verticaux, les halos des \
+réverbères en spirales épaisses. La composition est très simple, en bandes \
+horizontales, ce qui donne à l'immensité de l'eau toute sa force, et annonce \
+l'abstraction vers laquelle tendent ses nocturnes."""
+details = [
+  "Les reflets des lumières de la ville, en longues traînées verticales sur l'eau.",
+  "Les clochers qui se découpent sur la mince bande de ciel rouge.",
+  "Les spirales lumineuses des réverbères, sur la rive au premier plan.",
+  "La silhouette d'un toit et d'une cheminée, à gauche, au-dessus du halo.",
+]
+themes = ["nuit", "ville", "bleu", "stockholm", "eau"]
+anecdote = """
+Ses amis peintres l'appelaient aussi « Jansson-pétrole », car ses tableaux bleus leur \
+faisaient penser à la lumière chaude des lampes à pétrole, selon le Nationalmuseum."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.35
+
+[[oeuvres]]
+titre = "La Mère de Lemminkäinen"
+artiste = "Akseli Gallen-Kallela"
+annee = "1897"
+image = "mere-lemminkainen.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_Lemminkäisen_äiti_-_A_I_640_-_Finnish_National_Gallery.jpg"
+technique = "Tempera sur toile, 85,5 × 108,5 cm"
+collection = "Ateneum, Galerie nationale de Finlande, Helsinki"
+note = "Au bord du fleuve des morts, une mère veille le corps de son fils qu'elle a repêché et recousu, et implore le ciel : une scène du Kalevala."
+description = """
+Sur une grève de galets, au bord d'un fleuve noir, une femme âgée est assise, coiffée \
+d'un fichu blanc, une main posée sur le corps nu d'un jeune homme allongé sur un drap \
+blanc. Il a les yeux clos et le visage tourné vers le sol, ses cheveux blonds étalés \
+sur le linge. Elle lève vers le ciel un regard plein d'angoisse et d'attente. En haut, \
+au centre, de fins rayons dorés et ondulés descendent du ciel. Derrière eux, au bord de \
+l'eau, une rangée de pierres rouges, comme tachées de sang ; en haut à gauche, sur le \
+fleuve sombre, nage un cygne. Au premier plan, parmi les galets, gisent des crânes et \
+des os, et poussent d'étranges fleurs pâles."""
+evocation = """
+Le Kalevala, l'épopée nationale finlandaise compilée au XIXᵉ siècle par Elias Lönnrot, \
+raconte que le héros Lemminkäinen a été tué en voulant abattre le cygne de Tuonela, le \
+royaume des morts, et que son corps a été jeté en morceaux dans le fleuve. Sa mère l'a \
+ratissé dans l'eau, en a recousu les membres, et attend l'abeille qui doit lui \
+rapporter du miel des demeures d'Ukko, le dieu du ciel, pour le ramener à la vie. Le \
+peintre compose une pietà païenne. Pour lui, le cœur du tableau était l'amour maternel. \
+Peint deux ans après la mort de sa fille aînée, emportée par la diphtérie, il compte \
+parmi les œuvres où l'on a vu son art devenir plus sombre et plus intense."""
+histoire = """
+Gallen-Kallela peint ce tableau en 1897, pendant environ un an, dans Kalela, l'atelier \
+qu'il s'est fait construire en pleine forêt, au bord du lac Ruovesi. Ce sont les années \
+de ses grandes scènes du Kalevala, comme la Défense du Sampo, au moment où la Finlande, \
+grand-duché de l'Empire russe, cherche à affirmer sa culture face à la russification. \
+Le tableau entre dès 1898 dans les collections de l'Ateneum, au sein de la collection \
+Antell, financée par un legs privé destiné à l'art finlandais. Il n'a plus quitté le \
+musée, dont il est l'une des œuvres emblématiques. Une version à la gouache, longtemps \
+contestée, est conservée au musée Serlachius de Mänttä."""
+facture = """
+Gallen-Kallela choisit la tempera, plus mate et plus sourde que l'huile, qui donne aux \
+couleurs l'aspect d'une fresque ancienne. Depuis le début des années 1890, il a \
+abandonné le naturalisme appris à Paris pour un style synthétique, inspiré du \
+symbolisme : contours dessinés, grandes surfaces de couleur, composition en frise. Le \
+fond noir du fleuve fait ressortir le blanc du drap et la pâleur du corps. Les galets \
+du premier plan sont peints un à un, avec une précision presque obsessionnelle."""
+details = [
+  "Le cygne de Tuonela, qui nage sur le fleuve noir, en haut à gauche.",
+  "Les rayons dorés et ondulés qui descendent du ciel, au centre.",
+  "La rangée de pierres rouges, comme ensanglantées, le long de l'eau.",
+  "Les crânes et les os parmi les galets, au premier plan.",
+  "Les fleurs pâles et raides, fleurs du pays des morts.",
+]
+themes = ["kalevala", "mère", "mort", "mythe", "finlande"]
+anecdote = """
+Selon une tradition rapportée en Finlande, le peintre aurait fait poser sa propre mère \
+et, pour obtenir sur son visage une vraie expression de désespoir, lui aurait raconté \
+des histoires tristes et terribles pendant les séances."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 1.35
+
+[[oeuvres]]
+titre = "La Convalescente"
+artiste = "Helene Schjerfbeck"
+annee = "1888"
+image = "convalescente.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Helene_Schjerfbeck_-_The_Convalescent.jpg"
+technique = "Huile sur toile, 92 × 107 cm"
+collection = "Ateneum, Galerie nationale de Finlande, Helsinki"
+note = "Une fillette qui relève de maladie, calée dans un fauteuil d'osier, contemple une branche qui bourgeonne : le retour de la vie."
+description = """
+Une petite fille aux cheveux roux en bataille est assise dans un grand fauteuil \
+d'osier, calée contre de gros oreillers blancs et enveloppée dans un drap ou une \
+couverture claire, qui retombe jusqu'au sol. Elle porte un corsage sombre. Penchée en \
+avant vers une table de bois foncé, elle tient délicatement un rameau aux minuscules \
+feuilles, planté dans une petite tasse bleue et blanche. Elle le regarde avec une \
+attention intense. Sur la table, des livres, une carafe et des objets de verre \
+accrochent la lumière. Derrière elle, une fenêtre éclaire la scène par la gauche, et un \
+autre jour semble venir de la droite. Le fond de la pièce, sombre, est fait de \
+boiseries. En bas à gauche, la signature et la date."""
+evocation = """
+L'enfant malade était un sujet courant de la peinture des années 1880, souvent traité \
+de façon pathétique. Schjerfbeck en fait un tableau de la guérison : le rameau qui \
+bourgeonne, au printemps, répond à la vie qui revient dans le corps de l'enfant, et la \
+lumière qui envahit les blancs dit le retour des forces. On y a vu aussi une sorte \
+d'autoportrait symbolique : la peintre, boiteuse depuis une chute dans l'enfance, \
+venait de voir rompues ses fiançailles avec un peintre suédois, en partie à cause de sa \
+santé. Le regard concentré de la fillette, tout entier tourné vers ce petit miracle, \
+donne au tableau une émotion sans sentimentalisme."""
+histoire = """
+Schjerfbeck peint ce tableau à St Ives, en Cornouailles, où s'était formée une colonie \
+d'artistes venus de toute l'Europe ; elle y séjourne en 1887-1888. Le modèle, dont on \
+ignore le nom, serait une fillette d'environ six ans, très vive, que son institutrice \
+laissait volontiers poser pour les peintres. Le tableau est exposé au Salon de Paris de \
+1888 sous le titre Première verdure, puis rapporté en Finlande, où la Société \
+finlandaise des beaux-arts l'achète la même année. Certains critiques le trouvent alors \
+trop français, d'autres en louent la liberté. L'année suivante, à l'Exposition \
+universelle de Paris de 1889, il reçoit une médaille de bronze. Il est aujourd'hui l'un \
+des tableaux les plus aimés de l'Ateneum."""
+facture = """
+La touche est vive et libre, en particulier dans les blancs des oreillers et du drap, \
+faits de nuances grises, bleutées et dorées. Schjerfbeck, formée à Paris, y montre ce \
+qu'elle a retenu de la peinture de plein air et de l'impressionnisme : une lumière \
+venue de deux côtés, des reflets sur le verre, des contours qui se dissolvent. Le \
+tressage du fauteuil d'osier est rendu avec virtuosité. C'est son dernier grand tableau \
+dans l'esprit réaliste des années 1880 : elle simplifiera ensuite de plus en plus \
+formes et couleurs."""
+details = [
+  "Le rameau aux toutes petites feuilles, dans la tasse bleue et blanche.",
+  "Les cheveux de la fillette, éclairés à contre-jour.",
+  "Le tressage du fauteuil d'osier, à gauche.",
+  "La signature H. Schjerfbeck et la date, en bas à gauche.",
+]
+themes = ["enfance", "guérison", "printemps", "lumière", "intérieur"]
+anecdote = """
+En 2006, l'Ateneum a demandé au public d'élire le tableau de la nation finlandaise. La \
+Convalescente est arrivée deuxième, juste derrière L'Ange blessé de Simberg, accroché \
+dans cette même salle."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "L'Ange blessé"
+artiste = "Hugo Simberg"
+annee = "1903"
+image = "ange-blesse.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Hugo_Simberg_-_The_Wounded_Angel_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 127 × 154 cm"
+collection = "Ateneum, Galerie nationale de Finlande, Helsinki"
+note = "Deux garçons graves portent sur une civière un ange aux yeux bandés et à l'aile blessée : le tableau le plus aimé de Finlande."
+description = """
+Deux garçons avancent de gauche à droite sur un chemin de terre, portant entre eux une \
+civière faite de deux perches. Sur celle-ci est assise une jeune fille ange, en robe \
+blanche, avec de grandes ailes blanches ; un bandeau blanc lui entoure la tête à \
+hauteur des yeux, et son aile gauche est tachée de sang. Tête baissée, pieds nus, elle \
+serre un petit bouquet de perce-neige. Le garçon de gauche, tout en noir avec un \
+chapeau, regarde le sol ; celui de droite, en veste brune, tourne vers nous un regard \
+sombre et sérieux. Le paysage est désolé : une terre brune, quelques buissons secs, de \
+petites fleurs blanches, puis une baie aux eaux grises et, au loin, une rive basse sous \
+un ciel pâle."""
+evocation = """
+Simberg a toujours refusé d'expliquer ce tableau : il voulait qu'il éveille chez chacun \
+une émotion, quelle qu'elle soit. On sait cependant qu'il l'a peint après une grave \
+maladie, en 1902-1903, dont il avait vécu la guérison comme un miracle, une \
+renaissance ; l'ange blessé a souvent été lu comme une image de sa propre fragilité. On \
+y a vu aussi la vulnérabilité de l'innocence et des idéaux, portés par des enfants trop \
+graves pour leur âge. Les perce-neige annoncent la guérison et le printemps. Le garçon \
+qui nous regarde nous prend à témoin, comme pour dire que cette scène nous concerne \
+tous. Le cortège semble se diriger vers les établissements de bienfaisance qui \
+bordaient alors ce parc, dont une école pour jeunes filles aveugles."""
+histoire = """
+Simberg travaillait ce sujet depuis son retour d'Italie, en 1898. Ses esquisses et les \
+photographies qu'il prit pour préparer le tableau montrent des variantes : l'ange \
+transporté dans une brouette, ou porté par de petits diables. Le paysage, lui, ne \
+change pas : c'est le parc d'Eläintarha à Helsinki, au bord de la baie de Töölönlahti, \
+lieu de promenade populaire. Présenté à l'exposition d'automne de l'Ateneum en 1903, le \
+tableau enthousiasme les peintres, à commencer par Gallen-Kallela, comme Simberg le \
+raconte à sa sœur dans une lettre ; il lui vaut un prix de l'État. En 1905-1906, \
+Simberg en peint une grande version à fresque dans l'église Saint-Jean de Tampere, \
+aujourd'hui la cathédrale. En 2006, le public de l'Ateneum l'a élu tableau national de \
+la Finlande."""
+facture = """
+Simberg peint dans un style volontairement simple, presque naïf, qui rappelle l'art \
+populaire et l'enluminure. Les figures sont cernées, posées de profil comme dans une \
+frise, sur un fond de paysage traité en larges bandes horizontales. La palette est \
+sourde et terreuse, bruns, gris, ocres, d'où se détachent le blanc lumineux de l'ange \
+et le noir des vêtements. Il n'y a presque pas d'ombres : le symbolisme passe ici par \
+la clarté du dessin plus que par les effets."""
+details = [
+  "La petite tache de sang sur l'aile gauche de l'ange.",
+  "Le bouquet de perce-neige que l'ange serre dans sa main.",
+  "Les pieds nus de l'ange, qui pendent au-dessus du chemin.",
+  "Le regard du garçon de droite, tourné vers le spectateur.",
+  "La rive basse de la baie de Töölönlahti, à l'horizon.",
+]
+themes = ["ange", "enfance", "symbolisme", "guérison", "mystère"]
+anecdote = """
+Simberg n'a pas même donné de titre à son tableau : dans le catalogue de l'exposition \
+de 1903, il n'a inscrit qu'un tiret à la place du nom. Le titre de L'Ange blessé s'est \
+imposé ensuite."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.6
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Peder Severin Krøyer"
+vie = "Stavanger (Norvège), 23 juillet 1851 – Skagen (Danemark), 21 novembre 1909"
+biographie = """
+Né en Norvège d'une mère jugée incapable de l'élever, Peder Severin Krøyer grandit à \
+Copenhague chez sa tante et son oncle, le zoologiste Henrik Krøyer. Doué très tôt, il \
+entre à douze ans à l'Académie royale des beaux-arts. Dès 1874, le fabricant de tabac \
+Heinrich Hirschsprung lui achète ses premières œuvres et devient son mécène et ami. De \
+1877 à 1881, il voyage en Europe, étudie à Paris auprès de Léon Bonnat et découvre les \
+impressionnistes. En 1882, il passe son premier été à Skagen, village de pêcheurs à la \
+pointe nord du Danemark, où une colonie d'artistes s'est formée autour de Michael et \
+Anna Ancher. Il y peint les pêcheurs, puis les fêtes et les soirées des artistes. En \
+1889, il épouse Marie Triepcke, peintre elle aussi, qui devient son modèle favori ; ils \
+s'installent à Skagen en 1891 et ont une fille, Vibeke. Mais la santé de Krøyer se \
+dégrade : il fait plusieurs séjours en hôpital psychiatrique, et le couple se sépare, \
+avant de divorcer en 1905. Sa vue baisse jusqu'à la cécité ; il peint pourtant presque \
+jusqu'à la fin. Il meurt à Skagen en 1909. Ses tableaux comptent aujourd'hui parmi les \
+plus chers de la peinture danoise."""
+style = """
+Portraitiste brillant et peintre de grandes compositions de groupe, Krøyer unit un \
+dessin précis, appris à l'Académie et chez Bonnat, à la clarté du plein air \
+impressionniste. Il est le peintre de la lumière de Skagen : soleil de midi sur les \
+pêcheurs, puis, à partir des années 1890, les heures bleues des soirs d'été, où mer et \
+ciel se fondent. Il a fait de Skagen un mythe de l'art danois."""
+
+[[artistes]]
+nom = "Carl Larsson"
+vie = "Stockholm, 28 mai 1853 – Falun, 22 janvier 1919"
+biographie = """
+Carl Larsson naît dans la vieille ville de Stockholm dans une famille très pauvre ; son \
+père est violent, sa mère, blanchisseuse, fait vivre la famille. À treize ans, un \
+instituteur l'encourage à entrer à l'Académie royale des beaux-arts, où il s'impose peu \
+à peu. Il gagne d'abord sa vie comme dessinateur de presse et illustrateur. En 1877, il \
+part pour Paris, où il connaît des années difficiles. En 1882, il rejoint la colonie \
+d'artistes scandinaves de Grez-sur-Loing, près de Fontainebleau : il y rencontre la \
+peintre Karin Bergöö, qu'il épouse en 1883, et y adopte l'aquarelle. De retour en \
+Suède, il enseigne à Göteborg, puis s'installe avec Karin à Lilla Hyttnäs, la maison de \
+Sundborn que leur a donnée le père de Karin en 1888. Leurs huit enfants deviennent ses \
+modèles, et les albums illustrés de la maison, à commencer par Ett hem en 1899, le \
+rendent célèbre dans toute l'Europe. Il peint aussi de grands décors, notamment pour le \
+Nationalmuseum ; le dernier, Midvinterblot, achevé en 1915, est d'abord refusé. Il \
+souffre à la fin de sa vie de dépressions et meurt en 1919, peu après une attaque."""
+style = """
+Larsson est le peintre du bonheur domestique : des aquarelles lumineuses, au trait \
+d'illustrateur, où la vie de famille, les fêtes et les intérieurs de Sundborn sont \
+décrits avec humour et tendresse. Ses images, inspirées des estampes japonaises et du \
+mouvement Arts and Crafts, ont contribué à définir un style suédois clair, simple et \
+coloré, qui influence encore la décoration des maisons."""
+
+[[artistes]]
+nom = "Vilhelm Hammershøi"
+vie = "Copenhague, 15 mai 1864 – Copenhague, 13 février 1916"
+biographie = """
+Fils d'un négociant de Copenhague, Vilhelm Hammershøi apprend le dessin dès l'âge de \
+huit ans, puis étudie à l'Académie royale des beaux-arts du Danemark. De 1883 à 1885, \
+il suit aussi l'enseignement de Peder Severin Krøyer dans une école libre. Il débute au \
+Salon de Charlottenborg en 1885 avec le portrait de sa sœur Anna, mais son art \
+déconcerte vite les institutions : en 1888, le jury de Charlottenborg refuse de \
+l'exposer. Il épouse en 1891 Ida Ilsted, sœur de son ami le peintre Peter Ilsted ; elle \
+devient la figure, souvent vue de dos, de ses intérieurs. Hammershøi vit presque \
+toujours à Copenhague, dans des appartements anciens qu'il choisit avec soin, notamment \
+au 30 puis au 25 de la rue Strandgade. Il voyage pourtant en Europe et aime \
+particulièrement Londres, dont il peint les brumes et le British Museum. Discret, \
+taciturne, il est admiré par des artistes et écrivains comme Rainer Maria Rilke. Il \
+meurt d'un cancer en 1916. Longtemps oublié, il a été redécouvert à la fin du XXᵉ \
+siècle, avec des rétrospectives à Paris, New York et Londres."""
+style = """
+Hammershøi peint presque toujours les mêmes sujets : des pièces vides ou habitées par \
+une seule figure, des façades sans passants, des paysages déserts. Sa palette de gris, \
+de blancs et de bruns, ses compositions géométriques et sa lumière douce créent une \
+atmosphère de silence et d'étrangeté. On l'a comparé à Vermeer et à Whistler ; il est \
+aujourd'hui l'un des peintres danois les plus connus au monde."""
+
+[[artistes]]
+nom = "Anna Ancher"
+vie = "Skagen (Danemark), 18 août 1859 – Skagen, 15 avril 1935"
+biographie = """
+Anna Brøndum naît à Skagen, à la pointe nord du Jutland, où son père tient l'hôtel \
+Brøndum. Les peintres qui y séjournent l'initient très tôt à leur art. Elle étudie \
+ensuite trois ans le dessin à Copenhague, dans l'école du paysagiste Vilhelm Kyhn, et \
+plus tard à Paris, dans l'atelier de Pierre Puvis de Chavannes. En 1880, elle épouse le \
+peintre Michael Ancher, venu à Skagen ; ils ont une fille, Helga. À une époque où l'on \
+attend d'une femme mariée qu'elle renonce à son métier, elle continue à peindre toute \
+sa vie. Elle est la seule des peintres de Skagen à y être née, et elle peint les gens \
+qu'elle connaît : pêcheurs, vieilles femmes, servantes, enfants, et les pièces de sa \
+propre maison. Ses tableaux représentent l'art danois à l'étranger, notamment à \
+l'Exposition universelle de Chicago en 1893. Elle reçoit en 1913 la médaille Ingenio et \
+Arti. Elle meurt à Skagen en 1935. La maison des Ancher, léguée par leur fille, est \
+devenue un musée, et le couple figurait sur les billets danois de mille couronnes émis \
+en 2004."""
+style = """
+Anna Ancher est une coloriste attentive à la lumière naturelle : soleil qui entre dans \
+une pièce, reflets sur un mur, contre-jour derrière un rideau. Elle peint la vie \
+quotidienne des femmes et des humbles de Skagen avec gravité et sans pittoresque, dans \
+l'esprit de la « percée moderne » de l'art nordique. Elle est considérée comme l'une \
+des plus grandes artistes danoises."""
+
+[[artistes]]
+nom = "Harriet Backer"
+vie = "Holmestrand (Norvège), 21 janvier 1845 – Oslo, 25 mars 1932"
+biographie = """
+Harriet Backer naît dans une famille aisée d'armateurs, à Holmestrand, au sud de la \
+Norvège ; la famille s'installe à Christiania, l'actuelle Oslo, en 1856. Elle prend des \
+leçons de dessin dès l'âge de douze ans, puis étudie avec plusieurs maîtres norvégiens. \
+Elle accompagne aussi sa sœur, la pianiste et compositrice Agathe Backer Grøndahl, dans \
+ses tournées européennes. De 1874 à 1878, elle travaille à Munich auprès du peintre \
+Eilif Peterssen, puis s'installe à Paris, où elle étudie auprès de Léon Bonnat et de \
+Jean-Léon Gérôme et partage un atelier avec son amie Kitty Kielland. Elle y découvre la \
+peinture de plein air et passe aux sujets de la vie contemporaine. En 1889, elle reçoit \
+une médaille d'argent à l'Exposition universelle. Rentrée en Norvège en 1888, elle \
+dirige de 1889 à 1912 une école de peinture qui forme une génération d'artistes, dont \
+Nikolai Astrup. Elle peint lentement, n'achève qu'environ cent quatre-vingts tableaux, \
+et reçoit les plus hautes distinctions de son pays. Elle meurt à Oslo en 1932."""
+style = """
+Harriet Backer est la grande peintre norvégienne des intérieurs : salons bourgeois, \
+pièces paysannes, églises de campagne. Formée au réalisme, elle s'en écarte par une \
+touche libre et une recherche très poussée de la couleur, qu'elle construit tache par \
+tache, comme un accord musical. Pionnière parmi les femmes artistes de son temps, elle \
+a marqué durablement l'art norvégien."""
+
+[[artistes]]
+nom = "Anders Zorn"
+vie = "Mora (Suède), 18 février 1860 – Mora, 22 août 1920"
+biographie = """
+Anders Zorn grandit dans la ferme de ses grands-parents, près de Mora, en Dalécarlie. \
+De 1875 à 1880, il étudie à l'Académie royale des beaux-arts de Stockholm, où son \
+talent étonne ses professeurs ; les commandes arrivent vite. En 1885, il épouse Emma \
+Lamm, issue d'une riche famille de commerçants juifs de Stockholm, cultivée et \
+passionnée d'art, qui le soutient toute sa vie. Il voyage beaucoup, à Londres, en \
+Espagne, en Italie, aux États-Unis, et vit longtemps à Paris, où il se lie avec le \
+peintre finlandais Albert Edelfelt. À vingt-neuf ans, il est fait chevalier de la \
+Légion d'honneur lors de l'Exposition universelle de 1889. Portraitiste recherché, il \
+peint le roi Oscar II et trois présidents américains, dont Theodore Roosevelt. En 1896, \
+il revient s'installer à Mora, dans la maison qu'il agrandit, Zorngården ; il y peint \
+la vie paysanne et les baigneuses, et s'emploie à préserver la musique populaire et les \
+vieilles maisons de bois. Graveur à l'eau-forte réputé, il est aussi sculpteur. Il \
+meurt à Mora en 1920 ; avec Emma, il lègue ses biens à l'État suédois."""
+style = """
+Zorn est un virtuose de la touche : quelques coups de brosse larges et rapides lui \
+suffisent pour rendre un visage, une étoffe ou un reflet sur l'eau. Il excelle dans les \
+portraits mondains comme dans les scènes de la vie paysanne de Dalécarlie et les nus en \
+plein air. Ses eaux-fortes, faites de hachures libres, comptent parmi les plus admirées \
+de son temps."""
+
+[[artistes]]
+nom = "Nikolai Astrup"
+vie = "Kalvåg (Norvège), 30 août 1880 – Førde (Norvège), 21 janvier 1928"
+biographie = """
+Nikolai Astrup naît sur la côte ouest de la Norvège et grandit à Jølster, au presbytère \
+d'Ålhus, où son père est pasteur ; il est l'aîné de onze enfants. Son père veut en \
+faire un pasteur et l'envoie à l'école de la cathédrale de Trondheim, mais le garçon \
+préfère le dessin. En 1899, il part pour Kristiania, l'actuelle Oslo, et entre vite à \
+l'école de peinture de Harriet Backer, où il étudie jusqu'en 1901. Il séjourne ensuite \
+à Paris, où il fréquente l'Académie Colarossi, et voyage en Allemagne. Dès 1902, il \
+revient vivre à Jølster, qu'il ne quittera plus guère. En 1907, il épouse Engel Sunde, \
+avec qui il a huit enfants ; en 1913, la famille s'installe à Sandalstrand, sur la rive \
+du lac Jølstravatnet, où il cultive son jardin et peint inlassablement les mêmes \
+paysages. Il expose à Kristiania et à Bergen, et devient l'un des artistes les plus \
+originaux de sa génération. Asthmatique, de santé fragile, il meurt d'une pneumonie en \
+1928, à quarante-sept ans."""
+style = """
+Astrup peint et grave les paysages et les coutumes de Jølster dans des couleurs \
+intenses et des formes simplifiées, fortement cernées. Néo-romantique, il mêle \
+l'observation précise de la nature à une rêverie presque magique. Ses gravures sur bois \
+en couleurs, qu'il retravaillait à la main, sont d'une grande invention. On l'a souvent \
+comparé à Munch, avec des tableaux plus lumineux et plus sereins."""
+
+[[artistes]]
+nom = "Eugène Jansson"
+vie = "Stockholm, 18 mars 1862 – Nacka (Suède), 15 juin 1915"
+biographie = """
+Eugène Jansson naît à Stockholm dans une famille modeste mais passionnée de musique et \
+d'art. Une scarlatine contractée à quatorze ans lui laisse une santé fragile, une \
+mauvaise vue et une mauvaise ouïe. Il étudie au Tekniska skolan, auprès du peintre \
+Edvard Perséus, puis à l'Académie royale des beaux-arts, mais n'a pas les moyens \
+d'aller à Paris. Socialiste, il participe au mouvement des « Opposants », qui \
+contestent l'Académie. Après la mort de son père en 1891, il vit avec sa mère et son \
+frère Adrian à Södermalm, sur les hauteurs qui dominent la baie de Riddarfjärden. Il en \
+tire, jusque vers 1904, une longue série de nocturnes bleus. En 1898, le banquier \
+Ernest Thiel lui achète ses premières toiles et devient son principal collectionneur ; \
+la galerie Thiel, à Stockholm, conserve encore le plus grand ensemble de ses œuvres. \
+Épuisé par ses vues de ville, il se tourne vers 1907 vers la figure : nageur assidu, il \
+peint les marins et les athlètes des bains de la Marine. Il meurt en 1915 d'une \
+hémorragie cérébrale."""
+style = """
+Dans sa période bleue, Jansson peint Stockholm la nuit en vastes vues plongeantes, \
+dominées par le bleu, aux coups de pinceau croisés et visibles, où les lumières de la \
+ville deviennent des halos et des spirales. Ces nocturnes, proches de Munch par leur \
+intensité, glissent peu à peu vers l'abstraction. Ses nus masculins plus tardifs, \
+puissants et lumineux, sont aujourd'hui redécouverts."""
+
+[[artistes]]
+nom = "Akseli Gallen-Kallela"
+vie = "Pori (Finlande), 26 avril 1865 – Stockholm, 7 mars 1931"
+biographie = """
+Né Axel Gallén à Pori, dans une famille de langue suédoise, il étudie à Helsinki contre \
+l'avis de son père, puis à Paris, de 1884 à 1889, à l'Académie Julian et chez Cormon. \
+Il y adopte d'abord le naturalisme de Jules Bastien-Lepage. En 1890, il épouse Mary \
+Slöör ; leur voyage de noces en Carélie, où il recueille des chants et des images pour \
+illustrer le Kalevala, ouvre la voie au « carélianisme ». En 1895, la mort de sa fille \
+aînée, Impi Marjatta, le bouleverse. De 1896 à 1899, il peint ses grandes scènes du \
+Kalevala, comme la Défense du Sampo et la Mère de Lemminkäinen, dans son atelier de \
+Kalela, en forêt. À l'Exposition universelle de Paris de 1900, il décore à fresque le \
+pavillon finlandais. En 1907, il finnicise son nom en Akseli Gallen-Kallela. Il vit \
+aussi deux ans au Kenya, à partir de 1909, puis, après l'indépendance de la Finlande, \
+dessine pour le nouvel État drapeaux et décorations. Il meurt en 1931 à Stockholm, au \
+retour d'un voyage à Copenhague."""
+style = """
+Gallen-Kallela passe du réalisme appris à Paris à un style synthétique et symboliste : \
+contours fermes, couleurs franches, compositions décoratives. Il donne un visage aux \
+héros du Kalevala et devient le peintre de l'identité finlandaise. Peintre, graveur, \
+fresquiste, designer et architecte de ses propres ateliers, il est la grande figure de \
+l'âge d'or de l'art finlandais."""
+
+[[artistes]]
+nom = "Helene Schjerfbeck"
+vie = "Helsinki, 10 juillet 1862 – Saltsjöbaden (Suède), 23 janvier 1946"
+biographie = """
+À quatre ans, Helene Schjerfbeck tombe dans un escalier et se blesse à la hanche : elle \
+boitera toute sa vie. Son talent est si précoce qu'elle entre à onze ans à l'école de \
+dessin de la Société finlandaise des beaux-arts. Grâce à des bourses, elle part en 1880 \
+pour Paris, travaille à l'Académie Colarossi et peint en Bretagne, à Pont-Aven. En \
+1887-1888, à St Ives, en Cornouailles, elle peint La Convalescente, médaillée à \
+l'Exposition universelle de 1889. Ses fiançailles avec un peintre suédois sont rompues \
+en 1885. Dans les années 1890, elle enseigne à Helsinki, puis, malade, s'installe en \
+1902 avec sa mère à Hyvinkää, petite ville loin du monde de l'art, où elle vit près de \
+vingt ans. Elle y invente, presque seule, un art moderne et dépouillé. À partir de \
+1913, le marchand Gösta Stenman la fait connaître ; sa première exposition personnelle \
+a lieu en 1917. Après la mort de sa mère, elle vit à Ekenäs. En 1944, elle se réfugie \
+en Suède, à Saltsjöbaden, où elle peint ses derniers autoportraits, et meurt en 1946."""
+style = """
+Schjerfbeck commence par un réalisme virtuose, appris à Paris, puis simplifie sans \
+cesse : formes réduites à l'essentiel, couleurs sourdes, surfaces grattées et usées. \
+Ses portraits et sa longue série d'autoportraits, jusqu'aux visages presque effacés de \
+la vieillesse, comptent parmi les sommets de la peinture moderne nordique. Longtemps \
+connue surtout en Finlande et en Suède, elle est aujourd'hui célébrée dans le monde \
+entier."""
+
+[[artistes]]
+nom = "Hugo Simberg"
+vie = "Hamina (Finlande), 24 juin 1873 – Ähtäri (Finlande), 12 juillet 1917"
+biographie = """
+Fils d'un colonel, Hugo Simberg naît à Hamina, dans le sud-est de la Finlande. Une \
+tante, qui tient une école dans la maison familiale et peint en amateur, l'encourage à \
+devenir artiste. Il étudie à l'école de dessin de Viipuri, puis, de 1893 à 1895, à \
+celle de la Société finlandaise des beaux-arts, où Helene Schjerfbeck est l'un de ses \
+professeurs. De 1895 à 1897, il devient l'élève particulier d'Akseli Gallen-Kallela, \
+dans son atelier de Kalela, en forêt. Il voyage ensuite à Londres, à Paris et en \
+Italie. Ses petites œuvres étranges, peuplées de diables, de squelettes et d'anges, \
+sont bien accueillies aux expositions d'automne. À l'automne 1902, il tombe gravement \
+malade ; après sa guérison, il peint L'Ange blessé. De 1904 à 1906, il décore avec \
+Magnus Enckell l'église Saint-Jean de Tampere : ses peintures, avec le serpent et les \
+garçons nus portant une guirlande, font scandale et ne sont approuvées qu'à une voix \
+près. Il enseigne ensuite à l'Ateneum, épouse Anni Bremer en 1910, et meurt en 1917, à \
+quarante-quatre ans."""
+style = """
+Simberg est le grand symboliste finlandais : avec des moyens très simples, un dessin \
+naïf, des couleurs sourdes, il crée un monde à la fois macabre et tendre, où la Mort \
+jardine, où les diables jouent du violon et où les anges sont blessés. Sans jamais \
+expliquer ses images, il leur donne une profondeur mélancolique qui touche encore \
+largement le public."""

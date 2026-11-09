@@ -596,6 +596,23 @@ async fn home(_req: Request) -> Page {
                 .child(div().class("stat reveal").child(strong().text(artist_count().to_string())).child(span().text("artistes")))
                 .child(div().class("stat reveal").child(strong().text(rooms.to_string())).child(span().text("salles en 3D"))),
         )
+        .child({
+            let current: Vec<&'static Exhibition> = EXHIBITIONS.iter().filter(|e| e.ephemeral).collect();
+            if current.is_empty() {
+                section()
+            } else {
+                section()
+                    .class("exhibitions ephemeral")
+                    .id("en-ce-moment")
+                    .child(h2().class("section-title").text("En ce moment dans les musées du monde"))
+                    .child(p().class("lead").text(
+                        "Des expositions éphémères, refaites chaque semaine : des œuvres tirées au sort parmi celles que \
+                         de grands musées exposent en ce moment dans leurs salles. Quand un musée change son accrochage, \
+                         l'exposition change avec lui.",
+                    ))
+                    .child(div().class("ex-grid").children(current.into_iter().enumerate().map(|(i, ex)| ex_card(i, ex))))
+            }
+        })
         .child(
             section()
                 .class("exhibitions")
@@ -604,37 +621,17 @@ async fn home(_req: Request) -> Page {
                 .child(p().class("lead").text(
                     "Les expositions, dans l'ordre de l'histoire : chacune est un style, un musée et ses artistes.",
                 ))
-                .child(nav().class("styles").attr("aria-label", "Les styles").children(EXHIBITIONS.iter().map(|ex| {
-                    a().class("chip")
-                        .href(format!("#{}", ex.slug))
-                        .style(format!("--accent:{}", rgb(ex.accent)))
-                        .text(movement_or_dates(ex))
-                })))
-                .child(div().class("ex-grid").children(EXHIBITIONS.iter().enumerate().map(|(i, ex)| {
-                    let card = article()
-                        .class("ex-card reveal")
-                        .id(ex.slug)
-                        .style(format!("--accent:{};animation-delay:{}ms", rgb(ex.accent), 40 * (i % 6)));
-                    let card = match ex.cover() {
-                        Some(art) => card.child(a().href(format!("/{}", ex.slug)).class("ex-cover").child(picture(ex, art, true))),
-                        None => card,
-                    };
-                    card.child(
-                        div()
-                            .class("ex-body")
-                            .child(p().class("kicker").text(format!("{} · {}", movement_or_dates(ex), ex.artist_dates)))
-                            .child(h3().child(a().href(format!("/{}", ex.slug)).text(ex.title)))
-                            .child(p().class("ex-artists").text(ex.artist))
-                            .child(p().class("muted ex-intro").text(ex.introduction))
-                            .child(p().class("tag").text(counts(ex)))
-                            .child(
-                                div()
-                                    .class("row")
-                                    .child(a().class("button").href(format!("/{}/galerie", ex.slug)).text("Visite 3D"))
-                                    .child(a().class("button ghost").href(format!("/{}", ex.slug)).text("Découvrir")),
-                            ),
-                    )
-                }))),
+                .child(nav().class("styles").attr("aria-label", "Les styles").children(
+                    EXHIBITIONS.iter().filter(|e| !e.ephemeral).map(|ex| {
+                        a().class("chip")
+                            .href(format!("#{}", ex.slug))
+                            .style(format!("--accent:{}", rgb(ex.accent)))
+                            .text(movement_or_dates(ex))
+                    }),
+                ))
+                .child(div().class("ex-grid").children(
+                    EXHIBITIONS.iter().filter(|e| !e.ephemeral).enumerate().map(|(i, ex)| ex_card(i, ex)),
+                )),
         )
         .child(features());
     layout(
@@ -643,6 +640,53 @@ async fn home(_req: Request) -> Page {
         "/",
         None,
         content,
+    )
+}
+
+/// La carte d'une exposition, sur l'accueil.
+fn ex_card(i: usize, ex: &'static Exhibition) -> Element {
+    let card = article().class("ex-card reveal").id(ex.slug).style(format!(
+        "--accent:{};animation-delay:{}ms",
+        rgb(ex.accent),
+        40 * (i % 6)
+    ));
+    let card = match ex.cover() {
+        Some(art) => card.child(
+            a().href(format!("/{}", ex.slug))
+                .class("ex-cover")
+                .child(picture(ex, art, true)),
+        ),
+        None => card,
+    };
+    card.child(
+        div()
+            .class("ex-body")
+            .child(p().class("kicker").text(format!(
+                "{} · {}",
+                movement_or_dates(ex),
+                ex.artist_dates
+            )))
+            .child(h3().child(a().href(format!("/{}", ex.slug)).text(ex.title)))
+            .child(
+                p().class("ex-artists")
+                    .text(if ex.ephemeral { ex.kicker } else { ex.artist }),
+            )
+            .child(p().class("muted ex-intro").text(ex.introduction))
+            .child(p().class("tag").text(counts(ex)))
+            .child(
+                div()
+                    .class("row")
+                    .child(
+                        a().class("button")
+                            .href(format!("/{}/galerie", ex.slug))
+                            .text("Visite 3D"),
+                    )
+                    .child(
+                        a().class("button ghost")
+                            .href(format!("/{}", ex.slug))
+                            .text("Découvrir"),
+                    ),
+            ),
     )
 }
 

@@ -21,6 +21,8 @@ pub struct Exhibition {
     pub artist_dates: &'static str,
     /// Le style ou le mouvement (« Renaissance italienne »).
     pub movement: &'static str,
+    /// Une exposition éphémère (refaite chaque semaine d'après les musées).
+    pub ephemeral: bool,
     pub kicker: &'static str,
     pub introduction: &'static str,
     /// La couleur d'accent de ses pages.
@@ -552,6 +554,16 @@ mod tests {
         for ex in EXHIBITIONS {
             let mut slugs = Vec::new();
             for work in ex.works() {
+                assert!(
+                    !slugs.contains(&work.slug()),
+                    "{} · {}",
+                    ex.slug,
+                    work.title()
+                );
+                slugs.push(work.slug());
+                if ex.ephemeral {
+                    continue;
+                }
                 let n = work.notice();
                 let who = format!("{} · {}", ex.slug, work.title());
                 for (part, text) in [
@@ -586,8 +598,6 @@ mod tests {
                         art.credit.licence
                     );
                 }
-                assert!(!slugs.contains(&work.slug()), "{who}");
-                slugs.push(work.slug());
                 assert_eq!(ex.work(work.slug()).map(|w| w.title()), Some(work.title()));
             }
         }

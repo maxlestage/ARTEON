@@ -1,0 +1,944 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « PEINTURE RUSSE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/peinture-russe/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /peinture-russe.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 125
+nom_court = "Peinture russe"
+mouvement = "Peinture russe, des Ambulants à l'âge d'argent"
+cadre = "dore"
+couleur = "#8b2c25"
+titre = "La peinture russe, des Ambulants à l'âge d'argent"
+artiste = "Répine, Aïvazovski, Sourikov, Levitan, Vroubel, Serov…"
+dates = "1850–1898"
+accroche = "Exposition virtuelle · Galerie Tretiakov, Moscou"
+introduction = """
+Au XIXᵉ siècle, la peinture russe s'affranchit de l'Académie impériale : en 1870, les \
+Ambulants fondent une société d'expositions itinérantes et peignent la vie du peuple, \
+l'histoire nationale et la nature russe, tandis qu'à la fin du siècle le cercle \
+d'Abramtsovo ouvre la voie au rêve et aux légendes. La visite réunit neuf peintres, \
+d'Aïvazovski à Vroubel, en dix toiles venues de la galerie Tretiakov de Moscou et du \
+Musée russe de Saint-Pétersbourg. Le bâtiment s'inspire de la galerie Tretiakov : on \
+entre par un vestibule qui évoque la façade dessinée par Viktor Vasnetsov, puis l'on \
+suit une enfilade de salles hautes, de la grande salle des Ambulants jusqu'à celle des \
+légendes."""
+vitrine = "bogatyrs.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Galerie Tretiakov"
+ville = "Moscou, Russie"
+architecte = "Viktor Vasnetsov (façade)"
+construction = "1902–1904 (façade)"
+presentation = """
+En 1856, Pavel Tretiakov, un riche marchand de textiles moscovite, achète ses premiers \
+tableaux de peintres russes contemporains, avec l'idée de fonder une galerie \
+nationale. Pendant quarante ans, il soutient les Ambulants, commande des portraits \
+d'écrivains et agrandit sans cesse sa maison du quartier de Zamoskvoretchie, au sud du \
+Kremlin, de salles éclairées par des verrières. En 1892, il offre à la ville de Moscou \
+sa collection et celle de son frère Sergueï ; la galerie municipale ouvre au public \
+l'année suivante. Au début du XXᵉ siècle, le peintre Viktor Vasnetsov dessine la \
+façade qui la rend célèbre : un pignon en forme de kokochnik, la coiffe des femmes \
+russes, un bas-relief de saint Georges, emblème de Moscou, et une frise d'ornements \
+colorés dans le style des anciennes églises russes. La galerie conserve aujourd'hui \
+l'art russe des icônes jusqu'au début du XXᵉ siècle ; l'art plus récent est exposé \
+dans un second bâtiment, sur le Krymski Val."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée de la Tretiakov : une maison de collectionneur \
+devenue une enfilade de salles hautes. On entre par le sud dans le vestibule de \
+Vasnetsov, aux murs crème, puis dans la salle des Ambulants, la plus vaste, haute de \
+neuf mètres, aux murs ocre clair. À l'ouest s'ouvre la salle « La mer et la nuit », \
+aux murs beige ; à l'est, la salle « La forêt et la plaine », d'un vert pâle. Au nord \
+de celle-ci, on termine par la salle « Le cercle d'Abramtsovo », aux murs rose poudré."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la galerie Tretiakov à Moscou : un vestibule qui évoque la façade de
+# Viktor Vasnetsov, puis une enfilade de salles hautes éclairées par le haut, comme
+# celles que Pavel Tretiakov ajouta à sa maison. La grande salle des Ambulants
+# distribue à l'ouest la salle de la mer, à l'est celle de la forêt, d'où l'on gagne
+# la salle d'Abramtsovo au nord. x et z : le centre de la salle (x vers l'est, z vers
+# le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule de Vasnetsov"
+theme = "L'entrée, comme sous le pignon en kokochnik de la façade dessinée par Viktor Vasnetsov."
+murs = "#ece2cf"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La salle des Ambulants"
+theme = "Le peuple et l'histoire russes : les haleurs et les cosaques de Répine, la boyarine Morozova de Sourikov."
+murs = "#dccaa9"
+x = 0
+z = -11
+largeur = 19.6
+profondeur = 14
+hauteur = 9
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "La mer et la nuit"
+theme = "La tempête d'Aïvazovski et le clair de lune de Kouïndji : deux peintres de la lumière."
+murs = "#ddd2bd"
+x = -15.8
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "La forêt et la plaine"
+theme = "Le paysage russe : la forêt de pins de Chichkine et le grand fleuve de Levitan."
+murs = "#d3d6bf"
+x = 15.8
+z = -11.5
+largeur = 12
+profondeur = 13
+hauteur = 7
+portes = ["nord"]
+
+[[salles]]
+nom = "Le cercle d'Abramtsovo"
+theme = "Autour du mécène Savva Mamontov : les héros de Vasnetsov, le Démon de Vroubel, la jeune fille de Serov."
+murs = "#e4cdbd"
+x = 15.8
+z = -24.5
+largeur = 12
+profondeur = 13
+hauteur = 8
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Les Haleurs de la Volga"
+artiste = "Ilia Répine"
+annee = "1870–1873"
+image = "haleurs-volga.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Ilya_Repin_-_Barge_Haulers_on_the_Volga_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 131,5 × 281 cm"
+collection = "Musée russe, Saint-Pétersbourg"
+note = "Onze hommes attelés par des sangles de cuir tirent une barge le long de la Volga : la toile qui rendit Répine célèbre à vingt-neuf ans."
+description = """
+Sur une grève de sable jaune, au bord d'un fleuve immense et calme, onze hommes \
+avancent vers nous, courbés, attachés par des sangles de cuir à un long câble qui les \
+relie à un voilier. Ils forment une seule file, une sorte de frise humaine qui s'étire \
+de gauche à droite. En tête, un homme barbu au front ceint d'un chiffon regarde droit \
+devant lui avec gravité. Derrière lui, un grand haleur fume la pipe ; d'autres, à \
+côté, baissent la tête vers le sable. Au milieu de la file, un jeune garçon en chemise \
+rose, plus droit que les autres, tire sur sa sangle comme s'il voulait s'en défaire. \
+Le dernier, tête basse, semble à bout de forces. Au loin, sous un ciel clair, un \
+bateau à vapeur laisse un mince panache de fumée."""
+evocation = """
+Le tableau montre le travail le plus dur de la Russie du XIXᵉ siècle, celui des \
+bourlaki, ces journaliers qui remorquaient à la force des bras les barges remontant le \
+courant. Répine ne peint pas un discours : il fait le portrait de onze individus, de \
+la résignation à la révolte, et chacun a son caractère. Le contraste entre la lumière \
+éclatante de l'été et l'accablement des hommes rend leur sort plus saisissant. On a vu \
+dans le jeune homme en rose, qui se redresse, l'image d'une génération qui refuse sa \
+condition, et dans le petit vapeur à l'horizon l'annonce de la fin d'un métier que les \
+machines allaient remplacer. L'œuvre devient vite, en Russie comme à l'étranger, \
+l'emblème d'une peinture qui regarde le peuple en face."""
+histoire = """
+En 1868, encore élève de l'Académie impériale des beaux-arts, Répine aperçoit sur la \
+Neva, près de Saint-Pétersbourg, une équipe de haleurs, dont la misère le frappe au \
+milieu des promeneurs en habits d'été. Au cours de l'été 1870, il descend la Volga \
+avec le paysagiste Fiodor Vassiliev et séjourne au village de Chiriaïevo, près de \
+Samara, où il dessine les haleurs, leurs visages et leurs haillons. Le grand-duc \
+Vladimir Alexandrovitch, frère du futur Alexandre III, lui commande la toile, achevée \
+en 1873. Elle est montrée la même année à l'Exposition universelle de Vienne, puis à \
+celle de Paris en 1878. Après la révolution, elle entre au Musée russe de \
+Saint-Pétersbourg."""
+facture = """
+Répine compose son tableau comme un bas-relief : la file des haleurs occupe une bande \
+horizontale, et le regard la parcourt de visage en visage. Le sable ocre, le ciel bleu \
+pâle et l'eau argentée forment un fond lumineux sur lequel se détachent les vêtements \
+bruns, gris et rouges. La touche, précise sur les visages et les mains, devient plus \
+large dans le paysage. Les nombreuses études faites sur la Volga donnent à chaque \
+figure sa vérité de type et d'attitude."""
+details = [
+  "Le chef de file, au visage de sage, dont le regard fixe le spectateur.",
+  "Le jeune garçon en chemise rose, qui tente de desserrer sa sangle.",
+  "La pipe du haleur qui marche juste derrière le premier.",
+  "Le petit bateau à vapeur et sa fumée, à l'horizon, à droite.",
+  "Le panier d'osier abandonné sur le sable, au premier plan.",
+]
+themes = ["travail", "peuple", "volga", "réalisme", "fleuve"]
+anecdote = """
+Le chef de file a un modèle connu : Kanine, un haleur que Répine rencontra sur la \
+Volga et qui, selon le peintre, était un ancien prêtre défroqué. Dans ses souvenirs, \
+Répine raconte combien ce visage, d'une profonde sagesse, l'avait frappé dès leur \
+première rencontre."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 2.8
+
+[[oeuvres]]
+titre = "Les Cosaques zaporogues écrivant une lettre au sultan de Turquie"
+artiste = "Ilia Répine"
+annee = "1880–1891"
+image = "cosaques-zaporogues.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Repin_Cossacks.jpg"
+technique = "Huile sur toile, 203 × 358 cm"
+collection = "Musée russe, Saint-Pétersbourg"
+note = "Réunis autour d'une table, les cosaques dictent en riant une réponse pleine d'insultes au sultan qui les sommait de se soumettre."
+description = """
+Une vingtaine de cosaques se pressent autour d'une table rustique posée en plein air, \
+dans un camp hérissé de lances. Au centre, un jeune scribe en noir, la plume à la \
+main, écrit ce que les autres lui dictent. Tout le monde rit, et chacun à sa façon : \
+un géant en caftan rouge et bonnet blanc se tient le ventre, un vieillard chauve au \
+crâne rasé se penche, hilare, un autre, torse nu et vu de dos, s'appuie sur la table. \
+Le chef, coiffé d'un bonnet de fourrure, fume sa pipe avec un sourire narquois en \
+dictant la phrase suivante. Au premier plan, de dos, un cosaque au crâne nu et un \
+autre en manteau blanc, à droite, ferment la scène. Partout traînent des armes, des \
+sabres, des fusils, une bandoura."""
+evocation = """
+Selon une tradition, les cosaques de la Sitch zaporogue, communauté de guerriers \
+libres établie sur le Dniepr, auraient répondu en 1676 à un ultimatum du sultan \
+ottoman Mehmed IV par une lettre truffée d'injures. Le texte, connu par des copies \
+tardives, est sans doute apocryphe, mais Répine y voit l'image d'une liberté joyeuse \
+et insolente. Le tableau est une étude du rire : il en montre toutes les nuances, du \
+gloussement au fou rire. Il célèbre aussi la fraternité d'une communauté qui ne \
+reconnaît d'autre maître qu'elle-même. On a souvent lu l'œuvre comme un hymne à \
+l'esprit d'indépendance des cosaques, que se disputent aujourd'hui les mémoires russe \
+et ukrainienne."""
+histoire = """
+Répine entend lire le texte de la lettre à la fin des années 1870, dans le cercle du \
+mécène Savva Mamontov. En 1880, il fait une première esquisse, puis part l'été en \
+Ukraine avec son jeune élève Valentin Serov pour dessiner des types, des costumes et \
+des armes. L'historien Dmytro Iavornytsky, spécialiste des cosaques, le conseille et \
+pose pour le scribe ; le général Mikhaïl Dragomirov prête ses traits au chef, l'ataman \
+Ivan Sirko. Après plus de dix ans de travail, la toile est achevée en 1891. Le tsar \
+Alexandre III l'achète 35 000 roubles, la plus forte somme payée jusque-là pour un \
+tableau russe. Une seconde version, commencée en 1889, se trouve au musée d'art de \
+Kharkiv."""
+facture = """
+La composition est construite en pyramide autour de la table, avec le scribe au centre \
+et une couronne de visages autour de lui. Répine soigne chaque tête comme un portrait. \
+La lumière blanche d'un jour voilé unifie la scène, et les taches de couleur vive, le \
+rouge d'un caftan, le bleu d'une veste, le blanc d'un manteau, rythment la foule. Les \
+objets, armes, pipes, bonnets, sont peints d'après des pièces authentiques étudiées \
+dans les musées et chez les collectionneurs."""
+details = [
+  "Le scribe au centre, plume en main, qui sourit en écrivant.",
+  "Le chef qui fume sa pipe, le menton levé, en dictant.",
+  "Le géant en caftan rouge et bonnet blanc qui se tient le ventre.",
+  "Le crâne rasé, orné d'une longue mèche, du cosaque torse nu.",
+  "Les lances et les étendards qui se dressent dans le ciel blanc.",
+]
+themes = ["rire", "cosaques", "histoire", "liberté", "ukraine"]
+anecdote = """
+La lettre des cosaques a inspiré la poésie française : Guillaume Apollinaire en donne \
+sa propre version, injures comprises, dans La Chanson du mal-aimé, publiée dans le \
+recueil Alcools en 1913, sous le titre Réponse des Cosaques Zaporogues au Sultan de \
+Constantinople."""
+salle = 2
+mur = "sud"
+place = 4
+largeur = 3.5
+
+[[oeuvres]]
+titre = "La Boyarine Morozova"
+artiste = "Vassili Sourikov"
+annee = "1887"
+image = "boyarine-morozova.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Surikov_Boyarynya_Morozova_gtg.jpg"
+technique = "Huile sur toile, 304 × 587,5 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Enchaînée sur un traîneau, une noble dame fidèle à l'ancienne foi est emmenée à travers Moscou et lève deux doigts en signe de défi."
+description = """
+Dans une rue enneigée de Moscou, un traîneau traverse la foule de gauche à droite. Une \
+femme vêtue de noir y est assise, enchaînée, le visage pâle et émacié ; elle lève la \
+main droite, deux doigts tendus vers le ciel. Autour d'elle, la foule réagit : à \
+gauche, un prêtre ricane, un garçon court à côté du traîneau en riant ; à droite, des \
+femmes en riches manteaux et châles brodés baissent les yeux, pleurent ou s'inclinent. \
+Une vieille mendiante agenouillée tend la main vers elle. Au premier plan à droite, un \
+fou de Dieu presque nu, assis pieds nus dans la neige, une chaîne autour du cou, \
+répond par le même geste des deux doigts. Au fond, on voit des toits enneigés, des \
+coupoles et une icône sur une façade."""
+evocation = """
+Le tableau évoque le schisme qui déchire l'Église russe au XVIIᵉ siècle. Le patriarche \
+Nikon réforme les rites, et impose notamment de se signer avec trois doigts au lieu de \
+deux. Ceux qui refusent, les vieux-croyants, sont persécutés. La boyarine Féodossia \
+Morozova, l'une des plus grandes dames de la cour, reste fidèle à l'ancienne foi : \
+arrêtée en 1671, elle mourra de faim en 1675 dans une fosse de la prison de Borovsk. \
+Sourikov ne choisit pas le supplice mais le moment où elle passe devant le peuple, et \
+fait de la foule le vrai sujet : moquerie, peur, pitié, admiration. Le geste des deux \
+doigts, répété par le fou de Dieu, devient un signe de résistance."""
+histoire = """
+Sourikov a entendu dans son enfance, à Krasnoïarsk, le récit de la vie de Morozova \
+raconté par une tante. Il fait une première esquisse en 1881, puis travaille plusieurs \
+années, cherchant dans les rues de Moscou les visages de la foule. Pour la boyarine, \
+il lui faut longtemps trouver le visage juste ; il s'inspire, dit-on, d'une \
+vieille-croyante venue de l'Oural et d'une parente. Il peint la neige d'après nature, \
+étudiant les traces des patins de traîneau. Présentée en 1887 à la quinzième \
+exposition des Ambulants, la toile fait sensation ; Pavel Tretiakov l'achète pour sa \
+galerie, où elle occupe depuis tout un mur."""
+facture = """
+La toile est très large, et le traîneau, qui la traverse en diagonale, entraîne le \
+regard de gauche à droite comme le mouvement du cortège. Sourikov place la tache noire \
+de la boyarine au centre d'une foule aux couleurs somptueuses : brocarts, châles à \
+fleurs, fourrures, rouges et bleus profonds. La neige n'est jamais blanche : elle \
+reflète des bleus, des roses, des violets, observés en plein air. Le peintre fait \
+alterner les figures de profil, de face et de dos pour donner l'impression d'une foule \
+réelle."""
+details = [
+  "La main levée de la boyarine, deux doigts tendus.",
+  "Le fou de Dieu assis dans la neige, pieds nus, qui répète son geste.",
+  "Le prêtre qui ricane, à gauche, dans son manteau de fourrure.",
+  "Le garçon qui court à côté du traîneau, dans la neige fondue.",
+  "L'icône sous son petit auvent, sur la façade, en haut à droite.",
+]
+themes = ["foi", "histoire", "foule", "neige", "résistance"]
+anecdote = """
+Sourikov racontait que l'idée de la figure lui était venue d'une corneille : il avait \
+vu un jour l'oiseau posé sur la neige, une aile écartée, faisant une tache noire qu'il \
+ne put oublier pendant des années, avant de la retrouver dans la boyarine en noir sur \
+la neige."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 4.5
+
+[[oeuvres]]
+titre = "La Neuvième Vague"
+artiste = "Ivan Aïvazovski"
+annee = "1850"
+image = "neuvieme-vague.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Hovhannes_Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 221 × 332 cm"
+collection = "Musée russe, Saint-Pétersbourg"
+note = "Au lever du jour, des naufragés agrippés à un mât affrontent la plus forte des vagues : la marine la plus célèbre de la peinture russe."
+description = """
+La tempête de la nuit vient de s'achever, mais la mer est encore déchaînée. Au premier \
+plan, quelques naufragés s'accrochent à un débris de mât, seul reste de leur navire. \
+L'un d'eux agite un tissu rouge vers le ciel. Devant eux, à gauche, une vague immense \
+se dresse et commence à se briser, sa crête couverte d'écume. D'autres lames, plus \
+loin, roulent vers l'horizon. Au centre du ciel, le soleil levant perce les nuages et \
+inonde la scène d'une lumière dorée, jaune, orange et rose. Sa lumière traverse les \
+vagues, qui deviennent vertes et transparentes, et fait scintiller la surface de \
+l'eau. On ne voit aucune côte, aucun autre bateau : seulement la mer et le ciel."""
+evocation = """
+Les marins croyaient que, dans une tempête, la neuvième vague était la plus forte, la \
+plus redoutable : c'est elle qui menace ici les naufragés. Le tableau oppose la fureur \
+de la mer et la promesse de la lumière : le soleil qui se lève peut être lu comme un \
+signe d'espoir, et les hommes, minuscules, ne renoncent pas. On y a vu une méditation \
+romantique sur la faiblesse et le courage de l'homme face à la nature. Le sujet, la \
+lutte des hommes contre les éléments, revient tout au long de l'œuvre d'Aïvazovski, \
+qui avait lui-même connu des tempêtes en mer et fait du combat avec l'océan le grand \
+thème de sa vie."""
+histoire = """
+Aïvazovski peint La Neuvième Vague en 1850, alors qu'il est déjà le peintre officiel \
+de l'état-major de la marine impériale et un artiste très recherché, dont les grandes \
+marines attirent les foules aux expositions de Saint-Pétersbourg. Le tableau connaît \
+aussitôt un immense succès et l'empereur Nicolas Iᵉʳ l'acquiert pour les collections \
+impériales. Il est d'abord conservé au musée de l'Ermitage, puis passe en 1897 au \
+Musée russe, qui venait d'être créé à Saint-Pétersbourg pour rassembler l'art \
+national. Il en est resté l'une des œuvres les plus populaires, reproduit dans \
+d'innombrables livres et images."""
+facture = """
+Aïvazovski peint en atelier, de mémoire, et travaille vite. Il pose de fines couches \
+transparentes, qui donnent à l'eau sa profondeur, puis rehausse l'écume et les reflets \
+par de petites touches claires. La lumière vient du fond du tableau, ce qui rend les \
+vagues translucides et éclaire de dos les personnages. La palette, très chaude pour \
+une tempête, passe du violet au vert émeraude et à l'or. La composition, avec le \
+soleil au centre et la grande vague à gauche, rappelle les naufrages des peintres \
+romantiques."""
+details = [
+  "Le tissu rouge qu'un naufragé agite pour appeler à l'aide.",
+  "La transparence verte des vagues traversées par le soleil.",
+  "L'écume qui s'envole de la crête de la grande vague, à gauche.",
+  "Les cordages qui flottent encore autour du mât brisé.",
+]
+themes = ["mer", "tempête", "naufrage", "lumière", "espoir"]
+anecdote = """
+Aïvazovski ne peignait jamais la mer sur le motif : il observait longuement, puis \
+peignait en atelier, de mémoire, persuadé que le mouvement des vagues et des nuages ne \
+se laisse pas copier. Il aurait ainsi réalisé environ six mille tableaux au cours de \
+sa vie."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 3.3
+
+[[oeuvres]]
+titre = "Nuit de lune sur le Dniepr"
+artiste = "Arkhip Kouïndji"
+annee = "1880"
+image = "nuit-lune-dniepr.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Kuindzhi_Moonlit_night_on_the_Dnieper_1880_grm_x2.jpg"
+technique = "Huile sur toile, 105 × 144 cm"
+collection = "Musée russe, Saint-Pétersbourg"
+note = "La pleine lune se reflète dans le fleuve : en 1880, le public fit la queue pour voir ce seul tableau exposé dans une salle obscure."
+description = """
+La nuit couvre presque tout le tableau. En haut, au milieu de nuages sombres, la \
+pleine lune brille d'une lumière vert pâle et éclaire le bord des nuages. En bas, le \
+Dniepr, large et calme, traverse la toile ; la lune y trace un long reflet lumineux \
+d'un vert phosphorescent. Sur la rive, au premier plan, on distingue à peine des \
+masures de village et la silhouette d'un petit moulin. Tout le reste, la terre, le \
+ciel, l'horizon, se fond dans l'ombre. Aucun personnage n'apparaît : rien ne bouge, \
+seule la lumière vit. Aujourd'hui, la toile est beaucoup plus sombre qu'à l'origine, \
+et il faut s'approcher pour discerner les détails de la rive."""
+evocation = """
+Kouïndji fait de la lumière le seul sujet de son tableau. Le clair de lune, si intense \
+qu'il paraît émaner de la toile, donne au paysage ukrainien une dimension presque \
+magique, entre réalité et rêve. Les contemporains y ont vu un tour de force, certains \
+une sorte de prodige ; d'autres, des peintres surtout, se sont demandé si l'effet ne \
+relevait pas plutôt de l'illusion que de la peinture. On y a vu aussi une méditation \
+sur le silence et l'immensité de la nuit, et une annonce des recherches symbolistes de \
+la fin du siècle, où le paysage devient état d'âme. Le Dniepr, fleuve de l'Ukraine \
+natale du peintre, prend ici une grandeur solennelle."""
+histoire = """
+Kouïndji achève la toile en 1880, peu après avoir quitté les Ambulants, et décide de \
+l'exposer seule, à Saint-Pétersbourg, dans une salle de la Société d'encouragement des \
+artistes, rue Bolchaïa Morskaïa. Les fenêtres sont masquées, et un faisceau de lumière \
+électrique éclaire le tableau dans l'obscurité. Pendant des semaines, une foule fait \
+la queue dans la rue. Avant même l'exposition, le grand-duc Constantin \
+Constantinovitch achète la toile ; il l'emporte ensuite lors de ses voyages en mer, et \
+l'air salin aurait contribué à l'abîmer. Elle entre plus tard au Musée russe."""
+facture = """
+Kouïndji obtient son effet par le contraste : de grandes masses sombres, presque \
+uniformes, et quelques zones de couleurs très claires et saturées, posées en couches \
+épaisses. Il étudiait les propriétés des pigments et l'effet des couleurs \
+complémentaires, qu'il juxtaposait pour faire vibrer le vert de la lune. Mais il \
+employait aussi du bitume, un pigment brun qui fonce et se craquelle avec le temps : \
+c'est lui qui explique l'assombrissement actuel du tableau."""
+details = [
+  "La lune, petit disque vert pâle, au bord d'une trouée dans les nuages.",
+  "Le reflet de la lune, en traînée verte, sur le fleuve.",
+  "La silhouette du petit moulin sur la rive, devant le reflet.",
+  "Les toits des maisons, à peine visibles dans l'ombre, à droite.",
+]
+themes = ["nuit", "lune", "fleuve", "lumière", "ukraine"]
+anecdote = """
+En 1880, la lumière du tableau était si intense que des visiteurs, persuadés qu'une \
+lampe était cachée derrière, allaient regarder au dos de la toile. Kouïndji n'avait \
+pourtant utilisé que de la peinture, et un éclairage dirigé sur le tableau dans la \
+salle obscure."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.45
+
+[[oeuvres]]
+titre = "Matin dans une forêt de pins"
+artiste = "Ivan Chichkine"
+annee = "1889"
+image = "matin-foret-pins.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Shishkin,_Ivan_-_Morning_in_a_Pine_Forest.jpg"
+technique = "Huile sur toile, 139 × 213 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Une ourse et ses oursons jouent sur un pin abattu dans la brume du matin ; les ours sont de Konstantin Savitski."
+description = """
+Dans une forêt de grands pins, la brume du petit matin se lève et la lumière du soleil \
+filtre entre les troncs, en haut à droite. Au centre, un pin brisé par la tempête est \
+tombé en travers, son tronc fendu laissant voir le bois clair. Quatre ours jouent \
+autour de lui : deux oursons grimpent sur le tronc, un troisième se dresse sur ses \
+pattes arrière à droite, sur une autre branche cassée, tandis que la mère, en bas, \
+surveille. Au premier plan, le sol est couvert de mousse, d'herbes et de racines. À \
+gauche, les sapins restent dans une ombre bleutée ; à droite, les cimes des pins \
+prennent une couleur dorée. Au fond, les troncs s'effacent dans le brouillard."""
+evocation = """
+Le tableau célèbre la forêt russe, immense, ancienne, encore sauvage, que Chichkine a \
+peinte toute sa vie et connaissait en botaniste. La scène des ours lui ajoute une note \
+de tendresse et presque d'humour : la nature n'est pas seulement grandiose, elle est \
+vivante et pleine de jeux. Le matin, la brume, la lumière qui monte font de la toile \
+un hymne au réveil de la nature. C'est l'un des tableaux les plus aimés et les plus \
+reproduits de Russie, au point que l'on en oublie souvent la gravité du pin arraché, \
+au centre, qui rappelle la violence des tempêtes et le cycle de la vie et de la mort \
+dans la forêt."""
+histoire = """
+Chichkine prépare le tableau à partir d'études faites dans les forêts de la région de \
+Tver, autour du lac Seliger. Il confie les ours à son ami Konstantin Savitski, peintre \
+de scènes de genre et d'animaux, qui avait sans doute eu l'idée de ce groupe. Le \
+tableau est présenté en 1889 à la dix-septième exposition des Ambulants avec les deux \
+signatures. Pavel Tretiakov l'achète, mais, selon le récit transmis, il fait effacer \
+la signature de Savitski, estimant que la conception et l'essentiel de l'exécution \
+revenaient à Chichkine. Depuis, l'œuvre est présentée sous le seul nom de Chichkine, \
+avec la mention de la participation de Savitski."""
+facture = """
+Chichkine peint avec une précision presque scientifique les écorces, les aiguilles, \
+les mousses et les branches brisées. Il construit la profondeur par la brume : les \
+troncs du fond deviennent de plus en plus pâles et bleutés. La lumière dorée, qui \
+entre en diagonale par le haut à droite, s'oppose aux verts froids de la gauche. Les \
+ours de Savitski, peints d'une touche plus souple, se fondent dans l'ensemble grâce à \
+l'harmonie des bruns."""
+details = [
+  "L'ourson dressé sur ses pattes arrière, à droite, qui regarde au loin.",
+  "Le tronc fendu du pin abattu, au bois clair et déchiqueté.",
+  "La lumière dorée qui éclaire la cime des pins, en haut à droite.",
+  "Les troncs du fond qui disparaissent dans la brume bleutée.",
+]
+themes = ["forêt", "ours", "matin", "brume", "nature"]
+anecdote = """
+En Russie, on appelle souvent ce tableau « Les Trois Ours », alors qu'il en compte \
+quatre. Sa popularité tient aussi à une confiserie : dès le début du XXᵉ siècle, une \
+fabrique de chocolat de Moscou en reproduit les ours sur l'emballage de ses bonbons, \
+encore vendus aujourd'hui."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.1
+
+[[oeuvres]]
+titre = "Au-dessus du repos éternel"
+artiste = "Isaac Levitan"
+annee = "1894"
+image = "repos-eternel.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Levitan_nad_vech_pok28.jpg"
+technique = "Huile sur toile, 150 × 206 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Une petite église de bois et un cimetière dominent un fleuve immense sous un ciel d'orage : le paysage le plus méditatif de Levitan."
+description = """
+Du haut d'un promontoire verdoyant, on domine une étendue d'eau immense, gris argent, \
+qui s'étend jusqu'à l'horizon. Sur le promontoire, au premier plan à gauche, une \
+petite église de bois au toit pentu est entourée d'arbres que le vent fait plier. Une \
+lumière brille à sa fenêtre. Tout près, on distingue les croix penchées d'un vieux \
+cimetière, presque effacées dans l'herbe. Au loin, une île basse et allongée flotte \
+sur l'eau, et des rives plates se perdent dans la brume. Le ciel occupe plus de la \
+moitié du tableau : de lourds nuages gris et blancs s'amoncellent, un orage approche, \
+tandis qu'une lumière pâle perce encore à gauche."""
+evocation = """
+Le titre dit le sens du tableau : au-dessus du cimetière, du « repos éternel », se \
+déploient l'immensité de l'eau et du ciel, indifférente à la vie des hommes. L'église \
+minuscule, avec sa petite lumière, est comme une présence humaine fragile face à \
+l'éternité de la nature. On y a vu une méditation sur la mort, sur la brièveté de la \
+vie et sur la solitude, thèmes qui hantaient Levitan, souvent mélancolique et déjà \
+malade du cœur. Le peintre écrivit à Pavel Tretiakov qu'il s'y était mis tout entier, \
+avec toute son âme. C'est le paysage russe transformé en méditation philosophique, à \
+la manière d'un poème."""
+histoire = """
+Levitan peint la toile en 1893–1894, après un été passé au bord du lac Oudomlia, dans \
+la province de Tver, dont le paysage lui fournit l'étendue d'eau. Pour l'église, il \
+reprend une étude faite quelques années plus tôt à Plyos, sur la Volga, où il avait \
+séjourné plusieurs étés : une petite église de bois qu'il avait peinte dans la lumière \
+du soir. Le tableau est présenté en 1894 et Pavel Tretiakov l'achète aussitôt pour sa \
+galerie, où il est toujours exposé. Levitan, qui traversait alors une période de doute \
+et de mélancolie, le tenait pour l'une de ses œuvres les plus personnelles."""
+facture = """
+Levitan simplifie le paysage en grandes masses : le vert du promontoire, le gris \
+argenté de l'eau, le ciel nuageux. Le point de vue en hauteur et la ligne d'horizon \
+placée au milieu donnent l'impression d'un espace sans limites. La touche, large dans \
+le ciel, devient plus fine dans les arbres agités par le vent. La palette, presque \
+monochrome, joue sur les nuances de gris, de vert et de blanc, que réchauffe à peine \
+la petite lumière de l'église."""
+details = [
+  "La lumière qui brille à la fenêtre de la petite église.",
+  "Les croix penchées du cimetière, en bas à gauche.",
+  "Les arbres qui ploient sous le vent, à côté de l'église.",
+  "L'île longue et plate, au milieu de l'étendue d'eau.",
+]
+themes = ["paysage", "fleuve", "mort", "ciel", "solitude"]
+anecdote = """
+Levitan était l'ami intime de l'écrivain Anton Tchekhov, qu'il avait connu jeune, dans \
+le milieu des écoles d'art de Moscou ; le frère de Tchekhov, Nikolaï, était son \
+camarade d'études. Les deux hommes partageaient le même regard sur la mélancolie du \
+paysage russe."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 2.05
+
+[[oeuvres]]
+titre = "Les Bogatyrs"
+artiste = "Viktor Vasnetsov"
+annee = "1881–1898"
+image = "bogatyrs.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Viktor_Vasnetsov_-_Богатыри_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 295,3 × 446 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Trois héros des légendes russes montent la garde aux frontières : Dobrynia Nikititch, Ilia Mouromets et Aliocha Popovitch."
+description = """
+Dans une steppe herbeuse, sous un ciel nuageux, trois cavaliers en armure se tiennent \
+côte à côte, face à nous. Au centre, sur un énorme cheval noir, le plus âgé, Ilia \
+Mouromets, à la barbe grise, met la main en visière pour scruter l'horizon ; une masse \
+d'armes pend à son poignet, il tient une lance. À gauche, sur un cheval blanc à la \
+crinière flottante, Dobrynia Nikititch, à la longue barbe, tire déjà son épée et porte \
+un bouclier rouge. À droite, sur un cheval roux qui baisse la tête, le jeune Aliocha \
+Popovitch, imberbe, tient son arc et ses flèches. Les trois guerriers portent cottes \
+de mailles et casques pointus. Au premier plan, de jeunes sapins sortent de l'herbe."""
+evocation = """
+Les bogatyrs sont les héros des bylines, les chants épiques de l'ancienne Russie : ils \
+défendent la terre russe contre les nomades de la steppe. Vasnetsov les montre en \
+sentinelles, guettant l'ennemi aux confins du pays. Les trois figures incarnent des \
+qualités complémentaires : la force tranquille et la sagesse d'Ilia, la noblesse et le \
+courage de Dobrynia, l'adresse et la ruse d'Aliocha. À l'époque où l'Empire russe \
+cherche ses racines nationales, le tableau devient une image de la Russie elle-même, \
+solide et vigilante, enracinée dans son paysage. Il a été reproduit à l'infini, jusque \
+dans les livres d'école, et reste l'une des images les plus familières de la culture \
+russe."""
+histoire = """
+Vasnetsov dessine une première esquisse du tableau à Paris, en 1876, alors qu'il y \
+séjourne avec Répine et Vassili Polenov. Il ne termine la grande toile qu'en 1898, \
+après près de vingt ans de travail, mené pour l'essentiel à Moscou, où il fréquente le \
+cercle du mécène Savva Mamontov. Pendant toutes ces années, il étudie les armes et les \
+costumes anciens et cherche des modèles. Pavel Tretiakov achète l'œuvre en 1898, \
+l'année de sa mort ; elle fut l'une de ses dernières acquisitions. Elle est restée \
+depuis l'une des œuvres les plus célèbres de la galerie."""
+facture = """
+Vasnetsov donne à ses trois cavaliers une présence monumentale : le point de vue bas, \
+au niveau de l'herbe, les fait se dresser contre le ciel. La composition est \
+symétrique et stable, comme une icône ou un retable, avec Ilia au centre. Les armes et \
+les harnais sont peints avec une grande précision, fondée sur l'étude de pièces \
+anciennes. La palette, où dominent les verts, les gris et les bruns, est relevée par \
+le rouge du bouclier et l'éclat du cheval blanc."""
+details = [
+  "La main d'Ilia Mouromets en visière au-dessus de ses yeux.",
+  "La masse d'armes qui pend au poignet d'Ilia.",
+  "L'épée que Dobrynia sort à demi de son fourreau.",
+  "Le cheval roux d'Aliocha qui baisse la tête vers l'herbe.",
+  "Les jeunes sapins du premier plan, au pied des chevaux.",
+]
+themes = ["légende", "héros", "chevaux", "russie", "épopée"]
+anecdote = """
+Vasnetsov a prêté à ses héros des visages de son entourage : on dit qu'Aliocha \
+Popovitch a les traits d'Andreï Mamontov, le fils du mécène d'Abramtsovo, et que \
+Dobrynia ressemble au peintre lui-même."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 4.4
+
+[[oeuvres]]
+titre = "Le Démon assis"
+artiste = "Mikhaïl Vroubel"
+annee = "1890"
+image = "demon-assis.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Mikhail_Vrubel_-_Демон_(сидящий)_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 114 × 211 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Inspiré du poème de Lermontov, un jeune géant pensif est assis dans un jardin de fleurs de pierre, au coucher du soleil."
+description = """
+Un jeune homme puissant, aux cheveux noirs abondants, est assis, les bras entourant \
+ses genoux repliés, les mains jointes. Son torse nu est musclé, mais son visage, \
+tourné de côté, est triste et absent. Une étoffe bleue drape ses jambes. Il est si \
+grand que le haut de sa tête dépasse du cadre. Autour de lui, un étrange jardin de \
+fleurs aux pétales anguleux, comme des cristaux ou des pierres taillées, roses, \
+violets, gris et bleus, couvre la droite du tableau. À gauche, le ciel du soir est \
+pourpre, et des nuages rougis par le coucher du soleil s'étirent au-dessus d'une ligne \
+d'or, à l'horizon. Tout l'espace semble pressé contre la figure."""
+evocation = """
+Le tableau s'inspire du Démon, le poème de Mikhaïl Lermontov : un esprit déchu, las \
+d'un monde qu'il méprise, tombe amoureux d'une princesse géorgienne. Vroubel écrit à \
+sa sœur que son Démon est un esprit moins malfaisant que souffrant et triste, mais \
+puissant et majestueux. Il le montre jeune, beau, perdu dans sa solitude, à la fois \
+dieu et prisonnier. On a souvent rapproché cette figure de Vroubel lui-même, artiste \
+incompris et tourmenté. Le Démon devient le grand sujet de sa vie : il y revient dans \
+de nombreuses œuvres jusqu'au Démon terrassé de 1902. Cette figure annonce le \
+symbolisme russe et l'âge d'argent, où l'art explore les rêves et l'inquiétude \
+intérieure."""
+histoire = """
+En 1890, Vroubel, installé à Moscou depuis peu et accueilli dans le cercle du mécène \
+Savva Mamontov, reçoit la commande d'illustrations pour une édition des œuvres de \
+Lermontov, publiée en 1891 pour le cinquantenaire de la mort du poète. Ses dessins \
+pour Le Démon déroutent les critiques, qui les jugent maladroits. Le Démon assis, \
+peint la même année, est la première grande toile qu'il consacre au sujet. Longtemps \
+incompris, Vroubel n'est reconnu qu'à la fin de sa vie ; le tableau est aujourd'hui \
+l'une des œuvres phares de la galerie Tretiakov, qui possède un vaste ensemble de son \
+œuvre."""
+facture = """
+Vroubel peint par facettes, au couteau à palette autant qu'au pinceau, avec des \
+touches plates et anguleuses qui rappellent la mosaïque ou les vitraux. Il avait \
+étudié à Kiev et à Venise les mosaïques byzantines, et cette influence se voit dans \
+les fleurs cristallines et le ciel. Le cadrage, très serré, coupe la tête de la figure \
+et donne une impression d'enfermement. Les couleurs, bleus profonds, violets, roses, \
+or, créent une atmosphère irréelle de crépuscule."""
+details = [
+  "Le haut de la tête du Démon, coupé par le bord du tableau.",
+  "Les mains jointes, aux doigts entrelacés, sous les genoux.",
+  "Les fleurs anguleuses, comme taillées dans la pierre, à droite.",
+  "La ligne d'or du coucher de soleil, à gauche.",
+]
+themes = ["démon", "solitude", "poésie", "symbolisme", "crépuscule"]
+anecdote = """
+Le Démon hanta Vroubel jusqu'à la folie : en 1902, alors que son Démon terrassé était \
+déjà exposé à Saint-Pétersbourg, il venait chaque matin le retoucher devant le public, \
+changeant son visage et ses couleurs, peu avant que sa maladie mentale ne l'oblige à \
+être interné."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 2.1
+
+[[oeuvres]]
+titre = "La Jeune Fille aux pêches"
+artiste = "Valentin Serov"
+annee = "1887"
+image = "jeune-fille-peches.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Valentin_Serov_-_Девочка_с_персиками._Портрет_В.С.Мамонтовой_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 91 × 85 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Vera Mamontova, douze ans, la fille du mécène Savva Mamontov, assise à la table de la salle à manger d'Abramtsovo."
+description = """
+Dans une salle à manger claire, une jeune fille aux cheveux bruns, en blouse rose \
+nouée d'un nœud noir orné d'une fleur rouge, est assise à une table couverte d'une \
+nappe blanche. Elle tient une pêche entre ses mains et regarde le spectateur d'un air \
+sérieux, un peu boudeur. Sur la table, devant elle, sont posées trois autres pêches, \
+des feuilles d'érable jaunies et un couteau. Derrière elle, contre le mur blanc, sont \
+rangées des chaises de bois sombre ; une assiette de faïence bleue est accrochée au \
+mur, et une petite figurine colorée est posée sur un meuble. À droite, par une grande \
+fenêtre, on aperçoit les feuillages jaunes de la fin de l'été."""
+evocation = """
+Le tableau saisit un instant ordinaire et en fait une image du bonheur : la jeunesse, \
+la lumière, la fraîcheur d'une maison de campagne. Serov, qui revient alors d'Italie, \
+écrit à sa fiancée qu'il ne veut plus peindre que ce qui est joyeux. Il dira plus tard \
+qu'il avait cherché avant tout la fraîcheur, celle qu'on éprouve dans la nature et que \
+l'on ne voit pas dans les tableaux. Le regard direct de Vera, à la fois enfantin et \
+grave, donne au portrait sa vie. L'œuvre est souvent considérée comme un manifeste \
+d'une peinture nouvelle, plus libre et lumineuse, qui ouvre la voie à \
+l'impressionnisme russe."""
+histoire = """
+Serov a vingt-deux ans lorsqu'il peint, à la fin de l'été 1887, le portrait de Vera \
+Mamontova dans la propriété d'Abramtsovo, près de Moscou, où il a passé une partie de \
+son enfance. Le domaine appartient à Savva Mamontov, industriel des chemins de fer et \
+grand mécène, qui y accueille Répine, Vasnetsov, Polenov, puis Vroubel. Vera pose de \
+longues séances dans la salle à manger. Montré peu après à Moscou, le tableau fait \
+connaître le jeune peintre. Il est aujourd'hui l'un des portraits les plus connus de \
+la galerie Tretiakov."""
+facture = """
+Serov peint en pleine lumière, avec une touche libre et visible qui rappelle les \
+impressionnistes français, mais il conserve la solidité du dessin appris chez Répine \
+et Pavel Tchistiakov. La lumière, venue de la fenêtre, glisse sur la nappe, la blouse \
+et le visage, et se colore de reflets. Le rose de la blouse, le blanc de la nappe et \
+le vert-jaune des feuillages forment une harmonie claire. Le cadrage, légèrement \
+décentré, donne une impression de naturel."""
+details = [
+  "La pêche que Vera tient entre ses mains, posée sur la nappe.",
+  "La fleur rouge épinglée sur le nœud noir à pois de la blouse.",
+  "L'assiette de faïence bleue accrochée au mur, en haut à gauche.",
+  "La signature « Серов 87 », en bas à droite.",
+  "Les feuillages jaunes que l'on aperçoit par la fenêtre.",
+]
+themes = ["portrait", "enfance", "lumière", "abramtsovo", "fruits"]
+anecdote = """
+Vera Mamontova a épousé en 1903 Alexandre Samarine et est morte d'une pneumonie en \
+1907, à trente-deux ans. Serov, qui l'avait connue enfant à Abramtsovo, l'avait peinte \
+comme l'image même de la jeunesse."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.0
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Ilia Répine"
+vie = "Tchouhouïv (Ukraine), 5 août 1844 – Kuokkala (Finlande), 29 septembre 1930"
+biographie = """
+Fils d'un colon militaire de la région de Kharkiv, Ilia Répine apprend d'abord la \
+peinture d'icônes. En 1863, il part pour Saint-Pétersbourg et entre l'année suivante à \
+l'Académie impériale des beaux-arts. Les Haleurs de la Volga le rendent célèbre en \
+1873. Pensionnaire de l'Académie, il séjourne ensuite à Paris de 1873 à 1876, puis \
+rejoint en 1878 les Ambulants, la société d'artistes qui veut montrer la vie du peuple \
+russe. Installé un temps à Moscou, il fréquente le cercle de Savva Mamontov à \
+Abramtsovo. Il peint des scènes d'histoire, comme Ivan le Terrible et son fils (1885), \
+des scènes de la vie contemporaine, comme On ne l'attendait pas, et de nombreux \
+portraits, dont ceux de Léon Tolstoï et de Moussorgski. Professeur à l'Académie à \
+partir de 1894, il forme de nombreux élèves, parmi lesquels Valentin Serov. En 1899, \
+il s'installe dans sa maison des Pénates, à Kuokkala, sur le golfe de Finlande. Après \
+la révolution, la Finlande devient indépendante : Répine y reste et ne retourne pas en \
+Russie soviétique. Il meurt à Kuokkala en 1930."""
+style = """
+Répine est le plus grand peintre réaliste russe. Il excelle à faire vivre une foule, à \
+donner à chaque visage son caractère et à saisir l'émotion d'un instant. Sa touche, \
+vigoureuse et sûre, sa connaissance du dessin et son sens dramatique en font le maître \
+des Ambulants. Il a été érigé en modèle par l'art soviétique, mais son influence \
+dépasse ce cadre : il reste le peintre de référence de la vie russe au XIXᵉ siècle."""
+
+[[artistes]]
+nom = "Vassili Sourikov"
+vie = "Krasnoïarsk, 24 janvier 1848 – Moscou, 19 mars 1916"
+biographie = """
+Vassili Sourikov naît à Krasnoïarsk, en Sibérie, dans une famille de cosaques \
+installée là depuis le XVIIᵉ siècle. Remarqué pour son talent de dessinateur, il \
+obtient l'appui d'un riche marchand de la ville, Piotr Kouznetsov, qui lui paie ses \
+études : il entre en 1869 à l'Académie impériale des beaux-arts de Saint-Pétersbourg. \
+Après avoir participé au décor de la cathédrale du Christ-Sauveur à Moscou, il \
+s'installe dans cette ville, dont l'architecture ancienne le fascine. Il se consacre \
+alors à la peinture d'histoire : Le Matin de l'exécution des streltsy (1881), \
+Menchikov à Beriozovo (1883), La Boyarine Morozova (1887). La mort de sa femme, en \
+1888, le plonge dans une profonde crise ; il se ressource en Sibérie et peint La Prise \
+de la ville de neige. Suivent de grandes compositions consacrées à la conquête de la \
+Sibérie par Iermak, au passage des Alpes par Souvorov et à Stépane Razine. Membre des \
+Ambulants, il est devenu le grand peintre de l'histoire russe. Il meurt à Moscou en \
+1916."""
+style = """
+Sourikov invente une peinture d'histoire où le peuple tient le premier rôle : ses \
+toiles immenses sont peuplées de foules dont chaque visage a été étudié d'après \
+nature. Il cherche moins à illustrer un événement qu'à en faire ressentir le drame \
+collectif. Son sens de la couleur, riche et profonde, et son art de la composition, \
+qui organise le chaos d'une foule, ont fait de lui un modèle pour les peintres \
+d'histoire russes."""
+
+[[artistes]]
+nom = "Ivan Aïvazovski"
+vie = "Théodosie (Crimée), 29 juillet 1817 – Théodosie, 2 mai 1900"
+biographie = """
+Ivan Aïvazovski naît à Théodosie, port de Crimée, dans une famille arménienne modeste. \
+Ses dons pour le dessin sont remarqués très tôt, et des protecteurs lui permettent \
+d'entrer en 1833 à l'Académie impériale des beaux-arts de Saint-Pétersbourg, dans la \
+classe de paysage. Il en sort avec une médaille d'or qui lui vaut un long séjour en \
+Italie, où ses marines obtiennent un grand succès. De retour en Russie, il devient en \
+1844 peintre de l'état-major de la marine. Il s'installe ensuite définitivement à \
+Théodosie, où il construit une maison, un atelier et une galerie. Il y travaille sans \
+relâche, voyageant souvent en Europe, en Orient et même jusqu'en Amérique, en 1892. Il \
+consacre une partie de sa fortune à sa ville natale, où il finance notamment \
+l'adduction d'eau. Comblé d'honneurs, il expose dans toute l'Europe et réalise des \
+milliers de tableaux. Il meurt à Théodosie en 1900, laissant une toile inachevée sur \
+son chevalet."""
+style = """
+Aïvazovski est le grand peintre de la mer. Il peint de mémoire, en atelier, des \
+tempêtes, des naufrages, des batailles navales et des clairs de lune. Sa maîtrise de \
+la transparence de l'eau et de la lumière, souvent spectaculaire, fait de lui un \
+héritier du romantisme. Très populaire, il a fixé pour longtemps l'image de la marine \
+russe."""
+
+[[artistes]]
+nom = "Arkhip Kouïndji"
+vie = "Marioupol, 1841 ou 1842 – Saint-Pétersbourg, 24 juillet 1910"
+biographie = """
+Arkhip Kouïndji naît à Marioupol, sur la mer d'Azov, dans une famille grecque pauvre. \
+Orphelin très jeune, il garde des oies et travaille chez des marchands. Il se forme \
+presque seul à la peinture ; selon ses biographes, il serait allé à Théodosie chercher \
+les conseils d'Aïvazovski, sans grand succès. Après plusieurs échecs, il devient \
+auditeur libre de l'Académie impériale des beaux-arts de Saint-Pétersbourg à la fin \
+des années 1860. Il rejoint les Ambulants en 1875, puis s'en sépare en 1880, l'année \
+de Nuit de lune sur le Dniepr, qu'il expose seul. Après une dernière exposition en \
+1882, il cesse de montrer ses œuvres pendant une vingtaine d'années, tout en \
+continuant de peindre. Professeur à l'Académie à partir de 1894, il en est écarté en \
+1897 pour avoir soutenu les étudiants contestataires. Parmi ses élèves figurent \
+Nicolas Roerich et Arkadi Rylov. Devenu riche, il crée en 1909 une société d'artistes \
+à laquelle il lègue sa fortune. Il meurt à Saint-Pétersbourg en 1910."""
+style = """
+Kouïndji est le peintre des effets de lumière : clairs de lune, couchers de soleil, \
+rayons qui percent un bois de bouleaux. Il simplifie le paysage en grandes masses pour \
+faire jaillir quelques zones de couleur intense. Ses recherches sur les pigments et \
+les couleurs complémentaires annoncent les audaces du symbolisme et d'une peinture \
+décorative."""
+
+[[artistes]]
+nom = "Ivan Chichkine"
+vie = "Ielabouga, 25 janvier 1832 – Saint-Pétersbourg, 20 mars 1898"
+biographie = """
+Ivan Chichkine naît à Ielabouga, sur la Kama, dans une famille de marchands. Il étudie \
+à l'école de peinture de Moscou, puis à l'Académie impériale des beaux-arts de \
+Saint-Pétersbourg, de 1856 à 1860. Une bourse lui permet de séjourner en Allemagne et \
+en Suisse, notamment à Düsseldorf, où il se perfectionne dans le paysage et la \
+gravure. De retour en Russie, il se consacre presque exclusivement à la forêt et aux \
+champs de son pays. Membre fondateur des Ambulants en 1870, il expose régulièrement \
+avec eux. Il épouse la sœur du paysagiste Fiodor Vassiliev, qui meurt quelques années \
+plus tard, puis se remarie avec une élève, la peintre Olga Lagoda, qu'il perd aussi. \
+Ces deuils le marquent profondément. Il dirige l'atelier de paysage de l'Académie à \
+partir de 1894. Il meurt en 1898 à Saint-Pétersbourg, dans son atelier, devant son \
+chevalet."""
+style = """
+Chichkine est le peintre de la forêt russe, qu'il connaît en naturaliste : il dessine \
+chaque arbre, chaque fougère, chaque pierre avec une précision photographique. Ses \
+grands paysages composés, à la lumière claire, unissent cette exactitude à une émotion \
+devant l'immensité de la nature. Il a profondément marqué l'image que les Russes se \
+font de leur pays."""
+
+[[artistes]]
+nom = "Isaac Levitan"
+vie = "Kybartai (Lituanie), 30 août 1860 – Moscou, 4 août 1900"
+biographie = """
+Isaac Levitan naît dans une famille juive pauvre de Lituanie, alors dans l'Empire \
+russe. En 1873, il entre à l'école de peinture, de sculpture et d'architecture de \
+Moscou, où il a pour maîtres Alexeï Savrassov et Vassili Polenov. La mort de ses \
+parents le laisse sans ressources ; il vit dans la misère pendant ses études. En 1879, \
+Pavel Tretiakov achète l'un de ses tableaux, Journée d'automne à Sokolniki. Il se lie \
+d'amitié avec Anton Tchekhov et passe plusieurs étés sur la Volga, à Plyos. En 1892, \
+l'expulsion des Juifs de Moscou l'oblige à quitter un temps la ville. Ses grands \
+paysages, comme La Vladimirka, Au-dessus du repos éternel, Mars ou L'Automne doré, le \
+rendent célèbre. Il est élu académicien en 1898 et enseigne le paysage à l'école de \
+Moscou. Malade du cœur, il meurt à trente-neuf ans, en 1900."""
+style = """
+Levitan est le peintre du « paysage d'humeur » : il cherche dans la nature russe, \
+souvent modeste, un champ, une route, une rivière, l'expression d'un sentiment, de la \
+mélancolie à la joie. Sa touche libre, son art de la lumière et sa simplicité ont fait \
+de lui le maître du paysage russe à la fin du XIXᵉ siècle."""
+
+[[artistes]]
+nom = "Viktor Vasnetsov"
+vie = "Lopial (gouvernement de Viatka), 15 mai 1848 – Moscou, 23 juillet 1926"
+biographie = """
+Fils d'un prêtre de village, Viktor Vasnetsov étudie au séminaire de Viatka, puis \
+renonce à la prêtrise et part en 1867 pour Saint-Pétersbourg, où il entre à l'Académie \
+impériale des beaux-arts. Il peint d'abord des scènes de la vie populaire et expose \
+avec les Ambulants. En 1876, il séjourne à Paris, avec Répine et Polenov. Installé à \
+Moscou en 1878, il fréquente le domaine d'Abramtsovo, chez Savva Mamontov, où il \
+dessine une petite église et des décors de théâtre. Il se tourne alors vers les contes \
+et les légendes de l'ancienne Russie : Après le combat d'Igor, Aliona, Ivan Tsarévitch \
+sur le loup gris, Les Bogatyrs. De 1885 à 1896, il décore la cathédrale Saint-Vladimir \
+de Kiev. Il dessine aussi des bâtiments, dont la façade de la galerie Tretiakov et sa \
+propre maison-atelier de Moscou, aujourd'hui un musée. Il meurt à Moscou en 1926."""
+style = """
+Vasnetsov est le peintre des légendes russes. Il donne aux héros des bylines et des \
+contes une présence monumentale, avec des compositions simples et symétriques venues \
+des icônes. Son goût pour les ornements anciens et l'art populaire a nourri le style \
+néo-russe en architecture et en décoration, ainsi que l'illustration des contes \
+russes."""
+
+[[artistes]]
+nom = "Mikhaïl Vroubel"
+vie = "Omsk, 17 mars 1856 – Saint-Pétersbourg, 14 avril 1910"
+biographie = """
+Fils d'un juriste militaire, Mikhaïl Vroubel fait des études de droit à \
+Saint-Pétersbourg avant d'entrer, en 1880, à l'Académie impériale des beaux-arts, où \
+il suit l'enseignement de Pavel Tchistiakov. En 1884, il part à Kiev pour restaurer et \
+compléter les fresques médiévales de l'église Saint-Cyrille, et séjourne à Venise pour \
+étudier l'art byzantin. Installé à Moscou en 1889, il entre dans le cercle de Savva \
+Mamontov, pour qui il crée des céramiques, des décors d'opéra et de grands panneaux. \
+En 1896, il épouse la cantatrice Nadejda Zabela, qu'il peint souvent. Ses œuvres \
+déroutent la critique, mais le mouvement du Monde de l'art finit par le défendre. La \
+naissance de son fils Savva, en 1901, puis sa mort en 1903, l'éprouvent durement. À \
+partir de 1902, il souffre de graves troubles mentaux et passe ses dernières années \
+dans des cliniques. Devenu aveugle en 1906, il meurt à Saint-Pétersbourg en 1910."""
+style = """
+Vroubel invente une peinture faite de facettes, comme une mosaïque ou un cristal, où \
+la couleur vibre en éclats. Nourri d'art byzantin et de légendes, il crée un monde de \
+rêve habité par des démons, des princesses et des créatures fantastiques. Il est le \
+grand précurseur du symbolisme russe et de l'âge d'argent."""
+
+[[artistes]]
+nom = "Valentin Serov"
+vie = "Saint-Pétersbourg, 19 janvier 1865 – Moscou, 5 décembre 1911"
+biographie = """
+Valentin Serov est le fils du compositeur Alexandre Serov et de la compositrice \
+Valentina Bergman. Après la mort de son père, en 1871, il voyage beaucoup avec sa \
+mère, à Munich et à Paris, où il commence à dessiner auprès de Répine. Il suit ensuite \
+son maître à Moscou, puis entre en 1880 à l'Académie impériale des beaux-arts, dans \
+l'atelier de Pavel Tchistiakov. Ami de la famille Mamontov, il passe une partie de sa \
+jeunesse à Abramtsovo, où il peint La Jeune Fille aux pêches en 1887. Il devient le \
+portraitiste le plus recherché de Russie, peignant aussi bien les industriels et les \
+artistes que la famille impériale. Il enseigne à l'école de peinture de Moscou de 1897 \
+à 1909 et participe au mouvement du Monde de l'art. En 1905, après le Dimanche rouge, \
+il quitte l'Académie en signe de protestation. Il dessine en 1909 l'affiche des \
+Ballets russes avec la danseuse Anna Pavlova. Il meurt à Moscou en 1911."""
+style = """
+Serov est le grand portraitiste russe de son temps. Il allie la solidité du dessin \
+appris chez Répine à une touche libre et lumineuse proche de l'impressionnisme. Ses \
+portraits saisissent le caractère de ses modèles, souvent avec une ironie discrète. \
+Dans ses dernières années, il évolue vers une manière plus synthétique et décorative."""
