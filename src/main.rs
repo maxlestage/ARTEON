@@ -116,6 +116,7 @@ fn layout(
         .view_transitions()
         .prefetch(Prefetch::Hover)
         .style(style::CSS)
+        .head(r#"<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png"/>"#)
         .body(
             header().class("site-header").id("top").child(logo()).child(
                 nav()
@@ -635,6 +636,7 @@ async fn home(_req: Request) -> Page {
                     EXHIBITIONS.iter().filter(|e| !e.ephemeral).enumerate().map(|(i, ex)| ex_card(i, ex)),
                 )),
         )
+        .child(install_card())
         .child(features());
     layout(
         "Un musée virtuel en 3D",
@@ -643,6 +645,40 @@ async fn home(_req: Request) -> Page {
         None,
         content,
     )
+}
+
+/// Installer ARTEON comme une application, sur téléphone ou sur ordinateur.
+fn install_card() -> Element {
+    let step = |title: &'static str, text: &'static str| {
+        div()
+            .class("card install-step reveal")
+            .child(h3().text(title))
+            .child(p().text(text))
+    };
+    section()
+        .class("install")
+        .id("installer")
+        .child(h2().class("section-title").text("Installer ARTEON"))
+        .child(p().class("lead").text(
+            "ARTEON s'installe comme une application : une icône sur l'écran d'accueil, le musée en plein écran, \
+             et les salles déjà visitées consultables sans réseau.",
+        ))
+        .child(
+            div()
+                .class("grid install-grid")
+                .child(step(
+                    "iPhone et iPad",
+                    "Dans Safari, touchez le bouton Partager, puis « Sur l'écran d'accueil ».",
+                ))
+                .child(step(
+                    "Android",
+                    "Dans Chrome, ouvrez le menu ⋮ puis « Installer l'application » (ou « Ajouter à l'écran d'accueil »).",
+                ))
+                .child(step(
+                    "Ordinateur",
+                    "Dans Chrome ou Edge, cliquez sur l'icône d'installation au bout de la barre d'adresse.",
+                )),
+        )
 }
 
 /// La carte d'une exposition, sur l'accueil.
@@ -1758,6 +1794,28 @@ pub(crate) fn routes() -> Vec<String> {
 /// L'application : le même serveur pour `paquets dev` et pour l'export statique.
 fn app() -> App {
     let mut app = App::new();
+    // L'application installable (PWA) : le manifeste, les icônes et le service worker, qui
+    // garde les pages visitées, les images et les îlots 3D pour la visite hors ligne.
+    app.pwa(
+        Pwa::new("ARTEON")
+            .short_name("ARTEON")
+            .description(
+                "Un musée virtuel en 3D : une cinquantaine d'expositions, de l'Antiquité au street art, \
+                 en visite guidée ou libre, avec une notice complète pour chaque œuvre.",
+            )
+            .id("/")
+            .start_url("/")
+            .scope("/")
+            .display("standalone")
+            .orientation("any")
+            .lang("fr")
+            .theme_color("#1d3f8f")
+            .background_color("#0f1a3a")
+            .categories(["education", "entertainment"])
+            .icon("/icons/icon-192.png", "192x192", "image/png")
+            .icon("/icons/icon-512.png", "512x512", "image/png")
+            .maskable_icon("/icons/icon-maskable-512.png", "512x512", "image/png"),
+    );
     app.get("/", home);
     app.get("/ajouter", add_artwork);
     app.get("/credits", credits);

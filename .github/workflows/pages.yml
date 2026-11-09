@@ -100,9 +100,14 @@ jobs:
 
       - name: Vérifier l'export
         run: |
-          for f in index.html ajouter/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm; do
+          for f in index.html ajouter/index.html credits/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm \
+            manifest.webmanifest sw.js icons/icon-192.png icons/icon-512.png icons/icon-maskable-512.png; do
             test -e "dist/$f" || { echo "manquant : dist/$f"; exit 1; }
           done
+          # L'application installable : le manifeste et le service worker portent le préfixe du site.
+          grep -q '"start_url":"/ARTEON/"' dist/manifest.webmanifest || { echo "manifeste sans le préfixe"; cat dist/manifest.webmanifest; exit 1; }
+          grep -q '"/ARTEON/pkg/arteon_bg.wasm"' dist/sw.js || { echo "service worker sans le préfixe"; exit 1; }
+          grep -q 'register("/ARTEON/sw.js")' dist/index.html || { echo "service worker non inscrit"; exit 1; }
           # Chaque exposition a ses trois pages, sa scène 3D et toutes ses images.
           for toml in expositions/*.toml; do
             slug=$(basename "$toml" .toml)
