@@ -1,0 +1,923 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « RENAISSANCE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/renaissance/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /renaissance.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 20
+nom_court = "Renaissance"
+mouvement = "Renaissance italienne"
+couleur = "#7a2e2e"
+titre = "La Renaissance italienne, l'invention de l'homme"
+artiste = "Botticelli, Léonard, Raphaël, Michel-Ange, Titien…"
+dates = "1460–1538"
+accroche = "Exposition virtuelle · Galerie des Offices, Florence"
+introduction = """
+Au XVe siècle, Florence redécouvre l'Antiquité, invente la perspective et place \
+l'homme au centre du tableau ; un siècle plus tard, Rome et Venise portent cette \
+révolution à son sommet. De Filippo Lippi à Titien, dix peintures racontent ce \
+passage, des madones du Quattrocento aux nus vénitiens. Le bâtiment s'inspire de la \
+Galerie des Offices de Vasari : un long corridor en U bordé de salles, la salle \
+Botticelli, la Tribune octogonale des Médicis et le petit corridor qui longe l'Arno."""
+vitrine = "naissance-de-venus.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la Galerie des Offices à Florence, bâtie par Giorgio Vasari pour les
+# Médicis : on monte par l'escalier, puis on suit le long corridor est, sur lequel
+# s'ouvrent la salle Botticelli et la haute Tribune aux murs rouges ; le petit
+# corridor, côté Arno, ramène vers le corridor ouest, où attendent les Vénitiens.
+# Le tout dessine le U des Offices. x et z : le centre de la salle (x vers l'est,
+# z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le grand escalier"
+theme = "L'entrée et l'escalier de Vasari, qui mène au long corridor des Médicis."
+murs = "#ece5d8"
+x = 12
+z = 3
+largeur = 8
+profondeur = 6
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Le premier corridor · Le Quattrocento"
+theme = "1460–1480 : Filippo Lippi, Piero della Francesca et Mantegna, le siècle de la perspective."
+murs = "#efe9dc"
+x = 12
+z = -12
+largeur = 6
+profondeur = 24
+hauteur = 7
+portes = ["nord"]
+
+[[salles]]
+nom = "La salle Botticelli"
+theme = "1472–1486 : le Printemps, la Naissance de Vénus et l'Annonciation du jeune Léonard."
+murs = "#e7e1d2"
+x = 21
+z = -6
+largeur = 12
+profondeur = 12
+hauteur = 8
+portes = ["ouest"]
+
+[[salles]]
+nom = "La Tribune"
+theme = "Vers 1505 : Michel-Ange et Raphaël à Florence, dans l'écrin rouge du trésor des Médicis."
+murs = "#b4544a"
+x = 19
+z = -18
+largeur = 8
+profondeur = 8
+hauteur = 10
+portes = ["ouest"]
+
+[[salles]]
+nom = "Le corridor sur l'Arno"
+couloir = true
+theme = "Le petit corridor, ouvert sur le fleuve et le Ponte Vecchio."
+murs = "#eee8db"
+x = 0
+z = -27
+largeur = 30
+profondeur = 6
+hauteur = 6
+
+[[salles]]
+nom = "Le corridor ouest · Venise"
+theme = "1506–1538 : Giorgione et Titien, la couleur et la lumière de Venise."
+murs = "#e6d8c6"
+x = -12
+z = -14
+largeur = 6
+profondeur = 20
+hauteur = 7
+portes = ["nord"]
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "La Vierge à l'Enfant avec deux anges"
+artiste = "Filippo Lippi"
+annee = "vers 1460–1465"
+image = "vierge-deux-anges.jpg"
+technique = "Tempera sur panneau, 95 × 63,5 cm"
+collection = "Galerie des Offices, Florence"
+note = "Surnommée « la Lippina » : une Vierge en jeune Florentine élégante, devant une fenêtre ouverte sur un paysage."
+description = """
+La Vierge est assise de profil, les mains jointes, dans un fauteuil dont on ne voit \
+que l'accoudoir sculpté en volute, au premier plan. Elle porte une robe bleu sombre et \
+une coiffe savante de voiles transparents et de rubans, piquée de perles. Devant elle, \
+deux anges, dont on ne voit du second que le visage, soutiennent l'Enfant Jésus qui \
+tend les bras vers sa mère. L'ange du premier plan se tourne vers nous avec un large \
+sourire d'enfant espiègle. Toute la scène est cadrée par une fenêtre de pierre grise, \
+peinte en trompe-l'œil comme un vrai encadrement. Derrière, un vaste paysage de \
+collines, de rochers et de rivières s'étend jusqu'à une ville lointaine, sous un ciel \
+pâle."""
+evocation = """
+Lippi rapproche le divin de la vie quotidienne. Sa Vierge n'est plus une icône \
+lointaine sur fond d'or, mais une jeune femme réelle, à la mode de Florence, dont la \
+coiffure et le profil évoquent les portraits de dames de l'époque. Une tradition \
+ancienne, rapportée par Vasari, veut qu'elle ait les traits de Lucrezia Buti, la \
+religieuse que le peintre, lui-même moine, enleva à Prato et qui lui donna un fils, le \
+peintre Filippino Lippi ; rien ne permet de le prouver. L'ange qui sourit au \
+spectateur crée une complicité nouvelle : il nous invite à entrer dans la scène. Le \
+paysage ouvert, enfin, dit la curiosité du Quattrocento pour le monde visible, que la \
+peinture veut désormais montrer tel qu'il est."""
+histoire = """
+Le panneau date de la maturité de Lippi, au début des années 1460, quand le moine \
+carmélite travaille surtout à Prato, où il peint les fresques du chœur de la \
+cathédrale. On ignore pour qui il fut exécuté : son format moyen suggère une œuvre de \
+dévotion privée, destinée à une demeure plutôt qu'à une église. Le tableau eut un \
+succès immédiat dans l'atelier : son élève Sandro Botticelli reprit la composition, \
+presque trait pour trait, dans plusieurs Vierges de jeunesse. Conservé dans les \
+collections des grands-ducs de Toscane, il fut transféré aux Offices à la fin du \
+XVIIIe siècle depuis la villa du Poggio Imperiale. C'est aujourd'hui l'une des images \
+les plus reproduites du musée."""
+facture = """
+Lippi peint à la tempera, par hachures fines et superposées, ce qui donne aux visages \
+une douceur nacrée. Il se souvient de Masaccio, qu'il avait vu peindre au couvent du \
+Carmine, pour le volume des corps, mais il y ajoute une ligne souple et gracieuse qui \
+sera transmise à Botticelli. La fenêtre peinte, qui fait office de cadre, est une \
+invention remarquable : elle sépare l'espace du spectateur de celui du tableau. Le \
+paysage, avec ses rochers en aiguilles et ses lointains bleutés, s'inspire peut-être \
+de la peinture flamande, très admirée à Florence."""
+details = [
+  "Le voile transparent et les perles de la coiffure de la Vierge.",
+  "L'ange qui sourit en regardant le spectateur, au premier plan.",
+  "L'accoudoir en volute du fauteuil, en bas à gauche.",
+  "Le cadre de pierre grise, entièrement peint en trompe-l'œil.",
+  "La ville et les rochers en aiguilles du paysage, derrière la Vierge.",
+]
+themes = ["vierge à l'enfant", "anges", "paysage", "dévotion", "élégance"]
+anecdote = """
+Moine indiscipliné, Lippi fut tiré plusieurs fois d'embarras par Cosme de Médicis, son \
+protecteur. Vasari raconte que Cosme l'enferma un jour dans son palais pour qu'il \
+termine une commande, et que le peintre s'enfuit en descendant par la fenêtre avec des \
+draps noués."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Le Diptyque des ducs d'Urbino"
+artiste = "Piero della Francesca"
+annee = "vers 1465–1475"
+image = "ducs-urbino.jpg"
+technique = "Tempera et huile sur panneau, deux panneaux de 47 × 33 cm"
+collection = "Galerie des Offices, Florence"
+note = "Battista Sforza et Federico da Montefeltro, face à face et de profil, au-dessus des collines de leur duché."
+description = """
+Deux panneaux se font face. À gauche, Battista Sforza, comtesse d'Urbino, est vue de \
+profil, le teint très pâle, les cheveux blonds tressés et enroulés dans des rubans \
+blancs, sous un voile et un petit diadème de perles. Elle porte une robe noire à \
+manche de brocart d'or et un collier de perles. À droite, son époux Federico da \
+Montefeltro lui répond, également de profil, en habit et toque d'un rouge éclatant, le \
+nez marqué d'une profonde entaille. Derrière eux s'étend un même paysage, vu de très \
+haut : des collines, des champs, des villes fortifiées, un lac où glissent des \
+barques, jusqu'aux montagnes bleutées de l'horizon. Les deux visages se détachent \
+nettement sur le ciel."""
+evocation = """
+Le profil, hérité des médailles antiques, fait de ces portraits des images \
+officielles, presque des monnaies : il célèbre le pouvoir, la dignité et la mémoire du \
+couple plutôt que leur intimité. Le paysage commun qui court d'un panneau à l'autre \
+dit l'union des époux et leur domination sur le territoire d'Urbino. On a souvent \
+pensé que le portrait de Battista, morte toute jeune en 1472 après avoir donné un fils \
+à Federico, est posthume, ce qu'expliquerait sa pâleur de cire. Le duc, condottiere \
+célèbre et grand humaniste, se montre en homme de guerre et de savoir : le diptyque \
+est le portrait d'une cour qui faisait d'Urbino l'un des foyers les plus raffinés de \
+la Renaissance."""
+histoire = """
+Piero della Francesca a travaillé à plusieurs reprises pour Federico da Montefeltro, \
+seigneur puis duc d'Urbino, dont le palais réunissait artistes, mathématiciens et \
+lettrés. Le diptyque fut sans doute peint autour de la mort de Battista Sforza, en \
+1472 ; la date reste discutée. Au revers, Piero a peint les triomphes des deux époux, \
+sur des chars tirés par des chevaux blancs et des licornes, accompagnés d'inscriptions \
+latines à leur gloire. Les panneaux, peut-être réunis à l'origine par des charnières, \
+restèrent à Urbino jusqu'en 1631 : à l'extinction de la famille della Rovere, \
+héritière des Montefeltro, ils passèrent à Florence avec l'héritage de Vittoria della \
+Rovere, épouse du grand-duc Ferdinand II de Médicis."""
+facture = """
+Piero, mathématicien autant que peintre, construit ses figures comme des volumes purs \
+: le cou de Battista est une colonne, la toque de Federico un cylindre. La lumière \
+claire et égale, sans ombres dramatiques, baigne les visages et le paysage d'une même \
+sérénité. Le paysage, minutieux et lointain, rappelle les peintres flamands, dont les \
+œuvres étaient appréciées à la cour d'Urbino ; Piero emploie d'ailleurs l'huile, \
+technique venue du Nord, pour les glacis. La perspective aérienne, qui bleuit et \
+éclaircit les lointains, donne une profondeur immense à ces petits panneaux."""
+details = [
+  "Le nez busqué et entaillé de Federico, et sa bouche serrée.",
+  "Le grain de beauté et les rides de la joue du duc, peints sans complaisance.",
+  "La coiffure de Battista, tressée de rubans blancs et piquée de pierreries.",
+  "Les barques minuscules sur le lac, derrière Federico.",
+  "Les villes fortifiées et les tours, posées sur les collines.",
+]
+themes = ["portrait", "profil", "pouvoir", "couple", "paysage", "perspective"]
+anecdote = """
+Federico est toujours représenté de profil gauche : lors d'un tournoi, il avait perdu \
+l'œil droit, et la lance lui avait aussi entaillé le nez. On dit qu'il fit ensuite \
+retailler l'arête de son nez pour élargir son champ de vision."""
+salle = 2
+mur = "ouest"
+place = 4
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Le Christ mort"
+artiste = "Andrea Mantegna"
+annee = "vers 1480"
+image = "christ-mort.jpg"
+technique = "Tempera sur toile, 68 × 81 cm"
+collection = "Pinacothèque de Brera, Milan"
+note = "Le corps du Christ vu depuis ses pieds : l'un des raccourcis les plus saisissants de la peinture."
+description = """
+Le corps du Christ, allongé sur une dalle de marbre rose, est vu depuis ses pieds, \
+comme si le spectateur se tenait au bout de la table. Les plantes des pieds, percées \
+par les clous, sont au premier plan ; le corps s'étire ensuite vers le haut du \
+tableau, couvert d'un linceul aux plis profonds, jusqu'à la tête renversée sur un \
+coussin. Les mains, posées le long du corps, montrent elles aussi leurs plaies. À \
+gauche, serrés dans un coin, trois personnages pleurent : la Vierge âgée qui s'essuie \
+les yeux avec un mouchoir, saint Jean les mains jointes, et, presque hors du cadre, \
+Marie-Madeleine. À droite, un petit vase d'onguent rappelle les parfums de \
+l'embaumement. La chambre est sombre et nue."""
+evocation = """
+Mantegna place le spectateur au plus près de la mort, presque contre le cadavre. Pas \
+de paysage, pas d'anges, pas de gloire : seulement un corps lourd, livide, présenté \
+dans sa matérialité. Ce point de vue fait de nous les témoins du deuil, à côté des \
+pleureurs, et invite à méditer sur les blessures et le sacrifice du Christ, comme le \
+faisaient les dévotions de l'époque. Le contraste entre la retenue du corps et la \
+douleur des visages déformés par les larmes est saisissant. Les historiens y voient \
+aussi une démonstration : le peintre, passionné de perspective et de sculpture \
+antique, prouve qu'il peut représenter le corps humain sous l'angle le plus difficile \
+qui soit."""
+histoire = """
+La date de ce tableau est débattue, entre les années 1470 et la fin de la vie du \
+peintre. Il semble qu'il soit resté dans l'atelier de Mantegna, à Mantoue, où il était \
+peintre de la cour des Gonzague. À sa mort, en 1506, ses fils le trouvèrent parmi ses \
+biens et le proposèrent à la vente ; il fut acquis peu après par le cardinal Sigismond \
+de Gonzague. Après un long parcours dans des collections privées, il entra en 1824 à \
+la Pinacothèque de Brera, le grand musée de Milan créé à l'époque napoléonienne, où il \
+est aujourd'hui l'une des œuvres les plus célèbres. Sa destination première reste \
+inconnue ; son petit format suggère un tableau de méditation privée."""
+facture = """
+Mantegna peint à la tempera sur une toile fine, dans une gamme presque monochrome de \
+gris, de roses éteints et de bruns, qui donne au corps la couleur de la pierre. Le \
+linceul, aux plis creusés comme du marbre, trahit son admiration pour la sculpture. Le \
+raccourci n'est pas mathématiquement exact : les pieds sont plus petits qu'ils ne \
+devraient l'être et la tête plus grande, car une perspective rigoureuse aurait caché \
+le buste derrière d'énormes pieds. Mantegna corrige l'optique pour que le regard \
+parcoure tout le corps, jusqu'au visage."""
+details = [
+  "Les trous des clous dans les plantes des pieds et sur le dos des mains.",
+  "Le visage de la Vierge, ridé et tordu par les larmes, à gauche.",
+  "Le vase d'onguent posé sur la dalle, en haut à droite.",
+  "Les plis du linceul, sculptés comme du marbre.",
+]
+themes = ["passion", "mort", "deuil", "perspective", "raccourci"]
+anecdote = """
+Les pieds du Christ sont volontairement trop petits. Si Mantegna avait appliqué \
+exactement les lois de la perspective qu'il maîtrisait si bien, ils auraient masqué \
+une grande partie du corps : le peintre a sacrifié l'exactitude à l'émotion."""
+salle = 2
+mur = "ouest"
+place = 6
+largeur = 1.15
+
+[[oeuvres]]
+titre = "Le Printemps"
+artiste = "Sandro Botticelli"
+annee = "vers 1480"
+image = "printemps.jpg"
+technique = "Tempera sur panneau, 207 × 319 cm"
+collection = "Galerie des Offices, Florence"
+note = "Dans un bois d'orangers, Vénus accueille le retour du printemps : un tableau mythologique profane, chose rare à Florence."
+description = """
+Neuf figures s'alignent sur une prairie semée de fleurs, devant un bosquet d'orangers \
+chargés de fruits. Au centre, un peu en retrait, Vénus vêtue de blanc et de rouge lève \
+la main dans un geste d'accueil ; au-dessus d'elle, Cupidon, les yeux bandés, décoche \
+une flèche. À droite, Zéphyr, le vent du printemps, bleu et gonflé, attrape la nymphe \
+Chloris, de la bouche de laquelle sortent des fleurs ; à côté, Flore, couronnée et \
+vêtue d'une robe brodée de fleurs, en sème à pleines mains. À gauche, les trois Grâces \
+dansent en se tenant les mains, dans des voiles transparents, et Mercure, l'épée au \
+côté, chasse les nuages avec son caducée."""
+evocation = """
+Le sens exact du tableau reste l'une des grandes énigmes de l'histoire de l'art. On y \
+lit d'abord le cycle de la saison : de droite à gauche, le vent de mars féconde la \
+terre, qui se couvre de fleurs, sous le règne de Vénus. Les historiens ont proposé des \
+sources littéraires, comme les Fastes d'Ovide, où Chloris devient Flore, et les poèmes \
+d'Ange Politien, ami des Médicis. On y a vu aussi une allégorie néoplatonicienne, \
+inspirée de Marsile Ficin, où l'amour terrestre s'élève vers l'amour spirituel, ou \
+encore un hommage à un mariage. Les oranges, les mala medica, évoqueraient les Médicis \
+eux-mêmes. Le tableau célèbre la beauté, l'amour et la renaissance de la nature."""
+histoire = """
+Le Printemps est mentionné en 1499 dans l'inventaire du palais florentin de Lorenzo di \
+Pierfrancesco de Médicis, cousin de Laurent le Magnifique, pour qui il a sans doute \
+été peint ; on a proposé de le relier à son mariage, en 1482. Au milieu du XVIe \
+siècle, Vasari le vit, avec la Naissance de Vénus, dans la villa médicéenne de \
+Castello. Le tableau, oublié comme son auteur pendant des siècles, fut redécouvert au \
+XIXe siècle, quand Botticelli fascina les préraphaélites anglais. Après un passage à \
+la Galerie de l'Académie, il est exposé aux Offices depuis 1919. Une restauration, \
+achevée en 1982, lui a rendu ses couleurs claires sous des vernis noircis."""
+facture = """
+Botticelli peint à la tempera sur de grands panneaux de peuplier assemblés. Le fond \
+sombre du bosquet fait ressortir les corps clairs, alignés comme sur une frise, sans \
+profondeur réelle : le peintre préfère le rythme des silhouettes à la perspective. \
+Tout repose sur la ligne : contours nets, voiles transparents aux plis ondoyants, \
+cheveux dénoués, corps allongés et légers qui semblent à peine toucher le sol. La \
+prairie est un tapis de fleurs peintes une à une, avec la précision d'un herbier, dans \
+l'esprit des tapisseries millefleurs."""
+details = [
+  "Les fleurs qui sortent de la bouche de Chloris, poursuivie par Zéphyr.",
+  "Cupidon, les yeux bandés, qui vise l'une des trois Grâces.",
+  "La robe de Flore, brodée de bleuets, de roses et de marguerites.",
+  "Mercure, à gauche, qui écarte les nuages avec son caducée.",
+  "Les oranges dorées du bosquet, au-dessus des figures.",
+]
+themes = ["mythologie", "printemps", "amour", "fleurs", "médicis", "danse"]
+anecdote = """
+Des botanistes ont examiné la prairie du tableau fleur par fleur : ils y ont reconnu \
+plusieurs dizaines d'espèces réelles de la campagne toscane au printemps, dont des \
+iris, des bleuets, des myosotis et des fraisiers."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 3.2
+
+[[oeuvres]]
+titre = "La Naissance de Vénus"
+artiste = "Sandro Botticelli"
+annee = "vers 1484–1486"
+image = "naissance-de-venus.jpg"
+technique = "Tempera sur toile, 172,5 × 278,5 cm"
+collection = "Galerie des Offices, Florence"
+note = "Poussée par les vents, la déesse née de l'écume aborde le rivage sur une coquille : la beauté païenne revient dans la peinture."
+description = """
+Au centre, Vénus, nue, debout sur une grande coquille Saint-Jacques, glisse sur la mer \
+vers le rivage. Elle cache sa poitrine d'une main et son sexe de sa longue chevelure \
+rousse, que le vent soulève. À gauche, Zéphyr, le vent d'ouest, enlacé à une figure \
+féminine, sans doute la brise Aura, souffle pour pousser la coquille ; des roses \
+tombent autour d'eux. À droite, sur la rive boisée, une jeune femme vêtue d'une robe \
+blanche semée de bleuets, une Heure, déesse des saisons, s'avance pour couvrir la \
+déesse d'un manteau rose brodé de fleurs. La mer, striée de petites vagues en V, \
+s'étend jusqu'à l'horizon, sous un ciel pâle."""
+evocation = """
+Le tableau illustre le mythe antique de la naissance de Vénus, sortie de l'écume de la \
+mer, tel que le chantaient Hésiode puis Politien dans ses Stances. C'est l'une des \
+premières grandes images de nu féminin depuis l'Antiquité, et l'une des premières \
+œuvres mythologiques de cette taille à Florence. Dans l'esprit des humanistes \
+néoplatoniciens autour des Médicis, on y a vu la naissance de la beauté idéale, reflet \
+de la beauté divine, qui élève l'âme. Vénus garde la pose pudique des statues antiques \
+que Botticelli avait pu voir, mais son visage mélancolique et lointain lui donne une \
+grâce irréelle, presque spirituelle."""
+histoire = """
+Le commanditaire n'est pas connu avec certitude : comme pour le Printemps, on pense à \
+un membre de la branche cadette des Médicis, peut-être Lorenzo di Pierfrancesco. \
+Vasari décrit les deux tableaux au milieu du XVIe siècle dans la villa médicéenne de \
+Castello, près de Florence. La Naissance de Vénus entra aux Offices en 1815. Longtemps \
+jugé maniéré et oublié, Botticelli fut redécouvert au XIXe siècle par les critiques et \
+les peintres anglais, et cette Vénus devint l'une des images les plus célèbres au \
+monde. Elle est restée au cœur de la salle Botticelli des Offices, dont elle est \
+aujourd'hui l'œuvre la plus regardée."""
+facture = """
+Botticelli peint sur toile, support encore rare à Florence pour une œuvre de cette \
+dimension, dans une tempera claire et maigre qui donne à la surface un aspect mat. Il \
+rehausse d'or les cheveux de Vénus, les feuilles des orangers et les ailes des vents. \
+La composition est presque symétrique, organisée autour de la déesse. Le dessin domine \
+: contours fluides, vagues réduites à un motif décoratif, corps allongés au mépris de \
+l'anatomie. Le long cou de Vénus et son épaule tombante sont impossibles, mais ils \
+créent cette ligne ondoyante qui fait toute la grâce de la figure."""
+details = [
+  "Les reflets d'or dans la chevelure de Vénus.",
+  "Les roses qui tombent autour des vents, à gauche.",
+  "Les petites vagues en forme de V, comme un motif de tissu.",
+  "Le manteau rose brodé de pâquerettes que tend l'Heure, à droite.",
+  "Les roseaux, en bas à gauche, et le bord doré de la coquille.",
+]
+themes = ["mythologie", "vénus", "beauté", "nu", "mer", "antiquité"]
+anecdote = """
+Une légende tenace veut que Vénus ait les traits de Simonetta Vespucci, la belle \
+Génoise admirée de Florence, morte en 1476. Aucun document ne le prouve, et le tableau \
+a été peint près de dix ans après sa disparition."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 2.78
+
+[[oeuvres]]
+titre = "L'Annonciation"
+artiste = "Léonard de Vinci"
+annee = "vers 1472–1476"
+image = "annonciation.jpg"
+technique = "Huile et tempera sur panneau, 98 × 217 cm"
+collection = "Galerie des Offices, Florence"
+note = "L'une des premières œuvres de Léonard, peinte à une vingtaine d'années dans l'atelier de Verrocchio."
+description = """
+La scène se passe dans un jardin, devant une villa toscane. À gauche, l'ange Gabriel, \
+agenouillé dans l'herbe fleurie, un lys à la main, lève deux doigts pour bénir et \
+annoncer à Marie qu'elle portera le fils de Dieu. À droite, la Vierge est assise \
+devant l'angle de la maison, aux pierres d'angle en relief. Elle interrompt sa \
+lecture, la main droite posée sur un livre ouvert, et lève la main gauche en signe de \
+surprise. Le livre repose sur un lutrin de marbre richement sculpté. Entre les deux \
+figures, un muret ouvre la vue sur une rangée de cyprès et d'arbres sombres, puis sur \
+un lointain de port, de montagnes et d'eau, noyé de brume bleue."""
+evocation = """
+L'Annonciation, sujet très fréquent, devient chez le jeune Léonard une rencontre calme \
+et solennelle. Le lys de l'ange dit la pureté de Marie ; c'est aussi l'emblème de \
+Florence. Le jardin clos, séparé du monde par un muret, rappelle l'hortus conclusus, \
+image traditionnelle de la virginité. Le geste de Marie, mélange d'étonnement et \
+d'acceptation, traduit le moment du dialogue évangélique. Mais ce qui frappe le plus, \
+c'est la place donnée à la nature : la prairie fleurie, les arbres, le paysage brumeux \
+du fond témoignent déjà de la curiosité de Léonard pour le monde réel, la botanique et \
+l'atmosphère."""
+histoire = """
+Le tableau provient de l'église San Bartolomeo a Monteoliveto, près de Florence. Il \
+fut peint dans l'atelier d'Andrea del Verrocchio, où Léonard se forma, sans doute avec \
+la participation d'autres membres de l'atelier ; le lutrin s'inspire directement du \
+tombeau de Piero et Giovanni de Médicis, sculpté par Verrocchio pour l'église San \
+Lorenzo. Entré aux Offices en 1867, il était alors attribué à Domenico Ghirlandaio. Ce \
+n'est qu'après de longues discussions que les historiens l'ont reconnu comme une œuvre \
+de jeunesse de Léonard, attribution aujourd'hui largement admise. Les Offices \
+conservent aussi le Baptême du Christ de Verrocchio, où le jeune Léonard peignit l'un \
+des anges."""
+facture = """
+Léonard mêle tempera et huile, qui lui permet des passages plus doux. Les plis des \
+vêtements, d'une ampleur sculpturale, rappellent les études de draperies qu'il \
+peignait sur toile de lin, d'après des tissus trempés dans l'argile. Au fond, la \
+perspective atmosphérique, qui estompe les montagnes dans un voile bleuté, annonce sa \
+manière future. Certaines maladresses trahissent la jeunesse du peintre : le bras \
+droit de Marie, trop long, et le rapport incertain entre la Vierge, le lutrin et le \
+bâtiment, qu'on a expliqués par un tableau conçu pour être vu de biais, depuis la \
+droite."""
+details = [
+  "Le lys blanc que tient l'ange, emblème de pureté et de Florence.",
+  "Le lutrin de marbre, sculpté de motifs inspirés de l'Antiquité.",
+  "Les fleurs de la prairie, peintes une à une.",
+  "Le port et les montagnes, dans la brume bleue, au centre du tableau.",
+]
+themes = ["annonciation", "ange", "vierge", "jardin", "paysage", "perspective"]
+anecdote = """
+Les ailes de l'ange, peintes par Léonard d'après de vraies ailes d'oiseau, ont été \
+allongées plus tard par une autre main, de manière plus maladroite : on distingue \
+encore la reprise."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 2.17
+
+[[oeuvres]]
+titre = "Le Tondo Doni (La Sainte Famille)"
+artiste = "Michel-Ange"
+annee = "vers 1505–1507"
+image = "tondo-doni.jpg"
+technique = "Tempera et huile sur panneau, diamètre 120 cm"
+collection = "Galerie des Offices, Florence"
+note = "La seule peinture sur panneau achevée qu'on attribue sans conteste à Michel-Ange, peinte pour un riche marchand florentin."
+description = """
+Dans un tableau rond, la Sainte Famille forme un bloc compact au premier plan. La \
+Vierge, assise par terre, les jambes repliées sous une robe bleue, se tourne en une \
+torsion puissante pour saisir l'Enfant que lui tend saint Joseph, assis derrière elle, \
+barbu et chauve. Les bras musclés de Marie, ses épaules larges, sa robe rose aux plis \
+tendus en font une figure presque héroïque. Derrière un muret, le petit saint \
+Jean-Baptiste, vêtu d'une peau de bête, lève les yeux vers le groupe. Au fond, sur un \
+hémicycle de pierre, cinq jeunes hommes nus, assis ou debout, se reposent ou \
+s'enlacent, devant un paysage de collines et de lac."""
+evocation = """
+Le tableau superpose plusieurs âges de l'histoire du salut, selon une lecture souvent \
+proposée : au fond, les nus figurent l'humanité païenne, avant la Loi ; saint Jean, à \
+la limite, est le dernier prophète ; au premier plan, la Sainte Famille ouvre le temps \
+de la grâce. L'Enfant, tenu au-dessus de la tête de Marie, semble aussi évoquer son \
+destin futur. Michel-Ange, sculpteur avant tout, impose une vision nouvelle : des \
+corps monumentaux, en mouvement, qui expriment la force plutôt que la douceur. Les nus \
+du fond, sans justification narrative évidente, annoncent les Ignudi qu'il peindra peu \
+après au plafond de la chapelle Sixtine."""
+histoire = """
+Le tableau fut commandé par Agnolo Doni, riche marchand de draps florentin, peut-être \
+à l'occasion de son mariage avec Maddalena Strozzi, en 1504, ou de la naissance de \
+leur fille, en 1507. Les tondi, tableaux ronds, étaient alors des objets de dévotion \
+appréciés dans les demeures privées. Michel-Ange le peignit à Florence, entre \
+l'achèvement du David et son départ pour Rome. Le panneau a conservé son cadre \
+d'origine, en bois sculpté et doré, sans doute dessiné par l'artiste lui-même, orné de \
+têtes en relief et des croissants de lune des armes des Strozzi. Passé ensuite dans \
+les collections des Médicis, il est aujourd'hui l'un des joyaux des Offices."""
+facture = """
+Michel-Ange peint comme il sculpte : les figures, cernées d'un contour net, ont la \
+dureté du marbre. Il pose des couleurs vives et acides, rose, orange, bleu clair, \
+vert, en aplats lisses, avec des reflets changeants, les cangianti, qui modèlent les \
+volumes plutôt que de les fondre dans l'ombre. On est loin du sfumato de Léonard. La \
+composition en spirale, inscrite dans le cercle, donne au groupe un mouvement \
+ascendant. Cette palette et ces corps tordus inspireront directement les peintres \
+maniéristes, Pontormo et Rosso Fiorentino."""
+details = [
+  "La torsion de la Vierge, qui se retourne pour prendre l'Enfant.",
+  "Le petit saint Jean, derrière le muret, à droite.",
+  "Les jeunes hommes nus du fond, assis sur un muret de pierre.",
+  "Les couleurs changeantes de la robe rose et du manteau orange de Joseph.",
+]
+themes = ["sainte famille", "corps", "sculpture", "tondo", "nu"]
+anecdote = """
+Selon Vasari, Agnolo Doni trouva trop élevé le prix de soixante-dix ducats demandé par \
+Michel-Ange. Le peintre reprit alors le tableau et exigea le double ; le marchand, qui \
+tenait à son tondo, finit par payer cent quarante ducats."""
+salle = 4
+mur = "est"
+place = 1
+largeur = 1.2
+
+[[oeuvres]]
+titre = "La Vierge au chardonneret"
+artiste = "Raphaël"
+annee = "vers 1505–1506"
+image = "vierge-chardonneret.jpg"
+technique = "Huile sur panneau, 107 × 77 cm"
+collection = "Galerie des Offices, Florence"
+note = "Peinte à Florence pour le mariage d'un ami, brisée par un éboulement en 1548, restaurée en 2008."
+description = """
+La Vierge est assise sur un rocher, au milieu d'une prairie, un livre ouvert dans la \
+main gauche. Vêtue d'une robe rouge et d'un manteau bleu, elle baisse les yeux avec \
+douceur vers les deux enfants debout contre ses genoux. À gauche, le petit saint \
+Jean-Baptiste, vêtu d'une peau de bête, une écuelle à la ceinture, tient entre ses \
+mains un chardonneret qu'il présente à l'Enfant Jésus. Celui-ci, debout entre les \
+jambes de sa mère, le pied posé sur le sien, tend la main pour caresser l'oiseau. \
+Derrière, un paysage paisible s'étend jusqu'à l'horizon : un pont, une rivière, des \
+arbres frêles, une ville et des montagnes bleutées sous un ciel nuageux."""
+evocation = """
+Sous l'apparence d'une scène tendre et familière, le tableau annonce la Passion. Le \
+chardonneret, qui selon la tradition se nourrit de chardons et d'épines, était \
+l'emblème de la couronne d'épines du Christ ; une légende rapportait aussi qu'il avait \
+reçu sa tache rouge en se piquant au front du Christ. Le livre que tient Marie, celui \
+des Écritures, fait d'elle le siège de la Sagesse divine. Raphaël reprend ainsi un \
+thème grave, mais l'enveloppe d'une harmonie sereine : regards qui se croisent, gestes \
+délicats, nature apaisée. C'est l'image même de l'idéal de beauté et d'équilibre \
+auquel son nom reste attaché."""
+histoire = """
+Vasari raconte que Raphaël, établi à Florence, peignit ce tableau pour son ami Lorenzo \
+Nasi, à l'occasion de son mariage. En 1548, un glissement de terrain fit s'effondrer \
+la maison des Nasi, et le panneau se brisa en de nombreux morceaux. Il fut aussitôt \
+recollé, mais les fissures et les repeints successifs le défigurèrent peu à peu. Entré \
+dans les collections des Médicis, il est conservé aux Offices. Une restauration de \
+près de dix ans, menée par l'Opificio delle Pietre Dure de Florence et achevée en \
+2008, a consolidé le bois et rendu au tableau ses couleurs d'origine."""
+facture = """
+À Florence, le jeune Raphaël étudie Léonard : il lui emprunte la composition en \
+pyramide, où les trois figures s'inscrivent dans un triangle stable, et le modelé \
+adouci des visages. Mais il garde la clarté et la limpidité de son maître Pérugin. Les \
+couleurs pures, rouge et bleu, répondent au vert de la prairie. La lumière est égale, \
+le paysage s'éclaircit vers l'horizon selon la perspective aérienne. Tout est réglé \
+par la mesure : les gestes s'enchaînent, les regards relient les figures, et rien ne \
+vient troubler l'équilibre de l'ensemble."""
+details = [
+  "Le chardonneret, minuscule, entre les mains de saint Jean.",
+  "Le pied de l'Enfant posé sur celui de sa mère.",
+  "L'écuelle de saint Jean, accrochée à sa ceinture.",
+  "Le pont et la ville, dans le paysage à gauche et à droite.",
+  "Les fines lignes de fracture, encore perceptibles de près.",
+]
+themes = ["vierge à l'enfant", "enfance", "oiseau", "paysage", "harmonie"]
+anecdote = """
+La restauration achevée en 2008 a demandé une dizaine d'années de travail, bien plus \
+que le temps passé par Raphaël à Florence, de 1504 à 1508. Débarrassé de ses vernis \
+jaunis, le tableau a retrouvé un ciel et un manteau d'un bleu intense."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "La Tempête"
+artiste = "Giorgione"
+annee = "vers 1506–1508"
+image = "tempete.jpg"
+technique = "Huile sur toile, 82 × 73 cm"
+collection = "Gallerie dell'Accademia, Venise"
+note = "Un orage, un soldat, une mère qui allaite : le tableau le plus énigmatique de la Renaissance vénitienne."
+description = """
+Un paysage traversé par une rivière occupe tout le tableau. À gauche, un jeune homme \
+en habit rouge et blanc, appuyé sur une longue hampe, regarde vers la droite. Près de \
+lui se dressent un muret de briques et deux tronçons de colonnes brisées. À droite, de \
+l'autre côté de l'eau, une femme presque nue, une étoffe blanche sur les épaules, est \
+assise dans l'herbe et allaite un enfant ; elle tourne vers nous un regard grave. \
+Entre eux, un pont de bois enjambe la rivière et mène à une ville aux murs blancs, \
+avec une coupole et des tours. Au-dessus, le ciel vert sombre est déchiré par un \
+éclair, signe de l'orage qui approche."""
+evocation = """
+Personne ne sait ce que représente ce tableau, et c'est peut-être son sujet. On y a vu \
+Adam et Ève après la chute, une scène mythologique, une allégorie de la Fortune, de la \
+Force et de la Charité, ou encore une méditation sur la nature toute-puissante. Les \
+colonnes brisées évoqueraient la fragilité des choses humaines, l'éclair la puissance \
+divine. Pour beaucoup d'historiens, Giorgione invente ici un tableau de poésie plutôt \
+que d'histoire : les personnages, isolés, sans dialogue, se fondent dans le paysage, \
+et c'est l'atmosphère de l'orage, la lumière étrange qui précède la pluie, qui devient \
+le vrai sujet de l'œuvre."""
+histoire = """
+La Tempête est l'une des rares œuvres attribuées avec certitude à Giorgione. En 1530, \
+l'érudit vénitien Marcantonio Michiel la décrit dans la maison du patricien Gabriele \
+Vendramin, l'un des grands collectionneurs de Venise, comme un petit paysage sur toile \
+avec l'orage, une bohémienne et un soldat. Le tableau avait sans doute été peint pour \
+un amateur raffiné, capable d'en goûter l'énigme. Il passa ensuite dans plusieurs \
+collections vénitiennes, notamment celle des princes Giovanelli, à qui l'État italien \
+l'acheta en 1932 pour les Gallerie dell'Accademia de Venise, où il est exposé depuis."""
+facture = """
+Giorgione peint à l'huile, directement sur la toile, sans dessin préparatoire \
+rigoureux : il compose et corrige en peignant. Les couleurs, posées en couches \
+transparentes, se fondent les unes dans les autres et créent une atmosphère humide et \
+vibrante. Le vert profond du ciel, l'éclair blanc et les feuillages dorés par la \
+dernière lumière construisent l'espace mieux qu'une perspective géométrique. Cette \
+peinture par la couleur et la lumière, le colorito vénitien, s'oppose au disegno \
+florentin et sera développée par Titien."""
+details = [
+  "L'éclair, presque au centre du ciel, au-dessus de la ville.",
+  "Les deux colonnes brisées sur leur socle, derrière le jeune homme.",
+  "Le regard de la femme, tourné vers le spectateur.",
+  "Le petit oiseau blanc sur le toit d'une maison, à droite.",
+]
+themes = ["paysage", "orage", "énigme", "nature", "venise"]
+anecdote = """
+Une radiographie a révélé qu'à la place du jeune homme, Giorgione avait d'abord peint \
+une femme nue assise au bord de l'eau, peut-être en train de se baigner. Ce repentir \
+montre qu'il improvisait son sujet en cours de travail."""
+salle = 6
+mur = "ouest"
+place = 5
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Vénus d'Urbin"
+artiste = "Titien"
+annee = "1538"
+image = "venus-urbino.jpg"
+technique = "Huile sur toile, 119 × 165 cm"
+collection = "Galerie des Offices, Florence"
+note = "Une jeune femme nue, allongée sur un lit, regarde le spectateur : le modèle du nu couché pour des siècles."
+description = """
+Une jeune femme blonde est allongée nue sur un lit défait, aux draps blancs, posé sur \
+un matelas rouge. Accoudée à deux oreillers, elle tient un bouquet de roses dans la \
+main droite et pose la gauche sur son ventre. Elle tourne la tête vers nous et nous \
+regarde franchement. À ses pieds, un petit chien roux et blanc dort, roulé en boule. \
+La moitié gauche de la pièce est fermée par un rideau vert sombre ; à droite, une \
+salle plus claire, pavée de dalles, s'ouvre au fond sur une fenêtre où l'on voit un \
+arbre en pot et le ciel du soir. Deux servantes y fouillent dans un coffre de mariage \
+pour en sortir des vêtements."""
+evocation = """
+Rien n'indique vraiment qu'il s'agisse de la déesse : ni Cupidon, ni attribut \
+mythologique, seulement les roses et le myrte dans la fenêtre, plantes de Vénus. La \
+femme est dans une riche demeure vénitienne, au moment intime de la toilette. Beaucoup \
+d'historiens lisent le tableau comme une image du mariage : le coffre nuptial, le \
+chien, symbole de fidélité, les roses de l'amour. D'autres y voient d'abord une \
+peinture sensuelle destinée au plaisir d'un prince. Le regard direct, à la fois \
+tranquille et provocant, fait toute la modernité de l'œuvre : le spectateur n'est plus \
+un voyeur caché, il est regardé. Manet s'en souviendra pour son Olympia."""
+histoire = """
+Le tableau fut acheté à Titien en 1538 par Guidobaldo della Rovere, fils du duc \
+d'Urbino, qui le désigne dans sa correspondance simplement comme la femme nue ; il \
+devint duc d'Urbino la même année. L'œuvre resta à Urbino puis à Pesaro dans les \
+collections des della Rovere jusqu'en 1631 : elle arriva alors à Florence avec \
+l'héritage de Vittoria della Rovere, épouse du grand-duc Ferdinand II de Médicis, \
+comme le diptyque de Piero della Francesca. Exposée plus tard dans la Tribune des \
+Offices, admirée, copiée et parfois critiquée pour sa nudité, elle est l'un des \
+tableaux les plus célèbres du musée."""
+facture = """
+Titien reprend la pose de la Vénus endormie de Giorgione, conservée à Dresde, qu'il \
+avait lui-même achevée après la mort de son aîné ; mais il éveille la figure et la \
+transporte dans un intérieur. Le corps, modelé par des passages de lumière dorée \
+presque sans contour, se détache sur le blanc des draps et le vert sombre du rideau. \
+La composition est coupée en deux par le bord du rideau, qui tombe sur le sexe de la \
+femme. Les rouges du matelas et de la robe de la servante, répondant l'un à l'autre, \
+équilibrent l'ensemble : la couleur construit le tableau."""
+details = [
+  "Le petit chien endormi au pied du lit.",
+  "Le bouquet de roses dans la main droite de la jeune femme.",
+  "Au fond, la servante agenouillée, la tête plongée dans le coffre de mariage.",
+  "Le pot de myrte posé sur le rebord de la fenêtre.",
+  "La bague au petit doigt de la main gauche.",
+]
+themes = ["nu", "vénus", "mariage", "intimité", "sensualité", "venise"]
+anecdote = """
+En visite aux Offices, l'écrivain américain Mark Twain fut scandalisé par ce tableau : \
+dans son récit de voyage A Tramp Abroad, en 1880, il le qualifie de l'image la plus \
+obscène du monde, en remarquant qu'aucun écrivain n'oserait décrire avec des mots ce \
+que tous les visiteurs viennent y contempler."""
+salle = 6
+mur = "sud"
+place = 1
+largeur = 1.65
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Filippo Lippi"
+vie = "Florence, vers 1406 – Spolète, 1469"
+biographie = """
+Orphelin, Filippo Lippi est confié enfant au couvent des carmes de Santa Maria del \
+Carmine, à Florence, où il prononce ses vœux en 1421. Il y voit Masaccio peindre les \
+fresques de la chapelle Brancacci, qui décident de sa vocation. Moine peu fait pour la \
+vie religieuse, il obtient la protection de Cosme de Médicis, qui lui confie des \
+commandes et le tire de plusieurs mauvais pas. Il peint des retables, des Vierges et \
+des Annonciations pour les églises et les familles de Florence. En 1452, il s'installe \
+à Prato pour peindre les fresques du chœur de la cathédrale, consacrées à saint \
+Étienne et à saint Jean-Baptiste. Là, il enlève Lucrezia Buti, une jeune religieuse ; \
+de leur union naît en 1457 Filippino Lippi, qui deviendra lui aussi un grand peintre. \
+Le scandale est immense, mais l'intervention des Médicis lui évite le pire. Il forme \
+dans son atelier le jeune Sandro Botticelli. En 1467, il part pour Spolète, où il \
+décore l'abside de la cathédrale ; il y meurt en 1469, et Laurent le Magnifique lui \
+fera élever un monument funéraire."""
+style = """
+Lippi fait le lien entre la gravité de Masaccio et la grâce de la seconde moitié du \
+siècle. Il humanise les figures sacrées : ses Vierges sont de jeunes Florentines aux \
+coiffures élégantes, ses anges des enfants malicieux. Ses lignes souples, ses voiles \
+transparents, ses paysages ouverts derrière des fenêtres peintes sont reconnaissables \
+au premier regard. Par Botticelli, son élève, et par son fils Filippino, sa manière \
+gracieuse a profondément marqué la peinture florentine."""
+
+[[artistes]]
+nom = "Piero della Francesca"
+vie = "Borgo San Sepolcro (Toscane), vers 1415-1420 – Borgo San Sepolcro, 12 octobre 1492"
+biographie = """
+Fils d'un marchand de Borgo San Sepolcro, petite ville de la haute vallée du Tibre, \
+Piero della Francesca se forme comme peintre et étudie les mathématiques. En 1439, il \
+travaille à Florence aux côtés de Domenico Veneziano, et découvre l'art de Masaccio, \
+de Brunelleschi et la perspective. Il mène ensuite une carrière itinérante, au service \
+des cours d'Italie centrale : Ferrare, Rimini chez Sigismond Malatesta, Rome, et \
+surtout Urbino, où Federico da Montefeltro l'accueille à plusieurs reprises. Son grand \
+chef-d'œuvre est le cycle de fresques de la Légende de la Vraie Croix, à l'église San \
+Francesco d'Arezzo, peint dans les années 1450-1460. Il peint aussi la Flagellation \
+d'Urbino, le Baptême du Christ de Londres et le retable de Brera, où figure Federico \
+agenouillé. Toujours lié à sa ville natale, où il exerce des charges publiques, il \
+consacre ses dernières années à l'écriture de traités savants sur l'arithmétique, la \
+perspective et les corps géométriques. Il meurt en 1492, le jour même où Christophe \
+Colomb atteint l'Amérique."""
+style = """
+Piero construit ses tableaux comme des démonstrations : perspective rigoureuse, \
+figures réduites à des volumes simples, proportions calculées. Une lumière claire et \
+calme, sans ombres violentes, baigne ses scènes d'une immobilité solennelle. Ses \
+personnages, aux visages impassibles, semblent hors du temps. Longtemps oublié, il a \
+été redécouvert au XXe siècle, et des peintres modernes, de Seurat aux métaphysiciens \
+italiens, ont admiré sa géométrie silencieuse."""
+
+[[artistes]]
+nom = "Andrea Mantegna"
+vie = "Isola di Carturo (Vénétie), vers 1431 – Mantoue, 13 septembre 1506"
+biographie = """
+Né près de Padoue, Andrea Mantegna entre très jeune dans l'atelier du peintre \
+Francesco Squarcione, qui l'adopte et le forme au contact de sa collection d'antiques. \
+Padoue, ville universitaire où ont travaillé Giotto et Donatello, est alors un foyer \
+de l'humanisme. Encore adolescent, Mantegna peint les fresques de la chapelle Ovetari \
+dans l'église des Eremitani, presque entièrement détruites par un bombardement en \
+1944. En 1453, il épouse Nicolosia, fille du peintre vénitien Jacopo Bellini et sœur \
+de Giovanni Bellini, sur qui il exerce une forte influence. En 1460, il devient \
+peintre de la cour des Gonzague à Mantoue, poste qu'il occupe jusqu'à sa mort. Il y \
+peint la célèbre Chambre des Époux du palais ducal, achevée en 1474, dont le plafond \
+s'ouvre en trompe-l'œil sur le ciel, puis la grande série des Triomphes de César, \
+aujourd'hui à Hampton Court. Collectionneur d'antiquités, graveur novateur, il \
+travaille aussi pour Isabelle d'Este, épouse du marquis François II de Gonzague. Il \
+meurt à Mantoue en 1506."""
+style = """
+Mantegna est le peintre de la pierre et de l'Antiquité : ses figures ont la dureté des \
+statues, ses architectures et ses costumes sont reconstitués avec une précision \
+d'archéologue. Il pousse la perspective jusqu'aux points de vue les plus audacieux, \
+plafonds vus d'en dessous et corps en raccourci. Son dessin incisif, ses couleurs \
+froides et ses gravures, diffusées dans toute l'Europe, ont marqué Bellini et Dürer."""
+
+[[artistes]]
+nom = "Sandro Botticelli"
+vie = "Florence, vers 1445 – Florence, 17 mai 1510"
+biographie = """
+Alessandro Filipepi, fils d'un tanneur florentin, doit son surnom de Botticelli, petit \
+tonneau, à l'un de ses frères aînés. Après un apprentissage probable chez un orfèvre, \
+il entre au début des années 1460 dans l'atelier de Filippo Lippi, puis fréquente \
+celui de Verrocchio. Il ouvre son propre atelier vers 1470 et devient le peintre \
+favori du cercle des Médicis et des humanistes qui les entourent. En 1481-1482, le \
+pape Sixte IV l'appelle à Rome avec d'autres maîtres pour peindre les murs de la \
+chapelle Sixtine. De retour à Florence, il peint ses grandes compositions \
+mythologiques, le Printemps et la Naissance de Vénus, et de nombreuses Vierges en \
+tondo. Dans les années 1490, Florence est bouleversée par les sermons du dominicain \
+Savonarole ; la peinture de Botticelli devient plus austère et plus tourmentée, comme \
+dans la Calomnie d'Apelle ou la Nativité mystique. Il réalise aussi une série de \
+dessins pour la Divine Comédie de Dante. Passé de mode à la fin de sa vie, il meurt en \
+1510. Il ne sera vraiment redécouvert qu'au XIXe siècle."""
+style = """
+Botticelli est avant tout un dessinateur : la ligne, souple et nerveuse, définit les \
+formes, anime les voiles et les chevelures soulevées par le vent. Ses figures, \
+allongées et légères, au visage mélancolique, semblent flotter plus que marcher. Il \
+préfère le rythme décoratif à la perspective et la poésie à la vraisemblance. Oublié \
+pendant trois siècles, il a fasciné les préraphaélites et l'Art nouveau, et sa Vénus \
+est devenue une icône universelle de la beauté."""
+
+[[artistes]]
+nom = "Léonard de Vinci"
+vie = "Vinci (Toscane), 15 avril 1452 – Amboise, 2 mai 1519"
+biographie = """
+Fils illégitime d'un notaire, Léonard grandit à Vinci, près de Florence, puis entre à \
+la fin des années 1460 dans l'atelier d'Andrea del Verrocchio, peintre, sculpteur et \
+orfèvre. Il y apprend toutes les techniques et peint ses premières œuvres, dont \
+l'Annonciation. Vers 1482, il part pour Milan, au service de Ludovic Sforza, comme \
+ingénieur, organisateur de fêtes et peintre : il y réalise la Vierge aux rochers et la \
+Cène, au couvent de Santa Maria delle Grazie. Après la chute de Ludovic, en 1499, il \
+mène une vie itinérante entre Venise, Florence, où il commence la Joconde, Milan et \
+Rome. Il remplit des milliers de pages de carnets, écrits de droite à gauche, sur \
+l'anatomie, le vol des oiseaux, l'eau, l'optique et les machines. En 1516, le roi \
+François Ier l'invite en France et l'installe au manoir du Clos Lucé, près du château \
+d'Amboise, où il meurt en 1519. Il laisse très peu de tableaux achevés, mais une \
+réputation de génie universel."""
+style = """
+Léonard veut peindre la nature telle que l'œil la voit. Il invente le sfumato, un \
+modelé fondu, sans contours, qui enveloppe les formes dans une ombre douce, et la \
+perspective aérienne, qui bleuit et estompe les lointains. Ses compositions en \
+pyramide, ses figures saisies dans un mouvement de l'âme et ses paysages brumeux ont \
+été imités par Raphaël et par toute la génération suivante."""
+
+[[artistes]]
+nom = "Michel-Ange"
+vie = "Caprese (Toscane), 6 mars 1475 – Rome, 18 février 1564"
+biographie = """
+Michelangelo Buonarroti, fils d'un magistrat florentin, entre en 1488 dans l'atelier \
+du peintre Domenico Ghirlandaio, puis fréquente le jardin de sculptures des Médicis, \
+où Laurent le Magnifique le remarque. À Rome, il sculpte la Pietà de Saint-Pierre, \
+achevée en 1499 ; à Florence, de 1501 à 1504, le David, symbole de la République. \
+C'est alors qu'il peint pour Agnolo Doni le seul tableau sur panneau achevé qui lui \
+soit attribué sans réserve. En 1508, le pape Jules II lui commande le plafond de la \
+chapelle Sixtine, qu'il peint presque seul jusqu'en 1512. Il travaille ensuite au \
+tombeau de Jules II, au Moïse, à la chapelle funéraire des Médicis à San Lorenzo. De \
+retour à Rome, il peint le Jugement dernier sur le mur de l'autel de la Sixtine, \
+achevé en 1541, puis devient architecte de la basilique Saint-Pierre, dont il dessine \
+la coupole. Poète, il écrit aussi des sonnets. Il meurt à Rome à près de \
+quatre-vingt-neuf ans ; son corps est ramené à Florence."""
+style = """
+Sculpteur avant tout, Michel-Ange fait du corps humain, surtout nu et masculin, le \
+moyen d'exprimer toutes les passions. Ses figures, puissantes, tordues, souvent \
+inachevées en sculpture, semblent lutter contre la matière. En peinture, il pose des \
+couleurs vives et changeantes sur des formes sculpturales. Sa terribilità, cette force \
+grandiose et inquiète, a ouvert la voie au maniérisme et à l'art baroque."""
+
+[[artistes]]
+nom = "Raphaël"
+vie = "Urbino, 1483 – Rome, 6 avril 1520"
+biographie = """
+Raffaello Sanzio est le fils de Giovanni Santi, peintre et poète de la cour d'Urbino, \
+qui meurt quand l'enfant a onze ans. Le jeune homme se forme ensuite auprès du \
+Pérugin, dont il assimile si bien la manière qu'on confond parfois leurs œuvres. De \
+1504 à 1508, il vit surtout à Florence, où il découvre Léonard et Michel-Ange et peint \
+une série de Vierges à l'Enfant, dont la Vierge au chardonneret. En 1508, le pape \
+Jules II l'appelle à Rome pour décorer ses appartements du Vatican : les Chambres, \
+dont l'École d'Athènes, comptent parmi les sommets de la Renaissance. Sous Léon X, il \
+dirige un atelier très nombreux, dessine les cartons des tapisseries de la Sixtine, \
+est nommé architecte de Saint-Pierre et chargé de relever les monuments de la Rome \
+antique. Il peint aussi des portraits, comme celui de Baldassare Castiglione. Il meurt \
+soudainement à trente-sept ans ; il est enterré au Panthéon."""
+style = """
+Raphaël a fait la synthèse de son temps : la douceur de Léonard, la force de \
+Michel-Ange, la clarté du Pérugin. Ses compositions, d'un équilibre parfait, ses \
+figures gracieuses et ses couleurs limpides incarnent l'idéal classique. Pendant plus \
+de trois siècles, les académies de toute l'Europe l'ont tenu pour le modèle absolu du \
+grand peintre, avant que les préraphaélites ne le rejettent."""
+
+[[artistes]]
+nom = "Giorgione"
+vie = "Castelfranco Veneto, vers 1477-1478 – Venise, 1510"
+biographie = """
+On sait très peu de choses de Giorgio da Castelfranco, surnommé Giorgione, le grand \
+Georges. Né dans une petite ville de la terre ferme vénitienne, il se forme \
+probablement à Venise dans l'entourage de Giovanni Bellini. Il travaille surtout pour \
+un cercle de patriciens cultivés, amateurs de musique, de poésie et de tableaux de \
+petit format, aux sujets parfois énigmatiques. On lui attribue avec certitude un \
+nombre très réduit d'œuvres : le retable de Castelfranco, la Tempête, les Trois \
+Philosophes de Vienne, le portrait de Laura. En 1508, il peint avec le jeune Titien \
+les fresques de la façade du Fondaco dei Tedeschi, l'entrepôt des marchands allemands \
+à Venise, dont il ne reste que des fragments. Il meurt de la peste à l'automne 1510, à \
+une trentaine d'années. Plusieurs de ses tableaux inachevés sont terminés par Titien, \
+comme la Vénus endormie de Dresde, si bien que la frontière entre leurs deux œuvres \
+reste discutée."""
+style = """
+Giorgione a transformé la peinture vénitienne en quelques années. Il peint directement \
+à l'huile, sans dessin préalable, et laisse la couleur et la lumière modeler les \
+formes. Ses personnages rêveurs se fondent dans des paysages chargés d'atmosphère, où \
+l'émotion compte plus que l'histoire racontée. Ses tableaux de poésie, sans sujet \
+évident, ont ouvert la voie à Titien et au paysage moderne."""
+
+[[artistes]]
+nom = "Titien"
+vie = "Pieve di Cadore (Vénétie), vers 1488-1490 – Venise, 27 août 1576"
+biographie = """
+Tiziano Vecellio naît dans les montagnes du Cadore et arrive enfant à Venise. Il se \
+forme chez Giovanni Bellini, puis travaille aux côtés de Giorgione, dont il achève \
+plusieurs œuvres après sa mort en 1510. En 1518, la gigantesque Assomption de l'église \
+des Frari fait de lui le premier peintre de Venise. Il peint ensuite pour les cours \
+d'Italie, les Este de Ferrare, les Gonzague de Mantoue, les della Rovere d'Urbino, \
+puis pour l'empereur Charles Quint, qui le fait comte palatin en 1533 et chevalier, et \
+pour son fils Philippe II d'Espagne, à qui il envoie ses grandes mythologies, les \
+poésies. Portraitiste recherché des papes et des princes, il dirige un atelier actif \
+pendant plus de soixante ans. Dans ses dernières années, sa peinture devient de plus \
+en plus libre, presque informe, faite de touches empâtées posées parfois au doigt. Il \
+meurt à Venise en 1576, pendant une épidémie de peste ; il est inhumé aux Frari."""
+style = """
+Titien est le maître de la couleur. Il construit ses tableaux par couches successives \
+d'huile, en glacis transparents et en touches épaisses, et fait naître les formes de \
+la lumière plutôt que du dessin. Ses nus dorés, ses portraits pénétrants et ses \
+mythologies sensuelles ont fixé pour des siècles les modèles du genre. Rubens, \
+Velázquez, Rembrandt, puis Delacroix et Manet se sont tous mesurés à lui."""

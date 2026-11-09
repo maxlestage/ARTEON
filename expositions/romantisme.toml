@@ -1,0 +1,892 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ROMANTISME » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/romantisme/). Le nom
+#  du fichier donne l'adresse de l'exposition sur le site : /romantisme.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 70
+nom_court = "Romantisme"
+mouvement = "Romantisme"
+couleur = "#8e2a2a"
+titre = "Le Romantisme, la tempête et le rêve"
+artiste = "Füssli, Blake, Goya, Friedrich, Turner, Constable, Géricault, Delacroix"
+dates = "1781–1839"
+accroche = "Exposition virtuelle · Musée du Louvre, Paris"
+introduction = """
+Entre la fin du XVIIIe siècle et le milieu du XIXe, les peintres romantiques préfèrent \
+l'émotion à la règle, le rêve, la nature sauvage et l'actualité brûlante aux modèles \
+antiques. Du Cauchemar de Füssli au Téméraire de Turner, la visite réunit dix œuvres \
+de huit artistes, d'Angleterre, d'Espagne, d'Allemagne et de France : visions, \
+guerres, naufrages, révolutions et paysages infinis. Le bâtiment s'inspire des grandes \
+salles rouges du Louvre, Daru et Mollien, très hautes, où sont accrochés les immenses \
+formats de la peinture française du XIXe siècle, et d'un cabinet plus intime réservé \
+au paysage."""
+vitrine = "radeau-meduse.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de l'aile Denon du Louvre : on monte par le palier de l'escalier Daru,
+# puis on entre dans le salon Denon, d'où s'ouvrent, en enfilade, la salle Daru à
+# l'ouest et la salle Mollien à l'est, deux grandes salles aux murs rouges et aux
+# plafonds très hauts, faites pour les immenses toiles (c'est dans la salle Mollien que
+# sont accrochés, au Louvre, le Radeau de la Méduse et la Liberté). Au nord, un
+# petit cabinet aux murs clairs pour les paysages de Friedrich, Turner et Constable.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une porte
+# se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le palier Daru"
+couloir = true
+theme = "Le palier de l'escalier Daru, d'où l'on entre dans les grandes salles de peinture."
+murs = "#e9e2d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Le salon Denon · Visions et cauchemars"
+theme = "1781–1805 : à Londres, Füssli et Blake ouvrent la peinture au rêve, à la peur et aux visions."
+murs = "#d9a99a"
+x = 0
+z = -10
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La salle Daru · Goya"
+theme = "1814–1823 : la guerre et la folie, des fusillés du 3 mai aux Peintures noires."
+murs = "#c97a6c"
+x = -15
+z = -10
+largeur = 18
+profondeur = 12
+hauteur = 12
+
+[[salles]]
+nom = "La salle Mollien · L'histoire en marche"
+theme = "1819–1830 : le naufrage de la Méduse et la révolution de Juillet, l'actualité peinte en très grand format."
+murs = "#c97a6c"
+x = 15
+z = -10
+largeur = 18
+profondeur = 12
+hauteur = 12
+
+[[salles]]
+nom = "Le cabinet des paysages"
+theme = "1808–1839 : la brume et la mer de Friedrich, le couchant de Turner, la campagne de Constable."
+murs = "#e6dfd1"
+x = 0
+z = -19
+largeur = 10
+profondeur = 6
+hauteur = 5.5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Cauchemar"
+artiste = "Johann Heinrich Füssli"
+annee = "1781"
+image = "cauchemar.jpg"
+technique = "Huile sur toile, 101,6 × 127 cm"
+collection = "Detroit Institute of Arts, Detroit"
+note = "Un démon accroupi sur une dormeuse, une tête de cheval aux yeux vides : le tableau qui fit frissonner Londres en 1782."
+description = """
+Une jeune femme vêtue de blanc est renversée sur un lit, la tête et un bras pendant \
+dans le vide, les yeux clos, comme évanouie. Sur sa poitrine est accroupi un petit \
+démon velu, un incube au visage grimaçant, qui fixe le spectateur. À gauche, entre les \
+rideaux rouge sombre de l'alcôve, surgit une tête de cheval aux yeux blancs et sans \
+pupilles. Au premier plan, une petite table ronde porte un miroir, un flacon et un \
+pot. Tout le reste est plongé dans l'ombre. La lumière tombe sur le corps de la \
+dormeuse, sur la soie de sa chemise et sur les drapés jaune et rouge qui glissent du \
+lit jusqu'au sol, et fait ressortir la diagonale de son corps abandonné."""
+evocation = """
+Le tableau ne raconte aucune histoire tirée de la Bible ou de la mythologie : il \
+montre un état, le mauvais rêve, et l'angoisse de la dormeuse qui ne peut se \
+réveiller. Le démon assis sur la poitrine reprend une croyance ancienne, celle d'un \
+esprit qui vient écraser les dormeurs ; la tête de cheval joue sur le mot anglais \
+nightmare, dont la seconde moitié évoque la jument. On y a vu aussi une scène chargée \
+d'érotisme, avec ce corps offert et cet intrus nocturne. À la fin du siècle des \
+Lumières, qui voulait tout éclairer par la raison, Füssli ouvre la peinture au monde \
+du rêve, de la peur et de l'inconscient, que les romantiques puis les surréalistes \
+exploreront."""
+histoire = """
+Füssli, Zurichois installé à Londres, expose la toile à la Royal Academy au printemps \
+1782. Le succès est immédiat et fait sa réputation. L'éditeur John Raphael Smith en \
+fait aussitôt graver une estampe par Thomas Burke, en 1783, qui se vend largement et \
+rapporte bien plus que le tableau lui-même. Le peintre en donnera plusieurs autres \
+versions, dont une, vers 1790-1791, conservée au Goethe-Haus de Francfort. Le sujet \
+est aussitôt parodié par les caricaturistes politiques anglais, qui remplacent la \
+dormeuse par les hommes d'État du moment. Au revers de la toile de Detroit se trouve \
+un portrait de jeune femme inachevé, dans lequel on a proposé de reconnaître Anna \
+Landolt, nièce de son ami Lavater, dont il était épris. Le tableau est entré au \
+Detroit Institute of Arts en 1955."""
+facture = """
+Füssli compose comme au théâtre : un espace étroit, fermé par des rideaux, une lumière \
+de rampe qui découpe les figures sur un fond presque noir. Le corps de la femme \
+dessine une longue courbe qui traverse toute la toile, en contrepoint de la masse \
+compacte du démon. Le dessin des corps, aux membres étirés et aux poses forcées, vient \
+de son étude de Michel-Ange à Rome, où il a passé huit ans. La peinture, assez fluide, \
+joue sur quelques accords : le blanc nacré de la chemise, le rouge des tentures, \
+l'ocre du drapé."""
+details = [
+  "Les yeux de la tête de cheval, ronds et blancs, sans aucune pupille.",
+  "Le regard du démon, tourné non vers la dormeuse mais vers nous.",
+  "Le bras de la jeune femme qui pend jusqu'au sol, la main ouverte.",
+  "Sur la table, le petit miroir et les flacons, objets de toilette ordinaires.",
+]
+themes = ["rêve", "nuit", "démon", "angoisse", "fantastique"]
+anecdote = """
+On rapporte que Sigmund Freud avait accroché une gravure du Cauchemar dans son \
+appartement de Vienne, au 19 Berggasse. Le tableau, qui montre le rêve comme un drame \
+intérieur, a souvent été rapproché de L'Interprétation des rêves."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.27
+
+[[oeuvres]]
+titre = "Newton"
+artiste = "William Blake"
+annee = "1795–vers 1805"
+image = "newton.jpg"
+technique = "Impression en couleur, encre et aquarelle sur papier, 46 × 60 cm"
+collection = "Tate Britain, Londres"
+note = "Le savant, nu au fond de la mer, ne voit que la figure qu'il trace au compas : la raison, pour Blake, est une prison."
+description = """
+Un jeune homme nu, musclé, aux cheveux bouclés, est assis sur un rocher couvert de \
+lichens et de coraux, au fond de ce qui ressemble à une mer obscure. Penché en avant, \
+il plie le dos jusqu'à presque toucher ses genoux. De la main droite, il pose les \
+pointes d'un compas sur un rouleau de papier déroulé au sol, où l'on devine un \
+triangle et un arc de cercle ; de la main gauche, il tient l'autre bout du rouleau. Un \
+drapé blanc pend de son épaule. Son profil, très pur, est tout entier tourné vers le \
+dessin. Derrière lui, le rocher forme une masse grouillante de couleurs, rouges, ocres \
+et vertes ; devant, le fond bleu-noir est vide."""
+evocation = """
+Pour Blake, Isaac Newton incarne la raison qui mesure et enferme le monde dans des \
+lois. Son héros a la beauté d'un athlète grec, mais il est courbé, les yeux rivés au \
+papier : il ne voit ni le rocher prodigieux derrière lui ni l'immensité qui l'entoure. \
+Le poète-peintre oppose cette vision unique, purement calculatrice, à l'imagination, \
+qui seule donne accès à l'esprit. Le compas rappelle celui du dieu créateur, Urizen, \
+dans ses livres prophétiques. On y lit souvent une critique des Lumières et de la \
+science de son temps, mais la figure reste si belle qu'on y a vu aussi une admiration \
+ambivalente pour le génie du savant."""
+histoire = """
+L'image appartient à la série des douze Grandes Estampes en couleur que Blake conçoit \
+en 1795, à Lambeth, avec des sujets tirés de la Bible, de Shakespeare, de Milton et de \
+sa propre mythologie. Chaque sujet n'était tiré qu'à quelques exemplaires, retouchés \
+un à un. Cette épreuve-ci a été tirée et reprise plus tard, vers 1805, d'où sa double \
+date. On la rapproche souvent de Nabuchodonosor, le roi devenu bête : deux figures de \
+l'homme diminué, l'un par la raison seule, l'autre par la folie. Blake vendait ces \
+feuilles à son principal mécène, Thomas Butts. Longtemps restée confidentielle, la \
+planche est entrée à la Tate en 1939, offerte par le collectionneur W. Graham \
+Robertson, grand défenseur de l'artiste."""
+facture = """
+Blake invente ici un procédé proche du monotype. Il peint d'abord le motif avec des \
+couleurs épaisses sur un support rigide, puis presse une feuille de papier contre lui \
+: la couleur, en se décollant, laisse une texture granuleuse et marbrée, très visible \
+dans le rocher. Il reprend ensuite chaque épreuve à l'encre et à l'aquarelle, \
+précisant les contours et le modelé du corps. Le dessin, ferme et linéaire, vient de \
+sa formation de graveur et de son admiration pour Michel-Ange."""
+details = [
+  "La texture marbrée du rocher, obtenue en décollant le papier de la peinture.",
+  "Les pointes du compas posées sur le rouleau, au bout des doigts.",
+  "Les orteils du savant qui débordent sur le papier.",
+  "Sous le rocher, près de la jambe, une forme pâle qui évoque un animal marin.",
+]
+themes = ["science", "raison", "imagination", "nu", "vision"]
+anecdote = """
+Devant la British Library, à Londres, une grande statue de bronze d'Eduardo Paolozzi, \
+Newton d'après Blake (1995), reprend la pose de cette estampe : le savant penché, \
+compas à la main, mesurant le sol."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Le Trois Mai 1808 à Madrid"
+artiste = "Francisco de Goya"
+annee = "1814"
+image = "tres-de-mayo.jpg"
+technique = "Huile sur toile, 268 × 347 cm"
+collection = "Musée du Prado, Madrid"
+note = "La nuit qui suit le soulèvement de Madrid, des patriotes sont fusillés par les soldats de Napoléon : la première grande image moderne de la guerre."
+description = """
+La scène se passe la nuit, au pied d'une colline nue, aux portes de Madrid dont on \
+aperçoit le clocher et les toits. À droite, une rangée de soldats français, vus de \
+dos, le visage caché, épaule ses fusils. À gauche, face à eux, un groupe de Madrilènes \
+attend la mort. Au centre, un homme en chemise blanche et pantalon jaune, à genoux, \
+écarte les bras en croix, les yeux exorbités. Autour de lui, un moine prie les mains \
+jointes, d'autres se couvrent le visage. Au sol, des corps ensanglantés gisent déjà ; \
+derrière, une file de condamnés monte vers le lieu d'exécution. Une grosse lanterne \
+cubique posée par terre éclaire violemment la victime."""
+evocation = """
+Goya renverse la peinture d'histoire : il n'y a pas de héros victorieux ni de général, \
+mais des anonymes face à une machine à tuer. Les soldats, sans visage, forment un seul \
+bloc mécanique ; les victimes, elles, ont chacune leur peur. L'homme en blanc, bras \
+ouverts, rappelle le Christ en croix, et l'on a relevé sur sa main la trace d'une \
+blessure qui évoque les stigmates. La lanterne, qui devrait éclairer, sert ici à \
+viser. Le tableau, peint après la défaite de Napoléon en Espagne, rend hommage au \
+peuple de Madrid, mais il dit surtout l'horreur de la guerre, sans gloire ni \
+consolation. Manet puis Picasso, avec son Massacre en Corée, s'en souviendront."""
+histoire = """
+Le 2 mai 1808, les Madrilènes se soulèvent contre les troupes françaises qui occupent \
+la ville ; dans la nuit et le lendemain, Murat fait fusiller de nombreux prisonniers, \
+notamment sur la colline du Prince Pío. Six ans plus tard, en février 1814, alors que \
+les Français ont quitté l'Espagne, Goya propose au gouvernement de la Régence de \
+perpétuer par le pinceau les épisodes héroïques de l'insurrection. Il peint deux \
+grandes toiles, le Deux Mai, la charge contre les mamelouks, et ce Trois Mai. Le roi \
+Ferdinand VII, rétabli sur le trône, ne les met guère en valeur : elles restent \
+longtemps dans les réserves et n'apparaissent au catalogue du Prado qu'en 1872. \
+Pendant la guerre civile, elles sont évacuées avec les collections du musée."""
+facture = """
+La composition oppose deux masses : à droite, les soldats en diagonale, alignés comme \
+une seule arme ; à gauche, un groupe désordonné de corps et de gestes. Entre eux, un \
+vide étroit, que les canons des fusils franchissent presque. Toute la lumière vient de \
+la lanterne, posée au sol, et se concentre sur la chemise blanche. Goya peint vite, \
+par larges coups de brosse, laissant des contours flous et des visages à peine \
+esquissés. La gamme est sombre, brune et noire, relevée par le blanc, le jaune et le \
+rouge du sang."""
+details = [
+  "La lanterne posée au sol, seule source de lumière de la scène.",
+  "Les paumes ouvertes de l'homme en blanc, comme celles d'un crucifié.",
+  "Le moine tonsuré qui prie, agenouillé à côté de lui.",
+  "Au fond, le clocher et les maisons de Madrid, éteints dans la nuit.",
+  "Le sang qui coule sur le sol, au premier plan à gauche.",
+]
+themes = ["guerre", "exécution", "nuit", "peuple", "histoire"]
+anecdote = """
+Agenouillé, l'homme en chemise blanche paraît déjà aussi grand que les soldats debout \
+: s'il se relevait, il les dépasserait tous. Goya a agrandi la victime, sans doute \
+pour qu'elle domine la scène."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 3.47
+
+[[oeuvres]]
+titre = "Saturne dévorant un de ses fils"
+artiste = "Francisco de Goya"
+annee = "1820–1823"
+image = "saturne.jpg"
+technique = "Peinture murale à l'huile transposée sur toile, 143,5 × 81,4 cm"
+collection = "Musée du Prado, Madrid"
+note = "L'une des Peintures noires que Goya peignit pour lui seul sur les murs de sa maison, près de Madrid."
+description = """
+Sur un fond entièrement noir surgit un géant aux cheveux gris en désordre, accroupi, \
+les genoux pliés. Ses yeux sont écarquillés, d'un blanc effrayant, et sa bouche grande \
+ouverte mord dans un corps humain. Il serre entre ses deux poings énormes ce corps nu \
+dont la tête a déjà disparu ; le sang rouge vif coule sur la chair blanche. Le corps \
+de la victime, aux hanches et aux jambes d'adulte, pend vers le bas. Le reste de la \
+figure du dieu, ses épaules, ses cuisses, son genou blafard en bas à droite, se perd \
+dans l'obscurité. Il n'y a ni décor, ni lieu, ni sol : seulement cette apparition qui \
+semble sortir de la nuit."""
+evocation = """
+Le mythe antique raconte que Saturne, le Cronos grec, dévorait ses enfants pour \
+qu'aucun d'eux ne lui prenne le trône. Goya en fait une scène de folie et d'épouvante \
+: le dieu paraît lui-même terrifié par son geste, comme s'il ne pouvait s'arrêter. \
+Saturne étant aussi le dieu du temps, on y a vu le temps qui consume tout ; d'autres \
+lisent une image de l'Espagne dévorant ses propres enfants dans la guerre et la \
+répression, ou du pouvoir absolu de Ferdinand VII. Saturne était enfin la planète de \
+la mélancolie : peinte par un homme vieux, sourd et malade, la scène a été rapprochée \
+de ses angoisses intimes. Goya n'a laissé aucune explication."""
+histoire = """
+En 1819, Goya, qui a plus de soixante-dix ans et est sourd depuis longtemps, achète \
+une maison de campagne au bord du Manzanares, près de Madrid, connue sous le nom de \
+Quinta del Sordo, la maison du Sourd. Il couvre directement les murs de deux pièces de \
+quatorze grandes peintures à l'huile, sans commande ni public, que l'on nomme \
+aujourd'hui les Peintures noires. Saturne se trouvait au rez-de-chaussée, dans la \
+salle à manger. Les titres actuels ne sont pas de lui. En 1873, le baron Émile \
+d'Erlanger achète la maison ; les peintures sont détachées des murs et transposées sur \
+toile, montrées à l'Exposition universelle de Paris en 1878, puis offertes au Prado en \
+1881."""
+facture = """
+Goya peint à l'huile directement sur l'enduit du mur, avec une palette réduite au \
+noir, aux ocres, aux gris et au blanc, relevée seulement par le rouge du sang. La \
+touche est rapide, large, parfois brutale : il travaille sans doute à la brosse et \
+peut-être au couteau, laissant la matière visible. La figure, cadrée trop grande pour \
+l'espace, touche presque les bords et semble vouloir en sortir. Il connaissait le \
+Saturne de Rubens, conservé dans les collections royales, mais il en supprime toute \
+élégance."""
+details = [
+  "Les yeux blancs et ronds, où l'on lit autant de peur que de rage.",
+  "Les doigts du géant qui s'enfoncent dans le dos de la victime.",
+  "Le rouge du sang, seule couleur vive de tout le tableau.",
+  "Le genou clair en bas à droite, qui surgit de l'ombre.",
+]
+themes = ["mythologie", "folie", "temps", "violence", "peintures noires"]
+anecdote = """
+Une photographie prise par Jean Laurent vers 1874, avant le transfert sur toile, \
+montre un état un peu différent de la peinture : certaines parties de la figure, \
+aujourd'hui perdues dans l'ombre, y sont plus lisibles. Le transfert a abîmé et \
+modifié l'œuvre."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Le Radeau de la Méduse"
+artiste = "Théodore Géricault"
+annee = "1818–1819"
+image = "radeau-meduse.jpg"
+technique = "Huile sur toile, 491 × 716 cm"
+collection = "Musée du Louvre, Paris"
+note = "Treize jours de dérive après le naufrage d'une frégate française : le fait divers devenu tableau d'histoire, qui fit scandale au Salon de 1819."
+description = """
+Sur un radeau de fortune ballotté par une mer houleuse, une vingtaine d'hommes sont \
+entassés, morts, mourants ou survivants. Au premier plan, des cadavres glissent dans \
+l'eau ; à gauche, un vieillard drapé de rouge tient sur ses genoux le corps d'un jeune \
+homme et regarde dans le vide. Derrière, une voile gonflée, un mât retenu par des \
+cordes. Les corps s'élèvent vers la droite en une pyramide de bras tendus, jusqu'à un \
+homme noir juché sur un tonneau, qui agite un tissu vers l'horizon. Là-bas, minuscule, \
+on distingue la silhouette d'un navire. Le ciel est chargé de nuages sombres, déchirés \
+par une lueur jaune, et une énorme vague se lève à gauche."""
+evocation = """
+Géricault fait d'un fait divers récent une épopée tragique, à l'échelle de la peinture \
+d'histoire. Le tableau dit le désespoir et l'espérance mêlés : de la mort, en bas, à \
+l'appel au secours, en haut, toute la toile est tendue vers ce navire presque \
+invisible. Au moment choisi, les naufragés ne savent pas encore s'ils seront vus. Pour \
+le public de 1819, l'œuvre était aussi une accusation : le naufrage était imputé à un \
+commandant nommé par faveur politique sous la Restauration. En plaçant un homme noir \
+au sommet de la pyramide, à l'heure où l'on débattait de l'abolition de la traite, \
+Géricault a pris une position qu'on a souvent soulignée. Le radeau est devenu une \
+image de l'humanité livrée à elle-même."""
+histoire = """
+En juillet 1816, la frégate la Méduse, qui conduit des colons au Sénégal, s'échoue au \
+large de la Mauritanie. Faute de canots, environ cent cinquante personnes sont \
+abandonnées sur un radeau ; recueillis treize jours plus tard par le brick l'Argus, \
+une quinzaine seulement survivent. Le récit de deux rescapés, le chirurgien Savigny et \
+l'ingénieur Corréard, publié en 1817, révèle les massacres et le cannibalisme. \
+Géricault les rencontre, fait construire une maquette du radeau, étudie des membres \
+coupés et des mourants à l'hôpital Beaujon. Exposé au Salon de 1819 sous le titre \
+Scène de naufrage, le tableau divise la critique. Il est ensuite montré à Londres en \
+1820, avec grand succès. Après la mort du peintre, en 1824, il entre au Louvre."""
+facture = """
+La composition repose sur deux pyramides : celle de la voile et du mât, à gauche, et \
+celle des corps, qui culmine avec l'homme au tissu, à droite. Les diagonales croisées \
+donnent le mouvement de la houle. Géricault modèle les corps comme des sculptures, \
+avec une lumière dure venue de la gauche, dans l'esprit de Michel-Ange et du Caravage. \
+La palette est sombre, faite de bruns, d'ocres et de verts. Il a employé du bitume, un \
+pigment qui noircit et craquelle avec le temps : le tableau s'est beaucoup assombri."""
+details = [
+  "Sur l'horizon, à droite, la minuscule silhouette du brick l'Argus.",
+  "Le vieillard au manteau rouge qui veille le corps d'un jeune homme.",
+  "L'homme noir au sommet, agitant un tissu rouge et blanc.",
+  "Les corps des morts, en bas, qui glissent déjà dans l'eau.",
+  "La vague énorme qui se dresse à gauche, derrière la voile.",
+]
+themes = ["naufrage", "mort", "espoir", "actualité", "mer"]
+anecdote = """
+Le jeune Eugène Delacroix, ami de Géricault, a posé pour l'un des naufragés : on le \
+reconnaît traditionnellement dans le corps étendu face contre le radeau, au premier \
+plan, le bras tendu. Il fut bouleversé par le tableau inachevé."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 4.5
+
+[[oeuvres]]
+titre = "La Liberté guidant le peuple"
+artiste = "Eugène Delacroix"
+annee = "1830"
+image = "liberte.jpg"
+technique = "Huile sur toile, 260 × 325 cm"
+collection = "Musée du Louvre, Paris"
+note = "Le 28 juillet 1830, sur une barricade parisienne : une allégorie en chair et en os mène les insurgés contre Charles X."
+description = """
+Une femme au bonnet phrygien, la poitrine nue, escalade une barricade de pavés et de \
+poutres en brandissant d'une main le drapeau tricolore, de l'autre un fusil à \
+baïonnette. Elle se retourne vers ceux qui la suivent. À gauche, un homme en redingote \
+et chapeau haut-de-forme tient un fusil de chasse ; à côté de lui, un ouvrier armé \
+d'un sabre. À droite, un gamin coiffé d'un béret brandit deux pistolets en criant. Au \
+pied de la barricade, un blessé se redresse vers elle ; au premier plan gisent des \
+cadavres, un insurgé à demi nu et des soldats en uniforme. Au fond, dans la fumée, on \
+aperçoit les tours de Notre-Dame."""
+evocation = """
+Delacroix mêle l'allégorie et le reportage. La Liberté n'est pas une statue antique \
+mais une femme du peuple, vigoureuse, pieds nus, qui marche au combat ; autour d'elle, \
+les insurgés de toutes conditions, bourgeois, ouvriers, enfant, figurent l'union du \
+peuple pendant les Trois Glorieuses. Le drapeau tricolore, interdit sous la \
+Restauration, retrouve sa place au sommet de la composition. Les morts du premier plan \
+rappellent le prix de la victoire. Le tableau est devenu l'image même de la République \
+et de la révolte : on a vu dans le gamin aux pistolets un modèle pour le Gavroche des \
+Misérables, et la figure de la Liberté a inspiré d'innombrables affiches."""
+histoire = """
+Les 27, 28 et 29 juillet 1830, Paris se soulève contre les ordonnances de Charles X, \
+qui doit abdiquer. Delacroix, qui n'a pas combattu, commence la toile à l'automne ; il \
+écrit à son frère qu'à défaut d'avoir vaincu pour la patrie, il peindra pour elle. Le \
+tableau est exposé au Salon de 1831 et acheté par l'État sous Louis-Philippe. Mais \
+l'image, jugée trop révolutionnaire, est vite retirée des cimaises et rendue à \
+l'artiste. Elle reparaît à l'Exposition universelle de 1855 et entre au Louvre en \
+1874. Une restauration achevée en 2024 a retiré les vernis jaunis qui \
+l'assombrissaient et rendu aux couleurs leur éclat d'origine."""
+facture = """
+La composition est une pyramide, dont la base est faite des corps étendus et le sommet \
+du drapeau. La Liberté semble sortir du tableau et marcher vers le spectateur. \
+Delacroix concentre la lumière sur la Liberté et sur le drapeau, dont le bleu, le \
+blanc et le rouge se retrouvent, en échos, dans les vêtements du blessé et de \
+plusieurs figures. La touche est vive et visible, la fumée brossée largement. Il se \
+souvient du Radeau de la Méduse de Géricault, son aîné, pour la composition et pour \
+les corps du premier plan."""
+details = [
+  "La signature et la date, Eug. Delacroix 1830, en rouge sur une poutre à droite.",
+  "Les tours de Notre-Dame dans la fumée, à droite de la Liberté.",
+  "Le blessé en blouse bleue, ceinture rouge et chemise blanche, aux couleurs du drapeau.",
+  "Le gamin aux deux pistolets, qui crie en avançant.",
+  "Le soldat mort à droite, en uniforme, son shako tombé près de lui.",
+]
+themes = ["révolution", "liberté", "allégorie", "Paris", "drapeau"]
+anecdote = """
+À partir de 1979, le billet de cent francs reproduisit la Liberté guidant le peuple, \
+avec le portrait de Delacroix : pendant près de vingt ans, les Français ont eu le \
+tableau en poche."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 3.25
+
+[[oeuvres]]
+titre = "Le Voyageur contemplant une mer de nuages"
+artiste = "Caspar David Friedrich"
+annee = "vers 1817"
+image = "voyageur.jpg"
+technique = "Huile sur toile, 94,8 × 74,8 cm"
+collection = "Hamburger Kunsthalle, Hambourg"
+note = "Un homme vu de dos, au sommet d'un rocher, face à un paysage noyé dans la brume : l'image même du romantisme allemand."
+description = """
+Au centre du tableau, un homme se tient debout sur une pointe de rocher sombre, de \
+dos, face au paysage. Il porte une redingote vert foncé et s'appuie sur une canne ; le \
+vent soulève ses cheveux roux. Devant lui et sous lui s'étend une mer de brouillard \
+d'où émergent des crêtes rocheuses, des sommets boisés de pins et, au loin, une \
+montagne en forme de cône. À droite, une haute formation rocheuse se détache sur \
+l'horizon. Plus loin encore, des chaînes de montagnes bleutées se perdent dans un ciel \
+nuageux, clair et laiteux. La silhouette du voyageur occupe exactement l'axe vertical \
+de la toile, et sa tête se trouve au point où se croisent les lignes des montagnes."""
+evocation = """
+Friedrich place le spectateur juste derrière le voyageur : nous voyons ce qu'il voit, \
+sans connaître son visage ni ses pensées. Ce personnage de dos, sa figure favorite, \
+invite à la contemplation. Le paysage, en partie caché par les nuées, suggère \
+l'infini, la grandeur de la nature face à l'homme, ce que les philosophes appelaient \
+le sublime. On y a lu une méditation sur la solitude, sur la place de l'individu dans \
+le monde, ou une expérience religieuse. Le costume, une redingote à l'allemande, a \
+fait supposer un hommage à un combattant des guerres de libération contre Napoléon. Le \
+tableau est devenu l'emblème du romantisme, au point d'illustrer d'innombrables \
+couvertures de livres."""
+histoire = """
+La date exacte du tableau est inconnue ; on le situe vers 1817, à l'époque où \
+Friedrich, installé à Dresde, est reconnu mais encore discuté. Les rochers et les \
+sommets viennent du massif de grès de l'Elbe, la Suisse saxonne, que le peintre \
+parcourait à pied en dessinant. Il ne peignait pas sur le motif : il recomposait dans \
+l'atelier, à partir de ces croquis, un paysage qui n'existe pas tel quel. Oublié comme \
+son auteur pendant des décennies après sa mort, le tableau ne devient célèbre qu'au \
+XXe siècle, lors de la redécouverte de Friedrich. La Hamburger Kunsthalle l'acquiert \
+en 1970 ; il en est aujourd'hui l'œuvre la plus connue."""
+facture = """
+Friedrich construit le tableau avec rigueur : la figure est placée sur l'axe central, \
+les pentes des montagnes convergent vers sa tête. Le contraste est franc entre le \
+rocher sombre, net et détaillé du premier plan, et le lointain clair, flou, presque \
+immatériel, qui donne l'impression de la profondeur. La peinture est lisse, sans \
+touche visible, posée en couches fines. Les tons froids, gris, bleus, blancs, rendent \
+l'humidité de l'air et la lumière diffuse du brouillard."""
+details = [
+  "Les cheveux du voyageur, soulevés par le vent.",
+  "La canne sur laquelle il s'appuie, à peine visible à droite.",
+  "Les petits pins sur les crêtes qui émergent de la brume, à droite.",
+  "La montagne en cône, à gauche, presque effacée par le brouillard.",
+]
+themes = ["paysage", "montagne", "brouillard", "solitude", "sublime"]
+anecdote = """
+Le personnage vu de dos est si typique de Friedrich que les historiens allemands lui \
+ont donné un nom, la Rückenfigur, la figure de dos. Le peintre l'emploie dans de \
+nombreux tableaux pour faire entrer le spectateur dans le paysage."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Le Moine au bord de la mer"
+artiste = "Caspar David Friedrich"
+annee = "1808–1810"
+image = "moine-mer.jpg"
+technique = "Huile sur toile, 110 × 171,5 cm"
+collection = "Alte Nationalgalerie, Berlin"
+note = "Une minuscule silhouette devant une mer noire et un ciel immense : le paysage le plus radical de son temps."
+description = """
+La toile est presque vide. En bas, une bande de dune claire, sablonneuse, ondule de \
+gauche à droite. Au-dessus, une mince bande de mer très sombre, presque noire, \
+ponctuée de quelques crêtes d'écume et de mouettes blanches. Tout le reste, plus des \
+trois quarts du tableau, est occupé par le ciel : en bas, une nappe de brume \
+gris-bleu, lourde, qui monte de la mer ; plus haut, quelques nuages blancs éclairés, \
+puis un bleu qui s'éclaircit vers le sommet. Sur la dune, à gauche du centre, se tient \
+une petite figure vêtue de sombre, un moine vu de dos, qui regarde la mer. Il n'y a ni \
+bateau, ni arbre, ni rivage lointain."""
+evocation = """
+Rien ne guide le regard : pas de premier plan, pas de chemin, pas d'objet pour mesurer \
+la distance. Le spectateur se trouve, comme le moine, face au vide. On y a vu l'homme \
+seul devant l'infini, devant Dieu ou devant la mort, et souvent un autoportrait \
+spirituel du peintre. L'écrivain Heinrich von Kleist a décrit l'impression de se \
+trouver devant ce tableau comme si l'on vous avait arraché les paupières. Pour \
+beaucoup d'historiens, c'est l'une des premières œuvres où la peinture abandonne la \
+composition classique ; on l'a rapprochée, bien plus tard, des grandes surfaces \
+colorées de Mark Rothko."""
+histoire = """
+Friedrich peint la toile entre 1808 et 1810 à Dresde, d'après des souvenirs de l'île \
+de Rügen, sur la Baltique, qu'il a parcourue à plusieurs reprises. Il l'expose à \
+l'Académie de Berlin à l'automne 1810, avec son pendant, l'Abbaye dans une forêt de \
+chênes. Le public est dérouté, mais le roi de Prusse Frédéric-Guillaume III achète les \
+deux toiles, à la demande de son fils, le prince héritier, âgé de quinze ans. La même \
+année, Friedrich est élu membre de l'Académie de Berlin. Les deux tableaux sont restés \
+ensemble dans les collections prussiennes, aujourd'hui à l'Alte Nationalgalerie, où \
+ils ont été restaurés de 2013 à 2016."""
+facture = """
+La composition, tout en bandes horizontales, est d'une simplicité inouïe pour \
+l'époque. Friedrich a supprimé en cours de travail ce qui aurait pu rassurer l'œil : \
+l'examen scientifique a révélé des voiliers sur la mer, qu'il a ensuite effacés. La \
+peinture est appliquée en couches fines et nombreuses, lissées, sans trace de pinceau, \
+ce qui produit ces passages très doux du gris au bleu. La figure, minuscule, donne \
+seule l'échelle de l'immensité."""
+details = [
+  "Le moine, minuscule, seule verticale de tout le tableau.",
+  "Les mouettes, simples points blancs au-dessus de la mer.",
+  "Les crêtes d'écume sur la mer noire.",
+  "Les nuages blancs éclairés au milieu du ciel, seule note lumineuse.",
+]
+themes = ["mer", "solitude", "infini", "ciel", "méditation"]
+anecdote = """
+L'imagerie scientifique a montré que Friedrich avait d'abord peint deux voiliers sur \
+la mer. Il les a recouverts, préférant laisser le moine absolument seul devant \
+l'horizon."""
+salle = 5
+mur = "ouest"
+place = 1
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Le Téméraire remorqué à son dernier mouillage"
+artiste = "Joseph Mallord William Turner"
+annee = "1839"
+image = "temeraire.jpg"
+technique = "Huile sur toile, 90,7 × 121,6 cm"
+collection = "National Gallery, Londres"
+note = "Un vaisseau héros de Trafalgar, remorqué par un petit vapeur vers la démolition, sous un coucher de soleil flamboyant."
+description = """
+Sur la Tamise, à l'heure du couchant, un grand vaisseau de guerre à trois mâts, d'un \
+blanc fantomatique, glisse sur l'eau calme. Il est tiré par un petit remorqueur à \
+vapeur, sombre et trapu, dont la haute cheminée crache une fumée rousse. À droite, le \
+soleil se couche dans une explosion de rouges, d'orangés et de jaunes qui embrase les \
+nuages et se reflète dans le fleuve. Une bouée noire flotte au premier plan à droite. \
+À gauche, le ciel est plus froid, bleuté, et l'on y aperçoit un fin croissant de lune. \
+Au loin, d'autres voiliers et la rive basse, à peine visibles. Le grand navire et son \
+remorqueur se reflètent ensemble dans l'eau immobile."""
+evocation = """
+Le tableau oppose deux mondes : le vieux vaisseau à voiles, pâle comme un spectre, et \
+le remorqueur à vapeur, noir et actif, qui le conduit à sa fin. On y lit la fin d'une \
+époque héroïque, celle de la marine de Nelson, et l'arrivée de l'âge industriel. Le \
+soleil couchant, d'un côté, et la lune qui se lève, de l'autre, redoublent cette idée \
+d'un jour qui s'achève. Turner ne prend pas parti de façon simple : la machine est \
+laide, mais puissante et vivante. La nostalgie, la gloire et la mort se mêlent dans ce \
+crépuscule. Pour beaucoup de Britanniques, c'est une image de la grandeur nationale et \
+de son déclin."""
+histoire = """
+Le HMS Temeraire, vaisseau de 98 canons, s'est illustré à la bataille de Trafalgar en \
+1805, juste derrière le Victory de Nelson. Désarmé, il est vendu en 1838 et remorqué \
+de Sheerness jusqu'à Rotherhithe, sur la Tamise, pour y être démoli. Turner en tire ce \
+tableau, exposé à la Royal Academy en 1839 sous un long titre, Le Téméraire \
+combattant, remorqué jusqu'à son dernier mouillage pour y être démoli. Il est salué \
+par la critique. Le peintre refuse de le vendre et le garde dans son atelier ; à sa \
+mort, il le lègue à la nation avec des centaines d'autres œuvres. Il est entré à la \
+National Gallery dans le cadre du legs Turner."""
+facture = """
+Turner a pris des libertés avec la réalité : le navire avait été dépouillé de ses mâts \
+avant son dernier voyage, et il les lui rend pour la beauté de l'image. Le vaisseau \
+est peint en couches fines et transparentes, presque translucides, tandis que le ciel \
+du couchant est travaillé en pâte épaisse, presque en relief. La composition joue sur \
+l'opposition des couleurs froides, à gauche, et chaudes, à droite. La ligne d'horizon \
+basse laisse au ciel l'essentiel de la toile."""
+details = [
+  "Le fin croissant de lune dans le ciel bleuté, en haut à gauche.",
+  "La cheminée du remorqueur et sa fumée orangée.",
+  "La bouée noire qui flotte, au premier plan à droite.",
+  "Le petit pavillon blanc qui flotte au-dessus de la fumée.",
+  "La pâte épaisse du soleil couchant, presque en relief.",
+]
+themes = ["mer", "crépuscule", "industrie", "nostalgie", "navire"]
+anecdote = """
+En 2005, un sondage de la BBC a désigné ce tableau comme le plus aimé des \
+Britanniques. Depuis 2020, il figure, avec un autoportrait de Turner, sur le billet de \
+vingt livres de la Banque d'Angleterre."""
+salle = 5
+mur = "est"
+place = 1
+largeur = 1.22
+
+[[oeuvres]]
+titre = "La Charrette de foin"
+artiste = "John Constable"
+annee = "1821"
+image = "charrette-foin.jpg"
+technique = "Huile sur toile, 130,2 × 185,4 cm"
+collection = "National Gallery, Londres"
+note = "Une charrette traverse un gué, au bord de la Stour, dans le Suffolk de son enfance : la campagne anglaise, peinte comme jamais avant lui."
+description = """
+Une charrette de bois vide, tirée par des chevaux, traverse lentement le gué d'une \
+rivière peu profonde. Deux hommes la conduisent. À gauche, une petite maison de \
+briques et de bois au toit rouge, entourée d'arbres, se reflète dans l'eau ; une femme \
+puise de l'eau sur la berge. Au premier plan, sur le chemin, un petit chien blanc et \
+noir regarde la charrette. Au centre, de grands arbres au feuillage épais ; à droite, \
+une prairie ensoleillée s'étend jusqu'à une lisière lointaine où l'on devine des \
+faneurs au travail. Un pêcheur se cache dans les roseaux à droite. Un grand ciel \
+d'été, traversé de nuages blancs et gris, couvre toute la moitié supérieure."""
+evocation = """
+Constable peint la campagne de son enfance, autour du moulin de son père, sans héros \
+ni ruine antique : une scène ordinaire de travail rural, un jour d'été. Ce choix, en \
+1821, est presque un manifeste : le paysage le plus simple mérite un grand format, \
+autrefois réservé à l'histoire. On y sent l'attachement profond du peintre à ces \
+lieux, qu'il disait être à l'origine de sa vocation. Dans une Angleterre qui \
+s'industrialise, le tableau a pris peu à peu valeur de symbole : celui d'une campagne \
+idéale, paisible et immuable, devenue l'une des images les plus populaires du pays."""
+histoire = """
+Le site est réel : la Stour, près du moulin de Flatford, dans le Suffolk, que \
+possédait le père de Constable ; la maison de gauche était celle d'un fermier voisin, \
+Willy Lott. Le peintre, installé à Londres, travaille d'après les études qu'il y a \
+faites. Il réalise d'abord une esquisse à l'huile grandeur nature, aujourd'hui au \
+Victoria and Albert Museum. Le tableau est exposé à la Royal Academy en 1821 sous le \
+titre Paysage : midi, sans trouver d'acheteur. En 1824, le marchand John Arrowsmith \
+l'achète et l'expose au Salon de Paris, où il reçoit une médaille d'or du roi Charles \
+X et impressionne les jeunes peintres français. Il est offert à la National Gallery en \
+1886."""
+facture = """
+Constable observe la nature avec une précision presque scientifique, en particulier \
+les nuages, qu'il étudie systématiquement à la même époque. Sa touche est fragmentée, \
+vive, avec de petites taches de blanc pur posées sur les feuilles et sur l'eau pour \
+rendre les reflets de la lumière, que les critiques appelaient la neige de Constable. \
+Les verts, variés, sont ceux de la nature et non les bruns conventionnels des paysages \
+d'atelier. Ces audaces impressionneront Delacroix puis l'école de Barbizon."""
+details = [
+  "Le petit chien sur la berge, qui observe la charrette.",
+  "La femme qui puise de l'eau devant la maison de Willy Lott.",
+  "Le pêcheur à demi caché dans les roseaux, à droite.",
+  "Les touches de blanc pur sur les feuilles et sur l'eau.",
+]
+themes = ["campagne", "rivière", "ciel", "travail", "été"]
+anecdote = """
+Le cottage de Willy Lott existe toujours, à Flatford, au bord de la Stour. Le site, \
+propriété du National Trust, attire chaque année des visiteurs venus retrouver le \
+point de vue du tableau, presque inchangé deux siècles plus tard."""
+salle = 5
+mur = "sud"
+place = 1
+largeur = 1.85
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Johann Heinrich Füssli"
+vie = "Zurich, 7 février 1741 – Putney Hill (Londres), 16 avril 1825"
+biographie = """
+Fils d'un peintre de Zurich, Johann Heinrich Füssli étudie d'abord la théologie et \
+devient pasteur, avec son ami Johann Kaspar Lavater. En 1762, tous deux dénoncent \
+publiquement les abus d'un magistrat de la ville ; le scandale les pousse à quitter la \
+Suisse. Après un séjour en Allemagne, Füssli s'installe à Londres en 1764, où il vit \
+de traductions et d'écrits. Encouragé par Joshua Reynolds, il se tourne vers la \
+peinture et part pour Rome en 1770. Il y passe huit ans à étudier Michel-Ange et \
+l'Antiquité. De retour à Londres, il connaît la gloire en 1782 avec Le Cauchemar. Sous \
+le nom anglicisé de Henry Fuseli, il entreprend une Galerie Milton, inspirée du \
+Paradis perdu, et illustre Shakespeare pour la galerie de l'éditeur Boydell. Élu à la \
+Royal Academy en 1790, il y devient professeur de peinture puis directeur des écoles, \
+et forme toute une génération d'artistes. Ami de la féministe Mary Wollstonecraft et \
+admiré de William Blake, il meurt à quatre-vingt-quatre ans et est inhumé dans la \
+cathédrale Saint-Paul de Londres."""
+style = """
+Füssli peint des scènes de rêve, de terreur et de visions tirées de Shakespeare, de \
+Milton ou des légendes nordiques. Ses figures, aux corps étirés et aux gestes outrés, \
+viennent de Michel-Ange et du maniérisme ; ses compositions, éclairées comme une scène \
+de théâtre, isolent quelques acteurs sur des fonds obscurs. Il fait entrer dans la \
+peinture le fantastique et l'inconscient, et annonce le romantisme, puis le symbolisme \
+et le surréalisme."""
+
+[[artistes]]
+nom = "William Blake"
+vie = "Londres, 28 novembre 1757 – Londres, 12 août 1827"
+biographie = """
+Fils d'un bonnetier de Soho, William Blake affirme avoir eu des visions dès l'enfance. \
+À quatorze ans, il entre en apprentissage chez le graveur James Basire, qui l'envoie \
+dessiner les tombeaux de l'abbaye de Westminster ; il y découvre l'art gothique. Il \
+suit ensuite les cours de la Royal Academy et épouse en 1782 Catherine Boucher, qui \
+l'aidera toute sa vie dans son travail d'imprimeur. Vers 1788, il invente un procédé \
+de gravure en relief qui lui permet d'imprimer ensemble ses poèmes et ses images, \
+qu'il colorie ensuite à la main : ce sont les Chants d'innocence et d'expérience, puis \
+ses livres prophétiques, peuplés de dieux de son invention. De 1800 à 1803, il vit à \
+Felpham, au bord de la mer, auprès du poète William Hayley ; il y est accusé de \
+sédition par un soldat, puis acquitté. Son exposition personnelle de 1809 est un \
+échec. Soutenu par quelques fidèles, Thomas Butts puis le jeune peintre John Linnell, \
+il illustre à la fin de sa vie le Livre de Job et la Divine Comédie. Il meurt pauvre, \
+presque oublié."""
+style = """
+Blake est à la fois poète, graveur et peintre. Son dessin, linéaire et ferme, hérité \
+de la gravure, de l'art gothique et de Michel-Ange, compte plus que la couleur, qu'il \
+pose en aquarelle ou par des procédés d'impression de son invention. Il refuse \
+l'imitation de la nature et peint ses visions : des corps idéalisés, des figures \
+cosmiques, des symboles d'une mythologie personnelle. Redécouvert par les \
+préraphaélites, il a fasciné les symbolistes et la contre-culture du XXe siècle."""
+
+[[artistes]]
+nom = "Francisco de Goya"
+vie = "Fuendetodos (Aragon), 30 mars 1746 – Bordeaux, 16 avril 1828"
+biographie = """
+Né dans un village d'Aragon, Francisco de Goya y Lucientes se forme à Saragosse, puis \
+voyage en Italie en 1771. Installé à Madrid, il dessine à partir de 1775 des cartons \
+pour la Manufacture royale de tapisseries, scènes de fêtes et de jeux populaires. \
+Membre de l'Académie de San Fernando, portraitiste recherché, il devient peintre de la \
+chambre du roi en 1789. En 1792-1793, une grave maladie le laisse définitivement \
+sourd. Son art devient alors plus libre et plus sombre : il publie en 1799 les \
+Caprices, eaux-fortes qui raillent la superstition et les vices de la société, et \
+peint en 1800 La Famille de Charles IV. L'invasion napoléonienne de 1808 et la guerre \
+qui s'ensuit lui inspirent les Désastres de la guerre et les deux grandes toiles du 2 \
+et du 3 mai 1808. Sous le règne absolutiste de Ferdinand VII, il se retire dans sa \
+maison près du Manzanares, qu'il couvre des Peintures noires. En 1824, il s'exile en \
+France et s'établit à Bordeaux, où il continue à peindre et à expérimenter la \
+lithographie jusqu'à sa mort, à quatre-vingt-deux ans."""
+style = """
+Goya passe de la grâce rococo des cartons de tapisserie à une peinture de plus en plus \
+libre, rapide et expressive. Héritier de Velázquez, dont il grave les tableaux, il \
+peint par larges touches, avec une économie de moyens saisissante, et ose montrer la \
+violence, la folie et la cruauté sans les embellir. Peintre de cour et témoin critique \
+de son temps, graveur de génie, il ouvre la voie à Delacroix, à Manet, puis à \
+l'expressionnisme."""
+
+[[artistes]]
+nom = "Théodore Géricault"
+vie = "Rouen, 26 septembre 1791 – Paris, 26 janvier 1824"
+biographie = """
+Né à Rouen dans une famille aisée, Théodore Géricault grandit à Paris. Passionné de \
+chevaux, il se forme auprès de Carle Vernet, peintre de scènes équestres, puis de \
+Pierre-Narcisse Guérin, et copie inlassablement les maîtres au Louvre. Au Salon de \
+1812, à vingt et un ans, il triomphe avec un Officier de chasseurs à cheval de la \
+garde impériale chargeant, toile d'un élan inédit. Deux ans plus tard, son Cuirassier \
+blessé quittant le feu, peint au moment de la chute de l'Empire, est moins bien \
+accueilli. En 1816-1817, il séjourne en Italie, où il découvre Michel-Ange et prépare \
+une grande Course de chevaux libres à Rome. De retour à Paris, il consacre plus d'un \
+an au Radeau de la Méduse, exposé au Salon de 1819. Il emporte le tableau en \
+Angleterre, où il découvre la peinture anglaise et peint le Derby d'Epsom. Affaibli \
+par plusieurs chutes de cheval et par la maladie, il réalise encore une série de \
+portraits d'aliénés pour un médecin, puis meurt à trente-deux ans, après une longue \
+agonie."""
+style = """
+Géricault donne à l'actualité et à la vie moderne la grandeur de la peinture \
+d'histoire. Son dessin puissant, nourri de Michel-Ange et de l'étude du corps et des \
+chevaux, s'allie à une peinture sombre, contrastée, en pleine pâte. Il cherche la \
+vérité jusque dans la souffrance, la folie et la mort, sans idéaliser. Sa carrière, \
+très courte, a ouvert la voie au romantisme français et marqué profondément Delacroix, \
+puis Courbet."""
+
+[[artistes]]
+nom = "Eugène Delacroix"
+vie = "Charenton-Saint-Maurice, 26 avril 1798 – Paris, 13 août 1863"
+biographie = """
+Eugène Delacroix grandit dans une famille de notables de l'Empire. Élève de \
+Pierre-Narcisse Guérin, ami de Géricault, il débute au Salon de 1822 avec La Barque de \
+Dante. Deux ans plus tard, Scènes des massacres de Scio, inspiré de la guerre \
+d'indépendance grecque, fait de lui le chef de file de l'école romantique, face aux \
+héritiers de David et à Ingres. La Mort de Sardanapale, en 1827, fait scandale par sa \
+violence et sa sensualité. En 1830, il célèbre la révolution de Juillet avec La \
+Liberté guidant le peuple. En 1832, il accompagne une mission diplomatique au Maroc : \
+les couleurs, la lumière et les costumes de l'Afrique du Nord nourriront toute son \
+œuvre. Il reçoit ensuite de grandes commandes de décors, au Palais-Bourbon, au Sénat, \
+au plafond de la galerie d'Apollon du Louvre et dans la chapelle des Saints-Anges de \
+l'église Saint-Sulpice. Élu à l'Académie des beaux-arts en 1857, après plusieurs \
+échecs, il tient un Journal célèbre. Il meurt dans son appartement de la rue de \
+Furstenberg, devenu musée national Eugène-Delacroix."""
+style = """
+Pour Delacroix, la couleur prime sur le dessin. Admirateur de Rubens et des Vénitiens, \
+il construit ses tableaux par des contrastes de tons complémentaires, des touches \
+vives et visibles, des compositions en mouvement. Il puise ses sujets dans l'histoire, \
+la littérature, l'actualité et l'Orient. Sa liberté de touche et sa réflexion sur la \
+couleur ont ouvert la voie aux impressionnistes et aux néo-impressionnistes, qui le \
+considéraient comme un précurseur."""
+
+[[artistes]]
+nom = "Caspar David Friedrich"
+vie = "Greifswald, 5 septembre 1774 – Dresde, 7 mai 1840"
+biographie = """
+Né à Greifswald, petit port de la Baltique alors suédois, Caspar David Friedrich est \
+le fils d'un fabricant de chandelles et de savon. Son enfance est marquée par les \
+deuils : sa mère meurt quand il a sept ans, et en 1787 son frère Christoffer se noie \
+en tentant de le secourir lors d'une chute sous la glace. Il étudie à l'Académie de \
+Copenhague de 1794 à 1798, puis s'établit à Dresde, où il vivra toute sa vie. Il \
+parcourt à pied l'île de Rügen, les montagnes du Harz et la Suisse saxonne, \
+remplissant ses carnets de dessins. En 1808, son Retable de Tetschen, une croix dans \
+la montagne conçue comme tableau d'autel, déclenche une vive polémique. En 1810, la \
+Prusse achète Le Moine au bord de la mer et l'Abbaye dans une forêt de chênes, et il \
+est élu à l'Académie de Berlin. Il épouse Caroline Bommer en 1818. Professeur à \
+l'Académie de Dresde, il perd peu à peu la faveur du public ; une attaque cérébrale, \
+en 1835, l'empêche presque de peindre. Oublié à sa mort, il est redécouvert au début \
+du XXe siècle."""
+style = """
+Friedrich peint des paysages méditatifs, chargés de sens spirituel : brumes, mers, \
+ruines, montagnes, clairs de lune, souvent contemplés par des figures vues de dos. Ses \
+compositions, symétriques et dépouillées, opposent un premier plan précis à des \
+lointains infinis. Sa peinture lisse, aux transitions très douces, rend la lumière de \
+l'aube et du crépuscule. Il a fait du paysage une expérience intérieure, et sa \
+radicalité a été saluée par les symbolistes puis par les peintres abstraits."""
+
+[[artistes]]
+nom = "Joseph Mallord William Turner"
+vie = "Londres, 23 avril 1775 – Londres, 19 décembre 1851"
+biographie = """
+Fils d'un barbier de Covent Garden, Joseph Mallord William Turner entre à quatorze ans \
+aux écoles de la Royal Academy. Aquarelliste précoce, il expose dès 1790 et parcourt \
+l'Angleterre et le pays de Galles pour dessiner paysages et monuments, que des \
+graveurs diffusent. Élu académicien en 1802, à vingt-six ans, il se mesure dans ses \
+toiles à Claude Lorrain et aux grands paysagistes, et y devient professeur de \
+perspective. Grand voyageur, il découvre les Alpes en 1802, l'Italie en 1819, puis \
+Venise, dont la lumière transforme sa peinture. Ses toiles deviennent de plus en plus \
+libres, faites de lumière, de vapeur et de tempêtes, et déroutent une partie de la \
+critique, tandis que le jeune John Ruskin prend sa défense dans Les Peintres modernes, \
+en 1843. Riche, secret, il vit retiré à la fin de sa vie à Chelsea, sous un nom \
+d'emprunt. Il lègue à la nation l'essentiel de son œuvre, plusieurs centaines de \
+peintures et des milliers de dessins et d'aquarelles, aujourd'hui partagés entre la \
+Tate et la National Gallery. Il est enterré à la cathédrale Saint-Paul."""
+style = """
+Turner part d'un paysage classique, à la manière de Claude Lorrain, pour aller vers \
+une peinture de la lumière et des éléments. Ses toiles, où la forme se dissout dans le \
+soleil, la brume, la neige ou la vapeur, mêlent glacis transparents et empâtements. \
+L'aquarelle, pratiquée toute sa vie, lui apprend la fluidité et les effets de lumière. \
+Admiré des impressionnistes, il est souvent tenu pour un précurseur de l'abstraction."""
+
+[[artistes]]
+nom = "John Constable"
+vie = "East Bergholt (Suffolk), 11 juin 1776 – Londres, 31 mars 1837"
+biographie = """
+Fils d'un riche meunier et marchand de grain du Suffolk, John Constable grandit dans \
+la vallée de la Stour, entre les moulins de Flatford et de Dedham. Destiné au commerce \
+familial, il obtient en 1799 de partir étudier aux écoles de la Royal Academy, à \
+Londres. Les débuts sont lents : il refuse le paysage idéalisé à la mode et peint ce \
+qu'il connaît, la campagne de son enfance, souvent en plein air. En 1816, après sept \
+ans de fiançailles contrariées par la famille de la jeune femme, il épouse Maria \
+Bicknell. À partir de 1819, il expose chaque année à la Royal Academy de grands \
+paysages de près de deux mètres, ses six pieds, dont La Charrette de foin. Le Salon de \
+Paris de 1824 lui vaut une médaille d'or et l'admiration des peintres français, alors \
+qu'en Angleterre la reconnaissance tarde. Installé à Hampstead, il y étudie \
+inlassablement les nuages. La mort de Maria, en 1828, l'accable. Élu académicien en \
+1829 seulement, il publie avec le graveur David Lucas des mezzotintes de ses paysages \
+et meurt soudainement à Londres."""
+style = """
+Constable veut peindre la nature telle qu'il la voit, avec la fraîcheur d'une étude \
+sur le motif. Ses esquisses à l'huile, rapides et libres, et ses études de ciel, \
+notées avec l'heure et le vent, sont parmi les plus modernes de son temps. Dans ses \
+grands tableaux, il garde cette vivacité par des touches brisées et des éclats de \
+blanc. Il a marqué Delacroix, l'école de Barbizon et, par eux, l'impressionnisme."""
