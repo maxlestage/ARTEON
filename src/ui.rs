@@ -12,7 +12,7 @@ use eframe::egui::{
     self, Align2, Color32, CornerRadius, Pos2, Rect, RichText, Sense, Shape, Stroke, Vec2,
 };
 
-use crate::artworks::{Exhibition, Side};
+use crate::artworks::{Exhibition, Side, Work};
 use crate::editor::{self, ArtEdit, SculptEdit};
 use crate::gallery::{Mode, SharedControl};
 use crate::museum;
@@ -47,6 +47,8 @@ pub struct MuseumUi {
     editing: bool,
     selected: Option<Focus>,
     notice: Option<String>,
+    /// La notice complète de l'œuvre regardée est-elle ouverte ?
+    reading: bool,
 }
 
 impl MuseumUi {
@@ -68,6 +70,7 @@ impl MuseumUi {
             editing: false,
             selected: None,
             notice: None,
+            reading: false,
         }
     }
 
@@ -223,13 +226,128 @@ impl MuseumUi {
                         );
                         ui.label(RichText::new(note).color(Color32::from_gray(225)));
                     }
-                    if matches!(focus, Focus::Art(_))
-                        && self.toggle(ui, true, "Voir en HD").clicked()
-                    {
-                        (self.actions.open_hd)();
+                    ui.horizontal_wrapped(|ui| {
+                        if self.toggle(ui, self.reading, "📖 Tout savoir").clicked() {
+                            self.reading = !self.reading;
+                            if self.reading {
+                                // La visite attend le lecteur devant l'œuvre.
+                                self.control.borrow_mut().paused = true;
+                            }
+                        }
+                        if matches!(focus, Focus::Art(_))
+                            && self.toggle(ui, false, "Voir en HD").clicked()
+                        {
+                            (self.actions.open_hd)();
+                        }
+                    });
+                });
+            });
+    }
+
+    /// La notice complète de l'œuvre regardée : ce que l'on voit, ce qu'elle évoque, son
+    /// histoire, la manière, les détails, l'anecdote et l'artiste.
+    fn reader(&mut self, ctx: &egui::Context) {
+        let ex = self.ex;
+        let Some(focus) = self.control.borrow().current else {
+            return;
+        };
+        let work = match focus {
+            Focus::Art(i) => Work::Art(&ex.artworks[i]),
+            Focus::Sculpture(i) => Work::Sculpture(&ex.sculptures[i]),
+        };
+        let (year, technique, collection, note) = match work {
+            Work::Art(a) => (a.year, a.technique, a.collection, a.note),
+            Work::Sculpture(s) => (s.year, s.technique, s.collection, s.note),
+        };
+        let artist = work.artist(ex);
+        let notice = work.notice();
+        let screen = ctx.content_rect();
+        let width = (screen.width() - 24.0).min(520.0);
+        let mut open = true;
+        let text = |t: &str| RichText::new(t.to_owned()).size(14.5).color(Color32::from_gray(230));
+        let heading =
+            |t: &str| RichText::new(t.to_owned()).strong().size(15.5).color(self.accent.gamma_multiply(1.6));
+        egui::Window::new("Tout savoir")
+            .id(egui::Id::unique("notice"))
+            .open(&mut open)
+            .collapsible(false)
+            .anchor(Align2::RIGHT_TOP, [-12.0, 64.0])
+            .fixed_size([width, (screen.height() - 90.0).max(200.0)])
+            .frame(self.frame())
+            .show(ctx, |ui| {
+                egui::ScrollArea::vertical().auto_shrink(false).show(ui, |ui| {
+                    ui.set_max_width(width - 16.0);
+                    ui.label(RichText::new(work.title()).strong().size(19.0).color(Color32::WHITE));
+                    ui.label(RichText::new(format!("{artist} · {year}")).size(15.0).color(Color32::from_gray(215)));
+                    if !technique.is_empty() || !collection.is_empty() {
+                        ui.label(RichText::new(format!("{technique} — {collection}")).small().color(Color32::from_gray(170)));
+                    }
+                    ui.add_space(6.0);
+                    ui.label(text(note).italics());
+                    if !notice.themes.is_empty() {
+                        ui.add_space(4.0);
+                        ui.horizontal_wrapped(|ui| {
+                            for t in notice.themes {
+                                egui::Frame::new()
+                                    .fill(self.accent.gamma_multiply(0.55))
+                                    .corner_radius(CornerRadius::same(10))
+                                    .inner_margin(egui::Margin::symmetric(8, 2))
+                                    .show(ui, |ui| ui.label(RichText::new(*t).small().color(Color32::WHITE)));
+                            }
+                        });
+                    }
+                    for (title, body) in notice.sections() {
+                        ui.add_space(10.0);
+                        ui.label(heading(title));
+                        ui.label(text(body));
+                    }
+                    if !notice.details.is_empty() {
+                        ui.add_space(10.0);
+                        ui.label(heading("À regarder de près"));
+                        for d in notice.details {
+                            ui.label(text(&format!("•  {d}")));
+                        }
+                    }
+                    if !notice.anecdote.is_empty() {
+                        ui.add_space(10.0);
+                        egui::Frame::new()
+                            .fill(Color32::from_white_alpha(14))
+                            .corner_radius(CornerRadius::same(8))
+                            .inner_margin(egui::Margin::same(8))
+                            .show(ui, |ui| {
+                                ui.label(heading("Le saviez-vous ?"));
+                                ui.label(text(notice.anecdote));
+                            });
+                    }
+                    if let Some(about) = ex.artist_named(artist) {
+                        ui.add_space(10.0);
+                        egui::CollapsingHeader::new(heading(&format!("L'artiste : {}", about.name)))
+                            .id_salt(("artiste", about.name))
+                            .show(ui, |ui| {
+                                ui.label(RichText::new(about.life).small().color(Color32::from_gray(180)));
+                                ui.label(text(about.biography));
+                                if !about.style.is_empty() {
+                                    ui.add_space(6.0);
+                                    ui.label(heading("Sa manière"));
+                                    ui.label(text(about.style));
+                                }
+                            });
+                    }
+                    ui.add_space(10.0);
+                    if ui.button("Sa page sur le site ↗").clicked() {
+                        let url = format!(
+                            "{}/{}/oeuvres/{}",
+                            crate::viewer::base_path(ex.slug),
+                            ex.slug,
+                            work.slug()
+                        );
+                        (self.actions.open)(&url);
                     }
                 });
             });
+        if !open {
+            self.reading = false;
+        }
     }
 
     /// La minicarte : les salles, les portes, les œuvres et le visiteur. Cliquer sur une
@@ -668,6 +786,9 @@ impl eframe::App for MuseumUi {
         }
         if self.editing {
             self.editor(&ctx);
+        }
+        if self.reading {
+            self.reader(&ctx);
         }
         self.busy
             .set(ctx.is_pointer_over_egui() || ctx.egui_wants_pointer_input());

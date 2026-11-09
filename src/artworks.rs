@@ -33,9 +33,109 @@ pub struct Exhibition {
     pub artworks: &'static [Artwork],
     /// Les sculptures, dans l'ordre du fichier.
     pub sculptures: &'static [Sculpture],
+    /// Les artistes exposés : leur vie et leur manière.
+    pub artists: &'static [Artist],
+}
+
+/// Un artiste de l'exposition (bloc `[[artistes]]`).
+#[derive(Debug)]
+pub struct Artist {
+    pub name: &'static str,
+    /// Les dates et lieux de naissance et de mort.
+    pub life: &'static str,
+    pub biography: &'static str,
+    pub style: &'static str,
+}
+
+/// La notice complète d'une œuvre. Chaque texte peut être vide.
+#[derive(Clone, Copy, Debug)]
+pub struct Notice {
+    /// Ce que l'on voit.
+    pub description: &'static str,
+    /// Ce qu'elle évoque.
+    pub evocation: &'static str,
+    /// Son histoire.
+    pub story: &'static str,
+    /// La manière : technique, couleurs, composition.
+    pub manner: &'static str,
+    /// À regarder de près.
+    pub details: &'static [&'static str],
+    pub themes: &'static [&'static str],
+    /// Le saviez-vous ?
+    pub anecdote: &'static str,
+}
+
+impl Notice {
+    /// Les rubriques de texte non vides, avec leur titre.
+    pub fn sections(&self) -> impl Iterator<Item = (&'static str, &'static str)> {
+        [
+            ("Ce que l'on voit", self.description),
+            ("Ce qu'elle évoque", self.evocation),
+            ("Son histoire", self.story),
+            ("La manière", self.manner),
+        ]
+        .into_iter()
+        .filter(|(_, text)| !text.is_empty())
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.sections().next().is_none() && self.details.is_empty() && self.anecdote.is_empty()
+    }
+}
+
+/// Une œuvre de l'exposition, toile ou sculpture.
+#[derive(Clone, Copy)]
+pub enum Work {
+    Art(&'static Artwork),
+    Sculpture(&'static Sculpture),
+}
+
+impl Work {
+    pub fn title(&self) -> &'static str {
+        match self {
+            Work::Art(a) => a.title,
+            Work::Sculpture(s) => s.title,
+        }
+    }
+    pub fn slug(&self) -> &'static str {
+        match self {
+            Work::Art(a) => a.slug,
+            Work::Sculpture(s) => s.slug,
+        }
+    }
+    pub fn notice(&self) -> &'static Notice {
+        match self {
+            Work::Art(a) => &a.notice,
+            Work::Sculpture(s) => &s.notice,
+        }
+    }
+    pub fn artist(&self, ex: &Exhibition) -> &'static str {
+        match self {
+            Work::Art(a) => a.artist_in(ex),
+            Work::Sculpture(s) => s.artist,
+        }
+    }
 }
 
 impl Exhibition {
+    /// Toutes les œuvres, toiles puis sculptures.
+    pub fn works(&'static self) -> impl Iterator<Item = Work> {
+        self.artworks
+            .iter()
+            .map(Work::Art)
+            .chain(self.sculptures.iter().map(Work::Sculpture))
+    }
+
+    /// L'œuvre dont la page est `/<exposition>/oeuvres/<slug>`.
+    pub fn work(&'static self, slug: &str) -> Option<Work> {
+        self.works().find(|w| w.slug() == slug)
+    }
+
+    /// Le bloc `[[artistes]]` d'un artiste.
+    pub fn artist_named(&self, name: &str) -> Option<&'static Artist> {
+        self.artists.iter().find(|a| a.name == name)
+    }
+
     /// L'exposition dont l'adresse est `/{slug}`.
     pub fn find(slug: &str) -> Option<&'static Exhibition> {
         EXHIBITIONS.iter().find(|e| e.slug == slug)
@@ -278,6 +378,8 @@ impl Mosaic {
 #[derive(Clone, Copy, Debug)]
 pub struct Artwork {
     pub title: &'static str,
+    /// Le nom de sa page : celui de son image, sans extension.
+    pub slug: &'static str,
     /// Le peintre, quand ce n'est pas celui de l'exposition : voir [`Artwork::artist_in`].
     pub artist: Option<&'static str>,
     pub year: &'static str,
@@ -287,6 +389,7 @@ pub struct Artwork {
     pub technique: &'static str,
     pub collection: &'static str,
     pub note: &'static str,
+    pub notice: Notice,
     /// Largeur et hauteur dans la galerie, en mètres.
     pub width: f32,
     pub height: f32,
@@ -319,11 +422,14 @@ pub struct MeshRef {
 #[derive(Clone, Copy, Debug)]
 pub struct Sculpture {
     pub title: &'static str,
+    /// Le nom de sa page : celui de son modèle, sans extension.
+    pub slug: &'static str,
     pub artist: &'static str,
     pub year: &'static str,
     pub technique: &'static str,
     pub collection: &'static str,
     pub note: &'static str,
+    pub notice: Notice,
     /// Le nom de sa vignette (vue de face), servie à `/donnees/…`.
     pub image: &'static str,
     /// La salle (son index dans `rooms`) et la position du centre du socle.
@@ -370,6 +476,42 @@ pub fn css_rgb([r, g, b]: [u8; 3]) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// Chaque œuvre a sa notice complète, chaque artiste sa biographie, et chaque œuvre
+    /// sa page (des noms uniques).
+    #[test]
+    fn every_work_has_its_notice_and_its_artist() {
+        for ex in EXHIBITIONS {
+            let mut slugs = Vec::new();
+            for work in ex.works() {
+                let n = work.notice();
+                let who = format!("{} · {}", ex.slug, work.title());
+                for (part, text) in [
+                    ("description", n.description),
+                    ("evocation", n.evocation),
+                    ("histoire", n.story),
+                    ("facture", n.manner),
+                    ("anecdote", n.anecdote),
+                ] {
+                    assert!(text.split_whitespace().count() >= 15, "{who} : {part}");
+                    assert!(!text.contains('\\') && !text.contains("  "), "{who} : {part}");
+                }
+                assert!((3..=6).contains(&n.details.len()), "{who} : details");
+                assert!((2..=8).contains(&n.themes.len()), "{who} : themes");
+                let artist = ex
+                    .artist_named(work.artist(ex))
+                    .unwrap_or_else(|| panic!("{who} : pas de bloc [[artistes]]"));
+                assert!(
+                    !artist.life.is_empty() && artist.biography.split_whitespace().count() > 80,
+                    "{who} : {}",
+                    artist.name
+                );
+                assert!(!slugs.contains(&work.slug()), "{who}");
+                slugs.push(work.slug());
+                assert_eq!(ex.work(work.slug()).map(|w| w.title()), Some(work.title()));
+            }
+        }
+    }
 
     #[test]
     fn every_exhibition_is_complete() {

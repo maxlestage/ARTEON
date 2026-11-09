@@ -26,7 +26,7 @@ use crate::tour::Focus;
 
 /// Le début des adresses du site (`/ARTEON` sur GitHub Pages, rien sur un domaine) : ce
 /// qui précède `/<exposition>` dans l'adresse de la page.
-fn base_path(slug: &str) -> String {
+pub(crate) fn base_path(slug: &str) -> String {
     let path = web_sys::window()
         .and_then(|w| w.location().pathname().ok())
         .unwrap_or_default();
@@ -40,6 +40,17 @@ fn base_path(slug: &str) -> String {
         from = i + 1;
     }
     String::new()
+}
+
+/// L'œuvre nommée par l'ancre de l'adresse (`…/galerie#nuit-etoilee`), depuis sa page.
+pub(crate) fn focus_from_hash(ex: &'static Exhibition) -> Option<crate::tour::Focus> {
+    let hash = web_sys::window()?.location().hash().ok()?;
+    let slug = hash.trim_start_matches('#');
+    if let Some(i) = ex.artworks.iter().position(|a| a.slug == slug) {
+        return Some(crate::tour::Focus::Art(i));
+    }
+    let i = ex.sculptures.iter().position(|s| s.slug == slug)?;
+    Some(crate::tour::Focus::Sculpture(i))
 }
 
 async fn fetch_bytes(url: &str) -> Result<Vec<u8>, String> {

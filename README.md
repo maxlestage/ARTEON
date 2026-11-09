@@ -27,6 +27,7 @@ Seuls des peintres du **domaine public** (morts depuis plus de 70 ans) sont expo
 | `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/monet`, `/renoir`, `/cezanne`, `/gauguin`, `/klimt`, `/vermeer-rembrandt`, `/smithsonian`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
 | `/<exposition>/galerie` | Le musée en 3D : visite guidée ou libre, plan, éditeur |
 | `/<exposition>/oeuvres` | Le catalogue : chaque toile et chaque sculpture, son cartel (technique, collection, note) et sa place dans le musée |
+| `/<exposition>/oeuvres/<œuvre>` | Tout sur une œuvre : la reproduction, le cartel, ce que l'on voit, ce qu'elle évoque, son histoire, la manière, les détails à regarder, une anecdote et la biographie de l'artiste ; un lien l'ouvre dans le musée 3D, devant elle |
 | `/ajouter` | Le guide pour ajouter, déplacer ou modifier une œuvre, ou créer une exposition, avec le plan des emplacements libres |
 | toute autre adresse | Une page « introuvable » (404) |
 
@@ -36,6 +37,7 @@ Seuls des peintres du **domaine public** (morts depuis plus de 70 ans) sont expo
 - L'interface de visite est dessinée avec **egui**, par-dessus la scène : une barre d'outils, le cartel de l'œuvre regardée (avec « Voir en HD » pour les toiles), le plan et la liste des œuvres.
 - **Visite guidée** : la caméra part du hall d'entrée, traverse les salles par leurs portes, contourne bancs et sculptures et s'arrête devant chaque œuvre. **‹ ❚❚ ›** (flèches, `Espace`) passent à l'œuvre précédente, mettent en pause, passent à la suivante.
 - **Visite libre** (bouton « Libre » ou touche `V`) : `Z Q S D` ou `W A S D` pour marcher, les flèches pour tourner, `Maj` pour courir, la souris (glisser) pour regarder ; sur téléphone, un joystick pour avancer, l'autre pour regarder. On ne traverse ni les murs, ni les socles, ni les bancs.
+- **📖 Tout savoir**, dans le cartel : la notice complète de l'œuvre regardée et la biographie de l'artiste ; la visite guidée attend devant l'œuvre pendant la lecture.
 - **Plan** : cliquer une salle y emmène, cliquer une œuvre place le visiteur devant elle. **Œuvres** : la liste de l'exposition, salle par salle.
 - **Éditer** : l'éditeur du musée (voir plus bas). **✕** (`Échap`) quitte le plein écran.
 - La caméra recule selon la forme de l'écran : sur un téléphone en portrait, la toile reste entière.
@@ -64,6 +66,26 @@ Une exposition = **un fichier** [`expositions/<nom>.toml`](expositions) + **un d
 3. Enregistrer (*Commit changes*) sur `master` : le workflow republie le site en quelques minutes. La toile apparaît dans la galerie 3D, dans le catalogue et dans la visite guidée, qui se recalcule toute seule.
 
 Pour **modifier** une œuvre, changer les valeurs de son bloc ; pour la **retirer**, supprimer le bloc. Un bloc `[[salles]]` de plus ajoute une salle et le couloir qui y mène.
+
+### La notice complète
+
+Chaque œuvre a sa page, `/<exposition>/oeuvres/<nom de l'image>` (ou du modèle pour une sculpture), et un panneau **📖 Tout savoir** dans le musée 3D. Ils affichent les champs facultatifs de son bloc :
+
+```toml
+description = """
+Ce que l'on voit : la scène, les personnages, la composition…"""
+evocation = """
+Ce qu'elle évoque : le sens, les émotions, les symboles…"""
+histoire = """
+Son histoire : pourquoi, pour qui, l'accueil, le parcours jusqu'au musée…"""
+facture = """
+La manière : la touche, les couleurs, la lumière, le cadrage…"""
+details = ["Un détail précis à repérer.", "Un autre."]
+themes = ["nuit", "paysage", "japonisme"]
+anecdote = "Un fait marquant."
+```
+
+et, à la fin du fichier, un bloc `[[artistes]]` par artiste (`nom` identique au champ `artiste` des œuvres, `vie`, `biographie`, `style`), affiché sur la présentation de l'exposition et sur la page de chacune de ses œuvres. Toutes les œuvres actuelles ont leur notice complète, et un test le vérifie.
 
 ### Depuis le musée : l'éditeur
 

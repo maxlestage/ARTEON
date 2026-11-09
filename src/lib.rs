@@ -107,6 +107,12 @@ pub fn showcase_scene(props: &str) -> Node {
 #[cfg(target_arch = "wasm32")]
 fn play_gallery(canvas: &paquets::active::Dom, ex: &'static Exhibition) -> impl FnOnce() + use<> {
     let control = gallery::SharedControl::default();
+    // Arrivé depuis la page d'une œuvre : la visite s'arrête devant elle.
+    if let Some(focus) = viewer::focus_from_hash(ex) {
+        let mut c = control.borrow_mut();
+        c.go_to = Some(focus);
+        c.paused = true;
+    }
     let commands = viewer::attach(canvas, ex, control.clone());
     let running = viewer::start_when_loaded(canvas, ex, move |data| {
         gallery::tour_app_with(ex, data, control)
