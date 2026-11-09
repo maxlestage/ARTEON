@@ -141,6 +141,10 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .viewer-controls .ctl-exit { display: none; }
 .is-paused .ctl-play { background: var(--accent); }
 
+/* L'interface egui : un canvas transparent posé sur toute la scène. */
+.egui-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; touch-action: none; }
+.is-loading .egui-layer { visibility: hidden; }
+
 /* Le chargement des données de l'exposition. */
 .viewer-loading { display: none; position: absolute; inset: 0; margin: 0; align-items: center; justify-content: center;
   color: #e8e9f0; font-size: .95rem; text-align: center; padding: 1rem; pointer-events: none; }

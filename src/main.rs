@@ -632,11 +632,13 @@ async fn gallery_page(_req: Request, ex: &'static Exhibition) -> Page {
         .child(
             section()
                 .class("page-intro")
-                .child(p().class("kicker").text(format!("Visite guidée · {}", ex.short_name)))
-                .child(h1().text("La galerie en 3D"))
+                .child(p().class("kicker").text(format!("Visite · {}", ex.short_name)))
+                .child(h1().text("Le musée en 3D"))
                 .child(p().class("lead").text(
-                    "La caméra traverse les salles et leurs couloirs, et s'arrête devant chaque toile. \
-                     La visite recommence en boucle.",
+                    "En visite guidée, la caméra traverse les salles et s'arrête devant chaque œuvre, en boucle. \
+                     En visite libre, on marche où l'on veut : ZQSD ou WASD et la souris sur ordinateur, les deux \
+                     joysticks sur téléphone. Le plan permet de se rendre d'un clic dans une salle ou devant une œuvre, \
+                     et l'éditeur de déplacer les œuvres.",
                 )),
         )
         .child(div().class("viewer").child(island("gallery", ex.slug, gallery_scene)))
@@ -851,6 +853,14 @@ socle = 0.6"##;
                     ),
                 )),
         )
+        .child(h2().class("section-title").text("Déplacer une œuvre depuis le musée"))
+        .child(p().class("lead").text(
+            "Dans la visite 3D, le bouton « Éditer » ouvre l'éditeur du musée : choisir une toile ou une sculpture \
+             (ou « L'œuvre regardée »), puis sa salle, son mur et sa position avec les curseurs. La scène se met à jour \
+             aussitôt, et l'éditeur dit si la place est libre. « Télécharger » donne le fichier de l'exposition modifié \
+             (seules les lignes de placement changent), « Copier » le met dans le presse-papiers, et « Publier sur GitHub » \
+             ouvre l'éditeur du fichier dans le dépôt : il reste à coller et à valider.",
+        ))
         .child(h2().class("section-title").text("Un exemple"))
         .child(pre().class("example").child(code().text(EXAMPLE)))
         .child(
