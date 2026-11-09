@@ -1,0 +1,1195 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « FLANDRES ET HOLLANDE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/flandres-hollande/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site : /flandres-hollande.
+#
+#  Plusieurs artistes : chaque œuvre précise son « artiste ».
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 52
+nom_court = "Flandres et Hollande"
+mouvement = "Paysages, natures mortes et scènes de genre des Pays-Bas"
+cadre = "ebene"
+couleur = "#3a5566"
+titre = "Flandres et Hollande, le siècle d'or du quotidien"
+artiste = "Hals, Steen, De Hooch, Ruisdael, Clara Peeters, Van Dyck, Jordaens…"
+dates = "1615–1705"
+accroche = "Exposition virtuelle · Mauritshuis, La Haye"
+introduction = """
+Au XVIIᵉ siècle, les anciens Pays-Bas sont coupés en deux : au nord, la République des \
+Provinces-Unies, marchande et protestante ; au sud, la Flandre restée espagnole et \
+catholique. Des deux côtés de la frontière, les peintres inventent des genres nouveaux \
+pour une clientèle de bourgeois : le paysage, la nature morte, la scène de la vie \
+quotidienne. La visite réunit treize peintres, de Clara Peeters à Adriaen Coorte, et \
+la fête flamande de Jordaens et de Van Dyck. Le bâtiment s'inspire du Mauritshuis de \
+La Haye : un vestibule, une salle dorée au centre et, autour d'elle, trois cabinets \
+aux murs colorés."""
+vitrine = "chardonneret.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Mauritshuis"
+ville = "La Haye, Pays-Bas"
+architecte = "Jacob van Campen et Pieter Post"
+construction = "1636–1641"
+presentation = """
+En 1631, le comte Jean-Maurice de Nassau-Siegen, cousin du stathouder Frédéric-Henri, \
+achète un terrain au bord du Hofvijver, l'étang qui longe le Binnenhof, le cœur du \
+pouvoir à La Haye. Il y fait bâtir de 1636 à 1641, alors qu'il gouverne le Brésil \
+hollandais, une demeure dessinée par Jacob van Campen et Pieter Post : un bloc de deux \
+étages, strictement symétrique, modèle du classicisme hollandais. Un incendie ravage \
+l'intérieur en 1704 ; la reconstruction s'achève en 1718 avec la salle dorée, dont \
+Giovanni Antonio Pellegrini peint le plafond et les dessus de cheminée. Acheté par \
+l'État en 1820, le bâtiment accueille en 1822 le Cabinet royal de peintures, issu des \
+collections des princes d'Orange. Agrandi par Hans van Heeswijk et rouvert en 2014, le \
+Mauritshuis expose près de huit cents tableaux, dont La Jeune Fille à la perle et Le \
+Chardonneret. Il évoque aujourd'hui aussi la fortune coloniale de son bâtisseur, tirée \
+du sucre brésilien et du travail des esclaves africains."""
+ici = """
+Le bâtiment d'ARTEON reprend la symétrie du Mauritshuis, sur un seul niveau. On entre \
+par le sud dans le vestibule, où Le Chardonneret accueille le visiteur, puis on gagne \
+la salle dorée, haute de neuf mètres, aux murs d'or pâle en souvenir du décor de \
+Pellegrini : Jordaens et Van Dyck y représentent la Flandre. À l'ouest s'ouvre le \
+cabinet des natures mortes, aux murs taupe ; à l'est, la salle des paysages, vert \
+pâle ; au nord, la salle de la vie quotidienne, couleur vieux rose, consacrée à Hals, \
+Steen et De Hooch."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Mauritshuis de La Haye (Jacob van Campen et Pieter Post, 1636–1641) :
+# un bloc symétrique où l'on passe du vestibule, au sud, à une salle centrale
+# dorée, en souvenir de la salle dorée décorée par Pellegrini en 1718 ; trois
+# cabinets l'entourent, à l'ouest, à l'est et au nord, chacun de sa couleur.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une
+# porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, où Le Chardonneret de Fabritius, petit tableau devenu célèbre, accueille le visiteur."
+murs = "#e8dfcf"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La salle dorée"
+theme = "Au cœur du bâtiment, la Flandre en majesté : la fête des Rois de Jordaens et le roi d'Angleterre de Van Dyck."
+murs = "#dcc68f"
+x = 0
+z = -11
+largeur = 16
+profondeur = 14
+hauteur = 9
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Le cabinet des natures mortes"
+theme = "Fromages, vanité, table servie, bouquet et fraises des bois : un siècle de natures mortes, de Clara Peeters à Adriaen Coorte."
+murs = "#c9b7a0"
+x = -13
+z = -11
+largeur = 10
+profondeur = 14
+hauteur = 6
+
+[[salles]]
+nom = "La salle des paysages"
+theme = "Le ciel, l'eau et les arbres de Hollande : le moulin de Ruisdael et l'allée de Hobbema."
+murs = "#b9c3b1"
+x = 13
+z = -11
+largeur = 10
+profondeur = 14
+hauteur = 6
+
+[[salles]]
+nom = "La vie quotidienne"
+theme = "Un buveur de Hals, une fête de famille de Jan Steen, une cour de Delft de Pieter de Hooch."
+murs = "#cfa898"
+x = 0
+z = -23
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Chardonneret"
+artiste = "Carel Fabritius"
+annee = "1654"
+image = "chardonneret.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Carel_Fabritius_-_The_Goldfinch_-_605_-_Mauritshuis.jpg"
+technique = "Huile sur panneau, 33,5 × 22,8 cm"
+collection = "Mauritshuis, La Haye"
+note = "Un petit oiseau enchaîné à sa mangeoire, peint l'année même où son auteur meurt dans l'explosion de la poudrière de Delft. Le panneau, à peine plus grand qu'une feuille de cahier, est ici agrandi."
+description = """
+Sur un mur clair, blanchi à la chaux, une petite mangeoire de bois peinte en gris est \
+fixée par deux consoles. Deux arceaux de bois en demi-cercle l'entourent, l'un \
+au-dessus, l'autre à mi-hauteur. Sur l'arceau supérieur se tient un chardonneret, le \
+corps tourné vers la droite, la tête pivotée vers nous. On reconnaît son masque rouge, \
+ses joues blanches et la barre jaune vif de son aile. Une chaînette très fine, presque \
+invisible, le retient : elle descend le long de la mangeoire et pend en boucle sous \
+elle. Sur le dessus, à gauche, un minuscule récipient. L'ombre de l'oiseau et du \
+perchoir s'étire sur le mur, à droite. En bas, la signature et la date sont tracées en \
+capitales. Il n'y a rien d'autre : ni pièce, ni fenêtre, ni paysage."""
+evocation = """
+Le chardonneret était un oiseau de compagnie très apprécié dans la Hollande du XVIIᵉ \
+siècle. On lui apprenait à tirer avec son bec, au bout d'une chaînette, un petit seau \
+d'eau ou de graines : d'où son nom néerlandais de puttertje, le petit puiseur. Dans la \
+peinture religieuse, cet oiseau qui se nourrit de graines de chardon annonçait la \
+Passion du Christ ; Fabritius, lui, en fait un portrait, vivant et attentif. On y a vu \
+une image de la captivité, de la fidélité ou de la fragilité de la vie, d'autant plus \
+poignante que le peintre est mort quelques mois plus tard. C'est aussi une \
+démonstration de virtuosité : à quelque distance, l'oiseau semble réellement posé sur \
+un mur."""
+histoire = """
+Fabritius peint ce panneau à Delft en 1654. On ne sait pas pour qui, ni à quoi il \
+servait : on a supposé qu'il était fixé à un meuble ou à une boiserie, pour tromper \
+l'œil. Le 12 octobre 1654, la poudrière de la ville explose et dévaste tout un \
+quartier ; Fabritius, blessé dans l'effondrement de sa maison, meurt de ses blessures \
+à trente-deux ans. Le tableau reparaît au XIXᵉ siècle chez le critique français \
+Théophile Thoré-Bürger, le redécouvreur de Vermeer. Vendu à Paris après sa mort, il \
+est acheté en 1896 pour le Mauritshuis par son directeur, Abraham Bredius. Il est \
+devenu, avec La Jeune Fille à la perle, l'un des tableaux les plus célèbres du musée."""
+facture = """
+Contrairement aux peintres fins de Leyde, Fabritius laisse voir sa touche. L'oiseau \
+est construit en quelques coups de pinceau rapides, la barre jaune de l'aile posée en \
+pâte épaisse, le duvet suggéré plutôt que décrit. Élève de Rembrandt, il a pourtant \
+renoncé aux fonds sombres de son maître : la figure se détache en clair sur clair, \
+contre un mur lumineux, et c'est l'ombre portée qui lui donne son relief. Vue de près, \
+la peinture est libre et presque esquissée ; vue de loin, l'illusion est parfaite."""
+details = [
+  "La chaînette, peinte d'un seul trait clair, qui pend en boucle sous la mangeoire.",
+  "La barre jaune de l'aile, posée en touches épaisses.",
+  "L'ombre de l'oiseau et du perchoir, projetée sur le mur à droite.",
+  "La signature C FABRITIVS 1654, en capitales, comme inscrite sur le plâtre.",
+  "Le minuscule récipient posé sur le dessus de la mangeoire.",
+]
+themes = ["oiseau", "trompe-l'œil", "delft", "captivité", "lumière"]
+anecdote = """
+Le roman de Donna Tartt Le Chardonneret, paru en 2013 et couronné par le prix Pulitzer \
+en 2014, a pour fil conducteur ce tableau, emporté par un adolescent dans les ruines \
+d'un musée new-yorkais frappé par un attentat."""
+salle = 1
+mur = "nord"
+place = 1
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Le Roi boit"
+artiste = "Jacob Jordaens"
+annee = "vers 1640–1645"
+image = "le-roi-boit.jpg"
+cadre = "dore"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jacob_Jordaens_-_The_Feast_of_the_Bean_King_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 242 × 300 cm"
+collection = "Kunsthistorisches Museum, Vienne"
+note = "Le soir de l'Épiphanie, le vieillard qui a trouvé la fève dans le gâteau est roi : chaque fois qu'il boit, toute la tablée crie « Le roi boit ! »."
+description = """
+Dans une salle aux vitraux, une grande famille est réunie autour d'une table. À \
+droite, un vieil homme à barbe blanche, coiffé d'une couronne de papier doré, boit à \
+longs traits, une cruche à la main : c'est le roi de la fève. Au centre, une jeune \
+femme couronnée elle aussi, la reine, reste calme et nous regarde. Autour d'eux, on \
+hurle, on rit, on lève les verres ; un homme en bleu renverse la tête en criant, et à \
+droite un homme coiffé d'un bonnet à plumes rit à gorge déployée. À gauche, un convive \
+pris de malaise se penche en avant, tandis qu'une fillette boit à son tour. Au premier \
+plan s'entassent cruches, plats et panier à pain ; un chien quémande, un chat dort. En \
+haut, un cartouche orné d'un masque porte une inscription latine."""
+evocation = """
+La fête des Rois était l'une des grandes réjouissances de la Flandre : un gâteau \
+contenait une fève, et celui qui la trouvait devenait roi d'un soir. Il nommait sa \
+cour, conseiller, chantre, bouffon ou échanson, souvent par des billets tirés au sort, \
+et chaque fois qu'il buvait, il fallait crier « Le roi boit ! », sous peine d'amende. \
+Jordaens célèbre l'abondance et la chaleur d'une maison flamande, mais l'inscription, \
+« Rien ne ressemble plus à un fou qu'un homme ivre », rappelle la leçon : comme chez \
+Jan Steen, le rire et la morale vont ensemble. On a cru reconnaître dans le vieux roi \
+les traits d'Adam van Noort, le beau-père et ancien maître du peintre."""
+histoire = """
+Jordaens a peint ce sujet à de nombreuses reprises à partir de la fin des années \
+1630 : on en connaît des versions à Paris, Bruxelles, Cassel ou Saint-Pétersbourg. \
+Celle de Vienne, l'une des plus grandes, date des années où, après la mort de Rubens \
+en 1640 et de Van Dyck en 1641, Jordaens devient le premier peintre d'Anvers. Elle a \
+appartenu à l'archiduc Léopold-Guillaume, gouverneur des Pays-Bas espagnols de 1647 à \
+1656 et collectionneur passionné, qui emporta ses tableaux à Vienne. Passée dans les \
+collections impériales des Habsbourg, la toile est entrée au Kunsthistorisches Museum, \
+où elle est toujours exposée."""
+facture = """
+Les figures, grandeur nature, se pressent contre le bord du tableau comme si la fête \
+débordait vers nous. La composition monte en diagonale, de la nature morte de \
+vaisselle en bas à gauche jusqu'au vieux roi à droite. Jordaens reprend à Rubens les \
+chairs rosées et la touche généreuse, mais ses modèles sont plus terriens, pris parmi \
+les gens de son entourage. La lumière entre par la fenêtre de gauche et fait briller \
+le métal des cruches, les joues rouges et les étoffes blanches."""
+details = [
+  "Le cartouche au masque grimaçant, en haut, avec la devise latine sur l'ivresse.",
+  "Le miroir accroché à gauche, où se reflètent deux visages.",
+  "Les couronnes de papier doré du vieux roi et de la jeune reine.",
+  "Le chat roulé en boule en bas à droite, indifférent au vacarme.",
+  "Les petits billets de papier tombés au sol, près des bottes du buveur en bleu.",
+]
+themes = ["fête", "épiphanie", "famille", "ivresse", "flandre"]
+anecdote = """
+En France aussi, on criait « Le roi boit ! » au repas de l'Épiphanie. La fève cachée \
+dans la galette des rois, et la couronne de papier qui l'accompagne, perpétuent \
+aujourd'hui la coutume peinte par Jordaens."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Charles Iᵉʳ à la chasse"
+artiste = "Antoine van Dyck"
+annee = "vers 1635"
+image = "charles-ier-a-la-chasse.jpg"
+cadre = "dore"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Anthony_van_Dyck_-_Charles_I_at_the_Hunt_(cropped).jpg"
+technique = "Huile sur toile, 266 × 207 cm"
+collection = "Musée du Louvre, Paris"
+note = "Le roi d'Angleterre, descendu de cheval, pose en gentilhomme : ni couronne, ni armure, et pourtant toute la majesté royale."
+description = """
+Dans un paysage, au bord d'un bois, Charles Iᵉʳ se tient debout, à gauche, de trois \
+quarts. Il porte un large chapeau noir, un pourpoint de satin argenté, des chausses \
+rouges et de hautes bottes claires à éperons ; une épée pend à son côté. Une main sur \
+la hanche, l'autre posée sur une canne, il tourne la tête et nous regarde par-dessus \
+l'épaule, avec une assurance tranquille. Derrière lui, un écuyer tient son cheval \
+gris, qui baisse la tête ; un jeune page apparaît entre eux. Un grand arbre déploie \
+ses branches au-dessus du groupe. À gauche, le terrain descend vers une plaine et la \
+mer, où l'on devine un voilier, sous un ciel de fin de journée. En bas à droite, une \
+inscription latine désigne le roi."""
+evocation = """
+Van Dyck représente le roi sans aucun attribut du pouvoir : ni sceptre, ni trône, ni \
+manteau d'hermine. La majesté passe par l'aisance, cette élégance sans effort que l'on \
+attendait d'un gentilhomme. Le point de vue, pris un peu en contrebas, grandit un \
+souverain de petite taille, et le cheval qui baisse la tête semble s'incliner devant \
+lui. C'est l'image que Charles voulait donner de lui-même : un prince raffiné, amateur \
+d'art, sûr de son droit divin. Avec le recul, on y lit aussi la distance d'un roi qui \
+refusa de partager le pouvoir avec son Parlement ; la guerre civile le mena à \
+l'échafaud en 1649."""
+histoire = """
+Installé à Londres en 1632, Van Dyck devient le peintre principal de Charles Iᵉʳ, qui \
+l'anoblit. Il peint ce portrait vers 1635, au sommet de sa faveur. On ignore où se \
+trouvait le tableau au temps du roi ; il est mentionné en France dès la première \
+moitié du XVIIIᵉ siècle. Madame du Barry, favorite de Louis XV, le possédait \
+lorsqu'elle le vendit à Louis XVI en 1775. Entré dans les collections royales, il \
+passe au Louvre avec elles après la Révolution. Il y est devenu l'un des portraits les \
+plus admirés, et un modèle pour les portraitistes européens."""
+facture = """
+Van Dyck a retenu de Titien, étudié pendant ses années italiennes, la richesse du \
+coloris et la fusion de la figure dans le paysage. Le satin argenté du pourpoint est \
+rendu en touches rapides et brillantes, qui accrochent la lumière contre le fond \
+sombre du feuillage. Les harmonies sont subtiles : argent, rouge sourd, brun et vert. \
+La composition s'organise en diagonale, du roi vers le cheval, et laisse à gauche une \
+échappée lumineuse qui isole la silhouette royale."""
+details = [
+  "La main posée sur la hanche, geste d'aisance et d'autorité.",
+  "Le cheval gris qui baisse la tête, comme s'il saluait le roi.",
+  "La perle qui brille à l'oreille du roi.",
+  "Au loin, à gauche, la mer et un voilier minuscule.",
+  "Les éperons accrochés aux bottes de cuir clair.",
+]
+themes = ["portrait", "roi", "angleterre", "élégance", "cheval"]
+anecdote = """
+Louis XVI, qui achète le tableau en 1775, descendait de Charles Iᵉʳ par la fille de \
+celui-ci, Henriette d'Angleterre. Les deux rois connurent le même destin : Charles fut \
+décapité à Londres en 1649, Louis XVI à Paris en 1793."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 2.07
+
+[[oeuvres]]
+titre = "Nature morte aux fromages, amandes et bretzels"
+artiste = "Clara Peeters"
+annee = "vers 1615"
+image = "fromages-amandes-bretzels.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Clara_Peeters_-_Still_Life_with_Cheeses,_Almonds_and_Pretzels_-_1203_-_Mauritshuis.jpg"
+technique = "Huile sur panneau, 34,5 × 49,5 cm"
+collection = "Mauritshuis, La Haye"
+note = "Fromages, bretzels, pain et vin sur une table ; et, dans le couvercle d'étain de la cruche, le reflet minuscule de la peintre. Le panneau mesure moins de 50 cm de large."
+description = """
+Sur une table de bois, devant un fond sombre, s'empilent les fromages : une grande \
+meule entamée, une autre à la croûte verdâtre posée devant elle, un morceau plus sec \
+au-dessus et, sur une assiette d'étain surélevée, un monticule de beurre en copeaux \
+striés. À droite se dressent une cruche de grès brun au couvercle d'étain et un haut \
+verre à couvercle, rempli de vin, sur un pied doré ; un petit pain est posé derrière \
+lui. Au premier plan, deux bretzels entrelacés, un couteau au manche d'argent qui \
+dépasse du bord de la table et un plat de porcelaine chinoise bleu et blanc, garni \
+d'amandes et de fruits secs. Quelques amandes sont tombées sur la table."""
+evocation = """
+Rien ici d'un banquet princier : c'est la table d'une maison aisée, avec des produits \
+que les Flamands et les Hollandais tenaient pour les leurs, le fromage, le beurre, le \
+pain. La porcelaine chinoise, en revanche, rappelle le commerce lointain qui enrichit \
+les ports des Pays-Bas. Le couteau gravé du nom de la peintre est un couteau de \
+mariée, présent traditionnel des noces, et le minuscule autoportrait caché dans le \
+reflet de la cruche est une manière discrète, mais insistante, d'affirmer sa présence \
+dans un métier presque entièrement masculin. On peut y lire une fierté d'artiste : \
+signer deux fois, par son nom et par son visage."""
+histoire = """
+Clara Peeters travaille à Anvers au début du XVIIᵉ siècle. Ses premiers tableaux \
+datés, de 1607 et 1608, font d'elle l'une des toutes premières à peindre des natures \
+mortes de repas, avant même la plupart des maîtres hollandais. Ce panneau date des \
+environs de 1615. Il est acheté par le Mauritshuis en 2012, grâce aux Amis du musée, à \
+la Loterie BankGiro et à l'Association Rembrandt. En 2016, le musée du Prado consacre \
+à Clara Peeters une exposition, la première de son histoire dédiée à une femme \
+peintre. Le Mauritshuis, riche en natures mortes hollandaises, y a gagné l'un des plus \
+anciens exemples du genre."""
+facture = """
+Le point de vue, légèrement plongeant, détache chaque objet sans le cacher derrière un \
+autre. Peeters peint avec des pinceaux très fins, sur panneau : les trous du fromage, \
+les stries du beurre, les miettes du pain, l'éclat de l'étain et la transparence du \
+verre sont rendus avec une précision d'orfèvre. Le fond presque noir fait ressortir \
+les ocres et les blancs crémeux, et la lumière, venue de gauche, donne à chaque forme \
+un volume ferme."""
+details = [
+  "Dans le couvercle d'étain de la cruche, le reflet d'une femme coiffée de blanc : la peintre elle-même.",
+  "Le nom de Clara Peeters gravé sur le manche d'argent du couteau.",
+  "Les copeaux de beurre striés, sur l'assiette surélevée.",
+  "Le plat de porcelaine chinoise bleu et blanc, rempli d'amandes et de fruits secs.",
+  "Les deux bretzels entrelacés au bord de la table.",
+]
+themes = ["nature morte", "repas", "fromage", "autoportrait", "femmes peintres"]
+anecdote = """
+Ce n'est pas le seul autoportrait caché de Clara Peeters. Dans une nature morte de \
+1612 conservée à Karlsruhe, elle se peint six fois, minuscule, dans les bossages d'une \
+coupe dorée."""
+salle = 3
+mur = "ouest"
+place = 1
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Vanité"
+artiste = "Pieter Claesz"
+annee = "1630"
+image = "vanite-claesz.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Pieter_Claesz_-_Vanitas_Still_Life_-_943_-_Mauritshuis.jpg"
+technique = "Huile sur panneau, 39,5 × 56 cm"
+collection = "Mauritshuis, La Haye"
+note = "Un crâne, une montre, une lampe éteinte et un verre renversé : tout rappelle que le temps passe et que la mort vient."
+description = """
+Sur une table couverte d'un tapis vert olive, une pile de vieux livres aux pages usées \
+sert de socle à un crâne humain, posé sur une feuille de papier. Un os long dépasse \
+derrière lui et une plume d'oie est posée sur les livres. À gauche, une lampe à huile \
+éteinte voisine avec un verre à pied couché sur le flanc. Au premier plan, une montre \
+de poche dorée est ouverte, son couvercle relevé ; un ruban bleu y est attaché, et une \
+petite clé pend au bord de la table. Derrière, un mur nu, d'un gris beige, reçoit une \
+lumière douce venue de gauche. Sur la tranche d'un livre, le peintre a inscrit son \
+monogramme et la date."""
+evocation = """
+Le titre vient de l'Ecclésiaste : « Vanité des vanités, tout est vanité. » Chaque \
+objet porte un sens que les contemporains lisaient sans peine. Le crâne et l'os disent \
+la mort, la montre le temps qui s'écoule, la lampe éteinte une vie qui s'achève, le \
+verre renversé la vanité des plaisirs, les livres et la plume celle du savoir. Dans la \
+Hollande calviniste, ces tableaux invitaient à méditer sur le salut. Mais ils posent \
+aussi un paradoxe : en prêchant le mépris des choses, le peintre en célèbre la beauté, \
+et l'on admire l'éclat de l'or et la transparence du verre autant que la leçon."""
+histoire = """
+Pieter Claesz, installé à Haarlem depuis les années 1620, peint ce panneau en 1630, au \
+moment où il invente avec Willem Claesz Heda une nature morte presque monochrome. Les \
+vanités sont alors très recherchées, en particulier à Leyde, ville universitaire où \
+l'on goûte les crânes, les livres et les sabliers. Claesz en a peint plusieurs, avec \
+quelques objets seulement, disposés sur un coin de table. Ce tableau, passé par une \
+collection suédoise et le commerce d'art de La Haye, a été acheté par le Mauritshuis \
+en 1960, avec le soutien de l'Association Rembrandt."""
+facture = """
+La gamme est volontairement restreinte : bruns, ocres, gris et verts éteints, \
+rehaussés seulement par l'or de la montre et le bleu du ruban. Une lumière unique, \
+venue de gauche, glisse sur les objets et unifie la scène dans une atmosphère grise. \
+La composition s'organise en diagonale, de la lampe aux livres, et le crâne, au \
+sommet, en est le centre. Claesz rend avec la même attention la porosité de l'os, le \
+papier froissé et le verre épais."""
+details = [
+  "Le monogramme PC et la date 1630, sur la tranche d'un livre, à droite.",
+  "La petite clé de la montre, au bout du ruban bleu, qui pend au bord de la table.",
+  "La plume d'oie posée sur les livres, à droite du crâne.",
+  "Le verre à pied renversé, dont on voit les pastilles de verre en relief.",
+  "Les pages cornées et usées des livres empilés.",
+]
+themes = ["vanité", "mort", "temps", "nature morte", "haarlem"]
+anecdote = """
+Son fils, Nicolaes Berchem, devint l'un des paysagistes italianisants les plus \
+recherchés de Hollande. Il ne signait pas Claesz, mais Berchem, du nom du village \
+natal de son père, près d'Anvers."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Nature morte au gobelet doré"
+artiste = "Willem Claesz Heda"
+annee = "1635"
+image = "nature-morte-gobelet-dore.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Stilleven_met_vergulde_bokaal,_SK-A-4830.jpg"
+technique = "Huile sur panneau, 88 × 113 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Un repas interrompu : huîtres ouvertes, citron à demi pelé, coupe d'argent renversée au pied d'un grand gobelet doré."
+description = """
+Une table est à moitié couverte d'une nappe de damas blanc, froissée et retroussée. \
+Sur des assiettes d'étain, des huîtres ouvertes, un petit pain rompu et un cornet de \
+papier ; un couteau au manche noir dépasse d'une assiette. Derrière, une salière \
+d'argent, un petit pichet de verre, un verre de vin rouge et un grand roemer, verre à \
+pied vert rempli de vin blanc. À droite se dressent un haut gobelet doré, dont le \
+couvercle est surmonté d'une figurine de soldat, et une grande cruche d'étain au \
+couvercle ouvert. Une coupe d'argent est renversée sur la nappe. Au bord de la table, \
+un citron à demi pelé laisse pendre sa peau en spirale ; à côté, un verre couché."""
+evocation = """
+Ce genre de tableau s'appelait un banketje, un petit banquet. Le repas semble avoir \
+été abandonné à l'instant : la coupe est tombée, le citron reste entamé, les huîtres \
+attendent. Ce désordre a été lu comme une image de l'éphémère, des plaisirs qui \
+passent et des choses qui se renversent. Les objets de luxe, le gobelet d'orfèvrerie, \
+le citron venu du sud, les huîtres, invitaient peut-être à la modération ; le citron, \
+beau mais amer, a parfois été compris comme le symbole d'une apparence trompeuse. Mais \
+le tableau est avant tout un éloge de la lumière et des matières, offert à des \
+bourgeois fiers de leur prospérité."""
+histoire = """
+Heda passe toute sa carrière à Haarlem, où il est membre de la guilde de Saint-Luc et \
+où il se spécialise dans les tables servies. Dès 1628, l'historien de la ville Samuel \
+Ampzing cite son nom parmi les peintres qui font la gloire de Haarlem. En 1635, il est \
+au sommet de sa manière tonale, qu'il partage avec Pieter Claesz : quelques objets \
+choisis, une palette réduite, une lumière grise. Ce grand panneau, l'un des plus \
+ambitieux qu'il ait peints, est aujourd'hui l'une des natures mortes les plus admirées \
+du Rijksmuseum."""
+facture = """
+Le tableau est presque monochrome : gris, argent, or, blanc et vert sombre. La \
+lumière, venue de la gauche, glisse sur le métal, traverse le verre et fait chanter \
+les plis de la nappe. La composition monte en pyramide de la gauche vers la droite, \
+jusqu'au gobelet doré qui en marque le sommet. Heda peint en couches minces, sans \
+touche visible, et rend avec une égale justesse le reflet de l'étain, la transparence \
+du roemer et la nacre des huîtres."""
+details = [
+  "La spirale de l'écorce de citron qui pend au bord de la table.",
+  "La petite figure de soldat qui couronne le couvercle du gobelet doré.",
+  "Le cornet de papier posé sur l'assiette de gauche, à côté des huîtres.",
+  "La coupe d'argent renversée, dont on voit le dessous du pied.",
+  "La signature HEDA et la date 1635, sur le bord de la nappe.",
+]
+themes = ["nature morte", "repas", "luxe", "lumière", "haarlem"]
+anecdote = """
+Le citron, importé d'Espagne ou d'Italie, restait un luxe dans les Provinces-Unies ; \
+on en pressait le jus sur les huîtres. Sa peau pelée en spirale, mi-lisse mi-rugueuse, \
+devint un morceau de bravoure que les peintres de natures mortes aimaient montrer."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 1.13
+
+[[oeuvres]]
+titre = "Vase de fleurs"
+artiste = "Jan Davidsz de Heem"
+annee = "vers 1670"
+image = "vase-de-fleurs.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jan_Davidsz_de_Heem_-_Vase_of_Flowers_-_1099_-_Mauritshuis.jpg"
+technique = "Huile sur toile, 74,2 × 52,6 cm"
+collection = "Mauritshuis, La Haye"
+note = "Un bouquet impossible : des fleurs de toutes les saisons réunies dans un vase de verre, avec des fruits, des insectes et un escargot."
+description = """
+Sur un rebord de pierre, devant un fond sombre, un vase de verre rond contient un \
+bouquet foisonnant. Des lis blancs et un lis orangé s'élancent vers le haut, avec des \
+coquelicots, un iris violet et une tulipe rayée de rouge et de blanc. Au centre \
+s'ouvrent des roses, une grosse fleur panachée de rose et de blanc, des bleuets et des \
+liserons bleus. Des épis de blé, des groseilles à maquereau, un abricot ouvert et une \
+pêche se mêlent aux fleurs. Sur le rebord reposent des mûres, des cerises et des \
+grappes de groseilles blanches et rouges. Partout, la vie grouille : papillons, \
+bourdon, chenilles, et un escargot qui grimpe le long du vase. La signature est \
+inscrite sur la pierre, à droite."""
+evocation = """
+Aucun jardin n'a jamais offert ce bouquet : ces fleurs ne s'épanouissent pas au même \
+moment de l'année. Le peintre les a réunies d'après des études faites à chaque saison, \
+pour composer une encyclopédie de la beauté naturelle. Le tableau célèbre la richesse \
+de la création et la passion des Néerlandais pour l'horticulture, qui avait fait de la \
+tulipe un objet de spéculation. On y a vu aussi une vanité : les fleurs se faneront, \
+les fruits pourriront, la chenille et l'escargot rongent déjà les feuilles. Les \
+historiens ont proposé des lectures religieuses, le blé du pain eucharistique ou le \
+papillon de la résurrection, mais le sens reste ouvert."""
+histoire = """
+Jan Davidsz de Heem peint ce tableau vers 1670, dans ses dernières années, alors qu'il \
+est l'un des peintres de fleurs les plus célèbres d'Europe, partagé entre Anvers et sa \
+ville natale d'Utrecht. Ses bouquets se vendent très cher et ont formé toute une \
+génération de peintres de fleurs, en Flandre comme en Hollande. Le tableau a appartenu \
+à une collection privée en Suisse, puis est passé par le commerce d'art de Maastricht. \
+Il est entré au Mauritshuis en 1993, grâce à une importante contribution du baron Hans \
+Heinrich Thyssen-Bornemisza et au soutien de l'Association Rembrandt."""
+facture = """
+De Heem dispose les fleurs en une masse ample et asymétrique, qui déborde du vase et \
+s'ouvre en éventail. Sur le fond sombre, les blancs, les rouges et les bleus brillent \
+comme des pierres précieuses. Chaque pétale est modelé par de fins glacis, couches de \
+couleur transparentes, qui donnent au velours des roses et au satin des lis leur \
+éclat. Le verre du vase laisse voir les tiges dans l'eau, et la lumière, venue de la \
+gauche, fait saillir les fleurs du premier plan."""
+details = [
+  "L'escargot qui grimpe le long du vase, à gauche.",
+  "Les tiges visibles à travers le verre, dans l'eau.",
+  "La tulipe striée de rouge et de blanc, fleur de luxe au XVIIᵉ siècle.",
+  "Le grand papillon jaune et noir, posé en bas sur le rebord de pierre.",
+  "La signature J. D. De Heem, sur le rebord à droite.",
+]
+themes = ["fleurs", "nature morte", "insectes", "saisons", "vanité"]
+anecdote = """
+Henri Matisse copia au Louvre, en 1893, une nature morte de De Heem, Un dessert. En \
+1915, il en peignit une nouvelle version, transformée par la géométrie du cubisme, \
+aujourd'hui au Museum of Modern Art de New York."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Nature morte aux fraises des bois"
+artiste = "Adriaen Coorte"
+annee = "1705"
+image = "fraises-des-bois.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Adriaen_Coorte_-_Still_Life_with_Wild_Strawberries_-_1106_-_Mauritshuis.jpg"
+technique = "Huile sur papier marouflé sur panneau, 16,5 × 14 cm"
+collection = "Mauritshuis, La Haye"
+note = "Un petit tas de fraises des bois et une fleur de fraisier sur un rebord de pierre. Le tableau original n'est pas plus grand qu'une main : il est ici montré agrandi plus de quatre fois."
+description = """
+Sur un rebord de pierre grise, à l'arête légèrement ébréchée, est posé un tas de \
+fraises des bois d'un rouge vif, piquetées de minuscules grains clairs. Certaines sont \
+encore attachées à leur tige, avec leurs sépales verts ; quelques autres, à peine \
+mûres, restent blanches. Une tige se dresse au milieu du tas et porte une fleur de \
+fraisier à cinq pétales blancs et au cœur jaune, entourée de boutons. Une feuille \
+dentelée s'étale à droite. Devant le rebord, une tige retombe avec un dernier fruit et \
+un bouton. Tout autour, le fond est brun-noir, à peine éclairci en haut à droite. La \
+signature du peintre est inscrite sur la face du rebord, et la date sur la pierre \
+au-dessous."""
+evocation = """
+Coorte se passe de tout : pas de vaisselle précieuse, pas de nappe, pas de symbole \
+évident. Il ne reste que quelques fruits des bois, saisis dans le silence, comme dans \
+une méditation. La fleur dressée au-dessus des fraises mûres et des fruits encore \
+blancs réunit en une seule image tout le cycle de la plante, floraison, croissance, \
+maturité, et l'on peut y lire le passage du temps. Dans la tradition chrétienne, la \
+fraise, fruit humble qui pousse au ras du sol, était aussi associée à la Vierge et au \
+paradis. Face aux bouquets somptueux de De Heem, ce petit tableau montre une autre \
+voie : la grandeur par la modestie."""
+histoire = """
+Adriaen Coorte travaille à Middelburg, en Zélande, loin des grands centres d'Amsterdam \
+ou de Haarlem. Il peint presque toujours de petits formats, sur papier ensuite collé \
+sur panneau, pour une clientèle locale. Ce tableau, daté de 1705, compte parmi ses \
+dernières œuvres connues : ses tableaux signés vont de 1683 à 1707. Après sa mort, il \
+est presque totalement oublié. Il faut attendre un article de l'historien néerlandais \
+Laurens J. Bol, en 1952, puis une exposition au musée de Dordrecht en 1958, pour que \
+son nom reparaisse ; le Mauritshuis conserve aujourd'hui plusieurs de ses petits \
+tableaux."""
+facture = """
+Coorte peint à l'huile sur une simple feuille de papier, avec des pinceaux \
+minuscules : chaque grain de fraise est un point de couleur posé un à un. La lumière, \
+venue d'en haut à gauche, modèle les fruits et les détache sur un fond sombre, \
+légèrement dégradé. Le rebord de pierre, vu de face, sert de scène et donne à la \
+composition sa stabilité. La palette se limite au rouge, au vert, au blanc et au brun."""
+details = [
+  "Les minuscules grains clairs peints un à un sur chaque fraise.",
+  "La fleur blanche du fraisier, au cœur jaune, dressée au-dessus des fruits.",
+  "Les fraises encore blanches, pas mûres, mêlées aux rouges.",
+  "La tige qui pend devant le rebord, avec un dernier fruit.",
+  "La signature sur la face du rebord, et la date 1705 en dessous.",
+]
+themes = ["nature morte", "fruits", "silence", "miniature", "zélande"]
+anecdote = """
+On ne sait presque rien de la vie de Coorte. L'une des rares traces d'archives date de \
+1695 : la guilde de Saint-Luc de Middelburg lui inflige une amende pour avoir vendu un \
+tableau sans en être membre."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.6
+
+[[oeuvres]]
+titre = "Le Moulin de Wijk bij Duurstede"
+artiste = "Jacob van Ruisdael"
+annee = "vers 1668–1670"
+image = "moulin-de-wijk.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:De_molen_bij_Wijk_bij_Duurstede,_SK-C-211.jpg"
+technique = "Huile sur toile, 83 × 101 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Un moulin sombre se dresse contre un ciel d'orage, au bord du Lek : le paysage hollandais devenu monument."
+description = """
+Le point de vue est très bas, au ras de l'eau. À droite, sur une berge renforcée de \
+pieux de bois, s'élève un grand moulin de pierre, rond et trapu, cerclé d'une \
+galerie ; ses ailes se découpent sur le ciel. Derrière lui apparaissent les toits de \
+la petite ville de Wijk bij Duurstede, le château de Duurstede, à gauche du moulin, et \
+une tour carrée. Sur le chemin, à droite, des femmes coiffées de blanc s'éloignent. À \
+gauche s'étend le Lek, large bras du Rhin, où glisse un voilier aux voiles blanches. \
+Au premier plan, des roseaux frémissent au bord de l'eau agitée. Au-dessus, un ciel \
+immense, chargé de nuages gris et blancs, occupe les deux tiers de la toile."""
+evocation = """
+Le moulin est l'emblème même de la Hollande, pays gagné sur l'eau grâce au travail des \
+hommes et à la force du vent. Ruisdael le place au premier rang et le fait paraître \
+gigantesque, comme un monument. Contre le ciel d'orage, la silhouette sombre exprime \
+une résistance tranquille ; la lumière qui perce les nuages promet l'éclaircie. On a \
+parfois cherché dans ses paysages un sens religieux ou moral ; on y voit surtout une \
+poésie grave, qui fit dire à Goethe que Ruisdael était un poète. Le tableau est \
+devenu, pour les Néerlandais, l'image de leur paysage national."""
+histoire = """
+Ruisdael, installé à Amsterdam depuis le milieu des années 1650, peint cette toile \
+vers 1668–1670. Wijk bij Duurstede est une petite ville au bord du Lek, au sud-est \
+d'Utrecht ; il s'y est rendu ou s'est servi de dessins, mais il a recomposé le site \
+pour donner au moulin plus de présence. Le tableau a appartenu au banquier \
+amsterdamois Adriaan van der Hoop, qui légua sa collection à la ville d'Amsterdam en \
+1854. Prêté depuis 1885 au Rijksmuseum, il est devenu l'un des paysages les plus \
+célèbres de la peinture hollandaise."""
+facture = """
+L'horizon, très bas, laisse au ciel l'essentiel de la toile. Le moulin, sombre, se \
+découpe contre les nuages clairs, puis la lumière touche une aile et la façade : \
+Ruisdael joue sans cesse de ces contrastes. La berge courbe, bordée de pieux, conduit \
+l'œil du premier plan jusqu'au moulin. La palette reste sobre, faite de gris, de bruns \
+et de verts, et les ombres des nuages font courir sur le paysage des zones de lumière \
+et d'ombre."""
+details = [
+  "Les femmes coiffées de blanc qui marchent sur le chemin, à droite.",
+  "Le voilier blanc sur le fleuve, à gauche.",
+  "Les pieux de bois qui retiennent la berge.",
+  "La galerie qui fait le tour du moulin, à mi-hauteur.",
+  "Le château de Duurstede, à demi caché derrière les arbres, à gauche du moulin.",
+]
+themes = ["paysage", "moulin", "ciel", "fleuve", "hollande"]
+anecdote = """
+Le moulin peint par Ruisdael a été démoli au début du XIXᵉ siècle ; on en voit encore \
+les fondations. On le confond souvent avec le moulin Rijn en Lek, toujours debout à \
+quelques rues de là."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "L'Allée de Middelharnis"
+artiste = "Meindert Hobbema"
+annee = "1689"
+image = "allee-de-middelharnis.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meindert_Hobbema_001.jpg"
+technique = "Huile sur toile, 103,5 × 141 cm"
+collection = "National Gallery, Londres"
+note = "Une route bordée de grands arbres élagués file tout droit vers le village de Middelharnis, sur l'île de Goeree-Overflakkee."
+description = """
+Une route de sable, creusée d'ornières, part du bas du tableau et file tout droit \
+jusqu'au centre de l'horizon. De chaque côté se dressent de hauts arbres très minces, \
+au tronc nu, qui ne gardent leur feuillage qu'à la cime. Un homme suivi d'un chien \
+descend l'allée vers nous. À gauche, au-delà des champs, le village de Middelharnis et \
+le clocher de son église ; à droite, une ferme aux toits rouges, devant laquelle un \
+couple bavarde. Au premier plan, à droite, un homme s'occupe des jeunes arbres d'une \
+pépinière alignés en rangs. Des fossés pleins d'eau bordent la route. Le ciel, \
+immense, est animé de nuages blancs."""
+evocation = """
+Le tableau est construit comme une leçon de perspective, avec son point de fuite \
+unique et sa symétrie presque parfaite, et pourtant il respire. C'est un paysage fait \
+par l'homme : une route tracée au cordeau, des arbres plantés et taillés, des champs \
+drainés, une pépinière. Hobbema célèbre ainsi l'ordre et la prospérité d'une campagne \
+domestiquée, bien loin des forêts sauvages de son maître Ruisdael. Le jardinier qui \
+soigne les jeunes arbres, au pied des grands, évoque le temps long : on plante pour \
+les générations à venir. Et le regard, guidé par la route, file jusqu'au village et \
+au-delà."""
+histoire = """
+Hobbema a été l'élève de Ruisdael à Amsterdam. Après son mariage en 1668, il occupe un \
+emploi municipal et peint beaucoup moins : ce tableau, daté de 1689, est une œuvre \
+tardive et exceptionnelle. Middelharnis est un village de l'île de Goeree-Overflakkee, \
+dans le sud de la Hollande. Peu considéré de son vivant, Hobbema devient au XIXᵉ \
+siècle l'un des peintres hollandais les plus recherchés par les collectionneurs \
+anglais. Le tableau appartient alors à l'homme d'État Robert Peel ; la National \
+Gallery l'acquiert en 1871 avec une partie de sa collection."""
+facture = """
+Les troncs verticaux, régulièrement espacés, rythment la toile comme les colonnes \
+d'une nef et guident l'œil vers le point de fuite. La route claire forme un grand \
+triangle lumineux au centre. Hobbema emploie une palette plus fraîche et plus claire \
+que dans ses tableaux de sous-bois : verts tendres, bleus, ocres pâles. La touche fine \
+des feuillages contraste avec les grandes masses du ciel, peintes plus largement."""
+details = [
+  "Le clocher de l'église de Middelharnis, à gauche de la route.",
+  "L'homme et son chien qui descendent l'allée vers nous.",
+  "À droite, l'homme qui soigne les jeunes arbres de la pépinière.",
+  "Les ornières creusées dans le sable par les roues des charrettes.",
+  "Le couple qui bavarde devant la ferme aux toits rouges.",
+]
+themes = ["paysage", "perspective", "arbres", "route", "ciel"]
+anecdote = """
+À partir de 1668, Hobbema est jaugeur de vins pour l'octroi d'Amsterdam : il mesure le \
+contenu des tonneaux importés pour calculer la taxe. Ce métier régulier explique que \
+ses tableaux se fassent rares dans la seconde moitié de sa vie."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Le Joyeux Buveur"
+artiste = "Frans Hals"
+annee = "vers 1628–1630"
+image = "joyeux-buveur.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Een_schutter_die_een_berkenmeier_vasthoudt,_bekend_als_%E2%80%98De_vrolijke_drinker%E2%80%99,_SK-A-135.jpg"
+technique = "Huile sur toile, 81 × 66,5 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Un homme au grand chapeau lève son verre et nous salue de la main : un instant saisi au vol, comme un instantané."
+description = """
+Un homme est vu à mi-corps, presque de face, devant un fond neutre gris beige. Il \
+porte un large chapeau noir à bords souples, une moustache relevée et une barbiche ; \
+ses joues sont rouges, ses yeux pétillent et sa bouche s'entrouvre comme s'il allait \
+parler. Un grand col de dentelle blanche couvre ses épaules, sur un pourpoint de \
+couleur ocre jaune serré par une ceinture ; un médaillon pend sur sa poitrine. D'une \
+main levée, les doigts écartés, il fait signe à quelqu'un, peut-être à nous. De \
+l'autre, il tient un grand verre à pied, un berkemeyer, rempli d'une boisson dorée. Le \
+monogramme du peintre apparaît sur le fond, à droite."""
+evocation = """
+Le tableau donne l'impression d'un instant pris sur le vif : le buveur vient de se \
+tourner vers nous, nous interpelle, nous invite peut-être à trinquer. On ignore qui il \
+est. Le Rijksmuseum l'intitule aujourd'hui « Un milicien tenant un berkemeyer, dit Le \
+Joyeux Buveur » : sa tenue évoque les gardes civiques de Haarlem, que Hals peignait en \
+grands portraits de groupe. Il ne s'agit pourtant pas d'un portrait officiel, mais \
+plutôt d'une figure de caractère, entre portrait et scène de genre. On y a parfois vu \
+une mise en garde contre l'ivresse ; on y voit surtout la gaieté et la chaleur d'une \
+société qui aime boire ensemble."""
+histoire = """
+Hals peint ce tableau à Haarlem vers 1628–1630, à l'époque où il multiplie les figures \
+rieuses : buveurs, musiciens, enfants. Ces toiles, faites peut-être pour le marché \
+plutôt que sur commande, ont fait sa réputation de peintre de la joie de vivre ; la \
+plus célèbre après celle-ci, la Malle Babbe, une vieille femme ricanant avec une \
+chope, est conservée à Berlin. Le tableau est entré au Rijksmuseum dès le début du \
+XIXᵉ siècle. Comme son auteur, longtemps jugé trop négligé, il a été réévalué au XIXᵉ \
+siècle, quand les réalistes et les impressionnistes ont reconnu en Hals un précurseur \
+de leur peinture libre."""
+facture = """
+Hals peint vite, directement, sans dessin préalable apparent. Le col de dentelle est \
+fait de hachures blanches en zigzag, la main levée de quelques coups de pinceau qui la \
+rendent floue, comme en mouvement. La palette est réduite au noir, à l'ocre, au blanc \
+et au rouge des joues, posés sur une préparation claire. À une époque où l'on aime les \
+surfaces lisses, sa touche visible, presque brutale, donne à la figure une vie \
+extraordinaire."""
+details = [
+  "La main levée, peinte en quelques coups de pinceau, comme en mouvement.",
+  "Le monogramme FH, à droite, à hauteur de l'épaule.",
+  "Le grand verre à pied, dont le contenu doré capte la lumière.",
+  "Le médaillon suspendu sur la poitrine.",
+  "Le col de dentelle, rendu par des hachures blanches en zigzag.",
+]
+themes = ["portrait", "convivialité", "boisson", "haarlem", "instantané"]
+anecdote = """
+En 1872, Manet va voir les Hals à Haarlem. L'année suivante, il expose au Salon Le Bon \
+Bock, un buveur à la pipe si proche de Hals que le peintre Alfred Stevens aurait \
+lancé : il boit de la bière de Haarlem."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Comme les vieux chantent, les jeunes piaillent"
+artiste = "Jan Steen"
+annee = "vers 1668–1670"
+image = "comme-les-vieux-chantent.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jan_Steen_-_%27As_the_Old_Sing,_So_Pipe_the_Young%27_-_742_-_Mauritshuis.jpg"
+technique = "Huile sur toile, 134 × 163 cm"
+collection = "Mauritshuis, La Haye"
+note = "Une fête de famille où les adultes boivent, fument et chantent, sous les yeux des enfants qui les imitent ; le père qui rit sous son chapeau noir est Jan Steen lui-même."
+description = """
+Une famille fait la fête dans une pièce éclairée par une fenêtre à gauche. Une jeune \
+femme en veste verte bordée de fourrure, renversée dans son fauteuil, tend son verre \
+qu'un serviteur remplit en levant haut une cruche. Derrière elle, un vieil homme en \
+bonnet de fourrure sourit. Au centre, une femme tient un nourrisson emmailloté. À \
+droite, une vieille femme en capuche sombre suit du doigt une feuille de chanson. \
+Derrière elle, un homme hilare sous un chapeau noir tend une longue pipe à un petit \
+garçon ; un adolescent coiffé de fourrure joue de la cornemuse, une fillette regarde à \
+la dérobée. Sur la table : raisins, citron, huîtres. Un perroquet rouge, une cage à \
+oiseaux, et un chien au premier plan."""
+evocation = """
+Le titre reprend un proverbe néerlandais, rendu populaire par les emblèmes du poète \
+Jacob Cats : les enfants reproduisent ce que font leurs parents. Le mot néerlandais \
+pijpen joue sur plusieurs sens, jouer de la flûte, fumer la pipe, et même boire. Ici, \
+la vieille femme chante, le père apprend à fumer à son fils, la mère boit, et les \
+petits suivent l'exemple. Le perroquet, l'oiseau qui répète, en donne la clé. Steen se \
+représente lui-même en mauvais exemple, avec une autodérision réjouissante : le \
+spectateur rit, puis se reconnaît. Jordaens avait déjà illustré le même proverbe en \
+1638, à Anvers : la sagesse populaire unit Flandre et Hollande."""
+histoire = """
+Steen a traité ce proverbe à plusieurs reprises ; le Mauritshuis en conserve une autre \
+version, plus petite et un peu antérieure. Celle-ci, la plus ambitieuse, date des \
+années où il vit à Haarlem, avant son retour à Leyde en 1670. On en perd la trace \
+jusqu'au début du XIXᵉ siècle : vendue en 1816 à Warmond, près de Leyde, elle entre \
+ensuite dans la collection Steengracht, à La Haye. À la dispersion de cette \
+collection, elle rejoint le Mauritshuis en 1913. Son attribution n'a jamais été mise \
+en doute."""
+facture = """
+Formé dans le goût de la peinture fine de Leyde, Steen sait rendre chaque matière : la \
+soie lavande de la jupe, la fourrure, l'étain, la peau du chien. Mais il peint ici \
+plus largement, sur une grande toile, et dispose ses personnages comme les acteurs \
+d'une scène de théâtre, en frise, avec des gestes très lisibles. Les couleurs vives, \
+vert, rose, rouge, éclatent dans la lumière de la fenêtre. Chaque visage a son \
+expression, et l'œil passe d'un épisode à l'autre comme dans une histoire."""
+details = [
+  "Le perroquet rouge sur son perchoir, en haut à gauche : l'oiseau qui répète.",
+  "Le filet de vin qui tombe de la cruche levée jusque dans le verre.",
+  "La longue pipe de terre que le père tend au petit garçon.",
+  "La feuille de chanson que la vieille femme suit du doigt.",
+  "Le chien qui lève la tête vers la table, au premier plan.",
+]
+themes = ["famille", "proverbe", "fête", "musique", "éducation"]
+anecdote = """
+En néerlandais, on dit encore d'une maison en désordre que c'est « un ménage de Jan \
+Steen », een huishouden van Jan Steen : la réputation de ses joyeuses pagailles \
+peintes a survécu plus de trois siècles."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.63
+
+[[oeuvres]]
+titre = "La Cour d'une maison à Delft"
+artiste = "Pieter de Hooch"
+annee = "1658"
+image = "cour-maison-delft.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Pieter_de_Hooch_-_The_Courtyard_of_a_House_in_Delft.jpg"
+technique = "Huile sur toile, 73,5 × 60 cm"
+collection = "National Gallery, Londres"
+note = "Une servante et une fillette dans une cour pavée, et, au bout du couloir, une femme qui regarde la rue : la paix d'une maison de Delft."
+description = """
+Le tableau est coupé en deux par un pilier de brique. À gauche, une arche aux claveaux \
+rouges et blancs ouvre sur un couloir qui traverse la maison ; au bout, une femme en \
+veste noire et jupe rouge, de dos, regarde la rue et les façades d'en face. Un volet \
+rouge est ouvert sur le mur. Au-dessus de l'arche, une plaque de pierre porte une \
+inscription datée de 1614. À droite, dans une petite cour pavée de briques, une \
+servante coiffée de blanc, un plat à la main, descend une marche en tenant une \
+fillette, qui lève les yeux vers elle. Une treille couvre un appentis de bois ; un \
+seau et un balai traînent sur les pavés. Le ciel est bleu, à peine nuageux."""
+evocation = """
+De Hooch fait d'un moment sans histoire un tableau entier : une cour propre, une \
+enfant guidée, une femme qui regarde dehors. On y lit les vertus domestiques que la \
+Hollande valorisait, l'ordre, la propreté, l'éducation, et le rôle central des femmes \
+dans la maison. Le seuil entre l'intérieur et la rue, entre le privé et le public, est \
+au cœur de la composition. La plaque au-dessus de l'arche vient du couvent \
+Saint-Jérôme de Delft ; elle invite le passant à la patience et à l'humilité, car il \
+faut d'abord descendre pour être élevé. On a vu dans cette inscription la clé morale \
+du tableau."""
+histoire = """
+De Hooch vit à Delft depuis le début des années 1650 ; il entre à la guilde de \
+Saint-Luc de la ville en 1655. En 1658, il peint une série de cours et de maisons \
+ensoleillées, dans les mêmes années où son contemporain Vermeer peint La Ruelle : les \
+historiens discutent encore de qui influença l'autre. La plaque de 1614 existait bel \
+et bien : elle surmontait l'entrée de l'ancien couvent. Le tableau a appartenu à \
+l'homme d'État britannique Robert Peel ; la National Gallery l'acquiert en 1871 avec \
+une partie de sa collection."""
+facture = """
+De Hooch construit sa scène avec une rigueur d'architecte. Le pilier central sépare \
+deux espaces, et chacun s'ouvre sur un autre plus lointain : le couloir mène à la rue, \
+la cour à l'appentis. Les lignes des briques et des pavés suivent une perspective \
+exacte. La lumière de l'après-midi réchauffe les rouges et les jaunes de la brique, \
+fait briller la chaux et découpe des ombres nettes. Les figures, petites, s'intègrent \
+à l'architecture sans la dominer."""
+details = [
+  "La plaque de pierre au-dessus de l'arche, datée de 1614.",
+  "Les initiales P.D.H. et la date 1658, au pied du pilier de gauche.",
+  "La femme de dos au bout du couloir, qui regarde la rue.",
+  "Le balai et le seau de bois posés sur les pavés.",
+  "La treille qui couvre l'appentis, à droite.",
+]
+themes = ["vie quotidienne", "delft", "maison", "lumière", "perspective"]
+anecdote = """
+Les Néerlandais ont un mot pour ces échappées qui ouvrent une pièce sur une autre, \
+puis sur la rue : doorkijkje, la vue à travers. De Hooch en a fait sa signature, au \
+point que le mot accompagne presque toujours son nom."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 0.75
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Carel Fabritius"
+vie = "Middenbeemster (Hollande), baptisé le 27 février 1622 – Delft, 12 octobre 1654"
+biographie = """
+Fils d'un instituteur de la Beemster, un polder du nord d'Amsterdam, Carel Pietersz \
+commence par travailler comme charpentier : le nom latin de Fabritius, qu'il adopte, \
+viendrait de faber, l'artisan. Au début des années 1640, il entre dans l'atelier de \
+Rembrandt à Amsterdam, dont il devient l'un des élèves les plus doués. Sa jeune femme \
+meurt en 1643 ; il retourne quelque temps dans son village natal. Vers 1650, il \
+s'installe à Delft, se remarie et entre en 1652 à la guilde de Saint-Luc. Il y peint \
+des portraits, des vues de la ville et des trompe-l'œil, et participe au renouveau de \
+la peinture de Delft, aux côtés de Pieter de Hooch et du jeune Vermeer. Le 12 octobre \
+1654, l'explosion de la poudrière de la ville détruit sa maison ; il meurt de ses \
+blessures à trente-deux ans. Une grande partie de son œuvre a disparu : on lui \
+attribue aujourd'hui moins d'une quinzaine de tableaux."""
+style = """
+Formé par Rembrandt, Fabritius renverse la leçon de son maître : il place des figures \
+sombres sur des fonds clairs et lumineux. Sa touche est libre, épaisse, et il \
+s'intéresse à la perspective et aux illusions d'optique. Ses recherches sur la lumière \
+du jour ont sans doute compté pour les peintres de Delft, à commencer par Vermeer, \
+dont on a souvent fait son héritier."""
+
+[[artistes]]
+nom = "Jacob Jordaens"
+vie = "Anvers, 19 mai 1593 – Anvers, 18 octobre 1678"
+biographie = """
+Fils d'un marchand de toiles anversois, Jacob Jordaens se forme auprès d'Adam van \
+Noort, qui fut aussi l'un des maîtres de Rubens. Reçu maître à la guilde de Saint-Luc \
+en 1615 comme peintre à la détrempe, il épouse l'année suivante Catharina, la fille de \
+son maître. Il ne fait jamais le voyage d'Italie et connaît l'art italien par les \
+gravures et par les tableaux des collections d'Anvers. Il collabore avec Rubens, \
+notamment pour des décors et des cartons de tapisserie, et dirige un atelier très \
+actif. Après la mort de Rubens et de Van Dyck, en 1640 et 1641, il devient le premier \
+peintre de la ville. Il travaille pour l'Église comme pour les cours étrangères : vers \
+1651–1652, il peint pour la veuve du stathouder Frédéric-Henri le grand Triomphe du \
+prince, dans la salle d'Orange du palais Huis ten Bosch, à La Haye. Dans les années \
+1650, il se convertit au calvinisme. Il meurt en 1678, et repose à Putte, juste de \
+l'autre côté de la frontière, dans un cimetière protestant."""
+style = """
+Jordaens est le peintre de la Flandre charnelle et joyeuse : figures robustes pressées \
+au premier plan, couleurs chaudes, lumière dorée, touche grasse. Il a appris de Rubens \
+l'élan baroque, mais ses modèles sont plus populaires, et ses fêtes, comme Le Roi boit \
+ou Comme les vieux chantent, mêlent l'éclat de la vie à la morale des proverbes."""
+
+[[artistes]]
+nom = "Antoine van Dyck"
+vie = "Anvers, 22 mars 1599 – Londres, 9 décembre 1641"
+biographie = """
+Fils d'un riche marchand de soieries d'Anvers, Antoine van Dyck est un enfant \
+prodige : il entre en apprentissage à dix ans et peint seul dès l'adolescence. Vers \
+1617–1620, il travaille dans l'atelier de Rubens, qui le tient pour son meilleur \
+collaborateur. En 1620, il fait un premier séjour à Londres, puis part pour l'Italie, \
+où il reste de 1621 à 1627 : il y étudie Titien et peint, à Gênes, les portraits de \
+l'aristocratie. De retour à Anvers, il devient peintre de l'infante Isabelle, \
+gouvernante des Pays-Bas espagnols, et peint de grands retables. En 1632, Charles Iᵉʳ \
+l'appelle à Londres, le fait chevalier et lui donne le titre de peintre principal de \
+Sa Majesté. Il y peint le roi, la reine Henriette-Marie, leurs enfants et toute la \
+cour. Vers 1640, il épouse Mary Ruthven, dame d'honneur de la reine. Épuisé et malade, \
+il meurt à Londres en 1641, quelques jours après la naissance de sa fille, et est \
+enterré dans l'ancienne cathédrale Saint-Paul."""
+style = """
+Van Dyck a inventé le portrait aristocratique moderne : des figures élancées, des \
+poses naturelles et élégantes, des mains fines, des étoffes de soie qui brillent, des \
+fonds de paysage ou de colonnes. Il donne à ses modèles une dignité sans raideur. Les \
+portraitistes anglais du XVIIIᵉ siècle, Gainsborough et Reynolds en tête, se sont \
+réclamés de lui."""
+
+[[artistes]]
+nom = "Clara Peeters"
+vie = "Anvers (?), vers 1588 – après 1621"
+biographie = """
+On ne sait presque rien de la vie de Clara Peeters, sinon ce que disent ses tableaux. \
+Elle est sans doute née à Anvers vers 1588 ; les archives de la ville mentionnent \
+plusieurs femmes de ce nom, sans qu'on puisse savoir laquelle est la peintre. Ses \
+premiers tableaux datés, de 1607 et 1608, alors qu'elle n'a pas vingt ans, sont des \
+natures mortes de repas et de fleurs, parmi les plus anciennes du genre en Europe. \
+Elle peint des tables chargées de poissons, de gibier, de fromages, de pâtisseries, de \
+coupes d'orfèvrerie, avec une précision exceptionnelle. Sa trace se perd au début des \
+années 1620, après son dernier tableau daté connu. On lui attribue aujourd'hui \
+quelques dizaines de tableaux, dont plusieurs au musée du Prado, à Madrid, entrés dans \
+les collections royales espagnoles dès le XVIIᵉ siècle. Elle signait souvent ses \
+œuvres, et a glissé son propre reflet dans plusieurs d'entre elles."""
+style = """
+Clara Peeters dispose ses objets sur une table vue d'un peu haut, devant un fond \
+sombre, chacun bien distinct des autres. Sa touche minutieuse rend les matières avec \
+une vérité saisissante : croûte de fromage, écailles de poisson, métal repoussé, \
+verre. Elle a contribué à fonder la nature morte de repas, que les peintres de Haarlem \
+ont ensuite développée."""
+
+[[artistes]]
+nom = "Pieter Claesz"
+vie = "Berchem (près d'Anvers), vers 1597 – Haarlem, inhumé le 1ᵉʳ janvier 1661"
+biographie = """
+Pieter Claesz naît vers 1597 à Berchem, près d'Anvers, dans les Pays-Bas espagnols. On \
+ignore tout de sa formation, mais ses premières œuvres rappellent les natures mortes \
+flamandes de Clara Peeters ou d'Osias Beert. Au début des années 1620, il s'installe à \
+Haarlem, en Hollande, où il passe le reste de sa vie. Il y devient, avec Willem Claesz \
+Heda, le maître de la nature morte dite monochrome : quelques objets ordinaires, un \
+pichet, un verre, un hareng, une miche de pain, posés sur une nappe dans une lumière \
+grise. Il peint aussi des vanités, en particulier vers 1630. Très productif, il vend \
+ses tableaux à une clientèle bourgeoise. Son fils, Nicolaes Berchem, deviendra l'un \
+des paysagistes les plus célèbres de son temps. Pieter Claesz meurt à Haarlem à la fin \
+de 1660 et est inhumé le 1ᵉʳ janvier 1661."""
+style = """
+Claesz réduit la nature morte à l'essentiel : peu d'objets, une palette de bruns, de \
+gris et d'ocres, une lumière douce venue de la fenêtre. Ce style tonal, qui unifie la \
+scène dans une même atmosphère, rompt avec l'accumulation colorée des Flamands. Il \
+donne aux objets les plus modestes une présence grave et silencieuse."""
+
+[[artistes]]
+nom = "Willem Claesz Heda"
+vie = "Haarlem, vers 1594 – Haarlem, vers 1680"
+biographie = """
+Willem Claesz Heda naît à Haarlem vers 1594 et y passe toute sa vie. Ses premières \
+œuvres connues, au début des années 1620, sont des vanités ; il se spécialise ensuite \
+dans les tables servies, que l'on appelle des banketjes, petits banquets, ou des \
+ontbijtjes, petits déjeuners. Dès 1628, l'historien Samuel Ampzing le cite parmi les \
+peintres qui font l'honneur de la ville. Avec Pieter Claesz, il porte à sa perfection \
+la nature morte monochrome des années 1630 : une nappe blanche, de l'argenterie, des \
+verres, des huîtres et un citron, dans une lumière argentée. Membre respecté de la \
+guilde de Saint-Luc, dont il est plusieurs fois l'un des dirigeants, il forme des \
+élèves, dont son fils Gerrit Willemsz Heda, qui peint dans sa manière. Vers 1640, ses \
+compositions deviennent plus grandes et plus riches. Il meurt à Haarlem vers 1680, à \
+un âge très avancé."""
+style = """
+Heda est le peintre des reflets : étain, argent, or et verre, rendus avec une \
+délicatesse incomparable dans une gamme presque monochrome de gris et de blancs. Ses \
+tables en désordre, où une coupe est renversée et un citron à demi pelé, donnent \
+l'impression d'un repas suspendu. Sa sobriété élégante a fait de lui l'un des maîtres \
+de la nature morte européenne."""
+
+[[artistes]]
+nom = "Jan Davidsz de Heem"
+vie = "Utrecht, 1606 – Anvers, 1683 ou 1684"
+biographie = """
+Jan Davidsz de Heem naît à Utrecht en 1606, fils d'un musicien. Il se forme sans doute \
+dans sa ville natale, dans l'entourage du peintre de fleurs Balthasar van der Ast. Au \
+milieu des années 1620, il s'installe à Leyde, où il peint des natures mortes de \
+livres et des vanités dans des tons sourds. Vers 1635–1636, il part pour Anvers et y \
+devient bourgeois : selon le biographe Joachim von Sandrart, il aurait choisi la ville \
+parce qu'on y trouvait les fruits rares et les plus beaux objets en abondance. Au \
+contact de la peinture flamande, sa palette s'éclaire et ses compositions deviennent \
+somptueuses : grandes tables d'apparat, guirlandes et bouquets. Il retourne à Utrecht \
+à la fin des années 1660, mais l'invasion française de 1672 le ramène à Anvers, où il \
+meurt en 1683 ou 1684. Ses fils, dont Cornelis de Heem, et de nombreux élèves ont \
+prolongé sa manière."""
+style = """
+De Heem réunit la précision hollandaise et la splendeur flamande. Ses bouquets et ses \
+tables d'apparat, riches en couleurs éclatantes sur fond sombre, sont composés avec un \
+sens du mouvement baroque. Il a été le modèle des peintres de fleurs de la fin du \
+XVIIᵉ siècle et du XVIIIᵉ, en Flandre comme en Hollande."""
+
+[[artistes]]
+nom = "Adriaen Coorte"
+vie = "Middelburg (?), vers 1665 – Middelburg (?), après 1707"
+biographie = """
+On ne connaît ni la date de naissance ni la date de mort d'Adriaen Coorte, né sans \
+doute à Middelburg ou dans ses environs vers 1665. Vers 1680, il semble avoir appris \
+son métier à Amsterdam auprès de Melchior d'Hondecoeter, le peintre d'oiseaux, dont on \
+retrouve quelques motifs dans ses premières œuvres. De retour à Middelburg, en \
+Zélande, il y travaille le reste de sa vie. Les archives le mentionnent en 1695, quand \
+la guilde de Saint-Luc le met à l'amende. Il peint presque exclusivement de petits \
+tableaux, souvent à l'huile sur papier collé ensuite sur bois : quelques fraises, des \
+asperges, des groseilles, des coquillages, des nèfles, sur un rebord de pierre. Ses \
+œuvres signées vont de 1683 à 1707 ; on en a catalogué environ quatre-vingts. Oublié \
+pendant près de deux siècles et demi, il est redécouvert à partir de 1952 par \
+l'historien Laurens J. Bol, qui organise une exposition à Dordrecht en 1958 puis \
+publie son catalogue en 1977."""
+style = """
+Coorte est le poète de la nature morte minimale : quelques fruits ou légumes, un \
+rebord de pierre, un fond sombre et une lumière venue d'en haut. Ses petits formats, \
+d'une simplicité presque abstraite, dégagent un silence méditatif. Redécouverts au XXᵉ \
+siècle, ils ont été rapprochés de la peinture moderne pour leur dépouillement."""
+
+[[artistes]]
+nom = "Jacob van Ruisdael"
+vie = "Haarlem, 1628 ou 1629 – Amsterdam, mars 1682"
+biographie = """
+Jacob van Ruisdael naît à Haarlem en 1628 ou 1629. Son père, Isaack, est encadreur et \
+marchand de tableaux, et son oncle, Salomon van Ruysdael, est l'un des grands \
+paysagistes de la ville ; c'est probablement auprès d'eux qu'il se forme. Dès l'âge de \
+dix-huit ans, il signe des paysages d'une étonnante maturité. Il entre à la guilde de \
+Saint-Luc de Haarlem en 1648. Au début des années 1650, il voyage vers la frontière \
+allemande, où il découvre des collines boisées et des moulins à eau. Vers 1656, il \
+s'installe à Amsterdam, où il passe le reste de sa vie. Il y peint des forêts, des \
+cascades inspirées de la Scandinavie, des plages, des vues de Haarlem et des moulins. \
+Il forme quelques élèves, dont Meindert Hobbema. Il ne se marie pas. Il meurt à \
+Amsterdam en 1682 et est enterré dans l'église Saint-Bavon de Haarlem, sa ville \
+natale."""
+style = """
+Ruisdael est le plus grand paysagiste hollandais. Ses ciels immenses, ses arbres \
+tourmentés, ses moulins et ses cascades donnent à la nature une grandeur dramatique et \
+souvent mélancolique. Ses compositions solides, ses contrastes de lumière et sa \
+palette sobre ont nourri le paysage romantique, de Constable à Caspar David Friedrich."""
+
+[[artistes]]
+nom = "Meindert Hobbema"
+vie = "Amsterdam, baptisé le 31 octobre 1638 – Amsterdam, 7 décembre 1709"
+biographie = """
+Né à Amsterdam en 1638, Meindert Lubbertsz prend le nom de Hobbema dès sa jeunesse. \
+Vers 1657, il entre dans l'atelier de Jacob van Ruisdael, qui déclarera plus tard \
+qu'il l'a servi et a appris auprès de lui pendant quelques années : il est son seul \
+élève connu. Ses premières œuvres reprennent les sujets de son maître, des sous-bois, \
+des chemins, des moulins à eau, dans une lumière plus claire. Au cours des années \
+1660, il peint ses meilleurs tableaux de forêts et de fermes, très appréciés des \
+amateurs d'Amsterdam. En 1668, il épouse Eeltje Vinck, cuisinière au service d'un \
+bourgmestre d'Amsterdam ; Ruisdael est témoin du mariage. La même année, il obtient un \
+emploi à l'octroi de la ville, qu'il conserve jusqu'à sa mort, et il peint dès lors \
+beaucoup moins. Il meurt pauvre à Amsterdam en 1709, et il est enterré dans une tombe \
+de l'assistance publique."""
+style = """
+Hobbema peint des paysages paisibles et ensoleillés : chemins forestiers, moulins à \
+eau, fermes à l'orée des bois, où la lumière filtre à travers les feuillages. Moins \
+dramatique que Ruisdael, il préfère l'harmonie et la clarté. Son Allée de \
+Middelharnis, à la perspective rigoureuse, est l'une des images les plus célèbres de \
+la campagne hollandaise."""
+
+[[artistes]]
+nom = "Frans Hals"
+vie = "Anvers, vers 1582–1583 – Haarlem, inhumé le 1ᵉʳ septembre 1666"
+biographie = """
+Frans Hals naît à Anvers vers 1582–1583, dans une famille de drapiers. Après la prise \
+de la ville par les Espagnols en 1585, ses parents s'installent à Haarlem, en \
+Hollande. Il s'y forme, peut-être auprès de Karel van Mander, et entre à la guilde de \
+Saint-Luc en 1610. En 1616, son grand portrait de groupe des officiers de la garde \
+civique de Saint-Georges le rend célèbre. Il peint dès lors les notables de Haarlem, \
+les gardes civiques, mais aussi des figures populaires, buveurs, musiciens, enfants \
+rieurs. Marié deux fois, père de nombreux enfants, il a souvent des dettes. Dans sa \
+vieillesse, la ville lui verse une pension. Vers 1664, plus qu'octogénaire, il peint \
+les régents et les régentes de l'hospice des vieillards de Haarlem, chefs-d'œuvre \
+d'une sobriété saisissante. Il meurt en 1666. Oublié au XVIIIᵉ siècle, il est \
+redécouvert au XIXᵉ ; son ancien hospice abrite aujourd'hui le musée Frans Hals."""
+style = """
+Hals est le peintre de l'instant : ses modèles rient, parlent, se retournent, saisis \
+par une touche rapide et visible, posée sans retouche. Ses noirs, ses blancs et ses \
+accords sobres ont fasciné les peintres du XIXᵉ siècle, de Courbet à Manet et à Van \
+Gogh, qui voyaient en lui un précurseur de la peinture moderne."""
+
+[[artistes]]
+nom = "Jan Steen"
+vie = "Leyde, vers 1626 – Leyde, inhumé le 3 février 1679"
+biographie = """
+Fils d'un brasseur catholique de Leyde, Jan Steen naît vers 1626. Il s'inscrit à \
+l'université de la ville en 1646, puis se forme à la peinture, selon les sources \
+anciennes auprès de Nicolaus Knüpfer à Utrecht, d'Adriaen van Ostade à Haarlem et de \
+Jan van Goyen à La Haye. En 1648, il est l'un des fondateurs de la guilde de Saint-Luc \
+de Leyde. L'année suivante, il épouse Margriet van Goyen, la fille de son maître. Il \
+mène une vie itinérante : La Haye, Delft, où il loue une brasserie, Warmond, puis \
+Haarlem de 1661 à 1670. De retour à Leyde, il obtient en 1672 l'autorisation d'ouvrir \
+une auberge. Veuf, il se remarie en 1673. Très productif, il peint des scènes de \
+taverne, des fêtes de famille, des médecins au chevet de jeunes femmes, des sujets \
+bibliques et mythologiques. Il meurt à Leyde en 1679. Sa réputation de joyeux buveur, \
+nourrie par ses propres tableaux, est en grande partie une légende."""
+style = """
+Steen est le grand conteur de la peinture hollandaise. Ses scènes animées, peuplées de \
+personnages expressifs, illustrent souvent des proverbes et mêlent comédie et morale, \
+à la manière du théâtre. Il se met volontiers en scène lui-même. Sa technique, héritée \
+de la peinture fine de Leyde, sait aussi se faire large et rapide."""
+
+[[artistes]]
+nom = "Pieter de Hooch"
+vie = "Rotterdam, baptisé le 20 décembre 1629 – Amsterdam, inhumé le 24 mars 1684"
+biographie = """
+Fils d'un maçon et d'une sage-femme, Pieter de Hooch naît à Rotterdam en 1629. Il se \
+forme à Haarlem, selon un biographe ancien auprès du paysagiste Nicolaes Berchem. En \
+1652, il est à Delft, où il travaille aussi comme serviteur d'un riche marchand de \
+toiles, qui possède plusieurs de ses tableaux. Il épouse en 1654 Jannetje van der \
+Burch et entre l'année suivante à la guilde de Saint-Luc de Delft. C'est là, entre \
+1655 et 1660 environ, qu'il peint ses chefs-d'œuvre : des cours, des intérieurs \
+baignés de lumière, des mères et des servantes au travail, dans le même milieu que \
+Vermeer. Vers 1660–1661, il s'installe à Amsterdam, où sa peinture devient plus \
+luxueuse, avec des intérieurs patriciens et des personnages élégants. Ses dernières \
+années sont mal connues : il meurt en 1684 à l'asile des fous d'Amsterdam. Au XIXᵉ \
+siècle, plusieurs tableaux de Vermeer ont été vendus sous son nom, signe de la \
+proximité de leurs deux arts."""
+style = """
+De Hooch est le peintre de la maison hollandaise : cours pavées, vestibules, pièces en \
+enfilade qui s'ouvrent les unes sur les autres. Sa perspective rigoureuse, sa lumière \
+chaude et ses figures calmes donnent à la vie domestique une sérénité exemplaire. Il \
+partage avec Vermeer le goût de la lumière du jour."""
