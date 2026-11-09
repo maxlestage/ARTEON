@@ -110,6 +110,11 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             write(path, prefix_urls(&res.text(), &base).as_bytes())?;
         }
     }
+    // Le catalogue de l'application iPad : ses chemins sont relatifs, il est écrit tel quel.
+    let res = client.get("/catalogue.json").await;
+    if res.status() == 200 {
+        write("/catalogue.json", res.text().as_bytes())?;
+    }
     // Les fichiers sont servis tels quels : pas de traitement Jekyll sur GitHub Pages.
     write(".nojekyll", b"")?;
     Ok(written)

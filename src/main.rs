@@ -11,6 +11,7 @@ use arteon::artworks::{Artist, Artwork, EXHIBITIONS, Exhibition, Notice, Sculptu
 use arteon::tour::tour_duration;
 use arteon::{gallery_scene, showcase_scene};
 
+mod catalogue;
 mod export;
 mod style;
 
@@ -1819,6 +1820,17 @@ fn app() -> App {
     app.get("/", home);
     app.get("/ajouter", add_artwork);
     app.get("/credits", credits);
+    // Le catalogue complet, pour l'application iPad (flutter/).
+    let catalogue_json = std::sync::Arc::new(catalogue::catalogue_json());
+    app.get("/catalogue.json", move |_req: Request| {
+        let body = catalogue_json.clone();
+        async move {
+            Response::new()
+                .content_type("application/json; charset=utf-8")
+                .header("access-control-allow-origin", "*")
+                .send(body.as_str().to_owned())
+        }
+    });
     for ex in EXHIBITIONS {
         app.get(&format!("/{}", ex.slug), move |req: Request| {
             exhibition_home(req, ex)
