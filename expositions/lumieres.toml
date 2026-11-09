@@ -1,0 +1,946 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « LUMIÈRES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/lumieres/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /lumieres.
+#
+#  Une exposition à plusieurs peintres : chaque œuvre précise son « artiste ».
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 60
+nom_court = "Lumières"
+mouvement = "Rococo et néoclassicisme"
+couleur = "#8e3b4f"
+titre = "Le siècle des Lumières, du rococo au néoclassicisme"
+artiste = "Watteau, Boucher, Fragonard, Chardin, David, Ingres…"
+dates = "1717–1814"
+accroche = "Exposition virtuelle · Wallace Collection, Londres"
+introduction = """
+Au XVIIIᵉ siècle, la peinture passe de la grâce du rococo, ses fêtes galantes, ses nus \
+nacrés et ses jeux amoureux, à la rigueur du néoclassicisme, qui exalte la vertu \
+antique à la veille de la Révolution. Dix toiles suivent ce basculement, de Watteau à \
+Fragonard, de Chardin à Canaletto, Gainsborough et Vigée Le Brun, jusqu'à David et \
+Ingres. Le bâtiment s'inspire de la Wallace Collection à Londres, la demeure \
+d'Hertford House, où des salons aux murs colorés s'ordonnent autour d'une cour \
+couverte d'une verrière. La dernière salle, haute et solennelle, évoque la salle Daru \
+du Louvre et ses très grands formats de David."""
+vitrine = "escarpolette.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la Wallace Collection à Londres (Hertford House) : une cour couverte
+# d'une verrière au centre, et autour d'elle des salons aux murs de couleur, rose
+# pour les fêtes galantes à l'ouest, vert pâle pour les portraits et les vues à
+# l'est. Au nord, une grande salle haute aux murs rouge pâle, comme la salle Daru
+# du Louvre, réservée au néoclassicisme. x et z : le centre de la salle (x vers
+# l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "La cour couverte"
+theme = "Sous la verrière, le cœur de la maison : les fêtes galantes à l'ouest, les portraits et les vues à l'est, la grande salle néoclassique au nord."
+murs = "#ece5d6"
+x = 0
+z = 0
+largeur = 16
+profondeur = 16
+hauteur = 10
+portes = ["sud", "ouest", "est", "nord"]
+
+[[salles]]
+nom = "Salon I · Les fêtes galantes"
+theme = "1717–1768 : Watteau, Boucher et Fragonard, l'amour, la mythologie et les jardins du rococo."
+murs = "#efd8d0"
+x = -14
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Salon II · La vie et les visages"
+theme = "1725–1789 : la nature morte de Chardin, la Venise de Canaletto, les portraits de Gainsborough et de Vigée Le Brun."
+murs = "#e2e6d2"
+x = 14
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "La grande salle néoclassique"
+theme = "1785–1814 : David et Ingres, la vertu antique, la Révolution et la ligne pure, sous le haut plafond d'une salle à la manière de la salle Daru."
+murs = "#e6c9bf"
+x = 0
+z = -14
+largeur = 23.4
+profondeur = 12
+hauteur = 10
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Pèlerinage à l'île de Cythère"
+artiste = "Antoine Watteau"
+annee = "1717"
+image = "pelerinage-cythere.jpg"
+technique = "Huile sur toile, 129 × 194 cm"
+collection = "Musée du Louvre, Paris"
+note = "Le morceau de réception de Watteau à l'Académie royale, pour lequel on inventa une catégorie nouvelle : la « fête galante »."
+description = """
+Au bord d'un lac, sous de grands arbres dorés, une dizaine de couples en habits de \
+soie s'apprêtent à quitter une colline. À droite, au pied d'un buste de Vénus \
+enguirlandé de roses, un couple assis s'attarde encore : l'homme parle à l'oreille de \
+sa compagne, qui baisse les yeux sur son éventail, tandis qu'un petit Amour assis sur \
+un carquois la tire par la jupe. Un peu plus loin, un homme aide une femme à se \
+relever ; puis un pèlerin, bâton à la main, entraîne sa compagne en robe jaune, qui \
+jette un dernier regard en arrière. Les couples descendent ainsi vers la rive, à \
+gauche, où attend une barque dorée entourée d'une nuée d'Amours. Au fond, des \
+montagnes bleutées se fondent dans un ciel nacré."""
+evocation = """
+Le sujet vient du théâtre : dans Les Trois Cousines de Dancourt, jouée en 1700, des \
+jeunes gens partent en pèlerinage vers Cythère, l'île de Vénus, pour y trouver \
+l'amour. Watteau en fait une rêverie. Depuis un article célèbre de l'historien Michael \
+Levey, on lit souvent la scène comme un départ : les pèlerins ont honoré Vénus et \
+quittent l'île à regret, d'où le regard en arrière de la jeune femme. Les trois \
+couples de droite deviendraient alors les moments successifs d'un même récit, de la \
+persuasion au départ. Sous l'élégance perce une mélancolie : le plaisir est fugitif, \
+la lumière est celle d'une fin de journée. Après l'austérité des dernières années de \
+Louis XIV, mort en 1715, le tableau incarne le goût nouveau de la Régence pour \
+l'intimité, la musique et le jeu amoureux."""
+histoire = """
+Agréé par l'Académie royale de peinture et de sculpture en 1712, Watteau devait livrer \
+un morceau de réception dont on lui laissait choisir le sujet. Il le fait attendre \
+cinq ans : la toile n'est présentée que le 28 août 1717. L'Académie la reçoit, mais \
+dans le procès-verbal, le titre « le pèlerinage à l'isle de Cithère » est barré et \
+remplacé par « une feste galante » : on crée pour Watteau une catégorie qui n'existait \
+pas. Le succès est tel que le peintre en réalise peu après une seconde version, plus \
+chargée, acquise plus tard par Frédéric II de Prusse et conservée aujourd'hui au \
+château de Charlottenburg, à Berlin. La toile de 1717 reste dans les collections de \
+l'Académie, nationalisées à la Révolution, et entre ainsi au Louvre."""
+facture = """
+Watteau peint vite, en couches fines et transparentes, d'une touche légère et \
+frémissante héritée de Rubens, qu'il avait étudié au palais du Luxembourg. Les \
+couleurs chatoyantes des soieries, roses, jaunes, bleues, se détachent sur un paysage \
+d'ocres et de verts estompés. La composition suit une diagonale qui descend de droite \
+à gauche, du buste de Vénus jusqu'à la barque, et la frise des figures dessine une \
+ligne ondulante. Les personnages viennent de ses carnets : Watteau dessinait sans \
+cesse, à la sanguine et à la pierre noire, et puisait dans ces feuilles pour composer \
+ses tableaux."""
+details = [
+  "À droite, le buste de Vénus couronné de roses, à demi caché dans le feuillage.",
+  "Le petit Amour assis sur un carquois, qui tire la jupe de la jeune femme à l'éventail.",
+  "Le bâton de pèlerin et la courte pèlerine de l'homme en rose, au centre.",
+  "La jeune femme en robe jaune, qui se retourne une dernière fois vers la colline.",
+  "À gauche, la barque à la proue dorée et la ronde des Amours qui s'élève dans le ciel.",
+]
+themes = ["fête galante", "amour", "voyage", "mélancolie", "théâtre"]
+anecdote = """
+Selon une anecdote souvent rapportée, les élèves de David, au début du XIXᵉ siècle, \
+jugeaient la peinture de Watteau si frivole qu'ils s'amusaient à bombarder ce tableau \
+de boulettes de mie de pain."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.94
+
+[[oeuvres]]
+titre = "Diane sortant du bain"
+artiste = "François Boucher"
+annee = "1742"
+image = "diane-bain.jpg"
+technique = "Huile sur toile, 57 × 73 cm"
+collection = "Musée du Louvre, Paris"
+note = "Présentée au Salon de 1742 : la déesse chasseresse, au repos après le bain, devient un prétexte à célébrer la chair nacrée."
+description = """
+Dans une clairière, au bord d'un ruisseau, deux jeunes femmes nues se reposent sur des \
+étoffes jetées dans l'herbe. Assise à droite sur une draperie bleue, Diane, \
+reconnaissable au petit croissant de lune posé dans ses cheveux, croise les jambes et \
+regarde son pied ; un rang de perles glisse entre ses doigts. Près d'elle, une \
+compagne agenouillée, un ruban bleu dans les cheveux, se penche vers le sol. Autour \
+d'elles, les attributs de la chasse : un carquois rouge rempli de flèches en bas à \
+gauche, et à droite un arc et le gibier abattu, des oiseaux et un lièvre. À gauche, \
+deux chiens de chasse s'approchent de l'eau. Les roseaux, les arbres et un coin de \
+ciel pâle forment un fond de verdure bleutée."""
+evocation = """
+Diane est la déesse vierge de la chasse, farouche et redoutée : dans la mythologie, le \
+chasseur Actéon, qui l'avait surprise au bain, fut changé en cerf et dévoré par ses \
+propres chiens. Boucher ne retient rien de cette menace. Il ne garde du mythe que \
+quelques attributs et peint un moment de repos intime, où le spectateur devient un \
+Actéon sans danger. Le sujet antique sert de prétexte au nu, que la clientèle \
+aristocratique apprécie dans ses cabinets et ses petits appartements. On y a vu \
+l'essence même du goût rococo : la grâce plutôt que la grandeur, le plaisir des yeux \
+plutôt que la leçon morale. C'est précisément ce que lui reprochera Diderot, qui \
+dénonce dans ses Salons des années 1760 l'artifice et la mièvrerie de Boucher."""
+histoire = """
+Boucher expose le tableau au Salon de 1742, au Louvre, alors qu'il est déjà l'un des \
+peintres les plus recherchés de Paris. Reçu à l'Académie royale en 1734, il travaille \
+aussi pour la manufacture de tapisseries de Beauvais et pour les résidences royales ; \
+quelques années plus tard, il deviendra le peintre favori de Madame de Pompadour. Le \
+petit format de la toile convient à un amateur privé, et le tableau passe ensuite de \
+collection en collection. Après la Révolution, le goût change : le néoclassicisme \
+rejette Boucher, jugé frivole, et ses œuvres perdent leur valeur. Le Louvre n'acquiert \
+cette toile qu'au milieu du XIXᵉ siècle, au moment où les amateurs redécouvrent l'art \
+du XVIIIᵉ siècle. Elle est devenue l'œuvre la plus célèbre du peintre."""
+facture = """
+Boucher travaille la chair en tons nacrés, blancs rosés et ivoire, qu'il fait \
+ressortir par contraste contre le bleu soutenu de la draperie et les verts sombres du \
+fond. La lumière vient de la gauche et glisse sur les corps sans ombres dures. Le \
+dessin est souple, tout en courbes : la ligne des jambes croisées, l'arrondi des \
+épaules, les plis de l'étoffe. Les accessoires, gibier, flèches, perles, sont peints \
+avec la précision d'une nature morte. Le paysage, lui, est traité plus librement, \
+presque comme un décor de théâtre, à la manière des modèles de tapisserie que Boucher \
+dessinait pour Beauvais."""
+details = [
+  "Le petit croissant de lune, emblème de Diane, piqué dans ses cheveux.",
+  "Le rang de perles qui glisse entre les doigts de la déesse.",
+  "En bas à gauche, le carquois rouge rempli de flèches empennées de blanc.",
+  "La signature de Boucher, en bas au centre, sur une pierre au bord de l'eau.",
+  "Le gibier posé à droite, peint avec la précision d'une nature morte.",
+]
+themes = ["mythologie", "nu", "chasse", "bain", "rococo"]
+anecdote = """
+Pierre-Auguste Renoir, qui avait commencé comme peintre sur porcelaine, aimait ce \
+tableau plus que tout autre : il racontait que c'était la première toile qui l'avait \
+saisi au Louvre, et qu'il lui était resté fidèle toute sa vie."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Les Hasards heureux de l'escarpolette"
+artiste = "Jean-Honoré Fragonard"
+annee = "1767–1768"
+image = "escarpolette.jpg"
+technique = "Huile sur toile, 81 × 64,2 cm"
+collection = "Wallace Collection, Londres"
+note = "Commandée par un amateur galant, l'image la plus célèbre du rococo : une jeune femme sur une balançoire, et un amoureux caché dans les rosiers."
+description = """
+Dans un parc touffu, sous une voûte d'arbres traversée d'une lumière dorée, une jeune \
+femme en robe de soie rose s'élance sur une balançoire. Le mouvement soulève ses \
+jupons et fait voler l'un de ses escarpins, qui file vers la gauche. En bas à gauche, \
+à demi couché dans un massif de rosiers, un jeune homme tend le bras et son chapeau \
+vers elle, le regard levé sous ses jupes. À droite, dans l'ombre, un homme plus âgé \
+tire les cordes de la balançoire, sans rien voir de la scène. Deux statues semblent \
+observer : à gauche, un Amour sur un socle, un doigt posé sur les lèvres ; sous la \
+balançoire, deux petits amours serrés contre un dauphin. En bas à droite, un petit \
+chien blanc aboie."""
+evocation = """
+Tout le tableau est un clin d'œil amoureux. L'escarpin qui s'envole, le chapeau tendu, \
+les fleurs froissées : les historiens de l'art y ont relevé une série de symboles \
+galants, et la balançoire elle-même évoquait depuis longtemps l'inconstance et le jeu \
+de la séduction. L'Amour qui demande le silence fait du spectateur un complice. \
+L'homme âgé qui pousse la balançoire sans rien voir, que l'on prend souvent pour le \
+mari, est la dupe classique des comédies de l'époque. On a vu dans cette toile le \
+sommet du libertinage élégant de la fin du règne de Louis XV, un art de plaisir et de \
+connivence, conçu pour un amateur et non pour le public du Salon. C'est aussi ce que \
+la génération de David, au nom de la vertu, condamnera."""
+histoire = """
+L'origine du tableau est connue par le Journal de l'auteur dramatique Charles Collé, \
+qui rapporte en 1767 le récit du peintre Gabriel-François Doyen : un homme de la cour \
+lui avait demandé de peindre sa maîtresse sur une balançoire poussée par un évêque, \
+lui-même placé de façon à voir les jambes de la belle. Doyen, peintre d'histoire, \
+refusa et suggéra Fragonard, qui accepta. Le commanditaire est traditionnellement \
+identifié au baron de Saint-Julien, receveur général du clergé. Dans le tableau, \
+l'évêque est devenu un homme âgé en habit sombre. Passée par plusieurs collections, la \
+toile est achetée en 1865 par le quatrième marquis de Hertford, à Paris. Elle fait \
+partie du legs de Lady Wallace à la nation britannique en 1897, à l'origine de la \
+Wallace Collection."""
+facture = """
+Fragonard, élève de Chardin puis de Boucher, peint avec une liberté de pinceau \
+étonnante. La robe rose, au centre de la composition, est faite de touches vives et \
+légères qui font frémir la soie ; elle reçoit toute la lumière, tandis que les deux \
+hommes restent dans un clair-obscur verdâtre. Le feuillage est brossé en masses \
+mousseuses, presque abstraites de près. La composition repose sur une diagonale qui va \
+du jeune homme à gauche au vieil homme à droite, en passant par la balançoire, comme \
+la course d'un pendule. Une restauration achevée en 2021 a rendu au tableau ses \
+couleurs vives et la profondeur de son ciel."""
+details = [
+  "L'escarpin rose qui s'envole vers la gauche, au-dessus du massif de fleurs.",
+  "La statue de l'Amour, doigt sur les lèvres, inspirée d'une sculpture de Falconet.",
+  "Le chapeau que le jeune homme tend vers la jeune femme.",
+  "Le vieil homme dans l'ombre, à droite, qui tient les cordes sans rien voir.",
+  "Le petit chien blanc, en bas à droite, qui aboie.",
+]
+themes = ["amour", "jeu", "jardin", "libertinage", "rococo"]
+anecdote = """
+Le titre sous lequel le tableau est connu en France vient de la gravure qu'en tira \
+Nicolas de Launay, publiée en 1782 sous le nom « Les Hasards heureux de l'escarpolette \
+» : c'est elle qui rendit l'image célèbre bien au-delà du cercle du commanditaire."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "La Raie"
+artiste = "Jean Siméon Chardin"
+annee = "vers 1725–1726"
+image = "raie.jpg"
+technique = "Huile sur toile, 114,5 × 146 cm"
+collection = "Musée du Louvre, Paris"
+note = "Une raie éventrée, un chat aux aguets, des huîtres : la nature morte qui fit entrer Chardin à l'Académie royale en 1728."
+description = """
+Sur une table de pierre, dans une cuisine sombre, une raie pend à un crochet, au \
+centre, sa face blanche tournée vers nous et son ventre ouvert, rouge et nacré. Sa \
+bouche et ses narines dessinent un étrange visage, presque humain. À gauche, un chat \
+au poil hérissé pose les pattes sur un tas d'huîtres ouvertes, attiré par la \
+nourriture, près d'un bouquet de ciboules. Sous la raie, deux poissons. À droite, une \
+nappe blanche froissée, un poêlon de cuivre, une bouteille, un pichet de grès vernissé \
+vert sombre, une écumoire et un couteau dont le manche dépasse de la table. Le fond \
+est un mur de pierre brun, sans fenêtre ni décor, où la lumière s'accroche par \
+endroits."""
+evocation = """
+Le tableau joue sur un contraste saisissant entre la beauté de la peinture et la \
+crudité du sujet. La raie éviscérée, qui semble nous regarder en grimaçant, a quelque \
+chose d'inquiétant ; on y a vu une méditation sur la chair et la mort, dans la \
+tradition des natures mortes de cuisine flamandes, mais aussi un réalisme d'une \
+franchise nouvelle. Le chat, vivant et nerveux, introduit une petite tension : il \
+guette les huîtres et va peut-être tout renverser. Pour un jeune peintre issu de \
+l'artisanat parisien, la toile est aussi une démonstration : elle prouve qu'un sujet \
+humble, placé tout en bas de la hiérarchie des genres, peut rivaliser avec la grande \
+peinture."""
+histoire = """
+En 1728, Chardin, encore inconnu, expose plusieurs tableaux à l'Exposition de la \
+Jeunesse, une exposition en plein air tenue place Dauphine, à Paris, le jour de la \
+Fête-Dieu. Des académiciens les remarquent. Le 25 septembre 1728, Chardin présente La \
+Raie et Le Buffet à l'Académie royale de peinture et de sculpture, qui l'agrée et le \
+reçoit le même jour comme « peintre dans le talent des animaux et des fruits », une \
+faveur rarissime. Les deux toiles deviennent ses morceaux de réception. Elles restent \
+accrochées dans les salles de l'Académie, alors installée au Louvre, où des \
+générations d'élèves peuvent les étudier, et rejoignent le musée à la Révolution."""
+facture = """
+Chardin construit ses formes par couches épaisses, posées et retravaillées, sans \
+lisser la surface : la matière reste visible, granuleuse, presque modelée dans la \
+chair de la raie. Il emprunte aux Flamands et aux Hollandais le sujet de cuisine, mais \
+il l'épure : peu d'objets, choisis et disposés en pyramide autour de la raie. Les \
+couleurs sont sourdes, bruns, gris, ocres, rehaussées par les rouges du poisson et le \
+blanc éclatant de la nappe. La lumière unifie l'ensemble et fait vibrer les textures : \
+pelage du chat, cuivre, grès, huître humide."""
+details = [
+  "Le « visage » de la raie, formé par sa bouche et ses narines.",
+  "Le chat hérissé, à gauche, qui pose une patte sur les huîtres.",
+  "Le couteau dont le manche dépasse du bord de la table, vers nous.",
+  "Les reflets du cuivre du poêlon, derrière la nappe blanche.",
+  "L'écumoire percée, tout à droite, à demi coupée par le bord du tableau.",
+]
+themes = ["nature morte", "cuisine", "animaux", "réalisme", "chat"]
+anecdote = """
+Plus d'un siècle et demi après Chardin, le jeune Henri Matisse, alors élève à Paris, \
+copia La Raie au Louvre. Cette copie est aujourd'hui conservée au musée Matisse du \
+Cateau-Cambrésis, sa ville natale."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.46
+
+[[oeuvres]]
+titre = "La Cour du tailleur de pierre"
+artiste = "Giovanni Antonio Canal, dit Canaletto"
+annee = "vers 1725"
+image = "cour-tailleurs-pierre.jpg"
+technique = "Huile sur toile, 123,8 × 162,9 cm"
+collection = "National Gallery, Londres"
+note = "Ni palais ni fête : un chantier dans un quartier ordinaire de Venise, peint avec une vérité presque photographique."
+description = """
+Au premier plan s'étend le campo San Vidal, une place de Venise transformée en \
+chantier : des blocs de pierre blanche, bruts ou déjà taillés, jonchent le sol autour \
+d'un hangar de planches où travaillent des tailleurs de pierre. Au-delà coule le Grand \
+Canal, sillonné de gondoles, et sur l'autre rive se dressent l'église de Santa Maria \
+della Carità et son haut campanile pointu. À droite et à gauche, de hautes maisons de \
+brique rouge, aux volets ouverts, avec du linge aux fenêtres et des pots de fleurs aux \
+balcons. La vie du quartier se devine partout : une femme penchée à un balcon, une \
+autre à sa fenêtre, et en bas à gauche une mère qui accourt vers un petit enfant tombé \
+par terre."""
+evocation = """
+Canaletto peint ici une Venise sans apparat, loin des cérémonies et de la place \
+Saint-Marc. On y a vu l'une de ses œuvres les plus personnelles : le regard s'attarde \
+sur le travail quotidien, le désordre d'un chantier et la vie familière d'un quartier, \
+avec une tendresse qui rappelle la peinture de genre hollandaise. Le chantier lui-même \
+raconte une ville en perpétuelle reconstruction : les pierres sont sans doute \
+destinées à l'église San Vidal, toute proche, dont on refait alors la façade. Le \
+contraste entre la lumière froide du ciel et la chaleur des briques, entre l'animation \
+du premier plan et le calme de l'autre rive, donne à la scène une poésie discrète, \
+sans pittoresque forcé."""
+histoire = """
+Le tableau date des débuts de Canaletto, avant que les voyageurs anglais du Grand Tour \
+ne lui réclament surtout les monuments célèbres de la ville ; on ignore pour qui il \
+fut peint. Le point de vue est pris depuis le campo San Vidal, là où le pont de \
+l'Accademia n'existait pas encore. Sur l'autre rive, le campanile de la Carità s'est \
+effondré en 1744, et les bâtiments de l'ancienne confrérie abritent depuis le début du \
+XIXᵉ siècle les Gallerie dell'Accademia. La toile a appartenu au collectionneur \
+anglais sir George Beaumont, peintre amateur et protecteur de jeunes artistes, qui \
+offrit sa collection à la nation pour contribuer à la création de la National Gallery \
+de Londres ; le tableau y entre en 1828."""
+facture = """
+Canaletto, fils d'un peintre de décors de théâtre, maîtrise parfaitement la \
+perspective. Il préparait ses vues par des dessins pris sur place, peut-être à l'aide \
+d'une chambre optique, puis les recomposait à l'atelier. La touche est précise mais \
+vivante : les blocs de pierre sont modelés par la lumière, le bois du hangar est rendu \
+planche par planche, les petites figures sont posées d'un pinceau vif. Le ciel occupe \
+près de la moitié de la toile, chargé de nuages gris que perce une lumière rasante. \
+Les ombres portées, nettes et longues, traversent la place en diagonale."""
+details = [
+  "En bas à gauche, une mère qui accourt vers son enfant tombé par terre.",
+  "Le haut campanile pointu de la Carità, qui s'effondrera en 1744.",
+  "Les tailleurs au travail dans le hangar de planches, à droite.",
+  "Le linge blanc qui sèche aux fenêtres de la maison de droite.",
+  "Les gondoles amarrées le long du Grand Canal, au centre.",
+]
+themes = ["venise", "ville", "travail", "vie quotidienne", "veduta"]
+anecdote = """
+Le pont de l'Accademia, construit en 1854, relie aujourd'hui le campo San Vidal à \
+l'autre rive, à peu près à l'endroit où Canaletto a peint les gondoles : la place, \
+débarrassée de son chantier, est devenue l'un des passages les plus fréquentés de \
+Venise."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.63
+
+[[oeuvres]]
+titre = "Mr et Mrs Andrews"
+artiste = "Thomas Gainsborough"
+annee = "vers 1750"
+image = "mr-mrs-andrews.jpg"
+technique = "Huile sur toile, 69,8 × 119,4 cm"
+collection = "National Gallery, Londres"
+note = "Un jeune couple de propriétaires du Suffolk pose devant ses champs : portrait et paysage réunis dans une même toile."
+description = """
+Sous un grand chêne, à gauche, un jeune couple pose en plein air. Robert Andrews, \
+debout, en tricorne et habit clair, un fusil sous le bras, s'appuie nonchalamment au \
+dossier d'un banc de fer forgé aux volutes vertes ; son chien de chasse lève la tête \
+vers lui. Sur le banc, sa femme Frances, en robe de soie bleu pâle et chapeau de \
+paille, se tient très droite, les mains sur les genoux. À droite, toute une moitié de \
+la toile est occupée par leurs terres : un champ de blé moissonné aux gerbes dorées, \
+des prés où paissent des moutons, des haies, des bosquets, et au loin, entre les \
+arbres, une tour d'église. Le ciel d'été se charge de gros nuages gris et blancs."""
+evocation = """
+Le tableau célèbre un mariage et une propriété. Les Andrews ne se montrent pas dans un \
+salon, mais au milieu des champs qui font leur fortune : le blé moissonné, les \
+moutons, les haies d'un domaine bien tenu. On y a vu l'image de la gentry terrienne \
+anglaise et de la révolution agricole, avec son blé semé en rangs réguliers. Dans Voir \
+le voir (Ways of Seeing, 1972), le critique John Berger en a fait l'exemple même de la \
+peinture comme affirmation de la propriété, une lecture que d'autres historiens ont \
+nuancée. Le fusil et le chien rappellent aussi le droit de chasse, réservé aux \
+propriétaires. Gainsborough, qui préférait le paysage au portrait, trouve ici le moyen \
+de réunir les deux genres."""
+histoire = """
+Robert Andrews et Frances Carter se marient en novembre 1748 à Sudbury, la ville \
+natale de Gainsborough, dans le Suffolk. Le portrait est peint peu après, vers 1750, \
+quand le jeune peintre, revenu de Londres, cherche une clientèle parmi les familles de \
+la région. Le domaine représenté est celui d'Auberies, près de Sudbury, propriété de \
+Robert Andrews. Le tableau reste ensuite dans la famille pendant deux siècles, presque \
+inconnu du public. Révélé lors d'une exposition consacrée à Gainsborough à Ipswich en \
+1927, il est vendu par les descendants en 1960 et acquis par la National Gallery de \
+Londres, où il est devenu l'une des images les plus familières de la peinture \
+anglaise."""
+facture = """
+Gainsborough combine deux traditions. Les figures, petites et un peu raides, relèvent \
+de la « conversation piece », le portrait de groupe en pied de petit format, à la mode \
+dans l'Angleterre de l'époque, que le peintre avait connue à Londres auprès du graveur \
+français Hubert Gravelot. Le paysage, lui, est observé avec un soin venu des \
+Hollandais, comme Jacob van Ruisdael, que Gainsborough avait copié. Les couleurs sont \
+fraîches : le bleu de la robe répond au bleu-gris du ciel, l'or des gerbes au vert des \
+prés. La touche est fine et minutieuse dans les visages et les étoffes, plus libre \
+dans les nuages."""
+details = [
+  "Sur les genoux de Frances, une zone restée inachevée, simple esquisse brune.",
+  "Le banc de fer forgé, aux volutes rococo peintes en vert.",
+  "Les gerbes de blé dorées, au premier plan à droite.",
+  "Le chien de chasse qui lève les yeux vers son maître.",
+  "Les moutons minuscules qui paissent dans le pré, au fond.",
+]
+themes = ["portrait", "paysage", "campagne", "mariage", "propriété"]
+anecdote = """
+Personne ne sait ce que Gainsborough comptait peindre sur les genoux de Frances \
+Andrews, laissés à l'état d'esquisse : on a proposé un livre, un éventail, un oiseau \
+tué par son mari, ou même un enfant à venir."""
+salle = 3
+mur = "sud"
+place = 1
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Madame Vigée Le Brun et sa fille Julie"
+artiste = "Élisabeth Vigée Le Brun"
+annee = "1789"
+image = "vigee-le-brun-fille.jpg"
+technique = "Huile sur bois, 130 × 94 cm"
+collection = "Musée du Louvre, Paris"
+note = "Peint quelques mois avant la Révolution : l'étreinte d'une mère et de sa fille, vêtues « à la grecque »."
+description = """
+Sur un fond uni gris-brun, une jeune femme assise serre dans ses bras une petite fille \
+qui se blottit contre elle, la joue contre la sienne. La mère, l'artiste elle-même, \
+porte une simple robe blanche à l'antique qui dégage une épaule, un châle rouge et or \
+noué à la taille et un bandeau rouge dans ses cheveux bruns bouclés. Sur ses genoux \
+s'étale une draperie vert olive. Sa fille Julie, vêtue d'une robe bleue, passe un bras \
+autour du cou de sa mère. Les deux visages se touchent et regardent le spectateur : \
+celui de la mère, calme et souriant, celui de l'enfant, plus espiègle. Aucun \
+accessoire, aucun décor : tout se concentre sur l'étreinte."""
+evocation = """
+Le tableau célèbre la tendresse maternelle, valeur mise à l'honneur à la fin du XVIIIᵉ \
+siècle, notamment sous l'influence de Rousseau, qui invitait les mères à élever \
+elles-mêmes leurs enfants. Vigée Le Brun se représente non comme peintre, sans \
+pinceaux ni palette, mais comme mère, choix audacieux pour une artiste qui devait sans \
+cesse défendre son statut professionnel. On y a souvent vu un écho des Vierges à \
+l'Enfant de Raphaël, qu'elle admirait : l'étreinte et la composition en pyramide \
+rappellent la Madone à la chaise. La robe blanche et le bandeau suivent la mode « à la \
+grecque » que la peintre contribuait à lancer, en accord avec le goût néoclassique \
+naissant."""
+histoire = """
+Vigée Le Brun peint ce second double portrait avec sa fille en 1789, trois ans après \
+une première version, elle aussi au Louvre, qui avait fait sensation au Salon de 1787. \
+Elle est alors au sommet de sa carrière : portraitiste attitrée de Marie-Antoinette, \
+membre de l'Académie royale depuis 1783. Mais sa proximité avec la reine la rend \
+suspecte. Au début d'octobre 1789, au moment où la famille royale est ramenée de force \
+de Versailles à Paris, elle quitte la capitale avec Julie, sous un déguisement, dans \
+une diligence pour l'Italie. Commence alors un exil de douze ans, de Rome à \
+Saint-Pétersbourg. Le tableau, resté en France, appartient aujourd'hui au Louvre, qui \
+conserve les deux versions."""
+facture = """
+La peintre construit une composition en pyramide, refermée sur elle-même par les bras \
+entrelacés. Le fond neutre, sans profondeur, fait ressortir les carnations claires, \
+modelées avec douceur, sans contours durs. Les couleurs sont peu nombreuses et \
+franches : le blanc de la robe, le rouge du bandeau et du châle, le bleu de la robe de \
+Julie, le vert olive de la draperie. Le panneau de bois, lisse, permet un fini très \
+soigné. La simplicité des vêtements, inspirés de l'antique, rompt avec les soieries et \
+les poudres du rococo et annonce l'esthétique néoclassique."""
+details = [
+  "Le bandeau rouge noué dans les boucles brunes de la mère.",
+  "Le châle rouge et or, frangé, qui retombe sur la draperie verte.",
+  "Les deux joues qui se touchent, et les deux regards tournés vers nous.",
+  "L'épaule nue de la mère, comme sur une statue antique.",
+  "Les fines lignes verticales du fond : les joints des planches du panneau.",
+]
+themes = ["portrait", "maternité", "autoportrait", "tendresse", "antiquité"]
+anecdote = """
+En 1787, la première version de ce double portrait fit jaser pour un détail : la \
+peintre y sourit en laissant voir ses dents, ce qu'un chroniqueur du Salon jugea une \
+affectation contraire à toutes les règles de la peinture et des bonnes manières."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 0.94
+
+[[oeuvres]]
+titre = "Le Serment des Horaces"
+artiste = "Jacques-Louis David"
+annee = "1784–1785"
+image = "serment-horaces.jpg"
+technique = "Huile sur toile, 330 × 425 cm"
+collection = "Musée du Louvre, Paris"
+note = "Trois frères jurent de vaincre ou de mourir pour Rome : présenté au Salon de 1785, le tableau-manifeste du néoclassicisme."
+description = """
+Dans une salle aux murs de pierre nue, rythmée par trois arcades sur des colonnes \
+doriques, trois groupes se juxtaposent. À gauche, trois frères casqués, serrés l'un \
+contre l'autre, tendent le bras d'un même élan. Au centre, leur père, en manteau \
+rouge, brandit vers le ciel les trois épées qu'ils vont recevoir. À droite, à l'écart, \
+les femmes de la famille s'effondrent de douleur : Camille, sœur des Horaces et \
+fiancée de l'un des Curiaces, et Sabine, sœur des Curiaces et épouse de l'un des \
+Horaces, abattues l'une contre l'autre ; derrière elles, une femme âgée abrite deux \
+jeunes enfants sous son voile. Le sol de dalles, en perspective, prolonge la scène \
+vers nous. Ni mobilier ni paysage ne distraient le regard."""
+evocation = """
+Le sujet vient de l'histoire romaine racontée par Tite-Live : sous le roi Tullus \
+Hostilius, Rome et Albe décident de régler leur guerre par un combat entre trois \
+champions de chaque camp, les Horaces pour Rome, les Curiaces pour Albe. Les deux \
+familles sont liées par des mariages, d'où le drame. Le serment, absent des textes \
+anciens, est une invention de David : il condense en un geste le sacrifice de \
+l'individu à la patrie. L'opposition entre les hommes, tendus et rectilignes, et les \
+femmes, courbées et accablées, oppose le devoir civique au sentiment privé. Commandé \
+pour le roi quatre ans avant la Révolution, le tableau devint après coup un symbole de \
+la vertu républicaine."""
+histoire = """
+La toile est commandée en 1784 par la Direction des Bâtiments du roi, dirigée par le \
+comte d'Angiviller, qui veut encourager une peinture d'histoire édifiante. Pour \
+retrouver l'inspiration antique, David part pour Rome avec sa femme et son élève \
+Jean-Germain Drouais, et y peint le tableau. Exposé d'abord dans son atelier romain, \
+il attire artistes et amateurs, puis gagne Paris pour le Salon de 1785, où il fait \
+sensation et assure la renommée de son auteur. Destiné aux collections royales, il \
+entre au Louvre à la Révolution. Il y est aujourd'hui accroché dans la salle Daru, aux \
+côtés d'autres très grands formats de David et de ses élèves."""
+facture = """
+David rompt avec la grâce rococo. La composition est d'une rigueur géométrique : trois \
+arcades, trois groupes, trois épées. Les figures, disposées comme dans un bas-relief \
+antique, se détachent sur un fond sombre et peu profond. Le dessin est ferme, les \
+contours nets, les musculatures sculpturales, étudiées d'après le modèle vivant et la \
+statuaire antique. Les couleurs, rouges, blancs et bleus, sont posées franchement et \
+la touche disparaît sous une surface lisse. Une lumière latérale, venue de la gauche, \
+frappe les figures et creuse de fortes ombres, dans la tradition de Caravage et de \
+Poussin, que David avait étudiés à Rome."""
+details = [
+  "Les trois épées brandies par le père, au point de convergence de la composition.",
+  "Les jambes des trois frères, tendues comme des arcs, dans le même élan.",
+  "La quenouille posée au sol, à droite, symbole du foyer et du travail des femmes.",
+  "Les trois arcades du fond, une pour chaque groupe de personnages.",
+  "La femme âgée, au fond à droite, qui abrite deux enfants sous son voile.",
+]
+themes = ["histoire", "antiquité", "patrie", "sacrifice", "néoclassicisme"]
+anecdote = """
+Une réplique réduite du tableau, peinte en 1786 par David avec l'aide de son élève \
+Anne-Louis Girodet pour le comte de Vaudreuil, est aujourd'hui conservée de l'autre \
+côté de l'Atlantique, au Toledo Museum of Art, dans l'Ohio."""
+salle = 4
+mur = "nord"
+place = 4
+largeur = 4.25
+
+[[oeuvres]]
+titre = "La Mort de Marat"
+artiste = "Jacques-Louis David"
+annee = "1793"
+image = "mort-de-marat.jpg"
+technique = "Huile sur toile, 165 × 128 cm"
+collection = "Musées royaux des Beaux-Arts de Belgique, Bruxelles"
+note = "Peint dans les mois qui suivent l'assassinat du révolutionnaire, le 13 juillet 1793 : un martyr laïque, à la manière d'une Pietà."
+description = """
+Jean-Paul Marat vient de mourir dans sa baignoire. Sa tête, enveloppée d'un linge \
+blanc, retombe sur son épaule, les yeux clos. Son bras droit pend hors de la baignoire \
+et tient encore une plume ; sa main gauche serre une lettre, posée sur une planche \
+couverte d'un drap vert qui lui sert d'écritoire. Sur la poitrine, une plaie d'où \
+coule un filet de sang, qui teinte l'eau et le drap blanc. Par terre, le couteau \
+ensanglanté. Au premier plan à droite, une caisse de bois porte un encrier, une plume, \
+un assignat et un billet, et l'inscription « À Marat, David », comme une dédicace \
+gravée sur une tombe. Toute la moitié supérieure de la toile est vide, d'un brun \
+sombre et vibrant."""
+evocation = """
+David transforme un assassinat en icône politique. Marat, député montagnard et \
+journaliste de L'Ami du peuple, est présenté comme un martyr de la Révolution : il \
+meurt pauvre, au travail, la plume à la main. La pose du bras tombant rappelle celle \
+du Christ mort dans les Mises au tombeau et les Pietà, en particulier celle de \
+Caravage, que David connaissait ; on a parlé de « Pietà révolutionnaire ». Le billet \
+posé sur la caisse accompagne un assignat destiné à une mère de famille dont le mari \
+est mort pour la patrie : face à la lettre de la meurtrière, il souligne la générosité \
+de la victime. Le visage apaisé efface la maladie de peau dont souffrait Marat, et le \
+vide du fond donne à la scène une gravité presque religieuse."""
+histoire = """
+Le 13 juillet 1793, Charlotte Corday, jeune Normande proche des Girondins, se fait \
+recevoir chez Marat, rue des Cordeliers, sous prétexte de lui dénoncer des \
+conspirateurs, et le poignarde dans son bain. Le lendemain, à la Convention, un député \
+demande à David, qui avait déjà peint Le Peletier de Saint-Fargeau assassiné, \
+d'immortaliser Marat ; le peintre accepte et organise aussi ses funérailles. Le \
+tableau est offert à la Convention en novembre 1793 et accroché dans la salle des \
+séances. Après la chute de Robespierre, il est rendu à David en 1795. Le peintre, \
+exilé à Bruxelles sous la Restauration, y meurt en 1825 ; ses descendants donnent plus \
+tard le tableau au musée de cette ville, où il entre à la fin du XIXᵉ siècle."""
+facture = """
+La composition est d'une sobriété extrême : une horizontale, celle de la baignoire et \
+de l'écritoire, une verticale, celle de la caisse, et un grand vide au-dessus. Le \
+corps de Marat, vivement éclairé, est modelé comme une sculpture antique, avec une \
+pâleur de marbre. Le fond, frotté en touches fines et serrées, vibre d'une lumière \
+sourde, plus claire à droite. Les objets du premier plan, la caisse au bois veiné, le \
+papier, la plume, sont peints avec le réalisme minutieux d'une nature morte, presque \
+en trompe-l'œil. La palette est réduite : blancs, verts, bruns et le rouge du sang."""
+details = [
+  "La lettre de Charlotte Corday, datée du 13 juillet 1793, dans la main de Marat.",
+  "La plume encore tenue par la main qui pend hors de la baignoire.",
+  "Le couteau au manche blanc, taché de sang, posé au sol.",
+  "L'inscription « À Marat, David » sur la caisse, et plus bas « L'an deux ».",
+  "La plaie sous la clavicule, presque discrète, et le sang qui rougit l'eau.",
+]
+themes = ["révolution", "mort", "martyr", "politique", "histoire"]
+anecdote = """
+Sous la dédicace, David a daté son œuvre « L'an deux » : le calendrier républicain, \
+qui faisait commencer l'an II le 22 septembre 1793, venait tout juste d'être adopté \
+par la Convention, en octobre, pendant qu'il peignait le tableau."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.28
+
+[[oeuvres]]
+titre = "La Grande Odalisque"
+artiste = "Jean-Auguste-Dominique Ingres"
+annee = "1814"
+image = "grande-odalisque.jpg"
+technique = "Huile sur toile, 91 × 162 cm"
+collection = "Musée du Louvre, Paris"
+note = "Commandée par la reine de Naples, sœur de Napoléon : un nu allongé, étiré, d'une perfection de ligne qui déconcerta ses contemporains."
+description = """
+Une femme nue, allongée sur un divan de velours bleu, nous tourne le dos et regarde \
+par-dessus son épaule, impassible. Ses cheveux sont pris dans un turban de soie rayée, \
+orné d'un bijou et d'un gland doré. De la main droite, elle tient mollement un \
+éventail de plumes de paon ; ses jambes croisées s'allongent jusqu'au bord droit de la \
+toile. Autour d'elle, des étoffes précieuses : un lourd rideau bleu brodé à droite, \
+des coussins, une soierie jaune et un drap blanc froissé à gauche, une fourrure sous \
+ses jambes. En bas à droite, un brûle-parfum et une longue pipe ; en bas à gauche, des \
+bijoux. Le fond est sombre, sans fenêtre ni profondeur."""
+evocation = """
+L'odalisque, femme du harem, appartient à l'imaginaire oriental qui fascine l'Europe \
+du début du XIXᵉ siècle. Ingres n'a jamais vu l'Orient : il compose un monde rêvé à \
+partir de récits de voyage, de gravures et d'objets. On a souligné l'ambiguïté de \
+cette image : le corps est offert au regard, mais le visage reste froid et lointain. \
+Le tableau prolonge la tradition des nus couchés, de Giorgione à Titien, et la pose de \
+Madame Récamier peinte par David, mais il déplace l'idéal antique vers l'exotisme. Les \
+critiques féministes, à partir des années 1970, y ont vu un exemple du regard masculin \
+porté sur le corps des femmes, tandis que d'autres insistent sur la recherche formelle \
+d'Ingres : la beauté de la ligne avant la vérité anatomique."""
+histoire = """
+Installé à Rome depuis 1806, Ingres reçoit de Caroline Murat, sœur de Napoléon et \
+reine de Naples, la commande d'un nu destiné à faire pendant à un autre nu du peintre, \
+la Dormeuse de Naples, acquis par son mari. Il peint la toile en 1814, mais la chute \
+de l'Empire et celle des Murat, en 1815, empêchent la livraison. Ingres l'expose au \
+Salon de 1819, à Paris, où elle est mal reçue : les critiques jugent les proportions \
+fausses, le dos trop long, le modelé trop lisse et les couleurs froides. Le tableau \
+passe ensuite par plusieurs collections particulières. Le Louvre l'acquiert en 1899, à \
+une époque où Ingres est devenu une référence pour les peintres modernes, de Degas à \
+Matisse."""
+facture = """
+Ingres, élève de David, revendique la primauté du dessin. La ligne continue qui court \
+de la nuque aux orteils compte plus que l'anatomie : le dos est allongé, le bras \
+étiré, la hanche élargie, pour créer une courbe parfaite. Le modelé est très doux, \
+presque sans ombres, et la peau semble polie comme l'émail. La touche est invisible, \
+la surface lisse. La peau nacrée se détache sur le bleu froid du rideau et du divan, \
+réchauffé par la soie jaune et les rayures du turban. Les accessoires, plumes, \
+pierreries, tissus, sont peints avec une minutie qui doit beaucoup aux maîtres \
+flamands et à Raphaël, son modèle absolu."""
+details = [
+  "Le dos démesurément long, qui forme une seule courbe de la nuque à la hanche.",
+  "L'éventail de plumes de paon, tenu mollement par la main droite.",
+  "Le turban de soie rayée, retenu par un bijou et prolongé par un gland doré.",
+  "À droite, la longue pipe et le brûle-parfum, accessoires de l'Orient rêvé.",
+  "En bas à droite, la signature d'Ingres et la date, 1814, suivies du mot « Rom ».",
+]
+themes = ["nu", "orientalisme", "ligne", "harem", "néoclassicisme"]
+anecdote = """
+En 1989, le collectif d'artistes féministes Guerrilla Girls détourna la Grande \
+Odalisque, coiffée d'une tête de gorille, sur une affiche demandant si les femmes \
+devaient être nues pour entrer au Metropolitan Museum de New York, où la plupart des \
+nus étaient féminins et très peu d'artistes étaient des femmes."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.62
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Antoine Watteau"
+vie = "Valenciennes, 10 octobre 1684 – Nogent-sur-Marne, 18 juillet 1721"
+biographie = """
+Fils d'un maître couvreur de Valenciennes, ville devenue française peu avant sa \
+naissance, Antoine Watteau se forme d'abord chez un peintre local, puis gagne Paris \
+vers 1702. Il y vit pauvrement, copiant à la chaîne des tableaux de dévotion, avant \
+d'entrer chez Claude Gillot, peintre des scènes de théâtre et de la comédie italienne, \
+puis chez le décorateur Claude Audran, concierge du palais du Luxembourg, où il \
+découvre le cycle de Marie de Médicis peint par Rubens. Second au prix de Rome en \
+1709, il n'ira jamais en Italie. Agréé par l'Académie royale en 1712, il n'y est reçu \
+qu'en 1717, avec le Pèlerinage à l'île de Cythère. Le financier Pierre Crozat \
+l'héberge et lui ouvre sa collection de dessins. Atteint de tuberculose, d'humeur \
+inquiète, il change sans cesse de logement. Il séjourne à Londres en 1719-1720, puis \
+peint pour son ami le marchand Edme-François Gersaint une célèbre enseigne de \
+boutique. Il meurt à trente-six ans. Son ami Jean de Jullienne fait ensuite graver \
+l'essentiel de son œuvre, qui se diffuse dans toute l'Europe."""
+style = """
+Watteau invente la fête galante : des couples élégants en habits de soie, parfois en \
+costumes de théâtre, conversent, jouent de la musique ou se courtisent dans des parcs \
+rêvés. Sa touche rapide et légère, héritée de Rubens et des Vénitiens, fait chatoyer \
+les étoffes et fond les paysages dans une brume dorée. Ses innombrables dessins aux \
+trois crayons nourrissent ses compositions. Derrière la grâce perce une mélancolie qui \
+fait sa singularité. Il ouvre la voie au rococo, de Boucher à Fragonard."""
+
+[[artistes]]
+nom = "François Boucher"
+vie = "Paris, 29 septembre 1703 – Paris, 30 mai 1770"
+biographie = """
+Fils d'un dessinateur de motifs de broderie, François Boucher passe brièvement par \
+l'atelier de François Lemoyne et travaille comme graveur, notamment pour le recueil \
+des dessins de Watteau publié par Jean de Jullienne. Lauréat du grand prix de \
+l'Académie en 1723, il part à ses frais pour l'Italie, où il séjourne de 1728 à 1731. \
+De retour à Paris, il est reçu à l'Académie royale en 1734. Sa carrière est alors \
+fulgurante : il fournit des modèles à la manufacture de tapisseries de Beauvais, puis \
+dirige celle des Gobelins, dessine des décors d'opéra et des modèles pour la \
+porcelaine de Vincennes et de Sèvres, et décore les résidences royales de Versailles, \
+Fontainebleau et Marly. La marquise de Pompadour, favorite de Louis XV, devient sa \
+protectrice ; il peint d'elle ses plus célèbres portraits. En 1765, il est nommé \
+premier peintre du roi et directeur de l'Académie. Mais le goût change, et Diderot \
+attaque dans ses Salons un art qu'il juge artificiel et licencieux. Boucher meurt à \
+Paris en 1770, laissant une œuvre immense."""
+style = """
+Boucher est le peintre par excellence du rococo. Il peint des scènes mythologiques, \
+des pastorales et des nus aux chairs nacrées, dans une palette claire de roses, de \
+bleus et de blancs. Ses compositions, tout en courbes et en arabesques, ont une grâce \
+décorative pensée pour les intérieurs, les boiseries et les tapisseries. Son dessin \
+virtuose se diffuse par la gravure dans toute l'Europe. Critiqué par Diderot et rejeté \
+par le néoclassicisme, il est réhabilité au XIXᵉ siècle."""
+
+[[artistes]]
+nom = "Jean-Honoré Fragonard"
+vie = "Grasse, 5 avril 1732 – Paris, 22 août 1806"
+biographie = """
+Né à Grasse dans une modeste famille de commerçants, Jean-Honoré Fragonard arrive \
+enfant à Paris. Placé chez un notaire, il montre un tel goût pour le dessin qu'on le \
+conduit chez Chardin, puis chez Boucher. Grand prix de l'Académie en 1752, il séjourne \
+à l'Académie de France à Rome de 1756 à 1761 ; il y dessine les jardins de la villa \
+d'Este, à Tivoli, aux côtés de son ami Hubert Robert, et voyage avec l'abbé de \
+Saint-Non. Son grand tableau d'histoire, Corésus et Callirhoé, lui vaut d'être agréé \
+par l'Académie en 1765 et est acheté pour le roi. Il délaisse pourtant la carrière \
+officielle pour travailler pour des amateurs privés : scènes galantes, figures de \
+fantaisie, paysages. En 1769, il épouse Marie-Anne Gérard, miniaturiste originaire de \
+Grasse ; la sœur de celle-ci, Marguerite Gérard, devient son élève. Le cycle des \
+Progrès de l'amour, commandé par Madame du Barry pour son pavillon de Louveciennes, \
+lui est renvoyé. Sous la Révolution, soutenu par David, il participe à l'organisation \
+du Muséum, le futur Louvre. Passé de mode, il meurt presque oublié en 1806."""
+style = """
+Fragonard peint avec une virtuosité et une rapidité étonnantes. Sa touche libre et \
+fougueuse traite les étoffes, les feuillages et les visages en quelques coups de \
+pinceau, notamment dans ses célèbres figures de fantaisie. Héritier de Boucher, \
+admirateur de Rubens et des Vénitiens, il donne au rococo un élan plus sensuel et plus \
+vivant, entre libertinage, scènes familiales et paysages lumineux. Oublié au XIXᵉ \
+siècle puis redécouvert, il apparaît comme un précurseur de la peinture libre des \
+impressionnistes."""
+
+[[artistes]]
+nom = "Jean Siméon Chardin"
+vie = "Paris, 2 novembre 1699 – Paris, 6 décembre 1779"
+biographie = """
+Fils d'un menuisier parisien qui fabriquait des billards, notamment pour le roi, Jean \
+Siméon Chardin se forme chez les peintres d'histoire Pierre-Jacques Cazes et \
+Noël-Nicolas Coypel, mais choisit vite les genres jugés mineurs. Membre de l'Académie \
+de Saint-Luc, la corporation des peintres, il est reçu à l'Académie royale en 1728 \
+comme peintre d'animaux et de fruits. Dans les années 1730, il se tourne vers les \
+scènes de genre : intérieurs bourgeois, servantes, enfants jouant aux cartes ou \
+faisant des bulles de savon. En 1740, il présente au roi Louis XV Le Bénédicité. Ses \
+tableaux, diffusés par la gravure, deviennent très populaires. Veuf en 1735, il se \
+remarie en 1744. Logé au Louvre à partir de 1757, il est trésorier de l'Académie et, \
+pendant plus de dix ans, chargé d'accrocher les tableaux du Salon. À la fin de sa vie, \
+sa vue faiblissant, il se tourne vers le pastel et réalise des autoportraits \
+saisissants, coiffé d'un bonnet et portant des besicles. Diderot l'admire sans \
+réserve. Il meurt au Louvre en 1779."""
+style = """
+Chardin peint des objets humbles, cruches, fruits, gibier, et des scènes domestiques \
+silencieuses, sans anecdote ni morale appuyée. Sa matière est épaisse, grenue, posée \
+par touches superposées qui donnent aux choses une présence presque tactile. Ses \
+compositions, simples et équilibrées, baignent dans une lumière douce qui unifie les \
+tons. Loin de la grâce décorative du rococo, son art de la vérité et du recueillement \
+a profondément marqué Cézanne, Matisse et la nature morte moderne."""
+
+[[artistes]]
+nom = "Giovanni Antonio Canal, dit Canaletto"
+vie = "Venise, octobre 1697 – Venise, 19 avril 1768"
+biographie = """
+Fils du peintre de décors de théâtre Bernardo Canal, d'où son surnom de « petit Canal \
+», Giovanni Antonio Canal travaille d'abord avec son père pour les opéras de Venise et \
+de Rome. À Rome, vers 1720, il découvre les vues de ruines et de monuments et décide \
+de se consacrer à la veduta, la vue de ville. De retour à Venise, il peint pour des \
+amateurs vénitiens puis, de plus en plus, pour les riches voyageurs anglais du Grand \
+Tour, qui veulent rapporter chez eux un souvenir de la ville. Le marchand Joseph \
+Smith, futur consul britannique à Venise, devient son agent et son principal \
+collectionneur ; sa collection sera achetée en 1762 par le roi George III. Quand la \
+guerre de Succession d'Autriche tarit le flot des visiteurs, Canaletto part pour \
+Londres en 1746 et y séjourne près de dix ans, peignant la Tamise, Westminster et les \
+demeures aristocratiques. Revenu à Venise, il n'est admis à l'Académie vénitienne \
+qu'en 1763. Son neveu et élève Bernardo Bellotto prolonge son art jusqu'à Dresde et \
+Varsovie."""
+style = """
+Canaletto est le maître de la veduta. Il combine une perspective rigoureuse, héritée \
+des décors de théâtre, et une observation minutieuse des bâtiments, des bateaux et de \
+la foule. Il s'aidait sans doute d'une chambre optique pour ses études, mais \
+recomposait librement ses vues à l'atelier. Ses premières toiles, aux ciels nuageux et \
+aux ombres contrastées, sont les plus libres ; les plus tardives, d'une clarté \
+cristalline, plus systématiques. Il a fixé pour toujours l'image de Venise."""
+
+[[artistes]]
+nom = "Thomas Gainsborough"
+vie = "Sudbury (Suffolk), baptisé le 14 mai 1727 – Londres, 2 août 1788"
+biographie = """
+Fils d'un marchand de drap de Sudbury, dans le Suffolk, Thomas Gainsborough part à \
+Londres vers l'âge de treize ans pour apprendre le métier. Il y fréquente le graveur \
+français Hubert Gravelot et le milieu artistique de Saint Martin's Lane, et restaure \
+des paysages hollandais pour des marchands. En 1746, il épouse Margaret Burr, puis \
+revient à Sudbury et s'établit ensuite à Ipswich, où il peint la petite noblesse de la \
+région. En 1759, il s'installe à Bath, ville d'eaux à la mode, où une clientèle \
+aristocratique lui commande de grands portraits en pied ; il y étudie les portraits de \
+Van Dyck. Membre fondateur de la Royal Academy en 1768, il s'établit à Londres en \
+1774, à Schomberg House, sur Pall Mall. Il devient l'un des portraitistes préférés de \
+la famille royale et le grand rival de Joshua Reynolds, président de l'Académie. \
+Brouillé avec celle-ci au sujet de l'accrochage de ses tableaux, il cesse d'y exposer \
+à partir de 1784. Il meurt d'un cancer en 1788. Toute sa vie, il préféra peindre des \
+paysages, qui se vendaient pourtant mal."""
+style = """
+Gainsborough a une touche d'une légèreté et d'une liberté exceptionnelles : des \
+hachures rapides et transparentes qui font vibrer soieries et feuillages. Admirateur \
+de Van Dyck, il donne à ses portraits une élégance aérienne et place volontiers ses \
+modèles dans la nature. Ses paysages, inspirés des Hollandais puis de Rubens, ouvrent \
+la voie à Constable, son compatriote du Suffolk, et à la grande peinture de paysage \
+anglaise."""
+
+[[artistes]]
+nom = "Élisabeth Vigée Le Brun"
+vie = "Paris, 16 avril 1755 – Paris, 30 mars 1842"
+biographie = """
+Fille du pastelliste Louis Vigée, qui meurt alors qu'elle n'a que douze ans, Élisabeth \
+Vigée apprend la peinture presque seule, en copiant les maîtres et grâce aux conseils \
+d'artistes amis de son père. Adolescente, elle fait déjà vivre sa famille par ses \
+portraits. En 1776, elle épouse le marchand de tableaux Jean-Baptiste-Pierre Le Brun. \
+À partir de 1778, elle peint la reine Marie-Antoinette, dont elle réalise une \
+trentaine de portraits. Grâce à l'intervention de la reine, elle est reçue à \
+l'Académie royale en 1783, le même jour qu'Adélaïde Labille-Guiard, alors que le \
+nombre des femmes y est limité à quatre. Proche de la cour, elle quitte Paris en \
+octobre 1789. Son exil la mène en Italie, à Vienne puis en Russie, où elle séjourne de \
+1795 à 1801 ; partout, les cours et les académies l'accueillent. Rentrée en France en \
+1802, elle voyage encore en Angleterre et en Suisse. Elle publie ses Souvenirs à la \
+fin de sa vie, de 1835 à 1837, et laisse environ 660 portraits et près de 200 \
+paysages."""
+style = """
+Vigée Le Brun est l'une des grandes portraitistes de son temps. Elle flatte ses \
+modèles sans les figer : poses naturelles, sourires, regards directs, vêtements \
+simples et souples qu'elle leur conseille de porter. Sa touche fluide et ses \
+carnations lumineuses doivent beaucoup à Rubens et à Van Dyck, qu'elle étudie lors \
+d'un voyage en Flandre. Entre la grâce du rococo et la simplicité néoclassique, elle \
+invente une image sensible et intime de la femme et de la maternité."""
+
+[[artistes]]
+nom = "Jacques-Louis David"
+vie = "Paris, 30 août 1748 – Bruxelles, 29 décembre 1825"
+biographie = """
+Orphelin de père à neuf ans, Jacques-Louis David est élevé par ses oncles et entre \
+dans l'atelier de Joseph-Marie Vien. Après plusieurs échecs, il remporte le prix de \
+Rome en 1774 et séjourne en Italie de 1775 à 1780 ; l'étude de l'antique et de Poussin \
+y transforme son art. De retour à Paris, il triomphe aux Salons avec Bélisaire en \
+1781, le Serment des Horaces en 1785, la Mort de Socrate en 1787 et les Licteurs \
+rapportant à Brutus les corps de ses fils en 1789. Engagé dans la Révolution, député à \
+la Convention en 1792, il vote la mort de Louis XVI, siège au Comité de sûreté \
+générale et organise les grandes fêtes révolutionnaires. Emprisonné après la chute de \
+Robespierre, il peint ensuite Les Sabines, achevées en 1799, puis se rallie à \
+Bonaparte, qui le nomme premier peintre en 1804 ; il peint alors Le Sacre de Napoléon. \
+Proscrit comme régicide au retour des Bourbons, il s'exile à Bruxelles en 1816 et y \
+meurt en 1825. Son atelier a formé toute une génération : Gros, Girodet, Gérard, \
+Ingres."""
+style = """
+David fonde la peinture néoclassique. Contre la grâce du rococo, il impose un dessin \
+ferme, des contours nets, des compositions claires inspirées des bas-reliefs antiques \
+et de Poussin, et une surface lisse où la touche s'efface. Ses sujets exaltent la \
+vertu civique, le sacrifice et l'héroïsme. Peintre engagé, il met son art au service \
+de la Révolution puis de l'Empire. Par son enseignement et ses élèves, il domine la \
+peinture européenne pendant un demi-siècle."""
+
+[[artistes]]
+nom = "Jean-Auguste-Dominique Ingres"
+vie = "Montauban, 29 août 1780 – Paris, 14 janvier 1867"
+biographie = """
+Fils d'un peintre et sculpteur décorateur de Montauban, également musicien, \
+Jean-Auguste-Dominique Ingres étudie à l'académie de Toulouse et joue du violon dans \
+l'orchestre du Capitole : le « violon d'Ingres » est devenu une expression. En 1797, \
+il entre dans l'atelier de David à Paris. Prix de Rome en 1801, il ne part pour \
+l'Italie qu'en 1806, faute de crédits. Il reste à Rome bien au-delà de son séjour \
+officiel, vivant en partie de portraits dessinés à la mine de plomb, puis s'installe à \
+Florence. Ses envois au Salon, jugés étranges, sont mal reçus. Le succès vient en 1824 \
+avec Le Vœu de Louis XIII : il rentre à Paris, ouvre un atelier très fréquenté et \
+devient le chef de file de l'école classique face à Delacroix et aux romantiques. \
+Blessé par l'accueil fait au Martyre de saint Symphorien en 1834, il dirige l'Académie \
+de France à Rome de 1835 à 1841. Comblé d'honneurs, il peint à plus de quatre-vingts \
+ans Le Bain turc. Il meurt à Paris en 1867 et lègue à sa ville natale une grande \
+partie de ses dessins."""
+style = """
+Ingres place le dessin au-dessus de tout : « le dessin est la probité de l'art », \
+disait-il. Ses figures, d'une ligne pure et continue, sont souvent déformées au profit \
+de l'harmonie : cous allongés, dos étirés. Le modelé est lisse, la touche invisible, \
+et les soies, les bijoux ou les chevelures sont rendus avec une précision saisissante. \
+Héritier de David et de Raphaël, il est aussi un rêveur d'Orient. Ses libertés avec \
+l'anatomie ont fasciné Degas, Picasso et les peintres modernes."""
