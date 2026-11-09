@@ -131,6 +131,8 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .has-art .viewer-caption { opacity: 1; transform: none; pointer-events: auto; }
 .cap-title { margin: 0; font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
 .cap-meta { margin: .15rem 0 .5rem; font-size: .82rem; color: #d4d6e2; line-height: 1.4; }
+.viewer-caption .cap-hd { display: none; }
+.has-hd .viewer-caption .cap-hd { display: inline-block; }
 .cap-hd { padding: .35rem .8rem; border-radius: 999px; font-size: .82rem !important; background: var(--accent); }
 .viewer-controls { position: absolute; right: 14px; bottom: 14px; display: flex; gap: .4rem; }
 .viewer-controls button { width: 44px; height: 44px; border-radius: 50%; font-size: 1.25rem; line-height: 1;

@@ -651,8 +651,8 @@ fn exhibition(
         }
         footprints.push((r, x, z, radius, sc.titre.clone()));
         let (color, roughness, metallic) = match sc.matiere.trim() {
-            "marbre" => ([236, 232, 222], 0.45, 0.0),
-            "platre" | "plâtre" => ([226, 220, 206], 0.85, 0.0),
+            "marbre" => ([222, 217, 206], 0.45, 0.0),
+            "platre" | "plâtre" => ([214, 207, 192], 0.85, 0.0),
             "pierre" => ([176, 166, 148], 0.9, 0.0),
             "bronze" => ([122, 86, 52], 0.4, 0.7),
             "or" => ([212, 175, 55], 0.3, 0.9),

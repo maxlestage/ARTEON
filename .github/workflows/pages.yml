@@ -95,6 +95,7 @@ jobs:
               test -e "dist/$f" || { echo "manquant : dist/$f"; exit 1; }
             done
             grep -q 'pkg/arteon_bg.wasm' "dist/$slug/galerie/index.html"
+            test -s "dist/donnees/$slug.bin" || { echo "données manquantes : $slug.bin"; exit 1; }
             for src in $(grep -o 'src="[^"]*/tableaux/[^"]*"' "dist/$slug/oeuvres/index.html" | sed 's/.*\/tableaux\///; s/"$//'); do
               test -s "dist/tableaux/$src" || { echo "image manquante : $src"; exit 1; }
             done

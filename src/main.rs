@@ -764,6 +764,39 @@ salle = 1
 mur = "fond"
 place = 1
 largeur = 1.6"#;
+    const PLAN: &str = r##"[[salles]]
+nom = "La grande galerie"
+theme = "Une longue galerie haute, éclairée par le haut."
+murs = "#e9e3d6"
+x = 0            # le centre de la salle, en mètres
+z = 0
+largeur = 9      # est-ouest
+profondeur = 30  # nord-sud
+hauteur = 7
+portes = ["sud", "nord", { mur = "est", position = -5 }]
+
+[[salles]]
+nom = "Le cabinet"
+x = 8.5          # contre le mur est de la galerie
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5    # sa porte vers la galerie est ajoutée d'elle-même"##;
+    const SCULPTURE: &str = r##"[[sculptures]]
+titre = "The Greek Slave"
+artiste = "Hiram Powers"
+annee = "1843"
+modele = "greek-slave.stl"   # dans modeles/
+technique = "Plâtre"
+collection = "Smithsonian American Art Museum"
+note = "La sculpture la plus célèbre de son temps."
+salle = 1
+x = 0                        # depuis le centre de la salle
+z = 4
+hauteur = 1.66               # la sculpture, sans le socle
+rotation = 0                 # 0 : elle regarde le sud (l'entrée)
+matiere = "marbre"           # marbre, platre, pierre, bronze, or ou #rrggbb
+socle = 0.6"##;
     let step = |n: &'static str, title: &'static str, body: Element| {
         div()
             .class("card how-step reveal")
@@ -822,13 +855,27 @@ largeur = 1.6"#;
         .child(pre().class("example").child(code().text(EXAMPLE)))
         .child(
             ul().class("rules")
-                .child(li().child(strong().text("mur")).child(span().text(" : \"gauche\" ou \"droite\" en avançant dans la galerie, ou \"fond\".")))
-                .child(li().child(strong().text("place")).child(span().text(" : 1, 2 ou 3. Sur les murs latéraux, 1 est près de l'entrée de la salle ; sur le mur du fond, de gauche à droite. Le milieu du mur du fond est une porte, sauf dans la dernière salle.")))
-                .child(li().child(strong().text("largeur")).child(span().text(" : entre 0,6 et 2,6 mètres ; la hauteur suit les proportions de l'image.")))
-                .child(li().child(strong().text("Modifier ou retirer")).child(span().text(" : changer les valeurs d'un bloc, ou le supprimer. Ajouter un bloc [[salles]] ajoute une salle et son couloir.")))
+                .child(li().child(strong().text("mur")).child(span().text(" : \"nord\", \"sud\", \"est\" ou \"ouest\" (le visiteur entre par le sud et avance vers le nord) ; \"gauche\", \"droite\" et \"fond\" marchent aussi.")))
+                .child(li().child(strong().text("place")).child(span().text(" : 1, 2, 3… numérotées de gauche à droite quand on regarde le mur (une place tous les 3 m environ, voir le tableau ci-dessous). Ou bien position = 2.5 : le centre du tableau à 2,5 m du milieu du mur, vers la droite (négatif : vers la gauche).")))
+                .child(li().child(strong().text("largeur")).child(span().text(" : en mètres ; la hauteur suit les proportions de l'image. Un grand tableau peut garder sa taille réelle si la salle est assez haute (la Ronde de nuit fait 4,5 m).")))
+                .child(li().child(strong().text("Modifier ou retirer")).child(span().text(" : changer les valeurs d'un bloc, ou le supprimer.")))
                 .child(li().child(strong().text("Une nouvelle exposition")).child(span().text(" : copier un fichier de expositions/ sous un autre nom (par exemple renoir.toml : l'exposition sera à l'adresse /renoir), créer le dossier public/tableaux/renoir/ pour ses images, et changer les textes et les œuvres. Elle apparaît d'elle-même sur l'accueil et dans le menu.")))
-                .child(li().child(strong().text("Une erreur ?")).child(span().text(" La compilation s'arrête avec un message en français qui dit quoi corriger (image introuvable, place déjà prise, toiles qui se chevauchent…), et le site en ligne reste tel quel."))),
+                .child(li().child(strong().text("Une erreur ?")).child(span().text(" La compilation s'arrête avec un message en français qui dit quoi corriger (image introuvable, place déjà prise, toiles qui se chevauchent, tableau sur une porte, salles qui se chevauchent, sculpture contre un mur…), et le site en ligne reste tel quel."))),
         )
+        .child(h2().class("section-title").text("Dessiner le plan du musée"))
+        .child(p().class("lead").text(
+            "Sans plan, les salles s'enchaînent en enfilade, reliées par des couloirs. Avec un plan, chaque salle a sa place \
+             (x vers l'est, z vers le sud, en mètres depuis le centre du musée), sa taille et ses portes : on dessine une \
+             galerie d'honneur, une nef, un atrium… Une porte se déclare d'un seul côté : la salle voisine reçoit la sienne.",
+        ))
+        .child(pre().class("example").child(code().text(PLAN)))
+        .child(h2().class("section-title").text("Ajouter une sculpture"))
+        .child(p().class("lead").text(
+            "Déposer le modèle 3D (STL, OBJ ou glTF) dans le dossier modeles/ : il est simplifié à la compilation pour \
+             rester léger, posé sur un socle, et une vignette est dessinée pour le catalogue. Des scans libres de droits \
+             se trouvent par exemple au Smithsonian (3d.si.edu, licence CC0).",
+        ))
+        .child(pre().class("example").child(code().text(SCULPTURE)))
         .child(h2().class("section-title").text("Les emplacements"))
         .children(EXHIBITIONS.iter().map(|ex| {
             div()
