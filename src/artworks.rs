@@ -496,7 +496,10 @@ mod tests {
                     ("anecdote", n.anecdote),
                 ] {
                     assert!(text.split_whitespace().count() >= 15, "{who} : {part}");
-                    assert!(!text.contains('\\') && !text.contains("  "), "{who} : {part}");
+                    assert!(
+                        !text.contains('\\') && !text.contains("  "),
+                        "{who} : {part}"
+                    );
                 }
                 assert!((3..=6).contains(&n.details.len()), "{who} : details");
                 assert!((2..=8).contains(&n.themes.len()), "{who} : themes");

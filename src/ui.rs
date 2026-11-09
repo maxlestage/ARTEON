@@ -264,9 +264,17 @@ impl MuseumUi {
         let screen = ctx.content_rect();
         let width = (screen.width() - 24.0).min(520.0);
         let mut open = true;
-        let text = |t: &str| RichText::new(t.to_owned()).size(14.5).color(Color32::from_gray(230));
-        let heading =
-            |t: &str| RichText::new(t.to_owned()).strong().size(15.5).color(self.accent.gamma_multiply(1.6));
+        let text = |t: &str| {
+            RichText::new(t.to_owned())
+                .size(14.5)
+                .color(Color32::from_gray(230))
+        };
+        let heading = |t: &str| {
+            RichText::new(t.to_owned())
+                .strong()
+                .size(15.5)
+                .color(self.accent.gamma_multiply(1.6))
+        };
         egui::Window::new("Tout savoir")
             .id(egui::Id::unique("notice"))
             .open(&mut open)
@@ -275,56 +283,82 @@ impl MuseumUi {
             .fixed_size([width, (screen.height() - 90.0).max(200.0)])
             .frame(self.frame())
             .show(ctx, |ui| {
-                egui::ScrollArea::vertical().auto_shrink(false).show(ui, |ui| {
-                    ui.set_max_width(width - 16.0);
-                    ui.label(RichText::new(work.title()).strong().size(19.0).color(Color32::WHITE));
-                    ui.label(RichText::new(format!("{artist} · {year}")).size(15.0).color(Color32::from_gray(215)));
-                    if !technique.is_empty() || !collection.is_empty() {
-                        ui.label(RichText::new(format!("{technique} — {collection}")).small().color(Color32::from_gray(170)));
-                    }
-                    ui.add_space(6.0);
-                    ui.label(text(note).italics());
-                    if !notice.themes.is_empty() {
-                        ui.add_space(4.0);
-                        ui.horizontal_wrapped(|ui| {
-                            for t in notice.themes {
-                                egui::Frame::new()
-                                    .fill(self.accent.gamma_multiply(0.55))
-                                    .corner_radius(CornerRadius::same(10))
-                                    .inner_margin(egui::Margin::symmetric(8, 2))
-                                    .show(ui, |ui| ui.label(RichText::new(*t).small().color(Color32::WHITE)));
-                            }
-                        });
-                    }
-                    for (title, body) in notice.sections() {
-                        ui.add_space(10.0);
-                        ui.label(heading(title));
-                        ui.label(text(body));
-                    }
-                    if !notice.details.is_empty() {
-                        ui.add_space(10.0);
-                        ui.label(heading("À regarder de près"));
-                        for d in notice.details {
-                            ui.label(text(&format!("•  {d}")));
+                egui::ScrollArea::vertical()
+                    .auto_shrink(false)
+                    .show(ui, |ui| {
+                        ui.set_max_width(width - 16.0);
+                        ui.label(
+                            RichText::new(work.title())
+                                .strong()
+                                .size(19.0)
+                                .color(Color32::WHITE),
+                        );
+                        ui.label(
+                            RichText::new(format!("{artist} · {year}"))
+                                .size(15.0)
+                                .color(Color32::from_gray(215)),
+                        );
+                        if !technique.is_empty() || !collection.is_empty() {
+                            ui.label(
+                                RichText::new(format!("{technique} — {collection}"))
+                                    .small()
+                                    .color(Color32::from_gray(170)),
+                            );
                         }
-                    }
-                    if !notice.anecdote.is_empty() {
-                        ui.add_space(10.0);
-                        egui::Frame::new()
-                            .fill(Color32::from_white_alpha(14))
-                            .corner_radius(CornerRadius::same(8))
-                            .inner_margin(egui::Margin::same(8))
-                            .show(ui, |ui| {
-                                ui.label(heading("Le saviez-vous ?"));
-                                ui.label(text(notice.anecdote));
+                        ui.add_space(6.0);
+                        ui.label(text(note).italics());
+                        if !notice.themes.is_empty() {
+                            ui.add_space(4.0);
+                            ui.horizontal_wrapped(|ui| {
+                                for t in notice.themes {
+                                    egui::Frame::new()
+                                        .fill(self.accent.gamma_multiply(0.55))
+                                        .corner_radius(CornerRadius::same(10))
+                                        .inner_margin(egui::Margin::symmetric(8, 2))
+                                        .show(ui, |ui| {
+                                            ui.label(
+                                                RichText::new(*t).small().color(Color32::WHITE),
+                                            )
+                                        });
+                                }
                             });
-                    }
-                    if let Some(about) = ex.artist_named(artist) {
-                        ui.add_space(10.0);
-                        egui::CollapsingHeader::new(heading(&format!("L'artiste : {}", about.name)))
+                        }
+                        for (title, body) in notice.sections() {
+                            ui.add_space(10.0);
+                            ui.label(heading(title));
+                            ui.label(text(body));
+                        }
+                        if !notice.details.is_empty() {
+                            ui.add_space(10.0);
+                            ui.label(heading("À regarder de près"));
+                            for d in notice.details {
+                                ui.label(text(&format!("•  {d}")));
+                            }
+                        }
+                        if !notice.anecdote.is_empty() {
+                            ui.add_space(10.0);
+                            egui::Frame::new()
+                                .fill(Color32::from_white_alpha(14))
+                                .corner_radius(CornerRadius::same(8))
+                                .inner_margin(egui::Margin::same(8))
+                                .show(ui, |ui| {
+                                    ui.label(heading("Le saviez-vous ?"));
+                                    ui.label(text(notice.anecdote));
+                                });
+                        }
+                        if let Some(about) = ex.artist_named(artist) {
+                            ui.add_space(10.0);
+                            egui::CollapsingHeader::new(heading(&format!(
+                                "L'artiste : {}",
+                                about.name
+                            )))
                             .id_salt(("artiste", about.name))
                             .show(ui, |ui| {
-                                ui.label(RichText::new(about.life).small().color(Color32::from_gray(180)));
+                                ui.label(
+                                    RichText::new(about.life)
+                                        .small()
+                                        .color(Color32::from_gray(180)),
+                                );
                                 ui.label(text(about.biography));
                                 if !about.style.is_empty() {
                                     ui.add_space(6.0);
@@ -332,18 +366,18 @@ impl MuseumUi {
                                     ui.label(text(about.style));
                                 }
                             });
-                    }
-                    ui.add_space(10.0);
-                    if ui.button("Sa page sur le site ↗").clicked() {
-                        let url = format!(
-                            "{}/{}/oeuvres/{}",
-                            crate::viewer::base_path(ex.slug),
-                            ex.slug,
-                            work.slug()
-                        );
-                        (self.actions.open)(&url);
-                    }
-                });
+                        }
+                        ui.add_space(10.0);
+                        if ui.button("Sa page sur le site ↗").clicked() {
+                            let url = format!(
+                                "{}/{}/oeuvres/{}",
+                                crate::viewer::base_path(ex.slug),
+                                ex.slug,
+                                work.slug()
+                            );
+                            (self.actions.open)(&url);
+                        }
+                    });
             });
         if !open {
             self.reading = false;

@@ -130,10 +130,7 @@ fn layout(
 
 /// Les artistes exposés, avec leurs dates : « Vincent van Gogh (1853–1890) et … ».
 fn artists_sentence() -> String {
-    format!(
-        "{} artistes, morts il y a plus de 70 ans",
-        artist_count()
-    )
+    format!("{} artistes, morts il y a plus de 70 ans", artist_count())
 }
 
 /// Le grand pied de page : une bande de couleurs animée, un défilé des œuvres, trois
@@ -656,7 +653,11 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                 } else {
                     "L'artiste"
                 }))
-                .child(div().class("artist-list").children(ex.artists.iter().map(artist_card)))
+                .child(
+                    div()
+                        .class("artist-list")
+                        .children(ex.artists.iter().map(artist_card)),
+                )
         })
         .child(others(ex));
     layout(ex.title, ex.introduction, &here, Some(ex.accent), content)
@@ -680,7 +681,10 @@ fn counts(ex: &Exhibition) -> String {
 /// Les autres expositions du musée, en bas de la présentation d'une exposition.
 fn others(ex: &Exhibition) -> Element {
     // Les voisines dans l'histoire de l'art : trois avant, trois après.
-    let here = EXHIBITIONS.iter().position(|e| e.slug == ex.slug).unwrap_or(0);
+    let here = EXHIBITIONS
+        .iter()
+        .position(|e| e.slug == ex.slug)
+        .unwrap_or(0);
     let others: Vec<&Exhibition> = EXHIBITIONS
         .iter()
         .enumerate()
@@ -822,16 +826,28 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
     let artist = work.artist(ex);
     let notice = work.notice();
     let works: Vec<Work> = ex.works().collect();
-    let index = works.iter().position(|w| w.slug() == work.slug()).unwrap_or(0);
+    let index = works
+        .iter()
+        .position(|w| w.slug() == work.slug())
+        .unwrap_or(0);
     let (year, technique, collection, note, place) = match work {
-        Work::Art(art) => (art.year, art.technique, art.collection, art.note, location(ex, art)),
+        Work::Art(art) => (
+            art.year,
+            art.technique,
+            art.collection,
+            art.note,
+            location(ex, art),
+        ),
         Work::Sculpture(s) => (
             s.year,
             s.technique,
             s.collection,
             s.note,
-            format!("{} · sculpture de {:.2} m, sur un socle", ex.rooms[s.room].name, s.height)
-                .replace('.', ","),
+            format!(
+                "{} · sculpture de {:.2} m, sur un socle",
+                ex.rooms[s.room].name, s.height
+            )
+            .replace('.', ","),
         ),
     };
     let image = match work {
@@ -840,10 +856,15 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
             .class("frame work-frame")
             .attr("title", "Ouvrir la reproduction en grand")
             .child(picture(ex, art, false)),
-        Work::Sculpture(s) => div().class("plinth work-frame").child(sculpture_picture(s, false)),
+        Work::Sculpture(s) => div()
+            .class("plinth work-frame")
+            .child(sculpture_picture(s, false)),
     };
     let fact = |label: &'static str, value: String| {
-        div().class("fact").child(dt().text(label)).child(dd().text(value))
+        div()
+            .class("fact")
+            .child(dt().text(label))
+            .child(dd().text(value))
     };
     let mut facts = dl()
         .class("facts")
@@ -868,7 +889,11 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
                         .href(format!("/{}/galerie#{}", ex.slug, work.slug()))
                         .text("La voir dans le musée 3D"),
                 )
-                .child(a().class("button ghost").href(catalogue.clone()).text("Toutes les œuvres")),
+                .child(
+                    a().class("button ghost")
+                        .href(catalogue.clone())
+                        .text("Toutes les œuvres"),
+                ),
         );
     let cartel = if notice.themes.is_empty() {
         cartel
@@ -893,7 +918,10 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
             section()
                 .class("notice-part reveal")
                 .child(h2().text("À regarder de près"))
-                .child(ul().class("details").children(notice.details.iter().map(|d| li().text(*d)))),
+                .child(
+                    ul().class("details")
+                        .children(notice.details.iter().map(|d| li().text(*d))),
+                ),
         );
     }
     if !notice.anecdote.is_empty() {
@@ -919,7 +947,10 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
                 .class("page-intro")
                 .child(
                     p().class("kicker")
-                        .child(a().href(catalogue.clone()).text(format!("Œuvres · {}", ex.short_name)))
+                        .child(
+                            a().href(catalogue.clone())
+                                .text(format!("Œuvres · {}", ex.short_name)),
+                        )
                         .child(span().text(format!(" · {} / {}", index + 1, works.len()))),
                 )
                 .child(h1().text(work.title()))
@@ -941,7 +972,11 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
                 .child(neighbour(previous, "← Précédente", "prev"))
                 .child(neighbour(next, "Suivante →", "next")),
         );
-    let summary = if notice.description.is_empty() { note } else { notice.description };
+    let summary = if notice.description.is_empty() {
+        note
+    } else {
+        notice.description
+    };
     layout(
         format!("{} · {}", work.title(), artist),
         summary.chars().take(155).collect::<String>(),
