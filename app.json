@@ -1,0 +1,26 @@
+{
+  "name": "ARTEON",
+  "description": "Un musée virtuel en 3D, écrit en Rust avec Paquets : une cinquantaine d'expositions, de l'Antiquité au street art, avec visite guidée ou libre, notices complètes et expositions éphémères renouvelées chaque semaine.",
+  "repository": "https://github.com/maxlestage/ARTEON",
+  "keywords": ["rust", "paquets", "musee", "3d", "webassembly", "egui"],
+  "stack": "heroku-26",
+  "buildpacks": [
+    {
+      "url": "emk/rust"
+    }
+  ],
+  "env": {
+    "EPHEMERES": {
+      "description": "1 : monter les expositions éphémères de la semaine à chaque déploiement (Art Institute of Chicago, Cleveland, Metropolitan Museum) ; 0 : s'en passer.",
+      "value": "1",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "success_url": "/"
+}

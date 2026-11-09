@@ -2,6 +2,8 @@
 
 **Un musée virtuel en 3D, écrit uniquement en Rust.**
 
+[![Déployer sur Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/maxlestage/ARTEON)
+
 ARTEON est un musée qui n'existe pas. Chaque exposition occupe un bâtiment dessiné sur plan, souvent inspiré d'un vrai musée (la galerie d'honneur du Rijksmuseum, la nef d'Orsay, le Belvédère, la cour du Smithsonian) : les toiles sont accrochées aux murs, les sculptures — de vrais scans 3D — posées sur leurs socles. On s'y promène librement ou on suit la visite guidée, et un éditeur permet de déplacer les œuvres depuis le musée lui-même. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML, les scènes 3D (`paquets::ecs`) et l'interface de visite ([egui](https://github.com/emilk/egui)), compilées en WebAssembly et rendues en WebGL 2.
 
 51 expositions sont ouvertes (514 œuvres et objets, 8 sculptures en 3D, 408 artistes, ateliers ou cultures), de l'histoire naturelle au street art, plus des expositions éphémères renouvelées chaque semaine (voir plus bas) :
@@ -250,6 +252,16 @@ Deux contraintes du moteur sont prises en compte (et testées) : la physique de 
 - Lancer en développement (http://localhost:3000, avec rechargement) : `paquets dev`
 - Lancer les tests : `cargo test`
 - Compiler pour la production (serveur et bundle WebAssembly optimisés) : `paquets build`
+
+## Déployer sur Heroku depuis un téléphone
+
+Tout se fait depuis le navigateur du téléphone, avec le [buildpack emk/rust](https://elements.heroku.com/buildpacks/emk/heroku-buildpack-rust) :
+
+1. Appuyer sur le bouton **Deploy to Heroku** en haut de ce README (ou ouvrir `https://heroku.com/deploy?template=https://github.com/maxlestage/ARTEON`), choisir un nom d'application, puis **Deploy app**. Heroku lit [`app.json`](app.json) (pile heroku-26, buildpack `emk/rust`) ; le buildpack installe Rust et lance [`heroku-build.sh`](heroku-build.sh) par [`RustConfig`](RustConfig) : les expositions éphémères de la semaine, le serveur, les îlots 3D en WebAssembly et les données des expositions. Le [`Procfile`](Procfile) démarre `target/release/arteon`, qui écoute sur `$PORT`.
+2. Déploiements automatiques : dans GitHub (l'application mobile ou le site), *Settings → Secrets and variables → Actions*, ajouter le secret `HEROKU_API_KEY` (Heroku → *Account settings* → *API Key* → *Reveal*) et la variable `HEROKU_APP_NAME` (le nom choisi). Le workflow [`heroku.yml`](.github/workflows/heroku.yml) déploie alors chaque push sur `master`, et **chaque lundi** pour renouveler les expositions éphémères, par l'API de Heroku (sans ligne de commande). Il crée l'application si elle n'existe pas et lui met le buildpack `emk/rust`. On peut aussi le lancer à la main : *Actions → Déployer sur Heroku → Run workflow*.
+3. Variable de configuration facultative (Heroku → *Settings → Config Vars*) : `EPHEMERES=0` pour ne pas monter les expositions éphémères. `REPOS_TOKEN` (un jeton GitHub) ne sert que si Paquets devenait privé.
+
+`build.rs` garde un cache des expositions déjà calculées (`arteon-cache`, dans le dossier de compilation que le buildpack conserve d'un déploiement à l'autre) : seules les expositions modifiées sont recalculées. Le premier déploiement prend plusieurs minutes ; les suivants sont bien plus rapides. Heroku n'a pas d'offre gratuite (un dyno Eco coûte environ 5 $ par mois).
 
 ## Publier sur GitHub Pages
 

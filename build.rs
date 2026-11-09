@@ -289,6 +289,77 @@ fn notice_code(
     )
 }
 
+// ─── Le cache des expositions ────────────────────────────────────────────────
+
+/// Le dossier du cache : à côté des compilations (`CARGO_TARGET_DIR` ou `target/`), pour
+/// qu'il serve aux deux cibles (serveur et WebAssembly) et d'un déploiement à l'autre.
+fn cache_root() -> PathBuf {
+    std::env::var_os("CARGO_TARGET_DIR")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("target"))
+        .join("arteon-cache")
+}
+
+/// L'empreinte de tout ce qui fait une exposition : le code de build.rs, le fichier .toml,
+/// et le contenu de ses images et de ses modèles.
+fn cache_key(name: &str, slug: &str, file: &File) -> u64 {
+    use std::hash::{Hash, Hasher};
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    for code in [
+        include_str!("build.rs"),
+        include_str!("build/plan.rs"),
+        include_str!("build/mosaic.rs"),
+        include_str!("build/mesh.rs"),
+    ] {
+        code.hash(&mut h);
+    }
+    std::fs::read(name).unwrap_or_default().hash(&mut h);
+    for o in &file.oeuvres {
+        let path = Path::new("public/tableaux").join(slug).join(&o.image);
+        std::fs::read(path).unwrap_or_default().hash(&mut h);
+    }
+    for s in &file.sculptures {
+        std::fs::read(Path::new("modeles").join(&s.modele))
+            .unwrap_or_default()
+            .hash(&mut h);
+    }
+    h.finish()
+}
+
+/// Range le résultat d'une exposition dans le cache : son code, ses données, ses textes
+/// et les vignettes de ses sculptures ; les versions précédentes sont effacées.
+fn save_to_cache(cache: &Path, slug: &str, code: &str, data_dir: &Path) {
+    let files = cache.join("files");
+    let saved = (|| -> std::io::Result<()> {
+        if let Some(parent) = cache.parent() {
+            for entry in std::fs::read_dir(parent).into_iter().flatten().flatten() {
+                let n = entry.file_name().to_string_lossy().to_string();
+                let stale = n
+                    .strip_prefix(&format!("{slug}-"))
+                    .is_some_and(|k| k.len() == 16 && k.chars().all(|c| c.is_ascii_hexdigit()));
+                if stale && entry.path() != cache {
+                    let _ = std::fs::remove_dir_all(entry.path());
+                }
+            }
+        }
+        std::fs::create_dir_all(&files)?;
+        for entry in std::fs::read_dir(data_dir)?.flatten() {
+            let n = entry.file_name().to_string_lossy().to_string();
+            if n == format!("{slug}.bin")
+                || n == format!("{slug}.json")
+                || n.starts_with(&format!("{slug}-sculpture-"))
+            {
+                std::fs::copy(entry.path(), files.join(&n))?;
+            }
+        }
+        // Le code en dernier : sa présence dit que le cache est complet.
+        std::fs::write(cache.join("code.rs"), code)
+    })();
+    if saved.is_err() {
+        let _ = std::fs::remove_dir_all(cache);
+    }
+}
+
 /// Les textes longs d'une exposition, en JSON : `works` (par nom de page), `artists`
 /// (par nom), `museum` et `source` (le fichier .toml, pour l'éditeur du musée).
 fn texts_json(name: &str, file: &File) -> String {
@@ -442,6 +513,22 @@ fn main() {
          /// Les expositions, dans l'ordre de l'accueil.\npub static EXHIBITIONS: &[Exhibition] = &[\n",
     );
     for (name, slug, file) in &parsed {
+        // Une exposition déjà calculée avec exactement les mêmes fichiers (pour l'autre
+        // cible, ou lors d'un déploiement précédent) est reprise du cache.
+        let cache = cache_root().join(format!("{slug}-{:016x}", cache_key(name, slug, file)));
+        if let Ok(code) = std::fs::read_to_string(cache.join("code.rs")) {
+            out.push_str(&code);
+            for entry in std::fs::read_dir(cache.join("files"))
+                .into_iter()
+                .flatten()
+                .flatten()
+            {
+                std::fs::copy(entry.path(), data_dir.join(entry.file_name()))
+                    .expect("copie depuis le cache");
+            }
+            continue;
+        }
+        let start = out.len();
         let mut data = Vec::new();
         data.extend_from_slice(b"ARTN\x01\0\0\0");
         exhibition(&mut out, &mut data, &data_dir, name, slug, file);
@@ -453,6 +540,7 @@ fn main() {
             texts_json(name, file),
         )
         .expect("écriture des textes");
+        save_to_cache(&cache, slug, &out[start..], &data_dir);
     }
     out.push_str("];\n");
     std::fs::write(out_dir.join("expositions.rs"), out).expect("écriture de expositions.rs");
