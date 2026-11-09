@@ -1,0 +1,975 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « MODE ET COSTUME » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/mode-costume/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /mode-costume.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 68
+nom_court = "Mode et costume"
+mouvement = "Mode et costume, du XVIIIᵉ siècle aux années folles"
+cadre = "vitrine"
+couleur = "#7a3b55"
+titre = "Mode et costume, deux siècles d'élégance"
+artiste = "Worth, Doucet, Poiret, Fortuny, Lanvin…"
+dates = "1765–1924"
+accroche = "Exposition virtuelle · Palais Galliera, Paris"
+introduction = """
+Une robe raconte son époque : la cour de Louis XV dans les paniers d'une robe à la \
+française, le rêve d'Antiquité dans la mousseline Empire, l'âge industriel dans les \
+cerceaux d'acier des crinolines. La visite suit dix vêtements, de 1765 aux années \
+folles, quand Paris invente avec Worth, Doucet, Poiret et Lanvin le métier de grand \
+couturier, et s'ouvre aux kimonos du Japon comme aux étoffes d'Afrique. La plupart \
+viennent du Costume Institute du Metropolitan Museum de New York ; la robe Delphos de \
+Fortuny appartient au Palais Galliera. Le bâtiment s'inspire de ce palais parisien \
+devenu musée de la Mode : un vestibule, une grande galerie et trois salles aux \
+vitrines tamisées."""
+vitrine = "robe-a-la-francaise.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Palais Galliera, musée de la Mode de Paris"
+ville = "Paris, France"
+architecte = "Léon Ginain"
+construction = "1878–1894"
+presentation = """
+Le palais est né de la volonté d'une grande collectionneuse génoise, Maria \
+Brignole-Sale, duchesse de Galliera. En 1878, elle fait élever par l'architecte Léon \
+Ginain, sur la colline de Chaillot, un palais destiné à montrer ses tableaux et ses \
+objets d'art, qu'elle pense offrir à la Ville de Paris. Elle change d'avis et ses \
+collections partent finalement pour Gênes, sa ville natale : seul le bâtiment, achevé \
+en 1894, revient à Paris. De style Renaissance italienne, en pierre claire, il s'ouvre \
+sur un jardin par une façade à arcades ornée de statues. Après avoir accueilli des \
+expositions, il devient en 1977 le musée de la Mode et du Costume de la Ville de \
+Paris. Ses collections, parmi les plus riches du monde, vont du XVIIIᵉ siècle à nos \
+jours. Comme la lumière abîme les textiles, rien n'y est exposé en permanence : le \
+musée présente ses robes par expositions successives, dans des salles à la lumière \
+tamisée. En 2020, de nouvelles galeries aménagées dans les caves voûtées ont agrandi \
+le parcours."""
+ici = """
+Le bâtiment d'ARTEON retient du Palais Galliera sa pierre claire et ses vitrines. On \
+entre par le sud dans « Le vestibule », haut de sept mètres, aux murs de pierre. Il \
+ouvre sur « La grande galerie », longue de trente-quatre mètres et haute de dix, aux \
+murs rose poudré, où quatre robes vont de 1765 à 1872. À l'ouest, la salle « La Belle \
+Époque des couturiers » réunit Doucet et Poiret ; au nord, « Les années folles » \
+confronte la Delphos de Fortuny et la robe de style de Lanvin ; à l'est, « Costumes \
+du monde » présente un kimono japonais et un kente asante."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Palais Galliera à Paris (Léon Ginain, 1878–1894), musée de la Mode :
+# un vestibule de pierre claire, puis une grande galerie haute qui distribue
+# trois salles plus intimes, aux vitrines tamisées : la Belle Époque à l'ouest,
+# les années folles au nord, les costumes du monde à l'est. x et z : le centre
+# de la salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare
+# d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, en pierre claire comme le palais de la duchesse de Galliera : de là, on gagne la grande galerie."
+murs = "#ece5da"
+x = 0
+z = 0
+largeur = 14
+profondeur = 10
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La grande galerie"
+theme = "Un siècle de silhouettes : les paniers de 1765, la taille haute de l'Empire, la crinoline, puis la tournure de Worth."
+murs = "#dfcbc4"
+x = 0
+z = -12
+largeur = 34
+profondeur = 14
+hauteur = 10
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "La Belle Époque des couturiers"
+theme = "Jacques Doucet et son ancien élève Paul Poiret : la robe de bal à corset, puis le manteau qui s'en libère."
+murs = "#e5d8c6"
+x = -23
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "Les années folles"
+theme = "La robe Delphos de Mariano Fortuny, plissée comme une statue grecque, et la robe de style de Jeanne Lanvin."
+murs = "#ddd5ca"
+x = 0
+z = -25
+largeur = 14
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "Costumes du monde"
+theme = "Deux grands vêtements nés loin de Paris : un furisode japonais brodé d'or et un kente tissé par les Asante."
+murs = "#e8dbc4"
+x = 23
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Robe à la française"
+artiste = "Couturières anonymes"
+annee = "vers 1765"
+image = "robe-a-la-francaise.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Robe_%C3%A0_la_Fran%C3%A7aise_MET_DT5011.jpg"
+technique = "Soie brochée ; robe ouverte et jupe assortie, portées sur des paniers"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Une robe de cour aux hanches immenses : posée sur des paniers, la soie bleu glacier s'étale presque à l'horizontale."
+description = """
+Vue de face, la robe est presque aussi large que haute. Le corsage, très ajusté, \
+descend en pointe sur le ventre ; les manches s'arrêtent au coude, sur des volants de \
+soie. De part et d'autre de la taille, la jupe part à l'horizontale avant de tomber \
+droit : dessous, des paniers, armatures légères attachées aux hanches, la soutiennent. \
+La robe est ouverte devant et laisse voir une jupe assortie, garnie en bas de deux \
+rangs de plis. Les bords de l'ouverture sont couverts d'une large bande de soie \
+plissée, encadrée d'un galon frisé couleur vieil or, qui descend du décolleté jusqu'à \
+l'ourlet. Sur le fond bleu pâle, de petits bouquets de fleurs et des tiges légères \
+sont semés partout, tissés dans l'étoffe. Derrière, la robe s'allonge en une courte \
+traîne qui touche le sol."""
+evocation = """
+La robe à la française est le grand habit de société du XVIIIᵉ siècle, portée à la \
+cour comme dans les salons. Sa largeur n'a rien de pratique : elle oblige à passer les \
+portes de biais et impose une démarche lente et glissée. C'est précisément ce qu'on \
+lui demande. Elle affiche le rang de celle qui la porte, sa fortune, et le loisir \
+d'une vie où l'on ne travaille pas de ses mains. Les fleurs semées sur la soie, les \
+tons pâles et les garnitures froufroutantes répondent au goût rocaille, celui des \
+boiseries, des porcelaines et des fêtes galantes de Watteau et de Boucher. Le corps, \
+lui, reste contraint : sous la robe, un corps baleiné redresse le buste et affine la \
+taille. Cette silhouette s'efface dans les années 1780 au profit de robes plus \
+simples, et la Révolution l'emporte avec l'Ancien Régime."""
+histoire = """
+Au XVIIIᵉ siècle, une telle robe n'est pas l'œuvre d'un créateur connu. On choisit \
+d'abord l'étoffe, qui coûte de loin le plus cher : une soie façonnée, tissée sur des \
+métiers à la tire dans les grands centres de la soierie, comme Lyon ou le quartier \
+londonien de Spitalfields. Une couturière la coupe et l'assemble, puis une marchande \
+de modes ajoute les garnitures, volants et galons, que l'on change au gré de la mode. \
+Le Metropolitan Museum la décrit simplement comme européenne, vers 1765 : son lieu de \
+fabrication exact n'est pas connu. La robe et sa jupe, conservées ensemble, sont \
+entrées au Costume Institute en 2001, achetées grâce au legs d'Irene Lewisohn, l'une \
+des fondatrices du musée new-yorkais d'art du costume dont est né le Costume \
+Institute."""
+facture = """
+La robe est faite de lés de soie entiers, assemblés de façon à gaspiller le moins \
+possible une étoffe précieuse : on pouvait la découdre et la remonter selon la mode. \
+Dans le dos, la soie part des épaules en larges plis plats et tombe librement jusqu'au \
+sol. Devant, l'ouverture du corsage est comblée par une pièce rapportée, garnie d'une \
+échelle de petits boutons. Les bords sont couverts de soie plissée en petits carrés, \
+bordée de galon. Les fleurs sont brochées : le tisserand les fait apparaître avec des \
+fils supplémentaires, seulement là où le motif l'exige."""
+details = [
+  "Les paniers qui élargissent les hanches sans arrondir la jupe devant ni derrière.",
+  "Les volants de soie au coude, où l'on cousait des manchettes de dentelle.",
+  "La soie plissée en petits carrés, bordée de galon, qui suit toute l'ouverture.",
+  "Les bouquets brochés, semés régulièrement sur le fond bleu pâle.",
+  "Les deux rangs de plis au bas de la jupe de dessous.",
+]
+themes = ["xviiie siècle", "cour", "paniers", "soie", "rocaille"]
+anecdote = """
+Les plis qui tombent des épaules, dans le dos de ces robes, portent le nom d'Antoine \
+Watteau, qui en a vêtu tant de ses personnages. Dans L'Enseigne de Gersaint, peinte \
+en 1720, une cliente vue de dos en montre un bel exemple, près d'un demi-siècle avant \
+cette robe."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.8
+
+[[oeuvres]]
+titre = "Robe du soir à la taille haute"
+artiste = "Couturières anonymes"
+annee = "1804–1805"
+image = "robe-empire.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Evening_dress_MET_DT7445.jpg"
+technique = "Mousseline de coton brodée blanc sur blanc, avec traîne (France)"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Une colonne de mousseline blanche : au temps du sacre de Napoléon, les élégantes s'habillent comme des statues antiques."
+description = """
+Sur un mannequin coiffé d'un turban, une robe blanche tombe droit jusqu'au sol. La \
+taille est placée très haut, juste sous la poitrine, et marquée par une bande \
+brodée. Le décolleté carré est large et bas ; les manches sont de courts ballons \
+froncés, terminés par un petit volant. Devant, une colonne de rosaces brodées, reliées \
+les unes aux autres, descend de la ceinture jusqu'à l'ourlet, où elle s'épanouit en \
+une bordure de feuillages. Derrière, la robe s'allonge en une longue traîne arrondie, \
+elle aussi bordée de broderie, qui s'étale sur le sol. Sous l'ourlet pointe un petit \
+soulier plat. Pour la présenter, le musée a habillé le mannequin de longs gants, d'un \
+collier de perles et d'un éventail doré, comme pour une soirée."""
+evocation = """
+Après les paniers et les soies brochées de l'Ancien Régime, cette robe semble venir \
+d'un autre monde. Elle s'inspire des statues et des vases grecs et romains, que les \
+fouilles de Pompéi et d'Herculanum et les gravures avaient mis à la mode : la femme \
+devient une colonne drapée. Le blanc évoque le marbre, la simplicité une vertu \
+républicaine, même si cette simplicité coûte cher. Les portraits du temps, comme \
+Madame Récamier peinte par David en 1800, montrent le même idéal de naturel et de \
+grâce antique. On a aussi lu dans ces robes une forme de liberté : plus de paniers, \
+plus de corps rigide, la ligne du corps se devine. Les caricaturistes se moquaient \
+pourtant de ces élégantes à demi vêtues, grelottant l'hiver dans leur mousseline."""
+histoire = """
+La robe date de 1804-1805, les années où Napoléon Bonaparte devient empereur et se \
+fait sacrer à Notre-Dame, le 2 décembre 1804. Autour de Joséphine, la cour impériale \
+donne le ton à l'Europe entière, et le style qu'on appellera Empire s'impose. La \
+mousseline de coton, longtemps importée des Indes, est désormais tissée aussi en \
+Europe ; elle est brodée en blanc par des brodeuses spécialisées. On ignore qui a \
+cousu cette robe et qui l'a portée. La longue traîne indique une tenue habillée, pour \
+le soir ou les réceptions. Le Metropolitan Museum l'a achetée en 1983, grâce à des \
+dons faits en mémoire d'Elizabeth N. Lawrence, et la présente comme française."""
+facture = """
+La robe est une leçon d'économie de moyens : quelques lés droits de mousseline, \
+froncés sous la poitrine et dans le dos, suffisent à créer la silhouette. Toute la \
+richesse tient dans la broderie blanc sur blanc, faite à l'aiguille, en léger relief, \
+qui joue avec la lumière plutôt qu'avec la couleur. La taille haute raccourcit le \
+buste et allonge la jambe, et la traîne, qui s'étale derrière, donne au corps la \
+verticalité d'une colonne. L'étoffe, presque transparente, se portait sur une \
+chemise et un jupon légers."""
+details = [
+  "La bande brodée sous la poitrine, qui marque la taille haute.",
+  "La colonne de rosaces brodées au milieu du devant.",
+  "La bordure de feuillages au bas de la jupe et autour de la traîne.",
+  "Les manches ballon froncées, terminées par un petit volant.",
+  "Le soulier plat, sans talon, qui dépasse de l'ourlet.",
+]
+themes = ["empire", "antiquité", "mousseline", "blanc", "broderie"]
+anecdote = """
+Le style dit Empire est né avant l'Empire : dès la fin des années 1790, sous le \
+Directoire, les élégantes surnommées les Merveilleuses portent déjà ces robes à taille \
+haute en mousseline blanche. Le nom s'est fixé ensuite, d'après le règne de \
+Napoléon."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Robe de bal à crinoline"
+artiste = "Couturières anonymes"
+annee = "vers 1860"
+image = "robe-a-crinoline.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ball_gown_MET_DT7576.jpg"
+technique = "Soie façonnée et coton, portée sur une crinoline (probablement États-Unis)"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Une immense cloche de soie bleue : vers 1860, la crinoline à cerceaux d'acier règne sur les bals d'Europe et d'Amérique."
+description = """
+Un mannequin aux cheveux bruns relevés en chignon se tient de trois quarts, un \
+éventail de plumes entre les mains. Sa robe forme une cloche parfaite, très large à la \
+base, sans un pli de travers. Le corsage, serré et pointu à la taille, dégage les \
+épaules : le décolleté est bordé d'une berthe, collerette de dentelle et de ruban bleu \
+posée en V. Les manches ne sont que de petits volants de ruban. Sur la jupe, un grand \
+motif tissé déroule ses courbes : de longues palmes, comme celles des châles de \
+cachemire, blanches et argentées sur fond bleu ciel, entre lesquelles s'ouvrent de \
+petits bouquets de fleurs bleues. Aucune garniture ne vient couper le motif : \
+l'étoffe se suffit à elle-même."""
+evocation = """
+La crinoline est la silhouette du Second Empire, en France, et de l'Amérique d'avant \
+la guerre de Sécession. Sa largeur tient à distance : on n'approche pas une femme \
+ainsi vêtue, on la salue. La taille fine, les épaules nues et la jupe immense \
+composent une image de féminité délicate, presque immobile, celle de la maîtresse de \
+maison et de la danseuse de bal. C'est aussi un produit de l'âge industriel : les \
+cerceaux sont en acier, fabriqués en grande série, et les soies façonnées sortent de \
+manufactures de plus en plus mécanisées. Les caricaturistes, Daumier à Paris ou les \
+dessinateurs du Punch à Londres, se sont moqués de ces cages où les femmes semblaient \
+enfermées, qui renversaient les meubles et encombraient les voitures publiques."""
+histoire = """
+Cette robe de bal a probablement été faite aux États-Unis vers 1860, d'après les \
+modèles venus de Paris, que les journaux de mode diffusaient par leurs gravures en \
+couleurs. Son histoire précise n'est pas connue : elle est entrée au Metropolitan \
+Museum en 1983, offerte par Mrs. Frederick van Beuren Joy en mémoire de Mrs. Jacob \
+Harsen Halsted. La crinoline elle-même a beaucoup changé en quelques années. D'abord \
+un jupon raide en tissu de crin de cheval et de lin, d'où son nom, elle devient vers \
+1856 une cage légère de cerceaux d'acier reliés par des rubans. Cette invention \
+permet d'élargir la jupe sans superposer de lourds jupons, et la mode s'en empare \
+aussitôt, des cours d'Europe jusqu'aux salons de New York."""
+facture = """
+Toute la robe est conçue pour la crinoline qu'elle recouvre : la jupe, froncée à la \
+taille, est faite de plusieurs lés droits qui s'évasent jusqu'au sol. Le motif, très \
+grand, est tissé dans l'étoffe ; depuis l'invention du métier Jacquard au début du \
+siècle, ces dessins complexes peuvent se répéter mécaniquement sur de grandes \
+longueurs. La berthe de dentelle posée sur les épaules prolonge la ligne horizontale \
+du décolleté et fait paraître la taille plus fine, par contraste avec l'ampleur de la \
+jupe."""
+details = [
+  "La berthe de dentelle et de ruban posée en V sur les épaules.",
+  "Les grandes palmes blanches inspirées des châles de cachemire.",
+  "La pointe du corsage, qui descend sur la jupe.",
+  "Les petites manches en volants de ruban bleu.",
+  "L'éventail de plumes que tient le mannequin.",
+]
+themes = ["crinoline", "bal", "second empire", "soie", "industrie"]
+anecdote = """
+La crinoline prenait feu facilement. En 1871, en Irlande, Emily et Mary Wilde, \
+demi-sœurs du futur écrivain Oscar Wilde, meurent de leurs brûlures après un bal : la \
+robe de l'une s'était enflammée près d'une cheminée, et l'autre avait pris feu en \
+voulant la secourir."""
+salle = 2
+mur = "nord"
+place = 7
+largeur = 1.8
+
+[[oeuvres]]
+titre = "Robe de bal à tournure"
+artiste = "Charles Frederick Worth"
+annee = "vers 1872"
+image = "robe-de-bal-worth.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ball%2Bgown%2BMET%2BDT426.jpg"
+technique = "Soie, galons brodés et franges ; maison Worth, Paris"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Une robe du premier grand couturier : la crinoline a reculé, et toute l'ampleur se concentre désormais dans le dos."
+description = """
+De profil, la silhouette a changé : le devant de la robe est presque plat, et toute \
+l'ampleur part vers l'arrière, où la soie vert d'eau se gonfle en un grand drapé avant \
+de s'étaler en traîne sur le sol. Le devant de la jupe est barré de quatre larges \
+bandes horizontales : des galons crème brodés de petites fleurs rouges, bleues et \
+jaunes, chacun terminé par une épaisse frange dorée. La même frange borde le corsage, \
+qui s'ouvre en revers sur la poitrine, et la basque qui couvre les hanches. Les \
+manches, longues jusqu'au coude, se terminent par un revers frangé, noué d'un petit \
+nœud de velours sombre. D'autres nœuds, bleu violacé, ferment le corsage sur la \
+poitrine."""
+evocation = """
+Cette robe montre le moment où la crinoline cède la place à la tournure : un coussin \
+ou une petite armature, attachés au bas du dos, soutiennent désormais la jupe vers \
+l'arrière. La femme se regarde de profil, comme une silhouette en mouvement, et la \
+traîne souligne chaque pas. Franges et galons brodés accumulent les effets de \
+richesse, dans le goût d'une époque qui aime l'abondance des ornements, des tentures \
+et des passementeries. Signée Worth, la robe dit aussi autre chose : la cliente \
+n'achète plus seulement une étoffe et un travail, mais le nom d'un créateur. Porter du \
+Worth, c'est suivre l'exemple de l'impératrice Eugénie, qui l'avait rendu célèbre, et \
+rejoindre les princesses et les riches Américaines qui viennent rue de la Paix se \
+faire habiller."""
+histoire = """
+Charles Frederick Worth a ouvert sa maison au 7, rue de la Paix, en 1858. Vers 1872, \
+l'Empire est tombé et l'impératrice Eugénie vit en exil en Angleterre, mais la maison \
+a traversé la guerre et la Commune, et sa clientèle est désormais internationale. Les \
+Américaines fortunées comptent parmi ses meilleures clientes : elles commandent \
+plusieurs toilettes à chaque séjour et les rapportent à New York ou à Boston dans \
+leurs malles. On ne connaît pas la première propriétaire de cette robe. Elle a été \
+offerte au Metropolitan Museum en 1946 par Mrs. Philip K. Rhinelander, issue d'une \
+vieille famille new-yorkaise. Conservée en plusieurs pièces, elle témoigne du soin \
+avec lequel ces toilettes parisiennes ont été gardées pendant des générations."""
+facture = """
+Worth dessine un modèle et le fait exécuter dans ses ateliers par des dizaines \
+d'ouvrières, en l'adaptant aux mesures de chaque cliente. Il est réputé pour avoir \
+organisé sa production en éléments standardisés, corsages, manches et jupes, que l'on \
+combine à volonté. Ici, le corsage à basque, très ajusté, est taillé à part. La jupe \
+de dessous, barrée de galons, reste plate devant, tandis que la surjupe est relevée et \
+drapée derrière, au-dessus de la tournure. Le jeu des matières, soie lisse, broderie \
+fine et franges épaisses, donne du relief à une couleur unique."""
+details = [
+  "Le drapé de soie qui se gonfle au bas du dos, au-dessus de la tournure.",
+  "Les quatre galons brodés de fleurs qui barrent le devant de la jupe.",
+  "Les longues franges dorées, qui bougeaient à chaque pas.",
+  "Les petits nœuds sombres au poignet et sur la poitrine.",
+  "La traîne qui s'étale au sol, derrière la robe.",
+]
+themes = ["haute couture", "tournure", "worth", "franges", "paris"]
+anecdote = """
+Worth passe pour le premier couturier à avoir présenté ses modèles sur des femmes \
+vivantes, ancêtres des mannequins. La première fut sa propre épouse, Marie Vernet, \
+vendeuse comme lui chez le marchand de soieries Gagelin quand ils se sont \
+rencontrés."""
+salle = 2
+mur = "nord"
+place = 9
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Robe de bal"
+artiste = "Jacques Doucet"
+annee = "1898–1900"
+image = "robe-de-bal-doucet.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ball_gown_MET_65.184.65a-b_front_CP4.jpg"
+technique = "Soie et fils métalliques, tulle, fleurs de soie"
+collection = "Metropolitan Museum of Art, New York (Brooklyn Museum Costume Collection)"
+note = "Une robe de bal d'un vert d'eau changeant : Doucet, le couturier des actrices, en fait une tige qui s'allonge en traîne."
+description = """
+Le mannequin porte une robe longue d'un vert tendre, aux reflets argentés. Le \
+corsage, très ajusté, épouse le buste et creuse la taille ; le décolleté, en cœur, \
+est adouci par un drapé de tulle couleur chair qui remonte vers les épaules. Il n'y a \
+pas de manches : la robe tient par deux bretelles posées au bord des épaules, chacune \
+ornée d'une touffe de fleurs de soie d'un vert plus soutenu. La jupe, lisse sur les \
+hanches, s'évase vers le bas en corolle et s'étire derrière en une traîne qui dessine \
+des vagues sur le sol. L'étoffe est parcourue de fines cassures et de lueurs, comme la \
+surface d'une feuille froissée."""
+evocation = """
+Vers 1900, la mode aime les courbes : celles de l'Art nouveau, des tiges et des \
+fleurs, que l'on retrouve dans la ligne même de cette robe. Le corps prend la forme \
+d'un S, poitrine en avant et reins cambrés, grâce à un nouveau corset au devant \
+droit. Doucet, amateur passionné du XVIIIᵉ siècle, aime les couleurs pâles, les \
+tulles, les dentelles et les fleurs artificielles : ses robes ont la douceur d'un \
+pastel. Faite pour danser, celle-ci devait scintiller à chaque mouvement. Elle \
+appartient à la Belle Époque, quand la couture parisienne habille aristocrates, \
+grandes bourgeoises et actrices, et quand la toilette est une affaire de \
+représentation sociale, changée plusieurs fois par jour."""
+histoire = """
+Jacques Doucet dirige alors l'une des maisons les plus raffinées de Paris, rue de la \
+Paix, à quelques pas de Worth. Ses clientes sont des femmes du monde et des actrices \
+célèbres, comme Réjane ou Sarah Bernhardt, qu'il habille à la ville comme à la scène. \
+On ignore pour qui cette robe a été faite. Elle a été offerte au Brooklyn Museum en \
+1965 par Mrs. Daniel M. McKeon et Robert Hoguet Jr. En 2009, le Brooklyn Museum a \
+confié au Metropolitan Museum toute sa collection de costumes, l'une des plus \
+importantes des États-Unis, qui est désormais conservée au Costume Institute sous le \
+nom de Brooklyn Museum Costume Collection. Comme la plupart des robes de ce temps, \
+elle se compose de plusieurs pièces séparées."""
+facture = """
+Doucet travaille la matière autant que la coupe : ici, une soie associée à des fils \
+métalliques, dont la surface froissée accroche la lumière et passe du vert à \
+l'argent. Le corsage repose sur une armature intérieure baleinée qui lui donne sa \
+forme sans aucun pli visible. La jupe est taillée en lés étroits en haut et larges en \
+bas, pour coller aux hanches puis s'ouvrir en traîne. Le tulle couleur chair du \
+décolleté crée l'illusion d'une peau nue, et les fleurs posées sur les épaules \
+remplacent les manches."""
+details = [
+  "Les touffes de fleurs de soie vert sombre posées sur chaque épaule.",
+  "Le tulle couleur chair qui adoucit le décolleté.",
+  "La pointe de la taille, au centre du corsage.",
+  "Les reflets argentés de l'étoffe, plus visibles dans les plis.",
+  "La traîne ondulée qui s'étale derrière la robe.",
+]
+themes = ["belle époque", "bal", "art nouveau", "soie", "couture"]
+anecdote = """
+Grand collectionneur, Doucet vend en 1912 ses tableaux et ses meubles du XVIIIᵉ \
+siècle pour se tourner vers l'art de son temps. En 1924, conseillé par André Breton, \
+il achète à Picasso Les Demoiselles d'Avignon, aujourd'hui au Museum of Modern Art de \
+New York."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Manteau du soir"
+artiste = "Paul Poiret"
+annee = "1912"
+image = "manteau-du-soir-poiret.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Opera_coat_MET_DP142046.jpg"
+technique = "Satin de soie, velours, fils métalliques"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Un manteau du soir de satin jaune, sans boutons, à porter sans corset : Poiret enveloppe le corps comme dans un kimono."
+description = """
+Sur un mannequin aux cheveux courts sculptés, un ample manteau de satin jaune d'or \
+croise sur le devant et descend jusqu'aux chevilles. Il n'a pas de boutons : il se \
+ferme en portefeuille, retenu à la taille par une grosse attache ronde de velours \
+noir. Un petit col noir et de larges revers gris argent encadrent le buste. Les \
+manches, très larges, tombent de l'épaule à la manière d'un kimono et se terminent par \
+de grands parements. Des bandes ajourées, travaillées de fils métalliques couleur \
+bronze et vert-de-gris, couvrent le haut des bras, les poignets et tout le bord droit \
+du manteau. En bas, le pan avant s'arrondit et laisse voir, dessous, une robe noire \
+finement plissée."""
+evocation = """
+Paul Poiret se vantait d'avoir libéré les femmes du corset : la formule est discutée, \
+car d'autres couturiers allaient dans le même sens, mais ce manteau montre bien la \
+rupture. Il ne serre pas la taille, il enveloppe. Le corps n'est plus sculpté par la \
+couture, il est drapé, comme dans les vêtements d'Orient. Poiret puise dans un Japon, \
+une Perse et une Turquie rêvés, et dans le choc des Ballets russes, dont les décors \
+éclatants enthousiasment Paris à partir de 1909. Le jaune vif, le noir et l'argent, \
+posés en grandes surfaces, rompent avec les tons pastel de la Belle Époque. Porté pour \
+aller à l'opéra ou au théâtre, un tel manteau était fait pour une entrée remarquée : \
+on y paraissait moins habillée que costumée."""
+histoire = """
+En 1912, Poiret est au sommet de sa gloire. Ancien employé de Doucet puis de la maison \
+Worth, il a ouvert sa propre maison en 1903 et s'est installé en 1909 dans un hôtel \
+particulier de l'avenue d'Antin, près des Champs-Élysées. Il ne se contente pas de la \
+couture : en 1911, il lance une maison de parfums, Rosine, et l'atelier Martine, où \
+des jeunes filles sans formation artistique dessinent des motifs pour les tissus et \
+la décoration. L'année suivante, en 1913, il part pour une tournée de conférences aux \
+États-Unis, où ses modèles sont copiés en masse. Ce manteau a été acheté par le \
+Metropolitan Museum en 1982, grâce au legs d'Irene Lewisohn, pour illustrer ce \
+moment où la mode parisienne regarde vers l'Orient."""
+facture = """
+Poiret coupe en grandes formes simples et en lignes droites, au lieu de modeler le \
+vêtement sur le corps par des pinces et des baleines. L'ampleur tombe librement, et \
+c'est le tissu lui-même, un satin lourd et brillant, qui fait le volume. Les \
+contrastes sont voulus : satin lisse et lumineux contre bandes ajourées et sombres, \
+velours noir mat contre satin gris. La fermeture, une simple attache à la taille, \
+rappelle la façon dont on croise un kimono et dont on le retient par une ceinture."""
+details = [
+  "La grosse attache ronde de velours noir, à la taille.",
+  "Les revers gris argent et le petit col de velours noir.",
+  "Les bandes ajourées aux reflets bronze sur les épaules et les poignets.",
+  "Les manches larges, tombant de l'épaule comme celles d'un kimono.",
+  "La robe noire plissée qu'on aperçoit sous le manteau.",
+]
+themes = ["poiret", "orientalisme", "japonisme", "manteau", "soirée"]
+anecdote = """
+Le 24 juin 1911, Poiret donne dans son jardin la Mille et Deuxième Nuit, une fête \
+persane où les invités doivent venir costumés à l'orientale. Ceux qui arrivent en \
+tenue de soirée ordinaire sont priés de revêtir un costume fourni par la maison avant \
+d'entrer."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Robe Delphos"
+artiste = "Mariano Fortuny"
+annee = "1919–1920"
+image = "robe-delphos.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Delphos,_1969.39.1(2).jpg"
+technique = "Taffetas de soie plissé, col et ceinture imprimés d'or, perles de verre (Venise)"
+collection = "Palais Galliera, musée de la Mode de la Ville de Paris"
+note = "Une colonne de soie grise plissée : la robe Delphos, inspirée d'une statue grecque, se porte sans corset et se range roulée sur elle-même."
+description = """
+Sur un buste de couturière, la robe tombe d'un seul jet, droite, jusqu'au sol, où \
+elle s'évase légèrement et ondule. Toute la soie, d'un gris argenté, est parcourue de \
+fins plis verticaux, serrés et irréguliers, qui suivent le corps sans le serrer. Il \
+n'y a pas de manches : les épaules sont dégagées, et la robe monte jusqu'au cou en un \
+petit col droit. Ce col et la ceinture, posée sous la poitrine, sont faits d'un même \
+ruban de soie imprimé d'or, à motifs géométriques. Le long des côtés, de minuscules \
+perles de verre jaunes forment une ligne de points brillants, de l'épaule jusqu'au \
+bas de la robe. Sur le fond noir de la photographie, la soie semble éclairée de \
+l'intérieur."""
+evocation = """
+Mariano Fortuny a nommé sa robe d'après l'Aurige de Delphes, statue grecque de bronze \
+découverte en 1896, dont la longue tunique tombe en plis verticaux. La Delphos est un \
+rêve d'Antiquité, comme la robe Empire un siècle plus tôt, mais elle va plus loin : \
+elle ne tient que par son étoffe et habille le corps sans le contraindre. Au début, \
+on la porte surtout chez soi, comme une luxueuse robe d'intérieur, avant qu'elle ne \
+s'impose le soir. Danseuses, actrices et femmes de lettres l'adoptent. Marcel Proust \
+en habille son héroïne Albertine dans La Prisonnière : pour le narrateur, ces robes \
+font surgir le souvenir de Venise et de ses palais, et deviennent l'image d'un désir \
+qui ne se laisse pas saisir."""
+histoire = """
+Fortuny, peintre et inventeur installé à Venise, met au point la Delphos vers 1907 \
+avec sa compagne et future épouse, Henriette Negrin, et dépose à Paris en 1909 un \
+brevet pour son procédé de plissage. Il la fabrique ensuite pendant des décennies dans \
+ses ateliers vénitiens, en de nombreuses couleurs, et la vend à Paris, à Londres puis \
+à New York. Cet exemplaire, daté de 1919-1920, formait un ensemble avec un manteau et \
+une ceinture. Il est entré en 1969 dans les collections de la Ville de Paris, don de \
+Mme Faure-Beaulieu, et appartient aujourd'hui au Palais Galliera. Le musée signale que \
+ce modèle à col montant, qui reprend le motif de la ceinture, est assez rare. Au dos, \
+une griffe porte la mention Fortuny déposé, fabriqué en Italie."""
+facture = """
+Le secret du plissé Fortuny n'a jamais été entièrement dévoilé. La soie, teinte dans \
+des bains successifs pour obtenir des nuances changeantes, est plissée à la main, \
+puis les plis sont fixés par la chaleur. Ici, cinq lés de taffetas ont été cousus \
+ensemble pour former un tube. Les perles de verre, venues de Murano, ne sont pas \
+seulement décoratives : elles alourdissent la soie et la font tomber droit. Le col et \
+la ceinture sont imprimés de motifs dorés, selon les procédés d'impression que Fortuny \
+met au point pour ses velours inspirés des étoffes anciennes."""
+details = [
+  "Les fins plis verticaux, irréguliers, qui couvrent toute la robe.",
+  "Le petit col montant imprimé d'or, assorti à la ceinture.",
+  "La ligne de perles de verre jaunes le long du côté.",
+  "Le bas de la robe, qui s'évase en ondulant sur le sol.",
+]
+themes = ["antiquité", "plissé", "venise", "soie", "invention"]
+anecdote = """
+Une Delphos ne se plie pas : on la tord sur elle-même comme un écheveau de laine et on \
+la range roulée dans une petite boîte. Fortuny la livrait ainsi, et le plissé \
+reprenait sa forme au déballage."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Robe de style"
+artiste = "Jeanne Lanvin"
+annee = "printemps-été 1924"
+image = "robe-de-style-lanvin.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Robe_de_Style_MET_DT222865.jpg"
+technique = "Taffetas de soie, fils métalliques, perles et paillettes, dentelle métallique"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Au temps de la robe droite et courte, Jeanne Lanvin garde la jupe ample des robes d'autrefois : c'est sa célèbre robe de style."
+description = """
+La robe est en taffetas de soie noir, sans manches, avec une taille basse placée sur \
+les hanches. Au-dessus, le corsage est droit et plat ; au-dessous, la jupe s'arrondit, \
+froncée, et s'arrête à mi-mollet. Une large encolure ronde est bordée d'un col \
+transparent, couleur crème. Sur la poitrine, des guirlandes de paillettes argentées \
+dessinent des festons, et deux longues chaînes de paillettes pendent des épaules. Sur \
+la jupe, de grands motifs ovales, brodés de perles et de fils métalliques sur fond \
+vert pâle, semblent posés au hasard. Le bas de la robe est souligné de deux rubans \
+argentés, puis d'une haute bande de dentelle métallique, couleur d'argent et de \
+champagne, qui s'étale en corolle."""
+evocation = """
+Dans les années 1920, la mode est à la robe tube, droite et courte, qui efface la \
+taille et les hanches : c'est l'allure de la garçonne. Jeanne Lanvin propose une autre \
+féminité. Sa robe de style garde la taille basse de son temps mais lui rend une jupe \
+ample, qui rappelle les paniers du XVIIIᵉ siècle et les robes de jeunes filles \
+d'autrefois. Ce mélange de nostalgie et de modernité séduit les femmes qui ne se \
+reconnaissent pas dans la silhouette androgyne. Le noir, longtemps couleur du deuil \
+devenue couleur du chic, sert ici de fond à l'argent et aux perles, qui scintillent \
+sous la lumière électrique des salles de bal et des théâtres."""
+histoire = """
+Jeanne Lanvin, d'abord modiste, ouvre sa maison rue du Faubourg-Saint-Honoré en \
+1889. Les robes qu'elle coud pour sa fille Marguerite, née en 1897, plaisent tant \
+qu'elle crée une ligne pour les enfants, puis pour les jeunes filles et leurs mères. \
+Dans les années 1920, la robe de style devient sa signature, déclinée chaque saison \
+en taffetas, en velours ou en mousseline, du blanc au noir en passant par le bleu \
+qu'on appellera bleu Lanvin. Celle-ci appartient à la collection du printemps-été \
+1924. Elle a été donnée au Metropolitan Museum en 1962 par Mrs. Albert Spalding, et \
+compte parmi les nombreuses robes de style conservées au Costume Institute."""
+facture = """
+Le contraste des matières fait toute la robe : un taffetas noir assez ferme pour \
+tenir la jupe en volume, et des broderies qui accrochent la lumière. Les ateliers de \
+broderie de la maison Lanvin travaillent perles, paillettes et fils métalliques avec \
+une grande précision. La jupe ne repose sur aucune armature : froncée à la taille \
+basse, elle est soutenue par la raideur de l'étoffe et parfois par un jupon de tulle. \
+La dentelle argentée de l'ourlet, plus légère, fait flotter le bas de la robe."""
+details = [
+  "Les guirlandes de paillettes argentées sur la poitrine.",
+  "Les deux chaînes de paillettes qui pendent des épaules.",
+  "Les médaillons brodés de perles sur la jupe noire.",
+  "La haute bande de dentelle métallique au bas de la robe.",
+]
+themes = ["années folles", "robe de style", "lanvin", "broderie", "noir"]
+anecdote = """
+Le logo de la maison Lanvin, toujours utilisé, montre une mère et sa petite fille qui \
+se tiennent par les mains. Dessiné par Paul Iribe, il s'inspire d'une photographie de \
+Jeanne Lanvin et de sa fille Marguerite, prise en 1907."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Furisode aux pins, aux grues et aux fleurs de prunier"
+artiste = "Japon, XIXᵉ siècle"
+annee = "XIXᵉ siècle"
+image = "furisode-pins-et-grues.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Furisode_MET_SLP2452_1-retouched.jpg"
+technique = "Satin de soie façonné teint, broderie de soie, fils d'or et d'argent couchés, teinture yūzen, 175,5 × 117 cm"
+collection = "Metropolitan Museum of Art, New York (collection Robert Lehman)"
+note = "Un kimono à longues manches pour une jeune femme : pins, grues et fleurs de prunier brodés d'or sur une soie orange."
+description = """
+Le kimono est présenté à plat, bras étendus, comme on l'accroche au Japon sur un \
+portant. Il forme un grand T de soie orange vif. Les manches, très longues, tombent \
+presque jusqu'aux genoux. En bas, de vieux pins aux troncs tordus dressent leurs \
+branches couvertes d'aiguilles vertes et bleues, au-dessus d'un sol semé de feuilles \
+de bambou. Plus haut, des grues blanches volent entre des couronnes de fleurs de \
+prunier, blanches, dorées et grises. Le col, large, descend tout le long du devant. \
+L'ourlet, épaissi par un rembourrage, forme un bourrelet qui donne du poids au bas du \
+vêtement. Près du sol, entre les troncs, on distingue ce qui semble être une petite \
+tortue."""
+evocation = """
+Furisode signifie « manches qui flottent ». Ce kimono aux très longues manches est \
+réservé aux jeunes femmes non mariées : on raconte qu'agiter ses manches était une \
+manière discrète d'exprimer ses sentiments. Le décor réunit des symboles de bon \
+augure. Le pin, toujours vert, et la grue, qui vivrait mille ans selon la tradition, \
+souhaitent une longue vie ; la fleur de prunier, qui s'ouvre à la fin de l'hiver, \
+annonce le renouveau. Avec le bambou, pin et prunier forment les « trois amis de \
+l'hiver », qui résistent au froid. Un tel vêtement convient aux grands jours, le \
+Nouvel An ou une fête de famille : il dit à la fois la jeunesse de celle qui le porte \
+et les vœux que l'on forme pour elle."""
+histoire = """
+Ce furisode a été fait au Japon au XIXᵉ siècle, à la fin de l'époque d'Edo ou au \
+début de l'ère Meiji, quand le pays s'ouvre à l'Occident après deux siècles de \
+fermeture. Au même moment, les kimonos arrivent en Europe et en Amérique : on les \
+collectionne, les peintres en habillent leurs modèles, et les couturiers parisiens \
+s'en inspirent pour leurs manteaux du soir, comme le fera Poiret. Celui-ci appartient \
+à la collection Robert Lehman, réunie par le banquier new-yorkais et par son père, \
+Philip Lehman, et entrée au Metropolitan Museum en 1975. Il y voisine avec des \
+peintures de la Renaissance et des impressionnistes, rappel de la place qu'occupaient \
+ces étoffes dans les grandes collections américaines."""
+facture = """
+Le décor combine plusieurs techniques, comme souvent dans les kimonos de luxe. Le fond \
+est un satin de soie façonné, peut-être teint au beni, le rouge tiré du carthame. Une \
+partie des motifs est teinte selon le procédé yūzen, où une pâte de riz réserve les \
+contours avant que l'on peigne les couleurs. Le reste est brodé au passé plat, en \
+soies vertes, bleues et blanches. Les fils d'or et d'argent, trop raides pour \
+traverser l'étoffe, sont couchés à sa surface et fixés par de petits points. Des \
+imitations au pochoir de la teinture par nouage complètent l'ensemble."""
+details = [
+  "Les grues blanches en plein vol, en haut du vêtement.",
+  "Les couronnes de fleurs de prunier, rehaussées de fils d'or.",
+  "Les vieux pins aux troncs noueux, au bas du kimono.",
+  "Les longues manches, qui descendent presque jusqu'aux genoux.",
+  "L'ourlet rembourré, plus épais que le reste de l'étoffe.",
+]
+themes = ["japon", "kimono", "broderie", "grues", "bon augure"]
+anecdote = """
+Le furisode n'a pas disparu : au Japon, il reste la tenue des jeunes femmes le jour du \
+passage à l'âge adulte, Seijin no hi, fêté chaque année en janvier dans toutes les \
+villes du pays."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Kente d'homme"
+artiste = "Tisserands asante (Ghana)"
+annee = "XIXᵉ siècle"
+image = "kente.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Kente_Cloth_MET_1972.56.1.jpeg"
+technique = "Coton et soie, bandes étroites tissées puis cousues bord à bord"
+collection = "Metropolitan Museum of Art, New York (arts d'Afrique)"
+note = "Une étoffe d'apparat des Asante du Ghana, tissée en bandes étroites, que l'homme porte drapée comme une toge."
+description = """
+Le mannequin est enveloppé dans une vaste étoffe qui le couvre des épaules aux \
+chevilles et laisse le bras et l'épaule droits nus, à la manière d'une toge. Le tissu \
+forme un damier : des rectangles verts, jaunes, orangés et bruns alternent, parcourus \
+de fines rayures. En regardant bien, on voit qu'il est fait de bandes étroites, \
+cousues côte à côte, dont les motifs se décalent d'une bande à l'autre. Sur l'épaule \
+gauche, le pan rejeté vers l'arrière laisse paraître une bordure plus vive, rayée de \
+rouge, de bleu et de jaune, qui descend sur le devant. Le tissu, épais et souple, \
+forme de grands plis autour du corps et tombe jusqu'aux pieds."""
+evocation = """
+Chez les Asante, le kente est une étoffe de prestige, liée au pouvoir royal. Les plus \
+beaux, tissés de soie, étaient réservés au roi, l'Asantehene, et à son entourage, qui \
+les portaient lors des grandes cérémonies ; certains motifs ne pouvaient être portés \
+sans l'accord du roi. Chaque dessin a un nom, souvent tiré d'un proverbe, d'un \
+événement ou d'un personnage. On prête aussi un sens aux couleurs : le jaune évoque \
+l'or et la richesse, le vert la croissance et les récoltes. Porter le kente drapé \
+ainsi, c'est afficher son rang et son appartenance. Aujourd'hui, il est devenu un \
+emblème du Ghana et, bien au-delà, de la fierté africaine et afro-américaine."""
+histoire = """
+Le kente s'est développé dans le royaume asante, au cœur de l'actuel Ghana ; le \
+village de Bonwire, près de la capitale Kumasi, en reste le grand centre de tissage. \
+La soie ne se produisait pas sur place : les tisserands défaisaient des étoffes de \
+soie importées par les marchands européens pour en récupérer les fils, avant de \
+pouvoir acheter du fil. Cette pièce du XIXᵉ siècle mêle coton et soie. Le Metropolitan \
+Museum l'a achetée en 1972 ; son parcours antérieur n'est pas documenté. Au XIXᵉ \
+siècle, le royaume asante a longtemps résisté aux Britanniques, qui ont incendié \
+Kumasi en 1874 et emporté une partie du trésor royal, avant d'annexer le pays au \
+début du XXᵉ siècle. Rien n'indique que ce kente provienne de ces pillages."""
+facture = """
+Le kente est tissé par des hommes, sur un métier horizontal à pédales qui ne produit \
+que des bandes étroites, d'une dizaine de centimètres de large. Le tisserand alterne \
+deux manières : des passages où la trame, très serrée, cache la chaîne et forme des \
+blocs de couleur, et d'autres où des fils supplémentaires dessinent de petits motifs. \
+Les bandes, longues de plusieurs mètres, sont ensuite coupées et cousues bord à bord, \
+en décalant les blocs pour obtenir le damier. Une grande pièce d'homme réunit souvent \
+plus de vingt bandes."""
+details = [
+  "Le damier de rectangles verts, jaunes et orangés.",
+  "Les coutures entre les bandes étroites, visibles de près.",
+  "La bordure rayée de rouge et de bleu, sur l'épaule gauche.",
+  "L'épaule droite laissée nue, comme le veut la façon de le draper.",
+]
+themes = ["afrique", "ghana", "tissage", "royauté", "drapé"]
+anecdote = """
+Selon une légende de Bonwire, deux tisserands, Kurugu et Ameyaw, auraient appris leur \
+art en observant l'araignée Ananse tisser sa toile, puis reproduit ses motifs, d'abord \
+avec des fibres de raphia."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Couturières anonymes"
+vie = "Europe et Amérique du Nord, XVIIIᵉ–XIXᵉ siècle"
+biographie = """
+Avant l'invention de la haute couture, les robes des femmes élégantes ne portaient \
+pas de nom d'auteur. À Paris, Louis XIV accorde en 1675 aux couturières le droit de \
+former leur propre corporation et d'habiller les femmes, ce que faisaient jusque-là \
+les tailleurs, qui gardent la fabrication des corps baleinés. Une robe naît alors de \
+la collaboration de plusieurs métiers : le marchand vend la soie, la couturière coupe \
+et assemble, la marchande de modes ajoute rubans, dentelles, fleurs et galons. \
+Quelques noms ont traversé le temps, comme Rose Bertin, marchande de modes de \
+Marie-Antoinette, ou Louis-Hippolyte Leroy, qui habille Joséphine pour le sacre de \
+1804. Mais l'immense majorité des robes conservées dans les musées sont anonymes. Au \
+XIXᵉ siècle, les couturières travaillent en atelier ou chez elles, d'après les \
+gravures des journaux de mode, et la machine à coudre, répandue à partir du milieu du \
+siècle, accélère leur travail. En Amérique, elles adaptent les modèles venus de \
+Paris. Leurs noms se sont presque tous perdus ; leurs robes, transmises dans les \
+familles puis données aux musées, restent leur seule signature."""
+style = """
+Leur art est celui de l'étoffe plus que de la coupe : la soie est si chère qu'on la \
+découpe le moins possible et qu'on la remonte au gré des modes. Le savoir-faire se \
+transmet d'atelier en atelier : ajuster un corsage, monter une jupe sur des paniers \
+ou une crinoline, poser une garniture. La silhouette change selon des règles \
+collectives, fixées par la cour puis par les journaux, et non par un créateur unique. \
+C'est ce monde que Worth bouleversera en signant ses modèles."""
+
+[[artistes]]
+nom = "Charles Frederick Worth"
+vie = "Bourne (Angleterre), 13 octobre 1825 – Paris, 10 mars 1895"
+biographie = """
+Né dans le Lincolnshire, Charles Frederick Worth connaît une enfance difficile après \
+la ruine de son père. Adolescent, il part pour Londres comme apprenti chez des \
+marchands de tissus, dont Swan & Edgar, et apprend à connaître les soieries et la \
+clientèle élégante. Vers 1846, il s'installe à Paris, sans parler français, et entre \
+chez Gagelin, maison réputée pour ses soieries et ses châles. Il y rencontre Marie \
+Vernet, vendeuse, qu'il épouse et pour qui il dessine des robes que les clientes \
+réclament bientôt. En 1858, il ouvre avec le Suédois Otto Bobergh sa propre maison au \
+7, rue de la Paix. La princesse Pauline de Metternich, épouse de l'ambassadeur \
+d'Autriche, porte ses robes aux Tuileries et le fait connaître de l'impératrice \
+Eugénie, qui devient sa cliente. Worth habille dès lors la cour, les actrices et les \
+riches Américaines. Il survit à la chute de l'Empire et reste, jusqu'à sa mort en \
+1895, le couturier le plus célèbre du monde. Ses fils Gaston et Jean-Philippe \
+reprennent la maison, qui restera active jusqu'au milieu du XXᵉ siècle."""
+style = """
+Worth invente le couturier créateur : au lieu d'exécuter les idées de ses clientes, \
+il leur propose chaque saison des modèles qu'il a conçus, présentés sur des femmes \
+vivantes, et signe ses robes d'une étiquette à son nom. Il aime les soieries \
+somptueuses, souvent lyonnaises, les coupes impeccables et les silhouettes qu'il fait \
+évoluer, de la crinoline à la tournure. Sa méthode, mi-artiste mi-industrielle, fonde \
+la haute couture parisienne."""
+
+[[artistes]]
+nom = "Jacques Doucet"
+vie = "Paris, 19 février 1853 – Neuilly-sur-Seine, 30 octobre 1929"
+biographie = """
+Jacques Doucet naît dans une famille de commerçants parisiens : la maison Doucet, \
+rue de la Paix, vend de la lingerie fine, des dentelles et des chemises. Il y ajoute \
+dans les années 1870 un département de couture pour dames, qui devient l'une des \
+maisons les plus élégantes de Paris. Les femmes du monde et les grandes actrices, \
+Réjane ou Sarah Bernhardt, s'y habillent. Doucet sait reconnaître les talents : Paul \
+Poiret fait ses débuts chez lui, et Madeleine Vionnet y travaille avant d'ouvrir sa \
+maison. Homme de goût, il réunit une collection célèbre de peintures, de dessins et \
+de meubles du XVIIIᵉ siècle, qu'il vend aux enchères en 1912 pour se tourner vers \
+l'art de son temps. Conseillé par des écrivains comme André Breton, il achète \
+Picasso, Matisse, Modigliani, et La Charmeuse de serpents du Douanier Rousseau, qu'il \
+lègue au Louvre. Il fonde aussi une grande bibliothèque d'art et d'archéologie, qu'il \
+donne à l'Université de Paris, et une bibliothèque littéraire. Il meurt en 1929 \
+à Neuilly, où il avait fait aménager un studio décoré par les créateurs Art déco."""
+style = """
+Doucet est le couturier de la grâce et de la légèreté : tons pastel, tulles, \
+mousselines, dentelles anciennes et fleurs de soie, dans un goût nourri du XVIIIᵉ \
+siècle. Ses robes, souples et vaporeuses, flattent le corps cambré de la Belle Époque \
+sans paraître lourdes. Il apporte à la couture l'œil d'un collectionneur, attentif \
+aux matières rares, et forme une génération de créateurs, dont Poiret et Vionnet, qui \
+inventeront la mode du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Paul Poiret"
+vie = "Paris, 20 avril 1879 – Paris, 30 avril 1944"
+biographie = """
+Fils d'un marchand de drap parisien, Paul Poiret est placé jeune chez un fabricant de \
+parapluies, mais il préfère dessiner des robes, qu'il vend à des maisons de couture. \
+Jacques Doucet l'engage, puis il passe chez Worth avant d'ouvrir sa propre maison en \
+1903. En quelques années, il impose une silhouette nouvelle, droite et haute de \
+taille, qu'il fait connaître par des albums illustrés, confiés à Paul Iribe en 1908 \
+puis à Georges Lepape en 1911. Installé avenue d'Antin, il donne des fêtes restées \
+célèbres, lance les parfums Rosine et l'atelier Martine, collabore avec le peintre \
+Raoul Dufy pour ses tissus et voyage en Europe et aux États-Unis pour présenter ses \
+modèles. Pendant la Première Guerre mondiale, il est mobilisé et travaille à \
+l'habillement de l'armée. Après 1918, la mode change, plus simple et plus sportive, et \
+ses dépenses deviennent ruineuses. À l'Exposition des arts décoratifs de 1925, il \
+présente ses créations sur trois péniches amarrées sur la Seine, mais sa maison ferme \
+en 1929. Il meurt à Paris en 1944, oublié et pauvre."""
+style = """
+Poiret coupe droit, drape plutôt qu'il ne construit, et rêve d'un Orient de théâtre : \
+turbans, tuniques, pantalons de harem, manteaux en kimono. Ses couleurs vives, \
+violets, verts, orangés, rompent avec les pâleurs de la Belle Époque. Il est l'un des \
+premiers à faire de la mode un art de vivre complet, du parfum au décor intérieur, et \
+à collaborer avec des peintres et des illustrateurs. Son goût du spectacle annonce \
+les grands couturiers du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Mariano Fortuny"
+vie = "Grenade, 11 mai 1871 – Venise, 2 mai 1949"
+biographie = """
+Mariano Fortuny y Madrazo est le fils du peintre catalan Marià Fortuny, mort quand il \
+a trois ans, et de Cecilia de Madrazo, issue d'une grande famille d'artistes \
+madrilènes. Élevé à Paris, puis installé à Venise avec sa mère en 1889, il grandit au \
+milieu des étoffes anciennes que celle-ci collectionne. D'abord peintre, il se \
+passionne pour le théâtre et l'opéra de Wagner, et invente des systèmes d'éclairage \
+de scène, dont un dôme qui diffuse une lumière indirecte, brevetés au début du XXᵉ \
+siècle. Avec sa compagne, Henriette Negrin, qu'il épousera en 1924, il se tourne vers \
+le textile : l'écharpe Knossos, inspirée des fresques crétoises, puis la robe Delphos, \
+vers 1907. Dans le palais Pesaro degli Orfei, où il vit et travaille, il teint, \
+plisse et imprime velours et soies selon des procédés de son invention, puis ouvre \
+une manufacture de tissus imprimés sur l'île de la Giudecca. Ses robes se vendent à \
+Paris, Londres et New York. Il meurt à Venise en 1949 ; son palais est devenu le musée \
+Fortuny."""
+style = """
+Fortuny est un inventeur autant qu'un couturier. Il ne suit pas la mode : il crée des \
+modèles intemporels, inspirés de l'Antiquité grecque, de la Renaissance vénitienne et \
+de l'Orient, qu'il produit presque inchangés pendant des décennies. Ses soies plissées \
+et ses velours imprimés d'or jouent avec la lumière comme ses éclairages de théâtre. \
+Sa liberté de coupe, qui laisse le corps libre, a inspiré bien des créateurs, de \
+Madame Grès à Issey Miyake."""
+
+[[artistes]]
+nom = "Jeanne Lanvin"
+vie = "Paris, 1ᵉʳ janvier 1867 – Paris, 6 juillet 1946"
+biographie = """
+Aînée d'une famille nombreuse et modeste, Jeanne Lanvin travaille dès l'adolescence \
+chez des modistes et des couturières. En 1889, elle ouvre sa propre boutique de \
+chapeaux rue du Faubourg-Saint-Honoré. Après la naissance de sa fille Marguerite, en \
+1897, elle lui coud des robes si charmantes que ses clientes en demandent pour leurs \
+propres enfants : elle ouvre un rayon pour les petites filles, puis pour les jeunes \
+filles et les femmes. En 1909, elle entre à la chambre syndicale de la couture \
+parisienne. Dans les années 1920, sa maison devient l'une des plus importantes de \
+Paris : elle lance la robe de style, des collections pour la maison avec le décorateur \
+Armand-Albert Rateau, une ligne pour hommes et des parfums, dont Arpège en 1927. Elle \
+possède ses propres ateliers de teinture et de broderie. Elle reste à la tête de sa \
+maison jusqu'à sa mort, en 1946 ; sa fille, devenue comtesse Jean de Polignac, lui \
+succède. Fondée en 1889, la maison Lanvin est aujourd'hui la plus ancienne maison de \
+couture française encore en activité."""
+style = """
+Lanvin cultive une élégance romantique et douce, à l'écart de la sévérité de la \
+garçonne. Ses robes de style, ses broderies minutieuses et ses couleurs signature, \
+comme un bleu profond qu'on dit inspiré des fresques de Fra Angelico, font sa \
+réputation. Elle puise dans la peinture ancienne, les costumes historiques et les \
+arts d'Orient, mais traduit ces souvenirs en lignes simples et modernes, pour \
+habiller ensemble mères et filles."""
+
+[[artistes]]
+nom = "Japon, XIXᵉ siècle"
+vie = "Japon, fin de l'époque d'Edo (1603–1868) et début de l'ère Meiji (1868–1912)"
+biographie = """
+Le kimono descend du kosode, un vêtement à manches étroites porté d'abord comme \
+sous-vêtement, qui devient au XVIᵉ siècle le vêtement de dessus des hommes comme des \
+femmes. Sous les shoguns Tokugawa, pendant l'époque d'Edo, la paix et l'essor des \
+villes enrichissent les marchands, qui rivalisent de luxe vestimentaire malgré les \
+lois somptuaires destinées à le limiter. Kyoto en reste le grand centre : les \
+tisserands du quartier de Nishijin y produisent soieries et brocarts, et la teinture \
+yūzen, qui permet de peindre de véritables tableaux sur l'étoffe, s'y développe à la \
+fin du XVIIᵉ siècle. Les teinturiers, brodeurs et tisserands, organisés en ateliers \
+spécialisés, travaillent d'après des livres de modèles qui diffusent les motifs à la \
+mode. Après 1868, l'ère Meiji ouvre le Japon à l'Occident ; les hommes de la cour et \
+de l'administration adoptent peu à peu le costume européen, mais le kimono reste le \
+vêtement des femmes et des grandes occasions. Exporté, collectionné, il fascine \
+l'Europe du japonisme et inspire peintres et couturiers."""
+style = """
+Le kimono garde une coupe immuable : quelques bandes droites, taillées dans un \
+même rouleau d'étoffe étroit, assemblées en forme de T. Toute l'invention passe \
+donc dans le décor, conçu comme un tableau qui se déploie sur le corps. Saisons, poésie, \
+symboles de bon augure guident le choix des motifs ; teinture, broderie et fils d'or \
+se combinent avec virtuosité. Cette beauté à plat a profondément marqué la mode \
+occidentale."""
+
+[[artistes]]
+nom = "Tisserands asante (Ghana)"
+vie = "Royaume asante, actuel Ghana, XVIIIᵉ–XIXᵉ siècle"
+biographie = """
+Le royaume asante se forme vers 1700 autour de Kumasi, sous le roi Osei Tutu ; selon \
+la tradition, un Tabouret d'or descendu du ciel scelle alors l'union des chefferies \
+et incarne l'âme de la nation. Riche de l'or de ses mines et de son commerce, le \
+royaume domine pendant deux siècles une grande partie de l'actuel Ghana. Le tissage y \
+est une activité d'hommes, organisée en villages spécialisés autour de la capitale, \
+dont Bonwire, placés sous la protection du roi. Les tisserands du roi créent pour lui \
+des motifs nouveaux, dont certains lui sont réservés. Au XIXᵉ siècle, le royaume \
+affronte les Britanniques installés sur la côte au cours de plusieurs guerres : \
+Kumasi est incendiée en 1874, le roi Prempeh Iᵉʳ est exilé en 1896, et le pays est \
+annexé à la colonie de la Côte-de-l'Or au début du XXᵉ siècle. Le kente survit à la \
+colonisation et devient, après l'indépendance du Ghana en 1957, un symbole national. \
+Des tisserands continuent aujourd'hui de travailler à Bonwire, sur les mêmes métiers \
+étroits."""
+style = """
+Le kente est un art de la couleur et de la géométrie. Sur des bandes étroites, le \
+tisserand fait alterner blocs pleins et petits motifs, puis les bandes, cousues en \
+décalé, composent un damier vibrant. Chaque combinaison porte un nom et un sens, \
+connus des initiés. Jaune, vert, rouge, bleu et noir se répondent avec une grande \
+vivacité. Cet art de l'assemblage a inspiré de nombreux artistes et créateurs, en \
+Afrique comme dans la diaspora."""
