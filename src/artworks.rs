@@ -74,6 +74,33 @@ pub enum Frame {
     Print,
     /// Sans cadre : la toile seule.
     Bare,
+    /// Vitrine murale, fond de velours (les objets).
+    Showcase,
+}
+
+/// D'où vient la reproduction d'une œuvre : son auteur, sa licence et son adresse.
+/// Vide pour une image du domaine public dont la source n'est pas notée.
+#[derive(Clone, Copy, Debug)]
+pub struct Credit {
+    pub author: &'static str,
+    pub licence: &'static str,
+    pub source: &'static str,
+}
+
+impl Credit {
+    /// La licence en clair : « Domaine public » si rien n'est indiqué.
+    pub fn licence_or_default(&self) -> &'static str {
+        if self.licence.is_empty() {
+            "Domaine public"
+        } else {
+            self.licence
+        }
+    }
+
+    /// Une licence qui impose de citer l'auteur (CC BY, CC BY-SA…).
+    pub fn requires_attribution(&self) -> bool {
+        !matches!(self.licence, "" | "CC0" | "Domaine public" | "PD")
+    }
 }
 
 /// Un artiste de l'exposition (bloc `[[artistes]]`).
@@ -430,6 +457,7 @@ pub struct Artwork {
     pub note: &'static str,
     pub notice: Notice,
     pub frame: Frame,
+    pub credit: Credit,
     /// Largeur et hauteur dans la galerie, en mètres.
     pub width: f32,
     pub height: f32,
@@ -549,6 +577,15 @@ mod tests {
                     "{who} : {}",
                     artist.name
                 );
+                if let Work::Art(art) = work
+                    && art.credit.requires_attribution()
+                {
+                    assert!(
+                        !art.credit.author.is_empty() && art.credit.source.starts_with("https://"),
+                        "{who} : licence {} sans auteur ni source",
+                        art.credit.licence
+                    );
+                }
                 assert!(!slugs.contains(&work.slug()), "{who}");
                 slugs.push(work.slug());
                 assert_eq!(ex.work(work.slug()).map(|w| w.title()), Some(work.title()));

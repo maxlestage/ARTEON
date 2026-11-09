@@ -15,6 +15,9 @@ mod export;
 mod style;
 
 /// Le dépôt du projet, pour les liens « modifier sur GitHub ».
+/// Qui a conçu et développé ARTEON (et Paquets).
+const AUTHOR: &str = "Maxime Nathan Lestage";
+
 const REPOSITORY: &str = "https://github.com/maxlestage/ARTEON";
 
 // ─── Mise en page commune ────────────────────────────────────────────────────
@@ -128,9 +131,9 @@ fn layout(
         .body(site_footer())
 }
 
-/// Les artistes exposés, avec leurs dates : « Vincent van Gogh (1853–1890) et … ».
+/// Le nombre d'artistes, en clair.
 fn artists_sentence() -> String {
-    format!("{} artistes, morts il y a plus de 70 ans", artist_count())
+    format!("{} artistes et ateliers", artist_count())
 }
 
 /// Le grand pied de page : une bande de couleurs animée, un défilé des œuvres, trois
@@ -152,6 +155,35 @@ fn site_footer() -> Element {
             })
         })
     };
+    let works: usize = EXHIBITIONS
+        .iter()
+        .map(|e| e.artworks.len() + e.sculptures.len())
+        .sum();
+    let external = |link: Element| link.attr("target", "_blank").attr("rel", "noopener");
+    let column = |title: &'static str, links: Vec<(&'static str, String, bool)>| {
+        div()
+            .class("footer-col")
+            .child(h3().text(title))
+            .child(
+                ul().children(links.into_iter().map(|(text, href, outside)| {
+                    let link = a().href(href).text(text);
+                    li().child(if outside { external(link) } else { link })
+                })),
+            )
+    };
+    let tile =
+        |name: &'static str, text: &'static str, href: &'static str, tag: Option<&'static str>| {
+            let title = span().class("eco-name").text(name);
+            let title = match tag {
+                Some(t) => title.child(span().class("eco-tag").text(t)),
+                None => title,
+            };
+            li().child(
+                external(a().class("eco").href(href))
+                    .child(title)
+                    .child(span().class("eco-text").text(text)),
+            )
+        };
     footer()
         .class("site-footer")
         .child(div().class("footer-band").attr("aria-hidden", "true").children(
@@ -176,6 +208,23 @@ fn site_footer() -> Element {
                         .children(marquee_items()),
                 ),
         )
+        // L'appel à la visite.
+        .child(
+            div()
+                .class("footer-cta-block")
+                .child(
+                    a().class("footer-cta-link")
+                        .href("/#expositions")
+                        .child(span().text("Entrer au "))
+                        .child(em().text("musée"))
+                        .child(span().class("arrow").text(" →")),
+                )
+                .child(p().class("footer-figures").text(format!(
+                    "{} expositions · {works} œuvres · {} artistes · du Moyen Âge au pop art",
+                    EXHIBITIONS.len(),
+                    artist_count()
+                ))),
+        )
         .child(
             div()
                 .class("footer-grid")
@@ -184,10 +233,16 @@ fn site_footer() -> Element {
                         .class("footer-brand")
                         .child(logo())
                         .child(p().text(
-                            "Un musée virtuel en 3D, écrit uniquement en Rust : du serveur à la scène WebGL, \
-                             compilée en WebAssembly.",
+                            "Un musée virtuel en 3D, gratuit et ouvert à tous : peinture, sculpture, objets, \
+                             photographie, de l'Antiquité au pop art, chaque œuvre avec sa notice complète.",
                         ))
-                        .child(a().class("button footer-cta").href("/#expositions").text("Voir les expositions →")),
+                        .child(
+                            ul().class("footer-badges")
+                                .child(li().text("100 % Rust"))
+                                .child(li().text("WebAssembly"))
+                                .child(li().text("egui"))
+                                .child(li().child(external(a().href(REPOSITORY).text("GitHub")))),
+                        ),
                 )
                 .child(
                     div().class("footer-col footer-wide").child(h3().text("Expositions")).child(ul().children(EXHIBITIONS.iter().map(
@@ -203,28 +258,79 @@ fn site_footer() -> Element {
                         },
                     ))),
                 )
+                .child(column(
+                    "Le musée",
+                    vec![
+                        ("Accueil", "/".to_owned(), false),
+                        ("Toutes les expositions", "/#expositions".to_owned(), false),
+                        ("Crédits et licences", "/credits".to_owned(), false),
+                        ("Ajouter une œuvre", "/ajouter".to_owned(), false),
+                        ("Code source", REPOSITORY.to_owned(), true),
+                    ],
+                )),
+        )
+        // Construit avec : l'écosystème de Paquets, et les sources des œuvres.
+        .child(
+            nav()
+                .class("footer-eco")
+                .attr("aria-label", "Construit avec")
                 .child(
                     div()
-                        .class("footer-col")
-                        .child(h3().text("Le projet"))
-                        .child(
-                            ul().child(li().child(a().href("/ajouter").text("Ajouter une œuvre")))
-                                .child(li().child(a().href(REPOSITORY).text("Code source")))
-                                .child(li().child(a().href("https://github.com/maxlestage/Paquets").text("Construit avec Paquets")))
-                                .child(li().child(a().href("#top").text("Retour en haut ↑"))),
-                        ),
+                        .class("footer-eco-head")
+                        .child(h3().text("Construit avec"))
+                        .child(p().text(
+                            "Les cinq projets Rust de Paquets, du front-end à la base de données, et les collections \
+                             ouvertes des musées.",
+                        )),
+                )
+                .child(
+                    ul().class("eco-grid")
+                        .child(tile("Paquets", "Le framework full-stack qui les réunit", "https://github.com/maxlestage/Paquets", Some("le socle")))
+                        .child(tile("Active", "Front-end : composants, SSR, îlots WebAssembly, 3D", "https://active-c1883a966650.herokuapp.com/", None))
+                        .child(tile("Vitesse", "Serveur web façon Express, HTTP/3", "https://vitesse-f16135654c3d.herokuapp.com/", None))
+                        .child(tile("Securite", "Middlewares de sécurité pour Vitesse et tower", "https://securite-2db4c1994be7.herokuapp.com/", None))
+                        .child(tile("Memoire", "ORM asynchrone typé, SQL et NoSQL", "https://memoire-7f4525f1fdaf.herokuapp.com/", None))
+                        .child(tile("egui", "L'interface de visite, dessinée dans le navigateur", "https://github.com/emilk/egui", None))
+                        .child(tile("Wikimedia Commons", "Les reproductions des œuvres", "https://commons.wikimedia.org/", Some("œuvres")))
+                        .child(tile("Smithsonian Open Access", "Les sculptures scannées en 3D (CC0)", "https://3d.si.edu/", None))
+                        .child(tile("Musées en accès libre", "Met, Cleveland, Walters, Rijksmuseum, Art Institute…", "/credits", None)),
                 ),
+        )
+        // La signature.
+        .child(
+            div()
+                .class("footer-credits")
+                .child(p().class("footer-by").text("Conçu et développé par"))
+                .child(p().class("footer-name").children(
+                    AUTHOR
+                        .split(' ')
+                        .enumerate()
+                        .map(|(i, word)| span().style(format!("--i:{i}")).text(word.to_owned())),
+                ))
+                .child(p().class("footer-crafted").text("Fabriqué en Rust, en France")),
+        )
+        .child(
+            div()
+                .class("footer-word")
+                .attr("aria-hidden", "true")
+                .children("ARTEON".chars().enumerate().map(|(i, c)| span().style(format!("--i:{i}")).text(c.to_string()))),
         )
         .child(
             div()
                 .class("footer-legal")
                 .child(p().text(format!(
-                    "{} : toutes les œuvres présentées sont dans le domaine public. Les reproductions viennent de \
-                     Wikimedia Commons ; dans la galerie 3D, chaque toile est réinterprétée en mosaïque de touches \
-                     de couleur, ce n'est pas une reproduction exacte.",
+                    "{} : les œuvres sont dans le domaine public, ou photographiées sous licence libre et créditées. \
+                     Dans le musée 3D, chaque image est réinterprétée en mosaïque : ce n'est pas une reproduction exacte.",
                     artists_sentence()
                 )))
-                .child(p().class("muted").text("© ARTEON · 100 % Rust · 0 ligne de JavaScript écrite à la main")),
+                .child(
+                    div()
+                        .class("footer-bottom")
+                        .child(p().class("muted").text(format!("© 2026 {AUTHOR} · code sous licence MIT")))
+                        .child(a().href("/credits").text("Crédits et licences"))
+                        .child(p().class("muted").text("📦 Construit avec Paquets — Rust, Active et WebAssembly"))
+                        .child(a().class("totop").href("#top").attr("aria-label", "Retour en haut").text("↑")),
+                ),
         )
 }
 
@@ -305,6 +411,25 @@ fn sculpture_card(ex: &Exhibition, s: &Sculpture, index: usize) -> Element {
         .child(more_link(ex, s.slug, &s.notice))
 }
 
+/// D'où vient une reproduction : son auteur, sa licence, et le lien vers sa source.
+fn credit_line(credit: &arteon::artworks::Credit) -> Element {
+    let mut parts = span().class("credit");
+    if !credit.author.is_empty() {
+        parts = parts.child(span().text(format!("{} · ", credit.author)));
+    }
+    parts = parts.child(span().text(credit.licence_or_default()));
+    if credit.source.is_empty() {
+        parts.child(span().class("muted").text(" · Wikimedia Commons"))
+    } else {
+        parts.child(span().text(" · ")).child(
+            a().href(credit.source)
+                .attr("target", "_blank")
+                .attr("rel", "noopener")
+                .text("source"),
+        )
+    }
+}
+
 /// L'adresse de la page d'une œuvre.
 fn work_url(ex: &Exhibition, slug: &str) -> String {
     format!("/{}/oeuvres/{slug}", ex.slug)
@@ -340,6 +465,12 @@ fn artwork_card(ex: &Exhibition, art: &Artwork, index: usize) -> Element {
                 .text(format!("{} — {}", art.technique, art.collection)),
         )
         .child(p().text(art.note))
+        .child(if art.credit.requires_attribution() {
+            p().class("muted small")
+                .text(format!("{} · {}", art.credit.author, art.credit.licence))
+        } else {
+            p()
+        })
         .child(p().class("tag").text(location(ex, art)))
         .child(more_link(ex, art.slug, &art.notice))
 }
@@ -435,10 +566,10 @@ async fn home(_req: Request) -> Page {
                         .child(animated_title("ARTEON"))
                         .child(p().class("hero-sub reveal").text("Toute l'histoire de l'art, en 3D, dans votre navigateur"))
                         .child(p().class("lead reveal").text(
-                            "ARTEON est un musée qui n'existe pas. Du Moyen Âge à l'abstraction, de Florence à Edo, \
+                            "ARTEON est un musée qui n'existe pas. De l'Antiquité au pop art, de Florence à Edo, \
                              chaque exposition raconte un style dans un bâtiment inspiré d'un vrai musée. On s'y \
                              promène librement ou en visite guidée, et chaque œuvre a sa notice complète. Toutes \
-                             sont dans le domaine public.",
+                             sont libres de droits ou photographiées sous licence libre.",
                         ))
                         .child(
                             div()
@@ -461,7 +592,7 @@ async fn home(_req: Request) -> Page {
             section()
                 .class("stats")
                 .child(div().class("stat reveal").child(strong().text(EXHIBITIONS.len().to_string())).child(span().text("expositions")))
-                .child(div().class("stat reveal").child(strong().text(works.to_string())).child(span().text("œuvres du domaine public")))
+                .child(div().class("stat reveal").child(strong().text(works.to_string())).child(span().text("œuvres")))
                 .child(div().class("stat reveal").child(strong().text(artist_count().to_string())).child(span().text("artistes")))
                 .child(div().class("stat reveal").child(strong().text(rooms.to_string())).child(span().text("salles en 3D"))),
         )
@@ -508,7 +639,7 @@ async fn home(_req: Request) -> Page {
         .child(features());
     layout(
         "Un musée virtuel en 3D",
-        "ARTEON, un musée virtuel en 3D écrit en Rust : toute l'histoire de l'art du domaine public, du Moyen Âge à l'abstraction, à visiter dans le navigateur.",
+        "ARTEON, un musée virtuel en 3D écrit en Rust : toute l'histoire de l'art, de l'Antiquité au pop art, peinture, sculpture, objets et photographie, à visiter dans le navigateur.",
         "/",
         None,
         content,
@@ -1058,6 +1189,14 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
         facts = facts.child(fact("Collection", collection.to_owned()));
     }
     facts = facts.child(fact("Dans le musée", place));
+    if let Work::Art(art) = work {
+        facts = facts.child(
+            div()
+                .class("fact")
+                .child(dt().text("Reproduction"))
+                .child(dd().child(credit_line(&art.credit))),
+        );
+    }
     let cartel = div()
         .class("work-cartel")
         .child(p().class("lead").text(note))
@@ -1163,6 +1302,125 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
         summary.chars().take(155).collect::<String>(),
         &catalogue,
         Some(ex.accent),
+        content,
+    )
+}
+
+// ─── Les crédits ─────────────────────────────────────────────────────────────
+
+async fn credits(_req: Request) -> Page {
+    let tool =
+        |name: &'static str, who: &'static str, licence: &'static str, href: &'static str| {
+            tr().child(
+                td().child(
+                    a().href(href)
+                        .attr("target", "_blank")
+                        .attr("rel", "noopener")
+                        .text(name),
+                ),
+            )
+            .child(td().text(who))
+            .child(td().text(licence))
+        };
+    let tools = table()
+        .class("credits-table")
+        .child(
+            thead().child(
+                tr().child(th().text("Outil"))
+                    .child(th().text("Auteur"))
+                    .child(th().text("Licence")),
+            ),
+        )
+        .child(
+            tbody()
+                .child(tool(
+                    "Paquets, Active, Vitesse, Securite, Memoire",
+                    AUTHOR,
+                    "Propriétaire, utilisable comme dépendance",
+                    "https://github.com/maxlestage/Paquets",
+                ))
+                .child(tool(
+                    "egui et eframe",
+                    "Emil Ernerfeldt et contributeurs",
+                    "MIT ou Apache 2.0",
+                    "https://github.com/emilk/egui",
+                ))
+                .child(tool(
+                    "Scans 3D des sculptures",
+                    "Smithsonian Institution",
+                    "CC0",
+                    "https://3d.si.edu/",
+                ))
+                .child(tool(
+                    "Reproductions des œuvres",
+                    "Wikimedia Commons et les musées en accès libre",
+                    "Domaine public, CC0 ou licences libres (ci-dessous)",
+                    "https://commons.wikimedia.org/",
+                )),
+        );
+    let attributed: usize = EXHIBITIONS
+        .iter()
+        .flat_map(|e| e.artworks.iter())
+        .filter(|a| a.credit.requires_attribution())
+        .count();
+    let per_exhibition = EXHIBITIONS.iter().map(|ex| {
+        let rows = ex.artworks.iter().map(move |art| {
+            tr().child(td().child(a().href(work_url(ex, art.slug)).text(art.title)))
+                .child(td().text(art.artist_in(ex)))
+                .child(td().child(credit_line(&art.credit)))
+        });
+        let rows = rows.chain(ex.sculptures.iter().map(move |s| {
+            tr().child(td().child(a().href(work_url(ex, s.slug)).text(s.title)))
+                .child(td().text(s.artist))
+                .child(td().text("Scan 3D · Smithsonian Institution · CC0"))
+        }));
+        details()
+            .class("credits-block")
+            .child(
+                summary()
+                    .child(strong().text(ex.title))
+                    .child(span().class("muted").text(format!(
+                        " · {} œuvres",
+                        ex.artworks.len() + ex.sculptures.len()
+                    ))),
+            )
+            .child(
+                div().class("table-wrap").child(
+                    table()
+                        .class("credits-table")
+                        .child(
+                            thead().child(
+                                tr().child(th().text("Œuvre"))
+                                    .child(th().text("Artiste"))
+                                    .child(th().text("Reproduction")),
+                            ),
+                        )
+                        .child(tbody().children(rows)),
+                ),
+            )
+    });
+    let content = div()
+        .child(
+            section()
+                .class("page-intro")
+                .child(p().class("kicker").text("Crédits"))
+                .child(h1().text("Crédits et licences"))
+                .child(p().class("lead").text(format!(
+                    "ARTEON est conçu et développé par {AUTHOR}, en Rust, avec Paquets. Les œuvres exposées sont dans le \
+                     domaine public ; quand une photographie est sous licence libre (par exemple les sculptures du pop art, \
+                     photographiées dans l'espace public), son auteur et sa licence sont cités ci-dessous et sur la page de \
+                     l'œuvre — {attributed} image(s) sont dans ce cas. Dans le musée 3D, les images sont réinterprétées en mosaïque."
+                ))),
+        )
+        .child(h2().class("section-title").text("Le code et les outils"))
+        .child(div().class("table-wrap").child(tools))
+        .child(h2().class("section-title").text("Les reproductions, exposition par exposition"))
+        .children(per_exhibition);
+    layout(
+        "Crédits et licences",
+        "Les crédits d'ARTEON : qui l'a fait, avec quels outils, et d'où viennent les reproductions des œuvres.",
+        "/credits",
+        None,
         content,
     )
 }
@@ -1439,7 +1697,7 @@ async fn not_found(_req: Request) -> Page {
 
 /// Toutes les pages du site : l'accueil, le guide, et trois pages par exposition.
 pub(crate) fn routes() -> Vec<String> {
-    let mut list = vec!["/".to_owned(), "/ajouter".to_owned()];
+    let mut list = vec!["/".to_owned(), "/ajouter".to_owned(), "/credits".to_owned()];
     for ex in EXHIBITIONS {
         list.push(format!("/{}", ex.slug));
         list.push(format!("/{}/galerie", ex.slug));
@@ -1456,6 +1714,7 @@ fn app() -> App {
     let mut app = App::new();
     app.get("/", home);
     app.get("/ajouter", add_artwork);
+    app.get("/credits", credits);
     for ex in EXHIBITIONS {
         app.get(&format!("/{}", ex.slug), move |req: Request| {
             exhibition_home(req, ex)
