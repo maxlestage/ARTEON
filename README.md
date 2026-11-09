@@ -124,6 +124,22 @@ portes = ["sud", "nord", { mur = "est", position = -5 }]
 
 L'entrée du musée est la première salle qui a une porte vers l'extérieur. `build.rs` vérifie que les salles ne se chevauchent pas, que les portes donnent quelque part et que chaque salle est accessible.
 
+### Le bâtiment et les cadres
+
+Une section `[musee]` présente le vrai musée dont le bâtiment s'inspire ; elle s'affiche sur la présentation de l'exposition (« Le bâtiment », avec le plan des salles dessiné en SVG) et dans le musée 3D (bouton **🏛 Le musée**) :
+
+```toml
+[musee]
+nom = "Musée du Prado"
+ville = "Madrid, Espagne"
+architecte = "Juan de Villanueva"
+construction = "1785–1819"
+presentation = """Le vrai musée…"""
+ici = """Ce que le bâtiment d'ARTEON lui emprunte, salle par salle…"""
+```
+
+Les tableaux ont un cadre en 3D, moulure par moulure : `cadre = "dore"` dans `[exposition]` pour toute l'exposition, ou dans une œuvre pour elle seule. Styles : `dore`, `baroque` (large et sculpté), `ebene` (noir, filet doré, comme au Rijksmuseum), `bois`, `blanc`, `noir` (baguette fine), `estampe` (passe-partout et baguette, pour les estampes et les miniatures) et `aucun`.
+
 ### Les sculptures
 
 Déposer le modèle 3D (STL, OBJ ou glTF) dans [`modeles/`](modeles), puis ajouter un bloc :

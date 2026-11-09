@@ -40,6 +40,51 @@ struct File {
     sculptures: Vec<SculptureToml>,
     #[serde(default)]
     artistes: Vec<Artiste>,
+    musee: Option<Musee>,
+}
+
+/// Le bâtiment de l'exposition : le vrai musée dont il s'inspire, et ce qu'il en garde.
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Musee {
+    nom: String,
+    #[serde(default)]
+    ville: String,
+    #[serde(default)]
+    architecte: String,
+    #[serde(default)]
+    construction: String,
+    #[serde(default)]
+    presentation: String,
+    #[serde(default)]
+    ici: String,
+}
+
+/// Les styles de cadre, et leur nom dans le code.
+const FRAMES: [(&str, &str); 8] = [
+    ("dore", "Gilded"),
+    ("baroque", "Baroque"),
+    ("ebene", "Ebony"),
+    ("bois", "Wood"),
+    ("blanc", "White"),
+    ("noir", "Black"),
+    ("estampe", "Print"),
+    ("aucun", "Bare"),
+];
+
+fn frame_code(file: &str, value: &str, who: &str) -> &'static str {
+    FRAMES
+        .iter()
+        .find(|(name, _)| *name == value)
+        .map(|(_, code)| *code)
+        .unwrap_or_else(|| {
+            fail(
+                file,
+                format!(
+                    "{who} : cadre = \"{value}\" : dore, baroque, ebene, bois, blanc, noir, estampe ou aucun"
+                ),
+            )
+        })
 }
 
 /// Un artiste de l'exposition : sa vie et sa manière.
@@ -69,9 +114,17 @@ struct Exposition {
     accroche: String,
     introduction: String,
     vitrine: Option<String>,
+    /// Le cadre des œuvres, par défaut : dore, baroque, ebene, bois, blanc, noir,
+    /// estampe ou aucun.
+    #[serde(default = "default_frame")]
+    cadre: String,
     /// Le style ou le mouvement (« Renaissance italienne »), pour l'accueil.
     #[serde(default)]
     mouvement: String,
+}
+
+fn default_frame() -> String {
+    "dore".into()
 }
 
 fn last() -> i64 {
@@ -145,6 +198,8 @@ struct Oeuvre {
     place: Option<u8>,
     position: Option<f32>,
     largeur: f32,
+    /// Le cadre de cette œuvre, s'il diffère de celui de l'exposition.
+    cadre: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -632,7 +687,7 @@ fn exhibition(
         }
         let _ = writeln!(
             artworks,
-            "            Artwork {{ title: {:?}, slug: {:?}, artist: {:?}, year: {:?}, image: {:?}, technique: {:?}, collection: {:?}, note: {:?}, notice: {}, \
+            "            Artwork {{ title: {:?}, slug: {:?}, artist: {:?}, year: {:?}, image: {:?}, technique: {:?}, collection: {:?}, note: {:?}, notice: {}, frame: Frame::{}, \
              width: {:?}, height: {:?}, hook: Hook {{ room: {r}, side: Side::{}, position: {position:?}, center: {center:?}, place: {place} }}, \
              mosaic: Mosaic {{ cols: {cols}, rows: {rows}, palette: &[{palette_code}], offset: {offset} }} }},",
             art.titre.trim(),
@@ -654,6 +709,11 @@ fn exhibition(
                 &art.details,
                 &art.themes,
                 &art.anecdote
+            ),
+            frame_code(
+                name,
+                art.cadre.as_deref().unwrap_or(&file.exposition.cadre),
+                &who
             ),
             art.largeur,
             (height * 1000.0).round() / 1000.0,
@@ -854,7 +914,7 @@ fn exhibition(
     let [ar, ag, ab] = hex(name, &e.couleur, "couleur");
     let _ = writeln!(
         out,
-        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        data_size: {},\n        rooms: &[",
+        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        museum: {},\n        data_size: {},\n        rooms: &[",
         e.nom_court.trim(),
         e.titre.trim(),
         e.artiste.trim(),
@@ -863,6 +923,15 @@ fn exhibition(
         e.accroche.trim(),
         e.introduction.trim(),
         showcase,
+        file.musee.as_ref().map_or("None".to_owned(), |m| format!(
+            "Some(Museum {{ name: {:?}, city: {:?}, architect: {:?}, built: {:?}, presentation: {:?}, here: {:?} }})",
+            m.nom.trim(),
+            m.ville.trim(),
+            m.architecte.trim(),
+            m.construction.trim(),
+            m.presentation.trim(),
+            m.ici.trim()
+        )),
         data.len(),
     );
     for room in &rooms {

@@ -320,6 +320,23 @@ body.viewer-open { overflow: hidden; }
   .nav-menu ul { left: 12px; right: 12px; top: calc(100% - .3rem); min-width: 0; }
 }
 
+/* ─── Le bâtiment ─────────────────────────────────────────────────────── */
+.building-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 2.5rem; align-items: start; }
+.building-text p { line-height: 1.7; }
+.building-text h3 { font-size: 1.6rem; margin: .2rem 0 .3rem; }
+.building-text h4 { margin: 1.4rem 0 .3rem; color: var(--accent); }
+.building-plan { margin: 0; padding: 1rem; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+.plan { width: 100%; height: auto; max-height: 70vh; display: block; }
+.plan-room { stroke: #3a3530; stroke-width: .25; }
+.plan-room.corridor { opacity: .75; }
+.plan-door { stroke: var(--card); stroke-width: .45; }
+.plan-art { stroke: var(--accent); stroke-width: .35; stroke-linecap: round; }
+.plan-sculpture { fill: #fff; stroke: #3a3530; stroke-width: .15; }
+.plan-number { fill: #3a3530; font-weight: 700; text-anchor: middle; font-family: var(--font); opacity: .7; }
+.plan-entrance { fill: var(--accent); font-weight: 700; text-anchor: middle; font-family: var(--font); }
+.plan-legend { margin: 1rem 0 0; padding-left: 1.4rem; display: grid; gap: .35rem; }
+@media (max-width: 820px) { .building-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
 /* ─── La page d'une œuvre ─────────────────────────────────────────────── */
 .art-card h3 a { color: inherit; text-decoration: none; }
 .art-card h3 a:hover { color: var(--accent); }
