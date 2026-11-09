@@ -1,0 +1,271 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « SMITHSONIAN » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/smithsonian/) + les
+#  modèles 3D de ses sculptures dans modeles/. Le nom du fichier donne l'adresse
+#  de l'exposition sur le site : /smithsonian.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 8
+nom_court = "Smithsonian"
+couleur = "#8a3b2e"
+titre = "L'Amérique au XIXᵉ siècle, peinture et sculpture"
+artiste = "Peintres et sculpteurs américains"
+dates = "1836–1899"
+accroche = "Exposition virtuelle · Musées du Smithsonian"
+introduction = """
+Un musée inspiré de ceux du Smithsonian à Washington : une grande cour couverte \
+où trône le George Washington de Greenough, les paysages de l'Hudson et de la \
+Sierra Nevada, les portraits de Whistler, Sargent et Eakins, les sculptures de \
+John Rogers, et un cabinet asiatique comme à la Freer Gallery. Les sculptures sont \
+des scans 3D du Smithsonian, en libre accès."""
+vitrine = "mere-whistler.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Smithsonian American Art Museum : une cour couverte au centre, des
+# galeries tout autour, et un cabinet pour l'art asiatique. x et z : le centre de
+# la salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un
+# seul côté.
+
+[[salles]]
+nom = "La cour couverte"
+theme = "Sous la verrière, la statue colossale de George Washington, sculptée à Florence pour le Capitole."
+murs = "#ece6da"
+x = 0
+z = 0
+largeur = 20
+profondeur = 20
+hauteur = 12
+portes = ["sud", "ouest", "nord", "est"]
+
+[[salles]]
+nom = "Les paysages américains"
+theme = "1836–1868 : l'Hudson, les chutes du Niagara et la Sierra Nevada, une nature grandiose et sauvage."
+murs = "#e4e6dc"
+x = -15
+z = 0
+largeur = 10
+profondeur = 16
+hauteur = 6
+
+[[salles]]
+nom = "Les portraits"
+theme = "1871–1899 : la mère de Whistler, Madame X, la clinique du docteur Gross, et la mer de Winslow Homer."
+murs = "#e6dfd8"
+x = 0
+z = -16
+largeur = 16
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Les sculptures de genre"
+theme = "1864–1869 : les groupes en plâtre de John Rogers, et le masque de Lincoln moulé sur le vif."
+murs = "#e3e3e6"
+x = 15
+z = 0
+largeur = 10
+profondeur = 12
+hauteur = 5
+portes = ["nord"]
+
+[[salles]]
+nom = "Le cabinet asiatique"
+theme = "VIᵉ siècle : un Bouddha chinois, dont la robe raconte les mondes de l'existence, comme à la Freer Gallery."
+murs = "#d9d2c4"
+x = 15
+z = -11
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "The Oxbow (La Boucle du Connecticut)"
+artiste = "Thomas Cole"
+annee = "1836"
+image = "oxbow.jpg"
+technique = "Huile sur toile, 130,8 × 193 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Après l'orage, la rivière dessine une boucle : d'un côté la forêt sauvage, de l'autre les champs cultivés."
+salle = 2
+mur = "ouest"
+position = -5
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Among the Sierra Nevada, California"
+artiste = "Albert Bierstadt"
+annee = "1868"
+image = "sierra-nevada.jpg"
+technique = "Huile sur toile, 183 × 305 cm"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Peinte à Rome d'après ses croquis de l'Ouest : une vision grandiose, presque divine, des montagnes de Californie."
+salle = 2
+mur = "ouest"
+position = 0.5
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Niagara"
+artiste = "Frederic Edwin Church"
+annee = "1857"
+image = "niagara.jpg"
+technique = "Huile sur toile, 101,6 × 229,9 cm"
+collection = "National Gallery of Art, Washington"
+note = "Pas de rive au premier plan : le spectateur est au bord du vide, au-dessus des chutes."
+salle = 2
+mur = "ouest"
+position = 5.6
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Arrangement en gris et noir n° 1 (La Mère de l'artiste)"
+artiste = "James McNeill Whistler"
+annee = "1871"
+image = "mere-whistler.jpg"
+technique = "Huile sur toile, 144,3 × 162,4 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Le peintre voulait une harmonie de gris et de noir ; le monde y a vu le portrait de toutes les mères."
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 1.6
+
+[[oeuvres]]
+titre = "The Gross Clinic (La Clinique du docteur Gross)"
+artiste = "Thomas Eakins"
+annee = "1875"
+image = "gross-clinic.jpg"
+technique = "Huile sur toile, 240 × 200 cm"
+collection = "Philadelphia Museum of Art"
+note = "Une opération dans l'amphithéâtre de Philadelphie : le chirurgien se retourne, le scalpel ensanglanté à la main."
+salle = 3
+mur = "nord"
+position = -4
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Madame X (Madame Pierre Gautreau)"
+artiste = "John Singer Sargent"
+annee = "1883–1884"
+image = "madame-x.jpg"
+technique = "Huile sur toile, 208,6 × 109,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le portrait fit scandale au Salon : Sargent quitta Paris. Il le tenait pour le meilleur qu'il ait peint."
+salle = 3
+mur = "nord"
+position = 3.5
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Child's Bath (Le Bain)"
+artiste = "Mary Cassatt"
+annee = "1893"
+image = "bain-enfant.jpg"
+technique = "Huile sur toile, 100,3 × 66,1 cm"
+collection = "Art Institute of Chicago"
+note = "Vue d'en haut, comme une estampe japonaise : la tendresse d'un geste quotidien."
+salle = 3
+mur = "est"
+position = 0
+largeur = 0.9
+
+[[oeuvres]]
+titre = "The Gulf Stream"
+artiste = "Winslow Homer"
+annee = "1899"
+image = "gulf-stream.jpg"
+technique = "Huile sur toile, 71,4 × 124,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un marin seul sur une barque démâtée, cerné par les requins, une trombe à l'horizon."
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.4
+
+# ─── Les sculptures ──────────────────────────────────────────────────────────
+# modele : le fichier dans modeles/ ; x et z : la place du socle depuis le centre
+# de la salle ; hauteur : celle de la sculpture sans le socle ; rotation : en degrés
+# (0 : elle regarde le sud) ; matiere : marbre, platre, pierre, bronze, or ou #rrggbb.
+# Scans 3D du Smithsonian, en libre accès (CC0).
+
+[[sculptures]]
+titre = "George Washington"
+artiste = "Horatio Greenough"
+annee = "1840"
+modele = "washington.stl"
+technique = "Marbre"
+collection = "National Museum of American History, Washington"
+note = "Commandé pour la rotonde du Capitole : Washington torse nu, en Zeus antique. Le public, choqué, le fit déplacer."
+salle = 1
+x = 0
+z = 0
+hauteur = 3.4
+matiere = "marbre"
+socle = 0.8
+
+[[sculptures]]
+titre = "The Wounded Scout, a Friend in the Swamp"
+artiste = "John Rogers"
+annee = "1864"
+modele = "wounded-scout.stl"
+technique = "Plâtre peint"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Pendant la guerre de Sécession, un esclave en fuite soutient un soldat de l'Union blessé : un groupe vendu à des milliers d'exemplaires."
+salle = 4
+x = -2.5
+z = 2
+hauteur = 0.6
+matiere = "#b9ab93"
+socle = 1.0
+
+[[sculptures]]
+titre = "The Fugitive's Story"
+artiste = "John Rogers"
+annee = "1869"
+modele = "fugitives-story.stl"
+technique = "Plâtre peint"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Une femme en fuite raconte son histoire à trois abolitionnistes, dont le poète Whittier."
+salle = 4
+x = 2.5
+z = 2
+hauteur = 0.56
+matiere = "#b9ab93"
+socle = 1.0
+
+[[sculptures]]
+titre = "Masque d'Abraham Lincoln"
+artiste = "Clark Mills"
+annee = "1865"
+modele = "lincoln-mask.stl"
+technique = "Plâtre, moulé sur le vif"
+collection = "National Portrait Gallery, Washington"
+note = "Moulé deux mois avant son assassinat : le visage d'un président épuisé par quatre ans de guerre."
+salle = 4
+x = 0
+z = -2
+hauteur = 0.3
+matiere = "platre"
+socle = 1.15
+
+[[sculptures]]
+titre = "Bouddha vêtu d'une robe figurant les mondes de l'existence"
+artiste = "Chine, dynastie des Qi du Nord"
+annee = "550–577"
+modele = "buddha.stl"
+technique = "Calcaire"
+collection = "Freer Gallery of Art, Washington"
+note = "Le « Bouddha cosmique » : sur sa robe, en léger relief, les six mondes de l'existence, des paradis aux enfers."
+salle = 5
+x = 0
+z = 0
+hauteur = 1.5
+matiere = "pierre"
+socle = 0.4

@@ -138,16 +138,24 @@ fn plan(ex: &Exhibition) -> Vec<Stop> {
     let Some(&first) = galleries.first() else {
         return vec![stop([0.0, EYE, 0.0], [0.0, EYE, -5.0], 3.0)];
     };
+    // L'entrée du musée (la porte extérieure ; au sud de la première salle par défaut).
     let room = &ex.rooms[first];
-    // L'entrée : la porte extérieure de la première salle (au sud par défaut).
-    let (ex_x, ex_z, ex_side) = museum::entrances(ex, first).into_iter().next().unwrap_or((
+    let (hall, ex_x, ex_z, ex_side) = museum::entrance(ex).unwrap_or((
+        first,
         room.x,
         room.z + room.depth / 2.0,
         crate::artworks::Side::South,
     ));
     let (ix, iz) = ex_side.inward();
     let start_eye = [ex_x + ix * 0.8, EYE, ex_z + iz * 0.8];
-    let mut list = vec![stop(start_eye, [room.x, EYE, room.z], 2.5)];
+    let target = &ex.rooms[hall];
+    let mut list = vec![stop(start_eye, [target.x, EYE, target.z], 2.5)];
+    // De l'entrée à la première salle d'exposition.
+    if hall != first {
+        walk_to(ex, &mut list, hall, first);
+        let eye = list.last().map_or(start_eye, |s| s.eye);
+        list.push(stop(eye, [room.x, 1.4, room.z], 1.2));
+    }
     let mut at = first;
     for (n, &g) in galleries.iter().enumerate() {
         if n > 0 {
@@ -160,7 +168,7 @@ fn plan(ex: &Exhibition) -> Vec<Stop> {
         at = g;
     }
     // Retour à l'entrée, par les portes.
-    walk_to(ex, &mut list, at, first);
+    walk_to(ex, &mut list, at, hall);
     list
 }
 

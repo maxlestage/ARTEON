@@ -27,22 +27,52 @@ fenêtre. Dix toiles, de la Leçon d'anatomie à la Jeune Fille à la perle, jus
 la Ronde de nuit au fond de la galerie."""
 vitrine = "jeune-fille-perle.jpg"
 
-# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Rijksmuseum : la galerie d'honneur, longue et haute, deux cabinets
+# intimes pour les petits tableaux de Vermeer, et la salle de la Ronde de nuit au
+# bout de la galerie. x et z : le centre de la salle (x vers l'est, z vers le sud),
+# en mètres ; une porte se déclare d'un seul côté.
 
 [[salles]]
-nom = "Salle I · Rembrandt, le clair-obscur"
+nom = "La galerie d'honneur · Rembrandt"
 theme = "1632–1668 : des visages qui surgissent de l'ombre, du portrait de groupe aux derniers autoportraits."
-murs = "#e4ddd2"
+murs = "#ddd3c4"
+x = 0
+z = 0
+largeur = 9
+profondeur = 30
+hauteur = 7
+portes = ["sud", "nord", { mur = "est", position = -5 }, { mur = "ouest", position = 5 }]
 
 [[salles]]
-nom = "Salle II · Vermeer, la lumière de Delft"
+nom = "Le cabinet de Vermeer"
 theme = "Vers 1658–1668 : des intérieurs silencieux, une lumière douce venue de la gauche."
-murs = "#e3e6e8"
+murs = "#dfe4e6"
+x = 8.5
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5
 
 [[salles]]
-nom = "Salle III · La Ronde de nuit"
-theme = "1642 : la compagnie du capitaine Banninck Cocq, l'immense toile du Rijksmuseum."
-murs = "#ddd2c9"
+nom = "Le cabinet de Delft"
+theme = "Vers 1660–1668 : sa ville sous un grand ciel, et un savant penché sur le globe céleste."
+murs = "#e2e5e0"
+x = -8.5
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5
+
+[[salles]]
+nom = "La salle de la Ronde de nuit"
+theme = "1642 : la compagnie du capitaine Banninck Cocq, à sa taille réelle, au bout de la galerie."
+murs = "#cdbfb3"
+x = 0
+z = -22
+largeur = 14
+profondeur = 14
+hauteur = 8
 
 # ─── Les œuvres ──────────────────────────────────────────────────────────────
 
@@ -55,9 +85,9 @@ technique = "Huile sur toile, 169,5 × 216,5 cm"
 collection = "Mauritshuis, La Haye"
 note = "Rembrandt a 26 ans : sa première grande commande, un portrait de groupe saisi en pleine dissection."
 salle = 1
-mur = "gauche"
-place = 1
-largeur = 1.7
+mur = "est"
+position = 7
+largeur = 2.2
 
 [[oeuvres]]
 titre = "Autoportrait"
@@ -68,8 +98,8 @@ technique = "Huile sur toile, 84,5 × 66 cm"
 collection = "National Gallery of Art, Washington"
 note = "Ruiné, à 53 ans, Rembrandt se peint sans complaisance : un visage marqué, éclairé dans l'ombre."
 salle = 1
-mur = "droite"
-place = 3
+mur = "est"
+position = -11
 largeur = 0.85
 
 [[oeuvres]]
@@ -81,8 +111,8 @@ technique = "Huile sur toile, 142 × 142 cm"
 collection = "Musée du Louvre, Paris"
 note = "Bethsabée tient la lettre du roi David : un nu pensif, peint d'après sa compagne Hendrickje."
 salle = 1
-mur = "gauche"
-place = 3
+mur = "ouest"
+position = -7
 largeur = 1.4
 
 [[oeuvres]]
@@ -94,9 +124,9 @@ technique = "Huile sur toile, 262 × 205 cm"
 collection = "Musée de l'Ermitage, Saint-Pétersbourg"
 note = "Le père pose ses mains sur les épaules du fils agenouillé : l'une des dernières toiles, et des plus bouleversantes."
 salle = 1
-mur = "droite"
-place = 1
-largeur = 1.25
+mur = "ouest"
+position = 11
+largeur = 1.6
 
 [[oeuvres]]
 titre = "La Laitière"
@@ -107,9 +137,9 @@ technique = "Huile sur toile, 45,5 × 41 cm"
 collection = "Rijksmuseum, Amsterdam"
 note = "Une servante verse du lait, dans la lumière de la fenêtre : le pain semble saupoudré de points lumineux."
 salle = 2
-mur = "gauche"
+mur = "nord"
 place = 1
-largeur = 0.9
+largeur = 0.6
 
 [[oeuvres]]
 titre = "Vue de Delft"
@@ -119,10 +149,10 @@ image = "vue-delft.jpg"
 technique = "Huile sur toile, 96,5 × 115,7 cm"
 collection = "Mauritshuis, La Haye"
 note = "Sa ville, vue de l'autre rive, sous un grand ciel : Proust la tenait pour le plus beau tableau du monde."
-salle = 2
-mur = "droite"
-place = 3
-largeur = 1.6
+salle = 3
+mur = "nord"
+position = 0
+largeur = 1.16
 
 [[oeuvres]]
 titre = "La Jeune Fille à la perle"
@@ -133,9 +163,9 @@ technique = "Huile sur toile, 44,5 × 39 cm"
 collection = "Mauritshuis, La Haye"
 note = "Un turban bleu, une perle, un regard par-dessus l'épaule : un visage imaginaire devenu l'un des plus célèbres."
 salle = 2
-mur = "gauche"
-place = 2
-largeur = 0.85
+mur = "est"
+position = 0
+largeur = 0.55
 
 [[oeuvres]]
 titre = "L'Art de la peinture"
@@ -146,9 +176,9 @@ technique = "Huile sur toile, 120 × 100 cm"
 collection = "Kunsthistorisches Museum, Vienne"
 note = "Un peintre de dos peint la muse de l'Histoire : Vermeer garda ce tableau toute sa vie."
 salle = 2
-mur = "gauche"
-place = 3
-largeur = 1.1
+mur = "nord"
+place = 2
+largeur = 1.0
 
 [[oeuvres]]
 titre = "L'Astronome"
@@ -158,10 +188,10 @@ image = "astronome.jpg"
 technique = "Huile sur toile, 51 × 45 cm"
 collection = "Musée du Louvre, Paris"
 note = "Un savant tend la main vers un globe céleste, dans la lumière de la fenêtre."
-salle = 2
-mur = "droite"
-place = 1
-largeur = 0.9
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 0.6
 
 [[oeuvres]]
 titre = "La Ronde de nuit"
@@ -171,7 +201,7 @@ image = "ronde-nuit.jpg"
 technique = "Huile sur toile, 379,5 × 453,5 cm"
 collection = "Rijksmuseum, Amsterdam"
 note = "La milice du capitaine Banninck Cocq se met en marche : un portrait de groupe devenu une scène de théâtre."
-salle = 3
-mur = "fond"
-place = 2
-largeur = 2.6
+salle = 4
+mur = "nord"
+position = 0
+largeur = 4.5

@@ -337,6 +337,17 @@ pub fn entrances(ex: &Exhibition, room_index: usize) -> Vec<(f32, f32, Side)> {
         .collect()
 }
 
+/// L'entrée du musée : la première salle (dans l'ordre du fichier) qui a une porte
+/// extérieure, et cette porte.
+pub fn entrance(ex: &Exhibition) -> Option<(usize, f32, f32, Side)> {
+    (0..ex.rooms.len()).find_map(|r| {
+        entrances(ex, r)
+            .into_iter()
+            .next()
+            .map(|(x, z, side)| (r, x, z, side))
+    })
+}
+
 /// Le plus court chemin (en nombre de portes) de la salle `a` à la salle `b`.
 pub fn route(ex: &Exhibition, a: usize, b: usize) -> Option<Vec<Passage>> {
     let links = passages(ex);
@@ -408,22 +419,18 @@ mod tests {
     use crate::artworks::EXHIBITIONS;
 
     #[test]
-    fn every_gallery_can_be_reached_from_the_first() {
+    fn every_room_can_be_reached_from_the_entrance() {
         for ex in EXHIBITIONS {
-            let first = ex.galleries().next().map(|(i, _)| i).unwrap_or(0);
+            let (start, ..) =
+                entrance(ex).unwrap_or_else(|| panic!("{} : le musée n'a pas d'entrée", ex.slug));
             for (i, room) in ex.rooms.iter().enumerate() {
                 assert!(
-                    route(ex, first, i).is_some(),
+                    route(ex, start, i).is_some(),
                     "{} : « {} » est inaccessible",
                     ex.slug,
                     room.name
                 );
             }
-            assert!(
-                !entrances(ex, first).is_empty(),
-                "{} : la première salle n'a pas d'entrée",
-                ex.slug
-            );
         }
     }
 

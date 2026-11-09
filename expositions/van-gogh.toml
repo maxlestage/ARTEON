@@ -36,24 +36,52 @@ reliées par des couloirs."""
 # L'œuvre (son image) qui tourne sur un chevalet en page d'accueil.
 vitrine = "nuit-etoilee.jpg"
 
-# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
-# Ajouter un bloc [[salles]] ajoute une salle (et le couloir qui y mène).
-# murs : la couleur des murs, en hexadécimal.
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée Van Gogh d'Amsterdam (le bâtiment de Rietveld) : un atrium haut
+# et clair au centre, et trois salles tout autour, dans l'ordre de sa vie. x et z :
+# le centre de la salle (x vers l'est, z vers le sud), en mètres ; une porte se
+# déclare d'un seul côté.
+
+[[salles]]
+nom = "L'atrium"
+couloir = true
+murs = "#f2f0ea"
+x = 0
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 9
+portes = ["sud", "ouest", "nord", "est"]
 
 [[salles]]
 nom = "Salle I · Nuenen et Paris"
 theme = "1885–1887 : les terres sombres du Brabant, puis la lumière de Paris et les premiers autoportraits."
 murs = "#e7e1d3"
+x = -10
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 5
 
 [[salles]]
 nom = "Salle II · Arles"
 theme = "1888 : le soleil du Midi, les jaunes de chrome et les nuits bleues au bord du Rhône."
 murs = "#efe3c4"
+x = 0
+z = -11
+largeur = 14
+profondeur = 12
+hauteur = 5
 
 [[salles]]
 nom = "Salle III · Saint-Rémy et Auvers"
 theme = "1889–1890 : les ciels qui tourbillonnent, les fleurs de l'asile et les blés d'Auvers."
 murs = "#dfe4e8"
+x = 11
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 5
 
 # ─── Les œuvres ──────────────────────────────────────────────────────────────
 # image    : le nom du fichier dans public/tableaux/van-gogh/
@@ -73,8 +101,8 @@ image = "mangeurs-pommes-de-terre.jpg"
 technique = "Huile sur toile, 82 × 114 cm"
 collection = "Van Gogh Museum, Amsterdam"
 note = "Une famille paysanne à la lueur d'une lampe : la première grande composition, peinte dans des terres brunes."
-salle = 1
-mur = "gauche"
+salle = 2
+mur = "ouest"
 place = 2
 largeur = 1.7
 
@@ -85,9 +113,9 @@ image = "autoportrait-1887.jpg"
 technique = "Huile sur carton, 41 × 32,5 cm"
 collection = "Art Institute of Chicago"
 note = "À Paris, Van Gogh découvre le pointillisme : le visage se construit en petites touches de couleurs pures."
-salle = 1
-mur = "droite"
-place = 3
+salle = 2
+mur = "nord"
+place = 1
 largeur = 0.9
 
 [[oeuvres]]
@@ -97,9 +125,9 @@ image = "autoportrait-feutre.jpg"
 technique = "Huile sur toile, 44 × 37,5 cm"
 collection = "Van Gogh Museum, Amsterdam"
 note = "Les touches rayonnent autour de la tête comme une auréole : le style de la fin est déjà là."
-salle = 1
-mur = "droite"
-place = 1
+salle = 2
+mur = "nord"
+place = 3
 largeur = 0.9
 
 [[oeuvres]]
@@ -109,9 +137,9 @@ image = "tournesols.jpg"
 technique = "Huile sur toile, 92,1 × 73 cm"
 collection = "National Gallery, Londres"
 note = "Peints pour décorer la chambre de Gauguin à Arles : une symphonie de jaunes sur fond jaune."
-salle = 2
-mur = "gauche"
-place = 1
+salle = 3
+mur = "ouest"
+place = 2
 largeur = 1.1
 
 [[oeuvres]]
@@ -121,9 +149,9 @@ image = "nuit-etoilee-rhone.jpg"
 technique = "Huile sur toile, 72,5 × 92 cm"
 collection = "Musée d'Orsay, Paris"
 note = "Les becs de gaz d'Arles se reflètent dans le fleuve sous la Grande Ourse."
-salle = 2
-mur = "gauche"
-place = 2
+salle = 3
+mur = "nord"
+place = 1
 largeur = 1.4
 
 [[oeuvres]]
@@ -133,9 +161,9 @@ image = "chambre-arles.jpg"
 technique = "Huile sur toile, 72,4 × 91,3 cm"
 collection = "Van Gogh Museum, Amsterdam"
 note = "Sa chambre de la Maison jaune, en aplats francs : « le repos absolu », écrit-il à son frère Theo."
-salle = 2
-mur = "gauche"
-place = 3
+salle = 3
+mur = "nord"
+place = 2
 largeur = 1.4
 
 [[oeuvres]]
@@ -145,9 +173,9 @@ image = "terrasse-cafe.jpg"
 technique = "Huile sur toile, 80,7 × 65,3 cm"
 collection = "Musée Kröller-Müller, Otterlo"
 note = "Une nuit sans noir : le jaune de la terrasse contre le bleu profond du ciel étoilé."
-salle = 2
-mur = "droite"
-place = 3
+salle = 3
+mur = "nord"
+place = 4
 largeur = 1.1
 
 [[oeuvres]]
@@ -157,9 +185,9 @@ image = "cafe-de-nuit.jpg"
 technique = "Huile sur toile, 72,4 × 92,1 cm"
 collection = "Yale University Art Gallery, New Haven"
 note = "Rouge sang et vert amer : un café où « l'on peut se ruiner, devenir fou, commettre des crimes »."
-salle = 2
-mur = "droite"
-place = 1
+salle = 3
+mur = "est"
+place = 2
 largeur = 1.4
 
 [[oeuvres]]
@@ -169,8 +197,8 @@ image = "iris.jpg"
 technique = "Huile sur toile, 74,3 × 94,3 cm"
 collection = "J. Paul Getty Museum, Los Angeles"
 note = "Peint dans le jardin de l'asile de Saint-Rémy, la première semaine : un seul iris blanc parmi les bleus."
-salle = 3
-mur = "gauche"
+salle = 4
+mur = "nord"
 place = 1
 largeur = 1.4
 
@@ -181,8 +209,8 @@ image = "nuit-etoilee.jpg"
 technique = "Huile sur toile, 73,7 × 92,1 cm"
 collection = "Museum of Modern Art, New York"
 note = "La vue de sa fenêtre à l'asile, avant l'aube : un ciel qui tourbillonne au-dessus du village endormi."
-salle = 3
-mur = "droite"
+salle = 4
+mur = "nord"
 place = 3
 largeur = 1.5
 
@@ -193,9 +221,9 @@ image = "amandier.jpg"
 technique = "Huile sur toile, 73,3 × 92,4 cm"
 collection = "Van Gogh Museum, Amsterdam"
 note = "Un cadeau pour la naissance de son neveu : des branches en fleurs sur un ciel bleu, à la japonaise."
-salle = 3
-mur = "gauche"
-place = 3
+salle = 4
+mur = "sud"
+place = 2
 largeur = 1.4
 
 [[oeuvres]]
@@ -205,7 +233,7 @@ image = "champ-ble-corbeaux.jpg"
 technique = "Huile sur toile, 50,5 × 103 cm"
 collection = "Van Gogh Museum, Amsterdam"
 note = "Auvers-sur-Oise, juillet 1890 : un ciel d'orage, trois chemins et un vol de corbeaux. Il meurt quelques semaines plus tard."
-salle = 3
-mur = "fond"
+salle = 4
+mur = "est"
 place = 2
 largeur = 2.4
