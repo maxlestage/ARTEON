@@ -1,0 +1,942 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ARTS DÉCORATIFS » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/arts-decoratifs/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /arts-decoratifs.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 165
+nom_court = "Arts décoratifs"
+mouvement = "Art nouveau et Art déco, les arts décoratifs"
+cadre = "vitrine"
+couleur = "#566b34"
+titre = "De l'Art nouveau à l'Art déco, l'art dans la maison"
+artiste = "Tiffany, Gallé, Daum, Guimard, Mackintosh, Ruhlmann, Lalique…"
+dates = "1897–1926"
+accroche = "Exposition virtuelle · Musée des Arts décoratifs, Paris"
+introduction = """
+Vers 1890, des artistes refusent de copier les styles du passé et veulent mettre l'art \
+partout : dans une lampe, une chaise, un vase ou une affiche. L'Art nouveau puise ses \
+lignes dans les plantes et les insectes, de Nancy à Glasgow et de Paris à New York ; \
+dans les années 1920, l'Art déco lui répond par la géométrie, les bois précieux et le \
+verre moulé. La visite réunit dix objets, de 1897 à 1926, présentés en vitrine. Le \
+bâtiment s'inspire du musée des Arts décoratifs de Paris, installé dans le pavillon de \
+Marsan, au Louvre : une grande nef haute de quatorze mètres, d'où l'on gagne les \
+galeries."""
+vitrine = "magnolias-et-iris.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Musée des Arts décoratifs"
+ville = "Paris, France"
+construction = "Ouvert en 1905 dans le pavillon de Marsan du Louvre"
+presentation = """
+En 1864, des industriels, des artistes et des collectionneurs fondent à Paris l'Union \
+centrale des beaux-arts appliqués à l'industrie : ils veulent que les objets fabriqués \
+en France restent beaux à l'heure de la machine. Devenue en 1882 l'Union centrale des \
+arts décoratifs, l'association réunit des collections et obtient de l'État le pavillon \
+de Marsan, à l'extrémité ouest de l'aile du Louvre qui longe la rue de Rivoli. Ce \
+pavillon, incendié en 1871 avec le palais des Tuileries pendant la Commune, avait été \
+reconstruit peu après. Le musée y ouvre en 1905. Au cœur du bâtiment, une vaste nef \
+couverte d'une verrière dessert des galeries sur plusieurs niveaux. On y suit \
+l'histoire des objets du Moyen Âge à nos jours : mobilier, céramique, verre, \
+orfèvrerie, papiers peints, jouets, affiches. Les salles Art nouveau et Art déco sont \
+réputées, avec les pièces de l'appartement de la couturière Jeanne Lanvin, dessinées \
+par Armand-Albert Rateau. Rénové pendant dix ans, le musée a rouvert en 2006."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée de la nef du musée parisien. On entre par le sud \
+dans « La nef », longue de vingt mètres, haute de quatorze, aux murs couleur de \
+pierre, où une affiche de Mucha et un grand vase de Guimard accueillent le visiteur. À \
+l'ouest s'ouvre la galerie « Nancy, le verre et la nature », d'un vert pâle ; à l'est, \
+« Tiffany, la lumière de New York », couleur de miel. Au nord, la galerie « Paris et \
+Glasgow, la ligne » met face à face deux sièges, puis mène à la dernière salle, \
+« 1925, l'Art déco »."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée des Arts décoratifs de Paris (pavillon de Marsan) : une grande
+# nef haute, couverte d'une verrière, sert d'entrée et distribue les galeries ;
+# à l'ouest le verre de Nancy, à l'est Tiffany, au nord, en enfilade, la ligne
+# (Guimard et Mackintosh) puis l'Art déco de 1925. x et z : le centre de la salle
+# (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "La nef"
+theme = "L'entrée, haute comme la nef du musée parisien : une affiche de Mucha et un vase monumental de Guimard."
+murs = "#ebe3d4"
+x = 0
+z = 0
+largeur = 14
+profondeur = 20
+hauteur = 14
+portes = ["sud", "ouest", "est", "nord"]
+
+[[salles]]
+nom = "Nancy, le verre et la nature"
+theme = "Émile Gallé et les frères Daum : à Nancy, le verre devient fleur, fruit et insecte."
+murs = "#dfe2cc"
+x = -13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "Tiffany, la lumière de New York"
+theme = "Un vitrail de paysage et une lampe en glycine : le verre coloré des ateliers de Louis Comfort Tiffany."
+murs = "#eadcc0"
+x = 13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 8
+
+[[salles]]
+nom = "Paris et Glasgow, la ligne"
+theme = "Deux sièges face à face : la courbe végétale de Guimard et la rigueur de Mackintosh."
+murs = "#e6dccf"
+x = 0
+z = -16
+largeur = 14
+profondeur = 12
+hauteur = 7
+portes = ["nord"]
+
+[[salles]]
+nom = "1925, l'Art déco"
+theme = "Le luxe des années 1920 : une encoignure de Ruhlmann et un vase de Lalique."
+murs = "#e8d9c3"
+x = 0
+z = -28
+largeur = 14
+profondeur = 12
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Job"
+artiste = "Alphonse Mucha"
+annee = "1898"
+image = "affiche-job.jpg"
+cadre = "estampe"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Alphonse_Mucha_-_Job_-_Google_Art_Project.jpg"
+technique = "Lithographie en couleurs, 141 × 93,8 cm"
+collection = "National Gallery of Australia, Canberra"
+note = "Une affiche pour le papier à cigarettes Job : la chevelure de la fumeuse envahit toute l'image."
+description = """
+Une jeune femme est assise de face, enveloppée dans une longue robe rose qui lui \
+laisse les épaules nues. D'une main levée, elle tient une cigarette dont la fumée \
+s'élève en ruban bleuté ; de l'autre, posée sur son genou, un petit carnet de papier à \
+cigarettes marqué JOB. Ses cheveux noirs, piqués de fleurs rouges, se déploient de \
+part et d'autre de son corps en mèches enroulées qui descendent jusqu'au bas de \
+l'affiche. Derrière elle, un grand cercle vert lui fait comme une auréole. En haut, \
+les trois lettres JOB, énormes et brunes, se détachent sur un fond jaune semé d'un \
+monogramme répété ; le même monogramme sert d'agrafe à sa robe. Sous l'image, une \
+ligne de texte nomme l'imprimeur parisien, F. Champenois."""
+evocation = """
+Mucha ne montre pas le produit : il vend un rêve. La fumeuse, les yeux mi-clos, semble \
+absorbée dans un plaisir paisible, et la fumée de sa cigarette rejoint les volutes de \
+ses cheveux. Cette femme idéale, à la fois sensuelle et lointaine, occupe tout \
+l'espace, tandis que le nom de la marque, répété partout, s'imprime dans la mémoire du \
+passant. Le cercle derrière sa tête rappelle les auréoles des icônes byzantines, que \
+Mucha admirait : on y a vu une manière de sacraliser la publicité. L'affiche dit aussi \
+une époque où une femme qui fume reste une image audacieuse, qui attire autant qu'elle \
+provoque."""
+histoire = """
+Job est une marque de papier à cigarettes fondée à Perpignan par la famille Bardou : \
+son nom vient des initiales de Jean Bardou, J et B, séparées par un losange que le \
+public a lu comme un O. Dans les années 1890, la firme commande des affiches aux \
+artistes en vogue. Mucha, devenu célèbre d'un coup avec l'affiche de Gismonda pour \
+Sarah Bernhardt, placardée dans Paris au début de 1895, lui en dessine une première en \
+1896, puis celle-ci, plus grande, en 1898. Elle est imprimée en lithographie par \
+Champenois, l'imprimeur auquel Mucha est lié par contrat. Les amateurs collectionnent \
+alors les affiches avec passion : on parle d'affichomanie. Cet exemplaire a été acquis \
+en 1974 par la National Gallery of Australia, à Canberra."""
+facture = """
+L'affiche est une lithographie en couleurs : chaque teinte est dessinée sur une pierre \
+différente, et la feuille passe successivement sous chacune. Mucha cerne ses formes \
+d'un trait brun ou noir d'épaisseur variable, comme le plomb d'un vitrail, puis les \
+remplit de couleurs douces et plates : rose, vert d'eau, jaune. Le modelé reste léger, \
+sauf dans le visage et les mains. La composition s'inscrit dans un cadre de lettres et \
+de cercles, et les cheveux, devenus des arabesques presque abstraites, organisent tout \
+l'espace. On y reconnaît la leçon des estampes japonaises, alors à la mode à Paris."""
+details = [
+  "La fumée de la cigarette, qui se déroule comme un ruban de soie.",
+  "Le petit carnet de papier marqué JOB, dans la main posée sur le genou.",
+  "L'agrafe de la robe, qui reprend le monogramme de la marque.",
+  "Le pied nu qui dépasse de la robe, en bas de l'image.",
+  "La signature Mucha, en bas à gauche, et le nom de l'imprimeur sous l'image.",
+]
+themes = ["affiche", "publicité", "chevelure", "femme", "lithographie"]
+anecdote = """
+Les femmes aux cheveux en arabesques de Mucha ont eu un tel succès que, vers 1900, on \
+parlait à Paris de « style Mucha » pour désigner l'Art nouveau tout entier. L'artiste, \
+qui se voulait avant tout peintre, finit par s'en agacer."""
+salle = 1
+mur = "nord"
+place = 1
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Vase des Binelles"
+artiste = "Hector Guimard"
+annee = "1903"
+image = "vase-des-binelles.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Vase_des_Binelles_MET_DP324639.jpg"
+technique = "Grès émaillé, Manufacture nationale de Sèvres, 130,2 × 39,1 × 39,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un vase plus grand qu'un enfant, dessiné par l'architecte des entrées du métro de Paris et cuit à Sèvres."
+description = """
+Le vase, haut de 1,30 mètre, a la silhouette d'une colonne qui s'élargit vers le haut. \
+Ses quatre angles forment des nervures qui montent du pied comme des tiges, se \
+séparent près du sommet et se recourbent en crochets au-dessus de l'ouverture, à la \
+manière de cornes ou de bourgeons. Entre ces nervures, la paroi est percée, en haut, \
+de longues ouvertures en amande. Près du pied, une spirale en relief s'enroule sur \
+elle-même. Toute la surface est couverte d'une glaçure d'un beige verdâtre, semée de \
+taches bleues qui scintillent comme des cristaux. Aucune fleur, aucun animal n'est \
+représenté : c'est la forme elle-même qui semble vivante. Sur la photographie, le vase \
+est posé sur un socle gris."""
+evocation = """
+Guimard ne copie pas la nature : il en retient le mouvement, la sève qui monte, la \
+tige qui se tord. Le vase paraît avoir poussé plutôt qu'avoir été fabriqué. Son nom \
+rappelle la rue des Binelles, à Sèvres, où l'architecte venait de bâtir le Castel \
+Henriette, une villa toute en courbes : le vase en reprend certaines formes, comme un \
+fragment de maison devenu objet. On y retrouve l'ambition de l'Art nouveau d'unir tous \
+les arts, de la façade à la poignée de porte, et l'idée chère à Guimard qu'un \
+architecte doit dessiner chaque détail. Le vase dit aussi la volonté d'une manufacture \
+d'État, Sèvres, de prouver qu'elle sait être moderne."""
+histoire = """
+Fondée au XVIIIᵉ siècle, manufacture royale puis nationale, Sèvres cherche vers 1900 à \
+renouveler ses modèles. Sous l'impulsion d'Alexandre Sandier, directeur des travaux \
+d'art à partir de 1897, elle fait appel à des créateurs extérieurs, dont Hector \
+Guimard, qui dessine pour elle plusieurs vases. Le Vase des Binelles est édité en grès \
+à quelques exemplaires seulement, cinq selon le Cleveland Museum of Art, qui en \
+conserve un. Ces pièces spectaculaires s'adressaient aux expositions et à de riches \
+amateurs. Après la Première Guerre mondiale, Guimard tombe dans l'oubli ; on ne le \
+redécouvre qu'à partir des années 1960. L'exemplaire du Metropolitan Museum provient \
+de la collection de céramiques de Robert A. Ellison Jr. et a été acquis par le musée \
+en 2013."""
+facture = """
+Le vase est en grès, une terre cuite à très haute température qui devient dure et \
+imperméable. Sa forme, avec ses angles évidés et ses crochets, n'a rien d'un vase \
+tourné : c'est un volume d'architecte, pensé comme un petit monument. La glaçure doit \
+ses taches scintillantes à des cristaux qui se forment dans l'émail pendant la cuisson \
+et le refroidissement : leur dessin n'est jamais tout à fait le même d'un exemplaire à \
+l'autre. Les céramistes de 1900 recherchaient ces effets en partie imprévisibles, qui \
+donnaient à chaque pièce un aspect naturel, proche de la pierre ou du lichen."""
+details = [
+  "Les crochets du sommet, qui se recourbent au-dessus de l'ouverture.",
+  "La spirale près du pied, comme une crosse de fougère.",
+  "Les ouvertures en amande percées entre les nervures.",
+  "Les taches bleues de la glaçure, qui scintillent comme du givre.",
+]
+themes = ["céramique", "architecture", "ligne", "sèvres", "nature"]
+anecdote = """
+En 1900, Guimard dessine pour le métro de Paris des entrées en fonte peinte en vert, \
+aux lampes en forme de bourgeons. Plusieurs ont été offertes à des villes étrangères : \
+l'une orne depuis 1967 la station Square-Victoria, à Montréal."""
+salle = 1
+mur = "nord"
+place = 4
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Vase aux colchiques"
+artiste = "Émile Gallé"
+annee = "vers 1900"
+image = "vase-crocus-automne.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%22Autumn_Crocus%22_Vase_MET_DT1081.jpg"
+technique = "Verre, hauteur 44,1 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une longue tige de verre où s'ouvrent des fleurs d'automne : Gallé fait du vase la plante elle-même. Titre du musée : « Autumn Crocus »."
+description = """
+Le vase, haut de 44 centimètres, est étroit et élancé comme une tige. Il repose sur un \
+pied large et bas, sombre et luisant, aux bords ondulés, qui évoque un bulbe ou une \
+touffe posée sur le sol. Le corps du vase, presque blanc en haut, se teinte vers le \
+bas de rouge et de violet, et toute sa surface est parcourue de fines stries mauves \
+verticales, comme les nervures d'une feuille. Sur ce fond montent de longues tiges \
+brunes ; elles portent des fleurs en relief : une grande corolle orangée ouverte vers \
+le haut, et autour, des fleurs bleues et violettes encore à demi fermées. Des étamines \
+jaunes, faites de minces filets de verre, sortent des corolles."""
+evocation = """
+Le colchique, que les Anglais appellent « crocus d'automne », fleurit dans les prés à \
+la fin de l'été et en automne, sans feuilles, quand le reste de la nature décline. On \
+a souvent lu les fleurs de fin de saison, nombreuses chez Gallé, comme des images du \
+temps qui passe et de la mélancolie. Le vase ne représente pas seulement une fleur : \
+sa forme même, avec son pied en bulbe et son corps en tige, devient la plante. Cette \
+fusion de l'objet et du modèle naturel est au cœur de l'Art nouveau de Nancy. Elle \
+traduit la conviction de Gallé que l'artiste doit observer la nature en savant avant \
+de l'interpréter en poète."""
+histoire = """
+Vers 1900, Gallé est au sommet de sa gloire. À l'Exposition universelle de Paris, \
+cette année-là, ses verreries et ses meubles valent à sa maison nancéienne les plus \
+hautes récompenses. Ses ateliers emploient alors plusieurs centaines d'ouvriers et \
+produisent à la fois des pièces uniques, longuement travaillées, et des séries plus \
+abordables. Ce vase, aux fleurs rapportées une à une, appartient aux pièces soignées. \
+Après la mort de Gallé, en 1904, l'entreprise poursuit sa production jusqu'en 1936. Le \
+vase est entré au Metropolitan Museum of Art en 1984, don de Lloyd et Barbara \
+Macklowe, marchands et collectionneurs new-yorkais spécialistes de l'Art nouveau."""
+facture = """
+Le verre est soufflé en plusieurs couches, teintées dans la masse par des oxydes \
+métalliques, ce qui donne le dégradé du blanc laiteux au rouge violacé. Les fines \
+stries mauves sont prises dans l'épaisseur. Les fleurs semblent faites de morceaux de \
+verre coloré appliqués à chaud sur la paroi, puis modelés : une technique proche de la \
+marqueterie de verre, que Gallé fait breveter en 1898. Les étamines sont des filets de \
+verre jaune étirés. Le pied, sombre aux reflets cuivrés, contraste avec la clarté du \
+col. L'ensemble tient de la sculpture autant que du vitrail."""
+details = [
+  "La grande fleur orangée au sommet, avec ses étamines jaunes.",
+  "Les fines stries mauves qui parcourent tout le verre.",
+  "Le pied sombre aux reflets cuivrés, qui évoque un bulbe.",
+  "Le dégradé du blanc laiteux en haut au rouge violacé en bas.",
+]
+themes = ["verre", "fleurs", "automne", "nancy", "botanique"]
+anecdote = """
+Sur la porte de ses ateliers de Nancy, Gallé avait fait sculpter sa devise : « Ma \
+racine est au fond des bois ». Cette porte est aujourd'hui conservée au musée de \
+l'École de Nancy."""
+salle = 2
+mur = "ouest"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Vase en forme de calebasse"
+artiste = "Daum frères"
+annee = "vers 1910"
+image = "vase-calebasse-daum.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2018.259"
+technique = "Verre soufflé et moulé, poudres vitrifiées, décor appliqué gravé à la roue, hauteur 34,9 cm"
+collection = "Cleveland Museum of Art"
+note = "Une gourde de verre, trouée comme un fruit rongé, où se posent deux insectes : l'humour et la virtuosité des Daum."
+description = """
+Le vase, haut de 35 centimètres, imite une calebasse, ce fruit de la famille des \
+courges à deux renflements. Sa queue, en haut, se dresse en une boucle de verre rayée \
+de vert et de jaune. Sur le flanc, une large ouverture irrégulière, aux bords ourlés, \
+fait penser à un trou rongé dans l'écorce. La peau du fruit, jaune et verte, est \
+marbrée de taches orange, rouges et bleues, et semée de petits grains en relief. Une \
+longue vrille de verre jaune s'enroule autour de la panse. Près de l'ouverture, deux \
+petits insectes rouge sombre, posés en relief, semblent se diriger vers le trou. Rien \
+n'évoque un vase ordinaire : l'objet se fait passer pour un fruit trouvé au jardin."""
+evocation = """
+À Nancy, les artistes de l'Art nouveau puisent leurs modèles dans le potager comme \
+dans le jardin : courges, champignons, ombelles. Cette calebasse rongée parle du cycle \
+de la nature, où le fruit mûrit, s'abîme et nourrit les insectes. On peut y voir une \
+méditation sur le temps qui passe, mais aussi un jeu : l'objet trompe l'œil et amuse. \
+Le vase montre que les frères Daum, entrés dans le verre d'art à la suite de Gallé, \
+ont trouvé leur propre voie, plus tournée vers les effets de matière et de couleur. Il \
+témoigne enfin de l'admiration des artistes de 1900 pour le Japon, dont l'art aime la \
+calebasse et les petits insectes."""
+histoire = """
+La verrerie Daum est d'abord une affaire de famille : dans les années 1870, le notaire \
+Jean Daum reprend à Nancy une verrerie qui fabrique des verres de table et des \
+bouteilles. Ses fils Auguste et Antonin la développent après sa mort, en 1885. \
+Impressionnés par le succès de Gallé à l'Exposition universelle de 1889, ils créent au \
+début des années 1890 un atelier de verre d'art, bientôt récompensé à l'Exposition de \
+1900. Vers 1910, la maison multiplie les expériences de couleurs prises dans le verre, \
+comme sur ce vase. Passé par plusieurs collections privées et ventes publiques, il a \
+été acheté par le Cleveland Museum of Art en 2018, lors d'une vente aux enchères à New \
+York."""
+facture = """
+Le verrier souffle la paraison, la boule de verre en fusion, dans un moule qui lui \
+donne sa forme à double renflement. Il la roule encore chaude dans des poudres de \
+verre colorées, qui fondent à la surface et créent ces marbrures orange, vertes et \
+bleues : on parle de poudres vitrifiées. La queue, la vrille et les insectes sont \
+ajoutés à chaud, puis certains détails sont repris à la roue, une petite meule qui \
+grave le verre froid. Les bords ourlés de l'ouverture montrent que le verre a été \
+travaillé encore mou."""
+details = [
+  "La queue de verre rayée de vert et de jaune, qui se recourbe au sommet.",
+  "Les deux insectes rouge sombre posés près du trou.",
+  "La vrille jaune qui fait presque le tour de la panse.",
+  "Les petits grains colorés en relief, semés sur toute la peau.",
+]
+themes = ["verre", "fruit", "insectes", "nancy", "japonisme"]
+anecdote = """
+En 1901, Antonin Daum fonde avec Émile Gallé, Louis Majorelle et Victor Prouvé l'École \
+de Nancy, une alliance d'artistes et d'industriels lorrains : malgré leur rivalité \
+commerciale, Gallé et les Daum défendent ensemble l'art de leur ville."""
+salle = 2
+mur = "ouest"
+place = 3
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Magnolias et iris"
+artiste = "Tiffany Studios"
+annee = "vers 1908"
+image = "magnolias-et-iris.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Magnolias_and_Irises_MET_DT9363.jpg"
+technique = "Vitrail, verre Favrile et plomb, 153 × 106,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un vitrail sans saint ni ange : un paysage au soleil couchant, vu à travers des branches de magnolia."
+description = """
+Au premier plan, deux jeunes magnolias aux troncs fins encadrent la scène ; leurs \
+branches couvertes de grandes fleurs crème remplissent tout le haut du vitrail. Au \
+pied des arbres, des touffes d'iris violets, mauves et bleu nuit se dressent parmi de \
+longues feuilles vertes. Au-delà s'étend un lac ou une large rivière, qui s'enfonce en \
+serpentant entre des collines bleues. Le ciel, rayé de nuages, passe du violet au rose \
+et au jaune pâle : c'est l'heure du couchant, ou celle de l'aube. Aucun personnage \
+n'apparaît. Les plombs qui tiennent les morceaux de verre dessinent les troncs, les \
+branches et le contour de chaque pétale, et une bordure sombre encadre l'ensemble."""
+evocation = """
+Au XIXᵉ siècle, les vitraux représentaient d'ordinaire des saints et des scènes de la \
+Bible. Tiffany Studios popularise aux États-Unis un autre genre : le vitrail de \
+paysage, souvent commandé en mémoire d'un défunt, pour une église ou un mausolée. La \
+nature y remplace le récit religieux. Les fleurs qui s'ouvrent, l'eau qui s'en va vers \
+l'horizon, la lumière du soir disent la paix et le passage plutôt que la mort. On lit \
+volontiers dans le magnolia, qui fleurit au début du printemps, et dans l'iris des \
+emblèmes de renouveau. Dans une maison, un tel vitrail transformait aussi une fenêtre \
+en jardin perpétuel."""
+histoire = """
+Louis Comfort Tiffany, d'abord peintre, s'est tourné vers le vitrail à la fin des \
+années 1870. Trente ans plus tard, ses ateliers new-yorkais, devenus Tiffany Studios \
+en 1902, livrent un très grand nombre de fenêtres pour des églises, des bâtiments \
+publics et des demeures privées. Comme la plupart de ces œuvres, ce vitrail, réalisé \
+vers 1908, est le fruit d'un travail collectif : des dessinateurs composaient une \
+maquette en couleurs, puis des artisans choisissaient le verre pièce à pièce dans \
+d'immenses réserves, le découpaient et l'assemblaient. Oubliés après la Première \
+Guerre mondiale, ces vitraux sont redevenus très admirés à partir des années 1960. \
+Celui-ci est entré au Metropolitan Museum of Art en 1981, offert anonymement en \
+mémoire de M. et Mme A. B. Frank."""
+facture = """
+Tiffany évite autant que possible de peindre sur le verre, comme le faisaient les \
+verriers traditionnels pour les ombres et les détails. Presque tout est obtenu par le \
+verre lui-même : verre opalescent, laiteux et nuancé, dont il fut avec John La Farge \
+l'un des grands promoteurs, verres marbrés ou plissés selon les effets recherchés. \
+Pour approfondir une couleur, on superpose parfois plusieurs plaques. Le nom de \
+Favrile, choisi par Tiffany, désigne ses verres colorés dans la masse. Le plomb, \
+d'épaisseur variable, sert aussi de dessin, comme un trait d'encre."""
+details = [
+  "Les pétales des magnolias, crème et rosés, découpés un à un dans le verre.",
+  "La rivière qui serpente entre les collines jusqu'à l'horizon.",
+  "Les iris du premier plan, du mauve au bleu presque noir.",
+  "Les bandes de nuages, faites de verres aux couleurs mêlées.",
+]
+themes = ["vitrail", "paysage", "lumière", "fleurs", "verre"]
+anecdote = """
+Tiffany a longtemps éclipsé ses collaborateurs. Les historiens rendent aujourd'hui à \
+Agnes Northrop, entrée dans ses ateliers dans les années 1880, une grande part des \
+dessins de ses vitraux de fleurs et de paysages."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Lampe « Glycine »"
+artiste = "Tiffany Studios"
+annee = "vers 1902–1910"
+image = "lampe-glycine.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2018.261"
+technique = "Verre assemblé au cuivre, bronze, hauteur 43,2 cm, diamètre 26,7 cm"
+collection = "Cleveland Museum of Art"
+note = "Une lampe dessinée par Clara Driscoll : le pied est un tronc, l'abat-jour une cascade de grappes de glycine."
+description = """
+La lampe, haute de 43 centimètres, ressemble à un petit arbre. Son pied de bronze, \
+patiné de vert et de brun, figure un tronc noueux qui sort d'une base ronde où \
+s'étalent des racines. En haut, des branches de bronze ajourées forment le sommet de \
+l'abat-jour. De là retombent des centaines de petits morceaux de verre bleus, mauves, \
+blancs et turquoise : ce sont les fleurs de la glycine, groupées en grappes. Entre \
+elles, quelques feuilles vertes. Le bas de l'abat-jour n'est pas droit : il s'arrête \
+en pointes irrégulières, là où finissent les grappes, comme une glycine qui pend d'une \
+tonnelle. Allumée, la lampe fait briller toutes ces fleurs de l'intérieur."""
+evocation = """
+La glycine, venue d'Asie, était à la mode dans les jardins vers 1900, et ses grappes \
+retombantes séduisaient les amateurs d'art japonais. La lampe en fait un objet \
+poétique : le soir, dans un salon, elle recrée l'ombre fleurie d'une tonnelle de \
+printemps. Le pied en forme de tronc et l'abat-jour en forme de feuillage effacent la \
+frontière entre l'objet utile et la sculpture, comme le voulait l'Art nouveau. Elle \
+raconte aussi l'arrivée de l'électricité dans les maisons : la lumière n'est plus une \
+flamme qu'il faut surveiller, mais une source que l'on peut habiller de couleurs."""
+histoire = """
+Le modèle Glycine a été dessiné au tout début du XXᵉ siècle par Clara Wolcott \
+Driscoll, qui dirigeait chez Tiffany le département des femmes chargées de choisir et \
+de découper le verre. Selon le Cleveland Museum of Art, il valut à Tiffany Studios un \
+grand prix à l'Exposition internationale de Turin, en 1902. La version présentée ici, \
+plus petite que le grand modèle, est connue sous le nom de « Pony ». Ces lampes, \
+fabriquées à la main en séries, étaient des objets de luxe. Démodées après la Première \
+Guerre mondiale, elles sont redevenues très recherchées à partir des années 1960. \
+Celle-ci a été léguée au musée de Cleveland par le collectionneur Charles Maurer, mort \
+en 2016."""
+facture = """
+Chaque morceau de verre est choisi pour sa couleur et sa transparence, découpé selon \
+un gabarit, puis bordé d'un mince ruban de cuivre. Les pièces sont assemblées sur un \
+moule en forme de dôme et soudées entre elles à l'étain : cette technique permet des \
+morceaux bien plus petits et des formes bien plus libres que le plomb des vitraux. Le \
+pied, en bronze coulé et patiné, est fabriqué dans les ateliers de Tiffany. Les \
+teintes passent du bleu profond au blanc, comme sur une vraie grappe éclairée par le \
+soleil."""
+details = [
+  "Les racines du pied, qui s'étalent sur la base comme sur le sol.",
+  "Les branches de bronze ajourées, au sommet de l'abat-jour.",
+  "Le bord inférieur découpé en pointes, au rythme des grappes.",
+  "Les quelques feuilles vertes cachées parmi les fleurs.",
+]
+themes = ["lampe", "lumière", "glycine", "verre", "électricité"]
+anecdote = """
+Le rôle de Clara Driscoll n'a été révélé qu'au milieu des années 2000 : des historiens \
+ont retrouvé ses lettres, qui montrent qu'elle et son équipe de femmes ont dessiné \
+nombre de lampes longtemps attribuées à Louis Comfort Tiffany lui-même."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Chaise"
+artiste = "Hector Guimard"
+annee = "vers 1907"
+image = "chaise-guimard.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1985.96"
+technique = "Poirier, cuir travaillé, 108 × 45,4 × 50,4 cm"
+collection = "Cleveland Museum of Art"
+note = "Une chaise où le bois semble couler comme une sève : la ligne « en coup de fouet » de Guimard."
+description = """
+La chaise, haute de 1,08 mètre, est taillée dans un bois blond et chaud, le poirier. \
+Son dossier, très haut, est fait de deux montants qui s'écartent en montant puis se \
+rejoignent au sommet, comme deux tiges autour d'une feuille. Entre eux, un panneau de \
+cuir brun en forme d'écusson, pointe en bas, est fixé par une rangée de clous dorés. \
+Sous le cuir, le bois s'évide en une longue fente pointue. Le siège, garni de cuir, \
+est bordé lui aussi de clous. Sur la ceinture, à l'avant, une petite sculpture en \
+relief dessine une volute. Les pieds, légèrement arqués, s'évasent en bas comme des \
+sabots. On ne voit presque aucun angle droit, ni aucune jointure."""
+evocation = """
+Guimard voulait des meubles qui ne copient aucun style ancien : ni Louis XV, ni \
+Renaissance, mais un langage né de l'observation de la nature, non pour en représenter \
+les fleurs, mais pour en retrouver les forces. Ses lignes se tendent, s'étirent et \
+s'enroulent comme des tiges en croissance ; on parle de ligne « en coup de fouet ». La \
+chaise paraît avoir poussé d'un seul jet, le bois passant du pied au dossier sans \
+rupture. Elle dit l'idéal de l'architecte total : Guimard dessinait pour ses maisons \
+la façade, les grilles, les papiers peints, les poignées et le mobilier, afin que tout \
+parle la même langue."""
+histoire = """
+Vers 1907, Guimard est un architecte reconnu : il a construit le Castel Béranger, \
+immeuble parisien primé au premier concours de façades de la Ville de Paris, et \
+dessiné les entrées du métro. Il conçoit aussi du mobilier pour ses clients et pour \
+ses propres intérieurs. Ces meubles, sculptés à la main, coûtaient cher et furent \
+produits en petit nombre. Après la Première Guerre mondiale, le goût change et l'Art \
+nouveau est jugé démodé, voire ridicule ; Guimard tombe dans l'oubli. Ses meubles \
+reviennent sur le marché à partir des années 1960, quand on redécouvre l'Art nouveau. \
+Cette chaise a été achetée en 1985 par le Cleveland Museum of Art, chez un marchand \
+new-yorkais."""
+facture = """
+Le poirier est un bois fruitier dense, au grain fin, qui se laisse sculpter dans tous \
+les sens sans éclater. Les montants ne sont pas seulement assemblés : ils sont \
+sculptés pour que les jonctions disparaissent sous des transitions fluides. Les \
+moulures s'amincissent et s'élargissent comme des muscles. Le cuir, travaillé et \
+cloué, ajoute une note chaude et souple. L'influence de l'architecte belge Victor \
+Horta, dont Guimard découvre les œuvres à Bruxelles en 1895, se lit dans cette manière \
+de faire de la structure même un ornement."""
+details = [
+  "Le panneau de cuir en écusson, bordé de clous dorés.",
+  "La fente pointue évidée sous le dossier, comme une nervure de feuille.",
+  "La petite volute sculptée sur la ceinture du siège.",
+  "Les pieds qui s'évasent en sabot au ras du sol.",
+]
+themes = ["mobilier", "bois", "ligne", "coup de fouet", "paris"]
+anecdote = """
+Guimard faisait de son nom une marque : il fit éditer des cartes postales de ses \
+bâtiments sous le titre « Le Style Guimard ». Ses détracteurs, eux, se moquaient de \
+l'Art nouveau en l'appelant le « style nouille »."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Fauteuil des salons de thé d'Argyle Street"
+artiste = "Charles Rennie Mackintosh"
+annee = "1897"
+image = "fauteuil-argyle-street.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/156437"
+technique = "Chêne teinté, garniture de crin moderne, 96,4 × 57,2 × 45,8 cm"
+collection = "Art Institute of Chicago"
+note = "Un fauteuil de salon de thé, sombre et sévère, que deux croissants découpés semblent faire s'envoler."
+description = """
+Le fauteuil, haut de 96 centimètres, est fait de planches de chêne teinté d'un brun \
+presque noir. Le dossier droit se compose d'une large planche pleine en haut, sous \
+laquelle des montants verticaux laissent passer le jour. Les accoudoirs reposent sur \
+deux flancs pleins, comme deux panneaux, chacun percé d'une découpe en forme de \
+croissant, ou d'oiseau aux ailes déployées. Le bas des flancs se creuse en arc. Le \
+siège est garni d'une étoffe verte moderne. En bas, une double traverse horizontale \
+relie l'avant à l'arrière. L'ensemble est massif et géométrique, presque sans \
+ornement : seules les découpes et quelques courbes adoucissent la rigueur des lignes."""
+evocation = """
+À Glasgow, les salons de thé étaient des lieux à la mode, où l'on se retrouvait sans \
+alcool, à l'époque où le mouvement de tempérance combattait les débits de boisson. \
+Kate Cranston, qui les dirigeait, voulait des décors modernes qui distinguent ses \
+établissements. Les découpes du fauteuil, que l'Art Institute of Chicago rapproche \
+d'un oiseau en vol, montrent comment Mackintosh fait naître la poésie d'une structure \
+presque architecturale. Face à la chaise de Guimard, tout en courbes, ce fauteuil \
+montre l'autre visage de l'Art nouveau : celui de la ligne droite et de la géométrie, \
+qui annonce le design du XXᵉ siècle."""
+histoire = """
+En 1897, Catherine Cranston, dite Kate, ouvre un nouveau salon de thé dans Argyle \
+Street, au centre de Glasgow. Elle confie la décoration au designer George Walton et \
+le mobilier au jeune architecte Charles Rennie Mackintosh, qui vient de peindre pour \
+elle des frises murales dans son salon de Buchanan Street. Ce fauteuil appartient à \
+cet ensemble : on en voit un semblable sur une photographie ancienne de la salle du \
+déjeuner. On ignore combien d'exemplaires furent fabriqués. Celui-ci est resté dans la \
+famille d'une employée de l'établissement avant d'être offert à l'Art Institute of \
+Chicago, en 2000, par Neville et John Bryan."""
+facture = """
+Le fauteuil est construit en chêne, un bois robuste, assemblé en planches et en \
+montants droits, sans moulures ni sculptures. Mackintosh le fait teindre en brun très \
+sombre, ce qui unifie les surfaces et souligne la silhouette, comme une ombre \
+découpée. Il travaille par plans : les flancs pleins, la planche du dossier, les vides \
+entre les montants. Les découpes en croissant jouent avec la lumière qui les traverse. \
+On a rapproché cette simplicité du mouvement anglais Arts and Crafts, attaché aux \
+matériaux francs, et de l'art japonais, que Mackintosh admirait."""
+details = [
+  "Les deux découpes en croissant, comme des oiseaux en vol, sur les flancs.",
+  "Les montants verticaux du dossier, entre lesquels passe la lumière.",
+  "La double traverse basse qui relie les pieds.",
+  "Le bas des flancs, qui se creuse en arc.",
+]
+themes = ["mobilier", "géométrie", "glasgow", "salon de thé", "chêne"]
+anecdote = """
+En 1900, Mackintosh et sa femme Margaret Macdonald sont invités à exposer à la \
+Sécession viennoise. Leur salle fait sensation et marque durablement Josef Hoffmann et \
+Koloman Moser, qui fondent trois ans plus tard les Wiener Werkstätte."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Encoignure au vase de fleurs"
+artiste = "Jacques-Émile Ruhlmann"
+annee = "vers 1923"
+image = "encoignure-ruhlmann.jpg"
+credit = "Photo : Brooklyn Museum"
+licence = "Aucune restriction connue (Brooklyn Museum)"
+source = "https://commons.wikimedia.org/wiki/File:Emile-Jacques_Ruhlmann_(French,_1879-1933)._Corner_Cabinet,_ca._1923..jpg"
+technique = "Placage d'amarante sur acajou, incrustations d'ivoire, 126,7 × 80,6 × 59,7 cm"
+collection = "Brooklyn Museum, New York"
+note = "Un meuble d'angle en bois précieux, où un bouquet d'ivoire éclate sur le bois sombre : le luxe Art déco."
+description = """
+Ce meuble d'angle, haut de 1,27 mètre, est fait pour se loger dans le coin d'une \
+pièce : sa façade, légèrement bombée, est formée d'une seule porte. Le bois, d'un brun \
+rouge profond, est poli comme une laque. Au centre de la porte, un grand médaillon \
+ovale contient un décor incrusté d'ivoire et de bois sombre : un vase strié, très \
+allongé, d'où jaillit un bouquet de fleurs stylisées aux corolles rondes, si dense \
+qu'il remplit tout l'ovale. Un filet de minuscules points d'ivoire souligne les bords \
+de la porte et des montants. Le meuble repose sur trois pieds fins et fuselés, \
+terminés par des sabots d'ivoire."""
+evocation = """
+Ruhlmann reprend un meuble typique du XVIIIᵉ siècle français, l'encoignure, et le \
+modernise sans rien perdre de son élégance. Le vase de fleurs, motif classique, \
+devient une image géométrique et rythmée : les stries du vase, la symétrie, le \
+contraste du noir et du blanc annoncent l'Art déco. Ce meuble s'adresse à une \
+clientèle très riche, qui veut un luxe discret, fait de bois rares et de finitions \
+parfaites. On y lit aussi l'envers de ce luxe : l'ivoire et les bois exotiques \
+venaient pour une large part des colonies, à une époque où l'on se souciait peu du \
+prix humain et naturel de leur exploitation."""
+histoire = """
+Ruhlmann reprend plusieurs fois ce modèle d'encoignure au vase fleuri, avec des \
+variantes : un meuble voisin conservé à l'Art Institute of Chicago est daté des \
+environs de 1916. Celui-ci date des environs de 1923, deux ans avant l'Exposition \
+internationale des arts décoratifs et industriels modernes de 1925, qui consacre \
+Ruhlmann et dont le nom donnera plus tard celui du style Art déco. Ses meubles, d'une \
+exécution très soignée, sont produits en petit nombre et vendus très cher. Celui-ci a \
+été acheté par le Brooklyn Museum en 1971, grâce à plusieurs donateurs, au moment où \
+l'on redécouvrait le goût des années 1920."""
+facture = """
+Le placage consiste à coller de fines feuilles de bois précieux sur un bâti plus \
+ordinaire, ici de l'acajou. Ruhlmann choisit l'amarante, un bois tropical au ton rouge \
+violacé, et en fait polir la surface jusqu'à la rendre lisse comme un miroir. Le \
+médaillon est une marqueterie : de nombreuses petites pièces d'ivoire et de bois \
+sombre, découpées et assemblées comme un puzzle. Les filets de points d'ivoire, les \
+sabots d'ivoire et les pieds fuselés, qui allègent la silhouette, sont des signatures \
+de son style."""
+details = [
+  "Le vase strié du médaillon, d'où jaillit le bouquet.",
+  "Le filet de points d'ivoire qui court le long de la porte.",
+  "Les sabots d'ivoire au bout des pieds fuselés.",
+  "La façade légèrement bombée, qui accroche la lumière.",
+]
+themes = ["mobilier", "art déco", "ébénisterie", "fleurs", "luxe"]
+anecdote = """
+Ruhlmann ne voulait pas que son entreprise lui survive : il avait demandé qu'elle soit \
+fermée après sa mort. Ses ateliers cessent en effet leur activité peu après son décès, \
+en 1933."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.15
+
+[[oeuvres]]
+titre = "Vase « Tourbillons »"
+artiste = "René Lalique"
+annee = "1926"
+image = "vase-tourbillons.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%22Tourbillons%22_(Whirlwinds)_Vase_MET_DP108180.jpg"
+technique = "Verre, rehauts d'émail noir, 20 × 20,3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un vase de verre épais, creusé de spirales soulignées de noir : le mouvement figé dans la matière."
+description = """
+Le vase, haut de 20 centimètres, a la forme d'un gros cylindre aux flancs légèrement \
+bombés. Sa paroi de verre incolore, très épaisse, est sculptée de larges motifs en \
+relief qui s'enroulent comme des vagues, des crosses ou des tourbillons de vent, d'où \
+son nom. Ces volutes se chevauchent et semblent tourner autour du vase. Leurs arêtes \
+sont soulignées d'émail noir, qui dessine de grandes courbes sombres sur le verre \
+transparent. Selon l'angle de vue, la lumière traverse le verre, se brise dans les \
+reliefs et fait apparaître des reflets argentés. L'ouverture, large et ronde, est \
+coupée net. Aucun motif n'est figuratif : le décor est pur mouvement."""
+evocation = """
+Vingt-cinq ans plus tôt, Lalique dessinait des bijoux peuplés de femmes-libellules et \
+de fleurs. Avec Tourbillons, il passe à un langage presque abstrait : la nature n'est \
+plus représentée, seulement son énergie, celle du vent ou de l'eau qui tourne. Le vase \
+fait ainsi le lien entre l'Art nouveau, dont il garde les courbes, et l'Art déco, dont \
+il adopte la force géométrique et le contraste du noir et du blanc. Il dit aussi \
+l'esprit des années 1920, fascinées par la vitesse et le mouvement, et la volonté de \
+Lalique de produire en série de beaux objets, accessibles à une clientèle plus large \
+que celle de ses bijoux uniques."""
+histoire = """
+Après 1900, Lalique, alors le joaillier le plus célèbre de Paris, se tourne vers le \
+verre. Il dessine d'abord des flacons de parfum pour François Coty, puis ouvre sa \
+propre verrerie à Combs-la-Ville, près de Paris, en 1909, et au début des années 1920 \
+une grande usine à Wingen-sur-Moder, en Alsace. Le vase Tourbillons est créé en 1926, \
+un an après l'Exposition des arts décoratifs de 1925, où Lalique avait présenté son \
+propre pavillon et une grande fontaine de verre. Le modèle connaît un grand succès et \
+fait partie des créations les plus célèbres de la maison. Cet exemplaire est entré au \
+Metropolitan Museum of Art en 2004."""
+facture = """
+Pour produire en série, Lalique moule son verre : la matière en fusion est soufflée ou \
+pressée dans un moule de métal qui lui donne d'un coup sa forme et son relief. Les \
+tourbillons, très profonds, exigent une paroi épaisse : le vase pèse près de cinq \
+kilos. Après refroidissement, le verre est poli, et l'émail noir, posé dans les creux \
+et sur les arêtes, est cuit pour être fixé. Le contraste entre le verre clair, \
+brillant comme du cristal, et le noir mat donne à l'objet son effet graphique."""
+details = [
+  "Les arêtes des volutes, soulignées d'un trait d'émail noir.",
+  "Les reflets argentés de la lumière dans l'épaisseur du verre.",
+  "Le rythme des tourbillons, qui semblent tourner autour du vase.",
+  "L'ouverture ronde, nette, coupée à plat.",
+]
+themes = ["verre", "art déco", "mouvement", "abstraction", "série"]
+anecdote = """
+Lalique a aussi décoré trains et paquebots : on lui doit des panneaux de verre pour \
+des voitures de l'Orient-Express en 1929, puis des luminaires pour la salle à manger \
+du paquebot Normandie, mis en service en 1935."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 0.9
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Alphonse Mucha"
+vie = "Ivančice (Moravie), 24 juillet 1860 – Prague, 14 juillet 1939"
+biographie = """
+Né en Moravie, alors province de l'Empire d'Autriche, Alfons Mucha travaille d'abord \
+comme peintre de décors de théâtre à Vienne, puis décore le château d'un comte qui lui \
+paie des études à l'Académie des beaux-arts de Munich. Arrivé à Paris en 1887, il suit \
+les cours de l'académie Julian et de l'académie Colarossi et vit de ses illustrations. \
+À la fin de 1894, presque par hasard, il dessine l'affiche de Gismonda pour Sarah \
+Bernhardt : placardée dans Paris au début de 1895, elle le rend célèbre. L'actrice lui \
+signe un contrat de six ans et l'imprimeur Champenois l'engage. Affiches, panneaux \
+décoratifs, calendriers, bijoux et boutique pour le joaillier Georges Fouquet : il \
+devient l'un des visages de l'Art nouveau. Après plusieurs séjours aux États-Unis, il \
+revient en Bohême en 1910 et consacre près de vingt ans à l'Épopée slave, une suite de \
+vingt toiles immenses sur l'histoire des peuples slaves. En 1918, il dessine les \
+premiers timbres et billets de la Tchécoslovaquie indépendante. Arrêté et interrogé \
+par la Gestapo après l'invasion allemande de 1939, il meurt quelques mois plus tard."""
+style = """
+Mucha a créé une image immédiatement reconnaissable : une jeune femme aux cheveux \
+déployés en arabesques, inscrite dans un cercle ou une arche, entourée de fleurs et de \
+motifs répétés. Son trait cerné, ses couleurs douces et ses compositions très \
+ordonnées doivent aux icônes byzantines, à l'art populaire de sa Moravie et aux \
+estampes japonaises. Il a fait de l'affiche un art à part entière et inspiré \
+l'illustration jusqu'à la bande dessinée et au graphisme psychédélique des années \
+1960."""
+
+[[artistes]]
+nom = "Hector Guimard"
+vie = "Lyon, 10 mars 1867 – New York, 20 mai 1942"
+biographie = """
+Hector Guimard naît à Lyon et fait ses études à Paris, à l'École nationale des arts \
+décoratifs puis à l'École des beaux-arts. Ses premières constructions restent marquées \
+par le mélange des styles anciens. Le tournant a lieu en 1895, lors d'un voyage à \
+Bruxelles où il découvre l'hôtel Tassel de Victor Horta : une architecture où la \
+structure et l'ornement ne font qu'un. Il reprend alors entièrement le projet du \
+Castel Béranger, un immeuble du 16ᵉ arrondissement dont il dessine tout, de la façade \
+aux papiers peints ; achevé en 1898, il est primé au premier concours de façades de la \
+Ville de Paris. En 1900, la Compagnie du chemin de fer métropolitain lui confie les \
+entrées des stations : ses édicules et ses entourages de fonte verte deviennent le \
+symbole du Paris 1900. Il construit ensuite villas, hôtels particuliers et immeubles, \
+dont son propre hôtel de l'avenue Mozart, après son mariage en 1909 avec la peintre \
+américaine Adeline Oppenheim. Après la guerre, son style passe de mode. En 1938, \
+inquiet de la montée de l'antisémitisme, car sa femme est juive, il part pour New \
+York, où il meurt en 1942, presque oublié."""
+style = """
+Guimard est le grand représentant parisien de l'Art nouveau. Il ne copie pas les \
+plantes : il en retient la croissance, la tension, la courbe qui se tord et s'enroule, \
+et en tire un langage abstrait de lignes « en coup de fouet ». Architecte total, il \
+dessine tout, des façades aux meubles, de la fonte industrielle aux vases. Ses entrées \
+de métro, assemblées à partir d'éléments standardisés produits en série, montrent \
+qu'il voulait aussi mettre l'art à la portée de tous."""
+
+[[artistes]]
+nom = "Émile Gallé"
+vie = "Nancy, 4 mai 1846 – Nancy, 23 septembre 1904"
+biographie = """
+Fils d'un marchand de faïence et de verrerie de Nancy, Émile Gallé reçoit une \
+formation très large : il étudie la botanique, la philosophie et le dessin, puis \
+apprend l'allemand et la technique du verre à Weimar et à la verrerie de Meisenthal, \
+en Lorraine. Après la guerre de 1870, il reprend l'entreprise familiale, qu'il \
+transforme peu à peu en atelier d'art. Ses verreries, ses faïences et bientôt ses \
+meubles ornés de plantes lui valent un triomphe à l'Exposition universelle de 1889, \
+puis à celle de 1900. Botaniste reconnu, il cultive dans son jardin de très nombreuses \
+espèces, qui deviennent les modèles de son œuvre. Homme engagé, il prend publiquement \
+la défense du capitaine Dreyfus, au risque de perdre des clients. En 1901, il fonde \
+l'École de Nancy, alliance des industries d'art de la ville, dont il est le premier \
+président. Atteint d'une leucémie, il meurt en 1904, à cinquante-huit ans. Sa veuve, \
+Henriette, poursuit l'entreprise, qui fermera en 1936."""
+style = """
+Gallé fait du verre un moyen d'expression poétique. Il multiplie les techniques, \
+couches de couleurs superposées, gravure à l'acide et à la roue, inclusions, \
+marqueterie de verre, pour obtenir des effets de matière inédits. Ses décors de \
+plantes et d'insectes, observés en savant, sont souvent accompagnés de vers de poètes \
+inscrits dans le verre : ce sont ses « verreries parlantes ». Il a fait de Nancy l'un \
+des grands foyers de l'Art nouveau."""
+
+[[artistes]]
+nom = "Daum frères"
+vie = "Nancy (Lorraine), verrerie familiale ; Auguste Daum (1853–1909) et Antonin Daum (1864–1930)"
+biographie = """
+Jean Daum, notaire à Bitche, en Moselle, quitte la région annexée par l'Allemagne \
+après 1871 et s'installe à Nancy. Dans les années 1870, il prend le contrôle d'une \
+verrerie dans laquelle il avait placé de l'argent, et qui fabrique des verres de \
+table, des bouteilles et de la vaisselle courante. À sa mort, en 1885, ses fils \
+reprennent l'entreprise : Auguste, l'aîné, formé au droit, la dirige ; Antonin, \
+ingénieur, s'occupe de la création. Après l'Exposition universelle de 1889, où \
+triomphe Gallé, les deux frères se lancent dans le verre d'art et ouvrent un atelier \
+de décoration, où travaille notamment le dessinateur Henri Bergé. Leur succès est \
+rapide, et la maison est récompensée à l'Exposition universelle de 1900. Antonin Daum \
+participe en 1901 à la fondation de l'École de Nancy. Vers 1906, les Daum relancent la \
+pâte de verre avec Amalric Walter. Après la Première Guerre mondiale, la maison passe \
+à l'Art déco, avec des vases épais, gravés profondément à l'acide, aux formes \
+géométriques. L'entreprise porte encore aujourd'hui le nom de la famille."""
+style = """
+Les Daum partagent avec Gallé le goût des plantes, des paysages lorrains et des \
+insectes, mais leur verre se distingue par la richesse des couleurs prises dans la \
+masse, les poudres vitrifiées et les paysages gravés à l'acide qui changent avec la \
+lumière. Plus industrielle que celle de Gallé, leur production associe des pièces \
+uniques et de grandes séries. Elle a su traverser les styles, de l'Art nouveau à l'Art \
+déco."""
+
+[[artistes]]
+nom = "Tiffany Studios"
+vie = "New York, 1902–1932 ; fondés par Louis Comfort Tiffany (New York, 1848 – New York, 1933)"
+biographie = """
+Louis Comfort Tiffany naît à New York en 1848, fils de Charles Lewis Tiffany, \
+fondateur de la célèbre bijouterie Tiffany & Co. Plutôt que de reprendre l'affaire \
+paternelle, il devient peintre, élève de George Inness et de Samuel Colman, et voyage \
+en Europe et en Afrique du Nord. À la fin des années 1870, il se tourne vers les arts \
+décoratifs et le verre, qu'il juge capable de rendre la lumière mieux que la peinture. \
+Son entreprise de décoration aménage en 1882 plusieurs salons de la Maison-Blanche, \
+pour le président Chester Arthur. Il donne en 1894 le nom de Favrile à ses verres \
+soufflés. À Paris, le marchand Siegfried Bing, dont la galerie L'Art nouveau ouvre en \
+1895, le fait connaître en Europe. En 1902, ses ateliers prennent le nom de Tiffany \
+Studios. Des centaines d'artisans y travaillent, et des femmes y jouent un rôle \
+majeur : Clara Driscoll dessine de nombreuses lampes, Agnes Northrop de nombreux \
+vitraux. Tiffany se fait construire à Long Island une vaste propriété, Laurelton Hall. \
+Son style passe de mode après la guerre ; Tiffany Studios fait faillite en 1932, et \
+Tiffany meurt l'année suivante."""
+style = """
+Tiffany veut peindre avec le verre lui-même, sans le recouvrir de peinture. Ses \
+ateliers mettent au point des verres opalescents, marbrés, plissés ou irisés, aux \
+couleurs nuancées dans la masse, qui donnent vie aux paysages, aux fleurs et aux \
+ciels. Ses lampes en verre assemblé au ruban de cuivre et ses vases Favrile irisés \
+sont devenus le symbole de l'Art nouveau américain, très imités jusqu'à aujourd'hui."""
+
+[[artistes]]
+nom = "Charles Rennie Mackintosh"
+vie = "Glasgow, 7 juin 1868 – Londres, 10 décembre 1928"
+biographie = """
+Fils d'un officier de police de Glasgow, Charles Rennie Mackintosh entre à seize ans \
+en apprentissage chez un architecte et suit les cours du soir de la Glasgow School of \
+Art. Avec son ami Herbert MacNair et les sœurs Margaret et Frances Macdonald, il forme \
+le groupe que l'on surnommera « les Quatre », qui invente un style de lignes étirées \
+et de figures stylisées. En 1896, il remporte le concours pour le nouveau bâtiment de \
+l'école d'art de Glasgow, construit en deux campagnes jusqu'en 1909 : c'est son \
+chef-d'œuvre. La même année commence sa longue collaboration avec Kate Cranston, pour \
+qui il conçoit le décor et le mobilier de plusieurs salons de thé, dont les Willow Tea \
+Rooms en 1903. Il épouse Margaret Macdonald en 1900 et expose avec elle à la Sécession \
+de Vienne la même année. Il construit aussi Hill House, près de Glasgow, pour \
+l'éditeur Walter Blackie. Mais les commandes se raréfient : en 1914, il quitte \
+Glasgow, s'installe à Londres puis, de 1923 à 1927, dans le sud de la France, à \
+Port-Vendres, où il peint des aquarelles. Malade, il meurt à Londres en 1928."""
+style = """
+Mackintosh combine la rigueur de la ligne droite et la douceur de motifs floraux très \
+stylisés, comme la célèbre « rose de Glasgow ». Ses meubles, souvent très hauts, \
+peints en blanc ou teintés en noir, sont pensés comme des éléments d'architecture, \
+dans des intérieurs entièrement dessinés par lui. Admiré à Vienne et en Allemagne plus \
+que dans son pays de son vivant, il est aujourd'hui considéré comme l'un des \
+précurseurs du design moderne."""
+
+[[artistes]]
+nom = "Jacques-Émile Ruhlmann"
+vie = "Paris, 28 août 1879 – Paris, 15 novembre 1933"
+biographie = """
+Fils d'un entrepreneur de peinture en bâtiment d'origine alsacienne, Jacques-Émile \
+Ruhlmann reprend en 1907, à la mort de son père, l'affaire familiale, qui vend aussi \
+papiers peints et miroirs. Sans formation d'ébéniste, il dessine pourtant des meubles, \
+qu'il fait exécuter par des artisans, et les expose pour la première fois au Salon \
+d'automne de 1913. Après la guerre, il fonde avec Pierre Laurent une entreprise qui \
+réunit peinture, décoration et ébénisterie, et installe ses propres ateliers. À \
+l'Exposition internationale des arts décoratifs et industriels modernes de 1925, son \
+Hôtel du collectionneur, un pavillon dont il conçoit le décor et le mobilier, fait \
+sensation et le consacre comme le plus grand ébéniste de son temps. Ses clients sont \
+de grandes fortunes, banquiers, industriels ou maharajas, et l'État lui commande aussi \
+des meubles. Il meurt en 1933, à cinquante-quatre ans, et ses ateliers ferment selon \
+sa volonté."""
+style = """
+Ruhlmann est le grand ébéniste de l'Art déco. Ses meubles reprennent l'élégance et les \
+proportions du mobilier français du XVIIIᵉ siècle, mais simplifiées : lignes pures, \
+pieds fuselés, façades galbées. Le décor se réduit à la beauté des bois rares, ébène \
+de Macassar, amboine, amarante, et à de fins filets d'ivoire. Son exigence de \
+perfection, jusque dans les parties invisibles, a fait de ses pièces des objets parmi \
+les plus recherchés du XXᵉ siècle."""
+
+[[artistes]]
+nom = "René Lalique"
+vie = "Aÿ (Marne), 6 avril 1860 – Paris, mai 1945"
+biographie = """
+Né en Champagne, René Lalique entre à seize ans, après la mort de son père, en \
+apprentissage chez le joaillier parisien Louis Aucoc. Il étudie ensuite deux ans en \
+Angleterre, puis dessine des bijoux pour de grandes maisons avant d'ouvrir son propre \
+atelier en 1885. Dans les années 1890, il invente un bijou nouveau, où des matériaux \
+modestes, corne, émail, verre, se mêlent à l'or et aux pierres. Sarah Bernhardt et le \
+collectionneur Calouste Gulbenkian l'admirent, et l'Exposition universelle de 1900 le \
+consacre. Mais il se tourne bientôt vers le verre. À partir de 1907, il dessine des \
+flacons pour le parfumeur François Coty, puis ouvre une verrerie à Combs-la-Ville en \
+1909 et une autre, plus grande, à Wingen-sur-Moder, en Alsace, au début des années \
+1920. Vases, statuettes, luminaires, bouchons de radiateur pour automobiles, panneaux \
+pour trains et paquebots : il fait du verre moulé un art du quotidien. À l'Exposition \
+de 1925, il présente son propre pavillon et une fontaine monumentale. Il meurt à Paris \
+à la fin de la Seconde Guerre mondiale, en 1945."""
+style = """
+Joaillier de l'Art nouveau, Lalique devient verrier de l'Art déco. Son verre moulé, \
+souvent satiné ou opalescent, parfois rehaussé d'émail ou de patine, joue sur le \
+contraste du mat et du brillant. Femmes, animaux, plantes et motifs abstraits y \
+prennent un relief sculptural. En produisant en série des objets de grande qualité, il \
+a montré que l'industrie pouvait servir la beauté."""
