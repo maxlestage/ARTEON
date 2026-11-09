@@ -80,9 +80,14 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
     }
     write("404.html", with_base(&res.text(), &base, &pages).as_bytes())?;
 
-    // Les fichiers statiques (`public/` : les images des tableaux, servies à `/…`) et le
+    // Les fichiers statiques (`public/` : les images des tableaux, servies à `/…`), le
     // bundle du navigateur (`pkg/` : les îlots compilés en WebAssembly).
-    for (folder, prefix) in [("public", ""), ("pkg", "pkg/")] {
+    // Et les données des expositions (`donnees/` : mosaïques, sculptures, vignettes).
+    for (folder, prefix) in [
+        ("public", ""),
+        ("pkg", "pkg/"),
+        (arteon::artworks::DATA_DIR, "donnees/"),
+    ] {
         let root = std::path::absolute(folder)?;
         for file in files(&root) {
             let relative = file.strip_prefix(&root).map_err(io::Error::other)?;

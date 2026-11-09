@@ -1,15 +1,18 @@
-//! ARTEON, partagé par le serveur et le navigateur : le catalogue, les scènes 3D et
-//! les îlots qui les font tourner dans un `<canvas>`.
+//! ARTEON, partagé par le serveur et le navigateur : le catalogue, le plan des musées,
+//! les scènes 3D et les îlots qui les font tourner dans un `<canvas>`.
 //!
 //! Le serveur rend les îlots en HTML (src/main.rs) avec, pour paramètre, l'adresse de
 //! l'exposition (`van-gogh`, `monet`…) ; `paquets build` compile ce fichier en
-//! WebAssembly pour que le navigateur lance les scènes et branche les commandes de la
-//! galerie (plein écran, cartel, œuvre précédente ou suivante, pause, image en HD).
+//! WebAssembly : le navigateur télécharge les données de l'exposition, lance la scène et
+//! branche son interface (src/viewer.rs).
 
 use paquets::prelude::*;
 
 pub mod artworks;
+pub mod data;
 pub mod gallery;
+pub mod museum;
+pub mod tour;
 
 #[cfg(target_arch = "wasm32")]
 mod viewer;
@@ -30,23 +33,32 @@ fn control(class: &'static str, label: &'static str, text: &'static str) -> Elem
         .text(text)
 }
 
-/// L'îlot de la galerie : les salles d'une exposition, la visite guidée, et autour de la
-/// scène, les commandes. Toucher la scène la met en plein écran.
+/// Le poids des données d'une exposition, en clair.
+fn megabytes(ex: &Exhibition) -> String {
+    format!("{:.1} Mo", ex.data_size as f32 / 1_000_000.0).replace('.', ",")
+}
+
+/// L'îlot du musée : la scène, et autour d'elle l'interface de visite. Toucher la scène
+/// la met en plein écran.
 pub fn gallery_scene(props: &str) -> Node {
     let ex = exhibition(props);
     div()
-        .class("viewer-shell")
+        .class("viewer-shell is-loading")
         .child(
             canvas()
                 .class("scene scene-gallery")
                 .attr(
                     "aria-label",
                     format!(
-                        "Visite guidée en 3D de l'exposition {} : toucher pour le plein écran",
+                        "Le musée de l'exposition {} en 3D : toucher pour le plein écran",
                         ex.title
                     ),
                 )
                 .use_action(move |canvas| play_gallery(canvas, ex)),
+        )
+        .child(
+            p().class("viewer-loading")
+                .text(format!("Ouverture du musée… ({})", megabytes(ex))),
         )
         .child(control("viewer-full", "Plein écran", "⛶ Plein écran"))
         .child(
@@ -64,10 +76,22 @@ pub fn gallery_scene(props: &str) -> Node {
         .child(
             div()
                 .class("viewer-controls")
+                .child(control(
+                    "ctl-mode",
+                    "Visite libre : se promener soi-même",
+                    "🚶",
+                ))
                 .child(control("ctl-prev", "Œuvre précédente", "‹"))
                 .child(control("ctl-play", "Pause", "❚❚"))
                 .child(control("ctl-next", "Œuvre suivante", "›"))
                 .child(control("ctl-exit", "Quitter le plein écran", "✕")),
+        )
+        .child(
+            div()
+                .class("viewer-sticks")
+                .attr("aria-hidden", "true")
+                .child(span().class("stick stick-move").text("avancer"))
+                .child(span().class("stick stick-look").text("regarder")),
         )
         .child(
             div()
@@ -101,7 +125,9 @@ pub fn showcase_scene(props: &str) -> Node {
 fn play_gallery(canvas: &paquets::active::Dom, ex: &'static Exhibition) -> impl FnOnce() + use<> {
     let control = gallery::SharedControl::default();
     let commands = viewer::attach(canvas, ex, control.clone());
-    let running = gallery::tour_app_with(ex, control).run_in(canvas).ok();
+    let running = viewer::start_when_loaded(canvas, ex, move |data| {
+        gallery::tour_app_with(ex, data, control)
+    });
     move || {
         drop(running); // arrête la visite quand l'îlot s'en va
         drop(commands);
@@ -115,7 +141,8 @@ fn play_gallery(_canvas: &paquets::active::Dom, _ex: &'static Exhibition) -> imp
 
 #[cfg(target_arch = "wasm32")]
 fn play_showcase(canvas: &paquets::active::Dom, ex: &'static Exhibition) -> impl FnOnce() + use<> {
-    let running = gallery::showcase_app(ex).run_in(canvas).ok();
+    let running =
+        viewer::start_when_loaded(canvas, ex, move |data| gallery::showcase_app(ex, data));
     move || drop(running)
 }
 

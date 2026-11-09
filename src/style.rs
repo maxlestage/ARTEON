@@ -139,6 +139,28 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .viewer-controls .ctl-exit { display: none; }
 .is-paused .ctl-play { background: var(--accent); }
 
+/* Le chargement des données de l'exposition. */
+.viewer-loading { display: none; position: absolute; inset: 0; margin: 0; align-items: center; justify-content: center;
+  color: #e8e9f0; font-size: .95rem; text-align: center; padding: 1rem; pointer-events: none; }
+.is-loading .viewer-loading { display: flex; }
+.is-loading .viewer-controls, .is-loading .viewer-caption { visibility: hidden; }
+.viewer-loading::before { content: ""; width: 18px; height: 18px; margin-right: .7rem; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.25); border-top-color: var(--accent); animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* Le bouton de la visite libre est mis en avant ; sa couleur dit le mode actif. */
+.is-free .ctl-mode { background: var(--accent) !important; }
+.is-free .ctl-play { display: none; }
+.is-free .scene-gallery { cursor: grab; }
+.is-free .scene-gallery:active { cursor: grabbing; }
+/* Les joysticks tactiles : un repère discret, seulement en visite libre sur écran tactile. */
+.viewer-sticks { display: none; }
+@media (pointer: coarse) {
+  .is-free .viewer-sticks { display: flex; position: absolute; inset: auto 0 18px 0; justify-content: space-between; padding: 0 22px; pointer-events: none; }
+  .stick { width: 86px; height: 86px; border-radius: 50%; border: 2px solid rgba(255,255,255,.55); background: rgba(10,14,30,.25);
+    color: rgba(255,255,255,.8); font-size: .7rem; display: flex; align-items: center; justify-content: center; }
+  .is-free .viewer-caption { bottom: 120px; }
+}
+
 .viewer-shell.is-fullscreen { position: fixed; inset: 0; z-index: 1000; background: #000; }
 .is-fullscreen .scene-gallery { height: 100vh; height: 100dvh; border-radius: 0; cursor: pointer; }
 .is-fullscreen .viewer-full { display: none; }
@@ -211,6 +233,13 @@ body.viewer-open { overflow: hidden; }
 .slots .taken { font-weight: 600; }
 .slots .free { color: var(--green); }
 .slots .free::before { content: "● "; }
+.slots td .chip { display: inline-block; margin: .15rem .3rem .15rem 0; padding: .15rem .55rem; border-radius: 999px; border: 1px solid var(--line); font-size: .82rem; }
+.slots td .chip.taken { font-weight: 600; background: color-mix(in srgb, var(--accent) 8%, transparent); }
+/* Les sculptures du catalogue, posées sur un socle clair. */
+.plinth { display: flex; align-items: flex-end; justify-content: center; min-height: 260px; padding: 1.2rem 1rem 0;
+  border-radius: 6px; background: linear-gradient(#2b2d36, #15161c 72%, #8f8a80 72%, #6f6a62); }
+.sculpture-img { max-height: 240px; width: auto; filter: drop-shadow(0 10px 14px rgba(0,0,0,.6)); }
+.step-works .sculpture-img { height: 52px; filter: none; background: #2b2d36; border-radius: 3px; padding: 2px; }
 .slots .door { color: var(--muted); font-style: italic; }
 
 /* ─── Le grand pied de page ───────────────────────────────────────────── */
