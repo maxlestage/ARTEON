@@ -1,0 +1,1013 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ART ET SCIENCE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/art-et-science/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /art-et-science.
+#
+#  Les planches et les dessins sont présentés comme des estampes (cadre =
+#  « estampe ») ; l'astrolabe est en vitrine. Toutes les reproductions sont dans le
+#  domaine public (PD-Art) ou publiées en CC0 par leur musée.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 65
+nom_court = "Art et science"
+mouvement = "Art et science : la nature dessinée"
+cadre = "estampe"
+couleur = "#2f5d50"
+titre = "Art et science, la nature dessinée"
+artiste = "Léonard, Dürer, Vésale, Merian, Audubon, Haeckel…"
+dates = "1291–1904"
+accroche = "Exposition virtuelle · Natural History Museum, Londres"
+introduction = """
+Pendant des siècles, savants et artistes ont eu besoin les uns des autres : pour \
+décrire une plante, un insecte, un muscle ou le contour d'un continent, il fallait \
+d'abord savoir le dessiner. La visite réunit dix images où l'observation devient art, \
+du rhinocéros de Dürer aux méduses de Haeckel, de l'Homme de Vitruve de Léonard au \
+flamant rose d'Audubon, avec un astrolabe yéménite et la carte du monde du premier \
+atlas moderne. Le bâtiment s'inspire du Natural History Museum de Londres : derrière \
+un porche, une haute nef, la Hintze Hall, ouvre à l'ouest et à l'est sur deux galeries \
+et, au fond, sur un cabinet."""
+vitrine = "flamant-rose.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Natural History Museum"
+ville = "Londres, Royaume-Uni"
+architecte = "Alfred Waterhouse"
+construction = "1873–1881"
+presentation = """
+Au milieu du XIXᵉ siècle, les collections d'histoire naturelle du British Museum, nées \
+du legs du médecin Hans Sloane, débordent de leurs salles de Bloomsbury. Le \
+naturaliste Richard Owen, qui les dirige, obtient la construction d'un bâtiment séparé \
+à South Kensington, une « cathédrale de la nature ». Après la mort de Francis Fowke, \
+lauréat du concours, Alfred Waterhouse reprend le projet dans un style roman : le \
+chantier commence en 1873 et le musée ouvre le 18 avril 1881. La façade est \
+entièrement revêtue de terre cuite chamois et gris-bleu, un matériau qui résiste à la \
+suie londonienne, et ornée de plantes et d'animaux sculptés : les espèces vivantes du \
+côté ouest, les espèces disparues du côté est. Au centre, la grande nef, rebaptisée \
+Hintze Hall en 2014, porte un plafond de panneaux peints de plantes ; depuis 2017, le \
+squelette d'une baleine bleue y est suspendu, à la place de la célèbre copie de \
+diplodocus. Le musée, qui n'a pris son nom actuel qu'en 1992, est gratuit."""
+ici = """
+Le bâtiment d'ARTEON reprend l'axe du musée de Waterhouse : un porche, puis une nef \
+très haute sur laquelle s'ouvrent les galeries. On entre par le sud dans le porche de \
+Cromwell Road, aux murs de pierre claire, puis dans la Hintze Hall, longue de \
+vingt-huit mètres et haute de dix-huit, couleur de terre cuite, où sont réunis les \
+animaux. À l'ouest s'ouvre la galerie des plantes et des insectes, d'un vert tendre ; \
+à l'est, la galerie du corps humain, rose pâle. Au fond de la nef, au nord, le cabinet \
+du monde, carré, garde les instruments et les cartes."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Natural History Museum de Londres (Alfred Waterhouse, 1873–1881) :
+# on entre au sud, comme par le portail de Cromwell Road ; une nef très haute et
+# longue, couleur de terre cuite, comme la Hintze Hall, distribue deux galeries
+# latérales, à l'ouest et à l'est, comme les ailes du musée ; au fond de la nef,
+# au nord, un cabinet carré. x et z : le centre de la salle (x vers l'est, z vers
+# le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le porche de Cromwell Road"
+theme = "L'entrée, comme le grand portail roman de Waterhouse qui s'ouvre sur Cromwell Road."
+murs = "#e8dfcd"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La Hintze Hall"
+theme = "Sous la haute nef, le règne animal : le rhinocéros de Dürer, le flamant d'Audubon et les méduses de Haeckel."
+murs = "#dcc8a8"
+x = 0
+z = -18
+largeur = 16
+profondeur = 28
+hauteur = 18
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La galerie des plantes et des insectes"
+theme = "Fleurs et métamorphoses : l'ananas et les blattes de Maria Sibylla Merian, une rose de Redouté."
+murs = "#dfe3cc"
+x = -14
+z = -18
+largeur = 12
+profondeur = 16
+hauteur = 7
+
+[[salles]]
+nom = "La galerie du corps humain"
+theme = "L'anatomie de la Renaissance : l'Homme de Vitruve de Léonard et un écorché de Vésale."
+murs = "#ecdcd0"
+x = 14
+z = -18
+largeur = 12
+profondeur = 16
+hauteur = 7
+
+[[salles]]
+nom = "Le cabinet du monde"
+theme = "Mesurer le ciel et la terre, voir l'invisible : un astrolabe yéménite, l'atlas d'Ortelius et la puce de Hooke."
+murs = "#e6d7bd"
+x = 0
+z = -38
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Rhinocéros"
+artiste = "Albrecht Dürer"
+annee = "1515"
+image = "rhinoceros.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Albrecht_Dürer,_The_Rhinoceros,_1515,_NGA_47903.jpg"
+technique = "Gravure sur bois, avec un texte imprimé en allemand"
+collection = "National Gallery of Art, Washington"
+note = "Dürer n'a jamais vu l'animal : il l'a gravé d'après un croquis et une lettre venus de Lisbonne, et son image a fait autorité pendant plus de deux siècles."
+description = """
+Un rhinocéros massif, vu de profil, avance vers la droite et occupe presque toute la \
+feuille. Sa peau ne ressemble pas à une peau : elle est faite de plaques rigides, \
+rivetées et bordées comme les pièces d'une armure, semées de cercles, d'écailles et de \
+petites rosaces. Ses pattes sont gainées d'écailles, son cou est plissé comme une \
+collerette et, au-dessus de la grande corne du nez, une petite corne torsadée pousse \
+sur son épaule. Le sol n'est qu'un trait, avec quelques cailloux. En haut à droite, la \
+date 1515, le mot RHINOCERUS et le monogramme de l'artiste ; tout en haut, sur cinq \
+lignes, un texte allemand raconte l'arrivée de la bête au Portugal."""
+evocation = """
+Pour les Européens de 1515, le rhinocéros est une créature presque légendaire, connue \
+par les auteurs antiques : aucun n'avait été vu en Europe depuis l'époque romaine. \
+Dürer en fait une machine de guerre vivante, dont la cuirasse évoque les armures que \
+l'on forgeait à Nuremberg. Le texte rapporte que la bête est l'ennemie mortelle de \
+l'éléphant, qu'elle l'attaque tête baissée pour lui ouvrir le ventre, et qu'elle est \
+rapide, hardie et rusée. On y voit l'exemple même d'une image qui mêle l'observation \
+et l'imagination : une précision de détail extrême, mise au service d'un animal en \
+partie inventé, que tout le monde a pourtant tenu pour vrai."""
+histoire = """
+L'animal, un rhinocéros indien, était un cadeau du sultan du Gujarat au gouverneur des \
+Indes portugaises, Afonso de Albuquerque, qui l'envoya au roi Manuel Iᵉʳ. Débarqué à \
+Lisbonne en mai 1515, il fit sensation. Le roi l'offrit ensuite au pape Léon X, mais \
+le navire qui le transportait fit naufrage au large de la côte ligure au début de \
+1516, et la bête se noya. Entre-temps, une lettre accompagnée d'un croquis était \
+parvenue à Nuremberg. Dürer en tira un dessin à la plume, aujourd'hui au British \
+Museum, puis cette gravure sur bois, tirée à de très nombreux exemplaires et rééditée \
+plusieurs fois après sa mort. Cette épreuve est conservée à la National Gallery of Art \
+de Washington, qui en diffuse librement la reproduction."""
+facture = """
+La gravure sur bois se travaille en relief : on évide au couteau tout ce qui doit \
+rester blanc, et seuls les traits, laissés debout, reçoivent l'encre. Dürer dessinait \
+ses compositions et en confiait sans doute la taille à un spécialiste, mais il pousse \
+la technique à une finesse rare : hachures parallèles pour modeler les flancs, \
+croisillons pour les ombres, semis de petits cercles pour le grain de la peau. Le \
+cadrage serré, où la corne et la queue touchent presque les bords, donne à l'animal \
+une présence monumentale. Sans couleur ni décor, tout le regard se concentre sur la \
+matière de la cuirasse."""
+details = [
+  "La petite corne torsadée sur l'épaule, que les vrais rhinocéros n'ont pas.",
+  "Le texte allemand en haut, qui date par erreur l'arrivée de la bête de 1513.",
+  "Le monogramme de Dürer, un grand A qui abrite un D, sous le mot RHINOCERUS.",
+  "Les pattes couvertes d'écailles, comme celles d'un reptile.",
+  "Le bord des plaques, à l'épaule et à la croupe, comme le rebord d'une armure.",
+]
+themes = ["animal", "exotisme", "gravure sur bois", "imagination", "renaissance"]
+anecdote = """
+Malgré ses erreurs, l'image de Dürer a fait référence très longtemps : des livres \
+d'histoire naturelle l'ont copiée jusqu'au XVIIIᵉ siècle, petite corne dorsale \
+comprise, alors même que d'autres rhinocéros vivants avaient été vus en Europe."""
+salle = 2
+mur = "ouest"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Flamant rose d'Amérique (planche 431)"
+artiste = "John James Audubon"
+annee = "1838"
+image = "flamant-rose.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:431_American_Flamingo.jpg"
+technique = "Eau-forte et aquatinte coloriées à la main, gravées par Robert Havell ; feuille de près d'un mètre de haut"
+collection = "Bibliothèque de l'université de Pittsburgh"
+note = "Pour représenter l'oiseau grandeur nature sur la page, Audubon lui fait plier le cou jusqu'au sol : le format du livre dicte la pose."
+description = """
+Un flamant rose, immense, se penche au bord d'une rive herbeuse. Son long cou décrit \
+une boucle qui descend jusqu'au sol, et son bec coudé, noir et jaune, effleure presque \
+l'herbe. Le plumage est d'un rouge corail, plus soutenu sur les ailes repliées, où \
+pointent des plumes noires. Les pattes, interminables et rose pâle, se terminent par \
+des pieds palmés posés sur l'arête de la rive. En contrebas, sur une étendue d'eau \
+calme bordée d'une côte plate, d'autres flamants, minuscules, marchent ou se \
+nourrissent. En haut de la feuille, des dessins au trait montrent à part le bec, vu \
+sous plusieurs angles, et un pied, comme dans un traité d'anatomie."""
+evocation = """
+Audubon voulait montrer chaque oiseau d'Amérique à sa taille réelle, et cette règle \
+produit ici une image saisissante : l'oiseau semble trop grand pour la page et doit \
+s'y plier. La pose, qui reprend le geste du flamant fouillant la vase, est à la fois \
+exacte et théâtrale. Le contraste entre l'oiseau géant du premier plan et ses \
+congénères lointains crée la profondeur du paysage. Les études du bec rappellent que \
+le livre se voulait aussi un ouvrage de science. On a souvent vu dans les Oiseaux \
+d'Amérique le portrait d'une nature encore sauvage et d'une abondance qui semblait \
+inépuisable ; plusieurs des espèces peintes par Audubon, comme la tourte voyageuse ou \
+la perruche de Caroline, ont depuis disparu."""
+histoire = """
+Faute de trouver un éditeur aux États-Unis, Audubon part en 1826 pour la \
+Grande-Bretagne. Les Oiseaux d'Amérique y paraissent par livraisons, vendues sur \
+souscription, de 1827 à 1838 : 435 planches au format dit « double éléphant », gravées \
+et coloriées pour l'essentiel à Londres par Robert Havell fils, d'après les aquarelles \
+du peintre. Le flamant appartient aux dernières livraisons, en 1838. Les aquarelles \
+originales, vendues par la veuve d'Audubon, sont conservées à la New-York Historical \
+Society. On estime qu'environ deux cents exemplaires complets furent assemblés, dont \
+un peu plus d'une centaine subsistent ; celui-ci appartient à l'université de \
+Pittsburgh, et le Natural History Museum de Londres en possède un autre."""
+facture = """
+Audubon travaillait d'après des oiseaux qu'il venait d'abattre : il les fixait, encore \
+souples, avec des fils de fer sur une planche quadrillée pour leur donner une attitude \
+vivante, puis les peignait à l'aquarelle, rehaussée de pastel et de gouache. Havell \
+reportait le dessin sur le cuivre en combinant l'eau-forte et le burin, pour les \
+contours et les plumes, et l'aquatinte, qui donne aux fonds leurs teintes grenues. \
+Chaque feuille était ensuite coloriée à la main par une équipe de coloristes. Le \
+paysage, souvent confié à des assistants ou au graveur, reste simple pour laisser \
+l'oiseau dominer."""
+details = [
+  "Les études du bec et du pied, numérotées, en haut de la feuille.",
+  "Les plumes noires des ailes, à peine visibles sous le rouge du plumage.",
+  "Les flamants lointains, dans l'eau, qui donnent l'échelle du paysage.",
+  "La légende gravée en bas : American Flamingo, avec le nom latin de l'oiseau.",
+]
+themes = ["oiseaux", "amérique", "grandeur nature", "ornithologie", "aquatinte"]
+anecdote = """
+En décembre 2010, un exemplaire complet des Oiseaux d'Amérique a été adjugé chez \
+Sotheby's, à Londres, pour plus de 7,3 millions de livres sterling, ce qui en faisait \
+alors le livre imprimé le plus cher jamais vendu aux enchères."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Discomedusae (planche 8 des Formes artistiques de la nature)"
+artiste = "Ernst Haeckel"
+annee = "1899–1904"
+image = "discomedusae.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Haeckel_Discomedusae_8.jpg"
+technique = "Lithographie en couleurs d'après un dessin de Haeckel"
+collection = "Planche du recueil Kunstformen der Natur, Leipzig et Vienne"
+note = "Des méduses dessinées comme des lustres ou des bijoux : Haeckel veut prouver que la nature invente d'elle-même des formes d'art."
+description = """
+Sur un fond blanc flottent quatre méduses, numérotées et disposées comme sur une \
+planche de musée. La plus grande, en haut à droite, ouvre une ombrelle bleue aux bords \
+festonnés, d'où pendent des bras orangés plissés, une masse de franges bleu pâle et \
+une chevelure de filaments rouges si longs qu'ils serpentent jusqu'en bas de la \
+feuille. En haut à gauche, une méduse bleu-mauve laisse traîner des tentacules en \
+tire-bouchon. À droite, une ombrelle jaune striée de brun, comme un abat-jour, porte \
+des bras roses et des fils jaunes. En bas, une méduse vue de dessous dessine une \
+rosace bleue au cœur orange."""
+evocation = """
+Haeckel, disciple ardent de Darwin, voyait dans la nature un seul grand ensemble régi \
+par des lois, où la beauté naît d'elle-même : symétries, rayons, spirales. Le titre du \
+recueil, Formes artistiques de la nature, dit son projet : offrir aux artistes et au \
+public un répertoire de formes réelles, plus inventives que n'importe quel ornement. \
+La grande méduse porte une charge plus intime : Haeckel l'avait nommée Desmonema \
+annasethe, en souvenir de sa première femme, Anna Sethe, morte en 1864, et l'on a lu \
+dans ses longs filaments l'image d'une chevelure. Ces planches ont nourri l'Art \
+nouveau, qui cherchait justement ses motifs dans les plantes et les animaux."""
+histoire = """
+Haeckel publie les Kunstformen der Natur en livraisons de dix planches, de 1899 à \
+1904, chez l'éditeur Bibliographisches Institut, à Leipzig et Vienne. Il a fait \
+lui-même les dessins, à partir de ses observations au microscope, de ses séjours au \
+bord de la mer et des spécimens rapportés par les grandes expéditions scientifiques, \
+comme celle du navire britannique Challenger, dont il avait étudié les radiolaires. La \
+plupart des planches sont lithographiées par Adolf Giltsch. Le recueil de cent \
+planches connaît un grand succès, en Allemagne puis dans toute l'Europe. Les méduses \
+de cette planche reprennent des espèces que Haeckel avait décrites dans sa grande \
+monographie, Das System der Medusen, parue à partir de 1879."""
+facture = """
+Haeckel compose chaque planche comme un ornement : les organismes sont disposés en \
+arabesque sur un fond blanc, sans aucun décor. Le dessin, d'une grande précision \
+anatomique, insiste sur les éléments répétés, festons de l'ombrelle, plis des bras, \
+canaux rayonnants. La lithographie en couleurs, qui demande une pierre par teinte, \
+permet des couleurs franches et des passages délicats : bleus froids des ombrelles, \
+rouges et orangés des filaments. Les longues lignes ondulantes des tentacules, qui \
+traversent toute la feuille, annoncent les courbes en coup de fouet de l'Art nouveau."""
+details = [
+  "Les filaments rouges de la grande méduse, qui descendent jusqu'au bas de la planche.",
+  "La méduse vue de dessous, en bas, dont l'ombrelle forme une rosace.",
+  "Les tentacules en tire-bouchon de la méduse bleu-mauve, en haut à gauche.",
+  "Les petits chiffres, de 1 à 4, qui renvoient aux explications du texte.",
+]
+themes = ["méduses", "mer", "symétrie", "art nouveau", "zoologie"]
+anecdote = """
+Pour la porte monumentale de l'Exposition universelle de Paris, en 1900, l'architecte \
+René Binet s'inspira directement des radiolaires dessinés par Haeckel, ces organismes \
+marins microscopiques aux squelettes de silice ajourés."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Ananas et blattes (planche 1 de la Metamorphosis insectorum Surinamensium)"
+artiste = "Maria Sibylla Merian"
+annee = "1705"
+image = "ananas-merian.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Metamorphosis_insectorum_Surinamensium_-_KW_1792_A_19_-_plaat01.jpg"
+technique = "Gravure sur cuivre coloriée à la main, gravée par Joseph Mulder d'après Merian"
+collection = "Koninklijke Bibliotheek, La Haye"
+note = "La première planche du livre que Merian rapporta du Surinam : un ananas en fleur, envahi par des blattes à plusieurs stades de leur vie."
+description = """
+Un ananas se dresse au centre de la feuille, encore sur sa plante, entouré de longues \
+feuilles vert-de-gris bordées d'épines, qui s'écartent en éventail. Le fruit, surmonté \
+d'une touffe de feuilles, est couvert d'écailles bleutées et dorées ; à sa base \
+s'échappent de grandes feuilles rouges tachetées de jaune. Autour, des blattes : deux \
+adultes aux ailes brunes déployées volent en haut, une autre, ailes repliées, est \
+posée sur une feuille, et une jeune blatte pâle aux longues antennes grimpe à droite. \
+En bas, une petite sphère brune et deux insectes plus petits complètent la scène. \
+Aucun décor : la plante et ses hôtes se détachent sur le papier clair."""
+evocation = """
+Merian ne range pas les insectes dans des cases : elle les montre vivants, sur la \
+plante qui les nourrit, à plusieurs étapes de leur métamorphose. Cette manière de lier \
+l'animal, sa nourriture et son cycle de vie fait d'elle une pionnière de ce qu'on \
+appellera l'écologie. Ouvrir le livre par l'ananas n'est pas un hasard : ce fruit des \
+Amériques, rare et cher en Europe, était le symbole même du luxe exotique. Mais Merian \
+y installe sans fausse pudeur les blattes qui le dévorent. On a aussi lu son livre \
+comme un témoignage sur la colonie néerlandaise du Surinam, fondée sur le travail des \
+esclaves, dont elle parle à plusieurs reprises dans ses textes."""
+histoire = """
+En 1699, à cinquante-deux ans, Merian s'embarque pour le Surinam, colonie néerlandaise \
+d'Amérique du Sud, avec sa fille Dorothea Maria, pour y étudier les insectes. Elle y \
+travaille près de deux ans, aidée par des esclaves africains et des Amérindiens qui \
+lui apportent des spécimens et des informations, avant que la maladie ne la force à \
+rentrer en 1701. À Amsterdam, elle prépare un grand livre de soixante planches, la \
+Metamorphosis insectorum Surinamensium, qu'elle publie en 1705 à ses frais, par \
+souscription, en latin et en néerlandais. Les planches sont gravées par plusieurs \
+graveurs, dont Joseph Mulder, qui a signé celle-ci ; les exemplaires de luxe sont \
+coloriés à la main. Cet exemplaire appartient à la Bibliothèque royale des Pays-Bas, à \
+La Haye."""
+facture = """
+Merian peignait d'après le vivant, à l'aquarelle et à la gouache sur vélin, en suivant \
+l'évolution des chenilles et des larves qu'elle élevait elle-même. Les graveurs ont \
+transposé ses études sur le cuivre d'un trait fin et léger, que l'aquarelle des \
+coloristes recouvre presque entièrement : la couleur l'emporte sur le noir de la \
+gravure. La composition est construite comme un portrait : la plante, vue de face, \
+remplit la page, et les insectes sont répartis autour d'elle comme des satellites. Les \
+verts, les rouges et les bruns sont posés en teintes franches, avec des rehauts plus \
+sombres pour les volumes."""
+details = [
+  "La signature du graveur, J. Mulder sculp., en bas à gauche.",
+  "Les deux blattes en vol, en haut, ailes brunes grandes ouvertes.",
+  "La jeune blatte pâle, sans ailes, aux longues antennes, sur une feuille à droite.",
+  "Les épines minuscules qui bordent chaque feuille de l'ananas.",
+]
+themes = ["insectes", "métamorphose", "surinam", "fruits", "femmes savantes"]
+anecdote = """
+Après la mort de Merian, en 1717, le tsar Pierre le Grand acheta une grande partie de \
+ses aquarelles et de ses études. Elles sont toujours conservées à Saint-Pétersbourg, \
+dans les collections de l'Académie des sciences de Russie."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Rosier à cent feuilles foliacé (Rosa centifolia foliacea)"
+artiste = "Pierre-Joseph Redouté"
+annee = "1817–1824"
+image = "rosier-a-cent-feuilles.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Redoute_-_Rosa_centifolia_foliacea.jpg"
+technique = "Gravure au pointillé imprimée en couleurs et retouchée à l'aquarelle, gravée par Langlois"
+collection = "Planche du livre Les Roses, Paris"
+note = "Le portrait d'une variété de rose, fleurs, boutons et feuilles, par le peintre que l'on surnommait le Raphaël des fleurs."
+description = """
+Une branche de rosier se déploie sur le papier blanc, de la tige épineuse, en bas, \
+jusqu'aux boutons, en haut. Au sommet s'ouvrent deux grosses roses d'un rose tendre, \
+aux pétales serrés et enroulés en coupe, l'une épanouie, l'autre encore à demi fermée. \
+Autour, des boutons à différents stades, pris dans leurs sépales verts, dont les \
+pointes se découpent en petites feuilles. Le feuillage, abondant, montre des folioles \
+dentelées d'un vert profond, vues tantôt par-dessus, tantôt par-dessous, plus pâles. \
+En bas, deux légendes gravées en italique donnent le nom latin, Rosa centifolia \
+foliacea, et le nom français, Rosier à cent feuilles foliacé."""
+evocation = """
+La rose est la fleur la plus chargée de symboles en Occident : l'amour, la beauté, la \
+fuite du temps. Redouté ne cherche pourtant ni allégorie ni bouquet : il fait le \
+portrait d'une variété précise, telle qu'un botaniste ou un jardinier pourra la \
+reconnaître. Le détail qui lui donne son nom, les sépales transformés en petites \
+feuilles, est mis en évidence avec soin. Le livre est né dans le Paris de l'Empire et \
+de la Restauration, où la culture des roses était à la mode : l'impératrice Joséphine \
+avait réuni une collection célèbre à la Malmaison, et les horticulteurs multipliaient \
+les variétés nouvelles. Ces planches en gardent la mémoire, et certaines des roses \
+peintes par Redouté sont aujourd'hui difficiles à retrouver dans les jardins."""
+histoire = """
+Les Roses paraissent à Paris par livraisons, de 1817 à 1824, et forment trois volumes \
+de 168 planches. Les textes sont du botaniste Claude-Antoine Thory, qui décrit chaque \
+variété. L'impératrice Joséphine, qui avait protégé Redouté, était morte en 1814 : le \
+livre est souvent associé à sa roseraie de la Malmaison, mais les modèles viennent de \
+plusieurs jardins et pépinières de la région parisienne. Le succès fut tel qu'une \
+édition de plus petit format suivit dès les années 1820. Recherchées des \
+collectionneurs, les planches ont souvent été détachées des volumes pour être \
+encadrées, et elles comptent aujourd'hui parmi les images de fleurs les plus \
+reproduites au monde."""
+facture = """
+Redouté a perfectionné la gravure au pointillé imprimée en couleurs. Au lieu de \
+traits, le graveur creuse dans le cuivre une multitude de points plus ou moins serrés, \
+qui rendent les modelés sans contours durs. Les couleurs sont déposées sur la même \
+plaque à l'aide de petits tampons de tissu, les poupées, et imprimées en un seul \
+passage ; l'épreuve est ensuite retouchée à la main à l'aquarelle. Le résultat imite \
+la transparence de l'aquarelle sur vélin, où Redouté excellait. Le fond blanc, sans \
+ombre portée, isole la plante comme dans un herbier."""
+details = [
+  "Les sépales des boutons, découpés comme de petites feuilles : c'est le sens du mot foliacé.",
+  "Les épines fines de la tige, tout en bas.",
+  "Le revers pâle de certaines feuilles, qui se retournent vers nous.",
+  "Les mentions gravées en bas : P. J. Redouté pinx., l'imprimeur Rémond et le graveur Langlois.",
+]
+themes = ["roses", "botanique", "fleurs", "couleur", "jardins"]
+anecdote = """
+Redouté a peint pendant des décennies pour les vélins du Muséum d'histoire naturelle \
+de Paris, une collection de peintures de plantes et d'animaux sur parchemin commencée \
+au XVIIᵉ siècle pour Gaston d'Orléans, et toujours enrichie aujourd'hui."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Première planche des muscles (De humani corporis fabrica)"
+artiste = "André Vésale"
+annee = "1543"
+image = "premiere-planche-des-muscles.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:De_humani_corporis_fabrica_(27).jpg"
+technique = "Gravure sur bois, page du livre imprimé à Bâle par Jean Oporin"
+collection = "Collections spéciales de l'université d'Amsterdam"
+note = "Un écorché marche dans un paysage italien : la première planche des muscles du grand traité qui refonda l'anatomie."
+description = """
+Un homme dépouillé de sa peau se tient debout, de face, au milieu d'un paysage. Il \
+avance d'un pas, la tête renversée vers le ciel, les bras écartés et les mains \
+ouvertes, comme dans un geste de lamentation. Tous les muscles superficiels sont à nu \
+: les pectoraux, les abdominaux découpés en carrés, les longs muscles des cuisses et \
+des bras, marqués de petites lettres qui renvoient au texte. Derrière lui s'étend une \
+campagne vallonnée, avec des collines, des maisons, des ruines antiques, des \
+obélisques, une pyramide et des arcades. En haut, le titre latin PRIMA MUSCULORUM \
+TABULA, l'en-tête du livre au nom de Vésale et le numéro de la page."""
+evocation = """
+Vésale dresse ses écorchés comme des statues antiques, vivants et en mouvement, au \
+lieu de les montrer couchés sur la table de dissection. On y a vu un écho des \
+méditations sur la mort, mais aussi la fierté d'une science nouvelle qui ose regarder \
+sous la peau. Le paysage parsemé de ruines rappelle l'Italie de la Renaissance, où \
+l'on redécouvrait l'Antiquité. Le message du livre est clair : l'anatomie ne doit plus \
+se lire dans les textes de Galien, le médecin grec dont l'autorité régnait depuis \
+treize siècles, mais s'apprendre sur le corps humain lui-même. Vésale montre que \
+Galien avait souvent décrit des animaux, singes ou porcs, plutôt que des hommes."""
+histoire = """
+Vésale n'a que vingt-huit ans quand paraît, en 1543, à Bâle, chez l'imprimeur Jean \
+Oporin, le De humani corporis fabrica libri septem, « Sept livres sur la structure du \
+corps humain ». Professeur à Padoue, il y fondait son enseignement sur la dissection, \
+qu'il pratiquait lui-même. Les gravures ont été dessinées à Venise, dans l'entourage \
+de Titien ; on les attribue souvent, au moins en partie, à Jan Steven van Calcar, mais \
+la question reste discutée. Les blocs de bois furent expédiés de Venise à Bâle \
+par-delà les Alpes. Le livre, dédié à l'empereur Charles Quint, scandalise les fidèles \
+de Galien avant de s'imposer comme le fondement de l'anatomie moderne. Une seconde \
+édition paraît en 1555."""
+facture = """
+La gravure sur bois atteint ici une finesse rarement égalée. Les tailles suivent la \
+forme des muscles, comme les fibres elles-mêmes, et les hachures modèlent les volumes. \
+Le dessin conjugue l'exactitude anatomique, contrôlée par Vésale, et une manière \
+vénitienne de poser la figure dans l'espace, avec un déhanchement inspiré de la \
+sculpture antique. Le paysage, traité plus légèrement, recule jusqu'à l'horizon. De \
+petites lettres gravées dans les muscles renvoient à une légende : l'image se lit avec \
+le texte, comme une carte avec sa légende."""
+details = [
+  "Les petites lettres semées sur les muscles, qui renvoient aux explications du texte.",
+  "Les obélisques et la pyramide, à droite, dans le paysage.",
+  "Les arcades en ruine, au pied des collines, à droite.",
+  "La tête renversée en arrière, presque comme celle d'un martyr.",
+  "Le numéro de page, 170, en haut à gauche.",
+]
+themes = ["anatomie", "corps", "médecine", "renaissance", "paysage"]
+anecdote = """
+Les blocs de bois de la Fabrica ont servi à des tirages pendant près de quatre \
+siècles, jusqu'à une édition de 1934. Conservés à la bibliothèque de l'université de \
+Munich, ils furent détruits lors des bombardements de la ville en 1944."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "L'Homme de Vitruve"
+artiste = "Léonard de Vinci"
+annee = "vers 1490"
+image = "homme-de-vitruve.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Da_Vinci_Vitruve_Luc_Viatour.jpg"
+technique = "Plume et encre brune sur pointe de métal, sur papier, environ 34 × 25 cm"
+collection = "Gallerie dell'Accademia, Venise"
+note = "Un homme inscrit dans un cercle et dans un carré : Léonard met en image les proportions idéales du corps décrites par l'architecte romain Vitruve."
+description = """
+Au centre d'une feuille couverte d'écriture, un homme nu est dessiné deux fois, en \
+superposition : une fois les bras à l'horizontale et les pieds joints, une fois les \
+bras levés et les jambes écartées. Dans la première position, il s'inscrit dans un \
+carré ; dans la seconde, ses mains et ses pieds touchent un cercle dont le nombril est \
+le centre. Le visage, encadré de boucles, regarde droit devant, grave. De petits \
+traits marquent sur le corps les divisions des proportions, à la poitrine, aux genoux, \
+le long des bras. Sous la figure court une échelle graduée ; au-dessus et au-dessous, \
+des lignes de texte sont écrites à l'envers, de droite à gauche."""
+evocation = """
+L'architecte romain Vitruve affirmait qu'un homme bien proportionné, bras et jambes \
+écartés, s'inscrit à la fois dans un cercle et dans un carré, les deux figures \
+parfaites, et que l'architecture devait imiter ces proportions. À la Renaissance, \
+l'idée fascine : le corps humain serait un modèle réduit de l'univers. D'autres \
+artistes du temps s'essayèrent à cette figure, souvent maladroitement. Léonard résout \
+le problème en ne donnant pas le même centre aux deux formes : le cercle tourne autour \
+du nombril, le carré autour du sexe. Le dessin est devenu le symbole même de \
+l'alliance entre l'art et la science, et de l'humanisme qui place l'homme au centre du \
+monde."""
+histoire = """
+Léonard réalise ce dessin à Milan, vers 1490, alors qu'il est au service de Ludovic \
+Sforza et qu'il étudie à la fois l'architecture, l'anatomie et les proportions. Le \
+texte qui l'accompagne paraphrase le troisième livre du traité De architectura de \
+Vitruve, puis énumère, mesure après mesure, les rapports entre les parties du corps et \
+sa hauteur : l'envergure des bras, par exemple, égale la taille de l'homme. La feuille \
+passa plus tard dans la collection du peintre milanais Giuseppe Bossi, puis entra en \
+1822 aux Gallerie dell'Accademia de Venise. Très sensible à la lumière, elle n'est \
+exposée que rarement et pour de courtes périodes."""
+facture = """
+Léonard trace d'abord la construction à la pointe de métal, au compas et à la règle, \
+puis reprend les contours à la plume et à l'encre brune, d'un trait sûr et léger. Des \
+hachures fines, typiques de sa main gauche, modèlent la musculature avec économie. La \
+double pose donne une impression de mouvement, presque d'animation, au cœur d'une \
+figure géométrique immobile. Comme dans tous les carnets de Léonard, l'image et le \
+texte forment un tout : son écriture en miroir, tracée de droite à gauche, encadre le \
+dessin."""
+details = [
+  "Le nombril, centre exact du cercle.",
+  "L'échelle graduée tracée sous la figure.",
+  "Les petits traits qui découpent le corps en fractions de sa hauteur.",
+  "L'écriture en miroir de Léonard, qu'il faut lire dans une glace.",
+  "Les quatre bras et les quatre jambes, qui suggèrent un mouvement.",
+]
+themes = ["proportions", "corps", "géométrie", "humanisme", "renaissance"]
+anecdote = """
+L'Homme de Vitruve figure sur la face italienne des pièces de un euro. En 2019, son \
+prêt au Louvre pour l'exposition Léonard de Vinci fut d'abord suspendu par un tribunal \
+italien, saisi par une association de protection du patrimoine, avant d'être autorisé."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Astrolabe du prince rasoulide ʿUmar"
+artiste = "Yémen, dynastie rasoulide"
+annee = "1291 (690 de l'hégire)"
+image = "astrolabe-rasoulide.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Astrolabe_of_‘Umar_ibn_Yusuf_ibn_‘Umar_ibn_‘Ali_ibn_Rasul_al-Muzaffari_MET_DP170386.jpg"
+technique = "Laiton coulé et martelé, ajouré, ciselé, incrusté d'argent ; diamètre 15,6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un instrument pour lire le ciel, fabriqué au Yémen par un prince savant, futur sultan. Diamètre réel : 15,6 cm."
+description = """
+Un disque de laiton doré, épais, se tient debout, surmonté d'un petit fronton ajouré \
+de rinceaux, le trône, d'où pend un anneau de suspension. Le large bord, gradué, est \
+couvert de chiffres et d'inscriptions en arabe. Au centre, une plaque gravée d'un \
+réseau de cercles et de lignes, le tympan, est recouverte d'une dentelle de métal \
+découpé, l'araignée, dont les pointes en forme de flammes et de crochets désignent des \
+étoiles. Un axe central retient toutes les pièces, et une règle pivote autour de lui. \
+Le métal porte des traces d'usure et quelques éclats : l'objet a servi. Son dos, \
+invisible ici, porte une alidade, la réglette de visée."""
+evocation = """
+L'astrolabe est une carte du ciel que l'on tient dans la main. En visant le soleil ou \
+une étoile, puis en faisant tourner l'araignée sur le tympan, on pouvait lire l'heure, \
+de jour comme de nuit, connaître la position des astres, mesurer la hauteur d'un \
+édifice et, dans le monde islamique, déterminer les heures des prières. Imaginé dans \
+le monde grec, perfectionné par les savants de langue arabe, l'instrument passa \
+ensuite en Europe par l'Espagne. Celui-ci dit la place de la science à la cour \
+rasoulide : un prince y manie lui-même le calcul et l'outil, à la fois artisan et \
+astronome. Sa beauté n'est pas un ornement ajouté : elle naît de la précision."""
+histoire = """
+Les inscriptions indiquent que l'astrolabe a été fait par ʿUmar ibn Yusuf, fils du \
+sultan rasoulide al-Muzaffar Yusuf, et daté de l'an 690 de l'hégire, soit 1291. Le \
+prince, passionné de sciences, devint en 1295 le troisième sultan de la dynastie, sous \
+le nom d'al-Ashraf ʿUmar, mais mourut dès l'année suivante. Il est l'auteur d'ouvrages \
+d'astronomie et d'un traité sur la construction des astrolabes. On ignore quand \
+l'instrument a quitté le Yémen. Il appartenait au New-Yorkais Edward C. Moore, orfèvre \
+et dessinateur de la maison Tiffany, dont la collection fut léguée au Metropolitan \
+Museum of Art en 1891 ; le musée en publie aujourd'hui librement les photographies."""
+facture = """
+Le corps de l'astrolabe, la mère, est coulé en laiton puis martelé ; son rebord forme \
+un logement où s'emboîtent les tympans, quatre plaques gravées pour différentes \
+latitudes. L'araignée, découpée à la scie et à la lime, doit être assez ajourée pour \
+laisser voir le tympan et assez solide pour ne pas se déformer : ses volutes sont à la \
+fois ornement et structure. Graduations et inscriptions sont gravées au burin, avec \
+des incrustations d'argent. Le tracé des cercles, calculé par la géométrie et reporté \
+au compas, conditionne l'exactitude de l'instrument."""
+details = [
+  "Le trône ajouré, en haut, et son anneau de suspension.",
+  "Les pointes de l'araignée, qui marquent chacune une étoile.",
+  "Les graduations du bord, sur tout le pourtour du disque.",
+  "Le réseau de cercles du tympan, visible sous l'araignée.",
+]
+themes = ["astronomie", "instrument", "islam", "yémen", "mesure"]
+anecdote = """
+Le mot astrolabe vient du grec et signifie à peu près « qui saisit les astres ». Vers \
+1391, le poète anglais Geoffrey Chaucer écrivit pour un enfant, son fils Lewis, un \
+Traité de l'astrolabe, l'un des premiers textes scientifiques en langue anglaise."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Typus Orbis Terrarum (carte du monde)"
+artiste = "Abraham Ortelius"
+annee = "1570"
+image = "typus-orbis-terrarum.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:OrteliusWorldMap1570.jpg"
+technique = "Gravure sur cuivre coloriée à la main, gravée par Frans Hogenberg"
+collection = "Bibliothèque du Congrès, Washington"
+note = "La carte du monde qui ouvre le Theatrum Orbis Terrarum, considéré comme le premier atlas moderne."
+description = """
+Le monde entier tient dans un grand ovale quadrillé de méridiens et de parallèles, \
+entouré de nuages bleus qui s'enroulent dans les angles. L'Europe, l'Afrique et l'Asie \
+occupent la droite, les Amériques la gauche, avec une Amérique du Sud renflée et une \
+Amérique du Nord démesurément large. Tout le bas de la carte est pris par un immense \
+continent austral, inscrit TERRA AUSTRALIS NONDUM COGNITA, la terre australe pas \
+encore connue. Sur les mers voguent un navire et des monstres marins. En haut, un \
+cartouche donne le titre ; en bas, un second cartouche porte une phrase latine de \
+Cicéron. Les terres sont rehaussées de jaunes, de roses et de verts pâles."""
+evocation = """
+La carte montre le monde tel que les Européens le connaissent près de quatre-vingts \
+ans après le premier voyage de Christophe Colomb : les côtes de l'Atlantique et de \
+l'Afrique sont tracées avec assurance, mais le Pacifique, l'intérieur des continents \
+et les régions polaires restent incertains, et le grand continent austral relève de \
+l'hypothèse. La phrase de Cicéron, tirée des Tusculanes, demande ce qui peut paraître \
+grand dans les affaires humaines à celui qui connaît l'éternité et l'immensité du \
+monde. Elle invite à la modestie : vue de haut, la Terre rend dérisoires les ambitions \
+des hommes. Le titre du livre, Théâtre du monde, dit la même chose : la Terre est une \
+scène qu'on embrasse d'un regard."""
+histoire = """
+Abraham Ortelius, marchand de cartes et d'antiquités à Anvers, publie le 20 mai 1570 \
+le Theatrum Orbis Terrarum, un recueil de cartes de format et de style uniformes, \
+gravées pour l'occasion et accompagnées de textes, avec la liste des cartographes dont \
+il s'est servi. C'est l'invention de l'atlas moderne, même si le mot ne viendra que \
+plus tard, avec Mercator. Cette carte du monde, gravée par Frans Hogenberg, s'appuie \
+notamment sur la grande carte murale publiée par Mercator en 1569. Le livre connaît un \
+succès immédiat : il est réédité et augmenté une trentaine de fois en quarante ans, en \
+latin puis en plusieurs autres langues. Cet exemplaire colorié appartient à la \
+Bibliothèque du Congrès, à Washington."""
+facture = """
+La carte est gravée au burin sur cuivre, d'un trait net qui permet d'inscrire des \
+centaines de noms en petites capitales et en italiques. La projection ovale déploie \
+toute la surface du globe sur la feuille, en courbant les méridiens vers les pôles. \
+Les ornements, nuages enroulés, cartouches à volutes et à rubans, appartiennent au \
+vocabulaire décoratif de la Renaissance flamande. La couleur n'était pas imprimée mais \
+posée à la main, à l'aquarelle : l'acheteur pouvait commander un exemplaire colorié, \
+plus cher, à des enlumineurs de cartes, le métier qu'Ortelius lui-même exerça à ses \
+débuts."""
+details = [
+  "Le cartouche du bas, avec la phrase de Cicéron en capitales.",
+  "Les mots TERRA AUSTRALIS NONDUM COGNITA, sur le continent imaginaire du sud.",
+  "La mention de Christophe Colomb et de l'année 1492, sur l'Amérique du Nord.",
+  "Le renflement de la côte ouest de l'Amérique du Sud, corrigé dans les éditions suivantes.",
+  "Le monstre marin de l'océan Indien, en bas à droite.",
+]
+themes = ["cartographie", "monde", "découvertes", "atlas", "anvers"]
+anecdote = """
+Dans son dictionnaire géographique, le Thesaurus geographicus de 1596, Ortelius \
+suggère que les Amériques ont été arrachées à l'Europe et à l'Afrique par des \
+tremblements de terre et des inondations : on y voit l'une des premières intuitions de \
+la dérive des continents."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 2.2
+
+[[oeuvres]]
+titre = "La Puce (Micrographia, schéma XXXIV)"
+artiste = "Robert Hooke"
+annee = "1665"
+image = "puce-micrographia.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:HookeFlea01.jpg"
+technique = "Gravure sur cuivre, grande planche dépliante du livre Micrographia"
+collection = "Bibliothèque nationale du pays de Galles, Aberystwyth"
+note = "Une puce vue au microscope et agrandie sur une immense planche dépliante : pour le public de 1665, la révélation d'un monde invisible."
+description = """
+Une puce, vue de profil, occupe toute la feuille. Son corps ovale est fait d'anneaux \
+qui se chevauchent comme les plaques d'une armure, hérissés de soies raides plantées \
+en rangées. La tête, petite, porte un œil rond et des pièces buccales pointues ; les \
+pattes, articulées, sont couvertes de poils et terminées par des griffes recourbées. \
+Les pattes arrière, très longues et repliées sous le corps, laissent deviner la \
+puissance du saut. Des lettres capitales, de A à L, sont posées sur les différentes \
+parties du corps et renvoient à la description du texte. Il n'y a ni ombre portée ni \
+décor : l'insecte est seul, comme suspendu sur la page blanche."""
+evocation = """
+Pour les lecteurs de 1665, la puce est le plus vil des parasites, que l'on écrase sans \
+la regarder. Hooke en fait un objet d'admiration : il s'émerveille dans son texte de \
+sa force et de la beauté de son armure, et la planche lui donne la dignité d'un \
+portrait. L'image dit le choc du microscope : sous la lentille, le minuscule devient \
+monumental, et la nature révèle partout un ordre et une finesse insoupçonnés. Pour les \
+savants de la Royal Society, qui voulaient fonder la connaissance sur l'expérience et \
+l'observation, de telles images étaient des preuves autant que des illustrations : \
+elles faisaient voir à tous ce que seuls quelques-uns avaient pu observer."""
+histoire = """
+Robert Hooke est le curateur des expériences de la Royal Society de Londres, fondée en \
+1660, qui lui demande de présenter, séance après séance, des observations faites au \
+microscope. Il les réunit dans Micrographia, publiée en janvier 1665 avec l'aval de la \
+Société et illustrée de 38 planches gravées : l'œil d'une mouche, la pointe d'une \
+aiguille, des flocons de neige, des moisissures, une tranche de liège. Le livre \
+connaît un grand succès dans le public cultivé. Dans son journal, Samuel Pepys raconte \
+qu'il a veillé jusqu'à deux heures du matin pour le lire, et le tient pour le livre le \
+plus ingénieux qu'il ait jamais lu. Cette planche provient de l'exemplaire de la \
+Bibliothèque nationale du pays de Galles."""
+facture = """
+Hooke a dessiné lui-même ses observations. Le microscope de l'époque ne montre \
+nettement qu'une petite zone à la fois, et l'insecte vivant bouge : il a donc \
+reconstitué l'animal entier à partir de nombreuses vues successives, sous des \
+éclairages différents. La gravure traduit ces dessins par un réseau très dense de \
+traits fins et parallèles qui suivent la courbure de chaque segment, et donnent aux \
+plaques un aspect lustré, presque métallique. Le grand format de la planche, qui se \
+déplie hors du livre, fait partie de l'effet : le lecteur éprouve physiquement \
+l'agrandissement."""
+details = [
+  "L'œil rond de la puce, sur le côté de la petite tête.",
+  "Les griffes recourbées au bout des pattes, qui lui permettent de s'accrocher.",
+  "Les soies raides plantées en rangées sur chaque anneau du corps.",
+  "Les lettres de A à L, qui renvoient au texte de Hooke.",
+]
+themes = ["microscope", "insectes", "invisible", "gravure", "royal society"]
+anecdote = """
+C'est dans Micrographia que Hooke, observant une fine tranche de liège, décrit ses \
+petites alvéoles sous le nom de cells, de petites chambres : le mot est resté, et la \
+biologie en a fait la cellule."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.6
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Albrecht Dürer"
+vie = "Nuremberg, 21 mai 1471 – Nuremberg, 6 avril 1528"
+biographie = """
+Fils d'un orfèvre venu de Hongrie, Albrecht Dürer apprend d'abord le métier de son \
+père, puis entre en 1486 dans l'atelier du peintre Michael Wolgemut, à Nuremberg, où \
+l'on illustre aussi des livres. Après un voyage de compagnon vers le Rhin, il épouse \
+Agnes Frey en 1494 et part la même année pour Venise, où il découvre la peinture \
+italienne. De retour, il ouvre son atelier et publie en 1498 l'Apocalypse, une suite \
+de grandes gravures sur bois qui le rend célèbre dans toute l'Europe. Il peint des \
+autoportraits d'une assurance nouvelle et des études de nature d'une précision inouïe, \
+comme le Lièvre de 1502 ou la Grande Touffe d'herbe de 1503. Un second séjour à \
+Venise, de 1505 à 1507, confirme sa réputation, et l'empereur Maximilien Iᵉʳ lui \
+accorde une pension. Ses gravures sur cuivre de 1513–1514, le Chevalier, la Mort et le \
+Diable, Saint Jérôme dans sa cellule et Melencolia I, comptent parmi les plus célèbres \
+de l'histoire. Après un voyage aux Pays-Bas en 1520–1521, il se rallie aux idées de \
+Luther et consacre ses dernières années à des traités de géométrie et de proportions \
+humaines."""
+style = """
+Dürer unit la rigueur du dessin gothique allemand et les leçons de la Renaissance \
+italienne : perspective, proportions, modelé. Graveur avant tout, il a porté la \
+gravure sur bois et sur cuivre à un degré de finesse jamais atteint, faisant de \
+l'estampe un art à part entière, diffusé dans toute l'Europe. Ses études d'animaux et \
+de plantes, à l'aquarelle et à la gouache, observent la nature avec une exactitude de \
+naturaliste. Son monogramme AD, présent sur presque toutes ses œuvres, était connu de \
+tout le continent et largement copié."""
+
+[[artistes]]
+nom = "John James Audubon"
+vie = "Les Cayes (Saint-Domingue), 26 avril 1785 – New York, 27 janvier 1851"
+biographie = """
+Fils naturel d'un officier de marine et planteur français, Jean Audubon, et d'une \
+jeune femme de chambre, Jeanne Rabin, morte quelques mois après sa naissance, il est \
+élevé à Couëron, près de Nantes. En 1803, pour lui éviter la conscription, son père \
+l'envoie en Amérique, dans une propriété familiale de Pennsylvanie, Mill Grove, où il \
+se passionne pour les oiseaux. Marié en 1808 à Lucy Bakewell, il tente sa chance comme \
+commerçant dans le Kentucky, où il possède des esclaves. Ruiné en 1819, il vit de \
+portraits et de leçons de dessin, puis se fixe un but : peindre tous les oiseaux \
+d'Amérique du Nord. Il parcourt forêts, marais et côtes, de la Louisiane au Labrador. \
+Faute d'éditeur aux États-Unis, il part en 1826 pour l'Angleterre et l'Écosse, où son \
+allure de coureur des bois fait sensation. Il y publie les Oiseaux d'Amérique, de 1827 \
+à 1838, accompagnés d'une Biographie ornithologique écrite avec l'Écossais William \
+MacGillivray. Rentré en Amérique, il entreprend un ouvrage sur les mammifères \
+d'Amérique du Nord, achevé avec le pasteur John Bachman et ses propres fils. Il meurt \
+à New York en 1851."""
+style = """
+Audubon rompt avec les oiseaux raides, posés de profil sur une branche : il les montre \
+grandeur nature et en action, chassant, se nourrissant, se battant, dans leur milieu. \
+Ses compositions dramatiques et souvent décoratives doivent beaucoup à son talent de \
+dessinateur et à son expérience de chasseur et d'observateur sur le terrain. Ses \
+planches ont façonné l'image de la nature américaine ; les sociétés de protection des \
+oiseaux fondées aux États-Unis à partir de 1886 ont pris son nom."""
+
+[[artistes]]
+nom = "Ernst Haeckel"
+vie = "Potsdam, 16 février 1834 – Iéna, 9 août 1919"
+biographie = """
+Fils d'un juriste prussien, Ernst Haeckel étudie la médecine à Wurtzbourg, Berlin et \
+Vienne, et suit à Berlin l'enseignement du zoologiste Johannes Müller, qui l'initie à \
+l'étude des animaux marins. Après un séjour à Messine en 1859–1860, il publie une \
+monographie des radiolaires, organismes microscopiques à squelette de silice, \
+illustrée de ses propres dessins. En 1862, il devient professeur à l'université \
+d'Iéna, où il enseignera jusqu'en 1909. La lecture de Darwin le bouleverse : il \
+devient le plus ardent propagateur de la théorie de l'évolution en Allemagne et \
+dessine les premiers arbres généalogiques du vivant. Il forge des mots promis à un \
+grand avenir, comme écologie, en 1866. En 1864, la mort de sa jeune épouse, Anna \
+Sethe, le plonge dans le désespoir. Voyageur infatigable, des Canaries à Ceylan, il \
+décrit des milliers d'espèces nouvelles. Son œuvre a aussi des côtés sombres : \
+certains de ses dessins d'embryons, trop schématisés, furent accusés de forcer les \
+ressemblances, et ses théories ont classé les peuples humains selon une hiérarchie \
+raciale aujourd'hui rejetée. Il meurt à Iéna en 1919."""
+style = """
+Haeckel dessinait comme il pensait : en cherchant l'ordre, la symétrie et la parenté \
+des formes. Ses planches, très précises mais disposées comme des ornements, mettent en \
+valeur les rayons, les spirales et les structures répétées du vivant. Il a voulu \
+prouver que la nature est elle-même artiste. Ses Formes artistiques de la nature ont \
+fourni aux architectes, verriers et décorateurs de l'Art nouveau un immense répertoire \
+de motifs, et continuent d'inspirer graphistes et designers."""
+
+[[artistes]]
+nom = "Maria Sibylla Merian"
+vie = "Francfort-sur-le-Main, 2 avril 1647 – Amsterdam, 13 janvier 1717"
+biographie = """
+Fille de l'éditeur et graveur Matthäus Merian l'Ancien, mort quand elle avait trois \
+ans, Maria Sibylla grandit à Francfort dans l'atelier de son beau-père, le peintre de \
+fleurs Jacob Marrel, qui lui apprend le dessin et la peinture. Adolescente, elle élève \
+des vers à soie et des chenilles pour observer leur transformation, à une époque où \
+beaucoup croient encore que les insectes naissent de la boue. Mariée en 1665 au \
+peintre Johann Andreas Graff, elle s'installe à Nuremberg, publie un livre de fleurs \
+puis, en 1679, un premier livre sur les chenilles et leurs plantes nourricières. En \
+1685, elle rejoint avec sa mère et ses deux filles une communauté religieuse, les \
+labadistes, en Frise, et se sépare de son mari. Installée à Amsterdam en 1691, elle y \
+vend peintures et spécimens et fréquente les collectionneurs. En 1699, elle part pour \
+le Surinam avec sa fille cadette, Dorothea Maria, et en revient deux ans plus tard \
+pour préparer son grand livre, publié en 1705. Frappée d'une attaque en 1715, elle \
+meurt à Amsterdam en 1717. Linné cita ses planches pour décrire de nombreuses espèces."""
+style = """
+Merian unit la précision du naturaliste et la grâce de la peinture de fleurs allemande \
+et hollandaise. Sa grande innovation est de réunir sur une seule image le cycle d'un \
+insecte, œuf, chenille, chrysalide et adulte, avec la plante dont il se nourrit : une \
+image du vivant en relation, et non un catalogue d'espèces isolées. Ses compositions, \
+élégantes et vivantes, ont influencé l'illustration naturaliste pendant plus d'un \
+siècle."""
+
+[[artistes]]
+nom = "Pierre-Joseph Redouté"
+vie = "Saint-Hubert (Belgique actuelle), 10 juillet 1759 – Paris, 19 juin 1840"
+biographie = """
+Né dans les Ardennes, dans une famille de peintres, Pierre-Joseph Redouté quitte très \
+jeune la maison pour travailler comme peintre itinérant. En 1782, il rejoint à Paris \
+son frère aîné Antoine-Ferdinand, décorateur de théâtre. Il rencontre le botaniste \
+Charles-Louis L'Héritier de Brutelle, qui l'initie à la botanique et lui confie \
+l'illustration de ses livres, ainsi que le peintre Gerard van Spaendonck, maître de la \
+peinture de fleurs sur vélin. Il reçoit le titre de dessinateur du cabinet de la reine \
+Marie-Antoinette et, après la Révolution, travaille pour le Muséum d'histoire \
+naturelle. L'impératrice Joséphine en fait son peintre de fleurs : il publie Les \
+Liliacées, de 1802 à 1816, puis Les Roses, de 1817 à 1824. Professeur de dessin au \
+Muséum, il compte parmi ses élèves des princesses et des femmes de la bonne société. \
+Malgré sa gloire, ses dépenses et les difficultés du marché du livre illustré le \
+laissent dans la gêne à la fin de sa vie. Il meurt à Paris en 1840."""
+style = """
+Redouté allie l'exactitude exigée par les botanistes, qui doivent pouvoir reconnaître \
+chaque espèce, à une élégance de composition et une délicatesse de couleur qui font de \
+ses planches des œuvres d'art. Il a porté à la perfection la gravure au pointillé \
+imprimée en couleurs, qui rend la transparence de l'aquarelle. Surnommé le Raphaël des \
+fleurs, il reste la référence de l'illustration botanique, et ses roses et ses lis \
+n'ont cessé d'être reproduits."""
+
+[[artistes]]
+nom = "André Vésale"
+vie = "Bruxelles, 31 décembre 1514 – île de Zante (Grèce), 15 octobre 1564"
+biographie = """
+Né à Bruxelles dans une famille d'apothicaires et de médecins au service des \
+empereurs, Andries van Wesel, dit Vésale, étudie à Louvain puis à Paris, où il suit \
+les leçons des anatomistes Jacques Dubois et Johann Winter d'Andernach. On y enseigne \
+une anatomie lue dans les livres de Galien, tandis qu'un barbier se charge de la \
+dissection. Faute de corps, le jeune Vésale va chercher des ossements au gibet de \
+Montfaucon. Reçu docteur à Padoue en 1537, il y devient aussitôt professeur de \
+chirurgie et d'anatomie, et dissèque lui-même devant ses étudiants. Il constate peu à \
+peu que bien des descriptions de Galien valent pour des animaux, non pour l'homme. En \
+1543, à vingt-huit ans, il publie à Bâle la Fabrica, accompagnée d'un abrégé, \
+l'Epitome. La même année, il devient médecin de l'empereur Charles Quint, puis de son \
+fils Philippe II d'Espagne. En 1564, il entreprend un pèlerinage à Jérusalem ; sur le \
+chemin du retour, il meurt dans l'île de Zante, en Grèce, avant d'avoir atteint \
+cinquante ans."""
+style = """
+Vésale n'était pas un artiste, mais il a pensé ses livres comme des œuvres d'art : il \
+en a dirigé l'illustration, choisi les dessinateurs, contrôlé la gravure et la mise en \
+page. Son principe est simple et révolutionnaire : voir avant de croire, et montrer ce \
+que l'on a vu. Ses écorchés et ses squelettes posés dans des paysages, élégants et \
+mélancoliques, ont été copiés dans toute l'Europe et ont fixé pour longtemps l'image \
+du corps dans les livres de médecine."""
+
+[[artistes]]
+nom = "Léonard de Vinci"
+vie = "Vinci (Toscane), 15 avril 1452 – Amboise, 2 mai 1519"
+biographie = """
+Fils illégitime d'un notaire florentin, Léonard grandit à Vinci, en Toscane, puis \
+entre vers 1469 dans l'atelier d'Andrea del Verrocchio, à Florence, où il apprend la \
+peinture, la sculpture et la mécanique. En 1482, il part pour Milan au service de \
+Ludovic Sforza, comme ingénieur, organisateur de fêtes et peintre : il y peint la \
+Vierge aux rochers et la Cène. Après la chute de Ludovic, en 1499, il passe par \
+Mantoue et Venise, puis revient à Florence, où il commence la Joconde vers 1503 et \
+sert un temps César Borgia comme ingénieur militaire. Il retourne à Milan, puis \
+s'installe à Rome en 1513. En 1516, le roi François Iᵉʳ l'invite en France et le loge \
+au manoir du Cloux, près d'Amboise, où il meurt en 1519. Toute sa vie, il a rempli des \
+milliers de pages de carnets : machines, vol des oiseaux, mouvement des eaux, \
+botanique, géologie et surtout anatomie. Il disséqua des corps humains à Florence, à \
+l'hôpital de Santa Maria Nuova, et à Pavie avec le médecin Marcantonio della Torre. \
+Ses dessins anatomiques, restés inédits, sont aujourd'hui pour la plupart dans la \
+collection royale britannique, à Windsor."""
+style = """
+Léonard fonde la peinture sur l'observation et la connaissance : anatomie, optique, \
+botanique. Il invente le sfumato, ce modelé vaporeux qui fond les contours dans \
+l'ombre, et une perspective atmosphérique où les lointains bleuissent. Dessinateur \
+prodigieux, il se sert de la plume, de la pierre noire, de la sanguine et de la pointe \
+de métal pour penser autant que pour représenter. Ses carnets, où l'image se mêle à \
+l'écriture en miroir, font de lui la figure même du génie de la Renaissance, à la fois \
+artiste et savant."""
+
+[[artistes]]
+nom = "Yémen, dynastie rasoulide"
+vie = "Yémen (Taʿizz, Zabid, Aden), 1229–1454"
+biographie = """
+Les Rasoulides sont une famille d'origine turkmène, selon la plupart des historiens, \
+bien qu'elle ait revendiqué une ascendance arabe. Ils arrivent au Yémen au service des \
+Ayyoubides, la dynastie de Saladin, qui avait conquis le pays en 1174. En 1229, leur \
+gouverneur, Nur al-Din ʿUmar ibn ʿAli ibn Rasul, prend le pouvoir à son compte et \
+fonde un sultanat qui durera jusqu'en 1454. Depuis leurs capitales de Taʿizz et de \
+Zabid, les sultans tiennent le port d'Aden, carrefour du commerce entre l'Inde, \
+l'Afrique orientale, l'Égypte et la Méditerranée. Cette richesse finance des mosquées, \
+des madrasas et une cour savante. Plusieurs sultans écrivent eux-mêmes : al-Muzaffar \
+Yusuf, qui règne de 1250 à 1295, compose notamment un traité des remèdes ; son fils \
+al-Ashraf ʿUmar, l'auteur de l'astrolabe exposé ici, écrit sur les étoiles et les \
+instruments. Les Rasoulides commandent aussi en Égypte et en Syrie des verres émaillés \
+et des cuivres incrustés à leur emblème, une rose à cinq pétales."""
+style = """
+La cour rasoulide fut l'un des grands foyers de science et d'art du monde islamique \
+médiéval. Astronomes, médecins et agronomes y travaillaient sous la protection de \
+sultans eux-mêmes savants. Les objets de cour, instruments de laiton gravés et \
+incrustés, verres émaillés, bassins et chandeliers, portent souvent des inscriptions \
+au nom du sultan et la rose à cinq pétales de la dynastie, et allient la précision \
+technique à un décor calligraphique et végétal raffiné."""
+
+[[artistes]]
+nom = "Abraham Ortelius"
+vie = "Anvers, 14 avril 1527 – Anvers, 28 juin 1598"
+biographie = """
+Né à Anvers dans une famille venue d'Augsbourg, Abraham Ortelius perd tôt son père. En \
+1547, il est inscrit à la guilde de Saint-Luc comme enlumineur de cartes : il colorie \
+à la main des cartes imprimées, qu'il vend avec des livres, des estampes et des \
+antiquités. Ses voyages d'affaires, aux foires de Francfort, en France, en Italie et \
+en Angleterre, lui permettent de rassembler les meilleures cartes de son temps et de \
+se lier avec les savants, notamment Gérard Mercator, qui devient son ami. Il a l'idée \
+de réunir des cartes de même format en un seul volume : le Theatrum Orbis Terrarum \
+paraît en 1570 et fait sa fortune. En 1575, il reçoit le titre de géographe du roi \
+Philippe II d'Espagne. Passionné d'Antiquité, il publie aussi des cartes historiques, \
+des recueils d'images antiques et un dictionnaire des noms de lieux anciens, qu'il ne \
+cesse d'enrichir. Il entretient une vaste correspondance avec les humanistes de toute \
+l'Europe. Il meurt à Anvers en 1598, sans avoir jamais cessé d'augmenter son atlas."""
+style = """
+Ortelius n'était pas un cartographe de terrain mais un éditeur, un compilateur \
+critique et un homme de goût. Il choisit pour chaque région la meilleure carte \
+disponible, la fait redessiner dans un format commun et cite ses sources, une pratique \
+nouvelle. Ses cartes, gravées avec netteté et ornées de cartouches et de nuages dans \
+le goût de la Renaissance flamande, joignent l'information et la beauté. Son atlas a \
+servi de modèle à la cartographie européenne jusqu'au XVIIᵉ siècle."""
+
+[[artistes]]
+nom = "Robert Hooke"
+vie = "Freshwater (île de Wight), 18 juillet 1635 – Londres, 3 mars 1703"
+biographie = """
+Fils d'un pasteur de l'île de Wight, Robert Hooke montre très tôt un talent pour la \
+mécanique et le dessin ; à la mort de son père, il est brièvement placé, dit-on, chez \
+le peintre Peter Lely à Londres, puis entre à l'école de Westminster et à l'université \
+d'Oxford. Il y devient l'assistant du chimiste Robert Boyle, pour qui il construit une \
+pompe à air. En 1662, la toute jeune Royal Society le nomme curateur des expériences : \
+il doit en présenter de nouvelles à chaque séance. Il publie Micrographia en 1665 et \
+devient professeur de géométrie au Gresham College de Londres. Après le grand incendie \
+de 1666, il est l'un des inspecteurs chargés de la reconstruction de la ville et \
+travaille avec l'architecte Christopher Wren, notamment au Monument qui commémore \
+l'incendie. On lui doit la loi de l'élasticité qui porte son nom et des travaux sur la \
+lumière, les fossiles, les montres et la gravitation, qui l'opposèrent durement à \
+Isaac Newton. Il meurt à Londres en 1703. Aucun portrait authentifié de lui n'est \
+connu."""
+style = """
+Hooke n'était pas un artiste de métier, mais un dessinateur exceptionnel. Ses \
+planches, d'une précision et d'une ampleur jamais vues, montrent l'invisible avec les \
+moyens de la gravure d'art : grand format, modelé rigoureux, lumière maîtrisée. \
+Micrographia a fondé l'illustration scientifique au microscope, et ses images, la puce \
+et le pou en tête, n'ont cessé d'être copiées et reproduites jusqu'à aujourd'hui."""
