@@ -16,6 +16,7 @@ use crate::artworks::{Exhibition, Side, Work};
 use crate::editor::{self, ArtEdit, SculptEdit};
 use crate::gallery::{Mode, SharedControl};
 use crate::museum;
+use crate::texts::SharedTexts;
 use crate::tour::Focus;
 
 /// Fait télécharger un texte (le nom du fichier, puis son contenu).
@@ -51,6 +52,8 @@ pub struct MuseumUi {
     reading: bool,
     /// La présentation du bâtiment est-elle ouverte ?
     building: bool,
+    /// Les textes longs (notices, biographies, bâtiment, fichier source), téléchargés.
+    texts: SharedTexts,
 }
 
 impl MuseumUi {
@@ -59,6 +62,7 @@ impl MuseumUi {
         control: SharedControl,
         actions: Actions,
         busy: Rc<Cell<bool>>,
+        texts: SharedTexts,
     ) -> MuseumUi {
         let [r, g, b] = ex.accent;
         MuseumUi {
@@ -74,6 +78,7 @@ impl MuseumUi {
             notice: None,
             reading: false,
             building: false,
+            texts,
         }
     }
 
@@ -266,7 +271,8 @@ impl MuseumUi {
             Work::Sculpture(s) => (s.year, s.technique, s.collection, s.note),
         };
         let artist = work.artist(ex);
-        let notice = work.notice();
+        let themes = work.notice().themes;
+        let texts = self.texts.clone();
         let screen = ctx.content_rect();
         let width = (screen.width() - 24.0).min(520.0);
         let mut open = true;
@@ -313,10 +319,10 @@ impl MuseumUi {
                         }
                         ui.add_space(6.0);
                         ui.label(text(note).italics());
-                        if !notice.themes.is_empty() {
+                        if !themes.is_empty() {
                             ui.add_space(4.0);
                             ui.horizontal_wrapped(|ui| {
-                                for t in notice.themes {
+                                for t in themes {
                                     egui::Frame::new()
                                         .fill(self.accent.gamma_multiply(0.55))
                                         .corner_radius(CornerRadius::same(10))
@@ -329,6 +335,15 @@ impl MuseumUi {
                                 }
                             });
                         }
+                        let texts = texts.borrow();
+                        let Some(texts) = texts.as_ref() else {
+                            ui.add_space(10.0);
+                            ui.spinner();
+                            ui.label(text("Chargement de la notice…"));
+                            return;
+                        };
+                        let empty = crate::texts::WorkText::default();
+                        let notice = texts.works.get(work.slug()).unwrap_or(&empty);
                         for (title, body) in notice.sections() {
                             ui.add_space(10.0);
                             ui.label(heading(title));
@@ -337,7 +352,7 @@ impl MuseumUi {
                         if !notice.details.is_empty() {
                             ui.add_space(10.0);
                             ui.label(heading("À regarder de près"));
-                            for d in notice.details {
+                            for d in &notice.details {
                                 ui.label(text(&format!("•  {d}")));
                             }
                         }
@@ -349,29 +364,26 @@ impl MuseumUi {
                                 .inner_margin(egui::Margin::same(8))
                                 .show(ui, |ui| {
                                     ui.label(heading("Le saviez-vous ?"));
-                                    ui.label(text(notice.anecdote));
+                                    ui.label(text(&notice.anecdote));
                                 });
                         }
-                        if let Some(about) = ex.artist_named(artist) {
+                        if let Some(about) = texts.artists.get(artist) {
                             ui.add_space(10.0);
-                            egui::CollapsingHeader::new(heading(&format!(
-                                "L'artiste : {}",
-                                about.name
-                            )))
-                            .id_salt(("artiste", about.name))
-                            .show(ui, |ui| {
-                                ui.label(
-                                    RichText::new(about.life)
-                                        .small()
-                                        .color(Color32::from_gray(180)),
-                                );
-                                ui.label(text(about.biography));
-                                if !about.style.is_empty() {
-                                    ui.add_space(6.0);
-                                    ui.label(heading("Sa manière"));
-                                    ui.label(text(about.style));
-                                }
-                            });
+                            egui::CollapsingHeader::new(heading(&format!("L'artiste : {artist}")))
+                                .id_salt(("artiste", artist))
+                                .show(ui, |ui| {
+                                    ui.label(
+                                        RichText::new(&about.life)
+                                            .small()
+                                            .color(Color32::from_gray(180)),
+                                    );
+                                    ui.label(text(&about.biography));
+                                    if !about.style.is_empty() {
+                                        ui.add_space(6.0);
+                                        ui.label(heading("Sa manière"));
+                                        ui.label(text(&about.style));
+                                    }
+                                });
                         }
                         ui.add_space(10.0);
                         if ui.button("Sa page sur le site ↗").clicked() {
@@ -442,14 +454,21 @@ impl MuseumUi {
                                             .color(Color32::from_gray(200)),
                                     );
                                 }
-                                if !m.presentation.is_empty() {
-                                    ui.add_space(8.0);
-                                    ui.label(text(m.presentation));
-                                }
-                                if !m.here.is_empty() {
-                                    ui.add_space(10.0);
-                                    ui.label(heading("Dans ARTEON"));
-                                    ui.label(text(m.here));
+                                match self.texts.borrow().as_ref() {
+                                    Some(t) => {
+                                        if !t.presentation.is_empty() {
+                                            ui.add_space(8.0);
+                                            ui.label(text(&t.presentation));
+                                        }
+                                        if !t.here.is_empty() {
+                                            ui.add_space(10.0);
+                                            ui.label(heading("Dans ARTEON"));
+                                            ui.label(text(&t.here));
+                                        }
+                                    }
+                                    None => {
+                                        ui.spinner();
+                                    }
                                 }
                             }
                             None => {
@@ -874,20 +893,26 @@ impl MuseumUi {
         ui.add_enabled_ui(count > 0, |ui| {
             ui.horizontal_wrapped(|ui| {
                 let file = format!("{}.toml", ex.slug);
+                let source = self.texts.borrow().as_ref().map(|t| t.source.clone());
+                let Some(source) = source.filter(|s| !s.is_empty()) else {
+                    ui.spinner();
+                    ui.label("Le fichier de l'exposition se charge…");
+                    return;
+                };
                 if ui.button("⬇ Télécharger").clicked() {
-                    let text = editor::patched_toml(ex, &self.control.borrow().edits);
+                    let text = editor::patched_toml(&source, ex, &self.control.borrow().edits);
                     (self.actions.download)(&file, &text);
                     self.notice = Some(format!(
                         "{file} téléchargé : remplacez expositions/{file} dans le dépôt."
                     ));
                 }
                 if ui.button("📋 Copier").clicked() {
-                    let text = editor::patched_toml(ex, &self.control.borrow().edits);
+                    let text = editor::patched_toml(&source, ex, &self.control.borrow().edits);
                     (self.actions.copy)(&text);
                     self.notice = Some("Copié : collez-le dans l'éditeur de GitHub.".to_owned());
                 }
                 if ui.button("Publier sur GitHub ↗").clicked() {
-                    let text = editor::patched_toml(ex, &self.control.borrow().edits);
+                    let text = editor::patched_toml(&source, ex, &self.control.borrow().edits);
                     (self.actions.copy)(&text);
                     (self.actions.open)(&format!("{REPOSITORY}/edit/master/expositions/{file}"));
                     self.notice = Some(

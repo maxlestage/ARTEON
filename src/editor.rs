@@ -221,8 +221,7 @@ fn rewrite_block(block: &str, keys: &[&str], lines: &[String]) -> String {
 }
 
 /// Le fichier `.toml` de l'exposition, avec les places modifiées.
-pub fn patched_toml(ex: &Exhibition, edits: &Edits) -> String {
-    let source = ex.source;
+pub fn patched_toml(source: &str, ex: &Exhibition, edits: &Edits) -> String {
     // Découpe en blocs, chacun commençant à une ligne `[[…]]` ou `[…]`.
     let mut starts: Vec<usize> = vec![0];
     let mut offset = 0;
@@ -291,7 +290,7 @@ mod tests {
     fn without_edits_the_file_is_unchanged() {
         for ex in EXHIBITIONS {
             assert_eq!(
-                patched_toml(ex, &Edits::default()),
+                patched_toml(ex.source, ex, &Edits::default()),
                 ex.source,
                 "{}",
                 ex.slug
@@ -327,7 +326,7 @@ mod tests {
                 plinth: 0.5,
             },
         );
-        let text = patched_toml(ex, &edits);
+        let text = patched_toml(ex.source, ex, &edits);
         let doc: toml::Value = toml::from_str(&text).expect("un fichier valide");
         let art = &doc["oeuvres"][0];
         assert_eq!(art["titre"].as_str(), Some(ex.artworks[0].title));
