@@ -69,6 +69,9 @@ struct Exposition {
     accroche: String,
     introduction: String,
     vitrine: Option<String>,
+    /// Le style ou le mouvement (« Renaissance italienne »), pour l'accueil.
+    #[serde(default)]
+    mouvement: String,
 }
 
 fn last() -> i64 {
@@ -846,11 +849,12 @@ fn exhibition(
     let [ar, ag, ab] = hex(name, &e.couleur, "couleur");
     let _ = writeln!(
         out,
-        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        data_size: {},\n        rooms: &[",
+        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        data_size: {},\n        rooms: &[",
         e.nom_court.trim(),
         e.titre.trim(),
         e.artiste.trim(),
         e.dates.trim(),
+        e.mouvement.trim(),
         e.accroche.trim(),
         e.introduction.trim(),
         showcase,

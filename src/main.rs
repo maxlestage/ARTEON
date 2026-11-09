@@ -50,8 +50,28 @@ fn exhibitions_menu(current: &str) -> Element {
         })
         .child(ul().children(EXHIBITIONS.iter().map(|ex| {
             li().child(nav_link(format!("/{}", ex.slug), ex.short_name, current))
-                .child(span().class("nav-artist").text(ex.artist_dates))
+                .child(span().class("nav-artist").text(movement_or_dates(ex)))
         })))
+}
+
+/// Le style de l'exposition, ou ses dates s'il n'est pas donné.
+fn movement_or_dates(ex: &Exhibition) -> &'static str {
+    if ex.movement.is_empty() {
+        ex.artist_dates
+    } else {
+        ex.movement
+    }
+}
+
+/// Le nombre d'artistes différents exposés dans tout le musée.
+fn artist_count() -> usize {
+    let mut names: Vec<&str> = EXHIBITIONS
+        .iter()
+        .flat_map(|ex| ex.works().map(move |w| w.artist(ex)))
+        .collect();
+    names.sort_unstable();
+    names.dedup();
+    names.len()
 }
 
 /// Le logo : un petit soleil sur un ciel bleu, puis le nom.
@@ -110,15 +130,10 @@ fn layout(
 
 /// Les artistes exposés, avec leurs dates : « Vincent van Gogh (1853–1890) et … ».
 fn artists_sentence() -> String {
-    let names: Vec<String> = EXHIBITIONS
-        .iter()
-        .map(|e| format!("{} ({})", e.artist, e.artist_dates))
-        .collect();
-    match names.split_last() {
-        Some((last, rest)) if !rest.is_empty() => format!("{} et {last}", rest.join(", ")),
-        Some((last, _)) => last.clone(),
-        None => String::new(),
-    }
+    format!(
+        "{} artistes, morts il y a plus de 70 ans",
+        artist_count()
+    )
 }
 
 /// Le grand pied de page : une bande de couleurs animée, un défilé des œuvres, trois
@@ -128,8 +143,9 @@ fn site_footer() -> Element {
     let marquee_items = || {
         EXHIBITIONS.iter().flat_map(|ex| {
             ex.artworks.iter().map(move |art| {
-                span()
+                a().href(work_url(ex, art.slug))
                     .class("marquee-item")
+                    .attr("tabindex", "-1")
                     .child(strong().text(art.title))
                     .child(span().text(format!(
                         " · {}, {}",
@@ -151,7 +167,17 @@ fn site_footer() -> Element {
             div()
                 .class("marquee")
                 .attr("aria-label", "Les œuvres exposées")
-                .child(div().class("marquee-track").children(marquee_items()).children(marquee_items())),
+                .child(
+                    div()
+                        .class("marquee-track")
+                        // Une vitesse de lecture : environ 6 secondes par œuvre, quel que soit leur nombre.
+                        .style(format!(
+                            "animation-duration:{}s",
+                            6 * EXHIBITIONS.iter().map(|e| e.artworks.len()).sum::<usize>()
+                        ))
+                        .children(marquee_items())
+                        .children(marquee_items()),
+                ),
         )
         .child(
             div()
@@ -167,13 +193,17 @@ fn site_footer() -> Element {
                         .child(a().class("button footer-cta").href("/#expositions").text("Voir les expositions →")),
                 )
                 .child(
-                    div().class("footer-col").child(h3().text("Expositions")).child(ul().children(EXHIBITIONS.iter().map(
-                        |ex| li().child(a().href(format!("/{}", ex.slug)).text(ex.short_name)),
-                    ))),
-                )
-                .child(
-                    div().class("footer-col").child(h3().text("Visiter")).child(ul().children(EXHIBITIONS.iter().map(
-                        |ex| li().child(a().href(format!("/{}/galerie", ex.slug)).text(format!("Galerie 3D · {}", ex.short_name))),
+                    div().class("footer-col footer-wide").child(h3().text("Expositions")).child(ul().children(EXHIBITIONS.iter().map(
+                        |ex| {
+                            li().child(a().href(format!("/{}", ex.slug)).text(ex.short_name))
+                                .child(span().text(" · "))
+                                .child(
+                                    a().href(format!("/{}/galerie", ex.slug))
+                                        .class("footer-3d")
+                                        .attr("aria-label", format!("Visite 3D · {}", ex.short_name))
+                                        .text("3D"),
+                                )
+                        },
                     ))),
                 )
                 .child(
@@ -384,7 +414,10 @@ fn features() -> Element {
 // ─── L'accueil du musée ──────────────────────────────────────────────────────
 
 async fn home(_req: Request) -> Page {
-    let works: usize = EXHIBITIONS.iter().map(|e| e.artworks.len()).sum();
+    let works: usize = EXHIBITIONS
+        .iter()
+        .map(|e| e.artworks.len() + e.sculptures.len())
+        .sum();
     let rooms: usize = EXHIBITIONS.iter().map(|e| e.rooms.len()).sum();
     let covers: Vec<(&Exhibition, &Artwork)> = EXHIBITIONS
         .iter()
@@ -403,11 +436,12 @@ async fn home(_req: Request) -> Page {
                         .class("hero-text")
                         .child(p().class("kicker reveal").text("Musée virtuel · 100 % Rust"))
                         .child(animated_title("ARTEON"))
-                        .child(p().class("hero-sub reveal").text("Les grands peintres, en 3D, dans votre navigateur"))
+                        .child(p().class("hero-sub reveal").text("Toute l'histoire de l'art, en 3D, dans votre navigateur"))
                         .child(p().class("lead reveal").text(
-                            "ARTEON est un musée qui n'existe pas. Chaque exposition est consacrée à un peintre : \
-                             ses toiles sont accrochées dans des salles reliées par des couloirs, et une caméra \
-                             vous fait la visite guidée, de tableau en tableau.",
+                            "ARTEON est un musée qui n'existe pas. Du Moyen Âge à l'abstraction, de Florence à Edo, \
+                             chaque exposition raconte un style dans un bâtiment inspiré d'un vrai musée. On s'y \
+                             promène librement ou en visite guidée, et chaque œuvre a sa notice complète. Toutes \
+                             sont dans le domaine public.",
                         ))
                         .child(
                             div()
@@ -430,19 +464,29 @@ async fn home(_req: Request) -> Page {
             section()
                 .class("stats")
                 .child(div().class("stat reveal").child(strong().text(EXHIBITIONS.len().to_string())).child(span().text("expositions")))
-                .child(div().class("stat reveal").child(strong().text(works.to_string())).child(span().text("toiles du domaine public")))
-                .child(div().class("stat reveal").child(strong().text(rooms.to_string())).child(span().text("salles en 3D")))
-                .child(div().class("stat reveal").child(strong().text("0")).child(span().text("ligne de JavaScript écrite à la main"))),
+                .child(div().class("stat reveal").child(strong().text(works.to_string())).child(span().text("œuvres du domaine public")))
+                .child(div().class("stat reveal").child(strong().text(artist_count().to_string())).child(span().text("artistes")))
+                .child(div().class("stat reveal").child(strong().text(rooms.to_string())).child(span().text("salles en 3D"))),
         )
         .child(
             section()
                 .class("exhibitions")
                 .id("expositions")
-                .child(h2().class("section-title").text("Les expositions"))
+                .child(h2().class("section-title").text("Toute l'histoire de l'art"))
+                .child(p().class("lead").text(
+                    "Les expositions, dans l'ordre de l'histoire : chacune est un style, un musée et ses artistes.",
+                ))
+                .child(nav().class("styles").attr("aria-label", "Les styles").children(EXHIBITIONS.iter().map(|ex| {
+                    a().class("chip")
+                        .href(format!("#{}", ex.slug))
+                        .style(format!("--accent:{}", rgb(ex.accent)))
+                        .text(movement_or_dates(ex))
+                })))
                 .child(div().class("ex-grid").children(EXHIBITIONS.iter().enumerate().map(|(i, ex)| {
                     let card = article()
                         .class("ex-card reveal")
-                        .style(format!("--accent:{};animation-delay:{}ms", rgb(ex.accent), 120 * i));
+                        .id(ex.slug)
+                        .style(format!("--accent:{};animation-delay:{}ms", rgb(ex.accent), 40 * (i % 6)));
                     let card = match ex.cover() {
                         Some(art) => card.child(a().href(format!("/{}", ex.slug)).class("ex-cover").child(picture(ex, art, true))),
                         None => card,
@@ -450,9 +494,10 @@ async fn home(_req: Request) -> Page {
                     card.child(
                         div()
                             .class("ex-body")
-                            .child(p().class("kicker").text(format!("{} · {}", ex.artist, ex.artist_dates)))
+                            .child(p().class("kicker").text(format!("{} · {}", movement_or_dates(ex), ex.artist_dates)))
                             .child(h3().child(a().href(format!("/{}", ex.slug)).text(ex.title)))
-                            .child(p().class("muted").text(ex.introduction))
+                            .child(p().class("ex-artists").text(ex.artist))
+                            .child(p().class("muted ex-intro").text(ex.introduction))
                             .child(p().class("tag").text(counts(ex)))
                             .child(
                                 div()
@@ -466,7 +511,7 @@ async fn home(_req: Request) -> Page {
         .child(features());
     layout(
         "Un musée virtuel en 3D",
-        "ARTEON, un musée virtuel en 3D écrit en Rust : des expositions consacrées aux grands peintres du domaine public, à visiter dans le navigateur.",
+        "ARTEON, un musée virtuel en 3D écrit en Rust : toute l'histoire de l'art du domaine public, du Moyen Âge à l'abstraction, à visiter dans le navigateur.",
         "/",
         None,
         content,
@@ -634,13 +679,20 @@ fn counts(ex: &Exhibition) -> String {
 
 /// Les autres expositions du musée, en bas de la présentation d'une exposition.
 fn others(ex: &Exhibition) -> Element {
-    let others: Vec<&Exhibition> = EXHIBITIONS.iter().filter(|e| e.slug != ex.slug).collect();
+    // Les voisines dans l'histoire de l'art : trois avant, trois après.
+    let here = EXHIBITIONS.iter().position(|e| e.slug == ex.slug).unwrap_or(0);
+    let others: Vec<&Exhibition> = EXHIBITIONS
+        .iter()
+        .enumerate()
+        .filter(|(i, e)| e.slug != ex.slug && i.abs_diff(here) <= 3)
+        .map(|(_, e)| e)
+        .collect();
     if others.is_empty() {
         return features();
     }
     section()
         .class("others")
-        .child(h2().class("section-title").text("Les autres expositions"))
+        .child(h2().class("section-title").text("Avant, après"))
         .child(
             div()
                 .class("others-grid")
