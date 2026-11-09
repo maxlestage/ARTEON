@@ -1,0 +1,1009 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « MANUSCRITS ET TAPISSERIES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/manuscrits-textiles/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /manuscrits-textiles.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 12
+nom_court = "Manuscrits et tapisseries"
+mouvement = "Manuscrits enluminés et tapisseries"
+cadre = "estampe"
+couleur = "#6a3b5c"
+titre = "Manuscrits et tapisseries, le Moyen Âge en pages et en fils"
+artiste = "Moines d'Iona, Eadfrith, Jean de Bruges, Bourdichon, Cresques…"
+dates = "VIIIᵉ – XVIᵉ siècle"
+accroche = "Exposition virtuelle · Bibliothèque nationale de France, site Richelieu, Paris"
+introduction = """
+Avant l'imprimerie, les livres se copiaient et se peignaient à la main, page à page, \
+et les grandes images se tissaient ou se brodaient pour habiller les murs. Cette \
+exposition réunit dix de ces trésors : les évangiles d'Irlande et de Northumbrie, une \
+Apocalypse romane, une Bible géante, un calendrier aztèque, une carte du monde de \
+1375, un livre d'heures royal, la broderie de Bayeux et deux des plus célèbres \
+tentures du Moyen Âge. Le bâtiment s'inspire du site Richelieu de la Bibliothèque \
+nationale de France, à Paris : les manuscrits y sont présentés dans une salle carrée \
+qui évoque la salle Labrouste et dans une haute salle qui rappelle la salle Ovale, les \
+tapisseries dans une longue galerie inspirée de la galerie Mazarine."""
+vitrine = "kells-chi-rho.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Bibliothèque nationale de France, site Richelieu"
+ville = "Paris, France"
+architecte = "François Mansart, Henri Labrouste, Jean-Louis Pascal"
+construction = "XVIIᵉ – XXᵉ siècle"
+presentation = """
+Au cœur de Paris, entre le Palais-Royal et la Bourse, le quadrilatère Richelieu \
+rassemble des bâtiments élevés sur près de quatre siècles. Dans les années 1640, le \
+cardinal Mazarin y installe son palais et ses collections ; François Mansart lui \
+construit la galerie Mazarine, dont Giovanni Francesco Romanelli peint le plafond. À \
+partir de 1721, la Bibliothèque du roi s'établit dans ces murs. Au XIXᵉ siècle, Henri \
+Labrouste y élève la grande salle de lecture des imprimés, ouverte en 1868 : seize \
+fines colonnes de fonte portent neuf coupoles percées chacune d'un oculus. Jean-Louis \
+Pascal entreprend ensuite la salle Ovale, achevée par Alfred Recoura et ouverte dans \
+les années 1930 sous une immense verrière. Après le départ des livres imprimés vers le \
+site François-Mitterrand, à la fin des années 1990, Richelieu garde les manuscrits, \
+les estampes, les cartes, les monnaies et les médailles. Rénové par Bruno Gaudin et \
+Virginie Brégal, il a rouvert en 2022 avec un musée et une salle Ovale ouverte à tous."""
+ici = """
+Le bâtiment d'ARTEON réunit trois espaces célèbres de Richelieu autour d'une salle \
+centrale. On entre par le sud dans le vestibule, aux murs crème, puis dans la salle \
+Labrouste, carrée, de dix-huit mètres de côté et dix de haut, aux murs ivoire, où sont \
+présentés les évangiles insulaires, l'Apocalypse de Saint-Sever et la Bible de \
+Souvigny. À l'ouest s'étire la galerie Mazarine, longue de trente mètres, réservée à \
+la broderie de Bayeux et aux tapisseries. À l'est, la salle Ovale, rectangulaire ici \
+mais haute de quatorze mètres, réunit le livre d'heures, le codex aztèque et l'Atlas \
+catalan."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du site Richelieu de la Bibliothèque nationale de France, à Paris : un
+# vestibule au sud ; au centre, une salle carrée qui évoque la salle Labrouste
+# (Henri Labrouste, 1868) ; à l'ouest, une longue galerie inspirée de la galerie
+# Mazarine (François Mansart, années 1640) pour les tapisseries ; à l'est, une
+# haute salle qui rappelle la salle Ovale (Jean-Louis Pascal, ouverte dans les
+# années 1930). x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, comme celle du quadrilatère Richelieu, avant les grandes salles de lecture."
+murs = "#e8e0cf"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La salle Labrouste"
+theme = "Les grands livres des moines : évangiles d'Irlande et de Northumbrie, Apocalypse de Saint-Sever, Bible de Souvigny."
+murs = "#ebe2cb"
+x = 0
+z = -13
+largeur = 18
+profondeur = 18
+hauteur = 10
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "La galerie Mazarine"
+theme = "Les images de fil : la comète de la broderie de Bayeux, l'Apocalypse d'Angers et la Licorne captive."
+murs = "#e4d5bb"
+x = -14
+z = -13
+largeur = 10
+profondeur = 30
+hauteur = 8
+
+[[salles]]
+nom = "La salle Ovale"
+theme = "Prier, compter les jours, dessiner le monde : les Heures d'Anne de Bretagne, le Codex Borbonicus et l'Atlas catalan."
+murs = "#efe7d5"
+x = 17
+z = -13
+largeur = 16
+profondeur = 18
+hauteur = 14
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Livre de Kells : le monogramme du Christ"
+artiste = "Moines d'Iona et de Kells"
+annee = "vers 800"
+image = "kells-chi-rho.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:KellsFol034rChiRhoMonogram.jpg"
+technique = "Encres et pigments sur vélin, folio 34 recto ; feuillet d'environ 33 × 25 cm"
+collection = "Trinity College, Dublin"
+note = "La page la plus célèbre du Livre de Kells : les initiales grecques du nom du Christ envahissent tout le feuillet, qui mesure environ 33 cm de haut."
+description = """
+La page est presque entièrement occupée par trois lettres géantes. Un immense X, le \
+chi grec, part du coin supérieur gauche, ses branches courbées comme des lames. Sous \
+lui se dresse le P, le rho, et un I plus discret, à peine reconnaissable : ensemble, \
+ils forment XPI, l'abréviation du nom du Christ. Chaque centimètre est couvert de \
+spirales, de tresses, de disques et d'entrelacs, en jaune, pourpre, vert et rouge. En \
+bas à droite, en lettres plus petites, on lit h generatio : la phrase de l'Évangile \
+reprend. Dans les marges et entre les lettres se cachent des anges, une tête d'homme \
+au bout de la boucle du rho, des chats, des souris et une loutre qui tient un poisson \
+dans sa gueule."""
+evocation = """
+La page marque l'endroit où l'Évangile de Matthieu, après la longue généalogie de \
+Jésus, commence le récit de sa naissance : « Or voici quelle fut la naissance du \
+Christ ». Pour les moines, c'est l'instant où Dieu entre dans l'histoire des hommes, \
+et ils lui consacrent une page entière, comme une icône faite de lettres. Les animaux \
+glissés dans le décor ont reçu plusieurs lectures : la loutre et son poisson, ancien \
+symbole du Christ, les souris qui se disputent une hostie sous le regard des chats ont \
+été vues comme des images de l'eucharistie, mais aussi comme des clins d'œil à la vie \
+quotidienne du monastère. La page dit enfin la fierté d'un art qui fond l'héritage \
+celte, l'ornement germanique et la culture latine de l'Église."""
+histoire = """
+Le Livre de Kells contient les quatre Évangiles en latin, précédés de tables et de \
+pages peintes. On pense qu'il a été commencé vers 800 au monastère de l'île d'Iona, en \
+Écosse, fondé par saint Colomba, puis achevé ou du moins conservé à Kells, en Irlande, \
+où une partie des moines se replie après les raids vikings du début du IXᵉ siècle. Les \
+annales irlandaises rapportent qu'en 1007 le grand évangéliaire de Colomba fut volé \
+dans l'église de Kells, puis retrouvé sous une motte de terre, privé de sa couverture \
+d'or. Au XVIIᵉ siècle, l'évêque de Meath le donne au Trinity College de Dublin, où il \
+est toujours conservé. Relié aujourd'hui en quatre volumes, il est exposé dans la \
+bibliothèque du collège, où l'on change régulièrement les pages présentées."""
+facture = """
+Le texte et le décor sont peints sur du vélin, une peau de veau finement préparée. Les \
+couleurs viennent de minéraux et de plantes : jaune d'orpiment, rouges, vert de \
+cuivre, pourpres et bleus d'origine végétale. Il n'y a presque pas d'or : l'éclat naît \
+du jaune et de la densité des motifs. Les spirales et les entrelacs ont été construits \
+au compas et à la règle, puis remplis à main levée avec une telle précision que \
+certains détails ne se voient qu'à la loupe. Les spécialistes distinguent plusieurs \
+mains d'enlumineurs dans le manuscrit."""
+details = [
+  "La tête d'homme qui termine la boucle du rho, au centre de la page.",
+  "Les lettres h generatio, en bas à droite : le texte reprend après le monogramme.",
+  "Au pied des lettres, deux chats qui guettent des souris tenant une hostie ronde.",
+  "La loutre qui tient un poisson dans sa gueule, près du bas de la page.",
+  "Les anges aux ailes repliées, le long du bord gauche du grand X.",
+]
+themes = ["évangile", "lettre", "entrelacs", "art celte", "christ"]
+anecdote = """
+En 1007, le manuscrit fut volé de nuit dans l'église de Kells. Selon les annales \
+irlandaises, on le retrouva quelques mois plus tard enfoui sous une motte de gazon : \
+les voleurs n'avaient voulu que sa couverture d'or et de pierreries, qui n'a jamais \
+reparu."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Évangiles de Lindisfarne : la page tapis de saint Matthieu"
+artiste = "Eadfrith de Lindisfarne"
+annee = "vers 715–720"
+image = "lindisfarne-page-tapis.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:F26v.jpg"
+technique = "Encres et pigments sur vélin, folio 26 verso"
+collection = "British Library, Londres (Cotton MS Nero D IV)"
+note = "Une croix noyée dans un tapis d'entrelacs ouvre l'Évangile de Matthieu, dans un manuscrit peint en Northumbrie au début du VIIIᵉ siècle."
+description = """
+Aucune figure, aucun mot : la page entière est un tapis de motifs. Au centre, une \
+grande croix aux bras terminés en forme de cloche se détache, cernée de rouge, sur un \
+fond grouillant de lignes. De petits disques clairs ponctuent son centre et ses bras. \
+Dans les compartiments qui l'entourent, des rubans bleus, roses, verts et dorés \
+s'enroulent sans fin ; en les suivant, on découvre qu'ils sont des corps d'oiseaux et \
+de quadrupèdes étirés, qui s'entremêlent et se mordent. Un cadre à redents, vert et \
+or, entoure l'ensemble, et de petits ornements noués en dépassent au milieu de chaque \
+côté. Le parchemin, jauni sur les bords, porte les traces de treize siècles de \
+lecture."""
+evocation = """
+Les pages tapis, propres aux manuscrits d'Irlande et de Grande-Bretagne, précèdent \
+chacun des Évangiles comme un seuil. Avant d'entrer dans le texte sacré, le lecteur \
+contemple une croix cachée dans un labyrinthe et doit chercher pour la voir : on y a \
+vu une forme de méditation, la page préparant l'esprit à la lecture. Leur nom moderne \
+vient de leur ressemblance avec les tapis d'Orient, et certains historiens ont \
+rapproché ces motifs des tissus précieux venus de Méditerranée. On peut aussi y lire \
+une image du monde : les animaux enchevêtrés, hérités de l'orfèvrerie anglo-saxonne, \
+sont pris dans l'ordre de la croix, comme la nature sauvage dans le dessein de Dieu."""
+histoire = """
+Le manuscrit a été réalisé au monastère de Lindisfarne, sur une île de la côte de \
+Northumbrie, en l'honneur de saint Cuthbert, mort en 687, dont les reliques y étaient \
+vénérées. Au Xᵉ siècle, le prêtre Aldred ajoute une note à la fin du livre : selon \
+lui, Eadfrith, évêque de Lindisfarne, l'a écrit, Æthelwald l'a relié et l'ermite \
+Billfrith l'a orné de gemmes. Aldred glisse aussi entre les lignes latines une \
+traduction en vieil anglais, la plus ancienne version des Évangiles en langue anglaise \
+qui nous soit parvenue. Après les raids vikings, les moines quittent l'île avec le \
+corps de Cuthbert et le livre, qui gagne Durham. Il entre plus tard dans la collection \
+de Sir Robert Cotton, l'un des fonds fondateurs du British Museum, et appartient \
+aujourd'hui à la British Library."""
+facture = """
+Eadfrith semble avoir travaillé presque seul, ce qui explique l'unité du décor. Les \
+motifs ont été préparés avec soin : au revers de certains feuillets, on distingue des \
+tracés préparatoires, des grilles et les petits trous laissés par la pointe du compas. \
+Les couleurs, d'une grande variété, sont tirées de minéraux et de plantes. L'entrelacs \
+obéit à une règle stricte : chaque ruban passe alternativement dessus et dessous, sans \
+jamais rompre le rythme. Le cadre à redents et les ornements qui en dépassent \
+rappellent les plaques d'orfèvrerie cloisonnée."""
+details = [
+  "Les petits disques clairs qui ponctuent la croix, comme des pierres serties.",
+  "Les bras de la croix, élargis à leurs extrémités en forme de cloche.",
+  "Les rubans du bas de la page, qui deviennent des corps d'animaux quand on suit leurs boucles.",
+  "Les quatre ornements noués qui débordent du cadre, au milieu de chaque côté.",
+]
+themes = ["croix", "entrelacs", "évangile", "méditation", "art insulaire"]
+anecdote = """
+Au début du XIIᵉ siècle, le chroniqueur Syméon de Durham raconte qu'un précieux \
+évangéliaire, emporté par les moines dans leur fuite, tomba à la mer et fut retrouvé \
+intact sur le rivage à marée basse. On l'identifie souvent aux Évangiles de \
+Lindisfarne, mais le récit tient de la légende."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Apocalypse de Saint-Sever : les quatre cavaliers"
+artiste = "Scriptorium de Saint-Sever"
+annee = "milieu du XIᵉ siècle"
+image = "beatus-quatre-cavaliers.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:ApocalypseStSeverFol108v109r4Horsemen.jpg"
+technique = "Peinture sur parchemin, double page (folios 108 verso et 109 recto) ; feuillet d'environ 36 × 28 cm"
+collection = "Bibliothèque nationale de France, Paris (Latin 8878)"
+note = "Les quatre cavaliers de l'Apocalypse galopent sur des bandes de couleur, dans le seul grand Beatus peint en France."
+description = """
+Sur deux pages face à face, le décor est divisé en larges bandes horizontales : bleu, \
+rouge, vert sombre, jaune pâle. En haut, un cavalier couronné, sur un cheval blanc, \
+tire à l'arc ; un autre, sur un cheval rouge, brandit une longue épée. En bas, un \
+troisième, monté sur un cheval noir, lève une balance ; le dernier, sur un cheval \
+pâle, a les cheveux dressés comme des flammes, et le mot MORS, la Mort, est écrit \
+au-dessus de sa tête. Dans des médaillons, l'Agneau ouvre l'un après l'autre les \
+sceaux d'un livre. Près de chaque cavalier, l'un des quatre Vivants, ange, bœuf ailé, \
+lion ou aigle, s'adresse à saint Jean, qui se tient debout au bord de la page, \
+auréolé."""
+evocation = """
+Le chapitre 6 de l'Apocalypse décrit l'ouverture des quatre premiers sceaux : à chaque \
+fois surgit un cavalier, que la tradition associe à la conquête, à la guerre, à la \
+famine et à la mort. Dans les Beatus, ces visions ne sont pas là pour effrayer : elles \
+accompagnent un commentaire savant qui les explique ligne à ligne. Le premier \
+cavalier, couronné, y est compris comme le Christ victorieux, ou comme l'Église qui \
+annonce l'Évangile. Les bandes colorées arrachent les scènes à tout paysage réel : on \
+est dans le temps de la vision, hors du monde. Pour les moines du XIᵉ siècle, qui \
+lisaient l'Apocalypse comme un livre sur l'histoire de l'Église et la fin des temps, \
+ces images invitaient à la vigilance."""
+histoire = """
+Vers 776, Beatus, moine de Liébana, dans les montagnes du nord de l'Espagne, compose \
+un commentaire de l'Apocalypse à partir des écrits des Pères de l'Église. Le texte, \
+recopié et illustré pendant des siècles dans les royaumes chrétiens d'Espagne, donne \
+son nom à une famille de manuscrits, les Beatus, dont plus d'une vingtaine nous sont \
+parvenus avec leurs peintures. Celui-ci fait exception : il a été réalisé en Gascogne, \
+à l'abbaye de Saint-Sever, sous l'abbé Grégoire de Montaner, qui la dirigea de 1028 à \
+1072. Ses peintures suivent un modèle espagnol, mais avec des figures marquées par \
+l'art roman naissant du sud-ouest de la France. Il est conservé au département des \
+Manuscrits de la Bibliothèque nationale de France, sur le site Richelieu."""
+facture = """
+Le peintre travaille en aplats de couleurs pures, épaisses et éclatantes, sans ombre \
+ni perspective. Les fonds en bandes, hérités des Beatus mozarabes d'Espagne, \
+organisent la double page comme une partition. Les chevaux, en revanche, sont plus \
+vivants que dans les modèles espagnols : jambes tendues dans le galop, crinières et \
+queues flottantes. Les figures humaines, aux drapés soulignés de traits sombres, \
+rappellent la sculpture romane de la région. Des inscriptions latines en capitales, \
+tracées dans l'image, nomment les personnages et citent le texte."""
+details = [
+  "Le mot MORS, la Mort, au-dessus du dernier cavalier aux cheveux de flammes.",
+  "La balance que lève le cavalier au cheval noir, signe de la famine.",
+  "L'aigle couvert d'yeux, en bas à droite, l'un des quatre Vivants.",
+  "Les quatre petits saint Jean qui regardent la vision depuis les bords.",
+  "L'Agneau dans ses médaillons, une patte posée sur le livre scellé.",
+]
+themes = ["apocalypse", "cavaliers", "art roman", "vision", "fin des temps"]
+anecdote = """
+Le manuscrit conserve le nom de Stephanus Garsia, inscrit dans ses pages. On le tient \
+souvent pour l'un des peintres du livre, peut-être le principal, mais son rôle exact \
+n'est pas établi : les moines du XIᵉ siècle signaient rarement leurs œuvres."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Bible de Souvigny : la Création"
+artiste = "Enlumineurs de la Bible de Souvigny"
+annee = "fin du XIIᵉ siècle"
+image = "souvigny-creation.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Bible_de_Souvigny_-_Bibliothèque_de_Moulins_f4v.jpg"
+technique = "Peinture et or sur parchemin, folio 4 verso"
+collection = "Médiathèque de Moulins (ms. 1), Moulins"
+note = "Huit petites scènes sur fond d'or racontent la Création et la chute d'Adam et Ève, en tête d'une Bible géante de l'époque romane."
+description = """
+À gauche de la page, huit cases bordées de bleu et de rouge forment une colonne \
+d'images ; à droite, une colonne de texte s'ouvre sur les mots IN PRINCIPIO, « Au \
+commencement ». Les six premières cases montrent les jours de la Création. Dans \
+chacune, le Créateur, sous les traits du Christ, apparaît à mi-corps dans un arc de \
+ciel : il plane au-dessus des eaux où se tient la colombe de l'Esprit, sépare les \
+eaux, fait pousser les arbres, tient le soleil et la lune, puis fait naître les \
+oiseaux, les poissons et les animaux de la terre. Les deux dernières cases racontent \
+l'homme : Dieu tire Ève du côté d'Adam endormi, puis Adam et Ève, nus, se tiennent de \
+part et d'autre de l'arbre où s'enroule le serpent."""
+evocation = """
+Placée en ouverture de la Genèse, la page résume en quelques images tout le récit des \
+origines, du chaos des eaux jusqu'à la faute. Donner au Créateur le visage du Christ \
+suit l'Évangile de Jean, pour qui au commencement était le Verbe, par qui tout a été \
+fait : l'image relie ainsi le premier livre de la Bible au Nouveau Testament. L'ordre \
+en cases, lu de gauche à droite et de haut en bas, donne au monde une construction \
+régulière, comme un édifice. La dernière image, la chute, annonce la suite du livre : \
+toute l'histoire sainte qui suit, jusqu'à la venue du Christ, était comprise comme la \
+réparation de cette faute."""
+histoire = """
+Cette Bible en un seul volume, de très grand format, a été copiée et peinte à la fin \
+du XIIᵉ siècle. Elle appartenait au prieuré de Souvigny, en Bourbonnais, l'un des plus \
+importants monastères de l'ordre de Cluny, où étaient vénérés les saints abbés Mayeul \
+et Odilon. Le lieu exact de sa fabrication reste discuté. Ces Bibles géantes, posées \
+sur un lutrin, servaient à la lecture solennelle et affirmaient la richesse de la \
+communauté. À la Révolution, les biens des monastères sont confisqués : le manuscrit \
+rejoint la bibliothèque de Moulins, chef-lieu du nouveau département de l'Allier, où \
+il est toujours conservé, avec ses nombreuses initiales et scènes peintes."""
+facture = """
+Les figures se détachent sur un fond d'or à la feuille, poli pour briller, qui fait de \
+chaque case un petit vitrail. Les drapés sont dessinés par des plis serrés et des \
+lignes doubles, typiques de l'art roman tardif. Les eaux sont rendues par des lignes \
+ondulées blanches sur du bleu, les arbres par des troncs souples terminés en éventail. \
+Les bordures, bleues et rouges, sont ponctuées de perles blanches et de petites \
+rosaces aux croisements. Le texte de la Genèse, à droite, est rythmé par des initiales \
+peintes et par les numéros des jours, en chiffres romains rouges."""
+details = [
+  "Le Créateur qui tient le soleil et la lune, dans la quatrième case.",
+  "Les arcs-en-ciel concentriques du deuxième et du quatrième jour.",
+  "Le petit bestiaire du sixième jour, rassemblé sur des collines vertes.",
+  "Ève qui sort du flanc d'Adam endormi, tirée par la main de Dieu.",
+  "Les chiffres romains rouges qui numérotent les jours dans le texte, à droite.",
+]
+themes = ["création", "genèse", "adam et ève", "fond d'or", "art roman"]
+anecdote = """
+Dans l'église de Souvigny, d'où vient cette Bible, reposent saint Mayeul et saint \
+Odilon, deux des plus célèbres abbés de Cluny, morts en 994 et en 1049. Leurs tombeaux \
+faisaient du prieuré un lieu de pèlerinage, et une source de richesse."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Codex Borbonicus : la treizaine de Tlazolteotl"
+artiste = "Peintres-scribes aztèques"
+annee = "début du XVIᵉ siècle"
+image = "codex-borbonicus.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Borbonicus_Codex_p13_Wiki.png"
+technique = "Peinture sur papier d'écorce (amate), page 13 ; page d'environ 39 × 39 cm"
+collection = "Bibliothèque de l'Assemblée nationale, Paris"
+note = "Une page du calendrier divinatoire aztèque : la déesse Tlazolteotl préside une période de treize jours, dont les signes s'alignent sur deux côtés."
+description = """
+La page carrée se lit comme un tableau. Dans la grande case en haut à gauche, une \
+déesse au visage rouge, coiffée de coton blanc et de plumes, est accroupie dans la \
+position de l'accouchement : sous elle apparaît un petit dieu, l'enfant qu'elle met au \
+monde. À côté, une seconde divinité, vêtue d'un costume d'oiseau aux grandes ailes \
+brunes, tient des objets rituels. Autour flottent des symboles : un serpent, des \
+empreintes de pas, des offrandes, une petite plateforme à degrés. Sur la droite et en \
+bas, deux rangées de cases contiennent les treize jours de la période, chacun avec son \
+signe, son nombre en points rouges, un dieu de la nuit et un oiseau. Des annotations \
+en espagnol, à l'encre, nomment certains jours."""
+evocation = """
+Les Aztèques comptaient le temps avec deux calendriers imbriqués : une année solaire \
+de 365 jours et un cycle divinatoire de 260 jours, le tonalpohualli, divisé en vingt \
+périodes de treize jours. Chaque période était placée sous la protection d'un dieu, et \
+chaque jour portait un destin, bon ou mauvais, que les prêtres consultaient pour une \
+naissance, un mariage, un voyage ou une guerre. Tlazolteotl, déesse de la fertilité, \
+de la sexualité et de la purification, recevait aussi l'aveu des fautes et les \
+effaçait. En la montrant en train d'enfanter un jeune dieu, souvent identifié au dieu \
+du maïs, la page associe la naissance humaine au renouveau des récoltes. Le codex \
+était un outil de travail autant qu'un livre sacré."""
+histoire = """
+Le Codex Borbonicus a été peint dans la région de Mexico, au moment de la conquête \
+espagnole ou peu après : les spécialistes débattent encore pour savoir s'il est \
+antérieur ou postérieur à 1521. Il se compose d'une longue bande de papier pliée en \
+accordéon, dont les premières et les dernières pages manquent. Après le calendrier \
+divinatoire, il montre le cycle des fêtes de l'année solaire. Les annotations en \
+espagnol ont été ajoutées après la conquête. Comme la plupart des manuscrits aztèques, \
+il a quitté le Mexique dans des circonstances inconnues. En 1826, la bibliothèque de \
+la Chambre des députés l'achète, et il doit son nom au Palais Bourbon, où il est \
+toujours conservé. L'image présentée ici reproduit le fac-similé en couleurs publié à \
+Paris en 1899."""
+facture = """
+Le peintre-scribe, le tlacuilo, travaille sur du papier d'amate, fabriqué en battant \
+l'écorce interne de figuiers sauvages. Les figures sont d'abord cernées d'un trait \
+noir régulier, puis remplies de couleurs en aplat, sans ombre : rouge, bleu turquoise, \
+jaune, vert, brun. Les personnages sont construits par signes juxtaposés, chaque \
+élément du costume, de la coiffure ou de la peinture du visage permettant d'identifier \
+le dieu. La page ignore la perspective : la taille d'une figure dit son importance. \
+Les lignes rouges qui découpent la page en cases guident la lecture."""
+details = [
+  "Le petit dieu qui apparaît sous la déesse accroupie, en haut à gauche.",
+  "Les points rouges qui comptent les jours de 1 à 13, à côté de chaque signe.",
+  "Les oiseaux de la colonne de droite, un par jour : on y reconnaît des perroquets et une chouette.",
+  "Les annotations espagnoles, comme segundo dia pedernal, « deuxième jour : silex ».",
+  "Les empreintes de pas qui montent vers le haut de la page, près de la déesse.",
+]
+themes = ["calendrier", "aztèques", "divination", "naissance", "mexique"]
+anecdote = """
+Plié en accordéon, le Codex Borbonicus se range comme un livre ; déplié, il forme une \
+bande de plus de quatorze mètres, que l'on pouvait parcourir d'un regard pour suivre \
+le cycle des jours et des fêtes."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "La Broderie de Bayeux : la comète de Halley"
+artiste = "Atelier anglo-saxon"
+annee = "vers 1070"
+image = "bayeux-comete.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Bayeux_Tapestry_32-33_comet_Halley_Harold.jpg"
+technique = "Broderie de laines sur toile de lin, scènes 32 et 33 ; hauteur d'environ 50 cm (longueur totale : près de 70 m)"
+collection = "Musée de la Tapisserie de Bayeux, Bayeux"
+note = "Une comète traverse le ciel : des hommes la montrent du doigt, tandis que Harold, tout juste couronné roi d'Angleterre, reçoit la nouvelle. La broderie mesure environ 50 cm de haut."
+description = """
+La scène se lit de gauche à droite, comme une bande dessinée. Sous l'inscription \
+latine ISTI MIRANT STELLA, « ceux-ci admirent l'étoile », un groupe d'hommes serrés \
+près d'un édifice tend le doigt vers le ciel, où file une comète à la queue de \
+flammes. Un autre homme, à l'écart, lève lui aussi la main. À droite, sous l'arcade \
+d'un palais coiffé de tourelles et d'oiseaux, le roi Harold, couronné, assis sur son \
+trône, se penche vers un homme venu lui parler. Sous le palais, dans la bordure \
+inférieure, se dessinent des navires vides, comme des silhouettes fantômes. Les \
+couleurs sont peu nombreuses, brun, vert, bleu sombre, ocre, sur le fond écru du lin."""
+evocation = """
+La comète de Halley est passée dans le ciel d'Europe au printemps 1066, quelques mois \
+après le couronnement de Harold Godwinson, en janvier. Au Moyen Âge, une comète \
+annonçait un bouleversement : la mort d'un roi, la chute d'un royaume. Placée ici, \
+elle prépare le spectateur à la suite, la défaite et la mort de Harold à Hastings, en \
+octobre. Les navires fantômes de la bordure, qu'on lit comme l'annonce de l'invasion \
+normande ou comme le pressentiment du roi, montrent le talent de conteur des auteurs. \
+Réalisée pour les vainqueurs, la broderie présente Harold comme un parjure qui a trahi \
+son serment à Guillaume ; mais elle le montre aussi avec une certaine dignité, ce qui \
+nourrit bien des débats."""
+histoire = """
+La broderie raconte, en 58 scènes selon la numérotation moderne, la conquête de \
+l'Angleterre par Guillaume, duc de Normandie, depuis le voyage de Harold sur le \
+continent jusqu'à la bataille d'Hastings. La plupart des historiens pensent qu'elle a \
+été commandée par Odon, évêque de Bayeux et demi-frère de Guillaume, et réalisée en \
+Angleterre dans les années qui suivent 1066. Un inventaire de 1476 la mentionne dans \
+le trésor de la cathédrale de Bayeux, qui l'exposait certains jours de l'année. \
+Menacée sous la Révolution, exposée à Paris sous Napoléon, mise à l'abri pendant la \
+Seconde Guerre mondiale, elle est présentée depuis 1983 dans un musée de Bayeux. En \
+2025, la France et le Royaume-Uni ont annoncé son prêt au British Museum pendant la \
+rénovation de ce musée."""
+facture = """
+Ce n'est pas une tapisserie, tissée sur un métier, mais une broderie : des fils de \
+laine teints ont été cousus sur une longue toile de lin, faite de plusieurs pièces \
+assemblées. Les contours sont tracés au point de tige, et les surfaces remplies au \
+point couché, aujourd'hui appelé point de Bayeux : de longs fils posés côte à côte, \
+maintenus par de petits points transversaux. La palette, réduite, a été obtenue avec \
+trois plantes tinctoriales, la garance, la gaude et la guède. Les couleurs ne \
+cherchent pas la vraisemblance : un cheval peut être bleu, et un visage n'est souvent \
+qu'un contour."""
+details = [
+  "L'inscription ISTI MIRANT STELLA, brodée en laine en haut à gauche.",
+  "La comète, avec son noyau rond et sa queue en flammes.",
+  "Les navires fantômes, sans voiles ni équipage, dans la bordure du bas.",
+  "Les deux oiseaux perchés sur le toit du palais de Harold.",
+  "Les doigts tendus des hommes, qui guident le regard vers le ciel.",
+]
+themes = ["histoire", "conquête", "comète", "présage", "broderie"]
+anecdote = """
+La fin de la broderie est perdue : la dernière scène conservée montre la fuite des \
+Anglais après la bataille. On ignore comment elle se terminait, peut-être par le \
+couronnement de Guillaume à Westminster, le jour de Noël 1066."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 2.8
+
+[[oeuvres]]
+titre = "Tenture de l'Apocalypse : saint Michel combat le dragon"
+artiste = "Jean de Bruges et Nicolas Bataille"
+annee = "vers 1375–1382"
+image = "apocalypse-saint-michel.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Hennequin_de_Bruges_-_Saint_Michael_fighting_the_Dragon_-_WGA24178.jpg"
+technique = "Tapisserie de laine, une scène de la troisième pièce de la tenture"
+collection = "Château d'Angers, Angers"
+note = "Saint Michel et ses anges transpercent de leurs lances le dragon à sept têtes, sous le regard de saint Jean : une scène de la plus grande tenture médiévale conservée."
+description = """
+Sur un fond bleu nuit semé de motifs en losange, la scène se joue en diagonale. En \
+haut, saint Michel, en robe dorée, aux grandes ailes rouges, plonge du ciel avec ses \
+anges ; tous tiennent de longues lances. En bas, sur un sol verdoyant, le grand dragon \
+rouge à sept têtes se tord sous les coups, tandis qu'un second monstre ailé, plus \
+petit, se dresse vers les assaillants. À gauche, dans un petit édicule gothique, saint \
+Jean, vêtu de rouge, observe la vision, une main contre le visage. En haut à droite, \
+des nuages blancs et bouclés bordent le ciel. Au pied de la scène court une bande de \
+terre semée de fleurs."""
+evocation = """
+Le chapitre 12 de l'Apocalypse raconte la guerre dans le ciel : Michel et ses anges \
+combattent le dragon, l'antique serpent, et le précipitent sur la terre. Ici, nul \
+héros solitaire : c'est une armée céleste qui frappe d'un même élan, et les lances \
+parallèles rythment la composition comme une charge de chevalerie. Pour les \
+contemporains, la scène avait un écho concret : la tenture fut tissée en pleine guerre \
+de Cent Ans, pour Louis d'Anjou, frère du roi Charles V, et l'on a pu y lire l'espoir \
+d'une victoire du bien sur les désordres du temps. Saint Jean, témoin à l'écart, \
+rappelle que tout cela est une vision, à méditer plus qu'à craindre."""
+histoire = """
+Louis Iᵉʳ, duc d'Anjou, commande cette immense tenture vers 1375. Les cartons sont \
+dessinés par Jean de Bruges, peintre de son frère le roi Charles V, qui prête pour \
+l'occasion un manuscrit enluminé de l'Apocalypse de sa bibliothèque. Le tissage est \
+confié au marchand parisien Nicolas Bataille. L'ensemble comptait six pièces d'environ \
+six mètres de haut, pour une longueur totale d'environ 140 mètres. Léguée à la \
+cathédrale d'Angers à la fin du XVᵉ siècle, la tenture y est déployée lors des grandes \
+fêtes. Délaissée à la fin du XVIIIᵉ siècle, découpée et en partie perdue, elle est \
+récupérée et restaurée au XIXᵉ siècle. Depuis 1954, elle est présentée au château \
+d'Angers, dans une galerie construite pour elle : plus de cent mètres en sont \
+conservés."""
+facture = """
+La tenture est tissée en laine, dans une gamme de couleurs restreinte : bleus et \
+rouges profonds pour les fonds, qui alternent d'une scène à l'autre, blanc, ocre, \
+vert. Le dessin de Jean de Bruges, nerveux et élégant, se reconnaît aux visages fins \
+et aux drapés souples, proches de l'enluminure parisienne de son temps. Les tisserands \
+ont traduit ce dessin en surfaces de couleur et en hachures qui donnent le modelé. \
+Fait remarquable, l'envers de la tenture est presque aussi soigné que l'endroit ; \
+longtemps protégé de la lumière, il a gardé des couleurs bien plus vives."""
+details = [
+  "Saint Jean qui observe la scène depuis son petit édicule, à gauche.",
+  "Les sept têtes du dragon, réunies en bouquet à droite, sous les pointes des lances.",
+  "Le second monstre ailé, plus petit, qui se dresse vers les anges.",
+  "Les nuages blancs et bouclés qui bordent le ciel, en haut à droite.",
+  "Les ailes rouges de saint Michel, au centre de la mêlée.",
+]
+themes = ["apocalypse", "anges", "dragon", "combat", "tapisserie"]
+anecdote = """
+Selon une tradition rapportée au XIXᵉ siècle, des morceaux de la tenture servirent, \
+après la Révolution, à couvrir des chevaux, à protéger des arbres du gel ou à boucher \
+des fenêtres. Le détail est incertain, mais la perte de plusieurs scènes est bien \
+réelle."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.8
+
+[[oeuvres]]
+titre = "La Licorne captive (La Chasse à la licorne)"
+artiste = "Ateliers des Pays-Bas du Sud"
+annee = "vers 1495–1505"
+image = "licorne-captive.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Unicorn_in_Captivity_-_Google_Art_Project.jpg"
+technique = "Laine, soie, fils d'argent et de vermeil, 368 × 251,5 cm"
+collection = "Metropolitan Museum of Art, The Cloisters, New York"
+note = "Dernière pièce de la célèbre Chasse à la licorne : l'animal, attaché à un grenadier, repose dans un enclos au milieu d'un pré fleuri."
+description = """
+Sur un fond vert sombre, presque noir, un pré est couvert de plantes dessinées une à \
+une : des centaines de tiges et de fleurs rouges, blanches, jaunes et bleues. Au \
+centre, une licorne blanche est couchée dans un petit enclos circulaire, fermé par une \
+barrière de bois. Elle porte un collier précieux, relié par une chaîne au tronc d'un \
+grenadier qui s'élève derrière elle, chargé de fruits. Elle tourne la tête vers la \
+gauche, sa longue corne torsadée dressée vers le ciel. Sur son pelage blanc coulent \
+des traînées rouges. Dans trois coins et sur le tronc de l'arbre, les lettres A et E, \
+nouées par une cordelière, répètent un monogramme. Le tissage est si fin qu'on \
+distingue chaque pétale."""
+evocation = """
+Selon les bestiaires du Moyen Âge, la licorne, farouche et insaisissable, ne pouvait \
+être capturée que par une jeune fille vierge : on y voyait une image de l'Incarnation, \
+le Christ venant se réfugier dans le sein de Marie. La licorne enclose, vivante après \
+avoir été chassée et tuée dans les pièces précédentes, a été lue comme le Christ \
+ressuscité. Mais la scène appartient aussi au langage de l'amour courtois : l'amant \
+captif de sa dame, enchaîné de son plein gré dans un jardin clos. Selon une lecture \
+souvent avancée, les traînées rouges ne sont pas du sang mais le jus des grenades \
+mûres, fruits de la fertilité et du mariage. Les deux lectures, sacrée et amoureuse, \
+ne s'excluent pas."""
+histoire = """
+La Chasse à la licorne compte sept pièces, dessinées sans doute à Paris et tissées \
+vers 1500 dans les Pays-Bas du Sud. Le commanditaire, que pourrait désigner le \
+monogramme AE, reste inconnu, et les pièces n'appartenaient peut-être pas à l'origine \
+à une seule série. Elles sont mentionnées en 1680 dans un inventaire de la famille de \
+La Rochefoucauld, qui les conserve ensuite au château de Verteuil, en Charente. \
+Pillées à la Révolution, elles auraient servi à protéger des cultures du gel avant \
+d'être récupérées. En 1922, John D. Rockefeller Jr. les achète ; il les donne en 1937 \
+au Metropolitan Museum, qui les présente aux Cloisters, son musée d'art médiéval \
+ouvert en 1938 au nord de Manhattan."""
+facture = """
+La tapisserie est tissée en laine et en soie, avec des fils d'argent et de vermeil qui \
+brillaient à la lumière des chandelles. Le fond millefleurs, très en vogue vers 1500, \
+n'est pas un simple décor : les botanistes y ont identifié la plupart des plantes, \
+comme l'œillet, l'orchidée ou le lis, souvent choisies pour leur sens symbolique lié \
+au mariage et à la fertilité. La licorne est modelée par de fines hachures de laines \
+claires. L'enclos, vu légèrement d'en haut, donne une profondeur que le pré, sans \
+horizon, refuse."""
+details = [
+  "Le monogramme AE noué d'une cordelière, dans les coins et sur le tronc.",
+  "Les grenades mûres dans les branches, au-dessus de la licorne.",
+  "La chaîne qui relie le collier de la licorne à l'arbre.",
+  "La barrière basse de l'enclos, que l'animal pourrait sans peine franchir.",
+]
+themes = ["licorne", "amour", "christ", "millefleurs", "jardin"]
+anecdote = """
+Les Cloisters, où la tenture est exposée, sont eux-mêmes un musée fait de fragments : \
+des parties de cloîtres médiévaux venus de France, comme Saint-Michel-de-Cuxa ou \
+Saint-Guilhem-le-Désert, y ont été remontées dans les années 1930."""
+salle = 3
+mur = "ouest"
+place = 5
+largeur = 2.5
+
+[[oeuvres]]
+titre = "Grandes Heures d'Anne de Bretagne : la reine en prière"
+artiste = "Jean Bourdichon"
+annee = "1503–1508"
+image = "heures-anne-de-bretagne.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:BNF_-_Latin_9474_-_Jean_Bourdichon_-_Grandes_Heures_d'Anne_de_Bretagne_-_f._3r_-_Anne_de_Bretagne_entre_trois_saintes.jpg"
+technique = "Peinture et or sur parchemin, folio 3 recto ; feuillet d'environ 30 × 19 cm"
+collection = "Bibliothèque nationale de France, Paris (Latin 9474)"
+note = "La reine de France, agenouillée devant son livre d'heures, est présentée par sainte Anne, sainte Ursule et sainte Hélène. Le feuillet mesure environ 30 cm de haut."
+description = """
+Dans un cadre doré, une jeune femme est agenouillée devant un prie-Dieu couvert de \
+velours pourpre, les mains jointes. Elle porte une robe de brocart d'or aux manches \
+bordées de fourrure et une coiffe noire ourlée de pierreries : c'est Anne de Bretagne, \
+reine de France. Devant elle, un livre ouvert, où l'on devine une minuscule peinture, \
+évoque le livre d'heures lui-même. Derrière elle se tiennent trois saintes. À gauche, \
+la vieille sainte Anne, sa patronne, voilée de blanc, tend les mains vers elle. Au \
+centre, sainte Ursule, couronnée, pose une main sur son épaule et tient des flèches et \
+une bannière semée d'hermines. À droite, sainte Hélène, en manteau d'hermine, tient \
+une grande croix. Au loin, des collines bleutées et un château."""
+evocation = """
+Le livre d'heures était le livre de prière des laïcs : il rythmait la journée par des \
+prières à réciter aux heures canoniales. Celui-ci s'ouvre sur le portrait de la reine \
+en dévotion, selon une formule courante : la donatrice, présentée par des saints, prie \
+devant le livre que le lecteur tient entre ses mains. Le choix des saintes n'est pas \
+un hasard : Anne est sa patronne ; Ursule, princesse bretonne selon la légende, porte \
+la bannière du duché ; Hélène, mère de l'empereur Constantin, est le modèle de la \
+reine chrétienne. Le portrait affirme ainsi à la fois une piété personnelle, une \
+identité bretonne et une dignité royale. Le visage lisse et idéalisé dit le rang plus \
+que la ressemblance."""
+histoire = """
+Anne, duchesse de Bretagne, deux fois reine de France par ses mariages avec Charles \
+VIII puis avec Louis XII, commande ce livre à Jean Bourdichon, peintre de la cour \
+installé à Tours. Un acte du 14 mars 1508 ordonne de lui verser 1 050 livres tournois \
+pour avoir richement historié et enluminé ces Heures. Le manuscrit réunit près de \
+cinquante grandes peintures et, dans les marges, plus de trois cents plantes peintes \
+d'après nature, avec leur nom en latin et en français. La reine meurt en 1514, \
+quelques années après l'achèvement du livre. Les Grandes Heures sont aujourd'hui l'un \
+des joyaux du département des Manuscrits de la Bibliothèque nationale de France, sur \
+le site Richelieu."""
+facture = """
+Bourdichon peint comme un peintre de tableaux : ses figures, grandes et proches du \
+spectateur, sont modelées par des ombres douces, à la manière italienne, et placées \
+devant un paysage qui s'éloigne dans une brume bleue. Il a hérité de Jean Fouquet ce \
+goût du volume et de la lumière. Les étoffes sont rendues avec un luxe de détails : \
+brocart de la robe rehaussé de fins traits d'or, hermines, pierreries. Le cadre doré, \
+peint en trompe-l'œil comme une moulure, fait de la miniature un véritable petit \
+tableau. Les visages lisses, aux paupières lourdes, sont typiques de son style."""
+details = [
+  "Le petit livre ouvert sur le prie-Dieu, avec sa minuscule peinture : un livre dans le livre.",
+  "La bannière semée d'hermines, emblème de la Bretagne, que tient sainte Ursule.",
+  "Les flèches de sainte Ursule, instrument de son martyre.",
+  "Le château perché sur un rocher, à droite, dans le lointain.",
+  "Les reflets d'or sur la robe de brocart de la reine.",
+]
+themes = ["prière", "reine", "portrait", "bretagne", "livre d'heures"]
+anecdote = """
+Dans les marges fleuries du manuscrit, Bourdichon a peint aussi des insectes : \
+chenilles, papillons, abeilles. On y reconnaît par exemple le xylocope, la grosse \
+abeille charpentière aux reflets violets, posé sur une fleur près du texte de \
+l'Évangile de Jean."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Atlas catalan : de l'Atlantique à la mer Rouge"
+artiste = "Abraham Cresques"
+annee = "1375"
+image = "atlas-catalan.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:1375_Atlas_Catalan_Abraham_Cresques.jpg"
+technique = "Encres, couleurs et or sur parchemin monté sur panneaux de bois ; deux des quatre panneaux de la carte, chacun d'environ 65 × 50 cm"
+collection = "Bibliothèque nationale de France, Paris (Espagnol 30)"
+note = "La moitié ouest de la plus belle carte du Moyen Âge : l'Atlantique, l'Europe, la Méditerranée et l'Afrique, où trône le roi du Mali, Mansa Musa."
+description = """
+Quatre longues feuilles de parchemin, côte à côte, forment cette moitié de carte. À \
+gauche s'étend l'océan Atlantique, avec une grande rose des vents aux pointes colorées \
+et, en bas, les îles Canaries et un petit navire. Viennent ensuite la péninsule \
+Ibérique, puis la Méditerranée, ses îles peintes en or et ses côtes hérissées de noms \
+de ports, jusqu'à la mer Noire. Tout est couvert d'un réseau de lignes droites qui se \
+croisent : les lignes de vents des marins. En bas, l'Afrique est barrée par la chaîne \
+dorée de l'Atlas. Au-dessous, un cavalier voilé, sur un chameau, s'avance vers un roi \
+noir couronné, assis sur un trône, qui tient une pépite d'or : Mansa Musa, roi du \
+Mali. Tout à droite, la mer Rouge est peinte en rouge."""
+evocation = """
+L'Atlas catalan mêle deux façons de voir le monde. D'un côté, la précision des cartes \
+marines, les portulans, qui décrivent les côtes port par port pour les navigateurs. De \
+l'autre, l'héritage des mappemondes médiévales, avec leurs rois, leurs merveilles et \
+leurs récits. L'intérieur des continents se peuple de souverains et de caravanes, et \
+des légendes en catalan racontent les richesses de chaque pays. Le portrait de Mansa \
+Musa, dont le pèlerinage à La Mecque, en 1324, avait frappé les esprits par \
+l'abondance de son or, dit l'intérêt des marchands de Majorque pour les routes \
+caravanières du Sahara. La carte est une encyclopédie du monde connu, au service du \
+commerce autant que du savoir."""
+histoire = """
+L'atlas a été réalisé à Majorque, grand port de la Méditerranée où travaillait une \
+école de cartographes, souvent juifs. Il est attribué à Abraham Cresques, maître des \
+mappemondes et des boussoles au service du roi d'Aragon, qui travaillait avec son fils \
+Jafuda. Sa date, 1375, est déduite du calendrier qui l'accompagne. Il se compose de \
+six feuilles de parchemin montées sur des panneaux de bois : les deux premières \
+portent des textes et des tables de cosmographie et d'astronomie, les quatre autres la \
+carte, de l'Atlantique à la Chine. Peu après sa réalisation, il entre dans la \
+librairie des rois de France, sans doute comme présent de la cour d'Aragon. Il est \
+conservé au département des Manuscrits de la Bibliothèque nationale de France."""
+facture = """
+Le cartographe trace d'abord le réseau des lignes de vents, à l'encre noire, verte et \
+rouge selon l'usage des portulans, puis le contour des côtes. Les noms des ports sont \
+écrits perpendiculairement au rivage, à l'intérieur des terres, pour ne pas encombrer \
+la mer : ils se lisent en tournant autour de la carte, posée à plat sur une table. Les \
+villes sont signalées par de petits châteaux surmontés de bannières qui indiquent à \
+qui elles appartiennent. Les figures et les légendes, peintes avec de l'or et des \
+couleurs vives, rapprochent la carte de l'enluminure."""
+details = [
+  "Mansa Musa, roi du Mali, couronné, tenant une pépite d'or, en bas au centre.",
+  "La mer Rouge, peinte en rouge vif, au bord droit.",
+  "La rose des vents de l'Atlantique, souvent présentée comme la plus ancienne connue sur une carte.",
+  "Le petit navire au large de l'Afrique, en bas à gauche : celui du Majorquin Jaume Ferrer, parti en 1346 vers le fleuve de l'Or.",
+  "Les bannières plantées sur les villes, qui disent qui les gouverne.",
+]
+themes = ["carte", "monde", "navigation", "commerce", "afrique"]
+anecdote = """
+La légende catalane écrite près de Mansa Musa le présente comme le plus riche et le \
+plus noble seigneur de toute la région, en raison de l'abondance de l'or que l'on \
+recueille sur ses terres. Un demi-siècle après son pèlerinage, sa réputation restait \
+intacte."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 3.4
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Moines d'Iona et de Kells"
+vie = "Iona (Écosse) et Kells (Irlande), vers 800"
+biographie = """
+Le monastère d'Iona, sur une petite île des Hébrides intérieures, est fondé vers 563 \
+par le moine irlandais Colomba, Columcille en irlandais, venu avec douze compagnons. \
+Il devient la tête d'un vaste réseau de monastères en Irlande et en Écosse, et un \
+foyer de culture : on y copie et on y décore des livres, on y écrit des vies de saints \
+et des chroniques. À partir de 795, les Vikings attaquent l'île à plusieurs reprises ; \
+en 806, soixante-huit moines sont tués. Les moines fondent alors un nouveau monastère \
+à Kells, dans le comté de Meath, en Irlande, où une partie de la communauté se replie \
+avec les reliques de Colomba. Le Livre de Kells est le fruit de ce monde : on ignore \
+le nom de ses copistes et de ses peintres, mais les spécialistes distinguent au moins \
+trois grands enlumineurs et plusieurs copistes, formés dans une tradition où \
+l'écriture, la prière et l'art ne faisaient qu'un."""
+style = """
+Le Livre de Kells est le sommet de l'art dit insulaire, né en Irlande et en \
+Grande-Bretagne entre le VIIᵉ et le IXᵉ siècle. Il fond les spirales et les triskèles \
+de l'art celte, les entrelacs d'animaux de l'orfèvrerie germanique et les modèles \
+chrétiens venus de Méditerranée. Les lettres deviennent des images, les pages des \
+surfaces saturées d'ornements, et les figures humaines, stylisées, obéissent à la \
+géométrie. Ce style marque encore l'imaginaire irlandais."""
+
+[[artistes]]
+nom = "Eadfrith de Lindisfarne"
+vie = "Northumbrie (Angleterre), mort en 721"
+biographie = """
+On ne sait presque rien d'Eadfrith avant qu'il devienne évêque de Lindisfarne, en 698. \
+Le monastère, fondé en 635 par le moine irlandais Aidan, venu d'Iona, sur une île \
+reliée à la côte de Northumbrie à marée basse, est alors le cœur religieux du royaume. \
+Son plus célèbre évêque, Cuthbert, mort en 687, est vénéré comme un saint, et son \
+corps, retrouvé intact en 698, attire les pèlerins. C'est dans ce contexte \
+qu'Eadfrith, selon la note ajoutée par le prêtre Aldred au Xᵉ siècle, écrit et peint \
+les Évangiles, sans doute pour le culte de Cuthbert. Il fait aussi restaurer \
+l'ermitage de l'île de Farne où le saint avait vécu, et le moine Bède lui dédie sa vie \
+de saint Cuthbert. Il meurt en 721. Si l'attribution d'Aldred est exacte, il aurait \
+consacré plusieurs années de sa vie à ce seul livre, travaillant presque seul, comme \
+le suggère l'unité du décor."""
+style = """
+Le décor des Évangiles de Lindisfarne unit la rigueur géométrique et la fantaisie \
+animale. Eadfrith y mêle les entrelacs et les animaux de l'orfèvrerie anglo-saxonne, \
+les spirales celtiques et des modèles méditerranéens : ses portraits d'évangélistes \
+s'inspirent de manuscrits venus d'Italie. Sa construction au compas, d'une précision \
+rare, donne aux pages tapis leur ordre parfait. Le manuscrit est l'un des grands \
+modèles de l'art insulaire, avant le Livre de Kells, plus exubérant."""
+
+[[artistes]]
+nom = "Scriptorium de Saint-Sever"
+vie = "Abbaye de Saint-Sever (Gascogne), milieu du XIᵉ siècle"
+biographie = """
+L'abbaye bénédictine de Saint-Sever, au bord de l'Adour, dans l'actuel département des \
+Landes, est refondée à la fin du Xᵉ siècle par le duc de Gascogne. Elle connaît son \
+âge d'or sous l'abbé Grégoire de Montaner, qui la dirige de 1028 à 1072 : c'est lui \
+qui fait réaliser le grand manuscrit de l'Apocalypse, dont les premières pages \
+célèbrent son nom. Le texte copié est le commentaire de l'Apocalypse composé vers 776 \
+par Beatus, moine de Liébana, dans le nord de l'Espagne, que les monastères espagnols \
+recopiaient et illustraient depuis le Xᵉ siècle. Les moines de Saint-Sever ont \
+travaillé d'après un modèle venu d'Espagne, signe des liens étroits entre les deux \
+versants des Pyrénées. Le nom de Stephanus Garsia, inscrit dans le livre, est \
+peut-être celui de l'un des peintres. Le reste de l'équipe, copistes et enlumineurs, \
+demeure anonyme. L'abbatiale romane de Saint-Sever, très remaniée, se visite toujours."""
+style = """
+Le style de Saint-Sever fait le pont entre l'Espagne et la France romane. Il garde des \
+Beatus mozarabes les fonds à bandes de couleurs vives, les figures plates et les \
+compositions spectaculaires sur double page. Mais ses personnages, plus souples, aux \
+drapés articulés, et ses animaux pleins de vie annoncent la sculpture romane du \
+sud-ouest de la France. La force décorative et l'éclat des couleurs en font l'un des \
+manuscrits romans les plus admirés."""
+
+[[artistes]]
+nom = "Enlumineurs de la Bible de Souvigny"
+vie = "France, fin du XIIᵉ siècle"
+biographie = """
+On ne connaît ni les noms ni le lieu de travail des copistes et des peintres de la \
+Bible de Souvigny. Le manuscrit appartenait au prieuré de Souvigny, en Bourbonnais, \
+fondé au début du Xᵉ siècle sur des terres données à l'abbaye de Cluny, et devenu l'un \
+de ses établissements les plus importants grâce au culte des saints abbés Mayeul et \
+Odilon. Au XIIᵉ siècle, les grands monastères font copier des Bibles géantes, en un ou \
+plusieurs volumes, pour la lecture solennelle : des entreprises longues et coûteuses, \
+qui mobilisent copistes, rubricateurs et peintres pendant des années, et réclament des \
+peaux en grand nombre. Le décor de la Bible de Souvigny, avec ses fonds d'or et ses \
+figures élancées, appartient à la fin de l'époque romane, mais son atelier n'a pas été \
+identifié avec certitude. Le livre est resté au prieuré jusqu'à la Révolution, avant \
+de rejoindre la bibliothèque de Moulins, où ses dizaines d'initiales et de scènes \
+peintes en font l'un des grands manuscrits romans conservés en France."""
+style = """
+Le décor de la Bible de Souvigny appartient à la dernière phase de l'art roman. Les \
+figures sont élancées, les drapés dessinés par des plis multiples, presque \
+métalliques, et les fonds d'or donnent aux scènes l'éclat de l'orfèvrerie. Les \
+compositions en cases superposées, qui racontent une histoire image par image, \
+rappellent les vitraux et les frontispices des grandes Bibles du XIIᵉ siècle. Les \
+initiales peintes mêlent rinceaux, animaux et figures."""
+
+[[artistes]]
+nom = "Peintres-scribes aztèques"
+vie = "Mexique central, vers 1500"
+biographie = """
+Dans le Mexique ancien, écrire et peindre ne faisaient qu'un : le même mot nahuatl, \
+tlacuilo, désignait le peintre et le scribe. Ces peintres-scribes, formés notamment \
+dans les écoles des temples, travaillaient pour les prêtres, les nobles et \
+l'administration de l'empire aztèque, dont la capitale, Tenochtitlan, s'élevait sur \
+une île du lac de Texcoco, à l'emplacement de l'actuelle Mexico. Ils produisaient des \
+livres de divination et de rituels, des généalogies, des cartes et des registres de \
+tributs, peints sur peau de cerf ou sur papier d'écorce et pliés en accordéon. La \
+conquête espagnole, achevée en 1521, puis la lutte des missionnaires contre les \
+religions anciennes ont entraîné la destruction de la plupart de ces livres : seule \
+une poignée de manuscrits peints avant la conquête nous est parvenue. Des tlacuilos \
+ont continué à travailler après 1521, parfois pour les Espagnols, en mêlant leur art \
+aux usages européens. Les auteurs du Codex Borbonicus restent anonymes."""
+style = """
+L'art des tlacuilos est une écriture en images. Les figures, cernées d'un trait noir \
+d'épaisseur égale et remplies de couleurs pures, sont composées de signes codifiés : \
+coiffures, peintures du visage, ornements et objets tenus permettent d'identifier \
+chaque dieu. L'espace n'a ni perspective ni ombre, et la taille dit l'importance. Les \
+pages s'organisent en cases, en bandes ou en parcours qui guident la lecture. Cette \
+grande clarté graphique a fasciné les artistes mexicains du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Atelier anglo-saxon"
+vie = "Angleterre, peut-être Cantorbéry, vers 1070"
+biographie = """
+On ignore qui a dessiné et brodé la broderie de Bayeux. La plupart des historiens \
+pensent qu'elle a été réalisée en Angleterre, peu après la conquête de 1066, à la \
+demande d'Odon, évêque de Bayeux et demi-frère de Guillaume le Conquérant, devenu \
+comte de Kent après la victoire. Plusieurs indices orientent vers Cantorbéry, dans le \
+Kent : certaines figures semblent reprises de manuscrits enluminés conservés dans les \
+abbayes de la ville, et l'orthographe de plusieurs noms brodés trahit des habitudes \
+anglaises. Les Anglo-Saxons étaient réputés dans toute l'Europe pour leurs broderies, \
+où des femmes excellaient, mais rien ne permet d'identifier les mains qui ont \
+travaillé ici. Le dessin, probablement dû à un seul concepteur, a été reporté sur la \
+toile, puis brodé par plusieurs personnes, peut-être en plusieurs lieux. D'autres \
+hypothèses, minoritaires, situent la fabrication en Normandie ou dans la vallée de la \
+Loire."""
+style = """
+La broderie de Bayeux raconte comme une frise : les scènes s'enchaînent sans cadre, \
+séparées par un arbre ou un édifice, et se lisent de gauche à droite, avec des \
+inscriptions latines. Les figures, silhouettes nettes aux gestes expressifs, se \
+détachent sur le lin nu. Les bordures, peuplées d'animaux, de fables et de scènes de \
+la vie quotidienne, commentent parfois l'action principale. Cette narration continue \
+fait souvent présenter la broderie comme un lointain ancêtre de la bande dessinée."""
+
+[[artistes]]
+nom = "Jean de Bruges et Nicolas Bataille"
+vie = "Jean de Bruges, actif vers 1368–1381 ; Nicolas Bataille, mort vers 1400"
+biographie = """
+Jean de Bruges, appelé aussi Hennequin de Bruges ou Jean Bondol, est un peintre \
+flamand venu travailler à Paris, où il devient peintre du roi Charles V. On lui doit \
+la miniature qui ouvre une Bible offerte au roi en 1371, aujourd'hui à La Haye : \
+Charles V y reçoit le livre des mains de son conseiller Jean de Vaudetar, dans l'un \
+des premiers portraits réalistes de la peinture française. Vers le milieu des années \
+1370, le duc Louis d'Anjou, frère du roi, lui confie le dessin de la grande tenture de \
+l'Apocalypse. Ses cartons sont remis au marchand-tapissier parisien Nicolas Bataille, \
+l'un des plus importants de son temps, qui fournissait les princes de la maison de \
+France en tentures de prix. Bataille organise le tissage, sans doute dans plusieurs \
+ateliers, avec le concours du tapissier Robert Poisson. Les comptes du duc conservent \
+la trace de paiements faits aux deux hommes à la fin des années 1370. Bataille meurt \
+vers 1400, au moment où Paris domine encore la tapisserie européenne."""
+style = """
+Le dessin de Jean de Bruges allie l'élégance de l'art parisien et un sens flamand de \
+l'observation : visages vivants, gestes justes, drapés amples qui tombent avec poids. \
+Dans la tenture, chaque scène est organisée avec clarté, sur des fonds alternativement \
+rouges et bleus, et les visions de l'Apocalypse prennent la présence d'un spectacle. \
+L'atelier de Nicolas Bataille a su traduire ce dessin en laine à une échelle \
+monumentale."""
+
+[[artistes]]
+nom = "Ateliers des Pays-Bas du Sud"
+vie = "Pays-Bas du Sud (Belgique actuelle), vers 1500"
+biographie = """
+Vers 1500, les villes des Pays-Bas du Sud, possessions des ducs de Bourgogne puis des \
+Habsbourg, sont les grands centres européens de la tapisserie : Bruxelles, Tournai, \
+Audenarde, Enghien. Les ateliers y emploient de nombreux tisserands, qui travaillent \
+d'après des cartons fournis par des peintres. Les tapisseries, objets de luxe que l'on \
+emporte d'un château à l'autre, protègent du froid, divisent les salles et affichent \
+le prestige de leurs propriétaires, et les ateliers exportent leurs tentures dans \
+toute l'Europe. La Chasse à la licorne illustre cette organisation : les dessins sont \
+attribués à un artiste actif à Paris, le tissage à des ateliers des Pays-Bas du Sud. \
+Les tapissiers sont anonymes, mais leur maîtrise est éclatante : finesse des visages, \
+modelé des animaux, plantes si exactes que les botanistes les reconnaissent. Le \
+commanditaire, que pourrait désigner le monogramme AE, n'a jamais été identifié avec \
+certitude."""
+style = """
+Les tapisseries des Pays-Bas du Sud vers 1500 se distinguent par la densité de leurs \
+compositions, la richesse des matériaux, où la soie et les fils de métal éclairent la \
+laine, et un goût du détail hérité des primitifs flamands. Le fond millefleurs, semis \
+serré de plantes sur un fond sombre, transforme le mur en jardin. Les figures, \
+modelées par des hachures, gagnent un relief nouveau. Ces tentures ont fixé pour des \
+siècles l'image que l'on se fait de la fin du Moyen Âge."""
+
+[[artistes]]
+nom = "Jean Bourdichon"
+vie = "Tours, vers 1457 – Tours, 1521"
+biographie = """
+Jean Bourdichon naît à Tours vers 1457, dans la ville de Jean Fouquet, le grand \
+peintre de Charles VII et de Louis XI, dont il est sans doute l'élève ou le \
+continuateur. Il travaille pour Louis XI dès la fin des années 1470, et reste au \
+service de la couronne pendant plus de quarante ans, sous Charles VIII, Louis XII et \
+François Iᵉʳ. Peintre du roi, il ne fait pas que des livres : il peint des portraits, \
+des bannières, des décors pour les fêtes et les entrées royales, et dessine des \
+modèles pour des objets précieux. Ses livres d'heures, pour la famille royale et pour \
+des princes comme le roi de Naples Frédéric d'Aragon, comptent parmi les plus luxueux \
+de son temps. Les Grandes Heures d'Anne de Bretagne, achevées en 1508, sont son œuvre \
+la plus célèbre. Il meurt à Tours en 1521, alors que l'imprimerie et le goût italien \
+transforment le livre et la peinture."""
+style = """
+Bourdichon transpose dans la page la peinture de chevalet. Ses miniatures, souvent en \
+pleine page et entourées d'un cadre doré en trompe-l'œil, présentent des figures \
+grandes et proches, modelées par une lumière douce et des ombres fondues, devant des \
+paysages bleutés. Héritier de Fouquet, attentif à l'art italien, il recherche l'idéal \
+plus que le caractère : visages lisses, gestes calmes, couleurs profondes. Ses marges \
+de plantes peintes d'après nature annoncent l'illustration botanique."""
+
+[[artistes]]
+nom = "Abraham Cresques"
+vie = "Palma de Majorque, vers 1325 – Palma, 1387"
+biographie = """
+Abraham Cresques naît à Majorque vers 1325, dans la communauté juive de Palma. L'île, \
+conquise par les rois d'Aragon au XIIIᵉ siècle, est alors une plaque tournante du \
+commerce méditerranéen, où se croisent marins, marchands et savants chrétiens, juifs \
+et musulmans. Cresques y exerce les métiers de cartographe et de fabricant \
+d'instruments : les documents le désignent comme maître des mappemondes et des \
+boussoles au service du roi Pierre IV d'Aragon. Il travaille avec son fils Jafuda, et \
+c'est à leur atelier qu'est attribué l'Atlas catalan de 1375, la plus somptueuse des \
+cartes majorquines. Plusieurs ateliers de cartes marines travaillent alors dans l'île, \
+et leurs cartes circulent dans les ports de toute la Méditerranée. Abraham meurt en \
+1387. En 1391, des émeutes antijuives frappent la communauté de Palma ; Jafuda se \
+convertit au christianisme sous le nom de Jaume Ribes et poursuit son métier de \
+cartographe, notamment à Barcelone. L'école majorquine a marqué durablement la \
+cartographie européenne."""
+style = """
+L'atelier de Cresques porte à son sommet la cartographie majorquine. À la précision \
+des cartes marines, avec leurs côtes détaillées et leurs réseaux de lignes de vents, \
+il ajoute le savoir des géographes et des voyageurs, de Marco Polo aux marchands du \
+Sahara. Les terres se couvrent de villes, de rois, de caravanes et de légendes. Cette \
+union de la science pratique et de l'image fait de ses cartes à la fois des outils et \
+des œuvres d'art."""
