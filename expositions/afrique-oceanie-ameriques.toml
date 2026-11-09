@@ -1,0 +1,976 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ARTS D'AFRIQUE, D'OCÉANIE ET DES AMÉRIQUES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/afrique-oceanie-ameriques/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /afrique-oceanie-ameriques.
+#
+#  Les objets sont présentés en vitrine (cadre = « vitrine »). Les photographies
+#  viennent des programmes d'accès ouvert (CC0) du Metropolitan Museum of Art et
+#  du Cleveland Museum of Art, sauf celle de la tête d'Ifé (CC BY-SA, créditée).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 28
+nom_court = "Afrique, Océanie, Amériques"
+mouvement = "Arts d'Afrique, d'Océanie et des Amériques"
+cadre = "vitrine"
+couleur = "#8a4b2a"
+titre = "Visages des ancêtres : arts d'Afrique, d'Océanie et des Amériques"
+artiste = "Ifé, Bénin, Dan, Fang, Māori, Elema, Olmèques, Tairona, Lakota…"
+dates = "900 av. J.-C. – vers 1900"
+accroche = "Exposition virtuelle · Musée du quai Branly – Jacques Chirac, Paris"
+introduction = """
+Longtemps appelés « arts primitifs » ou « arts premiers », les arts d'Afrique, \
+d'Océanie et des Amériques sont ceux de royaumes, de cités et de sociétés qui ont \
+chacun leur histoire, leurs ateliers et leurs maîtres. La visite réunit dix objets, du \
+visage de jade olmèque, vieux de plus de deux millénaires, à une chemise lakota peinte \
+vers 1890 : têtes royales d'Ifé et du Bénin, masques et reliquaires d'Afrique de \
+l'Ouest et centrale, pendentif māori, planche sacrée de Papouasie, or de Colombie. \
+Plusieurs ont quitté leur pays lors de conquêtes coloniales : leur histoire le dit. Le \
+bâtiment s'inspire du musée du quai Branly – Jacques Chirac de Jean Nouvel, à Paris : \
+une rampe d'entrée, puis un long plateau aux couleurs de terre où les continents se \
+suivent sans cloisons fermées."""
+vitrine = "masque-idia.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Musée du quai Branly – Jacques Chirac"
+ville = "Paris, France"
+architecte = "Jean Nouvel"
+construction = "ouvert en 2006"
+presentation = """
+Le musée naît de la volonté du président Jacques Chirac et de son ami le \
+collectionneur Jacques Kerchache, qui voulaient donner aux arts d'Afrique, d'Asie, \
+d'Océanie et des Amériques la place qu'ils méritaient dans les musées français. Une \
+première sélection de chefs-d'œuvre entre au Louvre, au pavillon des Sessions, en 2000 \
+; le nouveau musée, qui réunit les collections du musée de l'Homme et du musée \
+national des Arts d'Afrique et d'Océanie, ouvre en juin 2006 au bord de la Seine. Jean \
+Nouvel l'a conçu comme un long bâtiment posé sur des pilotis au milieu d'un jardin \
+dessiné par Gilles Clément ; un mur végétal de Patrick Blanc couvre l'une des façades, \
+et des boîtes colorées dépassent de la façade nord. À l'intérieur, une longue rampe \
+blanche monte vers le plateau des collections, un espace unique, sombre, où les \
+continents se succèdent. Le musée porte le nom de Jacques Chirac depuis 2016. En 2021, \
+la France y a puisé vingt-six objets du trésor royal d'Abomey, pris en 1892, pour les \
+rendre à la République du Bénin."""
+ici = """
+Le bâtiment d'ARTEON garde la promenade du musée parisien : une montée, puis un long \
+plateau où les continents se suivent. On entre par le sud dans « La rampe », haute de \
+huit mètres, qui ouvre au nord sur le plateau, une enfilade est-ouest de quatre salles \
+de sept mètres de haut aux murs couleur de terre. Au centre, la salle « Afrique · Ifé \
+et le royaume du Bénin » ; à l'ouest, « Océanie » ; à l'est, « Afrique · Masques et \
+reliquaires », puis, au bout du plateau, « Amériques ». Les objets y sont présentés \
+dans des vitrines murales profondes, sur fond de velours sombre."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée du quai Branly – Jacques Chirac (Jean Nouvel, 2006) : on entre
+# par une rampe, puis on débouche sur le plateau des collections, un long espace
+# est-ouest où les continents se suivent : l'Afrique au centre et à l'est,
+# l'Océanie à l'ouest, les Amériques au bout du plateau. Murs couleur de terre,
+# objets en vitrine. x et z : le centre de la salle (x vers l'est, z vers le sud),
+# en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "La rampe"
+theme = "L'entrée, comme la longue rampe blanche qui monte vers le plateau des collections du quai Branly."
+murs = "#e8dccb"
+x = 0
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Afrique · Ifé et le royaume du Bénin"
+theme = "XIVᵉ–XVIᵉ siècle : les têtes royales de la ville sainte des Yoruba et les ivoires et laitons de la cour du Bénin, pillée en 1897."
+murs = "#dcb895"
+x = 0
+z = -12
+largeur = 16
+profondeur = 14
+hauteur = 7
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "Afrique · Masques et reliquaires"
+theme = "XIXᵉ – début du XXᵉ siècle : un masque dan des forêts de l'Ouest et une tête fang, gardienne des reliques des ancêtres."
+murs = "#d6b08f"
+x = 15
+z = -12
+largeur = 14
+profondeur = 14
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "Océanie"
+theme = "XIXᵉ siècle : un pendentif de jade des Māori de Nouvelle-Zélande et une planche sacrée des Elema de Papouasie."
+murs = "#d2bc9c"
+x = -15
+z = -12
+largeur = 14
+profondeur = 14
+hauteur = 7
+
+[[salles]]
+nom = "Amériques"
+theme = "De 900 av. J.-C. à 1890 : le jade des Olmèques, l'or des Tairona de Colombie et une chemise peinte des Lakota."
+murs = "#dab69a"
+x = 30
+z = -12
+largeur = 16
+profondeur = 14
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Tête royale d'Ifé"
+artiste = "Ifé, royaume yoruba"
+annee = "XIVᵉ – début du XVᵉ siècle"
+image = "tete-ife.jpg"
+credit = "Photo : Sailko"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Arte_yoruba,_nigeria,_testa_da_ife,_12-15mo_secolo.JPG"
+technique = "Alliage cuivreux (laiton) fondu à la cire perdue, hauteur 35 cm environ"
+collection = "British Museum, Londres"
+note = "Une tête couronnée, grandeur nature, coulée en métal à Ifé, la ville sainte des Yoruba : sans doute le portrait idéalisé d'un roi, l'ooni. Haute d'environ 35 cm, elle est montrée ici agrandie."
+description = """
+Une tête d'homme, à peu près grandeur nature, se dresse sur un cou cylindrique. Le \
+visage, ovale et plein, est d'un calme parfait : paupières lourdes, nez large et \
+droit, lèvres pleines et bien dessinées, closes. Toute sa surface est parcourue de \
+fines lignes verticales, serrées et parallèles, qui descendent du front jusqu'au \
+menton. Autour de la bouche et sur la mâchoire, une rangée de petits trous perce le \
+métal. La tête porte une haute couronne faite de rangs de perles tubulaires, ornée sur \
+le devant d'une rosette et surmontée d'un plumet tressé terminé par une pointe en \
+forme de bouton. Le métal, patiné, a pris une teinte vert sombre, qui laisse affleurer \
+par endroits des reflets rougeâtres."""
+evocation = """
+La couronne de perles, réservée au roi, désigne très probablement un ooni, souverain \
+sacré d'Ifé, la ville que les Yoruba regardent comme le lieu où le monde a été créé. \
+Le visage n'est pas celui d'un individu saisi sur le vif, mais une image idéale : \
+jeune, serein, sans défaut. Les historiens y voient l'expression d'une royauté hors du \
+temps, plus que le portrait d'un homme. Les fines stries ont été lues comme des \
+scarifications ou comme le souvenir d'un voile de perles couvrant le visage du roi, \
+qui ne devait pas être vu ; les petits trous servaient sans doute à fixer des perles, \
+une barbe ou ce voile. On pense que de telles têtes portaient des coiffures ou des \
+vêtements lors de rites funéraires ou commémoratifs."""
+histoire = """
+En 1938, des ouvriers qui creusaient des fondations dans l'enceinte de Wunmonije, près \
+du palais de l'ooni à Ifé, mettent au jour un ensemble de têtes en métal. Leur \
+découverte stupéfie les savants européens. La plupart restent au Nigeria, alors \
+colonie britannique, et sont aujourd'hui conservées par les musées nationaux du pays. \
+Celle-ci quitte Ifé et entre au British Museum dès 1939, sous l'inventaire \
+Af1939,34.1. Son départ reste discuté au Nigeria, qui souhaite voir revenir les œuvres \
+sorties du pays pendant la période coloniale. La tête est devenue l'emblème de l'art \
+d'Ifé : elle a figuré dans de grandes expositions consacrées à la ville et compte \
+parmi les pièces les plus célèbres du musée de Londres."""
+facture = """
+La tête est coulée à la cire perdue : le sculpteur modèle le visage en cire sur un \
+noyau d'argile, l'enveloppe d'un moule, puis fait fondre la cire et la remplace par le \
+métal en fusion. Les parois sont minces et régulières, signe d'une grande maîtrise \
+technique. Le modelé des chairs, très doux, les paupières ourlées et les lèvres au \
+contour net témoignent d'une observation attentive du visage humain, que les artistes \
+d'Ifé pratiquaient aussi dans la terre cuite. Les stries ont été gravées dans la cire \
+avant la fonte, une à une."""
+details = [
+  "Les fines stries verticales qui couvrent tout le visage.",
+  "Les petits trous autour de la bouche et le long de la mâchoire.",
+  "La rosette au centre de la couronne de perles.",
+  "Le plumet tressé dressé au sommet de la tête.",
+  "Les paupières lourdes, à demi baissées, au contour finement ourlé.",
+]
+themes = ["royauté", "portrait", "yoruba", "bronze", "nigeria"]
+anecdote = """
+Quand l'ethnologue allemand Leo Frobenius vit à Ifé, en 1910, des têtes de ce style, \
+il refusa d'y voir l'œuvre d'artistes africains et imagina qu'elles venaient de \
+l'Atlantide ou de colons grecs : un préjugé que l'archéologie a depuis entièrement \
+démenti."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Pendentif-masque de la reine mère Idia"
+artiste = "Royaume du Bénin, Edo"
+annee = "XVIᵉ siècle"
+image = "masque-idia.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Queen_Mother_Pendant_Mask-_Iyoba_MET_DP231460.jpg"
+technique = "Ivoire, incrustations de fer et de laiton, 23,8 × 12,7 × 6,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un petit masque d'ivoire que l'oba du Bénin portait à la ceinture, à l'effigie de sa mère, Idia, première reine mère du royaume. Haut de 24 cm, il est montré ici agrandi."
+description = """
+Le visage d'une femme, sculpté dans l'ivoire, regarde droit devant lui. Les traits \
+sont fins et réguliers : un nez droit, des lèvres pleines, des yeux en amande dont les \
+pupilles sont incrustées de fer. Sur le front, deux bandes verticales de fer marquent \
+l'emplacement de scarifications. Les cheveux, tressés en petites boucles, sont rendus \
+par un semis de cercles. Au sommet, une sorte de diadème ajouré aligne de minuscules \
+têtes d'hommes barbus, coiffés à l'européenne, qui alternent avec des poissons. Un \
+collier ajouré du même type entoure le menton. L'ivoire, jauni par le temps, est \
+parcouru de fines craquelures, et des traces vertes de métal se devinent autour de la \
+bouche."""
+evocation = """
+Au début du XVIᵉ siècle, l'oba Esigie l'emporte dans une guerre contre le royaume \
+voisin d'Igala grâce, dit la tradition, aux conseils et aux pouvoirs de sa mère, Idia. \
+Il crée pour elle le titre d'iyoba, reine mère, avec son propre palais. Le masque \
+célèbre cette femme de pouvoir. Les petites têtes barbues sont des Portugais, arrivés \
+par la mer à la fin du XVᵉ siècle : pour les Edo, ces étrangers venus de l'océan \
+étaient associés à Olokun, dieu des eaux et de la richesse. Les poissons de vase, \
+capables de survivre hors de l'eau, évoquent le passage entre deux mondes, et la \
+puissance de l'oba, roi divin. L'oba portait ce pendentif à la hanche lors de \
+cérémonies de purification du royaume."""
+histoire = """
+Le masque a été sculpté pour la cour de Benin City, dans l'actuel Nigeria, par la \
+corporation des sculpteurs d'ivoire, au service exclusif de l'oba. En février 1897, \
+une expédition militaire britannique prend et incendie la ville, exile l'oba \
+Ovonramwen et emporte plusieurs milliers d'objets du palais. Celui-ci fait partie du \
+butin ; il passe ensuite par des collections britanniques avant d'être acquis par \
+Nelson Rockefeller, qui le donne au Met en 1972. Le Nigeria et la famille royale du \
+Bénin demandent depuis des décennies le retour de ces œuvres. Depuis 2021, des musées \
+et des universités d'Allemagne, des États-Unis et du Royaume-Uni ont commencé à \
+restituer des objets pillés en 1897 ; ce masque, lui, est toujours à New York."""
+facture = """
+L'ivoire, matériau royal au Bénin, est taillé avec une extrême finesse : les têtes du \
+diadème, hautes de quelques millimètres, ont chacune leur barbe et leur chapeau. Le \
+sculpteur joue sur les contrastes : surfaces lisses du visage, relief granuleux de la \
+chevelure, ajours de la couronne et du collier. Le fer, incrusté dans les yeux et sur \
+le front, assombrit le regard et rend la présence plus intense. Au revers, des \
+passants permettaient d'attacher le masque à la ceinture."""
+details = [
+  "Les petites têtes de Portugais barbus qui forment la couronne.",
+  "Les poissons de vase qui alternent avec elles.",
+  "Les deux bandes de fer verticales au milieu du front.",
+  "Les pupilles de fer, dont l'une a gardé tout son éclat sombre.",
+]
+themes = ["reine mère", "pouvoir", "ivoire", "portugais", "restitution"]
+anecdote = """
+Le jumeau de ce masque, au British Museum, est devenu l'emblème du FESTAC 77, grand \
+festival des arts africains organisé à Lagos en 1977. Le Nigeria avait demandé son \
+prêt ; faute de l'obtenir, il en fit réaliser une copie, et le masque est devenu un \
+symbole des demandes de restitution."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Plaque au chef guerrier"
+artiste = "Royaume du Bénin, Edo"
+annee = "vers 1540–1570"
+image = "plaque-chef-guerrier.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Plaque-_Warrior_Chief_MET_1979.206.98.jpeg"
+technique = "Laiton fondu à la cire perdue, 47,4 × 21,5 × 6,1 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "L'une des centaines de plaques de laiton qui couvraient les piliers du palais royal du Bénin : un chef de guerre en tenue d'apparat."
+description = """
+Sur une plaque rectangulaire de métal, un homme debout se détache en haut relief, de \
+face, presque comme une statue. Il porte un casque haut, tressé et garni de pointes et \
+d'une plume recourbée, et son cou disparaît dans un haut col de perles. Le torse est \
+nu ; un pagne aux bords ornés de motifs, noué sur la hanche, lui descend aux genoux, \
+et des bracelets enserrent ses poignets et ses chevilles. De la main gauche, il tient \
+une longue lance verticale. Le fond est gravé de motifs en forme de feuilles à quatre \
+lobes, à peine visibles. Aux bords de la plaque, plusieurs trous ronds montrent où \
+passaient les clous qui la fixaient au bois."""
+evocation = """
+Les plaques formaient une sorte d'archive en images de la cour : l'oba et ses \
+dignitaires, les guerriers, les musiciens, les rites, les étrangers portugais. Ce \
+chef, raide et frontal, n'est pas un individu mais un rang : le casque, le col de \
+perles de corail et la lance disent son statut et sa fonction militaire, au service du \
+roi. Au XVIᵉ siècle, le Bénin est un puissant royaume en expansion, qui commerce avec \
+les Portugais. Le métal lui-même raconte ce commerce : le laiton arrivait en partie \
+sous forme de manilles, des bracelets de métal que les Européens échangeaient contre \
+de l'ivoire, du poivre, des étoffes et, plus tard, des captifs. Les feuilles gravées \
+du fond sont souvent rattachées au culte d'Olokun."""
+histoire = """
+La plaque a été coulée par la corporation des fondeurs de Benin City, installée dans \
+une rue réservée et travaillant pour le seul oba. Clouée à un pilier du palais, elle \
+en est retirée plus tard et rangée avec les autres. En février 1897, après la mort de \
+membres d'une expédition britannique, une force de plus d'un millier d'hommes prend la \
+ville, l'incendie et emporte les trésors du palais, dont environ neuf cents plaques, \
+vendues pour payer l'opération et dispersées dans les musées d'Europe et d'Amérique. \
+Depuis 2021, des institutions d'Allemagne, des États-Unis et du Royaume-Uni ont rendu \
+au Nigeria des centaines d'objets ou leur propriété ; en 2021, le Met a lui-même rendu \
+au Nigeria deux plaques sorties illégalement des collections nationales nigérianes. \
+Celle-ci est entrée au Met en 1979 avec la collection de Nelson Rockefeller."""
+facture = """
+La plaque est coulée d'un seul jet, à la cire perdue, figure et fond ensemble. Le \
+relief est très fort : la tête et les épaules se détachent presque entièrement du \
+fond. Le fondeur a travaillé la cire avec minutie, pour rendre les perles du col une à \
+une, les tresses du casque et les motifs du pagne. Le fond, plat, est poinçonné de \
+petits points et gravé de feuilles, ce qui le fait vibrer sous la lumière. La \
+composition, symétrique et frontale, était pensée pour être lue de loin, sur les \
+piliers."""
+details = [
+  "Le haut col de perles qui cache le cou du guerrier.",
+  "Le casque tressé, hérissé de pointes, et sa plume recourbée.",
+  "Les feuilles à quatre lobes gravées dans le fond, de part et d'autre.",
+  "Les trous des clous, aux angles et sur les bords de la plaque.",
+]
+themes = ["guerrier", "cour royale", "laiton", "pillage", "restitution"]
+anecdote = """
+Les fondeurs de Benin City travaillent toujours : la corporation des Igun Eronmwon, \
+installée dans la même rue depuis des siècles, coule encore aujourd'hui des objets de \
+laiton à la cire perdue, selon les méthodes de ses ancêtres."""
+salle = 2
+mur = "sud"
+place = 4
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Masque de coureur (gunyege)"
+artiste = "Dan"
+annee = "début du XXᵉ siècle (?)"
+image = "masque-dan.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1972.331"
+technique = "Bois, métal, cuir et matières organiques, hauteur 22,9 cm"
+collection = "Cleveland Museum of Art"
+note = "Un masque des Dan de Côte d'Ivoire ou du Liberia, au front haut et aux yeux cerclés de métal, porté par un coureur lors de courses masquées. Haut de 23 cm, il est montré ici agrandi."
+description = """
+Le masque, en bois sombre et poli, a la forme d'un ovale allongé, légèrement bombé. Le \
+front, très haut et lisse, occupe presque la moitié du visage. Les yeux sont deux \
+grands trous ronds, cerclés d'anneaux de métal clair qui leur donnent un regard fixe \
+et lumineux. Le nez est court, les narines bien marquées. La bouche, entrouverte, \
+laisse voir une rangée de dents. Tout autour du visage, une ligne de petits trous suit \
+le bord du masque. La surface brune, patinée par l'usage, est striée de fines lignes \
+et marquée de taches plus claires là où le bois a été usé ou frotté."""
+evocation = """
+Chez les Dan, un masque n'est pas une simple sculpture : il est la demeure d'un esprit \
+de la forêt, qui se manifeste au village lorsque le masque est porté, avec son \
+costume, par un danseur dont l'identité reste secrète. Chaque masque a un rôle et un \
+nom. Ce type au front haut, du nord du pays dan, est appelé sagbwe ou gunyege. Le \
+gunyege est un « masque coureur » : il prenait part à des courses organisées chaque \
+semaine pendant la saison sèche. Ses yeux ronds et larges, dit-on, permettaient au \
+porteur de bien voir en courant. Le masque pouvait aussi veiller contre le feu, quand \
+souffle l'harmattan, vent sec et dangereux venu du Sahara."""
+histoire = """
+Le Cleveland Museum of Art ne connaît pas le nom du sculpteur ni le village d'origine \
+du masque : on sait seulement qu'il a été taillé par un artiste du style dan, dans la \
+région qui chevauche aujourd'hui la Côte d'Ivoire et le Liberia, sans doute au début \
+du XXᵉ siècle. Comme beaucoup d'objets dan, il a été acheté par des collectionneurs \
+occidentaux à une époque où l'on ne relevait guère le contexte des objets. Il \
+appartenait à Katherine White, grande collectionneuse d'art africain de Cleveland, qui \
+l'a donné au musée en 1972. Les spécialistes ont remarqué que ses yeux ont été \
+modifiés : à l'origine, c'étaient des fentes, transformées plus tard en cercles, signe \
+que le masque a changé de fonction au cours de sa vie."""
+facture = """
+Le sculpteur a taillé le masque dans un seul bloc de bois, à l'herminette puis au \
+couteau, en creusant l'intérieur pour qu'il s'ajuste au visage. La surface a été \
+noircie et polie ; l'usage et les soins répétés lui ont donné sa patine brillante. Le \
+style dan du nord se reconnaît au front haut et bombé, à l'ovale régulier et aux \
+volumes simples et tendus. Les trous du pourtour servaient à attacher une coiffure de \
+fibres et le costume qui cachait le porteur ; les anneaux de métal ont été ajoutés \
+autour des yeux."""
+details = [
+  "Les anneaux de métal qui entourent les yeux ronds.",
+  "Sur l'œil droit du masque, la trace de l'ancienne fente, avant l'agrandissement.",
+  "La rangée de petits trous qui suit le bord du visage.",
+  "Les dents visibles dans la bouche entrouverte.",
+]
+themes = ["masque", "esprit", "course", "forêt", "côte d'ivoire"]
+anecdote = """
+Chez les Dan, on ne dit pas qu'un homme porte un masque : c'est l'esprit du masque qui \
+apparaît. Révéler qui se trouve sous le costume était un interdit grave, et les femmes \
+et les enfants n'étaient pas censés le savoir."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Tête de gardien de reliquaire (nlô byeri)"
+artiste = "Fang"
+annee = "XIXᵉ siècle"
+image = "tete-byeri-fang.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Sculptural_Element_from_a_Reliquary_Ensemble-_Head_(The_Great_Bieri)_MET_DT1238.jpg"
+technique = "Bois, alliage de cuivre, huile de palme, 46,5 × 24,8 × 16,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une tête fang du Gabon, connue sous le surnom de « Grand Byeri » : elle veillait sur une boîte contenant les reliques des ancêtres d'une famille."
+description = """
+Une grande tête de bois noir et brillant se dresse sur un long cou cylindrique, planté \
+dans un socle moderne. Le visage, en forme de cœur allongé, est dominé par un front \
+énorme et bombé, qui descend en deux arcs vers les yeux. Ceux-ci sont deux disques de \
+métal, ternis, posés au fond de cavités. Le nez, long et étroit, rejoint une petite \
+bouche aux lèvres serrées, projetée en avant au-dessus d'un menton pointu. De chaque \
+côté, une longue tresse plate encadre le visage et descend le long du cou, garnie de \
+deux disques. Une fente profonde traverse le bois du sommet du crâne jusqu'au menton. \
+La surface, luisante, semble encore humide par endroits."""
+evocation = """
+Chez les Fang, les os des ancêtres importants, et surtout leurs crânes, étaient \
+conservés dans des boîtes cylindriques en écorce, gardées par le chef de famille. Sur \
+le couvercle, une statue ou, comme ici, une tête, le byeri, veillait sur ces reliques \
+et les protégeait des regards des non-initiés. Le visage n'est pas un portrait. Avec \
+son grand front et ses proportions de nouveau-né, on y a vu l'union de l'ancêtre et de \
+l'enfant, de la mort et de la renaissance. On a souvent parlé de son calme, de sa \
+concentration presque méditative. Pour les artistes européens du début du XXᵉ siècle, \
+de telles têtes ont été une révélation : une sculpture qui simplifie les formes sans \
+rien perdre de sa force."""
+histoire = """
+La tête a été sculptée au XIXᵉ siècle par un artiste betsi, l'un des groupes fang du \
+Gabon. Le culte du byeri recule à partir de la fin du XIXᵉ siècle, sous la pression \
+des missionnaires et de l'administration coloniale française, qui le combattent : \
+beaucoup de reliquaires sont alors détruits, séparés de leurs boîtes ou vendus. Les \
+têtes et les statues arrivent ainsi en Europe, où marchands et collectionneurs les \
+recherchent, sans les reliques qu'elles gardaient. Celle-ci, devenue l'une des plus \
+célèbres, est entrée dans la collection de Nelson Rockefeller, qui l'a léguée au Met \
+en 1979 avec son ensemble d'art d'Afrique, d'Océanie et des Amériques."""
+facture = """
+Le sculpteur a taillé la tête et le cou dans un seul morceau de bois. Les volumes sont \
+réduits à quelques formes pleines : la coque du front, les plans creusés des joues, \
+l'avancée de la bouche. Les tresses, plates, forment un cadre qui équilibre la \
+composition. Le bois était régulièrement enduit d'huile de palme lors des rites : la \
+matière, en s'accumulant, a formé cette croûte noire et luisante, qui suinte encore. \
+Les yeux de métal accrochent la lumière dans la pénombre."""
+details = [
+  "Les deux disques de métal des yeux, au fond de leurs orbites.",
+  "La fente qui court du sommet du front jusqu'au menton.",
+  "Les tresses plates, de chaque côté, garnies de deux disques ronds.",
+  "La surface luisante, épaissie par l'huile de palme accumulée.",
+  "Le long cou, qui s'enfonçait dans la boîte à reliques.",
+]
+themes = ["ancêtres", "reliquaire", "gabon", "bois", "culte"]
+anecdote = """
+Lors de l'initiation des jeunes gens, les Fang retiraient les byeri de leurs boîtes et \
+les faisaient danser derrière une tenture, comme des marionnettes, pour présenter les \
+ancêtres à la nouvelle génération."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Pendentif hei-tiki"
+artiste = "Māori"
+annee = "XIXᵉ siècle"
+image = "hei-tiki.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Unknown_artist_-_Pendant_(Hei-tiki)_-_1969.107_-_Cleveland_Museum_of_Art.jpg"
+technique = "Néphrite (pounamu, jade de Nouvelle-Zélande), 16,9 × 10,2 cm"
+collection = "Cleveland Museum of Art"
+note = "Un pendentif de jade vert en forme de figure humaine, porté au cou par les Māori et transmis de génération en génération. Haut de 17 cm, il est montré ici agrandi."
+description = """
+Une petite figure humaine, taillée dans une pierre d'un vert profond, est assise, les \
+jambes repliées et écartées, qui forment en bas une large base arrondie. Sa tête, \
+énorme, occupe près de la moitié de la hauteur et penche sur le côté. Deux grands yeux \
+ronds, chacun fait d'un anneau en relief autour d'un bouton central, se trouvent ainsi \
+à des hauteurs différentes ; à côté, une bouche et une main sont réduites à des \
+courbes gravées. Les bras, pliés, dessinent deux anses de part et d'autre du torse \
+plat. Entre les membres, des ajours laissent passer la lumière. La pierre est polie au \
+point de briller ; son vert, presque noir dans les creux, s'éclaircit sur les arêtes \
+et se tache par endroits de veines plus claires."""
+evocation = """
+Hei signifie « porté au cou » et tiki désigne une figure humaine. Pour les Māori, ces \
+pendentifs sont des taonga, des trésors chargés de mana, le prestige et la puissance \
+spirituelle de ceux qui les ont portés. Ils se transmettent dans les familles de chef, \
+au fil des générations, et relient les vivants à leurs ancêtres. Que représente la \
+figure ? On y a vu Tiki, le premier homme des récits māori, ou un ancêtre ; le \
+Cleveland Museum of Art rappelle aussi l'hypothèse de Hine-te-iwaiwa, ancêtre \
+légendaire, modèle de la femme et protectrice des naissances. La tête inclinée et la \
+posture repliée ont parfois été rapprochées de celle d'un embryon."""
+histoire = """
+Le pounamu, ce jade vert, ne se trouve que dans l'île du Sud de la Nouvelle-Zélande, \
+surtout sur la côte ouest et dans les rivières ; les Māori appellent d'ailleurs l'île \
+Te Wai Pounamu, « les eaux du jade ». La pierre circulait par échanges dans tout le \
+pays. Au XIXᵉ siècle, de nombreux hei-tiki quittent la Nouvelle-Zélande, colonisée par \
+les Britanniques à partir de 1840, achetés ou recueillis par des voyageurs, des marins \
+et des collectionneurs. Celui-ci est passé par la collection de l'Anglais Harry \
+Beasley, grand collectionneur d'objets du Pacifique, puis par celle de John Wise. Il \
+est entré au Cleveland Museum of Art en 1969, offert par Mr. et Mrs. James B. Wadhams."""
+facture = """
+La néphrite est une pierre très dure, que l'on ne peut pas tailler au couteau. Avant \
+l'arrivée des outils de métal européens, les sculpteurs māori la découpaient en la \
+sciant avec des lames de grès et de l'eau, puis la creusaient et la perçaient avec des \
+forets de pierre, et la polissaient pendant des heures avec du sable : la fabrication \
+d'un hei-tiki pouvait prendre des mois. Les formes, pleines et arrondies, épousent \
+l'épaisseur de la plaque de pierre de départ. Le poli, porté à l'extrême, fait sortir \
+la profondeur de la couleur."""
+details = [
+  "La grande tête inclinée sur le côté.",
+  "L'œil rond, cerclé d'un épais bourrelet de pierre.",
+  "Les bras pliés en anse de chaque côté du torse.",
+  "Les ajours entre les bras, les jambes et le torse.",
+  "Les nuances du vert, plus sombre dans les creux.",
+]
+themes = ["jade", "ancêtres", "parure", "polynésie", "nouvelle-zélande"]
+anecdote = """
+Les yeux des hei-tiki étaient souvent incrustés de nacre de paua, l'ormeau de \
+Nouvelle-Zélande aux reflets bleu-vert, ou de cire rouge. Sur celui-ci, les yeux sont \
+taillés dans la pierre elle-même, en anneaux concentriques."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Planche d'esprit (hohao)"
+artiste = "Elema, golfe de Papouasie"
+annee = "avant 1930"
+image = "planche-esprit-elema.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1971.154"
+technique = "Bois peint, hauteur 123,2 cm"
+collection = "Cleveland Museum of Art"
+note = "Une planche sacrée de Papouasie-Nouvelle-Guinée, habitée par un esprit de la brousse dont elle portait le nom, et conservée dans la maison des hommes."
+description = """
+Une planche de bois ovale, haute de plus d'un mètre, se termine en haut et en bas par \
+un court tenon. Sur un fond blanchi, un personnage est gravé et peint en rouge brun. \
+Il est presque tout visage : deux grands yeux en amande, aux pupilles faites de \
+cercles concentriques, encadrent un nez long et pointu, sculpté en relief, et une \
+large bouche hérissée de dents en zigzag. Au-dessus, des chevrons et des dents de scie \
+forment comme une coiffe. Sous le visage, deux petits bras se lèvent, mains ouvertes, \
+de part et d'autre d'un corps en forme d'œuf, peint en rouge, au centre duquel un \
+cercle marque le nombril. Deux jambes maigres, pliées, descendent vers le bas. Des \
+bandes de chevrons suivent les bords de la planche."""
+evocation = """
+Chez les Elema, qui vivent sur la côte du golfe de Papouasie, au sud de la \
+Nouvelle-Guinée, chaque planche était habitée par un esprit de la brousse, dont elle \
+portait le nom. Les planches étaient gardées dans la grande maison des hommes, au cœur \
+du village, avec d'autres objets sacrés, à l'abri du regard des femmes et des enfants. \
+On leur demandait, rapportent les observateurs du début du XXᵉ siècle, protection et \
+succès, à la chasse comme à la guerre. Le visage peint n'est pas celui d'un homme : \
+c'est la présence de l'esprit, rendue visible. Les motifs géométriques répètent des \
+formes que l'on retrouve sur les grands masques des cérémonies elema."""
+histoire = """
+La planche a été sculptée et peinte avant 1930 dans la région du golfe de Papouasie, \
+alors administrée par l'Australie. À cette époque, l'arrivée des missionnaires et des \
+administrateurs bouleverse la vie religieuse : les grandes cérémonies se raréfient, \
+des maisons des hommes sont abandonnées et beaucoup d'objets sacrés sont vendus ou \
+emportés par des collectionneurs et des musées occidentaux. L'anthropologue australien \
+Francis Edgar Williams étudie alors la région d'Orokolo et décrit les cérémonies \
+elema. La planche est entrée au Cleveland Museum of Art en 1971, offerte par le Dr et \
+Mrs. Thomas Munro."""
+facture = """
+La planche est taillée dans un seul panneau de bois, aminci et arrondi, avec ses deux \
+tenons. Seul le nez est sculpté en relief ; tout le reste est obtenu par la gravure de \
+sillons peu profonds, puis par la peinture. Les couleurs sont des pigments naturels : \
+ocre rouge et blanc de chaux ou d'argile, sur le brun du bois. Le décor, presque \
+symétrique, s'organise autour de l'axe du nez."""
+details = [
+  "Les pupilles faites de cercles concentriques.",
+  "Le nez pointu, seul élément sculpté en relief.",
+  "La bouche aux dents en zigzag.",
+  "Les petites mains levées de part et d'autre du corps rouge.",
+  "Le cercle du nombril au centre du corps.",
+]
+themes = ["esprit", "maison des hommes", "peinture", "papouasie", "sacré"]
+anecdote = """
+Les Elema donnaient à chaque planche le nom de l'esprit qui l'habitait : pour eux, ces \
+planches n'étaient pas des images interchangeables, mais des êtres individuels, que \
+l'on connaissait et que l'on nommait comme des personnes."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 0.6
+
+[[oeuvres]]
+titre = "Visage de jade"
+artiste = "Olmèques"
+annee = "900–400 av. J.-C."
+image = "visage-olmeque.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/310279"
+technique = "Jadéite, 14,6 × 14 × 7,6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un visage humain taillé dans une jadéite vert sombre par les Olmèques du golfe du Mexique, la plus ancienne grande civilisation de la Mésoamérique. Haut de 15 cm, il est montré ici agrandi."
+description = """
+Un visage d'homme, de face, est taillé dans une pierre verte, sombre et veinée de \
+taches plus claires. Les traits sont pleins et puissants : larges pommettes, nez court \
+et épaté, paupières lourdes, yeux en amande à peine ouverts, creusés en légères \
+fentes. La bouche, aux lèvres épaisses, s'entrouvre, et ses coins s'abaissent \
+légèrement. Le visage est coupé net au-dessus du front, comme par un bandeau, et sur \
+les côtés ; de petits trous percent les bords, près des oreilles. La surface, polie, \
+accroche la lumière sur les reliefs et la garde dans les creux. On ne voit ni cou ni \
+chevelure : c'est un masque plutôt qu'une tête."""
+evocation = """
+Les Olmèques, qui vivaient sur la côte du golfe du Mexique, dans les actuels États de \
+Veracruz et de Tabasco, sont connus pour leurs têtes colossales de basalte et pour \
+leurs objets de jade. Pour eux, comme plus tard pour les Mayas et les Aztèques, la \
+pierre verte était plus précieuse que l'or : elle évoquait l'eau, le maïs vert, la vie \
+et le souffle. Ce visage idéal, calme et grave, a été rapproché de ceux des souverains \
+et de leurs ancêtres. La bouche aux coins tombants rappelle les figures olmèques que \
+l'on dit « à visage de jaguar », êtres mêlant l'homme et l'animal. On ignore si ces \
+masques étaient portés, attachés à un costume ou déposés dans des tombes."""
+histoire = """
+Le visage a été taillé entre 900 et 400 avant J.-C., à l'époque où La Venta, dans \
+l'actuel Tabasco, est le grand centre olmèque. On ne connaît ni son lieu de découverte \
+ni son histoire ancienne : comme la plupart des jades olmèques des musées, il est \
+apparu sur le marché de l'art sans indication de fouille. Ces objets précieux \
+circulaient déjà dans l'Antiquité : les Mayas et les Aztèques en retrouvaient, les \
+gardaient et les réutilisaient comme des reliques, plusieurs siècles après leur \
+fabrication. Celui-ci a appartenu à la collectionneuse new-yorkaise Alice K. Bache, \
+qui l'a légué au Met en 1977."""
+facture = """
+La jadéite est une pierre si dure qu'elle ne se laisse pas tailler par des outils de \
+métal ordinaires ; les Olmèques n'en avaient d'ailleurs pas. Le sculpteur l'a usée \
+patiemment avec des abrasifs, du sable et de l'eau, des cordelettes et des forets de \
+bois ou d'os, puis l'a polie longuement. Le travail se voit dans la douceur des \
+passages entre les volumes : les joues, les paupières et les lèvres semblent modelées \
+comme de la cire. Les perforations latérales, faites au foret, permettaient sans doute \
+de fixer le visage."""
+details = [
+  "Les yeux mi-clos, simples fentes dans la pierre.",
+  "La bouche entrouverte, aux coins légèrement tombants.",
+  "Les veines plus claires qui traversent la jadéite.",
+  "Les petits trous percés sur les bords, près des oreilles.",
+]
+themes = ["jade", "mésoamérique", "visage", "souverain", "mexique"]
+anecdote = """
+Les Aztèques collectionnaient déjà les antiquités olmèques : un masque de pierre verte \
+de style olmèque, vieux de plus de deux mille ans à l'époque, a été retrouvé parmi les \
+offrandes enterrées au Templo Mayor de Tenochtitlan."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Pendentif au personnage masqué"
+artiste = "Tairona"
+annee = "900–1600"
+image = "pendentif-tairona.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Masked_Figure_Pendant_MET_DP215717.jpg"
+technique = "Or fondu à la cire perdue, 13,3 × 14,6 × 5,1 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un pendentif d'or des Tairona, peuple de la Sierra Nevada de Santa Marta, dans le nord de la Colombie : un homme masqué sous une immense coiffe. Large de 15 cm, il est montré ici agrandi."
+description = """
+Un petit homme trapu se tient debout, de face, sur des jambes courtes et massives. Ses \
+bras pendent le long du corps et ses mains serrent deux objets terminés par des \
+spirales, à hauteur des hanches. Une ceinture tressée lui serre la taille. Son visage \
+disparaît derrière un masque animal à large bouche garnie de dents. Au-dessus s'élève \
+une coiffe immense, bien plus large que lui : deux petites têtes d'oiseaux au bec \
+recourbé se penchent au sommet du crâne ; de chaque côté, deux grands éléments plats, \
+en forme d'ailes ou de têtes d'oiseaux pourvues d'un œil, s'étendent comme des \
+oreilles ; plus haut encore, deux arcs de fil d'or tressé s'enroulent en volutes, \
+accompagnés de disques en spirale. L'or, d'un jaune chaud, brille sur les reliefs."""
+evocation = """
+Le personnage est sans doute un homme de haut rang, chef ou prêtre, paré pour une \
+cérémonie. Le masque et la coiffe aux têtes d'oiseaux suggèrent une transformation : \
+au cours du rite, l'homme prend la force de l'animal. Pour les peuples de Colombie, \
+l'or n'était pas une monnaie mais une matière sacrée, liée au soleil et à la \
+fertilité, qui faisait briller celui qui le portait. Les Kogi, les Arhuaco et les \
+Wiwa, descendants des Tairona qui vivent toujours dans la Sierra Nevada, se \
+considèrent comme les gardiens de l'équilibre du monde."""
+histoire = """
+Les Tairona bâtissaient des villages de pierre, reliés par des escaliers et des \
+chemins dallés, sur les pentes de la Sierra Nevada de Santa Marta, au-dessus de la mer \
+des Caraïbes. Leurs orfèvres ont produit de nombreux pendentifs de ce type entre le Xᵉ \
+et le XVIᵉ siècle. À partir de 1525, les Espagnols fondent Santa Marta et cherchent \
+l'or de la région ; après des décennies de guerres, les Tairona se replient dans les \
+hauteurs de la montagne. Une grande partie de l'or amérindien saisi par les \
+conquérants a été fondu en lingots ; les pièces conservées sortent surtout de tombes. \
+Celle-ci a été donnée au Met en 1991 par le collectionneur Jan Mitchell."""
+facture = """
+Le pendentif est coulé à la cire perdue : l'orfèvre modelait chaque élément en cire, \
+roulait de fins fils de cire pour les spirales et les torsades, recouvrait l'ensemble \
+d'argile, puis faisait couler le métal en fusion à la place de la cire. Les Tairona \
+utilisaient souvent un alliage d'or et de cuivre, appelé tumbaga, dont ils faisaient \
+ressortir l'or en surface par un traitement chimique, pour lui donner l'éclat de l'or \
+pur. Le travail combine des parties pleines, comme le corps, et des parties ajourées \
+très légères."""
+details = [
+  "Les deux petites têtes d'oiseaux au bec crochu, au sommet du crâne.",
+  "Les arcs de fil d'or tressé qui s'enroulent en volutes.",
+  "Le masque à la large bouche dentée, qui cache le visage.",
+  "Les objets à spirales que le personnage tient dans chaque main.",
+  "Les orteils, finement indiqués, sous les pieds trapus.",
+]
+themes = ["or", "orfèvrerie", "colombie", "masque", "transformation"]
+anecdote = """
+La « Ciudad Perdida », la Ville perdue des Tairona, avec ses terrasses de pierre \
+cachées dans la forêt de la Sierra Nevada, n'a été révélée au grand public que dans \
+les années 1970, après sa découverte par des pilleurs de tombes."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Chemise peinte de chef"
+artiste = "Lakota"
+annee = "vers 1890"
+image = "chemise-lakota.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:America,_Native_North_American,_Central_Plains,_Lakota_Sioux,_19th_century_-_Hide_Shirt_-_1984.1046_-_Cleveland_Museum_of_Art.tif"
+technique = "Peau, pigments, perles de verre, cheveux humains, 97,8 × 150 cm"
+collection = "Cleveland Museum of Art"
+note = "Une chemise de peau peinte des Lakota des Grandes Plaines, ornée de bandes de perles et de mèches de cheveux : chaque mèche rappelle un exploit guerrier."
+description = """
+La chemise, étalée bras ouverts, mesure un mètre cinquante d'une manche à l'autre. \
+Elle est faite de peaux tannées, coupées simplement. La partie haute et les manches \
+sont peintes d'un vert un peu bleuté, la partie basse d'un jaune vif : les deux \
+couleurs se fondent l'une dans l'autre à hauteur de la taille. Au col, un petit \
+plastron perlé est rayé de bandes horizontales. Sur les épaules et le long des manches \
+courent de larges bandes brodées de perles de verre, à fond blanc, ornées de losanges \
+et de petites croix rouges, bleues et vertes. Le long de ces bandes pendent de longues \
+mèches de cheveux sombres, liées à leur sommet par des bandes rouges. Le bas de la \
+chemise et les poignets se terminent par des franges de peau découpée."""
+evocation = """
+Chez les Lakota, l'une des nations de ceux que les Européens ont appelés Sioux, les \
+chemises peintes étaient d'abord le privilège des grands chefs, les « porteurs de \
+chemise ». Ce rang se gagnait par le courage et le sacrifice, et se perdait si l'on \
+manquait à ses devoirs. Les deux couleurs ont souvent été lues comme le ciel et la \
+terre. Les mèches de cheveux, données par des membres de la famille, représentaient \
+chacune un exploit de guerre. Vers 1890, quand cette chemise est faite, les Lakota \
+sont enfermés dans des réserves ; la chemise peinte est devenue l'honneur des anciens \
+combattants, un souvenir de la vie libre des Plaines."""
+histoire = """
+La chemise a été faite vers 1890, au moment le plus sombre de l'histoire lakota. Les \
+bisons ont été exterminés, les terres des Black Hills, sacrées pour les Lakota, ont \
+été prises par les États-Unis après la découverte d'or, et les familles vivent dans \
+des réserves. Le 29 décembre 1890, l'armée américaine massacre plusieurs centaines de \
+Lakota, hommes, femmes et enfants, à Wounded Knee, dans la réserve de Pine Ridge. On \
+ignore qui a fait et porté cette chemise et comment elle a quitté sa famille. Elle a \
+appartenu à David S. McMillan, de Cleveland, qui l'a léguée au musée en 1984."""
+facture = """
+La chemise est faite de peaux de cervidé tannées, cousues au tendon. Les couleurs sont \
+appliquées au pinceau, sur de grandes surfaces, avec des pigments minéraux ou, déjà à \
+cette époque, des couleurs achetées aux comptoirs. Les bandes sont brodées de petites \
+perles de verre importées d'Europe, cousues en rangs serrés : c'était un travail de \
+femmes, très estimé, qui a remplacé peu à peu la broderie traditionnelle en piquants \
+de porc-épic. Les franges et les mèches donnent du mouvement au vêtement lorsque \
+l'homme marche ou danse."""
+details = [
+  "Les mèches de cheveux noirs qui pendent le long des bandes perlées.",
+  "Les petites croix rouges brodées sur fond de perles blanches.",
+  "Le dégradé où le vert du haut se fond dans le jaune du bas.",
+  "Les franges de peau découpée au bas de la chemise et aux poignets.",
+]
+themes = ["plaines", "chef", "perles", "honneur", "réserves"]
+anecdote = """
+Les perles de verre que brodaient les femmes lakota venaient en grande partie de \
+Venise et de Bohême : elles traversaient l'Atlantique puis remontaient le Missouri \
+jusqu'aux postes de traite des Grandes Plaines."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Ifé, royaume yoruba"
+vie = "Ifé (sud-ouest de l'actuel Nigeria), XIIᵉ–XVᵉ siècle"
+biographie = """
+Ifé, ou Ilé-Ifẹ̀, est pour les Yoruba la ville sainte par excellence : c'est là, selon \
+leurs récits, que les dieux ont créé la terre et que le premier roi, Oduduwa, a fondé \
+la dynastie dont descendent les souverains des autres royaumes yoruba. Entre le XIIᵉ \
+et le XVᵉ siècle environ, Ifé est une grande cité entourée de remparts, au cœur de \
+réseaux d'échanges qui la relient au fleuve Niger et, au-delà, aux routes du Sahara. \
+Ses rues sont pavées de tessons de poterie posés de chant, et ses ateliers fabriquent \
+des perles de verre, matière royale. Ses artistes, dont nous ne connaissons pas les \
+noms, ont laissé des têtes et des figures en terre cuite et en alliage cuivreux d'un \
+naturalisme sans équivalent en Afrique à cette époque, liées au culte des rois et à \
+leurs funérailles. Après le XVᵉ siècle, l'influence politique d'Ifé décline au profit \
+d'Oyo et du Bénin, mais la ville garde son prestige religieux. Son souverain, l'ooni, \
+compte toujours parmi les grands chefs traditionnels du Nigeria. Les fouilles du XXᵉ \
+siècle, de Leo Frobenius en 1910 à la découverte de Wunmonije en 1938, ont révélé ce \
+patrimoine au monde."""
+style = """
+L'art d'Ifé frappe par son naturalisme idéalisé : visages calmes, chairs pleines, \
+proportions justes, mais traits sans âge ni défaut. Les fondeurs maîtrisaient la fonte \
+à la cire perdue de pièces aux parois très fines, et les modeleurs de terre cuite \
+allaient du portrait à l'expressivité la plus libre. Cet art a profondément influencé \
+celui du Bénin voisin, dont la tradition rapporte qu'un fondeur d'Ifé aurait enseigné \
+la fonte du métal aux artistes de la cour."""
+
+[[artistes]]
+nom = "Royaume du Bénin, Edo"
+vie = "Benin City (sud de l'actuel Nigeria), XIIIᵉ siècle – aujourd'hui"
+biographie = """
+Le royaume du Bénin, à ne pas confondre avec la République du Bénin voisine, est \
+l'État des Edo, dans le sud du Nigeria actuel. Sa capitale, Benin City, est entourée \
+de longs remparts de terre. À sa tête règne l'oba, roi sacré, dont la dynastie remonte \
+selon la tradition à un prince venu d'Ifé. Aux XVᵉ et XVIᵉ siècles, sous les obas \
+Ewuare, Ozolua et Esigie, le royaume s'étend et devient une puissance régionale. Les \
+Portugais y arrivent dans les années 1480 et commercent avec la cour : ivoire, poivre, \
+étoffes et, plus tard, captifs, contre du laiton, des étoffes et des armes. Au palais, \
+des corporations d'artistes, fondeurs de laiton et sculpteurs d'ivoire et de bois, \
+travaillent pour le seul oba : elles produisent têtes commémoratives, plaques, statues \
+et parures. En février 1897, une expédition britannique prend la ville, l'incendie, \
+exile l'oba Ovonramwen et emporte des milliers d'objets, aujourd'hui dispersés dans \
+les musées du monde. La monarchie est rétablie en 1914 ; l'oba actuel, Ewuare II, \
+demande avec le Nigeria le retour de ces œuvres, dont une partie a commencé à revenir \
+depuis 2021."""
+style = """
+L'art de cour du Bénin est un art d'État, au service de la mémoire du roi. Il se \
+reconnaît à ses figures frontales et hiérarchisées, à la précision des parures, perles \
+de corail, colliers, armes, et à la virtuosité de la fonte à la cire perdue. Les \
+plaques et les ivoires racontent la vie de la cour et la rencontre avec les Européens, \
+devenus eux-mêmes des motifs. Les fondeurs de Benin City perpétuent ce savoir-faire \
+aujourd'hui."""
+
+[[artistes]]
+nom = "Dan"
+vie = "Ouest de la Côte d'Ivoire et Liberia, XIXᵉ–XXᵉ siècle"
+biographie = """
+Les Dan vivent dans les régions de forêt et de savane boisée qui s'étendent de part et \
+d'autre de la frontière entre la Côte d'Ivoire et le Liberia, autour de la ville de \
+Man. Cultivateurs de riz, ils vivent dans des villages indépendants, sans roi, où \
+l'autorité se partage entre les anciens, les chefs de famille et des associations \
+d'hommes. Les masques y tiennent une place essentielle : ce sont les manifestations \
+d'esprits de la forêt, qui apparaissent au village pour juger les conflits, \
+accompagner l'initiation des garçons, divertir, chanter, danser ou courir. Un masque \
+peut changer de rôle au cours de sa vie, monter en prestige et finir comme un masque \
+de juge respecté. Les sculpteurs dan, dont certains ont été célèbres de leur vivant, \
+comme Zlan au début du XXᵉ siècle, travaillaient sur commande et étaient connus pour \
+leur manière propre. Les masques dan sont entrés en grand nombre dans les collections \
+occidentales au XXᵉ siècle, et les ethnologues Hans Himmelheber et Eberhard Fischer \
+ont recueilli, auprès des Dan eux-mêmes, une partie de leur histoire et de leurs \
+usages."""
+style = """
+Le style dan se reconnaît à ses masques ovales, aux volumes lisses et tendus, au front \
+bombé, à la bouche pleine et aux yeux en fente ou ronds. La surface, noircie et polie, \
+prend une patine profonde. Leur simplicité et leur équilibre ont fait des masques dan \
+des modèles admirés par les artistes et les collectionneurs du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Fang"
+vie = "Gabon, Guinée équatoriale et sud du Cameroun, XIXᵉ siècle"
+biographie = """
+Les Fang sont un ensemble de peuples de langue bantoue établis dans les forêts du \
+Gabon, de la Guinée équatoriale et du sud du Cameroun. Au XIXᵉ siècle, ils migrent \
+vers le sud et l'ouest et atteignent la région de l'estuaire du Gabon et de l'Ogooué, \
+où les explorateurs et les commerçants européens les rencontrent. Leur société, sans \
+pouvoir central, repose sur des lignages dont l'unité est garantie par le culte des \
+ancêtres, le byeri : les crânes et les os des défunts importants sont conservés dans \
+des boîtes en écorce, surmontées de statues ou de têtes protectrices. Plusieurs \
+groupes, comme les Betsi, les Ntumu ou les Okak, ont chacun leur style. Avec la \
+colonisation française et la christianisation, à partir de la fin du XIXᵉ siècle, le \
+culte du byeri est combattu et décline ; de nombreuses sculptures sont détruites ou \
+vendues. Les Fang ont aussi des masques, comme ceux de l'association ngil, qui rendait \
+la justice. Arrivées à Paris au début du XXᵉ siècle, les sculptures fang comptent \
+parmi celles qui ont le plus frappé les artistes de l'avant-garde, Derain, Vlaminck ou \
+Picasso."""
+style = """
+La sculpture fang cherche l'équilibre entre des volumes pleins : grand front bombé, \
+visage concave en forme de cœur, bouche avancée, membres puissants. La surface, noire \
+et luisante, est nourrie d'huile au fil des rites. Les sculpteurs recherchent une \
+impression de calme et de maîtrise de soi, qualités que les Fang attribuaient aux \
+ancêtres."""
+
+[[artistes]]
+nom = "Māori"
+vie = "Aotearoa – Nouvelle-Zélande, XIIIᵉ siècle – aujourd'hui"
+biographie = """
+Les Māori sont le peuple polynésien qui s'est installé en Nouvelle-Zélande, qu'ils \
+appellent Aotearoa, vers le XIIIᵉ siècle, au terme de longues navigations en pirogue \
+depuis la Polynésie orientale. Organisés en tribus, les iwi, et en clans, ils \
+développent dans ces îles froides une culture originale : grandes maisons de réunion \
+sculptées, pirogues de guerre, tatouage du visage, le moko, tissage du lin, armes et \
+parures de jade. La pierre verte, le pounamu, est l'une des matières les plus \
+précieuses ; elle sert à faire des herminettes, des massues et des pendentifs. Le \
+premier Européen à atteindre ces côtes est le Hollandais Abel Tasman en 1642, puis \
+James Cook en 1769. Au XIXᵉ siècle arrivent les baleiniers, les missionnaires et les \
+colons ; en 1840, le traité de Waitangi place le pays sous souveraineté britannique, \
+et les guerres et la perte des terres qui suivent bouleversent la société māori. Les \
+objets anciens, devenus des taonga, des trésors, sont aujourd'hui au cœur des demandes \
+de retour et de la renaissance culturelle māori."""
+style = """
+L'art māori couvre les surfaces de spirales, de courbes et de motifs répétés, sculptés \
+dans le bois, l'os ou la pierre. Les figures humaines, souvent stylisées à l'extrême, \
+représentent des ancêtres et portent le mana de ceux qui les ont possédées. Le travail \
+du jade, lent et patient, donne des formes pleines, polies jusqu'à la transparence."""
+
+[[artistes]]
+nom = "Elema, golfe de Papouasie"
+vie = "Côte du golfe de Papouasie (Papouasie-Nouvelle-Guinée), XIXᵉ – début du XXᵉ siècle"
+biographie = """
+Les Elema vivent sur la côte est du golfe de Papouasie, au sud de la grande île de \
+Nouvelle-Guinée, dans une région de deltas, de mangroves et de plages, autour de la \
+baie d'Orokolo. Leurs villages s'organisent autour de grandes maisons des hommes, les \
+eravo, aux façades très hautes, où les garçons sont initiés et où l'on garde les \
+objets sacrés, dont les planches d'esprit. La vie religieuse y était rythmée par de \
+grands cycles de cérémonies, qui pouvaient durer des années et se terminaient par la \
+sortie de dizaines de masques immenses, les hevehe, faits d'écorce battue peinte \
+tendue sur une armature de rotin. Au début du XXᵉ siècle, la région est placée sous \
+administration australienne ; les missions et les changements de la vie économique \
+font reculer, puis disparaître, ces grands cycles au cours du XXᵉ siècle. \
+L'anthropologue Francis Edgar Williams les a décrites en détail dans son livre Drama \
+of Orokolo, paru en 1940. Beaucoup d'objets elema sont alors partis vers les musées \
+d'Australie, d'Europe et d'Amérique."""
+style = """
+L'art elema associe la sculpture en faible relief, la gravure et la peinture. Ses \
+figures, très stylisées, se réduisent à un visage aux grands yeux cernés, un nez \
+saillant et une bouche dentée, entourés de chevrons et de zigzags. Les couleurs, \
+rouge, blanc et noir, sont tirées de la terre et du charbon."""
+
+[[artistes]]
+nom = "Olmèques"
+vie = "Côte du golfe du Mexique (Veracruz et Tabasco), vers 1500–400 av. J.-C."
+biographie = """
+Les Olmèques sont la plus ancienne des grandes civilisations de la Mésoamérique. Ils \
+vivent dans les basses terres humides et marécageuses du sud du golfe du Mexique, dans \
+les actuels États de Veracruz et de Tabasco. Nous ignorons le nom qu'ils se donnaient \
+: celui d'Olmèques, « gens du pays du caoutchouc », leur a été attribué par les \
+archéologues d'après un terme aztèque. Vers 1200 avant J.-C., San Lorenzo devient un \
+grand centre, avec ses terrasses et ses monuments de basalte, dont des têtes \
+colossales de souverains hautes de plus de deux mètres. Vers 900 avant J.-C., La Venta \
+lui succède, avec sa pyramide de terre et ses offrandes enterrées de jade et de \
+serpentine. Les Olmèques font venir de très loin des pierres vertes, de l'obsidienne \
+et des coquillages, et leurs images se diffusent dans une grande partie du Mexique. \
+Vers 400 avant J.-C., La Venta est abandonnée. Mais beaucoup de traits olmèques, le \
+culte des pierres vertes, le jeu de balle, certaines divinités, se retrouvent chez les \
+Mayas et les peuples qui ont suivi."""
+style = """
+L'art olmèque est un art de la masse et de la pierre dure : têtes colossales de \
+basalte, haches, masques et figurines de jade poli. Les visages ont des traits pleins, \
+des paupières lourdes et une bouche épaisse aux coins tombants, parfois mêlés à des \
+traits de jaguar. Leur gravité et leur perfection technique ont fait des jades \
+olmèques des objets de prestige jusqu'à l'époque aztèque."""
+
+[[artistes]]
+nom = "Tairona"
+vie = "Sierra Nevada de Santa Marta (nord de la Colombie), vers 900–1600"
+biographie = """
+Les Tairona occupaient la Sierra Nevada de Santa Marta, massif isolé du nord de la \
+Colombie qui s'élève en quelques dizaines de kilomètres du bord de la mer des Caraïbes \
+jusqu'à des sommets enneigés de plus de 5 000 mètres. Entre le Xᵉ et le XVIᵉ siècle, \
+ils y bâtissent des centaines de villages et de petites villes, avec des terrasses, \
+des escaliers, des canaux et des chemins dallés de pierre, dont le plus célèbre est \
+Teyuna, la « Ville perdue ». Agriculteurs, ils cultivent le maïs, le manioc et les \
+fruits sur les pentes et commercent avec la côte. Leurs orfèvres produisent \
+pendentifs, ornements de nez et de lèvres, perles et figurines d'or et de tumbaga. À \
+partir de 1525, la fondation de Santa Marta par les Espagnols ouvre une longue période \
+de conflits ; les Tairona, vaincus à la fin du XVIᵉ siècle, se replient dans les \
+hauteurs. Leurs descendants, les Kogi, les Arhuaco, les Wiwa et les Kankuamo, vivent \
+toujours dans la Sierra et y maintiennent leurs traditions."""
+style = """
+L'orfèvrerie tairona se reconnaît à ses figures humaines trapues, couronnées de \
+coiffes énormes peuplées d'oiseaux et de spirales, et à l'usage de fils d'or tressés \
+imités dans la cire. Fondue à la cire perdue, souvent en tumbaga dorée en surface, \
+elle compte parmi les plus inventives de l'Amérique ancienne, à côté de celles des \
+Muisca, des Quimbaya ou des Sinú."""
+
+[[artistes]]
+nom = "Lakota"
+vie = "Grandes Plaines d'Amérique du Nord (Dakotas, Nebraska, Wyoming, Montana), XVIIIᵉ siècle – aujourd'hui"
+biographie = """
+Les Lakota sont la plus occidentale des trois grandes divisions de la nation que les \
+Européens ont appelée Sioux, aux côtés des Dakota et des Nakota. Venus de la région \
+des Grands Lacs, ils s'installent au XVIIIᵉ siècle dans les Grandes Plaines, adoptent \
+le cheval et vivent de la chasse au bison, en suivant les troupeaux. Organisés en sept \
+tribus, dont les Oglala et les Sicangu, ils font des Black Hills leur territoire \
+sacré. Au XIXᵉ siècle, l'avancée des colons, des chemins de fer et de l'armée des \
+États-Unis les entraîne dans une suite de guerres : sous la conduite de chefs comme \
+Red Cloud, Sitting Bull et Crazy Horse, ils remportent des victoires, dont celle de \
+Little Bighorn en 1876. Mais la destruction des bisons et la perte des Black Hills les \
+contraignent à vivre dans des réserves, où leur religion et leur langue sont \
+combattues. En décembre 1890, le massacre de Wounded Knee marque la fin de cette \
+période. Les Lakota vivent aujourd'hui surtout dans les réserves du Dakota du Sud et \
+du Nord, comme Pine Ridge et Standing Rock."""
+style = """
+L'art lakota est d'abord un art du vêtement et des objets du quotidien : peaux \
+peintes, broderies de piquants de porc-épic puis de perles de verre, aux motifs \
+géométriques de losanges, de triangles et de croix. Les femmes en étaient les grandes \
+artistes ; les hommes peignaient les récits de leurs exploits sur les peaux et les \
+chemises."""
