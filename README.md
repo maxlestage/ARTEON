@@ -4,17 +4,20 @@
 
 ARTEON est un musée qui n'existe pas. Chaque exposition est consacrée à un peintre : ses toiles sont accrochées dans des salles reliées par des couloirs, et une caméra fait la visite guidée en boucle, en s'arrêtant devant chaque œuvre. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML et les scènes 3D, compilées en WebAssembly et rendues en WebGL 2.
 
-Deux expositions sont ouvertes :
+Trois expositions sont ouvertes :
 
 - **Van Gogh, la couleur en mouvement** — douze toiles de Vincent van Gogh (1885–1890), des *Mangeurs de pommes de terre* au *Champ de blé aux corbeaux* ;
-- **Monet, la lumière à l'œuvre** — douze toiles de Claude Monet (1866–1922), de *Femmes au jardin* et *Impression, soleil levant* jusqu'aux *Nymphéas* et au *Pont japonais*.
+- **Monet, la lumière à l'œuvre** — douze toiles de Claude Monet (1866–1922), de *Femmes au jardin* et *Impression, soleil levant* jusqu'aux *Nymphéas* et au *Pont japonais* ;
+- **Renoir, le bonheur de peindre** — dix toiles de Pierre-Auguste Renoir (1874–1892), de *La Loge* au *Bal du moulin de la Galette* et aux trois grandes *Danses*.
+
+Seuls des peintres du **domaine public** (morts depuis plus de 70 ans) sont exposés : c'est pourquoi il n'y a pas, par exemple, d'exposition Picasso (mort en 1973, ses œuvres sont protégées jusqu'en 2044).
 
 ## Les pages
 
 | Route | Contenu |
 |---|---|
 | `/` | L'accueil du musée : le concept, les chiffres clés, les expositions et comment c'est fait |
-| `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/monet`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
+| `/<exposition>` | La présentation d'une exposition (`/van-gogh`, `/monet`, `/renoir`) : une toile sur un chevalet tournant en 3D, le parcours salle par salle, des reproductions |
 | `/<exposition>/galerie` | La visite guidée en 3D de l'exposition |
 | `/<exposition>/oeuvres` | Le catalogue : chaque toile, son cartel (technique, collection, note) et sa place dans la galerie |
 | `/ajouter` | Le guide pour ajouter, déplacer ou modifier une œuvre, ou créer une exposition, avec le plan des emplacements libres |
@@ -70,7 +73,7 @@ Dans la scène, les cases voisines de même couleur sont fusionnées en rectangl
 
 ## Les œuvres (domaine public)
 
-Vincent van Gogh (mort en 1890) et Claude Monet (mort en 1926) sont dans le domaine public. Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
+Vincent van Gogh (mort en 1890), Claude Monet (mort en 1926) et Pierre-Auguste Renoir (mort en 1919) sont dans le domaine public. Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
 
 **Van Gogh, la couleur en mouvement**
 
@@ -105,6 +108,21 @@ Vincent van Gogh (mort en 1890) et Claude Monet (mort en 1926) sont dans le doma
 | III · Londres et Giverny | Le Parlement de Londres, soleil couchant | 1903 | National Gallery of Art, Washington |
 | | Nymphéas | 1906 | Art Institute of Chicago |
 | | Le Pont japonais | 1920–1922 | Museum of Modern Art, New York |
+
+**Renoir, le bonheur de peindre**
+
+| Salle | Œuvre | Année | Collection |
+|---|---|---|---|
+| I · Les années impressionnistes | La Loge | 1874 | The Courtauld, Londres |
+| | La Fillette à l'arrosoir | 1876 | National Gallery of Art, Washington |
+| | Bal du moulin de la Galette | 1876 | Musée d'Orsay, Paris |
+| II · La vie moderne | Le Déjeuner des canotiers | 1880–1881 | The Phillips Collection, Washington |
+| | Deux Sœurs (Sur la terrasse) | 1881 | Art Institute of Chicago |
+| | Les Parapluies | vers 1881–1886 | National Gallery, Londres |
+| III · Danses et jeunes filles | Danse à Bougival | 1883 | Museum of Fine Arts, Boston |
+| | Danse à la ville | 1883 | Musée d'Orsay, Paris |
+| | Danse à la campagne | 1883 | Musée d'Orsay, Paris |
+| | Jeunes filles au piano | 1892 | Musée d'Orsay, Paris |
 
 ## Architecture
 
@@ -153,4 +171,4 @@ Chaque page est rendue par le serveur lui-même (le client de test en mémoire d
 
 ## Licence
 
-Le code d'ARTEON est sous licence MIT. Il dépend de [Paquets](https://github.com/maxlestage/Paquets), un logiciel propriétaire qui peut être utilisé librement comme dépendance (voir sa licence). Les œuvres de Vincent van Gogh et de Claude Monet appartiennent au domaine public.
+Le code d'ARTEON est sous licence MIT. Il dépend de [Paquets](https://github.com/maxlestage/Paquets), un logiciel propriétaire qui peut être utilisé librement comme dépendance (voir sa licence). Les œuvres de Vincent van Gogh, de Claude Monet et de Pierre-Auguste Renoir appartiennent au domaine public.

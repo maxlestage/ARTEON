@@ -1,0 +1,169 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « RENOIR » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/renoir/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /renoir.
+#
+#  Pour ajouter une œuvre :
+#    1. déposer son image (JPEG ou PNG) dans public/tableaux/renoir/ ;
+#    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
+#  Au prochain push sur master, le site est reconstruit et republié tout seul.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 3
+nom_court = "Renoir"
+couleur = "#b5476b"
+titre = "Renoir, le bonheur de peindre"
+artiste = "Pierre-Auguste Renoir"
+dates = "1841–1919"
+accroche = "Exposition virtuelle · Pierre-Auguste Renoir"
+introduction = """
+Les bals de Montmartre, les déjeuners au bord de la Seine, les enfants et les \
+jeunes filles : Renoir peint le Paris joyeux de la fin du XIXᵉ siècle, dans une \
+lumière qui danse à travers les feuillages. Dix toiles, de La Loge aux Jeunes \
+filles au piano, en passant par ses trois grandes danses."""
+vitrine = "moulin-galette.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+
+[[salles]]
+nom = "Salle I · Les années impressionnistes"
+theme = "1874–1876 : le théâtre, les jardins et le grand bal de Montmartre, au cœur du groupe impressionniste."
+murs = "#f1e6dc"
+
+[[salles]]
+nom = "Salle II · La vie moderne"
+theme = "1880–1886 : les canotiers de Chatou, les terrasses, les rues de Paris sous la pluie."
+murs = "#e9e3ee"
+
+[[salles]]
+nom = "Salle III · Danses et jeunes filles"
+theme = "1883–1892 : les trois grandes danses, côte à côte au fond de la galerie, et la douceur de la dernière manière."
+murs = "#f3e4e6"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "La Loge"
+annee = "1874"
+image = "loge.jpg"
+technique = "Huile sur toile, 80 × 63,5 cm"
+collection = "The Courtauld, Londres"
+note = "Présentée à la première exposition impressionniste : une élégante en robe rayée, et son frère Edmond qui lorgne la salle."
+salle = 1
+mur = "gauche"
+place = 1
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Fillette à l'arrosoir"
+annee = "1876"
+image = "arrosoir.jpg"
+technique = "Huile sur toile, 100 × 73 cm"
+collection = "National Gallery of Art, Washington"
+note = "Une petite fille en velours bleu dans un jardin en fleurs, peinte en touches vives et légères."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Bal du moulin de la Galette"
+annee = "1876"
+image = "moulin-galette.jpg"
+technique = "Huile sur toile, 131 × 175 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un dimanche après-midi à Montmartre : la lumière tombe en taches à travers les acacias sur les danseurs."
+salle = 1
+mur = "fond"
+place = 1
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Le Déjeuner des canotiers"
+annee = "1880–1881"
+image = "dejeuner-canotiers.jpg"
+technique = "Huile sur toile, 130 × 173 cm"
+collection = "The Phillips Collection, Washington"
+note = "Sur la terrasse de la maison Fournaise, à Chatou : ses amis, et Aline, sa future femme, qui joue avec un petit chien."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Deux Sœurs (Sur la terrasse)"
+annee = "1881"
+image = "deux-soeurs.jpg"
+technique = "Huile sur toile, 100,5 × 81 cm"
+collection = "Art Institute of Chicago"
+note = "Une jeune femme et une fillette au chapeau fleuri, sur la terrasse de la maison Fournaise, devant la Seine."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Les Parapluies"
+annee = "vers 1881–1886"
+image = "parapluies.jpg"
+technique = "Huile sur toile, 180 × 115 cm"
+collection = "National Gallery, Londres"
+note = "Commencée en touches impressionnistes, achevée en lignes plus nettes : on voit le style de Renoir changer dans un même tableau."
+salle = 2
+mur = "gauche"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Danse à Bougival"
+annee = "1883"
+image = "danse-bougival.jpg"
+technique = "Huile sur toile, 181,9 × 98,1 cm"
+collection = "Museum of Fine Arts, Boston"
+note = "Une guinguette au bord de la Seine : le modèle est Suzanne Valadon, qui deviendra elle-même peintre."
+salle = 3
+mur = "fond"
+place = 1
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Danse à la ville"
+annee = "1883"
+image = "danse-ville.jpg"
+technique = "Huile sur toile, 180 × 90 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Le pendant chic de la Danse à la campagne : satin blanc, gants longs et palmiers d'un salon parisien."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Danse à la campagne"
+annee = "1883"
+image = "danse-campagne.jpg"
+technique = "Huile sur toile, 180 × 90 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Aline Charigot, rieuse, éventail à la main : la joie simple d'un bal populaire en plein air."
+salle = 3
+mur = "fond"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jeunes filles au piano"
+annee = "1892"
+image = "jeunes-filles-piano.jpg"
+technique = "Huile sur toile, 116 × 90 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Acquise par l'État français : la première œuvre de Renoir à entrer dans un musée national."
+salle = 3
+mur = "gauche"
+place = 1
+largeur = 1.1
