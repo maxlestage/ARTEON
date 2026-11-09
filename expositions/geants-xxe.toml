@@ -1,0 +1,816 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « LES GÉANTS DU XXᵉ SIÈCLE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/geants-xxe/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /geants-xxe.
+#
+#  Droits : Picasso, Dalí, Magritte, Chagall et Warhol sont protégés par le droit
+#  d'auteur. On ne montre d'eux que des photographies publiées sous licence libre
+#  sur Wikimedia Commons, d'œuvres installées en permanence dans l'espace public
+#  d'un pays dont la liberté de panorama les couvre (Espagne, Pays-Bas), ou jugées
+#  dans le domaine public (le Picasso de Chicago, 1970). Aucun tableau protégé
+#  n'est reproduit. Les quatre tableaux de Frida Kahlo (1926–1929), antérieurs à
+#  1931, sont dans le domaine public en Europe et aux États-Unis (pas au Mexique,
+#  où ils restent protégés jusqu'en 2054). Magritte, Chagall et Warhol, sans
+#  image libre admissible, ne sont présents que dans les textes.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 195
+nom_court = "Géants du XXᵉ"
+mouvement = "Les géants du XXᵉ siècle : Picasso, Dalí, Magritte, Chagall, Kahlo, Warhol"
+cadre = "noir"
+couleur = "#9b2a1e"
+titre = "Les géants du XXᵉ siècle, de Guernica aux places publiques"
+artiste = "Picasso, Dalí, Kahlo… et, en récit, Magritte, Chagall, Warhol"
+dates = "1926–1985"
+accroche = "Exposition virtuelle · Museo Reina Sofía, Madrid"
+introduction = """
+Picasso, Dalí, Magritte, Chagall, Frida Kahlo, Andy Warhol : six noms qui résument le \
+XXᵉ siècle, du cubisme au pop art en passant par le surréalisme. Leurs tableaux sont \
+encore protégés par le droit d'auteur : Guernica, La Persistance de la mémoire, Ceci \
+n'est pas une pipe ou les Marilyn ne peuvent être que racontés ici. La visite montre \
+donc ce qui est libre : quatre tableaux de jeunesse de Frida Kahlo, peints avant 1931, \
+et des photographies libres d'œuvres monumentales de Picasso et de Dalí dressées dans \
+les rues de Chicago, Rotterdam, Barcelone, Figueres et Marbella ; Magritte, Chagall et \
+Warhol, dont aucune œuvre publique ne peut être montrée librement, restent présents \
+par leur nom. Le bâtiment s'inspire du Museo Reina Sofía de Madrid, l'ancien hôpital \
+où est accroché Guernica : un vestibule, la grande salle blanche de Picasso, et deux \
+salles plus intimes de part et d'autre."""
+vitrine = "autoportrait-robe-de-velours.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Museo Nacional Centro de Arte Reina Sofía"
+ville = "Madrid, Espagne"
+architecte = "Francesco Sabatini ; extension de Jean Nouvel"
+construction = "fin du XVIIIᵉ siècle ; centre d'art depuis 1986"
+presentation = """
+Le Reina Sofía occupe l'ancien Hôpital général de Madrid, élevé au XVIIIᵉ siècle, pour \
+l'essentiel sous le règne de Charles III : un immense édifice austère, ordonné autour \
+de cours intérieures, dont l'architecte Francesco Sabatini dirigea la construction et \
+dont seule une partie du projet fut bâtie. L'hôpital ferme en 1965 ; menacé de \
+démolition, le bâtiment est protégé, restauré, et ouvre en 1986 comme centre d'art, \
+avant de devenir en 1988 le musée national d'art moderne, sous le nom de la reine \
+Sofía. Ses deux tours d'ascenseurs en verre, ajoutées sur la façade, et l'extension de \
+Jean Nouvel, inaugurée en 2005 sous un grand toit rouge, en ont fait un repère du \
+quartier d'Atocha. Le musée conserve Picasso, Dalí, Miró et Juan Gris ; sa salle la \
+plus célèbre, au deuxième étage, est celle de Guernica, arrivé en 1992 avec ses \
+dessins préparatoires."""
+ici = """
+Le bâtiment d'ARTEON emprunte au Reina Sofía ses murs blancs et ses hautes salles \
+d'ancien hôpital. On entre par le sud dans le vestibule Sabatini, haut de sept mètres, \
+puis dans la salle 206, la plus vaste, large de dix-huit mètres et haute de neuf, \
+consacrée à Picasso. De là, une porte à l'ouest mène au cabinet de Dalí, une porte à \
+l'est à la salle de Frida Kahlo, deux salles de douze mètres sur dix aux murs blanc \
+chaud, plus basses et plus intimes."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Museo Reina Sofía de Madrid (l'ancien Hôpital général de Sabatini) :
+# des salles blanches, hautes et sobres. On entre au sud par le vestibule ; au
+# nord s'ouvre la grande salle 206, nommée d'après celle de Guernica, où sont
+# Picasso ; à l'ouest le cabinet de Dalí, à l'est la salle de Frida Kahlo. x et z :
+# le centre de la salle (x vers l'est, z vers le sud), en mètres ; une porte se
+# déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule Sabatini"
+theme = "L'entrée, sobre et blanche, comme celle de l'ancien hôpital madrilène de Sabatini."
+murs = "#efe8dc"
+x = 0
+z = 0
+largeur = 14
+profondeur = 8
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La salle 206"
+theme = "Picasso dans la ville : la sculpture de Chicago, Sylvette à Rotterdam et la frise des géants de Barcelone."
+murs = "#f4f0e8"
+x = 0
+z = -11
+largeur = 18
+profondeur = 14
+hauteur = 9
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "Le cabinet de Dalí"
+theme = "Le surréalisme de Dalí dans la rue : Newton à Figueres, le rhinocéros de Marbella, la tour Galatea."
+murs = "#efe4d6"
+x = -15
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "La salle de Frida"
+theme = "Les premiers tableaux de Frida Kahlo, peints à Mexico entre 1926 et 1929."
+murs = "#f3e6d4"
+x = 15
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Picasso de Chicago"
+artiste = "Pablo Picasso"
+annee = "1967"
+image = "picasso-de-chicago.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Picasso_Chicago.jpg"
+technique = "Acier Cor-Ten, haut d'environ 15 m ; photographie de Bruce Marlin (2006)"
+collection = "Richard J. Daley Plaza, Chicago (États-Unis)"
+note = "Une tête d'acier haute comme un immeuble de cinq étages, offerte par Picasso à Chicago : femme, chien afghan ou babouin, on en discute encore."
+description = """
+Sur une vaste place dallée, devant la façade sombre d'un gratte-ciel de verre et \
+d'acier, se dresse une sculpture couleur de rouille. Au centre, une étroite lame \
+verticale porte un visage minuscule à l'échelle de l'ensemble : deux yeux, l'arête \
+d'un nez, une bouche à peine marquée. De part et d'autre s'élèvent deux immenses \
+plaques courbes, comme des ailes, des oreilles ou une chevelure. Entre elles, un \
+éventail de tiges d'acier parallèles tendues comme des cordes laisse passer la \
+lumière. Le tout repose sur un socle de plaques inclinées qui forme une sorte de rampe \
+: deux jeunes femmes s'y sont assises, et un enfant se tient debout à leurs pieds, ce \
+qui donne la mesure du monument."""
+evocation = """
+Picasso n'a jamais dit ce que représentait sa sculpture, et c'est ce silence qui a \
+fait sa célébrité. On y a vu une tête de femme, peut-être sa compagne Jacqueline, son \
+lévrier afghan Kaboul, un babouin, un oiseau, voire un hippocampe. Elle prolonge les \
+têtes que Picasso découpait et pliait dans le carton ou la tôle depuis les années 1950 \
+: quelques plans suffisent à faire naître un visage. À son inauguration, une partie de \
+la presse et des habitants la jugent incompréhensible ; elle est devenue depuis \
+l'emblème de la ville : premier grand monument d'art moderne du centre de Chicago, \
+elle a ouvert la voie aux œuvres de Calder, de Chagall et de Miró installées ensuite \
+dans les rues voisines."""
+histoire = """
+En 1963, les architectes du nouveau Civic Center de Chicago, chez Skidmore, Owings & \
+Merrill, demandent à Picasso une œuvre pour la place. Le peintre, qui vit alors près \
+de Cannes, réalise une maquette, aujourd'hui conservée à l'Art Institute of Chicago, \
+et refuse le cachet de 100 000 dollars qu'on lui propose : la sculpture est un don au \
+peuple de Chicago. Elle est fabriquée par les aciéries U.S. Steel de Gary, dans \
+l'Indiana, puis assemblée sur place, et inaugurée le 15 août 1967 par le maire Richard \
+J. Daley, dont la place porte aujourd'hui le nom. En 1970, un tribunal fédéral juge \
+que l'œuvre, montrée au public sans mention de copyright, est tombée dans le domaine \
+public aux États-Unis : chacun peut la photographier et reproduire son image."""
+facture = """
+La sculpture agrandit une maquette d'environ un mètre en un assemblage de plaques et \
+de tiges pesant quelque 160 tonnes. Elle est en acier Cor-Ten, un acier auto-patinable \
+dont la rouille superficielle, stable, protège le métal : c'est le même matériau que \
+la façade du gratte-ciel voisin, le Daley Center, avec lequel elle fait corps. Les \
+tiges tendues remplacent les fils ou les hachures des dessins de Picasso ; les grands \
+plans courbes jouent avec la lumière, si bien que la tête change de lecture selon \
+l'endroit d'où on la regarde."""
+details = [
+  "Les deux petits yeux en amande, tout en haut de la lame centrale.",
+  "L'éventail de tiges parallèles tendues entre les deux grandes ailes.",
+  "Le socle incliné, où les visiteurs s'assoient et où les enfants glissent.",
+  "La couleur de rouille, identique à celle de la façade du gratte-ciel derrière.",
+]
+themes = ["tête", "acier", "monument", "ville", "domaine public"]
+anecdote = """
+Picasso n'est jamais allé aux États-Unis : il n'a jamais vu en vrai sa plus grande \
+sculpture. Les petits Chicagoans, eux, la connaissent bien, car son socle incliné sert \
+depuis plus d'un demi-siècle de toboggan improvisé."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Sylvette"
+artiste = "Pablo Picasso"
+annee = "1970 (d'après une maquette de 1954)"
+image = "sylvette-rotterdam.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Rotterdam_kunstwerk_sylvette.jpg"
+technique = "Béton gravé au jet de sable, exécuté par Carl Nesjar, haut d'environ 7,5 m ; photographie de Wikifrits (2009)"
+collection = "Westersingel, Rotterdam (Pays-Bas)"
+note = "Le portrait d'une jeune fille de Vallauris, dessiné par Picasso en 1954, devenu un monument de béton au bord d'un canal de Rotterdam."
+description = """
+Sous un ciel bleu, entre les arbres d'une avenue, se dresse une haute dalle de béton \
+gris clair, plus haute que les réverbères. Elle n'est pas plane : deux pans se \
+rejoignent en angle, comme une feuille pliée, et la partie supérieure avance en \
+surplomb pour former une tête. Sur cette surface, des traits noirs dessinent un visage \
+de jeune femme : deux grands yeux, l'un vu de face, l'autre de profil, un nez droit, \
+une bouche menue, et de longues mèches tirées vers l'arrière en queue de cheval. Plus \
+bas, le cou et les épaules sont rayés de lignes horizontales, comme un tricot. Le \
+dessin semble tracé au fusain sur un mur, mais il est pris dans la pierre même."""
+evocation = """
+Sylvette est l'une des dernières muses de Picasso, et l'une des plus brèves : une \
+jeune fille aperçue en 1954, qu'il peint et dessine des dizaines de fois en quelques \
+semaines. Le monument garde la double vision du cubisme, qui montre à la fois la face \
+et le profil, mais avec la légèreté d'un croquis. On y a vu l'hommage d'un peintre de \
+soixante-douze ans à la jeunesse et à la mode des années 1950, la queue de cheval \
+blonde devenant une signature graphique. Transformé en architecture, ce portrait \
+intime appartient désormais à la ville et à ses passants, qui le croisent chaque jour \
+sans entrer dans aucun musée."""
+histoire = """
+Au printemps 1954, à Vallauris, Picasso remarque Sylvette David, une jeune fille de \
+dix-neuf ans à la longue queue de cheval blonde, et lui demande de poser : naissent \
+alors plus de quarante portraits, peintures et dessins, ainsi que des têtes découpées \
+dans la tôle et peintes. À partir de 1956, le Norvégien Carl Nesjar agrandit des \
+œuvres de Picasso dans le béton, avec son accord. Après la grande Sylvette de New \
+York, élevée en 1968 entre les tours de l'université de New York, il réalise celle de \
+Rotterdam, érigée en mai 1970 sur le Westersingel. Comme les Pays-Bas autorisent la \
+photographie des œuvres placées durablement dans l'espace public, son image peut être \
+diffusée librement."""
+facture = """
+Nesjar emploie un procédé mis au point en Norvège : on coule dans un coffrage un béton \
+riche en galets sombres, puis on décape la surface au jet de sable à haute pression le \
+long du dessin ; les pierres noires apparaissent et forment les traits. Le dessin de \
+Picasso, agrandi par projection, est ainsi gravé en profondeur et résiste aux \
+intempéries. Les deux pans en angle reprennent le pliage de la petite maquette en tôle \
+de 1954 : la sculpture reste un dessin dans l'espace plutôt qu'un volume."""
+details = [
+  "Les deux yeux, l'un dessiné de face, l'autre de profil.",
+  "Les mèches de la queue de cheval, tirées vers l'arrière.",
+  "Les rayures horizontales des épaules, comme un pull-over.",
+  "L'angle entre les deux pans de béton, comme une feuille pliée.",
+  "Les petits galets noirs qui composent chaque trait.",
+]
+themes = ["portrait", "muse", "béton", "dessin", "ville"]
+anecdote = """
+Sylvette David est devenue peintre à son tour, sous le nom de Lydia Corbett. Elle a \
+souvent raconté ses séances de pose à Vallauris, au printemps 1954, auprès d'un \
+Picasso qui la dessinait sans relâche."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 2.3
+
+[[oeuvres]]
+titre = "La Frise des géants"
+artiste = "Pablo Picasso"
+annee = "1960–1962"
+image = "frise-des-geants-barcelone.jpg"
+credit = "Photo : Enfo"
+licence = "CC BY-SA 3.0 ES"
+source = "https://commons.wikimedia.org/wiki/File:103_Fris_de_Picasso_al_Col·legi_d'Arquitectes.jpg"
+technique = "Béton gravé au jet de sable par Carl Nesjar d'après des dessins de Picasso ; photographie d'Enfo (2006), détail"
+collection = "Façade du Col·legi d'Arquitectes de Catalunya, plaça Nova, Barcelone (Espagne)"
+note = "En face de la cathédrale de Barcelone, Picasso dessine les fêtes populaires de la Catalogne sur la façade du collège des architectes."
+description = """
+Sur une large bande de béton blanc, piqueté de petits points noirs, de grands traits \
+sombres tracent des figures d'une simplicité de dessin d'enfant. Au centre, un géant \
+couronné domine la scène : un long corps en forme d'ogive, barré de quelques lignes \
+horizontales, une petite tête ronde sous une couronne à pointes, et, sur le côté, un \
+sceptre. À sa droite, deux petits personnages à grosse tête, aux yeux faits de deux \
+points, se tiennent près de deux hautes palmes. À gauche, des silhouettes minuscules, \
+bras levés, s'empilent les unes sur les autres et agitent des rameaux, jusqu'à une \
+figure qui ouvre grand les bras au sommet. Au-dessus de la frise, on aperçoit le bas \
+des fenêtres de l'immeuble."""
+evocation = """
+Picasso puise dans les fêtes de la Barcelone de sa jeunesse : les géants, ces grandes \
+figures de rois et de reines qu'on porte en procession, les grosses têtes qui les \
+accompagnent, les enfants aux palmes du dimanche des Rameaux. L'empilement de \
+silhouettes, à gauche, fait penser aux castells, les tours humaines catalanes. Le \
+trait volontairement naïf dit la joie de la fête plutôt que sa description. On y a lu \
+aussi un geste politique : sous la dictature de Franco, Picasso, exilé, inscrit sur un \
+mur de Barcelone, face à la cathédrale, des traditions catalanes que le régime \
+regardait avec méfiance."""
+histoire = """
+L'architecte Xavier Busquets, qui construit le nouveau siège du collège des \
+architectes de Catalogne sur la plaça Nova, rend visite à Picasso près de Cannes et \
+lui demande de décorer le bâtiment. Le peintre propose une technique qu'il a déjà \
+employée à Oslo avec le Norvégien Carl Nesjar : graver le béton au jet de sable. Le 18 \
+octobre 1960, il annonce par téléphone que ses dessins sont prêts. Nesjar s'installe à \
+Barcelone, agrandit les dessins et grave les trois frises de la façade, achevées en \
+1962, ainsi que deux panneaux intérieurs. Picasso, qui avait refusé de remettre les \
+pieds dans l'Espagne de Franco, n'est jamais venu les voir. La loi espagnole permet de \
+photographier librement les œuvres placées dans la rue."""
+facture = """
+Nesjar projette des diapositives des dessins à plus de dix mètres pour les agrandir \
+sur papier, repasse les lignes au pinceau puis les perce de petits trous. Fixées sur \
+le béton, ces feuilles laissent passer une poudre de graphite qui marque le tracé. Le \
+jet de sable creuse ensuite la surface le long des lignes et met à nu les pierres \
+noires du béton, protégé par des ventilateurs et des rideaux d'eau contre la \
+poussière. Le trait garde ainsi la souplesse et les accidents du dessin original."""
+details = [
+  "La couronne à pointes et le sceptre du géant.",
+  "Les visages des deux petits personnages, faits de deux points et d'un trait.",
+  "Les palmes, dessinées comme de simples arêtes de poisson.",
+  "La pyramide de petites silhouettes aux bras levés, à gauche.",
+  "Le grain du béton, semé de minuscules pierres noires.",
+]
+themes = ["fête", "catalogne", "géants", "dessin", "architecture"]
+anecdote = """
+Busquets espérait confier les deux panneaux intérieurs à Joan Miró. Picasso lui aurait \
+répondu en riant qu'il allait les faire lui-même, ceux de Miró, et les dessina \
+aussitôt."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Hommage à Newton"
+artiste = "Salvador Dalí"
+annee = "années 1980"
+image = "hommage-a-newton.jpg"
+credit = "Photo : Lanxana"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Homenatge_a_Newton_01.jpg"
+technique = "Bronze à patine sombre ; photographie de Lanxana (2018)"
+collection = "Escaliers entre le carrer de la Jonquera et la plaça Gala i Salvador Dalí, Figueres (Espagne)"
+note = "Dans la ville natale de Dalí, un Isaac Newton évidé, aux bras tendus, dont le cœur pend comme un fil à plomb."
+description = """
+En haut d'un escalier de pierre, entre de vieilles façades aux balcons de fer forgé, \
+une grande figure de bronze sombre se dresse sur un socle de granit. Le corps est \
+étiré, les jambes longues et musclées, les pieds posés à plat. Le torse est évidé : à \
+la place de la poitrine s'ouvre un grand vide, au milieu duquel une sphère noire pend \
+au bout d'un fil. La tête n'a pas de visage ; c'est une sorte de casque creux, percé, \
+d'où sort une excroissance en forme de bec. Les deux bras, démesurés, se tendent à \
+l'horizontale vers l'avant, mains crochues ouvertes, comme pour saisir ou lâcher \
+quelque chose."""
+evocation = """
+La figure rend hommage à Isaac Newton et à la découverte de la gravitation : la sphère \
+suspendue rappelle la pomme de la légende, ou le fil à plomb qui obéit à la pesanteur. \
+Les vides du torse et de la tête ont été interprétés, sur une autre fonte de la \
+statue, comme le signe d'un esprit et d'un cœur ouverts. L'œuvre témoigne de la \
+passion de Dalí, après 1945, pour la physique et les sciences : la bombe atomique, les \
+particules et l'ADN nourrissent alors sa peinture. Le savant devient ici un personnage \
+surréaliste, à la fois creux et monumental, qui semble encore chercher son équilibre."""
+histoire = """
+Dans les années 1970 et 1980, Dalí autorise la fonte en bronze de nombreuses figures \
+de son répertoire, en petits formats et en versions monumentales. L'Hommage à Newton \
+existe en plusieurs exemplaires : l'un d'eux, haut de près de quatre mètres, est \
+installé à Singapour dès 1985. Celui de Figueres se dresse en pleine rue, dans le \
+centre ancien, en haut des marches qui mènent à la place dédiée à Gala et à Salvador \
+Dalí, à quelques pas du Théâtre-musée. La loi espagnole autorisant la photographie des \
+œuvres placées durablement dans la rue, sa photographie peut être publiée sous licence \
+libre."""
+facture = """
+La statue est fondue en bronze puis patinée presque noir. Dalí y sculpte autant le \
+vide que la matière : les trous du torse et de la tête définissent la figure aussi \
+fortement que les volumes. Les membres allongés et les mains noueuses rappellent les \
+silhouettes filiformes de ses tableaux, tandis que les jambes gardent une anatomie \
+précise, presque classique. La sphère suspendue introduit dans le bronze immobile une \
+idée de mouvement et de poids."""
+details = [
+  "La sphère noire suspendue au milieu du torse évidé.",
+  "La tête sans visage, percée, terminée par une sorte de bec.",
+  "Les mains crochues au bout des bras tendus.",
+  "Les pieds nus posés à plat sur la plaque de bronze.",
+]
+themes = ["science", "gravité", "surréalisme", "bronze", "vide"]
+anecdote = """
+Dalí est né à Figueres en 1904 et y est enterré, dans la crypte de son Théâtre-musée, \
+tout près de cette statue : la ville entière est devenue, après sa mort, un parcours \
+consacré au peintre."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.7
+
+[[oeuvres]]
+titre = "La tour Galatea du Théâtre-musée Dalí"
+artiste = "Salvador Dalí"
+annee = "musée ouvert en 1974 ; tour décorée à partir de 1983"
+image = "torre-galatea-figueres.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Figueres_-_Teatro-Museo_Dalí_y_Torre_Galatea_17.jpg"
+technique = "Tour médiévale et murs enduits de rouge, semés de pains moulés et couronnés d'œufs géants ; photographie de Zarateman (2024)"
+collection = "Teatre-Museu Dalí, Figueres (Espagne)"
+note = "Le musée que Dalí s'est construit dans sa ville natale : des murs rouges semés de pains, des œufs géants sur les toits et une coupole de verre."
+description = """
+Une tour ronde, d'un rouge carmin, occupe le centre de l'image. Ses murs sont piqués \
+de centaines de petites formes dorées alignées en quinconce ; une corniche grise la \
+couronne, sur laquelle reposent d'énormes œufs blancs. À gauche brille une coupole de \
+verre et de métal à facettes, au-dessus d'un bâtiment lui aussi peint en rouge. À \
+droite, un long mur rouge, rythmé par une rangée de cyprès, porte à son sommet une \
+procession d'œufs et de socles dorés surmontés de petites statues. Au pied de la tour, \
+quelques passants, un panneau de stationnement et une barrière donnent l'échelle : le \
+décor surréaliste se mêle à la vie ordinaire d'une rue de Figueres."""
+evocation = """
+Les petites formes dorées sont des pains catalans à trois cornes, et les œufs, l'un \
+des motifs favoris de Dalí : il y voyait l'image de la vie avant la naissance, de la \
+fragilité et de la renaissance. Le pain, qu'il peignait depuis les années 1920, est \
+l'objet quotidien par excellence, transformé en ornement. La tour porte le nom de \
+Galatea en hommage à Gala, sa femme et sa muse, morte en 1982. Dalí voulait que son \
+musée soit vécu comme une seule œuvre totale ; on le présente souvent, selon une \
+formule qu'il aimait, comme le plus grand objet surréaliste du monde."""
+histoire = """
+Le Théâtre-musée occupe les ruines du théâtre municipal de Figueres, incendié en 1939 \
+à la fin de la guerre civile, où Dalí avait exposé pour la première fois, adolescent. \
+Il y aménage son musée, inauguré le 28 septembre 1974, sous une coupole géodésique \
+conçue par l'architecte Emilio Pérez Piñero. En 1983, la ville et la Généralité de \
+Catalogne acquièrent la tour Gorgot voisine, vestige des anciens remparts ; Dalí la \
+rebaptise tour Galatea et en dessine le décor. Il s'y retire en 1984 et y meurt le 23 \
+janvier 1989. Il est enterré dans une crypte sous le musée."""
+facture = """
+Dalí traite l'architecture comme une sculpture et un tableau. L'enduit rouge sang \
+unifie des bâtiments d'époques différentes ; les pains, répétés par centaines, forment \
+un motif régulier comme un papier peint ; les œufs, posés sur la corniche, changent la \
+silhouette de la tour et se découpent sur le ciel. La coupole de verre, transparente \
+et géométrique, contraste avec ces formes organiques. La photographie, prise depuis la \
+rue en contre-plongée, montre le bâtiment tel que le découvre le passant."""
+details = [
+  "Les œufs géants posés sur la corniche de la tour.",
+  "Les petits pains dorés semés sur tout le mur rouge.",
+  "La coupole de verre à facettes, à gauche, au-dessus de l'ancienne scène.",
+  "Les statues dorées dressées sur des socles au sommet du long mur.",
+  "La rangée de cyprès le long de la façade.",
+]
+themes = ["architecture", "œuf", "pain", "gala", "musée"]
+anecdote = """
+En juillet 2017, le corps de Dalí fut exhumé de la crypte du musée pour un test de \
+paternité demandé par une habitante de Gérone. Le test se révéla négatif ; son \
+embaumeur raconta que la célèbre moustache était restée intacte."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 3.3
+
+[[oeuvres]]
+titre = "Rhinocéros habillé en dentelles"
+artiste = "Salvador Dalí"
+annee = "1956 (agrandissement installé en 2004)"
+image = "rhinoceros-habille-de-dentelles.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Marbella_-_Puerto_Banús,_Rinoceronte_vestido_con_puntillas_(Salvador_Dalí).jpg"
+technique = "Bronze, environ 3,6 tonnes ; photographie de Zarateman (2019)"
+collection = "Puerto Banús, Marbella (Espagne)"
+note = "Un rhinocéros de bronze vert-de-gris, à la peau ouvragée comme une dentelle, qui porte un oursin sur le dos : deux obsessions de Dalí réunies."
+description = """
+Sur un socle de métal couleur de rouille, devant un rideau d'arbres, un rhinocéros \
+massif est vu de trois quarts. Sa peau de bronze, patinée de vert, est couverte \
+d'ornements : des écailles, des rangées de petits cercles, des bordures festonnées qui \
+soulignent chaque pli comme une broderie. La corne, énorme, pointe vers l'avant ; une \
+seconde corne, fine, se dresse plus haut, près de l'épaule. Sur le dos repose une \
+grosse boule hérissée de pointes, un oursin ; une autre, plus grande encore, est \
+coincée sous le menton de l'animal, contre ses pattes avant. L'œil est rond et \
+saillant, l'oreille dressée."""
+evocation = """
+Dans les années 1950, Dalí est fasciné par la corne du rhinocéros, qu'il considère \
+comme une spirale parfaite, et par La Dentellière de Vermeer, qu'il tient pour un \
+sommet de la peinture. Il cherche à réunir les deux : la masse brutale de l'animal et \
+la délicatesse de la dentelle. La peau ouvragée rappelle aussi le célèbre rhinocéros \
+cuirassé gravé par Dürer en 1515. Les oursins, cueillis sur les rochers de Cadaqués, \
+sont pour Dalí une autre forme parfaite, une sphère hérissée. On y voit l'humour et le \
+goût du paradoxe d'un peintre qui fait d'un pachyderme un objet précieux."""
+histoire = """
+En 1954, Dalí commence avec le photographe Robert Descharnes un film, L'Histoire \
+prodigieuse de la dentellière et du rhinocéros, resté inachevé. L'année suivante, il \
+expose ses théories sur le sujet lors d'une conférence à la Sorbonne. Il conçoit en \
+1956 ce rhinocéros habillé en dentelles. Un agrandissement monumental en bronze, de \
+plus de trois tonnes, est installé en 2004 à Puerto Banús, le port de plaisance de \
+Marbella, le port de plaisance ouvert en 1970 par le promoteur José Banús ; il y \
+accueille depuis les promeneurs du quai. La liberté de panorama espagnole permet de \
+publier librement sa photographie."""
+facture = """
+Le bronze, fondu à partir du modèle de Dalí, est couvert d'une patine verte qui fait \
+ressortir le relief des ornements. Toute la surface est travaillée en bas-relief : \
+cercles, festons et rainures imitent la dentelle et transforment la peau épaisse en \
+étoffe brodée. Les oursins, avec leurs piquants réguliers, répondent à la corne en \
+spirale. Le volume reste celui d'un vrai rhinocéros, lourd et compact, ce qui rend le \
+décor plus surprenant encore."""
+details = [
+  "La grande corne recourbée, que Dalí tenait pour une spirale parfaite.",
+  "L'oursin hérissé posé sur le dos de l'animal.",
+  "Le second oursin, calé sous le menton, contre les pattes avant.",
+  "Les bordures festonnées, comme de la dentelle, le long des plis de la peau.",
+  "La petite corne fine dressée près de l'épaule.",
+]
+themes = ["animal", "dentelle", "vermeer", "bronze", "surréalisme"]
+anecdote = """
+En décembre 1955, Dalí arrive à la Sorbonne pour une conférence sur La Dentellière de \
+Vermeer et les rhinocéros dans une Rolls-Royce remplie de choux-fleurs, autre forme \
+qu'il jugeait proche de la spirale parfaite."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Autoportrait à la robe de velours"
+artiste = "Frida Kahlo"
+annee = "1926"
+image = "autoportrait-robe-de-velours.jpg"
+cadre = "bois"
+licence = "Domaine public"
+source = "https://en.wikipedia.org/wiki/File:Self_Portrait_in_a_Velvet_Dress.jpg"
+technique = "Huile sur toile, 79 × 58 cm"
+collection = "Collection particulière, Mexico"
+note = "Le premier autoportrait de Frida Kahlo, peint pour reconquérir son amoureux. Domaine public en Europe et aux États-Unis ; protégé au Mexique jusqu'en 2054."
+description = """
+Une jeune femme est vue à mi-corps, légèrement tournée vers la gauche, le regard \
+dirigé vers nous. Son visage pâle, aux joues roses, est encadré de cheveux noirs tirés \
+en arrière et séparés par une raie ; ses sourcils sombres se rejoignent au-dessus du \
+nez. Elle porte une robe de velours bordeaux au profond décolleté en V, bordé d'un \
+galon noir, or et orange aux motifs ornementaux, que l'on retrouve aux poignets. Son \
+bras gauche barre la taille, et sa main aux doigts très longs s'ouvre dans le vide. \
+Derrière elle, une mer sombre déroule des vagues stylisées en spirales sous un ciel \
+nocturne où passe un petit nuage clair. En bas à gauche, la date et la signature : \
+Frieda Kahlo, 1926."""
+evocation = """
+Frida Kahlo offre ce portrait à Alejandro Gómez Arias, son amoureux, qui s'éloignait \
+d'elle : elle s'y montre en dame de la Renaissance, élégante et grave, comme pour \
+imposer une image d'elle plus forte que son corps blessé. Elle-même l'appelait, dans \
+une lettre, « ton Botticelli ». La main tendue a été lue comme un geste d'offrande. La \
+mer agitée, derrière la figure immobile, a été interprétée comme l'image des tourments \
+de la vie, voire de la mort, qui menacent sans atteindre le visage calme. C'est le \
+premier tableau où elle donne à ses sourcils joints le rôle de signature qu'ils \
+garderont dans tous ses autoportraits."""
+histoire = """
+Le 17 septembre 1925, l'autobus qui ramène Frida Kahlo et Alejandro Gómez Arias à \
+Coyoacán est percuté par un tramway ; la jeune fille, gravement blessée, passe des \
+mois alitée. Ses parents lui installent un chevalet adapté et un miroir au-dessus de \
+son lit : elle commence à peindre. Elle entreprend ce tableau à la fin de l'été 1926 \
+et l'envoie à Alejandro fin septembre ; le couple se réconcilie un temps. Il garde le \
+tableau jusqu'à sa mort en 1990 ; il appartient aujourd'hui à une collection \
+particulière de Mexico. Kahlo étant morte en 1954, l'œuvre est dans le domaine public \
+en Europe depuis 2025 ; elle reste protégée au Mexique jusqu'en 2054."""
+facture = """
+Autodidacte, Kahlo apprend en regardant les reproductions de maîtres européens. Le cou \
+allongé évoque Modigliani, les doigts effilés et le teint de porcelaine le maniérisme \
+de Bronzino. La peinture est lisse, posée en couches fines, sur un fond très sombre \
+qui fait ressortir le visage. La palette est réduite : le bordeaux du velours, l'or et \
+l'orange du galon, le bleu-vert des vagues. Les vagues en spirales, traitées comme un \
+motif décoratif, annoncent le goût de l'artiste pour les fonds symboliques."""
+details = [
+  "Les sourcils noirs qui se rejoignent au-dessus du nez.",
+  "La main aux doigts démesurés, ouverte en travers de la taille.",
+  "Le galon noir, or et orange du décolleté et des poignets.",
+  "Les vagues en spirales de la mer nocturne.",
+  "La signature Frieda, avec un e, en bas à gauche.",
+]
+themes = ["autoportrait", "amour", "renaissance", "mer", "jeunesse"]
+anecdote = """
+Jusqu'à la fin des années 1930, l'artiste signe Frieda, à l'allemande, comme son père, \
+le photographe Guillermo Kahlo, né en Allemagne. Elle abandonne ensuite le e, dit-on \
+pour se démarquer de l'Allemagne nazie."""
+salle = 4
+mur = "nord"
+place = 1
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Portrait d'Alicia Galant"
+artiste = "Frida Kahlo"
+annee = "1927"
+image = "portrait-alicia-galant.jpg"
+cadre = "bois"
+licence = "Domaine public"
+source = "https://en.wikipedia.org/wiki/File:Retrato_de_Alicia_Galant.jpeg"
+technique = "Huile sur toile, 107 × 93 cm"
+collection = "Museo Dolores Olmedo, Mexico"
+note = "Une jeune femme des années 1920, assise sous un ciel étoilé : l'un des premiers portraits de Kahlo. Protégé au Mexique jusqu'en 2054."
+description = """
+Une jeune femme est assise, de face, sur un canapé bleu-gris aux formes courbes et \
+gonflées comme des vagues. Ses cheveux blond roux sont coupés court, à la mode des \
+années 1920, son visage pâle aux joues roses est légèrement tourné, le regard perdu \
+sur le côté. Elle porte une longue robe de velours violet sombre, dont l'encolure \
+ronde et les poignets sont bordés d'un galon rouge et or. Ses mains, longues et \
+blanches, reposent sur ses genoux ; près de l'une d'elles, en bas à droite, une fleur \
+rouge. Derrière elle s'étend un paysage nocturne : deux étoiles brillent dans un ciel \
+presque noir, des arbres stylisés couleur d'or se dressent à droite, et un petit arbre \
+se détache au loin, à gauche."""
+evocation = """
+Ce portrait appartient à la période où la jeune Kahlo cherche son style dans la \
+peinture européenne : la pose frontale, la robe de velours et le fond nocturne font \
+écho à son propre Autoportrait à la robe de velours de l'année précédente. Le modèle, \
+avec ses cheveux courts, incarne la femme moderne des années 1920. La nuit étoilée et \
+les arbres d'or donnent à la scène une atmosphère de rêve, presque irréelle, et le \
+regard détourné une mélancolie silencieuse. On sait peu de chose d'Alicia Galant, \
+sinon qu'elle appartenait à l'entourage de la jeune peintre ; le tableau vaut surtout \
+comme témoignage d'un talent en formation."""
+histoire = """
+Kahlo peint ce tableau en 1927 à Coyoacán, dans la maison familiale, pendant les \
+longues années de convalescence qui suivent son accident. À cette époque, elle peint \
+surtout ses proches : ses sœurs, ses amis, ses camarades de l'École nationale \
+préparatoire. Le portrait entre plus tard dans la collection de Dolores Olmedo, femme \
+d'affaires et amie de Diego Rivera, qui réunit le plus grand ensemble d'œuvres de \
+Kahlo. Il est aujourd'hui exposé dans son musée, à Xochimilco, au sud de Mexico. Dans \
+le domaine public en Europe et aux États-Unis, il reste protégé au Mexique jusqu'en \
+2054."""
+facture = """
+C'est l'une des plus grandes toiles de jeunesse de Kahlo. La peinture est posée en \
+couches minces sur un fond sombre ; le velours de la robe est rendu par des dégradés \
+de violet et des reflets plus clairs sur les bras. Le canapé, aux formes arrondies et \
+simplifiées, et les arbres en silhouettes dorées montrent un goût pour la stylisation \
+décorative. La composition, centrée et symétrique, s'inspire des portraits de la \
+Renaissance, avec un paysage au fond."""
+details = [
+  "Les deux étoiles qui brillent dans le ciel noir.",
+  "Les arbres stylisés couleur d'or, à droite.",
+  "La fleur rouge posée en bas à droite, près de la main.",
+  "Le galon rouge et or de l'encolure et des poignets.",
+  "Les coussins gonflés du canapé, comme des vagues.",
+]
+themes = ["portrait", "nuit", "amitié", "années 1920", "velours"]
+anecdote = """
+Le musée Dolores Olmedo occupe une ancienne hacienda de Xochimilco, où se promènent en \
+liberté des paons et des xoloitzcuintles, ces chiens nus mexicains que Frida Kahlo et \
+Diego Rivera aimaient tant."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Le Bus"
+artiste = "Frida Kahlo"
+annee = "1929"
+image = "le-bus.jpg"
+cadre = "bois"
+licence = "Domaine public"
+source = "https://en.wikipedia.org/wiki/File:El_camión,_Frida_Kahlo,_1929.jpg"
+technique = "Huile sur toile, 26 × 55,5 cm"
+collection = "Museo Dolores Olmedo, Mexico"
+note = "Six passagers sur la banquette d'un autobus de Mexico : la société mexicaine en miniature, et le souvenir de l'accident de 1925. Protégé au Mexique jusqu'en 2054."
+description = """
+Six personnages sont assis côte à côte sur un banc de bois, dans un autobus dont on \
+voit le plancher, les montants et les fenêtres ouvertes. De gauche à droite : une \
+femme en robe blanche à fleurs, un panier sur les genoux ; un ouvrier en salopette \
+bleue, une clé à molette à la main ; une femme pieds nus, enveloppée dans un grand \
+châle jaune, un baluchon à ses pieds ; un petit garçon, de dos, qui regarde par la \
+fenêtre ; un homme blond en costume, gilet et canotier, qui serre un petit sac ; une \
+jeune femme en robe claire, une écharpe orange au vent. Par les fenêtres, on aperçoit \
+à gauche une usine aux cheminées fumantes et une boutique nommée La Risa, à droite une \
+campagne verte plantée d'arbres."""
+evocation = """
+Le tableau a été lu comme un portrait de la société mexicaine : la ménagère, \
+l'ouvrier, la femme du peuple au rebozo, le bourgeois au sac, souvent compris comme \
+une bourse, et la jeune femme moderne, réunis sur le même banc mais sans se regarder. \
+La jeune femme de droite, à l'écart, ressemble à Frida elle-même. Beaucoup y voient le \
+souvenir de l'autobus de 1925, le calme qui précède l'accident : rien ne montre la \
+collision, mais le spectateur qui connaît la vie de l'artiste ne peut s'empêcher de \
+l'attendre. Le nom de la boutique, La Risa, le rire, ajoute une note d'ironie."""
+histoire = """
+Kahlo peint Le Bus en 1929, l'année de son mariage avec Diego Rivera, qu'elle avait \
+rencontré l'année précédente. Son style change alors : elle délaisse les modèles \
+européens de ses premiers portraits pour une peinture plus simple, inspirée de l'art \
+populaire mexicain et des fresques de Rivera, attentive au peuple et aux classes \
+sociales. Ce petit tableau appartient aujourd'hui au musée Dolores Olmedo, à Mexico, \
+qui conserve un ensemble important de ses œuvres. Il est dans le domaine public en \
+Europe et aux États-Unis, mais reste protégé au Mexique jusqu'en 2054."""
+facture = """
+Le format, étroit et très allongé, aligne les personnages comme une frise, sans \
+profondeur, à la manière des ex-voto et des peintures populaires. Les figures sont \
+simplifiées, un peu raides, avec de grands pieds et de grandes mains, dans un style \
+volontairement naïf. Les couleurs sont franches : bleu de la salopette, jaune du \
+châle, blanc des robes. Le plancher en perspective et les montants de bois forment une \
+sorte de scène de théâtre ouverte sur la ville et la campagne."""
+details = [
+  "La clé à molette dans la main de l'ouvrier.",
+  "Les pieds nus de la femme au châle jaune, près de son baluchon.",
+  "Le petit garçon tourné vers la fenêtre, de dos.",
+  "L'enseigne La Risa, sur la boutique, à gauche.",
+  "Les cheminées d'usine qui fument dans le ciel bleu.",
+]
+themes = ["société", "voyage", "mexique", "accident", "peuple"]
+anecdote = """
+Selon Alejandro Gómez Arias, un passager de l'autobus de 1925 transportait de la \
+poudre d'or : le sachet se déchira lors du choc, et la jeune Frida, blessée, fut \
+retrouvée couverte de sang et de poussière dorée."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Autoportrait, le temps vole"
+artiste = "Frida Kahlo"
+annee = "1929"
+image = "le-temps-vole.jpg"
+cadre = "bois"
+licence = "Domaine public"
+source = "https://en.wikipedia.org/wiki/File:El_tiempo_vuela,_Frida_Kahlo,_1929.jpg"
+technique = "Huile sur Isorel (masonite), 77,5 × 61 cm"
+collection = "Collection particulière"
+note = "Frida en blouse blanche entre un réveil et un avion : un autoportrait aux couleurs du Mexique, peint l'année de son mariage. Protégé au Mexique jusqu'en 2054."
+description = """
+Frida Kahlo se représente de face, à mi-corps, au centre du tableau. Ses cheveux \
+sombres sont tirés en arrière, ses sourcils se rejoignent, ses joues sont rouges. Elle \
+porte de longues boucles d'oreilles, un lourd collier de grosses perles vert sombre \
+avec un pendentif sculpté, et une blouse blanche à manches courtes bordée de dentelle. \
+Derrière elle, de lourds rideaux verts sont retenus par des cordons rouges à pompons ; \
+entre eux s'ouvre un balcon sur un ciel bleu où vole un petit avion à hélice. À \
+droite, une colonne torse rouge porte un réveil doré dont les aiguilles indiquent \
+presque trois heures."""
+evocation = """
+Le titre joue sur l'expression le temps vole : un réveil pour le temps, un avion pour \
+le vol. Ce jeu de mots visuel montre l'humour de l'artiste. On a remarqué que le vert \
+des rideaux, le blanc de la blouse et le rouge des cordons et de la colonne reprennent \
+les couleurs du drapeau mexicain, et le collier évoque les bijoux préhispaniques : \
+Kahlo affirme désormais une identité mexicaine. Les rideaux et la colonne, empruntés \
+aux portraits officiels, font de ce simple buste une mise en scène. L'avion a aussi \
+été lu comme le signe de la modernité et du voyage."""
+histoire = """
+Le tableau est peint en 1929, l'année où Frida Kahlo épouse Diego Rivera, le 21 août, \
+à Coyoacán. C'est l'un des premiers autoportraits où elle abandonne la manière \
+européenne de ses débuts pour un style inspiré de la peinture populaire et du portrait \
+provincial mexicain du XIXᵉ siècle, que Rivera l'encourage à regarder. Resté en mains \
+privées, il a été vendu aux enchères à New York en 2000 et appartient toujours à une \
+collection particulière. Il est dans le domaine public en Europe et aux États-Unis, \
+mais reste protégé au Mexique jusqu'en 2054."""
+facture = """
+Kahlo peint ici sur un panneau d'Isorel, un support dur et lisse qu'elle utilisera \
+souvent, plutôt que sur toile. La composition est frontale et presque symétrique, le \
+visage au centre exact. Les formes sont simplifiées, les contours nets, les couleurs \
+posées en aplats vifs, à la manière des retablos et des portraits populaires. Les \
+accessoires, réveil, avion, colonne et rideaux, sont peints avec la même précision que \
+le visage, comme des attributs symboliques."""
+details = [
+  "Le petit avion à hélice dans le ciel bleu, en haut à gauche.",
+  "Le réveil doré posé sur la colonne torse rouge.",
+  "Le collier de grosses perles vertes et son pendentif sculpté.",
+  "La dentelle des manches de la blouse blanche.",
+  "Les cordons rouges à pompons qui retiennent les rideaux verts.",
+]
+themes = ["autoportrait", "temps", "mexique", "humour", "mariage"]
+anecdote = """
+Vendu chez Sotheby's à New York le 31 mai 2000 pour un peu plus de cinq millions de \
+dollars, ce tableau atteignit alors un prix record pour une œuvre de Frida Kahlo."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.0
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Pablo Picasso"
+vie = "Málaga, 25 octobre 1881 – Mougins, 8 avril 1973"
+biographie = """
+Fils d'un professeur de dessin, Pablo Ruiz Picasso grandit à Málaga, à La Corogne puis \
+à Barcelone, où sa famille s'installe en 1895 et où il fréquente les artistes du café \
+Els Quatre Gats. Il se fixe à Paris en 1904, au Bateau-Lavoir, après ses périodes \
+bleue et rose. En 1907, Les Demoiselles d'Avignon ouvrent la voie au cubisme, qu'il \
+invente avec Georges Braque, puis viennent les collages, un retour à la figure \
+classique et un dialogue avec les surréalistes. En 1937, pour le pavillon de la \
+République espagnole à l'Exposition internationale de Paris, il peint Guernica, après \
+le bombardement de la petite ville basque par l'aviation allemande le 26 avril. Il \
+refuse de retourner en Espagne tant que Franco est au pouvoir et s'installe après la \
+guerre dans le Midi, à Vallauris, où il se passionne pour la céramique, puis à Cannes \
+et à Mougins. Il travaille jusqu'à sa mort, à quatre-vingt- onze ans. Guernica, gardé \
+à New York selon son vœu, ne rejoint l'Espagne qu'en 1981, une fois la démocratie \
+revenue. Ses œuvres restent protégées par le droit d'auteur jusqu'à la fin de 2043."""
+style = """
+Picasso n'a pas un style mais vingt : il passe du réalisme académique à la mélancolie \
+bleue, du cubisme qui décompose les objets au classicisme des années 1920, puis aux \
+figures déformées et violentes de Guernica. Ce qui reste constant, c'est la liberté du \
+trait, la capacité à résumer un visage en quelques lignes et l'invention de techniques \
+: collage, sculpture en tôle pliée, céramique, béton gravé. Il a ouvert à l'art du XXᵉ \
+siècle presque toutes ses directions."""
+
+[[artistes]]
+nom = "Salvador Dalí"
+vie = "Figueres, 11 mai 1904 – Figueres, 23 janvier 1989"
+biographie = """
+Né dans une famille de notaire de Figueres, en Catalogne, Salvador Dalí passe ses étés \
+à Cadaqués, dont les rochers hanteront sa peinture. À Madrid, à la Résidence des \
+étudiants, il se lie avec le poète Federico García Lorca et le cinéaste Luis Buñuel, \
+avec qui il réalise Un chien andalou en 1929. La même année, il rejoint les \
+surréalistes à Paris et rencontre Gala, alors épouse du poète Paul Éluard, qui devient \
+sa compagne, sa muse et son agent. En 1931, il peint La Persistance de la mémoire et \
+ses montres molles, aujourd'hui au Museum of Modern Art de New York. Ses provocations \
+et ses positions politiques l'éloignent d'André Breton. Il vit aux États-Unis pendant \
+la Seconde Guerre mondiale, puis revient à Port Lligat, près de Cadaqués, où il peint \
+de grandes compositions religieuses et scientifiques. En 1974, il ouvre son \
+Théâtre-musée à Figueres. Après la mort de Gala en 1982, il se retire à Púbol puis \
+dans la tour Galatea, où il meurt en 1989. Ses œuvres sont protégées par le droit \
+d'auteur jusqu'à la fin de 2059."""
+style = """
+Dalí peint ses rêves avec la précision d'un maître ancien : ciels limpides, ombres \
+nettes, objets rendus au détail près, mais déformés, ramollis ou assemblés de façon \
+absurde. Il appelle sa méthode « paranoïaque-critique » : laisser surgir les \
+associations délirantes, puis les fixer avec rigueur. Montres molles, éléphants aux \
+pattes d'insecte, tiroirs, œufs et pains reviennent d'une œuvre à l'autre. Peintre, \
+sculpteur, cinéaste et homme de spectacle, il a fait de sa propre personne une œuvre \
+surréaliste."""
+
+[[artistes]]
+nom = "Frida Kahlo"
+vie = "Coyoacán (Mexico), 6 juillet 1907 – Coyoacán, 13 juillet 1954"
+biographie = """
+Magdalena Carmen Frida Kahlo naît dans la Maison bleue de Coyoacán, fille du \
+photographe Guillermo Kahlo, venu d'Allemagne, et de Matilde Calderón. Atteinte de \
+poliomyélite à six ans, elle entre en 1922 à l'École nationale préparatoire, l'une des \
+rares filles de l'établissement. Le 17 septembre 1925, un accident d'autobus la blesse \
+gravement : clouée au lit, elle commence à peindre. En 1929, elle épouse le muraliste \
+Diego Rivera, avec qui elle vit de 1930 à 1933 aux États-Unis. Leur couple orageux \
+divorce en 1939 et se remarie l'année suivante. Sa première exposition personnelle a \
+lieu à New York en 1938 ; à Paris, en 1939, le Louvre achète l'un de ses tableaux, Le \
+Cadre. Elle accueille Trotski dans la Maison bleue, enseigne la peinture et milite au \
+Parti communiste. Sa santé se dégrade, opérations et corsets se succèdent ; en 1953, \
+elle se fait porter dans son lit à sa première exposition personnelle au Mexique. Elle \
+meurt l'année suivante. Ses œuvres sont dans le domaine public en Europe depuis 2025, \
+mais restent protégées au Mexique jusqu'en 2054."""
+style = """
+Kahlo peint surtout des autoportraits, de petit format, d'une précision minutieuse. \
+Après des débuts inspirés de la Renaissance européenne, elle adopte le langage de \
+l'art populaire mexicain : ex-voto, retablos, couleurs vives, symboles explicites. \
+Elle y montre sans détour son corps blessé, sa douleur, son amour pour Rivera et son \
+identité mexicaine. Les surréalistes l'ont revendiquée, mais elle disait peindre sa \
+propre réalité, non ses rêves. Elle est devenue une icône mondiale de la peinture et \
+de l'affirmation de soi."""
