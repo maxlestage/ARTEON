@@ -1,0 +1,953 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « BYZANCE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/byzance/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /byzance.
+#
+#  Le cadre par défaut est doré (icônes, manuscrits) ; les objets (ivoire,
+#  reliure d'orfèvrerie) sont présentés en vitrine, et les mosaïques murales et la
+#  tapisserie sans cadre. Les mosaïques de Ravenne, les icônes du Sinaï et de
+#  Vladimir sont des reproductions du domaine public ; la photographie de la
+#  Déisis de Sainte-Sophie est publiée par son auteur sous CC0 ; les autres
+#  œuvres sont photographiées par le Cleveland Museum of Art et le Metropolitan
+#  Museum of Art, qui les publient en CC0.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 8
+nom_court = "Byzance"
+mouvement = "Byzance et l'Orient chrétien"
+cadre = "dore"
+couleur = "#7d5a12"
+titre = "Byzance et l'Orient chrétien, le ciel en or"
+artiste = "Ravenne, Constantinople, Angelos Akotantos, Égypte copte, Arménie, Éthiopie…"
+dates = "VIᵉ–XVIIᵉ siècle"
+accroche = "Exposition virtuelle · Sainte-Sophie, Istanbul"
+introduction = """
+Pendant mille ans, de Justinien à la chute de Constantinople en 1453, l'Empire byzantin \
+invente un art de l'or et de la présence : des mosaïques où l'empereur côtoie les \
+saints, des icônes que l'on prie et que l'on embrasse, des ivoires et des livres \
+d'Évangiles précieux comme des reliquaires. La visite suit cet art de Ravenne à la \
+Crète, puis chez les autres chrétiens d'Orient, en Égypte, en Arménie et en Éthiopie, en \
+onze œuvres. Le bâtiment s'inspire de Sainte-Sophie à Istanbul : un narthex en longueur, \
+une nef carrée très haute sous la coupole, deux bas-côtés et, au fond, une abside."""
+vitrine = "vierge-de-vladimir.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Sainte-Sophie"
+ville = "Istanbul, Turquie"
+architecte = "Anthémius de Tralles et Isidore de Milet"
+construction = "532–537"
+presentation = """
+En 532, l'émeute Nika ravage Constantinople et la basilique de la Sagesse divine, Hagia \
+Sophia, part en fumée. L'empereur Justinien la fait aussitôt reconstruire par deux \
+savants, le mathématicien Anthémius de Tralles et Isidore de Milet : la nouvelle église \
+est consacrée en 537. Sa coupole, large d'environ trente et un mètres, semble flotter \
+au-dessus de la nef grâce à la couronne de quarante fenêtres percée à sa base. Effondrée \
+en 558 après des séismes, elle est reconstruite plus haute. Pendant neuf siècles, \
+Sainte-Sophie est la cathédrale de l'Empire, où l'on couronne les empereurs. Après la \
+prise de la ville par Mehmed II en 1453, elle devient mosquée : on y ajoute des minarets \
+et l'on recouvre peu à peu les mosaïques figurées d'enduit. Musée à partir de 1934, elle \
+a été rendue au culte musulman en 2020. On y voit toujours les marbres de Justinien et, \
+dans les tribunes, les mosaïques dégagées au XXᵉ siècle, dont la Déisis."""
+ici = """
+Le bâtiment d'ARTEON reprend l'ordonnance de Sainte-Sophie. On entre par le sud dans le \
+narthex, long vestibule de vingt-quatre mètres. Il ouvre sur la nef sous la coupole, une \
+salle carrée de vingt-quatre mètres de côté et de vingt mètres de haut, aux murs couleur \
+d'or, où sont réunies les mosaïques. À l'ouest, le bas-côté des icônes ; à l'est, le \
+bas-côté du trésor, plus bas et plus intimes. Au nord, au fond de la nef, l'abside \
+présente les chrétientés d'Orient : Égypte, Arménie et Éthiopie."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de Sainte-Sophie à Istanbul (Anthémius de Tralles et Isidore de Milet,
+# 532–537) : un narthex en longueur, une nef carrée très haute sous la coupole,
+# deux bas-côtés plus bas de part et d'autre, une abside au fond. Le vrai
+# monument est orienté vers l'est ; ici, l'entrée est au sud et l'abside au nord.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une
+# porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le narthex"
+theme = "Le long vestibule d'entrée, comme celui où les fidèles de Sainte-Sophie attendaient avant d'entrer dans la nef."
+murs = "#e5d8bc"
+x = 0
+z = 0
+largeur = 24
+profondeur = 6
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La nef sous la coupole"
+theme = "Les mosaïques : Justinien et Théodora à Ravenne, la Déisis de Sainte-Sophie."
+murs = "#d9c493"
+x = 0
+z = -15
+largeur = 24
+profondeur = 24
+hauteur = 20
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Le bas-côté des icônes"
+theme = "Le Christ du Sinaï, la Vierge de Vladimir et une Vierge de tendresse crétoise."
+murs = "#e3cfa5"
+x = -17
+z = -15
+largeur = 10
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "Le bas-côté du trésor"
+theme = "Les arts précieux de Constantinople : un ivoire sculpté et une page d'Évangiles enluminée."
+murs = "#ddcbb2"
+x = 17
+z = -15
+largeur = 10
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "L'abside des chrétientés d'Orient"
+theme = "Une icône tissée d'Égypte, un Évangile arménien en argent et une page d'Évangile éthiopienne."
+murs = "#e7d5b0"
+x = 0
+z = -32
+largeur = 12
+profondeur = 10
+hauteur = 10
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "L'Empereur Justinien et sa cour"
+artiste = "Mosaïstes de Ravenne"
+annee = "vers 547"
+image = "justinien.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meister_von_San_Vitale_in_Ravenna_003.jpg"
+technique = "Mosaïque murale : tesselles de pâte de verre, de pierre et d'or"
+collection = "Basilique San Vitale, Ravenne (mur nord de l'abside)"
+note = "L'empereur byzantin, l'évêque Maximien et leur suite apportent à l'église le pain de l'eucharistie, sur un fond d'or."
+description = """
+Sur un fond d'or, une douzaine d'hommes se tiennent debout, de face, alignés comme pour \
+une photographie officielle. Au centre, l'empereur Justinien porte une couronne de \
+perles et une auréole, et un grand manteau pourpre agrafé à l'épaule par une fibule de \
+pierreries. Il tient une large coupe d'or. À sa gauche, chauve et maigre, l'évêque \
+Maximien, dont le nom est écrit au-dessus de sa tête, brandit une croix gemmée ; deux \
+diacres le suivent avec un livre d'Évangiles orné de pierres et un encensoir fumant. À \
+droite de l'empereur viennent des dignitaires en manteau blanc à bande pourpre, puis des \
+soldats serrés derrière un bouclier marqué du monogramme du Christ. Les pieds, en \
+sandales, reposent sur un sol vert sans profondeur."""
+evocation = """
+La scène montre une procession : l'empereur apporte le pain de l'eucharistie, comme \
+Théodora, sur le mur d'en face, apporte le vin. Justinien n'est jamais venu à Ravenne, \
+mais l'image le rend présent à jamais dans le sanctuaire, près de l'autel. Son auréole \
+dit qu'il règne par la volonté de Dieu, et la composition mêle les trois piliers de son \
+pouvoir : l'Église avec Maximien, l'administration avec les dignitaires, l'armée avec \
+les soldats. On a parfois rapproché les compagnons de l'empereur des apôtres réunis \
+autour du Christ. Les historiens discutent encore de l'identité de certains personnages, \
+comme l'homme placé à la droite de l'empereur, parfois reconnu comme le général \
+Bélisaire."""
+histoire = """
+L'église San Vitale est commencée vers 526, quand Ravenne appartient au royaume \
+ostrogoth, grâce à l'argent d'un riche banquier, Julien l'Argentier. En 540, les armées \
+de Justinien reprennent la ville : l'église devient une vitrine du pouvoir byzantin en \
+Italie. L'évêque Maximien, nommé par l'empereur, la consacre en 547 ou 548 ; les \
+mosaïques de l'abside, dont ce panneau, datent de ces années. Ravenne reste ensuite \
+pendant deux siècles le siège du gouverneur byzantin d'Italie. Le panneau n'a jamais \
+quitté son mur ; avec les autres monuments paléochrétiens de la ville, San Vitale est \
+inscrite au patrimoine mondial de l'Unesco depuis 1996."""
+facture = """
+Le mosaïste assemble des milliers de petits cubes, les tesselles, enfoncés dans un \
+mortier frais : pierre pour certains tons, pâte de verre colorée pour les autres, et \
+feuille d'or prise entre deux couches de verre pour le fond. Les tesselles, posées \
+légèrement de biais, accrochent la lumière des fenêtres et font vibrer l'or. Les \
+visages, aux grands yeux cernés, sont individualisés, mais les corps, sans volume, \
+s'alignent dans un rythme régulier de verticales blanches et pourpres. Aucune ombre, \
+aucun paysage : l'espace terrestre s'efface devant une présence solennelle."""
+details = [
+  "Le nom MAXIMIANVS, écrit en tesselles noires au-dessus de la tête de l'évêque.",
+  "La fibule de pierreries qui agrafe le manteau pourpre de l'empereur.",
+  "Le chrisme, monogramme du Christ, sur le grand bouclier vert des soldats.",
+  "L'encensoir fumant que balance le diacre à l'extrême droite.",
+  "Les pieds des personnages, qui se chevauchent sans vraiment se poser au sol.",
+]
+themes = ["empereur", "pouvoir", "procession", "or", "mosaïque"]
+anecdote = """
+Ni Justinien ni Théodora n'ont jamais mis les pieds à Ravenne. Leurs portraits en \
+mosaïque y tiennent lieu de présence : dans l'Antiquité, l'image officielle de \
+l'empereur le représentait partout dans l'Empire, au point qu'on lui rendait les \
+honneurs comme à sa personne."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "L'Impératrice Théodora et sa suite"
+artiste = "Mosaïstes de Ravenne"
+annee = "vers 547"
+image = "theodora.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meister_von_San_Vitale_in_Ravenna_006.jpg"
+technique = "Mosaïque murale : tesselles de pâte de verre, de pierre et d'or"
+collection = "Basilique San Vitale, Ravenne (mur sud de l'abside)"
+note = "En face de Justinien, l'impératrice apporte le calice du vin de la messe, entourée de ses dames de cour."
+description = """
+L'impératrice Théodora se tient au centre, auréolée, sous une niche en forme de \
+coquille. Elle porte un diadème d'où pendent de longs rangs de perles, un lourd collier \
+de pierreries et un manteau pourpre dont l'ourlet est brodé de trois personnages en \
+marche. Elle tient un calice d'or orné de gemmes. À gauche, un dignitaire soulève le \
+rideau d'une porte, près d'une fontaine qui jaillit d'une colonnette ; un autre homme se \
+tient à côté de lui. À droite, ses dames la suivent, vêtues d'étoffes à motifs, de \
+rouge, de vert et de blanc. Au-dessus d'elles, une tenture rayée bleu, blanc et rouge \
+est relevée. Une large bordure ornée de cabochons encadre le tout."""
+evocation = """
+Théodora répond à Justinien : elle apporte le vin de l'eucharistie comme lui le pain, et \
+le couple impérial semble ainsi participer pour toujours à la messe célébrée dans \
+l'abside. Les trois personnages brodés sur son manteau sont les Rois mages portant leurs \
+présents à l'Enfant : l'impératrice, elle aussi, fait offrande. La porte, le rideau et \
+la fontaine suggèrent qu'elle est sur le seuil, sur le point d'entrer dans l'église. On \
+a vu dans cette image la revanche d'une femme d'origine modeste, fille d'un dresseur \
+d'ours de l'Hippodrome et ancienne actrice, devenue l'égale de l'empereur. On a aussi \
+proposé de reconnaître, à ses côtés, Antonina, l'épouse du général Bélisaire, sans \
+certitude."""
+histoire = """
+Le panneau est réalisé en même temps que celui de Justinien, pour la consécration de San \
+Vitale en 547 ou 548. Théodora meurt à Constantinople en 548 : l'image est donc l'un des \
+derniers portraits faits de son vivant, ou presque. L'historien de cour Procope, qui \
+l'admire dans ses écrits officiels, l'accable dans son Histoire secrète, et c'est en \
+partie à travers lui que sa légende s'est formée. En 532, lors de l'émeute Nika, elle \
+aurait convaincu Justinien de ne pas fuir la ville. Comme celui de son époux, son \
+portrait est resté en place depuis quatorze siècles."""
+facture = """
+Le mosaïste joue sur la richesse des textiles : les robes des dames de cour forment un \
+catalogue de motifs, losanges, fleurs, rayures, rendus tesselle par tesselle. Les perles \
+du diadème et du collier sont faites de tesselles de nacre ou de verre blanc, qui \
+accrochent la lumière. Comme pour Justinien, les figures sont frontales, sans ombre, \
+alignées sur un sol vert ; mais ici l'architecture, avec la niche, la porte et la \
+fontaine, donne une ébauche de lieu. La grande auréole d'or détache la tête de \
+l'impératrice sur la coquille de la niche."""
+details = [
+  "Les trois Rois mages brodés en or sur le bas du manteau de Théodora.",
+  "Les longs pendants de perles qui tombent du diadème jusqu'aux épaules.",
+  "La fontaine sur sa colonnette, à gauche, près de la porte.",
+  "Le rideau soulevé par le dignitaire, qui découvre l'ombre d'une pièce.",
+  "Les étoffes à motifs différents de chacune des dames de cour.",
+]
+themes = ["impératrice", "offrande", "perles", "cour", "mosaïque"]
+anecdote = """
+Selon Procope, pendant l'émeute Nika de 532, alors que Justinien songeait à fuir, \
+Théodora aurait déclaré que la pourpre impériale est un beau linceul. L'empereur resta, \
+la révolte fut écrasée, et c'est après cette émeute que fut bâtie la nouvelle \
+Sainte-Sophie."""
+salle = 2
+mur = "nord"
+place = 6
+largeur = 3.0
+
+[[oeuvres]]
+titre = "La Déisis"
+artiste = "Byzance"
+annee = "vers 1261"
+image = "deesis-sainte-sophie.jpg"
+cadre = "aucun"
+credit = "Photo : Myrabella"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Deesis_mosaic_Hagia_Sophia.jpg"
+technique = "Mosaïque murale : tesselles de pâte de verre, de pierre et d'or"
+collection = "Sainte-Sophie, Istanbul (tribune sud)"
+note = "Le Christ entre la Vierge et saint Jean-Baptiste, qui prient pour l'humanité : la mosaïque la plus célèbre de Sainte-Sophie."
+description = """
+Sur un fond d'or, trois grandes figures en buste se détachent. Au centre, le Christ, \
+auréolé d'une croix, bénit de la main droite et tient de la gauche un livre d'Évangiles \
+à couverture d'or. Il porte une tunique dorée et un manteau bleu. À gauche, la Vierge, \
+voilée de sombre, incline la tête vers lui ; à droite, saint Jean-Baptiste, les cheveux \
+et la barbe en mèches désordonnées, le front plissé, se penche lui aussi. Des lettres \
+grecques donnent leurs noms : MP ΘΥ pour la Mère de Dieu, IC XC pour Jésus-Christ, et « \
+saint Jean le Précurseur ». Toute la moitié inférieure du panneau a disparu : il ne \
+reste qu'un enduit gris, sur lequel flottent les fragments de mosaïque."""
+evocation = """
+Déisis signifie en grec « prière » ou « supplication ». La Vierge et Jean-Baptiste, les \
+deux témoins les plus proches du Christ, intercèdent auprès de lui pour les hommes au \
+jour du Jugement. Le thème est très répandu à Byzance, sur les icônes comme au sommet \
+des iconostases. Ce qui frappe ici, c'est l'humanité des visages : la tristesse retenue \
+de la Vierge, l'inquiétude de Jean, la douceur grave du Christ. On a souvent rapproché \
+ces visages modelés comme en peinture de l'art italien qui s'invente au même moment, \
+avec Cimabue et Giotto. Les lacunes, loin d'effacer l'image, lui donnent la présence \
+fragile d'une apparition."""
+histoire = """
+En 1204, les croisés de la quatrième croisade prennent et pillent Constantinople, qui \
+reste aux mains des Latins jusqu'en 1261. La plupart des historiens datent la Déisis des \
+années qui suivent la reconquête de la ville par Michel VIII Paléologue, quand \
+Sainte-Sophie est rendue au culte orthodoxe ; d'autres la placent plus tôt, au XIIᵉ \
+siècle. Le panneau orne la tribune sud, la galerie à l'étage. Après 1453, l'église \
+devenue mosquée voit ses mosaïques figurées peu à peu recouvertes d'enduit. Elles sont \
+dégagées dans les années 1930 par l'Institut byzantin d'Amérique, dirigé par Thomas \
+Whittemore. La moitié inférieure du panneau, elle, est perdue."""
+facture = """
+Les tesselles des visages sont minuscules et posées en lignes serrées qui suivent les \
+volumes, comme les coups de pinceau d'un peintre : on passe sans heurt du rose au vert \
+olive des ombres. Le mosaïste a choisi des tesselles de couleurs très nuancées pour \
+modeler les joues, les paupières, les mèches de barbe. Les lettres et les contours sont \
+tracés en tesselles sombres. Le fond d'or, posé en rangées régulières, reflète la \
+lumière changeante des fenêtres de la tribune."""
+details = [
+  "Les lettres IC XC de part et d'autre de la tête du Christ.",
+  "Les mèches en désordre de saint Jean-Baptiste, le prophète du désert.",
+  "Le livre d'Évangiles serti de pierres que tient le Christ.",
+  "La croix inscrite dans l'auréole du Christ, réservée à lui seul.",
+  "Les fragments de manteau de la Vierge, qui flottent sur l'enduit gris.",
+]
+themes = ["intercession", "jugement", "visage", "or", "mosaïque"]
+anecdote = """
+Non loin de la Déisis, dans les tribunes, une inscription au sol porte le nom d'Henricus \
+Dandolo : elle rappelle le doge de Venise Enrico Dandolo, qui mena la quatrième croisade \
+contre Constantinople et mourut dans la ville en 1205."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Le Christ Pantocrator du Sinaï"
+artiste = "Byzance"
+annee = "VIᵉ siècle"
+image = "pantocrator-du-sinai.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg"
+technique = "Encaustique sur bois, 84 × 45,5 cm"
+collection = "Monastère Sainte-Catherine du Sinaï, Égypte"
+note = "L'une des plus anciennes icônes conservées : le Christ maître de tout, peint à la cire au temps de Justinien."
+description = """
+Le Christ apparaît en buste, de face, devant une architecture à peine esquissée : un mur \
+bas, une niche, un ciel bleu où brillent deux étoiles. Une grande auréole d'or, cernée \
+de bleu et décorée d'une croix presque effacée, entoure sa tête. Ses cheveux longs et \
+bruns tombent derrière l'épaule gauche ; sa barbe est courte. Il porte une tunique et un \
+manteau brun-pourpre. De la main droite, il bénit ; de la gauche, il serre contre lui un \
+épais livre d'Évangiles, dont la couverture d'or est ornée d'une croix, de pierres et de \
+perles. Son visage n'est pas symétrique : pour le spectateur, la moitié gauche est calme \
+et douce, la moitié droite plus sévère, avec un sourcil relevé et un œil plus grand."""
+evocation = """
+Pantocrator veut dire en grec « celui qui tient tout » : le Christ est ici le maître du \
+monde, le juge et le sauveur. L'asymétrie du visage a été souvent commentée : on y a vu \
+les deux natures du Christ, divine et humaine, réunies dans une seule personne, ou \
+encore la miséricorde et la justice. Le regard droit, qui fixe chaque fidèle, fait de \
+l'icône une rencontre plutôt qu'un portrait. Le livre précieux rappelle que le Christ \
+est la Parole de Dieu. Avec quelques autres icônes du Sinaï, cette image est l'un des \
+rares témoins de l'art des icônes avant la querelle des images, qui en fit détruire un \
+grand nombre aux VIIIᵉ et IXᵉ siècles."""
+histoire = """
+L'icône a sans doute été peinte à Constantinople, au VIᵉ siècle, peut-être pour le \
+monastère que l'empereur Justinien fait fortifier au pied du mont Sinaï. Au siècle \
+suivant, la conquête arabe met le monastère hors de l'Empire : quand les empereurs \
+iconoclastes font détruire les images religieuses, entre 726 et 843, leurs ordres \
+n'atteignent pas le Sinaï. L'icône est conservée sur place depuis quatorze siècles. \
+Repeinte au fil du temps, elle est nettoyée et restaurée en 1962, ce qui révèle la \
+peinture d'origine. L'historien de l'art Kurt Weitzmann l'a fait connaître avec les \
+autres icônes anciennes du monastère, qui abrite la plus riche collection d'icônes \
+byzantines du monde."""
+facture = """
+L'icône est peinte à l'encaustique : les pigments sont mêlés à de la cire chaude, \
+appliquée au pinceau ou à la spatule, comme dans les portraits funéraires du Fayoum, en \
+Égypte romaine. La cire donne une matière épaisse et lumineuse, et permet des passages \
+doux sur le visage, du rose au brun. Le modelé, les ombres, la lumière qui vient de la \
+gauche appartiennent encore à la peinture antique. Seuls l'or de l'auréole et la \
+frontalité annoncent l'art plus abstrait des siècles suivants."""
+details = [
+  "Les deux yeux du Christ, de taille et d'expression différentes.",
+  "Les deux doigts levés de la main droite, en geste de bénédiction.",
+  "Les perles et les pierres de la couverture du livre d'Évangiles.",
+  "Les deux étoiles dorées dans le ciel bleu, de part et d'autre de l'auréole.",
+  "Le mur et la niche de l'arrière-plan, comme dans un portrait antique.",
+]
+themes = ["christ", "icône", "regard", "encaustique", "sinaï"]
+anecdote = """
+Le monastère Sainte-Catherine, où l'icône est conservée, est habité sans interruption \
+depuis le VIᵉ siècle. Ses murailles de granit, élevées sous Justinien, sont encore \
+debout, et sa bibliothèque garde l'un des plus anciens fonds de manuscrits du monde."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Vierge de Vladimir"
+artiste = "Byzance"
+annee = "vers 1130"
+image = "vierge-de-vladimir.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Vladimirskaja_ikona_Bo%C5%BEiej_Materi.jpg"
+technique = "Tempera sur bois, 104 × 69 cm"
+collection = "Galerie Tretiakov, Moscou (église Saint-Nicolas de Tolmatchi)"
+note = "Peinte à Constantinople, la plus vénérée des icônes russes : la Vierge serre contre sa joue l'Enfant qui l'enlace."
+description = """
+Sur un fond d'or usé, la Vierge apparaît à mi-corps, enveloppée d'un manteau sombre qui \
+couvre sa tête, bordé d'or et marqué d'une étoile au front. Elle porte l'Enfant sur son \
+bras droit et pose la main gauche sur sa poitrine. L'Enfant, en tunique dorée, se jette \
+contre elle : sa joue touche celle de sa mère, son bras gauche passe autour de son cou, \
+et l'on voit dépasser, en bas, la plante de son pied. La Vierge ne le regarde pas : ses \
+yeux sombres, sous des sourcils arqués, sont tournés vers le spectateur. Autour, le \
+large bord de la planche est couvert de lacunes et de traces de clous. Dans les angles \
+du haut, les lettres grecques abrégées nomment la Mère de Dieu."""
+evocation = """
+L'icône appartient au type de la Vierge de tendresse, Éléousa en grec, que les Russes \
+appellent Oumilénié. L'étreinte de l'Enfant dit l'amour d'une mère, mais le regard grave \
+de la Vierge, tourné vers nous, dit qu'elle connaît déjà la Passion à venir : la \
+tendresse est mêlée de douleur. Pour les Russes, l'icône est devenue la protectrice de \
+Moscou et de tout le pays. On lui a attribué plusieurs délivrances de la ville : elle a \
+été portée en procession dans les moments de danger et a vu le couronnement des tsars. \
+Elle est ainsi à la fois une œuvre d'art byzantine et un symbole national russe."""
+histoire = """
+L'icône est peinte à Constantinople, sans doute vers 1130, et envoyée peu après à Kiev. \
+En 1155, le prince André Bogolioubski l'emporte dans le nord, à Vladimir, dont elle \
+prend le nom. En 1395, alors que Tamerlan menace Moscou, on l'y transporte ; elle finit \
+par y rester, dans la cathédrale de la Dormition du Kremlin. Plusieurs fois repeinte et \
+endommagée, elle est restaurée en 1918 : on découvre alors que seuls les visages, et \
+quelques fragments, remontent au XIIᵉ siècle, le reste ayant été refait du XIIIᵉ au XVIᵉ \
+siècle. Entrée à la galerie Tretiakov en 1930, elle est exposée depuis 1999 dans \
+l'église Saint-Nicolas de Tolmatchi, attenante au musée, où l'on prie de nouveau devant \
+elle."""
+facture = """
+Les visages, seule partie d'origine, montrent la finesse de la peinture de \
+Constantinople au XIIᵉ siècle. Le peintre pose d'abord un fond olive, le sankir, puis \
+monte les lumières par couches fines et transparentes de tons clairs, jusqu'aux rehauts \
+sur l'arête du nez et sous les yeux. Les traits sont tracés d'une ligne souple et sûre : \
+la courbe des sourcils, la bouche petite, le nez long. Les vêtements de l'Enfant sont \
+striés de fines lignes d'or qui font scintiller l'étoffe."""
+details = [
+  "Les deux joues de la mère et de l'Enfant, collées l'une contre l'autre.",
+  "La plante du pied gauche de l'Enfant, visible sous sa tunique dorée.",
+  "Le bras de l'Enfant qui passe autour du cou de sa mère.",
+  "L'étoile brodée sur le voile de la Vierge, au-dessus du front.",
+  "Les lignes d'or qui strient la tunique de l'Enfant.",
+]
+themes = ["vierge", "tendresse", "icône", "russie", "constantinople"]
+anecdote = """
+Selon la tradition, Tamerlan fit demi-tour en 1395 le jour même où l'icône arrivait à \
+Moscou. L'Église russe commémore encore cette rencontre chaque année, le 26 août du \
+calendrier julien, soit le 8 septembre du nôtre."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Vierge de tendresse (Éléousa)"
+artiste = "Angelos Akotantos"
+annee = "vers 1425–1450"
+image = "eleousa-akotantos.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2010.154"
+technique = "Tempera et or sur bois, 96 × 70 cm"
+collection = "Cleveland Museum of Art"
+note = "Attribuée au plus grand peintre de la Crète vénitienne : une Vierge de tendresse destinée à une iconostase."
+description = """
+La Vierge, en buste, se détache sur un fond d'or craquelé, dans un panneau au sommet \
+arrondi. Elle est enveloppée d'un manteau rouge sombre, le maphorion, qui couvre sa tête \
+et ses épaules ; un bonnet bleu apparaît dessous, et trois étoiles d'or ornent son front \
+et ses épaules. Elle incline la tête vers l'Enfant, qu'elle porte sur son bras gauche et \
+soutient de la main droite, aux longs doigts. L'Enfant, vêtu d'une tunique bleu pâle \
+semée de petits motifs et d'un manteau orangé, presse sa joue contre celle de sa mère et \
+lève les yeux vers elle. Il tient un rouleau ; ses jambes sont croisées et ses pieds nus \
+dépassent. Le bas de la manche de la Vierge est bordé d'une frange d'or."""
+evocation = """
+Comme la Vierge de Vladimir, accrochée à côté, cette icône appartient au type de \
+l'Éléousa, la Vierge de tendresse. Trois siècles les séparent : la formule s'est \
+transmise de génération en génération, car une icône doit rester fidèle à son modèle. \
+Mais le peintre crétois y met sa propre douceur, plus calme : le regard de la Vierge est \
+baissé, mélancolique, et l'Enfant, au lieu de se jeter contre elle, la regarde. Le \
+rouleau qu'il tient rappelle qu'il est aussi la Parole de Dieu. Grande et visible de \
+loin, l'icône était sans doute placée sur une iconostase, la cloison qui sépare les \
+fidèles du sanctuaire dans les églises orthodoxes."""
+histoire = """
+Depuis le début du XIIIᵉ siècle, la Crète appartient à Venise. À Candia, l'actuelle \
+Héraklion, des ateliers de peintres grecs travaillent à la fois pour les églises \
+orthodoxes et pour des clients catholiques, et exportent leurs icônes dans toute la \
+Méditerranée. Le musée de Cleveland attribue celle-ci à Angelos Akotantos, le plus \
+réputé d'entre eux dans la première moitié du XVᵉ siècle. Son parcours avant le XXᵉ \
+siècle est inconnu ; elle passe chez un marchand romain en 1989, puis dans une \
+collection privée de Rome, avant d'être achetée par le musée de Cleveland en 2010."""
+facture = """
+Le peintre travaille à la tempera à l'œuf sur un panneau de bois préparé, et pose le \
+fond à la feuille d'or. Les chairs sont construites selon la méthode crétoise : un fond \
+brun-vert, puis des lumières de plus en plus claires, posées en petites touches \
+parallèles qui se voient sur la joue et le cou de la Vierge. Les plis du manteau rouge \
+sont dessinés par de longues lignes sombres et anguleuses. Sur les vêtements de \
+l'Enfant, de fins traits d'or font briller l'étoffe. Le contour est net, le modelé doux \
+: c'est l'élégance qui fera la réputation de l'école crétoise."""
+details = [
+  "Les trois étoiles d'or sur le voile, signe de la virginité de Marie.",
+  "Les petites touches claires parallèles qui modèlent le cou de la Vierge.",
+  "Le rouleau serré dans la main de l'Enfant.",
+  "Les pieds nus croisés de l'Enfant, au bas du panneau.",
+  "La frange d'or au bord de la manche de la Vierge, à gauche.",
+]
+themes = ["vierge", "tendresse", "crète", "icône", "venise"]
+anecdote = """
+Selon le musée de Cleveland, c'est la seule œuvre connue d'Angelos Akotantos aux \
+États-Unis. Les icônes crétoises voyageaient loin : au début du XVIᵉ siècle, l'empereur \
+d'Éthiopie Lebna Dengel envoya des moines en acheter pour ses églises."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 1.2
+
+[[oeuvres]]
+titre = "La Vierge à l'Enfant trônant (ivoire Stroganoff)"
+artiste = "Byzance"
+annee = "950–1025"
+image = "ivoire-stroganoff.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1925.1293"
+technique = "Ivoire sculpté, 25,3 × 17,2 × 1,8 cm"
+collection = "Cleveland Museum of Art"
+note = "Une plaque d'ivoire sculptée à Constantinople, agrandie ici : elle mesure en réalité 25 cm de haut."
+description = """
+Dans un cadre étroit, la Vierge est assise de face sur un trône monumental au dossier \
+découpé en lobes, garni de deux gros coussins et orné de rosaces. Ses pieds reposent sur \
+un marchepied, lui-même posé sur une large estrade décorée de pierreries sculptées. Elle \
+porte l'Enfant sur ses genoux, au centre exact de la plaque. L'Enfant, auréolé, lève la \
+main droite pour bénir et tient un rouleau de la gauche. La Vierge pose une main sur son \
+épaule. Dans les angles supérieurs, deux anges en buste, ailes déployées, tendent les \
+mains vers eux. Une inscription grecque court sur le devant de l'estrade. Les \
+colonnettes du trône sont sculptées à jour."""
+evocation = """
+La Vierge est ici le trône même du Christ : l'Enfant, assis droit sur ses genoux, n'a \
+rien d'un nourrisson. Il bénit comme un adulte, le visage impassible, pour rendre \
+visible le mystère de l'Incarnation, Dieu fait homme. Les anges, à mi-corps, semblent \
+surgir du ciel pour désigner ce mystère au fidèle. Le luxe du trône, de l'estrade et des \
+coussins reprend celui de la cour impériale : Marie y est présentée en impératrice \
+céleste. Dans l'ivoire, matière rare et coûteuse, cette image servait à la prière privée \
+de grands personnages de Constantinople."""
+histoire = """
+La plaque est sculptée à Constantinople autour de l'an mil, à l'époque de la dynastie \
+macédonienne, quand les ateliers de la capitale produisent leurs plus beaux ivoires. On \
+ne sait pas pour qui. Elle passe ensuite par une longue suite de collections : à Paris, \
+puis en Angleterre chez l'antiquaire Francis Douce, mort en 1834, puis à Rome dans la \
+collection du comte Sergueï Stroganov, homme d'État et historien de l'art russe, qui lui \
+a laissé son nom. Passée dans la collection Malcolm, vendue chez Christie's en 1913, \
+elle est offerte en 1925 au musée de Cleveland par le mécène Jeptha Homer Wade."""
+facture = """
+L'ivoire d'éléphant, importé d'Afrique ou d'Inde, est taillé en plaque, puis creusé au \
+ciseau et à la gouge : le fond est abaissé de plusieurs millimètres pour faire saillir \
+les figures en haut relief. Le sculpteur détaille avec une précision d'orfèvre les plis \
+du manteau, les rosaces du dossier, les cabochons de l'estrade, les mèches des anges. \
+Les veines fines qui strient la surface sont celles de l'ivoire lui-même. À l'origine, \
+certains détails étaient peut-être rehaussés d'or ou de couleur."""
+details = [
+  "La main de l'Enfant levée pour bénir, deux doigts tendus.",
+  "Les deux coussins du trône, gonflés et serrés aux extrémités.",
+  "Les rosaces sculptées dans le dossier en forme de lobes.",
+  "L'inscription grecque gravée sur le devant de l'estrade.",
+  "Les fines stries naturelles de l'ivoire sur tout le fond.",
+]
+themes = ["ivoire", "vierge", "trône", "anges", "constantinople"]
+anecdote = """
+Le comte Sergueï Stroganov, qui a donné son nom à l'ivoire, a fondé en 1825 à Moscou une \
+école de dessin pour les artisans. Elle existe toujours : c'est l'Académie Stroganov des \
+arts industriels."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Saint Matthieu, page d'un lectionnaire"
+artiste = "Byzance"
+annee = "1057–1063"
+image = "lectionnaire-saint-matthieu.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1942.1512"
+technique = "Tempera et or sur vélin, 28,8 × 24,3 cm"
+collection = "Cleveland Museum of Art"
+note = "L'évangéliste écrit sous une arcade d'or : une page d'un livre offert par une impératrice à un monastère de Constantinople."
+description = """
+Sous une arcade portée par deux colonnes de marbre sombre aux chapiteaux dorés, saint \
+Matthieu est assis sur un siège garni d'un coussin rouge. Âgé, la barbe et les cheveux \
+blancs, il est vêtu d'une tunique bleue et d'un manteau beige. Penché, il écrit sur un \
+cahier posé sur ses genoux. Devant lui, un meuble de bois sombre, un pupitre-armoire, \
+porte un encrier et des instruments. Le sol est de marbre vert veiné de blanc, et le \
+fond de feuille d'or. Au-dessus de lui, son nom est inscrit en lettres grecques rouges. \
+Autour de l'image, le parchemin est resté nu ; il est usé, taché, déchiré par endroits \
+sur son bord droit."""
+evocation = """
+Les portraits des quatre évangélistes ouvrent traditionnellement les livres d'Évangiles, \
+dans tout le monde chrétien. Ils garantissent l'authenticité du texte : Matthieu, Marc, \
+Luc et Jean passaient pour des témoins directs de la vie du Christ, ou proches de \
+témoins. Le modèle vient de l'Antiquité, où l'on plaçait le portrait de l'auteur en tête \
+de ses œuvres : Matthieu ressemble à un philosophe grec. L'or du fond le place pourtant \
+hors du temps, dans la lumière divine. Le soin donné aux outils du copiste, encrier, \
+plumes, rappelle aussi le travail des moines qui recopiaient ces livres."""
+histoire = """
+Cette page vient d'un lectionnaire, un livre qui rassemble les passages des Évangiles \
+lus pendant la messe, dans l'ordre de l'année liturgique. Selon le musée de Cleveland, \
+le livre a été offert en 1063 au monastère de la Sainte-Trinité de Chalkè, une des îles \
+des Princes près de Constantinople, par l'impératrice Catherine, épouse d'Isaac Iᵉʳ \
+Comnène, empereur de 1057 à 1059. À une date inconnue, le livre a été démembré et ses \
+pages dispersées, comme beaucoup de manuscrits enluminés. Celle-ci est achetée en 1942 \
+par le musée de Cleveland au marchand new-yorkais Dikran Kelekian."""
+facture = """
+Le peintre travaille sur du vélin, une peau de veau finement préparée. Il pose d'abord \
+la feuille d'or du fond, polie au brunissoir pour qu'elle brille, puis les couleurs à la \
+tempera, en couches minces. Les plis du manteau sont rendus par des lignes claires et \
+sombres qui suggèrent le volume, à la manière antique. Le marbre du sol et des colonnes \
+est imité par des veines peintes. Avec le temps, la couleur s'est écaillée par endroits, \
+sur l'épaule de Matthieu et sur le pupitre, laissant voir le parchemin."""
+details = [
+  "Le nom de l'évangéliste, ὁ ἅγιος Ματθαῖος, en lettres rouges sur l'or.",
+  "L'encrier et les outils de copiste posés sur le pupitre.",
+  "Le coussin rouge du siège, sous le manteau de Matthieu.",
+  "Les veines blanches du marbre vert, au sol.",
+  "Les colonnes de marbre rouge sombre et leurs chapiteaux dorés.",
+]
+themes = ["évangéliste", "écriture", "manuscrit", "or", "constantinople"]
+anecdote = """
+Les premiers lectionnaires byzantins recevaient souvent des reliures d'orfèvrerie, \
+couvertes de métal précieux, de pierreries et parfois d'ivoire : le livre lui-même était \
+porté en procession et embrassé par les fidèles."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Icône tissée de la Vierge à l'Enfant"
+artiste = "Égypte copte"
+annee = "VIᵉ siècle"
+image = "icone-tissee-copte.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1967.144"
+technique = "Tapisserie de laine, 178,7 × 110,5 cm"
+collection = "Cleveland Museum of Art"
+note = "Une icône rare, tissée de plus de vingt couleurs de laine en Égypte, avant la querelle des images."
+description = """
+Au centre de la tapisserie, la Vierge, vêtue de bleu sombre, trône de face sur un siège \
+garni d'un coussin rouge ; elle tient l'Enfant sur ses genoux. Deux archanges aux ailes \
+bleues, en tunique blanche, se tiennent à ses côtés, un long bâton à la main, devant \
+deux colonnes. Une inscription grecque, au-dessus, nomme saint Michel, sainte Marie et \
+saint Gabriel. Plus haut, le Christ trône dans une gloire ronde, entre deux anges, sur \
+un ciel étoilé. Une large bordure de feuillages, de fleurs et de fruits, dont des \
+grenades, encadre le tout ; elle porte des médaillons où apparaissent les bustes des \
+apôtres, chacun nommé en grec. De larges lacunes trouent le tissu, surtout en haut."""
+evocation = """
+Cette tapisserie est une véritable icône : on la suspendait au mur d'une église pour la \
+vénérer. Elle superpose deux images, la Vierge à l'Enfant sur terre et le Christ en \
+gloire au ciel, reliées par les anges : on y a vu l'Incarnation et la Majesté divine \
+réunies. Les apôtres de la bordure forment comme une cour autour d'elles. Les fruits et \
+les fleurs évoquent le paradis, un jardin luxuriant au cœur d'un pays de désert. Les \
+grands yeux fixes, les visages ronds, les couleurs franches sont typiques de l'Égypte \
+chrétienne, où l'on appelle coptes les chrétiens et leur art."""
+histoire = """
+La tapisserie est tissée en Égypte au VIᵉ siècle, quand le pays fait encore partie de \
+l'Empire byzantin, comme en témoignent les inscriptions grecques. On ne sait pas dans \
+quelle église elle a été accrochée. Le climat sec de l'Égypte a permis la conservation \
+de nombreux textiles de cette époque, souvent retrouvés dans des tombes, mais une icône \
+tissée de cette taille est exceptionnelle. Le musée de Cleveland l'achète en 1967 à une \
+collectionneuse new-yorkaise, Mrs Paul Mallon ; on ignore son parcours antérieur. Avec \
+les icônes du Sinaï, elle compte parmi les rares images religieuses conservées d'avant \
+la crise iconoclaste."""
+facture = """
+C'est une tapisserie : les fils de trame en laine teinte, de plus de vingt couleurs, \
+sont passés à la main entre les fils de chaîne et serrés jusqu'à les cacher, zone de \
+couleur par zone de couleur. Les tisserands fondent les teintes pour modeler les visages \
+et les plis, comme le ferait un peintre. Selon le musée, une telle tapisserie coûtait \
+plus cher qu'une peinture à l'époque. Les fils de laine se sont usés de façon inégale, \
+ce qui explique les trous : le fond sombre qui apparaît dessous est le tissu sur lequel \
+elle est aujourd'hui montée."""
+details = [
+  "L'inscription grecque au-dessus des archanges et de la Vierge.",
+  "Le disque marqué d'une croix que tient l'ange de droite.",
+  "Les grenades rouges et les fleurs de la bordure.",
+  "Les bustes des apôtres dans les médaillons, nommés en grec.",
+  "Le Christ en gloire, en haut, dans un cercle bleu semé d'étoiles.",
+]
+themes = ["tapisserie", "vierge", "anges", "égypte", "copte"]
+anecdote = """
+Les textiles coptes ont été exhumés par milliers à la fin du XIXᵉ siècle dans les \
+nécropoles égyptiennes, notamment à Antinoé, fouillée par le Français Albert Gayet à \
+partir de 1896, puis dispersés entre les musées du monde entier."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Évangile arménien à couverture d'argent"
+artiste = "Arménie"
+annee = "manuscrit : XIIIᵉ siècle ; reliure : 1691"
+image = "evangeliaire-armenien.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/446861"
+technique = "Encre et tempera sur parchemin ; reliure d'argent doré repoussé, émaux, pierres et verres colorés, 26 × 18,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un livre des Évangiles arménien, habillé quatre siècles plus tard d'une reliure d'orfèvrerie : le livre mesure 26 cm de haut."
+description = """
+Le livre est présenté fermé, debout, vu de face. Sa couverture d'argent doré est \
+travaillée en relief. Au centre, une plaque montre la Nativité : la Vierge allongée près \
+de l'Enfant emmailloté dans sa crèche, Joseph debout, le bœuf et l'âne au-dessus, et des \
+bergers qui s'approchent. Dans le haut de la scène, des troupeaux, des cavaliers qui \
+suivent une étoile, les Rois mages, et une rangée de têtes d'anges. Le fond est d'émail \
+bleu turquoise. Sous la scène court une inscription. Autour, une large bordure d'émail \
+vert est couverte de rinceaux de vigne, de grappes de raisin et de pierres de couleur : \
+grenats, turquoises, cabochons bleus. On aperçoit sur le côté le dos du livre, garni de \
+velours vert."""
+evocation = """
+Pour les Arméniens, le livre des Évangiles est plus qu'un texte : c'est un objet sacré, \
+porté en procession, embrassé, parfois considéré comme protecteur. On le transmettait de \
+génération en génération, on le rachetait quand il avait été volé, on le faisait relier \
+à nouveau quand il s'usait. Ici, un manuscrit du XIIIᵉ siècle reçoit en 1691 un habit \
+d'orfèvrerie digne de sa valeur. La Nativité rappelle que l'Évangile annonce la \
+naissance du Sauveur ; la vigne, image du Christ et du vin eucharistique, l'entoure. Le \
+livre lie deux époques de l'histoire arménienne, le royaume de Cilicie et la diaspora."""
+histoire = """
+Le manuscrit a été copié et peint au XIIIᵉ siècle, probablement en Cilicie, le royaume \
+arménien fondé au sud-est de l'Asie Mineure, dont les ateliers d'enluminure connaissent \
+alors leur âge d'or. Le musée ne précise pas où la reliure, datée de 1691, a été \
+réalisée ; l'inscription arménienne montre qu'elle a été commandée par des Arméniens. À \
+la fin du XVIIᵉ siècle, les communautés arméniennes sont dispersées entre l'Empire \
+ottoman, la Perse et l'Europe, et leurs marchands financent de tels travaux pour leurs \
+églises. Le livre est entré au Metropolitan Museum of Art en 1916, don de Mrs Edward S. \
+Harkness."""
+facture = """
+La couverture est faite de feuilles d'argent travaillées au repoussé : l'orfèvre frappe \
+le métal par l'envers pour faire saillir les figures, puis précise les détails au \
+ciselet par l'endroit. Certaines parties sont dorées. Les fonds sont couverts d'émaux \
+colorés, de la poudre de verre fondue dans les creux du métal, bleu pour le ciel de la \
+Nativité, vert pour la bordure. Des pierres et des verres colorés, sertis dans des \
+bâtes, rythment l'encadrement. À l'intérieur, les pages de parchemin sont écrites à \
+l'encre et peintes à la tempera."""
+details = [
+  "L'étoile, en haut à droite, que suivent les Rois mages à cheval.",
+  "Le bœuf et l'âne penchés au-dessus de la crèche.",
+  "La rangée de têtes d'anges dans les nuées, au sommet de la scène.",
+  "Les grappes de raisin en relief dans la bordure d'émail vert.",
+  "La grosse turquoise et les grenats sertis dans l'encadrement.",
+]
+themes = ["évangile", "nativité", "orfèvrerie", "émail", "arménie"]
+anecdote = """
+L'Arménie est traditionnellement considérée comme le premier royaume à avoir adopté le \
+christianisme comme religion officielle, au début du IVᵉ siècle. Son alphabet, créé vers \
+405 par le moine Mesrop Machtots, servit d'abord à traduire la Bible."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Saint Luc, page d'un livre des Évangiles"
+artiste = "Éthiopie chrétienne"
+annee = "vers 1440–1480"
+image = "evangeliaire-ethiopien-saint-luc.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1999.212"
+technique = "Encre et tempera sur vélin, 37 × 25 cm"
+collection = "Cleveland Museum of Art"
+note = "L'évangéliste Luc et son taureau, peints dans le Tigré, au nord de l'Éthiopie, dans des couleurs vives et des motifs géométriques."
+description = """
+Saint Luc est assis de trois quarts, sur un bloc orné d'un motif de croisillons, sous \
+une arcade. Il a de longs cheveux gris et une barbe grise dessinée trait par trait. Il \
+tient dans la main gauche un livre ouvert, blanc, et dans la droite un long calame avec \
+lequel il écrit. Sa robe est entièrement couverte de lignes ondulées orange et rouges, \
+qui dessinent les plis comme des courbes de niveau. Son auréole se détache sur un fond \
+vert, et le bas du fond est rayé d'orange. Au-dessus, dans le cintre de l'arcade, un \
+taureau bondit à côté de quelques lignes d'écriture guèze. Une bordure de motifs \
+géométriques entoure la page, au parchemin bruni et aux bords usés."""
+evocation = """
+Le taureau est le symbole de Luc, l'un des quatre animaux qui représentent les \
+évangélistes depuis les premiers siècles chrétiens. Le portrait suit un modèle venu, à \
+travers les livres coptes, syriaques et byzantins, de l'Antiquité : l'auteur assis qui \
+écrit. Mais le peintre éthiopien le transforme en un dessin coloré, aux lignes rythmées \
+et aux grands yeux en amande, très loin du modelé grec. Le texte en guèze, la langue \
+liturgique de l'Église éthiopienne, est une prière dont le sens est à peu près : « \
+Faites cette image de saint Luc avec ce taureau ; que sa prière et ses bénédictions \
+soient avec nous. Amen. »"""
+histoire = """
+La page vient d'un livre des Évangiles réalisé dans la région du Tigré, au nord de \
+l'Éthiopie, vers 1440–1480, sous le règne de Zara Yaqob ou de ses successeurs, une \
+époque de grande activité pour les monastères et leurs ateliers de copie. Le livre a \
+plus tard été démembré, et ses pages sont passées sur le marché de l'art. Celle-ci a été \
+achetée en 1999 par le musée de Cleveland à un libraire de livres anciens de l'Ohio. \
+Comme beaucoup de manuscrits éthiopiens sortis du pays, le livre a été découpé pour être \
+vendu page à page, une pratique aujourd'hui très critiquée."""
+facture = """
+Le peintre trace d'abord tous les contours à l'encre, d'un trait sûr, puis remplit les \
+surfaces de couleurs franches, sans ombre ni dégradé : jaune, vert, orange, rouge. Le \
+volume est remplacé par le rythme des lignes, qui couvrent la robe d'un réseau ondulant. \
+La bordure de la page, faite de chevrons et d'entrelacs, rappelle les motifs des \
+tissages et des croix éthiopiennes. Le support est un parchemin épais, qui s'est \
+assombri et effrangé avec l'usage."""
+details = [
+  "Le taureau, symbole de Luc, en haut dans l'arcade.",
+  "Les lignes d'écriture guèze à côté du taureau.",
+  "Le long calame que l'évangéliste pose sur son livre.",
+  "Les lignes ondulées orange qui dessinent les plis de la robe.",
+  "Les bandes orange rayant le fond, à gauche, sous le bras du saint.",
+]
+themes = ["évangéliste", "manuscrit", "éthiopie", "guèze", "couleur"]
+anecdote = """
+Le christianisme est devenu religion officielle du royaume d'Aksoum, dans le nord de \
+l'Éthiopie actuelle, vers le milieu du IVᵉ siècle, sous le roi Ezana : bien avant \
+l'évangélisation de la plupart des pays d'Europe du Nord."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 0.9
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Mosaïstes de Ravenne"
+vie = "Ravenne (Italie), Vᵉ–VIᵉ siècle"
+biographie = """
+Ravenne, sur la côte adriatique, devient en 402 la capitale de l'Empire romain \
+d'Occident, à l'abri de ses marais. L'impératrice Galla Placidia y fait construire un \
+petit mausolée couvert de mosaïques bleu nuit. Après la chute de l'Empire d'Occident, la \
+ville est la capitale du roi ostrogoth Théodoric, qui règne sur l'Italie de 493 à 526 et \
+fait décorer l'église Saint-Apollinaire-le-Neuf. En 540, les armées de l'empereur \
+byzantin Justinien prennent la ville : San Vitale, puis Saint-Apollinaire-in-Classe, \
+consacrée en 549, reçoivent les plus beaux décors de leur temps. Ravenne reste ensuite \
+le siège du gouverneur byzantin d'Italie, l'exarque, jusqu'à sa prise par les Lombards \
+en 751. Les mosaïstes qui ont travaillé sur ces chantiers sont anonymes. Les historiens \
+discutent pour savoir s'ils venaient de Constantinople ou s'ils formaient un atelier \
+local, formé aux modèles de la capitale ; il est probable que les deux se sont mêlés. \
+Huit monuments de la ville sont inscrits ensemble au patrimoine mondial de l'Unesco \
+depuis 1996."""
+style = """
+Les mosaïques de Ravenne montrent le passage de l'art romain à l'art byzantin : les \
+figures perdent leur volume et leur ombre, se placent de face sur un fond d'or ou de \
+bleu profond, et s'alignent en rangées solennelles. La couleur est éclatante, les \
+visages aux grands yeux sont pourtant individualisés. Ce langage de l'or et de la \
+frontalité, qui fait de l'image une présence plutôt qu'une scène, marquera tout l'art \
+chrétien d'Orient et, plus tard, les primitifs italiens."""
+
+[[artistes]]
+nom = "Byzance"
+vie = "Empire byzantin, Constantinople, 330–1453"
+biographie = """
+En 330, l'empereur Constantin inaugure sa nouvelle capitale sur le site de l'antique \
+Byzance, au bord du Bosphore : Constantinople. Quand l'Empire romain d'Occident \
+disparaît en 476, celui d'Orient continue pendant près de mille ans ; on l'appelle \
+aujourd'hui l'Empire byzantin, mais ses habitants se disaient Romains. Sous Justinien, \
+au VIᵉ siècle, il atteint sa plus grande étendue et construit Sainte-Sophie. De 726 \
+environ à 843, la querelle des images divise l'Empire : les iconoclastes font détruire \
+les représentations du Christ et des saints, avant que le culte des icônes soit \
+définitivement rétabli. Sous la dynastie macédonienne, aux Xᵉ et XIᵉ siècles, les \
+ateliers de la capitale produisent ivoires, manuscrits, émaux et soieries de luxe. En \
+1204, les croisés pillent Constantinople ; la ville est reprise en 1261 par Michel VIII \
+Paléologue, et l'art connaît un dernier essor. Le 29 mai 1453, les Ottomans de Mehmed II \
+prennent la ville. L'art byzantin survit dans les pays orthodoxes, de la Grèce à la \
+Russie, et dans les ateliers de la Crète vénitienne."""
+style = """
+L'art byzantin est d'abord un art religieux et impérial. Il privilégie la frontalité, le \
+fond d'or qui place les figures hors du temps, des types fixés par la tradition pour que \
+chaque image reste fidèle à son modèle. L'icône n'est pas un simple tableau : le respect \
+rendu à l'image passe, selon les théologiens, à la personne représentée. Pourtant, de \
+siècle en siècle, les artistes renouvellent ces formules, de l'élégance antique de l'an \
+mil à l'humanité émue des visages du XIIIᵉ siècle."""
+
+[[artistes]]
+nom = "Angelos Akotantos"
+vie = "Candia (Crète), actif dans la première moitié du XVᵉ siècle"
+biographie = """
+Angelos Akotantos vit à Candia, l'actuelle Héraklion, capitale de la Crète, alors \
+possession de Venise. La ville abrite au XVᵉ siècle une importante corporation de \
+peintres grecs, qui travaillent pour les églises orthodoxes de l'île, pour des clients \
+catholiques et pour l'exportation. Akotantos en est l'un des plus réputés. On le connaît \
+par des documents d'archives vénitiens, dont un testament daté de 1436, et par des \
+icônes signées en grec « de la main d'Angelos ». Parmi celles-ci, une Vierge \
+Kardiotissa, conservée au musée byzantin et chrétien d'Athènes, est l'une des plus \
+célèbres. Il meurt au milieu du XVᵉ siècle, peu avant ou peu après la chute de \
+Constantinople, qui pousse de nombreux artistes byzantins à se réfugier en Crète. Ses \
+modèles, copiés et recopiés, fixent pour longtemps les types de l'école crétoise, que \
+suivront Andreas Ritzos à la fin du siècle et, au siècle suivant, le jeune Domínikos \
+Theotokópoulos, futur Greco, né à Candia."""
+style = """
+Akotantos réunit la tradition de Constantinople et une précision nouvelle : contours \
+nets, chairs modelées par de fines touches claires parallèles, plis anguleux et rythmés, \
+or abondant. Ses Vierges ont une douceur grave et retenue. Cette manière élégante, \
+facile à transmettre par des dessins de modèles, devient la signature de l'école \
+crétoise, dont les icônes se diffusent de Venise à l'Éthiopie."""
+
+[[artistes]]
+nom = "Égypte copte"
+vie = "Égypte chrétienne, depuis le IVᵉ siècle"
+biographie = """
+Selon la tradition, l'évangéliste Marc aurait fondé l'Église d'Alexandrie. Le \
+christianisme se répand en Égypte dès les premiers siècles, et le pays devient, au IVᵉ \
+siècle, le berceau du monachisme chrétien, avec saint Antoine, ermite du désert, et \
+saint Pacôme, qui fonde les premières communautés de moines. Au concile de Chalcédoine, \
+en 451, une grande partie des chrétiens d'Égypte refuse la définition de la nature du \
+Christ adoptée par l'Empire : leur Église se sépare de celle de Constantinople. Le mot \
+copte vient de l'arabe qubt, lui-même tiré du grec Aiguptios, égyptien. La conquête \
+arabe, entre 639 et 642, fait passer l'Égypte sous la domination musulmane, mais les \
+coptes restent nombreux et forment encore aujourd'hui la plus importante communauté \
+chrétienne du Proche-Orient. Leur art, connu par les églises et les monastères, les \
+peintures murales, les sculptures et surtout les textiles conservés par le sable sec, \
+mêle l'héritage de l'Égypte gréco-romaine et les thèmes chrétiens."""
+style = """
+L'art copte aime les couleurs franches, les visages ronds aux grands yeux fixes, les \
+figures frontales et simplifiées, et les décors foisonnants de feuillages, de fruits et \
+d'animaux. Il hérite des portraits du Fayoum et de l'art hellénistique d'Alexandrie, \
+mais va vers une stylisation de plus en plus marquée. Ses tissus de laine et de lin, \
+souvent tissés en tapisserie, comptent parmi les plus beaux textiles de l'Antiquité \
+tardive."""
+
+[[artistes]]
+nom = "Arménie"
+vie = "Arménie, Cilicie et diaspora arménienne, depuis le IVᵉ siècle"
+biographie = """
+Selon la tradition, le roi Tiridate III, converti par saint Grégoire l'Illuminateur, \
+fait du christianisme la religion officielle de l'Arménie au début du IVᵉ siècle. Vers \
+405, le moine Mesrop Machtots invente un alphabet propre à la langue arménienne, qui \
+permet de traduire la Bible et donne naissance à une riche littérature. Placée entre \
+Byzance, la Perse, puis le monde arabe et turc, l'Arménie perd souvent son indépendance. \
+À la fin du XIIᵉ siècle, des princes arméniens fondent en Cilicie, au sud-est de l'Asie \
+Mineure, un royaume qui dure jusqu'en 1375 : ses monastères produisent les plus beaux \
+manuscrits enluminés arméniens, dont ceux du peintre Toros Roslin au XIIIᵉ siècle. Après \
+sa chute, les Arméniens se dispersent dans l'Empire ottoman, en Perse, en Crimée, en \
+Pologne et jusqu'en Inde. Grands marchands, ils financent églises, manuscrits et objets \
+liturgiques, et conservent avec ferveur les livres anciens, qu'ils font relier à nouveau \
+ou rachètent quand ils ont été pris."""
+style = """
+L'enluminure arménienne se distingue par ses couleurs vives et saturées, ses tables des \
+canons ornées d'oiseaux et de plantes, ses marges peuplées d'ornements, et une lecture \
+personnelle des modèles byzantins. Les orfèvres arméniens, eux, excellent dans l'argent \
+repoussé, les émaux et les pierreries des reliures et des reliquaires. Les croix de \
+pierre sculptées, les khatchkars, sont une autre création propre à l'art arménien."""
+
+[[artistes]]
+nom = "Éthiopie chrétienne"
+vie = "Royaume d'Aksoum puis empire d'Éthiopie, depuis le IVᵉ siècle"
+biographie = """
+Au IVᵉ siècle, le roi Ezana d'Aksoum, dans le nord de l'Éthiopie actuelle, se convertit \
+au christianisme sous l'influence de Frumentius, un chrétien de Tyr qu'Athanase \
+d'Alexandrie consacre évêque. L'Église éthiopienne reste ensuite liée à celle \
+d'Alexandrie, qui lui envoie ses évêques jusqu'au XXᵉ siècle. Sa langue liturgique est \
+le guèze, l'ancienne langue d'Aksoum, écrite dans un alphabet propre. Au XIIᵉ ou au \
+XIIIᵉ siècle, sous le roi Lalibela, sont creusées dans le rocher les célèbres églises \
+qui portent son nom. Au XVᵉ siècle, l'empereur Zara Yaqob, qui règne de 1434 à 1468, \
+réforme l'Église et encourage la copie et l'illustration des livres sacrés dans les \
+monastères. Les liens avec la Méditerranée se renforcent alors : des icônes crétoises \
+arrivent en Éthiopie, et un peintre vénitien, Nicolò Brancaleon, travaille à la cour à \
+la fin du siècle. Les églises et les monastères éthiopiens conservent encore aujourd'hui \
+des milliers de manuscrits enluminés."""
+style = """
+La peinture éthiopienne, sur parchemin, sur bois ou sur les murs des églises, privilégie \
+le trait d'encre noir, les couleurs pures posées en aplats, le jaune, le rouge, le vert, \
+et les grands yeux en amande tournés vers le spectateur. Les plis deviennent des motifs, \
+les bordures se couvrent d'entrelacs et de chevrons. Héritière des modèles coptes, \
+syriaques et byzantins, elle les transforme en un langage graphique très \
+reconnaissable."""

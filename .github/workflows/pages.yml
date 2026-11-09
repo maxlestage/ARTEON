@@ -5,6 +5,8 @@
 #
 # - À chaque push, le site est compilé, testé et exporté (vérifie que tout marche).
 # - Sur la branche par défaut (et à la demande), il est en plus déployé sur Pages.
+# - Chaque lundi, il est refait et redéployé : les expositions éphémères
+#   (outils/ephemeres.py) changent avec ce que les musées exposent cette semaine.
 #
 # Réglage unique du dépôt : Settings → Pages → Source : « GitHub Actions ».
 # (L'étape `configure-pages` essaie de l'activer toute seule si ce n'est pas fait.)
@@ -14,6 +16,8 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
 
 permissions:
   contents: read
@@ -43,6 +47,17 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
+      # Les expositions éphémères de la semaine, d'après les collections ouvertes des musées.
+      # Un musée qui ne répond pas est sauté ; si le résultat ne se compile pas, on s'en passe.
+      - name: Expositions éphémères
+        run: |
+          python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
+          if ! cargo check --quiet --lib; then
+            echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
+            rm -f expositions/ephemere-*.toml
+            rm -rf public/tableaux/ephemere-*
+          fi
+
       # wasm-bindgen-cli doit avoir exactement la version de Cargo.lock : on télécharge
       # le binaire officiel de cette version (pas de compilation, quelques secondes).
       - name: Installer wasm-bindgen
@@ -67,7 +82,7 @@ jobs:
       # rien avec un domaine personnalisé). Seulement là où l'on déploie.
       - name: Configurer Pages
         id: pages
-        if: github.event_name != 'pull_request' && github.ref_name == github.event.repository.default_branch
+        if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         uses: actions/configure-pages@v5
         # Si Pages ne peut pas être activé automatiquement, l'export continue avec le
         # chemin `/<dépôt>` (le bon pour https://<compte>.github.io/<dépôt>/).
@@ -116,7 +131,7 @@ jobs:
   deploy:
     name: Déployer sur GitHub Pages
     needs: build
-    if: github.event_name != 'pull_request' && github.ref_name == github.event.repository.default_branch
+    if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
     runs-on: ubuntu-latest
     permissions:
       pages: write

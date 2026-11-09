@@ -1,0 +1,1012 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « JOYAUX » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/joyaux/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /joyaux.
+#
+#  Les objets sont photographiés en trois dimensions : chaque image vient des
+#  photographies publiées en libre accès (CC0) par les musées, sauf une, sous
+#  licence CC BY, dont l'auteur est crédité dans le bloc de l'œuvre.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 55
+nom_court = "Joyaux"
+mouvement = "Joyaux, orfèvrerie et trésors"
+cadre = "vitrine"
+couleur = "#7a5a1c"
+titre = "Joyaux et trésors, quatre mille ans d'orfèvrerie"
+artiste = "Fabergé, Lalique, Tiffany, orfèvres d'Égypte, de Limoges, de Popayán…"
+dates = "vers 1887 av. J.-C. – 1907"
+accroche = "Exposition virtuelle · Voûte verte (Grünes Gewölbe), Dresde"
+introduction = """
+Depuis l'Égypte des pharaons, les orfèvres transforment l'or, les pierres et l'émail en \
+objets de pouvoir, de foi et de séduction. La visite réunit dix trésors, du pectoral \
+d'une princesse égyptienne aux bijoux Art nouveau de Lalique et de Tiffany, en passant \
+par un camée d'Auguste, un autel roman, une couronne d'émeraudes des Andes et un œuf \
+impérial de Fabergé. Le bâtiment s'inspire de la Voûte verte de Dresde, le trésor des \
+princes de Saxe : une enfilade de cabinets bas que l'on traverse comme on ouvrirait des \
+coffrets, jusqu'au salon des précieux, plus vaste et plus haut. Chaque objet, souvent \
+minuscule, y est présenté agrandi dans une vitrine profonde, sur un fond de velours \
+sombre."""
+vitrine = "couronne-des-andes.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Voûte verte (Grünes Gewölbe)"
+ville = "Dresde, Allemagne"
+construction = "1723–1729"
+presentation = """
+En 1547, l'électeur Maurice de Saxe fait ajouter une aile au château de Dresde ; au \
+rez-de-chaussée, des salles voûtées abritent le trésor secret des princes. On les \
+appelle la Voûte verte, d'après la couleur verte de leurs bases et de leurs chapiteaux \
+de colonnes. De 1723 à 1729, Auguste le Fort, électeur de Saxe et roi de Pologne, les \
+transforme en une suite de salles d'apparat ouvertes aux visiteurs : c'est l'un des \
+plus anciens musées d'Europe. On y passe du cabinet de l'ambre à la salle de l'ivoire, \
+des salles d'argent au salon des précieux, tapissé de miroirs, puis à la chambre des \
+joyaux. Le trésor compte aussi la Cour de Delhi, théâtre miniature d'or et de \
+pierreries de Johann Melchior Dinglinger, et le Diamant vert de Dresde, de 41 carats. \
+Le bombardement de février 1945 détruit trois salles ; les collections, emportées en \
+URSS, reviennent en 1958. La Voûte verte historique, restituée dans son état du XVIIIᵉ \
+siècle, rouvre en 2006."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée de la Voûte verte : une enfilade de cabinets que \
+l'on traverse d'ouest en est. On entre par le sud dans le vestibule vert, aux murs \
+couleur de malachite pâle, puis on passe au cabinet des antiques, aux murs d'ambre \
+clair, et à la chambre du trésor, couleur d'ivoire : trois salles de 10 mètres sur 8, \
+hautes de 5,5 mètres. Vient ensuite le salon des précieux, plus vaste et plus haut, aux \
+murs gris argent comme les miroirs de son modèle. La visite s'achève dans le cabinet \
+des joyaux, d'un vert tendre. Les objets reposent dans des vitrines murales tendues de \
+velours sombre."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la Voûte verte historique de Dresde (Grünes Gewölbe), le trésor des
+# électeurs de Saxe aménagé par Auguste le Fort : une enfilade de cabinets voûtés
+# et bas, où chaque salle a sa couleur et son matériau (l'ambre, l'ivoire,
+# l'argent), jusqu'au salon des précieux tapissé de miroirs et à la chambre des
+# joyaux. Ici, cinq salles en ligne d'ouest en est ; le salon des précieux est
+# plus vaste et plus haut. x et z : le centre de la salle (x vers l'est, z vers
+# le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule vert"
+theme = "L'entrée, aux murs couleur de malachite, comme le vestibule qui ouvre la Voûte verte de Dresde."
+murs = "#d3dccb"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5.5
+portes = ["sud", "est"]
+
+[[salles]]
+nom = "Le cabinet des antiques"
+theme = "Les trésors de l'Antiquité : le pectoral d'une princesse égyptienne et un camée de l'empereur Auguste."
+murs = "#e6d3ad"
+x = 10
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "La chambre du trésor"
+theme = "Les trésors d'église du Moyen Âge : un autel portatif en or et une châsse émaillée de Limoges."
+murs = "#ebe2cf"
+x = 20
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "Le salon des précieux"
+theme = "Joyaux de cour et de dévotion : un pendentif de la Renaissance, la Couronne des Andes et une tabatière en or."
+murs = "#cfd2d0"
+x = 31
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "Le cabinet des joyaux"
+theme = "Le bijou moderne : un œuf impérial de Fabergé, la femme-libellule de Lalique et les libellules de Tiffany."
+murs = "#c9d6c2"
+x = 42
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5.5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Pectoral et collier de Sithathoryunet"
+artiste = "Égypte, Moyen Empire"
+annee = "vers 1887–1878 av. J.-C."
+image = "pectoral-sithathoryunet.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Pectoral_and_Necklace_of_Sithathoryunet_with_the_Name_of_Senwosret_II_MET_DT531.jpg"
+technique = "Or, cornaline, lapis-lazuli, turquoise et grenat ; perles d'or, de cornaline, de lapis-lazuli, de turquoise et de feldspath vert ; pectoral 4,5 × 8,2 cm, collier 82 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le bijou d'une princesse de la XIIᵉ dynastie, au nom du roi Sésostris II : deux faucons d'or et de pierres encadrent le nom royal. Le pectoral mesure à peine 8 cm de large."
+description = """
+Un long collier de perles en forme de gouttes, où alternent l'or, la cornaline rouge \
+orangé, le lapis-lazuli bleu nuit et la turquoise, soutient en son centre un petit \
+pectoral ajouré. Deux faucons, oiseaux du dieu Horus, se font face, les serres posées \
+sur une barre décorée de zigzags ; chacun porte sur la tête un disque solaire. Entre \
+eux, un cartouche, l'ovale qui encadre les noms royaux, contient le nom de couronnement \
+du roi Sésostris II, écrit avec un disque solaire, un scarabée et le signe de la \
+colline. Sous le cartouche, un petit dieu agenouillé tient dans chaque main une longue \
+tige de palmier entaillée. De part et d'autre, deux cobras dressés laissent pendre le \
+signe ânkh, la croix de vie."""
+evocation = """
+Le pectoral se lit comme une phrase en hiéroglyphes, et comme une prière. Le dieu \
+agenouillé est Heh, la personnification de l'infini : les tiges de palmier entaillées \
+servaient à compter les années, et son image signifie « des millions d'années ». Les \
+faucons solaires et les signes de vie entourent le nom du roi : le soleil accorde au \
+souverain une vie et un règne éternels. Porté sur la poitrine d'une princesse, le bijou \
+affirmait son lien avec le pharaon et la plaçait sous la protection des mêmes dieux. En \
+Égypte, la parure n'était jamais un simple ornement : chaque couleur, chaque forme \
+avait une valeur magique, et les bijoux accompagnaient leur propriétaire dans la tombe, \
+pour l'éternité."""
+histoire = """
+Sithathoryunet était une princesse de la XIIᵉ dynastie, sans doute une fille de \
+Sésostris II ; elle fut enterrée près de la pyramide de ce roi, à Illahoun, à l'entrée \
+du Fayoum. En 1914, l'équipe de l'archéologue britannique Flinders Petrie fouille sa \
+tombe, pillée dès l'Antiquité. Mais dans une niche remplie de boue durcie, les voleurs \
+avaient manqué les coffrets de la princesse : l'égyptologue Guy Brunton passe plusieurs \
+jours à en dégager, perle par perle, les bijoux, dont les coffrets de bois avaient \
+pourri. Selon les règles de partage alors en vigueur, le Service des antiquités \
+égyptiennes garde une partie du trésor, dont le diadème de la princesse, aujourd'hui au \
+musée du Caire ; le reste est acheté en 1916 par le Metropolitan Museum."""
+facture = """
+Le pectoral est fait selon la technique du cloisonné : l'orfèvre soude sur une plaque \
+d'or de minces bandes d'or qui dessinent chaque plume et chaque contour, puis il y \
+incruste de petites pièces de pierre taillées une à une à la forme exacte de leur \
+logement. Des centaines de fragments de cornaline, de lapis-lazuli, de turquoise et de \
+grenat sont ainsi ajustés sans le moindre jour. Le revers, en or, reprend tout le \
+dessin en fine ciselure. Le lapis-lazuli venait des montagnes de l'actuel Afghanistan, \
+la turquoise du Sinaï."""
+details = [
+  "Le scarabée de lapis-lazuli au centre du cartouche royal.",
+  "Les plumes des faucons, chacune faite d'une pièce de pierre découpée.",
+  "Les tiges de palmier entaillées que tient le petit dieu Heh.",
+  "Les signes de vie ânkh suspendus aux deux cobras.",
+  "Les perles d'or en gouttes, qui alternent avec la cornaline et le lapis-lazuli.",
+]
+themes = ["égypte", "or", "pharaon", "éternité", "cloisonné"]
+anecdote = """
+Le nom de la princesse, Sat-Hathor-Iounet, signifie « fille d'Hathor de Dendérah », la \
+déesse de l'amour et de la beauté honorée dans cette ville de Haute-Égypte. Ses bijoux \
+ont échappé aux pilleurs antiques, qui n'avaient pas vu la niche où ils reposaient."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Camée : portrait de l'empereur Auguste"
+artiste = "Rome impériale"
+annee = "vers 41–54 apr. J.-C."
+image = "camee-auguste.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Sardonyx_cameo_portrait_of_the_Emperor_Augustus_MET_DP155547.jpg"
+technique = "Sardonyx, 3,7 × 2,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Sculpté dans une pierre à couches, le profil blanc d'Auguste se détache sur un fond brun. Le camée, haut de moins de 4 cm, a été taillé plusieurs décennies après la mort de l'empereur."
+description = """
+Le premier empereur romain apparaît en buste, de profil, sculpté en relief blanc sur un \
+fond brun rouge translucide. Il est jeune, le visage lisse, le nez droit, les cheveux \
+épais et bouclés ceints d'une couronne de laurier dont les rubans flottent derrière la \
+nuque. L'épaule, à droite, est nue, barrée en diagonale par le baudrier, la courroie \
+qui soutient l'épée. Sur la poitrine est jetée l'égide, une peau couverte d'écailles et \
+bordée de serpents, où l'on distingue au centre une tête de Gorgone aux cheveux de \
+serpents et, plus bas, une seconde tête, celle d'un dieu des vents aux mèches \
+ébouriffées. La pierre ovale est à peine plus grande qu'une pièce de monnaie."""
+evocation = """
+Le camée fait d'Auguste plus qu'un homme. L'égide, la cuirasse de peau ornée de la tête \
+de Méduse, appartient à Jupiter et à Minerve : la porter, c'est être protégé et armé \
+par les dieux, et le Metropolitan Museum y voit l'image d'un demi-dieu victorieux. On a \
+interprété la tête du dieu des vents comme une allusion aux vents d'été qui poussaient \
+vers Rome les navires chargés du blé d'Égypte, province conquise par Auguste. Taillé \
+sous l'empereur Claude, son petit-neveu, ce portrait d'un Auguste éternellement jeune, \
+mort depuis près de trente ans, servait aussi la dynastie régnante : honorer le \
+fondateur divinisé, c'était affirmer la légitimité de ses héritiers."""
+histoire = """
+Les camées à l'effigie de la famille impériale étaient des objets de cour : offerts par \
+l'empereur à des proches, à des dignitaires ou à des alliés, ils circulaient dans un \
+cercle très restreint et se transmettaient comme des trésors. Celui-ci date du règne de \
+Claude, de 41 à 54, qui entretint avec soin le culte d'Auguste divinisé. Son parcours \
+pendant les siècles suivants n'est pas connu. Le Metropolitan Museum l'a acheté en 1942 \
+grâce au legs de Joseph Pulitzer, le patron de presse qui a donné son nom au célèbre \
+prix de journalisme. Il compte parmi les plus beaux portraits d'Auguste sur camée, avec \
+le camée Blacas du British Museum, dont la pose et les attributs sont très proches."""
+facture = """
+Le sardonyx est une agate faite de couches parallèles de couleurs différentes. Le \
+graveur choisit une pierre dont la couche supérieure est blanche et la couche \
+inférieure brun rouge ; il enlève la couche blanche partout sauf sur la figure, qui \
+ressort en relief clair sur le fond sombre. Le travail ne se fait pas au ciseau, mais \
+par abrasion : des forets et de petites roues, enduits de poudre abrasive et d'huile, \
+usent la pierre peu à peu. Là où la couche blanche s'amincit, le fond transparaît et \
+donne au visage et à l'épaule leurs ombres délicates."""
+details = [
+  "Les rubans de la couronne de laurier qui flottent derrière la nuque.",
+  "La tête de Gorgone, aux cheveux de serpents, au centre de l'égide.",
+  "La tête du dieu des vents, aux mèches ébouriffées, sur l'égide.",
+  "Le baudrier qui barre en diagonale l'épaule nue.",
+  "Les écailles de l'égide, gravées une à une.",
+]
+themes = ["rome", "empereur", "portrait", "pierre gravée", "pouvoir"]
+anecdote = """
+Auguste scellait ses lettres avec une pierre gravée. Selon l'historien Suétone, il \
+utilisa d'abord un sphinx, puis le portrait d'Alexandre le Grand, et enfin son propre \
+portrait, gravé par Dioscouride, dont ses successeurs continuèrent à se servir."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Autel portatif de la comtesse Gertrude"
+artiste = "Basse-Saxe, orfèvrerie du XIᵉ siècle"
+annee = "vers 1045"
+image = "autel-portatif-gertrude.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1931.462.jpg"
+technique = "Or, émail cloisonné, porphyre, pierres précieuses, perles, nielle, âme de bois ; 10,5 × 27,5 × 21 cm"
+collection = "Cleveland Museum of Art"
+note = "Un autel de voyage en or, commandé par une comtesse de Brunswick : l'une des pièces les plus anciennes et les plus somptueuses du trésor des Guelfes. Il mesure 27,5 cm de long."
+description = """
+C'est un coffret rectangulaire, long d'un peu plus d'un empan, posé sur une plinthe. \
+Sur le dessus, une plaque de porphyre rouge sombre, piquetée de blanc, forme la pierre \
+d'autel ; le cadre d'or qui l'entoure porte une inscription latine. Les quatre côtés \
+sont des galeries d'arcades : sous chaque arc, entre des colonnettes torsadées et \
+niellées, se tient une figure d'or en relief, debout et nimbée. On y reconnaît le \
+Christ, la Vierge, des apôtres et des archanges, mais aussi des personnages de rang \
+royal et impérial. Les bordures sont semées de pierres de couleur, de perles et de \
+petites plaques d'émail ; sous l'autel, une trappe donnait accès aux reliques."""
+evocation = """
+Un autel portatif permettait de célébrer la messe hors d'une église consacrée, en \
+voyage ou dans une chapelle privée : on posait le pain et le vin sur la pierre, \
+au-dessus des reliques. L'objet dit aussi l'ambition de celle qui l'a offert. Le \
+porphyre, pierre pourpre réservée dans l'Antiquité aux empereurs, et la présence de \
+souverains parmi les saints affirment, selon le Cleveland Museum, les prétentions de \
+Gertrude et de sa famille à une ascendance impériale. L'inscription le dit simplement : \
+« Gertrude offre au Christ, pour vivre heureuse en lui, cette pierre qui brille de \
+gemmes et d'or. » Le don précieux est un échange : l'or donné ici-bas contre le salut \
+éternel."""
+histoire = """
+La comtesse Gertrude, veuve du comte Liudolf de Brunswick, mort en 1038, fait faire cet \
+autel vers 1045, ainsi que deux croix d'or, l'une à son nom et l'autre au nom de son \
+mari, également conservées à Cleveland. Il entre dans le trésor de l'église \
+Saint-Blaise de Brunswick, la future cathédrale, que les Guelfes, ducs de Saxe puis de \
+Brunswick, enrichissent pendant des siècles : c'est le trésor des Guelfes, ou \
+Welfenschatz. En 1929, la maison de Brunswick-Lunebourg vend l'ensemble à un consortium \
+de marchands de Francfort, qui le présente aux États-Unis. Le Cleveland Museum achète \
+l'autel en 1931. Une grande partie du reste, cédée en 1935 à l'État prussien, est \
+aujourd'hui à Berlin ; les héritiers de ces marchands juifs en ont réclamé la \
+restitution, sans l'obtenir."""
+facture = """
+L'orfèvre a travaillé l'or au repoussé : chaque figure est martelée par l'envers dans \
+une feuille mince, puis reprise au ciselet sur l'endroit, avant d'être fixée sur l'âme \
+de bois du coffret. Les colonnettes sont décorées de nielle, un mélange noir de soufre \
+et de métal fondu dans les creux gravés, qui dessine des motifs en zigzag. Les gemmes \
+sont serties en cabochon, simplement polies et arrondies : on ne savait pas encore \
+tailler les pierres à facettes. De petites plaques d'émail cloisonné complètent ce \
+décor où la matière précieuse fait étinceler le cadre de la pierre d'autel."""
+details = [
+  "La plaque de porphyre, rouge sombre moucheté de blanc, sur le dessus.",
+  "Les colonnettes niellées, torsadées comme des sucres d'orge.",
+  "Les figures d'or debout sous les arcades, chacune avec son nimbe.",
+  "Les cabochons rouges, bleus et verts sertis dans les bordures.",
+]
+themes = ["moyen âge", "or", "reliques", "pouvoir", "art roman"]
+anecdote = """
+Sous l'autel, une petite trappe s'ouvre sur une cavité où l'on a retrouvé des reliques \
+de saints, enveloppées dans des morceaux de soie. Le Cleveland Museum les conserve et \
+les inventorie une à une : reliques de saint Barthélemy, de saint Grégoire, de saint \
+Vincent ou de sainte Gertrude."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Châsse : la Crucifixion et le Christ en majesté"
+artiste = "Limoges, ateliers d'émaillerie"
+annee = "vers 1180–1190"
+image = "chasse-limoges.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Chasse_with_the_Crucifixion_and_Christ_in_Majesty_MET_DT128.jpg"
+technique = "Cuivre doré, émail champlevé ; 26,2 × 30,2 × 11,6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une châsse en forme de maison, destinée à abriter des reliques : le bleu et le vert de l'émail de Limoges sur l'éclat du cuivre doré. Elle mesure 30 cm de long."
+description = """
+La châsse a la forme d'une maison ou d'une petite église, posée sur quatre pieds, avec \
+un toit à deux pentes couronné d'une crête ajourée de trous en forme de serrure, ornée \
+d'un cabochon de cristal et d'une sphère. Sur la face, au centre, le Christ en croix, \
+entouré de la Vierge et de saint Jean ; au-dessus de la croix, l'inscription IHS XPS, \
+abréviation de Jésus-Christ, et deux anges en buste dans des médaillons. De chaque \
+côté, sous des arcades, se tiennent deux apôtres. Sur le toit, le Christ en majesté \
+trône dans une mandorle, l'auréole en forme d'amande, entre six autres apôtres. Les \
+figures, aux vêtements bleus et verts, se détachent sur un fond d'or gravé de rinceaux."""
+evocation = """
+Au Moyen Âge, les reliques, restes ou objets ayant touché un saint, étaient au cœur de \
+la vie religieuse : on venait de loin les vénérer, on leur demandait guérison et \
+protection. La châsse leur donne une demeure digne d'elles, faite d'or et de couleurs \
+qui évoquent la Jérusalem céleste décrite par l'Apocalypse, cité d'or pur et de pierres \
+précieuses. Son décor relie deux moments : sur la face, le sacrifice du Christ mort sur \
+la croix ; sur le toit, son retour en gloire à la fin des temps, entouré des apôtres. \
+Entre les deux, les reliques du saint, qui a suivi le Christ, attendent la résurrection \
+promise."""
+histoire = """
+Aux XIIᵉ et XIIIᵉ siècles, les ateliers de Limoges produisent des émaux en si grand \
+nombre qu'on les appelle dans toute l'Europe « l'œuvre de Limoges », opus lemovicense. \
+Les châsses, de toutes tailles, partaient vers les églises de France, d'Espagne, \
+d'Angleterre ou de Scandinavie. On ignore pour quel sanctuaire celle-ci fut faite et \
+quelles reliques elle contenait. Comme beaucoup d'objets d'églises, elle a quitté son \
+lieu d'origine pour rejoindre les collections d'amateurs. Le financier américain J. \
+Pierpont Morgan, l'un des plus grands collectionneurs de son temps, l'acquiert ; après \
+sa mort, en 1913, son fils la donne en 1917 au Metropolitan Museum, avec des milliers \
+d'autres œuvres de sa collection."""
+facture = """
+L'émail champlevé, la spécialité de Limoges, se fait sur une plaque de cuivre épaisse. \
+L'émailleur creuse au burin les zones à colorer, en laissant en relief les contours ; \
+il remplit les creux de poudre de verre colorée par des oxydes métalliques, puis cuit \
+la plaque au four, où la poudre fond et se vitrifie. Après polissage, le cuivre resté \
+visible est doré et gravé. Ici, les figures sont émaillées sur un fond d'or, alors que \
+d'autres châsses montrent des figures d'or sur un fond bleu ; les visages et les mains, \
+laissés en métal, sont simplement gravés et dorés."""
+details = [
+  "L'inscription IHS XPS au-dessus de la croix.",
+  "Les deux anges en buste dans les médaillons, de part et d'autre de la croix.",
+  "La mandorle du Christ en majesté, au milieu du toit.",
+  "La crête ajourée de trous en forme de serrure et son cabochon de cristal.",
+  "Les petites rosettes bleues et blanches qui bordent les panneaux.",
+]
+themes = ["moyen âge", "reliques", "émail", "crucifixion", "limoges"]
+anecdote = """
+Après l'assassinat de Thomas Becket, archevêque de Canterbury tué dans sa cathédrale en \
+1170, les ateliers de Limoges ont fabriqué plusieurs dizaines de châsses illustrant son \
+martyre, qui ont répandu son culte dans toute l'Europe."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Pendentif : l'Amour dans une niche"
+artiste = "Allemagne, orfèvres de la Renaissance"
+annee = "vers 1560–1580"
+image = "pendentif-amour.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Hanger_in_de_vorm_van_Amor_in_een_nis_Hanger_met_Amor_in_een_nis,_BK-17058.jpg"
+technique = "Or partiellement émaillé, pierres précieuses, perles ; 5,5 × 3,9 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Un bijou de cour de la Renaissance : un petit Amour émaillé de blanc se tient dans un portique aux colonnes rouges, au-dessus d'une pierre taillée en table. Il mesure 5,5 cm de haut."
+description = """
+Le pendentif est construit comme une petite architecture. Au centre, sous un arc, un \
+Amour potelé, émaillé de blanc, se tient debout sur un tertre vert, tenant son arc. Il \
+est encadré par deux colonnes émaillées de rouge, sous un couronnement de volutes \
+vertes et bleues orné d'une pierre verte rectangulaire ; de chaque côté, une petite \
+créature fantastique émaillée de blanc se penche vers l'extérieur. Sous ses pieds, une \
+pierre incolore taillée en table occupe le centre, flanquée de deux pierres rouges en \
+forme de cœur et de deux perles rondes. Des grappes de grains d'or et des enroulements \
+noirs et blancs complètent l'ensemble. Un anneau émaillé permet de le suspendre ; une \
+perle irrégulière pend en dessous."""
+evocation = """
+Cupidon, le dieu de l'amour dont les flèches font naître la passion, était un sujet \
+idéal pour un bijou offert en gage d'affection ou porté par galanterie ; les deux \
+pierres rouges taillées en cœur redisent le thème. À la Renaissance, ces pendentifs se \
+portaient sur la poitrine, suspendus à une chaîne, ou épinglés au corsage et au chapeau \
+; ils montraient le rang, la richesse et le goût de leur propriétaire, homme ou femme. \
+Le décor d'architecture, avec ses colonnes et son arc, transpose dans l'or le \
+vocabulaire des monuments antiques remis à l'honneur par la Renaissance italienne, que \
+les orfèvres du Nord adoptent au milieu du XVIᵉ siècle."""
+histoire = """
+On ne connaît ni l'orfèvre ni le premier propriétaire de ce bijou, attribué à un \
+atelier allemand des années 1560-1580. À cette époque, les grandes villes du \
+Saint-Empire, Nuremberg et Augsbourg en tête, comptent des centaines d'orfèvres \
+organisés en corporations, et les modèles de pendentifs circulent grâce aux gravures \
+d'ornemanistes comme Virgil Solis ou Erasmus Hornick, que les ateliers copient et \
+combinent. Ces bijoux, souvent démontés au fil des modes pour récupérer l'or et les \
+pierres, sont devenus rares. Celui-ci est entré au Rijksmuseum en 1960. Les \
+collectionneurs du XIXᵉ siècle les recherchaient tant que des orfèvres en fabriquèrent \
+alors des imitations, ce qui rend l'étude de chaque pièce délicate."""
+facture = """
+L'orfèvre a assemblé de nombreuses petites pièces d'or, fondues, ciselées et soudées, \
+puis les a couvertes d'émail. Sur la figure de l'Amour, minuscule sculpture en \
+ronde-bosse, l'émail blanc opaque est posé directement sur le relief : c'est l'émail \
+dit « en ronde-bosse », typique des bijoux de la Renaissance. Ailleurs, le rouge des \
+colonnes et le vert des volutes remplissent de petits creux ménagés dans l'or. Les \
+pierres sont serties dans des chatons d'or. La pierre incolore du centre est taillée en \
+table, c'est-à-dire aplanie au sommet, une taille très prisée au XVIᵉ siècle."""
+details = [
+  "L'Amour émaillé de blanc, debout sur son tertre vert.",
+  "Les deux pierres rouges taillées en forme de cœur.",
+  "Les grappes de grains d'or, de part et d'autre de la pierre centrale.",
+  "La perle irrégulière suspendue sous le bijou.",
+  "L'anneau de suspension, émaillé de bleu et de blanc.",
+]
+themes = ["renaissance", "amour", "bijou de cour", "émail", "perles"]
+anecdote = """
+Beaucoup de « bijoux Renaissance » des grands musées sont en réalité du XIXᵉ siècle. On \
+l'a compris en étudiant les dessins de l'orfèvre d'Aix-la-Chapelle Reinhold Vasters, \
+conservés au Victoria and Albert Museum de Londres : il y préparait d'habiles \
+pastiches, vendus comme anciens."""
+salle = 4
+mur = "sud"
+place = 1
+largeur = 0.75
+
+[[oeuvres]]
+titre = "La Couronne des Andes"
+artiste = "Popayán, orfèvres de la Nouvelle-Grenade"
+annee = "vers 1660 (diadème) et vers 1770 (arceaux)"
+image = "couronne-des-andes.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Crown_of_the_Virgin_of_the_Immaculate_Conception,_known_as_the_Crown_of_the_Andes_MET_DP365520.jpg"
+technique = "Or repoussé et ciselé, émeraudes ; hauteur 34,3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La couronne d'une statue de la Vierge de l'Immaculée Conception, à Popayán, dans l'actuelle Colombie : plus de deux kilos d'or et environ 450 émeraudes."
+description = """
+La couronne se compose d'un large bandeau ajouré, le diadème, d'où partent des arceaux \
+qui se rejoignent au sommet sous un globe et une croix. L'or, repoussé en épais \
+feuillages, en volutes et en coquilles, forme une dentelle de métal où sont serties des \
+centaines d'émeraudes : carrées ou rectangulaires, taillées en table, elles dessinent \
+des fleurs et des croix ; d'autres, en forme de gouttes, pendent librement sous les \
+arceaux. Une rangée de petites émeraudes alignées court à la base. Au sommet, le globe \
+ajouré porte une croix couverte d'émeraudes. Haute de 34 centimètres, la couronne était \
+faite pour une statue plus grande que nature."""
+evocation = """
+La couronne fait de la Vierge une reine, la reine du ciel, selon une image chère à \
+l'Église catholique, et la richesse de ses matériaux dit la ferveur d'une ville \
+entière. Dans l'Amérique espagnole, les statues de la Vierge et des saints étaient \
+habillées, parées et couronnées pour les fêtes et les processions ; leurs bijoux, \
+offerts par les fidèles et les confréries, formaient le trésor commun de la communauté. \
+La couronne raconte aussi l'histoire coloniale : l'or de la région était extrait par \
+des Africains réduits en esclavage, et les émeraudes venaient des mines colombiennes \
+exploitées par les Espagnols. Son décor, baroque puis rocaille, suit les modes de \
+l'Europe, interprétées par des orfèvres locaux."""
+histoire = """
+Selon la tradition, les habitants de Popayán offrirent une couronne à la Vierge après \
+avoir été épargnés par une épidémie de variole dans les années 1590. L'objet qui nous \
+est parvenu est composite : le globe et la croix remonteraient au XVIᵉ siècle, le \
+diadème aux environs de 1660, et les arceaux ont été ajoutés vers 1770. Pendant des \
+siècles, la confrérie de l'Immaculée Conception la sort pour la Semaine sainte. En \
+1914, elle obtient du pape l'autorisation de la vendre au profit d'œuvres de charité, \
+mais l'acheteur, un groupe d'investisseurs américains réuni par Warren J. Piper, de \
+Chicago, ne se présente qu'en 1936. Exposée aux États-Unis, plusieurs fois mise en \
+vente, elle entre au Metropolitan Museum en 2015 ; en Colombie, des voix ont souhaité \
+son retour."""
+facture = """
+Les orfèvres ont travaillé un or de 18 à 22 carats au repoussé, en le martelant par \
+l'envers pour faire jaillir les reliefs, puis l'ont ciselé et ajouré pour que la \
+lumière traverse la couronne. Les émeraudes, de tailles et de qualités diverses, sont \
+serties dans des bâtes d'or : beaucoup sont taillées en table, d'autres en poire. Les \
+deux campagnes de travaux se lisent dans le décor : feuillages charnus et symétriques \
+du diadème, volutes plus légères des arceaux, conformes au goût du XVIIIᵉ siècle."""
+details = [
+  "Les émeraudes en gouttes qui pendent sous les arceaux.",
+  "La croix du sommet, faite d'émeraudes rectangulaires alignées.",
+  "Le globe ajouré qui porte la croix.",
+  "La rangée régulière de petites émeraudes à la base du bandeau.",
+]
+themes = ["émeraude", "or", "vierge marie", "amérique espagnole", "baroque"]
+anecdote = """
+La plus grande émeraude de la couronne est surnommée « l'émeraude d'Atahualpa » : on \
+raconte qu'elle aurait appartenu au dernier empereur inca, capturé par Francisco \
+Pizarro en 1532. Aucun document ne permet de le prouver."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.25
+
+[[oeuvres]]
+titre = "Tabatière aux vues du château de Chanteloup"
+artiste = "Paris, orfèvres-bijoutiers du XVIIIᵉ siècle"
+annee = "boîte 1748–1749, miniatures 1767"
+image = "tabatiere-chanteloup.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Snuffbox_with_six_views_at_Chanteloup_(The_Choiseul_Box)_MET_DP169997.jpg"
+technique = "Or ciselé, verre, miniatures sur vélin ; 4,4 × 7,9 × 5,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une boîte à tabac en or, longue de 8 cm, dont chaque face encadre une vue miniature du domaine du duc de Choiseul, peinte avec une précision stupéfiante."
+description = """
+La tabatière est un petit coffret rectangulaire en or, dont chaque face, couvercle, \
+fond et côtés, porte une miniature sous verre, encadrée d'une bordure d'or ciselée de \
+fleurs et de motifs ondés. La vue présentée ici montre, à vol d'oiseau, un grand \
+château aux toits d'ardoise bleue, avec sa cour et ses ailes en retour. Devant lui \
+s'étend un vaste jardin régulier : bosquets taillés, allées droites, parterres et, au \
+centre, une longue pièce d'eau qui descend en gradins vers le spectateur. Au loin, la \
+campagne se perd dans une brume bleutée. De minuscules promeneurs animent les allées."""
+evocation = """
+Le tabac à priser, réduit en poudre et aspiré par le nez, était au XVIIIᵉ siècle une \
+mode de toute l'Europe élégante, et la tabatière, qu'on sortait en société, un \
+accessoire de prestige, comme une montre ou une épée. Celle-ci est en outre le portrait \
+d'un lieu : Chanteloup, près d'Amboise, appartenait au duc de Choiseul, principal \
+ministre de Louis XV. Disgracié en 1770, il s'y retira et y tint une cour brillante, où \
+ses amis venaient lui témoigner leur fidélité. Posséder ou offrir une boîte ornée de \
+ses terres, c'était afficher un lien avec lui. Par leur exactitude, les miniatures font \
+aussi de la boîte un souvenir, comme une photographie avant la lettre."""
+histoire = """
+La boîte d'or a été fabriquée à Paris en 1748-1749, sans doute par l'orfèvre \
+Pierre-François Delafons, reçu maître en 1732. Les miniatures, elles, datent de 1767 et \
+sont attribuées à Louis-Nicolas van Blarenberghe : elles ont donc été montées près de \
+vingt ans après la fabrication de la boîte. Choiseul avait acheté Chanteloup en 1761 et \
+l'avait fait agrandir et embellir ; grand amateur de tabatières, il en possédait une \
+importante collection, mais on ignore si celle-ci lui appartint. Elle a été donnée au \
+Metropolitan Museum en 1976 par Charles et Jayne Wrightsman, grands collectionneurs \
+d'art français du XVIIIᵉ siècle."""
+facture = """
+La boîte est un travail d'orfèvre-bijoutier : les plaques d'or, ciselées de fleurs et \
+de motifs ondés, sont assemblées autour d'un cadre, et le couvercle pivote sur une \
+charnière ajustée avec une grande précision. Les miniatures sont peintes à la gouache \
+sur vélin, puis protégées par un verre. Les Van Blarenberghe, père et fils, étaient \
+célèbres pour leurs vues minuscules : sur quelques centimètres carrés, on compte les \
+fenêtres du château et les arbres des allées, et les personnages ne mesurent que \
+quelques millimètres."""
+details = [
+  "La longue pièce d'eau en gradins, au centre, qui mène au château.",
+  "Les toits d'ardoise bleue et les ailes en retour de la cour.",
+  "Les promeneurs minuscules, à peine plus gros qu'une tête d'épingle.",
+  "La bordure d'or ciselée de fleurs à cinq pétales.",
+]
+themes = ["xviiie siècle", "or", "miniature", "jardin", "tabac"]
+anecdote = """
+Du château de Chanteloup, vendu après la Révolution puis démoli en 1823, il ne reste \
+presque rien, sinon la pagode chinoise que Choiseul fit élever dans le parc. Les vues \
+des tabatières comptent parmi les meilleurs témoignages de ce qu'il était."""
+salle = 4
+mur = "sud"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Œuf au treillis de roses"
+artiste = "Maison Fabergé"
+annee = "1907"
+image = "oeuf-treillis-de-roses.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:House_of_Fabergé_-_Rose_Trellis_Egg_-_Walters_44501.jpg"
+technique = "Or, émail, diamants ; 7,7 × 5,9 cm"
+collection = "Walters Art Museum, Baltimore"
+note = "L'œuf de Pâques offert par Nicolas II à l'impératrice Alexandra en 1907, en souvenir de la naissance de leur fils. Il mesure moins de 8 cm de haut."
+description = """
+L'œuf, haut de moins de huit centimètres, est couvert d'un émail vert tendre, \
+translucide, à travers lequel on devine les fines stries gravées dans l'or. Un treillis \
+de bandes serties de petits diamants l'enveloppe de losanges réguliers. Sur ce treillis \
+grimpe un rosier : des tiges d'or jaune, des feuilles émaillées de vert et des roses \
+roses, plus pâles au cœur, sont semées sur toute la surface, comme sur la tonnelle d'un \
+jardin. Au sommet, un diamant plat est serti dans une collerette d'or. L'œuf s'ouvre en \
+deux pour révéler une surprise, aujourd'hui disparue."""
+evocation = """
+Les œufs sont au cœur de la fête de Pâques orthodoxe : on se les offre en échangeant le \
+baiser pascal et la formule « Le Christ est ressuscité ». Les Romanov en ont fait des \
+chefs-d'œuvre de joaillerie. Celui-ci célèbre la naissance, en août 1904, du tsarévitch \
+Alexis, l'héritier tant attendu après quatre filles. Les roses et la verdure d'un \
+jardin au printemps parlent d'amour et de renouveau. On sait aujourd'hui combien cette \
+image de bonheur familial était fragile : l'enfant était atteint d'hémophilie, ce que \
+la cour cachait, et toute la famille fut assassinée par les bolcheviks en 1918."""
+histoire = """
+De 1885 à 1916, la maison Fabergé fabrique pour la famille impériale des œufs de Pâques \
+dont chacun est unique. La guerre russo-japonaise interrompt la série en 1904 et 1905 ; \
+le 22 avril 1907, Nicolas II offre celui-ci à sa femme, Alexandra Fiodorovna. La \
+facture de Fabergé, datée de la veille, s'élève à 8 300 roubles. L'œuf contenait un \
+collier de diamants et un portrait miniature du tsarévitch sur ivoire, entouré de \
+diamants, aujourd'hui perdus. En 1917, les trésors impériaux sont transférés au Kremlin \
+; l'œuf passe ensuite entre les mains du marchand Alexandre Polovtsoff, à Paris. Le \
+collectionneur américain Henry Walters l'achète en 1930 et lègue sa collection à \
+Baltimore à sa mort, en 1931."""
+facture = """
+Le fond de l'œuf est un exemple du guilloché, la spécialité de Fabergé : un tour \
+mécanique grave dans l'or de fines lignes régulières, puis l'émailleur couvre la \
+surface de plusieurs couches d'émail translucide, cuites l'une après l'autre et polies, \
+qui font chatoyer le métal comme de la soie. Les roses et les feuilles, en or émaillé, \
+sont rapportées par-dessus, de même que le treillis de diamants. L'œuf sort de \
+l'atelier d'Henrik Wigström, l'orfèvre finlandais qui dirigea la fabrication des œufs \
+impériaux après 1903."""
+details = [
+  "Les stries gravées de l'or, visibles sous l'émail vert.",
+  "Les lignes de petits diamants qui forment le treillis.",
+  "Les roses émaillées, plus pâles au cœur que sur les bords.",
+  "Le diamant plat serti au sommet de l'œuf.",
+]
+themes = ["fabergé", "pâques", "russie", "roses", "romanov"]
+anecdote = """
+Plusieurs œufs impériaux ont disparu après la révolution. En 2014, on a appris qu'un \
+ferrailleur américain, qui voulait fondre un petit œuf d'or acheté dans une brocante, \
+détenait en réalité le troisième œuf impérial, offert en 1887 et perdu depuis les \
+années 1920."""
+salle = 5
+mur = "sud"
+place = 1
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Femme-libellule, ornement de corsage"
+artiste = "René Lalique"
+annee = "vers 1897–1898"
+image = "femme-libellule.jpg"
+credit = "Photo : Sailko"
+licence = "CC BY 3.0"
+source = "https://commons.wikimedia.org/wiki/File:René_lalique,_pettorale_libellula,_in_oro,_smalti,_crisoprazio,_calcedonio,_pietre_lunari_e_diamanti,_1897-98_ca._01.jpg"
+technique = "Or, émail, chrysoprase, calcédoine, pierres de lune, diamants ; 23 × 26,5 cm"
+collection = "Musée Calouste Gulbenkian, Lisbonne"
+note = "Le plus célèbre bijou de l'Art nouveau : une femme-insecte aux ailes d'émail, présentée à l'Exposition universelle de Paris en 1900. Il mesure 23 cm de haut et 26,5 cm de large."
+description = """
+Un buste de femme se dresse au sommet d'un corps de libellule. Sa tête, coiffée d'un \
+casque aux gros yeux d'insecte émaillés de bleu et de vert, se penche, les paupières \
+baissées ; sa poitrine nue est d'un vert pâle de pierre. De ses épaules partent deux \
+immenses ailes d'émail translucide vert pâle, nervurées comme de vraies ailes d'insecte \
+et ponctuées de grands ovales bleu-vert sertis de petites pierres claires. Au-dessus \
+des ailes, deux serres d'or se recourbent comme des griffes de rapace. Sous le buste, \
+une tête de monstre en or, encadrée de deux bras repliés ; plus bas, le long abdomen de \
+la libellule, fait d'anneaux d'or, d'émail bleu sombre et de cabochons clairs, s'étire \
+jusqu'à une queue fourchue."""
+evocation = """
+Lalique fait d'un bijou un être hybride, à la fois femme, insecte et monstre, qui \
+appartient au monde du rêve et du symbolisme fin de siècle. La libellule, aimée des \
+artistes de l'Art nouveau et des estampes japonaises qui les inspiraient, évoque la \
+légèreté, la métamorphose, l'éclat fugitif d'un été. Mais la femme aux yeux baissés, \
+prisonnière de ce corps d'insecte et de ces griffes, a aussi quelque chose d'inquiétant \
+: on y a vu une figure de la femme fatale, séduisante et dangereuse, chère à la \
+littérature de l'époque. Surtout, l'objet affirme une idée nouvelle : la valeur d'un \
+bijou ne tient pas au poids des pierres, mais à l'invention de l'artiste."""
+histoire = """
+Lalique conçoit cet ornement vers 1897-1898, au moment où il renouvelle la joaillerie \
+parisienne. Selon le musée Gulbenkian, il a sans doute été porté sur scène par Sarah \
+Bernhardt, cliente et amie du joaillier. En 1900, la femme-libellule figure parmi les \
+bijoux qui font sensation dans la vitrine de Lalique à l'Exposition universelle de \
+Paris. Le collectionneur Calouste Gulbenkian, homme d'affaires arménien enrichi dans le \
+pétrole, l'achète en 1903. Admirateur et ami de Lalique, il réunit en près de trente \
+ans quelque cent cinquante de ses œuvres. Elles sont aujourd'hui présentées dans une \
+salle qui leur est consacrée au musée Gulbenkian de Lisbonne, ouvert en 1969."""
+facture = """
+Les ailes sont en émail « plique-à-jour » : l'émail translucide est coulé dans un \
+réseau d'alvéoles d'or sans fond, comme un vitrail miniature, si bien que la lumière \
+les traverse. Elles sont articulées, ce qui leur donne un léger mouvement. Lalique \
+associe l'or et l'émail à des pierres jugées alors modestes, chrysoprase, calcédoine, \
+pierres de lune, et à quelques diamants, en choisissant chaque matière pour sa couleur \
+et non pour son prix. Le buste, sculpté et poli avec finesse, montre l'habileté d'un \
+artiste qui avait appris le dessin et le modelage avant de devenir joaillier."""
+details = [
+  "Le casque aux gros yeux d'insecte qui coiffe la tête de la femme.",
+  "Les nervures d'or des ailes, comme sur une vraie libellule.",
+  "Les grands ovales bleu-vert entourés de petites pierres claires, au bout des ailes.",
+  "Les serres d'or recourbées au-dessus des épaules.",
+  "La longue queue fourchue, tout en bas du bijou.",
+]
+themes = ["art nouveau", "libellule", "femme", "émail", "métamorphose"]
+anecdote = """
+Après 1905, Lalique abandonne peu à peu la joaillerie pour le verre : flacons de parfum \
+pour François Coty, vases, lustres, bouchons de radiateur d'automobile. Sa verrerie de \
+Wingen-sur-Moder, en Alsace, fondée en 1921, produit toujours du cristal sous son nom."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Ornement de chevelure aux libellules"
+artiste = "Louis Comfort Tiffany"
+annee = "vers 1904"
+image = "ornement-libellules.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Hair_Ornament_MET_DT5610.jpg"
+technique = "Or, argent, platine, opales noires, opales boulder, grenats démantoïdes, rubis, émail ; hauteur 8,3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Deux libellules d'opale posées sur des têtes de pissenlit montées en graines : l'un des premiers bijoux de Tiffany, haut de 8 cm, longtemps conservé par la famille de sa cliente Louisine Havemeyer."
+description = """
+Deux libellules se sont posées sur deux boules de pissenlit montées en graines. Les \
+aigrettes sont rendues par une résille de fils de métal semée de minuscules grains \
+blancs ; l'une des boules est en partie soufflée, comme si le vent avait déjà emporté \
+une partie des graines. Les libellules ont des ailes en fine dentelle de métal, \
+nervurées comme de vraies ailes. Leurs longs abdomens sont faits de segments d'opale \
+bleue aux reflets changeants, montés bout à bout ; leurs gros yeux sont des opales \
+rosées, et leur thorax est semé de petits grenats verts. Sous les fleurs, deux tiges \
+d'argent réunies par une monture courbe forment le peigne qui se glissait dans le \
+chignon."""
+evocation = """
+Tiffany, peintre de formation, voulait que ses bijoux soient des fragments de nature, \
+observés de près et sans hiérarchie : une mauvaise herbe comme le pissenlit vaut ici \
+une rose. La libellule, insecte fétiche de l'Art nouveau, se pose sur ce que le moindre \
+souffle disperse : le bijou parle de fragilité et du temps qui passe, avec sa boule \
+déjà à moitié envolée. C'est aussi un objet de parure, fait pour être vu dans la \
+coiffure d'une femme, où les reflets des opales changent à chaque mouvement. Face à \
+l'Art nouveau français de Lalique, Tiffany propose une version américaine, plus \
+naturaliste et moins inquiétante."""
+histoire = """
+Fils de Charles Lewis Tiffany, fondateur de la célèbre maison de joaillerie \
+new-yorkaise, Louis Comfort Tiffany s'était fait un nom avec le verre et les vitraux. \
+Vers 1902, après la mort de son père, il se lance dans la joaillerie, avec l'émailleuse \
+Julia Munson, et présente ses premiers bijoux à l'Exposition universelle de \
+Saint-Louis, en 1904. Ce peigne date de cette période. Il est resté dans la famille de \
+Louisine Havemeyer, grande collectionneuse new-yorkaise, amie de Mary Cassatt et \
+cliente fidèle de Tiffany, qui avait décoré sa demeure de la Cinquième Avenue. Une de \
+ses descendantes, Linden Havemeyer Wise, l'a donné au Metropolitan Museum en 2002, en \
+mémoire d'elle."""
+facture = """
+Les ailes sont faites d'un réseau de fils de métal soudés, d'une finesse qui imite les \
+nervures véritables. Les opales d'Australie, coupées en petits segments et montées les \
+unes derrière les autres, rendent les reflets changeants de l'abdomen des libellules. \
+Les grenats démantoïdes, d'un vert vif et brillant, venaient alors des monts Oural, en \
+Russie. La résille des boules de pissenlit, avec ses grains d'émail, suppose un travail \
+patient, entièrement fait à la main. L'ensemble mêle les savoir-faire de l'orfèvre, du \
+lapidaire et de l'émailleur."""
+details = [
+  "La boule à moitié soufflée, dont une partie des graines s'est envolée.",
+  "Les ailes en dentelle de métal, nervurées comme les vraies.",
+  "Les segments d'opale bleue, montés bout à bout, des abdomens.",
+  "Les gros yeux d'opale rosée des deux insectes.",
+  "Les petits grenats verts semés sur les thorax.",
+]
+themes = ["art nouveau", "libellule", "nature", "opale", "amérique"]
+anecdote = """
+Les célèbres lampes de Tiffany, aux abat-jour de verre ornés de libellules ou de \
+glycines, ont longtemps été attribuées à Tiffany seul. On sait aujourd'hui que beaucoup \
+furent dessinées par Clara Driscoll, qui dirigeait l'atelier des femmes chargées de \
+découper et d'assembler le verre."""
+salle = 5
+mur = "sud"
+place = 3
+largeur = 0.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Égypte, Moyen Empire"
+vie = "Vallée du Nil, vers 2030–1650 av. J.-C."
+biographie = """
+Le Moyen Empire commence lorsque le roi thébain Montouhotep II réunifie l'Égypte, \
+divisée depuis la fin de l'Ancien Empire, vers 2030 avant notre ère. Sous la XIIᵉ \
+dynastie, celle des Amenemhat et des Sésostris, le pays connaît deux siècles de \
+stabilité et de prospérité. Les rois installent leur capitale près de l'entrée du \
+Fayoum, une vaste dépression fertile qu'ils mettent en valeur par de grands travaux, et \
+se font enterrer dans des pyramides de brique crue, à Licht, à Illahoun, à Dahchour ou \
+à Hawara. L'Égypte étend son autorité sur la Nubie, riche en or, et commerce avec le \
+Levant. Les orfèvres des ateliers royaux maîtrisent la soudure, le filigrane, la \
+granulation et l'incrustation de pierres dures. Les plus beaux bijoux de l'époque ont \
+été retrouvés dans les tombes de princesses, à Dahchour en 1894 et 1895 par Jacques de \
+Morgan, et à Illahoun en 1914. Plus tard, les Égyptiens eux-mêmes considéreront le \
+Moyen Empire comme l'âge classique de leur langue et de leur littérature."""
+style = """
+La joaillerie du Moyen Empire est d'une élégance et d'une précision rarement égalées. \
+Elle repose sur un vocabulaire de signes hiéroglyphiques, faucons, scarabées, \
+cartouches, signes de vie, qui font de chaque bijou une amulette et une phrase. Les \
+couleurs ont un sens : le rouge de la cornaline, le bleu du lapis-lazuli, le vert-bleu \
+de la turquoise. Le cloisonné aux pierres découpées une à une, sans émail, en est la \
+grande spécialité."""
+
+[[artistes]]
+nom = "Rome impériale"
+vie = "Rome et l'Empire romain, Iᵉʳ siècle av. J.-C. – IIIᵉ siècle apr. J.-C."
+biographie = """
+L'art de la pierre gravée vient de la Grèce et de l'Orient hellénistique, où les rois \
+faisaient graver leur portrait sur des gemmes. À Rome, il connaît son apogée sous \
+Auguste, premier empereur, de 27 avant J.-C. à 14 après J.-C., et sous ses successeurs \
+de la dynastie julio-claudienne. Les meilleurs graveurs, souvent grecs, comme \
+Dioscouride, qui grava le sceau d'Auguste, travaillent pour la famille impériale et \
+signent parfois leurs œuvres. Ils produisent deux sortes d'objets : les intailles, \
+gravées en creux pour servir de sceaux, et les camées, sculptés en relief dans des \
+pierres à couches. Les grands camées impériaux, offerts à des proches ou à des alliés, \
+sont de véritables tableaux politiques : la Gemma Augustea, conservée à Vienne, montre \
+Auguste trônant auprès de la déesse Rome, et le Grand Camée de France, à la \
+Bibliothèque nationale, la famille impériale sous Tibère. Au Moyen Âge, de nombreux \
+camées antiques furent sertis sur des croix, des reliquaires et des couronnes ; à la \
+Renaissance, les princes et les papes les collectionnèrent avec passion."""
+style = """
+Le camée romain associe la virtuosité technique à la propagande. Le graveur exploite \
+les couches de la pierre comme un peintre ses couleurs : figure blanche sur fond \
+sombre, parfois une troisième couche pour un détail. Les portraits, idéalisés et \
+sereins, s'inspirent de la sculpture grecque classique ; les attributs divins, égide, \
+couronne de laurier, transforment l'empereur en héros ou en dieu. Ce langage a inspiré \
+les camées de la Renaissance et ceux de l'époque napoléonienne."""
+
+[[artistes]]
+nom = "Basse-Saxe, orfèvrerie du XIᵉ siècle"
+vie = "Saxe (nord de l'Allemagne actuelle), XIᵉ siècle"
+biographie = """
+Au XIᵉ siècle, la Saxe est l'une des régions les plus riches du Saint-Empire romain \
+germanique. Les empereurs de la dynastie ottonienne en étaient issus, et les mines \
+d'argent du Harz, exploitées depuis la fin du Xᵉ siècle, nourrissent une activité \
+artistique intense autour des grands sièges épiscopaux et des abbayes : Hildesheim, \
+Magdebourg, Essen, Brunswick. L'évêque Bernward de Hildesheim, mort en 1022, fait \
+fondre des portes de bronze et commande croix et chandeliers d'orfèvrerie. Les \
+orfèvres, laïcs ou moines, travaillent pour les évêques et pour les grandes familles \
+nobles, qui offrent aux églises des autels, des croix et des reliquaires afin d'assurer \
+leur salut et d'affirmer leur rang. À Brunswick, la famille des comtes Brunon, puis les \
+Guelfes, ducs de Saxe et de Bavière, enrichissent pendant des siècles le trésor de \
+l'église Saint-Blaise, que le plus célèbre d'entre eux, Henri le Lion, fait \
+reconstruire au XIIᵉ siècle. Ce trésor des Guelfes, riche d'autels portatifs, de croix \
+et de bras-reliquaires, est aujourd'hui partagé entre Berlin, Cleveland et d'autres \
+musées."""
+style = """
+L'orfèvrerie saxonne du XIᵉ siècle hérite du luxe ottonien : or, gemmes en cabochon, \
+perles, émail cloisonné et nielle composent des surfaces éclatantes où la matière \
+précieuse elle-même est une image de la lumière divine. Les figures, en repoussé, sont \
+alignées sous des arcades, dans des poses frontales et solennelles. Cette rigueur \
+annonce l'art roman, dont l'orfèvrerie des vallées de la Meuse et du Rhin sera, au \
+siècle suivant, le grand foyer."""
+
+[[artistes]]
+nom = "Limoges, ateliers d'émaillerie"
+vie = "Limoges (Limousin), XIIᵉ–XIVᵉ siècle"
+biographie = """
+Vers le milieu du XIIᵉ siècle, des ateliers d'émailleurs se développent à Limoges, \
+ville de pèlerinage active autour de l'abbaye Saint-Martial. Ils ne travaillent pas \
+l'or, mais le cuivre, plus économique, qu'ils couvrent d'émail et de dorure. Leur \
+production, abondante et de qualité constante, conquiert toute l'Europe chrétienne : on \
+la désigne sous le nom latin d'opus lemovicense, l'œuvre de Limoges. Les ateliers \
+fabriquent des châsses, des croix, des crosses d'évêques, des ciboires, des \
+chandeliers, des plaques de reliure et même des effigies funéraires. On en trouvait en \
+Italie, en Espagne, en Angleterre et en Scandinavie. Les artisans restent presque tous \
+anonymes ; quelques noms apparaissent parfois, comme celui d'Alpais, qui signe un \
+célèbre ciboire conservé au Louvre. La production décline au XIVᵉ siècle, pendant la \
+guerre de Cent Ans. Limoges retrouve la gloire à la fin du XVᵉ siècle avec une \
+technique nouvelle, l'émail peint, que Léonard Limosin illustrera au siècle suivant."""
+style = """
+L'émail de Limoges se reconnaît à sa palette dominée par le bleu, du lapis au bleu \
+clair, relevé de vert, de jaune, de rouge et de blanc, sur le fond doré du cuivre gravé \
+de rinceaux. Les figures, au dessin clair et ferme, s'inscrivent sous des arcades ou \
+dans des médaillons. Cette production en série, aux modèles répétés, n'empêche pas \
+l'éclat : elle a mis la splendeur de l'orfèvrerie à la portée d'innombrables églises."""
+
+[[artistes]]
+nom = "Allemagne, orfèvres de la Renaissance"
+vie = "Saint-Empire romain germanique (Nuremberg, Augsbourg, Munich…), XVIᵉ siècle"
+biographie = """
+Au XVIᵉ siècle, les villes libres d'Allemagne du Sud, enrichies par le commerce et les \
+mines d'argent, deviennent de grands centres de l'orfèvrerie européenne. À Nuremberg et \
+à Augsbourg, des centaines de maîtres, réunis en corporations strictes, doivent \
+produire un chef-d'œuvre pour être admis et poinçonner leurs ouvrages. Le plus célèbre, \
+Wenzel Jamnitzer, travaille pour quatre empereurs successifs. Les princes, comme les \
+ducs de Bavière à Munich, les électeurs de Saxe à Dresde ou l'archiduc Ferdinand II au \
+château d'Ambras, réunissent dans leurs cabinets de curiosités des coupes, des \
+automates et des bijoux. Les formes de la Renaissance italienne, colonnes, frontons, \
+grotesques, arrivent dans les ateliers par les gravures : des ornemanistes comme Virgil \
+Solis, à Nuremberg, ou Erasmus Hornick publient des modèles de pendentifs que les \
+orfèvres copient et combinent. Les portraits peints par Holbein ou Cranach montrent ces \
+bijoux portés sur la poitrine, aux chapeaux ou aux manches. Fondus, transformés ou \
+remontés au gré des modes et des besoins d'argent, ils ne nous sont parvenus qu'en \
+petit nombre."""
+style = """
+Le bijou de la Renaissance allemande est une petite sculpture : figures en ronde-bosse \
+émaillées de blanc, architectures miniatures, monstres marins et grotesques. L'émail \
+aux couleurs vives, blanc, rouge, vert, bleu, couvre l'or ciselé, et les pierres, \
+taillées en table ou en cabochon, sont accompagnées de perles, souvent irrégulières et \
+pendantes. L'effet recherché est l'abondance et la surprise, à regarder de près, comme \
+les objets des cabinets de curiosités."""
+
+[[artistes]]
+nom = "Popayán, orfèvres de la Nouvelle-Grenade"
+vie = "Popayán (Colombie actuelle), XVIᵉ–XVIIIᵉ siècle"
+biographie = """
+Fondée en 1537 par le conquistador Sebastián de Belalcázar dans une haute vallée des \
+Andes, au sud de l'actuelle Colombie, Popayán devient une ville de notables, de \
+couvents et d'églises. Sa richesse vient de l'or, extrait dans les mines et les \
+rivières des régions voisines, en particulier vers la côte pacifique, par des Africains \
+réduits en esclavage. Les élites de la ville, propriétaires de mines et de domaines, \
+rivalisent de générosité envers les églises et les confréries, ces associations de \
+fidèles qui organisent le culte d'un saint ou de la Vierge et entretiennent ses \
+ornements. Les orfèvres locaux, dont les noms sont presque tous oubliés, fabriquent \
+pour elles des ostensoirs, des calices, des couronnes et des parures de statues. Les \
+émeraudes viennent des mines de la région de Muzo, au nord de Bogota, déjà exploitées \
+avant l'arrivée des Espagnols. Rattachée au XVIIIᵉ siècle à la vice-royauté de \
+Nouvelle-Grenade, Popayán reste célèbre pour ses processions de la Semaine sainte, \
+inscrites en 2009 au patrimoine culturel immatériel de l'UNESCO."""
+style = """
+L'orfèvrerie religieuse de la Nouvelle-Grenade adopte les formes européennes, baroques \
+puis rocaille, connues par les objets importés et les gravures, mais les traite avec \
+une prodigalité propre au Nouveau Monde : or épais, émeraudes en abondance, effets de \
+profusion. Le repoussé, les ajours et les pierres en table ou en goutte donnent à ces \
+objets un éclat fait pour être vu de loin, dans la lumière des cierges et des \
+processions."""
+
+[[artistes]]
+nom = "Paris, orfèvres-bijoutiers du XVIIIᵉ siècle"
+vie = "Paris, XVIIIᵉ siècle"
+biographie = """
+Au XVIIIᵉ siècle, Paris domine la fabrication des objets de luxe en Europe. Les \
+orfèvres-bijoutiers, membres de la puissante corporation des orfèvres, se spécialisent \
+dans les « bijoux » au sens de l'époque : tabatières, étuis, boîtes à mouches, \
+nécessaires et pommeaux de canne. Leurs ouvrages d'or portent des poinçons \
+obligatoires, celui du maître et ceux du contrôle, avec une lettre qui change chaque \
+année : on peut ainsi les dater avec précision. La tabatière devient l'accessoire \
+indispensable de l'homme et de la femme du monde, et le roi offre aux ambassadeurs des \
+boîtes ornées de son portrait. Les orfèvres travaillent avec des miniaturistes, des \
+émailleurs et des graveurs. Pierre-François Delafons, reçu maître en 1732 et mort en \
+1787, est l'un de ces fabricants. La famille Van Blarenberghe, originaire de Lille, \
+s'est fait une spécialité des vues minuscules : Louis-Nicolas, né en 1716, peintre des \
+batailles pour le ministère de la Guerre, et son fils Henri-Joseph peignent des fêtes, \
+des ports, des batailles et des châteaux pour les couvercles des boîtes."""
+style = """
+La tabatière parisienne est un chef-d'œuvre de miniaturisation et de précision : \
+charnière parfaite, couvercle qui se ferme sans jeu, or de plusieurs couleurs ciselé de \
+fleurs, émail, laque ou miniatures sous verre. Elle suit les modes, rocaille vers 1750, \
+puis néoclassique. Les vues des Van Blarenberghe, d'une exactitude topographique, en \
+font aussi des documents précieux sur les lieux et les fêtes de l'époque."""
+
+[[artistes]]
+nom = "Maison Fabergé"
+vie = "Saint-Pétersbourg, 1842–1918"
+biographie = """
+Gustav Fabergé, joaillier d'une famille d'origine huguenote établie dans les pays \
+baltes, ouvre sa boutique à Saint-Pétersbourg en 1842. Son fils Carl, né en 1846, suit \
+sa famille à Dresde, la ville de la Voûte verte, où il fréquente une école de commerce, \
+se forme chez un joaillier de Francfort puis voyage en Europe pour étudier les \
+collections, avant de prendre la tête de la maison en 1872. Il veut que la valeur d'un \
+objet tienne à son invention et à sa perfection plutôt qu'au poids des pierres. En \
+1885, le tsar Alexandre III lui commande un œuf de Pâques pour l'impératrice Maria \
+Feodorovna, l'œuf à la poule, et Fabergé devient fournisseur de la cour. Nicolas II \
+poursuit la tradition, en offrant chaque année un œuf à sa mère et un à sa femme : une \
+cinquantaine d'œufs impériaux sont fabriqués jusqu'en 1916. La maison emploie jusqu'à \
+cinq cents personnes, dans des ateliers dirigés par des chefs comme Mikhaïl Perkhine et \
+Henrik Wigström, et ouvre des succursales à Moscou, à Odessa, à Kiev et à Londres. \
+Nationalisée par les bolcheviks en 1918, elle disparaît ; Carl Fabergé fuit la Russie \
+et meurt à Lausanne en 1920."""
+style = """
+Le style Fabergé puise dans le XVIIIᵉ siècle français, la Renaissance, l'art russe \
+ancien et parfois l'Art nouveau. Il se reconnaît à ses émaux translucides sur fond \
+guilloché, d'une palette très étendue, à ses ors de couleurs différentes, à ses fleurs \
+et à ses animaux en pierres dures de Russie, et à une finition irréprochable. Ses œufs \
+impériaux, avec leurs surprises, sont devenus le symbole du luxe des derniers Romanov."""
+
+[[artistes]]
+nom = "René Lalique"
+vie = "Aÿ (Marne), 6 avril 1860 – Paris, 1ᵉʳ mai 1945"
+biographie = """
+Né en Champagne, René Lalique perd son père à seize ans et entre en apprentissage chez \
+le joaillier parisien Louis Aucoc, tout en suivant des cours à l'École des arts \
+décoratifs. Il passe ensuite deux ans à Londres, où il étudie au Sydenham College. \
+Revenu à Paris, il dessine des bijoux pour de grandes maisons, comme Cartier ou \
+Boucheron, puis reprend en 1885 l'atelier du joaillier Jules d'Estape. Dans les années \
+1890, il invente une joaillerie nouvelle, où les insectes, les fleurs, les femmes et \
+les paysages remplacent les rivières de diamants. Sarah Bernhardt porte ses bijoux ; à \
+l'Exposition universelle de 1900, sa vitrine fait sensation, et il est promu officier \
+de la Légion d'honneur. Le collectionneur Calouste Gulbenkian devient son grand mécène. \
+Après 1905, Lalique se tourne vers le verre : il dessine des flacons de parfum pour \
+François Coty, puis fonde ses propres verreries, à Combs-la-Ville, puis à \
+Wingen-sur-Moder, en Alsace. Ses vases, ses luminaires et ses bouchons de radiateur \
+font de lui l'un des maîtres de l'Art déco. Il meurt à Paris en 1945."""
+style = """
+Lalique a libéré la joaillerie de la tyrannie du diamant. Il choisit ses matériaux pour \
+leur effet, émail plique-à-jour, corne, ivoire, verre, opale, pierre de lune, et les \
+associe à l'or avec une liberté totale. Ses motifs, empruntés à la nature et au \
+symbolisme, libellules, paons, femmes-fleurs, serpents, font du bijou une œuvre d'art à \
+part entière. Son influence sur l'Art nouveau européen fut immense, et son travail du \
+verre ouvrit la voie à l'Art déco."""
+
+[[artistes]]
+nom = "Louis Comfort Tiffany"
+vie = "New York, 18 février 1848 – New York, 17 janvier 1933"
+biographie = """
+Fils de Charles Lewis Tiffany, fondateur de la maison Tiffany & Co., Louis Comfort \
+Tiffany préfère la peinture à l'entreprise familiale. Élève de George Inness et de \
+Samuel Colman, il voyage en Europe et en Afrique du Nord, dont il rapporte des toiles \
+orientalistes. Dans les années 1870, il s'intéresse au verre et cherche à obtenir la \
+couleur dans la masse même du matériau, sans peinture. Il fonde en 1879 une entreprise \
+de décoration intérieure, qui réaménage des salons de la Maison-Blanche en 1882, puis \
+se consacre au vitrail et au verre soufflé, auquel il donne le nom de Favrile. Ses \
+ateliers, devenus Tiffany Studios, produisent des vitraux, des mosaïques, des vases et \
+les célèbres lampes à abat-jour de verre. Après la mort de son père, en 1902, il \
+devient directeur artistique de Tiffany & Co. et se lance dans la joaillerie, présentée \
+pour la première fois à Saint-Louis en 1904. Il construit alors Laurelton Hall, sa \
+demeure de Long Island, véritable manifeste de son art. Passé de mode après la Première \
+Guerre mondiale, il crée une fondation pour de jeunes artistes et meurt à New York en \
+1933."""
+style = """
+Tiffany voulait faire entrer la beauté de la nature dans les objets de tous les jours. \
+Peintre de la couleur, il en cherche les effets dans le verre irisé, les opales et les \
+émaux, et ses motifs, libellules, glycines, pivoines, pissenlits, viennent de \
+l'observation directe des jardins. Son œuvre est la grande contribution américaine à \
+l'Art nouveau, plus naturaliste et moins littéraire que l'art français."""

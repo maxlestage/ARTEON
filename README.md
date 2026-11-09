@@ -171,6 +171,15 @@ Les fichiers sont vérifiés à la compilation (`build.rs`) : salle inexistante,
 
 et le site en ligne reste tel quel.
 
+## Les expositions éphémères
+
+`outils/ephemeres.py` monte chaque semaine des expositions qui changent avec les musées : il interroge les collections ouvertes de l'**Art Institute of Chicago**, du **Cleveland Museum of Art** et du **Metropolitan Museum de New York**, tire au sort douze œuvres parmi celles qu'ils exposent **en ce moment** dans leurs salles (domaine public, photographies publiées en CC0 par le musée), et écrit pour chacun `expositions/ephemere-<ville>.toml` et ses images. Quand un musée change son accrochage, l'exposition change avec lui ; chaque cartel dit dans quelle salle voir l'œuvre en vrai.
+
+- Le workflow GitHub Pages lance le script avant chaque compilation et **chaque lundi** (tâche planifiée) : le site est refait et redéployé avec le tirage de la semaine.
+- Un musée qui ne répond pas est sauté ; si le résultat ne se compile pas, les expositions éphémères sont retirées et le reste du site est publié.
+- Les fichiers produits ne sont pas versionnés (`.gitignore`). En local : `python3 outils/ephemeres.py` (bibliothèque standard de Python seulement), ou `--graine 42` pour un autre tirage.
+- Pour ajouter un musée : une fonction qui renvoie ses œuvres exposées (titre, artiste, date, technique, mesures, salle, image, lien) et une entrée dans `MUSEES`.
+
 ## Comment les toiles deviennent de la 3D
 
 Le moteur 3D de Paquets n'affiche pas d'images (pas de textures). À la compilation, `build.rs` réduit donc chaque image à une grille dont chaque case mesure **7 mm** dans la galerie (jusqu'à 340 cases de côté), et la ramène à une palette de **64 couleurs** ; les toiles sombres sont légèrement éclaircies pour rester lisibles sous l'éclairage du musée. Les cases des mosaïques et les maillages des sculptures sont écrits dans un fichier par exposition (`donnees/<nom>.bin`), que le navigateur télécharge à l'ouverture du musée : le WebAssembly reste le même quelle que soit la taille des collections.

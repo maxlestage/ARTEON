@@ -1,0 +1,997 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « INDE ET ASIE DU SUD-EST » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/inde-asie-sud-est/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /inde-asie-sud-est.
+#
+#  Les sculptures sont présentées en vitrine (cadre = "vitrine") ; les peintures
+#  ont leur propre cadre. Les photographies des objets viennent du Metropolitan
+#  Museum of Art et du Cleveland Museum of Art (CC0).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 26
+nom_court = "Inde et Asie du Sud-Est"
+mouvement = "Inde et Asie du Sud-Est"
+cadre = "vitrine"
+couleur = "#9a4a1c"
+titre = "Dieux, bouddhas et princes : l'art de l'Inde et de l'Asie du Sud-Est"
+artiste = "Gandhara, Gupta, Chola, Java, Angkor, Pagan, Rajputs, Ravi Varma…"
+dates = "IIIᵉ siècle – 1899"
+accroche = "Exposition virtuelle · Chhatrapati Shivaji Maharaj Vastu Sangrahalaya, Bombay"
+introduction = """
+Seize siècles d'art nés en Inde et portés, avec le bouddhisme et l'hindouisme, \
+jusqu'à Java, au Cambodge, en Birmanie et en Thaïlande. On y croise un bodhisattva \
+du Gandhara drapé à la grecque, un Bouddha gupta en grès rouge, Shiva dansant dans \
+son cercle de flammes, une tête du Borobudur et un dieu aux visages étagés d'Angkor, \
+puis des pages peintes pour les cours rajpoutes et un tableau de Raja Ravi Varma. \
+Le bâtiment s'inspire du musée Chhatrapati Shivaji Maharaj de Bombay : on franchit \
+un porche, on entre sous une haute coupole, et deux ailes s'ouvrent de part et \
+d'autre, l'une pour la sculpture de l'Asie du Sud-Est, l'autre pour la peinture."""
+vitrine = "nataraja.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya (ancien Prince of Wales Museum)"
+ville = "Bombay (Mumbai), Inde"
+architecte = "George Wittet"
+construction = "1905–1922"
+presentation = """
+Au début du XXᵉ siècle, des notables de Bombay décident de fonder un musée en \
+souvenir de la visite du prince de Galles, le futur George V, qui en pose la \
+première pierre en novembre 1905. L'architecte écossais George Wittet, qui dessinera \
+aussi la Porte de l'Inde sur le port, conçoit un édifice de style indo-sarrasin : \
+murs de basalte gris et de pierre claire, balcons et arcs empruntés à l'architecture \
+moghole et aux palais de l'Inde de l'Ouest, et, au centre, une grande coupole. \
+Achevé pendant la Première Guerre mondiale, le bâtiment sert d'abord d'hôpital \
+militaire et n'ouvre au public qu'en 1922. Il reçoit en 1998 le nom de Chhatrapati \
+Shivaji Maharaj, fondateur du royaume marathe au XVIIᵉ siècle. Entouré d'un jardin, \
+le musée réunit aujourd'hui des dizaines de milliers d'objets : sculptures de l'Inde \
+ancienne, bronzes, miniatures, armes, textiles et collections d'histoire \
+naturelle."""
+ici = """
+Le bâtiment d'ARTEON reprend la composition du musée de Bombay : un porche, une haute \
+salle centrale sous la coupole et deux ailes symétriques. On entre par le sud dans \
+le Porche, aux murs de pierre claire, puis dans la Salle de la coupole, carrée, haute \
+de seize mètres, où le Shiva dansant fait face au visiteur entre le bodhisattva du \
+Gandhara et le Bouddha gupta. À l'ouest, la Galerie de l'Asie du Sud-Est, longue de \
+vingt mètres et couleur de sable, réunit Java, Angkor, Pagan et la Thaïlande ; à \
+l'est, la Galerie des peintures, d'un rose terracotta, présente les cours rajpoutes \
+et Ravi Varma."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Chhatrapati Shivaji Maharaj Vastu Sangrahalaya de Bombay (ancien
+# Prince of Wales Museum, George Wittet) : un porche d'entrée au sud ; au
+# centre, une salle carrée très haute qui évoque la grande coupole ; à l'ouest et
+# à l'est, deux ailes longues et plus basses, comme les ailes symétriques du
+# bâtiment. x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le Porche"
+theme = "L'entrée, comme le porche du musée de Bombay, au pied de sa coupole."
+murs = "#e7dcc6"
+x = 0
+z = 0
+largeur = 14
+profondeur = 8
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La Salle de la coupole"
+theme = "L'Inde ancienne : un bodhisattva du Gandhara, un Bouddha gupta et Shiva, roi de la danse."
+murs = "#efe6d2"
+x = 0
+z = -10.5
+largeur = 13
+profondeur = 13
+hauteur = 16
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "La Galerie de l'Asie du Sud-Est"
+theme = "Le Bouddha et les dieux hors de l'Inde : Borobudur, Angkor, Pagan et la Thaïlande."
+murs = "#dccaa6"
+x = -16.5
+z = -10.5
+largeur = 20
+profondeur = 12
+hauteur = 8
+
+[[salles]]
+nom = "La Galerie des peintures"
+theme = "Les amours de Krishna et de Shiva peintes pour les cours rajpoutes, et la Damayanti de Ravi Varma."
+murs = "#e5c6aa"
+x = 16.5
+z = -10.5
+largeur = 20
+profondeur = 12
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Bodhisattva Maitreya debout"
+artiste = "Gandhara, époque kouchane"
+annee = "vers le IIIᵉ siècle"
+image = "maitreya-gandhara.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DP123372.jpg"
+technique = "Schiste gris, 163,2 × 53,3 × 20,3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le Bouddha de l'avenir, en prince indien drapé comme un Romain : l'art du Gandhara est né de la rencontre de l'Inde et du monde grec."
+description = """
+Un jeune homme se tient debout, grandeur nature, devant un large disque de pierre \
+qui forme son auréole. Ses cheveux ondulés tombent en boucles sur les épaules et \
+sont noués au sommet du crâne en un chignon à double boucle. Il porte une fine \
+moustache relevée aux pointes. Torse en partie nu, il est paré de bijoux : colliers \
+superposés, cordon garni d'amulettes en travers de la poitrine, bracelets et \
+brassard. Une étoffe drapée passe sur son épaule gauche et retombe en une large \
+écharpe en arc devant ses cuisses ; une longue jupe plissée descend jusqu'aux \
+chevilles. Ses pieds sont chaussés de sandales à lanières. L'avant-bras droit, qui \
+se levait, a disparu. Sur le socle, de petits personnages en prière entourent un \
+objet posé au centre."""
+evocation = """
+Maitreya est le Bouddha à venir : selon la tradition bouddhique, il attend au ciel \
+le moment de renaître sur terre pour enseigner à nouveau, quand l'enseignement du \
+Bouddha historique aura été oublié. Avant cette dernière naissance, il est un \
+bodhisattva, un être d'Éveil qui a choisi de rester parmi les hommes pour les aider. \
+C'est pourquoi le sculpteur le montre en prince, avec les bijoux et la moustache \
+des nobles de son temps, et non en moine au crâne ras. Le chignon à boucles et la \
+petite fiole à eau, que la main gauche semble encore serrer, sont ses attributs \
+habituels. On a souvent souligné la ressemblance de ce visage et de ce drapé avec \
+les statues romaines : un dieu indien vêtu à l'antique."""
+histoire = """
+Le Gandhara s'étend autour de Peshawar, dans le nord-ouest de l'actuel Pakistan. \
+Après le passage d'Alexandre le Grand, des royaumes grecs y ont régné, et la région \
+est devenue, sous l'empire kouchan, un carrefour entre l'Inde, l'Iran, l'Asie \
+centrale et le monde romain. Les monastères bouddhiques s'y couvrent de statues et \
+de reliefs taillés dans le schiste local. Cette statue se dressait sans doute dans \
+l'un de ces sanctuaires, au pied d'un stupa ou dans une chapelle. On ignore son lieu \
+de découverte exact. Elle est entrée au Metropolitan Museum of Art en 1991, achetée \
+grâce à un don du Lita Annenberg Hazen Charitable Trust."""
+facture = """
+Le schiste gris, roche fine et dense, se prête aux détails : le sculpteur a pu y \
+creuser les plis serrés de l'étoffe, les mèches de la chevelure et les maillons \
+des colliers. Le drapé, qui suit le corps et retombe en plis lourds et réguliers, \
+vient de la sculpture gréco-romaine, de même que la légère flexion d'une jambe qui \
+anime la pose. La statue était sculptée pour être vue de face, adossée à un mur : \
+l'auréole et le dos restent plus sommaires. À l'origine, la pierre était peut-être \
+rehaussée de couleurs ou de dorure."""
+details = [
+  "La moustache fine aux pointes relevées, comme celle d'un prince.",
+  "Le cordon d'amulettes qui barre la poitrine en diagonale.",
+  "L'écharpe tombant en arc devant les cuisses, aux plis réguliers.",
+  "Les sandales à lanières, nouées entre les orteils.",
+  "Les petits fidèles en prière sculptés sur le socle.",
+]
+themes = ["bouddhisme", "bodhisattva", "gandhara", "influence grecque", "drapé"]
+anecdote = """
+Les deux Bouddhas géants de Bamiyan, en Afghanistan, hauts de 38 et de 55 mètres, \
+appartenaient au monde bouddhique héritier du Gandhara. Ils ont été détruits à \
+l'explosif par les talibans en mars 2001."""
+salle = 2
+mur = "ouest"
+place = 3
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Bouddha debout offrant sa protection"
+artiste = "Inde du Nord, époque gupta"
+annee = "fin du Vᵉ siècle"
+image = "bouddha-mathura.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT237.jpg"
+technique = "Grès rouge, 85,5 × 42,5 × 16,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Sculpté à Mathura, ce Bouddha au corps enveloppé de plis fins incarne le modèle classique que l'Asie entière a imité."
+description = """
+Le Bouddha se tient debout, de face, le corps droit et calme. Sa tête est couverte \
+de petites boucles en coquille d'escargot, surmontées d'une protubérance arrondie. \
+Ses paupières sont baissées, ses lobes d'oreilles allongés, et son visage plein \
+reste parfaitement serein. Il porte une robe monastique si fine qu'elle semble \
+mouillée : elle colle au corps, laisse deviner les épaules, le ventre et les jambes, \
+et n'est marquée que par des plis en forme de cordelettes, qui descendent en \
+guirlandes régulières sur toute la figure. Sa main gauche retient le bord de \
+l'étoffe ; la droite, qui se levait paume ouverte, est brisée. Derrière la tête, \
+un fragment de l'auréole conserve un décor de feuillages finement ciselé."""
+evocation = """
+Le geste perdu de la main droite, paume tournée vers le fidèle, est l'abhaya-mudra, \
+le geste qui rassure : « n'aie pas peur ». La statue ne raconte aucune histoire ; \
+elle montre un être parvenu à l'Éveil, détaché du monde, dont le corps parfait et \
+lisse dit la paix intérieure. Les textes indiens énumèrent les marques physiques \
+d'un être d'exception, comme la protubérance du crâne ou les lobes allongés, que \
+le sculpteur respecte. Sous les Gupta, ces signes se fondent dans une image d'une \
+grande douceur, qui a longtemps été considérée comme l'expression classique du \
+Bouddha. Les pèlerins venus de Chine et d'Asie du Sud-Est en ont rapporté des \
+copies, et ce modèle a été imité de Java à la Thaïlande."""
+histoire = """
+La dynastie gupta règne sur le nord de l'Inde à partir du IVᵉ siècle ; cette période \
+est souvent appelée l'âge classique de l'art indien. Deux grands ateliers de \
+sculpture bouddhique dominent alors : Sarnath, près de Bénarès, où le Bouddha a \
+prononcé son premier sermon, et Mathura, sur la Yamuna, au sud de Delhi. Mathura \
+travaille un grès rouge tacheté de clair, extrait des carrières voisines, et produit \
+depuis des siècles des statues pour toute l'Inde du Nord. Cette figure provient de \
+cet atelier ; elle se dressait sans doute dans un monastère. Le Metropolitan Museum \
+of Art l'a achetée en 1979, grâce à un don d'Enid A. Haupt."""
+facture = """
+Le sculpteur a obtenu l'effet d'étoffe mouillée en traitant la robe comme une \
+seconde peau, sur laquelle il a posé, en très faible relief, des plis en arêtes \
+parallèles. Le volume du corps, simplifié et arrondi, n'est pas musclé : il est \
+pensé comme une forme idéale plutôt que comme un corps observé. Le grès rouge de \
+Mathura, assez tendre, permet ce modelé lisse et les ciselures de l'auréole. La \
+statue, adossée à une stèle, était faite pour être vue de face."""
+details = [
+  "Les plis de la robe en fines cordelettes, qui descendent en guirlandes.",
+  "Les petites boucles de la chevelure, tournées comme des coquilles.",
+  "La main gauche qui pince le bord de l'étoffe à hauteur de hanche.",
+  "Le fragment d'auréole, en haut à gauche, orné de rinceaux de feuillage.",
+  "Les taches claires du grès rouge, propres aux carrières de Mathura.",
+]
+themes = ["bouddhisme", "âge classique", "sérénité", "grès rouge", "gupta"]
+anecdote = """
+Le plus grand Bouddha de métal de cette époque, haut de plus de deux mètres, a été \
+découvert en 1861 par des ingénieurs qui construisaient une voie ferrée à \
+Sultanganj, dans le Bihar. Il est aujourd'hui conservé au musée de Birmingham, en \
+Angleterre."""
+salle = 2
+mur = "est"
+place = 1
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Nataraja, Shiva roi de la danse"
+artiste = "Inde du Sud, époque chola"
+annee = "XIᵉ siècle"
+image = "nataraja.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1930.331.jpg"
+technique = "Bronze, 113 × 102 × 30 cm"
+collection = "Cleveland Museum of Art"
+note = "Shiva danse dans un cercle de flammes pour détruire et recréer l'univers : l'image la plus célèbre de l'art indien."
+description = """
+Dans un grand anneau hérissé de flammes, un dieu à quatre bras danse sur une seule \
+jambe. Sa jambe droite, légèrement fléchie, écrase un petit personnage allongé sur \
+le socle ; la gauche se lève et se tend vers la droite, en travers du corps. Les \
+deux bras supérieurs s'écartent : la main droite tient un petit tambour en forme de \
+sablier, la gauche une flamme. La main inférieure droite se lève, paume ouverte ; le \
+bras inférieur gauche passe devant la poitrine, la main pendante pointée vers le \
+pied levé. Le dieu porte une haute coiffe en éventail, des boucles d'oreilles, des \
+colliers et des anneaux aux chevilles. Son visage reste calme, presque souriant. Le \
+socle en forme de lotus est percé de deux trous."""
+evocation = """
+Pour les fidèles de Shiva, le temps est cyclique : le monde naît, dure, est détruit \
+puis recréé sans fin, et c'est la danse du dieu qui en donne le rythme. Le tambour \
+marque le battement de la création, la flamme annonce la destruction, et l'anneau \
+de feu figure l'univers. La main levée dit au fidèle de ne pas craindre ; celle qui \
+pointe le pied soulevé lui montre le chemin de la délivrance. Le nain écrasé incarne \
+l'ignorance, ou l'oubli de soi, que la danse vainc. Cette danse est associée au \
+temple de Chidambaram, en pays tamoul, où Shiva est vénéré sous ce nom. L'équilibre \
+parfait de la figure, à la fois tourbillon et immobilité, a fait de Nataraja un \
+symbole de l'Inde."""
+histoire = """
+Du IXᵉ au XIIIᵉ siècle, la dynastie chola domine le sud de l'Inde depuis le pays \
+tamoul. Ses rois couvrent leur royaume de temples de pierre et font fondre, pour \
+ces sanctuaires, des statues de bronze destinées aux processions : lors des fêtes, \
+on les habille de soieries, on les couvre de fleurs et de bijoux et on les promène \
+dans les rues. Les trous du socle servaient à fixer les brancards. Cette statue a \
+été vendue en 1930 au Cleveland Museum of Art par le marchand C. T. Loo, établi à \
+Paris et à New York ; on ne sait pas de quel temple elle provient. Elle reste \
+l'une des œuvres les plus admirées du musée."""
+facture = """
+Les bronzes chola sont fondus à la cire perdue : le modèle, sculpté dans la cire, \
+est enrobé d'argile, puis chauffé ; la cire s'écoule et le métal en fusion prend sa \
+place. Le moule étant brisé pour libérer la statue, chaque pièce est unique. Le \
+sculpteur reprend ensuite au burin les détails des bijoux et du visage. Des traités \
+fixent les proportions du corps, mais les meilleurs artisans y ajoutent souplesse et \
+élan. Ici, toute la composition s'inscrit dans le cercle, autour de l'axe vertical \
+de la jambe d'appui."""
+details = [
+  "Le petit tambour en sablier, dans la main droite levée.",
+  "La flamme posée dans la paume gauche, comme une offrande.",
+  "Le nain de l'ignorance, sous le pied droit, qui lève la tête vers le dieu.",
+  "Les flammèches régulières qui hérissent l'anneau de feu.",
+  "Les deux trous du socle, où passaient les brancards de procession.",
+]
+themes = ["hindouisme", "shiva", "danse", "cosmos", "bronze", "procession"]
+anecdote = """
+En 2004, l'Inde a offert au CERN, le grand laboratoire européen de physique des \
+particules près de Genève, une statue de Shiva Nataraja haute de deux mètres : elle \
+évoque la danse de la matière et de l'énergie."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Tête de Bouddha du Borobudur"
+artiste = "Java, dynastie Shailendra"
+annee = "début du IXᵉ siècle"
+image = "tete-bouddha-borobudur.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1942.1087.jpg"
+technique = "Pierre volcanique (andésite), haut. 30,6 cm"
+collection = "Cleveland Museum of Art"
+note = "L'une des centaines de têtes de Bouddha du plus grand monument bouddhique du monde, au cœur de Java. Elle mesure 31 cm de haut."
+description = """
+Une tête de Bouddha, seule, repose sur un socle moderne. La pierre est grise et \
+poreuse, criblée de minuscules trous. Les cheveux sont faits de grosses boucles \
+rondes, enroulées en spirale et alignées en rangs serrés, qui couvrent aussi la \
+protubérance au sommet du crâne. Le visage est large et plein, aux joues rondes. Les \
+paupières, lourdes, sont presque closes, et le regard filtre vers le bas. Les \
+sourcils dessinent deux arcs nets qui rejoignent l'arête du nez. La bouche, aux \
+lèvres charnues, esquisse un sourire à peine perceptible. Les lobes des oreilles, \
+très allongés, descendent jusqu'à la mâchoire. La tête a été détachée au niveau du \
+cou de la statue à laquelle elle appartenait."""
+evocation = """
+Le visage n'exprime aucune émotion particulière, mais un état : la paix intérieure \
+de celui qui a atteint l'Éveil. Les paupières baissées tournent le regard vers \
+l'intérieur, vers la méditation. Les longs lobes rappellent que le Bouddha, né \
+prince, portait autrefois de lourds bijoux d'oreilles, auxquels il a renoncé. Au \
+Borobudur, les statues de Bouddha étaient placées dans des niches et dans des \
+stupas ajourés, le long d'un parcours qui mène le pèlerin, terrasse après terrasse, \
+du monde des désirs vers le sommet, image de l'Éveil. Ce visage était l'un des \
+points d'arrivée de cette ascension. Détaché du monument, il témoigne aussi de \
+l'histoire de sa dispersion."""
+histoire = """
+Le Borobudur est élevé vers 800, dans le centre de Java, sous la dynastie bouddhique \
+des Shailendra. Abandonné après quelques siècles, envahi par la végétation et la \
+cendre volcanique, il est dégagé à partir de 1814 sur l'ordre du gouverneur \
+britannique de Java, Thomas Stamford Raffles. Au XIXᵉ siècle et au début du XXᵉ, \
+sous l'administration coloniale néerlandaise, des centaines de têtes de Bouddha \
+sont prélevées ou volées et dispersées dans le monde. Celle-ci a été vendue en 1942 \
+au Cleveland Museum of Art par le marchand Raphaël Stora, de New York. Le monument, \
+restauré de 1907 à 1911 puis, avec l'Unesco, de 1975 à 1982, est inscrit au \
+patrimoine mondial depuis 1991."""
+facture = """
+L'andésite, une roche volcanique abondante à Java, est rugueuse et pleine de \
+bulles : elle interdit le poli et les détails trop fins. Le sculpteur a donc \
+travaillé par grandes masses simples, le globe du crâne, l'ovale du visage, les arcs \
+des sourcils, et a laissé la lumière jouer sur les boucles en relief. À l'origine, \
+la pierre était sans doute couverte d'un enduit peint, aujourd'hui disparu. Les \
+centaines de statues du monument ont été taillées selon un même modèle, par des \
+équipes de sculpteurs."""
+details = [
+  "Les boucles rondes de la chevelure, toutes enroulées dans le même sens.",
+  "Les petits trous de la pierre volcanique, visibles sur les joues.",
+  "Les paupières lourdes, qui ne laissent voir qu'une fente.",
+  "Les lobes d'oreilles allongés jusqu'à la mâchoire.",
+]
+themes = ["bouddhisme", "java", "méditation", "pierre volcanique", "patrimoine dispersé"]
+anecdote = """
+En 1896, lors de la visite du roi de Siam Chulalongkorn à Java, l'administration \
+coloniale néerlandaise lui offrit plusieurs chariots de sculptures prises au \
+Borobudur. Elles sont toujours conservées au Musée national de Bangkok."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Buste d'Hevajra"
+artiste = "Empire khmer, style du Bayon"
+annee = "fin du XIIᵉ – début du XIIIᵉ siècle"
+image = "buste-hevajra.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT5215.jpg"
+technique = "Grès, 132,1 × 73,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un dieu aux visages étagés, souriant comme les tours du Bayon : le bouddhisme d'Angkor sous le roi Jayavarman VII."
+description = """
+Il ne reste de cette grande statue que le haut du corps et les têtes. Au premier \
+rang, un visage large, aux yeux mi-clos, sourit doucement ; deux autres visages, \
+vus de profil, le prolongent sur les côtés, de sorte que le dieu regarde dans trois \
+directions. Au-dessus, un second étage répète la même disposition : un visage de \
+face, plus petit, encadré de deux profils. Le visage principal porte un bandeau sur \
+le front et de longues boucles d'oreilles pendantes. Les épaules sont larges, mais \
+les bras ont disparu ; il n'en reste qu'un moignon, à gauche, et une grande cassure \
+creuse la poitrine. La pierre, grise et granuleuse, est usée par le temps."""
+evocation = """
+Hevajra est une divinité du bouddhisme tantrique, une forme du Vajrayana venue de \
+l'Inde du Nord-Est. Ses textes le décrivent avec huit têtes et seize bras, dansant, \
+tenant dans chaque main une coupe faite d'un crâne : une figure terrible, qui \
+détruit les illusions et les passions. Les sculpteurs khmers en ont pourtant fait \
+une image apaisée, aux visages souriants. Ces faces multiples, qui regardent dans \
+toutes les directions, rappellent les tours à visages du Bayon, le temple bâti au \
+centre d'Angkor Thom par Jayavarman VII. On y a vu l'image d'une compassion qui \
+veille sur tout le royaume. Hevajra semble avoir été très vénéré dans l'empire \
+khmer à cette époque."""
+histoire = """
+L'empire khmer domine du IXᵉ au XVᵉ siècle une grande partie de l'Asie du Sud-Est \
+continentale, depuis sa capitale, Angkor, au nord-ouest de l'actuel Cambodge. À la \
+fin du XIIᵉ siècle, le roi Jayavarman VII, bouddhiste, reconstruit la ville après \
+une guerre contre le Champa, fonde Angkor Thom, élève le Bayon et couvre son \
+royaume de temples, d'hôpitaux et de gîtes d'étape. Ce buste date de son règne ou \
+de celui de ses successeurs immédiats. Il est entré au Metropolitan Museum of Art \
+en 1936. En 2023, le Met a annoncé la restitution au Cambodge et à la Thaïlande de \
+seize sculptures liées au marchand Douglas Latchford, accusé de trafic ; ce buste, \
+acquis bien plus tôt, n'en faisait pas partie."""
+facture = """
+La statue est taillée dans le grès, la pierre de presque tous les temples \
+d'Angkor. Le style du Bayon se reconnaît à ses visages larges, aux yeux baissés, \
+aux lèvres épaisses étirées en un léger sourire. Ici, les têtes sont superposées en \
+étages qui s'inscrivent dans une silhouette pyramidale. Le sculpteur a \
+répété le même visage en variant seulement l'orientation, ce qui donne à l'ensemble \
+une grande unité. Les bijoux sont sculptés en faible relief, sans creuser la masse \
+de la pierre."""
+details = [
+  "Le léger sourire des lèvres, commun à tous les visages.",
+  "Les visages de profil, de chaque côté, qui regardent vers les côtés.",
+  "Le second étage de visages, plus petits, au-dessus du premier.",
+  "Les longues boucles d'oreilles en pendentif du visage principal.",
+  "La grande cassure de la poitrine et le moignon du bras, à gauche.",
+]
+themes = ["bouddhisme", "angkor", "sourire", "khmer", "visages"]
+anecdote = """
+Le Bayon, au centre d'Angkor Thom, porte sur ses tours plus de deux cents visages \
+géants sculptés dans la pierre. Beaucoup d'historiens pensent qu'ils mêlent les \
+traits d'un bodhisattva et ceux du roi Jayavarman VII lui-même."""
+salle = 3
+mur = "nord"
+place = 5
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Bouddha assis sur un double lotus"
+artiste = "Birmanie, royaume de Pagan"
+annee = "fin du XIᵉ siècle"
+image = "bouddha-pagan.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT5633.jpg"
+technique = "Bronze incrusté d'argent et de cuivre, 23,5 × 18,4 × 12,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un petit bronze de Pagan, la ville aux milliers de temples, au moment où la Birmanie adopte le bouddhisme theravada. Il mesure 23,5 cm."
+description = """
+Le Bouddha est assis jambes croisées, la plante des pieds tournée vers le ciel, sur \
+un socle formé de deux rangées de pétales de lotus, les uns tournés vers le haut, \
+les autres vers le bas. Sa main gauche repose, paume ouverte, dans son giron ; la \
+droite descend sur le genou, les doigts effleurant le sol. Sa robe monastique, \
+moulante, laisse l'épaule droite nue ; un pan d'étoffe plié tombe sur l'épaule \
+gauche jusqu'à la taille. La tête, couverte de petites boucles, porte au sommet une \
+protubérance terminée par un bouton. Le visage est rond et paisible, les yeux \
+baissés. Le métal, de teinte dorée, est resté lisse et brillant."""
+evocation = """
+Le geste de la main droite est l'un des plus importants de l'art bouddhique : on \
+l'appelle « prise de la terre à témoin ». Selon le récit traditionnel, au moment \
+où le Bouddha, assis sous l'arbre de Bodh-Gaya, allait atteindre l'Éveil, le démon \
+Mara contesta son droit à y parvenir ; le Bouddha toucha alors la terre, qui \
+témoigna en sa faveur, et Mara s'enfuit. La statue représente donc l'instant même \
+de l'Éveil. Ce thème venu des grands centres bouddhiques de l'Inde du Nord-Est est \
+devenu, à Pagan puis dans toute la Birmanie, l'image la plus répandue du Bouddha."""
+histoire = """
+Au XIᵉ siècle, le roi Anawrahta unifie autour de Pagan, sur l'Irrawaddy, la \
+première grande monarchie birmane, et favorise le bouddhisme theravada. Pendant deux \
+siècles et demi, les rois et les fidèles de Pagan bâtissent des milliers de temples \
+et de stupas de brique, ornés de peintures murales et peuplés de statues. Les \
+moines et les pèlerins voyagent entre Pagan, Bodh-Gaya et Sri Lanka, ce qui \
+explique l'influence de l'art indien sur ce bronze. Le royaume décline après les \
+invasions mongoles de la fin du XIIIᵉ siècle. Ce Bouddha est entré au Metropolitan \
+Museum of Art en 2003."""
+facture = """
+La statuette est fondue en bronze à la cire perdue, puis ciselée. Selon la \
+description du musée, elle est incrustée d'argent et de cuivre : de minces filets \
+de métal de couleur différente étaient encastrés dans le bronze pour souligner \
+certains détails, une technique raffinée réservée aux pièces de qualité. Les \
+proportions, les épaules larges, la taille fine et le visage rond, suivent les \
+modèles de l'Inde de l'Est sous la dynastie Pala, que les artisans birmans \
+connaissaient bien."""
+details = [
+  "Les doigts de la main droite qui effleurent le sol, devant le genou.",
+  "Le double rang de pétales de lotus du socle, ouverts vers le haut et vers le bas.",
+  "Le pan d'étoffe plié qui tombe sur l'épaule gauche.",
+  "Le petit bouton qui termine la protubérance du crâne.",
+]
+themes = ["bouddhisme", "birmanie", "éveil", "bronze", "lotus"]
+anecdote = """
+Dans la plaine de Pagan, plus de deux mille temples et stupas de brique, bâtis entre \
+le XIᵉ et le XIIIᵉ siècle, sont encore debout. Le site a été inscrit au patrimoine \
+mondial de l'Unesco en 2019."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Bouddha assis prenant la terre à témoin"
+artiste = "Thaïlande, héritage de Sukhothai"
+annee = "fin du XVᵉ – XVIᵉ siècle"
+image = "bouddha-thailande.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT8728.jpg"
+technique = "Bronze, 49,5 × 31,7 × 19,1 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La flamme au sommet du crâne et la silhouette élancée viennent de Sukhothai, le premier grand royaume thaï."
+description = """
+Le Bouddha est assis jambes repliées, la jambe droite posée sur la gauche, sur un \
+coussin bordé d'un rang de perles, lui-même porté par un socle massif. Sa main droite \
+descend sur le genou, les doigts touchant presque le sol ; la gauche repose dans son \
+giron. Le corps est mince et souple, les épaules larges, la taille étroite. Une fine \
+robe moulante laisse nue l'épaule droite, et un long pan d'étoffe tombe de l'épaule \
+gauche jusqu'au nombril. La tête, couverte de petites boucles pointues, se termine \
+par une haute flamme. Le visage ovale, au nez aquilin et aux sourcils arqués, \
+esquisse un sourire. Le bronze, sombre, garde des traces de vert-de-gris et de \
+rouille."""
+evocation = """
+Comme le bronze de Pagan exposé à côté, ce Bouddha prend la terre à témoin : il \
+représente l'instant où, sous l'arbre de l'Éveil, il triomphe de Mara. Mais l'image \
+est ici plus aérienne. La flamme qui jaillit du sommet du crâne figure le rayonnement \
+de sa sagesse ; elle est devenue un trait typique du Bouddha thaï. La silhouette \
+fluide, presque sans muscles ni os, cherche à rendre un corps surnaturel, conforme \
+aux comparaisons des textes : des bras comme une trompe d'éléphant, un menton comme \
+un noyau de mangue. Pour les fidèles, ces statues sont des présences vivantes, que \
+l'on vénère, que l'on habille et que l'on couvre de feuilles d'or."""
+histoire = """
+Au XIIIᵉ siècle, des princes thaïs fondent, au nord de la plaine centrale, le royaume \
+de Sukhothai. Ses rois adoptent le bouddhisme theravada venu de Sri Lanka et font \
+fondre des bronzes d'un style nouveau, élancé et serein. Au XVᵉ siècle, Sukhothai \
+passe sous l'autorité du royaume d'Ayutthaya, plus au sud, mais ses statues restent \
+le modèle des fondeurs pendant des siècles, à Ayutthaya comme dans le royaume du \
+Lan Na, au nord. Ce Bouddha, fondu à la fin du XVᵉ ou au XVIᵉ siècle, appartient à \
+cette descendance. Il a été donné au Metropolitan Museum of Art en 1981 par \
+M. et Mme A. Richard Benedek."""
+facture = """
+La statue est fondue à la cire perdue en plusieurs parties, puis assemblée et \
+ciselée. Les fondeurs thaïs ont cherché des courbes continues : la ligne qui va de \
+l'épaule à la main posée sur le genou, ou celle du pan d'étoffe, se lit d'un seul \
+trait. Les doigts, presque de même longueur, sont un trait du style de Sukhothai. \
+Le bronze était sans doute doré à l'origine ; la patine actuelle, sombre et \
+tachée de vert, est due au temps."""
+details = [
+  "La haute flamme qui jaillit du sommet du crâne.",
+  "Les doigts de la main droite, presque tous de la même longueur.",
+  "Le long pan d'étoffe qui tombe de l'épaule gauche au nombril.",
+  "Le rang de perles qui borde le coussin sous les jambes.",
+  "Les sourcils en arcs qui se rejoignent au-dessus du nez aquilin.",
+]
+themes = ["bouddhisme", "thaïlande", "éveil", "bronze", "flamme"]
+anecdote = """
+Le Bouddha d'or du Wat Traimit, à Bangkok, de style Sukhothai, pèse environ cinq \
+tonnes et demie. Couvert de stuc pour le cacher, il passa des siècles pour une \
+simple statue de plâtre, jusqu'à ce qu'en 1955 le stuc se fende lors d'un \
+déménagement."""
+salle = 3
+mur = "sud"
+place = 5
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Krishna et Radha dans un bosquet, page d'un Gita Govinda"
+artiste = "Sahibdin"
+annee = "vers 1665"
+image = "krishna-radha-bosquet.jpg"
+cadre = "estampe"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DP259542.jpg"
+technique = "Encre et aquarelle opaque sur papier, 24,4 × 19,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une nuit de printemps au bord de la Yamuna : la peinture de cour du Mewar illustre le grand poème d'amour de Krishna et de Radha."
+description = """
+La nuit est tombée sur une forêt : un croissant de lune brille dans un ciel bleu \
+semé d'étoiles blanches. À gauche, sous une tonnelle de feuillage tendue d'un fond \
+rouge et décorée de guirlandes de fleurs blanches, roses et orange, Krishna, à la \
+peau bleue et coiffé d'une couronne, est assis sur un tapis auprès de Radha ; il \
+lui touche tendrement le menton. Des vases d'or sont posés devant eux. Au centre, \
+seule au milieu des arbres, une jeune femme vêtue d'une jupe jaune à carreaux et \
+d'un voile rouge se tient debout, la main levée. À droite, des arbres aux \
+feuillages stylisés, rouges, verts et jaunes, et des fleurs. En bas coule une \
+rivière sombre, où éclosent des lotus."""
+evocation = """
+Le Gita Govinda, « le chant du bouvier », est un poème sanskrit écrit au XIIᵉ siècle \
+par Jayadeva. Il raconte, au printemps, les amours de Krishna, dieu qui a grandi \
+parmi les bouviers, et de Radha : la jalousie, la séparation, les messages portés \
+par une confidente, puis les retrouvailles dans les bosquets au bord de la Yamuna. \
+Pour les fidèles de Krishna, cet amour humain est aussi l'image de l'âme qui \
+cherche Dieu. La jeune femme seule dans la forêt est sans doute la confidente, \
+intermédiaire entre les amants. Le peintre fait de la nature entière, arbres en \
+fleurs, lune et rivière, l'écho de leur passion, comme dans le poème."""
+histoire = """
+Le Mewar, dont la capitale est Udaipur, au Rajasthan, est l'un des plus anciens \
+royaumes rajpoutes. Après la paix conclue avec l'empereur moghol Jahangir en 1615, \
+ses souverains font travailler un atelier de peintres qui illustre les grands \
+textes religieux et poétiques en séries de dizaines, voire de centaines de pages. \
+Le Metropolitan Museum attribue cette page d'un Gita Govinda aujourd'hui dispersé \
+à Sahibdin, le maître de cet atelier, documenté vers 1628–1655, et la date vers \
+1665 ; une part de l'exécution pourrait revenir à ses élèves. Elle a été donnée au \
+musée en 1988 par l'Ernest Erickson Foundation."""
+facture = """
+La peinture est faite d'aquarelle opaque, à base de pigments minéraux et végétaux \
+liés à la gomme, posée en aplats sur un papier préparé puis poli. Les couleurs sont \
+franches et juxtaposées sans ombres : rouge, jaune, vert, bleu de lapis. Les arbres \
+sont des motifs répétés, presque des ornements, et les figures, vues de profil, \
+ont le grand œil en amande du style du Mewar. Quelques rehauts d'or font briller \
+les bijoux et la vaisselle. La bordure rouge et jaune encadre la scène comme une \
+fenêtre."""
+details = [
+  "Le croissant de lune et les étoiles blanches piquées dans le ciel.",
+  "Le geste de Krishna, qui soulève le menton de Radha.",
+  "Les guirlandes de fleurs suspendues à la tonnelle.",
+  "Les vases d'or posés sur le tapis devant le couple.",
+  "Les lotus en bouton dans la rivière sombre, en bas à gauche.",
+]
+themes = ["krishna", "radha", "amour", "nuit", "poésie", "rajput"]
+anecdote = """
+Le Gita Govinda est depuis des siècles chanté dans le culte du temple de Jagannath, \
+à Puri, en Odisha, et ses vers ont inspiré danseurs et musiciens de toute l'Inde, \
+de l'odissi au chant dévotionnel."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Shiva et Parvati jouant au chaupar, page d'un Rasamanjari"
+artiste = "Devidasa de Nurpur"
+annee = "1694–1695"
+image = "shiva-parvati-chaupar.jpg"
+cadre = "estampe"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT5245.jpg"
+technique = "Aquarelle opaque, encre, argent et or sur papier, 16,5 × 27,6 cm (image)"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le dieu Shiva et son épouse se disputent une partie de dés : la peinture des collines du Pendjab, à Basohli, en couleurs brûlantes."
+description = """
+Sur un fond jaune vif uniforme, sous une mince bande de ciel blanc et bleu, Shiva et \
+Parvati sont assis face à face sur une peau de tigre, dont on voit les griffes et, \
+sous Shiva, la tête. Shiva, à la peau blanche de cendre striée de marques rouges, \
+porte un chignon, un troisième œil au front, un serpent noué au cou et un long \
+chapelet de graines. Il est assis jambes croisées et regarde son épouse. Parvati, \
+en jupe rouge rayée et voile orange, lève la main droite comme pour faire valoir \
+son point. Entre eux, le plateau du chaupar, en forme de croix, porte des pions \
+coniques ; trois longs dés sont posés à côté. Deux arbres aux feuillages sombres \
+encadrent la scène, au-dessus de collines brunes."""
+evocation = """
+Le Rasamanjari, « le bouquet de délices », est un traité poétique sanskrit de \
+Bhanudatta qui classe les amoureux et surtout les héroïnes selon leur caractère et \
+leur situation, chaque type étant illustré par un vers. Les peintres de Basohli en \
+ont tiré des séries où les amants sont souvent des dieux. Ici, la partie de dés \
+entre Shiva et Parvati, scène familière de la mythologie, devient une querelle \
+d'amoureux : le jeu sert de prétexte aux taquineries, aux reproches et à la \
+réconciliation. Le grand ascète, maître de la destruction, apparaît en mari \
+attentif, et Parvati en héroïne avisée qui tient tête. Le fond jaune, sans \
+profondeur, place cette dispute hors du temps."""
+histoire = """
+Basohli est une petite principauté des contreforts de l'Himalaya, au bord de la \
+rivière Ravi, dans l'actuel territoire de Jammu. À la fin du XVIIᵉ siècle, ses \
+rajas entretiennent des peintres qui créent un style audacieux, l'un des premiers \
+de la peinture dite pahari, « des collines ». Selon son colophon, cette série du \
+Rasamanjari a été peinte par Devidasa en 1694–1695. Comme beaucoup de séries \
+indiennes, elle a été dispersée au XXᵉ siècle entre collectionneurs et musées. \
+Cette page a été donnée au Metropolitan Museum of Art en 1957 par le docteur \
+J. C. Burnett ; le musée la compte parmi les chefs-d'œuvre de sa collection \
+indienne."""
+facture = """
+Le style de Basohli frappe par ses couleurs saturées, posées en larges aplats : \
+jaune, rouge, brun, vert profond. Les figures, de profil, ont un œil immense, en \
+forme de lotus, qui envahit le visage. Le peintre a mêlé à l'aquarelle opaque de \
+l'argent et de l'or pour les bijoux ; dans les ateliers de Basohli, on collait \
+aussi parfois des fragments d'ailes de scarabée pour imiter l'éclat des émeraudes. \
+La large bordure rouge sombre, caractéristique de ces séries, isole la scène \
+comme un tableau."""
+details = [
+  "La tête du tigre, sous Shiva, et ses griffes recourbées aux quatre coins.",
+  "Le serpent noué autour du cou de Shiva.",
+  "Les trois longs dés posés à côté du plateau en croix.",
+  "La main levée de Parvati, paume ouverte, au centre du débat.",
+  "Le grand œil en amande des deux personnages, typique de Basohli.",
+]
+themes = ["shiva", "parvati", "jeu", "couple", "pahari", "couleur"]
+anecdote = """
+Le chaupar, joué avec des pions sur un plateau en croix, est l'ancêtre du pachisi \
+indien et des « petits chevaux ». On raconte que l'empereur moghol Akbar y jouait à \
+Fatehpur Sikri sur un plateau géant dessiné dans la cour, avec des esclaves pour \
+pions."""
+salle = 4
+mur = "nord"
+place = 5
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Damayanti et le cygne (Hamsa Damayanti)"
+artiste = "Raja Ravi Varma"
+annee = "1899"
+image = "hamsa-damayanti.jpg"
+cadre = "dore"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Ravi_Varma-Princess_Damayanthi_talking_with_Royal_Swan_about_Nala.jpg"
+technique = "Huile sur toile"
+collection = "Sree Chitra Art Gallery, Thiruvananthapuram"
+note = "Un cygne vient parler d'amour à une princesse : la mythologie indienne peinte à l'huile, à l'européenne, par le peintre le plus populaire de l'Inde."
+description = """
+Une jeune femme se tient debout sur les marches d'une terrasse de marbre, au bord \
+d'un bassin. Elle porte un sari rouge à bordure dorée, drapé à la manière du \
+Maharashtra, et un corsage rose ; une fleur est piquée dans ses cheveux noirs, des \
+perles ornent son cou et ses oreilles, des bracelets ses poignets. Accoudée à une \
+balustrade, la joue posée sur la main, elle écoute, rêveuse. Devant elle, sur le \
+sommet d'un pilier octogonal couvert de feuilles de lotus, un cygne blanc tourne la \
+tête vers elle, comme s'il lui parlait. Derrière, une colonne cannelée, un mur \
+rouge et un parc aux arbres sombres ; en bas à droite, des lotus roses éclosent \
+dans l'eau. La signature et la date sont inscrites en bas à gauche."""
+evocation = """
+L'histoire de Nala et Damayanti est racontée dans le Mahabharata. Nala, roi du \
+Nishadha, capture un cygne merveilleux qui, en échange de sa liberté, promet de \
+vanter ses mérites à la princesse Damayanti, de Vidarbha. Le peintre montre le \
+moment où l'oiseau lui parle de Nala : sans l'avoir jamais vu, elle tombe amoureuse. \
+Ravi Varma choisit l'instant intime, la rêverie, plutôt que l'action. Pour les \
+Indiens de son temps, voir les héroïnes des épopées sous les traits de femmes de \
+leur époque, en sari, dans un décor de palais, était une nouveauté saisissante : \
+leurs dieux et leurs héros devenaient proches, presque familiers."""
+histoire = """
+Ravi Varma peint ce tableau en 1899, au faîte de sa célébrité, alors qu'il \
+travaille pour les maharajas de Travancore, de Baroda et de Mysore et que sa presse \
+lithographique diffuse ses compositions dans tout le pays. Le sujet de Damayanti et \
+du cygne fait partie de ses plus grands succès : il en existe des reproductions en \
+chromolithographie qui ont décoré d'innombrables maisons. Le tableau est conservé à \
+la Sree Chitra Art Gallery de Thiruvananthapuram, au Kerala, ouverte en 1935 dans \
+l'ancienne capitale du royaume de Travancore, et qui réunit un important ensemble \
+d'œuvres du peintre."""
+facture = """
+Ravi Varma est l'un des premiers peintres indiens à maîtriser pleinement la \
+peinture à l'huile européenne, avec ses glacis, son modelé par l'ombre et la \
+lumière et sa perspective. Il rend avec virtuosité les matières : la soie du sari, \
+son liseré doré, le marbre, les plumes du cygne. Le grand format vertical, la \
+figure presque grandeur nature et le décor d'architecture classique rappellent la \
+peinture académique de l'Europe victorienne. La lumière douce, venue de la gauche, \
+modèle le visage et le bras de la jeune femme."""
+details = [
+  "Le geste de Damayanti, la joue posée sur la main, perdue dans ses pensées.",
+  "Le bec orange du cygne tourné vers la princesse.",
+  "Le liseré doré du sari rouge, qui accroche la lumière.",
+  "Les lotus roses en bouton dans l'eau, en bas à droite.",
+  "La signature, Ravi Varma, et la date de 1899, en bas à gauche.",
+]
+themes = ["mahabharata", "amour", "cygne", "princesse", "peinture à l'huile"]
+anecdote = """
+Plus tard, lors du choix de son époux, Damayanti voit cinq Nala identiques : quatre \
+dieux ont pris son apparence. Elle reconnaît le vrai à ce qu'il transpire, cligne \
+des yeux et que ses pieds touchent le sol, alors que les dieux, eux, en sont \
+incapables."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.1
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Gandhara, époque kouchane"
+vie = "Gandhara (nord-ouest du Pakistan et est de l'Afghanistan actuels), Iᵉʳ–Vᵉ siècle"
+biographie = """
+Le Gandhara est une région de vallées fertiles autour de Peshawar, au débouché des \
+routes qui relient l'Inde à l'Asie centrale et à l'Iran. Conquise par Alexandre le \
+Grand en 327–326 avant notre ère, elle reste ensuite gouvernée par des rois grecs, \
+puis par des dynasties venues des steppes. Aux premiers siècles de notre ère, elle \
+appartient à l'empire kouchan, qui s'étend de l'Asie centrale à la vallée du Gange \
+et dont le roi Kanishka, au IIᵉ siècle, protège le bouddhisme. Les monastères et \
+les stupas se multiplient dans la région, à Taxila, dans la vallée de Swat, autour \
+de Peshawar. Les sculpteurs y fabriquent par milliers des statues et des reliefs \
+de schiste gris, puis de stuc, qui racontent la vie du Bouddha. C'est là, comme à \
+Mathura, qu'apparaissent vers le Iᵉʳ siècle les premières images du Bouddha sous \
+forme humaine, alors qu'on ne le figurait auparavant que par des symboles. Cet art \
+décline avec les invasions des Huns au Vᵉ siècle, mais ses modèles se transmettent \
+par les routes de la soie jusqu'en Chine et au Japon."""
+style = """
+L'art du Gandhara mêle les sujets bouddhiques indiens aux formes de l'art \
+gréco-romain : visages au profil droit, cheveux ondulés, drapés aux plis profonds \
+qui rappellent la toge, poses légèrement déhanchées. Les bodhisattvas y portent les \
+bijoux et la moustache des princes kouchans. Cette synthèse a donné à l'Asie l'un \
+de ses premiers modèles du Bouddha."""
+
+[[artistes]]
+nom = "Inde du Nord, époque gupta"
+vie = "Nord de l'Inde, vers 320 – milieu du VIᵉ siècle"
+biographie = """
+La dynastie gupta est fondée vers 320 par Chandragupta Iᵉʳ, dans la vallée du \
+Gange. Ses successeurs, Samudragupta puis Chandragupta II, étendent leur empire sur \
+la plus grande partie du nord de l'Inde, autour de capitales comme Pataliputra, \
+l'actuelle Patna. Les Gupta sont hindous, mais protègent aussi les monastères \
+bouddhiques et jaïns. Leur époque est restée dans les mémoires comme un âge d'or : \
+la littérature sanskrite y brille avec le poète et dramaturge Kalidasa, que la \
+tradition rattache à la cour de Chandragupta II, et les sciences s'y développent. \
+Le pèlerin chinois Faxian, qui parcourt l'Inde au début du Vᵉ siècle, décrit des \
+villes prospères et des monastères florissants. Dans les ateliers de Mathura et de \
+Sarnath se fixent alors les modèles du Bouddha et des dieux hindous. À la même \
+époque, dans le Deccan voisin, sous la dynastie alliée des Vakataka, sont creusés \
+et peints les sanctuaires d'Ajanta. L'empire s'affaiblit à la fin du Vᵉ siècle \
+sous la pression des invasions des Huns Hephtalites et disparaît au VIᵉ siècle."""
+style = """
+La sculpture gupta cherche une beauté idéale et intérieure : corps lisses et \
+souples, visages pleins aux yeux baissés, robes si fines qu'elles semblent \
+transparentes. Elle abandonne les drapés lourds du Gandhara pour un modelé doux et \
+continu. Ce style classique a servi de référence à l'art bouddhique de toute l'Asie, \
+de l'Asie du Sud-Est à la Chine."""
+
+[[artistes]]
+nom = "Inde du Sud, époque chola"
+vie = "Pays tamoul (sud-est de l'Inde), milieu du IXᵉ – XIIIᵉ siècle"
+biographie = """
+Les Chola sont une très ancienne lignée tamoule, déjà citée dans les inscriptions \
+de l'empereur Ashoka au IIIᵉ siècle avant notre ère. Au milieu du IXᵉ siècle, une \
+nouvelle dynastie s'installe à Thanjavur, dans le delta de la Kaveri, et bâtit en \
+quelques générations la principale puissance du sud de l'Inde. Rajaraja Iᵉʳ, qui \
+règne de 985 à 1014, conquiert le Kerala et le nord de Sri Lanka et fait élever à \
+Thanjavur le grand temple de Brihadishvara, consacré à Shiva. Son fils Rajendra Iᵉʳ \
+mène une expédition jusqu'au Gange, puis une expédition navale contre le royaume de \
+Srivijaya, en Asie du Sud-Est, et fonde une nouvelle capitale, \
+Gangaikondacholapuram. Les rois et les reines chola dotent richement les temples, \
+qui reçoivent terres, bijoux et statues de bronze pour les cultes et les \
+processions. La dynastie s'affaiblit au XIIIᵉ siècle et disparaît vers 1279. Ses \
+fondeurs ont laissé une tradition toujours vivante : dans la ville de Swamimalai, \
+au pays tamoul, on fond encore des statues à la cire perdue selon les mêmes \
+méthodes."""
+style = """
+Les bronzes chola unissent la rigueur des traités religieux, qui fixent les \
+proportions et les attributs de chaque dieu, à une grande liberté de mouvement. \
+Corps minces et élastiques, gestes précis des mains, bijoux finement ciselés : ces \
+statues faites pour être portées en procession comptent parmi les sommets de la \
+sculpture en métal."""
+
+[[artistes]]
+nom = "Java, dynastie Shailendra"
+vie = "Centre de Java (Indonésie), VIIIᵉ – IXᵉ siècle"
+biographie = """
+Au VIIIᵉ siècle, le centre de l'île de Java, région de plaines volcaniques très \
+fertiles, est dominé par la dynastie des Shailendra, les « seigneurs de la \
+montagne ». Ces rois bouddhistes, adeptes du Mahayana, entretiennent des liens \
+avec Sumatra, avec l'Inde et avec les grands monastères du Bengale. Ils font \
+construire dans la plaine de Kedu, près de l'actuelle Yogyakarta, plusieurs \
+sanctuaires de pierre, dont le Borobudur, élevé vers 800 : une colline enveloppée \
+de terrasses superposées, couvertes de plus de deux mille panneaux sculptés et de \
+plus de cinq cents statues de Bouddha. Au même moment, une dynastie hindoue \
+voisine bâtit les temples de Prambanan, consacrés à Shiva. Au Xᵉ siècle, le centre \
+du pouvoir se déplace vers l'est de Java, sans doute en partie à cause des \
+éruptions volcaniques, et les grands monuments du centre sont peu à peu \
+délaissés. Le Borobudur, oublié sous la végétation, n'est redécouvert par les \
+Européens qu'au début du XIXᵉ siècle."""
+style = """
+L'art des Shailendra adapte les modèles indiens de l'époque gupta et post-gupta à \
+la pierre volcanique de Java. Ses Bouddhas sont paisibles et massifs, aux visages \
+pleins et aux yeux baissés ; ses reliefs racontent avec douceur et précision la vie \
+du Bouddha et le monde quotidien de Java. Le Borobudur en est le chef-d'œuvre."""
+
+[[artistes]]
+nom = "Empire khmer, style du Bayon"
+vie = "Angkor (Cambodge actuel), fin du XIIᵉ – début du XIIIᵉ siècle"
+biographie = """
+L'empire khmer naît au début du IXᵉ siècle, lorsque le roi Jayavarman II se \
+proclame souverain universel sur le mont Kulen, au nord du lac Tonlé Sap. Ses \
+successeurs installent leur capitale à Angkor et y élèvent, pendant plus de trois \
+siècles, des temples-montagnes de plus en plus vastes, dont Angkor Vat, bâti au \
+XIIᵉ siècle sous Suryavarman II et consacré à Vishnu. En 1177, les Cham du centre \
+du Viêt Nam actuel pillent Angkor. Le prince Jayavarman VII les chasse et devient \
+roi vers 1181. Bouddhiste fervent, il reconstruit la capitale, Angkor Thom, enceinte \
+de murs et ouverte par des portes surmontées de visages géants, et élève en son \
+centre le Bayon. Il fonde aussi de grands monastères, comme Ta Prohm et Preah Khan, \
+ainsi que des hôpitaux et des gîtes d'étape le long des routes. Le style qui porte \
+le nom du Bayon s'épanouit sous son règne et celui de ses successeurs. L'empire \
+décline ensuite, et Angkor cesse d'être la capitale au XVᵉ siècle."""
+style = """
+Le style du Bayon se reconnaît à ses visages larges et pleins, aux yeux baissés et \
+aux lèvres épaisses étirées en un sourire intérieur, que l'on a appelé le « sourire \
+d'Angkor ». Il multiplie les têtes et les visages tournés vers les quatre \
+directions. Ses sculptures, plus humaines et méditatives que celles d'Angkor Vat, \
+traduisent la ferveur bouddhique du règne de Jayavarman VII."""
+
+[[artistes]]
+nom = "Birmanie, royaume de Pagan"
+vie = "Pagan, sur l'Irrawaddy (Myanmar actuel), XIᵉ – XIIIᵉ siècle"
+biographie = """
+Pagan, dans la plaine aride du centre de la Birmanie, sur le fleuve Irrawaddy, est \
+d'abord une petite cité birmane. Au milieu du XIᵉ siècle, le roi Anawrahta en fait \
+la capitale du premier royaume unifié du pays. Selon la tradition, il se tourne \
+vers le bouddhisme theravada après la conquête de Thaton, ville môn du sud, dont il \
+ramène des moines, des textes et des artisans. Ses successeurs, comme Kyanzittha, \
+qui fait élever le temple d'Ananda, poursuivent son œuvre. Pendant plus de deux \
+siècles, rois, reines et simples fidèles bâtissent des milliers de temples, de \
+monastères et de stupas, pour acquérir des mérites. Les liens sont étroits avec \
+Sri Lanka, autre foyer du theravada, et avec les lieux saints de l'Inde, comme \
+Bodh-Gaya, dont Pagan aide à restaurer le temple. Affaibli, le royaume ne résiste \
+pas aux attaques des Mongols de la dynastie Yuan à la fin du XIIIᵉ siècle. Ses \
+temples, souvent endommagés par des séismes, sont restés un grand lieu de pèlerinage."""
+style = """
+L'art de Pagan s'inspire de l'Inde de l'Est sous la dynastie Pala, dont il reprend \
+les Bouddhas aux épaules larges et à la taille fine, assis sur des lotus. Il y \
+ajoute un goût birman pour les visages ronds et sereins et pour la richesse des \
+matières, bronze incrusté, laque et dorure. Ses modèles ont durablement marqué la \
+sculpture bouddhique birmane."""
+
+[[artistes]]
+nom = "Thaïlande, héritage de Sukhothai"
+vie = "Royaumes de Sukhothai, d'Ayutthaya et du Lan Na (Thaïlande actuelle), XIIIᵉ – XVIᵉ siècle"
+biographie = """
+Au XIIIᵉ siècle, des chefs thaïs s'affranchissent de la domination khmère et \
+fondent, dans le nord de la plaine centrale de l'actuelle Thaïlande, le royaume de \
+Sukhothai. Ses rois adoptent le bouddhisme theravada, venu de Sri Lanka par \
+l'intermédiaire de moines, et couvrent leur capitale et sa ville jumelle, Si \
+Satchanalai, de monastères, de stupas et de statues. Les fondeurs de Sukhothai \
+créent alors un nouveau type de Bouddha, à la silhouette fluide et à la flamme sur \
+le sommet du crâne, et inventent l'image du Bouddha marchant, en ronde-bosse. Au \
+XVᵉ siècle, Sukhothai passe sous l'autorité d'Ayutthaya, royaume fondé en 1351 plus \
+au sud, qui devient la grande puissance du pays jusqu'à sa destruction par les \
+Birmans en 1767. Au nord, le royaume du Lan Na, dont Chiang Mai est la capitale \
+depuis la fin du XIIIᵉ siècle, développe sa propre école de bronziers. Dans tous \
+ces royaumes, les statues de Sukhothai restent un modèle, copié et vénéré pendant \
+des siècles, jusqu'à aujourd'hui."""
+style = """
+Le Bouddha de tradition Sukhothai est mince, souple, presque immatériel : épaules \
+larges, taille fine, bras en longues courbes, doigts de même longueur, visage ovale \
+au nez aquilin et au sourire léger, flamme au sommet de la tête. Cette image, d'une \
+grande pureté de lignes, est devenue l'emblème de l'art bouddhique thaï."""
+
+[[artistes]]
+nom = "Sahibdin"
+vie = "Actif à Udaipur (Mewar, Rajasthan), vers 1628 – vers 1655"
+biographie = """
+On ne connaît de Sahibdin ni la date de naissance ni celle de la mort : seules ses \
+œuvres, dont plusieurs portent son nom et une date, permettent de suivre sa \
+carrière. Peintre musulman au service des souverains hindous du Mewar, il dirige \
+l'atelier royal d'Udaipur sous le maharana Jagat Singh Iᵉʳ, qui règne de 1628 à \
+1652, puis au début du règne de Raj Singh Iᵉʳ. Sa première œuvre datée est un \
+Ragamala, une « guirlande de modes musicaux », peint en 1628. Il illustre ensuite \
+le Rasikapriya, poème sur les amoureux, un Bhagavata Purana consacré à la vie de \
+Krishna, et surtout plusieurs livres de l'immense Ramayana commandé par Jagat \
+Singh, achevé au début des années 1650 et illustré de plusieurs centaines de \
+peintures. Cette époque est celle où le Mewar, en paix avec l'empire moghol depuis \
+1615, peut consacrer ses richesses aux arts. Sahibdin, qui connaissait sans doute \
+la peinture moghole, a pourtant gardé et affirmé un style propre au Rajasthan, que \
+ses successeurs ont repris pendant des décennies."""
+style = """
+Sahibdin compose ses pages comme des tapisseries : fonds de couleurs vives en \
+aplats, rouge, jaune ou vert, figures de profil aux grands yeux, arbres stylisés, \
+architecture vue de face. Il raconte souvent plusieurs moments d'une histoire dans \
+une même image. Sa clarté et la force de ses couleurs ont défini le style classique \
+de la peinture du Mewar."""
+
+[[artistes]]
+nom = "Devidasa de Nurpur"
+vie = "Originaire de Nurpur (collines du Pendjab), actif vers 1680 – vers 1720"
+biographie = """
+Devidasa appartient à une famille de peintres de Nurpur, petite principauté des \
+collines du Pendjab, au pied de l'Himalaya. Ces collines sont alors partagées \
+entre une multitude de petits États rajpoutes, souvent unis par des mariages, entre \
+lesquels les peintres circulent. Comme beaucoup d'artistes de ces régions, Devidasa \
+travaille pour plusieurs cours voisines, selon les commandes. Son nom \
+est connu grâce au colophon d'une série de peintures du Rasamanjari, le traité \
+poétique de Bhanudatta sur les amoureux, qui indique qu'il l'a peinte en 1694–1695 \
+pour la cour de Basohli. Ce document est précieux : dans la peinture indienne de \
+cette époque, les œuvres signées ou datées sont rares, et cette série sert de \
+repère pour dater et attribuer bien d'autres pages du style de Basohli. Sa série du \
+Rasamanjari a été dispersée au XXᵉ siècle : on en trouve aujourd'hui des pages au \
+Metropolitan Museum de New York et dans d'autres collections d'Inde, d'Europe et \
+d'Amérique."""
+style = """
+Devidasa pratique le style de Basohli dans sa maturité : couleurs ardentes en \
+aplats, fonds jaunes ou rouges, figures de profil aux yeux immenses, bijoux rehaussés \
+d'or et d'argent. Ses compositions sont plus aérées et ses personnages plus \
+élégants que ceux des premières séries de Basohli, annonçant la douceur des écoles \
+pahari du XVIIIᵉ siècle."""
+
+[[artistes]]
+nom = "Raja Ravi Varma"
+vie = "Kilimanoor (Travancore, Kerala), 29 avril 1848 – Kilimanoor, 2 octobre 1906"
+biographie = """
+Ravi Varma naît dans une famille aristocratique liée à la maison royale de \
+Travancore, au sud de l'Inde. Un oncle peintre lui donne ses premières leçons, et \
+le maharaja Ayilyam Thirunal le fait venir au palais de Thiruvananthapuram, où il \
+observe les peintres de cour et les tableaux européens des collections royales. Il \
+apprend en grande partie seul la peinture à l'huile, en regardant notamment \
+travailler un portraitiste européen de passage, Theodore Jensen. Dans les années \
+1870, ses premiers succès, comme une Dame nair se coiffant primée à une exposition \
+à Madras, le font connaître. Il devient le portraitiste des princes et des \
+notables, et peint pour le maharaja de Baroda, Sayajirao Gaekwad III, une série de \
+scènes tirées des épopées. Il envoie des tableaux à l'Exposition universelle de \
+Chicago en 1893. En 1894, il fonde près de Bombay une presse lithographique qui \
+diffuse en masse, à bas prix, des images en couleurs des dieux et des héros \
+indiens ; il la cède quelques années plus tard. Il meurt dans sa ville natale en \
+1906."""
+style = """
+Ravi Varma unit la technique de la peinture académique européenne, huile, modelé, \
+perspective, grands formats, aux sujets de la mythologie et de la littérature \
+indiennes. Ses héroïnes en sari, au visage idéalisé, ont fixé pour des générations \
+l'apparence des dieux et des déesses dans l'imagerie populaire, des chromos aux \
+affiches et au cinéma indien."""

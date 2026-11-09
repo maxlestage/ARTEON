@@ -1,0 +1,950 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « SCULPTURE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/sculpture/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /sculpture.
+#
+#  Les sculptures sont présentées par des photographies, accrochées dans des
+#  vitrines murales. Les photos sont dans le domaine public, sous licence CC0
+#  (Metropolitan Museum, National Gallery of Art) ou sous licence libre créditée.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 145
+nom_court = "Sculpture"
+mouvement = "La sculpture, de la Renaissance à Rodin"
+cadre = "vitrine"
+couleur = "#6b4f2e"
+titre = "La sculpture, du marbre de Michel-Ange au bronze de Rodin"
+artiste = "Michel-Ange, Bernin, Canova, Carpeaux, Rodin, Claudel, Degas…"
+dates = "1513–1909"
+accroche = "Exposition virtuelle · Musée Rodin, Paris"
+introduction = """
+Quatre siècles de sculpture, du marbre que Michel-Ange arrache au bloc jusqu'au \
+bronze de Rodin, qui fait de la matière un drame et de la surface une vibration. \
+La visite réunit dix œuvres de neuf sculpteurs, du Bernin à Maillol, présentées par \
+des photographies dans des vitrines, comme dans un cabinet d'amateur. Le bâtiment \
+s'inspire de l'hôtel Biron, où Rodin s'installa en 1908 et qui est devenu le musée \
+Rodin : un vestibule où attend Le Penseur, puis une enfilade de quatre salons aux \
+boiseries claires, alignés comme sur le jardin."""
+vitrine = "baiser.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Musée Rodin (hôtel Biron)"
+ville = "Paris, France"
+architecte = "Jean Aubert"
+construction = "1727–1732"
+presentation = """
+L'hôtel Biron est construit de 1727 à 1732, rue de Varenne, pour Abraham Peyrenc de \
+Moras, un financier enrichi. Il prend plus tard le nom du maréchal de Biron, qui \
+l'occupe à partir de 1753 et en fait dessiner les jardins. Au XIXᵉ siècle, les \
+religieuses du Sacré-Cœur y tiennent un pensionnat de jeunes filles. Quand la loi \
+leur interdit d'enseigner, en 1904, elles doivent partir, et l'État loue les pièces \
+à des artistes : Matisse, Cocteau, la danseuse Isadora Duncan, le poète Rilke, qui \
+fait découvrir le lieu à Rodin. Le sculpteur y loue des salons à partir de 1908. En \
+1916, il donne à l'État ses œuvres et ses collections, à condition qu'elles soient \
+présentées ici : le musée ouvre en 1919, deux ans après sa mort. Dans les salons aux \
+boiseries rocaille, éclairés par de hautes fenêtres, on voit aujourd'hui ses \
+marbres, ses plâtres et la salle de Camille Claudel ; le jardin abrite Le Penseur, \
+La Porte de l'Enfer et Les Bourgeois de Calais."""
+ici = """
+Le bâtiment d'ARTEON évoque le rez-de-chaussée de l'hôtel Biron. On entre par le sud \
+dans le vestibule, où Le Penseur accueille le visiteur. Au nord s'ouvre le grand \
+salon, haut de sept mètres et demi, consacré à la Porte de l'Enfer. Il commande une \
+enfilade de salons alignés d'ouest en est, comme ceux qui donnent sur le jardin : à \
+l'ouest, la galerie des maîtres anciens, de Michel-Ange à Canova ; à l'est, la salle \
+Claudel et Degas, puis, au bout de l'enfilade, la salle « Après Rodin ». Les murs, \
+crème, gris perle ou vert pâle, rappellent les boiseries peintes de l'hôtel."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de l'hôtel Biron (musée Rodin, Paris) : un vestibule d'entrée au sud,
+# puis, au nord, une enfilade de salons alignés d'ouest en est, comme ceux du
+# rez-de-chaussée qui donnent sur le jardin, avec le grand salon au centre.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une
+# porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée de l'hôtel, où Le Penseur de Rodin accueille le visiteur."
+murs = "#e9e2d4"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La galerie des maîtres anciens"
+theme = "Trois siècles de marbre : l'Esclave de Michel-Ange, la Bacchanale du jeune Bernin et la Psyché de Canova."
+murs = "#d9d3c5"
+x = -13
+z = -10
+largeur = 14
+profondeur = 12
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "Le grand salon, autour de la Porte de l'Enfer"
+theme = "Dante en sculpture : l'Ugolin de Carpeaux et Le Baiser de Rodin, né des amants de l'Enfer."
+murs = "#e6dfcf"
+x = 0
+z = -10
+largeur = 12
+profondeur = 12
+hauteur = 7.5
+portes = ["est"]
+
+[[salles]]
+nom = "Claudel et Degas"
+theme = "Deux contemporains de Rodin : L'Âge mûr de Camille Claudel et la Petite Danseuse de Degas."
+murs = "#d8ddd0"
+x = 13
+z = -10
+largeur = 14
+profondeur = 12
+hauteur = 6.5
+portes = ["est"]
+
+[[salles]]
+nom = "Après Rodin"
+theme = "Deux héritiers qui cherchent l'ordre et la masse : Bourdelle et Maillol."
+murs = "#e4d9c6"
+x = 25
+z = -10
+largeur = 10
+profondeur = 12
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Penseur"
+artiste = "Auguste Rodin"
+annee = "modèle vers 1880"
+image = "penseur.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:The_Thinker_MET_DP-13618-011.jpg"
+technique = "Bronze, dans sa taille d'origine (environ 72 cm de haut)"
+collection = "Metropolitan Museum of Art, New York"
+note = "Conçu pour dominer La Porte de l'Enfer, le poète assis devant son œuvre est devenu l'image même de la pensée."
+description = """
+Un homme nu est assis sur un rocher, penché en avant. Son menton repose sur le dos de \
+sa main droite, dont le coude s'appuie, curieusement, sur la cuisse gauche : tout le \
+buste se tord pour réaliser ce geste. La main gauche pend, détendue, sur le genou. Les \
+pieds, puissants, s'agrippent au rocher, les orteils recroquevillés. Le dos est \
+arrondi, les épaules massives, le cou épais ; le visage, dans l'ombre, regarde vers \
+le bas, comme vers un gouffre. Aucun attribut, aucun vêtement, aucune inscription ne \
+dit qui il est. Sur la photographie, la patine sombre du bronze accroche la lumière \
+sur les reliefs des muscles et laisse les creux dans le noir."""
+evocation = """
+Rodin pensait d'abord à Dante, assis au-dessus de la Porte de l'Enfer et méditant son \
+poème devant les damnés qui grouillent à ses pieds. En sortant de la Porte, la \
+figure perd son nom : elle devient « le Penseur », l'homme qui réfléchit, et, pour \
+beaucoup, l'image de l'effort intellectuel. Rodin expliquait que son personnage ne \
+pense pas seulement avec son front plissé mais avec tous ses muscles, jusqu'aux \
+orteils crispés : la pensée est ici un travail physique, presque une souffrance. Ce \
+corps d'athlète, hérité de Michel-Ange, a été lu aussi comme celui de l'ouvrier ou \
+du créateur, et l'artiste lui-même l'a choisi pour veiller sur sa tombe."""
+histoire = """
+En 1880, l'État commande à Rodin une porte monumentale pour un futur musée des Arts \
+décoratifs. Le sculpteur choisit L'Enfer de Dante et place au centre du tympan une \
+figure assise, haute d'environ 70 cm, qu'il appelle « le Poète ». Le musée ne voit \
+jamais le jour, mais Rodin continue de travailler à la Porte et en tire des figures \
+indépendantes. Le Penseur est exposé seul dès la fin des années 1880, puis agrandi \
+en 1902–1904 jusqu'à près de deux mètres. Ce grand bronze, offert par souscription, est \
+installé devant le Panthéon en 1906, avant de rejoindre le jardin du musée Rodin en \
+1922. Le bronze du Metropolitan Museum de New York, présenté ici, reprend la taille \
+d'origine de la figure, celle qu'elle a sur la Porte."""
+facture = """
+Rodin modèle d'abord en terre, puis la figure est moulée en plâtre et fondue en \
+bronze à la cire perdue ou au sable ; chaque tirage reçoit sa patine. Le modelé \
+n'est jamais lisse : de petites bosses et des creux font vibrer la lumière sur la \
+peau. La pose fermée, repliée sur elle-même, donne à la figure la compacité d'un \
+bloc, que Rodin admirait chez Michel-Ange. Les mains et les pieds, volontairement \
+grands, concentrent la force. La version agrandie a été réalisée avec l'aide d'un \
+spécialiste de la réduction et de l'agrandissement mécaniques, Henri Lebossé."""
+details = [
+  "Le coude droit posé sur la cuisse gauche, qui tord tout le buste.",
+  "Les orteils du pied droit, recroquevillés sur le bord du rocher.",
+  "La main gauche, abandonnée, qui contraste avec la tension de la droite.",
+  "Les arcades sourcilières en surplomb, qui plongent le regard dans l'ombre.",
+]
+themes = ["pensée", "dante", "corps", "bronze", "méditation"]
+anecdote = """
+Rodin repose avec sa compagne Rose Beuret dans le jardin de sa maison de Meudon, près \
+de Paris. Sur leur tombe, morts tous deux en 1917, veille un grand tirage du \
+Penseur, selon le vœu du sculpteur."""
+salle = 1
+mur = "ouest"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "L'Esclave mourant"
+artiste = "Michel-Ange"
+annee = "1513–1516"
+image = "esclave-mourant.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Dying_slave_Louvre_MR_1590,_Louvre.jpg"
+technique = "Marbre, 2,28 m de haut"
+collection = "Musée du Louvre, Paris"
+note = "Sculptée pour le tombeau du pape Jules II puis écartée du projet, la figure semble glisser entre sommeil et agonie."
+description = """
+Un jeune homme nu, plus grand que nature, se tient debout, le poids du corps sur la \
+jambe droite, la gauche fléchie. Son bras droit est replié sur sa poitrine, où une \
+mince bande d'étoffe serre son torse ; le bras gauche, levé, passe derrière la tête. \
+La tête est renversée en arrière, les yeux clos, la bouche entrouverte. Le corps \
+semble glisser, comme saisi par le sommeil ou par la mort. Derrière lui, contre la \
+jambe gauche, un bloc à peine dégrossi laisse deviner la silhouette d'un singe. Le \
+marbre poli de la peau contraste avec les parties restées brutes, striées par les \
+outils, au bas de la statue. Sur la photographie, la figure blanche se détache sur \
+la pénombre d'une salle du Louvre."""
+evocation = """
+Le titre d'« Esclave mourant » n'est pas de Michel-Ange : on ne sait pas exactement \
+ce que devaient représenter ces captifs. On y a vu les provinces soumises par le \
+pape, les arts libéraux privés de leur protecteur à la mort de Jules II, ou, selon \
+la lecture néoplatonicienne, l'âme prisonnière du corps qui aspire à s'en libérer. \
+Le singe, symbole traditionnel de l'imitation, ferait alors de cette figure une \
+allégorie de la peinture ou de la sculpture. Mais l'œuvre parle d'abord par le \
+corps : beauté idéale, sensualité de l'abandon, lien qui enserre la poitrine. Le \
+contraste entre l'abandon de ce captif et la torsion violente de son compagnon, \
+l'Esclave rebelle, faisait sans doute partie du projet."""
+histoire = """
+En 1505, le pape Jules II commande à Michel-Ange un tombeau colossal, peuplé de \
+dizaines de statues. Le projet, sans cesse interrompu, est réduit après la mort du \
+pape en 1513 ; c'est alors que l'artiste sculpte les deux Esclaves du Louvre. Ils \
+n'ont finalement pas trouvé place dans le tombeau, achevé en 1545 dans l'église \
+Saint-Pierre-aux-Liens, à Rome, autour du Moïse. Michel-Ange les offre à Roberto \
+Strozzi, un exilé florentin qui l'avait accueilli pendant une maladie ; Strozzi les \
+donne au roi François Iᵉʳ. Ils passent au connétable Anne de Montmorency, au château \
+d'Écouen, puis au cardinal de Richelieu, dans son château du Poitou. Saisis à la \
+Révolution, ils entrent au Louvre en 1794."""
+facture = """
+Michel-Ange taille directement le bloc de marbre de Carrare, en attaquant la figure \
+par une face, comme s'il la dégageait de la pierre. Les marques de la gradine, ciseau \
+à dents, sont encore visibles sur les parties inachevées, tandis que le torse et les \
+jambes ont été polis. Ce contraste, qu'on appelle le non finito, a fasciné les \
+sculpteurs des siècles suivants, Rodin le premier. La pose en spirale, le \
+déhanchement et la tête renversée dérivent de l'antique, en particulier du \
+Laocoon, découvert à Rome en 1506, que Michel-Ange avait vu sortir de terre."""
+details = [
+  "La bande d'étoffe tendue sur la poitrine, seul signe de captivité.",
+  "Le singe à peine ébauché, dans le bloc derrière la jambe gauche.",
+  "Les traces de ciseau à dents sur le marbre resté brut, en bas.",
+  "Les paupières closes et la bouche entrouverte du visage renversé.",
+]
+themes = ["renaissance", "captivité", "marbre", "inachevé", "corps"]
+anecdote = """
+Michel-Ange a parlé toute sa vie de la « tragédie de la sépulture » : le tombeau de \
+Jules II, commandé en 1505, l'a occupé, avec des contrats successifs et des \
+procès, pendant quarante ans."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Bacchanale : un faune taquiné par des enfants"
+artiste = "Le Bernin"
+annee = "vers 1616–1617"
+image = "bacchanale-faune.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bacchanal-_A_Faun_Teased_by_Children_MET_DP248148.jpg"
+technique = "Marbre, sculpté avec son père, Pietro Bernini"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une œuvre de jeunesse, taillée à dix-huit ans aux côtés de son père : la virtuosité du Bernin s'y annonce déjà."
+description = """
+Un jeune faune nu, couronné de pampres, grimpe le long d'un tronc d'arbre. Le corps \
+cambré en arrière, il tend le bras droit vers les grappes de raisin et les fruits qui \
+pendent d'une branche, en haut. Deux enfants joufflus, serrés l'un contre l'autre, \
+se sont hissés près des fruits et le repoussent ou l'agacent ; l'un d'eux rit \
+franchement. Au pied de l'arbre, un troisième enfant est tombé à la renverse, les \
+jambes en l'air. Le tronc, entouré d'une vigne, porte une peau de bête dont la tête \
+pend au bas de la composition. L'ensemble forme une spirale ascendante, qu'on \
+découvre en tournant autour de la sculpture : chaque côté offre une scène \
+différente."""
+evocation = """
+Le faune et les enfants appartiennent au cortège de Bacchus, dieu du vin : la scène \
+est une fête, une image de l'abondance et de l'ivresse joyeuse. Le désir du faune \
+pour les fruits, que les enfants lui disputent, peut se lire comme un jeu sur la \
+tentation, ou simplement comme une comédie champêtre, à la manière des poètes \
+antiques. Pour les historiens, l'œuvre montre surtout un jeune homme qui veut \
+prouver qu'il peut rivaliser avec les sculpteurs de l'Antiquité, dont les \
+collections romaines regorgeaient. Le mouvement, l'instant saisi et la gaieté \
+annoncent le style que le Bernin imposera à Rome quelques années plus tard."""
+histoire = """
+Le Bernin a grandi dans l'atelier de son père, Pietro Bernini, sculpteur florentin \
+installé à Rome. Vers 1616–1617, le père et le fils travaillent ensemble à ce \
+groupe, sans doute destiné à un jardin ou à une galerie de collectionneur. La part \
+de chacun est discutée : la conception audacieuse et l'exécution des figures sont \
+souvent attribuées au fils, alors âgé d'environ dix-huit ans, tandis que le père \
+aurait guidé l'ensemble. Le groupe est resté longtemps peu connu du public. Il est \
+aujourd'hui l'une des pièces maîtresses de la sculpture baroque au Metropolitan \
+Museum of Art de New York, où l'on découvre, en tournant autour, ses différentes \
+faces."""
+facture = """
+Le groupe est taillé dans un seul bloc de marbre, évidé avec audace : les bras \
+tendus, les grappes et les pieds des enfants se détachent dans le vide. Le Bernin \
+varie les surfaces pour imiter les matières : peau polie et brillante, cheveux \
+creusés au trépan, écorce striée, feuilles de vigne découpées, pelage de la peau de \
+bête. Cette capacité à faire oublier la pierre deviendra sa signature, dans \
+l'Apollon et Daphné ou l'Enlèvement de Proserpine de la villa Borghèse. La \
+composition en spirale invite à tourner autour de l'œuvre."""
+details = [
+  "L'enfant qui rit, en haut, la joue contre celle de son compagnon.",
+  "Les grappes de raisin, creusées une à une dans le marbre.",
+  "L'enfant tombé à la renverse, au pied de l'arbre.",
+  "La tête de la peau de bête, qui pend le long du tronc.",
+  "Les oreilles pointues et la couronne de pampres du faune.",
+]
+themes = ["baroque", "bacchus", "enfance", "virtuosité", "marbre"]
+anecdote = """
+Le Bernin passait pour un enfant prodige : selon ses premiers biographes, il dessina \
+encore enfant, devant le pape Paul V, une tête de saint Paul, et le pape aurait \
+prédit qu'il serait le Michel-Ange de son temps."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Psyché ranimée par le baiser de l'Amour"
+artiste = "Antonio Canova"
+annee = "1787–1793"
+image = "psyche-ranimee.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Psyche_revived_Louvre_MR1777.jpg"
+technique = "Marbre, 1,55 × 1,68 m"
+collection = "Musée du Louvre, Paris"
+note = "L'Amour se penche pour réveiller Psyché d'un sommeil mortel : deux corps qui se cherchent, en forme de X."
+description = """
+Une jeune femme à demi allongée sur un rocher se redresse et lève les bras pour \
+enlacer le visage d'un jeune homme ailé. Lui, un genou à terre derrière elle, la \
+soutient d'un bras passé sous ses épaules et pose l'autre main sur sa poitrine. \
+Leurs visages se frôlent, sur le point de s'embrasser. Les grandes ailes de l'Amour \
+se dressent vers le ciel, tandis que les jambes de Psyché s'étirent vers la droite : \
+les deux corps dessinent un X, dont le centre est le cercle formé par les bras \
+autour des deux têtes. Un drapé glisse sur les hanches de Psyché. Sur la photo, prise \
+au Louvre, le marbre blanc se détache sur un mur de pierre doré par la lumière."""
+evocation = """
+Le sujet vient de L'Âne d'or, roman latin d'Apulée. Psyché, mortelle aimée de \
+l'Amour, doit rapporter des Enfers un coffret de beauté qu'elle ne doit pas ouvrir ; \
+curieuse, elle l'ouvre et tombe dans un sommeil de mort, jusqu'à ce que l'Amour la \
+réveille. Canova choisit l'instant le plus tendre : le retour à la vie par l'amour. \
+Psyché signifie l'âme en grec ; on a lu le mythe comme l'histoire de l'âme humaine \
+qui, après des épreuves, s'unit à l'amour divin. La sculpture a été pour beaucoup le \
+modèle du néoclassicisme : une sensualité sereine, sans violence, figée au seuil du \
+baiser."""
+histoire = """
+En 1787, à Rome, un collectionneur écossais, le colonel John Campbell, commande à \
+Canova un groupe d'après Apulée. Le sculpteur y travaille jusqu'en 1793, mais \
+l'œuvre n'est pas livrée à son commanditaire. Elle est achetée au début du XIXᵉ \
+siècle par Joachim Murat, beau-frère de Napoléon, et entre au Louvre en 1824. \
+Canova en a sculpté une seconde version, conservée au musée de l'Ermitage à \
+Saint-Pétersbourg. Le groupe du Louvre est aujourd'hui l'une des sculptures les plus \
+admirées du musée, dans la galerie Michel-Ange, non loin des deux Esclaves, où la \
+lumière naturelle glisse sur le marbre poli."""
+facture = """
+Canova modelait d'abord une esquisse en terre, puis un modèle en plâtre grandeur \
+nature, piqué de repères métalliques ; ses assistants dégrossissaient le marbre à \
+partir de ces points, et lui-même se réservait la finition. Il polissait les \
+surfaces avec soin et leur appliquait, dit-on, une légère patine de cire pour \
+adoucir la blancheur et donner à la pierre la tiédeur de la peau. Les ailes, \
+taillées très finement, et les bras évidés témoignent d'une virtuosité technique \
+extrême. La composition est pensée pour être vue de plusieurs points de vue."""
+details = [
+  "Le cercle des bras de Psyché autour de la tête de l'Amour.",
+  "Les deux ailes dressées, fines comme des plumes véritables.",
+  "La main de l'Amour posée sous le sein de Psyché.",
+  "Le drapé qui glisse sur les hanches et retombe sur le rocher.",
+]
+themes = ["néoclassicisme", "amour", "mythologie", "baiser", "marbre"]
+anecdote = """
+Dans L'Âne d'or, l'Amour réveille Psyché non par un baiser, mais d'une piqûre \
+inoffensive de sa flèche ; Canova a préféré, pour sa sculpture, l'image d'un baiser \
+suspendu."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Ugolin et ses fils"
+artiste = "Jean-Baptiste Carpeaux"
+annee = "1865–1867"
+image = "ugolin.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ugolino_and_His_Sons_MET_DP247545.jpg"
+technique = "Marbre, près de deux mètres de haut, d'après le modèle de 1857–1861"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un père emmuré avec ses enfants, qui se mord les doigts de désespoir : l'Enfer de Dante en marbre."
+description = """
+Sur un rocher, un homme âgé, nu et musclé, est assis, les pieds crispés l'un sur \
+l'autre. Il porte les mains à sa bouche et se mord les doigts ; son regard fixe, \
+sous des sourcils froncés, se perd dans le vide. Autour de lui se pressent quatre \
+garçons. L'un, agenouillé, lève vers lui un visage suppliant et s'accroche à sa \
+jambe. Un autre, plus jeune, se blottit contre son genou. Le plus petit est déjà \
+effondré, étendu sur les cuisses de son frère. Les corps s'empilent en pyramide, \
+de la jambe du père jusqu'à sa tête. Le groupe repose sur un socle octogonal ; sur \
+la photographie, le marbre blanc se détache sur un fond gris uni."""
+evocation = """
+Dans le chant XXXIII de L'Enfer, Dante rencontre le comte Ugolin della Gherardesca, \
+seigneur pisan emmuré dans une tour avec ses fils et ses petits-fils, et condamné à \
+mourir de faim. Ses enfants lui offrent leur propre chair pour le nourrir. Carpeaux \
+saisit le moment où le père, voyant leur souffrance, se ronge les mains de douleur, \
+tandis qu'ils croient qu'il a faim. Les vers les plus sombres du poème, qui laissent \
+deviner une issue terrible, ont nourri l'imagination romantique. L'œuvre exprime la \
+détresse d'un père impuissant, et l'intensité d'une sculpture qui veut émouvoir \
+autant que la peinture d'histoire."""
+histoire = """
+Prix de Rome en 1854, Carpeaux doit envoyer de la Villa Médicis des travaux qui \
+prouvent ses progrès. Il choisit, contre l'avis de l'Académie, un sujet tiré de \
+Dante et non de l'Antiquité, et un groupe complexe là où l'on attendait une figure. \
+Modelé à Rome entre 1857 et 1861, le plâtre est finalement accepté et fondu en \
+bronze ; exposé à Paris, il installe la réputation de son auteur. Ce bronze est \
+aujourd'hui au musée d'Orsay. Une version en marbre, de même taille, est ensuite \
+taillée en 1865–1867 : c'est celle que conserve le Metropolitan Museum de New York, \
+où elle trône dans la grande cour de la sculpture européenne."""
+facture = """
+Carpeaux cherche la leçon de Michel-Ange, dont il étudie à Rome les figures de la \
+chapelle Sixtine, et du Laocoon antique, autre drame d'un père et de ses fils. Les \
+corps, très anatomiques, s'emboîtent en une pyramide serrée, que l'on doit \
+contourner pour en comprendre la structure. Les surfaces gardent l'énergie du \
+modelage : muscles tendus, veines saillantes, mèches en désordre. Le marbre a été \
+taillé par des praticiens d'après le modèle de l'artiste, qui en a surveillé la \
+finition."""
+details = [
+  "Les doigts du père, portés à la bouche et mordus.",
+  "Les orteils du père, crispés les uns sur les autres.",
+  "Le visage du fils agenouillé, levé vers son père.",
+  "Le plus jeune enfant, effondré, déjà sans force.",
+]
+themes = ["dante", "enfer", "paternité", "désespoir", "romantisme"]
+anecdote = """
+Rodin, qui admirait Carpeaux, a lui aussi placé Ugolin et ses enfants dans La Porte \
+de l'Enfer : le père, à quatre pattes, rampe au-dessus des corps de ses fils, \
+comme une bête."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Le Baiser"
+artiste = "Auguste Rodin"
+annee = "1882–1898"
+image = "baiser.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Rodin_TheKiss_20050609.JPG"
+technique = "Marbre, 1,82 m de haut"
+collection = "Musée Rodin, Paris"
+note = "Paolo et Francesca, les amants de l'Enfer de Dante, saisis à l'instant de leur premier baiser."
+description = """
+Sur un bloc de marbre resté brut, un homme et une femme nus sont assis, enlacés. La \
+femme a passé le bras autour du cou de l'homme et lève vers lui son visage ; l'une \
+de ses jambes repose sur celle de son compagnon. L'homme se penche pour l'embrasser ; \
+sa main, posée sur la cuisse de la femme, semble hésiter à la toucher, et l'autre \
+tient un livre, presque caché. Les visages, à demi cachés, se rejoignent au \
+sommet du groupe. Les corps sont lisses et polis, le rocher rugueux. La photographie \
+montre l'œuvre dans un salon de l'hôtel Biron, devant des boiseries sombres, sur un \
+parquet à motifs."""
+evocation = """
+Le groupe représente d'abord Paolo Malatesta et Francesca da Rimini, que Dante \
+rencontre dans le cercle des luxurieux : en lisant ensemble l'histoire de Lancelot \
+et Guenièvre, ils se sont embrassés, et le mari de Francesca les a tués. Rodin les \
+montre avant la faute et le châtiment, dans l'élan du désir. Une fois sorti de la \
+Porte de l'Enfer, le groupe perd son récit et devient « le Baiser », image \
+universelle de l'amour charnel, tendre et partagé. On a souvent souligné que la \
+femme y prend l'initiative autant que l'homme. Pour Rodin lui-même, l'œuvre restait \
+plus traditionnelle que ses recherches les plus audacieuses."""
+histoire = """
+Rodin modèle le couple vers 1882 pour La Porte de l'Enfer, puis le retire de la \
+composition, peut-être parce que son bonheur s'accorde mal avec le désespoir des \
+autres figures. Le groupe connaît vite le succès en plâtre et en bronze. En 1888, \
+l'État commande un agrandissement en marbre ; Rodin le fait tailler par des \
+praticiens et le présente au Salon de 1898, à côté du plâtre de son Balzac. Exposé \
+ensuite au musée du Luxembourg, alors musée des artistes vivants, il rejoint le musée Rodin, à l'hôtel Biron, à l'ouverture \
+de celui-ci en 1919. Le Baiser est aujourd'hui l'œuvre la plus célèbre du musée, \
+présentée au rez-de-chaussée."""
+facture = """
+Comme la plupart des sculpteurs de son temps, Rodin ne taillait pas lui-même ses \
+marbres : il modelait en terre, et des praticiens reportaient le modèle dans la \
+pierre par mise aux points, sous son contrôle. Il exige ici un poli très doux sur \
+les corps, qui semblent baignés de lumière, et garde brut le bloc sur lequel ils \
+sont assis : la vie naît de la matière informe, à la manière du non finito de \
+Michel-Ange. La composition est fermée, presque cubique, et les deux corps se \
+répondent en diagonales."""
+details = [
+  "La main de l'homme, posée sur la cuisse de la femme, à peine appuyée.",
+  "Le bras de la femme, passé derrière le cou de son amant.",
+  "Le contraste entre la peau polie et le rocher laissé brut.",
+  "Le livre que tient l'homme, rappel de la lecture qui a perdu les amants.",
+]
+themes = ["amour", "dante", "baiser", "marbre", "désir"]
+anecdote = """
+Il existe trois grands marbres du Baiser taillés du vivant de Rodin : celui de \
+l'État français, au musée Rodin, celui commandé par le collectionneur Edward Perry \
+Warren, aujourd'hui à la Tate de Londres, et celui de Carl Jacobsen, à la Ny \
+Carlsberg Glyptotek de Copenhague."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.8
+
+[[oeuvres]]
+titre = "L'Âge mûr"
+artiste = "Camille Claudel"
+annee = "1899 (seconde version)"
+image = "age-mur.jpg"
+credit = "Photo : Jean-Pierre Dalbéra"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Lâge_mur_(Musée_Rodin)_(4921654776).jpg"
+technique = "Bronze, fonte vers 1913"
+collection = "Musée Rodin, Paris (don de Paul Claudel, 1952)"
+note = "Un homme mûr s'éloigne, entraîné par une vieille femme, tandis qu'une jeune femme à genoux tend les bras vers lui."
+description = """
+Sur une base allongée, ondulée comme une vague ou un terrain en pente, trois figures \
+nues se suivent. À gauche, une vieille femme décharnée, enveloppée d'un grand drapé \
+qui flotte derrière elle comme des ailes, entraîne un homme d'âge mûr en le tenant \
+par les épaules. Lui avance en titubant, les genoux fléchis, le bras gauche tendu en \
+arrière. À droite, une jeune femme agenouillée tend les deux bras vers lui ; leurs \
+mains ne se touchent plus. Tout le groupe penche vers la gauche, comme emporté. Sur \
+la photographie, prise au musée Rodin, le bronze sombre se détache devant les murs \
+roses et le grand miroir d'un salon."""
+evocation = """
+L'œuvre a été lue comme une allégorie du temps qui passe : l'homme quitte la jeunesse \
+pour suivre la vieillesse, ou la mort, qui l'emporte. Mais on y voit presque toujours \
+aussi l'histoire de l'artiste : Rodin, partagé entre Camille Claudel, la jeune \
+implorante, et sa compagne Rose Beuret, à laquelle il reste attaché. Paul Claudel, \
+le frère de Camille, y voyait sa sœur à genoux, suppliante, abandonnée. Claudel \
+dépasse pourtant le récit personnel : le vide entre les mains, le mouvement du \
+drapé, la pente du sol font de la séparation un drame universel, sculpté avec une \
+force qui n'appartient qu'à elle."""
+histoire = """
+Camille Claudel conçoit le groupe en 1893–1894, au moment où elle se sépare de \
+Rodin. L'État en commande un bronze en 1895, mais la commande est annulée en 1899, \
+une décision dans laquelle la sculptrice a vu la main de Rodin. Elle reprend alors \
+la composition, en donne une seconde version et la fait fondre en 1902 pour un \
+collectionneur, le capitaine Tissier : ce bronze est au musée d'Orsay. L'exemplaire \
+du musée Rodin, fondu vers 1913, l'année où Camille Claudel est internée, a été \
+donné en 1952 par Paul Claudel. Il est présenté à l'hôtel Biron dans la salle \
+consacrée à la sculptrice."""
+facture = """
+Claudel construit son groupe sur une diagonale qui part de la jeune femme et monte \
+vers le drapé de la vieille femme, en suivant les bras tendus. Le drapé, gonflé \
+comme une voile, est un morceau de virtuosité : il emporte la composition. Les \
+corps, modelés avec précision, gardent les leçons de l'atelier de Rodin, mais la \
+sculptrice y ajoute une narration en frise, à lire de droite à gauche. Dans la \
+première version, l'homme tenait encore la main de la jeune femme ; dans la \
+seconde, les mains se sont séparées."""
+details = [
+  "Le vide entre les mains de la jeune femme et celle de l'homme.",
+  "Le drapé de la vieille femme, gonflé comme des ailes.",
+  "Les genoux fléchis de l'homme, qui avance malgré lui.",
+  "La base en pente, qui entraîne tout le groupe vers la gauche.",
+]
+themes = ["séparation", "vieillesse", "destin", "autobiographie", "bronze"]
+anecdote = """
+La jeune femme agenouillée a aussi été éditée seule en bronze, sous le titre de \
+L'Implorante, par le fondeur et marchand Eugène Blot, qui a soutenu Camille Claudel \
+dans ses années difficiles."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Petite Danseuse de quatorze ans"
+artiste = "Edgar Degas"
+annee = "1878–1881"
+image = "petite-danseuse.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Edgar_Degas,_Little_Dancer_Aged_Fourteen,_1878-1881,_NGA_110292.jpg"
+technique = "Cire, cheveux, ruban de soie, tutu et chaussons de tissu ; près d'un mètre de haut"
+collection = "National Gallery of Art, Washington"
+note = "La seule sculpture que Degas ait exposée : une petite danseuse de l'Opéra, en cire, vêtue d'un vrai tutu."
+description = """
+Une adolescente maigre se tient debout, la tête levée, les yeux mi-clos. Ses mains \
+sont jointes derrière le dos, ses bras tendus en arrière, et sa jambe droite est \
+avancée, le pied tourné vers l'extérieur, dans une position de danse au repos. Elle \
+porte un corsage ajusté, un tutu de tulle et des chaussons ; ses cheveux, de vrais \
+cheveux, sont noués en natte par un ruban. Le visage, avec son menton pointé et ses \
+lèvres serrées, n'est pas idéalisé. Sur la photographie, la cire brunie de la peau \
+contraste avec le tissu jauni du corsage et le gris du tutu, sur un fond gris uni."""
+evocation = """
+Degas montre un « petit rat » de l'Opéra, l'une de ces filles de familles pauvres \
+qui entraient très jeunes à l'école de danse. La pose fière, menton relevé, dit à la \
+fois la discipline du métier et une forme de défi. En 1881, les critiques sont \
+choqués : ils parlent de laideur, de vice, de type criminel, ce qui en dit long sur \
+le regard porté alors sur ces enfants. Aujourd'hui, on y voit plutôt une figure \
+d'une vérité saisissante, et l'une des œuvres les plus modernes de son temps : la \
+sculpture quitte le marbre et le mythe pour la réalité de la vie moderne."""
+histoire = """
+Le modèle est Marie van Goethem, jeune élève de l'école de danse de l'Opéra de Paris, \
+d'une famille d'origine belge. Degas travaille à la figure à partir de 1878, en \
+dessinant son modèle sous tous les angles et en modelant d'abord une version nue. \
+Annoncée en 1880, la sculpture n'est présentée qu'à la sixième exposition des \
+impressionnistes, en 1881, dans une vitrine de verre. Elle ne quitte plus ensuite \
+l'atelier. Après la mort de Degas en 1917, la cire est retrouvée et coulée en \
+bronze, à partir de 1922, en une trentaine d'exemplaires. La cire originale, \
+acquise par le collectionneur Paul Mellon, est entrée à la National Gallery of Art \
+avec sa collection."""
+facture = """
+Degas modèle la figure en cire colorée sur une armature de métal, avec des matériaux \
+de récupération pour la remplir. Puis il l'habille de vrais vêtements : corsage, \
+tutu de tulle, chaussons de toile, perruque de vrais cheveux et ruban de soie. Il recouvre en partie les tissus de cire pour les fondre dans la \
+figure. Ce mélange de matières, alors inédit dans la sculpture savante, rappelle \
+les poupées et les figures de cire anatomiques ; il annonce les assemblages du XXᵉ \
+siècle."""
+details = [
+  "Le ruban noué sur la natte de vrais cheveux.",
+  "Les mains jointes derrière le dos, bras tendus.",
+  "Le pied droit avancé et tourné vers l'extérieur.",
+  "Le menton relevé et les yeux mi-clos.",
+]
+themes = ["danse", "opéra", "enfance", "cire", "vie moderne"]
+anecdote = """
+Lors de l'exposition de 1881, la danseuse était présentée dans une vitrine de verre, \
+comme un spécimen de musée : un choix voulu par Degas, qui a renforcé le malaise \
+de nombreux visiteurs."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Héraklès archer"
+artiste = "Antoine Bourdelle"
+annee = "1909"
+image = "herakles-archer.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Herakles_the_Archer_-_MET_-_24.232.jpg"
+technique = "Bronze à patine dorée"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le héros, arc tendu, vise les oiseaux du lac Stymphale : une ligne de force qui rompt avec le modelé de Rodin."
+description = """
+Un homme nu, aux muscles noueux, tend un grand arc. Son pied droit s'appuie très haut \
+sur un rocher, la jambe repliée à l'horizontale, tandis que la gauche, tendue en \
+arrière, prend appui sur le sol. Le buste se penche en avant ; le bras gauche, tendu, \
+tient l'arc dont la courbe se dresse au-dessus de lui, et le bras droit tire la \
+corde. La tête, de profil, vise une cible invisible. Le corps et l'arc forment une \
+figure géométrique, faite de lignes droites et d'angles. Sur la photographie, le \
+bronze doré se découpe devant une grande baie vitrée ouverte sur des arbres."""
+evocation = """
+Le sujet est l'un des douze travaux d'Hercule : tuer les oiseaux monstrueux du lac \
+Stymphale, aux plumes de bronze. Bourdelle en fait un symbole de l'énergie humaine \
+concentrée sur un but. L'œuvre a été saluée comme un manifeste : après le modelé \
+frémissant de Rodin, elle retrouve la rigueur de la sculpture grecque archaïque, \
+qu'admirait Bourdelle, et la construction par grands plans. Elle exprime une \
+tension extrême, mais maîtrisée, presque architecturale. Au début du XXᵉ siècle, \
+elle ouvre la voie à une sculpture qui cherche moins la vie que la structure."""
+histoire = """
+Bourdelle, après quinze ans comme praticien de Rodin, cherche sa propre voie. En \
+1909, il modèle l'Héraklès d'après un officier sportif, le commandant Doyen-Parigot, \
+qui pose pour lui dans cette position difficile. L'œuvre est exposée au Salon de la \
+Société nationale des beaux-arts en 1910 et connaît un succès immédiat. Le \
+collectionneur Gabriel Thomas en finance la première fonte. Le sculpteur en tire \
+ensuite plusieurs versions, de tailles différentes. L'exemplaire du Metropolitan \
+Museum de New York y est entré en 1924, du vivant de l'artiste. D'autres sont au \
+musée Bourdelle à Paris, au musée d'Orsay et à Montauban, sa ville natale."""
+facture = """
+Bourdelle construit la figure par plans nets, comme un architecte : les muscles \
+sont simplifiés en masses anguleuses, les contours sont tranchés. La composition \
+repose sur des triangles et des diagonales, dans le plan même de l'arc, si bien que \
+la sculpture se lit presque comme un relief, de face. Le rocher, traité en blocs \
+bruts, sert de contrepoids. La tête, au visage stylisé, rappelle les guerriers des \
+frontons du temple d'Égine, que l'on peut voir à Munich."""
+details = [
+  "Le pied droit, posé très haut sur le rocher.",
+  "L'arc immense, dont la courbe domine toute la figure.",
+  "Les muscles du dos, traités en plans anguleux.",
+  "Le visage de profil, tendu vers la cible.",
+]
+themes = ["mythologie", "héros", "tension", "archaïsme", "bronze"]
+anecdote = """
+L'atelier de Bourdelle, dans le quartier du Montparnasse, est devenu le musée \
+Bourdelle, ouvert en 1949 ; la rue où il se trouve, l'ancienne impasse du Maine, \
+porte aujourd'hui son nom."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "La Méditerranée"
+artiste = "Aristide Maillol"
+annee = "1902–1905"
+image = "mediterranee.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:La_Méditerranée_-_Aristide_Maillol_-_Musée_du_Louvre_Sculptures_des_jardins_FNAC_9492_-_TU_254.jpg"
+technique = "Bronze"
+collection = "Jardin des Tuileries, Paris (musée du Louvre)"
+note = "Une femme assise, la tête dans la main : ni histoire ni drame, seulement des volumes en équilibre."
+description = """
+Une femme nue est assise sur un socle bas. Sa jambe droite est repliée et dressée, \
+le genou haut ; la gauche est couchée sous elle. Son coude droit s'appuie sur ce \
+genou et sa main soutient sa tête, inclinée, tandis que la main gauche prend appui \
+sur le socle. Le visage, calme, aux traits réguliers, regarde vers le bas. Les \
+formes sont pleines, les épaules larges, les cuisses puissantes ; le corps tout \
+entier s'inscrit dans un volume compact. La photographie montre le bronze, à la \
+patine vert-de-gris, posé sur un piédestal de pierre dans une allée des Tuileries, \
+devant des arbres taillés."""
+evocation = """
+Maillol a donné à sa statue le nom de la mer de son enfance, à Banyuls : elle ne \
+raconte rien, elle incarne une terre, une lumière, un équilibre. Après Rodin, qui \
+sculptait le mouvement et la passion, elle propose le calme et la mesure, dans \
+l'esprit de la sculpture grecque. La pose de la tête dans la main, traditionnelle \
+image de la méditation, ne renvoie ici à aucun récit. On y a vu le point de départ d'un classicisme moderne, attentif aux seules \
+formes, qui a marqué toute la sculpture de l'entre-deux-guerres."""
+histoire = """
+Maillol, qui vient de quitter la peinture et la tapisserie pour la sculpture, \
+travaille à cette figure au début du siècle, d'après sa femme, Clotilde. Le plâtre, \
+exposé au Salon d'automne de 1905, fait sensation. Le comte allemand Harry Kessler, \
+son mécène, en commande une version en pierre. Beaucoup plus tard, en 1923, l'État \
+commande un marbre, achevé en 1927, aujourd'hui au musée d'Orsay. Les bronzes de \
+Maillol installés dans les jardins du Carrousel et des Tuileries proviennent de la \
+donation de Dina Vierny, son dernier modèle, acceptée en 1964 par André Malraux, \
+alors ministre des Affaires culturelles."""
+facture = """
+Maillol modèle des volumes simples et fermés : le corps s'inscrit dans un cube, \
+presque sans vide entre les membres. Les surfaces sont lisses, sans les accidents \
+de lumière chers à Rodin ; les détails s'effacent devant la masse. Les proportions, \
+robustes, refusent l'élégance allongée des nus académiques. Ce goût de la forme \
+pleine vient de l'Antiquité grecque, des sculptures égyptiennes et de l'art roman \
+de son Roussillon natal, mais aussi de l'œuvre de Gauguin, qu'il a connu au temps des \
+Nabis."""
+details = [
+  "La tête, posée sur la main, inclinée vers le bas.",
+  "Le genou droit dressé, qui sert d'appui au coude.",
+  "La main gauche, à plat sur le socle.",
+  "Le profil compact du corps, sans bras détaché dans le vide.",
+]
+themes = ["classicisme", "méditerranée", "nu", "calme", "bronze"]
+anecdote = """
+Au Salon d'automne de 1905, l'écrivain André Gide écrit à propos de la statue : \
+« Elle est belle ; elle ne signifie rien ; c'est une œuvre silencieuse. » Le \
+même Salon faisait scandale avec les toiles de Matisse et de ses amis, les fauves."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 2.0
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Michel-Ange"
+vie = "Caprese (Toscane), 6 mars 1475 – Rome, 18 février 1564"
+biographie = """
+Michelangelo Buonarroti naît dans une famille florentine de petite noblesse. Apprenti \
+du peintre Domenico Ghirlandaio, il est vite remarqué par Laurent de Médicis, qui \
+l'accueille dans son palais et son jardin de sculptures antiques. À Rome, il \
+sculpte à vingt-quatre ans la Pietà de Saint-Pierre ; de retour à Florence, il \
+taille le David, achevé en 1504, qui fait de lui le premier sculpteur d'Italie. Le \
+pape Jules II l'appelle à Rome pour son tombeau, puis lui impose de peindre la voûte \
+de la chapelle Sixtine (1508–1512). Le tombeau, réduit d'année en année, l'occupe \
+pendant quatre décennies. À Florence, il conçoit pour les Médicis la Nouvelle \
+Sacristie de San Lorenzo et ses tombeaux. Installé définitivement à Rome en 1534, il \
+peint le Jugement dernier de la Sixtine, écrit des poèmes, et devient architecte de \
+la basilique Saint-Pierre, dont il dessine la coupole. Il meurt à près de \
+quatre-vingt-neuf ans, en travaillant encore à une Pietà restée inachevée. Ses \
+contemporains l'appelaient « le divin »."""
+style = """
+Michel-Ange se voulait avant tout sculpteur : il disait libérer la figure prisonnière \
+du bloc. Ses corps héroïques, musclés, souvent en torsion, expriment la force et \
+l'angoisse de l'âme. Beaucoup de ses statues restent inachevées, et ce non finito, \
+où la figure semble sortir de la pierre, a fasciné les siècles suivants, jusqu'à \
+Rodin. Son influence sur la sculpture et la peinture européennes est immense."""
+
+[[artistes]]
+nom = "Le Bernin"
+vie = "Naples, 7 décembre 1598 – Rome, 28 novembre 1680"
+biographie = """
+Gian Lorenzo Bernini est le fils du sculpteur florentin Pietro Bernini, qui \
+s'installe à Rome quand l'enfant a sept ou huit ans. Formé dans l'atelier paternel, \
+il est remarqué très tôt par les grands collectionneurs romains, en particulier le \
+cardinal Scipion Borghèse, pour qui il sculpte dans les années 1620 l'Enlèvement de \
+Proserpine, le David et Apollon et Daphné. Le pape Urbain VIII, élu en 1623, fait de \
+lui l'artiste officiel de Rome : il dessine le baldaquin de bronze de Saint-Pierre, \
+puis, sous Alexandre VII, la colonnade de la place Saint-Pierre. Il réalise aussi la \
+chapelle Cornaro et son Extase de sainte Thérèse, et la fontaine des Quatre-Fleuves, \
+place Navone. Sculpteur, architecte, urbaniste, décorateur de théâtre, il domine la \
+vie artistique romaine pendant un demi-siècle. En 1665, Louis XIV l'invite à Paris \
+pour le projet du Louvre ; ses plans ne sont pas retenus, mais il sculpte un célèbre \
+buste du roi, aujourd'hui à Versailles. Il meurt à Rome à quatre-vingt-un ans."""
+style = """
+Le Bernin fait du marbre une matière vivante : chair qui cède sous les doigts, \
+cheveux, feuillages, étoffes qui volent. Il saisit l'instant d'une action, comme un \
+metteur en scène, et unit sculpture, architecture et lumière en un spectacle total. \
+Son art définit le baroque romain et a été imité dans toute l'Europe catholique."""
+
+[[artistes]]
+nom = "Antonio Canova"
+vie = "Possagno (Vénétie), 1er novembre 1757 – Venise, 13 octobre 1822"
+biographie = """
+Fils d'un tailleur de pierre, élevé par son grand-père, Antonio Canova se forme à \
+Venise, où il ouvre très jeune son propre atelier. En 1781, il s'installe à Rome, \
+qu'il ne quittera plus guère. Le groupe de Thésée et le Minotaure, puis les tombeaux \
+des papes Clément XIV et Clément XIII le rendent célèbre dans toute l'Europe. Les \
+souverains et les collectionneurs se disputent ses œuvres : Psyché et l'Amour, \
+Hébé, les Trois Grâces. Napoléon le fait venir à Paris et lui commande son portrait \
+en Mars pacificateur ; sa sœur Pauline Borghèse pose pour la Vénus victorieuse. \
+Après la chute de l'Empire, en 1815, Canova est envoyé à Paris par le pape pour \
+récupérer les œuvres d'art enlevées à Rome par les armées françaises, et il en \
+rapporte une grande partie. Comblé d'honneurs, il fait construire dans son village \
+natal de Possagno un temple inspiré du Panthéon, où il est enterré. Son atelier de \
+plâtres y est devenu un musée."""
+style = """
+Canova est le maître du néoclassicisme : des formes idéales, inspirées de l'antique, \
+des compositions claires, une beauté calme où l'émotion reste contenue. Il \
+travaillait la surface du marbre avec un soin extrême, jusqu'à lui donner la douceur \
+de la peau. Pour ses contemporains, il était le nouveau Phidias ; les romantiques \
+lui ont reproché sa froideur."""
+
+[[artistes]]
+nom = "Jean-Baptiste Carpeaux"
+vie = "Valenciennes, 11 mai 1827 – Courbevoie, 12 octobre 1875"
+biographie = """
+Fils d'un maçon, Jean-Baptiste Carpeaux suit sa famille à Paris, où il étudie à la \
+Petite École de dessin, puis à l'École des beaux-arts, dans l'atelier de François \
+Rude. Après plusieurs échecs, il remporte le prix de Rome en 1854. À la Villa \
+Médicis, il étudie Michel-Ange et compose, malgré les réticences de l'Académie, \
+son groupe d'Ugolin. De retour à Paris, il devient le sculpteur favori du Second \
+Empire : il fait le portrait du prince impérial et de la princesse Mathilde, et \
+décore le pavillon de Flore, au Louvre. Pour la façade du nouvel Opéra de Charles Garnier, il \
+sculpte La Danse, dévoilée en 1869 : la nudité joyeuse de ses danseuses fait \
+scandale, et un inconnu jette une bouteille d'encre sur le groupe. Il réalise \
+ensuite la fontaine de l'Observatoire, avec les Quatre Parties du monde. Malade d'un \
+cancer, en conflit avec sa femme, il meurt à quarante-huit ans. Son atelier a \
+diffusé de nombreuses réductions de ses œuvres."""
+style = """
+Carpeaux rompt avec la retenue néoclassique : ses figures rient, dansent, souffrent, \
+et le modelé garde la vivacité de l'esquisse. Héritier de Rude et admirateur de \
+Michel-Ange, il cherche le mouvement et l'expression. Ses bustes saisissent la \
+personnalité de ses modèles, souvent saisis avec un sourire. Par l'énergie de son \
+modelé et son goût du drame, il ouvre la voie à Rodin."""
+
+[[artistes]]
+nom = "Auguste Rodin"
+vie = "Paris, 12 novembre 1840 – Meudon, 17 novembre 1917"
+biographie = """
+Fils d'un employé de la préfecture de police, Auguste Rodin apprend le dessin à la \
+Petite École, mais échoue trois fois au concours de l'École des beaux-arts. Il \
+travaille longtemps comme ornemaniste et praticien pour d'autres sculpteurs, à Paris \
+puis à Bruxelles. En 1864, il rencontre Rose Beuret, sa compagne de toute une vie. \
+Un voyage en Italie, en 1875–1876, lui révèle Michel-Ange. Son Âge d'airain, exposé \
+en 1877, est si vrai qu'on l'accuse de l'avoir moulé sur nature. En 1880, l'État lui \
+commande La Porte de l'Enfer, inspirée de Dante, à laquelle il travaillera jusqu'à \
+sa mort, et d'où naissent Le Penseur et Le Baiser. Viennent ensuite Les Bourgeois de \
+Calais et le Balzac, refusé par ses commanditaires en 1898. De 1883 à 1892 environ, \
+il vit une liaison passionnée avec la sculptrice Camille Claudel. L'Exposition \
+universelle de 1900, où il présente ses œuvres dans un pavillon personnel, lui \
+apporte une gloire internationale. Installé à Meudon et à l'hôtel Biron, il donne en \
+1916 son œuvre à l'État ; il épouse Rose en janvier 1917 et meurt quelques mois \
+après elle."""
+style = """
+Rodin libère la sculpture des conventions académiques : il modèle par bosses et \
+creux qui font vibrer la lumière, garde l'empreinte des doigts, ose le fragment, \
+l'inachevé, l'assemblage de figures. Le corps exprime la pensée et la passion. \
+Considéré comme le père de la sculpture moderne, il a formé ou influencé Claudel, \
+Bourdelle, Brancusi et bien d'autres."""
+
+[[artistes]]
+nom = "Camille Claudel"
+vie = "Fère-en-Tardenois (Aisne), 8 décembre 1864 – Montfavet (Vaucluse), 19 octobre 1943"
+biographie = """
+Sœur aînée du poète Paul Claudel, Camille Claudel modèle la terre dès l'enfance. À \
+Nogent-sur-Seine, le sculpteur Alfred Boucher l'encourage ; à Paris, elle suit les \
+cours de l'académie Colarossi. Boucher la présente à Rodin, qui la fait entrer \
+vers 1884 dans son atelier : elle travaille aux mains et aux pieds des figures de \
+La Porte de l'Enfer et des Bourgeois de Calais. Elle devient son élève, sa \
+collaboratrice, son modèle et son amante. Elle sculpte Sakountala, La Valse, des \
+portraits saisissants. La rupture avec Rodin, dans les années 1890, la laisse \
+seule, sans protecteur ni argent ; elle crée alors ses œuvres les plus \
+personnelles, L'Âge mûr, Les Causeuses, La Vague. Peu à peu, elle s'isole, se croit \
+persécutée par Rodin et détruit une partie de ses œuvres. En mars 1913, une \
+semaine après la mort de son père, sa famille la fait interner. Elle passe les trente \
+dernières années de sa vie en asile, à Ville-Évrard puis à Montdevergues, près \
+d'Avignon, sans plus jamais sculpter. Un musée lui est consacré à Nogent-sur-Seine \
+depuis 2017."""
+style = """
+Formée auprès de Rodin, Camille Claudel s'en distingue par le goût du récit, des \
+compositions en mouvement et des petits groupes de la vie quotidienne, inspirés \
+parfois de l'art japonais. Elle travaille avec virtuosité le marbre, l'onyx et le \
+bronze. Longtemps réduite à son rôle auprès de Rodin, elle est reconnue aujourd'hui \
+comme une sculptrice majeure."""
+
+[[artistes]]
+nom = "Edgar Degas"
+vie = "Paris, 19 juillet 1834 – Paris, 27 septembre 1917"
+biographie = """
+Fils d'un banquier, Edgar Degas renonce au droit pour la peinture. Il entre \
+brièvement à l'École des beaux-arts, admire Ingres, et passe trois années en Italie, \
+de 1856 à 1859, à copier les maîtres. Il commence par des tableaux d'histoire et des \
+portraits, puis se tourne vers la vie moderne : courses de chevaux, cafés-concerts, \
+blanchisseuses, et surtout danseuses de l'Opéra, qu'il observe en répétition et en \
+coulisses. Il participe à l'organisation des expositions impressionnistes à partir \
+de 1874, tout en refusant l'étiquette et la peinture en plein air. Il pratique le \
+pastel, la gravure, le monotype, la photographie. Sa vue baissant, il travaille de \
+plus en plus en sculpture, dans le secret de son atelier, modelant en cire des \
+danseuses, des chevaux et des femmes à leur toilette. Il ne montre au public qu'une \
+seule sculpture, la Petite Danseuse de quatorze ans, en 1881. À sa mort, on retrouve \
+dans l'atelier plus de cent cinquante cires, dont beaucoup sont ensuite fondues en \
+bronze."""
+style = """
+Degas compose comme un photographe : cadrages coupés, points de vue plongeants, \
+gestes saisis au vol. Dessinateur hors pair, il cherche la vérité du mouvement et \
+du métier. En sculpture, il travaille la cire librement, comme une étude, et ose \
+mêler des matériaux réels. Ses cires, découvertes après sa mort, ont été une \
+révélation pour les sculpteurs du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Antoine Bourdelle"
+vie = "Montauban, 30 octobre 1861 – Le Vésinet, 1er octobre 1929"
+biographie = """
+Fils d'un menuisier ébéniste, Antoine Bourdelle apprend à tailler le bois dans \
+l'atelier paternel, puis étudie à l'École des beaux-arts de Toulouse, et à celle de \
+Paris, qu'il quitte vite, rebuté par l'enseignement académique. Il s'installe dans \
+le quartier du Montparnasse, où il gardera son atelier toute sa vie. Son monument \
+aux morts de la guerre de 1870, à Montauban, achevé au début du siècle, surprend par \
+sa violence expressive. De 1893 à 1908, il travaille comme praticien pour Rodin, \
+qui l'estime beaucoup. Il s'en affranchit avec l'Héraklès archer, en 1909, puis \
+avec les reliefs du théâtre des Champs-Élysées, inspirés d'Isadora Duncan. Il \
+réalise de grands monuments, dont celui du général Alvear à Buenos Aires et celui \
+du poète Adam Mickiewicz à Paris. Professeur à l'académie de la Grande Chaumière, il \
+forme de nombreux élèves, parmi lesquels Alberto Giacometti et Germaine Richier. \
+Son atelier est devenu le musée Bourdelle en 1949."""
+style = """
+Bourdelle cherche dans la sculpture grecque archaïque et dans l'art roman une \
+grandeur architecturale : plans tranchés, volumes simplifiés, compositions \
+construites. Il garde de Rodin le sens du drame et de l'énergie, mais les soumet à \
+la structure. Son art fait le lien entre Rodin et la sculpture monumentale du XXᵉ \
+siècle."""
+
+[[artistes]]
+nom = "Aristide Maillol"
+vie = "Banyuls-sur-Mer, 8 décembre 1861 – Banyuls-sur-Mer, 27 septembre 1944"
+biographie = """
+Né au bord de la Méditerranée, dans les Pyrénées-Orientales, Aristide Maillol monte \
+à Paris pour devenir peintre et entre à l'École des beaux-arts. Il se lie avec les \
+Nabis, peint des toiles décoratives et fonde à Banyuls un atelier de tapisserie. \
+Vers 1900, une maladie des yeux l'oblige à abandonner ce travail minutieux : il se \
+consacre à la sculpture, d'abord en bois et en terre cuite, puis en pierre et en \
+bronze. La Méditerranée, présentée au Salon d'automne de 1905, le rend célèbre. Le \
+comte Harry Kessler devient son mécène, l'emmène en Grèce en 1908 et publie des \
+livres illustrés de ses gravures sur bois. Maillol partage sa vie entre \
+Marly-le-Roi et Banyuls, et sculpte presque uniquement le corps féminin, ainsi que \
+des monuments aux morts pour les villes de sa région. À partir de 1934, Dina Vierny \
+devient son modèle ; elle fondera à Paris le musée Maillol. Il meurt en 1944, des \
+suites d'un accident de voiture."""
+style = """
+Maillol oppose à Rodin une sculpture du calme et de la plénitude : des femmes aux \
+formes pleines, aux poses simples, aux volumes fermés et aux surfaces lisses. Il \
+retrouve l'esprit de la Grèce classique sans la copier. Son classicisme moderne a \
+profondément marqué la sculpture européenne de la première moitié du XXᵉ siècle."""
