@@ -1,0 +1,924 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « STREET ART » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/street-art/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /street-art.
+#
+#  Droits : les œuvres de street art sont protégées par le droit d'auteur de
+#  leurs auteurs, tous vivants ou morts récemment. Elles ne sont montrées ici que
+#  par des photographies publiées sous licence libre sur Wikimedia Commons, prises
+#  dans des pays dont la loi autorise à photographier les œuvres installées à
+#  demeure dans l'espace public (liberté de panorama : Allemagne, Autriche,
+#  Portugal, Pologne). Chaque image est créditée (auteur, licence, source).
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 220
+nom_court = "Street art"
+mouvement = "Street art et graffiti"
+cadre = "aucun"
+couleur = "#b23a12"
+titre = "Street art, l'art à ciel ouvert"
+artiste = "Vrubel, Thierry Noir, Os Gêmeos, Invader, Vhils, Etam Cru, Okuda…"
+dates = "1990–2018"
+accroche = "Exposition virtuelle · Urban Nation Museum, Berlin"
+introduction = """
+Né à la fin des années 1960 sur les murs et les rames de métro de New York, le \
+graffiti gagne l'Europe dans les années 1980 ; le street art y invente ensuite \
+d'autres outils : pochoir, mosaïque, burin, fresque monumentale peinte depuis une \
+nacelle. La visite réunit neuf œuvres peintes ou posées en plein air, à Berlin, \
+Vienne, Lisbonne et Łódź, par des artistes venus de Russie, d'Allemagne, de France, du \
+Portugal, du Brésil, de Pologne et d'Espagne. Toutes sont montrées par des \
+photographies sous licence libre, prises dans des pays où la loi permet de \
+photographier les œuvres installées à demeure dans la rue. Le bâtiment s'inspire de \
+l'Urban Nation Museum de Berlin : une façade d'accueil, une longue galerie qui évoque \
+le Mur, et des salles hautes comme des pignons d'immeubles."""
+vitrine = "baiser-fraternel.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Urban Nation Museum for Urban Contemporary Art"
+ville = "Berlin, Allemagne"
+architecte = "GRAFT (transformation de l'immeuble)"
+construction = "Immeuble de la fin du XIXᵉ siècle ; musée ouvert en 2017"
+presentation = """
+Le Museum for Urban Contemporary Art, que l'on appelle Urban Nation, occupe un \
+immeuble de la fin du XIXᵉ siècle au 7 de la Bülowstraße, dans le quartier de \
+Schöneberg, près de la place Nollendorfplatz. Le projet naît en 2013 à l'initiative de \
+la Stiftung Berliner Leben, fondation créée par la société municipale de logement \
+Gewobag : d'abord des fresques commandées à des artistes sur des façades de la ville, \
+puis un musée, ouvert au public en septembre 2017. Le cabinet d'architectes berlinois \
+GRAFT a transformé l'immeuble et relié ses salles par des passerelles. La façade, à \
+l'angle de la Zietenstraße, est conçue comme un support modulable : des artistes \
+invités la repeignent à intervalles réguliers, si bien que le bâtiment change de \
+visage. L'exposition d'ouverture réunissait plus de 150 artistes, de Shepard Fairey à \
+la photographe Martha Cooper, dont la bibliothèque, consacrée à la photographie de rue \
+et à l'histoire du graffiti, est installée au musée. Urban Nation affirme ainsi qu'un \
+art né en marge, souvent illégalement, a désormais sa place dans une institution."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée d'une façade d'accueil et de salles aux murs de \
+béton clair. On entre par le sud dans « La façade », hall large et bas, puis on passe \
+au nord dans « Le Mur », galerie de trente mètres qui évoque la East Side Gallery. \
+Deux portes s'ouvrent au nord : à l'ouest, « Les pignons de Kreuzberg », haute de dix \
+mètres, pour les géants de Victor Ash et d'Os Gêmeos ; à l'est, « Vienne et Lisbonne \
+», pour Invader et Vhils. Toutes deux mènent à « Łódź, ville des fresques », longue \
+salle haute de douze mètres."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de l'Urban Nation Museum de Berlin (Bülowstraße 7) : une façade-vitrine
+# sur la rue, puis des salles de béton clair reliées entre elles. Ici : un hall
+# d'entrée au sud, une longue galerie de 30 m qui évoque le Mur et la East Side
+# Gallery, deux salles au nord (une très haute pour les fresques de pignon, une
+# plus basse pour les petits formats), et au fond une grande salle de 12 m de haut
+# pour les fresques monumentales de Łódź. x et z : le centre de la salle (x vers
+# l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "La façade"
+theme = "L'entrée, comme la façade d'Urban Nation que des artistes repeignent régulièrement."
+murs = "#e4dfd6"
+x = 0
+z = 0
+largeur = 16
+profondeur = 6
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Le Mur"
+theme = "La East Side Gallery de Berlin, peinte en 1990 sur le Mur : le baiser de Vrubel, la Trabant de Birgit Kinder, les têtes de Thierry Noir."
+murs = "#ece6da"
+x = 0
+z = -7
+largeur = 30
+profondeur = 8
+hauteur = 6
+
+[[salles]]
+nom = "Les pignons de Kreuzberg"
+theme = "Les géants peints sur les murs aveugles de Kreuzberg : l'astronaute de Victor Ash et le personnage jaune d'Os Gêmeos."
+murs = "#ddd8cf"
+x = -9
+z = -17
+largeur = 12
+profondeur = 12
+hauteur = 10
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Vienne et Lisbonne"
+theme = "L'art de la pose et du pavé : une mosaïque d'Invader à Vienne, le portrait d'Amália par Vhils à Lisbonne."
+murs = "#efe5d3"
+x = 9
+z = -17
+largeur = 12
+profondeur = 12
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Łódź, ville des fresques"
+theme = "Les murs monumentaux de la fondation Urban Forms : Etam Cru et Okuda San Miguel."
+murs = "#e8ddd0"
+x = 0
+z = -29
+largeur = 30
+profondeur = 12
+hauteur = 12
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Mein Gott, hilf mir, diese tödliche Liebe zu überleben (Le Baiser fraternel)"
+artiste = "Dmitri Vrubel"
+annee = "1990, repeint en 2009"
+image = "baiser-fraternel.jpg"
+credit = "Photo : Chaddy"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:East_Side_Gallery_-_Vrubel,_Mein_Gott,_hilf_mir,_diese_tödliche_Liebe_zu_überleben_23.06.2023.jpg"
+technique = "Peinture sur béton (segment du mur de Berlin), 365 × 480 cm"
+collection = "East Side Gallery, Mühlenstraße, Berlin-Friedrichshain (en plein air)"
+note = "Brejnev et Honecker s'embrassent sur la bouche : l'image la plus célèbre du Mur, peinte d'après une photographie de 1979."
+description = """
+Sur un fond bleu ciel, deux vieux hommes en costume sombre et chemise blanche \
+s'embrassent à pleine bouche, les yeux fermés. À gauche, Leonid Brejnev, chef de \
+l'Union soviétique, massif, aux cheveux gris lissés en arrière et aux épais sourcils \
+noirs ; à droite, Erich Honecker, dirigeant de la RDA, plus petit, avec ses lunettes à \
+monture noire. Les visages occupent presque toute la surface, cadrés de très près \
+comme dans une photographie de presse. En bas, deux bandeaux portent la légende : \
+d'abord en russe, en lettres rouges, puis en allemand, en lettres noires sur fond \
+blanc, « Mon Dieu, aide-moi à survivre à cet amour mortel ». À gauche, sur le béton \
+resté blanc, sont inscrits les noms de Dmitri Vrubel et de Viktoria Timofeeva."""
+evocation = """
+Le « baiser fraternel », accolade rituelle entre dirigeants du bloc de l'Est, devient \
+ici une scène d'une intimité gênante. Vrubel en fait une satire : l'étreinte des deux \
+vieillards résume la dépendance de la RDA envers Moscou et l'immobilisme d'un système \
+qui se célébrait lui-même. La légende, presque une prière, ajoute une note tragique : \
+l'« amour mortel » serait celui qui liait les peuples à ce régime, et qui venait de \
+s'effondrer avec le Mur. Peinte quelques mois après la chute, l'œuvre dit le \
+soulagement et l'ironie d'une génération, mais aussi l'étrangeté d'un pouvoir qui se \
+mettait en scène avec une telle emphase. Elle est devenue l'un des emblèmes de la fin \
+de la guerre froide, inlassablement parodiée avec d'autres couples de dirigeants."""
+histoire = """
+Le 7 octobre 1979, aux fêtes des trente ans de la RDA, le photographe français Régis \
+Bossu saisit à Berlin-Est le baiser de Brejnev et Honecker. En 1990, Vrubel, peintre \
+moscovite, reproduit l'image sur la longue portion du Mur qui borde la Spree, le long \
+de la Mühlenstraße, où plus d'une centaine d'artistes venus d'une vingtaine de pays \
+créent alors la East Side Gallery. Abîmée par les intempéries et les inscriptions, la \
+fresque est effacée en mars 2009, lors de la restauration du site : Vrubel la repeint \
+lui-même, avec des peintures plus durables, pour le vingtième anniversaire de la chute \
+du Mur. La même année, Bossu et Vrubel se rencontrent et posent ensemble devant leurs \
+deux images. La photographie montre la version de 2009."""
+facture = """
+Vrubel travaille comme un affichiste : grands aplats, contours nets, peu de nuances. \
+Les chairs sont modelées par quelques tons de rose, d'ocre et de gris, et le cadrage \
+suit de près la photographie de Bossu, agrandie à l'échelle du mur. Le fond bleu uni \
+isole les visages et supprime tout décor. Le lettrage, peint à la main en capitales, \
+fait partie de la composition, à la manière d'une affiche de propagande détournée. \
+L'artiste a reconnu que la première version, peinte sans expérience de la peinture \
+murale, comportait des maladresses techniques."""
+details = [
+  "Les lunettes à épaisse monture noire de Honecker, à droite.",
+  "Les sourcils broussailleux de Brejnev, reconnaissables entre tous.",
+  "La légende en deux langues, rouge pour le russe, noire pour l'allemand.",
+  "À gauche, sur le béton blanc, les noms de Vrubel et de Viktoria Timofeeva.",
+  "Les joints verticaux entre les dalles du Mur, qui traversent les visages.",
+]
+themes = ["guerre froide", "satire", "mur de berlin", "politique", "portrait"]
+anecdote = """
+Pour obtenir le droit de peindre ce pan de mur en 1990, Vrubel signa un contrat par \
+lequel il renonçait à ses droits sur l'œuvre. En 2009, il reversa son cachet de 3 000 \
+euros pour la restauration à un projet artistique social du quartier berlinois de \
+Marzahn."""
+salle = 2
+mur = "nord"
+place = 5
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Test the Best (Test the Rest)"
+artiste = "Birgit Kinder"
+annee = "1990, repeint en 1996 et en 2009"
+image = "test-the-best.jpg"
+credit = "Photo : Tony Webster"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Test_the_Rest_-_East_Side_Gallery,_Berlin_(15777660855).jpg"
+technique = "Peinture sur béton (segment du mur de Berlin)"
+collection = "East Side Gallery, Mühlenstraße, Berlin-Friedrichshain (en plein air)"
+note = "Une Trabant, la petite voiture de la RDA, défonce le Mur : l'image joyeuse de la frontière ouverte."
+description = """
+Sur un fond bleu turquoise, le béton semble avoir éclaté : une Trabant blanche à toit \
+jaune surgit de face à travers un trou aux bords déchiquetés, d'où partent de longues \
+fissures noires. De grands éclats de mur gris clair se détachent autour d'elle. On \
+voit la calandre, les deux phares ronds, le pare-brise sombre, le petit logo de la \
+marque sur le capot. La plaque d'immatriculation porte une date : « NOV·9·89 », celle \
+de l'ouverture du Mur. En haut à gauche, en lettres noires, on lit le titre actuel, « \
+Test the Rest » ; en bas à droite, la signature de Birgit Kinder. Comme sur la plupart \
+des segments, des visiteurs ont ajouté au feutre des prénoms et des messages."""
+evocation = """
+La Trabant, produite à des millions d'exemplaires en RDA et que l'on attendait souvent \
+des années après l'avoir commandée, est le symbole même de la vie quotidienne à l'Est. \
+Dans les jours qui suivent le 9 novembre 1989, des files de « Trabi » franchissent les \
+postes-frontières vers l'Ouest : Birgit Kinder transforme ce souvenir en image de \
+dessin animé, où la voiture passe en force à travers le béton. Le titre d'origine, « \
+Test the Best », jouait sur un slogan publicitaire ouest-allemand, « Test the West » : \
+l'Est découvrait la société de consommation. Devenu en 2009 « Test the Rest », il \
+prend un ton plus amer, celui d'une artiste qui conteste la manière dont la ville \
+traite la galerie."""
+histoire = """
+Née en Thuringe en 1962 et installée à Berlin-Est à vingt et un ans, Birgit Kinder \
+peint sa Trabant en 1990 pour la East Side Gallery. L'œuvre devient vite l'une des \
+plus photographiées du site, et l'une des plus abîmées. À l'époque, les artistes n'ont \
+pas le droit de restaurer leurs peintures, même à leurs frais ; Kinder obtient \
+pourtant de repeindre son segment en 1996. En 2009, comme les autres, il est \
+entièrement effacé puis repeint pour le vingtième anniversaire de la chute du Mur ; \
+l'artiste en profite pour changer le titre en « Test the Rest », critique de la \
+gestion de la galerie par la ville de Berlin. C'est cette version que montre la \
+photographie, prise en 2014."""
+facture = """
+La peinture joue du trompe-l'œil : le bleu du fond se confond avec la surface du mur, \
+si bien que les fissures et les éclats semblent ouvrir le béton lui-même. Les ombres \
+sous les morceaux détachés et le noir du trou donnent la profondeur. La voiture, vue \
+strictement de face, est dessinée avec la netteté d'une illustration, en couleurs \
+pâles cernées de gris. La composition, centrée et symétrique, se lit de loin, comme \
+une affiche. Le texte, réduit à trois mots en capitales, laisse toute la place à \
+l'image."""
+details = [
+  "La plaque d'immatriculation « NOV·9·89 », date de l'ouverture du Mur.",
+  "Les éclats de béton gris qui semblent se détacher autour de la voiture.",
+  "Le toit jaune pâle de la Trabant, au-dessus du pare-brise.",
+  "En haut à gauche, le titre « Test the Rest » de la version de 2009.",
+  "Les prénoms et les messages laissés au feutre par les visiteurs.",
+]
+themes = ["trabant", "mur de berlin", "liberté", "humour", "trompe-l'œil"]
+anecdote = """
+La carrosserie de la vraie Trabant n'était pas en acier mais en Duroplast, une résine \
+renforcée de fibres de coton, faute d'acier en quantité suffisante en RDA. La voiture \
+de Birgit Kinder, elle, traverse sans peine un mur de béton armé."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Hommage an die junge Generation (Hommage à la jeune génération)"
+artiste = "Thierry Noir"
+annee = "1990, repeint en 2009"
+image = "hommage-jeune-generation.jpg"
+credit = "Photo : Gonzalo Malpartida (recadrée)"
+licence = "CC BY-SA 2.0"
+source = "https://commons.wikimedia.org/wiki/File:East_Side_Gallery_-_Thierry_Noir_-_2010-07-28.jpg"
+technique = "Peinture sur béton (segments du mur de Berlin)"
+collection = "East Side Gallery, Mühlenstraße, Berlin-Friedrichshain (en plein air)"
+note = "Les grandes têtes de profil de Thierry Noir, l'un des premiers peintres du Mur, alignées comme une foule en marche."
+description = """
+Le long du Mur, une file de grandes têtes de profil se succède à perte de vue. Chacune \
+est réduite à quelques formes : un crâne arrondi, un gros œil rond, un nez en angle, \
+une bouche ouverte en rectangle, parfois deux dents carrées. Au premier plan, une tête \
+rose sur fond noir occupe toute la hauteur du segment, avec un simple trou noir pour \
+œil ; derrière elle viennent une tête bleue sur fond violet, une verte, une rouge, une \
+jaune, et d'autres encore, qui rapetissent avec la perspective jusqu'au bout de la \
+rue. Les couleurs vives, posées en aplats, se détachent sur des fonds sombres. Au pied \
+du mur, un petit panneau indique au promeneur qu'il longe la East Side Gallery."""
+evocation = """
+Thierry Noir a souvent expliqué qu'il voulait, en peignant vite des formes simples aux \
+couleurs criardes, rendre le Mur ridicule plutôt que lui donner de l'importance. Ses \
+têtes, qu'on a rapprochées des personnages de dessin animé, n'ont ni nom ni histoire : \
+elles bavardent, crient ou s'étonnent. Le titre en fait une foule en marche, celle des \
+jeunes gens qui, à l'Est, ont contribué à la chute du régime. Sur la face orientale du \
+Mur, que nul n'aurait osé peindre avant 1989, ces visages joyeux occupent la place des \
+soldats qui gardaient autrefois la frontière. La répétition, enfin, évoque la longueur \
+même du Mur, qu'il fallait des heures pour longer."""
+histoire = """
+Arrivé de Lyon à Berlin-Ouest en janvier 1982, Thierry Noir habite près du Mur, à \
+Kreuzberg. En avril 1984, il commence à le peindre côté Ouest, avec Christophe Bouchet \
+: c'est l'un des premiers artistes à le faire de façon systématique, alors que le Mur, \
+même côté Ouest, se trouvait sur le territoire de la RDA. Ses têtes couvrent bientôt \
+des centaines de mètres et apparaissent dans « Les Ailes du désir » de Wim Wenders \
+(1987). Après la chute, il peint en 1990 cette suite de segments de la East Side \
+Gallery, qu'il repeint lors de la grande restauration de 2009. La photographie, prise \
+à l'été 2010, montre cette version encore fraîche, avant les inscriptions des \
+visiteurs."""
+facture = """
+Noir appelle son style « Fast Form » : des formes qu'on peut peindre en quelques \
+minutes, sans esquisse, avec de la peinture en bâtiment souvent récupérée. Les têtes \
+sont des silhouettes plates, sans modelé ni ombre, posées sur des fonds unis d'une \
+seule couleur. La répétition fait le reste : d'un segment à l'autre, elles créent un \
+rythme de frise, comme les images successives d'un dessin animé. Cette économie de \
+moyens était aussi une nécessité : sur le Mur des années 1980, il fallait peindre \
+vite."""
+details = [
+  "La tête rose du premier plan, avec son œil réduit à un trou noir.",
+  "Les deux dents carrées, roses, de la tête bleue.",
+  "La succession des fonds noirs, violets et bleus d'un segment à l'autre.",
+  "Le petit panneau « Berliner Mauer – East Side Gallery » au pied du mur.",
+]
+themes = ["mur de berlin", "couleur", "foule", "jeunesse", "répétition"]
+anecdote = """
+Le Mur était bâti quelques mètres en retrait de la frontière réelle : la bande de \
+terrain où Thierry Noir peignait, côté Ouest, appartenait donc à la RDA. Des soldats \
+est-allemands sortaient parfois par des portes aménagées dans le Mur pour y \
+intervenir."""
+salle = 2
+mur = "sud"
+place = 8
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Astronaut / Cosmonaut"
+artiste = "Victor Ash"
+annee = "2007"
+image = "astronaute-cosmonaute.jpg"
+credit = "Photo : OTFW, Berlin (recadrée)"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Mural_Mariannenstr_45_(Kreuz)_Astronaut&Victor_Ash&2007.jpg"
+technique = "Peinture au pochoir sur le pignon d'un immeuble, environ 22 × 14 m"
+collection = "Angle de la Mariannenstraße et de l'Oranienstraße, Berlin-Kreuzberg (en plein air)"
+note = "Un astronaute noir et blanc flotte sur un pignon de Kreuzberg : l'une des fresques les plus célèbres de Berlin."
+description = """
+Sur le mur aveugle d'un immeuble, peint en blanc jusqu'à la pointe du toit, un \
+astronaute en scaphandre flotte en apesanteur. On reconnaît le casque à grande visière \
+noire, le gros sac dorsal, les gants rigides et les plis de la combinaison. Il semble \
+tendre le bras vers la gauche, comme pour saisir quelque chose. L'image, entièrement \
+en noir sur blanc, est faite de taches et de coulures ; vers le bas, elle se défait en \
+traînées grises qui descendent jusqu'au rez-de-chaussée. Les arbres nus de la rue \
+montent devant la façade. Au pied de l'immeuble, des tags, des affiches et des \
+graffitis colorés rappellent que l'on est à Kreuzberg, l'un des quartiers les plus \
+peints de Berlin."""
+evocation = """
+Le titre double, « Astronaut / Cosmonaut », rappelle que pendant la guerre froide les \
+voyageurs de l'espace portaient un nom différent selon le camp : astronautes \
+américains, cosmonautes soviétiques. Peint dans une ville longtemps coupée en deux, le \
+personnage n'appartient à aucun des deux : sans visage derrière sa visière, il \
+pourrait venir de l'Est comme de l'Ouest. On y a vu une image de liberté et de \
+solitude à la fois, un homme qui flotte au-dessus des rues sans pouvoir y redescendre. \
+Le noir et blanc évoque les photographies de presse des années 1960, quand la course à \
+l'espace fascinait le monde entier, et la silhouette qui se dissout fait penser à un \
+souvenir qui s'efface."""
+histoire = """
+Victor Ash peint l'astronaute en 2007 dans le cadre de « Backjumps – The Live Issue », \
+un projet du Kunstraum Kreuzberg/Bethanien qui offrait à des artistes du graffiti et \
+du street art, venus du monde entier, de grands murs du quartier en toute légalité. \
+L'œuvre devient vite l'un des emblèmes de Kreuzberg, puis une étape des visites \
+touristiques consacrées au street art berlinois. Elle a survécu aux transformations du \
+quartier et à l'arrivée de nouvelles fresques, et l'on a fêté ses dix ans en 2017. La \
+photographie a été prise en février 2015, en hiver, quand les arbres sans feuilles \
+laissent voir presque toute la figure."""
+facture = """
+L'œuvre est réalisée au pochoir, technique qui consiste à découper un motif dans une \
+feuille puis à pulvériser la peinture à travers les vides ; ici, le procédé est porté \
+à l'échelle d'un immeuble, au point que la fresque a longtemps été présentée comme \
+l'un des plus grands pochoirs du monde. On en reconnaît la logique : aucune ligne de \
+contour, seulement des zones noires et des réserves blanches, comme dans une \
+photographie très contrastée. Les coulures laissées volontairement et les nuages de \
+bombe dans le bas adoucissent cette rigueur. La figure est décalée sur le mur, hors du \
+centre."""
+details = [
+  "La grande visière noire du casque, qui cache entièrement le visage.",
+  "Le bras tendu vers la gauche, comme pour attraper un objet invisible.",
+  "Les coulures de peinture noire sous la silhouette.",
+  "Les nuages gris qui s'effilochent jusqu'au rez-de-chaussée.",
+  "Les tags et les affiches au pied de l'immeuble.",
+]
+themes = ["espace", "guerre froide", "pochoir", "noir et blanc", "solitude"]
+anecdote = """
+On raconte qu'à l'origine, la nuit, l'astronaute semblait tenir un drapeau qui \
+ondulait : c'était l'ombre d'un vrai drapeau, planté sur le parking d'un \
+concessionnaire automobile en face, projetée sur le mur. Le parking a disparu, et le \
+drapeau avec lui."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "Yellow Man (le personnage jaune)"
+artiste = "Os Gêmeos"
+annee = "2005"
+image = "yellow-man.jpg"
+credit = "Photo : Rae Allen (recadrée)"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Yellow_man_by_Os_Gemeos_(14071586251).jpg"
+technique = "Peinture murale sur le pignon d'un immeuble"
+collection = "Oppelner Straße 3, près de la station Schlesisches Tor, Berlin-Kreuzberg (en plein air)"
+note = "Le géant jaune des jumeaux brésiliens d'Os Gêmeos domine une rue de Kreuzberg, au-dessus d'une frise de graffitis en lettres."
+description = """
+Sur le pignon gris d'un immeuble, un personnage immense se tient debout, de face, les \
+bras le long du corps. Sa tête est jaune vif, ronde et lisse, avec de petits yeux \
+mi-clos, des sourcils noirs, un long nez et une bouche serrée qui montre les dents. Il \
+porte une frange de cheveux noirs, une chemise blanche à deux poches, un foulard à \
+motifs rouges et blancs noué autour du cou et un pantalon à damier brun et ocre. Ses \
+mains jaunes aux longs doigts pendent jusqu'aux cuisses. Sur sa poitrine brille un \
+petit badge rouge. Au pied du mur, une frise de graffitis en grosses lettres blanches \
+et des signatures entourent ses jambes, tandis que des arbres encadrent la façade."""
+evocation = """
+Ce personnage au teint jaune, à la fois enfant et vieillard, dont on ne sait s'il est \
+homme ou femme, vient du monde que les jumeaux d'Os Gêmeos peignent depuis les années \
+1990 : un univers de rêve nourri de culture populaire brésilienne, de hip-hop et de \
+souvenirs d'enfance à São Paulo. Son air sérieux, presque mélancolique, et sa pose \
+figée de portrait de famille contrastent avec l'agitation de la rue. Le foulard, les \
+vêtements dépareillés, le badge évoquent un voyageur venu d'ailleurs, installé dans un \
+quartier profondément marqué par l'immigration. Les graffitis accumulés à ses pieds \
+font de lui le gardien d'une culture qui vit, s'efface et renaît sur les murs."""
+histoire = """
+Les jumeaux Gustavo et Otávio Pandolfo peignent ce géant en 2005 lors de la deuxième \
+édition de « Backjumps – The Live Issue », le projet du Kunstraum Kreuzberg/Bethanien \
+qui invitait des artistes de graffiti du monde entier à peindre légalement de grands \
+murs du quartier ; quelques sources le datent de 2007. Os Gêmeos commencent alors à \
+être connus en Europe ; ils peindront ensuite la façade de la Tate Modern à Londres et \
+des immeubles à Lisbonne. Le pignon de l'Oppelner Straße est à deux pas du pont de \
+l'Oberbaum, qui fut un point de passage entre l'Ouest et l'Est. La fresque compte \
+parmi les plus anciennes et les plus connues de Berlin ; la photographie date de 2014."""
+facture = """
+Le dessin est d'une grande simplicité : contours fins, aplats de couleurs franches, \
+très peu d'ombres, comme dans une illustration de livre pour enfants. Le jaune acide \
+du visage et des mains, devenu la marque des personnages des jumeaux, attire l'œil de \
+loin, tandis que les motifs minutieux du foulard et du pantalon récompensent le regard \
+rapproché. La figure, frontale et symétrique, occupe toute la hauteur du pignon. En \
+bas, la frise de lettres blanches, dans la tradition du lettrage graffiti, rappelle \
+l'autre culture d'où viennent les jumeaux : celle des writers du hip-hop."""
+details = [
+  "Le badge rouge épinglé sur la poche gauche de la chemise.",
+  "Le foulard à motifs rouges et blancs, aux franges qui pendent.",
+  "Les longs doigts jaunes, au bout des bras ballants.",
+  "Le pantalon à damier brun, peint motif par motif.",
+  "La frise de grosses lettres de graffiti au bas du mur.",
+]
+themes = ["personnage", "rêve", "brésil", "graffiti", "lettrage"]
+anecdote = """
+En 2008, Os Gêmeos ont peint, avec d'autres artistes de rue comme l'Italien Blu et le \
+Français JR, la façade de la Tate Modern de Londres pour l'exposition « Street Art » : \
+l'une des premières grandes reconnaissances du street art par un musée."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "Space Invader de la Spiegelgasse"
+artiste = "Invader"
+annee = "vers 2006"
+image = "invader-spiegelgasse.jpg"
+credit = "Photo : Herzi Pinki"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Space_invader_Spiegelgasse,_Vienna.jpg"
+technique = "Mosaïque de carreaux de céramique collée sur une façade"
+collection = "Spiegelgasse, Innere Stadt, Vienne (en plein air)"
+note = "Un petit envahisseur pixélisé, rouge et blanc, posé au-dessus d'une plaque de rue de la vieille Vienne. Photographie agrandie : la mosaïque mesure quelques dizaines de centimètres."
+description = """
+Sur un mur crème du centre de Vienne, deux rectangles se superposent. En bas, une \
+plaque de rue ancienne, émaillée, au cadre rouge à pans coupés, porte en lettres \
+gothiques noires « I. Stadt – Spiegelgasse ». Au-dessus, un petit carré de mosaïque : \
+sur fond blanc, un extraterrestre rouge aux pattes écartées, dessiné en gros pixels, \
+entouré de plusieurs cadres rouges concentriques, comme une cible ou une enseigne. Les \
+petits carreaux, tous de même taille, forment une grille régulière. Un mince câble \
+électrique passe entre les deux. Les deux objets se répondent : même rouge, même \
+blanc, même idée de signalétique, l'une officielle, l'autre clandestine."""
+evocation = """
+Invader tire ses personnages de Space Invaders, jeu vidéo japonais de 1978 où des \
+rangées d'extraterrestres descendent vers le joueur. Il retourne le jeu : c'est lui \
+qui envahit les villes, en posant ses mosaïques à des endroits choisis, souvent près \
+des plaques de rue. Ici, l'alien adopte les couleurs et la forme de la signalisation \
+viennoise, comme un panneau de plus. On y a vu un commentaire sur la culture numérique \
+qui s'infiltre partout, un jeu de piste à l'échelle de la planète et une manière de \
+marquer un territoire sans peinture. Le carreau de céramique, matériau des salles de \
+bains et des couloirs de métro, rend l'œuvre durable, anonyme et presque familière."""
+histoire = """
+Invader commence à « envahir » Paris en 1998, puis parcourt le monde. Chaque ville \
+reçoit un code, PA pour Paris, WN pour Vienne, et chaque mosaïque un numéro, ce qui \
+permet de les répertorier. Selon les relevés des amateurs, la première invasion de \
+Vienne date de 2006 : une cinquantaine de mosaïques sont alors posées, surtout dans le \
+centre historique, et d'autres se sont ajoutées depuis. Beaucoup ont été volées ou \
+détruites ; la date exacte de celle-ci n'est pas certaine. Photographiée en 2020, la \
+mosaïque de la Spiegelgasse a été abîmée depuis : une photographie de 2022 la montre \
+en partie arrachée."""
+facture = """
+La mosaïque est faite de petits carreaux de céramique carrés, collés directement sur \
+l'enduit. Chaque carreau correspond à un pixel : Invader transpose la basse définition \
+des écrans des années 1970 dans un matériau antique, celui des mosaïques romaines et \
+byzantines. Il n'utilise que quelques couleurs en aplats, sans dégradé. Les pièces \
+sont préparées à l'avance, puis posées très vite, souvent en hauteur, hors de portée \
+des passants."""
+details = [
+  "Les cadres rouges qui entourent l'extraterrestre comme une cible.",
+  "Les pattes et les antennes de l'alien, réduites à quelques pixels.",
+  "La plaque « Spiegelgasse » en écriture gothique, juste en dessous.",
+  "Le câble électrique qui passe entre la mosaïque et la plaque.",
+]
+themes = ["jeu vidéo", "mosaïque", "pixel", "ville", "signalétique"]
+anecdote = """
+Depuis 2014, une application pour téléphone, Flash Invaders, transforme les villes en \
+terrain de jeu : les passants photographient les mosaïques qu'ils découvrent et \
+marquent des points, comme dans le jeu vidéo d'origine."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Amália Rodrigues"
+artiste = "Vhils"
+annee = "2015"
+image = "amalia.jpg"
+credit = "Photo : Mike Steele"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Amália_Rodrigues_pavement_mosaic.jpg"
+technique = "Calçada portuguesa : pavés de pierre posés à la main par les calceteiros de Lisbonne"
+collection = "Entre la rua de São Tomé et la rua dos Cegos, Alfama, Lisbonne (en plein air)"
+note = "Le visage de la grande chanteuse de fado, dessiné en pavés de trottoir par Vhils et les paveurs de Lisbonne."
+description = """
+Sur un talus incliné de l'Alfama, le pavage des trottoirs lisboètes semble s'être \
+soulevé pour former un portrait. Le visage d'Amália Rodrigues, tourné vers la droite, \
+la tête légèrement levée, regarde au loin. Une masse de cheveux noirs encadre ses \
+traits, dessinés en pavés clairs, bruns et rosés ; à droite, la chevelure se défait en \
+éclats sombres. Autour, des pavés blancs et gris dessinent un ovale aux bords \
+irréguliers, comme une affiche déchirée, qui monte du sol jusque sur le muret blanc. \
+Une bande de pavés gris traverse le portrait en diagonale. Au premier plan, le \
+trottoir en calçada se prolonge sans rupture : l'image fait partie de la rue."""
+evocation = """
+Amália Rodrigues (1920-1999), la « reine du fado », a porté cette musique de Lisbonne \
+dans le monde entier ; à sa mort, le Portugal a décrété un deuil national. Vhils la \
+représente dans la matière même de la ville : les pavés que foulent chaque jour les \
+habitants de l'Alfama, quartier du fado. Le portrait, à moitié surgi du sol, semble \
+remonter de la mémoire collective. Le motif de l'affiche arrachée, fréquent chez \
+Vhils, évoque les couches du temps qui s'accumulent sur les murs. L'œuvre rend aussi \
+hommage à un savoir-faire : la calçada et le fado sont deux emblèmes de l'identité \
+lisboète."""
+histoire = """
+L'œuvre naît en 2015, à la suite d'un défi lancé à Vhils par le cinéaste \
+franco-portugais Ruben Alves. Elle est réalisée en partenariat avec la mairie de \
+Lisbonne et son école de calceteiros, les paveurs municipaux, gardiens d'une technique \
+enseignée de génération en génération. Après deux à trois mois de préparation, il a \
+fallu environ quatre semaines de travail pour poser les pierres une à une d'après le \
+dessin de l'artiste. Le portrait est installé dans le vieux quartier de l'Alfama, sous \
+le château Saint-Georges, non loin du belvédère des Portas do Sol. Il est devenu une \
+étape des promenades sur les pas d'Amália."""
+facture = """
+Vhils est connu pour ses portraits creusés au burin et au marteau-piqueur dans les \
+façades : il enlève de la matière au lieu d'en ajouter. Ici, il transpose ce travail \
+dans la calçada portuguesa, le pavage de petits cubes de calcaire clair et de basalte \
+noir qui couvre les trottoirs de Lisbonne depuis le XIXᵉ siècle. Le dessin est traduit \
+en zones de pierres de teintes différentes, posées à la main par les calceteiros. La \
+taille des pavés impose une image à gros grain, presque pixélisée, qui se lit mieux \
+avec un peu de recul."""
+details = [
+  "Les mèches de cheveux qui se défont en éclats noirs à droite du visage.",
+  "Le bord irrégulier du portrait, comme une affiche arrachée.",
+  "La bande de pavés gris qui traverse l'image en diagonale.",
+  "Le pavage qui monte du trottoir jusque sur le muret.",
+]
+themes = ["fado", "portrait", "lisbonne", "savoir-faire", "mémoire"]
+anecdote = """
+Quand il pleut, l'eau ruisselle sur les pavés inclinés et le visage d'Amália paraît \
+pleurer, disent les guides de Lisbonne : un effet qui convient à la chanteuse de la \
+saudade, cette nostalgie que le fado met en musique."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "Madame Chicken"
+artiste = "Etam Cru"
+annee = "2012"
+image = "madame-chicken.jpg"
+credit = "Photo : Zorro2212"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Mural_of_EtamCru_(Poland),_Łódź_16_Politechniki_Avenue.jpg"
+technique = "Peinture murale sur le pignon d'un immeuble"
+collection = "16, aleja Politechniki, Łódź (en plein air)"
+note = "Une vieille dame au fichu fleuri serre une poule contre elle : le portrait géant d'une grand-mère polonaise."
+description = """
+Sur le pignon gris d'un immeuble, une vieille femme est représentée en buste, de \
+profil, tournée vers la gauche. Son visage ridé, aux lèvres pincées, est peint avec un \
+réalisme minutieux. Elle porte un fichu vert pâle couvert de fleurs roses et bleues, \
+noué sous le menton, et un manteau bleu à pois. Contre sa poitrine, elle serre de ses \
+mains noueuses une poule rousse à crête rouge. Le bas du buste se termine en pointe, \
+et la peinture y coule, comme si l'image fondait. Au-dessus de sa tête flotte une \
+petite casquette rouge à hélice, et une minuscule couronne est dessinée près de son \
+col. Au pied du mur, des voitures garées donnent l'échelle."""
+evocation = """
+Etam Cru mêlent volontiers le quotidien et le conte. Cette grand-mère, que l'on \
+croirait croisée au marché, évoque la Pologne des babcie, les grand-mères qui ont \
+élevé des générations d'enfants, dans une ville ouvrière dont beaucoup d'habitants \
+venaient de la campagne. Les détails incongrus, la casquette d'enfant à hélice, la \
+couronne minuscule, introduisent une note de rêve et d'humour : la vieille dame \
+devient reine, ou petite fille. La poule tenue comme un trésor peut se lire comme un \
+souvenir de ferme ou comme l'animal d'un personnage de fable. Le titre, mi-français \
+mi-anglais, ajoute à la fantaisie."""
+histoire = """
+Łódź, grande ville textile du XIXᵉ siècle, a été durement touchée par la fermeture de \
+ses usines après 1989. Depuis la fin des années 2000, la fondation Urban Forms y \
+invite des artistes polonais et étrangers à peindre les pignons aveugles des \
+immeubles, et la ville est devenue l'une des capitales européennes de la fresque \
+murale. Etam Cru, duo formé par deux anciens étudiants de l'Académie des beaux-arts de \
+Łódź, peint « Madame Chicken » en 2012 pour ce projet ; certaines sources donnent \
+2013. Le mural de l'avenue Politechniki est devenu l'une des images les plus \
+reproduites de l'art urbain polonais. L'autre face du même immeuble porte une fresque \
+de l'Espagnol Aryz."""
+facture = """
+Comme la plupart des muralistes, le duo travaille depuis une nacelle, et combine ici \
+deux registres. Le visage et les mains, peints avec un modelé presque photographique, \
+montrent chaque ride et chaque veine. Les vêtements, au contraire, sont traités en \
+motifs plats et décoratifs, fleurs et pois, comme des tissus imprimés. Le fond n'est \
+pas peint : le crépi gris du mur, avec ses taches et ses réparations, sert de ciel. La \
+découpe géométrique du buste et les coulures rappellent que l'on regarde une peinture, \
+et non une photographie."""
+details = [
+  "Les rides profondes autour des yeux et de la bouche.",
+  "Le fichu vert pâle semé de fleurs roses et bleues.",
+  "La crête rouge de la poule, blottie contre la vieille femme.",
+  "La petite casquette rouge à hélice qui flotte au-dessus de la tête.",
+  "Les coulures brunes sous le buste, en bas de l'image.",
+]
+themes = ["grand-mère", "pologne", "animal", "conte", "portrait"]
+anecdote = """
+Łódź avait des fresques bien avant le street art : à l'époque de la Pologne populaire, \
+des réclames étaient peintes sur les pignons des immeubles, et plusieurs sont encore \
+visibles. Les murs d'Urban Forms prolongent cette tradition de la peinture en plein \
+air."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 2.8
+
+[[oeuvres]]
+titre = "Fresque de la cité universitaire Lumumby"
+artiste = "Okuda San Miguel"
+annee = "2018"
+image = "okuda-lodz.jpg"
+credit = "Photo : Zorro2212"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Mural_of_Okuda_(Spain),_Łódź_12_Lumumby_Street_-_Lodz_University_Student's_House_no_10.jpg"
+technique = "Peinture murale sur la façade d'une tour"
+collection = "Résidence universitaire, 12, ulica Lumumby, Łódź (en plein air)"
+note = "Des personnages en facettes multicolores sur un fond d'arc-en-ciel couvrent du haut en bas une tour d'étudiants."
+description = """
+Sur toute la hauteur d'une tour de résidence universitaire, entre deux rangées de \
+fenêtres, l'Espagnol Okuda a peint une composition fantastique sur un fond de bandes \
+verticales aux couleurs de l'arc-en-ciel. En haut, une figure au visage gris et \
+anguleux porte une coiffe rose et bleue semée d'étoiles. Plus bas se superposent \
+d'autres personnages et des animaux faits de triangles colorés : un oiseau rouge \
+perché sur un arbre noir constellé de points blancs, un grand oiseau au bec \
+multicolore, des formes rondes à pois. Vers le bas apparaissent un globe terrestre, \
+des mains jointes et des sphères à rayures concentriques. Les fenêtres des chambres \
+percent la peinture."""
+evocation = """
+Chez Okuda, les personnages sans expression, aux corps de facettes multicolores, sont \
+des figures universelles plutôt que des portraits : on a souvent lu dans son œuvre une \
+réflexion sur l'identité, la diversité et le lien entre l'homme et la nature. Ici, les \
+bandes d'arc-en-ciel, le globe terrestre et les oiseaux évoquent un monde ouvert et \
+pluriel, à l'image d'une résidence qui accueille des étudiants de nombreux pays. Le \
+contraste entre ce feu d'artifice de couleurs et l'architecture répétitive d'une tour \
+d'habitation transforme le bâtiment en totem joyeux, visible de tout le quartier."""
+histoire = """
+Okuda peint cette façade en 2018, lors du festival Urban Forms qui célébrait les dix \
+ans de la fondation, avec le soutien de l'université de Łódź. Le bâtiment fait partie \
+de la cité universitaire de la rue Lumumby, surnommée « Lumumbowo », un ensemble de \
+tours étudiantes bâti à l'époque de la Pologne populaire, dont la rue porte le nom du \
+dirigeant congolais Patrice Lumumba. Le choix d'une tour habitée, visible de loin, est \
+typique de la démarche d'Urban Forms, qui privilégie des murs que tout un quartier \
+voit chaque jour. L'œuvre rejoint les nombreuses fresques qu'Okuda a peintes en \
+Europe, en Amérique, en Afrique et en Asie."""
+facture = """
+Le style d'Okuda se reconnaît au premier coup d'œil : il découpe les volumes en \
+triangles et en losanges de couleurs pures, comme un modèle en trois dimensions vu en \
+fil de fer, et oppose ces corps facettés à des visages gris ou blancs, lisses. Il y \
+ajoute des motifs graphiques, pois, rayures, damiers, qui doivent beaucoup au pop art. \
+Les couleurs sont saturées, posées en aplats sans dégradé. La composition verticale, \
+en totem, s'adapte au format de la tour : on la lit de haut en bas, comme un rouleau \
+qui se déroule."""
+details = [
+  "La coiffe rose à étoiles du personnage du haut.",
+  "L'oiseau rouge posé sur l'arbre noir à points blancs.",
+  "Le globe terrestre, en bas, au milieu des sphères rayées.",
+  "Les fenêtres des chambres d'étudiants qui ponctuent la peinture.",
+  "Les bandes verticales aux couleurs de l'arc-en-ciel, en fond.",
+]
+themes = ["couleur", "géométrie", "nature", "diversité", "arc-en-ciel"]
+anecdote = """
+En 2015, Okuda a recouvert de ses facettes multicolores les murs et les voûtes d'une \
+ancienne église des Asturies, à Llanera, transformée en skatepark : la « Kaos Temple » \
+a fait le tour du monde et l'a rendu célèbre bien au-delà du milieu du street art."""
+salle = 5
+mur = "nord"
+place = 7
+largeur = 2.5
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Dmitri Vrubel"
+vie = "Moscou, 14 juillet 1960 – Berlin, août 2022"
+biographie = """
+Fils unique de deux ingénieurs, Dmitri Vrubel commence à peindre à quinze ans et \
+étudie dans la section des arts graphiques de l'Institut pédagogique Lénine de Moscou. \
+On rattache son travail au Sots Art, ce courant né en URSS dans les années 1970 qui \
+détourne les images et les slogans de la propagande soviétique. En 1990, quelques mois \
+après la chute du Mur, il vient à Berlin et peint sur la East Side Gallery le baiser \
+de Brejnev et Honecker, d'après une photographie de Régis Bossu : l'image fait de lui \
+l'auteur de l'une des œuvres les plus reproduites de la fin du XXᵉ siècle. Revenu en \
+Russie, il poursuit une peinture figurative attentive à l'actualité, souvent avec sa \
+femme, l'artiste Viktoria Timofeeva : en 2001, ils publient un calendrier de douze \
+portraits de Vladimir Poutine aux humeurs changeantes, qui connaît un grand succès à \
+Moscou. Le couple s'installe ensuite à Berlin. En 2009, lors de la restauration de la \
+East Side Gallery, Vrubel insiste pour repeindre lui-même son Baiser fraternel. Il \
+meurt à Berlin en août 2022, à soixante-deux ans, des suites du Covid-19."""
+style = """
+Vrubel peint d'après photographie, en grands aplats, avec la netteté d'une affiche. \
+Comme les artistes du Sots Art, il retourne contre elle-même l'imagerie officielle \
+soviétique : portraits de dirigeants, rituels du pouvoir, slogans. L'ironie naît moins \
+de la déformation que du cadrage et du contexte, qui rendent une image officielle \
+absurde ou inquiétante. Son Baiser fraternel a fait entrer une peinture de rue dans \
+l'histoire politique et a inspiré d'innombrables parodies."""
+
+[[artistes]]
+nom = "Birgit Kinder"
+vie = "Elgersburg (Thuringe, RDA), 1962"
+biographie = """
+Birgit Kinder naît en 1962 à Elgersburg, petite ville de Thuringe, en République \
+démocratique allemande. À vingt et un ans, elle part pour Berlin-Est, où elle \
+travaille tout en se formant à l'art à côté de son emploi. Comme des millions \
+d'Allemands de l'Est, elle connaît de l'intérieur la vie quotidienne en RDA, ses \
+pénuries et sa Trabant, qu'il fallait commander des années à l'avance. Lorsque le Mur \
+s'ouvre, en novembre 1989, puis que des artistes du monde entier sont invités en 1990 \
+à peindre la longue portion conservée le long de la Spree, elle fait partie des \
+peintres de la East Side Gallery. Sa Trabant qui traverse le béton devient l'une des \
+images les plus célèbres du site, reproduite sur des cartes postales et des souvenirs \
+vendus dans le monde entier. Kinder se bat ensuite pour sa conservation : à une époque \
+où les artistes n'avaient pas le droit de restaurer leurs œuvres, elle obtient de la \
+repeindre en 1996, puis la reprend en 2009, lors de la grande restauration, en \
+changeant son titre pour protester contre la gestion de la galerie par la ville."""
+style = """
+Birgit Kinder pratique une peinture figurative claire, proche de l'illustration, qui \
+privilégie l'idée frappante à la virtuosité. Sa Trabant joue sur le trompe-l'œil, le \
+mur peint semblant se briser sous la poussée de la voiture, et sur l'humour : un objet \
+modeste de la vie est-allemande devient le héros de l'Histoire. Cette lisibilité \
+immédiate explique la popularité de l'image, devenue l'un des symboles de la \
+réunification allemande."""
+
+[[artistes]]
+nom = "Thierry Noir"
+vie = "Lyon, 1958"
+biographie = """
+Né à Lyon en 1958, Thierry Noir s'installe à Berlin-Ouest en janvier 1982, à \
+vingt-trois ans, attiré, a-t-il raconté, par la scène musicale de la ville. Il vit à \
+Kreuzberg, tout près du Mur. En avril 1984, avec Christophe Bouchet, il commence à \
+peindre le béton côté Ouest, ce que presque personne n'avait fait de façon suivie : le \
+Mur se trouvant sur le territoire de la RDA, l'entreprise était illégale et risquée. \
+Pendant cinq ans, il couvre des centaines de mètres de ses têtes colorées ; on le voit \
+dans « Les Ailes du désir » de Wim Wenders (1987), et ses peintures deviennent l'un \
+des visages du Berlin-Ouest des années 1980. Après la chute du Mur, il participe en \
+1990 à la East Side Gallery, qu'il repeint lors de la restauration de 2009. Des \
+segments du Mur peints par lui sont aujourd'hui exposés dans de nombreux pays, dans \
+des musées, des parcs ou des ambassades, et il a peint depuis des façades, des \
+voitures et des toiles dans le monde entier, en restant fidèle aux mêmes personnages."""
+style = """
+Thierry Noir appelle sa manière « Fast Form » : des formes simples, peintes vite, sans \
+esquisse, avec des couleurs vives posées en aplats. Ses têtes de profil, aux yeux \
+ronds et aux bouches ouvertes, sont devenues sa signature, répétée comme les images \
+d'un dessin animé. Né des contraintes du Mur, où il fallait travailler vite et avec \
+peu de moyens, ce style a fait de lui l'un des pionniers européens de l'art urbain."""
+
+[[artistes]]
+nom = "Victor Ash"
+vie = "Portugal, 1968"
+biographie = """
+Né au Portugal en 1968, Victor Ash grandit et fait ses études à Paris. Au début des \
+années 1980, il commence à peindre à la bombe sur les palissades de chantier du Louvre \
+et autour du Centre Pompidou, dans les premières années du graffiti parisien. De 1983 \
+à 1986, il signe Saho puis Ash2 et fait partie du Bad Boys Crew, avec JayOne et Skki, \
+l'un des groupes pionniers du graffiti en France. En 1989, la créatrice agnès b. \
+l'invite avec JonOne et d'autres graffeurs à l'exposition « Les peintres de la ville \
+», à la galerie du Jour, à Paris. Il travaille ensuite comme artiste professionnel, \
+aussi bien sur toile qu'en plein air, et s'installe au Danemark au milieu des années \
+1990 ; il vit à Copenhague. Son œuvre s'oriente vers des compositions en noir et \
+blanc, souvent inspirées de photographies, et vers des fresques monumentales en \
+couleurs. L'astronaute peint à Kreuzberg en 2007 reste sa fresque la plus célèbre ; en \
+2024, il a réalisé une immense peinture murale sur le front de mer de Seattle."""
+style = """
+Victor Ash vient du graffiti, mais s'en est éloigné pour une peinture plus \
+silencieuse. Ses grandes figures solitaires, astronautes, plongeurs, animaux, sont \
+souvent traitées en noir et blanc, au pochoir ou à la bombe, avec des contrastes de \
+photographie et des coulures qui semblent les dissoudre. Il place volontiers ses \
+images hors du centre du mur, pour qu'elles dialoguent avec l'architecture et la \
+lumière."""
+
+[[artistes]]
+nom = "Os Gêmeos"
+vie = "Gustavo et Otávio Pandolfo, São Paulo (Brésil), 1974"
+biographie = """
+Os Gêmeos (« les jumeaux » en portugais) sont deux frères, Gustavo et Otávio Pandolfo, \
+nés en 1974 à São Paulo. Ils grandissent dans le quartier populaire de Cambuci, où ils \
+découvrent dans les années 1980 la culture hip-hop, la danse break et le graffiti, \
+qu'ils commencent à pratiquer à la fin de la décennie. Ils inventent peu à peu leur \
+propre style, nourri de la culture populaire brésilienne et de leurs rêves d'enfants. \
+Leurs personnages au teint jaune envahissent les murs de São Paulo, puis ceux du monde \
+: Berlin en 2005, la façade de la Tate Modern à Londres en 2008, des immeubles de \
+Lisbonne, de New York ou de Boston. Ils exposent aussi dans les musées et les \
+galeries, avec des installations où la peinture se mêle à la sculpture, à la musique \
+et à la lumière. En 2020, la Pinacothèque de São Paulo leur consacre une grande \
+rétrospective. Ils travaillent toujours ensemble et signent d'un seul nom."""
+style = """
+Os Gêmeos peignent un monde de rêve peuplé de personnages jaunes aux longs membres, \
+aux petits yeux et aux vêtements bariolés, qui semblent venir d'un conte brésilien. \
+Leur dessin, simple et précis, associe les aplats de la bande dessinée à des motifs \
+minutieux de tissus et de broderies. Issus du graffiti, ils ont gardé le goût du \
+lettrage et du travail collectif, tout en devenant l'une des grandes figures \
+internationales du street art."""
+
+[[artistes]]
+nom = "Invader"
+vie = "France, 1969"
+biographie = """
+Invader est le pseudonyme d'un artiste français né en 1969, qui protège son anonymat : \
+il apparaît masqué ou le visage flouté. Son nom vient de Space Invaders, jeu vidéo \
+japonais de 1978 dont il reprend les extraterrestres pixélisés. En 1998, il commence à \
+« envahir » Paris en posant ses mosaïques de carreaux de céramique sur les murs, puis \
+il étend le projet au monde entier : plusieurs milliers de pièces, dans des dizaines \
+de villes, de Londres à Tokyo, de Los Angeles à Vienne, chacune numérotée et \
+répertoriée avec la précision d'un archiviste. Il pose aussi ses envahisseurs dans des \
+lieux inattendus, comme sous la mer au large de Cancún, ou les envoie dans la \
+stratosphère. Parallèlement, il expose en galerie et invente le « rubikcubisme », des \
+tableaux composés de Rubik's Cubes. En 2014, l'application Flash Invaders transforme \
+la chasse aux mosaïques en jeu planétaire. Ses œuvres de rue, très recherchées, sont \
+souvent volées."""
+style = """
+Invader transpose l'esthétique pixélisée des premiers jeux vidéo dans la mosaïque, \
+technique de l'Antiquité. Ses pièces, de quelques carreaux à plusieurs mètres, \
+utilisent des couleurs franches en aplats et s'adaptent au lieu : couleurs d'une \
+plaque de rue, personnage lié à l'histoire d'un quartier. Leur répétition à l'échelle \
+du monde en fait une œuvre unique et dispersée, à mi-chemin entre art conceptuel, jeu \
+et cartographie."""
+
+[[artistes]]
+nom = "Vhils"
+vie = "Lisbonne, 1987"
+biographie = """
+Vhils, de son vrai nom Alexandre Farto, naît en 1987 à Lisbonne et grandit à Seixal, \
+ville industrielle de la rive sud du Tage. Adolescent, il peint des graffitis sur les \
+murs et les trains de la banlieue lisboète. Il part ensuite étudier à Londres, au \
+Central Saint Martins College of Art and Design. En 2008, un portrait creusé dans un \
+mur, présenté au Cans Festival organisé à Londres par Banksy, attire l'attention de la \
+presse : Vhils a trouvé sa technique, qui consiste à sculpter des visages dans les \
+façades en enlevant l'enduit et la brique au burin, au marteau-piqueur ou à \
+l'explosif. Il réalise depuis des portraits monumentaux dans le monde entier, souvent \
+de gens anonymes des quartiers où il travaille, et les décline sur des affiches \
+lacérées, du bois, du métal ou des vidéos. Il expose dans des musées et des galeries, \
+et a cofondé à Lisbonne la galerie Underdogs, consacrée à l'art urbain. Ses portraits \
+d'Amália Rodrigues ou de l'écrivain José Saramago comptent parmi ses œuvres les plus \
+connues."""
+style = """
+Vhils travaille par soustraction : au lieu de peindre, il creuse, gratte, arrache, \
+faisant apparaître un visage dans les couches successives d'un mur. Ses portraits, \
+graves et frontaux, parlent de la mémoire des villes, de l'identité et de la vie des \
+anonymes qui les habitent. Cette manière, à mi-chemin entre la sculpture et la \
+gravure, a profondément renouvelé le street art."""
+
+[[artistes]]
+nom = "Etam Cru"
+vie = "Łódź (Pologne), duo fondé en 2008"
+biographie = """
+Etam Cru est un duo polonais formé par Sainer, de son vrai nom Przemysław Blejzyk, et \
+Bezt, de son vrai nom Mateusz Gapski. Les deux peintres se rencontrent à l'Académie \
+des beaux-arts Władysław-Strzemiński de Łódź, où ils étudient, et commencent à peindre \
+ensemble ; la plupart des sources datent la naissance du duo de 2008. Venus du \
+graffiti, ils passent rapidement à la grande fresque figurative et profitent de \
+l'essor du muralisme dans leur ville, où la fondation Urban Forms leur confie \
+plusieurs murs. Leurs personnages, souvent des enfants, des vieillards ou des animaux \
+dans des situations oniriques, couvrent bientôt des façades dans toute l'Europe et \
+jusqu'en Amérique, au gré des festivals d'art urbain, comme celui de Nuart à \
+Stavanger, en Norvège, en 2014. Ils exposent aussi leurs tableaux en galerie. Chacun \
+mène en parallèle un travail personnel : Sainer penche vers des compositions plus \
+surréalistes, Bezt vers des scènes intimes aux forts contrastes de lumière."""
+style = """
+Etam Cru associent une grande virtuosité académique, héritée de leurs études aux \
+beaux-arts, à l'imaginaire du conte. Leurs personnages, peints avec un réalisme \
+saisissant, portent des vêtements à motifs décoratifs et côtoient des objets absurdes \
+ou des animaux symboliques. Ils laissent souvent le mur nu en guise de fond et \
+marquent la fin de l'image par une découpe géométrique ou des coulures."""
+
+[[artistes]]
+nom = "Okuda San Miguel"
+vie = "Santander (Espagne), 1980"
+biographie = """
+Okuda San Miguel, de son vrai nom Óscar San Miguel Erice, naît en 1980 à Santander, en \
+Cantabrie. Il commence à peindre des graffitis à la fin des années 1990, puis étudie \
+les beaux-arts à l'université Complutense de Madrid, où il s'installe. Dans les années \
+2000, il met au point son style géométrique et multicolore, qui le fait connaître dans \
+les festivals d'art urbain. En 2015, il transforme l'intérieur d'une ancienne église \
+de Llanera, dans les Asturies, devenue skatepark, en un temple de couleurs, la « Kaos \
+Temple », dont les images font le tour du monde. Il peint depuis des façades sur tous \
+les continents, souvent des tours et des bâtiments entiers, et réalise aussi des \
+sculptures, des installations et des tableaux, exposés en galerie et dans des musées. \
+Il revient régulièrement à des motifs récurrents : personnages aux visages gris, \
+animaux, arcs-en-ciel, symboles de la nature et du cosmos, qui composent un univers \
+immédiatement reconnaissable."""
+style = """
+Okuda construit ses figures en facettes géométriques de couleurs pures, comme des \
+modèles en trois dimensions, et les associe à des visages lisses et sans expression. \
+Pois, rayures et damiers, empruntés au pop art et aux motifs textiles, saturent la \
+surface. Ce langage joyeux, à la fois naïf et très construit, s'adapte à toutes les \
+échelles, de la toile à l'immeuble entier."""
