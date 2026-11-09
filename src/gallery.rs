@@ -79,6 +79,9 @@ pub struct TourControl {
     pub on_change: Option<Rc<dyn Fn(Option<Focus>)>>,
     /// Les modifications de l'éditeur : la scène se reconstruit quand elles changent.
     pub edits: Edits,
+    /// La part de l'image couverte par l'interface, en haut et en bas (de 0 à 1) : la
+    /// visite guidée cadre les tableaux entre les deux.
+    pub insets: (f32, f32),
 }
 
 /// Les commandes, partagées (`Rc<RefCell<…>>`) entre la page et la scène.
@@ -102,6 +105,39 @@ paquets::active::component!(Visitor);
 /// Une lampe de plafond (seules les 8 plus proches du visiteur restent allumées).
 struct Lamp;
 paquets::active::component!(Lamp);
+
+/// Un tableau dont l'image se télécharge : sa mosaïque reste en place jusqu'à ce qu'elle
+/// arrive, puis la toile peinte vient devant (`front`) et la mosaïque s'en va.
+struct Painting {
+    image: Handle<Image>,
+    placeholders: Vec<Entity>,
+    front: Transform,
+    /// Sur le plateau tournant de la vitrine : la place devant, autour de l'axe.
+    front_offset: Option<[f32; 3]>,
+}
+paquets::active::component!(Painting);
+
+/// Les images des tableaux, chargées une fois par scène (l'éditeur reconstruit les œuvres
+/// sans les télécharger de nouveau).
+#[derive(Default)]
+struct PaintingImages(HashMap<&'static str, Handle<Image>>);
+paquets::active::resource!(PaintingImages);
+
+/// Les matières des salles : plâtre et parquet, avec leur relief.
+struct Surfaces {
+    plaster: (paquets::scene::Texture, paquets::scene::Texture),
+    parquet: (paquets::scene::Texture, paquets::scene::Texture),
+}
+paquets::active::resource!(Surfaces);
+
+impl Default for Surfaces {
+    fn default() -> Surfaces {
+        Surfaces {
+            plaster: crate::surfaces::plaster(),
+            parquet: crate::surfaces::parquet(),
+        }
+    }
+}
 
 /// Une œuvre de la scène (tableau, cadre, cartel, sculpture, socle) : reconstruite quand
 /// l'éditeur la déplace.
@@ -133,10 +169,88 @@ fn color([r, g, b]: [u8; 3]) -> Color {
     Color::srgb_u8(r, g, b)
 }
 
-fn spawn_block(commands: &mut Commands, meshes: Meshes, materials: Materials, block: &Block) {
+/// L'adresse de l'image d'une œuvre, sur ce site (`/ARTEON/tableaux/…` sur GitHub Pages).
+fn image_url(ex: &Exhibition, art: &Artwork) -> String {
+    #[cfg(target_arch = "wasm32")]
+    {
+        format!("{}{}", crate::viewer::base_path(ex.slug), art.image_url())
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let _ = ex;
+        art.image_url()
+    }
+}
+
+/// Le matériau d'un pavé du musée : parquet au sol, plâtre aux murs et au plafond (teinté
+/// de la couleur du pavé), une couleur unie pour le reste (plinthes, bancs).
+fn block_material(
+    block: &Block,
+    surfaces: &Surfaces,
+    images: &mut Assets<Image>,
+) -> StandardMaterial {
+    use crate::surfaces::{PARQUET_METERS, PLASTER_METERS};
+    let [sx, sy, sz] = block.size;
+    let repeated = |images: &mut Assets<Image>,
+                    (color, relief): &(paquets::scene::Texture, paquets::scene::Texture),
+                    u: f32,
+                    v: f32| {
+        (
+            images.add(Image::from_texture(color.clone().repeat(u, v))),
+            images.add(Image::from_texture(relief.clone().repeat(u, v))),
+        )
+    };
+    let floor = block.color == museum::FLOOR && sy <= 0.11 && block.center[1] < 0.0;
+    let ceiling = block.color == museum::CEILING;
+    let wall = sy >= 0.5 && sx.min(sz) <= 0.6;
+    if floor {
+        let (color, relief) = repeated(
+            images,
+            &surfaces.parquet,
+            sx / PARQUET_METERS,
+            sz / PARQUET_METERS,
+        );
+        StandardMaterial {
+            base_color_texture: Some(color),
+            normal_map_texture: Some(relief),
+            perceptual_roughness: 0.42,
+            ..default()
+        }
+    } else if ceiling || wall {
+        let (u, v) = if ceiling {
+            (sx / PLASTER_METERS, sz / PLASTER_METERS)
+        } else {
+            (sx.max(sz) / PLASTER_METERS, sy / PLASTER_METERS)
+        };
+        let (texture, relief) = repeated(images, &surfaces.plaster, u.max(0.05), v.max(0.05));
+        StandardMaterial {
+            base_color: color(block.color),
+            base_color_texture: Some(texture),
+            normal_map_texture: Some(relief),
+            perceptual_roughness: 0.9,
+            ..default()
+        }
+    } else {
+        StandardMaterial {
+            base_color: color(block.color),
+            perceptual_roughness: 0.55,
+            ..default()
+        }
+    }
+}
+
+fn spawn_block(
+    commands: &mut Commands,
+    meshes: Meshes,
+    materials: Materials,
+    block: &Block,
+    surfaces: &Surfaces,
+    images: &mut Assets<Image>,
+) {
+    let material = block_material(block, surfaces, images);
     commands.spawn((
         Mesh3d(meshes.add(Cuboid::new(block.size[0], block.size[1], block.size[2]))),
-        MeshMaterial3d(materials.add(color(block.color))),
+        MeshMaterial3d(materials.add(material)),
         Transform::from_xyz(block.center[0], block.center[1], block.center[2]),
     ));
 }
@@ -501,6 +615,7 @@ fn hang(
     commands: &mut Commands,
     meshes: Meshes,
     materials: Materials,
+    textures: &mut Textures<'_>,
     ex: &Exhibition,
     data: &ExhibitionData,
     art: &Artwork,
@@ -520,13 +635,44 @@ fn hang(
             Exhibit,
         ));
     }
-    let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, CANVAS_Z);
-    for (rgb, mesh) in mosaic_meshes(&art.mosaic, data.cells(&art.mosaic), w, h) {
+    // La peinture : l'image de l'œuvre, nette ; sa mosaïque en attendant qu'elle arrive.
+    let (image, loaded) = textures.painting(ex, art);
+    let canvas = (
+        Mesh3d(meshes.add(Rectangle::new(w, h))),
+        MeshMaterial3d(materials.add(painted(image))),
+    );
+    let (front, _) = museum::on_wall(ex, art.hook, 0.0, 0.0, CANVAS_Z + 0.002);
+    let front = turned(front, angle);
+    if loaded {
+        commands.spawn((canvas.0, canvas.1, front, Exhibit));
+    } else {
+        let (pos, _) = museum::on_wall(ex, art.hook, 0.0, 0.0, CANVAS_Z);
+        let placeholders = mosaic_meshes(&art.mosaic, data.cells(&art.mosaic), w, h)
+            .into_iter()
+            .map(|(rgb, mesh)| {
+                commands
+                    .spawn((
+                        Mesh3d(meshes.add(mesh)),
+                        MeshMaterial3d(materials.add(color(rgb))),
+                        turned(pos, angle),
+                        Exhibit,
+                    ))
+                    .id()
+            })
+            .collect();
+        // Caché derrière le fond de la toile, il est dessiné : son image se télécharge.
+        let (behind, _) = museum::on_wall(ex, art.hook, 0.0, 0.0, CANVAS_Z - 0.008);
         commands.spawn((
-            Mesh3d(meshes.add(mesh)),
-            MeshMaterial3d(materials.add(color(rgb))),
-            turned(pos, angle),
+            canvas.0,
+            canvas.1,
+            turned(behind, angle),
             Exhibit,
+            Painting {
+                image,
+                placeholders,
+                front,
+                front_offset: None,
+            },
         ));
     }
     let plaque_height = 1.45 - art.hook.center;
@@ -543,6 +689,58 @@ fn hang(
         turned(pos, angle),
         Exhibit,
     ));
+}
+
+/// Les images des œuvres : la collection d'images de la scène et ce qui est déjà chargé.
+struct Textures<'a> {
+    images: &'a mut Assets<Image>,
+    cache: &'a mut PaintingImages,
+}
+
+impl Textures<'_> {
+    /// L'image d'une œuvre (téléchargée une fois), et si elle est déjà là.
+    fn painting(&mut self, ex: &Exhibition, art: &Artwork) -> (Handle<Image>, bool) {
+        let images = &mut *self.images;
+        let handle = *self
+            .cache
+            .0
+            .entry(art.image)
+            .or_insert_with(|| images.add(Image::from_url(image_url(ex, art))));
+        let loaded = images.get(handle).is_some_and(|i| i.size().is_some());
+        (handle, loaded)
+    }
+}
+
+/// Le matériau d'une toile peinte : son image, à peine vernie.
+fn painted(image: Handle<Image>) -> StandardMaterial {
+    StandardMaterial {
+        base_color_texture: Some(image),
+        perceptual_roughness: 0.7,
+        ..default()
+    }
+}
+
+/// Quand l'image d'un tableau est arrivée : la toile peinte passe devant, la mosaïque s'en va.
+fn reveal_paintings(
+    images: Res<Assets<Image>>,
+    mut paintings: Query<(Entity, &Painting, &mut Transform, Option<&mut Turntable>)>,
+    mut commands: Commands,
+) {
+    for (entity, painting, mut transform, turntable) in &mut paintings {
+        if images
+            .get(painting.image)
+            .is_some_and(|i| i.size().is_some())
+        {
+            match (turntable, painting.front_offset) {
+                (Some(mut part), Some(offset)) => part.offset = offset,
+                _ => *transform = painting.front,
+            }
+            for placeholder in &painting.placeholders {
+                commands.entity(*placeholder).despawn();
+            }
+            commands.entity(entity).remove::<Painting>();
+        }
+    }
 }
 
 /// Pose une sculpture sur son socle.
@@ -587,17 +785,27 @@ fn sculpt(
 
 fn setup_tour(
     current: Res<Current>,
+    surfaces: Res<Surfaces>,
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
+    mut images: ResMut<Assets<Image>>,
+    mut cache: ResMut<PaintingImages>,
 ) {
     let (ex, data) = (current.0, current.1.clone());
     for (i, room) in ex.rooms.iter().enumerate() {
-        for block in museum::room_blocks(room) {
-            spawn_block(&mut commands, &mut meshes, &mut materials, &block);
-        }
-        for block in museum::bench(ex, i).into_iter().flatten() {
-            spawn_block(&mut commands, &mut meshes, &mut materials, &block);
+        let blocks = museum::room_blocks(room)
+            .into_iter()
+            .chain(museum::bench(ex, i).into_iter().flatten());
+        for block in blocks {
+            spawn_block(
+                &mut commands,
+                &mut meshes,
+                &mut materials,
+                &block,
+                &surfaces,
+                &mut images,
+            );
         }
         for pos in museum::lamps(room) {
             lamp(&mut commands, pos, museum::lamp_intensity(room));
@@ -607,6 +815,10 @@ fn setup_tour(
         &mut commands,
         &mut meshes,
         &mut materials,
+        &mut Textures {
+            images: &mut images,
+            cache: &mut cache,
+        },
         ex,
         &data,
         &Edits::default(),
@@ -633,6 +845,7 @@ fn spawn_exhibits(
     commands: &mut Commands,
     meshes: Meshes,
     materials: Materials,
+    textures: &mut Textures<'_>,
     ex: &Exhibition,
     data: &ExhibitionData,
     edits: &Edits,
@@ -642,6 +855,7 @@ fn spawn_exhibits(
             commands,
             meshes,
             materials,
+            textures,
             ex,
             data,
             &editor::edited_art(ex, edits, i),
@@ -660,6 +874,7 @@ fn spawn_exhibits(
 
 /// Quand l'éditeur a déplacé une œuvre : retire toutes les œuvres de la scène et les
 /// remet à leur nouvelle place.
+#[allow(clippy::too_many_arguments)] // Un système : ses paramètres sont ce qu'il lit et écrit.
 fn apply_edits(
     current: Res<Current>,
     control: Option<Res<Control>>,
@@ -668,6 +883,8 @@ fn apply_edits(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
+    mut images: ResMut<Assets<Image>>,
+    mut cache: ResMut<PaintingImages>,
 ) {
     let Some(control) = control else { return };
     let edits = {
@@ -685,6 +902,10 @@ fn apply_edits(
         &mut commands,
         &mut meshes,
         &mut materials,
+        &mut Textures {
+            images: &mut images,
+            cache: &mut cache,
+        },
         current.0,
         &current.1,
         &edits,
@@ -744,6 +965,10 @@ fn focus_in_view(ex: &Exhibition, eye: [f32; 3], yaw: f32) -> Option<Focus> {
         .map(|(_, f)| f)
 }
 
+thread_local! {
+    static SMOOTH_INSETS: std::cell::Cell<(f32, f32)> = const { std::cell::Cell::new((0.0, 0.0)) };
+}
+
 fn walk(
     current: Res<Current>,
     control: Option<Res<Control>>,
@@ -767,6 +992,16 @@ fn walk(
         (asked.forward, asked.strafe, asked.run) = (c.forward, c.strafe, c.run);
         asked.turn = std::mem::take(&mut c.turn) + c.spin * dt;
         asked.tilt = std::mem::take(&mut c.tilt);
+        asked.insets = c.insets;
+    }
+    // Suivre l'interface en douceur : la caméra glisse quand le cartel change de taille.
+    {
+        let k = 1.0 - (-dt * 4.0).exp();
+        let mut now = SMOOTH_INSETS.with(std::cell::Cell::get);
+        now.0 += (asked.insets.0 - now.0) * k;
+        now.1 += (asked.insets.1 - now.1) * k;
+        SMOOTH_INSETS.with(|s| s.set(now));
+        tour::set_insets(now.0, now.1);
     }
     for (mut transform, mut v) in &mut visitors {
         // Passer d'un mode à l'autre : la visite libre part de là où était la caméra ; la
@@ -881,8 +1116,10 @@ pub fn tour_app(ex: &'static Exhibition, data: Rc<ExhibitionData>) -> App {
         .insert_resource(ambient())
         .insert_resource(Current(ex, data))
         .init_resource::<Applied>()
+        .init_resource::<Surfaces>()
+        .init_resource::<PaintingImages>()
         .add_systems(Startup, setup_tour)
-        .add_systems(Update, (walk, nearest_lamps, apply_edits));
+        .add_systems(Update, (walk, nearest_lamps, apply_edits, reveal_paintings));
     app
 }
 
@@ -904,23 +1141,46 @@ fn setup_showcase(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
+    mut images: ResMut<Assets<Image>>,
+    mut cache: ResMut<PaintingImages>,
 ) {
+    // L'œuvre de la vitrine, au plus 1,4 m de large et 1,7 m de haut, dans son cadre.
+    let art = current.0.cover();
+    let frame = art.map_or(Frame::Gilded, |a| a.frame);
+    let ratio = art.map_or(0.8, |a| a.height / a.width);
+    let w = 1.4f32.min(1.7 / ratio);
+    let h = w * ratio;
+    // Son image, nette, qui remplace la mosaïque dès qu'elle est arrivée.
+    let painting = art.map(|art| {
+        let (image, _) = Textures {
+            images: &mut images,
+            cache: &mut cache,
+        }
+        .painting(current.0, art);
+        (
+            meshes.add(Rectangle::new(w, h)),
+            materials.add(painted(image)),
+            image,
+        )
+    });
     let center = [0.0, 0.0, 0.0];
     let speed = 0.4;
     let mut part =
         |commands: &mut Commands, mesh: Mesh, rgb: [u8; 3], offset: [f32; 3], base: Quat| {
-            commands.spawn((
-                Mesh3d(meshes.add(mesh)),
-                MeshMaterial3d(materials.add(color(rgb))),
-                Transform::from_xyz(offset[0], offset[1], offset[2]),
-                Turntable {
-                    center,
-                    offset,
-                    base,
-                    speed,
-                    angle: 0.0,
-                },
-            ));
+            commands
+                .spawn((
+                    Mesh3d(meshes.add(mesh)),
+                    MeshMaterial3d(materials.add(color(rgb))),
+                    Transform::from_xyz(offset[0], offset[1], offset[2]),
+                    Turntable {
+                        center,
+                        offset,
+                        base,
+                        speed,
+                        angle: 0.0,
+                    },
+                ))
+                .id()
         };
     const WOOD: [u8; 3] = [126, 84, 48];
     const WOOD_LIGHT: [u8; 3] = [152, 106, 64];
@@ -993,12 +1253,6 @@ fn setup_showcase(
         back_tilt,
     );
 
-    // L'œuvre de la vitrine, au plus 1,4 m de large et 1,7 m de haut, dans son cadre.
-    let art = current.0.cover();
-    let frame = art.map_or(Frame::Gilded, |a| a.frame);
-    let ratio = art.map_or(0.8, |a| a.height / a.width);
-    let w = 1.4f32.min(1.7 / ratio);
-    let h = w * ratio;
     let fw = frame_width(frame);
     // La tablette qui porte le tableau, et sa lèvre.
     let ledge_y = 0.62;
@@ -1062,8 +1316,31 @@ fn setup_showcase(
     // La peinture, devant.
     match art {
         Some(art) => {
-            for (rgb, mesh) in mosaic_meshes(&art.mosaic, current.1.cells(&art.mosaic), w, h) {
-                part(&mut commands, mesh, rgb, along(CANVAS_Z), back_tilt);
+            let placeholders = mosaic_meshes(&art.mosaic, current.1.cells(&art.mosaic), w, h)
+                .into_iter()
+                .map(|(rgb, mesh)| part(&mut commands, mesh, rgb, along(CANVAS_Z), back_tilt))
+                .collect();
+            if let Some((mesh, material, image)) = painting {
+                // Derrière la mosaïque le temps du téléchargement, puis devant.
+                let behind = along(CANVAS_Z - 0.008);
+                commands.spawn((
+                    Mesh3d(mesh),
+                    MeshMaterial3d(material),
+                    Transform::from_xyz(behind[0], behind[1], behind[2]),
+                    Turntable {
+                        center,
+                        offset: behind,
+                        base: back_tilt,
+                        speed,
+                        angle: 0.0,
+                    },
+                    Painting {
+                        image,
+                        placeholders,
+                        front: Transform::default(),
+                        front_offset: Some(along(CANVAS_Z + 0.002)),
+                    },
+                ));
             }
         }
         None => {
@@ -1102,8 +1379,9 @@ pub fn showcase_app(ex: &'static Exhibition, data: Rc<ExhibitionData>) -> App {
     app.add_plugins(plugins())
         .insert_resource(ambient())
         .insert_resource(Current(ex, data))
+        .init_resource::<PaintingImages>()
         .add_systems(Startup, setup_showcase)
-        .add_systems(Update, turn);
+        .add_systems(Update, (turn, reveal_paintings));
     app
 }
 
