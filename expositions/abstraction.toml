@@ -1,0 +1,924 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ABSTRACTION » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/abstraction/). Le nom
+#  du fichier donne l'adresse de l'exposition sur le site : /abstraction.
+#
+#  Toutes les œuvres sont dans le domaine public : artistes morts en 1955 ou avant,
+#  œuvres créées avant 1931, photographies de Wikimedia Commons (PD-Art).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 190
+nom_court = "Abstraction"
+mouvement = "Avant-gardes et abstraction"
+couleur = "#b8261b"
+titre = "Les avant-gardes, la naissance de l'abstraction"
+artiste = "Kandinsky, Mondrian, Malevitch, Klee, af Klint…"
+dates = "1907–1930"
+accroche = "Exposition virtuelle · Solomon R. Guggenheim Museum, New York"
+introduction = """
+Entre 1907 et 1930, en Suède, à Paris, à Milan, à Moscou, à Weimar et à Hanovre, des \
+peintres renoncent à imiter le monde visible : la couleur, la ligne et la forme \
+deviennent leur propre sujet. Cubisme, futurisme, orphisme, suprématisme, De Stijl, \
+Bauhaus et dada sont réunis ici en dix œuvres, des toiles secrètes de Hilma af Klint \
+au carré noir de Malevitch et aux lignes noires de Mondrian. Le bâtiment s'inspire du \
+musée Guggenheim de New York, conçu par Frank Lloyd Wright pour une collection née de \
+la passion de Solomon R. Guggenheim pour Kandinsky : un hall bas, une rotonde blanche \
+très haute et des baies d'exposition tout autour."""
+vitrine = "composition-viii.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Guggenheim de New York (Frank Lloyd Wright, 1959) : on entre par un
+# hall bas et étroit, puis on débouche dans une rotonde blanche de 18 m de haut,
+# sous la verrière, d'où l'on gagne trois baies d'exposition plus intimes, à
+# l'ouest, à l'est et au nord. Murs blancs chauds, comme au musée. x et z : le
+# centre de la salle (x vers l'est, z vers le sud), en mètres ; une porte se
+# déclare d'un seul côté.
+
+[[salles]]
+nom = "Le hall d'entrée"
+theme = "Un passage bas et resserré, comme chez Wright, avant l'éblouissement de la rotonde."
+murs = "#ece8e0"
+x = 0
+z = 0
+largeur = 12
+profondeur = 6
+hauteur = 4
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La rotonde · Vers l'abstraction"
+theme = "1907–1923 : les pionniers, Hilma af Klint, Delaunay et Kandinsky, sous une verrière à 18 m de haut."
+murs = "#f3f0e9"
+x = 0
+z = -12
+largeur = 18
+profondeur = 18
+hauteur = 18
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "Baie ouest · Cubisme et futurisme"
+theme = "1910–1919 : la forme brisée en facettes, la ville moderne, la vitesse et la machine."
+murs = "#efe9df"
+x = -15
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 5
+
+[[salles]]
+nom = "Baie est · Suprématisme et De Stijl"
+theme = "1915–1930 : le carré noir de Malevitch et les lignes noires de Mondrian, la peinture réduite à l'essentiel."
+murs = "#f1eee8"
+x = 15
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 5
+
+[[salles]]
+nom = "Baie nord · Dada et Bauhaus"
+theme = "1919–1922 : les collages Merz de Schwitters et le visage-mosaïque de Klee."
+murs = "#ede6da"
+x = 0
+z = -27
+largeur = 14
+profondeur = 12
+hauteur = 5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Les Dix Plus Grands, n° 7, L'Âge adulte"
+artiste = "Hilma af Klint"
+annee = "1907"
+image = "dix-plus-grandes-7.jpg"
+technique = "Tempera sur papier marouflé sur toile, 315 × 235 cm"
+collection = "Fondation Hilma af Klint, Stockholm"
+note = "Une abstraction de plus de trois mètres, peinte des années avant celles de Kandinsky, et restée cachée pendant près de quatre-vingts ans."
+description = """
+Sur un fond mauve pâle se dresse une immense forme jaune, faite de deux masses \
+superposées qui ne se touchent qu'en un seul point, au centre du tableau, comme un \
+sablier ou une graine qui s'ouvre. La masse du haut, marquée des chiffres romains I et \
+II, est parcourue de fuseaux tracés en rouge, en rose, en blanc et en pointillé noir ; \
+celle du bas, numérotée III, est rayée de lignes noires qui se resserrent vers le bas. \
+Tout autour flottent des motifs plus petits : des disques verts et jaunes en haut, des \
+feuilles rouges en forme de trèfle à gauche, une fleur noire, des œufs, des spirales \
+et des boucles blanches qui ressemblent à une écriture. Tout en bas, sous une frise \
+noire, un mot est tracé en lettres cursives : vestalasket."""
+evocation = """
+Les Dix Plus Grands racontent les âges de la vie humaine : deux tableaux pour \
+l'enfance, deux pour la jeunesse, quatre pour l'âge adulte et deux pour la vieillesse. \
+Celui-ci appartient à la maturité, et l'on y a vu une image de l'épanouissement : des \
+formes qui poussent, se dédoublent et fleurissent comme des organismes vivants. Les \
+lettres, les mots inventés et les couleurs relèvent d'un vocabulaire symbolique \
+personnel, nourri de théosophie et de botanique ; les historiens y lisent notamment \
+l'union des contraires, du masculin et du féminin. Pour Hilma af Klint, la peinture \
+devait rendre visible un monde spirituel invisible. Sa redécouverte, depuis les années \
+1980, a bouleversé l'histoire de l'abstraction, longtemps racontée sans elle et sans \
+les femmes."""
+histoire = """
+Depuis les années 1890, Hilma af Klint participe avec quatre amies, le groupe des \
+Cinq, à des séances spirites. En 1906, elle entreprend ce qu'elle décrit comme une \
+commande reçue de guides spirituels : les Peintures pour le temple, un cycle de 193 \
+œuvres achevé en 1915. Les Dix Plus Grands en forment le cœur ; elle les peint à \
+l'automne 1907, à un rythme très rapide, dans son atelier de Stockholm. Elle ne les \
+montre qu'à quelques proches et demande que ses œuvres abstraites ne soient pas \
+exposées avant vingt ans après sa mort. Conservées par son neveu puis par une \
+fondation, elles apparaissent en 1986 à Los Angeles, dans l'exposition The Spiritual \
+in Art, puis triomphent au Moderna Museet de Stockholm en 2013 et au Guggenheim de New \
+York en 2018."""
+facture = """
+Le tableau est peint à la tempera sur de grandes feuilles de papier assemblées, puis \
+marouflées sur toile : un format géant que l'artiste travaillait posé au sol. Les \
+couleurs sont étalées en aplats, sans modelé ni ombre, et cernées de contours nets. La \
+palette, faite de mauve, de jaune d'or, de vert et de rose, n'a rien de la peinture \
+académique de son temps. Formée à l'Académie royale des beaux-arts de Stockholm, Hilma \
+af Klint était aussi une dessinatrice botaniste précise : on le sent dans la \
+régularité des courbes et dans la symétrie de la composition, organisée le long d'un \
+axe vertical."""
+details = [
+  "Les chiffres romains I, II et III, posés sur les grandes formes jaunes.",
+  "Le point unique où se touchent les deux masses, au centre du tableau.",
+  "À gauche, la tige rouge qui porte des feuilles en forme de trèfle.",
+  "À droite, des boucles blanches qui semblent former une écriture inconnue.",
+  "Tout en bas, le mot vestalasket tracé en lettres cursives.",
+]
+themes = ["âges de la vie", "spiritualité", "botanique", "symboles", "abstraction"]
+anecdote = """
+L'exposition Hilma af Klint présentée au Guggenheim de New York en 2018 et 2019, où la \
+série des Dix Plus Grands était accrochée le long de la rampe de la rotonde, a attiré \
+plus de 600 000 visiteurs : elle est devenue la plus fréquentée de toute l'histoire du \
+musée."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 2.35
+
+[[oeuvres]]
+titre = "Composition VIII"
+artiste = "Vassily Kandinsky"
+annee = "1923"
+image = "composition-viii.jpg"
+technique = "Huile sur toile, 140 × 201 cm"
+collection = "Solomon R. Guggenheim Museum, New York"
+note = "Peinte au Bauhaus de Weimar en juillet 1923 : des cercles, des triangles et des lignes droites jouent comme les instruments d'un orchestre."
+description = """
+Sur un fond clair, crème et bleuté, sans horizon ni objet reconnaissable, flottent des \
+dizaines de formes géométriques. En haut à gauche, un grand cercle noir au cœur \
+violet, entouré d'un halo rose, domine la toile, accompagné d'un petit disque rouge. \
+Au centre se dresse un grand triangle pointe en haut, traversé de lignes. Des damiers \
+noirs et blancs, ou colorés, s'élancent en diagonale ; une rangée de demi-cercles \
+s'aligne au-dessous comme une suite d'arches. À droite, des faisceaux de droites \
+parallèles filent vers le haut, entre de petits cercles transparents, et une grille de \
+lignes fines se détache sur le fond. Ailleurs, des disques jaunes, bleus ou violets, \
+souvent auréolés, ponctuent la surface comme des notes."""
+evocation = """
+Kandinsky concevait la peinture comme une musique pour les yeux : il nomme \
+Impressions, Improvisations et Compositions ses toiles abstraites, et réserve ce \
+dernier titre à ses œuvres les plus réfléchies. Ici, chaque forme a sa voix : l'angle \
+aigu du triangle, la tension des droites, le calme des cercles. Le grand cercle noir \
+et rose, en haut à gauche, a souvent été comparé à un astre qui règle tout le tableau \
+; Kandinsky écrira plus tard que le cercle réunit en lui les plus grandes oppositions. \
+Comparée aux tourbillons de couleur d'avant 1914, la toile témoigne d'un tournant : au \
+contact du constructivisme russe puis du Bauhaus, l'émotion passe désormais par une \
+géométrie précise, sans rien perdre de son lyrisme."""
+histoire = """
+Rentré en Allemagne à la fin de 1921 après sept années passées en Russie, Kandinsky \
+est appelé en 1922 par l'architecte Walter Gropius au Bauhaus de Weimar, l'école qui \
+veut réunir l'art, l'artisanat et l'industrie. Il y enseigne la forme et la couleur et \
+peint cette huitième Composition en juillet 1923. À partir de 1930, le magnat \
+américain Solomon R. Guggenheim, guidé par l'artiste et conseillère Hilla Rebay, rend \
+visite à Kandinsky et achète nombre de ses toiles. Composition VIII entre dans sa \
+fondation créée en 1937, puis au Museum of Non-Objective Painting ouvert à New York en \
+1939, ancêtre du Guggenheim actuel : elle en est restée l'un des emblèmes."""
+facture = """
+Les formes sont tracées à la règle et au compas, puis remplies de couleurs posées en \
+aplats nets, sans empâtement. Le fond clair, légèrement nuancé, crée un espace sans \
+profondeur fixe où les éléments semblent flotter à des distances différentes. Le \
+peintre joue sur les contrastes : lignes noires très fines contre larges surfaces, \
+bords coupants contre halos estompés, comme autour du grand cercle. Il n'y a ni centre \
+unique ni symétrie : l'équilibre naît de tensions qui se compensent, que Kandinsky \
+analysera dans son livre Point et ligne sur plan, publié par le Bauhaus en 1926."""
+details = [
+  "Le halo rose, flou, qui entoure le grand cercle noir en haut à gauche.",
+  "Les damiers noirs et blancs, posés en diagonale à gauche du triangle central.",
+  "La rangée de demi-cercles alignés comme des arches, sous le centre de la toile.",
+  "La petite grille de lignes fines, à droite, avec ses carrés roses.",
+]
+themes = ["musique", "géométrie", "cercle", "bauhaus", "abstraction"]
+anecdote = """
+Kandinsky a peint dix grandes Compositions entre 1910 et 1939. Les trois premières ont \
+été détruites pendant la Seconde Guerre mondiale : on ne les connaît plus que par des \
+photographies en noir et blanc."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "La Tour Eiffel rouge"
+artiste = "Robert Delaunay"
+annee = "1911–1912"
+image = "tour-eiffel-rouge.jpg"
+technique = "Huile sur toile, 125 × 90,3 cm"
+collection = "Solomon R. Guggenheim Museum, New York"
+note = "Le symbole du Paris moderne se tord et se fragmente sous la lumière : une des Tours de Delaunay, entre cubisme et couleur pure."
+description = """
+La tour Eiffel, peinte d'un rouge brique, occupe toute la hauteur de la toile. Ses \
+quatre piliers s'écartent largement vers le bas, comme vus d'en dessous, tandis que le \
+sommet, étroit, touche le bord supérieur. Sa silhouette n'est pas droite : la première \
+plateforme se tord, les montants se plient, et la tour semble vaciller. Autour d'elle, \
+les immeubles de Paris se réduisent à des facettes grises, bleues et blanches qui \
+s'emboîtent. À droite, de gros nuages blancs s'enroulent en boules ; en haut, des pans \
+bleu sombre encadrent la scène comme des rideaux tirés devant une fenêtre. En bas à \
+droite, une grande courbe jaune pâle glisse le long du bord, près de la signature du \
+peintre."""
+evocation = """
+Pour Delaunay, la tour de 1889 est l'emblème du monde nouveau : le fer, l'ingénieur, \
+la ville géante, la télégraphie sans fil dont l'antenne est installée à son sommet. En \
+la brisant, il ne la détruit pas, il cherche à peindre l'expérience de celui qui la \
+regarde : le vertige, la tête qui se lève et se baisse, les points de vue qui se \
+superposent. Le peintre lui-même a qualifié de destructive cette période, où \
+l'architecture se disloque sous l'effet de la lumière. On y a vu une célébration \
+joyeuse de la modernité, mais aussi le pressentiment d'un monde instable à la veille \
+de la Grande Guerre. Ses amis poètes, Apollinaire et Blaise Cendrars, chanteront eux \
+aussi la tour."""
+histoire = """
+Delaunay peint la tour Eiffel à partir de 1909 et y revient sans cesse jusqu'à la fin \
+des années 1920. En 1910, il épouse la peintre Sonia Terk, avec qui il mènera toutes \
+ses recherches sur la couleur. Au printemps 1911, ses Tours sont accrochées au Salon \
+des indépendants dans la salle des cubistes ; la même année, Kandinsky l'invite à la \
+première exposition du Blaue Reiter, à Munich, où ses toiles impressionnent les jeunes \
+peintres allemands. En 1912, Apollinaire invente pour lui le mot orphisme, qui désigne \
+une peinture où la couleur seule devient le sujet. Cette version rouge, peinte en 1911 \
+et 1912, appartient aujourd'hui au Guggenheim de New York, qui conserve plusieurs \
+Tours de Delaunay."""
+facture = """
+Delaunay emprunte au cubisme la fragmentation en facettes et la multiplication des \
+points de vue, mais il refuse les tons bruns et gris de Picasso et de Braque : le \
+rouge vif de la tour éclate contre les bleus et les blancs. La touche est libre, \
+visible, posée par plans courts. La composition repose sur un contraste de couleurs \
+complémentaires et sur un mouvement tournant, souligné par les courbes des nuages et \
+du bord droit. L'héritage de Cézanne, que Delaunay admirait, se lit dans la \
+construction des maisons en petits cubes."""
+details = [
+  "La première plateforme de la tour, tordue comme si elle se dérobait.",
+  "Les gros nuages blancs en boules, à droite, au-dessus des toits.",
+  "Les pans bleu sombre en haut, qui font penser à des rideaux.",
+  "La signature du peintre, en bas à droite, près de la courbe jaune pâle.",
+]
+themes = ["paris", "tour eiffel", "ville moderne", "orphisme", "mouvement"]
+anecdote = """
+Construite pour l'Exposition universelle de 1889 et promise à la démolition au bout de \
+vingt ans, la tour Eiffel fut sauvée par la radio : son antenne de télégraphie sans \
+fil la rendait trop utile. Elle resta la plus haute construction du monde jusqu'en \
+1930."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 1.05
+
+[[oeuvres]]
+titre = "Portrait de Pablo Picasso"
+artiste = "Juan Gris"
+annee = "1912"
+image = "portrait-de-picasso.jpg"
+technique = "Huile sur toile, 93,3 × 74,4 cm"
+collection = "Art Institute of Chicago"
+note = "Le jeune Gris rend hommage à son aîné et voisin du Bateau-Lavoir, palette à la main : sa première grande toile cubiste."
+description = """
+Un homme aux cheveux noirs et courts est assis, le buste tourné vers la gauche, le \
+visage de trois quarts. Ses traits sont découpés en facettes : le nez, les yeux et la \
+bouche se répètent légèrement décalés, comme vus sous plusieurs angles. Il porte une \
+chemise claire et une veste bleue, dont les gros boutons ronds ressortent comme de \
+petits reliefs. Dans sa main droite, en bas à droite, il tient une palette chargée de \
+taches de bleu, de jaune, de rouge et de noir : c'est un peintre au travail. Derrière \
+lui, le fond n'est fait que de triangles et de losanges gris, beiges et bleus, \
+découpés par de grandes obliques régulières. En bas à droite, une inscription dédie la \
+toile à Pablo Picasso."""
+evocation = """
+Ce portrait est à la fois un hommage et une déclaration. Hommage à Picasso, inventeur \
+du cubisme avec Braque, que Gris voit travailler chaque jour au Bateau-Lavoir ; \
+déclaration d'indépendance aussi, car Gris y affirme une manière à lui, plus claire, \
+plus ordonnée, presque mathématique. Les historiens soulignent combien ce cubisme \
+rigoureux tranche avec celui, plus intuitif, de ses aînés : là où Picasso et Braque \
+dissolvent les formes dans une brume de facettes, Gris construit une grille lumineuse. \
+En montrant son modèle palette en main, il célèbre le peintre comme inventeur de \
+formes nouvelles, au moment même où lui-même entre dans l'histoire de l'avant-garde."""
+histoire = """
+Né à Madrid, Gris arrive à Paris en 1906 et s'installe au Bateau-Lavoir, la cité \
+d'ateliers de Montmartre où vit Picasso. Il gagne d'abord sa vie en dessinant pour des \
+journaux satiriques et ne se consacre vraiment à la peinture qu'à partir de 1910. Au \
+printemps 1912, il présente ce portrait au Salon des indépendants : c'est sa première \
+apparition publique, et la critique remarque aussitôt ce nouveau venu du cubisme. \
+Bientôt, le marchand Daniel-Henry Kahnweiler, celui de Picasso et de Braque, le prend \
+sous contrat. Le tableau est aujourd'hui à l'Art Institute de Chicago, grâce au don du \
+collectionneur Leigh B. Block."""
+facture = """
+Toute la toile repose sur un réseau de grandes lignes obliques, parallèles et \
+régulièrement espacées, qui la découpe en bandes et en losanges. Dans chaque case, \
+Gris traite séparément la lumière et l'ombre, ce qui fait vibrer les volumes comme un \
+cristal. La palette est restreinte aux bleus, aux gris et aux bruns, avec quelques \
+notes chaudes sur le visage et la palette. La peinture est posée en petites touches \
+serrées, presque pointillistes, qui donnent à la surface une texture régulière."""
+details = [
+  "La palette tenue en bas à droite, avec ses taches de couleur pure.",
+  "Les boutons de la chemise, dessinés comme de petits cercles en relief.",
+  "Le visage dédoublé, dont les yeux semblent vus sous deux angles.",
+  "L'inscription en bas à droite, qui dédie le tableau à Pablo Picasso.",
+]
+themes = ["portrait", "cubisme", "peintre", "amitié", "géométrie"]
+anecdote = """
+Juan Gris est un nom d'emprunt : le peintre s'appelait José Victoriano González-Pérez. \
+Il meurt à quarante ans, en 1927, d'une maladie des reins, après avoir dessiné décors \
+et costumes pour les Ballets russes de Diaghilev."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "La Ville qui monte"
+artiste = "Umberto Boccioni"
+annee = "1910"
+image = "ville-qui-monte.jpg"
+technique = "Huile sur toile, 199,3 × 301 cm"
+collection = "Museum of Modern Art, New York"
+note = "L'un des premiers grands tableaux futuristes : chevaux, ouvriers et chantiers emportés par la même énergie, dans la banlieue de Milan."
+description = """
+Au centre de la toile, un gigantesque cheval rouge, au collier bleu, fonce tête \
+baissée vers la gauche, si grand qu'il occupe presque toute la largeur. Des hommes \
+minuscules s'agrippent à ses rênes et se penchent en arrière de tout leur poids, bras \
+tendus, pour le retenir. À gauche, un autre cheval, blanc, se cabre dans une explosion \
+de crins. Au fond, sous un ciel pâle, s'élèvent des immeubles en construction couverts \
+d'échafaudages, des cheminées d'usine qui fument et des silhouettes de tramways. \
+Hommes, bêtes et décor se dissolvent dans des traînées de lumière : tout semble \
+emporté par un même tourbillon, de bas en haut et de droite à gauche."""
+evocation = """
+Boccioni explique vouloir y faire une grande synthèse du travail, de la lumière et du \
+mouvement. Le sujet est la ville moderne en train de naître : la périphérie de Milan, \
+ses chantiers et ses usines. Le cheval, force ancienne, et l'ouvrier, héros nouveau, \
+s'unissent pour bâtir l'avenir. Le tableau illustre le culte futuriste de l'énergie, \
+de la vitesse et de la machine, proclamé par le poète Marinetti en 1909. On y a vu un \
+hymne optimiste au progrès ; on y lit aussi, avec le recul, la fascination pour la \
+force et la violence qui conduira nombre de futuristes à exalter la guerre."""
+histoire = """
+Boccioni peint cette toile à Milan en 1910 et au début de 1911, quelques mois après \
+avoir signé avec Carrà, Russolo, Balla et Severini le manifeste des peintres \
+futuristes. Le tableau, d'abord présenté sous le titre Le Travail, est exposé à Milan \
+en 1911, puis en 1912 dans l'exposition itinérante des futuristes, qui fait scandale à \
+Paris, à Londres et à Berlin. Au cours de cette tournée, le compositeur Ferruccio \
+Busoni l'achète ; Boccioni fera son portrait en 1916, quelques semaines avant de \
+mourir. Le Museum of Modern Art de New York l'acquiert en 1951."""
+facture = """
+Boccioni utilise la touche divisée qu'il a apprise à Rome auprès de Giacomo Balla : de \
+longs filaments de couleur pure, posés côte à côte, qui suivent les lignes de force du \
+mouvement au lieu de décrire les objets. Le rouge du cheval s'oppose au bleu de son \
+collier et aux blancs lumineux. La grande diagonale qui part du bas entraîne tout le \
+tableau. Le format, de trois mètres de large, est celui des grandes peintures \
+d'histoire : la figuration subsiste encore, mais elle se défait sous la vitesse."""
+details = [
+  "Les ouvriers penchés en arrière, bras tendus, accrochés aux rênes.",
+  "Le collier bleu du cheval rouge, au centre de la toile.",
+  "Les échafaudages et les cheminées qui fument, tout en haut à droite.",
+  "La signature U. Boccioni, en bas à droite.",
+]
+themes = ["futurisme", "ville", "travail", "chevaux", "énergie", "milan"]
+anecdote = """
+La sculpture la plus célèbre de Boccioni, Formes uniques de la continuité dans \
+l'espace, modelée en 1913, figure aujourd'hui sur la face nationale italienne de la \
+pièce de 20 centimes d'euro."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "La Ville"
+artiste = "Fernand Léger"
+annee = "1919"
+image = "la-ville.jpg"
+technique = "Huile sur toile, 231,1 × 298,4 cm"
+collection = "Philadelphia Museum of Art"
+note = "La grande ville d'après-guerre en aplats de couleur pure : affiches, poutrelles, escaliers et hommes-machines."
+description = """
+La toile est découpée en bandes verticales de couleurs franches, comme une rue vue à \
+travers une succession d'affiches et de façades. Au centre droit se dresse une large \
+colonne mauve. En haut à gauche et à droite, des pylônes métalliques dessinent leurs \
+treillis noirs sur le ciel. Partout, des lettres découpées au pochoir, dont un grand B \
+en bas à gauche, rappellent les panneaux publicitaires. Au milieu, un escalier aux \
+marches noires et blanches est gravi par deux personnages gris, aux corps faits de \
+cylindres comme des automates. À droite, un panneau encadré de bleu montre une \
+silhouette verte. Rouge, jaune, bleu, vert et noir se répondent sans jamais se \
+mélanger."""
+evocation = """
+Léger célèbre la ville moderne comme un spectacle : affiches, signaux, métal et \
+mouvement. Il n'y a pas de rue en perspective, mais une suite d'impressions \
+juxtaposées, comme celles du passant qui traverse la ville à toute allure, ou comme le \
+montage d'un film. Les hommes, réduits à des formes mécaniques, ne sont pas écrasés \
+par la machine : ils ont la même dignité que les objets, la même solidité. Peinte \
+juste après la Grande Guerre, la toile exprime la confiance de la reconstruction et \
+l'optimisme d'un monde industriel. Elle a nourri l'art de l'affiche, le graphisme et \
+la peinture murale du XXe siècle."""
+histoire = """
+Mobilisé en 1914, Léger passe deux ans au front comme sapeur avant d'être gazé à \
+Verdun en 1916. Il en revient fasciné par les machines et par les hommes simples qu'il \
+a côtoyés. En 1919, il peint La Ville, la plus grande toile de sa période dite \
+mécanique, et l'expose au Salon des indépendants de 1920. Le tableau est acheté par le \
+peintre et collectionneur américain Albert Eugene Gallatin, qui le montre dans son \
+Museum of Living Art, ouvert en 1927 à l'université de New York, l'un des premiers \
+musées d'art moderne des États-Unis. Il entre ensuite au musée de Philadelphie avec \
+toute sa collection."""
+facture = """
+Léger pose ses couleurs en aplats purs, cernés, sans dégradé, à la manière d'une \
+affiche. Seuls les personnages sont modelés en gris, comme des pièces de métal polies. \
+Le principe est celui du contraste, que le peintre théorise : contraste de couleurs, \
+de formes droites et courbes, de surfaces plates et de volumes. Les lettres au pochoir \
+et le découpage en panneaux verticaux donnent une impression de collage sans en être \
+un. Le format, de près de trois mètres, annonce son ambition murale."""
+details = [
+  "Les deux personnages gris, en forme d'automates, sur l'escalier central.",
+  "Le grand B au pochoir, en bas à gauche.",
+  "La colonne mauve qui coupe la toile, au centre droit.",
+  "La signature F. Léger, Paris 19, en bas à droite.",
+]
+themes = ["ville", "machine", "publicité", "couleur", "modernité"]
+anecdote = """
+Léger a raconté que c'est au front, devant la culasse d'un canon de 75 ouverte en \
+plein soleil, qu'il avait découvert la beauté de l'objet mécanique : une révélation \
+plus forte, disait-il, que tous les musées."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 2.95
+
+[[oeuvres]]
+titre = "Carré noir"
+artiste = "Kasimir Malevitch"
+annee = "1915"
+image = "carre-noir.jpg"
+technique = "Huile sur lin, 79,5 × 79,5 cm"
+collection = "Galerie Tretiakov, Moscou"
+note = "Le point zéro de la peinture : un carré noir sur fond blanc, accroché en 1915 à la place d'une icône."
+description = """
+Sur une toile carrée, un grand quadrilatère noir est posé au centre d'un fond blanc, \
+qui l'entoure d'une large marge. Rien d'autre : ni objet, ni horizon, ni ombre. De \
+près, pourtant, le carré n'est ni parfaitement carré ni parfaitement noir. Ses côtés \
+ne sont pas tout à fait parallèles, ses angles pas tout à fait droits. Sa surface est \
+couverte d'un réseau serré de craquelures, à travers lesquelles affleurent des \
+couleurs plus claires, rougeâtres ou crème, venues des couches peintes dessous. Le \
+blanc du fond, lui aussi fendillé, a pris avec le temps une teinte grise et jaunie. Le \
+tableau a vieilli comme un objet ancien."""
+evocation = """
+Malevitch appelle suprématisme la suprématie de la sensation pure en art : la peinture \
+se libère de l'obligation de représenter. Le carré noir est pour lui le point zéro des \
+formes, l'origine à partir de laquelle tout peut être reconstruit. En l'accrochant \
+dans l'angle supérieur de la salle, place réservée aux icônes dans les maisons russes, \
+il en fait une image sacrée d'un genre nouveau. On y a vu un geste de table rase, \
+voire de nihilisme, mais aussi une expérience mystique, une fenêtre ouverte sur \
+l'infini. Peint en pleine guerre, deux ans avant la révolution, le carré est devenu \
+l'icône même de l'art moderne."""
+histoire = """
+Le tableau est montré pour la première fois en décembre 1915 à Petrograd, à la \
+Dernière exposition futuriste de tableaux 0,10, où Malevitch présente ses premières \
+œuvres suprématistes. Il le datera plus tard de 1913, pour le rattacher aux décors \
+qu'il avait conçus pour l'opéra futuriste Victoire sur le soleil. Il en peindra \
+d'autres versions dans les années 1920 et au début des années 1930. À sa mort, en \
+1935, un carré noir est fixé sur le corbillard. Conservé à la galerie Tretiakov, ce \
+premier carré, très fragile, a été étudié aux rayons X en 2015 : deux compositions \
+antérieures, l'une cubo-futuriste, l'autre proto-suprématiste, sont cachées sous le \
+noir."""
+facture = """
+Malevitch a peint son carré à main levée, sans règle stricte, par-dessus des \
+compositions plus anciennes. Le noir est fait de plusieurs couches, d'où la craquelure \
+qui révèle aujourd'hui les tons du dessous. Le fond blanc n'est pas la toile nue mais \
+une couche peinte, elle aussi travaillée au pinceau. L'irrégularité des bords, visible \
+de près, donne au carré une légère vibration : ce n'est pas une figure de géométrie, \
+mais une forme vivante, posée sur un espace blanc qui semble sans limite."""
+details = [
+  "Le réseau de craquelures qui couvre toute la surface noire.",
+  "Les couleurs claires qui affleurent dans les fissures du noir.",
+  "Les bords du carré, légèrement irréguliers et pas tout à fait parallèles.",
+  "La marge blanche, elle aussi fendillée et jaunie par le temps.",
+]
+themes = ["suprématisme", "monochrome", "icône", "géométrie", "révolution"]
+anecdote = """
+En 2015, les chercheurs de la galerie Tretiakov ont déchiffré dans la marge blanche \
+une inscription au crayon attribuée à Malevitch : une allusion à une plaisanterie \
+d'Alphonse Allais, qui avait publié en 1897 un rectangle noir humoristique."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Composition avec rouge, bleu et jaune"
+artiste = "Piet Mondrian"
+annee = "1930"
+image = "composition-rouge-bleu-jaune.jpg"
+technique = "Huile sur toile, 45 × 45 cm"
+collection = "Kunsthaus Zürich"
+note = "Trois couleurs primaires, du blanc et des lignes noires : la forme la plus célèbre du néoplasticisme, peinte à Paris pour un ami architecte."
+description = """
+Un grand carré rouge occupe presque tout le quart supérieur droit, débordant largement \
+au-delà du centre. Il est bordé à gauche et en bas par d'épaisses lignes noires, \
+verticales et horizontales, qui découpent le reste de la toile en rectangles. En bas à \
+gauche, un petit rectangle bleu ; en bas à droite, minuscule, un rectangle jaune, \
+surmonté d'un court trait noir. Les autres surfaces sont blanches. Certaines lignes \
+noires s'arrêtent avant le bord, d'autres le touchent. Il n'y a ni diagonale, ni \
+courbe, ni ombre : seulement des droites qui se croisent à angle droit et trois \
+couleurs primaires. En bas à gauche, dans le bleu, on distingue les initiales PM et la \
+date 30."""
+evocation = """
+Mondrian cherche une harmonie universelle, au-delà des apparences : l'horizontale et \
+la verticale, la couleur et le non-coloré, le grand et le petit doivent s'équilibrer. \
+Cet équilibre n'est jamais symétrique : la masse rouge est contrebalancée par les \
+petits rectangles bleu et jaune, comme des poids sur une balance. Nourri de \
+théosophie, le peintre voyait dans ces rapports purs l'image d'une société future \
+apaisée, où l'art se fondrait dans l'architecture et dans la vie. Sa peinture, d'une \
+simplicité extrême en apparence, a profondément marqué l'architecture, le design, la \
+mode et le graphisme du XXe siècle."""
+histoire = """
+Mondrian peint cette toile à Paris, dans son atelier de la rue du Départ, à la demande \
+de l'architecte zurichois Alfred Roth, qui avait travaillé chez Le Corbusier. Au dos, \
+il écrit une dédicace datée du 30 janvier 1930, où il affirme que compter seulement \
+avec les rapports, en cherchant leur équilibre en art et dans la vie, c'est préparer \
+l'avenir. Il reprend ensuite la même composition dans d'autres versions, en \
+l'agrandissant chaque fois de cinq centimètres sans changer la largeur des lignes \
+noires. Roth l'a conservé près de soixante ans avant de l'offrir au Kunsthaus de \
+Zurich en 1987."""
+facture = """
+Malgré son air mécanique, tout est peint à la main. On voit de près la trace du \
+pinceau, les couches successives de blanc, de légères craquelures. Les lignes noires \
+n'ont pas toutes la même épaisseur, et Mondrian a longuement ajusté leur position au \
+fil de ses essais. Les couleurs sont posées en aplats purs, sans mélange. Le petit \
+format, de 45 centimètres de côté, concentre la tension entre la grande surface rouge \
+et les autres plans."""
+details = [
+  "Les initiales PM et la date 30, peintes en bas à gauche, dans le bleu.",
+  "Le petit rectangle jaune, en bas à droite, surmonté d'un trait noir.",
+  "Les lignes noires qui s'arrêtent avant le bord de la toile.",
+  "Les fines craquelures et la trace du pinceau dans les blancs.",
+]
+themes = ["néoplasticisme", "couleurs primaires", "équilibre", "de stijl", "géométrie"]
+anecdote = """
+En 1965, le couturier Yves Saint Laurent présente une collection de robes droites en \
+jersey inspirées des compositions de Mondrian, avec leurs lignes noires et leurs blocs \
+de couleurs primaires : les robes Mondrian deviennent l'une des images de la mode des \
+années 1960."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Senecio"
+artiste = "Paul Klee"
+annee = "1922"
+image = "senecio.jpg"
+technique = "Huile sur gaze marouflée sur carton, 40,5 × 38 cm"
+collection = "Kunstmuseum Basel, Bâle"
+note = "Une tête ronde comme une lune, faite de carrés de couleur : un vieillard malicieux, entre masque de théâtre et jeu d'enfant."
+description = """
+Sur un fond orangé, une grande tête parfaitement ronde occupe presque toute la \
+surface. Elle est découpée en rectangles de couleurs douces : jaune, rose, blanc, \
+ocre. Deux yeux ronds et rouges regardent le spectateur. Ils ne sont pas pareils : \
+au-dessus de l'œil de gauche se dresse un triangle blanc, comme un sourcil levé, \
+tandis que l'œil de droite est surmonté d'un fin arc vert. Le nez n'est qu'une ligne, \
+la bouche deux petits carrés violets. Le cou est un empilement de rectangles colorés, \
+et les épaules, en bas, dessinent un grand arc. À gauche, on lit la signature de Klee \
+et l'année 1922."""
+evocation = """
+Le titre joue sur les mots : senecio, le séneçon, est une plante dont le nom latin \
+vient de senex, le vieillard, et le sous-titre allemand Baldgreis signifie à peu près \
+bientôt vieillard. Le visage tient du clown, du masque de théâtre et de la \
+marionnette, que Klee aimait fabriquer pour son fils Felix. L'asymétrie des yeux lui \
+donne une expression à la fois étonnée, sceptique et amusée. On y a parfois vu un \
+autoportrait déguisé. Klee montre qu'un visage peut naître de quelques formes \
+géométriques et que la couleur seule peut exprimer un caractère, avec un humour et une \
+liberté proches du dessin d'enfant, mais très savants."""
+histoire = """
+Klee peint Senecio en 1922 à Weimar, où il enseigne au Bauhaus depuis 1921. Il y donne \
+des cours sur la forme et la couleur et y retrouve, en 1922, Kandinsky, son ami depuis \
+l'époque du Blaue Reiter. Méticuleux, Klee inscrit chacune de ses œuvres dans un \
+catalogue personnel : celle-ci porte le numéro 181 de l'année 1922, visible près de sa \
+signature. Le tableau est aujourd'hui l'un des plus connus du Kunstmuseum de Bâle. En \
+1933, les nazis chasseront Klee de son poste de professeur à Düsseldorf ; il se \
+réfugie alors à Berne, sa ville natale, et plusieurs de ses œuvres seront exposées \
+comme art dégénéré en 1937."""
+facture = """
+Klee peint à l'huile sur une gaze, un tissu léger, préparée puis collée sur carton. La \
+surface rugueuse et grattée par endroits laisse voir la trame et donne aux couleurs un \
+aspect mat et poudreux, proche de la fresque. Le cercle du visage, tracé comme au \
+compas, est divisé en un damier irrégulier de tons chauds et clairs, qui rappelle ses \
+tableaux de carrés colorés. La couleur est le véritable sujet : Klee étudie, au \
+Bauhaus, la façon dont les tons voisins se répondent et se modifient."""
+details = [
+  "Le triangle blanc au-dessus de l'œil de gauche, comme un sourcil levé.",
+  "Le fin sourcil vert, en arc, au-dessus de l'œil de droite.",
+  "Les deux petits carrés violets qui forment la bouche.",
+  "La signature et le numéro 1922 / 181, à gauche du visage.",
+]
+themes = ["visage", "masque", "humour", "couleur", "bauhaus"]
+anecdote = """
+Klee était aussi un excellent violoniste. Jeune homme, il a joué dans l'orchestre de \
+Berne et hésité entre la musique et la peinture. Il a épousé une pianiste, Lily \
+Stumpf, et la musique a nourri toute sa réflexion sur le rythme en peinture."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Das Undbild (Le Tableau-et)"
+artiste = "Kurt Schwitters"
+annee = "1919"
+image = "das-undbild.jpg"
+technique = "Assemblage : papiers, carton, bois et métal, avec gouache, sur carton, 35,8 × 28 cm"
+collection = "Staatsgalerie Stuttgart"
+note = "Des déchets de la ville collés et cloués : l'un des premiers tableaux Merz de Schwitters, l'art de tout relier avec un simple « et »."
+description = """
+Le tableau est un assemblage d'objets trouvés. En haut, sur un papier ocre, un grand \
+mot se détache en lettres noires : und, c'est-à-dire et. À gauche, une vaste forme \
+blanche et courbe, comme une voile ou un croissant de lune, traverse la composition. \
+Au centre droit, un triangle bleu vif attire l'œil. Tout autour s'entassent des \
+fragments d'étiquettes, de billets et de journaux, dont une adresse commerciale, E. \
+Sökeland & Söhne, Berlin N.W. 21, le nombre 97 et, en bas, le fragment d'un mot \
+imprimé en grandes lettres, ferde. Des baguettes de bois, des clous, une rondelle et \
+des pièces de métal sont fixés sur le support, et une grande courbe sombre ferme \
+l'angle inférieur droit."""
+evocation = """
+Le mot und, et, donne son titre au tableau et en dit le principe : relier ce qui \
+n'était pas fait pour aller ensemble. Pour Schwitters, l'art Merz consiste à combiner \
+tous les matériaux possibles, nobles ou non, et à leur donner la même valeur. Dans \
+l'Allemagne vaincue de 1919, où tout semble à reconstruire, il ramasse les débris de \
+la ville, tickets, emballages, bouts de bois, pour en faire un monde neuf. On y voit \
+souvent l'esprit dada, ironique et anti-bourgeois, mais Schwitters reste avant tout un \
+compositeur attentif à l'équilibre des formes et des couleurs : son dada est \
+constructif et poétique plus que destructeur."""
+histoire = """
+Pendant la guerre, Schwitters travaille comme dessinateur industriel dans une usine \
+près de Hanovre. En 1919, il invente le mot Merz et présente ses premiers tableaux \
+Merz à Berlin, à la galerie Der Sturm d'Herwarth Walden, haut lieu de l'avant-garde. \
+Das Undbild date de cette année décisive. Le club dada de Berlin refuse de \
+l'accueillir, mais il se lie avec Hans Arp, Raoul Hausmann et Tristan Tzara, et fera \
+de Hanovre une capitale dada à lui seul. Qualifié d'artiste dégénéré par les nazis, il \
+quitte l'Allemagne en 1937. Le tableau appartient aujourd'hui à la Staatsgalerie de \
+Stuttgart."""
+facture = """
+Schwitters colle, cloue et peint. Papiers imprimés, carton, bois et métal sont \
+assemblés puis reliés par la peinture, qui unifie les couleurs et adoucit les \
+transitions. La composition rayonne depuis le centre en grandes diagonales, à la \
+manière des tableaux cubistes et futuristes. La gamme, faite de bruns, d'ocres et de \
+blancs, est relevée par l'éclat du bleu. Les lettres imprimées sont traitées comme des \
+formes à part entière, et le relief des objets fait sortir le tableau de la surface \
+plane."""
+details = [
+  "Le mot und en grosses lettres noires, tout en haut.",
+  "L'étiquette E. Sökeland & Söhne, Berlin N.W. 21, à gauche.",
+  "Le nombre 97, à droite du triangle bleu.",
+  "Les clous, les baguettes de bois et la grande courbe sombre en bas à droite.",
+]
+themes = ["dada", "collage", "merz", "typographie", "récupération"]
+anecdote = """
+Le mot Merz vient d'un fragment de publicité de la Commerz- und Privatbank, une banque \
+allemande, que Schwitters avait découpé et collé dans un tableau de 1919. Il en a fait \
+le nom de tout son art, de sa revue et même de lui-même."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 0.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Hilma af Klint"
+vie = "Solna (Suède), 26 octobre 1862 – Djursholm (Suède), 21 octobre 1944"
+biographie = """
+Née dans une famille d'officiers de marine, Hilma af Klint étudie de 1882 à 1887 à \
+l'Académie royale des beaux-arts de Stockholm, l'une des rares écoles d'art alors \
+ouvertes aux femmes. Elle mène ensuite une carrière respectée de portraitiste et de \
+paysagiste, et réalise des dessins botaniques et scientifiques. Mais elle s'intéresse \
+aussi au spiritisme et à la théosophie : à partir de 1896, elle se réunit avec quatre \
+amies, le groupe des Cinq, pour des séances où elles pratiquent le dessin automatique. \
+En 1906, elle commence les Peintures pour le temple, 193 œuvres achevées en 1915, \
+parmi les toutes premières abstractions de l'histoire. Le penseur Rudolf Steiner, \
+qu'elle admire, voit ses tableaux en 1908 sans les encourager. Elle continue à peindre \
+et à écrire jusqu'à sa mort, des suites d'un accident, en 1944. Elle laisse plus d'un \
+millier d'œuvres et des milliers de pages de carnets, et demande que son travail \
+abstrait ne soit pas montré avant vingt ans. Révélée en 1986, elle est aujourd'hui \
+reconnue comme une pionnière majeure de l'abstraction."""
+style = """
+Hilma af Klint invente une peinture de symboles : spirales, cercles, coquilles, \
+lettres et mots codés, couleurs chargées de sens, organisés le plus souvent en séries \
+qui racontent une évolution. Ses grands formats aux tons pastel, peints en aplats \
+nets, mêlent la précision du dessin scientifique et une imagerie spirituelle. Sa \
+redécouverte a obligé à réécrire l'histoire de l'abstraction, longtemps attribuée aux \
+seuls Kandinsky, Mondrian et Malevitch."""
+
+[[artistes]]
+nom = "Vassily Kandinsky"
+vie = "Moscou, 16 décembre 1866 – Neuilly-sur-Seine, 13 décembre 1944"
+biographie = """
+Kandinsky étudie le droit et l'économie à Moscou et semble promis à une carrière \
+universitaire avant de tout abandonner, à trente ans, pour la peinture. Il part en \
+1896 pour Munich, où il fonde un groupe d'artistes et vit avec la peintre Gabriele \
+Münter, à Munich et à Murnau. Ses paysages se libèrent peu à peu de la représentation \
+et, vers 1910-1911, il peint ses premières grandes toiles abstraites. En 1911, il \
+publie Du spirituel dans l'art et fonde avec Franz Marc le Blaue Reiter, le Cavalier \
+bleu. La guerre le ramène en Russie, où il participe aux institutions artistiques de \
+la révolution. Revenu en Allemagne fin 1921, il enseigne au Bauhaus de 1922 à sa \
+fermeture par les nazis en 1933, à Weimar, à Dessau puis à Berlin. Il s'installe alors \
+à Neuilly-sur-Seine, près de Paris, où il peint jusqu'à sa mort en 1944. Collectionné \
+très tôt aux États-Unis par Solomon R. Guggenheim, il est l'un des artistes fondateurs \
+du musée qui porte son nom."""
+style = """
+Kandinsky passe des taches de couleur tourbillonnantes de ses années munichoises à la \
+géométrie précise de la période du Bauhaus, puis aux formes souples, presque \
+biologiques, de ses dernières années parisiennes. Partout, il compare la peinture à la \
+musique : couleurs et formes doivent agir directement sur l'âme, comme des sons. \
+Peintre et théoricien, il a donné à l'art abstrait ses premiers textes fondateurs."""
+
+[[artistes]]
+nom = "Robert Delaunay"
+vie = "Paris, 12 avril 1885 – Montpellier, 25 octobre 1941"
+biographie = """
+Élevé en partie par un oncle et une tante après la séparation de ses parents, Robert \
+Delaunay fait son apprentissage chez un décorateur de théâtre avant de se consacrer à \
+la peinture. Il passe par le néo-impressionnisme, admire Cézanne, puis s'approche du \
+cubisme avec ses séries consacrées à l'église Saint-Séverin et à la tour Eiffel, à \
+partir de 1909. En 1910, il épouse la peintre d'origine ukrainienne Sonia Terk, avec \
+qui il mène toute sa vie une recherche commune sur la couleur. En 1911, Kandinsky \
+l'invite à la première exposition du Blaue Reiter à Munich, où il est très admiré. Ses \
+Fenêtres et ses Formes circulaires, à partir de 1912, comptent parmi les premières \
+peintures non figuratives en France ; Apollinaire baptise orphisme sa peinture. Après \
+des années passées en Espagne et au Portugal pendant la guerre, il revient à Paris, \
+réalise en 1937 d'immenses décors pour l'Exposition internationale, puis meurt d'un \
+cancer à Montpellier en 1941."""
+style = """
+Delaunay fait de la couleur le véritable sujet du tableau. S'appuyant sur les théories \
+du chimiste Chevreul sur le contraste simultané, il juxtapose des couleurs \
+complémentaires qui vibrent et créent le mouvement sans recourir au dessin. Ses \
+disques et ses cercles colorés ont influencé les peintres du Blaue Reiter et ont \
+ouvert la voie à une abstraction lumineuse et joyeuse."""
+
+[[artistes]]
+nom = "Juan Gris"
+vie = "Madrid, 23 mars 1887 – Boulogne-sur-Seine, 11 mai 1927"
+biographie = """
+José Victoriano González-Pérez étudie l'ingénierie à Madrid, puis s'oriente vers le \
+dessin. En 1906, il s'installe à Paris, au Bateau-Lavoir, à Montmartre, où il voit \
+naître le cubisme dans l'atelier de son voisin et compatriote Picasso. Pour vivre, il \
+dessine pour des journaux satiriques comme L'Assiette au beurre. Il se consacre à la \
+peinture à partir de 1910 et expose pour la première fois en 1912, au Salon des \
+indépendants. La même année, il expérimente les papiers collés et signe un contrat \
+avec le marchand Daniel-Henry Kahnweiler. Pendant la guerre, il reste en France, dans \
+une grande pauvreté, et devient l'un des représentants les plus rigoureux du cubisme. \
+Dans les années 1920, il crée des décors et des costumes pour les Ballets russes de \
+Diaghilev et expose ses idées dans des conférences. Malade, il meurt en 1927 à \
+quarante ans, à Boulogne-sur-Seine, laissant une œuvre de natures mortes d'une grande \
+clarté."""
+style = """
+Gris est le grand architecte du cubisme. Il part d'une structure abstraite, une grille \
+de lignes et de plans colorés, puis y fait apparaître les objets : il disait en \
+substance qu'il faisait d'un cylindre une bouteille, là où Cézanne faisait d'une \
+bouteille un cylindre. Ses couleurs franches, sa composition calculée et la netteté de \
+ses formes ont marqué le purisme et toute la peinture construite des années 1920."""
+
+[[artistes]]
+nom = "Umberto Boccioni"
+vie = "Reggio de Calabre, 19 octobre 1882 – Vérone, 17 août 1916"
+biographie = """
+Fils d'un fonctionnaire souvent muté, Umberto Boccioni grandit dans plusieurs villes \
+d'Italie avant de s'installer à Rome au tournant du siècle. Il y découvre, auprès de \
+Giacomo Balla, la peinture divisionniste, faite de touches de couleur pure, et s'y lie \
+avec Gino Severini. Après des voyages à Paris et en Russie, il se fixe à Milan en \
+1907. En 1910, il rencontre le poète Filippo Tommaso Marinetti, fondateur du \
+futurisme, et rédige avec Carrà, Russolo, Balla et Severini le manifeste des peintres \
+futuristes. Il en devient le principal peintre et théoricien, et participe en 1912 à \
+l'exposition qui fait connaître le mouvement à Paris, à Londres et à Berlin. Il se \
+tourne aussi vers la sculpture, publie un manifeste sur ce sujet et en 1914 un livre, \
+Peinture et sculpture futuristes. Engagé volontaire en 1915, il meurt en août 1916, à \
+trente-trois ans, d'une chute de cheval lors d'un exercice militaire près de Vérone."""
+style = """
+Boccioni veut peindre le mouvement et l'énergie de la vie moderne plutôt que des \
+objets immobiles. Il passe de la touche divisée, en longs filaments de couleur, à une \
+construction en plans et en lignes de force inspirée du cubisme. Ses états d'âme, ses \
+villes en chantier et ses sculptures dynamiques ont fait du futurisme italien l'une \
+des avant-gardes majeures d'avant 1914."""
+
+[[artistes]]
+nom = "Fernand Léger"
+vie = "Argentan, 4 février 1881 – Gif-sur-Yvette, 17 août 1955"
+biographie = """
+Fils d'un éleveur normand, Fernand Léger se forme d'abord comme dessinateur \
+d'architecture, puis s'installe à Paris en 1900. Il découvre Cézanne, fréquente la \
+Ruche, la cité d'artistes de Montparnasse, et invente vers 1911-1913 un cubisme fait \
+de formes tubulaires et de contrastes de couleurs. Mobilisé en 1914, il est gazé à \
+Verdun en 1916. L'expérience du front et des machines transforme son art : dans les \
+années 1920, il peint la ville, les objets et les travailleurs en couleurs pures, \
+réalise le film Ballet mécanique en 1924 et participe au mouvement de l'Esprit nouveau \
+avec Le Corbusier et Ozenfant. Il enseigne dans son atelier à de nombreux élèves venus \
+du monde entier. Réfugié aux États-Unis de 1940 à 1945, il revient en France, adhère \
+au parti communiste, multiplie les grandes compositions, les mosaïques, les vitraux et \
+les céramiques, et meurt en 1955 à Gif-sur-Yvette."""
+style = """
+Léger peint le monde moderne avec des formes simples et puissantes : cylindres, cernes \
+noirs, aplats de couleurs vives. Il traite l'homme et la machine avec la même solidité \
+et cherche un art clair, accessible à tous, à l'échelle du mur et de la ville. Son \
+langage a influencé l'affiche, le design et l'art monumental du XXe siècle."""
+
+[[artistes]]
+nom = "Kasimir Malevitch"
+vie = "Kiev, 23 février 1879 – Léningrad, 15 mai 1935"
+biographie = """
+Né à Kiev dans une famille d'origine polonaise, Kasimir Malevitch grandit dans les \
+campagnes d'Ukraine, dont les icônes et l'art populaire le marquent durablement. \
+Installé à Moscou en 1907, il passe très vite de l'impressionnisme au primitivisme \
+inspiré des paysans, puis au cubo-futurisme. En 1913, il conçoit les décors de l'opéra \
+futuriste Victoire sur le soleil. En décembre 1915, à Petrograd, il présente le Carré \
+noir et fonde le suprématisme, une peinture de formes géométriques pures sur fond \
+blanc. Après la révolution de 1917, il occupe des fonctions officielles, enseigne à \
+Vitebsk, où il fonde le groupe Unovis, puis dirige un institut de recherche à \
+Léningrad. En 1927, il expose à Varsovie et à Berlin et y laisse une partie de ses \
+œuvres. Suspect aux yeux du régime stalinien, brièvement arrêté en 1930, il revient à \
+une peinture figurative avant de mourir d'un cancer en 1935."""
+style = """
+Malevitch réduit la peinture à ses éléments premiers : le carré, le cercle, la croix, \
+la couleur pure flottant sur un espace blanc infini. Le suprématisme veut exprimer la \
+sensation pure, au-delà de tout objet. Son Carré noir est devenu le symbole de la \
+rupture radicale de l'art moderne, et son œuvre a influencé le constructivisme, le \
+design et l'art minimal."""
+
+[[artistes]]
+nom = "Piet Mondrian"
+vie = "Amersfoort (Pays-Bas), 7 mars 1872 – New York, 1er février 1944"
+biographie = """
+Fils d'un instituteur calviniste, Pieter Mondriaan se forme à l'Académie des \
+beaux-arts d'Amsterdam et peint d'abord des paysages hollandais, moulins, arbres et \
+polders. Proche de la théosophie, il découvre le cubisme à Paris, où il vit de 1912 à \
+1914 et simplifie l'orthographe de son nom en Mondrian. Bloqué aux Pays-Bas pendant la \
+guerre, il fonde en 1917 avec Theo van Doesburg la revue De Stijl, qui donne son nom \
+au mouvement. De retour à Paris en 1919, il élabore le néoplasticisme : lignes noires, \
+couleurs primaires et blanc. Son atelier de la rue du Départ, aménagé comme une de ses \
+compositions, devient un lieu de pèlerinage pour les artistes. Il se brouille avec Van \
+Doesburg, qui introduit la diagonale. En 1938, la menace de la guerre le pousse vers \
+Londres, puis en 1940 vers New York, dont le jazz et les rythmes inspirent ses \
+dernières toiles. Il y meurt d'une pneumonie en 1944."""
+style = """
+Mondrian a mené l'abstraction à son point le plus épuré : uniquement des lignes \
+horizontales et verticales, les trois couleurs primaires, le blanc, le noir et le \
+gris. Ses compositions asymétriques cherchent un équilibre dynamique, image d'une \
+harmonie universelle. Elles ont durablement marqué l'architecture, le design, la \
+typographie et la mode."""
+
+[[artistes]]
+nom = "Paul Klee"
+vie = "Münchenbuchsee (Suisse), 18 décembre 1879 – Muralto (Suisse), 29 juin 1940"
+biographie = """
+Fils d'un professeur de musique allemand et d'une chanteuse suisse, Paul Klee grandit \
+à Berne et hésite longtemps entre la musique et la peinture. Il étudie à Munich, où il \
+s'installe et se lie avec Kandinsky et les artistes du Blaue Reiter. En 1914, un \
+voyage en Tunisie avec August Macke et Louis Moilliet lui révèle la couleur : il note \
+alors dans son journal que la couleur et lui ne font plus qu'un. Mobilisé pendant la \
+guerre, il est appelé en 1921 au Bauhaus, à Weimar puis à Dessau, où il enseigne dix \
+ans et voisine avec Kandinsky. Professeur à l'Académie de Düsseldorf à partir de 1931, \
+il est renvoyé par les nazis en 1933 et retourne à Berne. Atteint d'une grave maladie \
+de peau, la sclérodermie, il peint pourtant avec une énergie nouvelle des centaines \
+d'œuvres dans ses dernières années, avant de mourir en 1940 dans le Tessin."""
+style = """
+Klee invente un univers poétique où se mêlent signes, écritures, figures, paysages et \
+architectures imaginaires. Il passe librement de l'abstraction au dessin presque \
+enfantin, avec humour et fantaisie, mais en s'appuyant sur une réflexion théorique \
+très rigoureuse sur la ligne, la couleur et le rythme, inspirée de la musique. Son \
+œuvre immense, de plus de neuf mille numéros, a influencé le surréalisme et \
+l'abstraction d'après-guerre."""
+
+[[artistes]]
+nom = "Kurt Schwitters"
+vie = "Hanovre, 20 juin 1887 – Kendal (Angleterre), 8 janvier 1948"
+biographie = """
+Fils de commerçants aisés de Hanovre, Kurt Schwitters étudie la peinture à l'Académie \
+de Dresde. Pendant la guerre, il est employé comme dessinateur industriel dans une \
+usine. En 1919, il invente Merz, un art fait de tous les matériaux, déchets compris, \
+et expose ses premiers tableaux-collages à Berlin à la galerie Der Sturm. Refusé par \
+les dadaïstes berlinois, il crée son propre dada à Hanovre avec sa revue Merz, ses \
+poèmes, dont l'Ursonate, une sonate faite de sons sans signification, et ses \
+spectacles. Dans sa maison, il construit pendant des années le Merzbau, une \
+architecture intérieure qui envahit plusieurs pièces. Qualifié d'artiste dégénéré par \
+les nazis, il fuit en Norvège en 1937, puis en Grande-Bretagne en 1940, où il est \
+interné plusieurs mois sur l'île de Man. Il finit sa vie dans la région des Lacs, où \
+il commence un dernier Merzbau dans une grange, et meurt à Kendal en 1948. Le Merzbau \
+de Hanovre a été détruit par un bombardement en 1943."""
+style = """
+Schwitters fait de l'art avec tout : tickets, étiquettes, bois, ficelles, mots et \
+sons. Mais ses collages restent des compositions rigoureuses, où chaque fragment \
+compte pour sa couleur et sa forme, à la croisée de dada et du constructivisme. Sa \
+pratique de l'assemblage et de l'installation a ouvert la voie au pop art, aux \
+nouveaux réalistes et à l'art d'aujourd'hui."""
