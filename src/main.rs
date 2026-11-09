@@ -7,8 +7,8 @@
 
 use paquets::prelude::*;
 
-use arteon::artworks::{Artwork, EXHIBITIONS, Exhibition, Wall};
-use arteon::gallery::tour_duration;
+use arteon::artworks::{Artwork, EXHIBITIONS, Exhibition, Sculpture, Side};
+use arteon::tour::tour_duration;
 use arteon::{gallery_scene, showcase_scene};
 
 mod export;
@@ -220,22 +220,57 @@ fn picture(ex: &Exhibition, art: &Artwork, lazy: bool) -> Element {
     }
 }
 
-fn wall_name(wall: Wall) -> &'static str {
-    match wall {
-        Wall::Left => "mur gauche",
-        Wall::Right => "mur droit",
-        Wall::Back => "mur du fond",
-    }
+fn wall_name(side: Side) -> String {
+    format!("mur {}", side.french())
 }
 
 /// Où se trouve l'œuvre dans la galerie, en clair.
 fn location(ex: &Exhibition, art: &Artwork) -> String {
+    let at = if art.hook.place > 0 {
+        format!("place {}", art.hook.place)
+    } else {
+        format!("à {:.1} m du milieu", art.hook.position).replace('.', ",")
+    };
     format!(
-        "{} · {} · place {}",
+        "{} · {} · {at}",
         ex.rooms[art.hook.room].name,
-        wall_name(art.hook.wall),
-        art.hook.place
+        wall_name(art.hook.side)
     )
+}
+
+/// La vignette d'une sculpture (dessinée à la compilation).
+fn sculpture_picture(s: &Sculpture, lazy: bool) -> Element {
+    let image = img()
+        .attr("src", s.image_url())
+        .attr("alt", format!("{}, {} ({})", s.title, s.artist, s.year))
+        .attr("decoding", "async")
+        .class("sculpture-img");
+    if lazy {
+        image.attr("loading", "lazy")
+    } else {
+        image
+    }
+}
+
+/// Le cartel d'une sculpture.
+fn sculpture_card(ex: &Exhibition, s: &Sculpture, index: usize) -> Element {
+    article()
+        .class("art-card sculpture-card reveal")
+        .style(format!("animation-delay:{}ms", 60 * index))
+        .child(div().class("plinth").child(sculpture_picture(s, true)))
+        .child(h3().text(s.title))
+        .child(
+            p().child(strong().text(s.artist))
+                .child(span().class("muted").text(format!(" · {}", s.year))),
+        )
+        .child(
+            p().class("muted small")
+                .text(format!("{} — {}", s.technique, s.collection)),
+        )
+        .child(p().text(s.note))
+        .child(p().class("tag").text(
+            format!("{} · sculpture, {:.2} m", ex.rooms[s.room].name, s.height).replace('.', ","),
+        ))
 }
 
 /// Le cartel d'une œuvre.
@@ -393,12 +428,7 @@ async fn home(_req: Request) -> Page {
                             .child(p().class("kicker").text(format!("{} · {}", ex.artist, ex.artist_dates)))
                             .child(h3().child(a().href(format!("/{}", ex.slug)).text(ex.title)))
                             .child(p().class("muted").text(ex.introduction))
-                            .child(p().class("tag").text(format!(
-                                "{} toiles · {} salles · {}",
-                                ex.artworks.len(),
-                                ex.rooms.len(),
-                                ex.years()
-                            )))
+                            .child(p().class("tag").text(counts(ex)))
                             .child(
                                 div()
                                     .class("row")
@@ -464,13 +494,17 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                 .child(
                     div()
                         .class("stat reveal")
-                        .child(strong().text(ex.artworks.len().to_string()))
-                        .child(span().text("toiles exposées")),
+                        .child(strong().text((ex.artworks.len() + ex.sculptures.len()).to_string()))
+                        .child(span().text(if ex.sculptures.is_empty() {
+                            "toiles exposées"
+                        } else {
+                            "œuvres exposées"
+                        })),
                 )
                 .child(
                     div()
                         .class("stat reveal")
-                        .child(strong().text(ex.rooms.len().to_string()))
+                        .child(strong().text(ex.galleries().count().to_string()))
                         .child(span().text("salles d'exposition")),
                 )
                 .child(
@@ -493,22 +527,33 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
                 .child(
                     div()
                         .class("timeline")
-                        .children(ex.rooms.iter().enumerate().map(|(i, room)| {
+                        .children(ex.galleries().enumerate().map(|(n, (i, room))| {
                             let works = ex.works_in_room(i);
+                            let statues = ex.sculptures_in_room(i);
                             div()
                                 .class("step reveal")
-                                .style(format!("animation-delay:{}ms", 120 * i))
-                                .child(span().class("step-number").text(format!("{:02}", i + 1)))
+                                .style(format!("animation-delay:{}ms", 120 * n))
+                                .child(span().class("step-number").text(format!("{:02}", n + 1)))
                                 .child(h3().text(room.name))
                                 .child(p().class("muted").text(room.theme))
-                                .child(div().class("step-works").children(works.iter().map(
-                                    |art| {
-                                        a().href(format!("/{}/oeuvres", ex.slug))
-                                            .attr("title", art.title)
-                                            .child(picture(ex, art, true))
-                                    },
-                                )))
-                                .child(p().class("tag").text(format!("{} œuvre(s)", works.len())))
+                                .child(
+                                    div()
+                                        .class("step-works")
+                                        .children(works.iter().map(|art| {
+                                            a().href(format!("/{}/oeuvres", ex.slug))
+                                                .attr("title", art.title)
+                                                .child(picture(ex, art, true))
+                                        }))
+                                        .children(statues.iter().map(|s| {
+                                            a().href(format!("/{}/oeuvres", ex.slug))
+                                                .attr("title", s.title)
+                                                .child(sculpture_picture(s, true))
+                                        })),
+                                )
+                                .child(
+                                    p().class("tag")
+                                        .text(format!("{} œuvre(s)", works.len() + statues.len())),
+                                )
                         })),
                 ),
         )
@@ -532,6 +577,21 @@ async fn exhibition_home(_req: Request, ex: &'static Exhibition) -> Page {
         )
         .child(others(ex));
     layout(ex.title, ex.introduction, &here, Some(ex.accent), content)
+}
+
+/// « 12 toiles · 2 sculptures · 3 salles · 1885–1890 ».
+fn counts(ex: &Exhibition) -> String {
+    let mut parts = vec![format!("{} toiles", ex.artworks.len())];
+    if !ex.sculptures.is_empty() {
+        parts.push(format!(
+            "{} sculpture{}",
+            ex.sculptures.len(),
+            if ex.sculptures.len() > 1 { "s" } else { "" }
+        ));
+    }
+    parts.push(format!("{} salles", ex.galleries().count()));
+    parts.push(ex.years());
+    parts.join(" · ")
 }
 
 /// Les autres expositions du musée, en bas de la présentation d'une exposition.
@@ -580,14 +640,19 @@ async fn gallery_page(_req: Request, ex: &'static Exhibition) -> Page {
                 )),
         )
         .child(div().class("viewer").child(island("gallery", ex.slug, gallery_scene)))
-        .child(div().class("grid room-legend").children(ex.rooms.iter().enumerate().map(|(i, room)| {
+        .child(div().class("grid room-legend").children(ex.galleries().map(|(i, room)| {
             div()
                 .class("card")
                 .child(h3().text(room.name))
                 .child(p().class("muted").text(room.theme))
-                .child(ul().children(ex.works_in_room(i).into_iter().map(|a| {
-                    li().child(strong().text(a.title)).child(span().class("muted").text(format!(" · {}", a.year)))
-                })))
+                .child(
+                    ul().children(ex.works_in_room(i).into_iter().map(|a| {
+                        li().child(strong().text(a.title)).child(span().class("muted").text(format!(" · {}", a.year)))
+                    }))
+                    .children(ex.sculptures_in_room(i).into_iter().map(|s| {
+                        li().child(strong().text(s.title)).child(span().class("muted").text(format!(" · {}, sculpture", s.year)))
+                    })),
+                )
         })));
     layout(
         format!("Galerie 3D · {}", ex.short_name),
@@ -614,7 +679,14 @@ async fn catalogue(_req: Request, ex: &'static Exhibition) -> Page {
                     ex.artist_dates
                 ))),
         )
-        .child(div().class("art-grid").children(ex.artworks.iter().enumerate().map(|(i, art)| artwork_card(ex, art, i))));
+        .child(div().class("art-grid").children(ex.artworks.iter().enumerate().map(|(i, art)| artwork_card(ex, art, i))))
+        .child(if ex.sculptures.is_empty() {
+            div()
+        } else {
+            div()
+                .child(h2().class("section-title").text("Les sculptures"))
+                .child(div().class("art-grid").children(ex.sculptures.iter().enumerate().map(|(i, s)| sculpture_card(ex, s, i))))
+        });
     layout(
         format!("Œuvres · {}", ex.short_name),
         format!(
@@ -632,32 +704,38 @@ async fn catalogue(_req: Request, ex: &'static Exhibition) -> Page {
 /// Le plan des emplacements d'une exposition : pour chaque salle, chaque mur et chaque
 /// place, l'œuvre qui l'occupe ou « libre ».
 fn slots_table(ex: &'static Exhibition) -> Element {
-    let rows = ex.rooms.iter().enumerate().flat_map(move |(r, room)| {
-        let last = r == ex.rooms.len() - 1;
-        [
-            ("gauche", Wall::Left),
-            ("droite", Wall::Right),
-            ("fond", Wall::Back),
-        ]
-        .into_iter()
-        .map(move |(label, wall)| {
+    let rows = ex.galleries().flat_map(move |(r, room)| {
+        Side::ALL.into_iter().map(move |side| {
+            let length = room.wall_length(side);
+            let places = room.places(side);
+            let cells = (1..=places).map(move |place| {
+                let at = -length / 2.0 + length * (f32::from(place) - 0.5) / f32::from(places);
+                let taken = ex.artworks.iter().find(|a| {
+                    a.hook.room == r && a.hook.side == side && (a.hook.position - at).abs() < 1.2
+                });
+                let door = room
+                    .doors
+                    .iter()
+                    .any(|d| d.side == side && (d.position - at).abs() < d.width / 2.0 + 0.6);
+                let chip = span().class("chip");
+                match taken {
+                    Some(art) => chip.class("taken").text(format!("{place} · {}", art.title)),
+                    None if door => chip.class("door").text(format!("{place} · porte")),
+                    None => chip.class("free").text(format!("{place} · libre")),
+                }
+            });
             tr().child(
                 th().attr("scope", "row")
-                    .text(format!("{} · {label}", room.name)),
+                    .text(format!("{} · {}", room.name, side.french())),
             )
-            .children((1..=3).map(move |place| {
-                let taken = ex
-                    .artworks
-                    .iter()
-                    .find(|a| a.hook.room == r && a.hook.wall == wall && a.hook.place == place);
-                match taken {
-                    Some(art) => td().class("taken").text(art.title),
-                    None if wall == Wall::Back && place == 2 && !last => {
-                        td().class("door").text("porte")
-                    }
-                    None => td().class("free").text("libre"),
-                }
-            }))
+            .child(
+                td().child(
+                    span()
+                        .class("muted small")
+                        .text(format!("{:.1} m", length).replace('.', ",")),
+                ),
+            )
+            .child(td().children(cells))
         })
     });
     div().class("table-wrap").child(
@@ -666,9 +744,8 @@ fn slots_table(ex: &'static Exhibition) -> Element {
             .child(
                 thead().child(
                     tr().child(th().text("Salle · mur"))
-                        .child(th().text("Place 1"))
-                        .child(th().text("Place 2"))
-                        .child(th().text("Place 3")),
+                        .child(th().text("Longueur"))
+                        .child(th().text("Places, de gauche à droite face au mur")),
                 ),
             )
             .child(tbody().children(rows)),
@@ -826,6 +903,8 @@ fn app() -> App {
             catalogue(req, ex)
         });
     }
+    // Les fichiers de données des expositions (mosaïques, sculptures, vignettes).
+    app.static_dir("/donnees", arteon::artworks::DATA_DIR);
     app.fallback(not_found);
     app
 }

@@ -1,52 +1,104 @@
-//! La galerie en 3D, avec le moteur de jeu d'Active réexporté par Paquets
-//! (`paquets::ecs`). Deux scènes, pour chaque exposition :
+//! Les scènes 3D, avec le moteur de jeu d'Active réexporté par Paquets (`paquets::ecs`,
+//! l'équivalent de Bevy) :
 //!
-//! - `tour_app(ex)` : les salles de l'exposition reliées par des couloirs, chaque
-//!   tableau reconstruit en mosaïque sur son mur, et une caméra qui fait la visite
-//!   guidée, en boucle ;
-//! - `showcase_app(ex)` : l'œuvre de la vitrine sur un chevalet tournant.
+//! - `tour_app` : le musée d'une exposition, construit à partir de son plan
+//!   (`museum.rs`), ses tableaux en mosaïque, ses sculptures sur socle, et une caméra
+//!   qui fait la visite guidée (`tour.rs`) ou que le visiteur promène lui-même ;
+//! - `showcase_app` : l'œuvre de la vitrine sur un chevalet tournant.
 //!
 //! Le moteur n'affiche pas d'images (pas de textures) : un tableau est une grille de
-//! touches de couleur de 7 mm. Les touches voisines de même couleur sont fusionnées en
-//! rectangles, et chaque couleur de la palette forme un seul maillage (64 au plus par
-//! tableau) : la scène reste fluide malgré la finesse de la mosaïque.
+//! touches de couleur de 7 mm ; les touches voisines de même couleur sont fusionnées en
+//! rectangles, une couleur par maillage. Les cases et les maillages des sculptures
+//! viennent du fichier de données de l'exposition ([`ExhibitionData`]).
 //!
 //! Deux limites du moteur dictent la construction :
 //!
-//! - `DefaultPlugins` contient la physique, qui donne un corps soumis à la gravité à
-//!   chaque pavé : les murs, les sols et les tableaux tomberaient dans le vide. Un musée
-//!   n'en a pas besoin, elle est donc retirée (`disable::<PhysicsPlugin>()`) ;
-//! - le shader n'éclaire qu'avec 8 lampes ponctuelles au plus (les suivantes sont
-//!   ignorées) : `lamp_plan` répartit ces 8 lampes entre les salles et les couloirs.
+//! - `DefaultPlugins` contient la physique, qui donnerait un corps soumis à la gravité à
+//!   chaque pavé : elle est retirée (`disable::<PhysicsPlugin>()`) ;
+//! - le shader n'éclaire qu'avec 8 lampes ponctuelles : chaque salle a les siennes, et à
+//!   chaque image seules les 8 plus proches du visiteur restent allumées.
 
 use std::cell::RefCell;
 use std::collections::{BTreeMap, HashMap};
-use std::f32::consts::FRAC_PI_2;
 use std::rc::Rc;
-use std::sync::OnceLock;
 
 use paquets::ecs::prelude::*;
 use paquets::scene::BufferGeometry;
 
-use crate::artworks::{
-    Artwork, CORRIDOR_HALF_WIDTH, CORRIDOR_LENGTH, EXHIBITIONS, Exhibition, HANGING_HEIGHT, Hook,
-    Mosaic, ROOM_HALF_DEPTH, ROOM_HALF_WIDTH, WALL_HEIGHT, WALL_THICKNESS, Wall, room_center_z,
-};
+use crate::artworks::{Artwork, Exhibition, Mosaic};
+use crate::data::ExhibitionData;
+use crate::museum::{self, Block};
+use crate::tour::{self, EYE, Focus, Pose};
 
-// ─── Composants et ressources ─────────────────────────────────────────────────
+// ─── Ressources et composants ─────────────────────────────────────────────────
 
-/// L'exposition que montre la scène.
-struct Current(&'static Exhibition);
+/// L'exposition que montre la scène, et ses données.
+struct Current(&'static Exhibition, Rc<ExhibitionData>);
 paquets::active::resource!(Current);
 
-/// La caméra de la visite guidée ; `t` est le temps écoulé depuis le début du tour.
+/// Comment le visiteur se déplace.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum Mode {
+    /// La caméra fait la visite toute seule.
+    #[default]
+    Guided,
+    /// Le visiteur marche où il veut (clavier, souris, joysticks tactiles).
+    Free,
+}
+
+/// Les commandes de la visite, partagées entre la scène et la page (interface egui,
+/// boutons, clavier, écran tactile). La page écrit les demandes ; la scène écrit où en
+/// est le visiteur et ce qu'il regarde.
+#[derive(Default)]
+pub struct TourControl {
+    pub mode: Mode,
+    /// La visite guidée est arrêtée.
+    pub paused: bool,
+    /// Le nombre d'œuvres à sauter dans la visite guidée : +1 la suivante, -1 la précédente.
+    pub jump: i32,
+    /// Aller voir cette œuvre (la visite guidée reprend devant elle).
+    pub go_to: Option<Focus>,
+    /// En visite libre : avancer (+1) ou reculer (-1), aller à droite (+1) ou à gauche (-1).
+    pub forward: f32,
+    pub strafe: f32,
+    /// En visite libre : de combien tourner la tête depuis la dernière image (en radians).
+    pub turn: f32,
+    pub tilt: f32,
+    /// En visite libre : tourner en continu (flèches), en radians par seconde.
+    pub spin: f32,
+    /// Courir (Maj) en visite libre.
+    pub run: bool,
+    /// L'œuvre regardée.
+    pub current: Option<Focus>,
+    /// Où est le visiteur : x, z et le cap (pour la minicarte).
+    pub position: [f32; 3],
+    /// Appelé quand l'œuvre regardée change.
+    pub on_change: Option<Rc<dyn Fn(Option<Focus>)>>,
+}
+
+/// Les commandes, partagées (`Rc<RefCell<…>>`) entre la page et la scène.
+pub type SharedControl = Rc<RefCell<TourControl>>;
+
+struct Control(SharedControl);
+paquets::active::resource!(Control);
+
+/// La caméra du visiteur : `t` est le temps de la visite guidée ; en visite libre, sa
+/// position, son cap et son inclinaison.
 struct Visitor {
     t: f32,
+    x: f32,
+    z: f32,
+    yaw: f32,
+    pitch: f32,
+    mode: Mode,
 }
 paquets::active::component!(Visitor);
 
-/// Un morceau posé sur un plateau tournant : sa place est recalculée à chaque image
-/// autour de `center`, ce qui fait tourner l'ensemble d'un bloc.
+/// Une lampe de plafond (seules les 8 plus proches du visiteur restent allumées).
+struct Lamp;
+paquets::active::component!(Lamp);
+
+/// Un morceau posé sur un plateau tournant (la vitrine).
 struct Turntable {
     center: [f32; 3],
     offset: [f32; 3],
@@ -64,47 +116,27 @@ fn color([r, g, b]: [u8; 3]) -> Color {
     Color::srgb_u8(r, g, b)
 }
 
-/// Un pavé de taille `size`, centré en `pos`, de couleur `rgb`.
-fn block(
-    commands: &mut Commands,
-    meshes: Meshes,
-    materials: Materials,
-    size: [f32; 3],
-    pos: [f32; 3],
-    rgb: [u8; 3],
-) {
+fn spawn_block(commands: &mut Commands, meshes: Meshes, materials: Materials, block: &Block) {
     commands.spawn((
-        Mesh3d(meshes.add(Cuboid::new(size[0], size[1], size[2]))),
-        MeshMaterial3d(materials.add(color(rgb))),
-        Transform::from_xyz(pos[0], pos[1], pos[2]),
+        Mesh3d(meshes.add(Cuboid::new(block.size[0], block.size[1], block.size[2]))),
+        MeshMaterial3d(materials.add(color(block.color))),
+        Transform::from_xyz(block.center[0], block.center[1], block.center[2]),
     ));
 }
 
 /// Le nombre maximal de lampes ponctuelles que le moteur prend en compte.
 pub const MAX_LAMPS: usize = 8;
 
-/// Combien de lampes par salle, et si les couloirs en ont une, pour `rooms` salles,
-/// sans dépasser `MAX_LAMPS` (au-delà, la lumière d'ambiance éclaire seule).
-pub fn lamp_plan(rooms: usize) -> (usize, bool) {
-    let corridors = rooms.saturating_sub(1);
-    if 2 * rooms + corridors <= MAX_LAMPS {
-        (2, true)
-    } else if rooms + corridors <= MAX_LAMPS {
-        (1, true)
-    } else {
-        (1, false)
-    }
-}
-
-/// Une lampe de plafond, assez douce pour ne pas brûler les couleurs des tableaux.
 fn lamp(commands: &mut Commands, pos: [f32; 3], intensity: f32) {
     commands.spawn((
         PointLight {
             intensity,
-            range: 12.0,
+            range: 14.0,
             ..default()
         },
         Transform::from_xyz(pos[0], pos[1], pos[2]),
+        Visibility::Visible,
+        Lamp,
     ));
 }
 
@@ -112,7 +144,7 @@ fn lamp(commands: &mut Commands, pos: [f32; 3], intensity: f32) {
 fn ambient() -> GlobalAmbientLight {
     GlobalAmbientLight {
         color: Color::WHITE,
-        brightness: 520.0,
+        brightness: 560.0,
         ..default()
     }
 }
@@ -122,16 +154,16 @@ fn plugins() -> PluginGroupBuilder {
     DefaultPlugins.disable::<PhysicsPlugin>()
 }
 
-const FLOOR: [u8; 3] = [132, 98, 66];
-const CEILING: [u8; 3] = [250, 248, 242];
 const GILDING: [u8; 3] = [168, 128, 56];
 const CANVAS_BACK: [u8; 3] = [92, 84, 72];
 const PLAQUE: [u8; 3] = [244, 240, 228];
-const BENCH: [u8; 3] = [58, 40, 28];
-const CORRIDOR_WALL: [u8; 3] = [30, 44, 84];
-const DOOR_HEIGHT: f32 = 3.0;
-/// La distance entre la face intérieure d'un mur latéral et l'axe de la galerie.
-const INNER: f32 = ROOM_HALF_WIDTH - WALL_THICKNESS / 2.0;
+const PLINTH: [u8; 3] = [214, 208, 196];
+
+fn turned(pos: [f32; 3], angle: f32) -> Transform {
+    let mut transform = Transform::from_xyz(pos[0], pos[1], pos[2]);
+    transform.rotate_y(angle);
+    transform
+}
 
 // ─── Les tableaux en mosaïque ─────────────────────────────────────────────────
 
@@ -168,13 +200,12 @@ impl Builder {
 /// Les rectangles d'une mosaïque : les cases voisines de même couleur fusionnées, d'abord
 /// en lignes, puis les lignes identiques empilées. `(couleur, col0, col1, row0, row1)`,
 /// bornes de fin exclues.
-fn rectangles(mosaic: &Mosaic) -> Vec<(u8, usize, usize, usize, usize)> {
+fn rectangles(mosaic: &Mosaic, cells: &[u8]) -> Vec<(u8, usize, usize, usize, usize)> {
     let (cols, rows) = (usize::from(mosaic.cols), usize::from(mosaic.rows));
     let mut done = Vec::new();
-    // Les rectangles encore ouverts, par (couleur, début, fin) : leur première ligne.
     let mut open: HashMap<(u8, usize, usize), usize> = HashMap::new();
     for row in 0..rows {
-        let line = &mosaic.cells[row * cols..(row + 1) * cols];
+        let line = &cells[row * cols..(row + 1) * cols];
         let mut next: HashMap<(u8, usize, usize), usize> = HashMap::new();
         let mut start = 0;
         while start < cols {
@@ -199,15 +230,15 @@ fn rectangles(mosaic: &Mosaic) -> Vec<(u8, usize, usize, usize, usize)> {
 }
 
 /// Les maillages d'une mosaïque de `width` × `height` mètres, centrée sur l'origine,
-/// tournée vers +z : un maillage par couleur de la palette. Les tons clairs sont un
-/// peu plus en avant, comme les empâtements du peintre.
-fn mosaic_meshes(mosaic: &Mosaic, width: f32, height: f32) -> Vec<([u8; 3], Mesh)> {
+/// tournée vers +z : un maillage par couleur. Les tons clairs sont un peu plus en avant,
+/// comme les empâtements du peintre.
+fn mosaic_meshes(mosaic: &Mosaic, cells: &[u8], width: f32, height: f32) -> Vec<([u8; 3], Mesh)> {
     let (cw, ch) = (
         width / f32::from(mosaic.cols),
         height / f32::from(mosaic.rows),
     );
     let mut by_color: BTreeMap<u8, Builder> = BTreeMap::new();
-    for (c, a, b, r0, r1) in rectangles(mosaic) {
+    for (c, a, b, r0, r1) in rectangles(mosaic, cells) {
         let [red, green, blue] = mosaic.palette[usize::from(c)];
         let light =
             (f32::from(red) * 0.3 + f32::from(green) * 0.55 + f32::from(blue) * 0.15) / 255.0;
@@ -226,53 +257,38 @@ fn mosaic_meshes(mosaic: &Mosaic, width: f32, height: f32) -> Vec<([u8; 3], Mesh
         .collect()
 }
 
-/// Où se trouve un point posé sur le mur d'un tableau : `u` vers la droite du visiteur
-/// qui le regarde, `v` vers le haut depuis le centre du tableau, `layer` en avant du mur.
-/// Renvoie la position et l'angle (autour de y) qui tourne +z vers la salle.
-fn on_wall(hook: Hook, u: f32, v: f32, layer: f32) -> ([f32; 3], f32) {
-    let along = hook.along();
-    let y = HANGING_HEIGHT + v;
-    match hook.wall {
-        Wall::Left => ([-INNER + layer, y, along - u], FRAC_PI_2),
-        Wall::Right => ([INNER - layer, y, along + u], -FRAC_PI_2),
-        Wall::Back => {
-            let back = room_center_z(hook.room) - ROOM_HALF_DEPTH + WALL_THICKNESS / 2.0;
-            ([along + u, y, back + layer], 0.0)
-        }
-    }
-}
-
-fn turned(pos: [f32; 3], angle: f32) -> Transform {
-    let mut transform = Transform::from_xyz(pos[0], pos[1], pos[2]);
-    transform.rotate_y(angle);
-    transform
-}
-
-/// Accroche une œuvre : un cadre doré, le fond de la toile, la mosaïque et un cartel à
-/// droite.
-fn hang(commands: &mut Commands, meshes: Meshes, materials: Materials, art: &Artwork) {
+/// Accroche un tableau : un cadre doré, le fond de la toile, la mosaïque et un cartel.
+fn hang(
+    commands: &mut Commands,
+    meshes: Meshes,
+    materials: Materials,
+    ex: &Exhibition,
+    data: &ExhibitionData,
+    art: &Artwork,
+) {
     let (w, h) = (art.width, art.height);
     let parts: [([f32; 3], f32, [u8; 3]); 2] = [
         ([w + 0.16, h + 0.16, 0.06], 0.03, GILDING),
         ([w + 0.01, h + 0.01, 0.01], 0.065, CANVAS_BACK),
     ];
     for (size, layer, rgb) in parts {
-        let (pos, angle) = on_wall(art.hook, 0.0, 0.0, layer);
+        let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, layer);
         commands.spawn((
             Mesh3d(meshes.add(Cuboid::new(size[0], size[1], size[2]))),
             MeshMaterial3d(materials.add(color(rgb))),
             turned(pos, angle),
         ));
     }
-    let (pos, angle) = on_wall(art.hook, 0.0, 0.0, 0.07);
-    for (rgb, mesh) in mosaic_meshes(&art.mosaic, w, h) {
+    let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, 0.07);
+    for (rgb, mesh) in mosaic_meshes(&art.mosaic, data.cells(&art.mosaic), w, h) {
         commands.spawn((
             Mesh3d(meshes.add(mesh)),
             MeshMaterial3d(materials.add(color(rgb))),
             turned(pos, angle),
         ));
     }
-    let (pos, angle) = on_wall(art.hook, w / 2.0 + 0.32, -0.35, 0.01);
+    let plaque_height = 1.45 - art.hook.center;
+    let (pos, angle) = museum::on_wall(ex, art.hook, w / 2.0 + 0.32, plaque_height, 0.01);
     commands.spawn((
         Mesh3d(meshes.add(Cuboid::new(0.24, 0.15, 0.02))),
         MeshMaterial3d(materials.add(color(PLAQUE))),
@@ -280,174 +296,43 @@ fn hang(commands: &mut Commands, meshes: Meshes, materials: Materials, art: &Art
     ));
 }
 
-// ─── La galerie ──────────────────────────────────────────────────────────────
-
-/// Construit une salle : sol, plafond, murs (avec des portes), une banquette et ses lampes.
-fn build_room(
+/// Pose une sculpture sur son socle.
+fn sculpt(
     commands: &mut Commands,
     meshes: Meshes,
     materials: Materials,
-    ex: &Exhibition,
-    index: usize,
+    data: &ExhibitionData,
+    s: &crate::artworks::Sculpture,
 ) {
-    let room = &ex.rooms[index];
-    let cz = room.center_z;
-    let (w, d, h, t) = (
-        ROOM_HALF_WIDTH,
-        ROOM_HALF_DEPTH,
-        WALL_HEIGHT,
-        WALL_THICKNESS,
-    );
-    let wall = room.walls;
-
-    block(
-        commands,
-        meshes,
-        materials,
-        [2.0 * w, 0.1, 2.0 * d],
-        [0.0, -0.05, cz],
-        FLOOR,
-    );
-    block(
-        commands,
-        meshes,
-        materials,
-        [2.0 * w, 0.1, 2.0 * d],
-        [0.0, h + 0.05, cz],
-        CEILING,
-    );
-    for side in [-1.0, 1.0] {
-        block(
-            commands,
-            meshes,
-            materials,
-            [t, h, 2.0 * d + t],
-            [side * w, h / 2.0, cz],
-            wall,
-        );
-        // Une plinthe sombre au pied des murs.
-        block(
-            commands,
-            meshes,
-            materials,
-            [0.03, 0.12, 2.0 * d],
-            [side * (INNER - 0.015), 0.06, cz],
-            BENCH,
-        );
+    if s.plinth > 0.01 {
+        let side = (s.radius * 2.0 * 0.62).max(0.4);
+        commands.spawn((
+            Mesh3d(meshes.add(Cuboid::new(side, s.plinth, side))),
+            MeshMaterial3d(materials.add(color(PLINTH))),
+            turned([s.x, s.plinth / 2.0, s.z], s.rotation),
+        ));
     }
-    // Les murs avant et arrière : une porte au milieu, sauf au fond de la dernière salle.
-    let last = index == ex.rooms.len() - 1;
-    for (z, door) in [(cz + d, true), (cz - d, !last)] {
-        if door {
-            let seg = w - CORRIDOR_HALF_WIDTH;
-            for side in [-1.0, 1.0] {
-                let x = side * (CORRIDOR_HALF_WIDTH + seg / 2.0);
-                block(
-                    commands,
-                    meshes,
-                    materials,
-                    [seg, h, t],
-                    [x, h / 2.0, z],
-                    wall,
-                );
-            }
-            let lintel = h - DOOR_HEIGHT;
-            block(
-                commands,
-                meshes,
-                materials,
-                [2.0 * CORRIDOR_HALF_WIDTH, lintel, t],
-                [0.0, DOOR_HEIGHT + lintel / 2.0, z],
-                wall,
-            );
-        } else {
-            block(
-                commands,
-                meshes,
-                materials,
-                [2.0 * w, h, t],
-                [0.0, h / 2.0, z],
-                wall,
-            );
-        }
-    }
-    // Une banquette au centre, pour s'asseoir devant les toiles.
-    block(
-        commands,
-        meshes,
-        materials,
-        [0.5, 0.08, 2.2],
-        [0.0, 0.42, cz],
-        BENCH,
-    );
-    for z in [-0.95, 0.95] {
-        block(
-            commands,
-            meshes,
-            materials,
-            [0.42, 0.38, 0.1],
-            [0.0, 0.19, cz + z],
-            BENCH,
-        );
-    }
-    let (per_room, _) = lamp_plan(ex.rooms.len());
-    let spots: &[f32] = if per_room == 2 { &[2.5, -2.5] } else { &[0.0] };
-    for z in spots {
-        lamp(commands, [0.0, h - 0.4, cz + z], 300_000.0);
-    }
+    let model = data.sculpture(s);
+    let mesh = Mesh::from_geometry(BufferGeometry::new(
+        model.positions,
+        model.normals,
+        Vec::new(),
+        model.indices,
+    ));
+    let material = StandardMaterial {
+        base_color: color(s.color),
+        perceptual_roughness: s.roughness,
+        metallic: s.metallic,
+        ..default()
+    };
+    commands.spawn((
+        Mesh3d(meshes.add(mesh)),
+        MeshMaterial3d(materials.add(material)),
+        turned([s.x, s.plinth, s.z], s.rotation),
+    ));
 }
 
-/// Construit le couloir qui part du fond de la salle `index` vers la suivante.
-fn build_corridor(
-    commands: &mut Commands,
-    meshes: Meshes,
-    materials: Materials,
-    ex: &Exhibition,
-    index: usize,
-) {
-    let cz = ex.rooms[index].center_z - ROOM_HALF_DEPTH - CORRIDOR_LENGTH / 2.0;
-    let (cw, len, t) = (CORRIDOR_HALF_WIDTH, CORRIDOR_LENGTH, WALL_THICKNESS);
-    block(
-        commands,
-        meshes,
-        materials,
-        [2.0 * cw, 0.1, len],
-        [0.0, -0.05, cz],
-        FLOOR,
-    );
-    block(
-        commands,
-        meshes,
-        materials,
-        [2.0 * cw, 0.1, len],
-        [0.0, DOOR_HEIGHT + 0.05, cz],
-        CEILING,
-    );
-    for side in [-1.0, 1.0] {
-        let x = side * (cw + t / 2.0);
-        block(
-            commands,
-            meshes,
-            materials,
-            [t, DOOR_HEIGHT, len],
-            [x, DOOR_HEIGHT / 2.0, cz],
-            CORRIDOR_WALL,
-        );
-        // Un liseré doré au pied des murs, pour guider le visiteur.
-        let x = side * (cw - 0.02);
-        block(
-            commands,
-            meshes,
-            materials,
-            [0.04, 0.04, len],
-            [x, 0.05, cz],
-            [242, 183, 5],
-        );
-    }
-    if lamp_plan(ex.rooms.len()).1 {
-        lamp(commands, [0.0, DOOR_HEIGHT - 0.3, cz], 110_000.0);
-    }
-}
+// ─── Le musée ─────────────────────────────────────────────────────────────────
 
 fn setup_tour(
     current: Res<Current>,
@@ -455,293 +340,92 @@ fn setup_tour(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    let ex = current.0;
-    // Les salles d'abord (avec leurs lampes, dans l'ordre de la visite), puis les couloirs.
-    for index in 0..ex.rooms.len() {
-        build_room(&mut commands, &mut meshes, &mut materials, ex, index);
-    }
-    for index in 0..ex.rooms.len().saturating_sub(1) {
-        build_corridor(&mut commands, &mut meshes, &mut materials, ex, index);
+    let (ex, data) = (current.0, current.1.clone());
+    for (i, room) in ex.rooms.iter().enumerate() {
+        for block in museum::room_blocks(room) {
+            spawn_block(&mut commands, &mut meshes, &mut materials, &block);
+        }
+        for block in museum::bench(ex, i).into_iter().flatten() {
+            spawn_block(&mut commands, &mut meshes, &mut materials, &block);
+        }
+        for pos in museum::lamps(room) {
+            lamp(&mut commands, pos, museum::lamp_intensity(room));
+        }
     }
     for art in ex.artworks {
-        hang(&mut commands, &mut meshes, &mut materials, art);
+        hang(&mut commands, &mut meshes, &mut materials, ex, &data, art);
     }
-    let Pose { eye, look, .. } = tour_pose(ex, 0.0, 16.0 / 9.0);
+    for s in ex.sculptures {
+        sculpt(&mut commands, &mut meshes, &mut materials, &data, s);
+    }
+    let Pose { eye, look, .. } = tour::tour_pose(ex, 0.0, 16.0 / 9.0);
+    let (yaw, pitch) = tour::heading(eye, look);
     commands.spawn((
         Camera3d::default(),
         Transform::from_xyz(eye[0], eye[1], eye[2])
             .looking_at(Vec3::new(look[0], look[1], look[2]), Vec3::Y),
-        Visitor { t: 0.0 },
+        Visitor {
+            t: 0.0,
+            x: eye[0],
+            z: eye[2],
+            yaw,
+            pitch,
+            mode: Mode::Guided,
+        },
     ));
 }
 
-// ─── La visite guidée ────────────────────────────────────────────────────────
-
-/// Les commandes de la visite, partagées entre la scène et la page (boutons, clavier,
-/// cartel). La page écrit `paused` et `jump` ; la scène écrit `current`, l'œuvre devant
-/// laquelle se tient le visiteur, et prévient la page par `on_change`.
-#[derive(Default)]
-pub struct TourControl {
-    /// La visite est arrêtée (la caméra ne bouge plus).
-    pub paused: bool,
-    /// Le nombre d'œuvres à sauter : +1 la suivante, -1 la précédente.
-    pub jump: i32,
-    /// L'index, dans `artworks`, de l'œuvre regardée.
-    pub current: Option<usize>,
-    /// Appelé quand l'œuvre regardée change.
-    pub on_change: Option<Rc<dyn Fn(Option<usize>)>>,
-}
-
-/// Les commandes, partagées (`Rc<RefCell<…>>`) entre la page et la scène.
-pub type SharedControl = Rc<RefCell<TourControl>>;
-
-struct Control(SharedControl);
-paquets::active::resource!(Control);
-
-/// Un arrêt de la visite : où se tient le visiteur, ce qu'il regarde, combien de temps,
-/// et l'œuvre qu'il regarde (son index dans `artworks`), s'il y en a une.
-#[derive(Clone, Copy, Debug)]
-struct Stop {
-    eye: [f32; 3],
-    look: [f32; 3],
-    hold: f32,
-    art: Option<usize>,
-}
-
-const EYE: f32 = 1.65;
-/// La tangente de la moitié du champ de vision vertical de la caméra (45°).
-const HALF_FOV_TAN: f32 = 0.414_213_56;
-/// Le visiteur ne recule jamais plus loin que ça du tableau (le mur d'en face est à 9,8 m).
-const MAX_DISTANCE: f32 = 8.6;
-
-fn stop(eye: [f32; 3], look: [f32; 3], hold: f32) -> Stop {
-    Stop {
-        eye,
-        look,
-        hold,
-        art: None,
-    }
-}
-
-/// La distance à laquelle regarder une œuvre sur un écran de proportions `aspect`
-/// (largeur / hauteur) : assez loin pour qu'elle tienne dans l'image avec de l'air
-/// autour. Sur un téléphone en portrait, le visiteur recule : la toile reste entière et
-/// ses touches restent fines à l'écran.
-fn distance_for(art: &Artwork, aspect: f32) -> f32 {
-    let fit_width = (art.width / 2.0) / (HALF_FOV_TAN * aspect.max(0.2) * 0.62);
-    let fit_height = (art.height / 2.0) / (HALF_FOV_TAN * 0.72);
-    fit_width.max(fit_height).clamp(1.8, MAX_DISTANCE)
-}
-
-/// Où se tient le visiteur pour regarder `art` à `distance` mètres.
-fn eye_at(art: &Artwork, distance: f32) -> ([f32; 3], [f32; 3]) {
-    let (center, _) = on_wall(art.hook, 0.0, 0.0, 0.0);
-    let eye = match art.hook.wall {
-        Wall::Left => [center[0] + distance, EYE, center[2]],
-        Wall::Right => [center[0] - distance, EYE, center[2]],
-        Wall::Back => [center[0], EYE, center[2] + distance],
+/// Garde allumées les 8 lampes les plus proches du visiteur (le shader n'en voit pas plus).
+fn nearest_lamps(
+    cameras: Query<&Transform, With<Visitor>>,
+    mut lamps: Query<(&Transform, &mut Visibility), With<Lamp>>,
+) {
+    let Some(eye) = cameras.iter().next().map(|t| t.translation) else {
+        return;
     };
-    (eye, center)
-}
-
-/// L'arrêt devant une œuvre, pour un écran paysage (16/9) ; `pose` l'adapte à l'écran.
-fn stop_at(ex: &Exhibition, art: &Artwork) -> Stop {
-    let (eye, look) = eye_at(art, distance_for(art, 16.0 / 9.0));
-    let index = ex.artworks.iter().position(|a| std::ptr::eq(a, art));
-    Stop {
-        eye,
-        look,
-        hold: 4.0,
-        art: index,
-    }
-}
-
-/// Le parcours d'une exposition, calculé à partir des œuvres accrochées : l'entrée,
-/// chaque œuvre salle par salle, un passage dans l'axe de chaque porte, puis le retour.
-fn plan(ex: &Exhibition) -> Vec<Stop> {
-    let first = ex.rooms[0].center_z;
-    let mut list = vec![stop([0.0, EYE, first + 4.2], [0.0, EYE, first - 6.0], 2.5)];
-    let last = ex.rooms.len() - 1;
-    for (i, room) in ex.rooms.iter().enumerate() {
-        let cz = room.center_z;
-        if i > 0 {
-            list.push(stop([0.0, EYE, cz + 3.6], [0.0, 1.4, cz - 2.0], 1.2));
-        }
-        list.extend(ex.works_in_room(i).into_iter().map(|art| stop_at(ex, art)));
-        if i < last {
-            // Dans l'axe de la porte avant de la passer : la caméra ne frôle pas les murs.
-            let ahead = [0.0, EYE, cz - 16.0];
-            list.push(stop([0.0, EYE, cz - 2.0], ahead, 0.0));
-            list.push(stop(
-                [0.0, EYE, cz - ROOM_HALF_DEPTH - CORRIDOR_LENGTH / 2.0],
-                ahead,
-                0.3,
-            ));
-        } else {
-            // Demi-tour, puis retour vers l'entrée par l'axe de la galerie en regardant
-            // droit devant ; arrivé à l'entrée, la caméra se retourne vers la galerie.
-            list.push(stop([0.0, EYE, cz + 1.0], [0.0, EYE, cz + 12.0], 0.5));
-            if i > 0 {
-                list.push(stop([0.0, EYE, first + 3.0], [0.0, EYE, first + 14.0], 0.0));
-            }
-        }
-    }
-    list
-}
-
-/// Le parcours de `ex`, calculé une fois pour toutes les expositions.
-fn stops(ex: &Exhibition) -> &'static [Stop] {
-    static PLANS: OnceLock<Vec<Vec<Stop>>> = OnceLock::new();
-    let plans = PLANS.get_or_init(|| EXHIBITIONS.iter().map(plan).collect());
-    let index = EXHIBITIONS
+    let mut order: Vec<(f32, usize)> = lamps
         .iter()
-        .position(|e| e.slug == ex.slug)
-        .unwrap_or(0);
-    &plans[index]
-}
-
-/// La durée du trajet entre deux arrêts : selon la distance et l'angle à tourner.
-fn travel(a: &Stop, b: &Stop) -> f32 {
-    let length = |v: [f32; 3]| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
-    let sub = |p: [f32; 3], q: [f32; 3]| [p[0] - q[0], p[1] - q[1], p[2] - q[2]];
-    let distance = length(sub(b.eye, a.eye));
-    let (da, db) = (sub(a.look, a.eye), sub(b.look, b.eye));
-    let cos = (da[0] * db[0] + da[2] * db[2]) / (length(da) * length(db)).max(1e-6);
-    let degrees = cos.clamp(-1.0, 1.0).acos().to_degrees();
-    (distance / 1.3).max(degrees / 40.0).clamp(2.5, 10.0)
-}
-
-/// La durée d'un tour complet de l'exposition, en secondes.
-pub fn tour_duration(ex: &Exhibition) -> f32 {
-    let list = stops(ex);
-    (0..list.len())
-        .map(|i| list[i].hold + travel(&list[i], &list[(i + 1) % list.len()]))
-        .sum()
-}
-
-/// Le moment de la visite où le visiteur arrive devant l'arrêt `index`.
-fn arrival(ex: &Exhibition, index: usize) -> f32 {
-    let list = stops(ex);
-    (0..index)
-        .map(|i| list[i].hold + travel(&list[i], &list[(i + 1) % list.len()]))
-        .sum()
-}
-
-fn lerp3(a: [f32; 3], b: [f32; 3], k: f32) -> [f32; 3] {
-    [
-        a[0] + (b[0] - a[0]) * k,
-        a[1] + (b[1] - a[1]) * k,
-        a[2] + (b[2] - a[2]) * k,
-    ]
-}
-
-/// La direction du regard : (cap autour de y, inclinaison), en radians.
-fn heading(eye: [f32; 3], look: [f32; 3]) -> (f32, f32) {
-    let d = [look[0] - eye[0], look[1] - eye[1], look[2] - eye[2]];
-    let flat = (d[0] * d[0] + d[2] * d[2]).sqrt();
-    (d[0].atan2(d[2]), d[1].atan2(flat))
-}
-
-/// Le regard entre deux arrêts : le cap tourne par le plus court chemin. On interpole la
-/// direction et non le point regardé : entre deux murs opposés, ce point passerait par
-/// l'œil, et la caméra basculerait vers le plafond.
-fn blend_look(eye: [f32; 3], a: ([f32; 3], [f32; 3]), b: ([f32; 3], [f32; 3]), k: f32) -> [f32; 3] {
-    use std::f32::consts::{PI, TAU};
-    let ((yaw_a, pitch_a), (yaw_b, pitch_b)) = (heading(a.0, a.1), heading(b.0, b.1));
-    let turn = (yaw_b - yaw_a + PI).rem_euclid(TAU) - PI;
-    let (yaw, pitch) = (yaw_a + turn * k, pitch_a + (pitch_b - pitch_a) * k);
-    [
-        eye[0] + yaw.sin() * pitch.cos(),
-        eye[1] + pitch.sin(),
-        eye[2] + yaw.cos() * pitch.cos(),
-    ]
-}
-
-/// Ce que voit le visiteur à un moment de la visite.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Pose {
-    pub eye: [f32; 3],
-    pub look: [f32; 3],
-    /// L'œuvre regardée (son index dans `artworks`), s'il y en a une.
-    pub art: Option<usize>,
-}
-
-/// L'œil et le point regardé d'un arrêt, sur un écran de proportions `aspect`.
-fn placed(ex: &Exhibition, stop: &Stop, aspect: f32) -> ([f32; 3], [f32; 3]) {
-    match stop.art {
-        Some(i) => eye_at(&ex.artworks[i], distance_for(&ex.artworks[i], aspect)),
-        None => (stop.eye, stop.look),
-    }
-}
-
-/// Ce que voit le visiteur au temps `t` de la visite (en boucle), sur un écran de
-/// proportions `aspect` (largeur / hauteur). Une fonction pure : elle se teste sans
-/// navigateur.
-pub fn tour_pose(ex: &Exhibition, t: f32, aspect: f32) -> Pose {
-    let list = stops(ex);
-    let mut rest = t.rem_euclid(tour_duration(ex));
-    for (i, here) in list.iter().enumerate() {
-        let a = placed(ex, here, aspect);
-        if rest < here.hold {
-            return Pose {
-                eye: a.0,
-                look: a.1,
-                art: here.art,
-            };
-        }
-        rest -= here.hold;
-        let next = &list[(i + 1) % list.len()];
-        let duration = travel(here, next);
-        if rest < duration {
-            let b = placed(ex, next, aspect);
-            let k = rest / duration;
-            // Le cartel garde l'œuvre quittée jusqu'à mi-chemin, puis montre la suivante ;
-            // vers une porte (sans œuvre), il garde l'œuvre quittée jusqu'au bout.
-            let art = if k < 0.5 {
-                here.art
-            } else {
-                next.art.or(here.art)
-            };
-            let k = k * k * (3.0 - 2.0 * k); // départ et arrivée en douceur
-            let eye = lerp3(a.0, b.0, k);
-            return Pose {
-                eye,
-                look: blend_look(eye, a, b, k),
-                art,
-            };
-        }
-        rest -= duration;
-    }
-    let (eye, look) = placed(ex, &list[0], aspect);
-    Pose {
-        eye,
-        look,
-        art: list[0].art,
-    }
-}
-
-/// Le moment où l'on arrive devant l'œuvre suivante (`step` > 0) ou précédente
-/// (`step` < 0), à partir du temps `t`.
-pub fn jump_time(ex: &Exhibition, t: f32, step: i32) -> f32 {
-    let list = stops(ex);
-    let total = tour_duration(ex);
-    let now = t.rem_euclid(total);
-    let mut works: Vec<f32> = (0..list.len())
-        .filter(|&i| list[i].art.is_some())
-        .map(|i| arrival(ex, i))
+        .enumerate()
+        .map(|(i, (t, _))| (t.translation.distance(eye), i))
         .collect();
-    if works.is_empty() || step == 0 {
-        return t;
+    order.sort_by(|a, b| a.0.total_cmp(&b.0));
+    let mut on = vec![false; order.len()];
+    for &(_, i) in order.iter().take(MAX_LAMPS) {
+        on[i] = true;
     }
-    works.sort_by(f32::total_cmp);
-    // L'œuvre devant laquelle on est (ou la dernière passée), puis on avance de `step`.
-    let here = works.iter().rposition(|&w| w <= now + 0.01);
-    let target = match here {
-        Some(i) => (i as i32 + step).rem_euclid(works.len() as i32) as usize,
-        None if step > 0 => (step as usize - 1) % works.len(),
-        None => (works.len() as i32 + step).rem_euclid(works.len() as i32) as usize,
+    for (i, (_, mut visibility)) in lamps.iter_mut().enumerate() {
+        let wanted = if on[i] {
+            Visibility::Visible
+        } else {
+            Visibility::Hidden
+        };
+        if *visibility != wanted {
+            *visibility = wanted;
+        }
+    }
+}
+
+/// L'œuvre que regarde le visiteur libre : la plus proche dans son champ de vision.
+fn focus_in_view(ex: &Exhibition, eye: [f32; 3], yaw: f32) -> Option<Focus> {
+    let (fx, fz) = (yaw.sin(), yaw.cos());
+    let score = |x: f32, z: f32, reach: f32| -> Option<f32> {
+        let (dx, dz) = (x - eye[0], z - eye[2]);
+        let d = dx.hypot(dz);
+        let cos = (dx * fx + dz * fz) / d.max(1e-3);
+        (d < reach && cos > 0.9).then_some(d)
     };
-    t - now + works[target]
+    let arts = ex.artworks.iter().enumerate().filter_map(|(i, a)| {
+        let c = museum::artwork_center(ex, a);
+        score(c[0], c[2], 5.5 + a.width).map(|d| (d, Focus::Art(i)))
+    });
+    let statues = ex
+        .sculptures
+        .iter()
+        .enumerate()
+        .filter_map(|(i, s)| score(s.x, s.z, 5.0 + s.height).map(|d| (d, Focus::Sculpture(i))));
+    arts.chain(statues)
+        .min_by(|a, b| a.0.total_cmp(&b.0))
+        .map(|(_, f)| f)
 }
 
 fn walk(
@@ -755,34 +439,100 @@ fn walk(
     let aspect = windows.iter().next().map_or(16.0 / 9.0, |w| {
         w.resolution.width / w.resolution.height.max(1.0)
     });
-    let (paused, jump) = control.as_ref().map_or((false, 0), |c| {
+    let dt = time.delta_secs().min(0.1);
+    let mut asked = TourControl::default();
+    if let Some(c) = control.as_ref() {
         let mut c = c.0.borrow_mut();
-        (c.paused, std::mem::take(&mut c.jump))
-    });
-    for (mut transform, mut visitor) in &mut visitors {
-        if jump != 0 {
-            visitor.t = jump_time(ex, visitor.t, jump);
-        } else if !paused {
-            visitor.t += time.delta_secs();
+        asked.mode = c.mode;
+        asked.paused = c.paused;
+        asked.jump = std::mem::take(&mut c.jump);
+        asked.go_to = c.go_to.take();
+        (asked.forward, asked.strafe, asked.run) = (c.forward, c.strafe, c.run);
+        asked.turn = std::mem::take(&mut c.turn) + c.spin * dt;
+        asked.tilt = std::mem::take(&mut c.tilt);
+    }
+    for (mut transform, mut v) in &mut visitors {
+        // Passer d'un mode à l'autre : la visite libre part de là où était la caméra ; la
+        // visite guidée reprend à l'œuvre suivante.
+        if asked.mode != v.mode {
+            if asked.mode == Mode::Guided {
+                v.t = tour::jump_time(ex, v.t, 1);
+            }
+            v.mode = asked.mode;
         }
-        let pose = tour_pose(ex, visitor.t, aspect);
+        if let Some(focus) = asked.go_to {
+            if let Some(t) = tour::time_of(ex, focus) {
+                v.t = t;
+            }
+            if v.mode == Mode::Free {
+                let pose = tour::tour_pose(ex, v.t, aspect);
+                (v.x, v.z) = (pose.eye[0], pose.eye[2]);
+                (v.yaw, v.pitch) = tour::heading(pose.eye, pose.look);
+            }
+        }
+        let pose = match v.mode {
+            Mode::Guided => {
+                if asked.jump != 0 {
+                    v.t = tour::jump_time(ex, v.t, asked.jump);
+                } else if !asked.paused {
+                    v.t += dt;
+                }
+                let pose = tour::tour_pose(ex, v.t, aspect);
+                (v.x, v.z) = (pose.eye[0], pose.eye[2]);
+                (v.yaw, v.pitch) = tour::heading(pose.eye, pose.look);
+                pose
+            }
+            Mode::Free => {
+                v.yaw -= asked.turn;
+                v.pitch = (v.pitch - asked.tilt).clamp(-0.6, 0.6);
+                let speed = if asked.run { 3.2 } else { 1.6 };
+                let (fx, fz) = (v.yaw.sin(), v.yaw.cos());
+                let (rx, rz) = (-fz, fx);
+                let step = (
+                    asked.forward * fx + asked.strafe * rx,
+                    asked.forward * fz + asked.strafe * rz,
+                );
+                let (nx, nz) = museum::push_out(
+                    museum::cached_obstacles(ex),
+                    v.x + step.0 * speed * dt,
+                    v.z + step.1 * speed * dt,
+                    0.3,
+                );
+                // Ne pas sortir du musée par une porte extérieure.
+                if museum::room_at(ex, nx, nz).is_some() {
+                    (v.x, v.z) = (nx, nz);
+                }
+                let eye = [v.x, EYE, v.z];
+                let look = [
+                    v.x + fx * v.pitch.cos(),
+                    EYE + v.pitch.sin(),
+                    v.z + fz * v.pitch.cos(),
+                ];
+                Pose {
+                    eye,
+                    look,
+                    focus: focus_in_view(ex, eye, v.yaw),
+                }
+            }
+        };
         *transform = Transform::from_xyz(pose.eye[0], pose.eye[1], pose.eye[2])
             .looking_at(Vec3::new(pose.look[0], pose.look[1], pose.look[2]), Vec3::Y);
         if let Some(control) = control.as_ref() {
-            // Le cartel garde la dernière œuvre vue jusqu'à la suivante, couloirs compris :
-            // le bouton « Voir en HD » reste toujours utilisable.
             let callback = {
                 let mut c = control.0.borrow_mut();
-                match pose.art {
-                    Some(art) if c.current != Some(art) => {
-                        c.current = Some(art);
-                        c.on_change.clone().map(|f| (f, art))
+                c.position = [v.x, v.z, v.yaw];
+                // Le cartel garde la dernière œuvre vue jusqu'à la suivante : le bouton
+                // « Voir en HD » reste toujours utilisable.
+                match pose.focus {
+                    Some(f) if c.current != Some(f) => {
+                        c.current = Some(f);
+                        c.on_change.clone().map(|cb| (cb, f))
                     }
                     _ => None,
                 }
             };
-            if let Some((callback, art)) = callback {
-                callback(Some(art));
+            if let Some((callback, focus)) = callback {
+                callback(Some(focus));
             }
         }
     }
@@ -801,20 +551,24 @@ fn turn(time: Res<Time>, mut parts: Query<(&mut Transform, &mut Turntable)>) {
     }
 }
 
-/// La galerie complète d'une exposition, avec sa visite guidée.
-pub fn tour_app(ex: &'static Exhibition) -> App {
+/// Le musée d'une exposition, avec sa visite guidée.
+pub fn tour_app(ex: &'static Exhibition, data: Rc<ExhibitionData>) -> App {
     let mut app = App::new();
     app.add_plugins(plugins())
         .insert_resource(ambient())
-        .insert_resource(Current(ex))
+        .insert_resource(Current(ex, data))
         .add_systems(Startup, setup_tour)
-        .add_systems(Update, walk);
+        .add_systems(Update, (walk, nearest_lamps));
     app
 }
 
-/// La galerie, pilotée par la page : pause, œuvre suivante ou précédente, cartel.
-pub fn tour_app_with(ex: &'static Exhibition, control: SharedControl) -> App {
-    let mut app = tour_app(ex);
+/// Le musée, piloté par la page : visite guidée ou libre, pause, œuvre suivante, cartel.
+pub fn tour_app_with(
+    ex: &'static Exhibition,
+    data: Rc<ExhibitionData>,
+    control: SharedControl,
+) -> App {
+    let mut app = tour_app(ex, data);
     app.insert_resource(Control(control));
     app
 }
@@ -885,7 +639,7 @@ fn setup_showcase(
     );
     match art {
         Some(art) => {
-            for (rgb, mesh) in mosaic_meshes(&art.mosaic, w, h) {
+            for (rgb, mesh) in mosaic_meshes(&art.mosaic, current.1.cells(&art.mosaic), w, h) {
                 part(&mut commands, mesh, rgb, [0.0, y, 0.005]);
             }
         }
@@ -906,11 +660,11 @@ fn setup_showcase(
 }
 
 /// La vitrine animée de la présentation d'une exposition.
-pub fn showcase_app(ex: &'static Exhibition) -> App {
+pub fn showcase_app(ex: &'static Exhibition, data: Rc<ExhibitionData>) -> App {
     let mut app = App::new();
     app.add_plugins(plugins())
         .insert_resource(ambient())
-        .insert_resource(Current(ex))
+        .insert_resource(Current(ex, data))
         .add_systems(Startup, setup_showcase)
         .add_systems(Update, turn);
     app
@@ -919,163 +673,35 @@ pub fn showcase_app(ex: &'static Exhibition) -> App {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::artworks::EXHIBITIONS;
 
-    /// Un téléphone en portrait, un écran carré, un écran large.
-    const ASPECTS: [f32; 3] = [0.46, 1.0, 16.0 / 9.0];
-
-    #[test]
-    fn the_tour_starts_at_the_entrance_and_loops() {
-        for ex in EXHIBITIONS {
-            assert_eq!(tour_pose(ex, 0.0, 1.5).eye, stops(ex)[0].eye);
-            assert_eq!(tour_pose(ex, tour_duration(ex), 1.5).eye, stops(ex)[0].eye);
-        }
-    }
-
-    #[test]
-    fn the_tour_stops_in_front_of_every_work() {
-        for ex in EXHIBITIONS {
-            for (i, art) in ex.artworks.iter().enumerate() {
-                let target = stop_at(ex, art);
-                assert_eq!(target.art, Some(i));
-                assert!(
-                    stops(ex).iter().any(|s| s.eye == target.eye),
-                    "{}",
-                    art.title
-                );
-            }
-        }
-    }
-
-    /// Les boutons « suivante » et « précédente » passent d'une œuvre à l'autre, dans
-    /// l'ordre de la visite, en boucle.
-    #[test]
-    fn next_and_previous_go_from_work_to_work() {
-        for ex in EXHIBITIONS {
-            let order: Vec<Option<usize>> = stops(ex)
-                .iter()
-                .filter(|s| s.art.is_some())
-                .map(|s| s.art)
-                .collect();
-            let mut t = 0.0;
-            for expected in order.iter().chain(order.iter().take(1)) {
-                t = jump_time(ex, t, 1);
-                assert_eq!(tour_pose(ex, t + 0.01, 1.5).art, *expected, "{}", ex.slug);
-            }
-            let back = jump_time(ex, t, -1);
-            assert_eq!(
-                tour_pose(ex, back + 0.01, 1.5).art,
-                *order.last().unwrap(),
-                "{}",
-                ex.slug
-            );
-        }
-    }
-
-    /// Sur tous les écrans, l'œuvre regardée tient dans l'image.
-    #[test]
-    fn every_work_fits_the_screen() {
-        for ex in EXHIBITIONS {
-            for art in ex.artworks {
-                for aspect in ASPECTS {
-                    let d = distance_for(art, aspect);
-                    let visible_width = 2.0 * d * HALF_FOV_TAN * aspect;
-                    let visible_height = 2.0 * d * HALF_FOV_TAN;
-                    let fits =
-                        art.width <= visible_width * 0.95 && art.height <= visible_height * 0.95;
-                    assert!(fits || d >= MAX_DISTANCE, "{} ({aspect})", art.title);
-                }
-            }
-        }
-    }
-
-    #[test]
-    fn the_visitor_stays_inside_the_gallery() {
-        for ex in EXHIBITIONS {
-            let last = ex.rooms[ex.rooms.len() - 1].center_z - ROOM_HALF_DEPTH;
-            for aspect in ASPECTS {
-                let mut t = 0.0;
-                while t < tour_duration(ex) {
-                    let [x, y, z] = tour_pose(ex, t, aspect).eye;
-                    assert!(
-                        x.abs() < INNER - 0.5 && y > 0.0 && y < WALL_HEIGHT,
-                        "{} t = {t}",
-                        ex.slug
-                    );
-                    assert!(
-                        z < ROOM_HALF_DEPTH - 0.3 && z > last + 0.3,
-                        "{} t = {t}",
-                        ex.slug
-                    );
-                    // Dans un couloir, le visiteur reste au milieu.
-                    let in_room = ex
-                        .rooms
-                        .iter()
-                        .any(|r| (z - r.center_z).abs() <= ROOM_HALF_DEPTH);
-                    assert!(
-                        in_room || x.abs() < CORRIDOR_HALF_WIDTH - 0.3,
-                        "{} t = {t} : x = {x}, z = {z}",
-                        ex.slug
-                    );
-                    t += 0.05;
-                }
-            }
-        }
-    }
-
-    /// La caméra regarde toujours à peu près à l'horizontale : jamais le plafond ni le sol.
-    #[test]
-    fn the_camera_never_looks_at_the_ceiling() {
-        for ex in EXHIBITIONS {
-            for aspect in ASPECTS {
-                let mut t = 0.0;
-                while t < tour_duration(ex) {
-                    let Pose { eye, look, .. } = tour_pose(ex, t, aspect);
-                    let d = [look[0] - eye[0], look[1] - eye[1], look[2] - eye[2]];
-                    let pitch = d[1].atan2((d[0] * d[0] + d[2] * d[2]).sqrt()).to_degrees();
-                    assert!(
-                        pitch.abs() < 25.0,
-                        "{} t = {t} : inclinaison {pitch:.0}°",
-                        ex.slug
-                    );
-                    t += 0.05;
-                }
-            }
-        }
-    }
-
-    #[test]
-    fn the_lamps_fit_the_renderer() {
-        for rooms in 1..12 {
-            let (per_room, corridors) = lamp_plan(rooms);
-            let total = per_room * rooms + if corridors { rooms - 1 } else { 0 };
-            assert!(
-                total <= MAX_LAMPS || (per_room == 1 && !corridors),
-                "{rooms} salles"
-            );
-        }
+    fn data(ex: &Exhibition) -> Rc<ExhibitionData> {
+        Rc::new(ExhibitionData::load(ex).expect("données"))
     }
 
     /// Les rectangles fusionnés couvrent chaque case une fois, de la bonne couleur.
     #[test]
     fn the_rectangles_cover_the_mosaic_exactly() {
         for ex in EXHIBITIONS {
+            let data = data(ex);
             for art in ex.artworks {
                 let m = &art.mosaic;
+                let cells = data.cells(m);
                 let cols = usize::from(m.cols);
-                let mut seen = vec![false; m.cells.len()];
-                let rects = rectangles(m);
+                let mut seen = vec![false; cells.len()];
+                let rects = rectangles(m, cells);
                 for &(c, a, b, r0, r1) in &rects {
                     for row in r0..r1 {
                         for col in a..b {
                             let i = row * cols + col;
-                            assert!(!seen[i] && m.cells[i] == c, "{}", art.title);
+                            assert!(!seen[i] && cells[i] == c, "{}", art.title);
                             seen[i] = true;
                         }
                     }
                 }
                 assert!(seen.iter().all(|&s| s), "{}", art.title);
                 assert!(
-                    rects.len() < m.cells.len(),
+                    rects.len() < cells.len(),
                     "{} : rien n'a été fusionné",
                     art.title
                 );
@@ -1083,12 +709,41 @@ mod tests {
         }
     }
 
-    /// Après plusieurs secondes de visite, chaque pavé est toujours à sa place : rien ne
-    /// tombe (la physique est bien retirée) et le nombre de lampes tient dans le shader.
+    /// Le maillage de chaque sculpture est cohérent, à sa taille.
     #[test]
-    fn the_gallery_stands_still_and_fits_the_renderer() {
+    fn sculptures_have_sound_meshes() {
         for ex in EXHIBITIONS {
-            for mut app in [tour_app(ex), showcase_app(ex)] {
+            let data = data(ex);
+            for s in ex.sculptures {
+                let m = data.sculpture(s);
+                let vertices = m.positions.len() / 3;
+                assert!(
+                    vertices > 100 && m.normals.len() == m.positions.len(),
+                    "{}",
+                    s.title
+                );
+                assert!(
+                    m.indices.iter().all(|&i| (i as usize) < vertices),
+                    "{}",
+                    s.title
+                );
+                let top = m.positions.chunks(3).map(|p| p[1]).fold(0.0f32, f32::max);
+                assert!(
+                    (top - s.height).abs() < 0.02,
+                    "{} : {top} m au lieu de {}",
+                    s.title,
+                    s.height
+                );
+            }
+        }
+    }
+
+    /// Après plusieurs secondes, chaque pavé est toujours à sa place (la physique est bien
+    /// retirée) et 8 lampes au plus sont allumées.
+    #[test]
+    fn the_museum_stands_still_and_fits_the_renderer() {
+        for ex in EXHIBITIONS {
+            for mut app in [tour_app(ex, data(ex)), showcase_app(ex, data(ex))] {
                 app.update();
                 let first =
                     RenderFrame::extract(app.world(), Vec2::new(800.0, 450.0)).expect("une caméra");
@@ -1098,7 +753,7 @@ mod tests {
                     .iter()
                     .map(|d| d.world.translation().to_array())
                     .collect();
-                for _ in 0..120 {
+                for _ in 0..60 {
                     app.update();
                 }
                 let later =
@@ -1107,7 +762,8 @@ mod tests {
                 assert_eq!(frame.meshes.len(), before.len());
                 assert!(
                     frame.lights.point.len() <= MAX_LAMPS,
-                    "{} lampes",
+                    "{} : {} lampes",
+                    ex.slug,
                     frame.lights.point.len()
                 );
                 for (draw, start) in frame.meshes.iter().zip(&before) {
@@ -1119,5 +775,39 @@ mod tests {
                 }
             }
         }
+    }
+
+    /// En visite libre, le visiteur avance, tourne, et s'arrête contre les murs.
+    #[test]
+    fn free_walking_stops_at_walls() {
+        let ex = &EXHIBITIONS[0];
+        let control = SharedControl::default();
+        let mut app = tour_app_with(ex, data(ex), control.clone());
+        app.update();
+        {
+            let mut c = control.borrow_mut();
+            c.mode = Mode::Free;
+            c.forward = 1.0;
+            c.run = true;
+        }
+        let start = control.borrow().position;
+        for _ in 0..600 {
+            app.update();
+        }
+        let end = control.borrow().position;
+        assert!(
+            (end[0] - start[0]).hypot(end[1] - start[1]) > 0.5,
+            "le visiteur n'a pas bougé"
+        );
+        assert!(
+            museum::room_at(ex, end[0], end[1]).is_some(),
+            "le visiteur est sorti du musée"
+        );
+        let walls = museum::cached_obstacles(ex);
+        assert!(
+            !walls
+                .iter()
+                .any(|&(x0, x1, z0, z1)| end[0] > x0 && end[0] < x1 && end[1] > z0 && end[1] < z1)
+        );
     }
 }

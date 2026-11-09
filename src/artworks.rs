@@ -1,11 +1,13 @@
-//! Le catalogue d'ARTEON : les expositions, leurs salles et leurs œuvres.
+//! Le catalogue d'ARTEON : les expositions, le plan de leurs musées, leurs tableaux et
+//! leurs sculptures.
 //!
-//! Le contenu vient de `expositions/<nom>.toml` et des images de
-//! `public/tableaux/<nom>/` : `build.rs` les vérifie et les écrit en Rust (avec la
-//! mosaïque de chaque tableau), inclus ci-dessous. Ce module est partagé par la scène 3D (src/gallery.rs) et par les pages
-//! rendues sur le serveur.
+//! Le contenu vient de `expositions/<nom>.toml`, des images de `public/tableaux/<nom>/`
+//! et des modèles 3D de `modeles/` : `build.rs` les vérifie et les écrit en Rust (inclus
+//! ci-dessous). Les données lourdes (mosaïques, maillages) sont dans un fichier à part,
+//! `donnees/<nom>.bin`, lu par [`crate::data`]. Les coordonnées sont en mètres : x vers
+//! l'est, z vers le sud ; le visiteur entre par le sud et avance vers le nord.
 
-/// Une exposition : ses textes, ses salles, ses œuvres et l'œuvre de la vitrine.
+/// Une exposition : ses textes, le plan de son musée et ses œuvres.
 #[derive(Clone, Copy, Debug)]
 pub struct Exhibition {
     /// Le nom du fichier `.toml`, et l'adresse de l'exposition (`/{slug}`).
@@ -21,10 +23,14 @@ pub struct Exhibition {
     pub accent: [u8; 3],
     /// L'index, dans `artworks`, de l'œuvre qui tourne sur le chevalet de sa présentation.
     pub showcase: Option<usize>,
-    /// Les salles, dans l'ordre de la visite.
+    /// La taille de son fichier de données, en octets.
+    pub data_size: u32,
+    /// Les salles du musée, dans l'ordre de la visite (couloirs compris).
     pub rooms: &'static [Room],
-    /// Les œuvres, dans l'ordre du fichier.
+    /// Les tableaux, dans l'ordre du fichier.
     pub artworks: &'static [Artwork],
+    /// Les sculptures, dans l'ordre du fichier.
+    pub sculptures: &'static [Sculpture],
 }
 
 impl Exhibition {
@@ -44,20 +50,29 @@ impl Exhibition {
             .map(|i| &self.artworks[i])
     }
 
-    /// Les œuvres d'une salle, dans l'ordre de la visite : les murs latéraux de
-    /// l'entrée vers la sortie (gauche puis droite à chaque place), puis le mur du fond.
+    /// Les salles d'exposition (sans les couloirs), avec leur index dans `rooms`.
+    pub fn galleries(&self) -> impl Iterator<Item = (usize, &'static Room)> {
+        self.rooms.iter().enumerate().filter(|(_, r)| !r.corridor)
+    }
+
+    /// Les tableaux d'une salle, de gauche à droite, mur après mur (ouest, nord, est, sud).
     pub fn works_in_room(&self, room: usize) -> Vec<&'static Artwork> {
         let mut works: Vec<&Artwork> = self
             .artworks
             .iter()
             .filter(|a| a.hook.room == room)
             .collect();
-        works.sort_by_key(|a| match a.hook.wall {
-            Wall::Left => (0, a.hook.place, 0),
-            Wall::Right => (0, a.hook.place, 1),
-            Wall::Back => (1, a.hook.place, 0),
+        works.sort_by(|a, b| {
+            (a.hook.side.order(), a.hook.position)
+                .partial_cmp(&(b.hook.side.order(), b.hook.position))
+                .unwrap_or(std::cmp::Ordering::Equal)
         });
         works
+    }
+
+    /// Les sculptures d'une salle.
+    pub fn sculptures_in_room(&self, room: usize) -> Vec<&'static Sculpture> {
+        self.sculptures.iter().filter(|s| s.room == room).collect()
     }
 
     /// Les années couvertes par ses œuvres (« 1885–1890 »).
@@ -65,7 +80,17 @@ impl Exhibition {
         let numbers: Vec<u32> = self
             .artworks
             .iter()
-            .filter_map(|a| a.year.get(..4)?.parse().ok())
+            .map(|a| a.year)
+            .chain(self.sculptures.iter().map(|s| s.year))
+            .filter_map(|y| {
+                y.chars()
+                    .filter(char::is_ascii_digit)
+                    .take(4)
+                    .collect::<String>()
+                    .parse()
+                    .ok()
+            })
+            .filter(|y| *y > 999)
             .collect();
         match (numbers.iter().min(), numbers.iter().max()) {
             (Some(first), Some(last)) if first != last => format!("{first}–{last}"),
@@ -75,56 +100,176 @@ impl Exhibition {
     }
 }
 
-/// Le mur d'une salle qui porte un tableau.
+/// Un mur d'une salle.
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
-pub enum Wall {
-    /// Le mur de gauche (x < 0), quand on avance dans la galerie.
-    Left,
-    /// Le mur de droite (x > 0).
-    Right,
-    /// Le mur du fond de la salle.
-    Back,
+pub enum Side {
+    North,
+    South,
+    East,
+    West,
 }
 
-/// L'emplacement d'un tableau : une salle (à partir de 0), un mur et une place (1 à 3).
-#[derive(Clone, Copy, Debug)]
-pub struct Hook {
-    pub room: usize,
-    pub wall: Wall,
-    pub place: u8,
-}
-
-impl Hook {
-    /// La position du centre du tableau le long de son mur : z pour les murs latéraux
-    /// (la place 1 est près de l'entrée), x pour le mur du fond (de gauche à droite).
-    pub fn along(&self) -> f32 {
-        let step = f32::from(self.place) - 2.0;
-        match self.wall {
-            Wall::Left | Wall::Right => room_center_z(self.room) - step * PLACE_SPACING,
-            Wall::Back => step * PLACE_SPACING,
+impl Side {
+    /// Son nom en français.
+    pub fn french(self) -> &'static str {
+        match self {
+            Side::North => "nord",
+            Side::South => "sud",
+            Side::East => "est",
+            Side::West => "ouest",
         }
+    }
+
+    /// L'ordre des murs dans la visite d'une salle (en tournant depuis l'entrée sud).
+    pub fn order(self) -> u8 {
+        match self {
+            Side::West => 0,
+            Side::North => 1,
+            Side::East => 2,
+            Side::South => 3,
+        }
+    }
+
+    /// La direction vers la droite du visiteur qui regarde ce mur depuis la salle (x, z).
+    pub fn right(self) -> (f32, f32) {
+        match self {
+            Side::West => (0.0, -1.0),
+            Side::East => (0.0, 1.0),
+            Side::North => (1.0, 0.0),
+            Side::South => (-1.0, 0.0),
+        }
+    }
+
+    /// La direction qui va du mur vers l'intérieur de la salle (x, z).
+    pub fn inward(self) -> (f32, f32) {
+        match self {
+            Side::West => (1.0, 0.0),
+            Side::East => (-1.0, 0.0),
+            Side::North => (0.0, 1.0),
+            Side::South => (0.0, -1.0),
+        }
+    }
+
+    /// L'angle (autour de y) qui tourne +z vers l'intérieur de la salle.
+    pub fn facing(self) -> f32 {
+        use std::f32::consts::{FRAC_PI_2, PI};
+        match self {
+            Side::West => FRAC_PI_2,
+            Side::East => -FRAC_PI_2,
+            Side::North => 0.0,
+            Side::South => PI,
+        }
+    }
+
+    pub const ALL: [Side; 4] = [Side::West, Side::North, Side::East, Side::South];
+}
+
+/// Une porte, sur un mur, à `position` mètres du milieu du mur (vers la droite de qui
+/// le regarde depuis la salle).
+#[derive(Clone, Copy, Debug)]
+pub struct Door {
+    pub side: Side,
+    pub position: f32,
+    pub width: f32,
+}
+
+/// Une salle du musée, placée sur le plan.
+#[derive(Clone, Copy, Debug)]
+pub struct Room {
+    pub name: &'static str,
+    pub theme: &'static str,
+    /// La couleur des murs.
+    pub walls: [u8; 3],
+    /// Le centre de la salle.
+    pub x: f32,
+    pub z: f32,
+    /// Sa largeur (est-ouest), sa profondeur (nord-sud) et sa hauteur.
+    pub width: f32,
+    pub depth: f32,
+    pub height: f32,
+    /// Un couloir (des murs sombres, un liseré doré, pas d'arrêt de la visite).
+    pub corridor: bool,
+    pub doors: &'static [Door],
+}
+
+/// L'épaisseur des murs, posés à l'intérieur de chaque salle contre sa limite.
+pub const WALL: f32 = 0.2;
+/// La hauteur des portes.
+pub const DOOR_HEIGHT: f32 = 3.0;
+
+impl Room {
+    /// La longueur d'un mur.
+    pub fn wall_length(&self, side: Side) -> f32 {
+        match side {
+            Side::North | Side::South => self.width,
+            Side::East | Side::West => self.depth,
+        }
+    }
+
+    /// Le point (x, z) sur la limite de la salle, au mur `side`, à `position` mètres de
+    /// son milieu.
+    pub fn point_on(&self, side: Side, position: f32) -> (f32, f32) {
+        let (rx, rz) = side.right();
+        let (cx, cz) = match side {
+            Side::North => (self.x, self.z - self.depth / 2.0),
+            Side::South => (self.x, self.z + self.depth / 2.0),
+            Side::East => (self.x + self.width / 2.0, self.z),
+            Side::West => (self.x - self.width / 2.0, self.z),
+        };
+        (cx + rx * position, cz + rz * position)
+    }
+
+    /// Le nombre de places numérotées d'un mur (une tous les 3 m environ).
+    pub fn places(&self, side: Side) -> u8 {
+        ((self.wall_length(side) / 3.3).floor() as u8).max(1)
+    }
+
+    /// Le point (x, z) est-il dans la salle, à plus de `margin` de ses limites ?
+    pub fn contains(&self, x: f32, z: f32, margin: f32) -> bool {
+        (x - self.x).abs() <= self.width / 2.0 - margin
+            && (z - self.z).abs() <= self.depth / 2.0 - margin
+    }
+
+    /// La hauteur des portes de la salle.
+    pub fn door_height(&self) -> f32 {
+        DOOR_HEIGHT.min(self.height - 0.3)
     }
 }
 
-/// La mosaïque d'un tableau : une palette et une couleur par case, ligne par ligne
-/// depuis le haut.
+/// L'emplacement d'un tableau : une salle (son index dans `rooms`), un mur, la position
+/// du centre du tableau le long du mur et sa hauteur ; `place` est le numéro de la place
+/// (0 quand une position en mètres a été donnée).
+#[derive(Clone, Copy, Debug)]
+pub struct Hook {
+    pub room: usize,
+    pub side: Side,
+    pub position: f32,
+    pub center: f32,
+    pub place: u8,
+}
+
+/// La mosaïque d'un tableau : sa grille, sa palette, et où sont ses cases dans le
+/// fichier de données (une couleur par case, ligne par ligne depuis le haut).
 #[derive(Clone, Copy, Debug)]
 pub struct Mosaic {
     pub cols: u16,
     pub rows: u16,
     pub palette: &'static [[u8; 3]],
-    pub cells: &'static [u8],
+    pub offset: u32,
 }
 
 impl Mosaic {
-    /// La couleur de la case (`col`, `row`), `row` 0 en haut.
-    pub fn color(&self, col: usize, row: usize) -> [u8; 3] {
-        let index = self.cells[row * usize::from(self.cols) + col];
-        self.palette[usize::from(index)]
+    /// Le nombre de cases.
+    pub fn len(&self) -> usize {
+        usize::from(self.cols) * usize::from(self.rows)
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
     }
 }
 
-/// Une œuvre exposée.
+/// Un tableau exposé.
 #[derive(Clone, Copy, Debug)]
 pub struct Artwork {
     pub title: &'static str,
@@ -156,36 +301,61 @@ impl Artwork {
     }
 }
 
-/// Une salle d'exposition.
+/// Où est le maillage d'une sculpture dans le fichier de données, et sa boîte englobante
+/// (pour 1 m de haut) : x, y, z minimum puis maximum.
 #[derive(Clone, Copy, Debug)]
-pub struct Room {
-    pub name: &'static str,
-    pub theme: &'static str,
-    /// La couleur des murs.
-    pub walls: [u8; 3],
-    /// Le centre de la salle sur l'axe z (la galerie s'enfonce vers les z négatifs).
-    pub center_z: f32,
+pub struct MeshRef {
+    pub offset: u32,
+    pub size: u32,
+    pub bounds: [f32; 6],
 }
 
-/// Les dimensions de la galerie, en mètres.
+/// Une sculpture, posée sur un socle dans une salle.
+#[derive(Clone, Copy, Debug)]
+pub struct Sculpture {
+    pub title: &'static str,
+    pub artist: &'static str,
+    pub year: &'static str,
+    pub technique: &'static str,
+    pub collection: &'static str,
+    pub note: &'static str,
+    /// Le nom de sa vignette (vue de face), servie à `/donnees/…`.
+    pub image: &'static str,
+    /// La salle (son index dans `rooms`) et la position du centre du socle.
+    pub room: usize,
+    pub x: f32,
+    pub z: f32,
+    /// La hauteur de la sculpture (sans le socle), en mètres.
+    pub height: f32,
+    /// L'angle dont elle est tournée autour de la verticale (0 : elle regarde le sud).
+    pub rotation: f32,
+    /// La hauteur du socle.
+    pub plinth: f32,
+    /// Le rayon de son emprise au sol (socle compris).
+    pub radius: f32,
+    pub color: [u8; 3],
+    pub roughness: f32,
+    pub metallic: f32,
+    pub mesh: MeshRef,
+}
+
+/// Les dimensions par défaut d'une galerie en enfilade, en mètres.
 pub const ROOM_HALF_WIDTH: f32 = 5.0;
 pub const ROOM_HALF_DEPTH: f32 = 5.0;
 pub const CORRIDOR_HALF_WIDTH: f32 = 1.5;
 pub const CORRIDOR_LENGTH: f32 = 6.0;
-pub const WALL_HEIGHT: f32 = 4.0;
-pub const WALL_THICKNESS: f32 = 0.2;
-/// La hauteur du centre des tableaux.
-pub const HANGING_HEIGHT: f32 = 1.8;
-/// L'écart entre deux places voisines sur un mur (doit correspondre à build.rs).
-pub const PLACE_SPACING: f32 = 3.0;
-
-/// Le centre de la salle `room` sur l'axe z : une salle (10 m) et un couloir (6 m) plus
-/// loin que la précédente (doit correspondre à build.rs).
-pub fn room_center_z(room: usize) -> f32 {
-    -(room as f32) * (2.0 * ROOM_HALF_DEPTH + CORRIDOR_LENGTH)
-}
 
 include!(concat!(env!("OUT_DIR"), "/expositions.rs"));
+
+/// Le dossier des fichiers de données écrits par `build.rs` (servi à `/donnees/`).
+pub const DATA_DIR: &str = concat!(env!("OUT_DIR"), "/donnees");
+
+impl Sculpture {
+    /// L'adresse de sa vignette, pour les pages.
+    pub fn image_url(&self) -> String {
+        format!("/donnees/{}", self.image)
+    }
+}
 
 /// `rgb(…)` pour le CSS.
 pub fn css_rgb([r, g, b]: [u8; 3]) -> String {
@@ -202,20 +372,15 @@ mod tests {
         for ex in EXHIBITIONS {
             assert!(!ex.rooms.is_empty(), "{}", ex.slug);
             assert_eq!(Exhibition::find(ex.slug).map(|e| e.slug), Some(ex.slug));
-            for (i, room) in ex.rooms.iter().enumerate() {
-                assert_eq!(room.center_z, room_center_z(i));
-            }
+            let data = std::fs::read(format!("{DATA_DIR}/{}.bin", ex.slug))
+                .expect("le fichier de données");
+            assert_eq!(data.len(), ex.data_size as usize, "{}", ex.slug);
             for art in ex.artworks {
                 assert!(art.hook.room < ex.rooms.len(), "{}", art.title);
                 let m = &art.mosaic;
-                assert_eq!(
-                    m.cells.len(),
-                    usize::from(m.cols) * usize::from(m.rows),
-                    "{}",
-                    art.title
-                );
+                let cells = &data[m.offset as usize..m.offset as usize + m.len()];
                 assert!(
-                    m.cells.iter().all(|&c| usize::from(c) < m.palette.len()),
+                    cells.iter().all(|&c| usize::from(c) < m.palette.len()),
                     "{}",
                     art.title
                 );
@@ -227,11 +392,19 @@ mod tests {
                     art.image
                 );
             }
+            for s in ex.sculptures {
+                assert!(s.room < ex.rooms.len(), "{}", s.title);
+                assert!(
+                    (s.mesh.offset + s.mesh.size) as usize <= data.len(),
+                    "{}",
+                    s.title
+                );
+            }
             if let Some(i) = ex.showcase {
                 assert!(i < ex.artworks.len());
             }
-            let visited: usize = (0..ex.rooms.len()).map(|r| ex.works_in_room(r).len()).sum();
-            assert_eq!(visited, ex.artworks.len());
+            let hung: usize = (0..ex.rooms.len()).map(|r| ex.works_in_room(r).len()).sum();
+            assert_eq!(hung, ex.artworks.len());
         }
     }
 }

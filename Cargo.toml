@@ -19,16 +19,21 @@ tokio = { version = "1", features = ["rt-multi-thread"] }
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 paquets = { git = "https://github.com/maxlestage/Paquets", default-features = false, features = ["client"] }
 wasm-bindgen = "0.2"
+eframe = { version = "0.37", default-features = false, features = ["glow", "default_fonts"] }
 # Les commandes de la galerie (plein écran, cartel, boutons, clavier) : src/viewer.rs.
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
 web-sys = { version = "0.3", features = [
-  "Document", "DomTokenList", "Element", "Event", "EventTarget", "HtmlElement",
-  "KeyboardEvent", "Location", "Node", "Window",
+  "Document", "DomRect", "DomTokenList", "Element", "Event", "EventTarget", "HtmlElement",
+  "HtmlCanvasElement", "KeyboardEvent", "Location", "MouseEvent", "Node", "PointerEvent",
+  "Response", "Window",
 ] }
 
 # build.rs : lit exposition.toml et transforme les images en mosaïques.
 [build-dependencies]
 image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
 serde = { version = "1", features = ["derive"] }
+serde_json = "1"
 toml = "0.9"
 
 [dev-dependencies]
