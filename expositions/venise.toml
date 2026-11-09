@@ -1,0 +1,1051 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « VENISE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/venise/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /venise.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 35
+nom_court = "Venise"
+mouvement = "Venise, de Bellini à Tiepolo"
+cadre = "dore"
+couleur = "#1f5c66"
+titre = "Venise, la couleur et la lumière, de Bellini à Tiepolo"
+artiste = "Bellini, Carpaccio, Véronèse, Tintoret, Tiepolo…"
+dates = "1475–1780"
+accroche = "Exposition virtuelle · Gallerie dell'Accademia, Venise"
+introduction = """
+Pendant trois siècles, Venise invente une peinture de la couleur et de la lumière : la \
+peinture à l'huile qu'apporte Antonello de Messine, les retables lumineux de Giovanni \
+Bellini, les récits de Carpaccio, puis les festins de Véronèse et les tempêtes de \
+Tintoret, jusqu'au dernier éclat du XVIIIᵉ siècle, des fêtes de Tiepolo aux vues de \
+Guardi et de Bellotto. La visite réunit onze peintres en onze œuvres. Le bâtiment \
+s'inspire des Gallerie dell'Accademia, installées dans l'ancienne Scuola della \
+Carità : on passe du portail à la salle du chapitre aux murs dorés, puis à la longue \
+salle des banquets et aux salons du Settecento."""
+vitrine = "reve-sainte-ursule.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Gallerie dell'Accademia"
+ville = "Venise, Italie"
+architecte = "Andrea Palladio (le couvent) ; Giannantonio Selva (le musée)"
+construction = "XIVᵉ–XVIᵉ siècles ; musée ouvert en 1817"
+presentation = """
+Les Gallerie dell'Accademia occupent, au bord du Grand Canal, l'ensemble de Santa \
+Maria della Carità : l'église, rebâtie au XVᵉ siècle, le couvent des chanoines du \
+Latran, commencé par Andrea Palladio en 1561 et jamais achevé, et la Scuola della \
+Carità, la plus ancienne des six Scuole Grandi, les grandes confréries laïques de \
+Venise. En 1807, sous la domination napoléonienne, l'Académie des beaux-arts, fondée \
+en 1750, s'y installe ; l'architecte Giannantonio Selva divise l'église en salles et \
+mure ses fenêtres gothiques. Les collections, enrichies des tableaux des églises et \
+des couvents supprimés, ouvrent au public en 1817. On entre par la façade classique de \
+la Scuola, refaite vers 1760 par Giorgio Massari et Bernardino Maccaruzzi. La première \
+salle, l'ancienne salle du chapitre, garde son plafond à caissons de bois doré du XVᵉ \
+siècle, et la salle de l'Albergo conserve la Présentation de Marie au Temple, que \
+Titien a peinte pour ce mur même. Le musée réunit le plus bel ensemble de peinture \
+vénitienne au monde."""
+ici = """
+Le bâtiment d'ARTEON en reprend l'enchaînement. On entre par le sud dans « Le portail \
+de la Carità », un vestibule de pierre claire. Au nord s'ouvre « La salle du \
+chapitre », large de dix-huit mètres et haute de neuf, aux murs ocre doré : les \
+maîtres du Quattrocento et Lotto. À l'est, « La salle des banquets », longue de \
+trente-deux mètres et haute de douze, évoque les nefs de l'ancienne église où pendent \
+les toiles géantes : Véronèse, Tintoret, Tiepolo. À l'ouest, « Les salons du \
+Settecento », plus bas, aux murs vert d'eau, réunissent le XVIIIᵉ siècle."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré des Gallerie dell'Accademia de Venise, installées dans l'ancienne Scuola
+# della Carità : on entre par le portail de la Scuola, puis on gagne la salle du
+# chapitre au plafond doré, cœur du parcours ; à l'est, une longue salle haute
+# rappelle les nefs de l'ancienne église où sont accrochées les grandes toiles ; à
+# l'ouest, des salons plus intimes pour le XVIIIᵉ siècle. x et z : le centre de la
+# salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le portail de la Carità"
+theme = "L'entrée, comme le portail classique de la Scuola della Carità qui s'ouvre sur le campo."
+murs = "#e9dfcc"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La salle du chapitre"
+theme = "Le Quattrocento sous un plafond d'or : Antonello, Bellini, Carpaccio, et le portrait inquiet de Lotto."
+murs = "#dcc59c"
+x = 0
+z = -12
+largeur = 18
+profondeur = 16
+hauteur = 9
+portes = ["est", "ouest"]
+
+[[salles]]
+nom = "La salle des banquets"
+theme = "Les grandes toiles : les Noces de Cana de Véronèse, le miracle de Tintoret, et le festin de Cléopâtre par Tiepolo."
+murs = "#cdb896"
+x = 25
+z = -12
+largeur = 32
+profondeur = 16
+hauteur = 12
+
+[[salles]]
+nom = "Les salons du Settecento"
+theme = "Le XVIIIᵉ siècle : la fête de Guardi, le carnaval de Longhi, le pastel de Rosalba Carriera et la Dresde de Bellotto."
+murs = "#d3dccb"
+x = -16
+z = -12
+largeur = 14
+profondeur = 14
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Saint Jérôme dans son cabinet"
+artiste = "Antonello de Messine"
+annee = "vers 1475"
+image = "saint-jerome-cabinet.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Antonello_da_Messina_-_St_Jerome_in_his_study_-_National_Gallery_London.jpg"
+technique = "Huile sur panneau de tilleul, 45,7 × 36,2 cm"
+collection = "National Gallery, Londres"
+note = "Un savant dans une cathédrale miniature : le saint lit, seul, dans un meuble-bureau dressé sous des voûtes gothiques. Le panneau mesure moins d'un demi-mètre ; il est montré ici agrandi."
+description = """
+On regarde à travers une grande arcade de pierre, comme par une fenêtre ouverte. \
+Au-delà s'étend un vaste intérieur voûté, entre l'église et le palais, au sol carrelé \
+de vert et de blanc. Au centre, sur une estrade de bois, saint Jérôme lit, assis à son \
+bureau, vêtu de la robe rouge des cardinaux. Autour de lui, des étagères portent des \
+livres, des boîtes et des vases de faïence ; son chapeau rouge est posé sur un coffre, \
+à droite. Un chat est couché sur l'estrade, près de deux plantes en pot. Dans la \
+galerie à colonnes de droite, un lion s'avance à pas lents. Par les fenêtres, on \
+aperçoit des collines, une rivière et des oiseaux dans le ciel. Sur le rebord de \
+pierre, au premier plan, une perdrix, un paon et un bassin de cuivre semblent attendre \
+le visiteur."""
+evocation = """
+Jérôme, le savant qui traduisit la Bible en latin à la fin du IVᵉ siècle, était le \
+modèle des humanistes : l'homme d'étude retiré du monde. Antonello en fait un lettré \
+de son temps, installé dans un studiolo comme en possédaient les érudits de la \
+Renaissance. Le tableau est aussi une méditation sur le savoir et le regard : tout y \
+est ordonné par la perspective, qui conduit l'œil de l'arcade jusqu'au livre ouvert, \
+au centre exact de la composition. Les animaux et les plantes ont été lus comme des \
+symboles : le paon, image d'immortalité, la perdrix, associée à la vérité, les plantes \
+en pot, évocations du salut et de la Passion. Le lion rappelle la légende du saint qui \
+lui retira une épine de la patte, et que l'animal ne quitta plus."""
+histoire = """
+Le petit panneau date sans doute des années 1474-1475, au moment où Antonello, venu de \
+Sicile, s'apprête à séjourner à Venise ; on a supposé qu'il l'apportait comme une \
+démonstration de son savoir-faire, pour attirer les commandes. En 1529, l'amateur \
+vénitien Marcantonio Michiel le décrit dans la maison du marchand Antonio Pasqualino, \
+et note que certains le croient de Jan van Eyck ou de Hans Memling, tant sa minutie \
+paraît flamande. Le tableau passe ensuite en Angleterre ; au XIXᵉ siècle, il \
+appartient à la famille Baring, comtes de Northbrook. Son attribution à Antonello, \
+établie en 1856 par les historiens Crowe et Cavalcaselle, n'est plus discutée. Il \
+entre à la National Gallery de Londres en 1894."""
+facture = """
+Antonello est l'un des premiers Italiens à maîtriser la peinture à l'huile à la \
+manière des Flamands : des couches fines et transparentes, qui rendent le reflet du \
+métal, le grain du bois ou la lumière qui glisse sur le carrelage. La construction en \
+perspective, très rigoureuse, fait penser à Piero della Francesca. La lumière vient de \
+plusieurs côtés à la fois : de l'avant, à travers l'arcade, et du fond, par les \
+fenêtres, ce qui donne au vaste espace une atmosphère calme et dorée, d'une profondeur \
+étonnante pour un si petit format."""
+details = [
+  "Le chat couché sur l'estrade, à gauche, près des plantes en pot.",
+  "Le lion qui s'avance dans la pénombre de la galerie, à droite.",
+  "Le paon et la perdrix posés sur le rebord de pierre, au premier plan.",
+  "Les collines et la rivière minuscules, aperçues par les fenêtres.",
+  "Le chapeau rouge de cardinal posé sur le coffre, à droite.",
+]
+themes = ["étude", "perspective", "saint", "humanisme", "animaux"]
+anecdote = """
+Saint Jérôme n'a jamais été cardinal : cette dignité n'existait pas de son temps. Mais \
+les peintres de la Renaissance lui donnent la robe et le chapeau rouges, parce qu'il \
+avait été à Rome le secrétaire du pape Damase."""
+salle = 2
+mur = "nord"
+position = -6
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Le Retable de San Giobbe"
+artiste = "Giovanni Bellini"
+annee = "vers 1487"
+image = "pala-san-giobbe.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Giovanni_Bellini_-_San_Giobbe_Altarpiece_-_WGA1704.jpg"
+technique = "Huile sur panneau, 471 × 258 cm"
+collection = "Gallerie dell'Accademia, Venise"
+note = "Sous une voûte d'or comme celle de Saint-Marc, la Vierge trône parmi six saints, tandis que trois anges musiciens jouent à ses pieds."
+description = """
+Le panneau, très haut et cintré, figure une chapelle. Une voûte à caissons s'ouvre sur \
+une abside couverte de mosaïque d'or, où se détachent des séraphins et une inscription \
+latine. Au centre, sur un haut trône de marbre, la Vierge, en manteau bleu, tient \
+l'Enfant nu sur ses genoux et lève la main droite. De part et d'autre se tiennent six \
+saints. À gauche, saint François, en bure brune, ouvre la main ; derrière lui paraît \
+saint Jean-Baptiste ; puis Job, vieillard presque nu, joint les mains. À droite, saint \
+Dominique lit un livre rouge, saint Sébastien, le corps percé de flèches, se tient \
+debout, et saint Louis de Toulouse porte la mitre d'évêque. Au pied du trône, trois \
+anges jouent de deux luths et d'une viole."""
+evocation = """
+Job, l'homme éprouvé par Dieu, et saint Sébastien, invoqué contre la peste, rappellent \
+les malades et les épidémies qui frappaient régulièrement Venise ; on a lié le retable \
+à la peste de 1485. La Vierge, qui intercède pour les hommes, protège ici les fidèles. \
+Bellini donne à cette réunion céleste le calme d'une conversation silencieuse, ce \
+qu'on appelle une « sainte conversation ». L'abside dorée évoque la basilique \
+Saint-Marc : la scène se déroule dans une église vénitienne, presque familière. \
+L'inscription de la voûte salue Marie comme la fleur sans tache de la pudeur \
+virginale. La musique des anges, enfin, suggère l'harmonie du ciel, que le fidèle \
+croit entendre devant l'autel."""
+histoire = """
+Bellini peint le retable pour un autel de l'église franciscaine de San Giobbe, à \
+Cannaregio, liée à la confrérie du même nom ; le commanditaire exact reste inconnu. \
+L'œuvre, non datée, est généralement située vers 1487 ; elle est en place en 1493. \
+Peinte pour son emplacement, elle prolongeait l'architecture réelle : les pilastres \
+peints continuaient ceux de l'encadrement de pierre de l'autel, si bien que la \
+chapelle peinte semblait s'ouvrir dans le mur de l'église. Le retable reste dans \
+l'église jusqu'au début du XIXᵉ siècle, au temps des suppressions napoléoniennes, puis \
+entre aux Gallerie dell'Accademia. Séparé de son encadrement, resté à San Giobbe, il y \
+a perdu une part de son illusion, mais gagné un public immense."""
+facture = """
+Bellini est l'un des premiers Vénitiens à peindre à l'huile un grand retable. Il en \
+tire des couleurs profondes et une lumière douce et chaude qui unifie toute la scène. \
+Le point de fuite est placé bas, si bien qu'on voit la voûte par en dessous, comme un \
+fidèle debout devant l'autel. Le tableau d'un seul tenant, où tous les personnages \
+partagent le même espace, rompt avec les polyptyques à compartiments de la génération \
+précédente. On y reconnaît l'exemple d'Antonello de Messine, dont le retable de San \
+Cassiano, peint à Venise en 1475-1476, avait frappé les peintres de la ville."""
+details = [
+  "L'inscription en lettres capitales sur la mosaïque d'or de l'abside.",
+  "Les séraphins dorés alignés sous l'inscription.",
+  "Les flèches plantées dans le corps de saint Sébastien.",
+  "Le livre rouge que lit saint Dominique.",
+  "Les trois anges musiciens assis sur les marches du trône.",
+]
+themes = ["sainte conversation", "vierge", "musique", "peste", "architecture"]
+anecdote = """
+Bellini a signé IOANNES BELLINVS sur un petit cartel peint au pied du trône, juste \
+sous l'ange qui joue au centre : une signature en trompe-l'œil, comme un papier posé \
+sur la marche, qu'il faut chercher pour la voir."""
+salle = 2
+mur = "nord"
+position = 0
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Le Rêve de sainte Ursule"
+artiste = "Vittore Carpaccio"
+annee = "1495"
+image = "reve-sainte-ursule.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Vittore_carpaccio,_Dream_of_St_Ursula_01.jpg"
+technique = "Détrempe sur toile, 274 × 267 cm"
+collection = "Gallerie dell'Accademia, Venise"
+note = "Dans une chambre vénitienne paisible, la princesse Ursule dort ; un ange entre et lui annonce son martyre."
+description = """
+Une chambre claire et rangée, vue comme une scène de théâtre. À gauche, sous un \
+baldaquin rouge, Ursule dort dans un grand lit, la joue posée sur la main, couverte \
+d'un drap blanc et d'une couverture rouge. Sa couronne est posée au pied du lit. Au \
+fond, deux fenêtres cintrées laissent voir des plantes en pot ; une porte entrouverte \
+donne sur une autre pièce. Aux murs, des statuettes, une applique, des armoires \
+ouvertes. À droite, sur une petite table, un livre ouvert et un sablier. Par la porte, \
+un ange blond, en robe bleue, vient d'entrer, une palme à la main ; la lumière du \
+matin entre avec lui et dessine sur le sol une large tache dorée. Au premier plan, \
+presque caché, un petit chien dort."""
+evocation = """
+La Légende dorée raconte qu'Ursule, princesse bretonne chrétienne, accepte d'épouser \
+un prince païen à condition qu'il se convertisse et qu'elle accomplisse d'abord un \
+pèlerinage à Rome avec onze mille vierges ; au retour, toutes sont massacrées par les \
+Huns à Cologne. Ici, l'ange lui annonce en rêve ce destin. Carpaccio choisit un moment \
+paisible, presque domestique : rien n'annonce la violence, sinon la palme du martyre. \
+La chambre ordonnée, les fenêtres ouvertes, les plantes ont été lues comme des images \
+de la pureté et de la vie intérieure de la sainte. Pour les Vénitiens, c'était aussi \
+une chambre familière, celle d'une riche demeure de leur ville."""
+histoire = """
+La toile appartient au cycle de neuf grandes peintures de la vie d'Ursule que \
+Carpaccio réalise entre 1490 et 1495 environ pour la Scuola di Sant'Orsola, une petite \
+confrérie installée contre l'église dominicaine de Santi Giovanni e Paolo. Le Rêve, \
+daté de 1495 sur un petit cartel, en est l'un des derniers épisodes peints. Après la \
+suppression des confréries sous la domination napoléonienne, les toiles entrent en \
+1812 aux Gallerie dell'Accademia ; elles sont réunies depuis 1923 dans une salle qui \
+leur est consacrée. Au XIXᵉ siècle, le critique anglais John Ruskin s'éprend de cette \
+figure de sainte : en 1876-1877, il obtient de pouvoir étudier et copier le tableau, \
+décroché pour lui, dans une pièce à part."""
+facture = """
+Carpaccio peint à la détrempe sur toile, technique courante à Venise, où l'humidité \
+abîme les fresques. Il construit la chambre en perspective, avec son plafond à poutres \
+et ses meubles qui fuient vers le fond, et la remplit d'objets observés avec la \
+précision d'un inventaire. La lumière, tranquille, entre par la porte et les fenêtres \
+et pose des ombres nettes. Les couleurs sont sobres : rouge du lit et du baldaquin, \
+vert des lambris, bleu de l'ange. Cette clarté de récit, apprise auprès de Gentile \
+Bellini, fait de lui le grand conteur de la peinture vénitienne."""
+details = [
+  "La couronne posée au pied du lit, sur la marche.",
+  "Le sablier sur la petite table, près du livre ouvert.",
+  "Les deux plantes en pot derrière les fenêtres du fond.",
+  "La palme que tient l'ange, signe du martyre à venir.",
+  "Le petit chien couché au premier plan, en bas au centre.",
+]
+themes = ["rêve", "sainte", "ange", "chambre", "légende dorée"]
+anecdote = """
+Le carpaccio, plat de fines tranches de bœuf cru, porte le nom du peintre : Giuseppe \
+Cipriani, au Harry's Bar de Venise, l'aurait baptisé ainsi vers 1950, l'année d'une \
+grande exposition Carpaccio, à cause des rouges éclatants de ses tableaux."""
+salle = 2
+mur = "sud"
+position = 4.5
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Portrait d'un jeune homme dans son cabinet"
+artiste = "Lorenzo Lotto"
+annee = "vers 1530"
+image = "jeune-homme-cabinet.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Accademia_-_Ritratto_di_giovane_gentiluomo_nel_suo_studio_-_Lorenzo_Lotto_cat.912.jpg"
+technique = "Huile sur toile, 98 × 111 cm"
+collection = "Gallerie dell'Accademia, Venise"
+note = "Un jeune homme pâle feuillette un grand livre, entouré d'objets qui semblent parler de sa mélancolie."
+description = """
+Un jeune homme, vu à mi-corps, est assis devant une table couverte d'un tapis vert. Il \
+porte un ample vêtement noir aux manches bouffantes et une chemise blanche fermée au \
+col. Son visage, long et pâle, est tourné vers nous, mais son regard paraît lointain. \
+De la main gauche, il tourne les pages d'un gros registre posé devant lui. Sur la \
+table traînent un châle bleu frangé, une lettre pliée, une petite chaîne d'or, des \
+pétales de rose éparpillés et un lézard. Le fond est plongé dans l'ombre : on y devine \
+des objets accrochés au mur et un coffre. Tout à gauche, une fenêtre s'ouvre sur un \
+ciel bleu et une ligne de collines, seule échappée de lumière dans cette pièce close."""
+evocation = """
+C'est l'un des portraits les plus mystérieux de la Renaissance. Le jeune homme semble \
+se détourner des plaisirs du monde, la chasse et la musique, évoqués par un cor et un \
+luth relégués dans l'ombre, pour l'étude ou le travail, sans y trouver la paix. Les \
+pétales tombés, la lettre, le lézard ont été lus comme des allusions à un amour déçu, \
+à la fuite du temps ou à la maladie : en italien, on l'appelle parfois le « jeune \
+malade ». Lotto, inquiet et solitaire, a souvent prêté à ses modèles cette vie \
+intérieure tourmentée. Le sens exact des objets reste discuté, et c'est ce qui fait la \
+force du portrait."""
+histoire = """
+Lotto peint ce portrait vers 1530 à Venise, où il s'est réinstallé en 1525 après une \
+douzaine d'années passées à Bergame. Le modèle n'a pas été identifié. Le tableau reste \
+longtemps dans une collection privée de Trévise, où son attribution à Lotto est \
+reconnue en 1923. L'État italien l'achète en 1930 pour les Gallerie dell'Accademia. Il \
+y voisine avec les grands retables vénitiens, mais il appartient à un autre monde : \
+celui du portrait privé, fait pour un cercle intime. Le registre que feuillette le \
+jeune homme a fait penser à un livre de comptes, ce qui ferait de lui un marchand ou \
+un administrateur, mais aucune source ne le confirme."""
+facture = """
+Lotto peint avec une précision presque flamande : chaque objet, du lézard aux franges \
+du châle, est décrit avec soin. La composition est inhabituelle : le jeune homme est \
+repoussé vers la gauche, la table occupe toute la droite, et le format, plus large que \
+haut, laisse une grande place aux objets. Les noirs profonds du vêtement contrastent \
+avec le vert acide du tapis et le bleu du châle. Une lumière froide, venue de la \
+gauche, isole le visage et les mains. Face à Titien, son contemporain, Lotto préfère \
+des contours nets et une atmosphère plus inquiète."""
+details = [
+  "Le petit lézard posé sur le châle bleu.",
+  "Les pétales de rose éparpillés sur le tapis vert.",
+  "La lettre pliée et la chaîne d'or, au bord du livre.",
+  "La fenêtre ouverte sur un paysage, tout en haut à gauche.",
+]
+themes = ["portrait", "mélancolie", "symboles", "lecture", "vanité"]
+anecdote = """
+Lotto a tenu de 1538 à sa mort un livre de comptes qui nous est parvenu : on y lit ses \
+commandes, ses dettes et ses déboires. En 1550, à Ancône, il organise même une loterie \
+de ses tableaux invendus, qui lui rapporte bien peu."""
+salle = 2
+mur = "nord"
+position = 6
+largeur = 1.15
+
+[[oeuvres]]
+titre = "Saint Marc libérant l'esclave"
+artiste = "Le Tintoret"
+annee = "1548"
+image = "miracle-esclave.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jacopo_Tintoretto_-_The_Miracle_of_St_Mark_Freeing_the_Slave_-_WGA22480.jpg"
+technique = "Huile sur toile, 416 × 544 cm"
+collection = "Gallerie dell'Accademia, Venise"
+note = "Saint Marc plonge du ciel, la tête la première, pour sauver un esclave du supplice : la toile qui rendit Tintoret célèbre, à trente ans."
+description = """
+Devant un portique et un jardin fermé par une treille, une foule se presse autour d'un \
+homme nu étendu à terre, sur le dos. Des bourreaux s'acharnent sur lui, mais leurs \
+instruments se brisent : un homme en turban brandit un marteau, un autre montre un \
+bâton cassé, des morceaux de bois éclatés jonchent le sol. Les spectateurs se \
+penchent, stupéfaits. Au-dessus d'eux, saint Marc, en tunique rouge et manteau orangé, \
+fond du ciel la tête en bas, dans un éclat de lumière qui entoure sa tête. À droite, \
+sur une estrade, le maître de l'esclave, en robe rouge, se penche hors de son siège, \
+bouleversé. À gauche, une femme tient un enfant, et un homme s'agrippe à une colonne \
+pour mieux voir."""
+evocation = """
+La Légende dorée raconte qu'un esclave, au service d'un seigneur de Provence, partit \
+malgré l'interdiction de son maître vénérer les reliques de saint Marc ; à son retour, \
+il fut condamné à avoir les yeux crevés et les jambes brisées, mais les instruments du \
+supplice se rompirent. Pour la confrérie de Saint-Marc, ce miracle célébrait la \
+puissance du patron de Venise. Tintoret en fait un spectacle saisissant : le saint \
+surgit en plein vol, sans que personne le voie, et la stupeur se propage dans la \
+foule. On y a vu l'affirmation d'une peinture nouvelle, fondée sur le mouvement, le \
+raccourci et la surprise."""
+histoire = """
+La Scuola Grande di San Marco, l'une des plus riches confréries de Venise, commande la \
+toile pour sa salle de réunion. Tintoret, âgé d'une trentaine d'années, n'a encore \
+rien peint d'aussi grand. Selon son biographe Carlo Ridolfi, une partie des confrères \
+hésite à accepter l'œuvre, et le peintre la remporte chez lui jusqu'à ce qu'on la lui \
+redemande. Le tableau est finalement admiré : l'écrivain Pietro Aretino en félicite le \
+peintre dans une lettre d'avril 1548. Tintoret peindra ensuite d'autres miracles de \
+saint Marc pour la même confrérie. Saisie par les Français en 1797, la toile revient à \
+Venise en 1815 et entre alors aux Gallerie dell'Accademia."""
+facture = """
+Selon Ridolfi, Tintoret avait inscrit sur le mur de son atelier une devise : le dessin \
+de Michel-Ange et la couleur de Titien. On reconnaît ici les deux : des corps \
+puissants vus en raccourci, comme le saint renversé ou l'esclave couché, et des \
+couleurs vives, rouges, orangés, bleus. La composition est construite comme une scène \
+de théâtre : un espace profond, des figures pressées au premier plan, des gestes qui \
+convergent vers le corps étendu. La touche est rapide, parfois esquissée ; Titien et \
+ses partisans reprochaient au jeune peintre cette exécution hâtive."""
+details = [
+  "Le saint qui plonge du ciel, la tête la première, vu en raccourci.",
+  "Les morceaux de bois et les outils brisés autour de l'esclave.",
+  "L'homme agrippé à une colonne, en haut à gauche.",
+  "Le maître, à droite, qui se penche hors de son siège.",
+  "La femme tenant un enfant, au bord gauche de la foule.",
+]
+themes = ["miracle", "saint marc", "foule", "mouvement", "venise"]
+anecdote = """
+Le surnom de Tintoret, « il Tintoretto », c'est-à-dire « le petit teinturier », vient \
+du métier de son père, qui teignait les étoffes à Venise. Son vrai nom était Jacopo \
+Robusti."""
+salle = 3
+mur = "sud"
+position = 0
+largeur = 4.2
+
+[[oeuvres]]
+titre = "Les Noces de Cana"
+artiste = "Paolo Véronèse"
+annee = "1562–1563"
+image = "noces-de-cana.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Les_Noces_de_Cana_-_Paolo_Veronese_-_Musée_du_Louvre_Peintures_INV_142_;_MR_384.jpg"
+technique = "Huile sur toile, 677 × 994 cm"
+collection = "Musée du Louvre, Paris"
+note = "Le premier miracle du Christ, l'eau changée en vin, devient un banquet vénitien de plus de cent trente figures : la plus grande toile du Louvre."
+description = """
+Sous un ciel bleu traversé de nuages, une terrasse bordée de colonnades accueille un \
+immense festin. Les tables forment un U autour d'un espace dallé. Au centre, face à \
+nous, le Christ, auréolé, est assis entre sa mère et ses disciples ; ils sont presque \
+les seuls à rester graves. Autour, des dizaines de convives en costumes somptueux, \
+vénitiens ou orientaux, mangent, boivent et conversent ; à l'extrémité gauche de la \
+table, les mariés. Au premier plan, au milieu, un groupe de musiciens joue de la \
+viole. À droite, un serviteur verse le vin d'une grande jarre, et un homme en robe \
+brochée examine sa coupe. Derrière la balustrade, des serviteurs découpent la viande ; \
+sur les toits, des curieux se penchent. Des chiens et un chat circulent parmi les \
+pieds."""
+evocation = """
+L'Évangile de Jean raconte qu'aux noces de Cana, le vin vint à manquer et que Jésus \
+changea l'eau en vin : c'est son premier miracle. Véronèse en fait la fête la plus \
+fastueuse qui soit, à l'image des banquets de l'aristocratie vénitienne. Mais le sens \
+religieux reste au centre : le Christ, immobile au milieu de l'agitation, regarde le \
+spectateur, et juste au-dessus de lui, derrière la balustrade, un serviteur découpe la \
+viande, geste qu'on a rapproché du sacrifice de l'Agneau. Le sablier posé devant les \
+musiciens a été lu comme un rappel du temps qui passe. Destinée à un réfectoire, la \
+toile installait les moines, pendant leurs repas, à la table même du Christ."""
+histoire = """
+Le 6 juin 1562, les bénédictins du monastère de San Giorgio Maggiore, à Venise, \
+commandent à Véronèse une toile pour le mur du fond de leur nouveau réfectoire, \
+construit par Andrea Palladio. Le contrat demande d'y faire tenir autant de figures \
+que possible. Aidé de son frère Benedetto, le peintre la livre en septembre 1563. En \
+1797, les troupes françaises l'emportent comme butin : la toile est coupée en bandes \
+horizontales et roulée pour le voyage, puis recousue à Paris. En 1815, lors des \
+restitutions, Vivant Denon la juge trop fragile pour repartir ; Venise reçoit à la \
+place un grand tableau de Charles Le Brun. Depuis 2007, une copie numérique en \
+grandeur réelle occupe sa place d'origine."""
+facture = """
+Véronèse organise la foule avec la clarté d'un architecte : des colonnades inspirées \
+de Palladio et de l'Antiquité ferment les côtés, une balustrade coupe le tableau en \
+deux registres, et le ciel ouvre l'espace au centre. Les couleurs, claires et \
+franches, sont posées en grands accords de rouges, de verts, de jaunes et de bleus, et \
+les étoffes de soie et de brocart chatoient sous une lumière égale. La restauration \
+menée au Louvre à partir de 1989 a révélé que le manteau de l'intendant, au premier \
+plan à gauche, avait été repeint en rouge : il était à l'origine vert."""
+details = [
+  "Les musiciens au centre : la tradition y reconnaît Véronèse en blanc, Titien en rouge, et Tintoret.",
+  "Le serviteur qui verse le vin d'une grande jarre, à droite.",
+  "Le sablier posé sur la table, devant les musiciens.",
+  "Les mariés, à l'extrémité gauche de la table.",
+  "Les curieux penchés sur les toits et les balcons, tout en haut.",
+]
+themes = ["banquet", "miracle", "musique", "fête", "architecture", "venise"]
+anecdote = """
+Au Louvre, Les Noces de Cana sont accrochées dans la salle des États, face à La \
+Joconde : la foule qui se presse pour photographier le portrait de Léonard tourne \
+souvent le dos à la plus grande toile du musée."""
+salle = 3
+mur = "nord"
+position = 0
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Le Banquet de Cléopâtre"
+artiste = "Giambattista Tiepolo"
+annee = "1743–1744"
+image = "banquet-cleopatre.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Giambattista_Tiepolo_-_The_Banquet_of_Cleopatra_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 250,3 × 357 cm"
+collection = "National Gallery of Victoria, Melbourne"
+note = "Pour gagner un pari, Cléopâtre va dissoudre une perle dans sa coupe et la boire sous les yeux de Marc Antoine : l'Antiquité habillée en fête vénitienne."
+description = """
+Le banquet se tient sous un portique ouvert sur le ciel, entre de hautes colonnes \
+cannelées. Au centre, à une table couverte d'une nappe blanche, Cléopâtre est assise, \
+en robe de soie dorée à large collerette, un collier de perles au cou. De la main \
+droite, elle tient une perle au-dessus d'une coupe de verre. En face d'elle, Marc \
+Antoine, casqué, enveloppé d'un manteau rouge, la regarde, assis dans un fauteuil. \
+Autour, des serviteurs, des pages, des soldats et des courtisans en costumes orientaux \
+observent la scène ; au premier plan à gauche, un homme au chapeau bleu, vu de dos, \
+apporte un plat. Un lévrier est assis devant la table. Sur la balustrade du fond, des \
+spectateurs se penchent pour voir."""
+evocation = """
+Pline l'Ancien raconte que Cléopâtre paria avec Marc Antoine qu'elle dépenserait une \
+fortune en un seul repas. Au dessert, elle fit dissoudre dans du vinaigre l'une des \
+deux plus grosses perles du monde, qu'elle portait en pendant d'oreille, et la but. \
+Tiepolo choisit l'instant suspendu où la reine va laisser tomber la perle : un geste \
+de défi, de luxe et de pouvoir. Les historiens y voient aussi un portrait de la Venise \
+du XVIIIᵉ siècle, ville de fêtes et de dépenses, dont la puissance décline. Les \
+costumes mêlent l'Antiquité, l'Orient et la mode du XVIᵉ siècle, en hommage aux \
+festins de Véronèse."""
+histoire = """
+Tiepolo commence le tableau pour un client resté incertain, peut-être le marchand \
+anglais Joseph Smith, protecteur de Canaletto. L'écrivain Francesco Algarotti, qui \
+achète des tableaux pour Auguste III, électeur de Saxe et roi de Pologne, le découvre \
+inachevé dans l'atelier et obtient qu'il soit terminé pour Dresde. La toile quitte \
+pourtant la Saxe : en 1764, Catherine II de Russie l'achète à Amsterdam, et elle reste \
+à l'Ermitage de Saint-Pétersbourg pendant plus d'un siècle et demi. En 1932, le \
+gouvernement soviétique, qui vend des chefs-d'œuvre pour se procurer des devises, la \
+cède ; la National Gallery of Victoria l'acquiert en 1933. Tiepolo reprit le sujet à \
+fresque au palais Labia, à Venise."""
+facture = """
+Tiepolo peint d'une touche légère et rapide, avec une palette claire où dominent l'or, \
+le blanc, le rouge et le bleu pâle du ciel. Le décor, avec ses colonnes et sa \
+balustrade vues d'en bas, rappelle les festins de Véronèse, qu'il admirait. La \
+lumière, égale et argentée, baigne tout le tableau, sans ombres profondes. Les figures \
+sont disposées comme sur une scène de théâtre, autour d'un vide central où se joue le \
+geste de Cléopâtre ; la nappe blanche en fait le point le plus lumineux."""
+details = [
+  "La perle que Cléopâtre tient au-dessus de la coupe de verre.",
+  "Le casque à plumes de Marc Antoine, assis à droite de la table.",
+  "Le lévrier assis au premier plan, à droite.",
+  "L'homme au chapeau bleu qui apporte un plat, à gauche.",
+  "Les oiseaux qui traversent le ciel, au-dessus de la balustrade.",
+]
+themes = ["antiquité", "banquet", "luxe", "pari", "théâtre"]
+anecdote = """
+Tiepolo avait épousé en 1719 Maria Cecilia Guardi, sœur des peintres Gian Antonio et \
+Francesco Guardi, dont une vue de Venise est exposée dans les salons voisins. Deux de \
+leurs fils, Giandomenico et Lorenzo, devinrent ses assistants."""
+salle = 3
+mur = "est"
+position = 0
+largeur = 3.6
+
+[[oeuvres]]
+titre = "Autoportrait en Hiver"
+artiste = "Rosalba Carriera"
+annee = "1730–1731"
+image = "autoportrait-hiver.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Rosalba_Carriera_-_Self-Portrait_as_%22Winter%22_(1730-1731)_-_Google_Art_Project.jpg"
+technique = "Pastel sur papier, 46,5 × 34 cm"
+collection = "Gemäldegalerie Alte Meister, Dresde"
+note = "À cinquante-sept ans, la portraitiste la plus recherchée d'Europe se représente en allégorie de l'Hiver, emmitouflée de fourrure. La feuille mesure moins d'un demi-mètre ; elle est montrée ici agrandie."
+description = """
+Une femme d'âge mûr, vue en buste et de trois quarts, nous regarde avec un léger \
+sourire. Ses yeux clairs sont un peu cernés. Elle porte sur la tête un grand bonnet de \
+fourrure blanche mouchetée de noir, comme l'hermine, accompagné d'un bonnet de velours \
+bleu d'où pend un gland doré. Un manteau bleu bordé de la même fourrure couvre ses \
+épaules et s'ouvre sur une chemise blanche. Des perles pendent à ses oreilles. Le \
+fond, gris et neutre, s'assombrit autour de la tête, si bien que le visage clair et la \
+fourrure blanche ressortent nettement. Aucun objet, aucun décor, aucun attribut de \
+peintre : tout est dans la figure et dans son regard."""
+evocation = """
+Rosalba a souvent peint les quatre saisons sous les traits de jeunes femmes \
+gracieuses. Ici, elle se prête elle-même à l'allégorie, mais sans flatterie : elle \
+montre un visage marqué par l'âge, avec une franchise rare. L'hiver est la saison de \
+la vieillesse ; la fourrure, qui réchauffe, évoque aussi le confort et le luxe d'une \
+artiste parvenue au sommet de sa réputation. On y a lu de l'humour, une conscience \
+lucide du temps qui passe et la fierté d'une femme qui vivait de son art. \
+L'autoportrait affirme la place d'une femme peintre, reçue par les académies de Rome \
+et de Paris à une époque où elles en admettaient très peu."""
+histoire = """
+Rosalba Carriera exécute cet autoportrait vers 1730-1731, au temps de son séjour à la \
+cour impériale de Vienne. Elle est alors la portraitiste la plus demandée d'Europe : \
+souverains, princes et voyageurs du Grand Tour défilent dans son atelier vénitien. Le \
+pastel rejoint la collection des électeurs de Saxe, à Dresde. Le prince \
+Frédéric-Auguste, futur Auguste III, qui l'avait rencontrée à Venise dans sa jeunesse, \
+réunit en effet le plus grand ensemble de ses pastels. Mis à l'abri pendant la Seconde \
+Guerre mondiale, ces tableaux échappent à la destruction de la ville et sont \
+aujourd'hui présentés à la Gemäldegalerie Alte Meister, avec les vues de Dresde de \
+Bellotto."""
+facture = """
+Le pastel est un bâton de pigment presque pur, qu'on écrase sur le papier. Rosalba en \
+a fait un art majeur. Elle travaille par couches légères, fondues au doigt ou à \
+l'estompe, pour obtenir la douceur veloutée de la peau ; puis elle pose d'un trait vif \
+les accents : le blanc des perles, les mèches de la fourrure, l'éclat de l'œil. Le \
+bleu intense du velours répond au gris du fond. Fragile, le pastel craint les chocs et \
+la lumière : c'est pourquoi on le conserve sous verre."""
+details = [
+  "Les poils de la fourrure, rendus par des traits rapides de blanc et de noir.",
+  "Les perles des pendants d'oreilles, posées d'une seule touche.",
+  "Le gland doré qui pend du bonnet de velours bleu.",
+  "Les légers cernes sous les yeux, rendus sans complaisance.",
+]
+themes = ["autoportrait", "hiver", "allégorie", "femmes", "pastel"]
+anecdote = """
+Rosalba a commencé sa carrière en peignant des miniatures pour les couvercles de \
+tabatières. Elle fut l'une des premières à les peindre sur ivoire, un support lumineux \
+qui devint la règle pour les miniatures du XVIIIᵉ siècle."""
+salle = 4
+mur = "sud"
+position = 1.8
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Dresde vue de la rive droite de l'Elbe"
+artiste = "Bernardo Bellotto"
+annee = "1748"
+image = "dresde-rive-droite.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Canaletto_-_Dresden_seen_from_the_Right_Bank_of_the_Elbe,_beneath_the_Augusts_Bridge_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 133 × 237 cm"
+collection = "Gemäldegalerie Alte Meister, Dresde"
+note = "Un Vénitien sur l'Elbe : la plus célèbre vue de Dresde, qui garde l'image d'une ville détruite en 1945."
+description = """
+Depuis la rive droite de l'Elbe, on découvre la vieille ville de Dresde, de l'autre \
+côté du fleuve. À gauche, le long pont de pierre Auguste aligne ses arches sur l'eau \
+calme. Au-dessus des toits s'élève le grand dôme de pierre de la Frauenkirche, \
+l'église Notre-Dame. À droite, la Hofkirche, l'église catholique de la cour, est \
+encore en construction : sa tour est enveloppée d'échafaudages. À côté, des palais aux \
+façades claires se reflètent dans le fleuve. Au premier plan, sur la grève de sable, \
+des promeneurs, des pêcheurs et des bateliers vaquent à leurs occupations ; des \
+barques sont amarrées, une autre traverse. Le ciel, immense et changeant, occupe plus \
+de la moitié de la toile."""
+evocation = """
+Bellotto peint une capitale moderne et fière, celle de l'électeur Auguste III, qui l'a \
+fait venir de Venise. La ville s'agrandit et s'embellit : le dôme protestant de la \
+Frauenkirche, achevé quelques années plus tôt, et la nouvelle église catholique de la \
+cour, voulue par un prince catholique régnant sur un pays luthérien, se répondent de \
+part et d'autre du pont. Le tableau célèbre l'ordre et la prospérité d'un État. Il a \
+pris, pour nous, une valeur de témoignage : presque tout ce qu'il montre a été détruit \
+par les bombardements de février 1945, et sa précision en fait une image de mémoire."""
+histoire = """
+Neveu et élève de Canaletto, Bellotto arrive à Dresde en 1747, appelé par Auguste III, \
+électeur de Saxe et roi de Pologne, qui le nomme peintre de la cour. Il entreprend \
+pour lui une grande série de vues de Dresde et de Pirna, de format monumental. Cette \
+toile, datée de 1748, en est l'une des premières. En Allemagne et en Pologne, Bellotto \
+se fait appeler du nom de son oncle, Canaletto, ce qui entretiendra longtemps la \
+confusion. Le tableau appartient depuis lors aux collections de Dresde. Mis à l'abri \
+pendant la guerre, il est emporté à Moscou par l'Armée rouge en 1945, avec les autres \
+chefs-d'œuvre de la galerie, et revient à Dresde en 1955."""
+facture = """
+Bellotto a appris chez Canaletto la rigueur de la veduta : perspective exacte et \
+architecture minutieusement décrite ; on pense qu'il s'aidait, comme lui, d'une \
+chambre noire. Mais sa palette est plus froide que celle de son oncle : bleus et gris \
+argentés, ombres franches, nuages chargés à la manière hollandaise. Il peint de très \
+grandes toiles où chaque fenêtre est lisible, et anime les premiers plans de figures \
+prises dans la vie de tous les jours. La lumière sculpte les façades et fait miroiter \
+leurs reflets sur l'Elbe."""
+details = [
+  "Les échafaudages qui entourent la tour de la Hofkirche, encore inachevée.",
+  "Le dôme de la Frauenkirche, au-dessus des toits.",
+  "Les reflets des palais dans l'eau immobile du fleuve, à droite.",
+  "Les promeneurs et les pêcheurs sur la grève, au premier plan à gauche.",
+  "Les arches du pont Auguste, qui traversent toute la gauche du tableau.",
+]
+themes = ["ville", "fleuve", "veduta", "architecture", "mémoire"]
+anecdote = """
+Ce point de vue sur la vieille ville porte toujours, à Dresde, le nom de \
+« Canaletto-Blick », la vue de Canaletto. Pour reconstruire la Frauenkirche, achevée \
+en 2005, on a consulté les vues de Bellotto parmi les documents anciens."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Le Rhinocéros"
+artiste = "Pietro Longhi"
+annee = "1751"
+image = "rhinoceros.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Pietro_Longhi_-_The_Rhinoceros_-_WGA13408.jpg"
+technique = "Huile sur toile, 62 × 50 cm"
+collection = "Ca' Rezzonico, musée du XVIIIᵉ siècle vénitien, Venise"
+note = "Clara, la rhinocéros qui fit le tour de l'Europe, exhibée au carnaval de Venise devant des spectateurs masqués."
+description = """
+Dans un enclos de planches, au sol semé de paille, un rhinocéros des Indes mâche une \
+touffe de foin. Il occupe toute la moitié inférieure du tableau, de profil, avec sa \
+peau épaisse plissée comme une armure. Derrière une barrière, des spectateurs le \
+regardent. À gauche, son gardien, en habit brun, brandit la corne de l'animal et un \
+fouet. À côté de lui, un homme sans masque, en veste bleue, puis deux personnages \
+vêtus de la bautta, le déguisement vénitien du carnaval, avec tricorne, cape noire et \
+masque blanc. Derrière eux, trois femmes, dont l'une porte un petit masque noir ovale. \
+À droite, un jeune homme en manteau rouge fume la pipe. Au mur, un cartel porte une \
+inscription."""
+evocation = """
+Le tableau est d'abord un document : il montre une vraie bête, Clara, une femelle \
+rhinocéros venue d'Inde, que le capitaine hollandais Douwemout van der Meer promena \
+dans toute l'Europe pendant dix-sept ans. Mais Longhi s'intéresse autant aux \
+spectateurs qu'à l'animal. Les Vénitiens masqués, impassibles, semblent aussi étranges \
+que la bête qu'ils contemplent, et ce jeu des regards crée une ironie discrète. Le \
+tableau témoigne de la curiosité scientifique du siècle des Lumières et du goût \
+vénitien pour les spectacles du carnaval, où l'on venait, sous le masque, voir les \
+merveilles du monde."""
+histoire = """
+Clara arrive à Venise en janvier 1751 et fait sensation pendant le carnaval. Le \
+patricien Giovanni Grimani commande alors à Longhi ce « vrai portrait », comme le \
+précise l'inscription du cartel, qui donne aussi l'année et le nom du peintre. Longhi \
+en peint au moins une autre version, aujourd'hui à la National Gallery de Londres. La \
+toile de Grimani appartient aux musées civiques de Venise et est exposée à Ca' \
+Rezzonico, palais du Grand Canal devenu en 1936 le musée du XVIIIᵉ siècle vénitien, où \
+elle voisine avec de nombreuses autres scènes du peintre."""
+facture = """
+Longhi peint de petits tableaux de cabinet, faits pour être regardés de près, dans la \
+tradition des scènes de genre. Sa touche est fine, ses couleurs sont douces, avec des \
+harmonies de bruns, de blancs et de bleus pâles. Les personnages, un peu raides, \
+presque des poupées, sont alignés comme sur la scène d'un petit théâtre. L'animal, en \
+revanche, est rendu avec un souci d'exactitude : le poids du corps, les plis de la \
+peau, jusqu'au crottin laissé sur le sol."""
+details = [
+  "La corne que brandit le gardien : Clara l'avait perdue peu avant.",
+  "Le cartel, en haut à droite, avec la dédicace à Giovanni Grimani.",
+  "La moretta, petit masque noir que les femmes tenaient avec les dents.",
+  "Le jeune homme en manteau rouge qui fume la pipe, à droite.",
+]
+themes = ["animal", "carnaval", "masques", "curiosité", "vie quotidienne"]
+anecdote = """
+Clara fut l'animal le plus célèbre de son siècle : on vendait des gravures, des \
+médailles et des figurines à son effigie, et Jean-Baptiste Oudry la peignit grandeur \
+nature à Paris en 1749. Elle mourut à Londres en 1758."""
+salle = 4
+mur = "sud"
+position = -1.8
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Le Départ du Bucentaure vers le Lido le jour de l'Ascension"
+artiste = "Francesco Guardi"
+annee = "vers 1775–1780"
+image = "bucentaure.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Guardi_-_Le_Départ_du_Bucentaure_vers_le_Lido_de_Venise,_le_jour_de_l'Ascension,_vers_1770_-_1780,_INV_20009.jpg"
+technique = "Huile sur toile, 66 × 101 cm"
+collection = "Musée du Louvre, Paris"
+note = "Le jour de l'Ascension, la galère dorée du doge s'élance vers le Lido pour épouser la mer : Venise en fête, dans une lumière vibrante."
+description = """
+Le bassin de Saint-Marc est couvert de bateaux. Au centre, le Bucentaure, grande \
+galère d'apparat rouge et or, aux flancs sculptés, s'avance, mû par des rangées de \
+rames. Autour de lui se pressent des gondoles, des barques dorées et des voiliers aux \
+mâts hérissés. À droite, sur le quai, on reconnaît le palais des Doges, le campanile \
+et les coupoles de la basilique Saint-Marc. Au loin, à gauche, l'église et le \
+campanile de San Giorgio Maggiore ; au centre de l'horizon, la coupole de la Salute. \
+Au premier plan, sur le quai, une foule de Vénitiens, hommes en manteaux et tricornes, \
+femmes en robes claires, regarde le cortège. Un petit chien trotte parmi eux. Le ciel \
+nuageux occupe plus de la moitié de la toile."""
+evocation = """
+Chaque année, le jour de l'Ascension, le doge montait à bord du Bucentaure et gagnait \
+la passe du Lido, où il jetait un anneau d'or dans l'Adriatique en prononçant des \
+paroles d'épousailles. Ce « mariage avec la mer » célébrait la domination de Venise \
+sur les eaux. Quand Guardi peint la scène, la République n'est plus qu'une puissance \
+déclinante, qui disparaîtra en 1797, mais la fête garde tout son faste. Sa peinture, \
+nerveuse et lumineuse, semble saisir l'agitation d'un instant plutôt que la solidité \
+des monuments. On y a vu une image de la Venise des dernières années, regardée déjà \
+comme un souvenir."""
+histoire = """
+La toile appartient à une série de douze tableaux, les Fêtes ducales, consacrée aux \
+grandes cérémonies du doge, à partir de celles qui suivirent l'élection d'Alvise IV \
+Mocenigo, en 1763. Guardi s'appuie sur des compositions de Canaletto, connues par les \
+gravures de Giovanni Battista Brustolon, et les transforme par sa touche personnelle. \
+Dix des douze toiles de la série sont aujourd'hui au Louvre. Le Bucentaure qu'on voit \
+ici, construit en 1729, fut le dernier : en 1798, après la chute de la République, les \
+troupes françaises le dépouillèrent de ses sculptures dorées et les brûlèrent pour en \
+récupérer l'or."""
+facture = """
+Guardi a appris le métier dans l'atelier familial, avec son frère Gian Antonio, puis \
+s'est mis à peindre des vues de Venise dans le sillage de Canaletto. Mais sa touche \
+est tout autre : rapide, morcelée, faite de petites virgules de couleur qui suggèrent \
+les gondoliers, les reflets ou les silhouettes de la foule. Les architectures, \
+légèrement tremblées, semblent flotter entre l'eau et le ciel, dans une lumière grise \
+et argentée. Cette liberté sera admirée par les peintres du XIXᵉ siècle."""
+details = [
+  "Les rangées de rames qui sortent des flancs du Bucentaure.",
+  "Le campanile de Saint-Marc et les coupoles de la basilique, à droite.",
+  "La coupole de la Salute, au centre de l'horizon.",
+  "Les gondoliers debout, croqués en quelques touches.",
+  "Le petit chien qui trotte au premier plan.",
+]
+themes = ["venise", "fête", "lagune", "veduta", "cérémonie"]
+anecdote = """
+Il ne reste presque rien du dernier Bucentaure. Le musée d'histoire navale de Venise \
+en conserve des fragments sculptés et un grand modèle réduit, qui permettent \
+d'imaginer la galère que peignait Guardi."""
+salle = 4
+mur = "ouest"
+position = 0
+largeur = 1.4
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Antonello de Messine"
+vie = "Messine (Sicile), vers 1430 – Messine, février 1479"
+biographie = """
+Antonello naît à Messine, en Sicile, dans une famille d'artisans. Il se forme à \
+Naples, auprès du peintre Colantonio, dans une ville où la cour aragonaise \
+collectionne la peinture flamande : il y découvre les tableaux de Jan van Eyck et de \
+ses successeurs, et leur technique de la peinture à l'huile. Vasari racontera plus \
+tard qu'il était allé l'apprendre en Flandre, une légende que rien ne confirme. \
+Antonello travaille ensuite surtout en Sicile et en Calabre, où il peint retables et \
+portraits. En 1475-1476, il séjourne à Venise. Il y peint le retable de l'église San \
+Cassiano, dont il ne reste que des fragments, aujourd'hui à Vienne, et des portraits \
+qui frappent les Vénitiens par leur présence, comme le Condottiere du Louvre. Le duc \
+de Milan, Galeazzo Maria Sforza, cherche alors à l'attirer à sa cour. Antonello rentre \
+pourtant à Messine, où il meurt au début de 1479 ; son fils Jacobello reprend \
+l'atelier."""
+style = """
+Antonello unit la minutie et la lumière des Flamands à la géométrie et à l'ampleur des \
+Italiens. Ses portraits, en buste, de trois quarts sur fond noir, regardent le \
+spectateur avec une intensité nouvelle. Son séjour à Venise a joué un rôle décisif : \
+Giovanni Bellini et ses contemporains y ont adopté la peinture à l'huile et le grand \
+retable d'un seul tenant."""
+
+[[artistes]]
+nom = "Giovanni Bellini"
+vie = "Venise, vers 1430-1435 – Venise, 29 novembre 1516"
+biographie = """
+Giovanni Bellini grandit dans l'atelier de son père, le peintre Jacopo Bellini, avec \
+son frère Gentile. En 1453, sa sœur Nicolosia épouse Andrea Mantegna, dont le dessin \
+sculptural marque ses premières œuvres. Peu à peu, Bellini s'en éloigne et cherche une \
+lumière plus douce, qui baigne les figures et les paysages ; la venue d'Antonello de \
+Messine à Venise, en 1475, l'encourage à adopter la peinture à l'huile. Il devient le \
+peintre officiel de la République : il travaille aux grandes toiles du palais des \
+Doges, détruites par l'incendie de 1577, et peint le portrait du doge Leonardo \
+Loredan. Son atelier, très actif, forme une génération entière, à laquelle on rattache \
+Giorgione et Titien. En 1506, Albrecht Dürer, de passage à Venise, écrit qu'il est \
+très vieux, mais toujours le meilleur peintre de la ville. Jusqu'à la fin de sa longue \
+vie, Bellini se renouvelle, avec le Festin des dieux et la Jeune femme au miroir."""
+style = """
+Bellini est le fondateur de la peinture vénitienne : il fait de la couleur et de la \
+lumière, plus que du dessin, l'âme du tableau. Ses Vierges à l'Enfant, d'une tendresse \
+grave, ses saints placés dans des paysages baignés de soleil et ses grandes saintes \
+conversations ont fixé pour un siècle le modèle du retable vénitien."""
+
+[[artistes]]
+nom = "Vittore Carpaccio"
+vie = "Venise, vers 1465 – Venise ou Capodistria, vers 1525-1526"
+biographie = """
+On sait peu de chose de la jeunesse de Vittore Carpaccio, né dans une famille de \
+marchands vénitiens. Sa formation reste obscure, mais son art doit beaucoup à Gentile \
+Bellini, le peintre des grandes cérémonies de la ville. Carpaccio s'impose comme le \
+peintre des scuole, les confréries de Venise, qui commandent pour leurs salles de \
+grands cycles narratifs. Pour la Scuola di Sant'Orsola, il peint de 1490 à 1495 \
+environ les Histoires de sainte Ursule. Pour la Scuola di San Giovanni Evangelista, il \
+représente un miracle de la relique de la Croix près du pont du Rialto, alors en bois. \
+De 1502 à 1507, il décore la Scuola di San Giorgio degli Schiavoni, la confrérie des \
+Dalmates, avec saint Georges terrassant le dragon et saint Augustin dans son cabinet, \
+toujours en place. Lorsque le goût vénitien se tourne vers Giorgione et Titien, il \
+travaille de plus en plus pour des clients de la terre ferme et d'Istrie. Son fils \
+Benedetto, peintre lui aussi, s'installe à Capodistria."""
+style = """
+Carpaccio est un conteur. Il installe les légendes saintes dans la Venise de son \
+temps, avec ses palais, ses canaux, ses costumes et ses objets familiers, décrits avec \
+une précision d'inventaire. Sa lumière claire et égale, ses compositions ordonnées \
+comme des scènes de théâtre, ont été redécouvertes au XIXᵉ siècle par John Ruskin."""
+
+[[artistes]]
+nom = "Lorenzo Lotto"
+vie = "Venise, vers 1480 – Lorette, 1556 ou 1557"
+biographie = """
+Né à Venise, Lorenzo Lotto fait l'essentiel de sa carrière loin de sa ville. Il \
+travaille d'abord à Trévise, où il peint le portrait de l'évêque Bernardo de' Rossi, \
+puis dans les Marches, à Recanati. En 1509, il est payé pour des travaux au palais du \
+Vatican, à Rome, au moment où Raphaël y commence ses fresques. De 1513 à 1525, il vit \
+à Bergame, où il peint ses plus grands retables et les fresques de la chapelle Suardi, \
+à Trescore. Revenu à Venise, il y reste quelques années, mais la ville est dominée par \
+Titien, dont il ne partage ni le style ni le succès. Il repart, d'une commande à \
+l'autre, entre Venise, Trévise et les Marches. À partir de 1538, il note ses travaux \
+et ses dettes dans un livre de comptes. Âgé et pauvre, il se retire en 1554 au \
+sanctuaire de la Santa Casa de Lorette, comme oblat, et y meurt. Oublié, il a été \
+redécouvert à la fin du XIXᵉ siècle par l'historien Bernard Berenson."""
+style = """
+Lotto est le peintre de l'inquiétude. Ses portraits scrutent la vie intérieure de ses \
+modèles, entourés d'objets chargés de sens. Ses retables surprennent par leurs gestes \
+vifs, leurs couleurs acides et leurs compositions inattendues. Indépendant de Titien, \
+attentif à l'art du Nord et à Dürer, il occupe une place à part dans la peinture \
+vénitienne."""
+
+[[artistes]]
+nom = "Le Tintoret"
+vie = "Venise, 1518 ou 1519 – Venise, 31 mai 1594"
+biographie = """
+Jacopo Robusti, dit le Tintoret, est le fils d'un teinturier vénitien. Selon son \
+biographe Carlo Ridolfi, il aurait fait un bref passage dans l'atelier de Titien, qui \
+l'aurait renvoyé, et se serait formé surtout seul, en dessinant d'après les moulages \
+des sculptures de Michel-Ange. Le Miracle de l'esclave, en 1548, le rend célèbre. Il \
+épouse Faustina Episcopi, fille d'un dignitaire de la Scuola di San Marco. En 1564, la \
+Scuola Grande di San Rocco organise un concours pour le plafond de sa salle de \
+l'Albergo : au lieu d'une esquisse, Tintoret installe une toile achevée, qu'il offre à \
+la confrérie. Il y peindra, jusqu'en 1587, plus de cinquante tableaux, l'un des plus \
+grands ensembles jamais réalisés par un seul peintre. Après l'incendie du palais des \
+Doges en 1577, il travaille à son nouveau décor, avec le Paradis, l'une des plus \
+grandes toiles du monde. Il ne quitte presque jamais Venise et meurt en 1594 ; il est \
+enterré à la Madonna dell'Orto. Sa fille Marietta et son fils Domenico ont été ses \
+assistants."""
+style = """
+Tintoret cherche le mouvement et le drame : raccourcis audacieux, diagonales, lumière \
+violente qui surgit de l'ombre, foules agitées. Il peint vite, d'une touche rapide qui \
+scandalisait ses contemporains. Ridolfi raconte qu'il composait ses scènes avec de \
+petites figurines de cire placées dans des boîtes éclairées. Le Greco et Rubens lui \
+doivent beaucoup."""
+
+[[artistes]]
+nom = "Paolo Véronèse"
+vie = "Vérone, 1528 – Venise, 19 avril 1588"
+biographie = """
+Paolo Caliari, dit Véronèse, est le fils d'un tailleur de pierre de Vérone. Il se \
+forme auprès du peintre Antonio Badile, dont il épousera plus tard la fille. Installé \
+à Venise vers 1553, il obtient aussitôt des commandes pour les plafonds du palais des \
+Doges, puis décore l'église San Sebastiano, où il sera enterré. Vers 1560, il peint \
+les fresques de la villa Barbaro à Maser, construite par Palladio : trompe-l'œil, \
+paysages et personnages qui semblent entrer dans les salles. Ses grands repas, peints \
+pour des réfectoires de couvents, font sa gloire. En 1573, le tribunal de \
+l'Inquisition le convoque à propos d'une Cène jugée irrévérencieuse, peuplée de \
+bouffons, de soldats allemands et de chiens ; plutôt que de modifier la toile, il en \
+change le titre, qui devient Le Repas chez Lévi. Avec son frère Benedetto et ses fils \
+Carletto et Gabriele, il dirige un atelier prospère, qui poursuit son œuvre après sa \
+mort, en 1588."""
+style = """
+Véronèse est le peintre de la splendeur : architectures majestueuses, ciels clairs, \
+foules élégantes vêtues de soies et de brocarts. Sa couleur, lumineuse et argentée, \
+posée en grands accords, sans ombres lourdes, a fait de lui le modèle des décorateurs, \
+de Tiepolo à Delacroix. Ses fêtes profanes, à peine religieuses, annoncent aussi le \
+goût du spectacle qui sera celui de Venise au XVIIIᵉ siècle."""
+
+[[artistes]]
+nom = "Giambattista Tiepolo"
+vie = "Venise, 5 mars 1696 – Madrid, 27 mars 1770"
+biographie = """
+Fils d'un marchand vénitien, Giambattista Tiepolo se forme auprès du peintre Gregorio \
+Lazzarini. En 1719, il épouse Maria Cecilia Guardi, sœur des peintres Gian Antonio et \
+Francesco Guardi. Dans les années 1720, ses fresques du palais de l'archevêque d'Udine \
+font sa réputation ; il décore ensuite des palais de Milan, de Bergame et de Venise, \
+comme le palais Labia avec l'histoire d'Antoine et Cléopâtre. De 1750 à 1753, il \
+travaille à Würzburg, pour le prince-évêque, à la Résidence : il y peint la salle \
+impériale et l'immense plafond de l'escalier, qui représente l'Olympe et les quatre \
+continents. En 1756, il devient le premier président de l'Académie de peinture de \
+Venise. En 1762, le roi Charles III l'appelle à Madrid pour décorer les plafonds de \
+son nouveau palais royal. Il y travaille avec ses fils Giandomenico et Lorenzo, mais \
+le goût change, et le peintre néoclassique Anton Raphael Mengs lui fait concurrence. \
+Tiepolo meurt à Madrid en 1770."""
+style = """
+Tiepolo est le dernier grand décorateur de la tradition baroque. Il ouvre les plafonds \
+sur des ciels immenses et lumineux, où des figures vues d'en bas flottent parmi les \
+nuages. Sa palette claire, ses couleurs pâles et dorées, ses mises en scène théâtrales \
+prolongent l'art de Véronèse. Avec lui s'achève la grande peinture d'histoire \
+vénitienne, juste avant le triomphe du néoclassicisme."""
+
+[[artistes]]
+nom = "Rosalba Carriera"
+vie = "Venise, 1673 – Venise, 15 avril 1757"
+biographie = """
+Fille d'un employé de la République et d'une dentellière, Rosalba Carriera commence \
+par dessiner des modèles de dentelle, puis peint des miniatures pour les couvercles de \
+tabatières, souvent sur ivoire. Au début du XVIIIᵉ siècle, elle se tourne vers le \
+pastel et devient vite célèbre : l'Académie de Saint-Luc de Rome l'admet parmi ses \
+membres. Les voyageurs du Grand Tour, les princes et les souverains de passage à \
+Venise se font portraiturer par elle ; le prince électeur de Saxe, futur Auguste III, \
+collectionne ses œuvres. En 1720-1721, elle séjourne à Paris chez le banquier et \
+collectionneur Pierre Crozat ; elle y peint le jeune Louis XV et rencontre Antoine \
+Watteau, dont elle fait le portrait. L'Académie royale de peinture la reçoit par \
+acclamation. En 1730, elle travaille à Vienne pour l'empereur Charles VI. Elle vit à \
+Venise avec ses sœurs, Giovanna, qui l'assiste, et Angela, épouse du peintre Giovanni \
+Antonio Pellegrini. Atteinte de la cataracte, opérée sans succès, elle perd la vue et \
+meurt en 1757."""
+style = """
+Rosalba Carriera a fait du pastel, jusque-là technique d'esquisse, un art de premier \
+rang. Ses portraits, d'une douceur vaporeuse, rendent la peau, la poudre, les \
+dentelles et les fourrures avec une légèreté nouvelle. Son séjour parisien a lancé la \
+mode du portrait au pastel en France, où Maurice Quentin de La Tour et Jean-Baptiste \
+Perronneau ont suivi son exemple."""
+
+[[artistes]]
+nom = "Bernardo Bellotto"
+vie = "Venise, vers 1721 – Varsovie, 17 novembre 1780"
+biographie = """
+Fils d'une sœur de Canaletto, Bernardo Bellotto entre très jeune dans l'atelier de son \
+oncle, où il apprend la veduta, la vue de ville, et la gravure. En 1742, il part pour \
+Rome, puis peint des vues de villes du nord de l'Italie, comme Vérone et Turin. En \
+1747, il s'installe à Dresde, à l'invitation de l'électeur de Saxe Auguste III, qui le \
+nomme peintre de la cour. Il y peint pendant dix ans de grandes vues de la ville et de \
+ses environs. La guerre de Sept Ans l'oblige à partir : il travaille à Vienne pour \
+l'impératrice Marie-Thérèse, puis à Munich. Revenu à Dresde, il trouve une ville \
+dévastée par les bombardements prussiens de 1760. Après la mort d'Auguste III, il \
+gagne Varsovie, où le roi Stanislas Auguste Poniatowski en fait son peintre de cour. \
+Il y peint plus de vingt vues de la ville et meurt à Varsovie en 1780."""
+style = """
+Bellotto pousse la veduta vers l'exactitude : vues très larges, architecture décrite \
+pierre à pierre, lumière froide et ombres nettes. Moins brillant que son oncle, plus \
+grave, il peint aussi les villes d'Europe centrale. Ses vues de Varsovie ont servi à \
+reconstruire la vieille ville, détruite pendant la Seconde Guerre mondiale."""
+
+[[artistes]]
+nom = "Pietro Longhi"
+vie = "Venise, 5 novembre 1701 – Venise, 8 mai 1785"
+biographie = """
+Pietro Falca, fils d'un orfèvre vénitien, prend le nom de Longhi lorsqu'il devient \
+peintre. Il se forme à Vérone auprès d'Antonio Balestra, puis à Bologne auprès de \
+Giuseppe Maria Crespi, peintre de scènes de la vie quotidienne. Ses débuts sont ceux \
+d'un peintre d'histoire : en 1734, il peint à fresque la Chute des Géants dans \
+l'escalier du palais Sagredo, à Venise. Mais vers 1740, il trouve sa voie avec de \
+petits tableaux qui montrent la vie des patriciens vénitiens : la leçon de danse, le \
+concert, la toilette, la visite, le ridotto où l'on joue masqué. Ces scènes plaisent à \
+la noblesse de la ville, qui s'y reconnaît. Le dramaturge Carlo Goldoni, qui peignait \
+au théâtre la même société, salue son talent dans un poème. Longhi participe à la vie \
+de l'Académie de Venise et dirige à partir de 1763 une école de dessin. Son fils \
+Alessandro devient un portraitiste réputé."""
+style = """
+Longhi est le chroniqueur de la Venise du XVIIIᵉ siècle : petits formats, figures un \
+peu raides comme des poupées, couleurs douces, intérieurs paisibles. Sans la satire \
+mordante de son contemporain anglais William Hogarth, il observe avec une ironie \
+légère les rites d'une aristocratie qui se divertit. Ses tableaux sont aujourd'hui une \
+source précieuse sur les costumes, les masques et les intérieurs de son temps."""
+
+[[artistes]]
+nom = "Francesco Guardi"
+vie = "Venise, 5 octobre 1712 – Venise, 1ᵉʳ janvier 1793"
+biographie = """
+Francesco Guardi naît à Venise dans une famille de peintres originaire du Trentin. À \
+la mort de leur père, Domenico, en 1716, l'atelier familial passe à ses frères aînés, \
+et surtout à Gian Antonio, avec qui Francesco peint pendant des années des tableaux \
+religieux et des copies. Leur sœur Maria Cecilia épouse en 1719 Giambattista Tiepolo. \
+Après la mort de Gian Antonio, en 1760, Francesco se consacre aux vues de Venise et \
+aux caprices, paysages imaginaires faits de ruines et de lagunes. Il travaille pour \
+les voyageurs étrangers et pour des amateurs vénitiens, dans le sillage de Canaletto, \
+mais avec une manière de plus en plus libre. En 1782, il est chargé de peindre les \
+fêtes offertes à Venise au pape Pie VI et aux grands-ducs de Russie. Il n'est admis \
+que tardivement à l'Académie, comme peintre de perspective. Il meurt à Venise au tout \
+début de 1793 ; son fils Giacomo continue à vendre des vues de la ville."""
+style = """
+Guardi peint une Venise vibrante et mouvante, faite de touches rapides, de reflets et \
+de silhouettes esquissées, sous des ciels gris et argentés. Moins exact que Canaletto, \
+il saisit l'atmosphère plus que l'architecture. Méconnu de son vivant, il a été admiré \
+au XIXᵉ siècle, et l'on a vu en lui un lointain précurseur des impressionnistes."""
