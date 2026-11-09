@@ -261,6 +261,18 @@ ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (i
 - Le service worker est généré en Rust par Paquets (pas une ligne de JavaScript écrite à la main) : les pages viennent du réseau d'abord, et de la copie gardée hors ligne ; les images, les données des expositions et les îlots 3D, du cache d'abord, mis à jour en arrière-plan ; une page jamais visitée hors ligne ouvre l'accueil. Chaque déploiement installe une nouvelle version, qui remplace les anciennes copies.
 - L'export pour GitHub Pages écrit le manifeste et le service worker avec le préfixe du site (`/ARTEON`) ; sur Heroku, ils sont servis à la racine.
 
+## L'application iPad (Flutter)
+
+[`flutter/`](flutter/) est l'application native d'ARTEON pour iPad (et iPhone, Android) :
+les expositions, les œuvres avec leur notice complète (image à gauche, texte à droite sur
+iPad), l'image en grand, la recherche dans tout le musée, les favoris, le catalogue gardé
+hors ligne, et la galerie 3D du site en plein écran. Elle lit `catalogue.json`, que le site
+publie (`src/catalogue.rs`) : une exposition ajoutée au site y apparaît d'elle-même.
+
+Elle se construit sur un Mac de GitHub ([`ipad.yml`](.github/workflows/ipad.yml)) et part
+sur TestFlight quand les clés d'Apple sont réglées (compte Apple Developer) : tout se fait
+depuis un téléphone, voir [flutter/README.md](flutter/README.md).
+
 ## Déployer sur Heroku depuis un téléphone
 
 Tout se fait depuis le navigateur du téléphone, avec le [buildpack emk/rust](https://elements.heroku.com/buildpacks/emk/heroku-buildpack-rust) :

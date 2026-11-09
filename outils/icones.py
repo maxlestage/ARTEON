@@ -6,7 +6,9 @@ et une petite étoile sur un ciel bleu nuit (voir `.logo-mark` dans src/style.rs
 
 - icon-192.png, icon-512.png : coins arrondis, fond transparent autour ;
 - icon-maskable-512.png : tout le carré peint, le dessin dans la zone sûre (80 %) ;
-- apple-touch-icon.png (180) : carré plein, iOS arrondit lui-même.
+- apple-touch-icon.png (180) : carré plein, iOS arrondit lui-même ;
+- les icônes de l'application iPad (flutter/ios, carrées et pleines, sans transparence)
+  et Android (flutter/android, mipmap-*).
 """
 
 from pathlib import Path
@@ -80,6 +82,27 @@ def main():
     dessin(grand).convert("RGB").resize((180, 180), Image.LANCZOS).save(SORTIE / "apple-touch-icon.png", optimize=True)
     arrondi(dessin(grand), grand * 7 // 28).resize((32, 32), Image.LANCZOS).save(SORTIE / "favicon-32.png", optimize=True)
     print("icônes écrites dans", SORTIE)
+    icones_flutter(dessin(grand).convert("RGB"))
+
+
+def icones_flutter(carre):
+    """Les icônes de l'application Flutter : toutes les tailles de l'AppIcon iOS (sans
+    transparence, comme l'exige l'App Store) et les mipmaps Android."""
+    import json
+
+    ios = RACINE / "flutter" / "ios" / "Runner" / "Assets.xcassets" / "AppIcon.appiconset"
+    if ios.is_dir():
+        for image in json.loads((ios / "Contents.json").read_text())["images"]:
+            cote = float(image["size"].split("x")[0]) * int(image["scale"].rstrip("x"))
+            carre.resize((round(cote), round(cote)), Image.LANCZOS).save(ios / image["filename"], optimize=True)
+        print("icônes iOS écrites dans", ios)
+    android = RACINE / "flutter" / "android" / "app" / "src" / "main" / "res"
+    for dossier, cote in (("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)):
+        cible = android / f"mipmap-{dossier}"
+        if cible.is_dir():
+            arrondi(dessin(1024), 1024 * 7 // 28).resize((cote, cote), Image.LANCZOS).save(
+                cible / "ic_launcher.png", optimize=True
+            )
 
 
 if __name__ == "__main__":

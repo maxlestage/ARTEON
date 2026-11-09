@@ -108,6 +108,9 @@ jobs:
           grep -q '"start_url":"/ARTEON/"' dist/manifest.webmanifest || { echo "manifeste sans le préfixe"; cat dist/manifest.webmanifest; exit 1; }
           grep -q '"/ARTEON/pkg/arteon_bg.wasm"' dist/sw.js || { echo "service worker sans le préfixe"; exit 1; }
           grep -q 'register("/ARTEON/sw.js")' dist/index.html || { echo "service worker non inscrit"; exit 1; }
+          # Le catalogue de l'application iPad : toutes les expositions, chemins relatifs.
+          python3 -c "import json,sys; d=json.load(open('dist/catalogue.json')); n=len(d['exhibitions']); w=sum(len(e['works']) for e in d['exhibitions']); print(n, 'expositions,', w, 'œuvres'); sys.exit(0 if n and d['version']==1 and all(not x['image'].startswith('/') for e in d['exhibitions'] for x in e['works']) else 1)" \
+            || { echo "catalogue.json invalide"; exit 1; }
           # Chaque exposition a ses trois pages, sa scène 3D et toutes ses images.
           for toml in expositions/*.toml; do
             slug=$(basename "$toml" .toml)

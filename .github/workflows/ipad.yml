@@ -1,0 +1,123 @@
+# L'application iPad (Flutter, dans flutter/) : vérifiée à chaque push qui la touche,
+# construite pour iOS sur un Mac de GitHub, et envoyée sur TestFlight quand les clés
+# d'Apple sont là. Tout se règle et se lance depuis un téléphone.
+#
+# Pour l'installer sur l'iPad (compte Apple Developer, 99 € par an) :
+#   1. App Store Connect → Apps → « + » → Nouvelle app : plateforme iOS, nom ARTEON,
+#      identifiant de bundle com.maxlestage.arteon (le créer dans Certificates, IDs &
+#      Profiles → Identifiers s'il n'est pas proposé).
+#   2. App Store Connect → Users and Access → Integrations → App Store Connect API →
+#      « + » : rôle Admin (pour que Xcode crée lui-même certificats et profils). Noter
+#      l'Issuer ID et le Key ID, télécharger le fichier .p8.
+#   3. GitHub → Settings → Secrets and variables → Actions :
+#      - secrets  APP_STORE_CONNECT_KEY (le contenu du .p8), APP_STORE_CONNECT_KEY_ID,
+#                 APP_STORE_CONNECT_ISSUER_ID
+#      - variable APPLE_TEAM_ID (Membership details sur developer.apple.com)
+#   4. Actions → Application iPad → Run workflow. La version arrive dans TestFlight
+#      (l'app TestFlight sur l'iPad) après le traitement d'Apple, une dizaine de minutes.
+# Sans ces secrets, l'application est seulement construite (sans signature), pour vérifier.
+
+name: Application iPad
+
+on:
+  push:
+    paths:
+      - "flutter/**"
+      - ".github/workflows/ipad.yml"
+  workflow_dispatch:
+    inputs:
+      testflight:
+        description: "Envoyer sur TestFlight (si les clés d'Apple sont réglées)"
+        type: boolean
+        default: true
+
+concurrency:
+  group: ipad-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: "3.47.9"
+
+jobs:
+  check:
+    name: Analyse et tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: flutter
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed lib test
+      - run: flutter analyze
+      - run: flutter test
+
+  ios:
+    name: iOS (iPad et iPhone)
+    needs: check
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: flutter
+    env:
+      KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
+      KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+
+      - name: Construire sans signature (vérification)
+        run: flutter build ios --release --no-codesign --build-number "${{ github.run_number }}"
+
+      - name: Signer et envoyer sur TestFlight
+        if: >-
+          (github.event_name == 'workflow_dispatch' && inputs.testflight) ||
+          (github.event_name == 'push' && github.ref_name == github.event.repository.default_branch)
+        run: |
+          set -euo pipefail
+          if [ -z "${KEY:-}" ] || [ -z "${KEY_ID:-}" ] || [ -z "${ISSUER_ID:-}" ] || [ -z "${TEAM_ID:-}" ]; then
+            echo "::notice::TestFlight n'est pas réglé : ajoutez les secrets APP_STORE_CONNECT_KEY, APP_STORE_CONNECT_KEY_ID, APP_STORE_CONNECT_ISSUER_ID et la variable APPLE_TEAM_ID (voir l'en-tête de ce workflow)."
+            exit 0
+          fi
+          key="$RUNNER_TEMP/AuthKey_$KEY_ID.p8"
+          printf '%s' "$KEY" > "$key"
+          auth=(-allowProvisioningUpdates
+                -authenticationKeyPath "$key"
+                -authenticationKeyID "$KEY_ID"
+                -authenticationKeyIssuerID "$ISSUER_ID")
+
+          # Le projet Xcode à jour (pods, numéro de version), puis l'archive signée par Xcode
+          # (signature automatique : il crée certificat et profil avec la clé d'API).
+          flutter build ios --config-only --release --build-number "${{ github.run_number }}"
+          xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/Runner.xcarchive" \
+            "${auth[@]}" DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic archive
+
+          # L'export envoie directement l'application à App Store Connect (TestFlight).
+          cat > "$RUNNER_TEMP/export.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>uploadSymbols</key><true/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/Runner.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/export.plist" -exportPath "$RUNNER_TEMP/export" "${auth[@]}"
+          rm -f "$key"
+          echo "### 📲 ARTEON ${{ github.run_number }} envoyée sur TestFlight" >> "$GITHUB_STEP_SUMMARY"
