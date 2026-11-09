@@ -1,0 +1,1218 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « AFFICHES, GRAVURE ET BANDE DESSINÉE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/affiches-illustration/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /affiches-illustration.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 158
+nom_court = "Affiches et BD"
+mouvement = "Affiches, gravure et bande dessinée"
+cadre = "estampe"
+couleur = "#a3352b"
+titre = "L'image imprimée, de la gravure à l'affiche et à la bande dessinée"
+artiste = "Hogarth, Goya, Hokusai, Töpffer, Tenniel, Doré, Chéret, Steinlen, McCay…"
+dates = "1751–1916"
+accroche = "Exposition virtuelle · Bibliothèque Forney, hôtel de Sens, Paris"
+introduction = """
+Avant le cinéma et la télévision, la grande image populaire est imprimée : gravure \
+vendue un shilling, livre illustré, page de journal du dimanche, affiche collée sur \
+les murs de la ville. La visite suit cette histoire de 1751 à 1916, des satires \
+gravées de Hogarth et de Goya aux affiches de Chéret, de Steinlen et de Cappiello, en \
+passant par les carnets de Hokusai, les premières histoires en images de Töpffer, \
+l'Alice de Tenniel et le Little Nemo de Winsor McCay. Le bâtiment s'inspire de l'hôtel \
+de Sens, demeure gothique du Marais à Paris qui abrite la bibliothèque Forney et sa \
+collection d'affiches : un porche, une grande salle, une tour carrée, une bibliothèque \
+et un cabinet. Les estampes et les pages de livres, souvent petites, y sont présentées \
+agrandies."""
+vitrine = "tournee-chat-noir.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Hôtel de Sens · Bibliothèque Forney"
+ville = "Paris, France"
+construction = "Fin du XVᵉ et début du XVIᵉ siècle ; bibliothèque Forney depuis 1961"
+presentation = """
+Jusqu'en 1622, Paris dépend de l'archevêché de Sens, en Bourgogne. Pour loger ses \
+archevêques lors de leurs séjours dans la capitale, l'archevêque Tristan de Salazar \
+fait bâtir, à partir de la fin du XVᵉ siècle, cet hôtel au bord du Marais, près de la \
+Seine. C'est l'une des rares grandes demeures médiévales conservées à Paris : un \
+porche en arc brisé entre deux tourelles, des toits pentus, des lucarnes ouvragées, \
+une tour carrée qui abrite l'escalier à vis. La reine Margot y habite en 1605 et 1606. \
+Plus tard occupé par des artisans et des commerces, l'édifice est acheté par la Ville \
+de Paris en 1911 et longuement restauré. Depuis 1961, il abrite la bibliothèque \
+Forney, fondée en 1886 grâce au legs de l'industriel Samuel-Aimé Forney pour les \
+artisans du faubourg Saint-Antoine. Consacrée aux arts décoratifs, aux métiers d'art \
+et aux arts graphiques, elle conserve l'une des plus importantes collections publiques \
+d'affiches en France. Sur la façade, un boulet de canon reste encastré, avec la date \
+du 28 juillet 1830."""
+ici = """
+Le bâtiment d'ARTEON emprunte à l'hôtel de Sens son porche, sa tour carrée et ses murs \
+de pierre claire. On entre par le sud dans « Le porche », qui ouvre sur « La grande \
+salle · L'affiche », longue de seize mètres et haute de huit, où les affiches se font \
+face sur les murs nord et sud. À l'ouest, « La tour · Satire et cauchemars », carrée \
+et haute de neuf mètres, réunit les gravures. Au nord, « La bibliothèque · Le livre \
+illustré » ; à l'est, « Le cabinet · La ligne et la case », plus bas et plus intime, \
+termine la visite."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de l'hôtel de Sens, à Paris, siège de la bibliothèque Forney : on entre
+# par un porche gothique dans une grande salle haute, qui distribue la tour carrée
+# de l'escalier à l'ouest, la bibliothèque au nord et un petit cabinet à l'est. Les
+# murs sont couleur de pierre et de papier ancien. x et z : le centre de la salle
+# (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le porche"
+theme = "L'entrée, sous un arc de pierre, comme le porche gothique de l'hôtel de Sens flanqué de ses deux tourelles."
+murs = "#e9e0cf"
+x = 0
+z = 0
+largeur = 8
+profondeur = 6
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La grande salle · L'affiche"
+theme = "1889–1916 : la rue devient une galerie, du Moulin Rouge de Chéret au Chat Noir de Steinlen, du pierrot de Cappiello au poilu de la Grande Guerre."
+murs = "#efe2c6"
+x = 0
+z = -10
+largeur = 16
+profondeur = 14
+hauteur = 8
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La tour · Satire et cauchemars"
+theme = "1751–1816 : la gravure qui dénonce, qui hante et qui observe, de Hogarth à Goya et aux carnets de Hokusai."
+murs = "#e4d8c4"
+x = -13
+z = -10
+largeur = 10
+profondeur = 10
+hauteur = 9
+
+[[salles]]
+nom = "La bibliothèque · Le livre illustré"
+theme = "1833–1872 : les premières histoires en images de Töpffer, l'Alice de Tenniel et le Londres de Gustave Doré."
+murs = "#ebdfc8"
+x = 0
+z = -23
+largeur = 13
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Le cabinet · La ligne et la case"
+theme = "1894–1907 : le noir et blanc absolu de Beardsley et la page de bande dessinée de Winsor McCay."
+murs = "#ece4d6"
+x = 13
+z = -10
+largeur = 10
+profondeur = 10
+hauteur = 5.5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Gin Lane (La Ruelle du gin)"
+artiste = "William Hogarth"
+annee = "1751"
+image = "gin-lane.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:William_Hogarth,_Gin_Lane,_1751,_NGA_30433.jpg"
+technique = "Eau-forte et burin sur papier"
+collection = "National Gallery of Art, Washington (collection Rosenwald)"
+note = "Dans une rue misérable de Londres, le gin détruit tout : une mère ivre laisse tomber son enfant, les maisons s'effondrent, seul le prêteur sur gages prospère."
+description = """
+La gravure montre une rue de Londres en ruine, vue d'en haut. Au premier plan, assise \
+sur des marches, une femme hébétée, les jambes couvertes de plaies, prise une pincée \
+de tabac pendant que son bébé glisse de ses bras et tombe dans la cage d'escalier \
+d'une cave. En bas à droite, un colporteur squelettique, endormi contre le mur, tient \
+encore un verre ; dans son panier dépasse un pamphlet contre le gin. À gauche, devant \
+la boutique du prêteur sur gages, un menuisier et une ménagère viennent engager leur \
+scie et leurs casseroles. Au fond, la rue se défait : une maison s'écroule, un barbier \
+s'est pendu sous les combles, un fou gesticule, un enfant embroché au bout d'une \
+pique, et l'on dépose une morte dans un cercueil. Au-dessus des toits se dresse un \
+clocher. Sous l'image, trois strophes en anglais maudissent le gin."""
+evocation = """
+Hogarth oppose Gin Lane à une autre planche, Beer Street, la Rue de la bière, où des \
+Londoniens bien nourris boivent de la bière anglaise, travaillent et prospèrent. Ici, \
+au contraire, le gin bon marché ruine les corps, les familles et la ville elle-même : \
+seuls l'usurier, le distillateur et le croque-mort font des affaires. La mère indigne \
+du centre a été rapprochée d'un fait divers qui avait choqué Londres en 1734 : une \
+femme, Judith Defour, avait étranglé sa petite fille pour revendre ses vêtements et \
+acheter du gin. Le clocher de l'église St George de Bloomsbury semble regarder la \
+scène de loin, impuissant. On y a vu un sermon en images, mais aussi un document sur \
+la misère du quartier de St Giles, l'un des plus pauvres de la ville. L'horreur s'y \
+mêle à un humour noir qui fait encore son efficacité."""
+histoire = """
+Dans la première moitié du XVIIIᵉ siècle, Londres connaît ce qu'on a appelé la « folie \
+du gin » : l'alcool de grain, distillé partout et vendu pour quelques sous, provoque \
+misère, crimes et morts. En 1751, le Parlement prépare une loi pour en limiter la \
+vente. Hogarth publie alors, le 1ᵉʳ février, Gin Lane et Beer Street, suivies la même \
+année des Quatre Étapes de la cruauté. Son ami l'écrivain et magistrat Henry Fielding \
+vient de publier un essai sur l'augmentation des vols, qui accuse lui aussi le gin. \
+Les vers gravés sous l'image sont du pasteur James Townley. Pour toucher un public \
+populaire, Hogarth vend ces estampes un shilling pièce. La loi sur le gin est votée la \
+même année, et la consommation recule dans les années suivantes. Ce tirage appartient \
+à la National Gallery of Art de Washington."""
+facture = """
+Hogarth, formé à la gravure sur argent, grave lui-même la plaque de cuivre en mêlant \
+l'eau-forte, pour la liberté du dessin, et le burin, pour les tailles nettes et \
+régulières. Il annonçait avoir publié ces planches de la manière la moins coûteuse \
+possible, pour un public populaire : traits appuyés, contrastes francs, personnages \
+expressifs jusqu'à la caricature. La composition, construite en perspective profonde, \
+conduit l'œil du premier plan, où tout tombe, vers le fond, où tout s'écroule. Les \
+écriteaux, les enseignes et les vers gravés sous l'image font partie du récit, à lire \
+comme les légendes d'une bande dessinée."""
+details = [
+  "L'écriteau au-dessus de la cave, en bas à gauche : ivre pour un penny, ivre mort pour deux, la paille pour rien.",
+  "L'enseigne du prêteur sur gages, S. Gripe, dont le nom évoque l'avidité.",
+  "Le barbier pendu sous les combles de la maison en ruine, en haut à droite.",
+  "Le clocher surmonté d'une statue du roi George Iᵉʳ, au fond.",
+  "Le prix, « Price 1s », gravé tout en bas à droite.",
+]
+themes = ["satire", "alcool", "londres", "misère", "morale"]
+anecdote = """
+Ses estampes à succès étant aussitôt copiées et vendues moins cher, Hogarth obtint du \
+Parlement, en 1735, une loi surnommée « Hogarth's Act », qui protégeait pour la \
+première fois en Angleterre les graveurs contre les contrefaçons de leurs œuvres."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Le sommeil de la raison engendre des monstres (Caprices, planche 43)"
+artiste = "Francisco de Goya"
+annee = "1799"
+image = "sommeil-raison.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Francisco_José_de_Goya_y_Lucientes_-_The_sleep_of_reason_produces_monsters_(No._43),_from_Los_Caprichos_-_Google_Art_Project.jpg"
+technique = "Eau-forte et aquatinte, environ 21,5 × 15 cm"
+collection = "Nelson-Atkins Museum of Art, Kansas City (première édition)"
+note = "Un homme s'est endormi sur sa table de travail ; derrière lui surgissent hiboux, chauves-souris et un lynx : la planche la plus célèbre des Caprices."
+description = """
+Un homme vêtu à la mode de la fin du XVIIIᵉ siècle s'est effondré sur une table, la \
+tête enfouie dans ses bras. Près de lui traînent des feuilles et un porte-crayon. \
+Derrière son dos, une nuée de créatures nocturnes se lève de l'obscurité : des hiboux \
+et des chouettes aux yeux ronds, dont l'un semble lui tendre un crayon, des \
+chauves-souris qui s'envolent vers le haut de l'image, un chat noir tapi dont on ne \
+voit que les yeux. À droite, couché sur le sol, un lynx aux oreilles pointues fixe le \
+dormeur sans bouger. Sur le flanc de la table, des lettres claires donnent le titre : \
+El sueño de la razón produce monstruos. Le fond, d'un gris granuleux, s'assombrit à \
+mesure que les bêtes se multiplient, jusqu'aux silhouettes noires qui se perdent dans \
+le ciel."""
+evocation = """
+En espagnol, sueño signifie à la fois le sommeil et le rêve : la raison qui dort, ou \
+la raison qui rêve. Les historiens y voient d'abord un manifeste des Lumières, que \
+Goya partageait avec ses amis réformateurs : quand la raison s'assoupit, les \
+superstitions, l'ignorance et les vices, figurés par les oiseaux de nuit, reprennent \
+le dessus. Un commentaire manuscrit ancien, conservé au Prado, explique que \
+l'imagination abandonnée par la raison produit des monstres impossibles, mais qu'unie \
+à elle, elle est la mère des arts. La planche peut donc se lire aussi comme un \
+portrait de l'artiste, assailli par les visions qui nourrissent son œuvre. Le lynx, \
+animal à la vue perçante, reste éveillé quand l'homme dort. Deux siècles plus tard, \
+l'image est devenue l'emblème même du cauchemar."""
+histoire = """
+Goya travaille aux Caprices à partir de 1797, quelques années après la grave maladie \
+qui l'a laissé sourd. Cette planche devait d'abord ouvrir le recueil : un dessin \
+préparatoire, conservé au musée du Prado, montre le même dormeur avec une inscription \
+qui le présente comme l'auteur en train de rêver. Dans la version définitive, elle \
+prend place au milieu de la série, au numéro 43, et c'est un autoportrait de Goya, de \
+profil, qui ouvre les quatre-vingts planches. Le 6 février 1799, le Diario de Madrid \
+annonce la mise en vente des Caprices dans une boutique de parfums et de liqueurs de \
+la rue du Desengaño, au rez-de-chaussée de la maison du peintre. La vente cesse au \
+bout de quelques jours, sans doute par crainte de l'Inquisition. En 1803, Goya cède \
+les cuivres et les exemplaires invendus au roi, en échange d'une pension pour son \
+fils."""
+facture = """
+Goya combine deux techniques de gravure en creux sur cuivre. L'eau-forte lui permet de \
+dessiner librement à la pointe dans un vernis, comme avec une plume : contours de \
+l'homme, plumes des hiboux, ailes des chauves-souris. L'aquatinte, une résine fine \
+saupoudrée sur la plaque puis mordue à l'acide, crée les fonds gris d'aspect granuleux \
+et les nuances d'ombre, comme un lavis. En protégeant certaines zones de l'acide, il \
+fait surgir le titre en lettres claires sur la table et les ailes blanches du hibou \
+central. Les tirages de la première édition, comme celui-ci, gardent un grain fin et \
+des gris profonds."""
+details = [
+  "Le hibou qui tend un porte-crayon au dormeur, comme pour l'obliger à dessiner.",
+  "Les yeux brillants d'un chat noir, tapi juste derrière le dos de l'homme.",
+  "Le lynx couché à droite, seul animal à rester immobile.",
+  "Le titre gravé en lettres claires sur le côté de la table.",
+  "Les chauves-souris qui se perdent dans le gris du ciel, en haut.",
+]
+themes = ["rêve", "raison", "lumières", "cauchemar", "satire"]
+anecdote = """
+Les cuivres originaux des Caprices existent toujours. Entrés dans les collections \
+royales en 1803, ils sont conservés à la Calcografía Nacional, à Madrid, qui en a tiré \
+de nombreuses éditions posthumes jusqu'au XXᵉ siècle."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Les Baigneurs, double page de la Hokusai manga (tome IV)"
+artiste = "Katsushika Hokusai"
+annee = "1816"
+image = "hokusai-manga.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Hokusai-MangaBathingPeople.jpg"
+technique = "Gravure sur bois imprimée en noir et en gris, double page d'un livre"
+collection = "Hokusai manga, tome IV ; exemplaires dans de nombreux musées"
+note = "Nageurs, plongeurs, un cavalier dans l'eau : une page des carnets de Hokusai, encyclopédie dessinée de la vie japonaise publiée en quinze volumes."
+description = """
+Sur deux pages qui se font face, une vingtaine de baigneurs s'ébattent dans une eau \
+figurée par de fines lignes ondulées. À gauche, un homme grimpe le long d'un grand \
+poteau, d'autres plongent la tête la première ou se débattent, et, en bas, un cavalier \
+traverse à la nage, couché sur l'encolure de son cheval qui tend les jambes. À droite, \
+les nageurs prennent toutes les postures : l'un flotte avec un grand anneau autour du \
+corps, un autre porte un gros ballot sur l'épaule, d'autres se retournent, plongent ou \
+semblent marcher au fond de l'eau, parmi des plantes aquatiques, de petites tortues et \
+des poissons noirs. Les corps, à peine vêtus d'un pagne, sont saisis en plein \
+mouvement, sans décor ni paysage. En haut à droite, quelques caractères donnent le \
+sujet de la page."""
+evocation = """
+Le mot manga, que Hokusai choisit pour ces volumes, signifie à peu près « dessins au \
+fil du pinceau » ou « croquis divers ». Il ne désigne pas encore la bande dessinée \
+japonaise, même si celle-ci lui a emprunté son nom au XXᵉ siècle. Ces pages sont \
+d'abord des modèles : des répertoires de formes destinés aux élèves et aux artisans, \
+qui pouvaient y copier un geste, un animal ou un outil. Mais on y sent surtout la \
+curiosité insatiable de Hokusai pour le corps humain en mouvement, et son humour : les \
+nageurs ont des mines concentrées, effrayées ou béates. La double page fonctionne \
+comme une planche d'étude, presque une décomposition du mouvement, bien avant la \
+photographie. On y a reconnu des techniques de nage pratiquées au Japon à l'époque \
+d'Edo, y compris par les guerriers."""
+histoire = """
+Lors d'un séjour à Nagoya, en 1812, Hokusai réalise pour ses élèves des centaines de \
+croquis. Un éditeur de la ville en tire un premier volume, publié en 1814, dont le \
+succès est tel que la série se poursuit : ce tome IV paraît en 1816. Les douze \
+premiers volumes sortent entre 1814 et 1834 ; les trois derniers, composés en partie \
+de dessins restés inédits, paraissent beaucoup plus tard, le quinzième en 1878, près \
+de trente ans après la mort de l'artiste. L'ensemble rassemble des milliers de figures \
+: gens de métier, dieux, animaux, plantes, paysages, fantômes. Imprimés en nombre et \
+vendus à prix modéré, les volumes circulent dans tout le Japon. Au XIXᵉ siècle, ils \
+gagnent l'Europe, où les artistes les découvrent avec passion : la Manga devient l'un \
+des livres japonais les plus admirés à Paris, au temps du japonisme."""
+facture = """
+Chaque page est une gravure sur bois : Hokusai dessine au pinceau sur un papier fin, \
+que le graveur colle à l'envers sur une planche de cerisier avant de tailler le bois \
+autour des traits. Une seconde planche imprime les aplats gris, ici l'eau et quelques \
+ombres. Le trait est rapide, souple, d'une grande économie : quelques courbes \
+suffisent pour un dos qui se cambre ou une jambe qui bat l'eau. Les figures sont \
+dispersées sur la page sans cadre ni sol, comme sur une feuille de croquis, et l'œil \
+passe librement de l'une à l'autre. L'eau, rendue par des lignes ondulées parallèles, \
+unifie l'ensemble."""
+details = [
+  "Le cavalier allongé sur son cheval, qui nage les jambes tendues, en bas à gauche.",
+  "Le baigneur qui grimpe le long du grand poteau, à gauche.",
+  "Les petites tortues et les poissons noirs, en bas à droite.",
+  "Le nageur qui flotte avec un grand anneau autour du corps, en haut à droite.",
+]
+themes = ["corps", "mouvement", "eau", "japon", "croquis", "manga"]
+anecdote = """
+Selon un récit célèbre mais discuté, le graveur Félix Bracquemond aurait découvert un \
+volume de la Manga en 1856, chez son imprimeur parisien, où il avait servi à emballer \
+des porcelaines venues du Japon. Il l'aurait ensuite montré avec enthousiasme à ses \
+amis artistes."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Histoire de Monsieur Jabot, une planche"
+artiste = "Rodolphe Töpffer"
+annee = "1833"
+image = "histoire-de-m-jabot.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Histoire_de_Mr_Jabot_-_par_Rodolphe_Töpffer_-_btv1b8529023n_(44_of_70).jpg"
+technique = "Autographie (lithographie d'après un dessin à la plume), album oblong d'environ 16 × 25 cm"
+collection = "Bibliothèque nationale de France, Paris"
+note = "Trois cases, trois légendes : Monsieur Jabot, qui veut entrer dans le grand monde, aux prises avec ses chiens. L'un des tout premiers albums de bande dessinée."
+description = """
+La page est divisée en trois cases rectangulaires, tracées à la plume, avec sous \
+chacune une légende manuscrite. Dans la première, Monsieur Jabot, chapeau envolé, \
+jambes maigres en équerre, se débat au milieu de trois petits chiens qui lui sautent \
+dessus ; la légende explique que les chiens sont si gentils qu'il les trouve presque \
+trop familiers. Dans la deuxième, il n'est plus là : les trois chiens, attachés au \
+pied de son lit à l'hôtel, attendent, couchés près d'une chaise. Dans la troisième, \
+coiffé d'un chapeau haut et droit, il tend des cartes de visite à un domestique raide \
+devant une porte : il porte quinze cartes chez Monsieur du Bocage, dit la légende, la \
+famille se composant de quinze personnes. Le trait est rapide, presque griffonné, et \
+les décors réduits à quelques lignes."""
+evocation = """
+Monsieur Jabot est un bourgeois vaniteux qui rêve d'entrer dans la bonne société et en \
+imite maladroitement les usages : les visites, les bals, les belles manières. Töpffer \
+se moque de lui avec une ironie tendre, en montrant le décalage entre ses prétentions \
+et ses gestes de pantin. Le comique tient ici au rythme : la répétition, l'ellipse \
+entre les cases, la chute de la troisième légende, d'une absurdité très sérieuse. \
+C'est exactement ce que fera plus tard la bande dessinée : faire naître le sens du \
+passage d'une image à l'autre. Töpffer en avait conscience ; il expliquait que ses \
+dessins, sans le texte, n'auraient qu'une signification obscure, et que le texte, sans \
+les dessins, ne signifierait rien. Pour beaucoup d'historiens, c'est la naissance d'un \
+nouveau langage."""
+histoire = """
+Fils d'un peintre genevois, Töpffer dirige à Genève une pension de jeunes garçons. Dès \
+1827, il dessine pour les amuser des histoires en images qu'il ne songe pas à publier. \
+Ses albums manuscrits circulent pourtant et parviennent, vers 1830, jusqu'à Goethe, à \
+Weimar, qui les lit avec enthousiasme et souhaite les voir imprimés. Encouragé, \
+Töpffer publie en 1833 l'Histoire de Monsieur Jabot, la première de ses histoires à \
+paraître, reproduite chez l'imprimeur genevois Freydig. Suivent Monsieur Crépin et \
+Monsieur Vieux Bois en 1837, puis Monsieur Pencil et le Docteur Festus. Le succès \
+dépasse vite la Suisse : des éditions pirates paraissent à Paris, et les histoires de \
+Töpffer sont copiées et imitées dans toute l'Europe. Cet exemplaire de l'album est \
+conservé au département des Estampes de la Bibliothèque nationale de France."""
+facture = """
+Töpffer dessine à la plume, d'un trait volontairement libre, presque enfantin, qui \
+privilégie l'expression sur l'exactitude. Il utilise l'autographie, une variante de la \
+lithographie : il dessine et écrit à l'encre grasse sur un papier spécial, dont le \
+tracé est ensuite reporté sur la pierre lithographique pour l'impression. Le procédé \
+lui permet de travailler vite et d'écrire lui-même ses légendes, sans passer par un \
+graveur. Les cases, de largeur variable, sont séparées par un simple trait ; le texte, \
+toujours sous l'image, avance au même pas que le dessin. Il a lui-même théorisé cette \
+manière dans son Essai de physiognomonie, en 1845."""
+details = [
+  "Le chapeau qui s'envole au-dessus de la tête de Monsieur Jabot, dans la première case.",
+  "Le monogramme RT de Töpffer, sous la case du milieu.",
+  "Le numéro de la page, 34, en haut à droite.",
+  "Le domestique raide comme un piquet devant la porte, dans la dernière case.",
+]
+themes = ["bande dessinée", "humour", "vanité", "bourgeoisie", "chiens"]
+anecdote = """
+En 1842, Monsieur Vieux Bois, traduit en anglais sous le titre The Adventures of Mr. \
+Obadiah Oldbuck, paraît à New York : on le considère souvent comme la première bande \
+dessinée publiée aux États-Unis."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Le Thé chez les fous (Alice au pays des merveilles)"
+artiste = "John Tenniel"
+annee = "1865"
+image = "the-du-chapelier-fou.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_25.png"
+technique = "Gravure sur bois de bout par les frères Dalziel, d'après le dessin de Tenniel"
+collection = "Alice's Adventures in Wonderland, Macmillan, Londres, 1865"
+note = "Alice, le Lièvre de Mars, le Loir endormi et le Chapelier : l'illustration qui a fixé pour toujours le visage des personnages de Lewis Carroll."
+description = """
+Sous un arbre, devant une maison, une longue table nappée de blanc est couverte de \
+tasses et de soucoupes. À gauche, Alice, ses longs cheveux clairs sur les épaules, est \
+enfoncée dans un grand fauteuil et regarde ses hôtes d'un air boudeur. Au centre, le \
+Lièvre de Mars, en veste et nœud de cravate, a les oreilles dressées. À côté de lui, \
+le Loir, petit rongeur endormi, est coincé entre le Lièvre et le Chapelier, qui \
+s'appuient sur lui comme sur un coussin. Le Chapelier, à droite, porte un immense \
+chapeau haut de forme où une étiquette indique un prix : « In this style 10/6 ». Il a \
+un gros nœud papillon à pois et la main posée près d'une assiette. Une théière décorée \
+trône au milieu de la table. En bas à gauche, le monogramme de l'artiste."""
+evocation = """
+Au chapitre VII du livre, Alice tombe sur un goûter qui ne finit jamais : le Chapelier \
+explique qu'il s'est fâché avec le Temps, et qu'il est désormais toujours six heures, \
+l'heure du thé. On change de place au lieu de laver les tasses, on pose des devinettes \
+sans réponse, on se coupe la parole. Lewis Carroll, professeur de mathématiques à \
+Oxford, s'y moque des règles absurdes de la politesse victorienne et du rituel sacré \
+du thé. On rattache souvent l'expression anglaise « fou comme un chapelier » aux \
+chapeliers intoxiqués par le mercure dont on traitait le feutre, et « fou comme un \
+lièvre de mars » à l'agitation des lièvres au printemps. Le dessin de Tenniel donne à \
+cette folie un air parfaitement sérieux : c'est ce contraste qui fait rire."""
+histoire = """
+Lewis Carroll, de son vrai nom Charles Dodgson, avait d'abord illustré lui-même le \
+manuscrit offert à la petite Alice Liddell. Pour l'édition, il s'adresse à John \
+Tenniel, le célèbre dessinateur de Punch, et suit de près son travail, discutant \
+chaque dessin. Les quarante-deux illustrations sont gravées sur bois par les frères \
+Dalziel. En 1865, Tenniel juge l'impression du premier tirage trop médiocre : Carroll \
+fait rappeler les exemplaires et réimprimer le livre, qui paraît daté de 1866. Il ne \
+subsiste qu'une vingtaine d'exemplaires du tirage retiré. Le succès est immense, et \
+Tenniel illustre aussi la suite, De l'autre côté du miroir, parue fin 1871. Ses images \
+ont depuis été reprises dans d'innombrables éditions et traductions du livre, en \
+anglais et dans toutes les langues."""
+facture = """
+Tenniel dessinait avec une grande précision directement sur le bloc de bois préparé ; \
+les graveurs de l'atelier Dalziel creusaient ensuite le bois autour de chaque trait. \
+La gravure sur bois de bout, taillée dans un bois très dur coupé en travers du tronc, \
+permet des lignes d'une grande finesse, et surtout d'imprimer l'image en même temps \
+que le texte, sur la même page. Tenniel construit l'image comme un dessin de presse : \
+un cadrage serré, des hachures croisées pour les ombres, des personnages campés de \
+profil, aux visages expressifs. Son habitude de la caricature politique se lit dans le \
+Chapelier, aux traits accusés."""
+details = [
+  "L'étiquette du chapeau : « In this style 10/6 », dix shillings et six pence, le prix du modèle.",
+  "Le Loir endormi, coincé entre le Lièvre et le Chapelier.",
+  "La théière du milieu, où les deux compères finiront par essayer de fourrer le Loir.",
+  "Le monogramme de Tenniel, en bas à gauche.",
+]
+themes = ["enfance", "absurde", "thé", "littérature", "nonsense"]
+anecdote = """
+À vingt ans, Tenniel perdit presque entièrement la vue d'un œil lors d'un assaut \
+d'escrime avec son père, dont le fleuret avait perdu sa mouche. Il le cacha longtemps \
+à son père et dessina toute sa carrière avec un seul bon œil."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Londres vu du chemin de fer (Over London – by Rail)"
+artiste = "Gustave Doré"
+annee = "1872"
+image = "londres-chemin-de-fer.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:YCBA_London_a_Pilgrimage_06_(cropped).jpg"
+technique = "Gravure sur bois par Adolphe Pannemaker d'après Gustave Doré, planche du livre London: A Pilgrimage"
+collection = "Yale Center for British Art, New Haven (collection Paul Mellon)"
+note = "Depuis un viaduc, le regard plonge sur les courettes des maisons ouvrières de Londres : l'image la plus célèbre du Londres de Doré."
+description = """
+Le regard est cadré par une arche de brique, comme si l'on se penchait depuis un \
+viaduc de chemin de fer. En dessous s'alignent, à perte de vue, des maisons ouvrières \
+toutes semblables, collées les unes aux autres, avec leurs cheminées de brique et \
+leurs toits de tuile. Chacune a derrière elle une minuscule cour fermée de planches, \
+où se pressent les habitants : femmes assises, enfants, un tonneau, du linge. D'autres \
+se penchent aux fenêtres. Au fond, un autre viaduc à arcades ferme la perspective, et \
+un train y passe en lâchant un panache de fumée qui se mêle au ciel gris. Au premier \
+plan à droite, des souches de cheminées et des toits très sombres. La lumière tombe \
+d'en haut, entre les murs, sur les cours alignées comme des cases."""
+evocation = """
+Doré montre le Londres des pauvres de l'ère industrielle, que le chemin de fer enjambe \
+sans s'arrêter. Les maisons répétées à l'infini, les cours étroites comme des \
+cellules, les gens entassés disent la misère et l'anonymat de la grande ville moderne. \
+Le voyageur du train voit tout et ne partage rien : l'arche qui cadre l'image le place \
+en surplomb, en spectateur. Une partie de la critique anglaise de l'époque reprocha à \
+Doré d'avoir noirci la ville et de l'avoir vue avec des yeux de romantique français ; \
+d'autres y reconnurent une vérité que les Londoniens aisés préféraient ignorer. \
+L'image reste aujourd'hui l'une des plus reproduites du Londres victorien, et l'un des \
+grands témoignages visuels sur la ville industrielle."""
+histoire = """
+En 1868, le journaliste anglais Blanchard Jerrold propose à Doré, alors immensément \
+populaire en Grande-Bretagne, un grand livre sur Londres. Pendant plusieurs séjours, \
+les deux hommes parcourent la ville, des docks aux courses d'Epsom, des salons de \
+l'aristocratie aux asiles de nuit, parfois escortés de policiers dans les quartiers \
+les plus dangereux. Doré prend peu de croquis sur place et compose ensuite ses dessins \
+de mémoire. London: A Pilgrimage paraît en 1872 chez Grant & Co., d'abord en \
+livraisons puis en volume, avec quelque cent quatre-vingts gravures. L'ouvrage coûte \
+cher et l'accueil de la critique est partagé, mais il s'impose comme un témoignage \
+majeur sur la ville victorienne. Cet exemplaire appartient au Yale Center for British \
+Art, à New Haven."""
+facture = """
+Doré dessinait directement sur le bloc de bois, au lavis et au crayon, en tons \
+dégradés plutôt qu'en traits. Les graveurs qui travaillaient pour lui, ici Adolphe \
+Pannemaker, devaient traduire ces gris en un réseau serré de fines tailles parallèles \
+: c'est la gravure dite « de teinte », qui imite la peinture. D'où cette atmosphère de \
+brume et de suie, où le noir domine. La composition joue sur une perspective \
+vertigineuse, une vue plongeante qui fuit vers le viaduc du fond, et sur la répétition \
+presque mécanique des cheminées et des cours. L'arche du premier plan donne au \
+spectateur sa place."""
+details = [
+  "Le train et son panache de fumée, sur le viaduc du fond.",
+  "Les tonneaux et les palissades de planches qui séparent les cours.",
+  "Les habitants accoudés aux fenêtres, sur la gauche.",
+  "La signature de Doré, minuscule, en bas à gauche.",
+]
+themes = ["ville", "londres", "industrie", "misère", "chemin de fer"]
+anecdote = """
+Vincent van Gogh admirait ce livre. En 1890, à l'asile de Saint-Rémy, il peignit \
+d'après une autre de ses gravures, la cour de la prison de Newgate, sa Ronde des \
+prisonniers, aujourd'hui conservée au musée Pouchkine de Moscou."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Bal du Moulin Rouge"
+artiste = "Jules Chéret"
+annee = "1889"
+image = "bal-moulin-rouge.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Bal_au_Moulin_Rouge,_by_Jules_Chéret.jpg"
+technique = "Lithographie en couleurs, affiche imprimée par Chaix, Paris"
+collection = "Hessisches Landesmuseum, Darmstadt"
+note = "L'affiche de l'ouverture du Moulin Rouge, place Blanche, en 1889 : des danseuses rieuses chevauchent des ânes au pied du moulin."
+description = """
+Sur un fond clair, un grand moulin rouge vif, aux ailes de bois, se dresse au centre. \
+Devant lui, une jeune femme blonde en robe jaune décolletée, coiffée d'un chapeau \
+fleuri, chevauche en riant un âne noir ; elle tient les rênes d'une main et un rameau \
+de l'autre. Derrière elle, une autre danseuse, bras levés, ajuste sa coiffure. À \
+gauche, dans des tons gris, bleus et roses, comme pris dans un tourbillon, d'autres \
+femmes passent sur des ânes ou dansent. En haut, de grosses lettres rouges ombrées de \
+bleu forment une arche : Bal du Moulin Rouge, place Blanche. En bas, le programme : \
+tous les soirs et dimanche jour, grande fête les mercredis et samedis. La signature de \
+Chéret est inscrite à gauche, près de la bordure."""
+evocation = """
+Chéret invente ici une image de la fête parisienne qui va durer : une jeune femme \
+libre, rieuse, en mouvement, que l'on appellera bientôt une « chérette ». Elle n'est \
+ni une déesse ni une courtisane, mais une Parisienne en goguette, et son éclat sert à \
+vendre un lieu de plaisir. Les ânes et le moulin rappellent que Montmartre était \
+encore, peu auparavant, un village de moulins et de champs. Tout respire la légèreté \
+du Paris de l'Exposition universelle de 1889, celle de la tour Eiffel. Les critiques \
+aimaient rapprocher les figures volantes et les couleurs claires de Chéret de celles \
+de Watteau et de Tiepolo, qu'il admirait. Pour beaucoup de contemporains, ses affiches \
+transformaient la rue en un musée ouvert à tous."""
+histoire = """
+Le Moulin Rouge ouvre ses portes le 6 octobre 1889, au pied de la butte Montmartre, \
+place Blanche, pendant l'Exposition universelle. Ses fondateurs, Joseph Oller et \
+Charles Zidler, en veulent un lieu de bal et de spectacle où se croisent toutes les \
+classes sociales, et commandent l'affiche d'ouverture à Chéret, le maître incontesté \
+du genre, qui travaille alors pour la grande imprimerie Chaix. L'affiche annonce le \
+bal et ses soirées de fête sur les murs de Paris. Deux ans plus tard, en 1891, le \
+Moulin Rouge commandera une nouvelle affiche à un jeune peintre, Henri de \
+Toulouse-Lautrec, qui y rendra célèbre la danseuse La Goulue. L'image de Chéret fut \
+reproduite en réduction dans la revue Les Maîtres de l'affiche, qui diffusait les plus \
+belles affiches auprès des collectionneurs. Cet exemplaire est conservé au Hessisches \
+Landesmuseum de Darmstadt."""
+facture = """
+Chéret dessine lui-même ses affiches sur la pierre lithographique, une pierre par \
+couleur. Il réduit volontairement sa palette à quelques teintes, le rouge, le jaune, \
+le bleu et le noir, qu'il superpose et fait vibrer par des hachures et des pointillés. \
+Les mélanges optiques obtenus donnent ce flou lumineux autour des figures. La \
+composition est faite pour être lue de loin, en un instant : un personnage principal \
+en diagonale, en plein mouvement, et des lettres dessinées à la main qui font partie \
+de l'image. Les figures secondaires, presque transparentes, suggèrent la foule et la \
+musique."""
+details = [
+  "Les ailes du moulin, tracées en rouge sur le ciel bleu.",
+  "Les fleurs roses semées sur la robe jaune de la cavalière.",
+  "La danseuse aux bras levés, derrière, qui arrange sa coiffure.",
+  "L'adresse de l'imprimerie, « Imp. Chaix (Ateliers Chéret), 20 rue Bergère », le long du bord gauche.",
+]
+themes = ["fête", "paris", "montmartre", "danse", "publicité"]
+anecdote = """
+En 1890, Chéret reçoit la Légion d'honneur pour avoir créé une nouvelle branche de \
+l'art, en appliquant l'art à l'impression commerciale et industrielle. Le musée des \
+Beaux-Arts de Nice, ville où il mourut, porte aujourd'hui son nom."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.0
+
+[[oeuvres]]
+titre = "J'ai baisé ta bouche, Iokanaan (Salomé)"
+artiste = "Aubrey Beardsley"
+annee = "1893–1894"
+image = "salome-climax.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Aubrey_Beardsley's_Illustrations_to_Salome_by_Oscar_Wilde_MET_DP863674.jpg"
+technique = "Impression photomécanique au trait d'après un dessin à l'encre de Chine"
+collection = "Metropolitan Museum of Art, New York (portfolio publié par John Lane, 1906–1907)"
+note = "Salomé flotte dans les airs et contemple la tête coupée de saint Jean-Baptiste : la scène finale de la pièce d'Oscar Wilde, en noir et blanc absolu."
+description = """
+Sur un fond partagé entre le blanc et le noir, Salomé flotte dans les airs, \
+agenouillée sur le vide, les cheveux dressés en mèches recourbées comme des cornes ou \
+des serpents. Elle tient entre ses mains la tête coupée de saint Jean-Baptiste, \
+Iokanaan, et la regarde droit dans les yeux, son visage tout près du sien. De la tête, \
+aux longs cheveux emmêlés, tombe un mince filet de sang qui descend jusqu'au bas de \
+l'image, dans une mare noire ; de cette mare s'élève une haute fleur de lys. En haut à \
+gauche, une masse de cercles et de croissants, comme des bulles ou des écailles, forme \
+un décor presque abstrait. Une grande courbe blanche, au centre, découpe un croissant \
+de lumière sur le noir. Tout est dessiné au trait, sans aucun gris."""
+evocation = """
+La pièce d'Oscar Wilde s'achève sur ce moment : Salomé, qui a obtenu du roi Hérode la \
+tête du prophète qui l'avait repoussée, embrasse enfin cette bouche morte et lui dit : \
+« J'ai baisé ta bouche, Iokanaan. » Beardsley en fait une image d'une audace inouïe \
+pour l'Angleterre victorienne : le désir et la mort réunis, sans pathos, avec une \
+élégance glacée. Le lys, fleur de la pureté, naît du sang du saint, comme un symbole \
+ironique. L'image incarne l'esthétique décadente de la fin du siècle, fascinée par la \
+femme fatale et par un Orient rêvé. Le style, nourri d'estampes japonaises et de vases \
+grecs, fit scandale autant que la pièce elle-même, dont la représentation avait été \
+interdite à Londres en 1892."""
+histoire = """
+Beardsley, vingt ans, dessine une première version de cette scène en 1893, après avoir \
+lu Salomé, que Wilde venait de publier en français. Le dessin est reproduit en avril \
+1893 dans le premier numéro de la revue The Studio, dans un article qui révèle le \
+jeune artiste au public. L'éditeur John Lane lui commande alors les illustrations de \
+la traduction anglaise de la pièce, publiée en 1894. Beardsley redessine la scène, \
+plus dépouillée, sous le titre The Climax. Plusieurs de ses dessins pour le livre, \
+jugés indécents, sont refusés ou retouchés avant la publication. Après la mort de \
+l'artiste, Lane réédite les illustrations en portfolio, en 1906-1907 : c'est de ce \
+recueil que provient cette feuille, aujourd'hui au Metropolitan Museum de New York."""
+facture = """
+Beardsley dessine à la plume et à l'encre de Chine sur papier blanc, avec une \
+précision d'orfèvre. Il refuse le modelé et les hachures : l'image ne connaît que deux \
+valeurs, le noir plein et le blanc nu, séparés par des lignes d'une finesse extrême, \
+parfois bordées de petits traits comme des cils. Les grands aplats noirs, les vides \
+blancs et les arabesques des cheveux s'équilibrent comme dans une estampe japonaise. \
+Le dessin est reproduit par un procédé photomécanique, le cliché au trait, qui imprime \
+exactement le trait de l'artiste, sans graveur intermédiaire. Beardsley a conçu son \
+style pour ce procédé nouveau."""
+details = [
+  "Le filet de sang qui tombe de la tête jusqu'à la mare, en bas.",
+  "Le lys qui pousse dans la mare de sang.",
+  "Les cheveux de Salomé, dressés en mèches recourbées.",
+  "La bordure de petits traits, comme des cils, le long de la grande courbe blanche.",
+  "Les grappes de cercles et de croissants, en haut à gauche.",
+]
+themes = ["décadence", "femme fatale", "théâtre", "noir et blanc", "japonisme"]
+anecdote = """
+Beardsley mourut de la tuberculose à vingt-cinq ans, à Menton. Quelques jours avant sa \
+mort, il supplia par lettre son éditeur Leonard Smithers de détruire ses dessins \
+obscènes ; Smithers n'en fit rien."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Tournée du Chat Noir de Rodolphe Salis"
+artiste = "Théophile-Alexandre Steinlen"
+annee = "1896"
+image = "tournee-chat-noir.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Théophile-Alexandre_Steinlen_-_Tournée_du_Chat_Noir_de_Rodolphe_Salis_(Tour_of_Rodolphe_Salis'_Chat_Noir)_-_Google_Art_Project.jpg"
+technique = "Lithographie en couleurs, 135,9 × 95,9 cm"
+collection = "Zimmerli Art Museum, université Rutgers, New Brunswick (New Jersey)"
+note = "Un chat noir assis, auréolé comme un saint, annonce la tournée de la troupe du célèbre cabaret de Montmartre : l'affiche la plus célèbre de Steinlen."
+description = """
+Un grand chat noir, assis, le corps de profil et la tête tournée vers nous, occupe \
+toute la moitié gauche de l'affiche. Sa silhouette est cernée d'un liseré doré, ses \
+yeux clairs en amande fixent le passant, ses moustaches s'étirent comme des fils. \
+Derrière sa tête brille une auréole rouge, ornée comme une rosace gothique, où l'on \
+devine des lettres. Le chat est assis sur un bandeau rouge où s'inscrit en grandes \
+lettres le nom de Rodolphe Salis ; à droite, sur le fond ocre, les mots « Tournée du \
+Chat Noir », en lettres rouges et noires dessinées à la main. En haut, un discret « \
+Prochainement ». Le long du bord droit court l'adresse de l'imprimeur Charles Verneau \
+; en bas à gauche, la signature de Steinlen."""
+evocation = """
+Le chat noir était l'emblème du cabaret de Rodolphe Salis, et Steinlen en fait une \
+sorte d'idole. L'auréole, qui rappelle les saints des vitraux, est une plaisanterie \
+typique de l'esprit du lieu, mélange de dévotion parodique et de moquerie : le cabaret \
+se donnait des airs de vieille taverne, avec un décor de fausses antiquités et des \
+serveurs habillés en académiciens. On a lu dans les lettres du halo la devise « \
+Montjoye Montmartre », pastiche du cri de guerre des rois de France, « Montjoie \
+Saint-Denis ». Le chat, mystérieux, indépendant, un peu inquiétant, incarne aussi la \
+bohème artiste de Montmartre, insolente envers le bourgeois. Steinlen, qui adorait les \
+chats, en a dessiné toute sa vie."""
+histoire = """
+Rodolphe Salis ouvre en 1881, boulevard de Rochechouart, au pied de Montmartre, le \
+cabaret du Chat Noir, qui devient le rendez-vous des poètes, des chansonniers et des \
+peintres. En 1885, il s'installe rue de Laval, aujourd'hui rue Victor-Massé, dans une \
+maison plus vaste où l'on donne de célèbres spectacles de théâtre d'ombres. Salis \
+publie aussi un journal hebdomadaire, Le Chat Noir, auquel Steinlen collabore. En \
+1896, il emmène sa troupe en tournée en province et commande à Steinlen cette affiche, \
+imprimée par Charles Verneau, pour l'annoncer de ville en ville. Salis meurt l'année \
+suivante, en 1897, et le cabaret ferme peu après. L'affiche, elle, n'a jamais cessé \
+d'être reproduite. Cet exemplaire appartient au Zimmerli Art Museum de l'université \
+Rutgers, aux États-Unis."""
+facture = """
+Steinlen simplifie la forme du chat jusqu'à en faire une silhouette, un grand aplat \
+noir découpé, rehaussé seulement de quelques lignes dorées qui suggèrent le pelage et \
+les pattes. Cette manière de cerner les formes et de poser des couleurs franches sans \
+modelé vient des estampes japonaises, très admirées à Paris. La palette se limite à \
+quelques tons : le noir, le rouge, l'ocre du fond et l'or. Les lettres, dessinées à la \
+main, font partie de la composition : le C de « Chat » s'arrondit, la queue du chat se \
+recourbe au milieu des lettres de Rodolphe. L'ensemble est conçu pour être lisible de \
+très loin."""
+details = [
+  "L'auréole rouge, dessinée comme une rosace de vitrail, derrière la tête du chat.",
+  "La queue qui s'enroule au milieu des lettres de Rodolphe.",
+  "Le mot « Prochainement », seul en haut à droite.",
+  "La signature de Steinlen, en bas à gauche, et l'adresse de l'imprimeur Verneau, le long du bord droit.",
+]
+themes = ["chat", "montmartre", "cabaret", "bohème", "publicité"]
+anecdote = """
+Il existe deux états de cette affiche : sur l'un, on lit « Tournée du Chat Noir de \
+Rodolphe Salis », sur l'autre, « Tournée du Chat Noir avec Rodolphe Salis ». C'est la \
+première version qui est exposée ici."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Little Nemo in Slumberland, planche du 29 septembre 1907"
+artiste = "Winsor McCay"
+annee = "1907"
+image = "little-nemo.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Little_Nemo_1907-09-29_(borderless).jpg"
+technique = "Impression en couleurs sur papier journal, une page entière du supplément du dimanche"
+collection = "Publiée dans le New York Herald, le 29 septembre 1907"
+note = "Devenu géant, Little Nemo erre parmi les gratte-ciel de New York avant de se réveiller dans son lit : une page de la plus somptueuse bande dessinée du début du XXᵉ siècle."
+description = """
+La page est découpée en sept cases de tailles différentes. En haut, sur toute la \
+largeur, Nemo, petit garçon en pyjama blanc, et l'Imp, un petit sauvage vêtu d'une \
+jupe d'herbe, sont accroupis la nuit sur le toit d'un gratte-ciel : un projecteur \
+balaie le ciel et y écrit que le roi Morphée offre neuf trillions de dollars à qui \
+retrouvera Nemo. Dans les trois cases suivantes, hautes et étroites, les deux enfants, \
+devenus géants, descendent le long des façades ; à leurs pieds, dans la rue, une foule \
+minuscule et un tramway jaune. Plus bas, Nemo atteint le fleuve où sont amarrés des \
+paquebots et y entre jusqu'aux genoux, tandis que Flip, leur compagnon farceur, \
+accourt sur les toits en l'appelant. Dans la dernière case, toute petite, Nemo est \
+dans son lit, secoué par sa mère."""
+evocation = """
+Chaque dimanche, Little Nemo, dont le nom signifie « personne » en latin, part en rêve \
+vers Slumberland, le pays du sommeil, où l'attend la fille du roi Morphée ; chaque \
+dimanche, l'aventure finit par un réveil brutal, souvent une chute du lit. McCay \
+explore ainsi toutes les logiques du rêve : changements de taille, villes qui se \
+déforment, perspectives impossibles. Cette page montre aussi le New York de 1907, \
+celui des premiers gratte-ciel, des paquebots et des foules, vu comme un décor à la \
+fois merveilleux et écrasant. Le petit garçon géant, perdu dans une ville trop grande, \
+cherche simplement son chemin. On y a vu une image de l'enfance face au monde moderne \
+; la bande dessinée y devient un art du rêve."""
+histoire = """
+Winsor McCay commence Little Nemo in Slumberland le 15 octobre 1905, dans le \
+supplément en couleurs du dimanche du New York Herald, l'un des grands quotidiens de \
+la ville. La série paraît chaque semaine en pleine page, un format immense qui laisse \
+au dessinateur une liberté totale de mise en page. Le succès est considérable : on en \
+tire une comédie musicale à Broadway en 1908, des jouets, des cartes postales. En \
+1911, McCay passe chez le patron de presse William Randolph Hearst et poursuit la \
+série sous un autre titre, avant de la reprendre brièvement au Herald dans les années \
+1920. Imprimées sur un papier journal fragile, ces pages ont longtemps été négligées ; \
+elles ont depuis fait l'objet de nombreuses rééditions, certaines au format original."""
+facture = """
+McCay, qui avait appris le dessin de perspective, construit ses cases comme des décors \
+de théâtre : les façades des gratte-ciel, avec leurs centaines de fenêtres, sont \
+tracées avec une précision d'architecte. Il fait varier la taille et la forme des \
+cases selon l'action : très hautes et étroites quand Nemo descend le long des \
+immeubles, larges quand la ville s'étale, minuscule pour le retour au lit. Ses dessins \
+à l'encre, très fins, étaient mis en couleurs à l'imprimerie, en aplats de tons \
+pastel. Le lettrage des bulles, à la main, fait partie de l'image. L'influence de \
+l'Art nouveau se lit dans le titre décoratif, en haut de la page."""
+details = [
+  "Le message du roi Morphée écrit par le projecteur dans le ciel, dans la première case.",
+  "Le tramway jaune et la foule minuscule au pied des gratte-ciel, dans la quatrième case.",
+  "Les paquebots amarrés aux quais, plus petits que Nemo.",
+  "La signature de Winsor McCay, dans la dernière case, près du lit.",
+  "La mention du copyright du New York Herald, en bas à gauche.",
+]
+themes = ["rêve", "enfance", "new york", "bande dessinée", "gratte-ciel"]
+anecdote = """
+McCay fut aussi un pionnier du dessin animé. En 1914, il présentait sur scène Gertie \
+le dinosaure : debout devant l'écran, il donnait des ordres à l'animal dessiné, qui \
+semblait lui obéir, puis il disparaissait derrière l'écran pour reparaître dans le \
+film, sur le dos de Gertie."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Le Thermogène engendre la chaleur"
+artiste = "Leonetto Cappiello"
+annee = "1909"
+image = "thermogene.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Leonetto_Cappiello_-_Thermogène_warms_you_up_-_Google_Art_Project.jpg"
+technique = "Lithographie en couleurs, 159,5 × 114,5 cm"
+collection = "Musée de l'Affiche de Wilanów, Musée national de Varsovie"
+note = "Un pierrot crache le feu en serrant contre lui une boule de ouate : pour vendre un remède, Cappiello invente une figure qu'on n'oublie pas."
+description = """
+Sur un fond noir uni, un étrange personnage s'avance d'un pas dansant, une jambe \
+lancée en arrière. Il porte un collant d'un vert éclatant, aux reflets bleus, des \
+gants blancs, et a une tête de clown blafarde et chauve, la bouche grande ouverte. De \
+cette bouche jaillit, vers le haut, une grande flamme orange et jaune. Contre sa \
+poitrine, il serre à deux bras un gros nuage rose et duveteux. Le texte occupe les \
+bords de l'affiche en lettres capitales : en haut, en jaune, « Le Thermogène », puis, \
+en rouge, « engendre la chaleur » ; à droite, « et guérit : » ; en bas, en rouge, « \
+toux, rhumatismes, points de côté, etc. ». La signature de Cappiello, tracée en vert, \
+est à gauche, à la hauteur des genoux."""
+evocation = """
+Le Thermogène était une ouate médicinale, imprégnée d'un produit qui échauffe la peau, \
+que l'on appliquait sur la poitrine ou le dos contre les rhumes et les douleurs. \
+Plutôt que de montrer le produit ou un malade, Cappiello invente une image absurde et \
+inoubliable : un pierrot qui a si chaud qu'il crache du feu, en étreignant sa ouate \
+comme un trésor. L'idée est simple et se lit en une seconde, même depuis un tramway. \
+C'est le principe de l'affiche moderne, que Cappiello impose au début du XXᵉ siècle : \
+une seule figure, frappante, souvent drôle, associée pour toujours à une marque. Le \
+pierrot du Thermogène servit d'ailleurs d'emblème au produit pendant des décennies, \
+jusque sur ses emballages."""
+histoire = """
+Né à Livourne, Leonetto Cappiello arrive à Paris en 1898 et s'y fait d'abord connaître \
+comme caricaturiste, notamment dans Le Rire. Il dessine sa première affiche en 1899 et \
+travaille bientôt sous contrat avec l'imprimeur Pierre Vercasson, dont le cachet \
+figure sur cette affiche. Le Thermogène lui est commandé en 1909 ; l'affiche est tirée \
+à de nombreux exemplaires et réimprimée, avec des variantes de texte et de format. \
+Elle compte aussitôt parmi ses images les plus célèbres, avec le Chocolat Klaus de \
+1903 ou le Cinzano de 1910. Cet exemplaire appartient au musée de l'Affiche de \
+Wilanów, près de Varsovie, qui dépend du Musée national de Varsovie : ouvert en 1968, \
+il est souvent présenté comme le premier musée au monde entièrement consacré à \
+l'affiche."""
+facture = """
+Cappiello rompt avec les affiches Art nouveau chargées d'ornements. Il pose une figure \
+unique, vivement colorée, sur un fond noir qui la fait jaillir, comme un acteur sous \
+le projecteur. Le vert acide du collant, avec ses reflets bleus, contraste avec \
+l'orange des flammes et le rose de la ouate : des couleurs opposées, choisies pour \
+être vues de loin. Le dessin, venu de la caricature, est souple et rapide, et le \
+mouvement de la figure, une jambe lancée en arrière, donne l'impression qu'elle \
+traverse l'affiche. Le texte est relégué sur les bords, en capitales simples et \
+lisibles."""
+details = [
+  "La flamme qui jaillit de la bouche ouverte du pierrot.",
+  "Les reflets bleus qui modèlent le collant vert.",
+  "Le petit cachet rond et bleu de l'imprimeur Vercasson, à droite, sur le fond noir.",
+  "La signature de Cappiello, tracée en vert à gauche.",
+]
+themes = ["publicité", "humour", "couleur", "remède", "affiche"]
+anecdote = """
+Avant de dessiner des affiches, Cappiello s'était rendu célèbre à Paris par un album \
+de caricatures, Nos actrices, publié en 1899, où il croquait avec une drôlerie \
+affectueuse les vedettes de la scène parisienne."""
+salle = 2
+mur = "sud"
+place = 1
+largeur = 1.15
+
+[[oeuvres]]
+titre = "On les aura ! 2ᵉ Emprunt de la Défense nationale"
+artiste = "Abel Faivre"
+annee = "1916"
+image = "on-les-aura.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:2e_Emprunt_de_la_Défense_nationale._Souscrivez_(1916)_On_les_aura_!_-_affiche_-_Abel_Faivre_-_btv1b9013991f.jpg"
+technique = "Lithographie en couleurs, environ 120 × 80 cm, imprimée par Devambez, Paris"
+collection = "Bibliothèque nationale de France, Paris"
+note = "Un jeune soldat casqué s'élance, le bras levé, en criant « On les aura ! » : l'affiche la plus célèbre de la Grande Guerre en France."
+description = """
+Un jeune soldat français, vu à mi-corps, surgit du bord gauche de l'affiche. Il porte \
+le casque d'acier et la capote des poilus, serre son fusil d'une main, le canon pointé \
+en avant, et lève l'autre bras très haut, la main grande ouverte, comme pour entraîner \
+ses camarades. Son visage, tourné de côté, est ouvert sur un cri ; ses yeux \
+écarquillés brillent d'enthousiasme. Le fond reste presque vide, d'un beige clair. En \
+haut à gauche, tracé à la main comme une écriture spontanée : « On les aura ! ». En \
+bas à droite, en lettres capitales, « 2ᵉ Emprunt de la Défense nationale », et, en \
+grande écriture penchée, « Souscrivez ». Tout en bas, en petits caractères, le nom de \
+l'imprimeur Devambez, à Paris."""
+evocation = """
+« Courage ! On les aura ! » : la formule conclut un ordre du jour du général Pétain \
+aux défenseurs de Verdun, le 10 avril 1916, et devient aussitôt un mot d'ordre \
+national. Faivre la reprend pour une affiche qui ne montre ni l'ennemi ni la mort, \
+seulement l'élan et la confiance d'un très jeune soldat. Le message est double : \
+soutenir les combattants, et souscrire à l'emprunt, c'est-à-dire prêter son argent à \
+l'État pour financer la guerre. L'affiche fait de chaque épargnant un combattant de \
+l'arrière. Ce visage héroïque, presque souriant, contraste avec la réalité de Verdun, \
+où des centaines de milliers d'hommes sont tués ou blessés en 1916 : c'est une image \
+de propagande, conçue pour entretenir le moral du pays."""
+histoire = """
+Pour payer une guerre beaucoup plus longue et coûteuse que prévu, l'État français \
+lance plusieurs grands emprunts auprès des particuliers. Le deuxième emprunt de la \
+Défense nationale est ouvert à l'automne 1916. Comme pour le premier, une vaste \
+campagne d'affiches l'accompagne : on demande des images à des dessinateurs connus, et \
+leurs affiches sont placardées dans toute la France. Abel Faivre, caricaturiste \
+réputé, avait déjà dessiné en 1915 une affiche appelant les Français à verser leur or \
+à la Banque de France, où un coq gaulois terrasse un soldat allemand. Celle-ci, \
+imprimée par la maison Devambez, rencontre un succès considérable et reste l'image la \
+plus connue de la propagande française de la guerre. Cet exemplaire est conservé au \
+département des Estampes de la Bibliothèque nationale de France."""
+facture = """
+Faivre, dessinateur de presse, travaille ici comme un peintre : le soldat est modelé \
+au crayon lithographique, avec des hachures vigoureuses et des noirs profonds, dans \
+une gamme sobre de bruns, de gris et de beige, à peine rehaussée de couleur sur le \
+visage et les mains. La figure, coupée par le bord gauche et lancée en diagonale, \
+semble sortir de l'affiche vers le spectateur. Le bras levé et le fusil forment deux \
+obliques qui donnent l'élan. Le texte tracé à la main, « On les aura ! » et « \
+Souscrivez », donne l'impression d'une parole spontanée, tandis que le nom de \
+l'emprunt est composé en capitales officielles."""
+details = [
+  "La main levée, aux doigts écartés, qui semble appeler les autres soldats.",
+  "La manche claire retroussée au poignet du bras levé.",
+  "Le paraphe de « Souscrivez », qui plonge vers le bas de l'affiche.",
+  "Le nom de l'imprimeur Devambez, en tout petit, au bas de l'affiche.",
+]
+themes = ["guerre", "propagande", "verdun", "patriotisme", "affiche"]
+anecdote = """
+Le casque d'acier que porte le soldat, le casque Adrian, n'est distribué aux troupes \
+françaises qu'à partir de l'automne 1915 : au début de la guerre, les fantassins \
+partaient au combat en képi et en pantalon rouge garance."""
+salle = 2
+mur = "sud"
+place = 4
+largeur = 0.9
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "William Hogarth"
+vie = "Londres, 10 novembre 1697 – Londres, 26 octobre 1764"
+biographie = """
+Fils d'un maître d'école qui tenta d'ouvrir un café où l'on ne parlerait que latin et \
+finit emprisonné pour dettes, William Hogarth grandit à Londres dans la gêne. Apprenti \
+chez un graveur sur argent, il s'établit à son compte vers 1720 comme graveur, puis \
+apprend la peinture. En 1729, il épouse en secret la fille du peintre James Thornhill. \
+Le succès vient en 1732 avec La Carrière d'une prostituée, une suite de six tableaux \
+qu'il grave et vend lui-même par souscription : ce sont ses « sujets moraux modernes \
+». Suivent La Carrière d'un libertin, Le Mariage à la mode, L'Industrie et la Paresse, \
+puis Gin Lane et Beer Street. Pour protéger ses estampes des copies, il obtient en \
+1735 une loi sur le droit des graveurs. Portraitiste réputé, il est aussi l'un des \
+gouverneurs de l'hôpital des Enfants-Trouvés de Londres, dont il fait l'un des \
+premiers lieux où le public peut voir des œuvres d'artistes anglais. En 1753, il \
+publie un traité, L'Analyse de la beauté, et devient en 1757 peintre officiel du roi. \
+Il meurt à Londres en 1764."""
+style = """
+Hogarth invente la satire en série : des histoires en plusieurs images, à lire dans \
+l'ordre, pleines de détails, d'enseignes et d'inscriptions qui commentent l'action. Il \
+y mêle la caricature, le théâtre et le sermon moral. Graveur populaire autant que \
+peintre, il a donné à l'anglais l'adjectif « hogarthian » et ouvert la voie aux \
+caricaturistes anglais, de Gillray à Cruikshank, puis aux histoires en images du XIXᵉ \
+siècle."""
+
+[[artistes]]
+nom = "Francisco de Goya"
+vie = "Fuendetodos (Aragon), 30 mars 1746 – Bordeaux, 16 avril 1828"
+biographie = """
+Fils d'un doreur, Francisco de Goya se forme à Saragosse, échoue deux fois au concours \
+de l'Académie royale de Madrid, puis voyage en Italie. Installé à Madrid en 1775, il \
+peint pour la Manufacture royale de tapisseries des cartons pleins de vie populaire, \
+qui le font connaître. Membre de l'Académie de San Fernando en 1780, peintre du roi en \
+1786, il devient le portraitiste de la cour et de l'aristocratie éclairée. En \
+1792-1793, une grave maladie le laisse complètement sourd. Il se tourne alors vers des \
+œuvres plus personnelles : les Caprices paraissent en 1799, l'année où il est nommé \
+premier peintre de la Chambre. L'invasion française et la guerre d'Indépendance, à \
+partir de 1808, lui inspirent les Désastres de la guerre et les tableaux du Deux et du \
+Trois Mai 1808. Retiré dans sa maison de la Quinta del Sordo, il en couvre les murs \
+des Peintures noires. Inquiet du retour de l'absolutisme sous Ferdinand VII, il \
+s'exile en 1824 à Bordeaux, où il pratique encore la lithographie, et y meurt en 1828."""
+style = """
+Goya passe des scènes claires et gracieuses de sa jeunesse à une peinture de plus en \
+plus libre, sombre et visionnaire. Graveur de génie, il fait de l'eau-forte et de \
+l'aquatinte un moyen d'exprimer la satire, la violence et les cauchemars de son temps, \
+sans rien embellir. Ses séries gravées, des Caprices aux Désastres de la guerre, ont \
+marqué Delacroix, Manet, les romantiques et les surréalistes ; on le tient souvent \
+pour le premier des peintres modernes."""
+
+[[artistes]]
+nom = "Katsushika Hokusai"
+vie = "Edo (aujourd'hui Tokyo), 1760 – Edo, 10 mai 1849"
+biographie = """
+Né dans un quartier d'artisans d'Edo, Hokusai apprend très jeune la gravure sur bois, \
+puis entre vers 1778 dans l'atelier du peintre Katsukawa Shunshō, spécialiste des \
+portraits d'acteurs. Il s'en détache et explore toutes les écoles, japonaises, \
+chinoises et même occidentales, dont il étudie la perspective. Au cours de sa longue \
+vie, il change plus de trente fois de nom d'artiste et déménage, dit-on, plus de \
+quatre-vingt-dix fois. Il illustre des romans, dessine des surimono, ces estampes de \
+luxe offertes au Nouvel An, et publie des livres de modèles, dont la Manga à partir de \
+1814. Vers 1830-1832, à plus de soixante-dix ans, il connaît son plus grand succès \
+avec les Trente-six Vues du mont Fuji, où figure la Grande Vague. Il poursuit avec des \
+séries de cascades, de ponts et de fleurs, puis se consacre surtout à la peinture. \
+Pauvre jusqu'à la fin, aidé par sa fille Ōi, elle-même peintre, il meurt à \
+quatre-vingt-huit ans en regrettant, dit-on, de ne pas avoir eu quelques années de \
+plus pour devenir un vrai peintre."""
+style = """
+Hokusai est un dessinateur insatiable, capable de tout représenter : la vague et la \
+goutte d'eau, le fantôme et l'artisan, la montagne et l'insecte. Son trait vif, son \
+sens du mouvement et ses cadrages audacieux, nourris de perspective occidentale, ont \
+renouvelé l'estampe japonaise. Découvert en Europe au milieu du XIXᵉ siècle, il \
+devient la grande figure du japonisme et influence Degas, Van Gogh, Monet et les \
+artistes de l'Art nouveau."""
+
+[[artistes]]
+nom = "Rodolphe Töpffer"
+vie = "Genève, 31 janvier 1799 – Genève, 8 juin 1846"
+biographie = """
+Fils du peintre genevois Wolfgang-Adam Töpffer, Rodolphe veut d'abord devenir peintre \
+à son tour, mais une maladie des yeux l'oblige à y renoncer. Il se tourne vers les \
+lettres, séjourne à Paris pour étudier, puis ouvre en 1824, à Genève, un pensionnat de \
+jeunes garçons qu'il dirige avec sa femme. Pour divertir ses élèves, il dessine des \
+histoires comiques, et les emmène chaque année en excursion à pied dans les Alpes : il \
+en tire des récits illustrés, les Voyages en zigzag. En 1832, il devient professeur de \
+rhétorique et de belles-lettres à l'Académie de Genève. Encouragé par Goethe, qui a \
+admiré ses albums, il publie à partir de 1833 ses histoires en estampes : Monsieur \
+Jabot, Monsieur Crépin, Monsieur Vieux Bois, Monsieur Pencil, le Docteur Festus, \
+Monsieur Cryptogame. Il écrit aussi des nouvelles, réunies sous le titre de Nouvelles \
+genevoises, et des essais sur l'art, dont un Essai de physiognomonie consacré à sa \
+manière de dessiner. Conservateur en politique, il siège au Conseil représentatif de \
+Genève. Malade, il meurt à quarante-sept ans."""
+style = """
+Töpffer invente ce qu'il appelle la « littérature en estampes » : une histoire \
+racontée par une suite de dessins, chacun accompagné d'une légende, où le sens naît de \
+l'enchaînement. Son trait rapide et volontairement malhabile privilégie l'expression \
+et le mouvement. Il a réfléchi en théoricien à ce nouveau langage, et beaucoup \
+d'historiens le considèrent aujourd'hui comme le père de la bande dessinée."""
+
+[[artistes]]
+nom = "John Tenniel"
+vie = "Londres, 28 février 1820 – Londres, 25 février 1914"
+biographie = """
+Fils d'un maître d'armes et de danse d'origine huguenote, John Tenniel apprend en \
+grande partie seul, en copiant les sculptures antiques du British Museum. À vingt ans, \
+il perd presque entièrement la vue d'un œil dans un accident d'escrime. Il expose très \
+tôt à la Royal Academy et, en 1845, remporte un prix au concours pour la décoration du \
+nouveau palais de Westminster, où il peint ensuite une fresque. En 1850, il entre à \
+Punch, le grand hebdomadaire satirique londonien ; après la mort de John Leech, en \
+1864, il en devient le principal caricaturiste politique et y publie pendant un \
+demi-siècle plus de deux mille dessins, dont « Dropping the Pilot », en 1890, sur le \
+renvoi de Bismarck. Illustrateur recherché, il dessine pour les Fables d'Ésope et pour \
+Lalla Rookh de Thomas Moore, mais ce sont Alice au pays des merveilles, en 1865, puis \
+De l'autre côté du miroir, en 1871, qui lui assurent une gloire durable. Anobli en \
+1893, il prend sa retraite en 1901 et meurt à Londres peu avant ses \
+quatre-vingt-quatorze ans."""
+style = """
+Tenniel a un dessin précis, presque sculptural, hérité de l'étude des antiques, mis au \
+service de l'humour. Ses personnages, campés avec netteté, aux visages fortement \
+caractérisés, viennent de la caricature politique. Ses illustrations pour Lewis \
+Carroll ont fixé pour toujours l'apparence d'Alice, du Chapelier ou du Chat du \
+Cheshire : presque toutes les adaptations qui ont suivi s'en inspirent."""
+
+[[artistes]]
+nom = "Gustave Doré"
+vie = "Strasbourg, 6 janvier 1832 – Paris, 23 janvier 1883"
+biographie = """
+Enfant prodige, Gustave Doré dessine dès son plus jeune âge. À quinze ans, de passage \
+à Paris avec ses parents, il obtient un contrat de l'éditeur Charles Philipon et \
+publie la même année un album de caricatures, Les Travaux d'Hercule. Il collabore au \
+Journal pour rire et, en 1854, publie l'Histoire de la Sainte Russie, une satire en \
+images souvent comptée parmi les ancêtres de la bande dessinée. Il se lance ensuite \
+dans l'illustration des grands textes : Rabelais, les Contes drolatiques de Balzac, \
+l'Enfer de Dante en 1861, les Contes de Perrault, Don Quichotte, la Bible, les Fables \
+de La Fontaine. Il fait travailler des dizaines de graveurs. Adulé en Grande-Bretagne, \
+il voit s'ouvrir à Londres, en 1869, la Doré Gallery, consacrée à ses tableaux, et y \
+publie avec Blanchard Jerrold Londres, un pèlerinage. Il aspire pourtant à être \
+reconnu comme peintre et sculpteur, et souffre de l'indifférence de la critique \
+française. Il vit avec sa mère, dont la mort, en 1879, l'affecte profondément, et \
+meurt à Paris en 1883, à cinquante et un ans."""
+style = """
+Doré est un visionnaire du noir et blanc : foules immenses, paysages vertigineux, \
+contrastes violents de lumière et d'ombre. Il compose ses images comme des décors de \
+théâtre ou d'opéra, avec un sens du spectaculaire qui a marqué l'imaginaire populaire. \
+Ses illustrations de Dante, de la Bible ou de Perrault ont été reproduites dans le \
+monde entier, et l'on en retrouve l'écho dans de nombreux décors du cinéma \
+fantastique."""
+
+[[artistes]]
+nom = "Jules Chéret"
+vie = "Paris, 31 mai 1836 – Nice, 23 septembre 1932"
+biographie = """
+Fils d'un ouvrier typographe, Jules Chéret entre à treize ans en apprentissage chez un \
+lithographe et suit des cours du soir de dessin. En 1858, il dessine une affiche pour \
+Orphée aux Enfers, l'opéra-bouffe d'Offenbach. Installé à Londres de 1859 à 1866, il y \
+découvre les grandes affiches anglaises en couleurs et travaille notamment pour le \
+parfumeur Eugène Rimmel. À son retour, il fonde à Paris sa propre imprimerie, équipée \
+de presses anglaises, et révolutionne l'affiche française : grandes lithographies en \
+couleurs, figures en mouvement, lettrage intégré à l'image. En 1881, il cède son \
+atelier à l'imprimerie Chaix, dont il reste le directeur artistique. Il dessine pour \
+les théâtres, les music-halls, les bals, les apéritifs, les savons, le pétrole \
+d'éclairage ou les patinoires, plus d'un millier d'affiches au total. Il reçoit la \
+Légion d'honneur en 1890. Vers 1900, il se consacre davantage à la peinture \
+décorative. Retiré à Nice, il y meurt à quatre-vingt-seize ans ; le musée des \
+Beaux-Arts de la ville porte son nom."""
+style = """
+Chéret est le père de l'affiche illustrée moderne. Ses compositions, faites pour la \
+rue, reposent sur quelques couleurs vives superposées, une figure féminine légère et \
+dansante, et des lettres dessinées qui font corps avec l'image. Admirateur de Watteau \
+et de Tiepolo, il donne à la publicité la grâce de la fête galante. Il ouvre la voie à \
+Toulouse-Lautrec, à Mucha et à toute la génération des affichistes de la Belle Époque."""
+
+[[artistes]]
+nom = "Aubrey Beardsley"
+vie = "Brighton, 21 août 1872 – Menton, 16 mars 1898"
+biographie = """
+Atteint de tuberculose dès l'enfance, Aubrey Beardsley grandit à Brighton dans une \
+famille modeste et se passionne pour la musique, la littérature et le dessin. À seize \
+ans, il devient employé de bureau à Londres, d'abord chez un géomètre, puis dans une \
+compagnie d'assurances. En 1891, le peintre Edward Burne-Jones, à qui il montre ses \
+dessins, l'encourage. L'éditeur J. M. Dent lui confie l'illustration de La Mort \
+d'Arthur de Thomas Malory, puis la revue The Studio le révèle au public en 1893. Ses \
+illustrations pour la Salomé d'Oscar Wilde, en 1894, le rendent célèbre et sulfureux. \
+Directeur artistique de la revue The Yellow Book, il est renvoyé en 1895 au moment du \
+procès de Wilde, bien que celui-ci n'ait jamais écrit pour la revue. Il collabore \
+ensuite à The Savoy et illustre la Lysistrata d'Aristophane et La Boucle de cheveux \
+enlevée d'Alexander Pope. Épuisé par la maladie, il se convertit au catholicisme en \
+1897 et part chercher le soleil sur la Côte d'Azur, où il meurt à vingt-cinq ans."""
+style = """
+Beardsley a créé en quelques années un style d'une originalité absolue : un noir et \
+blanc pur, sans demi-teintes, fait de grands aplats noirs, de lignes d'une finesse \
+extrême et d'ornements raffinés. Il y mêle l'estampe japonaise, la céramique grecque, \
+le rococo et une ironie souvent provocante. Son art, conçu pour la reproduction \
+photomécanique, a marqué l'Art nouveau, l'illustration du XXᵉ siècle et le graphisme."""
+
+[[artistes]]
+nom = "Théophile-Alexandre Steinlen"
+vie = "Lausanne, 10 novembre 1859 – Paris, décembre 1923"
+biographie = """
+Né à Lausanne, Théophile-Alexandre Steinlen étudie un temps à l'université de sa \
+ville, puis travaille comme dessinateur de motifs pour une fabrique de textiles de \
+Mulhouse. En 1881, il s'installe à Paris, à Montmartre, où il fréquente le cabaret du \
+Chat Noir de Rodolphe Salis. Il collabore au journal du cabaret, puis illustre les \
+chansons d'Aristide Bruant et dessine pendant des années pour le Gil Blas illustré, où \
+paraissent des centaines de ses images de la rue, des ouvriers et des petits métiers. \
+Il devient l'un des grands affichistes de son temps, avec la Tournée du Chat Noir, le \
+Lait pur stérilisé de la Vingeanne ou la grande affiche La Rue, dessinée pour \
+l'imprimeur Charles Verneau. Proche des milieux anarchistes et socialistes, il donne \
+de nombreux dessins à la presse engagée, comme L'Assiette au beurre. Naturalisé \
+français en 1901, il témoigne pendant la Grande Guerre de la souffrance des soldats, \
+des réfugiés et des civils. Il meurt à Paris en 1923."""
+style = """
+Steinlen est un dessinateur de la vie moderne : il observe les ouvriers, les \
+blanchisseuses, les enfants, les chats et la misère des faubourgs avec une profonde \
+sympathie. Son trait souple et puissant, ses silhouettes simplifiées et ses couleurs \
+franches, nourris par l'estampe japonaise, donnent à ses affiches une grande force. \
+Son art engagé a marqué le jeune Picasso et les dessinateurs de presse du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Winsor McCay"
+vie = "Canada ou Michigan, vers 1867 – New York, 26 juillet 1934"
+biographie = """
+Les origines de Zenas Winsor McCay restent incertaines : il serait né au Canada ou \
+dans le Michigan, entre 1867 et 1871. Il grandit dans le Michigan, où il reçoit les \
+seules vraies leçons de sa vie auprès d'un professeur de dessin de perspective. Il \
+travaille d'abord pour des cirques et des musées de curiosités populaires, dont il \
+peint les affiches et les décors, notamment à Chicago puis à Cincinnati, où il devient \
+dessinateur de presse. En 1903, il entre au New York Herald. Il y crée Little Sammy \
+Sneeze et Dream of the Rarebit Fiend, puis, en 1905, Little Nemo in Slumberland. \
+Pionnier de l'animation, il réalise un premier film d'après Little Nemo en 1911, puis \
+Gertie le dinosaure en 1914, qu'il présente sur les scènes de music-hall, et Le \
+Naufrage du Lusitania en 1918. Passé au service du patron de presse William Randolph \
+Hearst, il consacre ses dernières années surtout à des dessins éditoriaux. Il meurt à \
+New York, à Brooklyn, en 1934."""
+style = """
+McCay est le premier grand virtuose de la bande dessinée : il exploite toute la \
+surface de la page, fait varier la taille des cases au gré du récit et dessine des \
+architectures d'une précision stupéfiante. Son trait clair, marqué par l'Art nouveau, \
+sert un imaginaire du rêve et de la métamorphose. Il a influencé des générations \
+d'auteurs, de Maurice Sendak aux dessinateurs européens, et ouvert la voie au dessin \
+animé."""
+
+[[artistes]]
+nom = "Leonetto Cappiello"
+vie = "Livourne, 9 avril 1875 – Cannes, 2 février 1942"
+biographie = """
+Né à Livourne, en Toscane, dans une famille de négociants, Leonetto Cappiello apprend \
+à dessiner pratiquement seul. Il s'installe à Paris en 1898, où ses portraits-charges \
+des vedettes de la scène, réunis dans l'album Nos actrices en 1899, et ses dessins \
+pour Le Rire le rendent vite célèbre. La même année, il dessine sa première affiche, \
+pour le journal Frou-Frou. Travaillant bientôt sous contrat avec l'imprimeur Pierre \
+Vercasson, il devient le maître de l'affiche publicitaire : Chocolat Klaus en 1903, Le \
+Thermogène en 1909, puis Cinzano, Campari, le Bouillon Kub ou les chaussures Bally. Il \
+dessine pour toutes sortes de produits, et ses figures fantaisistes deviennent \
+familières à des millions de passants. Il est aussi peintre et décorateur. Naturalisé \
+français en 1930, il quitte Paris pendant la Seconde Guerre mondiale pour la Côte \
+d'Azur et meurt à Cannes en 1942."""
+style = """
+Cappiello est considéré comme le père de l'affiche publicitaire moderne. Il remplace \
+les compositions décoratives de l'Art nouveau par une seule figure, souvent \
+fantaisiste, aux couleurs vives, détachée sur un fond sombre ou uni, et qui reste en \
+mémoire associée à la marque. Venu de la caricature, il a le sens de la synthèse et du \
+mouvement. Sa méthode a inspiré les affichistes de l'Art déco, de Cassandre à Paul \
+Colin."""
+
+[[artistes]]
+nom = "Abel Faivre"
+vie = "Lyon, 30 mars 1867 – Nice, 13 août 1945"
+biographie = """
+Jules-Abel Faivre étudie d'abord à l'École des beaux-arts de Lyon, sa ville natale, \
+puis à Paris, à l'Académie Julian. Il expose des portraits et des scènes de genre au \
+Salon, mais se fait surtout connaître comme dessinateur humoristique dans la presse \
+illustrée, alors en plein essor : Le Rire, Le Journal, L'Assiette au beurre et bien \
+d'autres publient ses dessins, souvent consacrés aux travers de la bourgeoisie, et aux \
+conversations de salon. Ses légendes, très travaillées, sont aussi drôles que ses \
+images. Pendant la Première Guerre mondiale, il met son talent au service de la \
+propagande : il dessine pour la presse des caricatures patriotiques et signe plusieurs \
+affiches pour les emprunts de la Défense nationale et la collecte de l'or, dont On les \
+aura !, en 1916, la plus célèbre. Après la guerre, il continue de dessiner pour la \
+presse et de peindre. Il meurt à Nice en 1945, à soixante-dix-huit ans."""
+style = """
+Faivre est d'abord un caricaturiste à l'œil acéré et au trait sûr, qui croque d'un \
+dessin rapide les ridicules de la société de la Belle Époque. Dans ses affiches de \
+guerre, il adopte une manière plus grave, presque picturale, au crayon lithographique, \
+et sait condenser une émotion collective en une seule figure. Ses dessins de presse \
+font de lui un témoin précieux des mœurs de son temps."""

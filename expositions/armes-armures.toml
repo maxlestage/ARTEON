@@ -1,0 +1,1004 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ARMES ET ARMURES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/armes-armures/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /armes-armures.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 45
+nom_court = "Armes et armures"
+mouvement = "Armes et armures"
+cadre = "vitrine"
+couleur = "#6a3b22"
+titre = "Armes et armures, l'art de la guerre"
+artiste = "Greenwich, Paris, Bourgogne, Japon, Empire ottoman, Inde…"
+dates = "VIIᵉ siècle av. J.-C. – 1819"
+accroche = "Exposition virtuelle · Metropolitan Museum of Art, New York"
+introduction = """
+Une armure, un casque, un sabre sont des outils de guerre, mais aussi des œuvres \
+d'orfèvres, de ciseleurs, de laqueurs et de peintres, faites pour protéger, \
+impressionner et dire le rang de celui qui les porte. La visite réunit dix objets, du \
+casque d'un hoplite grec aux pistolets d'ivoire de Catherine II, en passant par le roi \
+anglo-saxon de Sutton Hoo, les samouraïs, les ducs de Bourgogne, les rois de France et \
+d'Angleterre, les Ottomans et l'Inde. Le bâtiment s'inspire des galeries des armes et \
+armures du Metropolitan Museum of Art de New York : une grande cour haute où se \
+dressent deux armures royales, d'où l'on gagne quatre galeries. Les objets y sont \
+présentés en vitrine."""
+vitrine = "armure-henri-ii.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Metropolitan Museum of Art"
+ville = "New York, États-Unis"
+construction = "Fondé en 1870 ; installé sur la Cinquième Avenue en 1880"
+presentation = """
+Fondé en 1870 par un groupe de citoyens new-yorkais qui voulaient doter leur ville d'un \
+grand musée d'art, le Metropolitan Museum of Art s'installe en 1880 dans un bâtiment de \
+brique dessiné par Calvert Vaux et Jacob Wrey Mould, en bordure de Central Park. \
+Agrandi sans cesse, il reçoit en 1902 sa grande façade de style Beaux-Arts sur la \
+Cinquième Avenue, due à Richard Morris Hunt. Les armes et armures y ont un département \
+propre depuis 1912, sous la conduite de Bashford Dean, zoologiste passionné d'armures \
+japonaises. La collection s'enrichit de l'achat de la collection du duc de Dino en \
+1904, puis du legs de l'ingénieur George Cameron Stone, en 1935, riche en armes d'Asie \
+et du monde islamique. Au rez-de-chaussée, une grande cour réunit des armures équestres \
+européennes, cavaliers et chevaux bardés d'acier ; autour, des galeries sont consacrées \
+à l'Europe, au Japon, au monde islamique et aux armes à feu."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée de la cour du Met, d'où rayonnent les galeries. On \
+entre par le sud dans « La cour des armures », large de vingt mètres et haute de onze, \
+aux murs couleur de pierre, où se font face deux armures royales, française et \
+anglaise. À l'ouest s'ouvre « Casques de héros », consacrée à la Grèce et au roi de \
+Sutton Hoo ; à l'est, « Le Japon des samouraïs ». Au nord, « Le bouclier et le \
+pistolet » réunit un pavois bourguignon et les pistolets de Catherine II, puis mène à \
+la dernière salle, « D'Istanbul à Lucknow »."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré des galeries des armes et armures du Metropolitan Museum of Art de New
+# York : une grande cour haute, aux murs de pierre claire, où se dressent les
+# armures royales, distribue les galeries ; à l'ouest les casques antiques et
+# anglo-saxons, à l'est le Japon, au nord, en enfilade, le bouclier et le pistolet,
+# puis les armes d'Istanbul et de Lucknow. x et z : le centre de la salle (x vers
+# l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "La cour des armures"
+theme = "Dans la grande cour, deux armures de rois : Henri II de France et le champion d'Élisabeth Iʳᵉ."
+murs = "#e3ddd0"
+x = 0
+z = 0
+largeur = 20
+profondeur = 16
+hauteur = 11
+portes = ["sud", "ouest", "est", "nord"]
+
+[[salles]]
+nom = "Casques de héros"
+theme = "Le casque de bronze d'un hoplite grec et le casque du roi anglo-saxon de Sutton Hoo."
+murs = "#e6dccb"
+x = -16
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Le Japon des samouraïs"
+theme = "Une grande armure de cavalier du XIVᵉ siècle et la paire de sabres des samouraïs d'Edo."
+murs = "#e8dcc6"
+x = 16
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Le bouclier et le pistolet"
+theme = "Un pavois peint aux emblèmes de Bourgogne et les pistolets d'ivoire de Catherine II."
+murs = "#e4ddd2"
+x = 0
+z = -14
+largeur = 14
+profondeur = 12
+hauteur = 6
+portes = ["nord"]
+
+[[salles]]
+nom = "D'Istanbul à Lucknow"
+theme = "Un casque turban ottoman et un sabre indien au fourreau d'émail."
+murs = "#e9dbc5"
+x = 0
+z = -26
+largeur = 14
+profondeur = 12
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Armure d'Henri II, roi de France"
+artiste = "Armuriers de la cour de France"
+annee = "vers 1555"
+image = "armure-henri-ii.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Armor_of_Henry_II,_King_of_France_(reigned_1547–59)_MET_DP256970.jpg"
+technique = "Acier repoussé, bleui, doré et argenté, cuir, textile ; hauteur 188 cm, 24,2 kg"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une armure de parade couverte de reliefs d'or et d'argent, faite pour le roi qui mourut d'un coup de lance en tournoi."
+description = """
+L'armure se tient debout, complète, de la crête du casque aux solerets qui couvrent les \
+pieds. Le casque fermé, sommé d'une crête ciselée, ne laisse qu'une fente étroite pour \
+les yeux. Toute la surface, du plastron aux jambières, est couverte d'un décor en \
+relief : rinceaux de feuillage, figures et animaux, où l'or et l'argent alternent avec \
+le fond d'acier sombre. Au centre du plastron, un guerrier à l'antique reçoit des armes \
+que lui tendent deux femmes agenouillées. Sur les épaulières, Apollon poursuit la \
+nymphe Daphné et, ailleurs, triomphe du serpent Python qu'il vient de tuer. Des lames \
+d'acier articulées couvrent les bras, les cuisses et les pieds ; une ceinture de cuir \
+rouge et une jupe de velours cramoisi, sous la taille, complètent la présentation."""
+evocation = """
+Une telle armure n'était pas faite pour la bataille, où les reliefs auraient accroché \
+les coups au lieu de les faire glisser : c'est une armure de parade, à porter lors des \
+entrées solennelles, des revues et des fêtes de cour. Elle fait du roi un héros \
+antique, semblable au guerrier romain du plastron, et place son règne sous le signe \
+d'Apollon, dieu de la lumière et des arts. Le croissant de lune, emblème personnel \
+d'Henri II, revient en plusieurs endroits du décor ; on l'a souvent rapproché de Diane \
+de Poitiers, la favorite du roi, dont la déesse homonyme porte le croissant. À travers \
+l'acier ciselé, la cour de France affiche le goût de la Renaissance pour l'Antiquité et \
+la mythologie, et rivalise de magnificence avec l'empereur Charles Quint."""
+histoire = """
+L'armure a été réalisée vers 1555 pour Henri II (1519–1559), fils de François Iᵉʳ, roi \
+de France depuis 1547. Son décor repose sur des dessins d'artistes au service de la \
+cour : le Metropolitan Museum en attribue une partie au peintre Jean Cousin l'Ancien et \
+peut-être à l'enlumineur Baptiste Pellerin ; on l'a longtemps donné à l'orfèvre et \
+graveur Étienne Delaune, dont des projets d'armures très proches sont conservés. Le \
+métal était ensuite repoussé, ciselé, puis doré et argenté. Le roi aimait les joutes : \
+le 30 juin 1559, lors d'un tournoi donné à Paris pour célébrer la paix du \
+Cateau-Cambrésis et des mariages princiers, la lance brisée du capitaine de Montgomery \
+pénètre sous sa visière ; il meurt dix jours plus tard. L'armure est entrée au \
+Metropolitan Museum en 1939."""
+facture = """
+Le décor est travaillé au repoussé : l'armurier martèle la plaque d'acier par l'envers \
+pour faire saillir les figures, puis le ciseleur précise les contours par l'endroit. Le \
+relief reste faible, pour que les plaques gardent leur solidité et que les \
+articulations jouent librement. Le fond a été bleui, ce qui l'assombrit, puis les \
+reliefs ont reçu l'or et l'argent, qui se répondent sous la lumière comme les couleurs \
+d'une peinture. Des dessins de la cour, conservés au Met et dans d'autres musées, \
+montrent comment un même projet passait du papier à l'acier."""
+details = [
+  "Le croissant de lune, emblème d'Henri II, glissé à plusieurs endroits du décor.",
+  "Au centre du plastron, le guerrier à l'antique et les deux femmes agenouillées.",
+  "Les épaulières, où Apollon poursuit la nymphe Daphné.",
+  "La crête ciselée du casque et la fente étroite de la visière.",
+  "Les lames articulées des solerets, qui épousent la forme du pied.",
+]
+themes = ["renaissance", "parade", "mythologie", "roi", "orfèvrerie"]
+anecdote = """
+Henri II est mort d'un accident de tournoi, et non à la guerre. Sa veuve, Catherine de \
+Médicis, fit ensuite démolir l'hôtel des Tournelles, le palais près duquel la joute \
+avait eu lieu ; la place des Vosges occupe aujourd'hui une partie de son terrain."""
+salle = 1
+mur = "nord"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Armure de George Clifford, comte de Cumberland"
+artiste = "Ateliers royaux de Greenwich"
+annee = "1586"
+image = "armure-clifford.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Armor_Garniture_of_George_Clifford_(1558–1605),_Third_Earl_of_Cumberland_MET_DT259974.jpg"
+technique = "Acier gravé à l'eau-forte et doré, cuir, textile ; hauteur 176,5 cm, 27,2 kg"
+collection = "Metropolitan Museum of Art, New York"
+note = "La garniture la mieux conservée des ateliers royaux de Greenwich, faite pour le champion de la reine Élisabeth Iʳᵉ."
+description = """
+L'armure est montée debout sur un socle de bois. L'acier, presque noir, est parcouru de \
+larges bandes dorées qui courent du cou aux pieds, comme les galons d'un vêtement. Dans \
+ces bandes, un ruban s'entrelace en nœuds réguliers autour de roses, de fleurs de lys \
+et d'un chiffre formé de deux E adossés. Le plastron bombé descend en pointe sur le \
+ventre, selon la mode des pourpoints de l'époque, dite « en cosse de pois ». Le casque \
+fermé, percé de trous de respiration, porte une visière avancée en forme de bec. Sous \
+la taille dépasse le tissu rouge du costume porté dessous. Gantelets, cuissards, \
+genouillères et solerets articulés complètent l'ensemble, dont la silhouette élancée \
+est celle d'un courtisan autant que d'un guerrier."""
+evocation = """
+Le décor est une déclaration de loyauté. Les roses sont celles des Tudors, les fleurs \
+de lys rappellent la prétention des rois d'Angleterre au trône de France, et les deux E \
+adossés forment le chiffre d'Élisabeth Iʳᵉ. Porter cette armure, c'était se présenter \
+en serviteur et en chevalier de la reine. Elle dit aussi la culture du tournoi à la \
+cour élisabéthaine : chaque année, le 17 novembre, jour anniversaire de son avènement, \
+la reine assistait à des joutes où les courtisans rivalisaient de devises, de costumes \
+et de compliments. Dans ce théâtre chevaleresque, à une époque où les armes à feu \
+dominaient déjà les champs de bataille, l'armure était un costume de scène autant \
+qu'une protection."""
+histoire = """
+Henri VIII avait installé vers 1515, dans son palais de Greenwich, près de Londres, un \
+atelier d'armuriers venus d'Allemagne, pour rivaliser avec les ateliers de Milan et \
+d'Augsbourg. En 1586, sous la direction du maître armurier Jacob Halder, l'atelier \
+réalise pour George Clifford (1558–1605), troisième comte de Cumberland, une \
+garniture : une armure complétée de pièces de rechange qui permettaient de l'adapter à \
+la guerre ou aux différents jeux du tournoi. Marin et corsaire, Clifford mène plusieurs \
+expéditions contre l'Espagne et devient en 1590 le champion de la reine aux joutes. Le \
+dessin de son armure figure dans un album de la fin du XVIᵉ siècle consacré aux armures \
+de Greenwich, aujourd'hui au Victoria and Albert Museum. Le Metropolitan Museum \
+l'acquiert en 1932."""
+facture = """
+Les armures de Greenwich se reconnaissent à leurs formes amples et nettes et à leurs \
+décors gravés plutôt que repoussés. Les bandes ornementales ont été gravées à \
+l'eau-forte : on protège l'acier d'un vernis, on y trace le dessin à la pointe, puis un \
+acide creuse les lignes découvertes ; l'or est ensuite appliqué sur ces bandes. Le \
+contraste entre l'acier sombre et l'or donne à l'armure l'allure d'un vêtement brodé. \
+Les pièces de rechange, en grande partie conservées, se fixaient sur l'armure par des \
+rivets, des sangles et des crochets."""
+details = [
+  "Les deux E adossés, chiffre de la reine Élisabeth Iʳᵉ, pris dans les entrelacs dorés.",
+  "Les roses des Tudors et les fleurs de lys qui alternent le long des bandes.",
+  "Le plastron en pointe, à la mode des pourpoints élisabéthains.",
+  "Les trous de respiration percés dans la visière du casque.",
+  "Le tissu rouge qui dépasse sous la taille, entre les plaques.",
+]
+themes = ["tournoi", "élisabéthain", "angleterre", "chevalerie", "gravure"]
+anecdote = """
+Une miniature de Nicholas Hilliard montre George Clifford en champion de la reine, vêtu \
+d'une armure semblable : il porte épinglé à son chapeau un gant, gage que lui aurait \
+remis Élisabeth Iʳᵉ."""
+salle = 1
+mur = "nord"
+place = 5
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Casque de type corinthien"
+artiste = "Grèce archaïque"
+annee = "vers 650–600 av. J.-C."
+image = "casque-corinthien.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bronze_helmet_of_Corinthian_type_MET_DP119913.jpg"
+technique = "Bronze martelé, 23 × 26,8 × 21,2 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le casque des hoplites grecs, battu dans une seule feuille de bronze : il couvre toute la tête et ne laisse voir que les yeux et la bouche."
+description = """
+Le casque, haut de vingt-trois centimètres et vu ici de trois quarts, a la forme d'une \
+cloche de bronze qui enveloppe le crâne, les joues et la nuque. Sa surface, couverte \
+d'une patine verte tachée de brun, garde par endroits l'éclat du métal. Sur le devant, \
+deux larges ouvertures pour les yeux sont séparées par un nasal, une languette qui \
+protège le nez. Les couvre-joues descendent jusqu'au menton et laissent entre eux une \
+fente verticale pour la bouche. À l'arrière, le bord se relève légèrement pour dégager \
+la nuque. Une rangée de petits trous court le long des bords : ils servaient à coudre \
+une doublure de cuir ou de feutre, qui rendait le casque supportable et amortissait les \
+coups."""
+evocation = """
+Le casque corinthien est l'image même du guerrier grec. Il couvre le visage d'un masque \
+de métal impassible, qui rend le combattant anonyme et effrayant. Mais il isole aussi : \
+on y entend mal et on y voit peu sur les côtés, ce qui convient à l'hoplite, fantassin \
+qui se bat épaule contre épaule dans la phalange, son bouclier rond protégeant en \
+partie son voisin. Le soldat-citoyen payait lui-même son équipement : un tel casque \
+signale un homme d'une certaine aisance. Les peintres de vases et les sculpteurs en ont \
+fait l'attribut des héros et d'Athéna, souvent représentés le casque relevé sur le \
+front, le visage découvert, comme si l'on pouvait voir le guerrier au repos derrière le \
+masque."""
+histoire = """
+Le type apparaît vers 700 av. J.-C., sans doute dans la région de Corinthe, d'où son \
+nom, déjà employé par l'historien Hérodote au Vᵉ siècle av. J.-C. Ce casque, daté de la \
+seconde moitié du VIIᵉ siècle, appartient aux premières générations du modèle, qui \
+évoluera ensuite vers des formes plus galbées. Pendant deux siècles, il équipe les \
+hoplites de nombreuses cités grecques. Après une bataille, les vainqueurs consacraient \
+souvent les armes prises à l'ennemi dans les grands sanctuaires : des centaines de \
+casques ont ainsi été retrouvés à Olympie. Celui-ci est entré au Metropolitan Museum en \
+1920, acquis grâce au fonds Rogers, du nom d'un donateur qui avait légué au musée une \
+fortune destinée aux achats."""
+facture = """
+Le casque a été battu au marteau à partir d'une seule plaque de bronze, alliage de \
+cuivre et d'étain, sans soudure : un tour de force, car il faut étirer le métal sur le \
+sommet en le laissant plus épais aux bords, sans jamais le fendre. L'armurier \
+travaillait sur une forme, en réchauffant régulièrement le métal pour l'empêcher de \
+devenir cassant. Les bords ont ensuite été percés pour la doublure. À l'origine, le \
+bronze poli avait la couleur de l'or ; la patine verte est le fruit de la corrosion au \
+fil des siècles."""
+details = [
+  "Le nasal, étroite languette de métal entre les deux yeux.",
+  "La fente verticale entre les couvre-joues, à la hauteur de la bouche.",
+  "La rangée de petits trous le long des bords, pour coudre la doublure.",
+  "Le bord arrière légèrement relevé, qui dégage la nuque.",
+  "Les taches brunes où le bronze apparaît sous la patine verte.",
+]
+themes = ["grèce", "hoplite", "bronze", "antiquité", "casque"]
+anecdote = """
+Les sculpteurs grecs représentaient souvent les stratèges coiffés d'un casque \
+corinthien relevé sur le front. C'est ainsi que Périclès apparaît dans les copies \
+romaines de son portrait par Crésilas, conservées notamment au British Museum et au \
+Vatican."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Casque de Sutton Hoo"
+artiste = "Royaume d'Est-Anglie"
+annee = "début du VIIᵉ siècle"
+image = "casque-sutton-hoo.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Sutton_Hoo_helmet_2016.png"
+technique = "Fer, bronze étamé, bronze doré, argent, grenats ; hauteur 31,8 cm"
+collection = "British Museum, Londres"
+note = "Retrouvé écrasé en centaines de fragments dans une tombe à bateau, le casque d'un roi anglo-saxon, reconstitué en 1970-1971."
+description = """
+Le casque, vu de face sur un fond noir, enveloppe toute la tête. Un masque de métal \
+couvre le visage : on y lit des sourcils, un nez, une bouche et une moustache en \
+relief, autour de deux orbites vides. Les sourcils, garnis de fils d'argent et de \
+petits grenats, se terminent sur les tempes par des têtes de sanglier dorées. Une crête \
+de métal court au sommet du crâne, du front à la nuque, et chacune de ses extrémités \
+porte une tête de dragon. Sur la calotte et sur les larges couvre-joues, des plaques de \
+bronze, aujourd'hui brunies et lacunaires, portaient des scènes estampées. Entre les \
+fragments d'origine, les parties manquantes ont été comblées pour redonner au casque sa \
+forme complète."""
+evocation = """
+Le visage de métal donne à son porteur une présence presque surnaturelle. Le nez, la \
+moustache et les sourcils forment ensemble un oiseau ou un dragon volant, ailes \
+déployées, dont la tête vient rejoindre celle de la crête : un animal protecteur posé \
+sur le visage. Les sangliers étaient, dans le monde germanique, des symboles de force \
+et de protection guerrière ; le poème Beowulf évoque d'ailleurs des casques ornés de \
+sangliers. Les scènes estampées, guerriers dansants et cavalier terrassant un ennemi, \
+rattachent le casque à un monde de héros, et peut-être de dieux. Les casques retrouvés \
+dans les tombes de Vendel et de Valsgärde, en Suède, montrent des décors très proches \
+et disent les liens entre les deux rives de la mer du Nord."""
+histoire = """
+En 1939, à Sutton Hoo, dans le Suffolk, l'archéologue Basil Brown fouille pour la \
+propriétaire du domaine, Edith Pretty, le plus grand des tumulus. Il y dégage \
+l'empreinte d'un navire d'environ vingt-sept mètres, dont le bois avait disparu, et une \
+chambre funéraire remplie d'objets précieux. On y voit le plus souvent la tombe de \
+Rædwald, roi d'Est-Anglie mort vers 624, sans certitude. Le casque, rouillé et écrasé \
+par l'effondrement de la chambre, est réduit en plusieurs centaines de fragments. Edith \
+Pretty offre l'ensemble du trésor au British Museum. Une première reconstitution, \
+réalisée en 1945-1946, est entièrement reprise en 1970-1971 par Nigel Williams : c'est \
+celle que l'on voit aujourd'hui."""
+facture = """
+La calotte de fer était recouverte de plaques de bronze étamé, donc d'aspect argenté, \
+estampées à l'aide de matrices : on pressait la mince feuille sur un relief pour y \
+imprimer une scène, répétée plusieurs fois. Des baguettes de bronze doré séparaient ces \
+panneaux. Les sourcils incrustés de fils d'argent, les grenats sertis et les têtes de \
+sanglier dorées témoignent d'un savoir-faire d'orfèvre, celui-là même qui a produit les \
+boucles et les fermoirs d'or et de grenats de la même tombe. La reconstitution de \
+1970-1971 a replacé chaque fragment en fonction des motifs estampés et des traces de \
+corrosion."""
+details = [
+  "Les petites têtes de sanglier dorées au bout des sourcils.",
+  "Les fils d'argent incrustés dans les sourcils, à côté des grenats.",
+  "La moustache et la bouche en relief, sous le nez du masque.",
+  "La tête de dragon à l'extrémité de la crête, au-dessus du front.",
+  "Les fragments brunis des plaques estampées, sur la calotte.",
+]
+themes = ["anglo-saxon", "tombe", "archéologie", "roi", "haut moyen âge"]
+anecdote = """
+Les grenats de l'un des deux sourcils n'ont pas de feuille d'or au revers, si bien que \
+cet œil brille moins que l'autre. Des archéologues y ont vu une allusion à Odin, le \
+dieu borgne des peuples germaniques ; l'hypothèse reste discutée."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Armure ō-yoroi, dite d'Ashikaga Takauji"
+artiste = "Japon, époque de Kamakura"
+annee = "début du XIVᵉ siècle"
+image = "o-yoroi.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Armor_(Yoroi)_MET_DT784.jpg"
+technique = "Fer, laque, cuir, soie, cuivre doré ; hauteur 95,3 cm, 11,8 kg"
+collection = "Metropolitan Museum of Art, New York"
+note = "La grande armure des cavaliers archers du Japon médiéval, que la tradition attribue au fondateur du shogunat des Ashikaga."
+description = """
+L'armure est présentée sur un support, sans personnage. En haut, le casque, une calotte \
+de fer à plaques rivées, porte deux grandes cornes de cuivre doré en forme de V, les \
+kuwagata, et un large couvre-nuque évasé, fait de rangées de lamelles, dont les bords \
+se retournent de chaque côté du visage. Au-dessous, la cuirasse forme une sorte de \
+boîte : son devant est tendu d'un cuir imprimé de motifs, où l'on distingue une figure. \
+Des plaques couvertes du même cuir protègent le haut de la poitrine. Le bas de l'armure \
+est une jupe en plusieurs pans, faite de rangées de petites lamelles laquées, liées \
+entre elles par des cordons de soie dont les couleurs, crème, brun, orangé et vert, ont \
+pâli avec le temps."""
+evocation = """
+L'ō-yoroi, la « grande armure », est celle des guerriers de haut rang qui combattaient \
+à cheval, l'arc à la main, aux XIIᵉ, XIIIᵉ et XIVᵉ siècles. Sa forme en boîte, ses \
+grandes plaques et son cuir lisse sur la poitrine répondent à ce combat : la corde de \
+l'arc devait glisser sans accrocher. Mais elle est aussi un signe de rang, par son coût \
+et par la richesse de ses laçages, dont les couleurs pouvaient distinguer un guerrier \
+sur le champ de bataille. Les grandes cornes du casque étaient un insigne et non une \
+défense. À travers ce type d'armure, le Japon a fixé l'image du samouraï des récits \
+épiques comme le Dit des Heike, où les guerriers se nomment avant de combattre."""
+histoire = """
+Selon une tradition rapportée par le Metropolitan Museum, cette armure aurait appartenu \
+à Ashikaga Takauji (1305–1358), qui contribua en 1333 à renverser le shogunat de \
+Kamakura puis fonda le shogunat des Ashikaga, et il l'aurait offerte au sanctuaire de \
+Shinomura Hachimangū, près de Kyoto. Aucun document ne permet de le confirmer, et l'on \
+sait peu de chose de son histoire avant son acquisition par Bashford Dean, premier \
+conservateur des armes et armures du Metropolitan Museum, qui l'a donnée au musée en \
+1914. Elle compte parmi les rares armures japonaises de cette époque conservées hors du \
+Japon, et le musée lui a consacré en 1989 une étude dans sa revue savante."""
+facture = """
+Une armure japonaise de ce type n'est pas faite de grandes plaques forgées, comme en \
+Europe, mais de centaines de petites lamelles de fer et de cuir durci, percées de \
+trous, laquées pour résister à l'humidité, puis assemblées en rangées par des laçages \
+de soie, l'odoshi. L'ensemble est souple et relativement léger, mais long à fabriquer \
+et à entretenir. Le cuir de la poitrine a été décoré au pochoir. Le casque, fait de \
+plaques rivées en rayons, est l'œuvre d'un forgeron spécialisé, et les ornements de \
+cuivre doré, celle de ciseleurs."""
+details = [
+  "Les deux cornes dorées en V du casque, les kuwagata.",
+  "Le large couvre-nuque en lamelles, retourné de chaque côté du visage.",
+  "Le cuir imprimé de la cuirasse, où apparaît une figure.",
+  "Les rangées de lamelles laquées de la jupe, tenues par des cordons de soie.",
+  "Les couleurs pâlies des laçages, du crème au vert.",
+]
+themes = ["japon", "samouraï", "laque", "soie", "cavalier"]
+anecdote = """
+Bashford Dean, qui fit entrer cette armure au Met, était à l'origine un spécialiste des \
+poissons, professeur de zoologie à l'université Columbia. Il fut à la fois conservateur \
+des reptiles et des poissons au Muséum américain d'histoire naturelle et conservateur \
+des armures au Met."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Paire de sabres (daishō)"
+artiste = "Japon, époque d'Edo"
+annee = "lame du katana datée 1440 ; montures de la fin du XVIIIᵉ siècle"
+image = "daisho.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Blades_and_Mountings_for_a_Pair_of_Swords_(Daishō)_MET_DT306021.jpg"
+technique = "Acier, bois laqué, cuir de raie, soie, alliages de cuivre, or ; katana 86,7 cm, wakizashi 66 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le grand et le petit sabre que tout samouraï portait à la ceinture : des lames du XVᵉ siècle dans des montures du XVIIIᵉ."
+description = """
+Les deux sabres sont posés à l'horizontale, l'un au-dessus de l'autre, rangés dans \
+leurs fourreaux. En haut, le katana, le grand sabre, long de quatre-vingt-sept \
+centimètres ; en bas, le wakizashi, plus court. Les fourreaux de bois laqué noir sont \
+lisses et brillants, légèrement courbes comme les lames qu'ils protègent ; chacun \
+porte, près de l'entrée, une petite saillie percée où passait le cordon qui le fixait à \
+la ceinture. À droite, une garde ronde et plate, la tsuba, sépare le fourreau de la \
+poignée. Les poignées sont serrées dans un tressage de soie beige croisé en losanges, \
+qui laisse voir le cuir de raie. Tout est sobre, assorti, presque austère : seules les \
+petites pièces de métal révèlent le luxe de l'ensemble."""
+evocation = """
+À l'époque d'Edo (1603–1868), la paire de sabres était à la fois l'arme et l'insigne \
+des samouraïs, la seule classe autorisée à la porter. Le daishō, littéralement « le \
+grand et le petit », se glissait dans la ceinture, tranchant vers le haut. On ne le \
+portait pas seulement pour combattre : dans un Japon en paix pendant plus de deux \
+siècles, il disait le rang, la dignité et la discipline du guerrier. L'accord parfait \
+des deux montures, faites ensemble, en est l'expression. Selon un dicton souvent cité, \
+le sabre est l'âme du samouraï : les lames anciennes se transmettaient et se vénéraient \
+de génération en génération, comme ici, où des lames du XVᵉ siècle ont été habillées \
+trois siècles plus tard."""
+histoire = """
+La lame du katana porte une date correspondant à 1440, en pleine époque de Muromachi ; \
+celle du wakizashi a été forgée elle aussi au XVᵉ siècle. À la fin du XVIIIᵉ siècle, un \
+propriétaire les a fait remonter ensemble dans des montures neuves et assorties : \
+c'était l'usage, les lames anciennes restant précieuses tandis que les montures \
+suivaient la mode. Les ornements de métal sont attribués à Iwamoto Konkan, ciseleur de \
+l'école Iwamoto, à Edo. En 1876, un édit du gouvernement de Meiji interdit le port du \
+sabre en public et met fin à cette tradition. La paire a appartenu au collectionneur \
+new-yorkais Howard Mansfield, qui l'a donnée au Metropolitan Museum en 1936 avec sa \
+collection d'objets japonais."""
+facture = """
+Une lame japonaise est forgée en repliant plusieurs fois l'acier sur lui-même, puis en \
+associant un acier dur pour le tranchant et un acier plus doux pour le cœur. Avant la \
+trempe, le forgeron enduit la lame d'argile, plus mince près du tranchant : celui-ci \
+refroidit plus vite et devient très dur, tandis que le dos reste souple. La frontière \
+entre les deux dessine sur la lame une ligne ondulée, le hamon. Les montures sont \
+l'œuvre d'autres artisans : laqueurs pour les fourreaux, ciseleurs pour la garde et les \
+petites pièces en alliages de cuivre, comme le shibuichi, mélange de cuivre et \
+d'argent."""
+details = [
+  "La tsuba, garde ronde et plate entre la poignée et le fourreau.",
+  "Le tressage de soie croisé en losanges qui serre les poignées.",
+  "La petite saillie percée sur chaque fourreau, pour le cordon de ceinture.",
+  "La courbure plus longue du grand sabre, en haut.",
+  "Le laque noir des fourreaux, poli comme un miroir.",
+]
+themes = ["japon", "samouraï", "sabre", "laque", "edo"]
+anecdote = """
+Au Japon, un forgeron signe et date sa lame sur la soie, la partie cachée dans la \
+poignée. Pour lire la signature d'un sabre, il faut donc retirer la poignée, maintenue \
+par une simple cheville de bambou, le mekugi."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Pavois aux emblèmes de Bourgogne"
+artiste = "Pays-Bas bourguignons"
+annee = "vers 1474–1475"
+image = "pavois-bourguignon.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Standschild_(pavese)_met_Andreaskruis_Bourgondisch_schild_met_Andreas-kruis,_NG-KOG-2517-C.jpg"
+technique = "Bois de tilleul, toile de lin, cuir de cerf, fer, peinture ; 105 × 60,4 cm"
+collection = "Rijksmuseum, Amsterdam (dépôt du Koninklijk Oudheidkundig Genootschap)"
+note = "Un grand bouclier de fantassin peint de la croix de saint André et des briquets, emblèmes des ducs de Bourgogne."
+description = """
+Le bouclier, haut d'un mètre, est un long panneau bombé, arrondi en haut et rétréci \
+vers le bas, où il se terminait par une pointe aujourd'hui brisée. Une arête verticale \
+le partage en deux moitiés : la gauche est peinte en blanc, la droite en bleu sombre. \
+Par-dessus, une grande croix rouge en X, la croix de saint André, occupe toute la \
+surface. Entre ses branches, quatre motifs jaunes en forme de B représentent des \
+briquets, ces pièces d'acier que l'on frappait contre une pierre pour faire du feu, et \
+quatre petites pierres blanches et noires figurent des silex. Tout autour jaillissent \
+de petites flammes rouges. La peinture est craquelée et écaillée par endroits, et le \
+bord supérieur droit est entamé."""
+evocation = """
+Le pavois parle le langage héraldique de la maison de Bourgogne. La croix de saint \
+André, patron des ducs, était leur signe de ralliement ; elle passera plus tard dans \
+les drapeaux espagnols sous le nom de croix de Bourgogne. Le briquet frappant la pierre \
+d'où jaillissent les étincelles était l'emblème de Philippe le Bon, et il forme encore \
+le collier de l'ordre de la Toison d'or. Peint sur le bouclier d'un archer ou d'un \
+arbalétrier, ce décor faisait de chaque soldat un porteur des signes de son prince, \
+reconnaissable de loin. Il dit l'ambition de Charles le Téméraire, qui rêvait de faire \
+de ses territoires un royaume et voulait une armée à sa mesure."""
+histoire = """
+Le pavois servait à l'infanterie, en particulier aux arbalétriers : fiché en terre \
+grâce à une pointe de fer, il formait un abri derrière lequel on rechargeait son arme. \
+Selon le Rijksmuseum, ce bouclier a probablement été pris par les habitants de Cologne \
+aux troupes de Charles le Téméraire, duc de Bourgogne, lorsque celui-ci voulut rétablir \
+l'archevêque Robert du Palatinat, chassé de son archevêché. C'est dans cette guerre que \
+le duc assiégea pendant près d'un an la ville de Neuss, en 1474-1475, sans parvenir à \
+la prendre. Le bouclier appartient au Koninklijk Oudheidkundig Genootschap, société \
+savante d'Amsterdam, qui l'a mis en dépôt au Rijksmuseum en 1974."""
+facture = """
+Le corps du bouclier est fait de bois de tilleul, léger, mis en forme et bombé. On l'a \
+recouvert de toile de lin, puis de cuir de cerf collé, avant de le peindre. Ce montage \
+en couches rendait le bouclier plus résistant aux chocs et empêchait le bois de se \
+fendre. Au revers, laissé sans peinture, quatre points d'attache recevaient des \
+courroies de cuir, et un réseau de clous tenait sans doute un petit coussin. Le décor \
+est peint vite, à larges aplats et en couleurs franches, comme une enseigne : il devait \
+être lu de loin, sur le champ de bataille."""
+details = [
+  "La croix rouge en X, qui court d'un angle à l'autre.",
+  "Les briquets jaunes en forme de B, emblème de Philippe le Bon.",
+  "Les petits silex blancs et noirs, d'où partent les étincelles.",
+  "Les flammes rouges semées sur tout le fond.",
+  "La pointe brisée, en bas, au-dessus de laquelle deux trous recevaient une pointe de fer.",
+]
+themes = ["bourgogne", "héraldique", "bouclier", "siège", "moyen âge"]
+anecdote = """
+La croix de saint André des ducs de Bourgogne a survécu à leur dynastie : passée aux \
+Habsbourg d'Espagne, leurs héritiers, la « croix de Bourgogne » a flotté pendant des \
+siècles sur les drapeaux espagnols, jusqu'en Amérique."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Paire de pistolets de l'impératrice Catherine II"
+artiste = "Russie, armuriers de la cour impériale"
+annee = "1786"
+image = "pistolets-catherine-ii.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Pair_of_Flintlock_Pistols_of_Empress_Catherine_the_Great_(1729–1796)_MET_LC-1986_265_1_2-009.jpg"
+technique = "Acier, ivoire, or, laiton ; longueur de chaque pistolet 36,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Signés par Johan Adolph Grecke, armurier de la cour de Saint-Pétersbourg : deux pistolets à crosse d'ivoire faits pour Catherine II."
+description = """
+Les deux pistolets sont posés tête-bêche, l'un au-dessus de l'autre, sur un fond gris. \
+Leur fût et leur crosse sont taillés dans l'ivoire, d'un blanc crème veiné de fines \
+craquelures. Les canons, d'acier bleui presque noir, sont rehaussés de rinceaux dorés \
+près de la culasse. Sur le côté, la platine à silex montre le chien, qui serrait la \
+pierre, et la batterie, contre laquelle elle venait frapper. Sur le pistolet du haut, \
+on lit le nom GRECKE gravé sur la platine. La crosse recourbée se termine par une \
+calotte de métal ciselé et doré ; sur le pistolet du bas, une applique d'argent et d'or \
+en forme de rocaille orne le côté opposé à la platine. Chaque arme mesure trente-sept \
+centimètres."""
+evocation = """
+Ces pistolets ne sont pas faits pour la guerre mais pour le prestige et le plaisir : \
+ils appartenaient à une garniture d'armes de chasse, un ensemble assorti destiné à une \
+souveraine. L'ivoire, matière fragile et coûteuse, en dit long : de telles armes \
+montraient la richesse de la cour et le savoir-faire de ses artisans, capables de \
+rivaliser avec Paris ou Londres. Sous Catherine II, Saint-Pétersbourg se veut une \
+capitale européenne des arts et des sciences, et les armes de luxe participent à cette \
+image. Offertes ou dispersées, ces garnitures servaient aussi de présents diplomatiques \
+et de marques de faveur, comme le montre leur destin."""
+histoire = """
+Johan Adolph Grecke, armurier au service de la cour impériale de Russie, est connu de \
+1755 à 1790. En 1786, il réalise pour Catherine II, impératrice depuis 1762, une \
+garniture d'armes de chasse à monture d'ivoire : une paire de pistolets, un fusil de \
+chasse et une carabine. L'initiale E, pour Ekaterina, la forme russe de son nom, figure \
+sur l'écusson des crosses. L'ensemble a ensuite été dispersé : une partie est passée à \
+Stanislas Auguste Poniatowski, ancien favori de l'impératrice devenu roi de Pologne ; \
+le fusil de chasse est aujourd'hui au Musée national de Varsovie, la carabine est \
+perdue. Les pistolets ont été donnés au Met en 1986 par le banquier John M. Schiff, en \
+mémoire de son épouse."""
+facture = """
+Le travail réunit plusieurs métiers. L'armurier a forgé les canons et réglé les \
+platines à silex, dont le mécanisme fait jaillir l'étincelle d'un choc de la pierre sur \
+l'acier de la batterie. Un sculpteur a taillé l'ivoire, matière dure et cassante, qu'il \
+faut assembler en plusieurs pièces. Le ciseleur et le doreur ont réalisé les \
+garnitures, aux rocailles et aux rinceaux inspirés du goût rococo. Les canons, bleuis, \
+ont été décorés d'or. L'ensemble devait rester parfaitement fonctionnel : une arme de \
+luxe était aussi une arme de précision."""
+details = [
+  "Le nom GRECKE gravé sur la platine du pistolet du haut.",
+  "Le chien et la batterie de la platine à silex, prêts à frapper.",
+  "Les rinceaux d'or sur l'acier sombre des canons.",
+  "L'applique de rocaille en argent et or sur le pistolet du bas.",
+  "Les calottes ciselées et dorées au bout des crosses.",
+]
+themes = ["russie", "chasse", "ivoire", "rococo", "armes à feu"]
+anecdote = """
+La platine à silex qui équipe ces pistolets a été mise au point au début du XVIIᵉ \
+siècle à Lisieux, en Normandie, dans l'entourage de Marin Le Bourgeoys, artisan au \
+service d'Henri IV puis de Louis XIII. Son principe a servi aux armes à feu européennes \
+pendant plus de deux siècles."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Casque turban"
+artiste = "Empire ottoman"
+annee = "fin du XVᵉ – XVIᵉ siècle"
+image = "casque-turban.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Turban_Helmet_MET_DP147136.jpg"
+technique = "Acier, fer, argent, or ; hauteur 30,2 cm, diamètre 22,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un casque bulbeux aux cannelures en spirale, qui imitent les plis d'un turban ; des inscriptions arabes courent sur ses bandes dorées."
+description = """
+Le casque, haut de trente centimètres, a la forme d'un bulbe surmonté d'une haute \
+pointe. Sa partie centrale, en acier sombre, est creusée de cannelures qui tournent en \
+spirale, comme les plis d'une étoffe enroulée. Deux bandes dorées l'encadrent, en haut \
+autour de la pointe et en bas au-dessus du bord. Elles portent de grandes lettres \
+arabes incrustées d'argent, qui se détachent sur un fond d'or finement gravé. Le bord \
+inférieur est découpé de deux échancrures arrondies pour les yeux, de part et d'autre \
+d'un support vertical destiné à un nasal. De petits anneaux, le long du bord, \
+retenaient un camail de mailles qui protégeait le cou. Deux motifs dorés en forme de \
+feuille ornent la partie cannelée."""
+evocation = """
+Le nom de « casque turban », donné par les historiens modernes, vient de sa grande \
+taille et de ses cannelures, qui imitent les plis d'un turban ; on a pensé qu'il se \
+portait par-dessus un bonnet épais ou un turban. Le guerrier affiche ainsi, jusque sur \
+son armure, la coiffure de la vie civile et la parole écrite. Les inscriptions, en \
+arabe, mêlent selon les casques des formules de bénédiction, des versets du Coran et \
+les titres du souverain. Elles placent le combattant sous une protection divine et font \
+de l'objet guerrier un support de calligraphie, où l'écriture devient ornement et \
+talisman."""
+histoire = """
+Les casques turbans apparaissent à la fin du XVᵉ siècle chez les Turkmènes qui \
+dominaient alors l'Iran et l'est de l'Anatolie, et les Ottomans en adoptent la forme. \
+Le Met attribue celui-ci à un atelier turc, peut-être d'Istanbul, travaillant à la \
+manière des armuriers turkmènes. Beaucoup de ces casques ont été conservés pendant des \
+siècles dans l'arsenal ottoman installé dans l'ancienne église byzantine Sainte-Irène, \
+à Istanbul, où s'accumulaient les armes fabriquées sur place et le butin pris lors des \
+conquêtes en Iran et dans le Caucase. Au XIXᵉ siècle, une partie de ces armes est \
+sortie de l'arsenal et a gagné le marché européen. Ce casque est entré au Metropolitan \
+Museum en 1904."""
+facture = """
+Comme la plupart des casques turbans, il a été mis en forme au marteau dans une seule \
+pièce d'acier, pour obtenir le bulbe et les cannelures en spirale : un travail \
+difficile, qui demande de faire saillir et de creuser le métal en alternance. Le décor \
+associe deux techniques : la dorure, sur les bandes et les motifs en feuille, et \
+l'incrustation d'argent, qui consiste à creuser le métal pour y marteler un fil ou une \
+feuille d'argent. Les lettres, larges et élancées, sont tracées dans un style \
+monumental fait pour être lu à distance."""
+details = [
+  "Les cannelures en spirale, qui imitent les plis d'un turban.",
+  "Les lettres arabes incrustées d'argent sur la bande dorée du bas.",
+  "Les deux échancrures arrondies pour les yeux.",
+  "Le support vertical du nasal, au centre du front.",
+  "Les petits anneaux du bord, qui retenaient le camail de mailles.",
+]
+themes = ["ottoman", "calligraphie", "turban", "acier", "islam"]
+anecdote = """
+L'église Sainte-Irène, à Istanbul, construite sous l'empereur Justinien au VIᵉ siècle, \
+n'a jamais été transformée en mosquée. Après la conquête ottomane de 1453, elle a servi \
+d'arsenal, puis de musée des armes ; on y donne aujourd'hui des concerts."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Sabre (shamshir) et son fourreau"
+artiste = "Inde du Nord, Lucknow"
+annee = "lame du XVIIIᵉ siècle ; poignée et fourreau datés 1819"
+image = "shamshir-lucknow.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Saber_(Shamshir)_with_Scabbard_MET_DP164593.jpg"
+technique = "Acier, argent, émail, ivoire, or, verre ; longueur avec fourreau 98,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une lame du XVIIIᵉ siècle dans une monture d'ivoire et d'argent émaillé, probablement faite à Lucknow en 1819."
+description = """
+Le sabre et son fourreau sont présentés côte à côte, debout. À gauche, la lame, longue \
+et très courbe, s'achève en pointe effilée ; sur l'acier gris, on devine de fines \
+ondulations et, près de la garde, une petite marque estampée. La poignée d'ivoire, \
+recourbée, se termine par une tête d'animal émaillée de bleu, aux yeux rouges ; la \
+garde en croix, en argent ciselé, s'achève elle aussi par deux petites têtes émaillées, \
+et une bague dorée ornée d'un cartouche ovale fait la jonction. À droite, le fourreau \
+est entièrement couvert d'argent émaillé : des médaillons bleus ou noirs, où se \
+détachent des oiseaux, alternent avec des fleurs vertes, rouges et jaunes. Deux anneaux \
+servaient à le suspendre ; le bas est en argent ajouré."""
+evocation = """
+Le shamshir, dont le nom désigne en persan l'épée ou le sabre, est né en Iran : sa lame \
+étroite et très courbe est faite pour trancher d'un mouvement tiré, à cheval. Adopté \
+dans tout le monde indo-persan, il devient une arme d'apparat autant que de combat. \
+Celui-ci réunit deux époques : une lame ancienne, admirée pour la qualité de son acier, \
+et une monture neuve, qui suit la mode de la cour. Les oiseaux du fourreau, canards, \
+échassiers, oiseaux en vol, évoquent les jardins et les bassins chers à la culture \
+persane et moghole, et donnent à l'arme une douceur inattendue. À Lucknow, au début du \
+XIXᵉ siècle, un tel sabre disait la richesse et le raffinement de son propriétaire plus \
+que sa vaillance."""
+histoire = """
+La lame a été forgée au XVIIIᵉ siècle, probablement en Inde. En 1819, elle reçoit une \
+poignée et un fourreau neufs, que le Met attribue à un atelier indien, probablement de \
+Lucknow, capitale du royaume d'Awadh. C'est l'époque où le souverain d'Awadh, \
+Ghazi-ud-Din Haidar, prend le titre de roi, et où la cour multiplie les commandes de \
+prestige. Le sabre a ensuite rejoint la collection de George Cameron Stone (1859–1935), \
+ingénieur américain qui avait réuni des milliers d'armes de tous les continents et \
+publié en 1934 un glossaire des armes et armures toujours consulté. Il a légué sa \
+collection au Metropolitan Museum à sa mort, en 1935."""
+facture = """
+Les ondulations de la lame sont celles d'un acier au creuset, que les Européens \
+appelaient acier de Damas : fondu en petits lingots puis forgé à basse température, il \
+garde une structure qui dessine, une fois la lame polie et attaquée à l'acide, un motif \
+d'ondes. La monture associe l'ivoire sculpté à l'argent, gravé puis couvert d'émail \
+champlevé : l'orfèvre creuse de petites cuvettes dans le métal, les remplit de poudre \
+de verre colorée, puis cuit l'objet pour la faire fondre. Les bleus et les verts \
+transparents laissent briller l'argent en dessous."""
+details = [
+  "La tête d'animal émaillée de bleu, aux yeux rouges, au bout de la poignée.",
+  "Les deux petites têtes émaillées qui terminent la garde.",
+  "Les oiseaux blancs dans les médaillons bleus et noirs du fourreau.",
+  "Les deux anneaux de suspension, sur le flanc du fourreau.",
+  "Les fines ondulations de l'acier, visibles sur la lame.",
+]
+themes = ["inde", "lucknow", "émail", "sabre", "ivoire"]
+anecdote = """
+George Cameron Stone collectionnait les armes de toutes les époques et de tous les \
+pays. Son glossaire illustré des armes et armures, publié en 1934, un an avant sa mort, \
+reste un ouvrage de référence pour les conservateurs et les collectionneurs."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 0.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Armuriers de la cour de France"
+vie = "Paris, milieu du XVIᵉ siècle"
+biographie = """
+Sous François Iᵉʳ et Henri II, la cour de France veut rivaliser avec l'Italie et avec \
+l'empereur Charles Quint jusque dans les armures. Les rois font travailler des \
+armuriers installés à Paris, parfois venus d'Italie ou d'Allemagne, et les associent \
+aux artistes de la cour. Le décor des armures de parade naît alors sur le papier : \
+orfèvres, graveurs et peintres dessinent des projets complets, plastron, épaulières, \
+casque, bouclier, que les armuriers et les ciseleurs traduisent ensuite dans l'acier. \
+Parmi ces dessinateurs, on cite l'orfèvre et graveur Étienne Delaune (1518 ou 1519 – \
+1583), qui travailla pour la Monnaie royale, le peintre Jean Cousin l'Ancien et \
+l'enlumineur Baptiste Pellerin. Plusieurs armures et boucliers de ce groupe sont \
+parvenus jusqu'à nous et sont conservés au Louvre, au musée de l'Armée, à Vienne ou à \
+New York ; leurs dessins préparatoires, dispersés dans plusieurs musées d'Europe et \
+d'Amérique, permettent de suivre le passage du projet à l'objet. Les guerres de \
+Religion, à partir de 1562, ralentissent cette production somptueuse sans l'interrompre \
+tout à fait."""
+style = """
+Les armures de la cour de France se reconnaissent à leur décor couvrant, en faible \
+relief, où se mêlent figures mythologiques, trophées, rinceaux et grotesques, dans \
+l'esprit de l'école de Fontainebleau. L'or, l'argent et l'acier bleui y jouent comme \
+les couleurs d'une peinture. Ces armures font de l'acier un support d'images, au même \
+titre que l'émail ou la tapisserie, et ont été admirées et imitées dans toute l'Europe."""
+
+[[artistes]]
+nom = "Ateliers royaux de Greenwich"
+vie = "Greenwich, près de Londres, vers 1515 – milieu du XVIIᵉ siècle"
+biographie = """
+Le jeune Henri VIII, couronné en 1509, veut des armures dignes des plus grands princes, \
+alors fournies par les ateliers de Milan, d'Augsbourg ou de Nuremberg. Vers 1515, il \
+installe dans son palais de Greenwich, sur la Tamise, un atelier d'armuriers venus \
+d'Allemagne, qu'on appelle les « Almains ». L'atelier travaille d'abord pour le roi \
+lui-même, puis, sous Élisabeth Iʳᵉ, pour les grands seigneurs de la cour, qui \
+obtiennent la permission de s'y fournir. Le maître armurier Jacob Halder le dirige à la \
+fin du XVIᵉ siècle ; un album de dessins réalisé à cette époque, conservé au Victoria \
+and Albert Museum, montre une trentaine de garnitures commandées par des courtisans. \
+L'atelier décline au XVIIᵉ siècle, quand l'armure perd son utilité sur les champs de \
+bataille, et disparaît avec la guerre civile anglaise. Ses armures sont aujourd'hui \
+conservées notamment aux Royal Armouries, à Londres et à Leeds, dans la collection \
+royale et au Metropolitan Museum."""
+style = """
+Les armures de Greenwich associent des formes amples et nettes, héritées des modèles \
+allemands, à des décors gravés à l'eau-forte et dorés, disposés en bandes sur un acier \
+souvent bleui ou noirci. Elles sont souvent livrées en garnitures, avec des pièces de \
+rechange pour la guerre et les différents jeux du tournoi. Leur élégance sobre en a \
+fait le symbole de la chevalerie élisabéthaine."""
+
+[[artistes]]
+nom = "Pays-Bas bourguignons"
+vie = "États des ducs de Bourgogne, de Dijon à Bruges, 1363–1477"
+biographie = """
+En 1363, le roi Jean II le Bon donne le duché de Bourgogne à son fils Philippe le \
+Hardi. Par mariages, héritages et conquêtes, ses descendants, Jean sans Peur, Philippe \
+le Bon et Charles le Téméraire, réunissent un ensemble immense : la Bourgogne et la \
+Franche-Comté, mais surtout les riches provinces des Pays-Bas, la Flandre, l'Artois, le \
+Brabant, la Hollande. Leur cour, le plus souvent à Bruxelles, Bruges ou Lille, est \
+l'une des plus brillantes d'Europe : on y voit Jan van Eyck, Rogier van der Weyden, les \
+tapissiers d'Arras et de Tournai, les orfèvres et les enlumineurs. En 1430, Philippe le \
+Bon fonde l'ordre de la Toison d'or. Son fils Charles le Téméraire, duc en 1467, \
+cherche à relier ses territoires et à obtenir une couronne royale ; il se heurte aux \
+villes rhénanes, aux Suisses et au roi Louis XI. Battu à Grandson et à Morat en 1476, \
+il est tué devant Nancy le 5 janvier 1477. Les Pays-Bas passent alors aux Habsbourg par \
+le mariage de sa fille Marie avec Maximilien d'Autriche."""
+style = """
+L'art bourguignon associe luxe et emblèmes. Les ducs multiplient les signes de \
+reconnaissance, croix de saint André, briquets et étincelles, devises et couleurs de \
+livrée, peints sur les étendards, les tentes, les vêtements de leurs gens et les armes \
+de leurs soldats. Le même goût du faste et de la précision anime la peinture des \
+primitifs flamands, la tapisserie et l'orfèvrerie de leur cour."""
+
+[[artistes]]
+nom = "Russie, armuriers de la cour impériale"
+vie = "Saint-Pétersbourg et Toula, XVIIIᵉ siècle"
+biographie = """
+Au début du XVIIIᵉ siècle, Pierre le Grand dote la Russie d'une industrie d'armement \
+moderne, autour de la manufacture d'armes de Toula, fondée en 1712, et de celle de \
+Sestroretsk, près de Saint-Pétersbourg. À côté des fusils de l'armée, ces ateliers et \
+ceux de la capitale produisent des armes de luxe pour la cour : fusils et pistolets de \
+chasse, armes de présent, garnitures assorties. Certains armuriers viennent d'Allemagne \
+ou d'autres pays d'Europe, et tous travaillent dans le goût des cours européennes, \
+rocaille puis néoclassique. Johan Adolph Grecke, auteur des pistolets exposés ici, est \
+l'un de ces artisans : armurier de la cour à Saint-Pétersbourg, il est connu par des \
+œuvres et des documents de 1755 à 1790. Sous Catherine II, impératrice de 1762 à 1796, \
+ces armes servent aux chasses de la cour et surtout aux cadeaux : on les offre à des \
+souverains, à des ambassadeurs, à des favoris. Le musée de l'Ermitage et l'Armurerie du \
+Kremlin en conservent aujourd'hui des ensembles importants."""
+style = """
+Les armes de luxe russes du XVIIIᵉ siècle rivalisent avec celles de Paris et de Londres \
+par la qualité de leurs mécanismes, mais s'en distinguent par la richesse des \
+matériaux : ivoire, acier bleui et doré, nacre, ciselures d'or et d'argent. Elles \
+reprennent les formes et les ornements à la mode en Europe, rocailles puis motifs \
+antiques, avec un goût marqué pour le faste."""
+
+[[artistes]]
+nom = "Grèce archaïque"
+vie = "Monde grec, vers 800–480 av. J.-C."
+biographie = """
+On appelle époque archaïque les trois siècles qui précèdent les guerres médiques. Les \
+Grecs, répartis en centaines de cités indépendantes, fondent des colonies tout autour \
+de la Méditerranée et de la mer Noire, adoptent l'alphabet et voient naître les poèmes \
+d'Homère et d'Hésiode. Dans les cités apparaît une nouvelle manière de combattre : la \
+phalange des hoplites, fantassins lourdement armés, rangés en lignes serrées, chacun \
+protégé par un grand bouclier rond, une cuirasse, des jambières et un casque de bronze. \
+Ces soldats sont des citoyens assez aisés pour payer leur équipement, et leur rôle \
+militaire va de pair avec leur place dans la vie de la cité. Corinthe, cité commerçante \
+sur l'isthme qui relie le Péloponnèse au reste de la Grèce, est alors l'un des grands \
+centres d'art et d'artisanat, réputée pour ses vases peints et ses bronzes. Les grands \
+sanctuaires, Olympie, Delphes, reçoivent en offrande des armes par milliers. L'époque \
+s'achève avec les victoires grecques sur les Perses à Marathon, en 490, et à Salamine, \
+en 480 av. J.-C."""
+style = """
+L'art archaïque aime les formes nettes, les contours tendus et la stylisation : kouroi \
+au sourire figé, vases à figures noires, bronzes aux surfaces lisses. Les armuriers \
+partagent ce goût pour des formes simples et puissantes, où la beauté naît de \
+l'adaptation à la fonction. Le casque corinthien, avec ses courbes enveloppantes et ses \
+ouvertures en amande, en est l'un des exemples les plus accomplis."""
+
+[[artistes]]
+nom = "Royaume d'Est-Anglie"
+vie = "Est de l'Angleterre (Norfolk et Suffolk), VIᵉ–IXᵉ siècle"
+biographie = """
+Après le départ des Romains de Bretagne, au début du Vᵉ siècle, des peuples venus des \
+rivages de la mer du Nord, Angles, Saxons et Jutes, s'installent dans l'est de l'île. \
+Au VIᵉ siècle se forment plusieurs royaumes, dont celui des Angles de l'Est, \
+l'Est-Anglie, qui correspond à peu près aux actuels comtés de Norfolk et de Suffolk. Sa \
+dynastie connaît son apogée sous Rædwald, mort vers 624, que l'historien Bède le \
+Vénérable compte parmi les rois qui exercèrent une suprématie sur les autres royaumes \
+anglais. Rædwald se fit baptiser mais garda, selon Bède, un autel pour les anciens \
+dieux à côté de celui du Christ. La cour royale entretient des liens avec la \
+Scandinavie, le monde franc et jusqu'à Byzance, comme le montrent les objets de Sutton \
+Hoo. L'Est-Anglie se convertit au christianisme au cours du VIIᵉ siècle. Au IXᵉ siècle, \
+elle est conquise par les Vikings, qui tuent en 869 le roi Edmond, honoré ensuite comme \
+saint."""
+style = """
+L'art des Anglo-Saxons païens est un art d'orfèvres : boucles, fermoirs, fibules et \
+armes sont couverts d'entrelacs d'animaux stylisés et de cloisonnés d'or et de grenats. \
+Les figures humaines et animales se décomposent en motifs qui s'enroulent et \
+s'imbriquent, à déchiffrer de près. Cet art, partagé avec la Scandinavie, nourrira plus \
+tard les enluminures des manuscrits chrétiens d'Irlande et de Northumbrie."""
+
+[[artistes]]
+nom = "Japon, époque de Kamakura"
+vie = "Japon, 1185–1333"
+biographie = """
+En 1185, au terme de la guerre de Genpei entre les clans Taira et Minamoto, Minamoto no \
+Yoritomo l'emporte et installe son gouvernement militaire à Kamakura, loin de la cour \
+impériale de Kyoto ; il reçoit en 1192 le titre de shogun. Pour la première fois, les \
+guerriers, les bushi ou samouraïs, gouvernent le pays aux côtés de l'empereur, dont le \
+rôle devient surtout religieux et symbolique. Après la mort de Yoritomo, le pouvoir \
+passe à la famille Hōjō, régents du shogunat. Le Japon repousse en 1274 et en 1281 deux \
+tentatives d'invasion mongole, au prix d'un lourd effort militaire. Mécontentements et \
+dettes affaiblissent ensuite le régime. En 1333, l'empereur Go-Daigo, aidé de guerriers \
+ralliés comme Ashikaga Takauji et Nitta Yoshisada, renverse le shogunat de Kamakura. \
+L'époque voit aussi l'essor du bouddhisme zen et des écoles de la Terre pure, d'une \
+sculpture réaliste et des grands récits guerriers comme le Dit des Heike."""
+style = """
+L'art de Kamakura est marqué par le goût des guerriers pour le vigoureux et le vrai : \
+sculptures d'Unkei aux muscles tendus, rouleaux peints racontant les batailles, \
+portraits sans flatterie. Les armuriers produisent alors les grandes armures ō-yoroi \
+aux laçages colorés, et les forgerons des lames tenues pour les plus belles de \
+l'histoire du sabre japonais, comme celles de Masamune."""
+
+[[artistes]]
+nom = "Japon, époque d'Edo"
+vie = "Japon, 1603–1868"
+biographie = """
+En 1603, Tokugawa Ieyasu, vainqueur à Sekigahara trois ans plus tôt, reçoit le titre de \
+shogun et installe son gouvernement à Edo, l'actuelle Tokyo. Ses descendants gouvernent \
+le Japon pendant plus de deux siècles et demi. Le pays se ferme presque entièrement aux \
+étrangers, les guerres intérieures cessent, et la société est divisée en ordres : \
+guerriers, paysans, artisans et marchands. Les samouraïs, qui ne combattent plus guère, \
+deviennent des administrateurs au service du shogun et des daimyos, seigneurs des \
+provinces ; le port des deux sabres reste leur privilège et leur signe distinctif. La \
+paix favorise l'essor des villes, Edo, Osaka, Kyoto, et d'une culture urbaine \
+brillante : théâtre kabuki, estampes, poésie, arts décoratifs. Les artisans du sabre, \
+forgerons, polisseurs, laqueurs et ciseleurs de montures, travaillent alors autant pour \
+l'apparat que pour l'usage. En 1868, la restauration de Meiji rend le pouvoir à \
+l'empereur ; en 1876, le port du sabre est interdit, et les samouraïs disparaissent en \
+tant que classe."""
+style = """
+Les armes de l'époque d'Edo associent la tradition des lames anciennes, conservées et \
+remontées, au raffinement des montures, véritables bijoux de métal. Ciseleurs et \
+laqueurs rivalisent d'invention dans les gardes, les petites pièces de poignée et les \
+fourreaux, tantôt sobres, tantôt couverts de paysages ou d'animaux. Chaque détail du \
+sabre devient un objet de collection."""
+
+[[artistes]]
+nom = "Empire ottoman"
+vie = "Anatolie, Balkans et Proche-Orient, vers 1300–1922"
+biographie = """
+Vers 1300, un chef turc nommé Osman fonde dans le nord-ouest de l'Anatolie une petite \
+principauté, aux confins de l'Empire byzantin. Ses descendants, les Ottomans, \
+s'étendent dans les Balkans et en Asie Mineure ; en 1453, le sultan Mehmed II prend \
+Constantinople, qui devient Istanbul, capitale de l'empire. Au XVIᵉ siècle, Sélim Iᵉʳ \
+conquiert la Syrie et l'Égypte, et Soliman le Magnifique pousse jusqu'à Bagdad, Buda et \
+les portes de Vienne. L'armée ottomane, avec ses janissaires, son artillerie et sa \
+cavalerie, est alors l'une des plus puissantes du monde. Les ateliers impériaux \
+d'Istanbul réunissent des artisans venus de tout l'empire et des pays conquis, \
+notamment d'Iran et du Caucase, et produisent armes, armures, céramiques, tissus et \
+manuscrits pour le palais. Affaibli à partir du XVIIIᵉ siècle face à l'Autriche et à la \
+Russie, l'empire survit jusqu'à la Première Guerre mondiale ; il disparaît en 1922, et \
+la République de Turquie est proclamée l'année suivante."""
+style = """
+L'art ottoman des armes mêle la puissance des formes, héritée des Turkmènes et de \
+l'Iran, à un décor précieux : dorure, incrustations d'argent, calligraphies, rinceaux \
+floraux et, plus tard, pierres précieuses. Les inscriptions, prières, versets ou titres \
+du sultan, sont un élément essentiel de ce décor. L'arme devient ainsi un objet de \
+prestige et de piété autant qu'un outil de guerre."""
+
+[[artistes]]
+nom = "Inde du Nord, Lucknow"
+vie = "Lucknow, royaume d'Awadh (nord de l'Inde), XVIIIᵉ–XIXᵉ siècle"
+biographie = """
+Au XVIIIᵉ siècle, l'Empire moghol, qui dominait la plus grande partie de l'Inde depuis \
+le XVIᵉ siècle, se morcelle. Ses gouverneurs de province deviennent des princes presque \
+indépendants : c'est le cas des nawabs d'Awadh, dans la riche plaine du Gange. En 1775, \
+le nawab Asaf-ud-Daula fait de Lucknow sa capitale ; il y bâtit le Bara Imambara et \
+attire poètes, musiciens, architectes et artisans venus de Delhi, alors en déclin. La \
+ville devient l'un des grands foyers de la culture indo-persane : poésie en ourdou, \
+musique, danse kathak, cuisine raffinée, orfèvrerie et émaillerie. Les nawabs \
+entretiennent des relations étroites, et de plus en plus inégales, avec la Compagnie \
+anglaise des Indes orientales. En 1818-1819, Ghazi-ud-Din Haidar prend le titre de roi, \
+rompant symboliquement avec l'empereur moghol. En 1856, les Britanniques annexent \
+l'Awadh ; l'année suivante, Lucknow est l'un des foyers de la grande révolte de 1857."""
+style = """
+Les ateliers de Lucknow sont réputés pour leurs émaux sur argent, aux bleus et aux \
+verts transparents, souvent ornés d'oiseaux, de poissons et de fleurs. Les armes de \
+luxe associent des lames anciennes, persanes ou indiennes, à des montures neuves \
+d'ivoire, de jade, d'argent émaillé ou d'or. Ces sabres d'apparat disent le raffinement \
+d'une cour où l'arme était d'abord un insigne de rang."""
