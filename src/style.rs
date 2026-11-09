@@ -196,10 +196,10 @@ body.viewer-open { overflow: hidden; }
 .room-legend { margin-top: 2rem; }
 
 /* ─── Accueil du musée : couvertures, expositions ─────────────────────── */
-.hero-covers { min-height: 440px; perspective: 1200px; }
+.hero-covers { min-height: 440px; perspective: 1200px; margin-bottom: 1.5rem; }
 .cover-frame { position: absolute; padding: 9px; background: linear-gradient(135deg, #c99b45, #8a6326 45%, #d6ad5a 70%, #8a6326);
   box-shadow: 0 30px 60px -28px rgba(0,0,0,.7); transition: transform .5s cubic-bezier(.2,.8,.2,1); animation: rise 1s cubic-bezier(.2,.8,.2,1) both; }
-.cover-frame img { display: block; width: 100%; height: auto; }
+.cover-frame img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .cover-frame.c0 { width: 58%; left: 4%; top: 8%; transform: rotateY(14deg) rotate(-4deg); z-index: 2; }
 .cover-frame.c1 { width: 50%; right: 2%; top: 26%; transform: rotateY(-16deg) rotate(3deg); z-index: 3; animation-delay: .15s; }
 .cover-frame.c2 { width: 36%; left: 30%; bottom: 0; transform: rotate(-1deg); z-index: 1; animation-delay: .3s; }
@@ -346,10 +346,10 @@ body.viewer-open { overflow: hidden; }
   .hero { padding-top: 2rem; }
   /* Sur un petit écran, les formes décoratives passeraient sur le titre et les boutons. */
   .floating { display: none; }
-  .cube-stage { width: 60px; height: 60px; right: 6px; top: -24px; }
+  .cube-stage { width: 60px; height: 60px; right: 6px; top: 6px; }
   .cube .face { border-width: 2px; }
   .tilt img { height: 170px; }
-  .hero-covers { min-height: 300px; margin-top: 1rem; }
+  .hero-covers { min-height: 320px; margin: 1rem 0 2rem; }
   .cube .front { transform: translateZ(30px); } .cube .back { transform: rotateY(180deg) translateZ(30px); }
   .cube .right { transform: rotateY(90deg) translateZ(30px); } .cube .left { transform: rotateY(-90deg) translateZ(30px); }
   .cube .top { transform: rotateX(90deg) translateZ(30px); } .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }

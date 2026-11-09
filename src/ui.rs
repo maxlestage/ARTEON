@@ -107,12 +107,13 @@ impl MuseumUi {
     }
 
     /// La barre de visite, en haut à gauche.
-    fn toolbar(&mut self, ctx: &egui::Context) {
+    /// Le bas de la barre, en points.
+    fn toolbar(&mut self, ctx: &egui::Context) -> f32 {
         let (mode, paused) = {
             let c = self.control.borrow();
             (c.mode, c.paused)
         };
-        egui::Area::new(egui::Id::unique("barre")).anchor(Align2::LEFT_TOP, [12.0, 12.0]).show(ctx, |ui| {
+        let shown = egui::Area::new(egui::Id::unique("barre")).anchor(Align2::LEFT_TOP, [12.0, 12.0]).show(ctx, |ui| {
             self.frame().show(ui, |ui| {
                 ui.set_max_width(ctx.content_rect().width() - 40.0);
                 ui.horizontal_wrapped(|ui| {
@@ -162,6 +163,7 @@ impl MuseumUi {
                 });
             });
         });
+        shown.response.rect.bottom()
     }
 
     fn set_mode(&self, mode: Mode) {
@@ -191,10 +193,9 @@ impl MuseumUi {
     }
 
     /// Le cartel de l'œuvre regardée, en bas à gauche.
-    fn caption(&mut self, ctx: &egui::Context) {
-        let Some(focus) = self.control.borrow().current else {
-            return;
-        };
+    /// Le haut du cartel, en points (`None` : pas de cartel).
+    fn caption(&mut self, ctx: &egui::Context) -> Option<f32> {
+        let focus = self.control.borrow().current?;
         let ex = self.ex;
         let (title, meta, note, technique) = match focus {
             Focus::Art(i) => {
@@ -217,7 +218,7 @@ impl MuseumUi {
             }
         };
         let width = (ctx.content_rect().width() - 40.0).min(380.0);
-        egui::Area::new(egui::Id::unique("cartel"))
+        let shown = egui::Area::new(egui::Id::unique("cartel"))
             .anchor(Align2::LEFT_BOTTOM, [12.0, -14.0])
             .show(ctx, |ui| {
                 self.frame().show(ui, |ui| {
@@ -253,6 +254,7 @@ impl MuseumUi {
                     });
                 });
             });
+        Some(shown.response.rect.top())
     }
 
     /// La notice complète de l'œuvre regardée : ce que l'on voit, ce qu'elle évoque, son
@@ -940,15 +942,25 @@ impl eframe::App for MuseumUi {
         if ctx.content_rect().width() < 560.0 {
             ctx.set_zoom_factor(1.05);
         }
-        self.toolbar(&ctx);
+        let bar = self.toolbar(&ctx);
         if self.show_map {
             self.map(&ctx);
         }
-        if self.show_list {
+        let caption = if self.show_list {
             self.list(&ctx);
+            None
         } else {
-            self.caption(&ctx);
-        }
+            self.caption(&ctx)
+        };
+        // Ce que la barre et le cartel cachent de l'image : la visite cadre les tableaux
+        // dans le reste.
+        let screen = ctx.content_rect();
+        let height = screen.height().max(1.0);
+        let top = ((bar - screen.top() + 8.0) / height).clamp(0.0, 0.45);
+        let bottom = caption.map_or(0.0, |y| {
+            ((screen.bottom() - y + 8.0) / height).clamp(0.0, 0.45)
+        });
+        self.control.borrow_mut().insets = (top, bottom);
         if self.editing {
             self.editor(&ctx);
         }

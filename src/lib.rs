@@ -13,6 +13,7 @@ pub mod data;
 pub mod editor;
 pub mod gallery;
 pub mod museum;
+pub mod surfaces;
 pub mod tour;
 
 #[cfg(target_arch = "wasm32")]

@@ -40,6 +40,22 @@ fn stop(eye: [f32; 3], look: [f32; 3], hold: f32) -> Stop {
     }
 }
 
+thread_local! {
+    /// La part de l'image cachée en haut et en bas par l'interface (la barre de visite, le
+    /// cartel) : le tableau regardé est cadré dans ce qui reste.
+    static INSETS: std::cell::Cell<(f32, f32)> = const { std::cell::Cell::new((0.0, 0.0)) };
+}
+
+/// Dit à la visite quelle part de l'image l'interface couvre, en haut et en bas (de 0 à 1) :
+/// les tableaux se cadrent entre les deux, sans passer sous le cartel.
+pub fn set_insets(top: f32, bottom: f32) {
+    INSETS.with(|i| i.set((top.clamp(0.0, 0.45), bottom.clamp(0.0, 0.45))));
+}
+
+fn insets() -> (f32, f32) {
+    INSETS.with(std::cell::Cell::get)
+}
+
 /// La distance à laquelle regarder un tableau de `width` × `height` sur un écran de
 /// proportions `aspect` (largeur / hauteur) : assez loin pour qu'il tienne dans l'image
 /// avec de l'air autour ; sur un téléphone en portrait, le visiteur recule.
@@ -64,7 +80,10 @@ fn room_for(ex: &Exhibition, art: usize) -> f32 {
 pub fn art_view(ex: &Exhibition, art: usize, aspect: f32) -> ([f32; 3], [f32; 3]) {
     let a = &ex.artworks[art];
     let center = museum::artwork_center(ex, a);
-    let mut d = distance_for(a.width, a.height, aspect).min(room_for(ex, art));
+    // Le tableau tient dans la bande libre entre la barre et le cartel.
+    let (top, bottom) = insets();
+    let band = (1.0 - top - bottom).max(0.4);
+    let mut d = distance_for(a.width, a.height / band, aspect).min(room_for(ex, art));
     let (ix, iz) = a.hook.side.inward();
     // Reculer, mais pas jusque dans un banc ou un socle : s'arrêter 40 cm avant.
     let blocked = |k: f32| {
@@ -81,7 +100,12 @@ pub fn art_view(ex: &Exhibition, art: usize, aspect: f32) -> ([f32; 3], [f32; 3]
         }
         k += 0.1;
     }
-    ([center[0] + ix * d, EYE, center[2] + iz * d], center)
+    // Regarder un peu plus bas (ou plus haut) : le tableau monte au milieu de la bande libre.
+    let shift = (bottom - top) * d * HALF_FOV_TAN;
+    (
+        [center[0] + ix * d, EYE, center[2] + iz * d],
+        [center[0], center[1] - shift, center[2]],
+    )
 }
 
 /// L'œil et le point regardé devant une sculpture : de face (ou du côté le plus dégagé),
