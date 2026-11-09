@@ -827,7 +827,12 @@ fn exhibition(
     let painters: Vec<&str> = file
         .oeuvres
         .iter()
-        .map(|o| o.artiste.as_deref().unwrap_or(&file.exposition.artiste).trim())
+        .map(|o| {
+            o.artiste
+                .as_deref()
+                .unwrap_or(&file.exposition.artiste)
+                .trim()
+        })
         .chain(file.sculptures.iter().map(|s| s.artiste.trim()))
         .collect();
     for (i, a) in file.artistes.iter().enumerate() {
