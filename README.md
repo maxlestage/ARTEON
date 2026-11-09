@@ -4,10 +4,11 @@
 
 ARTEON est un musée qui n'existe pas. Chaque exposition occupe un bâtiment dessiné sur plan, souvent inspiré d'un vrai musée (la galerie d'honneur du Rijksmuseum, la nef d'Orsay, le Belvédère, la cour du Smithsonian) : les toiles sont accrochées aux murs, les sculptures — de vrais scans 3D — posées sur leurs socles. On s'y promène librement ou on suit la visite guidée, et un éditeur permet de déplacer les œuvres depuis le musée lui-même. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML, les scènes 3D (`paquets::ecs`) et l'interface de visite ([egui](https://github.com/emilk/egui)), compilées en WebAssembly et rendues en WebGL 2.
 
-18 expositions sont ouvertes (177 toiles, 8 sculptures, 109 artistes), de la Renaissance à l'expressionnisme, dans l'ordre de l'histoire de l'art :
+22 expositions sont ouvertes (217 tableaux, estampes et tapisseries, 8 sculptures, 145 artistes), du Moyen Âge à l'abstraction, dans l'ordre de l'histoire de l'art :
 
 | Exposition | Style | Dates | Artistes |
 |---|---|---|---|
+| [Le Moyen Âge, l'or et la lumière](expositions/moyen-age.toml) | Art médiéval et gothique | vers 1280–1500 | Tapissiers anonymes, vers 1500, Cimabue, Giotto, Jean Fouquet, Frères de Limbourg, Enguerrand Quarton, Simone Martini, Fra Angelico, Duccio di Buoninsegna, Andreï Roublev |
 | [La Renaissance italienne, l'invention de l'homme](expositions/renaissance.toml) | Renaissance italienne | 1460–1538 | Filippo Lippi, Piero della Francesca, Andrea Mantegna, Sandro Botticelli, Léonard de Vinci, Michel-Ange, Raphaël, Giorgione, Titien |
 | [Monts, jardins et empereurs : la peinture d'Asie](expositions/arts-asie.toml) | Peinture chinoise, persane et moghole | vers 1000–1630 | Fan Kuan, Guo Xi, Zhao Mengfu, Shen Zhou, Behzad, Sultan Muhammad, Reza Abbasi, Bichitr, Abu'l Hasan, Govardhan |
 | [Primitifs flamands et Renaissance du Nord, le monde au plus près](expositions/renaissance-nord.toml) | Primitifs flamands et Renaissance du Nord | 1434–1568 | Jan van Eyck, Rogier van der Weyden, Hans Memling, Jérôme Bosch, Albrecht Dürer, Lucas Cranach l'Ancien, Hans Holbein le Jeune, Pieter Bruegel l'Ancien |
@@ -15,9 +16,11 @@ ARTEON est un musée qui n'existe pas. Chaque exposition occupe un bâtiment des
 | [Vermeer et Rembrandt, le siècle d'or hollandais](expositions/vermeer-rembrandt.toml) | Siècle d'or hollandais | XVIIᵉ siècle | Rembrandt, Johannes Vermeer |
 | [Le siècle des Lumières, du rococo au néoclassicisme](expositions/lumieres.toml) | Rococo et néoclassicisme | 1717–1814 | Antoine Watteau, François Boucher, Jean-Honoré Fragonard, Jean Siméon Chardin, Giovanni Antonio Canal, dit Canaletto, Thomas Gainsborough, Élisabeth Vigée Le Brun, Jacques-Louis David, Jean-Auguste-Dominique Ingres |
 | [Le Romantisme, la tempête et le rêve](expositions/romantisme.toml) | Romantisme | 1781–1839 | Johann Heinrich Füssli, William Blake, Francisco de Goya, Théodore Géricault, Eugène Delacroix, Caspar David Friedrich, Joseph Mallord William Turner, John Constable |
+| [Ukiyo-e, les images du monde flottant](expositions/estampes-japonaises.toml) | Ukiyo-e, l'estampe japonaise | 1759–1857 | Utagawa Hiroshige, Katsushika Hokusai, Suzuki Harunobu, Kitagawa Utamaro, Tōshūsai Sharaku, Utagawa Kuniyoshi, Itō Jakuchū |
 | [Du réalisme à la vie moderne](expositions/realisme.toml) | Réalisme et impressionnisme | 1849–1882 | Édouard Manet, Gustave Courbet, Rosa Bonheur, Jean-François Millet, Gustave Caillebotte, Edgar Degas, Camille Pissarro |
 | [Monet, la lumière à l'œuvre](expositions/monet.toml) | Impressionnisme | 1840–1926 | Claude Monet, Hiram Powers, Ferdinand Pettrich, Edmonia Lewis |
 | [Renoir, le bonheur de peindre](expositions/renoir.toml) | Impressionnisme | 1841–1919 | Pierre-Auguste Renoir |
+| [Femmes peintres, quatre siècles de regards](expositions/femmes-peintres.toml) | Femmes peintres, XVIᵉ–XXᵉ siècle | 1555–1923 | Adélaïde Labille-Guiard, Sofonisba Anguissola, Judith Leyster, Rachel Ruysch, Angelica Kauffman, Berthe Morisot, Eva Gonzalès, Mary Cassatt, Anna Ancher, Suzanne Valadon |
 | [L'Amérique au XIXᵉ siècle, peinture et sculpture](expositions/smithsonian.toml) | Art américain du XIXᵉ siècle | 1836–1899 | Thomas Cole, Albert Bierstadt, Frederic Edwin Church, James McNeill Whistler, Thomas Eakins, John Singer Sargent, Mary Cassatt, Winslow Homer, Horatio Greenough, John Rogers, Clark Mills, Chine, dynastie des Qi du Nord |
 | [Cézanne, la construction de la couleur](expositions/cezanne.toml) | Post-impressionnisme | 1839–1906 | Paul Cézanne |
 | [Après l'impressionnisme, points, aplats et rêves](expositions/post-impressionnisme.toml) | Néo-impressionnisme, Nabis et art naïf | 1884–1910 | Georges Seurat, Paul Signac, Henri de Toulouse-Lautrec, Paul Sérusier, Émile Bernard, Pierre Bonnard, Édouard Vuillard, Henri Rousseau |
@@ -26,6 +29,7 @@ ARTEON est un musée qui n'existe pas. Chaque exposition occupe un bâtiment des
 | [Le Symbolisme, rêves, mythes et visions](expositions/symbolisme.toml) | Symbolisme et Art nouveau | 1851–1914 | Alfons Mucha, Pierre Puvis de Chavannes, Gustave Moreau, Odilon Redon, John Everett Millais, Dante Gabriel Rossetti, John William Waterhouse, Arnold Böcklin, Edvard Munch, Fernand Khnopff |
 | [Klimt, l'or et la vie](expositions/klimt.toml) | Sécession viennoise | 1862–1918 | Gustav Klimt |
 | [Fauves et expressionnistes, la couleur libérée](expositions/expressionnisme.toml) | Fauvisme et expressionnisme | 1904–1919 | Henri Matisse, André Derain, Franz Marc, August Macke, Ernst Ludwig Kirchner, Paula Modersohn-Becker, Egon Schiele, Amedeo Modigliani |
+| [Les avant-gardes, la naissance de l'abstraction](expositions/abstraction.toml) | Avant-gardes et abstraction | 1907–1930 | Hilma af Klint, Vassily Kandinsky, Robert Delaunay, Juan Gris, Umberto Boccioni, Fernand Léger, Kasimir Malevitch, Piet Mondrian, Paul Klee, Kurt Schwitters |
 
 L'exposition Monet est installée dans une nef inspirée du musée d'Orsay, avec trois sculptures américaines contemporaines de ses toiles (*The Greek Slave* de Hiram Powers, *The Dying Tecumseh* de Ferdinand Pettrich, *Old Arrow Maker* d'Edmonia Lewis).
 
