@@ -19,6 +19,8 @@ pub struct Exhibition {
     pub title: &'static str,
     pub artist: &'static str,
     pub artist_dates: &'static str,
+    /// Le style ou le mouvement (« Renaissance italienne »).
+    pub movement: &'static str,
     pub kicker: &'static str,
     pub introduction: &'static str,
     /// La couleur d'accent de ses pages.
