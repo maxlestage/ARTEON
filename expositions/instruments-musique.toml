@@ -1,0 +1,974 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « INSTRUMENTS DE MUSIQUE DU MONDE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/instruments-musique/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /instruments-musique.
+#
+#  Les instruments sont présentés en vitrine (cadre = "vitrine"). Les
+#  photographies viennent des musées qui les conservent (Metropolitan Museum of
+#  Art, Cleveland Museum of Art), publiées en CC0 (domaine public).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 67
+nom_court = "Instruments de musique"
+mouvement = "Instruments de musique du monde"
+cadre = "vitrine"
+couleur = "#7d4320"
+titre = "Instruments de musique du monde, l'art de faire chanter le bois"
+artiste = "Todini, Cristofori, Amati, Stradivari, Manol, les Gotō, les griots…"
+dates = "vers 1560–1928"
+accroche = "Exposition virtuelle · Metropolitan Museum of Art, New York"
+introduction = """
+Un instrument de musique est un outil, mais aussi une sculpture, un objet de prestige \
+et la mémoire d'une culture. La visite réunit dix instruments à cordes, du violon de la \
+Renaissance à la harpe d'Afrique centrale : un clavecin doré de la Rome baroque, le \
+plus ancien piano conservé, deux violons de Crémone, une guitare de Cadix, un ūd \
+d'Istanbul, une vina de l'Inde du Sud, un koto japonais, une kora et une harpe \
+d'Afrique. Le bâtiment s'inspire des galeries des instruments de musique du \
+Metropolitan Museum de New York : un salon d'entrée pour les claviers, une galerie \
+centrale pour les violons, et trois salles ouvertes sur le reste du monde."""
+vitrine = "clavecin-todini.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Galeries André Mertens des instruments de musique, Metropolitan Museum of Art"
+ville = "New York, États-Unis"
+construction = "Galeries rénovées et rouvertes en 2018 et 2019"
+presentation = """
+Fondé en 1870 et installé depuis 1880 au bord de Central Park, le Metropolitan Museum \
+of Art possède l'une des grandes collections d'instruments de musique du monde. Elle \
+doit presque tout à une femme, Mary Elizabeth Adams Brown, épouse du banquier John \
+Crosby Brown : à la fin du XIXe siècle, elle réunit plus de trois mille six cents \
+instruments venus de tous les continents, et en fait don au musée à partir de 1889. Les \
+galeries qui les présentent portent le nom d'André Mertens. Fermées pour une longue \
+rénovation, elles ont rouvert par étapes à partir de mars 2018, la dernière salle en \
+2019. L'exposition « The Art of Music » y montre environ huit cents objets couvrant \
+quatre mille ans, rangés par époques, pour faire voir les échanges entre les cultures. \
+On y voit le plus ancien piano du monde, des violons de Stradivari, un mur de \
+soixante-quatorze cuivres disposés autour d'une conque, et des enregistrements \
+permettent d'entendre jouer les instruments exposés."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée d'une suite de salles intimes, aux murs chauds, où \
+chaque instrument a sa vitrine. On entre par le sud dans « Le salon doré », haut de \
+sept mètres, réservé aux deux claviers italiens. Au nord, la galerie « Crémone, l'âge \
+d'or du violon » distribue tout le reste : à l'ouest « De Cadix à Istanbul », pour la \
+guitare et l'ūd ; à l'est « De l'Inde au Japon », pour la vina et le koto ; au nord, \
+enfin, « Afrique, la kora et la harpe »."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré des galeries des instruments de musique du Metropolitan Museum de New
+# York : un salon d'entrée pour les claviers, une galerie centrale (les
+# violons) qui ouvre sur trois salles plus petites, à l'ouest, à l'est et au
+# nord. x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ;
+# une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le salon doré"
+theme = "Deux claviers de l'Italie baroque : le clavecin doré de Michele Todini et le premier piano de Bartolomeo Cristofori."
+murs = "#ece2d0"
+x = 0
+z = 0
+largeur = 14
+profondeur = 12
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Crémone, l'âge d'or du violon"
+theme = "Andrea Amati, qui a fixé la forme du violon, et Antonio Stradivari, qui l'a portée à sa perfection."
+murs = "#e8d7c0"
+x = 0
+z = -11
+largeur = 14
+profondeur = 10
+hauteur = 5.5
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "De Cadix à Istanbul"
+theme = "Deux cousins à cordes doubles : une guitare espagnole de 1787 et un ūd ottoman, descendant du même ancêtre."
+murs = "#ead9c6"
+x = -12
+z = -11
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+[[salles]]
+nom = "De l'Inde au Japon"
+theme = "Une vina de l'Inde du Sud à tête de monstre doré et un koto japonais orné par l'orfèvre Gotō Teijō."
+murs = "#e5dccb"
+x = 12
+z = -11
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+[[salles]]
+nom = "Afrique, la kora et la harpe"
+theme = "La harpe-luth des griots d'Afrique de l'Ouest et une harpe d'Afrique centrale coiffée d'une tête sculptée."
+murs = "#e9d6bd"
+x = 0
+z = -21
+largeur = 14
+profondeur = 10
+hauteur = 5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Clavecin doré"
+artiste = "Michele Todini"
+annee = "vers 1670"
+image = "clavecin-todini.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Harpsichord_MET_DP204706a.jpg"
+technique = "Bois sculpté et doré, ébène, ivoire, parchemin ; caisse du clavecin : 37,5 × 299,7 × 96,5 cm"
+collection = "Metropolitan Museum of Art, New York (collection Crosby Brown)"
+note = "Un clavecin porté par des tritons, entre le cyclope Polyphème et la nymphe Galatée : le seul objet conservé du musée d'instruments que Michele Todini avait ouvert à Rome."
+description = """
+Tout est en or. Au centre, la longue caisse du clavecin, presque trois mètres, repose \
+sur les épaules de deux tritons, mi-hommes mi-poissons, dont les queues s'enroulent \
+dans les vagues. Entre eux, deux néréides émergent de l'eau, bras tendus, comme si \
+elles nageaient. À droite, un poisson fantastique à la gueule ouverte porte une grande \
+coquille sur laquelle un petit amour est assis. Le socle, courbe, imite une mer sombre \
+et repose sur des pattes de lion. Le flanc de la caisse est couvert d'une frise en \
+relief où défilent chars, chevaux marins et divinités : le triomphe de Galatée. De part \
+et d'autre, sur deux rochers noirs, se font face le cyclope Polyphème, assis, qui \
+souffle dans une cornemuse, et Galatée, nue, une écharpe flottant au vent."""
+evocation = """
+La scène vient des Métamorphoses d'Ovide. Le cyclope Polyphème aime la nymphe Galatée, \
+qui lui préfère le jeune berger Acis ; il chante son amour, en vain, puis écrase son \
+rival sous un rocher. Ici, Todini ne retient que la musique : le géant joue pour \
+charmer la nymphe, et le clavecin devient le char marin sur lequel elle triomphe. \
+Instrument, sculpture et décor de théâtre à la fois, l'objet dit le goût de la Rome \
+baroque pour le merveilleux, les machines et les effets de surprise, à l'époque du \
+Bernin. Il dit aussi ce qu'était la musique dans les palais : un spectacle autant qu'un \
+art, fait pour éblouir les visiteurs."""
+histoire = """
+Musicien installé à Rome, Michele Todini ouvre dans sa maison, à partir des années \
+1650, une Galleria Armonica, l'un des premiers musées d'instruments de musique, qu'il \
+décrit dans une brochure publiée en 1676. Cette « machine » en est la pièce maîtresse. \
+Un document de paiement de 1672 nomme le sculpteur Jacob Reiff ; la dorure est \
+attribuée à Basilio Onofri. Derrière l'ensemble étaient accrochées trois marines \
+peintes par Gaspard Dughet, aujourd'hui perdues. Après la mort de Todini, la collection \
+se disperse ; le clavecin passe entre plusieurs mains avant d'entrer au Metropolitan \
+Museum avec la collection d'instruments de Mary Elizabeth Adams Brown. Les \
+conservateurs pensent que la figure de Galatée n'est peut-être pas celle d'origine."""
+facture = """
+Le clavecin proprement dit est un instrument italien classique, à caisse mince, dont \
+les cordes sont pincées par de petits becs quand on enfonce les touches ; il est logé \
+dans une seconde caisse, sculptée et dorée, qui lui sert d'écrin. Les figures sont \
+taillées dans le bois, puis couvertes d'une fine couche d'apprêt et de feuilles d'or. \
+Le doreur a joué sur le contraste entre l'or brillant des corps et le vert sombre de la \
+mer. La composition s'étire comme un bas-relief : les personnages s'appuient les uns \
+aux autres, et le regard glisse de Polyphème, à gauche, à Galatée, à droite."""
+details = [
+  "Polyphème, à gauche, gonfle les joues dans sa cornemuse.",
+  "Le petit amour assis sur la coquille, à droite, au-dessus du poisson.",
+  "Les pattes de lion qui portent le socle.",
+  "La frise du triomphe de Galatée, sur le flanc de la caisse.",
+  "Les vagues sombres du socle, d'où sortent les néréides.",
+]
+themes = ["mythologie", "baroque", "Rome", "or", "clavecin", "spectacle"]
+anecdote = """
+L'ensemble était une véritable machine : Todini y associait au clavecin d'autres sons, \
+sans doute un petit orgue. Le mécanisme et les tuyaux ont disparu, et l'on discute \
+encore pour savoir s'ils pouvaient tenir dans le rocher de Polyphème."""
+salle = 1
+mur = "ouest"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "Piano-forte"
+artiste = "Bartolomeo Cristofori"
+annee = "1720"
+image = "piano-cristofori.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Grand_Piano_MET_DP300941.jpg"
+technique = "Cyprès, buis, cuir, sapin, peinture ; hauteur sur son piétement : 86,5 cm"
+collection = "Metropolitan Museum of Art, New York (collection Crosby Brown)"
+note = "Le plus ancien piano conservé au monde, construit à Florence par l'homme qui a inventé l'instrument."
+description = """
+À première vue, on croirait un clavecin. La caisse, en forme d'aile, est peinte en noir \
+à l'extérieur et laisse voir à l'intérieur le bois clair du cyprès. Le couvercle, en \
+deux parties, est relevé et tenu par une simple baguette ; il découvre la table \
+d'harmonie, sur laquelle les cordes s'étirent du clavier vers la pointe de l'aile. Le \
+clavier, à l'avant, aligne des touches claires en buis et des touches sombres pour les \
+dièses. L'instrument repose sur trois pieds tournés, peints en noir, reliés à des \
+patins. Aucun ornement, aucune dorure : l'invention est cachée à l'intérieur de la \
+caisse, dans la rangée de petits marteaux."""
+evocation = """
+Ce meuble austère contient une révolution. Sur un clavecin, le musicien a beau frapper \
+fort ou doucement, la corde pincée sonne toujours de la même façon. Ici, chaque touche \
+lance un marteau contre la corde : plus le doigt appuie, plus le son est fort. Le \
+clavier devient capable de nuances, de crescendos, de chant. Toute la musique pour \
+piano, de Mozart à Chopin et au-delà, découle de cette idée. On mesure, devant cet \
+instrument modeste, combien les grandes inventions ont souvent une apparence ordinaire \
+: rien ne signale au visiteur que c'est ici que commence l'histoire du piano."""
+histoire = """
+Facteur de clavecins né à Padoue, Bartolomeo Cristofori entre en 1688 au service du \
+grand-prince Ferdinand de Médicis, à Florence, pour entretenir les instruments de la \
+cour. Un inventaire des Médicis de 1700 mentionne déjà un « arpicimbalo », nouvellement \
+inventé par Cristofori, qui joue doux et fort. En 1711, l'écrivain Scipione Maffei en \
+publie la description, avec un dessin du mécanisme. Trois pianos de Cristofori sont \
+conservés : celui-ci, daté de 1720, et deux autres de 1722 et 1726, à Rome et à \
+Leipzig. Celui de New York est entré au Metropolitan Museum avec la collection Crosby \
+Brown. À la fin des années 1930, une restauration malheureuse a remplacé sa table \
+d'harmonie, son chevalet et d'autres pièces d'origine."""
+facture = """
+Le génie de Cristofori tient dans la mécanique. La touche soulève un levier \
+intermédiaire qui projette le marteau, garni de cuir, contre la corde ; un échappement \
+libère aussitôt le marteau, qui retombe pour laisser vibrer la corde au lieu de \
+l'étouffer. Un arrêt le rattrape au vol pour qu'il ne rebondisse pas, et un étouffoir \
+se pose sur la corde quand on lâche la touche. Ces principes, échappement et \
+étouffoirs, sont encore ceux des pianos d'aujourd'hui. La caisse reprend la \
+construction légère des clavecins italiens, en cyprès."""
+details = [
+  "Au-dessus du clavier, une inscription latine : Cristofori, de Padoue, inventeur, l'a fait à Florence en 1720.",
+  "La simple baguette qui tient le couvercle ouvert.",
+  "Les touches claires en buis et les dièses sombres, comme sur nos pianos.",
+  "La courbe de l'aile, qui suit la longueur décroissante des cordes.",
+]
+themes = ["invention", "piano", "Florence", "Médicis", "mécanique"]
+anecdote = """
+Cristofori n'a pas appelé son invention « piano ». Les documents de la cour parlent \
+d'un clavecin qui joue « piano e forte », doux et fort. C'est cette expression, abrégée \
+en pianoforte, puis en piano, qui a donné son nom à l'instrument."""
+salle = 1
+mur = "est"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Violon dit « Kurtz »"
+artiste = "Andrea Amati"
+annee = "vers 1560"
+image = "violon-kurtz.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ex_%22Kurtz%22_Violin_MET_DP302645.jpg"
+technique = "Épicéa, érable, ébène, peinture et dorure ; hauteur 57,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "L'un des plus anciens violons connus, sorti de l'atelier qui a donné au violon sa forme. Haut de 57 cm, il est ici montré agrandi."
+description = """
+Le violon se dresse, légèrement tourné, dans un faisceau de lumière qui le détache du \
+fond noir. Son vernis brun doré, usé par endroits, laisse voir le fil de l'épicéa sur \
+la table. Les deux ouïes en forme de f s'ouvrent largement de part et d'autre du \
+chevalet ; plus haut, la touche d'ébène monte vers une volute finement taillée, \
+flanquée de chevilles tournées et ornées. Sur les éclisses, les bandes de bois qui \
+forment le flanc du violon, on lit des capitales peintes en or : quelques lettres d'une \
+devise latine. Au dos, invisible ici, subsistent les traces d'un décor peint : des \
+fleurs de lys dans les angles, des motifs géométriques et floraux, et au centre les \
+restes d'un blason effacé."""
+evocation = """
+La devise des éclisses, « Quo unico propugnaculo stat stabitque religio », peut se \
+traduire : « par ce seul rempart, la religion tient et tiendra ». Le rempart, c'est le \
+roi catholique, au moment où les guerres de Religion déchirent la France. Les fleurs de \
+lys désignent la maison de Valois. Ce violon n'est donc pas seulement un instrument : \
+c'est un emblème de cour, peint aux armes d'un souverain. Il dit aussi l'ascension du \
+violon, instrument encore récent, joué pour la danse, que les princes commencent à \
+commander par jeux entiers, et qui deviendra en un siècle le roi de l'orchestre."""
+histoire = """
+Andrea Amati travaille à Crémone, en Lombardie, au milieu du XVIe siècle. La cour de \
+France lui commande plusieurs ensembles de violons, altos et violoncelles décorés, dont \
+le plus célèbre porte les armes de Charles IX. Le violon « Kurtz » appartient à un \
+autre ensemble, marqué de la devise de ses éclisses ; les conservateurs du Met ont \
+proposé de le rattacher au mariage de Philippe II d'Espagne avec Élisabeth de Valois, \
+fille d'Henri II, en 1559, sans certitude. Il doit son surnom au violoniste Arved \
+Kurtz, qui l'a possédé de 1941 à 1991. Le Metropolitan Museum l'a acheté en 1999."""
+facture = """
+Amati construit ses instruments à partir de proportions géométriques simples, tracées \
+au compas, qui fixent pour longtemps le patron du violon : une caisse à deux \
+échancrures, une table d'épicéa voûtée, un fond et des éclisses d'érable, des ouïes en \
+f et une volute. La table est sculptée dans la masse, puis évidée ; un filet incrusté \
+souligne les bords. Le décor peint et doré, posé sur le bois, faisait de chaque \
+instrument d'un ensemble une pièce unique d'un même service, comme une vaisselle \
+d'apparat."""
+details = [
+  "Sur l'éclisse, à gauche, les lettres dorées d'un mot latin.",
+  "Les chevilles tournées et ornées, de part et d'autre du cheviller.",
+  "La volute, finement creusée, au sommet du manche.",
+  "Les ouïes larges et ouvertes, typiques des premiers violons.",
+  "L'usure du vernis au centre de la table, sous le chevalet.",
+]
+themes = ["violon", "Crémone", "Renaissance", "cour", "devise"]
+anecdote = """
+Les instruments d'Andrea Amati pour la cour de France sont parmi les plus anciens \
+violons datables. Avant eux, aucun violon conservé ne peut être daté avec certitude : \
+c'est à Crémone que l'histoire matérielle du violon commence."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Violon dit « Antonius »"
+artiste = "Antonio Stradivari"
+annee = "1711"
+image = "violon-antonius.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%22The_Antonius%22_Violin_MET_DP105130.jpg"
+technique = "Érable, épicéa, ébène ; hauteur 58,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un violon de la grande période de Stradivari, dont le musée a pu lire la date grâce à la lumière ultraviolette. Haut de 58 cm, il est ici montré agrandi."
+description = """
+Vu de face, sur un fond gris clair, le violon montre sa table d'épicéa, au grain fin et \
+serré au centre, qui s'élargit vers les bords. Le vernis, d'un brun orangé, est usé en \
+plusieurs endroits, notamment sous le chevalet, là où la main et le menton du \
+violoniste l'ont frotté pendant des générations. Les ouïes, longues et élégantes, \
+encadrent un chevalet clair ; en dessous, le cordier d'ébène est retenu par un bouton. \
+La touche noire monte jusqu'au cheviller, où quatre chevilles sombres tiennent les \
+cordes, puis à la volute. Un filet incrusté cerne le bord de la caisse."""
+evocation = """
+Le nom de Stradivari est devenu, dans toutes les langues, synonyme de perfection. \
+Devant ce violon, on comprend pourtant qu'il s'agit d'abord d'un outil de travail : son \
+vernis usé raconte deux siècles de musique, d'archet et de répétitions. On a souvent \
+cherché un secret de Stradivari, dans le vernis, le bois ou un traitement chimique ; \
+les spécialistes y voient plutôt l'aboutissement d'une longue vie d'expériences, de \
+mesures et de gestes répétés. Le violon dit aussi l'histoire des femmes musiciennes : \
+il a appartenu à une violoniste américaine, qui l'a joué jusqu'à sa mort."""
+histoire = """
+Antonio Stradivari le construit à Crémone en 1711, au cœur de ce que l'on appelle sa \
+période d'or. Plus tard, il est vendu à Genève à une Américaine, Anne Faye Matthews, \
+qui en joue jusqu'à sa mort en 1915. Sa fille, la sculptrice bostonienne Annie Bolton \
+Matthews Bryant, en hérite avec un autre Stradivari, le « Francesca », et lègue les \
+deux violons au Metropolitan Museum, où ils arrivent au printemps de 1934. Sa date a \
+longtemps été discutée : le testament parlait de 1721, un expert new-yorkais lisait \
+1717 dans les années 1950. L'étude du musée a établi que l'étiquette porte « 17ii », \
+c'est-à-dire 1711."""
+facture = """
+Après les essais d'un modèle allongé dans les années 1690, Stradivari adopte au début \
+du XVIIIe siècle un patron plus large, à la voûte plus basse que celle des Amati, qui \
+donne un son plus puissant. Il choisit des bois de grande qualité, épicéa pour la \
+table, érable pour le fond, les éclisses et la volute, et les couvre d'un vernis chaud \
+et transparent. Comme presque tous les violons anciens encore joués au XIXe siècle, \
+celui-ci a sans doute été adapté au jeu moderne, avec un manche plus long et plus \
+incliné."""
+details = [
+  "Le vernis usé sous le chevalet, d'un ton plus clair.",
+  "Le filet incrusté le long du bord de la caisse.",
+  "Les ouïes en f, fines et allongées.",
+  "Les quatre chevilles sombres et la volute au sommet.",
+]
+themes = ["violon", "Crémone", "Stradivari", "virtuosité", "datation"]
+anecdote = """
+À l'œil nu, l'étiquette collée à l'intérieur du violon est difficile à lire. Sous la \
+lumière ultraviolette, les chiffres « 17ii » apparaissent clairement : 1711, et non \
+1717 ou 1721 comme on l'avait cru."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Guitare à six chœurs"
+artiste = "Joseph Benedid"
+annee = "1787"
+image = "guitare-benedid.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Guitar_MET_DT6822a.jpg"
+technique = "Pin, ébène, érable, os, acajou"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une guitare à six paires de cordes, faite à Cadix au moment où la guitare espagnole gagne sa sixième corde. Elle est ici montrée agrandie."
+description = """
+La guitare est plus petite et plus fine que les nôtres, avec une caisse étroite à la \
+taille bien marquée. Sa table, d'un brun doré, est percée d'une rosace ronde entourée \
+de cercles incrustés. Douze cordes, groupées par paires, descendent du chevillier vers \
+un chevalet bas et étroit ; sous celui-ci, des incrustations sombres dessinent des \
+arabesques en forme de moustache. Au-dessus de la rosace, l'extrémité de la touche est \
+ornée de petites barres incrustées. Le manche, droit, porte des frettes ; il s'achève \
+par une tête plate, découpée, où les chevilles s'enfoncent par l'arrière, et qu'orne \
+une plaquette ovale claire."""
+evocation = """
+Cette guitare raconte un moment de passage. Au XVIIe siècle, la guitare espagnole avait \
+cinq chœurs, c'est-à-dire cinq paires de cordes, et servait surtout à accompagner en \
+grattant des accords. À la fin du XVIIIe siècle, on lui ajoute une sixième paire, dans \
+les graves, qui permet de jouer à la fois une basse et une mélodie. Peu après, les \
+cordes doubles laisseront place à six cordes simples : la guitare classique est née. \
+L'instrument évoque aussi Cadix, port ouvert sur l'Amérique, ses fandangos, ses \
+séguedilles et ses théâtres, où la guitare accompagne les chanteurs."""
+histoire = """
+Joseph Benedid travaille à Cadix, en Andalousie, alors l'un des ports les plus riches \
+d'Europe, où arrivent les navires des Amériques. Avec la famille Pagés, il est l'un des \
+premiers facteurs à construire des guitares à six chœurs ; ce modèle, plus large, \
+devait résister à la tension de six paires de cordes. Les guitares de Cadix sont alors \
+recherchées par les musiciens : le grand guitariste Fernando Sor cite Benedid parmi les \
+facteurs dont il préfère les instruments. Le Metropolitan Museum l'a achetée en 1992, \
+grâce au legs de Clara Mertens, en mémoire de son mari André Mertens."""
+facture = """
+La table est en pin, un bois léger qui vibre facilement. À l'intérieur, Benedid l'a \
+renforcée par deux barres disposées en éventail sous le chevalet, au lieu des simples \
+barres transversales des guitares plus anciennes : c'est l'un des premiers exemples de \
+ce barrage en éventail que le luthier Antonio de Torres perfectionnera au XIXe siècle \
+et qui équipe encore les guitares classiques. La touche est en ébène ; le musée signale \
+aussi de l'érable, de l'acajou et de l'os. Les cordes, en boyau, étaient pincées avec \
+les doigts."""
+details = [
+  "Les douze cordes groupées par paires.",
+  "Les arabesques sombres en forme de moustache sous le chevalet.",
+  "Les cercles incrustés autour de la rosace.",
+  "La tête plate découpée, avec sa plaquette ovale.",
+  "Les petites barres incrustées sur la touche, au-dessus de la rosace.",
+]
+themes = ["guitare", "Espagne", "Cadix", "lutherie", "transition"]
+anecdote = """
+Les deux barres en éventail cachées sous la table de cette guitare annoncent \
+l'innovation qui a fait la célébrité d'Antonio de Torres, soixante ans plus tard. Les \
+guitaristes d'aujourd'hui jouent sur des instruments construits selon ce principe."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Ūd"
+artiste = "Manol (Emmanuel Venios)"
+annee = "1916"
+image = "oud-manol.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%C5%AAd_MET_DP346448.jpg"
+technique = "Épicéa, mûrier, bois divers, nacre, mastic ; 80 × 36,4 × 18,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un ūd sorti de l'atelier de Manol, le luthier d'Istanbul dont les instruments font encore référence chez les joueurs de musique ottomane."
+description = """
+L'ūd a la forme d'une demi-poire. Sa table, en épicéa clair, est percée de trois \
+rosaces ajourées : une grande au centre, deux petites plus bas, sur les côtés, \
+découpées en étoiles et en entrelacs d'une grande finesse. Sous elles, une large plaque \
+ovale de nacre, gravée de motifs floraux, protège la table des coups du plectre. Les \
+cordes, groupées par paires, s'attachent à un cordier collé près du bord inférieur. Le \
+manche, court et sans frettes, est incrusté de rinceaux de nacre ; il se termine par un \
+chevillier brusquement replié vers l'arrière, hérissé de chevilles sombres. Sur le \
+côté, on devine la caisse bombée, faite de côtes de bois foncé soulignées de filets \
+clairs."""
+evocation = """
+L'ūd est l'instrument roi des musiques arabe, turque et persane, et l'ancêtre du luth \
+européen. Son manche sans frettes permet de jouer tous les intervalles des maqams, ces \
+modes qui divisent l'octave plus finement que la gamme occidentale. Fait à Istanbul par \
+un luthier grec pour des musiciens turcs, arméniens, juifs ou grecs, cet instrument \
+évoque une capitale cosmopolite où les musiques circulaient d'une communauté à l'autre. \
+Daté de 1916, en pleine Première Guerre mondiale, il appartient aussi aux dernières \
+années de l'Empire ottoman, dont le monde allait disparaître quelques années plus tard."""
+histoire = """
+Emmanuel Venios, dit Manol, est un luthier grec de Constantinople, l'actuelle Istanbul. \
+Ses ūds et ses lavtas, un petit luth à frettes de la musique ottomane, sont recherchés \
+de son vivant par les meilleurs musiciens de la ville, et le restent aujourd'hui. Cet \
+ūd porte la date de 1916, alors que Manol meurt en 1915 ou en 1916 : c'est l'un des \
+derniers instruments sortis de son atelier. Le Metropolitan Museum l'a acheté en 2014. \
+Il a été joué depuis par l'oudiste américain Ara Dinkjian, dans une vidéo diffusée par \
+le musée."""
+facture = """
+La caisse est faite de côtes très fines de mûrier, cintrées à chaud puis collées côte à \
+côte sur un moule, comme les douelles d'un tonneau. La table d'épicéa, mince, est \
+sculptée de ses trois rosaces avant d'être collée. On attribue à Manol la mise au point \
+d'un ūd un peu plus petit et accordé plus haut que les ūds arabes, devenu le modèle de \
+l'ūd turc. Le musée signale aussi, parmi ses matériaux, du mastic, la résine aromatique \
+du lentisque. Les cordes sont pincées avec un long plectre, autrefois une plume."""
+details = [
+  "Les trois rosaces ajourées, découpées comme de la dentelle.",
+  "La grande plaque de nacre gravée, sous les rosaces.",
+  "Le manche sans frettes, incrusté de rinceaux de nacre.",
+  "Le chevillier replié à angle presque droit.",
+  "Les côtes sombres de la caisse, visibles sur le côté.",
+]
+themes = ["ūd", "Istanbul", "Empire ottoman", "maqam", "nacre"]
+anecdote = """
+Le mot arabe al-ʿūd, « le bois », est passé en Europe par l'Espagne musulmane : il a \
+donné laúd en espagnol, liuto en italien, luth en français et lute en anglais. Le luth \
+de la Renaissance est un descendant direct de l'ūd."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Vina"
+artiste = "Inde du Sud"
+annee = "fin du XVIIIe siècle"
+image = "vina.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/506151"
+technique = "Jacquier, feuille d'or, papier mâché, os, acier, laiton ; 37,5 × 121,5 × 34 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le grand luth de la musique classique de l'Inde du Sud, terminé par une tête de monstre dorée."
+description = """
+La vina est couchée, comme le musicien la tient. À droite, une grosse caisse arrondie, \
+en bois brun rouge, est fermée par une table plate où s'appuient les cordes ; des \
+bandes dorées soulignent son bord. De là part un long manche droit, sur lequel \
+s'alignent vingt-quatre frettes de laiton fixées sur des crêtes de cire noire. Au bout, \
+le manche se recourbe en une tête de yali, un monstre mythique, dorée et rehaussée de \
+rouge. Sous le manche, près de cette tête, une seconde caisse ronde, en papier mâché, \
+est peinte de fleurs sur fond vert sombre et de bandes rouges et or. Quatre grosses \
+chevilles noires tiennent les cordes principales ; trois autres, sur le côté, tendent \
+les cordes de bourdon."""
+evocation = """
+En Inde, la vina est l'instrument de Sarasvati, déesse du savoir, de la parole et des \
+arts, qui est presque toujours représentée en la tenant. Jouer de la vina, c'est donc \
+pratiquer un art sacré autant qu'une musique savante. Dans la musique carnatique, la \
+musique classique du Sud, elle est l'instrument de référence, celui dont le son lent et \
+glissant imite la voix humaine. La tête de yali, gardien des temples du Sud, protège \
+symboliquement l'instrument. Le décor doré et peint fait de cette vina un objet de \
+prestige, digne d'une cour ou d'une grande famille de musiciens."""
+histoire = """
+Le mot vina désigne en sanskrit, depuis l'Antiquité, plusieurs instruments à cordes. La \
+forme de celle-ci, à vingt-quatre frettes fixes, se fixe dans le Sud au XVIIe siècle ; \
+on en attribue la mise au point à la cour des Nayak de Thanjavur. À la fin du XVIIIe \
+siècle, époque de cet instrument, vivent les trois grands compositeurs de la musique \
+carnatique, dont Muthuswami Dikshitar, lui-même joueur de vina. On ignore pour qui \
+cette vina a été faite. Elle a été donnée au Metropolitan Museum en 2009 par Michael \
+Pellettieri, en mémoire de Y. G. Srimati, musicienne et artiste."""
+facture = """
+La grande caisse, le manche et la tête sont traditionnellement taillés dans le bois de \
+jacquier, un arbre fruitier du Sud de l'Inde. La caisse est creusée dans la masse, puis \
+fermée par une table mince. Les frettes de laiton reposent sur de la cire, que l'on \
+peut chauffer pour les déplacer et ajuster la justesse. Le musicien joue assis par \
+terre, l'instrument posé en travers des genoux, la petite caisse appuyée sur sa cuisse \
+gauche ; la main droite pince les cordes, la gauche les fait glisser sur les frettes \
+pour obtenir les ornements caractéristiques du chant carnatique."""
+details = [
+  "La tête de yali dorée, gueule ouverte, au bout du manche.",
+  "La caisse ronde en papier mâché, peinte de fleurs.",
+  "Les frettes de laiton posées sur des crêtes de cire noire.",
+  "Les trois chevilles latérales des cordes de bourdon.",
+  "Les bandes dorées au bord de la grande caisse.",
+]
+themes = ["Inde", "musique carnatique", "Sarasvati", "sacré", "yali"]
+anecdote = """
+Les frettes de la vina sont hautes : en tirant la corde de côté, le musicien fait \
+monter la note sans changer de frette, comme un chanteur qui glisse d'un son à l'autre. \
+C'est ce glissement, appelé gamaka, qui donne à la musique carnatique son caractère."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Koto, avec son coffre et sa housse"
+artiste = "Atelier des Gotō"
+annee = "début du XVIIe siècle"
+image = "koto.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Koto_MET_DP148476.jpg"
+technique = "Bois divers, incrustations d'ivoire, d'écaille, d'or et d'argent, métal, laque, soie ; 13 × 189,5 × 24,2 cm ; ornements de métal de Gotō Teijō"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une cithare à treize cordes ornée par Gotō Teijō, maître orfèvre de la famille Gotō, présentée avec son coffre laqué, sa housse de soie et ses chevalets."
+description = """
+Trois éléments sont posés l'un sous l'autre. En haut, un long coffre de laque noire, au \
+couvercle légèrement bombé, décoré de grues d'or inscrites dans des cercles et \
+d'oiseaux en vol, est noué d'un cordon orange. Au milieu, le koto lui-même, long de \
+près de deux mètres : une caisse légèrement bombée, dont le bois montre un veinage \
+ondulé, ses extrémités ornées d'écaille, d'ivoire et de métal ciselé. En bas, la housse \
+de soie bleue brochée de motifs floraux, bordée de pompons rouges, avec son revers de \
+brocart doré, et, devant elle, une petite pochette et les treize chevalets, alignés \
+comme de minuscules chevalets de peintre."""
+evocation = """
+Le koto, venu de Chine au VIIe ou au VIIIe siècle, est au Japon l'instrument de \
+l'aristocratie, celui que jouent les dames de cour dans les romans de l'époque de \
+Heian. Ce koto somptueux appartient au moment où la société des guerriers adopte ces \
+raffinements. Les grues, oiseaux de longue vie, souhaitent bonheur et longévité à son \
+propriétaire ; les lions et les fleurs de métal qui ornent ses extrémités sont des \
+motifs de prestige. Le soin apporté au coffre, à la housse et aux chevalets montre que \
+l'objet se transmettait comme un trésor de famille, enveloppé, rangé et déballé selon \
+un véritable cérémonial."""
+histoire = """
+Selon une tradition rapportée par le musée, ce koto aurait été offert par le seigneur \
+Hosokawa Tadaoki au noble de cour Karasumaru Mitsuhiro, pour le remercier d'avoir aidé, \
+en 1600, à lever le siège du château de Tanabe, où était enfermé le père de Tadaoki, \
+Hosokawa Yūsai. Ses ornements de métal sont attribués à Gotō Teijō, neuvième maître de \
+la famille Gotō. Le coffre laqué a été fait plus tard, au début du XIXe siècle, et la \
+housse date des XVIIIe et XIXe siècles. Le Metropolitan Museum l'a acheté en 2007. Le \
+conservateur Ken Moore y voit le témoin d'une étape importante de l'histoire de la \
+musique japonaise."""
+facture = """
+Le koto est une longue caisse creuse, sur laquelle sont tendues treize cordes de soie ; \
+chacune repose sur un chevalet mobile que l'on déplace pour accorder l'instrument. Le \
+musicien, agenouillé, pince les cordes de la main droite avec des onglets portés sur \
+trois doigts. Ici, les extrémités sont couvertes d'incrustations géométriques d'ivoire, \
+d'écaille, d'or et d'argent, et de petites sculptures de métal, lions et fleurs, \
+encadrées d'ivoire. Les treize chevalets sont garnis et coiffés d'argent."""
+details = [
+  "Les grues d'or dans des cercles, sur le couvercle du coffre.",
+  "Le veinage ondulé du bois de la caisse du koto.",
+  "Les extrémités du koto, où brillent l'écaille et le métal.",
+  "Les treize chevalets alignés au premier plan.",
+  "Les pompons rouges qui bordent la housse de soie bleue.",
+]
+themes = ["Japon", "koto", "laque", "orfèvrerie", "samouraï", "grue"]
+anecdote = """
+La tradition liée à ce koto affirme qu'il a fallu mille jours pour l'achever. Le \
+chiffre est sans doute symbolique, mais la profusion de ses incrustations et de ses \
+ornements de métal laisse imaginer un travail de plusieurs années."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Kora"
+artiste = "Tradition mandingue"
+annee = "avant 1918"
+image = "kora.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1918.352"
+technique = "Calebasse, bois, peau, cordes et cordelettes ; hauteur 111,8 cm, diamètre de la calebasse 32,4 cm"
+collection = "Cleveland Museum of Art"
+note = "La harpe-luth des griots d'Afrique de l'Ouest : elle avait vingt et une cordes, dont il ne reste que quelques-unes."
+description = """
+Une grande calebasse coupée en deux, couverte d'une peau tendue et jaunie, forme une \
+caisse ronde d'une trentaine de centimètres. Un long manche de bois la traverse de part \
+en part : il sort en pointe sous la caisse et s'élève, légèrement courbé, bien \
+au-dessus d'elle. Sur la peau se dresse un haut chevalet de bois, entaillé, qui \
+maintenait les cordes en deux rangées. De part et d'autre du manche, deux courtes \
+poignées de bois dépassent de la caisse : le musicien les saisit pour tenir \
+l'instrument face à lui. Quelques cordes seulement subsistent. Le bord de la peau est \
+fixé par de petites chevilles de bois plantées tout autour de la calebasse."""
+evocation = """
+Chez les peuples mandingues, la kora est l'instrument des griots, les jeli, gardiens de \
+la mémoire. De génération en génération, ces familles de musiciens transmettent les \
+généalogies, les louanges des lignages et les grandes épopées, comme celle de Soundiata \
+Keïta, fondateur de l'empire du Mali. Jouer de la kora, c'est donc faire parler \
+l'histoire. Cette kora usée, privée de la plupart de ses cordes, porte au dos des \
+coutures qui réparent d'anciennes fissures : signe qu'elle a longtemps servi et qu'on a \
+tenu à la garder en état de jouer."""
+histoire = """
+La kora est jouée en Gambie, au Sénégal, en Guinée, en Guinée-Bissau et au Mali ; la \
+tradition orale situe son origine dans l'ancien royaume du Kaabou. À la fin du XVIIIe \
+siècle, l'explorateur écossais Mungo Park décrit déjà une grande harpe à dix-huit \
+cordes, qu'il appelle korro. On ignore où et par qui cet exemplaire a été fabriqué, et \
+comment il a quitté l'Afrique de l'Ouest, alors sous domination coloniale française et \
+britannique. Il a été donné au Cleveland Museum of Art en 1918 par Ralph King, avec \
+d'autres instruments de musique."""
+facture = """
+La caisse est une calebasse, le fruit séché d'une plante grimpante, coupée et couverte \
+d'une peau de vache tendue. Le manche, en bois dur, traverse la calebasse et sert d'axe \
+à tout l'instrument. Les vingt et une cordes, autrefois en lanières de cuir, \
+aujourd'hui souvent en fil de nylon, partent d'un anneau à la base, passent par les \
+encoches du chevalet en deux rangées, et s'attachent au manche par des bagues de cuir \
+que l'on fait glisser pour accorder. Le musicien pince les cordes avec les pouces et \
+les index, en jouant à la fois une basse, un motif répété et des improvisations."""
+details = [
+  "Le haut chevalet entaillé dressé sur la peau.",
+  "Les deux poignées de bois qui encadrent le manche.",
+  "Les petites chevilles plantées autour de la calebasse.",
+  "La pointe du manche, qui ressort sous la caisse.",
+]
+themes = ["Afrique de l'Ouest", "griot", "mémoire", "kora", "épopée"]
+anecdote = """
+La kora est aujourd'hui l'un des instruments africains les plus connus dans le monde. \
+Depuis les années 1970, des griots joueurs de kora se produisent dans les grandes \
+salles de concert et enregistrent avec des musiciens de jazz, de musique classique ou \
+de blues."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Harpe à tête humaine"
+artiste = "Style mangbetu"
+annee = "avant 1928"
+image = "harpe-mangbetu.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1929.344"
+technique = "Bois, peau, fibre végétale, métal, perle de verre ; manche : 36,9 cm"
+collection = "Cleveland Museum of Art"
+note = "Une harpe à cinq cordes dont le manche se termine par une tête au crâne allongé, selon l'idéal de beauté des Mangbetu."
+description = """
+La caisse de résonance, posée à plat, a la forme d'une barque ou d'un gros poisson : \
+une coque de bois couverte d'une peau sombre, percée de petits trous, dont l'extrémité \
+s'effile. De l'autre bout s'élève le manche, qui monte en arc vers le haut et se \
+termine par une petite tête humaine sculptée. Ce visage aux yeux mi-clos porte un crâne \
+très allongé, étiré vers l'arrière, et à l'oreille une perle de verre bleue. Le long du \
+manche, cinq chevilles de bois sont plantées l'une au-dessus de l'autre ; cinq cordes \
+fines en partent pour descendre en diagonale vers la peau de la caisse. Le bois, sombre \
+et patiné, a pris l'éclat du métal."""
+evocation = """
+Chez les Mangbetu du nord-est du Congo, la tête allongée était un signe de beauté et de \
+rang : on bandait le crâne des nourrissons pour l'étirer, et l'on soulignait cette \
+forme par une coiffure en éventail. En donnant ce visage à sa harpe, le sculpteur en \
+fait une personne, presque un portrait, qui semble chanter avec le musicien. On a \
+montré que beaucoup de ces objets figuratifs ont été faits au début du XXe siècle pour \
+les visiteurs, les militaires et les administrateurs européens, qui les recherchaient : \
+la harpe dit aussi la rencontre, inégale, entre une cour africaine et le regard \
+colonial."""
+histoire = """
+Les harpes à cinq cordes ornées d'une figure humaine étaient jouées par plusieurs \
+peuples du nord du Congo, pour accompagner les chants d'hommes ou de femmes ; le crâne \
+allongé de celle-ci est caractéristique des Mangbetu. Elle a été acquise en 1928 à \
+Ekibondo, alors au Congo belge, sous la colonisation, par le peintre de Cleveland Paul \
+Travis, au cours de son voyage en Afrique centrale. Il l'achetait pour le compte de \
+l'association African Art Sponsors et des Gilpin Players, la troupe de théâtre \
+afro-américaine de Cleveland, qui l'ont ensuite donnée au Cleveland Museum of Art."""
+facture = """
+La caisse est creusée dans un seul morceau de bois, puis couverte d'une peau tendue, \
+maintenue par des chevilles ou des coutures. Le manche, emboîté dans la caisse, est \
+sculpté avec la tête dans la même pièce de bois. Les cordes, en fibre végétale, \
+s'enroulent sur les chevilles et s'attachent, en bas, comme sur la plupart des harpes \
+de la région, à une baguette placée sous la peau, qui transmet leurs vibrations. Le \
+sculpteur a travaillé la tête avec une grande économie : quelques plans nets pour le \
+front, les paupières et la bouche, et l'étirement spectaculaire du crâne."""
+details = [
+  "La perle de verre bleue accrochée à l'oreille.",
+  "Le crâne étiré vers l'arrière, au sommet du manche.",
+  "Les cinq chevilles alignées le long du manche.",
+  "Les petits trous percés dans la peau de la caisse.",
+]
+themes = ["Afrique centrale", "Mangbetu", "harpe", "portrait", "colonisation"]
+anecdote = """
+Les Gilpin Players, pour qui cette harpe a été achetée, étaient la troupe de théâtre de \
+Karamu House, à Cleveland, l'un des plus anciens théâtres afro-américains des \
+États-Unis. Leur collection africaine a rejoint le musée de Cleveland dès 1929."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.3
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Michele Todini"
+vie = "Saluzzo (Piémont), baptisé en 1616 – Rome, 1690"
+biographie = """
+Né dans le Piémont, Michele Todini s'installe à Rome dans sa jeunesse et y fait \
+carrière comme musicien ; il est lié à la congrégation de Sainte-Cécile, qui réunit les \
+musiciens de la ville. Mais sa passion est ailleurs : la mécanique appliquée à la \
+musique. Pendant des années, il imagine et fait construire des instruments à \
+transformation, des claviers qui commandent plusieurs instruments à la fois, des \
+automates sonores. À partir des années 1650, il les réunit dans sa maison romaine, \
+qu'il ouvre aux visiteurs sous le nom de Galleria Armonica. C'est l'un des premiers \
+musées d'instruments de musique au monde. En 1676, il en publie la description, la \
+Dichiaratione della Galleria Armonica, qui permet aujourd'hui de reconstituer ce qu'il \
+montrait. Pour réaliser ses machines, Todini s'entoure de sculpteurs, de doreurs et de \
+peintres, comme le paysagiste Gaspard Dughet. L'entreprise, trop ambitieuse, lui cause \
+de graves difficultés financières. Après sa mort, la collection se disperse ; de toute \
+la Galleria, seul le clavecin doré du Metropolitan Museum est parvenu jusqu'à nous."""
+style = """
+Todini n'est pas un facteur au sens habituel : c'est un inventeur et un metteur en \
+scène. Il associe la musique, la sculpture, la peinture et la mécanique dans des \
+ensembles spectaculaires, inspirés de la mythologie, qui devaient surprendre le \
+visiteur autant que le charmer. Ses machines appartiennent pleinement à la culture de \
+la Rome baroque, amoureuse des fontaines animées, des décors de théâtre et des cabinets \
+de curiosités."""
+
+[[artistes]]
+nom = "Bartolomeo Cristofori"
+vie = "Padoue, 4 mai 1655 – Florence, 27 janvier 1731"
+biographie = """
+On sait peu de chose des débuts de Bartolomeo Cristofori à Padoue, où il apprend sans \
+doute la facture des clavecins. En 1688, le grand-prince Ferdinand de Médicis, fils du \
+grand-duc de Toscane, passionné de musique, l'engage à Florence pour entretenir et \
+construire les instruments de sa cour. Cristofori dispose d'un atelier, d'aides et de \
+moyens. Il construit des clavecins, des épinettes, des instruments à cordes, et invente \
+plusieurs mécanismes. Vers 1700, il met au point un clavecin dont les cordes sont \
+frappées par des marteaux et non pincées : un inventaire de la cour le mentionne cette \
+année-là. En 1711, l'écrivain Scipione Maffei publie dans une revue savante la \
+description de l'invention, avec un dessin de la mécanique ; traduit en allemand, \
+l'article fera connaître le procédé au-delà des Alpes. Après la mort du grand-prince, \
+en 1713, Cristofori reste au service des Médicis comme conservateur de leur collection \
+d'instruments. Il continue de perfectionner son piano jusqu'à la fin de sa vie. Trois \
+de ses pianos sont conservés, à New York, Rome et Leipzig, avec quelques clavecins et \
+épinettes."""
+style = """
+Cristofori est un ingénieur autant qu'un artisan. Ses instruments sont sobres à \
+l'extérieur, mais leur mécanique est d'une ingéniosité étonnante : l'échappement, qui \
+libère le marteau après le choc, et les étouffoirs sont restés les principes de tous \
+les pianos. Il a aussi conçu des caisses plus solides pour supporter des cordes plus \
+tendues. Sans lui, ni le piano de Mozart, ni celui de Beethoven, ni le piano moderne \
+n'auraient existé."""
+
+[[artistes]]
+nom = "Andrea Amati"
+vie = "Crémone, vers 1505 – Crémone, vers 1577"
+biographie = """
+Andrea Amati est le premier grand luthier de Crémone, ville de Lombardie alors sous \
+domination espagnole. On sait peu de chose de sa formation ; il est établi dans sa \
+propre maison et son propre atelier dans les années 1530. Il construit d'abord des \
+luths et des violes, puis se consacre à une famille d'instruments encore nouvelle : le \
+violon, l'alto et le violoncelle. Son talent lui vaut des commandes prestigieuses, \
+notamment de la cour de France, pour laquelle il réalise plusieurs ensembles \
+d'instruments peints et dorés, dont le plus fameux porte les armes du roi Charles IX. \
+Ses deux fils, Antonio et Girolamo, reprennent l'atelier ; son petit-fils Nicolò Amati, \
+au XVIIe siècle, sera le plus célèbre luthier de son temps et formera, selon toute \
+vraisemblance, Andrea Guarneri et peut-être Antonio Stradivari. Ainsi, de l'atelier \
+d'Andrea Amati est sortie toute l'école de lutherie de Crémone, qui domine l'Europe \
+pendant près de deux siècles. Ses instruments, rares, sont aujourd'hui parmi les plus \
+précieux de la lutherie."""
+style = """
+Andrea Amati a donné au violon sa forme presque définitive : caisse à deux échancrures, \
+voûte marquée, ouïes en f, volute sculptée. Ses instruments, de petite taille, au \
+vernis doré, ont un son doux et clair. Il fonde la méthode crémonaise, qui repose sur \
+des moules intérieurs et sur des proportions géométriques tracées au compas, transmise \
+à ses descendants puis à leurs élèves."""
+
+[[artistes]]
+nom = "Antonio Stradivari"
+vie = "Crémone (?), vers 1644 – Crémone, 18 décembre 1737"
+biographie = """
+On ignore la date et le lieu exacts de la naissance d'Antonio Stradivari, probablement \
+à Crémone, vers 1644. Une étiquette de 1666 le dit élève de Nicolò Amati, sans que \
+cette formation soit certaine. Installé à son compte, il travaille d'abord dans \
+l'esprit des Amati, puis expérimente, dans les années 1690, un violon plus allongé. \
+Vers 1700 commence ce que les spécialistes appellent sa période d'or, qui dure une \
+vingtaine d'années : ses violons prennent alors leur forme la plus accomplie. Il vit et \
+travaille dans une maison de la place Saint-Dominique, à Crémone, avec ses fils \
+Francesco et Omobono, qui l'aident à l'atelier. Ses clients sont des princes, des cours \
+et des églises de toute l'Europe. Il construit aussi des violoncelles, des altos, des \
+guitares et des harpes. Il travaille jusqu'à plus de quatre-vingt-dix ans. On estime \
+qu'il a fabriqué plus d'un millier d'instruments, dont environ six cents sont \
+conservés. Au XIXe siècle, les virtuoses comme Paganini et les marchands parisiens font \
+de son nom une légende."""
+style = """
+Les violons de Stradivari se reconnaissent à leur élégance : un contour ample et \
+équilibré, des voûtes plus basses que celles des Amati, des ouïes fines, un vernis \
+rouge orangé transparent. Leur son, à la fois puissant et riche, convient aux grandes \
+salles de concert. Ils servent de modèle à presque tous les luthiers depuis deux \
+siècles, et restent recherchés par les plus grands solistes."""
+
+[[artistes]]
+nom = "Joseph Benedid"
+vie = "Cadix (Espagne), 1760 – 1836"
+biographie = """
+La vie de Joseph Benedid est mal connue. Il travaille à Cadix, en Andalousie, dans la \
+seconde moitié du XVIIIe siècle et le début du XIXe. La ville est alors l'une des plus \
+riches d'Espagne : depuis 1717, elle concentre le commerce avec les colonies \
+d'Amérique, et sa bourgeoisie marchande fréquente les théâtres, les salons et les cafés \
+où l'on chante et danse au son de la guitare. Cadix devient un centre de facture de \
+guitares, autour de la famille Pagés et de Benedid. Ces artisans participent à une \
+transformation décisive de l'instrument : ils construisent des guitares à six chœurs, \
+plus larges et plus solides, et renforcent la table par des barres disposées en \
+éventail. La guitare du Metropolitan Museum, datée de 1787, montre déjà ces deux \
+nouveautés. Au début du XIXe siècle, le guitariste et compositeur Fernando Sor cite \
+Benedid parmi les facteurs dont il apprécie les instruments. Dans les années suivantes, \
+les cordes doubles cèdent la place aux six cordes simples, et les facteurs andalous \
+jouent un rôle majeur dans la naissance de la guitare classique."""
+style = """
+Les guitares de Benedid sont légères, à la caisse étroite et à la taille marquée, \
+ornées avec retenue d'incrustations sombres autour de la rosace et du chevalet. Leur \
+barrage en éventail, encore discret, annonce celui d'Antonio de Torres, qui fixera au \
+XIXe siècle la forme de la guitare classique jouée encore aujourd'hui."""
+
+[[artistes]]
+nom = "Manol (Emmanuel Venios)"
+vie = "Folégandros (Grèce) ou Istanbul, 1838 ou 1845 – Istanbul, 1915 ou 1916"
+biographie = """
+Emmanuel Venios, que tout Istanbul appelait Manol, appartient à la communauté grecque \
+orthodoxe de la capitale ottomane. Les sources ne s'accordent pas sur sa naissance : le \
+Metropolitan Museum le fait naître sur l'île de Folégandros en 1838, d'autres à \
+Istanbul en 1845. Il aurait d'abord été menuisier et ébéniste avant de se consacrer à \
+la lutherie, dans les années 1870. À Constantinople, ville où se côtoient Turcs, Grecs, \
+Arméniens et Juifs, il construit des ūds et des lavtas pour les musiciens de toutes les \
+communautés, ceux des cafés comme ceux des salons. Son atelier connaît un grand succès, \
+et ses instruments sont recherchés pour leur sonorité, leur légèreté et la finesse de \
+leur décor. On lui attribue l'invention de l'ūd turc moderne, plus petit et accordé \
+plus haut que l'ūd arabe. Il meurt en 1915 ou 1916, pendant la Première Guerre \
+mondiale. Ses ūds sont aujourd'hui des pièces de collection, jouées par les plus grands \
+musiciens, et ont été copiés par des générations de luthiers en Turquie, en Grèce et en \
+Arménie."""
+style = """
+Les ūds de Manol sont reconnaissables à leur caisse légère faite de côtes très fines, à \
+leurs trois rosaces finement ajourées et à leur décor de nacre, sobre ou foisonnant \
+selon les commandes. Leur son, clair et puissant, a défini celui de l'ūd turc. Ils \
+restent le modèle de référence des luthiers qui fabriquent des ūds de style ottoman."""
+
+[[artistes]]
+nom = "Inde du Sud"
+vie = "Tamil Nadu, Karnataka, Andhra Pradesh et Kerala ; tradition savante du Moyen Âge à nos jours"
+biographie = """
+Le Sud de l'Inde possède sa propre tradition de musique classique, la musique \
+carnatique, distincte de la musique hindoustanie du Nord. Elle repose sur des ragas, \
+modes mélodiques associés à des émotions et à des moments, et sur des cycles \
+rythmiques, les talas ; elle est surtout vocale et largement religieuse, chantée en \
+l'honneur des dieux. Pendant des siècles, elle est cultivée dans les temples et dans \
+les cours des souverains, en particulier à Thanjavur, où les Nayak puis les Marathes \
+entretiennent musiciens, poètes et danseurs. Au tournant des XVIIIe et XIXe siècles \
+vivent les trois grands compositeurs de cette tradition, Tyagaraja, Muthuswami \
+Dikshitar et Syama Sastri, dont les chants sont encore au cœur du répertoire. Les \
+instruments du Sud, vina, violon adopté au XIXe siècle, flûte de bambou, tambour \
+mridangam, servent d'abord à accompagner ou à imiter la voix. Les artisans qui les \
+fabriquent, souvent issus de familles de charpentiers et de sculpteurs, travaillent le \
+bois de jacquier, la laque, la feuille d'or et la peinture, comme pour les objets des \
+temples."""
+style = """
+Les instruments de l'Inde du Sud se distinguent par leurs caisses taillées dans la \
+masse, leurs têtes sculptées de monstres protecteurs, les yalis, et un décor où la \
+dorure, la peinture florale et l'ivoire ou l'os se combinent. Leur forme est pensée \
+pour le jeu assis par terre et pour les glissements de notes, les gamakas, qui font \
+l'expressivité de la musique carnatique."""
+
+[[artistes]]
+nom = "Atelier des Gotō"
+vie = "Kyoto, puis Edo (Japon), de la fin du XVe au XIXe siècle"
+biographie = """
+La famille Gotō est la plus célèbre dynastie d'orfèvres du Japon. Son fondateur, Gotō \
+Yūjō, mort en 1512, sert le shogun Ashikaga Yoshimasa à Kyoto et se spécialise dans les \
+garnitures de sabre : petits ornements de métal, gardes, poignées, que les guerriers \
+portent comme des bijoux. Pendant dix-sept générations, les maîtres Gotō se \
+transmettent le nom, les modèles et les secrets de l'atelier. Ils travaillent pour les \
+shoguns et les grands seigneurs, et une branche de la famille est chargée, à partir de \
+la fin du XVIe siècle, de fabriquer les grandes pièces d'or officielles, les ōban. Au \
+XVIIe siècle, sous le shogunat des Tokugawa, l'atelier se partage entre Kyoto et la \
+nouvelle capitale, Edo. Gotō Teijō, neuvième maître, né en 1603 et mort en 1673, passe \
+pour l'un des plus habiles de la lignée : c'est à lui que l'on attribue les ornements \
+de métal du koto du Metropolitan Museum. Le style des Gotō, très codifié, devient le \
+style officiel des garnitures de sabre des samouraïs de haut rang jusqu'au XIXe siècle."""
+style = """
+Les Gotō travaillent de petits reliefs d'or, d'argent et de shakudō, un alliage de \
+cuivre et d'or patiné en noir, sur des fonds finement grenés. Leurs sujets favoris, \
+lions, dragons, fleurs, animaux et emblèmes de famille, sont ciselés avec une précision \
+minutieuse et une grande retenue. Leur art, conçu pour le cérémonial, privilégie la \
+perfection technique et le respect des modèles transmis."""
+
+[[artistes]]
+nom = "Tradition mandingue"
+vie = "Afrique de l'Ouest : Gambie, Sénégal, Guinée, Guinée-Bissau, Mali ; depuis le Moyen Âge"
+biographie = """
+Les Mandingues, ou Mandé, sont un ensemble de peuples d'Afrique de l'Ouest, Malinkés, \
+Mandinkas, Bambaras et d'autres, qui se réclament de l'empire du Mali, fondé au XIIIe \
+siècle par Soundiata Keïta. Leur société a longtemps été organisée en groupes \
+héréditaires, parmi lesquels celui des jeli, les griots. Ces familles de musiciens, de \
+conteurs et de généalogistes sont les gardiens de la mémoire : elles transmettent \
+oralement l'histoire des lignages, les louanges des grandes familles et l'épopée de \
+Soundiata. Les griots servent de conseillers, de médiateurs et de maîtres de cérémonie \
+; leurs instruments, la kora, le balafon, xylophone à calebasses, et le ngoni, petit \
+luth, se transmettent de père en fils avec le répertoire. La kora semble apparaître \
+dans l'ouest du monde mandingue, dans l'ancien royaume du Kaabou, aux confins de la \
+Gambie, de la Casamance et de la Guinée-Bissau. À l'époque coloniale, la tradition des \
+griots se maintient malgré les bouleversements. Depuis les indépendances, elle connaît \
+un rayonnement mondial, grâce à des joueurs de kora devenus des vedettes \
+internationales."""
+style = """
+La musique des griots mandingues repose sur la répétition et la variation : un motif de \
+base, joué en boucle, sert de fond à des improvisations et au chant de louange ou de \
+récit. Les instruments sont faits de matériaux naturels, calebasse, bois, peau, cuir, \
+et leur fabrication, simple en apparence, demande une grande science de l'accord et du \
+son."""
+
+[[artistes]]
+nom = "Style mangbetu"
+vie = "Nord-est de la République démocratique du Congo, XIXe – XXe siècle"
+biographie = """
+Les Mangbetu vivent dans la forêt et la savane du nord-est de l'actuelle République \
+démocratique du Congo, près de la rivière Uele. Au XIXe siècle, ils forment un royaume \
+puissant, dont les souverains vivent dans de vastes cours entourées de musiciens, de \
+danseurs et d'artisans. Les premiers voyageurs européens, dans les années 1870, \
+décrivent avec admiration ces cours et leurs objets. À la fin du XIXe siècle, la région \
+est conquise et intégrée à l'État indépendant du Congo, propriété personnelle du roi \
+des Belges Léopold II, puis au Congo belge à partir de 1908. Les administrateurs, \
+militaires et voyageurs européens recherchent alors les objets mangbetu, en particulier \
+ceux qui portent la tête allongée caractéristique : statuettes, poteries, boîtes, \
+couteaux et harpes. Les sculpteurs, mangbetu mais aussi zandé et d'autres peuples \
+voisins, multiplient ces figures, en partie pour ce nouveau public. Les historiens de \
+l'art ont montré qu'un style mangbetu s'est ainsi formé au début du XXe siècle, au \
+croisement des traditions de cour et de la demande coloniale."""
+style = """
+Le style mangbetu se reconnaît à ses têtes au crâne étiré vers l'arrière, aux traits \
+fins et calmes, parfois rehaussées d'une coiffure en éventail ou d'une perle. Les \
+sculpteurs l'appliquent à des objets utilitaires, harpes, poteries, boîtes, qu'ils \
+transforment en figures humaines. Le travail du bois, lisse et patiné, recherche \
+l'élégance et l'économie des formes."""
