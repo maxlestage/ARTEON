@@ -278,7 +278,7 @@ fn notice_code(
             .join(", ")
     };
     format!(
-        "Notice {{ description: {:?}, evocation: {:?}, story: {:?}, manner: {:?}, details: &[{}], themes: &[{}], anecdote: {:?} }}",
+        "Notice {{ description: text!({:?}), evocation: text!({:?}), story: text!({:?}), manner: text!({:?}), details: texts!(&[{}]), themes: &[{}], anecdote: text!({:?}) }}",
         description.trim(),
         evocation.trim(),
         histoire.trim(),
@@ -287,6 +287,60 @@ fn notice_code(
         list(themes),
         anecdote.trim(),
     )
+}
+
+/// Les textes longs d'une exposition, en JSON : `works` (par nom de page), `artists`
+/// (par nom), `museum` et `source` (le fichier .toml, pour l'éditeur du musée).
+fn texts_json(name: &str, file: &File) -> String {
+    let notice = |d: &str, e: &str, h: &str, f: &str, details: &[String], a: &str| {
+        serde_json::json!({
+            "description": d.trim(), "evocation": e.trim(), "story": h.trim(), "manner": f.trim(),
+            "details": details.iter().map(|t| t.trim()).collect::<Vec<_>>(), "anecdote": a.trim(),
+        })
+    };
+    let mut works = serde_json::Map::new();
+    for o in &file.oeuvres {
+        works.insert(
+            work_slug(&o.image),
+            notice(
+                &o.description,
+                &o.evocation,
+                &o.histoire,
+                &o.facture,
+                &o.details,
+                &o.anecdote,
+            ),
+        );
+    }
+    for s in &file.sculptures {
+        works.insert(
+            work_slug(&s.modele),
+            notice(
+                &s.description,
+                &s.evocation,
+                &s.histoire,
+                &s.facture,
+                &s.details,
+                &s.anecdote,
+            ),
+        );
+    }
+    let artists: serde_json::Map<String, serde_json::Value> = file
+        .artistes
+        .iter()
+        .map(|a| {
+            (
+                a.nom.trim().to_owned(),
+                serde_json::json!({ "life": a.vie.trim(), "biography": a.biographie.trim(), "style": a.style.trim() }),
+            )
+        })
+        .collect();
+    let museum = file.musee.as_ref().map(
+        |m| serde_json::json!({ "presentation": m.presentation.trim(), "here": m.ici.trim() }),
+    );
+    let source = std::fs::read_to_string(name).unwrap_or_default();
+    serde_json::json!({ "works": works, "artists": artists, "museum": museum, "source": source })
+        .to_string()
 }
 
 /// L'adresse d'une œuvre dans son exposition : le nom de son fichier, sans extension.
@@ -392,6 +446,13 @@ fn main() {
         data.extend_from_slice(b"ARTN\x01\0\0\0");
         exhibition(&mut out, &mut data, &data_dir, name, slug, file);
         std::fs::write(data_dir.join(format!("{slug}.bin")), &data).expect("écriture des données");
+        // Les textes longs, que le navigateur télécharge à la demande (ils ne sont pas
+        // compilés dans le WebAssembly) : notices, artistes, bâtiment, fichier source.
+        std::fs::write(
+            data_dir.join(format!("{slug}.json")),
+            texts_json(name, file),
+        )
+        .expect("écriture des textes");
     }
     out.push_str("];\n");
     std::fs::write(out_dir.join("expositions.rs"), out).expect("écriture de expositions.rs");
@@ -942,7 +1003,7 @@ fn exhibition(
     let [ar, ag, ab] = hex(name, &e.couleur, "couleur");
     let _ = writeln!(
         out,
-        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        ephemeral: {},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        museum: {},\n        data_size: {},\n        rooms: &[",
+        "    Exhibition {{\n        slug: {slug:?},\n        source: text!(include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\"))),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        movement: {:?},\n        ephemeral: {},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        museum: {},\n        data_size: {},\n        rooms: &[",
         e.nom_court.trim(),
         e.titre.trim(),
         e.artiste.trim(),
@@ -953,7 +1014,7 @@ fn exhibition(
         e.introduction.trim(),
         showcase,
         file.musee.as_ref().map_or("None".to_owned(), |m| format!(
-            "Some(Museum {{ name: {:?}, city: {:?}, architect: {:?}, built: {:?}, presentation: {:?}, here: {:?} }})",
+            "Some(Museum {{ name: {:?}, city: {:?}, architect: {:?}, built: {:?}, presentation: text!({:?}), here: text!({:?}) }})",
             m.nom.trim(),
             m.ville.trim(),
             m.architecte.trim(),
@@ -997,7 +1058,7 @@ fn exhibition(
     for a in &file.artistes {
         let _ = writeln!(
             out,
-            "            Artist {{ name: {:?}, life: {:?}, biography: {:?}, style: {:?} }},",
+            "            Artist {{ name: {:?}, life: text!({:?}), biography: text!({:?}), style: text!({:?}) }},",
             a.nom.trim(),
             a.vie.trim(),
             a.biographie.trim(),

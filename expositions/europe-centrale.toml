@@ -1,0 +1,1058 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « EUROPE CENTRALE ET ORIENTALE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  tableaux dans public/tableaux/<nom>/ (ici public/tableaux/europe-centrale/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site : /europe-centrale.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 128
+nom_court = "Europe centrale"
+mouvement = "Europe centrale et orientale, XIXᵉ siècle"
+cadre = "dore"
+couleur = "#7d2f3a"
+titre = "Europe centrale et orientale, les peintres des nations"
+artiste = "Matejko, Mucha, Munkácsy, Boznańska, Csontváry, Osman Hamdi…"
+dates = "1862–1912"
+accroche = "Exposition virtuelle · Galerie des Sukiennice, Cracovie"
+introduction = """
+De Cracovie à Budapest, de Prague à Bucarest et à Istanbul, les peintres du XIXᵉ \
+siècle formés à Munich, à Vienne ou à Paris rentrent chez eux avec une mission : \
+donner une image à des peuples sans État ou à des États tout neufs. La visite réunit \
+onze artistes polonais, tchèques, hongrois, roumain et ottoman, de la grande peinture \
+d'histoire de Matejko et de Mucha au réalisme paysan, au plein air de Szinyei Merse et \
+aux visions de Malczewski et de Csontváry. Le bâtiment s'inspire de la galerie de \
+peinture polonaise du XIXᵉ siècle installée à l'étage de la halle aux draps de \
+Cracovie, les Sukiennice : un vestibule, puis quatre grandes salles en enfilade, aux \
+murs colorés comme ceux d'un salon d'autrefois."""
+vitrine = "stanczyk.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Galerie de la peinture polonaise du XIXᵉ siècle aux Sukiennice"
+ville = "Cracovie, Pologne"
+architecte = "Tomasz Pryliński (restauration de 1875–1879)"
+construction = "Halle médiévale ; galerie ouverte en 1879"
+presentation = """
+Au milieu de la grande place du Marché de Cracovie, les Sukiennice, la halle aux \
+draps, abritent depuis le Moyen Âge les échoppes des marchands. Après un incendie en \
+1555, le bâtiment gothique reçoit un couronnement Renaissance, un attique orné de \
+mascarons. De 1875 à 1879, sous le maire Mikołaj Zyblikiewicz, la ville le fait \
+restaurer par l'architecte Tomasz Pryliński, qui mêle le gothique et la Renaissance. \
+Le 7 octobre 1879, le conseil municipal y fonde le Musée national de Cracovie ; le \
+peintre Henryk Siemiradzki offre, pour commencer la collection, sa toile géante Les \
+Torches de Néron. Les quatre grandes salles de l'étage portent aujourd'hui le nom de \
+Bacciarelli, Michałowski, Siemiradzki et Chełmoński, et retracent la peinture \
+polonaise des Lumières au symbolisme, chacune autour d'un tableau central, comme dans \
+un salon du XIXᵉ siècle. Fermée de 2006 à 2010 pour une grande rénovation, la galerie \
+a rouvert en 2010."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée de l'étage des Sukiennice : quatre grandes salles \
+identiques, de dix-huit mètres sur quatorze et hautes de neuf, en enfilade d'ouest en \
+est, chacune avec une œuvre maîtresse au centre du mur nord. On entre par le sud dans \
+un vestibule couleur de pierre, puis dans la salle « Histoire et légende », rouge \
+pompéien, où attend l'Épopée slave de Mucha. On traverse ensuite, de porte en porte, \
+la salle « Le peuple et la guerre », vert de gris, la salle « Le plein air », ocre, et \
+enfin la salle « Énigmes et symboles », d'un mauve grisé."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la galerie de peinture polonaise du XIXᵉ siècle, à l'étage de la
+# halle aux draps (Sukiennice) de Cracovie : quatre grandes salles en enfilade,
+# chacune organisée autour d'un tableau central, comme un salon du XIXᵉ siècle.
+# On entre au sud par un vestibule, sous la première salle. x et z : le centre de
+# la salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un
+# seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, comme l'escalier qui monte de la halle marchande vers les salles de peinture."
+murs = "#e3d8c4"
+x = -27
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Histoire et légende"
+theme = "Le passé des nations : le bouffon de Matejko, un cavalier hussite d'Aleš et l'Épopée slave de Mucha."
+murs = "#b0645a"
+x = -27
+z = -11
+largeur = 18
+profondeur = 14
+hauteur = 9
+portes = ["est"]
+
+[[salles]]
+nom = "Le peuple et la guerre"
+theme = "Le réalisme : un condamné hongrois, l'assaut des soldats roumains en 1878 et une bergère polonaise."
+murs = "#9ea692"
+x = -9
+z = -11
+largeur = 18
+profondeur = 14
+hauteur = 9
+portes = ["est"]
+
+[[salles]]
+nom = "Le plein air"
+theme = "Le soleil et la couleur : un pique-nique de mai et le théâtre antique de Taormine sous l'Etna."
+murs = "#c8b48c"
+x = 9
+z = -11
+largeur = 18
+profondeur = 14
+hauteur = 9
+portes = ["est"]
+
+[[salles]]
+nom = "Énigmes et symboles"
+theme = "La Mélancolie de Malczewski, le regard d'une fillette et le dresseur de tortues d'Osman Hamdi."
+murs = "#a8979e"
+x = 27
+z = -11
+largeur = 18
+profondeur = 14
+hauteur = 9
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Stańczyk"
+artiste = "Jan Matejko"
+annee = "1862"
+image = "stanczyk.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jan_Matejko_-_Stańczyk_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 88 × 120 cm"
+collection = "Musée national de Varsovie"
+note = "Pendant un bal à la cour, le bouffon du roi reste seul, accablé : il vient d'apprendre la perte de Smolensk."
+description = """
+Dans une pièce sombre du château royal, un homme vêtu de rouge des pieds à la tête, \
+coiffé d'un bonnet de bouffon à grelots, est affalé dans un grand fauteuil de bois. \
+Les jambes allongées, les mains croisées sur le ventre, il fixe le sol, le visage \
+fermé. Sur la table à sa gauche, couverte d'un tapis brodé, une lettre décachetée est \
+posée au milieu d'autres papiers. Derrière, une fenêtre s'ouvre sur la nuit : on \
+devine les tours de la cathédrale du Wawel et, dans le ciel, une comète. À droite, par \
+une porte ouverte, une salle illuminée : des courtisans en habits de fête dansent et \
+rient. Sur le plancher, devant le bouffon, gît sa marotte, le sceptre à tête de fou \
+qu'il a laissé tomber."""
+evocation = """
+Stańczyk, bouffon des rois Jagellon au début du XVIᵉ siècle, était resté dans la \
+mémoire polonaise comme un sage déguisé en fou. Matejko en fait le seul homme lucide \
+de la cour : pendant que l'on danse, il a compris que la perte de Smolensk, prise par \
+Moscou en 1514, annonce le déclin du royaume. La comète, présage de malheur, et la \
+marotte abandonnée disent la même chose. Peint en 1862, quand la Pologne est partagée \
+entre ses voisins, à la veille de l'insurrection de janvier 1863, le tableau s'adresse \
+aux contemporains : il oppose l'insouciance des élites à la conscience douloureuse de \
+l'histoire. Matejko a donné au bouffon ses propres traits, comme s'il se reconnaissait \
+dans ce témoin impuissant."""
+histoire = """
+Matejko a vingt-quatre ans quand il peint cette toile à Cracovie ; elle le rend \
+célèbre. Son titre complet la situe pendant un bal à la cour de la reine Bona, ce qui \
+est inexact : en 1514, Bona Sforza n'avait pas encore épousé le roi Sigismond Iᵉʳ, et \
+la lettre sur la table porte d'ailleurs la date de 1533, une contradiction que les \
+historiens discutent encore. La Société des amis des beaux-arts de Cracovie achète le \
+tableau pour sa loterie ; un gagnant nommé Korytko le conserve. Le Musée national de \
+Varsovie l'acquiert en 1924. Pillé par les nazis pendant la Seconde Guerre mondiale, \
+saisi ensuite par l'Union soviétique, il ne revient en Pologne que vers 1956. En \
+2024-2025, le Louvre l'a exposé dans l'exposition « Figures du fou »."""
+facture = """
+Matejko construit son tableau en deux espaces opposés : à gauche, la pénombre où se \
+tient le bouffon ; à droite, la salle de bal, lumineuse et floue. Le rouge du costume, \
+presque monochrome, se détache sur le vert profond du rideau et le brun des boiseries. \
+Le peintre décrit avec soin les matières, le tapis brodé de la table, le bois sculpté \
+du fauteuil, le papier froissé, mais laisse les danseurs dans un flou vaporeux. Cette \
+mise en scène théâtrale, héritée de la peinture d'histoire de Munich, vise à faire \
+réfléchir autant qu'à émouvoir."""
+details = [
+  "La lettre au sceau rouge sur la table, qui annonce la mauvaise nouvelle.",
+  "La comète dans le ciel nocturne, près des tours de la cathédrale.",
+  "La marotte du bouffon, abandonnée sur le plancher à droite.",
+  "Les mains croisées de Stańczyk, inertes, au centre exact du tableau.",
+  "Les danseurs flous de la salle voisine, dans une lumière dorée.",
+]
+themes = ["histoire", "bouffon", "pologne", "présage", "solitude"]
+anecdote = """
+En 1869, de jeunes conservateurs de Cracovie publient des pamphlets satiriques sous le \
+titre « Le Portefeuille de Stańczyk » (Teka Stańczyka). Leur camp politique, influent \
+en Galicie pendant des décennies, gardera le nom de « stańczycy »."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Sur la tombe d'un combattant de Dieu (Le Dernier Taborite)"
+artiste = "Mikoláš Aleš"
+annee = "1877"
+image = "dernier-taborite.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Ales_U_hrobu.jpg"
+technique = "Huile sur toile, 48 × 75,5 cm"
+collection = "Galerie nationale de Prague"
+note = "Dans la neige, un vieux cavalier hussite s'arrête devant une tombe, tandis qu'au loin un village brûle."
+description = """
+Une plaine couverte de neige s'étend sous un ciel bas, gris et doré. Au centre, un \
+cavalier monté sur un cheval brun s'est arrêté. Il porte une cuirasse, un manteau usé \
+et un bonnet de fourrure ; sa longue lance, ornée d'une flamme, se dresse vers le \
+ciel. Les mains jointes sur le pommeau de la selle, il baisse la tête, et son cheval \
+aussi, le nez presque dans la neige. Devant lui, un gros rocher couvert de neige et \
+deux croix de bois penchées marquent des tombes. À gauche, au loin, passe une troupe \
+en armes ; à droite, derrière lui, des maisons brûlent et la fumée monte. Des oiseaux \
+noirs tournoient au-dessus de la plaine. Le tableau est signé et daté en bas à droite."""
+evocation = """
+Les « combattants de Dieu » sont les hussites, partisans du réformateur Jan Hus, brûlé \
+à Constance en 1415 ; les Taborites formaient leur aile la plus radicale, vaincue en \
+1434 à la bataille de Lipany. Le titre fait de ce cavalier le dernier survivant d'une \
+cause perdue, qui vient se recueillir sur la tombe d'un compagnon. Dans la Bohême de \
+1877, gouvernée depuis Vienne, le passé hussite était devenu un symbole national, \
+celui d'un peuple capable de se dresser pour sa foi et sa langue. Aleš n'en montre pas \
+la gloire mais le deuil : l'image d'une fidélité qui survit à la défaite, dans un \
+paysage d'hiver où tout semble fini."""
+histoire = """
+Aleš peint ce petit tableau en 1877, peu après avoir quitté l'Académie des beaux-arts \
+de Prague, à une époque où il vit pauvrement. C'est aussi l'année où il prépare, avec \
+František Ženíšek, ses projets pour le décor du Théâtre national, le grand chantier \
+des artistes tchèques de sa génération. Ses toiles d'histoire, sombres et méditatives, \
+trouvent alors peu d'acheteurs, et Aleš se tournera de plus en plus vers le dessin et \
+l'illustration, qui feront sa popularité. L'œuvre appartient aujourd'hui à la Galerie \
+nationale de Prague, qui conserve un vaste ensemble de ses peintures et de ses \
+dessins."""
+facture = """
+Sur ce format modeste, Aleš travaille une gamme restreinte : le blanc bleuté de la \
+neige, les gris et les ors du ciel, les bruns du cheval et du cavalier. Le ciel est \
+brossé en larges touches visibles, presque comme une esquisse, tandis que le harnais, \
+la cuirasse et la lance sont décrits avec précision. La silhouette sombre du cheval, \
+découpée sur la neige, porte toute l'émotion. On y sent le dessinateur, qui pense en \
+contours nets, et l'héritage romantique des paysages d'hiver."""
+details = [
+  "La tête basse du cheval, qui semble partager le deuil de son maître.",
+  "Les deux croix de bois penchées, à demi enfouies dans la neige.",
+  "Le village en flammes à l'horizon, à droite.",
+  "La troupe en armes qui s'éloigne au loin, à gauche.",
+  "La signature « M. Aleš 1877 », en bas à droite.",
+]
+themes = ["hussites", "hiver", "deuil", "bohême", "cavalier"]
+anecdote = """
+Le choral des hussites, « Vous qui êtes les combattants de Dieu » (Ktož jsú boží \
+bojovníci), résonne aussi dans Ma patrie de Bedřich Smetana : le compositeur le cite \
+dans les poèmes symphoniques Tábor et Blaník, écrits à la même époque que ce tableau."""
+salle = 2
+mur = "sud"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Les Slaves dans leur patrie d'origine (L'Épopée slave, I)"
+artiste = "Alfons Mucha"
+annee = "1912"
+image = "slaves-patrie-origine.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Slovane_v_pravlasti_81x61m.jpg"
+technique = "Tempera à l'œuf et huile sur toile, 610 × 810 cm"
+collection = "Ville de Prague"
+note = "La première des vingt toiles de l'Épopée slave : un couple de Slaves se cache dans la nuit, pendant qu'un village brûle."
+description = """
+Sous un immense ciel étoilé, une plaine s'étend dans la nuit. Au premier plan, en bas \
+à gauche, un homme et une femme vêtus de blanc se tapissent dans les broussailles : \
+ils se serrent l'un contre l'autre, et l'un d'eux fixe le spectateur avec des yeux \
+agrandis par la peur. Derrière eux, des cavaliers armés poussent devant eux des \
+troupeaux volés, et à l'horizon, à gauche, un village est en flammes. À droite, comme \
+une apparition suspendue dans le ciel, un prêtre païen barbu, torse nu et couronné, \
+ouvre grand les bras. Une épée dorée pend à sa ceinture. Il est soutenu par deux \
+figures : un jeune homme d'un côté, et une jeune fille aux fleurs bleues de l'autre. \
+Leurs longues étoffes blanches tombent jusqu'aux broussailles."""
+evocation = """
+Le sous-titre de la toile, « Entre le fouet touranien et l'épée des Goths », résume la \
+vision de Mucha : les premiers Slaves, peuple paisible de cultivateurs et de bergers, \
+pris entre les nomades venus de l'est et les guerriers germaniques. Le couple caché, \
+qu'on a appelé l'Adam et l'Ève des Slaves, incarne la souffrance de tout un peuple. \
+Dans le ciel, le prêtre implore les dieux ; selon l'interprétation habituelle, le \
+jeune homme figure la guerre juste, défensive, et la jeune fille la paix. Mucha, \
+devenu célèbre à Paris par ses affiches, voulait raconter l'histoire des peuples \
+slaves pour leur donner confiance dans leur avenir. L'œuvre mêle ainsi réalisme et \
+vision mystique."""
+histoire = """
+L'idée d'une grande épopée des Slaves mûrit chez Mucha au début du XXᵉ siècle. En \
+1909, il obtient le soutien du mécène américain Charles Richard Crane, et en 1910 il \
+loue une partie du château de Zbiroh, en Bohême, pour y peindre ses toiles géantes. \
+Celle-ci, la première du cycle, est achevée en 1912. Les onze premières toiles sont \
+montrées au Clementinum de Prague en 1919 ; le cycle complet de vingt toiles est \
+présenté en 1928 au palais des Expositions et donné à la ville de Prague, à condition \
+qu'elle construise un pavillon pour l'abriter. Cachée pendant la guerre, l'Épopée est \
+exposée à partir de 1963 au château de Moravský Krumlov, puis à Prague et à \
+l'étranger."""
+facture = """
+Mucha peint à la tempera à l'œuf, avec des rehauts à l'huile, sur une toile de plus de \
+six mètres sur huit. Il adopte une gamme sourde de bleus, de gris et de mauves, où \
+éclatent les blancs des vêtements et l'orange de l'incendie. La composition superpose \
+deux mondes : en bas, une scène réaliste, peinte d'après des modèles qu'il faisait \
+poser et photographiait ; en haut, une vision lumineuse, presque transparente. Les \
+étoiles, posées en petites touches, donnent au ciel sa profondeur. On retrouve le \
+dessinateur de l'Art nouveau dans les longues étoffes qui tombent comme des rubans."""
+details = [
+  "Les yeux écarquillés de l'un des deux fugitifs, qui regardent droit vers nous.",
+  "Le village en flammes, à l'horizon gauche.",
+  "Les cavaliers qui emmènent les troupeaux, au centre.",
+  "Le prêtre suspendu dans le ciel, bras ouverts, à droite.",
+  "L'épée dorée suspendue à la ceinture du prêtre.",
+]
+themes = ["épopée", "slaves", "nuit", "mythologie", "nation"]
+anecdote = """
+Les vingt toiles de l'Épopée slave ont occupé Mucha près de dix-huit ans, de 1910 à \
+1928. Leur pavillon promis n'ayant jamais été construit de son vivant, le cycle a \
+connu depuis de nombreux déménagements entre Prague et la Moravie."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 4.5
+
+[[oeuvres]]
+titre = "La Cellule du condamné I"
+artiste = "Mihály Munkácsy"
+annee = "1870"
+image = "cellule-du-condamne.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Munkácsy,_Mihály_-_Condemned_Cell_I_-_Google_Art_Project.jpg"
+technique = "Huile sur bois, 139 × 193,5 cm"
+collection = "Galerie nationale hongroise, Budapest"
+note = "La veille de son exécution, un hors-la-loi hongrois reçoit la visite des villageois : le tableau qui rendit Munkácsy célèbre au Salon de Paris."
+description = """
+Dans une cellule voûtée, aux murs de pierre nue, la lumière tombe d'une petite fenêtre \
+grillagée. Au centre droit, un homme moustachu en chemise blanche et gilet sombre est \
+assis devant une table couverte d'une nappe blanche, où brûlent deux bougies. Le coude \
+posé sur la table, il regarde devant lui d'un air dur et absent. Derrière lui, un \
+soldat monte la garde, fusil à baïonnette. À droite, une femme en noir pleure, le \
+front contre le mur, et une petite fille en jupe rouge se tient près d'elle. À gauche, \
+des villageois sont venus voir le condamné : des hommes en chapeau, une vieille femme, \
+une jeune fille avec un panier, une mère et son bébé. Au premier plan, un garçon \
+s'approche, les mains jointes ; une écuelle est posée sur le sol."""
+evocation = """
+Le personnage principal est un betyár, l'un de ces hors-la-loi de la Grande Plaine \
+hongroise. Après l'échec de la guerre d'indépendance de 1848-1849, beaucoup de jeunes \
+hommes avaient pris le maquis, et le peuple voyait souvent en eux des héros plutôt que \
+des criminels. La loi permettait au condamné de recevoir ses proches et les curieux \
+avant l'exécution. Munkácsy ne dit pas si cet homme est innocent ou coupable : toute \
+la force du tableau tient à cette incertitude, et à la variété des réactions, pitié, \
+curiosité, prière, désespoir. On y a vu une critique sociale, nourrie du réalisme \
+français, et une méditation sur la mort et la justice."""
+histoire = """
+Munkácsy peint ce tableau à Düsseldorf, où il étudie auprès du peintre de genre Ludwig \
+Knaus ; c'est sa première œuvre importante. Exposé au Salon de Paris en 1870, il y est \
+très remarqué et vaut au jeune peintre de vingt-six ans une médaille, puis une \
+renommée immédiate. Un collectionneur américain l'achète peu après son achèvement, et \
+la toile part pour les États-Unis. Munkácsy, installé à Paris dès 1871, en reprit le \
+sujet dans d'autres versions. Près d'un siècle plus tard, l'État hongrois acquiert \
+cette première version auprès d'un collectionneur privé ; elle est exposée à la \
+Galerie nationale hongroise, au château de Buda."""
+facture = """
+Munkácsy peint sur un panneau de bois, sur un fond très sombre d'où les figures \
+émergent par touches de lumière : chemises blanches, nappe, visages. Sa palette brune, \
+presque noire, est typique de ses débuts ; il aimait le bitume, un pigment qui donne \
+aux ombres un velours profond. La composition dispose les personnages comme sur une \
+scène de théâtre, en un demi-cercle autour du condamné, chacun avec un geste qui \
+raconte son émotion. La touche, large et vigoureuse, rompt avec le fini lisse des \
+peintres académiques."""
+details = [
+  "Les deux bougies allumées sur la nappe blanche, à côté du condamné.",
+  "La femme en noir qui pleure contre le mur, à droite.",
+  "Le garçon aux mains jointes, au premier plan.",
+  "L'écuelle posée sur le sol, peut-être pour recueillir des aumônes.",
+  "La lumière qui tombe de la fenêtre grillagée, en haut au centre.",
+]
+themes = ["réalisme", "prison", "mort", "hongrie", "peuple"]
+anecdote = """
+Le bitume, que Munkácsy employait volontiers pour ses ombres, ne sèche jamais vraiment \
+: avec le temps, il noircit et fait craqueler la peinture. Beaucoup de ses toiles se \
+sont ainsi assombries, et posent aujourd'hui de difficiles problèmes de restauration."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 1.95
+
+[[oeuvres]]
+titre = "L'Attaque de Smârdan"
+artiste = "Nicolae Grigorescu"
+annee = "1885"
+image = "attaque-smardan.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Nicolae_Grigorescu_-_Atacul_de_la_Smardan_-_Muzeul_National_de_Arta_al_Romaniei.jpg"
+technique = "Huile sur toile, 295 × 388 cm"
+collection = "Musée national d'histoire de la Roumanie, Bucarest"
+note = "Janvier 1878 : dans la neige et la fumée, l'infanterie roumaine monte à l'assaut d'une redoute ottomane."
+description = """
+Une plaine enneigée disparaît sous un ciel gris et une épaisse fumée de poudre. De \
+droite à gauche, une ligne de fantassins roumains s'élance, baïonnette au canon, \
+courbés vers l'avant. Ils portent des capotes grises et des coiffures noires à pompon \
+rouge. Au premier plan à droite, un soldat plus grand que les autres avance d'un pas \
+décidé, le fusil serré contre lui. Au loin, à gauche, à travers la fumée, on distingue \
+les taches rouges des fez des soldats ottomans qui défendent la position. Au premier \
+plan, un soldat mort est étendu sur le dos dans la neige, son fusil à côté de lui ; \
+plus loin, une coiffure tombée et un autre corps. Aucun général, aucun drapeau : \
+seulement des hommes dans le froid."""
+evocation = """
+La prise de Smârdan, près de Vidin en Bulgarie, le 12 janvier 1878 selon le calendrier \
+julien alors en usage (le 24 selon le nôtre), est l'un des derniers combats de la \
+guerre d'indépendance roumaine contre l'Empire ottoman. La Roumanie avait proclamé son \
+indépendance en mai 1877 ; elle sera reconnue au congrès de Berlin en 1878. Grigorescu \
+en fait une image fondatrice de la nation, mais une image sans emphase : le héros est \
+collectif et anonyme, et la mort est au premier plan. L'élan des soldats et le corps \
+couché dans la neige disent ensemble le prix de la liberté. Le tableau est devenu une \
+icône de la mémoire nationale roumaine."""
+histoire = """
+En 1877, Grigorescu est l'un des quatre peintres officiels envoyés sur le front avec \
+l'armée roumaine, aux côtés de Carol Popp de Szathmari, Sava Henția et George \
+Demetrescu Mirea. Il y remplit des carnets de croquis de soldats, de blessés et de \
+prisonniers. De retour à l'atelier, il en tire plusieurs tableaux de bataille, dont \
+cette grande toile achevée en 1885. Il en existe des répliques plus tardives. \
+L'original appartient au Musée national d'histoire de la Roumanie, à Bucarest. Absente \
+des cimaises pendant plus de vingt ans, la toile y a été présentée de nouveau en \
+2023-2024, après une importante restauration, dans une exposition consacrée aux \
+peintres de la guerre d'indépendance."""
+facture = """
+Grigorescu, formé auprès des peintres de Barbizon, traite la bataille comme un paysage \
+d'atmosphère : la neige, la fumée et le ciel se fondent dans une même gamme de gris \
+bleutés, où seuls les pompons et les fez mettent des points rouges. Le mouvement est \
+donné par la diagonale de la ligne de soldats, qui monte de droite à gauche, et par la \
+silhouette du grand fantassin au premier plan. La touche est rapide, presque esquissée \
+dans le lointain, plus précise dans les figures proches, nourries des croquis faits \
+sur le front."""
+details = [
+  "Le soldat mort au premier plan, étendu sur le dos, le fusil à côté de lui.",
+  "La coiffure noire à pompon rouge tombée dans la neige.",
+  "Les fez rouges des défenseurs ottomans, à peine visibles dans la fumée.",
+  "Le grand fantassin de droite, baïonnette dressée vers le ciel.",
+  "La signature du peintre et la date, en bas à gauche.",
+]
+themes = ["guerre", "indépendance", "roumanie", "neige", "soldats"]
+anecdote = """
+Grigorescu avait commencé sa carrière comme peintre d'icônes : adolescent, il peignit \
+des images saintes et décora, à la fin des années 1850, l'église du monastère \
+d'Agapia, en Moldavie, avant de partir étudier en France."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 3.9
+
+[[oeuvres]]
+titre = "L'Été indien (Babie lato)"
+artiste = "Józef Chełmoński"
+annee = "1875"
+image = "babie-lato.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Józef_Chełmoński_-_Indian_summer_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 119,7 × 156,5 cm"
+collection = "Musée national de Varsovie"
+note = "Allongée dans un pré d'automne, une jeune bergère joue avec les fils de la vierge qui flottent dans l'air."
+description = """
+Une jeune paysanne est couchée sur le dos dans un pré à l'herbe rase, sur un tapis de \
+toile. Elle porte une longue jupe et une chemise blanches, un foulard jaune, un \
+collier sur un cordon sombre et une bague. Pieds nus, les yeux mi-clos, elle lève le \
+bras droit et tient du bout des doigts de longs fils d'araignée argentés que le vent \
+emporte. Près de sa main gauche traîne son fouet de berger, un bâton muni d'une corde. \
+Derrière elle, un chien noir est assis et surveille le troupeau. L'horizon, très bas, \
+coupe le tableau : on y voit des vaches tachetées, brunes et blanches, et quelques \
+silhouettes de paysans. Au-dessus, un grand ciel gris-bleu, en partie couvert, occupe \
+plus de la moitié de la toile."""
+evocation = """
+En polonais, babie lato désigne à la fois l'été indien, ces derniers beaux jours de \
+l'automne, et les fils de la vierge, les filaments que les jeunes araignées laissent \
+flotter dans l'air à cette saison. Chełmoński saisit un moment de paresse et de \
+rêverie : la bergère oublie le troupeau, et le monde semble suspendu. Le tableau naît \
+d'un voyage du peintre en Ukraine, dans les confins orientaux de l'ancienne Pologne, \
+au printemps et à l'été 1874. Il montre la campagne sans l'idéaliser : la jeune fille \
+est une vraie paysanne, aux pieds sales, saisie dans un abandon presque sensuel. C'est \
+cette franchise qui choqua une partie du public de l'époque."""
+histoire = """
+Chełmoński peint le tableau à Varsovie et le présente à la vente au début de 1875 à la \
+Société d'encouragement des beaux-arts, la Zachęta. Le critique Lucjan Siemieński s'en \
+moque dans le journal Czas : la scène des fils de la vierge est poétique, écrit-il, \
+mais il aurait fallu laver les pieds de la jeune fille. Le peintre emporte la toile à \
+Paris, puis la vend sans doute vers 1885 au comte Ignacy Korwin-Milewski. Le Musée \
+national de Varsovie l'achète en 1924. Emportée par les Allemands en Autriche à la fin \
+de la guerre, elle est retrouvée en 1945 au château de Fischhorn et rentre à Varsovie \
+en 1946."""
+facture = """
+Chełmoński, formé à Varsovie puis à Munich, peint dans une veine naturaliste. Sa \
+palette est sourde, faite de bruns, de gris et de verts éteints ; seuls le blanc de la \
+jupe, travaillé en pâte épaisse, et le jaune du foulard éclairent la toile. L'horizon \
+très bas laisse au ciel une place immense, brossé en touches légères. La figure, vue \
+en raccourci, les pieds vers nous, s'étire en diagonale sur toute la largeur du \
+tableau. Les fils d'araignée sont tracés d'un pinceau très fin, presque invisibles."""
+details = [
+  "Les fils de la vierge, presque invisibles, entre les doigts de la jeune fille.",
+  "Le chien noir assis, qui surveille le troupeau à sa place.",
+  "Les pieds nus et poussiéreux, au premier plan à gauche.",
+  "Le fouet de berger posé près de sa main gauche.",
+  "La signature « Józef Chełmoński 1875 », en bas à gauche.",
+]
+themes = ["automne", "paysanne", "rêverie", "campagne", "réalisme"]
+anecdote = """
+Le 29 septembre 1944, pendant l'insurrection de Varsovie, le tableau servit un moment \
+à boucher une fenêtre du musée. Le directeur Stanisław Lorentz, qui le nota dans son \
+journal, le fit décrocher et mettre à l'abri."""
+salle = 3
+mur = "sud"
+place = 4
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Pique-nique en mai (Majális)"
+artiste = "Pál Szinyei Merse"
+annee = "1873"
+image = "pique-nique-en-mai.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Szinyei_Merse,_Pál_-_Picnic_in_May_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 127 × 162,5 cm"
+collection = "Galerie nationale hongroise, Budapest"
+note = "Des jeunes gens pique-niquent sur une colline au soleil de mai : un plein air peint un an avant la première exposition impressionniste."
+description = """
+Sur le flanc d'une colline d'un vert éclatant, en partie dans l'ombre, six jeunes gens \
+se sont installés pour un déjeuner sur l'herbe. Sur une grande couverture rouge, un \
+homme en chapeau noir s'accoude, près d'une jeune femme en robe blanche à nœuds \
+violets. À côté, un homme en habit sombre tient la main d'une jeune femme rousse en \
+robe rose, un éventail à la main. Un autre homme, couché sur le ventre, de dos, se \
+penche sur les restes du repas : un panier, une bouteille, des assiettes sur une nappe \
+blanche. Au premier plan, un homme coiffé d'un canotier se courbe pour cueillir une \
+fleur. L'herbe est semée de coquelicots et de fleurs des champs ; au sommet de la \
+colline, deux promeneuses à ombrelle se découpent sur le ciel."""
+evocation = """
+Le tableau célèbre le printemps, la jeunesse et le plaisir d'être ensemble au soleil, \
+dans une harmonie heureuse entre les êtres et la nature. Szinyei s'inspire des \
+pique-niques des artistes de Munich, où il vivait alors. Il arrive au plein air et à \
+la couleur claire en même temps que les impressionnistes français, mais sans les \
+connaître : la première exposition impressionniste n'a lieu à Paris qu'en 1874. Pour \
+les Hongrois, Majális est devenu l'image même de l'insouciance et de la lumière, et un \
+symbole de la modernité de leur peinture. Le titre désigne la fête de mai, une sortie \
+champêtre traditionnelle au printemps."""
+histoire = """
+Szinyei peint la toile à Munich en 1873, au retour d'un séjour dans sa Haute-Hongrie \
+natale. Ses contemporains, habitués à la peinture d'histoire sombre et soignée, la \
+tournent en ridicule : ces verts crus et ces ombres colorées leur paraissent \
+inachevés. Découragé par les critiques et par des soucis de famille, le peintre cesse \
+de peindre au début des années 1880 et se retire sur ses terres. Il faut attendre une \
+rétrospective organisée par ses amis en 1894 pour que son œuvre soit enfin reconnue. \
+Szinyei devient ensuite président de l'École supérieure des beaux-arts de Budapest. Il \
+est aujourd'hui l'un des tableaux les plus aimés de la Galerie nationale hongroise."""
+facture = """
+Szinyei peint en couleurs pures et saturées : des verts francs pour l'herbe, que la \
+lumière fait passer du jaune au bleu, et le rouge vif de la couverture, la couleur \
+complémentaire, qui fait vibrer l'ensemble. Les ombres ne sont plus brunes mais vertes \
+ou violacées. La composition, très équilibrée, place le groupe dans un ovale au centre \
+d'une pente en diagonale. La touche reste plus construite et plus lisse que celle des \
+impressionnistes, héritière de l'enseignement de Munich. On distingue aujourd'hui un \
+fin réseau de craquelures dans le ciel."""
+details = [
+  "L'homme couché sur le ventre, de dos : c'est le peintre lui-même.",
+  "La grande couverture rouge, qui répond au vert de la colline.",
+  "Les deux promeneuses à ombrelle, minuscules, au sommet de la colline.",
+  "Les coquelicots semés dans l'herbe, autour du groupe.",
+  "L'homme au canotier qui cueille une fleur, au premier plan.",
+]
+themes = ["printemps", "plein air", "jeunesse", "pique-nique", "couleur"]
+anecdote = """
+Szinyei raconte dans ses souvenirs qu'il s'est peint lui-même dans le tableau : c'est \
+le jeune homme couché à plat ventre, de dos, occupé à manger, au centre du groupe."""
+salle = 4
+mur = "sud"
+place = 3
+largeur = 1.65
+
+[[oeuvres]]
+titre = "Ruines du théâtre grec de Taormine"
+artiste = "Tivadar Csontváry Kosztka"
+annee = "1904–1905"
+image = "theatre-taormine.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Csontváry_Kosztka,_Tivadar_-_Ruins_of_the_Greek_Theatre_at_Taormina_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 302 × 570 cm"
+collection = "Galerie nationale hongroise, Budapest"
+note = "Le théâtre antique de Taormine, en Sicile, face à la mer et à l'Etna enneigé, sous un ciel jaune d'or : une vision gigantesque."
+description = """
+Au premier plan s'étend le théâtre antique de Taormine, vu depuis les gradins : le mur \
+de scène en brique, percé d'arcs et orné de quelques colonnes, est en ruine, et des \
+blocs de marbre blanc gisent dans l'orchestre envahi d'herbe. Par les brèches du mur, \
+on voit la mer d'un bleu intense, une baie à la plage courbe et un village au bord de \
+l'eau. Au-delà, une longue chaîne de montagnes sombres monte vers la droite jusqu'au \
+cône enneigé de l'Etna, d'où s'échappe un panache de fumée. À droite, sur la colline, \
+se dressent les maisons de Taormine. Le ciel est étrange : une bande d'un jaune d'or \
+lumineux à gauche, coiffée de nuages mauves et d'une traînée verte. Par une arche, à \
+droite, on aperçoit un arbre en fleurs."""
+evocation = """
+Csontváry se disait appelé à devenir le plus grand « peintre de la route du soleil » ; \
+il cherchait les lieux où la lumière et l'histoire se rencontrent. À Taormine, il \
+trouve tout à la fois : les ruines d'une civilisation disparue, la mer, le volcan et \
+le soleil. Le tableau confronte l'œuvre humaine qui s'effondre et la nature éternelle, \
+le temps des hommes et celui de la terre. Ses couleurs irréelles et sa précision \
+obsessionnelle lui donnent un caractère de vision, entre le paysage et l'apparition. \
+On a souvent rapproché son art de la peinture naïve et de l'expressionnisme, mais il \
+n'appartient à aucune école."""
+histoire = """
+Csontváry, ancien pharmacien devenu peintre à plus de quarante ans, voyage en Italie \
+et séjourne à Taormine en 1904. Il y peint cette toile immense, de près de six mètres \
+de large, depuis un point de vue déjà choisi par les peintres romantiques, et l'achève \
+en 1905. Il expose ses grandes toiles à Paris en 1907, puis à Budapest, où elles sont \
+mal comprises. À sa mort, en 1919, son œuvre est presque inconnue. Sauvées par un \
+admirateur, ses toiles sont peu à peu reconnues comme un trésor national. Celle-ci, \
+l'une des plus célèbres de la peinture hongroise, est exposée à la Galerie nationale \
+hongroise, dans un cabinet consacré au peintre."""
+facture = """
+Csontváry peint à l'huile en larges aplats de couleurs saturées, posés côte à côte \
+sans transition : le jaune du ciel, le bleu de la mer, le blanc de l'Etna. Il renonce \
+presque à la perspective aérienne, si bien que les lointains sont aussi nets que le \
+premier plan. Les ruines, au contraire, sont décrites brique par brique, avec un soin \
+minutieux. Le format très allongé, deux fois plus large que haut, déploie le paysage \
+comme un panorama. Le tracé du dessin reste visible par endroits."""
+details = [
+  "Le panache de fumée qui s'échappe de l'Etna enneigé, à droite.",
+  "L'arbre en fleurs aperçu par une arche du mur de scène.",
+  "Les blocs de marbre blanc éparpillés dans l'orchestre.",
+  "Les maisons de Taormine, sur la colline à droite.",
+  "La bande de ciel jaune d'or, sous les nuages mauves.",
+]
+themes = ["ruines", "volcan", "sicile", "soleil", "vision"]
+anecdote = """
+Selon un récit souvent rapporté, après la mort du peintre en 1919, ses grandes toiles \
+faillirent être vendues comme bâches pour charrettes ; le jeune architecte Gedeon \
+Gerlóczy les acheta aux enchères et les sauva."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Mélancolie"
+artiste = "Jacek Malczewski"
+annee = "1890–1894"
+image = "melancolie.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Malczewski_Jacek_Melancholia.jpg"
+technique = "Huile sur toile, 139 × 240 cm"
+collection = "Fondation Raczyński, Musée national de Poznań (galerie de Rogalin)"
+note = "D'une toile posée sur un chevalet jaillit une foule d'insurgés, de prêtres et d'enfants, qui se rue vers une fenêtre gardée par la Mélancolie."
+description = """
+Dans un atelier de peintre aux murs verdâtres, un homme est assis devant son chevalet, \
+en haut à gauche, minuscule et pâle. De sa toile semble sortir un flot humain qui \
+traverse toute la pièce en diagonale : insurgés armés de faux et de piques, prêtres, \
+soldats de l'époque napoléonienne, femmes en deuil, prisonniers enchaînés, enfants. \
+Certains brandissent des sabres et un drapeau rouge, d'autres tiennent des violons, \
+des livres ou des pinceaux. Plus la foule avance vers la droite, plus les visages \
+vieillissent ; seuls quelques vieillards atteignent l'appui de la grande fenêtre. \
+Derrière elle, dans le jardin baigné de soleil, une femme drapée de noir se tient \
+immobile, de dos : c'est la Mélancolie, qui garde le passage."""
+evocation = """
+Le titre complet, « Mélancolie. Prologue. Vision. Le dernier siècle en Pologne », \
+annonce une méditation sur l'histoire. La foule résume un siècle d'espoirs et de \
+défaites, depuis les partages de la Pologne jusqu'aux insurrections de 1830 et de 1863 \
+: ses générations se pressent vers la fenêtre, symbole de la liberté, mais aucune ne \
+parvient à la franchir. La Mélancolie leur barre la route. Le peintre de l'atelier, \
+d'où tout semble naître, interroge aussi le rôle de l'artiste : est-ce lui qui fait \
+revivre ces fantômes, ou eux qui l'obsèdent ? Le tableau est souvent considéré comme \
+le manifeste du symbolisme polonais."""
+histoire = """
+Malczewski travaille à cette grande toile à Cracovie de 1890 à 1894. Professeur, puis \
+recteur de l'Académie des beaux-arts de la ville, il reprendra le thème de la ronde \
+humaine quelques années plus tard dans Le Cercle vicieux, et Stanisław Wyspiański fera \
+d'une danse semblable le symbole de la société polonaise dans sa pièce Les Noces, en \
+1901. Le tableau appartient à la collection du comte Edward Aleksander Raczyński, qui \
+réunit pour sa galerie du château de Rogalin un bel ensemble de peintures de \
+Malczewski ; il est aujourd'hui la propriété de la Fondation Raczyński, en dépôt au \
+Musée national de Poznań."""
+facture = """
+Malczewski, élève de Matejko, garde de son maître le dessin solide et le goût de la \
+foule, mais il les met au service d'une vision. Chaque figure est peinte de façon \
+réaliste, d'après modèle, alors que la scène entière est impossible. La composition \
+repose sur une grande diagonale, qui part du chevalet en haut à gauche et descend vers \
+la fenêtre à droite, comme une vague. La lumière verte et dorée de l'atelier contraste \
+avec l'éclat du jardin derrière la vitre et avec la silhouette noire de la Mélancolie."""
+details = [
+  "Le peintre minuscule à son chevalet, en haut à gauche, d'où sort la foule.",
+  "La femme en noir derrière la fenêtre, de dos, qui garde le passage.",
+  "Les vieillards accrochés à l'appui de la fenêtre, à droite.",
+  "Le violon et les livres tenus par certains personnages, au lieu d'armes.",
+  "Le drapeau rouge et les sabres au centre de la cohue.",
+]
+themes = ["symbolisme", "pologne", "mémoire", "insurrection", "artiste"]
+anecdote = """
+On rapporte que Malczewski demandait à ses élèves de l'Académie de Cracovie de « \
+peindre de façon que la Pologne ressuscite » : pour lui, la peinture devait garder \
+vivante une nation rayée de la carte."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Fillette aux chrysanthèmes"
+artiste = "Olga Boznańska"
+annee = "1894"
+image = "fillette-chrysanthemes.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Olga_Boznańska_-_Girl_with_Chrysanthemums_-_MNK_II-b-1032_-_National_Museum_Kraków.jpg"
+technique = "Huile sur carton, 88,5 × 69 cm"
+collection = "Musée national de Cracovie"
+note = "Une fillette pâle aux cheveux roux tient des chrysanthèmes blancs et nous fixe de ses grands yeux sombres."
+description = """
+Une fillette se tient debout, de face, contre un mur gris clair. Elle porte une robe \
+gris anthracite aux manches bouffantes et, contre son flanc, un bouquet de grands \
+chrysanthèmes blancs aux pétales échevelés. Ses longs cheveux roux, ébouriffés, \
+encadrent un visage très pâle où ressortent deux grands yeux noirs et une bouche \
+rouge. Ses mains, aux doigts entrecroisés, retiennent les longues tiges vertes à la \
+hauteur de la taille. Derrière elle, à droite, son ombre se projette sur le mur, et \
+des taches brunes apparaissent dans le fond, là où l'apprêt du carton transparaît. En \
+bas à droite, la peintre a signé et daté : « Boznańska 94 »."""
+evocation = """
+Le regard fixe et grave de l'enfant, que rien ne vient adoucir, donne au portrait \
+quelque chose d'inquiétant. Les chrysanthèmes, fleurs de la Toussaint en Pologne comme \
+en France, associent la fillette à l'idée de la mort et du temps qui passe. On y a vu \
+l'image d'une enfance mélancolique, trop sérieuse pour son âge, et un écho du \
+symbolisme qui se répand alors en Europe. Mais Boznańska ne raconte pas d'histoire : \
+elle saisit une présence, une tension intérieure. C'est cette force psychologique qui \
+a fait de ce tableau son œuvre la plus célèbre."""
+histoire = """
+Boznańska peint ce portrait en 1894 à Munich, où elle s'est installée pour étudier la \
+peinture, les académies étant alors fermées aux femmes. Elle y tient un atelier et \
+commence à exposer en Allemagne et en Pologne. Quatre ans plus tard, elle part pour \
+Paris, où elle vivra plus de quarante ans. Le tableau est acheté par le Musée national \
+de Cracovie en 1950. Considéré comme le chef-d'œuvre de l'artiste, il a été restauré \
+récemment grâce au mécénat de la fondation BNP Paribas, et il est présenté dans le \
+bâtiment principal du musée, à Cracovie."""
+facture = """
+Boznańska peint sur carton, en couches minces et mates, avec une gamme réduite de \
+gris, de bruns et de blancs. Elle admire Whistler et Manet, dont elle retient \
+l'harmonie de tons sourds et la pose frontale sur un fond neutre. La robe et le mur \
+sont brossés à grands traits rapides, tandis que les chrysanthèmes sont posés en \
+touches épaisses et nerveuses de blanc pur. Le visage, au contraire, est modelé avec \
+délicatesse. Le fond laissé à nu par endroits fait partie de l'effet."""
+details = [
+  "Les grands yeux noirs, qui suivent le visiteur.",
+  "Les chrysanthèmes blancs, peints en touches épaisses.",
+  "L'ombre de la fillette sur le mur, à droite.",
+  "Les doigts entrecroisés qui serrent les tiges.",
+  "La signature « Boznańska 94 », en bas à droite.",
+]
+themes = ["portrait", "enfance", "mélancolie", "fleurs", "regard"]
+anecdote = """
+Le Musée national de Cracovie a été la première institution polonaise à acheter une \
+peinture de Boznańska pour les collections nationales : en 1896, il acquit son \
+Portrait du peintre Paweł Nauen, peint en 1893."""
+salle = 5
+mur = "sud"
+place = 3
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Le Dresseur de tortues"
+artiste = "Osman Hamdi Bey"
+annee = "1906"
+image = "dresseur-de-tortues.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Osman_Hamdi_Bey_-_The_Tortoise_Trainer_-_Google_Art_Project.jpg"
+technique = "Huile sur toile, 221,5 × 120 cm"
+collection = "Musée Pera, Istanbul"
+note = "Un vieil homme en robe rouge, une flûte dans le dos, tente en vain de dresser des tortues : un sourire ironique sur l'Empire ottoman."
+description = """
+Dans une salle haute d'une mosquée délabrée, devant une fenêtre en arc brisé, un vieil \
+homme barbu se tient debout, de profil, légèrement penché. Il porte une longue robe \
+rouge à l'ourlet brodé, ceinturée à la taille, et un grand turban à bandes jaune et \
+violette. Ses mains, croisées dans le dos, tiennent une flûte de roseau, le ney ; un \
+petit tambour, le nakkare, pend dans son dos. À ses pieds, cinq tortues broutent des \
+feuilles vertes éparpillées sur le dallage, sans lui prêter la moindre attention. \
+Autour de la fenêtre, les murs sont couverts de carreaux de céramique bleus et \
+turquoise, et d'une inscription calligraphiée ; par endroits, le revêtement est tombé \
+et laisse voir la brique."""
+evocation = """
+Le tableau est le plus souvent lu comme une satire : celle des réformes lentes et \
+inefficaces de l'Empire ottoman, en particulier des Tanzimat, que le vieux dresseur, \
+avec ses méthodes d'un autre âge, ne parvient pas à faire avancer. Son costume, \
+antérieur au fez et aux habits à l'européenne, et ses instruments de derviche le \
+rattachent à un monde révolu. On y a vu un autoportrait, car Osman Hamdi se \
+photographiait souvent en costume pour préparer ses tableaux. Peu compris à sa \
+création, le tableau a pris un sens nouveau après la révolution des Jeunes-Turcs, en \
+1908. L'inscription au-dessus de la fenêtre dit : « La guérison des cœurs est la \
+rencontre avec l'Aimé »."""
+histoire = """
+Osman Hamdi peint cette première version en 1906 et l'envoie au Salon de Paris, au \
+Grand Palais, sous le titre L'Homme aux tortues. Le décor est inspiré d'une salle \
+haute de la Mosquée verte de Bursa, ancienne capitale ottomane. Une seconde version, \
+plus petite, datée de 1907, est conservée dans une collection particulière. La \
+première a appartenu à l'homme d'affaires turc Erol Aksoy ; en décembre 2004, elle est \
+vendue aux enchères à Istanbul pour environ cinq millions de livres turques, un record \
+alors pour un peintre turc. Acquise par la fondation Suna et İnan Kıraç, elle est \
+l'œuvre la plus célèbre du musée Pera, ouvert en 2005."""
+facture = """
+Osman Hamdi, formé à Paris dans l'entourage des peintres orientalistes, applique leur \
+précision académique à une scène de sa propre culture. Il décrit avec minutie les \
+carreaux de céramique, la calligraphie, la soie de la robe, l'écaille des tortues. Le \
+format très étroit et haut accentue la verticalité de la silhouette et de la fenêtre. \
+Le rouge de la robe, au centre, ressort sur les bleus profonds du décor. La lumière, \
+qui vient de la fenêtre au fond, éclaire le dallage et les murs écaillés."""
+details = [
+  "Les cinq tortues qui broutent sans se soucier du dresseur.",
+  "La flûte ney tenue derrière le dos, et le tambour suspendu à l'épaule.",
+  "Les carreaux de céramique tombés, qui laissent voir la brique.",
+  "L'inscription calligraphiée au-dessus de la fenêtre.",
+  "La signature du peintre et la date, en bas à droite.",
+]
+themes = ["satire", "orient", "tortues", "réforme", "costume"]
+anecdote = """
+Osman Hamdi aurait trouvé l'idée dans un article de la revue Le Tour du monde, lu des \
+années plus tôt, qui décrivait des dresseurs faisant marcher leurs tortues en file au \
+son du tambour. Des herpétologues ont identifié ses tortues comme des Testudo graeca \
+ibera."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.2
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Jan Matejko"
+vie = "Cracovie, 24 juin 1838 – Cracovie, 1ᵉʳ novembre 1893"
+biographie = """
+Né à Cracovie, alors ville libre bientôt annexée par l'Autriche, Jan Matejko est le \
+fils d'un professeur de musique tchèque et d'une mère d'origine germano-polonaise. Il \
+étudie à l'École des beaux-arts de Cracovie, puis brièvement à Munich et à Vienne. \
+Revenu dans sa ville, il ne la quittera presque plus. Stańczyk, en 1862, le fait \
+connaître ; suivent Le Sermon de Skarga (1864) et Rejtan (1866), qui fait scandale en \
+montrant la responsabilité de la noblesse dans les partages de la Pologne. En 1873, il \
+prend la direction de l'École des beaux-arts de Cracovie, où il forme notamment Jacek \
+Malczewski et Stanisław Wyspiański. Ses immenses toiles, La Bataille de Grunwald \
+(1878) et L'Hommage prussien (1882), qu'il offre à la nation, font de lui le peintre \
+de l'histoire polonaise, à une époque où le pays a disparu de la carte. Il meurt à \
+Cracovie en 1893."""
+style = """
+Matejko invente une peinture d'histoire à la fois spectaculaire et réflexive : des \
+foules immenses, des costumes et des objets décrits avec une précision d'archéologue, \
+des couleurs intenses, et des visages qui jugent l'histoire autant qu'ils la vivent. \
+Il anime ses toiles d'anachronismes voulus pour faire passer un message aux Polonais \
+de son temps. Son imagerie a façonné pour des générations la mémoire nationale \
+polonaise."""
+
+[[artistes]]
+nom = "Mikoláš Aleš"
+vie = "Mirotice (Bohême), 18 novembre 1852 – Prague, 10 juillet 1913"
+biographie = """
+Né dans une famille modeste du sud de la Bohême, Mikoláš Aleš entre à l'Académie des \
+beaux-arts de Prague à la fin des années 1860 et la quitte au milieu des années 1870, \
+sans grand appui. Il vit longtemps dans la pauvreté. En 1877, il remporte avec \
+František Ženíšek le concours pour le décor du foyer du Théâtre national, symbole du \
+réveil tchèque ; il y conçoit le cycle La Patrie, mais le chantier lui vaut bien des \
+déboires. Ses tableaux d'histoire se vendent mal, et il se tourne vers le dessin : \
+illustrations de chansons populaires, de contes et de livres d'enfants, dessins pour \
+les journaux satiriques, cartons pour les sgraffites et les peintures qui ornent de \
+nombreuses façades de Prague et de Bohême. Peu à peu, ses cavaliers hussites, ses \
+paysans et ses héros légendaires deviennent familiers à tous les Tchèques. Il meurt à \
+Prague en 1913."""
+style = """
+Aleš est avant tout un dessinateur : un trait vif et souple, des silhouettes nettes, \
+une stylisation qui emprunte à l'art populaire. Ses peintures, souvent de petit \
+format, sont méditatives et mélancoliques. Il a forgé une imagerie nationale tchèque, \
+des hussites aux bergers, que l'on retrouve dans les livres, sur les murs des maisons \
+et jusque dans les écoles."""
+
+[[artistes]]
+nom = "Alfons Mucha"
+vie = "Ivančice (Moravie), 24 juillet 1860 – Prague, 14 juillet 1939"
+biographie = """
+Né en Moravie, Alfons Mucha travaille d'abord comme peintre de décors de théâtre à \
+Vienne, puis étudie à Munich grâce à un protecteur. En 1887, il s'installe à Paris, \
+suit les cours de l'Académie Julian et vit d'illustrations. À la fin de 1894, \
+l'affiche qu'il dessine pour Gismonda, avec Sarah Bernhardt, le rend célèbre du jour \
+au lendemain ; l'actrice le prend sous contrat. Ses affiches, ses panneaux décoratifs \
+et ses bijoux font de lui l'une des figures de l'Art nouveau. À l'Exposition \
+universelle de 1900, il décore le pavillon de la Bosnie-Herzégovine. Il séjourne \
+ensuite plusieurs fois aux États-Unis, où il trouve le mécène de son grand projet, \
+l'Épopée slave, qu'il peint en Bohême de 1910 à 1928. Après 1918, il dessine les \
+premiers timbres et billets de la Tchécoslovaquie. Arrêté et interrogé par la Gestapo \
+en 1939, il meurt quelques mois plus tard à Prague."""
+style = """
+Mucha est connu pour ses femmes aux chevelures ondoyantes, entourées d'auréoles et \
+d'arabesques, dessinées d'un trait souple et coloré en tons doux : le « style Mucha » \
+de l'Art nouveau. Dans l'Épopée slave, il met ce sens décoratif au service d'une \
+peinture d'histoire monumentale et visionnaire, où la lumière et le symbole comptent \
+autant que le récit."""
+
+[[artistes]]
+nom = "Mihály Munkácsy"
+vie = "Munkács (auj. Moukatchevo, Ukraine), 20 février 1844 – Endenich (Bonn), 1ᵉʳ mai 1900"
+biographie = """
+Né Michael Lieb dans une famille d'origine allemande, Munkácsy prend plus tard le nom \
+de sa ville natale. Orphelin très jeune, il est apprenti menuisier avant de pouvoir \
+apprendre la peinture, à Pest, puis à Vienne, à Munich et à Düsseldorf. La Cellule du \
+condamné, médaillée au Salon de Paris en 1870, le rend célèbre. Installé à Paris en \
+1871, il épouse la veuve d'un baron et tient avenue de Villiers un salon fréquenté par \
+le Tout-Paris. Le marchand Charles Sedelmeyer organise le succès international de ses \
+grandes toiles : Milton dictant le Paradis perdu (1878), puis la trilogie du Christ, \
+Le Christ devant Pilate (1881), Golgotha (1884) et Ecce Homo (1896), qui font le tour \
+de l'Europe et de l'Amérique. Il peint aussi La Conquête de la Hongrie pour le nouveau \
+Parlement de Budapest. Atteint d'une grave maladie nerveuse, il meurt dans un asile \
+près de Bonn en 1900."""
+style = """
+Munkácsy unit le réalisme de Courbet et la tradition du tableau de genre de Düsseldorf \
+: des scènes populaires ou bibliques mises en scène comme au théâtre, des fonds \
+sombres d'où surgissent des visages expressifs. Sa palette brune, souvent au bitume, \
+s'éclaircit dans ses paysages et ses salons parisiens. Il fut le peintre hongrois le \
+plus célèbre de son siècle."""
+
+[[artistes]]
+nom = "Nicolae Grigorescu"
+vie = "Pitaru (Valachie), 15 mai 1838 – Câmpina, 21 juillet 1907"
+biographie = """
+Né dans un village de Valachie, Nicolae Grigorescu apprend le métier de peintre \
+d'icônes à Bucarest. Encore adolescent, il peint des images pour des églises et des \
+monastères, notamment celui d'Agapia, en Moldavie. En 1861, une bourse lui permet de \
+partir pour Paris. Il passe peu de temps à l'École des beaux-arts et préfère la forêt \
+de Fontainebleau, où il découvre les peintres de Barbizon et la peinture en plein air. \
+Revenu en Roumanie, il expose avec succès et voyage beaucoup. En 1877, il suit l'armée \
+roumaine pendant la guerre d'indépendance comme peintre officiel, et en rapporte \
+croquis et tableaux de bataille. Il partage ensuite sa vie entre la France et la \
+Roumanie, puis s'installe à Câmpina, au pied des Carpates, où il meurt en 1907. \
+L'Académie roumaine l'avait élu membre d'honneur en 1899. Il est considéré comme le \
+fondateur de la peinture roumaine moderne."""
+style = """
+Grigorescu a appris à Barbizon à peindre la lumière et l'air. Ses paysannes, ses \
+bergers, ses chars à bœufs sur les routes poudreuses, peints d'une touche rapide et \
+claire, ont fixé l'image de la campagne roumaine. Ses tableaux de guerre gardent la \
+même sensibilité à l'atmosphère. Son portrait figure aujourd'hui sur le billet roumain \
+de dix lei."""
+
+[[artistes]]
+nom = "Józef Chełmoński"
+vie = "Boczki, près de Łowicz, 7 novembre 1849 – Kuklówka, 6 avril 1914"
+biographie = """
+Né dans une famille de petite noblesse de Mazovie, Józef Chełmoński grandit à la \
+campagne, au milieu des chevaux et des paysans qu'il peindra toute sa vie. Il étudie à \
+Varsovie auprès de Wojciech Gerson, puis à l'Académie de Munich, à partir de 1872. De \
+retour à Varsovie, il partage un atelier à l'hôtel Europejski avec d'autres jeunes \
+peintres et voyage en Ukraine, dont les steppes l'inspirent. En 1875, il part pour \
+Paris, où il reste plus de dix ans : ses scènes de la campagne polonaise et \
+ukrainienne, ses attelages lancés au galop, comme L'Attelage à quatre (Czwórka, 1881), \
+connaissent le succès au Salon et chez les marchands. En 1887, il rentre en Pologne et \
+s'installe bientôt à Kuklówka, un village de Mazovie, où il vit retiré et peint \
+désormais des paysages, des oiseaux et des ciels. Il y meurt en 1914."""
+style = """
+Chełmoński est le grand peintre réaliste de la campagne polonaise : des chevaux \
+fougueux, des paysans au travail ou au repos, des plaines immenses sous de grands \
+ciels. Sa peinture, d'abord brune et énergique, s'apaise dans ses dernières années en \
+paysages contemplatifs, perdrix dans la neige, grues et cigognes, où la nature devient \
+presque sacrée."""
+
+[[artistes]]
+nom = "Pál Szinyei Merse"
+vie = "Szinyeújfalu (auj. Slovaquie), 4 juillet 1845 – Jernye, 2 février 1920"
+biographie = """
+Issu d'une vieille famille noble de Haute-Hongrie, Pál Szinyei Merse entre en 1864 à \
+l'Académie des beaux-arts de Munich, où il suit les cours d'Alexander von Wagner puis \
+de Karl von Piloty. Il s'y lie avec Wilhelm Leibl, qui l'encourage à peindre en plein \
+air, et quitte l'Académie en 1869 pour travailler seul. Pique-nique en mai, peint en \
+1873, est accueilli par l'incompréhension. Marié la même année, accaparé par des \
+soucis d'argent et de famille, découragé par la critique, il cesse de peindre en 1882 \
+et ne reprend qu'une dizaine d'années plus tard. En 1894, une rétrospective organisée \
+par ses amis révèle enfin son importance. Élu député en 1896, il défend la réforme de \
+l'enseignement artistique, puis préside à partir de 1905 l'École supérieure des \
+beaux-arts de Budapest, où il soutient les jeunes peintres de la colonie de Nagybánya. \
+Il meurt à Jernye en 1920."""
+style = """
+Szinyei est le premier peintre hongrois du plein air : il pose côte à côte des \
+couleurs pures et lumineuses, des verts et des rouges francs, pour rendre l'éclat du \
+soleil. Arrivé à cette peinture claire en même temps que les impressionnistes, mais \
+sans eux, il garde un dessin plus construit, hérité de Munich. Il est le précurseur de \
+la peinture moderne en Hongrie."""
+
+[[artistes]]
+nom = "Tivadar Csontváry Kosztka"
+vie = "Kisszeben (auj. Sabinov, Slovaquie), 5 juillet 1853 – Budapest, 20 juin 1919"
+biographie = """
+Tivadar Kosztka, fils d'un médecin pharmacien, devient lui-même pharmacien. En 1880, \
+raconte-t-il, une voix lui annonce qu'il sera le plus grand peintre de la route du \
+soleil, plus grand que Raphaël. Il travaille encore de longues années dans sa propre \
+pharmacie pour réunir l'argent nécessaire, puis, à plus de quarante ans, part étudier \
+la peinture à Munich, dans l'école de Simon Hollósy, en 1894, et brièvement à Paris. \
+Il voyage ensuite sans relâche à la recherche de sujets grandioses : la Dalmatie, \
+l'Italie, la Grèce, l'Égypte, la Palestine et le Liban, où il peint Baalbek et le \
+Cèdre solitaire en 1906 et 1907. Il prend le nom de Csontváry. Ses expositions à Paris \
+en 1907 et à Budapest ensuite ne rencontrent guère que la moquerie. Isolé, de plus en \
+plus étrange, il cesse presque de peindre après 1910 et meurt à Budapest en 1919."""
+style = """
+Csontváry est inclassable : ses toiles géantes, peintes en couleurs saturées et \
+irréelles, avec une précision obsessionnelle, sont des visions de lieux sacrés ou \
+chargés d'histoire. Ni impressionniste ni académique, il a été rapproché des peintres \
+naïfs et des expressionnistes. Redécouvert après sa mort, il est aujourd'hui l'un des \
+peintres les plus aimés de Hongrie ; un musée lui est consacré à Pécs."""
+
+[[artistes]]
+nom = "Jacek Malczewski"
+vie = "Radom, 15 juillet 1854 – Cracovie, 8 octobre 1929"
+biographie = """
+Né à Radom, dans la Pologne sous domination russe, Jacek Malczewski passe une partie \
+de sa jeunesse à la campagne, chez un oncle. En 1873, il entre à l'École des \
+beaux-arts de Cracovie, où il est l'élève de Jan Matejko, puis séjourne à Paris en \
+1876-1877 et fréquente l'École des beaux-arts. Ses premiers grands tableaux racontent \
+le destin des déportés polonais en Sibérie, inspirés du poème Anhelli de Juliusz \
+Słowacki. En 1884, il participe à une expédition archéologique en Asie Mineure. Vers \
+1890, son art bascule dans le symbolisme : Mélancolie, puis Le Cercle vicieux, et une \
+foule de tableaux peuplés de chimères, de faunes, d'anges et de figures de la mort, où \
+il se représente souvent lui-même. Professeur à l'Académie des beaux-arts de Cracovie, \
+il en devient recteur en 1912. Il meurt à Cracovie en 1929 ; son fils Rafał Malczewski \
+sera lui aussi peintre."""
+style = """
+Malczewski est le grand maître du symbolisme polonais. Il mêle des figures peintes \
+avec un réalisme minutieux, paysans, insurgés, autoportraits, à des créatures \
+mythologiques, dans des paysages lumineux de la campagne polonaise. Ses couleurs vives \
+et son dessin solide servent des allégories sur la patrie, l'art et la mort, souvent \
+énigmatiques."""
+
+[[artistes]]
+nom = "Olga Boznańska"
+vie = "Cracovie, 15 avril 1865 – Paris, 26 octobre 1940"
+biographie = """
+Fille d'un ingénieur polonais et d'une mère française, Olga Boznańska apprend la \
+peinture à Cracovie dans des cours privés, car l'École des beaux-arts n'admet pas les \
+femmes. En 1886, elle part pour Munich, où elle étudie dans des ateliers privés et \
+ouvre bientôt le sien. Ses portraits y sont remarqués et exposés en Europe. En 1898, \
+elle s'installe à Paris, dans un atelier du boulevard du Montparnasse qu'elle ne \
+quittera plus. Membre de la Société nationale des beaux-arts, elle expose dans toute \
+l'Europe et aux États-Unis, et reçoit la Légion d'honneur. Elle reste pourtant \
+attachée à la Pologne et envoie régulièrement ses œuvres aux expositions de Cracovie \
+et de Varsovie. Elle peint surtout des portraits, mais aussi des intérieurs, des \
+fleurs et des vues de Paris prises de sa fenêtre. Ses dernières années, dans un \
+atelier encombré, sont marquées par la solitude et les difficultés matérielles. Elle \
+meurt à Paris en 1940."""
+style = """
+Boznańska est avant tout portraitiste. Elle peint souvent sur carton, en touches fines \
+et mates, dans une gamme de gris, de bruns et de tons voilés qui doit beaucoup à \
+Whistler. Ses modèles, enveloppés d'une lumière douce, semblent perdus dans leurs \
+pensées. Ses portraits, d'une grande intensité psychologique, en font l'une des \
+grandes peintres européennes de son temps."""
+
+[[artistes]]
+nom = "Osman Hamdi Bey"
+vie = "Constantinople, 30 décembre 1842 – Constantinople, 24 février 1910"
+biographie = """
+Fils du grand vizir İbrahim Edhem Pacha, Osman Hamdi est envoyé à Paris en 1860 pour \
+étudier le droit ; il s'y passionne pour la peinture et fréquente les ateliers de \
+peintres orientalistes. Rentré à Constantinople en 1869, il occupe diverses fonctions \
+administratives, notamment à Bagdad, et organise en 1873 la participation ottomane à \
+l'Exposition universelle de Vienne, pour laquelle il publie avec Marie de Launay un \
+album sur les costumes populaires de la Turquie. En 1881, il devient directeur du \
+Musée impérial, futur musée archéologique d'Istanbul. Il fonde l'École des beaux-arts \
+de la ville, fait adopter une loi qui interdit l'exportation des antiquités, et dirige \
+lui-même des fouilles, notamment à Sidon, où il découvre en 1887 la nécropole royale \
+et le sarcophage dit d'Alexandre. Parallèlement, il ne cesse de peindre, exposant \
+notamment au Salon de Paris. Il meurt dans sa maison de Kuruçeşme, sur le Bosphore, en \
+1910."""
+style = """
+Osman Hamdi reprend la manière précise et lumineuse des orientalistes français, mais \
+la retourne : au lieu d'un Orient rêvé par l'Occident, il peint des scènes de sa \
+propre culture, souvent avec dignité et parfois avec ironie, en utilisant ses propres \
+photographies et son entourage comme modèles. Il est considéré comme un pionnier de la \
+peinture moderne en Turquie."""

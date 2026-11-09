@@ -312,7 +312,19 @@ pub fn attach(
                 }
             }),
         };
-        let ui = crate::ui::MuseumUi::new(ex, control.clone(), actions, busy.clone());
+        // Les textes longs (notices, biographies, bâtiment, fichier source), téléchargés
+        // à part : ils ne sont pas dans le WebAssembly.
+        let texts: crate::texts::SharedTexts = Default::default();
+        let filling = texts.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            let url = format!("{}/donnees/{}.json", base_path(ex.slug), ex.slug);
+            if let Ok(bytes) = fetch_bytes(&url).await
+                && let Some(loaded) = crate::texts::Texts::parse(&String::from_utf8_lossy(&bytes))
+            {
+                *filling.borrow_mut() = Some(loaded);
+            }
+        });
+        let ui = crate::ui::MuseumUi::new(ex, control.clone(), actions, busy.clone(), texts);
         let options = eframe::WebOptions {
             // Les événements continuent vers la page : la scène reçoit les gestes et le
             // clavier quand egui n'en a pas l'usage.

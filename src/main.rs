@@ -141,8 +141,10 @@ fn artists_sentence() -> String {
 fn site_footer() -> Element {
     // Le défilé est écrit deux fois de suite : l'animation glisse d'une moitié, en boucle.
     let marquee_items = || {
+        // Une œuvre par exposition (celle de sa vitrine) : le défilé reste léger, même avec
+        // des centaines d'œuvres.
         EXHIBITIONS.iter().flat_map(|ex| {
-            ex.artworks.iter().map(move |art| {
+            ex.cover().into_iter().map(move |art| {
                 a().href(work_url(ex, art.slug))
                     .class("marquee-item")
                     .attr("tabindex", "-1")
@@ -202,7 +204,7 @@ fn site_footer() -> Element {
                         // Une vitesse de lecture : environ 6 secondes par œuvre, quel que soit leur nombre.
                         .style(format!(
                             "animation-duration:{}s",
-                            6 * EXHIBITIONS.iter().map(|e| e.artworks.len()).sum::<usize>()
+                            6 * EXHIBITIONS.iter().filter(|e| e.cover().is_some()).count()
                         ))
                         .children(marquee_items())
                         .children(marquee_items()),
@@ -220,7 +222,7 @@ fn site_footer() -> Element {
                         .child(span().class("arrow").text(" →")),
                 )
                 .child(p().class("footer-figures").text(format!(
-                    "{} expositions · {works} œuvres · {} artistes · du Moyen Âge au pop art",
+                    "{} expositions · {works} œuvres · {} artistes · de l'Antiquité au street art",
                     EXHIBITIONS.len(),
                     artist_count()
                 ))),

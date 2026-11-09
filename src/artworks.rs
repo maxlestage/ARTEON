@@ -526,6 +526,34 @@ pub const ROOM_HALF_DEPTH: f32 = 5.0;
 pub const CORRIDOR_HALF_WIDTH: f32 = 1.5;
 pub const CORRIDOR_LENGTH: f32 = 6.0;
 
+// Les textes longs (notices, biographies, bâtiment, fichier source) sont compilés dans
+// le serveur, qui en fait les pages ; le WebAssembly ne les contient pas : le musée 3D les
+// télécharge à la demande, dans donnees/<exposition>.json (voir src/texts.rs).
+#[cfg(not(target_arch = "wasm32"))]
+macro_rules! text {
+    ($s:expr) => {
+        $s
+    };
+}
+#[cfg(target_arch = "wasm32")]
+macro_rules! text {
+    ($s:expr) => {
+        ""
+    };
+}
+#[cfg(not(target_arch = "wasm32"))]
+macro_rules! texts {
+    ($s:expr) => {
+        $s
+    };
+}
+#[cfg(target_arch = "wasm32")]
+macro_rules! texts {
+    ($s:expr) => {
+        &[]
+    };
+}
+
 include!(concat!(env!("OUT_DIR"), "/expositions.rs"));
 
 /// Le dossier des fichiers de données écrits par `build.rs` (servi à `/donnees/`).
