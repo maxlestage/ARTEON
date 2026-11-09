@@ -1,0 +1,878 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ARTS DE L'ISLAM » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/arts-islam/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /arts-islam.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 22
+nom_court = "Arts de l'Islam"
+mouvement = "Arts de l'Islam"
+cadre = "vitrine"
+couleur = "#1d5e6b"
+titre = "Les arts de l'Islam, de Cordoue à Ispahan"
+artiste = "Cordoue, Kairouan, Le Caire, Kashan, Ispahan, Iznik…"
+dates = "IXᵉ–XVIᵉ siècle"
+accroche = "Exposition virtuelle · Musée d'Art islamique, Doha"
+introduction = """
+Des bords de l'Atlantique à l'Iran, les terres d'Islam ont fait de l'écriture, de la \
+géométrie et du décor végétal un langage commun, décliné sur le parchemin, la laine, \
+le verre, le métal, l'ivoire et la céramique. La visite réunit dix objets, du Coran \
+bleu de Kairouan aux tapis des cours safavide, mamelouke et ottomane, de la lampe de \
+mosquée du Caire au plat d'Iznik. Le bâtiment s'inspire du musée d'Art islamique de \
+Doha, dessiné par I. M. Pei : un vestibule, puis un haut atrium où sont présentés les \
+grands tapis, autour duquel s'ouvrent trois galeries."""
+vitrine = "tapis-ardabil.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Musée d'Art islamique"
+ville = "Doha, Qatar"
+architecte = "Ieoh Ming Pei"
+construction = "inauguré en 2008"
+presentation = """
+Pour bâtir à Doha un musée consacré aux arts de l'Islam, l'émirat du Qatar fait appel \
+à l'architecte sino-américain I. M. Pei, l'auteur de la pyramide du Louvre. Celui-ci \
+voyage pour étudier l'architecture islamique et trouve son modèle au Caire, dans la \
+fontaine aux ablutions de la mosquée d'Ibn Tulun, une construction du XIIIᵉ siècle \
+d'une géométrie dépouillée. Le musée, inauguré à la fin de 2008, se dresse sur une île \
+gagnée sur la mer, au bout de la corniche : un empilement de volumes cubiques de \
+calcaire clair, qui se resserrent en gradins jusqu'à une tour centrale. À l'intérieur, \
+un atrium de plusieurs étages monte jusqu'à une coupole percée d'un oculus, où le \
+carré se change en octogone puis en cercle ; une immense baie vitrée ouvre sur la mer \
+et la ville. Les galeries, aménagées par Jean-Michel Wilmotte, sont plongées dans la \
+pénombre : chaque objet y brille dans sa vitrine. Les collections couvrent l'art \
+islamique de l'Espagne à l'Asie centrale et à l'Inde."""
+ici = """
+Le bâtiment d'ARTEON reprend la disposition du musée de Doha : un vestibule, puis un \
+atrium très haut d'où partent les galeries. On entre par le sud dans « Le vestibule de \
+la corniche », aux murs de pierre claire. Au nord s'ouvre « L'atrium · Les grands \
+tapis », haut de seize mètres, où sont tendus le tapis d'Ardabil et un tapis ottoman. \
+Trois galeries de six mètres de haut l'entourent : à l'ouest « Le Caire des Mamelouks \
+», à l'est « De Kashan à Iznik · La terre et le feu », et au nord, dans l'axe, « \
+Kairouan et Cordoue · L'écriture et l'ivoire »."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée d'Art islamique de Doha (I. M. Pei, 2008) : on entre par un
+# vestibule de calcaire clair dans un haut atrium, sous la coupole, où pendent ici
+# les grands tapis ; trois galeries s'ouvrent autour, plus basses, comme les salles
+# du musée où chaque objet brille dans sa vitrine. x et z : le centre de la salle
+# (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule de la corniche"
+theme = "L'entrée, comme à Doha, où l'on quitte la lumière de la baie pour la pierre claire du musée de I. M. Pei."
+murs = "#ece4d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "L'atrium · Les grands tapis"
+theme = "Sous la haute coupole, deux tapis de cour du XVIᵉ siècle : le tapis d'Ardabil, signé et daté, et un tapis ottoman à trois arcades."
+murs = "#e8dcc6"
+x = 0
+z = -13
+largeur = 22
+profondeur = 18
+hauteur = 16
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "Le Caire des Mamelouks"
+theme = "XIVᵉ–XVIᵉ siècle : le verre émaillé, le laiton incrusté d'argent et d'or et la laine nouée des ateliers du Caire et de Syrie."
+murs = "#e6d6bd"
+x = -18
+z = -13
+largeur = 14
+profondeur = 18
+hauteur = 6
+
+[[salles]]
+nom = "De Kashan à Iznik · La terre et le feu"
+theme = "1215–1590 : une cruche ajourée de Kashan, le mihrab de céramique d'une madrasa d'Ispahan et un plat d'Iznik."
+murs = "#e4dac6"
+x = 18
+z = -13
+largeur = 14
+profondeur = 18
+hauteur = 6
+
+[[salles]]
+nom = "Kairouan et Cordoue · L'écriture et l'ivoire"
+theme = "IXᵉ–Xᵉ siècle : l'or du Coran bleu de Kairouan et l'ivoire sculpté du califat de Cordoue."
+murs = "#e9dfcd"
+x = 0
+z = -28
+largeur = 14
+profondeur = 12
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le tapis d'Ardabil"
+artiste = "Iran safavide"
+annee = "1539–1540"
+image = "tapis-ardabil.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Ardabil_Carpet_-_Google_Art_Project.jpg"
+technique = "Velours de laine noué sur chaîne et trame de soie, 1044 × 535,5 cm"
+collection = "Victoria and Albert Museum, Londres"
+note = "L'un des plus anciens tapis datés : un soleil d'or sur un champ bleu nuit, signé et daté de l'an 946 de l'hégire."
+description = """
+Long de plus de dix mètres, le tapis déploie un champ bleu nuit couvert d'un fin \
+réseau de tiges spiralées, semées de fleurs et de palmettes. Au centre, un grand \
+médaillon jaune en forme d'étoile, au cœur bleu pâle, rayonne comme un soleil ; il est \
+entouré d'une couronne de médaillons ovales, crème, rouges et verts. De part et \
+d'autre, dans l'axe du tapis, pend une lampe de mosquée suspendue à des chaînes : \
+l'une est plus grande que l'autre. Dans les quatre angles, un quart du médaillon \
+central se répète en jaune. Une large bordure, où alternent cartouches allongés et \
+médaillons lobés, encadre le tout. À l'une des extrémités, un petit cartouche clair \
+porte trois lignes d'écriture persane : un distique de poésie, une signature et une \
+date."""
+evocation = """
+L'inscription donne la clé du tapis. Ses deux premières lignes citent le poète Hafez : \
+« Je n'ai d'autre refuge au monde que ton seuil ; ma tête n'a d'autre abri que cette \
+porte. » La troisième signe : « Œuvre de l'esclave du seuil, Maqsud de Kashan, 946 ». \
+Le seuil est ici celui d'un sanctuaire, et Maqsud se dit humble serviteur, non esclave \
+au sens propre. On a souvent lu le médaillon comme une coupole vue d'en dessous, d'où \
+pendent les lampes, et le champ fleuri comme un jardin du paradis. La différence de \
+taille des deux lampes reste discutée : effet de perspective, selon les uns ; selon \
+d'autres, imperfection voulue, car la perfection n'appartiendrait qu'à Dieu."""
+histoire = """
+Le tapis aurait été commandé par la cour du chah Tahmasp pour le sanctuaire d'Ardabil, \
+au nord-ouest de l'Iran, où repose le cheikh soufi Safi al-Din, mort en 1334 et \
+ancêtre de la dynastie safavide. Des voyageurs britanniques l'y voient encore en 1843. \
+Après un tremblement de terre qui endommage le sanctuaire, il est vendu, avec un tapis \
+jumeau, à une maison de Manchester qui le met en vente en 1892. William Morris, \
+consulté par le musée, le juge d'une « perfection singulière » : le South Kensington \
+Museum, futur Victoria and Albert Museum, l'achète en mars 1893 pour 2 000 livres. Son \
+jumeau, plus petit et privé de sa bordure, qui a servi à le réparer, est aujourd'hui \
+au musée d'art du comté de Los Angeles."""
+facture = """
+Le velours est fait de laine nouée, brin à brin, sur une armature de fils de soie, à \
+raison d'environ 5 300 nœuds pour un carré de dix centimètres de côté. Le champ \
+emploie une dizaine de couleurs tirées de teintures naturelles, comme l'indigo ou \
+l'écorce de grenade. Un tel dessin suppose un modèle préparé par les artistes de la \
+cour, puis des années de travail : jusqu'à dix tisserands ont pu œuvrer en même temps \
+sur le métier. La composition est symétrique dans les deux sens, autour du médaillon, \
+mais le réseau de rinceaux du fond se répète sans fin, comme s'il continuait sous la \
+bordure."""
+details = [
+  "Le cartouche à l'une des extrémités, avec les vers de Hafez, la signature et la date.",
+  "Les deux lampes suspendues dans l'axe, de tailles différentes.",
+  "Le petit cœur bleu pâle au centre du grand médaillon jaune.",
+  "Les quarts de médaillon jaunes qui occupent les quatre angles du champ.",
+  "Les zones usées près des bords, où le velours a disparu.",
+]
+themes = ["tapis", "safavides", "poésie", "sanctuaire", "lumière"]
+anecdote = """
+Au Victoria and Albert Museum, le tapis repose à plat, comme sur le sol d'un \
+sanctuaire, dans une grande vitrine installée en 2006 au centre de la galerie Jameel. \
+Pour préserver ses couleurs, il n'est éclairé que dix minutes, à chaque heure et à \
+chaque demi-heure."""
+salle = 2
+mur = "nord"
+position = -5.8
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Tapis à trois arcades"
+artiste = "Empire ottoman"
+annee = "vers 1575–1590"
+image = "tapis-ottoman-arcades.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Carpet_with_Triple-arch_Design_MET_DP166876.jpg"
+technique = "Chaîne et trame de soie, velours de laine et de coton, nœud asymétrique, 172,7 × 127 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un tapis de prière de la cour ottomane : trois arcs sur des colonnes, une lampe de mosquée et des fleurs au pied des colonnes."
+description = """
+Au centre du tapis, trois arcs brisés reposent sur des colonnes jumelées, fines et \
+torsadées, posées sur des socles à degrés. L'arc du milieu, plus large, découvre un \
+fond bleu sombre ; les deux arcs latéraux, un fond rouge. Du sommet de l'arc central \
+pend une lampe de mosquée, au bout de trois chaînettes. Au pied des colonnes poussent \
+des bouquets de fleurs, tulipes et œillets. Au-dessus des arcs, une frise court d'un \
+bord à l'autre, où l'on devine une rangée de petits édifices à coupole. Une large \
+bordure bleu clair enferme la scène : de longues feuilles dentelées s'y enroulent \
+autour de grosses fleurs épanouies, rouges et brunes."""
+evocation = """
+Le tapis de prière porte l'image de ce vers quoi le fidèle se tourne : l'arc figure le \
+mihrab, la niche qui indique la direction de La Mecque, et la lampe rappelle le verset \
+coranique qui compare la lumière de Dieu à une lampe posée dans une niche. Ici, la \
+niche unique devient une arcade de trois arcs, comme l'intérieur d'une mosquée ; on y \
+a vu l'évocation d'un sanctuaire, voire de La Mecque ou de Jérusalem, sans qu'aucune \
+lecture ne s'impose. Les fleurs au pied des colonnes, tulipes et œillets, sont celles \
+des jardins ottomans, et transforment l'espace de la prière en jardin."""
+histoire = """
+Ce tapis appartient à un petit groupe de tapis de prière à arcades tissés pour la cour \
+ottomane dans la seconde moitié du XVIᵉ siècle. Ses dessins viennent de l'atelier \
+impérial de dessin, le nakkaşhane, qui fournissait les modèles des céramiques, des \
+tissus et des reliures. Après la conquête de l'Égypte en 1517, les tisserands du Caire \
+travaillent pour les Ottomans, et des ordres du sultan Murad III, dans les années \
+1580, en font venir à Istanbul : on hésite pour ces tapis entre les deux villes, le \
+Met penchant pour Istanbul. Le tapis a appartenu au collectionneur américain James F. \
+Ballard, qui l'a donné au Metropolitan Museum en 1922 avec une grande partie de sa \
+collection de tapis."""
+facture = """
+Le tapis associe trois fibres : la soie pour la chaîne et la trame, qui donne une base \
+fine et solide, la laine pour l'essentiel du velours, et le coton pour les blancs, \
+plus éclatants. Le nœud asymétrique et la grande densité du tissage permettent des \
+courbes souples, loin des dessins géométriques des tapis de village. Le style floral \
+de la cour, avec ses feuilles dentelées en forme de sabre et ses tulipes, est le même \
+que sur les carreaux d'Iznik de la même époque. Les fonds rouges et bleus, usés, \
+laissent voir les variations des bains de teinture."""
+details = [
+  "La lampe de mosquée suspendue sous l'arc central, à trois chaînettes.",
+  "Les colonnes jumelées, torsadées, sur leurs socles à degrés.",
+  "Les tulipes et les œillets qui poussent au pied des colonnes.",
+  "La rangée d'édifices à coupole dans la frise au-dessus des arcs.",
+]
+themes = ["tapis", "prière", "ottomans", "fleurs", "architecture"]
+anecdote = """
+Les lampes figurées sur les tapis de prière ottomans sont celles, de verre ou de \
+céramique, qui pendaient réellement dans les mosquées. La galerie du Caire en présente \
+une, faite pour l'émir Qawsun deux siècles et demi plus tôt."""
+salle = 2
+mur = "nord"
+position = 5.0
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Tapis mamelouk"
+artiste = "Sultanat mamelouk"
+annee = "début du XVIᵉ siècle"
+image = "tapis-mamelouk.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Mamluk_Carpet_MET_DP168735.jpg"
+technique = "Laine (chaîne, trame et velours), nœud asymétrique, 213,4 × 266,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Rouge, bleu et vert : un kaléidoscope d'étoiles et d'octogones tissé au Caire, à la veille de la conquête ottomane."
+description = """
+Le tapis, plus large que haut, est entièrement géométrique. Au centre, un grand \
+médaillon octogonal vert bleuté renferme une rosace rouge où s'entrelacent des étoiles \
+et des nœuds. Autour, un octogone plus vaste se découpe en compartiments : étoiles à \
+huit branches, petits octogones, triangles verts aux pointes tournées vers le centre. \
+Le tout est inscrit dans un carré, flanqué à gauche et à droite de deux bandes rouges \
+semées de petits motifs. La bordure fait alterner de longs cartouches arrondis, bleus \
+et verts, et des médaillons ronds rouges. Pas une figure humaine ou animale : \
+seulement des formes qui s'emboîtent, à perte de vue. Les bords, effrangés, gardent la \
+trace de cinq siècles d'usage."""
+evocation = """
+Ce dessin sans début ni fin se regarde de tous les côtés, comme un tapis posé au sol. \
+On a rapproché ces compositions des pavements de marbre de couleur et des plafonds \
+peints qui ornaient les palais et les madrasas des Mamelouks : le tapis prolongeait, \
+en laine, le décor de l'architecture. Sa géométrie, faite d'étoiles qui naissent les \
+unes des autres, illustre une idée chère à l'art islamique : un ordre qui se répète et \
+pourrait s'étendre à l'infini. La gamme réduite de couleurs, rouge cerise, bleu et \
+vert, était si caractéristique qu'elle formait une sorte de marque des ateliers du \
+Caire."""
+histoire = """
+Les tapis dits mamelouks apparaissent au Caire dans la seconde moitié du XVᵉ siècle, \
+et leur production se poursuit quelque temps après la conquête ottomane de 1517. Ils \
+étaient recherchés jusqu'en Europe, en Italie comme en Espagne, où ils couvraient les \
+sols et les tables des palais. Après la conquête, les ateliers adoptent peu à peu le \
+style floral voulu par Istanbul, comme le montre le tapis à arcades de l'atrium. Cet \
+exemplaire a appartenu au collectionneur James F. Ballard, qui l'a donné au \
+Metropolitan Museum de New York en 1922, avec le tapis ottoman présenté dans cette \
+exposition."""
+facture = """
+Tout est en laine : la chaîne, la trame et le velours, noué selon le nœud asymétrique. \
+La laine des tapis mamelouks est réputée pour son lustre, qui fait chatoyer les \
+rouges. Les tisserands se contentent de trois couleurs principales, rehaussées de \
+touches de jaune et de blanc, mais jouent sur leurs nuances : on voit, dans les bandes \
+latérales et autour du médaillon, des passages du bleu au vert dus à des bains de \
+teinture différents. Le dessin repose sur un tracé géométrique rigoureux, construit à \
+partir de l'octogone et de l'étoile à huit branches."""
+details = [
+  "La rosace entrelacée au cœur du médaillon central.",
+  "Les triangles verts qui pointent vers le centre, comme des flèches.",
+  "Les petites plantes stylisées, par paires, dans les bandes latérales.",
+  "Les passages du bleu au vert, d'une bande à l'autre.",
+]
+themes = ["tapis", "géométrie", "mamelouks", "le caire", "étoile"]
+anecdote = """
+Le 11 juin 1489, le pape Innocent VIII achète sept tapis, que les documents \
+pontificaux disent expédiés du Caire, « où ils sont fabriqués ». Un tapis mamelouk \
+figure aussi dans un tableau peint à Venise par Paris Bordone en 1534."""
+salle = 3
+mur = "ouest"
+position = 0.0
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Lampe de mosquée de l'émir Qawsun"
+artiste = "Sultanat mamelouk"
+annee = "vers 1329–1335"
+image = "lampe-qawsun.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Mosque_Lamp_of_Amir_Qawsun_MET_DP214293.jpg"
+technique = "Verre soufflé, émaillé et doré, hauteur 35,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une lampe de verre haute de 36 cm, présentée agrandie, au nom d'un émir échanson du sultan : la coupe, son emblème, y revient six fois."
+description = """
+La lampe a la forme d'un grand vase : un col évasé en entonnoir, une panse ronde et un \
+pied haut et large. Sur la panse, des anses de verre permettaient d'accrocher les \
+chaînes de suspension. Le verre, transparent et légèrement brun, est couvert d'émaux. \
+Sur le col, une bande d'écriture bleue se déroule autour de grands médaillons ronds : \
+au centre de chacun, sur fond jaune, se détache une coupe rouge sombre. Sur la panse, \
+d'immenses lettres bleues, cernées de rouge, s'élancent vers le haut entre les anses ; \
+elles nomment l'émir qui a offert la lampe. Des rinceaux très fins, peints en rouge et \
+rehaussés d'or, remplissent les espaces entre les bandes et couvrent le pied."""
+evocation = """
+Une lampe de mosquée est une lumière qui parle. Une petite veilleuse à huile, posée à \
+l'intérieur, faisait briller le verre ; les lettres d'émail se détachaient alors en \
+ombre sur la lumière. Le col porte un passage de la sourate 24 du Coran, la sourate de \
+la Lumière, où la lumière de Dieu est comparée à une lampe placée dans une niche, dans \
+un verre semblable à un astre étincelant. L'objet illustre ainsi le texte qu'il porte. \
+L'inscription de la panse et la coupe, emblème de la charge d'échanson, rappellent \
+aussi la générosité de l'émir : offrir l'éclairage d'une mosquée était une œuvre \
+pieuse et un signe de prestige."""
+histoire = """
+Sayf al-Din Qawsun est l'un des émirs les plus puissants du sultan al-Nasir Muhammad, \
+dont il est l'échanson. Il fonde au Caire une mosquée vers 1329-1330 et un palais ; la \
+lampe, datée de ces années, était sans doute destinée à l'une de ses fondations. Après \
+la mort du sultan en 1341, Qawsun est un temps l'homme fort du régime, avant d'être \
+arrêté, puis mis à mort en 1342. Des centaines de lampes de ce type pendaient dans les \
+mosquées, les madrasas et les mausolées du Caire. Recherchées par les collectionneurs \
+européens au XIXᵉ siècle, beaucoup ont quitté l'Égypte : celle-ci a été offerte au \
+Metropolitan Museum en 1917 par le banquier J. Pierpont Morgan."""
+facture = """
+La lampe est soufflée à la canne, puis le pied et les anses sont ajoutés à chaud. Le \
+décor est peint avec des émaux, c'est-à-dire du verre coloré broyé et mêlé à un liant, \
+puis l'objet est recuit à une température assez basse pour fondre l'émail sans \
+déformer la lampe. L'or est appliqué de la même façon. Le bleu, le rouge, le blanc, le \
+jaune et l'or forment une palette restreinte, posée avec une grande précision : les \
+contours rouges des lettres et les rinceaux, tracés au pinceau, ont l'épaisseur d'un \
+cheveu."""
+details = [
+  "La coupe rouge sur fond jaune, emblème de l'échanson, dans les médaillons du col.",
+  "Les grandes lettres bleues de la panse, qui montent entre les anses.",
+  "Les anses de verre où l'on fixait les chaînes.",
+  "Les rinceaux rouges et dorés, très fins, sur le pied.",
+]
+themes = ["verre", "lumière", "calligraphie", "mamelouks", "mosquée"]
+anecdote = """
+Le pied de la lampe porte la signature d'Ali ibn Muhammad al-Barmaki : c'est l'un des \
+seuls noms d'artisans connus pour tout le verre émaillé et doré de l'époque mamelouke, \
+presque toujours anonyme."""
+salle = 3
+mur = "nord"
+position = 0.0
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Le Baptistère de Saint Louis"
+artiste = "Sultanat mamelouk"
+annee = "vers 1330–1340"
+image = "baptistere-saint-louis.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Baptistère_de_Saint_Louis_-_Musée_du_Louvre_Arts_de_l'Islam_LP_16.jpg"
+technique = "Alliage cuivreux martelé, ciselé et incrusté d'argent, d'or et de pâte noire, 23,2 × 50 cm"
+collection = "Musée du Louvre, Paris"
+note = "Un bassin mamelouk signé six fois par Muhammad ibn al-Zayn, qui servit au baptême des enfants de France : 50 cm de diamètre, présenté agrandi."
+description = """
+Le bassin, large et évasé, est entièrement couvert d'un décor d'argent et d'or sur le \
+laiton sombre. Sur la paroi extérieure, une frise de personnages debout fait le tour \
+de l'objet : des dignitaires et des serviteurs en longues robes, qui portent des \
+armes, des vases ou des animaux. Quatre médaillons ronds l'interrompent, où des \
+cavaliers chassent. La paroi intérieure reprend la même disposition : deux médaillons \
+y montrent un prince sur son trône, deux autres des écussons. Au fond, que l'on \
+aperçoit au centre, nagent des poissons et d'autres animaux aquatiques. Les visages, \
+ronds, aux yeux étirés, sont gravés avec une précision de miniature."""
+evocation = """
+Le décor déroule les plaisirs et les devoirs d'une cour : la chasse, le combat, le \
+service du prince. On ignore pour qui le bassin a été fait, mais ces scènes \
+s'adressent aux élites militaires du sultanat, ces émirs d'origine turque qui se \
+reconnaissaient dans leurs costumes et leurs armes. Le dessin rappelle la peinture des \
+manuscrits de l'époque : une scène de bataille se compare à une illustration du \
+Shâhnâmeh peint à Tabriz vers 1330. Le fond peuplé de poissons fait du bassin une \
+petite mer, une image qui prend un sens nouveau quand l'objet devient, en France, un \
+bassin pour l'eau du baptême."""
+histoire = """
+Le bassin est signé en six endroits : « œuvre du maître Muhammad ibn al-Zayn ». On \
+ignore comment il est arrivé en France ; il est conservé depuis longtemps dans le \
+trésor de la Sainte-Chapelle du château de Vincennes. Il sert au baptême du futur \
+Louis XIII en 1606, puis à celui du comte de Chambord en 1821, pour lequel on ajoute \
+deux blasons aux armes de France dans les médaillons intérieurs. En 1856, il est \
+encore utilisé pour le baptême du prince impérial, fils de Napoléon III. Il appartient \
+aujourd'hui au département des Arts de l'Islam du Louvre, dont il est l'un des objets \
+les plus célèbres."""
+facture = """
+Le bassin est martelé dans une feuille d'alliage cuivreux. Le décor est ensuite ciselé \
+: l'artisan creuse le métal, y loge de fines feuilles d'argent et d'or qu'il martèle \
+pour les fixer, puis remplit le fond de pâte noire pour faire ressortir les figures. \
+Les détails des visages et des vêtements sont gravés dans l'argent. Cette technique, \
+apparue au Khorassan, au nord-est de l'Iran, passe par Mossoul avant d'atteindre Damas \
+et Le Caire. Les figures, qui couvrent tout l'objet, se font plus rares au cours du \
+XIVᵉ siècle, remplacées peu à peu par de grandes inscriptions."""
+details = [
+  "Les cavaliers chassant dans les médaillons de la paroi extérieure.",
+  "Les blasons fleurdelisés ajoutés en 1821 dans deux médaillons intérieurs.",
+  "Les poissons et animaux aquatiques gravés sur le fond.",
+  "Les visages ronds, aux yeux étirés, gravés dans l'argent.",
+]
+themes = ["métal", "cour", "chasse", "mamelouks", "baptême"]
+anecdote = """
+Son nom est un anachronisme : Louis IX, Saint Louis, est mort en 1270, plusieurs \
+décennies avant que le bassin ne soit fabriqué. Ce nom traditionnel lui est pourtant \
+resté, et c'est sous lui qu'il est exposé au Louvre."""
+salle = 3
+mur = "sud"
+position = 0.0
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Cruche ajourée aux harpies et aux sphinx"
+artiste = "Céramistes de Kashan et d'Ispahan"
+annee = "1215–1216 (612 de l'hégire)"
+image = "cruche-kashan.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Pierced_Jug_with_Harpies_and_Sphinxes_MET_DP170372.jpg"
+technique = "Pâte siliceuse ajourée, peinte sous glaçure turquoise transparente, hauteur 20,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une cruche de 21 cm, présentée agrandie, à double paroi : la paroi extérieure, ajourée comme une dentelle, abrite harpies et sphinx."
+description = """
+La cruche a une panse ronde, un col droit et une anse. Sa paroi extérieure est percée \
+de part en part : entre des tiges qui s'enroulent, on distingue des harpies, oiseaux à \
+tête humaine, des sphinx et des quadrupèdes tachetés qui courent. Derrière cette \
+dentelle, une seconde paroi, pleine, contient le liquide. Le décor est peint en noir \
+et en bleu de cobalt, puis recouvert d'une glaçure turquoise transparente qui donne à \
+tout l'objet sa couleur de mer. Sous le bord du col et au bas de la panse, deux \
+bandeaux portent des inscriptions persanes en lettres noires sur fond turquoise."""
+evocation = """
+Les inscriptions sont des poèmes. Autour du col courent des vers du poète persan Rukn \
+al-Din Qummi ; près de la base, un poème d'amour anonyme, dans lequel l'amant se \
+lamente d'avoir lié son âme aux boucles de l'aimée, contient la date de fabrication. \
+La cruche appartient au monde raffiné des banquets et de la poésie. Les créatures \
+hybrides, harpies et sphinx, sont fréquentes dans l'art de l'Iran de cette époque ; on \
+y a vu des figures porte-bonheur ou des images d'un paradis peuplé d'êtres \
+merveilleux, plutôt que les monstres de la mythologie grecque dont elles portent le \
+nom."""
+histoire = """
+Datée de 612 de l'hégire, soit 1215-1216, la cruche a été faite quelques années avant \
+les invasions mongoles qui ravagent l'Iran à partir de 1219. Elle est attribuée à \
+Kashan, ville du centre de l'Iran qui était alors le grand foyer de la céramique de \
+luxe : on y produisait de la vaisselle peinte, lustrée ou émaillée, et des carreaux \
+pour les sanctuaires. Plusieurs cruches ajourées de ce type sont connues, dont \
+certaines portent une date, ce qui en fait des repères précieux pour les historiens. \
+Celle-ci a été achetée en 1932 par le Metropolitan Museum de New York."""
+facture = """
+La cruche est en pâte siliceuse, un mélange de quartz broyé, de fritte de verre et \
+d'un peu d'argile blanche, mis au point pour imiter la blancheur et la finesse de la \
+porcelaine chinoise. Le potier monte d'abord la paroi intérieure, puis la paroi \
+extérieure, qu'il ajoure au couteau quand la pâte n'est pas encore tout à fait sèche. \
+Il peint ensuite le décor en noir et en bleu, et couvre le tout d'une glaçure \
+turquoise. Le travail exige une grande habileté : la paroi ajourée, très fragile, se \
+brise au moindre faux mouvement."""
+details = [
+  "Les deux visages humains des harpies, au milieu de la panse.",
+  "La paroi intérieure, plus claire, que l'on aperçoit par les trous.",
+  "Les quadrupèdes tachetés qui courent autour du col.",
+  "Les bandeaux de poésie persane, sous le bord et près de la base.",
+]
+themes = ["céramique", "poésie", "créatures", "iran", "turquoise"]
+anecdote = """
+Kashan a donné son nom à la céramique : en persan, le mot kashi désigne le carreau de \
+revêtement émaillé. En 1301, Abu'l-Qasim, membre d'une famille de potiers de la ville, \
+écrit un traité qui décrit la fabrication de la pâte siliceuse."""
+salle = 4
+mur = "nord"
+position = 0.0
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Mihrab de la madrasa Imami d'Ispahan"
+artiste = "Céramistes de Kashan et d'Ispahan"
+annee = "1354–1355 (755 de l'hégire)"
+image = "mihrab-isfahan.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Mihrab_(Prayer_Niche)_MET_DP235035.jpg"
+technique = "Mosaïque de carreaux de céramique à glaçure monochrome, taillés et assemblés, 343,1 × 288,7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La niche de prière d'une école coranique d'Ispahan, faite de milliers de fragments de céramique : un revêtement d'architecture de plus de trois mètres."
+description = """
+Une niche à arc brisé s'enfonce dans un grand cadre rectangulaire. Le cadre est bordé \
+d'une large bande d'écriture : de hautes lettres blanches sur fond bleu sombre, qui \
+montent le long des côtés et courent en haut. Plus près de l'arc, une bande blanche \
+porte une écriture angulaire, le coufique, en lettres bleu sombre. Au-dessus de l'arc, \
+des rinceaux blancs et turquoise s'enlacent sur fond bleu. Dans le creux de la niche, \
+un réseau d'étoiles et d'hexagones couvre la demi-coupole, puis un semis de fleurs et \
+de croisillons tapisse le fond, interrompu par un panneau rectangulaire : une \
+inscription en écriture cursive, blanche et dorée. Tout est fait de petits morceaux de \
+céramique."""
+evocation = """
+Le mihrab indique aux fidèles la direction de La Mecque, vers laquelle ils prient ; il \
+est le cœur de toute mosquée et de toute salle de prière. Ses inscriptions en \
+expliquent le sens. Le grand bandeau cite des versets de la sourate 9 du Coran, qui \
+parlent de ceux qui entretiennent les mosquées de Dieu ; l'arc porte des paroles du \
+Prophète, et le panneau central une sentence selon laquelle la mosquée est la demeure \
+des hommes pieux. La lumière du soleil, en glissant sur les facettes inégales de la \
+céramique, faisait scintiller la niche entière."""
+histoire = """
+Ce mihrab ornait une madrasa, une école de théologie, fondée en 755 de l'hégire, soit \
+en 1354, à Ispahan, et appelée aujourd'hui madrasa Imami. L'Iran vivait alors sous des \
+dynasties locales, après l'effondrement de l'empire mongol des Ilkhanides. Démonté à \
+la fin des années 1920, le mihrab est expédié à Philadelphie, où le musée de \
+l'université le conserve, puis le Metropolitan Museum de New York l'achète en 1939. Au \
+milieu des années 1920, des potiers d'Ispahan en avaient restauré une partie : le bas \
+de la niche et le début et la fin du grand bandeau d'inscription."""
+facture = """
+C'est une mosaïque de céramique. Les carreaux sont d'abord cuits, chacun couvert d'une \
+seule couleur : bleu sombre, turquoise, blanc, jaune ocre, vert. On les taille ensuite \
+en petites pièces suivant le dessin, puis on les assemble face contre terre, avant de \
+couler du mortier au dos pour former de grands panneaux. La technique, plus lente que \
+la peinture sur carreau, donne des couleurs franches et des contours d'une netteté \
+parfaite. Elle se développe en Iran au XIVᵉ siècle et couvrira, aux siècles suivants, \
+les coupoles et les façades des grandes mosquées."""
+details = [
+  "Le panneau central de la niche, avec son inscription blanche et dorée.",
+  "Les hautes lettres blanches du grand bandeau sur fond bleu sombre.",
+  "La bande blanche à l'écriture coufique qui suit le tracé de l'arc.",
+  "Les étoiles et les hexagones de la demi-coupole.",
+  "Les fines bandes de losanges qui séparent chaque partie du décor.",
+]
+themes = ["céramique", "architecture", "prière", "calligraphie", "iran"]
+anecdote = """
+Le mihrab pèse plus de deux tonnes. Démonté en panneaux à Ispahan, il a traversé \
+l'Atlantique avant d'être remonté à New York, où il forme l'un des repères des \
+galeries d'art islamique du Metropolitan Museum."""
+salle = 4
+mur = "est"
+position = 0.0
+largeur = 2.88
+
+[[oeuvres]]
+titre = "Plat aux deux oiseaux parmi les fleurs"
+artiste = "Empire ottoman"
+annee = "vers 1575–1590"
+image = "plat-iznik.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Dish_Depicting_Two_Birds_among_Flowering_Plants_MET_DP131621.jpg"
+technique = "Pâte siliceuse peinte sous glaçure transparente, diamètre 28,4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un plat d'Iznik de 28 cm de diamètre, présenté agrandi : deux oiseaux dans un bouquet d'œillets, de tulipes et de jacinthes."
+description = """
+Sur le fond blanc du plat, un bouquet jaillit d'une touffe de longues feuilles vertes. \
+On y reconnaît une grosse fleur rouge épanouie, un œillet rouge, des jacinthes et une \
+tulipe bleues, et une branche de fleurs de prunier. Deux oiseaux bleu et vert, à \
+longue queue, se sont posés parmi les tiges : l'un, en haut, se penche vers une fleur, \
+l'autre, en bas, se tient sur une grande feuille dentelée. Le marli, le bord du plat, \
+est couvert d'un semis de spirales blanches sur fond bleu, interrompu par des réserves \
+blanches ornées de petites fleurs rouges. Le bord, découpé en festons, est cerné d'un \
+filet brun."""
+evocation = """
+Les fleurs d'Iznik sont celles des jardins ottomans : la tulipe, l'œillet, la jacinthe \
+et la rose, que la cour aimait cultiver et que l'on retrouve sur les carreaux, les \
+tissus et les reliures. Le décor n'est pas un bouquet copié sur nature, mais un jardin \
+idéal, où les tiges plient sans casser et où chaque fleur garde sa couleur pure. Les \
+oiseaux, rares sur ces plats, ajoutent du mouvement et de la vie. La bordure de \
+spirales est un souvenir des bordures de vagues et de rochers des porcelaines \
+chinoises, très collectionnées à la cour d'Istanbul."""
+histoire = """
+La ville d'Iznik, l'ancienne Nicée, au nord-ouest de l'Anatolie, produit à partir de \
+la fin du XVᵉ siècle une céramique fine, d'abord bleu et blanc à l'imitation de la \
+porcelaine chinoise. Au milieu du XVIᵉ siècle, ses ateliers travaillent pour la cour \
+et pour les grandes mosquées d'Istanbul, revêtues de milliers de carreaux. Ce plat \
+date de la grande époque d'Iznik, sous le règne de Murad III, de 1574 à 1595. Il a été \
+donné au Metropolitan Museum en 1959 par James J. Rorimer, alors directeur du musée, \
+en hommage au conservateur Maurice S. Dimand."""
+facture = """
+Le plat est en pâte siliceuse, recouverte d'un engobe blanc très pur qui sert de fond. \
+Le peintre trace les contours en noir, puis pose le bleu de cobalt, le turquoise, le \
+vert et le rouge, avant de couvrir le tout d'une glaçure transparente et brillante. Le \
+rouge, mis au point vers le milieu du XVIᵉ siècle, est fait d'une terre riche en fer ; \
+posé en couche épaisse, il forme un léger relief sous les doigts. Maîtriser ce rouge \
+sans qu'il coule ou noircisse à la cuisson est l'une des grandes prouesses des potiers \
+d'Iznik."""
+details = [
+  "Le rouge en relief de l'œillet et de la grosse fleur, en haut du bouquet.",
+  "L'oiseau du haut qui se penche vers une fleur.",
+  "Les spirales blanches sur fond bleu du marli.",
+  "La tulipe bleue, au pied du bouquet.",
+]
+themes = ["céramique", "fleurs", "oiseaux", "ottomans", "iznik"]
+anecdote = """
+Au XIXᵉ siècle, les collectionneurs européens appelaient ces céramiques « faïences de \
+Rhodes », parce que beaucoup avaient été achetées dans l'île de Rhodes. On ne les a \
+rendues à Iznik que plus tard, quand on a reconnu leur véritable origine."""
+salle = 4
+mur = "sud"
+position = 0.0
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Feuillet du Coran bleu"
+artiste = "Ifriqiya"
+annee = "seconde moitié du IXᵉ – milieu du Xᵉ siècle"
+image = "coran-bleu.jpg"
+cadre = "estampe"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Folio_from_the_%22Blue_Qur%27an%22_MET_DP167100.jpg"
+technique = "Or et argent sur parchemin teint à l'indigo, 30,4 × 40,2 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "De l'or sur un parchemin bleu nuit : une page de l'un des manuscrits les plus célèbres de l'art islamique."
+description = """
+La page est plus large que haute. Sur le parchemin d'un bleu profond, quinze lignes \
+d'écriture d'or s'alignent avec une régularité parfaite. Les lettres, anguleuses et \
+étirées à l'horizontale, appartiennent au coufique, la plus ancienne des grandes \
+écritures du Coran. Elles sont espacées de façon à remplir exactement chaque ligne, \
+quitte à couper un mot d'une ligne à l'autre. Il n'y a ni titre ni image. À droite, \
+dans la marge, un médaillon rond d'argent, aujourd'hui noirci par l'oxydation, \
+marquait une division du texte. Le bord du feuillet, usé et irrégulier, porte les \
+traces des siècles et des montages successifs."""
+evocation = """
+La page reproduit un passage de la sourate 30, ar-Rum, les Romains. Mais elle se \
+regarde autant qu'elle se lit : le coufique sans points ni voyelles s'adressait à des \
+lecteurs qui connaissaient déjà le texte par cœur, et la beauté de l'écriture \
+célébrait la parole divine. L'or sur fond bleu évoque un ciel nocturne ou des pierres \
+précieuses. On a souvent rapproché ce luxe des manuscrits impériaux byzantins, écrits \
+en or et en argent sur parchemin pourpre : le Coran bleu aurait été une réponse \
+éclatante, dans le monde islamique, à ces livres de prestige."""
+histoire = """
+Le manuscrit, dont les feuillets sont aujourd'hui dispersés, n'est ni signé ni daté. \
+Son origine reste discutée : on l'a attribué à Bagdad, à l'Espagne omeyyade ou à \
+l'Iran, mais la plupart des spécialistes pensent aujourd'hui à l'Afrique du Nord, et \
+plus précisément à Kairouan, en Tunisie. La majorité des feuillets connus sont \
+conservés en Tunisie, et un inventaire ancien de la bibliothèque de la Grande Mosquée \
+de Kairouan semble décrire un Coran écrit en or sur parchemin bleu. Les autres pages \
+se sont dispersées dans des musées et des collections du monde entier."""
+facture = """
+Le parchemin, fait de peau animale, a été teint à l'indigo, une technique rare. Les \
+lettres sont tracées en or, et les signes qui séparaient les versets étaient posés en \
+argent ; ce métal a noirci avec le temps, comme le médaillon de la marge. Le \
+calligraphe trace les lettres au calame, un roseau taillé, en respectant des \
+proportions précises : hampes verticales courtes, liaisons horizontales allongées. La \
+largeur de la page, plus grande que sa hauteur, est typique des Corans coufiques de \
+cette époque."""
+details = [
+  "Le grand médaillon d'argent noirci, dans la marge de droite.",
+  "Les liaisons horizontales très étirées entre certaines lettres.",
+  "Le petit signe rond doré qui sépare deux versets, vers le bas à gauche.",
+  "Les bords irréguliers du parchemin et les traces d'anciens montages.",
+]
+themes = ["coran", "calligraphie", "or", "manuscrit", "kairouan"]
+anecdote = """
+Le Coran bleu est l'un des rares manuscrits coraniques sur parchemin teint. Ses \
+feuillets passent très rarement sur le marché : le Metropolitan Museum de New York n'a \
+pu acquérir le sien qu'en 2004."""
+salle = 5
+mur = "nord"
+position = -2.2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Pyxide d'al-Mughira"
+artiste = "Califat de Cordoue"
+annee = "968 (357 de l'hégire)"
+image = "pyxide-al-mughira.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Pyxide_d'al-Mughira_-_Musée_du_Louvre_Arts_de_l'Islam_OA_4068.jpg"
+technique = "Ivoire d'éléphant sculpté, hauteur environ 15 cm"
+collection = "Musée du Louvre, Paris"
+note = "Une boîte d'ivoire d'une quinzaine de centimètres, présentée agrandie, sculptée pour un fils du calife de Cordoue."
+description = """
+La boîte est un cylindre fermé par un couvercle en dôme. Toute sa surface est sculptée \
+en relief profond. Sur la panse, quatre grands médaillons à huit lobes, bordés de \
+perles, renferment chacun une scène. Celui que l'on voit ici montre deux cavaliers, de \
+part et d'autre d'un palmier, qui cueillent des dattes ; des aigles se posent dans les \
+palmes. Les autres médaillons représentent une scène de cour, avec un joueur de luth, \
+des lions attaquant des taureaux et des jeunes gens dénichant des œufs. Entre les \
+médaillons grouillent des animaux, des oiseaux et des feuillages. Sur le bord du \
+couvercle, une inscription en lettres coufiques fait le tour de la boîte."""
+evocation = """
+L'inscription appelle la bénédiction de Dieu, la joie et le bonheur sur al-Mughira, \
+fils du commandeur des croyants, et donne la date de 357 de l'hégire. Al-Mughira était \
+le plus jeune fils du calife Abd al-Rahman III. Les historiens ont proposé de lire les \
+images comme un message politique : le palmier, emblème des Omeyyades venus de Syrie, \
+la scène de cour, les fauves qui terrassent leurs proies. On y a vu un rappel des \
+droits du jeune prince à la succession, ou au contraire une mise en garde. Ces \
+lectures restent débattues ; la boîte, faite pour contenir des parfums ou des bijoux, \
+est en tout cas un présent de très haut rang."""
+histoire = """
+La pyxide a été sculptée en 968, sans doute dans les ateliers de Madinat al-Zahra, la \
+ville-palais fondée près de Cordoue par Abd al-Rahman III. Son destinataire connut une \
+fin tragique : à la mort de son demi-frère, le calife al-Hakam II, en 976, al-Mughira \
+fut mis à mort par les partisans du jeune Hisham II, qui craignaient qu'il ne réclame \
+le trône. Ce destin donne un relief particulier aux vœux de bonheur gravés sur le \
+couvercle. La boîte appartient aujourd'hui au département des Arts de l'Islam du \
+Louvre, qui conserve l'un des plus beaux ensembles d'ivoires andalous."""
+facture = """
+La boîte est taillée dans une section de défense d'éléphant, un ivoire venu d'Afrique \
+par les routes commerciales. Le sculpteur évide le cylindre, puis dégage les figures \
+en relief si profond que certaines parties sont presque détachées du fond. Les \
+médaillons perlés, les feuillages et les animaux s'imbriquent sans laisser de vide. Le \
+relief a perdu les couleurs ou les incrustations qui l'animaient peut-être. Les \
+ateliers du califat de Cordoue ont produit, en quelques décennies, un ensemble de \
+pyxides et de coffrets sculptés pour la famille et l'entourage des califes."""
+details = [
+  "Les deux cavaliers qui cueillent des dattes de part et d'autre du palmier.",
+  "Les aigles posés dans les palmes, au-dessus des cavaliers.",
+  "L'inscription coufique autour du couvercle, qui nomme al-Mughira.",
+  "Les fauves et les animaux sculptés sur le dôme du couvercle.",
+]
+themes = ["ivoire", "al-andalus", "cour", "palmier", "omeyyades"]
+anecdote = """
+Le palmier rappelle Abd al-Rahman Iᵉʳ, le fondateur de la dynastie omeyyade d'Espagne, \
+venu de Syrie : selon la tradition, il composa un poème à un palmier de son jardin de \
+Cordoue, exilé comme lui loin de sa terre natale."""
+salle = 5
+mur = "nord"
+position = 2.2
+largeur = 0.7
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Iran safavide"
+vie = "Iran, 1501–1736"
+biographie = """
+La dynastie safavide tire son nom du cheikh Safi al-Din, un maître soufi mort en 1334, \
+dont la confrérie, installée à Ardabil, au nord-ouest de l'Iran, gagne au fil des \
+générations une puissance militaire. En 1501, son descendant Ismaïl, à peine âgé de \
+quatorze ans, se fait proclamer chah à Tabriz et impose le chiisme duodécimain comme \
+religion d'État, ce qui marque durablement l'Iran. Son fils Tahmasp, qui règne de 1524 \
+à 1576, protège les arts : son atelier royal réunit calligraphes, peintres, relieurs \
+et dessinateurs, qui fournissent aussi des modèles aux tisserands de tapis et de \
+soieries. La capitale passe de Tabriz à Qazvin, puis, sous Abbas Iᵉʳ, à Ispahan, que \
+le chah transforme à partir de 1598 autour d'une immense place bordée de mosquées et \
+de palais. Les tapis safavides, à médaillons, à jardins ou à animaux, tissés de laine \
+et parfois de soie, de fils d'or et d'argent, sont offerts aux souverains étrangers et \
+exportés jusqu'en Europe. La dynastie s'affaiblit au XVIIᵉ siècle ; en 1722, des \
+troupes afghanes prennent Ispahan, et le dernier souverain safavide est écarté en \
+1736."""
+style = """
+L'art safavide aime les compositions amples et ordonnées : un médaillon central, des \
+écoinçons, un champ couvert de rinceaux fleuris, des nuées et des palmettes qui \
+s'enroulent avec souplesse. Les mêmes dessins passent du manuscrit au tapis, de la \
+reliure à la céramique, grâce aux modèles de l'atelier royal. Les tapis de cour, d'une \
+finesse extrême, ont fixé pour des siècles l'image du « tapis persan »."""
+
+[[artistes]]
+nom = "Sultanat mamelouk"
+vie = "Égypte et Syrie, 1250–1517"
+biographie = """
+Les Mamelouks sont à l'origine des soldats esclaves, achetés enfants dans les steppes \
+d'Asie centrale ou du Caucase, convertis et formés au métier des armes. En 1250, ceux \
+de la dynastie ayyoubide s'emparent du pouvoir en Égypte. Dix ans plus tard, en 1260, \
+ils arrêtent les Mongols à Ayn Jalut, en Palestine, puis chassent les derniers États \
+croisés avec la prise d'Acre en 1291. Leur sultanat s'étend de l'Égypte à la Syrie et \
+protège les villes saintes de La Mecque et de Médine. Le pouvoir ne s'y transmet pas \
+toujours de père en fils : les émirs, chefs militaires, se disputent le trône. Le \
+Caire devient l'une des plus grandes villes du monde, et les sultans et les émirs la \
+couvrent de mosquées, de madrasas, de mausolées et d'hôpitaux, souvent réunis en \
+complexes. Le règne d'al-Nasir Muhammad, dans la première moitié du XIVᵉ siècle, \
+marque un sommet. Chaque émir arbore un emblème qui rappelle sa charge à la cour : la \
+coupe de l'échanson, l'épée du porte-glaive. En 1516 et 1517, les armées ottomanes de \
+Sélim Iᵉʳ conquièrent la Syrie puis l'Égypte, et mettent fin au sultanat."""
+style = """
+L'art mamelouk est un art de commande, au service d'une élite militaire qui affirme \
+son rang par ses fondations pieuses. Il excelle dans les objets précieux : le verre \
+émaillé et doré, le métal incrusté d'argent et d'or, les Corans de grand format, puis \
+les tapis. Les grandes inscriptions, aux lettres hautes et élancées, y deviennent peu \
+à peu le décor principal, aux côtés des emblèmes et d'une géométrie rigoureuse."""
+
+[[artistes]]
+nom = "Empire ottoman"
+vie = "Anatolie, Balkans et Proche-Orient, vers 1300–1922"
+biographie = """
+L'Empire ottoman naît vers 1300 d'une petite principauté turque du nord-ouest de \
+l'Anatolie, conduite par Osman, qui lui donne son nom. Ses successeurs s'étendent en \
+Anatolie et dans les Balkans. En 1453, Mehmed II prend Constantinople, qui devient \
+sous le nom d'Istanbul la capitale de l'empire. Au XVIᵉ siècle, Sélim Iᵉʳ conquiert la \
+Syrie et l'Égypte en 1516-1517, et son fils Soliman le Magnifique, qui règne de 1520 à \
+1566, porte l'empire à son apogée, de la Hongrie à l'Irak et à l'Afrique du Nord. La \
+cour organise la création artistique : l'atelier impérial de dessin, le nakkaşhane, \
+fournit les modèles des manuscrits, des tissus, des tapis et des céramiques, et \
+l'architecte Sinan bâtit à Istanbul et à Edirne des mosquées couvertes de carreaux \
+d'Iznik. Les ateliers de tapis d'Anatolie, comme ceux d'Ushak, exportent leurs \
+productions vers l'Europe, où des peintres les représentent dans leurs tableaux. \
+L'empire, affaibli à partir du XVIIIᵉ siècle, disparaît après la Première Guerre \
+mondiale, en 1922."""
+style = """
+Le style de la cour ottomane, fixé au milieu du XVIᵉ siècle, est un art de la fleur : \
+tulipes, œillets, jacinthes, roses et boutons de prunier, mêlés à de longues feuilles \
+dentelées en forme de sabre. Les couleurs sont franches, avec le bleu, le turquoise, \
+le vert et un rouge éclatant. Le même répertoire passe du dessin de l'atelier impérial \
+aux carreaux, aux plats, aux soieries et aux tapis."""
+
+[[artistes]]
+nom = "Céramistes de Kashan et d'Ispahan"
+vie = "Iran, XIIᵉ–XIVᵉ siècle"
+biographie = """
+À partir du XIIᵉ siècle, Kashan, ville du centre de l'Iran au pied des montagnes, \
+devient le grand foyer de la céramique de luxe du monde iranien. Ses potiers mettent \
+au point ou perfectionnent la pâte siliceuse, blanche et fine, et y appliquent toutes \
+les techniques : décor peint sous glaçure, lustre métallique aux reflets dorés, émaux \
+de petit feu. Certaines familles de potiers sont connues par leurs signatures sur des \
+carreaux et des vases, comme celle d'Abu Tahir, dont un membre, Abu'l-Qasim, rédige en \
+1301 un traité sur la fabrication de la céramique. Les ateliers de Kashan fournissent \
+des revêtements lustrés pour les sanctuaires de tout l'Iran, mihrabs et frises de \
+carreaux en étoile et en croix. Les invasions mongoles, à partir de 1219, ravagent le \
+pays, mais la production reprend sous la dynastie mongole des Ilkhanides, qui \
+commandent de grands décors de céramique. Au XIVᵉ siècle, à Ispahan, à Yazd ou à \
+Kerman, se développe la mosaïque de céramique, faite de pièces taillées, qui couvrira \
+plus tard les façades des mosquées timourides et safavides."""
+style = """
+Les céramistes iraniens de cette époque cherchent l'éclat de la porcelaine chinoise et \
+le dépassent par la couleur : le turquoise, le bleu de cobalt, le lustre doré. Leurs \
+décors associent poésie persane, figures de cour, créatures fantastiques et \
+calligraphie coranique. La mosaïque de céramique du XIVᵉ siècle porte l'art du \
+revêtement à une précision géométrique nouvelle."""
+
+[[artistes]]
+nom = "Ifriqiya"
+vie = "Tunisie et est de l'Algérie actuelles, IXᵉ–Xᵉ siècle"
+biographie = """
+L'Ifriqiya est le nom arabe de la province qui correspond à peu près à la Tunisie \
+actuelle. Conquise à la fin du VIIᵉ siècle, elle a pour capitale Kairouan, fondée en \
+670. En 800, le calife abbasside de Bagdad en confie le gouvernement à Ibrahim ibn \
+al-Aghlab, dont les descendants, les Aghlabides, règnent pendant un siècle tout en \
+reconnaissant l'autorité du calife. Ils reconstruisent la Grande Mosquée de Kairouan, \
+dont le mihrab est orné de carreaux lustrés venus d'Irak, et conquièrent la Sicile. La \
+ville est alors un grand centre d'études religieuses, et la bibliothèque de la Grande \
+Mosquée a conservé jusqu'à nos jours des Corans et des livres sur parchemin. En 909, \
+les Fatimides, une dynastie chiite qui se réclame de Fatima, la fille du Prophète, \
+renversent les Aghlabides et fondent la ville de Mahdia, sur la côte. En 969, ils \
+conquièrent l'Égypte et fondent Le Caire, où ils s'installent quelques années plus \
+tard, laissant l'Ifriqiya à leurs gouverneurs."""
+style = """
+Les Corans d'Ifriqiya de cette époque sont copiés sur parchemin, dans un format plus \
+large que haut, en écriture coufique : des lettres anguleuses, aux liaisons étirées, \
+peu de lignes par page, souvent sans points ni voyelles. L'or, l'argent et les \
+couleurs servent à marquer les versets et les sourates. Le Coran bleu pousse ce luxe à \
+l'extrême, avec ses lettres d'or sur fond teint."""
+
+[[artistes]]
+nom = "Califat de Cordoue"
+vie = "Al-Andalus (péninsule Ibérique), 929–1031"
+biographie = """
+En 756, Abd al-Rahman, un prince omeyyade échappé au massacre de sa famille à Damas, \
+fonde à Cordoue un émirat indépendant de Bagdad. En 929, son descendant Abd al-Rahman \
+III se proclame calife, commandeur des croyants, face aux califes abbassides de Bagdad \
+et aux Fatimides d'Afrique du Nord. Il fait bâtir près de Cordoue une ville-palais, \
+Madinat al-Zahra, où travaillent les meilleurs artisans du pays. Son fils al-Hakam II, \
+qui règne de 961 à 976, prince lettré qui réunit une immense bibliothèque, agrandit la \
+Grande Mosquée de Cordoue et y fait poser des mosaïques d'or par un artisan envoyé de \
+Byzance. Après sa mort, le pouvoir passe au vizir al-Mansur, l'Almanzor des chroniques \
+chrétiennes, qui gouverne au nom du jeune calife Hisham II. Au début du XIᵉ siècle, \
+une guerre civile éclate, Madinat al-Zahra est pillée, et le califat est aboli en 1031 \
+; al-Andalus se divise en petits royaumes. Beaucoup d'ivoires du califat ont ensuite \
+rejoint les trésors des églises chrétiennes."""
+style = """
+Les ateliers du califat de Cordoue ont sculpté dans l'ivoire des boîtes rondes, les \
+pyxides, et des coffrets rectangulaires, couverts de rinceaux, d'animaux et de scènes \
+de cour, souvent avec une inscription au nom de leur destinataire. Le décor, dense et \
+symétrique, mêle des héritages de l'Orient omeyyade, de Byzance et de l'Antiquité."""
