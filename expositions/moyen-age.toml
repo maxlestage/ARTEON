@@ -1,0 +1,929 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « MOYEN ÂGE » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/moyen-age/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /moyen-age.
+#
+#  Le mode d'emploi complet (salles, murs, places, largeurs) est en tête du
+#  fichier expositions/van-gogh.toml et sur la page « Ajouter une œuvre ».
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 10
+nom_court = "Moyen Âge"
+mouvement = "Art médiéval et gothique"
+couleur = "#2e4a8c"
+titre = "Le Moyen Âge, l'or et la lumière"
+artiste = "Cimabue, Duccio, Giotto, Roublev, les Limbourg, Fouquet…"
+dates = "vers 1280–1500"
+accroche = "Exposition virtuelle · Musée de Cluny, Paris"
+introduction = """
+Fonds d'or, icônes, retables et enluminures : de la fin du XIIIᵉ siècle à 1500, \
+la peinture apprend à donner du poids aux corps et de la profondeur à l'espace sans \
+renoncer à la splendeur du sacré. La visite réunit les trois grandes Vierges en \
+majesté de Cimabue, Duccio et Giotto, l'Annonciation siennoise de Simone Martini, la \
+Trinité d'Andreï Roublev, Fra Angelico, les frères de Limbourg, Jean Fouquet et \
+Enguerrand Quarton. Le bâtiment s'inspire du musée de Cluny, à Paris, logé dans un \
+hôtel gothique avec sa chapelle, et dessine une église : un narthex où attend la \
+Dame à la licorne, une haute nef, deux chapelles latérales et une abside."""
+vitrine = "trinite-roublev.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée de Cluny, à Paris, et du plan d'une église gothique : on entre
+# par le narthex (au sud), où est tendue la Dame à la licorne comme à Cluny ; une
+# nef haute et étroite mène au chœur, avec deux chapelles qui s'ouvrent de part et
+# d'autre ; au nord, l'abside, dans l'axe, où la Madone Rucellai se voit depuis
+# l'entrée. x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le narthex"
+theme = "Vers 1500 : la tapisserie « À mon seul désir », la plus célèbre pièce du musée de Cluny."
+murs = "#e7e0d3"
+x = 0
+z = 0
+largeur = 16
+profondeur = 6
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La nef · Les Maestà de Florence"
+theme = "1280–1310 : de Cimabue à Giotto, la Vierge en majesté quitte l'icône byzantine pour prendre corps."
+murs = "#e9e2d4"
+x = 0
+z = -15
+largeur = 12
+profondeur = 24
+hauteur = 16
+portes = ["nord"]
+
+[[salles]]
+nom = "La chapelle de France"
+theme = "1411–1454 : l'enluminure des Limbourg, Jean Fouquet et le grand retable d'Enguerrand Quarton."
+murs = "#e6ded2"
+x = -11
+z = -21
+largeur = 10
+profondeur = 10
+hauteur = 8
+portes = ["est"]
+
+[[salles]]
+nom = "La chapelle de l'Annonciation"
+theme = "1333–1426 : l'ange Gabriel chez Simone Martini à Sienne, puis chez Fra Angelico à Fiesole."
+murs = "#ede2d8"
+x = 11
+z = -21
+largeur = 10
+profondeur = 10
+hauteur = 8
+portes = ["ouest"]
+
+[[salles]]
+nom = "L'abside"
+theme = "Le sanctuaire : la Madone Rucellai de Duccio dans l'axe, et la Trinité de Roublev, icône des icônes."
+murs = "#ebe0c9"
+x = 0
+z = -33
+largeur = 10
+profondeur = 12
+hauteur = 14
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "La Dame à la licorne : « À mon seul désir »"
+artiste = "Tapissiers anonymes, vers 1500"
+annee = "vers 1500"
+image = "mon-seul-desir.jpg"
+technique = "Tapisserie de laine et de soie, 377 × 473 cm"
+collection = "Musée de Cluny – musée national du Moyen Âge, Paris"
+note = "La sixième et la plus mystérieuse des tapisseries de la Dame à la licorne, entourée de sa devise brodée sur une tente."
+description = """
+Sur un fond rouge semé de fleurs, de petits arbres et d'animaux, une île bleu nuit, \
+couverte elle aussi de fleurs, porte la scène. Au centre, devant une grande tente \
+bleue parsemée de flammèches d'or, une jeune femme richement vêtue se tient debout. \
+Elle tient un collier entre ses mains, au-dessus d'un coffret ouvert que lui présente \
+sa suivante. De part et d'autre, un lion et une licorne dressés écartent les pans de \
+la tente et portent des étendards rouges barrés d'une bande bleue à trois croissants \
+d'argent. Au sommet de la tente court l'inscription « À mon seul désir ». Un petit \
+chien est assis sur un coussin posé sur un banc ; des lapins, un chien, un singe, des \
+oiseaux et des arbres chargés de fruits peuplent tout l'espace, sans perspective ni \
+ombre."""
+evocation = """
+Les cinq autres tapisseries de la tenture illustrent les cinq sens : le goût, l'ouïe, \
+la vue, l'odorat et le toucher. Celle-ci, la plus grande, reste une énigme. Selon une \
+lecture répandue, la dame dépose son collier dans le coffret : elle renoncerait aux \
+plaisirs des sens, maîtrisés par le libre arbitre. D'autres historiens pensent au \
+contraire qu'elle s'en saisit et voient dans la scène un sixième sens, celui du cœur, \
+qui gouverne les cinq autres. La devise elle-même se prête aux deux sens, amour \
+courtois ou désir spirituel. Le lion et la licorne, porteurs des armoiries, rappellent \
+la noblesse et la pureté ; le jardin clos fleuri évoque le paradis. L'œuvre résume la \
+culture raffinée de la fin du Moyen Âge, entre dévotion et art de vivre \
+aristocratique."""
+histoire = """
+Les armoiries, de gueules à la bande d'azur chargée de trois croissants d'argent, sont \
+celles des Le Viste, famille de juristes lyonnais montée à Paris ; on hésite entre \
+Jean Le Viste, mort en 1500, et un de ses parents comme commanditaire. Les cartons \
+sont attribués à un peintre parisien, souvent nommé le Maître d'Anne de Bretagne, et \
+le tissage à un atelier des Pays-Bas du Sud. Au XIXᵉ siècle, les six pièces se \
+trouvent au château de Boussac, dans la Creuse, où l'inspecteur des monuments \
+historiques Prosper Mérimée les remarque en 1841 et s'alarme de leur état. George Sand \
+les fait connaître dans ses écrits. L'État les achète en 1882 pour le musée de Cluny, \
+où elles sont présentées dans une salle ronde qui leur est consacrée."""
+facture = """
+La tapisserie est tissée en laine, avec quelques rehauts de soie, sur une chaîne de \
+laine : le licier reproduit point par point un carton peint grandeur nature. Le fond \
+dit « millefleurs », semé de plantes et d'animaux répartis régulièrement, est typique \
+de la fin du XVᵉ siècle. Les couleurs, peu nombreuses, viennent de teintures \
+végétales : la garance pour le rouge, la guède pour le bleu, la gaude pour le jaune. \
+Les figures sont disposées comme sur une scène, sans ombre, pour rester lisibles de \
+loin sur un mur de château."""
+details = [
+  "Les lettres « À mon seul désir » sur le lambrequin de la tente.",
+  "Les trois croissants d'argent des Le Viste sur les deux étendards.",
+  "Le petit chien blanc assis sur un coussin, à gauche de la dame.",
+  "Un petit singe accroupi au pied de la dame, sur l'île fleurie.",
+  "Les lapins qui se cachent un peu partout dans le fond rouge.",
+]
+themes = ["tapisserie", "licorne", "désir", "millefleurs", "cinq sens"]
+anecdote = """
+Les tapisseries ont gagné un public inattendu : dans les films Harry Potter, les murs \
+de la salle commune de Gryffondor sont tendus de reproductions de la Dame à la \
+licorne, dont les fonds rouges s'accordent aux couleurs de la maison."""
+salle = 1
+mur = "ouest"
+place = 1
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Maestà di Santa Trinita"
+artiste = "Cimabue"
+annee = "vers 1280–1290"
+image = "maesta-santa-trinita.jpg"
+technique = "Tempera et or sur panneau, 385 × 223 cm"
+collection = "Galerie des Offices, Florence"
+note = "La Vierge en majesté sur un trône immense, entourée de huit anges : le grand retable de Cimabue pour l'église Santa Trinita."
+description = """
+Sur un fond d'or, sous un pignon pointu, la Vierge est assise sur un trône monumental \
+de bois doré, incrusté et ajouré comme une architecture. Elle porte l'Enfant sur son \
+genou gauche et le désigne de la main droite. Jésus, vêtu comme un petit adulte, bénit \
+et tient un rouleau. Huit anges, quatre de chaque côté, sont étagés les uns au-dessus \
+des autres le long du trône, leurs ailes multicolores formant comme des rideaux. Sous \
+le trône s'ouvrent trois arcades : on y voit quatre prophètes à mi-corps, deux sur les \
+côtés qui lèvent les yeux, deux au centre, dont un roi couronné, chacun tenant un \
+phylactère. Le manteau bleu de Marie est strié de fins rehauts d'or."""
+evocation = """
+L'image suit le modèle byzantin de la Vierge Hodigitria, « celle qui montre le \
+chemin » : Marie présente son fils comme la voie du salut. Les prophètes de l'Ancien \
+Testament, placés sous le trône, sont les fondations sur lesquelles repose la venue du \
+Christ ; on les identifie à Jérémie, Abraham, David et Isaïe, dont les rouleaux \
+portent des versets annonçant l'Incarnation. L'or du fond ne représente aucun lieu : \
+c'est la lumière divine. Mais Cimabue commence à donner aux figures une présence \
+nouvelle, des visages plus doux, un trône qui s'enfonce dans l'espace. Les historiens \
+y voient un moment de passage, où la peinture italienne hérite encore de l'icône tout \
+en préparant la révolution de Giotto, son élève selon la tradition."""
+histoire = """
+Le panneau a été peint pour le maître-autel de l'église Santa Trinita, à Florence, \
+desservie par les moines de Vallombreuse. Sa date reste discutée, entre les années \
+1280 et 1290. Au XVᵉ siècle, le goût ayant changé, il est remplacé sur l'autel par un \
+retable d'Alesso Baldovinetti et relégué dans une chapelle, puis dans les bâtiments du \
+couvent. Il entre dans les collections publiques florentines au XIXᵉ siècle et rejoint \
+la Galerie des Offices en 1919. Il y est aujourd'hui exposé dans la même salle que les \
+Vierges en majesté de Duccio et de Giotto, un rapprochement devenu une leçon \
+d'histoire de l'art : trois manières de peindre le même sujet, en une trentaine \
+d'années."""
+facture = """
+Cimabue peint à la tempera, pigments liés au jaune d'œuf, sur un panneau de bois \
+couvert de plâtre et de colle. L'or est posé en feuilles sur un bol rouge puis bruni, \
+et les auréoles sont gravées de petits poinçons. Les plis des vêtements sont tracés \
+par des lignes d'or parallèles, une technique byzantine appelée chrysographie. Le \
+trône, vu en légère perspective, crée un espace encore incertain, mais les visages \
+sont modelés par des ombres verdâtres sous les carnations, selon la pratique de \
+l'époque."""
+details = [
+  "Les ailes des anges, aux plumes colorées en écailles du blanc au rouge.",
+  "Les fins traits d'or qui strient le manteau bleu de la Vierge.",
+  "Le roi David couronné, au centre sous le trône, à côté d'Abraham.",
+  "Les deux prophètes latéraux qui lèvent la tête vers la Vierge.",
+]
+themes = ["vierge en majesté", "fond d'or", "anges", "prophètes", "byzantin"]
+anecdote = """
+En 2019, un petit panneau de Cimabue, le Christ moqué, a été découvert dans la cuisine \
+d'une maison de Compiègne, où il passait pour une icône sans valeur. Vendu aux \
+enchères à Senlis, il a atteint 24 millions d'euros."""
+salle = 2
+mur = "ouest"
+place = 4
+largeur = 2.23
+
+[[oeuvres]]
+titre = "Maestà di Ognissanti"
+artiste = "Giotto"
+annee = "vers 1306–1310"
+image = "maesta-ognissanti.jpg"
+technique = "Tempera et or sur panneau, 325 × 204 cm"
+collection = "Galerie des Offices, Florence"
+note = "Une Vierge qui pèse enfin sur son trône : le grand retable de Giotto pour l'église d'Ognissanti, à Florence."
+description = """
+Sous un pignon au fond d'or, la Vierge trône dans un tabernacle gothique de marbre \
+blanc, avec pinacles, gâbles et arc trilobé. Massive, enveloppée d'un manteau bleu \
+sombre presque noir sur une robe blanche, elle tient l'Enfant assis sur son genou. Le \
+petit Jésus, en robe rose, bénit de la main droite et tient un rouleau. De part et \
+d'autre du trône se pressent des saints et des anges, vus de profil, les plus \
+lointains cachés en partie par les montants. Au premier plan, deux anges agenouillés \
+offrent des vases de fleurs, lys et roses ; derrière eux, deux autres présentent une \
+couronne et un coffret. Le trône repose sur des marches de marbre veiné."""
+evocation = """
+Avec Giotto, la Vierge cesse d'être une image sacrée suspendue dans l'or pour devenir \
+une présence physique : on sent ses genoux sous le manteau, le poids de son corps sur \
+le siège, et l'Enfant a la carrure d'un vrai bébé. Les anges et les saints, qui \
+regardent la scène, mettent le spectateur dans la même position qu'eux. Les fleurs \
+offertes ont un sens précis : les lys évoquent la pureté de Marie, les roses son amour \
+et la Passion à venir. On a souvent lu ce panneau comme l'acte de naissance de la \
+peinture occidentale moderne, fondée sur l'observation du réel. Il reste pourtant une \
+image de culte, tournée vers le fidèle, et l'or y garde toute sa valeur."""
+histoire = """
+Giotto peint ce retable vers 1306–1310 pour l'église florentine d'Ognissanti, qui \
+appartenait alors à l'ordre religieux des Humiliés. Il vient de terminer les fresques \
+de la chapelle des Scrovegni à Padoue et c'est l'artiste le plus réputé d'Italie. Le \
+panneau, placé sur l'autel principal de l'église, est cité avec admiration au XVᵉ \
+siècle par le sculpteur Lorenzo Ghiberti dans ses Commentaires. Au XIXᵉ siècle, il \
+passe dans les collections de l'Académie de Florence, puis entre en 1919 à la Galerie \
+des Offices. Il est exposé à côté des grandes Vierges en majesté de Cimabue et de \
+Duccio, ce qui permet de mesurer d'un regard tout ce qui a changé en quelques \
+décennies."""
+facture = """
+Giotto travaille à la tempera sur un fond d'or, comme ses prédécesseurs, mais il \
+abandonne les traits d'or byzantins des drapés au profit d'un modelé continu, par \
+dégradés d'ombre et de lumière. Le trône est construit avec une perspective \
+cohérente : on voit ses côtés en profondeur, à travers les ouvertures. Les figures se \
+recouvrent partiellement, ce qui crée des plans successifs. La gamme est sobre, \
+dominée par le bleu sombre du manteau et le blanc de la robe, et la lumière semble \
+venir d'une source unique."""
+details = [
+  "La bouche entrouverte de la Vierge, qui laisse voir ses dents.",
+  "La transparence du voile blanc posé sur sa poitrine.",
+  "Les vases de lys et de roses tenus par les anges agenouillés.",
+  "Les visages des saints aperçus à travers les ajours du trône gothique.",
+]
+themes = ["vierge en majesté", "volume", "réalisme", "fond d'or", "anges"]
+anecdote = """
+Dante a consacré deux vers à la gloire de Giotto dans le Purgatoire : Cimabue crut \
+tenir le premier rang en peinture, écrit-il, et maintenant c'est Giotto qui a la \
+renommée, si bien que celle de son maître s'obscurcit."""
+salle = 2
+mur = "est"
+place = 4
+largeur = 2.04
+
+[[oeuvres]]
+titre = "Vierge à l'Enfant entourée d'anges (Diptyque de Melun)"
+artiste = "Jean Fouquet"
+annee = "vers 1450–1455"
+image = "vierge-de-melun.jpg"
+technique = "Huile sur panneau de chêne, 92 × 83,5 cm"
+collection = "Musée royal des Beaux-Arts (KMSKA), Anvers"
+note = "Le volet droit du diptyque commandé par Étienne Chevalier, trésorier de Charles VII : une Vierge-reine d'une étrange pâleur."
+description = """
+La Vierge, assise sur un trône orné de perles et de pierres précieuses, occupe presque \
+toute la hauteur du panneau. Elle porte une haute couronne d'or et de perles et un \
+grand manteau doublé d'hermine, ouvert sur un corsage bleu-gris délacé d'où sort un \
+sein rond et blanc. Ses yeux sont baissés. Sur son genou, l'Enfant, nu et potelé, \
+regarde vers la gauche, l'air grave. Tout autour, les anges remplissent l'espace : des \
+séraphins rouge vif et des chérubins bleus, aux corps lisses comme des statues de \
+cire, serrés les uns contre les autres. Le teint de la Vierge et de l'Enfant est d'une \
+blancheur de porcelaine, sans aucune ombre colorée."""
+evocation = """
+Le contraste violent entre la pâleur des figures saintes et le rouge et le bleu \
+saturés des anges donne au tableau son caractère irréel, presque moderne. Les \
+séraphins rouges, brûlant d'amour divin, et les chérubins bleus, qui symbolisent la \
+connaissance, forment une cour céleste. Marie y apparaît en reine de cour, à la mode \
+du temps : front épilé, taille haute, corsage lacé. Une tradition attestée depuis le \
+XVIIᵉ siècle veut qu'elle ait les traits d'Agnès Sorel, favorite de Charles VII, morte \
+en 1450, dont Étienne Chevalier fut l'exécuteur testamentaire. Rien ne le prouve, mais \
+cette idée a nourri l'image d'une œuvre où le sacré et la beauté profane se mêlent de \
+façon troublante."""
+histoire = """
+Étienne Chevalier, trésorier de France sous Charles VII, commande ce diptyque pour la \
+collégiale Notre-Dame de Melun, sa ville natale, où son épouse Catherine Budé est \
+enterrée en 1452. Sur le volet gauche, il est représenté à genoux, présenté par son \
+saint patron, saint Étienne ; sur celui-ci, il prie la Vierge. Le diptyque reste à \
+Melun jusqu'à la fin du XVIIIᵉ siècle, quand le chapitre le vend. Les deux panneaux \
+sont alors séparés. Celui-ci rejoint la collection du bourgmestre d'Anvers Florent van \
+Ertborn, léguée à sa mort, en 1840, au musée d'Anvers. Le volet d'Étienne Chevalier, \
+lui, est conservé à la Gemäldegalerie de Berlin."""
+facture = """
+Fouquet peint à l'huile, technique venue des Pays-Bas, avec une précision de \
+miniaturiste : perles, pierres taillées, fourrure d'hermine et lacets sont rendus un à \
+un. Mais il simplifie les volumes jusqu'à la géométrie : la tête de la Vierge est un \
+ovale, son sein une sphère, les angelots des formes lisses comme du bois tourné. Cette \
+alliance de détail flamand et de clarté monumentale, apprise peut-être en Italie, est \
+la marque de Fouquet. Les trois couleurs, blanc, rouge et bleu, sont posées presque \
+sans transition."""
+details = [
+  "Les perles et les pierres taillées du trône et de la couronne.",
+  "Le lacet doré du corsage, défait sur la poitrine.",
+  "Les séraphins rouges et les chérubins bleus, sans un pli de vêtement.",
+  "Le voile transparent qui descend de la couronne derrière la tête.",
+]
+themes = ["vierge à l'enfant", "anges", "cour de france", "portrait", "couleur"]
+anecdote = """
+Le cadre d'origine du diptyque était orné de médaillons émaillés. L'un d'eux, un \
+autoportrait de Fouquet en émail peint sur cuivre, est aujourd'hui au Louvre : c'est \
+l'un des plus anciens autoportraits isolés de l'art occidental."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Les Très Riches Heures du duc de Berry : Janvier"
+artiste = "Frères de Limbourg"
+annee = "vers 1411–1416"
+image = "tres-riches-heures-janvier.jpg"
+technique = "Enluminure sur parchemin, feuillet d'environ 29 × 21 cm"
+collection = "Musée Condé, Chantilly"
+note = "Le duc Jean de Berry reçoit à sa table pour les étrennes : la page de janvier du plus célèbre manuscrit enluminé du monde."
+description = """
+Dans une grande salle tendue d'une tapisserie de bataille, le duc Jean de Berry est \
+assis à droite, de profil, vêtu de bleu et coiffé d'un bonnet de fourrure. Derrière \
+lui, un grand pare-feu d'osier rond forme comme une auréole. Devant lui, une table \
+couverte d'une nappe blanche porte des plats, des petits chiens et une grande salière \
+d'or en forme de navire. Un ecclésiastique en rouge est assis à ses côtés. Une foule \
+de courtisans, valets, échansons et écuyers tranchants s'affaire. Au-dessus de la \
+scène, un officier invite les visiteurs : on lit les mots « Aproche, aproche ». En \
+haut, un demi-cercle bleu étoilé montre le char du soleil et les signes du Capricorne \
+et du Verseau."""
+evocation = """
+La page célèbre le premier mois de l'année, temps des étrennes, ces cadeaux que l'on \
+échangeait à la cour, et le duc y apparaît en prince généreux et magnifique. Tout dit \
+le luxe : vaisselle d'or, tissus brodés de fleurs de lys et de cygnes blessés, emblème \
+du duc, petits chiens familiers jusque sur la table. On y a vu le portrait d'une cour \
+française juste avant les désastres de la guerre de Cent Ans, Azincourt en 1415. Le \
+calendrier astronomique du haut rappelle que la vie humaine s'inscrit dans l'ordre du \
+cosmos et du temps. Les Très Riches Heures sont aussi un livre de prières : la beauté \
+terrestre y prépare à la dévotion."""
+histoire = """
+Jean de Berry, frère du roi Charles V et grand collectionneur, commande vers 1411 ce \
+livre d'heures aux trois frères de Limbourg, Paul, Jean et Herman. En 1416, le duc et \
+les trois peintres meurent la même année, sans doute de la peste, laissant l'ouvrage \
+inachevé. Il est complété vers 1440 par un peintre anonyme, que l'on identifie souvent \
+à Barthélemy d'Eyck, puis vers 1485–1489 par Jean Colombe pour le duc Charles Ier de \
+Savoie. Au XIXᵉ siècle, le duc d'Aumale, fils de Louis-Philippe, l'achète en Italie en \
+1856 et le place dans sa bibliothèque de Chantilly, qu'il donne en 1884 à l'Institut \
+de France avec le château et toutes ses collections."""
+facture = """
+Les pigments sont posés à la gomme sur le parchemin, au pinceau très fin. Le bleu \
+intense vient du lapis-lazuli, pierre importée d'Afghanistan et plus coûteuse que \
+l'or ; l'or, en feuille ou en poudre, rehausse les vaisselles et les broderies. Les \
+Limbourg superposent les plans comme dans un décor de théâtre : table, convives, \
+tapisserie, qui s'ouvre elle-même sur une bataille. La précision des visages et des \
+étoffes, à l'échelle de quelques millimètres, rapproche ces pages de la peinture de \
+chevalet."""
+details = [
+  "Les mots « Aproche, aproche » écrits en lettres d'or au-dessus du chambellan.",
+  "La salière d'or en forme de navire, sur la table, à droite du duc.",
+  "Les petits chiens qui se promènent sur la nappe, près du duc.",
+  "Le lévrier blanc couché au premier plan, à droite.",
+  "Le char du soleil dans le demi-cercle bleu, entre les signes du zodiaque.",
+]
+themes = ["enluminure", "calendrier", "cour", "banquet", "zodiaque"]
+anecdote = """
+Le duc d'Aumale a interdit que ses collections soient prêtées : le manuscrit ne quitte \
+donc jamais Chantilly. Fragile, il n'est presque jamais exposé, et la plupart des \
+visiteurs n'en découvrent qu'un fac-similé."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Le Couronnement de la Vierge"
+artiste = "Enguerrand Quarton"
+annee = "1453–1454"
+image = "couronnement-quarton.jpg"
+technique = "Huile sur panneau, 183 × 220 cm"
+collection = "Musée Pierre-de-Luxembourg, Villeneuve-lès-Avignon"
+note = "Toute la création, du ciel à l'enfer, autour de la Vierge couronnée : un retable dont le contrat de commande est conservé."
+description = """
+Au centre de la partie haute, la Vierge, en robe de brocart d'or, les mains croisées \
+sur la poitrine, son grand manteau bleu étalé sur un nuage, est couronnée par le Père \
+et le Fils, représentés identiques, drapés de rouge et d'or. Entre eux plane la \
+colombe du Saint-Esprit, dont les ailes touchent leurs bouches. Autour d'eux, sur fond \
+d'or, se pressent les chœurs des anges, les patriarches, les apôtres, les saints et \
+les saintes, et une foule d'élus de toutes conditions, papes, rois, moines et simples \
+fidèles. Plus bas, sous une bande de ciel, s'étend la terre : à gauche Rome, à droite \
+Jérusalem, au centre un Christ en croix, devant lequel un chartreux vêtu de blanc prie \
+à genoux. Tout en bas s'ouvrent le purgatoire, d'où les âmes sont délivrées par des \
+anges, et l'enfer."""
+evocation = """
+Le retable figure l'ordre entier de l'univers chrétien, du ciel jusqu'à l'enfer, comme \
+une cathédrale en image. La Trinité est au sommet ; la Vierge, intercesseur des \
+hommes, est au centre ; l'Église terrestre, avec ses deux capitales, Rome et \
+Jérusalem, relie les deux mondes ; la Croix est l'axe du salut. La représentation du \
+Père et du Fils sous des traits rigoureusement semblables affirme leur égalité au sein \
+de la Trinité : c'est un point de doctrine exigé par le contrat. Le paysage de la \
+partie basse, avec sa mer et ses montagnes, est l'un des premiers grands paysages \
+naturels de la peinture française, et on a voulu y reconnaître des sites de Provence."""
+histoire = """
+Le 24 avril 1453, à Villeneuve-lès-Avignon, le prêtre Jean de Montagnac passe contrat \
+avec Enguerrand Quarton, peintre installé à Avignon, pour un retable destiné à l'autel \
+de la chapelle de la Trinité, dans l'église de la chartreuse du Val-de-Bénédiction. Ce \
+contrat, conservé, est l'un des plus détaillés du Moyen Âge : il énumère les \
+personnages, leur place, les villes à représenter, tout en laissant certains points au \
+choix du peintre. L'œuvre doit être livrée en septembre 1454. Elle reste chez les \
+chartreux jusqu'à la Révolution, puis passe à l'hospice de la ville. Elle est \
+aujourd'hui présentée au musée Pierre-de-Luxembourg de Villeneuve-lès-Avignon."""
+facture = """
+Quarton, venu du nord de la France, unit plusieurs traditions : la précision et le \
+paysage flamands, la monumentalité et la clarté des formes italiennes, l'éclat d'une \
+lumière méditerranéenne. Les figures célestes sont de grandes formes simples, aux \
+couleurs pures, rouge, bleu et or, disposées symétriquement. Les foules d'élus sont \
+traitées en têtes serrées, nettement individualisées. En bas, l'échelle change : la \
+terre est vue de haut, minuscule, avec un horizon lointain qui se perd dans la brume \
+bleutée."""
+details = [
+  "Le Père et le Fils, aux visages et aux vêtements identiques.",
+  "La colombe du Saint-Esprit, dont les ailes relient les deux bouches.",
+  "Le petit chartreux en robe blanche agenouillé devant la croix.",
+  "Rome à gauche et Jérusalem à droite, dans le paysage terrestre.",
+  "Les âmes tirées du purgatoire par des anges, tout en bas.",
+]
+themes = ["trinité", "vierge", "paradis", "enfer", "provence"]
+anecdote = """
+Le contrat précisait que le Père et le Fils devaient être peints sans aucune \
+différence entre eux. Quarton a obéi à la lettre : seule leur position, de part et \
+d'autre de la Vierge, permet de les distinguer."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 2.2
+
+[[oeuvres]]
+titre = "L'Annonciation entre saint Ansano et sainte Marguerite"
+artiste = "Simone Martini"
+annee = "1333"
+image = "annonciation-martini.jpg"
+technique = "Tempera et or sur panneau, 184 × 210 cm (305 × 265 cm avec le cadre)"
+collection = "Galerie des Offices, Florence"
+note = "Peinte avec son beau-frère Lippo Memmi pour la cathédrale de Sienne : l'ange, la Vierge qui recule, et des mots d'or en relief."
+description = """
+Sur un fond d'or presque continu, sous des arcs gothiques festonnés surmontés de \
+gâbles, l'archange Gabriel vient de se poser à gauche, un genou encore à terre, son \
+manteau écossais à carreaux gonflé par l'élan. Il tient un rameau d'olivier et porte \
+une couronne de feuillage. De sa bouche sort la salutation, inscrite en lettres d'or \
+qui traversent le panneau vers la Vierge. Marie, assise sur un trône à droite, se \
+détourne, le corps tordu dans un mouvement de recul, ramenant son manteau bleu contre \
+son cou ; elle garde le pouce dans le livre qu'elle lisait. Entre eux, un vase de lys. \
+En haut, la colombe entourée d'anges. Sur les côtés, saint Ansano et sainte \
+Marguerite."""
+evocation = """
+L'Évangile de Luc dit que Marie fut troublée par la parole de l'ange : Simone Martini \
+traduit ce trouble par un geste de retrait presque craintif, d'une grande vérité \
+humaine sous l'élégance des lignes. Les mots de l'ange, « Ave gratia plena Dominus \
+tecum », rendus visibles et en relief, font de la parole divine un objet de lumière. \
+Le rameau d'olivier, symbole de paix, remplace ici le lys que tient habituellement \
+Gabriel ; on y a vu une allusion à Sienne, qui évitait le lys, emblème de sa rivale \
+Florence. Saint Ansano, l'évangélisateur de la ville, rappelle la destination civique \
+du retable. C'est l'image même du gothique siennois : raffinement courtois et ferveur \
+mystique."""
+histoire = """
+Le retable est commandé pour l'autel de Saint-Ansano dans la cathédrale de Sienne, \
+l'un des quatre autels dédiés aux saints patrons de la ville. Une inscription le signe \
+et le date : Simone Martini et Lippo Memmi de Sienne, 1333. Lippo, beau-frère de \
+Simone, a sans doute peint une part des figures latérales. Déplacé plus tard dans \
+l'oratoire de Sant'Ansano in Castelvecchio, il part en 1799 pour les Offices de \
+Florence, en échange de deux tableaux de Luca Giordano. Son cadre d'origine a été \
+remplacé au XIXᵉ siècle par l'encadrement néogothique actuel. Vers 1336, Simone \
+Martini quittera Sienne pour la cour papale d'Avignon, où il mourra."""
+facture = """
+Tout repose sur la ligne : contours souples, courbes allongées, plis qui ondulent \
+comme une calligraphie. L'or occupe l'essentiel de la surface et il est travaillé de \
+toutes les manières : bruni, poinçonné de motifs, gravé, et même modelé en relief pour \
+les lettres de la salutation. Les couleurs sont rares et précieuses : le bleu de lapis \
+du manteau de Marie, le rose et le blanc, le tissu écossais de l'ange. L'espace est à \
+peine suggéré, par le trône et le sol de marbre, au profit d'un effet d'orfèvrerie."""
+details = [
+  "Les lettres d'or en relief qui vont de la bouche de l'ange à la Vierge.",
+  "Le manteau écossais à carreaux de Gabriel, encore soulevé par le vol.",
+  "Le pouce de la Vierge glissé dans son livre pour garder la page.",
+  "Le vase de lys au centre, sur le sol de marbre.",
+  "Les prophètes peints dans les médaillons des gâbles, au-dessus des arcs.",
+]
+themes = ["annonciation", "ange", "sienne", "fond d'or", "gothique"]
+anecdote = """
+À Avignon, Simone Martini se lia d'amitié avec Pétrarque. Il peignit pour lui un \
+portrait de Laure, aujourd'hui perdu, que le poète célèbre dans deux sonnets du \
+Canzoniere."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "L'Annonciation"
+artiste = "Fra Angelico"
+annee = "vers 1425–1426"
+image = "annonciation-fra-angelico.jpg"
+technique = "Tempera et or sur panneau, 194 × 194 cm avec la prédelle"
+collection = "Musée du Prado, Madrid"
+note = "Sous un portique florentin, l'ange salue Marie, tandis qu'Adam et Ève quittent le jardin d'Éden : la chute et le salut côte à côte."
+description = """
+À droite, un portique ouvert, aux colonnes fines et aux voûtes bleu nuit semées \
+d'étoiles d'or, abrite la scène. L'ange Gabriel, en robe rose brodée d'or, ses grandes \
+ailes rayées dressées, s'incline les mains croisées sur la poitrine. Face à lui, la \
+Vierge, assise, manteau bleu sur robe rose, un livre ouvert sur les genoux, croise \
+elle aussi les bras et baisse la tête. Derrière, une petite chambre avec un banc. Un \
+rayon d'or descend en diagonale depuis l'angle supérieur gauche, où apparaissent deux \
+mains, et porte la colombe du Saint-Esprit. À gauche, dans un jardin foisonnant de \
+fleurs et d'arbres fruitiers, un ange chasse Adam et Ève, vêtus de peaux, qui \
+s'éloignent en pleurant."""
+evocation = """
+Le tableau réunit dans un même espace la faute et la réparation : Ève a fait entrer le \
+péché dans le monde, Marie, « nouvelle Ève », accueille celui qui doit le racheter. Le \
+rayon qui traverse le jardin du paradis perdu pour atteindre la Vierge relie les deux \
+épisodes. Les gestes semblables de l'ange et de Marie, bras croisés, disent l'humilité \
+et l'acceptation. Une hirondelle posée sur la barre de fer du portique a été \
+interprétée comme l'annonce du printemps et de la Résurrection. L'architecture claire \
+et mesurée, inspirée des loggias de Brunelleschi, montre un peintre dominicain qui \
+prie par l'image mais connaît les nouveautés de la Renaissance florentine."""
+histoire = """
+Fra Angelico peint ce retable vers 1425–1426 pour l'église du couvent de San Domenico, \
+à Fiesole, sur les collines de Florence, où il a prononcé ses vœux. La prédelle, sous \
+le panneau principal, raconte en cinq petites scènes la vie de la Vierge. Au début du \
+XVIIᵉ siècle, le couvent s'en sépare et l'œuvre gagne l'Espagne, par des \
+intermédiaires encore discutés ; elle aboutit au monastère royal des Descalzas Reales \
+de Madrid, d'où elle entre au musée du Prado en 1861. Une restauration achevée en 2019 \
+lui a rendu l'éclat de ses couleurs et de son or, à l'occasion d'une grande exposition \
+qui lui était consacrée."""
+facture = """
+Fra Angelico allie la tradition gothique, l'or des auréoles et des rayons, la \
+préciosité des tissus, à la perspective nouvelle de Brunelleschi : les colonnes, les \
+voûtes et la chambre du fond s'organisent selon des lignes fuyantes cohérentes. La \
+lumière est claire et égale, les ombres légères. Les couleurs sont pures et \
+lumineuses, roses, bleus et blancs, posées en couches fines. Le jardin du paradis, \
+traité fleur par fleur, rappelle la minutie des enlumineurs."""
+details = [
+  "Les deux mains divines dans l'angle supérieur gauche, d'où part le rayon.",
+  "La colombe du Saint-Esprit qui glisse le long du rayon d'or.",
+  "L'hirondelle posée sur la barre de fer, au-dessus de la colonne centrale.",
+  "Le médaillon sculpté d'une tête barbue, au centre des arcades.",
+  "Adam et Ève vêtus de peaux, chassés par un ange vers la gauche.",
+]
+themes = ["annonciation", "paradis", "perspective", "ange", "dominicain"]
+anecdote = """
+Fra Angelico n'est pas un surnom de son vivant : on l'appelait frère Jean de Fiesole. \
+Le pape Jean-Paul II l'a béatifié en 1982, puis l'a proclamé patron des artistes en \
+1984."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.94
+
+[[oeuvres]]
+titre = "La Madone Rucellai"
+artiste = "Duccio di Buoninsegna"
+annee = "1285"
+image = "madone-rucellai.jpg"
+technique = "Tempera et or sur panneau, 450 × 290 cm"
+collection = "Galerie des Offices, Florence"
+note = "Commandée à un Siennois par une confrérie florentine en 1285 : l'un des plus grands panneaux peints du XIIIᵉ siècle."
+description = """
+Dans un haut panneau à pignon, entouré d'un cadre d'origine semé de petits médaillons \
+de saints, la Vierge est assise sur un trône de bois ajouré, vu de biais, garni d'une \
+tenture à motifs. Elle porte un manteau bleu sombre bordé d'un galon d'or qui serpente \
+jusqu'à ses pieds. L'Enfant, sur ses genoux, en tunique blanche et drapé rose, tend la \
+main vers sa mère. Six anges agenouillés, trois de chaque côté, sont superposés comme \
+s'ils flottaient dans l'or : ils soutiennent le trône et lèvent les yeux vers Marie. \
+Leurs vêtements, roses, mauves, verts et bleus, aux tons doux et changeants, \
+contrastent avec la masse sombre du manteau."""
+evocation = """
+Duccio garde la solennité de l'icône byzantine, mais il l'adoucit : le visage de la \
+Vierge est empreint de mélancolie, l'Enfant esquisse un geste tendre, les anges \
+semblent de jeunes courtisans en adoration. Les historiens y reconnaissent l'élégance \
+qui sera la marque de l'école siennoise, plus sensible à la grâce des lignes et des \
+couleurs qu'à la masse des corps. La bordure d'or du manteau, qui dessine une \
+arabesque continue, est souvent rapprochée de l'art gothique français, que Duccio a pu \
+connaître par les manuscrits et les objets précieux. L'œuvre est aussi l'image d'une \
+dévotion collective : celle d'une confrérie laïque qui chantait les louanges de la \
+Vierge."""
+histoire = """
+Le 15 avril 1285, la Compagnie des Laudesi, confrérie florentine qui se réunissait \
+dans l'église dominicaine de Santa Maria Novella pour chanter des louanges à la \
+Vierge, passe contrat avec le Siennois Duccio pour un grand panneau. Le tableau prend \
+plus tard le nom de la chapelle de la famille Rucellai, où il est placé. Vasari, au \
+XVIᵉ siècle, l'attribue à Cimabue, et cette erreur dure jusqu'au XXᵉ siècle, quand le \
+rapprochement du contrat et l'analyse du style imposent le nom de Duccio. Le panneau \
+entre aux Offices en 1948. Une restauration menée à la fin du XXᵉ siècle a retrouvé le \
+bleu du manteau, assombri par des repeints."""
+facture = """
+Duccio peint à la tempera sur un fond d'or bruni et poinçonné. Les chairs sont \
+modelées en couches fines sur une sous-couche verte. Le trône est présenté de trois \
+quarts, ce qui ouvre un espace, mais les anges ne reposent sur aucun sol. Les couleurs \
+claires et changeantes des vêtements, rose passant au mauve, vert au bleu, sont une \
+signature siennoise. La bordure d'or du manteau, aux plis sinueux, introduit une ligne \
+souple d'inspiration gothique. Le cadre est d'origine, avec ses médaillons peints."""
+details = [
+  "Le galon d'or qui serpente sur le manteau, jusqu'aux pieds de la Vierge.",
+  "L'étoile d'or sur l'épaule et sur le voile de Marie.",
+  "Les médaillons de saints peints sur le cadre d'origine.",
+  "Les pieds nus des anges agenouillés, posés dans le vide.",
+]
+themes = ["vierge en majesté", "sienne", "anges", "fond d'or", "confrérie"]
+anecdote = """
+En 1855, le peintre anglais Frederic Leighton exposa un tableau montrant cette Madone \
+portée en triomphe dans les rues de Florence, d'après une légende de Vasari ; la reine \
+Victoria l'acheta. On la croyait alors de Cimabue."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 2.9
+
+[[oeuvres]]
+titre = "La Trinité"
+artiste = "Andreï Roublev"
+annee = "vers 1411 ou vers 1425–1427"
+image = "trinite-roublev.jpg"
+technique = "Tempera sur panneau de bois, 142 × 114 cm"
+collection = "Galerie Tretiakov, Moscou (confiée depuis 2023 à l'Église orthodoxe russe)"
+note = "Trois anges assis autour d'une table : l'icône la plus vénérée de Russie, peinte en l'honneur de saint Serge de Radonège."
+description = """
+Trois anges aux grandes ailes dorées sont assis autour d'une table blanche, sur \
+laquelle est posée une coupe contenant la tête d'un veau. Ils ont des visages \
+semblables, inclinés, et tiennent chacun un fin bâton de voyageur. Celui de gauche, \
+droit, porte un manteau aux reflets dorés ; celui du centre, en tunique pourpre et \
+manteau bleu, penche la tête vers lui ; celui de droite, en manteau vert clair, \
+s'incline aussi. Derrière eux, à peine indiqués, apparaissent une maison à gauche, un \
+arbre au centre, un rocher à droite. Le fond doré a beaucoup souffert et la surface \
+garde les traces de nombreuses lacunes."""
+evocation = """
+L'icône représente l'hospitalité d'Abraham : selon la Genèse, trois visiteurs \
+mystérieux se présentent à lui au chêne de Mambré. Les chrétiens y ont vu une image de \
+la Trinité. Roublev supprime Abraham et Sarah pour ne garder que les trois anges, en \
+dialogue silencieux : la tradition reconnaît souvent le Père à gauche, le Fils au \
+centre, devant l'arbre qui évoque la Croix, et l'Esprit à droite, mais d'autres \
+lectures existent. La coupe sur la table rappelle le sacrifice et l'eucharistie. Le \
+cercle dans lequel s'inscrivent les trois figures exprime l'unité et l'amour. Peinte \
+pour honorer saint Serge, qui prêchait l'unité dans une Russie divisée, l'icône est \
+devenue un symbole de paix et de contemplation."""
+histoire = """
+L'icône a été peinte pour la cathédrale de la Trinité du monastère fondé par saint \
+Serge de Radonège, à Serguiev Possad, au nord-est de Moscou, sans doute à la demande \
+de son successeur, l'higoumène Nikon. Sa date est discutée : vers 1411 ou vers \
+1425–1427. En 1551, le concile des Cent Chapitres en fait le modèle à suivre pour \
+représenter la Trinité. Longtemps recouverte d'un revêtement d'orfèvrerie et de \
+repeints, elle est dégagée à partir de 1904, puis plus complètement en 1918–1919. \
+Entrée en 1929 à la galerie Tretiakov, elle a été remise en 2023 à l'Église orthodoxe \
+russe, malgré les inquiétudes des restaurateurs pour sa conservation."""
+facture = """
+Roublev peint à l'œuf sur un panneau de tilleul préparé au plâtre. La composition est \
+réglée par la géométrie : les trois anges s'inscrivent dans un cercle, les deux anges \
+latéraux encadrent celui du centre comme les côtés d'une coupe. La perspective est \
+dite inversée : le marchepied et la table s'élargissent vers le fond, ce qui attire le \
+spectateur dans l'image. Les couleurs sont claires et lumineuses, surtout le bleu de \
+lapis, appelé golubets, qui relie les trois figures."""
+details = [
+  "La coupe au centre de la table, avec la tête de l'animal sacrifié.",
+  "Les fins bâtons rouges que tiennent les trois anges.",
+  "L'arbre de Mambré, au-dessus de l'ange central.",
+  "Le petit rectangle peint sur le devant de la table.",
+  "Les marchepieds dessinés en perspective inversée, sous les pieds des anges.",
+]
+themes = ["icône", "trinité", "anges", "hospitalité", "orthodoxie"]
+anecdote = """
+Le film Andreï Roublev d'Andreï Tarkovski, tourné en noir et blanc et achevé en 1966, \
+s'achève sur de longs plans en couleur des icônes du peintre, dont la Trinité."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 1.3
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Tapissiers anonymes, vers 1500"
+vie = "Cartons peints à Paris, tissage dans les Pays-Bas du Sud, vers 1500"
+biographie = """
+Les six tapisseries de la Dame à la licorne ne sont pas signées, comme presque toutes \
+les tentures de la fin du Moyen Âge. Elles sont le fruit d'un travail à plusieurs \
+mains. Un peintre conçoit d'abord le dessin général ; on reconnaît ici le style d'un \
+artiste parisien actif vers 1500, appelé par convention le Maître d'Anne de Bretagne, \
+que certains historiens identifient à Jean d'Ypres, auteur de vitraux, de miniatures \
+et de gravures pour les livres imprimés. Un cartonnier agrandit ensuite ce modèle à la \
+taille réelle de la tapisserie. Enfin, des liciers, sans doute dans un atelier des \
+Pays-Bas du Sud, l'actuelle Belgique, tissent la pièce. Les commanditaires, les Le \
+Viste, sont une famille de juristes originaire de Lyon, devenue puissante au service \
+du roi à Paris. À cette époque, les tapisseries sont les objets les plus prestigieux \
+d'une demeure noble : elles réchauffent les murs, se transportent de château en \
+château et affichent la richesse de leur propriétaire. Leur prix dépasse souvent celui \
+des tableaux."""
+style = """
+Ces tentures appartiennent au genre « millefleurs », caractéristique de la fin du XVᵉ \
+et du début du XVIᵉ siècle : un fond uni semé de plantes fleuries, d'oiseaux et de \
+petits animaux, sur lequel se détachent des figures élégantes. Les personnages, aux \
+costumes somptueux, sont disposés sans perspective, avec une grande clarté. Ce style \
+mêle l'observation de la nature et le goût courtois du symbole et de l'allégorie."""
+
+[[artistes]]
+nom = "Cimabue"
+vie = "Florence, vers 1240 – Pise ?, vers 1302"
+biographie = """
+Cenni di Pepo, dit Cimabue, est né à Florence vers 1240. On sait peu de chose de sa \
+vie : quelques documents, et la réputation que lui ont faite Dante, puis Vasari, qui \
+en fait au XVIᵉ siècle le premier des peintres modernes. En 1272, il est mentionné à \
+Rome. Il travaille ensuite à Assise, dans la basilique supérieure de Saint-François, \
+où il peint à fresque une Crucifixion et des scènes de la vie de la Vierge et des \
+apôtres, aujourd'hui très abîmées par l'oxydation des blancs de plomb. Il peint pour \
+Florence deux grands crucifix, dont celui de Santa Croce, gravement endommagé par \
+l'inondation de l'Arno en 1966 et devenu le symbole de ce désastre, et la Maestà de \
+Santa Trinita. En 1301–1302, il est à Pise, où il réalise la figure de saint Jean dans \
+la mosaïque de l'abside de la cathédrale, sa seule œuvre documentée avec certitude. Il \
+meurt peu après. Selon la tradition, il aurait découvert le jeune Giotto en train de \
+dessiner un mouton sur une pierre et l'aurait pris dans son atelier."""
+style = """
+Cimabue part de la peinture byzantine, la maniera greca, avec ses fonds d'or, ses \
+figures frontales et ses plis rehaussés d'or. Mais il lui donne une énergie nouvelle : \
+visages expressifs, corps plus massifs, trônes construits dans l'espace, émotion \
+dramatique dans ses crucifix. Il ouvre la voie à Giotto et à Duccio."""
+
+[[artistes]]
+nom = "Giotto"
+vie = "Colle di Vespignano (Toscane), vers 1267 – Florence, 8 janvier 1337"
+biographie = """
+Giotto di Bondone naît vers 1267 dans le Mugello, au nord de Florence, dans une \
+famille de paysans. La tradition, rapportée par Vasari, raconte qu'il gardait les \
+moutons quand Cimabue le découvrit. Il se forme sans doute dans l'atelier de ce \
+dernier. Dans les années 1290, il participe probablement au décor de la basilique \
+supérieure d'Assise, avec le cycle de la vie de saint François, dont l'attribution \
+reste discutée. Vers 1303–1305, il peint à Padoue les fresques de la chapelle des \
+Scrovegni, son chef-d'œuvre : la vie de la Vierge et du Christ en près de quarante \
+scènes, sous une voûte bleue étoilée. Il travaille ensuite à Florence, à Santa Croce \
+pour les chapelles Bardi et Peruzzi, à Rome, à Naples pour le roi Robert d'Anjou. \
+Peintre le plus célèbre de son temps, chef d'un grand atelier, il est aussi un homme \
+d'affaires avisé. En 1334, Florence le nomme architecte de la cathédrale : il dessine \
+le campanile qui porte son nom. Il meurt en 1337 et est enterré dans la cathédrale."""
+style = """
+Giotto rompt avec les conventions byzantines : il donne aux figures un volume, un \
+poids et des émotions humaines, place les personnages dans un espace cohérent et \
+raconte les histoires sacrées avec une clarté dramatique. Ses fresques ont servi \
+d'école à des générations de peintres, de Masaccio à Michel-Ange, qui le copia."""
+
+[[artistes]]
+nom = "Jean Fouquet"
+vie = "Tours, vers 1420 – Tours, entre 1478 et 1481"
+biographie = """
+Jean Fouquet naît à Tours vers 1420, à l'époque où la cour de Charles VII réside dans \
+la vallée de la Loire. Sa formation est mal connue ; il a pu travailler à Paris, peut- \
+être auprès du Maître de Bedford, enlumineur. Vers 1445–1446, il séjourne à Rome, où \
+il peint le portrait du pape Eugène IV, aujourd'hui perdu, et découvre l'architecture \
+et la peinture de la Renaissance italienne. De retour à Tours, il ouvre un atelier et \
+travaille pour le roi et pour les grands officiers de la cour : le portrait de Charles \
+VII et celui du chancelier Guillaume Jouvenel des Ursins, au Louvre, le Diptyque de \
+Melun et le livre d'heures d'Étienne Chevalier, dont les miniatures sont aujourd'hui \
+dispersées, la plupart à Chantilly. Il illustre aussi les Grandes Chroniques de France \
+et les Antiquités judaïques de Flavius Josèphe. En 1475, Louis XI lui donne le titre \
+de peintre du roi. Il meurt à Tours avant 1481, et son nom tombe dans l'oubli jusqu'à \
+sa redécouverte au XIXᵉ siècle."""
+style = """
+Fouquet réunit deux mondes : la minutie et la technique à l'huile des peintres \
+flamands, et la clarté géométrique, la perspective et les architectures antiques \
+découvertes en Italie. Ses figures sont simples, monumentales, ses couleurs nettes. Il \
+est le premier grand peintre de la Renaissance en France et un portraitiste majeur."""
+
+[[artistes]]
+nom = "Frères de Limbourg"
+vie = "Nimègue (duché de Gueldre), nés vers 1385–1390 – morts tous trois en 1416"
+biographie = """
+Paul, Jean et Herman de Limbourg naissent à Nimègue, dans l'actuelle Hollande, dans \
+une famille d'artistes : leur père est sculpteur sur bois et leur oncle, Jean Malouel, \
+est le peintre du duc de Bourgogne. Très jeunes, Jean et Herman sont envoyés en \
+apprentissage chez un orfèvre parisien. Vers 1402, Philippe le Hardi, duc de \
+Bourgogne, emploie Paul et Jean pour illustrer une Bible moralisée. À la mort de \
+Philippe, en 1404, ils passent au service de son frère Jean, duc de Berry, l'un des \
+plus grands collectionneurs de son temps. Pour lui, ils enluminent les Belles Heures, \
+aujourd'hui au Metropolitan Museum de New York, puis, à partir de 1411 environ, les \
+Très Riches Heures. Le duc les traite avec faveur : Paul reçoit une maison à Bourges \
+et le titre de valet de chambre. En 1416, les trois frères meurent en quelques mois, \
+peut- être d'une épidémie de peste, la même année que leur protecteur, laissant leur \
+grand manuscrit inachevé."""
+style = """
+Les Limbourg portent l'enluminure gothique internationale à son sommet : couleurs \
+précieuses, élégance des silhouettes, goût du luxe et des costumes. Ils y ajoutent une \
+observation nouvelle de la nature et des lieux réels, châteaux, paysages, travaux des \
+champs, qui annonce la peinture flamande de Van Eyck. Leurs calendriers ont fixé pour \
+des siècles l'image que l'on se fait du Moyen Âge."""
+
+[[artistes]]
+nom = "Enguerrand Quarton"
+vie = "Diocèse de Laon (Picardie), vers 1415–1420 – Avignon ?, après 1466"
+biographie = """
+Enguerrand Quarton, ou Charonton, naît dans le diocèse de Laon, dans le nord de la \
+France, vers 1415–1420. Il se forme sans doute dans le Nord, au contact de la peinture \
+flamande, avant de descendre en Provence. On le trouve à Aix-en-Provence en 1444, à \
+Arles en 1446, puis à Avignon à partir de 1447, où il reste actif jusqu'en 1466. La \
+ville, ancienne résidence des papes, est alors un carrefour d'artistes venus du Nord, \
+d'Italie et d'Espagne. Quarton est l'un des rares peintres du XVᵉ siècle dont l'œuvre \
+est fixée par des contrats : en 1452, il peint avec Pierre Villate une Vierge de \
+Miséricorde pour la famille Cadard, aujourd'hui à Chantilly ; en 1453–1454, le \
+Couronnement de la Vierge de Villeneuve-lès-Avignon. On lui attribue aussi la célèbre \
+Pietà de Villeneuve-lès-Avignon, au Louvre, et des miniatures. Sa trace se perd après \
+1466."""
+style = """
+Quarton est le principal maître de l'école d'Avignon. Il associe le réalisme flamand, \
+la monumentalité italienne et une lumière méridionale crue, qui découpe les formes \
+avec netteté. Ses compositions sont rigoureuses, symétriques, et d'une grande \
+intensité spirituelle. Ses paysages, baignés d'une lumière claire, comptent parmi les \
+premiers de la peinture française, et ses figures, simplifiées en grandes formes, ont \
+une force sculpturale."""
+
+[[artistes]]
+nom = "Simone Martini"
+vie = "Sienne, vers 1284 – Avignon, juillet 1344"
+biographie = """
+Simone Martini naît à Sienne vers 1284 et se forme sans doute dans l'entourage de \
+Duccio. Sa première grande œuvre connue est la Maestà peinte à fresque en 1315 dans la \
+salle du Conseil du Palais public de Sienne, qu'il retouche en 1321. Il travaille \
+ensuite pour le roi Robert d'Anjou à Naples, qui l'anoblit en 1317, puis à Pise, à \
+Orvieto, et à Assise, où il décore la chapelle Saint-Martin de la basilique \
+inférieure. Au Palais public de Sienne, on lui attribue aussi le célèbre portrait \
+équestre de Guidoriccio da Fogliano, dont l'attribution est discutée. En 1324, il \
+épouse Giovanna, sœur du peintre Lippo Memmi, avec qui il signe l'Annonciation de \
+1333. Vers 1335–1336, il s'installe à Avignon, alors siège de la papauté, où il peint \
+pour la cour pontificale et se lie avec Pétrarque, qui lui confie des enluminures pour \
+son manuscrit de Virgile. Il meurt à Avignon en 1344."""
+style = """
+Simone Martini est le grand maître du gothique siennois : lignes souples et élégantes, \
+couleurs raffinées, or travaillé comme de l'orfèvrerie, figures d'une grâce courtoise. \
+Il sait pourtant observer : gestes vrais, visages expressifs, émotions nuancées. Son \
+séjour à Avignon a diffusé ce style dans toute l'Europe, où il a nourri le gothique \
+international."""
+
+[[artistes]]
+nom = "Fra Angelico"
+vie = "Vicchio (Toscane), vers 1395 – Rome, 18 février 1455"
+biographie = """
+Guido di Pietro naît vers 1395 dans le Mugello, au nord de Florence. Peintre déjà \
+formé, il entre vers 1420 au couvent dominicain de San Domenico de Fiesole et prend le \
+nom de frère Jean, Fra Giovanni. Il peint alors des retables pour son couvent et pour \
+les églises de Florence et de Cortone. En 1436, les dominicains s'installent au \
+couvent de San Marco à Florence, rebâti aux frais de Cosme de Médicis. Fra Angelico et \
+son atelier en couvrent les murs de fresques, une dans chaque cellule de moine, pour \
+aider à la méditation ; la plus célèbre est l'Annonciation en haut de l'escalier. À \
+partir de 1445, il travaille à Rome pour les papes Eugène IV puis Nicolas V, dont il \
+décore la chapelle privée au Vatican, et à Orvieto. De 1450 à 1452, il est prieur de \
+son couvent de Fiesole. Il meurt à Rome en 1455 et est enterré à Santa Maria sopra \
+Minerva, où sa pierre tombale le montre en habit de dominicain."""
+style = """
+Fra Angelico concilie la piété et la splendeur du gothique, l'or, les couleurs claires \
+et précieuses, avec les découvertes de la Renaissance florentine : perspective, \
+architecture antique, volume des corps. Sa lumière égale et sereine, ses figures \
+recueillies sont mises au service de la prière. Moine et artiste à la fois, il a été \
+vu comme le modèle du peintre chrétien, et ses anges musiciens ont été reproduits à \
+l'infini."""
+
+[[artistes]]
+nom = "Duccio di Buoninsegna"
+vie = "Sienne, vers 1255 – Sienne, vers 1318–1319"
+biographie = """
+Duccio di Buoninsegna naît à Sienne vers 1255. Il est mentionné pour la première fois \
+en 1278, pour la peinture de coffres destinés aux archives de la commune. En 1285, une \
+confrérie de Florence lui commande la Madone Rucellai, preuve que sa réputation \
+dépasse déjà sa ville. Sa vie privée est agitée : les archives conservent la trace de \
+nombreuses amendes et de dettes. Entre 1308 et 1311, il peint pour le maître-autel de \
+la cathédrale de Sienne la Maestà, immense retable peint sur ses deux faces : la \
+Vierge en majesté entourée des saints sur le devant, et au revers des dizaines de \
+scènes de la vie du Christ. Le 9 juin 1311, il est porté en procession solennelle de \
+l'atelier à la cathédrale, au son des cloches, par toute la ville. Le retable a été \
+démembré au XVIIIᵉ siècle ; l'essentiel est conservé au musée de l'Œuvre de la \
+cathédrale de Sienne. Duccio meurt vers 1318–1319, laissant des dettes à ses enfants."""
+style = """
+Duccio est le fondateur de l'école siennoise. Il humanise la tradition byzantine : \
+visages doux et pensifs, gestes tendres, couleurs claires et changeantes, lignes \
+souples venues du gothique français. Ses petites scènes narratives, au revers de la \
+Maestà, comptent parmi les plus inventives de son temps, et son influence se lit chez \
+Simone Martini et les frères Lorenzetti."""
+
+[[artistes]]
+nom = "Andreï Roublev"
+vie = "Vers 1360 – Moscou, monastère Andronikov, vers 1428–1430"
+biographie = """
+On ne connaît ni la date ni le lieu de naissance d'Andreï Roublev, moine et peintre \
+d'icônes, né vers 1360. Il aurait été moine au monastère de la Trinité fondé par saint \
+Serge de Radonège, puis au monastère Andronikov de Moscou. La première mention de son \
+nom date de 1405 : il travaille avec le célèbre Théophane le Grec et un autre maître, \
+Prokhor de Gorodets, aux icônes et aux fresques de la cathédrale de l'Annonciation, au \
+Kremlin de Moscou. En 1408, avec le peintre Daniel le Noir, il peint les fresques de \
+la cathédrale de la Dormition à Vladimir, dont une partie du Jugement dernier est \
+conservée. Il travaille ensuite au monastère de la Trinité, pour lequel il peint la \
+Trinité, puis au monastère Andronikov, où il meurt vers 1428–1430. Très tôt vénéré \
+comme un modèle, il a été canonisé par l'Église orthodoxe russe en 1988. Peu d'œuvres \
+lui sont attribuées avec certitude."""
+style = """
+Roublev donne à l'icône russe sa forme la plus pure : figures allongées et gracieuses, \
+visages doux et recueillis, compositions fondées sur le cercle, couleurs claires et \
+lumineuses, dominées par un bleu célèbre. À la tension dramatique de Théophane le \
+Grec, il oppose la paix et l'harmonie. Son art est resté la référence de \
+l'iconographie russe pendant des siècles."""
