@@ -253,6 +253,14 @@ Deux contraintes du moteur sont prises en compte (et testées) : la physique de 
 - Lancer les tests : `cargo test`
 - Compiler pour la production (serveur et bundle WebAssembly optimisés) : `paquets build`
 
+## Une application installable (PWA)
+
+ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (iPhone : Safari → Partager → « Sur l'écran d'accueil » ; Android : Chrome → ⋮ → « Installer l'application ») : icône sur l'écran d'accueil, ouverture en plein écran, et visite hors ligne des salles déjà parcourues.
+
+- Le manifeste (`/manifest.webmanifest`), les icônes ([`public/icons/`](public/icons), dessinées par [`outils/icones.py`](outils/icones.py) comme le logo) et le service worker (`/sw.js`) viennent de `app.pwa(Pwa::new("ARTEON")…)` dans `src/main.rs` : Paquets les sert et ajoute à chaque page les balises d'installation (y compris pour iOS).
+- Le service worker est généré en Rust par Paquets (pas une ligne de JavaScript écrite à la main) : les pages viennent du réseau d'abord, et de la copie gardée hors ligne ; les images, les données des expositions et les îlots 3D, du cache d'abord, mis à jour en arrière-plan ; une page jamais visitée hors ligne ouvre l'accueil. Chaque déploiement installe une nouvelle version, qui remplace les anciennes copies.
+- L'export pour GitHub Pages écrit le manifeste et le service worker avec le préfixe du site (`/ARTEON`) ; sur Heroku, ils sont servis à la racine.
+
 ## Déployer sur Heroku depuis un téléphone
 
 Tout se fait depuis le navigateur du téléphone, avec le [buildpack emk/rust](https://elements.heroku.com/buildpacks/emk/heroku-buildpack-rust) :

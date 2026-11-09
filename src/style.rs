@@ -364,6 +364,10 @@ body.viewer-open { overflow: hidden; }
   .nav-menu ul { left: 12px; right: 12px; top: calc(100% - .3rem); min-width: 0; }
 }
 
+/* ─── Installer l'application ─────────────────────────────────────────── */
+.install-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.install-step h3 { margin-top: 0; }
+
 /* ─── Les crédits ─────────────────────────────────────────────────────── */
 .credits-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 .credits-table th, .credits-table td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }

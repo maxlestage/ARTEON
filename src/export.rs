@@ -102,9 +102,27 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             write(&format!("{prefix}{url}"), &std::fs::read(&file)?)?;
         }
     }
+    // L'application installable : le manifeste et le service worker, dont les adresses
+    // (page de départ, icônes, fichiers gardés hors ligne) prennent le préfixe du site.
+    for path in ["/manifest.webmanifest", "/sw.js"] {
+        let res = client.get(path).await;
+        if res.status() == 200 {
+            write(path, prefix_urls(&res.text(), &base).as_bytes())?;
+        }
+    }
     // Les fichiers sont servis tels quels : pas de traitement Jekyll sur GitHub Pages.
     write(".nojekyll", b"")?;
     Ok(written)
+}
+
+/// Préfixe les adresses du site écrites comme des chaînes JSON ou JavaScript (`"/…"`) :
+/// celles du manifeste et du service worker.
+fn prefix_urls(text: &str, base: &str) -> String {
+    if base.is_empty() {
+        text.to_owned()
+    } else {
+        text.replace("\"/", &format!("\"{base}/"))
+    }
 }
 
 /// `"ARTEON/"` → `"/ARTEON"`, `"/"` → `""`.
@@ -139,8 +157,13 @@ pub fn with_base(html: &str, base: &str, pages: &[String]) -> String {
     out.push_str(rest);
     // Le chargeur des îlots écrit aussi `import init from "/pkg/…"` et
     // `module_or_path:"/pkg/…"`.
+    // Et l'inscription du service worker de l'application installable.
     out.replace(":\"/pkg/", &format!(":\"{base}/pkg/"))
         .replace("from \"/pkg/", &format!("from \"{base}/pkg/"))
+        .replace(
+            "register(\"/sw.js\")",
+            &format!("register(\"{base}/sw.js\")"),
+        )
 }
 
 fn rewrite(url: &str, base: &str, pages: &[String]) -> String {
@@ -215,6 +238,23 @@ mod tests {
             out,
             r#"<a href="/van-gogh/galerie/">g</a><a href="/">h</a>"#
         );
+    }
+
+    #[test]
+    fn prefixes_the_installable_app() {
+        let html = r#"<link rel="manifest" href="/manifest.webmanifest"/><script>navigator.serviceWorker.register("/sw.js")</script>"#;
+        let out = with_base(html, "/ARTEON", &[]);
+        assert!(
+            out.contains(r#"href="/ARTEON/manifest.webmanifest""#),
+            "{out}"
+        );
+        assert!(out.contains(r#"register("/ARTEON/sw.js")"#), "{out}");
+        let worker = r##"const PRECACHE = ["/","/pkg/a.js","/icons/i.png"];const OFFLINE = "/";"##;
+        assert_eq!(
+            prefix_urls(worker, "/ARTEON"),
+            r##"const PRECACHE = ["/ARTEON/","/ARTEON/pkg/a.js","/ARTEON/icons/i.png"];const OFFLINE = "/ARTEON/";"##
+        );
+        assert_eq!(prefix_urls(worker, ""), worker);
     }
 
     #[test]
