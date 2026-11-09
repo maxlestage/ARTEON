@@ -1,0 +1,974 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « CÉRAMIQUES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/ceramiques/). Le nom
+#  du fichier donne l'adresse de l'exposition sur le site : /ceramiques.
+#
+#  Les objets sont présentés en vitrine (cadre = "vitrine"). Les photographies
+#  viennent des musées (Metropolitan Museum of Art, Cleveland Museum of Art,
+#  Rijksmuseum), publiées en CC0 et reprises sur Wikimedia Commons.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 24
+nom_court = "Céramiques"
+mouvement = "Céramiques et porcelaines du monde"
+cadre = "vitrine"
+couleur = "#2f4f7f"
+titre = "Céramiques et porcelaines du monde, la terre et le feu"
+artiste = "Jingdezhen, Longquan, raku, Zuni, Gubbio, Delft, Meissen, Sèvres, Wedgwood…"
+dates = "XIIIᵉ–XIXᵉ siècle"
+accroche = "Exposition virtuelle · Musée national de Céramique, Sèvres"
+introduction = """
+La céramique est le plus universel des arts : partout, les hommes ont façonné l'argile \
+et l'ont durcie au feu. La visite fait le tour du monde en dix pièces, du céladon des \
+Song au bleu et blanc des Ming et aux émaux roses des Qing, d'un bol à thé japonais à \
+une jarre à eau zuñie, de la majolique italienne à la faïence de Delft, jusqu'aux \
+porcelaines de Meissen et de Sèvres et au grès de Wedgwood. Le bâtiment s'inspire du \
+musée national de Céramique de Sèvres, né des collections réunies par Alexandre \
+Brongniart : un vestibule ouvre sur une longue galerie consacrée à la Chine, d'où l'on \
+gagne trois salles, celles de la terre modelée à la main, des faïences et des \
+manufactures d'Europe."""
+vitrine = "jarre-dragon-xuande.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Musée national de Céramique"
+ville = "Sèvres, France"
+construction = "1876"
+presentation = """
+En 1740, une manufacture de porcelaine s'installe au château de Vincennes ; elle \
+déménage en 1756 à Sèvres, dans un vaste bâtiment construit pour elle, et Louis XV la \
+rachète en 1759 pour en faire une manufacture royale. En 1800, le savant Alexandre \
+Brongniart en prend la direction, qu'il gardera près d'un demi-siècle. Minéralogiste et \
+chimiste, il rassemble des céramiques de tous les pays et de toutes les époques pour \
+étudier les terres, les glaçures et les cuissons, et fonde en 1824 un musée de la \
+céramique et du verre, ouvert aux savants comme aux artisans. En 1876, la manufacture et \
+son musée quittent leurs anciens locaux pour de nouveaux bâtiments, élevés au bord de la \
+Seine, à l'entrée du parc de Saint-Cloud. Les collections y présentent les terres cuites \
+de l'Antiquité, les grès et les porcelaines d'Asie, les faïences d'Europe et la \
+production de Sèvres elle-même. Depuis 2010, musée et manufacture forment un même \
+établissement, Sèvres – Cité de la céramique, où des artisans tournent et peignent \
+encore la porcelaine à la main."""
+ici = """
+Le bâtiment d'ARTEON emprunte au musée de Sèvres son principe : classer les céramiques \
+par grandes familles, comme le voulait Brongniart, et les montrer en vitrine. On entre \
+par le sud dans le vestibule Brongniart, aux murs crème, puis dans la galerie de la \
+Chine, longue de trente mètres et haute de huit, aux murs vert céladon pâle. Au nord \
+s'ouvre la salle « La terre modelée à la main », couleur d'argile, où un bol japonais \
+voisine avec une jarre zuñie ; à l'ouest, la salle des faïences d'Europe ; à l'est, \
+celle des manufactures d'Europe, de Meissen à Wedgwood."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée national de Céramique de Sèvres, où les collections réunies
+# par Alexandre Brongniart sont classées par grandes familles de céramiques : un
+# vestibule au sud, une longue galerie consacrée à la Chine, et trois salles qui
+# s'ouvrent sur elle (au nord la terre modelée à la main, à l'ouest les faïences,
+# à l'est les manufactures de porcelaine). x et z : le centre de la salle (x vers
+# l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule Brongniart"
+theme = "L'entrée, en hommage à Alexandre Brongniart, qui fonda en 1824 le musée de la céramique de Sèvres."
+murs = "#ece4d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La galerie de la Chine"
+theme = "Cinq siècles de céramique chinoise : le céladon des Song, le bleu et blanc des Ming, les émaux roses des Qing."
+murs = "#dfe3d2"
+x = 0
+z = -9
+largeur = 30
+profondeur = 10
+hauteur = 8
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "La terre modelée à la main"
+theme = "Sans tour de potier : un bol à thé raku du Japon et une jarre à eau des Pueblos zuñis."
+murs = "#e2cfb4"
+x = 0
+z = -19
+largeur = 10
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Les faïences d'Europe"
+theme = "L'argile sous un émail blanc d'étain : une majolique lustrée de Gubbio et une pyramide à fleurs de Delft."
+murs = "#e8dfcd"
+x = -21
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Les manufactures d'Europe"
+theme = "Le secret de la porcelaine percé en Europe : Meissen, Sèvres, et le jaspe de Wedgwood."
+murs = "#e6dccb"
+x = 21
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Vase meiping"
+artiste = "Chine, fours de Longquan"
+annee = "XIIIᵉ siècle"
+image = "meiping-longquan.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1957.52.jpg"
+technique = "Grès porcelaineux à couverte céladon, h. 23,5 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Un vase à l'épaule ronde, couvert d'une glaçure d'un vert bleuté qui imite le jade : le céladon des Song du Sud. Il mesure 23,5 cm de haut."
+description = """
+Le vase s'élève d'un pied étroit, s'élargit en une épaule ample et arrondie, puis se \
+resserre d'un coup en un col minuscule, à peine plus large qu'un goulot. C'est la forme \
+meiping, le « vase à prunier ». Aucun décor peint ni gravé : toute la surface est \
+couverte d'une seule glaçure épaisse, d'un vert pâle tirant sur le bleu, laiteuse et \
+douce comme une pierre polie. De larges cannelures horizontales, régulières, ceinturent \
+la panse de l'épaule jusqu'au pied ; la glaçure s'amasse dans leurs creux et y prend un \
+ton plus soutenu. La silhouette, légèrement élancée, se tient seule, sans aucun ornement \
+: la forme et la couleur suffisent."""
+evocation = """
+Les potiers de Longquan cherchaient à imiter le jade, la pierre la plus précieuse de la \
+Chine, symbole de pureté et de vertu pour les lettrés. Sous les Song, l'élite cultivée \
+préfère aux décors chargés la beauté d'une forme juste et d'une couleur unique : ce goût \
+de la sobriété, que l'on rapproche de la peinture monochrome et de la pensée du \
+bouddhisme chan, fait de la retenue une marque de raffinement. Le nom de meiping, donné \
+plus tard, évoque l'usage d'y présenter une seule branche de prunier en fleur, première \
+floraison de la fin de l'hiver et emblème du lettré qui résiste à l'adversité ; à \
+l'origine pourtant, ces vases servaient surtout à conserver le vin. On y voit l'idéal \
+d'un art qui s'efface derrière la matière."""
+histoire = """
+Les fours de Longquan, dans les collines du sud-ouest du Zhejiang, produisent des grès à \
+couverte verte depuis l'époque des Song du Nord. Quand la cour des Song, chassée de \
+Kaifeng par les Jürchen en 1127, s'installe à Hangzhou, dans la même province, leur \
+production gagne en finesse : c'est au XIIIᵉ siècle que naissent ces couvertes épaisses \
+d'un vert bleuté. De longs fours en tunnel, construits à flanc de colline, cuisent alors \
+des milliers de pièces à chaque fournée, vendues dans tout l'empire et exportées par mer \
+jusqu'au Japon, en Asie du Sud-Est, au Moyen-Orient et sur les côtes de l'Afrique de \
+l'Est. Ce vase a été acheté en 1957 par le musée de Cleveland, grâce au fonds John L. \
+Severance, auprès du marchand Men-Chu Wang."""
+facture = """
+Le vase est tourné dans une pâte claire et dure, proche de la porcelaine, puis couvert \
+de plusieurs couches successives de glaçure : les potiers de Longquan cuisaient \
+légèrement la pièce, la trempaient de nouveau, et recommençaient, jusqu'à obtenir une \
+couverte parfois plus épaisse que la paroi elle-même. Cuite à haute température dans un \
+four privé d'oxygène, la petite quantité de fer contenue dans la glaçure prend cette \
+teinte verte, tandis que les bulles et les cristaux restés en suspension lui donnent sa \
+profondeur laiteuse. Les Chinois appellent ce ton fenqing, le « vert poudré »."""
+details = [
+  "Le col minuscule, presque un simple goulot, au sommet d'une épaule très large.",
+  "Les cannelures horizontales qui rythment toute la hauteur de la panse.",
+  "Les filets plus sombres de la glaçure, là où elle s'épaissit dans les creux.",
+  "L'absence complète de décor peint : seule la couleur fait l'ornement.",
+]
+themes = ["céladon", "jade", "chine", "song", "monochrome"]
+anecdote = """
+Le mot « céladon » est français. Il viendrait de Céladon, le berger amoureux de \
+L'Astrée, roman d'Honoré d'Urfé publié à partir de 1607, qui portait des rubans vert \
+pâle : la couleur des grès chinois rappela ce héros aux amateurs du XVIIᵉ siècle."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jarre au dragon"
+artiste = "Chine, fours impériaux de Jingdezhen"
+annee = "règne de Xuande (1426–1435)"
+image = "jarre-dragon-xuande.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT5083.jpg"
+technique = "Porcelaine à décor bleu de cobalt sous couverte, h. 48,3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un grand dragon serpente autour de cette jarre impériale, qui porte sur l'épaule la marque de l'empereur Xuande. Elle mesure 48,3 cm de haut."
+description = """
+La jarre, aussi haute que large, a une épaule puissante, un col court et une base \
+resserrée. Tout autour de la panse court un dragon bleu sur fond blanc : la gueule \
+ouverte, la crinière flottante, le corps couvert d'écailles se déroule en une longue \
+ondulation, et ses pattes griffues s'agrippent au vide. Autour de lui flottent des \
+nuages aux têtes enroulées. Sur l'épaule, une ligne de petits caractères inscrit la \
+marque du règne de Xuande. Le col est entouré d'une frise de nuages, et le bas de la \
+panse d'une couronne de pétales de lotus stylisés, dressés comme une palissade. Le \
+cobalt va du bleu profond, presque noir dans les écailles, à des tons plus clairs sur le \
+ventre du dragon."""
+evocation = """
+Le dragon est en Chine une créature bienfaisante, maître des eaux et de la pluie, et \
+depuis longtemps l'emblème de l'empereur, le Fils du Ciel. Sur une pièce sortie des \
+fours impériaux, il affirme la puissance de la dynastie Ming, qui a chassé les Mongols \
+en 1368 et règne alors sur un empire prospère. Son corps en mouvement, entre les nuées, \
+dit l'énergie qui relie le ciel et la terre. Le bleu et blanc, produit surtout pour \
+l'exportation sous les Mongols, devient sous les premiers empereurs Ming un art de cour \
+: les connaisseurs chinois ont toujours placé les porcelaines du règne de Xuande parmi \
+les plus belles jamais faites."""
+histoire = """
+Sous les Ming, la ville de Jingdezhen, dans la province du Jiangxi, abrite des fours \
+placés sous le contrôle de la cour, qui fournissent le palais de Pékin en vaisselle et \
+en vases d'apparat. Les pièces y sont commandées par séries et contrôlées une à une ; \
+les fouilles ont retrouvé, brisées et enterrées, celles qui avaient été rejetées. \
+L'empereur Xuande, qui règne de 1426 à 1435, est un lettré, peintre lui-même, attentif \
+aux arts : c'est sous son règne que l'inscription de la marque impériale sur les \
+porcelaines devient systématique. On ignore quand la jarre a quitté la Chine ; elle a \
+été offerte au Metropolitan Museum en 1937 par Robert E. Tod."""
+facture = """
+La porcelaine de Jingdezhen mêle deux matériaux : le kaolin, une argile blanche, et une \
+pierre feldspathique broyée. Le décor est peint au pinceau avec de l'oxyde de cobalt sur \
+la pièce crue, puis recouvert d'une glaçure transparente : une seule cuisson, vers 1 300 \
+°C, fixe le tout. Le cobalt employé alors, importé du monde persan, donne un bleu \
+intense, ponctué de taches presque noires là où le pigment s'est concentré : les \
+amateurs chinois ont appris à aimer ces accidents, signe des pièces de cette époque. Les \
+grandes jarres de ce type étaient montées en plusieurs parties tournées séparément, puis \
+assemblées avant la cuisson."""
+details = [
+  "La marque du règne de Xuande, en petits caractères alignés sur l'épaule.",
+  "Les écailles du dragon, dessinées une à une, d'un bleu presque noir.",
+  "Les pattes du dragon, toutes griffes dehors.",
+  "La couronne de pétales de lotus au bas de la panse.",
+  "La frise de nuages qui fait le tour du col.",
+]
+themes = ["porcelaine", "bleu et blanc", "dragon", "empereur", "ming"]
+anecdote = """
+Le bleu et blanc chinois a fait le tour du monde : imité en Iran, en Turquie, au Japon, \
+puis à Delft et en Angleterre, il compte parmi les décors céramiques les plus copiés de \
+l'histoire. La pyramide de Delft, dans une salle voisine, en est une héritière."""
+salle = 2
+mur = "nord"
+place = 7
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Vase aux pêches"
+artiste = "Chine, fours impériaux de Jingdezhen"
+annee = "règne de Qianlong (1736–1795)"
+image = "vase-aux-peches.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1944.184.1.jpg"
+technique = "Porcelaine à décor d'émaux de la famille rose, h. 51,4 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Sur ce grand vase impérial, un pêcher en fleurs et en fruits s'enroule autour de la panse : un vœu de longue vie. Il mesure 51,4 cm de haut."
+description = """
+Le vase a la forme dite tianqiuping, le « vase en globe céleste » : une panse presque \
+sphérique surmontée d'un long col droit. Sur le fond blanc, un vieux pêcher noueux \
+surgit du bas de la panse et lance ses branches tout autour du vase. De grosses pêches, \
+d'un rose soutenu qui pâlit vers le jaune, pendent par groupes parmi les feuilles vert \
+tendre et turquoise. Le peintre a réuni sur l'arbre les fleurs et les fruits : des \
+fleurs blanches et roses, des boutons, des pêches mûres. Une branche plus légère monte \
+jusqu'au col, où elle fleurit encore. Le tronc, gris et brun, est rendu avec ses nœuds \
+et son écorce, comme dans une peinture sur soie."""
+evocation = """
+La pêche est en Chine le fruit de l'immortalité : selon la légende, la Reine Mère \
+d'Occident cultive dans son jardin du mont Kunlun des pêchers dont les fruits, mûrs tous \
+les trois mille ans, donnent la vie éternelle. Un vase couvert de pêches est donc un vœu \
+de longévité, offert par exemple pour un anniversaire. Les vases de ce type portent \
+souvent neuf pêches : en chinois, jiu signifie « neuf » et, prononcé de même, « \
+longtemps ». Dans ce décor où la fleur et le fruit se côtoient, on lit aussi le cycle \
+des saisons réuni en une seule image d'abondance, au cœur du long règne de Qianlong, \
+l'un des plus prospères de l'histoire chinoise."""
+histoire = """
+La famille rose doit son nom, donné au XIXᵉ siècle par le collectionneur français Albert \
+Jacquemart, à un émail rose obtenu à partir d'or, arrivé en Chine vers 1720 par \
+l'intermédiaire des Européens, sans doute des jésuites au service de l'empereur Kangxi. \
+Sous Yongzheng puis sous Qianlong, les ateliers de Jingdezhen et ceux du palais de Pékin \
+maîtrisent parfaitement ces émaux et produisent pour la cour des pièces d'une finesse \
+extrême. Ce vase a appartenu à Elisabeth Severance Prentiss, philanthrope de Cleveland, \
+qui l'a légué au musée en 1944 avec son pendant."""
+facture = """
+Les émaux de la famille rose sont peints sur la porcelaine déjà cuite et glacée, puis \
+fixés par une seconde cuisson, à basse température, dans un petit four à moufle. Leur \
+nouveauté tient au blanc opaque, à base d'arsenic, que le peintre mélange aux couleurs : \
+il peut ainsi dégrader les tons, du rose soutenu au rose pâle, et modeler le volume des \
+fruits. Les feuilles sont posées en aplats de vert et de turquoise, les nervures et le \
+tronc cernés d'un trait fin. La régularité du globe et la blancheur sans défaut du fond \
+témoignent de la maîtrise des fours impériaux."""
+details = [
+  "Les pêches, dont le rose se fond vers le jaune pâle, comme sur un vrai fruit.",
+  "Le tronc noueux qui surgit au bas de la panse.",
+  "La branche fleurie qui grimpe le long du col.",
+  "Les fleurs et les boutons qui côtoient les fruits mûrs sur le même arbre.",
+]
+themes = ["porcelaine", "famille rose", "pêche", "longévité", "qing"]
+anecdote = """
+L'empereur Qianlong, grand collectionneur, a fait graver sur des céramiques anciennes de \
+ses collections des poèmes qu'il avait lui-même composés en leur honneur. Sous son \
+règne, la porcelaine impériale imitait tout : le bronze, le jade, le bois, la laque."""
+salle = 2
+mur = "sud"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Bol à thé en raku noir"
+artiste = "Japon, céramique raku"
+annee = "début du XVIIᵉ siècle"
+image = "bol-raku-noir.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DP247421.jpg"
+technique = "Terre cuite à glaçure raku noire, 9,2 × 9,5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Un bol modelé à la main, sans tour, pour la cérémonie du thé : l'art de l'irrégularité voulue. Il mesure 9,2 cm de haut, et il est ici montré très agrandi."
+description = """
+Le bol est presque cylindrique, à peine plus large que haut, avec des parois droites qui \
+se renflent légèrement vers le bas et un pied court. Sa lèvre n'est pas tout à fait \
+ronde : elle ondule, s'aplatit par endroits, et la paroi garde de légères facettes, \
+traces de la spatule qui l'a formée. Toute la surface est couverte d'une glaçure noire, \
+mate et grenue, où passent des reflets brun-rouge. Rien n'est décoré : la forme, le \
+poids, la matière et la couleur sont tout. Le bol est fait pour être tenu à deux mains, \
+à hauteur du visage, pendant que l'on boit le thé vert battu en mousse."""
+evocation = """
+Ce bol appartient au monde de la cérémonie du thé, telle que l'a façonnée le maître Sen \
+no Rikyū au XVIᵉ siècle : un art de recevoir fondé sur la simplicité, le dépouillement \
+et l'attention au moment présent. Le goût que l'on appelle wabi y préfère le rustique au \
+somptueux, l'irrégulier au parfait, l'usé au neuf. Le noir du bol, qui fait ressortir le \
+vert vif du thé, invite au recueillement. Son asymétrie n'est pas une maladresse : elle \
+rend chaque bol unique, et, dans la tradition japonaise, un bol peut recevoir un nom, \
+une histoire, une lignée de propriétaires. On y a vu l'exact opposé de la porcelaine \
+impériale chinoise, lisse et parfaite."""
+histoire = """
+Le raku naît à Kyoto dans les années 1570–1580, quand le potier Chōjirō, qui fabriquait \
+jusque-là des tuiles, réalise pour Sen no Rikyū les premiers bols à thé façonnés à la \
+main. Selon la tradition, le régent Toyotomi Hideyoshi aurait ensuite offert à la \
+famille un sceau portant le caractère raku, « joie, aisance », tiré du nom de son \
+palais, le Jurakudai : le mot est resté à la famille et à sa céramique. Ce bol, de \
+l'époque Momoyama ou des toutes premières années de l'époque d'Edo, n'est attribué à \
+aucun potier précis. Le Metropolitan Museum l'a acquis en 1917, sur le fonds Rogers."""
+facture = """
+Le bol n'est pas tourné : il est modelé à la main à partir d'une boule d'argile, puis \
+aminci et creusé à la spatule. Après une première cuisson, il reçoit plusieurs couches \
+d'une glaçure faite d'une pierre noire broyée, riche en fer et en manganèse. La cuisson \
+se fait pièce par pièce, dans un petit four chauffé au charbon de bois et attisé au \
+soufflet ; quand la glaçure a fondu, le potier retire le bol incandescent avec de \
+longues pinces et le laisse refroidir brusquement à l'air. Ce choc donne au noir son \
+aspect profond et légèrement rugueux."""
+details = [
+  "La lèvre irrégulière, qui ondule et s'aplatit par endroits.",
+  "Les légères facettes laissées par la spatule sur la paroi.",
+  "Les reflets brun-rouge dans le noir de la glaçure.",
+  "Le pied bas et étroit, sur lequel le bol semble posé en retrait.",
+]
+themes = ["cérémonie du thé", "wabi", "raku", "japon", "imperfection"]
+anecdote = """
+La famille Raku de Kyoto perpétue cet art depuis plus de quatre siècles : ses chefs \
+successifs portent le nom de Raku Kichizaemon, et l'héritier actuel est le seizième de \
+la lignée. En Occident, le mot désigne aussi une technique de cuisson rapide inspirée de \
+cette tradition."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Jarre à eau à l'oiseau de pluie"
+artiste = "Pueblo de Zuni"
+annee = "1850–1860"
+image = "jarre-zuni-oiseau-de-pluie.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1937.898.jpg"
+technique = "Terre cuite à engobe blanc, décor peint en noir et rouge, 25,5 × 33 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Une jarre à eau peinte par une potière zuñie du Nouveau-Mexique, où volutes et crochets figurent l'oiseau qui apporte la pluie. Elle mesure 33 cm de large."
+description = """
+La jarre est large et trapue : une panse ronde, un épaulement marqué, un col court et \
+droit. Sur un fond blanc crémeux, un décor noir couvre presque toute la surface. Sur la \
+panse, de grandes formes en escalier, remplies de fines hachures obliques, s'emboîtent \
+les unes dans les autres ; au centre, un grand cercle cerné de noir, prolongé par un \
+crochet, attire le regard. Des franges de traits verticaux pendent comme des dents de \
+peigne. Le col porte une autre frise, où l'on retrouve une forme ovale et des motifs \
+étagés. De petites touches d'un rouge brun animent le noir. La base, enduite de brun \
+sombre, est restée sans décor."""
+evocation = """
+Dans les terres arides du Sud-Ouest américain, la pluie est la condition même de la vie, \
+et une grande part de la vie religieuse des Zuñis est tournée vers elle. L'« oiseau de \
+pluie », que les spécialistes reconnaissent dans ces volutes et ces crochets, associe \
+l'oiseau, messager entre la terre et le ciel, aux nuages chargés d'eau ; les formes en \
+escalier évoquent souvent, dans l'art des Pueblos, les nuages en terrasses. Peint sur la \
+jarre qui sert à porter et à garder l'eau, ce décor est à la fois ornement et prière. Le \
+sens précis de chaque motif, transmis au sein de la communauté, n'est cependant pas \
+toujours connu des chercheurs."""
+histoire = """
+La jarre a été façonnée vers 1850–1860 au pueblo de Zuni, dans l'ouest du \
+Nouveau-Mexique, territoire que les États-Unis venaient d'annexer après la guerre contre \
+le Mexique. Chez les Zuñis, la poterie est l'affaire des femmes, qui se transmettent les \
+techniques et les motifs ; la potière n'a pas laissé son nom. À partir de 1879, des \
+expéditions de la Smithsonian Institution emportent vers Washington des milliers de \
+poteries zuñies, et les collectionneurs se mettent à les rechercher. Celle-ci a été \
+donnée en 1937 au musée de Cleveland par Amelia Elizabeth White, collectionneuse \
+installée à Santa Fe et défenseure des arts amérindiens. On ignore dans quelles \
+circonstances elle avait quitté le pueblo."""
+facture = """
+La jarre est montée sans tour, au colombin : la potière superpose des boudins d'argile, \
+puis les lisse et amincit la paroi à l'aide d'un morceau de calebasse. Elle la couvre \
+ensuite d'un engobe blanc, une argile fine délayée dans l'eau, posé en plusieurs \
+couches. Le décor est peint avec un pinceau taillé dans une feuille de yucca mâchée : le \
+noir est tiré de végétaux et de minerais, le rouge d'une terre ocre. La cuisson se fait \
+en plein air, la jarre posée sous un abri de combustible, souvent de la bouse de mouton, \
+qui brûle quelques heures."""
+details = [
+  "Le grand cercle au centre de la panse, cerné de noir et prolongé d'un crochet.",
+  "Les fines hachures obliques qui remplissent les formes en escalier.",
+  "Les franges de traits verticaux, comme des rideaux de pluie.",
+  "Les petites touches rouges posées parmi le noir.",
+  "La base sombre, sans décor, sur laquelle la jarre repose.",
+]
+themes = ["pueblo", "pluie", "oiseau", "eau", "amérindien"]
+anecdote = """
+Les femmes zuñies portaient ces jarres pleines d'eau sur la tête, posées sur un petit \
+anneau tressé en yucca. La base de ces jarres est d'ailleurs légèrement concave, pour \
+bien tenir sur cet anneau."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Plat aux Trois Grâces"
+artiste = "Maestro Giorgio Andreoli"
+annee = "vers 1525"
+image = "plat-trois-graces.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1945.2.jpg"
+technique = "Majolique (faïence) peinte, rehaussée de lustre métallique, diam. 44,8 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Les Trois Grâces nues sous des palmiers, dans un paysage italien : un plat d'apparat de Gubbio, rehaussé de reflets d'or. Il mesure 44,8 cm de diamètre."
+description = """
+Au centre du plat, dans un médaillon, trois jeunes femmes nues se tiennent enlacées sur \
+une prairie : celle du milieu, vue de dos, pose les mains sur les épaules de ses \
+compagnes, qui se présentent de face et de trois quarts. Elles portent des colliers \
+rouges et ont les cheveux relevés. Derrière elles s'élèvent trois palmiers ; au loin \
+s'étendent des collines, une rivière et, à gauche, une ville aux toits rouges. De part \
+et d'autre, deux fontaines déversent une eau bleue près de draperies posées sur des \
+socles. Le large bord du plat, le marli, porte une frise de feuillages et de losanges \
+inscrits dans des médaillons, sur fond bleu. Partout, des reflets dorés et irisés jouent \
+à la surface."""
+evocation = """
+Les Trois Grâces, filles de Zeus dans la mythologie grecque, personnifient la beauté, la \
+joie et l'abondance ; les auteurs anciens y voyaient aussi les bienfaits que l'on donne, \
+que l'on reçoit et que l'on rend. Leur groupe, avec la figure centrale vue de dos, \
+reprend une composition antique célèbre, redécouverte à la Renaissance et diffusée par \
+la gravure. Sur un grand plat d'apparat, que l'on exposait sur un dressoir plutôt que de \
+s'en servir à table, ce sujet profane dit le goût des cours italiennes pour l'Antiquité \
+et la culture humaniste. Le lustre, qui fait briller la pièce à la lumière des bougies, \
+donne à une simple terre cuite l'éclat d'un métal précieux."""
+histoire = """
+Gubbio, petite ville d'Ombrie qui appartient alors au duché d'Urbino, doit sa renommée \
+céramique à l'atelier de Maestro Giorgio Andreoli, spécialiste du lustre métallique. Au \
+début du XVIᵉ siècle, cet atelier lustre ses propres pièces et en reçoit d'autres, \
+peintes ailleurs, pour leur ajouter ces reflets. Le plat portait une signature et une \
+date, relevées au XIXᵉ siècle, mais il s'est brisé, et elles ont disparu lors de la \
+réparation. Il a appartenu au collectionneur russe Alexandre Basilewsky, à Paris, dont \
+la collection fut achetée en 1884 par le tsar Alexandre III pour l'Ermitage de \
+Saint-Pétersbourg. Sorti plus tard de ce musée, il est passé par le marchand new-yorkais \
+Rosenberg & Stiebel avant d'entrer au musée de Cleveland en 1945."""
+facture = """
+La majolique est une terre cuite couverte d'un émail blanc et opaque, à base d'étain, \
+sur lequel on peint avec des oxydes métalliques : bleu de cobalt, vert de cuivre, jaune \
+d'antimoine, orange de fer, violet de manganèse. Après la cuisson de ce décor, l'atelier \
+de Gubbio ajoute le lustre : un mélange de composés d'argent et de cuivre, posé au \
+pinceau sur certaines zones, puis fixé par une nouvelle cuisson, à basse température, \
+dans une fumée épaisse. Les métaux se déposent alors en une pellicule très mince qui \
+renvoie la lumière en reflets d'or et de rubis. Cette technique, venue du monde \
+islamique par l'Espagne, était un secret d'atelier jalousement gardé."""
+details = [
+  "La Grâce du milieu, vue de dos, qui enlace ses deux compagnes.",
+  "Les colliers rouges au cou des trois jeunes femmes.",
+  "La petite ville aux toits rouges, au loin à gauche.",
+  "Les deux fontaines dont l'eau bleue s'écoule près des draperies.",
+  "Les reflets dorés du lustre sur le marli et le bord du plat.",
+]
+themes = ["majolique", "mythologie", "renaissance", "lustre", "beauté"]
+anecdote = """
+Le mot « majolique » viendrait de Majorque : les faïences lustrées d'Espagne arrivaient \
+en Italie à bord de navires passant par cette île, et les Italiens donnèrent ce nom à la \
+céramique qu'ils admiraient, avant de l'appliquer à leur propre production."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Pyramide à fleurs"
+artiste = "Faïencerie De Metaale Pot"
+annee = "vers 1692–1700"
+image = "pyramide-a-fleurs-delft.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bloempiramide,_BK-2004-4-A.jpg"
+technique = "Faïence peinte en bleu, onze éléments, h. 156 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une tour de faïence bleue à étages, hérissée de becs où l'on piquait des fleurs coupées : le luxe de la Hollande à la fin du XVIIᵉ siècle. Elle mesure 1,56 m de haut."
+description = """
+Haute de plus d'un mètre et demi, la pyramide s'élève comme une pagode. Elle repose sur \
+un piédestal carré porté par quatre lions couchés. Sur la face du piédestal, dans un \
+intérieur ouvert sur un jardin, des personnages vêtus à la chinoise conversent, l'un \
+d'eux jouant d'un instrument à cordes. Au-dessus, des figures à buste de femme, \
+terminées en volutes, soutiennent une plate-forme d'où partent neuf étages carrés, de \
+plus en plus petits. Chaque étage est muni, aux angles, de becs tubulaires où l'on \
+glissait les tiges des fleurs, et peint de petites scènes, de personnages et de vases \
+fleuris. Au sommet, un buste de femme couronne l'ensemble. Tout est peint en bleu de \
+cobalt sur un fond blanc."""
+evocation = """
+Au XVIIᵉ siècle, les fleurs, et d'abord la tulipe, sont aux Provinces-Unies un objet de \
+passion, de savoir et de spéculation : pendant la « tulipomanie » de 1636–1637, le bulbe \
+d'une variété rare a pu se vendre au prix d'une maison. Une pyramide comme celle-ci \
+permettait de composer un bouquet spectaculaire, chaque fleur isolée dans son bec, et de \
+montrer à la fois sa richesse et son goût. Son décor dit aussi la fascination de \
+l'Europe pour la Chine, connue à travers les porcelaines rapportées par la Compagnie des \
+Indes orientales : pagode, personnages et paysages sont imaginés d'après elles, par des \
+peintres qui n'avaient jamais vu l'Asie."""
+histoire = """
+Au XVIIᵉ siècle, Delft voit nombre de ses anciennes brasseries, en déclin, reconverties \
+en faïenceries. Quand les troubles de la fin des Ming désorganisent les arrivées de \
+porcelaine chinoise, au milieu du siècle, les faïenciers de Delft prennent le relais et \
+imitent le bleu et blanc. Les pyramides à fleurs sont à la mode à la fin du siècle, en \
+particulier à la cour de Guillaume III d'Orange et de son épouse Marie II, reine \
+d'Angleterre, qui en garnit ses résidences. Cette pyramide est attribuée à la faïencerie \
+De Metaale Pot, alors dirigée par Lambertus van Eenhoorn. Elle forme une paire avec une \
+seconde pyramide ; le Rijksmuseum les a achetées ensemble en 2004, avec l'aide de \
+plusieurs fondations et de mécènes."""
+facture = """
+La faïence de Delft est une terre cuite recouverte d'un émail blanc à l'étain, qui imite \
+la blancheur de la porcelaine sans en avoir la dureté ni la transparence. Le décor est \
+peint au cobalt sur l'émail encore cru, qui boit la couleur comme un papier : le peintre \
+doit travailler vite et sans repentir. Chaque étage est façonné et cuit séparément, puis \
+les éléments sont empilés les uns sur les autres. Les étages creux servaient de \
+réservoirs d'eau, où trempaient les tiges. Le dessin, d'un bleu nuancé du plus clair au \
+plus foncé, s'inspire des porcelaines chinoises de la fin du XVIIᵉ siècle."""
+details = [
+  "Le buste de femme qui couronne le sommet de la pyramide.",
+  "Les becs tubulaires aux angles de chaque étage, destinés aux tiges des fleurs.",
+  "Le musicien jouant d'un instrument à cordes, sur la face du piédestal.",
+  "Les quatre lions couchés qui servent de pieds.",
+  "Les figures à buste de femme et à volutes qui portent la plate-forme.",
+]
+themes = ["faïence", "delft", "fleurs", "tulipe", "chinoiserie"]
+anecdote = """
+Des nombreuses faïenceries actives à Delft au XVIIᵉ siècle, une seule a survécu jusqu'à \
+nos jours : De Porceleyne Fles, fondée en 1653 et connue sous le nom de Royal Delft, où \
+l'on peint encore la faïence à la main."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Plat du service aux cygnes"
+artiste = "Johann Joachim Kändler"
+annee = "1737–1741"
+image = "assiette-service-aux-cygnes.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1951.103.jpg"
+technique = "Porcelaine dure à décor en relief, émaux et or, diam. 42 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Deux cygnes et un héron en relief dans un plat en forme de coquille, aux armes du comte de Brühl : le plus célèbre service de porcelaine du XVIIIᵉ siècle. Il mesure 42 cm de diamètre."
+description = """
+Le plat, au bord ondulé, est presque entièrement blanc. Tout son creux est sculpté en \
+relief : de larges côtes rayonnent depuis le haut comme celles d'une coquille \
+Saint-Jacques. Au centre, deux cygnes nagent face à face parmi les roseaux, sur une eau \
+agitée de remous ; au-dessus d'eux, un héron s'envole, les ailes déployées. Sur le \
+marli, des bouquets de fleurs et de petits insectes sont peints de couleurs vives, et le \
+bord est souligné d'un fin feston d'or. En haut, un blason surmonté de couronnes et \
+soutenu par deux lions porte les armes réunies du comte Heinrich von Brühl et de son \
+épouse, née comtesse Kolowrat-Krakowsky."""
+evocation = """
+Tout le service est un hymne à l'eau : cygnes, hérons, coquillages, roseaux, poissons et \
+divinités marines s'y répondent d'une pièce à l'autre. Le thème jouerait sur le nom du \
+commanditaire : en allemand, Brühl désigne une prairie humide, un pré marécageux. Pour \
+le ministre de l'électeur de Saxe, ce service était un instrument de prestige : les \
+grands dîners de cour, avec leurs centaines de pièces assorties, étaient une mise en \
+scène du pouvoir. Le blanc presque nu des reliefs, à peine relevé de fleurs, dit aussi \
+la fierté de Meissen, première manufacture européenne à maîtriser la vraie porcelaine, \
+capable de rivaliser avec la Chine et le Japon."""
+histoire = """
+Le comte Heinrich von Brühl, favori puis premier ministre d'Auguste III, électeur de \
+Saxe et roi de Pologne, devient en 1733 directeur de la manufacture de Meissen. Il s'y \
+fait faire, entre 1737 et 1741, un service de table de plus de deux mille pièces, modelé \
+par Johann Joachim Kändler avec son collaborateur Johann Friedrich Eberlein. Le service \
+est resté dans la famille Brühl jusqu'au XXᵉ siècle ; dispersé depuis, il est partagé \
+entre de nombreux musées et collections. Ce plat, passé par le palais Brühl de Varsovie \
+et par le comte Szembek, descendant de la famille, a été offert au musée de Cleveland en \
+1951 par la maison Rosenberg & Stiebel, pour le trente-cinquième anniversaire du musée."""
+facture = """
+La porcelaine dure de Meissen est faite de kaolin, de feldspath et de quartz, cuits vers \
+1 400 °C : elle est blanche, dure, translucide en couche mince. Pour un service de cette \
+ampleur, Kändler sculpte d'abord un modèle original, dont on tire des moules en plâtre ; \
+la pâte y est pressée, si bien que chaque plat reproduit fidèlement le relief, comme une \
+petite sculpture. Les reliefs restent blancs, pour laisser jouer la lumière sur les \
+ondulations de l'eau et les plumes des oiseaux. Les fleurs du marli, peintes à l'émail, \
+s'inspirent des porcelaines d'Extrême-Orient, très recherchées à la cour de Saxe."""
+details = [
+  "Les deux cygnes qui se font face au milieu des roseaux.",
+  "Le héron qui s'envole, ailes ouvertes, au-dessus d'eux.",
+  "Les côtes rayonnantes de la coquille sculptée dans le fond du plat.",
+  "Le blason des Brühl, soutenu par deux lions, en haut du marli.",
+  "Les petits insectes peints parmi les fleurs.",
+]
+themes = ["porcelaine", "meissen", "cygne", "eau", "rococo"]
+anecdote = """
+Le secret de la porcelaine dure fut percé en Saxe vers 1708 par l'alchimiste Johann \
+Friedrich Böttger, que le roi Auguste le Fort retenait prisonnier pour qu'il lui \
+fabrique de l'or. Il ne trouva pas l'or, mais l'« or blanc » qui fit la fortune de la \
+Saxe."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Terrine du roi"
+artiste = "Manufacture de Sèvres"
+annee = "1756–1757"
+image = "terrine-du-roi.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1949.15.jpg"
+technique = "Porcelaine tendre, fond vert, décor peint et doré, h. 24,2 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Une terrine sur pieds au fond vert, ornée d'amours peints dans des cartouches dorés : le luxe des premières années de Sèvres. Elle mesure 24,2 cm de haut."
+description = """
+La terrine, ovale et renflée, repose sur quatre pieds recourbés, ornés de feuilles \
+d'acanthe dorées, et se prolonge sur les côtés en anses ajourées, en forme de branches \
+tordues. Son couvercle bombé est surmonté d'un fruit jaune orangé entouré de feuilles \
+vertes, qui sert de prise. Le fond est d'un vert vif et lumineux, encadré de rinceaux \
+d'or. Sur la panse, un grand cartouche blanc montre deux amours potelés, assis sur des \
+nuages, qui jouent avec une guirlande de fleurs, près d'un carquois et de flèches. Sur \
+le couvercle, un autre cartouche présente un petit trophée d'attributs posé sur un \
+nuage."""
+evocation = """
+Les amours, les fleurs et les nuages appartiennent au répertoire du rococo, l'art de la \
+grâce et du plaisir qui triomphe en France sous Louis XV, et dont François Boucher est \
+le peintre le plus célèbre. Une terrine servait à présenter à table les ragoûts et les \
+potages ; mais une pièce aussi précieuse était faite pour être admirée autant que pour \
+servir. Elle dit l'art de vivre d'une élite pour qui le repas était un spectacle, et \
+l'ambition d'une manufacture soutenue par le roi et par Madame de Pompadour, qui voulait \
+surpasser Meissen. Les amours qui jouent dans le ciel font d'un plat de cuisine une \
+petite scène de mythologie aimable."""
+histoire = """
+Fondée à Vincennes vers 1740, la manufacture s'installe en 1756 à Sèvres, à mi-chemin de \
+Paris et de Versailles. Cette terrine compte parmi ses premières productions sur place : \
+la lettre D peinte sous la pièce, entre les deux L entrelacés du chiffre de Louis XV, \
+correspond à l'année 1756. Les cartouches sont associés au peintre Charles-Nicolas \
+Dodin, spécialiste des figures, entré à la manufacture en 1754 et qui y travaillera près \
+de cinquante ans. Le modèle porte le nom de « terrine du roi ». Le musée de Cleveland a \
+acheté la pièce en 1949, grâce au fonds John L. Severance."""
+facture = """
+Avant 1770, Sèvres ne dispose pas du kaolin nécessaire à la porcelaine dure : elle \
+produit une porcelaine dite tendre, faite d'une fritte vitreuse mêlée d'argile, cuite à \
+plus basse température. Plus fragile et plus difficile à travailler, elle offre en \
+revanche une glaçure dans laquelle les couleurs fondent légèrement, d'où des tons d'une \
+douceur et d'un éclat particuliers. Le fond vert est posé en couche régulière, en \
+réservant des cartouches blancs ensuite peints au pinceau fin, à la manière de \
+miniatures. L'or, appliqué en poudre puis bruni, dessine les rinceaux et souligne les \
+reliefs des pieds et des anses."""
+details = [
+  "Les deux amours assis sur les nuages, avec leur guirlande de fleurs.",
+  "Le fruit entouré de feuilles qui sert de prise au couvercle.",
+  "Les pieds en volutes, couverts de feuilles d'acanthe dorées.",
+  "Les anses ajourées en forme de branches tordues.",
+  "Les rinceaux d'or qui encadrent les cartouches sur le fond vert.",
+]
+themes = ["porcelaine", "sèvres", "rococo", "amours", "art de la table"]
+anecdote = """
+Chaque pièce de Sèvres porte une lettre qui donne son année : A pour 1753, B pour 1754, \
+et ainsi de suite. Arrivée à Z en 1777, la manufacture recommence avec des lettres \
+doublées, AA, BB… Grâce à ce système, on date les porcelaines de Sèvres à l'année près."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Vase Portland"
+artiste = "Josiah Wedgwood"
+annee = "vers 1790"
+image = "vase-portland.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1918.823.jpg"
+technique = "Grès fin dit jaspe, noir, à reliefs blancs appliqués, h. 26,4 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "La copie en grès « jaspe » d'un célèbre vase romain en verre camée : le grand défi technique de Wedgwood. Il mesure 26,4 cm de haut."
+description = """
+Le vase a la forme d'une amphore trapue : une panse ovoïde, un col étroit, deux anses \
+qui retombent des épaules. Sur le fond noir, des figures blanches en relief se détachent \
+comme des camées. À gauche, un homme drapé sort d'un portique ; au centre, une jeune \
+femme assise sur un rocher tient sur ses genoux un serpent, ou un monstre marin, qui se \
+dresse vers elle ; au-dessus vole un petit Amour armé d'un arc ; à droite, un homme \
+barbu la regarde, appuyé sur un rocher. Un arbre aux branches fines étend son feuillage \
+au-dessus de la scène. Le pied est souligné d'un mince filet blanc."""
+evocation = """
+Le sens de la scène, déjà mystérieux sur le vase antique, n'a jamais été établi avec \
+certitude. Les interprétations les plus fréquentes y voient les noces du héros Pélée et \
+de la nymphe marine Thétis, futurs parents d'Achille, ou une allégorie de l'amour et de \
+la mort ; d'autres y ont lu un épisode de l'histoire d'Auguste. Pour Wedgwood et ses \
+contemporains, l'essentiel était ailleurs : reproduire le vase le plus admiré de \
+l'Antiquité, c'était montrer que l'industrie anglaise pouvait égaler l'art des Anciens. \
+Ce vase est devenu l'un des emblèmes du néoclassicisme, ce retour à l'Antiquité qui \
+gagne toute l'Europe à la fin du XVIIIᵉ siècle."""
+histoire = """
+Le vase original, en verre camée, a été fait à Rome vers le début de notre ère. Il \
+appartient au XVIIᵉ siècle à la famille Barberini, puis au diplomate et collectionneur \
+William Hamilton, qui le cède à la duchesse de Portland ; il en garde le nom. En 1786, \
+son fils, le troisième duc de Portland, le prête à Josiah Wedgwood. Le potier met près \
+de quatre ans à en réussir une copie satisfaisante, au prix d'innombrables essais : les \
+pièces se fendent ou se déforment, les reliefs se détachent à la cuisson. La première \
+édition, achevée vers 1790, ne compte que quelques dizaines d'exemplaires. Ce vase-ci a \
+été donné au musée de Cleveland en 1918 par Mme L. E. Holden. L'original est conservé au \
+British Museum."""
+facture = """
+Le jaspe, mis au point par Wedgwood vers 1774–1775 après des milliers d'essais notés \
+dans ses carnets, est un grès fin, non émaillé, à base de sulfate de baryum, que l'on \
+peut teinter dans la masse : bleu, vert, lilas, jaune ou, comme ici, noir. Les figures \
+sont moulées à part dans une pâte blanche, puis appliquées une à une sur le vase encore \
+humide, avant la cuisson. Pour imiter le verre camée de l'original, où le fond sombre \
+transparaît sous les parties les plus minces du verre blanc, les reliefs ont été \
+retouchés à la main, amincis et ciselés, pour créer des ombres et des transparences."""
+details = [
+  "Le petit Amour qui vole au-dessus de la scène, un arc à la main.",
+  "La femme assise qui tient sur ses genoux un serpent ou un monstre marin.",
+  "L'homme qui sort d'un portique, à gauche.",
+  "Les reliefs blancs amincis au point de laisser deviner le fond noir.",
+]
+themes = ["néoclassicisme", "antiquité", "jaspe", "wedgwood", "camée"]
+anecdote = """
+En 1845, un visiteur du British Museum brisa le vase antique en de très nombreux \
+morceaux. Patiemment recollé, il a été restauré de nouveau en 1948, puis à la fin des \
+années 1980. Les copies de Wedgwood gardent la mémoire de son état d'avant le drame."""
+salle = 5
+mur = "sud"
+place = 2
+largeur = 0.8
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Chine, fours de Longquan"
+vie = "Région de Longquan, province du Zhejiang (Chine), du Xᵉ au XVIIᵉ siècle"
+biographie = """
+Longquan est une région de collines boisées du sud-ouest du Zhejiang, riche en argile, \
+en bois et en cours d'eau : tout ce qu'il faut à des potiers. On y cuit des grès à \
+couverte verte dès l'époque des Song du Nord, dans la lignée des céladons de Yue, \
+produits plus au nord de la même province. La production prend son essor au XIIᵉ siècle, \
+quand la cour des Song, chassée de Kaifeng par les Jürchen, s'installe à Hangzhou : la \
+demande des élites du Sud et du commerce maritime ne cesse de croître. Les potiers \
+construisent à flanc de colline des fours dits « dragons », longs tunnels de briques où \
+l'on cuit d'un coup des milliers de pièces. Au XIIIᵉ siècle, ils mettent au point les \
+couvertes épaisses d'un vert bleuté qui font leur gloire. Sous les Yuan et au début des \
+Ming, Longquan fournit encore la cour et exporte massivement, du Japon à l'Égypte et aux \
+côtes de l'Afrique de l'Est ; puis le bleu et blanc de Jingdezhen la supplante peu à \
+peu. Les archéologues ont repéré dans la région de très nombreux sites de fours."""
+style = """
+Le céladon de Longquan se reconnaît à ses formes simples et pleines, souvent empruntées \
+aux bronzes antiques ou aux objets de culte, et à sa couverte épaisse, d'un vert tendre \
+et laiteux, qui rappelle le jade. Le décor, quand il existe, reste sobre : quelques \
+cannelures, des pétales gravés, des poissons moulés en relief. Ce goût de la perfection \
+discrète a profondément marqué la céramique d'Asie orientale, et les céladons de \
+Longquan, conservés comme des trésors au Japon, ont été imités jusqu'en Europe."""
+
+[[artistes]]
+nom = "Chine, fours impériaux de Jingdezhen"
+vie = "Jingdezhen, province du Jiangxi (Chine), depuis le XIᵉ siècle"
+biographie = """
+Jingdezhen, ville du nord-est du Jiangxi, doit son nom à l'ère Jingde (1004–1007) de \
+l'empereur Song Zhenzong, qui y fit fabriquer de la porcelaine pour le palais. Les \
+montagnes voisines fournissent le kaolin et la pierre à porcelaine, les forêts le bois \
+des fours, et la rivière permet d'expédier les pièces. Sous les Yuan, les potiers y \
+mettent au point le décor bleu de cobalt sous couverte. Dès les débuts de la dynastie \
+Ming, des fours impériaux y sont établis : ils travaillent pour la cour selon des \
+commandes précises, sous le contrôle de fonctionnaires. Sous les Qing, la manufacture \
+connaît un nouvel âge d'or grâce à des directeurs savants comme Tang Ying, en poste sous \
+Yongzheng et Qianlong, qui multiplie les inventions techniques. La ville, où \
+travaillaient des milliers d'ouvriers spécialisés, exportait aussi dans le monde entier \
+: c'est par Jingdezhen que l'Europe a découvert la porcelaine. Le jésuite français \
+François-Xavier d'Entrecolles en a décrit les secrets dans deux lettres célèbres, en \
+1712 et 1722. Jingdezhen reste aujourd'hui la capitale chinoise de la porcelaine."""
+style = """
+Les porcelaines impériales de Jingdezhen se distinguent par la perfection de leur pâte, \
+blanche et fine, et par la rigueur de leurs décors, souvent tirés de modèles dessinés à \
+la cour : dragons, phénix, fleurs et fruits porteurs de vœux. Le bleu de cobalt des \
+Ming, puis les émaux de la famille verte et de la famille rose sous les Qing, ont fixé \
+pour le monde entier l'image de la porcelaine chinoise. Leurs formes et leurs motifs ont \
+été copiés de l'Iran au Japon, et de Delft à Meissen."""
+
+[[artistes]]
+nom = "Japon, céramique raku"
+vie = "Kyoto (Japon), depuis la fin du XVIᵉ siècle"
+biographie = """
+La céramique raku naît à Kyoto à l'époque Momoyama, dans le cercle du maître de thé Sen \
+no Rikyū (1522–1591). Celui-ci, au service des chefs de guerre Oda Nobunaga puis \
+Toyotomi Hideyoshi, mène la cérémonie du thé vers une simplicité extrême, et cherche des \
+bols qui répondent à cet idéal. Il les fait faire par Chōjirō, un artisan qui fabriquait \
+des tuiles et des figures de terre cuite. Chōjirō façonne à la main, sans tour, des bols \
+noirs ou rouges, sobres et graves, cuits un à un. Après sa mort, son atelier se transmet \
+de génération en génération dans une famille qui prend le nom de Raku, selon la \
+tradition grâce à un sceau offert par Hideyoshi. Au XVIIᵉ siècle, d'autres artistes \
+s'approprient la technique, comme Hon'ami Kōetsu, calligraphe et lettré, dont les bols \
+comptent parmi les plus admirés. Les maîtres de thé donnent aux bols des noms poétiques \
+et les conservent dans des boîtes de bois inscrites, transmises avec leur histoire. La \
+famille Raku poursuit aujourd'hui son travail à Kyoto."""
+style = """
+Le raku se reconnaît à sa terre légère et poreuse, à ses formes modelées à la main, \
+irrégulières, et à ses glaçures épaisses, noires ou rouges. Le bol est pensé pour la \
+main et pour les lèvres autant que pour l'œil. Cette esthétique du wabi, faite de \
+simplicité et d'imperfection acceptée, a nourri toute la céramique japonaise, puis, au \
+XXᵉ siècle, celle des potiers occidentaux, de Bernard Leach aux céramistes américains \
+qui ont inventé un « raku » à leur manière."""
+
+[[artistes]]
+nom = "Pueblo de Zuni"
+vie = "Vallée de la rivière Zuni, Nouveau-Mexique (États-Unis)"
+biographie = """
+Les Zuñis, qui se nomment eux-mêmes A:shiwi, vivent dans la vallée de la rivière Zuni, \
+dans l'ouest du Nouveau-Mexique, sur des terres habitées par leurs ancêtres depuis des \
+siècles. Comme les autres peuples pueblos, Hopis, Acomas ou Lagunas, ils vivent dans des \
+villages de maisons à étages en pierre et en adobe, et cultivent le maïs dans un pays \
+sec. En 1540, l'expédition espagnole de Francisco Vásquez de Coronado, en quête des \
+légendaires « sept cités de Cibola », atteint leurs villages. Viennent ensuite les \
+missionnaires, la révolte des Pueblos de 1680 contre les Espagnols, puis, en 1848, \
+l'annexion par les États-Unis. Malgré ces bouleversements, les Zuñis ont conservé leur \
+langue, leurs cérémonies et leurs arts : la poterie, la bijouterie d'argent et de \
+turquoise, les fétiches sculptés. La céramique, faite par les femmes pour l'eau, le \
+grain et les cérémonies, transmet un répertoire de motifs ancien. À la fin du XIXᵉ \
+siècle, des savants comme Frank Hamilton Cushing, qui vécut plusieurs années parmi eux, \
+et de nombreux collectionneurs ont fait connaître cette poterie bien au-delà du pueblo."""
+style = """
+La poterie zuñie se reconnaît à son engobe blanc crème, sur lequel la potière peint en \
+noir et en rouge brun des décors couvrants : rosaces, formes en escalier, hachures, \
+volutes de l'« oiseau de pluie », et parfois des cerfs dont une ligne relie la bouche au \
+cœur. Les jarres ont une panse large et un col court. Ce style, toujours vivant, est \
+pratiqué aujourd'hui par des potières et des potiers zuñis."""
+
+[[artistes]]
+nom = "Maestro Giorgio Andreoli"
+vie = "Intra, sur le lac Majeur, vers 1465 – Gubbio, 1553"
+biographie = """
+Giorgio Andreoli naît vers 1465 à Intra, sur la rive du lac Majeur. Il s'installe avec \
+ses frères à Gubbio, petite ville d'Ombrie qui dépend des ducs d'Urbino, et y obtient la \
+citoyenneté à la fin du XVᵉ siècle. Il y dirige un atelier de céramique dont la renommée \
+tient à une spécialité : le lustre métallique, cette pellicule irisée qui donne aux \
+faïences des reflets d'or et de rubis. Son rouge rubis, en particulier, est très réputé. \
+L'atelier connaît son apogée entre 1515 et 1540 environ : il lustre ses propres pièces, \
+mais aussi des plats peints par d'autres ateliers, notamment à Urbino, qui lui sont \
+envoyés pour recevoir ce décor. Beaucoup de pièces portent au revers sa signature \
+abrégée, « M° G° », et une date, tracées au lustre. Ses fils, dont Vincenzo, dit Maestro \
+Cencio, poursuivent son activité. Les majoliques de Gubbio, déjà recherchées par les \
+princes de la Renaissance, ont été passionnément collectionnées au XIXᵉ siècle et \
+figurent aujourd'hui dans les plus grands musées."""
+style = """
+Maestro Giorgio est d'abord un maître du lustre plutôt qu'un peintre de scènes : son art \
+consiste à faire chatoyer la surface de la majolique. Ses plats associent les bordures \
+d'ornements de la Renaissance, rinceaux, grotesques, trophées, et des sujets \
+mythologiques ou bibliques souvent tirés de gravures, rehaussés de reflets dorés et \
+rouges. Ce luxe chatoyant, hérité des faïences hispano-mauresques, a fait de Gubbio, \
+avec Deruta, le grand centre de la majolique lustrée italienne."""
+
+[[artistes]]
+nom = "Faïencerie De Metaale Pot"
+vie = "Delft (Provinces-Unies), XVIIᵉ–XVIIIᵉ siècle"
+biographie = """
+La faïencerie De Metaale Pot, « le Pot de métal », est l'une des nombreuses manufactures \
+qui font la célébrité de Delft aux XVIIᵉ et XVIIIᵉ siècles. La ville, au cœur de la \
+Hollande, entre La Haye et Rotterdam, est alors prospère : elle abrite l'une des \
+chambres de la Compagnie des Indes orientales, dont les navires rapportent d'Asie des \
+cargaisons de porcelaine chinoise. Lorsque la guerre qui accompagne la chute des Ming, \
+au milieu du XVIIᵉ siècle, désorganise les fours chinois, les arrivages se raréfient : \
+les faïenciers de Delft saisissent l'occasion et imitent le bleu et blanc. Beaucoup \
+s'installent dans d'anciennes brasseries, nombreuses dans une ville où la bière décline. \
+Chaque faïencerie a son enseigne et sa marque : la Hache de porcelaine, la Rose, le \
+Paon, la Griffe de porcelaine, le Pot de métal. À la fin du XVIIᵉ siècle, sous la \
+direction de Lambertus van Eenhoorn, De Metaale Pot produit des pièces de grand luxe, \
+dont des pyramides à fleurs, comme sa rivale De Grieksche A d'Adrianus Kocx, fournisseur \
+de la reine Marie II. Au XVIIIᵉ siècle, la concurrence de la porcelaine européenne et de \
+la faïence fine anglaise entraîne le déclin de Delft."""
+style = """
+La faïence de Delft se reconnaît à son émail d'un blanc laiteux et à son décor bleu de \
+cobalt, parfois polychrome, d'une grande liberté de pinceau. Ses peintres empruntent à \
+la Chine pagodes, personnages et fleurs, qu'ils mêlent à des paysages hollandais, à des \
+scènes bibliques et à des armoiries. Ses pièces d'apparat, pyramides, vases à tulipes, \
+plaques, se diffusent dans toute l'Europe, et le « bleu de Delft » a été imité de \
+Londres à Francfort."""
+
+[[artistes]]
+nom = "Johann Joachim Kändler"
+vie = "Fischbach (Saxe), 15 juin 1706 – Meissen, 18 mai 1775"
+biographie = """
+Fils de pasteur, Johann Joachim Kändler naît en 1706 à Fischbach, près de Dresde. Il \
+apprend la sculpture auprès de Benjamin Thomae, sculpteur de la cour, et participe au \
+décor des palais d'Auguste le Fort, électeur de Saxe et roi de Pologne. Remarqué par le \
+prince, il entre en 1731 à la manufacture de porcelaine de Meissen, fondée une vingtaine \
+d'années plus tôt, et en devient dès 1733 le maître modeleur. Auguste le Fort lui \
+commande d'abord des animaux de grande taille, aigles, paons, singes, pour le Palais \
+japonais de Dresde, un défi technique : ces pièces se fendent souvent à la cuisson. \
+Kändler comprend que la porcelaine se prête mieux à la petite échelle : il crée des \
+figurines, personnages de la comédie italienne, bergers, dames en crinoline, musiciens, \
+oiseaux, souvent destinées à orner les tables des festins. Pour le comte de Brühl, il \
+conçoit le service aux cygnes, l'œuvre la plus ambitieuse de sa carrière. En plus de \
+quarante ans, il modèle un nombre considérable de modèles, et reste au service de la \
+manufacture jusqu'à sa mort, à Meissen, en 1775."""
+style = """
+Kändler pense en sculpteur baroque : ses figures sont en mouvement, saisies dans un \
+geste, une torsion, un regard échangé, et ses reliefs, comme ceux du service aux cygnes, \
+transforment les objets usuels en sculptures. Il a imposé la porcelaine comme un art à \
+part entière en Europe, et ses figurines, copiées par toutes les manufactures, de \
+Chelsea à Nymphenburg, ont fixé pour longtemps le genre de la statuette de porcelaine."""
+
+[[artistes]]
+nom = "Manufacture de Sèvres"
+vie = "Vincennes, vers 1740 – Sèvres, depuis 1756"
+biographie = """
+La manufacture naît vers 1740 au château de Vincennes, où des ouvriers venus de la \
+manufacture de Chantilly tentent de percer le secret de la porcelaine. Soutenue par des \
+financiers, puis par Louis XV et Madame de Pompadour, elle déménage en 1756 à Sèvres, \
+près du château de Bellevue qui appartient à la marquise. En 1759, le roi la rachète : \
+elle devient manufacture royale, et ses pièces servent de cadeaux diplomatiques dans \
+toute l'Europe. Elle s'entoure d'artistes : l'orfèvre Jean-Claude Duplessis dessine les \
+formes, le sculpteur Étienne Maurice Falconet dirige l'atelier de sculpture, François \
+Boucher fournit des modèles. À partir de 1770, elle produit aussi de la porcelaine dure, \
+grâce au kaolin découvert près de Limoges. La Révolution, puis Napoléon, maintiennent la \
+manufacture, que dirige à partir de 1800 le savant Alexandre Brongniart. Aux XIXᵉ et XXᵉ \
+siècles, elle accueille de nouveaux artistes et de nouvelles techniques, des grès de \
+l'Art nouveau aux créations contemporaines. Toujours en activité, elle produit à la \
+main, dans ses bâtiments de 1876, des pièces commandées par l'État et des œuvres \
+d'artistes invités."""
+style = """
+Le style de Sèvres au XVIIIᵉ siècle se reconnaît à ses fonds de couleur intenses, bleu \
+céleste, bleu lapis, vert, rose, encadrés d'or ciselé, et à ses cartouches peints comme \
+des miniatures : amours, paysages, oiseaux, fleurs. Ses formes, souvent dessinées par \
+Duplessis, suivent la souplesse du rococo avant de se plier au goût néoclassique. Imitée \
+dans toute l'Europe, la manufacture a longtemps incarné le luxe à la française."""
+
+[[artistes]]
+nom = "Josiah Wedgwood"
+vie = "Burslem (Staffordshire), 1730 – Etruria (Staffordshire), 3 janvier 1795"
+biographie = """
+Josiah Wedgwood naît en 1730 à Burslem, dans le Staffordshire, au sein d'une famille de \
+potiers. Il commence à travailler à neuf ans, après la mort de son père, dans l'atelier \
+familial. Atteint de la variole dans l'enfance, il en garde une jambe malade, qui sera \
+amputée en 1768. Ne pouvant plus tourner, il se consacre à l'expérimentation : il note \
+dans ses carnets des milliers d'essais de pâtes et de glaçures. Installé à son compte en \
+1759, il perfectionne une faïence fine de couleur crème, adoptée par la reine Charlotte, \
+qui l'autorise à la nommer « Queen's ware ». En 1769, avec son associé Thomas Bentley, \
+il ouvre près de Stoke une manufacture modèle baptisée Etruria, en hommage aux \
+Étrusques, à qui l'on attribuait alors les vases grecs. Il y crée le basalte noir, puis \
+le jaspe. Pionnier de l'industrie, il divise le travail, ouvre des salles d'exposition à \
+Londres, publie des catalogues, soutient la construction de canaux. Membre de la Royal \
+Society, il combat la traite des esclaves et diffuse un médaillon célèbre portant \
+l'inscription « Am I not a man and a brother? ». Son petit-fils est le naturaliste \
+Charles Darwin."""
+style = """
+Wedgwood a su allier l'art et l'industrie : des formes simples et élégantes, \
+reproductibles en grand nombre, une qualité constante, et des décors confiés à des \
+artistes comme le sculpteur John Flaxman. Son jaspe bleu pâle à reliefs blancs, inspiré \
+des camées antiques, est devenu l'image même du néoclassicisme anglais. Ses méthodes de \
+fabrication et de vente ont fait de lui l'un des pères de l'industrie moderne."""
