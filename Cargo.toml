@@ -13,6 +13,8 @@ crate-type = ["cdylib", "rlib"]
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 paquets = { git = "https://github.com/maxlestage/Paquets" }
+# Le runtime de l'export statique (`cargo run -- export dist`).
+tokio = { version = "1", features = ["rt-multi-thread"] }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 paquets = { git = "https://github.com/maxlestage/Paquets", default-features = false, features = ["client"] }
@@ -32,3 +34,6 @@ inherits = "release"
 opt-level = "s"
 lto = true
 panic = "abort"
+# Garde la section `target_features` dont wasm-bindgen a besoin (`strip = true`
+# l'enlèverait) ; seules les informations de débogage sont retirées.
+strip = "debuginfo"

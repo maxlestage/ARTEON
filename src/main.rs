@@ -8,13 +8,18 @@ use arteon::artworks::{ARTWORKS, Artwork, ROOMS, Wall, css_rgb};
 use arteon::gallery::tour_duration;
 use arteon::{gallery_scene, showcase_scene};
 
+mod export;
 mod style;
 
 // ─── Mise en page commune ────────────────────────────────────────────────────
 
 fn nav_link(href: &'static str, label: &'static str, current: &str) -> Element {
     let link = a().href(href).text(label);
-    if href == current { link.class("current").attr("aria-current", "page") } else { link }
+    if href == current {
+        link.class("current").attr("aria-current", "page")
+    } else {
+        link
+    }
 }
 
 /// Le logo : un petit carré façon Mondrian, puis le nom.
@@ -34,7 +39,12 @@ fn logo() -> Element {
 
 /// Les textes passés à `Page` doivent être `&'static str` ou `String` (pas un `&str`
 /// emprunté) : toutes les pages passent ici des littéraux.
-fn layout(title: &'static str, description: &'static str, current: &str, content: impl Into<Node>) -> Page {
+fn layout(
+    title: &'static str,
+    description: &'static str,
+    current: &str,
+    content: impl Into<Node>,
+) -> Page {
     Page::new(title)
         .lang("fr")
         .description(description)
@@ -43,16 +53,12 @@ fn layout(title: &'static str, description: &'static str, current: &str, content
         .prefetch(Prefetch::Hover)
         .style(style::CSS)
         .body(
-            header()
-                .class("site-header")
-                .id("top")
-                .child(logo())
-                .child(
-                    nav()
-                        .child(nav_link("/", "Présentation", current))
-                        .child(nav_link("/galerie", "Galerie 3D", current))
-                        .child(nav_link("/oeuvres", "Œuvres", current)),
-                ),
+            header().class("site-header").id("top").child(logo()).child(
+                nav()
+                    .child(nav_link("/", "Présentation", current))
+                    .child(nav_link("/galerie", "Galerie 3D", current))
+                    .child(nav_link("/oeuvres", "Œuvres", current)),
+            ),
         )
         .body(html::main().class("page").child(content))
         .body(site_footer())
@@ -164,7 +170,10 @@ fn thumbnail(art: &Artwork) -> Element {
         .class("thumb")
         .attr("role", "img")
         .attr("aria-label", format!("{}, {}", art.title, art.artist))
-        .style(format!("aspect-ratio:{ratio:.3};background:{}", css_rgb(art.background)))
+        .style(format!(
+            "aspect-ratio:{ratio:.3};background:{}",
+            css_rgb(art.background)
+        ))
         .children(art.shapes.iter().map(|s| {
             span().style(format!(
                 "left:{:.1}%;bottom:{:.1}%;width:{:.1}%;height:{:.1}%;background:{}",
@@ -192,7 +201,13 @@ fn artwork_card(art: &Artwork, index: usize) -> Element {
         .style(format!("animation-delay:{}ms", 80 * index))
         .child(div().class("frame").child(thumbnail(art)))
         .child(h3().text(art.title))
-        .child(p().child(strong().text(art.artist)).child(span().class("muted").text(format!(" ({}) · {}", art.artist_dates, art.year))))
+        .child(
+            p().child(strong().text(art.artist)).child(
+                span()
+                    .class("muted")
+                    .text(format!(" ({}) · {}", art.artist_dates, art.year)),
+            ),
+        )
         .child(p().class("muted").text(art.note))
         .child(p().class("tag").text(format!(
             "{} · {} · {}",
@@ -215,12 +230,14 @@ fn css_cube() -> Element {
 
 /// Le titre, lettre par lettre, chaque lettre arrivant un peu après la précédente.
 fn animated_title(text: &'static str) -> Element {
-    h1().class("hero-title").attr("aria-label", text).children(text.chars().enumerate().map(|(i, c)| {
-        span()
-            .attr("aria-hidden", "true")
-            .style(format!("animation-delay:{}ms", 90 * i))
-            .text(c.to_string())
-    }))
+    h1().class("hero-title")
+        .attr("aria-label", text)
+        .children(text.chars().enumerate().map(|(i, c)| {
+            span()
+                .attr("aria-hidden", "true")
+                .style(format!("animation-delay:{}ms", 90 * i))
+                .text(c.to_string())
+        }))
 }
 
 // ─── Pages ───────────────────────────────────────────────────────────────────
@@ -362,10 +379,67 @@ async fn catalogue(_req: Request) -> Page {
     )
 }
 
-fn main() -> std::io::Result<()> {
+async fn not_found(_req: Request) -> Page {
+    let content = section()
+        .class("page-intro")
+        .child(p().class("kicker").text("Erreur 404"))
+        .child(h1().text("Cette salle n'existe pas"))
+        .child(
+            p().class("lead")
+                .text("La page demandée est introuvable. Le reste du musée vous attend."),
+        )
+        .child(
+            div()
+                .class("row")
+                .child(a().class("button").href("/").text("Retour à l'accueil"))
+                .child(
+                    a().class("button ghost")
+                        .href("/galerie")
+                        .text("Entrer dans la galerie"),
+                ),
+        );
+    layout(
+        "Page introuvable",
+        "Cette page d'ARTEON n'existe pas.",
+        "",
+        content,
+    )
+    .status(404)
+}
+
+/// Les pages du site : la présentation, la galerie 3D et le catalogue.
+pub(crate) const ROUTES: [&str; 3] = ["/", "/galerie", "/oeuvres"];
+
+/// L'application : le même serveur pour `paquets dev` et pour l'export statique.
+fn app() -> App {
     let mut app = App::new();
-    app.get("/", home);
-    app.get("/galerie", gallery_page);
-    app.get("/oeuvres", catalogue);
-    app.run()
+    app.get(ROUTES[0], home);
+    app.get(ROUTES[1], gallery_page);
+    app.get(ROUTES[2], catalogue);
+    app.fallback(not_found);
+    app
+}
+
+/// `cargo run` : le serveur, sur http://localhost:3000.
+/// `cargo run -- export dist` : tout le site en fichiers statiques (GitHub Pages).
+fn main() -> std::io::Result<()> {
+    let mut args = std::env::args().skip(1);
+    match args.next().as_deref() {
+        Some("export") => {
+            let dir = args.next().unwrap_or_else(|| "dist".into());
+            let base = std::env::var("BASE_PATH").unwrap_or_default();
+            let runtime = tokio::runtime::Builder::new_multi_thread()
+                .enable_all()
+                .build()?;
+            let files =
+                runtime.block_on(export::export(app(), std::path::Path::new(&dir), &base))?;
+            println!("📦 {files} fichiers écrits dans {dir}");
+            Ok(())
+        }
+        Some(other) => {
+            eprintln!("commande inconnue {other:?} : lancer sans argument, ou `export <dossier>`");
+            std::process::exit(2);
+        }
+        None => app().run(),
+    }
 }

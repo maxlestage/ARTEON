@@ -10,13 +10,15 @@ pub const CSS: &str = r#"
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; overflow-x: hidden; }
+/* Le thème de Paquets centre le body dans 72rem : ici, l'en-tête et le pied de page
+   prennent toute la largeur, et c'est `.page` qui centre le contenu. */
+body { margin: 0; max-width: none; padding: 0; overflow-x: hidden; }
 .page { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 4rem; }
 .muted { color: var(--muted); }
 .kicker { text-transform: uppercase; letter-spacing: .18em; font-size: .8rem; color: var(--accent); font-weight: 700; margin: 0; }
 .lead { font-size: 1.15rem; line-height: 1.6; max-width: 38rem; }
 .tag { display: inline-block; font-size: .78rem; padding: .2rem .6rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
-.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem; }
+h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem; }
 
 /* ─── En-tête ─────────────────────────────────────────────────────────── */
 .site-header { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;
@@ -37,7 +39,7 @@ body { margin: 0; overflow-x: hidden; }
 /* ─── Hero ────────────────────────────────────────────────────────────── */
 .hero { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: center;
   text-align: left; padding: 4rem 0 2rem; min-height: 72vh; }
-.hero-title { font-size: clamp(3.5rem, 11vw, 8rem); letter-spacing: .08em; margin: .3rem 0; line-height: 1; }
+.hero-title { font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing: .08em; margin: .3rem 0; line-height: 1; white-space: nowrap; }
 .hero-title span { display: inline-block; opacity: 0; animation: drop .8s cubic-bezier(.2,.9,.3,1.3) forwards; }
 .hero-title span:nth-child(3n+1) { color: var(--red); }
 .hero-title span:nth-child(3n+2) { color: var(--fg); }
@@ -132,6 +134,14 @@ body { margin: 0; overflow-x: hidden; }
 @media (max-width: 820px) {
   .hero { grid-template-columns: 1fr; text-align: center; min-height: auto; }
   .hero .row { justify-content: center; }
+  .hero { padding-top: 2rem; }
+  /* Sur un petit écran, les formes décoratives passeraient sur le titre et les boutons. */
+  .floating { display: none; }
+  .cube-stage { width: 60px; height: 60px; right: 6px; top: -24px; }
+  .cube .face { border-width: 2px; }
+  .cube .front { transform: translateZ(30px); } .cube .back { transform: rotateY(180deg) translateZ(30px); }
+  .cube .right { transform: rotateY(90deg) translateZ(30px); } .cube .left { transform: rotateY(-90deg) translateZ(30px); }
+  .cube .top { transform: rotateX(90deg) translateZ(30px); } .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
   .lead { margin-inline: auto; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .site-header nav { gap: .7rem; font-size: .9rem; }

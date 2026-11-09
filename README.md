@@ -11,6 +11,7 @@ ARTEON est un musée virtuel. Il contient trois salles d'exposition reliées par
 | `/` | La page de présentation : sculpture 3D animée, cube en CSS 3D, titre animé lettre par lettre, chiffres clés, parcours, aperçu des œuvres et grand pied de page animé |
 | `/galerie` | La visite guidée en 3D des trois salles et de leurs couloirs |
 | `/oeuvres` | Le catalogue, avec un cartel et une vignette pour chaque œuvre |
+| toute autre adresse | Une page « introuvable » (404) qui renvoie vers l'accueil et la galerie |
 
 Le pied de page contient une bande De Stijl animée, un défilé des œuvres exposées, quatre colonnes de liens et les mentions sur le domaine public.
 
@@ -45,8 +46,12 @@ Tous les artistes sont morts depuis plus de 70 ans : leurs œuvres sont dans le 
 - `src/artworks.rs` : le catalogue, avec les œuvres, leurs aplats, les salles et les dimensions.
 - `src/gallery.rs` : les scènes 3D (`paquets::ecs`) et la visite guidée.
 - `src/style.rs` : le CSS, sous forme de constante Rust.
+- `src/export.rs` : l'export du site en fichiers statiques, pour GitHub Pages.
+- `.github/workflows/pages.yml` : compilation, tests, export et déploiement sur GitHub Pages.
 
-La scène 3D utilise le moteur de Paquets : des pavés (`Cuboid`), des matériaux colorés, des lampes (`PointLight`) et une caméra (`Camera3d`) déplacée par un système à chaque image. La visite guidée est une fonction pure (`tour_pose(t)`), testée sans navigateur. Les vignettes du catalogue sont générées à partir des mêmes aplats que la scène 3D. Les animations de la page respectent `prefers-reduced-motion`.
+La scène 3D utilise le moteur de Paquets : des pavés (`Cuboid`), des matériaux colorés, des lampes (`PointLight`) et une caméra (`Camera3d`) déplacée par un système à chaque image. La visite guidée est une fonction pure (`tour_pose(t)`), testée sans navigateur.
+
+Deux contraintes du moteur sont prises en compte (et testées) : la physique de `DefaultPlugins` est retirée, sinon chaque pavé (murs, sols, tableaux) serait soumis à la gravité et tomberait dans le vide ; et la scène n'a que 8 lampes ponctuelles, le maximum que le shader prend en compte. Les vignettes du catalogue sont générées à partir des mêmes aplats que la scène 3D. Les animations de la page respectent `prefers-reduced-motion`.
 
 ## Lancer le projet
 
@@ -54,6 +59,27 @@ La scène 3D utilise le moteur de Paquets : des pavés (`Cuboid`), des matériau
 - Lancer en développement (http://localhost:3000, avec rechargement) : `paquets dev`
 - Lancer les tests de la visite guidée : `cargo test`
 - Compiler pour la production (serveur et bundle WebAssembly optimisés) : `paquets build`
+
+## Publier sur GitHub Pages
+
+Le site est publié automatiquement par le workflow `.github/workflows/pages.yml` à chaque push sur la branche par défaut (`master`), ou à la main depuis l'onglet **Actions** (« Run workflow »). Sur les autres branches et les pull requests, il compile, teste et exporte le site sans le déployer.
+
+Réglage unique du dépôt : **Settings → Pages → Build and deployment → Source : GitHub Actions**. Le workflow essaie de l'activer tout seul ; si le premier déploiement échoue avec « Pages not enabled », il suffit de faire ce réglage puis de relancer le workflow.
+
+Adresse du site : `https://<compte>.github.io/ARTEON/` (`/` la présentation, `/galerie/` la galerie 3D, `/oeuvres/` le catalogue).
+
+Pour produire le même export en local :
+
+```bash
+rustup target add wasm32-unknown-unknown
+cargo install wasm-bindgen-cli --version 0.2.130 --locked   # la version de Cargo.lock
+cargo build --lib --target wasm32-unknown-unknown --profile wasm-release
+wasm-bindgen --target web --no-typescript --remove-name-section --out-dir pkg \
+  target/wasm32-unknown-unknown/wasm-release/arteon.wasm
+BASE_PATH=/ARTEON cargo run --release -- export dist
+```
+
+Chaque page est rendue par le serveur lui-même (le client de test en mémoire de Paquets), puis écrite dans `dist/` avec `404.html`, le bundle WebAssembly (`pkg/`) et `.nojekyll`. `BASE_PATH` préfixe tous les liens ; sans lui, le site s'exporte pour la racine d'un domaine.
 
 ## Licence
 

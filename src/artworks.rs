@@ -126,7 +126,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.81, 0.0, 0.03, 0.33, K),
             s(0.48, 0.0, 0.03, 0.33, K),
         ],
-        hook: Hook { room: 0, wall: Wall::Left, along: 2.5 },
+        hook: Hook {
+            room: 0,
+            wall: Wall::Left,
+            along: 2.5,
+        },
     },
     Artwork {
         title: "Composition en rouge, jaune, bleu et noir",
@@ -151,7 +155,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.78, 0.85, 0.22, 0.03, K),
             s(0.43, 0.0, 0.03, 0.27, K),
         ],
-        hook: Hook { room: 0, wall: Wall::Left, along: -2.5 },
+        hook: Hook {
+            room: 0,
+            wall: Wall::Left,
+            along: -2.5,
+        },
     },
     Artwork {
         title: "Composition XI",
@@ -174,7 +182,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.50, 0.10, 0.10, 0.24, Y),
             s(0.80, 0.08, 0.12, 0.10, K),
         ],
-        hook: Hook { room: 0, wall: Wall::Right, along: 2.5 },
+        hook: Hook {
+            room: 0,
+            wall: Wall::Right,
+            along: 2.5,
+        },
     },
     Artwork {
         title: "Composition VIII (La Vache)",
@@ -197,7 +209,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.40, 0.08, 0.25, 0.12, G),
             s(0.75, 0.12, 0.15, 0.20, Y),
         ],
-        hook: Hook { room: 0, wall: Wall::Right, along: -2.5 },
+        hook: Hook {
+            room: 0,
+            wall: Wall::Right,
+            along: -2.5,
+        },
     },
     Artwork {
         title: "Carré noir",
@@ -210,7 +226,11 @@ pub const ARTWORKS: [Artwork; 9] = [
         height: 1.4,
         background: [236, 230, 214],
         shapes: &[s(0.12, 0.12, 0.76, 0.76, K)],
-        hook: Hook { room: 1, wall: Wall::Left, along: -16.0 },
+        hook: Hook {
+            room: 1,
+            wall: Wall::Left,
+            along: -16.0,
+        },
     },
     Artwork {
         title: "Supremus n° 58",
@@ -232,7 +252,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.10, 0.45, 0.10, 0.04, G),
             s(0.70, 0.30, 0.18, 0.08, [60, 110, 70]),
         ],
-        hook: Hook { room: 1, wall: Wall::Right, along: -16.0 },
+        hook: Hook {
+            room: 1,
+            wall: Wall::Right,
+            along: -16.0,
+        },
     },
     Artwork {
         title: "Château et soleil",
@@ -258,7 +282,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.42, 0.72, 0.06, 0.10, [150, 60, 50]),
             s(0.08, 0.75, 0.10, 0.10, [220, 60, 40]),
         ],
-        hook: Hook { room: 2, wall: Wall::Left, along: -32.0 },
+        hook: Hook {
+            room: 2,
+            wall: Wall::Left,
+            along: -32.0,
+        },
     },
     Artwork {
         title: "Composition verticale-horizontale",
@@ -283,7 +311,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.51, 0.05, 0.20, 0.25, G),
             s(0.75, 0.05, 0.20, 0.25, B),
         ],
-        hook: Hook { room: 2, wall: Wall::Right, along: -32.0 },
+        hook: Hook {
+            room: 2,
+            wall: Wall::Right,
+            along: -32.0,
+        },
     },
     Artwork {
         title: "Composition avec rouge, bleu et jaune",
@@ -305,7 +337,11 @@ pub const ARTWORKS: [Artwork; 9] = [
             s(0.89, 0.0, 0.03, 0.27, K),
             s(0.92, 0.12, 0.08, 0.03, K),
         ],
-        hook: Hook { room: 2, wall: Wall::Back, along: 0.0 },
+        hook: Hook {
+            room: 2,
+            wall: Wall::Back,
+            along: 0.0,
+        },
     },
 ];
 
