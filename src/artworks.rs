@@ -12,6 +12,8 @@
 pub struct Exhibition {
     /// Le nom du fichier `.toml`, et l'adresse de l'exposition (`/{slug}`).
     pub slug: &'static str,
+    /// Le texte du fichier `.toml` (l'éditeur le réécrit avec les modifications).
+    pub source: &'static str,
     /// Son nom dans le menu (« Van Gogh »).
     pub short_name: &'static str,
     pub title: &'static str,
@@ -189,6 +191,9 @@ pub struct Room {
     pub height: f32,
     /// Un couloir (des murs sombres, un liseré doré, pas d'arrêt de la visite).
     pub corridor: bool,
+    /// Son numéro dans le fichier `.toml` (`salle = …`) ; 0 pour un couloir ajouté par
+    /// l'enfilade.
+    pub number: usize,
     pub doors: &'static [Door],
 }
 

@@ -123,6 +123,8 @@ type KeyListener = (&'static str, Closure<dyn FnMut(KeyboardEvent)>);
 pub struct Commands {
     document: Document,
     listeners: Vec<KeyListener>,
+    /// L'interface egui, arrêtée avec l'îlot.
+    runner: eframe::WebRunner,
 }
 
 impl Drop for Commands {
@@ -135,19 +137,12 @@ impl Drop for Commands {
         if let Some(body) = self.document.body() {
             let _ = body.class_list().remove_1("viewer-open");
         }
+        self.runner.destroy();
     }
 }
 
 fn find(shell: &Element, class: &str) -> Option<Element> {
     shell.query_selector(&format!(".{class}")).ok().flatten()
-}
-
-fn set_button(shell: &Element, class: &str, text: &str, label: &str) {
-    if let Some(button) = find(shell, class) {
-        button.set_text_content(Some(text));
-        let _ = button.set_attribute("aria-label", label);
-        let _ = button.set_attribute("title", label);
-    }
 }
 
 /// Appelle `action` à chaque clic sur l'élément de classe `class` de la galerie.
@@ -178,7 +173,8 @@ struct Touch {
     last: (f32, f32),
 }
 
-/// Branche les commandes autour de `canvas` (dans `.viewer-shell`).
+/// Branche l'interface autour de `canvas` (dans `.viewer-shell`) : egui dans son canvas
+/// transparent, posé au-dessus, et les gestes qui vont à la scène.
 pub fn attach(
     canvas: &Element,
     ex: &'static Exhibition,
@@ -191,6 +187,10 @@ pub fn attach(
     let native = Rc::new(Cell::new(false));
     // Un glissé vient-il d'avoir lieu (le clic qui suit ne compte pas) ?
     let dragged = Rc::new(Cell::new(false));
+    // egui a-t-il le pointeur (au-dessus d'un panneau) ? La scène ne réagit alors pas.
+    let busy = Rc::new(Cell::new(false));
+    // Les gestes arrivent sur la couche egui, au-dessus de la scène.
+    let layer: Element = find(&shell, "egui-layer").unwrap_or_else(|| canvas.clone());
 
     let enter = {
         let (shell, document, native) = (shell.clone(), document.clone(), native.clone());
@@ -217,85 +217,11 @@ pub fn attach(
     };
     let is_full = {
         let shell = shell.clone();
-        move || shell.class_list().contains("is-fullscreen")
+        Rc::new(move || shell.class_list().contains("is-fullscreen"))
     };
     let is_free = {
         let control = control.clone();
         move || control.borrow().mode == Mode::Free
-    };
-    let toggle_pause = {
-        let (shell, control) = (shell.clone(), control.clone());
-        Rc::new(move || {
-            let paused = {
-                let mut c = control.borrow_mut();
-                c.paused = !c.paused;
-                c.paused
-            };
-            set_button(
-                &shell,
-                "ctl-play",
-                if paused { "▶" } else { "❚❚" },
-                if paused {
-                    "Reprendre la visite"
-                } else {
-                    "Pause"
-                },
-            );
-            let _ = shell.class_list().toggle_with_force("is-paused", paused);
-        })
-    };
-    let toggle_mode = {
-        let (shell, control) = (shell.clone(), control.clone());
-        Rc::new(move || {
-            let free = {
-                let mut c = control.borrow_mut();
-                c.mode = if c.mode == Mode::Free {
-                    Mode::Guided
-                } else {
-                    Mode::Free
-                };
-                (c.forward, c.strafe, c.spin) = (0.0, 0.0, 0.0);
-                c.mode == Mode::Free
-            };
-            let _ = shell.class_list().toggle_with_force("is-free", free);
-            if free {
-                set_button(
-                    &shell,
-                    "ctl-mode",
-                    "🎬",
-                    "Visite guidée : la caméra vous emmène",
-                );
-            } else {
-                set_button(
-                    &shell,
-                    "ctl-mode",
-                    "🚶",
-                    "Visite libre : se promener soi-même",
-                );
-            }
-        })
-    };
-    let jump = {
-        let control = control.clone();
-        move |step: i32| {
-            let mut c = control.borrow_mut();
-            if c.mode == Mode::Free {
-                // En visite libre, « suivante » emmène devant l'œuvre suivante de la visite.
-                let order = crate::tour::stops(ex)
-                    .iter()
-                    .filter_map(|s| s.focus)
-                    .collect::<Vec<_>>();
-                if !order.is_empty() {
-                    let at = c.current.and_then(|f| order.iter().position(|o| *o == f));
-                    let k = at.map_or(0, |i| {
-                        (i as i32 + step).rem_euclid(order.len() as i32) as usize
-                    });
-                    c.go_to = Some(order[k]);
-                }
-            } else {
-                c.jump += step;
-            }
-        }
     };
     let open_hd = {
         let (shell, control, base) = (shell.clone(), control.clone(), base.clone());
@@ -326,60 +252,99 @@ pub fn attach(
             let _ = shell.class_list().remove_1("hd-open");
         })
     };
-
-    // Le cartel suit l'œuvre regardée : un tableau (avec « Voir en HD ») ou une sculpture.
-    {
-        let shell = shell.clone();
-        control.borrow_mut().on_change = Some(Rc::new(move |current: Option<Focus>| {
-            let _ = shell
-                .class_list()
-                .toggle_with_force("has-art", current.is_some());
-            let _ = shell
-                .class_list()
-                .toggle_with_force("has-hd", matches!(current, Some(Focus::Art(_))));
-            let (title, meta) = match current {
-                Some(Focus::Art(i)) => {
-                    let a = &ex.artworks[i];
-                    (
-                        a.title,
-                        format!("{} · {} · {}", a.artist_in(ex), a.year, a.collection),
-                    )
-                }
-                Some(Focus::Sculpture(i)) => {
-                    let s = &ex.sculptures[i];
-                    (
-                        s.title,
-                        format!("{} · {} · {}", s.artist, s.year, s.collection),
-                    )
-                }
-                None => return,
+    let toggle_pause = {
+        let control = control.clone();
+        move || {
+            let mut c = control.borrow_mut();
+            c.paused = !c.paused;
+        }
+    };
+    let toggle_mode = {
+        let control = control.clone();
+        move || {
+            let mut c = control.borrow_mut();
+            c.mode = if c.mode == Mode::Free {
+                Mode::Guided
+            } else {
+                Mode::Free
             };
-            if let Some(t) = find(&shell, "cap-title") {
-                t.set_text_content(Some(title));
-            }
-            if let Some(m) = find(&shell, "cap-meta") {
-                m.set_text_content(Some(&meta));
-            }
-        }));
+            (c.forward, c.strafe, c.spin) = (0.0, 0.0, 0.0);
+        }
+    };
+    let jump = {
+        let control = control.clone();
+        move |step: i32| control.borrow_mut().jump += step
+    };
+
+    // L'interface egui, dans son canvas.
+    let runner = eframe::WebRunner::new();
+    if let Some(layer_canvas) = layer
+        .clone()
+        .dyn_into::<web_sys::HtmlCanvasElement>()
+        .ok()
+        .filter(|c| c.class_list().contains("egui-layer"))
+    {
+        let actions = crate::ui::Actions {
+            enter: enter.clone(),
+            exit: exit.clone(),
+            is_full: is_full.clone(),
+            open_hd: open_hd.clone(),
+            download: Rc::new(download),
+            copy: Rc::new(|text: &str| {
+                if let Some(w) = web_sys::window() {
+                    let _ = w.navigator().clipboard().write_text(text);
+                }
+            }),
+            open: Rc::new(|url: &str| {
+                if let Some(w) = web_sys::window() {
+                    let _ = w.open_with_url_and_target(url, "_blank");
+                }
+            }),
+        };
+        let ui = crate::ui::MuseumUi::new(ex, control.clone(), actions, busy.clone());
+        let options = eframe::WebOptions {
+            // Les événements continuent vers la page : la scène reçoit les gestes et le
+            // clavier quand egui n'en a pas l'usage.
+            should_stop_propagation: Box::new(|_| false),
+            should_prevent_default: Box::new(|_| false),
+            ..Default::default()
+        };
+        let starting = runner.clone();
+        wasm_bindgen_futures::spawn_local(async move {
+            let _ = starting
+                .start(
+                    layer_canvas,
+                    options,
+                    Box::new(move |cc| {
+                        // Le thème sombre, lisible sur la scène.
+                        cc.egui_ctx.set_theme(eframe::egui::Theme::Dark);
+                        Ok(Box::new(ui))
+                    }),
+                )
+                .await;
+        });
     }
 
-    // Toucher la scène : plein écran ; en plein écran (visite guidée), pause ou reprise.
+    // Toucher la scène (hors des panneaux) : plein écran ; en plein écran (visite guidée),
+    // pause ou reprise.
     {
-        let (enter, toggle_pause, is_full, is_free, dragged) = (
+        let (enter, is_full, is_free, dragged, busy, control) = (
             enter.clone(),
-            toggle_pause.clone(),
             is_full.clone(),
             is_free.clone(),
             dragged.clone(),
+            busy.clone(),
+            control.clone(),
         );
-        listen(canvas, "click", move |_: Event| {
-            if dragged.replace(false) {
+        listen(&layer, "click", move |_: Event| {
+            if dragged.replace(false) || busy.get() {
                 return;
             }
             if !is_full() {
                 enter();
             } else if !is_free() {
-                toggle_pause();
+                let mut c = control.borrow_mut();
+                c.paused = !c.paused;
             }
         });
     }
@@ -388,18 +353,18 @@ pub fn attach(
     // tactile, la moitié gauche est un joystick pour avancer.
     {
         let touches: Rc<RefCell<HashMap<i32, Touch>>> = Rc::default();
-        let (control_down, touches_down, is_free_down, canvas_down) = (
-            control.clone(),
+        let (touches_down, is_free_down, layer_down, busy_down) = (
             touches.clone(),
             is_free.clone(),
-            canvas.clone(),
+            layer.clone(),
+            busy.clone(),
         );
-        listen(canvas, "pointerdown", move |e: PointerEvent| {
-            if !is_free_down() {
+        listen(&layer, "pointerdown", move |e: PointerEvent| {
+            if !is_free_down() || busy_down.get() {
                 return;
             }
             let (x, y) = (e.client_x() as f32, e.client_y() as f32);
-            let rect = canvas_down.get_bounding_client_rect();
+            let rect = layer_down.get_bounding_client_rect();
             let moves =
                 e.pointer_type() == "touch" && (x - rect.left() as f32) < rect.width() as f32 / 2.0;
             touches_down.borrow_mut().insert(
@@ -410,12 +375,10 @@ pub fn attach(
                     last: (x, y),
                 },
             );
-            let _ = canvas_down.set_pointer_capture(e.pointer_id());
-            let _ = &control_down;
         });
         let (control_move, touches_move, dragged_move) =
             (control.clone(), touches.clone(), dragged.clone());
-        listen(canvas, "pointermove", move |e: PointerEvent| {
+        listen(&layer, "pointermove", move |e: PointerEvent| {
             let mut all = touches_move.borrow_mut();
             let Some(t) = all.get_mut(&e.pointer_id()) else {
                 return;
@@ -434,9 +397,9 @@ pub fn attach(
             }
             t.last = (x, y);
         });
-        for kind in ["pointerup", "pointercancel"] {
+        for kind in ["pointerup", "pointercancel", "pointerleave"] {
             let (control_up, touches_up) = (control.clone(), touches.clone());
-            listen(canvas, kind, move |e: PointerEvent| {
+            listen(&layer, kind, move |e: PointerEvent| {
                 if let Some(t) = touches_up.borrow_mut().remove(&e.pointer_id())
                     && t.moves
                 {
@@ -447,34 +410,6 @@ pub fn attach(
         }
     }
 
-    on_click(&shell, "viewer-full", {
-        let enter = enter.clone();
-        move |_| enter()
-    });
-    on_click(&shell, "ctl-exit", {
-        let exit = exit.clone();
-        move |_| exit()
-    });
-    on_click(&shell, "ctl-play", {
-        let toggle_pause = toggle_pause.clone();
-        move |_| toggle_pause()
-    });
-    on_click(&shell, "ctl-mode", {
-        let toggle_mode = toggle_mode.clone();
-        move |_| toggle_mode()
-    });
-    on_click(&shell, "ctl-prev", {
-        let jump = jump.clone();
-        move |_| jump(-1)
-    });
-    on_click(&shell, "ctl-next", {
-        let jump = jump.clone();
-        move |_| jump(1)
-    });
-    on_click(&shell, "cap-hd", {
-        let open_hd = open_hd.clone();
-        move |_| open_hd()
-    });
     on_click(&shell, "hd-close", {
         let close_hd = close_hd.clone();
         move |_| close_hd()
@@ -505,15 +440,7 @@ pub fn attach(
     };
     let keydown = {
         let (shell, control) = (shell.clone(), control.clone());
-        let (enter, exit, close_hd, toggle_pause, toggle_mode, jump) = (
-            enter,
-            exit,
-            close_hd,
-            toggle_pause,
-            toggle_mode.clone(),
-            jump,
-        );
-        let (is_full, is_free, active) = (is_full, is_free.clone(), active.clone());
+        let (is_full, is_free, active) = (is_full.clone(), is_free.clone(), active.clone());
         Closure::<dyn FnMut(KeyboardEvent)>::new(move |e: KeyboardEvent| {
             if typing(&e) {
                 return;
@@ -549,7 +476,32 @@ pub fn attach(
     Some(Commands {
         document,
         listeners: vec![("keydown", keydown), ("keyup", keyup)],
+        runner,
     })
+}
+
+/// Fait télécharger `text` sous le nom `name`.
+fn download(name: &str, text: &str) {
+    let Some(document) = web_sys::window().and_then(|w| w.document()) else {
+        return;
+    };
+    let parts = js_sys::Array::of1(&wasm_bindgen::JsValue::from_str(text));
+    let options = web_sys::BlobPropertyBag::new();
+    options.set_type("text/plain;charset=utf-8");
+    let Ok(blob) = web_sys::Blob::new_with_str_sequence_and_options(&parts, &options) else {
+        return;
+    };
+    let Ok(url) = web_sys::Url::create_object_url_with_blob(&blob) else {
+        return;
+    };
+    if let Ok(link) = document.create_element("a") {
+        let _ = link.set_attribute("href", &url);
+        let _ = link.set_attribute("download", name);
+        if let Some(link) = link.dyn_ref::<HtmlElement>() {
+            link.click();
+        }
+    }
+    let _ = web_sys::Url::revoke_object_url(&url);
 }
 
 /// Les touches de la visite libre, par leur position sur le clavier (`code`) : ZQSD sur

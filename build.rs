@@ -311,6 +311,7 @@ fn layout(name: &str, file: &File) -> (Vec<Room>, Vec<usize>) {
                 height: s.hauteur.unwrap_or(4.0),
                 corridor: s.couloir,
                 doors: list,
+                number: i + 1,
             });
             if i + 1 < count {
                 rooms.push(Room {
@@ -324,11 +325,12 @@ fn layout(name: &str, file: &File) -> (Vec<Room>, Vec<usize>) {
                     height: 3.0,
                     corridor: true,
                     doors: Vec::new(),
+                    number: 0,
                 });
             }
         }
     } else {
-        for s in &file.salles {
+        for (n, s) in file.salles.iter().enumerate() {
             index.push(rooms.len());
             let corridor = s.couloir;
             rooms.push(Room {
@@ -349,6 +351,7 @@ fn layout(name: &str, file: &File) -> (Vec<Room>, Vec<usize>) {
                 height: s.hauteur.unwrap_or(if corridor { 3.2 } else { 4.5 }),
                 corridor,
                 doors: doors(s),
+                number: n + 1,
             });
         }
     }
@@ -694,7 +697,7 @@ fn exhibition(
     let [ar, ag, ab] = hex(name, &e.couleur, "couleur");
     let _ = writeln!(
         out,
-        "    Exhibition {{\n        slug: {slug:?},\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        data_size: {},\n        rooms: &[",
+        "    Exhibition {{\n        slug: {slug:?},\n        source: include_str!(concat!(env!(\"CARGO_MANIFEST_DIR\"), \"/expositions/{slug}.toml\")),\n        short_name: {:?},\n        title: {:?},\n        artist: {:?},\n        artist_dates: {:?},\n        kicker: {:?},\n        introduction: {:?},\n        accent: [{ar}, {ag}, {ab}],\n        showcase: {:?},\n        data_size: {},\n        rooms: &[",
         e.nom_court.trim(),
         e.titre.trim(),
         e.artiste.trim(),
@@ -717,7 +720,7 @@ fn exhibition(
         }
         let _ = writeln!(
             out,
-            "            Room {{ name: {:?}, theme: {:?}, walls: {:?}, x: {:?}, z: {:?}, width: {:?}, depth: {:?}, height: {:?}, corridor: {}, doors: &[{doors}] }},",
+            "            Room {{ name: {:?}, theme: {:?}, walls: {:?}, x: {:?}, z: {:?}, width: {:?}, depth: {:?}, height: {:?}, corridor: {}, number: {}, doors: &[{doors}] }},",
             room.name.trim(),
             room.theme.trim(),
             room.walls,
@@ -727,6 +730,7 @@ fn exhibition(
             room.depth,
             room.height,
             room.corridor,
+            room.number,
         );
     }
     out.push_str("        ],\n        artworks: &[\n");

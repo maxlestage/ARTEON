@@ -83,6 +83,8 @@ pub struct Room {
     pub height: f32,
     pub corridor: bool,
     pub doors: Vec<Door>,
+    /// Le numéro de la salle dans le fichier (0 : un couloir ajouté par l'enfilade).
+    pub number: usize,
 }
 
 /// L'épaisseur d'un mur (posé à l'intérieur de la salle, contre sa limite).

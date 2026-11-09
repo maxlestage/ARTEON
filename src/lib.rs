@@ -10,10 +10,13 @@ use paquets::prelude::*;
 
 pub mod artworks;
 pub mod data;
+pub mod editor;
 pub mod gallery;
 pub mod museum;
 pub mod tour;
 
+#[cfg(target_arch = "wasm32")]
+mod ui;
 #[cfg(target_arch = "wasm32")]
 mod viewer;
 
@@ -56,35 +59,15 @@ pub fn gallery_scene(props: &str) -> Node {
                 )
                 .use_action(move |canvas| play_gallery(canvas, ex)),
         )
+        // L'interface (egui), dessinée au-dessus de la scène.
+        .child(
+            canvas()
+                .class("egui-layer")
+                .attr("aria-label", "Commandes de la visite"),
+        )
         .child(
             p().class("viewer-loading")
                 .text(format!("Ouverture du musée… ({})", megabytes(ex))),
-        )
-        .child(control("viewer-full", "Plein écran", "⛶ Plein écran"))
-        .child(
-            div()
-                .class("viewer-caption")
-                .attr("aria-live", "polite")
-                .child(p().class("cap-title"))
-                .child(p().class("cap-meta"))
-                .child(control(
-                    "cap-hd",
-                    "Voir la toile en haute définition",
-                    "Voir en HD",
-                )),
-        )
-        .child(
-            div()
-                .class("viewer-controls")
-                .child(control(
-                    "ctl-mode",
-                    "Visite libre : se promener soi-même",
-                    "🚶",
-                ))
-                .child(control("ctl-prev", "Œuvre précédente", "‹"))
-                .child(control("ctl-play", "Pause", "❚❚"))
-                .child(control("ctl-next", "Œuvre suivante", "›"))
-                .child(control("ctl-exit", "Quitter le plein écran", "✕")),
         )
         .child(
             div()

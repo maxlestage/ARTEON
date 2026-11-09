@@ -27,6 +27,7 @@ use paquets::scene::BufferGeometry;
 
 use crate::artworks::{Artwork, Exhibition, Mosaic};
 use crate::data::ExhibitionData;
+use crate::editor::{self, Edits};
 use crate::museum::{self, Block};
 use crate::tour::{self, EYE, Focus, Pose};
 
@@ -58,6 +59,8 @@ pub struct TourControl {
     pub jump: i32,
     /// Aller voir cette œuvre (la visite guidée reprend devant elle).
     pub go_to: Option<Focus>,
+    /// En visite libre : aller à ce point (x, z) du plan.
+    pub teleport: Option<(f32, f32)>,
     /// En visite libre : avancer (+1) ou reculer (-1), aller à droite (+1) ou à gauche (-1).
     pub forward: f32,
     pub strafe: f32,
@@ -74,6 +77,8 @@ pub struct TourControl {
     pub position: [f32; 3],
     /// Appelé quand l'œuvre regardée change.
     pub on_change: Option<Rc<dyn Fn(Option<Focus>)>>,
+    /// Les modifications de l'éditeur : la scène se reconstruit quand elles changent.
+    pub edits: Edits,
 }
 
 /// Les commandes, partagées (`Rc<RefCell<…>>`) entre la page et la scène.
@@ -97,6 +102,16 @@ paquets::active::component!(Visitor);
 /// Une lampe de plafond (seules les 8 plus proches du visiteur restent allumées).
 struct Lamp;
 paquets::active::component!(Lamp);
+
+/// Une œuvre de la scène (tableau, cadre, cartel, sculpture, socle) : reconstruite quand
+/// l'éditeur la déplace.
+struct Exhibit;
+paquets::active::component!(Exhibit);
+
+/// La version des modifications déjà appliquées à la scène.
+#[derive(Default)]
+struct Applied(u32);
+paquets::active::resource!(Applied);
 
 /// Un morceau posé sur un plateau tournant (la vitrine).
 struct Turntable {
@@ -277,6 +292,7 @@ fn hang(
             Mesh3d(meshes.add(Cuboid::new(size[0], size[1], size[2]))),
             MeshMaterial3d(materials.add(color(rgb))),
             turned(pos, angle),
+            Exhibit,
         ));
     }
     let (pos, angle) = museum::on_wall(ex, art.hook, 0.0, 0.0, 0.07);
@@ -285,6 +301,7 @@ fn hang(
             Mesh3d(meshes.add(mesh)),
             MeshMaterial3d(materials.add(color(rgb))),
             turned(pos, angle),
+            Exhibit,
         ));
     }
     let plaque_height = 1.45 - art.hook.center;
@@ -293,6 +310,7 @@ fn hang(
         Mesh3d(meshes.add(Cuboid::new(0.24, 0.15, 0.02))),
         MeshMaterial3d(materials.add(color(PLAQUE))),
         turned(pos, angle),
+        Exhibit,
     ));
 }
 
@@ -310,6 +328,7 @@ fn sculpt(
             Mesh3d(meshes.add(Cuboid::new(side, s.plinth, side))),
             MeshMaterial3d(materials.add(color(PLINTH))),
             turned([s.x, s.plinth / 2.0, s.z], s.rotation),
+            Exhibit,
         ));
     }
     let model = data.sculpture(s);
@@ -329,6 +348,7 @@ fn sculpt(
         Mesh3d(meshes.add(mesh)),
         MeshMaterial3d(materials.add(material)),
         turned([s.x, s.plinth, s.z], s.rotation),
+        Exhibit,
     ));
 }
 
@@ -352,12 +372,14 @@ fn setup_tour(
             lamp(&mut commands, pos, museum::lamp_intensity(room));
         }
     }
-    for art in ex.artworks {
-        hang(&mut commands, &mut meshes, &mut materials, ex, &data, art);
-    }
-    for s in ex.sculptures {
-        sculpt(&mut commands, &mut meshes, &mut materials, &data, s);
-    }
+    spawn_exhibits(
+        &mut commands,
+        &mut meshes,
+        &mut materials,
+        ex,
+        &data,
+        &Edits::default(),
+    );
     let Pose { eye, look, .. } = tour::tour_pose(ex, 0.0, 16.0 / 9.0);
     let (yaw, pitch) = tour::heading(eye, look);
     commands.spawn((
@@ -373,6 +395,69 @@ fn setup_tour(
             mode: Mode::Guided,
         },
     ));
+}
+
+/// Accroche les tableaux et pose les sculptures, à leur place (modifiée par l'éditeur).
+fn spawn_exhibits(
+    commands: &mut Commands,
+    meshes: Meshes,
+    materials: Materials,
+    ex: &Exhibition,
+    data: &ExhibitionData,
+    edits: &Edits,
+) {
+    for i in 0..ex.artworks.len() {
+        hang(
+            commands,
+            meshes,
+            materials,
+            ex,
+            data,
+            &editor::edited_art(ex, edits, i),
+        );
+    }
+    for i in 0..ex.sculptures.len() {
+        sculpt(
+            commands,
+            meshes,
+            materials,
+            data,
+            &editor::edited_sculpture(ex, edits, i),
+        );
+    }
+}
+
+/// Quand l'éditeur a déplacé une œuvre : retire toutes les œuvres de la scène et les
+/// remet à leur nouvelle place.
+fn apply_edits(
+    current: Res<Current>,
+    control: Option<Res<Control>>,
+    mut applied: ResMut<Applied>,
+    exhibits: Query<Entity, With<Exhibit>>,
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<StandardMaterial>>,
+) {
+    let Some(control) = control else { return };
+    let edits = {
+        let c = control.0.borrow();
+        if c.edits.version == applied.0 {
+            return;
+        }
+        c.edits.clone()
+    };
+    applied.0 = edits.version;
+    for entity in exhibits.iter() {
+        commands.entity(entity).despawn();
+    }
+    spawn_exhibits(
+        &mut commands,
+        &mut meshes,
+        &mut materials,
+        current.0,
+        &current.1,
+        &edits,
+    );
 }
 
 /// Garde allumées les 8 lampes les plus proches du visiteur (le shader n'en voit pas plus).
@@ -447,6 +532,7 @@ fn walk(
         asked.paused = c.paused;
         asked.jump = std::mem::take(&mut c.jump);
         asked.go_to = c.go_to.take();
+        asked.teleport = c.teleport.take();
         (asked.forward, asked.strafe, asked.run) = (c.forward, c.strafe, c.run);
         asked.turn = std::mem::take(&mut c.turn) + c.spin * dt;
         asked.tilt = std::mem::take(&mut c.tilt);
@@ -469,6 +555,11 @@ fn walk(
                 (v.x, v.z) = (pose.eye[0], pose.eye[2]);
                 (v.yaw, v.pitch) = tour::heading(pose.eye, pose.look);
             }
+        }
+        if let Some((x, z)) = asked.teleport
+            && v.mode == Mode::Free
+        {
+            (v.x, v.z) = museum::push_out(museum::cached_obstacles(ex), x, z, 0.3);
         }
         let pose = match v.mode {
             Mode::Guided => {
@@ -557,8 +648,9 @@ pub fn tour_app(ex: &'static Exhibition, data: Rc<ExhibitionData>) -> App {
     app.add_plugins(plugins())
         .insert_resource(ambient())
         .insert_resource(Current(ex, data))
+        .init_resource::<Applied>()
         .add_systems(Startup, setup_tour)
-        .add_systems(Update, (walk, nearest_lamps));
+        .add_systems(Update, (walk, nearest_lamps, apply_edits));
     app
 }
 
@@ -775,6 +867,32 @@ mod tests {
                 }
             }
         }
+    }
+
+    /// Déplacer une œuvre dans l'éditeur reconstruit la scène, sans rien perdre ni doubler.
+    #[test]
+    fn edits_move_works_in_the_scene() {
+        let ex = EXHIBITIONS
+            .iter()
+            .find(|e| !e.sculptures.is_empty())
+            .expect("des sculptures");
+        let control = SharedControl::default();
+        let mut app = tour_app_with(ex, data(ex), control.clone());
+        app.update();
+        let before =
+            RenderFrame::extract(app.world(), Vec2::new(800.0, 450.0)).map(|f| f.mesh_count());
+        {
+            let mut c = control.borrow_mut();
+            let mut e = c.edits.sculpture(ex, 0);
+            e.x += 0.5;
+            c.edits.sculptures.insert(0, e);
+            c.edits.version += 1;
+        }
+        app.update();
+        app.update();
+        let after =
+            RenderFrame::extract(app.world(), Vec2::new(800.0, 450.0)).map(|f| f.mesh_count());
+        assert_eq!(after, before);
     }
 
     /// En visite libre, le visiteur avance, tourne, et s'arrête contre les murs.
