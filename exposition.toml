@@ -1,0 +1,203 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  L'EXPOSITION D'ARTEON
+#
+#  Tout le contenu du musée est décrit ici : les textes, les salles et les œuvres.
+#  Pour ajouter une œuvre :
+#    1. déposer son image (JPEG ou PNG) dans le dossier public/tableaux/ ;
+#    2. copier un bloc [[oeuvres]] ci-dessous et changer ses valeurs.
+#  Au prochain push sur master, le site est reconstruit et republié tout seul.
+#
+#  L'image sert deux fois : telle quelle dans le catalogue, et transformée en
+#  mosaïque en relief (une touche de couleur par case) pour la galerie en 3D.
+#
+#  Si une valeur est fausse (salle qui n'existe pas, image introuvable, deux
+#  œuvres au même endroit…), la compilation s'arrête avec un message en français
+#  qui dit quoi corriger : le site en ligne n'est jamais cassé.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+titre = "Van Gogh, la couleur en mouvement"
+artiste = "Vincent van Gogh"
+dates = "1853–1890"
+accroche = "Exposition virtuelle · Vincent van Gogh"
+introduction = """
+Des mangeurs de pommes de terre de Nuenen au dernier champ de blé d'Auvers, \
+parcourez en 3D cinq années de peinture qui ont changé la couleur pour toujours. \
+Chaque toile est reconstruite touche par touche, en relief, dans trois salles \
+reliées par des couloirs."""
+# L'œuvre (son image) qui tourne sur un chevalet en page d'accueil.
+vitrine = "nuit-etoilee.jpg"
+
+# ─── Les salles, dans l'ordre de la visite ───────────────────────────────────
+# Ajouter un bloc [[salles]] ajoute une salle (et le couloir qui y mène).
+# murs : la couleur des murs, en hexadécimal.
+
+[[salles]]
+nom = "Salle I · Nuenen et Paris"
+theme = "1885–1887 : les terres sombres du Brabant, puis la lumière de Paris et les premiers autoportraits."
+murs = "#e7e1d3"
+
+[[salles]]
+nom = "Salle II · Arles"
+theme = "1888 : le soleil du Midi, les jaunes de chrome et les nuits bleues au bord du Rhône."
+murs = "#efe3c4"
+
+[[salles]]
+nom = "Salle III · Saint-Rémy et Auvers"
+theme = "1889–1890 : les ciels qui tourbillonnent, les fleurs de l'asile et les blés d'Auvers."
+murs = "#dfe4e8"
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+# image    : le nom du fichier dans public/tableaux/
+# salle    : le numéro de la salle (1, 2, 3…)
+# mur      : "gauche", "droite" (en avançant dans la galerie) ou "fond"
+# place    : 1, 2 ou 3. Sur les murs gauche et droit, 1 est près de l'entrée de
+#            la salle et 3 près de la sortie ; sur le mur du fond, de gauche à
+#            droite. Le milieu du mur du fond n'est libre que dans la dernière
+#            salle (ailleurs, c'est la porte).
+# largeur  : en mètres, dans la galerie (la hauteur suit l'image). 0,6 à 2,6.
+# Les autres champs (annee, technique, collection, note) sont les textes du cartel.
+
+[[oeuvres]]
+titre = "Les Mangeurs de pommes de terre"
+annee = "1885"
+image = "mangeurs-pommes-de-terre.jpg"
+technique = "Huile sur toile, 82 × 114 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "Une famille paysanne à la lueur d'une lampe : la première grande composition, peinte dans des terres brunes."
+salle = 1
+mur = "gauche"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Autoportrait"
+annee = "1887"
+image = "autoportrait-1887.jpg"
+technique = "Huile sur carton, 41 × 32,5 cm"
+collection = "Art Institute of Chicago"
+note = "À Paris, Van Gogh découvre le pointillisme : le visage se construit en petites touches de couleurs pures."
+salle = 1
+mur = "droite"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Autoportrait au chapeau de feutre gris"
+annee = "1887"
+image = "autoportrait-feutre.jpg"
+technique = "Huile sur toile, 44 × 37,5 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "Les touches rayonnent autour de la tête comme une auréole : le style de la fin est déjà là."
+salle = 1
+mur = "droite"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Les Tournesols"
+annee = "1888"
+image = "tournesols.jpg"
+technique = "Huile sur toile, 92,1 × 73 cm"
+collection = "National Gallery, Londres"
+note = "Peints pour décorer la chambre de Gauguin à Arles : une symphonie de jaunes sur fond jaune."
+salle = 2
+mur = "gauche"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Nuit étoilée sur le Rhône"
+annee = "1888"
+image = "nuit-etoilee-rhone.jpg"
+technique = "Huile sur toile, 72,5 × 92 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Les becs de gaz d'Arles se reflètent dans le fleuve sous la Grande Ourse."
+salle = 2
+mur = "gauche"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "La Chambre à Arles"
+annee = "1888"
+image = "chambre-arles.jpg"
+technique = "Huile sur toile, 72,4 × 91,3 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "Sa chambre de la Maison jaune, en aplats francs : « le repos absolu », écrit-il à son frère Theo."
+salle = 2
+mur = "gauche"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Terrasse du café le soir"
+annee = "1888"
+image = "terrasse-cafe.jpg"
+technique = "Huile sur toile, 80,7 × 65,3 cm"
+collection = "Musée Kröller-Müller, Otterlo"
+note = "Une nuit sans noir : le jaune de la terrasse contre le bleu profond du ciel étoilé."
+salle = 2
+mur = "droite"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Le Café de nuit"
+annee = "1888"
+image = "cafe-de-nuit.jpg"
+technique = "Huile sur toile, 72,4 × 92,1 cm"
+collection = "Yale University Art Gallery, New Haven"
+note = "Rouge sang et vert amer : un café où « l'on peut se ruiner, devenir fou, commettre des crimes »."
+salle = 2
+mur = "droite"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Les Iris"
+annee = "1889"
+image = "iris.jpg"
+technique = "Huile sur toile, 74,3 × 94,3 cm"
+collection = "J. Paul Getty Museum, Los Angeles"
+note = "Peint dans le jardin de l'asile de Saint-Rémy, la première semaine : un seul iris blanc parmi les bleus."
+salle = 3
+mur = "gauche"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "La Nuit étoilée"
+annee = "1889"
+image = "nuit-etoilee.jpg"
+technique = "Huile sur toile, 73,7 × 92,1 cm"
+collection = "Museum of Modern Art, New York"
+note = "La vue de sa fenêtre à l'asile, avant l'aube : un ciel qui tourbillonne au-dessus du village endormi."
+salle = 3
+mur = "droite"
+place = 1
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Amandier en fleurs"
+annee = "1890"
+image = "amandier.jpg"
+technique = "Huile sur toile, 73,3 × 92,4 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "Un cadeau pour la naissance de son neveu : des branches en fleurs sur un ciel bleu, à la japonaise."
+salle = 3
+mur = "gauche"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Champ de blé aux corbeaux"
+annee = "1890"
+image = "champ-ble-corbeaux.jpg"
+technique = "Huile sur toile, 50,5 × 103 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "Auvers-sur-Oise, juillet 1890 : un ciel d'orage, trois chemins et un vol de corbeaux. Il meurt quelques semaines plus tard."
+salle = 3
+mur = "fond"
+place = 2
+largeur = 2.4

@@ -9,20 +9,26 @@ use paquets::prelude::*;
 pub mod artworks;
 pub mod gallery;
 
-/// L'îlot de la galerie : trois salles, deux couloirs et une visite guidée en 3D.
+/// L'îlot de la galerie : les salles, leurs couloirs et une visite guidée en 3D.
 pub fn gallery_scene(_props: &str) -> Node {
     canvas()
         .class("scene scene-gallery")
-        .attr("aria-label", "Visite guidée en 3D de la galerie ARTEON")
+        .attr(
+            "aria-label",
+            "Visite guidée en 3D de l'exposition Van Gogh d'ARTEON",
+        )
         .use_action(play_gallery)
         .into()
 }
 
-/// L'îlot de la page de présentation : une sculpture aux couleurs de Mondrian.
+/// L'îlot de la page de présentation : l'œuvre de la vitrine sur un chevalet tournant.
 pub fn showcase_scene(_props: &str) -> Node {
     canvas()
         .class("scene scene-showcase")
-        .attr("aria-label", "Sculpture 3D animée aux couleurs de De Stijl")
+        .attr(
+            "aria-label",
+            "Une toile de l'exposition sur un chevalet tournant, en 3D",
+        )
         .use_action(play_showcase)
         .into()
 }

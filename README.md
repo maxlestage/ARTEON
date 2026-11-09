@@ -1,63 +1,97 @@
 # ARTEON
 
-**Une galerie d'art en 3D, écrite uniquement en Rust.**
+**Une exposition virtuelle en 3D, écrite uniquement en Rust : « Van Gogh, la couleur en mouvement ».**
 
-ARTEON est un musée virtuel. Il contient trois salles d'exposition reliées par deux couloirs. Une caméra fait la visite guidée en boucle et s'arrête devant chaque œuvre. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML et la scène 3D, qui est compilée en WebAssembly et rendue en WebGL 2.
+ARTEON est un musée virtuel. Sa première exposition est entièrement consacrée à Vincent van Gogh (1853–1890) : douze toiles, des *Mangeurs de pommes de terre* au *Champ de blé aux corbeaux*, accrochées dans trois salles reliées par des couloirs. Une caméra fait la visite guidée en boucle et s'arrête devant chaque œuvre. Tout est écrit en Rust avec [Paquets](https://github.com/maxlestage/Paquets) : le serveur, les pages HTML et la scène 3D, compilée en WebAssembly et rendue en WebGL 2.
 
 ## Les pages
 
 | Route | Contenu |
 |---|---|
-| `/` | La page de présentation : sculpture 3D animée, cube en CSS 3D, titre animé lettre par lettre, chiffres clés, parcours, aperçu des œuvres et grand pied de page animé |
-| `/galerie` | La visite guidée en 3D des trois salles et de leurs couloirs |
-| `/oeuvres` | Le catalogue, avec un cartel et une vignette pour chaque œuvre |
-| toute autre adresse | Une page « introuvable » (404) qui renvoie vers l'accueil et la galerie |
+| `/` | La présentation de l'exposition : la *Nuit étoilée* sur un chevalet tournant en 3D, le titre animé, les chiffres clés, le parcours salle par salle, des reproductions et le grand pied de page animé |
+| `/galerie` | La visite guidée en 3D des salles et de leurs couloirs |
+| `/oeuvres` | Le catalogue : chaque toile, son cartel (technique, collection, note) et sa place dans la galerie |
+| `/ajouter` | Le guide pour ajouter, déplacer ou modifier une œuvre, avec le plan des emplacements libres |
+| toute autre adresse | Une page « introuvable » (404) |
 
-Le pied de page contient une bande De Stijl animée, un défilé des œuvres exposées, quatre colonnes de liens et les mentions sur le domaine public.
+## Ajouter ou modifier une œuvre
 
-## Le parcours
+Tout le contenu du musée est dans **un seul fichier, [`exposition.toml`](exposition.toml)**, et les images dans **[`public/tableaux/`](public/tableaux)**. Pas une ligne de code à écrire.
 
-1. **Salle I · De Stijl** : Mondrian et van Doesburg.
-2. *Couloir* : un passage étroit, avec un liseré lumineux au pied des murs.
-3. **Salle II · Suprématisme** : Malevitch, et un « architectone » blanc qui tourne au centre de la salle.
-4. *Couloir*
-5. **Salle III · Bauhaus, Dada et finale** : Klee, Taeuber-Arp, puis un dernier Mondrian sur le mur du fond.
+1. Déposer l'image de la toile (JPEG ou PNG, 900 pixels de large suffisent) dans `public/tableaux/`. Sur GitHub : *Add file → Upload files*.
+2. Copier un bloc `[[oeuvres]]` dans `exposition.toml` et changer ses valeurs :
+
+   ```toml
+   [[oeuvres]]
+   titre = "Le Semeur"
+   annee = "1888"
+   image = "semeur.jpg"
+   technique = "Huile sur toile, 64 × 80,5 cm"
+   collection = "Musée Kröller-Müller, Otterlo"
+   note = "Un soleil immense derrière le semeur, dans un champ violet."
+   salle = 3          # 1, 2, 3…
+   mur = "droite"     # "gauche", "droite" (en avançant) ou "fond"
+   place = 3          # 1, 2 ou 3 (1 = près de l'entrée de la salle)
+   largeur = 1.3      # en mètres, de 0,6 à 2,6 ; la hauteur suit l'image
+   ```
+
+3. Enregistrer (*Commit changes*) sur `master` : le workflow republie le site en quelques minutes. La toile apparaît dans la galerie 3D, dans le catalogue et dans la visite guidée, qui se recalcule toute seule.
+
+Pour **modifier** une œuvre, changer les valeurs de son bloc ; pour la **retirer**, supprimer le bloc. Un bloc `[[salles]]` de plus ajoute une salle et le couloir qui y mène. Les textes de l'accueil (titre, introduction, l'œuvre de la vitrine) sont dans la section `[exposition]`.
+
+Le fichier est vérifié à la compilation (`build.rs`) : salle inexistante, image introuvable, place déjà prise, toiles qui se chevauchent, tableau trop grand… La compilation s'arrête alors avec un message en français qui dit quoi corriger, par exemple :
+
+```
+✖ exposition.toml : l'œuvre « Les Iris » : l'image « iriss.jpg » est introuvable dans public/tableaux/
+```
+
+et le site en ligne reste tel quel.
+
+## Comment les toiles deviennent de la 3D
+
+Le moteur 3D de Paquets n'affiche pas d'images (pas de textures). À la compilation, `build.rs` réduit donc chaque image à une grille (une case ≈ 2,8 cm dans la galerie) et la ramène à une palette de 20 couleurs. Dans la scène, chaque case devient une petite touche en relief, plus épaisse dans les tons clairs, comme les empâtements du peintre ; les toiles sombres sont légèrement éclaircies pour rester lisibles sous l'éclairage du musée. Les touches d'une même couleur forment un seul maillage : une vingtaine par tableau, ce qui reste fluide. Le catalogue, lui, montre les vraies reproductions.
 
 ## Les œuvres (domaine public)
 
-Tous les artistes sont morts depuis plus de 70 ans : leurs œuvres sont dans le domaine public en Europe. Le moteur 3D de Paquets n'affiche que des formes et des couleurs, pas d'images. Chaque tableau est donc **réinterprété en aplats géométriques en léger relief**. Ce ne sont pas des reproductions exactes.
+Van Gogh est mort en 1890 : ses œuvres sont dans le domaine public. Les reproductions viennent de [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Paintings_by_Vincent_van_Gogh). Dans la galerie 3D, les toiles sont réinterprétées en mosaïque : ce ne sont pas des reproductions exactes.
 
-| Œuvre | Artiste | Année |
-|---|---|---|
-| Composition avec grand plan rouge, jaune, noir, gris et bleu | Piet Mondrian (1872–1944) | 1921 |
-| Composition en rouge, jaune, bleu et noir | Piet Mondrian | 1921 |
-| Composition XI | Theo van Doesburg (1883–1931) | 1918 |
-| Composition VIII (La Vache) | Theo van Doesburg | 1918 |
-| Carré noir | Kasimir Malevitch (1879–1935) | 1915 |
-| Supremus n° 58 | Kasimir Malevitch | 1916 |
-| Château et soleil | Paul Klee (1879–1940) | 1928 |
-| Composition verticale-horizontale | Sophie Taeuber-Arp (1889–1943) | 1916 |
-| Composition avec rouge, bleu et jaune | Piet Mondrian | 1930 |
+| Salle | Œuvre | Année | Collection |
+|---|---|---|---|
+| I · Nuenen et Paris | Les Mangeurs de pommes de terre | 1885 | Van Gogh Museum, Amsterdam |
+| | Autoportrait | 1887 | Art Institute of Chicago |
+| | Autoportrait au chapeau de feutre gris | 1887 | Van Gogh Museum, Amsterdam |
+| II · Arles | Les Tournesols | 1888 | National Gallery, Londres |
+| | La Nuit étoilée sur le Rhône | 1888 | Musée d'Orsay, Paris |
+| | La Chambre à Arles | 1888 | Van Gogh Museum, Amsterdam |
+| | Terrasse du café le soir | 1888 | Musée Kröller-Müller, Otterlo |
+| | Le Café de nuit | 1888 | Yale University Art Gallery |
+| III · Saint-Rémy et Auvers | Les Iris | 1889 | J. Paul Getty Museum, Los Angeles |
+| | La Nuit étoilée | 1889 | Museum of Modern Art, New York |
+| | Amandier en fleurs | 1890 | Van Gogh Museum, Amsterdam |
+| | Champ de blé aux corbeaux | 1890 | Van Gogh Museum, Amsterdam |
 
 ## Architecture
 
-- `src/main.rs` : le serveur, avec la mise en page, le pied de page et les trois pages.
-- `src/lib.rs` : les îlots (galerie et vitrine) et le point d'entrée WebAssembly.
-- `src/artworks.rs` : le catalogue, avec les œuvres, leurs aplats, les salles et les dimensions.
+- `exposition.toml` : le contenu de l'exposition (textes, salles, œuvres).
+- `public/tableaux/` : les images des œuvres, servies à `/tableaux/…`.
+- `build.rs` : vérifie `exposition.toml`, transforme les images en mosaïques et écrit le catalogue en Rust.
+- `src/artworks.rs` : les types du catalogue et les dimensions de la galerie.
 - `src/gallery.rs` : les scènes 3D (`paquets::ecs`) et la visite guidée.
+- `src/lib.rs` : les îlots (galerie et vitrine) et le point d'entrée WebAssembly.
+- `src/main.rs` : le serveur et les pages.
 - `src/style.rs` : le CSS, sous forme de constante Rust.
 - `src/export.rs` : l'export du site en fichiers statiques, pour GitHub Pages.
 - `.github/workflows/pages.yml` : compilation, tests, export et déploiement sur GitHub Pages.
 
-La scène 3D utilise le moteur de Paquets : des pavés (`Cuboid`), des matériaux colorés, des lampes (`PointLight`) et une caméra (`Camera3d`) déplacée par un système à chaque image. La visite guidée est une fonction pure (`tour_pose(t)`), testée sans navigateur.
+La visite guidée est calculée à partir des œuvres accrochées : un arrêt face à chaque toile (d'autant plus loin qu'elle est grande), un passage dans l'axe de chaque porte, puis le retour à l'entrée. C'est une fonction pure (`tour_pose(t)`), testée sans navigateur.
 
-Deux contraintes du moteur sont prises en compte (et testées) : la physique de `DefaultPlugins` est retirée, sinon chaque pavé (murs, sols, tableaux) serait soumis à la gravité et tomberait dans le vide ; et la scène n'a que 8 lampes ponctuelles, le maximum que le shader prend en compte. Les vignettes du catalogue sont générées à partir des mêmes aplats que la scène 3D. Les animations de la page respectent `prefers-reduced-motion`.
+Deux contraintes du moteur sont prises en compte (et testées) : la physique de `DefaultPlugins` est retirée, sinon chaque pavé (murs, sols, tableaux) serait soumis à la gravité et tomberait dans le vide ; et la scène n'a pas plus de 8 lampes ponctuelles, le maximum que le shader prend en compte (au-delà de trois salles, une lampe par salle, puis la lumière d'ambiance seule).
 
 ## Lancer le projet
 
 - Installer la commande `paquets` : `cargo install --git https://github.com/maxlestage/Paquets paquets --locked`
 - Lancer en développement (http://localhost:3000, avec rechargement) : `paquets dev`
-- Lancer les tests de la visite guidée : `cargo test`
+- Lancer les tests : `cargo test`
 - Compiler pour la production (serveur et bundle WebAssembly optimisés) : `paquets build`
 
 ## Publier sur GitHub Pages
@@ -66,7 +100,7 @@ Le site est publié automatiquement par le workflow `.github/workflows/pages.yml
 
 Réglage unique du dépôt : **Settings → Pages → Build and deployment → Source : GitHub Actions**. Le workflow essaie de l'activer tout seul ; si le premier déploiement échoue avec « Pages not enabled », il suffit de faire ce réglage puis de relancer le workflow.
 
-Adresse du site : `https://<compte>.github.io/ARTEON/` (`/` la présentation, `/galerie/` la galerie 3D, `/oeuvres/` le catalogue).
+Adresse du site : `https://<compte>.github.io/ARTEON/`.
 
 Pour produire le même export en local :
 
@@ -79,8 +113,8 @@ wasm-bindgen --target web --no-typescript --remove-name-section --out-dir pkg \
 BASE_PATH=/ARTEON cargo run --release -- export dist
 ```
 
-Chaque page est rendue par le serveur lui-même (le client de test en mémoire de Paquets), puis écrite dans `dist/` avec `404.html`, le bundle WebAssembly (`pkg/`) et `.nojekyll`. `BASE_PATH` préfixe tous les liens ; sans lui, le site s'exporte pour la racine d'un domaine.
+Chaque page est rendue par le serveur lui-même (le client de test en mémoire de Paquets), puis écrite dans `dist/` avec `404.html`, les images (`public/`), le bundle WebAssembly (`pkg/`) et `.nojekyll`. `BASE_PATH` préfixe tous les liens ; sans lui, le site s'exporte pour la racine d'un domaine.
 
 ## Licence
 
-Le code d'ARTEON est sous licence MIT. Il dépend de [Paquets](https://github.com/maxlestage/Paquets), un logiciel propriétaire qui peut être utilisé librement comme dépendance (voir sa licence). Les œuvres d'origine appartiennent au domaine public.
+Le code d'ARTEON est sous licence MIT. Il dépend de [Paquets](https://github.com/maxlestage/Paquets), un logiciel propriétaire qui peut être utilisé librement comme dépendance (voir sa licence). Les œuvres de Vincent van Gogh appartiennent au domaine public.

@@ -51,7 +51,7 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
         let html = res.text();
         // La présentation et la galerie contiennent une scène 3D : sans le bundle, elles
         // resteraient vides.
-        if route != "/oeuvres" && !html.contains("/pkg/") {
+        if ["/", "/galerie"].contains(&route) && !html.contains("/pkg/") {
             return Err(io::Error::other(format!(
                 "GET {route} : la page ne charge pas les îlots"
             )));
@@ -74,16 +74,22 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
     }
     write("404.html", with_base(&res.text(), &base).as_bytes())?;
 
-    // Le bundle du navigateur (les îlots compilés en WebAssembly).
-    let root = std::path::absolute("pkg")?;
-    for file in files(&root) {
-        let relative = file.strip_prefix(&root).map_err(io::Error::other)?;
-        let url = relative.to_string_lossy().replace('\\', "/");
-        // Les fichiers annexes de wasm-bindgen, inutiles pour lancer le bundle.
-        if url.ends_with(".gitignore") || url.ends_with("package.json") || url.ends_with(".d.ts") {
-            continue;
+    // Les fichiers statiques (`public/` : les images des tableaux, servies à `/…`) et le
+    // bundle du navigateur (`pkg/` : les îlots compilés en WebAssembly).
+    for (folder, prefix) in [("public", ""), ("pkg", "pkg/")] {
+        let root = std::path::absolute(folder)?;
+        for file in files(&root) {
+            let relative = file.strip_prefix(&root).map_err(io::Error::other)?;
+            let url = relative.to_string_lossy().replace('\\', "/");
+            // Les fichiers annexes de wasm-bindgen, inutiles pour lancer le bundle.
+            if url.ends_with(".gitignore")
+                || url.ends_with("package.json")
+                || url.ends_with(".d.ts")
+            {
+                continue;
+            }
+            write(&format!("{prefix}{url}"), &std::fs::read(&file)?)?;
         }
-        write(&format!("pkg/{url}"), &std::fs::read(&file)?)?;
     }
     // Les fichiers sont servis tels quels : pas de traitement Jekyll sur GitHub Pages.
     write(".nojekyll", b"")?;
