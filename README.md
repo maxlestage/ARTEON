@@ -64,7 +64,7 @@ ARTEON est un musée qui n'existe pas. Chaque exposition occupe un bâtiment des
 
 L'exposition Monet est installée dans une nef inspirée du musée d'Orsay, avec trois sculptures américaines contemporaines de ses toiles (*The Greek Slave* de Hiram Powers, *The Dying Tecumseh* de Ferdinand Pettrich, *Old Arrow Maker* d'Edmonia Lewis).
 
-Seules des œuvres du **domaine public** sont exposées : l'artiste est mort en 1955 ou avant (70 ans après sa mort, en Europe) et l'œuvre date d'avant 1931 (aux États-Unis). C'est pourquoi il n'y a ni Picasso (protégé jusqu'en 2044), ni Dalí, Magritte, Chagall, Frida Kahlo, ni pop art ou street art : Andy Warhol est protégé jusqu'en 2057, Keith Haring jusqu'en 2060.
+Les œuvres exposées sont dans le **domaine public** (l'artiste est mort en 1955 ou avant, et l'œuvre date d'avant 1931), ou montrées par des **photographies sous licence libre**, créditées, d'œuvres installées dans l'espace public de pays dont la loi le permet (liberté de panorama). C'est ainsi que le pop art, l'art contemporain, le street art et l'exposition « Les géants du XXᵉ siècle » montrent Lichtenstein, Haring, Oldenburg, Koons, les sculptures publiques de Picasso (dont le Picasso de Chicago, jugé dans le domaine public aux États-Unis) et de Dalí, et les tableaux de Frida Kahlo d'avant 1931 (dans le domaine public en Europe et aux États-Unis, mais protégés au Mexique jusqu'en 2054). Les tableaux protégés (Guernica, les Marilyn de Warhol, Magritte, Chagall…) ne sont jamais reproduits : ils sont racontés dans les textes.
 
 ## Les pages
 
