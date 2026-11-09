@@ -1,0 +1,870 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ESTAMPES JAPONAISES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/estampes-japonaises/). Le
+#  nom du fichier donne l'adresse de l'exposition sur le site :
+#  /estampes-japonaises.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 75
+nom_court = "Ukiyo-e"
+mouvement = "Ukiyo-e, l'estampe japonaise"
+couleur = "#2c4a7e"
+titre = "Ukiyo-e, les images du monde flottant"
+artiste = "Hokusai, Hiroshige, Utamaro, Sharaku…"
+dates = "1759–1857"
+accroche = "Exposition virtuelle · Musée national de Tokyo"
+introduction = """
+Ukiyo-e, « images du monde flottant » : à Edo, l'actuelle Tokyo, des estampes gravées \
+sur bois et vendues pour le prix d'un bol de nouilles montrent les acteurs de kabuki, \
+les beautés à la mode, puis les paysages et les légendes. La visite suit cet âge d'or, \
+des premières estampes en couleurs de Harunobu aux Cent Vues d'Edo de Hiroshige, en \
+passant par la Grande Vague de Hokusai, avec en contrepoint une peinture sur soie \
+d'Itō Jakuchū. Le bâtiment s'inspire du Honkan du Musée national de Tokyo et des \
+maisons japonaises : des salles basses aux murs couleur de papier, reliées par une \
+longue coursive, l'engawa. Les estampes, qui mesurent une trentaine de centimètres, \
+sont présentées agrandies."""
+vitrine = "grande-vague.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Honkan, le bâtiment principal du Musée national de Tokyo, et d'une
+# maison japonaise : une entrée (genkan), une longue coursive de bois (engawa) qui
+# longe le jardin, et trois pièces basses aux murs couleur de papier washi, reliées
+# entre elles comme des pièces à cloisons coulissantes. x et z : le centre de la
+# salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul
+# côté.
+
+[[salles]]
+nom = "Le genkan"
+theme = "L'entrée de la maison : on quitte la rue pour le monde flottant d'Edo."
+murs = "#ece4d2"
+x = 0
+z = 0
+largeur = 10
+profondeur = 6
+hauteur = 3.6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "L'engawa · Les Cent Vues d'Edo"
+theme = "1857 : le long de la coursive, trois saisons d'Edo vues par Hiroshige, des pruniers en fleurs aux renards du Nouvel An."
+murs = "#efe7d6"
+x = 0
+z = -5
+largeur = 19.6
+profondeur = 4
+hauteur = 3.0
+
+[[salles]]
+nom = "Salle I · Hokusai et le Fuji"
+theme = "Vers 1830–1832 : la Grande Vague et le Fuji rouge, deux vues de la montagne sacrée."
+murs = "#f0e9da"
+x = -6.525
+z = -10.25
+largeur = 6.55
+profondeur = 6.5
+hauteur = 3.2
+portes = ["sud"]
+
+[[salles]]
+nom = "Salle II · Beautés et acteurs"
+theme = "1766–1794 : la jeune femme de Harunobu, les célébrités d'Utamaro et l'acteur de kabuki de Sharaku."
+murs = "#ebe2cf"
+x = 0
+z = -12
+largeur = 6.5
+profondeur = 10
+hauteur = 3.8
+portes = [{ mur = "ouest", position = -1.75 }, { mur = "est", position = 1.75 }]
+
+[[salles]]
+nom = "Salle III · Visions"
+theme = "1759 et vers 1844 : les coqs flamboyants de Jakuchū, peints sur soie, et le squelette géant de Kuniyoshi."
+murs = "#ede5d4"
+x = 6.525
+z = -10.25
+largeur = 6.55
+profondeur = 6.5
+hauteur = 3.4
+portes = ["sud"]
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Le Jardin des pruniers à Kameido"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "pruniers-kameido.jpg"
+technique = "Estampe nishiki-e (gravure sur bois en couleurs), format ōban vertical, environ 36 × 24 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une planche des Cent Vues célèbres d'Edo : le tronc d'un vieux prunier barre l'image, et le jardin fleuri apparaît derrière."
+description = """
+Au premier plan, un énorme tronc de prunier, presque noir, traverse toute l'image en \
+diagonale ; il est si proche qu'il sort du cadre en haut et à gauche. De ses branches \
+partent quelques rameaux couverts de fleurs blanches au cœur jaune, dessinées une à \
+une. Derrière lui s'étend le jardin : des dizaines de pruniers en fleurs, plus petits, \
+une clôture de bambou et de minuscules promeneurs qui admirent les arbres. Le sol est \
+vert, le ciel passe du rouge vif, en haut, au blanc rosé près de l'horizon. Dans le \
+coin supérieur gauche, l'angle d'un toit sombre. En haut à droite, deux cartouches \
+donnent le nom de la série et celui du lieu ; en bas à gauche, la signature de \
+Hiroshige dans un cartouche rouge."""
+evocation = """
+La floraison des pruniers, à la fin de l'hiver, est au Japon la première fête du \
+printemps, avant celle des cerisiers : on allait en famille contempler les fleurs et \
+respirer leur parfum encore dans le froid. Le prunier, qui fleurit sur un bois noueux \
+et presque mort, est aussi depuis longtemps une image de la persévérance et du \
+renouveau. Hiroshige place le spectateur dans le jardin même, caché derrière l'arbre, \
+comme un promeneur qui se serait approché de trop près. On a vu dans ce cadrage \
+audacieux, qui tranche le motif principal et rejette les personnages au loin, l'une \
+des inventions les plus modernes de l'estampe japonaise : la nature n'y est plus un \
+décor, elle devient le sujet, vu à hauteur d'homme."""
+histoire = """
+L'estampe appartient aux Cent Vues célèbres d'Edo, la dernière grande série de \
+Hiroshige, publiée par l'éditeur Uoya Eikichi de 1856 à 1858 ; elle porte la date de \
+1857. Le jardin de Kameido, à l'est de la Sumida, était un lieu de promenade réputé : \
+on y venait voir le Garyūbai, le « prunier du dragon couché », un arbre si vieux que \
+ses branches retombaient jusqu'au sol. Les historiens ont souligné que la série, \
+commencée peu après le grand tremblement de terre qui ravagea Edo en 1855, célèbre une \
+ville en reconstruction et ses plaisirs retrouvés. Comme toutes les planches de la \
+série, celle-ci fut tirée à de nombreux exemplaires. Celui-ci est conservé au \
+Rijksmuseum d'Amsterdam."""
+facture = """
+Les Cent Vues adoptent toutes le format vertical, inhabituel pour le paysage. \
+Hiroshige y pousse à l'extrême le procédé du premier plan géant, emprunté en partie \
+aux perspectives occidentales qu'il connaissait par les estampes « à la hollandaise ». \
+Le ciel est imprimé en bokashi : le graveur essuyait l'encre sur la planche pour \
+obtenir un dégradé continu du rouge au blanc. Le contraste entre le tronc sombre, aux \
+contours irréguliers, et les fleurs blanches réservées dans le papier donne à l'image \
+sa force."""
+details = [
+  "Le tronc noir qui sort du cadre à gauche, en haut et en bas.",
+  "Les promeneurs minuscules derrière la clôture de bambou.",
+  "Le dégradé du ciel, du rouge vif au blanc rosé.",
+  "Les fleurs blanches au cœur jaune, dessinées une à une.",
+  "La signature de Hiroshige dans le cartouche rouge, en bas à gauche.",
+]
+themes = ["printemps", "prunier", "jardin", "edo", "japonisme"]
+anecdote = """
+Le Garyūbai devait son nom, « prunier du dragon couché », à ses branches qui \
+retombaient au sol et y reprenaient racine, comme un dragon allongé. L'arbre et le \
+jardin disparurent lors de la grande inondation de 1910. En 1887, Van Gogh copia cette \
+estampe à l'huile."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Averse soudaine sur le pont Shin-Ōhashi et à Atake"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "averse-ohashi.jpg"
+technique = "Estampe nishiki-e, format ōban vertical, environ 36 × 24 cm"
+collection = "Brooklyn Museum, New York"
+note = "Un orage d'été surprend les passants sur le grand pont de la Sumida : l'image de la pluie la plus célèbre de l'art japonais."
+description = """
+Vu d'en haut, un long pont de bois traverse l'image en diagonale, du bas à gauche vers \
+la droite. Des passants s'y hâtent, courbés sous l'averse : deux personnes serrées \
+sous un parapluie, un homme coiffé d'un chapeau de paille, d'autres qui se protègent \
+d'une natte. La pluie tombe en milliers de traits fins et sombres qui couvrent toute \
+l'image. Sur le fleuve gris, un homme debout pousse un long radeau de bois avec une \
+perche. Sur l'autre rive, le quartier d'Atake n'est plus qu'une silhouette d'arbres \
+noyée de brume. En haut, un nuage noir pèse sur la scène. Les piliers du pont, en \
+croisillons, plongent dans l'eau bleu sombre au premier plan."""
+evocation = """
+Hiroshige saisit un instant de la vie ordinaire d'Edo : l'orage d'été qui éclate sans \
+prévenir et fait courir tout le monde. Il n'y a ni héros ni événement, seulement des \
+anonymes surpris par le temps, et le spectateur a presque l'impression d'être mouillé. \
+On y a souvent vu une expression du sentiment japonais de l'impermanence : un moment \
+fugace, saisi au vol, qui sera passé dans quelques minutes. Le contraste entre les \
+petites silhouettes pressées et l'homme du radeau, seul et immobile sur le fleuve, a \
+aussi été lu comme une méditation sur la condition humaine. Pour les artistes \
+européens, cette pluie dessinée en lignes fut une révélation : on pouvait représenter \
+le mauvais temps lui-même."""
+histoire = """
+L'estampe, datée de 1857, appartient aux Cent Vues célèbres d'Edo, publiées par Uoya \
+Eikichi. Le pont Shin-Ōhashi, le « nouveau grand pont », franchissait la Sumida depuis \
+1693. Le quartier d'Atake, sur la rive est, tirait son nom de l'Atake maru, un immense \
+navire du shogun longtemps amarré à cet endroit. Hiroshige avait alors une soixantaine \
+d'années ; il mourut l'année suivante, avant la fin de la série. Ses estampes \
+arrivèrent en Europe en grand nombre après l'ouverture du Japon, et les peintres \
+impressionnistes les collectionnèrent. Cet exemplaire fait partie de la série complète \
+des Cent Vues conservée au Brooklyn Museum de New York."""
+facture = """
+La pluie est l'exploit du graveur : des centaines de traits parallèles, d'une finesse \
+extrême, taillés dans le bois selon des inclinaisons légèrement différentes, ce qui \
+donne l'impression d'une averse oblique et mouvante. Le nuage noir est imprimé en \
+dégradé, comme la profondeur du fleuve. Le point de vue plongeant, le pont coupé par \
+le bord de l'image et l'absence de ciel dégagé appartiennent aux audaces de cette \
+série tardive."""
+details = [
+  "Les deux passants serrés sous un même parapluie, à gauche sur le pont.",
+  "Les traits de pluie, qui ne sont pas tous inclinés de la même façon.",
+  "L'homme qui pousse son radeau, seul au milieu du fleuve.",
+  "La rive d'Atake, réduite à une silhouette grise.",
+  "Les croisillons des piliers du pont, au premier plan.",
+]
+themes = ["pluie", "pont", "orage", "edo", "japonisme"]
+anecdote = """
+En 1887, à Paris, Vincent van Gogh copia cette estampe à l'huile, en exagérant ses \
+couleurs, et l'entoura d'un cadre peint couvert d'idéogrammes recopiés sur d'autres \
+estampes. Le tableau, Le Pont sous la pluie, est aujourd'hui au musée Van Gogh \
+d'Amsterdam."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Feux de renards la nuit du Nouvel An, sous l'arbre aux costumes à Ōji"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "feux-renards-oji.jpg"
+technique = "Estampe nishiki-e, format ōban vertical, environ 36 × 24 cm"
+collection = "Brooklyn Museum, New York"
+note = "La nuit du Nouvel An, les renards de toute la région se réunissent sous un vieil arbre avant d'aller au sanctuaire d'Inari."
+description = """
+Dans la nuit d'hiver, un grand arbre dénudé étend ses branches noires sur un ciel bleu \
+sombre piqué d'étoiles. À son pied, une vingtaine de renards blancs sont assemblés, \
+assis ou debout ; près de la tête de chacun brille une petite flamme orangée. À \
+gauche, d'autres renards arrivent derrière le tronc. Dans la plaine obscure, au loin, \
+une longue file de petites lumières approche : d'autres renards en chemin. Des meules \
+de paille se dressent dans les champs, et l'on devine à l'horizon la masse sombre d'un \
+bois. À gauche, quelques branches de pin mettent une touche de vert dans la nuit. Les \
+cartouches de la série et du titre occupent l'angle supérieur droit."""
+evocation = """
+Au Japon, le renard est le messager d'Inari, la divinité du riz et de la prospérité, \
+et il passe aussi pour un être magique capable de prendre forme humaine. Les « feux de \
+renards », ces lueurs mystérieuses que l'on apercevait la nuit dans la campagne, leur \
+étaient attribués. Hiroshige montre ici le monde invisible qui côtoie le monde des \
+paysans : le merveilleux s'installe au milieu des champs familiers. Selon la croyance, \
+les paysans comptaient ces feux pour prédire la récolte de l'année suivante. Dans une \
+série consacrée aux lieux réels d'Edo, cette planche, l'une des rares à représenter \
+une légende, clôt le cycle de l'hiver sur une note de mystère et d'espérance."""
+histoire = """
+L'estampe, datée de 1857, porte le numéro 118 des Cent Vues célèbres d'Edo : c'est la \
+dernière de la partie consacrée à l'hiver. Ōji, alors un village au nord d'Edo, \
+abritait le sanctuaire d'Inari le plus vénéré de la région du Kantō. La légende \
+voulait que, la nuit du Nouvel An, les renards des huit provinces se réunissent sous \
+un grand micocoulier, le Shōzoku enoki, l'« arbre aux costumes », pour y revêtir leurs \
+habits de cérémonie avant de rendre visite au sanctuaire. L'arbre a disparu, mais un \
+petit sanctuaire marque encore son emplacement. Cet exemplaire est conservé au \
+Brooklyn Museum de New York, avec toute la série."""
+facture = """
+Hiroshige fait de la nuit une matière : le bleu profond du ciel s'assombrit vers le \
+haut par un dégradé, et les étoiles sont de minuscules points réservés dans le papier. \
+Les renards, tracés d'un trait fin, gardent la blancheur du papier, ce qui les fait \
+luire dans l'obscurité. Les flammes sont imprimées en orange vif, seule couleur chaude \
+de l'image. La file de lumières qui rapetisse vers l'horizon crée la profondeur sans \
+aucune ligne de perspective."""
+details = [
+  "La petite flamme qui flotte près de la tête de chaque renard.",
+  "La file de lumières qui approche au loin dans la plaine.",
+  "Les étoiles, de simples points de papier blanc dans le ciel bleu.",
+  "Les meules de paille, à droite, dans les champs d'hiver.",
+]
+themes = ["nuit", "renard", "légende", "nouvel an", "hiver"]
+anecdote = """
+La légende revit chaque année : depuis le début des années 1990, les habitants d'Ōji \
+organisent, la nuit du 31 décembre, une procession des renards, où les participants, \
+maquillés ou masqués en renards, marchent en lanterne jusqu'au sanctuaire d'Inari."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Sous la vague au large de Kanagawa (La Grande Vague)"
+artiste = "Katsushika Hokusai"
+annee = "vers 1830–1832"
+image = "grande-vague.jpg"
+technique = "Estampe nishiki-e (gravure sur bois en couleurs), 25,7 × 37,9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "La planche la plus célèbre des Trente-six Vues du mont Fuji : une vague géante va s'abattre sur trois barques, tandis que le Fuji, minuscule, attend au loin."
+description = """
+À gauche, une vague immense se dresse et se recourbe au-dessus de la mer ; son écume \
+se découpe en griffes blanches qui semblent prêtes à saisir les hommes. Trois longues \
+barques effilées plongent dans les creux. Leurs rameurs, serrés les uns contre les \
+autres, se cramponnent, tête baissée. Au centre, tout au fond, apparaît le mont Fuji, \
+petit cône au sommet enneigé, coincé entre deux vagues. Au premier plan, une vague \
+plus petite reprend exactement sa forme, comme un second Fuji d'eau. Le ciel, d'un \
+beige pâle, s'assombrit vers l'horizon, où passent quelques nuages. En haut à gauche, \
+un cartouche donne le nom de la série et le titre de l'estampe, avec à côté la \
+signature de l'artiste."""
+evocation = """
+L'image oppose la force démesurée de la nature et la fragilité des hommes, qui \
+continuent pourtant de ramer. Au milieu de ce chaos, le Fuji reste immobile : la \
+montagne sacrée, symbole de permanence, paraît minuscule et pourtant inébranlable. Son \
+nom a été rapproché de mots signifiant « sans pareil » et « immortel », et la montagne \
+était l'objet d'un véritable culte à Edo. On a aussi remarqué que l'image se lit \
+autrement selon le sens du regard : de droite à gauche, comme un texte japonais, la \
+vague déferle vers le spectateur ; de gauche à droite, à l'occidentale, elle semble \
+s'éloigner. Hokusai, à plus de soixante-dix ans, y résume tout son art du mouvement \
+saisi dans un instant suspendu."""
+histoire = """
+L'estampe ouvre la série des Trente-six Vues du mont Fuji, publiée vers 1830–1832 par \
+l'éditeur Nishimuraya Yohachi. Hokusai, qui a plus de soixante-dix ans, sort d'années \
+difficiles, marquées par la maladie et des soucis d'argent. La série connaît un tel \
+succès que dix vues supplémentaires s'y ajoutent, soit quarante-six planches. La \
+Grande Vague fut tirée à des milliers d'exemplaires, vendus à bas prix. Arrivées en \
+Europe après l'ouverture du Japon, ses épreuves fascinèrent les peintres, les \
+musiciens et les écrivains du japonisme. Cet exemplaire, d'une belle fraîcheur, fait \
+partie de la collection rassemblée par Louisine et Henry O. Havemeyer, léguée au \
+Metropolitan Museum of Art de New York en 1929."""
+facture = """
+Hokusai emploie le bleu de Prusse, un pigment synthétique importé depuis peu, plus \
+intense et plus durable que l'indigo végétal. La ligne d'horizon très basse vient des \
+perspectives occidentales qu'il avait étudiées dans les gravures hollandaises. \
+L'estampe est un travail d'équipe : Hokusai dessine, un graveur taille une planche de \
+bois par couleur, un imprimeur pose les couleurs une à une à la main sur le papier, et \
+l'éditeur finance et vend."""
+details = [
+  "Les griffes d'écume au sommet de la vague, comme des doigts crochus.",
+  "Le Fuji enneigé, tout petit, au creux des vagues.",
+  "La petite vague du premier plan, qui a la forme du Fuji.",
+  "Les rameurs couchés au fond des barques, tête baissée.",
+  "La signature à côté du cartouche : Hokusai aratame Iitsu hitsu.",
+]
+themes = ["mer", "vague", "fuji", "bleu de prusse", "nature"]
+anecdote = """
+Claude Debussy avait une épreuve de la Grande Vague dans son bureau. Pour la \
+couverture de la partition de La Mer, publiée en 1905, il fit reproduire la vague de \
+Hokusai, sans le Fuji ni les barques."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Temps clair par vent du sud (Le Fuji rouge)"
+artiste = "Katsushika Hokusai"
+annee = "vers 1830–1832"
+image = "fuji-rouge.jpg"
+technique = "Estampe nishiki-e, 25,4 × 37,8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Au petit matin de la fin de l'été, le Fuji rougit sous le soleil levant : une montagne, un ciel, et rien d'autre."
+description = """
+La montagne occupe toute la partie droite de l'image : un immense triangle rouge \
+brique qui s'élève jusqu'au bord supérieur. Près du sommet, des traînées de neige \
+blanche descendent dans la roche sombre. Au pied, une large bande bleu-vert est \
+couverte d'une multitude de petits arbres, figurés par de minuscules touches serrées \
+comme une fourrure. À gauche, le ciel bleu profond est traversé de longues rangées de \
+petits nuages blancs, alignés comme des écailles. Il n'y a ni village, ni voyageur, ni \
+bateau : aucune présence humaine. En haut à gauche, le cartouche du titre et la \
+signature de Hokusai se détachent sur le ciel."""
+evocation = """
+Le titre japonais, Gaifū kaisei, signifie « vent du sud, ciel clair » : la brise douce \
+de la fin de l'été qui chasse la brume et découvre la montagne au lever du jour. \
+Hokusai réduit le Fuji à sa forme la plus simple, presque un signe, et en fait une \
+présence monumentale et silencieuse. Pour les habitants d'Edo, le Fuji était une \
+montagne sacrée, que des confréries de pèlerins gravissaient chaque été et dont on \
+reproduisait même de petites copies dans les sanctuaires de la ville. On a vu dans \
+cette image dépouillée, sans un seul personnage, une forme de contemplation religieuse \
+autant qu'un paysage. Aujourd'hui encore, le Fuji rouge passe au Japon pour une image \
+de bon augure."""
+histoire = """
+L'estampe fait partie des Trente-six Vues du mont Fuji, publiées vers 1830–1832 par \
+Nishimuraya Yohachi, comme la Grande Vague. La série tirait parti de la vogue du culte \
+du Fuji à Edo, et de l'arrivée d'un nouveau pigment, le bleu de Prusse. Le Fuji rouge \
+fut tiré en grand nombre et les épreuves varient beaucoup d'un tirage à l'autre : \
+couleurs douces et nuancées ici, rouge plus franc et plus uniforme ailleurs. Avec la \
+Grande Vague et l'Orage sous le sommet, elle forme le trio le plus célèbre de la \
+série. Cet exemplaire est entré au Metropolitan Museum of Art de New York en 1939, \
+avec la collection léguée par Henry L. Phillips."""
+facture = """
+Peu de planches, peu de couleurs : le rouge, deux bleus, le vert et le blanc du papier \
+suffisent. Le ciel et la montagne sont imprimés en dégradés, obtenus en essuyant \
+l'encre sur la planche de bois avant chaque tirage. Les arbres sont de petites marques \
+répétées, presque un motif textile. Le grain du bois, visible dans les aplats, anime \
+les grandes surfaces. La composition repose sur deux diagonales qui se rejoignent au \
+sommet, décentré vers la droite."""
+details = [
+  "Les traînées de neige qui descendent du sommet comme des coulures.",
+  "Les petits arbres serrés au pied de la montagne, comme une fourrure.",
+  "Les rangées de nuages blancs, alignées en écailles.",
+  "Le sommet décentré vers la droite, presque au bord de l'image.",
+]
+themes = ["fuji", "montagne", "aube", "ciel", "paysage"]
+anecdote = """
+Le phénomène existe vraiment : à la fin de l'été et au début de l'automne, quand la \
+neige a fondu, le Fuji prend parfois une teinte rouge au lever du soleil. Les Japonais \
+l'appellent aka-Fuji, le « Fuji rouge », et les photographes guettent ce moment."""
+salle = 3
+mur = "ouest"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Jeune femme admirant des fleurs de prunier la nuit"
+artiste = "Suzuki Harunobu"
+annee = "vers 1766"
+image = "harunobu-prunier-nuit.jpg"
+technique = "Estampe nishiki-e avec gaufrage (karazuri), 32,4 × 21 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Sur une véranda, une jeune femme lève une lanterne vers un prunier en fleurs : l'une des premières estampes en pleine couleur."
+description = """
+Une jeune femme se tient sur une véranda de bois, le long d'une balustrade orange qui \
+traverse l'image en diagonale. Vêtue d'un long kimono rayé orné de médaillons ronds, \
+elle tend le bras et lève une lanterne de papier au bout d'une tige, pour éclairer une \
+branche de prunier en fleurs qui s'avance au-dessus d'elle. Le fond est entièrement \
+noir : c'est la nuit. Les fleurs blanches au cœur jaune se détachent sur l'obscurité. \
+À droite, un rocher clair émerge de l'ombre, et en haut une bande beige figure une \
+nappe de brume. Le plancher de la véranda, en bas, est d'un beige pâle. La jeune femme \
+a le visage doux et rond, les mains et les pieds menus, typiques de Harunobu."""
+evocation = """
+La scène est à la fois simple et poétique : une promenade nocturne pour voir les \
+premières fleurs du printemps. On l'a rapprochée d'un poème célèbre du Kokinshū, \
+l'anthologie impériale du Xe siècle, où Ōshikōchi no Mitsune écrit que l'obscurité \
+d'une nuit de printemps cache la couleur des fleurs de prunier, mais ne peut cacher \
+leur parfum. La lanterne levée dit ce désir de voir ce que la nuit dérobe. Les \
+personnages de Harunobu, fragiles et sans âge, semblent vivre dans un monde de rêve \
+plutôt que dans l'Edo réel. Ce raffinement, nourri de références littéraires, était \
+destiné à un public cultivé qui aimait reconnaître, derrière l'image, un poème ou une \
+légende."""
+histoire = """
+En 1765, des cercles d'amateurs fortunés d'Edo commandent à Harunobu des calendriers \
+illustrés, qu'ils s'échangent pour le Nouvel An. Pour ces images de luxe, graveurs et \
+imprimeurs mettent au point l'impression à une dizaine de couleurs, avec des repères \
+précis pour caler chaque planche : c'est la naissance du nishiki-e, l'« image de \
+brocart ». Les éditeurs reprennent aussitôt le procédé pour le grand public. Cette \
+estampe, réalisée vers 1766, date de ces années d'invention. Le fond noir uni, \
+difficile à imprimer sans traces, est rare à l'époque. Elle est entrée au Metropolitan \
+Museum of Art de New York en 1929."""
+facture = """
+Le format chūban, plus petit que l'ōban, convient à l'intimité des scènes de Harunobu. \
+Le grand aplat noir met en valeur les fleurs et la lanterne, laissées dans la \
+blancheur du papier. Certaines parties sont gaufrées à sec, sans encre (karazuri) : le \
+papier, pressé sur une planche gravée, garde un léger relief visible en lumière \
+rasante. Les couleurs, d'origine végétale, se sont adoucies avec le temps."""
+details = [
+  "La lanterne de papier à six pans, tenue au bout d'une tige.",
+  "Les fleurs de prunier au cœur jaune, sur le fond noir.",
+  "Les médaillons ronds du kimono rayé.",
+  "Le rocher clair, à droite, qui sort de l'ombre.",
+]
+themes = ["nuit", "prunier", "printemps", "poésie", "jeune femme"]
+anecdote = """
+Le peintre Shiba Kōkan raconte dans ses mémoires qu'après la mort de Harunobu, en \
+1770, il dessina des estampes dans son style et les signa de son nom, sans que \
+personne ne s'en aperçoive."""
+salle = 4
+mur = "ouest"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Trois beautés de notre temps"
+artiste = "Kitagawa Utamaro"
+annee = "vers 1793"
+image = "trois-beautes.jpg"
+technique = "Estampe nishiki-e, format ōban, environ 37 × 25 cm"
+collection = "Museum of Fine Arts, Boston"
+note = "Les trois jeunes femmes les plus admirées d'Edo vers 1793 : une chanteuse et deux serveuses de maisons de thé."
+description = """
+Trois jeunes femmes sont représentées en buste, en gros plan, disposées en triangle. \
+En haut, la chanteuse Tomimoto Toyohina baisse les yeux vers la gauche. En bas à \
+gauche, Naniwaya Okita tient une étoffe drapée sur son épaule ; en bas à droite, \
+Takashima Ohisa tient un éventail rond orné d'un motif de feuilles de chêne, son \
+emblème. Toutes trois portent de hautes coiffures laquées, piquées de peignes et \
+d'épingles. Leurs visages se ressemblent beaucoup, d'un ovale pâle aux yeux étroits et \
+aux petites lèvres rouges. Le fond est uni, d'un gris très clair. En haut à droite, un \
+cartouche donne le titre et les noms des trois femmes ; la signature d'Utamaro se lit \
+à gauche."""
+evocation = """
+L'estampe témoigne d'une véritable culture de la célébrité dans l'Edo du XVIIIe \
+siècle. Ces jeunes femmes n'étaient pas des courtisanes mais des personnalités connues \
+de tous : Okita servait dans une maison de thé près du temple Sensō-ji, à Asakusa, \
+Ohisa dans la boutique de sa famille à Ryōgoku, et les clients venaient les voir comme \
+on va voir une vedette. Leurs portraits se vendaient comme des photographies d'idoles. \
+Utamaro joue sur un paradoxe : il idéalise les trois visages selon le canon de beauté \
+de son temps, mais les différencie par d'infimes nuances, la courbe d'un sourcil, la \
+forme d'un œil, que les amateurs savaient reconnaître."""
+histoire = """
+L'estampe est publiée vers 1793 par Tsutaya Jūzaburō, l'éditeur le plus audacieux \
+d'Edo, qui avait fait d'Utamaro sa vedette. Okita et Ohisa, rivales en popularité, \
+furent alors représentées par de nombreux artistes, et l'on parla des « trois beautés \
+de l'ère Kansei ». Ce sont aussi les années des réformes de l'ère Kansei, par \
+lesquelles le gouvernement cherchait à réprimer le luxe et les divertissements. \
+Utamaro reprit plusieurs fois ce trio sous des formes différentes. Cet exemplaire est \
+conservé au Museum of Fine Arts de Boston, dont la collection d'estampes japonaises, \
+l'une des plus riches hors du Japon, doit beaucoup au collectionneur William Sturgis \
+Bigelow."""
+facture = """
+Utamaro fut l'un des premiers à cadrer les femmes en buste, en gros plan, à la manière \
+des portraits d'acteurs. Les visages ne sont faits que de quelques lignes, sans ombre \
+ni modelé. Toute la virtuosité est dans les coiffures : le graveur a taillé un par un \
+les cheveux fins du front et de la nuque. La composition pyramidale et la palette \
+retenue, faite de noirs, d'ocres et de quelques rouges, donnent à l'image une grande \
+élégance."""
+details = [
+  "L'éventail rond d'Ohisa, avec son emblème de feuilles de chêne.",
+  "Les cheveux fins de la nuque et des tempes, gravés un par un.",
+  "Le cartouche en haut à droite, qui nomme les trois jeunes femmes.",
+  "Les infimes différences entre les trois visages.",
+]
+themes = ["beauté", "portrait", "célébrité", "edo", "femmes"]
+anecdote = """
+Peu après, la censure interdit d'inscrire sur les estampes le nom des jeunes femmes \
+qui n'étaient pas des courtisanes. Utamaro et ses éditeurs contournèrent \
+l'interdiction par des rébus : de petits dessins dont la lecture donnait le nom du \
+modèle."""
+salle = 4
+mur = "nord"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "L'acteur Ōtani Oniji III dans le rôle du valet Edobei"
+artiste = "Tōshūsai Sharaku"
+annee = "1794"
+image = "sharaku-oniji.jpg"
+technique = "Estampe nishiki-e sur fond de mica noir, format ōban, environ 38 × 25 cm"
+collection = "Musée national de Tokyo"
+note = "Un acteur de kabuki dans un rôle de brigand, les mains crispées en avant : le plus célèbre des portraits de Sharaku."
+description = """
+Sur un fond gris sombre et scintillant, un homme est vu en buste, de trois quarts, le \
+visage tourné vers la droite. Ses sourcils noirs sont froncés, ses yeux fixent \
+durement un adversaire invisible, sa bouche est serrée en une ligne tombante. Ses \
+cheveux sont relevés en un chignon serré, avec le front rasé des hommes du peuple. Il \
+porte un vêtement rayé brun et ocre sur un kimono noir, et jette en avant ses deux \
+mains, doigts écartés, comme pour saisir ou menacer. Ces mains paraissent étonnamment \
+petites par rapport au visage. Sur l'épaule, un emblème rond porte le blason de \
+l'acteur. À droite, la signature de Sharaku, et sous elle la marque de l'éditeur."""
+evocation = """
+Edobei est un valet brutal, un homme de main qui s'apprête à dépouiller sa victime : \
+Sharaku en fait une figure de menace concentrée, tendue comme un ressort. Mais \
+derrière le personnage, c'est l'acteur qu'il montre, avec ses traits propres, sa \
+mâchoire, ses rides, ce qui tranche avec les portraits flatteurs de l'époque. On a \
+souvent supposé que ce réalisme sans complaisance déplut aux acteurs et à leurs \
+admirateurs, et expliquerait la brièveté de la carrière de Sharaku, mais ce n'est \
+qu'une hypothèse. Pour le regard moderne, ces visages proches de la caricature, d'une \
+intensité saisissante, comptent parmi les portraits les plus expressifs de l'art \
+japonais."""
+histoire = """
+Au cinquième mois de 1794, au théâtre Kawarazaki-za d'Edo, Ōtani Oniji III joue le \
+rôle d'Edobei dans la pièce Koi nyōbō somewake tazuna. Le même mois, l'éditeur Tsutaya \
+Jūzaburō lance un artiste inconnu, Sharaku, avec une série spectaculaire de vingt-huit \
+portraits d'acteurs en buste sur fond de mica noir, dont celui-ci. Dix mois plus tard, \
+Sharaku cesse de publier et disparaît. Oublié au Japon, il est redécouvert par les \
+collectionneurs occidentaux à la fin du XIXe siècle. L'exemplaire du Musée national de \
+Tokyo, l'un des plus beaux connus, est classé bien culturel important du Japon."""
+facture = """
+Le fond est imprimé au mica (kira-zuri) : une poudre minérale mêlée à la couleur, qui \
+scintille sous la lumière et donne au portrait un éclat précieux. Sharaku simplifie \
+les formes à l'extrême : grandes surfaces sombres du vêtement, lignes nettes du \
+visage, asymétrie appuyée des yeux et de la bouche. Les mains, volontairement \
+réduites, accentuent la tension du geste. Le cadrage serré, qui coupe le corps à la \
+taille, vient des portraits d'acteurs en buste mis à la mode quelques années plus tôt \
+par les artistes de l'école Katsukawa."""
+details = [
+  "Les mains aux doigts écartés, étonnamment petites.",
+  "Les sourcils froncés et la bouche serrée vers le bas.",
+  "Le scintillement du fond de mica, quand on change d'angle.",
+  "La signature verticale à droite : Tōshūsai Sharaku ga.",
+]
+themes = ["kabuki", "acteur", "portrait", "théâtre", "caricature"]
+anecdote = """
+C'est un Allemand, Julius Kurth, qui fit la gloire de Sharaku : dans un livre de 1910, \
+il le rangeait parmi les plus grands portraitistes de l'histoire. Depuis, les épreuves \
+de Sharaku sont devenues parmi les plus recherchées de toute l'estampe japonaise."""
+salle = 4
+mur = "est"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Princesse Takiyasha et le spectre squelette"
+artiste = "Utagawa Kuniyoshi"
+annee = "vers 1844"
+image = "takiyasha-squelette.jpg"
+technique = "Estampe nishiki-e, triptyque de trois feuilles ōban, environ 36 × 74 cm"
+collection = "British Museum, Londres"
+note = "Dans un palais en ruine, une princesse magicienne fait surgir un squelette géant pour terrifier deux guerriers."
+description = """
+L'image se déploie sur trois feuilles. À gauche, la princesse Takiyasha, dans un \
+somptueux kimono rouge et bleu, lit à voix haute un rouleau d'incantations, sous un \
+store de bambou déchiré qui pend d'un plafond en treillis. Au centre, deux guerriers, \
+le samouraï Ōya no Tarō Mitsukuni et son compagnon, sont accroupis sur le plancher, \
+face au monstre. Au-dessus d'eux, sur toute la largeur des feuilles centrale et \
+droite, un squelette gigantesque surgit de l'obscurité : il se penche à travers le \
+store déchiré, ses orbites vides tournées vers les hommes, ses longs doigts osseux \
+posés sur les lames de bambou. Le sol est jonché de débris."""
+evocation = """
+L'estampe appartient au goût de l'époque pour les histoires de fantômes et de \
+vengeance, que le théâtre kabuki et les romans illustrés mettaient en scène avec \
+délices. Takiyasha est la fille du rebelle Taira no Masakado, tué en 940 ; elle \
+cherche à venger son père par la magie, et le guerrier Mitsukuni est envoyé pour la \
+combattre. Le squelette géant incarne la menace surnaturelle, mais aussi la mort \
+elle-même qui se penche sur les vivants. Kuniyoshi joue en virtuose de l'effet de \
+surprise : le spectateur, comme les guerriers, découvre le monstre d'un seul coup. \
+L'image montre combien l'estampe du XIXe siècle aimait le spectaculaire et le frisson."""
+histoire = """
+Kuniyoshi s'inspire d'un roman de Santō Kyōden publié en 1806, où Takiyasha, retirée \
+dans le vieux palais en ruine de son père à Sōma, réunit des conjurés et fait appel à \
+la sorcellerie. Dans le roman, Mitsukuni affronte une foule de squelettes ; Kuniyoshi \
+les remplace par un seul squelette géant, beaucoup plus saisissant. Le triptyque est \
+publié vers 1844, dans les années qui suivent les réformes de l'ère Tenpō, quand la \
+censure interdit les portraits d'acteurs et de courtisanes et pousse les artistes vers \
+les sujets historiques et légendaires. Cet exemplaire est conservé au British Museum \
+de Londres."""
+facture = """
+Le triptyque, trois feuilles ōban vendues ensemble, permet une composition très large, \
+que Kuniyoshi exploite en faisant passer le squelette d'une feuille à l'autre. Le \
+squelette est d'une exactitude anatomique rare dans l'art japonais : les historiens \
+pensent que Kuniyoshi avait étudié des ouvrages d'anatomie occidentaux diffusés par \
+les Hollandais. Le fond noir, le blanc osseux et les quelques couleurs vives de la \
+princesse créent un contraste théâtral."""
+details = [
+  "Le rouleau d'incantations que lit la princesse, à gauche.",
+  "Les doigts osseux du squelette posés sur le store de bambou.",
+  "Le samouraï Mitsukuni, au centre, qui fixe le monstre.",
+  "Les cartouches rouges qui donnent le nom des personnages.",
+  "La signature de Kuniyoshi en bas de chacune des trois feuilles.",
+]
+themes = ["fantastique", "squelette", "légende", "guerrier", "triptyque"]
+anecdote = """
+Le père de Takiyasha, Taira no Masakado, est resté une figure redoutée. Sa tombe, le \
+Kubizuka, se trouve toujours au milieu des tours de bureaux d'Ōtemachi, à Tokyo, et la \
+tradition veut que ceux qui ont voulu la déplacer aient été frappés par le malheur."""
+salle = 5
+mur = "nord"
+place = 1
+largeur = 2.1
+
+[[oeuvres]]
+titre = "Coq et poule aux hortensias"
+artiste = "Itō Jakuchū"
+annee = "1759"
+image = "jakuchu-coqs-hortensias.jpg"
+technique = "Couleurs sur soie, rouleau vertical, environ 142 × 80 cm"
+collection = "Musée des collections impériales (Sannomaru Shōzōkan), Tokyo"
+note = "L'un des trente rouleaux du Royaume coloré des êtres vivants, peint pour un temple de Kyoto : un coq et une poule sous une cascade d'hortensias."
+description = """
+En bas de la composition, un coq au plumage roux et brun, la crête rouge vif, se \
+penche vers le sol ; sa longue queue noire se recourbe en arc au-dessus de lui. À \
+droite, une poule au plumage moucheté de brun et de blanc picore, la tête baissée. \
+Derrière eux, un rocher sombre ponctué de mousse bleu-vert. Au-dessus, des hortensias \
+bleus et blancs descendent en grappes serrées depuis le haut du rouleau, avec leurs \
+larges feuilles. Des fleurs roses s'épanouissent près du coq, et des fleurs blanches \
+au pied du rocher. En haut à gauche, un petit oiseau est perché sur une branche. À \
+gauche, une inscription verticale donne la date et la signature du peintre, suivie de \
+deux sceaux rouges."""
+evocation = """
+Ce rouleau appartient au Dōshoku sai-e, le « Royaume coloré des êtres vivants », un \
+ensemble de trente peintures d'oiseaux, de fleurs, d'insectes et de poissons. Jakuchū, \
+bouddhiste fervent, l'offrit à un temple : pour lui, chaque être vivant, du coq à la \
+fleur, possède la nature de Bouddha et mérite d'être peint avec la même ferveur. On y \
+a vu une célébration presque extatique de la vie, où l'abondance des formes et des \
+couleurs exprime la richesse du monde. Le coq, animal familier, devient sous son \
+pinceau une créature flamboyante, presque fantastique. Cette œuvre n'est pas une \
+estampe populaire mais une peinture unique, exécutée pour durer."""
+histoire = """
+L'inscription date l'œuvre de l'automne 1759. Jakuchū, ancien marchand de légumes de \
+Kyoto qui a quitté son commerce pour peindre, travaille pendant une dizaine d'années à \
+cette série. Il l'offre au temple zen Shōkoku-ji de Kyoto, avec un triptyque de \
+Bouddha, en 1765 puis en 1770, pour orner les cérémonies religieuses. En 1889, le \
+temple, en difficulté, offre les trente rouleaux à la famille impériale, qui lui verse \
+en retour une forte somme. Ils sont aujourd'hui conservés au Musée des collections \
+impériales, à Tokyo, et ont été classés trésor national en 2021."""
+facture = """
+Jakuchū utilise une soie très fine et des pigments minéraux de la meilleure qualité, \
+qui expliquent la fraîcheur des couleurs après plus de deux siècles et demi. Il peint \
+parfois aussi au revers de la soie, pour nuancer les teintes vues par transparence. \
+Chaque plume, chaque pétale est dessiné avec une précision obsessionnelle, mais la \
+composition, très dense et sans profondeur, reste décorative. Il s'inspire des \
+peintures chinoises d'oiseaux et de fleurs et de l'observation directe."""
+details = [
+  "Les plumes du cou du coq, dessinées une à une, comme des flammes dorées.",
+  "Les pétales d'hortensia, bleus ou blancs, chacun cerné d'un trait fin.",
+  "Le petit oiseau perché tout en haut à gauche.",
+  "L'inscription à gauche, qui date la peinture de l'automne 1759.",
+  "Les points de mousse bleu-vert sur le rocher sombre.",
+]
+themes = ["coq", "fleurs", "oiseaux", "nature", "bouddhisme"]
+anecdote = """
+Selon une tradition ancienne, Jakuchū élevait des coqs dans son jardin et les observa \
+longuement avant de les peindre. Les coqs sont, de fait, l'un des sujets qu'il a le \
+plus souvent représentés."""
+salle = 5
+mur = "est"
+place = 1
+largeur = 0.9
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Katsushika Hokusai"
+vie = "Edo (Tokyo), 1760 – Edo, 10 mai 1849"
+biographie = """
+Né dans le quartier de Honjo, à l'est d'Edo, Hokusai est d'abord apprenti graveur sur \
+bois. En 1778, il entre dans l'atelier de Katsukawa Shunshō, spécialiste des portraits \
+d'acteurs, et signe ses premières estampes du nom de Shunrō. Après avoir quitté cet \
+atelier, il touche à tout : illustrations de romans, estampes de luxe pour les cercles \
+de poètes, peintures, manuels de dessin. Il change sans cesse de nom d'artiste, plus \
+d'une trentaine de fois, et selon la tradition déménage plus de quatre-vingt-dix fois. \
+À partir de 1814 paraissent les volumes de la Manga, des milliers de croquis de gens, \
+d'animaux et de choses. Vers 1830, à plus de soixante-dix ans, il publie les \
+Trente-six Vues du mont Fuji, qui le rendent célèbre, puis les Cent Vues du mont Fuji. \
+Il signe alors « le vieux fou de dessin ». Pauvre jusqu'au bout, aidé par sa fille Ōi, \
+elle-même peintre, il meurt à quatre-vingt-huit ans à Edo en regrettant, dit-on, de \
+n'avoir pas eu quelques années de plus pour devenir un vrai peintre. Découvert en \
+Europe dans la seconde moitié du XIXe siècle, il devient la figure même de l'art \
+japonais pour les Occidentaux."""
+style = """
+Hokusai est un dessinateur insatiable, qui veut tout saisir : le mouvement de l'eau, \
+les gestes des artisans, la forme des montagnes. Il combine la tradition japonaise et \
+chinoise avec la perspective occidentale, découverte dans les gravures hollandaises. \
+Ses compositions, fondées sur des formes géométriques simples, cercles et triangles, \
+ont une force de signe. Le bleu de Prusse, les cadrages audacieux et l'énergie du \
+trait de ses paysages ont profondément marqué les impressionnistes, l'Art nouveau et \
+toute l'image moderne."""
+
+[[artistes]]
+nom = "Utagawa Hiroshige"
+vie = "Edo (Tokyo), 1797 – Edo, 12 octobre 1858"
+biographie = """
+Né Andō Tokutarō dans une famille de samouraïs de petit rang chargés de la lutte \
+contre les incendies au château d'Edo, Hiroshige perd ses deux parents vers l'âge de \
+douze ans et hérite de la charge de son père. Il entre peu après dans l'atelier \
+d'Utagawa Toyohiro et reçoit le nom de Hiroshige. Il dessine d'abord des acteurs et \
+des beautés, sans grand succès. Le paysage le révèle : en 1833–1834 paraissent les \
+Cinquante-trois Relais du Tōkaidō, la grande route entre Edo et Kyoto, qui connaissent \
+un succès immense. Il avait déjà cédé sa charge de pompier, en 1823, pour se consacrer \
+à l'estampe. Il publie des dizaines de séries de vues, du Kisokaidō aux sites célèbres \
+d'Edo, ainsi que des images de fleurs et d'oiseaux. En 1856, il se fait moine \
+bouddhiste et entreprend les Cent Vues célèbres d'Edo, sa dernière grande série. Il \
+meurt en 1858, probablement emporté par l'épidémie de choléra qui frappe la ville. Ses \
+estampes, arrivées en masse en Europe, sont collectionnées par Van Gogh, Monet et \
+Whistler."""
+style = """
+Hiroshige est le poète du paysage et des saisons. Plus tendre que Hokusai, il saisit \
+l'atmosphère d'un lieu à un moment précis : la pluie, la neige, la brume, le clair de \
+lune. Ses dégradés de bleu, de rouge et de gris, ses premiers plans géants et ses \
+cadrages coupés ont inspiré les impressionnistes et Van Gogh, qui l'a copié. Il montre \
+aussi, avec humour et tendresse, les voyageurs et les gens ordinaires."""
+
+[[artistes]]
+nom = "Suzuki Harunobu"
+vie = "Vers 1725 – Edo (Tokyo), 1770"
+biographie = """
+On sait peu de chose de la jeunesse de Harunobu, ni de sa formation. Ses premières \
+œuvres connues, des portraits d'acteurs imprimés en deux ou trois couleurs, datent de \
+la fin des années 1750. Son style doit beaucoup au peintre de Kyoto Nishikawa \
+Sukenobu, dont les livres illustrés montraient des femmes gracieuses et fragiles. Le \
+tournant survient en 1765 : des amateurs fortunés d'Edo, réunis en cercles de poésie, \
+lui commandent des calendriers illustrés, qu'ils s'échangent au Nouvel An. Avec les \
+graveurs et les imprimeurs, Harunobu met au point pour eux l'impression en pleine \
+couleur, avec une dizaine de planches : le nishiki-e. Les éditeurs vendent ensuite ces \
+images au public, qui se les arrache. En cinq ans, jusqu'à sa mort soudaine en 1770, \
+Harunobu produit plusieurs centaines d'estampes : jeunes amoureux, scènes de la vie \
+quotidienne, parodies élégantes de la poésie classique, portraits de la célèbre \
+serveuse de maison de thé Kasamori Osen. Il devient le maître le plus imité de son \
+temps, au point que d'autres signèrent de son nom après sa mort."""
+style = """
+Harunobu crée un monde de douceur et de rêve, peuplé de jeunes gens aux silhouettes \
+fines, aux mains menues et aux visages presque identiques. Ses estampes de petit \
+format jouent sur les couleurs tendres, les fonds unis et le gaufrage à sec. Il aime \
+les allusions littéraires cachées, que le spectateur cultivé devait reconnaître. Son \
+invention du nishiki-e ouvre l'âge d'or de l'estampe en couleurs."""
+
+[[artistes]]
+nom = "Kitagawa Utamaro"
+vie = "Vers 1753 – Edo (Tokyo), 1806"
+biographie = """
+Le lieu et la date de naissance d'Utamaro restent incertains. Il se forme auprès du \
+peintre Toriyama Sekien, connu pour ses livres illustrés de créatures fantastiques. Au \
+début des années 1780, il rencontre l'éditeur Tsutaya Jūzaburō, qui le loge, le publie \
+et fait de lui sa vedette. Il se fait d'abord connaître par de magnifiques livres \
+illustrés de poèmes comiques, dont le Livre des insectes de 1788, aux observations \
+d'une grande finesse. Vers 1791–1793, il invente le portrait de femme en buste, en \
+gros plan, et devient le maître incontesté des bijin-ga, les images de belles femmes : \
+courtisanes du quartier du Yoshiwara, serveuses célèbres, mères et enfants, femmes au \
+travail. Après la mort de Tsutaya en 1797, il travaille pour de nombreux éditeurs. En \
+1804, il est arrêté pour avoir représenté le grand chef de guerre Toyotomi Hideyoshi, \
+sujet interdit, et condamné à porter des menottes pendant cinquante jours. Il meurt \
+deux ans plus tard. En 1891, Edmond de Goncourt lui consacre un livre qui fait sa \
+réputation en Europe."""
+style = """
+Utamaro est le peintre de la beauté féminine. Ses femmes, élancées et aux visages \
+allongés, sont saisies dans leur intimité : une coiffure, un geste, un regard. Il \
+cadre ses modèles en gros plan, en buste, et fait du visage, de la nuque et des \
+cheveux, gravés avec une finesse extrême, le cœur de l'image. Sa ligne souple et ses \
+fonds de mica ont fasciné les japonisants, de Goncourt à Toulouse-Lautrec."""
+
+[[artistes]]
+nom = "Tōshūsai Sharaku"
+vie = "Actif à Edo (Tokyo) en 1794–1795 ; dates de naissance et de mort inconnues"
+biographie = """
+Sharaku est l'énigme de l'estampe japonaise. Il apparaît soudain au cinquième mois de \
+1794, quand l'éditeur Tsutaya Jūzaburō publie d'un coup vingt-huit grands portraits \
+d'acteurs de kabuki en buste, sur fond de mica noir, signés de ce nom inconnu. Au \
+cours des mois suivants paraissent d'autres séries, en pied et de plus en plus \
+conventionnelles ; puis, au début de 1795, après environ cent quarante estampes en dix \
+mois, Sharaku disparaît sans laisser de trace. Son identité a fait couler beaucoup \
+d'encre : on a voulu y voir Hokusai, Utamaro ou d'autres artistes connus. Une note \
+écrite en 1844 par l'érudit Saitō Gesshin l'identifie à Saitō Jūrōbei, un acteur de nô \
+au service du seigneur d'Awa, et des documents retrouvés depuis ont renforcé cette \
+hypothèse, aujourd'hui la plus admise. Peu apprécié de son temps, Sharaku tombe dans \
+l'oubli au Japon. Il est redécouvert par les collectionneurs occidentaux, et en 1910 \
+le livre de l'Allemand Julius Kurth le consacre comme l'un des grands portraitistes de \
+l'histoire de l'art."""
+style = """
+Sharaku montre les acteurs sans les embellir : nez busqués, mâchoires lourdes, rides, \
+regards louches, mains crispées. Il simplifie les formes, accentue les asymétries et \
+place ses figures sur des fonds de mica scintillants. Le résultat tient à la fois du \
+portrait psychologique et de la caricature, d'une intensité que l'estampe japonaise \
+n'avait jamais atteinte et qu'elle ne retrouvera guère."""
+
+[[artistes]]
+nom = "Utagawa Kuniyoshi"
+vie = "Edo (Tokyo), 1797 – Edo, 1861"
+biographie = """
+Fils d'un teinturier de soie d'Edo, Kuniyoshi entre vers 1811 dans l'atelier du grand \
+Utagawa Toyokuni, maître des portraits d'acteurs. Ses débuts sont difficiles, et il \
+vit plusieurs années dans la pauvreté. Le succès arrive vers 1827 avec une série \
+consacrée aux cent huit héros du Suikoden, un roman chinois de brigands au grand cœur, \
+qui lance la vogue des estampes de guerriers, les musha-e. Kuniyoshi en devient le \
+maître, mais il touche aussi au paysage, aux légendes, aux scènes comiques et aux \
+animaux. Lors des réformes de l'ère Tenpō, à partir de 1842, la censure interdit les \
+portraits d'acteurs et de courtisanes : il la contourne avec malice, en prêtant les \
+traits des acteurs à des chats, à des grenouilles ou à des poissons, et glisse des \
+allusions satiriques au pouvoir dans ses triptyques. Grand amoureux des chats, il en \
+avait toujours plusieurs dans son atelier. Il forme de nombreux élèves, dont Tsukioka \
+Yoshitoshi, l'un des derniers grands maîtres de l'estampe. Il meurt à Edo en 1861."""
+style = """
+Kuniyoshi est le maître du spectaculaire : guerriers en plein combat, monstres, \
+fantômes, baleines géantes, souvent déployés sur des triptyques. Il emprunte à la \
+gravure occidentale le modelé, la perspective et l'anatomie, et les mêle à une \
+imagination débordante et à un humour constant. Ses compositions audacieuses et son \
+goût du fantastique annoncent le manga et ont inspiré l'art du tatouage japonais."""
+
+[[artistes]]
+nom = "Itō Jakuchū"
+vie = "Kyoto, 1716 – Kyoto, 1800"
+biographie = """
+Fils aîné d'un riche grossiste en légumes du marché de Nishiki, à Kyoto, Jakuchū \
+reprend l'entreprise familiale à vingt-trois ans, à la mort de son père. Mais le \
+commerce l'intéresse peu : il étudie la peinture, d'abord auprès d'un maître de \
+l'école Kanō, puis en copiant les peintures chinoises conservées dans les temples de \
+Kyoto, et surtout en observant la nature. Vers quarante ans, il laisse l'entreprise à \
+son frère cadet pour se consacrer entièrement à la peinture. Proche du moine zen \
+Daiten, du temple Shōkoku-ji, qui lui aurait donné son nom d'artiste, il peint pendant \
+une dizaine d'années les trente rouleaux du Royaume coloré des êtres vivants, offerts \
+au temple. Il pratique aussi l'encre monochrome, d'une grande liberté, et invente des \
+techniques originales, comme ses paravents divisés en milliers de petits carrés. Le \
+grand incendie de Kyoto, en 1788, détruit sa maison ; il passe ses dernières années \
+près du temple Sekihō-ji, au sud de la ville, où il dessine des statues de disciples \
+du Bouddha. Longtemps négligé, il est aujourd'hui l'un des peintres les plus admirés \
+du Japon."""
+style = """
+Jakuchū est un peintre singulier, qui n'appartient à aucune école. Il unit la \
+précision presque scientifique de l'observation, plume par plume et pétale par pétale, \
+à une imagination décorative et parfois étrange. Ses couleurs, d'une intensité et \
+d'une fraîcheur exceptionnelles, et ses compositions denses, sans profondeur, donnent \
+à ses oiseaux et à ses fleurs une présence presque surnaturelle. Il n'est pas un \
+artiste de l'ukiyo-e, mais un contemporain des premiers maîtres de l'estampe en \
+couleurs."""

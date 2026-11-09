@@ -154,7 +154,7 @@ fn plan(ex: &Exhibition) -> Vec<Stop> {
     if hall != first {
         walk_to(ex, &mut list, hall, first);
         let eye = list.last().map_or(start_eye, |s| s.eye);
-        list.push(stop(eye, [room.x, 1.4, room.z], 1.2));
+        list.push(stop(eye, overview(&list, eye, room), 1.2));
     }
     let mut at = first;
     for (n, &g) in galleries.iter().enumerate() {
@@ -162,7 +162,7 @@ fn plan(ex: &Exhibition) -> Vec<Stop> {
             walk_to(ex, &mut list, at, g);
             let r = &ex.rooms[g];
             let eye = list.last().map_or([r.x, EYE, r.z], |s| s.eye);
-            list.push(stop(eye, [r.x, 1.4, r.z], 1.2));
+            list.push(stop(eye, overview(&list, eye, r), 1.2));
         }
         visit_room(ex, &mut list, g);
         at = g;
@@ -170,6 +170,27 @@ fn plan(ex: &Exhibition) -> Vec<Stop> {
     // Retour à l'entrée, par les portes.
     walk_to(ex, &mut list, at, hall);
     list
+}
+
+/// Le point regardé en entrant dans une salle : son centre, un peu plus bas que l'œil
+/// (8° au plus) ; si l'œil en est tout près (une salle étroite), droit devant, dans le
+/// sens de la marche.
+fn overview(list: &[Stop], eye: [f32; 3], room: &crate::artworks::Room) -> [f32; 3] {
+    let (dx, dz) = (room.x - eye[0], room.z - eye[2]);
+    let d = (dx * dx + dz * dz).sqrt();
+    if d >= 1.5 {
+        return [room.x, (EYE - 0.14 * d).max(1.4), room.z];
+    }
+    // Le sens de la marche : depuis le dernier arrêt qui n'est pas à la même place.
+    let from = list
+        .iter()
+        .rev()
+        .map(|s| s.eye)
+        .find(|p| (p[0] - eye[0]).hypot(p[2] - eye[2]) > 0.2);
+    let (mut ux, mut uz) = from.map_or((0.0, -1.0), |p| (eye[0] - p[0], eye[2] - p[2]));
+    let n = ux.hypot(uz).max(1e-3);
+    (ux, uz) = (ux / n, uz / n);
+    [eye[0] + ux * 3.0, EYE - 0.2, eye[2] + uz * 3.0]
 }
 
 /// Ajoute le chemin de la salle `a` à la salle `b`, porte après porte.
