@@ -1,0 +1,875 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « POST-IMPRESSIONNISME » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/post-impressionnisme/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /post-impressionnisme.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 130
+nom_court = "Post-impressionnisme"
+mouvement = "Néo-impressionnisme, Nabis et art naïf"
+couleur = "#2f6b5a"
+titre = "Après l'impressionnisme, points, aplats et rêves"
+artiste = "Seurat, Signac, Toulouse-Lautrec, le Douanier Rousseau, les Nabis…"
+dates = "1884–1910"
+accroche = "Exposition virtuelle · Art Institute of Chicago"
+introduction = """
+Après 1884, de jeunes peintres veulent dépasser l'impressionnisme : Seurat et Signac \
+décomposent la couleur en points, Toulouse-Lautrec saisit la nuit de Montmartre, \
+Sérusier, Bonnard et Vuillard, les Nabis, posent des aplats et des motifs comme sur \
+une estampe japonaise, et le Douanier Rousseau peint des rêves de jungle. Dix œuvres, \
+de la Grande Jatte au Rêve. Le bâtiment s'inspire de l'Art Institute of Chicago : on \
+entre par le grand escalier, la Grande Jatte attend seule au fond de la galerie 240, \
+et le Douanier Rousseau occupe une salle blanche et lumineuse comme celles de la \
+Modern Wing."""
+vitrine = "grande-jatte.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de l'Art Institute of Chicago : un haut hall de pierre claire, comme
+# le grand escalier du bâtiment de Michigan Avenue, ouvre au nord sur la galerie
+# 240, où la Grande Jatte occupe seule le mur du fond ; à l'ouest, Pont-Aven et
+# les Nabis ; à l'est, les nuits de Montmartre, qui mènent à une salle blanche et
+# lumineuse comme les galeries de la Modern Wing. x et z : le centre de la salle
+# (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le grand escalier"
+theme = "Un hall de pierre claire, haut comme une cage d'escalier, d'où l'on gagne les galeries."
+murs = "#ebe4d6"
+x = 0
+z = 0
+largeur = 14
+profondeur = 12
+hauteur = 12
+portes = ["sud", "nord", "ouest", "est"]
+
+[[salles]]
+nom = "Galerie 240 · Le point"
+theme = "1884–1890 : la Grande Jatte de Seurat et le portrait-manifeste de Signac, la couleur divisée en points."
+murs = "#e9e5dc"
+x = 0
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "Pont-Aven et les Nabis"
+theme = "1888–1893 : de la Bretagne de Bernard et Sérusier aux aplats et aux motifs de Bonnard et Vuillard."
+murs = "#ece3d1"
+x = -13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 5.5
+
+[[salles]]
+nom = "Les nuits de Montmartre"
+theme = "1891–1895 : Toulouse-Lautrec au Moulin Rouge, sur la toile et sur les murs de Paris."
+murs = "#eadccb"
+x = 13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 6
+portes = ["nord"]
+
+[[salles]]
+nom = "Le Douanier Rousseau"
+theme = "1897–1910 : le désert sous la lune et la jungle rêvée d'un peintre qui n'a jamais quitté la France."
+murs = "#f1eee8"
+x = 13
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Un dimanche après-midi à l'île de la Grande Jatte"
+artiste = "Georges Seurat"
+annee = "1884–1886"
+image = "grande-jatte.jpg"
+technique = "Huile sur toile, 207,5 × 308,1 cm"
+collection = "Art Institute of Chicago"
+note = "Deux ans de travail et des dizaines d'études pour une promenade du dimanche figée comme une frise : le manifeste du néo-impressionnisme."
+description = """
+Sur une île de la Seine, aux portes de Paris, des promeneurs profitent d'un dimanche \
+d'été au bord de l'eau. À droite, au premier plan, un couple se tient de profil : la \
+femme, en robe à tournure et ombrelle, tient en laisse un petit singe ; l'homme porte \
+haut-de-forme et canne. À gauche, un canotier en maillot sans manches fume la pipe, \
+allongé dans l'herbe près d'un monsieur en chapeau haut et d'une femme assise. Au \
+centre, une mère et sa fillette en blanc marchent vers nous. Ailleurs, des silhouettes \
+immobiles : une pêcheuse au bord de l'eau, deux soldats, un trompettiste, une enfant \
+qui court. Sur le fleuve glissent des voiliers, une yole et un bateau à vapeur, tandis \
+que les ombres des arbres zèbrent la pelouse."""
+evocation = """
+Seurat peint un loisir moderne où se croisent toutes les classes : bourgeois, \
+canotiers, soldats, nourrices. Mais rien ne bouge. Les personnages, raides et \
+solennels, souvent vus de profil, semblent sortis d'une frise antique ; un ami du \
+peintre rapporte qu'il voulait faire défiler les gens d'aujourd'hui comme sur les \
+frises du Parthénon. Les historiens y ont lu des messages différents : une satire \
+discrète de la bourgeoisie du dimanche, où la femme au singe passerait pour une femme \
+entretenue et la pêcheuse pour un jeu de mots sur le péché ; une image de la solitude \
+dans la foule, chacun isolé dans sa bulle ; ou au contraire, pour ses amis \
+anarchistes, la promesse d'une société harmonieuse. Cette ambiguïté fait sa force."""
+histoire = """
+Seurat commence la toile en 1884, après Une baignade, Asnières, qui montrait des \
+ouvriers sur l'autre rive. Pendant deux ans, il va sur l'île observer les promeneurs \
+et accumule petites études peintes sur bois et dessins au crayon Conté, puis compose \
+le tableau à l'atelier. En 1885, il le reprend entièrement avec sa nouvelle technique \
+de points. Montré en mai 1886 à la huitième et dernière exposition impressionniste, il \
+fait rire et scandalise ; le critique Félix Fénéon le défend et forge le mot de \
+néo-impressionnisme. Exposé ensuite aux Indépendants, puis à Bruxelles en 1887, il est \
+acheté en 1924 par le collectionneur de Chicago Frederic Clay Bartlett, qui l'offre à \
+l'Art Institute en 1926, en mémoire de sa femme Helen."""
+facture = """
+Sur une première couche posée à larges touches croisées, Seurat juxtapose des petits \
+points de couleurs pures, au lieu de les mélanger sur la palette : vus à distance, ils \
+se fondent dans l'œil du spectateur. Il applique les lois du contraste simultané de \
+Chevreul et les travaux du physicien américain Ogden Rood, posant à côté d'une couleur \
+sa complémentaire pour la faire vibrer. La composition est réglée comme une \
+architecture, faite de verticales, d'horizontales et de profils parallèles. Vers \
+1888-1889, il ajoute une bordure peinte de points sombres pour assurer la transition \
+avec le cadre."""
+details = [
+  "Le petit singe tenu en laisse par la femme à l'ombrelle, à droite.",
+  "La fillette en blanc, au centre, qui marche vers le spectateur.",
+  "La bordure de points sombres peinte autour de la toile, ajoutée après coup.",
+  "Le chien noir qui fouille l'herbe, au premier plan.",
+  "Le bateau à vapeur et les voiliers sur la Seine, à l'arrière-plan.",
+]
+themes = ["loisirs", "dimanche", "seine", "pointillisme", "société"]
+anecdote = """
+Le tableau a inspiré la comédie musicale Sunday in the Park with George de Stephen \
+Sondheim, créée à Broadway en 1984 : on y voit Seurat composer sa toile, et le premier \
+acte s'achève sur les acteurs figés dans la pose exacte des personnages."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Portrait de Félix Fénéon (Opus 217)"
+artiste = "Paul Signac"
+annee = "1890"
+image = "portrait-feneon.jpg"
+technique = "Huile sur toile, 73,5 × 92,5 cm"
+collection = "Museum of Modern Art, New York"
+note = "Le critique qui a baptisé le néo-impressionnisme, une fleur à la main, devant un tourbillon de couleurs."
+description = """
+Debout à droite, un homme mince se tient de profil, tourné vers la gauche : Félix \
+Fénéon, avec sa barbiche taillée en pointe, son manteau orangé, son col blanc et sa \
+cravate rouge. Il tient d'une main un haut-de-forme et une canne, et tend de l'autre, \
+d'un geste précieux, une petite fleur blanche. Derrière lui, le fond n'est pas une \
+pièce mais un décor abstrait qui tourne : un grand disque fait de rayons et de cercles \
+de couleurs, des vagues vertes et rouges, des arabesques jaunes, des étoiles sur un \
+fond bleu, des boules qui font penser à des planètes. Dans le coin inférieur gauche, \
+le numéro « Op. 217 » ; à droite, la signature de Signac."""
+evocation = """
+Le portrait est à la fois un hommage et un clin d'œil. Fénéon, dandy impassible et \
+critique redouté, est présenté comme un magicien ou un dompteur qui fait surgir les \
+couleurs. Le décor tournant illustre les idées du savant Charles Henry, ami des \
+néo-impressionnistes, pour qui lignes et couleurs agissent sur l'émotion : les lignes \
+qui montent égaieraient, celles qui descendent attristeraient. Le titre complet, Sur \
+l'émail d'un fond rythmique de mesures et d'angles, de tons et de teintes, portrait de \
+M. Félix Fénéon en 1890, et le numéro d'opus, comme pour une partition, rapprochent la \
+peinture de la musique. On a aussi reconnu dans le fond un motif inspiré d'une étoffe \
+japonaise."""
+histoire = """
+Signac et Fénéon se connaissent depuis le milieu des années 1880. Employé au ministère \
+de la Guerre, Fénéon écrit dans les petites revues ; en 1886, dans sa brochure Les \
+Impressionnistes en 1886, il est le premier à analyser la méthode de Seurat et invente \
+le terme de néo-impressionnisme. En 1890, Signac lui propose de faire son portrait et \
+compose cette toile très élaborée, qu'il présente aux Indépendants de 1891 sous son \
+long titre. Quelques années plus tard, en 1894, Fénéon, sympathisant anarchiste, est \
+arrêté et jugé lors du procès des Trente, avant d'être acquitté. Le tableau appartient \
+aujourd'hui au Museum of Modern Art de New York."""
+facture = """
+Signac pousse ici la touche divisée vers le décor. Les points, plus gros et plus \
+réguliers que ceux de Seurat, couvrent toute la surface d'un réseau serré. Les \
+couleurs jouent sur les complémentaires : le manteau orange se détache sur un bleu \
+étoilé, le vert répond au rouge. Le fond ne cherche aucune profondeur : il est plat, \
+rythmé par des courbes et des bandes concentriques qui rappellent le cercle \
+chromatique de Charles Henry. Le profil net du modèle, presque découpé, contraste avec \
+ce tourbillon."""
+details = [
+  "La petite fleur blanche que Fénéon tend du bout des doigts.",
+  "Les étoiles jaunes sur fond bleu, derrière le manteau.",
+  "L'inscription « Op. 217 », dans le coin inférieur gauche.",
+  "La barbiche en pointe qui prolonge le profil.",
+]
+themes = ["portrait", "critique d'art", "spirale", "théorie des couleurs", "musique"]
+anecdote = """
+Fénéon reste célèbre pour ses « nouvelles en trois lignes » : en 1906, il rédige \
+anonymement pour le journal Le Matin des faits divers d'une concision féroce, réunis \
+bien plus tard en recueil et admirés comme de petits chefs-d'œuvre d'humour noir."""
+salle = 2
+mur = "est"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Au Moulin Rouge"
+artiste = "Henri de Toulouse-Lautrec"
+annee = "1892–1895"
+image = "au-moulin-rouge.jpg"
+technique = "Huile sur toile, 123 × 141 cm"
+collection = "Art Institute of Chicago"
+note = "Un soir au cabaret : des amis attablés, La Goulue au miroir, et Lautrec lui-même qui passe au fond."
+description = """
+Une rambarde de bois coupe en diagonale le coin inférieur gauche et nous place au bord \
+de la scène. Autour d'une table chargée de verres, un groupe bavarde : des hommes en \
+chapeau, dont l'écrivain Édouard Dujardin à la barbe jaune, une femme en chapeau \
+fleuri, et, de dos, une danseuse au chignon roux. Au fond, deux hommes traversent la \
+salle : un très grand en haut-de-forme et, à côté de lui, un petit homme barbu en \
+chapeau melon, Lautrec lui-même avec son cousin Gabriel Tapié de Céleyran. Plus loin, \
+La Goulue arrange son chignon devant un miroir. Au bord droit, coupé par le cadre, \
+surgit le visage d'une femme éclairé par en dessous d'une lumière verdâtre, comme un \
+masque."""
+evocation = """
+Ce n'est pas la fête endiablée qu'on attend du Moulin Rouge : personne ne danse, les \
+visages sont las, chacun semble seul au milieu des autres. Lautrec montre l'envers du \
+plaisir nocturne, sa fatigue et sa mélancolie, avec un regard à la fois complice et \
+sans complaisance. En se peignant au fond, petit et de passage, il se pose en témoin \
+plutôt qu'en acteur. Le visage vert du premier plan, qu'on identifie souvent comme \
+celui de la danseuse anglaise May Milton, transforme la scène en vision presque \
+inquiétante : sous la lumière artificielle, la peau devient fard et le visage devient \
+masque. On y a vu une image de la modernité urbaine, brillante et désenchantée."""
+histoire = """
+Le Moulin Rouge ouvre en 1889 au pied de Montmartre, place Blanche, et Lautrec en \
+devient aussitôt un habitué ; son Écuyère au cirque Fernando est accrochée dans le \
+foyer de l'établissement. Il peint cette grande toile au début des années 1890. Le \
+tableau a été agrandi d'une bande en équerre, à droite et en bas, celle où apparaît le \
+visage vert. Cette bande fut un temps détachée, sans doute pour rendre l'œuvre plus \
+facile à vendre, puis remise en place. La toile entre en 1928 à l'Art Institute of \
+Chicago, avec la collection constituée par Frederic Clay Bartlett en mémoire de sa \
+femme Helen, la même qui y a fait entrer la Grande Jatte."""
+facture = """
+Lautrec dessine avec le pinceau : longues hachures, contours nerveux, surfaces parfois \
+à peine couvertes. Les couleurs sont acides, verts et orangés, ceux de l'éclairage au \
+gaz et à l'électricité qui modèle les visages par en dessous. La composition doit \
+beaucoup à Degas et aux estampes japonaises : la diagonale de la rambarde, les figures \
+coupées par le cadre, le premier plan vide qui fait entrer le spectateur. Le cadrage, \
+proche d'un instantané photographique, donne l'impression d'une scène saisie au \
+passage."""
+details = [
+  "Lautrec en personne, petit et barbu, au fond, à côté de son très grand cousin.",
+  "Le visage vert et poudré de la femme coupée par le bord droit.",
+  "La Goulue qui arrange son chignon devant un miroir, à l'arrière-plan.",
+  "La rambarde en diagonale qui barre le coin inférieur gauche.",
+  "Le chignon roux de la femme vue de dos, au centre de la table.",
+]
+themes = ["cabaret", "nuit", "montmartre", "autoportrait", "lumière artificielle"]
+anecdote = """
+Lautrec mesurait à peine plus d'un mètre cinquante : deux fractures des jambes, dans \
+son adolescence, avaient arrêté leur croissance. Il aimait se montrer avec son cousin \
+Gabriel, très grand, et ce duo mal assorti amusait Montmartre comme il amuse ici."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Moulin Rouge – La Goulue"
+artiste = "Henri de Toulouse-Lautrec"
+annee = "1891"
+image = "moulin-rouge-la-goulue.jpg"
+technique = "Lithographie en couleurs (affiche), 191 × 117 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Sa première affiche : la danseuse en jupons blancs, et Valentin le Désossé en ombre au premier plan."
+description = """
+En haut, le nom du cabaret est répété trois fois, en lettres rouges qui partagent un \
+même M géant ; à droite s'annoncent Concert, Bal tous les soirs, La Goulue. Au centre, \
+la danseuse, chignon blond et corsage rouge à pois blancs, lève la jambe dans un nuage \
+de jupons blancs. Derrière elle, les spectateurs ne sont plus qu'une frise de \
+silhouettes noires, chapeaux hauts et plumets, sous une rangée de lampes jaunes. Au \
+premier plan, coupé par le bord, se dresse le profil gris de son partenaire, Valentin \
+le Désossé, haut-de-forme sur la tête et main tendue vers nous. Le plancher file en \
+diagonale ; en bas, en grandes lettres, s'annonce le bal masqué des mercredis et \
+samedis."""
+evocation = """
+Avec cette affiche, Lautrec fait entrer l'art dans la rue. Il ne décrit pas le cabaret \
+: il en donne le choc, l'énergie et la promesse, celle du quadrille naturaliste, cette \
+danse où les jupons volent et laissent voir les dessous. Tout est dit en quelques \
+formes : la vedette lumineuse au centre, la foule anonyme réduite à des ombres, et \
+Valentin, mi-réel mi-caricature, qui sert de repoussoir. On y a vu l'influence du \
+théâtre d'ombres des cabarets de Montmartre, comme celui du Chat Noir. L'affiche dit \
+aussi un monde où le spectacle devient marchandise, et où l'artiste accepte de \
+travailler pour la publicité sans renoncer à son style."""
+histoire = """
+Le Moulin Rouge a ouvert en octobre 1889 ; son directeur, Charles Zidler, commande une \
+nouvelle affiche à Lautrec en 1891, alors que la réclame du cabaret était jusque là \
+confiée à Jules Chéret, le maître du genre. Imprimée par Charles Lévy et collée sur \
+les murs de Paris à la fin de l'année, elle rend Lautrec célèbre presque du jour au \
+lendemain. C'est sa toute première affiche ; une trentaine d'autres suivront, pour \
+Aristide Bruant, Jane Avril ou le Divan japonais. Ses grandes dimensions imposaient de \
+l'imprimer en plusieurs feuilles, dont on voit les raccords horizontaux. L'exemplaire \
+présenté ici appartient au Metropolitan Museum of Art."""
+facture = """
+Lautrec dessine ses formes directement sur les pierres lithographiques, une pour \
+chaque couleur. Les aplats sont francs et peu nombreux : le noir des silhouettes, le \
+jaune des lampes, le rouge des lettres, le gris de Valentin et le blanc du papier qui \
+fait les jupons. Le japonisme est partout : contours simples, cadrage coupé, plancher \
+en diagonale, absence de modelé. Le lettrage, dessiné à la main, fait partie de la \
+composition au même titre que les figures."""
+details = [
+  "Le M géant qui sert aux trois « Moulin Rouge » du haut.",
+  "Le profil gris de Valentin le Désossé, coupé par le bord, au premier plan.",
+  "La foule réduite à une frise de silhouettes noires.",
+  "Les globes jaunes des lampes, alignés au-dessus des spectateurs.",
+  "La signature « HLautrec », en bas à gauche.",
+]
+themes = ["affiche", "cabaret", "danse", "montmartre", "lithographie"]
+anecdote = """
+En 1895, La Goulue quitte le Moulin Rouge pour danser dans une baraque de foire. \
+Lautrec lui peint deux grands panneaux pour orner l'entrée ; découpés plus tard en \
+morceaux par un marchand, ils ont été reconstitués et sont aujourd'hui au musée \
+d'Orsay."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.17
+
+[[oeuvres]]
+titre = "Le Talisman (L'Aven au Bois d'Amour)"
+artiste = "Paul Sérusier"
+annee = "1888"
+image = "le-talisman.jpg"
+technique = "Huile sur bois, 27 × 21,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un paysage grand comme un couvercle de boîte à cigares, peint sous la dictée de Gauguin : l'acte de naissance des Nabis."
+description = """
+Le petit panneau montre un coin de la rivière Aven, au Bois d'Amour, près de \
+Pont-Aven, mais il faut un moment pour le reconnaître. Dans la moitié haute, les \
+arbres sont des taches jaunes, vertes et violettes ; une large bande rouge orangé, la \
+rive, traverse le tableau en oblique, hérissée de traits verticaux bleu-gris qui \
+figurent les troncs. À droite, une maison au toit bleu se devine. La moitié basse est \
+le reflet de tout cela dans l'eau : de grandes taches jaunes, violettes et vertes, une \
+masse sombre à droite, une zone bleu clair dans le coin. Aucun détail, aucun modelé : \
+seulement des surfaces de couleur posées côte à côte."""
+evocation = """
+Ce minuscule paysage a valeur de révélation : la couleur n'a plus à imiter la nature, \
+elle doit traduire ce que l'on ressent devant elle, quitte à l'exagérer. Les amis de \
+Sérusier l'ont gardé comme un objet magique, d'où son nom de Talisman. En 1890, \
+Maurice Denis tire la leçon de cette découverte dans une phrase devenue célèbre : se \
+rappeler qu'un tableau, avant d'être un cheval de bataille, une femme nue ou une \
+quelconque anecdote, est essentiellement une surface plane recouverte de couleurs en \
+un certain ordre assemblées. On voit souvent dans ce panneau l'un des premiers pas de \
+la peinture vers l'abstraction, un quart de siècle avant qu'elle n'y arrive vraiment."""
+histoire = """
+En octobre 1888, Paul Sérusier, élève de l'Académie Julian à Paris, séjourne à \
+Pont-Aven, où Gauguin entraîne un groupe de jeunes peintres. Selon le récit qu'en fera \
+Maurice Denis, Gauguin l'emmène au Bois d'Amour et lui demande comment il voit les \
+arbres : s'ils lui paraissent jaunes, qu'il mette du jaune, le plus beau ; si l'ombre \
+est bleue, du bleu outremer ; si les feuilles sont rouges, du vermillon. De retour à \
+Paris, Sérusier montre le panneau à ses camarades, Denis, Bonnard, Ranson, Ibels : ils \
+forment le groupe des Nabis. Longtemps conservé par Maurice Denis et sa famille, le \
+Talisman est entré au musée d'Orsay en 1985."""
+facture = """
+Sérusier peint vite, sur le couvercle en bois d'une boîte à cigares, en larges touches \
+plates de couleurs presque pures. Il supprime la perspective, les ombres et les \
+détails, et réduit chaque élément à une tache dont la couleur est exaltée. On \
+reconnaît la leçon du synthétisme de Gauguin et d'Émile Bernard : simplifier, peindre \
+de mémoire et selon l'émotion. La touche reste pourtant visible et vivante, et le bois \
+apparaît par endroits entre les couleurs."""
+details = [
+  "La bande rouge orangé de la rive, qui traverse le haut du panneau en oblique.",
+  "Les troncs d'arbres réduits à de simples traits bleu-gris verticaux.",
+  "La maison au toit bleu, à droite, à peine esquissée.",
+  "Les reflets dans l'eau, devenus de grandes taches jaunes, violettes et vertes.",
+]
+themes = ["paysage", "couleur pure", "bretagne", "abstraction", "nabis"]
+anecdote = """
+Au dos du panneau, une inscription précise qu'il a été fait en octobre 1888, sous la \
+direction de Gauguin, par Sérusier, à Pont-Aven : une sorte de certificat de naissance \
+pour le tableau qui allait donner son élan à toute la peinture nabie."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Madeleine au Bois d'Amour"
+artiste = "Émile Bernard"
+annee = "1888"
+image = "madeleine-bois-d-amour.jpg"
+technique = "Huile sur toile, 138 × 163 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Sa sœur de dix-sept ans, allongée dans le bois de Pont-Aven, rêveuse comme une gisante."
+description = """
+Une jeune fille aux cheveux roux est étendue de tout son long au bas de la toile, sur \
+l'herbe semée de petites fleurs blanches. Elle porte une longue robe bleu-gris, a \
+glissé une main sous sa tête et posé l'autre sur sa poitrine ; les yeux ouverts, elle \
+regarde dans le vide. Derrière elle se dresse un bois clairsemé : des troncs minces et \
+sombres, verticaux, plantés sur un sol rose et mauve. Plus loin, entre les arbres, \
+brillent les reflets pâles de la rivière, et le feuillage vert ferme le haut du \
+tableau. En bas à gauche, le peintre a signé et daté son œuvre."""
+evocation = """
+Madeleine Bernard, sœur cadette du peintre, est pour lui une muse, et il la représente \
+comme une figure idéale plutôt que comme une jeune fille réelle. Allongée, immobile, \
+le regard perdu, elle fait penser à une gisante sculptée sur un tombeau médiéval, ou à \
+une héroïne de légende endormie dans un bois enchanté. On y a lu le goût de Bernard \
+pour la spiritualité et le symbolisme : la jeune fille semble en communion avec la \
+nature, absorbée dans un rêve intérieur. Le nom même du lieu, le Bois d'Amour, ajoute \
+une note de romance. Le tableau prend une résonance mélancolique quand on sait que \
+Madeleine mourra très jeune, avant vingt-cinq ans."""
+histoire = """
+Émile Bernard arrive à Pont-Aven en août 1888, avec sa mère et Madeleine, alors âgée \
+de dix-sept ans, et y retrouve Paul Gauguin. Cet été-là, les deux peintres échangent \
+intensément : Bernard peint ses Bretonnes dans la prairie, Gauguin sa Vision après le \
+sermon, et naît ce qu'on appellera le synthétisme. Madeleine fascine le petit groupe \
+d'artistes ; elle se fiancera plus tard au peintre Charles Laval, ami de Gauguin. Tous \
+deux partiront en Égypte, où Laval meurt en 1894 et Madeleine l'année suivante, de la \
+tuberculose. Le tableau appartient aujourd'hui au musée d'Orsay."""
+facture = """
+La composition oppose la longue horizontale du corps aux verticales régulières des \
+troncs, comme une portée de musique. Bernard simplifie les formes et pose les couleurs \
+en larges zones : le bleu de la robe, le rose du sol, le vert de l'herbe et du \
+feuillage. La touche, faite de petites hachures parallèles, reste visible, plus souple \
+que les aplats cernés de noir de ses Bretonnes de la même année. La gamme douce et un \
+peu sourde renforce l'atmosphère de rêverie."""
+details = [
+  "La main glissée sous la tête, geste de rêverie.",
+  "Les troncs minces qui rythment le fond comme des barreaux.",
+  "Les reflets clairs de la rivière, entre les arbres.",
+  "Les petites fleurs blanches semées dans l'herbe, au premier plan.",
+]
+themes = ["portrait", "rêverie", "bretagne", "forêt", "symbolisme"]
+anecdote = """
+Le Bois d'Amour, où Madeleine pose cet été-là, est aussi le lieu où, quelques semaines \
+plus tard, Sérusier peint le Talisman sous la direction de Gauguin : les deux œuvres, \
+exposées ici côte à côte, sont nées au bord de la même rivière, l'Aven."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Crépuscule (La Partie de croquet)"
+artiste = "Pierre Bonnard"
+annee = "1892"
+image = "partie-de-croquet.jpg"
+technique = "Huile sur toile, 130,5 × 162,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Une fin de journée en famille dans le Dauphiné, transformée en tapisserie de motifs et de silhouettes."
+description = """
+Le soir tombe sur un jardin. Au premier plan, une masse de feuillages sombres occupe \
+le bas du tableau. Au milieu, quelques joueurs de croquet se tiennent immobiles : à \
+gauche, un homme en veste claire et chapeau de paille ; au centre, une femme en robe \
+vert pâle à motifs, appuyée sur son maillet, près d'un chien blanc ; à côté, une autre \
+femme, vue de dos, dans une robe à grands carreaux sombres qui se confond avec \
+l'ombre. À droite, sur la pelouse encore éclairée, une ronde de jeunes filles en robes \
+claires danse dans la lumière dorée. En haut, sous un rideau de feuilles, le ciel du \
+couchant s'embrase de nuages orange. Le petit arceau du jeu est planté dans l'herbe."""
+evocation = """
+Bonnard part d'un moment banal, une partie de croquet en famille, et en fait une image \
+de rêve. Les joueurs, dont on reconnaît d'ordinaire le père et la sœur du peintre, \
+semblent figés dans le soir, tandis que la ronde lumineuse de droite paraît venir d'un \
+autre monde, comme une danse de nymphes ou un souvenir d'enfance. On y a vu le passage \
+du jour à la nuit, du réel à l'imaginaire. Le tableau dit aussi le goût des Nabis pour \
+la vie intime et familiale, à l'écart des grands sujets, et leur volonté de faire de \
+la peinture une surface décorative, comme un paravent ou une tapisserie."""
+histoire = """
+Bonnard peint la toile au Grand-Lemps, dans l'Isère, où sa famille possède une \
+propriété et où il passe ses étés. Il a alors vingt-cinq ans et vient de renoncer à \
+une carrière de juriste : en 1891, son affiche France-Champagne, placardée dans Paris, \
+l'a fait remarquer, et il partage un atelier rue Pigalle avec Vuillard, Maurice Denis \
+et l'homme de théâtre Lugné-Poe. Membre du groupe des Nabis depuis 1889, il cherche \
+une peinture nouvelle, nourrie de l'exemple de Gauguin et des estampes japonaises. Ce \
+grand tableau est l'une de ses premières compositions ambitieuses. Il est aujourd'hui \
+au musée d'Orsay, qui conserve un riche ensemble d'œuvres nabies."""
+facture = """
+Bonnard aplatit l'espace : pas de perspective nette, des plans superposés comme des \
+décors de théâtre. Les tissus deviennent des motifs, les carreaux et les fleurs des \
+robes sont traités à plat, à la manière des estampes japonaises qu'il admire. Les \
+feuillages forment des arabesques festonnées. Les contrastes de lumière, ombre épaisse \
+à gauche et vert éclatant à droite, structurent la toile. Les figures sont des \
+silhouettes sans modelé, presque découpées."""
+details = [
+  "La robe à carreaux de la femme vue de dos, traitée comme un motif plat.",
+  "La ronde de jeunes filles, à droite, dans la lumière dorée.",
+  "Le petit arceau de croquet planté dans l'herbe.",
+  "Les nuages orange du couchant, en haut à droite.",
+  "La signature et la date, en haut à gauche.",
+]
+themes = ["famille", "jardin", "crépuscule", "japonisme", "nabis"]
+anecdote = """
+Ses amis nabis le surnommaient « le Nabi très japonard ». En 1890, la grande \
+exposition d'estampes japonaises de l'École des beaux-arts l'avait bouleversé : il y \
+découvre qu'on peut suggérer l'espace sans perspective, avec des aplats et des motifs."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Intérieur, mère et sœur de l'artiste"
+artiste = "Édouard Vuillard"
+annee = "1893"
+image = "mere-et-soeur.jpg"
+technique = "Huile sur toile, 46,3 × 56,5 cm"
+collection = "Museum of Modern Art, New York"
+note = "La mère, massive et calme ; la sœur, comme aspirée par le papier peint : un huis clos familial."
+description = """
+Dans une petite pièce encombrée, la mère du peintre est assise bien droite sur une \
+chaise, au centre, vêtue d'une robe noire qui forme une masse compacte ; ses mains \
+reposent sur ses genoux et elle regarde vers nous. À gauche, sa fille Marie, dans une \
+robe à carreaux, se tient pliée en deux, maladroitement, le dos courbé contre le mur : \
+sa robe se confond presque avec le papier peint couvert de taches brunes et claires. \
+Derrière la mère, un meuble rouge-brun ; au bord droit, une petite table où sont posés \
+une assiette et un linge blanc. Le plancher ocre monte en pente raide vers le fond."""
+evocation = """
+Sous son apparence de scène quotidienne, le tableau exprime une tension. La mère, \
+solide et immobile, occupe la place centrale ; la fille, rejetée sur le côté, semble \
+écrasée, comme si la pièce la repoussait. On y a lu les rapports de force d'une \
+famille repliée sur elle-même, et un écho de l'année 1893, où Marie épouse Ker-Xavier \
+Roussel, l'ami de Vuillard. Le peintre, qui vivra toujours auprès de sa mère, observe \
+ses proches avec tendresse mais sans fard. C'est l'intimisme selon Vuillard : de \
+petits intérieurs où les motifs des tissus et des papiers peints racontent autant que \
+les visages."""
+histoire = """
+Après la mort de son père, Vuillard vit à Paris avec sa mère, qui fait vivre la \
+famille en tenant un atelier de couture et de corsets dans l'appartement, et avec sa \
+sœur Marie. Ce petit monde féminin, les ouvrières, les étoffes, les gestes du travail, \
+devient son sujet favori. En 1893, l'année du tableau, Marie épouse le peintre \
+Ker-Xavier Roussel, camarade de Vuillard au lycée Condorcet et comme lui membre des \
+Nabis. Vuillard expose alors avec ses amis et travaille pour le théâtre de l'Œuvre de \
+Lugné-Poe. Le tableau est entré au Museum of Modern Art de New York en 1934."""
+facture = """
+Vuillard travaille sur un petit format, avec une matière assez sèche et mate. Il \
+supprime presque l'espace : le papier peint, la robe à carreaux et le meuble forment \
+une mosaïque de motifs où les figures s'enchâssent. Les couleurs sont sourdes, bruns, \
+ocres, noirs, réveillées par quelques taches claires. La perspective est \
+volontairement faussée, avec un sol qui bascule vers le spectateur, comme dans les \
+estampes japonaises, ce qui renforce l'impression d'étouffement."""
+details = [
+  "La sœur courbée à gauche, sa robe à carreaux presque fondue dans le papier peint.",
+  "Les mains de la mère posées à plat sur ses genoux.",
+  "Le plancher qui monte en pente raide vers le fond.",
+  "L'assiette et le linge blanc sur la petite table, au bord droit.",
+]
+themes = ["famille", "intérieur", "intimisme", "motif", "nabis"]
+anecdote = """
+Vuillard a vécu avec sa mère jusqu'à la mort de celle-ci, en 1928 ; il avait alors \
+près de soixante ans. Elle apparaît dans des centaines de ses tableaux, de ses dessins \
+et de ses photographies."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Bohémienne endormie"
+artiste = "Henri Rousseau"
+annee = "1897"
+image = "bohemienne-endormie.jpg"
+technique = "Huile sur toile, 129,5 × 200,7 cm"
+collection = "Museum of Modern Art, New York"
+note = "Dans le désert, sous la lune, un lion flaire une dormeuse sans la dévorer : un rêve suspendu."
+description = """
+C'est la nuit, dans un désert de sable. Au premier plan, une femme à la peau sombre \
+dort étendue sur le sol, vêtue d'une longue robe aux rayures multicolores ; elle tient \
+encore un bâton de marche. Près d'elle sont posés une mandoline et une cruche en terre \
+cuite. Un lion à l'épaisse crinière se tient au-dessus d'elle, la queue dressée, et la \
+flaire sans l'attaquer ; son œil brille. Derrière s'étend une étendue d'eau bordée de \
+montagnes roses et grises. Le ciel bleu nuit, immense, occupe presque la moitié de la \
+toile ; en haut à droite, une pleine lune au visage humain éclaire la scène, et \
+quelques étoiles scintillent."""
+evocation = """
+Rousseau a lui-même décrit son sujet : une négresse errante, joueuse de mandoline, \
+dort profondément, sa cruche à ses côtés ; un lion passe par hasard, la flaire et ne \
+la dévore pas, sous un effet de lune très poétique. Le tableau tient tout entier dans \
+ce suspens. Rien ne bouge, aucun bruit : la menace et la paix coexistent. On y a vu \
+une image du rêve, le lion pouvant être celui que la dormeuse voit en songe, ou une \
+fable sur la protection de l'innocence. Les surréalistes ont admiré cette logique de \
+rêve, qui rapproche sans explication des éléments étrangers les uns aux autres."""
+histoire = """
+Rousseau expose la toile au Salon des Indépendants de 1897, où ses œuvres font souvent \
+rire le public. Il propose ensuite de la vendre à la ville de Laval, sa ville natale, \
+qui refuse. Le tableau disparaît alors pendant plus de vingt-cinq ans. Il réapparaît à \
+Paris en 1923, au moment où les avant-gardes découvrent Rousseau et le célèbrent comme \
+un précurseur. Il est acheté par le grand collectionneur new-yorkais John Quinn, puis, \
+après sa mort, passe en d'autres mains avant d'être offert en 1939 au Museum of Modern \
+Art de New York par Mrs. Simon Guggenheim."""
+facture = """
+Rousseau peint avec une minutie lisse : aucune touche visible, des contours nets, des \
+couleurs posées en aplats soigneusement dégradés. La perspective est simple et un peu \
+raide, les proportions approximatives, mais la composition est très étudiée : deux \
+grandes bandes horizontales, le sol et le ciel, et au centre le lion et la dormeuse \
+superposés. Les rayures vives de la robe tranchent sur la gamme nocturne de bleus et \
+de bruns. La crinière du lion est rendue mèche par mèche."""
+details = [
+  "La lune au visage humain, en haut à droite.",
+  "La mandoline et la cruche posées à côté de la dormeuse.",
+  "Les pieds nus de la femme, sur la gauche, et ses yeux mi-clos.",
+  "La queue dressée du lion, tracée en un seul trait contre le ciel.",
+  "La signature et la date, en bas à droite.",
+]
+themes = ["nuit", "désert", "rêve", "lion", "art naïf"]
+anecdote = """
+Laval n'a pas voulu du tableau en 1897. Aujourd'hui, la ville honore son peintre : le \
+Vieux-Château abrite un musée consacré à l'art naïf, et l'on peut encore voir la porte \
+Beucheresse, la tour des anciens remparts où il est né."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Le Rêve"
+artiste = "Henri Rousseau"
+annee = "1910"
+image = "le-reve.jpg"
+technique = "Huile sur toile, 204,5 × 298,5 cm"
+collection = "Museum of Modern Art, New York"
+note = "Sa dernière grande toile : une femme nue sur un canapé, transportée en rêve au cœur d'une jungle."
+description = """
+À gauche, une femme nue aux longs cheveux sombres est allongée sur un canapé de \
+velours rouge, le bras tendu vers la forêt. Tout autour s'étend une jungle luxuriante \
+: d'immenses fleurs bleues, roses et blanches, des feuilles de toutes les nuances de \
+vert, un arbre chargé de fruits orange, des oiseaux et des singes dans les branches. \
+Au centre, dans la pénombre, un charmeur à la peau sombre, vêtu d'un pagne rayé, joue \
+de la flûte. Deux lions aux yeux ronds regardent à travers les herbes ; derrière les \
+feuillages se cache une tête d'éléphant, et un serpent orangé glisse dans l'herbe à \
+droite. En haut, une pleine lune brille dans un ciel clair."""
+evocation = """
+Rousseau a donné la clé du tableau : la femme endormie sur son canapé rêve qu'elle est \
+transportée dans cette forêt et entend la musique du charmeur. Il l'accompagne d'un \
+petit poème où la dormeuse porte le nom de Yadwigha. Le meuble de salon perdu en \
+pleine jungle rapproche deux mondes, le quotidien parisien et l'exotisme imaginaire, \
+comme le fait le rêve. On y a vu une célébration de la sensualité et de l'imagination, \
+et une préfiguration du surréalisme, qui fera du rêve une source d'images. Les fauves \
+aux yeux écarquillés, plus étonnés que féroces, donnent à la scène une étrangeté \
+calme, entre paradis et menace."""
+histoire = """
+Rousseau présente Le Rêve au Salon des Indépendants en mars 1910, accompagné de son \
+poème. Cette fois, il n'est plus seulement moqué : depuis quelques années, Picasso, \
+Apollinaire, Delaunay et toute une jeune génération l'admirent, et Apollinaire salue \
+le tableau dans la presse. C'est sa dernière grande œuvre : Rousseau meurt quelques \
+mois plus tard, en septembre 1910, à l'hôpital Necker, d'une blessure à la jambe mal \
+soignée. Le marchand Ambroise Vollard acquiert la toile, qui passe ensuite dans \
+plusieurs collections avant d'être offerte en 1954 au Museum of Modern Art de New York \
+par Nelson A. Rockefeller."""
+facture = """
+Rousseau construit sa jungle comme un décor de théâtre, par plans superposés de \
+feuillages découpés un à un. Chaque feuille est cernée, peinte à plat, dans une gamme \
+de verts d'une variété étonnante. Il n'a jamais vu de forêt tropicale : il dessine les \
+plantes des serres du Jardin des Plantes à Paris et copie des animaux dans des albums \
+illustrés. Les figures ont la raideur des images populaires, mais l'ensemble est d'une \
+précision et d'une richesse décoratives qui fascinaient les peintres modernes."""
+details = [
+  "Le canapé rouge, meuble de salon parisien égaré dans la jungle.",
+  "Le charmeur à la flûte, presque invisible dans l'ombre, au centre.",
+  "Les deux lions aux yeux ronds qui fixent le spectateur.",
+  "La tête d'éléphant à demi cachée dans les feuillages, à gauche du charmeur.",
+  "Le serpent orangé qui glisse dans l'herbe, à droite.",
+]
+themes = ["jungle", "rêve", "nu", "exotisme", "art naïf"]
+anecdote = """
+On a longtemps raconté que Rousseau avait vu les forêts du Mexique pendant son service \
+militaire. C'est une légende, peut-être entretenue par lui-même : il n'a jamais quitté \
+la France, et ses jungles sont nées dans les serres du Jardin des Plantes."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 3.0
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Georges Seurat"
+vie = "Paris, 2 décembre 1859 – Paris, 29 mars 1891"
+biographie = """
+Fils d'une famille parisienne aisée, Georges Seurat entre en 1878 à l'École des \
+beaux-arts, dans l'atelier d'Henri Lehmann, élève d'Ingres. Il y apprend le dessin \
+classique, mais lit surtout les savants de la couleur, Chevreul et Ogden Rood, et le \
+critique Charles Blanc. Après son service militaire à Brest, il se consacre à de \
+puissants dessins au crayon Conté, tout en ombres veloutées. En 1884, sa grande toile \
+Une baignade, Asnières est refusée au Salon : il l'expose avec d'autres refusés et \
+participe à la fondation de la Société des artistes indépendants, où il rencontre Paul \
+Signac. La Grande Jatte, montrée en 1886, fait de lui le chef de file d'un mouvement \
+nouveau, le néo-impressionnisme, auquel se rallient un temps Pissarro et de jeunes \
+peintres français et belges. Discret, méthodique, il peint ensuite les Poseuses, \
+Parade de cirque, le Chahut, et passe ses étés sur les côtes de la Manche. Il meurt \
+brutalement en mars 1891, à trente et un ans, alors que le Cirque, inachevé, est \
+exposé aux Indépendants. Sa famille découvre alors qu'il vivait avec une jeune femme, \
+Madeleine Knobloch, dont il avait un fils."""
+style = """
+Seurat invente une peinture fondée sur la science : de petits points de couleurs \
+pures, juxtaposés selon les lois des contrastes, que l'œil du spectateur mélange à \
+distance. Ses compositions, très construites, figent la vie moderne dans une \
+immobilité solennelle. Sa méthode, poursuivie par Signac, a nourri le fauvisme de \
+Matisse, le cubisme et l'abstraction, qui ont retenu sa leçon : un tableau est un \
+assemblage réfléchi de couleurs et de lignes."""
+
+[[artistes]]
+nom = "Paul Signac"
+vie = "Paris, 11 novembre 1863 – Paris, 15 août 1935"
+biographie = """
+Né dans une famille de commerçants parisiens, Paul Signac abandonne ses études \
+d'architecture pour la peinture après avoir découvert Monet. Presque autodidacte, il \
+participe en 1884 à la fondation de la Société des artistes indépendants, où il se lie \
+à Georges Seurat ; il adopte aussitôt sa méthode de la couleur divisée et devient son \
+plus fidèle allié. Après la mort de Seurat en 1891, c'est lui qui défend et fait vivre \
+le néo-impressionnisme. Marin passionné, il navigue sur de nombreux voiliers et \
+découvre en 1892 le petit port de Saint-Tropez, où il s'installe une partie de \
+l'année. En 1899, il publie D'Eugène Delacroix au néo-impressionnisme, qui expose la \
+théorie du mouvement. Il accueille Matisse à Saint-Tropez en 1904 et influence \
+directement les débuts du fauvisme. Proche des milieux anarchistes, il donne des \
+dessins à leurs journaux. Longtemps président de la Société des artistes indépendants, \
+à partir de 1908, il peint aussi d'innombrables aquarelles de ports, de Marseille à \
+Venise et à Constantinople. Il meurt à Paris en 1935."""
+style = """
+Signac élargit le point de Seurat en touches carrées, plus grandes et plus libres, \
+posées comme les tesselles d'une mosaïque. Ses couleurs deviennent de plus en plus \
+éclatantes et décoratives. Ses ports et ses marines, baignés de lumière \
+méditerranéenne, et ses aquarelles rapides montrent un peintre plus lyrique que \
+théoricien. Par son livre et par son exemple, il a transmis la couleur pure aux \
+fauves."""
+
+[[artistes]]
+nom = "Henri de Toulouse-Lautrec"
+vie = "Albi, 24 novembre 1864 – château de Malromé (Gironde), 9 septembre 1901"
+biographie = """
+Henri de Toulouse-Lautrec naît dans une vieille famille aristocratique du Midi ; ses \
+parents sont cousins germains. Adolescent, il se brise les deux jambes en 1878 et 1879 \
+: elles cessent de grandir, sans doute à cause d'une maladie osseuse héréditaire. \
+Écarté de la vie de château, il se consacre au dessin, se forme auprès de Princeteau, \
+puis à Paris chez Bonnat et dans l'atelier de Cormon, où il fréquente Émile Bernard, \
+Louis Anquetin et Vincent van Gogh. Installé à Montmartre, il peint ses cabarets, ses \
+bals et ses artistes : Aristide Bruant, La Goulue, Jane Avril, Yvette Guilbert. Son \
+affiche pour le Moulin Rouge, en 1891, le rend célèbre ; il en dessine une trentaine, \
+et des centaines de lithographies. Il observe aussi, sans jugement, la vie des maisons \
+closes. Miné par l'alcool, il est interné en 1899 dans une clinique de Neuilly, où il \
+dessine de mémoire une série sur le cirque pour prouver sa lucidité. Il meurt à \
+trente-six ans au château de Malromé, chez sa mère. Celle-ci et son ami Maurice Joyant \
+offrent ses œuvres à Albi, où le musée Toulouse-Lautrec ouvre en 1922."""
+style = """
+Lautrec est d'abord un dessinateur : une ligne rapide, nerveuse, qui saisit une \
+attitude, un tic, un visage en quelques traits. Il emprunte à Degas et aux estampes \
+japonaises les cadrages coupés et les vues plongeantes, et peint souvent à l'essence, \
+sur carton, en touches hachées. Ses affiches, aux aplats francs et au lettrage \
+intégré, ont fondé l'affiche moderne et inspiré des générations de graphistes."""
+
+[[artistes]]
+nom = "Paul Sérusier"
+vie = "Paris, 9 novembre 1864 – Morlaix, 7 octobre 1927"
+biographie = """
+Fils d'une famille parisienne aisée, Paul Sérusier fait de solides études au lycée \
+Condorcet avant d'entrer à l'Académie Julian, dont il devient le massier, l'élève \
+chargé de représenter les autres. À l'été 1888, à Pont-Aven, il rencontre Paul \
+Gauguin, qui lui fait peindre le petit paysage du Bois d'Amour qu'on appellera le \
+Talisman. À son retour, il fonde avec Maurice Denis, Pierre Bonnard, Paul Ranson et \
+Henri-Gabriel Ibels le groupe des Nabis, d'un mot hébreu qui signifie prophètes, \
+suggéré par le poète Henri Cazalis. En 1889 et 1890, il rejoint Gauguin au Pouldu. \
+Curieux de philosophie et de théosophie, il se lie au peintre hollandais Jan Verkade \
+et découvre avec lui, à l'abbaye bénédictine de Beuron, en Allemagne, une théorie des \
+proportions sacrées. Il s'installe peu à peu en Bretagne, à Châteauneuf-du-Faou, où il \
+peint paysans et légendes. Il enseigne à l'Académie Ranson et publie en 1921 un petit \
+traité, l'ABC de la peinture. Il meurt à Morlaix en 1927."""
+style = """
+Sérusier est le théoricien des Nabis : il traduit en principes la leçon de Gauguin, \
+couleurs pures, formes simplifiées, refus de l'imitation. Ses toiles bretonnes \
+associent aplats décoratifs et figures stylisées, d'une gravité presque religieuse. \
+Plus tard, il cherche dans la géométrie et les nombres une harmonie universelle. Son \
+Talisman reste une étape décisive vers la peinture non figurative."""
+
+[[artistes]]
+nom = "Émile Bernard"
+vie = "Lille, 28 avril 1868 – Paris, 16 avril 1941"
+biographie = """
+Né à Lille, Émile Bernard arrive enfant à Paris et entre à seize ans dans l'atelier de \
+Fernand Cormon, où il se lie à Toulouse-Lautrec, à Louis Anquetin et à Vincent van \
+Gogh ; il en est renvoyé en 1886 pour insubordination. Il part alors à pied en \
+Normandie et en Bretagne. Avec Anquetin, il met au point en 1887 le cloisonnisme, des \
+aplats de couleur cernés de traits sombres comme les vitraux. En 1888, à Pont-Aven, il \
+peint les Bretonnes dans la prairie et échange avec Gauguin les idées d'où naît le \
+synthétisme ; en 1889, ils exposent ensemble au café Volpini, en marge de l'Exposition \
+universelle. Bernard se brouille ensuite avec Gauguin, à qui il reproche d'avoir \
+confisqué l'invention. Très croyant, il se tourne vers la peinture religieuse, voyage \
+en Italie, puis vit une dizaine d'années en Égypte, au Caire. Revenu en France, il \
+rend visite à Cézanne à Aix en 1904 et publie leurs conversations ; il publie aussi \
+les lettres que Van Gogh lui avait adressées. Il défend dès lors un retour à la \
+tradition des maîtres anciens et meurt à Paris en 1941."""
+style = """
+Dans ses années décisives, de 1887 à 1891, Bernard simplifie radicalement la peinture \
+: grandes zones de couleur pure, contours sombres, perspective abolie, influences des \
+vitraux, des estampes japonaises et de l'imagerie populaire. Ce langage, partagé avec \
+Gauguin, a ouvert la voie aux Nabis et au symbolisme. Sa peinture plus tardive, plus \
+classique, est restée dans l'ombre de ses débuts."""
+
+[[artistes]]
+nom = "Pierre Bonnard"
+vie = "Fontenay-aux-Roses, 3 octobre 1867 – Le Cannet, 23 janvier 1947"
+biographie = """
+Fils d'un haut fonctionnaire du ministère de la Guerre, Pierre Bonnard passe sa \
+licence de droit pour rassurer son père, tout en fréquentant l'Académie Julian, où il \
+rencontre Sérusier, Maurice Denis et Ranson, puis l'École des beaux-arts, où il se lie \
+à Vuillard. Il rejoint les Nabis, et son affiche France-Champagne, en 1891, lui permet \
+de se consacrer à l'art. Il dessine pour La Revue blanche, illustre des livres pour le \
+marchand Ambroise Vollard, travaille pour le théâtre et réalise paravents et \
+lithographies. En 1893, il rencontre Marthe, de son vrai nom Maria Boursin, qui sera \
+le modèle de toute sa vie et qu'il épouse en 1925. Après 1900, sa palette s'éclaircit \
+: il peint la Seine à Vernon, non loin de Monet à Giverny, puis la lumière du Midi. En \
+1926, il achète une villa au Cannet, au-dessus de Cannes, où il travaille jusqu'à sa \
+mort, en 1947. Discret, peu théoricien, il retouchait sans cesse ses toiles, même \
+accrochées."""
+style = """
+Jeune Nabi, Bonnard compose des surfaces décoratives inspirées des estampes japonaises \
+: aplats, motifs de tissus, cadrages audacieux, humour. Il devient ensuite un immense \
+coloriste, peignant de mémoire des intérieurs, des jardins et des nus baignés d'une \
+lumière vibrante. Sa liberté dans la couleur et dans la composition a beaucoup compté \
+pour la peinture du XXᵉ siècle."""
+
+[[artistes]]
+nom = "Édouard Vuillard"
+vie = "Cuiseaux (Saône-et-Loire), 11 novembre 1868 – La Baule, 21 juin 1940"
+biographie = """
+Fils d'un officier retraité, Édouard Vuillard s'installe enfant à Paris avec sa \
+famille. Au lycée Condorcet, il se lie à Ker-Xavier Roussel, Maurice Denis et Aurélien \
+Lugné-Poe, puis rejoint à l'Académie Julian le groupe des Nabis. Après la mort de son \
+père, sa mère tient un atelier de couture dans l'appartement familial : ces \
+intérieurs, ces femmes au travail et ces étoffes deviennent ses premiers sujets. Il \
+dessine décors et programmes pour le théâtre de l'Œuvre de Lugné-Poe et fréquente les \
+frères Natanson, fondateurs de La Revue blanche, et Misia, l'épouse de l'un d'eux. Il \
+peint de grands panneaux décoratifs, comme les Jardins publics commandés en 1894 par \
+Alexandre Natanson. Plus tard, il devient un portraitiste recherché de la bonne \
+société parisienne, souvent saisie chez elle, dans son décor. Il vit avec sa mère \
+jusqu'à la mort de celle-ci, en 1928, et entre à l'Académie des beaux-arts en 1937. Il \
+meurt à La Baule en juin 1940, pendant l'exode."""
+style = """
+Vuillard est le peintre de l'intimité. Dans de petits formats aux couleurs sourdes, il \
+mêle figures, papiers peints et tissus en une mosaïque de motifs où l'espace se perd. \
+Ses scènes silencieuses suggèrent les sentiments plus qu'elles ne les montrent. Dans \
+ses grands décors, il retrouve la douceur mate de la tapisserie, grâce à la peinture à \
+la colle."""
+
+[[artistes]]
+nom = "Henri Rousseau"
+vie = "Laval, 21 mai 1844 – Paris, 2 septembre 1910"
+biographie = """
+Fils d'un ferblantier de Laval, Henri Rousseau devient clerc chez un avoué, puis \
+s'engage dans l'armée. En 1871, il entre à l'octroi de Paris, l'administration qui \
+perçoit les taxes sur les marchandises entrant dans la ville : de là vient son surnom \
+de Douanier, bien qu'il n'ait jamais été douanier. Il peint en autodidacte pendant ses \
+loisirs et expose à partir de 1886 au Salon des Indépendants, ouvert à tous, sans \
+jury. Le public et la critique se moquent de ses toiles, qu'il continue d'envoyer \
+chaque année. En 1893, il prend sa retraite pour se consacrer à la peinture, donne des \
+leçons de violon et de dessin et vit pauvrement. Il se lie avec Alfred Jarry, lui \
+aussi né à Laval, puis avec Apollinaire, Robert Delaunay et Picasso, qui organise en \
+1908 un banquet en son honneur au Bateau-Lavoir. Après Surpris !, sa première jungle, \
+en 1891, il en peint une vingtaine à partir de 1904. Il meurt en septembre 1910 à \
+l'hôpital Necker, peu après avoir exposé Le Rêve."""
+style = """
+Rousseau peint sans formation académique, avec une application minutieuse : contours \
+nets, couleurs lisses, perspective naïve, figures frontales. Ses jungles, inventées à \
+partir des serres parisiennes et d'images d'albums, ont une étrangeté de rêve. Admiré \
+par Picasso, Apollinaire puis les surréalistes, il a ouvert la voie à la \
+reconnaissance de l'art naïf."""

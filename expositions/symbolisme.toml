@@ -1,0 +1,928 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « SYMBOLISME » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + ses images, dans le
+#  dossier public/tableaux/<nom>/ (ici public/tableaux/symbolisme/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /symbolisme.
+#
+#  Toutes les œuvres sont dans le domaine public (artistes morts avant 1956,
+#  œuvres antérieures à 1931) ; les images viennent de Wikimedia Commons.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 160
+nom_court = "Symbolisme"
+mouvement = "Symbolisme et Art nouveau"
+couleur = "#5e3a6e"
+titre = "Le Symbolisme, rêves, mythes et visions"
+artiste = "Moreau, Redon, Munch, Böcklin, Rossetti, Millais, Mucha…"
+dates = "1851–1914"
+accroche = "Exposition virtuelle · Musée Gustave-Moreau, Paris, et Tate Britain, Londres"
+introduction = """
+Contre le réalisme et l'impressionnisme, les symbolistes veulent peindre ce que l'œil \
+ne voit pas : le rêve, le mythe, l'angoisse, la mort et le désir. La visite suit ce \
+courant des préraphaélites anglais du milieu du siècle jusqu'aux visions de Redon, en \
+passant par le Cri de Munch, l'Île des morts de Böcklin et les arabesques Art nouveau \
+de Mucha. Le bâtiment s'inspire de la maison-atelier de Gustave Moreau à Paris, dont \
+le grand atelier très haut est couvert de tableaux du sol au plafond, et, pour la \
+salle anglaise, des galeries de la Tate Britain à Londres."""
+vitrine = "cri.jpg"
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du musée Gustave-Moreau, rue de La Rochefoucauld à Paris : on entre par
+# le vestibule de l'hôtel particulier, puis on découvre le grand atelier, très haut,
+# où les toiles se serrent sur le mur du fond, comme chez Moreau. De part et
+# d'autre s'ouvrent une galerie carrée à la manière de la Tate Britain, pour les
+# préraphaélites, et une salle pour le symbolisme du Nord. x et z : le centre de
+# la salle (x vers l'est, z vers le sud), en mètres ; une porte se déclare d'un
+# seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "1896 : l'Art nouveau accueille le visiteur, avec le Zodiaque d'Alfons Mucha."
+murs = "#ece4d8"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Le grand atelier"
+theme = "1881–1914 : Puvis de Chavannes, Gustave Moreau et Odilon Redon, le symbolisme français sur un même mur."
+murs = "#eadacb"
+x = 0
+z = -11
+largeur = 12
+profondeur = 14
+hauteur = 10
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "La galerie préraphaélite"
+theme = "1851–1888 : Ophélie, Béatrice et la Dame de Shalott, les héroïnes tragiques des peintres anglais."
+murs = "#e7e0cf"
+x = -12
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "La salle du Nord"
+theme = "1880–1896 : l'Île des morts de Böcklin, le Cri de Munch et le sphinx de Khnopff."
+murs = "#e6e0d8"
+x = 12
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Zodiaque"
+artiste = "Alfons Mucha"
+annee = "1896"
+image = "zodiaque.jpg"
+technique = "Lithographie en couleurs, 65,7 × 48,2 cm"
+collection = "Fondation Mucha, Prague (une des épreuves)"
+note = "Un profil de femme couronné de bijoux, les douze signes du zodiaque en auréole : l'image type de l'Art nouveau parisien."
+description = """
+Une jeune femme est vue de profil, tournée vers la gauche, le regard baissé. Sa longue \
+chevelure orange s'échappe en mèches qui ondulent jusqu'aux bords de l'image et se \
+terminent en volutes. Elle porte un diadème chargé de pierres, de flocons stylisés et \
+de pendeloques de cristal, et un lourd collier de perles et de cabochons sur une robe \
+semée d'étoiles. Derrière sa tête, un grand disque fait office d'auréole : sur sa \
+couronne extérieure, des médaillons montrent les douze signes du zodiaque. Le tout \
+s'inscrit dans un cadre ornemental aux angles arrondis, avec des feuillages en haut, \
+des entrelacs pourpres sur les côtés et, en bas, deux disques et une petite frise de \
+figures volantes dessinées au trait rose."""
+evocation = """
+Le Zodiaque résume ce que l'on appellera bientôt le « style Mucha » : une femme \
+idéale, ni portrait ni allégorie précise, transformée en icône décorative. L'auréole \
+empruntée aux mosaïques byzantines et aux icônes fait de cette figure profane une \
+sorte de sainte moderne, reine du temps et des astres. On y a vu une image du cycle de \
+l'année, puisque l'œuvre devait servir de calendrier, mais aussi le rêve d'une beauté \
+éternelle, hors de l'histoire. Les cheveux en « coup de fouet », motif fétiche de \
+l'Art nouveau, transforment la nature en ornement. L'œuvre dit aussi la place nouvelle \
+de l'image imprimée : un art pour tous, collé au mur ou encadré dans un salon, qui \
+rivalise avec la peinture."""
+histoire = """
+Arrivé à Paris en 1887, le Tchèque Alfons Mucha devient célèbre du jour au lendemain \
+en janvier 1895 avec l'affiche de Gismonda pour Sarah Bernhardt. Il signe alors un \
+contrat avec l'imprimeur parisien Ferdinand Champenois, et le Zodiaque est sa première \
+œuvre pour lui : un calendrier destiné à la maison elle-même. Le dessin séduit Léon \
+Deschamps, directeur de la revue La Plume, qui en achète les droits pour en faire le \
+calendrier de la revue pour l'année 1897. L'image connaît un grand succès et existe en \
+au moins neuf variantes, avec ou sans texte : celle-ci, imprimée sans lettre, était \
+vendue comme un panneau décoratif. Les épreuves sont aujourd'hui dispersées dans de \
+nombreux musées et collections, dont celle de la Fondation Mucha."""
+facture = """
+Mucha dessine son modèle, puis l'imprimeur reporte chaque couleur sur une pierre \
+lithographique différente : l'image naît de leur superposition. Le dessin repose sur \
+un contour sombre et régulier qui cerne chaque forme, comme le plomb d'un vitrail, et \
+sur des aplats de couleurs douces, ocre, rose, vert-de-gris et pourpre. La composition \
+est construite autour de cercles : l'auréole, les médaillons, les disques du bas, \
+auxquels répondent les courbes libres des cheveux. L'influence de l'estampe japonaise \
+se lit dans le profil net, sans ombre, et dans le goût de la surface décorative."""
+details = [
+  "Dans l'auréole, les signes du zodiaque, chacun avec son symbole astrologique.",
+  "Le diadème, garni de flocons de neige et de pendeloques de cristal.",
+  "Les mèches de cheveux qui débordent du cadre et s'enroulent en volutes.",
+  "En bas à droite, le croissant de lune, face au disque solaire de gauche.",
+  "La signature « Mucha » sur la robe étoilée, à droite.",
+]
+themes = ["art nouveau", "femme", "astres", "ornement", "affiche"]
+anecdote = """
+Mucha n'aimait pas l'étiquette « Art nouveau » : pour lui, l'art ne pouvait pas être \
+une mode, il devait être éternel. Après 1910, il consacre près de vingt ans à l'Épopée \
+slave, vingt toiles géantes sur l'histoire des peuples slaves, offertes à la ville de \
+Prague en 1928."""
+salle = 1
+mur = "nord"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Le Pauvre Pêcheur"
+artiste = "Pierre Puvis de Chavannes"
+annee = "1881"
+image = "pauvre-pecheur.jpg"
+technique = "Huile sur toile, 155,5 × 192,5 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Un pêcheur immobile, mains jointes, sur une barque : la misère devenue méditation silencieuse, que les jeunes symbolistes ont adorée."
+description = """
+Au premier plan, une barque grise est amarrée au bord d'une rive plate. Un homme \
+maigre, barbu, vêtu d'une chemise usée et d'un pantalon noir, s'y tient debout, tête \
+baissée, les mains croisées devant lui. À côté de lui se dresse un mât oblique, et \
+dans l'eau pend le filet tendu par deux perches recourbées. Derrière, sur une prairie \
+semée de petites fleurs jaunes, une jeune fille penchée cueille des fleurs et un tout \
+petit enfant est couché sur un linge rose. Au fond s'étend une vaste étendue d'eau \
+calme, sous un ciel pâle, fermée par des collines basses. Tout est immobile, rien ne \
+bouge : ni l'eau, ni le vent, ni les personnages."""
+evocation = """
+Puvis de Chavannes ne décrit pas un fait divers social : il transforme la pauvreté en \
+une image intemporelle de la condition humaine. Le pêcheur semble prier ou attendre, \
+et l'on y a vu tour à tour la résignation, la foi, l'espérance portée par les enfants, \
+et même une figure du Christ. Ce mélange de simplicité et de mystère a enthousiasmé \
+les jeunes peintres des années 1880 : la toile montre qu'un tableau peut suggérer une \
+idée ou un état d'âme au lieu de raconter une histoire. La palette éteinte et les \
+formes dépouillées disent la tristesse, mais aussi une paix étrange. À l'époque du \
+naturalisme triomphant, Puvis prouve qu'on peut émouvoir sans anecdote ni effet."""
+histoire = """
+Puvis de Chavannes, célèbre pour ses grandes peintures murales, présente Le Pauvre \
+Pêcheur au Salon de 1881. Le public et une partie de la critique sont déconcertés : on \
+reproche au tableau ses couleurs ternes, son dessin jugé maladroit et son manque de \
+vraisemblance. Mais les jeunes artistes, eux, y voient un manifeste. La toile \
+appartient d'abord au collectionneur Émile Boivin ; en 1887, l'État l'achète par \
+l'intermédiaire du marchand Paul Durand-Ruel et la place au musée du Luxembourg, \
+consacré aux artistes vivants. Pour dédommager Boivin, Puvis en peint une seconde \
+version, verticale, aujourd'hui au musée national d'Art occidental de Tokyo. Le \
+tableau passe au Louvre en 1929, puis au musée d'Orsay à son ouverture en 1986."""
+facture = """
+Puvis peint à l'huile, mais avec l'aspect mat et clair de la fresque, comme dans ses \
+décors muraux. La gamme est volontairement réduite : gris, beiges, verts éteints, à \
+peine relevés par le rose du linge et les fleurs jaunes. Les formes sont simplifiées, \
+les contours nets, les ombres presque absentes. La composition est rigoureuse : le mât \
+oblique et la silhouette verticale du pêcheur se détachent sur les horizontales de \
+l'eau et des collines. Cet art de la synthèse et de l'aplat a profondément marqué \
+Gauguin, Seurat et les Nabis."""
+details = [
+  "Les mains croisées du pêcheur, entre la prière et l'attente.",
+  "Le filet tendu sur ses perches, qui plonge dans l'eau à gauche.",
+  "Le bébé couché sur un linge rose, seule tache de couleur chaude.",
+  "En bas à droite, la signature et la date, 1881.",
+]
+themes = ["pauvreté", "mer", "silence", "méditation", "famille"]
+anecdote = """
+Puvis ne peignait pas à fresque : ses grands décors du Panthéon, de la Sorbonne ou de \
+la bibliothèque publique de Boston sont des toiles peintes dans son atelier, puis \
+marouflées, c'est-à-dire collées sur les murs."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Jupiter et Sémélé"
+artiste = "Gustave Moreau"
+annee = "1894–1895"
+image = "jupiter-semele.jpg"
+technique = "Huile sur toile, 213 × 118 cm"
+collection = "Musée Gustave-Moreau, Paris"
+note = "Une mortelle foudroyée par la splendeur du dieu qu'elle aime : le dernier grand tableau achevé de Moreau, ruisselant de pierreries."
+description = """
+Au centre d'un palais fabuleux, sans sol ni toit, Jupiter trône face à nous, immense \
+et hiératique, la tête entourée d'un nimbe rouge flamboyant. Il tient une lyre et une \
+fleur ; sur sa cuisse droite, Sémélé, nue et blanche, se renverse, la poitrine \
+ensanglantée, foudroyée. Le trône et les colonnes sont couverts d'ornements, de fleurs \
+et de pierreries. Au pied du trône, un grand aigle noir déploie ses ailes ; tout \
+autour apparaissent la Douleur tenant une épée, un grand Pan et la Mort tenant un lys. \
+En bas à gauche, Hécate porte le croissant de lune. Dans les angles se pressent des \
+êtres étranges, à demi enfouis dans l'ombre et les joyaux."""
+evocation = """
+Le mythe vient d'Ovide : Sémélé, aimée de Jupiter, se laisse convaincre par la jalouse \
+Junon d'exiger que le dieu se montre à elle dans toute sa gloire, et meurt consumée \
+par cette vision. Moreau en fait une méditation sur le divin : selon le long texte \
+qu'il a écrit pour expliquer le tableau, Sémélé meurt foudroyée et, avec elle, meurt \
+le génie de l'amour terrestre. On y a vu une allégorie de l'élévation de l'âme, qui ne \
+peut contempler l'absolu sans être anéantie, et une image de la création artistique \
+elle-même. Les figures de la Mort, de la Douleur et de Pan rappellent que le monde \
+terrestre reste en bas, écrasé. Pour les écrivains décadents, Moreau était le peintre \
+des rêves impossibles."""
+histoire = """
+Moreau songe au sujet dès la fin des années 1880 et en peint plusieurs versions et \
+esquisses, dont une petite toile aujourd'hui dans son musée. Il travaille surtout sur \
+la grande composition en 1894 et 1895, alors qu'il enseigne à l'École des beaux-arts, \
+où il a pour élèves Matisse et Rouault. C'est l'un des derniers grands tableaux qu'il \
+achève avant sa mort en 1898. Moreau a légué à l'État sa maison de la rue de La \
+Rochefoucauld, qu'il avait fait agrandir à partir de 1895 de deux vastes ateliers \
+superposés, pour y montrer l'ensemble de son œuvre. Le musée ouvre en 1903 avec \
+Georges Rouault pour premier conservateur. Jupiter et Sémélé y occupe une place \
+d'honneur, au milieu de centaines de peintures et de milliers de dessins."""
+facture = """
+Moreau superpose une peinture très fluide, parfois presque abstraite, et un réseau de \
+détails minutieux tracés au pinceau fin, à la manière d'un orfèvre. Les ornements, les \
+bijoux et les architectures sont inspirés de l'art indien, perse, byzantin et des \
+miniatures, qu'il étudiait dans les livres et les musées. Le format très haut et la \
+composition pyramidale conduisent le regard du bas grouillant et sombre vers le sommet \
+lumineux, où règnent le bleu du ciel et le rouge du nimbe. Les blancs de Sémélé et de \
+la Mort ressortent comme des éclats de lumière dans ce foisonnement."""
+details = [
+  "Le nimbe rouge, rayonnant comme une gerbe de flammes, derrière la tête de Jupiter.",
+  "Le sang qui coule sur le flanc de Sémélé, renversée sur la cuisse du dieu.",
+  "Sous le pied droit de Jupiter, un serpent qui se mord la queue, symbole d'éternité.",
+  "Le grand aigle noir, oiseau de Jupiter, aux ailes déployées au pied du trône.",
+  "En bas à gauche, Hécate et son croissant de lune.",
+]
+themes = ["mythologie", "divin", "mort", "amour", "orientalisme"]
+anecdote = """
+Dans À rebours, roman de Huysmans paru en 1884, le héros des Esseintes collectionne \
+les œuvres de Gustave Moreau et contemple longuement sa Salomé : le livre fit de \
+Moreau l'idole de toute une génération décadente et symboliste."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Le Cyclope"
+artiste = "Odilon Redon"
+annee = "vers 1914"
+image = "cyclope.jpg"
+technique = "Huile sur carton marouflé sur bois, 65,8 × 52,7 cm"
+collection = "Musée Kröller-Müller, Otterlo"
+note = "Un géant à l'œil unique épie, derrière la montagne, une nymphe endormie dans les fleurs."
+description = """
+Une colline couverte de fleurs et de rochers occupe presque toute la toile, en une \
+masse de couleurs violettes, roses, vertes, orangées et brunes. Derrière la crête, \
+au-dessus, surgit la tête énorme et ronde d'un géant, posée sur de larges épaules \
+nues : un visage presque sans traits, enfantin, dominé par un unique œil immense, \
+ouvert et rond. Il regarde vers le bas, à droite. Là, couchée parmi les fleurs, une \
+jeune femme nue dort, le visage caché, le corps couleur de chair presque fondu dans la \
+végétation. Le ciel nuageux, gris bleuté et blanchâtre, s'ouvre derrière le géant. \
+Aucune ombre, aucune perspective nette : tout semble flotter."""
+evocation = """
+Redon reprend un épisode des Métamorphoses d'Ovide : le cyclope Polyphème, amoureux de \
+la nymphe Galatée, qui ne veut pas de lui. Le monstre, d'ordinaire terrifiant, devient \
+ici timide, presque touchant, caché derrière la montagne et n'osant pas approcher de \
+la belle endormie. On y a vu une image du désir impossible, du regard qui contemple \
+sans pouvoir posséder, et même du peintre lui-même, œil immense posé sur le monde. \
+Certains historiens rappellent aussi les géants à un œil des contes de l'Aquitaine, où \
+Redon a grandi. Le grand œil, motif obsédant de ses lithographies, passe ici du \
+cauchemar au rêve coloré."""
+histoire = """
+Pendant plus de vingt ans, Redon n'a travaillé presque qu'en noir, au fusain et en \
+lithographie, peuplant ses albums d'yeux flottants, de têtes coupées et d'êtres \
+hybrides. À partir des années 1890, il se tourne vers la couleur, le pastel puis \
+l'huile, et ses sujets deviennent plus sereins : fleurs, mythes, barques et visions \
+religieuses. Le Cyclope appartient à ces dernières années ; sa date est discutée, \
+entre la fin des années 1890 et 1914, mais on le situe le plus souvent vers 1914. Il \
+est aujourd'hui conservé au musée Kröller-Müller d'Otterlo, aux Pays-Bas, au milieu \
+d'une forêt, célèbre aussi pour sa grande collection de tableaux de Van Gogh."""
+facture = """
+La matière est épaisse et irrégulière, faite de touches juxtaposées, grattées ou \
+posées en couches légères qui laissent vibrer les couleurs. Redon traite la colline \
+comme un tapis de pierres précieuses, sans contour ni dessin précis, à la limite de \
+l'abstraction. Seuls le géant et la nymphe sont modelés plus simplement, en tons de \
+chair. Le peintre, admiré par les Nabis, mêle ici le souvenir de ses noirs, dans la \
+tête ronde et l'œil fixe, à une explosion de couleurs que les fauves et les \
+surréalistes regarderont avec intérêt."""
+details = [
+  "L'œil unique, au centre du front, sans sourcil ni paupière apparente.",
+  "Les épaules du géant, posées sur la crête comme s'il se cachait.",
+  "À droite, la nymphe endormie, le visage caché dans son bras.",
+  "En bas à droite, la signature « Odilon Redon ».",
+]
+themes = ["mythologie", "rêve", "regard", "désir", "couleur"]
+anecdote = """
+En 1883, dans son album de lithographies Les Origines, Redon avait déjà imaginé un \
+« polype difforme » flottant sur les rivages, « sorte de cyclope souriant et \
+hideux » : trente ans plus tard, le monstre noir est devenu un géant timide et coloré."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Ophélie"
+artiste = "John Everett Millais"
+annee = "1851–1852"
+image = "ophelie.jpg"
+technique = "Huile sur toile, 76,2 × 111,8 cm"
+collection = "Tate Britain, Londres"
+note = "Ophélie flotte en chantant, avant de couler : chaque fleur, chaque brin d'herbe de la rivière anglaise a été peint d'après nature."
+description = """
+Une jeune femme flotte sur le dos dans une rivière sombre, les yeux ouverts, la bouche \
+entrouverte, les mains levées hors de l'eau, paumes ouvertes. Sa robe brodée d'argent, \
+gonflée d'eau, s'étale autour d'elle et commence à couler. Des fleurs s'échappent de \
+ses mains et dérivent : coquelicot rouge, pensées, marguerites, violettes. Tout \
+autour, la berge est envahie de végétation : un saule penché au-dessus de l'eau, des \
+orties, des roseaux à gauche, un églantier aux fleurs blanches, de la salicaire \
+pourpre à droite. Un rouge-gorge est perché sur une branche en haut à gauche. Le haut \
+du tableau est cintré, ce qui donne à la scène l'allure d'un retable profane."""
+evocation = """
+Millais illustre la mort d'Ophélie racontée par la reine Gertrude dans Hamlet de \
+Shakespeare : devenue folle après la mort de son père, la jeune fille tombe dans un \
+ruisseau et se laisse emporter en chantant. Les fleurs ont un sens que le public \
+victorien savait lire : le coquelicot pour la mort, les pensées pour l'amour vain, les \
+violettes pour la fidélité et la mort précoce, les marguerites pour l'innocence. La \
+nature, d'une précision éclatante et indifférente, contraste avec le drame humain. Le \
+tableau a fixé pour longtemps l'image de la jeune femme morte et belle, entre \
+innocence, folie et sensualité, figure qui hantera poètes et peintres, de Rimbaud, qui \
+lui consacre un poème en 1870, à Redon."""
+histoire = """
+Millais, l'un des trois fondateurs de la Confrérie préraphaélite en 1848, peint \
+d'abord le paysage, en plein air, au bord de la rivière Hogsmill, près d'Ewell, dans \
+le Surrey, pendant l'été et l'automne 1851, travaillant de longues heures chaque jour. \
+Il peint ensuite la figure dans son atelier de Londres pendant l'hiver. Le tableau est \
+exposé à la Royal Academy en 1852 ; la critique est partagée, mais la précision du \
+paysage frappe. Il est vendu au marchand Henry Farrer, passe ensuite dans plusieurs \
+collections, puis est acheté par l'industriel du sucre Henry Tate, qui l'offre à la \
+nation en 1894 avec sa collection : elle forme le noyau de la Tate Gallery, ouverte en \
+1897 à Millbank."""
+facture = """
+Fidèle aux principes préraphaélites, Millais peint chaque plante d'après nature, avec \
+une précision de botaniste, sur une toile préparée en blanc, pour que les couleurs \
+restent claires et lumineuses. Il pose les tons par petites touches, au pinceau fin, \
+sans les fondre dans une pénombre comme le faisaient les peintres académiques. La \
+lumière est égale, sans source précise, ce qui donne à chaque détail la même \
+intensité. La composition, horizontale et serrée, sans ciel, enferme le spectateur \
+dans la rivière, au plus près de la figure."""
+details = [
+  "Le rouge-gorge sur la branche du saule, en haut à gauche.",
+  "Le coquelicot rouge qui flotte près de la main droite d'Ophélie.",
+  "Le collier de violettes autour de son cou.",
+  "Le saule et les orties de la berge, symboles d'amour abandonné et de douleur.",
+  "La broderie d'argent de la robe, qui scintille sous l'eau.",
+]
+themes = ["shakespeare", "mort", "nature", "fleurs", "folie"]
+anecdote = """
+Le modèle, Elizabeth Siddal, posa des heures dans une baignoire remplie d'eau, \
+chauffée par des lampes placées dessous. Un jour, les lampes s'éteignirent sans que le \
+peintre s'en aperçoive : elle prit froid, et son père menaça le peintre de poursuites \
+jusqu'à ce qu'il accepte de payer les frais de médecin."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Beata Beatrix"
+artiste = "Dante Gabriel Rossetti"
+annee = "vers 1864–1870"
+image = "beata-beatrix.jpg"
+technique = "Huile sur toile, 86,4 × 66 cm"
+collection = "Tate Britain, Londres"
+note = "La Béatrice de Dante au seuil de la mort, sous les traits de l'épouse que Rossetti venait de perdre."
+description = """
+Une femme aux longs cheveux roux, vue à mi-corps, est assise, la tête renversée en \
+arrière, les yeux fermés, les lèvres entrouvertes. Elle porte une robe verte sur une \
+tunique violet sombre, et ses mains sont jointes, posées sur un rebord. Un oiseau \
+rouge, auréolé, descend vers elle et laisse tomber dans ses mains un pavot blanc. \
+Derrière elle, sur un parapet, un cadran solaire projette son ombre. Le fond baigne \
+dans une lumière dorée et brumeuse : on y distingue un pont sur un fleuve, et deux \
+silhouettes, l'une vêtue de rouge à gauche, l'autre sombre à droite, qui semblent se \
+regarder par-dessus la tête de la jeune femme."""
+evocation = """
+Rossetti représente Béatrice, la femme aimée de Dante, telle que le poète la décrit \
+dans la Vita Nuova, au moment de sa mort à Florence en 1290 : non pas l'agonie, mais \
+une sorte d'extase, de passage spirituel vers l'au-delà. L'oiseau rouge est un \
+messager de la mort, le pavot évoque le sommeil, et l'on y a vu aussi une allusion au \
+laudanum, dérivé de l'opium, qui avait tué Elizabeth Siddal. Le cadran solaire \
+marquerait la neuvième heure, le neuf étant le nombre de Béatrice chez Dante. Au fond, \
+le pont de Florence et les figures de l'Amour en rouge et de Dante complètent le rêve. \
+Le tableau est à la fois un hommage et un deuil."""
+histoire = """
+Elizabeth Siddal, modèle des préraphaélites, peintre et poète elle-même, épouse \
+Rossetti en 1860. Elle meurt en février 1862 d'une surdose de laudanum. Rossetti, qui \
+se compare depuis toujours à Dante, dont son père, exilé italien à Londres, était un \
+grand spécialiste, entreprend vers 1864 ce portrait posthume, peint de mémoire et \
+d'après ses dessins d'elle. Il l'achève vers 1870. Le tableau a beaucoup de succès et \
+Rossetti en réalise plusieurs répliques, dont une à l'Art Institute de Chicago. La \
+version originale appartient ensuite à Lord Mount-Temple ; en 1889, sa veuve l'offre à \
+la nation en souvenir de lui. Elle entre ainsi dans les collections nationales puis à \
+la Tate."""
+facture = """
+Rossetti abandonne ici la précision des débuts préraphaélites pour une peinture plus \
+douce et vaporeuse, où les contours se dissolvent dans une lumière dorée. Les \
+couleurs, vert, rouge et violet, ont une valeur symbolique : le vert de l'espérance, \
+le violet du deuil, le rouge de l'amour et de la mort. Le visage, baigné de lumière et \
+entouré d'un halo de cheveux, devient le centre lumineux du tableau. Cette manière de \
+faire du visage féminin une icône silencieuse annonce les « têtes » de femmes qui \
+domineront la fin de sa carrière."""
+details = [
+  "L'oiseau rouge auréolé qui tient dans son bec le pavot blanc.",
+  "Le cadran solaire, derrière la jeune femme, et son ombre.",
+  "Au fond, le pont sur l'Arno, qui situe la scène à Florence.",
+  "Les deux silhouettes, l'Amour en rouge à gauche et Dante à droite.",
+  "En bas à gauche, le monogramme de Rossetti.",
+]
+themes = ["deuil", "amour", "dante", "mort", "extase"]
+anecdote = """
+Le jour de l'enterrement d'Elizabeth Siddal, Rossetti glissa dans son cercueil le \
+manuscrit de ses poèmes. Sept ans plus tard, en 1869, il les fit exhumer au cimetière \
+de Highgate et les publia dans son recueil Poems, en 1870."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "La Dame de Shalott"
+artiste = "John William Waterhouse"
+annee = "1888"
+image = "dame-de-shalott.jpg"
+technique = "Huile sur toile, 153 × 200 cm"
+collection = "Tate Britain, Londres"
+note = "Frappée par une malédiction, la Dame quitte sa tour et se laisse dériver vers Camelot, où elle mourra."
+description = """
+Une jeune femme vêtue d'une longue robe blanche est assise dans une barque, sur une \
+rivière bordée de roseaux et d'arbres d'automne. Ses longs cheveux roux tombent sur \
+ses épaules ; elle a la bouche entrouverte et le regard perdu au loin. De la main \
+gauche, elle tient la chaîne qui retenait la barque à la rive et qu'elle vient de \
+détacher. Sous elle, une grande tapisserie, rouge, rose et or, déborde de la barque et \
+traîne dans l'eau. À l'avant, près d'une lanterne et d'une proue sculptée, se dressent \
+trois cierges. Au fond, les arbres s'ouvrent sur un ciel pâle de fin de journée et sur \
+une colline lointaine."""
+evocation = """
+Le tableau illustre le poème d'Alfred Tennyson, La Dame de Shalott : enfermée dans une \
+tour sur une île, la Dame tisse sans fin ce qu'elle voit du monde dans un miroir, car \
+une malédiction la frappera si elle regarde directement vers Camelot. Un jour, elle \
+aperçoit Lancelot dans le miroir, se tourne vers la fenêtre, et le miroir se brise. \
+Waterhouse montre le moment où, résignée, elle part sur la rivière en chantant son \
+dernier chant. On y a vu l'image de l'artiste qui quitte le monde des reflets pour la \
+vie réelle et en meurt, et celle de la femme victorienne prisonnière de son rôle. Les \
+cierges rappellent que la mort approche."""
+histoire = """
+Waterhouse, né à Rome en 1849 de parents peintres, s'est d'abord fait connaître par \
+des sujets antiques. Avec La Dame de Shalott, exposée à la Royal Academy en 1888, il \
+se tourne vers les légendes arthuriennes chères aux préraphaélites, quarante ans après \
+la fondation de leur Confrérie, mais avec une touche plus libre, marquée par la \
+peinture française de plein air. Le tableau est acheté par Henry Tate, qui l'offre à \
+la nation en 1894 avec sa collection. Il est aujourd'hui l'une des œuvres les plus \
+populaires de la Tate Britain, à Londres."""
+facture = """
+Waterhouse associe le dessin précis de la figure, héritage académique, à une facture \
+plus large dans le paysage, où l'on reconnaît l'influence du plein air français et de \
+Jules Bastien-Lepage. Les roseaux du premier plan sont brossés en traits vifs, l'eau \
+traitée en reflets sombres. La robe blanche, très éclairée, se détache sur la masse \
+brune et verte des arbres et attire aussitôt le regard. La tapisserie aux couleurs \
+chaudes équilibre la composition, tandis que la barque noire, en diagonale, entraîne \
+le regard vers la droite, dans le sens du courant et de la mort."""
+details = [
+  "La chaîne que la Dame tient encore dans sa main gauche.",
+  "Sur la tapisserie, les scènes qu'elle a tissées en regardant son miroir.",
+  "Les trois cierges et la lanterne à l'avant de la barque.",
+  "Les feuilles d'automne qui flottent sur l'eau, en bas à droite.",
+  "Les oiseaux dans les roseaux, à gauche.",
+]
+themes = ["légende arthurienne", "poésie", "destin", "rivière", "solitude"]
+anecdote = """
+Waterhouse revint deux fois au poème de Tennyson : en 1894 avec la Dame regardant \
+Lancelot, aujourd'hui à Leeds, et en 1915 avec « Je suis à demi lasse des ombres », \
+conservé à Toronto. Trois moments de la même histoire, à presque trente ans d'écart."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "L'Île des morts"
+artiste = "Arnold Böcklin"
+annee = "1880"
+image = "ile-des-morts.jpg"
+technique = "Huile sur toile, 111 × 155 cm"
+collection = "Kunstmuseum, Bâle"
+note = "Une barque glisse vers une île de rochers et de cyprès : la première version du tableau qui a fait rêver toute l'Europe."
+description = """
+Sur une mer immobile et sombre, sous un ciel d'orage gris bleu, se dresse une petite \
+île rocheuse. Ses falaises, éclairées d'une lumière dorée, forment comme deux bras qui \
+entourent une crique. Dans la roche sont creusés des portes et des fenêtres, comme des \
+tombeaux. Au centre, un bouquet de hauts cyprès noirs monte vers le ciel. Une barque \
+s'approche du rivage : un rameur, de dos, la mène, et à l'avant se tient debout une \
+figure enveloppée de blanc, devant un objet drapé de blanc qui ressemble à un \
+cercueil. Aucun bruit, aucun vent : le silence est total."""
+evocation = """
+Böcklin ne précise rien : qui est mort, qui accompagne le défunt, où se trouve l'île. \
+Le tableau évoque le voyage vers l'au-delà, la barque de Charon sur le Styx, le \
+dernier passage. Les cyprès sont depuis l'Antiquité les arbres des cimetières. On l'a \
+souvent décrit comme un « tableau pour rêver ». L'image a fasciné jusqu'à \
+l'obsession : on y a vu la paix de la mort, mais aussi son angoisse, et beaucoup de \
+foyers allemands en avaient une reproduction ; Strindberg l'évoque à la fin de sa \
+pièce La Sonate des spectres. Pour les surréalistes, et d'abord pour Giorgio De \
+Chirico, cette architecture muette et cette lumière étrange ouvrent la voie à la \
+peinture métaphysique."""
+histoire = """
+Böcklin, peintre suisse né à Bâle, vit alors à Florence. Il achève cette première \
+version en mai 1880, pour son mécène Alexander Günther, mais la garde finalement. En \
+avril, alors que la toile n'est pas terminée, Marie Berna, une jeune veuve, visite son \
+atelier et lui demande un tableau semblable : il peint pour elle une version plus \
+petite sur bois, aujourd'hui au Metropolitan Museum de New York, et ajoute, à sa \
+demande, le cercueil et la figure blanche, qu'il reporte aussi sur cette première \
+toile. Le titre est donné en 1883 par le marchand berlinois Fritz Gurlitt. Böcklin en \
+peint au moins cinq versions. Celle-ci est acquise en 1920 par la fondation Gottfried \
+Keller et déposée au Kunstmuseum de Bâle."""
+facture = """
+La composition est d'une grande simplicité : une masse sombre centrale, les cyprès, \
+entre deux falaises claires, sur l'horizontale de la mer. La lumière vient de la \
+gauche, basse, sans source visible, comme au crépuscule ou sous la lune. Böcklin \
+oppose les bleus froids de la mer et du ciel aux ocres chauds de la roche, et place la \
+seule tache vraiment blanche, la figure debout, au centre bas de la toile, à l'endroit \
+exact où se pose le regard. La touche reste lisse et discrète, presque classique, pour \
+que rien ne vienne troubler l'impression de silence."""
+details = [
+  "La figure debout, drapée de blanc, à l'avant de la barque.",
+  "Le cercueil couvert d'un drap blanc, juste devant elle.",
+  "Les ouvertures sombres creusées dans la falaise, comme des tombeaux.",
+  "En bas à gauche, le monogramme « AB » du peintre.",
+]
+themes = ["mort", "voyage", "île", "silence", "cyprès"]
+anecdote = """
+Le compositeur Sergueï Rachmaninov écrivit en 1909 son poème symphonique L'Île des \
+morts après avoir vu une reproduction en noir et blanc du tableau. Il aurait dit que, \
+s'il avait vu l'original en couleurs, il n'aurait sans doute pas écrit sa musique."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.55
+
+[[oeuvres]]
+titre = "Le Cri"
+artiste = "Edvard Munch"
+annee = "1893"
+image = "cri.jpg"
+technique = "Tempera et pastel gras sur carton, 91 × 73,5 cm"
+collection = "Nasjonalmuseet, Oslo"
+note = "Sur un pont, sous un ciel couleur de sang, une figure se bouche les oreilles : l'image même de l'angoisse moderne."
+description = """
+Au premier plan, une figure humaine sans cheveux, au visage pâle et creusé comme une \
+tête de mort, se tient sur un pont ou une route en surplomb, bordé d'une rambarde qui \
+file en diagonale vers la gauche. Elle porte les mains à ses joues, les yeux \
+écarquillés, la bouche ouverte en un cri ou un hurlement. Son corps sombre ondule \
+comme une flamme. Plus loin sur le pont, deux silhouettes en chapeau s'éloignent, \
+indifférentes. Derrière, un fjord bleu nuit s'enroule entre des collines, avec deux \
+petits bateaux. Au-dessus, le ciel est strié de longues bandes ondulantes rouges, \
+orange et jaunes, comme un incendie."""
+evocation = """
+Munch a raconté plusieurs fois l'expérience d'où naît le tableau : marchant au coucher \
+du soleil avec deux amis, il voit le ciel devenir rouge sang, s'arrête, épuisé, et \
+ressent un grand cri infini qui traverse la nature. Ce n'est donc pas la figure qui \
+crie, mais le monde autour d'elle, et elle se bouche les oreilles. Le tableau fait de \
+l'angoisse un paysage : les lignes du ciel, de l'eau et du corps ondulent ensemble. On \
+y a vu la solitude de l'homme moderne, la peur de la folie qui hantait Munch, la mort \
+de ses proches, et l'on a rapproché la figure d'une momie péruvienne exposée à Paris. \
+Le Cri est devenu l'icône universelle de l'anxiété."""
+histoire = """
+La scène se situe sur la colline d'Ekeberg, qui domine Kristiania, l'actuelle Oslo, et \
+son fjord. Munch note le souvenir dès 1892, puis peint cette version en 1893, alors \
+qu'il partage sa vie entre Berlin et la Norvège. Elle est exposée la même année dans \
+une série de tableaux sur l'amour, noyau de sa Frise de la vie. Munch réalise \
+plusieurs versions du sujet : deux au pastel ou au crayon, une lithographie en 1895, \
+une tempera vers 1910. Cette version entre à la Galerie nationale d'Oslo en 1910, \
+grâce au don du collectionneur Olaf Schou. Volée le 12 février 1994, jour de \
+l'ouverture des Jeux olympiques de Lillehammer, elle est retrouvée en mai de la même \
+année. Elle est aujourd'hui au Nasjonalmuseet."""
+facture = """
+Munch peint sur un carton brut, laissé visible par endroits, ce qui donne à l'œuvre un \
+aspect rapide et inachevé. Il mêle la tempera, posée en couches fluides, et des traits \
+de pastel gras qui accentuent les ondulations. Les couleurs sont arbitraires et \
+violentes : le rouge orangé du ciel répond au bleu du fjord. Deux systèmes de lignes \
+s'opposent : les droites rigides du pont, qui plongent vers le fond, et les courbes du \
+paysage et du corps. Cette déformation expressive, au service de l'émotion, fait de \
+Munch l'un des pères de l'expressionnisme."""
+details = [
+  "Les mains plaquées sur les oreilles, comme pour ne plus entendre le cri.",
+  "Les deux promeneurs en chapeau, au fond du pont, qui ne voient rien.",
+  "Les deux petits bateaux sur le fjord, au centre.",
+  "La bande de carton brut visible le long du bord droit.",
+  "En bas à gauche, la signature « E. Munch 1893 ».",
+]
+themes = ["angoisse", "solitude", "crépuscule", "expressionnisme", "nature"]
+anecdote = """
+Dans le ciel, en haut à gauche, une petite phrase est écrite au crayon : « Ne peut \
+avoir été peint que par un fou ». Longtemps attribuée à un visiteur malveillant, elle \
+a été reconnue en 2021, par l'étude de l'écriture, comme étant de la main de Munch \
+lui-même."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Des caresses"
+artiste = "Fernand Khnopff"
+annee = "1896"
+image = "caresses.jpg"
+technique = "Huile sur toile, 50,5 × 150 cm"
+collection = "Musées royaux des Beaux-Arts de Belgique, Bruxelles"
+note = "Un jeune homme et un sphinx à corps de guépard, joue contre joue : l'énigme du désir, peinte par le grand symboliste belge."
+description = """
+Sur une toile très allongée, un jeune homme aux cheveux roux, torse nu, un pagne bleu \
+et gris noué à la taille, se tient à gauche et regarde droit vers nous. De la main \
+droite, il tient un bâton surmonté d'ailes et d'une boule bleue. Contre lui se presse \
+une créature au corps de guépard tacheté et à la tête de femme, aux cheveux blonds, \
+les yeux mi-clos, qui appuie sa joue contre la sienne et pose une patte sur sa hanche. \
+Sa longue queue tachetée se déploie vers la droite. À l'arrière-plan, un cyprès \
+sombre, un mur blanc portant des signes, deux colonnes bleues, et un paysage \
+désertique rougeâtre sous un ciel pâle."""
+evocation = """
+Khnopff s'inspire du mythe d'Œdipe et du Sphinx, et de la toile que Gustave Moreau lui \
+avait consacrée en 1864. Mais l'affrontement est devenu étreinte : le sphinx ne pose \
+plus d'énigme, il caresse, et le jeune homme semble hésiter entre l'abandon et la \
+résistance. On y a vu l'opposition entre l'esprit et la sensualité, l'art qui se \
+laisse séduire par la chair, ou le thème fin de siècle de la femme fatale. L'œuvre a \
+longtemps porté le titre L'Art, et le bâton ailé pourrait désigner l'artiste. Les deux \
+visages, qui se ressemblent étrangement, sont inspirés de la sœur du peintre, \
+Marguerite : l'androgynie du jeune homme brouille encore la frontière entre les sexes."""
+histoire = """
+Khnopff peint cette toile à Bruxelles en 1896, au sommet de sa réputation. Membre \
+fondateur du cercle d'avant-garde des XX en 1883, il expose aussi à Paris, aux Salons \
+de la Rose+Croix de Joséphin Péladan, et regarde vers l'Angleterre, où il admire \
+Burne-Jones et écrit pour la revue The Studio. Ses œuvres sont très admirées à \
+Vienne : la Sécession viennoise lui fait une large place, et Klimt retient la leçon de \
+ses figures énigmatiques. Le tableau, connu sous plusieurs titres, L'Art, Des caresses \
+ou Les Caresses du sphinx, est aujourd'hui l'une des pièces maîtresses des collections \
+symbolistes des Musées royaux des Beaux-Arts de Belgique, à Bruxelles, exposé au musée \
+Fin-de-Siècle."""
+facture = """
+Le format en frise, très allongé, rappelle les bas-reliefs antiques et oblige le \
+regard à glisser de gauche à droite, du visage du jeune homme à la queue du sphinx. \
+Khnopff peint d'une touche fine et lisse, dans une gamme pâle de beiges, d'ocres et de \
+roses, à peine relevée par le bleu des colonnes et du pagne. Il travaillait souvent \
+d'après ses propres photographies, qu'il retouchait et recomposait. La lumière égale \
+et l'absence d'ombre forte donnent à la scène une immobilité de rêve, renforcée par le \
+décor énigmatique et vide."""
+details = [
+  "Le bâton ailé surmonté d'une boule bleue, dans la main du jeune homme.",
+  "Les inscriptions mystérieuses sur le mur blanc au centre.",
+  "La patte du guépard posée sur la hanche du jeune homme.",
+  "Les deux colonnes bleues isolées dans le paysage, à droite.",
+]
+themes = ["sphinx", "désir", "androgynie", "mythologie", "femme fatale"]
+anecdote = """
+Khnopff se fit construire à Bruxelles, au début du XXe siècle, une maison-atelier \
+blanche, bleue et dorée, conçue comme un temple dédié à lui-même. Elle a été démolie \
+en 1938 ; il n'en reste que des photographies."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 2.0
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Alfons Mucha"
+vie = "Ivančice (Moravie), 24 juillet 1860 – Prague, 14 juillet 1939"
+biographie = """
+Né en Moravie, alors dans l'Empire d'Autriche, Alfons Mucha travaille d'abord comme \
+peintre de décors de théâtre à Vienne, puis, grâce à un protecteur, étudie à Munich. \
+Il s'installe à Paris en 1887, suit les cours des académies Julian et Colarossi et vit \
+difficilement de ses illustrations. Fin 1894, il dessine presque par hasard l'affiche \
+de Gismonda pour Sarah Bernhardt : placardée dans Paris en janvier 1895, elle fait \
+sensation. La tragédienne lui confie toutes ses affiches pendant six ans, et \
+l'imprimeur Champenois le prend sous contrat. Affiches, panneaux décoratifs, bijoux \
+pour Fouquet, publicités : son style devient l'image même de l'Art nouveau. Il décore \
+le pavillon de la Bosnie-Herzégovine à l'Exposition universelle de 1900. Après \
+plusieurs séjours aux États-Unis, il rentre en Bohême en 1910 pour consacrer près de \
+vingt ans à l'Épopée slave. Il dessine les premiers billets et timbres de la \
+Tchécoslovaquie indépendante en 1918. Arrêté et interrogé par la Gestapo en 1939, il \
+meurt peu après à Prague."""
+style = """
+Mucha a créé un langage immédiatement reconnaissable : une femme idéale, souvent de \
+profil, aux cheveux déployés en arabesques, inscrite dans un cercle ou une auréole et \
+entourée de fleurs, de bijoux et d'ornements. Il associe un contour sombre et régulier \
+à des couleurs douces, et mêle des sources byzantines, japonaises et slaves. Ses \
+Documents décoratifs de 1902, recueil de modèles, ont diffusé son style dans les arts \
+appliqués. Redécouvert dans les années 1960, il a inspiré l'affiche psychédélique et \
+la bande dessinée."""
+
+[[artistes]]
+nom = "Pierre Puvis de Chavannes"
+vie = "Lyon, 14 décembre 1824 – Paris, 24 octobre 1898"
+biographie = """
+Fils d'un ingénieur des mines, Pierre Puvis de Chavannes renonce aux études \
+d'ingénieur après une maladie et découvre l'Italie, qui décide de sa vocation. Il se \
+forme brièvement auprès de Delacroix puis de Thomas Couture, mais trouve vite sa voie \
+seul. Ses premiers envois au Salon sont souvent refusés ; le succès vient dans les \
+années 1860 avec de grandes compositions allégoriques destinées au musée d'Amiens. Il \
+devient alors le grand peintre de décors muraux de la Troisième République : la vie de \
+sainte Geneviève au Panthéon, le Bois sacré pour l'amphithéâtre de la Sorbonne, les \
+décors des musées de Lyon et de Rouen, de l'Hôtel de Ville de Paris et de la \
+bibliothèque publique de Boston. En 1890, il participe à la fondation de la Société \
+nationale des beaux-arts, qu'il préside. Admiré des jeunes peintres comme des \
+institutions, il épouse en 1897 la princesse Marie Cantacuzène, sa compagne de longue \
+date, qui meurt quelques mois avant lui."""
+style = """
+Puvis simplifie les formes, réduit les couleurs à des tons clairs et mats, supprime le \
+détail et le mouvement pour atteindre une grandeur calme et intemporelle. Ses figures, \
+immobiles dans des paysages dépouillés, suggèrent une idée plutôt qu'elles ne \
+racontent une histoire. Ce langage du silence et de l'aplat a fait de lui le \
+précurseur commun du symbolisme, de Gauguin, de Seurat, des Nabis et même du jeune \
+Picasso de la période bleue."""
+
+[[artistes]]
+nom = "Gustave Moreau"
+vie = "Paris, 6 avril 1826 – Paris, 18 avril 1898"
+biographie = """
+Fils d'un architecte parisien, Gustave Moreau entre à l'École des beaux-arts dans \
+l'atelier de François-Édouard Picot, mais c'est Théodore Chassériau, son aîné, qui le \
+marque le plus. De 1857 à 1859, il séjourne en Italie, où il copie inlassablement les \
+maîtres de la Renaissance. Il triomphe au Salon de 1864 avec Œdipe et le Sphinx, puis \
+expose en 1876 sa Salomé et l'aquarelle de L'Apparition, qui fascinent les écrivains, \
+de Huysmans à Jean Lorrain. Peu à peu, il se retire du Salon et travaille dans le \
+secret de son atelier, accumulant les projets et les esquisses. Élu à l'Académie des \
+beaux-arts en 1888, il devient professeur à l'École des beaux-arts en 1891 : son \
+enseignement, libre et ouvert, forme Matisse, Rouault et Marquet. Peu avant sa mort, \
+il transforme sa maison de la rue de La Rochefoucauld en musée, qu'il lègue à l'État \
+avec plusieurs milliers d'œuvres. Le musée Gustave-Moreau ouvre en 1903."""
+style = """
+Moreau est le grand peintre du mythe et de la rêverie érudite. Il surcharge ses toiles \
+d'architectures, de bijoux et d'ornements empruntés à l'Inde, à la Perse, à Byzance, \
+tracés au pinceau fin sur des fonds parfois peints très librement, presque abstraits. \
+Ses héroïnes, Salomé, Sémélé, Galatée, incarnent la femme fatale ou l'idéal \
+inaccessible. Il a donné au symbolisme ses images les plus précieuses, et la liberté \
+de ses esquisses a séduit les fauves et les surréalistes."""
+
+[[artistes]]
+nom = "Odilon Redon"
+vie = "Bordeaux, 20 avril 1840 – Paris, 6 juillet 1916"
+biographie = """
+Bertrand Jean Redon, dit Odilon, passe une enfance solitaire sur le domaine familial \
+de Peyrelebade, dans le Médoc. Il étudie un temps l'architecture, puis la peinture à \
+Paris dans l'atelier de Gérôme, sans succès. Sa vraie rencontre est celle du graveur \
+Rodolphe Bresdin, à Bordeaux, qui lui apprend l'eau-forte et la liberté de \
+l'imagination. Pendant plus de vingt ans, Redon travaille en noir, au fusain et en \
+lithographie : les albums Dans le rêve, en 1879, À Edgar Poe, Les Origines ou Hommage \
+à Goya peuplent son œuvre d'yeux flottants, de têtes coupées et de monstres. Huysmans \
+le célèbre dans À rebours en 1884, et les poètes symbolistes, Mallarmé en tête, \
+deviennent ses amis. Vers 1890, après la naissance de son fils Arï, il se tourne vers \
+la couleur, pastel et huile, et peint fleurs, mythes et grands décors, comme ceux de \
+l'abbaye de Fontfroide. Les Nabis le vénèrent, et il expose à l'Armory Show de New \
+York en 1913."""
+style = """
+Redon veut, selon ses propres termes, mettre la logique du visible au service de \
+l'invisible. Ses noirs, d'un velouté profond, donnent vie à des créatures nées du rêve \
+et de la science de son temps, microbes et êtres hybrides. Ses couleurs, plus tard, \
+sont posées en touches précieuses qui semblent irradier. Indépendant de toute école, \
+il a ouvert la voie aux Nabis, à Matisse et aux surréalistes, qui voyaient en lui un \
+précurseur."""
+
+[[artistes]]
+nom = "John Everett Millais"
+vie = "Southampton, 8 juin 1829 – Londres, 13 août 1896"
+biographie = """
+Enfant prodige, John Everett Millais entre à onze ans aux écoles de la Royal Academy, \
+le plus jeune élève jamais admis. En 1848, il fonde avec William Holman Hunt et Dante \
+Gabriel Rossetti la Confrérie préraphaélite, qui veut revenir à la sincérité des \
+peintres d'avant Raphaël et à l'étude scrupuleuse de la nature. Son Christ dans la \
+maison de ses parents, en 1850, déclenche un scandale, et Charles Dickens l'attaque \
+violemment. Le critique John Ruskin prend la défense du groupe ; Millais tombe \
+amoureux de sa femme, Effie Gray, qui obtient l'annulation de son mariage et épouse le \
+peintre en 1855. Millais devient ensuite l'un des artistes les plus riches et les plus \
+populaires d'Angleterre, portraitiste recherché et auteur de scènes sentimentales, \
+comme Bubbles, utilisé pour une publicité de savon. Fait baronnet en 1885, élu \
+président de la Royal Academy quelques mois avant sa mort, il est enterré à la \
+cathédrale Saint-Paul."""
+style = """
+Dans ses années préraphaélites, Millais peint avec une précision minutieuse, d'après \
+nature, des couleurs claires et éclatantes, et compose des scènes chargées de \
+symboles. Il évolue ensuite vers une touche plus large et plus libre, inspirée de \
+Velázquez et des maîtres anciens. Ophélie reste l'une des images les plus reproduites \
+de la peinture anglaise et le modèle de toute une lignée de belles mortes symbolistes."""
+
+[[artistes]]
+nom = "Dante Gabriel Rossetti"
+vie = "Londres, 12 mai 1828 – Birchington-on-Sea, 9 avril 1882"
+biographie = """
+Fils de Gabriele Rossetti, poète et patriote italien exilé à Londres et spécialiste de \
+Dante, et frère de la poétesse Christina Rossetti, Dante Gabriel grandit entre \
+peinture et littérature. Élève un temps de Ford Madox Brown, il fonde en 1848 la \
+Confrérie préraphaélite avec Millais et Hunt. Il rencontre Elizabeth Siddal, qui \
+devient son modèle, son élève et, en 1860, sa femme ; sa mort en 1862 le bouleverse. \
+Installé ensuite à Chelsea, dans une maison de Cheyne Walk où il entretient une \
+ménagerie, il peint une série de figures féminines idéales, inspirées de Fanny \
+Cornforth, d'Alexa Wilding et surtout de Jane Morris, épouse de son ami William \
+Morris. Ses Poems, publiés en 1870, sont attaqués comme immoraux ; épuisé, dépendant \
+au chloral, il traverse une grave crise en 1872 et meurt dix ans plus tard sur la côte \
+du Kent. Il a influencé Burne-Jones, Morris et tout le mouvement esthétique."""
+style = """
+Peintre et poète, Rossetti mêle les deux arts : il écrit des sonnets pour ses tableaux \
+et inscrit des vers sur leurs cadres. Après la précision des débuts préraphaélites, il \
+peint des femmes à mi-corps, aux chevelures abondantes, aux lèvres pleines et au \
+regard lointain, dans des couleurs riches et chaudes. Ces icônes de la beauté et du \
+rêve ont annoncé le symbolisme européen et l'esthétisme de la fin du siècle."""
+
+[[artistes]]
+nom = "John William Waterhouse"
+vie = "Rome, 1849 (baptisé le 6 avril) – Londres, 10 février 1917"
+biographie = """
+Fils de deux peintres anglais installés à Rome, John William Waterhouse passe ses \
+premières années en Italie avant que la famille ne revienne à Londres. Il aide son \
+père à l'atelier, puis entre en 1870 aux écoles de la Royal Academy. Ses premiers \
+succès sont des scènes antiques dans le goût de Lawrence Alma-Tadema, comme Sainte \
+Eulalie, en 1885. Avec La Dame de Shalott, en 1888, il se tourne vers les sujets chers \
+aux préraphaélites : la légende arthurienne, Tennyson, Keats, Shakespeare et les \
+mythes grecs. Élu membre de la Royal Academy en 1895, il peint Hylas et les nymphes \
+l'année suivante, puis une longue série de sorcières, de sirènes et de nymphes. \
+Installé à St John's Wood, il mène une vie discrète, marié à la peintre Esther \
+Kenworthy. Sa peinture, passée de mode après sa mort en 1917, a retrouvé un immense \
+public depuis les années 1970."""
+style = """
+Souvent appelé « le préraphaélite moderne », Waterhouse unit les sujets poétiques et \
+les femmes rêveuses de Rossetti à la touche plus libre du plein air français et de \
+Jules Bastien-Lepage. Ses compositions sont claires, ses figures solidement dessinées, \
+ses paysages vibrants. Il a prolongé la tradition préraphaélite jusqu'au XXe siècle et \
+fixé, pour le grand public, l'image des héroïnes de la légende et de la mythologie."""
+
+[[artistes]]
+nom = "Arnold Böcklin"
+vie = "Bâle, 16 octobre 1827 – San Domenico di Fiesole, 16 janvier 1901"
+biographie = """
+Né à Bâle, Arnold Böcklin étudie la peinture à Düsseldorf, puis voyage à Genève, \
+Bruxelles et Paris avant de découvrir Rome en 1850 : l'Italie et son paysage antique \
+deviennent le cœur de son œuvre. Les débuts sont difficiles, et il vit longtemps dans \
+la gêne. Il enseigne quelque temps à l'école d'art de Weimar, nouvellement fondée, \
+peint des fresques à Bâle, puis vit tour à tour à Munich, à Florence et à Zurich. Ses \
+toiles peuplées de centaures, de naïades, de faunes et de tritons lui valent d'abord \
+les moqueries, puis, à partir des années 1880, une immense gloire, surtout en \
+Allemagne, où il passe pour le plus grand peintre vivant. En 1872, il se peint avec la \
+Mort jouant du violon derrière son épaule. Frappé par une attaque en 1892, il se fixe \
+près de Florence, à Fiesole, où il meurt en 1901. Plusieurs de ses enfants sont morts \
+jeunes, et la mort est l'un de ses thèmes constants."""
+style = """
+Böcklin mêle l'héritage classique de l'Italie à un imaginaire nordique, puissant et \
+parfois brutal. Ses paysages, construits avec rigueur, se chargent d'une atmosphère \
+étrange, et ses créatures mythologiques ont une présence charnelle, presque comique. \
+Sa peinture aux couleurs franches, souvent à la tempera, a nourri le symbolisme \
+allemand, Max Klinger, Giorgio De Chirico et la peinture métaphysique, puis les \
+surréalistes, qui admiraient son mystère."""
+
+[[artistes]]
+nom = "Edvard Munch"
+vie = "Ådalsbruk, Løten (Norvège), 12 décembre 1863 – Ekely, près d'Oslo, 23 janvier 1944"
+biographie = """
+Edvard Munch grandit à Kristiania, l'actuelle Oslo, dans une famille marquée par la \
+maladie : sa mère meurt de la tuberculose quand il a cinq ans, sa sœur aînée Sophie \
+quand il en a treize. Il abandonne ses études d'ingénieur pour la peinture et \
+fréquente la bohème de Kristiania. Une bourse le conduit à Paris en 1889, où il \
+découvre l'impressionnisme, Gauguin et Van Gogh. En 1892, son exposition à Berlin fait \
+scandale et doit fermer au bout d'une semaine : l'affaire contribue à la naissance de \
+la Sécession berlinoise. Munch y vit plusieurs années et compose la Frise de la vie, \
+cycle sur l'amour, l'angoisse et la mort, dont fait partie le Cri. Épuisé par l'alcool \
+et les crises, il se fait soigner à Copenhague en 1908-1909, puis rentre en Norvège. \
+Il peint les grandes toiles de l'Aula de l'université d'Oslo et vit retiré à Ekely. En \
+1937, les nazis retirent ses œuvres des musées allemands. Il lègue sa production à la \
+ville d'Oslo."""
+style = """
+Munch peint les états d'âme plutôt que les apparences : il simplifie les formes, \
+déforme les corps et le paysage, et emploie des couleurs violentes et symboliques. Ses \
+lignes ondulantes, proches de l'Art nouveau, unissent la figure et son décor dans une \
+même émotion. Graveur novateur, il a renouvelé la gravure sur bois et la lithographie. \
+Il est considéré comme l'un des pères de l'expressionnisme, qui s'est développé en \
+Allemagne dans son sillage."""
+
+[[artistes]]
+nom = "Fernand Khnopff"
+vie = "Grembergen (Belgique), 12 septembre 1858 – Bruxelles, 12 novembre 1921"
+biographie = """
+Fernand Khnopff passe une partie de son enfance à Bruges, ville silencieuse qui \
+hantera son œuvre. Il commence des études de droit, les abandonne pour l'Académie des \
+beaux-arts de Bruxelles, puis découvre à Paris, à l'Exposition universelle de 1878, \
+les œuvres de Gustave Moreau et d'Edward Burne-Jones. En 1883, il fonde avec James \
+Ensor et d'autres jeunes artistes le cercle des XX, foyer de l'avant-garde belge. Il \
+expose ensuite aux Salons de la Rose+Croix de Joséphin Péladan à Paris, puis à la \
+Sécession viennoise, où il connaît un grand succès. Sa sœur Marguerite, son modèle \
+préféré, apparaît dans nombre de ses tableaux. Il illustre Bruges-la-Morte de Georges \
+Rodenbach, dessine des décors et des costumes pour le théâtre de la Monnaie, et écrit \
+pour la revue anglaise The Studio. Au début du XXe siècle, il se fait construire à \
+Bruxelles une maison-atelier conçue comme un temple. Il épouse en 1908 Marthe Worms, \
+dont il divorce peu après."""
+style = """
+Khnopff est le plus raffiné des symbolistes belges : figures immobiles, regards fixes, \
+visages androgynes, décors vides et énigmatiques. Il travaille d'une touche fine et \
+lisse, dans des gammes pâles, souvent d'après ses propres photographies. Le silence, \
+le souvenir, le repli sur soi et le mystère du désir sont ses thèmes. Son influence a \
+été grande à Vienne, notamment sur Gustav Klimt."""
