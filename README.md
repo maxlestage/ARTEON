@@ -20,6 +20,13 @@ Deux expositions sont ouvertes :
 | `/ajouter` | Le guide pour ajouter, déplacer ou modifier une œuvre, ou créer une exposition, avec le plan des emplacements libres |
 | toute autre adresse | Une page « introuvable » (404) |
 
+## Dans la galerie 3D
+
+- **Toucher la scène** (ou le bouton « Plein écran », ou la touche `F`) la met en plein écran. Sur iPhone, où le navigateur ne propose pas le plein écran aux pages web, la galerie occupe tout l'écran.
+- En plein écran, toucher la scène met la visite en **pause** ou la relance (touche `Espace`) ; les boutons **‹** et **›** (flèches du clavier) passent à l'œuvre précédente ou suivante ; **✕** (`Échap`) quitte.
+- Le **cartel** de l'œuvre regardée s'affiche en bas, avec un bouton **« Voir en HD »** qui ouvre la vraie reproduction en grand.
+- La caméra recule selon la forme de l'écran : sur un téléphone en portrait, la toile reste entière et ses touches restent fines.
+
 ## Ajouter ou modifier une œuvre
 
 Une exposition = **un fichier** [`expositions/<nom>.toml`](expositions) + **un dossier d'images** [`public/tableaux/<nom>/`](public/tableaux). Pas une ligne de code à écrire.
@@ -57,9 +64,9 @@ et le site en ligne reste tel quel.
 
 ## Comment les toiles deviennent de la 3D
 
-Le moteur 3D de Paquets n'affiche pas d'images (pas de textures). À la compilation, `build.rs` réduit donc chaque image à une grille dont chaque case mesure **1 cm** dans la galerie (jusqu'à 240 cases de côté), et la ramène à une palette de **64 couleurs** ; les toiles sombres sont légèrement éclaircies pour rester lisibles sous l'éclairage du musée. Les cases sont stockées en binaire (`include_bytes!`).
+Le moteur 3D de Paquets n'affiche pas d'images (pas de textures). À la compilation, `build.rs` réduit donc chaque image à une grille dont chaque case mesure **7 mm** dans la galerie (jusqu'à 340 cases de côté), et la ramène à une palette de **64 couleurs** ; les toiles sombres sont légèrement éclaircies pour rester lisibles sous l'éclairage du musée. Les cases sont stockées en binaire (`include_bytes!`).
 
-Dans la scène, les cases voisines de même couleur sont fusionnées en rectangles, et chaque couleur de la palette forme un seul maillage (64 au plus par tableau) : environ 260 000 triangles pour toute une exposition, ce qui reste fluide. Les tons clairs sont très légèrement en avant, comme des empâtements. Le catalogue, lui, montre les vraies reproductions.
+Dans la scène, les cases voisines de même couleur sont fusionnées en rectangles, et chaque couleur de la palette forme un seul maillage (64 au plus par tableau) : environ 500 000 triangles pour toute une exposition, ce qu'un téléphone récent affiche sans peine. Les tons clairs sont très légèrement en avant, comme des empâtements. Le catalogue, lui, montre les vraies reproductions.
 
 ## Les œuvres (domaine public)
 

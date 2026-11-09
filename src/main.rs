@@ -294,7 +294,7 @@ fn features() -> Element {
         .child(
             div()
                 .class("grid")
-                .child(div().class("card feature reveal").child(span().class("dot yellow")).child(h3().text("Touche par touche")).child(p().class("muted").text("Le moteur 3D n'affiche pas d'images : chaque toile devient une mosaïque de touches de couleur d'un centimètre, légèrement en relief.")))
+                .child(div().class("card feature reveal").child(span().class("dot yellow")).child(h3().text("Touche par touche")).child(p().class("muted").text("Le moteur 3D n'affiche pas d'images : chaque toile devient une mosaïque de touches de couleur de 7 mm, légèrement en relief.")))
                 .child(div().class("card feature reveal").child(span().class("dot blue")).child(h3().text("Une scène 3D en Rust")).child(p().class("muted").text("Murs, sols, tableaux et lumières sont des entités du moteur de jeu de Paquets, compilé en WebAssembly et rendu en WebGL 2.")))
                 .child(div().class("card feature reveal").child(span().class("dot red")).child(h3().text("Le domaine public")).child(p().class("muted").text("Uniquement des peintres morts depuis plus de 70 ans. Les reproductions viennent de Wikimedia Commons.")))
                 .child(div().class("card feature reveal").child(span().class("dot green")).child(h3().text("Votre accrochage")).child(p().class("muted").child(span().text("Une image et quelques lignes dans un fichier suffisent pour accrocher une toile, ou créer une exposition. ")).child(a().href("/ajouter").text("Ajouter une œuvre →")))),
