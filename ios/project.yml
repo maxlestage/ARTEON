@@ -1,0 +1,70 @@
+# Le projet Xcode d'ARTEON, généré par XcodeGen (`xcodegen generate` dans ios/) : le code
+# est celui de l'App Playground ARTEON.swiftpm, compilé par Xcode pour TestFlight, avec ses
+# tests (Swift Testing) sur le simulateur iPad.
+
+name: ARTEON
+options:
+  bundleIdPrefix: com.maxlestage
+  deploymentTarget:
+    iOS: "26.0"
+  developmentLanguage: fr
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    DEAD_CODE_STRIPPING: YES
+targets:
+  ARTEON:
+    type: application
+    platform: iOS
+    sources:
+      - path: ARTEON.swiftpm
+        excludes:
+          - Package.swift
+          - .swiftpm
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.maxlestage.arteon
+        PRODUCT_NAME: ARTEON
+        PRODUCT_MODULE_NAME: ARTEON
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ARTEON
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_STYLE: Automatic
+  ARTEONTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: ARTEON
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.maxlestage.arteon.tests
+schemes:
+  ARTEON:
+    build:
+      targets:
+        ARTEON: all
+        ARTEONTests: [test]
+    test:
+      targets:
+        - ARTEONTests
+      gatherCoverageData: false
+    run:
+      config: Debug
+    archive:
+      config: Release

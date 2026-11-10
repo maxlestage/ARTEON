@@ -20,19 +20,11 @@ Le contenu vient du site : `catalogue.json`, publié avec lui (route `/catalogue
 serveur, écrite par l'export statique, voir `src/catalogue.rs`). Une exposition ajoutée au
 site apparaît donc dans l'application sans la republier.
 
-## L'installer sur l'iPad
+## Et iOS ?
 
-Une application native ne s'installe sur un iPad qu'avec un compte Apple Developer
-(99 € par an), et ne se compile que sur un Mac : le workflow
-[`.github/workflows/ipad.yml`](../.github/workflows/ipad.yml) le fait sur un Mac de GitHub
-et l'envoie sur TestFlight. Les étapes, toutes faisables depuis un téléphone, sont en tête
-de ce fichier : créer l'app dans App Store Connect, une clé d'API, quatre réglages dans
-GitHub, puis **Actions → Application iPad → Run workflow**. L'app TestFlight installe
-ensuite ARTEON sur l'iPad, et chaque nouvelle version.
-
-Sans compte développeur : le site est déjà une application installable (PWA). Sur l'iPad,
-ouvrir https://maxlestage.github.io/ARTEON/ dans Safari, **Partager → Sur l'écran
-d'accueil**.
+L'application iOS officielle d'ARTEON est désormais en Swift (`ios/`), c'est elle que
+TestFlight distribue. Cette version Flutter reste pour Android ; le workflow
+[`ipad.yml`](../.github/workflows/ipad.yml) vérifie quand même qu'elle compile pour iOS.
 
 ## Développer
 
