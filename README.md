@@ -261,6 +261,15 @@ ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (i
 - Le service worker est généré en Rust par Paquets (pas une ligne de JavaScript écrite à la main) : les pages viennent du réseau d'abord, et de la copie gardée hors ligne ; les images, les données des expositions et les îlots 3D, du cache d'abord, mis à jour en arrière-plan ; une page jamais visitée hors ligne ouvre l'accueil. Chaque déploiement installe une nouvelle version, qui remplace les anciennes copies.
 - L'export pour GitHub Pages écrit le manifeste et le service worker avec le préfixe du site (`/ARTEON`) ; sur Heroku, ils sont servis à la racine.
 
+## L'application iPad et iPhone (Swift)
+
+[`ios/`](ios/) est l'application native d'ARTEON en **Swift 6 et SwiftUI** (iOS 26 et
+plus, compilée avec Xcode 27.2) : expositions, œuvres et notices complètes, image en
+grand, recherche, favoris, hors-ligne, et la galerie 3D du site. Sur l'iPad, **Swift
+Playgrounds** l'ouvre et la lance sans Mac ni compte payant ; avec un compte Apple
+Developer, [`ios.yml`](.github/workflows/ios.yml) l'envoie sur TestFlight. Voir
+[ios/README.md](ios/README.md).
+
 ## L'application iPad (Flutter)
 
 [`flutter/`](flutter/) est l'application native d'ARTEON pour iPad (et iPhone, Android) :
@@ -269,9 +278,9 @@ iPad), l'image en grand, la recherche dans tout le musée, les favoris, le catal
 hors ligne, et la galerie 3D du site en plein écran. Elle lit `catalogue.json`, que le site
 publie (`src/catalogue.rs`) : une exposition ajoutée au site y apparaît d'elle-même.
 
-Elle se construit sur un Mac de GitHub ([`ipad.yml`](.github/workflows/ipad.yml)) et part
-sur TestFlight quand les clés d'Apple sont réglées (compte Apple Developer) : tout se fait
-depuis un téléphone, voir [flutter/README.md](flutter/README.md).
+Elle reste pour Android ; sa construction iOS est vérifiée par
+[`ipad.yml`](.github/workflows/ipad.yml), mais l'application iOS de TestFlight est celle en
+Swift.
 
 ## Déployer sur Heroku depuis un téléphone
 
