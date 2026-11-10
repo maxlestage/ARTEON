@@ -22,7 +22,9 @@ targets:
     type: application
     platform: iOS
     sources:
+      # Un dossier de sources (son extension en ferait sinon un fichier à copier).
       - path: ARTEON.swiftpm
+        type: group
         excludes:
           - Package.swift
           - .swiftpm
