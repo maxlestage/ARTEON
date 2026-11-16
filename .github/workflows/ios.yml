@@ -183,53 +183,64 @@ jobs:
             fi
           fi
 
-      - name: Captures d'écran (iPad)
+      - name: Captures d'écran (iPad et iPhone)
         # Les captures ne bloquent jamais la suite (compilation, App Playground, TestFlight).
         continue-on-error: true
-        timeout-minutes: 15
+        timeout-minutes: 25
         run: |
           set -uo pipefail
           # Une commande qui ne rend pas la main est arrêtée au bout de $1 secondes.
           limit() { perl -e 'alarm shift; exec @ARGV' "$@"; }
           app=build/Build/Products/Debug-iphonesimulator/ARTEON.app
-          udid=$(xcrun simctl list devices available -j | python3 -c "
+          # Le simulateur demandé (son nom exact), ou le premier dont le nom commence ainsi.
+          device() {
+            xcrun simctl list devices available -j | WANT="$1" python3 -c "
           import json, os, sys
           d = json.load(sys.stdin)['devices']
-          for runtime, devices in d.items():
-              if runtime.endswith('iOS-' + os.environ['IOS'].replace('.', '-')):
-                  for dev in devices:
-                      if dev['name'] == os.environ['IPAD']:
-                          print(dev['udid']); sys.exit()
-          ")
-          limit 60 xcrun simctl boot "$udid" || true
-          limit 240 xcrun simctl bootstatus "$udid" -b || true
-          limit 120 xcrun simctl install "$udid" "$app"
+          want = os.environ['WANT']
+          found = [dev for runtime, devs in d.items()
+                   if runtime.endswith('iOS-' + os.environ['IOS'].replace('.', '-'))
+                   for dev in devs]
+          exact = [dev for dev in found if dev['name'] == want]
+          close = [dev for dev in found if dev['name'].startswith(want) and 'Pro' in dev['name']]
+          pick = (exact or close or [dev for dev in found if dev['name'].startswith(want)] or [None])[0]
+          if pick: print(pick['udid'])
+          "
+          }
           mkdir -p captures
           # -horsligne : l'application ne touche pas au réseau ; tout vient du musée embarqué.
           shoot() {
-            echo "▶ $name"
+            echo "▶ $prefix-$name"
             limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
             limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -horsligne "$@" || return 0
             sleep "${wait:-15}"
-            limit 60 xcrun simctl io "$udid" screenshot "captures/$name.png" || echo "capture $name impossible"
+            limit 60 xcrun simctl io "$udid" screenshot "captures/$prefix-$name.png" || echo "capture $name impossible"
           }
-          name=1-accueil shoot
-          name=2-exposition shoot -ouvrir van-gogh
-          name=3-oeuvre shoot -ouvrir van-gogh/tournesols
-          name=4-artistes shoot -onglet artistes
-          name=5-explorer shoot -onglet explorer
-          name=6-chronologie shoot -ouvrir chronologie
-          name=7-jeu shoot -ouvrir jeu
-          name=8-musees shoot -onglet musees
-          name=9-musee-plan shoot -ouvrir musee:Rijksmuseum
-          name=10-grand-musee shoot -ouvrir grand-musee
-          name=11-galerie-3d wait=40 shoot -ouvrir 3d:van-gogh
+          for prefix in ipad iphone; do
+            if [ "$prefix" = ipad ]; then udid=$(device "$IPAD"); else udid=$(device "iPhone"); fi
+            [ -n "$udid" ] || { echo "pas de simulateur $prefix"; continue; }
+            limit 60 xcrun simctl boot "$udid" || true
+            limit 240 xcrun simctl bootstatus "$udid" -b || true
+            limit 180 xcrun simctl install "$udid" "$app" || continue
+            name=01-accueil shoot
+            name=02-exposition shoot -ouvrir van-gogh
+            name=03-oeuvre shoot -ouvrir van-gogh/tournesols
+            name=04-musees shoot -onglet musees
+            name=05-musee-plan shoot -ouvrir musee:Rijksmuseum
+            name=06-grand-musee shoot -ouvrir grand-musee
+            name=07-artistes shoot -onglet artistes
+            name=08-explorer shoot -onglet explorer
+            name=09-chronologie shoot -ouvrir chronologie
+            name=10-jeu shoot -ouvrir jeu
+            name=11-galerie-3d wait=40 shoot -ouvrir 3d:van-gogh
+            limit 60 xcrun simctl shutdown "$udid" || true
+          done
           ls -la captures
 
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: captures-ipad
+          name: captures
           path: ios/captures
           if-no-files-found: ignore
 

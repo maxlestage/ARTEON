@@ -30,11 +30,14 @@ struct MuseumsView: View {
 
                     GrandMuseumCard(catalogue: catalogue)
 
-                    HStack(spacing: 12) {
-                        StatCard(value: store.index?.buildings.count ?? 0, label: "musées reproduits", color: .arteonBlue)
-                        StatCard(value: store.index?.countries.count ?? 0, label: "pays", color: .teal)
-                        StatCard(value: 1, label: "musée original", color: .arteonSun)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            StatCard(value: store.index?.buildings.count ?? 0, label: "musées reproduits", color: .arteonBlue)
+                            StatCard(value: store.index?.countries.count ?? 0, label: "pays", color: .teal)
+                            StatCard(value: 1, label: "musée original", color: .arteonSun)
+                        }
                     }
+                    .scrollClipDisabled()
                 }
 
                 ForEach(countries) { country in
@@ -355,20 +358,18 @@ struct GrandMuseumView: View {
 
     private func wingView(_ wing: Wing, number: Int) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .firstTextBaseline) {
-                Text("Aile \(romanNumeral(number))")
+            VStack(alignment: .leading, spacing: 2) {
+                Text("AILE \(romanNumeral(number))")
                     .font(.caption.bold())
                     .tracking(1.2)
                     .foregroundStyle(ink.opacity(0.6))
                 Text(wing.title)
                     .font(.system(.title2, design: .serif).bold())
-                Spacer()
                 Text(wing.subtitle)
-                    .font(.caption)
-                    .foregroundStyle(ink.opacity(0.6))
-                    .multilineTextAlignment(.trailing)
+                    .font(.subheadline)
+                    .foregroundStyle(ink.opacity(0.65))
             }
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 200, maximum: 320), spacing: 0)], spacing: 0) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 160, maximum: 320), spacing: 0)], spacing: 0) {
                 ForEach(wing.exhibitions, id: \.self) { slug in
                     if let ex = catalogue.exhibition(slug) {
                         NavigationLink(value: ex.museum.map { Route.building($0.name) } ?? Route.exhibition(ex.slug)) {
