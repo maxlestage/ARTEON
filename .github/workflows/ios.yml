@@ -159,9 +159,29 @@ jobs:
       - name: Tests sur le simulateur iPad
         run: |
           set -o pipefail
-          xcodebuild test -project ARTEON.xcodeproj -scheme ARTEON \
-            -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
-            -derivedDataPath build CODE_SIGNING_ALLOWED=NO
+          # Le simulateur démarré d'avance : l'application (avec son musée de 200 Mo) s'y
+          # installe avant que les tests ne cherchent à s'y connecter.
+          xcrun simctl boot "$IPAD" 2>/dev/null || true
+          xcrun simctl bootstatus "$IPAD" -b || true
+          run_tests() {
+            xcodebuild test -project ARTEON.xcodeproj -scheme ARTEON \
+              -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
+              -derivedDataPath build CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/tests.log"
+          }
+          if ! run_tests; then
+            # Un simulateur qui ne répond pas (« Failed to establish communication with
+            # the test runner ») : on recommence une fois, sur un simulateur redémarré. Un
+            # vrai test en échec, lui, fait échouer l'étape.
+            if grep -q "establish communication with the test runner\|Channel disconnected" "$RUNNER_TEMP/tests.log"; then
+              echo "::warning::le simulateur n'a pas répondu : nouvel essai"
+              xcrun simctl shutdown all || true
+              xcrun simctl boot "$IPAD" 2>/dev/null || true
+              xcrun simctl bootstatus "$IPAD" -b || true
+              run_tests
+            else
+              exit 1
+            fi
+          fi
 
       - name: Captures d'écran (iPad)
         # Les captures ne bloquent jamais la suite (compilation, App Playground, TestFlight).
