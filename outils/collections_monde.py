@@ -100,9 +100,11 @@ def lire(url, entetes=None, essais=4, delai=60):
             with urllib.request.urlopen(requete, timeout=delai) as reponse:
                 return reponse.read()
         except urllib.error.HTTPError as erreur:
-            if erreur.code in (400, 403, 404, 410) or essai + 1 == essais:
+            # 403 et 429 : le musée ralentit qui va trop vite (les machines de GitHub
+            # surtout) ; on attend, de plus en plus longtemps, et on recommence.
+            if erreur.code in (400, 404, 410) or essai + 1 == essais:
                 raise
-            time.sleep(3 * (essai + 1) * (4 if erreur.code == 429 else 1))
+            time.sleep(min(90, 8 * 2 ** essai) if erreur.code in (403, 429) else 3 * (essai + 1))
         except Exception:
             if essai + 1 == essais:
                 raise
@@ -110,8 +112,8 @@ def lire(url, entetes=None, essais=4, delai=60):
     return b""
 
 
-def json_de(url, entetes=None):
-    return json.loads(lire(url, entetes))
+def json_de(url, entetes=None, essais=6):
+    return json.loads(lire(url, entetes, essais=essais))
 
 
 # ─── Le texte ─────────────────────────────────────────────────────────────────
@@ -240,7 +242,7 @@ def chicago(combien, alea):
                     salle=propre(o.get("gallery_title"), 80),
                     score=POIDS[cat] + (200 if o.get("is_boosted") else 0),
                 )
-            time.sleep(1.1)  # l'API de Chicago : une requête par seconde
+            time.sleep(1.6)  # l'API de Chicago : pas plus d'une requête par seconde
         dire(f"  chicago : {len(vus)} fiches")
     return list(vus.values())
 
@@ -307,7 +309,7 @@ def met(combien, alea):
             trouves += ids
             if len(ids) < 100:
                 break
-            time.sleep(0.1)
+            time.sleep(0.4)
         return trouves
 
     # Les chefs-d'œuvre signalés, les peintures, puis tous les départements.
@@ -334,8 +336,9 @@ def met(combien, alea):
     dire(f"  met : {len(identifiants)} identifiants")
 
     def objet(i):
+        time.sleep(0.12)  # le Met : au plus quelques dizaines de requêtes par seconde
         try:
-            o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}")
+            o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", essais=4)
         except Exception:
             return None
         if not (o.get("isPublicDomain") and o.get("primaryImageSmall")):
@@ -354,7 +357,7 @@ def met(combien, alea):
         )
 
     fiches = []
-    with concurrent.futures.ThreadPoolExecutor(8) as pool:
+    with concurrent.futures.ThreadPoolExecutor(4) as pool:
         for depart in range(0, len(identifiants), 400):
             if len(fiches) >= combien * 1.2:
                 break
@@ -445,13 +448,18 @@ def vignette(f, dossier):
 
 def moissonner(cle, combien, cache, alea):
     fichier = cache / f"fiches-{cle}.json"
+    fiches = []
     if fichier.exists() and time.time() - fichier.stat().st_mtime < 7 * 86400:
         fiches = json.loads(fichier.read_text(encoding="utf-8"))
+    # Un cache trop maigre (une moisson gênée par le musée) est refait.
+    if len(fiches) >= combien:
         dire(f"• {MUSEES[cle]['nom']} : {len(fiches)} fiches du cache")
     else:
         dire(f"• {MUSEES[cle]['nom']}")
         source = SOURCES[cle]
-        fiches = source(combien, alea, cache) if cle == "washington" else source(combien, alea)
+        nouvelles = source(combien, alea, cache) if cle == "washington" else source(combien, alea)
+        if len(nouvelles) >= len(fiches):
+            fiches = nouvelles
         if fiches:
             fichier.write_text(json.dumps(fiches, ensure_ascii=False), encoding="utf-8")
     return fiches

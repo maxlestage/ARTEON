@@ -35,7 +35,7 @@ enum Route: Hashable {
     case building(String)
     case grandMuseum
     case artists
-    case collections
+    case worldCollections
     case collection(CollectionFilter)
     case collectionWork(String)
 }
