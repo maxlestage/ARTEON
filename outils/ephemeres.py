@@ -200,7 +200,7 @@ def chicago(alea, combien):
     premiere = json_de(base + "?" + urllib.parse.urlencode({**filtre, "limit": "1"}))
     pages = max(1, min(premiere["pagination"]["total"] // 50, 200))
     candidats = []
-    for page in alea.sample(range(1, pages + 1), min(4, pages)):
+    for page in alea.sample(range(1, pages + 1), min(7, pages)):
         try:
             candidats += json_de(base + "?" + urllib.parse.urlencode({**filtre, "page": str(page)}))["data"]
         except Exception as erreur:  # une page refusée : on garde les autres
@@ -217,7 +217,9 @@ def chicago(alea, combien):
             "date": o.get("date_display"), "technique": o.get("medium_display"), "mesures": o.get("dimensions"),
             "salle": o.get("gallery_title") or "", "genre": o.get("classification_title") or "",
             "texte": texte, "lien": f"https://www.artic.edu/artworks/{o['id']}",
-            "image": f"https://www.artic.edu/iiif/2/{o['image_id']}/full/1000,/0/default.jpg",
+            # 843 px : la seule largeur que l'IIIF de Chicago sert à coup sûr (sa taille en
+            # cache) ; 1000 px y est refusé (403).
+            "image": f"https://www.artic.edu/iiif/2/{o['image_id']}/full/843,/0/default.jpg",
             "entetes": {"AIC-User-Agent": AGENT},
             "ratio": vignette["height"] / vignette["width"],
         })
@@ -229,7 +231,7 @@ def cleveland(alea, combien):
     filtre = {"cc0": "1", "has_image": "1", "currently_on_view": "1", "limit": "1"}
     total = json_de(base + "?" + urllib.parse.urlencode(filtre))["info"]["total"]
     oeuvres = []
-    for depart in alea.sample(range(0, max(1, total - 40)), 3):
+    for depart in alea.sample(range(0, max(1, total - 40)), 5):
         lot = json_de(base + "?" + urllib.parse.urlencode({**filtre, "limit": "40", "skip": str(depart)}))
         for o in lot["data"]:
             web = (o.get("images") or {}).get("web") or {}
@@ -253,8 +255,8 @@ def new_york(alea, combien):
     recherche = "https://collectionapi.metmuseum.org/public/collection/v1.1/search?q=*&isOnView=true&hasImages=true"
     identifiants = json_de(recherche).get("objectIDs") or []
     oeuvres = []
-    for ident in alea.sample(identifiants, min(90, len(identifiants))):
-        if len(oeuvres) >= combien * 3:
+    for ident in alea.sample(identifiants, min(300, len(identifiants))):
+        if len(oeuvres) >= combien * 4:
             break
         try:
             o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{ident}")
@@ -317,19 +319,20 @@ MUSEES = [
 # ─── L'exposition ─────────────────────────────────────────────────────────────
 
 def choisir(oeuvres, alea, combien):
-    """Douze œuvres variées : pas plus de deux par artiste, ni de quatre du même genre."""
+    """Des œuvres variées, dans l'ordre où les accrocher : d'abord pas plus de deux par
+    artiste ni de quatre du même genre, puis les autres en réserve (une image qui ne se
+    télécharge pas est remplacée par la suivante)."""
     alea.shuffle(oeuvres)
-    par_artiste, par_genre, choix = {}, {}, []
+    par_artiste, par_genre, choix, reserve = {}, {}, [], []
     for o in oeuvres:
         a, g = o["artiste"], (o["genre"] or "?").lower()
         if par_artiste.get(a, 0) >= 2 or par_genre.get(g, 0) >= 4:
+            reserve.append(o)
             continue
         par_artiste[a] = par_artiste.get(a, 0) + 1
         par_genre[g] = par_genre.get(g, 0) + 1
         choix.append(o)
-        if len(choix) == combien:
-            break
-    return choix
+    return (choix + reserve)[:combien]
 
 
 def largeur_pour(oeuvre, ratio):
@@ -347,12 +350,16 @@ def largeur_pour(oeuvre, ratio):
 def monter(musee, semaine, graine):
     alea = random.Random(f"{graine}-{musee['slug']}")
     print(f"• {musee['musee']}")
-    oeuvres = choisir(musee["source"](alea, PAR_EXPOSITION), alea, PAR_EXPOSITION)
+    # Trois fois plus de candidates que de places : on accroche les douze premières
+    # dont l'image arrive.
+    oeuvres = choisir(musee["source"](alea, PAR_EXPOSITION), alea, PAR_EXPOSITION * 3)
     dossier = RACINE / "public" / "tableaux" / musee["slug"]
     shutil.rmtree(dossier, ignore_errors=True)
     dossier.mkdir(parents=True)
     pris, accrochees = set(), []
     for o in oeuvres:
+        if len(accrochees) == PAR_EXPOSITION:
+            break
         try:
             image = lire(o["image"], o["entetes"])
         except Exception as erreur:
