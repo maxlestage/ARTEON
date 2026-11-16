@@ -87,12 +87,21 @@ le compile et le lance sur l'iPad.
    Swift Playgrounds l'ouvre.
 3. Toucher ▶ : ARTEON se lance, entièrement hors ligne.
 
+## Sur l'iPhone
+
+L'application est la même sur iPhone (onglets en bas ; les artistes sont dans Explorer, la
+barre n'ayant que cinq places). Swift Playgrounds n'existe pas sur iPhone : il faut
+**TestFlight** (ci-dessous), ou un Mac avec Xcode et un compte Apple gratuit (brancher
+l'iPhone, choisir son équipe dans *Signing & Capabilities*, ▶ ; l'application doit alors
+être réinstallée tous les 7 jours).
+
 ## L'installer comme une vraie app : TestFlight
 
 Avec un compte Apple Developer (99 € par an), le workflow
 [`ios.yml`](../.github/workflows/ios.yml) signe l'application (musée compris) sur un Mac de
 GitHub et l'envoie sur TestFlight ; les étapes, toutes faisables depuis un téléphone, sont
-en tête du fichier.
+en tête du fichier. L'app TestFlight l'installe ensuite sur l'iPhone comme sur l'iPad (le
+même achat de l'application, les deux appareils), avec chaque nouvelle version.
 
 ## Développer (sur un Mac)
 

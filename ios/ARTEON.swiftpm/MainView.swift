@@ -4,11 +4,13 @@ enum AppTab: String, Hashable {
     case exhibitions, museums, artists, explore, favorites, search
 }
 
-/// Les onglets : en barre latérale sur iPad, en bas sur iPhone.
+/// Les onglets : en barre latérale sur iPad, en bas sur iPhone. Sur iPhone (largeur
+/// compacte), la barre n'a que cinq places : les artistes sont dans Explorer.
 struct MainView: View {
     let catalogue: Catalogue
 
     @Environment(CatalogueStore.self) private var store
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var tab: AppTab = .exhibitions
     @State private var exhibitionsPath = NavigationPath()
     @State private var museumsPath = NavigationPath()
@@ -26,8 +28,10 @@ struct MainView: View {
             Tab("Musées", systemImage: "building.columns", value: AppTab.museums) {
                 stack($museumsPath) { MuseumsView(catalogue: catalogue) }
             }
-            Tab("Artistes", systemImage: "person.2", value: AppTab.artists) {
-                stack($artistsPath) { ArtistsView(catalogue: catalogue) }
+            if sizeClass != .compact {
+                Tab("Artistes", systemImage: "person.2", value: AppTab.artists) {
+                    stack($artistsPath) { ArtistsView(catalogue: catalogue) }
+                }
             }
             Tab("Explorer", systemImage: "safari", value: AppTab.explore) {
                 stack($explorePath) { ExploreView(catalogue: catalogue) }
@@ -40,6 +44,13 @@ struct MainView: View {
             }
         }
         .tabViewStyle(.sidebarAdaptable)
+        .onChange(of: sizeClass) {
+            // L'onglet Artistes disparaît en largeur compacte : on passe par Explorer.
+            if sizeClass == .compact, tab == .artists {
+                tab = .explore
+                explorePath.append(Route.artists)
+            }
+        }
         .task { openFromLaunchArguments() }
     }
 
@@ -61,7 +72,13 @@ struct MainView: View {
         if let i = args.firstIndex(of: "-onglet"), i + 1 < args.count {
             switch args[i + 1] {
             case "musees": tab = .museums
-            case "artistes": tab = .artists
+            case "artistes":
+                if sizeClass == .compact {
+                    tab = .explore
+                    explorePath.append(Route.artists)
+                } else {
+                    tab = .artists
+                }
             case "explorer": tab = .explore
             case "favoris": tab = .favorites
             case "recherche": tab = .search
@@ -94,8 +111,8 @@ struct MainView: View {
         } else if catalogue.exhibition(target) != nil {
             exhibitionsPath.append(Route.exhibition(target))
         } else if store.index?.artist(named: target) != nil {
-            tab = .artists
-            artistsPath.append(Route.artist(target))
+            tab = .exhibitions
+            exhibitionsPath.append(Route.artist(target))
         }
     }
 }
@@ -141,6 +158,8 @@ struct RouteView: View {
             QuizView(catalogue: catalogue)
         case .settings:
             SettingsView(catalogue: catalogue)
+        case .artists:
+            ArtistsView(catalogue: catalogue)
         case .building(let name):
             BuildingView(catalogue: catalogue, name: name)
         case .grandMuseum:

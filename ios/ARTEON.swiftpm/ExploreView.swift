@@ -32,6 +32,14 @@ struct ExploreView: View {
                         route: .quiz
                     )
                     ExploreCard(
+                        title: "Les artistes",
+                        subtitle: "\(store.index?.artists.count ?? 0) artistes, ateliers et cultures, de A à Z",
+                        systemImage: "person.2",
+                        color: .indigo,
+                        image: store.index?.artist(named: "Vincent van Gogh")?.works.first ?? store.index?.artists.first?.works.first,
+                        route: .artists
+                    )
+                    ExploreCard(
                         title: "Les thèmes",
                         subtitle: "\(store.index?.themes.count ?? 0) thèmes : la nuit, la mer, l'amour…",
                         systemImage: "tag",

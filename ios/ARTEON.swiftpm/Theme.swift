@@ -34,6 +34,7 @@ enum Route: Hashable {
     case settings
     case building(String)
     case grandMuseum
+    case artists
 }
 
 /// Les images, lues sur l'appareil et décodées à la taille où elles s'affichent : les
