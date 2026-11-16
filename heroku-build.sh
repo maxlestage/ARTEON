@@ -43,11 +43,8 @@ echo "-----> Les images et les modèles, depuis Nuage"
 NUAGE_URL=$(config NUAGE_URL "")
 NUAGE_TOKEN=$(config NUAGE_TOKEN "")
 export NUAGE_URL NUAGE_TOKEN ARTEON_NUAGE_CACHE="$target/arteon-nuage"
-if command -v python3 > /dev/null; then
-  python3 outils/nuage.py recuperer
-else
-  echo "       Python absent : seuls les fichiers présents dans le dépôt servent"
-fi
+# outils/nuage.sh, la version sans Python de outils/nuage.py : Heroku n'a pas toujours Python.
+bash outils/nuage.sh recuperer
 
 echo "-----> Le serveur"
 cargo build --release --bin arteon
@@ -89,8 +86,8 @@ echo "       îlots prêts dans pkg/"
 # si Nuage a bien tous les fichiers (etat) : sinon l'application les garde, et marche.
 if [ -n "${ENV_DIR:-}" ]; then
   echo "-----> Une application allégée"
-  if [ -n "$NUAGE_TOKEN" ] && command -v python3 > /dev/null && python3 outils/nuage.py etat > /dev/null 2>&1; then
-    python3 outils/nuage.py liberer
+  if [ -n "$NUAGE_TOKEN" ] && bash outils/nuage.sh etat > /dev/null 2>&1; then
+    bash outils/nuage.sh liberer
   else
     echo "       Nuage n'a pas encore tous les fichiers (ou NUAGE_TOKEN manque) : l'application les garde"
   fi
