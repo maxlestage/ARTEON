@@ -225,7 +225,7 @@ python3 outils/nuage.py etat               # ce qui manque, sur le disque ou sur
 python3 outils/nuage.py oublier public/tableaux/monet/x.jpg   # retire un fichier, de Nuage aussi
 ```
 
-`recuperer` vérifie l'empreinte de chaque fichier téléchargé, et garde une copie dans `ARTEON_NUAGE_CACHE` s'il est donné. Les fichiers sont ignorés par git (`.gitignore`) : après `envoyer`, seuls les `nuage.lock` sont à valider.
+[`outils/nuage.sh`](outils/nuage.sh) fait de même sans Python (`recuperer`, `envoyer`, `etat`, `liberer`, avec curl et sha256sum) : c'est lui que Heroku utilise. `recuperer` vérifie l'empreinte de chaque fichier téléchargé, et garde une copie dans `ARTEON_NUAGE_CACHE` s'il est donné. Les fichiers sont ignorés par git (`.gitignore`) : après `envoyer`, seuls les `nuage.lock` sont à valider.
 
 - **La compilation** a besoin des fichiers (`build.rs` en fait les mosaïques et les maillages) : [`heroku-build.sh`](heroku-build.sh) et le workflow GitHub Pages les récupèrent d'abord, dans un cache gardé d'un déploiement à l'autre.
 - **L'application Heroku** ne les emporte pas : une fois compilée, `heroku-build.sh` efface les images et les modèles, et le serveur prend une image sur Nuage à sa première demande (`/tableaux/<exposition>/<image>`, [`src/nuage.rs`](src/nuage.rs)), la garde sur le disque du dyno puis la sert de là. Elle reste servie par le site lui-même : le musée 3D en fait des textures WebGL, qui doivent venir du même site. Une image présente dans `public/tableaux/` (en développement, ou une exposition éphémère) est servie directement.
