@@ -776,7 +776,8 @@ fn exhibition(
             fail(
                 name,
                 format!(
-                    "{who} : l'image « {} » est introuvable dans {folder}/",
+                    "{who} : l'image « {} » est introuvable dans {folder}/ (si elle est sur \
+                     Nuage, dans le nuage.lock du dossier : python3 outils/nuage.py recuperer)",
                     art.image
                 ),
             );

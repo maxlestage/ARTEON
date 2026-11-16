@@ -93,7 +93,7 @@ Les œuvres exposées sont dans le **domaine public** (l'artiste est mort en 195
 
 Une exposition = **un fichier** [`expositions/<nom>.toml`](expositions) + **un dossier d'images** [`public/tableaux/<nom>/`](public/tableaux). Pas une ligne de code à écrire.
 
-1. Déposer l'image de la toile (JPEG ou PNG, 900 à 1000 pixels de large suffisent) dans le dossier de l'exposition, par exemple `public/tableaux/monet/`. Sur GitHub : ouvrir le dossier, puis *Add file → Upload files*.
+1. Déposer l'image de la toile (JPEG ou PNG, 900 à 1000 pixels de large suffisent) dans le dossier de l'exposition, par exemple `public/tableaux/monet/`. Sur GitHub : ouvrir le dossier, puis *Add file → Upload files*. Le workflow « Ranger sur Nuage » l'envoie ensuite sur Nuage et la retire du dépôt (voir [Les images sont sur Nuage](#les-images-sont-sur-nuage)).
 2. Copier un bloc `[[oeuvres]]` dans le fichier de l'exposition (`expositions/monet.toml`) et changer ses valeurs :
 
    ```toml
@@ -211,6 +211,29 @@ et le site en ligne reste tel quel.
 - Les fichiers produits ne sont pas versionnés (`.gitignore`). En local : `python3 outils/ephemeres.py` (bibliothèque standard de Python seulement), ou `--graine 42` pour un autre tirage.
 - Pour ajouter un musée : une fonction qui renvoie ses œuvres exposées (titre, artiste, date, technique, mesures, salle, image, lien) et une entrée dans `MUSEES`.
 
+## Les images sont sur Nuage
+
+Le dépôt ne garde ni les images des tableaux ni les modèles 3D (plus de 160 Mo) : ils sont dans les fichiers de l'application ARTEON sur [Nuage](https://github.com/maxlestage/Nuage) (`/v1/files`, un bucket compatible S3), sous `tableaux/<exposition>/<image>` et `modeles/<modèle>`. Chaque dossier d'images et `modeles/` n'ont plus qu'un petit fichier `nuage.lock`, une ligne par fichier : son empreinte SHA-256, sa taille et son nom.
+
+[`outils/nuage.py`](outils/nuage.py) (bibliothèque standard de Python seule) fait le lien, avec `NUAGE_TOKEN`, un jeton de l'application ARTEON sur Nuage (console de Nuage → l'application → *Tokens*) :
+
+```bash
+export NUAGE_TOKEN=nuage_…                 # lecture seule pour recuperer et etat
+python3 outils/nuage.py recuperer          # télécharge ce qui manque (avant cargo build ou paquets dev)
+python3 outils/nuage.py envoyer            # envoie les fichiers nouveaux ou changés, met les nuage.lock à jour
+python3 outils/nuage.py etat               # ce qui manque, sur le disque ou sur Nuage
+python3 outils/nuage.py oublier public/tableaux/monet/x.jpg   # retire un fichier, de Nuage aussi
+```
+
+`recuperer` vérifie l'empreinte de chaque fichier téléchargé, et garde une copie dans `ARTEON_NUAGE_CACHE` s'il est donné. Les fichiers sont ignorés par git (`.gitignore`) : après `envoyer`, seuls les `nuage.lock` sont à valider.
+
+- **La compilation** a besoin des fichiers (`build.rs` en fait les mosaïques et les maillages) : [`heroku-build.sh`](heroku-build.sh) et le workflow GitHub Pages les récupèrent d'abord, dans un cache gardé d'un déploiement à l'autre.
+- **L'application Heroku** ne les emporte pas : une fois compilée, `heroku-build.sh` efface les images et les modèles, et le serveur prend une image sur Nuage à sa première demande (`/tableaux/<exposition>/<image>`, [`src/nuage.rs`](src/nuage.rs)), la garde sur le disque du dyno puis la sert de là. Elle reste servie par le site lui-même : le musée 3D en fait des textures WebGL, qui doivent venir du même site. Une image présente dans `public/tableaux/` (en développement, ou une exposition éphémère) est servie directement.
+- **Le premier rangement** : au premier passage du workflow « Ranger sur Nuage » sur `master` (avec le secret `NUAGE_TOKEN`), les images et les modèles encore suivis par git sont envoyés et retirés du dépôt. D'ici là, tout marche comme avant : `recuperer` ne demande rien à Nuage quand les fichiers sont là, et Heroku ne retire les fichiers de l'application que si Nuage les a tous.
+- **Ajouter une image depuis GitHub** marche toujours : le workflow [« Ranger sur Nuage »](.github/workflows/nuage.yml) envoie sur Nuage les images et les modèles poussés sur `master`, les inscrit dans leur `nuage.lock` et les retire du dépôt, dans un commit à lui.
+
+Réglages : le secret GitHub `NUAGE_TOKEN` (lecture-écriture : il sert à ranger et à compiler), la variable de configuration Heroku `NUAGE_TOKEN` (lecture seule suffit : compilation et serveur), et `NUAGE_URL` partout pour un autre serveur Nuage que celui d'ARTEON.
+
 ## Comment les toiles deviennent de la 3D
 
 Le moteur 3D de Paquets n'affiche pas d'images (pas de textures). À la compilation, `build.rs` réduit donc chaque image à une grille dont chaque case mesure **7 mm** dans la galerie (jusqu'à 340 cases de côté), et la ramène à une palette de **64 couleurs** ; les toiles sombres sont légèrement éclaircies pour rester lisibles sous l'éclairage du musée. Les cases des mosaïques et les maillages des sculptures sont écrits dans un fichier par exposition (`donnees/<nom>.bin`), que le navigateur télécharge à l'ouverture du musée : le WebAssembly reste le même quelle que soit la taille des collections.
@@ -226,8 +249,9 @@ Le catalogue complet de chaque exposition est sur le site (`/<exposition>/oeuvre
 ## Architecture
 
 - `expositions/*.toml` : le contenu de chaque exposition (textes, plan, œuvres, sculptures).
-- `public/tableaux/<nom>/` : les images des œuvres, servies à `/tableaux/<nom>/…`.
-- `modeles/` : les modèles 3D des sculptures.
+- `public/tableaux/<nom>/` : les images des œuvres, servies à `/tableaux/<nom>/…` ; gardées sur Nuage, le dossier n'a que leur `nuage.lock`.
+- `modeles/` : les modèles 3D des sculptures, gardés sur Nuage de même.
+- `outils/nuage.py` : récupère et envoie les images et les modèles ; `src/nuage.rs` : le serveur prend sur Nuage les images qu'il n'a pas.
 - `build.rs` (et `build/`) : vérifie les expositions et le plan, transforme les images en mosaïques, simplifie les sculptures, écrit le catalogue en Rust et les fichiers `donnees/<nom>.bin`.
 - `src/artworks.rs` : les types du catalogue ; `src/data.rs` : la lecture des fichiers de données.
 - `src/museum.rs` : le bâtiment (murs, portes, lampes, obstacles, chemins entre salles).
@@ -249,6 +273,7 @@ Deux contraintes du moteur sont prises en compte (et testées) : la physique de 
 ## Lancer le projet
 
 - Installer la commande `paquets` : `cargo install --git https://github.com/maxlestage/Paquets paquets --locked`
+- Récupérer les images et les modèles, gardés sur Nuage : `NUAGE_TOKEN=… python3 outils/nuage.py recuperer`
 - Lancer en développement (http://localhost:3000, avec rechargement) : `paquets dev`
 - Lancer les tests : `cargo test`
 - Compiler pour la production (serveur et bundle WebAssembly optimisés) : `paquets build`
@@ -288,7 +313,7 @@ Tout se fait depuis le navigateur du téléphone, avec le [buildpack emk/rust](h
 
 1. Appuyer sur le bouton **Deploy to Heroku** en haut de ce README (ou ouvrir `https://heroku.com/deploy?template=https://github.com/maxlestage/ARTEON`), choisir un nom d'application, puis **Deploy app**. Heroku lit [`app.json`](app.json) (pile heroku-26, buildpack `emk/rust`) ; le buildpack installe Rust et lance [`heroku-build.sh`](heroku-build.sh) par [`RustConfig`](RustConfig) : les expositions éphémères de la semaine, le serveur, les îlots 3D en WebAssembly et les données des expositions. Le [`Procfile`](Procfile) démarre `target/release/arteon`, qui écoute sur `$PORT`.
 2. Déploiements automatiques : dans GitHub (l'application mobile ou le site), *Settings → Secrets and variables → Actions*, ajouter le secret `HEROKU_API_KEY` (Heroku → *Account settings* → *API Key* → *Reveal*) et la variable `HEROKU_APP_NAME` (le nom choisi). Le workflow [`heroku.yml`](.github/workflows/heroku.yml) déploie alors chaque push sur `master`, et **chaque lundi** pour renouveler les expositions éphémères, par l'API de Heroku (sans ligne de commande). Il crée l'application si elle n'existe pas et lui met le buildpack `emk/rust`. On peut aussi le lancer à la main : *Actions → Déployer sur Heroku → Run workflow*.
-3. Variable de configuration facultative (Heroku → *Settings → Config Vars*) : `EPHEMERES=0` pour ne pas monter les expositions éphémères. `REPOS_TOKEN` (un jeton GitHub) ne sert que si Paquets devenait privé.
+3. Variable de configuration nécessaire (Heroku → *Settings → Config Vars*) : `NUAGE_TOKEN`, un jeton (lecture seule) de l'application ARTEON sur Nuage, pour récupérer les images et les modèles à la compilation et servir les images ensuite. Facultatives : `NUAGE_URL` pour un autre serveur Nuage, `EPHEMERES=0` pour ne pas monter les expositions éphémères. `REPOS_TOKEN` (un jeton GitHub) ne sert que si Paquets devenait privé.
 
 `build.rs` garde un cache des expositions déjà calculées (`arteon-cache`, dans le dossier de compilation que le buildpack conserve d'un déploiement à l'autre) : seules les expositions modifiées sont recalculées. Le premier déploiement prend plusieurs minutes ; les suivants sont bien plus rapides. Heroku n'a pas d'offre gratuite (un dyno Eco coûte environ 5 $ par mois).
 
@@ -300,9 +325,10 @@ Réglage unique du dépôt : **Settings → Pages → Build and deployment → S
 
 Adresse du site : `https://<compte>.github.io/ARTEON/`.
 
-Pour produire le même export en local :
+Il faut le secret `NUAGE_TOKEN` (*Settings → Secrets and variables → Actions*) : le workflow récupère d'abord les images et les modèles sur Nuage. Pour produire le même export en local :
 
 ```bash
+python3 outils/nuage.py recuperer
 rustup target add wasm32-unknown-unknown
 cargo install wasm-bindgen-cli --version 0.2.130 --locked   # la version de Cargo.lock
 cargo build --lib --target wasm32-unknown-unknown --profile wasm-release

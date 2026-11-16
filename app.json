@@ -10,6 +10,15 @@
     }
   ],
   "env": {
+    "NUAGE_TOKEN": {
+      "description": "Un jeton (lecture seule) de l'application ARTEON sur Nuage : les images des tableaux et les modèles 3D y sont gardés, récupérés à la compilation et servis ensuite par le serveur (outils/nuage.py, src/nuage.rs).",
+      "required": true
+    },
+    "NUAGE_URL": {
+      "description": "Le serveur Nuage, si ce n'est pas celui d'ARTEON.",
+      "value": "https://nuage-f48a8945f31c.herokuapp.com",
+      "required": false
+    },
     "EPHEMERES": {
       "description": "1 : monter les expositions éphémères de la semaine à chaque déploiement (Art Institute of Chicago, Cleveland, Metropolitan Museum) ; 0 : s'en passer.",
       "value": "1",

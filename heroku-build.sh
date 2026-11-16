@@ -35,6 +35,20 @@ else
   echo "       désactivées (EPHEMERES=0) ou Python absent"
 fi
 
+# Les images des tableaux et les modèles 3D sont gardés sur Nuage, pas dans le dépôt :
+# téléchargés pour la compilation (build.rs en fait les mosaïques et les maillages), dans
+# un cache gardé d'un déploiement à l'autre, puis retirés de l'application (plus bas).
+# Le jeton de l'application ARTEON sur Nuage : la variable NUAGE_TOKEN (lecture seule).
+echo "-----> Les images et les modèles, depuis Nuage"
+NUAGE_URL=$(config NUAGE_URL "")
+NUAGE_TOKEN=$(config NUAGE_TOKEN "")
+export NUAGE_URL NUAGE_TOKEN ARTEON_NUAGE_CACHE="$target/arteon-nuage"
+if command -v python3 > /dev/null; then
+  python3 outils/nuage.py recuperer
+else
+  echo "       Python absent : seuls les fichiers présents dans le dépôt servent"
+fi
+
 echo "-----> Le serveur"
 cargo build --release --bin arteon
 mkdir -p target/release
@@ -68,3 +82,16 @@ rm -rf pkg
 "$bin/wasm-bindgen" --target web --no-typescript --remove-name-section --remove-producers-section \
   --out-dir pkg "$target/wasm32-unknown-unknown/wasm-release/arteon.wasm"
 echo "       îlots prêts dans pkg/"
+
+# L'application déployée n'emporte pas les images ni les modèles : le serveur prend les
+# images sur Nuage à la première visite (src/nuage.rs), avec NUAGE_TOKEN.
+# Seulement sur Heroku (ENV_DIR) : à la main, les copies locales restent là. Et seulement
+# si Nuage a bien tous les fichiers (etat) : sinon l'application les garde, et marche.
+if [ -n "${ENV_DIR:-}" ]; then
+  echo "-----> Une application allégée"
+  if [ -n "$NUAGE_TOKEN" ] && command -v python3 > /dev/null && python3 outils/nuage.py etat > /dev/null 2>&1; then
+    python3 outils/nuage.py liberer
+  else
+    echo "       Nuage n'a pas encore tous les fichiers (ou NUAGE_TOKEN manque) : l'application les garde"
+  fi
+fi

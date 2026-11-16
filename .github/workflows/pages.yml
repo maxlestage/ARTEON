@@ -1,7 +1,7 @@
 # Publie ARTEON sur GitHub Pages : le site complet (présentation, galerie 3D, catalogue,
 # guide « Ajouter une œuvre ») exporté en fichiers statiques, avec les îlots 3D
 # compilés en WebAssembly. Modifier expositions/*.toml ou public/tableaux/ sur master
-# republie le musée.
+# republie le musée. Les images et les modèles viennent de Nuage (secret NUAGE_TOKEN).
 #
 # - À chaque push, le site est compilé, testé et exporté (vérifie que tout marche).
 # - Sur la branche par défaut (et à la demande), il est en plus déployé sur Pages.
@@ -46,6 +46,22 @@ jobs:
           targets: wasm32-unknown-unknown
 
       - uses: Swatinem/rust-cache@v2
+
+      # Les images des tableaux et les modèles 3D sont gardés sur Nuage (outils/nuage.py) :
+      # téléchargés une fois, puis repris du cache tant que leurs nuage.lock ne changent pas.
+      # Réglage : le secret NUAGE_TOKEN (un jeton de l'application ARTEON sur Nuage) et, pour
+      # un autre serveur Nuage, la variable NUAGE_URL.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/arteon-nuage
+          key: arteon-nuage-${{ hashFiles('public/tableaux/*/nuage.lock', 'modeles/nuage.lock') }}
+          restore-keys: arteon-nuage-
+
+      - name: Images et modèles (Nuage)
+        env:
+          NUAGE_URL: ${{ vars.NUAGE_URL }}
+          NUAGE_TOKEN: ${{ secrets.NUAGE_TOKEN }}
+        run: ARTEON_NUAGE_CACHE="$HOME/.cache/arteon-nuage" python3 outils/nuage.py recuperer
 
       # Les expositions éphémères de la semaine, d'après les collections ouvertes des musées.
       # Un musée qui ne répond pas est sauté ; si le résultat ne se compile pas, on s'en passe.
