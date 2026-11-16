@@ -316,7 +316,7 @@ def cleveland(combien, alea):
     return fiches
 
 
-def met(combien, alea):
+def met(combien, alea, deja=frozenset()):
     recherche = "https://collectionapi.metmuseum.org/public/collection/v1.1/search"
     identifiants, vus = [], set()
 
@@ -383,6 +383,8 @@ def met(combien, alea):
             score=POIDS[cat] + (200 if o.get("isHighlight") else 0),
         )
 
+    # Ceux déjà dans le cache ne sont pas redemandés : chaque moisson en ajoute d'autres.
+    identifiants = [i for i in identifiants if f"met-{i}" not in deja]
     fiches = []
     with concurrent.futures.ThreadPoolExecutor(4) as pool:
         for depart in range(0, len(identifiants), 400):
@@ -484,7 +486,12 @@ def moissonner(cle, combien, cache, alea):
     else:
         dire(f"• {MUSEES[cle]['nom']}")
         source = SOURCES[cle]
-        nouvelles = source(combien, alea, cache) if cle == "washington" else source(combien, alea)
+        if cle == "washington":
+            nouvelles = source(combien, alea, cache)
+        elif cle == "met":
+            nouvelles = source(max(1, combien - len(fiches)), alea, frozenset(f["i"] for f in fiches))
+        else:
+            nouvelles = source(combien, alea)
         # Les fiches d'avant et les nouvelles, réunies (une moisson interrompue continue).
         connues = {f["i"]: f for f in fiches}
         connues.update({f["i"]: f for f in nouvelles})
@@ -526,11 +533,25 @@ def main():
                 dire(f"  {MUSEES[c]['nom']} est sauté : {erreur}")
                 toutes[c] = []
 
-    # Un musée qui manque laisse sa part aux autres.
-    manque = sum(parts[c] for c in cles if not toutes[c])
+    # Un musée qui n'a pas assez d'œuvres laisse le reste de sa part à ceux qui en ont
+    # davantage (le total voulu est atteint quand c'est possible).
     vivants = [c for c in cles if toutes[c]]
+    disponibles = {c: int(len(toutes[c]) / 1.08) for c in vivants}
+    manque = sum(parts[c] for c in cles if c not in vivants)
     for c in vivants:
-        parts[c] += manque // max(1, len(vivants))
+        if parts[c] > disponibles[c]:
+            manque += parts[c] - disponibles[c]
+            parts[c] = disponibles[c]
+    while manque > 0:
+        receveurs = [c for c in vivants if disponibles[c] > parts[c]]
+        if not receveurs:
+            break
+        part = max(1, manque // len(receveurs))
+        for c in receveurs:
+            donne = min(part, disponibles[c] - parts[c], manque)
+            parts[c] += donne
+            manque -= donne
+    dire("  parts : " + ", ".join(f"{c} {parts[c]}" for c in vivants))
 
     def traiter(c):
         """Les vignettes d'un musée (téléchargées, réduites) et son paquet."""
