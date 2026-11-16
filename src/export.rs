@@ -94,6 +94,7 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             let url = relative.to_string_lossy().replace('\\', "/");
             // Les fichiers annexes de wasm-bindgen, inutiles pour lancer le bundle.
             if url.ends_with(".gitignore")
+                || url.ends_with("nuage.lock")
                 || url.ends_with("package.json")
                 || url.ends_with(".d.ts")
             {

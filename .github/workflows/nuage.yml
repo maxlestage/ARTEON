@@ -1,0 +1,69 @@
+# Range sur Nuage les images et les modèles 3D ajoutés au dépôt : le dépôt, le site et
+# l'application n'en gardent que les nuage.lock (empreinte, taille, nom). On peut donc
+# toujours ajouter une image depuis GitHub (le dossier de l'exposition → Add file →
+# Upload files) : ce workflow l'envoie sur Nuage, l'inscrit dans le nuage.lock du dossier
+# et la retire du dépôt, dans un commit à lui.
+#
+# Réglage (GitHub → Settings → Secrets and variables → Actions) :
+#   - secret   NUAGE_TOKEN  un jeton en lecture-écriture de l'application ARTEON sur Nuage
+#                           (console de Nuage → l'application → Tokens)
+#   - variable facultative NUAGE_URL, pour un autre serveur Nuage que celui d'ARTEON
+# Sans le secret, le workflow est simplement sauté.
+
+name: Ranger sur Nuage
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "public/tableaux/**"
+      - "modeles/**"
+      - ".github/workflows/nuage.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nuage
+  cancel-in-progress: false
+
+jobs:
+  ranger:
+    name: Envoyer sur Nuage
+    runs-on: ubuntu-latest
+    env:
+      NUAGE_URL: ${{ vars.NUAGE_URL }}
+      NUAGE_TOKEN: ${{ secrets.NUAGE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Envoyer, inscrire, retirer du dépôt
+        run: |
+          set -euo pipefail
+          if [ -z "${NUAGE_TOKEN:-}" ]; then
+            echo "::notice::Nuage n'est pas configuré : ajoutez le secret NUAGE_TOKEN (Settings → Secrets and variables → Actions)."
+            exit 0
+          fi
+          python3 outils/nuage.py envoyer
+          # Les fichiers désormais sur Nuage, tels que leur nuage.lock les décrit, quittent
+          # le dépôt (ils restent dans son historique).
+          python3 outils/nuage.py ranges > "$RUNNER_TEMP/ranges.txt"
+          git ls-files -- public/tableaux modeles > "$RUNNER_TEMP/suivis.txt"
+          grep -Fxf "$RUNNER_TEMP/ranges.txt" "$RUNNER_TEMP/suivis.txt" > "$RUNNER_TEMP/a-retirer.txt" || true
+          if [ -s "$RUNNER_TEMP/a-retirer.txt" ]; then
+            xargs -d '\n' git rm -q --cached -- < "$RUNNER_TEMP/a-retirer.txt"
+          fi
+          git add -- public/tableaux/*/nuage.lock modeles/nuage.lock
+          if git diff --cached --quiet; then
+            echo "Rien à ranger : tout est déjà sur Nuage."
+            exit 0
+          fi
+          n=$(wc -l < "$RUNNER_TEMP/a-retirer.txt")
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Rangé sur Nuage : $n fichiers d'images et de modèles" \
+            -m "Envoyés par outils/nuage.py, inscrits dans les nuage.lock et retirés du dépôt."
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "### ☁️ $n fichiers rangés sur Nuage" >> "$GITHUB_STEP_SUMMARY"

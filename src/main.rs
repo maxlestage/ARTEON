@@ -13,6 +13,7 @@ use arteon::{gallery_scene, showcase_scene};
 
 mod catalogue;
 mod export;
+mod nuage;
 mod style;
 
 /// Le dépôt du projet, pour les liens « modifier sur GitHub ».
@@ -1664,7 +1665,7 @@ Sa manière…""""##;
                         .child(code().text("public/tableaux/monet/"))
                         .child(span().text(". Sur GitHub : "))
                         .child(a().href(format!("{REPOSITORY}/tree/master/public/tableaux")).text("ouvrir le dossier, puis Add file → Upload files"))
-                        .child(span().text(".")),
+                        .child(span().text(". Elle est ensuite rangée sur Nuage, qui garde toutes les images du musée : le dépôt et le site restent légers.")),
                 ))
                 .child(step(
                     "02",
@@ -1854,6 +1855,8 @@ fn app() -> App {
     let data =
         std::env::var("ARTEON_DONNEES").unwrap_or_else(|_| arteon::artworks::DATA_DIR.to_owned());
     app.static_dir("/donnees", &data);
+    // Les images des tableaux qui ne sont pas dans public/tableaux/ : gardées sur Nuage.
+    app.get("/tableaux/*chemin", nuage::tableau);
     app.fallback(not_found);
     app
 }

@@ -5,6 +5,13 @@
 # Les expositions éphémères : refaites à chaque publication par outils/ephemeres.py.
 /expositions/ephemere-*.toml
 /public/tableaux/ephemere-*/
+
+# Les images des tableaux et les modèles 3D sont gardés sur Nuage (outils/nuage.py) : le
+# dépôt n'a que leurs nuage.lock. « python3 outils/nuage.py recuperer » les télécharge.
+/public/tableaux/*/*
+!/public/tableaux/*/nuage.lock
+/modeles/*
+!/modeles/nuage.lock
 __pycache__/
 
 # Heroku : les données copiées par heroku-build.sh.
