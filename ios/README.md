@@ -17,6 +17,13 @@ GitHub Pages).
   française de l'appareil lit le cartel et la notice), les autres œuvres du même artiste,
   le **partage** (l'image et son cartel), favori, précédente et suivante, image en grand
   (pincer, glisser, toucher deux fois).
+- **Musées** : les vrais musées dont ARTEON reproduit les bâtiments (Orsay, le Prado, le
+  Rijksmuseum, le Guggenheim, le British Museum, la Tate Modern…), pays par pays, chacun
+  avec son histoire, ce qu'ARTEON lui emprunte, son **plan interactif** dessiné en natif
+  (les salles à la couleur de leurs murs, les portes, chaque tableau le long de son mur,
+  les socles, l'entrée : toucher une salle montre ses œuvres) et l'entrée en 3D. Et un
+  musée **original**, le **Grand Musée ARTEON** : un bâtiment imaginaire où toutes les
+  expositions sont des pavillons, en six ailes qui suivent le temps.
 - **Galerie 3D** : celle du site (WebGL 2, écrite en Rust et compilée en WebAssembly),
   servie par l'application elle-même à l'adresse `arteon://musee/…` : visite guidée ou
   libre, plan, notices, ouverte devant l'œuvre choisie.
@@ -99,7 +106,8 @@ open ARTEON.xcodeproj        # ou : open ARTEON.swiftpm (le même code)
 
 Arguments de lancement : `-horsligne` (jamais de réseau), `-site http://localhost:3000/`
 (un autre site pour les mises à jour), `-ouvrir van-gogh`, `-ouvrir van-gogh/tournesols`,
-`-ouvrir 3d:van-gogh`, `-ouvrir chronologie`, `-ouvrir jeu`, `-onglet artistes`.
+`-ouvrir 3d:van-gogh`, `-ouvrir chronologie`, `-ouvrir jeu`, `-ouvrir musee:Rijksmuseum`,
+`-ouvrir grand-musee`, `-onglet musees`, `-onglet artistes`.
 
 ## Tests
 

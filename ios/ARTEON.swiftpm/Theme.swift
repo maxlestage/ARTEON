@@ -32,6 +32,8 @@ enum Route: Hashable {
     case techniques
     case quiz
     case settings
+    case building(String)
+    case grandMuseum
 }
 
 /// Les images, lues sur l'appareil et décodées à la taille où elles s'affichent : les

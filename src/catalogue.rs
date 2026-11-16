@@ -3,10 +3,21 @@
 //! iPad en Flutter, dans `flutter/`). Les images sont des chemins relatifs au site
 //! (`tableaux/van-gogh/iris.jpg`), à résoudre contre son adresse : le même catalogue sert
 //! sur GitHub Pages (`/ARTEON/`) et sur Heroku (`/`).
+//!
+//! Le plan de chaque bâtiment y est aussi, en mètres (x vers l'est, z vers le sud) : les
+//! salles (`x`, `z`, `width`, `depth`, couleur des murs, numéro dans le parcours), leurs
+//! portes (segments), la place de chaque œuvre (`spot` : le segment d'un tableau le long
+//! de son mur, ou le cercle du socle d'une sculpture) et l'entrée. L'application iOS le
+//! dessine.
 
 use paquets::serde_json::{Value, json};
 
 use arteon::artworks::{Artist, Artwork, Credit, EXHIBITIONS, Exhibition, Notice, Sculpture};
+
+/// Arrondi au centimètre (le JSON reste lisible et léger).
+fn cm(v: f32) -> f64 {
+    (f64::from(v) * 100.0).round() / 100.0
+}
 
 /// La version du format : l'application la vérifie.
 pub const VERSION: u32 = 1;
@@ -45,7 +56,19 @@ fn artist(a: &Artist) -> Value {
 }
 
 fn artwork(ex: &Exhibition, a: &Artwork) -> Value {
+    // Le tableau sur le plan : le long de son mur, un peu en retrait (comme le plan du site).
+    let r = &ex.rooms[a.hook.room];
+    let (ix, iz) = a.hook.side.inward();
+    let (ax, az) = r.point_on(a.hook.side, a.hook.position - a.width / 2.0);
+    let (bx, bz) = r.point_on(a.hook.side, a.hook.position + a.width / 2.0);
+    let spot = [
+        cm(ax + ix * 0.35),
+        cm(az + iz * 0.35),
+        cm(bx + ix * 0.35),
+        cm(bz + iz * 0.35),
+    ];
     json!({
+        "spot": spot,
         "kind": "painting",
         "slug": a.slug,
         "title": a.title,
@@ -65,6 +88,7 @@ fn artwork(ex: &Exhibition, a: &Artwork) -> Value {
 
 fn sculpture(s: &Sculpture) -> Value {
     json!({
+        "spot": [cm(s.x), cm(s.z), cm(s.radius.max(0.5))],
         "kind": "sculpture",
         "slug": s.slug,
         "title": s.title,
@@ -89,6 +113,8 @@ fn exhibition(ex: &Exhibition) -> Value {
         .map(|a| artwork(ex, a))
         .chain(ex.sculptures.iter().map(sculpture))
         .collect();
+    // Les numéros des salles dans le parcours (les couloirs n'en ont pas).
+    let numbers: Vec<usize> = ex.galleries().map(|(i, _)| i).collect();
     json!({
         "slug": ex.slug,
         "title": ex.title,
@@ -110,11 +136,26 @@ fn exhibition(ex: &Exhibition) -> Value {
             "presentation": m.presentation,
             "here": m.here,
         })),
-        "rooms": ex.rooms.iter().map(|r| json!({
+        "rooms": ex.rooms.iter().enumerate().map(|(i, r)| json!({
             "name": r.name,
             "theme": r.theme,
             "corridor": r.corridor,
+            "x": cm(r.x),
+            "z": cm(r.z),
+            "width": cm(r.width),
+            "depth": cm(r.depth),
+            "walls": hex(r.walls),
+            "number": numbers.iter().position(|&n| n == i).map(|n| n + 1),
+            "doors": r.doors.iter().map(|d| {
+                let (ax, az) = r.point_on(d.side, d.position - d.width / 2.0);
+                let (bx, bz) = r.point_on(d.side, d.position + d.width / 2.0);
+                [cm(ax), cm(az), cm(bx), cm(bz)]
+            }).collect::<Vec<_>>(),
         })).collect::<Vec<_>>(),
+        "entrance": arteon::museum::entrance(ex).map(|(_, x, z, side)| {
+            let (ix, iz) = side.inward();
+            [cm(x), cm(z), cm(ix), cm(iz)]
+        }),
         "artists": ex.artists.iter().map(artist).collect::<Vec<_>>(),
         "works": works,
     })
@@ -153,8 +194,21 @@ mod tests {
                 assert!(w["title"].as_str().is_some_and(|t| !t.is_empty()));
                 let room = w["room"].as_u64().expect("une salle") as usize;
                 assert!(room < ex.rooms.len());
+                let spot = w["spot"].as_array().expect("une place sur le plan");
+                assert!(spot.len() == 3 || spot.len() == 4, "{spot:?}");
             }
             assert!(json["accent"].as_str().is_some_and(|a| a.len() == 7));
+            // Le plan : chaque salle a sa place, l'entrée existe, les salles sont numérotées.
+            for r in json["rooms"].as_array().expect("des salles") {
+                assert!(r["width"].as_f64().is_some_and(|w| w > 0.0), "{r}");
+                assert!(r["depth"].as_f64().is_some_and(|d| d > 0.0), "{r}");
+                assert!(r["doors"].as_array().is_some());
+            }
+            assert!(json["entrance"].as_array().is_some_and(|e| e.len() == 4), "{}", ex.slug);
+            assert_eq!(
+                json["rooms"].as_array().unwrap().iter().filter(|r| r["number"].is_u64()).count(),
+                ex.galleries().count()
+            );
         }
         // Les textes longs sont bien là (ils ne manquent qu'au WebAssembly).
         let iris = &list[0]["works"][0]["notice"]["description"];

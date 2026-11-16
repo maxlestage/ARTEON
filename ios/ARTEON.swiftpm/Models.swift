@@ -154,6 +154,24 @@ struct Room: Decodable, Hashable, Sendable {
     var name: String
     var theme: String
     var corridor: Bool
+    /// Le plan, en mètres (x vers l'est, z vers le sud) : le centre de la salle, sa
+    /// largeur et sa profondeur. Absents d'un catalogue plus ancien.
+    var x: Double?
+    var z: Double?
+    var width: Double?
+    var depth: Double?
+    /// La couleur des murs (« #e8e2d6 »).
+    var walls: String?
+    /// Son numéro dans le parcours (pas pour un couloir).
+    var number: Int?
+    /// Les portes : des segments [x1, z1, x2, z2].
+    var doors: [[Double]]?
+
+    /// Le rectangle de la salle sur le plan, s'il est connu.
+    var frame: (minX: Double, minZ: Double, maxX: Double, maxZ: Double)? {
+        guard let x, let z, let width, let depth else { return nil }
+        return (x - width / 2, z - depth / 2, x + width / 2, z + depth / 2)
+    }
 }
 
 struct Artist: Decodable, Hashable, Sendable, Identifiable {
@@ -211,6 +229,9 @@ struct Work: Decodable, Hashable, Sendable, Identifiable {
     var height: Double
     var credit: Credit?
     var notice: Notice
+    /// Sa place sur le plan : [x1, z1, x2, z2] (un tableau le long de son mur) ou
+    /// [x, z, rayon] (le socle d'une sculpture).
+    var spot: [Double]?
 
     var id: String { slug }
 
@@ -240,6 +261,11 @@ struct Exhibition: Decodable, Hashable, Sendable, Identifiable {
     var rooms: [Room]
     var artists: [Artist]
     var works: [Work]
+    /// L'entrée du bâtiment : [x, z, dx, dz] (le point et la direction vers l'intérieur).
+    var entrance: [Double]?
+
+    /// Le plan est-il connu (catalogue récent) ?
+    var hasPlan: Bool { rooms.contains { $0.frame != nil } }
 
     var id: String { slug }
 

@@ -148,6 +148,9 @@ struct MuseumIndex: Sendable {
     let themes: [WorkGroup]
     let collections: [WorkGroup]
     let techniques: [WorkGroup]
+    let buildings: [Building]
+    let countries: [CountryGroup]
+    let wings: [Wing]
 
     init(_ catalogue: Catalogue) {
         // Les artistes : ceux des notices et ceux des cartels.
@@ -220,6 +223,9 @@ struct MuseumIndex: Sendable {
             let t = Self.material(w.technique)
             return t.isEmpty ? [] : [t]
         }
+        buildings = Self.buildings(catalogue)
+        countries = Self.countries(buildings)
+        wings = Self.wings(catalogue)
     }
 
     /// Les groupes d'œuvres qui partagent une valeur, les plus fournis d'abord.
@@ -290,6 +296,106 @@ extension Catalogue {
     /// Les œuvres de ces clés, dans leur ordre.
     func works(_ keys: [WorkKey]) -> [(WorkKey, Exhibition, Work)] {
         keys.compactMap { key in work(key).map { (key, $0.0, $0.1) } }
+    }
+}
+
+// MARK: - Les bâtiments
+
+/// Un vrai musée reproduit dans ARTEON, et les expositions qu'il abrite.
+struct Building: Identifiable, Hashable, Sendable {
+    var museum: Museum
+    var exhibitions: [String]
+
+    var id: String { museum.name }
+
+    /// Le pays : la dernière partie de la ville (« Paris, France » → « France »).
+    var country: String { Building.country(of: museum.city) }
+
+    static func country(of city: String) -> String {
+        var text = city
+        while let open = text.firstIndex(of: "("), let close = text[open...].firstIndex(of: ")") {
+            text.removeSubrange(open...close)
+        }
+        let last = text.split(separator: ",").last.map(String.init) ?? text
+        let trimmed = last.trimmingCharacters(in: .whitespaces)
+        return trimmed.isEmpty ? "Ailleurs" : trimmed
+    }
+}
+
+/// Les musées d'un pays.
+struct CountryGroup: Identifiable, Hashable, Sendable {
+    var name: String
+    var buildings: [Building]
+
+    var id: String { name }
+}
+
+/// Une aile du Grand Musée ARTEON : les expositions d'une époque.
+struct Wing: Identifiable, Hashable, Sendable {
+    var title: String
+    var subtitle: String
+    var exhibitions: [String]
+
+    var id: String { title }
+}
+
+extension MuseumIndex {
+    /// Les ailes du Grand Musée ARTEON, le bâtiment imaginaire qui réunit toutes les
+    /// expositions, de la plus ancienne à la plus récente (l'année médiane de leurs œuvres).
+    static func wings(_ catalogue: Catalogue) -> [Wing] {
+        let plan: [(title: String, subtitle: String, until: Int)] = [
+            ("L'aile des origines", "De la Terre aux premiers empires", 500),
+            ("L'aile des cathédrales", "Byzance, l'Islam, le Moyen Âge, l'Asie", 1400),
+            ("L'aile des palais", "Renaissance et Baroque", 1700),
+            ("L'aile des salons", "Des Lumières au romantisme", 1850),
+            ("L'aile de la lumière", "La seconde moitié du XIXᵉ siècle", 1900),
+            ("L'aile moderne", "Le XXᵉ siècle et aujourd'hui", Int.max),
+        ]
+        let dated = catalogue.exhibitions.map { ex -> (String, Int) in
+            let years = ex.works.compactMap { yearValue($0.year) }.sorted()
+            return (ex.slug, years.isEmpty ? 1900 : years[years.count / 2])
+        }.sorted { $0.1 < $1.1 }
+        var wings = plan.map { Wing(title: $0.title, subtitle: $0.subtitle, exhibitions: []) }
+        for (slug, year) in dated {
+            let i = plan.firstIndex { year < $0.until } ?? plan.count - 1
+            wings[i].exhibitions.append(slug)
+        }
+        return wings.filter { !$0.exhibitions.isEmpty }
+    }
+
+    /// Les vrais musées reproduits, un par nom, dans l'ordre des expositions.
+    static func buildings(_ catalogue: Catalogue) -> [Building] {
+        var result: [Building] = []
+        for ex in catalogue.exhibitions {
+            guard let museum = ex.museum, !museum.name.isEmpty else { continue }
+            if let i = result.firstIndex(where: { $0.museum.name == museum.name }) {
+                result[i].exhibitions.append(ex.slug)
+            } else {
+                result.append(Building(museum: museum, exhibitions: [ex.slug]))
+            }
+        }
+        return result
+    }
+
+    /// Les musées par pays, les pays les plus représentés d'abord.
+    static func countries(_ buildings: [Building]) -> [CountryGroup] {
+        var groups: [CountryGroup] = []
+        for b in buildings {
+            if let i = groups.firstIndex(where: { $0.name == b.country }) {
+                groups[i].buildings.append(b)
+            } else {
+                groups.append(CountryGroup(name: b.country, buildings: [b]))
+            }
+        }
+        return groups.sorted {
+            $0.buildings.count != $1.buildings.count
+                ? $0.buildings.count > $1.buildings.count
+                : folded($0.name) < folded($1.name)
+        }
+    }
+
+    func building(named name: String) -> Building? {
+        buildings.first { $0.museum.name == name }
     }
 }
 

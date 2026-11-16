@@ -59,6 +59,14 @@ struct ExhibitionView: View {
 
                     if let museum = exhibition.museum {
                         MuseumCard(museum: museum, accent: accent)
+                        if exhibition.hasPlan {
+                            BuildingPlan(exhibition: exhibition)
+                                .frame(maxWidth: 760)
+                        }
+                        NavigationLink(value: Route.building(museum.name)) {
+                            Label("Le bâtiment : \(museum.name)", systemImage: "building.columns")
+                        }
+                        .buttonStyle(.glass)
                     }
 
                     ForEach(exhibition.worksByRoom, id: \.index) { group in
