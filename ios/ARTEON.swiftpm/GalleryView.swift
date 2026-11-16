@@ -124,7 +124,7 @@ struct GalleryWebView: UIViewRepresentable {
                scheme == "http" || scheme == "https",
                action.navigationType == .linkActivated,
                url.host != Site.base.host || LocalMuseum.isAvailable {
-                UIApplication.shared.open(url)
+                Task { await UIApplication.shared.open(url) }
                 return .cancel
             }
             // Les pages du site qui ne sont pas embarquées (présentation, catalogue) : l'application
@@ -198,7 +198,7 @@ struct GalleryWebView: UIViewRepresentable {
 /// Sert le site embarqué (`Musee/`) aux adresses `arteon://musee/…` : pages, bundle
 /// WebAssembly, données des expositions, images.
 @MainActor
-final class MuseumSchemeHandler: NSObject, @preconcurrency WKURLSchemeHandler {
+final class MuseumSchemeHandler: NSObject, WKURLSchemeHandler {
     /// Les requêtes arrêtées par la page : on n'y répond plus.
     private var stopped = Set<ObjectIdentifier>()
 
