@@ -428,7 +428,7 @@ struct WorldCollectionsCard: View {
     @Environment(CatalogueStore.self) private var store
 
     var body: some View {
-        if LocalMuseum.collectionsFile != nil {
+        if LocalMuseum.hasCollections {
             NavigationLink(value: Route.worldCollections) {
                 HStack(spacing: 18) {
                     Image(systemName: "square.stack.3d.up.fill")

@@ -72,11 +72,25 @@ actor ImagePipeline {
         return image
     }
 
+    /// Les octets d'une vignette : dans le paquet sur l'appareil, sinon déjà reçue, sinon
+    /// demandée à Nuage (quelques Ko du paquet, par `Range`), puis gardée.
+    private static func thumbnailBytes(_ work: CollectionWork, pack: String) async -> Data? {
+        if let data = LocalMuseum.thumbnail(of: work, pack: pack) { return data }
+        let file = LocalMuseum.downloads.appendingPathComponent("collections/vignettes/\(work.id).jpg")
+        if let data = try? Data(contentsOf: file) { return data }
+        guard Nuage.isConfigured, let range = work.thumb, range.count == 2,
+              let data = try? await NuageFiles.shared.bytes("collections/\(pack)", offset: range[0], length: range[1])
+        else { return nil }
+        try? FileManager.default.createDirectory(at: file.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try? data.write(to: file, options: .atomic)
+        return data
+    }
+
     /// La vignette d'une œuvre des collections du monde, lue dans le paquet de son musée.
     func collectionThumbnail(_ work: CollectionWork, pack: String) async -> UIImage? {
         let key = "vignette|\(work.id)" as NSString
         if let image = cache.object(forKey: key) { return image }
-        guard let data = LocalMuseum.thumbnail(of: work, pack: pack),
+        guard let data = await Self.thumbnailBytes(work, pack: pack),
               let image = UIImage(data: data)?.preparingForDisplay()
         else { return nil }
         cache.setObject(image, forKey: key, cost: data.count * 8)

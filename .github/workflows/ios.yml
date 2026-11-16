@@ -138,6 +138,20 @@ jobs:
             echo "::notice::Swift n'est pas installé sur cette image : les tests tournent sur le Mac."
           fi
 
+      # Sur Nuage : l'app iOS n'embarque plus le musée, elle le lit là (puis le garde).
+      # Seules les nouveautés partent. Il faut le secret NUAGE_TOKEN : un jeton
+      # lecture-écriture de l'application arteon (console Nuage → arteon → Tokens).
+      - name: Envoyer sur Nuage
+        if: github.event_name != 'pull_request'
+        env:
+          NUAGE_TOKEN: ${{ secrets.NUAGE_TOKEN }}
+        run: |
+          if [ -z "$NUAGE_TOKEN" ]; then
+            echo "::notice::Pas de secret NUAGE_TOKEN : le musée n'est pas envoyé sur Nuage (Settings → Secrets → Actions)."
+            exit 0
+          fi
+          python3 outils/nuage_envoyer.py ios/ARTEON.swiftpm/Musee
+
       - uses: actions/upload-artifact@v4
         with:
           name: musee
@@ -158,6 +172,8 @@ jobs:
       run:
         working-directory: ios
     env:
+      # Le jeton Nuage en lecture seule, dans l'Info.plist de l'app (jamais dans le code).
+      NUAGE_READ_TOKEN: ${{ secrets.NUAGE_READ_TOKEN }}
       KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
       KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
       ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
@@ -165,17 +181,18 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # Le musée embarqué préparé par le job « musee ».
+      # L'app est légère : elle n'embarque pas le musée (elle le lit sur Nuage). Le musée
+      # préparé par le job « musee » sert seulement aux captures d'écran, déposé dans le
+      # simulateur comme s'il avait été téléchargé.
       - uses: actions/download-artifact@v4
         with:
           name: musee
-          path: ios/ARTEON.swiftpm/Musee
+          path: ${{ runner.temp }}/musee
 
-      - name: Le musée embarqué est là
+      - name: Le musée (pour les captures)
         run: |
-          test -s ARTEON.swiftpm/Musee/catalogue.json
-          test -s ARTEON.swiftpm/Musee/pkg/arteon_bg.wasm
-          du -sh ARTEON.swiftpm/Musee
+          test -s "$RUNNER_TEMP/musee/catalogue.json"
+          du -sh "$RUNNER_TEMP/musee"
 
       - name: Xcode 27.2
         run: |
@@ -198,7 +215,7 @@ jobs:
           set -o pipefail
           xcodebuild build -project ARTEON.xcodeproj -scheme ARTEON \
             -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
-            -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN" -quiet
 
       - name: Tests sur le simulateur iPad
         if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
@@ -211,7 +228,7 @@ jobs:
           run_tests() {
             xcodebuild test -project ARTEON.xcodeproj -scheme ARTEON \
               -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
-              -derivedDataPath build CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/tests.log"
+              -derivedDataPath build CODE_SIGNING_ALLOWED=NO NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN" 2>&1 | tee "$RUNNER_TEMP/tests.log"
           }
           if ! run_tests; then
             # Un simulateur qui ne répond pas : on recommence une fois. Un vrai test en
@@ -266,6 +283,11 @@ jobs:
             limit 60 xcrun simctl boot "$udid" || true
             limit 240 xcrun simctl bootstatus "$udid" -b || true
             limit 180 xcrun simctl install "$udid" "$app" || continue
+            # Le musée, comme s'il avait été téléchargé depuis Nuage (hors ligne, sans jeton).
+            data=$(xcrun simctl get_app_container "$udid" com.maxlestage.arteon data)
+            mkdir -p "$data/Library/Application Support"
+            rm -rf "$data/Library/Application Support/Musee"
+            cp -R "$RUNNER_TEMP/musee" "$data/Library/Application Support/Musee"
             name=01-accueil wait=12 shoot
             name=03-oeuvre shoot -ouvrir van-gogh/tournesols
             name=04-musees shoot -onglet musees
@@ -322,7 +344,9 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild build -project ARTEON.xcodeproj -scheme ARTEON -configuration Release \
-            -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO
+            -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO \
+            NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN"
+          du -sh build/Build/Products/Release-iphoneos/ARTEON.app
 
       - name: L'App Playground (Swift Playgrounds)
         # Le même code, ouvert comme dans Swift Playgrounds : vérifie Package.swift.
@@ -355,6 +379,7 @@ jobs:
           xcodebuild archive -project ARTEON.xcodeproj -scheme ARTEON -configuration Release \
             -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/ARTEON.xcarchive" \
             "${auth[@]}" DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN" \
             CURRENT_PROJECT_VERSION="${{ github.run_number }}"
           # L'export envoie directement l'application à App Store Connect (TestFlight).
           cat > "$RUNNER_TEMP/export.plist" <<PLIST
