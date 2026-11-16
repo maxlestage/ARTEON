@@ -429,7 +429,7 @@ struct WorldCollectionsCard: View {
 
     var body: some View {
         if LocalMuseum.collectionsFile != nil {
-            NavigationLink(value: Route.collections) {
+            NavigationLink(value: Route.worldCollections) {
                 HStack(spacing: 18) {
                     Image(systemName: "square.stack.3d.up.fill")
                         .font(.system(size: 34))

@@ -98,10 +98,10 @@ struct MainView: View {
             explorePath.append(Route.quiz)
         } else if target == "collections" {
             tab = .museums
-            museumsPath.append(Route.collections)
+            museumsPath.append(Route.worldCollections)
         } else if target.hasPrefix("collection:") {
             tab = .museums
-            museumsPath.append(Route.collections)
+            museumsPath.append(Route.worldCollections)
             museumsPath.append(Route.collection(.museum(String(target.dropFirst(11)))))
         } else if target == "grand-musee" {
             tab = .museums
@@ -167,7 +167,7 @@ struct RouteView: View {
             SettingsView(catalogue: catalogue)
         case .artists:
             ArtistsView(catalogue: catalogue)
-        case .collections:
+        case .worldCollections:
             CollectionsView()
         case .collection(let filter):
             CollectionListView(filter: filter)
