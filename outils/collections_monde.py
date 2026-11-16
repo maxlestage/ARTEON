@@ -85,6 +85,14 @@ MUSEES = {
 
 _impression = threading.Lock()
 
+# L'heure à laquelle on arrête de demander des fiches (--minutes) : la moisson garde ce
+# qu'elle a, et la suivante continue grâce au cache.
+FIN_DES_FICHES = float("inf")
+
+
+def trop_tard():
+    return time.time() > FIN_DES_FICHES
+
 
 def dire(*morceaux):
     with _impression:
@@ -205,46 +213,61 @@ def chicago(combien, alea):
         commun,
     ]
     vus = {}
-    for requete in requetes:
-        total = json_de(base + "?" + urllib.parse.urlencode(requete + [("limit", "1"), ("fields", "id")]), entetes)
-        total = min(total["pagination"]["total"], 10000)
-        pages = list(range(1, total // 100 + 2))
-        if requete is requetes[-1]:
-            alea.shuffle(pages)
-        for page in pages:
-            if len(vus) >= combien * 1.25:
+
+    def ajouter(lot):
+        _chicago_fiches(lot, vus)
+
+    # La recherche de Chicago ne rend jamais plus de 1 000 résultats par requête : on la
+    # découpe en tranches d'identifiants (jusqu'à 290 000), assez étroites pour en rester
+    # sous ce nombre.
+    for n, requete in enumerate(requetes):
+        largeur = 25000 if n < len(requetes) - 1 else 2500
+        tranches = [(debut, debut + largeur) for debut in range(0, 290000, largeur)]
+        if n == len(requetes) - 1:
+            alea.shuffle(tranches)
+        for debut, fin in tranches:
+            if len(vus) >= combien * 1.25 or trop_tard():
                 break
-            try:
-                lot = json_de(base + "?" + urllib.parse.urlencode(
-                    requete + [("limit", "100"), ("page", str(page)), ("fields", champs)]), entetes)["data"]
-            except Exception as erreur:
-                dire(f"  chicago : page {page} refusée ({erreur})")
-                time.sleep(5)
-                continue
-            for o in lot:
-                if o["id"] in vus or not o.get("image_id"):
-                    continue
-                vignette = o.get("thumbnail") or {}
-                cat = categorie(o.get("artwork_type_title"), o.get("classification_title"))
-                vus[o["id"]] = fiche(
-                    "chicago", o["id"], o.get("title"),
-                    o.get("artist_title") or o.get("place_of_origin") or "Artiste inconnu",
-                    vie=propre((o.get("artist_display") or "").split("\n")[-1], 160)
-                    if "\n" in (o.get("artist_display") or "") else "",
-                    date=propre(o.get("date_display"), 80), annee=annee(o.get("date_start"), o.get("date_display")),
-                    technique=propre(o.get("medium_display"), 200), mesures=propre(o.get("dimensions"), 160),
-                    categorie=cat, origine=propre(o.get("place_of_origin"), 80),
-                    texte=propre(o.get("description") or o.get("short_description"), 900),
-                    image=f"https://www.artic.edu/iiif/2/{o['image_id']}/full/843,/0/default.jpg",
-                    vignette=f"https://www.artic.edu/iiif/2/{o['image_id']}/full/400,/0/default.jpg",
-                    lien=f"https://www.artic.edu/artworks/{o['id']}",
-                    ratio=round(vignette["height"] / vignette["width"], 3) if vignette.get("width") else None,
-                    salle=propre(o.get("gallery_title"), 80),
-                    score=POIDS[cat] + (200 if o.get("is_boosted") else 0),
-                )
-            time.sleep(1.6)  # l'API de Chicago : pas plus d'une requête par seconde
+            borne = len(requete)
+            tranche = requete + [(f"query[bool][must][{borne}][range][id][gte]", str(debut)),
+                                 (f"query[bool][must][{borne}][range][id][lt]", str(fin))]
+            for page in range(1, 11):
+                try:
+                    lot = json_de(base + "?" + urllib.parse.urlencode(
+                        tranche + [("limit", "100"), ("page", str(page)), ("fields", champs)]), entetes)["data"]
+                except Exception as erreur:
+                    dire(f"  chicago : tranche {debut}, page {page} refusée ({erreur})")
+                    break
+                ajouter(lot)
+                time.sleep(1.2)  # l'API de Chicago : pas plus d'une requête par seconde
+                if len(lot) < 100:
+                    break
         dire(f"  chicago : {len(vus)} fiches")
     return list(vus.values())
+
+
+def _chicago_fiches(lot, vus):
+    for o in lot:
+        if o["id"] in vus or not o.get("image_id"):
+            continue
+        vignette = o.get("thumbnail") or {}
+        cat = categorie(o.get("artwork_type_title"), o.get("classification_title"))
+        vus[o["id"]] = fiche(
+            "chicago", o["id"], o.get("title"),
+            o.get("artist_title") or o.get("place_of_origin") or "Artiste inconnu",
+            vie=propre((o.get("artist_display") or "").split("\n")[-1], 160)
+            if "\n" in (o.get("artist_display") or "") else "",
+            date=propre(o.get("date_display"), 80), annee=annee(o.get("date_start"), o.get("date_display")),
+            technique=propre(o.get("medium_display"), 200), mesures=propre(o.get("dimensions"), 160),
+            categorie=cat, origine=propre(o.get("place_of_origin"), 80),
+            texte=propre(o.get("description") or o.get("short_description"), 900),
+            image=f"https://www.artic.edu/iiif/2/{o['image_id']}/full/843,/0/default.jpg",
+            vignette=f"https://www.artic.edu/iiif/2/{o['image_id']}/full/400,/0/default.jpg",
+            lien=f"https://www.artic.edu/artworks/{o['id']}",
+            ratio=round(vignette["height"] / vignette["width"], 3) if vignette.get("width") else None,
+            salle=propre(o.get("gallery_title"), 80),
+            score=POIDS[cat] + (200 if o.get("is_boosted") else 0),
+        )
 
 
 def cleveland(combien, alea):
@@ -300,6 +323,8 @@ def met(combien, alea):
     def pages(filtres, maximum):
         trouves = []
         for depart in range(0, min(maximum, 10000), 100):
+            if trop_tard():
+                break
             try:
                 lot = json_de(recherche + "?" + urllib.parse.urlencode(
                     {"q": "*", "hasImages": "true", **filtres, "limit": "100", "offset": str(depart)}))
@@ -336,9 +361,11 @@ def met(combien, alea):
     dire(f"  met : {len(identifiants)} identifiants")
 
     def objet(i):
+        if trop_tard():
+            return None
         time.sleep(0.12)  # le Met : au plus quelques dizaines de requêtes par seconde
         try:
-            o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", essais=4)
+            o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", essais=3)
         except Exception:
             return None
         if not (o.get("isPublicDomain") and o.get("primaryImageSmall")):
@@ -359,7 +386,7 @@ def met(combien, alea):
     fiches = []
     with concurrent.futures.ThreadPoolExecutor(4) as pool:
         for depart in range(0, len(identifiants), 400):
-            if len(fiches) >= combien * 1.2:
+            if len(fiches) >= combien * 1.2 or trop_tard():
                 break
             fiches += [f for f in pool.map(objet, identifiants[depart:depart + 400]) if f]
     dire(f"  met : {len(fiches)} fiches")
@@ -458,8 +485,10 @@ def moissonner(cle, combien, cache, alea):
         dire(f"• {MUSEES[cle]['nom']}")
         source = SOURCES[cle]
         nouvelles = source(combien, alea, cache) if cle == "washington" else source(combien, alea)
-        if len(nouvelles) >= len(fiches):
-            fiches = nouvelles
+        # Les fiches d'avant et les nouvelles, réunies (une moisson interrompue continue).
+        connues = {f["i"]: f for f in fiches}
+        connues.update({f["i"]: f for f in nouvelles})
+        fiches = list(connues.values())
         if fiches:
             fichier.write_text(json.dumps(fiches, ensure_ascii=False), encoding="utf-8")
     return fiches
@@ -472,7 +501,12 @@ def main():
     parser.add_argument("--total", type=int, default=50000, help="le nombre d'œuvres voulu")
     parser.add_argument("--musees", default=",".join(PARTS), help="chicago,cleveland,met,washington")
     parser.add_argument("--fils", type=int, default=24, help="téléchargements en parallèle")
+    parser.add_argument("--minutes", type=float, default=0,
+                        help="au plus tant de minutes pour les fiches (0 : sans limite)")
     args = parser.parse_args()
+    global FIN_DES_FICHES
+    if args.minutes:
+        FIN_DES_FICHES = time.time() + args.minutes * 60
 
     sortie, cache = Path(args.sortie), Path(args.cache)
     sortie.mkdir(parents=True, exist_ok=True)

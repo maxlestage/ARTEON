@@ -101,20 +101,30 @@ jobs:
       # Les collections du monde : des dizaines de milliers d'œuvres du domaine public
       # (Chicago, Cleveland, le Met, Washington), fiches et vignettes. Le cache garde les
       # vignettes d'une fois sur l'autre et les fiches une semaine.
-      - uses: actions/cache@v4
+      - uses: actions/cache/restore@v4
         with:
           path: target/collections-cache
           key: collections-v1-${{ github.run_id }}
           restore-keys: collections-v1-
 
+      # Au plus 25 minutes de fiches (les musées ralentissent les machines de GitHub) ; ce
+      # qui manque sera pris au run suivant, grâce au cache.
       - name: Les collections du monde
         continue-on-error: true
+        timeout-minutes: 60
         run: |
           python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
             || python3 -m pip install --quiet --break-system-packages pillow
-          python3 outils/collections_monde.py --total 50000 \
+          python3 outils/collections_monde.py --total 50000 --minutes 25 \
             --sortie ios/ARTEON.swiftpm/Musee/collections --cache target/collections-cache
           du -sh ios/ARTEON.swiftpm/Musee ios/ARTEON.swiftpm/Musee/collections
+
+      # Le cache est gardé même si la moisson a été coupée.
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: target/collections-cache
+          key: collections-v1-${{ github.run_id }}
 
       # Le modèle (catalogue, index, jeu, musée embarqué) sous Linux, sur le vrai musée.
       - name: Tests du modèle (Swift)
