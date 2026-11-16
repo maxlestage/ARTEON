@@ -200,7 +200,10 @@ jobs:
           name=5-explorer shoot -onglet explorer
           name=6-chronologie shoot -ouvrir chronologie
           name=7-jeu shoot -ouvrir jeu
-          name=8-galerie-3d wait=40 shoot -ouvrir 3d:van-gogh
+          name=8-musees shoot -onglet musees
+          name=9-musee-plan shoot -ouvrir musee:Rijksmuseum
+          name=10-grand-musee shoot -ouvrir grand-musee
+          name=11-galerie-3d wait=40 shoot -ouvrir 3d:van-gogh
           ls -la captures
 
       - uses: actions/upload-artifact@v7

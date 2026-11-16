@@ -1,16 +1,17 @@
 import SwiftUI
 
 enum AppTab: String, Hashable {
-    case exhibitions, artists, explore, favorites, search
+    case exhibitions, museums, artists, explore, favorites, search
 }
 
-/// Les cinq onglets : en barre latérale sur iPad, en bas sur iPhone.
+/// Les onglets : en barre latérale sur iPad, en bas sur iPhone.
 struct MainView: View {
     let catalogue: Catalogue
 
     @Environment(CatalogueStore.self) private var store
     @State private var tab: AppTab = .exhibitions
     @State private var exhibitionsPath = NavigationPath()
+    @State private var museumsPath = NavigationPath()
     @State private var artistsPath = NavigationPath()
     @State private var explorePath = NavigationPath()
     @State private var favoritesPath = NavigationPath()
@@ -19,8 +20,11 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $tab) {
-            Tab("Musée", systemImage: "building.columns", value: AppTab.exhibitions) {
+            Tab("Expositions", systemImage: "photo.artframe", value: AppTab.exhibitions) {
                 stack($exhibitionsPath) { HomeView(catalogue: catalogue) }
+            }
+            Tab("Musées", systemImage: "building.columns", value: AppTab.museums) {
+                stack($museumsPath) { MuseumsView(catalogue: catalogue) }
             }
             Tab("Artistes", systemImage: "person.2", value: AppTab.artists) {
                 stack($artistsPath) { ArtistsView(catalogue: catalogue) }
@@ -56,6 +60,7 @@ struct MainView: View {
         let args = ProcessInfo.processInfo.arguments
         if let i = args.firstIndex(of: "-onglet"), i + 1 < args.count {
             switch args[i + 1] {
+            case "musees": tab = .museums
             case "artistes": tab = .artists
             case "explorer": tab = .explore
             case "favoris": tab = .favorites
@@ -74,6 +79,12 @@ struct MainView: View {
         } else if target == "jeu" {
             tab = .explore
             explorePath.append(Route.quiz)
+        } else if target == "grand-musee" {
+            tab = .museums
+            museumsPath.append(Route.grandMuseum)
+        } else if target.hasPrefix("musee:") {
+            tab = .museums
+            museumsPath.append(Route.building(String(target.dropFirst(6))))
         } else if target == "chronologie" {
             tab = .explore
             explorePath.append(Route.timeline)
@@ -130,6 +141,10 @@ struct RouteView: View {
             QuizView(catalogue: catalogue)
         case .settings:
             SettingsView(catalogue: catalogue)
+        case .building(let name):
+            BuildingView(catalogue: catalogue, name: name)
+        case .grandMuseum:
+            GrandMuseumView(catalogue: catalogue)
         }
     }
 

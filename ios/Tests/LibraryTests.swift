@@ -193,3 +193,38 @@ func leVraiMuseeEmbarqueEstComplet() throws {
     }
     #expect(c.search("nuit etoilee").contains { $0.1.slug == "nuit-etoilee" })
 }
+
+@Test func lesMuseesSeRangentParPays() throws {
+    #expect(Building.country(of: "Paris, France (Jardin des Plantes)") == "France")
+    #expect(Building.country(of: "Rochester, New York, États-Unis") == "États-Unis")
+    #expect(Building.country(of: "Bombay (Mumbai), Inde") == "Inde")
+    let c = try fixture()
+    let index = MuseumIndex(c)
+    // Chaque exposition qui a un bâtiment est dans un musée, une seule fois.
+    let hosted = index.buildings.flatMap(\.exhibitions)
+    #expect(hosted.count == c.exhibitions.filter { $0.museum != nil }.count)
+    #expect(Set(hosted).count == hosted.count)
+    #expect(index.countries.flatMap(\.buildings).count == index.buildings.count)
+    // Le Grand Musée réunit toutes les expositions.
+    #expect(index.wings.flatMap(\.exhibitions).sorted() == c.exhibitions.map(\.slug).sorted())
+}
+
+/// Le vrai catalogue porte le plan de chaque bâtiment.
+@Test(.enabled(if: embedded != nil))
+func lesPlansDesBatimentsSontLa() throws {
+    let root = try #require(embedded)
+    let c = try Catalogue.decode(Data(contentsOf: root.appendingPathComponent("catalogue.json")))
+    for ex in c.exhibitions {
+        #expect(ex.hasPlan, "plan de \(ex.slug)")
+        #expect(ex.entrance?.count == 4, "entrée de \(ex.slug)")
+        #expect(ex.works.allSatisfy { [3, 4].contains($0.spot?.count ?? 0) }, "places de \(ex.slug)")
+        #expect(ex.rooms.filter { !$0.corridor }.allSatisfy { $0.number != nil })
+    }
+    let index = MuseumIndex(c)
+    #expect(index.buildings.count >= 45)
+    #expect(index.building(named: "Musée d'Orsay")?.exhibitions.count == 2)
+    #expect(index.countries.first?.name == "France")
+    #expect(index.wings.count == 6)
+    #expect(index.wings.first?.exhibitions.contains("tresors-de-la-terre") == true)
+    #expect(index.wings.last?.exhibitions.contains("street-art") == true)
+}

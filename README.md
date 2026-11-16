@@ -267,6 +267,8 @@ ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (i
 plus, compilée avec Xcode 27.2), avec **tout le musée embarqué** : les expositions, toutes
 les œuvres et leurs notices, les images et les galeries 3D (le WebAssembly du site, servi
 par l'application elle-même) se visitent **sans Internet ni serveur**. Elle ajoute les
+vrais musées reproduits, pays par pays, avec le plan interactif de chaque bâtiment, un
+musée original (le Grand Musée ARTEON, qui réunit toutes les expositions en six ailes), les
 artistes de A à Z, la chronologie, les thèmes, les musées du monde, le jeu « Qui l'a
 fait ? », l'audioguide, le diaporama, l'œuvre du jour, la recherche, les favoris et
 l'historique. Sur l'iPad, **Swift Playgrounds** l'ouvre et la lance sans Mac ni compte
