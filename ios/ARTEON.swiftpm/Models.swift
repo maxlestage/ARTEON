@@ -66,11 +66,36 @@ struct Catalogue: Decodable, Sendable {
 
     /// Les œuvres dont le titre, l'artiste, la technique, la collection ou l'année contient
     /// la recherche, sans tenir compte des accents ni des majuscules.
+    /// Chaque mot de la recherche doit se trouver quelque part (« monet nuit » trouve les
+    /// nuits de Monet). Les œuvres dont le titre ou l'artiste correspond viennent d'abord.
     func search(_ query: String) -> [(Exhibition, Work)] {
+        let words = folded(query.trimmingCharacters(in: .whitespacesAndNewlines))
+            .split(whereSeparator: { $0 == " " || $0 == "," })
+            .map(String.init)
+        guard !words.isEmpty else { return [] }
+        var strong: [(Exhibition, Work)] = []
+        var weak: [(Exhibition, Work)] = []
+        for (ex, w) in allWorks {
+            let main = folded("\(w.title) \(w.artist)")
+            let all = main + " " + folded(
+                "\(w.technique) \(w.collection) \(w.year) \(w.notice.themes.joined(separator: " ")) \(ex.name) \(ex.movement)"
+            )
+            guard words.allSatisfy({ all.contains($0) }) else { continue }
+            if words.allSatisfy({ main.contains($0) }) {
+                strong.append((ex, w))
+            } else {
+                weak.append((ex, w))
+            }
+        }
+        return strong + weak
+    }
+
+    /// Les expositions dont le titre, le style ou l'artiste contient la recherche.
+    func searchExhibitions(_ query: String) -> [Exhibition] {
         let q = folded(query.trimmingCharacters(in: .whitespacesAndNewlines))
         guard !q.isEmpty else { return [] }
-        return allWorks.filter { _, w in
-            folded("\(w.title) \(w.artist) \(w.technique) \(w.collection) \(w.year)").contains(q)
+        return exhibitions.filter {
+            folded("\($0.title) \($0.shortName) \($0.movement) \($0.artist) \($0.kicker)").contains(q)
         }
     }
 }

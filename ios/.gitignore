@@ -5,3 +5,11 @@ DerivedData/
 *.xcuserstate
 xcuserdata/
 ARTEON.swiftpm/.swiftpm/
+
+# Le musée embarqué : rempli par preparer-musee.sh (et par la CI), pas versionné.
+/ARTEON.swiftpm/Musee/*
+!/ARTEON.swiftpm/Musee/LISEZMOI.md
+
+# Les tests du modèle sous Linux (swift test).
+/.build/
+/Package.resolved

@@ -12,7 +12,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    MARKETING_VERSION: "1.0"
+    MARKETING_VERSION: "2.0"
     CURRENT_PROJECT_VERSION: "1"
     SWIFT_STRICT_CONCURRENCY: complete
     ENABLE_USER_SCRIPT_SANDBOXING: YES
@@ -28,6 +28,13 @@ targets:
         excludes:
           - Package.swift
           - .swiftpm
+          - Musee
+          - Musee/**
+      # Le musée embarqué, copié tel quel (un dossier « Musee » dans l'application) :
+      # catalogue, images et galeries 3D, rempli par preparer-musee.sh.
+      - path: ARTEON.swiftpm/Musee
+        type: folder
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.maxlestage.arteon

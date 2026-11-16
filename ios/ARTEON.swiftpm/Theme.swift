@@ -1,4 +1,5 @@
 import SwiftUI
+import ImageIO
 
 extension Color {
     /// Le bleu d'ARTEON, la nuit et le soleil du logo.
@@ -18,18 +19,61 @@ extension Exhibition {
     }
 }
 
-/// Où mène un toucher : une exposition, une œuvre, ou la galerie 3D (devant une œuvre).
+/// Où mène un toucher.
 enum Route: Hashable {
     case exhibition(String)
     case work(WorkKey)
     case gallery(String, work: String?)
+    case artist(String)
+    case works(title: String, subtitle: String, keys: [WorkKey])
+    case timeline
+    case themes
+    case collections
+    case techniques
+    case quiz
+    case settings
 }
 
-/// L'image d'une œuvre, téléchargée une fois puis gardée sur l'appareil.
+/// Les images, lues sur l'appareil et décodées à la taille où elles s'affichent : les
+/// vignettes restent légères, l'image en grand garde tous ses pixels.
+actor ImagePipeline {
+    static let shared = ImagePipeline()
+
+    private let cache: NSCache<NSString, UIImage> = {
+        let cache = NSCache<NSString, UIImage>()
+        cache.totalCostLimit = 160 * 1024 * 1024
+        return cache
+    }()
+
+    /// `maxPixels` : le plus grand côté voulu, en pixels (`nil` : l'image entière).
+    func image(_ path: String, maxPixels: Int?) async -> UIImage? {
+        let key = "\(maxPixels ?? 0)|\(path)" as NSString
+        if let image = cache.object(forKey: key) { return image }
+        guard let file = await ImageStore.shared.file(for: path),
+              let source = CGImageSourceCreateWithURL(file as CFURL, nil)
+        else { return nil }
+        var options: [CFString: Any] = [
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceShouldCacheImmediately: true,
+        ]
+        if let maxPixels { options[kCGImageSourceThumbnailMaxPixelSize] = maxPixels }
+        guard let cg = CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary) else {
+            return nil
+        }
+        let image = UIImage(cgImage: cg)
+        cache.setObject(image, forKey: key, cost: cg.bytesPerRow * cg.height)
+        return image
+    }
+}
+
+/// L'image d'une œuvre, du musée embarqué (ou du site, pour une nouveauté).
 struct RemoteImage: View {
     let path: String?
     var contentMode: ContentMode = .fill
     var tint: Color = Color.secondary.opacity(0.15)
+    /// Le plus grand côté, en pixels ; `nil` pour l'image entière (zoom).
+    var maxPixels: Int? = 700
 
     @State private var image: UIImage?
     @State private var failed = false
@@ -55,8 +99,7 @@ struct RemoteImage: View {
 
     private func load() async {
         guard let path, !path.isEmpty else { return }
-        if let data = await ImageStore.shared.data(for: Site.url(path)),
-           let loaded = UIImage(data: data) {
+        if let loaded = await ImagePipeline.shared.image(path, maxPixels: maxPixels) {
             withAnimation(.easeOut(duration: 0.25)) { image = loaded }
         } else {
             failed = true

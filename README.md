@@ -264,10 +264,14 @@ ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (i
 ## L'application iPad et iPhone (Swift)
 
 [`ios/`](ios/) est l'application native d'ARTEON en **Swift 6 et SwiftUI** (iOS 26 et
-plus, compilée avec Xcode 27.2) : expositions, œuvres et notices complètes, image en
-grand, recherche, favoris, hors-ligne, et la galerie 3D du site. Sur l'iPad, **Swift
-Playgrounds** l'ouvre et la lance sans Mac ni compte payant ; avec un compte Apple
-Developer, [`ios.yml`](.github/workflows/ios.yml) l'envoie sur TestFlight. Voir
+plus, compilée avec Xcode 27.2), avec **tout le musée embarqué** : les expositions, toutes
+les œuvres et leurs notices, les images et les galeries 3D (le WebAssembly du site, servi
+par l'application elle-même) se visitent **sans Internet ni serveur**. Elle ajoute les
+artistes de A à Z, la chronologie, les thèmes, les musées du monde, le jeu « Qui l'a
+fait ? », l'audioguide, le diaporama, l'œuvre du jour, la recherche, les favoris et
+l'historique. Sur l'iPad, **Swift Playgrounds** l'ouvre et la lance sans Mac ni compte
+payant (release « ipad ») ; avec un compte Apple Developer,
+[`ios.yml`](.github/workflows/ios.yml) l'envoie sur TestFlight. Voir
 [ios/README.md](ios/README.md).
 
 ## L'application iPad (Flutter)

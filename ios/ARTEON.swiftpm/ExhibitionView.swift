@@ -4,7 +4,18 @@ import SwiftUI
 struct ExhibitionView: View {
     let exhibition: Exhibition
 
+    @Environment(Narrator.self) private var narrator
+    @State private var slideshow = false
+
     private var accent: Color { exhibition.accentColor }
+
+    private var spokenIntroduction: String {
+        var parts = [exhibition.title + ".", exhibition.introduction]
+        if let museum = exhibition.museum {
+            parts.append("Le bâtiment. \(museum.presentation) \(museum.here)")
+        }
+        return parts.joined(separator: "\n")
+    }
 
     var body: some View {
         ScrollView {
@@ -12,13 +23,34 @@ struct ExhibitionView: View {
                 cover
                 VStack(alignment: .leading, spacing: 18) {
                     header
-                    NavigationLink(value: Route.gallery(exhibition.slug, work: nil)) {
-                        Label("Visiter en 3D", systemImage: "view.3d")
-                            .font(.headline)
-                            .padding(.horizontal, 6)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            NavigationLink(value: Route.gallery(exhibition.slug, work: nil)) {
+                                Label("Visiter en 3D", systemImage: "view.3d")
+                                    .font(.headline)
+                                    .padding(.horizontal, 6)
+                            }
+                            .buttonStyle(.glassProminent)
+                            .tint(accent)
+
+                            Button("Diaporama", systemImage: "play.rectangle") { slideshow = true }
+                                .buttonStyle(.glass)
+
+                            ListenButton(id: "exposition/\(exhibition.slug)", text: { spokenIntroduction }, label: "Écouter l'introduction")
+                                .buttonStyle(.glass)
+                        }
                     }
-                    .buttonStyle(.glassProminent)
-                    .tint(accent)
+                    .scrollClipDisabled()
+
+                    HStack(spacing: 16) {
+                        Label("\(exhibition.works.count) œuvres", systemImage: "photo.on.rectangle")
+                        Label("\(exhibition.rooms.filter { !$0.corridor }.count) salles", systemImage: "square.split.2x2")
+                        if !exhibition.artists.isEmpty {
+                            Label(exhibition.artists.count == 1 ? "1 artiste" : "\(exhibition.artists.count) artistes", systemImage: "person.2")
+                        }
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
 
                     Text(exhibition.introduction)
                         .font(.body)
@@ -59,6 +91,12 @@ struct ExhibitionView: View {
                         VStack(spacing: 0) {
                             ForEach(exhibition.artists) { artist in
                                 ArtistRow(artist: artist)
+                                NavigationLink(value: Route.artist(artist.name)) {
+                                    Label("Ses œuvres dans tout le musée", systemImage: "person.crop.rectangle.stack")
+                                        .font(.subheadline)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.bottom, 8)
                                 Divider()
                             }
                         }
@@ -71,10 +109,14 @@ struct ExhibitionView: View {
         .background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle(exhibition.name)
         .navigationBarTitleDisplayMode(.inline)
+        .onDisappear { narrator.stop() }
+        .fullScreenCover(isPresented: $slideshow) {
+            SlideshowView(title: exhibition.name, items: exhibition.works.map { (exhibition, $0) })
+        }
     }
 
     private var cover: some View {
-        RemoteImage(path: exhibition.coverImage, tint: accent.opacity(0.3))
+        RemoteImage(path: exhibition.coverImage, tint: accent.opacity(0.3), maxPixels: 1600)
             .frame(height: 340)
             .overlay {
                 LinearGradient(
