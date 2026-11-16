@@ -74,7 +74,9 @@ jobs:
 
       # Les expositions éphémères de la semaine, comme sur le site ; on s'en passe si un
       # musée ne répond pas ou si le résultat ne se compile pas.
+      # Sur la branche par défaut et à la main seulement : ailleurs, on gagne cinq minutes.
       - name: Expositions éphémères
+        if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
         run: |
           python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
           if ! cargo check --quiet --lib; then
@@ -156,7 +158,18 @@ jobs:
           unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP"
           "$RUNNER_TEMP/xcodegen/bin/xcodegen" generate --spec project.yml
 
+      # Sur une branche, on compile seulement (les tests du modèle tournent déjà sous Linux,
+      # dans le job « musee ») ; sur la branche par défaut, tous les tests sur le simulateur.
+      - name: Compiler pour le simulateur
+        if: ${{ !(github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch') }}
+        run: |
+          set -o pipefail
+          xcodebuild build -project ARTEON.xcodeproj -scheme ARTEON \
+            -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet
+
       - name: Tests sur le simulateur iPad
+        if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
         run: |
           set -o pipefail
           # Le simulateur démarré d'avance : l'application (avec son musée de 200 Mo) s'y
@@ -169,9 +182,8 @@ jobs:
               -derivedDataPath build CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/tests.log"
           }
           if ! run_tests; then
-            # Un simulateur qui ne répond pas (« Failed to establish communication with
-            # the test runner ») : on recommence une fois, sur un simulateur redémarré. Un
-            # vrai test en échec, lui, fait échouer l'étape.
+            # Un simulateur qui ne répond pas : on recommence une fois. Un vrai test en
+            # échec, lui, fait échouer l'étape.
             if grep -q "establish communication with the test runner\|Channel disconnected" "$RUNNER_TEMP/tests.log"; then
               echo "::warning::le simulateur n'a pas répondu : nouvel essai"
               xcrun simctl shutdown all || true
@@ -186,7 +198,7 @@ jobs:
       - name: Captures d'écran (iPad et iPhone)
         # Les captures ne bloquent jamais la suite (compilation, App Playground, TestFlight).
         continue-on-error: true
-        timeout-minutes: 25
+        timeout-minutes: 15
         run: |
           set -uo pipefail
           # Une commande qui ne rend pas la main est arrêtée au bout de $1 secondes.
@@ -213,7 +225,7 @@ jobs:
             echo "▶ $prefix-$name"
             limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
             limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -horsligne "$@" || return 0
-            sleep "${wait:-15}"
+            sleep "${wait:-8}"
             limit 60 xcrun simctl io "$udid" screenshot "captures/$prefix-$name.png" || echo "capture $name impossible"
           }
           for prefix in ipad iphone; do
@@ -222,17 +234,19 @@ jobs:
             limit 60 xcrun simctl boot "$udid" || true
             limit 240 xcrun simctl bootstatus "$udid" -b || true
             limit 180 xcrun simctl install "$udid" "$app" || continue
-            name=01-accueil shoot
-            name=02-exposition shoot -ouvrir van-gogh
+            name=01-accueil wait=12 shoot
             name=03-oeuvre shoot -ouvrir van-gogh/tournesols
             name=04-musees shoot -onglet musees
             name=05-musee-plan shoot -ouvrir musee:Rijksmuseum
             name=06-grand-musee shoot -ouvrir grand-musee
-            name=07-artistes shoot -onglet artistes
-            name=08-explorer shoot -onglet explorer
-            name=09-chronologie shoot -ouvrir chronologie
-            name=10-jeu shoot -ouvrir jeu
-            name=11-galerie-3d wait=40 shoot -ouvrir 3d:van-gogh
+            if [ "$prefix" = ipad ]; then
+              name=02-exposition shoot -ouvrir van-gogh
+              name=07-artistes shoot -onglet artistes
+              name=08-explorer shoot -onglet explorer
+              name=09-chronologie shoot -ouvrir chronologie
+              name=10-jeu shoot -ouvrir jeu
+            fi
+            name=11-galerie-3d wait=25 shoot -ouvrir 3d:van-gogh
             limit 60 xcrun simctl shutdown "$udid" || true
           done
           ls -la captures
@@ -271,6 +285,7 @@ jobs:
           gh release upload ipad "$RUNNER_TEMP/ARTEON.swiftpm.zip" --clobber
 
       - name: Compiler pour l'appareil (sans signature)
+        if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
         run: |
           set -o pipefail
           xcodebuild build -project ARTEON.xcodeproj -scheme ARTEON -configuration Release \
@@ -278,6 +293,7 @@ jobs:
 
       - name: L'App Playground (Swift Playgrounds)
         # Le même code, ouvert comme dans Swift Playgrounds : vérifie Package.swift.
+        if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         working-directory: ios/ARTEON.swiftpm
         run: |
