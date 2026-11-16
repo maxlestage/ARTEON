@@ -24,6 +24,14 @@ GitHub Pages).
   les socles, l'entrée : toucher une salle montre ses œuvres) et l'entrée en 3D. Et un
   musée **original**, le **Grand Musée ARTEON** : un bâtiment imaginaire où toutes les
   expositions sont des pavillons, en six ailes qui suivent le temps.
+- **Collections du monde** : environ **50 000 œuvres du domaine public** choisies dans les
+  collections ouvertes (CC0) de l'Art Institute of Chicago, du Cleveland Museum of Art, du
+  Metropolitan Museum et de la National Gallery of Art de Washington : peintures d'abord,
+  puis sculpture, dessin, photographie, objets… Fiches et vignettes sont dans
+  l'application (on parcourt, on cherche, on met en favori sans Internet) ; l'image en
+  grand se télécharge au premier regard puis reste, et **Tout télécharger** garde d'un
+  coup celles d'un musée, d'une catégorie ou d'un artiste. Par musée, par catégorie, par
+  siècle ; dans la recherche, les favoris et les pages d'artistes.
 - **Galerie 3D** : celle du site (WebGL 2, écrite en Rust et compilée en WebAssembly),
   servie par l'application elle-même à l'adresse `arteon://musee/…` : visite guidée ou
   libre, plan, notices, ouverte devant l'œuvre choisie.
@@ -54,6 +62,11 @@ GitHub Pages).
 | `donnees/` | les mosaïques et sculptures des galeries 3D, et leurs textes |
 | `pkg/` | les îlots 3D en WebAssembly |
 | `<exposition>/galerie/` | la page de chaque galerie 3D |
+
+Les collections du monde y ont leur dossier, `collections/` : `collections.json` (les
+fiches) et un fichier de vignettes par musée (`vignettes-met.bin`…, les JPEG bout à bout),
+écrits par [`outils/collections_monde.py`](../outils/collections_monde.py) (environ 500 Mo
+pour 50 000 œuvres ; `--total 400` pour un essai).
 
 Il n'est pas versionné (les images sont déjà dans `public/tableaux/`) :
 [`preparer-musee.sh`](preparer-musee.sh) le remplit (il compile le WebAssembly, exporte le
@@ -116,7 +129,8 @@ open ARTEON.xcodeproj        # ou : open ARTEON.swiftpm (le même code)
 Arguments de lancement : `-horsligne` (jamais de réseau), `-site http://localhost:3000/`
 (un autre site pour les mises à jour), `-ouvrir van-gogh`, `-ouvrir van-gogh/tournesols`,
 `-ouvrir 3d:van-gogh`, `-ouvrir chronologie`, `-ouvrir jeu`, `-ouvrir musee:Rijksmuseum`,
-`-ouvrir grand-musee`, `-onglet musees`, `-onglet artistes`.
+`-ouvrir grand-musee`, `-ouvrir collections`, `-ouvrir collection:met`, `-onglet musees`,
+`-onglet artistes`.
 
 ## Tests
 

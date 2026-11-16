@@ -29,12 +29,16 @@ struct MuseumsView: View {
                         .frame(maxWidth: 760, alignment: .leading)
 
                     GrandMuseumCard(catalogue: catalogue)
+                    WorldCollectionsCard()
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
                             StatCard(value: store.index?.buildings.count ?? 0, label: "musées reproduits", color: .arteonBlue)
                             StatCard(value: store.index?.countries.count ?? 0, label: "pays", color: .teal)
                             StatCard(value: 1, label: "musée original", color: .arteonSun)
+                        if let collections = store.collections {
+                            StatCard(value: collections.count, label: "œuvres des collections", color: .orange)
+                        }
                         }
                     }
                     .scrollClipDisabled()
@@ -416,5 +420,48 @@ struct GrandMuseumView: View {
         .contentShape(.rect)
         .hoverEffect(.highlight)
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// L'entrée des collections du monde, sur la page des musées et dans Explorer.
+struct WorldCollectionsCard: View {
+    @Environment(CatalogueStore.self) private var store
+
+    var body: some View {
+        if LocalMuseum.collectionsFile != nil {
+            NavigationLink(value: Route.collections) {
+                HStack(spacing: 18) {
+                    Image(systemName: "square.stack.3d.up.fill")
+                        .font(.system(size: 34))
+                        .frame(width: 64, height: 64)
+                        .background(.white.opacity(0.15), in: .rect(cornerRadius: 16))
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("DOMAINE PUBLIC")
+                            .font(.caption.bold())
+                            .tracking(1.5)
+                            .opacity(0.8)
+                        Text("Les collections du monde")
+                            .font(.title2.bold())
+                        Text(store.collections.map {
+                            "\($0.count.formatted()) œuvres de \($0.collections.museums.count) grands musées, sur l'appareil."
+                        } ?? "Des dizaines de milliers d'œuvres, sur l'appareil.")
+                            .font(.subheadline)
+                            .opacity(0.85)
+                    }
+                    Spacer(minLength: 0)
+                    Image(systemName: "chevron.right").font(.headline).opacity(0.6)
+                }
+                .foregroundStyle(.white)
+                .padding(20)
+                .background(
+                    LinearGradient(colors: [Color(red: 0.42, green: 0.12, blue: 0.16), Color(red: 0.75, green: 0.32, blue: 0.18)],
+                                   startPoint: .topLeading, endPoint: .bottomTrailing),
+                    in: .rect(cornerRadius: 24)
+                )
+                .contentShape(.rect(cornerRadius: 24))
+                .hoverEffect(.lift)
+            }
+            .buttonStyle(.plain)
+        }
     }
 }

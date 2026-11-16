@@ -228,3 +228,68 @@ func lesPlansDesBatimentsSontLa() throws {
     #expect(index.wings.first?.exhibitions.contains("tresors-de-la-terre") == true)
     #expect(index.wings.last?.exhibitions.contains("street-art") == true)
 }
+
+// MARK: - Les collections du monde
+
+private func worldFixture() throws -> WorldCollections {
+    let url = URL(fileURLWithPath: #filePath)
+        .deletingLastPathComponent()
+        .appendingPathComponent("Fixtures/collections.json")
+    return try WorldCollections.decode(Data(contentsOf: url))
+}
+
+@Test func lesCollectionsDuMondeSeLisent() throws {
+    let c = try worldFixture()
+    #expect(c.museums.count == 4)
+    #expect(c.works.count == 12)
+    let index = CollectionIndex(c)
+    for museum in c.museums {
+        #expect(index.works(.museum(museum.key)).count == 3)
+        #expect(index.count(.museum(museum.key)) == 3)
+    }
+    let first = try #require(c.works.first)
+    #expect(index.work(first.id)?.title == first.title)
+    #expect(index.works(.artist(first.artist)).contains { $0.id == first.id })
+    #expect(index.works(.search(first.title)).contains { $0.id == first.id })
+    #expect(index.works(.search("   ")).isEmpty)
+    #expect(index.categories.reduce(0) { $0 + $1.count } == 12)
+    #expect(index.centuries.map(\.rank) == index.centuries.map(\.rank).sorted())
+    #expect(index.picks(5, day: 3).map(\.id) == index.picks(5, day: 3).map(\.id))
+    #expect(first.key.exhibition == WorldCollections.favoritePrefix)
+    #expect(c.works.allSatisfy { $0.imageURL?.hasPrefix("https://") == true })
+}
+
+@Test func lesVignettesSeLisentDansLePaquet() throws {
+    let root = FileManager.default.temporaryDirectory.appendingPathComponent("musee-\(UUID().uuidString)")
+    defer { try? FileManager.default.removeItem(at: root) }
+    try FileManager.default.createDirectory(at: root.appendingPathComponent("collections"), withIntermediateDirectories: true)
+    try Data("AAAAbonjourBBBB".utf8).write(to: root.appendingPathComponent("collections/vignettes-met.bin"))
+    var work = try #require(try worldFixture().works.first)
+    work.thumb = [4, 7]
+    let bytes = try #require(LocalMuseum.thumbnail(of: work, pack: "vignettes-met.bin", in: root))
+    #expect(String(decoding: bytes, as: UTF8.self) == "bonjour")
+    work.thumb = nil
+    #expect(LocalMuseum.thumbnail(of: work, pack: "vignettes-met.bin", in: root) == nil)
+}
+
+/// Les vraies collections embarquées, quand outils/collections_monde.py les a écrites.
+@Test(.enabled(if: embedded.map { FileManager.default.fileExists(atPath: $0.appendingPathComponent("collections/collections.json").path) } ?? false))
+func lesVraiesCollectionsSontCompletes() throws {
+    let root = try #require(embedded)
+    let c = try WorldCollections.decode(Data(contentsOf: root.appendingPathComponent("collections/collections.json")))
+    let index = CollectionIndex(c)
+    #expect(index.count > 0)
+    for museum in c.museums {
+        let pack = root.appendingPathComponent("collections/\(museum.pack)")
+        let size = try #require(try FileManager.default.attributesOfItem(atPath: pack.path)[.size] as? Int)
+        for w in c.works where w.museum == museum.key {
+            let range = try #require(w.thumb, "vignette de \(w.id)")
+            #expect(range[0] + range[1] <= size)
+        }
+        // Une vignette se lit, et c'est un JPEG.
+        if let w = c.works.first(where: { $0.museum == museum.key }) {
+            let bytes = try #require(LocalMuseum.thumbnail(of: w, pack: museum.pack, in: root))
+            #expect(bytes.prefix(2) == Data([0xFF, 0xD8]))
+        }
+    }
+}

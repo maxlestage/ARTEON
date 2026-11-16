@@ -35,6 +35,9 @@ enum Route: Hashable {
     case building(String)
     case grandMuseum
     case artists
+    case collections
+    case collection(CollectionFilter)
+    case collectionWork(String)
 }
 
 /// Les images, lues sur l'appareil et décodées à la taille où elles s'affichent : les
@@ -66,6 +69,17 @@ actor ImagePipeline {
         }
         let image = UIImage(cgImage: cg)
         cache.setObject(image, forKey: key, cost: cg.bytesPerRow * cg.height)
+        return image
+    }
+
+    /// La vignette d'une œuvre des collections du monde, lue dans le paquet de son musée.
+    func collectionThumbnail(_ work: CollectionWork, pack: String) async -> UIImage? {
+        let key = "vignette|\(work.id)" as NSString
+        if let image = cache.object(forKey: key) { return image }
+        guard let data = LocalMuseum.thumbnail(of: work, pack: pack),
+              let image = UIImage(data: data)?.preparingForDisplay()
+        else { return nil }
+        cache.setObject(image, forKey: key, cost: data.count * 8)
         return image
     }
 }

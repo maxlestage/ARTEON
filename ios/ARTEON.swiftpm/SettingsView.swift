@@ -17,7 +17,10 @@ struct SettingsView: View {
         Form {
             Section {
                 LabeledContent("Expositions", value: "\(catalogue.exhibitions.count)")
-                LabeledContent("Œuvres", value: "\(catalogue.workCount)")
+                LabeledContent("Œuvres des expositions", value: "\(catalogue.workCount)")
+                if let collections = store.collections {
+                    LabeledContent("Œuvres des collections du monde", value: collections.count.formatted())
+                }
                 LabeledContent("Artistes", value: "\(store.index?.artists.count ?? 0)")
                 LabeledContent("Salles en 3D", value: "\(catalogue.roomCount)")
             } header: {
