@@ -293,3 +293,28 @@ func lesVraiesCollectionsSontCompletes() throws {
         }
     }
 }
+
+// MARK: - Nuage
+
+@Test func lesCheminsDuSiteDeviennentDesNomsNuage() {
+    #expect(Nuage.name("/van-gogh/galerie/") == "van-gogh/galerie/index.html")
+    #expect(Nuage.name("van-gogh/galerie") == "van-gogh/galerie/index.html")
+    #expect(Nuage.name("/pkg/arteon_bg.wasm") == "pkg/arteon_bg.wasm")
+    #expect(Nuage.name("tableaux/van-gogh/nuit-etoilee.jpg") == "tableaux/van-gogh/nuit-etoilee.jpg")
+    #expect(Nuage.name("/van-gogh/galerie/#nuit-etoilee") == "van-gogh/galerie/index.html")
+    #expect(Nuage.name("catalogue.json") == "catalogue.json")
+    #expect(Nuage.name("collections/vignettes-met.bin") == "collections/vignettes-met.bin")
+    #expect(Nuage.name("../secret") == nil)
+    #expect(Nuage.name("tableaux/a b.jpg") == nil)
+    #expect(Nuage.name("tableaux/é.jpg") == nil)
+}
+
+@Test func leMuseeTelechargeSeLitCommeLeMuseeEmbarque() throws {
+    let file = LocalMuseum.downloads.appendingPathComponent("essai-\(UUID().uuidString)/galerie/index.html")
+    defer { try? FileManager.default.removeItem(at: file.deletingLastPathComponent().deletingLastPathComponent()) }
+    try FileManager.default.createDirectory(at: file.deletingLastPathComponent(), withIntermediateDirectories: true)
+    try Data("<html>".utf8).write(to: file)
+    let folder = file.deletingLastPathComponent().deletingLastPathComponent().lastPathComponent
+    #expect(LocalMuseum.stored("/\(folder)/galerie/")?.path == file.path)
+    #expect(LocalMuseum.stored("/\(folder)/absente/") == nil)
+}

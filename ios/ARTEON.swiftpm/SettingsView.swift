@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var bundledSize: Int64?
     @State private var downloadedSize: Int64?
     @State private var confirmFavorites = false
+    @State private var nuageToken = UserDefaults.standard.string(forKey: "jetonNuage") ?? ""
 
     var body: some View {
         @Bindable var store = store
@@ -27,37 +28,30 @@ struct SettingsView: View {
                 Text("Le musée")
             }
 
+            OfflineSection()
+
             Section {
-                if store.isBundled {
-                    Label {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Tout le musée est sur l'appareil")
-                            Text("Catalogue, images et galeries 3D se visitent sans Internet.")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    } icon: {
-                        Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
-                    }
-                    if let bundledSize {
-                        LabeledContent("Place occupée", value: bundledSize.formatted(.byteCount(style: .file)))
-                    }
-                } else {
-                    Label {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Musée téléchargé au fil de la visite")
-                            Text("Les images vues restent sur l'appareil ; la 3D demande Internet.")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    } icon: {
-                        Image(systemName: "icloud.and.arrow.down").foregroundStyle(.orange)
-                    }
-                }
+                SecureField("Jeton en lecture seule", text: $nuageToken)
+                    .textContentType(.password)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+                    .onSubmit { UserDefaults.standard.set(nuageToken, forKey: "jetonNuage") }
+                    .onChange(of: nuageToken) { UserDefaults.standard.set(nuageToken, forKey: "jetonNuage") }
+                LabeledContent("Serveur", value: Nuage.base.host ?? "")
+            } header: {
+                Text("Nuage")
+            } footer: {
+                Text("Facultatif : l'app compilée par la CI a déjà son jeton. Pour une copie ouverte dans Swift Playgrounds, coller ici un jeton en lecture seule de l'application arteon (console Nuage → Tokens).")
+            }
+
+            Section {
                 LabeledContent("Catalogue", value: sourceLabel)
+                if let bundledSize, bundledSize > 0 {
+                    LabeledContent("Musée embarqué dans l'app", value: bundledSize.formatted(.byteCount(style: .file)))
+                }
                 if let downloadedSize, downloadedSize > 0 {
-                    LabeledContent("Images téléchargées", value: downloadedSize.formatted(.byteCount(style: .file)))
-                    Button("Effacer les images téléchargées", role: .destructive) {
+                    LabeledContent("Autres images gardées", value: downloadedSize.formatted(.byteCount(style: .file)))
+                    Button("Effacer ces images", role: .destructive) {
                         Task {
                             await ImageStore.shared.clearDownloads()
                             self.downloadedSize = await ImageStore.shared.downloadedSize()
@@ -65,7 +59,7 @@ struct SettingsView: View {
                     }
                 }
             } header: {
-                Text("Hors ligne")
+                Text("Sur l'appareil")
             }
 
             Section {

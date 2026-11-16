@@ -94,7 +94,8 @@ final class CatalogueStore {
     }
 
     /// Le musée embarqué est-il dans l'application ?
-    var isBundled: Bool { LocalMuseum.isAvailable }
+    /// Le catalogue et les images sont-ils sur l'appareil (embarqués ou téléchargés) ?
+    var isBundled: Bool { LocalMuseum.stored("catalogue.json") != nil }
 
     /// Ouvre le musée : le catalogue embarqué (ou la dernière copie téléchargée), tout de
     /// suite ; puis, si c'est permis, les nouveautés du site, sans attendre.
@@ -106,6 +107,11 @@ final class CatalogueStore {
             if let data = Self.saved(), let c = try? await Self.decode(data),
                catalogue == nil || c.workCount > (catalogue?.workCount ?? 0) {
                 await show(c, from: .saved)
+            }
+            // L'app n'embarque plus le musée : le catalogue vient de Nuage, puis reste.
+            if catalogue == nil, let file = await LocalMuseum.fetch("catalogue.json"),
+               let data = try? Data(contentsOf: file), let c = try? await Self.decode(data) {
+                await show(c, from: .bundled)
             }
         }
         if collections == nil {
@@ -150,7 +156,11 @@ final class CatalogueStore {
 
     /// Lit les collections du monde embarquées (en arrière-plan : le fichier est gros).
     func loadCollections() async {
-        guard collections == nil, let url = LocalMuseum.collectionsFile else { return }
+        guard collections == nil else { return }
+        // Sur l'appareil, sinon depuis Nuage (puis gardées).
+        var file = LocalMuseum.collectionsFile
+        if file == nil { file = await LocalMuseum.fetch("collections/collections.json") }
+        guard let url = file else { return }
         collections = await Task.detached(priority: .utility) {
             (try? Data(contentsOf: url, options: .mappedIfSafe))
                 .flatMap { try? WorldCollections.decode($0) }
@@ -194,7 +204,7 @@ final class CatalogueStore {
     // MARK: Fichiers
 
     private nonisolated static func bundled() -> Data? {
-        LocalMuseum.file("catalogue.json").flatMap { try? Data(contentsOf: $0) }
+        LocalMuseum.stored("catalogue.json").flatMap { try? Data(contentsOf: $0) }
     }
 
     private nonisolated static func download() async throws -> Data {
@@ -246,7 +256,9 @@ actor ImageStore {
     /// Le fichier de l'image sur l'appareil : dans l'application, ou téléchargé.
     func file(for path: String) async -> URL? {
         let absolute = path.hasPrefix("https://") || path.hasPrefix("http://")
-        if !absolute, let local = LocalMuseum.file(path) { return local }
+        if !absolute, let local = LocalMuseum.stored(path) { return local }
+        // Sur Nuage (les images du musée y sont), puis gardée sur l'appareil.
+        if !absolute, let fetched = await LocalMuseum.fetch(path) { return fetched }
         let url = absolute ? (URL(string: path) ?? Site.url(path)) : Site.url(path)
         guard let file = folder?.appendingPathComponent(Self.name(of: url)) else { return nil }
         if FileManager.default.fileExists(atPath: file.path) { return file }

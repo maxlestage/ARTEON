@@ -14,8 +14,9 @@ struct GalleryView: View {
 
     /// L'exposition est-elle dans le musée embarqué ?
     private var isLocal: Bool {
-        LocalMuseum.file(exhibition.gallery + "/index.html") != nil
-            && LocalMuseum.file("donnees/\(exhibition.slug).bin") != nil
+        (LocalMuseum.stored(exhibition.gallery + "/index.html") != nil
+            && LocalMuseum.stored("donnees/\(exhibition.slug).bin") != nil)
+            || Nuage.isConfigured
     }
 
     private var url: URL {
@@ -123,7 +124,7 @@ struct GalleryWebView: UIViewRepresentable {
             if let url = action.request.url, let scheme = url.scheme,
                scheme == "http" || scheme == "https",
                action.navigationType == .linkActivated,
-               url.host != Site.base.host || LocalMuseum.isAvailable {
+               url.host != Site.base.host || LocalMuseum.isAvailable || Nuage.isConfigured {
                 Task { await UIApplication.shared.open(url) }
                 return .cancel
             }
@@ -131,7 +132,7 @@ struct GalleryWebView: UIViewRepresentable {
             // les montre elle-même.
             if let url = action.request.url, url.scheme == LocalMuseum.scheme,
                action.targetFrame?.isMainFrame != false,
-               LocalMuseum.file(url.path) == nil {
+               LocalMuseum.stored(url.path) == nil, !Nuage.isConfigured {
                 return .cancel
             }
             return .allow
@@ -204,18 +205,23 @@ final class MuseumSchemeHandler: NSObject, WKURLSchemeHandler {
 
     func webView(_ webView: WKWebView, start task: any WKURLSchemeTask) {
         let id = ObjectIdentifier(task)
-        guard let url = task.request.url, let file = LocalMuseum.file(url.path) else {
-            let response = HTTPURLResponse(
-                url: task.request.url ?? LocalMuseum.url("/"), statusCode: 404,
-                httpVersion: "HTTP/1.1", headerFields: ["Content-Type": "text/plain; charset=utf-8"]
-            )!
-            task.didReceive(response)
-            task.didReceive(Data("Introuvable".utf8))
-            task.didFinish()
-            return
-        }
-        let mime = LocalMuseum.mimeType(file)
+        let requested = task.request.url ?? LocalMuseum.url("/")
         Task {
+            // Sur l'appareil, sinon depuis Nuage (puis gardé : la galerie revient hors ligne).
+            var file = LocalMuseum.stored(requested.path)
+            if file == nil { file = await LocalMuseum.fetch(requested.path) }
+            if stopped.remove(id) != nil { return }
+            guard let file else {
+                let response = HTTPURLResponse(
+                    url: requested, statusCode: 404, httpVersion: "HTTP/1.1",
+                    headerFields: ["Content-Type": "text/plain; charset=utf-8"]
+                )!
+                task.didReceive(response)
+                task.didReceive(Data("Introuvable".utf8))
+                task.didFinish()
+                return
+            }
+            let mime = LocalMuseum.mimeType(file)
             let data = await Task.detached(priority: .userInitiated) {
                 try? Data(contentsOf: file, options: .mappedIfSafe)
             }.value
@@ -225,7 +231,7 @@ final class MuseumSchemeHandler: NSObject, WKURLSchemeHandler {
                 return
             }
             let response = HTTPURLResponse(
-                url: url, statusCode: 200, httpVersion: "HTTP/1.1",
+                url: requested, statusCode: 200, httpVersion: "HTTP/1.1",
                 headerFields: [
                     "Content-Type": mime,
                     "Content-Length": String(data.count),

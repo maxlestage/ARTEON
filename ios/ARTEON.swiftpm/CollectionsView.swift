@@ -10,7 +10,7 @@ struct CollectionsView: View {
         Group {
             if let index = store.collections {
                 content(index)
-            } else if LocalMuseum.collectionsFile != nil {
+            } else if LocalMuseum.hasCollections {
                 ProgressView("Ouverture des collections…")
                     .task { await store.loadCollections() }
             } else {

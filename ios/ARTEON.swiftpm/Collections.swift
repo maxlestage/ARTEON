@@ -213,12 +213,15 @@ struct CollectionIndex: Sendable {
 
 extension LocalMuseum {
     /// Le fichier des collections du monde, s'il est dans l'application.
-    static var collectionsFile: URL? { file("collections/collections.json") }
+    static var collectionsFile: URL? { stored("collections/collections.json") }
+
+    /// Les collections sont-elles à portée (sur l'appareil, ou sur Nuage) ?
+    static var hasCollections: Bool { collectionsFile != nil || Nuage.isConfigured }
 
     /// Les octets de la vignette d'une œuvre des collections, lus dans le paquet de son musée.
-    static func thumbnail(of work: CollectionWork, pack: String, in root: URL? = LocalMuseum.root) -> Data? {
-        guard let range = work.thumb, range.count == 2, let root,
-              let url = file("collections/\(pack)", in: root),
+    static func thumbnail(of work: CollectionWork, pack: String, in root: URL? = nil) -> Data? {
+        guard let range = work.thumb, range.count == 2,
+              let url = root.map({ file("collections/\(pack)", in: $0) }) ?? stored("collections/\(pack)"),
               let handle = try? FileHandle(forReadingFrom: url)
         else { return nil }
         defer { try? handle.close() }
