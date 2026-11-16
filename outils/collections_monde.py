@@ -533,54 +533,61 @@ def main():
                 dire(f"  {MUSEES[c]['nom']} est sauté : {erreur}")
                 toutes[c] = []
 
-    # Un musée qui n'a pas assez d'œuvres laisse le reste de sa part à ceux qui en ont
-    # davantage (le total voulu est atteint quand c'est possible).
+    # Chaque musée télécharge ses vignettes dans l'ordre de ses candidates, jusqu'à sa
+    # part : une vignette refusée est remplacée par la suivante. Ce qui manque encore à la
+    # fin (un musée qui refuse beaucoup, un autre trop lent) est pris chez ceux qui ont
+    # encore des candidates : le total voulu est atteint.
     vivants = [c for c in cles if toutes[c]]
-    disponibles = {c: int(len(toutes[c]) / 1.08) for c in vivants}
-    manque = sum(parts[c] for c in cles if c not in vivants)
-    for c in vivants:
-        if parts[c] > disponibles[c]:
-            manque += parts[c] - disponibles[c]
-            parts[c] = disponibles[c]
-    while manque > 0:
-        receveurs = [c for c in vivants if disponibles[c] > parts[c]]
-        if not receveurs:
-            break
-        part = max(1, manque // len(receveurs))
-        for c in receveurs:
-            donne = min(part, disponibles[c] - parts[c], manque)
-            parts[c] += donne
-            manque -= donne
-    dire("  parts : " + ", ".join(f"{c} {parts[c]}" for c in vivants))
+    classees = {c: choisir(toutes[c], len(toutes[c]), random.Random(f"choix-{c}")) for c in vivants}
+    position = {c: 0 for c in vivants}
+    gardees = {c: [] for c in vivants}
+    octets = {c: [] for c in vivants}
+    dossier = cache / "vignettes"
 
-    def traiter(c):
-        """Les vignettes d'un musée (téléchargées, réduites) et son paquet."""
-        choix = choisir(toutes[c], round(parts[c] * 1.08), random.Random(f"choix-{c}"))
-        dossier = cache / "vignettes"
+    def remplir(c, cible):
         with concurrent.futures.ThreadPoolExecutor(args.fils) as pool:
-            octets = list(pool.map(lambda f: vignette(f, dossier), choix))
-        paquet = bytearray()
-        gardees = []
-        for f, o in zip(choix, octets):
-            if not o:
-                continue
-            f["p"] = [len(paquet), len(o)]
-            paquet += o
-            gardees.append({k: v for k, v in f.items() if not k.startswith("_")})
-            if len(gardees) >= parts[c]:
-                break
-        (sortie / f"vignettes-{c}.bin").write_bytes(bytes(paquet))
-        for f in gardees:
-            f["k"] = c
-        dire(f"  {MUSEES[c]['nom']} : {len(gardees)} œuvres, vignettes {len(paquet) / 1e6:.0f} Mo")
-        return {"cle": c, **MUSEES[c], "oeuvres": len(gardees), "paquet": f"vignettes-{c}.bin"}, gardees
+            while len(gardees[c]) < cible and position[c] < len(classees[c]):
+                manque = cible - len(gardees[c])
+                lot = classees[c][position[c]:position[c] + max(manque + manque // 8, 24)]
+                position[c] += len(lot)
+                for f, o in zip(lot, pool.map(lambda f: vignette(f, dossier), lot)):
+                    if o and len(gardees[c]) < cible:
+                        gardees[c].append(f)
+                        octets[c].append(o)
+        return len(gardees[c])
 
-    # Les quatre musées en même temps.
-    musees, fiches_finales = [], []
+    parts = {c: parts[c] + sum(parts[k] for k in cles if k not in vivants) // max(1, len(vivants))
+             for c in vivants}
     with concurrent.futures.ThreadPoolExecutor(max(1, len(vivants))) as pool:
-        for musee, gardees in pool.map(traiter, vivants):
-            musees.append(musee)
-            fiches_finales += gardees
+        list(pool.map(lambda c: remplir(c, parts[c]), vivants))
+    for _ in range(4):
+        manque = args.total - sum(len(gardees[c]) for c in vivants)
+        receveurs = [c for c in vivants if position[c] < len(classees[c])]
+        if manque <= 0 or not receveurs:
+            break
+        dire(f"  il manque {manque} œuvres : {', '.join(receveurs)} complètent")
+        part = -(-manque // len(receveurs))
+        with concurrent.futures.ThreadPoolExecutor(len(receveurs)) as pool:
+            list(pool.map(lambda c: remplir(c, len(gardees[c]) + part), receveurs))
+
+    musees, fiches_finales = [], []
+    surplus = sum(len(gardees[c]) for c in vivants) - args.total
+    for c in vivants:
+        # Le dernier lot peut dépasser le total de quelques œuvres : on les retire au
+        # musée le plus fourni.
+        if surplus > 0 and len(gardees[c]) == max(len(gardees[k]) for k in vivants):
+            del gardees[c][-surplus:], octets[c][-surplus:]
+            surplus = 0
+        paquet = bytearray()
+        for f, o in zip(gardees[c], octets[c]):
+            f["p"] = [len(paquet), len(o)]
+            f["k"] = c
+            paquet += o
+        (sortie / f"vignettes-{c}.bin").write_bytes(bytes(paquet))
+        fiches = [{k: v for k, v in f.items() if not k.startswith("_")} for f in gardees[c]]
+        fiches_finales += fiches
+        musees.append({"cle": c, **MUSEES[c], "oeuvres": len(fiches), "paquet": f"vignettes-{c}.bin"})
+        dire(f"  {MUSEES[c]['nom']} : {len(fiches)} œuvres, vignettes {len(paquet) / 1e6:.0f} Mo")
 
     catalogue = {
         "version": VERSION,
