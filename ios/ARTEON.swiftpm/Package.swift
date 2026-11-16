@@ -20,7 +20,7 @@ let package = Package(
             targets: ["AppModule"],
             bundleIdentifier: "com.maxlestage.arteon",
             teamIdentifier: "",
-            displayVersion: "1.0",
+            displayVersion: "2.0",
             bundleVersion: "1",
             appIcon: .asset("AppIcon"),
             accentColor: .asset("AccentColor"),
@@ -40,7 +40,12 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            // Le musée embarqué (catalogue, images, galeries 3D) : rempli par
+            // ios/preparer-musee.sh, il se visite sans Internet.
+            resources: [
+                .copy("Musee")
+            ]
         )
     ],
     swiftLanguageModes: [.v6]

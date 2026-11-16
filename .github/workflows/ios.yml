@@ -1,6 +1,13 @@
-# L'application iOS en Swift (ios/) : compilée et testée sur un Mac de GitHub avec Xcode
-# 27.2 (SDK iOS 27.2, Swift 6.4), captures d'écran sur le simulateur iPad, et envoi sur
-# TestFlight quand les clés d'Apple sont là. Tout se règle et se lance depuis un téléphone.
+# L'application iOS en Swift (ios/), avec tout le musée embarqué (elle se visite sans
+# Internet) :
+#   1. job « musee » (Linux) : le site exporté (catalogue, images, galeries 3D en
+#      WebAssembly) devient ios/ARTEON.swiftpm/Musee (ios/preparer-musee.sh) ; tests du
+#      modèle en Swift ;
+#   2. job « ios » (Mac) : compilée et testée avec Xcode 27.2 (SDK iOS 27.2, Swift 6.4),
+#      captures d'écran sans réseau sur le simulateur iPad, l'App Playground complet à
+#      télécharger (artefact, et release « ipad » sur la branche par défaut), et envoi sur
+#      TestFlight quand les clés d'Apple sont là. Tout se règle et se lance depuis un
+#      téléphone.
 #
 # Pour l'installer sur l'iPad par TestFlight (compte Apple Developer, 99 € par an) :
 #   1. App Store Connect → Apps → « + » → Nouvelle app : iOS, nom ARTEON, identifiant de
@@ -22,6 +29,14 @@ on:
   push:
     paths:
       - "ios/**"
+      - "expositions/**"
+      - "public/tableaux/**"
+      - "modeles/**"
+      - "src/**"
+      - "build/**"
+      - "build.rs"
+      - "Cargo.toml"
+      - "Cargo.lock"
       - ".github/workflows/ios.yml"
   workflow_dispatch:
     inputs:
@@ -34,15 +49,75 @@ concurrency:
   group: ios-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 env:
+  CARGO_TERM_COLOR: always
   XCODE: /Applications/Xcode_27.2.app
   XCODEGEN_VERSION: "2.46.0"
   IPAD: "iPad Pro 13-inch (M5)"
   IOS: "27.2"
 
 jobs:
+  musee:
+    name: Le musée embarqué
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - uses: Swatinem/rust-cache@v2
+
+      # Les expositions éphémères de la semaine, comme sur le site ; on s'en passe si un
+      # musée ne répond pas ou si le résultat ne se compile pas.
+      - name: Expositions éphémères
+        run: |
+          python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
+          if ! cargo check --quiet --lib; then
+            echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
+            rm -f expositions/ephemere-*.toml
+            rm -rf public/tableaux/ephemere-*
+          fi
+
+      - name: Installer wasm-bindgen
+        run: |
+          version=$(grep -A1 '^name = "wasm-bindgen"$' Cargo.lock | sed -n 's/^version = "\(.*\)"$/\1/p')
+          test -n "$version" || { echo "wasm-bindgen absent de Cargo.lock"; exit 1; }
+          curl -sSfL --retry 3 "https://github.com/wasm-bindgen/wasm-bindgen/releases/download/${version}/wasm-bindgen-${version}-x86_64-unknown-linux-musl.tar.gz" \
+            | tar -xz --strip-components=1 -C "$HOME/.cargo/bin"
+          wasm-bindgen --version
+
+      # Le site exporté pour la racine de arteon://musee/, réduit à ce que lit l'application.
+      - name: Préparer le musée embarqué
+        run: ios/preparer-musee.sh
+
+      # Le modèle (catalogue, index, jeu, musée embarqué) sous Linux, sur le vrai musée.
+      - name: Tests du modèle (Swift)
+        working-directory: ios
+        run: |
+          if command -v swift >/dev/null; then
+            swift --version
+            swift test
+          else
+            echo "::notice::Swift n'est pas installé sur cette image : les tests tournent sur le Mac."
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: musee
+          path: ios/ARTEON.swiftpm/Musee
+          retention-days: 7
+          if-no-files-found: error
+
   ios:
     name: Compiler, tester, capturer
+    needs: musee
+    permissions:
+      contents: write
     # L'image Xcode 27 de GitHub (macOS 27, Apple Silicon).
     runs-on: xcode-27
     defaults:
@@ -55,6 +130,18 @@ jobs:
       TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
     steps:
       - uses: actions/checkout@v7
+
+      # Le musée embarqué préparé par le job « musee ».
+      - uses: actions/download-artifact@v4
+        with:
+          name: musee
+          path: ios/ARTEON.swiftpm/Musee
+
+      - name: Le musée embarqué est là
+        run: |
+          test -s ARTEON.swiftpm/Musee/catalogue.json
+          test -s ARTEON.swiftpm/Musee/pkg/arteon_bg.wasm
+          du -sh ARTEON.swiftpm/Musee
 
       - name: Xcode 27.2
         run: |
@@ -93,15 +180,21 @@ jobs:
           xcrun simctl bootstatus "$udid" -b
           xcrun simctl install "$udid" "$app"
           mkdir -p captures
+          # -horsligne : l'application ne touche pas au réseau ; tout vient du musée embarqué.
           shoot() {
             xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
-            xcrun simctl launch "$udid" com.maxlestage.arteon "$@"
-            sleep 25
+            xcrun simctl launch "$udid" com.maxlestage.arteon -horsligne "$@"
+            sleep "${wait:-20}"
             xcrun simctl io "$udid" screenshot "captures/$name.png"
           }
           name=1-accueil shoot
           name=2-exposition shoot -ouvrir van-gogh
           name=3-oeuvre shoot -ouvrir van-gogh/tournesols
+          name=4-galerie-3d wait=45 shoot -ouvrir 3d:van-gogh
+          name=5-artistes shoot -onglet artistes
+          name=6-explorer shoot -onglet explorer
+          name=7-chronologie shoot -ouvrir chronologie
+          name=8-jeu shoot -ouvrir jeu
           ls -la captures
 
       - uses: actions/upload-artifact@v7
@@ -120,6 +213,22 @@ jobs:
             ios/ARTEON.swiftpm
             !ios/ARTEON.swiftpm/.swiftpm
           include-hidden-files: false
+
+      # Sur la branche par défaut : l'App Playground complet (avec le musée) dans la release
+      # « ipad », à une adresse fixe, à ouvrir sur l'iPad avec Swift Playgrounds.
+      - name: Publier l'App Playground (release « ipad »)
+        if: github.ref_name == github.event.repository.default_branch
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          zip -qry "$RUNNER_TEMP/ARTEON.swiftpm.zip" ARTEON.swiftpm -x 'ARTEON.swiftpm/.swiftpm/*'
+          ls -la "$RUNNER_TEMP/ARTEON.swiftpm.zip"
+          gh release view ipad >/dev/null 2>&1 || gh release create ipad --latest=false \
+            --title "ARTEON pour iPad (Swift Playgrounds)" \
+            --notes "Toucher ARTEON.swiftpm.zip sur l'iPad, l'ouvrir dans Fichiers, puis toucher ARTEON.swiftpm : Swift Playgrounds l'ouvre. ▶ lance le musée, entièrement hors ligne. Refait à chaque push sur la branche par défaut."
+          gh release upload ipad "$RUNNER_TEMP/ARTEON.swiftpm.zip" --clobber
 
       - name: Compiler pour l'appareil (sans signature)
         run: |

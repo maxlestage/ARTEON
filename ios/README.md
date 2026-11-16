@@ -1,32 +1,69 @@
 # ARTEON pour iPad et iPhone, en Swift
 
-L'application native d'ARTEON, écrite entièrement en **Swift 6** et **SwiftUI** :
+L'application native d'ARTEON, écrite entièrement en **Swift 6** et **SwiftUI**, avec
+**tout le musée embarqué** : les 52 expositions, leurs 532 œuvres et leurs notices, les
+images et les galeries 3D se visitent **sans Internet**, sans serveur (ni Heroku, ni
+GitHub Pages).
 
-- **Expositions** : les cinquante et quelques expositions du musée, filtrées par style ou
-  « en ce moment » ; chaque exposition avec sa couverture, son bâtiment, ses salles et leurs
-  œuvres, ses artistes.
-- **Œuvres** : sur iPad à l'horizontale, l'image à gauche et la notice complète à droite
-  (ce que l'on voit, ce qu'elle évoque, son histoire, la manière, les détails, les thèmes,
-  l'anecdote, l'artiste, la reproduction et sa licence) ; œuvre précédente et suivante,
-  texte sélectionnable.
-- **Image en grand** : pincer pour agrandir, glisser, toucher deux fois pour revenir.
-- **Galerie 3D** : la visite du site (WebGL 2, écrite en Rust) en plein écran dans un
-  `WKWebView`, ouverte devant l'œuvre choisie.
-- **Recherche** dans tout le musée sans tenir compte des accents, **favoris** gardés sur
-  l'appareil, catalogue et images **hors ligne** (seule la 3D a besoin d'Internet).
+## Ce qu'elle fait
+
+- **Musée** : l'œuvre du jour, « reprendre la visite » (les dernières œuvres vues), les
+  expositions filtrées par style ou « en ce moment ».
+- **Exposition** : sa couverture, son bâtiment, ses salles et leurs œuvres, ses artistes ;
+  la **visite en 3D**, le **diaporama** et l'**introduction lue à voix haute**.
+- **Œuvre** : sur iPad à l'horizontale, l'image à gauche et la notice complète à droite (ce
+  que l'on voit, ce qu'elle évoque, son histoire, la manière, les détails, les thèmes,
+  l'anecdote, l'artiste, la reproduction et sa licence) ; l'**audioguide** (la voix
+  française de l'appareil lit le cartel et la notice), les autres œuvres du même artiste,
+  le **partage** (l'image et son cartel), favori, précédente et suivante, image en grand
+  (pincer, glisser, toucher deux fois).
+- **Galerie 3D** : celle du site (WebGL 2, écrite en Rust et compilée en WebAssembly),
+  servie par l'application elle-même à l'adresse `arteon://musee/…` : visite guidée ou
+  libre, plan, notices, ouverte devant l'œuvre choisie.
+- **Artistes** : les quelque 400 artistes, ateliers et cultures de A à Z (index sur le
+  côté), chacun avec sa biographie à lire ou à écouter, toutes ses œuvres et ses
+  expositions.
+- **Explorer** : la **chronologie** (siècle par siècle, des météorites au street art), les
+  **thèmes** (la nuit, la mer, le portrait…), les **musées du monde** où voir les œuvres
+  en vrai, les **techniques**, une œuvre au hasard, et le jeu **« Qui l'a fait ? »** (une
+  œuvre, quatre artistes de la même époque, une série et un record).
+- **Favoris** et **œuvres vues**, avec diaporama ; **recherche** dans tout le musée (œuvres,
+  artistes, expositions, thèmes), sans tenir compte des accents, mot par mot
+  (« monet nuit »).
+- **Réglages** : la place du musée sur l'appareil, les mises à jour facultatives depuis le
+  site, la vitesse de la voix, l'effacement des favoris et de l'historique, les crédits.
 - Le style d'iOS 26 : onglets en barre latérale sur iPad (`TabView` `.sidebarAdaptable`),
-  boutons en verre (Liquid Glass), mode sombre, Dynamic Type, VoiceOver.
+  Liquid Glass, mode sombre, Dynamic Type, VoiceOver.
 
-Le contenu vient du site : `catalogue.json` (route `/catalogue.json`, `src/catalogue.rs`).
-Une exposition ajoutée au site apparaît dans l'application sans la republier.
+## Le musée embarqué
+
+`ARTEON.swiftpm/Musee/` reçoit le site exporté, réduit à ce que lit l'application (environ
+200 Mo) :
+
+| Fichier | Contenu |
+|---|---|
+| `catalogue.json` | les expositions, les œuvres, les notices, les artistes (`src/catalogue.rs`) |
+| `tableaux/` | les images des œuvres |
+| `donnees/` | les mosaïques et sculptures des galeries 3D, et leurs textes |
+| `pkg/` | les îlots 3D en WebAssembly |
+| `<exposition>/galerie/` | la page de chaque galerie 3D |
+
+Il n'est pas versionné (les images sont déjà dans `public/tableaux/`) :
+[`preparer-musee.sh`](preparer-musee.sh) le remplit (il compile le WebAssembly, exporte le
+site pour la racine et copie ce qu'il faut), et le workflow
+[`ios.yml`](../.github/workflows/ios.yml) le fait avant chaque compilation. Sans lui,
+l'application télécharge le catalogue et les images depuis le site, puis les garde.
+
+Quand le site répond, l'application y cherche les nouveautés (réglable) : une exposition
+publiée après l'application y apparaît, ses images se téléchargent une fois puis restent
+sur l'appareil.
 
 ## Versions
 
-- **Xcode 27.2** (sorti le 29 octobre 2026) et le **SDK iOS 27.2**, sur l'image `xcode-27`
-  de GitHub Actions (macOS 27) ; **Swift 6.4**, en mode de langage Swift 6 (concurrence
-  stricte).
+- **Xcode 27.2** et le **SDK iOS 27.2**, sur l'image `xcode-27` de GitHub Actions
+  (macOS 27) ; **Swift 6.4**, en mode de langage Swift 6 (concurrence stricte).
 - L'application demande **iOS / iPadOS 26** ou plus récent (Liquid Glass, onglets
-  adaptatifs).
+  adaptatifs, index des listes).
 - XcodeGen 2.46.0 génère le projet Xcode ; les tests sont écrits avec Swift Testing.
 
 ## L'ouvrir sur l'iPad, sans Mac et sans compte payant : Swift Playgrounds
@@ -34,31 +71,40 @@ Une exposition ajoutée au site apparaît dans l'application sans la republier.
 `ARTEON.swiftpm` est un *App Playground* : l'app **Swift Playgrounds** (gratuite, App Store)
 le compile et le lance sur l'iPad.
 
-1. Sur l'iPad, ouvrir le dernier run de **Actions → Application iOS (Swift)** sur GitHub,
-   télécharger l'artefact **ARTEON-swift-playgrounds** (ou tout le dépôt : Code → Download
-   ZIP).
+1. Sur l'iPad, télécharger **ARTEON.swiftpm.zip** de la release
+   [« ipad »](https://github.com/maxlestage/ARTEON/releases/tag/ipad) (refaite à chaque
+   push sur `master`), ou l'artefact **ARTEON-swift-playgrounds** du dernier run de
+   **Actions → Application iOS (Swift)**. Les deux contiennent le musée embarqué (le
+   « Download ZIP » du dépôt, lui, ne l'a pas).
 2. Dans l'app Fichiers, toucher le zip pour l'ouvrir, puis toucher **ARTEON.swiftpm** :
    Swift Playgrounds l'ouvre.
-3. Toucher ▶ : ARTEON se lance. « Installer sur l'écran d'accueil » (menu ⋯ de Swift
-   Playgrounds, selon les versions) la garde comme une app.
+3. Toucher ▶ : ARTEON se lance, entièrement hors ligne.
 
 ## L'installer comme une vraie app : TestFlight
 
 Avec un compte Apple Developer (99 € par an), le workflow
-[`ios.yml`](../.github/workflows/ios.yml) signe l'application sur un Mac de GitHub et
-l'envoie sur TestFlight ; les étapes, toutes faisables depuis un téléphone, sont en tête du
-fichier. L'app TestFlight l'installe ensuite sur l'iPad, avec chaque nouvelle version.
+[`ios.yml`](../.github/workflows/ios.yml) signe l'application (musée compris) sur un Mac de
+GitHub et l'envoie sur TestFlight ; les étapes, toutes faisables depuis un téléphone, sont
+en tête du fichier.
 
 ## Développer (sur un Mac)
 
 ```sh
+ios/preparer-musee.sh        # le musée embarqué (Rust, wasm32, wasm-bindgen : voir le README)
 cd ios
 brew install xcodegen        # ou la version 2.46.0 de github.com/yonaskolb/XcodeGen
 xcodegen generate            # ARTEON.xcodeproj
 open ARTEON.xcodeproj        # ou : open ARTEON.swiftpm (le même code)
-# Un autre site que GitHub Pages : argument de lancement -site http://localhost:3000/
-# Ouvrir une page au lancement : -ouvrir van-gogh, -ouvrir van-gogh/tournesols
 ```
 
-Le modèle (`Models.swift`, `CatalogueStore.swift`) n'utilise que Foundation : ses tests
-(`Tests/`) tournent aussi sous Linux avec la chaîne Swift officielle.
+Arguments de lancement : `-horsligne` (jamais de réseau), `-site http://localhost:3000/`
+(un autre site pour les mises à jour), `-ouvrir van-gogh`, `-ouvrir van-gogh/tournesols`,
+`-ouvrir 3d:van-gogh`, `-ouvrir chronologie`, `-ouvrir jeu`, `-onglet artistes`.
+
+## Tests
+
+Le modèle (`Models.swift`, `Library.swift`, `CatalogueStore.swift`) n'utilise que
+Foundation : `swift test` dans `ios/` le teste sous Linux comme sur un Mac
+([`Package.swift`](Package.swift)), et vérifie le vrai musée embarqué quand il a été
+préparé (chaque œuvre a son image, chaque exposition sa galerie, les dates se lisent, le
+jeu tire de bonnes questions). Xcode lance les mêmes tests sur le simulateur iPad.

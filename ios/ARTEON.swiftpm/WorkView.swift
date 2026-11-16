@@ -7,6 +7,7 @@ struct WorkView: View {
     let exhibition: Exhibition
 
     @Environment(CatalogueStore.self) private var store
+    @Environment(Narrator.self) private var narrator
     @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var index: Int
     @State private var zooming = false
@@ -49,6 +50,12 @@ struct WorkView: View {
             }
         }
         .id(index)
+        .onAppear { store.visited(key) }
+        .onChange(of: index) {
+            narrator.stop()
+            store.visited(key)
+        }
+        .onDisappear { narrator.stop() }
         .navigationTitle(exhibition.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -65,6 +72,8 @@ struct WorkView: View {
                 .tint(favorite ? Color.red : nil)
                 .sensoryFeedback(.selection, trigger: favorite)
 
+                ListenButton(id: key.text, text: { work.spokenText(in: exhibition) })
+
                 NavigationLink(value: Route.gallery(exhibition.slug, work: work.slug)) {
                     Label("Voir dans la galerie 3D", systemImage: "view.3d")
                 }
@@ -74,6 +83,7 @@ struct WorkView: View {
                     .disabled(index == 0)
                 Button("Œuvre suivante", systemImage: "chevron.right") { step(1) }
                     .disabled(index >= exhibition.works.count - 1)
+                ShareWorkButton(exhibition: exhibition, work: work)
             }
         }
         .fullScreenCover(isPresented: $zooming) {
@@ -82,7 +92,7 @@ struct WorkView: View {
     }
 
     private var picture: some View {
-        RemoteImage(path: work.image, contentMode: .fit, tint: .clear)
+        RemoteImage(path: work.image, contentMode: .fit, tint: .clear, maxPixels: 2000)
             .aspectRatio(work.aspect, contentMode: .fit)
             .padding(8)
             .background(Color(red: 0.17, green: 0.14, blue: 0.13))
@@ -175,7 +185,17 @@ struct WorkText: View {
             if let artist = exhibition.artist(named: work.artist) {
                 heading("L'artiste")
                 ArtistRow(artist: artist)
+                NavigationLink(value: Route.artist(artist.name)) {
+                    Label("Toutes ses œuvres au musée", systemImage: "person.crop.rectangle.stack")
+                }
+            } else if !work.artist.isEmpty {
+                heading("L'artiste")
+                NavigationLink(value: Route.artist(work.artist)) {
+                    Label(work.artist, systemImage: "person.crop.rectangle.stack")
+                }
             }
+
+            OtherWorks(exhibition: exhibition, work: work)
 
             if let credit = work.credit, !credit.author.isEmpty {
                 heading("Reproduction")
@@ -229,7 +249,7 @@ struct ZoomView: View {
 
     var body: some View {
         NavigationStack {
-            RemoteImage(path: path, contentMode: .fit, tint: .clear)
+            RemoteImage(path: path, contentMode: .fit, tint: .clear, maxPixels: nil)
                 .scaleEffect(scale)
                 .offset(offset)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -278,5 +298,70 @@ struct ZoomView: View {
             offset = .zero
             lastOffset = .zero
         }
+    }
+}
+
+/// Les autres œuvres du même artiste, dans tout le musée.
+struct OtherWorks: View {
+    let exhibition: Exhibition
+    let work: Work
+
+    @Environment(CatalogueStore.self) private var store
+
+    var body: some View {
+        if let catalogue = store.catalogue {
+            let others = catalogue.works(by: work.artist, except: exhibition.key(work))
+                .prefix(20)
+                .map { (key: $0.0.key($0.1), exhibition: $0.0, work: $0.1) }
+            if !others.isEmpty {
+                Text("Du même artiste")
+                    .font(.headline)
+                    .foregroundStyle(exhibition.accentColor)
+                    .padding(.top, 26)
+                    .padding(.bottom, 8)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 12) {
+                        ForEach(others, id: \.key) { other in
+                            NavigationLink(value: Route.work(other.key)) {
+                                WorkCard(work: other.work, subtitle: other.exhibition.name)
+                                    .frame(width: 170)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+                .scrollClipDisabled()
+            }
+        }
+    }
+}
+
+/// Partager une œuvre : son image (du musée embarqué) et son cartel.
+struct ShareWorkButton: View {
+    let exhibition: Exhibition
+    let work: Work
+
+    @State private var file: URL?
+
+    private var caption: String {
+        var lines = [work.title, work.byline]
+        if !work.collection.isEmpty { lines.append(work.collection) }
+        lines.append("Vu dans ARTEON · \(exhibition.name)")
+        return lines.joined(separator: "\n")
+    }
+
+    var body: some View {
+        Group {
+            if let file {
+                ShareLink(item: file, subject: Text(work.title), message: Text(caption)) {
+                    Label("Partager", systemImage: "square.and.arrow.up")
+                }
+            } else {
+                ShareLink(item: caption, subject: Text(work.title)) {
+                    Label("Partager", systemImage: "square.and.arrow.up")
+                }
+            }
+        }
+        .task(id: work.image) { file = await ImageStore.shared.file(for: work.image) }
     }
 }

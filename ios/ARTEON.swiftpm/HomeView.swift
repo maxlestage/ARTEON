@@ -26,16 +26,39 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Toute l'histoire de l'art, en 3D")
+                    Text("Toute l'histoire de l'art, dans la poche")
                         .font(.title3.italic())
                         .foregroundStyle(.tint)
-                    HStack(spacing: 12) {
-                        StatCard(value: catalogue.exhibitions.count, label: "expositions", color: .arteonBlue)
-                        StatCard(value: catalogue.workCount, label: "œuvres", color: .arteonSun)
-                        StatCard(value: catalogue.roomCount, label: "salles en 3D", color: .green)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            StatCard(value: catalogue.exhibitions.count, label: "expositions", color: .arteonBlue)
+                            StatCard(value: catalogue.workCount, label: "œuvres", color: .arteonSun)
+                            StatCard(value: store.index?.artists.count ?? 0, label: "artistes", color: .purple)
+                            StatCard(value: catalogue.roomCount, label: "salles en 3D", color: .green)
+                        }
                     }
+                    .scrollClipDisabled()
                 }
                 .padding(.horizontal)
+
+                if let daily = catalogue.workOfTheDay() {
+                    DailyWorkCard(exhibition: daily.0, work: daily.1)
+                        .padding(.horizontal)
+                }
+
+                let recent = catalogue.works(Array(store.history.prefix(12)))
+                if !recent.isEmpty {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Reprendre la visite")
+                            .font(.title2.bold())
+                            .padding(.horizontal)
+                        WorkRow(items: recent)
+                    }
+                }
+
+                Text("Les expositions")
+                    .font(.title2.bold())
+                    .padding(.horizontal)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
@@ -66,13 +89,18 @@ struct HomeView: View {
         .background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle("ARTEON")
         .toolbar {
-            if store.offline {
-                ToolbarItem(placement: .primaryAction) {
-                    Label("Hors ligne : le catalogue gardé sur l'appareil", systemImage: "icloud.slash")
+            ToolbarItem(placement: .primaryAction) {
+                NavigationLink(value: Route.settings) {
+                    Label("Réglages", systemImage: "gearshape")
+                }
+            }
+            if store.updating {
+                ToolbarItem(placement: .status) {
+                    ProgressView().controlSize(.small)
                 }
             }
         }
-        .refreshable { await store.load() }
+        .refreshable { await store.update() }
     }
 
     @ViewBuilder
@@ -108,7 +136,7 @@ struct StatCard: View {
             Spacer(minLength: 0)
         }
         .padding(14)
-        .frame(maxWidth: 200)
+        .frame(minWidth: 150, maxWidth: 200)
         .fixedSize(horizontal: false, vertical: true)
         .background(Color.card, in: .rect(cornerRadius: 16))
     }
@@ -170,5 +198,63 @@ struct WorkCard: View {
         }
         .card()
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// L'œuvre du jour, en grand.
+struct DailyWorkCard: View {
+    let exhibition: Exhibition
+    let work: Work
+
+    var body: some View {
+        NavigationLink(value: Route.work(exhibition.key(work))) {
+            ZStack(alignment: .bottomLeading) {
+                RemoteImage(path: work.image, tint: exhibition.accentColor.opacity(0.3), maxPixels: 1400)
+                    .frame(height: 320)
+                LinearGradient(colors: [.clear, .black.opacity(0.75)], startPoint: .center, endPoint: .bottom)
+                VStack(alignment: .leading, spacing: 4) {
+                    Label("L'œuvre du jour", systemImage: "sun.max.fill")
+                        .font(.caption.bold())
+                        .textCase(.uppercase)
+                        .foregroundStyle(Color.arteonSun)
+                    Text(work.title)
+                        .font(.title.bold())
+                        .lineLimit(2)
+                    Text("\(work.byline) · \(exhibition.name)")
+                        .font(.subheadline)
+                        .lineLimit(1)
+                        .opacity(0.85)
+                }
+                .foregroundStyle(.white)
+                .padding(20)
+            }
+            .clipShape(.rect(cornerRadius: 24))
+            .contentShape(.rect(cornerRadius: 24))
+            .hoverEffect(.lift)
+        }
+        .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityHint("Ouvre l'œuvre du jour")
+    }
+}
+
+/// Des œuvres sur une ligne qui défile.
+struct WorkRow: View {
+    let items: [(WorkKey, Exhibition, Work)]
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 14) {
+                ForEach(items, id: \.0) { item in
+                    NavigationLink(value: Route.work(item.0)) {
+                        WorkCard(work: item.2, subtitle: item.2.artist.isEmpty ? item.1.name : item.2.artist)
+                            .frame(width: 190)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .scrollClipDisabled()
     }
 }
