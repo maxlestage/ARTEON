@@ -11,6 +11,7 @@ struct ExploreView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                WorldCollectionsCard()
                 LazyVGrid(
                     columns: [GridItem(.adaptive(minimum: 300, maximum: 500), spacing: 16)],
                     spacing: 16

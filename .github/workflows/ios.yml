@@ -63,6 +63,8 @@ jobs:
   musee:
     name: Le musée embarqué
     runs-on: ubuntu-latest
+    # La première moisson des collections du monde est longue ; ensuite, le cache.
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 
@@ -96,6 +98,24 @@ jobs:
       - name: Préparer le musée embarqué
         run: ios/preparer-musee.sh
 
+      # Les collections du monde : des dizaines de milliers d'œuvres du domaine public
+      # (Chicago, Cleveland, le Met, Washington), fiches et vignettes. Le cache garde les
+      # vignettes d'une fois sur l'autre et les fiches une semaine.
+      - uses: actions/cache@v4
+        with:
+          path: target/collections-cache
+          key: collections-v1-${{ github.run_id }}
+          restore-keys: collections-v1-
+
+      - name: Les collections du monde
+        continue-on-error: true
+        run: |
+          python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
+            || python3 -m pip install --quiet --break-system-packages pillow
+          python3 outils/collections_monde.py --total 50000 \
+            --sortie ios/ARTEON.swiftpm/Musee/collections --cache target/collections-cache
+          du -sh ios/ARTEON.swiftpm/Musee ios/ARTEON.swiftpm/Musee/collections
+
       # Le modèle (catalogue, index, jeu, musée embarqué) sous Linux, sur le vrai musée.
       - name: Tests du modèle (Swift)
         working-directory: ios
@@ -117,6 +137,8 @@ jobs:
   ios:
     name: Compiler, tester, capturer
     needs: musee
+    # Un simulateur qui gèle la machine n'immobilise pas le run pendant des heures.
+    timeout-minutes: 75
     permissions:
       contents: write
     # L'image Xcode 27 de GitHub (macOS 27, Apple Silicon).
@@ -197,7 +219,7 @@ jobs:
       - name: Captures d'écran (iPad et iPhone)
         # Les captures ne bloquent jamais la suite (compilation, App Playground, TestFlight).
         continue-on-error: true
-        timeout-minutes: 15
+        timeout-minutes: 20
         run: |
           set -uo pipefail
           # Une commande qui ne rend pas la main est arrêtée au bout de $1 secondes.
@@ -245,7 +267,8 @@ jobs:
               name=09-chronologie shoot -ouvrir chronologie
               name=10-jeu shoot -ouvrir jeu
             fi
-            name=11-galerie-3d wait=25 shoot -ouvrir 3d:van-gogh
+            name=12-collections shoot -ouvrir collections
+            name=13-collection-met shoot -ouvrir collection:met
             limit 60 xcrun simctl shutdown "$udid" || true
           done
           ls -la captures

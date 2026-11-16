@@ -32,7 +32,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
                             StatCard(value: catalogue.exhibitions.count, label: "expositions", color: .arteonBlue)
-                            StatCard(value: catalogue.workCount, label: "œuvres", color: .arteonSun)
+                            StatCard(value: catalogue.workCount + (store.collections?.count ?? 0), label: "œuvres", color: .arteonSun)
                             StatCard(value: store.index?.artists.count ?? 0, label: "artistes", color: .purple)
                             StatCard(value: catalogue.roomCount, label: "salles en 3D", color: .green)
                         }

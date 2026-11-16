@@ -96,6 +96,13 @@ struct MainView: View {
         } else if target == "jeu" {
             tab = .explore
             explorePath.append(Route.quiz)
+        } else if target == "collections" {
+            tab = .museums
+            museumsPath.append(Route.collections)
+        } else if target.hasPrefix("collection:") {
+            tab = .museums
+            museumsPath.append(Route.collections)
+            museumsPath.append(Route.collection(.museum(String(target.dropFirst(11)))))
         } else if target == "grand-musee" {
             tab = .museums
             museumsPath.append(Route.grandMuseum)
@@ -160,6 +167,12 @@ struct RouteView: View {
             SettingsView(catalogue: catalogue)
         case .artists:
             ArtistsView(catalogue: catalogue)
+        case .collections:
+            CollectionsView()
+        case .collection(let filter):
+            CollectionListView(filter: filter)
+        case .collectionWork(let id):
+            CollectionWorkView(id: id)
         case .building(let name):
             BuildingView(catalogue: catalogue, name: name)
         case .grandMuseum:

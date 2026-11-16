@@ -122,6 +122,18 @@ struct ArtistView: View {
                         .padding(.top, 8)
                     WorkGrid(items: catalogue.works(artist.works).map { ($0.0, $0.1, $0.2) }, showExhibition: true)
 
+                    if let world = store.collections, world.count(.artist(artist.name)) > 0 {
+                        let count = world.count(.artist(artist.name))
+                        HStack {
+                            Text("Dans les collections du monde")
+                                .font(.title2.bold())
+                            Spacer()
+                            NavigationLink(count == 1 ? "1 œuvre" : "Les \(count) œuvres", value: Route.collection(.artist(artist.name)))
+                        }
+                        .padding(.top, 8)
+                        CollectionRow(works: world.works(.artist(artist.name), limit: 20))
+                    }
+
                     let exhibitions = artist.exhibitions.compactMap(catalogue.exhibition)
                     if !exhibitions.isEmpty {
                         Text(exhibitions.count == 1 ? "L'exposition" : "Les expositions")

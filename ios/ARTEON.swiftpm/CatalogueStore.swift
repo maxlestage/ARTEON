@@ -55,6 +55,8 @@ final class CatalogueStore {
     private(set) var phase: Phase = .loading
     private(set) var source: Source = .bundled
     private(set) var index: MuseumIndex?
+    /// Les collections du monde (des dizaines de milliers d'œuvres), lues après le musée.
+    private(set) var collections: CollectionIndex?
     private(set) var favorites: [WorkKey] = []
     /// Les œuvres regardées, la plus récente d'abord.
     private(set) var history: [WorkKey] = []
@@ -106,6 +108,9 @@ final class CatalogueStore {
                 await show(c, from: .saved)
             }
         }
+        if collections == nil {
+            Task { await loadCollections() }
+        }
         if updatesEnabled, !Site.neverOnline {
             await update()
         }
@@ -141,6 +146,16 @@ final class CatalogueStore {
         self.index = index
         self.source = source
         phase = .ready(catalogue)
+    }
+
+    /// Lit les collections du monde embarquées (en arrière-plan : le fichier est gros).
+    func loadCollections() async {
+        guard collections == nil, let url = LocalMuseum.collectionsFile else { return }
+        collections = await Task.detached(priority: .utility) {
+            (try? Data(contentsOf: url, options: .mappedIfSafe))
+                .flatMap { try? WorldCollections.decode($0) }
+                .map(CollectionIndex.init)
+        }.value
     }
 
     // MARK: Favoris
@@ -230,8 +245,9 @@ actor ImageStore {
 
     /// Le fichier de l'image sur l'appareil : dans l'application, ou téléchargé.
     func file(for path: String) async -> URL? {
-        if let local = LocalMuseum.file(path) { return local }
-        let url = Site.url(path)
+        let absolute = path.hasPrefix("https://") || path.hasPrefix("http://")
+        if !absolute, let local = LocalMuseum.file(path) { return local }
+        let url = absolute ? (URL(string: path) ?? Site.url(path)) : Site.url(path)
         guard let file = folder?.appendingPathComponent(Self.name(of: url)) else { return nil }
         if FileManager.default.fileExists(atPath: file.path) { return file }
         guard !Site.neverOnline else { return nil }
@@ -239,7 +255,12 @@ actor ImageStore {
             return await task.value == nil ? nil : file
         }
         let task = Task<Data?, Never> {
-            guard let (data, response) = try? await URLSession.shared.data(from: url),
+            var request = URLRequest(url: url)
+            request.setValue("ARTEON/2.0 (application iOS)", forHTTPHeaderField: "User-Agent")
+            if url.host?.hasSuffix("artic.edu") == true {
+                request.setValue("ARTEON/2.0 (application iOS)", forHTTPHeaderField: "AIC-User-Agent")
+            }
+            guard let (data, response) = try? await URLSession.shared.data(for: request),
                   (response as? HTTPURLResponse)?.statusCode ?? 200 == 200
             else { return nil }
             try? data.write(to: file, options: .atomic)
@@ -268,6 +289,12 @@ actor ImageStore {
               let files = try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
         else { return }
         for file in files { try? FileManager.default.removeItem(at: file) }
+    }
+
+    /// L'image a-t-elle déjà été téléchargée ?
+    func isDownloaded(_ path: String) -> Bool {
+        guard let url = URL(string: path), let folder else { return false }
+        return FileManager.default.fileExists(atPath: folder.appendingPathComponent(Self.name(of: url)).path)
     }
 
     /// Un nom de fichier stable pour une adresse.

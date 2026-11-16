@@ -268,7 +268,10 @@ plus, compilée avec Xcode 27.2), avec **tout le musée embarqué** : les exposi
 les œuvres et leurs notices, les images et les galeries 3D (le WebAssembly du site, servi
 par l'application elle-même) se visitent **sans Internet ni serveur**. Elle ajoute les
 vrais musées reproduits, pays par pays, avec le plan interactif de chaque bâtiment, un
-musée original (le Grand Musée ARTEON, qui réunit toutes les expositions en six ailes), les
+musée original (le Grand Musée ARTEON, qui réunit toutes les expositions en six ailes),
+les **collections du monde** (environ 50 000 œuvres du domaine public des collections
+ouvertes de Chicago, Cleveland, du Met et de Washington, fiches et vignettes hors ligne,
+écrites par [`outils/collections_monde.py`](outils/collections_monde.py)), les
 artistes de A à Z, la chronologie, les thèmes, les musées du monde, le jeu « Qui l'a
 fait ? », l'audioguide, le diaporama, l'œuvre du jour, la recherche, les favoris et
 l'historique. Sur l'iPad, **Swift Playgrounds** l'ouvre et la lance sans Mac ni compte
