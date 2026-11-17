@@ -1,0 +1,918 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « VOITURES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/voitures/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /voitures.
+#
+#  Les voitures datent toutes d'avant 1931. Leurs photographies viennent de
+#  Wikimedia Commons : dans le domaine public, en CC0, ou sous licence CC BY ou
+#  CC BY-SA, dont l'auteur est alors crédité dans le bloc de l'œuvre. L'estampe
+#  de Toulouse-Lautrec vient du National Gallery of Art de Washington (CC0).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 172
+nom_court = "Voitures"
+mouvement = "L'automobile, des origines aux années folles"
+cadre = "vitrine"
+couleur = "#4b5d6e"
+titre = "Voitures, l'automobile des pionniers aux années folles"
+artiste = "Cugnot, Benz, Panhard et Levassor, De Dion-Bouton, Rolls-Royce, Ford, Hispano-Suiza, Bugatti…"
+dates = "1770–1929"
+accroche = "Exposition virtuelle · Cité de l'Automobile – Musée national, collection Schlumpf, Mulhouse"
+introduction = """
+En un siècle et demi, la voiture passe du rêve d'ingénieur à l'objet de tous les jours. \
+La visite réunit dix pièces, du fardier à vapeur de Cugnot, construit pour l'armée de \
+Louis XV, à la Bugatti Royale d'Ettore Bugatti, en passant par le tricycle de Carl Benz, \
+les premières Panhard et Levassor, la petite De Dion-Bouton de 1900, la Rolls-Royce \
+Silver Ghost, la Ford T et la Hispano-Suiza en bois de Dubonnet. Deux images complètent \
+le parcours : une estampe de Toulouse-Lautrec et l'affiche du Bibendum Michelin. Le \
+bâtiment s'inspire de la Cité de l'Automobile de Mulhouse, installée dans une ancienne \
+filature : une enfilade d'ateliers mène à une grande halle aux allées bordées de \
+lampadaires, où brillent les voitures de luxe des années folles."""
+vitrine = "bugatti-royale-napoleon.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Cité de l'Automobile – Musée national, collection Schlumpf"
+ville = "Mulhouse, France"
+construction = "ancienne filature du XIXᵉ siècle ; musée ouvert en 1982"
+presentation = """
+Le musée de Mulhouse est né d'une passion secrète. Les frères Hans et Fritz Schlumpf, \
+industriels du textile, possèdent en Alsace des filatures de laine. À partir de la fin \
+des années 1950, Fritz achète sans compter des voitures anciennes, surtout des Bugatti, \
+et les fait restaurer dans les bâtiments d'une de leurs usines de Mulhouse, à l'abri \
+des regards. En 1976, l'entreprise s'effondre et les frères partent pour la Suisse ; \
+au début de 1977, les ouvriers qui occupent l'usine découvrent l'immense collection. \
+L'État la fait classer monument historique, puis une association la rachète et ouvre \
+en 1982 le Musée national de l'automobile, devenu en 2006 la Cité de l'Automobile. Plus \
+de quatre cents voitures y sont exposées, dont deux Bugatti Royale, dans une halle \
+immense éclairée par des centaines de lampadaires inspirés de ceux du pont \
+Alexandre-III, à Paris."""
+ici = """
+Le bâtiment d'ARTEON reprend l'idée de la filature transformée en musée. On entre par \
+le sud dans l'atelier des pionniers, aux murs de brique claire, haut de 7 mètres, puis \
+on passe à la salle de la Belle Époque, couleur de crème, et à l'atelier de \
+l'automobile pour tous, gris comme un hangar d'usine. Vient ensuite la grande halle, \
+longue de 28 mètres et haute de 10, aux murs bleu nuit comme les allées de Mulhouse, \
+où les voitures de luxe sont alignées comme sous les lampadaires du musée alsacien. \
+La visite s'achève dans un petit salon couleur de papier ancien, consacré à l'image de \
+l'automobile. Les voitures sont présentées à leur taille réelle, dans de grandes \
+vitrines murales."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la Cité de l'Automobile de Mulhouse, installée dans une ancienne
+# filature : des ateliers en enfilade, puis la grande halle aux allées bordées de
+# lampadaires où la collection Schlumpf aligne ses voitures. Ici, cinq salles en
+# ligne d'ouest en est ; la grande halle est beaucoup plus vaste et plus haute.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une
+# porte se déclare d'un seul côté. Les voitures, à leur taille réelle, sont
+# placées en mètres (position) sur les murs nord et sud.
+
+[[salles]]
+nom = "L'atelier des pionniers"
+theme = "Les débuts de l'automobile, avant 1900 : le fardier à vapeur de Cugnot, le tricycle de Benz et une des premières Panhard et Levassor."
+murs = "#d9cbb8"
+x = 0
+z = 0
+largeur = 18
+profondeur = 12
+hauteur = 7
+portes = ["sud", "est"]
+
+[[salles]]
+nom = "La Belle Époque"
+theme = "L'automobile de la Belle Époque, entre courses et grand tourisme : une De Dion-Bouton de 1900 et la Rolls-Royce Silver Ghost."
+murs = "#e6dccb"
+x = 18
+z = 0
+largeur = 18
+profondeur = 12
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "L'automobile pour tous"
+theme = "La voiture produite en grande série et vendue à bas prix : la Ford T, construite à plus de quinze millions d'exemplaires."
+murs = "#d3d3cf"
+x = 34
+z = 0
+largeur = 14
+profondeur = 12
+hauteur = 6
+portes = ["est"]
+
+[[salles]]
+nom = "La grande halle"
+theme = "Le luxe des années folles, sous les lampadaires : la Hispano-Suiza en bois d'André Dubonnet et la Bugatti Royale d'Ettore Bugatti."
+murs = "#2f3b4a"
+x = 55
+z = 0
+largeur = 28
+profondeur = 20
+hauteur = 10
+portes = ["est"]
+
+[[salles]]
+nom = "Le salon de l'affiche"
+theme = "L'image de l'automobile : une estampe de Toulouse-Lautrec et la première affiche du Bibendum Michelin."
+murs = "#ebe1cc"
+x = 75
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Fardier à vapeur"
+artiste = "Nicolas-Joseph Cugnot"
+annee = "1770"
+image = "fardier-cugnot.jpg"
+licence = "CC0"
+credit = "Photo : Joe deSousa"
+source = "https://commons.wikimedia.org/wiki/File:Joseph_Cugnot%27s_1770_Fardier_%C3%A0_Vapeur,_Mus%C3%A9e_des_arts_et_m%C3%A9tiers,_Paris_2015.jpg"
+technique = "Bois de chêne, fer forgé, chaudière et cylindres en cuivre et en bronze ; longueur environ 7,25 m"
+collection = "Musée des Arts et Métiers, Paris"
+note = "Le plus ancien véhicule automobile conservé au monde : un lourd chariot d'artillerie mû par la vapeur, construit pour l'armée de Louis XV."
+description = """
+Un long châssis de poutres de chêne repose sur trois roues de bois cerclées de fer : \
+deux grandes roues à l'arrière, à gauche sur la photographie, et une seule roue à \
+l'avant, à droite. Au-dessus de cette roue avant est suspendue une énorme chaudière de \
+cuivre, ronde comme une marmite, surmontée de deux cylindres verticaux et d'un tuyau \
+recourbé. Des bielles et des cliquets de fer transmettent le mouvement des pistons à la \
+roue avant. Au milieu du châssis, un petit siège de bois pour le conducteur fait face à \
+une barre de direction ; dessous pend un panier d'osier. Le fardier est exposé sur une \
+estrade, entouré d'une rambarde, devant trois hautes fenêtres cintrées de l'ancienne \
+église du musée."""
+evocation = """
+Le fardier n'a rien d'une voiture de promenade : c'est un engin de guerre. Après la \
+guerre de Sept Ans, l'armée française cherche à déplacer plus vite ses lourds canons, \
+tirés jusque-là par des attelages de chevaux. Cugnot imagine de remplacer les chevaux \
+par la force de la vapeur, que l'on n'utilisait alors que dans des machines fixes, pour \
+pomper l'eau des mines. Son chariot est le premier véhicule à se déplacer par sa \
+propre force sur une route. Lent, lourd, difficile à diriger, il n'a jamais servi, \
+mais il marque le début d'une longue histoire : celle de la machine qui avance seule, \
+que l'on appellera plus tard l'automobile."""
+histoire = """
+Ingénieur militaire lorrain, Nicolas-Joseph Cugnot présente en 1769 un premier modèle \
+réduit de son véhicule. Soutenu par le ministre Choiseul et par le général Gribeauval, \
+inspecteur de l'artillerie, il obtient de faire construire à l'Arsenal de Paris un \
+fardier en grandeur réelle, achevé en 1770 et essayé l'année suivante. La machine \
+avance à quelques kilomètres à l'heure et doit s'arrêter souvent pour refaire de la \
+vapeur. La disgrâce de Choiseul, à la fin de 1770, met fin au projet. Le fardier reste \
+remisé à l'Arsenal ; il entre en 1800 au Conservatoire des arts et métiers, fondé \
+quelques années plus tôt, où il est toujours exposé."""
+facture = """
+Le fardier associe le savoir-faire du charron et celui du chaudronnier. Le châssis, \
+les roues à rayons et le siège sont faits comme ceux des voitures d'artillerie de \
+l'époque, en chêne assemblé et renforcé de ferrures. La chaudière de cuivre, chauffée \
+par un foyer placé dessous, envoie la vapeur dans deux cylindres de bronze dont les \
+pistons travaillent tour à tour. Un système de cliquets transforme leur va-et-vient en \
+rotation de la roue avant, qui est à la fois motrice et directrice. Tout le poids de \
+la chaudière, porté en porte-à-faux devant la roue, rendait la direction très dure."""
+details = [
+  "La chaudière de cuivre, ronde comme une marmite, suspendue à l'avant.",
+  "Les deux cylindres verticaux qui dominent la roue avant.",
+  "Les cliquets de fer qui font tourner la roue motrice.",
+  "Le petit siège du conducteur, au milieu du long châssis.",
+  "Le panier d'osier suspendu sous le châssis.",
+]
+themes = ["vapeur", "artillerie", "invention", "lumières", "pionniers"]
+anecdote = """
+Une légende veut que le fardier, lors d'un essai, ait renversé un mur, ce qui en ferait \
+le premier accident de la route. Aucun document de l'époque ne le confirme, mais \
+l'histoire est racontée depuis le XIXᵉ siècle."""
+salle = 1
+mur = "nord"
+position = 0
+largeur = 8.4
+
+[[oeuvres]]
+titre = "Benz Patent-Motorwagen n° 1"
+artiste = "Carl Benz"
+annee = "1886"
+image = "benz-patent-motorwagen.jpg"
+credit = "Photo : Deutsches Museum, Munich"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:View_of_Left_Side_of_Benz_Patent_Motorwagen_in_Deutsches_Museum.jpg"
+technique = "Tubes d'acier, bois, cuir, laiton et cuivre ; moteur monocylindre à quatre temps de 954 cm³, moins d'un cheval ; trois roues à rayons métalliques"
+collection = "Deutsches Museum, Munich"
+note = "Le tricycle breveté par Carl Benz en janvier 1886 : la première voiture conçue d'emblée autour d'un moteur à essence."
+description = """
+Le tricycle est vu de profil, sur un fond blanc. À l'avant, à gauche, une petite roue \
+à fins rayons d'acier est tenue par une fourche, comme celle d'une bicyclette. Une \
+longue colonne verticale porte à son sommet la manivelle de direction. Au centre, un \
+plancher de lattes de bois noir mène à une banquette de cuir capitonné, à deux places, \
+avec un dossier arrondi. Derrière la banquette, entre les deux grandes roues arrière à \
+rayons, on voit le moteur : un réservoir de cuivre, une sphère de laiton brillant, des \
+tubes et, couché à plat, un grand volant d'inertie. Une chaîne transmet le mouvement \
+aux roues arrière."""
+evocation = """
+Le Motorwagen est une machine modeste, presque fragile : une bicyclette agrandie, un \
+siège de calèche et un petit moteur. Il annonce pourtant un monde nouveau. Jusque-là, \
+on avait installé des moteurs sur des voitures à chevaux ; Benz, lui, dessine un \
+véhicule entier autour de son moteur à essence, châssis, direction et transmission \
+compris. Le brevet allemand qu'il dépose le 29 janvier 1886 est souvent considéré \
+comme l'acte de naissance de l'automobile. En août 1888, sa femme Bertha prouve que \
+la machine peut servir : avec ses deux fils, elle parcourt plus de cent kilomètres, \
+de Mannheim à Pforzheim, au volant d'une version améliorée."""
+histoire = """
+Carl Benz construit son tricycle dans son atelier de Mannheim en 1885 et dépose le \
+brevet en janvier 1886 ; les premiers essais publics ont lieu dans les rues de la \
+ville pendant l'été. Les passants se moquent de ce chariot sans cheval qui pétarade. \
+Benz améliore ensuite son modèle et commence à le vendre, notamment en France, grâce \
+à l'agent parisien Émile Roger. Ce premier exemplaire, la voiture n° 1, a été donné \
+par son constructeur au Deutsches Museum de Munich, le grand musée allemand des \
+sciences et des techniques, où il est exposé depuis le début du XXᵉ siècle. Les \
+nombreux exemplaires visibles dans d'autres musées sont des répliques."""
+facture = """
+Benz emprunte beaucoup au cycle, alors en plein essor : cadre en tubes d'acier, roues \
+à rayons métalliques, chaîne. Le moteur, de sa conception, est un monocylindre à \
+quatre temps couché à l'arrière ; son grand volant d'inertie horizontal régularise la \
+rotation. Le carburant s'évapore dans un carburateur à surface, et l'allumage est \
+électrique, par une bobine et une batterie. L'eau de refroidissement s'évapore peu à \
+peu et doit être rajoutée. Une courroie, un différentiel puis deux chaînes \
+transmettent la force aux roues arrière ; le véhicule atteint environ 16 km/h. Le choix de trois roues évitait \
+à Benz de résoudre le problème de la direction de deux roues avant."""
+details = [
+  "La manivelle de direction au sommet de la longue colonne.",
+  "Le grand volant d'inertie couché à plat derrière la banquette.",
+  "La sphère de laiton et le réservoir de cuivre du moteur.",
+  "La chaîne qui entraîne les roues arrière.",
+  "Le plancher de lattes de bois noir.",
+]
+themes = ["moteur", "brevet", "invention", "allemagne", "pionniers"]
+anecdote = """
+Pendant son voyage de 1888, Bertha Benz doit improviser : elle achète du solvant dans \
+une pharmacie de Wiesloch pour faire le plein, et débouche une conduite de carburant \
+avec une épingle à chapeau."""
+salle = 1
+mur = "sud"
+position = -5
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Voiture Panhard et Levassor de 1891"
+artiste = "Panhard et Levassor"
+annee = "1891"
+image = "panhard-levassor-1891.jpg"
+licence = "Domaine public"
+credit = "Photo : Alf van Beem"
+source = "https://commons.wikimedia.org/wiki/File:1891_Panhard_%26_Levassor,_1,75cv_12kmh_moteur_Daimler_P2C_Gavois_(inv_5103)_photo_1.JPG"
+technique = "Bois, fer, cuir et laiton ; moteur bicylindre Daimler à l'avant, 1,75 ch ; vitesse environ 12 km/h"
+collection = "Cité de l'Automobile – Musée national, collection Schlumpf, Mulhouse"
+note = "Une des premières voitures vendues par Panhard et Levassor, avec le moteur à l'avant : la disposition de presque toutes les voitures du siècle suivant."
+description = """
+La voiture est vue de trois quarts avant. Elle ressemble encore à une petite calèche : \
+quatre roues de bois à rayons, plus grandes à l'arrière, et une capote de cuir noir \
+relevée qui abrite une banquette capitonnée. Mais à l'avant, là où l'on attendrait un \
+cheval, se dresse un caisson de bois noir percé de fentes d'aération : il contient le \
+moteur. Sur sa face, un grand monogramme de laiton entrelace les lettres P et L. Une \
+lanterne ronde, des graisseurs de laiton et une manivelle de démarrage dépassent de la \
+caisse. Sous le châssis, on devine les chaînes de transmission. À droite, au second \
+plan, apparaît une autre voiture ancienne du musée."""
+evocation = """
+Cette voiture est un moment de bascule. Ses formes sont celles d'une voiture à \
+chevaux, mais son organisation est déjà celle de l'automobile moderne : le moteur à \
+l'avant, puis l'embrayage, la boîte de vitesses et la transmission vers les roues \
+arrière. Ce schéma, que l'on appellera le « système Panhard », s'imposera pendant des \
+décennies. Il montre aussi la place de la France dans les débuts de l'automobile : le \
+moteur est allemand, inventé par Gottlieb Daimler, mais ce sont des constructeurs \
+parisiens qui en tirent les premières voitures vendues en série, avant que la course \
+et les salons ne fassent de Paris la capitale de la nouvelle industrie."""
+histoire = """
+René Panhard et Émile Levassor fabriquent à Paris des machines à travailler le bois. \
+À la fin des années 1880, ils obtiennent le droit de construire en France les moteurs \
+de Gottlieb Daimler, par l'intermédiaire de la veuve d'Édouard Sarazin, qui devient \
+l'épouse de Levassor. Après des essais avec un moteur placé au centre, Levassor \
+choisit en 1891 de le mettre à l'avant. Les premières voitures sont vendues la même \
+année à des clients particuliers. Le musée de Mulhouse présente celle-ci comme la \
+voiture de l'abbé Gavois, un prêtre qui fut l'un des premiers acheteurs de la marque. \
+Elle appartient aujourd'hui à la collection nationale de la Cité de l'Automobile."""
+facture = """
+La caisse et les roues sont l'œuvre d'un carrossier, comme pour une voiture attelée : \
+bois peint, ferrures, cuir de la capote et de la banquette. La nouveauté est \
+mécanique. Le moteur bicylindre en V, construit sous licence Daimler, est enfermé dans \
+un caisson de bois à l'avant ; il tourne à quelques centaines de tours par minute et \
+développe moins de deux chevaux. Un embrayage à friction et une boîte de vitesses à \
+engrenages permettent de démarrer et de changer d'allure, puis des chaînes entraînent \
+les roues arrière. Les roues sont cerclées de fer : les pneumatiques ne viendront \
+qu'après 1895."""
+details = [
+  "Le monogramme de laiton PL sur le caisson du moteur.",
+  "La capote de cuir relevée au-dessus de la banquette capitonnée.",
+  "Les fentes d'aération du caisson de bois.",
+  "La lanterne ronde fixée sur le côté du moteur.",
+  "Les roues de bois cerclées de fer, plus grandes à l'arrière.",
+]
+themes = ["moteur", "paris", "invention", "voiture attelée", "pionniers"]
+anecdote = """
+En 1895, Émile Levassor arrive le premier de la course Paris–Bordeaux–Paris, après \
+près de 49 heures de route, presque sans quitter le volant. Un monument lui rend \
+hommage à la porte Maillot, à Paris."""
+salle = 1
+mur = "sud"
+position = 5
+largeur = 2.2
+
+[[oeuvres]]
+titre = "De Dion-Bouton vis-à-vis"
+artiste = "De Dion-Bouton"
+annee = "1900"
+image = "de-dion-bouton-vis-a-vis.jpg"
+licence = "CC0"
+credit = "Photo : Alf van Beem"
+source = "https://commons.wikimedia.org/wiki/File:1900_De_Dion-bouton3.5-HP_Vis-%C3%A0-Vis.JPG"
+technique = "Acier, bois, cuir et laiton ; moteur monocylindre De Dion-Bouton de 3,5 ch placé à l'arrière"
+collection = "Louwman Museum, La Haye"
+note = "La petite voiture qui popularise l'automobile en Europe vers 1900 : deux passagers assis face au conducteur, d'où son nom."
+description = """
+La petite voiture est vue de trois quarts avant, sur un socle blanc, devant un mur bleu \
+sombre. Elle a deux banquettes de cuir noir qui se font face : la plus haute, au fond, \
+est celle du conducteur ; l'autre, à l'avant, accueille deux passagers assis dos à la \
+route. Entre elles, une colonne de direction est couronnée d'un petit volant et de \
+manettes de laiton. La caisse est noire, filetée de rouge sombre, et l'avant est \
+garni d'une plaque de laiton. Deux grosses lanternes de laiton poli brillent sur le \
+côté. Les quatre roues ont des rayons métalliques couleur crème et des pneumatiques. \
+Une autre voiture ancienne apparaît à gauche."""
+evocation = """
+Avec ses passagers assis face au conducteur, comme dans une voiture à chevaux, le \
+vis-à-vis est une voiture conviviale : on y bavarde autant qu'on y voyage. Il incarne \
+la Belle Époque de l'automobile, ce moment où la voiture, encore réservée aux riches, \
+devient un loisir à la mode, avec ses manteaux de fourrure, ses lunettes et ses \
+voilettes contre la poussière. Le comte de Dion, son constructeur, en est la figure \
+mondaine : fondateur de l'Automobile Club de France, organisateur de courses, il fait \
+de la vitesse un spectacle. Ses petits moteurs légers, vendus à de nombreux \
+constructeurs, équipent alors des milliers de voitures et de tricycles en Europe."""
+histoire = """
+Le comte Albert de Dion, le mécanicien Georges Bouton et son beau-frère Charles \
+Trépardoux fondent leur entreprise à Paris en 1883 ; ils construisent d'abord des \
+véhicules à vapeur. En 1894, un tracteur à vapeur De Dion arrive le premier au \
+concours Paris–Rouen, souvent considéré comme la première compétition automobile. \
+L'entreprise se tourne ensuite vers le moteur à essence : son petit monocylindre, qui \
+tourne beaucoup plus vite que les moteurs de l'époque, équipe d'abord des tricycles, \
+puis des voiturettes comme ce vis-à-vis. Vers 1900, De Dion-Bouton est l'un des plus \
+grands constructeurs du monde. Cet exemplaire est conservé au Louwman Museum, le musée \
+de l'automobile de La Haye."""
+facture = """
+Le secret de la voiture est son moteur : un monocylindre léger, refroidi par eau, qui \
+tourne à près de 1 500 tours par minute, presque deux fois plus vite que ses \
+concurrents, et fournit ainsi plus de puissance pour un poids réduit. Il est placé à \
+l'arrière, sous la banquette du conducteur. La transmission utilise le pont De Dion, \
+une suspension arrière ingénieuse inventée par l'atelier, encore employée bien plus \
+tard sur des voitures de course. La caisse, en bois et en tôle peinte, est finie avec \
+soin, filets de couleur, garnitures de cuir et accessoires de laiton qu'il fallait \
+astiquer après chaque sortie."""
+details = [
+  "Les deux banquettes de cuir qui se font face.",
+  "Les manettes de laiton au sommet de la colonne de direction.",
+  "Les deux grosses lanternes de laiton poli.",
+  "Les roues à rayons couleur crème et leurs pneumatiques.",
+  "Les filets rouge sombre sur la caisse noire.",
+]
+themes = ["belle époque", "voiturette", "course", "paris", "laiton"]
+anecdote = """
+Le comte de Dion finança en 1900 la création du journal sportif L'Auto, qui organisa \
+trois ans plus tard le premier Tour de France cycliste."""
+salle = 2
+mur = "sud"
+position = -4
+largeur = 3.0
+
+[[oeuvres]]
+titre = "La Rolls-Royce Silver Ghost, Claude Johnson au volant"
+artiste = "Rolls-Royce"
+annee = "1907"
+image = "rolls-royce-silver-ghost.jpg"
+licence = "Domaine public"
+cadre = "noir"
+source = "https://commons.wikimedia.org/wiki/File:Rolls_Royce_Silver_Ghost_1907.jpg"
+technique = "Photographie anonyme publiée en 1908 dans « The Motor Car: A History and Souvenir » de W. Eden Hooper ; la voiture : châssis 40/50 HP, moteur six cylindres de 7 litres, carrosserie peinte couleur d'aluminium"
+collection = "Photographie publiée en 1908 ; la voiture AX 201 est toujours conservée en Angleterre"
+note = "La voiture qui a fait la réputation de Rolls-Royce, photographiée l'année de sa construction : la Silver Ghost, le « fantôme d'argent »."
+description = """
+Une photographie en noir et blanc, sur une page de livre, montre une grande voiture \
+découverte arrêtée sur des pavés. Sa carrosserie claire, presque blanche, brille comme \
+du métal. On voit, de trois quarts avant, les gros phares, le radiateur haut et \
+étroit, les ailes souples et les roues à rayons de bois clair. Cinq hommes en \
+casquette et en manteau sont assis à bord ; un sixième, en long cache-poussière, \
+lunettes de route sur la casquette, se tient debout devant la portière arrière. Au \
+volant, selon la légende, est assis Claude Johnson. Sous l'image, une légende en \
+anglais dit : « La célèbre voiture Rolls-Royce à six cylindres Silver Ghost »."""
+evocation = """
+La photographie a été prise pour vanter une voiture d'exception, et elle y parvient. \
+Tout dit la solidité tranquille : la masse claire de la carrosserie, les hommes \
+installés comme dans un salon, le chauffeur debout qui semble garder le véhicule. \
+Pour Rolls-Royce, jeune entreprise fondée en 1906, la Silver Ghost devait prouver que \
+l'on pouvait construire une voiture silencieuse, douce et infatigable. Le nom choisi \
+par Claude Johnson joue sur ces deux qualités : l'argent de la carrosserie et le \
+silence d'un fantôme. Depuis, la marque n'a cessé d'être synonyme de luxe, et cette \
+voiture est sans doute la plus célèbre de son histoire."""
+histoire = """
+Charles Rolls, aristocrate passionné d'automobile, et Henry Royce, ingénieur de \
+Manchester, s'associent en 1904. En 1906, ils présentent le châssis 40/50 HP à six \
+cylindres. Le douzième exemplaire, immatriculé AX 201, est peint couleur d'aluminium \
+et garni d'accessoires argentés ; Claude Johnson, directeur commercial de la firme, \
+le baptise Silver Ghost. En 1907, la voiture parcourt quelque 15 000 miles, plus de \
+24 000 kilomètres, entre Londres et Glasgow et sur les routes d'Écosse, sous le \
+contrôle de l'Automobile Club, avec très peu de pannes. Revendue, elle a été rachetée \
+par Rolls-Royce en 1948. Cette photographie a été publiée dès 1908 dans un livre \
+consacré à l'automobile."""
+facture = """
+La photographie, faite en plein jour, joue sur le contraste entre la carrosserie \
+claire et les vêtements sombres des passagers ; le photographe s'est placé de trois \
+quarts avant pour montrer à la fois la longueur de la voiture et son radiateur, \
+devenu l'emblème de la marque. Reproduite par la similigravure, technique qui \
+permettait d'imprimer les photographies dans les livres, elle garde sur la page un \
+léger grain. La voiture elle-même est une pièce de mécanique soignée : moteur de six \
+cylindres d'environ 7 litres, réputé pour son silence, châssis robuste et carrosserie \
+découverte de type tourisme, faite à la main."""
+details = [
+  "La carrosserie claire, peinte couleur d'aluminium.",
+  "Le haut radiateur étroit, encadré de deux gros phares.",
+  "Le passager debout en cache-poussière, lunettes sur la casquette.",
+  "Les roues à rayons de bois clair.",
+  "Les pavés de la rue sous les roues.",
+]
+themes = ["luxe", "belle époque", "angleterre", "photographie", "endurance"]
+anecdote = """
+L'immatriculation AX 201 de la Silver Ghost est restée attachée à la voiture ; on dit \
+souvent qu'elle est l'automobile la plus précieuse du monde, même si elle n'a jamais \
+été mise en vente depuis son rachat par Rolls-Royce."""
+salle = 2
+mur = "nord"
+position = 0
+largeur = 5.4
+
+[[oeuvres]]
+titre = "Ford T Touring"
+artiste = "Ford Motor Company"
+annee = "1913"
+image = "ford-t-1913.jpg"
+credit = "Photo : Mariordo (Mario Roberto Duran Ortiz)"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:1913_Ford_Model_T_Touring_01_2012_DC_00476.JPG"
+technique = "Acier au vanadium, bois, cuir et laiton ; moteur quatre cylindres de 2,9 litres, 20 ch ; boîte épicycloïdale à deux vitesses"
+collection = "National Museum of American History, Smithsonian Institution, Washington"
+note = "La voiture qui a mis l'Amérique sur la route : produite à plus de quinze millions d'exemplaires entre 1908 et 1927."
+description = """
+La Ford T est vue de trois quarts avant, sur une estrade couverte de moquette, devant \
+un fond bleu. C'est une voiture de tourisme à cinq places, haute sur ses roues : une \
+capote de toile beige tendue sur des arceaux abrite deux banquettes de cuir noir \
+capitonné. La caisse est noire et brillante ; une planche de bois verni sépare le \
+capot du poste de conduite. À l'avant, le radiateur de laiton porte le nom Ford en \
+lettres cursives, entre deux gros phares de laiton. Les roues sont en bois peint en \
+noir, à douze rayons, avec des pneus clairs. Un pare-brise vertical se dresse devant \
+le volant."""
+evocation = """
+Henry Ford voulait construire « une voiture pour la multitude », assez solide pour les \
+mauvaises routes des campagnes américaines et assez bon marché pour qu'un ouvrier \
+puisse l'acheter. La Ford T a tenu cette promesse. Simple à conduire et à réparer, \
+elle transforme la vie des fermiers, des médecins de campagne, des familles qui \
+découvrent les vacances sur la route. Elle change aussi le travail : pour la produire, \
+Ford invente la chaîne de montage mobile, qui devient le modèle de toute l'industrie \
+du XXᵉ siècle. Surnommée « Tin Lizzie », elle reste le symbole de l'entrée de \
+l'automobile dans la vie de tous les jours."""
+histoire = """
+La Ford T est présentée en octobre 1908 et fabriquée à Detroit, puis dans l'usine de \
+Highland Park. En 1913, Ford y met en service la chaîne de montage mobile : le temps \
+d'assemblage d'un châssis passe de plus de douze heures à environ une heure et demie, \
+et le prix de la voiture baisse année après année. En 1914, Ford double le salaire de \
+ses ouvriers, à cinq dollars par jour. Lorsque la production s'arrête en 1927, plus de \
+quinze millions de Ford T ont été construites. Cet exemplaire de 1913 est exposé au \
+National Museum of American History, à Washington ; selon le musée, il a reçu à la \
+demande de son propriétaire un démarreur et des phares électriques."""
+facture = """
+La Ford T est conçue pour être produite en masse et réparée par n'importe qui. Son \
+moteur à quatre cylindres, fondu d'un seul bloc avec une culasse démontable, est \
+simple et robuste. Ford emploie de l'acier au vanadium, plus léger et plus résistant \
+que l'acier ordinaire. La boîte de vitesses épicycloïdale se commande au pied, par \
+trois pédales, ce qui demande un apprentissage particulier. La voiture est haute sur \
+ses roues pour franchir les ornières, et sa suspension par ressorts transversaux lui \
+permet de suivre les routes déformées. Les pièces sont interchangeables : on les \
+achetait par catalogue et on les montait soi-même."""
+details = [
+  "Le nom Ford en lettres cursives sur le radiateur de laiton.",
+  "Les deux gros phares de laiton de part et d'autre du radiateur.",
+  "La capote de toile beige tendue sur ses arceaux.",
+  "La planche de bois verni entre le capot et le poste de conduite.",
+  "Les roues de bois à douze rayons.",
+]
+themes = ["production en série", "amérique", "usine", "chaîne de montage", "démocratisation"]
+anecdote = """
+Henry Ford aurait dit que le client pouvait choisir n'importe quelle couleur, pourvu \
+que ce soit le noir : de 1914 à 1925, la Ford T n'est livrée qu'en noir, une peinture \
+qui séchait plus vite que les autres."""
+salle = 3
+mur = "nord"
+position = 0
+largeur = 4.2
+
+[[oeuvres]]
+titre = "Hispano-Suiza H6C « Tulipwood » Torpedo"
+artiste = "Hispano-Suiza"
+annee = "1924"
+image = "hispano-suiza-tulipwood.jpg"
+credit = "Photo : Prova MO"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:1924_Hispano_Suiza_H6C_Tulipwood_Torpedo_front.jpg"
+technique = "Châssis H6C, moteur six cylindres en ligne de 8 litres ; carrosserie Nieuport-Astra en lattes de bois rivetées sur une armature légère"
+collection = "Collection particulière"
+note = "La voiture de course et de prestige du pilote André Dubonnet, à la carrosserie de bois rivetée comme une coque d'avion."
+description = """
+La voiture est vue de trois quarts avant, sur une estrade noire. Toute sa carrosserie \
+est en bois verni, d'un brun doré, faite de lattes étroites fixées par des milliers de \
+petits rivets de cuivre. Les ailes arrondies, les capots et la poupe effilée sont en \
+bois eux aussi. À l'avant, un radiateur chromé porte le nom Hispano en écriture \
+penchée, entre deux phares protégés par une grille. Les roues ont des rayons \
+métalliques cuivrés, et une roue de secours est fixée sur le flanc, derrière le capot \
+percé d'ouïes d'aération. Un gros tuyau annelé sort du capot. Derrière la voiture, un \
+grand écran montre des images d'intérieurs de voitures."""
+evocation = """
+La Tulipwood résume le luxe sportif des années folles. Son propriétaire, André \
+Dubonnet, héritier de la célèbre marque d'apéritif, était un as de l'aviation pendant \
+la Grande Guerre et un pilote de course. Il demande au constructeur d'avions \
+Nieuport-Astra une carrosserie aussi légère qu'une aile : le bois, matériau des \
+avions de l'époque, devient ici un signe d'élégance. La voiture associe ainsi la \
+vitesse, l'aviation et le goût des matériaux précieux. La marque elle-même est liée à \
+l'aviation : sur ses radiateurs vole une cigogne d'argent, en souvenir de l'escadrille \
+des Cigognes de Georges Guynemer, dont les avions avaient des moteurs Hispano-Suiza."""
+histoire = """
+Fondée à Barcelone en 1904, la société Hispano-Suiza doit son nom à son ingénieur, le \
+Suisse Marc Birkigt. Pendant la Première Guerre mondiale, ses moteurs d'avion \
+équipent des milliers de chasseurs alliés. En 1919, la marque présente au Salon de \
+Paris la H6, une voiture de grand luxe fabriquée en France, dont le moteur à six \
+cylindres dérive de cette expérience. La version H6C, plus puissante, est destinée au \
+sport. En 1924, André Dubonnet fait carrosser la sienne par Nieuport-Astra et \
+l'engage en course. La voiture, conservée depuis dans des collections privées, a été \
+exposée aux États-Unis, notamment au Blackhawk Museum de Californie, et présentée aux \
+enchères à Monterey en 2022."""
+facture = """
+La carrosserie est construite comme un fuselage d'avion : de fines lattes de bois \
+sont posées sur une armature légère, puis fixées par des rivets de cuivre, alignés en \
+longues rangées qui dessinent les formes de la voiture. Le bois, poncé et verni, \
+laisse voir son veinage. Sous le capot, le moteur de Birkigt est un six cylindres en \
+ligne en alliage d'aluminium, à arbre à cames en tête. La H6 est aussi l'une des \
+premières voitures à freins sur les quatre roues, assistés par un servo-frein \
+mécanique entraîné par la boîte de vitesses, un système si efficace que Rolls-Royce en \
+acheta la licence."""
+details = [
+  "Les rangées de rivets de cuivre sur les lattes de bois verni.",
+  "Le nom Hispano en écriture penchée sur le radiateur.",
+  "Les grilles qui protègent les deux phares.",
+  "Les roues à rayons cuivrés et la roue de secours sur le flanc.",
+  "Les ouïes d'aération sur le côté du capot.",
+]
+themes = ["luxe", "années folles", "bois", "aviation", "course"]
+anecdote = """
+Le surnom de la voiture, « Tulipwood », désigne un bois précieux ; certains \
+spécialistes pensent pourtant que sa carrosserie est plutôt en acajou. Le surnom, lui, \
+est resté."""
+salle = 4
+mur = "sud"
+position = 0
+largeur = 5.5
+
+[[oeuvres]]
+titre = "Bugatti Type 41 Royale, « Coupé Napoléon »"
+artiste = "Ettore Bugatti"
+annee = "vers 1929"
+image = "bugatti-royale-napoleon.jpg"
+credit = "Photo : Aurélien Boffy"
+licence = "CC BY 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Bugatti_Royale_Coup%C3%A9_Napol%C3%A9on.jpg"
+technique = "Moteur huit cylindres en ligne de 12,7 litres ; empattement 4,30 m, longueur environ 6,40 m ; carrosserie de coupé de ville"
+collection = "Cité de l'Automobile – Musée national, collection Schlumpf, Mulhouse"
+note = "La voiture personnelle d'Ettore Bugatti, sur le châssis prototype de la Royale : l'automobile la plus grande et la plus luxueuse de son temps."
+description = """
+La Royale, immense, est vue de trois quarts avant sur un tapis rouge, dans une allée \
+du musée de Mulhouse éclairée par des lampadaires à globes. Sa carrosserie est noire \
+et bleue : un long capot noir, des flancs bleu clair et un toit fermé sur l'arrière, \
+tandis que la place du chauffeur, à l'avant, est découverte. De grandes ailes noires \
+s'étirent en courbe des roues avant jusqu'aux marchepieds. Le radiateur en fer à \
+cheval, chromé, est encadré par deux énormes phares ; au sommet, une petite statuette \
+d'éléphant dressé sur ses pattes arrière sert de bouchon. Les roues ont des \
+enjoliveurs pleins. Derrière, d'autres voitures de la collection."""
+evocation = """
+Ettore Bugatti voulait construire la voiture des rois. La Royale devait rivaliser avec \
+les plus grandes Rolls-Royce et attirer les souverains d'Europe ; elle arrive au moment \
+de la crise de 1929, et seules six sont construites, dont trois vendues. Elle est \
+restée le symbole d'un luxe sans mesure, celui des années folles finissantes. Le \
+Coupé Napoléon, que Bugatti utilisait lui-même, a aussi une dimension familiale : \
+l'éléphant du bouchon de radiateur reprend une sculpture de son frère Rembrandt \
+Bugatti, sculpteur animalier mort en 1916. La voiture associe ainsi l'art et la \
+mécanique, comme l'avait fait leur père Carlo, créateur de meubles."""
+histoire = """
+Ettore Bugatti, Italien installé à Molsheim, en Alsace, conçoit la Royale au milieu \
+des années 1920. Le prototype, sur le châssis 41100, roule dès 1926 et reçoit \
+plusieurs carrosseries successives ; celle de coupé de ville, dite « Coupé Napoléon », \
+date de la fin des années 1920. Bugatti la garde pour son usage personnel, et elle \
+reste dans la famille après sa mort, en 1947. En 1963, les frères Schlumpf rachètent \
+un ensemble de voitures conservées à Molsheim par la famille Bugatti, dont celle-ci. Découverte avec le \
+reste de leur collection en 1977, elle est aujourd'hui l'une des deux Royale \
+exposées à la Cité de l'Automobile de Mulhouse."""
+facture = """
+Tout est démesuré dans la Royale. Son moteur à huit cylindres en ligne, de près de \
+13 litres, est dérivé d'un projet de moteur d'avion ; d'une seule pièce avec ses \
+cylindres et sa culasse, il est taillé dans des blocs usinés avec la précision \
+d'horloger qui fait la réputation de Bugatti. Les roues, en alliage coulé, portent les \
+tambours de frein. La carrosserie du Coupé Napoléon reprend la forme des voitures de \
+maître : le chauffeur à l'air libre, le propriétaire dans un salon fermé, éclairé par \
+des vitres à l'arrière. Les lignes tendues du capot et des ailes annoncent le style \
+de Jean Bugatti, le fils d'Ettore."""
+details = [
+  "L'éléphant dressé du bouchon de radiateur, d'après Rembrandt Bugatti.",
+  "Le radiateur chromé en fer à cheval, signature de la marque.",
+  "Les deux énormes phares de part et d'autre du radiateur.",
+  "Les flancs bleu clair entre le capot et les ailes noires.",
+  "Les lampadaires à globes de l'allée du musée.",
+]
+themes = ["luxe", "années folles", "alsace", "démesure", "collection"]
+anecdote = """
+Le moteur de la Royale a connu une seconde vie : faute d'acheteurs pour la voiture, \
+Bugatti l'utilisa pour propulser des autorails, des trains rapides qui roulèrent en \
+France jusque dans les années 1950."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 7.5
+
+[[oeuvres]]
+titre = "L'Automobiliste"
+artiste = "Henri de Toulouse-Lautrec"
+annee = "1896–1898"
+image = "lautrec-automobiliste.jpg"
+licence = "CC0"
+cadre = "estampe"
+source = "https://commons.wikimedia.org/wiki/File:Henri_de_Toulouse-Lautrec,_The_Motorist_(L%27automobiliste),_1896,_NGA_33915.jpg"
+technique = "Lithographie en noir sur papier"
+collection = "National Gallery of Art, Washington (Rosenwald Collection, 1947.7.157)"
+note = "Un conducteur emmitouflé de fourrure fonce sur la route, dans un nuage de poussière : Lautrec saisit en quelques traits la nouvelle figure de l'automobiliste."
+description = """
+Au premier plan, à gauche, un homme massif est assis au volant d'une voiture dont on ne \
+voit que l'avant, en bas de l'image, et le volant à rayons. Il est enveloppé d'un \
+énorme manteau de fourrure, aux poils dessinés par des hachures nerveuses ; une \
+casquette plate et des lunettes rondes encadrent son visage moustachu. Sa main droite \
+gantée serre une manette. Derrière lui, un grand nuage de poussière ou de fumée \
+s'élève vers le ciel. À droite, à peine esquissée au trait, une femme élégante en robe \
+longue s'éloigne sur le bord de la route, suivie d'un petit chien. Dans la marge, en \
+bas, une inscription manuscrite au crayon."""
+evocation = """
+Lautrec, peintre des cabarets et des cirques, s'intéresse à toutes les nouveautés de \
+la vie moderne : la bicyclette, le théâtre, et maintenant l'automobile. Il en montre \
+moins la machine que l'homme qu'elle transforme. Son conducteur, presque caricatural, \
+n'est plus qu'une masse de fourrure, de lunettes et de détermination, lancé dans un \
+tourbillon de poussière. Le contraste avec la promeneuse et son petit chien, légers, \
+dessinés d'un trait fin, est plein d'ironie : l'ancien monde, celui de la flânerie, \
+regarde passer le nouveau. On reconnaît traditionnellement dans le conducteur le \
+cousin de l'artiste, le docteur Gabriel Tapié de Céleyran."""
+histoire = """
+Henri de Toulouse-Lautrec pratique intensément la lithographie à partir de 1891, pour \
+des affiches, des couvertures de partitions et des estampes vendues aux amateurs. \
+L'Automobiliste date de la fin des années 1890, alors que les premières voitures \
+commencent à circuler sur les routes de France ; le National Gallery of Art la date de \
+1896, d'autres catalogues de 1898. La planche, éditée en petit nombre, figure dans le \
+catalogue de l'œuvre gravé de Lautrec établi par Loys Delteil. Cette épreuve fait \
+partie de l'immense collection d'estampes du collectionneur américain Lessing J. \
+Rosenwald, donnée au National Gallery of Art de Washington, et entrée au musée en \
+1947."""
+facture = """
+La lithographie permet à Lautrec de dessiner directement sur la pierre, au crayon \
+gras, avec la même liberté que sur une feuille de papier. Il oppose ici deux \
+manières : des hachures serrées et vigoureuses, presque noires, pour le manteau de \
+fourrure et la poussière, et un trait fin, à peine appuyé, pour la promeneuse et le \
+paysage. Les blancs du papier deviennent la route et le ciel. Le cadrage, coupé net \
+sur le volant et le bord de la voiture, vient des estampes japonaises et de la \
+photographie, que Lautrec admirait : il donne au spectateur l'impression d'être assis \
+à côté du conducteur."""
+details = [
+  "Les lunettes rondes et la casquette plate du conducteur.",
+  "Les hachures nerveuses du manteau de fourrure.",
+  "Le volant à rayons, coupé par le bord de l'image.",
+  "La promeneuse esquissée au trait et son petit chien.",
+  "Le monogramme de l'artiste dans un cercle, en bas à gauche.",
+]
+themes = ["estampe", "vie moderne", "vitesse", "caricature", "belle époque"]
+anecdote = """
+Lautrec aimait aussi le cyclisme : en 1896, il dessine pour les cycles Simpson \
+l'affiche « La Chaîne Simpson », où pose le coureur Constant Huret."""
+salle = 5
+mur = "est"
+position = 0
+largeur = 0.6
+
+[[oeuvres]]
+titre = "Nunc est bibendum !!… Le pneu Michelin boit l'obstacle !"
+artiste = "O'Galop (Marius Rossillon)"
+annee = "1898"
+image = "michelin-nunc-est-bibendum.jpg"
+licence = "Domaine public"
+cadre = "noir"
+source = "https://commons.wikimedia.org/wiki/File:Michelin_Poster_1898.jpg"
+technique = "Affiche lithographiée en couleurs (reproduction)"
+collection = "Affiche publicitaire pour Michelin ; exemplaires dans plusieurs collections"
+note = "La première apparition du Bibendum, le bonhomme fait de pneus, qui lève sa coupe de clous et de tessons de verre."
+description = """
+Sur un fond bleu vert, un personnage blanc fait d'une pile de pneus empilés, avec un \
+lorgnon sur le nez, est attablé devant une nappe blanche. Il lève de la main droite \
+une coupe remplie de clous et de morceaux de verre, prête à être bue. De part et \
+d'autre, deux autres personnages en pneus, dégonflés et grimaçants, l'un d'eux \
+marqué « Pneu X », semblent mal en point. En haut, en grandes lettres rouges, on lit \
+« Nunc est bibendum !!… », puis « c'est-à-dire : ». En bas, sur la nappe : « À votre \
+santé, le pneu Michelin boit l'obstacle ! ». La signature d'O'Galop est à droite."""
+evocation = """
+L'affiche transforme un argument technique en image inoubliable. La route de 1898 est \
+semée de clous de fer à cheval et de tessons : le pneu Michelin, dit-elle, les avale \
+sans crever, alors que les pneus concurrents, dégonflés, font triste mine. La formule \
+latine vient d'une ode d'Horace, « c'est maintenant qu'il faut boire », et le \
+bonhomme en pneus y gagne son nom : Bibendum. Il deviendra l'un des personnages \
+publicitaires les plus célèbres du monde. L'affiche montre aussi que l'automobile \
+crée tout un commerce autour d'elle, pneus, carburant, guides et cartes routières, \
+dont la publicité s'empare aussitôt."""
+histoire = """
+Les frères André et Édouard Michelin reprennent en 1889 une entreprise de caoutchouc \
+de Clermont-Ferrand. Ils mettent au point un pneu de bicyclette démontable, puis \
+engagent en 1895 dans la course Paris–Bordeaux–Paris une voiture montée sur \
+pneumatiques, l'Éclair. Selon la tradition de l'entreprise, la vue d'une pile de pneus \
+à l'exposition de Lyon de 1894 aurait donné à Édouard l'idée d'un personnage. En 1898, \
+le dessinateur O'Galop reprend pour Michelin un projet d'affiche refusé par une \
+brasserie, où un buveur lève sa chope : Bibendum est né. Cette reproduction a été \
+numérisée d'après un calendrier."""
+facture = """
+O'Galop, dessinateur d'humour, construit l'affiche comme un dessin de presse : des \
+contours nets, des aplats de couleur, des personnages expressifs. Le Bibendum est fait \
+de pneus de bicyclette empilés, blancs comme l'était alors le caoutchouc, avant que \
+l'on n'ajoute du noir de carbone. Le rouge des lettres et le bleu vert du fond \
+ressortent vivement, comme le veut l'affiche de rue, faite pour être lue de loin. Le \
+texte, mêlant latin et français, est intégré à l'image : il se lit de haut en bas, \
+comme une histoire drôle avec sa chute, « le pneu Michelin boit l'obstacle »."""
+details = [
+  "La coupe de clous et de tessons de verre levée par Bibendum.",
+  "Le lorgnon perché sur le nez du bonhomme en pneus.",
+  "Le concurrent dégonflé marqué « Pneu X ».",
+  "Les grandes lettres rouges de la formule latine.",
+  "La signature d'O'Galop, à droite au-dessus du texte.",
+]
+themes = ["affiche", "publicité", "pneu", "humour", "belle époque"]
+anecdote = """
+Bibendum est blanc parce que les pneus l'étaient : il a fallu attendre les années \
+1910 pour que l'on ajoute au caoutchouc le noir de carbone qui le rend plus \
+résistant, et qui a donné aux pneus leur couleur actuelle."""
+salle = 5
+mur = "nord"
+position = 0
+largeur = 1.3
+
+# ─── Les artistes et les constructeurs ───────────────────────────────────────
+
+[[artistes]]
+nom = "Nicolas-Joseph Cugnot"
+vie = "Void (Lorraine), 26 février 1725 – Paris, 2 octobre 1804"
+biographie = """
+Né en Lorraine, Nicolas-Joseph Cugnot devient ingénieur militaire et sert dans \
+l'armée autrichienne, où il s'intéresse aux fortifications et aux machines. Revenu à \
+Paris vers 1763, il publie des ouvrages sur l'art militaire et la fortification. Il \
+se passionne pour la force de la vapeur, que l'on utilise alors surtout pour pomper \
+l'eau des mines, et propose de l'employer pour tirer les canons. Avec l'appui du duc \
+de Choiseul, ministre de la Guerre, et du général Gribeauval, il construit en 1769 un \
+premier modèle, puis en 1770 le grand fardier du Conservatoire des arts et métiers. \
+Le projet est abandonné après la disgrâce de Choiseul. Cugnot reçoit une pension du \
+roi, perdue sous la Révolution puis rétablie par Bonaparte peu avant sa mort."""
+
+[[artistes]]
+nom = "Carl Benz"
+vie = "Mühlburg (Karlsruhe), 25 novembre 1844 – Ladenburg, 4 avril 1929"
+biographie = """
+Fils d'un mécanicien de locomotive mort quand il avait deux ans, Carl Benz étudie la \
+mécanique à l'école polytechnique de Karlsruhe. Après plusieurs emplois, il fonde à \
+Mannheim un atelier où il met au point des moteurs à gaz à deux temps, puis un moteur \
+à essence à quatre temps. En 1885, il construit un tricycle autour de ce moteur et \
+dépose en janvier 1886 le brevet du Motorwagen. Sa femme Bertha, qui a investi sa dot \
+dans l'entreprise, fait en 1888 le premier long voyage en automobile. Benz & Cie \
+devient dans les années 1890 l'un des premiers grands constructeurs du monde, avec \
+la Velo, une petite voiture vendue en série. En 1926, l'entreprise fusionne avec la \
+Daimler-Motoren-Gesellschaft pour former Daimler-Benz, la maison des voitures \
+Mercedes-Benz."""
+
+[[artistes]]
+nom = "Panhard et Levassor"
+vie = "Paris, 1886 (association) ; René Panhard, 1841–1908 ; Émile Levassor, 1843–1897"
+biographie = """
+René Panhard et Émile Levassor, tous deux ingénieurs sortis de l'École centrale, \
+dirigent à Paris, avenue d'Ivry, une entreprise de machines à travailler le bois. Par \
+Édouard Sarazin, représentant de Gottlieb Daimler en France, ils découvrent le moteur \
+à essence ; après la mort de Sarazin, sa veuve Louise, qui détient la licence, épouse \
+Levassor en 1890. L'entreprise construit alors des moteurs Daimler et, dès 1891, des \
+voitures vendues à des particuliers, avec le moteur à l'avant. Levassor, excellent \
+pilote, gagne la course Paris–Bordeaux–Paris en 1895, mais meurt en 1897 des suites \
+d'un accident de course. La société Panhard et Levassor reste pendant des décennies \
+l'un des grands noms de l'automobile française, avant d'être absorbée par Citroën \
+en 1965."""
+
+[[artistes]]
+nom = "De Dion-Bouton"
+vie = "Paris et Puteaux, 1883–1932 ; Albert de Dion, 1856–1946 ; Georges Bouton, 1847–1938"
+biographie = """
+Le comte Albert de Dion, jeune aristocrate fortuné et passionné de mécanique, \
+s'associe en 1883 avec Georges Bouton, fabricant de jouets mécaniques, et son \
+beau-frère Charles Trépardoux. L'atelier construit d'abord des voitures et des \
+tracteurs à vapeur, puis, à partir de 1895, de petits moteurs à essence à haut \
+régime qui équipent tricycles et voiturettes. Ces moteurs, vendus à des dizaines de \
+constructeurs en France et à l'étranger, font de l'usine de Puteaux l'une des plus \
+importantes du monde vers 1900. Le comte de Dion fonde en 1895 l'Automobile Club de \
+France avec le baron de Zuylen et le journaliste Paul Meyan, et devient plus tard \
+député et sénateur. La marque décline après la Première Guerre mondiale et cesse de \
+produire des voitures au début des années 1930."""
+
+[[artistes]]
+nom = "Rolls-Royce"
+vie = "Manchester puis Derby (Angleterre), fondé en 1906 ; Charles Rolls, 1877–1910 ; Henry Royce, 1863–1933"
+biographie = """
+Henry Royce, fils d'un meunier ruiné, apprend la mécanique dans les ateliers du \
+chemin de fer et fonde à Manchester une entreprise de matériel électrique. Mécontent \
+de sa voiture française, il construit en 1904 ses propres automobiles, d'une qualité \
+remarquable. Charles Rolls, fils d'un lord, pilote et vendeur de voitures à Londres, \
+s'engage à vendre toute sa production : Rolls-Royce Limited est fondée en 1906. Le \
+directeur commercial Claude Johnson fait de la 40/50 HP Silver Ghost la vitrine de \
+la marque. Rolls meurt en 1910 dans un accident d'avion ; Royce, malade, dirige les \
+études depuis sa maison du sud de l'Angleterre. Pendant la guerre, l'entreprise \
+fabrique aussi des moteurs d'avion, qui deviennent avec les voitures de luxe sa \
+grande spécialité."""
+
+[[artistes]]
+nom = "Ford Motor Company"
+vie = "Detroit (Michigan), fondée en 1903 ; Henry Ford, 1863–1947"
+biographie = """
+Henry Ford, fils de fermiers du Michigan, travaille comme mécanicien puis comme \
+ingénieur à la compagnie d'électricité Edison de Detroit. Il construit sa première \
+voiture, le Quadricycle, en 1896. Après deux échecs, il fonde en 1903 la Ford Motor \
+Company, qui lance en 1908 la Ford T. Pour la produire à bas prix, Ford organise \
+l'usine de Highland Park autour de la chaîne de montage mobile, mise en service en \
+1913, et augmente fortement les salaires en 1914 pour retenir ses ouvriers. Le \
+succès est immense : à la fin des années 1910, une voiture sur deux aux États-Unis \
+est une Ford T. La Ford T est remplacée en 1927 par la Ford A. Henry Ford, figure \
+controversée pour ses positions politiques et son antisémitisme, dirige l'entreprise \
+jusqu'en 1945."""
+
+[[artistes]]
+nom = "Hispano-Suiza"
+vie = "Barcelone, fondée en 1904, et Bois-Colombes (France) ; Marc Birkigt, 1878–1953"
+biographie = """
+La Hispano-Suiza, « l'hispano-suisse », est fondée à Barcelone en 1904 par l'homme \
+d'affaires Damián Mateu et l'ingénieur suisse Marc Birkigt, né à Genève. Le roi \
+Alphonse XIII d'Espagne, grand amateur, donne son nom à un modèle de sport de 1911. \
+La marque ouvre ensuite une usine en France, à Levallois puis à Bois-Colombes. \
+Pendant la Première Guerre mondiale, le moteur d'avion V8 de Birkigt équipe des \
+milliers de chasseurs alliés, dont les SPAD de Georges Guynemer. Après la guerre, la \
+branche française produit des voitures de très grand luxe, la H6 puis la J12 à douze \
+cylindres, célèbres pour leur mécanique et leurs carrosseries. Dans les années 1930, \
+l'entreprise abandonne l'automobile pour se consacrer aux moteurs d'avion."""
+
+[[artistes]]
+nom = "Ettore Bugatti"
+vie = "Milan, 15 septembre 1881 – Paris, 21 août 1947"
+biographie = """
+Fils de Carlo Bugatti, créateur de meubles et d'objets d'art milanais, et frère du \
+sculpteur animalier Rembrandt Bugatti, Ettore Bugatti grandit dans un milieu \
+d'artistes. Il dessine très jeune des tricycles et des voitures pour plusieurs \
+constructeurs, puis fonde en 1909 sa propre marque à Molsheim, en Alsace, alors \
+allemande. Ses voitures, légères, puissantes et d'une finition parfaite, gagnent des \
+centaines de courses, comme la Type 35, l'une des voitures de course les plus \
+victorieuses de l'histoire. Il conçoit aussi des voitures de grand luxe, dont la \
+Royale, des autorails et des moteurs d'avion. Son fils Jean dessine dans les années \
+1930 les plus belles carrosseries de la marque, avant de se tuer en essayant une \
+voiture en 1939."""
+
+[[artistes]]
+nom = "Henri de Toulouse-Lautrec"
+vie = "Albi, 24 novembre 1864 – château de Malromé (Gironde), 9 septembre 1901"
+biographie = """
+Issu d'une vieille famille aristocratique du Midi, Henri de Toulouse-Lautrec se \
+fracture les deux jambes à l'adolescence ; elles cessent de grandir. Il se consacre \
+alors au dessin et à la peinture, étudie à Paris dans les ateliers de Bonnat et de \
+Cormon, et s'installe à Montmartre. Il devient le peintre des cabarets, des bals, des \
+cirques et des maisons closes, et se lie avec les artistes de la scène, Aristide \
+Bruant, Jane Avril ou Yvette Guilbert. À partir de 1891, avec l'affiche du Moulin \
+Rouge, il renouvelle l'art de l'affiche et de la lithographie en couleurs, influencé \
+par les estampes japonaises. Épuisé par l'alcool, il meurt à 36 ans, laissant plus \
+de 700 tableaux, des milliers de dessins et quelque 350 estampes et affiches."""
+
+[[artistes]]
+nom = "O'Galop (Marius Rossillon)"
+vie = "Lyon, 1867 – Carnac, 1946"
+biographie = """
+Marius Rossillon, qui signe O'Galop, est un dessinateur humoristique et un \
+illustrateur français. Il collabore à de nombreux journaux satiriques et illustrés de \
+la fin du XIXᵉ et du début du XXᵉ siècle, et dessine des livres pour enfants, des \
+cartes postales et des affiches. En 1898, il crée pour les frères Michelin le \
+personnage de Bibendum, l'homme fait de pneus, qui restera associé à la marque et à \
+ses guides. Il continue à le dessiner pendant des années pour les publicités de \
+Michelin. Curieux des techniques nouvelles, il réalise aussi dans les années 1910 et \
+1920 des films d'animation, notamment des dessins animés éducatifs et de prévention \
+sanitaire, ce qui fait de lui l'un des pionniers français du cinéma d'animation."""
