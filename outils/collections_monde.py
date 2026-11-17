@@ -407,6 +407,32 @@ def washington(combien, alea, cache):
             fichier.write_bytes(lire(depot + nom, delai=300))
         return csv.DictReader(io.StringIO(fichier.read_text(encoding="utf-8")))
 
+    # Les artistes de chaque œuvre et leurs dates (pour le domaine public en Europe).
+    personnes = {c["constituentid"]: c for c in table("constituents.csv")}
+    artistes = {}
+    for lien_ in table("objects_constituents.csv"):
+        if lien_.get("roletype") == "artist" and lien_["constituentid"] in personnes:
+            artistes.setdefault(lien_["objectid"], []).append(personnes[lien_["constituentid"]])
+
+    def vie(objet):
+        gens = artistes.get(objet, [])
+        if not gens:
+            return None
+        # La personne morte le plus tard décide (« American, 1882–1967 », « born 1902 »).
+        def fin(g):
+            if g.get("endyear"):
+                return int(g["endyear"])
+            return 9999 if g.get("beginyear") and int(g["beginyear"]) > 1890 else 0
+        p = max(gens, key=fin)
+        nation = f"{p['nationality']}, " if p.get("nationality") else ""
+        if p.get("beginyear") and p.get("endyear"):
+            return f"{nation}{p['beginyear']}–{p['endyear']}"
+        if p.get("endyear"):
+            return f"{nation}died {p['endyear']}"
+        if p.get("beginyear"):
+            return f"{nation}born {p['beginyear']}"
+        return propre(p.get("displaydate"), 80) or None
+
     images = {}
     for ligne in table("published_images.csv"):
         if ligne.get("openaccess") == "1" and ligne.get("viewtype") == "primary" and ligne.get("iiifurl"):
@@ -420,7 +446,7 @@ def washington(combien, alea, cache):
         largeur, hauteur = int(image.get("width") or 0), int(image.get("height") or 0)
         fiches.append(fiche(
             "washington", o["objectid"], o.get("title"), o.get("attribution") or "Artiste inconnu",
-            date=propre(o.get("displaydate"), 80), annee=annee(o.get("beginyear"), o.get("displaydate")),
+            vie=vie(o["objectid"]), date=propre(o.get("displaydate"), 80), annee=annee(o.get("beginyear"), o.get("displaydate")),
             technique=propre(o.get("medium"), 200), mesures=propre(o.get("dimensions"), 160), categorie=cat,
             image=image["iiifurl"] + "/full/!1600,1600/0/default.jpg",
             vignette=image["iiifurl"] + f"/full/!{VIGNETTE},{VIGNETTE}/0/default.jpg",
@@ -437,11 +463,62 @@ SOURCES = {"chicago": chicago, "cleveland": cleveland, "met": met, "washington":
 
 # ─── Le choix, les vignettes, les fichiers ────────────────────────────────────
 
+# Le domaine public, partout : l'artiste est mort en 1955 ou avant, l'œuvre date d'avant
+# 1931. Les musées publient en CC0 ce qui est libre aux États-Unis ; en Europe, la règle
+# est la vie de l'artiste plus 70 ans. Une œuvre dont on ne sait rien de l'artiste mais
+# datée d'avant 1931 est gardée (le plus souvent anonyme ou ancienne).
+DERNIERE_ANNEE, DERNIERE_MORT = 1930, 1955
+
+
+def annees_de(texte):
+    """Les années d'un texte, « 1925–35 » compris (1925 et 1935)."""
+    texte = str(texte or "")
+    vues = [int(a) for a in re.findall(r"(?<!\d)(1[0-9]{3}|20[0-9]{2})(?!\d)", texte)]
+    for m in re.finditer(r"(?<!\d)(1[0-9]{3})\s*[–-]\s*([0-9]{2})(?!\d)", texte):
+        siecle = int(m.group(1)) // 100 * 100
+        vues.append(siecle + int(m.group(2)))
+    return vues
+
+
+def mort_de(vie):
+    """L'année de mort d'une vie de cartel (« French, 1841–1919 », « born 1902 »), ou
+    9999 quand l'artiste est né après 1890 sans date de mort connue (peut-être vivant
+    après 1955), ou None quand on ne sait pas."""
+    vie = str(vie or "")
+    m = re.search(r"(1[0-9]{3})\s*[–-]\s*(1[0-9]{3}|20[0-9]{2})", vie)
+    if m:
+        return int(m.group(2))
+    m = re.search(r"(?:died|d\.|mort[e]?)\s*(?:in\s*)?(1[0-9]{3}|20[0-9]{2})", vie, re.I)
+    if m:
+        return int(m.group(1))
+    m = re.search(r"(?:born|b\.|né[e]?)\s*(?:in\s*)?(1[0-9]{3}|20[0-9]{2})", vie, re.I) or \
+        re.search(r"(1[0-9]{3}|20[0-9]{2})\s*[–-]\s*$", vie)
+    if m:
+        return 9999 if int(m.group(1)) > 1890 else None
+    return None
+
+
+def libre(f):
+    """L'œuvre est-elle dans le domaine public en Europe comme aux États-Unis ?"""
+    y = f.get("y")
+    if y is not None and not -2_000_000 < y < 2100:
+        f["y"] = y = annee(f.get("d"))
+    annees = annees_de(f.get("d")) + ([y] if y is not None and y > 0 else [])
+    if annees and max(annees) > DERNIERE_ANNEE:
+        return False
+    mort = mort_de(f.get("v"))
+    return mort is None or mort <= DERNIERE_MORT
+
+
+# Les catégories que l'on veut voir davantage dans les collections : la photographie.
+RELEVE = {"Photographie": 60}
+
+
 def choisir(fiches, combien, alea):
     """Les meilleures fiches : le score du musée, un peu de hasard, et pas plus de 60
     œuvres par artiste (la collection reste variée)."""
     for f in fiches:
-        f["_tri"] = f.get("_score", 0) + alea.random() * 25
+        f["_tri"] = f.get("_score", 0) + RELEVE.get(f.get("c"), 0) + alea.random() * 25
     fiches.sort(key=lambda f: -f["_tri"])
     par_artiste, choix = {}, []
     for f in fiches:
@@ -502,6 +579,10 @@ def moissonner(cle, combien, cache, alea):
     fiches = []
     if fichier.exists() and time.time() - fichier.stat().st_mtime < 7 * 86400:
         fiches = json.loads(fichier.read_text(encoding="utf-8"))
+    # Les fiches de Washington d'avant les dates des artistes sont refaites (c'est rapide :
+    # les tableaux de la National Gallery sont des fichiers CSV).
+    if cle == "washington" and fiches and not any("v" in f for f in fiches[:5000]):
+        fiches = []
     # Un cache trop maigre (une moisson gênée par le musée) est refait.
     if len(fiches) >= combien:
         dire(f"• {MUSEES[cle]['nom']} : {len(fiches)} fiches du cache")
@@ -561,6 +642,11 @@ def main():
     # part : une vignette refusée est remplacée par la suivante. Ce qui manque encore à la
     # fin (un musée qui refuse beaucoup, un autre trop lent) est pris chez ceux qui ont
     # encore des candidates : le total voulu est atteint.
+    for c in cles:
+        avant = len(toutes[c])
+        toutes[c] = [f for f in toutes[c] if libre(f)]
+        dire(f"  {c} : {avant - len(toutes[c])} fiches écartées (artiste mort après {DERNIERE_MORT} "
+             f"ou œuvre d'après {DERNIERE_ANNEE})")
     vivants = [c for c in cles if toutes[c]]
     classees = {c: choisir(toutes[c], len(toutes[c]), random.Random(f"choix-{c}")) for c in vivants}
     position = {c: 0 for c in vivants}
