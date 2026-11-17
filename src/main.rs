@@ -52,10 +52,31 @@ fn exhibitions_menu(current: &str) -> Element {
         } else {
             summary
         })
-        .child(ul().children(EXHIBITIONS.iter().map(|ex| {
-            li().child(nav_link(format!("/{}", ex.slug), ex.short_name, current))
-                .child(span().class("nav-artist").text(movement_or_dates(ex)))
-        })))
+        .child(
+            ul().child(li().class("nav-group").text("Nouveautés"))
+                .children(
+                    NEW_EXHIBITIONS
+                        .iter()
+                        .filter_map(|slug| EXHIBITIONS.iter().find(|ex| ex.slug == *slug))
+                        .map(|ex| menu_item(ex, current, true)),
+                )
+                .child(li().class("nav-group").text("Toutes les expositions"))
+                .children(EXHIBITIONS.iter().map(|ex| menu_item(ex, current, false))),
+        )
+}
+
+/// Les dernières expositions arrivées au musée : en tête du menu, avec la mention « nouveau ».
+const NEW_EXHIBITIONS: &[&str] = &["voitures", "velos", "robes", "verreries", "photographie-art"];
+
+/// Une ligne du menu des expositions.
+fn menu_item(ex: &Exhibition, current: &str, new: bool) -> Element {
+    let item = li().child(nav_link(format!("/{}", ex.slug), ex.short_name, current));
+    let item = if new || NEW_EXHIBITIONS.contains(&ex.slug) {
+        item.child(span().class("nav-new").text("nouveau"))
+    } else {
+        item
+    };
+    item.child(span().class("nav-artist").text(movement_or_dates(ex)))
 }
 
 /// Le style de l'exposition, ou ses dates s'il n'est pas donné.
