@@ -214,7 +214,7 @@ def chicago(alea, combien):
         texte = sans_balises(o.get("description") or o.get("short_description") or "")
         oeuvres.append({
             "titre": o["title"], "artiste": o.get("artist_title") or (o.get("place_of_origin") or "Artiste inconnu"),
-            "date": o.get("date_display"), "technique": o.get("medium_display"), "mesures": o.get("dimensions"),
+            "vie": o.get("artist_display") or "", "date": o.get("date_display"), "technique": o.get("medium_display"), "mesures": o.get("dimensions"),
             "salle": o.get("gallery_title") or "", "genre": o.get("classification_title") or "",
             "texte": texte, "lien": f"https://www.artic.edu/artworks/{o['id']}",
             # 843 px : la seule largeur que l'IIIF de Chicago sert à coup sûr (sa taille en
@@ -241,6 +241,7 @@ def cleveland(alea, combien):
             artiste = createurs[0]["description"].split(" (")[0] if createurs else ", ".join(o.get("culture") or []) or "Artiste inconnu"
             oeuvres.append({
                 "titre": o["title"], "artiste": artiste, "date": o.get("creation_date"),
+                "vie": createurs[0].get("description", "") if createurs else "",
                 "technique": o.get("technique"), "mesures": o.get("measurements"),
                 "salle": o.get("current_location") or "", "genre": o.get("type") or "",
                 "texte": sans_balises(o.get("wall_description") or o.get("description") or ""),
@@ -268,6 +269,7 @@ def new_york(alea, combien):
         artiste = o.get("artistDisplayName") or o.get("culture") or o.get("period") or "Artiste inconnu"
         oeuvres.append({
             "titre": o["title"], "artiste": artiste, "date": o.get("objectDate"), "technique": o.get("medium"),
+            "vie": (o.get("artistDisplayBio") or "") + (f" died {o['artistEndDate']}" if str(o.get("artistEndDate") or "").strip("0") and o.get("artistEndDate") not in ("9999",) else ""),
             "mesures": o.get("dimensions"), "salle": f"salle {o['GalleryNumber']}",
             "genre": o.get("classification") or o.get("objectName") or "", "texte": "",
             "lien": o.get("objectURL") or "", "image": o["primaryImageSmall"], "entetes": {}, "ratio": None,
@@ -318,10 +320,29 @@ MUSEES = [
 
 # ─── L'exposition ─────────────────────────────────────────────────────────────
 
+def libre(o):
+    """Le domaine public en Europe comme aux États-Unis : l'œuvre date d'avant 1931 et
+    l'artiste est mort en 1955 ou avant (les musées publient en CC0 ce qui est libre aux
+    États-Unis seulement)."""
+    date = str(o.get("date") or "")
+    annees = [int(a) for a in re.findall(r"(?<!\d)(1[0-9]{3}|20[0-9]{2})(?!\d)", date)]
+    annees += [int(m.group(1)) // 100 * 100 + int(m.group(2))
+               for m in re.finditer(r"(?<!\d)(1[0-9]{3})\s*[–-]\s*([0-9]{2})(?!\d)", date)]
+    if annees and max(annees) > 1930:
+        return False
+    vie = str(o.get("vie") or "")
+    m = re.search(r"(1[0-9]{3})\s*[–-]\s*(1[0-9]{3}|20[0-9]{2})", vie) or re.search(r"died\s*(1[0-9]{3}|20[0-9]{2})", vie)
+    if m:
+        return int(m.groups()[-1]) <= 1955
+    m = re.search(r"(?:born|b\.)\s*(1[0-9]{3}|20[0-9]{2})", vie)
+    return not (m and int(m.group(1)) > 1890)
+
+
 def choisir(oeuvres, alea, combien):
     """Des œuvres variées, dans l'ordre où les accrocher : d'abord pas plus de deux par
     artiste ni de quatre du même genre, puis les autres en réserve (une image qui ne se
-    télécharge pas est remplacée par la suivante)."""
+    télécharge pas est remplacée par la suivante). Seulement le domaine public."""
+    oeuvres = [o for o in oeuvres if libre(o)]
     alea.shuffle(oeuvres)
     par_artiste, par_genre, choix, reserve = {}, {}, [], []
     for o in oeuvres:
