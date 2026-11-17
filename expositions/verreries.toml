@@ -1,0 +1,787 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « VERRERIES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/verreries/). Le nom
+#  du fichier donne l'adresse de l'exposition sur le site : /verreries.
+#
+#  Les objets sont photographiés en trois dimensions : toutes les images
+#  viennent des photographies publiées en libre accès (CC0) par le Metropolitan
+#  Museum de New York, le Cleveland Museum of Art et l'Art Institute of Chicago.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 57
+nom_court = "Verreries"
+mouvement = "L'art du verre, de l'Antiquité à l'Art nouveau"
+cadre = "vitrine"
+couleur = "#2a7280"
+titre = "Verreries, trente-cinq siècles d'art du verre"
+artiste = "Gallé, Tiffany, Lalique, Hermann Schwinger, Jacob Sang, verriers d'Égypte, de Rome, du Caire et de Murano…"
+dates = "vers 1386 av. J.-C. – 1912"
+accroche = "Exposition virtuelle · Corning Museum of Glass, Corning (New York)"
+introduction = """
+Le verre naît du sable, de la soude ou de la potasse, et du feu : une matière banale \
+qui devient, entre les mains des verriers, l'une des plus précieuses qui soient. La \
+visite suit dix objets sur plus de trois mille ans, d'un flacon à parfum façonné en \
+Égypte au temps d'Akhenaton jusqu'aux vases de Gallé, de Tiffany et de Lalique. En \
+chemin, on croise le portrait d'or d'un jeune Alexandrin, une lampe de mosquée émaillée \
+pour un émir du Caire, un gobelet de Murano tissé de fils blancs, et les scènes gravées \
+à la roue par les maîtres de Nuremberg et d'Amsterdam. Le bâtiment s'inspire du Corning \
+Museum of Glass, dans l'État de New York, le plus grand musée du monde consacré au \
+verre : on entre par une aile toute blanche, baignée de lumière, avant de parcourir \
+les galeries historiques."""
+vitrine = "vase-paon-tiffany.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Corning Museum of Glass"
+ville = "Corning, New York, États-Unis"
+architecte = "Harrison & Abramovitz (1951), Gunnar Birkerts (1980), Thomas Phifer and Partners (2015)"
+construction = "1951–2015"
+presentation = """
+Corning, petite ville du nord de l'État de New York, vit du verre depuis que la \
+verrerie Corning Glass Works s'y est installée en 1868. En 1951, pour son centenaire, \
+l'entreprise fonde un musée consacré à l'art et à l'histoire du verre, logé dans un \
+bâtiment de verre et d'acier dessiné par l'agence Harrison & Abramovitz. En juin 1972, \
+la crue de la rivière Chemung, gonflée par l'ouragan Agnes, inonde les galeries et \
+endommage des centaines d'objets, patiemment restaurés. Un nouveau bâtiment, dû à \
+l'architecte Gunnar Birkerts, ouvre en 1980. En 2015, la Contemporary Art + Design \
+Wing de Thomas Phifer ajoute une aile revêtue de panneaux de verre blanc : une vaste \
+galerie toute blanche, éclairée par une lumière naturelle diffuse tombée du plafond, \
+et un atelier en amphithéâtre où l'on souffle le verre devant le public. Les galeries \
+historiques retracent trente-cinq siècles de verre ; la bibliothèque Rakow, voisine, \
+est la grande bibliothèque mondiale du verre."""
+ici = """
+Le bâtiment d'ARTEON emprunte au Corning Museum ses deux visages. On entre par le sud \
+dans « L'aile blanche », un grand volume de seize mètres sur douze, haut de huit \
+mètres, aux murs blancs comme la galerie de Thomas Phifer : il reste vide, pour que \
+l'on y regarde d'abord la lumière. Au nord commencent les galeries historiques, quatre \
+salles en enfilade d'ouest en est, comme un parcours chronologique : l'Antiquité, aux \
+murs gris sable ; l'Islam et Venise, d'un bleu de lagune pâle ; le verre gravé, gris \
+perle ; enfin la salle de l'Art nouveau, plus vaste et plus haute, d'un vert d'eau. Les \
+objets, souvent hauts de quelques centimètres, y sont présentés agrandis dans des \
+vitrines murales sur fond clair."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré du Corning Museum of Glass (Corning, New York) : la Contemporary Art +
+# Design Wing de Thomas Phifer (2015), une galerie blanche baignée de lumière
+# diffuse, puis les galeries historiques qui parcourent trente-cinq siècles de
+# verre. Ici, l'aile blanche sert de hall ; au nord, quatre salles en enfilade
+# d'ouest en est ; la salle de l'Art nouveau est plus vaste et plus haute.
+# x et z : le centre de la salle (x vers l'est, z vers le sud), en mètres ; une
+# porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "L'aile blanche"
+theme = "L'entrée, toute blanche et baignée de lumière diffuse, comme la galerie contemporaine ouverte à Corning en 2015."
+murs = "#f3f3f0"
+x = 0
+z = 0
+largeur = 16
+profondeur = 12
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Le verre antique"
+theme = "Les premiers vases de verre de l'Égypte, le verre soufflé dans un moule à Rome et un portrait d'or d'Alexandrie."
+murs = "#ddd8cc"
+x = 0
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "Du Caire à Murano"
+theme = "Le verre émaillé des Mamelouks, puis le verre filigrané de Murano, qui domine l'Europe à la Renaissance."
+murs = "#d3dfe2"
+x = 12
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "Le verre gravé"
+theme = "Le verre gravé à la roue : un gobelet de Nuremberg, puis un verre anglais au plomb gravé à Amsterdam."
+murs = "#dcdcda"
+x = 24
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "L'Art nouveau"
+theme = "Le verre devient art : les orchidées d'Émile Gallé, le paon de Louis Comfort Tiffany et les grenouilles de René Lalique."
+murs = "#d2e0d6"
+x = 37
+z = -11
+largeur = 14
+profondeur = 12
+hauteur = 7
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Flacon à parfum en forme d'amphore"
+artiste = "Égypte, Nouvel Empire"
+annee = "vers 1386–1330 av. J.-C."
+image = "amphore-egyptienne.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/544828"
+technique = "Verre façonné sur noyau, décor de fils de verre étirés en festons ; hauteur 15,3 cm, diamètre 6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une amphore miniature de verre bleu nuit, rayée de festons blancs, jaunes et turquoise, faite pour contenir une huile parfumée au temps d'Amenhotep III et d'Akhenaton."
+description = """
+Le flacon reprend en miniature la forme d'une amphore, la grande jarre de l'Antiquité, \
+mais il tiendrait dans la main : il mesure à peine quinze centimètres. Sa panse en \
+forme d'œuf, d'un bleu nuit profond, repose sur un petit pied évasé. Deux anses en \
+anneau, du même bleu, se recourbent sur les épaules. Le décor est fait de fils de verre \
+blanc, jaune orangé et turquoise, qui dessinent des bandes de festons en zigzag, comme \
+des vagues ou des plumes, séparées par des lignes droites. Le long col est entièrement \
+couvert de chevrons serrés. Le bord de l'embouchure et celui du pied sont soulignés d'un \
+cordon torsadé, rayé de bleu et de blanc. Par endroits, la surface montre de petites \
+taches claires, traces de l'altération du verre."""
+evocation = """
+En Égypte, le verre était d'abord une matière royale. On le comparait aux pierres \
+précieuses : le bleu sombre imitait le lapis-lazuli, le turquoise la pierre du Sinaï. \
+Les premiers récipients de verre apparaissent dans la vallée du Nil vers 1500 av. \
+J.-C., au temps de Thoutmosis III, peut-être grâce à des artisans venus du Proche-Orient \
+après ses campagnes militaires. Ils restent rares et coûteux, réservés au palais, aux \
+temples et aux grands dignitaires. Ces petits flacons contenaient des huiles parfumées \
+et des onguents, indispensables à la toilette des vivants, mais aussi aux rites \
+funéraires. Donner à un flacon de verre la forme d'une amphore, c'était jouer avec les \
+échelles : la jarre des entrepôts devient un bijou de toilette."""
+histoire = """
+Le flacon date de la fin de la XVIIIᵉ dynastie, sous les règnes d'Amenhotep III et \
+d'Akhenaton, l'âge d'or du verre égyptien. Les archéologues ont retrouvé des ateliers \
+de verriers dans les grandes résidences royales de cette époque, au palais de Malqata, \
+près de Thèbes, et à Amarna, la capitale fondée par Akhenaton. On ignore où ce flacon a \
+été découvert. Le Metropolitan Museum l'a acheté en 1926 grâce à un don du mécène Edward \
+S. Harkness, l'un des grands bienfaiteurs de son département égyptien. Après la fin du \
+Nouvel Empire, la production de vases de verre décline en Égypte pendant plusieurs \
+siècles ; la technique du noyau renaîtra plus tard en Mésopotamie, puis dans le monde \
+grec."""
+facture = """
+Le soufflage n'existait pas encore. Le verrier modelait d'abord un noyau d'argile mêlée \
+de sable ou de matière organique, de la forme de l'intérieur du flacon, autour d'une \
+tige de métal. Il le recouvrait de verre bleu fondu, puis enroulait autour des fils de \
+verre de couleur, qu'il étirait vers le haut et vers le bas avec une pointe pour \
+dessiner les festons. En roulant l'objet encore chaud sur une pierre plate, il faisait \
+pénétrer les fils dans la paroi. Il ajoutait ensuite les anses, le pied et les cordons. \
+Une fois le verre refroidi, il retirait la tige et grattait le noyau. Le bleu vient du \
+cobalt, le blanc et le jaune de composés d'antimoine."""
+details = [
+  "Les festons en zigzag, blancs, jaunes et turquoise, sur la panse bleu nuit.",
+  "Les chevrons serrés qui couvrent tout le col.",
+  "Les deux anses en anneau posées sur les épaules.",
+  "Les cordons torsadés bleu et blanc du bord et du pied.",
+]
+themes = ["égypte", "parfum", "verre sur noyau", "amphore", "bleu"]
+anecdote = """
+Le même procédé, des fils de verre étirés en plumes, réapparaît plus de trois mille ans \
+plus tard sur les vases de Louis Comfort Tiffany, présentés dans la dernière salle de \
+cette exposition."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Flacon à deux visages (flacon janiforme)"
+artiste = "Empire romain, Méditerranée orientale"
+annee = "IIᵉ–IVᵉ siècle"
+image = "flacon-janus.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1923.945"
+technique = "Verre soufflé dans un moule ; hauteur 6,4 cm, diamètre 4,6 cm"
+collection = "Cleveland Museum of Art"
+note = "Un flacon haut de six centimètres, soufflé dans un moule en forme de double tête, dont la surface irisée par le temps cache la couleur violette d'origine."
+description = """
+Le petit flacon a la forme de deux têtes réunies par l'arrière du crâne, surmontées \
+d'un long col cylindrique à l'embouchure ourlée. On voit ici l'un des deux visages, de \
+face : un visage plein et juvénile, aux grands yeux en amande, au nez droit, à la bouche \
+petite. Une chevelure en grosses mèches ondulées l'encadre et descend sur les côtés \
+jusqu'au niveau des joues. Le second visage, tourné vers l'arrière, lui est presque \
+identique. Toute la surface est couverte d'une irisation changeante, où se mêlent des \
+reflets d'argent, de mauve, de vert et d'or ; par endroits, de petites écailles se sont \
+détachées. Le flacon tient tout entier dans le creux de la main."""
+evocation = """
+On appelle ces flacons janiformes, d'après Janus, le dieu romain aux deux visages, \
+gardien des portes et des commencements, qui regarde à la fois devant et derrière lui. \
+Le Cleveland Museum remarque pourtant que ces visages, imberbes et d'un sexe incertain, \
+ne ressemblent guère à Janus, d'ordinaire barbu : d'autres flacons opposent un visage \
+grave et un visage souriant. Ces objets ne célèbrent donc pas forcément un dieu ; ils \
+amusaient l'œil et rendaient précieux un simple contenant d'huile parfumée. Ils disent \
+surtout la grande nouveauté du verre romain : grâce au soufflage, ce qui était un luxe \
+devient un objet courant, que l'on pouvait fabriquer en série et vendre dans tout \
+l'Empire."""
+histoire = """
+Les flacons à tête humaine ont été très répandus dans le monde romain du IIᵉ au IVᵉ \
+siècle ; on en a fabriqué en Méditerranée orientale, d'où vient sans doute celui-ci, \
+mais aussi en Rhénanie. La plupart ont été retrouvés dans des tombes, où on les \
+déposait avec leur contenu. Le flacon est entré au Cleveland Museum of Art en 1923, \
+offert par Jeptha H. Wade, l'un des fondateurs du musée, qui lui a donné de nombreux \
+objets. Comme beaucoup de verres antiques, il a passé des siècles dans la terre, et \
+c'est cet enfouissement qui lui a donné son apparence actuelle : selon le musée, \
+l'irisation qui couvre la surface masque une couleur d'origine proche du violet."""
+facture = """
+Le soufflage du verre est inventé au Iᵉʳ siècle av. J.-C. sur la côte syro-palestinienne \
+: le verrier cueille une boule de verre fondu au bout d'une canne creuse et la gonfle \
+de son souffle. Très vite, on souffle aussi le verre dans des moules, en terre cuite ou \
+en pierre, faits de deux moitiés qui portent le relief en creux. Ici, la paraison, la \
+bulle de verre chaud, a été soufflée dans un moule en forme de double tête, qui a \
+imprimé d'un coup les visages et les mèches ; le col a été étiré et ourlé ensuite, \
+hors du moule. Avec le temps, l'humidité du sol a altéré la surface en lamelles très \
+fines, qui décomposent la lumière comme une bulle de savon."""
+details = [
+  "Les grands yeux en amande du visage tourné vers nous.",
+  "Les mèches ondulées qui encadrent le visage, imprimées par le moule.",
+  "Le profil du second visage, que l'on devine sur le côté droit.",
+  "Les reflets mauves, verts et dorés de l'irisation.",
+  "L'embouchure ourlée, repliée à chaud sur elle-même.",
+]
+themes = ["rome", "verre soufflé", "janus", "irisation", "parfum"]
+anecdote = """
+L'irisation des verres antiques fascinait les verriers de l'Art nouveau : Louis Comfort \
+Tiffany, collectionneur de verres anciens, chercha à obtenir dans son four les reflets \
+que des siècles d'enfouissement avaient donnés aux verres romains."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Médaillon au portrait de Gennadios"
+artiste = "Alexandrie, Égypte romaine"
+annee = "250–300"
+image = "medaillon-gennadios.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/466645"
+technique = "Verre, feuille d'or et rehauts de couleur ; diamètre 4,1 cm, épaisseur 0,6 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le portrait d'un jeune homme dessiné à la pointe dans une feuille d'or, sur un disque de verre bleu de quatre centimètres : l'un des chefs-d'œuvre du verre doré antique."
+description = """
+Sur un petit disque de verre bleu presque noir, un jeune homme apparaît en buste, de \
+trois quarts, le regard tourné vers notre gauche. Il est entièrement dessiné en or : \
+une chevelure épaisse de boucles serrées, de grands yeux au regard intense, des joues \
+pleines, une bouche fermée. Le modelé du visage et des épaules est rendu par des \
+milliers de hachures très fines, comme dans une gravure. Il porte une tunique et un \
+manteau jeté sur l'épaule. Autour de lui, un filet d'or suit le bord du médaillon, et \
+une inscription grecque en lettres d'or se lit en trois morceaux : ΓΕΝΝΑΔΙ à gauche, \
+ΧΡΩΜΑΤΙ à droite, ΠΑΜΜΟΥϹΙ en bas. Le bord du disque est ébréché par endroits."""
+evocation = """
+Le portrait a la présence d'un visage vivant : rien d'idéalisé dans ce jeune homme aux \
+traits singuliers, qui fait penser aux portraits peints sur bois des momies du Fayoum, \
+réalisés en Égypte à la même époque. L'inscription donne son nom, Gennadios, et le loue \
+; on la comprend d'ordinaire comme un éloge de son talent, celui d'un homme accompli \
+dans l'art des Muses, sans doute un musicien. Ces médaillons, précieux et intimes, \
+conservaient l'image d'un être aimé ou honoraient un succès ; on pouvait les monter en \
+bijou ou les offrir. Ils témoignent aussi d'Alexandrie, la grande métropole grecque de \
+l'Égypte romaine, réputée pour ses ateliers de verriers et pour son goût du luxe \
+raffiné."""
+histoire = """
+Le médaillon a été fait entre 250 et 300, sans doute à Alexandrie, d'où viennent la \
+plupart des portraits de ce type. On n'en connaît qu'un petit nombre, tous d'une \
+grande finesse, ce qui suggère un même atelier ou un petit groupe d'artisans très \
+spécialisés. Certains ont été conservés pendant des siècles comme des reliques ou des \
+joyaux : le plus célèbre, qui montre une mère et ses deux enfants, a été serti au \
+Moyen Âge dans la croix de Didier, à Brescia, parmi des pierres précieuses. On ignore \
+le parcours de celui de Gennadios avant son arrivée au Metropolitan Museum, qui l'a \
+acheté en 1926 grâce au Fletcher Fund. Il est conservé avec les collections d'art \
+médiéval du musée, aux côtés des verres dorés paléochrétiens."""
+facture = """
+Le verre doré, que les Italiens appellent fondo d'oro, enferme une feuille d'or entre \
+deux couches de verre. L'artisan posait d'abord une feuille d'or très mince sur le \
+disque de verre bleu. Avec une pointe fine, il y grattait le dessin : il enlevait l'or \
+autour de la figure et traçait dans le visage, les cheveux et les vêtements des \
+réseaux de hachures, plus ou moins serrées, qui laissent transparaître le fond sombre \
+et créent les ombres. Quelques touches de couleur complétaient le portrait. Le tout \
+était ensuite protégé par une couche de verre, fondue par-dessus, qui scelle l'or et \
+l'empêche de s'user. Le travail, fait sous une loupe ou presque, demandait une main \
+d'une sûreté extraordinaire."""
+details = [
+  "Les boucles serrées de la chevelure, dessinées une à une dans l'or.",
+  "Les hachures très fines qui modèlent les joues et le cou.",
+  "Le regard tourné de côté, aux pupilles sombres.",
+  "Les trois mots grecs de l'inscription, à gauche, à droite et en bas.",
+  "Le filet d'or qui suit le bord du médaillon.",
+]
+themes = ["portrait", "or", "alexandrie", "musique", "verre doré"]
+anecdote = """
+Le médaillon mesure à peine quatre centimètres : en vitrine, le visage de Gennadios \
+n'est pas plus grand qu'un ongle, et c'est à la loupe seulement que l'on découvre la \
+finesse des hachures."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Lampe de mosquée pour le mausolée de l'émir Aydakin al-Bunduqdar"
+artiste = "Égypte, sultanat mamelouk"
+annee = "peu après 1285"
+image = "lampe-aydakin.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/447000"
+technique = "Verre soufflé, anses rapportées, pied replié, émaillé et doré ; hauteur 26,4 cm, diamètre de l'ouverture 21 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Une lampe de verre émaillé de bleu, de rouge et d'or, faite pour le tombeau d'un émir du Caire, l'ancien maître du sultan Baybars, dont elle porte les armes : deux arcs dos à dos."
+description = """
+La lampe a la forme d'un grand vase : un pied bas, une panse renflée et un large col \
+évasé en entonnoir. Le verre, légèrement teinté de brun, est transparent. Autour de la \
+panse court un large bandeau bleu où se détache, en réserve, une inscription arabe en \
+grandes lettres élancées, cernées de rouge et rehaussées d'or. Elle est interrompue par \
+des médaillons rouges où figurent deux arcs dos à dos, dessinés en or. De petites \
+anses de verre, posées sur la panse, servaient à la suspendre. Le col porte une \
+seconde inscription, en lettres bleues sur un fond de rinceaux, entre d'autres \
+médaillons aux arcs. Des frises de petits motifs rouges soulignent le bord et la base \
+du col."""
+evocation = """
+Une lampe de mosquée n'éclairait pas seulement : elle donnait forme à la lumière divine. \
+Beaucoup portent un verset du Coran, la sourate de la Lumière, qui compare Dieu à une \
+lampe dans une niche, « la lampe est dans un verre, et le verre est comme un astre \
+brillant ». Suspendues par dizaines dans les mosquées, les madrasas et les tombeaux, \
+elles faisaient briller les inscriptions dans la pénombre. Celle-ci honore aussi un \
+homme. Les médaillons portent les armes de l'émir, car les Mamelouks, anciens esclaves \
+militaires devenus maîtres de l'Égypte, se distinguaient par des emblèmes liés à leur \
+charge à la cour. Les deux arcs sont ceux d'un bunduqdar, le porteur de l'arc du \
+sultan."""
+histoire = """
+Aydakin al-Bunduqdar était un émir de la cour du Caire au XIIIᵉ siècle. Il avait acheté \
+comme esclave militaire un jeune Turc, Baybars, qui devint l'un des plus grands sultans \
+mamelouks et garda toute sa vie le surnom d'al-Bunduqdari, « l'homme d'al-Bunduqdar ». \
+Aydakin mourut en 1285 ; il fut enterré au Caire dans un mausolée pour lequel cette \
+lampe fut faite, peu après sa mort. On ignore quand elle a quitté le Caire ; au XIXᵉ \
+siècle, les collectionneurs européens recherchaient ces lampes. Le financier J. \
+Pierpont Morgan l'acquiert ; elle est donnée en 1917 au Metropolitan Museum, avec une grande partie de \
+sa collection. Dans l'exposition voisine consacrée aux arts de l'Islam, on peut voir \
+une autre lampe du Met, celle de l'émir Qawsun."""
+facture = """
+La lampe est soufflée, puis façonnée à la canne : le pied est un bord de verre replié \
+sur lui-même, les anses sont des gouttes de verre étirées et collées à chaud. Le décor \
+est peint ensuite avec des émaux, des poudres de verre colorées par des oxydes \
+métalliques et mêlées à un liant, et avec de l'or. Le verrier remettait la lampe au \
+four, à une température assez haute pour fondre les émaux sur le verre, mais assez \
+basse pour ne pas déformer l'objet : une opération délicate, souvent répétée pour \
+chaque couleur. Les verriers de Syrie et d'Égypte ont porté cette technique à sa \
+perfection aux XIIIᵉ et XIVᵉ siècles ; ceux de Venise la reprendront à la fin du \
+Moyen Âge."""
+details = [
+  "Les deux arcs dos à dos, en or, dans les médaillons rouges.",
+  "Les grandes lettres de l'inscription, en réserve sur le bandeau bleu.",
+  "Les petites anses de verre qui permettaient de suspendre la lampe.",
+  "L'inscription bleue du col, sur un fond de fins rinceaux.",
+  "Le pied replié, au bord épais, sous la panse.",
+]
+themes = ["islam", "mamelouks", "lumière", "émail", "calligraphie"]
+anecdote = """
+Au XIXᵉ siècle, ces lampes étaient si recherchées que des verriers européens, comme le \
+Parisien Philippe-Joseph Brocard, se mirent à les imiter. Le Cleveland Museum conserve \
+une lampe de mosquée émaillée faite en France à la fin du XIXᵉ siècle."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Gobelet en verre filigrané (vetro a reticello)"
+artiste = "Venise, verreries de Murano"
+annee = "vers 1600"
+image = "gobelet-reticello.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/223422"
+technique = "Verre incolore soufflé à filigrane blanc en résille (vetro a reticello) ; hauteur 17,2 cm"
+collection = "Art Institute of Chicago"
+note = "Un gobelet de Murano tissé d'un fin réseau de fils de verre blanc, si régulier qu'on le prendrait pour une dentelle ou une vannerie."
+description = """
+Le gobelet s'évase largement, comme une corolle, au-dessus d'un bouton aplati et d'un \
+pied en forme de cloche, bordé d'un ourlet. Le verre, incolore et très mince, est \
+traversé de bout en bout par un réseau de fils blancs opaques qui se croisent en \
+diagonale et forment de petits losanges réguliers, une résille qui couvre la coupe, le \
+bouton et le pied. Vers le haut, les fils s'écartent et s'inclinent en suivant \
+l'évasement de la paroi ; près du bord, on distingue nettement deux séries de spirales \
+qui tournent en sens contraires. Au centre de chaque losange, une minuscule bulle d'air \
+est restée prisonnière. Sur le fond gris de la photographie, l'objet paraît presque \
+immatériel."""
+evocation = """
+Ce gobelet n'a pas d'autre décor que la matière elle-même : c'est le verre qui devient \
+dentelle. Aux XVIᵉ et XVIIᵉ siècles, Murano domine le marché européen du verre de luxe, \
+et les tables des princes et des riches marchands se parent de ces objets légers, \
+fragiles et coûteux. Selon l'Art Institute, ces gobelets en résille étaient très \
+recherchés par la noblesse pour orner les tables de fête, comme un signe de richesse et \
+de bon goût. Ils répondent au goût de la Renaissance pour la virtuosité : on admire \
+autant la difficulté vaincue que la beauté de l'objet. Leur finesse dit aussi leur \
+fragilité, et c'est presque un miracle que de tels verres soient parvenus jusqu'à \
+nous."""
+histoire = """
+Dès 1291, Venise oblige ses verriers à installer leurs fours sur l'île de Murano, pour \
+éloigner le risque d'incendie de la ville et mieux garder les secrets du métier. Au \
+XVᵉ siècle, ils mettent au point le cristallo, un verre presque incolore, clair comme \
+le cristal de roche, puis, dans les premières décennies du XVIᵉ siècle, le verre à \
+filigrane, décoré de fils de verre blanc. Malgré les lois qui leur interdisaient de \
+quitter la lagune, de nombreux verriers vénitiens partent travailler à l'étranger : \
+leur manière, la « façon de Venise », se répand dans toute l'Europe. On ne sait rien du \
+premier propriétaire de ce gobelet. L'Art Institute of Chicago l'a acquis grâce au \
+fonds Mary Swissler Oldberg ; il est exposé dans ses galeries d'arts décoratifs."""
+facture = """
+L'Art Institute décrit le procédé. Le verrier dispose côte à côte de fines baguettes de \
+verre blanc et les enrobe d'une masse de verre incolore en fusion ; il roule le tout, \
+le souffle en forme de tube et le tord pour que les fils s'enroulent en spirale. Il \
+prépare un second tube, dont les fils tournent dans l'autre sens, et le souffle à \
+l'intérieur du premier : les deux parois se soudent, et les spirales croisées forment \
+la résille. À chaque croisement, une petite bulle d'air reste enfermée entre les deux \
+couches. Le verre est ensuite façonné en gobelet, avec son bouton et son pied, sans \
+que le dessin se brouille : un travail d'une grande maîtrise."""
+details = [
+  "Les petits losanges réguliers de la résille blanche.",
+  "La bulle d'air prisonnière au centre de chaque losange.",
+  "Les deux séries de spirales croisées, bien visibles près du bord.",
+  "Le bouton aplati qui relie la coupe au pied.",
+  "L'ourlet du pied, replié à chaud.",
+]
+themes = ["venise", "murano", "filigrane", "renaissance", "virtuosité"]
+anecdote = """
+Les verriers de Murano jouissaient de privilèges rares : leurs filles pouvaient épouser \
+des nobles vénitiens sans que les enfants perdent leur rang. Mais celui qui partait \
+exercer son art à l'étranger risquait de lourdes peines."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Gobelet à la vue de la Panierplatz de Nuremberg"
+artiste = "Hermann Schwinger"
+annee = "vers 1680"
+image = "gobelet-schwinger.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1950.389"
+technique = "Verre soufflé, gravé à la roue ; hauteur 31,1 cm, diamètre 13,5 cm"
+collection = "Cleveland Museum of Art"
+note = "Un haut gobelet au pied orné de collerettes, où le graveur nurembergeois Hermann Schwinger a représenté une place de sa ville et deux porteurs qui se partagent une charge."
+description = """
+Le gobelet, haut de trente et un centimètres, se compose d'une coupe en forme de cloche, \
+d'une longue tige et d'un large pied plat. La tige alterne des disques plats empilés, \
+des collerettes, et des renflements creux, l'un rond, l'autre en forme de poire. Sur la \
+coupe, gravée en gris mat dans le verre transparent, s'étend une vue de ville : des \
+maisons à colombages, des toits, une porte, de grands arbres au feuillage dense, une \
+palissade. Au premier plan, sur la place, deux hommes marchent l'un derrière l'autre, \
+portant ensemble sur leurs épaules une longue poutre où l'on lit une inscription. Sous \
+la scène, une bande d'écriture gothique fait le tour de la coupe. Le pied est gravé de \
+rameaux feuillus."""
+evocation = """
+La scène est à la fois une vue de Nuremberg, la Panierplatz, et une allégorie, comme \
+l'indique le Cleveland Museum. Les inscriptions en donnent le sens. Sur la poutre on \
+lit : « Es ruhet auf beiden », « cela repose sur tous les deux » ; et autour de la \
+coupe : « Deine Last ist meine Last. Ruhest du, so hab ich Rast », « Ton fardeau est \
+mon fardeau. Si tu te reposes, alors je me repose ». C'est une image de l'amitié, ou \
+peut-être du mariage, où chacun porte sa part de la charge commune. On imagine ce \
+gobelet levé lors d'un repas, et la devise lue à voix haute. Les gobelets gravés \
+servaient ainsi de cadeaux et de souvenirs, chargés de vœux, de devises et d'images."""
+histoire = """
+Hermann Schwinger (1640–1683) est l'un des meilleurs graveurs sur verre de Nuremberg. \
+La ville était devenue, au XVIIᵉ siècle, le grand foyer de cet art en Allemagne, après \
+que Georg Schwanhardt, élève de Caspar Lehmann, graveur de l'empereur Rodolphe II à \
+Prague, s'y fut installé. Le Cleveland Museum classe le verre du gobelet dans la \
+production de Bohême, dont les verreries fournissaient les graveurs. Le gobelet est \
+signé et daté. Au début du XXᵉ siècle, il appartenait au collectionneur viennois Max \
+Strauss, dont la collection fut vendue aux enchères à Vienne en 1922. Il passe ensuite \
+chez les marchands Rosenberg et Stiebel, à New York, avant d'être acheté en 1950 par le \
+Cleveland Museum grâce au fonds John L. Severance."""
+facture = """
+La gravure à la roue reprend les outils des graveurs de pierres fines. L'artisan \
+utilise de petites roues de cuivre, de diamètres variés, montées sur un tour et \
+enduites d'un mélange d'huile et de poudre abrasive. Il ne déplace pas l'outil : c'est \
+le verre qu'il présente contre la roue qui tourne, en le guidant avec une précision \
+extrême. La roue use la surface et laisse un creux mat et gris, plus ou moins profond, \
+qui se lit comme un dessin en grisaille ; certaines parties restent polies pour \
+accrocher la lumière. Cette technique demande un verre épais et dur ; les gobelets de \
+Nuremberg, avec leurs tiges à renflements creux et à collerettes, mettaient la coupe \
+gravée en valeur."""
+details = [
+  "Les deux porteurs qui partagent la même poutre sur leurs épaules.",
+  "La petite inscription gravée sur la poutre.",
+  "Les maisons à colombages et le feuillage dense des arbres.",
+  "Les collerettes empilées de la tige, autour du renflement creux.",
+  "Les rameaux gravés sur le pied.",
+]
+themes = ["gravure", "nuremberg", "amitié", "devise", "baroque"]
+anecdote = """
+Le graveur travaillait « à l'envers » de la lumière : un creux gravé paraît clair sur un \
+fond sombre et sombre sur un fond clair. Les photographes de musée éclairent donc ces \
+verres sur un fond noir, pour faire apparaître le dessin."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Gobelet couvert à la scène d'accouchée"
+artiste = "Jacob Sang (gravure), verrerie anglaise"
+annee = "1750–1770"
+image = "gobelet-jacob-sang.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/266209"
+technique = "Verre au plomb soufflé, gravé à la roue ; hauteur 25,8 cm, diamètre 11,5 cm"
+collection = "Art Institute of Chicago"
+note = "Un gobelet de verre anglais au plomb, gravé à Amsterdam d'une chambre d'accouchée, et d'un toast à la santé de la mère et de l'enfant."
+description = """
+Le gobelet, coiffé de son couvercle, se dresse sur un fond noir qui fait ressortir la \
+gravure. La coupe, en forme de cloche, repose sur un pied court dont le bouton est \
+semé de bulles d'air disposées en couronne. Sur la face, une grande scène occupe la \
+coupe : un lit à baldaquin, aux rideaux relevés, où une femme est assise, adossée à ses \
+oreillers ; à côté, une nourrice se tient près d'un berceau. Le sol est un carrelage en \
+perspective. Le long du bord court une inscription en lettres capitales. Le couvercle \
+bombé est gravé d'une guirlande de feuillages ; il se termine par un bouton à bulles \
+torsadées et une pointe à facettes."""
+evocation = """
+Le gobelet appartient au rituel de la naissance dans les Provinces-Unies du XVIIIᵉ \
+siècle. Selon l'Art Institute, il servait le kandeel, une boisson nourrissante d'œufs, \
+d'alcool et de cannelle, offerte à l'accouchée et à ses visiteurs. La gravure montre \
+justement cette chambre : la jeune mère au lit, la nourrice qui berce l'enfant, un \
+séchoir à langes, des chaises et une table dressée avec des friandises et deux gobelets \
+semblables à celui-ci. L'inscription porte le toast : « 't Welvaaren van de Kraamvrouw \
+en Kindje », « à la santé de l'accouchée et de son enfant ». Dans une époque où \
+l'accouchement restait dangereux, le gobelet célèbre une naissance heureuse et réunit \
+la famille autour de la mère."""
+histoire = """
+La gravure est attribuée à Jacob Sang, actif à Amsterdam dans les années 1750, l'un des \
+graveurs les plus habiles et les plus réputés de la ville selon l'Art Institute. Aux \
+Pays-Bas, la demande de verres personnalisés était immense : on en gravait pour les \
+mariages, les naissances, les succès commerciaux ou les événements politiques. Le \
+verre, lui, vient d'Angleterre, dont les verres au plomb étaient très appréciés des \
+graveurs hollandais. Le gobelet a été commandé par la famille des barons van \
+Slingelandt et s'est transmis dans la famille jusqu'au XXIᵉ siècle. Il passe ensuite \
+chez le marchand Frides Laméris, à Amsterdam, avant d'être acheté en 2023 par l'Art \
+Institute of Chicago."""
+facture = """
+En 1674, l'Anglais George Ravenscroft fait breveter un verre où l'oxyde de plomb \
+remplace une partie de la potasse. Ce verre au plomb, le futur cristal, est lourd, \
+très clair, et réfracte fortement la lumière ; il est aussi plus tendre, donc idéal \
+pour la gravure à la roue, qui peut y creuser des reliefs très fins et des ombres \
+nuancées. Sang tire parti de cette matière : les rideaux du lit, les plis des draps et \
+le carrelage sont modelés par des creux plus ou moins profonds. Le souffleur anglais, \
+de son côté, a ménagé dans le bouton de la tige une couronne de bulles d'air, obtenues \
+en piquant le verre chaud puis en le recouvrant d'une nouvelle couche de verre : un ornement typique des verres \
+anglais du XVIIIᵉ siècle."""
+details = [
+  "La jeune mère assise dans le lit à baldaquin aux rideaux relevés.",
+  "La nourrice assise près du berceau.",
+  "Le carrelage du sol, gravé en perspective.",
+  "La couronne de bulles d'air dans le bouton du pied.",
+  "La guirlande de feuillages gravée sur le couvercle.",
+]
+themes = ["naissance", "gravure", "amsterdam", "verre au plomb", "toast"]
+anecdote = """
+Les graveurs hollandais achetaient si volontiers les verres anglais qu'ils en ont fait \
+leur support favori : on rencontre souvent, dans les collections, des verres soufflés \
+à Newcastle ou à Londres et gravés aux Pays-Bas."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Vase aux orchidées"
+artiste = "Émile Gallé"
+annee = "vers 1900"
+image = "vase-orchidees-galle.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/45125"
+technique = "Verre doublé, gravé à l'acide et à la roue ; 29,4 × 14,3 × 11,8 cm"
+collection = "Art Institute of Chicago"
+note = "Des orchidées sabots-de-Vénus surgissent dans l'épaisseur d'un verre ambré et pourpre : Gallé sculpte le verre comme une pierre à plusieurs couches."
+description = """
+Le vase est un simple cylindre, haut de trente centimètres, au bord légèrement épaissi. \
+Son fond est un verre ambré, d'un jaune de miel qui vire à l'orangé et, par endroits, \
+au rouge. Par-dessus se détachent en relief, d'un pourpre très sombre, des tiges et des \
+fleurs d'orchidées. On reconnaît leurs pétales rayés de fines nervures, leur sépale \
+supérieur dressé comme un capuchon et, au centre, leur lèvre gonflée en forme de petit \
+sabot. Certaines fleurs s'ouvrent largement, d'autres ne sont encore que des boutons. \
+En bas, de longues feuilles nervurées montent du pied et se recourbent. Le haut du \
+vase est plus sombre, comme si les fleurs sortaient de l'ombre vers la lumière."""
+evocation = """
+Gallé fut à la fois verrier, ébéniste et botaniste passionné, membre de la Société \
+centrale d'horticulture de Nancy ; il cultivait et étudiait les plantes qu'il \
+représentait. Les orchidées, venues des serres où la Belle Époque les collectionnait \
+à prix d'or, fascinaient ses contemporains par leurs formes étranges, presque animales \
+: le sabot-de-Vénus semble un petit soulier. Gallé ne se contente pas de les copier. \
+En les faisant surgir de la profondeur du verre, à demi plongées dans la pénombre, il \
+leur donne une vie mystérieuse, proche des poèmes symbolistes qu'il aimait. Pour lui, \
+l'objet d'art devait parler de la nature, mais aussi de l'âme : ce vase est une serre \
+en miniature, et une rêverie."""
+histoire = """
+Né à Nancy en 1846, fils d'un marchand de faïences et de verreries, Émile Gallé étudie \
+la botanique et la chimie, puis apprend le métier du verre à Meisenthal, en Lorraine. \
+Il reprend l'entreprise familiale, que ses envois aux Expositions universelles de Paris \
+rendent célèbre, en 1878, en 1889 puis en 1900, où il triomphe. En 1901, il fonde avec \
+d'autres artistes l'École de Nancy, dont il est le premier président. Il meurt en 1904 \
+; sa verrerie produit encore pendant près de trente ans des vases signés de son nom. Celui-ci, daté \
+vers 1900, est entré à l'Art Institute of Chicago par le don de Mrs. Cyrus Bentley. Une \
+autre pièce de Gallé, le vase aux colchiques du Metropolitan Museum, est présentée dans \
+l'exposition consacrée aux arts décoratifs."""
+facture = """
+Le vase est fait de verres superposés : le verrier souffle une première paraison ambrée, \
+puis la recouvre d'une ou plusieurs couches de verre de couleur. Le décor est ensuite \
+taillé dans cette épaisseur, comme dans un camée. Gallé emploie l'acide fluorhydrique, \
+qui ronge le verre : on protège le motif avec un vernis, puis on plonge le vase dans le \
+bain, qui dissout la couche supérieure autour des fleurs. Les détails, nervures des \
+pétales et des feuilles, sont repris à la roue. Selon l'épaisseur de verre pourpre \
+laissée en place, la couleur va du rouge transparent au presque noir : c'est ce jeu \
+de profondeurs qui donne au décor son modelé et sa lumière."""
+details = [
+  "La lèvre gonflée en forme de sabot, au cœur de chaque orchidée.",
+  "Les fines rayures des pétales, reprises à la roue.",
+  "Les boutons encore fermés au bout des tiges.",
+  "Les longues feuilles nervurées qui montent du pied.",
+  "Le fond ambré qui passe du jaune de miel au rouge.",
+]
+themes = ["art nouveau", "orchidées", "nancy", "nature", "camée"]
+anecdote = """
+Sur la porte de ses ateliers de Nancy, Gallé avait fait graver une devise : « Ma \
+racine est au fond des bois ». Elle résume son art, où chaque objet naît de \
+l'observation des plantes."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Vase aux plumes de paon"
+artiste = "Louis Comfort Tiffany"
+annee = "1893–1896"
+image = "vase-paon-tiffany.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/9480"
+technique = "Verre Favrile soufflé ; 35,9 × 29,2 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "L'un des premiers vases de verre Favrile de Tiffany : une fleur de verre irisé qui s'ouvre en éventail, couverte de plumes de paon."
+description = """
+Le vase a la forme d'une fleur ou d'un éventail ouvert. D'une panse ronde et basse \
+monte un long col étroit, qui s'élargit brusquement en une vaste corolle ondulée, \
+pincée sur les côtés et retombant en deux pointes. Tout l'objet est d'un vert olive, \
+traversé de fines lignes plus sombres qui partent du pied, montent le long du col et \
+se déploient dans la corolle comme les barbes d'une plume. En haut, ces lignes \
+s'enroulent autour de quatre « yeux » de paon, des taches bleu nuit cernées de violet \
+et de doré. La surface est irisée : selon l'angle, elle se couvre de reflets roses, \
+violets, bleus et dorés. Le bord de la corolle, d'un vert plus clair, est légèrement \
+ourlé."""
+evocation = """
+Le paon est l'un des emblèmes de l'Esthétisme et de l'Art nouveau, de la Peacock Room \
+de Whistler à Londres aux bijoux de Lalique. Il dit le goût de l'époque pour la beauté \
+pure, pour la couleur et le luxe, pour l'Orient aussi, d'où l'oiseau est venu. Tiffany, \
+peintre de formation, y trouvait un motif idéal pour son verre, dont les couleurs \
+changent avec la lumière comme celles d'une plume. Il ne représente pas l'oiseau : il \
+transforme le vase lui-même en roue de paon, et la matière en plumage. Cette fusion de \
+la forme et du décor, inspirée par la nature, est au cœur de l'Art nouveau, et fait \
+de ce vase une sculpture autant qu'un récipient."""
+histoire = """
+Louis Comfort Tiffany (1848–1933), fils du fondateur de la célèbre bijouterie \
+new-yorkaise, s'était d'abord fait connaître comme peintre, puis comme décorateur et \
+créateur de vitraux. En 1893, il ouvre sa propre verrerie à Corona, dans le Queens, \
+avec le verrier anglais Arthur J. Nash, et lance le verre Favrile. Ce vase compte parmi \
+les premières réalisations de l'atelier. Dès 1896, le magnat du sucre Henry O. \
+Havemeyer, grand collectionneur et client de Tiffany, qui avait décoré sa maison \
+new-yorkaise, offre au Metropolitan Museum un ensemble de vases Favrile, dont \
+celui-ci. À Paris, le marchand Siegfried Bing expose le verre de Tiffany dès 1895 \
+dans sa galerie, la Maison de l'Art nouveau."""
+facture = """
+Favrile est un nom inventé par Tiffany, d'après un vieux mot anglais, fabrile, « de \
+l'artisan » ; selon le Cleveland Museum, il devait sonner français, précieux et \
+artisanal. Le décor de plumes est obtenu à chaud : le souffleur pose sur la paraison \
+des fils de verre de couleur, puis les étire avec un crochet pour dessiner les barbes \
+et les yeux, avant de donner au vase sa forme finale. L'irisation vient de sels \
+métalliques appliqués sur le verre encore chaud, qui forment en surface une pellicule \
+très mince où la lumière se décompose. Tiffany cherchait ainsi à retrouver l'éclat \
+des verres antiques irisés par l'enfouissement, qu'il collectionnait."""
+details = [
+  "Les quatre « yeux » de paon bleu nuit, en haut de la corolle.",
+  "Les lignes fines qui montent du pied comme les barbes d'une plume.",
+  "Les reflets roses et violets de l'irisation.",
+  "La corolle pincée qui retombe en deux pointes.",
+  "La panse ronde et basse, d'un vert plus soutenu.",
+]
+themes = ["art nouveau", "paon", "irisation", "new york", "verre favrile"]
+anecdote = """
+Tiffany a aussi créé des vitraux, des mosaïques et des lampes : son vitrail « Magnolias \
+et iris » et la lampe « Glycine » de ses ateliers sont présentés dans l'exposition \
+consacrée aux arts décoratifs."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Vase « Grenouilles et nénuphars »"
+artiste = "René Lalique"
+annee = "1909–1912"
+image = "vase-grenouilles-lalique.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/2007.180"
+technique = "Verre moulé, coulé et appliqué, patiné ; 21 × 29,8 cm"
+collection = "Cleveland Museum of Art"
+note = "L'un des premiers vases de René Lalique : sur un verre givré comme une eau trouble, des grenouilles d'un vert profond se serrent sur des feuilles de nénuphar."
+description = """
+Le vase a une forme basse et trapue, une panse large et anguleuse surmontée d'un col \
+court et évasé. Le verre est incolore, mais dépoli et satiné, comme une eau trouble. \
+Sur l'épaule, de grandes feuilles de nénuphar, patinées de gris, s'étalent en relief ; \
+leurs longues tiges ondulées descendent jusqu'au pied, et l'on devine des boutons de \
+fleurs. Sur les feuilles, une dizaine de grenouilles se pressent les unes contre les \
+autres, accroupies. Elles sont d'un vert intense et brillant, du vert émeraude au vert \
+presque noir, avec les pattes repliées et le dos marqué de lignes. Sur le bas de la \
+panse, on lit la signature moulée « R. LALIQUE »."""
+evocation = """
+Le Cleveland Museum y voit l'image d'un marécage brumeux, un motif typique de l'Art \
+nouveau. La mare, avec ses plantes aquatiques et ses petits animaux, est l'un des \
+thèmes favoris des artistes de l'époque, nourris d'estampes japonaises : un monde \
+caché, humide, entre l'eau et l'air, où la vie grouille. Lalique en tire un effet \
+presque théâtral : la transparence voilée du verre suggère la profondeur de l'eau, \
+tandis que les grenouilles, d'une couleur éclatante, semblent sorties de la surface. \
+Le contraste entre le verre mat et le verre brillant, entre le gris et le vert, \
+anime l'objet. L'humour n'est pas absent : ces grenouilles serrées comme sur un radeau \
+ont quelque chose de vivant et de comique."""
+histoire = """
+René Lalique (1860–1945), d'abord célèbre comme bijoutier, se tourne vers le verre au \
+début du XXᵉ siècle. Vers 1907, il dessine des flacons de parfum pour François Coty ; \
+en 1909, il loue puis achète une verrerie à Combs-la-Ville, près de Paris. Ce vase, \
+selon le Cleveland Museum, est un témoin précoce de ses recherches sur le verre \
+d'art, avant la production en série de ses célèbres vases moulés des années 1920. Au \
+XXᵉ siècle, il passe par plusieurs collections, en Amérique et au Japon, et par des \
+ventes chez Phillips et Christie's à New York. Le Cleveland Museum l'achète en 2007 \
+grâce au fonds John L. Severance. Le vase « Tourbillons », de 1926, est présenté dans \
+l'exposition consacrée aux arts décoratifs."""
+facture = """
+Lalique associe ici plusieurs techniques, comme l'explique le Cleveland Museum : le \
+corps du vase est moulé, les grenouilles sont faites de verre vert coulé et appliqué \
+sur la paroi. Le verre incolore est ensuite dépoli, sans doute à l'acide, pour lui \
+donner son aspect satiné, et une patine grise est déposée dans les creux des feuilles \
+et des tiges pour en souligner le relief. Détail ingénieux, Lalique a placé de petites \
+feuilles de métal derrière les grenouilles : elles renvoient vers le regard une \
+lumière d'un vert sombre et profond. L'artiste, qui avait l'habitude de l'émail et des \
+pierres de couleur, transpose dans le verre ses recherches de bijoutier."""
+details = [
+  "Les grenouilles vertes accroupies, serrées les unes contre les autres.",
+  "Les feuilles de nénuphar patinées de gris, sur l'épaule.",
+  "Les longues tiges ondulées qui descendent vers le pied.",
+  "Le verre dépoli, mat et satiné, comme une eau trouble.",
+  "La signature moulée « R. LALIQUE », sur le bas de la panse.",
+]
+themes = ["art nouveau", "grenouilles", "mare", "verre moulé", "lalique"]
+anecdote = """
+La verrerie que Lalique fonda en 1921 à Wingen-sur-Moder, en Alsace, fabrique toujours \
+du cristal sous son nom. Il meurt en 1945 : les vases qu'il a créés avant 1931 sont \
+aujourd'hui dans le domaine public."""
+salle = 5
+mur = "sud"
+place = 3
+largeur = 1.4
