@@ -22,6 +22,13 @@ struct HomeView: View {
         }
     }
 
+    /// Tous les artistes : ceux des expositions et ceux des collections du monde (le même
+    /// nombre que sur le site).
+    private var artistTotal: Int {
+        let museum = Set((store.index?.artists ?? []).filter { !$0.works.isEmpty }.map(\.name))
+        return museum.union(store.collections?.artistNames ?? []).count
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
@@ -33,7 +40,7 @@ struct HomeView: View {
                         HStack(spacing: 12) {
                             StatCard(value: catalogue.exhibitions.count, label: "expositions", color: .arteonBlue)
                             StatCard(value: catalogue.workCount + (store.collections?.count ?? 0), label: "œuvres", color: .arteonSun)
-                            StatCard(value: store.index?.artists.count ?? 0, label: "artistes", color: .purple)
+                            StatCard(value: artistTotal, label: "artistes", color: .purple)
                             StatCard(value: catalogue.roomCount, label: "salles en 3D", color: .green)
                         }
                     }

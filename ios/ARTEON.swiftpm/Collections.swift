@@ -149,6 +149,12 @@ struct CollectionIndex: Sendable {
 
     var count: Int { collections.works.count }
 
+    /// Les noms des artistes des collections (sans « Artiste inconnu »), pour les compter
+    /// avec ceux des expositions.
+    var artistNames: Set<String> {
+        Set(collections.works.map(\.artist)).subtracting(["", "Artiste inconnu"])
+    }
+
     func work(_ id: String) -> CollectionWork? {
         positions[id].map { collections.works[$0] }
     }

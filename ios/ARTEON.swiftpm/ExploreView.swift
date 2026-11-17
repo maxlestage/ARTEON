@@ -34,7 +34,7 @@ struct ExploreView: View {
                     )
                     ExploreCard(
                         title: "Les artistes",
-                        subtitle: "\(store.index?.artists.count ?? 0) artistes, ateliers et cultures, de A à Z",
+                        subtitle: "\(store.index?.artists.count ?? 0) artistes, ateliers et cultures des expositions, de A à Z",
                         systemImage: "person.2",
                         color: .indigo,
                         image: store.index?.artist(named: "Vincent van Gogh")?.works.first ?? store.index?.artists.first?.works.first,
