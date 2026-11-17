@@ -141,10 +141,6 @@ def main():
     # L'accueil : le vrai nombre d'œuvres, et l'entrée des musées, des collections, d'Explorer.
     accueil = (site / "index.html").read_text(encoding="utf-8")
     fine = lambda n: f"{n:,}".replace(",", "\u202f")
-    m = re.search(r"<strong>(\d+)</strong><span>œuvres</span>", accueil)
-    if m:
-        total = int(m.group(1)) + len(gardees)
-        accueil = accueil.replace(m.group(0), f"<strong>{fine(total)}</strong><span>œuvres</span>", 1)
     entree = (f'<div class="monde-entrees">'
               f'<a class="monde-accueil" href="{base}/monde/"><div><strong>Les collections du monde</strong>'
               f'<span>{fine(len(gardees))} œuvres du domaine public de {len(musees)} grands musées : '
@@ -158,6 +154,29 @@ def main():
         accueil = accueil.replace('<section class="exhibitions ephemeral"', entree + '<section class="exhibitions ephemeral"', 1)
         accueil = accueil.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
     (site / "index.html").write_text(accueil, encoding="utf-8")
+
+    # Les mêmes nombres partout : le pied de page de chaque page et l'accueil comptent
+    # les œuvres des expositions ET des collections du monde, et tous leurs artistes.
+    catalogue = json.loads((site / "catalogue.json").read_text(encoding="utf-8"))
+    noms = {w.get("artist") or ex.get("artist") for ex in catalogue["exhibitions"] for w in ex["works"]}
+    noms |= {o.get("a") for o in gardees}
+    noms -= {None, "", "Artiste inconnu"}
+    artistes = len(noms)
+    oeuvres_expositions = sum(len(ex["works"]) for ex in catalogue["exhibitions"])
+    oeuvres = oeuvres_expositions + len(gardees)
+    chiffre = r"\d[\d\u202f\u00a0 ]*"
+    for fichier in site.rglob("*.html"):
+        texte = fichier.read_text(encoding="utf-8")
+        neuf = re.sub(rf"(class=\"footer-figures\">{chiffre} expositions · ){chiffre} œuvres · {chiffre} artistes",
+                      rf"\g<1>{fine(oeuvres)} œuvres · {fine(artistes)} artistes", texte)
+        neuf = re.sub(rf"{chiffre} artistes et ateliers : ", f"{fine(artistes)} artistes et ateliers : ", neuf)
+        neuf = re.sub(rf"<strong>{chiffre}</strong><span>œuvres</span>",
+                      f"<strong>{fine(oeuvres)}</strong><span>œuvres</span>", neuf)
+        neuf = re.sub(rf"<strong>{chiffre}</strong><span>artistes</span>",
+                      f"<strong>{fine(artistes)}</strong><span>artistes</span>", neuf)
+        if neuf != texte:
+            fichier.write_text(neuf, encoding="utf-8")
+    print(f"✓ partout : {fine(oeuvres)} œuvres ({oeuvres_expositions} dans les expositions), {fine(artistes)} artistes")
 
     taille = sum(f.stat().st_size for f in sortie.rglob("*") if f.is_file())
     print(f"✓ /monde/ : {len(gardees)} œuvres, {taille / 1e6:.0f} Mo")

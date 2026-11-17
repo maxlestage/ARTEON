@@ -49,7 +49,7 @@ const menu = (actif) => `
 
 function listeArtistes() {
   racine.innerHTML = menu("") + `
-    <p class="monde-lead">${nombre(artistes.length)} artistes, ateliers et cultures, de A à Z.</p>
+    <p class="monde-lead">${nombre(artistes.length)} artistes, ateliers et cultures des expositions, de A à Z. Les autres, par milliers, sont dans <a href="${lien("monde/")}">les collections du monde</a>.</p>
     <div class="monde-barre"><input type="search" id="filtre" placeholder="Un nom, un style…" aria-label="Chercher un artiste"></div>
     <div id="artistes"></div>`;
   const zone = document.getElementById("artistes");
