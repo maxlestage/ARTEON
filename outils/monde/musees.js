@@ -76,7 +76,7 @@ function accueil() {
     <p class="monde-lead">Chaque exposition d'ARTEON est installée dans la reproduction d'un vrai musée : sa façade,
       ses enfilades, ses verrières, sa lumière. ${total} musées dans ${pays.length} pays, et un musée original.</p>
     <a class="monde-accueil" href="#/grand-musee"><div><strong>Le Grand Musée ARTEON</strong>
-      <span>Un musée original, qui n'existe que dans ARTEON : ${C.exhibitions.length} pavillons en six ailes, de la Terre au street art.</span></div></a>
+      <span>Un musée original, qui n'existe que dans ARTEON : ${C.exhibitions.length} pavillons en six ailes, de la Terre aux avant-gardes.</span></div></a>
     ${pays.map(([p, bs]) => `
       <section class="monde-section"><h2>${echapper(p)}</h2>
         <div class="monde-grille batiments">${bs.map((b) => {

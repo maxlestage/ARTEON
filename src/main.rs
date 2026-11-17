@@ -224,7 +224,7 @@ fn site_footer() -> Element {
                         .child(span().class("arrow").text(" →")),
                 )
                 .child(p().class("footer-figures").text(format!(
-                    "{} expositions · {works} œuvres · {} artistes · de l'Antiquité au street art",
+                    "{} expositions · {works} œuvres · {} artistes · de l'Antiquité au XXᵉ siècle",
                     EXHIBITIONS.len(),
                     artist_count()
                 ))),
@@ -238,7 +238,7 @@ fn site_footer() -> Element {
                         .child(logo())
                         .child(p().text(
                             "Un musée virtuel en 3D, gratuit et ouvert à tous : peinture, sculpture, objets, \
-                             photographie, de l'Antiquité au pop art, chaque œuvre avec sa notice complète.",
+                             photographie, de l'Antiquité aux avant-gardes, chaque œuvre avec sa notice complète.",
                         ))
                         .child(
                             ul().class("footer-badges")
@@ -324,7 +324,8 @@ fn site_footer() -> Element {
                 .class("footer-legal")
                 .child(p().text(format!(
                     "{} : les œuvres sont dans le domaine public, ou photographiées sous licence libre et créditées. \
-                     Dans le musée 3D, chaque image est réinterprétée en mosaïque : ce n'est pas une reproduction exacte.",
+                     Dans le musée 3D, chaque image est réinterprétée en mosaïque : ce n'est pas une reproduction exacte. \
+                     ARTEON est indépendant : les musées réels qui inspirent ses bâtiments n'y sont pas associés et ne l'ont pas approuvé.",
                     artists_sentence()
                 )))
                 .child(
@@ -570,7 +571,7 @@ async fn home(_req: Request) -> Page {
                         .child(animated_title("ARTEON"))
                         .child(p().class("hero-sub reveal").text("Toute l'histoire de l'art, en 3D, dans votre navigateur"))
                         .child(p().class("lead reveal").text(
-                            "ARTEON est un musée qui n'existe pas. De l'Antiquité au pop art, de Florence à Edo, \
+                            "ARTEON est un musée qui n'existe pas. De l'Antiquité aux avant-gardes, de Florence à Edo, \
                              chaque exposition raconte un style dans un bâtiment inspiré d'un vrai musée. On s'y \
                              promène librement ou en visite guidée, et chaque œuvre a sa notice complète. Toutes \
                              sont libres de droits ou photographiées sous licence libre.",
@@ -641,7 +642,7 @@ async fn home(_req: Request) -> Page {
         .child(features());
     layout(
         "Un musée virtuel en 3D",
-        "ARTEON, un musée virtuel en 3D écrit en Rust : toute l'histoire de l'art, de l'Antiquité au pop art, peinture, sculpture, objets et photographie, à visiter dans le navigateur.",
+        "ARTEON, un musée virtuel en 3D écrit en Rust : toute l'histoire de l'art, de l'Antiquité aux avant-gardes, peinture, sculpture, objets et photographie, à visiter dans le navigateur.",
         "/",
         None,
         content,
@@ -1490,10 +1491,47 @@ async fn credits(_req: Request) -> Page {
                 .child(h1().text("Crédits et licences"))
                 .child(p().class("lead").text(format!(
                     "ARTEON est conçu et développé par {AUTHOR}, en Rust, avec Paquets. Les œuvres exposées sont dans le \
-                     domaine public ; quand une photographie est sous licence libre (par exemple les sculptures du pop art, \
-                     photographiées dans l'espace public), son auteur et sa licence sont cités ci-dessous et sur la page de \
-                     l'œuvre — {attributed} image(s) sont dans ce cas. Dans le musée 3D, les images sont réinterprétées en mosaïque."
+                     domaine public : leurs artistes sont morts en 1955 ou avant, et elles datent d'avant 1931. Quand la \
+                     photographie d'une œuvre est sous licence libre (une sculpture ou un objet photographié par un \
+                     particulier), son auteur et sa licence sont cités ci-dessous et sur la page de l'œuvre — \
+                     {attributed} image(s) sont dans ce cas. Dans le musée 3D, les images sont réinterprétées en mosaïque."
                 ))),
+        )
+        .child(h2().class("section-title").text("Mentions légales et vie privée"))
+        .child(
+            div()
+                .class("credits-legal")
+                .child(h3().text("Les œuvres encore protégées"))
+                .child(p().text(
+                    "Les œuvres d'artistes morts après 1955, ou créées après 1930, sont encore protégées par le droit \
+                     d'auteur dans une partie du monde : ARTEON ne les reproduit jamais. Elles peuvent être citées dans les \
+                     textes, mais aucune image n'en est montrée, ni sur le site, ni dans le musée 3D, ni dans l'application. \
+                     Les expositions consacrées à l'art du XXᵉ siècle montrent ainsi les pionniers et les ancêtres, libres \
+                     de droits, des mouvements récents.",
+                ))
+                .child(h3().text("Les musées réels"))
+                .child(p().text(
+                    "ARTEON est un projet indépendant. Ses bâtiments s'inspirent de musées réels, dont les noms ne sont \
+                     cités que pour dire ce qui a inspiré chaque plan : ARTEON n'est ni affilié à ces musées, ni approuvé \
+                     ni soutenu par eux, et leurs noms restent la propriété de leurs titulaires. Les plans sont des \
+                     interprétations libres, pas des relevés d'architecture.",
+                ))
+                .child(h3().text("Les licences libres"))
+                .child(p().text(
+                    "Une photographie sous licence CC BY ou CC BY-SA est toujours citée avec son auteur, sa licence et \
+                     un lien vers sa source. Sa mosaïque dans le musée 3D est une adaptation de cette photographie : elle \
+                     est partagée aux mêmes conditions, sous la même licence et avec le même crédit. Les photographies \
+                     publiées en CC0 par les musées et les œuvres du domaine public peuvent être réutilisées librement.",
+                ))
+                .child(h3().text("Vie privée"))
+                .child(p().text(
+                    "ARTEON n'utilise ni cookie, ni traceur, ni publicité, et ne demande aucun compte. Les pages des \
+                     collections du monde affichent les images en grand depuis les serveurs des musées (Art Institute of \
+                     Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art) : votre \
+                     navigateur s'y connecte alors directement, comme pour toute image venue d'un autre site. Le record \
+                     du jeu « Qui l'a fait ? » reste dans votre navigateur. L'application iOS embarque tout le musée et \
+                     fonctionne hors ligne.",
+                )),
         )
         .child(h2().class("section-title").text("Le code et les outils"))
         .child(div().class("table-wrap").child(tools))
@@ -1801,7 +1839,7 @@ fn app() -> App {
         Pwa::new("ARTEON")
             .short_name("ARTEON")
             .description(
-                "Un musée virtuel en 3D : une cinquantaine d'expositions, de l'Antiquité au street art, \
+                "Un musée virtuel en 3D : une cinquantaine d'expositions, de l'Antiquité au XXᵉ siècle, \
                  en visite guidée ou libre, avec une notice complète pour chaque œuvre.",
             )
             .id("/")
