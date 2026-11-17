@@ -79,6 +79,16 @@ fn menu_item(ex: &Exhibition, current: &str, new: bool) -> Element {
     item.child(span().class("nav-artist").text(movement_or_dates(ex)))
 }
 
+/// Un texte pour une adresse (« Vincent van Gogh » → « Vincent%20van%20Gogh »).
+fn encode_fragment(text: &str) -> String {
+    text.bytes()
+        .map(|b| match b {
+            b'A'..=b'Z' | b'a'..=b'z' | b'0'..=b'9' | b'-' | b'_' | b'.' | b'~' => (b as char).to_string(),
+            _ => format!("%{b:02X}"),
+        })
+        .collect()
+}
+
 /// Le style de l'exposition, ou ses dates s'il n'est pas donné.
 fn movement_or_dates(ex: &Exhibition) -> &'static str {
     if ex.movement.is_empty() {
@@ -1390,6 +1400,14 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
                 .child(artist_card(about)),
             None => section(),
         })
+        // Toutes ses œuvres : celles des expositions et celles des collections du monde.
+        .child(
+            p().class("work-catalogue").child(
+                a().class("button ghost")
+                    .href(format!("/explorer/#/artiste/{}", encode_fragment(artist)))
+                    .text(format!("Le catalogue complet : {artist} →")),
+            ),
+        )
         .child(
             nav()
                 .class("work-nav")

@@ -378,6 +378,7 @@ body.viewer-open { overflow: hidden; }
 .credits-block { margin: .6rem 0; padding: .6rem 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
 .credits-block summary { cursor: pointer; padding: .3rem 0; }
 .credits-legal { max-width: 760px; line-height: 1.6; }
+.work-catalogue { margin: 1.4rem 0 .6rem; }
 .credits-legal h3 { margin: 1.2rem 0 .3rem; font-size: 1.05rem; }
 .credits-legal p { margin: 0; color: var(--muted); }
 .credit a { color: var(--accent); }

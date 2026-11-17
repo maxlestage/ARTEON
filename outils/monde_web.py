@@ -23,6 +23,7 @@ Bibliothèque standard de Python.
 import json
 import re
 import shutil
+import unicodedata
 import sys
 from pathlib import Path
 
@@ -52,6 +53,26 @@ def titre_siecle(r):
         return "Avant l'histoire"
     n = abs(r)
     return f"{romain(n)}{'ᵉʳ' if n == 1 else 'ᵉ'} siècle" + (" av. J.-C." if r < 0 else "")
+
+
+ALIAS = json.loads((ICI / "monde" / "alias.json").read_text(encoding="utf-8"))
+
+
+def plier(texte):
+    texte = str(texte or "").replace("œ", "oe").replace("Œ", "oe").replace("æ", "ae").replace("Æ", "ae")
+    return "".join(c for c in unicodedata.normalize("NFD", texte) if not unicodedata.combining(c)).lower()
+
+
+def cle_nom(nom):
+    """La clé d'un artiste, la même que dans Explorer (explorer.js, cleNom) et dans l'app :
+    « Rembrandt (Rembrandt van Rijn) », « Rembrandt van Rijn » et « Rembrandt » ne font qu'un."""
+    n = str(nom or "").strip()
+    m = re.match(r"^(.+?)\s*\((.+)\)$", n)
+    if m:
+        premier = (plier(m.group(1)).split() or [""])[0]
+        n = m.group(2) if premier in plier(m.group(2)) else m.group(1)
+    k = " ".join(re.sub(r"[-‐–'’.,]", " ", plier(n)).split())
+    return ALIAS.get(k, k)
 
 
 def main():
@@ -104,7 +125,7 @@ def main():
         (sortie / "donnees" / f"fiches-{n // PAR_FICHIER:03d}.json").write_text(
             json.dumps(fiches, **compact), encoding="utf-8")
     for fichier in sorted((ICI / "monde").iterdir()):
-        if fichier.suffix in (".js", ".css"):
+        if fichier.suffix in (".js", ".css", ".json"):
             shutil.copyfile(fichier, sortie / fichier.name)
 
     # Les pages : l'accueil exporté, dont on garde l'en-tête, le style et le pied.
@@ -161,7 +182,7 @@ def main():
     noms = {w.get("artist") or ex.get("artist") for ex in catalogue["exhibitions"] for w in ex["works"]}
     noms |= {o.get("a") for o in gardees}
     noms -= {None, "", "Artiste inconnu"}
-    artistes = len(noms)
+    artistes = len({cle_nom(n) for n in noms})
     oeuvres_expositions = sum(len(ex["works"]) for ex in catalogue["exhibitions"])
     oeuvres = oeuvres_expositions + len(gardees)
     chiffre = r"\d[\d\u202f\u00a0 ]*"
