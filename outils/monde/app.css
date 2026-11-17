@@ -54,3 +54,65 @@
   text-decoration: none; }
 .monde-accueil strong { font-size: 1.4rem; display: block; }
 .monde-accueil span { opacity: .9; }
+
+/* Les musées : plans, bâtiments, Grand Musée. */
+.monde-plan { width: 100%; height: auto; max-height: 520px; display: block; }
+.monde-plan rect[data-salle] { cursor: pointer; }
+.monde-plan.petit { position: absolute; right: 8px; top: 8px; width: 84px; height: 84px; background: rgba(255,255,255,.85);
+  border-radius: 10px; padding: 4px; box-sizing: border-box; }
+.monde-plan-cadre { background: #f7f5ee; border-radius: var(--radius); padding: 12px; }
+.batiments { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.batiment { border-top: 5px solid var(--couleur, var(--accent)); }
+.batiment-haut { position: relative; }
+.batiment-haut img { height: 160px; }
+.batiment span + span { padding-top: 0; }
+.monde-bandeau { position: relative; border-radius: var(--radius); overflow: hidden; margin-bottom: 18px;
+  border-bottom: 6px solid var(--couleur, var(--accent)); }
+.monde-bandeau img { width: 100%; height: 280px; object-fit: cover; display: block; }
+.monde-bandeau div { position: absolute; inset: auto 0 0 0; padding: 18px; color: #fff;
+  background: linear-gradient(transparent, rgba(0,0,0,.7)); }
+.monde-bandeau h1 { margin: 0; font-size: clamp(1.7rem, 5vw, 2.6rem); }
+.monde-bandeau p { margin: 4px 0 0; opacity: .9; }
+.monde-salle h3 { margin: 16px 0 6px; }
+.grand-hall { text-align: center; border: 2px solid var(--fg); border-radius: 8px; padding: 24px 16px; }
+.grand-hall .monde-lead { margin: 0 auto 14px; }
+.grand-porte { display: inline-block; border: 1px solid var(--muted); border-radius: 999px; padding: 4px 14px; font-size: .85rem; }
+.grand-couloir { width: 3px; height: 32px; background: var(--line); margin: 0 auto; }
+.grand-aile { border: 1px solid var(--line); border-radius: 6px; padding: 14px; background: var(--card); }
+.grand-aile h2 { margin: 2px 0; }
+.grand-pavillons { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); margin-top: 10px; border: 2px solid var(--fg); }
+.grand-pavillon { display: flex; flex-direction: column; gap: 4px; padding: 10px; min-height: 150px; color: inherit; text-decoration: none;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--couleur) 12%, transparent); }
+.grand-pavillon img { width: 54px; height: 54px; object-fit: cover; border-radius: 4px; }
+.grand-pavillon span { color: var(--muted); font-size: .8rem; }
+
+/* Explorer : onglets, artistes, chronologie, thèmes, jeu. */
+.monde-onglets { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.monde-onglets a { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card);
+  color: inherit; text-decoration: none; }
+.monde-onglets a.actif { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.monde-lettre { margin: 22px 0 6px; }
+.monde-artistes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
+.monde-artiste-ligne { display: flex; gap: 12px; align-items: center; padding: 8px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--line); color: inherit; text-decoration: none; }
+.monde-artiste-ligne img { width: 48px; height: 48px; object-fit: cover; border-radius: 8px; flex: none; }
+.monde-artiste-ligne span { flex: 1; min-width: 0; }
+.monde-artiste-ligne b { display: block; }
+.monde-artiste-ligne small { color: var(--muted); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.monde-artiste-ligne em { color: var(--muted); font-style: normal; }
+.monde-rangee { display: grid; grid-auto-flow: column; grid-auto-columns: 160px; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+.monde-themes { display: flex; flex-wrap: wrap; gap: 8px; }
+.monde-themes a { padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
+  color: inherit; text-decoration: none; }
+.monde-themes span { color: var(--muted); }
+.jeu-image { background: #ecebe6; border-radius: var(--radius); padding: 14px; display: flex; justify-content: center; }
+.jeu-image img { max-width: 100%; max-height: 420px; }
+.jeu-choix { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.jeu-choix button { font: inherit; font-weight: 600; text-align: left; padding: 14px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+.jeu-choix button.bon { background: #2f8f4e; color: #fff; }
+.jeu-choix button.faux { background: #c0392b; color: #fff; }
+.monde-entrees { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 8px 0 40px; }
+.monde-entrees .monde-accueil { margin: 0; }
+.monde-accueil.musees { background: linear-gradient(135deg, #0f1a3a, #1d3f8f); }
+.monde-accueil.explorer { background: linear-gradient(135deg, #2f4f3a, #2f8f6b); }

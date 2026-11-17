@@ -103,39 +103,61 @@ def main():
                   for o in gardees[n:n + PAR_FICHIER]]
         (sortie / "donnees" / f"fiches-{n // PAR_FICHIER:03d}.json").write_text(
             json.dumps(fiches, **compact), encoding="utf-8")
-    shutil.copyfile(ICI / "monde" / "app.js", sortie / "app.js")
-    shutil.copyfile(ICI / "monde" / "app.css", sortie / "app.css")
+    for fichier in sorted((ICI / "monde").iterdir()):
+        if fichier.suffix in (".js", ".css"):
+            shutil.copyfile(fichier, sortie / fichier.name)
 
-    # La page : l'accueil exporté, dont on garde l'en-tête et le pied.
+    # Les pages : l'accueil exporté, dont on garde l'en-tête, le style et le pied.
     accueil = (site / "index.html").read_text(encoding="utf-8")
     base = re.search(r'<a class="logo" href="([^"]*)/"', accueil).group(1)
     debut, fin = accueil.index('<main class="page">'), accueil.index("</main>") + len("</main>")
-    page = (accueil[:debut]
-            + '<main class="page"><div class="monde" id="monde"><noscript>Les collections du monde '
-              "demandent JavaScript.</noscript></div></main>"
-            + accueil[fin:])
-    page = re.sub(r"<title>[^<]*</title>", "<title>Les collections du monde · ARTEON</title>", page, count=1)
-    page = page.replace(' class="current"', "").replace(' aria-current="page"', "")
-    page = page.replace("</head>", '<link rel="stylesheet" href="app.css"/></head>', 1)
-    page = page.replace("</body>", '<script type="module" src="app.js"></script></body>', 1)
-    (sortie / "index.html").write_text(page, encoding="utf-8")
 
-    # « Collections » dans le menu de toutes les pages, et une entrée sur l'accueil.
-    lien = f'<a href="{base}/monde/">Collections</a>'
+    def ecrire(dossier, titre, script):
+        page = (accueil[:debut]
+                + f'<main class="page"><div class="monde" id="monde"><noscript>{titre} demande JavaScript.'
+                  "</noscript></div></main>"
+                + accueil[fin:])
+        page = re.sub(r"<title>[^<]*</title>", f"<title>{titre} · ARTEON</title>", page, count=1)
+        page = page.replace(' class="current"', "").replace(' aria-current="page"', "")
+        page = page.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
+        page = page.replace("</body>", f'<script type="module" src="{base}/monde/{script}"></script></body>', 1)
+        (site / dossier).mkdir(parents=True, exist_ok=True)
+        (site / dossier / "index.html").write_text(page, encoding="utf-8")
+
+    ecrire("monde", "Les collections du monde", "app.js")
+    ecrire("musees", "Les musées", "musees.js")
+    ecrire("explorer", "Explorer", "explorer.js")
+
+    # « Musées », « Collections » et « Explorer » dans le menu de toutes les pages.
+    liens = (f'<a href="{base}/musees/">Musées</a><a href="{base}/monde/">Collections</a>'
+             f'<a href="{base}/explorer/">Explorer</a>')
     for fichier in site.rglob("*.html"):
         texte = fichier.read_text(encoding="utf-8")
-        if lien in texte or "</details><a href=" not in texte:
+        if liens in texte or "</details><a href=" not in texte:
             continue
-        texte = texte.replace("</details><a href=", f"</details>{lien}<a href=", 1)
+        texte = texte.replace("</details><a href=", f"</details>{liens}<a href=", 1)
         fichier.write_text(texte, encoding="utf-8")
+
+    # L'accueil : le vrai nombre d'œuvres, et l'entrée des musées, des collections, d'Explorer.
     accueil = (site / "index.html").read_text(encoding="utf-8")
-    entree = (f'<a class="monde-accueil" href="{base}/monde/"><div><strong>Les collections du monde</strong>'
-              f'<span>{f"{len(gardees):,}".replace(",", "\u202f")} œuvres du domaine public de {len(musees)} grands musées : '
-              "Chicago, Cleveland, New York, Washington. Chercher, parcourir, regarder en grand.</span></div></a>")
-    if "monde-accueil" not in accueil and '<section class="exhibitions ephemeral"' in accueil:
+    fine = lambda n: f"{n:,}".replace(",", "\u202f")
+    m = re.search(r"<strong>(\d+)</strong><span>œuvres</span>", accueil)
+    if m:
+        total = int(m.group(1)) + len(gardees)
+        accueil = accueil.replace(m.group(0), f"<strong>{fine(total)}</strong><span>œuvres</span>", 1)
+    entree = (f'<div class="monde-entrees">'
+              f'<a class="monde-accueil" href="{base}/monde/"><div><strong>Les collections du monde</strong>'
+              f'<span>{fine(len(gardees))} œuvres du domaine public de {len(musees)} grands musées : '
+              "Chicago, Cleveland, New York, Washington. Chercher, parcourir, regarder en grand.</span></div></a>"
+              f'<a class="monde-accueil musees" href="{base}/musees/"><div><strong>Les musées</strong>'
+              "<span>Les vrais musées reproduits dans ARTEON, leurs plans salle par salle, et le Grand Musée ARTEON.</span></div></a>"
+              f'<a class="monde-accueil explorer" href="{base}/explorer/"><div><strong>Explorer</strong>'
+              "<span>Les artistes de A à Z, la chronologie, les thèmes, et le jeu « Qui l'a fait ? ».</span></div></a>"
+              "</div>")
+    if "monde-entrees" not in accueil and '<section class="exhibitions ephemeral"' in accueil:
         accueil = accueil.replace('<section class="exhibitions ephemeral"', entree + '<section class="exhibitions ephemeral"', 1)
         accueil = accueil.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
-        (site / "index.html").write_text(accueil, encoding="utf-8")
+    (site / "index.html").write_text(accueil, encoding="utf-8")
 
     taille = sum(f.stat().st_size for f in sortie.rglob("*") if f.is_file())
     print(f"✓ /monde/ : {len(gardees)} œuvres, {taille / 1e6:.0f} Mo")
