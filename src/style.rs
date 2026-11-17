@@ -41,6 +41,10 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .nav-menu li:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
 .nav-menu li a::after { display: none; }
 .nav-menu li a.current { font-weight: 700; color: var(--accent); }
+.nav-menu li.nav-group { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: .7rem .6rem .25rem; }
+.nav-menu li.nav-group:hover { background: none; }
+.nav-menu li.nav-group:first-child { padding-top: .3rem; }
+.nav-menu .nav-new { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--accent-fg, #fff); background: var(--accent); border-radius: 999px; padding: .1rem .45rem; margin-left: auto; }
 .nav-artist { font-size: .78rem; color: var(--muted); white-space: nowrap; }
 .nav-menu ul { max-height: min(70vh, 34rem); overflow-y: auto; overscroll-behavior: contain; }
 .styles { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 2rem; }

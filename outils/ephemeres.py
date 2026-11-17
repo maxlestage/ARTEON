@@ -256,8 +256,10 @@ def new_york(alea, combien):
     recherche = "https://collectionapi.metmuseum.org/public/collection/v1.1/search?q=*&isOnView=true&hasImages=true"
     identifiants = json_de(recherche).get("objectIDs") or []
     oeuvres = []
+    # Au plus cinq minutes : quand l'API du Met ralentit ou refuse, on accroche ce qu'on a.
+    fin = time.time() + 300
     for ident in alea.sample(identifiants, min(300, len(identifiants))):
-        if len(oeuvres) >= combien * 4:
+        if len(oeuvres) >= combien * 4 or time.time() > fin:
             break
         try:
             o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{ident}")
@@ -378,8 +380,9 @@ def monter(musee, semaine, graine):
     shutil.rmtree(dossier, ignore_errors=True)
     dossier.mkdir(parents=True)
     pris, accrochees = set(), []
+    fin = time.time() + 360  # six minutes d'images au plus par musée
     for o in oeuvres:
-        if len(accrochees) == PAR_EXPOSITION:
+        if len(accrochees) == PAR_EXPOSITION or time.time() > fin:
             break
         try:
             image = lire(o["image"], o["entetes"])

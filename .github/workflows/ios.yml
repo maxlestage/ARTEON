@@ -81,7 +81,7 @@ jobs:
       # Toujours : l'application embarque toutes les œuvres, éphémères comprises.
       - name: Expositions éphémères
         run: |
-          python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
+          timeout 1500 python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
           if ! cargo check --quiet --lib; then
             echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
             rm -f expositions/ephemere-*.toml

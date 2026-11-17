@@ -51,7 +51,8 @@ jobs:
       # Un musée qui ne répond pas est sauté ; si le résultat ne se compile pas, on s'en passe.
       - name: Expositions éphémères
         run: |
-          python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
+          # 25 minutes au plus : un musée qui ne répond plus ne bloque pas la mise en ligne.
+          timeout 1500 python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
           if ! cargo check --quiet --lib; then
             echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
             rm -f expositions/ephemere-*.toml
