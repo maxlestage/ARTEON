@@ -55,6 +55,9 @@ except ImportError:  # pragma: no cover
 AGENT = "ARTEON/1.0 (https://github.com/maxlestage/ARTEON)"
 VIGNETTE = 320
 QUALITE = 62
+# L'image en grand, embarquée elle aussi (l'app est 100 % hors ligne) : 800 px, ~45 Ko.
+GRANDE = 800
+QUALITE_GRANDE = 72
 VERSION = 1
 
 # La part de chaque musée dans le total.
@@ -452,24 +455,43 @@ def choisir(fiches, combien, alea):
     return choix
 
 
+def source(f):
+    """L'image à télécharger : assez grande pour en tirer l'image de 800 px."""
+    if f["i"].startswith("chicago-") and f.get("u"):
+        return f["u"]  # 843 px, la largeur que l'IIIF de Chicago sert
+    if f["i"].startswith("washington-") and f.get("u"):
+        return f["u"].replace("/full/!1600,1600/", f"/full/!{GRANDE},{GRANDE}/")
+    return f["_vignette"]
+
+
+def reduire(image, cote, qualite):
+    copie = image.copy()
+    copie.thumbnail((cote, cote), Image.LANCZOS)
+    sortie = io.BytesIO()
+    copie.save(sortie, "JPEG", quality=qualite, optimize=True, progressive=cote > VIGNETTE)
+    return sortie.getvalue(), copie
+
+
 def vignette(f, dossier):
-    """La vignette d'une fiche, sur le disque (téléchargée et réduite si besoin)."""
-    fichier = dossier / f"{f['i']}.jpg"
-    if fichier.exists() and fichier.stat().st_size > 0:
-        return fichier.read_bytes()
+    """La vignette d'une fiche (320 px) et son image en grand (800 px), sur le disque :
+    téléchargées une fois, réduites, gardées dans le cache. Renvoie la vignette."""
+    petite = dossier / f"{f['i']}.jpg"
+    grande = dossier.parent / "grandes" / f"{f['i']}.jpg"
+    if petite.exists() and petite.stat().st_size > 0 and grande.exists() and grande.stat().st_size > 0:
+        return petite.read_bytes()
     entetes = {"AIC-User-Agent": AGENT} if f["i"].startswith("chicago-") else None
     try:
-        donnees = lire(f["_vignette"], entetes, essais=3, delai=40)
+        donnees = lire(source(f), entetes, essais=3, delai=60)
         image = Image.open(io.BytesIO(donnees))
-        image.draft("RGB", (VIGNETTE * 2, VIGNETTE * 2))
+        image.draft("RGB", (GRANDE * 2, GRANDE * 2))
         image = image.convert("RGB")
-        image.thumbnail((VIGNETTE, VIGNETTE), Image.LANCZOS)
-        sortie = io.BytesIO()
-        image.save(sortie, "JPEG", quality=QUALITE, optimize=True)
-        octets = sortie.getvalue()
-        fichier.write_bytes(octets)
-        if not f.get("r") and image.width:
-            f["r"] = round(image.height / image.width, 3)
+        octets_grande, _ = reduire(image, GRANDE, QUALITE_GRANDE)
+        octets, reduite = reduire(image, VIGNETTE, QUALITE)
+        grande.parent.mkdir(parents=True, exist_ok=True)
+        grande.write_bytes(octets_grande)
+        petite.write_bytes(octets)
+        if not f.get("r") and reduite.width:
+            f["r"] = round(reduite.height / reduite.width, 3)
         return octets
     except Exception:
         return None
@@ -584,10 +606,22 @@ def main():
             f["k"] = c
             paquet += o
         (sortie / f"vignettes-{c}.bin").write_bytes(bytes(paquet))
+        # Les images en grand, bout à bout elles aussi, écrites au fil de l'eau (2 Go au total).
+        taille_grandes = 0
+        with open(sortie / f"grandes-{c}.bin", "wb") as grandes:
+            for f in gardees[c]:
+                chemin = cache / "grandes" / f"{f['i']}.jpg"
+                if chemin.exists():
+                    octets_grande = chemin.read_bytes()
+                    f["gr"] = [taille_grandes, len(octets_grande)]
+                    grandes.write(octets_grande)
+                    taille_grandes += len(octets_grande)
         fiches = [{k: v for k, v in f.items() if not k.startswith("_")} for f in gardees[c]]
         fiches_finales += fiches
-        musees.append({"cle": c, **MUSEES[c], "oeuvres": len(fiches), "paquet": f"vignettes-{c}.bin"})
-        dire(f"  {MUSEES[c]['nom']} : {len(fiches)} œuvres, vignettes {len(paquet) / 1e6:.0f} Mo")
+        musees.append({"cle": c, **MUSEES[c], "oeuvres": len(fiches), "paquet": f"vignettes-{c}.bin",
+                       "grandes": f"grandes-{c}.bin"})
+        dire(f"  {MUSEES[c]['nom']} : {len(fiches)} œuvres, vignettes {len(paquet) / 1e6:.0f} Mo, "
+             f"images en grand {taille_grandes / 1e6:.0f} Mo")
 
     catalogue = {
         "version": VERSION,

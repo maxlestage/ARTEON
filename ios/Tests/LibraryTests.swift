@@ -270,6 +270,11 @@ private func worldFixture() throws -> WorldCollections {
     #expect(String(decoding: bytes, as: UTF8.self) == "bonjour")
     work.thumb = nil
     #expect(LocalMuseum.thumbnail(of: work, pack: "vignettes-met.bin", in: root) == nil)
+    // L'image en grand se lit de la même façon, dans son propre paquet.
+    work.large = [11, 4]
+    let large = try #require(LocalMuseum.largeImage(of: work, pack: "vignettes-met.bin", in: root))
+    #expect(String(decoding: large, as: UTF8.self) == "BBBB")
+    #expect(LocalMuseum.largeImage(of: work, pack: nil, in: root) == nil)
 }
 
 /// Les vraies collections embarquées, quand outils/collections_monde.py les a écrites.
@@ -285,6 +290,18 @@ func lesVraiesCollectionsSontCompletes() throws {
         for w in c.works where w.museum == museum.key {
             let range = try #require(w.thumb, "vignette de \(w.id)")
             #expect(range[0] + range[1] <= size)
+        }
+        // Les images en grand (800 px), dans leur paquet.
+        if let largePack = museum.largePack {
+            let file = root.appendingPathComponent("collections/\(largePack)")
+            let largeSize = try #require(try FileManager.default.attributesOfItem(atPath: file.path)[.size] as? Int)
+            for w in c.works where w.museum == museum.key {
+                if let range = w.large { #expect(range[0] + range[1] <= largeSize) }
+            }
+            if let w = c.works.first(where: { $0.museum == museum.key && $0.large != nil }) {
+                let bytes = try #require(LocalMuseum.largeImage(of: w, pack: largePack, in: root))
+                #expect(bytes.prefix(2) == Data([0xFF, 0xD8]))
+            }
         }
         // Une vignette se lit, et c'est un JPEG.
         if let w = c.works.first(where: { $0.museum == museum.key }) {

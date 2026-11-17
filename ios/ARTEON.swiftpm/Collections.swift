@@ -17,12 +17,14 @@ struct CollectionMuseum: Decodable, Hashable, Sendable, Identifiable {
     var count: Int
     /// Le fichier de ses vignettes (`vignettes-met.bin`).
     var pack: String
+    /// Le fichier de ses images en grand, 800 px (`grandes-met.bin`), s'il y en a.
+    var largePack: String?
 
     var id: String { key }
 
     enum CodingKeys: String, CodingKey {
         case key = "cle", name = "nom", city = "ville", site, color = "couleur", licence
-        case count = "oeuvres", pack = "paquet"
+        case count = "oeuvres", pack = "paquet", largePack = "grandes"
     }
 }
 
@@ -51,13 +53,15 @@ struct CollectionWork: Decodable, Hashable, Sendable, Identifiable {
     var gallery: String?
     /// Sa vignette dans le paquet du musée : [décalage, longueur].
     var thumb: [Int]?
+    /// Son image en grand (800 px) dans le paquet des grandes images : [décalage, longueur].
+    var large: [Int]?
     /// Le musée (`met`).
     var museum: String
 
     enum CodingKeys: String, CodingKey {
         case id = "i", title = "t", artist = "a", life = "v", date = "d", year = "y", medium = "m"
         case dimensions = "s", category = "c", origin = "o", text = "x", imageURL = "u", page = "w"
-        case ratio = "r", gallery = "g", thumb = "p", museum = "k"
+        case ratio = "r", gallery = "g", thumb = "p", museum = "k", large = "gr"
     }
 
     /// « Vincent van Gogh · 1889 ».
@@ -218,9 +222,20 @@ extension LocalMuseum {
     /// Les collections sont-elles à portée (sur l'appareil, ou sur Nuage) ?
     static var hasCollections: Bool { collectionsFile != nil || Nuage.isConfigured }
 
+    /// Les octets de l'image en grand (800 px) d'une œuvre des collections, dans l'app.
+    static func largeImage(of work: CollectionWork, pack: String?, in root: URL? = nil) -> Data? {
+        guard let pack else { return nil }
+        return packBytes(work.large, pack: pack, in: root)
+    }
+
     /// Les octets de la vignette d'une œuvre des collections, lus dans le paquet de son musée.
     static func thumbnail(of work: CollectionWork, pack: String, in root: URL? = nil) -> Data? {
-        guard let range = work.thumb, range.count == 2,
+        packBytes(work.thumb, pack: pack, in: root)
+    }
+
+    /// Les octets [décalage, longueur] d'un paquet des collections.
+    static func packBytes(_ range: [Int]?, pack: String, in root: URL? = nil) -> Data? {
+        guard let range, range.count == 2,
               let url = root.map({ file("collections/\(pack)", in: $0) }) ?? stored("collections/\(pack)"),
               let handle = try? FileHandle(forReadingFrom: url)
         else { return nil }
