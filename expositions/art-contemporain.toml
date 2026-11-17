@@ -1,38 +1,41 @@
 # ─────────────────────────────────────────────────────────────────────────────
-#  EXPOSITION « ART CONTEMPORAIN » D'ARTEON
+#  EXPOSITION « SCULPTURE MODERNE » D'ARTEON
 #
 #  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
 #  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/art-contemporain/). Le
 #  nom du fichier donne l'adresse de l'exposition sur le site : /art-contemporain.
 #
-#  Les œuvres exposées sont protégées par le droit d'auteur : elles sont toutes
-#  installées à demeure dans l'espace public d'un pays dont la « liberté de
-#  panorama » autorise à les photographier, et chaque photographie est publiée
-#  sur Wikimedia Commons sous licence libre (crédit, licence et source indiqués).
+#  Les œuvres exposées, de 1875 à 1916, sont dans le domaine public ; leurs
+#  photographies sont publiées sous licence CC0 par les musées qui les
+#  conservent (Cleveland, Chicago, Washington et New York).
 #
 #  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
 # ─────────────────────────────────────────────────────────────────────────────
 
 [exposition]
 ordre = 210
-nom_court = "Art contemporain"
-mouvement = "Art contemporain"
+nom_court = "Sculpture moderne"
+mouvement = "Sculpture moderne, de Rodin au futurisme"
 cadre = "aucun"
 couleur = "#9a4a2c"
-titre = "L'art contemporain, des œuvres pour la ville"
-artiste = "Bourgeois, Gormley, Kapoor, Chillida, Whiteread, Shonibare, Botero, Yue Minjun…"
-dates = "1976–2010"
+titre = "Aux sources de la sculpture d'aujourd'hui, de Rodin à Gaudier-Brzeska"
+artiste = "Rodin, Lehmbruck, Saint-Gaudens, Barlach, Boccioni, Duchamp-Villon, Rosso, Gaudier-Brzeska"
+dates = "1875–1916"
 accroche = "Exposition virtuelle · Tate Modern, Londres"
 introduction = """
-L'art contemporain est sorti des musées : depuis les années 1970, les grands \
-sculpteurs travaillent pour la rue, la colline, le rivage. La visite réunit dix œuvres \
-monumentales installées en plein air, de Gateshead à Vancouver et de Saint-Sébastien à \
-Madrid, par des artistes venus d'Europe, d'Inde, d'Afrique, de Chine et d'Amérique \
-latine. Ces œuvres étant protégées par le droit d'auteur, on les découvre à travers \
-des photographies publiées sous licence libre, qui les montrent dans leur lieu. Le \
-bâtiment s'inspire de la Tate Modern à Londres : un hall, puis la nef immense de \
-l'ancienne salle des turbines, et trois galeries en enfilade au nord."""
-vitrine = "maman.jpg"
+Comment la sculpture est-elle devenue moderne ? En une quarantaine d'années, de \
+L'Âge d'airain de Rodin aux têtes taillées par Gaudier-Brzeska à la veille de la \
+Grande Guerre, les sculpteurs renoncent au récit et à l'allégorie pour faire parler \
+le corps, la matière et le mouvement. La visite réunit dix œuvres de huit artistes, \
+français, allemands, italiens et américain : de grands corps nus, des monuments à la \
+mémoire, le futurisme qui veut sculpter la vitesse, le cubisme qui taille la forme \
+en facettes, des visages qui se dissolvent dans la lumière ou se changent en idoles. \
+Les œuvres d'aujourd'hui étant protégées par le droit d'auteur, l'exposition remonte \
+à leurs sources : sans ces pionniers, ni Giacometti, ni Moore, ni Louise Bourgeois \
+n'auraient sculpté comme ils l'ont fait. Le bâtiment s'inspire de la Tate Modern à \
+Londres : un hall, puis la nef immense de l'ancienne salle des turbines, et trois \
+galeries en enfilade au nord."""
+vitrine = "age-d-airain.jpg"
 
 # ─── Le bâtiment ─────────────────────────────────────────────────────────────
 
@@ -51,30 +54,33 @@ moderne et contemporain. Ils gardent l'enveloppe de brique, posent sur le toit u
 longue boîte de verre lumineuse et font de l'ancienne salle des turbines, vidée de ses \
 machines, une nef de 3 400 mètres carrés qui traverse tout le bâtiment et où l'on \
 descend par une rampe en pente douce. La reine Élisabeth II inaugure la Tate Modern le \
-11 mai 2000. Chaque année, un artiste est invité à occuper cette nef : Louise \
+11 mai 2000. Chaque année, un artiste est invité à occuper cette nef : Louise \
 Bourgeois ouvre la série en 2000. En 2016, une tour de brique ajourée, aujourd'hui le \
 Blavatnik Building, agrandit le musée, dont les collections permanentes sont \
 gratuites."""
 ici = """
-Le bâtiment d'ARTEON reprend l'idée maîtresse de la Tate Modern : une nef immense \
+Le bâtiment d'ARTEON reprend l'idée maîtresse de la Tate Modern : une nef immense \
 entre la rue et les galeries. On entre par le sud dans le hall sud, puis on débouche \
 dans le Turbine Hall, long de 44 mètres et haut de 20, aux murs de béton clair, où \
-sont accrochés les géants : l'araignée de Bourgeois, l'ange de Gormley, la tête de \
-Plensa et le miroir de Kapoor. Au nord, comme les galeries tournées vers la Tamise, \
-trois salles blanches communiquent en enfilade, d'ouest en est : « Mémoire et \
-empire », « Le corps et le rire », puis « La mer et le vent »."""
+sont accrochés les grands corps : L'Âge d'airain et l'Adam de Rodin, la Femme debout \
+de Lehmbruck et la Victoire dorée de Saint-Gaudens. Au nord, comme les galeries \
+tournées vers la Tamise, trois salles blanches communiquent en enfilade, d'ouest en \
+est : « Mémoire et monuments », avec Rodin et Barlach, « Le mouvement », avec \
+Boccioni et Duchamp-Villon, puis « Des visages nouveaux », avec Medardo Rosso et \
+Gaudier-Brzeska."""
 
 # ─── Le plan du musée ────────────────────────────────────────────────────────
 # Inspiré de la Tate Modern à Londres (centrale de Bankside de Giles Gilbert Scott,
 # transformée par Herzog & de Meuron) : un hall d'entrée au sud, puis l'immense
 # Turbine Hall, nef de béton longue de 44 m et haute de 20 m qui traverse tout le
-# bâtiment ; au nord, comme les galeries qui donnent sur la Tamise, trois salles
-# blanches en enfilade. x et z : le centre de la salle (x vers l'est, z vers le
-# sud), en mètres ; une porte se déclare d'un seul côté.
+# bâtiment et accueille les grands corps ; au nord, comme les galeries qui donnent
+# sur la Tamise, trois salles blanches en enfilade : la mémoire, le mouvement et
+# les visages. x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
 
 [[salles]]
 nom = "Le hall sud"
-theme = "L'entrée, comme celle qui mène du quartier de Southwark au cœur de l'ancienne centrale."
+theme = "L'entrée, comme celle qui mène du quartier de Southwark au cœur de l'ancienne centrale : on y remonte d'un siècle, vers les sources de la sculpture d'aujourd'hui."
 murs = "#e9e3d9"
 x = 0
 z = 0
@@ -85,7 +91,7 @@ portes = ["sud", "nord"]
 
 [[salles]]
 nom = "Le Turbine Hall"
-theme = "La nef de l'ancienne salle des turbines : l'araignée de Louise Bourgeois, l'ange de Gormley, la tête de Plensa et le miroir de Kapoor."
+theme = "Les grands corps : L'Âge d'airain et l'Adam de Rodin, la Femme debout de Lehmbruck et la Victoire de Saint-Gaudens, dans la nef de l'ancienne salle des turbines."
 murs = "#ddd7cd"
 x = 0
 z = -13
@@ -94,8 +100,8 @@ profondeur = 18
 hauteur = 20
 
 [[salles]]
-nom = "Mémoire et empire"
-theme = "Rachel Whiteread et Yinka Shonibare : une bibliothèque fermée pour les morts de la Shoah, le vaisseau de Nelson mis en bouteille."
+nom = "Mémoire et monuments"
+theme = "Rodin et Barlach : la tête angoissée d'un des Bourgeois de Calais, et Le Vengeur, l'élan guerrier de l'été 1914."
 murs = "#f1ece3"
 x = -14
 z = -28
@@ -105,8 +111,8 @@ hauteur = 6
 portes = ["sud", "est"]
 
 [[salles]]
-nom = "Le corps et le rire"
-theme = "Fernando Botero et Yue Minjun : la chair monumentale d'une femme au miroir, le rire figé de quatorze géants."
+nom = "Le mouvement"
+theme = "Boccioni et Duchamp-Villon : une tête futuriste où se mêlent un visage et une maison, un coq cubiste sculpté près du front."
 murs = "#f1ece3"
 x = 0
 z = -28
@@ -116,8 +122,8 @@ hauteur = 6
 portes = ["sud", "est"]
 
 [[salles]]
-nom = "La mer et le vent"
-theme = "Eduardo Chillida et Sokari Douglas Camp : l'acier face à l'océan, et une fête pour le dieu des eaux."
+nom = "Des visages nouveaux"
+theme = "Medardo Rosso et Gaudier-Brzeska : un visage d'enfant qui se dissout dans la cire, la tête de marbre d'un poète changée en idole."
 murs = "#f1ece3"
 x = 14
 z = -28
@@ -129,908 +135,858 @@ portes = ["sud"]
 # ─── Les œuvres ──────────────────────────────────────────────────────────────
 
 [[oeuvres]]
-titre = "Maman"
-artiste = "Louise Bourgeois"
-annee = "1999"
-image = "maman.jpg"
+titre = "L'Âge d'airain"
+artiste = "Auguste Rodin"
+annee = "1875–1876"
+image = "age-d-airain.jpg"
 cadre = "noir"
-licence = "Domaine public"
-source = "https://commons.wikimedia.org/wiki/File:NGC_Maman.JPG"
-technique = "Bronze, acier inoxydable et marbre ; environ 9,3 × 8,9 × 10,2 m"
-collection = "Musée des beaux-arts du Canada, Ottawa (sur le parvis, en plein air)"
-note = "Une araignée de plus de neuf mètres, des œufs de marbre sous le ventre : Louise Bourgeois l'a dédiée à sa mère."
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1918.328"
+technique = "Bronze, grandeur nature ; fonte commandée en 1916 et surveillée par l'artiste"
+collection = "Cleveland Museum of Art, Cleveland (Ohio)"
+note = "Un jeune homme nu s'éveille, la main sur la tête : si vrai qu'on accusa Rodin de l'avoir moulé sur un modèle vivant."
 description = """
-Sur le parvis de pierre du Musée des beaux-arts du Canada, une araignée géante enjambe \
-le passage. Huit longues pattes de bronze sombre, fines, noueuses et coudées, \
-retombent sur le sol en pointes aiguës, comme des aiguilles. Le corps, petit par \
-rapport à l'ensemble, est suspendu très haut au-dessus des visiteurs. Sous l'abdomen \
-pend un sac ajouré de métal qui contient des œufs de marbre blanc. À l'arrière-plan, à \
-droite, on aperçoit la tour de verre aux facettes pointues du musée et ses longues \
-façades de pierre claire. Le ciel est gris et doux, le parvis presque vide : \
-l'araignée paraît seule maîtresse des lieux. On peut passer sous elle, entre ses \
-pattes, et lever les yeux vers son ventre : elle domine et protège à la fois."""
+Un jeune homme nu, grandeur nature, se tient debout sur un socle carré. Son bras \
+droit est replié au-dessus de sa tête, la main posée sur le sommet du crâne, comme \
+s'il sortait du sommeil ou d'un rêve. Le bras gauche est levé lui aussi, plié au \
+coude, le poing fermé à hauteur du visage autour d'un objet qui n'est plus là. Le \
+visage, tourné vers le haut, a les yeux mi-clos et la bouche entrouverte. Les jambes \
+sont rapprochées, un genou légèrement fléchi, et tout le corps semble monter, des \
+pieds jusqu'au coude dressé. Sur le fond gris de la photographie, le bronze très \
+sombre garde des reflets rougeâtres là où la lumière accroche les épaules, le torse \
+et les cuisses, et une ombre légère s'étire derrière la statue."""
 evocation = """
-Le titre dit tout. Louise Bourgeois a expliqué que l'araignée était une ode à sa \
-mère : comme elle, sa mère tissait et réparait sans relâche, dans l'atelier familial \
-de restauration de tapisseries ; elle était patiente, habile, protectrice. Chez \
-Bourgeois, l'araignée n'est donc pas un monstre, mais une présence utile, qui détruit \
-les moustiques et refait sans cesse sa toile. Pourtant la sculpture inquiète aussi : \
-sa taille, ses pattes en pointe, son ventre au-dessus de nos têtes évoquent la \
-puissance écrasante de la mère vue par l'enfant. Cette ambivalence, tendresse et \
-menace, fragilité et force, est au cœur de toute l'œuvre de l'artiste, nourrie de ses \
-souvenirs d'enfance. On y a vu aussi un autoportrait de l'artiste elle-même, mère et \
-créatrice."""
+Quand il la montre pour la première fois, à Bruxelles, Rodin appelle sa figure Le \
+Vaincu, et le jeune homme tient une lance : on y a vu un soldat blessé, peut-être un \
+écho de la défaite française de 1870. En retirant l'arme, le sculpteur efface \
+l'anecdote. Le titre définitif renvoie aux âges de l'humanité imaginés par les poètes \
+antiques ; on y lit l'éveil de l'homme à la conscience, l'humanité qui sort de la \
+nuit. Rodin laisse pourtant le sens ouvert : sans attribut ni récit, c'est le corps \
+seul, son élan et sa fatigue, qui porte l'émotion. Pour le musée de Cleveland, cette \
+figure énigmatique dit la sensualité et la puissance psychologique du nu masculin. \
+C'est là que commence la sculpture moderne : une statue qui ne raconte plus d'histoire."""
 histoire = """
-Louise Bourgeois a près de 88 ans quand elle conçoit Maman, en 1999, pour l'ouverture \
-de la Tate Modern à Londres : en mai 2000, l'araignée, alors en acier, inaugure avec \
-trois hautes tours la série d'œuvres commandées pour la salle des turbines. La \
-sculpture est ensuite fondue en bronze en six exemplaires. Le Musée des beaux-arts du \
-Canada en acquiert un en 2004, pour 3,2 millions de dollars, une somme considérable \
-pour le musée, et l'installe sur son parvis, au cœur d'Ottawa. D'autres exemplaires \
-veillent devant le musée Guggenheim de Bilbao, au Mori Art Museum de Tokyo, au musée \
-Crystal Bridges dans l'Arkansas ou au Leeum de Séoul, et l'araignée a voyagé dans le \
-monde entier, de Saint- Pétersbourg à Mexico."""
+Rodin, qui vit alors à Bruxelles, travaille de longs mois à cette figure d'après un \
+jeune soldat belge, avant et après un voyage en Italie où il découvre Michel-Ange. \
+Présenté à Bruxelles au début de 1877, puis au Salon de Paris la même année, le \
+plâtre fait scandale : le modelé est si exact qu'on soupçonne le sculpteur d'avoir \
+moulé directement le corps de son modèle, une tricherie aux yeux de l'Académie. Rodin \
+se défend par des photographies et des témoignages ; en 1880, l'État lui achète \
+l'œuvre et en fait fondre un bronze. Le tirage de Cleveland a une histoire à part : \
+en 1916, Ralph King, administrateur du musée, le commande à l'artiste pour l'offrir à \
+l'institution. Rodin, alors à la fin de sa vie, en surveille lui-même la fonte, d'une \
+qualité exceptionnelle selon le musée."""
 facture = """
-L'original présenté à Londres était en acier ; les exemplaires suivants, coulés à la \
-Modern Art Foundry de New York, sont en bronze, avec un sac d'acier inoxydable et des \
-œufs de marbre. Les pattes gardent une surface irrégulière, striée, presque végétale, \
-qui rappelle les nœuds d'une branche ou les articulations d'un corps âgé. La sculpture \
-ne touche le sol que par huit pointes, d'où son allure à la fois instable et aérienne. \
-Bourgeois dessinait déjà des araignées dans les années 1940 et en avait sculpté de \
-plus petites au milieu des années 1990 : Maman est la plus grande d'entre elles."""
+Rodin modèle sa figure en terre en tournant autour de son modèle, profil après \
+profil, pour saisir le corps sous tous les angles : il gardera cette méthode toute sa \
+vie. Il en résulte une surface d'une grande finesse, où les muscles ne sont pas \
+soulignés comme dans les figures d'école, mais se devinent sous la peau, dans le jeu \
+de la lumière. C'est cette justesse même qui fit naître le soupçon de moulage. Le \
+tirage de Cleveland a reçu la patine que préférait le sculpteur, d'un rouge sombre \
+qu'il appelait, rapporte le musée, « raisin écrasé » ; on la devine sur la \
+photographie. Privé de sa lance, le poing gauche reste fermé sur le vide, et ce geste \
+suspendu ajoute au mystère de la figure."""
 details = [
-  "Le sac ajouré sous l'abdomen, qui renferme des œufs de marbre.",
-  "Les pattes coudées qui se terminent en pointe, comme des aiguilles.",
-  "Les surfaces striées et noueuses du bronze.",
-  "La tour de verre du musée, dessinée par Moshe Safdie, à l'arrière-plan.",
+  "La main droite posée sur le sommet du crâne, comme au sortir du sommeil.",
+  "Le poing gauche refermé sur une lance disparue.",
+  "Les yeux mi-clos et la bouche entrouverte du visage levé.",
+  "Les reflets rougeâtres de la patine sur les épaules et le torse.",
+  "Le socle carré, nu, sans rocher ni accessoire.",
 ]
-themes = ["mère", "araignée", "mémoire", "tissage", "protection"]
+themes = ["éveil", "corps", "jeunesse", "bronze", "scandale"]
 anecdote = """
-Louise Bourgeois disait des araignées qu'elles étaient des présences amicales, qui \
-mangent les moustiques. Enfant, dans l'atelier de ses parents, elle avait appris à \
-redessiner les parties usées des tapisseries anciennes, en particulier les pieds des \
-personnages, souvent abîmés."""
+Pour prouver sa bonne foi, Rodin fit photographier son modèle, un jeune soldat belge \
+nommé Auguste Neyt, afin qu'on puisse comparer le corps vivant et la statue, et \
+demanda à d'autres sculpteurs de témoigner qu'il modelait sans moulage."""
 salle = 2
 mur = "ouest"
 place = 3
 largeur = 3.2
 
 [[oeuvres]]
-titre = "L'Ange du Nord (Angel of the North)"
-artiste = "Antony Gormley"
-annee = "1998"
-image = "ange-du-nord.jpg"
+titre = "Adam"
+artiste = "Auguste Rodin"
+annee = "modèle de 1881"
+image = "adam.jpg"
 cadre = "noir"
-credit = "Photo : saw2th"
-licence = "CC BY-SA 2.0"
-source = "https://commons.wikimedia.org/wiki/File:Angel_of_the_North_2010.jpg"
-technique = "Acier Corten ; hauteur 20 m, envergure 54 m, 208 tonnes"
-collection = "Espace public, Low Eighton, Gateshead (Royaume-Uni)"
-note = "Sur une colline au bord de l'autoroute A1, un homme d'acier aux ailes d'avion veille sur l'ancien bassin minier de la Tyne."
+credit = "Photo : Art Institute of Chicago"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/11320"
+technique = "Bronze à patine brun foncé, fondu vers 1924 ; 198,1 × 73,7 cm, base de 76,2 × 73,7 cm"
+collection = "Art Institute of Chicago, Chicago"
+note = "Conçu pour se dresser devant La Porte de l'Enfer, le premier homme semble à la fois naître et s'effondrer."
 description = """
-Sur une butte herbeuse, au sud de Gateshead, se dresse une figure humaine de vingt \
-mètres de haut, plantée droit, les pieds joints. À la place des bras, deux ailes \
-immenses, rigides et plates, s'étendent à l'horizontale sur cinquante-quatre mètres, \
-plus que les ailes de bien des avions de ligne. Le corps n'a ni visage ni détail : une \
-silhouette lisse, parcourue de nervures verticales. L'acier a pris une teinte de \
-rouille brun orangé qui tranche sur le bleu du ciel. Sur la photographie, prise par un \
-jour de nuages rapides, l'ange est vu de biais : l'aile la plus proche fend le ciel en \
-diagonale, tandis qu'à ses pieds de minuscules promeneurs donnent l'échelle. Les ailes \
-ne sont pas tout à fait dans l'axe du corps : elles s'avancent légèrement vers le \
-spectateur."""
+Un homme nu, puissamment musclé, se tient debout sur une base rocheuse, mais rien en \
+lui n'est droit. Sa tête retombe lourdement de côté, presque couchée sur l'épaule, \
+comme si le cou ne pouvait plus la porter. Une jambe est levée, le pied posé sur une \
+pierre, le genou ramené en avant ; une main s'y agrippe, au bout d'un bras tordu qui \
+traverse le corps. L'autre bras pend le long du flanc, l'index tendu vers le sol. Les \
+épaules, la poitrine et les avant-bras sont noueux, creusés de muscles et de veines. \
+Sur la photographie, prise de trois quarts devant un fond gris clair, la patine brun \
+foncé brille sur les reliefs et laisse les creux dans l'ombre, si bien que la figure \
+paraît sculptée par la lumière."""
 evocation = """
-Gormley a rappelé que, sous la colline, des mineurs de charbon avaient travaillé dans \
-l'obscurité pendant deux siècles : l'ange dressé dans la lumière leur rend hommage. \
-L'acier, ses nervures et sa couleur de rouille évoquent aussi les chantiers navals et \
-les usines qui ont fait la richesse de la région avant leur déclin. On y a vu le \
-passage d'une époque industrielle à une autre, et un signe d'espoir pour un territoire \
-durement touché par les fermetures. L'artiste disait que l'inclinaison des ailes \
-donnait le sentiment d'une étreinte. Mais l'ange n'a pas de visage : chacun, \
-automobiliste ou voyageur du train, y projette ce qu'il veut. Critiqué avant sa \
-construction, il est devenu l'emblème du Nord-Est de l'Angleterre."""
+Rodin a puisé chez Michel-Ange, comme le rappelle l'Art Institute de Chicago. La pose \
+vient de la Création d'Adam peinte au plafond de la chapelle Sixtine : Rodin redresse \
+la figure couchée de la fresque et transporte dans le bras droit de sa statue le \
+geste par lequel Adam reçoit la vie. La torsion du bras gauche vient d'une autre \
+œuvre de Michel-Ange, le Christ mort de la Pietà de Florence. Rodin mêle ainsi la \
+naissance et la mort : le premier homme, à peine tiré de la terre, porte déjà le \
+poids de la faute qu'il transmettra à l'humanité. Devant La Porte de l'Enfer, il \
+devait accueillir le visiteur avec Ève, le couple par qui, selon la Bible, le mal \
+entre dans le monde."""
 histoire = """
-Le conseil municipal de Gateshead confie en 1994 à Antony Gormley la création d'un \
-monument à l'entrée de la ville. Le projet suscite une vive opposition : on le compare \
-aux statues des régimes totalitaires, on critique son coût, 800 000 livres, financé \
-surtout par l'Arts Council England et par des fonds européens. Le conseil l'approuve \
-en 1995. Les pièces, fabriquées à Hartlepool, sont acheminées de nuit par la route le \
-14 février 1998, et l'ange est dressé le lendemain, ailes comprises, au sommet d'une \
-butte formée sur le site d'une ancienne mine. On estime aujourd'hui qu'environ \
-trente-trois millions de personnes le voient chaque année depuis la route A1 et la \
-grande ligne ferroviaire de la côte Est."""
+En 1880, l'État commande à Rodin une porte de bronze pour un futur musée des Arts \
+décoratifs, à Paris ; le sculpteur choisit L'Enfer de Dante. Il prévoit d'encadrer \
+cette Porte de l'Enfer par deux grandes figures, Adam et Ève, et modèle Adam dès \
+1881. Mais le musée ne voit jamais le jour, la porte n'est pas fondue du vivant de \
+l'artiste, et les deux statues prennent leur indépendance. Rodin ne cesse pourtant de \
+réutiliser sa figure : il en tire Les Trois Ombres, qui couronnent la Porte. En \
+1916, il donne à l'État son œuvre avec le droit d'en tirer des épreuves ; c'est ainsi \
+que le bronze de Chicago a été fondu vers 1924, quelques années après sa mort, \
+d'après son modèle."""
 facture = """
-L'ange a été conçu à partir d'un moulage du corps de l'artiste, agrandi. Il est en \
-acier Corten, un acier qui se couvre d'une couche de rouille protectrice et n'a pas \
-besoin de peinture. Il pèse 208 tonnes : 100 pour le corps, 50 pour chaque aile. Il \
-n'a pas d'ossature intérieure : ce sont les nervures verticales, visibles à \
-l'extérieur, qui transmettent la poussée du vent aux fondations, calculées pour \
-résister à des rafales de plus de 160 km/h. Sous la butte, 600 tonnes de béton \
-l'ancrent dans la roche, à une vingtaine de mètres de profondeur. La structure a été \
-étudiée par les ingénieurs d'Ove Arup."""
+Adam mesure près de deux mètres : il est plus grand que nature, et Rodin exagère \
+encore ce que la nature propose. Les mains sont énormes, le cou se casse presque à \
+angle droit, le buste se tord dans un sens et les jambes dans l'autre. Aucun modèle \
+ne pourrait tenir longtemps cette pose, qui n'a rien d'un équilibre ; c'est le \
+rocher, sous le pied levé, qui semble retenir la figure. Le modelé procède par bosses \
+et par creux, accentue les tendons et les veines, et laisse çà et là la trace de la \
+main. La base rocheuse, à peine dégrossie, fait partie de l'œuvre : le premier homme \
+sort encore de la matière brute dont il a été formé."""
 details = [
-  "Les nervures verticales, qui servent de squelette extérieur.",
-  "L'inclinaison des ailes vers l'avant, de 3,5 degrés.",
-  "Le corps sans visage ni mains, simple silhouette.",
-  "Les promeneurs au pied de la statue, qui donnent l'échelle.",
-  "La couleur de rouille de l'acier sur le bleu du ciel.",
+  "La tête qui retombe, presque à angle droit avec le cou.",
+  "L'index pointé vers le sol, repris du geste de l'Adam de Michel-Ange.",
+  "Le bras tordu qui traverse le corps pour saisir le genou.",
+  "Le pied crispé sur une pierre, les orteils agrippés.",
+  "Les veines saillantes des avant-bras et des mains.",
 ]
-themes = ["ange", "industrie", "mémoire", "paysage", "corps"]
+themes = ["création", "dante", "michel-ange", "corps", "faute"]
 anecdote = """
-Sollicité par Gateshead, Antony Gormley a d'abord refusé la commande, en répondant \
-qu'il ne faisait pas de « sculpture d'autoroute ». Il s'est finalement laissé \
-convaincre, et l'ange, visible de l'autoroute A1, est devenu son œuvre la plus \
-célèbre."""
+Au sommet de La Porte de l'Enfer, Les Trois Ombres sont trois tirages d'une même \
+figure tirée d'Adam, disposés en cercle, têtes penchées, comme trois damnés qui \
+montrent l'abîme. Rodin aimait ainsi répéter et assembler une même forme."""
 salle = 2
 mur = "est"
 place = 3
 largeur = 3.2
 
 [[oeuvres]]
-titre = "Dream"
-artiste = "Jaume Plensa"
-annee = "2009"
-image = "dream.jpg"
+titre = "Femme debout (Stehende weibliche Figur)"
+artiste = "Wilhelm Lehmbruck"
+annee = "modèle de 1910"
+image = "femme-debout.jpg"
 cadre = "noir"
-credit = "Photo : Christian Keenan"
-licence = "CC BY-SA 3.0"
-source = "https://commons.wikimedia.org/wiki/File:20090614_The_Dream_Sutton_011.jpg"
-technique = "Béton coulé et dolomite blanche d'Espagne ; hauteur 20 m, environ 500 tonnes"
-collection = "Espace public, ancienne mine de Sutton Manor, St Helens (Royaume-Uni)"
-note = "Sur le site d'une ancienne mine, une tête de jeune fille aux yeux clos, haute de vingt mètres, rêve au-dessus de l'autoroute."
+credit = "Photo : National Gallery of Art"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.50290.html"
+technique = "Bronze, fondu à Munich en 1957 ; 191,2 × 54 × 39,9 cm"
+collection = "National Gallery of Art, Washington"
+note = "Grande, calme, les yeux baissés, une femme retient son drapé : en 1910, à Paris, Lehmbruck cherche la paix des formes."
 description = """
-Au sommet d'une colline boisée, une tête blanche, très allongée, se dresse comme une \
-colonne. C'est le visage d'une jeune fille aux yeux fermés ; le cou se prolonge \
-jusqu'au socle. Les traits sont étirés vers le haut, comme dans un miroir déformant, \
-et la tête, vue de côté, paraît étonnamment mince. De fines lignes horizontales la \
-divisent en tranches : ce sont les joints entre les éléments qui la composent. Sur la \
-photographie, prise depuis le chemin qui monte vers elle, la statue se détache sur un \
-ciel bleu limpide, encadrée par les arbres. Au pied du socle, quelques visiteurs \
-minuscules donnent la mesure : vingt mètres, la hauteur d'un immeuble de six ou sept \
-étages."""
+Une femme nue se tient debout, presque immobile, sur une base basse aux bords \
+irréguliers. Sa main droite retient sur la hanche un drap qui glisse et enveloppe ses \
+jambes jusqu'aux chevilles, en longs plis verticaux. La main gauche pend, ouverte, le \
+long du corps. La tête, petite, s'incline doucement de côté et vers le bas ; les \
+paupières baissées, les traits réguliers, elle semble absorbée dans ses pensées. Les \
+cheveux sont tirés en arrière. Le corps est solide, aux hanches larges et aux épaules \
+arrondies, mais les jambes, gainées par l'étoffe, l'allongent comme une colonne. Sur \
+le fond blanc de la photographie, la patine sombre, verdâtre par endroits, se couvre \
+de reflets clairs sur la poitrine, le ventre et les genoux."""
 evocation = """
-Le site est celui de la mine de charbon de Sutton Manor, fermée en 1991. Plensa a \
-voulu que quelque chose sorte de la terre et s'élève vers la lumière. Les yeux clos \
-évoquent le sommeil, le rêve, la méditation : là où des hommes descendaient chaque \
-jour dans le noir, une enfant rêve à l'avenir. Plensa a dit avoir représenté la tête \
-d'une fillette de neuf ans ; on y a vu la génération qui ne connaîtra pas la mine. Le \
-visage, serein et silencieux, contraste avec le flot incessant des voitures sur \
-l'autoroute voisine. Ses promoteurs espéraient qu'il devienne pour le Nord-Ouest de \
-l'Angleterre ce que l'Ange du Nord de Gormley est pour le Nord-Est : un symbole de \
-renouveau après l'industrie."""
+Rien ne raconte ici une histoire : ni nom de déesse, ni attribut. Le geste de retenir \
+un drapé rappelle les Vénus antiques sortant du bain, mais Lehmbruck en fait un \
+moment de recueillement silencieux. La figure dit le calme, la retenue, une présence \
+tournée vers l'intérieur. Cette paix presque classique montre ce que le jeune \
+sculpteur allemand est venu chercher à Paris : une sculpture fondée sur la masse et \
+l'équilibre, proche de celle de Maillol. Mais la tête inclinée et le regard baissé \
+annoncent déjà la mélancolie de ses figures suivantes, de plus en plus étirées, qui \
+feront de lui l'un des grands sculpteurs de l'expressionnisme allemand et l'un des \
+premiers à dire, par le corps seul, la détresse de son temps."""
 histoire = """
-L'œuvre naît du Big Art Project, un programme de la chaîne de télévision Channel 4 qui \
-finançait, avec l'Arts Council England et l'Art Fund, de grandes œuvres publiques \
-choisies avec les habitants. À St Helens, d'anciens mineurs de Sutton Manor ont pris \
-part au choix de l'artiste et du projet. Le coût, environ 1,8 million de livres, est \
-couvert par ces partenaires. La sculpture est inaugurée en 2009 sur le site de \
-l'ancienne mine, reconverti en espace boisé, au bord de l'autoroute M62 entre \
-Liverpool et Manchester. La même année, Plensa reçoit pour Dream le prix Marsh de la \
-sculpture publique. Un faisceau lumineux, prévu à l'origine au sommet de la tête, a \
-été abandonné après les objections de l'agence des routes."""
+Formé à l'Académie des beaux-arts de Düsseldorf, Wilhelm Lehmbruck s'installe à Paris \
+en 1910 avec sa famille, et y reste jusqu'à la guerre. Il expose au Salon \
+d'automne, étudie Rodin et Maillol, se lie avec des artistes venus de toute l'Europe, \
+comme Brancusi, Archipenko ou Modigliani. Cette Femme debout appartient à ses \
+premières années parisiennes ; dès l'année suivante, sa Femme agenouillée, aux \
+membres démesurément allongés, marque un tournant. Le tirage de Washington a été fondu à Munich en 1957, près de quarante ans après \
+la mort de l'artiste, d'après son modèle de 1910."""
 facture = """
-La tête est faite d'éléments de béton coulé, revêtus de dolomite blanche venue \
-d'Espagne, qui lui donne son éclat de marbre ; du dioxyde de titane, ajouté au \
-mélange, aide la surface à rester blanche. Les éléments sont empilés en assises, et \
-leurs joints, visibles comme des lignes fines, rythment le visage. La forme, aplatie, \
-change selon le point de vue : de face, un visage paisible ; de profil, presque une \
-lame. Plensa a supprimé tout détail superflu : ni cheveux ni expression, seulement des \
-paupières closes et des lèvres fermées, pour que l'attention se porte sur le silence."""
+Lehmbruck modèle sa figure à l'échelle humaine : avec sa base, elle mesure 1,91 \
+mètre. Il simplifie les volumes, renonce aux détails anatomiques et donne au corps un \
+modelé large et doux, où la lumière glisse sans accroc. Le drapé joue un rôle de \
+construction : ses plis verticaux, serrés autour des jambes, fondent la figure dans \
+un seul bloc et lui donnent la stabilité d'une colonne. La tête, un peu petite pour \
+le corps, laisse deviner l'allongement des œuvres à venir. La surface n'est pas \
+lisse partout : les cheveux, en particulier, gardent un grain plus rugueux, et la \
+patine sombre, mêlée de vert, accroche la lumière par plaques."""
 details = [
-  "Les yeux fermés, aux paupières à peine dessinées.",
-  "Les lignes horizontales des joints entre les assises.",
-  "Le cou très long, qui fait de la tête une colonne.",
-  "Les visiteurs minuscules au pied de la statue.",
+  "La main qui retient le drapé sur la hanche.",
+  "Les plis verticaux de l'étoffe, comme les cannelures d'une colonne.",
+  "La tête inclinée et les paupières baissées.",
+  "Les cheveux tirés en arrière, au modelé plus grenu.",
+  "Les pieds nus qui dépassent du drapé, sur la base irrégulière.",
 ]
-themes = ["rêve", "enfance", "mine", "paysage", "visage"]
+themes = ["femme", "calme", "drapé", "classicisme", "mélancolie"]
 anecdote = """
-Le titre de travail de l'œuvre était Ex Terra Lucem, « de la terre, la lumière » : \
-c'était l'ancienne devise de la ville de St Helens, cité du charbon et du verre, que \
-la sculpture semble mettre en image."""
+À Duisbourg, sa ville, un musée porte le nom de Wilhelm Lehmbruck depuis 1964. Son \
+bâtiment de verre et de béton a été dessiné par son fils, l'architecte Manfred \
+Lehmbruck."""
 salle = 2
 mur = "sud"
 place = 4
 largeur = 2.9
 
 [[oeuvres]]
-titre = "Sky Mirror"
-artiste = "Anish Kapoor"
-annee = "2001"
-image = "sky-mirror.jpg"
+titre = "La Victoire"
+artiste = "Augustus Saint-Gaudens"
+annee = "1892–1903"
+image = "victoire.jpg"
 cadre = "noir"
-licence = "Domaine public"
-source = "https://commons.wikimedia.org/wiki/File:Sky_Mirror,_Nottingham.jpg"
-technique = "Acier inoxydable poli ; diamètre 6 m, 10 tonnes"
-collection = "Espace public, Nottingham Playhouse, Wellington Circus, Nottingham (Royaume-Uni)"
-note = "Un immense disque d'acier poli, tourné vers le ciel, renverse la ville et les nuages devant le théâtre de Nottingham."
+credit = "Photo : Metropolitan Museum of Art"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/12019"
+technique = "Bronze doré, fondu entre 1914 et 1916 ; 96,5 × 24,1 × 47 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Ailes déployées, palme en main : la Victoire dorée qui guide à New York le général Sherman, en réduction."
 description = """
-Devant un théâtre, sur une petite place plantée d'arbres, un disque d'acier inoxydable \
-de six mètres de diamètre se dresse sur la tranche, légèrement incliné vers le ciel. \
-Sa face creuse, polie comme un miroir, ne montre pas ce qu'on attend : les maisons de \
-brique voisines, les arbres nus de l'hiver et le ciel pâle y apparaissent la tête en \
-bas, comme aspirés au fond d'une cuvette. Les bords du disque s'amincissent jusqu'à \
-n'être plus qu'une ligne argentée, si bien que l'objet semble presque sans épaisseur. \
-Autour, la rue, les grilles, les façades : la vie ordinaire continue. Selon l'heure, \
-la saison et le temps, l'image change sans cesse : le miroir n'a pas de sujet fixe, il \
-montre ce qui passe au-dessus de lui."""
+Une femme ailée, vêtue d'une longue robe qui flotte derrière elle, avance d'un pas \
+décidé sur un rocher. Tout le bronze est doré. Son bras droit se tend vers l'avant et \
+vers le haut, comme pour montrer le chemin ; de l'autre main, elle serre contre sa \
+poitrine une longue palme, d'un métal plus sombre. Une couronne de laurier retient \
+ses cheveux noués. Ses grandes ailes, aux plumes finement ciselées, s'ouvrent dans son \
+dos. Le vent plaque la robe contre ses jambes et la fait claquer en arrière, \
+découvrant un pied chaussé d'une sandale. Vue de profil sur la photographie, la \
+figure dessine une grande diagonale, du poing tendu à la pointe des ailes. Sur \
+l'avant de la base, on devine une inscription gravée."""
 evocation = """
-Depuis ses débuts, Kapoor cherche à rendre sensible le vide, ce qui se trouve au-delà \
-de l'objet. Ici, la sculpture s'efface presque : son contenu, c'est le ciel. Le miroir \
-concave renverse le monde et oblige à regarder en haut, là où, dans une rue, on ne \
-regarde jamais. On y a vu une manière de faire descendre le ciel dans la ville, ou \
-d'ouvrir une fenêtre dans le décor urbain. Devant un théâtre, le choix a du sens : \
-comme la scène, le miroir montre un monde familier rendu étrange. L'œuvre joue enfin \
-avec le passant : quand il s'approche, son propre reflet bascule, grandit, se déforme, \
-et il devient un instant l'acteur de la sculpture."""
+La Victoire est une figure de l'Antiquité : la Niké des Grecs, ailée, messagère du \
+triomphe, dont la Victoire de Samothrace, au Louvre, est l'exemple le plus célèbre. \
+Saint-Gaudens la fait marcher devant le cheval du général William Tecumseh Sherman, \
+l'un des chefs nordistes de la guerre de Sécession. Elle ne combat pas : elle guide, \
+le bras tendu, et la palme qu'elle porte annonce la victoire autant que la paix \
+revenue. Mais son visage n'a rien d'une déesse de convention : c'est celui d'une femme \
+réelle, attentive, presque grave. Au milieu des corps nus de Rodin et de Lehmbruck, \
+elle représente l'autre voie de la sculpture autour de 1900, celle de l'allégorie \
+monumentale, portée ici à sa perfection juste avant de disparaître."""
 histoire = """
-Le Nottingham Playhouse, théâtre installé depuis 1963 dans un bâtiment moderne de \
-Wellington Circus, commande l'œuvre à Anish Kapoor. Il faut six ans entre la première \
-idée et l'inauguration, le 27 avril 2001. Le disque, fabriqué en Finlande, coûte 921 \
-000 livres : la subvention de la Loterie nationale qui le finance est alors la plus \
-importante jamais accordée à une seule œuvre d'art. Les habitants l'adoptent vite. \
-Kapoor a ensuite repris l'idée ailleurs et à d'autres échelles, notamment au \
-Rockefeller Center de New York en 2006, puis dans les jardins de Kensington, à \
-Londres, en 2010 et 2011 ; mais le miroir de Nottingham, le premier, est resté à sa \
-place, devant le théâtre."""
+Après la mort du général Sherman, en 1891, Saint-Gaudens reçoit la commande d'un \
+monument équestre à sa mémoire pour New York. Il y travaille plus de dix ans, en \
+partie à Paris, où il installe son atelier à la fin des années 1890 et où il présente \
+le plâtre à l'Exposition universelle de 1900. Le monument, en bronze doré, est \
+inauguré en 1903 à l'entrée sud-est de Central Park, sur Grand Army Plaza : le \
+général à cheval y suit la Victoire qui marche devant lui. Des réductions de la \
+Victoire seule ont ensuite été tirées. Celle du Metropolitan Museum, d'un peu moins \
+d'un mètre de haut, a été fondue entre 1914 et 1916, quelques années après la mort du \
+sculpteur."""
 facture = """
-Le miroir est une calotte d'acier inoxydable, formée puis polie jusqu'à ce que la \
-surface ne garde plus aucune trace de fabrication : ni soudure, ni joint, ni marque \
-d'outil. Cette perfection est la condition de l'illusion. La face creuse agit comme le \
-miroir d'un télescope : de loin, elle renverse l'image ; de près, elle l'agrandit et \
-la déforme. Le disque pèse dix tonnes, mais son bord aminci et son inclinaison lui \
-donnent la légèreté d'un objet simplement posé. Kapoor emploie le même acier poli dans \
-Cloud Gate, à Chicago."""
+Saint-Gaudens, formé à l'École des beaux-arts de Paris, possède toute la science de \
+la sculpture académique, mais il la met au service d'un réalisme vivant. La \
+réduction garde la précision du grand monument : chaque plume des ailes est \
+ciselée, chaque pli de la robe suit le mouvement du corps et la poussée du vent. La \
+composition repose sur le contraste entre la verticale du corps et les obliques du \
+bras, des ailes et du drapé, qui donnent l'impression d'une marche rapide. La dorure \
+uniforme, qui rappelle l'or du monument new-yorkais, fait de la figure un bloc de \
+lumière ; seule la palme, d'un ton plus sombre, se détache sur elle et attire le \
+regard vers le cœur de la composition."""
 details = [
-  "Le ciel et les arbres renversés au creux du disque.",
-  "Les maisons de brique voisines, la tête en bas.",
-  "Le bord aminci du disque, réduit à une ligne.",
-  "Le socle discret, qui laisse croire que le miroir tient seul.",
+  "La couronne de laurier dans les cheveux noués.",
+  "La palme, d'un métal plus sombre que la dorure.",
+  "Les plumes des ailes, ciselées une à une.",
+  "La sandale du pied qui avance, sous la robe soulevée par le vent.",
+  "L'inscription gravée sur l'avant de la base.",
 ]
-themes = ["miroir", "ciel", "ville", "reflet", "vide"]
+themes = ["victoire", "allégorie", "or", "monument", "amérique"]
 anecdote = """
-En 2007, six ans à peine après son installation, Sky Mirror a été désigné par un \
-sondage comme le monument préféré des habitants de Nottingham, une ville qui possède \
-pourtant un château et de nombreux édifices anciens."""
+Pour le visage de la Victoire, Saint-Gaudens fit poser Hettie Anderson, une jeune \
+femme afro-américaine qui fut l'un de ses modèles favoris ; on lui attribue aussi le \
+profil de la Liberté qu'il dessina en 1907 pour une pièce d'or de vingt dollars."""
 salle = 2
 mur = "sud"
 place = 10
 largeur = 2.9
 
 [[oeuvres]]
-titre = "Monument aux victimes juives autrichiennes de la Shoah"
-artiste = "Rachel Whiteread"
-annee = "2000"
-image = "bibliotheque-sans-nom.jpg"
+titre = "Tête de Pierre de Wissant (Les Bourgeois de Calais)"
+artiste = "Auguste Rodin"
+annee = "1886"
+image = "pierre-de-wissant.jpg"
 cadre = "noir"
-credit = "Photo : C.Stadler/Bwag"
-licence = "CC BY-SA 4.0"
-source = "https://commons.wikimedia.org/wiki/File:Wien_-_Holocaust-Mahnmal_(1).JPG"
-technique = "Béton sur structure d'acier ; base de 10 × 7 m, hauteur 3,8 m"
-collection = "Espace public, Judenplatz, Vienne (Autriche)"
-note = "Une bibliothèque coulée en béton et retournée comme un gant : ses livres ont le dos tourné, ses portes n'ont pas de poignée."
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1920.120"
+technique = "Bronze ; tête de grande taille, dite « héroïque »"
+collection = "Cleveland Museum of Art, Cleveland (Ohio)"
+note = "L'un des six bourgeois qui s'offrirent à la mort pour sauver Calais : Rodin isole sa tête, ravagée par l'angoisse."
 description = """
-Au milieu de la Judenplatz, une petite place pavée du vieux Vienne bordée d'immeubles \
-clairs, se dresse un bloc de béton gris pâle, de la taille d'une pièce, posé sur un \
-socle bas. De loin, c'est une construction aveugle. De près, ses murs se révèlent \
-faits de rangées de livres alignés sur des étagères, mais on ne voit que la tranche \
-des pages : les dos, avec les titres, sont tournés vers l'intérieur, invisibles. Au \
-centre de la façade, une double porte à panneaux, elle aussi moulée, n'a ni poignée ni \
-serrure. Sur le pourtour du socle sont gravés les noms des lieux où des Juifs \
-d'Autriche ont été assassinés. Le béton nu contraste avec les façades anciennes et les \
-fenêtres de la place."""
+Une tête d'homme se dresse sur un cou épais, sans épaules, détachée de tout corps. \
+Elle est légèrement penchée et tournée de côté. Les paupières, lourdes, sont presque \
+fermées ; la bouche s'entrouvre, un peu de travers, comme dans un soupir ou une \
+plainte. Les sourcils se contractent et le front se plisse. Les cheveux courts ne sont \
+pas dessinés mèche par mèche : ils forment une masse rugueuse, comme pétrie à grands \
+coups de pouce. Les oreilles sont saillantes, et un léger bourrelet ceint le cou. Le \
+bronze sombre, aux reflets verts, est patiné et brillant : la lumière glisse sur les \
+pommettes, le nez et le menton, tandis que l'ombre envahit les orbites. Sur le fond \
+gris foncé de la photographie, la tête semble surgir seule de la nuit."""
 evocation = """
-Le monument rend hommage aux plus de 65 000 Juifs autrichiens assassinés par les nazis \
-entre 1938 et 1945. On rapproche souvent le choix de la bibliothèque de l'expression \
-« peuple du Livre » ; chaque livre est aussi une vie, une mémoire, un savoir, et ces \
-livres-là ne pourront jamais être ouverts ni lus. Les portes sans poignée disent qu'on \
-ne peut pas entrer, que les disparus ne reviendront pas. Le monument n'a rien de \
-triomphal : c'est un vide rendu solide, ce que les historiens appellent un \
-contre-monument, qui montre l'absence au lieu de glorifier. Simon Wiesenthal, à \
-l'origine du projet, déclara lors de l'inauguration que ce monument ne devait pas être \
-beau, mais faire mal."""
+En 1347, après un long siège, Calais doit se rendre au roi d'Angleterre Édouard III. \
+Selon le chroniqueur Froissart, le roi exige que six notables sortent de la ville, \
+tête et pieds nus, la corde au cou, pour lui remettre les clés et être mis à mort. \
+Eustache de Saint-Pierre se désigne le premier, et cinq autres le suivent, dont \
+Pierre de Wissant ; la reine Philippa de Hainaut obtiendra leur grâce. Rodin ne \
+montre pas des héros triomphants, mais des hommes qui marchent vers la mort, chacun \
+seul avec sa peur. Sur ce visage, comme le note le musée de Cleveland, l'angoisse dit \
+une souffrance morale extrême : le monument ne célèbre pas la gloire, il fait sentir \
+le prix du sacrifice."""
 histoire = """
-L'idée vient de Simon Wiesenthal, après la polémique suscitée par le monument d'Alfred \
-Hrdlicka sur l'Albertinaplatz, inauguré en 1988, jugé peu digne envers les victimes. \
-La Ville de Vienne organise un concours international ; le jury, présidé par \
-l'architecte Hans Hollein, retient à l'unanimité le projet de Rachel Whiteread. \
-L'inauguration, prévue pour le 9 novembre 1996, anniversaire de la Nuit de cristal, \
-est retardée de quatre ans par les débats et par une découverte : sous la place, les \
-fouilles mettent au jour les fondations de la synagogue médiévale, détruite lors des \
-persécutions de 1420-1421. Le monument est enfin inauguré le 25 octobre 2000. Les \
-vestiges de la synagogue se visitent sous la place, au musée Judenplatz."""
+En 1884, la ville de Calais commande à Rodin un monument à Eustache de Saint-Pierre. \
+Le sculpteur propose de représenter les six bourgeois ensemble, au même niveau, sans \
+hiérarchie, ce qui déconcerte ses commanditaires. Il étudie chaque homme séparément, \
+d'abord nu, puis vêtu, et modèle les têtes à part. Selon le musée de Cleveland, il \
+expose une version grandeur nature de Pierre de Wissant comme une œuvre indépendante \
+avant même l'achèvement du monument, puis en réalise de nombreuses versions, de \
+tailles et de matériaux différents. Le groupe est inauguré à Calais en 1895, posé sur \
+un haut socle, alors que Rodin aurait voulu le voir presque au niveau du sol, au \
+milieu des passants."""
 facture = """
-Whiteread est la sculptrice du moulage en creux : plutôt que de représenter un objet, \
-elle moule l'espace qui l'entoure ou qu'il contient. Ici, elle a moulé l'intérieur \
-d'une bibliothèque imaginaire, puis l'a retourné : ce que nous voyons de l'extérieur \
-est l'empreinte des rayonnages, comme si les murs de la pièce avaient disparu. Le \
-béton est coulé sur une structure d'acier, à l'échelle d'une vraie pièce. Les livres, \
-tous semblables, sont alignés avec une régularité d'archive. À la demande de \
-l'artiste, aucun revêtement anti-graffiti ne protège le béton."""
+Rodin isole la tête comme un fragment : plus de corps, plus de récit, seulement \
+l'expression. Détacher une partie, l'agrandir, la réduire, la combiner à d'autres : \
+ce procédé est au cœur de son travail, et ses héritiers en feront une règle. Dans le \
+vocabulaire des sculpteurs, une tête « héroïque » est plus grande que nature. Le \
+modelé est ici d'une grande vigueur : la chevelure garde l'empreinte des doigts, les \
+joues et le front se creusent et se gonflent pour accrocher la lumière. Le visage \
+n'est pas symétrique, la bouche glisse de côté, une paupière tombe plus que l'autre ; \
+c'est ce déséquilibre, plus que tout détail, qui rend l'angoisse visible."""
 details = [
-  "La tranche des livres, toutes identiques, sans titre lisible.",
-  "La double porte à panneaux, sans poignée ni serrure.",
-  "Les noms des camps et des lieux de massacre gravés autour du socle.",
-  "Le contraste du béton nu avec les façades anciennes de la place.",
+  "Les paupières lourdes, presque closes.",
+  "La bouche entrouverte, légèrement de travers.",
+  "Les cheveux rugueux, modelés à grands coups de pouce.",
+  "Le cou épais, coupé net, sans épaules.",
+  "Les reflets verts de la patine sur le front et les joues.",
 ]
-themes = ["mémoire", "shoah", "livres", "absence", "vienne"]
+themes = ["mémoire", "sacrifice", "angoisse", "monument", "fragment"]
 anecdote = """
-En 1993, Rachel Whiteread est devenue la première femme à remporter le Turner Prize, \
-le grand prix britannique d'art contemporain décerné par la Tate. Elle avait alors \
-trente ans."""
+Les Bourgeois de Calais sont aussi à Londres : un exemplaire du groupe se dresse \
+depuis 1915 dans les jardins de la tour Victoria, au pied du Parlement, à quelques \
+kilomètres en amont de la Tate Modern, sur l'autre rive de la Tamise."""
 salle = 3
 mur = "nord"
 place = 2
-largeur = 2.8
+largeur = 2.6
 
 [[oeuvres]]
-titre = "Le Vaisseau de Nelson en bouteille (Nelson's Ship in a Bottle)"
-artiste = "Yinka Shonibare"
-annee = "2010"
-image = "bateau-de-nelson.jpg"
+titre = "Le Vengeur (Der Rächer)"
+artiste = "Ernst Barlach"
+annee = "1914"
+image = "le-vengeur.jpg"
 cadre = "noir"
-credit = "Photo : Elliott Brown"
-licence = "CC BY 2.0"
-source = "https://commons.wikimedia.org/wiki/File:Nelson's_Ship_in_a_Bottle_-_National_Maritime_Museum.jpg"
-technique = "Techniques mixtes (bouteille transparente, maquette, tissus imprimés) ; 2,8 × 5 × 2,5 m"
-collection = "National Maritime Museum, Greenwich, Londres (en plein air)"
-note = "Le vaisseau amiral de Nelson à Trafalgar, enfermé dans une bouteille géante, porte des voiles taillées dans des tissus « wax »."
+credit = "Photo : National Gallery of Art"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.206701.html"
+technique = "Bronze"
+collection = "National Gallery of Art, Washington"
+note = "Enveloppé dans son manteau, un homme brandit une épée et fonce en avant : l'élan guerrier de 1914, saisi par Barlach."
 description = """
-Une bouteille transparente géante, couchée sur un berceau de bois sombre percé \
-d'ouvertures rondes, contient un trois-mâts de guerre toutes voiles dehors. C'est la \
-réplique du HMS Victory, le vaisseau de l'amiral Nelson. Mais ses voiles ne sont pas \
-blanches : elles sont taillées dans des tissus imprimés de motifs colorés, rouge, \
-ocre, bleu, comme ceux qu'on porte en Afrique de l'Ouest. Le goulot est fermé par un \
-gros bouchon de liège, entouré de cordage et scellé d'un cachet rouge. L'ensemble \
-repose sur un haut piédestal de pierre claire, devant le musée. Sur la photographie, \
-prise en contre-plongée, la bouteille se découpe sur un ciel bleu traversé de nuages, \
-comme si le navire voguait dans les airs."""
+Un homme se jette en avant, le corps presque à l'horizontale, comme lancé dans une \
+course furieuse. Il est tout entier pris dans un ample manteau qui forme un bloc \
+anguleux, aux grands pans plats, comme taillés dans du bois. De ce bloc ne sortent \
+que la tête, les bras et un pied nu, qui prend appui sur une base rectangulaire. Les \
+bras, levés au-dessus de la tête, serrent une épée dont la lame passe en arc \
+au-dessus du dos, prête à s'abattre. Le visage, petit, aux yeux grands ouverts, fixe \
+droit devant lui. Le bronze brun, à la surface finement martelée, porte çà et là des \
+taches vertes. Sur le fond gris clair de la photographie, la silhouette dessine un \
+coin pointé vers l'avant, et son ombre s'allonge sur le sol."""
 evocation = """
-Nelson est le héros national britannique : sa victoire de Trafalgar, en 1805, où il \
-trouva la mort, assura à la Grande-Bretagne la maîtrise des mers pour un siècle. \
-Shonibare met ce symbole en bouteille, comme un souvenir de marin, et le pare de \
-tissus « wax », dont l'histoire résume la mondialisation coloniale : inspirés du batik \
-indonésien, fabriqués en Europe et vendus en Afrique de l'Ouest, ils y sont devenus un \
-emblème d'identité africaine. L'œuvre rappelle que la puissance de l'Empire et la \
-richesse de Londres se sont construites sur le commerce maritime avec l'Afrique et \
-l'Asie. Shonibare l'a présentée comme une célébration de la diversité de Londres : \
-l'équipage du Victory comptait déjà des marins d'une vingtaine de nationalités."""
+Le titre désigne un justicier, celui qui rend coup pour coup. Comme beaucoup \
+d'artistes et d'écrivains allemands, Barlach partage d'abord l'enthousiasme qui \
+saisit le pays en août 1914, et Le Vengeur porte la marque de cet élan : la guerre y \
+apparaît comme une juste revanche, une force qui balaie tout. Pourtant la figure n'a \
+ni uniforme ni arme moderne ; c'est une force élémentaire, une bourrasque plus qu'un \
+soldat. Barlach se détournera vite de cette exaltation : brièvement mobilisé, il \
+devient un adversaire de la guerre, et ses monuments aux morts d'après 1918 seront \
+des œuvres de deuil et de recueillement. Le Vengeur reste le témoin d'un moment \
+d'aveuglement collectif, au seuil du désastre."""
 histoire = """
-En 2009, l'autorité du Grand Londres commande l'œuvre pour le quatrième socle de \
-Trafalgar Square, un piédestal resté vide pendant plus d'un siècle et demi, qui \
-accueille depuis 1999 des œuvres contemporaines temporaires. Installé en mai 2010 face \
-à la colonne de Nelson, le navire y reste jusqu'au début de 2012. Pour le garder à \
-Londres, l'Art Fund lance une souscription publique : 264 300 livres sont réunies \
-auprès des particuliers, auxquelles s'ajoutent 50 000 livres du fonds, sur un prix de \
-362 500 livres. Le National Maritime Museum de Greenwich acquiert ainsi l'œuvre et \
-l'installe à demeure, le 23 avril 2012, devant sa nouvelle aile Sammy Ofer."""
+En 1914, Ernst Barlach a quarante-quatre ans. Depuis 1910, il vit à Güstrow, petite \
+ville du Mecklembourg, et son marchand berlinois, Paul Cassirer, le soutient depuis \
+plusieurs années. Il a trouvé son style après un voyage en Russie, en 1906, d'où il \
+a rapporté des figures de paysans et de mendiants massives et enveloppées. Le \
+Vengeur naît dans les premiers mois de la guerre : Barlach y applique ce langage de \
+blocs drapés à un sujet d'actualité. Vingt ans plus tard, son œuvre sera jugée \
+« dégénérée » par les nazis, ses monuments aux morts, trop peu héroïques à leurs \
+yeux, retirés des églises et des places, et des centaines de ses œuvres saisies \
+dans les musées allemands."""
 facture = """
-Shonibare travaille avec une équipe d'artisans et de techniciens. La maquette du \
-Victory, détaillée jusqu'à ses quatre-vingts canons, est gréée de trente-sept voiles \
-en tissu wax, chacune d'un motif différent. Le principe est celui des bouteilles de \
-marin, mais à l'échelle d'un monument : l'ensemble mesure environ cinq mètres de long \
-et près de trois mètres de haut. Le contraste entre la précision de la maquette, digne \
-d'un musée de la marine, et l'éclat des imprimés est le ressort de l'œuvre. Comme \
-souvent chez Shonibare, le tissu wax remplace l'étoffe attendue pour faire surgir une \
-autre histoire."""
+Barlach est d'abord un sculpteur sur bois, et cela se voit même dans le bronze : les \
+formes sont découpées en grands plans nets, à arêtes vives, héritées de la sculpture \
+médiévale allemande et des figurines populaires. Le corps disparaît sous le manteau, \
+réduit à une masse géométrique, une sorte de coin incliné vers l'avant. Les seuls \
+détails sont le visage, les mains et le pied, qui rendent la figure humaine. Le \
+mouvement naît de la diagonale et des plis rabattus vers l'arrière, comme par le vent \
+de la course. Au même moment, les futuristes italiens cherchent à sculpter la \
+vitesse en éclatant la forme ; Barlach obtient l'élan par le moyen inverse, une \
+masse compacte et fermée."""
 details = [
-  "Les trente-sept voiles, toutes en tissus imprimés différents.",
-  "Le bouchon de liège entouré de cordage et le cachet rouge.",
-  "Les ouvertures rondes du berceau de bois, comme des sabords.",
-  "Les rangées de canons sur les flancs du vaisseau.",
+  "La lame de l'épée, courbée en arc au-dessus du dos.",
+  "Le pied nu, seul appui de toute la masse lancée en avant.",
+  "Les grands pans plats du manteau, comme taillés à la hache.",
+  "Le petit visage aux yeux grands ouverts, pris dans le col.",
+  "Les taches vertes de la patine sur le bronze brun.",
 ]
-themes = ["empire", "mer", "tissu", "histoire", "londres"]
+themes = ["guerre", "élan", "colère", "mémoire", "expressionnisme"]
 anecdote = """
-Le vrai Victory existe toujours : conservé en cale sèche à Portsmouth, il est encore \
-inscrit au service actif de la Royal Navy, ce qui en fait le plus ancien navire de \
-guerre en service au monde."""
+Pour l'ange suspendu qu'il crée en 1927 dans la cathédrale de Güstrow, en mémoire \
+des morts de la guerre, Barlach donne au visage les traits de Käthe Kollwitz. Les \
+nazis le firent fondre ; une seconde fonte, cachée pendant la guerre, permit de le \
+refaire."""
 salle = 3
 mur = "nord"
 place = 3
 largeur = 2.8
 
 [[oeuvres]]
-titre = "Femme au miroir (Mujer con espejo)"
-artiste = "Fernando Botero"
-annee = "1987"
-image = "femme-au-miroir.jpg"
+titre = "Antigracieux (Antigrazioso)"
+artiste = "Umberto Boccioni"
+annee = "1913"
+image = "antigracieux.jpg"
 cadre = "noir"
+credit = "Photo : Metropolitan Museum of Art"
 licence = "CC0"
-source = "https://commons.wikimedia.org/wiki/File:Madrid_-_Mujer_con_Espejo_(Fernando_Botero)_1.jpg"
-technique = "Bronze, environ 1 000 kg"
-collection = "Espace public, place de Colón, Madrid (Espagne)"
-note = "Allongée sur le ventre, une femme aux formes immenses se regarde dans un petit miroir : Botero l'a offerte à Madrid en 1994."
+source = "https://www.metmuseum.org/art/collection/search/485518"
+technique = "Bronze, fondu en 1950 ; 58,4 × 53,3 × 41,9 cm, 47,6 kg"
+collection = "Metropolitan Museum of Art, New York"
+note = "Le visage de sa mère, une maison et la lumière se mêlent en un seul bloc : la sculpture futuriste selon Boccioni."
 description = """
-Sur une dalle de pierre posée au ras du trottoir, une femme nue est allongée sur le \
-ventre, appuyée sur ses avant-bras. Tout en elle est volume : le dos, les hanches, les \
-cuisses forment une suite de collines lisses et luisantes. La tête, en revanche, est \
-petite, avec un visage rond et paisible, de petits yeux, une petite bouche et des \
-cheveux sagement coiffés en boucles. Dans sa main, minuscule à côté de son corps, elle \
-tient un petit miroir rond où elle se contemple, indifférente aux passants. Le bronze \
-sombre a pris par endroits une patine verte, et brille là où la lumière glisse sur les \
-rondeurs. La sculpture, vue en perspective sur la photographie, semble s'étirer sans \
-fin sur les dalles claires de la place."""
+Sur un haut pilier de bois brut, fendu dans sa longueur, est posé un buste de bronze \
+qu'on peine d'abord à lire. On reconnaît pourtant une tête de femme âgée, aux yeux \
+plissés, au nez fort, à la bouche tordue, mais tous les traits semblent bousculés, \
+déplacés, comme froissés par une force venue du dehors. Les joues et le menton se \
+boursouflent en lobes. Au sommet de la tête se dressent des formes renflées, chignon \
+ou chapeau, dont l'une, pointue, ressemble à un bourgeon. Derrière, un bloc \
+géométrique aux arêtes vives, pareil à un pan de mur ou à la façade d'une maison, \
+s'enfonce dans le crâne. À gauche, une sorte d'équerre jaillit dans le vide. Le \
+bronze brun-vert luit sur un fond gris."""
 evocation = """
-Botero répétait qu'il ne représentait pas des gros, mais le volume, la sensualité et \
-la plénitude des formes. La femme au miroir reprend un grand thème de la peinture \
-européenne, Vénus à sa toilette, que Botero connaissait bien pour avoir copié \
-Velázquez au Prado ; on peut penser à la Vénus au miroir du maître sévillan, elle \
-aussi allongée. Mais ici le sujet est traité avec humour et tendresse : la femme se \
-regarde avec satisfaction, sans honte de son corps, à rebours des canons de minceur. \
-Posée au milieu de la circulation, à hauteur de passant, elle oppose sa lenteur \
-tranquille à l'agitation de la ville. Les Madrilènes l'ont adoptée comme une figure \
-familière du quartier."""
+Le modèle est la mère de l'artiste, qu'il a souvent peinte. Mais Boccioni ne cherche \
+pas la ressemblance : le titre, Antigracieux, est une provocation contre la beauté \
+aimable de la sculpture de salon et contre l'imitation des Grecs. Les futuristes \
+veulent représenter non pas un objet isolé, mais l'objet mêlé à ce qui l'entoure, à \
+la lumière, à la maison, à la rue, au mouvement de la vie moderne. Ici, la tête et la \
+maison se pénètrent : le portrait devient l'expérience d'une personne dans son \
+milieu, telle que la perçoit le regard et la mémoire. Sous la violence des formes \
+perce pourtant une tendresse : celle d'un fils qui revient sans cesse au visage de \
+sa mère pour y éprouver ses idées nouvelles."""
 histoire = """
-Au printemps 1994, Madrid accueille l'exposition « Botero en Madrid » : vingt et une \
-sculptures monumentales installées en plein air pendant environ trois mois. Devant le \
-succès de ses « grosses », l'artiste promet d'en offrir une à la ville : ce sera cette \
-Femme au miroir, créée en 1987. Elle est installée au débouché de la rue Génova sur la \
-place de Colón, d'abord sur une pelouse fleurie, puis, après le réaménagement de la \
-place, sur un îlot entre deux passages piétons. D'autres sculptures de l'exposition \
-sont restées en Espagne : La Main, prêtée à la ville par Telefónica, sur le paseo de \
-la Castellana, et L'Enlèvement d'Europe, à l'aéroport de Madrid-Barajas."""
+Peintre, signataire en 1910 du Manifeste des peintres futuristes, Umberto Boccioni \
+se tourne vers la sculpture en 1912, après un séjour à Paris où il découvre la \
+sculpture cubiste. Le 11 avril 1912, il publie le Manifeste technique de la \
+sculpture futuriste, et en 1913 il présente ses premières sculptures à Paris, à la \
+galerie La Boétie. Antigracieux date de cette année d'invention intense, la même que \
+ses célèbres Formes uniques de la continuité dans l'espace. Boccioni meurt en 1916, \
+à trente-trois ans, et une grande partie de ses plâtres disparaît après sa mort. Ce \
+bronze a été fondu en 1950, plus de trente ans après, d'après le modèle de \
+l'artiste."""
 facture = """
-Botero modèle ses figures puis les fait fondre en bronze. Son principe est simple : \
-gonfler les volumes et réduire les détails. Les petits yeux, la petite bouche et le \
-miroir minuscule font paraître le corps encore plus immense. Les surfaces sont lisses, \
-sans trace d'outil, pour que la lumière glisse sur les rondeurs comme sur une peau. La \
-pose basse, presque à même le sol, et la longueur de la figure invitent le passant à \
-en faire le tour. La sculpture pèse environ une tonne."""
+Boccioni modèle en plâtre, matériau souple qui lui permet de creuser, d'ajouter, de \
+trancher. Dans son manifeste, il demandait d'abolir la ligne fermée de la statue et \
+de briser la tradition des matériaux nobles, marbre et bronze, au profit du verre, \
+du bois, du carton, du fer, du ciment, du cuir, du tissu, des miroirs ou de la \
+lumière électrique. L'ironie veut que son œuvre nous soit parvenue en bronze. Les \
+formes alternent ici le plein et le creux, le bombé et le plat ; les plans du mur \
+tranchent ceux du visage, si bien qu'on ne sait plus où finit la tête et où commence \
+l'espace. La sculpture change d'aspect à chaque pas qu'on fait autour d'elle."""
 details = [
-  "Le petit miroir rond, tenu au bout des doigts.",
-  "Les boucles régulières de la coiffure.",
-  "Le contraste entre la tête menue et les hanches énormes.",
-  "La patine verdâtre du bronze exposé aux intempéries.",
+  "Le bloc géométrique, comme un mur ou une maison, qui pénètre la tête.",
+  "La forme pointue, pareille à un bourgeon, au sommet du crâne.",
+  "Les yeux plissés, réduits à des fentes entre les bourrelets des joues.",
+  "L'équerre de métal qui jaillit sur le côté gauche.",
+  "Le pilier de bois brut, fendu, qui sert de socle.",
 ]
-themes = ["corps", "femme", "miroir", "humour", "volume"]
+themes = ["futurisme", "mère", "portrait", "mouvement", "espace"]
 anecdote = """
-En 1995, à Medellín, sa ville natale, une bombe placée sous un oiseau de bronze de \
-Botero fit de nombreuses victimes. Le sculpteur laissa l'oiseau éventré à sa place, en \
-mémoire, et en offrit une copie intacte, installée à côté."""
+Boccioni a souvent pris sa mère pour modèle : elle trône aussi, mains croisées, au \
+centre de son grand tableau La Matière (1912), où son corps se mêle à la ville et à \
+la lumière qui l'entourent."""
 salle = 4
 mur = "nord"
 place = 2
-largeur = 2.8
+largeur = 2.6
 
 [[oeuvres]]
-titre = "A-maze-ing Laughter"
-artiste = "Yue Minjun"
-annee = "2009"
-image = "a-maze-ing-laughter.jpg"
+titre = "Le Coq gaulois"
+artiste = "Raymond Duchamp-Villon"
+annee = "modèle de 1916"
+image = "coq-gaulois.jpg"
 cadre = "noir"
+credit = "Photo : Cleveland Museum of Art"
 licence = "CC0"
-source = "https://commons.wikimedia.org/wiki/File:A-Maze_ing_-Laughter.English_Bay_Vancouver._(13079518644).jpg"
-technique = "Bronze patiné ; quatorze figures plus grandes que nature"
-collection = "Espace public, Morton Park, English Bay, Vancouver (Canada)"
-note = "Quatorze statues de bronze, toutes à l'image de l'artiste, rient aux éclats au bord de la baie de Vancouver."
+source = "https://clevelandart.org/art/1972.227"
+technique = "Bronze peint, relief ; fondu en 1919 d'après le plâtre de 1916"
+collection = "Cleveland Museum of Art, Cleveland (Ohio)"
+note = "Sculpté par un soldat sculpteur près du front, le coq cubiste se dresse devant le soleil levant de la victoire."
 description = """
-Dans un petit parc au bord de la mer, quatorze hommes de bronze plus grands que nature \
-se dressent sur un sol de terre brune. C'est toujours le même homme : crâne rasé, yeux \
-plissés jusqu'à disparaître, bouche grande ouverte sur deux rangées de dents. Chacun \
-rit aux éclats dans une pose différente : l'un se plie en deux, un autre lève les bras \
-ou se tient la tête, un autre se renverse en arrière. Ils sont torse nu et pieds nus, \
-vêtus d'un simple pantalon. Derrière eux, au-delà des arbres et de la promenade, \
-s'étendent les eaux de la baie, où mouillent des cargos, et des montagnes bleues à \
-l'horizon. Des promeneurs se mêlent aux statues et deviennent, un instant, des figures \
-parmi d'autres."""
+Un médaillon ovale, bordé d'un large cadre noir au relief irrégulier, enferme un coq \
+doré. L'oiseau est construit avec des formes géométriques : un corps en lame \
+tranchante, une crête enroulée en volutes, des ailes et une queue faites de rubans \
+plats empilés comme des marches, des pattes anguleuses. Il se dresse, la tête levée \
+vers le haut du médaillon. Derrière lui, des rayons rouges, striés, s'élancent sur le \
+fond noir ; en bas à gauche, une boule rouge figure le soleil. Le relief joue ainsi \
+de trois couleurs, l'or, le rouge et le noir. Sur la photographie, prise légèrement de \
+biais devant un fond gris, la dorure brille sur les arêtes et s'use par endroits, \
+laissant paraître le métal."""
 evocation = """
-Le rire figé est la signature de Yue Minjun, qui le peint depuis le début des années \
-1990. Ce rire n'est pas joyeux : les yeux fermés, la bouche forcée, il ressemble à un \
-masque. On l'a lu comme une réponse à la Chine d'après 1989, où l'on rit de ce qu'on \
-ne peut pas dire, et comme une satire de l'homme moderne, souriant sur commande. \
-Multipliés par quatorze, les doubles de l'artiste évoquent aussi la foule, \
-l'uniformité, la perte de l'individu. Mais à Vancouver, le public a pris l'œuvre au \
-premier degré : on vient y rire, imiter les poses et se photographier parmi les \
-statues, et le rire, contagieux, finit par devenir réel."""
+Le coq est l'emblème de la France, grâce à un jeu de mots latin : gallus désigne à \
+la fois le coq et le Gaulois. Pendant la guerre, on le trouve partout, sur les \
+affiches, les cartes postales, les médailles. Selon le musée de Cleveland, les \
+soldats reconnaissaient dans ce coq et ce soleil levant des symboles de victoire. \
+Duchamp-Villon fait de cette image patriotique une forme moderne, sans \
+sentimentalité, mais lisible par tous : le coq chante à l'aube, après la nuit des \
+tranchées. À côté du Vengeur de Barlach, l'œuvre montre l'autre visage de la guerre \
+dans l'art, non plus l'élan du combat, mais l'espérance, sculptée par un homme qui \
+ne verrait pas la paix."""
 histoire = """
-L'œuvre est créée pour la Biennale internationale de sculpture de Vancouver, qui \
-installe des œuvres contemporaines dans les rues et les parcs de la ville. Elle est \
-placée en 2009 dans Morton Park, à l'angle des rues Davie et Denman, face à English \
-Bay. Prévue pour la durée de la biennale, elle devient vite l'une des œuvres les plus \
-populaires de la ville. Un couple de mécènes, Chip et Shannon Wilson, l'achète par \
-l'intermédiaire de sa fondation et l'offre à la Ville de Vancouver le 11 août 2012. \
-Une inscription sur les bancs de béton souhaite qu'elle inspire le rire, l'espièglerie \
-et la joie à tous ceux qui la découvrent. En 2013, elle est la seule œuvre d'art \
-public nommée au concours des « Grands lieux du Canada »."""
+Mobilisé en 1914 dans le service de santé, lui qui avait commencé des études de \
+médecine, Raymond Duchamp-Villon continue de sculpter pendant ses heures libres. \
+Selon le musée de Cleveland, il taille le plâtre de ce relief en 1916, alors qu'il \
+sert dans l'armée : il est destiné à l'entrée d'un théâtre provisoire construit près \
+du front pour les soldats. La même année, il contracte la fièvre typhoïde. Il meurt \
+à l'hôpital militaire de Cannes le 9 octobre 1918, un mois avant l'armistice. En \
+1919, cinq bronzes sont fondus d'après son plâtre, en mémoire de l'artiste ; celui \
+de Cleveland est l'un d'eux."""
 facture = """
-Yue Minjun est d'abord peintre : ses toiles aux couleurs vives, rose chair et bleu \
-ciel, répètent son propre visage hilare. Pour Vancouver, il transpose cette figure en \
-bronze, en corps entiers. Chaque statue pèse plus de 250 kilos. La patine brun cuivré, \
-assez brillante, accroche la lumière sur les crânes et les joues. Le modelé est \
-simplifié, presque caricatural, comme celui d'une figurine ou d'une affiche de \
-propagande, avec des muscles lisses et des plis de vêtement sommaires. Tout l'effet \
-vient de la répétition : la même tête, encore et encore, sous des angles différents."""
+Le plâtre n'a pas été modelé mais taillé, d'où ces arêtes vives et ces plans nets. \
+Le coq est réduit à des formes simples, lame, volute, ruban, qui s'emboîtent comme \
+les pièces d'une machine : c'est le principe que Duchamp-Villon avait poussé le plus \
+loin dans Le Cheval, en 1914, où l'animal se fond dans la mécanique. Le bronze est \
+peint, chose rare : l'or, le rouge et le noir rappellent les enseignes et les décors \
+de théâtre, faits pour être vus de loin, à l'entrée d'une salle. Le médaillon, avec \
+son cadre épais, est pensé pour s'intégrer à une façade : Duchamp-Villon s'est \
+toujours intéressé à l'architecture."""
 details = [
-  "Les yeux plissés, réduits à deux fentes.",
-  "Les dents alignées dans les bouches grandes ouvertes.",
-  "Les cargos à l'ancre dans la baie, à l'arrière-plan.",
-  "Les promeneurs qui se glissent entre les statues.",
+  "Les plumes de la queue et de l'aile, en rubans plats empilés comme des marches.",
+  "La boule rouge du soleil, en bas à gauche.",
+  "Les rayons rouges striés qui traversent le fond noir.",
+  "La crête du coq, enroulée en volutes.",
+  "Le large cadre noir, au relief irrégulier, qui enserre le médaillon.",
 ]
-themes = ["rire", "autoportrait", "foule", "chine", "ville"]
+themes = ["cubisme", "guerre", "france", "soleil", "emblème"]
 anecdote = """
-En 2007, son tableau Execution (1995), qui reprend la composition de L'Exécution de \
-Maximilien de Manet avec des personnages hilares, s'est vendu 2,9 millions de livres \
-chez Sotheby's à Londres : un record, à l'époque, pour un artiste contemporain \
-chinois."""
+Né Raymond Duchamp, le sculpteur ajouta à son nom celui de Villon, déjà choisi par \
+son frère aîné Gaston, devenu le peintre Jacques Villon en hommage au poète François \
+Villon. Leur cadet, Marcel Duchamp, garda son nom."""
 salle = 4
 mur = "nord"
 place = 3
-largeur = 2.8
+largeur = 2.6
 
 [[oeuvres]]
-titre = "Le Peigne du vent (Peine del Viento XV)"
-artiste = "Eduardo Chillida"
-annee = "1976–1977"
-image = "peigne-du-vent.jpg"
+titre = "L'Enfant juif (Bambino ebreo)"
+artiste = "Medardo Rosso"
+annee = "vers 1892"
+image = "enfant-juif.jpg"
 cadre = "noir"
-credit = "Photo : Phillip Maiwald (Nikopol)"
-licence = "CC BY-SA 3.0"
-source = "https://commons.wikimedia.org/wiki/File:Peine_del_viento_de_Eduardo_Chillida.jpg"
-technique = "Acier ; trois sculptures d'environ 10 tonnes chacune"
-collection = "Espace public, plage d'Ondarreta, Saint-Sébastien (Espagne)"
-note = "Au bout de la baie de Saint-Sébastien, trois sculptures d'acier agrippent les rochers battus par les vagues."
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1970.33"
+technique = "Cire sur plâtre"
+collection = "Cleveland Museum of Art, Cleveland (Ohio)"
+note = "Dans la cire, Rosso saisit un visage d'enfant qui semble à la fois se former et s'effacer, comme une impression."
 description = """
-Au pied du mont Igueldo, là où la ville s'arrête et où commence l'océan, trois \
-sculptures d'acier sont scellées dans les rochers. Sur la photographie, la plus proche \
-sort de la falaise comme une main : une barre massive se divise en crochets recourbés \
-qui s'enroulent les uns autour des autres, semblables à des doigts ou à des dents de \
-peigne tordues. L'acier a pris la couleur brun-rouge de la rouille. Derrière, la mer \
-d'un bleu profond s'étend jusqu'à l'horizon ; au loin, sur un rocher isolé au milieu \
-des vagues, on distingue une autre des sculptures, minuscule à cause de la distance. \
-Les vagues battent les rochers et, par gros temps, recouvrent d'écume le pied des \
-sculptures."""
+Une petite tête d'enfant, avec le haut des épaules, émerge d'une masse de matière \
+claire, d'un blanc crème taché de brun. Les traits sont à peine fixés : les yeux, \
+baissés ou clos, ne sont que deux creux d'ombre ; le nez, petit et rond, et les \
+lèvres serrées se devinent plus qu'ils ne se voient. Les joues sont pleines, le \
+menton rond. Les cheveux ne sont pas sculptés : une coulée irrégulière couvre le \
+crâne, et sur un côté la matière forme un bourrelet, comme une oreille ou une \
+boucle. La tête penche légèrement. La surface, lisse et luisante par endroits, \
+rugueuse ailleurs, a l'aspect d'une chair translucide. Sur le fond gris sombre de la \
+photographie, la lumière venue de la gauche laisse une partie du visage dans le \
+flou."""
 evocation = """
-Chillida, né à Saint-Sébastien, a voulu achever sa ville par une œuvre qui dialogue \
-avec les forces naturelles : le vent, la mer, le rocher. Le titre suggère que l'acier \
-peigne le vent venu du large, comme un instrument offert aux éléments. On a coutume de \
-lire les trois pièces comme le passé, la plus lointaine, isolée sur son rocher, et le \
-présent et l'avenir, les deux plus proches, qui se font face. On y voit aussi une \
-frontière : l'endroit précis où la ville, avec ses quais et sa promenade, rencontre ce \
-qui ne lui obéit pas. L'œuvre est devenue un emblème de Saint-Sébastien et du Pays \
-basque, un lieu où l'on vient regarder les tempêtes."""
+Rosso voulait saisir une impression, comme les peintres impressionnistes : la façon \
+dont un visage nous apparaît un instant, dans une certaine lumière, avant de \
+s'effacer. Le musée de Cleveland souligne qu'il a utilisé la fluidité de la cire \
+pour suggérer le mouvement fugace d'une expression d'enfant et la fragilité de \
+l'enfance elle-même. On ne sait presque rien du modèle ; le titre seul le désigne. \
+Mais l'essentiel est ailleurs : ce visage qui se dissout dans la matière annonce une \
+sculpture faite de lumière et d'atmosphère plutôt que de contours. Rosso tenait \
+cette tête pour l'une de ses œuvres les plus réussies, et les futuristes, Boccioni \
+en tête, verront en lui un précurseur."""
 histoire = """
-Chillida a donné le titre de Peigne du vent à toute une série de sculptures ; \
-l'ensemble de Saint-Sébastien en est l'aboutissement monumental. Il le conçoit avec \
-l'architecte basque Luis Peña Ganchegui, qui dessine la place en gradins de pierre \
-menant aux sculptures, à l'extrémité de la plage d'Ondarreta. Les trois pièces \
-d'acier, d'une dizaine de tonnes chacune, sont mises en place à la fin des années 1970 \
-au prix d'un travail difficile dans les rochers battus par les vagues. Depuis, ce \
-lieu, ouvert à tous jour et nuit, est l'un des plus visités de la ville, et l'image du \
-Peigne du vent est devenue l'une des plus célèbres de la sculpture espagnole du XXᵉ \
-siècle."""
+Après avoir été renvoyé de l'Académie de Brera, à Milan, Medardo Rosso s'installe à \
+Paris en 1889. Il y fréquente les milieux de l'avant-garde et se lie avec Rodin, \
+avant que les deux sculpteurs ne se brouillent. Vers 1892, il modèle L'Enfant juif, \
+qu'il reprendra de nombreuses fois, en cire, en plâtre ou en bronze, comme la plupart \
+de ses sujets : son œuvre compte peu de thèmes, sans cesse repris et variés. Il \
+expose ses cires à Paris, puis dans toute l'Europe. En 1912, dans son Manifeste \
+technique de la sculpture futuriste, Boccioni le salue comme le seul grand sculpteur \
+moderne à avoir tenté d'ouvrir la sculpture à l'espace et à la lumière qui \
+l'entourent."""
 facture = """
-Chillida a appris le travail du fer à la forge, chez un forgeron près d'Hernani, et \
-pense ses sculptures comme un dialogue entre la matière et l'espace qu'elle enserre. \
-Les barres d'acier massives se recourbent pour envelopper un vide, sans jamais le \
-fermer tout à fait. La rouille, loin d'être un défaut, fait partie de l'œuvre : elle \
-accorde l'acier à la couleur des rochers. La place de Peña Ganchegui est percée \
-d'orifices reliés à des conduits creusés dans la roche : quand la mer est forte, les \
-vagues y poussent de l'air et de l'eau, qui soufflent et jaillissent entre les dalles."""
+Rosso coule d'abord un plâtre, puis le recouvre d'une couche de cire chaude, qu'il \
+retouche jusqu'à obtenir l'effet voulu. La cire, légèrement translucide, prend la \
+lumière comme une peau ; elle permet des passages insensibles du relief au creux, \
+sans arête ni contour. Selon le musée de Cleveland, Rosso cultivait volontairement \
+des surfaces brutes, non polies, loin du fini des sculptures de salon. Le bas du \
+buste se perd dans une masse informe, sans socle : la tête ne se détache pas de la \
+matière, elle en émerge. L'œuvre est pensée pour être vue de face, d'un seul point \
+de vue, comme un tableau. Les taches brunes qui marbrent la cire ajoutent à \
+l'impression de chair et de temps."""
 details = [
-  "Les crochets d'acier qui s'enroulent les uns autour des autres.",
-  "Une autre sculpture, au loin, isolée sur son rocher au milieu des vagues.",
-  "Le point d'ancrage, où l'acier s'enfonce dans la falaise.",
-  "L'horizon du golfe de Gascogne, vu à travers les boucles d'acier.",
+  "Les yeux, réduits à deux creux d'ombre.",
+  "La coulée de cire qui couvre le crâne en guise de cheveux.",
+  "Les taches brunes qui marbrent la cire claire.",
+  "Le bas du buste, qui se perd dans une masse informe.",
 ]
-themes = ["mer", "vent", "acier", "paysage", "pays basque"]
+themes = ["enfance", "cire", "lumière", "impression", "visage"]
 anecdote = """
-Avant d'être sculpteur, Eduardo Chillida était le gardien de but de la Real Sociedad, \
-le club de football de Saint-Sébastien. Une grave blessure au genou, qui exigea \
-plusieurs opérations, mit fin à sa carrière et l'orienta vers l'architecture, puis \
-vers l'art."""
+Rosso photographiait lui-même ses sculptures, en choisissant l'angle et l'éclairage, \
+et retouchait parfois ses tirages : il voulait qu'on voie ses œuvres comme il les \
+avait conçues, d'un seul point de vue."""
 salle = 5
 mur = "nord"
 place = 2
-largeur = 2.8
-
-[[oeuvres]]
-titre = "Fête pour Neptune (Fest für Neptun)"
-artiste = "Sokari Douglas Camp"
-annee = "2004"
-image = "fete-pour-neptune.jpg"
-cadre = "noir"
-credit = "Photo : Andreas Axel Kirch"
-licence = "CC BY-SA 4.0"
-source = "https://commons.wikimedia.org/wiki/File:2005-06-15-bonn-kurt-schumacher-strasse-3-deutsche-welle-fest-fuer-neptun-01.jpg"
-technique = "Acier soudé et verre"
-collection = "Espace public, siège de la Deutsche Welle (Schürmann-Bau), Bonn (Allemagne)"
-note = "Debout dans un bassin, un personnage d'acier coiffé d'un poisson de verre bleu fête le dieu des eaux devant le siège de la Deutsche Welle."
-description = """
-Dans un bassin peu profond, au pied d'une façade de verre, un personnage d'acier \
-brillant semble avancer à grandes enjambées, une jambe levée, les bras écartés. Son \
-corps est un assemblage de plaques, de tiges et de lamelles soudées, qui laissent \
-passer le jour comme une cage ou une armure ajourée. Il porte sur la tête une coiffe \
-extravagante : une couronne de plumes et de filet, d'où partent de longues lanières, \
-et, posé à plat au sommet, un grand poisson de verre d'un bleu vif. À ses pieds, des \
-poissons d'acier semblent sauter hors de l'eau. Le métal poli reflète le bassin, les \
-vitres et le ciel, et la silhouette paraît vibrer de lumière."""
-evocation = """
-Neptune est le dieu romain de la mer, mais la sculpture vient aussi d'ailleurs : \
-Sokari Douglas Camp a grandi dans la culture kalabari du delta du Niger, où des \
-mascarades honorent les esprits de l'eau. Les danseurs y portent souvent leur coiffe à \
-plat sur le sommet de la tête, tournée vers le ciel, comme le poisson bleu de Bonn. \
-L'œuvre fait ainsi se rencontrer les mythes de l'Europe et ceux de l'Afrique de \
-l'Ouest, et célèbre les fleuves et les mers qui relient les peuples. Devant le siège \
-de la Deutsche Welle, la radio-télévision internationale allemande qui s'adresse au \
-monde entier en de nombreuses langues, cette fête aquatique prend l'allure d'un salut \
-joyeux d'une rive à l'autre."""
-histoire = """
-La sculpture a été réalisée en 2004 dans le cadre du « Kunst am Bau », le principe qui \
-consacre une part du budget des bâtiments publics allemands à des œuvres d'art. Elle \
-accompagne l'installation de la Deutsche Welle dans le Schürmann-Bau, à Bonn, un vaste \
-immeuble construit à l'origine au bord du Rhin pour les députés du Bundestag. Le \
-chantier, inondé par une crue du fleuve en 1993, avait été interrompu ; après le \
-transfert de la capitale à Berlin, le bâtiment fut achevé pour la Deutsche Welle, qui \
-s'y installa en 2003. L'œuvre a été placée dans un bassin au pied de la façade, du \
-côté de la Kurt-Schumacher-Straße, où les passants la voient depuis la rue."""
-facture = """
-Sokari Douglas Camp est une sculptrice du métal : elle découpe, plie et soude l'acier. \
-Ici, le corps est construit comme un dessin dans l'espace, fait de pleins et de vides, \
-si bien que la figure reste légère malgré son matériau. Le mouvement, une jambe levée, \
-le buste penché, donne l'impression que le personnage marche dans l'eau. L'artiste \
-associe à l'acier d'autres éléments : le verre bleu du poisson, la couronne de plumes, \
-le filet et les rubans de la coiffe, qui rappellent les costumes de mascarade, faits \
-d'assemblages de tissus, de plumes et d'objets."""
-details = [
-  "Le poisson de verre bleu posé à plat sur la tête.",
-  "Les poissons d'acier qui jaillissent autour des pieds.",
-  "Les longues lanières qui flottent depuis la coiffe.",
-  "Les reflets du bassin et des vitres sur l'acier poli.",
-]
-themes = ["mer", "mascarade", "mythologie", "afrique", "fête"]
-anecdote = """
-En 2003, Sokari Douglas Camp figurait parmi les artistes retenus pour le quatrième \
-socle de Trafalgar Square, celui-là même qui accueillera en 2010 le vaisseau en \
-bouteille de Yinka Shonibare."""
-salle = 5
-mur = "nord"
-place = 3
 largeur = 2.4
+
+[[oeuvres]]
+titre = "Tête hiératique d'Ezra Pound"
+artiste = "Henri Gaudier-Brzeska"
+annee = "1914"
+image = "ezra-pound.jpg"
+cadre = "noir"
+credit = "Photo : National Gallery of Art"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.143144.html"
+technique = "Marbre, taille directe ; 90,5 × 45,7 × 48,9 cm, environ 310 kg"
+collection = "National Gallery of Art, Washington"
+note = "Taillée dans un bloc de marbre de plus de 300 kilos, la tête du poète devient une idole : un portrait vorticiste."
+description = """
+Une tête de marbre clair, haute de près d'un mètre, se dresse comme une borne ou un \
+menhir. Le visage est réduit à quelques formes géométriques taillées net : un nez \
+droit en long prisme, deux arcades horizontales sous lesquelles les yeux ne sont que \
+des fentes, une moustache aux pointes recourbées vers le bas, comme un double \
+crochet, et une barbiche en triangle pointu. La chevelure forme au sommet un volume \
+arrondi, creusé d'une sorte de chevron. Le reste du bloc est presque lisse : pas \
+d'oreilles, pas de cou distinct, une base qui s'évase comme des épaules. Le marbre, \
+d'un blanc chaud légèrement rosé, est parcouru de fines veines grises et d'une \
+fissure près de la base. Vue de trois quarts, la tête semble regarder au loin, \
+impassible."""
+evocation = """
+Hiératique : le mot désigne ce qui est sacré, figé dans une attitude solennelle, \
+comme les statues de l'Égypte ancienne. Gaudier-Brzeska ne cherche pas la \
+ressemblance ; il fait du poète une figure d'autorité, presque un dieu, quelque chose \
+comme un totem. On reconnaît pourtant la barbiche et la moustache que portait Pound. \
+On a souvent relevé aussi la silhouette phallique du bloc, symbole d'énergie \
+créatrice. L'œuvre est l'un des manifestes du vorticisme, le mouvement baptisé par \
+Pound lui-même, qui voulait capter l'énergie du monde moderne dans des formes \
+tendues et concentrées, comme dans le centre d'un tourbillon. Un siècle plus tard, \
+c'est l'une des images les plus fortes de l'avant-garde londonienne d'avant 1914."""
+histoire = """
+Arrivé à Londres en 1911, Henri Gaudier-Brzeska rencontre le poète américain Ezra \
+Pound en 1913. Les deux hommes deviennent amis, et Pound, qui défend le jeune \
+sculpteur, lui procure le bloc de marbre de son portrait. Gaudier le taille au début \
+de 1914, à vingt-deux ans. La même année paraît la revue Blast, manifeste du \
+vorticisme, où il publie un texte retentissant sur l'histoire de la sculpture. En \
+août 1914, il regagne la France pour s'engager ; il est tué au front, à \
+Neuville-Saint-Vaast, le 5 juin 1915. Pound lui consacre en 1916 un livre de \
+souvenirs, et la tête de marbre reste longtemps en sa possession, comme le portrait \
+de l'ami disparu."""
+facture = """
+Gaudier-Brzeska pratique la taille directe : il attaque lui-même le bloc, sans \
+modèle en plâtre que des praticiens agrandiraient, comme le faisait Rodin. Il \
+respecte la masse de la pierre, dont la tête garde la forme compacte et la pesanteur \
+de plus de trois cents kilos. Les traits sont obtenus par quelques entailles et des \
+plans qui se rencontrent à angle vif : c'est l'ombre, plus que le relief, qui dessine \
+les yeux, la moustache et la bouche. On rapproche souvent l'œuvre des grandes \
+statues de l'île de Pâques, comme celle que Gaudier pouvait voir au British Museum, \
+qu'il fréquentait assidûment. La surface, légèrement grenue, garde la trace de \
+l'outil."""
+details = [
+  "La moustache recourbée, taillée comme un double crochet.",
+  "La barbiche en triangle, pointée vers le bas.",
+  "Les yeux réduits à des fentes sous les arcades horizontales.",
+  "Le chevron creusé dans la masse de la chevelure.",
+  "La fine fissure qui court près de la base du marbre.",
+]
+themes = ["portrait", "poésie", "vorticisme", "taille directe", "idole"]
+anecdote = """
+D'après Pound, Gaudier l'avait prévenu avant de commencer : la tête ne lui \
+ressemblerait pas, elle serait l'expression de certaines émotions que lui inspirait \
+son caractère."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 2.6
 
 # ─── Les artistes ────────────────────────────────────────────────────────────
 
 [[artistes]]
-nom = "Louise Bourgeois"
-vie = "Paris, 25 décembre 1911 – New York, 31 mai 2010"
+nom = "Auguste Rodin"
+vie = "Paris, 12 novembre 1840 – Meudon, 17 novembre 1917"
 biographie = """
-Louise Bourgeois grandit entre Paris et Choisy-le-Roi, où ses parents tiennent un \
-atelier de restauration de tapisseries anciennes. Son enfance est marquée par la \
-liaison de son père avec la gouvernante anglaise de la famille, qui vit sous leur \
-toit, une blessure qui nourrira toute son œuvre. Elle étudie les mathématiques à la \
-Sorbonne, puis l'art à l'École des beaux-arts, à l'École du Louvre et dans plusieurs \
-académies ; Fernand Léger lui dit qu'elle est sculptrice plutôt que peintre. En 1938, \
-elle épouse l'historien de l'art américain Robert Goldwater et s'installe à New York. \
-Elle peint la série des Femmes-Maisons, puis sculpte des figures de bois, des formes \
-de plâtre et de latex. La reconnaissance vient tard : le Museum of Modern Art lui \
-consacre une rétrospective en 1982, alors qu'elle a plus de soixante-dix ans. Dans les \
-années 1990, elle crée ses Cellules, pièces closes chargées de souvenirs, et ses \
-araignées géantes. Lion d'or à la Biennale de Venise en 1999, elle travaille jusqu'à \
-sa mort, à 98 ans."""
+Fils d'un employé de la préfecture de police, Auguste Rodin apprend le dessin à la \
+Petite École, mais échoue trois fois au concours de l'École des beaux-arts. Il \
+travaille longtemps pour d'autres, comme ornemaniste et praticien, à Paris puis à \
+Bruxelles, où il s'installe après la guerre de 1870. Un voyage en Italie, en \
+1875–1876, lui révèle Michel-Ange. L'Âge d'airain, exposé en 1877, le fait connaître \
+dans le scandale. En 1880, l'État lui commande La Porte de l'Enfer, inspirée de \
+Dante, à laquelle il travaillera jusqu'à sa mort et d'où naissent Adam, Le Penseur \
+et Le Baiser. Suivent Les Bourgeois de Calais, inaugurés en 1895, et le Balzac, \
+refusé par ses commanditaires en 1898. L'Exposition universelle de 1900, où il \
+présente son œuvre dans un pavillon personnel, lui apporte une gloire \
+internationale. En 1916, il donne à l'État ses œuvres et ses collections ; il meurt \
+l'année suivante à Meudon."""
 style = """
-Bourgeois puise dans ses souvenirs d'enfance, la peur, la jalousie, l'abandon, la \
-tendresse, pour inventer des formes à la fois intimes et monumentales. Elle passe d'un \
-matériau à l'autre, bois, marbre, latex, tissu, bronze, sans jamais se fixer dans un \
-style. Ses thèmes, le corps, la maison, la mère, la sexualité, en ont fait une figure \
-majeure pour les artistes femmes et pour tout l'art de la fin du XXᵉ siècle."""
+Rodin libère la sculpture du récit et des conventions académiques : il modèle par \
+bosses et par creux qui font vibrer la lumière, garde l'empreinte des doigts, ose le \
+fragment, l'inachevé, la répétition d'une même figure. Le corps seul exprime la \
+pensée et la passion. Presque tous les sculpteurs de cette exposition se sont \
+définis avec lui ou contre lui."""
 
 [[artistes]]
-nom = "Antony Gormley"
-vie = "Londres (Royaume-Uni), né le 30 août 1950"
+nom = "Wilhelm Lehmbruck"
+vie = "Meiderich (Duisbourg), 4 janvier 1881 – Berlin, 25 mars 1919"
 biographie = """
-Antony Gormley naît à Hampstead, à Londres. Élève du collège bénédictin d'Ampleforth, \
-il étudie l'archéologie, l'anthropologie et l'histoire de l'art au Trinity College de \
-Cambridge, de 1968 à 1971. Il part ensuite trois ans en Inde et à Ceylan, où il étudie \
-le bouddhisme, une expérience décisive pour son rapport au corps. De retour à Londres, \
-il suit les cours de Saint Martin's School of Art et de Goldsmiths, puis de la Slade \
-School of Fine Art de 1977 à 1979. Dans les années 1980, il réalise ses premières \
-figures moulées sur son propre corps. Il reçoit le Turner Prize en 1994 pour Field for \
-the British Isles, une foule de petites figurines d'argile. L'Ange du Nord, en 1998, \
-puis Another Place, cent figures de fonte tournées vers la mer, installées depuis 2005 \
-sur la plage de Crosby, près de Liverpool, le font connaître bien au-delà du monde de \
-l'art. Suivent Event Horizon (2007), des statues postées sur les toits de Londres, et \
-One & Other (2009), qui offre le quatrième socle de Trafalgar Square à des habitants \
-tirés au sort, une heure chacun. Membre de la Royal Academy depuis 2003, il est anobli \
-en 2014."""
+Fils d'un mineur de la Ruhr, Wilhelm Lehmbruck étudie à l'école des arts décoratifs \
+puis à l'Académie des beaux-arts de Düsseldorf. Ses premières œuvres doivent beaucoup \
+à Rodin et à la sculpture monumentale de son temps. En 1910, il s'installe à Paris, \
+où il découvre Maillol et se lie avec Brancusi, Archipenko et Modigliani. Sa Femme \
+agenouillée, en 1911, aux membres démesurément étirés, est saluée comme une œuvre \
+majeure et voyage jusqu'à New York, à l'Armory Show de 1913. La guerre le ramène en \
+Allemagne : employé dans un hôpital militaire à Berlin, il est bouleversé par les \
+souffrances des blessés et sculpte L'Homme abattu, monument à la détresse des \
+soldats. Il se réfugie à Zurich en 1916. Revenu à Berlin à la fin de la guerre, élu à \
+l'Académie prussienne des arts, il met fin à ses jours en mars 1919, à trente-huit \
+ans. En 1937, les nazis le classent parmi les artistes « dégénérés »."""
 style = """
-Gormley part de son propre corps : il le fait mouler, puis le transforme en figure de \
-plomb, de fonte ou d'acier. Ces corps sans visage ne sont pas des portraits mais des \
-enveloppes, des espaces intérieurs placés dans le paysage. Plantées sur une plage, un \
-toit ou une colline, ses figures changent notre regard sur le lieu et nous rendent \
-conscients de notre propre présence. Il a profondément renouvelé la sculpture publique \
-britannique."""
+Lehmbruck part de la plénitude classique de Maillol pour aller vers des figures \
+étirées, graves et mélancoliques, où l'allongement des membres dit le recueillement \
+ou la douleur. Sans geste spectaculaire, ses corps expriment un état intérieur : il \
+est l'un des grands sculpteurs de l'expressionnisme allemand."""
 
 [[artistes]]
-nom = "Jaume Plensa"
-vie = "Barcelone (Espagne), né le 23 août 1955"
+nom = "Augustus Saint-Gaudens"
+vie = "Dublin (Irlande), 1er mars 1848 – Cornish (New Hampshire), 3 août 1907"
 biographie = """
-Jaume Plensa naît à Barcelone. Il suit les cours de l'école de la Llotja et de l'école \
-supérieure des beaux-arts de Sant Jordi, puis abandonne ses études pour se former \
-seul. Ses premières sculptures, dans les années 1980, sont en fer et en fonte. Il \
-introduit ensuite dans son travail la lumière, l'eau, le son, la vidéo et surtout les \
-lettres de l'alphabet. En 2004, la Crown Fountain, dans le Millennium Park de Chicago, \
-le rend célèbre : deux tours de verre où défilent les visages filmés d'un millier \
-d'habitants, qui semblent cracher de l'eau sur les enfants qui jouent au pied. \
-Viennent ensuite des figures assises ou accroupies faites de lettres d'acier \
-entrelacées, et de grandes têtes de jeunes filles aux yeux clos, installées dans de \
-nombreuses villes d'Europe, d'Amérique et d'Asie. Il conçoit aussi des décors d'opéra \
-et des installations sonores. Il reçoit le prix Marsh de la sculpture publique en 2009 \
-pour Dream, le Prix national des arts plastiques en Espagne en 2012 et le prix \
-Velázquez en 2013."""
+Fils d'un cordonnier français et d'une mère irlandaise, Augustus Saint-Gaudens a six \
+mois quand sa famille quitte Dublin pour New York. À treize ans, il entre en \
+apprentissage chez un graveur de camées, tout en suivant des cours du soir de dessin. \
+En 1867, il part pour Paris et entre à l'École des beaux-arts, puis s'installe à Rome. \
+De retour aux États-Unis, il se fait connaître avec le monument à l'amiral Farragut, \
+inauguré à New York en 1881. Suivent le Lincoln debout de Chicago, le mémorial Adams \
+à Washington, figure voilée méditative, et le mémorial au colonel Shaw et à son \
+régiment de soldats noirs, à Boston, en 1897. Il vit à Paris de 1897 à 1900, puis \
+s'installe à Cornish, dans le New Hampshire, où se forme autour de lui une colonie \
+d'artistes. En 1907, l'année de sa mort, il dessine une pièce d'or de vingt dollars, \
+souvent jugée la plus belle des monnaies américaines."""
 style = """
-Plensa fait du corps humain un réceptacle de langage et de silence. Ses figures de \
-lettres disent que nous sommes faits de mots et de cultures mêlées ; ses têtes aux \
-yeux fermés invitent au recueillement, au rêve, à l'écoute intérieure. Il pense ses \
-œuvres à l'échelle de la ville, comme des lieux de rencontre, et compte parmi les \
-sculpteurs publics les plus demandés au monde."""
+Saint-Gaudens unit la science académique apprise à Paris à un réalisme direct et \
+sensible. Ses monuments, portraits et reliefs donnent à l'allégorie un visage \
+humain. Il est le plus grand sculpteur américain de son temps, l'héritier le plus \
+accompli de la tradition des Beaux-Arts au moment où les modernes la remettent en \
+cause."""
 
 [[artistes]]
-nom = "Anish Kapoor"
-vie = "Bombay (Inde), né le 12 mars 1954"
+nom = "Ernst Barlach"
+vie = "Wedel (Holstein), 2 janvier 1870 – Rostock, 24 octobre 1938"
 biographie = """
-Anish Kapoor naît à Bombay d'un père hindou du Pendjab, hydrographe dans la marine \
-indienne, et d'une mère d'origine juive irakienne. Après ses études à la Doon School, \
-il part en 1971 pour Israël, vit dans un kibboutz et commence des études d'ingénieur, \
-qu'il abandonne au bout de quelques mois pour devenir artiste. Il s'installe à Londres \
-en 1973 et étudie au Hornsey College of Art puis à la Chelsea School of Art. Il se \
-fait connaître au début des années 1980 avec des formes simples recouvertes de pigment \
-pur, rouge, jaune ou bleu, posées à même le sol. Il représente la Grande-Bretagne à la \
-Biennale de Venise de 1990, où il reçoit le Premio Duemila, et remporte le Turner \
-Prize en 1991. Ses œuvres prennent ensuite une dimension monumentale : Marsyas (2002) \
-dans la salle des turbines de la Tate Modern, Cloud Gate (2006) à Chicago, Leviathan \
-au Grand Palais à Paris en 2011, et l'ArcelorMittal Orbit, tour-sculpture de 115 \
-mètres élevée pour les Jeux olympiques de Londres en 2012. Il est anobli en 2013."""
+Fils d'un médecin, Ernst Barlach étudie les arts décoratifs à Hambourg, puis la \
+sculpture à l'Académie de Dresde, et séjourne à Paris au milieu des années 1890. \
+Pendant plusieurs années, il cherche sa voie entre la céramique, l'illustration et la \
+sculpture décorative. Un voyage en Russie, en 1906, est une révélation : les paysans \
+et les mendiants des steppes lui inspirent des figures massives, enveloppées dans \
+leurs vêtements. Soutenu par le marchand berlinois Paul Cassirer, il s'installe en \
+1910 à Güstrow, dans le Mecklembourg. Il est aussi un auteur de théâtre reconnu et un \
+graveur sur bois. Après la Première Guerre mondiale, il crée des monuments aux morts \
+pour Güstrow, Kiel, Magdeburg ou Hambourg, œuvres de deuil plus que de gloire. Les \
+nazis le jugent « dégénéré » : ses monuments sont retirés, des centaines de ses \
+œuvres saisies dans les musées. Isolé, il meurt à Rostock en 1938."""
 style = """
-Kapoor travaille le vide plus que la forme. Pigments si purs qu'ils semblent absorber \
-le regard, cavités noires sans fond apparent, miroirs d'acier poli qui renversent le \
-monde : ses œuvres troublent la perception et font douter de ce qui est plein ou \
-creux, proche ou lointain. Ses surfaces parfaites, sans trace de la main, et son goût \
-de l'échelle monumentale font de lui l'un des sculpteurs les plus influents de sa \
-génération."""
+Barlach sculpte des corps enveloppés, réduits à des masses simples et fermées, \
+taillées en grands plans comme le bois. Héritier de la sculpture gothique allemande, \
+il donne à des figures humbles, mendiants, paysans, femmes en prière, une intensité \
+spirituelle : peur, attente, élan, extase ou deuil."""
 
 [[artistes]]
-nom = "Rachel Whiteread"
-vie = "Ilford (Royaume-Uni), née le 20 avril 1963"
+nom = "Umberto Boccioni"
+vie = "Reggio de Calabre, 19 octobre 1882 – Sorte, près de Vérone, 17 août 1916"
 biographie = """
-Rachel Whiteread naît à Ilford, dans l'Essex, et grandit à Londres. Elle étudie la \
-peinture à l'école polytechnique de Brighton, puis la sculpture à la Slade School of \
-Fine Art de Londres, de 1985 à 1987. Très tôt, elle prend l'habitude de mouler non pas \
-des objets, mais l'espace qu'ils contiennent : le dessous d'un lit, l'intérieur d'une \
-baignoire ou d'une armoire. En 1990, Ghost, moulage en plâtre d'une pièce entière \
-d'une maison londonienne, la fait connaître. En 1993, House, l'intérieur d'une maison \
-victorienne de l'est de Londres coulé en béton, suscite un débat national avant d'être \
-démolie par la municipalité en janvier 1994. Elle appartient à la génération des Young \
-British Artists, mais son œuvre, silencieuse et grave, se distingue de leurs \
-provocations. En 2001, elle coule en résine transparente le quatrième socle de \
-Trafalgar Square et pose cette copie, renversée, sur l'original. En 2005, elle remplit \
-la salle des turbines de la Tate Modern de quelque 14 000 boîtes blanches avec \
-Embankment. Elle est faite dame de l'Empire britannique en 2019."""
+Umberto Boccioni grandit au gré des affectations de son père, fonctionnaire, puis \
+s'installe à Rome en 1901. Avec son ami Gino Severini, il apprend auprès de Giacomo \
+Balla la peinture divisionniste, faite de touches de couleur pure. Après des séjours \
+à Paris et en Russie, il se fixe à Milan en 1907. En 1910, il rencontre le poète \
+Marinetti, fondateur du futurisme, et signe le Manifeste des peintres futuristes ; sa \
+grande toile La ville qui monte célèbre l'énergie de la ville moderne. En 1912, il \
+expose à Paris avec les futuristes, découvre la sculpture cubiste et publie le \
+Manifeste technique de la sculpture futuriste. Ses Formes uniques de la continuité \
+dans l'espace, en 1913, deviennent l'icône du mouvement. Partisan de l'entrée en \
+guerre de l'Italie, il s'engage en 1915. Il meurt en août 1916, à trente-trois ans, \
+après une chute de cheval lors d'un exercice militaire, près de Vérone."""
 style = """
-Whiteread moule le vide : l'espace sous une chaise, dans une pièce, autour des livres \
-d'une bibliothèque. Ce renversement rend solide ce qui est d'ordinaire invisible et \
-transforme des objets familiers en monuments silencieux. Plâtre, béton, résine, \
-caoutchouc : ses matériaux gardent l'empreinte des surfaces, comme des fossiles de la \
-vie quotidienne. Son œuvre parle de mémoire, d'absence et de la trace laissée par les \
-vies humaines."""
+Boccioni veut peindre et sculpter le mouvement, la vitesse, la vie moderne. Dans ses \
+sculptures, l'objet se prolonge dans l'espace, se mêle à son environnement, éclate en \
+plans qui se pénètrent. Mort jeune, il a laissé peu d'œuvres, mais ses idées ont \
+nourri toute la sculpture du XXᵉ siècle."""
 
 [[artistes]]
-nom = "Yinka Shonibare"
-vie = "Londres (Royaume-Uni), né le 9 août 1962"
+nom = "Raymond Duchamp-Villon"
+vie = "Damville (Eure), 5 novembre 1876 – Cannes, 9 octobre 1918"
 biographie = """
-Yinka Shonibare naît à Londres de parents nigérians ; à trois ans, il part avec sa \
-famille à Lagos, où son père exerce comme avocat. Il revient en Grande-Bretagne à \
-dix-sept ans pour terminer ses études secondaires. À dix-huit ans, alors qu'il \
-commence une école d'art, une myélite transverse le laisse en partie paralysé : il \
-doit réapprendre les gestes les plus simples, et travaille depuis avec une équipe \
-d'assistants. Il étudie à la Byam Shaw School of Art puis à Goldsmiths, à Londres, \
-dont il sort à la fin des années 1980, dans la génération des Young British Artists. À \
-partir de 1994, il fait du tissu wax son matériau de prédilection. Il en habille des \
-mannequins sans tête, dans des scènes inspirées de la peinture anglaise du XVIIIᵉ \
-siècle, comme Mr and Mrs Andrews Without Their Heads (1998), d'après Gainsborough, ou \
-de l'histoire coloniale, comme Scramble for Africa (2003). Il est retenu pour le \
-Turner Prize en 2004, entre à la Royal Academy en 2013 et dirige à Londres un espace \
-pour jeunes artistes, Guest Projects. Il est fait commandeur de l'Empire britannique \
-en 2019."""
+Fils d'un notaire normand, Raymond Duchamp grandit dans une famille d'artistes : son \
+frère aîné devient le peintre Jacques Villon, ses cadets Marcel et Suzanne Duchamp \
+seront peintres eux aussi. Il commence des études de médecine à Paris, mais une \
+grave crise de rhumatisme l'oblige à les abandonner ; pendant sa convalescence, il se \
+met à la sculpture, en autodidacte, et expose bientôt dans les Salons parisiens. \
+Vers 1911, les réunions de Puteaux, chez son frère Jacques, le rapprochent des \
+cubistes. En 1912, il conçoit la façade de la « Maison cubiste » présentée au Salon \
+d'automne et participe au Salon de la Section d'or ; en 1913, il expose à l'Armory \
+Show de New York. En 1914, il achève son chef-d'œuvre, Le Cheval ; mobilisé dans le \
+service de santé, il sculpte encore, près du front, Le Coq gaulois. Atteint de la fièvre \
+typhoïde en 1916, il meurt en 1918 à l'hôpital militaire de Cannes."""
 style = """
-Shonibare a pour arme le tissu wax, qui semble « africain » mais raconte une histoire \
-d'échanges entre l'Indonésie, les Pays-Bas, l'Angleterre et l'Afrique de l'Ouest. En \
-habillant de ces étoffes les héros, les aristocrates et les symboles de l'Empire \
-britannique, il interroge avec humour et élégance les notions d'identité, \
-d'authenticité et de pouvoir colonial. Ses mannequins sans tête, ses navires et ses \
-globes en tissu sont devenus des images marquantes de l'art post-colonial."""
+Duchamp-Villon est l'un des premiers sculpteurs cubistes. Il réduit le vivant à des \
+formes simples et tendues, qui s'emboîtent comme des pièces mécaniques, pour exprimer \
+l'énergie plutôt que l'apparence. Sculpteur et architecte de cœur, il cherchait une \
+synthèse entre l'organique et la machine."""
 
 [[artistes]]
-nom = "Fernando Botero"
-vie = "Medellín (Colombie), 19 avril 1932 – Monaco, 15 septembre 2023"
+nom = "Medardo Rosso"
+vie = "Turin, 21 juin 1858 – Milan, 31 mars 1928"
 biographie = """
-Fernando Botero naît à Medellín. Son père meurt quand il a quatre ans ; sa mère, \
-couturière, élève seule ses enfants. À douze ans, il entre pour deux ans dans une \
-école de matadors, et ses premiers dessins représentent des taureaux. En 1948, il \
-publie des illustrations dans le supplément dominical du journal El Colombiano. \
-Installé à Bogotá en 1951, il part l'année suivante pour l'Europe : à Madrid, il copie \
-Velázquez et Goya au Prado ; il passe par Paris et vit à Florence en 1953 et 1954, où \
-il étudie la peinture de la Renaissance. En peignant une nature morte à la mandoline, \
-il découvre l'effet produit par des formes gonflées : ce sera son style. Il vit \
-ensuite une douzaine d'années à New York, où le Museum of Modern Art achète sa Mona \
-Lisa à douze ans en 1961, puis s'installe surtout à Paris. Il se met à la sculpture \
-dans les années 1960 et expose ses bronzes au Grand Palais en 1977. Il peint aussi la \
-violence en Colombie et, en 2004-2005, les tortures de la prison d'Abou Ghraib. Il a \
-donné de nombreuses œuvres aux musées de Bogotá et de Medellín. Il meurt à Monaco à 91 \
-ans."""
+Medardo Rosso grandit en Italie du Nord, à Milan notamment. Il entre en 1882 à \
+l'Académie de Brera, dont il est renvoyé dès l'année suivante pour indiscipline. Ses premières œuvres montrent \
+des sujets populaires, enfants, concierges, chanteurs des rues. En 1889, il \
+s'installe à Paris, où il vivra longtemps ; il y côtoie les milieux \
+impressionnistes, se lie avec Rodin, puis se brouille avec lui, persuadé que son \
+Balzac doit beaucoup à ses propres recherches. Il expose ses cires à Paris et dans \
+toute l'Europe, et trouve des défenseurs parmi les critiques et les \
+collectionneurs. Après Ecce Puer, en 1906, il ne crée plus guère de sujets nouveaux \
+et reprend sans fin ses œuvres anciennes. Revenu en Italie, il est salué par les \
+futuristes comme un précurseur. Il meurt à Milan en 1928."""
 style = """
-Le « boterisme » se reconnaît au premier coup d'œil : personnages, animaux et objets \
-aux volumes dilatés, petits yeux, petites bouches, surfaces lisses et couleurs \
-franches. Botero voulait célébrer la sensualité de la forme, héritée des maîtres de la \
-Renaissance et de l'art populaire latino-américain. Derrière l'humour, son œuvre se \
-fait aussi critique, de la bourgeoisie, de l'Église, de la dictature ou de la guerre."""
+Rosso est le sculpteur de l'impression : il veut rendre ce que l'œil perçoit en un \
+instant, un visage dans la lumière, une silhouette dans la rue. Ses cires, aux formes \
+fondues et sans contour, se regardent d'un seul point de vue, comme des tableaux, et \
+ouvrent la sculpture à l'espace et à l'atmosphère."""
 
 [[artistes]]
-nom = "Yue Minjun"
-vie = "Daqing (Chine), né en 1962"
+nom = "Henri Gaudier-Brzeska"
+vie = "Saint-Jean-de-Braye (Loiret), 4 octobre 1891 – Neuville-Saint-Vaast (Pas-de-Calais), 5 juin 1915"
 biographie = """
-Yue Minjun naît à Daqing, dans la province du Heilongjiang, au nord-est de la Chine, \
-dans une famille de travailleurs du pétrole. Après le lycée, il devient électricien en \
-1983 et, lors de campagnes de forage en mer, peint le portrait de ses collègues. Il \
-étudie la peinture à l'huile à l'université normale du Hebei. En 1990, il s'installe à \
-Hongmiao, dans la banlieue de Pékin, où vivent de nombreux artistes, et commence à \
-peindre son propre visage secoué d'un rire forcé. Ces autoportraits multipliés, aux \
-couleurs criardes, le font connaître au milieu des années 1990, alors que l'art \
-contemporain chinois commence à être exposé en Occident. Le critique Li Xianting le \
-range parmi les « réalistes cyniques », avec Fang Lijun, une étiquette qu'il récuse. \
-Ses tableaux atteignent bientôt des prix record. Il vit et travaille à Pékin, où il \
-réalise peintures, sculptures, aquarelles et estampes, toutes habitées par le même \
-personnage hilare, coiffé parfois de chapeaux ou placé dans des décors empruntés à \
-l'histoire de l'art."""
+Fils d'un menuisier des environs d'Orléans, Henri Gaudier est un élève brillant. \
+Grâce à des bourses, il étudie en Angleterre et voyage en Allemagne, où il dessine \
+sans relâche dans les musées. À Paris, en 1910, il rencontre Sophie Brzeska, \
+écrivaine polonaise de près de vingt ans son aînée ; ils vivent ensemble, et il \
+ajoute son nom au sien. Le couple part pour Londres en 1911. Pauvre, Gaudier sculpte \
+la nuit, dessine les animaux du zoo et étudie les antiquités du British Museum. Il se \
+lie avec Ezra Pound, le peintre Wyndham Lewis et le sculpteur Jacob Epstein, et \
+participe en 1914 au vorticisme et à sa revue, Blast. Quand la guerre éclate, il \
+rentre en France pour s'engager. Remarqué pour son courage, il est tué en Artois, à \
+Neuville-Saint-Vaast, le 5 juin 1915, à vingt-trois ans. Depuis les tranchées, il \
+avait encore envoyé à Blast un dernier texte sur la sculpture."""
 style = """
-Le style de Yue Minjun repose sur un motif unique, répété à l'infini : son propre \
-visage, bouche ouverte, yeux fermés, figé dans un rire hystérique. Couleurs vives, \
-rose chair et bleu ciel, compositions simples proches de l'affiche : cette image \
-presque publicitaire cache une satire de l'uniformité, de la société de consommation \
-et de ce qu'on ne peut pas dire. Elle est devenue l'une des icônes de l'art chinois \
-contemporain."""
-
-[[artistes]]
-nom = "Eduardo Chillida"
-vie = "Saint-Sébastien (Espagne), 10 janvier 1924 – Saint-Sébastien, 19 août 2002"
-biographie = """
-Eduardo Chillida naît à Saint-Sébastien, au Pays basque. Jeune homme, il se destine au \
-football, mais une blessure l'oblige à renoncer. Il étudie l'architecture à Madrid de \
-1943 à 1946, puis se tourne vers le dessin et la sculpture. En 1948, il part pour \
-Paris, où il modèle d'abord des figures de plâtre inspirées de la sculpture grecque \
-archaïque. De retour au Pays basque, il découvre le fer en travaillant chez un \
-forgeron près d'Hernani : c'est le début d'une œuvre abstraite, forgée, qui le fait \
-vite connaître. Il expose à la Biennale de Venise en 1958 et reçoit de nombreux prix, \
-dont le prix Carnegie en 1964, le prix Wolf en 1985, le prix Prince des Asturies en \
-1987 et le Praemium Imperiale en 1991. Il travaille aussi l'albâtre, le granit, \
-l'acier et la terre. Ses grandes œuvres publiques jalonnent l'Europe, jusqu'à la \
-sculpture Berlin, installée en 2000 devant la Chancellerie fédérale. Près d'Hernani, \
-il aménage le musée en plein air Chillida-Leku, autour d'une vieille ferme basque. Il \
-meurt dans sa ville natale en 2002."""
-style = """
-Chillida sculpte l'espace autant que la matière. Ses formes de fer ou d'acier se \
-recourbent, s'emboîtent, s'ouvrent pour envelopper un vide qu'elles ne referment \
-jamais. Il cherchait à rendre présent ce qui n'a pas de forme, comme le vent, la \
-lumière ou l'horizon. Sa sculpture, abstraite mais ancrée dans la terre basque, ses \
-forges et ses paysages, a marqué l'art public de la seconde moitié du XXᵉ siècle."""
-
-[[artistes]]
-nom = "Sokari Douglas Camp"
-vie = "Buguma (Nigeria), née en 1958"
-biographie = """
-Sokari Douglas Camp naît à Buguma, ville kalabari du delta du Niger, au Nigeria. Elle \
-est en partie élevée par son beau-frère, l'anthropologue britannique Robin Horton, \
-spécialiste de la culture kalabari, ce qui lui ouvre très tôt une double culture. Elle \
-étudie au California College of Arts and Crafts d'Oakland, puis à la Central School of \
-Art and Design de Londres, de 1980 à 1983, et au Royal College of Art, de 1983 à 1986. \
-Installée à Londres, elle choisit l'acier, qu'elle découpe et soude, pour représenter \
-les fêtes, les danses et les mascarades de son enfance, mais aussi la vie quotidienne \
-et les combats politiques du Nigeria. En 1998 et 1999, le Muséum américain d'histoire \
-naturelle de New York lui consacre l'exposition Spirits in Steel. Elle crée Battle \
-Bus, un mémorial à l'écrivain Ken Saro-Wiwa, exécuté en 1995 pour avoir défendu le \
-peuple ogoni contre les dégâts de l'industrie pétrolière. En 2012, son mémorial contre \
-l'esclavage, All the World is Now Richer, est présenté au Parlement britannique. Elle \
-est faite commandeur de l'Empire britannique en 2005 ; ses œuvres figurent au British \
-Museum et à la Smithsonian Institution."""
-style = """
-Sokari Douglas Camp fait de l'acier, matériau industriel et lourd, des figures pleines \
-de mouvement et de fête. Ses sculptures ajourées, souvent animées de détails, de \
-tissus ou d'objets, retrouvent l'énergie des mascarades kalabari. Entre le Nigeria et \
-Londres, elle fait dialoguer traditions africaines, histoire coloniale et engagement \
-politique, notamment pour le delta du Niger, abîmé par l'exploitation du pétrole."""
+Gaudier-Brzeska défend la taille directe, l'énergie des volumes et la leçon des arts \
+anciens et lointains, d'Égypte, d'Afrique ou d'Océanie. En quatre ans de travail \
+seulement, il passe du modelé hérité de Rodin à des formes géométriques, compactes et \
+puissantes, qui annoncent la sculpture anglaise du XXᵉ siècle."""
