@@ -17,7 +17,7 @@ struct CollectionMuseum: Decodable, Hashable, Sendable, Identifiable {
     var count: Int
     /// Le fichier de ses vignettes (`vignettes-met.bin`).
     var pack: String
-    /// Le fichier de ses images en grand, 800 px (`grandes-met.bin`), s'il y en a.
+    /// Le fichier de ses images en grand, 700 px (`grandes-met.bin`), s'il y en a.
     var largePack: String?
 
     var id: String { key }
@@ -53,7 +53,7 @@ struct CollectionWork: Decodable, Hashable, Sendable, Identifiable {
     var gallery: String?
     /// Sa vignette dans le paquet du musée : [décalage, longueur].
     var thumb: [Int]?
-    /// Son image en grand (800 px) dans le paquet des grandes images : [décalage, longueur].
+    /// Son image en grand (700 px) dans le paquet des grandes images : [décalage, longueur].
     var large: [Int]?
     /// Le musée (`met`).
     var museum: String
@@ -222,7 +222,7 @@ extension LocalMuseum {
     /// Les collections sont-elles à portée (sur l'appareil, ou sur Nuage) ?
     static var hasCollections: Bool { collectionsFile != nil || Nuage.isConfigured }
 
-    /// Les octets de l'image en grand (800 px) d'une œuvre des collections, dans l'app.
+    /// Les octets de l'image en grand (700 px) d'une œuvre des collections, dans l'app.
     static func largeImage(of work: CollectionWork, pack: String?, in root: URL? = nil) -> Data? {
         guard let pack else { return nil }
         return packBytes(work.large, pack: pack, in: root)

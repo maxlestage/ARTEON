@@ -291,7 +291,7 @@ func lesVraiesCollectionsSontCompletes() throws {
             let range = try #require(w.thumb, "vignette de \(w.id)")
             #expect(range[0] + range[1] <= size)
         }
-        // Les images en grand (800 px), dans leur paquet.
+        // Les images en grand (700 px), dans leur paquet.
         if let largePack = museum.largePack {
             let file = root.appendingPathComponent("collections/\(largePack)")
             let largeSize = try #require(try FileManager.default.attributesOfItem(atPath: file.path)[.size] as? Int)

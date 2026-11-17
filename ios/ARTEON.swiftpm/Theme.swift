@@ -86,7 +86,7 @@ actor ImagePipeline {
         return data
     }
 
-    /// L'image en grand (800 px) d'une œuvre des collections, embarquée dans l'app.
+    /// L'image en grand (700 px) d'une œuvre des collections, embarquée dans l'app.
     func collectionLarge(_ work: CollectionWork, pack: String?) async -> UIImage? {
         let key = "grande|\(work.id)" as NSString
         if let image = cache.object(forKey: key) { return image }
