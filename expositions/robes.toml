@@ -1,0 +1,766 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « ROBES » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/robes/). Le nom du
+#  fichier donne l'adresse de l'exposition sur le site : /robes.
+#
+#  Les robes sont photographiées sur mannequin : huit images viennent du
+#  Metropolitan Museum de New York (libre accès, CC0), deux du Rijksmuseum
+#  d'Amsterdam (domaine public).
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 69
+nom_court = "Robes"
+mouvement = "La robe, de la cour de George II aux années folles"
+cadre = "vitrine"
+couleur = "#9c4f6e"
+titre = "Robes, la silhouette et l'étoffe"
+artiste = "Maison Worth, couturières anonymes…"
+dates = "vers 1750–vers 1926"
+accroche = "Exposition virtuelle · Fashion Museum, Assembly Rooms, Bath"
+introduction = """
+En moins de deux siècles, la robe change plusieurs fois de forme du tout au tout. \
+Vers 1750, posée sur des paniers, elle est plus large que haute ; vers 1810, elle \
+tombe droit depuis la poitrine ; vers 1835, ce sont les manches qui gonflent ; vers \
+1858, la jupe devient une cloche ; vers 1886, toute l'ampleur passe dans le dos ; \
+en 1926, la robe s'arrête au genou et ne marque plus la taille. Cette exposition \
+suit dix robes, de la robe de cour anglaise à la robe de danse pailletée des années \
+folles, en regardant ce qui fait chaque silhouette : les armatures cachées dessous, \
+la coupe, et les étoffes, soies brochées, cotons imprimés, tulles, satins, crêpes. \
+Huit viennent du Costume Institute du Metropolitan Museum de New York, deux du \
+Rijksmuseum d'Amsterdam. Le bâtiment s'inspire des Assembly Rooms de Bath, salles de \
+bal du XVIIIᵉ siècle qui ont longtemps abrité le musée de la mode de la ville."""
+vitrine = "robe-de-cour.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Fashion Museum, Assembly Rooms de Bath"
+ville = "Bath, Angleterre"
+architecte = "John Wood le Jeune"
+construction = "1769–1771"
+presentation = """
+Au XVIIIᵉ siècle, Bath, ville d'eaux de l'ouest de l'Angleterre, est le rendez-vous \
+de la bonne société, qui vient y prendre les eaux, danser, jouer aux cartes et se \
+montrer. L'architecte John Wood le Jeune, à qui l'on doit aussi le Royal Crescent, y \
+élève de 1769 à 1771 de nouvelles salles de réunion, les Assembly Rooms, appelées aussi \
+« Upper Rooms ». Derrière une façade sobre de pierre blonde se succèdent une immense \
+salle de bal, une salle de thé, un salon octogonal et, un peu plus tard, une \
+salle de jeu. Jane Austen y conduit les héroïnes de Northanger Abbey et de Persuasion. \
+Incendiées lors d'un bombardement en 1942, les salles sont restaurées et rouvrent en \
+1963. La même année, la collection de costumes réunie par l'historienne de la mode \
+Doris Langley Moore s'installe au sous-sol : c'est le musée du Costume, devenu plus \
+tard le Fashion Museum, l'une des grandes collections de mode d'Europe. Il a depuis \
+quitté les Assembly Rooms pour préparer un nouveau lieu dans la ville."""
+ici = """
+Le bâtiment d'ARTEON reprend l'enchaînement des Assembly Rooms autour de leur salon \
+octogonal. On entre par le sud dans « Le vestibule », aux murs de pierre blonde, qui \
+mène à « L'Octogone », où deux robes du XVIIIᵉ siècle accueillent le visiteur. À \
+l'ouest s'étend « La salle de bal », longue de trente-quatre mètres et haute de dix, \
+où quatre robes racontent les silhouettes du XIXᵉ siècle, de l'Empire à la \
+tournure. À l'est, « La salle de thé » réunit deux robes de la maison Worth ; au \
+nord, « La salle de jeu », plus intime, accueille deux robes des années folles."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré des Assembly Rooms de Bath (John Wood le Jeune, 1769–1771) : un
+# vestibule, puis un salon octogonal qui distribue la salle de bal à l'ouest,
+# la salle de thé à l'est et la salle de jeu au nord. Ici l'octogone est une
+# salle carrée. x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Le vestibule"
+theme = "L'entrée, en pierre blonde de Bath, comme la façade de John Wood le Jeune : de là, on gagne l'octogone."
+murs = "#e9dfcc"
+x = 0
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "L'Octogone"
+theme = "Le XVIIIᵉ siècle : la robe de cour anglaise sur ses immenses paniers, puis la robe à l'anglaise, ajustée au dos."
+murs = "#d9dccb"
+x = 0
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La salle de bal"
+theme = "Un siècle de silhouettes : la taille haute de l'Empire, les manches à gigot, la crinoline, puis la tournure."
+murs = "#cfd8d6"
+x = -23
+z = -11
+largeur = 34
+profondeur = 14
+hauteur = 10
+
+[[salles]]
+nom = "La salle de thé"
+theme = "La maison Worth à la fin du XIXᵉ siècle : une robe d'intérieur pour l'heure du thé et une robe de bal de 1900."
+murs = "#e6d5cf"
+x = 17
+z = -11
+largeur = 22
+profondeur = 12
+hauteur = 8
+
+[[salles]]
+nom = "La salle de jeu"
+theme = "Les années folles : une robe du soir aux motifs géométriques et une robe de danse courte, couverte de paillettes."
+murs = "#ddd3c3"
+x = 0
+z = -22
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "Robe de cour"
+artiste = "Couturières anonymes"
+annee = "vers 1750"
+image = "robe-de-cour.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/82426"
+technique = "Soie et fils métalliques, portée sur de larges paniers (Angleterre)"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Une robe plus large que haute : à la cour d'Angleterre, la soie bleue brodée d'argent s'étale sur des paniers démesurés."
+description = """
+Vue de face, la robe forme un rectangle presque parfait, bien plus large que haut. \
+Au-dessus, un buste étroit : le corsage, très ajusté, s'ouvre en carré sur la \
+poitrine, et sa pièce centrale est brodée d'une grande étoile de feuillages \
+argentés. Les manches s'arrêtent au coude sur des parements bordés d'argent, d'où \
+sortent des volants de dentelle blanche. De chaque côté de la taille, la jupe part \
+à l'horizontale, soutenue par des paniers, puis tombe à pic jusqu'au sol. Sur la \
+soie bleu pâle sont semés des pastilles et des bouquets argentés. Tout le bas de la \
+jupe est couvert d'une large bordure d'argent, faite de branches et de fleurs sur \
+un fond de résille, qui finit en festons au ras du sol."""
+evocation = """
+Cette robe n'est pas faite pour la vie de tous les jours, mais pour paraître devant \
+le roi. À la cour d'Angleterre, sous George II, les femmes se présentent dans une \
+robe de cérémonie dont les paniers sont plus larges que ceux de la mode de ville. \
+La jupe devient un grand panneau d'apparat, une surface plane où l'on peut déployer \
+l'étoffe et ses broderies comme un tableau. L'argent, qui brille à la lumière des \
+bougies, dit la richesse de celle qui la porte. Le corps, lui, disparaît presque : \
+on ne voit qu'un buste mince posé sur un socle immense. À la cour britannique, ces \
+paniers resteront de rigueur jusqu'au début du XIXᵉ siècle, bien après que la mode \
+les a abandonnés."""
+histoire = """
+Comme presque toutes les robes du XVIIIᵉ siècle, celle-ci est anonyme. Elle a été \
+faite en Angleterre vers le milieu du siècle, à une époque où le quartier londonien \
+de Spitalfields est le grand centre de la soierie anglaise ; une couturière l'a \
+cousue, puis ornée de broderies et de dentelles de métal. On ignore \
+pour quelle dame de la cour elle a été faite. Elle est conservée en plusieurs \
+pièces, robe, jupe et pièce d'estomac. Le Metropolitan Museum l'a achetée en 1965 \
+grâce au legs d'Irene Lewisohn, l'une des fondatrices du musée new-yorkais d'art du \
+costume dont est né le Costume Institute. Les robes de cour de ce temps, souvent \
+découpées pour en réutiliser la soie et l'argent, sont rarement parvenues entières \
+jusqu'à nous."""
+facture = """
+La silhouette tient à l'armature cachée sous la jupe : des paniers, faits de \
+cerceaux de jonc, de baleine ou de métal, attachés à la taille et qui s'avancent \
+de chaque côté sur les hanches. Pour couvrir une telle largeur, la jupe est faite \
+de nombreux lés de soie entiers, cousus côte à côte : on en voit les coutures \
+verticales sur le devant. Le décor métallique mêle deux techniques. Les petits \
+motifs sont semés sur l'étoffe, tandis que la grande bordure du bas est une dentelle \
+de fils d'argent, rapportée sur la soie. Le devant du corsage est une pièce \
+d'estomac séparée, épinglée ou lacée sur le corps baleiné."""
+details = [
+  "La grande étoile de feuillages brodée sur la pièce d'estomac.",
+  "Les volants de dentelle blanche qui sortent des manches au coude.",
+  "Les coutures verticales des lés de soie sur la jupe.",
+  "La bordure d'argent festonnée au bas de la jupe.",
+  "Les pastilles argentées semées régulièrement sur le fond bleu.",
+]
+themes = ["xviiie siècle", "cour", "paniers", "argent", "angleterre"]
+anecdote = """
+Avec de tels paniers, il fallait franchir les portes de côté et s'asseoir avec \
+précaution. Certains paniers étaient articulés : on pouvait en relever les côtés \
+pour passer plus facilement."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Robe à l'anglaise rayée"
+artiste = "Couturières anonymes"
+annee = "1785–1787"
+image = "robe-a-l-anglaise.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/81105"
+technique = "Taffetas de soie rayé, avec fichu de gaze (France)"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Des rayures roses et blanches, un dos ajusté, plus de paniers : à la veille de la Révolution, la robe se simplifie."
+description = """
+Le mannequin est vu de trois quarts. La robe est taillée dans une soie à rayures \
+verticales rose saumon et crème, qui suivent le corps de la poitrine jusqu'au sol. \
+Le corsage, bien ajusté, descend en pointe à la taille ; les manches, longues et \
+étroites, s'arrêtent un peu au-dessus du poignet sur un petit revers. Sur les \
+épaules et la poitrine, un grand fichu de gaze blanche, garni de volants, bouffe \
+comme une collerette et se croise devant. La robe s'ouvre sur une jupe de la même \
+soie, garnie à mi-hauteur de deux rangs de volants froncés. Derrière, l'ampleur se \
+porte vers le bas du dos et la robe traîne légèrement sur le sol, où pointe un \
+soulier de cuir clair."""
+evocation = """
+Dans les années 1780, la mode française se prend de passion pour l'Angleterre, sa \
+vie à la campagne, ses promenades et ses tissus simples. La robe « à l'anglaise » \
+en est le signe : elle abandonne les larges paniers et les plis flottants dans le \
+dos des robes à la française. Le corps redevient visible, avec une taille fine et \
+une jupe arrondie à l'arrière par un petit coussin. Les rayures, très à la mode à \
+la veille de la Révolution, allongent la silhouette. Le grand fichu de gaze, gonflé \
+sur la poitrine, donne la ligne bombée de ces années, celle que l'on voit dans les \
+portraits d'Élisabeth Vigée Le Brun. C'est une robe de ville et de promenade, plus \
+souple que l'habit de cour."""
+histoire = """
+La robe a été faite en France entre 1785 et 1787, à une époque où les marchandes \
+de modes de Paris, comme Rose Bertin, fournisseuse de Marie-Antoinette, lancent les \
+garnitures nouvelles. Le nom de la couturière et celui de la cliente ne sont pas \
+connus. La robe et sa jupe sont conservées ensemble. Le Metropolitan Museum les a \
+achetées en 1966, grâce au legs d'Irene Lewisohn, comme la robe de cour présentée à \
+côté. Les rayures de la soie sont assez larges pour que l'on suive facilement la \
+coupe de chaque pièce, ce qui en fait un témoin précieux de la façon dont on \
+construisait une robe à la fin du XVIIIᵉ siècle."""
+facture = """
+Ce qui distingue la robe à l'anglaise, c'est son dos : au lieu de tomber librement \
+des épaules, la soie est coupée et cousue au plus près du corps jusqu'à la taille, \
+puis s'ouvre en plis pour former la jupe. La couturière a joué avec les rayures. \
+Sur le corsage et les manches, elles suivent la longueur du corps ; sur les volants \
+de la jupe, froncés serré, elles se resserrent et changent de rythme. Le taffetas, léger et un peu raide, garde bien la forme des volants. \
+Dessous, un corps baleiné affine la taille, et un petit coussin noué aux reins \
+soutient l'arrière de la jupe."""
+details = [
+  "Les rayures rose saumon et crème, qui suivent le corps.",
+  "Le grand fichu de gaze blanche, gonflé sur la poitrine.",
+  "Les deux rangs de volants froncés sur la jupe.",
+  "La pointe du corsage à la taille.",
+  "Le soulier de cuir clair qui dépasse sous l'ourlet.",
+]
+themes = ["xviiie siècle", "anglomanie", "rayures", "taffetas", "promenade"]
+anecdote = """
+Le fichu bouffant de ces années, qui gonflait la poitrine comme un jabot, a été \
+surnommé « fichu menteur » : il donnait au buste une ampleur qu'il n'avait pas \
+toujours."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Robe du soir de soie jaune"
+artiste = "Couturières anonymes"
+annee = "vers 1810"
+image = "robe-du-soir-empire.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/82154"
+technique = "Soie (France)"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Une colonne d'un jaune éclatant : sous l'Empire, la taille remonte sous la poitrine et la soie revient dans les salons."
+description = """
+La robe, d'un jaune d'or soutenu, tombe presque droit du haut de la poitrine \
+jusqu'au sol. La taille est placée très haut, juste sous les seins, et marquée par \
+une étroite bande claire, travaillée comme une broderie. Au-dessus, le petit \
+corsage est froncé en fines nervures verticales, coupées de deux galons plus \
+clairs ; le décolleté, large et arrondi, dégage le haut des épaules. Les manches \
+sont de courts ballons gonflés, faits de deux bouillons superposés. La jupe, lisse \
+et sans un ornement, s'évase à peine vers le bas et touche le sol. Sous la lumière, \
+la soie laisse voir de légères rayures horizontales, dues au tissage, et quelques \
+taches dues au temps."""
+evocation = """
+Vers 1800, les élégantes ont adopté la robe-colonne, inspirée des statues antiques, \
+le plus souvent en mousseline de coton blanche. Vers 1810, la ligne reste la même, \
+mais la couleur revient. Sous l'Empire, Napoléon encourage les soieries de Lyon, \
+qui avaient souffert de la Révolution, et la cour impériale renoue avec le luxe \
+des étoffes. Ce jaune franc, que l'on porte le soir, devait éclater à la lumière \
+des bougies. La silhouette, elle, libère le corps : plus de paniers, plus de taille \
+étranglée, une ligne verticale qui allonge la femme et laisse deviner sa forme. Sous \
+la robe, un corset court soutient seulement la poitrine."""
+histoire = """
+La robe a été faite en France vers 1810, sans doute par une couturière parisienne \
+dont le nom n'est pas connu. Elle se compose de plusieurs pièces, conservées \
+ensemble. Le Metropolitan Museum l'a achetée en 1937 sur le Rogers Fund, l'un des \
+grands fonds d'acquisition du musée, avant même que le Costume Institute ne rejoigne \
+le Metropolitan en 1946. Les robes de soie de couleur de cette époque sont plus \
+rares que les robes de mousseline blanche : leurs teintures, sensibles à la lumière, \
+ont souvent passé, et beaucoup ont été recoupées pour suivre la mode. Celle-ci a \
+gardé un jaune très vif."""
+facture = """
+La coupe est simple et économe : quelques lés de soie droits forment la jupe, un \
+peu plus larges dans le dos, et sont froncés sous la poitrine sur la bande de la \
+taille. Tout le travail se concentre dans le corsage. La soie y est froncée en \
+nervures parallèles, retenues par des coutures, ce qui la fait coller au buste sans \
+pinces. Les manches sont faites de deux bandes de soie froncées l'une au-dessus de \
+l'autre, pour obtenir deux petits bouillons. La bande claire de la taille, comme \
+les galons du corsage, apporte une touche de lumière sur le jaune uni."""
+details = [
+  "La bande claire de la taille, juste sous la poitrine.",
+  "Les fines nervures froncées du corsage.",
+  "Les manches en deux bouillons superposés.",
+  "Les légères rayures du tissage, visibles dans la jupe.",
+  "L'absence de tout ornement sur la jupe.",
+]
+themes = ["empire", "taille haute", "soie", "jaune", "néoclassicisme"]
+anecdote = """
+Les robes de cette époque, à la taille placée si haut, sont souvent appelées en \
+anglais « Regency », du nom de la régence du futur George IV, de 1811 à 1820 : ce \
+sont celles que portent les héroïnes de Jane Austen dans les salles de Bath."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Robe aux manches à gigot"
+artiste = "Couturières anonymes"
+annee = "1832–1835"
+image = "robe-a-manches-gigot.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/159123"
+technique = "Coton imprimé et lin (États-Unis)"
+collection = "Metropolitan Museum of Art, New York (Brooklyn Museum Costume Collection)"
+note = "Des épaules immenses et une taille revenue à sa place : la silhouette romantique en coton imprimé de bouquets."
+description = """
+La robe est faite d'un coton clair imprimé de bouquets de fleurs roses, rouges et \
+vertes, semés entre de grandes volutes crème piquetées de petits points. Le \
+décolleté, très large, dégage le haut des épaules ; le corsage est froncé en plis \
+qui convergent vers le milieu, puis serré à la taille par une ceinture de la même \
+étoffe. Les manches sont énormes : gonflées comme des ballons de l'épaule au coude, \
+elles se resserrent ensuite le long de l'avant-bras et se ferment au poignet sur un \
+petit volant. La jupe, froncée à la taille, s'arrondit largement et s'arrête au \
+niveau de la cheville. Vue de face, la silhouette dessine deux triangles qui se \
+rejoignent à la taille."""
+evocation = """
+Après la colonne de l'Empire, la taille redescend à sa place naturelle vers 1825, \
+et tout s'élargit autour d'elle : les épaules, grâce aux manches, et la jupe, \
+soutenue par des jupons. La taille paraît ainsi plus fine encore. C'est la mode \
+des années romantiques, celle des héroïnes de Balzac et des lithographies de mode \
+de Paris, qui circulent jusqu'en Amérique. Le nom de « gigot » vient de la forme de \
+la manche, qui rappelle un gigot d'agneau. Vers 1835, ces manches atteignent leur \
+plus grande ampleur ; dès 1836, elles s'affaissent et l'ampleur glisse vers le bas \
+du bras. Cette robe saisit donc la mode à son sommet."""
+histoire = """
+Cette robe a été faite aux États-Unis au début des années 1830, pour une femme dont \
+on ignore le nom. Elle montre que la mode venue d'Europe était suivie de près en \
+Amérique, où l'on recevait les journaux de mode parisiens et londoniens. Elle a été \
+offerte en 1990 au Brooklyn Museum par Mrs. Harold N. Weber. En 2009, le Brooklyn \
+Museum a confié au Metropolitan Museum toute sa collection de costumes, désormais \
+conservée au Costume Institute. Les robes de coton de ce genre, portées le jour, \
+étaient lavées et usées : elles sont moins souvent parvenues jusqu'à nous que les \
+robes de soie des grandes occasions."""
+facture = """
+L'étoffe compte autant que la coupe. Au début du XIXᵉ siècle, l'impression au \
+rouleau de cuivre permet d'imprimer le coton en continu, beaucoup plus vite qu'à la \
+planche de bois : les cotons à fleurs deviennent abordables pour un large public. \
+Ici, le fond crème, les volutes et les bouquets de plusieurs couleurs supposent \
+plusieurs passages. La coupe des manches demande beaucoup de tissu : chacune est \
+taillée dans un large morceau arrondi en haut, froncé à l'épaule, puis ajusté sur \
+l'avant-bras. Pour qu'elles gardent leur forme, on glissait parfois dessous des \
+coussinets rembourrés de duvet."""
+details = [
+  "Les manches gonflées jusqu'au coude, puis serrées sur l'avant-bras.",
+  "Les fronces du corsage qui convergent vers le milieu.",
+  "Les bouquets de fleurs roses et rouges semés sur le fond clair.",
+  "Les volutes crème piquetées de petits points.",
+  "Le petit volant qui ferme chaque poignet.",
+]
+themes = ["romantisme", "manches à gigot", "coton imprimé", "fleurs", "amérique"]
+anecdote = """
+Les manches de ces années étaient si larges qu'on les soutenait parfois de \
+l'intérieur par de petits coussins ou des armatures attachées à l'épaule, pour \
+éviter qu'elles ne retombent."""
+salle = 3
+mur = "nord"
+place = 4
+largeur = 1.25
+
+[[oeuvres]]
+titre = "Robe de bal de tulle à crinoline"
+artiste = "Couturières anonymes"
+annee = "1856–1859"
+image = "robe-de-bal-a-crinoline.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/126927"
+technique = "Soie et tulle de soie, dentelle noire, portée sur une crinoline (Amérique ou Europe)"
+collection = "Metropolitan Museum of Art, New York (Costume Institute)"
+note = "Un nuage de tulle ivoire rayé de dentelle noire : la crinoline d'acier permet des jupes de bal immenses et légères."
+description = """
+La robe forme une cloche énorme, dont la jupe touche le sol tout autour. Le \
+corsage, serré et pointu à la taille, laisse les épaules nues : il est barré de \
+bandes de tulle froncées, chacune bordée d'une fine dentelle noire, qui forment une \
+large berthe. Les manches sont de simples bouillons de tulle. Sur la jupe, le tulle \
+ivoire tombe en voiles transparents au-dessus d'un fond de soie. Le bas est couvert \
+de nombreux volants étagés, eux aussi bordés de dentelle noire, qui dessinent des \
+lignes horizontales tout autour de la robe. Par-dessus, une grande bande de tulle \
+dessine un zigzag en forme de M, comme une guirlande posée sur la jupe."""
+evocation = """
+Vers 1856, une invention change la silhouette : la crinoline-cage, faite de \
+cerceaux d'acier souples reliés par des rubans. Elle remplace les épais jupons de \
+crin et d'amidon et permet des jupes plus larges que jamais, mais légères. Les \
+robes de bal en profitent : on y superpose des mètres de tulle et de gaze, qui \
+semblent flotter autour de la danseuse. Le contraste de l'ivoire et du noir, la \
+dentelle en zigzag et les volants donnent du mouvement à une forme pourtant fixe. \
+C'est l'époque du Second Empire en France, des bals des Tuileries autour de \
+l'impératrice Eugénie, et des valses de Strauss à Vienne : la jupe en cloche \
+tournoie à chaque pas."""
+histoire = """
+Le Metropolitan Museum décrit cette robe comme américaine ou européenne : son lieu \
+de fabrication exact n'est pas connu, pas plus que le nom de la couturière. Le \
+tulle de soie était alors fabriqué à la machine en France et en Angleterre, et les \
+robes de bal suivaient de près la mode de Paris, de chaque côté de l'Atlantique. \
+La robe, en deux pièces, corsage et jupe, a été offerte au Costume Institute en \
+1969 par Mary Pierrepont Beckwith, avec d'autres robes de bal du XIXᵉ siècle. Un \
+tulle si fin est très fragile : qu'il soit parvenu jusqu'à nous en si bon état est \
+rare pour une robe de cette époque."""
+facture = """
+Une telle robe se construit en couches. Dessous, la crinoline donne la forme ; \
+par-dessus, un jupon de soie cache les cerceaux ; puis viennent les voiles de \
+tulle, montés à fronces sur la taille. Les volants du bas sont faits de bandes de \
+tulle froncées et cousues en rangs serrés, chacune bordée d'une dentelle noire au \
+fuseau ou à la machine. Le grand zigzag est une bande rapportée, épinglée puis \
+cousue sur la jupe. Le corsage, lui, est solide : doublé et baleiné, il porte \
+la berthe de tulle comme une collerette et serre la taille en pointe, ce qui fait \
+paraître la jupe plus large encore."""
+details = [
+  "La berthe de tulle froncée, bordée de dentelle noire, sur les épaules.",
+  "La pointe du corsage qui s'enfonce dans la jupe.",
+  "Le grand zigzag de dentelle noire posé sur la jupe.",
+  "Les volants étagés du bas, comme des vagues régulières.",
+  "La transparence du tulle ivoire sur le fond de soie.",
+]
+themes = ["second empire", "crinoline", "tulle", "bal", "dentelle"]
+anecdote = """
+Le mot « crinoline » vient du crin de cheval, que l'on tissait avec du lin pour \
+raidir les jupons. Le nom est resté à la cage d'acier qui les a remplacés."""
+salle = 3
+mur = "nord"
+place = 7
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Robe à tournure rayée"
+artiste = "Couturières anonymes"
+annee = "1885–1888"
+image = "robe-a-tournure.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/157306"
+technique = "Coton et soie (États-Unis)"
+collection = "Metropolitan Museum of Art, New York (Brooklyn Museum Costume Collection)"
+note = "Vue de profil, la robe projette tout son volume en arrière : c'est la tournure des années 1880, en rayures bleu marine."
+description = """
+Le mannequin est vu de profil. La robe est taillée dans une étoffe à larges rayures \
+bleu marine et crème. Le corsage, très ajusté, monte jusqu'au cou, où un col \
+droit de soie prune se ferme sur un nœud ; les manches longues et étroites suivent \
+le bras. Sur la jupe de dessous, plissée à plis plats, les rayures courent à \
+l'horizontale. Par-dessus, une surjupe drapée remonte sur la hanche en gros plis \
+arrondis, puis rejoint l'arrière. Là, au bas du dos, la robe forme une avancée \
+presque horizontale, comme une étagère, d'où un long pan de rayures verticales \
+tombe jusqu'au sol. Le devant est plat ; tout le volume est derrière."""
+evocation = """
+Après la cloche de la crinoline, l'ampleur des jupes se déplace vers l'arrière à \
+partir de la fin des années 1860. Dans les années 1880, cette « tournure » revient \
+plus raide et plus saillante que jamais : le bas du dos s'avance comme un plateau. \
+Devant, la jupe est plate et étroite ; de profil, la femme dessine une ligne \
+cambrée, presque architecturale. Les rayures en jouent : verticales sur le corsage \
+et le pan arrière, horizontales sur la jupe plissée, elles soulignent chaque \
+volume. Le bleu marine et le crème, le col montant et les manches serrées donnent à \
+cette robe de jour un air net et presque sportif, qui convient aux promenades et \
+aux villégiatures."""
+histoire = """
+Cette robe a été faite aux États-Unis entre 1885 et 1888 ; on ne connaît ni la \
+couturière ni la cliente. Elle se compose de deux pièces, le corsage et la jupe. \
+Elle a été offerte en 1960 au Brooklyn Museum par H. Dunscombe Colt. En 2009, le \
+Brooklyn Museum a confié au Metropolitan Museum toute sa collection de costumes, \
+qui est désormais conservée au Costume Institute. À cette époque, les patrons de \
+couture publiés par les journaux de mode et la machine à coudre, répandue depuis \
+les années 1850, permettent à beaucoup de femmes de suivre la mode, chez une \
+couturière ou chez elles."""
+facture = """
+La forme ne tient pas toute seule : sous la jupe, la femme attache à sa taille une \
+tournure, petit coussin rembourré ou armature de lames d'acier, qui projette \
+l'arrière de la robe. La couturière a ensuite drapé la surjupe autour de ce \
+volume, en relevant l'étoffe par des points cachés pour former les gros plis de la \
+hanche. Le jeu des rayures demande une coupe précise : la même étoffe est taillée \
+dans le droit fil pour le corsage et le pan arrière, et en travers pour la jupe \
+plissée, afin que les rayures changent de sens d'une pièce à l'autre. Le corsage, \
+doublé et baleiné, se ferme devant."""
+details = [
+  "Le col droit de soie prune, fermé par un nœud.",
+  "L'avancée de la tournure, au bas du dos.",
+  "Les rayures horizontales de la jupe plissée.",
+  "Le long pan de rayures verticales qui tombe derrière.",
+  "Les gros plis drapés sur la hanche.",
+]
+themes = ["tournure", "rayures", "drapé", "années 1880", "silhouette"]
+anecdote = """
+Certaines tournures des années 1880 étaient faites de lames d'acier articulées, \
+qui se repliaient quand on s'asseyait et reprenaient leur forme quand on se \
+relevait."""
+salle = 3
+mur = "nord"
+place = 9
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Robe de thé"
+artiste = "Maison Worth"
+annee = "1894"
+image = "robe-de-the-worth.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/159189"
+technique = "Soie façonnée, soie et coton, dentelle ; maison Worth, Paris"
+collection = "Metropolitan Museum of Art, New York (Brooklyn Museum Costume Collection)"
+note = "Une robe pour recevoir chez soi à l'heure du thé : ample, à traîne, dans une soie façonnée argentée de la maison Worth."
+description = """
+Le mannequin, coiffé de boucles relevées, se tient de profil, un éventail peint à \
+la main. Sa robe semble tomber des épaules jusqu'au sol en une seule nappe, sans \
+taille marquée, et s'allonge derrière en une traîne qui s'étale en plis. L'étoffe, \
+argentée et crème, est couverte d'un motif répété de palmettes en éventail, tissées \
+dans la soie. Les épaules sont couvertes d'un large col de dentelle écrue ; les \
+manches, très gonflées jusqu'au coude, sont ornées de nœuds de ruban vert pâle et \
+crème. Par l'ouverture du devant, on aperçoit une soie lisse vert d'eau. Des gants \
+blancs montent jusqu'au coude."""
+evocation = """
+La robe de thé apparaît dans les années 1870 en Angleterre et en France. C'est une \
+robe d'intérieur que l'on porte en fin d'après-midi pour recevoir, autour du thé, \
+des amis intimes, entre la toilette de jour et celle du dîner. Plus libre que les \
+robes de ville, elle se porte avec un corset moins serré et tombe souplement des \
+épaules : elle évoque les robes amples des peintres préraphaélites et le goût \
+artistique de ce temps. Pourtant, chez Worth, elle reste une robe de luxe, faite \
+d'une soie précieuse et ornée de dentelle. Les manches gonflées, à la mode en 1894, \
+rappellent qu'elle suit malgré tout la silhouette de son époque."""
+histoire = """
+Charles Frederick Worth, Anglais installé à Paris, a fondé sa maison rue de la Paix \
+en 1858 et inventé le métier de grand couturier : il présente ses modèles sur des \
+mannequins vivants et signe ses robes d'une étiquette. En 1894, un an avant sa \
+mort, ses fils Gaston et Jean-Philippe dirigent déjà largement la maison. Cette \
+robe a été offerte au Brooklyn Museum en 1931 par la princesse Viggo, selon le vœu \
+des demoiselles Hewitt, Sarah et Eleanor, fondatrices du musée de design devenu le \
+Cooper Hewitt à New York. Avec la collection de costumes du Brooklyn Museum, elle \
+est conservée depuis 2009 au Costume Institute du Metropolitan Museum."""
+facture = """
+La maison Worth travaille en étroite relation avec les soyeux de Lyon, qui tissent \
+pour elle des étoffes façonnées aux motifs souvent dessinés exprès. Ici, le motif \
+de palmettes, en fils clairs sur un fond plus sombre, est tissé dans l'étoffe et \
+change d'éclat selon la lumière. La coupe en longs panneaux, sans taille marquée, \
+laisse la soie tomber des épaules à la traîne, pour que le motif reste continu. Le dessous vert d'eau, visible devant, crée un contraste de \
+couleur. Les manches sont montées à fronces sur l'épaule, et la dentelle du col est \
+rapportée à la main."""
+details = [
+  "Le motif de palmettes en éventail, tissé dans la soie.",
+  "Le large col de dentelle écrue sur les épaules.",
+  "Les nœuds de ruban vert pâle sur les manches.",
+  "La soie vert d'eau aperçue par l'ouverture du devant.",
+  "La traîne qui s'étale en plis sur le sol.",
+]
+themes = ["robe d'intérieur", "worth", "soie façonnée", "dentelle", "belle époque"]
+anecdote = """
+L'heure du thé de l'après-midi, « afternoon tea », se répand en Angleterre au \
+milieu du XIXᵉ siècle. On attribue souvent son invention à Anna, duchesse de \
+Bedford, qui trouvait trop long le temps entre le déjeuner et le dîner."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.25
+
+[[oeuvres]]
+titre = "Robe de bal aux épis de blé"
+artiste = "Maison Worth"
+annee = "1900"
+image = "robe-de-bal-worth.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/155944"
+technique = "Satin de soie brodé, strass, dentelle et tulle ; maison Worth, Paris"
+collection = "Metropolitan Museum of Art, New York (Brooklyn Museum Costume Collection)"
+note = "Du satin rose où montent des épis brodés et pailletés : une robe de bal de la maison Worth en l'an 1900."
+description = """
+La robe est en satin rose pâle, lisse et brillant. Le corsage, très ajusté, \
+descend en pointe sur le devant de la jupe ; le décolleté, asymétrique, est voilé \
+de tulle gris pâle et bordé d'une dentelle écrue qui forme aussi les petites \
+manches. La jupe, lisse sur les hanches, s'évase vers le bas en corolle et \
+s'étale derrière en une longue traîne. Sur le devant, deux grandes tiges brodées \
+montent de l'ourlet vers la taille, chargées d'épis de blé dorés ; d'autres épis \
+traversent le corsage en biais et se dispersent sur la traîne. Les broderies \
+scintillent : des strass sont pris dans les fils dorés."""
+evocation = """
+En 1900, l'année de l'Exposition universelle de Paris, la robe de bal est au \
+sommet du luxe. La silhouette est celle de la Belle Époque : buste mis en avant, \
+taille étroite, jupe collée aux hanches et évasée en bas, comme une fleur \
+renversée. Les épis de blé, motif de la nature et de la moisson, répondent au \
+goût de l'Art nouveau pour les plantes, mais restent ici dessinés avec une grande \
+régularité. Le rose pâle et l'or, sous l'éclairage électrique qui gagne les salles \
+de bal, devaient briller de mille feux. Une telle robe se porte quelques soirs \
+seulement, pour les grands bals de la saison, à Paris, à Londres ou à New York."""
+histoire = """
+Après la mort de Charles Frederick Worth en 1895, la maison passe à ses fils : \
+Gaston s'occupe de la gestion, Jean-Philippe de la création. La maison habille \
+alors les cours d'Europe et la haute société américaine, dont les clientes \
+traversent l'Atlantique pour commander leur garde-robe à Paris. Cette robe a été \
+offerte au Brooklyn Museum en 1957 par la succession de Mrs. Arthur F. Schermerhorn, \
+d'une grande famille new-yorkaise. Elle se compose de deux pièces, le corsage et \
+la jupe. En 2009, avec toute la collection de costumes du Brooklyn Museum, elle a \
+rejoint le Costume Institute du Metropolitan Museum."""
+facture = """
+Le satin, tissé pour que la soie flotte à la surface, donne cette lumière lisse \
+et continue, que la broderie vient interrompre. Les épis sont brodés à la main en \
+fils dorés, avec des strass qui accrochent la lumière ; leurs \
+tiges, en longues lignes courbes, guident le regard du bas vers la taille. La jupe \
+est faite de lés taillés en pointe, étroits en haut et larges en bas, pour coller \
+aux hanches puis s'ouvrir. Le corsage est monté sur une doublure baleinée. Le tulle \
+gris et la dentelle du décolleté, drapés en biais, adoucissent la ligne nette du \
+satin."""
+details = [
+  "Les deux grandes tiges d'épis brodées sur le devant de la jupe.",
+  "Les épis posés en biais sur le corsage.",
+  "La dentelle écrue des petites manches.",
+  "Le tulle gris pâle qui voile le décolleté.",
+  "La traîne de satin, semée elle aussi d'épis.",
+]
+themes = ["belle époque", "bal", "worth", "broderie", "satin"]
+anecdote = """
+Les clientes de la maison Worth venaient parfois de très loin : les riches \
+Américaines faisaient le voyage de Paris pour y commander en une seule fois les \
+robes de toute une saison."""
+salle = 4
+mur = "nord"
+place = 5
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Robe du soir à décor géométrique"
+artiste = "Couturière anonyme, probablement Paris"
+annee = "1920"
+image = "robe-du-soir-1920.jpg"
+licence = "Domaine public"
+source = "https://www.rijksmuseum.nl/nl/collectie/BK-1973-364"
+technique = "Crêpe de Chine et satin de soie, broderie de cordonnet noir, or et argent ; longueur 107 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une robe droite, rouge et noire, sans taille marquée : en 1920, la robe du soir devient une surface géométrique."
+description = """
+La robe est droite, sans taille marquée, et s'arrête sous le genou. Le haut est en \
+crêpe de soie rouge corail, avec de petites manches courtes ; un col de satin noir \
+entoure l'encolure ronde et se noue devant en un nœud. Sur la poitrine, deux \
+bandes brodées en forme d'échelle descendent et se terminent en crochet. Plus bas, \
+un grand panneau rapporté occupe le devant : un treillis de cordonnet noir couvre \
+une zone crème, qui se termine par un bord découpé en créneaux, souligné d'or ; \
+sous lui vient une bande de satin noir. Une bande rouge, puis une jupe noire, \
+terminent la robe. Sur les côtés, des pans noirs tombent librement."""
+evocation = """
+Au lendemain de la Première Guerre mondiale, la robe change de logique. Le corps \
+n'est plus sculpté par un corset : la robe tombe droit des épaules, comme une \
+tunique, et le décor remplace la coupe. Ici, tout est affaire de surfaces et de \
+lignes : échelles, treillis, créneaux, bandes de couleurs franches, rouge, noir, \
+crème et or. Le Rijksmuseum rattache ce décor à un Jugendstil géométrique, celui \
+qui, de Vienne à Paris, a préparé l'Art déco. La robe se raccourcit déjà, \
+découvrant le bas des jambes. Ce style annonce la silhouette des années folles, \
+plate et rectiligne, que l'on retrouvera, plus courte encore, dans la robe de \
+danse voisine."""
+histoire = """
+On ignore qui a fait cette robe : le Rijksmuseum la donne à un atelier anonyme, \
+peut-être parisien, et la date de 1920. Le musée d'Amsterdam conserve une \
+importante collection de costumes, en grande partie néerlandais, qu'il expose par \
+roulement car la lumière abîme les étoffes. La robe y est entrée en 1973, achetée \
+avec le soutien d'une fondation de mécènes créée pour enrichir les collections du \
+musée. Elle témoigne de ces robes du soir de l'immédiat après-guerre, moins connues \
+que les grandes créations signées, mais qui montrent comment une maison de couture \
+ou une couturière suivait la mode nouvelle."""
+facture = """
+La robe est construite avec très peu de coupe : selon la notice du musée, c'est un \
+modèle droit, sans pinces, fait de quelques grands panneaux d'étoffe. Le travail \
+porte sur l'assemblage des matières et des couleurs. Le crêpe de Chine, souple et \
+mat, contraste avec le satin noir, lisse et brillant. Le décor est obtenu en \
+cousant à plat sur l'étoffe des cordonnets, petits cordons de soie noire, d'or et \
+d'argent, qui dessinent les échelles, le treillis et le bord crénelé : c'est une \
+broderie en relief, rapide à exécuter et très graphique. Le panneau du devant \
+flotte librement et bouge avec la marche."""
+details = [
+  "Le col de satin noir noué devant.",
+  "Les deux échelles brodées qui descendent sur la poitrine.",
+  "Le treillis noir sur fond crème.",
+  "Le bord crénelé, souligné d'un cordonnet doré.",
+  "Les pans noirs qui tombent sur les côtés.",
+]
+themes = ["années 1920", "géométrie", "crêpe de chine", "broderie", "robe droite"]
+anecdote = """
+Le crêpe de Chine, malgré son nom, n'a pas besoin de venir de Chine : c'est une \
+soie légère au grain fin, tissée avec des fils très tordus, que fabriquaient \
+notamment les soyeux de Lyon."""
+salle = 5
+mur = "nord"
+place = 1
+largeur = 1.05
+
+[[oeuvres]]
+titre = "Robe de danse pailletée"
+artiste = "Couturière anonyme, probablement France"
+annee = "vers 1926"
+image = "robe-de-danse-paillettes.jpg"
+licence = "Domaine public"
+source = "https://www.rijksmuseum.nl/nl/collectie/BK-1973-370-A"
+technique = "Tulle noir, crêpe de Chine, paillettes ; longueur 110 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une robe courte, sans manches, ruisselante de paillettes noires : la silhouette « garçonne » des années folles."
+description = """
+La robe s'arrête au genou. Sans manches, elle tombe droit depuis des épaules \
+étroites, avec une encolure ronde et profonde. Elle est faite de tulle noir \
+entièrement couvert de paillettes noires et argentées, cousues en lignes \
+verticales serrées, qui ruissellent comme une pluie de lumière. À la hauteur des \
+hanches, là où se place la taille de ces années, une large ceinture de fleurs \
+stylisées entoure la robe : grandes corolles roses, dorées et bleues, cernées de \
+volutes cuivrées et de points jaunes, toutes faites de paillettes. Sur les côtés, \
+sous les hanches, deux pans de tulle transparent s'évasent. L'ourlet est droit et \
+souligné d'une bande pailletée."""
+evocation = """
+Vers 1925, la femme des années folles, que l'on appelle en France la « garçonne », \
+se coupe les cheveux, raccourcit sa robe jusqu'au genou et efface sa taille. La \
+robe devient un simple fourreau droit, porté sans corset, qui laisse les bras et \
+les jambes libres pour danser le charleston et le fox-trot. Ce qu'elle perd en \
+coupe, elle le gagne en éclat : perles et paillettes couvrent l'étoffe et \
+scintillent à chaque mouvement sous les lumières des dancings. La ceinture de \
+fleurs, aux formes cernées et aux couleurs vives, appartient pleinement à l'Art \
+déco, célébré à Paris lors de l'Exposition internationale des arts décoratifs de \
+1925."""
+histoire = """
+Le Rijksmuseum décrit cette robe comme l'œuvre d'un atelier anonyme, peut-être \
+français, et la date des environs de 1926. Le musée l'appelle « robe du soir courte \
+ou robe de danse » : la longueur au genou et les pans qui s'ouvrent sur les côtés \
+étaient faits pour la danse. Elle est entrée au Rijksmuseum en 1973, achetée avec \
+le soutien d'une fondation de mécènes, en même temps que d'autres robes des années \
+1920. Ces robes pailletées étaient produites en grand nombre, à Paris et ailleurs, \
+souvent brodées dans des ateliers spécialisés. Leur poids et la fragilité du tulle \
+expliquent que peu d'entre elles soient parvenues jusqu'à nous en bon état."""
+facture = """
+La robe est presque un rectangle : la notice du musée la décrit comme un modèle \
+d'un seul tenant, sans manches, à la taille abaissée, avec un décolleté rond devant \
+et en U dans le dos. Toute la richesse est dans la broderie. Des milliers de \
+paillettes ont été cousues une à une sur le tulle, en rangs verticaux, pour \
+allonger la silhouette. Les fleurs de la ceinture sont construites en paillettes de \
+plusieurs couleurs, posées en cercles et en volutes. Le musée signale des \
+paillettes en matière synthétique. Sous les hanches, deux bandes de tulle froncées, \
+rapportées sur les côtés, donnent de l'ampleur au bas de la robe."""
+details = [
+  "Les rangs verticaux de paillettes, comme une pluie.",
+  "La ceinture de fleurs pailletées, posée sur les hanches.",
+  "Les corolles roses et dorées cernées de volutes cuivrées.",
+  "Les pans de tulle transparent qui s'évasent sur les côtés.",
+  "L'encolure ronde et les épaules étroites, sans manches.",
+]
+themes = ["années folles", "garçonne", "paillettes", "art déco", "danse"]
+anecdote = """
+Le mot « garçonne » a été popularisé par le roman de Victor Margueritte, La \
+Garçonne, paru en 1922, dont l'héroïne vit librement et porte les cheveux courts. \
+Le livre fit scandale."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 1.05
