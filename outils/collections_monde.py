@@ -530,6 +530,8 @@ def main():
     parser.add_argument("--total", type=int, default=50000, help="le nombre d'œuvres voulu")
     parser.add_argument("--musees", default=",".join(PARTS), help="chicago,cleveland,met,washington")
     parser.add_argument("--fils", type=int, default=24, help="téléchargements en parallèle")
+    parser.add_argument("--sans-grandes", action="store_true",
+                        help="ne pas écrire les paquets d'images en grand (le site n'en a pas besoin)")
     parser.add_argument("--minutes", type=float, default=0,
                         help="au plus tant de minutes pour les fiches (0 : sans limite)")
     args = parser.parse_args()
@@ -609,7 +611,7 @@ def main():
         # Les images en grand, bout à bout elles aussi, écrites au fil de l'eau (~1,8 Go au total).
         taille_grandes = 0
         with open(sortie / f"grandes-{c}.bin", "wb") as grandes:
-            for f in gardees[c]:
+            for f in ([] if args.sans_grandes else gardees[c]):
                 chemin = cache / f"grandes-{GRANDE}" / f"{f['i']}.jpg"
                 if chemin.exists():
                     octets_grande = chemin.read_bytes()

@@ -98,6 +98,28 @@ jobs:
           cargo run --locked --release -- export dist
           ls -R dist
 
+      # Les collections du monde (des dizaines de milliers d'œuvres du domaine public) : la
+      # page /monde/, ses données et ses vignettes. Le cache est celui de l'application iOS
+      # (même moisson) : seules les nouveautés se téléchargent. Sur la branche par défaut.
+      - uses: actions/cache/restore@v4
+        if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        with:
+          path: target/collections-cache
+          key: collections-v1-${{ github.run_id }}
+          restore-keys: collections-v1-
+
+      - name: Les collections du monde (site)
+        if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        continue-on-error: true
+        timeout-minutes: 150
+        run: |
+          python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
+            || python3 -m pip install --quiet --break-system-packages pillow
+          python3 outils/collections_monde.py --total 50000 --minutes 5 --sans-grandes \
+            --sortie target/monde --cache target/collections-cache
+          python3 outils/monde_web.py target/monde target/collections-cache/vignettes dist
+          du -sh dist dist/monde
+
       - name: Vérifier l'export
         run: |
           for f in index.html ajouter/index.html credits/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm \
