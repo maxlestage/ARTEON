@@ -1,0 +1,949 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXPOSITION « LA PHOTOGRAPHIE DEVIENT UN ART » D'ARTEON
+#
+#  Une exposition = ce fichier (expositions/<nom>.toml) + les images de ses
+#  œuvres dans public/tableaux/<nom>/ (ici public/tableaux/photographie-art/).
+#  Le nom du fichier donne l'adresse de l'exposition sur le site :
+#  /photographie-art.
+#
+#  Le mode d'emploi complet est sur la page « Ajouter une œuvre » du site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[exposition]
+ordre = 116
+nom_court = "La photographie, un art"
+mouvement = "Pictorialisme, Photo-Sécession et photographie documentaire"
+cadre = "blanc"
+couleur = "#4a4640"
+titre = "La photographie devient un art, 1880–1930"
+artiste = "Demachy, White, Eugene, Käsebier, Stieglitz, Hine, Johnston, Blossfeldt, Atget…"
+dates = "1899–1928"
+accroche = "Exposition virtuelle · Maison européenne de la photographie, Paris"
+introduction = """
+Vers 1890, n'importe qui peut prendre une photographie : l'appareil Kodak et les \
+plaques toutes prêtes ont mis le procédé entre toutes les mains. Pour se distinguer, \
+des amateurs passionnés, à Paris, Londres, Vienne ou New York, veulent faire de la \
+photographie un art à part entière, l'égal de la peinture et de la gravure : c'est le \
+pictorialisme. À New York, Alfred Stieglitz fédère ce combat autour de la \
+Photo-Sécession et de sa revue Camera Work. Dans le même temps, d'autres font de \
+l'appareil un instrument de vérité, pour dénoncer le travail des enfants ou montrer \
+les formes cachées des plantes, tandis que l'autochrome des frères Lumière apporte \
+enfin la couleur. La visite suit ce chemin en dix images, de 1899 à 1928. Le \
+bâtiment s'inspire de la Maison européenne de la photographie, installée dans un \
+hôtel particulier du Marais, à Paris."""
+vitrine = "la-main-de-l-homme.jpg"
+
+# ─── Le bâtiment ─────────────────────────────────────────────────────────────
+
+[musee]
+nom = "Maison européenne de la photographie (MEP)"
+ville = "Paris, France"
+architecte = "Yves Lion (restauration et aile contemporaine)"
+construction = "Début du XVIIIᵉ siècle (l'hôtel Hénault de Cantobre) ; musée ouvert en 1996"
+presentation = """
+La Maison européenne de la photographie occupe, rue de Fourcy, dans le quartier du \
+Marais, l'hôtel Hénault de Cantobre, un hôtel particulier du début du XVIIIᵉ siècle. \
+La Ville de Paris l'a fait restaurer et agrandir pour y installer un lieu consacré à \
+la photographie : l'architecte Yves Lion a conservé la demeure ancienne et lui a \
+ajouté une aile contemporaine, sobre et lumineuse. Le musée ouvre ses portes en 1996, \
+sous la direction de Jean-Luc Monterosso, qui avait déjà lancé à Paris le Mois de la \
+Photo. Il réunit aujourd'hui une collection de plus de vingt mille tirages, surtout \
+de la photographie contemporaine depuis les années 1950, une bibliothèque spécialisée \
+et un auditorium. Chaque saison, plusieurs expositions y présentent aussi bien les \
+grands noms du siècle que de jeunes photographes."""
+ici = """
+Le bâtiment d'ARTEON emprunte à la MEP son double visage, une demeure ancienne \
+prolongée par une aile moderne. On entre par le sud dans « Les salons de l'hôtel », \
+aux murs ivoire, où le pictorialisme de Demachy, White et Eugene imite la gravure et \
+la peinture. Au nord s'ouvre « La galerie de la Sécession », grise et haute de sept \
+mètres, où Käsebier et Stieglitz représentent New York. À l'ouest, « Le monde au \
+travail » réunit Hine et Frances Benjamin Johnston ; à l'est, « La nature et la \
+science » rapproche Blossfeldt et Atget. Au nord enfin, dans l'aile moderne, un petit \
+cabinet aux murs sombres, « La couleur », abrite un autochrome de Stieglitz."""
+
+# ─── Le plan du musée ────────────────────────────────────────────────────────
+# Inspiré de la Maison européenne de la photographie, à Paris : les salons d'un
+# hôtel particulier du Marais au sud, une galerie haute au centre, deux salles à
+# l'ouest et à l'est, et au nord un cabinet sombre, dans l'aile moderne, pour la
+# couleur. x et z : le centre de la salle (x vers l'est, z vers le sud), en
+# mètres ; une porte se déclare d'un seul côté.
+
+[[salles]]
+nom = "Les salons de l'hôtel"
+theme = "Le pictorialisme, 1900–1906 : Demachy, White et Eugene veulent que la photographie rivalise avec la gravure et la peinture."
+murs = "#ebe4d6"
+x = 0
+z = 0
+largeur = 14
+profondeur = 10
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La galerie de la Sécession"
+theme = "New York et la Photo-Sécession : la mère et l'enfant de Käsebier, la locomotive de Stieglitz."
+murs = "#d9d8d2"
+x = 0
+z = -11
+largeur = 14
+profondeur = 12
+hauteur = 7
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Le monde au travail"
+theme = "La photographie documentaire : une fileuse de huit ans photographiée par Hine, une école de couture vue par Frances Benjamin Johnston."
+murs = "#e3dccd"
+x = -13
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "La nature et la science"
+theme = "La prêle grossie vingt-cinq fois de Blossfeldt et les nymphéas d'Atget : la plante comme architecture et comme reflet."
+murs = "#dde2d6"
+x = 13
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "La couleur"
+theme = "L'autochrome des frères Lumière, mis en vente en 1907 : la première photographie en couleurs à la portée des amateurs."
+murs = "#5c5a63"
+x = 0
+z = -22
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+# ─── Les œuvres ──────────────────────────────────────────────────────────────
+
+[[oeuvres]]
+titre = "En Bretagne"
+artiste = "Robert Demachy"
+annee = "1904"
+image = "en-bretagne.jpg"
+licence = "Domaine public"
+source = "https://www.rijksmuseum.nl/nl/collectie/object/RP-F-2005-107-229--f163ce745e2e020104f624607e8dc96e"
+technique = "Héliogravure d'après une photographie, signée à la main ; image 12,9 × 19,8 cm, feuille 20,1 × 29,4 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une femme en grande coiffe blanche, assise sur les rochers face à un village côtier : une photographie qui a l'air d'un dessin."
+description = """
+Au premier plan, sur des rochers sombres, une femme est assise, vue de trois quarts \
+dos. Elle penche la tête ; une vaste coiffe blanche, bordée de dentelle et barrée \
+d'un ruban sombre, cache son visage, et un large col blanc couvre ses épaules. Sa \
+main repose sur ses genoux. Devant elle s'étend une anse d'eau pâle, presque lisse. \
+De l'autre côté, une ligne de maisons blanches aux toits sombres longe le rivage, \
+dominée par une cheminée d'usine. Le ciel n'est pas uniforme : il est strié de \
+grandes traces obliques, comme des coups de pinceau ou de crayon. Les rochers du \
+bas, granuleux, semblent frottés au fusain. Un filet sombre encadre l'image, et au \
+bas de la feuille Demachy a signé de son nom."""
+evocation = """
+L'image est construite comme un tableau de genre : une figure solitaire, une coiffe \
+qui dit la Bretagne, un paysage qui la prolonge. Mais rien n'y est raconté. La femme \
+tourne le dos au village et semble perdue dans une rêverie que l'on ne partagera \
+pas. Les peintres de Pont-Aven avaient fait de la Bretagne une terre de traditions \
+et de mélancolie ; Demachy en reprend le motif, avec les moyens de la photographie. \
+Les traces du ciel montrent surtout son programme : prouver que le photographe, \
+comme le graveur, intervient sur son image et y laisse sa main. Pour les \
+pictorialistes, c'est cette intervention, et non l'exactitude, qui fait de la \
+photographie un art."""
+histoire = """
+Demachy est, autour de 1900, la figure majeure du pictorialisme français. En 1894, il \
+participe à la fondation du Photo-Club de Paris, dont les salons annuels montrent la \
+photographie comme on montre la peinture. Il est aussi membre du Linked Ring de \
+Londres et de la Photo-Sécession de New York, où Stieglitz publie ses images dans \
+Camera Work. Ses épreuves, tirées à la gomme bichromatée, sont uniques ; pour les \
+diffuser, il les fait reproduire en héliogravure, une gravure tirée à l'encre qui en \
+garde les nuances. Cette épreuve, datée de 1904 et signée à la main, a été achetée \
+par le Rijksmuseum d'Amsterdam avec l'aide de plusieurs fonds de mécénat, pour sa \
+collection de photographies anciennes."""
+facture = """
+Demachy a popularisé le tirage à la gomme bichromatée, qu'il présente en 1897 avec \
+l'Anglais Alfred Maskell sous le nom de « photo-aquatinte ». Le papier est enduit \
+d'un mélange de gomme arabique, de pigment et de bichromate de potassium, qui durcit \
+à la lumière sous le négatif. Au dépouillement, à l'eau, la gomme restée tendre \
+s'en va : avec un pinceau ou un jet d'eau, le photographe peut alors éclaircir une \
+zone, effacer un détail, adoucir un contour. Les stries du ciel et le grain des \
+rochers viennent de ce travail. L'héliogravure reproduit fidèlement ces effets, \
+jusqu'aux traces de pinceau, dans un ton brun-gris proche de celui de l'original."""
+details = [
+  "La coiffe blanche bordée de dentelle, barrée d'un ruban sombre.",
+  "La main posée sur les genoux, éclairée dans l'ombre du col.",
+  "La cheminée d'usine qui dépasse des toits du village.",
+  "Les traces obliques qui strient le ciel comme des coups de pinceau.",
+  "La signature « Demachy », sous l'image, à droite.",
+]
+themes = ["bretagne", "pictorialisme", "gomme bichromatée", "rêverie", "rivage"]
+anecdote = """
+Demachy notait ses échecs : au dos d'un de ses tirages conservé à Cleveland, il a \
+écrit en anglais que la couche était trop épaisse, le bichromate insuffisant et le \
+dépouillement des clairs trop poussé. En 1914, il abandonne brusquement la \
+photographie et n'y revient plus."""
+salle = 1
+mur = "ouest"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "La Tonnelle (Julia Hall McCune)"
+artiste = "Clarence H. White"
+annee = "1906"
+image = "la-tonnelle.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1980.159"
+technique = "Épreuve au platine, 23,8 × 19,3 cm"
+collection = "Cleveland Museum of Art"
+note = "Une jeune femme sous une treille, le visage à moitié dans l'ombre : le portrait intime, à mi-voix, du pictorialisme américain."
+description = """
+Une jeune femme aux cheveux courts et sombres se tient sous une tonnelle. Elle \
+tourne la tête vers la droite et regarde au loin, les lèvres closes ; une ombre \
+coupe son visage, dont seule la moitié gauche reçoit la lumière. Elle porte un col \
+blanc fermé par une petite broche, un vêtement sombre et une bande d'étoffe qui \
+traverse le buste en diagonale. Ses mains, en bas de l'image, tiennent une grappe \
+que l'on devine être du raisin. En haut à gauche pendent de larges feuilles de \
+vigne, en silhouette sombre ; à droite, un poteau de bois. Derrière elle, le fond \
+est clair et flou, comme un ciel voilé. Toute l'image baigne dans des tons bruns et \
+gris très doux, sans noir profond ni blanc pur."""
+evocation = """
+White photographie surtout ses proches, chez eux ou dans la nature, à l'aube ou au \
+crépuscule. Ici, le décor est presque rien, une treille et un ciel pâle, et tout \
+tient au regard détourné du modèle. Le Cleveland Museum of Art y voit une jeune \
+femme perdue dans ses pensées, et la lumière douce qui baigne une partie de son \
+visage accentue cette humeur méditative. La grappe et les feuilles de vigne \
+évoquent l'automne, la saison des fruits mûrs, et peut-être le passage du temps. On \
+pense aux peintres américains de la même époque, comme Thomas Dewing, qui peignent \
+des femmes rêveuses dans des intérieurs ou des jardins silencieux. La photographie \
+n'y est plus un document : c'est un état d'âme."""
+histoire = """
+Julia Hall McCune, une amie de la famille White et son élève, est l'un de ses \
+modèles préférés. Il la photographie en 1906, l'année où il quitte Newark, dans \
+l'Ohio, où il était comptable dans une maison de commerce, pour s'installer à New \
+York. Membre fondateur de la Photo-Sécession en 1902, White expose alors dans tous \
+les grands salons d'Europe et d'Amérique. Il devient ensuite un professeur \
+influent, à l'université Columbia puis dans sa propre école. Le tirage a appartenu \
+au modèle lui-même, devenu Julia McCune Flory, avant d'entrer au Cleveland Museum \
+of Art en 1980 ; le musée conserve d'autres épreuves de White de même \
+provenance."""
+facture = """
+White, autodidacte, tire ses négatifs sur papier au platine, qu'il apprécie pour la \
+richesse de ses demi-teintes. Dans ce procédé, l'émulsion sensible est absorbée par \
+les fibres du papier : l'image se forme dans le papier lui-même, avec un aspect mat, \
+sans brillance, et une gamme de gris très étendue. La mise au point est \
+volontairement douce, sans netteté agressive, et le contre-jour enveloppe la \
+silhouette. La composition est soigneusement réglée : la diagonale de l'étoffe, la \
+verticale du poteau, les feuilles en haut à gauche qui répondent à la grappe en bas. \
+Après 1906, White se tournera aussi vers le papier au palladium, aux effets voisins."""
+details = [
+  "L'ombre qui partage le visage en deux.",
+  "La petite broche qui ferme le col blanc.",
+  "Les feuilles de vigne, en silhouette, en haut à gauche.",
+  "La grappe tenue à deux mains, au bas de l'image.",
+  "Le poteau de la tonnelle, sombre, sur le bord droit.",
+]
+themes = ["portrait", "pictorialisme", "platine", "rêverie", "automne"]
+anecdote = """
+L'école de photographie que White ouvre à New York en 1914 forme des élèves qui \
+deviendront célèbres, comme Dorothea Lange ou Margaret Bourke-White. White meurt en \
+1925 à Mexico, où il avait emmené ses étudiants photographier."""
+salle = 1
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Brigitta"
+artiste = "Frank Eugene"
+annee = "vers 1906"
+image = "brigitta.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/66703"
+technique = "Épreuve au platine, 12,2 × 16,7 cm"
+collection = "Art Institute of Chicago (Alfred Stieglitz Collection)"
+note = "Une petite fille en robe de soie, accoudée à une table couverte de brocart : un portrait d'enfant composé comme un tableau ancien."
+description = """
+Une fillette aux cheveux sombres, retenus par un nœud, est appuyée contre une table, \
+de profil, la tête tournée vers nous. Elle porte une robe de soie claire, très \
+ample, aux manches bouffantes, dont le devant est brodé de fleurs ; la jupe \
+s'étale sur le sol comme une corolle. La table est couverte d'une étoffe à grands \
+motifs de feuillages et de fleurs. Dessus, un petit bouquet et quelques objets \
+ronds, fruits ou boules, luisent dans la pénombre ; la fillette tient entre ses \
+mains un objet clair. À droite, une image à la japonaise, avec des iris et un \
+oiseau, est accrochée au mur sombre. Le fond se perd dans des bruns profonds, d'où \
+la robe ressort en pleine lumière."""
+evocation = """
+La grande robe raide, la table au tapis précieux, l'enfant sérieuse qui nous \
+observe : on pense aux portraits d'infantes de Velázquez, que les peintres de la fin \
+du XIXᵉ siècle admiraient tant. Mais le regard de Brigitta est d'une enfant réelle, \
+un peu intimidée par la pose. Eugene, peintre de formation, compose l'image avec la \
+liberté d'un tableau, en associant des étoffes, des fleurs et une estampe \
+japonaise, comme les esthètes de son temps. La photographie emprunte ici à la \
+peinture son vocabulaire, le décor, la lumière dorée, la pose, pour prouver qu'elle \
+peut produire, elle aussi, une œuvre d'art et non un simple souvenir de famille."""
+histoire = """
+Né à New York de parents allemands, Frank Eugene étudie la peinture à l'académie des \
+beaux-arts de Munich, puis se fait connaître à New York pour ses photographies. En \
+1902, il est l'un des membres fondateurs de la Photo-Sécession. Vers 1906, il \
+quitte les États-Unis pour l'Allemagne, où il passera le reste de sa vie. Une \
+inscription au dos de ce tirage donne le nom du modèle, « Brigitta Wenz ». \
+L'épreuve faisait partie de la collection personnelle d'Alfred Stieglitz ; après la \
+mort de celui-ci, en 1946, Georgia O'Keeffe répartit sa collection entre plusieurs \
+musées américains, et l'Art Institute of Chicago reçoit en 1949 un important \
+ensemble de photographies, dont celle-ci."""
+facture = """
+Eugene tire sur papier au platine, aux noirs veloutés et aux transitions douces. Il \
+est surtout connu pour une pratique qui choquait les puristes : il n'hésitait pas à \
+graver ses négatifs à l'aiguille, à les hachurer ou à les gratter, pour assombrir un \
+fond, adoucir un contour ou effacer un détail gênant. Ici, l'intervention reste \
+discrète : la lumière se concentre sur la robe et le visage, tandis que le fond et \
+les bords s'enfoncent dans l'ombre. Le format en largeur, rare pour un portrait, \
+laisse toute sa place au décor : la table à gauche, la jupe au centre, l'estampe à \
+droite forment une frise, à la manière d'une peinture décorative."""
+details = [
+  "Le nœud dans les cheveux de la fillette.",
+  "Les fleurs brodées sur le devant de la robe.",
+  "L'étoffe à grands feuillages qui couvre la table.",
+  "Le petit bouquet et les objets ronds posés sur la table.",
+  "L'image aux iris et à l'oiseau, accrochée à droite.",
+]
+themes = ["enfance", "portrait", "photo-sécession", "japonisme", "platine"]
+anecdote = """
+En 1913, Frank Eugene est nommé professeur de photographie artistique à l'académie \
+des arts graphiques de Leipzig, où il enseignait depuis 1907 : on considère que \
+c'est la première chaire de ce genre au monde."""
+salle = 1
+mur = "sud"
+place = 4
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Bénie entre toutes les femmes"
+artiste = "Gertrude Käsebier"
+annee = "1899"
+image = "benie-entre-toutes-les-femmes.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/103529"
+technique = "Héliogravure, publiée en 1901 dans le portfolio American Pictorial Photography, série II (exemplaire 34/150) ; 23,7 × 14,1 cm"
+collection = "Art Institute of Chicago"
+note = "Une mère vêtue de blanc pousse doucement sa fille vers le seuil : l'image la plus célèbre de Gertrude Käsebier."
+description = """
+L'image, haute et étroite, est cadrée par les montants d'une porte. Dans \
+l'ouverture, une petite fille se tient debout, de face, les bras le long du corps. \
+Elle porte une robe sombre serrée par une ceinture à boucle, des manchettes et un \
+col blancs, un grand nœud sous le menton ; ses cheveux sont coupés au carré, et \
+elle regarde droit vers nous, avec gravité. Derrière elle, une femme vêtue d'une \
+longue robe blanche et ample se penche vers elle et pose la main sur son épaule ; \
+on ne voit d'elle qu'un profil perdu. Au fond, au mur, une image encadrée laisse \
+deviner des figures drapées. Le sol de planches, au premier plan, mène au seuil."""
+evocation = """
+Le titre reprend les mots de l'Ave Maria, « Tu es bénie entre toutes les femmes », \
+et donne à une scène domestique la dignité d'un tableau religieux : la mère en \
+blanc, penchée, rappelle une Vierge ou un ange de l'Annonciation. Mais l'image parle \
+aussi du moment où l'enfant quitte la protection maternelle pour franchir le seuil \
+et entrer dans le monde. Le contraste est saisissant entre la mère, tout en blanc et \
+en douceur, et la fillette, sombre, droite, déjà un peu raidie face à ce qui \
+l'attend. Käsebier, devenue mère elle-même, a fait de la maternité le grand sujet de \
+son œuvre, sans mièvrerie, avec ce mélange de tendresse et de gravité."""
+histoire = """
+Käsebier réalise l'image en 1899, peu après avoir ouvert son atelier de portraitiste \
+à New York. On identifie ses modèles à Agnes Lee et à sa fille Peggy. Stieglitz \
+remarque vite son travail : en 1902, elle est membre fondatrice de la \
+Photo-Sécession, et le premier numéro de Camera Work, en \
+janvier 1903, est en grande partie consacré à ses photographies. Cette héliogravure \
+vient du portfolio American Pictorial Photography, publié à New York en 1901, dans \
+l'entourage du Camera Club, dont Stieglitz anime alors la revue Camera Notes. Tiré à \
+cent cinquante exemplaires, il diffusait les œuvres des pictorialistes américains."""
+facture = """
+Käsebier a d'abord étudié la peinture, et cela se voit dans la construction de \
+l'image : les montants de la porte forment un cadre dans le cadre, l'image \
+accrochée au fond répond aux personnages, et le grand blanc de la robe maternelle \
+équilibre le noir de la petite robe. La lumière, venue de l'arrière, auréole la mère \
+et laisse l'enfant dans un modelé doux. La mise au point, sans dureté, fond les \
+contours. L'héliogravure, procédé de gravure en creux tiré à l'encre, permettait de \
+reproduire ces nuances avec une grande fidélité : pour les pictorialistes, c'était \
+une manière à part entière de publier une photographie, et non une simple copie."""
+details = [
+  "Les montants de la porte, qui encadrent la scène.",
+  "Le grand nœud sous le menton de la fillette.",
+  "La boucle claire de sa ceinture.",
+  "La main de la mère posée sur l'épaule de l'enfant.",
+  "L'image encadrée au mur du fond, aux figures drapées.",
+]
+themes = ["maternité", "seuil", "enfance", "photo-sécession", "sacré"]
+anecdote = """
+En 1899, une autre image de mère et d'enfant de Käsebier, La Crèche (The Manger), se \
+vend cent dollars : c'était alors le prix le plus élevé jamais payé pour une \
+photographie."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "La Main de l'homme"
+artiste = "Alfred Stieglitz"
+annee = "1902"
+image = "la-main-de-l-homme.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/66749"
+technique = "Héliogravure, 24,2 × 31,8 cm"
+collection = "Art Institute of Chicago (Alfred Stieglitz Collection)"
+note = "Une locomotive crache sa fumée noire au milieu d'un faisceau de rails luisants : la ville industrielle devient un sujet d'art."
+description = """
+Au centre de l'image, une locomotive avance vers nous, crachant un énorme panache de \
+fumée noire qui monte droit dans un ciel gris et nuageux. Autour d'elle, des \
+dizaines de rails se croisent, se séparent et se courbent ; mouillés, ils brillent \
+comme des fils d'argent dans la lumière basse. À gauche se dressent des poteaux \
+télégraphiques et leurs fils, à droite de grands bâtiments sombres, entrepôts ou \
+réservoirs, et au loin des cheminées d'usine noyées dans la brume. Aucun être \
+humain n'est visible. Les tons vont du noir profond de la fumée aux gris argentés \
+des rails, dans une teinte brun-vert d'encre d'imprimerie. Un mince filet clair \
+encadre l'image."""
+evocation = """
+Le titre est ironique et grave à la fois : la « main de l'homme », ce n'est pas un \
+artisan, c'est le paysage entier façonné par l'industrie, rails, fils et fumées. \
+Pourtant Stieglitz ne dénonce rien. Une note de Camera Work présentait l'image comme \
+une tentative de traiter en artiste un sujet si présent dans la vie quotidienne qu'on \
+en oublie qu'il peut être beau. La locomotive solitaire, le panache, le \
+miroitement des rails font du triage un paysage romantique, comparable aux marines \
+ou aux forêts des pictorialistes. Au tournant du siècle, l'image annonce la grande \
+affaire de la photographie moderne : trouver l'art dans la ville, la machine et le \
+monde ordinaire."""
+histoire = """
+Stieglitz prend la photographie en 1902, depuis l'arrière d'un train en marche ; on \
+situe la scène dans les voies ferrées de Long Island City, face à Manhattan. La même \
+année, il fonde à New York la Photo-Sécession, un groupe de photographes qui veulent \
+faire reconnaître leur art. En janvier 1903, l'image paraît dans le premier numéro \
+de Camera Work, la revue luxueuse qu'il dirigera jusqu'en 1917. Cette héliogravure \
+appartenait à Stieglitz lui-même ; Georgia O'Keeffe, sa veuve, l'a donnée en 1949 à \
+l'Art Institute of Chicago avec une grande partie de sa collection. Elle a été \
+montrée en 2000 au Grand Palais, à Paris, dans l'exposition « 1900 »."""
+facture = """
+Pour saisir la scène depuis le train, Stieglitz utilise un appareil tenu à la main, \
+plus léger que la chambre sur trépied. La lumière rasante, prise à contre-jour, \
+fait briller les rails et détache la fumée sur le ciel. La composition repose sur la \
+perspective des voies, qui convergent vers la locomotive, et sur l'opposition entre \
+la masse noire de la fumée et le réseau fin des rails. L'héliogravure, gravure en \
+creux tirée à l'encre, était pour Stieglitz un moyen d'expression à part entière : \
+il en surveillait de près le tirage, et les planches de Camera Work étaient \
+considérées comme des œuvres originales."""
+details = [
+  "Le panache de fumée noire, au centre, qui monte jusqu'en haut de l'image.",
+  "Les rails mouillés qui brillent au premier plan.",
+  "Les poteaux télégraphiques et leurs fils, à gauche.",
+  "Les grands bâtiments sombres, à droite.",
+  "Les cheminées d'usine perdues dans la brume, au loin.",
+]
+themes = ["chemin de fer", "industrie", "new york", "fumée", "modernité"]
+anecdote = """
+Dans Camera Work, les héliogravures n'étaient pas imprimées sur la page : chacune \
+était tirée à part, sur un papier très fin, puis collée à la main dans la revue, \
+numéro après numéro."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Sadie Pfeifer, fileuse aux filatures de Lancaster"
+artiste = "Lewis Hine"
+annee = "1908"
+image = "sadie-pfeifer.jpg"
+licence = "Domaine public"
+source = "https://www.loc.gov/pictures/item/2018674894/"
+technique = "Épreuve photographique d'époque de la collection du National Child Labor Committee, aux coins coupés"
+collection = "Library of Congress, Washington (collection du National Child Labor Committee)"
+note = "Une fillette de 1,22 mètre devant un métier à filer qui semble ne jamais finir : la photographie comme arme contre le travail des enfants."
+description = """
+Une longue allée s'enfonce dans une salle d'usine. À gauche, un métier à filer \
+s'étire jusqu'au fond de l'image : des rangées de bobines blanches, des fils, des \
+rouleaux métalliques. À droite, un mur de briques est percé de hautes fenêtres aux \
+rideaux relevés, par lesquelles entre une lumière laiteuse. Au milieu de l'allée, \
+une fillette en robe longue et tablier, les cheveux clairs tombant sur les épaules, \
+tend les deux mains vers le métier. Elle porte des bottines, et une poche de son \
+tablier est gonflée. Au fond, une autre enfant se tient debout, toute petite. Des \
+ampoules nues pendent du plafond. Les coins du tirage sont coupés en biais."""
+evocation = """
+L'image est simple et implacable : la machine, immense et répétitive, occupe toute \
+la moitié gauche ; l'enfant, minuscule, s'y attache comme une pièce de plus. Hine ne \
+montre ni larmes ni misère spectaculaire. Il laisse la perspective faire le travail : \
+le métier qui fuit à perte de vue dit la longueur des journées, la monotonie du \
+geste et l'absurdité de confier à une enfant une tâche d'adulte. La légende complète \
+la démonstration, avec la taille de Sadie, cent vingt-deux centimètres, et la durée \
+de son emploi, six mois déjà. Hine appelait cela la photographie d'interprétation : \
+une image exacte, mais composée pour émouvoir et convaincre."""
+histoire = """
+Hine prend cette photographie le 30 novembre 1908 aux Lancaster Cotton Mills, en \
+Caroline du Sud. Sociologue de formation, il travaille alors pour le National Child \
+Labor Committee, une association qui lutte pour l'interdiction du travail des \
+enfants. Pendant une dizaine d'années, il parcourt les États-Unis, des filatures aux \
+mines et aux conserveries, et rapporte des milliers d'images publiées dans des \
+brochures, des revues et des expositions. Elles ont pesé dans le vote des lois \
+fédérales qui ont fini par encadrer le travail des enfants. Les archives du \
+comité, négatifs et tirages légendés, sont entrées à la Library of Congress, qui les \
+a numérisées."""
+facture = """
+Hine travaille avec une chambre sur trépied et un éclairage au magnésium quand la \
+lumière manque. Ici, la lumière des fenêtres suffit : elle glisse le long de \
+l'allée et découpe la silhouette de l'enfant. Le point de fuite, presque au centre, \
+creuse l'espace ; la fillette est placée au tiers de l'image, à la rencontre de la \
+machine et de la lumière. Hine notait avec soin le nom, l'âge, la taille et le lieu \
+de chaque enfant : ses légendes, recopiées sur des fiches, font partie de l'œuvre. \
+Cette épreuve d'époque, aux coins coupés, appartient aux albums du comité, où les \
+images étaient classées par industrie."""
+details = [
+  "Les rangées de bobines blanches du métier à filer, à gauche.",
+  "Les mains de la fillette, tendues vers les fils.",
+  "La poche gonflée de son tablier.",
+  "L'autre enfant, toute petite, au fond de l'allée.",
+  "Les ampoules nues qui pendent du plafond.",
+]
+themes = ["travail des enfants", "usine", "enfance", "documentaire", "réforme sociale"]
+anecdote = """
+Pour entrer dans les usines, Hine se faisait passer, selon les cas, pour un \
+inspecteur, un vendeur ou un photographe venu pour les machines. Il mesurait la \
+taille des enfants à l'aide des boutons de sa veste, dont il connaissait la hauteur."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Un cours de couture, Hampton Institute"
+artiste = "Frances Benjamin Johnston"
+annee = "1899"
+image = "cours-de-couture.jpg"
+licence = "Domaine public"
+source = "https://www.loc.gov/pictures/item/98502966/"
+technique = "Épreuve photographique d'époque, montée sur carton"
+collection = "Library of Congress, Washington (collection Frances Benjamin Johnston)"
+note = "Huit femmes apprennent à couper, essayer et coudre une robe : une salle de classe photographiée comme un tableau vivant."
+description = """
+Dans une grande salle claire, huit femmes s'affairent. À gauche, l'une est assise à \
+une machine à coudre à pédale, près d'une fenêtre aux rideaux de dentelle et de deux \
+mannequins habillés. Une autre, agenouillée, ajuste l'ourlet de la longue jupe \
+d'une jeune femme debout, immobile ; une troisième se tient devant un grand miroir \
+à trois pans. Au fond, une élève trace un patron au tableau noir, couvert de \
+mesures, « Neck 12½, Bust 36, Waist 22 », et de schémas de pièces de robe. À \
+droite, trois femmes en tablier travaillent autour d'une table ; l'une porte un \
+bonnet blanc. Un tapis à motifs couvre le plancher, et une ampoule nue pend du \
+plafond."""
+evocation = """
+L'image ne montre pas des travailleuses épuisées, mais des élèves qui apprennent un \
+métier, avec ordre, sérieux et dignité. C'est ce que voulait montrer l'école, et ce \
+que Johnston traduit par une composition très réglée, où chaque geste, mesurer, \
+tracer, épingler, coudre, a sa place, comme dans une frise. En 1899, l'enjeu est \
+considérable : dans une Amérique où la ségrégation se durcit, ces images affirment la \
+capacité et la respectabilité des Afro-Américains. Aujourd'hui, on les regarde aussi \
+avec un œil critique, car l'école préparait surtout ses élèves à des emplois \
+manuels. La photographie reste un témoignage rare sur leur visage et leur \
+présence."""
+histoire = """
+Le Hampton Institute, en Virginie, a été fondé en 1868 pour former d'anciens \
+esclaves et leurs enfants ; il accueille aussi des élèves amérindiens à partir de \
+1878. En 1899, l'école commande à Frances Benjamin Johnston, photographe établie à \
+Washington, une série d'images de ses cours et de ses ateliers. Elle en rapporte \
+un vaste ensemble de vues, dont une partie est montrée à \
+l'Exposition universelle de Paris en 1900, dans la section consacrée aux \
+Afro-Américains. Les tirages et négatifs de Johnston sont entrés à la Library of \
+Congress avec son fonds. Un album de ces images, retrouvé plus tard, a été publié en \
+1966 par le Museum of Modern Art de New York."""
+facture = """
+Johnston travaille avec une grande chambre sur trépied et des plaques de verre, qui \
+donnent une netteté parfaite d'un bord à l'autre. Elle dispose ses modèles avec \
+soin : les poses sont tenues, les gestes suspendus, et personne ne regarde \
+l'objectif. La lumière, venue des fenêtres de gauche, est douce et égale, sans \
+ombres dures, et permet de lire jusqu'aux chiffres écrits au tableau. Le point de vue, \
+légèrement en hauteur, embrasse toute la salle et donne à chaque groupe sa place. Le \
+tirage, aux gris nuancés et aux blancs crémeux, est monté sur un carton clair dont \
+on voit encore le bord."""
+details = [
+  "La machine à coudre à pédale, à gauche, et son pied en fonte ajourée.",
+  "L'élève agenouillée qui épingle l'ourlet d'une jupe.",
+  "Les mesures écrites à la craie au tableau : « Neck 12½, Bust 36, Waist 22 ».",
+  "Le grand miroir à trois pans, au centre gauche.",
+  "Le bonnet blanc de la femme qui travaille à droite de la table.",
+]
+themes = ["école", "couture", "afro-américains", "documentaire", "apprentissage"]
+anecdote = """
+Johnston avait étudié la peinture à l'académie Julian, à Paris. On raconte que son \
+premier appareil photographique lui fut offert par George Eastman, le fondateur de \
+Kodak, un ami de sa famille."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Equisetum hyemale, prêle d'hiver (planche 1 des Formes originelles de l'art)"
+artiste = "Karl Blossfeldt"
+annee = "1928"
+image = "equisetum-hyemale.jpg"
+licence = "Domaine public"
+source = "https://www.rijksmuseum.nl/nl/collectie/object/RP-F-2008-51-2170-1--ee765997f7a974327839ab7914b9aa30"
+technique = "Héliogravure rotative, planche 1 du livre Urformen der Kunst (Berlin, Ernst Wasmuth, 1928) ; feuille 31,2 × 24,2 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Une jeune pousse de prêle, grossie vingt-cinq fois, dressée comme une colonne cannelée ou une tour."
+description = """
+Sur un fond gris uni, une forme verticale occupe toute la hauteur de l'image. On \
+dirait une colonne ou une tour : un fût strié de fines cannelures parallèles, \
+divisé en étages par des anneaux dentelés, qui s'amincit vers le haut en une \
+coupole arrondie. Au sommet, une petite pointe effilochée se détache sur le ciel \
+gris. Chaque étage déborde légèrement sur celui du dessous, comme les tambours \
+d'une colonne ou les toits d'une pagode. La lumière vient de côté et modèle le \
+relief : les cannelures alternent creux sombres et arêtes claires. Il s'agit en fait \
+d'une jeune pousse de prêle d'hiver, une plante des lieux humides, photographiée \
+de tout près et agrandie vingt-cinq fois."""
+evocation = """
+Blossfeldt était professeur de modelage d'après les plantes vivantes dans une école \
+d'arts appliqués de Berlin. Pour lui, la nature est la première des architectes : \
+elle a inventé avant l'homme la colonne, la cannelure, le chapiteau, la volute. Le \
+titre du livre, Les Formes originelles de l'art, dit cette conviction. Placée en \
+tête de l'ouvrage, la prêle sert de démonstration : vue à cette échelle, une herbe \
+banale devient un monument. L'image fascine aussi par son ambiguïté, entre \
+précision scientifique et étrangeté. En 1928, le philosophe Walter Benjamin salue \
+ce livre, qui révèle selon lui un monde de formes que l'œil nu ne soupçonnait \
+pas."""
+histoire = """
+Blossfeldt photographie les plantes depuis les années 1890, d'abord pour ses cours, \
+afin de montrer à ses élèves la structure des tiges, des bourgeons et des feuilles. \
+Pendant plus de trente ans, il accumule des milliers de négatifs, sans songer à les \
+exposer. Le galeriste berlinois Karl Nierendorf les découvre, les expose en 1926, \
+puis publie en 1928, chez l'éditeur Ernst Wasmuth, Urformen der Kunst, un livre de \
+cent vingt planches qu'il préface. Le succès est immédiat, et l'ouvrage est vite \
+traduit. Cette planche, la première du livre, provient d'une édition en feuilles \
+achetée par le Rijksmuseum d'Amsterdam avec l'aide de plusieurs fonds de mécénat."""
+facture = """
+Blossfeldt construit lui-même ses appareils, capables d'agrandir les plantes jusqu'à \
+trente fois. Il prépare chaque spécimen avec soin, coupe les feuilles qui gênent, \
+le fixe sur un support et le place devant un fond neutre, gris ou blanc. La lumière, \
+latérale et égale, ne projette aucune ombre portée et fait ressortir le relief. Le \
+cadrage frontal et symétrique isole la forme comme un objet de musée. Ces principes, \
+netteté totale, frontalité, absence de décor, rejoignent ceux de la Nouvelle \
+Objectivité allemande des années 1920. L'héliogravure rotative, procédé \
+d'impression en creux de qualité, rend la finesse du grain de la tige."""
+details = [
+  "Les fines cannelures parallèles qui strient la tige.",
+  "Les anneaux dentelés qui séparent les étages.",
+  "La pointe effilochée, au sommet.",
+  "La lumière latérale qui fait saillir les arêtes.",
+  "Le fond gris uni, sans aucun décor.",
+]
+themes = ["plante", "botanique", "architecture", "nouvelle objectivité", "agrandissement"]
+anecdote = """
+Blossfeldt n'a jamais revendiqué le titre de photographe d'art : ses images étaient \
+pour lui des outils d'enseignement. C'est à plus de soixante ans qu'il devient \
+célèbre, quatre ans avant sa mort, avec ce premier livre."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Nymphéa"
+artiste = "Eugène Atget"
+annee = "1922–1923"
+image = "nymphea.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/2002.69"
+technique = "Épreuve sur papier albuminé, virée à l'or, 22,2 × 17,6 cm"
+collection = "Cleveland Museum of Art"
+note = "Un bassin couvert de nymphéas, entre ombre et reflets : Atget, à la fin de sa vie, au sommet de son art."
+description = """
+Un bassin occupe presque toute l'image. Au premier plan, de grandes feuilles rondes \
+de nymphéas flottent sur l'eau sombre, fendues jusqu'au centre, certaines \
+retroussées sur les bords ; entre elles s'ouvrent des fleurs claires aux pétales \
+pointus. Plus loin, d'autres îlots de feuilles et de fleurs dessinent des taches \
+claires sur l'eau, de plus en plus petites. Sur la droite, l'eau reflète le ciel \
+et devient presque blanche. Au fond, une berge de gazon, des touffes d'iris et des \
+massifs d'arbres sombres ferment l'horizon, sous un coin de ciel pâle. Parmi les \
+feuilles, une petite étiquette blanche de jardin botanique se dresse sur une tige. \
+Toute l'épreuve a une teinte brun violacé."""
+evocation = """
+Monet peint au même moment ses Nymphéas à Giverny ; Atget, lui, photographie un \
+bassin de parc, sans chercher à imiter la peinture. Sa vue a pourtant quelque chose \
+de méditatif : le regard glisse des grandes feuilles du premier plan vers le fond, \
+dans une profondeur calme, ponctuée de fleurs blanches. Le Cleveland Museum of Art \
+souligne comment la lumière du matin, avec ses ombres et ses reflets, permet à \
+Atget d'isoler des formes plates, presque abstraites, tout en gardant un espace \
+profond. L'étiquette botanique, minuscule, rappelle que le photographe documente \
+toujours le réel, même quand l'image tend vers la rêverie."""
+histoire = """
+Après trente ans passés à photographier les rues, les boutiques et les vieilles \
+demeures de Paris, Atget consacre ses dernières années aux parcs : Versailles, \
+Saint-Cloud, Sceaux. Ce bassin a sans doute été photographié dans le parc de \
+Bagatelle, à la lisière du bois de Boulogne, célèbre pour ses collections de \
+plantes. Atget vendait ses tirages aux artistes, aux bibliothèques et aux musées \
+de Paris. Peu connu de son vivant, il est révélé après sa mort, en 1927, par \
+l'Américaine Berenice Abbott, qui sauve une grande partie de son fonds. Cette \
+épreuve est passée chez un marchand de New York avant d'être achetée par le \
+Cleveland Museum of Art en 2002."""
+facture = """
+Atget travaille avec une lourde chambre de bois sur trépied et des plaques de verre \
+de 18 × 24 cm. Il tire ses épreuves par contact, sur papier albuminé, un papier à \
+base de blanc d'œuf déjà démodé dans les années 1920, puis les vire à l'or, ce qui \
+leur donne ces tons pourpres et bruns. La mise au point, nette sur les feuilles \
+flottantes, détaille leurs nervures et leurs déchirures. Le point de vue, assez \
+haut, bascule le plan de l'eau vers nous et fait du bassin une surface presque \
+verticale, comme un tapis. Les petites encoches noires sur les bords viennent sans \
+doute des pattes qui maintenaient la plaque dans son châssis."""
+details = [
+  "Les grandes feuilles fendues du premier plan, aux bords retroussés.",
+  "Les fleurs de nymphéas, aux pétales pointus, au centre.",
+  "La petite étiquette blanche dressée parmi les feuilles, à gauche.",
+  "Le reflet du ciel qui blanchit l'eau, à droite.",
+  "Les massifs d'arbres sombres qui ferment le fond.",
+]
+themes = ["jardin", "eau", "nymphéas", "reflet", "paris"]
+anecdote = """
+Sur la porte de son atelier, rue Campagne-Première, Atget avait inscrit « Documents \
+pour artistes » : il se voyait comme un fournisseur d'images pour les peintres et \
+les décorateurs, plutôt que comme un artiste."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Kitty Stieglitz"
+artiste = "Alfred Stieglitz"
+annee = "vers 1907"
+image = "kitty-stieglitz.jpg"
+cadre = "noir"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/77269"
+technique = "Autochrome (plaque de verre positive en couleurs), 17,9 × 12,7 cm (vue)"
+collection = "Art Institute of Chicago (Alfred Stieglitz Collection)"
+note = "La fille du photographe, des pommes rouges sur les genoux : la couleur entre dans la photographie, grâce aux frères Lumière."
+description = """
+Une fillette d'une dizaine d'années est assise dans un fauteuil de bois aux bras \
+tournés. Ses longs cheveux bruns tombent sur ses épaules, retenus par un grand nœud \
+sombre au sommet de la tête. Elle porte une robe à fines rayures, ornée de galons \
+tressés, avec un col montant et des manches blancs. Sur ses genoux s'amassent une \
+douzaine de pommes rouges, qu'elle retient de la main droite ; de l'autre bras, elle \
+tient une branche d'hortensia aux fleurs blanches et aux feuilles vertes. Une bague \
+brille à son doigt. Elle nous regarde, sérieuse, presque boudeuse. Le fond, \
+indistinct, passe du gris bleuté au mauve. Quelques points clairs, des poussières, \
+parsèment la plaque."""
+evocation = """
+Après près de soixante-dix ans de photographie en noir et blanc, \
+voici soudain un portrait photographique en couleurs : le rouge des pommes, le vert \
+des feuilles, le teint de l'enfant. L'effet a dû être saisissant pour Stieglitz, \
+qui photographie ici sa fille Kitty, née en 1898. Les pommes et les fleurs, \
+disposées comme dans une nature morte, montrent qu'il cherche les couleurs pour \
+elles-mêmes, en peintre. Pourtant la lumière douce et le grain de la plaque donnent \
+à l'image la tendresse floue d'un pastel. On y sent aussi l'intimité d'un album de \
+famille : la pose un peu contrainte de l'enfant, le fauteuil, la robe de tous les \
+jours."""
+histoire = """
+Les frères Auguste et Louis Lumière, à Lyon, brevettent l'autochrome en 1903 et le \
+mettent en vente en 1907. L'été de cette année-là, Stieglitz, qui se trouve en \
+Europe, découvre le procédé à Paris, où Edward Steichen s'y essaie aussi, puis \
+l'expérimente en Bavière avec ses amis Frank Eugene et Heinrich Kühn. De retour à New York, il \
+salue le procédé avec enthousiasme dans Camera Work et montre des autochromes dans \
+sa galerie de la Cinquième Avenue. Cette plaque appartenait à sa collection \
+personnelle, partagée après sa mort entre plusieurs musées américains : l'Art \
+Institute of Chicago la reçoit en 1949 avec un ensemble d'autochromes de \
+Stieglitz."""
+facture = """
+L'autochrome est une plaque de verre couverte de millions de grains de fécule de \
+pomme de terre teints en orange, vert et violet, qui servent de filtres colorés. Les \
+interstices sont bouchés au noir de carbone, puis on étend par-dessus une émulsion \
+sensible. Après l'exposition, faite à travers le verre, un développement inversé \
+donne une image positive unique, que l'on regarde par transparence, devant une \
+lumière ou dans une visionneuse. Les poses sont longues, plusieurs secondes au \
+moins, d'où l'immobilité du modèle. Vu de près, l'autochrome se résout en \
+une poussière de points colorés, qui donne aux couleurs leur douceur \
+caractéristique."""
+details = [
+  "Le grand nœud sombre dans les cheveux.",
+  "Les pommes rouges amassées sur la robe rayée.",
+  "La branche d'hortensia blanc, à gauche.",
+  "La bague au doigt de la main droite.",
+  "Les bras tournés du fauteuil de bois.",
+]
+themes = ["couleur", "autochrome", "enfance", "famille", "nature morte"]
+anecdote = """
+Un autochrome ne peut pas être tiré sur papier : chaque plaque est unique. Pour \
+montrer ces images à un public, Stieglitz et ses amis devaient les exposer \
+éclairées par derrière, ou les faire reproduire en couleurs par l'imprimerie, au \
+prix de grandes difficultés."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+# ─── Les artistes ────────────────────────────────────────────────────────────
+
+[[artistes]]
+nom = "Robert Demachy"
+vie = "Saint-Germain-en-Laye, 1859 – Hennequeville (Trouville), 1936"
+biographie = """
+Fils d'un banquier, Robert Demachy dispose d'une fortune qui lui permet de se \
+consacrer à ses passions : la musique, les automobiles, la littérature, l'art et, \
+dès les années 1870, la photographie. En 1894, il participe à la fondation du Photo-Club de \
+Paris, qui organise chaque année un salon de photographie artistique. Membre du \
+Linked Ring de Londres, puis de la Photo-Sécession de New York, il expose dans toute \
+l'Europe et aux États-Unis. Il est aussi un théoricien infatigable : il publie \
+cinq livres et plus de mille articles pour défendre la photographie comme art. En 1914, il cesse brusquement de photographier et se \
+consacre au dessin jusqu'à sa mort."""
+style = """
+Demachy est le maître des procédés dits pigmentaires, qui permettent d'intervenir à \
+la main sur le tirage : la gomme bichromatée, puis le tirage à l'huile. Il efface, \
+éclaircit et adoucit au pinceau, au point que ses images ressemblent à des sanguines, \
+des fusains ou des aquatintes. Ses sujets, danseuses, nus, portraits, paysages de \
+Bretagne et de Normandie, sont traités dans un esprit proche de la peinture de son \
+temps."""
+
+[[artistes]]
+nom = "Clarence H. White"
+vie = "Carlisle, Ohio, 1871 – Mexico, 1925"
+biographie = """
+Clarence Hudson White grandit dans l'Ohio, à Newark, où il est comptable. Il \
+commence à photographier en amateur en 1893 et, sans aucune formation, s'impose en \
+quelques années : remarqué par Stieglitz à Philadelphie en 1898, il expose au salon \
+du Linked Ring à Londres dès 1899, puis dans toutes les grandes expositions \
+internationales. Membre fondateur de la Photo-Sécession en 1902, il s'installe à \
+New York en 1906 et devient un enseignant recherché, à l'université Columbia et à \
+Brooklyn. En 1914, il fonde sa propre école de photographie, qui forme une \
+génération de photographes. Il meurt en 1925 au Mexique, pendant un voyage avec \
+ses élèves."""
+style = """
+White photographie surtout sa famille et ses amis, dans des intérieurs paisibles, \
+près d'une fenêtre, ou dehors à l'aube et au crépuscule. Ses images, tirées au \
+platine ou au palladium, sont d'une grande douceur de tons, construites avec \
+rigueur, souvent en contre-jour. Elles expriment une poésie de la vie quotidienne, \
+calme et méditative, qui marque tout le pictorialisme américain."""
+
+[[artistes]]
+nom = "Frank Eugene"
+vie = "New York, 1865 – Munich, 1936"
+biographie = """
+Frank Eugene Smith, fils d'immigrés allemands, naît à New York et part étudier la \
+peinture à l'académie des beaux-arts de Munich dans les années 1880. De retour aux \
+États-Unis, il mène de front la peinture et la photographie, et ses portraits \
+attirent l'attention de Stieglitz. Membre fondateur de la Photo-Sécession en 1902, il s'installe en Allemagne \
+vers 1906. Il enseigne la photographie à Leipzig à partir de 1907 et y est nommé \
+professeur en 1913. Il passe ses dernières années à Munich, où il meurt en 1936."""
+style = """
+Eugene est le plus peintre des photographes de la Sécession. Il ne se contente pas \
+de flouter ses images : il grave et hachure ses négatifs à l'aiguille, pour obtenir \
+des fonds vibrants comme des gravures. Ses portraits et ses scènes allégoriques, \
+tirés au platine, mêlent costumes, étoffes et décors anciens dans l'esprit de \
+l'Art nouveau et du symbolisme."""
+
+[[artistes]]
+nom = "Gertrude Käsebier"
+vie = "Des Moines, Iowa, 1852 – New York, 1934"
+biographie = """
+Née Gertrude Stanton, elle passe une partie de son enfance au Colorado, épouse en \
+1874 un homme d'affaires, Eduard Käsebier, et élève trois enfants à Brooklyn. À près \
+de quarante ans, elle entre au Pratt Institute pour étudier la peinture, puis se \
+tourne vers la photographie. Vers 1897, elle ouvre à New York un atelier de \
+portraitiste qui connaît un grand succès. Stieglitz la soutient : elle est membre \
+fondatrice de la Photo-Sécession en 1902, et le premier numéro de Camera Work lui \
+est largement consacré. Elle s'éloigne de Stieglitz vers 1912 et fonde en 1916, avec \
+Clarence White, l'association des Pictorial Photographers of America."""
+style = """
+Käsebier refuse les fonds peints et les accessoires des studios de son temps : elle \
+place ses modèles dans une lumière naturelle et simple. Ses portraits d'artistes, \
+comme Rodin, et ses images de mères et d'enfants, d'une grande tendresse, sont \
+composés avec un sens de la peinture et tirés au platine ou à la gomme, dans des \
+tons doux."""
+
+[[artistes]]
+nom = "Alfred Stieglitz"
+vie = "Hoboken, New Jersey, 1864 – New York, 1946"
+biographie = """
+Fils d'immigrés allemands, Alfred Stieglitz fait ses études d'ingénieur à Berlin, \
+où il découvre la photographie dans les années 1880. Rentré à New York en 1890, il \
+devient le grand défenseur de la photographie comme art : il dirige la revue Camera \
+Notes, fonde en 1902 la Photo-Sécession, puis publie de 1903 à 1917 Camera Work. En \
+1905, il ouvre avec Edward Steichen une galerie au 291 de la Cinquième Avenue, où il \
+montre aussi les premiers Matisse et Picasso exposés en Amérique. Il épouse en 1924 \
+la peintre Georgia O'Keeffe, dont il fait des centaines de portraits. Il meurt à \
+New York en 1946."""
+style = """
+D'abord pictorialiste, Stieglitz cherche dans les rues de New York, la neige, la \
+pluie et les machines des sujets pour une photographie moderne. Il évolue vers une \
+photographie directe, nette et sans manipulation, comme dans L'Entrepont en 1907, \
+puis vers les séries de nuages qu'il appelle « Équivalents ». Il fut aussi l'un des \
+premiers à s'enthousiasmer pour l'autochrome."""
+
+[[artistes]]
+nom = "Lewis Hine"
+vie = "Oshkosh, Wisconsin, 1874 – Dobbs Ferry, New York, 1940"
+biographie = """
+Après une jeunesse d'ouvrier, Lewis Wickes Hine étudie la sociologie et devient \
+professeur à l'Ethical Culture School de New York, où il se met à la photographie \
+pour ses cours. Vers 1905, il commence à photographier les immigrants qui débarquent \
+à Ellis Island. De 1908 à 1918 environ, il travaille pour le National Child Labor \
+Committee et parcourt tout le pays pour montrer les enfants au travail. Après la \
+Première Guerre mondiale, il photographie pour la Croix-Rouge en Europe, puis réalise \
+ses « portraits de travail », qui culminent avec la construction de l'Empire State \
+Building en 1930–1931. Il meurt dans la pauvreté en 1940."""
+style = """
+Hine se disait photographe d'interprétation : ses images sont exactes, mais \
+composées pour émouvoir. Il regarde les travailleurs, enfants ou adultes, en face, à \
+leur hauteur, avec respect, et accompagne chaque photographie d'une légende précise. \
+Son œuvre fonde la photographie documentaire et sociale américaine."""
+
+[[artistes]]
+nom = "Frances Benjamin Johnston"
+vie = "Grafton, Virginie-Occidentale, 1864 – La Nouvelle-Orléans, 1952"
+biographie = """
+Frances Benjamin Johnston étudie le dessin et la peinture à l'académie Julian, à \
+Paris, de 1883 à 1885, puis devient illustratrice et journaliste à Washington. Elle \
+se tourne vers la photographie et ouvre son atelier au début des années 1890. Elle \
+photographie les mineurs, les ouvrières, les écoles, et les présidents successifs à \
+la Maison-Blanche. En 1900, elle organise à Paris une exposition consacrée aux \
+femmes photographes américaines. Plus tard, elle se spécialise dans l'architecture et \
+consacre les années 1930 à un vaste inventaire photographique des maisons anciennes \
+du Sud des États-Unis. Elle meurt en 1952 à La Nouvelle-Orléans."""
+style = """
+Johnston est l'une des premières femmes photographes professionnelles des États-Unis \
+et l'une des premières reporters. Ses images, nettes et minutieusement composées, \
+disposent les personnages comme dans des tableaux vivants. Elles conjuguent le souci \
+du document et une grande élégance formelle."""
+
+[[artistes]]
+nom = "Karl Blossfeldt"
+vie = "Schielo, Harz, 1865 – Berlin, 1932"
+biographie = """
+Né dans un village du Harz, Karl Blossfeldt apprend le métier de modeleur dans une \
+fonderie d'art, puis étudie à l'école des arts décoratifs de Berlin. De 1890 à 1896, \
+il travaille en Italie, en Grèce et en Afrique du Nord avec le professeur Moritz \
+Meurer, qui fait réaliser des modèles de plantes pour l'enseignement de l'ornement. \
+À partir de 1898, il enseigne lui-même à Berlin le modelage d'après les plantes \
+vivantes, jusqu'en 1930. Ses photographies, faites pour ses cours, sont révélées en \
+1926 par le galeriste Karl Nierendorf, et le livre Urformen der Kunst le rend \
+célèbre en 1928. Il meurt à Berlin en décembre 1932."""
+style = """
+Blossfeldt photographie des tiges, des bourgeons, des feuilles et des graines, \
+isolés sur un fond neutre et très agrandis, avec une netteté parfaite. Ses images \
+révèlent dans les plantes des formes d'architecture et d'ornement : colonnes, \
+crosses, rosaces. Leur rigueur les rapproche de la Nouvelle Objectivité allemande, \
+et les surréalistes y ont vu des formes étranges et fascinantes."""
+
+[[artistes]]
+nom = "Eugène Atget"
+vie = "Libourne, 1857 – Paris, 1927"
+biographie = """
+Orphelin jeune, Eugène Atget est marin, puis comédien dans des troupes de province, \
+avant de s'essayer à la peinture. Vers 1890, il s'installe à Paris comme photographe \
+et vend aux artistes des « documents » : rues, façades, boutiques, petits métiers, \
+détails d'architecture. Pendant près de quarante ans, il constitue un immense \
+inventaire du vieux Paris, qu'il vend aux bibliothèques et aux musées de la ville, \
+puis photographie les parcs de Versailles, Saint-Cloud et Sceaux. Peu connu de son \
+vivant, il est découvert à la fin de sa vie par Man Ray et Berenice Abbott, qui \
+sauve son fonds après sa mort en 1927."""
+style = """
+Atget travaille avec un matériel lourd et démodé, une chambre de bois et des plaques \
+de verre, et tire ses épreuves sur papier albuminé. Ses images frontales, souvent \
+prises tôt le matin dans des rues désertes, semblent de simples documents ; mais \
+leur silence, leurs reflets et leur sens du lieu en ont fait l'un des modèles de la \
+photographie moderne."""
