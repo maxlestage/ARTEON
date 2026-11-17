@@ -148,7 +148,7 @@ async function fiche(id) {
       <div class="monde-image"><img id="monde-img" src="v/${id}.jpg" alt="${echapper(l[T])}"></div>
       <div>
         <h1>${echapper(l[T])}</h1>
-        <p class="monde-artiste"><a href="#/artiste/${encodeURIComponent(l[A])}">${echapper(l[A])}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
+        <p class="monde-artiste"><a href="../explorer/#/artiste/${encodeURIComponent(l[A])}" title="Le catalogue complet de l'artiste">${echapper(l[A])}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
         <dl class="monde-cartel">${faits.map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
         ${f.x ? `<div class="monde-texte"><p>${echapper(f.x)}</p>${m.cle === "chicago" ? `<p class="monde-note">Texte : Art Institute of Chicago, CC BY 4.0.</p>` : ""}</div>` : ""}
         <div class="monde-nav">

@@ -129,7 +129,7 @@ struct CollectionIndex: Sendable {
         searchText.reserveCapacity(collections.works.count)
         for (i, w) in collections.works.enumerated() {
             positions[w.id] = i
-            let artist = folded(w.artist)
+            let artist = ArtistKey.of(w.artist)
             searchText.append(folded(
                 "\(w.title) \(w.artist) \(w.date ?? "") \(w.medium ?? "") \(w.category ?? "") \(w.origin ?? "") \(w.museum)"
             ))
@@ -149,10 +149,27 @@ struct CollectionIndex: Sendable {
 
     var count: Int { collections.works.count }
 
-    /// Les noms des artistes des collections (sans « Artiste inconnu »), pour les compter
-    /// avec ceux des expositions.
-    var artistNames: Set<String> {
-        Set(collections.works.map(\.artist)).subtracting(["", "Artiste inconnu"])
+    /// Les clés des artistes des collections (sans « Artiste inconnu »), pour les compter
+    /// avec ceux des expositions (`ArtistKey`).
+    var artistKeys: Set<String> {
+        Set(byArtist.keys).subtracting(["", ArtistKey.of("Artiste inconnu")])
+    }
+
+    /// Les artistes des collections : leur clé, le nom le plus fréquent et leur nombre d'œuvres.
+    var artists: [(key: String, name: String, count: Int)] {
+        let unknown = ArtistKey.of("Artiste inconnu")
+        return byArtist.compactMap { key, indices in
+            guard !key.isEmpty, key != unknown else { return nil }
+            var names: [String: Int] = [:]
+            for i in indices { names[collections.works[i].artist, default: 0] += 1 }
+            let name = names.max { $0.value < $1.value || ($0.value == $1.value && $0.key > $1.key) }?.key ?? key
+            return (key, name, indices.count)
+        }
+    }
+
+    /// La première œuvre d'un artiste (pour sa vignette).
+    func firstWork(ofArtist key: String) -> CollectionWork? {
+        byArtist[key]?.first.map { collections.works[$0] }
     }
 
     func work(_ id: String) -> CollectionWork? {
@@ -177,7 +194,7 @@ struct CollectionIndex: Sendable {
         case .century(let rank):
             for w in all where w.year.map(centuryRank) == rank { if !add(w) { break } }
         case .artist(let name):
-            return (byArtist[folded(name)] ?? []).prefix(limit).map { all[$0] }
+            return (byArtist[ArtistKey.of(name)] ?? []).prefix(limit).map { all[$0] }
         case .search(let query):
             let words = folded(query.trimmingCharacters(in: .whitespacesAndNewlines))
                 .split(separator: " ").map(String.init)
@@ -196,7 +213,7 @@ struct CollectionIndex: Sendable {
         case .museum(let key): return collections.museum(key)?.count ?? 0
         case .category(let name): return categories.first { $0.name == name }?.count ?? 0
         case .century(let rank): return centuries.first { $0.rank == rank }?.count ?? 0
-        case .artist(let name): return byArtist[folded(name)]?.count ?? 0
+        case .artist(let name): return byArtist[ArtistKey.of(name)]?.count ?? 0
         case .search: return works(filter).count
         }
     }

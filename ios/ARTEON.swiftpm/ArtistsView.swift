@@ -1,20 +1,41 @@
 import SwiftUI
 
-/// Tous les artistes du musée, de A à Z, avec le nombre de leurs œuvres.
+/// Un artiste de la liste : celui d'une exposition (avec sa biographie), ou celui des
+/// collections du monde seulement ; les deux réunis par leur clé (`ArtistKey`).
+struct ArtistItem: Identifiable, Hashable, Sendable {
+    let id: String
+    let name: String
+    let line: String
+    let museumWorks: Int
+    let worldWorks: Int
+    var total: Int { museumWorks + worldWorks }
+
+    var initial: String {
+        let first = folded(name).first { $0.isLetter || $0.isNumber }.map(String.init)?.uppercased() ?? "#"
+        return first.first?.isLetter == true ? first : "#"
+    }
+}
+
+/// Tous les artistes : ceux des expositions et ceux des collections du monde, de A à Z,
+/// avec le nombre de toutes leurs œuvres.
 struct ArtistsView: View {
     let catalogue: Catalogue
 
     @Environment(CatalogueStore.self) private var store
     @State private var filter = ""
+    @State private var all: [ArtistItem] = []
 
-    private var artists: [ArtistEntry] {
-        let all = store.index?.artists ?? []
+    private var artists: [ArtistItem] {
         let q = folded(filter.trimmingCharacters(in: .whitespaces))
-        return q.isEmpty ? all : all.filter { folded("\($0.name) \($0.style) \($0.life)").contains(q) }
+        guard q.count >= 2 else { return all }
+        let byName = all.filter { folded($0.name).contains(q) }.sorted { $0.total > $1.total }
+        let names = Set(byName.map(\.id))
+        return byName + all.filter { !names.contains($0.id) && folded($0.line).contains(q) }
     }
 
-    private var sections: [(letter: String, artists: [ArtistEntry])] {
-        var result: [(String, [ArtistEntry])] = []
+    private var sections: [(letter: String, artists: [ArtistItem])] {
+        if filter.trimmingCharacters(in: .whitespaces).count >= 2 { return [("Résultats", artists)] }
+        var result: [(String, [ArtistItem])] = []
         for artist in artists {
             if result.last?.0 == artist.initial {
                 result[result.count - 1].1.append(artist)
@@ -41,41 +62,86 @@ struct ArtistsView: View {
         .listStyle(.insetGrouped)
         .listSectionIndexVisibility(.visible)
         .overlay {
-            if artists.isEmpty, !filter.isEmpty {
+            if all.isEmpty {
+                ProgressView()
+            } else if artists.isEmpty, !filter.isEmpty {
                 ContentUnavailableView.search(text: filter)
             }
         }
-        .navigationTitle("Artistes")
+        .navigationTitle(all.isEmpty ? "Artistes" : "\(all.count.formatted()) artistes")
         .searchable(text: $filter, placement: .navigationBarDrawer(displayMode: .always), prompt: "Un nom, un style, un siècle…")
+        .task(id: "\(store.index?.artists.count ?? 0)-\(store.collections?.count ?? 0)") { all = Self.merge(store.index?.artists ?? [], store.collections) }
+    }
+
+    /// Les artistes des expositions et des collections, réunis par clé, de A à Z.
+    static func merge(_ museum: [ArtistEntry], _ world: CollectionIndex?) -> [ArtistItem] {
+        var items: [String: ArtistItem] = [:]
+        let counts = Dictionary((world?.artists ?? []).map { ($0.key, $0) }, uniquingKeysWith: { a, _ in a })
+        for a in museum where !a.works.isEmpty {
+            let key = ArtistKey.of(a.name)
+            let previous = items[key]?.museumWorks ?? 0
+            items[key] = ArtistItem(
+                id: key, name: items[key]?.name ?? a.name,
+                line: [a.life, a.style].filter { !$0.isEmpty }.joined(separator: " · "),
+                museumWorks: previous + a.works.count, worldWorks: counts[key]?.count ?? 0
+            )
+        }
+        for (key, w) in counts where items[key] == nil {
+            items[key] = ArtistItem(id: key, name: w.name, line: "Dans les collections du monde", museumWorks: 0, worldWorks: w.count)
+        }
+        return items.values.sorted { folded($0.name).localizedStandardCompare(folded($1.name)) == .orderedAscending }
     }
 }
 
 /// Une ligne de la liste : la vignette d'une œuvre, le nom, les dates, le nombre d'œuvres.
 struct ArtistListRow: View {
     let catalogue: Catalogue
-    let artist: ArtistEntry
+    let artist: ArtistItem
+
+    @Environment(CatalogueStore.self) private var store
+
+    init(catalogue: Catalogue, artist: ArtistItem) {
+        self.catalogue = catalogue
+        self.artist = artist
+    }
+
+    /// Un artiste des expositions (la recherche).
+    init(catalogue: Catalogue, artist entry: ArtistEntry) {
+        self.init(catalogue: catalogue, artist: ArtistItem(
+            id: ArtistKey.of(entry.name), name: entry.name,
+            line: [entry.life, entry.style].filter { !$0.isEmpty }.joined(separator: " · "),
+            museumWorks: entry.works.count, worldWorks: 0
+        ))
+    }
 
     var body: some View {
         HStack(spacing: 14) {
-            RemoteImage(path: artist.works.first.flatMap { catalogue.work($0)?.1.image }, maxPixels: 160)
-                .frame(width: 52, height: 52)
-                .clipShape(.rect(cornerRadius: 10))
+            Group {
+                if let entry = store.index?.artist(named: artist.name), let key = entry.works.first {
+                    RemoteImage(path: catalogue.work(key)?.1.image, maxPixels: 160)
+                } else if let work = store.collections?.firstWork(ofArtist: artist.id) {
+                    CollectionThumb(work: work)
+                } else {
+                    Color.secondary.opacity(0.15)
+                }
+            }
+            .frame(width: 52, height: 52)
+            .clipShape(.rect(cornerRadius: 10))
             VStack(alignment: .leading, spacing: 2) {
                 Text(artist.name)
                     .font(.headline)
-                let line = [artist.life, artist.style].filter { !$0.isEmpty }.joined(separator: " · ")
-                if !line.isEmpty {
-                    Text(line)
+                if !artist.line.isEmpty {
+                    Text(artist.line)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
             }
             Spacer(minLength: 8)
-            Text("\(artist.works.count)")
+            Text("\(artist.total)")
                 .font(.subheadline.monospacedDigit())
                 .foregroundStyle(.secondary)
-                .accessibilityLabel(artist.works.count == 1 ? "1 œuvre" : "\(artist.works.count) œuvres")
+                .accessibilityLabel(artist.total == 1 ? "1 œuvre" : "\(artist.total) œuvres")
         }
     }
 }
@@ -87,8 +153,14 @@ struct ArtistView: View {
 
     @Environment(CatalogueStore.self) private var store
 
+    /// L'artiste des expositions, sous ce nom ou sous une autre forme du même nom.
+    private var entry: ArtistEntry? {
+        store.index?.artist(named: name)
+            ?? store.index?.artists.first { !$0.works.isEmpty && ArtistKey.of($0.name) == ArtistKey.of(name) }
+    }
+
     var body: some View {
-        if let artist = store.index?.artist(named: name) {
+        if let artist = entry {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     VStack(alignment: .leading, spacing: 6) {
@@ -117,21 +189,22 @@ struct ArtistView: View {
                             .textSelection(.enabled)
                     }
 
-                    Text(artist.works.count == 1 ? "Son œuvre au musée" : "Ses \(artist.works.count) œuvres au musée")
+                    let world = store.collections?.works(.artist(artist.name)) ?? []
+                    let total = artist.works.count + world.count
+                    Text(total == 1 ? "Le catalogue complet : 1 œuvre" : "Le catalogue complet : \(total.formatted()) œuvres")
                         .font(.title2.bold())
                         .padding(.top, 8)
+                    Text(artist.works.count == 1 ? "Son œuvre dans les expositions" : "Ses \(artist.works.count) œuvres dans les expositions")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
                     WorkGrid(items: catalogue.works(artist.works).map { ($0.0, $0.1, $0.2) }, showExhibition: true)
 
-                    if let world = store.collections, world.count(.artist(artist.name)) > 0 {
-                        let count = world.count(.artist(artist.name))
-                        HStack {
-                            Text("Dans les collections du monde")
-                                .font(.title2.bold())
-                            Spacer()
-                            NavigationLink(count == 1 ? "1 œuvre" : "Les \(count) œuvres", value: Route.collection(.artist(artist.name)))
-                        }
-                        .padding(.top, 8)
-                        CollectionRow(works: world.works(.artist(artist.name), limit: 20))
+                    if !world.isEmpty {
+                        Text(world.count == 1 ? "Son œuvre dans les collections du monde" : "Ses \(world.count.formatted()) œuvres dans les collections du monde")
+                            .font(.headline)
+                            .foregroundStyle(.secondary)
+                            .padding(.top, 8)
+                        CollectionGrid(works: world.sorted { ($0.year ?? .max) < ($1.year ?? .max) })
                     }
 
                     let exhibitions = artist.exhibitions.compactMap(catalogue.exhibition)
@@ -157,6 +230,28 @@ struct ArtistView: View {
             }
             .background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle(artist.name)
+            .navigationBarTitleDisplayMode(.inline)
+        } else if let world = store.collections?.works(.artist(name)), !world.isEmpty {
+            // Un artiste des collections du monde seulement : tout son catalogue, par date.
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    Text(name)
+                        .font(.largeTitle.bold())
+                    if let life = world.first?.life, !life.isEmpty {
+                        Text(life).font(.headline).foregroundStyle(.secondary)
+                    }
+                    Text(world.count == 1 ? "Le catalogue complet : 1 œuvre" : "Le catalogue complet : \(world.count.formatted()) œuvres")
+                        .font(.title2.bold())
+                        .padding(.top, 8)
+                    Text("Dans les collections du monde, de la plus ancienne à la plus récente.")
+                        .foregroundStyle(.secondary)
+                    CollectionGrid(works: world.sorted { ($0.year ?? .max) < ($1.year ?? .max) })
+                }
+                .padding()
+                .padding(.bottom, 32)
+            }
+            .background(Color(uiColor: .systemGroupedBackground))
+            .navigationTitle(name)
             .navigationBarTitleDisplayMode(.inline)
         } else {
             ContentUnavailableView("Artiste introuvable", systemImage: "person.slash")

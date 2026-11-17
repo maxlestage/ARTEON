@@ -335,3 +335,19 @@ func lesVraiesCollectionsSontCompletes() throws {
     #expect(LocalMuseum.stored("/\(folder)/galerie/")?.path == file.path)
     #expect(LocalMuseum.stored("/\(folder)/absente/") == nil)
 }
+
+/// La clé des artistes : la même table de variantes que le site, et les mêmes réunions.
+@Test func lesNomsDUnMemeArtisteSontReunis() throws {
+    let url = URL(fileURLWithPath: #filePath)
+        .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        .appendingPathComponent("outils/monde/alias.json")
+    let table = try JSONDecoder().decode([String: String].self, from: Data(contentsOf: url))
+    #expect(table == ArtistKey.aliases)
+    #expect(ArtistKey.of("Rembrandt (Rembrandt van Rijn)") == ArtistKey.of("Rembrandt"))
+    #expect(ArtistKey.of("Rembrandt van Rijn") == "rembrandt")
+    #expect(ArtistKey.of("Titian") == ArtistKey.of("Titien"))
+    #expect(ArtistKey.of("Edouard Manet") == ArtistKey.of("Édouard Manet"))
+    #expect(ArtistKey.of("Jacques Louis David") == ArtistKey.of("Jacques-Louis David"))
+    #expect(ArtistKey.of("Henri Rousseau (le Douanier)") == "henri rousseau")
+    #expect(ArtistKey.of("Goya (Francisco de Goya y Lucientes)") == "francisco de goya")
+}

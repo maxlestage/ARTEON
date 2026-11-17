@@ -5,7 +5,7 @@
 import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, plier, rangSiecle, route, titreSiecle, toutes } from "./commun.js";
 
 const racine = document.getElementById("monde");
-let C, oeuvres, artistes, siecles, themes, mondeIndex;
+let C, oeuvres, artistes, siecles, themes;
 
 function indexer() {
   oeuvres = toutes(C);
@@ -47,45 +47,115 @@ const menu = (actif) => `
   <div class="monde-onglets">${[["", "Les artistes"], ["chronologie", "La chronologie"], ["themes", "Les thèmes"], ["jeu", "Qui l'a fait ?"]]
     .map(([k, t]) => `<a class="${actif === k ? "actif" : ""}" href="#/${k}">${t}</a>`).join("")}</div>`;
 
-function listeArtistes() {
+// Le catalogue de tous les artistes : ceux des expositions (avec leur biographie) et ceux
+// des collections du monde, réunis par nom. Chargé à la première visite des artistes.
+let catalogueArtistes;
+
+// Un même artiste porte des noms différents selon les musées : « Rembrandt (Rembrandt van
+// Rijn) », « Rembrandt van Rijn », « Rembrandt » ; « Titian » et « Titien »… La clé réunit
+// ces formes : sans accents ni ponctuation, la forme longue entre parenthèses, et quelques
+// noms français et anglais connus.
+// Les variantes connues (« titian » → « titien ») : outils/monde/alias.json, le même fichier
+// pour le site, son pied de page et l'application.
+let ALIAS = {};
+function cleNom(nom) {
+  let n = String(nom ?? "").trim();
+  const m = /^(.+?)\s*\((.+)\)$/.exec(n);
+  if (m) {
+    const premier = plier(m[1]).split(/\s+/)[0];
+    n = plier(m[2]).includes(premier) ? m[2] : m[1];
+  }
+  const k = plier(n).replace(/[-‐–'’.,]/g, " ").replace(/\s+/g, " ").trim();
+  return ALIAS[k] ?? k;
+}
+
+function chargerArtistes() {
+  catalogueArtistes ??= Promise.all([
+    fetch(lien("monde/alias.json")).then((r) => (r.ok ? r.json() : {})).catch(() => ({})).then((a) => { ALIAS = a; }),
+    fetch(lien("monde/donnees/liste.json")).then((r) => (r.ok ? r.json() : [])).catch(() => []),
+    fetch(lien("monde/donnees/index.json")).then((r) => (r.ok ? r.json() : { ids: [] })).catch(() => ({ ids: [] })),
+  ]).then(([, liste, index]) => {
+    const parCle = new Map();
+    for (const a of artistes) {
+      const cle = cleNom(a.nom), deja = parCle.get(cle);
+      if (deja) { deja.oeuvres.push(...a.oeuvres); if (a.bio.length > deja.bio.length) Object.assign(deja, { vie: a.vie, style: a.style, bio: a.bio }); }
+      else parCle.set(cle, { ...a, oeuvres: [...a.oeuvres], monde: [] });
+    }
+    liste.forEach((l, i) => {
+      const nom = l[1];
+      if (!nom || nom === "Artiste inconnu") return;
+      const cle = cleNom(nom);
+      if (!parCle.has(cle)) parCle.set(cle, { nom, vie: "", style: "", bio: "", oeuvres: [], monde: [] });
+      parCle.get(cle).monde.push({ l, id: index.ids[i] });
+    });
+    const tous = [...parCle.values()].sort((a, b) => plier(a.nom).localeCompare(plier(b.nom)));
+    return { tous, parCle };
+  });
+  return catalogueArtistes;
+}
+
+const total = (a) => a.oeuvres.length + a.monde.length;
+const lettreDe = (nom) => { const l = (plier(nom).replace(/^[^a-z0-9]+/, "")[0] || "#").toUpperCase(); return /[A-Z]/.test(l) ? l : "#"; };
+const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? lien(`monde/v/${a.monde[0].id}.jpg`) : "");
+
+async function listeArtistes(choisie) {
+  racine.innerHTML = menu("") + `<p class="monde-chargement">Ouverture du catalogue des artistes…</p>`;
+  const { tous } = await chargerArtistes();
+  if (route().type !== "" && route().type !== "lettre") return;
+  const lettres = [...new Set(tous.map((a) => lettreDe(a.nom)))].sort((a, b) => (a === "#") - (b === "#") || a.localeCompare(b));
+  const lettre = lettres.includes(choisie) ? choisie : lettres[0];
   racine.innerHTML = menu("") + `
-    <p class="monde-lead">${nombre(artistes.length)} artistes, ateliers et cultures des expositions, de A à Z. Les autres, par milliers, sont dans <a href="${lien("monde/")}">les collections du monde</a>.</p>
+    <p class="monde-lead">${nombre(tous.length)} artistes, ateliers et cultures : ceux des expositions et ceux des
+      collections du monde. Pour chacun, le catalogue complet de ses œuvres dans ARTEON.</p>
     <div class="monde-barre"><input type="search" id="filtre" placeholder="Un nom, un style…" aria-label="Chercher un artiste"></div>
+    <nav class="monde-alphabet" aria-label="Les lettres">${lettres.map((l) => `<a class="${l === lettre ? "actif" : ""}" href="#/lettre/${encodeURIComponent(l)}">${l}</a>`).join("")}</nav>
     <div id="artistes"></div>`;
   const zone = document.getElementById("artistes");
+  const ligne = (a) => `<a class="monde-artiste-ligne" href="#/artiste/${encodeURIComponent(a.nom)}">${vignetteDe(a) ? `<img loading="lazy" src="${vignetteDe(a)}" alt="">` : "<i></i>"}
+      <span><b>${echapper(a.nom)}</b><small>${echapper([a.vie, a.style].filter(Boolean).join(" · ") || (a.oeuvres.length ? "Dans les expositions" : "Dans les collections du monde"))}</small></span><em>${nombre(total(a))}</em></a>`;
   const dessiner = (q) => {
     const f = plier(q.trim());
-    const liste = f ? artistes.filter((a) => plier(`${a.nom} ${a.style} ${a.vie}`).includes(f)) : artistes;
-    let lettre = "", html = "";
-    for (const a of liste) {
-      const l = (plier(a.nom)[0] || "#").toUpperCase();
-      if (l !== lettre) { html += `${lettre ? "</div>" : ""}<h2 class="monde-lettre">${/[A-Z]/.test(l) ? l : "#"}</h2><div class="monde-artistes">`; lettre = l; }
-      html += `<a class="monde-artiste-ligne" href="#/artiste/${encodeURIComponent(a.nom)}"><img loading="lazy" src="${lien(a.oeuvres[0].w.image)}" alt="">
-        <span><b>${echapper(a.nom)}</b><small>${echapper([a.vie, a.style].filter(Boolean).join(" · "))}</small></span><em>${a.oeuvres.length}</em></a>`;
+    if (f.length >= 2) {
+      // D'abord les noms qui contiennent la recherche, puis les styles et les vies ; les
+      // plus riches en œuvres en premier.
+      const parNom = tous.filter((a) => plier(a.nom).includes(f)).sort((x, y) => total(y) - total(x));
+      const vus = new Set(parNom);
+      const trouves = parNom.concat(tous.filter((a) => !vus.has(a) && plier(`${a.style} ${a.vie}`).includes(f)));
+      zone.innerHTML = trouves.length
+        ? `<p class="monde-compte">${nombre(trouves.length)} artiste${trouves.length > 1 ? "s" : ""}${trouves.length > 300 ? " (les 300 premiers)" : ""}</p><div class="monde-artistes">${trouves.slice(0, 300).map(ligne).join("")}</div>`
+        : `<p class="monde-chargement">Personne ne s'appelle ainsi.</p>`;
+      return;
     }
-    zone.innerHTML = html + (lettre ? "</div>" : `<p class="monde-chargement">Personne ne s'appelle ainsi.</p>`);
+    const ici = tous.filter((a) => lettreDe(a.nom) === lettre);
+    zone.innerHTML = `<h2 class="monde-lettre">${lettre} <small class="monde-note">${nombre(ici.length)} artistes</small></h2><div class="monde-artistes">${ici.map(ligne).join("")}</div>`;
   };
   document.getElementById("filtre").addEventListener("input", (e) => dessiner(e.target.value));
   dessiner("");
 }
 
+/** Une carte des collections du monde : la vignette, le titre, la date et le musée. */
+const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lien(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${lien(`monde/v/${id}.jpg`)}" alt=""><b>${echapper(l[0])}</b><span>${echapper([l[2], "collections du monde"].filter(Boolean).join(" · "))}</span></a>`;
+
 async function artiste(nom) {
-  const a = artistes.find((x) => x.nom === nom);
+  racine.innerHTML = `<p class="monde-chargement">Ouverture du catalogue…</p>`;
+  const { parCle } = await chargerArtistes();
+  const a = parCle.get(cleNom(nom));
   if (!a) { racine.innerHTML = `<p class="monde-chargement">Artiste introuvable. <a href="#/">Les artistes</a></p>`; return; }
-  mondeIndex ??= fetch(lien("monde/donnees/liste.json")).then((r) => (r.ok ? r.json() : [])).catch(() => []);
-  racine.innerHTML = `<a class="monde-retour" href="#/">← Les artistes</a>
+  // Le catalogue complet, du plus ancien au plus récent : les œuvres des expositions et
+  // celles des collections du monde, ensemble.
+  const toutes = [
+    ...a.oeuvres.map(({ ex, w }) => ({ y: annee(w.year), html: carteOeuvre(ex, w, [w.year, ex.short_name || ex.title].filter(Boolean).join(" · ")) })),
+    ...a.monde.map((m) => ({ y: m.l[3], html: carteMonde(m) })),
+  ].sort((x, y) => (x.y ?? 1e9) - (y.y ?? 1e9));
+  const n = toutes.length;
+  racine.innerHTML = `<a class="monde-retour" href="#/lettre/${encodeURIComponent(lettreDe(a.nom))}">← Les artistes</a>
     <h1 class="monde-titre">${echapper(a.nom)}</h1>
     <p class="monde-artiste">${echapper([a.vie, a.style].filter(Boolean).join(" · "))}</p>
     ${a.bio ? `<p class="monde-texte">${echapper(a.bio)}</p>` : ""}
-    <section class="monde-section"><h2>${a.oeuvres.length === 1 ? "Son œuvre au musée" : `Ses ${a.oeuvres.length} œuvres au musée`}</h2>
-      <div class="monde-grille">${a.oeuvres.map(({ ex, w }) => carteOeuvre(ex, w, ex.short_name || ex.title)).join("")}</div></section>
-    <section class="monde-section" id="dans-le-monde"></section>`;
+    <section class="monde-section"><h2>Le catalogue complet : ${n === 1 ? "1 œuvre" : `${nombre(n)} œuvres`}</h2>
+      <p class="monde-note">${[a.oeuvres.length ? `${nombre(a.oeuvres.length)} dans les expositions du musée` : "", a.monde.length ? `${nombre(a.monde.length)} dans les collections du monde` : ""].filter(Boolean).join(" · ")} · de la plus ancienne à la plus récente</p>
+      <div class="monde-grille">${toutes.map((t) => t.html).join("")}</div></section>`;
   window.scrollTo(0, 0);
-  const liste = await mondeIndex;
-  const n = liste.filter((l) => l[1] === a.nom).length;
-  const zone = document.getElementById("dans-le-monde");
-  if (n && zone) zone.innerHTML = `<h2>Dans les collections du monde</h2>
-    <a class="monde-lien" href="${lien(`monde/#/artiste/${encodeURIComponent(a.nom)}`)}">${n === 1 ? "1 œuvre" : `${nombre(n)} œuvres`} de ${echapper(a.nom)} →</a>`;
 }
 
 function chronologie() {
@@ -159,6 +229,7 @@ function afficher() {
   if (r.type === "chronologie") return chronologie();
   if (r.type === "themes") return listeThemes(r.valeur);
   if (r.type === "jeu") return jeu();
+  if (r.type === "lettre") return listeArtistes(r.valeur);
   listeArtistes();
 }
 

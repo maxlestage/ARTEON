@@ -121,6 +121,71 @@ func folded(_ s: String) -> String {
         .lowercased()
 }
 
+/// La clé d'un artiste : un même artiste porte des noms différents selon les musées
+/// (« Rembrandt (Rembrandt van Rijn) », « Rembrandt van Rijn », « Rembrandt » ; « Titian »
+/// et « Titien »). Même règle que le site (outils/monde/explorer.js, cleNom), son pied de
+/// page (outils/monde_web.py, cle_nom) et la même table de variantes
+/// (outils/monde/alias.json, vérifiée par les tests).
+enum ArtistKey {
+    static let aliases: [String: String] = [
+        "alphonse marie mucha": "alfons mucha",
+        "alphonse mucha": "alfons mucha",
+        "ando hiroshige": "utagawa hiroshige",
+        "anthony van dyck": "antoine van dyck",
+        "canaletto": "giovanni antonio canal dit canaletto",
+        "caravaggio": "le caravage",
+        "domenikos theotokopoulos": "le greco",
+        "duccio": "duccio di buoninsegna",
+        "el greco": "le greco",
+        "francisco de goya y lucientes": "francisco de goya",
+        "francisco jose de goya y lucientes": "francisco de goya",
+        "gian lorenzo bernini": "le bernin",
+        "giotto di bondone": "giotto",
+        "giovanni antonio canal": "giovanni antonio canal dit canaletto",
+        "goya": "francisco de goya",
+        "hans holbein the younger": "hans holbein le jeune",
+        "hieronymus bosch": "jerome bosch",
+        "hilaire germain edgar degas": "edgar degas",
+        "jacopo tintoretto": "le tintoret",
+        "jan vermeer": "johannes vermeer",
+        "jean baptiste simeon chardin": "jean simeon chardin",
+        "leonardo da vinci": "leonard de vinci",
+        "lucas cranach the elder": "lucas cranach l ancien",
+        "michelangelo": "michel ange",
+        "michelangelo buonarroti": "michel ange",
+        "michelangelo merisi da caravaggio": "le caravage",
+        "peter paul rubens": "pierre paul rubens",
+        "pieter bruegel": "pieter bruegel l ancien",
+        "pieter bruegel the elder": "pieter bruegel l ancien",
+        "raffaello sanzio": "raphael",
+        "rembrandt van rijn": "rembrandt",
+        "sandro botticelli alessandro filipepi": "sandro botticelli",
+        "sir anthony van dyck": "antoine van dyck",
+        "sir peter paul rubens": "pierre paul rubens",
+        "tintoretto": "le tintoret",
+        "titian": "titien",
+        "tiziano vecellio": "titien",
+        "vasily kandinsky": "vassily kandinsky",
+        "veronese": "paolo veronese",
+        "wassily kandinsky": "vassily kandinsky",
+    ]
+
+    static func of(_ name: String) -> String {
+        var n = name.trimmingCharacters(in: .whitespaces)
+        if n.hasSuffix(")"), let open = n.firstIndex(of: "("), open > n.startIndex {
+            let head = n[..<open].trimmingCharacters(in: .whitespaces)
+            let inner = String(n[n.index(after: open)..<n.index(before: n.endIndex)])
+            if !head.isEmpty, !inner.isEmpty {
+                let first = folded(head).split(separator: " ").first.map(String.init) ?? ""
+                n = folded(inner).contains(first) ? inner : head
+            }
+        }
+        let cleaned = String(folded(n).map { "-‐–'’.,".contains($0) ? " " : $0 })
+        let key = cleaned.split(whereSeparator: \.isWhitespace).joined(separator: " ")
+        return aliases[key] ?? key
+    }
+}
+
 /// Désigne une œuvre dans tout le musée.
 struct WorkKey: Hashable, Codable, Sendable {
     var exhibition: String
