@@ -130,7 +130,18 @@ struct OfflineSection: View {
 
     var body: some View {
         Section {
-            if !Nuage.isConfigured {
+            if LocalMuseum.isAvailable {
+                Label {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Tout est dans l'application")
+                        Text("Catalogue, images, galeries 3D et collections du monde se visitent sans Internet, sans rien télécharger.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                } icon: {
+                    Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
+                }
+            } else if !Nuage.isConfigured {
                 Label("Cette copie de l'app n'a pas de jeton Nuage : les images viennent du site.", systemImage: "exclamationmark.icloud")
                     .font(.callout)
             } else {
@@ -148,7 +159,7 @@ struct OfflineSection: View {
         } footer: {
             Text("L'application est légère : chaque image se télécharge depuis Nuage la première fois qu'on la regarde, puis reste sur l'appareil. Tout télécharger permet de visiter sans Internet.")
         }
-        .task { await downloader.measure() }
+        .task { if !LocalMuseum.isAvailable { await downloader.measure() } }
         .confirmationDialog("Effacer le musée téléchargé ?", isPresented: $confirmClear, titleVisibility: .visible) {
             Button("Effacer", role: .destructive) { Task { await downloader.clear() } }
         } message: {
