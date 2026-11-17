@@ -18,7 +18,7 @@ struct ExploreView: View {
                 ) {
                     ExploreCard(
                         title: "La chronologie",
-                        subtitle: "\(store.index?.centuries.count ?? 0) siècles, des fossiles au street art",
+                        subtitle: "\(store.index?.centuries.count ?? 0) siècles, des fossiles aux avant-gardes",
                         systemImage: "calendar",
                         color: .arteonBlue,
                         image: store.index?.centuries.first?.works.first,

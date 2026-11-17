@@ -116,7 +116,9 @@ struct SettingsView: View {
             }
 
             Section {
-                Text("Les œuvres exposées sont dans le domaine public, ou montrées par des photographies sous licence libre d'œuvres installées dans l'espace public. Reproductions : Wikimedia Commons et les collections ouvertes des musées. Sculptures en 3D : Smithsonian Open Access (CC0).")
+                Text("Les œuvres exposées sont dans le domaine public : leurs artistes sont morts en 1955 ou avant, et elles datent d'avant 1931. Les œuvres encore protégées ne sont jamais reproduites, seulement racontées. Reproductions : les collections ouvertes des musées (CC0) et Wikimedia Commons, avec l'auteur et la licence de chaque photographie sous licence libre ; une mosaïque faite d'une photographie CC BY-SA est partagée aux mêmes conditions. Sculptures en 3D : Smithsonian Open Access (CC0).")
+                    .font(.callout)
+                Text("ARTEON est un projet indépendant : les musées réels qui inspirent ses bâtiments n'y sont pas associés et ne l'ont pas approuvé. L'application n'a ni publicité, ni traceur, ni compte ; tout le musée est dans l'appareil.")
                     .font(.callout)
                 Link(destination: URL(string: "https://github.com/maxlestage/ARTEON")!) {
                     Label("Le code d'ARTEON (licence MIT)", systemImage: "chevron.left.forwardslash.chevron.right")

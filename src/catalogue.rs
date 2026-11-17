@@ -101,7 +101,8 @@ fn sculpture(s: &Sculpture) -> Value {
         "room": s.room,
         "width": s.radius * 2.0,
         "height": s.height,
-        "credit": Value::Null,
+        // Les sculptures sont des scans 3D du Smithsonian, publiés en CC0.
+        "credit": json!({ "author": "Smithsonian Institution (scan 3D)", "licence": "CC0", "source": "https://3d.si.edu/" }),
         "notice": notice(&s.notice),
     })
 }

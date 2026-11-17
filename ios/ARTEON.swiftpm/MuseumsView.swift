@@ -274,7 +274,7 @@ struct GrandMuseumCard: View {
                         .foregroundStyle(Color.arteonSun)
                     Text("Le Grand Musée ARTEON")
                         .font(.title2.bold())
-                    Text("Un bâtiment imaginaire : \(catalogue.exhibitions.count) pavillons en six ailes, de la Terre au street art.")
+                    Text("Un bâtiment imaginaire : \(catalogue.exhibitions.count) pavillons en six ailes, de la Terre aux avant-gardes.")
                         .font(.subheadline)
                         .opacity(0.85)
                 }
