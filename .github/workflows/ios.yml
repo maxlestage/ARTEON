@@ -64,8 +64,9 @@ jobs:
   musee:
     name: Le musée embarqué
     runs-on: ubuntu-latest
-    # La première moisson des collections du monde est longue ; ensuite, le cache.
-    timeout-minutes: 180
+    # La première moisson des collections du monde (fiches, vignettes et images en grand)
+    # est longue ; ensuite, le cache.
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
 
@@ -112,7 +113,7 @@ jobs:
       # qui manque sera pris au run suivant, grâce au cache.
       - name: Les collections du monde
         continue-on-error: true
-        timeout-minutes: 60
+        timeout-minutes: 240
         run: |
           python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
             || python3 -m pip install --quiet --break-system-packages pillow
@@ -328,7 +329,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          zip -qry "$RUNNER_TEMP/ARTEON.swiftpm.zip" ARTEON.swiftpm -x 'ARTEON.swiftpm/.swiftpm/*'
+          # Un fichier de release ne dépasse pas 2 Go : l'App Playground part sans les images
+          # en grand des collections (vignettes seulement) ; TestFlight a tout.
+          zip -qry "$RUNNER_TEMP/ARTEON.swiftpm.zip" ARTEON.swiftpm -x 'ARTEON.swiftpm/.swiftpm/*' \
+            -x 'ARTEON.swiftpm/Musee/collections/grandes-*'
           ls -la "$RUNNER_TEMP/ARTEON.swiftpm.zip"
           gh release view ipad >/dev/null 2>&1 || gh release create ipad --latest=false \
             --title "ARTEON pour iPad (Swift Playgrounds)" \

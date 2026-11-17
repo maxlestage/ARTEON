@@ -166,11 +166,13 @@ struct CollectionThumb: View {
     }
 }
 
-/// L'image d'une œuvre des collections : la vignette tout de suite, puis l'image en grand
-/// (téléchargée une fois, gardée).
+/// L'image d'une œuvre des collections : la vignette tout de suite, puis l'image en grand,
+/// embarquée dans l'app (800 px, hors ligne).
 struct CollectionImage: View {
     let work: CollectionWork
     var contentMode: ContentMode = .fit
+
+    @Environment(CatalogueStore.self) private var store
 
     @State private var full: UIImage?
     @State private var loading = false
@@ -194,7 +196,13 @@ struct CollectionImage: View {
             }
         }
         .task(id: work.id) {
-            guard let url = work.imageURL else { return }
+            // L'image en grand embarquée dans l'app (hors ligne), sinon celle du musée.
+            let pack = store.collections?.collections.museum(work.museum)?.largePack
+            if let local = await ImagePipeline.shared.collectionLarge(work, pack: pack) {
+                full = local
+                return
+            }
+            guard let url = work.imageURL, !LocalMuseum.isAvailable else { return }
             loading = true
             let loaded = await ImagePipeline.shared.image(url, maxPixels: 2400)
             loading = false
@@ -615,7 +623,10 @@ struct DownloadButton: View {
     @State private var confirm = false
 
     var body: some View {
-        if downloader.running {
+        if LocalMuseum.isAvailable {
+            // Tout est dans l'app, les images en grand comprises.
+            EmptyView()
+        } else if downloader.running {
             HStack(spacing: 8) {
                 ProgressView(value: Double(downloader.done), total: Double(max(downloader.total, 1)))
                     .frame(width: 90)

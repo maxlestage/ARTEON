@@ -86,6 +86,17 @@ actor ImagePipeline {
         return data
     }
 
+    /// L'image en grand (800 px) d'une œuvre des collections, embarquée dans l'app.
+    func collectionLarge(_ work: CollectionWork, pack: String?) async -> UIImage? {
+        let key = "grande|\(work.id)" as NSString
+        if let image = cache.object(forKey: key) { return image }
+        guard let data = LocalMuseum.largeImage(of: work, pack: pack),
+              let image = UIImage(data: data)?.preparingForDisplay()
+        else { return nil }
+        cache.setObject(image, forKey: key, cost: data.count * 10)
+        return image
+    }
+
     /// La vignette d'une œuvre des collections du monde, lue dans le paquet de son musée.
     func collectionThumbnail(_ work: CollectionWork, pack: String) async -> UIImage? {
         let key = "vignette|\(work.id)" as NSString
