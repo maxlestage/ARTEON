@@ -167,7 +167,7 @@ struct CollectionThumb: View {
 }
 
 /// L'image d'une œuvre des collections : la vignette tout de suite, puis l'image en grand,
-/// embarquée dans l'app (800 px, hors ligne).
+/// embarquée dans l'app (700 px, hors ligne).
 struct CollectionImage: View {
     let work: CollectionWork
     var contentMode: ContentMode = .fit

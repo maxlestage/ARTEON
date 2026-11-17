@@ -55,8 +55,8 @@ except ImportError:  # pragma: no cover
 AGENT = "ARTEON/1.0 (https://github.com/maxlestage/ARTEON)"
 VIGNETTE = 320
 QUALITE = 62
-# L'image en grand, embarquée elle aussi (l'app est 100 % hors ligne) : 800 px, ~45 Ko.
-GRANDE = 800
+# L'image en grand, embarquée elle aussi (l'app est 100 % hors ligne) : 700 px, ~35 Ko.
+GRANDE = 700
 QUALITE_GRANDE = 72
 VERSION = 1
 
@@ -456,7 +456,7 @@ def choisir(fiches, combien, alea):
 
 
 def source(f):
-    """L'image à télécharger : assez grande pour en tirer l'image de 800 px."""
+    """L'image à télécharger : assez grande pour en tirer l'image en grand (GRANDE px)."""
     if f["i"].startswith("chicago-") and f.get("u"):
         return f["u"]  # 843 px, la largeur que l'IIIF de Chicago sert
     if f["i"].startswith("washington-") and f.get("u"):
@@ -473,10 +473,10 @@ def reduire(image, cote, qualite):
 
 
 def vignette(f, dossier):
-    """La vignette d'une fiche (320 px) et son image en grand (800 px), sur le disque :
+    """La vignette d'une fiche (320 px) et son image en grand (GRANDE px), sur le disque :
     téléchargées une fois, réduites, gardées dans le cache. Renvoie la vignette."""
     petite = dossier / f"{f['i']}.jpg"
-    grande = dossier.parent / "grandes" / f"{f['i']}.jpg"
+    grande = dossier.parent / f"grandes-{GRANDE}" / f"{f['i']}.jpg"
     if petite.exists() and petite.stat().st_size > 0 and grande.exists() and grande.stat().st_size > 0:
         return petite.read_bytes()
     entetes = {"AIC-User-Agent": AGENT} if f["i"].startswith("chicago-") else None
@@ -606,11 +606,11 @@ def main():
             f["k"] = c
             paquet += o
         (sortie / f"vignettes-{c}.bin").write_bytes(bytes(paquet))
-        # Les images en grand, bout à bout elles aussi, écrites au fil de l'eau (2 Go au total).
+        # Les images en grand, bout à bout elles aussi, écrites au fil de l'eau (~1,8 Go au total).
         taille_grandes = 0
         with open(sortie / f"grandes-{c}.bin", "wb") as grandes:
             for f in gardees[c]:
-                chemin = cache / "grandes" / f"{f['i']}.jpg"
+                chemin = cache / f"grandes-{GRANDE}" / f"{f['i']}.jpg"
                 if chemin.exists():
                     octets_grande = chemin.read_bytes()
                     f["gr"] = [taille_grandes, len(octets_grande)]
