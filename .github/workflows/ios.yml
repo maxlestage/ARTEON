@@ -181,18 +181,19 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # L'app est légère : elle n'embarque pas le musée (elle le lit sur Nuage). Le musée
-      # préparé par le job « musee » sert seulement aux captures d'écran, déposé dans le
-      # simulateur comme s'il avait été téléchargé.
+      # L'app est 100 % hors ligne : le musée préparé par le job « musee » (catalogue,
+      # images, galeries 3D, collections du monde) est embarqué dans l'application.
       - uses: actions/download-artifact@v4
         with:
           name: musee
-          path: ${{ runner.temp }}/musee
+          path: ios/ARTEON.swiftpm/Musee
 
-      - name: Le musée (pour les captures)
+      - name: Le musée embarqué est là
         run: |
-          test -s "$RUNNER_TEMP/musee/catalogue.json"
-          du -sh "$RUNNER_TEMP/musee"
+          test -s ARTEON.swiftpm/Musee/catalogue.json
+          test -s ARTEON.swiftpm/Musee/pkg/arteon_bg.wasm
+          test -s ARTEON.swiftpm/Musee/collections/collections.json || echo "::warning::pas de collections du monde"
+          du -sh ARTEON.swiftpm/Musee
 
       - name: Xcode 27.2
         run: |
@@ -283,11 +284,6 @@ jobs:
             limit 60 xcrun simctl boot "$udid" || true
             limit 240 xcrun simctl bootstatus "$udid" -b || true
             limit 180 xcrun simctl install "$udid" "$app" || continue
-            # Le musée, comme s'il avait été téléchargé depuis Nuage (hors ligne, sans jeton).
-            data=$(xcrun simctl get_app_container "$udid" com.maxlestage.arteon data)
-            mkdir -p "$data/Library/Application Support"
-            rm -rf "$data/Library/Application Support/Musee"
-            cp -R "$RUNNER_TEMP/musee" "$data/Library/Application Support/Musee"
             name=01-accueil wait=12 shoot
             name=03-oeuvre shoot -ouvrir van-gogh/tournesols
             name=04-musees shoot -onglet musees

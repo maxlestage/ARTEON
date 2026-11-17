@@ -85,7 +85,8 @@ final class CatalogueStore {
         self.defaults = defaults
         favorites = (defaults.stringArray(forKey: Keys.favorites) ?? []).compactMap(WorkKey.init)
         history = (defaults.stringArray(forKey: Keys.history) ?? []).compactMap(WorkKey.init)
-        updatesEnabled = defaults.object(forKey: Keys.updates) as? Bool ?? true
+        // Avec le musée embarqué, l'app ne touche pas au réseau tant qu'on ne le demande pas.
+        updatesEnabled = defaults.object(forKey: Keys.updates) as? Bool ?? !LocalMuseum.isAvailable
         quizBest = defaults.integer(forKey: Keys.quizBest)
     }
 

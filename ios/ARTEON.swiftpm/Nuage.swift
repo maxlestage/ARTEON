@@ -41,7 +41,8 @@ enum Nuage {
         return text.isEmpty || text.hasPrefix("$(") ? nil : text
     }
 
-    static var isConfigured: Bool { token != nil && !Site.neverOnline }
+    /// Nuage ne sert que si le musée n'est pas embarqué : l'app embarquée est 100 % hors ligne.
+    static var isConfigured: Bool { token != nil && !Site.neverOnline && !LocalMuseum.isAvailable }
 
     /// Un nom de fichier Nuage valide : lettres, chiffres, `.`, `_`, `-`, parties séparées
     /// par `/`. Les chemins du site (`/van-gogh/galerie/`, `pkg/arteon.js`) y deviennent
