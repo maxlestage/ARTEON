@@ -160,12 +160,13 @@ jobs:
           python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
           # La place qui reste sous la limite de GitHub Pages (1 Go), le site en trois langues compris.
-          reste=$(( 960 - $(du -sm dist | cut -f1) ))
+          # (la taille des fichiers, pas la place qu'ils occupent sur le disque : c'est elle qui compte)
+          reste=$(( 960 - $(du -sm --apparent-size dist | cut -f1) ))
           [ "$reste" -gt 0 ] || reste=1
           echo "place pour l'API : ${reste} Mo"
           ARTEON_API_MO=$reste ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt 25 4 2> target/api.log || true
           tail -3 target/api.log
-          du -sh dist/api dist
+          du -sh --apparent-size dist/api dist
 
       - uses: actions/cache/save@v4
         if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
