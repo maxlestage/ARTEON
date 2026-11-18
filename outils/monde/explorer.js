@@ -3,6 +3,7 @@
 // « Qui l'a fait ? » (le record est gardé dans le navigateur).
 
 import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, plier, rangSiecle, route, titreSiecle, toutes } from "./commun.js";
+import { oeuvresEnDirect } from "./direct.js";
 
 const racine = document.getElementById("monde");
 let C, oeuvres, artistes, siecles, themes;
@@ -140,23 +141,40 @@ const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lien(`monde/#/
 async function artiste(nom) {
   racine.innerHTML = `<p class="monde-chargement">Ouverture du catalogue…</p>`;
   const { parCle } = await chargerArtistes();
-  const a = parCle.get(cleNom(nom));
-  if (!a) { racine.innerHTML = `<p class="monde-chargement">Artiste introuvable. <a href="#/">Les artistes</a></p>`; return; }
+  // Un artiste qu'ARTEON ne montre pas encore : son catalogue vient tout entier des musées.
+  const a = parCle.get(cleNom(nom)) || { nom, vie: "", style: "", bio: "", oeuvres: [], monde: [] };
   // Le catalogue complet, du plus ancien au plus récent : les œuvres des expositions et
-  // celles des collections du monde, ensemble.
+  // celles des collections du monde, ensemble ; puis, en direct, celles des musées.
   const toutes = [
     ...a.oeuvres.map(({ ex, w }) => ({ y: annee(w.year), html: carteOeuvre(ex, w, [w.year, ex.short_name || ex.title].filter(Boolean).join(" · ")) })),
     ...a.monde.map((m) => ({ y: m.l[3], html: carteMonde(m) })),
   ].sort((x, y) => (x.y ?? 1e9) - (y.y ?? 1e9));
-  const n = toutes.length;
+  const titre = (n) => `Le catalogue complet : ${n === 1 ? "1 œuvre" : `${nombre(n)} œuvres`}`;
   racine.innerHTML = `<a class="monde-retour" href="#/lettre/${encodeURIComponent(lettreDe(a.nom))}">← Les artistes</a>
     <h1 class="monde-titre">${echapper(a.nom)}</h1>
     <p class="monde-artiste">${echapper([a.vie, a.style].filter(Boolean).join(" · "))}</p>
     ${a.bio ? `<p class="monde-texte">${echapper(a.bio)}</p>` : ""}
-    <section class="monde-section"><h2>Le catalogue complet : ${n === 1 ? "1 œuvre" : `${nombre(n)} œuvres`}</h2>
+    <section class="monde-section"><h2 id="catalogue-titre">${titre(toutes.length)}</h2>
       <p class="monde-note">${[a.oeuvres.length ? `${nombre(a.oeuvres.length)} dans les expositions du musée` : "", a.monde.length ? `${nombre(a.monde.length)} dans les collections du monde` : ""].filter(Boolean).join(" · ")} · de la plus ancienne à la plus récente</p>
-      <div class="monde-grille">${toutes.map((t) => t.html).join("")}</div></section>`;
+      <div class="monde-grille">${toutes.map((t) => t.html).join("")}</div></section>
+    <section class="monde-section" id="en-direct"><h2>Dans les musées, en direct</h2>
+      <p class="monde-chargement">Recherche de toutes ses autres œuvres libres à Chicago, Cleveland et au Metropolitan Museum…</p></section>`;
   window.scrollTo(0, 0);
+  const zone = document.getElementById("en-direct");
+  try {
+    const deja = new Set(a.monde.map((m) => m.id));
+    const r = await oeuvresEnDirect(a.nom, cleNom, ALIAS);
+    if (route().valeur !== nom) return;
+    const nouvelles = r.oeuvres.filter((o) => !deja.has(o.id));
+    const musee = { chicago: "Art Institute of Chicago", cleveland: "Cleveland Museum of Art", met: "Metropolitan Museum" };
+    document.getElementById("catalogue-titre").textContent = titre(toutes.length + nouvelles.length);
+    zone.innerHTML = nouvelles.length ? `<h2>Dans les musées, en direct : ${nombre(nouvelles.length)} œuvres de plus</h2>
+      <p class="monde-note">Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées${r.source === "api" ? " · par l'API ARTEON" : ""}</p>
+      <div class="monde-grille">${nouvelles.map((o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`).join("")}</div>`
+      : `<h2>Dans les musées, en direct</h2><p class="monde-note">Aucune autre œuvre libre de droits dans les collections ouvertes de Chicago, Cleveland et du Met.</p>`;
+  } catch {
+    zone.innerHTML = `<h2>Dans les musées, en direct</h2><p class="monde-note">Les musées n'ont pas répondu. Réessayer plus tard.</p>`;
+  }
 }
 
 function chronologie() {

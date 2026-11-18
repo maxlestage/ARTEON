@@ -15,6 +15,8 @@ crate-type = ["cdylib", "rlib"]
 paquets = { git = "https://github.com/maxlestage/Paquets" }
 # Le runtime de l'export statique (`cargo run -- export dist`).
 tokio = { version = "1", features = ["rt-multi-thread"] }
+# L'API des œuvres d'un artiste (src/api.rs) interroge les musées en direct.
+ureq = { version = "2", features = ["native-certs"] }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 paquets = { git = "https://github.com/maxlestage/Paquets", default-features = false, features = ["client"] }
