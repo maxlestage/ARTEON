@@ -21,6 +21,7 @@ Python et Pillow (pour les vignettes en WebP).
 """
 
 import concurrent.futures
+import html
 import json
 import re
 import shutil
@@ -313,9 +314,16 @@ def main():
     mots_oeuvres = {"fr": ("œuvres", "en 3D"), "en": ("works", "in 3D"), "es": ("obras", "en 3D")}
     for slug, info in liees.items():
         n = len(info["indices"])
-        if not n:
-            continue
-        propres = sum(len(ex["works"]) for ex in catalogue["exhibitions"] if ex["slug"] == slug)
+        exposition = next(ex for ex in catalogue["exhibitions"] if ex["slug"] == slug)
+        propres = len(exposition["works"])
+        # Les artistes de l'exposition : la page « Œuvres » demande à l'API toutes leurs
+        # autres œuvres dans les musées du monde (outils/monde/liees.js).
+        artistes = []
+        for w in exposition["works"]:
+            a = w.get("artist") or exposition.get("artist")
+            if a and a != "Artiste inconnu" and a not in artistes:
+                artistes.append(a)
+        artistes_json = html.escape(json.dumps(artistes, ensure_ascii=False), quote=True)
         # Les œuvres liées, prêtes à afficher sur la page « Œuvres » de l'exposition
         # (outils/monde/liees.js) : identifiant, titre, artiste, date, vignette du musée.
         (sortie / "donnees" / f"expo-{slug}.json").write_text(json.dumps(
@@ -324,19 +332,25 @@ def main():
         for code, L in LANGUES.items():
             dossier_langue = site / L["prefixe"].lstrip("/") if L["prefixe"] else site
             p = f'{base}{L["prefixe"]}'
-            titre, phrase, titre_page, phrase_page = {
-                "fr": (f"Toutes les œuvres de l'exposition : {fine(propres + n)}",
-                       f"Les {propres} œuvres de la visite, et {fine(n)} œuvres liées dans les collections du monde, toutes sur la même page →",
-                       f"Toutes les œuvres : {fine(n)} de plus dans les collections du monde",
-                       "Les œuvres des mêmes artistes et du même sujet dans les grands musées, de la plus ancienne à la plus récente."),
-                "en": (f"All the works of the exhibition: {fine(propres + n)}",
-                       f"The {propres} works on the tour, and {fine(n)} related works in the world collections, all on one page →",
-                       f"All the works: {fine(n)} more in the world collections",
-                       "Works by the same artists and on the same subject in the great museums, from oldest to most recent."),
-                "es": (f"Todas las obras de la exposición: {fine(propres + n)}",
-                       f"Las {propres} obras de la visita y {fine(n)} obras relacionadas en las colecciones del mundo, todas en la misma página →",
-                       f"Todas las obras: {fine(n)} más en las colecciones del mundo",
-                       "Obras de los mismos artistas y del mismo tema en los grandes museos, de la más antigua a la más reciente."),
+            titre, phrase, titre_page, phrase_page, total, suite = {
+                "fr": ("Toutes les œuvres de l'exposition et de ses artistes",
+                       f"Les {propres} œuvres de la visite, {fine(n)} œuvres liées dans les collections du monde, et toutes les œuvres de chaque artiste dans les musées, sur la même page →",
+                       f"{fine(n)} œuvres de plus dans les collections du monde",
+                       "Les œuvres des mêmes artistes et du même sujet dans les grands musées, de la plus ancienne à la plus récente.",
+                       f"Toutes les œuvres : {fine(propres + n)}…",
+                       f"Cette page les montre toutes : les {propres} de la visite 3D d'abord, puis celles des collections du monde, puis toutes les œuvres de chaque artiste dans les musées du monde. Elles s'affichent à mesure que l'on descend."),
+                "en": ("All the works of the exhibition and its artists",
+                       f"The {propres} works on the tour, {fine(n)} related works in the world collections, and every work by each artist in the museums, all on one page →",
+                       f"{fine(n)} more works in the world collections",
+                       "Works by the same artists and on the same subject in the great museums, from oldest to most recent.",
+                       f"All the works: {fine(propres + n)}…",
+                       f"This page shows them all: the {propres} on the 3D tour first, then those in the world collections, then every work by each artist in the world's museums. They appear as you scroll down."),
+                "es": ("Todas las obras de la exposición y de sus artistas",
+                       f"Las {propres} obras de la visita, {fine(n)} obras relacionadas en las colecciones del mundo y todas las obras de cada artista en los museos, en la misma página →",
+                       f"{fine(n)} obras más en las colecciones del mundo",
+                       "Obras de los mismos artistas y del mismo tema en los grandes museos, de la más antigua a la más reciente.",
+                       f"Todas las obras: {fine(propres + n)}…",
+                       f"Esta página las muestra todas: primero las {propres} de la visita 3D, luego las de las colecciones del mundo y después todas las obras de cada artista en los museos del mundo. Aparecen a medida que se baja."),
             }[code]
             css = f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>'
             # La présentation : l'annonce, qui mène à la page des œuvres.
@@ -355,10 +369,16 @@ def main():
             if page.exists():
                 texte = page.read_text(encoding="utf-8")
                 if 'id="oeuvres-liees"' not in texte and "</main>" in texte:
-                    bloc = (f'<section class="monde monde-suite" id="oeuvres-liees" data-exposition="{slug}">'
-                            f'<h2 class="section-title">{titre_page}</h2><p class="lead">{phrase_page}</p>'
-                            f'<p class="monde-compte"></p><div class="monde-grille"></div></section>')
+                    bloc = (f'<section class="monde monde-suite" id="oeuvres-liees" data-exposition="{slug}" '
+                            f'data-visite="{propres}" data-artistes="{artistes_json}">'
+                            f'<section class="monde-liees-collections"><h2 class="section-title">{titre_page}</h2>'
+                            f'<p class="lead">{phrase_page}</p><p class="monde-compte"></p><div class="monde-grille"></div></section>'
+                            '</section>')
                     texte = texte.replace("</main>", bloc + "</main>", 1)
+                    # En tête de page : le nombre de toutes les œuvres (complété par liees.js).
+                    annonce = (f'<p class="monde-total"><strong id="total-oeuvres">{total}</strong> {suite} '
+                               f'<a href="#oeuvres-liees">↓</a></p>')
+                    texte = texte.replace("</h1>", "</h1>" + annonce, 1)
                     if "monde/app.css" not in texte:
                         texte = texte.replace("</head>", css, 1)
                     texte = texte.replace("</body>", f'<script type="module" src="{base}/monde/liees.js"></script></body>', 1)

@@ -1,40 +1,113 @@
-// Sur la page « Œuvres » d'une exposition : toutes ses œuvres. Après celles de la visite 3D
-// (écrites dans la page), toutes les œuvres liées des collections du monde, de la plus
-// ancienne à la plus récente : elles s'affichent d'elles-mêmes à mesure que l'on descend,
-// sans bouton. Les données (monde/donnees/expo-<nom>.json) sont écrites par
-// outils/monde_web.py : [identifiant, titre, artiste, date, vignette du musée ou rien].
-import { echapper, lien, lienPage, nombre, t } from "./commun.js";
+// Sur la page « Œuvres » d'une exposition : toutes les œuvres. Après celles de la visite 3D
+// (écrites dans la page) viennent :
+//  1. toutes les œuvres liées des collections du monde (monde/donnees/expo-<nom>.json,
+//     écrit par outils/monde_web.py : [identifiant, titre, artiste, date, vignette ou rien]) ;
+//  2. pour chaque artiste de l'exposition, toutes ses autres œuvres libres de droits dans
+//     les musées du monde, par l'API ARTEON (direct.js : Chicago, Cleveland, New York,
+//     Copenhague, Minneapolis, Europeana, Wikidata).
+// Tout s'affiche de soi-même à mesure que l'on descend, sans bouton.
+import { echapper, lien, lienPage, nombre, plier, t } from "./commun.js";
+import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { jsonGarde } from "./memoire.js";
 
 const PAR_LOT = 240;
 const zone = document.getElementById("oeuvres-liees");
+const oeuvresN = (n) => (n === 1 ? t("1 œuvre", "1 work", "1 obra") : `${nombre(n)} ${t("œuvres", "works", "obras")}`);
 
-async function ouvrir() {
-  const nom = zone.dataset.exposition;
-  const grille = zone.querySelector(".monde-grille"), compte = zone.querySelector(".monde-compte");
-  let oeuvres;
-  try {
-    oeuvres = await jsonGarde(lien(`monde/donnees/expo-${nom}.json`));
-  } catch {
-    compte.textContent = t("Les collections n'ont pas répondu. Réessayer plus tard.", "The collections did not answer. Try again later.", "Las colecciones no respondieron. Inténtelo más tarde.");
-    return;
-  }
-  const inconnu = t("Artiste inconnu", "Unknown artist", "Artista desconocido");
-  const carte = ([id, titre, artiste, date, vu]) => `<a class="monde-carte" href="${lienPage(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${echapper(vu || lien(`monde/v/${id}.webp`))}" alt=""><b>${echapper(titre)}</b><span>${echapper([artiste === "Artiste inconnu" ? inconnu : artiste, date].filter(Boolean).join(" · "))}</span></a>`;
-  let montrees = 0;
+/** Une grille qui se remplit à mesure que sa fin approche de l'écran. */
+function derouler(section, oeuvres, carte, compte) {
+  const grille = section.querySelector(".monde-grille");
   const fin = document.createElement("div");
-  zone.append(fin);
+  section.append(fin);
+  let montrees = 0;
   const plus = () => {
     if (montrees >= oeuvres.length) return;
     grille.insertAdjacentHTML("beforeend", oeuvres.slice(montrees, montrees + PAR_LOT).map(carte).join(""));
     montrees = Math.min(montrees + PAR_LOT, oeuvres.length);
     compte.textContent = montrees < oeuvres.length
       ? `${nombre(montrees)} / ${nombre(oeuvres.length)} ${t("œuvres affichées : la suite arrive en descendant", "works shown: more appear as you scroll", "obras mostradas: aparecen más al bajar")}`
-      : `${nombre(oeuvres.length)} ${t("œuvres, toutes affichées", "works, all shown", "obras, todas mostradas")}`;
+      : `${oeuvresN(oeuvres.length)}, ${t("toutes affichées", "all shown", "todas mostradas")}`;
   };
   plus();
-  // La suite, dès que la fin de la grille approche de l'écran.
   new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) plus(); }, { rootMargin: "1500px" }).observe(fin);
+}
+
+/** La clé d'un artiste, comme dans Explorer (explorer.js, cleNom). */
+function cleDe(alias) {
+  return (nom) => {
+    let n = String(nom ?? "").trim();
+    const m = /^(.+?)\s*\((.+)\)$/.exec(n);
+    if (m) {
+      const premier = plier(m[1]).split(/\s+/)[0];
+      n = plier(m[2]).includes(premier) ? m[2] : m[1];
+    }
+    const k = plier(n).replace(/[-‐–'’.,]/g, " ").replace(/\s+/g, " ").trim();
+    return alias[k] ?? k;
+  };
+}
+
+async function ouvrir() {
+  const nom = zone.dataset.exposition;
+  const artistes = JSON.parse(zone.dataset.artistes || "[]");
+  const total = document.getElementById("total-oeuvres");
+  const comptes = { visite: Number(zone.dataset.visite || 0), collections: 0, musees: 0 };
+  const annoncer = () => {
+    if (!total) return;
+    const n = comptes.visite + comptes.collections + comptes.musees;
+    total.textContent = `${t("Toutes les œuvres", "All the works", "Todas las obras")} : ${nombre(n)}${comptes.enCours ? "…" : ""}`;
+  };
+
+  // 1. Les œuvres liées des collections du monde.
+  const liees = await jsonGarde(lien(`monde/donnees/expo-${nom}.json`)).catch(() => []);
+  const vues = new Set(liees.map((o) => o[0]));
+  comptes.collections = liees.length;
+  comptes.enCours = artistes.length > 0;
+  annoncer();
+  const premiere = zone.querySelector(".monde-liees-collections");
+  if (liees.length && premiere) {
+    const inconnu = t("Artiste inconnu", "Unknown artist", "Artista desconocido");
+    derouler(premiere, liees, ([id, titre, artiste, date, vu]) => `<a class="monde-carte" href="${lienPage(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${echapper(vu || lien(`monde/v/${id}.webp`))}" alt=""><b>${echapper(titre)}</b><span>${echapper([artiste === "Artiste inconnu" ? inconnu : artiste, date].filter(Boolean).join(" · "))}</span></a>`,
+    premiere.querySelector(".monde-compte"));
+  } else if (premiere) {
+    premiere.hidden = true;
+  }
+
+  // 2. Toutes les autres œuvres de chaque artiste, dans les musées du monde : une section
+  // par artiste, demandée à l'API quand elle approche de l'écran.
+  const [alias, musees] = await Promise.all([
+    jsonGarde(lien("monde/alias.json")).catch(() => ({})),
+    nomsDesMusees().catch(() => ({})),
+  ]);
+  const cle = cleDe(alias);
+  let restants = artistes.length;
+  const fini = () => { restants -= 1; if (restants <= 0) { comptes.enCours = false; annoncer(); } };
+  for (const artiste of artistes) {
+    const section = document.createElement("section");
+    section.className = "monde-liees-artiste";
+    section.innerHTML = `<h2 class="section-title">${echapper(artiste)} · ${t("toutes ses œuvres dans les musées du monde", "all their works in the world's museums", "todas sus obras en los museos del mundo")}</h2>
+      <p class="monde-compte">${t("Recherche dans les musées…", "Searching the museums…", "Buscando en los museos…")}</p><div class="monde-grille"></div>`;
+    zone.append(section);
+    const compte = section.querySelector(".monde-compte");
+    let demande = false;
+    const observateur = new IntersectionObserver(async (e) => {
+      if (demande || !e.some((x) => x.isIntersecting)) return;
+      demande = true;
+      observateur.disconnect();
+      try {
+        const r = await oeuvresEnDirect(artiste, cle, alias);
+        const oeuvres = (r.oeuvres || []).filter((o) => !vues.has(o.id) && vues.add(o.id));
+        if (!oeuvres.length) { section.hidden = true; fini(); return; }
+        comptes.musees += oeuvres.length;
+        annoncer();
+        derouler(section, oeuvres, (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · ${(musees[o.musee] || "").split(" (")[0]}` : musees[o.musee]].filter(Boolean).join(" · "))}</span></a>`, compte);
+      } catch {
+        compte.textContent = t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not answer. Try again later.", "Los museos no respondieron. Inténtelo más tarde.");
+      }
+      fini();
+    }, { rootMargin: "1200px" });
+    observateur.observe(section);
+  }
+  if (!artistes.length) { comptes.enCours = false; annoncer(); }
 }
 
 if (zone) ouvrir();
