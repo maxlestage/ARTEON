@@ -18,13 +18,15 @@ struct SearchView: View {
             if trimmed.isEmpty {
                 VStack(alignment: .leading, spacing: 16) {
                     ContentUnavailableView(
-                        "Chercher dans tout le musée",
+                        L("Chercher dans tout le musée", "Search the whole museum", "Buscar en todo el museo"),
                         systemImage: "magnifyingglass",
-                        description: Text("Un titre, un artiste, un thème, une technique, un musée, une année…")
+                        description: Text(L("Un titre, un artiste, un thème, une technique, un musée, une année…",
+                                            "A title, an artist, a theme, a technique, a museum, a year…",
+                                            "Un título, un artista, un tema, una técnica, un museo, un año…"))
                     )
                     .padding(.top, 30)
                     if let themes = store.index?.themes.prefix(18), !themes.isEmpty {
-                        Text("Idées")
+                        Text(L("Idées", "Ideas", "Ideas"))
                             .font(.headline)
                         FlowLayout {
                             ForEach(Array(themes)) { theme in
@@ -41,7 +43,7 @@ struct SearchView: View {
             } else {
                 VStack(alignment: .leading, spacing: 14) {
                     if !exhibitions.isEmpty {
-                        Text(exhibitions.count == 1 ? "1 exposition" : "\(exhibitions.count) expositions")
+                        Text(Lcount(exhibitions.count, ("exposition", "expositions"), ("exhibition", "exhibitions"), ("exposición", "exposiciones")))
                             .font(.headline)
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 14) {
@@ -56,7 +58,7 @@ struct SearchView: View {
                         .scrollClipDisabled()
                     }
                     if !artists.isEmpty {
-                        Text(artists.count == 1 ? "1 artiste" : "\(artists.count) artistes")
+                        Text(Lcount(artists.count, ("artiste", "artistes"), ("artist", "artists"), ("artista", "artistas")))
                             .font(.headline)
                         VStack(spacing: 0) {
                             ForEach(artists.prefix(12)) { artist in
@@ -73,17 +75,19 @@ struct SearchView: View {
                         .background(Color.card, in: .rect(cornerRadius: 18))
                     }
                     if !works.isEmpty {
-                        Text(works.count == 1 ? "1 œuvre dans les expositions" : "\(works.count) œuvres dans les expositions")
+                        Text(worksCount(works.count) + L(" dans les expositions", " in the exhibitions", " en las exposiciones"))
                             .font(.headline)
                         WorkGrid(items: works, showExhibition: true)
                     }
                     if !world.isEmpty {
                         HStack {
-                            Text(world.count > 60 ? "Dans les collections du monde" : (world.count == 1 ? "1 œuvre dans les collections du monde" : "\(world.count) œuvres dans les collections du monde"))
+                            Text(world.count > 60
+                                 ? L("Dans les collections du monde", "In the world collections", "En las colecciones del mundo")
+                                 : worksCount(world.count) + L(" dans les collections du monde", " in the world collections", " en las colecciones del mundo"))
                                 .font(.headline)
                             Spacer()
                             if world.count > 60 {
-                                NavigationLink("Tout voir", value: Route.collection(.search(trimmed)))
+                                NavigationLink(L("Tout voir", "See all", "Ver todo"), value: Route.collection(.search(trimmed)))
                             }
                         }
                         .padding(.top, 8)
@@ -94,8 +98,8 @@ struct SearchView: View {
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Rechercher")
-        .searchable(text: $query, prompt: "Monet, nuit, estampe, Louvre, 1889…")
+        .navigationTitle(L("Rechercher", "Search", "Buscar"))
+        .searchable(text: $query, prompt: L("Monet, nuit, estampe, Louvre, 1889…", "Monet, night, print, Louvre, 1889…", "Monet, noche, estampa, Louvre, 1889…"))
     }
 }
 
@@ -118,15 +122,17 @@ struct FavoritesView: View {
             VStack(alignment: .leading, spacing: 16) {
                 if favorites.isEmpty && worldFavorites.isEmpty {
                     ContentUnavailableView(
-                        "Pas encore de favoris",
+                        L("Pas encore de favoris", "No favourites yet", "Aún no hay favoritos"),
                         systemImage: "heart",
-                        description: Text("Touchez le cœur d'une œuvre pour la retrouver ici.")
+                        description: Text(L("Touchez le cœur d'une œuvre pour la retrouver ici.",
+                                            "Tap the heart on a work to find it here.",
+                                            "Toque el corazón de una obra para encontrarla aquí."))
                     )
                     .padding(.top, 40)
                 } else {
                     WorkGrid(items: favorites, showExhibition: true)
                     if !worldFavorites.isEmpty {
-                        Text("Dans les collections du monde")
+                        Text(L("Dans les collections du monde", "In the world collections", "En las colecciones del mundo"))
                             .font(.headline)
                             .padding(.top, 8)
                         CollectionGrid(works: worldFavorites)
@@ -134,10 +140,10 @@ struct FavoritesView: View {
                 }
                 if !history.isEmpty || !worldHistory.isEmpty {
                     HStack {
-                        Text("Vues récemment")
+                        Text(L("Vues récemment", "Recently viewed", "Vistas recientemente"))
                             .font(.title2.bold())
                         Spacer()
-                        Button("Effacer", role: .destructive) {
+                        Button(L("Effacer", "Clear", "Borrar"), role: .destructive) {
                             withAnimation { store.clearHistory() }
                         }
                         .font(.subheadline)
@@ -152,16 +158,16 @@ struct FavoritesView: View {
             .padding()
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Favoris")
+        .navigationTitle(L("Favoris", "Favourites", "Favoritos"))
         .toolbar {
             if !favorites.isEmpty {
                 ToolbarItem(placement: .primaryAction) {
-                    Button("Diaporama", systemImage: "play.rectangle") { slideshow = true }
+                    Button(L("Diaporama", "Slideshow", "Diapositivas"), systemImage: "play.rectangle") { slideshow = true }
                 }
             }
         }
         .fullScreenCover(isPresented: $slideshow) {
-            SlideshowView(title: "Mes favoris", items: favorites.map { ($0.1, $0.2) })
+            SlideshowView(title: L("Mes favoris", "My favourites", "Mis favoritos"), items: favorites.map { ($0.1, $0.2) })
         }
     }
 }

@@ -41,13 +41,43 @@ private let live: Catalogue? = {
     #expect(yearValue("date inconnue") == nil)
 }
 
+@Test func lesDatesDesCartelsTraduitsSeLisent() {
+    // Les catalogues anglais et espagnol (en/catalogue.json, es/catalogue.json).
+    #expect(yearValue("c. 2090 BC") == -2090)
+    #expect(yearValue("c. 1386–1330 B.C.") == -1386)
+    #expect(yearValue("AD 90–120") == 90)
+    #expect(yearValue("12th century") == 1150)
+    #expect(yearValue("early 20th century (?)") == 1950)
+    #expect(yearValue("1st century AD") == 50)
+    #expect(yearValue("3rd–2nd century BC") == -250)
+    #expect(yearValue("c. 1890") == 1890)
+    #expect(yearValue("1870s") == 1870)
+    #expect(yearValue("Formed about 4.5 billion years ago") == -1_000_000)
+    #expect(yearValue("hacia 2090 a. C.") == -2090)
+    #expect(yearValue("siglo I d. C.") == 50)
+    #expect(yearValue("Siglo XIX") == 1850)
+    #expect(yearValue("finales del siglo XII – principios del XIII") == 1150)
+    #expect(yearValue("hoja del siglo XVIII; empuñadura y vaina fechadas en 1819") == 1750)
+    #expect(yearValue("Formado hace unos 4500 millones de años") == -1_000_000)
+    #expect(yearValue("hacia 1540–1570") == 1540)
+}
+
 @Test func lesSieclesSEcriventEnChiffresRomains() {
-    #expect(centuryLabel(1888) == "XIXᵉ siècle")
-    #expect(centuryLabel(1900) == "XIXᵉ siècle")
-    #expect(centuryLabel(1901) == "XXᵉ siècle")
-    #expect(centuryLabel(50) == "Iᵉʳ siècle")
-    #expect(centuryLabel(-2090) == "XXIᵉ siècle av. J.-C.")
-    #expect(centuryLabel(-1_000_000) == "Avant l'histoire")
+    #expect(centuryLabel(1888, in: .fr) == "XIXᵉ siècle")
+    #expect(centuryLabel(1900, in: .fr) == "XIXᵉ siècle")
+    #expect(centuryLabel(1901, in: .fr) == "XXᵉ siècle")
+    #expect(centuryLabel(50, in: .fr) == "Iᵉʳ siècle")
+    #expect(centuryLabel(-2090, in: .fr) == "XXIᵉ siècle av. J.-C.")
+    #expect(centuryLabel(-1_000_000, in: .fr) == "Avant l'histoire")
+    #expect(centuryLabel(1888, in: .en) == "19th century")
+    #expect(centuryLabel(50, in: .en) == "1st century")
+    #expect(centuryLabel(1150, in: .en) == "12th century")
+    #expect(centuryLabel(-2090, in: .en) == "21st century BC")
+    #expect(centuryLabel(250, in: .en) == "3rd century")
+    #expect(centuryLabel(-1_000_000, in: .en) == "Prehistory")
+    #expect(centuryLabel(1888, in: .es) == "Siglo XIX")
+    #expect(centuryLabel(-450, in: .es) == "Siglo V a. C.")
+    #expect(centuryLabel(-1_000_000, in: .es) == "Prehistoria")
     #expect(romanNumeral(1494) == "MCDXCIV")
     #expect(centuryRank(-1_000_000) < centuryRank(-2090))
     #expect(centuryRank(-50) < centuryRank(50))
@@ -123,10 +153,12 @@ private let live: Catalogue? = {
     let c = try fixture()
     let ex = try #require(c.exhibition("van-gogh"))
     let work = try #require(ex.works.first { $0.slug == "tournesols" })
-    let text = work.spokenText(in: ex)
+    let text = work.spokenText(in: ex, language: .fr)
     #expect(text.hasPrefix("Les Tournesols."))
     #expect(text.contains("Ce que l'on voit."))
     #expect(text.contains(work.notice.description))
+    #expect(work.spokenText(in: ex, language: .en).contains("What we see."))
+    #expect(work.spokenText(in: ex, language: .es).contains("Lo que vemos."))
 }
 
 @MainActor
@@ -163,6 +195,35 @@ func leVraiMuseeEnLigneEstComplet() throws {
         #expect(Set(q.choices).count == 4 && q.choices.contains(q.answer))
     }
     #expect(c.search("nuit etoilee").contains { $0.1.slug == "nuit-etoilee" })
+}
+
+/// Les catalogues traduits du site (`en/catalogue.json`, `es/catalogue.json`), quand le
+/// réseau répond et qu'ils sont publiés.
+private let translated: [Catalogue] = {
+    #if os(Linux)
+    return []
+    #else
+    return AppLanguage.allCases.filter { $0 != .fr }.compactMap { language in
+        guard let data = try? Data(contentsOf: Site.url(language.catalogueFile)) else { return nil }
+        return try? Catalogue.decode(data)
+    }
+    #endif
+}()
+
+@Test(.enabled(if: !translated.isEmpty))
+func lesCataloguesTraduitsSeLisent() throws {
+    for c in translated {
+        #expect(c.exhibitions.count >= 50)
+        let index = MuseumIndex(c)
+        // Les dates traduites (« c. 1890 », « 12th century », « siglo XII ») se lisent aussi.
+        #expect(index.undated.count * 20 < c.workCount, "sans date : \(index.undated.map(\.text))")
+        #expect(index.wings.flatMap(\.exhibitions).count == c.exhibitions.count)
+        // Les images sont les mêmes dans toutes les langues (des chemins sans la langue).
+        #expect(c.allWorks.allSatisfy { !$0.1.image.hasPrefix("en/") && !$0.1.image.hasPrefix("es/") })
+        if let fr = live {
+            #expect(Set(c.allWorks.map(\.1.image)) == Set(fr.allWorks.map(\.1.image)))
+        }
+    }
 }
 
 @Test func lesMuseesSeRangentParPays() throws {
@@ -293,10 +354,12 @@ private func worldFixture() throws -> WorldCollections {
 
 @Test func lAnnuaireDesArtistesSeLit() {
     let data = Data(#"[["Rembrandt",1606,1669,1043],["Maître de Flémalle",null,1444,12],["Anna Ancher",1859,null,3],["",1,2,3]]"#.utf8)
-    let artists = DirectoryArtist.parse(data)
+    let artists = DirectoryArtist.parse(data, language: .fr)
     #expect(artists.count == 3)
     #expect(artists[0].life == "1606–1669" && artists[0].works == 1043)
     #expect(artists[1].life == "mort en 1444" && artists[1].sort == "maitre de flemalle")
     #expect(artists[2].life == "né en 1859")
+    #expect(DirectoryArtist.parse(data, language: .en)[2].life == "born 1859")
+    #expect(DirectoryArtist.parse(data, language: .es)[1].life == "murió en 1444")
     #expect(artists[0].key == ArtistKey.of("Rembrandt van Rijn") || artists[0].key == "rembrandt")
 }

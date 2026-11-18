@@ -24,7 +24,9 @@ struct MuseumsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 if filter.isEmpty {
-                    Text("Chaque exposition d'ARTEON est installée dans la reproduction d'un vrai musée : sa façade, ses enfilades, ses verrières, sa lumière. Le Grand Musée ARTEON, lui, n'existe nulle part ailleurs.")
+                    Text(L("Chaque exposition d'ARTEON est installée dans la reproduction d'un vrai musée : sa façade, ses enfilades, ses verrières, sa lumière. Le Grand Musée ARTEON, lui, n'existe nulle part ailleurs.",
+                           "Each ARTEON exhibition is set in the reproduction of a real museum: its façade, its suites of rooms, its glass roofs, its light. The Grand ARTEON Museum, on the other hand, exists nowhere else.",
+                           "Cada exposición de ARTEON se instala en la reproducción de un museo real: su fachada, sus enfiladas, sus cristaleras, su luz. El Gran Museo ARTEON, en cambio, no existe en ningún otro lugar."))
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: 760, alignment: .leading)
 
@@ -33,11 +35,11 @@ struct MuseumsView: View {
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
-                            StatCard(value: store.index?.buildings.count ?? 0, label: "musées reproduits", color: .arteonBlue)
-                            StatCard(value: store.index?.countries.count ?? 0, label: "pays", color: .teal)
-                            StatCard(value: 1, label: "musée original", color: .arteonSun)
+                            StatCard(value: store.index?.buildings.count ?? 0, label: L("musées reproduits", "museums reproduced", "museos reproducidos"), color: .arteonBlue)
+                            StatCard(value: store.index?.countries.count ?? 0, label: L("pays", "countries", "países"), color: .teal)
+                            StatCard(value: 1, label: L("musée original", "original museum", "museo original"), color: .arteonSun)
                         if let collections = store.collections {
-                            StatCard(value: collections.count, label: "œuvres des collections", color: .orange)
+                            StatCard(value: collections.count, label: L("œuvres des collections", "works in the collections", "obras de las colecciones"), color: .orange)
                         }
                         }
                     }
@@ -70,8 +72,8 @@ struct MuseumsView: View {
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Musées")
-        .searchable(text: $filter, prompt: "Un musée, une ville, un architecte…")
+        .navigationTitle(L("Musées", "Museums", "Museos"))
+        .searchable(text: $filter, prompt: L("Un musée, une ville, un architecte…", "A museum, a city, an architect…", "Un museo, una ciudad, un arquitecto…"))
     }
 }
 
@@ -173,32 +175,32 @@ struct BuildingView: View {
 
                     VStack(alignment: .leading, spacing: 18) {
                         Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 16, verticalSpacing: 6) {
-                            fact("Architecte", building.museum.architect)
-                            fact("Construction", building.museum.built)
-                            fact("Pays", building.country)
+                            fact(L("Architecte", "Architect", "Arquitecto"), building.museum.architect)
+                            fact(L("Construction", "Construction", "Construcción"), building.museum.built)
+                            fact(L("Pays", "Country", "País"), building.country)
                         }
 
                         ListenButton(
                             id: "musee/\(building.museum.name)",
                             text: { "\(building.museum.name), \(building.museum.city). \(building.museum.presentation)\n\(building.museum.here)" },
-                            label: "Écouter la visite du bâtiment"
+                            label: L("Écouter la visite du bâtiment", "Listen to the tour of the building", "Escuchar la visita del edificio")
                         )
                         .buttonStyle(.glass)
 
                         if !building.museum.presentation.isEmpty {
-                            section("Le vrai musée", building.museum.presentation, accent: accent)
+                            section(L("Le vrai musée", "The real museum", "El museo real"), building.museum.presentation, accent: accent)
                         }
                         if !building.museum.here.isEmpty {
-                            section("Ce qu'ARTEON lui emprunte", building.museum.here, accent: accent)
+                            section(L("Ce qu'ARTEON lui emprunte", "What ARTEON borrows from it", "Lo que ARTEON toma de él"), building.museum.here, accent: accent)
                         }
 
                         ForEach(exhibitions) { ex in
                             VStack(alignment: .leading, spacing: 12) {
-                                Text(exhibitions.count > 1 ? ex.name : "Le plan")
+                                Text(exhibitions.count > 1 ? ex.name : L("Le plan", "The floor plan", "El plano"))
                                     .font(.title2.bold())
                                     .padding(.top, 10)
                                 if exhibitions.count > 1 {
-                                    Text("Une des \(exhibitions.count) expositions installées dans ce bâtiment.")
+                                    Text(L("Une des \(exhibitions.count) expositions installées dans ce bâtiment.", "One of the \(exhibitions.count) exhibitions set in this building.", "Una de las \(exhibitions.count) exposiciones instaladas en este edificio."))
                                         .font(.subheadline)
                                         .foregroundStyle(.secondary)
                                 }
@@ -207,13 +209,13 @@ struct BuildingView: View {
                                 }
                                 HStack(spacing: 10) {
                                     NavigationLink(value: Route.gallery(ex.slug, work: nil)) {
-                                        Label("Entrer en 3D", systemImage: "view.3d")
+                                        Label(L("Entrer en 3D", "Enter in 3D", "Entrar en 3D"), systemImage: "view.3d")
                                             .font(.headline)
                                     }
                                     .buttonStyle(.glassProminent)
                                     .tint(ex.accentColor)
                                     NavigationLink(value: Route.exhibition(ex.slug)) {
-                                        Label("L'exposition", systemImage: "photo.on.rectangle")
+                                        Label(L("L'exposition", "The exhibition", "La exposición"), systemImage: "photo.on.rectangle")
                                     }
                                     .buttonStyle(.glass)
                                 }
@@ -230,7 +232,7 @@ struct BuildingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onDisappear { narrator.stop() }
         } else {
-            ContentUnavailableView("Musée introuvable", systemImage: "building.columns")
+            ContentUnavailableView(L("Musée introuvable", "Museum not found", "Museo no encontrado"), systemImage: "building.columns")
         }
     }
 
@@ -268,13 +270,13 @@ struct GrandMuseumCard: View {
             HStack(spacing: 18) {
                 ArteonLogo(size: 64)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("MUSÉE ORIGINAL")
+                    Text(L("MUSÉE ORIGINAL", "ORIGINAL MUSEUM", "MUSEO ORIGINAL"))
                         .font(.caption.bold())
                         .tracking(1.5)
                         .foregroundStyle(Color.arteonSun)
-                    Text("Le Grand Musée ARTEON")
+                    Text(L("Le Grand Musée ARTEON", "The Grand ARTEON Museum", "El Gran Museo ARTEON"))
                         .font(.title2.bold())
-                    Text("Un bâtiment imaginaire : \(catalogue.exhibitions.count) pavillons en six ailes, de la Terre aux avant-gardes.")
+                    Text(L("Un bâtiment imaginaire : \(catalogue.exhibitions.count) pavillons en six ailes, de la Terre aux avant-gardes.", "An imaginary building: \(catalogue.exhibitions.count) pavilions in six wings, from the Earth to the avant-gardes.", "Un edificio imaginario: \(catalogue.exhibitions.count) pabellones en seis alas, de la Tierra a las vanguardias."))
                         .font(.subheadline)
                         .opacity(0.85)
                 }
@@ -317,7 +319,7 @@ struct GrandMuseumView: View {
                     wingView(wing, number: i + 1)
                 }
                 corridor
-                Text("Sortie · Jardin des sculptures")
+                Text(L("Sortie · Jardin des sculptures", "Exit · Sculpture garden", "Salida · Jardín de esculturas"))
                     .font(.caption.bold())
                     .foregroundStyle(ink.opacity(0.7))
                     .padding(.vertical, 12)
@@ -328,20 +330,22 @@ struct GrandMuseumView: View {
         }
         .background(paper)
         .environment(\.colorScheme, .light)
-        .navigationTitle("Le Grand Musée ARTEON")
+        .navigationTitle(L("Le Grand Musée ARTEON", "The Grand ARTEON Museum", "El Gran Museo ARTEON"))
         .navigationBarTitleDisplayMode(.inline)
     }
 
     private func hall(wings: [Wing]) -> some View {
         VStack(spacing: 10) {
             ArteonLogo(size: 56)
-            Text("Le Grand Musée ARTEON")
+            Text(L("Le Grand Musée ARTEON", "The Grand ARTEON Museum", "El Gran Museo ARTEON"))
                 .font(.system(.largeTitle, design: .serif).bold())
-            Text("Un musée original, qui n'existe que dans l'application : \(catalogue.exhibitions.count) pavillons, chacun dans la reproduction d'un vrai musée, réunis en \(wings.count) ailes. On y entre par le hall, on suit le temps.")
+            Text(L("Un musée original, qui n'existe que dans l'application : \(catalogue.exhibitions.count) pavillons, chacun dans la reproduction d'un vrai musée, réunis en \(wings.count) ailes. On y entre par le hall, on suit le temps.",
+                   "An original museum that exists only in the app: \(catalogue.exhibitions.count) pavilions, each in the reproduction of a real museum, brought together in \(wings.count) wings. You enter through the hall and follow time.",
+                   "Un museo original, que solo existe en la aplicación: \(catalogue.exhibitions.count) pabellones, cada uno en la reproducción de un museo real, reunidos en \(wings.count) alas. Se entra por el vestíbulo y se sigue el tiempo."))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(ink.opacity(0.75))
                 .frame(maxWidth: 620)
-            Label("Hall d'entrée", systemImage: "door.left.hand.open")
+            Label(L("Hall d'entrée", "Entrance hall", "Vestíbulo"), systemImage: "door.left.hand.open")
                 .font(.caption.bold())
                 .padding(.horizontal, 14)
                 .padding(.vertical, 6)
@@ -363,7 +367,7 @@ struct GrandMuseumView: View {
     private func wingView(_ wing: Wing, number: Int) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("AILE \(romanNumeral(number))")
+                Text(L("AILE", "WING", "ALA") + " \(romanNumeral(number))")
                     .font(.caption.bold())
                     .tracking(1.2)
                     .foregroundStyle(ink.opacity(0.6))
@@ -436,15 +440,17 @@ struct WorldCollectionsCard: View {
                         .frame(width: 64, height: 64)
                         .background(.white.opacity(0.15), in: .rect(cornerRadius: 16))
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("DOMAINE PUBLIC")
+                        Text(L("DOMAINE PUBLIC", "PUBLIC DOMAIN", "DOMINIO PÚBLICO"))
                             .font(.caption.bold())
                             .tracking(1.5)
                             .opacity(0.8)
-                        Text("Les collections du monde")
+                        Text(L("Les collections du monde", "The world collections", "Las colecciones del mundo"))
                             .font(.title2.bold())
                         Text(store.collections.map {
-                            "\($0.count.formatted()) œuvres de \($0.collections.museums.count) grands musées."
-                        } ?? "Des dizaines de milliers d'œuvres du domaine public.")
+                            L("\($0.count.formatted()) œuvres de \($0.collections.museums.count) grands musées.",
+                              "\($0.count.formatted()) works from \($0.collections.museums.count) major museums.",
+                              "\($0.count.formatted()) obras de \($0.collections.museums.count) grandes museos.")
+                        } ?? L("Des dizaines de milliers d'œuvres du domaine public.", "Tens of thousands of public-domain works.", "Decenas de miles de obras de dominio público."))
                             .font(.subheadline)
                             .opacity(0.85)
                     }

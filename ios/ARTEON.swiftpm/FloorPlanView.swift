@@ -48,8 +48,9 @@ struct FloorPlanView: View {
         }
         .aspectRatio(b.width / b.height, contentMode: .fit)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Le plan du bâtiment : \(exhibition.rooms.filter { !$0.corridor }.count) salles")
-        .accessibilityHint("Les salles sont aussi listées sous le plan")
+        .accessibilityLabel(L("Le plan du bâtiment : ", "The floor plan of the building: ", "El plano del edificio: ")
+            + Lcount(exhibition.rooms.filter { !$0.corridor }.count, ("salle", "salles"), ("room", "rooms"), ("sala", "salas")))
+        .accessibilityHint(L("Les salles sont aussi listées sous le plan", "The rooms are also listed below the plan", "Las salas también se enumeran bajo el plano"))
     }
 
     private func draw(in context: inout GraphicsContext, scale: Double, offset: CGPoint) {
@@ -120,7 +121,7 @@ struct FloorPlanView: View {
                 in: CGRect(x: -9, y: -9, width: 18, height: 18)
             )
             context.draw(
-                Text("Entrée").font(.caption2.bold()).foregroundStyle(ink),
+                Text(L("Entrée", "Entrance", "Entrada")).font(.caption2.bold()).foregroundStyle(ink),
                 at: CGPoint(x: at.x, y: at.y + (e[3] < 0 ? 18 : -18))
             )
         }
@@ -156,11 +157,11 @@ struct BuildingPlan: View {
                 .environment(\.colorScheme, .light)
 
             HStack(spacing: 14) {
-                legend(color: exhibition.accentColor, text: "Tableaux", systemImage: "line.diagonal")
+                legend(color: exhibition.accentColor, text: L("Tableaux", "Paintings", "Cuadros"), systemImage: "line.diagonal")
                 if exhibition.works.contains(where: { $0.kind == .sculpture }) {
-                    legend(color: exhibition.accentColor, text: "Sculptures", systemImage: "circle.fill")
+                    legend(color: exhibition.accentColor, text: L("Sculptures", "Sculptures", "Esculturas"), systemImage: "circle.fill")
                 }
-                legend(color: .secondary, text: "Toucher une salle", systemImage: "hand.tap")
+                legend(color: .secondary, text: L("Toucher une salle", "Tap a room", "Toque una sala"), systemImage: "hand.tap")
             }
             .font(.caption)
             .foregroundStyle(.secondary)
@@ -171,11 +172,11 @@ struct BuildingPlan: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .firstTextBaseline) {
                         if let n = room.number {
-                            Text("Salle \(n)")
+                            Text(L("Salle \(n)", "Room \(n)", "Sala \(n)"))
                                 .font(.caption.bold())
                                 .foregroundStyle(exhibition.accentColor)
                         }
-                        Text(room.name.isEmpty ? (room.corridor ? "Un couloir" : "Une salle") : room.name)
+                        Text(room.name.isEmpty ? (room.corridor ? L("Un couloir", "A corridor", "Un pasillo") : L("Une salle", "A room", "Una sala")) : room.name)
                             .font(.headline)
                     }
                     if !room.theme.isEmpty {
@@ -184,7 +185,7 @@ struct BuildingPlan: View {
                             .foregroundStyle(.secondary)
                     }
                     if works.isEmpty {
-                        Text(room.corridor ? "Un passage entre les salles." : "Pas d'œuvre dans cette salle.")
+                        Text(room.corridor ? L("Un passage entre les salles.", "A passage between the rooms.", "Un paso entre las salas.") : L("Pas d'œuvre dans cette salle.", "No work in this room.", "No hay obras en esta sala."))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     } else {
@@ -201,7 +202,7 @@ struct BuildingPlan: View {
                         .scrollClipDisabled()
                     }
                     NavigationLink(value: Route.gallery(exhibition.slug, work: works.first?.slug)) {
-                        Label("Entrer dans cette salle en 3D", systemImage: "view.3d")
+                        Label(L("Entrer dans cette salle en 3D", "Enter this room in 3D", "Entrar en esta sala en 3D"), systemImage: "view.3d")
                     }
                     .buttonStyle(.glass)
                 }
@@ -212,7 +213,7 @@ struct BuildingPlan: View {
             }
 
             // Les salles en liste (et pour VoiceOver).
-            DisclosureGroup("Les \(exhibition.rooms.filter { !$0.corridor }.count) salles") {
+            DisclosureGroup(L("Les \(exhibition.rooms.filter { !$0.corridor }.count) salles", "The \(exhibition.rooms.filter { !$0.corridor }.count) rooms", "Las \(exhibition.rooms.filter { !$0.corridor }.count) salas")) {
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(Array(exhibition.rooms.enumerated()).filter { !$0.element.corridor }, id: \.offset) { item in
                         Button {
@@ -226,7 +227,7 @@ struct BuildingPlan: View {
                                 Text(item.element.name)
                                 Spacer()
                                 let count = exhibition.works.filter { $0.room == item.offset }.count
-                                Text(count == 1 ? "1 œuvre" : "\(count) œuvres")
+                                Text(worksCount(count))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }

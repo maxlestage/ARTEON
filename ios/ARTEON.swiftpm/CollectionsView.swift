@@ -12,22 +12,22 @@ struct CollectionsView: View {
                 content(index)
             } else if store.collectionsError && !store.loadingCollections {
                 ContentUnavailableView {
-                    Label("Les collections n'ont pas répondu", systemImage: "wifi.exclamationmark")
+                    Label(L("Les collections n'ont pas répondu", "The collections did not respond", "Las colecciones no han respondido"), systemImage: "wifi.exclamationmark")
                 } description: {
-                    Text("Tout passe par l'API ARTEON : il faut Internet.")
+                    Text(L("Tout passe par l'API ARTEON : il faut Internet.", "Everything comes from the ARTEON API: an Internet connection is needed.", "Todo pasa por la API de ARTEON: hace falta Internet."))
                 } actions: {
-                    Button("Réessayer", systemImage: "arrow.clockwise") {
+                    Button(L("Réessayer", "Try again", "Reintentar"), systemImage: "arrow.clockwise") {
                         Task { await store.loadCollections() }
                     }
                     .buttonStyle(.glassProminent)
                 }
             } else {
-                ProgressView("Ouverture des collections…")
+                ProgressView(L("Ouverture des collections…", "Opening the collections…", "Abriendo las colecciones…"))
                     .task { await store.loadCollections() }
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Collections du monde")
+        .navigationTitle(L("Collections du monde", "World collections", "Colecciones del mundo"))
     }
 
     @ViewBuilder
@@ -37,18 +37,20 @@ struct CollectionsView: View {
             if !trimmed.isEmpty {
                 let found = index.works(.search(trimmed), limit: 600)
                 VStack(alignment: .leading, spacing: 12) {
-                    Text(found.count >= 600 ? "Plus de 600 œuvres" : (found.count == 1 ? "1 œuvre" : "\(found.count) œuvres"))
+                    Text(found.count >= 600 ? L("Plus de 600 œuvres", "More than 600 works", "Más de 600 obras") : worksCount(found.count))
                         .foregroundStyle(.secondary)
                     CollectionGrid(works: found)
                 }
                 .padding()
             } else {
                 VStack(alignment: .leading, spacing: 24) {
-                    Text("\(index.count.formatted()) œuvres du domaine public, choisies dans les collections ouvertes de \(index.collections.museums.count) grands musées. Tout vient du site ARTEON ; l'image en grand vient du musée. Rien n'est gardé sur l'appareil.")
+                    Text(L("\(index.count.formatted()) œuvres du domaine public, choisies dans les collections ouvertes de \(index.collections.museums.count) grands musées. Tout vient du site ARTEON ; l'image en grand vient du musée. Rien n'est gardé sur l'appareil.",
+                           "\(index.count.formatted()) public-domain works, chosen from the open collections of \(index.collections.museums.count) major museums. Everything comes from the ARTEON website; the large image comes from the museum. Nothing is kept on the device.",
+                           "\(index.count.formatted()) obras de dominio público, elegidas en las colecciones abiertas de \(index.collections.museums.count) grandes museos. Todo viene del sitio ARTEON; la imagen grande viene del museo. Nada se guarda en el dispositivo."))
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: 760, alignment: .leading)
 
-                    section("Les musées") {
+                    section(L("Les musées", "The museums", "Los museos")) {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 260, maximum: 420), spacing: 14)], spacing: 14) {
                             ForEach(index.collections.museums) { museum in
                                 NavigationLink(value: Route.collection(.museum(museum.key))) {
@@ -59,23 +61,23 @@ struct CollectionsView: View {
                         }
                     }
 
-                    section("Aujourd'hui") {
+                    section(L("Aujourd'hui", "Today", "Hoy")) {
                         let day = Calendar.current.ordinality(of: .day, in: .era, for: Date()) ?? 0
                         CollectionRow(works: index.picks(16, day: day))
                     }
 
-                    section("Par catégorie") {
+                    section(L("Par catégorie", "By category", "Por categoría")) {
                         FlowLayout(spacing: 10) {
                             ForEach(index.categories, id: \.name) { item in
                                 NavigationLink(value: Route.collection(.category(item.name))) {
-                                    chip(item.name, item.count)
+                                    chip(CollectionCategory.display(item.name), item.count)
                                 }
                                 .buttonStyle(.plain)
                             }
                         }
                     }
 
-                    section("Par siècle") {
+                    section(L("Par siècle", "By century", "Por siglo")) {
                         FlowLayout(spacing: 10) {
                             ForEach(index.centuries, id: \.rank) { item in
                                 NavigationLink(value: Route.collection(.century(item.rank))) {
@@ -89,7 +91,7 @@ struct CollectionsView: View {
                 .padding()
             }
         }
-        .searchable(text: $query, prompt: "Dans \(index.count.formatted()) œuvres : un titre, un artiste…")
+        .searchable(text: $query, prompt: L("Dans \(index.count.formatted()) œuvres : un titre, un artiste…", "In \(index.count.formatted()) works: a title, an artist…", "En \(index.count.formatted()) obras: un título, un artista…"))
     }
 
     private func section<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
@@ -132,8 +134,8 @@ struct CollectionMuseumCard: View {
             Rectangle().fill(Color(hex: museum.color) ?? .arteonBlue).frame(height: 5)
             VStack(alignment: .leading, spacing: 4) {
                 Text(museum.name).font(.headline)
-                Text(museum.city).font(.subheadline).foregroundStyle(.secondary)
-                Text("\(museum.count.formatted()) œuvres")
+                Text(localizedCollectionText(museum.city)).font(.subheadline).foregroundStyle(.secondary)
+                Text(worksCount(museum.count))
                     .font(.caption.bold())
                     .foregroundStyle(Color(hex: museum.color) ?? .secondary)
             }
@@ -292,10 +294,10 @@ struct CollectionListView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     if case .museum(let key) = filter, let museum = index.collections.museum(key) {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(museum.city).font(.headline).foregroundStyle(.secondary)
-                            Text(museum.licence).font(.caption).foregroundStyle(.secondary)
+                            Text(localizedCollectionText(museum.city)).font(.headline).foregroundStyle(.secondary)
+                            Text(localizedCollectionText(museum.licence)).font(.caption).foregroundStyle(.secondary)
                             if let url = URL(string: museum.site) {
-                                Link(destination: url) { Label("Le site du musée", systemImage: "arrow.up.right.square") }
+                                Link(destination: url) { Label(L("Le site du musée", "The museum's website", "El sitio del museo"), systemImage: "arrow.up.right.square") }
                                     .font(.subheadline)
                             }
                         }
@@ -303,20 +305,20 @@ struct CollectionListView: View {
                     if categories.count > 1, !isCategory {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
-                                categoryButton("Tout", nil, all.count)
-                                ForEach(categories, id: \.0) { categoryButton($0.0, $0.0, $0.1) }
+                                categoryButton(L("Tout", "All", "Todo"), nil, all.count)
+                                ForEach(categories, id: \.0) { categoryButton(CollectionCategory.display($0.0), $0.0, $0.1) }
                             }
                         }
                         .scrollClipDisabled()
                     }
                     HStack {
-                        Text(works.count == 1 ? "1 œuvre" : "\(works.count.formatted()) œuvres")
+                        Text(worksCount(works.count))
                             .foregroundStyle(.secondary)
                         Spacer()
                     }
                     CollectionGrid(works: Array(works.prefix(shown)))
                     if works.count > shown {
-                        Button("Afficher plus (\((works.count - shown).formatted()) de plus)") {
+                        Button(L("Afficher plus (\((works.count - shown).formatted()) de plus)", "Show more (\((works.count - shown).formatted()) more)", "Mostrar más (\((works.count - shown).formatted()) más)")) {
                             shown += 300
                         }
                         .buttonStyle(.glass)
@@ -391,7 +393,7 @@ struct CollectionWorkView: View {
                     }
                 }
             }
-            .navigationTitle(museum?.name ?? "Collections")
+            .navigationTitle(museum?.name ?? L("Collections", "Collections", "Colecciones"))
             .navigationBarTitleDisplayMode(.inline)
             .onAppear { store.visited(work.key) }
             .task(id: id) { detailed = await store.details(listed) }
@@ -401,7 +403,7 @@ struct CollectionWorkView: View {
                     Button {
                         store.toggleFavorite(work.key)
                     } label: {
-                        Label(favorite ? "Retirer des favoris" : "Ajouter aux favoris",
+                        Label(favorite ? L("Retirer des favoris", "Remove from favourites", "Quitar de favoritos") : L("Ajouter aux favoris", "Add to favourites", "Añadir a favoritos"),
                               systemImage: favorite ? "heart.fill" : "heart")
                     }
                     .tint(favorite ? Color.red : nil)
@@ -409,7 +411,7 @@ struct CollectionWorkView: View {
                     ListenButton(id: work.key.text, text: { spoken(work, museum: museum) })
                     if let page = work.page, let url = URL(string: page) {
                         ShareLink(item: url, subject: Text(work.title), message: Text(work.byline)) {
-                            Label("Partager", systemImage: "square.and.arrow.up")
+                            Label(L("Partager", "Share", "Compartir"), systemImage: "square.and.arrow.up")
                         }
                     }
                 }
@@ -420,7 +422,7 @@ struct CollectionWorkView: View {
         } else if store.collections == nil {
             ProgressView().task { await store.loadCollections() }
         } else {
-            ContentUnavailableView("Œuvre introuvable", systemImage: "questionmark.square.dashed")
+            ContentUnavailableView(L("Œuvre introuvable", "Work not found", "Obra no encontrada"), systemImage: "questionmark.square.dashed")
         }
     }
 
@@ -431,15 +433,15 @@ struct CollectionWorkView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .contentShape(.rect)
             .onTapGesture { zooming = true }
-            .accessibilityLabel("\(work.title), toucher pour agrandir")
+            .accessibilityLabel(work.title + L(", toucher pour agrandir", ", tap to enlarge", ", toque para ampliar"))
             .accessibilityAddTraits(.isButton)
     }
 
     private func spoken(_ work: CollectionWork, museum: CollectionMuseum?) -> String {
-        var parts = ["\(work.title).", "\(work.artist)."]
+        var parts = ["\(work.title).", "\(displayArtist(work.artist))."]
         if let d = work.date { parts.append("\(d).") }
         if let m = work.medium { parts.append(m) }
-        if let museum { parts.append("\(museum.name), \(museum.city).") }
+        if let museum { parts.append("\(museum.name), \(localizedCollectionText(museum.city)).") }
         if let x = work.text { parts.append(x) }
         return parts.joined(separator: "\n")
     }
@@ -450,7 +452,7 @@ struct CollectionWorkView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(work.title).font(.title.bold())
             NavigationLink(value: Route.collection(.artist(work.artist))) {
-                Text(work.artist).font(.title3)
+                Text(displayArtist(work.artist)).font(.title3)
             }
             .padding(.top, 4)
             if let life = work.life {
@@ -458,25 +460,25 @@ struct CollectionWorkView: View {
             }
 
             Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 16, verticalSpacing: 6) {
-                fact("Date", work.date)
-                fact("Technique", work.medium)
-                fact("Mesures", work.dimensions)
-                fact("Catégorie", work.category)
-                fact("Origine", work.origin)
-                fact("Musée", museum.map { "\($0.name), \($0.city)" })
-                fact("Où la voir", work.gallery)
+                fact(L("Date", "Date", "Fecha"), work.date)
+                fact(L("Technique", "Medium", "Técnica"), work.medium)
+                fact(L("Mesures", "Dimensions", "Medidas"), work.dimensions)
+                fact(L("Catégorie", "Category", "Categoría"), work.category.map { CollectionCategory.display($0) })
+                fact(L("Origine", "Origin", "Origen"), work.origin)
+                fact(L("Musée", "Museum", "Museo"), museum.map { "\($0.name), \(localizedCollectionText($0.city))" })
+                fact(L("Où la voir", "Where to see it", "Dónde verla"), work.gallery)
             }
             .padding(.top, 16)
 
             if let x = work.text {
-                Text("Le musée la présente ainsi")
+                Text(L("Le musée la présente ainsi", "How the museum presents it", "Así la presenta el museo"))
                     .font(.headline)
                     .foregroundStyle(accent)
                     .padding(.top, 24)
                     .padding(.bottom, 8)
                 Text(x).lineSpacing(4)
                 if work.museum == "chicago" {
-                    Text("Texte : Art Institute of Chicago, CC BY 4.0.")
+                    Text(L("Texte : Art Institute of Chicago, CC BY 4.0.", "Text: Art Institute of Chicago, CC BY 4.0.", "Texto: Art Institute of Chicago, CC BY 4.0."))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .padding(.top, 4)
@@ -485,7 +487,7 @@ struct CollectionWorkView: View {
 
             let others = index.works(.artist(work.artist), limit: 30).filter { $0.id != work.id }
             if !others.isEmpty, work.artist != "Artiste inconnu" {
-                Text("Du même artiste")
+                Text(L("Du même artiste", "By the same artist", "Del mismo artista"))
                     .font(.headline)
                     .foregroundStyle(accent)
                     .padding(.top, 24)
@@ -494,19 +496,19 @@ struct CollectionWorkView: View {
             }
             if store.index?.artist(named: work.artist) != nil {
                 NavigationLink(value: Route.artist(work.artist)) {
-                    Label("\(work.artist) dans les expositions d'ARTEON", systemImage: "person.crop.rectangle.stack")
+                    Label(L("\(work.artist) dans les expositions d'ARTEON", "\(work.artist) in the ARTEON exhibitions", "\(work.artist) en las exposiciones de ARTEON"), systemImage: "person.crop.rectangle.stack")
                 }
                 .padding(.top, 12)
             }
 
             if let page = work.page, let url = URL(string: page) {
                 Link(destination: url) {
-                    Label("La fiche sur le site du musée", systemImage: "arrow.up.right.square")
+                    Label(L("La fiche sur le site du musée", "The record on the museum's website", "La ficha en el sitio del museo"), systemImage: "arrow.up.right.square")
                 }
                 .padding(.top, 20)
             }
             if let museum {
-                Text(museum.licence)
+                Text(localizedCollectionText(museum.licence))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .padding(.top, 8)
@@ -566,7 +568,7 @@ struct CollectionZoom: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Fermer", systemImage: "xmark") { dismiss() }
+                        Button(L("Fermer", "Close", "Cerrar"), systemImage: "xmark") { dismiss() }
                     }
                 }
         }

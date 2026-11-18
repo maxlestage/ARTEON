@@ -56,7 +56,7 @@ struct ArtistsView: View {
     }
 
     private var sections: [(letter: String, artists: [ArtistItem])] {
-        query.count >= 2 ? [("Résultats", found)] : letters
+        query.count >= 2 ? [(L("Résultats", "Results", "Resultados"), found)] : letters
     }
 
     /// N'importe quel artiste : un nom écrit qui n'est pas dans la liste se cherche dans les musées.
@@ -72,8 +72,8 @@ struct ArtistsView: View {
                     NavigationLink(value: Route.artist(name)) {
                         Label {
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Chercher « \(name) » dans tous les musées").font(.headline)
-                                Text("Son catalogue, en direct des musées du monde").font(.caption).foregroundStyle(.secondary)
+                                Text(L("Chercher « \(name) » dans tous les musées", "Search for “\(name)” in all museums", "Buscar «\(name)» en todos los museos")).font(.headline)
+                                Text(L("Son catalogue, en direct des musées du monde", "Their catalogue, live from the world's museums", "Su catálogo, en directo desde los museos del mundo")).font(.caption).foregroundStyle(.secondary)
                             }
                         } icon: {
                             Image(systemName: "globe")
@@ -101,8 +101,8 @@ struct ArtistsView: View {
                 ContentUnavailableView.search(text: filter)
             }
         }
-        .navigationTitle(all.isEmpty ? "Artistes" : "\(all.count.formatted()) artistes")
-        .searchable(text: $filter, placement: .navigationBarDrawer(displayMode: .always), prompt: "Un nom, un style, un siècle…")
+        .navigationTitle(all.isEmpty ? L("Artistes", "Artists", "Artistas") : Lcount(all.count, ("artiste", "artistes"), ("artist", "artists"), ("artista", "artistas")))
+        .searchable(text: $filter, placement: .navigationBarDrawer(displayMode: .always), prompt: L("Un nom, un style, un siècle…", "A name, a style, a century…", "Un nombre, un estilo, un siglo…"))
         .task { await store.loadDirectory() }
         .task(id: "\(store.index?.artists.count ?? 0)-\(store.collections?.count ?? 0)-\(store.directory.count)") {
             all = Self.merge(store.index?.artists ?? [], store.collections, store.directory)
@@ -118,6 +118,10 @@ struct ArtistsView: View {
         }
     }
 
+    /// La ligne d'un artiste des collections du monde, ou de l'annuaire, sans dates connues.
+    static let inWorldCollections = L("Dans les collections du monde", "In the world collections", "En las colecciones del mundo")
+    static let inWorldMuseums = L("Dans les musées du monde", "In the world's museums", "En los museos del mundo")
+
     /// Les artistes des expositions, des collections et de l'annuaire, réunis par clé, de A à Z.
     static func merge(_ museum: [ArtistEntry], _ world: CollectionIndex?, _ directory: [String: DirectoryArtist] = [:]) -> [ArtistItem] {
         var items: [String: ArtistItem] = [:]
@@ -132,17 +136,17 @@ struct ArtistsView: View {
             )
         }
         for (key, w) in counts where items[key] == nil {
-            items[key] = ArtistItem(id: key, name: w.name, line: "Dans les collections du monde", museumWorks: 0, worldWorks: w.count)
+            items[key] = ArtistItem(id: key, name: w.name, line: inWorldCollections, museumWorks: 0, worldWorks: w.count)
         }
         for (key, d) in directory {
             if let known = items[key] {
                 items[key] = ArtistItem(
-                    id: key, name: known.name, line: known.line.hasPrefix("Dans les") && !d.life.isEmpty ? d.life : known.line,
+                    id: key, name: known.name, line: known.line == inWorldCollections && !d.life.isEmpty ? d.life : known.line,
                     museumWorks: known.museumWorks, worldWorks: known.worldWorks, elsewhere: d.works, sort: known.sort
                 )
             } else {
                 items[key] = ArtistItem(
-                    id: key, name: d.name, line: d.life.isEmpty ? "Dans les musées du monde" : d.life,
+                    id: key, name: d.name, line: d.life.isEmpty ? inWorldMuseums : d.life,
                     museumWorks: 0, worldWorks: 0, elsewhere: d.works, sort: d.sort
                 )
             }
@@ -200,7 +204,7 @@ struct ArtistListRow: View {
             Text("\(artist.total)")
                 .font(.subheadline.monospacedDigit())
                 .foregroundStyle(.secondary)
-                .accessibilityLabel(artist.total == 1 ? "1 œuvre" : "\(artist.total) œuvres")
+                .accessibilityLabel(worksCount(artist.total))
         }
     }
 }
@@ -238,7 +242,7 @@ struct ArtistView: View {
                             ListenButton(
                                 id: "artiste/\(artist.name)",
                                 text: { "\(artist.name). \(artist.life). \(artist.biography)" },
-                                label: "Écouter la biographie"
+                                label: L("Écouter la biographie", "Listen to the biography", "Escuchar la biografía")
                             )
                             .buttonStyle(.glass)
                         }
@@ -250,16 +254,20 @@ struct ArtistView: View {
 
                     let world = store.collections?.works(.artist(artist.name)) ?? []
                     let total = artist.works.count + world.count
-                    Text(total == 1 ? "Le catalogue complet : 1 œuvre" : "Le catalogue complet : \(total.formatted()) œuvres")
+                    Text(L("Le catalogue complet : ", "The complete catalogue: ", "El catálogo completo: ") + worksCount(total))
                         .font(.title2.bold())
                         .padding(.top, 8)
-                    Text(artist.works.count == 1 ? "Son œuvre dans les expositions" : "Ses \(artist.works.count) œuvres dans les expositions")
+                    Text(artist.works.count == 1
+                         ? L("Son œuvre dans les expositions", "Their work in the exhibitions", "Su obra en las exposiciones")
+                         : L("Ses \(artist.works.count) œuvres dans les expositions", "Their \(artist.works.count) works in the exhibitions", "Sus \(artist.works.count) obras en las exposiciones"))
                         .font(.headline)
                         .foregroundStyle(.secondary)
                     WorkGrid(items: catalogue.works(artist.works).map { ($0.0, $0.1, $0.2) }, showExhibition: true)
 
                     if !world.isEmpty {
-                        Text(world.count == 1 ? "Son œuvre dans les collections du monde" : "Ses \(world.count.formatted()) œuvres dans les collections du monde")
+                        Text(world.count == 1
+                             ? L("Son œuvre dans les collections du monde", "Their work in the world collections", "Su obra en las colecciones del mundo")
+                             : L("Ses \(world.count.formatted()) œuvres dans les collections du monde", "Their \(world.count.formatted()) works in the world collections", "Sus \(world.count.formatted()) obras en las colecciones del mundo"))
                             .font(.headline)
                             .foregroundStyle(.secondary)
                             .padding(.top, 8)
@@ -271,7 +279,7 @@ struct ArtistView: View {
 
                     let exhibitions = artist.exhibitions.compactMap(catalogue.exhibition)
                     if !exhibitions.isEmpty {
-                        Text(exhibitions.count == 1 ? "L'exposition" : "Les expositions")
+                        Text(exhibitions.count == 1 ? L("L'exposition", "The exhibition", "La exposición") : L("Les expositions", "The exhibitions", "Las exposiciones"))
                             .font(.title2.bold())
                             .padding(.top, 8)
                         LazyVGrid(
@@ -302,10 +310,10 @@ struct ArtistView: View {
                     if let life = world.first?.life, !life.isEmpty {
                         Text(life).font(.headline).foregroundStyle(.secondary)
                     }
-                    Text(world.count == 1 ? "Le catalogue complet : 1 œuvre" : "Le catalogue complet : \(world.count.formatted()) œuvres")
+                    Text(L("Le catalogue complet : ", "The complete catalogue: ", "El catálogo completo: ") + worksCount(world.count))
                         .font(.title2.bold())
                         .padding(.top, 8)
-                    Text("Dans les collections du monde, de la plus ancienne à la plus récente.")
+                    Text(L("Dans les collections du monde, de la plus ancienne à la plus récente.", "In the world collections, from the oldest to the most recent.", "En las colecciones del mundo, de la más antigua a la más reciente."))
                         .foregroundStyle(.secondary)
                     CollectionGrid(works: world.sorted { ($0.year ?? .max) < ($1.year ?? .max) })
                     LiveWorksSection(name: name, known: Set(world.map(\.id)))
@@ -354,20 +362,26 @@ struct LiveWorksSection: View {
             if loading {
                 HStack(spacing: 10) {
                     ProgressView()
-                    Text("Recherche de ses autres œuvres dans les musées…")
+                    Text(L("Recherche de ses autres œuvres dans les musées…", "Looking for their other works in the museums…", "Buscando sus otras obras en los museos…"))
                         .foregroundStyle(.secondary)
                 }
             } else if let result {
                 let more = result.works.filter { !known.contains($0.id) }
-                Text(more.isEmpty ? "Dans les musées, en direct" : "Dans les musées, en direct : \(more.count.formatted()) œuvres de plus")
+                Text(more.isEmpty
+                     ? L("Dans les musées, en direct", "In the museums, live", "En los museos, en directo")
+                     : L("Dans les musées, en direct : ", "In the museums, live: ", "En los museos, en directo: ")
+                        + Lcount(more.count, ("œuvre de plus", "œuvres de plus"), ("more work", "more works"), ("obra más", "obras más")))
                     .font(.title2.bold())
                 if more.isEmpty {
-                    Text("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.")
+                    Text(L("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.", "No other copyright-free work in the museums' open collections.", "Ninguna otra obra libre de derechos en las colecciones abiertas de los museos."))
                         .foregroundStyle(.secondary)
                 } else {
-                    Text(result.source == "musees"
-                         ? "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · directement chez les musées"
-                         : "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · par l'API ARTEON")
+                    Text(L("Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931)",
+                           "Public domain (artist died in 1955 or earlier, work from before 1931)",
+                           "Dominio público (artista fallecido en 1955 o antes, obra anterior a 1931)")
+                         + " · " + (result.source == "musees"
+                            ? L("directement chez les musées", "directly from the museums", "directamente de los museos")
+                            : L("par l'API ARTEON", "through the ARTEON API", "a través de la API de ARTEON")))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)], spacing: 12) {
@@ -380,7 +394,7 @@ struct LiveWorksSection: View {
                     }
                 }
             } else {
-                Text("Les musées n'ont pas répondu.")
+                Text(L("Les musées n'ont pas répondu.", "The museums did not respond.", "Los museos no han respondido."))
                     .foregroundStyle(.secondary)
             }
         }

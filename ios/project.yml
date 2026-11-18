@@ -35,6 +35,10 @@ targets:
       path: ARTEON-Info.plist
       properties:
         ARTEONSite: https://maxlestage.github.io/ARTEON/
+        # Les langues de l'application (Language.swift : les textes sont dans le code, sans
+        # dossiers .lproj) : iOS les propose dans Réglages → ARTEON → Langue et traduit ses
+        # propres boutons (Annuler, Partager…) dans la même langue. Le français d'abord.
+        CFBundleLocalizations: [fr, en, es]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.maxlestage.arteon

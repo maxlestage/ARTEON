@@ -80,7 +80,7 @@ struct DirectoryArtist: Sendable, Equatable {
     let sort: String
 
     /// L'annuaire tel que le site le publie : `[[nom, naissance, mort, œuvres], …]`.
-    static func parse(_ data: Data) -> [DirectoryArtist] {
+    static func parse(_ data: Data, language: AppLanguage = .current) -> [DirectoryArtist] {
         guard let rows = try? JSONSerialization.jsonObject(with: data) as? [[Any]] else { return [] }
         return rows.compactMap { row in
             guard row.count >= 4, let name = row[0] as? String, !name.isEmpty else { return nil }
@@ -88,8 +88,8 @@ struct DirectoryArtist: Sendable, Equatable {
             let life: String
             switch (born, died) {
             case let (b?, d?): life = "\(b)–\(d)"
-            case let (nil, d?): life = "mort en \(d)"
-            case let (b?, nil): life = "né en \(b)"
+            case let (nil, d?): life = language.pick("mort en \(d)", "died \(d)", "murió en \(d)")
+            case let (b?, nil): life = language.pick("né en \(b)", "born \(b)", "nació en \(b)")
             default: life = ""
             }
             return DirectoryArtist(key: ArtistKey.of(name), name: name, life: life, works: row[3] as? Int ?? 0, sort: folded(name))
@@ -130,7 +130,7 @@ extension WorldCollections {
             let museumIndex = (row[5] as? Int) ?? 0
             let remote = row.count > 7 ? row[7] as? String : nil
             works.append(CollectionWork(
-                id: ids[i], title: row[0] as? String ?? "Sans titre", artist: row[1] as? String ?? "",
+                id: ids[i], title: row[0] as? String ?? L("Sans titre", "Untitled", "Sin título"), artist: row[1] as? String ?? "",
                 date: (row[2] as? String).flatMap { $0.isEmpty ? nil : $0 }, year: row[3] as? Int,
                 category: row[4] as? String,
                 ratio: (row[6] as? Double) ?? (row[6] as? Int).map(Double.init),

@@ -17,48 +17,57 @@ struct ExploreView: View {
                     spacing: 16
                 ) {
                     ExploreCard(
-                        title: "La chronologie",
-                        subtitle: "\(store.index?.centuries.count ?? 0) siècles, des fossiles aux avant-gardes",
+                        title: L("La chronologie", "The timeline", "La cronología"),
+                        subtitle: Lcount(store.index?.centuries.count ?? 0, ("siècle", "siècles"), ("century", "centuries"), ("siglo", "siglos"))
+                            + L(", des fossiles aux avant-gardes", ", from fossils to the avant-gardes", ", de los fósiles a las vanguardias"),
                         systemImage: "calendar",
                         color: .arteonBlue,
                         image: store.index?.centuries.first?.works.first,
                         route: .timeline
                     )
                     ExploreCard(
-                        title: "Qui l'a fait ?",
-                        subtitle: store.quizBest > 0 ? "Le jeu · record : \(store.quizBest)" : "Le jeu : reconnaître l'artiste",
+                        title: L("Qui l'a fait ?", "Who made it?", "¿Quién lo hizo?"),
+                        subtitle: store.quizBest > 0
+                            ? L("Le jeu · record : \(store.quizBest)", "The game · record: \(store.quizBest)", "El juego · récord: \(store.quizBest)")
+                            : L("Le jeu : reconnaître l'artiste", "The game: identify the artist", "El juego: reconocer al artista"),
                         systemImage: "questionmark.bubble",
                         color: .orange,
                         image: catalogue.workOfTheDay().map { $0.0.key($0.1) },
                         route: .quiz
                     )
                     ExploreCard(
-                        title: "Les artistes",
-                        subtitle: "\(store.index?.artists.count ?? 0) artistes, ateliers et cultures des expositions, de A à Z",
+                        title: L("Les artistes", "Artists", "Los artistas"),
+                        subtitle: L("\(store.index?.artists.count ?? 0) artistes, ateliers et cultures des expositions, de A à Z",
+                                    "\(store.index?.artists.count ?? 0) artists, workshops and cultures from the exhibitions, from A to Z",
+                                    "\(store.index?.artists.count ?? 0) artistas, talleres y culturas de las exposiciones, de la A a la Z"),
                         systemImage: "person.2",
                         color: .indigo,
                         image: store.index?.artist(named: "Vincent van Gogh")?.works.first ?? store.index?.artists.first?.works.first,
                         route: .artists
                     )
                     ExploreCard(
-                        title: "Les thèmes",
-                        subtitle: "\(store.index?.themes.count ?? 0) thèmes : la nuit, la mer, l'amour…",
+                        title: L("Les thèmes", "Themes", "Los temas"),
+                        subtitle: L("\(store.index?.themes.count ?? 0) thèmes : la nuit, la mer, l'amour…",
+                                    "\(store.index?.themes.count ?? 0) themes: night, the sea, love…",
+                                    "\(store.index?.themes.count ?? 0) temas: la noche, el mar, el amor…"),
                         systemImage: "tag",
                         color: .pink,
                         image: store.index?.themes.first?.works.first,
                         route: .themes
                     )
                     ExploreCard(
-                        title: "Les musées du monde",
-                        subtitle: "\(store.index?.collections.count ?? 0) collections où voir les œuvres en vrai",
+                        title: L("Les musées du monde", "Museums of the world", "Los museos del mundo"),
+                        subtitle: L("\(store.index?.collections.count ?? 0) collections où voir les œuvres en vrai",
+                                    "\(store.index?.collections.count ?? 0) collections where you can see the works for real",
+                                    "\(store.index?.collections.count ?? 0) colecciones donde ver las obras en persona"),
                         systemImage: "building.2",
                         color: .teal,
                         image: store.index?.collections.first?.works.first,
                         route: .collections
                     )
                     ExploreCard(
-                        title: "Les techniques",
-                        subtitle: "Huile, tempera, estampe, bronze, porcelaine…",
+                        title: L("Les techniques", "Techniques", "Las técnicas"),
+                        subtitle: L("Huile, tempera, estampe, bronze, porcelaine…", "Oil, tempera, print, bronze, porcelain…", "Óleo, temple, estampa, bronce, porcelana…"),
                         systemImage: "paintbrush.pointed",
                         color: .purple,
                         image: store.index?.techniques.first?.works.dropFirst(3).first,
@@ -69,7 +78,7 @@ struct ExploreView: View {
                 Button {
                     random = catalogue.allWorks.randomElement().map { $0.0.key($0.1) }
                 } label: {
-                    Label("Une œuvre au hasard", systemImage: "dice")
+                    Label(L("Une œuvre au hasard", "A random work", "Una obra al azar"), systemImage: "dice")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 6)
@@ -80,7 +89,7 @@ struct ExploreView: View {
             .padding()
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Explorer")
+        .navigationTitle(L("Explorer", "Explore", "Explorar"))
         .navigationDestination(item: $random) { key in
             RouteView(route: .work(key), catalogue: catalogue)
         }
@@ -144,7 +153,7 @@ struct TimelineView: View {
                                 Text(century.title)
                                     .font(.title2.bold())
                                 Spacer()
-                                Text(century.works.count == 1 ? "1 œuvre" : "\(century.works.count) œuvres")
+                                Text(worksCount(century.works.count))
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
@@ -158,7 +167,7 @@ struct TimelineView: View {
                         Section {
                             WorkRow(items: catalogue.works(undated))
                         } header: {
-                            Text("Sans date précise")
+                            Text(L("Sans date précise", "No precise date", "Sin fecha precisa"))
                                 .font(.title2.bold())
                                 .padding(.horizontal)
                         }
@@ -175,13 +184,13 @@ struct TimelineView: View {
                             }
                         }
                     } label: {
-                        Label("Aller au siècle", systemImage: "list.bullet")
+                        Label(L("Aller au siècle", "Go to century", "Ir al siglo"), systemImage: "list.bullet")
                     }
                 }
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Chronologie")
+        .navigationTitle(L("Chronologie", "Timeline", "Cronología"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -193,17 +202,17 @@ struct GroupsView: View {
 
         var title: String {
             switch self {
-            case .themes: "Les thèmes"
-            case .collections: "Les musées du monde"
-            case .techniques: "Les techniques"
+            case .themes: L("Les thèmes", "Themes", "Los temas")
+            case .collections: L("Les musées du monde", "Museums of the world", "Los museos del mundo")
+            case .techniques: L("Les techniques", "Techniques", "Las técnicas")
             }
         }
 
         var prompt: String {
             switch self {
-            case .themes: "Un thème : nuit, mer, portrait…"
-            case .collections: "Un musée, une ville…"
-            case .techniques: "Huile, bronze, estampe…"
+            case .themes: L("Un thème : nuit, mer, portrait…", "A theme: night, sea, portrait…", "Un tema: noche, mar, retrato…")
+            case .collections: L("Un musée, une ville…", "A museum, a city…", "Un museo, una ciudad…")
+            case .techniques: L("Huile, bronze, estampe…", "Oil, bronze, print…", "Óleo, bronce, estampa…")
             }
         }
     }
@@ -288,7 +297,7 @@ struct GroupsView: View {
     private func route(_ group: WorkGroup) -> Route {
         .works(
             title: group.title,
-            subtitle: group.works.count == 1 ? "1 œuvre" : "\(group.works.count) œuvres",
+            subtitle: worksCount(group.works.count),
             keys: group.works
         )
     }
@@ -317,7 +326,7 @@ struct WorkListView: View {
         .navigationTitle(title)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button("Diaporama", systemImage: "play.rectangle") { slideshow = true }
+                Button(L("Diaporama", "Slideshow", "Diapositivas"), systemImage: "play.rectangle") { slideshow = true }
                     .disabled(items.isEmpty)
             }
         }

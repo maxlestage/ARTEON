@@ -107,9 +107,13 @@ enum CatalogueError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .tooNew(let v):
-            "Ce catalogue (version \(v)) est plus récent que l'application : mettez-la à jour."
+            L("Ce catalogue (version \(v)) est plus récent que l'application : mettez-la à jour.",
+              "This catalogue (version \(v)) is newer than the app: please update it.",
+              "Este catálogo (versión \(v)) es más reciente que la aplicación: actualícela.")
         case .unreadable:
-            "La réponse du site ARTEON est illisible."
+            L("La réponse du site ARTEON est illisible.",
+              "The ARTEON website's response could not be read.",
+              "La respuesta del sitio ARTEON no se puede leer.")
         }
     }
 }
@@ -261,12 +265,15 @@ struct Notice: Decodable, Hashable, Sendable {
     var anecdote: String
 
     /// Les parties rédigées, dans l'ordre du site.
-    var sections: [(title: String, text: String)] {
+    var sections: [(title: String, text: String)] { sections(in: .current) }
+
+    /// Les parties rédigées, titrées dans une langue.
+    func sections(in language: AppLanguage) -> [(title: String, text: String)] {
         [
-            ("Ce que l'on voit", description),
-            ("Ce qu'elle évoque", evocation),
-            ("Son histoire", story),
-            ("La manière", manner),
+            (language.pick("Ce que l'on voit", "What we see", "Lo que vemos"), description),
+            (language.pick("Ce qu'elle évoque", "What it evokes", "Lo que evoca"), evocation),
+            (language.pick("Son histoire", "Its history", "Su historia"), story),
+            (language.pick("La manière", "The technique", "La técnica"), manner),
         ].filter { !$0.1.isEmpty }
     }
 }

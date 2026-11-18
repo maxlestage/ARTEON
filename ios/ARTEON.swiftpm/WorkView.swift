@@ -65,7 +65,7 @@ struct WorkView: View {
                     store.toggleFavorite(key)
                 } label: {
                     Label(
-                        favorite ? "Retirer des favoris" : "Ajouter aux favoris",
+                        favorite ? L("Retirer des favoris", "Remove from favourites", "Quitar de favoritos") : L("Ajouter aux favoris", "Add to favourites", "Añadir a favoritos"),
                         systemImage: favorite ? "heart.fill" : "heart"
                     )
                 }
@@ -75,13 +75,13 @@ struct WorkView: View {
                 ListenButton(id: key.text, text: { work.spokenText(in: exhibition) })
 
                 NavigationLink(value: Route.gallery(exhibition.slug, work: work.slug)) {
-                    Label("Voir dans la galerie 3D", systemImage: "view.3d")
+                    Label(L("Voir dans la galerie 3D", "See in the 3D gallery", "Ver en la galería 3D"), systemImage: "view.3d")
                 }
             }
             ToolbarItemGroup(placement: .secondaryAction) {
-                Button("Œuvre précédente", systemImage: "chevron.left") { step(-1) }
+                Button(L("Œuvre précédente", "Previous work", "Obra anterior"), systemImage: "chevron.left") { step(-1) }
                     .disabled(index == 0)
-                Button("Œuvre suivante", systemImage: "chevron.right") { step(1) }
+                Button(L("Œuvre suivante", "Next work", "Obra siguiente"), systemImage: "chevron.right") { step(1) }
                     .disabled(index >= exhibition.works.count - 1)
                 ShareWorkButton(exhibition: exhibition, work: work)
             }
@@ -100,7 +100,7 @@ struct WorkView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .contentShape(.rect)
             .onTapGesture { zooming = true }
-            .accessibilityLabel("\(work.title), toucher pour agrandir")
+            .accessibilityLabel(work.title + L(", toucher pour agrandir", ", tap to enlarge", ", toque para ampliar"))
             .accessibilityAddTraits(.isButton)
     }
 
@@ -128,10 +128,10 @@ struct WorkText: View {
                 .padding(.top, 4)
 
             Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 16, verticalSpacing: 6) {
-                fact("Technique", work.technique)
-                fact("Collection", work.collection)
+                fact(L("Technique", "Medium", "Técnica"), work.technique)
+                fact(L("Collection", "Collection", "Colección"), work.collection)
                 if exhibition.rooms.indices.contains(work.room) {
-                    fact("Salle", exhibition.rooms[work.room].name)
+                    fact(L("Salle", "Room", "Sala"), exhibition.rooms[work.room].name)
                 }
             }
             .padding(.top, 16)
@@ -149,7 +149,7 @@ struct WorkText: View {
             }
 
             if !work.notice.details.isEmpty {
-                heading("À regarder de près")
+                heading(L("À regarder de près", "Look closely", "Para mirar de cerca"))
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(work.notice.details, id: \.self) { detail in
                         HStack(alignment: .firstTextBaseline, spacing: 10) {
@@ -161,7 +161,7 @@ struct WorkText: View {
             }
 
             if !work.notice.themes.isEmpty {
-                heading("Thèmes")
+                heading(L("Thèmes", "Themes", "Temas"))
                 FlowLayout {
                     ForEach(work.notice.themes, id: \.self) { theme in
                         Text(theme)
@@ -174,7 +174,7 @@ struct WorkText: View {
             }
 
             if !work.notice.anecdote.isEmpty {
-                heading("Le saviez-vous ?")
+                heading(L("Le saviez-vous ?", "Did you know?", "¿Sabía que…?"))
                 Text(work.notice.anecdote)
                     .lineSpacing(4)
                     .padding()
@@ -183,13 +183,13 @@ struct WorkText: View {
             }
 
             if let artist = exhibition.artist(named: work.artist) {
-                heading("L'artiste")
+                heading(L("L'artiste", "The artist", "El artista"))
                 ArtistRow(artist: artist)
                 NavigationLink(value: Route.artist(artist.name)) {
-                    Label("Toutes ses œuvres au musée", systemImage: "person.crop.rectangle.stack")
+                    Label(L("Toutes ses œuvres au musée", "All their works in the museum", "Todas sus obras en el museo"), systemImage: "person.crop.rectangle.stack")
                 }
             } else if !work.artist.isEmpty {
-                heading("L'artiste")
+                heading(L("L'artiste", "The artist", "El artista"))
                 NavigationLink(value: Route.artist(work.artist)) {
                     Label(work.artist, systemImage: "person.crop.rectangle.stack")
                 }
@@ -198,12 +198,12 @@ struct WorkText: View {
             OtherWorks(exhibition: exhibition, work: work)
 
             if let credit = work.credit, !credit.author.isEmpty {
-                heading("Reproduction")
+                heading(L("Reproduction", "Reproduction", "Reproducción"))
                 Text("\(credit.author) · \(credit.licence)")
                     .font(.subheadline)
                 if credit.source.hasPrefix("https://"), let url = URL(string: credit.source) {
                     Link(destination: url) {
-                        Label("Source", systemImage: "arrow.up.right.square")
+                        Label(L("Source", "Source", "Fuente"), systemImage: "arrow.up.right.square")
                     }
                     .padding(.top, 4)
                 }
@@ -261,7 +261,7 @@ struct ZoomView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Fermer", systemImage: "xmark") { dismiss() }
+                        Button(L("Fermer", "Close", "Cerrar"), systemImage: "xmark") { dismiss() }
                     }
                 }
         }
@@ -314,7 +314,7 @@ struct OtherWorks: View {
                 .prefix(20)
                 .map { (key: $0.0.key($0.1), exhibition: $0.0, work: $0.1) }
             if !others.isEmpty {
-                Text("Du même artiste")
+                Text(L("Du même artiste", "By the same artist", "Del mismo artista"))
                     .font(.headline)
                     .foregroundStyle(exhibition.accentColor)
                     .padding(.top, 26)
@@ -336,7 +336,8 @@ struct OtherWorks: View {
     }
 }
 
-/// Partager une œuvre : sa page sur le site ARTEON et son cartel.
+/// Partager une œuvre : sa page sur le site ARTEON (dans la langue de l'application) et son
+/// cartel.
 struct ShareWorkButton: View {
     let exhibition: Exhibition
     let work: Work
@@ -344,13 +345,13 @@ struct ShareWorkButton: View {
     private var caption: String {
         var lines = [work.title, work.byline]
         if !work.collection.isEmpty { lines.append(work.collection) }
-        lines.append("Vu dans ARTEON · \(exhibition.name)")
+        lines.append(L("Vu dans ARTEON", "Seen in ARTEON", "Visto en ARTEON") + " · \(exhibition.name)")
         return lines.joined(separator: "\n")
     }
 
     var body: some View {
-        ShareLink(item: Site.url("\(exhibition.slug)/oeuvres/\(work.slug)/"), subject: Text(work.title), message: Text(caption)) {
-            Label("Partager", systemImage: "square.and.arrow.up")
+        ShareLink(item: Site.page("\(exhibition.slug)/oeuvres/\(work.slug)/"), subject: Text(work.title), message: Text(caption)) {
+            Label(L("Partager", "Share", "Compartir"), systemImage: "square.and.arrow.up")
         }
     }
 }

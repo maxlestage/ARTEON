@@ -44,7 +44,7 @@ struct SlideshowView: View {
                         Text(title)
                             .font(.headline)
                         Spacer()
-                        Button("Fermer", systemImage: "xmark") { dismiss() }
+                        Button(L("Fermer", "Close", "Cerrar"), systemImage: "xmark") { dismiss() }
                             .labelStyle(.iconOnly)
                             .buttonStyle(.glass)
                     }
@@ -59,16 +59,15 @@ struct SlideshowView: View {
                                 .font(.subheadline)
                                 .opacity(0.8)
                             HStack(spacing: 14) {
-                                Button(playing ? "Pause" : "Lecture", systemImage: playing ? "pause.fill" : "play.fill") {
+                                Button(playing ? L("Pause", "Pause", "Pausa") : L("Lecture", "Play", "Reproducir"), systemImage: playing ? "pause.fill" : "play.fill") {
                                     playing.toggle()
                                 }
                                 .buttonStyle(.glassProminent)
                                 Menu {
-                                    Picker("Durée", selection: $seconds) {
-                                        Text("4 secondes").tag(4.0)
-                                        Text("8 secondes").tag(8.0)
-                                        Text("15 secondes").tag(15.0)
-                                        Text("30 secondes").tag(30.0)
+                                    Picker(L("Durée", "Duration", "Duración"), selection: $seconds) {
+                                        ForEach([4.0, 8.0, 15.0, 30.0], id: \.self) { s in
+                                            Text(Lcount(Int(s), ("seconde", "secondes"), ("second", "seconds"), ("segundo", "segundos"))).tag(s)
+                                        }
                                     }
                                 } label: {
                                     Label("\(Int(seconds)) s", systemImage: "timer")

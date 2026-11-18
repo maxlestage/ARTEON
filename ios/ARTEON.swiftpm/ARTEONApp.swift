@@ -43,10 +43,10 @@ struct RootView: View {
         Group {
             switch store.phase {
             case .loading:
-                SplashView(message: "Ouverture du musée…", retry: nil)
+                SplashView(message: L("Ouverture du musée…", "Opening the museum…", "Abriendo el museo…"), retry: nil)
             case .failed(let message):
                 SplashView(
-                    message: "Le musée n'a pas pu ouvrir.\n\(message)",
+                    message: L("Le musée n'a pas pu ouvrir.", "The museum could not open.", "El museo no ha podido abrirse.") + "\n\(message)",
                     retry: { Task { await store.load() } }
                 )
             case .ready(let catalogue):
@@ -75,7 +75,7 @@ struct SplashView: View {
                     .foregroundStyle(.white.opacity(0.75))
                     .frame(maxWidth: 460)
                 if let retry {
-                    Button("Réessayer", systemImage: "arrow.clockwise", action: retry)
+                    Button(L("Réessayer", "Try again", "Reintentar"), systemImage: "arrow.clockwise", action: retry)
                         .buttonStyle(.glassProminent)
                 } else {
                     ProgressView().tint(.arteonSun)

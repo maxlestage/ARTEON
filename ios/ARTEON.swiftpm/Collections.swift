@@ -69,7 +69,7 @@ struct CollectionWork: Decodable, Hashable, Sendable, Identifiable {
     }
 
     /// « Vincent van Gogh · 1889 ».
-    var byline: String { [artist, date ?? ""].filter { !$0.isEmpty }.joined(separator: " · ") }
+    var byline: String { [displayArtist(artist), date ?? ""].filter { !$0.isEmpty }.joined(separator: " · ") }
 
     /// Largeur / hauteur (pour réserver la place de l'image).
     var aspect: Double { (ratio ?? 0) > 0 ? 1 / ratio! : 0.8 }
@@ -133,11 +133,14 @@ struct CollectionIndex: Sendable {
         var categories: [String: Int] = [:]
         var centuries: [Int: (title: String, count: Int)] = [:]
         searchText.reserveCapacity(collections.works.count)
+        let translated = AppLanguage.current != .fr
         for (i, w) in collections.works.enumerated() {
             positions[w.id] = i
             let artist = ArtistKey.of(w.artist)
+            // La catégorie aussi dans la langue de l'application (« painting », « pintura »).
+            let category = w.category.map { c in translated ? "\(c) \(CollectionCategory.display(c))" : c } ?? ""
             searchText.append(folded(
-                "\(w.title) \(w.artist) \(w.date ?? "") \(w.medium ?? "") \(w.category ?? "") \(w.origin ?? "") \(w.museum)"
+                "\(w.title) \(w.artist) \(w.date ?? "") \(w.medium ?? "") \(category) \(w.origin ?? "") \(w.museum)"
             ))
             byArtist[artist, default: []].append(i)
             categories[w.category ?? "Autres objets", default: 0] += 1
@@ -227,12 +230,12 @@ struct CollectionIndex: Sendable {
     /// Le titre d'un filtre.
     func title(_ filter: CollectionFilter) -> String {
         switch filter {
-        case .all: "Toutes les œuvres"
+        case .all: L("Toutes les œuvres", "All works", "Todas las obras")
         case .museum(let key): collections.museum(key)?.name ?? key
-        case .category(let name): name
-        case .century(let rank): centuries.first { $0.rank == rank }?.title ?? "Un siècle"
-        case .artist(let name): name
-        case .search(let query): "« \(query) »"
+        case .category(let name): CollectionCategory.display(name)
+        case .century(let rank): centuries.first { $0.rank == rank }?.title ?? L("Un siècle", "A century", "Un siglo")
+        case .artist(let name): displayArtist(name)
+        case .search(let query): Lquote(query)
         }
     }
 

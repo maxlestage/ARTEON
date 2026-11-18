@@ -22,8 +22,8 @@ Les sections plus bas qui parlent du « musée embarqué » décrivent l'ancienn
   la **visite en 3D**, le **diaporama** et l'**introduction lue à voix haute**.
 - **Œuvre** : sur iPad à l'horizontale, l'image à gauche et la notice complète à droite (ce
   que l'on voit, ce qu'elle évoque, son histoire, la manière, les détails, les thèmes,
-  l'anecdote, l'artiste, la reproduction et sa licence) ; l'**audioguide** (la voix
-  française de l'appareil lit le cartel et la notice), les autres œuvres du même artiste,
+  l'anecdote, l'artiste, la reproduction et sa licence) ; l'**audioguide** (une voix
+  de l'appareil, dans la langue de l'application, lit le cartel et la notice), les autres œuvres du même artiste,
   le **partage** (l'image et son cartel), favori, précédente et suivante, image en grand
   (pincer, glisser, toucher deux fois).
 - **Musées** : les vrais musées dont ARTEON reproduit les bâtiments (Orsay, le Prado, le
@@ -58,6 +58,29 @@ Les sections plus bas qui parlent du « musée embarqué » décrivent l'ancienn
   site, la vitesse de la voix, l'effacement des favoris et de l'historique, les crédits.
 - Le style d'iOS 26 : onglets en barre latérale sur iPad (`TabView` `.sidebarAdaptable`),
   Liquid Glass, mode sombre, Dynamic Type, VoiceOver.
+- **En français, en anglais et en espagnol**, comme le site : voir « Les langues » plus bas.
+
+## Les langues
+
+L'application parle la langue de l'appareil (ou celle choisie pour ARTEON dans
+*Réglages → ARTEON → Langue*) : le français (la langue d'origine), l'anglais ou l'espagnol ;
+toute autre langue donne le français.
+[`Language.swift`](ARTEON.swiftpm/Language.swift) :
+
+- `AppLanguage.current` (`fr`, `en`, `es`), tirée de `Locale.preferredLanguages` au lancement ;
+- le catalogue de la langue : `catalogue.json`, `en/catalogue.json` ou `es/catalogue.json`
+  (les titres, notices et biographies y sont déjà traduits) ;
+- les **pages** du site dans la langue (`Site.page`) : le partage d'une œuvre et la galerie
+  3D (`en/van-gogh/galerie/`) ; les **fichiers** (images, `donnees/`, `monde/`, `api/`) gardent
+  leur chemin commun (`Site.url`) ;
+- les textes de l'interface écrits dans les trois langues côte à côte, comme le `t()` du
+  site : `L("Favoris", "Favourites", "Favoritos")`, `worksCount(n)` (« 1 œuvre »,
+  « 12 works »). Rien à empaqueter (ni catalogue de chaînes, ni `.lproj`) : le même code se
+  compile avec Xcode, avec Swift Playgrounds et sous Linux. Les langues sont déclarées à iOS
+  par `CFBundleLocalizations` ([`project.yml`](project.yml)) ;
+- l'audioguide prend une voix de la langue (fr-FR, en-GB, es-ES, ou celle de la région de
+  l'appareil) ; les catégories des collections du monde, écrites en français dans les
+  données, sont traduites à l'affichage.
 
 ## Le musée embarqué
 
@@ -139,7 +162,7 @@ Arguments de lancement : `-horsligne` (jamais de réseau), `-site http://localho
 (un autre site pour les mises à jour), `-ouvrir van-gogh`, `-ouvrir van-gogh/tournesols`,
 `-ouvrir 3d:van-gogh`, `-ouvrir chronologie`, `-ouvrir jeu`, `-ouvrir musee:Rijksmuseum`,
 `-ouvrir grand-musee`, `-ouvrir collections`, `-ouvrir collection:met`, `-onglet musees`,
-`-onglet artistes`.
+`-onglet artistes`. Une autre langue : `-AppleLanguages "(en)"`, `-AppleLanguages "(es)"`.
 
 ## Tests
 
