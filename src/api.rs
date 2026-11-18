@@ -345,8 +345,8 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
     if let Some(detail) = source["detail"].as_str() {
         let mut vus = HashSet::new();
         ids.retain(|id| vus.insert(en_texte(id)));
-        ids.truncate(source["max"].as_u64().unwrap_or(80) as usize);
-        let taille = ids.len().div_ceil(8).max(1);
+        ids.truncate(source["max"].as_u64().unwrap_or(3000) as usize);
+        let taille = ids.len().div_ceil(16).max(1);
         fiches = std::thread::scope(|s| {
             ids.chunks(taille)
                 .map(|lot| {
@@ -375,6 +375,11 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
                 if v.is_null() || v == &Value::Bool(false) || en_texte(v).is_empty() {
                     return None;
                 }
+            }
+            if let Some(egal) = source["egal"].as_object()
+                && egal.iter().any(|(c, attendu)| en_texte(lire_champ(c)) != en_texte(attendu))
+            {
+                return None;
             }
             let mut artiste = en_texte(lire_champ("artiste"));
             if let Some(coupe) = source["artiste_jusqua"].as_str() {

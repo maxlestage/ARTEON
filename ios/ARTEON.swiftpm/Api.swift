@@ -323,7 +323,7 @@ enum LiveWorks {
         }
         if let detail = source["detail"] as? String {
             var seen = Set<String>()
-            let wanted = ids.filter { seen.insert($0).inserted }.prefix(min(source["max"] as? Int ?? 80, 40))
+            let wanted = ids.filter { seen.insert($0).inserted }.prefix(min(source["max"] as? Int ?? 3000, 300))
             records = await withTaskGroup(of: Json?.self) { group in
                 for id in wanted {
                     group.addTask {
@@ -345,6 +345,9 @@ enum LiveWorks {
             for k in required {
                 let v = field(k)
                 if v == nil || (v as? Bool) == false || text(v).isEmpty { return nil }
+            }
+            for (k, expected) in (source["egal"] as? [String: Any]) ?? [:] where text(field(k)) != text(expected) {
+                return nil
             }
             var artist = text(field("artiste"))
             if let cut = source["artiste_jusqua"] as? String, let r = artist.range(of: cut) {

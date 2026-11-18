@@ -1,17 +1,30 @@
 {
- "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). vignette, grande, lien : des modèles, avec {champ}. artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
+ "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
  "sources": [
   {
    "cle": "chicago",
    "nom": "Art Institute of Chicago",
    "recherche": "https://api.artic.edu/api/v1/artworks/search?q={q}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,date_end,medium_display,image_id&limit={n}&page={page}",
    "par_page": 100,
-   "pages": 5,
+   "pages": 10,
    "liste": "data",
-   "entetes": {"AIC-User-Agent": "ARTEON/1.0 (musee virtuel)"},
-   "champs": {"id": "id", "titre": "title", "artiste": "artist_title", "vie": "artist_display", "date": "date_display",
-              "fin": "date_end", "annee": "date_display", "technique": "medium_display", "image": "image_id"},
-   "exige": ["image"],
+   "entetes": {
+    "AIC-User-Agent": "ARTEON/1.0 (musee virtuel)"
+   },
+   "champs": {
+    "id": "id",
+    "titre": "title",
+    "artiste": "artist_title",
+    "vie": "artist_display",
+    "date": "date_display",
+    "fin": "date_end",
+    "annee": "date_display",
+    "technique": "medium_display",
+    "image": "image_id"
+   },
+   "exige": [
+    "image"
+   ],
    "vignette": "https://www.artic.edu/iiif/2/{image}/full/400,/0/default.jpg",
    "grande": "https://www.artic.edu/iiif/2/{image}/full/843,/0/default.jpg",
    "lien": "https://www.artic.edu/artworks/{id}"
@@ -21,13 +34,25 @@
    "nom": "Cleveland Museum of Art",
    "recherche": "https://openaccess-api.clevelandart.org/api/artworks/?artists={q}&cc0=1&has_image=1&limit={n}&skip={offset}",
    "par_page": 500,
-   "pages": 2,
+   "pages": 6,
    "liste": "data",
-   "champs": {"id": "id", "titre": "title", "artiste": "creators.0.description", "ne": "creators.0.birth_year",
-              "mort": "creators.0.death_year", "date": "creation_date", "fin": "creation_date_latest",
-              "annee": "creation_date_earliest", "technique": "technique", "image": "images.web.url", "page": "url"},
+   "champs": {
+    "id": "id",
+    "titre": "title",
+    "artiste": "creators.0.description",
+    "ne": "creators.0.birth_year",
+    "mort": "creators.0.death_year",
+    "date": "creation_date",
+    "fin": "creation_date_latest",
+    "annee": "creation_date_earliest",
+    "technique": "technique",
+    "image": "images.web.url",
+    "page": "url"
+   },
    "artiste_jusqua": " (",
-   "exige": ["image"],
+   "exige": [
+    "image"
+   ],
    "vignette": "{image}",
    "grande": "{image}",
    "lien": "{page}"
@@ -39,12 +64,26 @@
    "pages": 1,
    "ids": "objectIDs",
    "detail": "https://collectionapi.metmuseum.org/public/collection/v1/objects/{id}",
-   "max": 80,
-   "champs": {"id": "objectID", "titre": "title", "artiste": "artistDisplayName", "ne": "artistBeginDate",
-              "mort": "artistEndDate", "date": "objectDate", "fin": "objectEndDate", "annee": "objectBeginDate",
-              "technique": "medium", "image": "primaryImageSmall", "grand": "primaryImage", "page": "objectURL",
-              "public": "isPublicDomain"},
-   "exige": ["image", "public"],
+   "max": 3000,
+   "champs": {
+    "id": "objectID",
+    "titre": "title",
+    "artiste": "artistDisplayName",
+    "ne": "artistBeginDate",
+    "mort": "artistEndDate",
+    "date": "objectDate",
+    "fin": "objectEndDate",
+    "annee": "objectBeginDate",
+    "technique": "medium",
+    "image": "primaryImageSmall",
+    "grand": "primaryImage",
+    "page": "objectURL",
+    "public": "isPublicDomain"
+   },
+   "exige": [
+    "image",
+    "public"
+   ],
    "vignette": "{image}",
    "grande": "{grand}",
    "lien": "{page}"
@@ -54,16 +93,58 @@
    "nom": "SMK – Statens Museum for Kunst, Copenhague",
    "recherche": "https://api.smk.dk/api/v1/art/search/?keys={q}&filters=%5Bhas_image:true%5D,%5Bpublic_domain:true%5D&offset={offset}&rows={n}",
    "par_page": 100,
-   "pages": 5,
+   "pages": 30,
    "liste": "items",
-   "champs": {"id": "object_number", "titre": "titles.0.title", "artiste": "production.0.creator",
-              "ne": "production.0.creator_date_of_birth", "mort": "production.0.creator_date_of_death",
-              "date": "production_date.0.period", "fin": "production_date.0.end", "annee": "production_date.0.period",
-              "technique": "techniques.0", "image": "image_thumbnail", "page": "frontend_url", "public": "public_domain"},
-   "exige": ["image", "public"],
+   "champs": {
+    "id": "object_number",
+    "titre": "titles.0.title",
+    "artiste": "production.0.creator",
+    "ne": "production.0.creator_date_of_birth",
+    "mort": "production.0.creator_date_of_death",
+    "date": "production_date.0.period",
+    "fin": "production_date.0.end",
+    "annee": "production_date.0.period",
+    "technique": "techniques.0",
+    "image": "image_thumbnail",
+    "page": "frontend_url",
+    "public": "public_domain"
+   },
+   "exige": [
+    "image",
+    "public"
+   ],
    "vignette": "{image}",
    "grande": "{image}",
    "lien": "{page}"
+  },
+  {
+   "cle": "mia",
+   "nom": "Minneapolis Institute of Art",
+   "recherche": "https://search.artsmia.org/artist:%22{q}%22?size={n}&from={offset}",
+   "par_page": 100,
+   "pages": 10,
+   "liste": "hits.hits",
+   "champs": {
+    "id": "_source.id",
+    "titre": "_source.title",
+    "artiste": "_source.artist",
+    "vie": "_source.life_date",
+    "date": "_source.dated",
+    "annee": "_source.dated",
+    "technique": "_source.medium",
+    "image": "_source.image",
+    "public": "_source.rights_type"
+   },
+   "exige": [
+    "image"
+   ],
+   "egal": {
+    "image": "valid",
+    "public": "Public Domain"
+   },
+   "vignette": "https://1.api.artsmia.org/400/{id}.jpg",
+   "grande": "https://1.api.artsmia.org/800/{id}.jpg",
+   "lien": "https://collections.artsmia.org/art/{id}"
   }
  ]
 }
