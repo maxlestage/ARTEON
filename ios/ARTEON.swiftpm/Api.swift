@@ -218,6 +218,19 @@ struct LiveCatalogue: Decodable, Sendable {
 enum LiveWorks {
     static let lastYear = 1930, lastDeath = 1955
 
+    /// Le contenu d'un fichier gzip écrit par l'API statique : un en-tête de 10 octets sans
+    /// champ optionnel, du DEFLATE brut, puis 8 octets de contrôle.
+    static func gunzip(_ data: Data) -> Data? {
+        #if canImport(Darwin)
+        let bytes = [UInt8](data.prefix(4))
+        guard data.count > 18, bytes.count == 4, bytes[0] == 0x1f, bytes[1] == 0x8b, bytes[3] == 0 else { return nil }
+        let body = data.subdata(in: (data.startIndex + 10)..<(data.endIndex - 8))
+        return try? (body as NSData).decompressed(using: .zlib) as Data
+        #else
+        return nil
+        #endif
+    }
+
     /// Toutes les œuvres libres de l'artiste dans les musées : par l'API ARTEON, sinon
     /// directement.
     static func of(_ name: String) async -> LiveCatalogue? {
@@ -226,8 +239,11 @@ enum LiveWorks {
            let json = try? JSONSerialization.jsonObject(with: index) as? [String: Any] {
             let byName = json["noms"] as? [String: String] ?? [:]
             let byKey = json["cles"] as? [String: String] ?? [:]
+            // Les catalogues sont publiés compressés (`gz`) : l'application les décompresse.
+            let gz = json["gz"] as? Bool ?? false
             if let file = byName[name] ?? byKey[ArtistKey.of(name)],
-               let data = try? await Api.site("api/\(file).json"),
+               let raw = try? await Api.site(gz ? "api/\(file).json.gz" : "api/\(file).json"),
+               let data = gz ? gunzip(raw) : raw,
                var answer = try? JSONDecoder().decode(LiveCatalogue.self, from: data) {
                 answer.source = "statique"
                 // Un musée n'avait pas répondu au calcul : l'application le lui demande, elle.

@@ -518,6 +518,14 @@ fn fichier_de(cle: &str) -> String {
 /// `dossier/<fichier>.json`, et `dossier/index.json` qui relie chaque nom (et chaque clé) à
 /// son fichier. Les réponses de moins d'une semaine de `cache` sont reprises ; les autres
 /// sont recalculées, `fils` à la fois, tant qu'il reste du temps (`minutes`).
+/// Un texte compressé en gzip.
+fn gzip(texte: &str) -> Option<Vec<u8>> {
+    use std::io::Write;
+    let mut encodeur = flate2::write::GzEncoder::new(Vec::new(), flate2::Compression::best());
+    encodeur.write_all(texte.as_bytes()).ok()?;
+    encodeur.finish().ok()
+}
+
 pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: Option<&std::path::Path>, fils: usize)
     -> std::io::Result<(usize, usize)>
 {
@@ -591,8 +599,9 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
                 };
                 if let Some(corps) = corps
-                    && poids.fetch_add(corps.len(), Ordering::SeqCst) < poids_max
-                    && std::fs::write(dossier.join(format!("{nom_fichier}.json")), corps).is_ok()
+                    && let Some(compresse) = gzip(&corps)
+                    && poids.fetch_add(compresse.len(), Ordering::SeqCst) < poids_max
+                    && std::fs::write(dossier.join(format!("{nom_fichier}.json.gz")), compresse).is_ok()
                     && let Ok(mut f) = faits.lock()
                 {
                     f.push((i, nom_fichier));
@@ -619,9 +628,11 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 if let Some(c) = cache {
                     let _ = std::fs::write(c.join(format!("{nom_fichier}.json")), &texte);
                 }
-                let publie = dossier.join(format!("{nom_fichier}.json"));
-                if publie.exists() {
-                    let _ = std::fs::write(publie, &texte);
+                let publie = dossier.join(format!("{nom_fichier}.json.gz"));
+                if publie.exists()
+                    && let Some(compresse) = gzip(&texte)
+                {
+                    let _ = std::fs::write(publie, compresse);
                 }
                 calcules.fetch_add(1, Ordering::SeqCst);
             });
@@ -637,7 +648,9 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
             par_nom.insert(n.clone(), json!(nom_fichier));
         }
     }
-    let index = json!({ "noms": par_nom, "cles": par_cle, "total": faits.len() });
+    // `gz` : chaque catalogue est dans `<fichier>.json.gz`, que le site et l'application
+    // décompressent eux-mêmes (un hébergement statique ne le fait pas).
+    let index = json!({ "noms": par_nom, "cles": par_cle, "total": faits.len(), "gz": true });
     std::fs::write(dossier.join("index.json"), index.to_string())?;
     Ok((faits.len(), calcules.into_inner()))
 }
