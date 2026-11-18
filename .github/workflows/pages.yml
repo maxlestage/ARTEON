@@ -116,7 +116,7 @@ jobs:
         run: |
           python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
             || python3 -m pip install --quiet --break-system-packages pillow
-          python3 outils/collections_monde.py --total 50000 --minutes 5 --sans-grandes \
+          python3 outils/collections_monde.py --total 50000 --minutes 15 --sans-grandes \
             --sortie target/monde --cache target/collections-cache
           python3 outils/monde_web.py target/monde target/collections-cache/vignettes dist
           du -sh dist dist/monde

@@ -460,6 +460,10 @@ def washington(combien, alea, cache):
 
 SOURCES = {"chicago": chicago, "cleveland": cleveland, "met": met, "washington": washington}
 
+# Combien de fiches chercher, au-delà de la part de chaque musée (Cleveland et Washington
+# donnent déjà tout d'un coup ; Chicago et le Met se moissonnent peu à peu).
+VISEE = {"chicago": 80000, "met": 120000}
+
 
 # ─── Le choix, les vignettes, les fichiers ────────────────────────────────────
 
@@ -629,7 +633,10 @@ def main():
     # Les fiches des musées, en parallèle.
     parts = {c: max(1, round(args.total * PARTS[c] / sum(PARTS[k] for k in cles))) for c in cles}
     with concurrent.futures.ThreadPoolExecutor(len(cles)) as pool:
-        futures = {c: pool.submit(moissonner, c, parts[c], cache, random.Random(f"arteon-{c}")) for c in cles}
+        # Chaque moisson va au-delà de la part du musée : tout ce qui est trouvé de plus
+        # alimente la réserve du site, et le cache grandit d'une moisson à l'autre.
+        futures = {c: pool.submit(moissonner, c, max(parts[c], VISEE.get(c, 0)), cache, random.Random(f"arteon-{c}"))
+                   for c in cles}
         toutes = {}
         for c, future in futures.items():
             try:
@@ -710,6 +717,22 @@ def main():
                        "grandes": f"grandes-{c}.bin"})
         dire(f"  {MUSEES[c]['nom']} : {len(fiches)} œuvres, vignettes {len(paquet) / 1e6:.0f} Mo, "
              f"images en grand {taille_grandes / 1e6:.0f} Mo")
+
+    # La réserve : toutes les autres œuvres libres trouvées (domaine public vérifié), qui ne
+    # tiennent pas sur le site avec leurs vignettes. Le site les montre quand même, avec
+    # les vignettes servies par les musées eux-mêmes (outils/monde_web.py).
+    pris = {f["i"] for f in fiches_finales}
+    reserve = []
+    for c in (vivants if args.sans_grandes else []):  # pour le site seulement, pas pour l'app
+        for f in classees[c][position[c]:]:
+            if f["i"] in pris or not f.get("_vignette"):
+                continue
+            pris.add(f["i"])
+            reserve.append({**{k: v for k, v in f.items() if not k.startswith("_")}, "k": c, "vu": f["_vignette"]})
+    if args.sans_grandes:
+        (sortie / "reserve.json").write_text(
+            json.dumps(reserve, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        dire(f"  réserve : {len(reserve)} autres œuvres libres, vignettes chez les musées")
 
     catalogue = {
         "version": VERSION,

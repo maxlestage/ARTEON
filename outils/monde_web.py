@@ -143,8 +143,19 @@ def main():
             shutil.copyfile(source, sortie / "v" / f"{o['i']}.jpg")
             gardees.append(o)
 
+    # La réserve : toutes les autres œuvres libres trouvées par la moisson. Leurs vignettes
+    # restent chez les musées (le site resterait sinon trop lourd pour GitHub Pages).
+    hebergees = len(gardees)
+    fichier_reserve = collections / "reserve.json"
+    if fichier_reserve.exists():
+        vus = {o["i"] for o in gardees}
+        for o in json.loads(fichier_reserve.read_text(encoding="utf-8")):
+            if o.get("k") in position and o["i"] not in vus and o.get("vu"):
+                vus.add(o["i"])
+                gardees.append(o)
+
     liste = [[o["t"], o.get("a", ""), o.get("d", ""), o.get("y"), o.get("c", "Autres objets"),
-              position[o["k"]], o.get("r")] for o in gardees]
+              position[o["k"]], o.get("r")] + ([o["vu"]] if o.get("vu") else []) for o in gardees]
     categories, siecles = {}, {}
     for o in gardees:
         categories[o.get("c", "Autres objets")] = categories.get(o.get("c", "Autres objets"), 0) + 1
@@ -154,6 +165,7 @@ def main():
     index = {
         "date": donnees.get("date"),
         "total": len(gardees),
+        "hebergees": hebergees,
         "parFichier": PAR_FICHIER,
         "musees": [{"cle": m["cle"], "nom": m["nom"], "ville": m["ville"], "couleur": m.get("couleur", "#1d3f8f"),
                     "licence": m.get("licence", ""), "oeuvres": sum(1 for o in gardees if o["k"] == m["cle"])}
