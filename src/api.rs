@@ -1,7 +1,8 @@
 //! L'API des œuvres d'un artiste, en direct des musées : `GET /api/artiste?nom=Claude Monet`.
 //!
-//! Rien n'est stocké : à chaque demande, le serveur interroge les collections ouvertes de
-//! l'Art Institute of Chicago, du Cleveland Museum of Art et du Metropolitan Museum, garde
+//! Rien n'est stocké : à chaque demande, le serveur interroge les collections ouvertes des
+//! musées décrits dans outils/monde/sources.json (Art Institute of Chicago, Cleveland Museum
+//! of Art, Metropolitan Museum, SMK de Copenhague : un musée de plus = une entrée), garde
 //! les œuvres du domaine public (en Europe comme aux États-Unis : l'artiste est mort en 1955
 //! ou avant, l'œuvre date d'avant 1931), et renvoie une liste commune, du plus ancien au
 //! plus récent. Les réponses restent un jour en mémoire.
@@ -24,8 +25,6 @@ use paquets::serde_json::{self, Value, json};
 const AGENT: &str = "ARTEON/1.0 (musee virtuel ; https://github.com/maxlestage/ARTEON)";
 const DERNIERE_ANNEE: i64 = 1930;
 const DERNIERE_MORT: i64 = 1955;
-/// Le Met n'a pas de recherche qui rende les fiches : chacune se demande à part.
-const MET_MAX: usize = 80;
 const GARDE: Duration = Duration::from_secs(24 * 3600);
 
 /// Les variantes de noms connues (« titian » → « titien »), les mêmes que le site.
@@ -59,7 +58,8 @@ pub fn routes(app: &mut App) {
     app.get("/api", |_req: Request| async move {
         reponse(200, json!({
             "api": "ARTEON",
-            "routes": { "/api/artiste?nom=…": "toutes les œuvres du domaine public d'un artiste, en direct de l'Art Institute of Chicago, du Cleveland Museum of Art et du Metropolitan Museum" },
+            "routes": { "/api/artiste?nom=…": "toutes les œuvres du domaine public d'un artiste, en direct des musées" },
+            "musees": sources().iter().map(|s| s["nom"].clone()).collect::<Vec<_>>(),
             "regle": "artiste mort en 1955 ou avant, œuvre d'avant 1931",
         }).to_string())
     });
@@ -145,6 +145,14 @@ fn recherches(nom: &str) -> Vec<String> {
 /// Le nom d'un musée correspond-il à l'artiste demandé ? Même clé, ou tous les mots
 /// du nom demandé dans le nom du musée (« Monet » dans « Claude Monet »).
 fn meme_artiste(demande: &str, trouve: &str) -> bool {
+    // « Hammershøi, Vilhelm » (SMK) : le prénom d'abord.
+    if let Some((nom, prenom)) = trouve.split_once(", ")
+        && !prenom.contains(',')
+        && !prenom.trim().is_empty()
+        && meme_artiste(demande, &format!("{} {}", prenom.trim(), nom.trim()))
+    {
+        return true;
+    }
     let (k, t) = (cle(demande), cle(trouve));
     if k == t {
         return true;
@@ -248,155 +256,179 @@ fn encoder(texte: &str) -> String {
         .collect()
 }
 
-fn texte(v: &Value, cle: &str) -> String {
-    v.get(cle).and_then(Value::as_str).unwrap_or_default().to_owned()
+// ─── Le moteur générique ────────────────────────────────────────────────────
+
+/// Les musées, décrits sans code : outils/monde/sources.json (le même fichier que le site).
+const SOURCES: &str = include_str!("../outils/monde/sources.json");
+
+fn sources() -> &'static Vec<Value> {
+    static TABLE: OnceLock<Vec<Value>> = OnceLock::new();
+    TABLE.get_or_init(|| {
+        serde_json::from_str::<Value>(SOURCES)
+            .ok()
+            .and_then(|v| v["sources"].as_array().cloned())
+            .unwrap_or_default()
+    })
 }
 
-fn chicago(nom: &str) -> Vec<Value> {
-    let champs = "id,title,artist_title,artist_display,date_display,date_end,medium_display,image_id";
-    let mut oeuvres = Vec::new();
+/// La valeur au bout d'un chemin (« production.0.creator »).
+fn chemin<'a>(v: &'a Value, chemin: &str) -> &'a Value {
+    chemin.split('.').fold(v, |v, cle| match cle.parse::<usize>() {
+        Ok(i) => v.get(i).unwrap_or(&Value::Null),
+        Err(_) => v.get(cle).unwrap_or(&Value::Null),
+    })
+}
+
+/// Une valeur en texte (« 1606 », « Rembrandt », « true »), vide si absente.
+fn en_texte(v: &Value) -> String {
+    match v {
+        Value::String(s) => s.clone(),
+        Value::Number(n) => n.to_string(),
+        Value::Bool(b) => b.to_string(),
+        _ => String::new(),
+    }
+}
+
+/// La première année d'une valeur (un nombre, « 1888 », « 1606-07-15T… ») ; 0 et 9999 ne
+/// sont pas des années.
+fn annee_de(v: &Value) -> Option<i64> {
+    let a = v.as_i64().or_else(|| annees(&en_texte(v)).first().copied())?;
+    (a != 0 && a < 9999).then_some(a)
+}
+
+/// Remplit un modèle (« https://…/{image}/full/400,/0/default.jpg ») avec les champs.
+fn remplir(modele: &str, valeurs: &HashMap<&str, String>) -> String {
+    let mut s = modele.to_owned();
+    for (k, v) in valeurs {
+        s = s.replace(&format!("{{{k}}}"), v);
+    }
+    s
+}
+
+/// Les œuvres libres de l'artiste dans un musée.
+fn interroger(source: &Value, nom: &str) -> Vec<Value> {
+    let cle_musee = en_texte(&source["cle"]);
+    let entetes: Vec<(String, String)> = source["entetes"]
+        .as_object()
+        .map(|o| o.iter().map(|(k, v)| (k.clone(), en_texte(v))).collect())
+        .unwrap_or_default();
+    let entetes: Vec<(&str, &str)> = entetes.iter().map(|(k, v)| (k.as_str(), v.as_str())).collect();
+    let par_page = source["par_page"].as_u64().unwrap_or(100);
+    let pages = source["pages"].as_u64().unwrap_or(1);
+
+    // Les fiches : directement dans les pages de résultats, ou une par une (le Met).
+    let mut fiches = Vec::new();
+    let mut ids = Vec::new();
     for q in recherches(nom) {
-        for page in 1..=5 {
-            let url = format!(
-                "https://api.artic.edu/api/v1/artworks/search?q={}&query[term][is_public_domain]=true&fields={champs}&limit=100&page={page}",
-                encoder(&q)
-            );
-            let Some(r) = lire(&url, &[("AIC-User-Agent", AGENT)]) else { break };
-            let lot = r["data"].as_array().cloned().unwrap_or_default();
-            for o in &lot {
-                let artiste = texte(o, "artist_title");
-                let image = texte(o, "image_id");
-                if image.is_empty() || !meme_artiste(nom, &artiste) {
-                    continue;
-                }
-                let (ne, mort) = vie(&texte(o, "artist_display"));
-                let date = texte(o, "date_display");
-                if !libre(&date, o["date_end"].as_i64(), mort, ne) {
-                    continue;
-                }
-                let id = o["id"].as_i64().unwrap_or_default();
-                oeuvres.push(json!({
-                    "id": format!("chicago-{id}"), "titre": texte(o, "title"), "artiste": artiste,
-                    "date": date, "annee": annees(&texte(o, "date_display")).first(),
-                    "technique": texte(o, "medium_display"), "musee": "chicago",
-                    "vignette": format!("https://www.artic.edu/iiif/2/{image}/full/400,/0/default.jpg"),
-                    "image": format!("https://www.artic.edu/iiif/2/{image}/full/843,/0/default.jpg"),
-                    "lien": format!("https://www.artic.edu/artworks/{id}"),
-                }));
+        for page in 1..=pages {
+            let url = source["recherche"]
+                .as_str()
+                .unwrap_or_default()
+                .replace("{q}", &encoder(&q))
+                .replace("{n}", &par_page.to_string())
+                .replace("{page}", &page.to_string())
+                .replace("{offset}", &((page - 1) * par_page).to_string());
+            let Some(r) = lire(&url, &entetes) else { break };
+            if let Some(champ) = source["ids"].as_str() {
+                ids.extend(chemin(&r, champ).as_array().cloned().unwrap_or_default());
+                break;
             }
-            if lot.len() < 100 {
+            let lot = source["liste"].as_str().map(|l| chemin(&r, l).clone()).unwrap_or(r);
+            let lot = lot.as_array().cloned().unwrap_or_default();
+            let fini = (lot.len() as u64) < par_page;
+            fiches.extend(lot);
+            if fini {
                 break;
             }
         }
     }
-    oeuvres
-}
-
-fn cleveland(nom: &str) -> Vec<Value> {
-    let mut oeuvres = Vec::new();
-    for q in recherches(nom) {
-        let url = format!(
-            "https://openaccess-api.clevelandart.org/api/artworks/?artists={}&cc0=1&has_image=1&limit=1000",
-            encoder(&q)
-        );
-        let Some(r) = lire(&url, &[]) else { continue };
-        for o in r["data"].as_array().cloned().unwrap_or_default() {
-            let createur = o["creators"].get(0).cloned().unwrap_or(Value::Null);
-            let description = texte(&createur, "description");
-            let artiste = description.split(" (").next().unwrap_or_default().to_owned();
-            if !meme_artiste(nom, &artiste) {
-                continue;
-            }
-            let annee = |c: &str| texte(&createur, c).parse::<i64>().ok().or(createur[c].as_i64());
-            let date = texte(&o, "creation_date");
-            if !libre(&date, o["creation_date_latest"].as_i64(), annee("death_year"), annee("birth_year")) {
-                continue;
-            }
-            let web = texte(&o["images"]["web"], "url");
-            if web.is_empty() {
-                continue;
-            }
-            oeuvres.push(json!({
-                "id": format!("cleveland-{}", o["id"]), "titre": texte(&o, "title"), "artiste": artiste,
-                "date": date, "annee": o["creation_date_earliest"].as_i64(),
-                "technique": texte(&o, "technique"), "musee": "cleveland",
-                "vignette": web, "image": web, "lien": texte(&o, "url"),
-            }));
-        }
-    }
-    oeuvres
-}
-
-fn met(nom: &str) -> Vec<Value> {
-    let mut ids = Vec::new();
-    for q in recherches(nom) {
-        let url = format!(
-            "https://collectionapi.metmuseum.org/public/collection/v1.1/search?artistOrCulture=true&hasImages=true&q={}",
-            encoder(&q)
-        );
-        if let Some(r) = lire(&url, &[]) {
-            ids.extend(r["objectIDs"].as_array().cloned().unwrap_or_default().into_iter().filter_map(|v| v.as_i64()));
-        }
-    }
-    // Dans l'ordre de pertinence du Met, sans doublon.
-    let mut vus = HashSet::new();
-    ids.retain(|id| vus.insert(*id));
-    ids.truncate(MET_MAX);
-    // Les fiches, huit à la fois.
-    let fiches: Vec<Value> = std::thread::scope(|s| {
-        ids.chunks(MET_MAX.div_ceil(8).max(1))
-            .map(|lot| {
-                s.spawn(move || {
-                    lot.iter()
-                        .filter_map(|id| lire(&format!("https://collectionapi.metmuseum.org/public/collection/v1/objects/{id}"), &[]))
-                        .collect::<Vec<_>>()
+    if let Some(detail) = source["detail"].as_str() {
+        let mut vus = HashSet::new();
+        ids.retain(|id| vus.insert(en_texte(id)));
+        ids.truncate(source["max"].as_u64().unwrap_or(80) as usize);
+        let taille = ids.len().div_ceil(8).max(1);
+        fiches = std::thread::scope(|s| {
+            ids.chunks(taille)
+                .map(|lot| {
+                    let entetes = &entetes;
+                    s.spawn(move || {
+                        lot.iter()
+                            .filter_map(|id| lire(&detail.replace("{id}", &en_texte(id)), entetes))
+                            .collect::<Vec<_>>()
+                    })
                 })
-            })
-            .collect::<Vec<_>>()
-            .into_iter()
-            .flat_map(|t| t.join().unwrap_or_default())
-            .collect()
-    });
+                .collect::<Vec<_>>()
+                .into_iter()
+                .flat_map(|t| t.join().unwrap_or_default())
+                .collect()
+        });
+    }
+
+    let champs = source["champs"].as_object().cloned().unwrap_or_default();
+    let exige: Vec<String> = source["exige"].as_array().map(|a| a.iter().map(en_texte).collect()).unwrap_or_default();
     fiches
-        .into_iter()
-        .filter_map(|o| {
-            let artiste = texte(&o, "artistDisplayName");
-            let petite = texte(&o, "primaryImageSmall");
-            let public = o["isPublicDomain"].as_bool().unwrap_or(false);
-            let an = |c: &str| texte(&o, c).parse::<i64>().ok().filter(|a| *a != 0 && *a < 9999);
-            let date = texte(&o, "objectDate");
-            if !public || petite.is_empty() || !meme_artiste(nom, &artiste)
-                || !libre(&date, o["objectEndDate"].as_i64(), an("artistEndDate"), an("artistBeginDate"))
-            {
+        .iter()
+        .filter_map(|f| {
+            let lire_champ = |nom: &str| champs.get(nom).and_then(Value::as_str).map(|c| chemin(f, c)).unwrap_or(&Value::Null);
+            for c in &exige {
+                let v = lire_champ(c);
+                if v.is_null() || v == &Value::Bool(false) || en_texte(v).is_empty() {
+                    return None;
+                }
+            }
+            let mut artiste = en_texte(lire_champ("artiste"));
+            if let Some(coupe) = source["artiste_jusqua"].as_str() {
+                artiste = artiste.split(coupe).next().unwrap_or_default().to_owned();
+            }
+            if !meme_artiste(nom, &artiste) {
                 return None;
             }
+            let (mut ne, mut mort) = (annee_de(lire_champ("ne")), annee_de(lire_champ("mort")));
+            if ne.is_none() && mort.is_none() {
+                (ne, mort) = vie(&en_texte(lire_champ("vie")));
+            }
+            let date = en_texte(lire_champ("date"));
+            if !libre(&date, annee_de(lire_champ("fin")), mort, ne) {
+                return None;
+            }
+            let valeurs: HashMap<&str, String> = champs.keys().map(|k| (k.as_str(), en_texte(lire_champ(k)))).collect();
+            let modele = |m: &str| remplir(source[m].as_str().unwrap_or_default(), &valeurs);
             Some(json!({
-                "id": format!("met-{}", o["objectID"]), "titre": texte(&o, "title"), "artiste": artiste,
-                "date": date, "annee": o["objectBeginDate"].as_i64(),
-                "technique": texte(&o, "medium"), "musee": "met",
-                "vignette": petite, "image": texte(&o, "primaryImage"), "lien": texte(&o, "objectURL"),
+                "id": format!("{cle_musee}-{}", valeurs.get("id").cloned().unwrap_or_default()),
+                "titre": valeurs.get("titre").cloned().unwrap_or_default(),
+                "artiste": artiste, "date": date, "annee": annee_de(lire_champ("annee")),
+                "technique": valeurs.get("technique").cloned().unwrap_or_default(),
+                "musee": cle_musee, "vignette": modele("vignette"), "image": modele("grande"), "lien": modele("lien"),
             }))
         })
         .collect()
 }
 
-/// Toutes les œuvres libres de l'artiste dans les trois musées, interrogés ensemble.
+/// Toutes les œuvres libres de l'artiste dans tous les musées décrits, interrogés ensemble.
 pub fn oeuvres_de(nom: &str) -> Value {
-    let (a, b, c) = std::thread::scope(|s| {
-        let a = s.spawn(|| chicago(nom));
-        let b = s.spawn(|| cleveland(nom));
-        let c = s.spawn(|| met(nom));
-        (a.join().unwrap_or_default(), b.join().unwrap_or_default(), c.join().unwrap_or_default())
+    let lots: Vec<Vec<Value>> = std::thread::scope(|s| {
+        sources()
+            .iter()
+            .map(|source| s.spawn(move || interroger(source, nom)))
+            .collect::<Vec<_>>()
+            .into_iter()
+            .map(|t| t.join().unwrap_or_default())
+            .collect()
     });
     let mut vues = HashSet::new();
-    let mut oeuvres: Vec<Value> = a
+    let mut oeuvres: Vec<Value> = lots
         .into_iter()
-        .chain(b)
-        .chain(c)
+        .flatten()
         .filter(|o| vues.insert(o["id"].as_str().unwrap_or_default().to_owned()))
         .collect();
-    let compte = |m: &str| oeuvres.iter().filter(|o| o["musee"] == m).count();
-    let musees = json!({ "chicago": compte("chicago"), "cleveland": compte("cleveland"), "met": compte("met") });
+    let musees: serde_json::Map<String, Value> = sources()
+        .iter()
+        .map(|source| {
+            let cle = en_texte(&source["cle"]);
+            let n = oeuvres.iter().filter(|o| o["musee"] == cle.as_str()).count();
+            (cle, json!(n))
+        })
+        .collect();
     oeuvres.sort_by_key(|o| o["annee"].as_i64().unwrap_or(i64::MAX));
     json!({ "nom": nom, "total": oeuvres.len(), "musees": musees, "oeuvres": oeuvres })
 }
@@ -414,6 +446,7 @@ mod tests {
         assert!(meme_artiste("Titien", "Titian"));
         assert!(!meme_artiste("Claude Monet", "Follower of Claude Monet"));
         assert!(!meme_artiste("Rembrandt", "Rembrandt Peale"));
+        assert!(meme_artiste("Vilhelm Hammershøi", "Hammershøi, Vilhelm"));
     }
 
     #[test]
