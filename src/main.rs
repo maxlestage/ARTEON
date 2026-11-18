@@ -1197,11 +1197,11 @@ async fn catalogue(_req: Request, ex: &'static Exhibition) -> Page {
                 .child(p().class("kicker").text(tf!("Catalogue · {}", "Catalogue · {}", "Catálogo · {}", ex.short_name)))
                 .child(h1().text(t("Les œuvres", "The works", "Las obras")))
                 .child(p().class("lead").text(tf!(
-                    "{} œuvres de {} ({}), dans l'ordre de l'accrochage, avec leur cartel et leur place dans la galerie. \
+                    "D'abord les {} œuvres de la visite 3D, de {} ({}), dans l'ordre de l'accrochage, avec leur cartel et leur place dans la galerie. \
                      Chaque œuvre a sa page : ce que l'on voit, ce qu'elle évoque, son histoire, la manière de l'artiste.",
-                    "{} works by {} ({}), in hanging order, with their labels and their place in the gallery. \
+                    "First, the {} works of the 3D tour, by {} ({}), in hanging order, with their labels and their place in the gallery. \
                      Each work has its own page: what you see, what it evokes, its history, the artist's technique.",
-                    "{} obras de {} ({}), en el orden del montaje, con su cartela y su lugar en la galería. \
+                    "Primero, las {} obras de la visita 3D, de {} ({}), en el orden del montaje, con su cartela y su lugar en la galería. \
                      Cada obra tiene su página: lo que se ve, lo que evoca, su historia, la técnica del artista.",
                     ex.artworks.len(),
                     ex.artist,
