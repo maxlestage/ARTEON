@@ -553,23 +553,27 @@ def reduire(image, cote, qualite):
     return sortie.getvalue(), copie
 
 
-def vignette(f, dossier):
+def vignette(f, dossier, avec_grande=True):
     """La vignette d'une fiche (320 px) et son image en grand (GRANDE px), sur le disque :
-    téléchargées une fois, réduites, gardées dans le cache. Renvoie la vignette."""
+    téléchargées une fois, réduites, gardées dans le cache. Renvoie la vignette. Sans
+    `avec_grande` (la réserve du site), seulement la vignette, tirée de la petite image du musée."""
     petite = dossier / f"{f['i']}.jpg"
     grande = dossier.parent / f"grandes-{GRANDE}" / f"{f['i']}.jpg"
-    if petite.exists() and petite.stat().st_size > 0 and grande.exists() and grande.stat().st_size > 0:
+    if petite.exists() and petite.stat().st_size > 0 and (
+            not avec_grande or (grande.exists() and grande.stat().st_size > 0)):
         return petite.read_bytes()
     entetes = {"AIC-User-Agent": AGENT} if f["i"].startswith("chicago-") else None
     try:
-        donnees = lire(source(f), entetes, essais=3, delai=60)
+        adresse = source(f) if avec_grande else (f.get("_vignette") or source(f))
+        donnees = lire(adresse, entetes, essais=2 if not avec_grande else 3, delai=60)
         image = Image.open(io.BytesIO(donnees))
-        image.draft("RGB", (GRANDE * 2, GRANDE * 2))
+        image.draft("RGB", (GRANDE * 2, GRANDE * 2) if avec_grande else (VIGNETTE * 2, VIGNETTE * 2))
         image = image.convert("RGB")
-        octets_grande, _ = reduire(image, GRANDE, QUALITE_GRANDE)
+        if avec_grande:
+            octets_grande, _ = reduire(image, GRANDE, QUALITE_GRANDE)
+            grande.parent.mkdir(parents=True, exist_ok=True)
+            grande.write_bytes(octets_grande)
         octets, reduite = reduire(image, VIGNETTE, QUALITE)
-        grande.parent.mkdir(parents=True, exist_ok=True)
-        grande.write_bytes(octets_grande)
         petite.write_bytes(octets)
         if not f.get("r") and reduite.width:
             f["r"] = round(reduite.height / reduite.width, 3)
@@ -617,6 +621,8 @@ def main():
     parser.add_argument("--fils", type=int, default=24, help="téléchargements en parallèle")
     parser.add_argument("--sans-grandes", action="store_true",
                         help="ne pas écrire les paquets d'images en grand (le site n'en a pas besoin)")
+    parser.add_argument("--minutes-reserve", type=float, default=20,
+                        help="au plus tant de minutes pour les vignettes de la réserve (site)")
     parser.add_argument("--minutes", type=float, default=0,
                         help="au plus tant de minutes pour les fiches (0 : sans limite)")
     args = parser.parse_args()
@@ -722,17 +728,27 @@ def main():
     # tiennent pas sur le site avec leurs vignettes. Le site les montre quand même, avec
     # les vignettes servies par les musées eux-mêmes (outils/monde_web.py).
     pris = {f["i"] for f in fiches_finales}
-    reserve = []
+    candidates = []
     for c in (vivants if args.sans_grandes else []):  # pour le site seulement, pas pour l'app
         for f in classees[c][position[c]:]:
             if f["i"] in pris or not f.get("_vignette"):
                 continue
             pris.add(f["i"])
-            reserve.append({**{k: v for k, v in f.items() if not k.startswith("_")}, "k": c, "vu": f["_vignette"]})
+            candidates.append((c, f))
+    # Leurs vignettes sont téléchargées dans le cache, autant que le temps le permet (le cache
+    # grandit d'une construction à l'autre) ; les autres restent chez les musées.
+    fin = time.time() + args.minutes_reserve * 60
+    def telecharger(cf):
+        return vignette(cf[1], dossier, avec_grande=False) is not None if time.time() < fin else \
+            (dossier / f"{cf[1]['i']}.jpg").exists()
+    with concurrent.futures.ThreadPoolExecutor(args.fils) as pool:
+        hebergees = list(pool.map(telecharger, candidates))
+    reserve = [{**{k: v for k, v in f.items() if not k.startswith("_")}, "k": c,
+                **({} if ok else {"vu": f["_vignette"]})} for (c, f), ok in zip(candidates, hebergees)]
     if args.sans_grandes:
         (sortie / "reserve.json").write_text(
             json.dumps(reserve, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-        dire(f"  réserve : {len(reserve)} autres œuvres libres, vignettes chez les musées")
+        dire(f"  réserve : {len(reserve)} autres œuvres libres, dont {sum(hebergees)} avec leur vignette")
 
     catalogue = {
         "version": VERSION,

@@ -115,7 +115,7 @@ function afficher() {
 function carte(i) {
   const l = etat.liste[i], id = etat.ids[i];
   const ligne = [l[A], l[D]].filter(Boolean).join(" · ");
-  return `<a class="monde-carte" href="#/oeuvre/${id}"><img loading="lazy" decoding="async" src="${l[7] || `v/${id}.jpg`}" alt=""><b>${echapper(l[T])}</b><span>${echapper(ligne)}</span></a>`;
+  return `<a class="monde-carte" href="#/oeuvre/${id}"><img loading="lazy" decoding="async" src="${l[7] || `v/${id}.webp`}" alt=""><b>${echapper(l[T])}</b><span>${echapper(ligne)}</span></a>`;
 }
 
 function plus() {
@@ -155,7 +155,7 @@ async function fiche(id) {
   racine.innerHTML = `
     <a class="monde-retour" href="#/">← Toutes les œuvres</a>
     <div class="monde-fiche">
-      <div class="monde-image"><img id="monde-img" src="${l[7] || `v/${id}.jpg`}" alt="${echapper(l[T])}"></div>
+      <div class="monde-image"><img id="monde-img" src="${l[7] || `v/${id}.webp`}" alt="${echapper(l[T])}"></div>
       <div>
         <h1>${echapper(l[T])}</h1>
         <p class="monde-artiste"><a href="../explorer/#/artiste/${encodeURIComponent(l[A])}" title="Le catalogue complet de l'artiste">${echapper(l[A])}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
