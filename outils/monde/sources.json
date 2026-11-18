@@ -1,5 +1,5 @@
 {
- "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…), {debut} (1, n+1…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artistes (champ) : une liste d'autres noms à essayer (textes, ou objets avec « def »). fournisseur (champ) : le musée qui conserve l'œuvre, pour un agrégateur. delai : les secondes à attendre une réponse (20 par défaut). artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
+ "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…), {debut} (1, n+1…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artistes (champ) : une liste d'autres noms à essayer (textes, ou objets avec « def »). fournisseur (champ) : le musée qui conserve l'œuvre, pour un agrégateur. un_a_la_fois : la source ne reçoit qu'une demande à la fois (API statique). delai : les secondes à attendre une réponse (20 par défaut). artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
  "sources": [
   {
    "cle": "chicago",
@@ -205,7 +205,8 @@
    "vignette": "{image}?width=400",
    "grande": "{image}?width=1280",
    "lien": "{page}",
-   "delai": 90
+   "delai": 90,
+   "un_a_la_fois": true
   }
  ]
 }
