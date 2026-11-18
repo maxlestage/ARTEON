@@ -80,13 +80,20 @@ export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
       if (lot.length < parPage) break;
     }
     if (source.detail) {
-      ids = [...new Set(ids.map(String))].slice(0, Math.min(source.max ?? 80, 40));
-      fiches = (await Promise.all(ids.map((id) => lireJson(source.detail.replace("{id}", id), entetes).catch(() => null)))).filter(Boolean);
+      // Les fiches une par une, douze à la fois (300 au plus depuis le navigateur ; l'API
+      // Paquets, elle, va jusqu'au bout).
+      ids = [...new Set(ids.map(String))].slice(0, Math.min(source.max ?? 3000, 300));
+      fiches = [];
+      for (let i = 0; i < ids.length; i += 12) {
+        const lot = await Promise.all(ids.slice(i, i + 12).map((id) => lireJson(source.detail.replace("{id}", id), entetes).catch(() => null)));
+        fiches.push(...lot.filter(Boolean));
+      }
     }
     const champ = (f, k) => (source.champs[k] ? chemin(f, source.champs[k]) : null);
     const out = [];
     for (const f of fiches) {
       if ((source.exige || []).some((k) => { const v = champ(f, k); return v == null || v === false || enTexte(v) === ""; })) continue;
+      if (Object.entries(source.egal || {}).some(([k, attendu]) => enTexte(champ(f, k)) !== enTexte(attendu))) continue;
       let artiste = enTexte(champ(f, "artiste"));
       if (source.artiste_jusqua) artiste = artiste.split(source.artiste_jusqua)[0];
       if (!meme(artiste)) continue;
