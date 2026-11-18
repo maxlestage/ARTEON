@@ -464,6 +464,9 @@ body.viewer-open { overflow: hidden; }
   background: var(--bg); box-shadow: -18px 0 50px rgba(0, 0, 0, .25); padding: 4.6rem 1.2rem 2rem; animation: burger-in .25s ease; }
 @keyframes burger-in { from { transform: translateX(30px); opacity: 0; } to { transform: none; opacity: 1; } }
 .burger-list, .burger-exhibitions ul, .burger-langs { list-style: none; margin: 0; padding: 0; }
+.burger-list { width: 100%; }
+.burger-panel a::after, .header-links > a::after { display: none !important; }
+.burger-list a.current { box-shadow: none; }
 .burger-list > li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .55rem .6rem; border-radius: 10px; }
 .burger-list > li:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); }
 .burger-list > li > a { color: var(--fg); text-decoration: none; font-weight: 600; }
