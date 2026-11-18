@@ -83,16 +83,6 @@ h2.section-title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 4rem 0 1.5rem;
 .f2 { width: 60px; height: 60px; background: var(--blue); opacity: .7; bottom: 10%; left: 42%; animation-delay: -3s; }
 .f3 { width: 180px; height: 14px; border-radius: 999px; background: var(--green); opacity: .6; top: 16%; right: 46%; animation-delay: -6s; }
 
-/* Le cube CSS 3D, posé sur la vitrine. */
-.cube-stage { position: absolute; right: -10px; top: -30px; width: 90px; height: 90px; perspective: 600px; }
-.cube { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: cube 12s linear infinite; }
-.cube .face { position: absolute; inset: 0; border: 3px solid var(--ink); opacity: .95; }
-.cube .front  { background: var(--red);    transform: translateZ(45px); }
-.cube .back   { background: var(--blue);   transform: rotateY(180deg) translateZ(45px); }
-.cube .right  { background: var(--yellow); transform: rotateY(90deg) translateZ(45px); }
-.cube .left   { background: var(--paper);  transform: rotateY(-90deg) translateZ(45px); }
-.cube .top    { background: var(--paper);  transform: rotateX(90deg) translateZ(45px); }
-.cube .bottom { background: var(--ink);    transform: rotateX(-90deg) translateZ(45px); }
 
 /* ─── Sections ────────────────────────────────────────────────────────── */
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; margin-top: 2rem; }
@@ -207,6 +197,7 @@ body.viewer-open { overflow: hidden; }
 .cover-frame.c0 { width: 58%; left: 4%; top: 8%; transform: rotateY(14deg) rotate(-4deg); z-index: 2; }
 .cover-frame.c1 { width: 50%; right: 2%; top: 26%; transform: rotateY(-16deg) rotate(3deg); z-index: 3; animation-delay: .15s; }
 .cover-frame.c2 { width: 36%; left: 30%; bottom: 0; transform: rotate(-1deg); z-index: 1; animation-delay: .3s; }
+.cover-frame.c3 { width: 30%; right: 1%; top: 0; transform: rotateY(-10deg) rotate(5deg); z-index: 2; animation-delay: .45s; }
 .hero-covers:hover .c0 { transform: rotateY(4deg) rotate(-2deg) translateY(-6px); }
 .hero-covers:hover .c1 { transform: rotateY(-6deg) rotate(1deg) translateY(-6px); }
 .ex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.6rem; }
@@ -338,7 +329,6 @@ body.viewer-open { overflow: hidden; }
 @keyframes drop { from { opacity: 0; transform: translateY(-60px) rotate(-12deg); } to { opacity: 1; transform: none; } }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 @keyframes float { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(18px, -22px) rotate(8deg); } }
-@keyframes cube { from { transform: rotateX(-20deg) rotateY(0); } to { transform: rotateX(-20deg) rotateY(360deg); } }
 @keyframes wobble { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-12deg); } 60% { transform: rotate(8deg); } }
 @keyframes band { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(2.2); } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -350,13 +340,8 @@ body.viewer-open { overflow: hidden; }
   .hero { padding-top: 2rem; }
   /* Sur un petit écran, les formes décoratives passeraient sur le titre et les boutons. */
   .floating { display: none; }
-  .cube-stage { width: 60px; height: 60px; right: 6px; top: 6px; }
-  .cube .face { border-width: 2px; }
   .tilt img { height: 170px; }
   .hero-covers { min-height: 320px; margin: 1rem 0 2rem; }
-  .cube .front { transform: translateZ(30px); } .cube .back { transform: rotateY(180deg) translateZ(30px); }
-  .cube .right { transform: rotateY(90deg) translateZ(30px); } .cube .left { transform: rotateY(-90deg) translateZ(30px); }
-  .cube .top { transform: rotateX(90deg) translateZ(30px); } .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
   .lead { margin-inline: auto; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .site-header nav { gap: .7rem; font-size: .9rem; }
