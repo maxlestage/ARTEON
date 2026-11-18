@@ -102,11 +102,14 @@ struct Catalogue: Decodable, Sendable {
 
 enum CatalogueError: LocalizedError, Equatable {
     case tooNew(Int)
+    case unreadable
 
     var errorDescription: String? {
         switch self {
         case .tooNew(let v):
             "Ce catalogue (version \(v)) est plus récent que l'application : mettez-la à jour."
+        case .unreadable:
+            "La réponse du site ARTEON est illisible."
         }
     }
 }

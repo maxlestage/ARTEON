@@ -2,9 +2,8 @@ import SwiftUI
 import WebKit
 
 /// La galerie 3D de l'exposition (WebGL 2, écrite en Rust), en plein écran : visite
-/// guidée ou libre, plan, notices ; ouverte devant une œuvre si `work`. Elle est servie
-/// par l'application elle-même (`arteon://musee/…`, le site embarqué) : pas besoin
-/// d'Internet. Une exposition arrivée après l'application s'ouvre depuis le site.
+/// guidée ou libre, plan, notices ; ouverte devant une œuvre si `work`. Elle vient du site
+/// ARTEON, comme tout le reste : rien n'est gardé sur l'appareil.
 struct GalleryView: View {
     let exhibition: Exhibition
     let work: String?
@@ -12,15 +11,8 @@ struct GalleryView: View {
     @State private var reload = 0
     @State private var failed: String?
 
-    /// L'exposition est-elle dans le musée embarqué ?
-    private var isLocal: Bool {
-        (LocalMuseum.stored(exhibition.gallery + "/index.html") != nil
-            && LocalMuseum.stored("donnees/\(exhibition.slug).bin") != nil)
-            || Nuage.isConfigured
-    }
-
     private var url: URL {
-        let page = isLocal ? LocalMuseum.url(exhibition.gallery + "/") : Site.url(exhibition.gallery + "/")
+        let page = Site.url(exhibition.gallery + "/")
         var components = URLComponents(url: page, resolvingAgainstBaseURL: true)
         components?.fragment = work
         return components?.url ?? page
@@ -49,14 +41,6 @@ struct GalleryView: View {
         .navigationTitle("Galerie 3D · \(exhibition.name)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .status) {
-                if isLocal {
-                    Label("Hors ligne", systemImage: "internaldrive")
-                        .labelStyle(.iconOnly)
-                        .foregroundStyle(.secondary)
-                        .accessibilityLabel("Servie depuis l'appareil, sans Internet")
-                }
-            }
             ToolbarItem(placement: .primaryAction) {
                 Button("Recharger", systemImage: "arrow.clockwise") {
                     failed = nil
@@ -93,11 +77,9 @@ struct GalleryWebView: UIViewRepresentable {
     })();
     """
 
-    /// Sous `arteon://`, pas de service worker (l'application garde déjà tout) : son
-    /// inscription ne doit pas lever d'erreur.
+    /// Pas de service worker dans l'application : rien n'est gardé hors ligne.
     static let noServiceWorker = """
     (() => {
-      if (location.protocol !== 'arteon:') return;
       try {
         const sw = navigator.serviceWorker;
         if (sw) { sw.register = () => new Promise(() => {}); }
@@ -123,16 +105,8 @@ struct GalleryWebView: UIViewRepresentable {
             // Les liens vers d'autres sites (sources, crédits) s'ouvrent dans Safari.
             if let url = action.request.url, let scheme = url.scheme,
                scheme == "http" || scheme == "https",
-               action.navigationType == .linkActivated,
-               url.host != Site.base.host || LocalMuseum.isAvailable || Nuage.isConfigured {
+               action.navigationType == .linkActivated, url.host != Site.base.host {
                 Task { await UIApplication.shared.open(url) }
-                return .cancel
-            }
-            // Les pages du site qui ne sont pas embarquées (présentation, catalogue) : l'application
-            // les montre elle-même.
-            if let url = action.request.url, url.scheme == LocalMuseum.scheme,
-               action.targetFrame?.isMainFrame != false,
-               LocalMuseum.stored(url.path) == nil, !Nuage.isConfigured {
                 return .cancel
             }
             return .allow
@@ -167,7 +141,8 @@ struct GalleryWebView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = true
-        configuration.setURLSchemeHandler(MuseumSchemeHandler(), forURLScheme: LocalMuseum.scheme)
+        // Rien n'est gardé : ni cache, ni stockage du site sur l'appareil.
+        configuration.websiteDataStore = .nonPersistent()
         configuration.userContentController.addUserScript(
             WKUserScript(source: Self.noServiceWorker, injectionTime: .atDocumentStart, forMainFrameOnly: true)
         )
@@ -193,59 +168,5 @@ struct GalleryWebView: UIViewRepresentable {
         guard context.coordinator.loaded != reload else { return }
         context.coordinator.loaded = reload
         view.load(URLRequest(url: url))
-    }
-}
-
-/// Sert le site embarqué (`Musee/`) aux adresses `arteon://musee/…` : pages, bundle
-/// WebAssembly, données des expositions, images.
-@MainActor
-final class MuseumSchemeHandler: NSObject, WKURLSchemeHandler {
-    /// Les requêtes arrêtées par la page : on n'y répond plus.
-    private var stopped = Set<ObjectIdentifier>()
-
-    func webView(_ webView: WKWebView, start task: any WKURLSchemeTask) {
-        let id = ObjectIdentifier(task)
-        let requested = task.request.url ?? LocalMuseum.url("/")
-        Task {
-            // Sur l'appareil, sinon depuis Nuage (puis gardé : la galerie revient hors ligne).
-            var file = LocalMuseum.stored(requested.path)
-            if file == nil { file = await LocalMuseum.fetch(requested.path) }
-            if stopped.remove(id) != nil { return }
-            guard let file else {
-                let response = HTTPURLResponse(
-                    url: requested, statusCode: 404, httpVersion: "HTTP/1.1",
-                    headerFields: ["Content-Type": "text/plain; charset=utf-8"]
-                )!
-                task.didReceive(response)
-                task.didReceive(Data("Introuvable".utf8))
-                task.didFinish()
-                return
-            }
-            let mime = LocalMuseum.mimeType(file)
-            let data = await Task.detached(priority: .userInitiated) {
-                try? Data(contentsOf: file, options: .mappedIfSafe)
-            }.value
-            if stopped.remove(id) != nil { return }
-            guard let data else {
-                task.didFailWithError(URLError(.fileDoesNotExist))
-                return
-            }
-            let response = HTTPURLResponse(
-                url: requested, statusCode: 200, httpVersion: "HTTP/1.1",
-                headerFields: [
-                    "Content-Type": mime,
-                    "Content-Length": String(data.count),
-                    "Access-Control-Allow-Origin": "*",
-                    "Cache-Control": "no-cache",
-                ]
-            )!
-            task.didReceive(response)
-            task.didReceive(data)
-            task.didFinish()
-        }
-    }
-
-    func webView(_ webView: WKWebView, stop task: any WKURLSchemeTask) {
-        stopped.insert(ObjectIdentifier(task))
     }
 }

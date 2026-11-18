@@ -428,7 +428,7 @@ struct WorldCollectionsCard: View {
     @Environment(CatalogueStore.self) private var store
 
     var body: some View {
-        if LocalMuseum.hasCollections {
+        if true {
             NavigationLink(value: Route.worldCollections) {
                 HStack(spacing: 18) {
                     Image(systemName: "square.stack.3d.up.fill")
@@ -443,8 +443,8 @@ struct WorldCollectionsCard: View {
                         Text("Les collections du monde")
                             .font(.title2.bold())
                         Text(store.collections.map {
-                            "\($0.count.formatted()) œuvres de \($0.collections.museums.count) grands musées, sur l'appareil."
-                        } ?? "Des dizaines de milliers d'œuvres, sur l'appareil.")
+                            "\($0.count.formatted()) œuvres de \($0.collections.museums.count) grands musées."
+                        } ?? "Des dizaines de milliers d'œuvres du domaine public.")
                             .font(.subheadline)
                             .opacity(0.85)
                     }

@@ -120,7 +120,7 @@ struct FavoritesView: View {
                     ContentUnavailableView(
                         "Pas encore de favoris",
                         systemImage: "heart",
-                        description: Text("Touchez le cœur d'une œuvre pour la retrouver ici, même sans Internet.")
+                        description: Text("Touchez le cœur d'une œuvre pour la retrouver ici.")
                     )
                     .padding(.top, 40)
                 } else {

@@ -1,5 +1,5 @@
 // Les index du musée (artistes, chronologie, thèmes, collections), le jeu, l'audioguide et
-// le musée embarqué. Sous Linux comme sur le simulateur.
+// le client de l'API. Sous Linux comme sur le simulateur.
 
 import Foundation
 import Testing
@@ -13,13 +13,11 @@ private func fixture() throws -> Catalogue {
     return try Catalogue.decode(Data(contentsOf: url))
 }
 
-/// Le musée embarqué (ios/ARTEON.swiftpm/Musee), s'il a été préparé.
-private let embedded: URL? = {
-    let url = URL(fileURLWithPath: #filePath)
-        .deletingLastPathComponent()
-        .deletingLastPathComponent()
-        .appendingPathComponent("ARTEON.swiftpm/Musee")
-    return FileManager.default.fileExists(atPath: url.appendingPathComponent("catalogue.json").path) ? url : nil
+/// Le vrai catalogue, tel que l'API le sert (le site ARTEON), quand le réseau répond.
+private let live: Catalogue? = {
+    guard let data = try? Data(contentsOf: URL(string: "https://maxlestage.github.io/ARTEON/catalogue.json")!)
+    else { return nil }
+    return try? Catalogue.decode(data)
 }()
 
 @Test func lesDatesDesCartelsSeLisent() {
@@ -139,47 +137,14 @@ private let embedded: URL? = {
     #expect(CatalogueStore(defaults: defaults).history.first?.work == "w10")
     store.quizBest = 7
     #expect(CatalogueStore(defaults: defaults).quizBest == 7)
-    store.updatesEnabled = false
-    #expect(CatalogueStore(defaults: defaults).updatesEnabled == false)
 }
 
-@Test func leMuseeEmbarqueSertSesFichiers() throws {
-    let root = FileManager.default.temporaryDirectory.appendingPathComponent("musee-\(UUID().uuidString)")
-    defer { try? FileManager.default.removeItem(at: root) }
-    let fm = FileManager.default
-    try fm.createDirectory(at: root.appendingPathComponent("van-gogh/galerie"), withIntermediateDirectories: true)
-    try fm.createDirectory(at: root.appendingPathComponent("tableaux/van-gogh"), withIntermediateDirectories: true)
-    try Data("<html>".utf8).write(to: root.appendingPathComponent("van-gogh/galerie/index.html"))
-    try Data("jpg".utf8).write(to: root.appendingPathComponent("tableaux/van-gogh/nuit étoilée.jpg"))
-
-    #expect(LocalMuseum.file("/van-gogh/galerie/", in: root)?.lastPathComponent == "index.html")
-    #expect(LocalMuseum.file("van-gogh/galerie", in: root)?.lastPathComponent == "index.html")
-    #expect(LocalMuseum.file("tableaux/van-gogh/nuit%20%C3%A9toil%C3%A9e.jpg", in: root) != nil)
-    #expect(LocalMuseum.file("van-gogh/galerie/#nuit", in: root) != nil)
-    #expect(LocalMuseum.file("tableaux/van-gogh/absente.jpg", in: root) == nil)
-    #expect(LocalMuseum.file("van-gogh", in: root) == nil)
-    #expect(LocalMuseum.file("../etc/passwd", in: root) == nil)
-    #expect(LocalMuseum.url("/van-gogh/galerie/").absoluteString == "arteon://musee/van-gogh/galerie/")
-    #expect(LocalMuseum.mimeType(URL(fileURLWithPath: "/a/arteon_bg.wasm")) == "application/wasm")
-    #expect(LocalMuseum.mimeType(URL(fileURLWithPath: "/a/index.html")).hasPrefix("text/html"))
-}
-
-/// Le vrai musée embarqué, quand ios/preparer-musee.sh l'a rempli : chaque œuvre a son
-/// image, chaque exposition sa galerie, et les index couvrent tout.
-@Test(.enabled(if: embedded != nil))
-func leVraiMuseeEmbarqueEstComplet() throws {
-    let root = try #require(embedded)
-    let c = try Catalogue.decode(Data(contentsOf: root.appendingPathComponent("catalogue.json")))
+/// Le vrai musée, tel que l'API le sert : les index couvrent tout.
+@Test(.enabled(if: live != nil))
+func leVraiMuseeEnLigneEstComplet() throws {
+    let c = try #require(live)
     #expect(c.exhibitions.count >= 50)
     #expect(c.workCount >= 500)
-    for ex in c.exhibitions {
-        #expect(LocalMuseum.file(ex.gallery + "/", in: root) != nil, "galerie de \(ex.slug)")
-        #expect(LocalMuseum.file("donnees/\(ex.slug).bin", in: root) != nil, "données de \(ex.slug)")
-        for w in ex.works {
-            #expect(LocalMuseum.file(w.image, in: root) != nil, "image de \(ex.slug)/\(w.slug)")
-        }
-    }
-    #expect(LocalMuseum.file("pkg/arteon_bg.wasm", in: root) != nil)
 
     let index = MuseumIndex(c)
     #expect(index.artists.count > 300)
@@ -210,10 +175,9 @@ func leVraiMuseeEmbarqueEstComplet() throws {
 }
 
 /// Le vrai catalogue porte le plan de chaque bâtiment.
-@Test(.enabled(if: embedded != nil))
+@Test(.enabled(if: live != nil))
 func lesPlansDesBatimentsSontLa() throws {
-    let root = try #require(embedded)
-    let c = try Catalogue.decode(Data(contentsOf: root.appendingPathComponent("catalogue.json")))
+    let c = try #require(live)
     for ex in c.exhibitions {
         #expect(ex.hasPlan, "plan de \(ex.slug)")
         #expect(ex.entrance?.count == 4, "entrée de \(ex.slug)")
@@ -259,81 +223,50 @@ private func worldFixture() throws -> WorldCollections {
     #expect(c.works.allSatisfy { $0.imageURL?.hasPrefix("https://") == true })
 }
 
-@Test func lesVignettesSeLisentDansLePaquet() throws {
-    let root = FileManager.default.temporaryDirectory.appendingPathComponent("musee-\(UUID().uuidString)")
-    defer { try? FileManager.default.removeItem(at: root) }
-    try FileManager.default.createDirectory(at: root.appendingPathComponent("collections"), withIntermediateDirectories: true)
-    try Data("AAAAbonjourBBBB".utf8).write(to: root.appendingPathComponent("collections/vignettes-met.bin"))
-    var work = try #require(try worldFixture().works.first)
-    work.thumb = [4, 7]
-    let bytes = try #require(LocalMuseum.thumbnail(of: work, pack: "vignettes-met.bin", in: root))
-    #expect(String(decoding: bytes, as: UTF8.self) == "bonjour")
-    work.thumb = nil
-    #expect(LocalMuseum.thumbnail(of: work, pack: "vignettes-met.bin", in: root) == nil)
-    // L'image en grand se lit de la même façon, dans son propre paquet.
-    work.large = [11, 4]
-    let large = try #require(LocalMuseum.largeImage(of: work, pack: "vignettes-met.bin", in: root))
-    #expect(String(decoding: large, as: UTF8.self) == "BBBB")
-    #expect(LocalMuseum.largeImage(of: work, pack: nil, in: root) == nil)
+/// Les collections telles que le site les publie : l'index, la liste, les vignettes.
+@Test func lesCollectionsDuSiteSeLisent() throws {
+    let index = Data("""
+    {"date":"2026-11-18","total":3,"parFichier":1000,
+     "musees":[{"cle":"chicago","nom":"Art Institute of Chicago","ville":"Chicago","couleur":"#b5121b","licence":"CC0","oeuvres":2},
+               {"cle":"met","nom":"Metropolitan Museum","ville":"New York","couleur":"#e4002b","licence":"CC0","oeuvres":1}],
+     "ids":["chicago-1","chicago-2","met-3"]}
+    """.utf8)
+    let list = Data("""
+    [["Les Iris","Vincent van Gogh","1889",1889,"Peinture",0,0.8],
+     ["Nymphéas","Claude Monet","",null,"Peinture",0,1.2],
+     ["La Vague","Katsushika Hokusai","vers 1831",1831,"Estampe",1,0.7,"https://images.metmuseum.org/v.jpg"]]
+    """.utf8)
+    let c = try WorldCollections.fromSite(index: index, list: list)
+    #expect(c.museums.map(\.key) == ["chicago", "met"])
+    #expect(c.museums.first?.site == "https://www.artic.edu")
+    #expect(c.works.count == 3)
+    #expect(c.works[0].thumbURL?.hasSuffix("monde/v/chicago-1.webp") == true)
+    #expect(c.works[2].thumbURL == "https://images.metmuseum.org/v.jpg")
+    #expect(c.works[1].date == nil && c.works[1].year == nil)
+    #expect(c.works[2].museum == "met" && c.works[2].position == 2)
+    let ix = CollectionIndex(c)
+    #expect(ix.works(.artist("Claude Monet")).count == 1)
+    #expect(ix.works(.search("vague")).first?.id == "met-3")
 }
 
-/// Les vraies collections embarquées, quand outils/collections_monde.py les a écrites.
-@Test(.enabled(if: embedded.map { FileManager.default.fileExists(atPath: $0.appendingPathComponent("collections/collections.json").path) } ?? false))
-func lesVraiesCollectionsSontCompletes() throws {
-    let root = try #require(embedded)
-    let c = try WorldCollections.decode(Data(contentsOf: root.appendingPathComponent("collections/collections.json")))
-    let index = CollectionIndex(c)
-    #expect(index.count > 0)
-    for museum in c.museums {
-        let pack = root.appendingPathComponent("collections/\(museum.pack)")
-        let size = try #require(try FileManager.default.attributesOfItem(atPath: pack.path)[.size] as? Int)
-        for w in c.works where w.museum == museum.key {
-            let range = try #require(w.thumb, "vignette de \(w.id)")
-            #expect(range[0] + range[1] <= size)
-        }
-        // Les images en grand (700 px), dans leur paquet.
-        if let largePack = museum.largePack {
-            let file = root.appendingPathComponent("collections/\(largePack)")
-            let largeSize = try #require(try FileManager.default.attributesOfItem(atPath: file.path)[.size] as? Int)
-            for w in c.works where w.museum == museum.key {
-                if let range = w.large { #expect(range[0] + range[1] <= largeSize) }
-            }
-            if let w = c.works.first(where: { $0.museum == museum.key && $0.large != nil }) {
-                let bytes = try #require(LocalMuseum.largeImage(of: w, pack: largePack, in: root))
-                #expect(bytes.prefix(2) == Data([0xFF, 0xD8]))
-            }
-        }
-        // Une vignette se lit, et c'est un JPEG.
-        if let w = c.works.first(where: { $0.museum == museum.key }) {
-            let bytes = try #require(LocalMuseum.thumbnail(of: w, pack: museum.pack, in: root))
-            #expect(bytes.prefix(2) == Data([0xFF, 0xD8]))
-        }
-    }
-}
-
-// MARK: - Nuage
-
-@Test func lesCheminsDuSiteDeviennentDesNomsNuage() {
-    #expect(Nuage.name("/van-gogh/galerie/") == "van-gogh/galerie/index.html")
-    #expect(Nuage.name("van-gogh/galerie") == "van-gogh/galerie/index.html")
-    #expect(Nuage.name("/pkg/arteon_bg.wasm") == "pkg/arteon_bg.wasm")
-    #expect(Nuage.name("tableaux/van-gogh/nuit-etoilee.jpg") == "tableaux/van-gogh/nuit-etoilee.jpg")
-    #expect(Nuage.name("/van-gogh/galerie/#nuit-etoilee") == "van-gogh/galerie/index.html")
-    #expect(Nuage.name("catalogue.json") == "catalogue.json")
-    #expect(Nuage.name("collections/vignettes-met.bin") == "collections/vignettes-met.bin")
-    #expect(Nuage.name("../secret") == nil)
-    #expect(Nuage.name("tableaux/a b.jpg") == nil)
-    #expect(Nuage.name("tableaux/é.jpg") == nil)
-}
-
-@Test func leMuseeTelechargeSeLitCommeLeMuseeEmbarque() throws {
-    let file = LocalMuseum.downloads.appendingPathComponent("essai-\(UUID().uuidString)/galerie/index.html")
-    defer { try? FileManager.default.removeItem(at: file.deletingLastPathComponent().deletingLastPathComponent()) }
-    try FileManager.default.createDirectory(at: file.deletingLastPathComponent(), withIntermediateDirectories: true)
-    try Data("<html>".utf8).write(to: file)
-    let folder = file.deletingLastPathComponent().deletingLastPathComponent().lastPathComponent
-    #expect(LocalMuseum.stored("/\(folder)/galerie/")?.path == file.path)
-    #expect(LocalMuseum.stored("/\(folder)/absente/") == nil)
+/// Le moteur générique des œuvres en direct : la règle du domaine public et les noms.
+@Test func lesOeuvresEnDirectSuiventLaRegle() {
+    #expect(LiveWorks.years("1606-07-15T00:00:00Z") == [1606])
+    #expect(LiveWorks.years("1485/90–1576") == [1485, 1576])
+    #expect(LiveWorks.isFree(date: "1888", end: 1888, death: 1890, birth: 1853))
+    #expect(!LiveWorks.isFree(date: "1937", end: nil, death: 1940, birth: nil))
+    #expect(!LiveWorks.isFree(date: "1907", end: 1907, death: 1973, birth: 1881))
+    #expect(!LiveWorks.isFree(date: "1920", end: nil, death: nil, birth: 1902))
+    #expect(LiveWorks.life("Dutch, 1606–1669").birth == 1606)
+    #expect(LiveWorks.life("Dutch, 1606–1669").death == 1669)
+    #expect(LiveWorks.sameArtist("Vilhelm Hammershøi", "Hammershøi, Vilhelm"))
+    #expect(LiveWorks.sameArtist("Monet", "Claude Monet"))
+    #expect(LiveWorks.sameArtist("Titien", "Titian"))
+    #expect(!LiveWorks.sameArtist("Rembrandt", "Rembrandt Peale"))
+    #expect(!LiveWorks.sameArtist("Claude Monet", "Follower of Claude Monet"))
+    let record: [String: Any] = ["production": [["creator": "Rembrandt van Rijn"]], "public_domain": true]
+    #expect(LiveWorks.text(LiveWorks.path(record, "production.0.creator")) == "Rembrandt van Rijn")
+    #expect(LiveWorks.year(1669) == 1669 && LiveWorks.year(0) == nil && LiveWorks.year("9999") == nil)
 }
 
 /// La clé des artistes : la même table de variantes que le site, et les mêmes réunions.

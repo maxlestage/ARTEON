@@ -1,9 +1,18 @@
 # ARTEON pour iPad et iPhone, en Swift
 
-L'application native d'ARTEON, écrite entièrement en **Swift 6** et **SwiftUI**, avec
-**tout le musée embarqué** : les 52 expositions, leurs 532 œuvres et leurs notices, les
-images et les galeries 3D se visitent **sans Internet**, sans serveur (ni Heroku, ni
-GitHub Pages).
+L'application native d'ARTEON, écrite entièrement en **Swift 6** et **SwiftUI**. Elle
+**n'embarque rien : tout passe par l'API** ([`ARTEON.swiftpm/Api.swift`](ARTEON.swiftpm/Api.swift)),
+et rien n'est gardé sur l'appareil :
+
+- le musée (catalogue, images, galeries 3D) et les collections du monde viennent du site
+  ARTEON (GitHub Pages) ;
+- toutes les œuvres de chaque artiste viennent de l'API Paquets (`/api/artiste?nom=…`,
+  [`src/api.rs`](../src/api.rs)), en direct des musées ; si le serveur ne répond pas,
+  l'application interroge les musées elle-même, avec le même moteur générique et la même
+  description des musées ([`outils/monde/sources.json`](../outils/monde/sources.json)).
+
+Les sections plus bas qui parlent du « musée embarqué » décrivent l'ancienne version :
+`preparer-musee.sh` ne sert plus qu'aux essais.
 
 ## Ce qu'elle fait
 

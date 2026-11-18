@@ -1,9 +1,7 @@
-# Les captures d'écran de l'application sur iPhone, à part : elles reprennent le musée
-# embarqué (collections comprises) d'un run du workflow « Application iOS (Swift) », sans
-# le refaire, et ne touchent pas à ce run.
+# Les captures d'écran de l'application sur iPhone, à part. L'application n'embarque rien :
+# tout passe par l'API (le site ARTEON et le serveur Paquets).
 #
-# Actions → Captures iPhone → Run workflow, avec le numéro d'un run d'ios.yml (dans son
-# adresse : …/actions/runs/<numéro>).
+# Actions → Captures iPhone → Run workflow.
 
 name: Captures iPhone
 
@@ -12,10 +10,6 @@ on:
     paths:
       - ".github/workflows/captures-iphone.yml"
   workflow_dispatch:
-    inputs:
-      run:
-        description: "Le run d'ios.yml dont reprendre le musée embarqué"
-        required: true
 
 permissions:
   contents: read
@@ -25,8 +19,6 @@ env:
   XCODE: /Applications/Xcode_27.2.app
   XCODEGEN_VERSION: "2.46.0"
   IOS: "27.2"
-  # Le run d'ios.yml en cours au moment où ce workflow a été ajouté (les 50 000 œuvres).
-  RUN: ${{ inputs.run || '43946450737' }}
 
 jobs:
   iphone:
@@ -38,28 +30,6 @@ jobs:
         working-directory: ios
     steps:
       - uses: actions/checkout@v7
-
-      # Le musée embarqué arrive à la fin du job « musee » de ce run : on l'attend.
-      - name: Attendre le musée embarqué
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          for i in $(seq 1 60); do
-            id=$(gh api "repos/${{ github.repository }}/actions/runs/$RUN/artifacts" \
-              --jq '.artifacts[] | select(.name == "musee") | .id' 2>/dev/null || true)
-            if [ -n "$id" ]; then echo "musée embarqué : artefact $id"; exit 0; fi
-            echo "pas encore là ($i)…"
-            sleep 60
-          done
-          echo "::error::le musée embarqué du run $RUN n'est jamais arrivé"
-          exit 1
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: musee
-          path: ios/ARTEON.swiftpm/Musee
-          run-id: ${{ env.RUN }}
-          github-token: ${{ github.token }}
 
       - name: Xcode, XcodeGen, compilation pour le simulateur
         run: |
@@ -98,7 +68,7 @@ jobs:
           shoot() {
             echo "▶ $name"
             limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
-            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -horsligne "$@" || return 0
+            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon "$@" || return 0
             sleep "${wait:-10}"
             limit 60 xcrun simctl io "$udid" screenshot "captures/iphone-$name.png" || echo "capture $name impossible"
           }

@@ -41,11 +41,8 @@ let package = Package(
         .executableTarget(
             name: "AppModule",
             path: ".",
-            // Le musée embarqué (catalogue, images, galeries 3D) : rempli par
-            // ios/preparer-musee.sh, il se visite sans Internet.
-            resources: [
-                .copy("Musee")
-            ]
+            // Rien n'est embarqué : tout passe par l'API (Api.swift).
+            exclude: ["Musee"]
         )
     ],
     swiftLanguageModes: [.v6]

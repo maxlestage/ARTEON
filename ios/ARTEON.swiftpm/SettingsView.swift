@@ -1,16 +1,13 @@
 import SwiftUI
 
-/// Les réglages et l'à-propos : le musée sur l'appareil, les mises à jour, l'audioguide,
-/// les données gardées, les crédits.
+/// Les réglages et l'à-propos : d'où vient le musée (l'API), l'audioguide, les choix du
+/// visiteur, les crédits.
 struct SettingsView: View {
     let catalogue: Catalogue
 
     @Environment(CatalogueStore.self) private var store
     @Environment(Narrator.self) private var narrator
-    @State private var bundledSize: Int64?
-    @State private var downloadedSize: Int64?
     @State private var confirmFavorites = false
-    @State private var nuageToken = UserDefaults.standard.string(forKey: "jetonNuage") ?? ""
 
     var body: some View {
         @Bindable var store = store
@@ -28,61 +25,28 @@ struct SettingsView: View {
                 Text("Le musée")
             }
 
-            OfflineSection()
-
             Section {
-                SecureField("Jeton en lecture seule", text: $nuageToken)
-                    .textContentType(.password)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .onSubmit { UserDefaults.standard.set(nuageToken, forKey: "jetonNuage") }
-                    .onChange(of: nuageToken) { UserDefaults.standard.set(nuageToken, forKey: "jetonNuage") }
-                LabeledContent("Serveur", value: Nuage.base.host ?? "")
-            } header: {
-                Text("Nuage")
-            } footer: {
-                Text("Facultatif : l'app compilée par la CI a déjà son jeton. Pour une copie ouverte dans Swift Playgrounds, coller ici un jeton en lecture seule de l'application arteon (console Nuage → Tokens).")
-            }
-
-            Section {
-                LabeledContent("Catalogue", value: sourceLabel)
-                if let bundledSize, bundledSize > 0 {
-                    LabeledContent("Musée embarqué dans l'app", value: bundledSize.formatted(.byteCount(style: .file)))
-                }
-                if let downloadedSize, downloadedSize > 0 {
-                    LabeledContent("Autres images gardées", value: downloadedSize.formatted(.byteCount(style: .file)))
-                    Button("Effacer ces images", role: .destructive) {
-                        Task {
-                            await ImageStore.shared.clearDownloads()
-                            self.downloadedSize = await ImageStore.shared.downloadedSize()
-                        }
-                    }
-                }
-            } header: {
-                Text("Sur l'appareil")
-            }
-
-            Section {
-                Toggle("Chercher les nouveautés sur le site", isOn: $store.updatesEnabled)
+                LabeledContent("Site", value: Site.base.host ?? "")
+                LabeledContent("API Paquets", value: Api.server.host ?? "")
                 Button {
                     Task { await store.update() }
                 } label: {
                     HStack {
-                        Label("Mettre à jour maintenant", systemImage: "arrow.triangle.2.circlepath")
+                        Label("Recharger le musée", systemImage: "arrow.triangle.2.circlepath")
                         Spacer()
                         if store.updating { ProgressView() }
                     }
                 }
                 .disabled(store.updating)
                 if let error = store.lastUpdateError {
-                    Text("Le site n'a pas répondu : le musée de l'appareil reste affiché. (\(error))")
+                    Text("Le site n'a pas répondu. (\(error))")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             } header: {
-                Text("Mises à jour")
+                Text("L'API ARTEON")
             } footer: {
-                Text("Facultatif : les nouvelles expositions publiées sur \(Site.base.host ?? "le site") arrivent dans l'application quand Internet est là.")
+                Text("Tout passe par l'API : le musée, ses images, les galeries 3D et les collections viennent du site ARTEON, et toutes les œuvres de chaque artiste de l'API Paquets, en direct des musées. Rien n'est gardé sur l'appareil.")
             }
 
             Section {
@@ -118,7 +82,7 @@ struct SettingsView: View {
             Section {
                 Text("Les œuvres exposées sont dans le domaine public : leurs artistes sont morts en 1955 ou avant, et elles datent d'avant 1931. Les œuvres encore protégées ne sont jamais reproduites, seulement racontées. Reproductions : les collections ouvertes des musées (CC0) et Wikimedia Commons, avec l'auteur et la licence de chaque photographie sous licence libre ; une mosaïque faite d'une photographie CC BY-SA est partagée aux mêmes conditions. Sculptures en 3D : Smithsonian Open Access (CC0).")
                     .font(.callout)
-                Text("ARTEON est un projet indépendant : les musées réels qui inspirent ses bâtiments n'y sont pas associés et ne l'ont pas approuvé. L'application n'a ni publicité, ni traceur, ni compte ; tout le musée est dans l'appareil.")
+                Text("ARTEON est un projet indépendant : les musées réels qui inspirent ses bâtiments n'y sont pas associés et ne l'ont pas approuvé. L'application n'a ni publicité, ni traceur, ni compte, et ne garde rien du musée sur l'appareil.")
                     .font(.callout)
                 Link(destination: URL(string: "https://github.com/maxlestage/ARTEON")!) {
                     Label("Le code d'ARTEON (licence MIT)", systemImage: "chevron.left.forwardslash.chevron.right")
@@ -137,18 +101,6 @@ struct SettingsView: View {
         .navigationTitle("Réglages")
         .confirmationDialog("Effacer tous les favoris ?", isPresented: $confirmFavorites, titleVisibility: .visible) {
             Button("Effacer les \(store.favorites.count) favoris", role: .destructive) { store.clearFavorites() }
-        }
-        .task {
-            bundledSize = await Task.detached(priority: .utility) { LocalMuseum.size() }.value
-            downloadedSize = await ImageStore.shared.downloadedSize()
-        }
-    }
-
-    private var sourceLabel: String {
-        switch store.source {
-        case .bundled: "Embarqué dans l'application"
-        case .online: "À jour avec le site"
-        case .saved: "Dernière mise à jour gardée"
         }
     }
 

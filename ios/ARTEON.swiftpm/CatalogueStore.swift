@@ -1,6 +1,6 @@
-// D'où vient le catalogue : du musée embarqué dans l'application (tout marche sans
-// Internet), mis à jour depuis le site quand il répond ; et ce que l'on garde sur
-// l'appareil : favoris, œuvres vues, réglages, score du jeu.
+// D'où vient le catalogue : tout passe par l'API (le site ARTEON et le serveur Paquets,
+// Api.swift), à chaque ouverture : rien du musée n'est gardé sur l'appareil. Seuls les
+// choix du visiteur y restent : favoris, œuvres vues, réglages, score du jeu.
 
 import Foundation
 import Observation
@@ -29,8 +29,8 @@ enum Site {
         URL(string: path, relativeTo: base)?.absoluteURL ?? base
     }
 
-    /// `-horsligne` au lancement : jamais de réseau (captures d'écran, essais).
-    static let neverOnline = ProcessInfo.processInfo.arguments.contains("-horsligne")
+    /// Tout passe par l'API : l'application est toujours en ligne.
+    static let neverOnline = false
 }
 
 @MainActor
@@ -44,11 +44,11 @@ final class CatalogueStore {
 
     /// D'où vient le catalogue affiché.
     enum Source: Equatable {
-        /// Le musée embarqué dans l'application.
+        /// Pas encore ouvert.
         case bundled
-        /// Le site, à l'instant.
+        /// L'API, à l'instant.
         case online
-        /// La dernière copie téléchargée, gardée sur l'appareil.
+        /// (plus utilisé : rien n'est gardé sur l'appareil)
         case saved
     }
 
@@ -85,8 +85,7 @@ final class CatalogueStore {
         self.defaults = defaults
         favorites = (defaults.stringArray(forKey: Keys.favorites) ?? []).compactMap(WorkKey.init)
         history = (defaults.stringArray(forKey: Keys.history) ?? []).compactMap(WorkKey.init)
-        // Avec le musée embarqué, l'app ne touche pas au réseau tant qu'on ne le demande pas.
-        updatesEnabled = defaults.object(forKey: Keys.updates) as? Bool ?? !LocalMuseum.isAvailable
+        updatesEnabled = true
         quizBest = defaults.integer(forKey: Keys.quizBest)
     }
 
@@ -94,54 +93,33 @@ final class CatalogueStore {
         if case .ready(let c) = phase { c } else { nil }
     }
 
-    /// Le musée embarqué est-il dans l'application ?
-    /// Le catalogue et les images sont-ils sur l'appareil (embarqués ou téléchargés) ?
-    var isBundled: Bool { LocalMuseum.stored("catalogue.json") != nil }
+    /// Rien du musée n'est gardé sur l'appareil.
+    var isBundled: Bool { false }
 
-    /// Ouvre le musée : le catalogue embarqué (ou la dernière copie téléchargée), tout de
-    /// suite ; puis, si c'est permis, les nouveautés du site, sans attendre.
+    /// Ouvre le musée : le catalogue, demandé au site à chaque ouverture.
     func load() async {
         if catalogue == nil {
-            if let data = Self.bundled(), let c = try? await Self.decode(data) {
-                await show(c, from: .bundled)
-            }
-            if let data = Self.saved(), let c = try? await Self.decode(data),
-               catalogue == nil || c.workCount > (catalogue?.workCount ?? 0) {
-                await show(c, from: .saved)
-            }
-            // L'app n'embarque plus le musée : le catalogue vient de Nuage, puis reste.
-            if catalogue == nil, let file = await LocalMuseum.fetch("catalogue.json"),
-               let data = try? Data(contentsOf: file), let c = try? await Self.decode(data) {
-                await show(c, from: .bundled)
-            }
+            phase = .loading
+            await update()
         }
         if collections == nil {
             Task { await loadCollections() }
         }
-        if updatesEnabled, !Site.neverOnline {
-            await update()
-        }
         if catalogue == nil {
-            phase = .failed(lastUpdateError ?? "Le catalogue est introuvable.")
+            phase = .failed(lastUpdateError.map { "ARTEON a besoin d'Internet : tout passe par l'API, rien n'est gardé sur l'appareil. (\($0))" }
+                ?? "ARTEON a besoin d'Internet : tout passe par l'API, rien n'est gardé sur l'appareil.")
         }
     }
 
-    /// Télécharge le catalogue du site ; garde l'actuel si le site ne répond pas.
+    /// Demande le catalogue au site ; garde l'actuel si le site ne répond pas.
     func update() async {
         guard !updating else { return }
         updating = true
         defer { updating = false }
         do {
-            let data = try await Self.download()
+            let data = try await Api.site("catalogue.json")
             let c = try await Self.decode(data)
-            // Une copie du site qui aurait moins d'œuvres que le musée embarqué (un site
-            // en retard sur l'application) ne le remplace pas.
-            if let current = catalogue, source == .bundled, c.workCount < current.workCount {
-                lastUpdateError = nil
-                return
-            }
             await show(c, from: .online)
-            Self.save(data)
             lastUpdateError = nil
         } catch {
             lastUpdateError = error.localizedDescription
@@ -155,18 +133,27 @@ final class CatalogueStore {
         phase = .ready(catalogue)
     }
 
-    /// Lit les collections du monde embarquées (en arrière-plan : le fichier est gros).
+    /// Les collections du monde, demandées au site (en arrière-plan : la liste est longue).
     func loadCollections() async {
-        guard collections == nil else { return }
-        // Sur l'appareil, sinon depuis Nuage (puis gardées).
-        var file = LocalMuseum.collectionsFile
-        if file == nil { file = await LocalMuseum.fetch("collections/collections.json") }
-        guard let url = file else { return }
+        guard collections == nil, !loadingCollections else { return }
+        loadingCollections = true
+        defer { loadingCollections = false }
+        guard let index = try? await Api.site("monde/donnees/index.json"),
+              let list = try? await Api.site("monde/donnees/liste.json")
+        else { collectionsError = true; return }
+        collectionsError = false
         collections = await Task.detached(priority: .utility) {
-            (try? Data(contentsOf: url, options: .mappedIfSafe))
-                .flatMap { try? WorldCollections.decode($0) }
-                .map(CollectionIndex.init)
+            (try? WorldCollections.fromSite(index: index, list: list)).map(CollectionIndex.init)
         }.value
+    }
+
+    /// Les collections sont-elles en train d'arriver, ou le site n'a-t-il pas répondu ?
+    private(set) var loadingCollections = false
+    private(set) var collectionsError = false
+
+    /// Le détail d'une œuvre des collections (technique, texte, image en grand…).
+    func details(_ work: CollectionWork) async -> CollectionWork {
+        await CollectionDetails.shared.complete(work, perFile: collections?.collections.perFile ?? 1000)
     }
 
     // MARK: Favoris
@@ -204,118 +191,34 @@ final class CatalogueStore {
 
     // MARK: Fichiers
 
-    private nonisolated static func bundled() -> Data? {
-        LocalMuseum.stored("catalogue.json").flatMap { try? Data(contentsOf: $0) }
-    }
-
-    private nonisolated static func download() async throws -> Data {
-        var request = URLRequest(url: Site.url("catalogue.json"))
-        request.cachePolicy = .reloadIgnoringLocalCacheData
-        request.timeoutInterval = 15
-        let (data, response) = try await URLSession.shared.data(for: request)
-        if let http = response as? HTTPURLResponse, http.statusCode != 200 {
-            throw URLError(.badServerResponse)
-        }
-        return data
-    }
-
     private nonisolated static func decode(_ data: Data) async throws -> Catalogue {
         try Catalogue.decode(data)
     }
-
-    private nonisolated static var savedURL: URL? {
-        guard let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
-        else { return nil }
-        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        return dir.appendingPathComponent("catalogue.json")
-    }
-
-    private nonisolated static func save(_ data: Data) {
-        guard let url = savedURL else { return }
-        try? data.write(to: url, options: .atomic)
-    }
-
-    private nonisolated static func saved() -> Data? {
-        savedURL.flatMap { try? Data(contentsOf: $0) }
-    }
 }
 
-/// Les octets des images : du musée embarqué, sinon du site (téléchargées une fois puis
-/// gardées sur l'appareil, pour les œuvres arrivées après l'application).
+/// Les octets des images : demandés au site (ou au musée), gardés en mémoire le temps de
+/// la visite seulement. Rien n'est écrit sur l'appareil.
 actor ImageStore {
     static let shared = ImageStore()
 
     private var running: [URL: Task<Data?, Never>] = [:]
-    private let folder: URL? = {
-        guard let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        else { return nil }
-        let folder = dir.appendingPathComponent("images", isDirectory: true)
-        try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-        return folder
+    private let memory: NSCache<NSURL, NSData> = {
+        let cache = NSCache<NSURL, NSData>()
+        cache.totalCostLimit = 96 * 1024 * 1024
+        return cache
     }()
 
-    /// Le fichier de l'image sur l'appareil : dans l'application, ou téléchargé.
-    func file(for path: String) async -> URL? {
+    /// Les octets d'une image du site (`tableaux/van-gogh/iris.jpg`) ou d'une adresse complète.
+    func data(for path: String) async -> Data? {
         let absolute = path.hasPrefix("https://") || path.hasPrefix("http://")
-        if !absolute, let local = LocalMuseum.stored(path) { return local }
-        // Sur Nuage (les images du musée y sont), puis gardée sur l'appareil.
-        if !absolute, let fetched = await LocalMuseum.fetch(path) { return fetched }
         let url = absolute ? (URL(string: path) ?? Site.url(path)) : Site.url(path)
-        guard let file = folder?.appendingPathComponent(Self.name(of: url)) else { return nil }
-        if FileManager.default.fileExists(atPath: file.path) { return file }
-        guard !Site.neverOnline else { return nil }
-        if let task = running[url] {
-            return await task.value == nil ? nil : file
-        }
-        let task = Task<Data?, Never> {
-            var request = URLRequest(url: url)
-            request.setValue("ARTEON/2.0 (application iOS)", forHTTPHeaderField: "User-Agent")
-            if url.host?.hasSuffix("artic.edu") == true {
-                request.setValue("ARTEON/2.0 (application iOS)", forHTTPHeaderField: "AIC-User-Agent")
-            }
-            guard let (data, response) = try? await URLSession.shared.data(for: request),
-                  (response as? HTTPURLResponse)?.statusCode ?? 200 == 200
-            else { return nil }
-            try? data.write(to: file, options: .atomic)
-            return data
-        }
+        if let data = memory.object(forKey: url as NSURL) { return data as Data }
+        if let task = running[url] { return await task.value }
+        let task = Task<Data?, Never> { try? await Api.data(url) }
         running[url] = task
         let data = await task.value
         running[url] = nil
-        return data == nil ? nil : file
-    }
-
-    /// La place prise par les images téléchargées.
-    func downloadedSize() -> Int64 {
-        guard let folder,
-              let files = try? FileManager.default.contentsOfDirectory(
-                  at: folder, includingPropertiesForKeys: [.fileSizeKey]
-              )
-        else { return 0 }
-        return files.reduce(0) {
-            $0 + Int64((try? $1.resourceValues(forKeys: [.fileSizeKey]))?.fileSize ?? 0)
-        }
-    }
-
-    func clearDownloads() {
-        guard let folder,
-              let files = try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
-        else { return }
-        for file in files { try? FileManager.default.removeItem(at: file) }
-    }
-
-    /// L'image a-t-elle déjà été téléchargée ?
-    func isDownloaded(_ path: String) -> Bool {
-        guard let url = URL(string: path), let folder else { return false }
-        return FileManager.default.fileExists(atPath: folder.appendingPathComponent(Self.name(of: url)).path)
-    }
-
-    /// Un nom de fichier stable pour une adresse.
-    private static func name(of url: URL) -> String {
-        var hash: UInt64 = 0xcbf2_9ce4_8422_2325
-        for byte in url.absoluteString.utf8 {
-            hash = (hash ^ UInt64(byte)) &* 0x100_0000_01b3
-        }
-        return String(hash, radix: 16) + "-" + url.lastPathComponent
+        if let data { memory.setObject(data as NSData, forKey: url as NSURL, cost: data.count) }
+        return data
     }
 }
