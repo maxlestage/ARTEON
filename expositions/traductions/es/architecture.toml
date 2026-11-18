@@ -1,0 +1,882 @@
+[exposition]
+ordre = 290
+nom_court = "Arquitectura"
+mouvement = "La arquitectura del mundo, en imágenes"
+cadre = "noir"
+couleur = "#3f4f5c"
+titre = "Construir el mundo: la arquitectura en grabados, dibujos y fotografías"
+artiste = "Piranesi, Boullée, Frith, Bourne, Gsell, Durandelle, Gaudí…"
+dates = "1750–1912"
+accroche = "Exposición virtual · Sir John Soane's Museum, Londres"
+introduction = """
+Antes del cine y del avión, fue a través de la imagen como Europa descubrió los grandes \
+edificios del mundo: grabados, dibujos de arquitectos y después copias fotográficas \
+traídas de Egipto, de Turquía, de la India o de Camboya. La visita reúne nueve imágenes, desde las \
+cárceles soñadas de Piranesi hasta el cenotafio imaginado por Boullée para Newton, desde las pirámides \
+de Guiza hasta los templos de Angkor, desde las obras de la torre Eiffel hasta la fachada de la \
+Casa Batlló de Gaudí. El edificio se inspira en el Sir John Soane's Museum, de Londres, la \
+casa-museo de un arquitecto coleccionista: un vestíbulo, una alta sala bajo \
+cúpula, una biblioteca roja, un salón amarillo y un gabinete de pinturas."""
+vitrine = "cenotaphe-newton.jpg"
+
+[musee]
+nom = "Sir John Soane's Museum"
+ville = "Londres, Reino Unido"
+architecte = "Sir John Soane"
+construction = "1792–1824"
+presentation = """
+El arquitecto John Soane, autor del Banco de Inglaterra, compra en 1792 una casa de \
+Lincoln's Inn Fields, en Londres, y luego las dos casas vecinas, que reconstruye \
+una tras otra hasta 1824. Hace de ellas a la vez su vivienda, su estudio y un \
+museo para sus alumnos: vaciados antiguos, fragmentos de capiteles, maquetas, cuadros \
+y miles de dibujos de arquitectura se amontonan en ellas hasta bajo los lucernarios. En 1833, \
+una ley votada por el Parlamento le permite legar el conjunto a la nación, con la condición \
+de que nada sea cambiado de sitio; el museo abre a su muerte, en 1837, y la entrada sigue \
+siendo gratuita. Se descubren en él espacios asombrosos: la cúpula, iluminada desde \
+lo alto, sobre la cripta donde reposa el sarcófago del faraón Seti I; la sala \
+de los cuadros, cuyas paredes se abren como postigos para mostrar las series de \
+Hogarth y dibujos de Piranesi; la biblioteca pintada de rojo pompeyano; los \
+salones amarillos de la primera planta."""
+ici = """
+El edificio de ARTEON retoma, más simple y más grande, el encadenamiento de las estancias \
+de la casa de Soane. Se entra por el sur en el vestíbulo de Lincoln's Inn Fields, \
+de paredes color piedra, que se abre a la cúpula: una sala cuadrada de catorce \
+metros de altura, donde las cárceles de Piranesi y el cenotafio de Boullée enmarcan la puerta del \
+norte. Al oeste, la biblioteca roja, color de Pompeya, reúne Roma, Egipto y \
+Bizancio; al este, el salón amarillo acoge a los fotógrafos viajeros, de la India a \
+Camboya. Al norte, el gabinete de pinturas muestra la arquitectura moderna: la torre Eiffel \
+en obras y la Casa Batlló."""
+
+[[salles]]
+nom = "El vestíbulo de Lincoln's Inn Fields"
+theme = "La entrada, como la puerta de la casa de Soane que da a la plaza de Lincoln's Inn Fields."
+murs = "#e4dac6"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La cúpula"
+theme = "Bajo una alta cúpula, la arquitectura soñada: las cárceles de Piranesi y el cenotafio de Newton de Boullée."
+murs = "#d8ccb0"
+x = 0
+z = -10
+largeur = 12
+profondeur = 12
+hauteur = 14
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "La biblioteca roja"
+theme = "En el rojo de Pompeya, los grandes monumentos antiguos: el Coliseo de Piranesi, las pirámides de Guiza, Santa Sofía."
+murs = "#b8665a"
+x = -13
+z = -10
+largeur = 14
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "El salón amarillo"
+theme = "Los fotógrafos viajeros: el Taj Mahal de Bourne y Angkor Wat de Gsell."
+murs = "#e2cd86"
+x = 13
+z = -10
+largeur = 14
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "El gabinete de pinturas"
+theme = "La arquitectura moderna naciente: la torre Eiffel en obras y la Casa Batlló de Gaudí."
+murs = "#cdbd9e"
+x = 0
+z = -21
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+[[oeuvres]]
+titre = "El puente levadizo (Cárceles imaginarias, lámina VII)"
+artiste = "Giovanni Battista Piranesi"
+annee = "hacia 1745–1750, plancha retocada en 1761"
+image = "prisons-pont-levis.jpg"
+cadre = "estampe"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Piranesi_-_The_Drawbridge,_plate_VII_from_the_series_Carceri_d'Invenzione_-_Google_Art_Project.jpg"
+technique = "Aguafuerte, unos 55 × 41 cm"
+collection = "Cooper Hewitt, Smithsonian Design Museum, Nueva York"
+note = "Escaleras, pasarelas y puentes levadizos se enredan bajo bóvedas sin fin: una cárcel nacida de la imaginación de Piranesi, convertida en una de las imágenes más célebres de la arquitectura soñada."
+description = """
+La mirada se hunde en un espacio inmenso, cerrado por todos lados, del que no se ven ni el \
+techo ni el suelo. Macizos pilares de piedra sostienen arcos, galerías y \
+escaleras que suben, giran y se cruzan en todas direcciones. En el centro, \
+un puente levadizo de madera, suspendido de cuerdas y poleas, une dos pasarelas. \
+A la derecha, una torre redonda con una ventana enrejada se aferra a la mampostería, con una \
+gran linterna colgada de su flanco. Por todas partes, diminutas siluetas caminan por los \
+puentes, se asoman a las balaustradas o suben los escalones, aplastadas por la escala del \
+edificio. Abajo a la izquierda, una gran rueda erizada de púas y unas cadenas hacen \
+pensar en instrumentos de suplicio."""
+evocation = """
+Piranesi no graba una cárcel real: inventa un lugar imposible, donde las \
+perspectivas se contradicen y donde nunca se sabe de dónde viene la luz. Se ha visto \
+en estas Cárceles imaginarias un homenaje a la grandeza de la arquitectura romana, de la que \
+admiraba las bóvedas y los cimientos colosales, pero también una pesadilla de \
+encierro, donde el hombre se pierde en un espacio que él mismo ha construido. El tema procedía \
+del teatro: los decoradores de ópera de la época, como los Bibiena, pintaban \
+mazmorras grandiosas para la escena. Piranesi hace de él un asunto por derecho propio. En el siglo XIX, \
+los románticos leyeron en ellas el vértigo del sueño; en el XX, se las ha acercado a los \
+espacios sin salida de Kafka o a las escaleras imposibles de Escher."""
+histoire = """
+Llegado de Venecia a Roma en 1740, el joven Piranesi, formado como arquitecto, apenas encuentra \
+edificios que construir y se vuelve hacia el grabado. Hacia 1749-1750, publica \
+en casa del marchante Giovanni Bouchard una serie de catorce láminas sin título ni \
+leyenda, las Invenzioni capric di carceri, «invenciones caprichosas de cárceles». \
+En 1761, ya célebre, retoma todas las láminas: las oscurece, les añade \
+cadenas, inscripciones, escaleras, y graba dos nuevas. Esta segunda \
+edición, titulada Carceri d'invenzione, cuenta con dieciséis láminas. Los cobres, conservados \
+tras su muerte por su hijo, están hoy en Roma, en el Istituto centrale per la \
+grafica, heredero de la antigua Calcografía, que ha tirado de ellos numerosas pruebas. \
+Esta ingresó en el museo Cooper Hewitt, en Nueva York, en 1959."""
+facture = """
+El aguafuerte permite a Piranesi dibujar con la punta en el barniz que cubre el \
+cobre, con la libertad de un croquis: los trazos corren rápidos, se superponen, \
+dejan zonas apenas esbozadas. Para la segunda edición, hace morder el ácido \
+más profundamente y multiplica los rayados cruzados, de modo que las sombras se vuelven \
+densas y casi negras. La composición, en contrapicado, yuxtapone varios puntos \
+de vista, herencia de los decorados de teatro, y hace parecer el espacio más alto de lo que \
+podría ser. Las pequeñas figuras, indicadas con unos pocos trazos, dan la escala."""
+details = [
+  "El puente levadizo, en el centro, sujeto por cuerdas que descienden de poleas.",
+  "La torre redonda de la derecha, con su ventana enrejada y su gran linterna.",
+  "Los diminutos prisioneros o guardianes que caminan por las pasarelas.",
+  "La rueda erizada de púas, abajo a la izquierda.",
+  "La escalera que se enrosca en espiral en torno a un pilar, a la izquierda del centro.",
+]
+themes = ["arquitectura imaginaria", "prisión", "vértigo", "grabado", "sueño"]
+anecdote = """
+En sus Confesiones de un inglés comedor de opio (1821), Thomas De Quincey cuenta que \
+el poeta Coleridge le había descrito unos grabados de Piranesi llamados los «Sueños»: \
+escaleras sin fin, que compara con las visiones del opio. Son las Cárceles."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Vista del anfiteatro Flavio, llamado el Coliseo (Vistas de Roma)"
+artiste = "Giovanni Battista Piranesi"
+annee = "1776"
+image = "colisee.jpg"
+cadre = "estampe"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Veduta_dell'Anfiteatro_Flavio_detto_il_Colosseo,_from-_'Vedute_di_Roma'_(Views_of_Rome)_MET_DP104275.jpg"
+technique = "Aguafuerte; hoja de 76,2 × 101,6 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "El Coliseo visto desde lo alto, como desde un globo: Piranesi desvela de una sola mirada las gradas en ruinas, la arena y el doble recinto."
+description = """
+El Coliseo ocupa toda la hoja, visto desde arriba y en diagonal, como si el grabador se hubiera \
+elevado sobre Roma. En primer plano, la parte derrumbada del recinto deja ver \
+el grosor de los muros, las arcadas superpuestas y los corredores abovedados que sostenían las \
+gradas. Al fondo, el recinto exterior, intacto en toda su altura, dibuja una \
+curva regular de arcadas. Las gradas de piedra han desaparecido: solo quedan las \
+bóvedas que las sostenían, invadidas de maleza. En el centro de la arena, vasta y \
+vacía, se alza una cruz; en todo el contorno, pequeñas capillas jalonan el perímetro. \
+Unos paseantes diminutos cruzan la explanada. Abajo, dos cartelas grabadas \
+dan el título y una leyenda señalada con letras."""
+evocation = """
+Piranesi quiere mostrar la grandeza de la Roma antigua, pero también lo que el tiempo ha \
+hecho de ella. El Coliseo aparece como un paisaje más que como un edificio: una montaña \
+hueca, roída, donde la vegetación recupera sus derechos. La vista desde arriba, que nadie \
+podía tener entonces, sirve también para explicar: hace comprender de un vistazo \
+cómo estaba construido el anfiteatro, y la leyenda designa los lugares de los cónsules, \
+de los senadores, de los caballeros o de las mujeres. Para Piranesi, que defendía la \
+superioridad de los romanos sobre los griegos en un vivo debate de su tiempo, estas ruinas \
+probaban el genio de los constructores romanos. La cruz y las capillas recuerdan que \
+el anfiteatro se había convertido en un lugar de oración dedicado a los mártires cristianos."""
+histoire = """
+Las Vedute di Roma, o Vistas de Roma, son la empresa de toda una vida: Piranesi graba \
+las primeras láminas hacia 1748 y trabaja en ellas hasta su muerte, en 1778, hasta un \
+total de unas 135 vistas. Vendidas por unidades en su tienda romana, son \
+compradas por los viajeros del Grand Tour, jóvenes aristócratas ingleses, franceses o \
+alemanes llegados a completar su educación en Italia, que las llevan a su país como \
+recuerdos. Moldean durante mucho tiempo la imagen que Europa se hace de Roma: \
+algunos visitantes confiesan su decepción ante unas ruinas menos grandiosas que en \
+los grabados. Esta vista a vuelo de pájaro, una de las últimas de la serie, está fechada en \
+1776. La prueba expuesta pertenece al Metropolitan Museum de Nueva York desde 1959."""
+facture = """
+La lámina, de formato muy grande, está grabada al aguafuerte con una precisión \
+de arquitecto: cada arcada, cada bóveda, cada piedra derrumbada está descrita. \
+Piranesi refuerza los contrastes haciendo morder más profundamente las sombras del \
+primer plano, mientras el fondo permanece claro, lo que acentúa la profundidad. El \
+punto de vista elevado, casi imposible, le permite mostrar a la vez el interior y \
+el exterior del monumento. Los paseantes, voluntariamente minúsculos, lo engrandecen \
+todavía más."""
+details = [
+  "La cruz en el centro de la arena, rodeada por las pequeñas capillas de un vía crucis.",
+  "Las letras grabadas sobre el edificio, que remiten a la leyenda al pie de la hoja.",
+  "La parte derrumbada del recinto, en primer plano, que muestra la estructura en sección.",
+  "La maleza y los arbustos que crecen sobre las bóvedas.",
+  "La firma «Cav. Piranesi F.», abajo a la derecha: Piranesi era caballero.",
+]
+themes = ["roma", "ruinas", "antigüedad", "grand tour", "grabado"]
+anecdote = """
+En 1749, el papa Benedicto XIV consagró el Coliseo a la memoria de los mártires cristianos y \
+hizo instalar en él un vía crucis: de ahí la cruz y las capillas de la arena. Fueron \
+retiradas en el siglo XIX, durante las excavaciones de los subsuelos."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Cenotafio de Newton, corte (efecto de noche en el interior)"
+artiste = "Étienne-Louis Boullée"
+annee = "1784"
+image = "cenotaphe-newton.jpg"
+cadre = "estampe"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Étienne-Louis_Boullée,_Cénotaphe_de_Newton_-_04_-_Coupe,_représentation_de_jour_avec_effet_intérieur_de_nuit.jpg"
+technique = "Pluma, tinta y aguada sobre papel"
+collection = "Biblioteca Nacional de Francia, Departamento de Estampas, París"
+note = "Para honrar a Isaac Newton, Boullée imagina una esfera hueca de unos ciento cincuenta metros: de día, su bóveda perforada de agujeros se convierte en un cielo estrellado."
+description = """
+El dibujo muestra el monumento cortado en dos, como una maqueta seccionada por la mitad. \
+En el centro, una inmensa esfera hueca está engastada en un zócalo circular de dos \
+gradas, cuyas terrazas están plantadas con hileras de cipreses. El interior de la \
+esfera es enteramente negro, sembrado de estrellas y de un astro más brillante: es la \
+bóveda vista desde dentro. En lo más bajo, en el punto más profundo, un diminuto sarcófago \
+reposa sobre una tarima, rodeado de unas pocas siluetas apenas visibles. Un largo \
+corredor en pendiente conduce a él desde el exterior. Fuera, el cielo es claro y nuboso: \
+es de día. En el grosor del zócalo, a cada lado, se abre una galería abovedada en \
+semicírculo."""
+evocation = """
+Newton, muerto en 1727, había explicado con la gravitación el movimiento de los astros. \
+Boullée le ofrece una tumba a la medida del universo: la esfera, forma perfecta, sin \
+principio ni fin, representa el propio cosmos. El visitante, descendido al fondo de esta \
+cáscara, estaría solo ante el sarcófago y un cielo artificial, sobrecogido por lo que los \
+filósofos del siglo XVIII llamaban lo sublime: una emoción hecha de admiración y \
+de espanto ante la inmensidad. El proyecto es también un homenaje de la Ilustración a la ciencia: \
+la arquitectura ya no sirve en él a un rey o a un dios, sino a un sabio. Se ha calificado este género \
+de proyecto de arquitectura «parlante»: la forma del edificio dice por sí sola lo que \
+celebra."""
+histoire = """
+Boullée dibuja este proyecto en 1784, a los cincuenta y seis años, cuando casi había dejado de \
+construir para dedicarse a la enseñanza y a proyectos teóricos. Nadie se lo \
+encargó, y nunca se pensó en construirlo: una esfera de ese \
+tamaño superaba con mucho los medios técnicos de la época. Un cenotafio es además \
+una tumba vacía, pues Newton reposa en la abadía de Westminster. El dibujo debía ilustrar \
+el tratado de Boullée, Arquitectura, ensayo sobre el arte, donde defiende una arquitectura de \
+grandes volúmenes geométricos, hecha para conmover. El texto quedó manuscrito. A su muerte, \
+en 1799, el arquitecto legó sus dibujos a la nación; se conservan en la \
+Biblioteca Nacional. Redescubiertos en el siglo XX, le han dado su gloria póstuma, y \
+el ensayo se publicó por fin en 1953."""
+facture = """
+Boullée trabaja a la aguada: extiende tinta diluida con el pincel, en capas más o \
+menos oscuras, para modelar los volúmenes con la luz más que con el trazo. \
+Opone violentamente el negro profundo del interior al gris claro del cielo exterior; \
+se jactaba de haber inventado una «arquitectura de las sombras». Las estrellas no son más que \
+pequeños puntos claros sobre el fondo negro. La composición es estrictamente simétrica, \
+reducida a unas pocas formas puras: círculo, semicírculos, rectángulos. Los cipreses, árboles \
+de los cementerios, y los pequeños personajes dan la escala colosal del monumento."""
+details = [
+  "El diminuto sarcófago de Newton, en el fondo de la esfera.",
+  "Las estrellas, más apretadas arriba a la derecha, como una vía láctea.",
+  "Las hileras de cipreses en las terrazas del zócalo.",
+  "El largo corredor de suave pendiente que conduce a la tumba.",
+  "El pequeño sello redondo de la Biblioteca Nacional, abajo en el centro.",
+]
+themes = ["esfera", "newton", "ilustración", "arquitectura utópica", "cosmos", "sublime"]
+anecdote = """
+Boullée había previsto también el efecto inverso: otro dibujo de la misma serie muestra el \
+cenotafio de noche, con el cielo exterior negro, mientras el interior está iluminado por un \
+gran globo luminoso suspendido en el centro de la esfera, como un sol."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Las pirámides de Guiza, vistas desde el suroeste"
+artiste = "Francis Frith"
+annee = "hacia 1857 (copia hacia 1865)"
+image = "pyramides-gizeh.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Francis_Frith_-_Pyramids_Of_El-Geezeh_(From_The_Southwest)_-_Google_Art_Project.jpg"
+technique = "Copia sobre papel albuminado, 38,1 × 48,9 cm"
+collection = "Los Angeles County Museum of Art (LACMA)"
+note = "Las tres grandes pirámides alineadas en el desierto, fotografiadas sobre una placa de vidrio gigante por un viajero inglés que hizo tres veces el viaje a Egipto."
+description = """
+Tres pirámides se alzan más allá de una extensión de arena y guijarros. En el centro, \
+la más alta en apariencia es la de Kefrén, que conserva en su cima un resto de \
+su revestimiento de caliza lisa. A la derecha, más lejos, se eleva la de Keops, la \
+Gran Pirámide. A la izquierda, la más pequeña, la de Micerino, está precedida de tres \
+pirámides más modestas, llamadas de las reinas. En primer plano, sobre un montículo oscuro \
+cubierto de guijarros, dos hombres están sentados en el suelo; un poco más lejos, una montura \
+y su guardián esperan. El cielo, muy claro, es casi blanco. La luz rasante \
+hace resaltar las hiladas de piedra, escalón tras escalón, en los flancos de las \
+pirámides."""
+evocation = """
+Para el público inglés de la década de 1850, estas imágenes son una revelación: por \
+primera vez se ven las pirámides tal como son, sin la interpretación de un \
+grabador. Frith, que también escribía, acompañaba sus fotografías con textos donde \
+insistía en su veracidad. Las pequeñas figuras del primer plano dan la escala y \
+recuerdan que estas montañas de piedra fueron levantadas por hombres, hace más de \
+cuatro mil quinientos años. El contraste entre el desierto casi abstracto y la \
+geometría perfecta de las pirámides hace de la imagen una meditación sobre el tiempo y la \
+permanencia, tema caro a la Inglaterra victoriana, que veía en Egipto el alba de \
+la civilización."""
+histoire = """
+Francis Frith, que hizo fortuna en el comercio en Liverpool, parte a Egipto en \
+1856 con su material fotográfico. Regresa dos veces, hasta 1859, remonta \
+el Nilo hasta Nubia, y luego visita Palestina y Siria. Sus fotografías se \
+publican en Londres en libros y álbumes ilustrados con verdaderas copias pegadas en las \
+páginas, como Egypt and Palestine Photographed and Described. Cosechan un gran \
+éxito y existen en varios formatos, entre ellos estas grandes copias realizadas a partir de \
+negativos de vidrio de unos 40 por 50 centímetros. Esta fue sin duda tirada \
+unos años después de la toma, hacia 1865. Pertenece hoy al museo \
+de arte del condado de Los Ángeles."""
+facture = """
+Frith utiliza el colodión húmedo, procedimiento exigente: la placa de vidrio debe ser \
+embadurnada, sensibilizada, expuesta y revelada en unos minutos, antes de que la capa \
+se seque. En el calor del desierto, el éter del colodión se evapora muy deprisa, y \
+hay que trabajar en una tienda-laboratorio sofocante. La copia se hace por contacto \
+sobre un papel albuminado, untado con clara de huevo, que da detalles muy finos. La \
+composición, muy simple, superpone tres bandas horizontales, el primer plano oscuro, \
+la arena clara y el cielo blanco, sobre las que se recortan los triángulos de las \
+pirámides."""
+details = [
+  "La cima de la pirámide de Kefrén, que conserva un resto de su revestimiento original.",
+  "Las tres pequeñas pirámides de las reinas, delante de la de Micerino, a la izquierda.",
+  "La montura y su guardián, minúsculos en medio de la arena.",
+  "Los dos hombres sentados en primer plano, que dan la escala.",
+]
+themes = ["egipto", "pirámides", "desierto", "viaje", "fotografía"]
+anecdote = """
+De regreso en Inglaterra, Frith funda en Reigate la empresa F. Frith & Co., que \
+fotografía miles de ciudades y pueblos británicos y vende sus vistas, \
+y luego postales, hasta su cierre en 1971."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Interior de Santa Sofía, Constantinopla"
+artiste = "Sébah & Joaillier"
+annee = "finales de los años 1880"
+image = "sainte-sophie.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Sainte_Sophie_LCCN2004667900.jpg"
+technique = "Copia sobre papel albuminado"
+collection = "Biblioteca del Congreso, Washington"
+note = "Bajo la cúpula de Justiniano, convertida en mezquita en 1453, los grandes medallones de caligrafía otomana: una vista vendida a los viajeros de paso por Constantinopla."
+description = """
+La fotografía está tomada desde un punto elevado, a la entrada de la nave, frente al ábside. La \
+mirada abarca el inmenso espacio: arriba, el borde de la cúpula central, perforado por una \
+corona de ventanas; debajo, una semicúpula, y luego otras más pequeñas, que \
+encajan hasta el fondo. A cada lado, dos pisos de arcadas sobre columnas se abren \
+a las naves laterales y a las tribunas. Grandes discos oscuros llevan, en letras \
+doradas, nombres escritos en árabe. Abajo, se distinguen tribunas de madera y \
+mármol y decenas de lámparas suspendidas de largos hilos, que descienden casi \
+hasta el suelo. En las pechinas, bajo la cúpula, aparecen ángeles de alas \
+desplegadas. En la parte inferior de la imagen, el estudio ha inscrito «Sainte Sophie 127»."""
+evocation = """
+Santa Sofía resume por sí sola la historia de Constantinopla: gran iglesia del \
+Imperio bizantino durante nueve siglos, y luego mezquita imperial de los sultanes otomanos. La \
+fotografía muestra esta doble vida: la arquitectura querida por Justiniano y los ángeles \
+bizantinos de las pechinas, pero también las adiciones otomanas, medallones, púlpito, tribunas \
+y lámparas. Para los viajeros europeos de finales del siglo XIX, cada vez más \
+numerosos, una imagen así fijaba el recuerdo de un lugar célebre tanto en toda la cristiandad \
+como en el mundo musulmán. Se lee en ella sobre todo el asombro ante la cúpula, que \
+parece flotar sobre una corona de luz, como ya decían los autores \
+bizantinos."""
+histoire = """
+La iglesia de Santa Sofía, la «Sabiduría divina», se construye de 532 a 537 por orden \
+del emperador Justiniano, a cargo de dos sabios, Antemio de Trales e Isidoro de Mileto. En \
+1453, cuando el sultán Mehmed II toma Constantinopla, se convierte en mezquita y recibe \
+poco a poco sus minaretes. De 1847 a 1849, el sultán Abdülmecid la hace restaurar por los \
+arquitectos ticineses Gaspare y Giuseppe Fossati: es entonces cuando se cuelgan los ocho \
+grandes medallones caligrafiados por Kazasker Mustafa İzzet Efendi, con los nombres de Dios, del \
+Profeta, de los cuatro primeros califas y de los dos nietos del Profeta. El estudio \
+Sébah & Joaillier vendía esta vista, numerada 127, a los visitantes de paso. Esta copia \
+se conserva en la Biblioteca del Congreso, en Washington."""
+facture = """
+Fotografiar un interior tan vasto y oscuro era un reto: hacía falta una larga \
+exposición para que la débil luz de las ventanas impresionara la placa de vidrio. El \
+fotógrafo eligió un punto de vista alto y un objetivo bastante amplio para hacer caber \
+en el encuadre las arcadas laterales y el encaje de las cúpulas, en estricta \
+simetría. La copia albuminada ha adquirido con el tiempo ese tono amarillo dorado, típico de las \
+fotografías de la época, que armoniza extrañamente con el oro de los mosaicos."""
+details = [
+  "Los medallones de Alá y de Mahoma, a ambos lados del ábside.",
+  "Los serafines, ángeles de seis alas, en las pechinas bajo la cúpula.",
+  "Las lámparas de aceite, suspendidas muy bajas de largos hilos.",
+  "La tribuna de columnillas, a la izquierda, añadida en época otomana.",
+  "La inscripción «Sainte Sophie 127», dejada por el estudio al pie de la imagen.",
+]
+themes = ["bizancio", "islam", "cúpula", "estambul", "caligrafía"]
+anecdote = """
+Santa Sofía ha cambiado varias veces de estatus: transformada en museo en 1934 por el \
+gobierno de Mustafa Kemal Atatürk, volvió a ser mezquita en 2020, aunque \
+sigue abierta a los visitantes fuera de las horas de oración."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "El Taj Mahal visto desde el Yamuna, Agra"
+artiste = "Samuel Bourne"
+annee = "años 1860"
+image = "taj-mahal.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Gezicht_op_de_Taj_Mahal_vanaf_de_Yamuna_rivier,_RP-F-F80408.jpg"
+technique = "Copia sobre papel albuminado"
+collection = "Rijksmuseum, Ámsterdam"
+note = "El mausoleo de mármol blanco erigido por el emperador Shah Jahan, visto desde la orilla del Yamuna por el más célebre fotógrafo británico de la India."
+description = """
+El Taj Mahal se alza sobre su alta terraza, a orillas del río Yamuna, cuya agua \
+tranquila ocupa la derecha de la imagen. El fotógrafo se ha situado en la ribera, de modo \
+que se ve el monumento de tres cuartos: la gran cúpula bulbosa, las pequeñas \
+cúpulas que la rodean, los arcos profundos de la fachada y los minaretes. A la izquierda, un \
+edificio de arenisca roja coronado de cúpulas y quioscos enmarca el conjunto. Un largo \
+muro de contención bordea el río. En primer plano, árboles y una playa de arena \
+donde se adivinan pequeñas figuras. El mausoleo se refleja débilmente en el agua. En la parte inferior \
+de la imagen, el negativo lleva la inscripción «Bourne 1087»."""
+evocation = """
+El Taj Mahal es una tumba de amor: el emperador mogol Shah Jahan lo hizo construir \
+para su esposa Mumtaz Mahal, muerta en 1631 al dar a luz a su decimocuarto \
+hijo. Su blancura y su simetría perfecta evocan, según numerosos historiadores, el \
+paraíso prometido por el Corán, con sus jardines y sus aguas. Al mostrarlo desde el \
+río y no desde el jardín y su larga alameda de agua, Bourne ofrece de él una imagen \
+menos esperada: el mausoleo aparece como un palacio a la orilla del agua, algo \
+lejano, casi irreal en la luz blanca. Para los británicos, que \
+gobernaban entonces la India, estas imágenes testimoniaban una civilización refinada que \
+admiraban a la vez que la dominaban."""
+histoire = """
+El Taj Mahal se construye en Agra a partir de 1632 por miles de artesanos venidos de \
+todo el imperio mogol; el mausoleo se concluye hacia 1643, el conjunto hacia 1653. A la \
+muerte de Shah Jahan, en 1666, es sepultado junto a su esposa. En el siglo XIX, el monumento, \
+en parte deteriorado, se convierte en etapa obligada de los viajeros británicos. Samuel Bourne, \
+llegado a la India en 1863, lo fotografía durante sus giras; su estudio, Bourne & \
+Shepherd, vende luego las copias bajo un número, aquí el 1087, a quien quiera comprarlas, \
+y sus vistas se difunden ampliamente por Europa. Esta copia pertenece al Rijksmuseum \
+de Ámsterdam, que ha puesto sus reproducciones en el dominio público."""
+facture = """
+Bourne trabaja con colodión húmedo, con una gran cámara de madera y placas de \
+vidrio que debe preparar en el lugar, bajo una tienda negra, en el calor de la India. \
+Admirador de los paisajes pintorescos, compone sus vistas como un pintor: los árboles \
+del primer plano forman un contraste oscuro, la diagonal de la ribera y del muro \
+conduce la mirada hacia el monumento, y el río abre el espacio a la derecha. El mármol \
+blanco, muy luminoso, es difícil de reproducir: Bourne elige una luz que preserva \
+los detalles de la fachada sin quemarlos."""
+details = [
+  "La firma «Bourne 1087», inscrita en el negativo, al pie de la imagen.",
+  "El reflejo del mausoleo en el agua tranquila del Yamuna.",
+  "Las pequeñas cúpulas que rodean la gran cúpula bulbosa.",
+  "Las diminutas siluetas en la playa, al pie del muro.",
+  "El edificio de arenisca roja a la izquierda, que contrasta con el mármol blanco.",
+]
+themes = ["india", "mausoleo", "amor", "imperio mogol", "viaje"]
+anecdote = """
+Una leyenda tenaz pretende que Shah Jahan quería hacerse construir, en la otra orilla, un \
+Taj Mahal negro. Las excavaciones realizadas enfrente, en el jardín de Mahtab Bagh, han revelado \
+un jardín de recreo vuelto hacia el mausoleo, pero ninguna segunda tumba."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Fachada oeste de la Gran Pagoda (Angkor Wat)"
+artiste = "Émile Gsell"
+annee = "1866"
+image = "angkor-vat.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Façade_Ouest_de_la_Grande_Pagode_MET_DP151650.jpg"
+technique = "Copia sobre papel albuminado a partir de un negativo de vidrio, 25,1 × 30,3 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una de las primerísimas fotografías de Angkor Wat, tomada en 1866 por un fotógrafo francés establecido en Saigón."
+description = """
+Una ancha calzada de piedra, invadida de hierbas, conduce hacia el templo. Al fondo se \
+alzan las torres de Angkor Wat, en forma de capullo de loto, esculpidas con cornisas \
+superpuestas: la más alta en el centro, otras dos a cada lado, una cuarta \
+medio oculta a la izquierda. Delante de ellas, los tejados de las galerías se escalonan en varios \
+niveles, y una escalera sube hacia una terraza y un pórtico esculpido. A la izquierda, \
+cocoteros, palmeras y un pabellón de madera de techo puntiagudo; a la derecha, grandes \
+árboles oscuros. En primer plano, el enlosado desunido y la vegetación muestran \
+un monumento que apenas se mantiene ya. El cielo, sin nubes, es de un blanco \
+uniforme."""
+evocation = """
+Para los europeos de la década de 1860, Angkor es una «ciudad perdida» en medio de la \
+selva, revelada por los relatos del naturalista Henri Mouhot, publicados tras su muerte. Las \
+fotografías de Gsell aportan la prueba: el templo existe, inmenso y casi \
+intacto. El mito del descubrimiento resulta sin embargo engañoso. Angkor Wat nunca fue \
+abandonado: monjes budistas vivían en él y los camboyanos acudían en \
+peregrinación, como recuerda aquí el pabellón de madera, que pertenece sin duda al \
+monasterio. La imagen dice también el interés de Francia, que acababa de imponer su \
+protectorado sobre Camboya, en 1863, y hará de Angkor un símbolo de su presencia en \
+Indochina."""
+histoire = """
+Angkor Wat se construye en la primera mitad del siglo XII, bajo el rey jemer \
+Suryavarman II, como templo dedicado al dios Vishnú y, sin duda, como santuario \
+funerario del rey; se convierte después en lugar de culto budista. En 1866, Émile Gsell \
+se dirige a Angkor con el oficial de marina Ernest Doudart de Lagrée, al inicio de la \
+misión de exploración del Mekong, y realiza allí una serie de vistas de los templos. Son \
+de las primeras fotografías del sitio, tomadas el mismo año que las del \
+escocés John Thomson. El cartón de montaje de esta copia, retirado aquí, lleva el título \
+«Cambodge, ruines d'Ang-Kor». La prueba pertenece a la colección Gilman, adquirida \
+por el Metropolitan Museum de Nueva York en 2005."""
+facture = """
+Gsell utiliza el colodión húmedo, en un clima tropical donde el calor, la humedad y \
+los insectos complican cada toma. Se sitúa en el eje de la calzada, que \
+ahonda la perspectiva y lleva el ojo hasta la torre central, según la simetría querida \
+por los arquitectos jemeres. El cielo ha quedado blanco: las placas de la época, sobre todo \
+sensibles al azul, no podían registrar a la vez las nubes y el detalle de \
+las piedras. Algunos follajes algo borrosos delatan el viento durante la exposición."""
+details = [
+  "La torre central, la más alta, que figura el monte Meru, centro del mundo.",
+  "El pabellón de madera de techo puntiagudo, a la izquierda, signo de la presencia de los monjes.",
+  "Las hierbas que crecen entre las losas de la calzada.",
+  "El pórtico esculpido en lo alto de la escalera, en el centro de la imagen.",
+]
+themes = ["camboya", "templo", "jemer", "selva", "exploración"]
+anecdote = """
+Angkor Wat es uno de los pocos grandes templos jemeres orientados al oeste, dirección \
+asociada al dios Vishnú y a la muerte. Por eso los viajeros, como Gsell, \
+se acercaban a él por esta fachada, al final de la larga calzada que cruza los fosos."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 2.2
+
+[[oeuvres]]
+titre = "La torre Eiffel en construcción"
+artiste = "Louis-Émile Durandelle"
+annee = "1888"
+image = "tour-eiffel-construction.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Louis-Emile_Durandelle,_The_Eiffel_Tower_-_State_of_the_Construction,_1888.jpg"
+technique = "Copia sobre papel albuminado"
+collection = "J. Paul Getty Museum, Los Ángeles"
+note = "A finales de 1888, la torre se eleva sobre el Campo de Marte: el fotógrafo Durandelle sigue las obras, etapa por etapa, para la empresa de Gustave Eiffel."
+description = """
+La torre se alza, vista de frente, en medio de un solar. Sus cuatro pilares de hierro \
+se unen bajo una primera plataforma, y luego suben hasta el segundo piso, ya \
+terminado; encima, la parte alta no es aún más que un tronco de celosía metálica, \
+coronado por un andamio. El gran arco decorativo, bajo el primer piso, enmarca a lo lejos \
+el palacio del Trocadero y sus dos torres. Al pie de la torre, algunos árboles y \
+barracones de obra. El suelo, en primer plano, es de tierra removida y escombros. \
+El cielo brumoso, de un beige uniforme, hace resaltar el encaje oscuro de las vigas."""
+evocation = """
+Para Gustave Eiffel, estas fotografías son una demostración: día tras día, la \
+torre se eleva según el calendario previsto. Responden a los artistas y escritores que, \
+en 1887, habían firmado una protesta contra «la inútil y monstruosa torre Eiffel \
+». Hoy la imagen fascina precisamente porque muestra la torre inacabada, como \
+un esqueleto en formación: se comprende en ella cómo el hierro, ensamblado pieza a \
+pieza, permite subir más alto que cualquier mampostería. Celebra al ingeniero y al \
+obrero, la industria y el progreso, valores de la Exposición Universal de 1889, que \
+conmemoraba el centenario de la Revolución francesa."""
+histoire = """
+La torre es concebida en 1884 por dos ingenieros de la empresa Eiffel, Maurice \
+Koechlin y Émile Nouguier, y retrabajada luego con el arquitecto Stephen Sauvestre. \
+Elegida para la Exposición Universal de 1889, se construye en poco más de \
+dos años: las obras comienzan el 28 de enero de 1887, y la torre se concluye el 31 de marzo de \
+1889, cuando Eiffel iza la bandera tricolor en su cima. Con sus 300 metros de altura, \
+sigue siendo hasta 1930 la construcción más alta del mundo. Durandelle fotografía \
+las obras desde los cimientos; sus vistas, reunidas en álbumes titulados «État \
+d'avancement des travaux», son regaladas por Eiffel a personalidades. Esta copia \
+pertenece al museo J. Paul Getty de Los Ángeles."""
+facture = """
+Durandelle fotografía a menudo la torre desde el mismo punto de vista, en su eje, de modo que \
+las vistas sucesivas pueden compararse como las imágenes de una película: se ve la torre \
+crecer de una copia a otra. Trabaja con una gran cámara y placas de \
+vidrio de gran formato, que dan una nitidez notable a las celosías de hierro. La \
+frontalidad y la simetría perfectas dan a la torre el aspecto de un monumento clásico. \
+La copia albuminada, de tono sepia, ha palidecido con el tiempo, lo que acentúa la bruma."""
+details = [
+  "El palacio del Trocadero, hoy desaparecido, visible bajo el gran arco.",
+  "El andamio de la cima, allí donde la obra continúa.",
+  "Los arcos bajo el primer piso, puramente decorativos: no sostienen nada.",
+  "Los barracones de obra y los árboles jóvenes al pie de los pilares.",
+]
+themes = ["parís", "hierro", "obra", "ingeniero", "exposición universal"]
+anecdote = """
+El palacio del Trocadero, construido para la Exposición Universal de 1878, fue sustituido para \
+la de 1937 por el actual palacio de Chaillot, que conservó parte de sus \
+estructuras."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "La Casa Batlló, Barcelona"
+artiste = "Antoni Gaudí"
+annee = "1904–1906"
+image = "casa-batllo.jpg"
+credit = "Photo : ChristianSchd"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Casa_Batllo_Overview_Barcelona_Spain_cut.jpg"
+technique = "Fachada de piedra arenisca de Montjuïc, vidrio, cerámica y fundición; fotografía de 2013"
+collection = "Passeig de Gràcia 43, Barcelona"
+note = "Gaudí transforma un edificio corriente en una fachada ondulante, cubierta de mosaico y coronada por un tejado de escamas: la obra más reciente de la exposición, fotografiada en la actualidad."
+description = """
+La fachada se alza entre dos edificios más clásicos, de piedra beige. En la \
+planta baja y en el primer piso, grandes ventanales de montantes de piedra en forma \
+de hueso se abren a la calle. Encima, la fachada, como sembrada de escamas y de pastillas \
+de color, azules, verdes y rosas, ondula suavemente; pequeños balcones de hierro en \
+forma de máscaras se aferran a ella, piso tras piso. El tejado, curvo y abombado, está \
+cubierto de tejas esmaltadas que brillan como la piel de un reptil. A la izquierda, una \
+torrecilla coronada por una cruz de cuatro brazos domina el conjunto. Abajo, en la \
+acera, unos transeúntes se detienen a mirar; es el final del día, y las ventanas \
+están iluminadas."""
+evocation = """
+Los barceloneses apodaron el edificio la «casa de los huesos» o la «casa de los \
+bostezos», por sus columnas y sus aberturas. Una interpretación \
+extendida ve en él la leyenda de san Jorge, patrón de Cataluña: el tejado sería el \
+lomo del dragón, la torrecilla y su cruz la lanza del santo, los balcones los cráneos de las \
+víctimas. Gaudí no dejó ninguna explicación. La obra expresa sobre todo su idea de que \
+la arquitectura debe inspirarse en la naturaleza, que ignora la línea recta: sus formas \
+evocan el mar, las algas, los huesos o las escamas. Testimonia también la \
+prosperidad de la burguesía catalana, que rivalizaba en audacia a lo largo del Passeig de \
+Gràcia."""
+histoire = """
+El industrial textil Josep Batlló poseía en el Passeig de Gràcia, la gran \
+avenida del Eixample de Barcelona, un edificio construido en 1877. En lugar de \
+demolerlo, Gaudí lo transforma de 1904 a 1906: rehace la fachada, añade un piso y \
+el tejado, agranda el patio interior y rediseña la vivienda de la familia. Su \
+colaborador Josep Maria Jujol participa en la decoración. En la misma manzana \
+se encuentran la Casa Amatller de Puig i Cadafalch y la Casa Lleó Morera de Domènech i \
+Montaner, otros dos maestros del modernismo catalán: este conjunto fue apodado la «manzana \
+de la discordia». Abierta al público desde 2002, la Casa Batlló está inscrita en el \
+patrimonio mundial de la Unesco desde 2005."""
+facture = """
+La fachada es de piedra arenisca de Montjuïc, la colina de Barcelona, tallada en formas flexibles \
+que parecen modeladas más que esculpidas. Gaudí la recubre con un revoque donde están \
+incrustados trozos de vidrio de color y discos de cerámica, según la técnica del \
+trencadís, mosaico de fragmentos que empleó a menudo. Los balcones son de fundición. \
+Las tejas del tejado, de forma redondeada, adquieren reflejos cambiantes según la \
+luz. Toda la fachada está concebida como una superficie viva, que se modifica con \
+la hora del día."""
+details = [
+  "Las columnas de los grandes ventanales del primer piso, en forma de hueso.",
+  "Los balcones en forma de máscaras, horadados por dos grandes ojos.",
+  "La torrecilla y su cruz de cuatro brazos, a la izquierda del tejado.",
+  "Las tejas esmaltadas del tejado, como las escamas de un dragón.",
+  "Los trozos de vidrio de color incrustados en la fachada.",
+]
+themes = ["modernismo", "barcelona", "naturaleza", "mosaico", "fachada"]
+anecdote = """
+En el patio interior, Gaudí hizo variar el color de los azulejos de cerámica, del \
+azul oscuro arriba al azul muy pálido abajo, para que la luz que cae desde el lucernario \
+parezca igual en todos los pisos."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.7
+
+[[artistes]]
+nom = "Giovanni Battista Piranesi"
+vie = "Mogliano Veneto (República de Venecia), 4 de octubre de 1720 – Roma, 9 de noviembre de 1778"
+biographie = """
+Hijo de un cantero veneciano, Giovanni Battista Piranesi aprende arquitectura con \
+su tío, ingeniero encargado de los diques de la laguna, así como la perspectiva y la decoración \
+teatral. En 1740, parte a Roma como dibujante en el séquito del embajador de Venecia. La \
+ciudad antigua lo conmueve profundamente. A falta de encargos de arquitectura, aprende el grabado y publica en 1743 \
+una primera colección de arquitecturas imaginarias. Tras un regreso a Venecia, se instala \
+definitivamente en Roma hacia 1747 y abre una tienda donde vende sus propias estampas. \
+Las Vistas de Roma, las Cárceles imaginarias y los cuatro volúmenes de las Antigüedades romanas \
+(1756) lo hacen célebre en toda Europa. Defiende con pasión, frente a los \
+admiradores de Grecia, la originalidad de los romanos. El papa veneciano Clemente XIII lo \
+nombra caballero, y el sobrino del papa, el cardenal Rezzonico, le confía su única \
+obra de arquitecto: la iglesia de Santa Maria del Priorato, en el Aventino, donde está \
+enterrado. Diseña también chimeneas, jarrones y muebles. Tras su muerte, su \
+hijo Francesco prosigue su obra y se lleva los cobres a París."""
+style = """
+Piranesi es un arquitecto que graba: piensa en volúmenes, en estructuras y en sombras. \
+Sus aguafuertes, de una energía de trazo sin equivalente, mezclan exactitud \
+arqueológica e imaginación, hasta el punto de que agranda de buen grado las ruinas para \
+hacerlas más impresionantes. Su visión de la Roma antigua, grandiosa y melancólica, ha \
+alimentado el neoclasicismo, a arquitectos como Soane, y luego el imaginario romántico; \
+sus Cárceles inspiran todavía a cineastas e ilustradores."""
+
+[[artistes]]
+nom = "Étienne-Louis Boullée"
+vie = "París, 1728 – París, 1799"
+biographie = """
+Hijo de un arquitecto, Étienne-Louis Boullée quería ser pintor, pero su padre \
+lo orienta hacia la arquitectura. Sigue la enseñanza de Jacques-François Blondel y de \
+Jean-Laurent Legeay, vuelto de Roma con el gusto por las formas antiguas y las grandes \
+composiciones. Elegido miembro de la Academia Real de Arquitectura en 1762, construye para \
+ricos clientes varios palacetes en París y residencias en el campo, \
+de los que casi no queda nada. A partir de los años 1780, renuncia poco a poco a construir \
+para dedicarse a la enseñanza y a vastos proyectos dibujados, biblioteca \
+real, ópera, catedral, palacio, cenotafios, que nunca se realizarán. Desarrolla en ellos \
+una arquitectura de volúmenes geométricos puros, esfera, cilindro, pirámide, a \
+una escala colosal, y redacta un tratado, Arquitectura, ensayo sobre el arte. Entre sus \
+alumnos figuran Jean-François Chalgrin, el arquitecto del Arco del Triunfo, y \
+Jean-Nicolas-Louis Durand, cuyas lecciones influirán en todo el siglo XIX. Muere \
+en París en 1799, dejando sus dibujos a la nación. Largo tiempo olvidado, es redescubierto \
+en el siglo XX, y su ensayo se publica por primera vez en 1953."""
+style = """
+Boullée busca conmover con la sola geometría: volúmenes simples, desmesurados, \
+repetidos, y el juego de la luz y de la sombra, que quería capaz de hacer nacer \
+la melancolía o la admiración. Sus dibujos a la aguada, más próximos a la pintura que al \
+plano técnico, anuncian la arquitectura visionaria. Se han reconocido en sus proyectos a los \
+antepasados de muchos monumentos modernos."""
+
+[[artistes]]
+nom = "Francis Frith"
+vie = "Chesterfield (Inglaterra), 7 de octubre de 1822 – Cannes, 25 de febrero de 1898"
+biographie = """
+Nacido en una familia cuáquera de Derbyshire, Francis Frith hace primero carrera en el \
+comercio en Liverpool: funda una empresa de venta al por mayor de comestibles, luego una imprenta, \
+y las vende con provecho a mediados de los años 1850. Apasionado por la fotografía, \
+decide entonces partir hacia Oriente. Entre 1856 y 1859, hace tres viajes a \
+Egipto, Nubia, Palestina y Siria, con varios aparatos, entre ellos una cámara \
+gigante para placas de 16 × 20 pulgadas. Sus vistas de las pirámides, de los templos de \
+Luxor o de Abu Simbel, publicadas en libros y en álbumes de copias originales, causan \
+sensación en Gran Bretaña. A su regreso, se instala en Reigate, en Surrey, y \
+funda la casa F. Frith & Co., que emprende la tarea de fotografiar las ciudades y los \
+pueblos del Reino Unido. Sus operadores recorren el país durante décadas, y \
+la empresa vende copias y luego postales hasta 1971. Frith, que escribe \
+también sobre religión y moral, muere en 1898 en su villa de Cannes. Sus archivos \
+forman hoy un fondo de varios cientos de miles de vistas de \
+Gran Bretaña."""
+style = """
+Frith es un fotógrafo de la exactitud: muestra los monumentos tal como son, en \
+grandes formatos de una nitidez asombrosa, con encuadres claros, a menudo frontales, \
+y pequeños personajes para dar la escala. Sus textos insisten en la veracidad de \
+la fotografía, opuesta a las vistas embellecidas de los pintores orientalistas. Contribuyó \
+a fundar la fotografía de viajes y, con su empresa, la postal ilustrada."""
+
+[[artistes]]
+nom = "Sébah & Joaillier"
+vie = "Constantinopla (Imperio otomano), taller activo a partir de 1888"
+biographie = """
+El taller Sébah & Joaillier es uno de los grandes estudios fotográficos de \
+Constantinopla a finales del Imperio otomano. Toma el relevo del estudio fundado en 1857 \
+por Pascal Sébah, fotógrafo nacido en Constantinopla, establecido en el barrio de Pera, \
+donde vivían numerosos europeos. Pascal Sébah fotografía los monumentos, los \
+paisajes y los habitantes del Imperio, abre una sucursal en El Cairo y proporciona las \
+fotografías de un álbum oficial sobre los trajes populares de Turquía, preparado para \
+la Exposición Universal de Viena en 1873. Tras su muerte, en 1886, su hijo Jean \
+Pascal Sébah se asocia en 1888 con el francés Policarpe Joaillier: la razón social \
+pasa a ser Sébah & Joaillier. El estudio vende a los viajeros vistas numeradas y tituladas \
+de Constantinopla, de sus mezquitas, de sus palacios, de sus fuentes y del Bósforo, \
+así como retratos y escenas de la vida cotidiana. Trabaja también para la \
+corte otomana. Sus copias, conservadas hoy en numerosas bibliotecas y \
+museos, constituyen una fuente valiosa para la historia de Estambul y de sus \
+monumentos."""
+style = """
+Las vistas del estudio aúnan la nitidez documental con una composición cuidada, heredada \
+de la pintura de paisaje: puntos de vista elevados, perspectivas profundas, luz \
+pareja. Pensadas para los viajeros, están numeradas, tituladas en francés, lengua \
+internacional de la época, y vendidas por unidades o en álbumes. Fijaron para \
+Europa la imagen de una Constantinopla a la vez bizantina y otomana."""
+
+[[artistes]]
+nom = "Samuel Bourne"
+vie = "Muckleston (Staffordshire, Inglaterra), 30 de octubre de 1834 – Nottingham, 24 de abril de 1912"
+biographie = """
+Hijo de un granjero de Staffordshire, Samuel Bourne trabaja primero como empleado de \
+banco en Nottingham, a la vez que practica la fotografía como aficionado; se hace \
+notar a finales de los años 1850 por sus paisajes de la región de los Lagos. En 1863, \
+deja el banco y parte a la India. Instalado en Simla, la capital de verano del \
+gobierno británico, al pie del Himalaya, se asocia con Charles Shepherd: \
+su estudio toma el nombre de Bourne & Shepherd. Entre 1863 y 1866, realiza tres \
+grandes expediciones fotográficas por el Himalaya, con decenas de porteadores \
+cargados con sus cámaras, sus placas de vidrio y sus productos químicos; en \
+1866, fotografía a más de 5500 metros de altitud, en el paso de Manirang. Recorre \
+también las llanuras de la India del Norte, de Delhi a Agra y a Benarés, y \
+Cachemira, y relata sus viajes en el British Journal of Photography. En 1870, \
+regresa a Inglaterra, dirige una empresa de hilatura de algodón en Nottingham y \
+abandona la fotografía por la acuarela. El estudio Bourne & Shepherd, uno de los más \
+antiguos del mundo, funcionó en la India hasta 2016."""
+style = """
+Bourne es un paisajista en el espíritu de lo pintoresco inglés: busca puntos \
+de vista equilibrados, con un primer plano de árboles o de rocas, una lámina de agua y un \
+monumento o una montaña a lo lejos. Técnicamente irreprochable, domina el colodión \
+húmedo en condiciones extremas. Sus miles de vistas han moldeado la imagen de la India \
+en Europa, pero reflejan también la mirada del poder colonial."""
+
+[[artistes]]
+nom = "Émile Gsell"
+vie = "Sainte-Marie-aux-Mines (Alto Rin), 31 de diciembre de 1838 – Saigón, 16 de octubre de 1879"
+biographie = """
+Nacido en Alsacia, en un valle industrial de los Vosgos, Émile Gsell se alista en \
+el ejército y parte a Cochinchina, donde Francia acaba de establecerse, a comienzos de los \
+años 1860. Allí descubre la fotografía y decide quedarse en el Extremo Oriente: \
+instalado en Saigón, abre uno de los primeros talleres fotográficos de la colonia. \
+En 1866, acompaña a Camboya al oficial de marina Ernest Doudart de Lagrée, jefe \
+de la misión de exploración del Mekong, y realiza en Angkor una serie de vistas de los \
+templos que figuran entre las primerísimas fotografías del sitio. Fotografía \
+también Cochinchina, sus ciudades, sus canales, sus paisajes y sus habitantes, y luego \
+Tonkín, al norte de Vietnam. Su taller de Saigón proporciona retratos a los colonos y \
+vistas a las administraciones y a los viajeros; sus álbumes contribuyen a dar a \
+conocer Indochina en Francia. Muere en Saigón en 1879, a los cuarenta años. Sus \
+copias, dispersas, se conservan hoy en grandes colecciones públicas, \
+en Francia y en Estados Unidos."""
+style = """
+Gsell es un fotógrafo documental: vistas frontales, encuadres amplios, afán de \
+mostrar el conjunto de un edificio o de un paisaje. Sus copias, de tono cálido, son \
+de gran sobriedad. Trabajando en condiciones difíciles, fijó el estado \
+de Angkor antes de las grandes obras de despeje y restauración del siglo XX, lo \
+que da a sus imágenes un valor de testimonio, aunque sirvieran también a la \
+propaganda colonial."""
+
+[[artistes]]
+nom = "Louis-Émile Durandelle"
+vie = "Francia, 1839 – 1917"
+biographie = """
+Louis-Émile Durandelle es uno de los grandes fotógrafos de arquitectura de la Francia del \
+Segundo Imperio y de la Tercera República. Comienza su carrera junto a \
+Hyacinthe-César Delmaet, con quien se asocia: la firma Delmaet y Durandelle \
+aparece en numerosas copias. Tras la muerte de Delmaet, prosigue solo la \
+actividad. Se especializa en un género entonces nuevo: la fotografía de obras. \
+Durante años, sigue la construcción de la Ópera de Charles Garnier, de la que \
+fotografía los cimientos, la estructura metálica, las esculturas y los decorados, \
+reunidos en álbumes. Documenta también la construcción de la basílica del Sagrado Corazón, en \
+Montmartre, y de numerosos edificios de París. Para la Exposición Universal de 1889, \
+fotografía la torre Eiffel, desde los cimientos, en la primavera de 1887, hasta su \
+conclusión. Estas series, encargadas por los contratistas, los arquitectos o el Estado, \
+servían para dar cuenta del avance de las obras y conservar la memoria de las \
+técnicas. Redescubiertas en el siglo XX, se conservan en particular en el museo \
+de Orsay, en la Biblioteca Nacional de Francia y en el museo Getty de Los Ángeles."""
+style = """
+Durandelle fotografía la arquitectura en vías de hacerse más que el monumento \
+acabado: andamios, grúas, vigas y obreros se convierten en sus temas. Sus vistas \
+frontales, nítidas y metódicas, tomadas a menudo desde el mismo punto en fechas sucesivas, \
+forman verdaderas crónicas. Su rigor, sin efecto pintoresco, fue admirado \
+en el siglo XX como una estética del ingeniero."""
+
+[[artistes]]
+nom = "Antoni Gaudí"
+vie = "Reus (Cataluña), 25 de junio de 1852 – Barcelona, 10 de junio de 1926"
+biographie = """
+Hijo de un calderero, Antoni Gaudí i Cornet crece en el campo catalán, donde \
+observa largamente las plantas, los animales y las rocas; se cuenta que \
+atribuía su sentido del espacio al taller de su padre, donde se daba forma a volúmenes \
+en el cobre. Estudia arquitectura en Barcelona y obtiene su título en 1878. Ese \
+mismo año, conoce al industrial Eusebi Güell, que se convierte en su mecenas y para quien \
+construye el palacio Güell, el parque Güell y la iglesia de la Colonia Güell. Sus \
+primeras obras, como la Casa Vicens, se inspiran en el arte mudéjar; inventa \
+luego un estilo muy personal, nutrido de gótico y de naturaleza. En 1883, asume la \
+dirección de las obras de la Sagrada Família, templo comenzado el año anterior, que \
+lo ocupará hasta su muerte. A principios del siglo XX, construye en Barcelona la Casa \
+Batlló, y después la Casa Milà, llamada la Pedrera. A partir de 1914, se consagra \
+exclusivamente a la Sagrada Família, viviendo casi como un asceta. Atropellado por un tranvía \
+el 7 de junio de 1926, muere tres días después y es enterrado en la cripta de la \
+basílica. Siete de sus obras están inscritas en el patrimonio mundial de la Unesco."""
+style = """
+Gaudí rechaza el ángulo recto y la fachada plana: sus edificios ondulan, se inclinan y \
+se cubren de mosaicos de cerámica rota, el trencadís. Busca sus formas \
+con ayuda de maquetas hechas de cadenetas lastradas, para encontrar arcos que se sostienen \
+sin contrafuertes. Su obra, en la encrucijada del modernismo catalán, del gótico y de \
+la observación de la naturaleza, sigue siendo una de las más originales de la historia de \
+la arquitectura."""

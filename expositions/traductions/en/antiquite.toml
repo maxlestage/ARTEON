@@ -1,0 +1,930 @@
+[exposition]
+ordre = 5
+nom_court = "Antiquity"
+mouvement = "Antiquity: Egypt, the Near East, Greece, Rome"
+cadre = "vitrine"
+couleur = "#8a5416"
+titre = "Antiquity, from the Banks of the Nile to the Bay of Naples"
+artiste = "Egypt, Sumer, Assyria, Greece, Rome…"
+dates = "c. 2090 BC – AD 120"
+accroche = "Virtual exhibition · British Museum, London"
+introduction = """
+Two thousand years of art around the Mediterranean and the Near East: a blue faience \
+hippopotamus and an Egyptian Book of the Dead, a Sumerian prince at prayer and a winged \
+genius from the palace at Nimrud, Greek black- and red-figure vases, a bronze dancer, a \
+fresco painted near Pompeii, a signed glass jug and a Fayum portrait. These ten objects, \
+made by craftsmen who were most often anonymous, tell of death and the afterlife, the \
+power of kings, music and festivities. The building is inspired by the British Museum in \
+London: you pass through a portico and then step out into a vast covered court, the \
+Great Court, onto which open the galleries of Egypt, Greece and Rome."""
+vitrine = "hippopotame-william.jpg"
+
+[musee]
+nom = "British Museum"
+ville = "London, United Kingdom"
+architecte = "Robert Smirke; Foster + Partners for the Great Court"
+construction = "1823–1852; Great Court opened in 2000"
+presentation = """
+The British Museum was born in 1753, by Act of Parliament, from the collections \
+bequeathed by the physician Hans Sloane, and opened in 1759 in a town house in \
+Bloomsbury. Acquisitions poured in, from the Rosetta Stone to the Parthenon sculptures: \
+from 1823 the architect Robert Smirke raised a vast Greek Revival quadrangle, whose \
+south façade lines up an Ionic colonnade, around an inner courtyard. In 1857 his \
+brother Sydney built the round Reading Room there, beneath a dome, soon surrounded by \
+book stacks. After the departure of the British Library, Norman Foster’s practice \
+cleared the courtyard and covered it with a glass roof of more than three thousand \
+triangular panes: the Great Court, opened in 2000, is presented as the largest covered \
+public square in Europe. All around, the Egyptian, Assyrian, Greek and Roman galleries \
+rank among the richest in the world, and admission is free."""
+ici = """
+The ARTEON building follows the sequence of the British Museum: a portico, then a great \
+covered court from which the galleries lead off. You enter from the south into the \
+Portico, with its pale stone walls, then into the Great Court, square and sixteen \
+metres high, where the reliefs of the Near East await. To the west, the Egyptian \
+Gallery, twenty-four metres long and sand-coloured; to the north, the Greek Room, with \
+its pinkish-ochre walls; to the east, the Roman Room, in a softened Pompeiian red."""
+
+[[salles]]
+nom = "The Portico"
+theme = "The entrance, like the Ionic colonnade that borders the façade of the British Museum."
+murs = "#e8e1d3"
+x = 0
+z = 0
+largeur = 16
+profondeur = 8
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Great Court"
+theme = "Beneath the glass roof, the ancient Near East: a Sumerian prince at prayer and a winged genius from the palace at Nimrud."
+murs = "#ece8df"
+x = 0
+z = -16
+largeur = 24
+profondeur = 24
+hauteur = 16
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "The Egyptian Gallery"
+theme = "Egypt and the afterlife: the blue hippopotamus, the weighing of the heart and a Fayum portrait."
+murs = "#e6d6b8"
+x = -17
+z = -16
+largeur = 10
+profondeur = 24
+hauteur = 9
+
+[[salles]]
+nom = "The Greek Room"
+theme = "The vases of Athens, black-figure then red-figure, and a Hellenistic bronze dancer."
+murs = "#e2c7b0"
+x = 0
+z = -34
+largeur = 16
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "The Roman Room"
+theme = "A fresco from a villa near Pompeii and a glass jug signed by its maker."
+murs = "#e0b9a6"
+x = 17
+z = -16
+largeur = 10
+profondeur = 16
+hauteur = 7
+
+[[oeuvres]]
+titre = "Statue of Gudea"
+artiste = "Mésopotamie, époque néo-sumérienne"
+annee = "c. 2090 BC"
+image = "statue-de-goudea.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Statue_of_Gudea_MET_DT861.jpg"
+technique = "Diorite, 44 × 21.5 × 29.5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "The prince of Lagash, seated, hands clasped: his statue prayed for him, day and night, in the temple. It stands 44 cm high."
+description = """
+A man sits on a low, cubic seat, his bare feet placed side by side on the base. He is \
+seen from the front, motionless, his torso upright. His hands are clasped in front of \
+his chest, one gripped in the other. He wears a long robe that leaves the right \
+shoulder and arm bare, and whose edge, on the other shoulder, is picked out with fine \
+fringes. On his head, a broad-brimmed cap is covered with small regular curls, like a \
+fleece. The face is full and peaceful, with large almond-shaped eyes outlined by a \
+line, eyebrows drawn in relief and a closed mouth. Across the whole part of the robe \
+that covers the knees, columns of cuneiform signs are carefully engraved in the black \
+stone."""
+evocation = """
+The statue is not a mere portrait: it is a substitute. Placed in a temple, facing the \
+deity, it was to pray ceaselessly in the prince’s place and secure for him the favour of \
+the gods. The clasped hands, the fixed gaze and the wide-open eyes convey this \
+perpetual attention. Gudea does not show himself as a warrior, but as a pious ruler \
+and builder: the inscriptions on his statues recall the temples he built or restored. \
+The inscription on this one even gives it a name, which the museum translates as \
+“Gudea, the man who built the temple, may his life be long”. The hardest stone, chosen \
+to endure, expresses the wish for an eternal presence before the gods."""
+histoire = """
+Gudea ruled the state of Lagash, in southern Mesopotamia, at the end of the third \
+millennium BC. He had many statues of himself carved for the temples of his capital, \
+Girsu, present-day Tello, in Iraq. This one probably comes from there. From 1877, \
+Ernest de Sarzec’s French excavations at Tello brought to light a series of these \
+statues, now in the Louvre, which revealed Sumerian civilisation to the world. Others \
+later appeared on the art market. This one entered the Metropolitan Museum in New York \
+in 1959, purchased with the Harris Brisbane Dick Fund."""
+facture = """
+Diorite is a black, dense and very hard stone, difficult to carve: according to his own \
+inscriptions, Gudea had it brought from Magan, a distant region usually located around \
+present-day Oman. The sculptor kept a compact form, almost a block, with no fragile \
+parts projecting. He polished the smooth surfaces, the face, the arms, the feet, and \
+reserved fine engraving for details: the curls of the cap, the fringes, the nails and \
+the written signs. The proportions are deliberately stocky, with a broad head and \
+powerful hands."""
+details = [
+  "The small curls of the cap, engraved one by one like a woollen fleece.",
+  "The fingers of the right hand, gripped in the left, in the gesture of prayer.",
+  "The columns of cuneiform signs covering the knees.",
+  "The fringed edge of the robe falling from the left shoulder.",
+  "The detailed toes of the bare feet, set flat on the base.",
+]
+themes = ["sumer", "prayer", "ruler", "writing", "stone"]
+anecdote = """
+Gudea also left two large clay cylinders, kept in the Louvre, which tell how a dream \
+ordered him to rebuild the temple of the god Ningirsu. It is the longest literary text \
+in the Sumerian language known."""
+salle = 2
+mur = "nord"
+place = 5
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Eagle-Headed Winged Genius"
+artiste = "Assyrie, règne d'Assurnasirpal II"
+annee = "c. 883–859 BC"
+image = "genie-a-tete-d-aigle.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Relief_panel_MET_DP375422.jpg"
+technique = "Gypsum alabaster, 236.2 × 177.8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A slab from the palace of King Ashurnasirpal II at Nimrud: a winged, eagle-headed protective spirit watches over the king’s dwelling."
+description = """
+On a large slab of pale stone, a standing figure walks in profile towards the left. He \
+has a man’s muscular body, but the head of an eagle with a hooked beak, topped by a crest \
+of feathers, and two large wings spread across his back. He wears a short tunic and, \
+over it, a long fringed cloak that opens on his advancing leg; his feet are shod in \
+sandals. One of his hands is raised and holds a small rounded object between its \
+fingers; the other, lowered, carries a bucket by its handle. Bracelets adorned with a \
+rosette circle his wrists, and a necklace hangs at his neck. A band of cuneiform \
+writing runs across the whole slab at mid-height, engraved over the body and the \
+cloak."""
+evocation = """
+These hybrid beings, which the Assyrian texts call apkallu, are sages and protective \
+spirits. On the palace walls they stood guard, often near doors or around the image of \
+the king. The small object they hold is interpreted as a kind of sprinkler, dipped in \
+the bucket to sprinkle and purify: the gesture would drive away evil spirits. Others \
+have seen in it the pollination of the sacred tree, a symbol of fertility. The \
+inscription running across the slab, repeated throughout the palace, lists the king’s \
+titles and conquests: the image protects, the text proclaims. Together they speak of a \
+royal power placed under the guard of the gods."""
+histoire = """
+Ashurnasirpal II, king of Assyria from 883 to 859 BC, made Kalhu, present-day Nimrud, \
+in northern Iraq, his new capital. There he built an immense palace, the Northwest \
+Palace, whose walls were covered with carved slabs. Buried beneath the ruins, they were \
+uncovered from 1845 by the Englishman Austen Henry Layard, who sent a great many to the \
+British Museum. Others were later distributed to museums and universities in Europe and \
+the United States. This one entered the Metropolitan Museum in 1932, a gift of John D. \
+Rockefeller Jr., together with other reliefs from the palace and two colossal door \
+guardians, a winged bull and a winged lion with human heads."""
+facture = """
+The relief is carved in gypsum alabaster, a soft local stone that could be cut into \
+large slabs and finely engraved. The sculptor combines several viewpoints: the head and \
+legs are in profile, the shoulders almost frontal. He details with ornamental precision \
+the feathers of the wings, the fringes of the cloak and the muscles of the calf, \
+swollen to the point of abstraction. The relief is low and regular, designed to be seen \
+close up, along the walls. Originally, the slabs were enhanced with colour."""
+details = [
+  "The eagle’s hooked beak, open, and the round eye ringed with a rim.",
+  "The rosette engraved on each of the bracelets.",
+  "The bucket held by its handle, decorated with horizontal lines.",
+  "The cuneiform signs that run uninterrupted across the cloak.",
+  "The calf cut into almost geometric muscle masses.",
+]
+themes = ["assyria", "palace", "protection", "writing", "hybrid"]
+anecdote = """
+To inaugurate his palace at Kalhu, Ashurnasirpal II gave, according to a stele found at \
+the site, a ten-day banquet for 69,574 guests, for which he had the meats, bread and \
+jars of wine carefully inventoried."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.78
+
+[[oeuvres]]
+titre = "Hippopotamus “William”"
+artiste = "Égypte, Moyen Empire"
+annee = "c. 1961–1878 BC"
+image = "hippopotame-william.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Standing_Hippopotamus_MET_DP248993.jpg"
+technique = "Egyptian faience, 11.2 × 20 × 7.5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A blue faience hippopotamus covered in lotus flowers, placed in a tomb: the mascot of the Metropolitan Museum. It is 20 cm long."
+description = """
+A hippopotamus stands on its four short legs, its head slightly lowered, as if \
+advancing slowly through water. Its massive, rounded body is a luminous turquoise blue. \
+Against this ground, black lines draw marsh plants: large lotus flowers in full bloom, \
+buds, leaves and long stems that coil over its flanks, back and head. One can make out \
+its small protruding eyes, its round ears and the nostrils at the end of the broad \
+muzzle. The shiny surface is worn and stained in places, and traces of restoration \
+can be seen on the legs: three of them have been reconstructed."""
+evocation = """
+For the Egyptians, the hippopotamus is an ambiguous animal. In the Nile, it is one of \
+the most dangerous, capable of overturning a boat, and it can embody the forces of \
+disorder. But the female, who fiercely protects her young, is also associated with \
+birth and fertility. The plants painted on its body turn the animal into a landscape: \
+it carries on itself the marsh in which it lives, a place of teeming life, which the \
+Egyptians linked to the creation of the world and to rebirth. Placed in the tomb, it \
+evoked the watery world from which the deceased hoped to be reborn. Its legs were \
+probably broken deliberately, so that it could not harm the dead."""
+histoire = """
+The hippopotamus dates from the Twelfth Dynasty, in the Middle Kingdom, between the \
+reigns of Senusret I and Senusret II. It was found in 1910 at Meir, in Middle Egypt, \
+in a burial shaft associated with the chapel of the steward Senbi II, together with a \
+second hippopotamus. It entered the Metropolitan Museum in 1917, a gift of Edward S. \
+Harkness. Its nickname comes from England: in 1931, the humorous magazine Punch \
+published the story of a family who consult a colour reproduction of the hippopotamus \
+as an oracle, calling it “William”. The Metropolitan took up the story in its bulletin \
+the same year, and the name has stayed attached to the figurine."""
+facture = """
+Egyptian faience is not clay ceramic: it is a paste of ground quartz, modelled and then \
+fired, which acquires a glassy glaze on the surface. The copper it contains gives it \
+this intense blue-green, the colour of water, vegetation and regeneration. The \
+decoration was painted in black before firing. The craftsman simplified the animal’s \
+forms into solid, round volumes, while observing accurately its posture, its heavy head \
+and its eyes set high on the skull, those of an animal that lives at the water’s \
+surface."""
+details = [
+  "The lotus flowers in full bloom, painted in black on the flanks.",
+  "The small protruding eyes and round ears, at the top of the head.",
+  "The original left foreleg, and the other three, restored.",
+  "The stems that wind all the way onto the muzzle.",
+  "The areas where the worn glaze reveals a paler blue.",
+]
+themes = ["egypt", "animal", "nile", "afterlife", "faience"]
+anecdote = """
+Now the unofficial mascot of the Metropolitan Museum, “William” appears on posters, \
+cards and plush toys. His three restored legs are of a slightly different shade: they \
+can be told apart from the original leg by looking closely."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "The Weighing of the Heart, Book of the Dead of Hunefer"
+artiste = "Égypte, Nouvel Empire"
+annee = "c. 1275 BC"
+image = "papyrus-hounefer.jpg"
+cadre = "bois"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_judgement_of_the_dead_in_the_presence_of_Osiris.jpg"
+technique = "Ink and pigments on papyrus"
+collection = "British Museum, London"
+note = "The judgement of the scribe Hunefer: his heart is weighed against the feather of truth, before he is presented to Osiris, king of the afterlife."
+description = """
+The scene reads from left to right. Hunefer, dressed in white linen, is led by the \
+hand by Anubis, the jackal-headed god. At the centre stands a large balance: Anubis, \
+kneeling, watches over its beam. On one pan rests the dead man’s heart, in a small \
+vase; on the other, a feather. Beside the balance waits Ammit, a crocodile-headed \
+monster. Thoth, the ibis-headed god, records the result on his scribe’s palette. Then \
+Horus, falcon-headed, leads Hunefer before Osiris, seated in a shrine, green-skinned, \
+wearing a tall white crown. Behind him stand Isis and Nephthys. In the upper register, \
+Hunefer kneels in prayer before a row of seated gods, the judges of the tribunal."""
+evocation = """
+For the Egyptians, the heart is the seat of thought, memory and conscience. On the \
+balance, it is compared with the feather of Maat, goddess of truth and of the order of \
+the world: it must be as light as she, that is, free of faults. If the heart weighs too \
+much, Ammit, the “devourer”, swallows it, and the dead person vanishes forever. Here, \
+the trial is passed: Hunefer is declared “true of voice” and admitted to Osiris, the \
+god who died and was resurrected and who rules the afterlife. The image does not tell \
+of an uncertain hope: in painting the favourable verdict, it was also meant, by its \
+very presence in the tomb, to guarantee the outcome."""
+histoire = """
+Hunefer was scribe of the divine offerings and steward of King Seti I, at the \
+beginning of the Nineteenth Dynasty. His Book of the Dead, a papyrus scroll several \
+metres long, was placed in his tomb at Thebes, present-day Luxor. These scrolls, which \
+the Egyptians called “Spells for Going Forth by Day”, gathered incantations intended \
+to guide the deceased through the afterlife. Hunefer’s, particularly fine, was bought \
+in 1852 by the British Museum from Antoine Clot, known as Clot Bey, a French physician \
+in the service of the viceroy of Egypt. The scroll was cut into sheets, now kept under \
+glass; the weighing of the heart is its most famous page."""
+facture = """
+Papyrus is made of thin strips taken from the stem of the plant, laid in two crossed \
+layers, then pressed and dried: its horizontal fibres can be seen. The painter first \
+traces the outlines in ink, then lays on bold flat colours: the white of the linen, \
+the ochres of the skin, the green and blue of the wigs and headdresses, carbon black. \
+The figures follow Egyptian conventions: head and legs in profile, shoulders frontal, \
+size according to importance. The hieroglyphic text, in columns, is integrated into the \
+image and frames it."""
+details = [
+  "The feather of Maat, on the pan of the balance, facing the heart in its small vase.",
+  "Ammit, the crocodile-headed devourer, seated at the foot of the balance.",
+  "Ibis-headed Thoth, recording the verdict on his palette.",
+  "The four sons of Horus standing on a lotus flower, before the throne of Osiris.",
+  "Hunefer kneeling, at upper left, before the gods of the tribunal.",
+]
+themes = ["egypt", "afterlife", "judgement", "gods", "writing"]
+anecdote = """
+In mummification, the embalmers removed most of the organs but left the heart in \
+place, because it would be weighed at the judgement. A stone scarab, engraved with a \
+spell, was sometimes placed on the chest so that the heart would not testify against \
+its owner."""
+salle = 3
+mur = "ouest"
+place = 4
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Portrait of a Young Woman in Red"
+artiste = "Égypte romaine"
+annee = "AD 90–120"
+image = "jeune-femme-en-rouge.jpg"
+cadre = "bois"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Portrait_of_a_young_woman_in_red_MET_09.181.6_EGDP011294.jpg"
+technique = "Encaustic and gold leaf on linden wood, 38.1 × 18.4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A Fayum portrait: painted on wood, it was placed over the mummy’s face, in place of the ancient masks."
+description = """
+On a narrow panel, rounded at the top, a young woman looks at us face-on. Her oval \
+face, with a matte complexion, is lit by pale highlights on the nose, forehead and \
+chin. She has very large dark eyes, underlined by black lashes and topped by thick \
+eyebrows. Her black, curly hair frames her forehead; a crown of gilt leaves encircles \
+it. She wears earrings and a necklace, and is dressed in a tunic and cloak of deep red, \
+with a dark band descending from the shoulder. The bare lower part of the panel shows \
+the wood, stained by the resins and the bandages that bound it."""
+evocation = """
+These portraits blend three worlds. The rite is Egyptian: the body is mummified, and \
+the face must remain present for eternity. The technique and style are Greek, and the \
+fashion, hairstyle, jewellery and clothing, is that of the Roman Empire. The gold \
+crown, set on painted hair, has been compared to the crowns placed on the heads of the \
+dead, a sign of their victory over death. The frontal, intense gaze seems to address \
+the living directly. What strikes us today is the individuality of the face: a specific \
+person, whom we feel we might recognise, and whose name is nevertheless lost."""
+histoire = """
+Since the conquest of 30 BC, Egypt had been a Roman province, where Egyptians, Greeks \
+and Romans lived together. In the first and second centuries, well-off families had \
+portraits painted on wood, slipped into the bandages above the mummy’s face. They are \
+called Fayum portraits, after the oasis where many were discovered in the late \
+nineteenth century. About a thousand are known, scattered among museums around the \
+world. This portrait entered the Metropolitan Museum in 1909, acquired through the \
+Rogers Fund. Historians still debate: were some portraits painted during the sitter’s \
+lifetime, and trimmed to fit on death?"""
+facture = """
+The portrait is painted in encaustic: the pigments are mixed with beeswax, applied hot \
+or as an emulsion, which gives the colours their brilliance and depth. The painter \
+lays on the wax in thick touches, visible on the cheek and neck, and models the face \
+through light, with shadows and highlights, in the manner of Greek painting. The \
+leaves of the crown are made of gold leaf, applied directly to the panel. The support \
+is a thin panel of linden wood."""
+details = [
+  "The gold leaves of the crown, set in lozenges on the black curls.",
+  "The small white highlight in each eye, which animates the gaze.",
+  "The touches of thick wax on the cheek and in the neck.",
+  "The gilt earring, on the right, beneath the hair.",
+  "The bottom of the panel, unpainted, stained by embalming.",
+]
+themes = ["portrait", "afterlife", "egypt", "rome", "gaze"]
+anecdote = """
+Fayum portraits are almost the only painted portraits of Greco-Roman antiquity to have \
+come down to us: the panel paintings of the great Greek painters, admired by ancient \
+authors, have all vanished."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Lekythos: The Wedding Procession"
+artiste = "Peintre d'Amasis"
+annee = "c. 550–530 BC"
+image = "lecythe-du-peintre-d-amasis.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Terracotta_lekythos_(oil_flask)_MET_DT5501.jpg"
+technique = "Black-figure terracotta, height 17.5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A small Athenian oil flask: a bridal couple in a chariot, escorted by torchlight to their new home. It is 17.5 cm tall."
+description = """
+On the body of this small one-handled flask, a frieze of black figures stands out \
+against the orange ground of the clay. On the left, a two-wheeled chariot, drawn by \
+mules, carries off a couple; a woman holds a wreath in it. The procession moves to the \
+right: a woman walks beside the team, a bearded man follows, and another woman \
+brandishes two lit torches. On the right, an upright decorated with a checkerboard \
+represents the door of the house to which they are going. The women’s skin is painted \
+white. On the shoulder of the vase, a line of young women dances, and a frieze of dots \
+separates the two scenes."""
+evocation = """
+In Athens, the wedding culminated in a procession: in the evening, the bride left her \
+father’s house and was taken by chariot to her husband’s, by torchlight, with songs and \
+dancing. The painter gives an orderly, joyful image of it, in which each figure has \
+their role. The Metropolitan holds a second lekythos by the same painter, of the same \
+size, devoted to women working wool. Together, the two vases show the high points of \
+an Athenian woman’s life: marriage and the work of the household. It has been \
+supposed that they were made for a woman, perhaps on the occasion of her wedding."""
+histoire = """
+The lekythos is a flask for oil, perfumed or not, which the Greeks used for grooming, \
+offerings and funerary rites. This one was made in Athens around the middle of the \
+sixth century BC, when Attic vases were exported throughout the Mediterranean world. \
+It is attributed to the Amasis Painter, one of the great masters of black-figure. The \
+Metropolitan Museum bought it in 1956 thanks to a gift from Walter C. Baker; the \
+lekythos with the spinners had entered it as early as 1931. The two vases are now \
+displayed together, in the museum’s Greek galleries."""
+facture = """
+The black-figure technique was born in Corinth and perfected in Athens. The painter \
+lays on the silhouettes with a slip of very fine clay, which becomes black and shiny \
+in the firing, then incises the details with a point, letting the pale clay show \
+through: folds, manes, harness. He adds white for the women’s skin and red for certain \
+garments. The Amasis Painter is distinguished by precise, careful drawing, elegant \
+figures and attention to the patterns of fabrics."""
+details = [
+  "The chariot wheel, with fine spokes incised in the black.",
+  "The two torches with multiple flames, raised above the mules.",
+  "The black and white checkerboard of the door upright, on the right.",
+  "The white faces of the women, facing the black face of the bearded man.",
+  "The line of young dancers on the shoulder of the vase.",
+]
+themes = ["marriage", "procession", "athens", "women", "black figures"]
+anecdote = """
+The Amasis Painter takes his name from the potter Amasis, who signed several of the \
+vases he decorated. Perhaps they were one and the same man. Amasis is the Greek form of \
+an Egyptian name, also borne by a pharaoh of the same period."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Amphora: The Kithara Player"
+artiste = "Peintre de Berlin"
+annee = "c. 490 BC"
+image = "amphore-du-peintre-de-berlin.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Terracotta_amphora_(jar)_MET_DT272.jpg"
+technique = "Red-figure terracotta, height 41.5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A young musician sings, head thrown back, as he plays the kithara: a single figure set against the glossy black of the vase."
+description = """
+On the black, lustrous body of a large two-handled amphora, a single figure stands out, \
+in the orange colour of the clay. He is a young man dressed in a long, fine tunic and \
+a cloak with tight folds. He holds against him a large kithara, the stringed \
+instrument of competitions, from which hangs an embroidered, fringed cloth. His head is \
+thrown back, his mouth slightly open: he sings as he accompanies himself. His body \
+arches slightly, as if carried by the music, and his bare feet seem to float on the \
+black ground. On the other side of the vase, a bearded man, leaning on a staff, listens \
+to him: he is interpreted as a judge of the contest."""
+evocation = """
+The singer with the kithara, or kithara-singer, is one of the most admired musicians of \
+Greece. In Athens, great musical contests took place at the Panathenaia, the festival \
+of the goddess Athena, and the winners received valuable prizes. The vase captures the \
+moment when the musician, carried away by his song, forgets everything around him. The \
+judge, on the other side, reminds us that this is a competition. But the image goes \
+beyond anecdote: by isolating a silhouette against the black, the painter makes music \
+an almost divine presence, recalling Apollo, the kithara-playing god."""
+histoire = """
+The amphora was painted in Athens around 490 BC, the years of the Battle of Marathon, \
+by one of the finest painters of his time. His name has not come down to us: he is \
+called the Berlin Painter, after an amphora kept in the Berlin museums. It was the \
+British archaeologist John Beazley who recognised his hand, in the early twentieth \
+century, by comparing the drawing of eyes, hands and folds. The Metropolitan Museum \
+bought this vase in 1956, thanks to the Fletcher Fund. It ranks among the most famous \
+works in its Greek galleries."""
+facture = """
+Red-figure, invented in Athens around 530 BC, reverses black-figure: the painter leaves \
+the figures in reserve, in the colour of the clay, and paints the ground black. The \
+details are no longer incised but drawn with the brush, in fine lines and slight \
+reliefs, or in diluted slip for shading. The Berlin Painter likes isolated figures, \
+without frame or ground line, which stand out over the whole height of the vase. His \
+drawing is supple and nervous, attentive to the movement of fabrics."""
+details = [
+  "The singer’s head thrown back and his slightly open mouth.",
+  "The cloth embroidered with dots and fringed that hangs from the kithara.",
+  "The fine folds of the tunic, drawn in parallel lines.",
+  "The bare feet, set down without any ground line.",
+  "The flakes of black gloss, which reveal the clay in places.",
+]
+themes = ["music", "contest", "athens", "red figures", "song"]
+anecdote = """
+John Beazley attributed hundreds of vases to anonymous painters by studying how they \
+drew details, like a handwriting expert: the Berlin Painter was one of the first he \
+identified in this way, in an article of 1911."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Veiled and Masked Dancer"
+artiste = "Grèce hellénistique"
+annee = "3rd–2nd century BC"
+image = "danseuse-voilee.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bronze_statuette_of_a_veiled_and_masked_dancer_MET_DP118070.jpg"
+technique = "Bronze, height 20.5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A dancer wrapped in veils turns on herself: all the movement runs through the folds of the cloth. She is 20.5 cm tall."
+description = """
+A woman dances, her body entirely wrapped in fabrics. A light veil covers her head and \
+face, beneath which a mask can be sensed. Her body twists: the head tilts towards one \
+shoulder, the torso pivots, the hips swing the other way. One arm, hidden beneath the \
+cloak, is held against her chest; the other hand, behind her back, pulls a corner of \
+the fabric backwards, which presses the cloth against her form and creates a network of \
+taut folds. Beneath the cloak, a thicker dress falls in deep folds to the ground. One \
+foot steps forward, shod in a fine sandal. The bronze, dark and patinated, retains \
+green traces of corrosion."""
+evocation = """
+The statuette no doubt shows a professional dancer, one of those mime and dance \
+performers who appeared in the great cities of the Greek world, for which Alexandria \
+was famous. The veil and mask hide her identity: she is no longer a person but a \
+character, and her whole body becomes expression. It has been seen as embodying the \
+spirit of the Hellenistic age, which followed Alexander the Great: a new taste for \
+movement, spectacle and everyday life. The sculptor seeks less ideal beauty than the \
+fleeting instant of a turn in the dance."""
+histoire = """
+After Alexander’s conquests, Greek culture spread from Egypt to Central Asia, and great \
+capitals such as Alexandria became centres of art. The statuette is said to come from \
+Alexandria, but its findspot is not certain. It belonged to the art dealer Joseph \
+Brummer, then to the New York collector Walter C. Baker, who bought it in 1948 and \
+bequeathed it to the Metropolitan Museum. It entered the museum in 1972, hence the \
+nickname “Baker Dancer” often given to it. It is now one of the most admired Greek \
+bronzes in the museum."""
+facture = """
+The statuette is cast in bronze by the lost-wax technique: the sculptor models the \
+figure in wax, coats it in clay, then melts out the wax and pours in the metal in its \
+place. All the virtuosity lies in the drapery: two layers of cloth superimposed, a fine \
+veil that clings to the body and lets the dress beneath be glimpsed. The folds radiate \
+from the hand that pulls the fabric. The statuette is designed to be seen from every \
+side, by walking around it."""
+details = [
+  "The veil stretched over the face, beneath which the mask can be sensed.",
+  "The hand hidden behind the back, pulling the cloak backwards.",
+  "The network of taut folds running from this hand to the shoulder.",
+  "The shod foot that projects from the dress.",
+  "The green spots of corrosion, at the bottom of the cloth.",
+]
+themes = ["dance", "movement", "drapery", "spectacle", "bronze"]
+anecdote = """
+Greek bronzes have rarely survived: the metal, being precious, was most often melted \
+down. Most of the great bronze statues are known only through Roman marble copies, \
+which makes every original, even a small one, precious."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Woman Playing the Kithara"
+artiste = "Rome, fin de la République"
+annee = "c. 50–40 BC"
+image = "joueuse-de-cithare-boscoreale.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Wall_painting_from_Room_H_of_the_Villa_of_P._Fannius_Synistor_at_Boscoreale_MET_DP105943.jpg"
+technique = "Fresco, 186.7 × 186.7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A fresco from the villa of Publius Fannius Synistor at Boscoreale, buried by Vesuvius in AD 79 like nearby Pompeii."
+description = """
+Against a bright red ground, a woman sits on a richly turned seat with an openwork \
+back, furnished with a blue cushion. She wears a purple dress and an ample white cloak \
+covering her knees; a gold diadem encircles her hair, and earrings gleam at her ears. \
+She holds a large gilded kithara against her and brushes its strings, but she does not \
+look at the instrument: her eyes are fixed on the viewer. Behind the back of the seat, \
+a little girl leans forward and also looks straight ahead. At the bottom runs a strip \
+of pale floor; at the top, a painted cornice decorated with dentils crowns the wall."""
+evocation = """
+The scene belongs to a large frieze of figures, painted almost life-size, whose meaning \
+has been much debated. According to the Metropolitan Museum’s interpretation, these \
+panels reproduce paintings made for a royal court in Macedonia, at the beginning of \
+the Hellenistic period, and would celebrate a dynastic marriage. The diadem and the \
+almost royal seat make the musician a person of high rank: it has been proposed to see \
+in her a Macedonian queen or princess, with her daughter or young sister. For the rich \
+Roman owner, these images expressed his Greek culture and his taste for splendour."""
+histoire = """
+The villa of Publius Fannius Synistor stood at Boscoreale, a few kilometres north of \
+Pompeii. Its paintings were executed around 50–40 BC, then the house was buried under \
+ash in the eruption of Vesuvius in AD 79. Uncovered in 1900, it was stripped of its \
+frescoes, which were cut out and sold at auction in Paris in 1903. The Metropolitan \
+Museum then bought an important group of them, including this panel, which adorned the \
+large room known as Room H. The other panels from this room are now scattered among \
+several museums in Italy and Europe."""
+facture = """
+The painting is a fresco: the colours, diluted in water, are laid on a still-fresh lime \
+plaster, with which they bond as they dry. The ground, a dazzling red, was then \
+carefully burnished. This is the Second Pompeiian Style, which opens up the wall with \
+false architecture and large figures. The painter models the faces through light, in \
+quick touches, and renders the material of the fabrics and the gilded metal of the \
+instrument. The cracks in the panel bear witness to its age and its removal."""
+details = [
+  "The little girl’s gaze, above the back of the seat, turned towards us.",
+  "The gold diadem and the musician’s earring.",
+  "The turned feet of the seat, painted like red and gilded wood.",
+  "The painted cornice with dentils, at the very top of the panel.",
+  "The cracks in the plaster, which trace a network across the red ground.",
+]
+themes = ["music", "fresco", "pompeii", "portrait", "red"]
+anecdote = """
+The Metropolitan Museum has reassembled an entire room from the same villa, with its \
+walls painted with views of architecture, gardens and porticoes: one can step inside \
+and stand within a Roman room as it looked before AD 79."""
+salle = 5
+mur = "est"
+position = 0
+largeur = 1.87
+
+[[oeuvres]]
+titre = "Jug Signed by Ennion"
+artiste = "Ennion"
+annee = "first half of the 1st century AD"
+image = "cruche-d-ennion.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Glass_jug_MET_DP121998.jpg"
+technique = "Mould-blown glass, height 18.4 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "An amber glass jug whose decoration bears, in a small cartouche, the name of its maker: Ennion, one of the first known glass artists. It is 18.4 cm tall."
+description = """
+A small jug of amber-brown glass, with a wide neck, stands on its base. A pale, almost \
+white handle starts from the shoulder, rises to the lip and folds back there in a \
+small loop. The surface is entirely covered with relief decoration, arranged in \
+superimposed bands. On the neck, vertical ribs; on the shoulder, a frieze of leaves and \
+fan motifs set within arches; at the middle of the body, a network of lozenges, \
+interrupted by a small rectangular cartouche in which Greek letters can be read; \
+lower down, long vertical flutes. In places, a whitish, iridescent film veils the \
+glass."""
+evocation = """
+The cartouche bears, in Greek, the name of Ennion and the verb “made”: it is a \
+signature, inserted into the decoration like a trademark. At a time when craftsmen \
+remained almost always anonymous, Ennion claims his work and makes it a selling point. \
+The jug imitates in its decoration vessels of precious metal, but in a new material, \
+light and translucent. It bears witness to a technical revolution: within a few \
+decades, glass, once rare, became a tableware item widespread throughout the Roman \
+Empire."""
+histoire = """
+Ennion worked in the first half of the first century AD, probably at Sidon, on the \
+coast of present-day Lebanon, one of the great centres of ancient glass. His signed \
+works, cups, beakers and jugs, have been found at several points around the \
+Mediterranean, particularly in northern Italy, which has led to the supposition that he \
+set up a workshop there. This jug entered the Metropolitan Museum in 1917, a gift of \
+the banker and collector J. Pierpont Morgan. In 2014, the museum devoted an exhibition \
+to Ennion, bringing together a large part of his known works."""
+facture = """
+Glassblowing was invented in the first century BC, on the Syro-Palestinian coast. \
+Ennion combined it with the mould: the glassmaker blows a parison of hot glass into a \
+multi-part mould, whose recessed decoration is imprinted in relief on the wall. He \
+could thus reproduce the same model, with his signature. The handle, made of glass of \
+another colour, is added hot, stretched and then folded back. The fineness of the \
+reliefs implies moulds of great precision."""
+details = [
+  "The small cartouche with Greek letters, to the left of the network of lozenges.",
+  "The loop formed by the handle as it folds back onto the lip.",
+  "The fan motifs set beneath arches, on the shoulder.",
+  "The vertical flutes at the bottom, like those of a column.",
+  "The iridescent film left by the weathering of the glass in the ground.",
+]
+themes = ["glass", "signature", "craftsmanship", "rome", "table"]
+anecdote = """
+On some of his cups, Ennion adds to his signature a short Greek formula that is \
+translated as “let the buyer remember”: a way, already, of building customer loyalty."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.75
+
+[[artistes]]
+nom = "Mésopotamie, époque néo-sumérienne"
+vie = "Southern Mesopotamia (present-day Iraq), c. 2150–2000 BC"
+biographie = """
+In the plain of the Tigris and Euphrates, the Sumerians founded, as early as the \
+fourth millennium BC, the first cities and invented cuneiform writing, traced with a \
+reed on clay tablets. Around 2350, Sargon of Akkad unified the region under his \
+empire; after its fall, the Sumerian cities regained their independence. This is the \
+so-called Neo-Sumerian period, which first saw the state of Lagash and its capital \
+Girsu shine under Prince Gudea, then the Third Dynasty of Ur, whose kings built great \
+ziggurats. The rulers then presented themselves less as conquerors than as shepherds \
+of their people, pious and builders of temples. Their workshops produced statues of \
+hard stone, reliefs, finely engraved cylinder seals and an abundant literature. Around \
+2000 BC, Ur fell to the Elamites, and the Sumerian language gradually ceased to be \
+spoken, while remaining for nearly two millennia the scholarly and religious language \
+of Mesopotamia."""
+style = """
+Neo-Sumerian sculpture seeks calm, stability and permanence. The statues, often in \
+diorite, have compact, closed forms, polished surfaces, clasped hands and large open \
+eyes, turned towards the deity. Writing is part of the work: engraved on the robe or \
+the back, it names the sitter and declares his piety. This majestic sobriety has made \
+Gudea one of the most recognisable figures of the ancient Near East."""
+
+[[artistes]]
+nom = "Assyrie, règne d'Assurnasirpal II"
+vie = "Northern Mesopotamia (present-day Iraq), 883–859 BC"
+biographie = """
+Assyria occupies northern Mesopotamia, around the Tigris and the city of Assur, from \
+which it takes its name. In the ninth century BC, its kings launched military \
+campaigns every year and built an empire that would extend, two centuries later, from \
+Iran to Egypt. Ashurnasirpal II, who reigned from 883 to 859, was one of its founders. \
+He chose as his capital Kalhu, present-day Nimrud, which he surrounded with ramparts \
+and filled with deportees. There he raised the Northwest Palace, decorated with \
+hundreds of carved slabs: scenes of war and hunting, processions of tribute-bearers, \
+protective genii and human-headed winged bulls guarding the gates. His successors \
+continued this tradition at Khorsabad and Nineveh. The empire collapsed in 612 BC, \
+when Nineveh fell to the Babylonians and the Medes. Rediscovered in the nineteenth \
+century, these palaces revealed to Europe an art previously known only from the Bible; \
+the sites at Nimrud were gravely damaged in 2015."""
+style = """
+Assyrian relief serves royal power. The slabs, lined up along the walls, form \
+continuous narratives or rows of protective figures, often crossed by an inscription. \
+The style is precise and decorative: clean profiles, stylised muscles, hair and beards \
+curled in regular rows, chiselled feathers and fringes. This majestic clarity, made to \
+impress visitors to the palace, left its mark on the art of Achaemenid Persia."""
+
+[[artistes]]
+nom = "Égypte, Moyen Empire"
+vie = "Nile Valley, c. 2030–1650 BC"
+biographie = """
+The Middle Kingdom begins when Mentuhotep II, prince of Thebes, reunified Egypt after \
+a period of division, around 2030 BC. Under the Twelfth Dynasty, that of the Amenemhats \
+and the Senusrets, the country enjoyed a long prosperity: the kings developed the \
+Fayum oasis, built fortresses in Nubia and brick pyramids near Memphis. Provincial \
+governors, such as those of Meir in Middle Egypt, had rich decorated tombs cut for \
+themselves. Egyptian literature then reached its classical age, with tales and \
+teachings copied for centuries. In tombs were placed wooden models of granaries, boats \
+and workshops, servant statuettes and faience figurines, such as the blue \
+hippopotamuses, intended to accompany the dead into the afterlife. Funerary beliefs \
+broadened: eternal salvation, once reserved for the king, became the hope of all who \
+could afford a tomb. The period closes with the rise to power of the Hyksos, who came \
+from Asia, in the north of the country."""
+style = """
+Middle Kingdom art combines the rigour of Egyptian conventions with a new observation \
+of nature and of faces. Royal portraits show marked, sometimes weary features. The \
+small objects from tombs, in painted wood or faience, are of great freshness: simple, \
+full forms, bright colours, decoration drawn from life on the Nile. They show an art \
+intended for eternity, yet attentive to the living world."""
+
+[[artistes]]
+nom = "Égypte, Nouvel Empire"
+vie = "Nile Valley, c. 1550–1070 BC"
+biographie = """
+The New Kingdom begins around 1550 BC, when the princes of Thebes drove out the Hyksos \
+and reunified Egypt. For five centuries, under the Eighteenth, Nineteenth and \
+Twentieth Dynasties, the country became an imperial power, from Nubia to Syria. This is \
+the age of Hatshepsut, Thutmose III, Akhenaten and Tutankhamun, then of the Ramesses. \
+Thebes, present-day Luxor, was its religious capital: the temples of Karnak and Luxor \
+were enlarged there, and the kings were buried in the Valley of the Kings. High \
+officials, scribes and stewards, such as Hunefer under Seti I, also had painted tombs \
+and carefully made funerary furnishings. It was then that the Book of the Dead spread: \
+a collection of about two hundred spells, copied on papyrus and illustrated with \
+vignettes, which each person chose according to their means. Workshops of scribes and \
+painters prepared copies, sometimes in advance, leaving space to write in the name of \
+the future deceased."""
+style = """
+New Kingdom painting follows the rules fixed since the Old Kingdom: figures seen in \
+profile with the shoulders frontal, colours laid in flat areas, figures aligned in \
+registers, text and image intermingled. Within this framework, the artists achieve \
+great elegance: supple lines, details of linen garments, harmonies of white, ochre, \
+green and blue. The vignettes of the Book of the Dead fixed forever our image of the \
+Egyptian afterlife."""
+
+[[artistes]]
+nom = "Égypte romaine"
+vie = "Egypt, province of the Roman Empire, 1st–3rd century AD"
+biographie = """
+In 30 BC, after the death of Cleopatra, Egypt became a Roman province, governed in the \
+name of the emperor and charged with feeding Rome with its grain. It inherited three \
+centuries of Greek rule, under the Ptolemaic kings: the cities housed a mixed \
+population of Egyptians, Greeks and Romans, who spoke Greek, worshipped both Egyptian \
+and Greek gods, and followed the fashions of the Empire. In the Fayum, a great \
+agricultural oasis west of the Nile, and in other regions, well-off families continued \
+to have their dead mummified, following Egyptian tradition, but often replaced masks \
+with portraits painted on wood. These portraits, produced mainly in the first and \
+second centuries, have been found in large numbers since the 1880s, notably by the \
+British archaeologist Flinders Petrie at Hawara and by the dealer Theodor Graf. Their \
+authors remained anonymous, but different workshops and hands can be distinguished. The \
+practice declined in the third century, then disappeared."""
+style = """
+Fayum portraits apply Greek easel painting to an Egyptian rite. The face is seen \
+frontally, often slightly in three-quarter view, with large eyes that fix the viewer. \
+Modelling through light, highlights and touches of wax give a striking presence. \
+Rediscovered in the late nineteenth century, they have often been compared to \
+Byzantine icons, whose frontal gaze they anticipate."""
+
+[[artistes]]
+nom = "Peintre d'Amasis"
+vie = "Athens, active c. 560–515 BC"
+biographie = """
+Neither the real name nor the life of this Athenian painter is known. Archaeologists \
+call him the Amasis Painter because several vases he decorated bear the signature of a \
+potter named Amasis, who made them: it has long been asked whether they were the same \
+man, both potter and painter. The name Amasis, the Greek form of an Egyptian name, has \
+led to the supposition of a foreign origin, or of links with Egypt, but nothing is \
+proven. Active for nearly half a century, he is, with Exekias, the greatest master of \
+Attic black-figure, at the time when Athens was establishing itself on the painted \
+vase market, exporting as far as Etruria. More than a hundred vases are attributed to \
+him: amphorae, cups, jugs and lekythoi. On them he paints gods, in particular \
+Dionysus and his retinue of satyrs and maenads, heroes, but also scenes of everyday \
+life, rarer in his day, such as marriage and wool-working. Towards the end of his \
+career he witnessed the appearance of red-figure."""
+style = """
+The Amasis Painter has a clean, precise and witty line. His figures, often small and \
+elegant, are distributed in balance on the vase. He takes care over the patterns of \
+fabrics, gestures and attitudes, and knows how to render the life of a procession or a \
+dance. His humour and freshness of observation distinguish him from his more solemn \
+contemporary Exekias."""
+
+[[artistes]]
+nom = "Peintre de Berlin"
+vie = "Athens, active c. 500–460 BC"
+biographie = """
+Like most Greek vase painters, this master did not sign his works and his name is \
+lost. In the early twentieth century, the British archaeologist John Beazley \
+recognised his hand on an amphora kept in Berlin, which shows Hermes accompanied by a \
+satyr, and gave him the name of that museum. Through patient comparison of details, he \
+then attributed hundreds of vases to him. The Berlin Painter worked in Athens for some \
+forty years, in the time of the Persian Wars, when the city repelled the Persians at \
+Marathon and Salamis. He belongs to the generation that followed the inventors of \
+red-figure and brought it to perfection. He decorated mainly large vases, amphorae, \
+kraters and hydriai, but also black-figure Panathenaic amphorae, given to the winners \
+of the Athenian games. His subjects are gods, heroes, athletes and musicians. His \
+works, much sought after, have been found in Greece as well as in Italy, where the \
+Etruscans imported Athenian vases."""
+style = """
+The Berlin Painter is recognised by his isolated figures, often a single one per side, \
+which stand out against the black gloss without frame or ground line. His drawing is \
+fluid and elegant, his slender silhouettes follow the curve of the vase. He is \
+attentive to the folds of fabrics and the movement of bodies. This stripped-down \
+layout, of great strength, is one of the achievements of Archaic Greek painting."""
+
+[[artistes]]
+nom = "Grèce hellénistique"
+vie = "Greek world, from Greece to Egypt and Asia, 323–31 BC"
+biographie = """
+The Hellenistic period begins with the death of Alexander the Great, in 323 BC. His \
+conquests had carried Greek language and culture from Egypt to India; his generals \
+divided the empire and founded kingdoms, such as that of the Ptolemies in Egypt or that \
+of the Seleucids in Asia. New capitals, Alexandria, Antioch, Pergamon, vied with one \
+another in libraries, theatres and artists’ workshops. Alexandria, with its lighthouse \
+and its Museum, became the greatest city of the Greek world, a crossroads of scholars, \
+poets and artists, and a city of spectacles. Sculptors worked marble and bronze there \
+for kings, sanctuaries and a private clientele seeking small statuettes to decorate \
+their homes. Gradually, Rome extended its rule over these kingdoms; the period ends in \
+31 BC, with the Battle of Actium, which preceded the end of the Egypt of the Ptolemies \
+and Cleopatra."""
+style = """
+Hellenistic sculpture broadens the Greek repertoire: alongside idealised gods and \
+heroes, it shows children, old men, musicians, dancers, sufferings and emotions. It \
+loves movement, twisting bodies, virtuoso drapery and theatrical effects. This freedom \
+was admired by the Romans, who multiplied copies of it, and then by the sculptors of \
+the Renaissance and the Baroque."""
+
+[[artistes]]
+nom = "Rome, fin de la République"
+vie = "Roman Italy, 2nd–1st century BC"
+biographie = """
+In the second and first centuries BC, Rome, mistress of Italy, conquered Greece and \
+the Hellenistic East. Booty, works of art and Greek artists poured in: the Roman \
+aristocracy embraced Greek culture with passion, its literature, philosophy and arts. \
+Rich families had luxurious country and seaside villas built in the Bay of Naples, \
+around Vesuvius, where they retired far from the affairs of Rome. Pompeii, \
+Herculaneum, Stabiae, Boscoreale and Oplontis have preserved many examples. Their \
+walls were entirely painted by teams of craftsmen, often anonymous, who worked from \
+Greek models. The period was also that of the civil wars, from Marius and Sulla to \
+Caesar, which ended with the victory of Octavian, the future Augustus. The eruption of \
+Vesuvius in AD 79 froze these decorations under ash, to be rediscovered from the \
+eighteenth century."""
+style = """
+Roman wall painting of this period belongs to the Second Pompeiian Style: the wall no \
+longer merely imitates marble slabs, it opens up in trompe l’œil onto colonnades, \
+gardens, landscapes or large figures. The colours are intense, red and black \
+dominate, and the modelling through light comes from Greek painting. These frescoes are \
+almost all that remains to us of great ancient painting."""
+
+[[artistes]]
+nom = "Ennion"
+vie = "Probably Sidon (present-day Lebanon), active in the first half of the 1st century AD"
+biographie = """
+Ennion is one of the first glassmakers in history whose name is known, because he \
+inscribed it, in Greek, in the decoration of his works. His life is known only through \
+his objects. He worked at the beginning of the Roman Empire, under the Julio-Claudian \
+emperors, shortly after the invention of glassblowing on the coast of the Levant. He is \
+most often located at Sidon, a Phoenician city renowned for its glass. His cups, \
+beakers, jugs and small amphorae, blown in moulds, have been found at several points \
+around the Mediterranean, from the Near East to northern Italy, where they are \
+particularly numerous: it has been deduced that he may have opened a workshop there, or \
+that his works were much sought after there. The techniques he mastered spread \
+throughout the Empire, making glass an everyday object. In 2014–2015, the Metropolitan \
+Museum in New York brought together a large part of his known works in the exhibition \
+“Ennion: Master of Roman Glass”."""
+style = """
+Ennion is a master of mould-blown glass. His vases, with thin walls, bear dense relief \
+decoration, arranged in bands: ribs, foliage, networks of lozenges, flutes, inspired by \
+metalwork. He plays on coloured glass, amber, blue, green, purple, with handles of \
+another hue. His signature, worked into the decoration, turns the mass-produced object \
+into an author’s work."""

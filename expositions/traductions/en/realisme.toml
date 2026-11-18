@@ -1,0 +1,868 @@
+[exposition]
+ordre = 80
+nom_court = "Realism"
+mouvement = "Realism and Impressionism"
+cadre = "dore"
+couleur = "#3d5a4c"
+titre = "From Realism to Modern Life"
+artiste = "Courbet, Millet, Rosa Bonheur, Manet, Degas, Caillebotte, Pissarro"
+dates = "1849–1882"
+accroche = "Virtual exhibition · National Gallery of Art, Washington"
+introduction = """
+In the mid-nineteenth century, Realism brought great painting down from Olympus: make \
+way for peasants, workers, village funerals and the streets of Paris. Courbet, Millet and \
+Rosa Bonheur show the countryside as it is; Manet, Degas, Caillebotte and Pissarro paint \
+modern life and open the way to Impressionism. The building is inspired by the West \
+Building of the National Gallery of Art in Washington: a high colonnaded rotunda at the \
+centre, a gallery on each side and, to the east, a cabinet in enfilade."""
+vitrine = "dejeuner-sur-l-herbe.jpg"
+
+[musee]
+nom = "National Gallery of Art, West Building"
+ville = "Washington, United States"
+architecte = "John Russell Pope"
+construction = "1937–1941"
+presentation = """
+A banker and former Secretary of the Treasury, Andrew W. Mellon gave the nation, in 1937, \
+his collection of paintings and the funds to build a museum on the National Mall. The \
+architect John Russell Pope designed a neoclassical temple of pink Tennessee marble; he \
+died shortly after work began, and his associates completed it. The building, now called \
+the West Building, opened in March 1941. At its centre, the rotunda, crowned by a dome \
+inspired by the Pantheon in Rome, is ringed by columns of dark green marble and shelters \
+a fountain topped by a Mercury. Two long sculpture galleries run east and west and \
+distribute the painting galleries, lit by skylights. The museum presents European \
+painting from the Middle Ages to the nineteenth century, from Leonardo da Vinci, whose \
+only painting on view in the Americas it owns, to Manet, Monet and Degas. In 1978 the \
+East Building, designed by Ieoh Ming Pei, was added."""
+ici = """
+ARTEON’s building takes up the plan of the West Building: a rotunda at the centre, \
+galleries on either side. You enter from the south into the Mall vestibule, then into the \
+rotunda, square, fourteen metres high, where Luncheon on the Grass and Olympia hang. To \
+the west opens “West Gallery · Realism”; to the east, “East Gallery · Modern Life”, two \
+rooms eighteen metres long with cream walls. At the end of the east gallery, a last door \
+leads to the “East Cabinet · City and Village”."""
+
+[[salles]]
+nom = "The Mall Vestibule"
+theme = "The entrance on the Mall side, as in Washington: a staircase leads to the rotunda."
+murs = "#ebe3d6"
+x = 0
+z = 0
+largeur = 14
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Rotunda"
+theme = "1863: beneath the dome, the two Manet canvases that caused a scandal, Luncheon on the Grass and Olympia."
+murs = "#e2dccd"
+x = 0
+z = -12
+largeur = 16
+profondeur = 16
+hauteur = 14
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "West Gallery · Realism"
+theme = "1849–1857: Courbet, Millet and Rosa Bonheur paint the countryside, its peasants, its animals and its mourning."
+murs = "#e9dfcc"
+x = -17
+z = -12
+largeur = 18
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "East Gallery · Modern Life"
+theme = "1873–1882: workmen in a Parisian apartment, a dance class at the Opéra and the bar of the Folies-Bergère."
+murs = "#e7e0d0"
+x = 17
+z = -12
+largeur = 18
+profondeur = 10
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "The East Cabinet · City and Village"
+theme = "1877: in the same year, a Paris street in the rain and a village of Pontoise in winter."
+murs = "#ece4d4"
+x = 32
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[oeuvres]]
+titre = "Luncheon on the Grass"
+artiste = "Édouard Manet"
+annee = "1863"
+image = "dejeuner-sur-l-herbe.jpg"
+technique = "Oil on canvas, 208 × 264.5 cm"
+collection = "Musée d’Orsay, Paris"
+note = "A nude woman between two men in modern dress: rejected by the Salon of 1863, the painting caused a scandal at the Salon des Refusés."
+description = """
+In a clearing by a river, three figures sit on the grass. A nude young woman, her chin \
+resting on her hand, looks us straight in the eye, unembarrassed. Beside her, two young \
+men dressed in the fashion of the 1860s, dark jackets and light trousers, carry on their \
+conversation; the one on the right, wearing a tasselled cap, extends his hand in an \
+orator’s gesture. In the foreground, at left, the woman’s clothes, a blue dress and a \
+straw hat, have been tossed pell-mell beside an overturned basket from which fruit and a \
+small round loaf spill. Farther back, a second woman in a chemise leans toward the \
+water. The trees frame the scene like a theatre curtain."""
+evocation = """
+The scandal comes not from the nude, ubiquitous in Salon painting, but from its context: \
+she is neither a nymph nor a goddess, but a Parisienne of today, seated near two men \
+dressed like students or artists, and she stares at the viewer. The public saw a country \
+outing of dubious morals. Manet, for his part, takes up a theme consecrated by the \
+masters, the fête champêtre, which the Louvre illustrates with the Pastoral Concert \
+attributed to Titian, to show that one can paint one’s own time with the same ambition. \
+It has been read as a challenge hurled at academicism, an ironic homage to tradition, or \
+a reflection on the gaze: the woman observes us as much as we observe her."""
+histoire = """
+Manet submitted the canvas to the Salon of 1863 under the title The Bath. The jury \
+rejected it, like thousands of other works that year. In the face of the protests, \
+Napoleon III authorized an exhibition of the rejected paintings, which would be called \
+the Salon des Refusés. Luncheon drew crowds, laughter and sarcasm there, and made Manet, \
+in spite of himself, the leader of a young generation. The woman was modelled by \
+Victorine Meurent; the men were a brother of the painter and the Dutch sculptor Ferdinand \
+Leenhoff, whose sister Suzanne Manet married a few months later. Bought in 1878 by the \
+baritone Jean-Baptiste Faure, the painting was given to the State in 1906 by the \
+collector Étienne Moreau-Nélaton; it entered the Louvre in 1934, then the Musée d’Orsay \
+in 1986."""
+facture = """
+Manet paints in broad planes of colour, without the soft transitions of academic \
+modelling: the woman’s body, of a raw white, lit from the front, looks almost flat \
+against the dark background. The blacks of the jackets, deep and velvety, come from \
+Velázquez and Goya, whom he admired. The landscape, quickly brushed, resembles a painted \
+backdrop, and the bather in the background, too large for her place, defies perspective. \
+The group of the three figures echoes that of three deities in an engraving by \
+Marcantonio Raimondi after Raphael, The Judgement of Paris. The still life in the \
+foreground is a tour de force."""
+details = [
+  "The bullfinch flying at the very top, at the centre, among the branches.",
+  "The little frog hidden in the grass, at lower left.",
+  "The cherries, figs and small round loaf spilling from the basket.",
+  "The boat moored at the water’s edge, at right.",
+  "The cane that the man on the right holds carelessly.",
+]
+themes = ["scandal", "nude", "modernity", "nature", "gaze"]
+anecdote = """
+Stung, Claude Monet began in 1865 his own Luncheon on the Grass, an immense open-air \
+canvas, with no nude. Damaged by damp, it was cut up by the painter himself: two large \
+fragments survive in the Musée d’Orsay."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Olympia"
+artiste = "Édouard Manet"
+annee = "1863"
+image = "olympia.jpg"
+technique = "Oil on canvas, 130.5 × 190 cm"
+collection = "Musée d’Orsay, Paris"
+note = "A woman of her time in the pose of a Titian Venus: at the Salon of 1865, the canvas unleashed a storm of insults."
+description = """
+A nude young woman lies on a bed with white sheets and pillows, propped against large \
+cushions, a flowered shawl slipped beneath her. She wears only a black velvet ribbon tied \
+around her neck, a gold bracelet, a pink orchid in her red hair and one golden slipper; \
+the other slipper has slid onto the sheet. Her left hand rests flat on her thigh. She \
+looks at us, calm, without smiling. Behind her, a Black maid in a pink dress presents \
+her with a large bouquet wrapped in white paper. At the foot of the bed, at right, a \
+black cat, its tail raised, stares at the viewer with yellow eyes. The background is \
+closed off by a dark hanging and a green curtain."""
+evocation = """
+For contemporaries, the title and the accessories left no doubt: Olympia is a courtesan, \
+and the bouquet is seen as the tribute of a client, who would be standing in the viewer’s \
+place. Manet takes up the pose of Titian’s Venus of Urbino, but replaces the goddess with \
+a real woman, her body unidealized, and the sleeping little dog, a symbol of fidelity, \
+with a black cat on the alert, associated with night and desire. Olympia’s direct gaze \
+reverses the roles: it is she who sizes up the one who looks at her. For some decades, \
+historians have also taken an interest in the maid, long ignored, and in her model, a \
+woman named Laure, who lived in Paris and posed several times for Manet."""
+histoire = """
+Painted in 1863, the same year as Luncheon on the Grass, with the same model, Victorine \
+Meurent, Olympia was exhibited only at the Salon of 1865. The scandal was immediate: \
+visitors threatened the canvas, the administration had it guarded and then hung very \
+high, and the press mocked a woman judged ugly and indecent. Manet kept the painting \
+until his death, in 1883. In 1889 and 1890, Claude Monet organized a subscription among \
+friends and enthusiasts to buy it from the painter’s widow, to prevent it from leaving \
+for abroad and to give it to the State. Olympia then entered the Musée du Luxembourg, \
+reserved for living or recently deceased artists, then the Louvre, before joining the \
+Musée d’Orsay in 1986."""
+facture = """
+Manet almost eliminates modelling: Olympia’s body is a pale form, outlined with a dark \
+line, lit from the front, which critics reproached as a lack of relief. He plays on bold \
+chords between the whites of the sheet, the pillow and the bouquet’s paper, and the blacks \
+and dark greens of the background, into which the cat and the maid almost melt. The \
+bouquet, painted in quick, free touches, is a small painting within the painting. The \
+canvas converses with Titian, whom Manet had copied in the Uffizi in Florence, and with \
+Goya, whose Naked Maja offers another nude with a frank gaze."""
+details = [
+  "The signature and date, at lower left, at the edge of the bed.",
+  "The black cat with yellow eyes, at far right, at the foot of the bed.",
+  "The pink orchid pinned in the red hair.",
+  "The golden slipper left at her foot, and the one that slid onto the sheet.",
+  "The thin black velvet ribbon tied around the neck.",
+]
+themes = ["nude", "scandal", "gaze", "courtesan", "modernity"]
+anecdote = """
+It was Georges Clemenceau, President of the Council and a friend of Monet, who ordered in \
+1907 the transfer of Olympia from the Musée du Luxembourg to the Louvre: forty-two years \
+after the Salon scandal, the courtesan joined the masters."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.9
+
+[[oeuvres]]
+titre = "A Burial at Ornans"
+artiste = "Gustave Courbet"
+annee = "1849–1850"
+image = "enterrement-a-ornans.jpg"
+technique = "Oil on canvas, 315 × 668 cm"
+collection = "Musée d’Orsay, Paris"
+note = "A village funeral painted on the scale of a history painting: with this canvas, Courbet brings ordinary life into grand painting."
+description = """
+On a canvas nearly seven metres long, a crowd in mourning stands around a freshly dug \
+grave in the cemetery of Ornans, in Franche-Comté. At left, the pallbearers hold the \
+coffin covered with a white pall, preceded by the crucifix raised high against the grey \
+sky. At the centre, the priest reads the service, surrounded by choirboys and two beadles \
+in red robes; in front of him, the gravedigger, one knee on the ground, waits. At right, \
+the men in black coats and then the women in white caps, handkerchiefs in hand, form a \
+long dark wall. A white dog has slipped into the foreground. Behind, the limestone cliffs \
+that overlook the Loue valley close off the horizon. The figures, life-size, line up like \
+a frieze, with no principal hero."""
+evocation = """
+Courbet gives ordinary people, the priest, notables, winegrowers, his own sisters, the \
+dignity and the format hitherto reserved for religious, mythological or historical \
+scenes. There is no open sky, no angel, no consolation: only death as it is lived in a \
+small provincial town, with its distractions and its handkerchiefs. Courbet is said to \
+have remarked later that this painting was in reality the burial of Romanticism. It has \
+also been read as a political manifesto: painted in the wake of the 1848 revolution and \
+the introduction of universal male suffrage, it makes the people of a rural commune the \
+subject of a monumental canvas. The skull set at the edge of the grave recalls the \
+fragility of life, without emphasis, as a simple fact."""
+histoire = """
+Courbet painted the canvas in Ornans, his native town, between the summer of 1849 and \
+1850, in a room of the family house so narrow that he could not step back to judge the \
+whole. The townspeople came to pose one by one; among the women one recognizes the \
+painter’s three sisters. The painting was exhibited at the Salon that opened in Paris at \
+the end of 1850. Critics were outraged by the ugliness of the faces and the triviality \
+of the subject, treated on a scale judged excessive; others hailed a new art, faithful to \
+reality, and Courbet became the leader of Realism. Remaining in his family after his \
+death, the painting was given to the State in 1881 by his sister Juliette; it entered the \
+Louvre, then the Musée d’Orsay at its opening, in 1986."""
+facture = """
+Courbet works on a dark ground, from which he draws out the faces and the whites: \
+surplice, caps, funeral pall, the gravedigger’s stockings. The palette, deliberately \
+austere, is dominated by blacks, which he modulates with great richness, enlivened only \
+by the red of the beadles. The paint is thick and generous. The composition rejects the \
+classical pyramid: the figures stretch out in a long horizontal frieze, pressed against \
+one another beneath a band of low sky. Courbet draws on popular prints and the great \
+Dutch group portraits rather than on academic models."""
+details = [
+  "The skull set on the earth, at the edge of the grave, at the centre of the foreground.",
+  "The white funeral pall, scattered with black tears and crossed bones, at left.",
+  "The two beadles with ruddy faces and red robes, behind the priest.",
+  "The crucifix standing out alone against the sky, above the crowd.",
+  "The white dog, in the foreground at right, indifferent to the ceremony.",
+]
+themes = ["death", "provinces", "people", "religion", "manifesto"]
+anecdote = """
+For the Exposition Universelle of 1855, the jury rejected this canvas and The Painter’s \
+Studio. Courbet then built, at his own expense, right nearby, his own pavilion, which he \
+christened “Du Réalisme”: one of the first solo exhibitions organized by an artist \
+himself."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Ploughing in the Nivernais"
+artiste = "Rosa Bonheur"
+annee = "1849"
+image = "labourage-nivernais.jpg"
+technique = "Oil on canvas, 134 × 260 cm"
+collection = "Musée d’Orsay, Paris"
+note = "Two teams of oxen turn the soil of a hillside in the Nièvre: the State commission that made Rosa Bonheur a celebrity."
+description = """
+On a hillside, beneath a great clear sky, two teams of oxen advance from left to right, \
+tracing their furrow. The first occupies the whole right half of the painting: massive \
+beasts, white and tawny, yoked two by two by a yoke fixed to the horns, heads low under \
+the strain. A cattle driver in a black hat raises his long goad in their midst; behind, a \
+ploughman in a white shirt guides the wooden plough. Farther left, the second team \
+follows, led by other peasants. In the foreground, the freshly turned earth forms large \
+brown clods. Beyond, a wooded hill, a few clouds and a vast pale blue sky occupy more \
+than half of the canvas."""
+evocation = """
+The painting celebrates the earth and those who work it, in the wake of the 1848 \
+revolution, when the Republic was looking for images of the people and of rural France. It \
+has often been compared with the opening pages of George Sand’s novel The Devil’s Pool \
+(1846), where the narrator contemplates a ploughman leading his oxen in the Berry. But \
+in Rosa Bonheur, the real heroes are the animals: their strength, their weight, their \
+patience are rendered with an almost fraternal respect, without sentimentality. The work \
+expresses her conviction that animals deserve to be studied with as much attention as \
+men. For a woman, to paint on this scale, in a genre judged masculine, was in itself an \
+assertion."""
+histoire = """
+In 1848, Rosa Bonheur, aged twenty-six, won a first-class medal at the Salon, and the \
+State commissioned a painting from her. She chose to paint the Nivernais, whose oxen and \
+landscapes she studied on the spot, and a precise moment of agricultural work: the \
+sombrage, the first ploughing, which turns and aerates the soil. Exhibited at the Salon \
+of 1849, the canvas was a great success and established her reputation, which would soon \
+spread to England and the United States. The painting was shown at the Musée du \
+Luxembourg, devoted to living artists, then joined the Louvre collections; it has been \
+on display at the Musée d’Orsay since 1986."""
+facture = """
+Rosa Bonheur paints with a naturalist’s precision: each ox has its own coat, its \
+musculature, its gaze, the fruit of countless studies made in farms, fairs and \
+slaughterhouses. The touch is smooth and careful for the animals, freer for the earth, \
+where brown impasto gives relief to the clods. The composition as a long frieze, the \
+beasts filing past in profile, recalls ancient bas-reliefs. The clear light catches the \
+pale coats of the oxen, which stand out against the green hill and the immense sky."""
+details = [
+  "The cattle driver brandishing his goad in the midst of the first team.",
+  "The russet ox, the only dark beast among the pale coats.",
+  "The yokes attached to the horns, in the Nivernais manner.",
+  "The clods of turned earth, painted one by one in the foreground.",
+  "The artist’s signature, at the very bottom right.",
+]
+themes = ["animals", "ploughing", "countryside", "labour", "earth"]
+anecdote = """
+To study animals without being bothered in the cattle fairs and slaughterhouses, Rosa \
+Bonheur obtained from the Paris police prefecture a “permission de travestissement”, \
+which authorized her to wear trousers, forbidden to women in Paris without a \
+dispensation."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 2.6
+
+[[oeuvres]]
+titre = "The Gleaners"
+artiste = "Jean-François Millet"
+annee = "1857"
+image = "glaneuses.jpg"
+technique = "Oil on canvas, 83.5 × 110 cm"
+collection = "Musée d’Orsay, Paris"
+note = "Three peasant women gather the ears of grain left after the harvest: Millet gives the poorest of the countryside the grandeur of statues."
+description = """
+In the foreground of a harvested field, three women gather the ears left on the stubble. \
+Two of them are bent to the ground, one reaching for an ear, the other already clutching \
+a handful of stalks; the third, half upright, is about to bend down in her turn. Their \
+blue, red and ochre headcloths are the only bright notes in the painting. Behind them, in \
+a golden late-summer light, the plain stretches out of sight: enormous haystacks, a cart \
+loaded with sheaves, a crowd of harvesters at work, a farm. At right, a man on horseback \
+oversees the harvest. The whole width of the field separates the gleaners from this \
+abundance."""
+evocation = """
+Gleaning was an ancient right granted to the poorest: after the harvest, they could \
+gather what the harvesters had left. Millet makes of it the image of the humblest work, \
+repeated endlessly, the back bent. He tells no anecdote: the faces remain in shadow, the \
+massive, slow bodies have the gravity of biblical figures, and the scene has often been \
+compared with the story of Ruth gleaning in Boaz’s field, which he had painted a few years \
+earlier. Under the Second Empire, however, part of the critics saw in it a provocation, \
+almost a call to revolt, because of the contrast between the misery of the foreground and \
+the wealth of the background. Millet himself denied engaging in politics."""
+histoire = """
+Settled since 1849 in Barbizon, on the edge of the forest of Fontainebleau, Millet \
+observed for years the gleaners of the Chailly plain. He made drawings from them, then an \
+etching, before painting this canvas, exhibited at the Salon of 1857. The critic Paul de \
+Saint-Victor saw in it “the three Fates of pauperism”. The painting sold for a modest \
+price. But Millet’s reputation grew after his death, in 1875, and his works then \
+fetched considerable sums. In 1890, the canvas entered the Louvre thanks to \
+Jeanne-Alexandrine Pommery, widow of a champagne merchant from Reims, who gave it to the \
+State. It has been on display at the Musée d’Orsay since 1986."""
+facture = """
+Millet builds the canvas in two clearly separate registers: below, in light shadow, the \
+three massive figures with simplified contours; above, the plain bathed in light, painted \
+in fine, pale touches that melt into the heat haze. The three bodies form a rhythmic \
+frieze, like a movement broken into stages: bending, gathering, straightening. The range \
+is dominated by the ochres, browns and golds of the stubble, enlivened by three notes of \
+colour on the headcloths and sleeves. The soft, almost sculpted modelling owes much to \
+Michelangelo and Poussin, whom Millet admired."""
+details = [
+  "The tiny horseman overseeing the harvest, at the far right.",
+  "The haystacks and the cart loaded with sheaves, at left, in the light.",
+  "The handful of ears clutched by the middle gleaner.",
+  "The hand of the left-hand gleaner, brushing the ground.",
+  "The flock of birds wheeling in the sky, at upper right.",
+]
+themes = ["labour", "peasants", "poverty", "harvest", "countryside"]
+anecdote = """
+In 2000, the filmmaker Agnès Varda drew on this painting for her documentary The \
+Gleaners and I, devoted to those who, still today, gather the leftovers of fields, \
+markets and rubbish bins."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Floor Scrapers"
+artiste = "Gustave Caillebotte"
+annee = "1875"
+image = "raboteurs-de-parquet.jpg"
+technique = "Oil on canvas, 102 × 146.5 cm"
+collection = "Musée d’Orsay, Paris"
+note = "Three bare-chested workmen scrape the floor of a Parisian apartment: rejected by the Salon, the painting was one of the revelations of the Impressionist exhibition of 1876."
+description = """
+In the empty room of a bourgeois apartment, its walls covered with grey panelling, three \
+kneeling workmen, bare-chested, scrape the old varnish from the parquet. Two of them, at \
+the centre and at right, pull their scrapers toward them side by side; the third, at \
+left, works alone, bent toward the floor. Long pale shavings curl around them. In the \
+background, a French window open onto a wrought-iron balcony lets in a soft light that \
+slides over the boards and makes the already scraped areas shine. At right, a bottle of \
+wine and a glass await the break; a hammer has been set on the floor, and clothes are \
+piled in a corner of the room."""
+evocation = """
+Caillebotte, son of a wealthy Parisian family, looks at manual labour where it takes \
+place, in a bourgeois interior under renovation. He paints it without picturesqueness, \
+without miserabilism and without moral message, as a spectacle of bodies in motion, of \
+repeated and precise gestures. It has been seen as a tribute to the craft, but also as an \
+image of Haussmann’s Paris, where building and renovation never cease. The lean bodies, \
+the effort, the wine recall the harshness of the labour; at the same time, the light and \
+the rhythm of the arms give the scene an almost choreographic beauty. The critics of the \
+time were above all struck by the boldness of the subject and the strangeness of the \
+viewpoint."""
+histoire = """
+Caillebotte painted the scene in the family townhouse on the rue de Miromesnil in Paris, \
+where he had set up his studio. In 1875, he submitted the canvas to the Salon, where the \
+jury rejected it, judging the subject vulgar. The following year, invited by his friends \
+Degas and Renoir, he exhibited it with the Impressionists, at their second exhibition, in \
+the gallery of the dealer Durand-Ruel. It was much noticed there; Émile Zola nevertheless \
+reproached it for an overly photographic exactness, which he judged bourgeois. After \
+Caillebotte’s death, in 1894, his heirs, his brother Martial and the painter Auguste \
+Renoir, the executor of his will, gave the painting to the State. It entered the Musée du \
+Luxembourg, then the Louvre, before joining the Musée d’Orsay in 1986."""
+facture = """
+Caillebotte adopts a plunging viewpoint, as if the viewer were standing above the \
+workmen: the parquet rises almost to the top of the painting and its boards run \
+diagonally toward the window, accentuating the perspective. Trained in the studio of the \
+academic painter Léon Bonnat, he paints with a precision and a careful finish that \
+distinguish him from his Impressionist friends. The backlight, coming from the window, \
+lays silvery reflections on the wood and models the backs and arms. The palette is \
+limited to browns, greys and ochres."""
+details = [
+  "The wood shavings curling on the floor.",
+  "The bottle of wine and the glass, set down at right.",
+  "The wrought-iron balcony, backlit, behind the French window.",
+  "The contrast between the boards already scraped, pale, and those still dark.",
+  "The signature and date, at lower right.",
+]
+themes = ["labour", "workers", "Paris", "light", "perspective"]
+anecdote = """
+This canvas is considered one of the very first depictions of urban workers in French \
+painting: until then, the Realist painters had mostly shown field workers, like Millet’s \
+gleaners."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "The Dance Class"
+artiste = "Edgar Degas"
+annee = "1873–1876"
+image = "classe-de-danse.jpg"
+technique = "Oil on canvas, 85 × 75 cm"
+collection = "Musée d’Orsay, Paris"
+note = "The end of a lesson at the Opéra: around the old ballet master Jules Perrot, the dancers stretch, chat and wait."
+description = """
+In a tall room with pale green walls, adorned with faux-marble pilasters and a large door \
+frame, some twenty young dancers in white tutus surround an old ballet master leaning on \
+a long stick. At the centre, a pupil takes her pose to perform a step before him. But \
+most are not watching: at left, one, sitting on the piano, scratches her back, another \
+fans herself; in the foreground, a girl seen from behind, a red bow in her hair and a \
+wide green sash, adjusts her costume. In the background, at right, mothers wait for their \
+daughters. The floor, seen from above, occupies the whole bottom of the painting, with a \
+watering can in the left corner."""
+evocation = """
+Degas does not show the performance but its backstage: the fatigue, the waiting, the \
+boredom, the small gestures that no one is meant to see. The Opéra pupils, often from \
+modest families, are here apprentice workers, those nicknamed the “petits rats”. The \
+presence of the mothers, in the background, recalls the hopes, and sometimes the \
+calculations, that surrounded these girls. The old master, a figure of the golden age of \
+Romantic ballet, embodies a discipline and a tradition faced with distracted youth. For \
+Degas, this world is above all a laboratory of movement: he observes in it how a body \
+holds itself, twists, relaxes."""
+histoire = """
+Degas began the painting around 1873 and finished it in 1876, after many studies of \
+dancers, drawn from models posing in his studio. The room evokes the old Opéra on the rue \
+Le Peletier, destroyed by fire in October 1873: Degas therefore recomposed it partly from \
+memory. The ballet master is Jules Perrot, a famous dancer and choreographer, who had \
+arranged part of the dances of Giselle in 1841. Another version, of different \
+composition, is held at the Metropolitan Museum of Art in New York. The canvas was \
+bequeathed to the Louvre in 1911 by the collector Isaac de Camondo, with other works by \
+Degas, and has been at the Musée d’Orsay since 1986."""
+facture = """
+Degas composes like a photographer or a Japanese printmaker: elevated viewpoint, floor \
+on a diagonal receding to the back, figures cut by the edge of the frame, emptiness at \
+the centre. The floorboards lead the eye toward the ballet master. The colour, very \
+light, rests on the harmony of the vaporous whites of the tutus and the pale green of \
+the walls, enlivened by the ribbons, green, blue, red, and by the black of the piano. \
+The touch, fine and nervous, keeps the precision of drawing, which Degas placed above \
+everything."""
+details = [
+  "The dancer sitting on the piano, scratching her back.",
+  "The little dog at the feet of the dancer in the green sash.",
+  "The open red fan, just behind the girl seen from behind.",
+  "The dancers’ mothers, grouped at back right.",
+  "The large door frame, at the centre, which reveals a window outside.",
+]
+themes = ["dance", "opera", "movement", "backstage", "youth"]
+anecdote = """
+The green watering can in the foreground is not there by chance: the floors of rehearsal \
+rooms were watered to settle the dust and keep the dancers from slipping. Degas \
+mischievously painted his signature on it."""
+salle = 4
+mur = "sud"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "A Bar at the Folies-Bergère"
+artiste = "Édouard Manet"
+annee = "1882"
+image = "bar-aux-folies-bergere.jpg"
+technique = "Oil on canvas, 96 × 130 cm"
+collection = "Courtauld Gallery, London"
+note = "Manet’s last great canvas: a weary barmaid, facing us, and behind her, in a mirror, all the glitter of a Parisian café-concert."
+description = """
+A young barmaid stands behind the marble counter of a bar, her hands resting on the \
+edge, facing us. She wears a midnight-blue velvet jacket trimmed with lace, a locket at \
+her neck and a small bouquet at her bodice. On the counter are lined up bottles of \
+champagne, English beer and green liqueur, a crystal bowl full of oranges and a glass in \
+which two roses sit. Behind her, an immense mirror reflects the hall of the \
+Folies-Bergère: the chandeliers, the glowing globes, the crowd on the balcony and, at \
+upper left, the green-booted feet of an acrobat on her trapeze. At right, the barmaid’s \
+reflection leans toward a customer in a top hat."""
+evocation = """
+In the midst of the noise and the light, the barmaid seems absent, lost in thought, \
+isolated from the festivity she serves. Her reflection, by contrast, seems engaged in a \
+conversation with the customer: two attitudes, two moments, perhaps the public woman and \
+the private woman. At the Folies-Bergère, some barmaids were thought to allow themselves \
+to be courted, and one has wondered whether she was not part, like the bottles and the \
+fruit, of what is offered to the customer. The painting also speaks of the modern city, \
+of its pleasures and of the loneliness felt there in the midst of the crowd. Painted by a \
+Manet already very ill, it has often been read as a farewell to the Parisian life he had \
+loved so much."""
+histoire = """
+Manet, gravely ill, painted the canvas during the winter of 1881–82 in his studio on the \
+rue d’Amsterdam, after making sketches on the spot, in the famous café-concert on the \
+rue Richer. He had a counter reconstructed there with its bottles, and a real barmaid \
+from the Folies-Bergère, named Suzon, came to pose. The painting was exhibited at the \
+Salon of 1882, the last in which Manet took part; he died the following year, at \
+fifty-one. The canvas then belonged to the composer Emmanuel Chabrier, a friend of the \
+painter, then passed through several collections before being bought in 1926 by the \
+British industrialist Samuel Courtauld. It is today the flagship work of the Courtauld \
+Gallery in London."""
+facture = """
+Manet paints quickly and frankly, in a broad, visible touch that makes the reflections in \
+the mirror vibrate, while the still life on the counter, in the foreground, is of \
+dazzling sharpness: glass, labels, the skin of the fruit. The artificial light, cold and \
+diffuse, almost erases the shadows. The whole composition rests on an optical paradox: \
+the reflection of the barmaid and the customer is shifted to the right, which would be \
+impossible if we were standing in front of her. Manet deliberately sacrifices \
+plausibility to effect, and leaves the viewer in unease."""
+details = [
+  "The small green-booted feet of an acrobat, at upper left.",
+  "The signature and date, painted on a bottle label, at left.",
+  "The crystal bowl full of oranges, at the right of the counter.",
+  "The female spectator in a white dress leaning on the balcony, at left.",
+  "The customer with a moustache and top hat, who exists only in the mirror.",
+]
+themes = ["Paris", "café-concert", "mirror", "solitude", "modern life"]
+anecdote = """
+The bottles marked with a red triangle are English Bass beer: this triangle was, in 1876, \
+the very first trademark registered in the United Kingdom. Manet thus slipped into his \
+painting one of the first logos in history."""
+salle = 4
+mur = "nord"
+place = 4
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Paris Street; Rainy Day"
+artiste = "Gustave Caillebotte"
+annee = "1877"
+image = "rue-de-paris-temps-de-pluie.jpg"
+technique = "Oil on canvas, 212.2 × 276.2 cm"
+collection = "Art Institute of Chicago"
+note = "A new crossroads in the Europe district, in the rain: the great modern city, its perspectives and its passers-by, painted on the scale of a history painting."
+description = """
+A Parisian crossroads on a rainy day. The wet paving stones gleam beneath a grey sky. In \
+the foreground at right, an elegant couple walks under a single umbrella: the man in a \
+top hat and frock coat, the woman in a dark coat, a veil over her face and a pearl at \
+her ear. They are about to pass a pedestrian, cut by the edge of the painting, of whom \
+only the back and the umbrella can be seen. At the centre, a tall green lamppost divides \
+the canvas in two. At left, across the roadway, isolated passers-by cross, a horse-drawn \
+carriage waits, and a building with an acute-angled corner, like the prow of a ship, \
+separates two streets that recede toward the back."""
+evocation = """
+Caillebotte paints the Paris transformed by Baron Haussmann under the Second Empire: \
+wide streets, aligned buildings of cut stone, lampposts, pavements. It is the city of \
+bourgeois strollers, but also of anonymity: each takes shelter under his umbrella, no \
+one looks at anyone, the couple seems absorbed in their thoughts. It has been seen as an \
+image of modern solitude in the midst of the crowd, and as a portrait of the social milieu \
+to which the painter belonged. The rain, which unifies everything in one grey light, \
+transforms the street into an almost abstract space, where the straight lines of the \
+façades answer the curves of the umbrellas."""
+histoire = """
+The scene is set at the crossroads formed by the rue de Turin, the rue de Moscou and the \
+rue de Saint-Pétersbourg, near the Saint-Lazare station, in the Europe district, then \
+brand new. Caillebotte prepared the canvas with many drawings and a painted sketch. He \
+showed it in 1877 at the third Impressionist exhibition, which he largely financed and \
+organized, alongside works by Monet, Renoir, Pissarro and Degas. The critics noticed \
+above all its large dimensions and its astonishing perspective. After passing through \
+private collections, the painting was acquired in 1964 by the Art Institute of Chicago, \
+of which it has become one of the most famous works."""
+facture = """
+The monumental format, more than two metres by nearly three, brings the viewer into the \
+street, at the level of life-size passers-by. The perspective is strongly accentuated, \
+and the framing, with its figures cut by the edge, evokes photography. The lamppost and \
+its vertical line divide the canvas into two parts, one open and deep, the other closed \
+by the near figures. The handling is smooth and precise in the foreground, blurrier in \
+the distance, as in the damp air of a rainy day. Greys, blues and beiges dominate, \
+enlivened by the green of the lamppost."""
+details = [
+  "The pearl at the woman’s ear, beneath her veil.",
+  "The green lamppost, at the centre, dividing the painting in two.",
+  "The signature and date, at lower left, on the paving stones.",
+  "The red wheel of the horse-drawn carriage, at left.",
+  "The paving stones, larger in the foreground, shrinking toward the back.",
+]
+themes = ["city", "rain", "Paris", "solitude", "perspective"]
+anecdote = """
+The crossroads still exists: it is today the place de Dublin, in the 8th arrondissement \
+of Paris. The prow-shaped building is still standing, and one can find almost exactly \
+the painter’s viewpoint there."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Red Roofs, Corner of a Village, Winter"
+artiste = "Camille Pissarro"
+annee = "1877"
+image = "toits-rouges.jpg"
+technique = "Oil on canvas, 54.5 × 65.6 cm"
+collection = "Musée d’Orsay, Paris"
+note = "A hamlet of Pontoise seen through a curtain of bare trees: the landscape woven from small touches by Pissarro, the elder and mainstay of the Impressionist group."
+description = """
+At the foot of a hill, a group of peasant houses with pale walls and red-tiled roofs \
+huddles in the midst of an orchard. It is winter: the leafless fruit trees set before the \
+houses a network of slender trunks and fine branches, through which one makes out the \
+gables, the chimneys, a window. In the foreground, green grass and a brown dirt path. \
+Above the roofs, the slope of the hill, covered with russet fields and hedges, rises \
+almost to the top of the painting and leaves only a narrow piece of grey-blue sky. \
+Everything vibrates in a cold, clear light."""
+evocation = """
+Pissarro paints the most ordinary countryside, that of the Paris surroundings, without \
+monument or event: a corner of a village, trees, a season. What interests him is the way \
+winter light makes the red tiles sing against the greens and greys. His gaze, deeply \
+attached to rural life, seeks neither the picturesque nor anecdote. The network of trees \
+placed between us and the houses creates an impression of intimacy, as if we were \
+discovering the hamlet while walking in the orchard. It is often seen as one of the finest \
+achievements of the Pontoise period, when Pissarro was working alongside Cézanne."""
+histoire = """
+Settled in Pontoise from 1872 to 1882, Pissarro tirelessly painted this town of the \
+Vexin and its surroundings. This canvas depicts the côte des Bœufs, in the hamlet of the \
+Hermitage, where he lived. The painting later belonged to Gustave Caillebotte, who \
+bought many works from his friends to support them. At his death, in 1894, Caillebotte \
+bequeathed his collection to the State: after long negotiations and a fierce \
+controversy, only part of it was accepted and shown in 1897 at the Musée du Luxembourg. \
+Red Roofs was among it. The canvas then joined the Louvre, then the Musée d’Orsay in \
+1986."""
+facture = """
+Pissarro builds the canvas from a multitude of small, thick touches, laid in every \
+direction, which give the surface a tight, almost woven texture. He superimposes two \
+planes: the linear network of trees in the foreground and, behind, the simple volumes of \
+the houses, gables and roofs treated as blocks of colour. This attention to structure \
+recalls his exchanges with Cézanne at the same period. The complementaries, red of the \
+tiles and green of the grass, heighten each other, while the very high horizon reduces \
+the sky to a thin band."""
+details = [
+  "The white chimneys poking out between the branches.",
+  "The narrow band of sky, at the very top.",
+  "The slender, pale trunks of the fruit trees, like a grille before the houses.",
+  "The signature and date, at lower right.",
+]
+themes = ["landscape", "winter", "village", "countryside", "light"]
+anecdote = """
+Pissarro is the only painter to have taken part in all eight Impressionist exhibitions, \
+from 1874 to 1886. Cézanne, who worked beside him at Pontoise, would later introduce \
+himself as “a pupil of Pissarro”."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[artistes]]
+nom = "Gustave Courbet"
+vie = "Ornans (Doubs), 10 June 1819 – La Tour-de-Peilz (Switzerland), 31 December 1877"
+biographie = """
+The son of a wealthy landowner of Ornans, in Franche-Comté, Gustave Courbet arrived in \
+Paris in 1839, officially to study law. He trained mostly on his own, copying the \
+Spanish, Flemish and Dutch masters at the Louvre, and painted many Romantic self-portraits. \
+Admitted to the Salon from 1844, he made his mark after the 1848 revolution with After \
+Dinner at Ornans, The Stone Breakers and A Burial at Ornans, which caused a scandal. A \
+friend of Baudelaire, of Champfleury and of the socialist thinker Proudhon, he claimed the \
+name of “realist”. In 1855, partly rejected at the Exposition Universelle, he opened his \
+own pavilion. Jura landscapes, hunting scenes, nudes and seascapes then made his \
+fortune. A republican, he refused the Légion d’honneur in 1870 and took part in the Paris \
+Commune in 1871. Held responsible for the destruction of the Vendôme column, he was \
+imprisoned, then condemned to pay for its reconstruction. Ruined, he went into exile in \
+Switzerland in 1873 and died at La Tour-de-Peilz, on the shore of Lake Geneva."""
+style = """
+Courbet wants to paint what he sees and nothing else: no angels, no gods, no ancient \
+history. His painting is solid and earthy, built on dark grounds, with a thick paste he \
+often spreads with the knife, especially in his landscapes of rocks and waves. By giving \
+ordinary life the dimensions of grand painting, he opened the way to Manet and the \
+Impressionists, and made Realism an artistic and political struggle."""
+
+[[artistes]]
+nom = "Jean-François Millet"
+vie = "Gruchy, Gréville-Hague (Manche), 4 October 1814 – Barbizon, 20 January 1875"
+biographie = """
+Born into a family of well-off peasants in the Cotentin, Jean-François Millet worked in \
+the fields before learning painting in Cherbourg. A scholarship from the town allowed him \
+to leave in 1837 for Paris, where he entered the studio of Paul Delaroche. He at first \
+lived with difficulty on portraits and graceful pastoral scenes. Widowed in 1844, he \
+then shared his life with Catherine Lemaire, who would bear him nine children. In 1849, \
+he settled in Barbizon, on the edge of the forest of Fontainebleau, beside his friend \
+the landscape painter Théodore Rousseau. There he devoted his work from then on to \
+peasants: The Sower, The Gleaners, The Angelus. Long poor, criticized by those who saw \
+in him a socialist painter, he was at last recognized at the Exposition Universelle of \
+1867 and received the Légion d’honneur the following year. He died in Barbizon in 1875. \
+His posthumous fame is immense, and Van Gogh, who revered him, would copy many of his \
+compositions."""
+style = """
+Millet simplifies forms to give peasants the grandeur of statues: firm contours, slow \
+gestures, faces often in shadow. His muted colours, ochres, browns and golden greys, and \
+his twilight lights create a grave, almost religious atmosphere. An excellent draughtsman, \
+pastellist and printmaker, he made field labour a noble subject, and his influence \
+marked Van Gogh, Pissarro and Seurat."""
+
+[[artistes]]
+nom = "Rosa Bonheur"
+vie = "Bordeaux, 16 March 1822 – Thomery (Seine-et-Marne), 25 May 1899"
+biographie = """
+The daughter of the painter Raymond Bonheur, an adherent of the Saint-Simonian ideas \
+that advocated equality of the sexes, Rosa Bonheur grew up in Paris, where her father \
+taught her drawing. She copied the masters at the Louvre and tirelessly studied animals, \
+in farms, horse markets and slaughterhouses. She exhibited at the Salon from 1841 and \
+won a first-class medal in 1848. Ploughing in the Nivernais, in 1849, then The Horse \
+Fair, now in the Metropolitan Museum in New York, made her one of the most famous \
+artists of her time, in France, in Great Britain and in the United States. In 1860, she \
+settled at the château de By, in Thomery, near the forest of Fontainebleau, with her \
+companion Nathalie Micas and a whole menagerie. In 1865, she was the first woman artist \
+awarded the Légion d’honneur. She received Buffalo Bill in 1889 and painted his \
+portrait. At the end of her life, the American painter Anna Klumpke became her \
+companion and her biographer."""
+style = """
+Rosa Bonheur is the great animal painter of the nineteenth century. Her art rests on a \
+scientific observation of the anatomy and behaviour of animals, rendered by precise \
+drawing, a careful touch and a sense of the movement of masses. Her compositions as \
+friezes, her large formats and her clear lights give horses and oxen the nobility that \
+others reserved for heroes. She also remains a pioneering figure of the independence of \
+women artists."""
+
+[[artistes]]
+nom = "Édouard Manet"
+vie = "Paris, 23 January 1832 – Paris, 30 April 1883"
+biographie = """
+The son of a senior Parisian magistrate, Édouard Manet failed the entrance exam for the \
+naval school and in 1848 embarked as a pilot trainee for Rio de Janeiro. On his return, \
+his father agreed that he should become a painter: he spent six years in the studio of \
+Thomas Couture, copied the masters at the Louvre and travelled to Holland and Italy. He \
+admired Velázquez and Goya, whom he discovered in Spain in 1865. Noticed at the Salon of \
+1861, he caused a scandal with Luncheon on the Grass in 1863, then with Olympia in 1865. \
+Defended by Baudelaire and by Émile Zola, he became the reference figure for the young \
+painters who frequented the Café Guerbois, Monet, Renoir, Degas, Bazille. Yet he refused \
+to exhibit with the Impressionists and continued to seek recognition from the Salon. He \
+married Suzanne Leenhoff in 1863. In the 1870s, he lightened his palette and painted \
+outdoors with Monet at Argenteuil. Afflicted with a serious illness, he received the \
+Légion d’honneur in 1881 and died at fifty-one."""
+style = """
+Manet paints his era with the means of the old masters: large formats, compositions \
+borrowed from Titian, Raphael or Velázquez, but modern subjects and direct gazes. He \
+simplifies modelling, lays down frank colours in broad flat areas and makes black a true \
+colour. This flat, luminous painting, which owns its brushwork, freed his juniors: he is \
+often considered the first modern painter."""
+
+[[artistes]]
+nom = "Edgar Degas"
+vie = "Paris, 19 July 1834 – Paris, 27 September 1917"
+biographie = """
+The son of a Parisian banker, Edgar Degas gave up law for painting, briefly entered the \
+École des Beaux-Arts in 1855 and revered Ingres. He spent three years in Italy, where he \
+copied the Renaissance masters and painted The Bellelli Family, a portrait of his aunt \
+and her family. Back in Paris, he gradually abandoned history painting for modern life: \
+racecourses, cafés, laundresses, milliners and above all dancers of the Opéra. In \
+1872–73, he stayed in New Orleans, the home of his mother’s family. He took part in \
+seven of the eight Impressionist exhibitions, while rejecting the label and preferring to \
+call himself a realist. He practised pastel, monotype, photography and sculpture: his \
+Little Fourteen-Year-Old Dancer, in wax dressed in real fabrics, caused a sensation in \
+1881. His sight declined from the 1870s on. A misanthrope, estranged from several \
+friends at the time of the Dreyfus affair, he lived his last years almost blind and died \
+in Paris in 1917."""
+style = """
+Degas is a draughtsman above all. He composes his scenes like snapshots: off-centre \
+framing, cut-off figures, plunging views, influenced by Japanese prints and photography. \
+He observes the body at work, dancers, ironers, jockeys, with an almost scientific \
+precision. A studio painter rather than an open-air one, he ceaselessly invents \
+techniques, notably in pastel, which he pushes to dazzling colours."""
+
+[[artistes]]
+nom = "Gustave Caillebotte"
+vie = "Paris, 19 August 1848 – Gennevilliers (Hauts-de-Seine), 21 February 1894"
+biographie = """
+The son of a wealthy Parisian industrialist, Gustave Caillebotte earned a law degree in \
+1868, then served in the Garde nationale mobile during the war of 1870. He then studied \
+painting in the studio of Léon Bonnat and entered the École des Beaux-Arts in 1873. His \
+father’s death left him a great fortune. Rejected by the Salon in 1875, he joined the \
+Impressionists, exhibited with them from 1876 and became their chief organizer and \
+patron: he financed exhibitions, bought canvases by Monet, Renoir, Pissarro, Degas, \
+Sisley and Cézanne, and sometimes paid his friends’ rent. His large canvases, The Europe \
+Bridge and Paris Street; Rainy Day, show Haussmann’s Paris. He also painted the \
+countryside of the family property at Yerres. A passionate sailor, he designed and built \
+sailboats at Petit-Gennevilliers, where he settled, cultivated a garden and assembled \
+with his brother Martial a famous stamp collection. He died at forty-five, bequeathing \
+his Impressionist collection to the State."""
+style = """
+Caillebotte unites the precision of academic drawing with the subjects of the \
+Impressionists. His plunging or receding perspectives, his bold framing and his cut-off \
+figures recall photography. He paints the modern city, its streets, its bridges, its \
+balconies, and the work of labourers, with a smooth handling and grey-blue tones. Long \
+eclipsed by his role as patron, he is today recognized as a great painter of modern \
+Paris."""
+
+[[artistes]]
+nom = "Camille Pissarro"
+vie = "Charlotte Amalie, Saint Thomas (Danish West Indies), 10 July 1830 – Paris, 13 November 1903"
+biographie = """
+Born in the West Indies into a Jewish merchant family, Camille Pissarro was sent to \
+boarding school near Paris, then returned to work in his father’s business. In 1852, he \
+left to draw in Venezuela with the Danish painter Fritz Melbye, before settling in Paris \
+in 1855. There he received the advice of Corot and met Monet and Cézanne at the \
+Académie Suisse. During the war of 1870, he took refuge in London; his house at \
+Louveciennes was looted and a large part of his canvases destroyed. From 1872 to 1882, \
+he lived in Pontoise, where he worked with Cézanne and Gauguin, then settled in Éragny, \
+in the Oise. Around 1885, he adopted for a few years Seurat’s pointillist technique. A \
+father of eight, long in want, close to anarchist ideas, he suffered at the end of his \
+life from an eye disease that obliged him to paint from behind a window: from it he \
+drew his great series of Paris boulevards and harbours. He died in Paris in 1903."""
+style = """
+Pissarro is the painter of the inhabited countryside: orchards, paths, villages, \
+markets, peasants at work. His touch, made of small tight hatchings, weaves vibrant \
+surfaces, and his solid construction of forms nourished Cézanne. Open to every line of \
+research, he went through Neo-Impressionism before renouncing it. Patient and generous, \
+he was the teacher and supporter of several generations of painters."""

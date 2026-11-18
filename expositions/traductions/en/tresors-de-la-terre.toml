@@ -1,0 +1,943 @@
+[exposition]
+ordre = 300
+nom_court = "Treasures of the Earth"
+mouvement = "Natural history: minerals, fossils and meteorites"
+cadre = "vitrine"
+couleur = "#5b4b78"
+titre = "Treasures of the Earth: Minerals, Fossils and Meteorites"
+artiste = "Golconda, Mont Blanc, Solnhofen, Whitby, the Baltic Sea, Gibeon…"
+dates = "4.5 billion years ago – today"
+accroche = "Virtual exhibition · Muséum national d'Histoire naturelle, Paris"
+introduction = """
+Here the artist is nature, and each work bears the name of the place that yielded it: \
+the mines of Golconda, the fissures of Mont Blanc, the quarries of Solnhofen, the \
+cliffs of Whitby, the beaches of the Baltic. The visit brings together ten treasures, \
+from a meteorite older than the Earth to the Hope Diamond, from a trilobite more than \
+500 million years old to Archaeopteryx, half bird, half dinosaur. The building is \
+inspired by the Muséum national d'Histoire naturelle, in the Jardin des Plantes in \
+Paris: a tall nave under a glass roof, like that of the Grande Galerie de l'Évolution, \
+opens to the west onto a mineralogy gallery and to the east onto the hall of the \
+ancient seas. Each object is presented in a deep display case, often enlarged so that \
+the eye can take in its details."""
+vitrine = "diamant-hope.jpg"
+
+[musee]
+nom = "Grande Galerie de l'Évolution"
+ville = "Paris, France (Jardin des Plantes)"
+architecte = "Jules André; renovation: Paul Chemetov and Borja Huidobro"
+construction = "1877–1889; reopened in 1994"
+presentation = """
+The Muséum national d'Histoire naturelle was born in 1793 from the former Jardin royal \
+des plantes médicinales, founded in the seventeenth century on the left bank of the \
+Seine. For its zoology collections, the architect Jules André built a vast gallery \
+between 1877 and 1889: a nave covered by an immense glass roof, lined with superimposed \
+balconies carried on cast-iron columns. Closed in 1965 for lack of maintenance, it was \
+renovated by Paul Chemetov and Borja Huidobro and reopened in 1994 as the Grande \
+Galerie de l'Évolution. In the nave, a procession of mounted animals from the African \
+savannah parades beneath a light that changes like that of the sky. The garden has \
+other galleries: the Galerie de Minéralogie et de Géologie, built under the July \
+Monarchy by Charles Rohault de Fleury, which displays meteorites, gems and giant \
+crystals, and the Galerie de Paléontologie et d'Anatomie comparée, opened in 1898, \
+where the Diplodocus given by Andrew Carnegie in 1908 still stands."""
+ici = """
+ARTEON's building brings the galleries of the Jardin des Plantes together in a single \
+edifice. Visitors enter from the south into the stone-coloured vestibule, where a \
+meteorite waits. It opens to the north onto the great nave, 24 metres long and 14 \
+metres high, like the glass-roofed nave of the Grande Galerie de l'Évolution. To the \
+west, a door leads to the Mineralogy Gallery, lower, with pearl-grey walls, where gems \
+and crystals shine. To the east, the hall of the ancient seas, in pale water green, \
+gathers trilobite, ammonite and nautilus. Visitors finally return to the nave, where \
+the Diplodocus, Archaeopteryx and amber await."""
+
+[[salles]]
+nom = "The Vestibule"
+theme = "The entrance, where a slice of meteorite recalls that the Earth was born, like it, 4.5 billion years ago."
+murs = "#e6dfd2"
+x = 0
+z = 0
+largeur = 12
+profondeur = 6
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Great Nave"
+theme = "Life on dry land in the Jurassic and the Eocene: Carnegie's Diplodocus, Archaeopteryx and an insect trapped in amber."
+murs = "#e3dccb"
+x = 0
+z = -15
+largeur = 13
+profondeur = 24
+hauteur = 14
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "The Mineralogy Gallery"
+theme = "The mineral treasures: the Hope Diamond, a pink fluorite from Mont Blanc and an amethyst geode from Brazil."
+murs = "#dcd8d2"
+x = -15
+z = -15
+largeur = 17
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "The Ancient Seas"
+theme = "Life in the oceans, from the Cambrian trilobite to the Jurassic ammonite and today's nautilus."
+murs = "#d3e0da"
+x = 13
+z = -15
+largeur = 13
+profondeur = 10
+hauteur = 6
+
+[[oeuvres]]
+titre = "Slice of the Gibeon Meteorite"
+artiste = "Gibeon, Namibie"
+annee = "Formed about 4.5 billion years ago"
+image = "meteorite-gibeon.jpg"
+credit = "Photo : Kevin Walsh"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg"
+technique = "Meteoritic iron (iron-nickel alloy), fine octahedrite of group IVA; slice sawn, polished and etched with acid"
+collection = "Collection not specified (photograph by Kevin Walsh, 2002)"
+note = "A slice of iron fallen from the sky, sawn, polished and then etched with acid: an interlacing of metal blades appears, the Widmanstätten pattern, which forms only in the core of an asteroid."
+description = """
+Against a black background stands out a metal plate with an irregular outline, cut with \
+a saw from a larger block. Its silvery grey surface is not smooth: it is entirely \
+covered with a network of straight, narrow bands that cross in three or four \
+directions. They draw triangles, lozenges and parallelograms, like threads pulled from \
+a fabric or the twigs of a bundle of kindling. Some bands shine, others appear darker \
+depending on how they reflect the light; the small spaces they enclose have a finer, \
+almost granular texture. At the edges, the slice frays into points and notches, where \
+the raw surface of the meteorite once lay."""
+evocation = """
+This geometric pattern is the archive of a vanished world. About 4.5 billion years ago, \
+at the birth of the solar system, small planets formed around the young Sun; in some, \
+the molten metal sank to the centre and formed a core. Widmanstätten patterns form only \
+if this metal cools with extreme slowness, a few degrees per million years, in a body \
+buried beneath kilometres of rock. A collision later shattered this asteroid, and one \
+of its fragments eventually crossed the path of the Earth. To touch such a slice is to \
+touch the heart of a celestial body, which no drilling will ever allow us to reach on \
+our own planet."""
+histoire = """
+The Gibeon meteorites fell long before written history, in a shower of fragments \
+scattered over hundreds of kilometres in southern Namibia, around the small town of \
+Gibeon, which gave them their name. The Nama, who live in the region, drew iron from \
+them to make tools and weapon tips. Europeans discovered them in the nineteenth \
+century: in the 1830s, samples brought back by a British explorer were recognised in \
+London as iron from space. Hundreds of masses, from a few grams to several hundred \
+kilos, have been collected since. Namibia now protects them as a national heritage, and \
+about thirty of the largest are displayed in the open air, on a square in the capital, \
+Windhoek."""
+facture = """
+Gibeon iron contains about 8% nickel. As it cooled, it separated into two alloys: \
+kamacite, poor in nickel, in broad blades, and taenite, richer, in thin borders. To \
+reveal them, the meteorite is sawn, the slice is polished like a mirror, then etched \
+with dilute acid, which eats away the two metals at different rates. The blades are \
+oriented along the faces of an octahedron, hence the name octahedrite. Those of Gibeon \
+are very narrow, less than half a millimetre, which places it among the fine \
+octahedrites."""
+details = [
+  "The parallel bands that recur in only three or four directions.",
+  "The small triangles between the blades, filled with a finer texture.",
+  "The contrast between bright and matte blades, which changes with the light.",
+  "The jagged outline, which follows the shape of the original block.",
+]
+themes = ["meteorite", "space", "iron", "crystal", "solar system"]
+anecdote = """
+They are called “Widmanstätten patterns”, after the Austrian count Alois von \
+Beckh-Widmanstätten, who observed them in Vienna in 1808. But the Briton William \
+Thomson had already described them a few years earlier, in Naples: for this reason they \
+are sometimes called “Thomson structures”."""
+salle = 1
+mur = "est"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "The Hope Diamond"
+artiste = "Mines de Golconde, Inde"
+annee = "Indian diamond known since the seventeenth century; present cut attested in 1812; photograph of 1974"
+image = "diamant-hope.jpg"
+credit = "Photo : Smithsonian Institution Archives"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Hope_Diamond_-_SIA.jpg"
+technique = "Blue diamond of 45.52 carats (25.6 × 21.8 mm), set in a pendant surrounded by sixteen white diamonds"
+collection = "National Museum of Natural History, Smithsonian Institution, Washington"
+note = "The world's most famous blue diamond: 45.52 carats for a little over 2.5 cm in length, shown here greatly enlarged. It was cut from the “French Blue” of Louis XIV, stolen in 1792."
+description = """
+At the centre of a pendant, an oval stone of deep blue, almost black in its dark \
+areas, throws back the light through its facets: paler triangles and lozenges, steel \
+blue, light up on its surface. Its outline is not quite regular, slightly swollen on \
+one side. Around it, a crown of sixteen colourless diamonds, cut some in pear shapes, \
+others in cushion shapes, sparkles with white and violet reflections. At the top, a \
+bail connects the jewel to a chain of diamonds, blurred in the background; at the \
+bottom hangs a small ring. The photograph, taken in 1974 by the Smithsonian's staff, \
+shows the gem resting on a grey-blue fabric background."""
+evocation = """
+Few stones have inspired so much dreaming. The Hope Diamond sums up three centuries of \
+history: the splendour of Louis XIV, the fall of the monarchy, the fortunes of bankers \
+and American heiresses. Newspapers of the early twentieth century invented a curse for \
+it, said to have struck all its owners; it is thought to have been fostered by the \
+dealers themselves, to make the stone more desirable. It also embodies a democratic \
+idea: the most famous diamond in the world now belongs to the public and can be viewed \
+free of charge, in a national museum. Finally, it poses a puzzle of physics: a diamond \
+is pure carbon, and its blue colour is due to only a few foreign atoms."""
+histoire = """
+In 1668, the French merchant Jean-Baptiste Tavernier sold Louis XIV a large blue \
+diamond bought in India, of more than 110 carats. In 1673, the court jeweller, Jean \
+Pittan, recut it into a stone of about 69 carats, the “French Blue”. Louis XV had it \
+set in 1749 in an insignia of the Order of the Golden Fleece. In September 1792, it was \
+stolen with the Crown Jewels from the Garde-Meuble in Paris. A blue stone of 45 carats \
+reappeared in London in 1812, then entered the collection of the banker Henry Philip \
+Hope, whose name it kept. Pierre Cartier sold it in 1911 to Evalyn Walsh McLean; after \
+her death, Harry Winston bought it and gave it to the Smithsonian in 1958. In 2007, a \
+lead cast of the French Blue, found at the Muséum in Paris, confirmed that the Hope \
+was cut from it."""
+facture = """
+The Hope Diamond is cushion-cut, with a crown of facets above and a deeper pavilion \
+below, which sends the light back towards the eye. Its colour comes from traces of \
+boron, a few atoms per million carbon atoms: they absorb part of the red and yellow \
+light and let only the blue through. It is a so-called type IIb diamond, a very rare \
+category. It has another astonishing property: lit by ultraviolet rays, then plunged \
+back into darkness, it glows for a few seconds with a red-orange light. The jewel \
+surrounding it, a setting of sixteen white diamonds and a chain of forty-five \
+diamonds, sets off its dark colour."""
+details = [
+  "The slightly asymmetrical outline of the blue stone.",
+  "The facets of the pavilion, lighting up in triangles of a paler blue.",
+  "The sixteen white diamonds, alternating pear and cushion cuts.",
+  "The bail, at the top, which attaches the pendant to the chain.",
+]
+themes = ["diamond", "blue", "louis xiv", "legend", "gem"]
+anecdote = """
+In 1958, Harry Winston sent the diamond to the Smithsonian by mail, registered, in a \
+simple brown-paper parcel insured for one million dollars. The packaging, with its \
+stamps and postmark, is today kept in the National Postal Museum in Washington."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Pink Fluorite on Smoky Quartz"
+artiste = "Massif du Mont-Blanc, France"
+annee = "Crystallised in a fissure in the granite, during the uplift of the Alps"
+image = "fluorite-aiguille-verte.jpg"
+credit = "Photo : Marie-Lan Taÿ Pamart"
+licence = "CC BY 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Fluorite_on_smoky_quartz_Aiguille_Verte_MNHN_Minéralogie.jpg"
+technique = "Fluorite (calcium fluoride) in octahedra, on a smoky quartz crystal; from the Aiguille Verte (Haute-Savoie)"
+collection = "Galerie de Minéralogie et de Géologie, Muséum national d'Histoire naturelle, Paris"
+note = "Octahedra of orange-pink fluorite resting on a smoky quartz crystal: one of the treasures of the crystal fissures of the Mont Blanc massif, collected on the Aiguille Verte."
+description = """
+A cluster of salmon-pink, almost orange crystals clings to a darker, grey-brown \
+crystal that rises at the top of the composition: a smoky quartz, whose flat face and \
+point can be seen. The pink crystals have sharply defined triangular faces; several are \
+almost perfect octahedra, like two pyramids joined at their bases. They pile up and \
+overlap, in various sizes, the largest at the centre, the smallest clustered at the \
+edges. Their surface is not polished: it looks frosted, finely striated or hollowed \
+into small steps. Traversed by the light of the display case, the edges of the \
+crystals become translucent and glow a more vivid pink on the pale grey base."""
+evocation = """
+This object tells of the high mountains. It comes from a fissure in the granite, at \
+several thousand metres of altitude, where one had to climb, dig and come back down \
+with the stone on one's back. For the crystal hunters of Chamonix, pink fluorite is \
+the finest treasure of the massif, far rarer than quartz. Its geometry also fascinates: \
+the octahedron, with its eight equal triangular faces, is one of the five regular \
+solids that Plato associated with the elements of the world, and nature produces it \
+here without the aid of any hand. The contrast between the soft pink and the dark \
+quartz, finally, has something of a painter's composition, like a flower set on a \
+rock."""
+histoire = """
+The Aiguille Verte, 4,122 metres high, overlooks the Chamonix valley; the Englishman \
+Edward Whymper made the first ascent in 1865, with two Swiss guides. Long before the \
+mountaineers, crystal hunters, the cristalliers, were already roaming the glaciers and \
+rock faces of the massif in search of “fours”: cavities in the granite lined with \
+quartz, which can be spotted by a white vein in the rock. Pink fluorites are rare and \
+sought-after there. This specimen belongs to the collections of the Muséum national \
+d'Histoire naturelle and is displayed in its Galerie de Minéralogie et de Géologie, in \
+the Jardin des Plantes, alongside other minerals from the French Alps."""
+facture = """
+Fluorite is a calcium fluoride. In the fissures of the Alps, it often crystallises in \
+octahedra rather than cubes. Its rare pink colour is attributed to tiny defects in the \
+crystal lattice, linked to traces of rare earths and to the natural radioactivity of \
+the granite. Smoky quartz also owes its brown tint to this radioactivity, which acts on \
+traces of aluminium. Both minerals grew slowly in hot waters laden with dissolved \
+elements that circulated in the fractured rock, while the Alpine chain was rising."""
+details = [
+  "The triangular faces of the pink octahedra, sharp as cut facets.",
+  "The frosted, striated surface of the crystals, which has never been polished.",
+  "The grey-brown smoky quartz crystal that supports the whole.",
+  "The translucent edges where the light turns the pink to orange.",
+]
+themes = ["mineral", "crystal", "mountain", "alps", "colour"]
+anecdote = """
+Fluorite gave its name to fluorescence. In 1852, the British physicist George Gabriel \
+Stokes coined the word while studying the glow that some fluorites emit when lit with \
+ultraviolet light."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Amethyst Geode"
+artiste = "Coulées de lave de la Serra Geral, Brésil"
+annee = "Early Cretaceous, about 130 million years ago"
+image = "geode-amethyste.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Amethyst_geode_(Serra_Geral_Formation,_Lower_Cretaceous;_southeastern_Brazil)_1_(32934451701).jpg"
+technique = "Quartz (amethyst variety) and chalcedony, in a cavity of a basalt flow"
+collection = "Mineral Museum, Montana Bureau of Mines and Geology, Butte (Montana)"
+note = "A gas bubble trapped in a lava flow, gradually lined with thousands of violet crystals: the amethyst geodes of southern Brazil are among the largest in the world."
+description = """
+The geode has been opened and appears as a large hollow oval, lying on its base. On \
+the outside, a crust of greenish-grey rock forms the shell. Just inside runs a smooth \
+white and grey border, like a porcelain edging. Then come the crystals: thousands of \
+small tightly packed pyramids, pointing towards the centre, pale violet near the edge, \
+growing darker towards the back of the cavity, where some areas look grey or almost \
+black. At upper right, a small group of white, shining crystals, probably calcite, \
+stands out against the violet. The light catches the points and makes the whole wall \
+sparkle."""
+evocation = """
+The geode is the hidden treasure par excellence: an ordinary grey stone on the \
+outside, a cave of crystals within. It has fed legends of marvellous caverns and of \
+stones that contain a world. Its colour, violet, was long that of power and of the \
+Church: bishops wore an amethyst ring. But the geode speaks above all of time: each \
+crystal grew atom by atom, from water seeping through the cooled lava, over spans of \
+time beyond imagination. It also recalls that mineral beauty is sometimes born of \
+cataclysms: here, of one of the greatest eruptions in the history of the Earth."""
+histoire = """
+About 130 million years ago, when South America and Africa began to separate, immense \
+basalt flows spread over the south of the continent, in successive layers that today \
+form the Serra Geral. In the still-liquid lava, gas bubbles remained trapped; much \
+later, waters laden with silica seeped in and filled them with crystals. In the state \
+of Rio Grande do Sul, in Brazil, and in the neighbouring region of Artigas, in Uruguay, \
+miners follow the geode-rich lava layer by digging galleries into the hillsides. The \
+geodes, freed with jackhammers, are sawn and sold around the world. This one is \
+displayed in the mineralogy museum at Butte, in Montana."""
+facture = """
+The growth follows a precise order. The waters circulating in the cavity first deposit \
+a thin layer of chalcedony, a silica whose crystals are invisible to the naked eye: \
+this is the white border. Then quartz crystallises in prisms of which only the tip \
+protrudes, all turned towards the central void. The colour of amethyst comes from \
+traces of iron, transformed by the natural radioactivity of the rocks. It is fragile: \
+heated to a few hundred degrees, amethyst turns orange-yellow, and a large proportion \
+of the “citrines” sold in jewellery are heated amethysts."""
+details = [
+  "The grey-green basalt crust, which formed the wall of the gas bubble.",
+  "The white chalcedony edging, the first layer deposited in the cavity.",
+  "The points of the crystals, all directed towards the centre.",
+  "The small group of white crystals, at upper right.",
+  "The violet that darkens towards the back of the geode.",
+]
+themes = ["mineral", "geode", "crystal", "violet", "volcano"]
+anecdote = """
+The word amethyst comes from the Greek amethystos, “not intoxicated”. The Greeks \
+believed this stone protected against drunkenness, and it is said that they drank wine \
+from amethyst cups."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Trilobite Elrathia kingii"
+artiste = "Schistes de Wheeler, Utah"
+annee = "Middle Cambrian, a little over 500 million years ago"
+image = "trilobite-elrathia.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Elrathia_kingii_(fossil_trilobite)_(Wheeler_Formation,_Middle_Cambrian;_House_Range,_western_Utah,_USA)_3.jpg"
+technique = "Fossilised carapace (calcite) in a clay shale; about 2.6 cm wide"
+collection = "Collection not specified (photograph by James St. John)"
+note = "Barely 2.6 cm wide, shown here greatly enlarged, this trilobite lived on the floor of a Cambrian sea more than 500 million years ago. It is one of the most widespread fossils in the world."
+description = """
+On the grey stone, a small oval animal, shiny black, seems still to rest on the sea \
+floor. Its body is divided into three bands lengthwise: a raised central axis and two \
+flatter side lobes, hence the name trilobite, “three-lobed”. At the top, the head forms \
+a broad crescent; in its middle rises an elongated swelling, the glabella. The body is \
+made of a dozen articulated rings, packed tight like the plates of armour, each ending \
+at the side in a rounded point. At the bottom, a small shield-shaped tail closes the \
+whole. The black carapace stands out sharply against the paler, slightly cracked \
+rock."""
+evocation = """
+The trilobite is one of the first great successes of animal life. It appeared in the \
+Cambrian, when the oceans were filling with a sudden diversity of forms, and it was \
+one of the first animals to possess true eyes. Trilobites lived for nearly 270 million \
+years before disappearing in the great extinction at the end of the Permian. This one \
+is nothing exceptional: no spines, no giant eyes. American palaeontologists \
+affectionately nickname it “Joe Trilobite”, the ordinary trilobite. That is precisely \
+what makes it moving: it lets us see the daily life of a sea floor, more than two \
+hundred million years before the first dinosaurs."""
+histoire = """
+Elrathia kingii was described in 1870 by the American palaeontologist Fielding Meek, \
+who named it after Clarence King, the geologist then leading the Fortieth Parallel \
+Survey across the American West. It comes from the Wheeler Shale, in the House Range \
+mountains, in western Utah. The quarries of the region have yielded considerable \
+quantities: operators split the rock into slabs and extract thousands of specimens \
+each year. This is why Elrathia is the trilobite most often found in fossil shops and \
+amateur collections around the world. This specimen was photographed by the geologist \
+James St. John."""
+facture = """
+Like insects and crabs, trilobites were arthropods: their bodies were protected by an \
+articulated carapace, reinforced with calcite, which they had to shed in order to \
+grow. Many fossils are in fact moults, not dead animals. Only this mineralised \
+carapace has been preserved; the legs, antennae and gills have vanished. In the \
+Wheeler Shale, a fine mud deposited in calm, oxygen-poor water covered the carapaces \
+without scattering them. The rock splits along its layers and reveals the intact \
+fossil, often black against the grey of the shale."""
+details = [
+  "The three lobes along the length of the body, which gave the group its name.",
+  "The glabella, the elongated swelling in the middle of the head.",
+  "The articulated rings of the thorax, ending in rounded points.",
+  "The small shield-shaped tail, at the bottom of the fossil.",
+]
+themes = ["fossil", "cambrian", "sea", "trilobite", "arthropod"]
+anecdote = """
+According to accounts gathered in the twentieth century, the Utes of Utah wore \
+trilobites as amulets, to protect themselves from illness. The name they gave them \
+evoked little water bugs living in a stone house."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Ammonite Dactylioceras commune"
+artiste = "Falaises de Whitby, Angleterre"
+annee = "Early Jurassic, about 180 million years ago"
+image = "ammonite-whitby.jpg"
+credit = "Photo : Fred Cherrygarden"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Dactylioceras_commune.jpg"
+technique = "Fossilised shell in a clay rock; 7 cm in diameter"
+collection = "Private collection (Cherrygarden collection)"
+note = "A 7 cm ammonite, shown here enlarged, found at Whitby, on the Yorkshire coast. For the townspeople, these coiled shells were snakes turned to stone."
+description = """
+A shell coiled in a flat spiral, anthracite grey, stands out against a white \
+background. Several whorls can be counted, wider and wider from the centre outwards, \
+nested one within the other like a coiled rope. Each whorl is adorned with fine, \
+closely spaced ribs, regular as the teeth of a comb, which radiate from the centre \
+towards the edge; near the outside, they split in two. The centre of the spiral, tiny, \
+forms a small hollow. On the right, the shell partly disappears into the rock that \
+still envelops it, a smooth grey matrix; at the bottom, the last whorl, more worn, \
+shows the relief of the ribs in profile."""
+evocation = """
+The ammonite is one of the most familiar forms in palaeontology, and one of the most \
+mysterious for those who found it without understanding it. Its spiral has evoked a \
+coiled snake, a ram's horn, a wheel. For geologists, it is also a clock: ammonite \
+species succeeded one another so quickly and were so widespread that they make it \
+possible to date rocks to within a million years. Their disappearance, 66 million years \
+ago, at the same time as that of the great dinosaurs, finally recalls the fragility of \
+the most prosperous groups: ammonites had populated the seas for more than three \
+hundred million years."""
+histoire = """
+The cliffs of Whitby, on the North Yorkshire coast, have yielded ammonites for \
+centuries: storms and landslides detach them from the rock, and they are picked up on \
+the beach. A legend links them to Saint Hilda, the abbess who founded Whitby Abbey in \
+the seventh century: she is said to have turned to stone the snakes that infested the \
+place. Merchants sometimes carved a snake's head at the end of the spiral to sell \
+these “snakestones” to visitors, and three ammonites appear on the town's coat of \
+arms. This specimen, found at Whitby, belongs to a private collection and was \
+photographed by its owner."""
+facture = """
+The ammonite was a cephalopod mollusc, cousin of the octopus, the cuttlefish and the \
+nautilus. Its shell was divided into chambers by partitions; the animal lived in the \
+last, the largest, and regulated its buoyancy by filling the others with gas or \
+liquid. The name Dactylioceras means roughly “ringed horn”: it alludes to the close \
+ribs that encircle each whorl. At Whitby, ammonites are often preserved in nodules, \
+balls of harder rock formed around them in the mud of the sea floor, which protected \
+them from crushing."""
+details = [
+  "The close ribs radiating over each whorl of the spiral.",
+  "The splitting of the ribs near the outer edge.",
+  "The tiny hollow at the centre, where the animal began its shell.",
+  "The matrix of grey rock, still attached on the right.",
+]
+themes = ["fossil", "jurassic", "sea", "spiral", "legend"]
+anecdote = """
+The word ammonite comes from the Egyptian god Amun, depicted with ram's horns. The \
+Roman writer Pliny the Elder called these fossils “horns of Ammon”, because of their \
+resemblance to a coiled horn."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Nautilus Shell, Sectioned"
+artiste = "Récifs de l'Indo-Pacifique"
+annee = "Living species, from a lineage nearly 500 million years old"
+image = "nautile.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_(YPM_IZ_047418).jpeg"
+technique = "Shell of Nautilus pompilius sawn in two (aragonite and nacre); about 18 cm"
+collection = "Yale Peabody Museum, New Haven (Connecticut)"
+note = "A nautilus shell sawn in two, about 18 cm long: its successive chambers trace a perfect spiral, and the large chamber where the animal lived gleams with nacre."
+description = """
+The shell, cut in two lengthwise, is shown against a black background. On the right, a \
+spiral of curved partitions, golden brown, coils around a tiny white centre: about \
+thirty crescent-shaped chambers can be counted, larger and larger as one moves away \
+from the core. On the left opens the last chamber, by far the largest, smooth and \
+empty, lined with a cream nacre that takes on pink, green and golden reflections \
+depending on the light. The outer edge of the shell, more matte, draws a continuous \
+curve, from the pointed beak of the opening, at lower left, to the top of the \
+spiral."""
+evocation = """
+The nautilus is one of the emblems of natural beauty. Its spiral, which grows without \
+changing shape, has fascinated mathematicians and artists alike. In the Renaissance, \
+goldsmiths mounted nautilus shells on gilded silver stands to make them into ceremonial \
+cups, the pride of princes' cabinets of curiosities. Jules Verne gave its name to \
+Captain Nemo's submarine. For biologists, it is also a witness: the nautilus is the \
+last representative of a lineage of shelled cephalopods that existed before the \
+ammonites and outlived them. To cut its shell is to make visible the history of an \
+entire life, chamber after chamber."""
+histoire = """
+The chambered nautilus lives in the Indo-Pacific, from the Philippines and Indonesia \
+to Australia and the Fiji Islands, along the steep slopes of coral reefs, often at \
+several hundred metres' depth; it rises at night to feed. Its shells, highly sought \
+after, were long fished in large numbers for the souvenir and nacre trade. Because it \
+grows slowly and reproduces little, its populations have declined; in 2016, it was \
+listed in Appendix II of the Washington Convention (CITES), which regulates its \
+international trade. This specimen belongs to the Yale Peabody Museum; its photograph \
+was published by the museum in the public domain."""
+facture = """
+The shell is made of aragonite, a form of calcium carbonate. As it grows, the animal \
+moves forward in its shell and builds a new partition behind it: the empty chambers, \
+filled with gas and a little liquid, serve as a float. A fine tube of living tissue, \
+the siphuncle, runs through them all and makes it possible to adjust the amount of \
+liquid, like the ballast tanks of a submarine. The inside of the large chamber is lined \
+with nacre, made of tiny stacked platelets that break the light up into iridescent \
+reflections."""
+details = [
+  "The thirty or so crescent chambers, larger and larger towards the outside.",
+  "The tiny white centre, the animal's first chamber.",
+  "The pink and green reflections of the nacre in the large chamber.",
+  "The pointed beak of the opening, at lower left.",
+]
+themes = ["shell", "spiral", "sea", "nacre", "cephalopod"]
+anecdote = """
+One often reads that the nautilus spiral follows the golden ratio. This is a popular \
+misconception: measurements of many shells show that their spiral widens according to a \
+different ratio, which varies from one individual to another."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "The Berlin Archaeopteryx"
+artiste = "Gisement de Solnhofen, Allemagne"
+annee = "Late Jurassic, about 150 million years ago; discovered c. 1876"
+image = "archeopteryx-berlin.jpg"
+credit = "Photo : H. Raab"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Archaeopteryx_lithographica_(Berlin_specimen).jpg"
+technique = "Skeleton and feather impressions in a slab of lithographic limestone"
+collection = "Museum für Naturkunde, Berlin"
+note = "Bird feathers and wings, but the teeth, clawed fingers and long bony tail of a reptile: the Berlin specimen, the most complete of the Archaeopteryx, is one of the most famous fossils in the world."
+description = """
+On a slab of beige limestone, split by long cracks, an animal the size of a pigeon \
+lies stretched out, its wings wide open. The bones can be clearly distinguished, \
+slender and pale, and all around them the impression of the feathers, which fan out \
+from each arm. The head, small, is thrown back, at left, the neck curved above the \
+back; teeth can be made out in the snout. The two legs, folded, descend towards the \
+bottom of the slab and end in feet with clawed toes. Between them, a long tail made \
+of vertebrae runs towards the lower left, edged on each side with a row of feathers \
+that forms a train."""
+evocation = """
+Archaeopteryx has become the symbol of evolution. The first skeleton was discovered in \
+1861, barely two years after the publication of Charles Darwin's On the Origin of \
+Species, and it offered what his opponents demanded: an intermediate form between two \
+great groups. We now know that it is not the direct ancestor of birds, but one of the \
+representatives of a family of small feathered dinosaurs from which birds descend. The \
+posture of the Berlin specimen, head thrown back and neck arched, is that of many \
+fossils of animals that died in water: it gives this slab a dramatic intensity, like a \
+frozen instant."""
+histoire = """
+The Berlin specimen was unearthed around 1876 near Eichstätt, in Bavaria, in a \
+limestone quarry. It passed through several hands, then the Häberlein family, who had \
+already sold the first skeleton to the British Museum, put it up for sale. So that it \
+would not leave Germany, the industrialist Werner von Siemens bought it in 1880; the \
+natural history museum of the University of Berlin bought it from him the following \
+year. It is the first Archaeopteryx discovered with its head complete. It is now \
+displayed in a hall of the Museum für Naturkunde in Berlin. The photograph shows the \
+original, and not one of the many casts in circulation."""
+facture = """
+The Solnhofen limestone is of extraordinarily fine grain: it formed from a lime mud \
+deposited on the floor of lagoons with stagnant waters, so salty and oxygen-poor that \
+scavengers did not live there. Corpses that sank to the bottom were buried without \
+being torn apart, and the mud was able to keep the trace of every feather, down to the \
+barbs. The fossil was freed from the stone with a needle, grain by grain. Two kinds of \
+feathers can be distinguished here: the large asymmetrical feathers of the wings, \
+similar to those of flying birds, and those of the tail, arranged in pairs."""
+details = [
+  "The wing feathers, whose impression fans out around the arms.",
+  "The head thrown back, at the end of the curved neck.",
+  "The claws at the ends of the toes, at the bottom of the slab.",
+  "The long bony tail, edged with a feather on each side of each vertebra.",
+]
+themes = ["fossil", "dinosaur", "bird", "evolution", "jurassic"]
+anecdote = """
+According to an often-repeated tale, the farmer who discovered the Berlin specimen, \
+Jakob Niemeyer, is said to have parted with it in order to buy a cow. A few years \
+later, the fossil sold for 20,000 marks."""
+salle = 2
+mur = "ouest"
+place = 6
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Beetle in Baltic Amber"
+artiste = "Forêts d'ambre de la Baltique"
+annee = "Eocene, about 45 million years ago"
+image = "ambre-coleoptere.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Beetle_in_amber_(Amber_Formation,_Middle_Eocene;_Yantarnyi,_Samland_Peninsula_along_the_Baltic_Sea,_far-western_Russia)_(15111983330).jpg"
+technique = "Amber (fossil resin) containing a beetle of about 3.5 mm; seen under the microscope"
+collection = "Collection not specified (photograph by James St. John)"
+note = "A 3.5 mm beetle stuck in a flow of resin some 45 million years ago, seen here under the microscope: the amber has preserved it down to its finest details."
+description = """
+The image is a very high magnification. In a translucent golden-yellow material, \
+turning orange and brown at the edges, a small elongated insect occupies the centre. \
+It is a beetle, seen from above, head at the top: its dark brown body is covered with \
+regular rows of tiny pits, aligned like the stitches of a knitted fabric. The head, the \
+thorax and the two elytra, the hard wings that protect the back, can be made out. \
+Around it, the resin is not uniform: lighter, almost luminous areas alternate with \
+darker veils. At upper right, a red patch marks the curve of the edge of the stone."""
+evocation = """
+Amber is a time capsule. The insect landed on a flow of resin, became stuck in it, and \
+the resin covered it: 45 million years later, it is there, intact, as if it had just \
+died. Nothing better evokes the stillness of geological time. These inclusions inspired \
+dreams long before science did: people saw in them flies and ants entombed in gold, and \
+the Latin poets already marvelled at them. They still do, since a novel and then a film \
+imagined bringing dinosaurs back to life from a mosquito preserved in amber, an idea \
+that the real state of fossil DNA makes impossible."""
+histoire = """
+About 45 million years ago, in the Eocene, vast coniferous forests covered northern \
+Europe, under a warmer climate than today's. Their resin, carried away by rivers, \
+accumulated in a layer of clayey sand that miners call the “blue earth”. The largest \
+deposit is on the Sambia peninsula, near Kaliningrad, in Russia, where the open-pit \
+mine at Yantarny supplies most of the world's amber. This beetle comes from there. \
+Since prehistory, the sea has also torn pieces of amber from submarine layers and cast \
+them up on beaches after storms: it was gathered even then to be carried, along the \
+Amber Road, as far as the Mediterranean."""
+facture = """
+Fresh, resin is sticky and viscous. Buried, it gradually loses its volatile \
+components, its molecules bond into long chains, and it hardens into copal, then, over \
+millions of years, into amber. The engulfed insect dries out in this airless casket, \
+and the resin moulds every relief, down to the hairs and the pits of the carapace. \
+Amber is light: it floats in very salty water, a property used to distinguish it from \
+imitations. The photograph, taken through a microscope, shows the insect far larger \
+than a letter of this text."""
+details = [
+  "The rows of small pits on the beetle's elytra.",
+  "The head and thorax, at the top of the body.",
+  "The light and dark areas of the resin around the insect.",
+  "The reddish curve of the edge of the stone, at upper right.",
+]
+themes = ["amber", "insect", "forest", "eocene", "time"]
+anecdote = """
+The Greeks called amber êlektron. They had noticed that, once rubbed, it attracts \
+twigs and dust: it is from this word that, much later, the word electricity comes."""
+salle = 2
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Carnegie's Diplodocus, Mounted at the Muséum in 1908"
+artiste = "Formation de Morrison, Wyoming"
+annee = "Late Jurassic, about 150 million years ago; cast and photograph of 1908"
+image = "diplodocus-paris.jpg"
+cadre = "noir"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Carnegie_Diplodocus,_Paris_LCCN2014681898_(cropped).jpg"
+technique = "Photograph (glass negative) by the Bain News Service agency; plaster cast of a skeleton about 25 m long"
+collection = "Library of Congress, Washington (photograph); Galerie de Paléontologie et d'Anatomie comparée, Muséum national d'Histoire naturelle, Paris (cast)"
+note = "In 1908, the American billionaire Andrew Carnegie gave France a cast of his Diplodocus. It is seen here being assembled in the Muséum's Paleontology Gallery, where it still stands."
+description = """
+The photograph is taken from above, from the balcony of a museum gallery. At the \
+centre, the skeleton of a giant dinosaur is being assembled on a wooden platform. One \
+recognises the enormous pelvis and the hind legs, straight as columns, then the rib \
+cage, at right, whose ribs descend like the frames of a ship's hull. The long tail \
+slopes in a curve towards the lower left down to the ground. Around it, workers in \
+smocks and gentlemen in suits look on or work; a man is perched at the very top, near \
+the back. Ladders, display cases filled with fossils and tall windows complete the \
+scene. At the top, a white inscription reads: Carnegie Diplodocus, Paris."""
+evocation = """
+This image tells of the birth of a passion: the public's passion for dinosaurs. In the \
+early twentieth century, these giants from America drew crowds to the museums of \
+Europe. It also speaks of the age of the great patrons: by offering casts of his \
+Diplodocus to sovereigns and heads of state, Andrew Carnegie, steel king turned \
+philanthropist and peace campaigner, made science an instrument of diplomacy. The \
+workers, tiny at the foot of the skeleton, give the scale of the monster. And the place \
+itself speaks: it is the gallery that visitors to the Jardin des Plantes still walk \
+through today, with the same Diplodocus at its centre."""
+histoire = """
+In July 1899, a team from the Carnegie Museum in Pittsburgh discovered a sauropod \
+skeleton at Sheep Creek, in Wyoming. The palaeontologist John Bell Hatcher described it \
+in 1901 under the name Diplodocus carnegii, in honour of his patron. King Edward VII, \
+who had seen a drawing of it at Carnegie's, wanted one for London: a complete cast was \
+inaugurated in 1905 at the Natural History Museum in London. Others followed, in \
+Berlin, Paris, Vienna, Bologna, Saint Petersburg, La Plata, Madrid and Mexico City. The \
+Paris cast was mounted in 1908 by a team from Pittsburgh, under the direction of the \
+director of the Carnegie Museum, William Jacob Holland. It still stands in the \
+Paleontology Gallery, opened in 1898."""
+facture = """
+Each bone was moulded, then reproduced in reinforced plaster, before being assembled \
+on an iron armature that supports the whole. The pose is the one imagined at the time: \
+legs straight under the body, tail dragging to the ground. Palaeontologists now think \
+that the tail was held horizontally, above the ground, to balance the long neck. The \
+photograph, taken on a glass plate by the New York agency Bain News Service, is part \
+of an immense collection kept at the Library of Congress; its caption was inscribed \
+directly on the negative. It is presented here in a black frame."""
+details = [
+  "The hind legs, straight as columns, on the wooden platform.",
+  "The spines of the vertebrae, rising along the back.",
+  "The tail that descends to the ground, at lower left.",
+  "The man perched at the very top of the skeleton, near the back.",
+  "The white inscription, at the top, engraved on the negative.",
+]
+themes = ["dinosaur", "jurassic", "museum", "photography", "patronage"]
+anecdote = """
+The London cast, nicknamed Dippy, greeted visitors to the Natural History Museum for \
+more than a century. In 2017, it gave up its place in the great hall to the skeleton \
+of a blue whale, then went on tour across the United Kingdom."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.8
+
+[[artistes]]
+nom = "Gibeon, Namibie"
+vie = "Southern Namibia, around the town of Gibeon; prehistoric fall"
+biographie = """
+The Gibeon meteorite field extends across southern Namibia, in the Hardap region, in \
+the heart of Great Namaqualand, a land of arid plateaus. The fall took place long \
+before written history: a large block of iron, entering the atmosphere, broke up into a \
+shower of fragments scattered over hundreds of kilometres. The Nama, herders of the \
+region, knew these heavy stones and drew metal from them for their tools and weapons. \
+In the nineteenth century, samples brought back to Europe were recognised as meteoritic \
+iron, and the region became one of the richest places in the world for metallic \
+meteorites. Hundreds of masses have been collected, some of several hundred kilos. The \
+parent body was the metallic core of a small asteroid, formed in the first millions of \
+years of the solar system, then laid bare and fragmented by collisions. To curb \
+looting, Namibia has made the Gibeon meteorites a protected heritage; about thirty \
+large masses are displayed in Windhoek, the capital."""
+style = """
+Gibeon iron is a fine octahedrite of group IVA, an iron-nickel alloy with about 8% \
+nickel. Once sawn, polished and etched with acid, it reveals very tight Widmanstätten \
+patterns, with narrow, regular blades, of great elegance. It is relatively stable and \
+lends itself to polishing: jewellers, watchmakers and cutlers use it for dials, rings \
+or blades, which has made it one of the most widespread meteorites on the market."""
+
+[[artistes]]
+nom = "Mines de Golconde, Inde"
+vie = "Krishna Valley, Deccan (southern India); diamonds mined from Antiquity to the nineteenth century"
+biographie = """
+For centuries, India was the only known source of diamonds in the world. The stones \
+were extracted from the alluvial deposits of the Krishna Valley, in the Deccan, where \
+thousands of miners dug and washed the gravels. They were cut and sold at Golconda, a \
+fortress and merchant town near present-day Hyderabad, capital of the Qutb Shahi \
+sultanate from 1518 until its conquest by the Mughal emperor Aurangzeb in 1687. The \
+name Golconda ended up designating all the mines of the region, and becoming \
+synonymous with fabulous wealth. In the seventeenth century, the French merchant \
+Jean-Baptiste Tavernier made several journeys there and described the mines, including \
+that of Kollur, on the Krishna, from which the great blue diamond sold to Louis XIV is \
+said to have come. The most famous historic diamonds were born there: the Koh-i-Noor, \
+now among the British crown jewels, the Regent, displayed at the Louvre, and the Hope \
+Diamond. The discovery of deposits in Brazil, in the eighteenth century, then in South \
+Africa, in the nineteenth, ended Indian supremacy."""
+style = """
+Golconda diamonds are renowned for their exceptional clarity: many belong to type IIa, \
+almost devoid of nitrogen, with a transparency that jewellers compare to that of \
+water. Some are coloured, like the blue of the Hope. Cut first in India in forms that \
+preserved the most material, they were often recut in Europe. The expression “Golconda \
+diamond” still designates today, in auction sales, an old stone of rare purity."""
+
+[[artistes]]
+nom = "Massif du Mont-Blanc, France"
+vie = "Western Alps, between France, Italy and Switzerland; granite about 300 million years old, fissures born of the uplift of the Alps"
+biographie = """
+The Mont Blanc massif, which peaks at over 4,800 metres, is made essentially of a very \
+ancient granite, born about 300 million years ago in the depths of a mountain range \
+that has since disappeared. During the formation of the Alps, this granite was \
+reworked, uplifted and fractured. In the fissures opened by these movements, hot \
+waters laden with dissolved elements circulated and lined the cavities with crystals: \
+clear or smoky quartz, pink fluorites, adularia. The inhabitants of the Chamonix \
+valley have been seeking them for centuries. These cristalliers, who roamed the \
+glaciers long before the mountaineers, were among the first to know the high \
+mountains; the Genevan scholar Horace-Bénédict de Saussure, who reached the summit of \
+Mont Blanc in 1787, speaks of them in his travel accounts. The trade continues today, \
+governed by local rules, and the finest pieces join museums: the Mineralogy Gallery of \
+the Muséum, in Paris, displays several."""
+style = """
+The crystals of Mont Blanc are fissure crystals: they grew freely in the void of a \
+cavity, which gives them sharp forms and shining faces. The massif is famous for its \
+smoky quartz, sometimes almost black, and above all for its pink octahedral \
+fluorites, among the finest in the world. Their association, pink on brown, is the \
+signature of the great finds of the cristalliers."""
+
+[[artistes]]
+nom = "Coulées de lave de la Serra Geral, Brésil"
+vie = "Paraná Basin (southern Brazil, Uruguay, Paraguay, Argentina); Early Cretaceous, about 130 million years ago"
+biographie = """
+About 130 million years ago, the supercontinent of Gondwana began to tear apart: \
+South America and Africa moved away from each other, and the South Atlantic Ocean \
+gradually opened between them. This rifting was accompanied by eruptions of \
+unimaginable scale. Through long fissures, immense volumes of basaltic lava spread in \
+successive flows over the south of South America, and over the region that would become \
+Namibia, on the other side of the future ocean. Piled up, these flows now form the \
+Serra Geral, plateaus of dark rock in places more than a kilometre thick; the Iguazú \
+Falls, on the border of Brazil and Argentina, plunge from the top of these basalts. In \
+some flows, the lava was riddled with gas bubbles. Much later, groundwater rich in \
+silica filled these cavities with chalcedony, agate and quartz. Rio Grande do Sul, in \
+Brazil, and the Artigas region, in Uruguay, became the world's leading producers of \
+amethyst geodes."""
+style = """
+The geodes of the Serra Geral are recognised by their grey-green basalt shell, their \
+chalcedony border and their tightly packed amethyst crystals, often of a deep violet. \
+Some, elongated like caves, exceed the size of a man. The banded agates of Brazil, \
+often dyed, are also extracted there, along with calcite crystals that settle on the \
+amethyst."""
+
+[[artistes]]
+nom = "Schistes de Wheeler, Utah"
+vie = "House Range, western Utah (United States); Middle Cambrian, a little over 500 million years ago"
+biographie = """
+A little over 500 million years ago, the west of present-day North America was bordered \
+by a tropical sea, close to the equator. At the foot of a limestone platform, in a \
+depression where the water was calm and poor in oxygen, a fine mud slowly accumulated. \
+It covered the animals that lived or died on the floor, and became a layered rock, the \
+Wheeler Shale, which today crops out in the House Range mountains, in western Utah, in \
+a desert landscape. This is the time of the “Cambrian explosion”, when most of the \
+major groups of animals appeared in a short time. Trilobites dominate these sea floors, \
+but the Wheeler Shale has also yielded sponges, jellyfish and soft-bodied animals, \
+preserved as in the famous Burgess Shale, in Canada. Worked by commercial quarries, it \
+alone supplies a large share of the trilobites sold in the world, and continues to \
+interest researchers."""
+style = """
+The fossils of the Wheeler Shale are recognised by their black, shiny calcite \
+carapace, which stands out against a light grey shale and comes away easily when the \
+rock is split. Trilobites are numerous there, complete and well articulated, often of \
+small species, like Elrathia kingii. Their abundance makes them an ideal gateway to \
+palaeontology."""
+
+[[artistes]]
+nom = "Falaises de Whitby, Angleterre"
+vie = "North Yorkshire coast; Early Jurassic, about 180 million years ago"
+biographie = """
+The cliffs of Whitby, on the North Sea coast, are made of dark rocks deposited about \
+180 million years ago, in the Early Jurassic, on the floor of a poorly oxygenated sea. \
+They are teeming with fossils: ammonites, belemnites, fish and large marine reptiles \
+such as ichthyosaurs and plesiosaurs. Their human history is tied to these stones. In \
+the seventh century, Saint Hilda founded an abbey on the cliff whose ruins still \
+overlook the town. From the seventeenth to the nineteenth century, the shales were \
+worked to obtain alum, used to fix dyes, and the quarrymen uncovered many skeletons. \
+Whitby is also famous for its jet, a black, shiny fossil wood; after the death of \
+Prince Albert in 1861, Queen Victoria made it fashionable for mourning jewellery. \
+Finally, it is on this coast that Bram Stoker, in his novel Dracula, published in 1897, \
+has the vampire land. Landslides constantly renew the fossils, which walkers collect on \
+the beaches."""
+style = """
+The fossils of Whitby are distinguished by their preservation in nodules, balls of hard \
+rock, and by their dark hue, sometimes gilded by pyrite. Ammonites are so numerous \
+there that geologists have been able to divide time into zones bearing their names. \
+Dactylioceras, with its fine, closely spaced ribs, is the most typical species, that \
+of the “snakestones” of legend."""
+
+[[artistes]]
+nom = "Récifs de l'Indo-Pacifique"
+vie = "Slopes of coral reefs, from the Philippines to the Fiji Islands and Australia; today"
+biographie = """
+The chambered nautilus lives in the tropical waters of the Indo-Pacific, from the \
+Philippines and Indonesia to New Guinea, northern Australia and the Fiji Islands. It \
+frequents the steep slopes bordering coral reefs, at depths often of several hundred \
+metres, and rises at night to shallower waters to hunt or scavenge. It bears around \
+its mouth dozens of tentacles without suckers and sees the world through very simple \
+eyes, without a lens, which work like a pinhole camera. Its lineage, that of the \
+nautiloids, goes back nearly 500 million years: their shells, straight or coiled, \
+already populated the seas of the age of the trilobites, and they survived the great \
+extinctions that swept away the ammonites. The nautilus grows slowly, lives about \
+twenty years and lays few eggs. Intensive fishing for its shells has reduced its \
+populations: since 2017, its international trade has been subject to permits."""
+style = """
+Seen from the outside, the nautilus shell is white, striped with russet-brown flames \
+that fade towards the opening. In section, it reveals its hidden beauty: a spiral of \
+regular chambers, golden brown, and a large chamber lined with iridescent nacre. \
+Renaissance goldsmiths polished it to bring out the nacre and mounted it as a precious \
+cup."""
+
+[[artistes]]
+nom = "Gisement de Solnhofen, Allemagne"
+vie = "Altmühl Valley, Bavaria; Late Jurassic, about 150 million years ago"
+biographie = """
+About 150 million years ago, Bavaria was covered by a warm sea dotted with islands and \
+reefs, on the edge of the Tethys Ocean. Between the reefs stretched lagoons with \
+stagnant, very salty waters, deprived of oxygen at the bottom. A very fine lime mud \
+was deposited there in thin layers, which gave the Solnhofen limestone, worked today in \
+the quarries of the Altmühl Valley, around Solnhofen and Eichstätt. Since Roman times, \
+it has been used for floor and roof slabs. In 1796, Alois Senefelder discovered that \
+one could print from these perfectly smooth stones: this was the invention of \
+lithography, which would make the fortune of the quarries. The workers who split the \
+slabs uncovered fossils of unequalled fineness: fish, crabs, horseshoe crabs, \
+dragonflies, pterosaurs, the small dinosaur Compsognathus and above all Archaeopteryx. \
+An isolated feather was described in 1861, and the first skeleton was discovered the \
+same year; about a dozen are known today."""
+style = """
+The fossils of Solnhofen look like engravings: flattened between two sheets of beige \
+limestone, they preserve the most delicate outlines, insect wings, pterosaur \
+membranes, feathers. Even footprints are found there, and the trail of a horseshoe \
+crab that ends at the body of the dead animal. This deposit is one of the great models \
+of what palaeontologists call exceptional preservation."""
+
+[[artistes]]
+nom = "Forêts d'ambre de la Baltique"
+vie = "Northern Europe, in the Eocene, about 45 million years ago; deposits of the Sambia peninsula (Kaliningrad, Russia)"
+biographie = """
+About 45 million years ago, in the Eocene, the Earth's climate was much warmer than \
+today's, and great forests of conifers and broadleaf trees covered northern Europe, on \
+the lands of present-day Scandinavia. Their trees produced resin in abundance. Carried \
+along by rivers, it accumulated in the sediments of a delta, where it slowly turned \
+into amber. These deposits now crop out around the Baltic Sea, especially on the \
+Sambia peninsula, near Kaliningrad, where the Yantarny mine works the layer of “blue \
+earth”. The sea also tears pieces from it and casts them up on beaches after storms. \
+Since prehistory, Baltic amber has been sought after and traded: it travelled as far \
+as the Mediterranean along the Amber Road, and the Romans prized it. In the Middle \
+Ages, the Teutonic Knights controlled its harvest. In the eighteenth century, the Amber \
+Room, given by the King of Prussia to Tsar Peter the Great, was one of the most famous \
+interiors in Europe; it disappeared during the Second World War."""
+style = """
+Baltic amber, called succinite, ranges from honey yellow to red-brown, transparent or \
+milky. It is famous for the richness of its inclusions: insects, spiders, flowers, \
+feathers, mammal hairs, preserved in three dimensions with a precision that no other \
+fossil attains. Scientists have described thousands of extinct species there, which \
+bring the Eocene forest back to life."""
+
+[[artistes]]
+nom = "Formation de Morrison, Wyoming"
+vie = "Western United States, from Montana to New Mexico; Late Jurassic, about 155 to 148 million years ago"
+biographie = """
+The Morrison Formation is a set of layers of sandstone, clay and limestone that crops \
+out in the western United States, from Montana to New Mexico. It takes its name from \
+the small town of Morrison, in Colorado, near which dinosaur bones were discovered in \
+1877. About 150 million years ago, it was a vast plain crossed by rivers, with a hot, \
+dry climate, dotted with lakes and forests of conifers and ferns. It is the most famous \
+dinosaur deposit in America: it has yielded Diplodocus, Apatosaurus, Brontosaurus, \
+Camarasaurus, Stegosaurus and Allosaurus. At the end of the nineteenth century, it was \
+the scene of the “Bone Wars” between the rival palaeontologists Othniel Marsh and \
+Edward Drinker Cope, who fought over the best quarries, notably in Wyoming. In 1909, a \
+Carnegie Museum researcher, Earl Douglass, discovered in Utah an entire wall of bones, \
+now protected within Dinosaur National Monument."""
+style = """
+The Morrison Formation is the realm of the sauropods, those giants with long necks and \
+long tails, and of their predators. Its bones, often well preserved and sometimes \
+found in almost complete skeletons, made possible the first great dinosaur mounts in \
+museums. Diplodocus, Stegosaurus and Allosaurus, all from these layers, fixed for the \
+general public the very image of the dinosaur."""

@@ -1,0 +1,438 @@
+[exposition]
+ordre = 30
+nom_court = "Renacimiento del Norte"
+mouvement = "Primitivos flamencos y Renacimiento del Norte"
+cadre = "ebene"
+couleur = "#3e4f6a"
+titre = "Primitivos flamencos y Renacimiento del Norte, el mundo al detalle"
+artiste = "Van Eyck, Van der Weyden, Memling, El Bosco, Durero, Cranach, Holbein, Brueghel"
+dates = "1434–1568"
+accroche = "Exposición virtual · Kunsthistorisches Museum, Viena"
+introduction = """
+En Brujas, en Bruselas, en Núremberg o en Amberes, los pintores del Norte inventan en los siglos XV y XVI una pintura al óleo de una precisión inaudita, donde cada reflejo, cada pelo de piel, cada brizna de hierba cuenta. La visita sigue ese hilo a lo largo de más de un siglo, desde Los esposos Arnolfini de Van Eyck hasta El jardín de las delicias del Bosco, desde los retratos de Durero, Cranach y Holbein hasta los paisajes y las fiestas aldeanas de Brueghel. El edificio se inspira en el Kunsthistorisches Museum de Viena: se entra bajo un alto vestíbulo con cúpula y después se accede a unas salas de paredes revestidas de tela, entre ellas una gran sala Brueghel, como aquella en la que Viena reúne la colección más rica del mundo de sus cuadros."""
+vitrine = "chasseurs-dans-la-neige.jpg"
+
+[musee]
+nom = "Kunsthistorisches Museum"
+ville = "Viena, Austria"
+architecte = "Gottfried Semper y Carl von Hasenauer"
+construction = "1871–1891"
+presentation = """
+En el Ring de Viena, el emperador Francisco José manda levantar dos palacios gemelos que se miran de frente, uno para las ciencias naturales y otro para las colecciones de arte reunidas por los Habsburgo durante siglos. Diseñado por Gottfried Semper y Carl von Hasenauer, el Kunsthistorisches Museum se construye entre 1871 y 1891 y abre sus puertas ese último año. Tras sus fachadas neorrenacentistas coronadas por una cúpula, una gran escalera de mármol, decorada con pinturas de Hans Makart y de Gustav Klimt, conduce al vestíbulo con cúpula y, después, a las galerías de pintura, iluminadas por claraboyas y de paredes revestidas de tela. Allí se ven los Tizianos, los Rubens y los Velázquez de los Habsburgo, los retratos de Durero y, sobre todo, una docena de cuadros de Pieter Brueghel el Viejo, la colección más rica del mundo de sus obras, reunidos en una misma sala. El museo conserva también la Kunstkammer de los Habsburgo, con el salero de oro de Benvenuto Cellini."""
+ici = """
+El edificio de ARTEON retoma el corazón del museo vienés: una alta sala con cúpula desde la que se accede a las galerías de pintura. Se entra por el sur al vestíbulo con cúpula, cuadrado y de dieciséis metros de altura. Al oeste se abre la sala I · Los primitivos flamencos, de paredes beige cálido; al este, la sala II · El Renacimiento alemán, de paredes verde pálido, dos salas cuadradas de doce metros de lado y siete de altura. Al norte, en el eje, la sala Brueghel, la más vasta, de dieciocho metros de ancho y paredes rosa beige, cierra la visita."""
+
+[[salles]]
+nom = "El vestíbulo con cúpula"
+theme = "La entrada, bajo una alta cúpula de mármol y estuco, desde la que se accede a las tres galerías de pintura."
+murs = "#ebe3d4"
+x = 0
+z = 0
+largeur = 14
+profondeur = 14
+hauteur = 16
+portes = ["sud", "nord", "ouest", "est"]
+
+[[salles]]
+nom = "Sala I · Los primitivos flamencos"
+theme = "1434–1500: Van Eyck, Van der Weyden, Memling y el Bosco, de la alcoba de los Arnolfini al infierno del Jardín de las delicias."
+murs = "#ddcdbb"
+x = -13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "Sala II · El Renacimiento alemán"
+theme = "1500–1533: Durero, Cranach y Holbein, el artista humanista, la heroína de corte y el doble retrato de Los embajadores."
+murs = "#d9dccb"
+x = 13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "La sala Brueghel"
+theme = "1563–1568: la Torre de Babel, el invierno de los cazadores y la boda aldeana, en una sala vasta y alta."
+murs = "#e3d3c8"
+x = 0
+z = -13
+largeur = 18
+profondeur = 12
+hauteur = 8
+
+[[oeuvres]]
+titre = "Los esposos Arnolfini"
+artiste = "Jan van Eyck"
+annee = "1434"
+image = "epoux-arnolfini.jpg"
+technique = "Óleo sobre tabla de roble, 82,2 × 60 cm"
+collection = "National Gallery, Londres"
+note = "Un mercader de Lucca y su esposa en su alcoba de Brujas: un espejo, un perro, una firma en la pared y uno de los retratos más enigmáticos de la historia."
+description = """
+En una alcoba estrecha, un hombre y una mujer están de pie, de la mano. Él, vestido con un amplio manto oscuro ribeteado de piel y tocado con un inmenso sombrero de paja teñida de negro, levanta la mano derecha. Ella, con un vestido verde forrado de piel blanca, sujeta con la otra mano los pesados pliegues de su falda y baja la mirada. A su alrededor, todo está descrito con minuciosidad de orfebre: la araña de cobre donde arde una sola vela en pleno día, las naranjas dejadas junto a la ventana, los zuecos de madera abandonados en el suelo, la cama con colgaduras rojas, el perrito de pelo alborotado. Al fondo, un espejo convexo refleja la habitación entera, vista de espaldas, y a dos visitantes de pie en el umbral."""
+evocation = """
+Durante mucho tiempo se leyó este cuadro como la escena de una boda de la que el pintor sería testigo: era la célebre hipótesis de Erwin Panofsky, en 1934, que veía un símbolo en cada objeto, la vela única como la mirada de Dios, el perro como la fidelidad, los zapatos quitados como un suelo sagrado. Hoy los historiadores son más prudentes. El gesto solemne se parece a un juramento, pero nada prueba que se trate de una ceremonia, y el vientre redondeado de la mujer no señala un embarazo: responde a la moda de la época. Queda la imagen de una prosperidad orgullosa de sí misma, naranjas importadas, alfombras, araña, pieles, la de un mundo en el que los mercaderes rivalizan en lujo con los príncipes."""
+histoire = """
+El cuadro está firmado y fechado en la pared, encima del espejo. El hombre es casi con seguridad Giovanni di Nicolao Arnolfini, mercader de Lucca establecido en Brujas, donde trabajaba entonces Van Eyck. Como su primera esposa, Costanza Trenta, había muerto en 1433, la identidad de la mujer sigue siendo objeto de discusión: ¿una segunda esposa desconocida o un retrato en memoria de una difunta? A principios del siglo XVI, la tabla pertenece a Margarita de Austria, gobernadora de los Países Bajos, que la recibió de un cortesano español, Diego de Guevara. Pasa después a María de Hungría y luego a los reyes de España. Tras la batalla de Vitoria, en 1813, un oficial británico, James Hay, la lleva a Inglaterra; la National Gallery la compra en 1842."""
+facture = """
+Van Eyck no inventó la pintura al óleo, pero le saca un partido inédito: superponiendo finas capas de color translúcidas, las veladuras, obtiene verdes profundos, rojos saturados y pasajes de luz de una suavidad nueva. La luz entra por la ventana de la izquierda y resbala sobre cada materia, el cobre pulido, la piel, la madera del suelo. La perspectiva no obedece a un único punto de fuga, como en Italia, sino a una observación paciente, casi táctil. El espejo, de apenas unos centímetros de ancho, muestra la virtuosidad de un pintor capaz de representar el mundo en miniatura."""
+details = [
+  "Encima del espejo: Johannes de eyck fuit hic 1434, «Jan van Eyck estuvo aquí».",
+  "Alrededor del espejo, diez diminutos medallones narran la Pasión de Cristo.",
+  "En el reflejo, dos siluetas en el umbral, una de las cuales podría ser el pintor.",
+  "Una sola vela arde en la araña, en pleno día.",
+  "En la silla, una santa tallada, quizá Margarita, patrona de las parturientas.",
+]
+themes = ["retrato", "pareja", "espejo", "interior", "símbolos", "brujas"]
+anecdote = """
+En el siglo XVII, el cuadro se hallaba en las colecciones reales de Madrid, donde Velázquez pudo verlo. A menudo se ha comparado su espejo con el de Las meninas (1656), en cuyo fondo aparecen, reflejados, el rey y la reina de España."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "El Descendimiento"
+artiste = "Rogier van der Weyden"
+annee = "antes de 1443"
+image = "descente-de-croix.jpg"
+technique = "Óleo sobre tabla, 204,5 × 261,5 cm"
+collection = "Museo del Prado, Madrid"
+note = "Diez figuras casi de tamaño natural apretadas en una caja dorada: el dolor más intenso de la pintura flamenca."
+description = """
+El cuerpo de Cristo, de una palidez de cera, acaba de ser desclavado de la cruz. Dos hombres ancianos, Nicodemo y José de Arimatea, lo sostienen, uno por los hombros, el otro por las piernas, mientras un joven sirviente, aún encaramado a la escalera, sujeta su brazo. A la izquierda, la Virgen se desvanece: su cuerpo cae formando una curva que repite la de su hijo, sostenida por san Juan, vestido de rojo, y por una santa mujer de verde. A la derecha, María Magdalena se retuerce las manos. Las figuras, casi de tamaño natural, se apiñan sobre un suelo estrecho donde yacen un cráneo y un hueso, ante un fondo de oro sin profundidad: parecen estatuas pintadas alineadas en la caja de un retablo esculpido."""
+evocation = """
+Rogier no busca narrar, sino hacer sentir. El paralelismo entre el cuerpo de Cristo y el de su madre expresa una idea cara a la devoción de su tiempo, la compasión en sentido pleno: María sufre con su hijo hasta compartir su muerte. Las lágrimas pintadas una a una, los párpados enrojecidos, las manos crispadas invitan al fiel a llorar a su vez. El cráneo a los pies de la escena recuerda que el Gólgota era, según la tradición, el lugar donde reposaba Adán: el sacrificio de Cristo redime el pecado del primer hombre. Por último, la puesta en escena en una caja de retablo acerca la pintura a la escultura, a la que pretende igualar y luego superar por el color y la vida."""
+histoire = """
+La tabla fue encargada por la gran cofradía de los ballesteros de Lovaina, una hermandad de tiradores, para su capilla de Nuestra Señora Extramuros. Su éxito es inmediato: se copia e imita durante todo el siglo. Hacia mediados del siglo XVI, María de Hungría, hermana de Carlos V y gobernadora de los Países Bajos, la obtiene de la cofradía, que recibe a cambio un órgano y una copia pintada por Michiel Coxcie. La obra pasa después a España, donde Felipe II, sobrino de María, la hace colocar en el monasterio de El Escorial. Allí permanece casi cuatro siglos antes de incorporarse al Museo del Prado en 1939. Hoy es una de las piezas maestras de su colección de primitivos flamencos."""
+facture = """
+Rogier compone en friso, como un escultor: las diez figuras ocupan todo el ancho de la tabla, sin paisaje ni cielo, ante un fondo dorado que cierra el espacio. Los cuerpos encajan en una larga curva que va de la Virgen a Cristo y luego a la Magdalena. Los colores, el azul intenso del manto de María, el rojo de san Juan, el brocado de oro del anciano que sostiene las piernas, se aplican en veladuras brillantes, a la manera de Van Eyck. Pero donde Van Eyck observa, Rogier dramatiza: el dibujo anguloso de los paños y la expresión de los rostros sirven ante todo a la emoción."""
+details = [
+  "En los ángulos dorados de la parte superior, diminutas ballestas recuerdan a los comitentes.",
+  "Las lágrimas transparentes que corren por las mejillas de la Virgen y de san Juan.",
+  "Junto a la mano de la Virgen, el cráneo de Adán y un hueso, al pie del Gólgota.",
+  "La curva del cuerpo de María, que repite la de Cristo justo encima.",
+  "El brocado de oro con motivos vegetales del anciano a la derecha de Cristo.",
+]
+themes = ["pasión", "dolor", "compasión", "religión", "retablo"]
+anecdote = """
+La tabla no es rectangular: un saliente, en el centro del borde superior, aloja la parte alta de la cruz y la escalera, de ahí los ángulos negros de la reproducción. Esta forma, habitual en los retablos esculpidos de la época, refuerza la ilusión de un grupo de estatuas dentro de su caja."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Retrato de hombre con una medalla romana"
+artiste = "Hans Memling"
+annee = "hacia 1474–1480"
+image = "homme-medaille.jpg"
+technique = "Óleo sobre tabla, 31 × 23,2 cm"
+collection = "Real Museo de Bellas Artes (KMSKA), Amberes"
+note = "Un italiano de Flandes muestra una moneda con la efigie de Nerón, ante un paisaje apacible: un retrato de humanista, obra del pintor más solicitado de Brujas."
+description = """
+Un hombre vestido de negro, con un gorro oscuro, se presenta de tres cuartos, muy cerca de nosotros, como tras una ventana. Sus cabellos castaños y rizados enmarcan un rostro sereno, de mirada dirigida al espectador. El cuello de su camisa blanca, fruncido, se cierra con un cordón. En el ángulo inferior derecho, su mano sostiene entre los dedos una moneda de bronce en la que se reconoce el perfil laureado del emperador Nerón. Detrás de él se abre un paisaje apacible: colinas boscosas, un estanque donde se deslizan unos cisnes, un pequeño jinete sobre un caballo blanco, una palmera y, a lo lejos, un castillo en una altura, bajo un cielo claro salpicado de ligeras nubes."""
+evocation = """
+La medalla es la clave del cuadro. Sostener una moneda antigua es presentarse como humanista, como aficionado a esa Antigüedad que Italia redescubre entonces con pasión. El vestido, a la moda italiana, y este gusto por las antigüedades han llevado a buscar al modelo entre los italianos presentes en Flandes. Se ha propuesto al diplomático veneciano Bernardo Bembo, embajador ante Carlos el Temerario a principios de la década de 1470, cuyos emblemas eran precisamente el laurel y la palmera, ambos presentes en el cuadro; otros han pensado en un medallista o en un coleccionista. Ninguna hipótesis está probada. En todo caso, el retrato expresa el encuentro de dos mundos: la precisión flamenca al servicio de la cultura humanista italiana."""
+histoire = """
+Establecido en Brujas desde 1465, Memling cuenta entre sus clientes con numerosos italianos: banqueros de la sucursal de los Médicis, mercaderes, diplomáticos de paso, que llevan sus retratos a su país. Esta pequeña tabla, pintada para tenerla en la mano o colocarla sobre un mueble, pertenece sin duda a esa clientela. Su historia antigua es mal conocida: reaparece en Lyon a principios del siglo XIX, antes de ingresar en el museo de Amberes, que la conserva con el número de inventario 5. Hoy el museo la expone bajo el nombre de Bernardo Bembo, con prudencia. Figura entre los retratos más estudiados de Memling, pues ilustra los estrechos vínculos entre los pintores flamencos y sus comitentes italianos."""
+facture = """
+El pintor reúne dos tradiciones. Del retrato flamenco conserva la pose de tres cuartos, la precisión de las carnaciones y la factura casi tangible de la mano que adelanta la medalla hasta el borde del cuadro, como sobre el alféizar de una ventana. Pero en lugar del habitual fondo negro, abre tras el modelo un paisaje luminoso, pintado en perspectiva aérea: los verdes palidecen y azulean a medida que se alejan. La gama es contenida, negro, blanco, carne, sobre el azul del cielo, y el trazado de los rizos, mechón a mechón, muestra la finura del pincel al óleo."""
+details = [
+  "En la moneda, la inscripción latina con el nombre de Nerón rodea su perfil laureado.",
+  "Abajo, en el centro, dos hojas de laurel, quizá un emblema del modelo.",
+  "A la derecha, una palmera, árbol poco flamenco, a la orilla del estanque.",
+  "Sobre el agua, unos cisnes, y en la orilla un diminuto jinete sobre un caballo blanco.",
+  "La fina red de craquelados de la pintura, bien visible en el rostro.",
+]
+themes = ["retrato", "humanismo", "antigüedad", "paisaje", "italia"]
+anecdote = """
+Memling pasa por ser el primer pintor al norte de los Alpes que colocó un retrato ante un paisaje abierto. La idea hizo fortuna en Italia: pronto se la encuentra en los retratistas de Florencia y Venecia, del Perugino al joven Rafael."""
+salle = 2
+mur = "est"
+place = 1
+largeur = 0.75
+
+[[oeuvres]]
+titre = "El jardín de las delicias"
+artiste = "Jérôme Bosch"
+annee = "hacia 1490–1500"
+image = "jardin-des-delices.jpg"
+technique = "Óleo sobre tablas de roble, tríptico abierto, 205,5 × 384,9 cm"
+collection = "Museo del Prado, Madrid"
+note = "El paraíso, un jardín de placeres extraños y después el infierno: el más misterioso de los trípticos, que se lee de izquierda a derecha como una historia de la humanidad."
+description = """
+Abierto, el tríptico se lee de izquierda a derecha. La tabla izquierda muestra el paraíso terrenal: Dios presenta a Eva, recién creada, a Adán que despierta, en medio de animales familiares o exóticos, una jirafa, un elefante, junto a una extraña fuente rosa. El gran panel central es un inmenso jardín poblado por cientos de cuerpos desnudos, hombres y mujeres, que se bañan, se abrazan, cabalgan en ronda en torno a un estanque, se deslizan en conchas, burbujas de cristal y frutas gigantes, fresas, cerezas, moras. A la derecha, el infierno, sumido en la noche y los incendios: instrumentos de música convertidos en instrumentos de suplicio, un monstruo con cabeza de ave que devora a los condenados y un hombre-árbol con el cuerpo de cáscara de huevo rota."""
+evocation = """
+El sentido del tríptico se debate desde hace siglos. La lectura más extendida ve en él una advertencia: entre la creación de la primera pareja y la condenación, el jardín central mostraría a la humanidad entregada al placer de los sentidos, una voluptuosidad tan frágil como las frutas maduras y las burbujas de cristal que la cobijan. Otros han visto en él un paraíso de inocencia perdida o, en el siglo XX, el ideal secreto de una secta. Las frutas, las aves, los peces tenían entonces connotaciones eróticas que el público culto sabía leer. El Bosco, ferviente católico, miembro de una cofradía religiosa de su ciudad, pinta menos un sueño que un sermón, pero un sermón de una invención tan desbordada que los surrealistas lo adoptaron como antepasado."""
+histoire = """
+En 1517, un año después de la muerte del Bosco, Antonio de Beatis, secretario de un cardenal en viaje, describe el cuadro en el palacio de los condes de Nassau en Bruselas: es sin duda un encargo de esta gran familia de la corte de Borgoña, quizá de Enrique III de Nassau. En 1568, el duque de Alba lo confisca a Guillermo de Orange, heredero de los Nassau y jefe de la rebelión de los Países Bajos, y pasa a un hijo natural del duque, Fernando de Toledo. A la muerte de este, Felipe II lo compra y lo envía en 1593 al monasterio de El Escorial. Ingresa en el Prado en 1939. Su título actual es moderno: los inventarios españoles lo llamaban, entre otros nombres, el cuadro del madroño, cuyos frutos rojos salpican el jardín."""
+facture = """
+El Bosco pinta rápido y ligero, en capas finas sobre una preparación clara que hace resplandecer los colores: rosas tiernos, azules de porcelana, verdes ácidos en el jardín, negros y resplandores rojizos de incendio en el infierno. El dibujo subyacente, revelado por la imagen infrarroja, muestra que modificaba sus figuras durante el trabajo. La composición, de horizonte muy alto, superpone los planos sin perspectiva unitaria, lo que permite desplegar una multitud de episodios legibles uno a uno. Cerradas, las puertas muestran en grisalla el mundo en el tercer día de la Creación: un globo transparente donde la tierra emerge de las aguas."""
+details = [
+  "En el infierno, una línea de música en las nalgas de un condenado aplastado bajo un laúd.",
+  "El hombre-árbol del infierno, de rostro melancólico, tomado a veces por un autorretrato.",
+  "Un búho acecha en la abertura redonda de la fuente del paraíso.",
+  "En el centro, una ronda de jinetes desnudos gira en torno a un estanque de bañistas.",
+  "En el infierno, dos orejas gigantes, atravesadas por una flecha, empujan una hoja de cuchillo.",
+]
+themes = ["paraíso", "infierno", "pecado", "fantástico", "tríptico", "deseo"]
+anecdote = """
+En 2014, una estudiante estadounidense transcribió la breve melodía pintada en las nalgas de un condenado del infierno, la tocó y la subió a internet: esta música del infierno, de cinco siglos de antigüedad, dio la vuelta a la red."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 3.6
+
+[[oeuvres]]
+titre = "Autorretrato con abrigo de piel"
+artiste = "Albrecht Dürer"
+annee = "1500"
+image = "autoportrait-durer.jpg"
+technique = "Óleo sobre tabla de tilo, 67,1 × 48,9 cm"
+collection = "Alte Pinakothek, Múnich"
+note = "A los 28 años, Durero se pinta de frente, a la manera de una imagen de Cristo: el artista se proclama creador."
+description = """
+Sobre un fondo casi negro, un hombre de 28 años mira de frente al espectador, en una simetría casi perfecta. Sus largos cabellos rizados, de un castaño dorado, caen en bucles regulares sobre los hombros; una barba cuidada enmarca un rostro grave, de ojos fijos. Lleva un manto pardo ribeteado de espesa piel, de mangas rasgadas, cuyo cuello roza su mano, en la parte inferior del cuadro. A la izquierda, a la altura de los ojos, la fecha 1500 corona su célebre monograma, una gran A que cabalga sobre una D. A la derecha, una inscripción latina en letras de oro dice quién es, de dónde viene y a qué edad se representó. Nada más: ni decorado, ni objeto, ni atributo del oficio."""
+evocation = """
+Nunca un pintor se había representado así. La pose frontal, reservada hasta entonces a las imágenes de Cristo, la simetría, los cabellos que caen como los del Salvador en los iconos: todo invita a ver a Durero a semejanza de Cristo. No se trata de una blasfemia, sino de una idea de su tiempo: el hombre es creado a imagen de Dios y el artista, por su don, participa del poder creador divino. La mano, en el centro de la parte inferior del cuadro, es el instrumento de ese don. La obra dice también la ambición de un hijo de orfebre que quiere ver la pintura reconocida como arte liberal, digna de un sabio y de un humanista, y ya no como un simple oficio manual."""
+histoire = """
+Durero pinta esta tabla en Núremberg en 1500, un año cargado de expectativas, que muchos creían cercano al fin de los tiempos. No tiene comitente: es una afirmación de sí mismo, en un momento en que, de regreso de Venecia, mide la distancia entre el prestigio de los pintores italianos y la condición de artesano de los del Norte. El retrato permanece mucho tiempo en Núremberg, donde acaba entrando en las colecciones de la ciudad y exponiéndose en el ayuntamiento. En 1805 es adquirido para las colecciones de Baviera y llega a Múnich; está colgado desde 1836 en la Alte Pinakothek, de la que se ha convertido en una de las obras más célebres."""
+facture = """
+Durero construye su rostro sobre una trama geométrica, buscando unas proporciones ideales que estudiará toda su vida. El triángulo de la cabellera, el eje vertical de la nariz y la estricta frontalidad dan a la imagen una estabilidad de estatua. Sobre el fondo oscuro, la luz viene de la izquierda y modela el rostro con suavidad. Cada mechón, cada pelo de la piel está trazado con un pincel finísimo, con la precisión de un grabador habituado al buril. Los tonos pardos y dorados, poco numerosos, unifican el conjunto."""
+details = [
+  "A la izquierda, la fecha 1500 sobre el monograma AD, célebre en toda Europa.",
+  "A la derecha, en latín: Durero de Núremberg se pintó así, con sus colores, a los 28 años.",
+  "La mano de dedos finos, que pellizca el cuello de piel en la parte inferior del cuadro.",
+  "Los rizos, pintados uno a uno, que atrapan la luz como hilos de oro.",
+  "En el hombro izquierdo del cuadro, la manga rasgada que deja ver un forro rayado.",
+]
+themes = ["autorretrato", "artista", "humanismo", "cristo", "identidad"]
+anecdote = """
+Durero ya se había dibujado a punta de plata a los trece años, en 1484. Este dibujo, considerado a menudo el autorretrato infantil más antiguo del arte europeo, se conserva en la Albertina de Viena, a dos pasos del Kunsthistorisches Museum."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Judit con la cabeza de Holofernes"
+artiste = "Lucas Cranach l'Ancien"
+annee = "hacia 1530"
+image = "judith-cranach.jpg"
+technique = "Óleo sobre tabla de tilo, 87,7 × 58,1 cm"
+collection = "Kunsthistorisches Museum, Viena"
+note = "La heroína bíblica, engalanada como una princesa de la corte de Sajonia, posa la mano sobre la cabeza del general al que acaba de decapitar."
+description = """
+Una joven vista de medio cuerpo se yergue tras un parapeto de piedra, sobre un fondo negro. Lleva un amplio sombrero de terciopelo rojo, tras el cual flotan plumas blancas, un vestido rojo de corpiño bordado, de mangas abullonadas ceñidas con cordones negros, y varios collares superpuestos. Su larga cabellera pelirroja desciende hasta la cintura. Con la mano derecha, enguantada y cubierta de anillos, sostiene en pie una gran espada; con la izquierda, apoya los dedos en la cabeza barbada de Holofernes, colocada sobre el parapeto, con la boca entreabierta y los ojos en blanco. Su rostro pálido y liso no delata ninguna emoción: mira a lo lejos, como indiferente a su gesto."""
+evocation = """
+El libro de Judit cuenta cómo una viuda de Betulia, ciudad sitiada por el ejército asirio, seduce al general Holofernes y luego lo decapita mientras duerme, salvando a su pueblo. Judit encarna la virtud y el valor que triunfan sobre la fuerza bruta; en tiempos de la Reforma, se ha leído también en ella la imagen del débil que, con la ayuda de Dios, derriba al tirano. Pero Cranach hace de ella igualmente una figura de seducción: vestida a la última moda de las cortes alemanas, se une a la galería de heroínas ambiguas, Salomé, Lucrecia, Venus, que su taller multiplica para una clientela principesca. El contraste entre su calma impasible y la cabeza cortada crea una turbación a la vez moral y erótica."""
+histoire = """
+Hacia 1530, Cranach es desde hace un cuarto de siglo el pintor de los príncipes electores de Sajonia en Wittenberg, donde dirige un vasto taller. El tema de Judit conoce allí un gran éxito en la década de 1530: se conocen numerosas versiones, de busto o de medio cuerpo, a veces asociadas a una Salomé. Esta tabla se menciona en las colecciones imperiales de Viena desde la década de 1610, en la época en que los Habsburgo, empezando por el emperador Rodolfo II, buscan con avidez la pintura alemana de la generación de Durero. Hoy forma parte del rico conjunto de obras de Cranach del Kunsthistorisches Museum, que permite seguir la evolución del pintor y de su taller."""
+facture = """
+Cranach pinta sobre madera de tilo con gran nitidez: contornos precisos, superficies lisas, colores francos sin degradados marcados. El rojo domina, del sombrero a las mangas, y se opone al fondo negro que recorta la silueta como un emblema. La figura, acercada y cortada a la cintura, se sitúa tras un parapeto que sirve a la vez de mesa y de frontera entre la imagen y nosotros. El rostro, de modelado apenas indicado, obedece a un tipo femenino casi idéntico de un cuadro a otro, ojos almendrados, frente alta, mentón pequeño, que el taller reproducía a partir de modelos."""
+details = [
+  "A la izquierda, junto a la cabeza, la minúscula firma del pintor: una serpiente alada.",
+  "Los guantes rasgados, sobre los que se han puesto anillos de oro.",
+  "La hoja de la espada, erguida en vertical, que bordea el cuadro como una columna.",
+  "Las plumas blancas que flotan en la negrura tras el sombrero.",
+  "El cuello cortado de Holofernes, en la parte inferior del cuadro, de un realismo crudo.",
+]
+themes = ["biblia", "heroína", "seducción", "moda", "corte"]
+anecdote = """
+La serpiente alada que firma el cuadro procede del escudo de armas concedido a Cranach en 1508 por el elector Federico el Sabio. Hacia 1537, sus alas, hasta entonces erguidas, se abaten como las de un ave: un indicio valioso para fechar las obras del taller."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Los embajadores"
+artiste = "Hans Holbein le Jeune"
+annee = "1533"
+image = "ambassadeurs.jpg"
+technique = "Óleo sobre tabla de roble, 207 × 209,5 cm"
+collection = "National Gallery, Londres"
+note = "Dos jóvenes franceses en Londres, rodeados de los instrumentos del saber, y una calavera deformada que flota a sus pies."
+description = """
+Dos hombres de cuerpo entero, a tamaño natural, flanquean un estante de dos baldas, ante una cortina de damasco verde. A la izquierda, Jean de Dinteville, embajador de Francisco I ante Enrique VIII, lleva un jubón de raso rosa, un amplio manto negro forrado de piel y el medallón de la Orden de San Miguel. A la derecha, su amigo Georges de Selve, obispo de Lavaur, viste una larga túnica parda más austera. En la balda superior, cubierta con una alfombra oriental, instrumentos de astronomía: un globo celeste, relojes de sol, un torquetum. En la balda inferior, un globo terráqueo, un libro de aritmética, un laúd, un estuche de flautas y un libro de cánticos. En primer plano, una forma blanquecina y alargada atraviesa en oblicuo el pavimento."""
+evocation = """
+El cuadro celebra a dos hombres cultos, en la cumbre de su juventud y de su saber: ciencias del cielo arriba, ciencias de la tierra, del número y de la música abajo. Pero todo está minado. Una cuerda del laúd está rota, posible imagen de la discordia; el libro está abierto por unos cánticos luteranos, cuando Europa se desgarra entre católicos y reformados y mientras Inglaterra inicia ese año su ruptura con Roma. La forma oblicua del primer plano es una calavera, visible solo de soslayo: un memento mori que recuerda que la muerte borra toda gloria. En el ángulo superior izquierdo, medio oculto por la cortina, un pequeño crucifijo parece ofrecer el único recurso."""
+histoire = """
+En la primavera de 1533, Georges de Selve visita en Londres a Jean de Dinteville, en misión ante Enrique VIII en el momento de la boda del rey con Ana Bolena. Dinteville encarga a Holbein, que había regresado a Inglaterra el año anterior, este doble retrato a tamaño natural, que se lleva a su castillo de Polisy, en Champaña. El cuadro sale de la familia en el siglo XVII, pasa por varias ventas y llega a Inglaterra a finales del siglo XVIII. La National Gallery lo adquiere en 1890 al conde de Radnor. Durante mucho tiempo se ignoró quiénes eran los dos hombres: solo fueron identificados con certeza hacia 1900, gracias sobre todo al nombre de Polisy inscrito en el globo terráqueo."""
+facture = """
+Holbein une la precisión flamenca a la monumentalidad italiana. Cada materia está representada con una exactitud asombrosa: la seda, el terciopelo, la piel, el latón de los instrumentos, los motivos de la alfombra. La calavera es una anamorfosis, una imagen deliberadamente deformada mediante un cálculo de perspectiva, que solo se endereza vista en ángulo rasante. El pavimento reproduce el dibujo del suelo de mármol del santuario de la abadía de Westminster. La composición, casi cuadrada, descansa en una simetría estable que la oblicua de la calavera viene a romper."""
+details = [
+  "En la vaina de la daga de Dinteville, su edad: 29 años.",
+  "En el canto del libro en que se apoya Georges de Selve, su edad: 25 años.",
+  "En el ángulo superior izquierdo, medio oculto por la cortina, un pequeño crucifijo.",
+  "En el laúd, una cuerda rota.",
+  "En el globo terráqueo, en Francia, el nombre de Polisy, el castillo de Dinteville.",
+]
+themes = ["retrato", "saber", "vanidad", "muerte", "diplomacia", "anamorfosis"]
+anecdote = """
+Se ha supuesto que el cuadro estaba colgado cerca de una puerta o de una escalera: al pasar de lado, el visitante veía de pronto enderezarse la calavera. En la National Gallery, todavía hoy la gente se pega a la pared, al borde del cuadro, para verla aparecer."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 2.1
+
+[[oeuvres]]
+titre = "La Torre de Babel"
+artiste = "Pieter Bruegel l'Ancien"
+annee = "1563"
+image = "tour-de-babel.jpg"
+technique = "Óleo sobre tabla de roble, 114 × 155 cm"
+collection = "Kunsthistorisches Museum, Viena"
+note = "Una torre colosal, inspirada en el Coliseo, se alza a orillas de un puerto flamenco: el sueño de orgullo de los hombres, ya agrietado."
+description = """
+Una torre inmensa, redonda y de varios pisos, ocupa el centro del cuadro y sobrepasa las nubes. Construida en torno a un peñasco, mezcla las arcadas de un anfiteatro antiguo con andamios, grúas y rampas por las que circulan carros. Los pisos inferiores, de piedra clara, parecen ya desgastados, mientras que la cima, de ladrillo rojo, sigue en obras. A sus pies se extiende una ciudad flamenca de tejados apretados y, a la derecha, un puerto donde atracan navíos y balsas de madera. En primer plano, a la izquierda, el rey Nemrod, con un manto claro, visita las obras con su séquito; ante él, unos canteros se arrodillan y se postran."""
+evocation = """
+El Génesis cuenta que los hombres, que hablaban todos una misma lengua, quisieron construir una torre cuya cima tocase el cielo; Dios confundió sus lenguas y los dispersó. Brueghel hace de ello una meditación sobre el orgullo. El rey Nemrod, a quien la tradición atribuye la empresa, se hace venerar como un soberano absoluto, mientras que los pisos, que no son horizontales, y los cimientos asentados directamente sobre la roca parecen condenar la obra de antemano. Se ha visto en ella una alusión a Amberes, metrópoli mercantil donde se cruzaban entonces todas las lenguas de Europa, y a la vanidad de los grandes proyectos humanos. El modelo del Coliseo evoca Roma, símbolo de poder, pero también de persecución para muchos contemporáneos."""
+histoire = """
+Brueghel firma y fecha la tabla en 1563, el año de su boda y de su instalación en Bruselas. Había visto el Coliseo durante su viaje a Italia, una decena de años antes. En 1566, el cuadro pertenece al rico mercader de Amberes Niclaes Jongelinck, gran coleccionista de sus obras. Entra más tarde en las colecciones del emperador Rodolfo II, en Praga, apasionado de la pintura flamenca, y luego en las colecciones imperiales de Viena. Brueghel pintó al menos otra Torre de Babel, más pequeña y más sombría, hoy en el museo Boijmans Van Beuningen de Róterdam, donde la torre, mucho más alta, perfora ya las nubes."""
+facture = """
+Brueghel describe la obra como un ingeniero: grúas de rueda movidas por hombres que caminan en su interior, andamios, polipastos, cabañas de obreros, todo está observado con exactitud, a una escala minúscula. La vista picada y el horizonte alto reúnen la torre, la ciudad y el puerto en un solo panorama. La luz, procedente de la izquierda, da relieve a la masa clara de la torre, que se recorta sobre el cielo pálido y el mar. El contraste entre el bloque monumental y la multitud de pequeñas figuras hace sentir la escala desmesurada de la empresa."""
+details = [
+  "En primer plano, el rey Nemrod, coronado, y los canteros arrodillados.",
+  "A la derecha de la torre, una grúa de rueda, movida por hombres que caminan en su interior.",
+  "En lo más alto, una nube se agarra ya a los últimos pisos.",
+  "Los pisos que no son paralelos al suelo: la torre parece inclinarse ya.",
+  "En el puerto, unos navíos descargan materiales y una balsa de madera atraca.",
+]
+themes = ["biblia", "orgullo", "arquitectura", "ciudad", "obra"]
+anecdote = """
+Brueghel pintó una tercera Torre de Babel, sobre marfil, mencionada en 1577 en el inventario del célebre miniaturista Giulio Clovio, a quien había conocido en Roma. Hoy está perdida."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Cazadores en la nieve (El invierno)"
+artiste = "Pieter Bruegel l'Ancien"
+annee = "1565"
+image = "chasseurs-dans-la-neige.jpg"
+technique = "Óleo sobre tabla de roble, 116,5 × 162 cm"
+collection = "Kunsthistorisches Museum, Viena"
+note = "Tres cazadores regresan casi con las manos vacías, con el valle helado a sus pies: uno de los paisajes de invierno más célebres del mundo."
+description = """
+En primer plano, tres cazadores fatigados suben una colina nevada, seguidos de sus perros de cabezas gachas; uno lleva a la espalda un flaco zorro. A la izquierda, ante una posada cuyo letrero cuelga torcido, unos aldeanos mantienen un gran fuego para chamuscar un cerdo. Una hilera de árboles negros y desnudos marca el descenso hacia el valle, donde se extienden estanques helados cubiertos de diminutos patinadores y jugadores. Más lejos, un pueblo, una iglesia, un molino atrapado por el hielo y, en el horizonte, improbables picos alpinos bajo un cielo verde grisáceo. Unos cuervos están posados en las ramas; una urraca planea sobre el vacío."""
+evocation = """
+El cuadro capta el invierno tal como se vive: el frío, el hambre, el cansancio del regreso, pero también el juego y la vida colectiva que continúan. A menudo se ha leído en él el ciclo inmutable de las estaciones y el lugar modesto del hombre en la naturaleza. La escasa presa de los cazadores, un solo zorro, contrasta con la alegre agitación de los patinadores: la dureza y la alegría coexisten. El cuadro se ha relacionado también con los inviernos rigurosos de esos años, en el corazón de lo que se llama la Pequeña Edad de Hielo, aunque Brueghel compone un paisaje ideal más que una vista fiel: sus montañas no tienen nada de flamenco."""
+histoire = """
+La tabla forma parte de una serie de seis cuadros dedicados a los momentos del año, encargada por el mercader de Amberes Niclaes Jongelinck para su residencia. Se conservan cinco: tres están en Viena, Cazadores en la nieve, Día sombrío y El regreso del rebaño, uno en Praga, La siega del heno, y uno en Nueva York, Los segadores. En 1594, la ciudad de Amberes ofrece la serie al archiduque Ernesto de Austria, gobernador de los Países Bajos. A su muerte, al año siguiente, los cuadros pasan a su hermano, el emperador Rodolfo II, y después se incorporan a la colección del archiduque Leopoldo Guillermo y a las colecciones imperiales de Viena."""
+facture = """
+La composición descansa en una gran diagonal: la línea de los árboles y de los cazadores lleva la mirada desde el ángulo izquierdo hacia la profundidad, de un solo impulso, hasta las montañas. La paleta se reduce a tres registros: el blanco de la nieve, los pardos y negros de las figuras y los árboles, el verde frío y azulado del hielo y del cielo. Esta economía basta para expresar el silencio del aire helado. Las siluetas oscuras sobre fondo blanco y la vista picada evocan la estampa. Brueghel, que había cruzado los Alpes, recompone sus recuerdos de montaña en un valle imaginario."""
+details = [
+  "El letrero de la posada, medio descolgado: un ciervo y un santo arrodillado.",
+  "El flaco zorro que lleva uno de los cazadores, única pieza del día.",
+  "Las huellas de pasos de los hombres y de los perros en la nieve fresca.",
+  "Abajo a la derecha, la rueda del molino, inmovilizada por el hielo.",
+  "La urraca que planea sobre el valle, única mancha en movimiento en el cielo.",
+]
+themes = ["invierno", "paisaje", "estaciones", "caza", "pueblo", "nieve"]
+anecdote = """
+El cineasta Andréi Tarkovski admiraba este cuadro: en Solaris (1972), su cámara recorre largamente sus detalles, como un recuerdo de la Tierra para un héroe perdido en el espacio, y recupera su atmósfera en un paisaje de nieve de El espejo (1975)."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.8
+
+[[oeuvres]]
+titre = "El banquete de bodas"
+artiste = "Pieter Bruegel l'Ancien"
+annee = "1568"
+image = "repas-de-noces.jpg"
+technique = "Óleo sobre tabla de roble, 113 × 164 cm"
+collection = "Kunsthistorisches Museum, Viena"
+note = "En un granero, un banquete de bodas aldeano: la novia preside bajo su corona de papel y los platos llegan sobre una puerta desmontada."
+description = """
+La escena transcurre en un granero, cuya pared del fondo está hecha de gavillas de trigo amontonadas. Una larga mesa, en diagonal, acoge a los comensales apretados en bancos. En el centro, la novia, con los ojos entornados y las manos juntas, está sentada ante un tapiz verde del que pende una corona de papel. En primer plano, dos hombres con delantal llevan sobre una puerta desmontada unos platos de papilla. A la izquierda, un hombre vierte cerveza en unas jarras; dos gaiteros esperan, uno de ellos mirando los platos con ojo goloso; un niño con un gorro demasiado grande lame su plato, sentado en el suelo. En el extremo derecho, un monje franciscano habla con un hombre vestido de negro, con la espada al cinto."""
+evocation = """
+Brueghel observa el mundo campesino sin desprecio ni idealización. La alegría es sencilla, la comida modesta, la fiesta a la vez ruidosa y laboriosa. El propio novio sigue sin aparecer: según una costumbre flamenca, no se sentaba a la mesa de honor, y se ha propuesto reconocerlo en el hombre que sirve la bebida o en el que pasa los platos. Algunos ven en el cuadro una crítica de la gula; otros leen en él una simpatía real por la vida colectiva del pueblo. La presencia del monje y del señor, venidos de otros mundos, muestra a una sociedad entera reunida en torno a una mesa, con sus jerarquías y sus intercambios."""
+histoire = """
+Pintado en Bruselas el año anterior a la muerte de Brueghel, el cuadro pertenece a las escenas campesinas de sus últimos años, junto con La danza de la boda o La danza de los campesinos. Lo adquiere en 1594 en Bruselas el archiduque Ernesto de Austria, gobernador de los Países Bajos, y entra después en la colección del archiduque Leopoldo Guillermo, también gobernador de los Países Bajos en el siglo XVII y gran coleccionista, antes de incorporarse a las colecciones imperiales de Viena. El borde inferior de la tabla fue recortado y luego completado con una banda de cinco centímetros. La composición fue copiada en numerosas ocasiones, entre otros por Pieter Brueghel el Joven, hijo del pintor."""
+facture = """
+La mesa, colocada en diagonal, crea una profundidad inmediata y conduce la mirada del primer plano al fondo del granero. Las figuras delanteras, macizas y casi cortadas por el marco, están pintadas a gran escala, como si el espectador acabara de entrar. Brueghel reparte colores francos en un ritmo regular: rojos de los gorros y de los jubones, blancos de los delantales y de las tocas, verde del tapiz que aísla a la novia. Los gestos, las posturas, el paso de los portadores están observados con una justeza que hace de cada comensal un carácter."""
+details = [
+  "La corona de papel suspendida sobre la novia, ante el tapiz verde.",
+  "El gaitero que mira de reojo los platos de papilla.",
+  "El niño sentado en el suelo, con un gorro rojo demasiado grande, que lame su plato.",
+  "Los platos llevados sobre una puerta sacada de sus goznes.",
+  "Al fondo a la izquierda, la multitud de invitados que se apiña a la entrada del granero.",
+]
+themes = ["fiesta", "campesinos", "boda", "banquete", "pueblo", "música"]
+anecdote = """
+Según el biógrafo Karel van Mander, en 1604, Brueghel y su amigo el mercader Hans Franckert se disfrazaban de campesinos para mezclarse en las kermeses y las bodas de aldea, llevando regalos como si fueran de la familia."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.7
+
+[[artistes]]
+nom = "Jan van Eyck"
+vie = "Maaseik (?), hacia 1390 – Brujas, 1441"
+biographie = """
+Jan van Eyck aparece por primera vez en los documentos en 1422, en La Haya, al servicio de Juan de Baviera, conde de Holanda. En 1425 se convierte en pintor y ayuda de cámara del duque de Borgoña Felipe el Bueno, uno de los príncipes más ricos de Europa, que le paga una pensión y le confía misiones secretas. En 1428-1429, acompaña a la embajada enviada a Portugal para negociar el matrimonio del duque con la infanta Isabel, de la que pinta el retrato. Hacia 1430 se instala en Brujas, donde se casa; el duque sostiene a uno de sus hijos sobre la pila bautismal. En 1432 concluye el gran políptico de El Cordero Místico, en Gante, comenzado por su hermano Hubert, muerto en 1426. Siguen una veintena de cuadros firmados o atribuidos: retratos de presencia impresionante, como El hombre del turbante rojo o Los esposos Arnolfini, y retablos como La Virgen del canciller Rolin. Muere en Brujas en 1441, celebrado como el primer pintor de su tiempo."""
+style = """
+Van Eyck lleva la pintura al óleo a una perfección jamás alcanzada: mediante veladuras superpuestas, expresa la luz, la transparencia y la textura de cada materia, del brocado a la piel arrugada. Su mirada abarca a la vez lo inmenso y lo minúsculo, un paisaje lejano y un reflejo en una perla. Su realismo, cargado de símbolos religiosos, funda la escuela de los primitivos flamencos y fascina a Italia, que busca sus cuadros. Su divisa, Als ich can, «como puedo», exhibe una modestia puramente retórica."""
+
+[[artistes]]
+nom = "Rogier van der Weyden"
+vie = "Tournai, hacia 1399-1400 – Bruselas, 18 de junio de 1464"
+biographie = """
+Nacido en Tournai con el nombre de Rogier de le Pasture, se forma en el taller de Robert Campin, donde figura inscrito como aprendiz en 1427, y se convierte en maestro en 1432. Hacia 1435 se instala en Bruselas, de la que es pintor oficial, y traduce su nombre al flamenco. Para el ayuntamiento pinta grandes paneles sobre la justicia, hoy destruidos, que causaban la admiración de los viajeros. Dirige un taller muy activo y recibe encargos de toda Europa: del canciller Nicolas Rolin, para quien pinta el Juicio Final de los Hospicios de Beaune, de la corte de Borgoña, de mercaderes y de príncipes italianos. En 1450, año jubilar, viaja a Roma. Rico y respetado, muere en Bruselas en 1464. Su influencia, difundida por sus discípulos y por innumerables copias, domina la pintura flamenca, alemana y española hasta principios del siglo XVI."""
+style = """
+Rogier van der Weyden retoma la precisión de Van Eyck, pero la pone al servicio de la emoción. Sus composiciones, a menudo en friso, tienen la claridad de relieves esculpidos; sus líneas angulosas, sus paños quebrados y sus rostros en lágrimas dan al dolor una intensidad nueva. Retratista refinado, crea un tipo de retrato aristocrático, elegante y contenido, sobre fondo neutro. Copiados durante décadas, sus modelos han hecho de él el pintor más imitado del norte de Europa en el siglo XV."""
+
+[[artistes]]
+nom = "Hans Memling"
+vie = "Seligenstadt (Hesse), hacia 1430-1440 – Brujas, 11 de agosto de 1494"
+biographie = """
+Hans Memling nace en Alemania, en Seligenstadt, cerca de Fráncfort. Se ignora todo de su formación, pero su arte sugiere un paso por el taller de Rogier van der Weyden en Bruselas. En 1465 obtiene la ciudadanía de Brujas, uno de los grandes centros comerciales de Europa, donde pasa el resto de su vida. Allí se convierte en el pintor más solicitado de la ciudad: sus clientes son banqueros y mercaderes italianos, como Tommaso Portinari, representante de los Médicis, ingleses, miembros de la corte de Borgoña e instituciones religiosas. Su gran Juicio Final, destinado a Florencia, es capturado en el mar en 1473 por un corsario de Danzig y sigue estando en Gdansk. Para el hospital de San Juan de Brujas pinta varios retablos y el relicario de santa Úrsula, concluido en 1489, que se conservan todavía allí. En 1480 figura entre los mayores contribuyentes de la ciudad. A su muerte, en 1494, un notario de Brujas anota que pasaba por el pintor más hábil de toda la cristiandad."""
+style = """
+Memling suaviza la herencia de Van Eyck y de Rogier: sus figuras calmas, de rostros ovalados y serenos, se bañan en una luz uniforme y en paisajes apacibles. Su dibujo es límpido, su color fresco, sus composiciones equilibradas y simétricas. Retratista solicitado, coloca a sus modelos ante ventanas o paisajes abiertos, una fórmula que los pintores italianos adoptan con entusiasmo. Largo tiempo olvidado, es redescubierto en el siglo XIX por los románticos, que ven en él al más puro de los primitivos."""
+
+[[artistes]]
+nom = "Jérôme Bosch"
+vie = "Bolduque, hacia 1450 – Bolduque, agosto de 1516"
+biographie = """
+Jheronimus van Aken nace hacia 1450 en Bolduque, ciudad próspera del ducado de Brabante, en una familia de pintores: su abuelo, su padre y sus tíos ejercen el oficio. Firma sus obras con un nombre tomado del de su ciudad, Jheronimus Bosch. Hacia 1480 se casa con Aleid van de Meervenne, de familia acomodada, que le aporta fortuna y tierras. Es miembro de la Ilustre Cofradía de Nuestra Señora, una asociación religiosa influyente para la que realiza diversos trabajos. Apenas parece haber salido de su ciudad, pero su reputación se extiende lejos: Felipe el Hermoso, duque de Borgoña, le encarga en 1504 un gran Juicio Final, y sus cuadros son buscados por los coleccionistas de los Países Bajos, de Italia y de España. Muere en 1516; la cofradía celebra sus funerales el 9 de agosto. Tras su muerte, sus invenciones son imitadas y copiadas profusamente. El rey Felipe II de España, su más fervoroso admirador, reúne sus obras en El Escorial, de donde proceden las que conserva hoy el Prado."""
+style = """
+El Bosco inventa un mundo sin equivalente: criaturas híbridas, mitad hombres, mitad objetos, demonios, frutas gigantes, arquitecturas orgánicas. Bajo la fantasía se esconde un moralista que denuncia los pecados y la locura de los hombres, con un vocabulario nutrido de proverbios, sermones y creencias populares. Su pintura, rápida y fluida, de colores vivos sobre fondos claros, rompe con el acabado minucioso de sus predecesores. Imitado desde el siglo XVI, entre otros por Brueghel, fue saludado en el siglo XX como precursor del surrealismo."""
+
+[[artistes]]
+nom = "Albrecht Dürer"
+vie = "Núremberg, 21 de mayo de 1471 – Núremberg, 6 de abril de 1528"
+biographie = """
+Hijo de un orfebre húngaro establecido en Núremberg, Albrecht Durero aprende primero el oficio de su padre y entra en 1486 en el taller del pintor Michael Wolgemut. Tras cuatro años de viaje por las tierras del Rin, se casa con Agnes Frey en 1494 y parte enseguida hacia Venecia, donde descubre la pintura italiana. De regreso en Núremberg, publica en 1498 el Apocalipsis, una serie de grandes grabados en madera que le hace célebre en toda Europa. Vuelve a Venecia de 1505 a 1507 y allí pinta La fiesta del Rosario para los mercaderes alemanes de la ciudad. A partir de 1512 trabaja para el emperador Maximiliano I, que le concede una pensión. Sus tres grabados al buril más célebres, entre ellos Melencolia I, datan de 1513-1514. En 1520-1521 viaja a los Países Bajos, donde los artistas de Amberes lo reciben como a un príncipe, y conoce a Erasmo. Dedica sus últimos años a tratados de geometría, de fortificación y de proporciones humanas, y muere en Núremberg en 1528."""
+style = """
+Durero reúne la precisión del Norte y la ciencia italiana de la perspectiva y de las proporciones, que es el primer alemán en estudiar como teórico. Grabador sin igual, lleva el grabado en madera y en cobre a una finura nunca vista, y difunde así su arte por toda Europa. Sus acuarelas de plantas, animales y paisajes figuran entre los primeros estudios de naturaleza autónomos. Con sus autorretratos, impone además una nueva imagen del artista, sabio y creador."""
+
+[[artistes]]
+nom = "Lucas Cranach l'Ancien"
+vie = "Kronach (Franconia), hacia 1472 – Weimar, 16 de octubre de 1553"
+biographie = """
+Lucas Cranach toma su nombre de su ciudad natal, Kronach, en Franconia, donde se forma junto a su padre, pintor. Hacia 1501 se encuentra en Viena, donde pinta retratos de humanistas y escenas religiosas en grandes paisajes de bosque. En 1505, el elector de Sajonia Federico el Sabio lo llama a Wittenberg como pintor de corte, cargo que conserva bajo tres electores sucesivos. En 1508 recibe un escudo de armas adornado con una serpiente alada, que se convierte en su firma. Dirige un taller muy productivo, con sus hijos Hans y Lucas, y se convierte en uno de los hombres más ricos de la ciudad: posee una farmacia, una imprenta, casas, y es varias veces burgomaestre. Amigo de Martín Lutero, le hace múltiples retratos e ilustra sus escritos: se convierte en el pintor de la Reforma. Tras la derrota de los príncipes protestantes en 1547, se reúne con el elector Juan Federico en su cautiverio y luego lo sigue a Weimar, donde muere en 1553."""
+style = """
+Cranach inventa un arte de corte seductor e inmediatamente reconocible: contornos nítidos, colores vivos aplicados en planos, fondos oscuros o lisos, cuerpos femeninos esbeltos de rostros menudos. Sus Venus, Judit y Lucrecia, tan elegantes como ambiguas, mezclan moral y erotismo. Retratista eficaz, fija la imagen de Lutero y de los príncipes protestantes, difundida en series por su taller. Su estilo, largo tiempo juzgado manierista, ha fascinado a los artistas modernos, con Picasso a la cabeza."""
+
+[[artistes]]
+nom = "Hans Holbein le Jeune"
+vie = "Augsburgo, hacia 1497-1498 – Londres, 1543"
+biographie = """
+Hijo del pintor Hans Holbein el Viejo, aprende el oficio en Augsburgo antes de establecerse en Basilea hacia 1515. Allí dibuja para los grandes impresores de la ciudad, pinta fachadas y retablos, y hace varios retratos de Erasmo, el más célebre humanista de su tiempo. Sus grabados de La danza de la muerte, dibujados en la década de 1520, le dan a conocer en toda Europa. Cuando la Reforma llega a Basilea y los encargos religiosos escasean, parte a Londres en 1526, provisto de una recomendación de Erasmo para Tomás Moro, cuya familia retrata. De regreso en Basilea en 1528, vuelve definitivamente a Inglaterra en 1532. Allí retrata a los mercaderes alemanes de la Hansa y luego entra al servicio de Enrique VIII, de quien se convierte en pintor hacia 1536: fija la imagen del rey, de sus esposas y de sus ministros. En 1539 es enviado a pintar a Ana de Cléveris, con quien el rey se casa antes de repudiarla pocos meses después. Muere en Londres en el otoño de 1543."""
+style = """
+Holbein es el retratista más preciso del Renacimiento: sus dibujos preparatorios, ejecutados en pocas sesiones, captan un rostro con una objetividad sin complacencia, y luego la pintura restituye cada tela y cada joya con una nitidez de orfebre. Combina el realismo flamenco con la amplitud y la claridad de composición aprendidas de Italia. Sus retratos de Enrique VIII y de su corte han moldeado la imagen que conservamos de la Inglaterra de los Tudor."""
+
+[[artistes]]
+nom = "Pieter Bruegel l'Ancien"
+vie = "Brabante (?), hacia 1525-1530 – Bruselas, 9 de septiembre de 1569"
+biographie = """
+Casi nada se sabe de su juventud, ni siquiera su lugar de nacimiento exacto. En 1551 es admitido como maestro en el gremio de San Lucas de Amberes. Pronto parte hacia Italia, donde reside sobre todo en Roma, hasta hacia 1554; atraviesa los Alpes a la ida y a la vuelta y trae de ellos dibujos de montañas. En Amberes trabaja para el editor de estampas Hieronymus Cock, de la casa de Los Cuatro Vientos, que graba y difunde sus composiciones: paisajes, proverbios, pecados capitales a la manera del Bosco. A partir de finales de la década de 1550 se dedica más a la pintura. En 1563 se casa en Bruselas con Mayken Coecke, hija del pintor Pieter Coecke van Aelst, y se instala en esa ciudad. Allí pinta, para ricos aficionados como Niclaes Jongelinck o el cardenal de Granvela, la serie de las Estaciones, las escenas campesinas y las parábolas de sus últimos años. Muere en 1569, dejando dos hijos aún niños, Pieter y Jan, que fundan una dinastía de pintores. Se conocen una cuarentena de sus cuadros, doce de ellos en el Kunsthistorisches Museum."""
+style = """
+Brueghel mira el mundo desde lo alto, en vastos panoramas poblados de multitudes minúsculas, o desde muy cerca, en medio de los campesinos. Heredero del Bosco por su gusto por los proverbios y la sátira, hace de la naturaleza y de la gente sencilla verdaderos temas de pintura. Sus figuras achaparradas, sus colores francos y sus composiciones en diagonal tienen una legibilidad ejemplar. Abre el camino a la pintura de género y al paisaje holandés del siglo XVII."""

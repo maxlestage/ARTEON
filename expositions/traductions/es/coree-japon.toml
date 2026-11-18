@@ -1,0 +1,958 @@
+[exposition]
+ordre = 27
+nom_court = "Corea y Japón"
+mouvement = "Corea y Japón, biombos, celadones y rollos"
+cadre = "aucun"
+couleur = "#3d6b5c"
+titre = "Corea y Japón, el verde del celadón y el oro de los biombos"
+artiste = "Goryeo, Joseon, Jeong Seon, Kim Hong-do, Sōtatsu, Kōrin, Tōhaku…"
+dates = "siglos XII–XVIII"
+accroche = "Exposición virtual · Museo Nacional de Kioto"
+introduction = """
+Seis siglos de arte a ambos lados del estrecho de Corea. De un lado, el verde profundo \
+de los celadones de Goryeo, la blancura desnuda de las jarras luna de Joseon, las montañas \
+pintadas del natural por Jeong Seon y las escenas de aldea de Kim Hong-do. Del \
+otro, los rollos narrativos de la época de Heian, los biombos de fondo de oro de \
+Sōtatsu y de Kōrin, los pinos en la bruma de Tōhaku y un plato modelado por Kenzan y \
+pintado por su hermano Kōrin. Diez obras, reunidas en un edificio inspirado en el ala \
+Heisei Chishinkan del Museo Nacional de Kioto, diseñada por Taniguchi Yoshio: un gran \
+vestíbulo luminoso, una larga galería donde se despliegan los biombos, y tres salas en torno \
+a ella, para las cerámicas, la pintura coreana y los rollos."""
+vitrine = "dieux-vent-tonnerre.jpg"
+
+[musee]
+nom = "Museo Nacional de Kioto"
+ville = "Kioto, Japón"
+architecte = "Katayama Tōkuma; Taniguchi Yoshio para el ala Heisei Chishinkan"
+construction = "1895–1897; ala Heisei Chishinkan inaugurada en 2014"
+presentation = """
+En 1889, el gobierno Meiji decide fundar tres museos imperiales, en Tokio, en \
+Nara y en Kioto, para proteger los tesoros de los templos y santuarios, maltratados por \
+los trastornos de los comienzos de la era Meiji. En Kioto, el arquitecto Katayama Tōkuma, \
+uno de los primeros japoneses formados en la arquitectura occidental, levanta en el barrio \
+de Higashiyama, frente al templo Sanjūsangen-dō, un pabellón de ladrillo rojo de estilo \
+neobarroco francés, concluido en 1895: el museo imperial de Kioto abre allí en mayo de 1897. \
+Convertido en museo nacional en 1952, conserva sobre todo el arte de la antigua capital, \
+pinturas, esculturas, caligrafías y cerámicas, muchas de ellas confiadas en \
+depósito por los templos de la ciudad, como los Dioses del viento y del trueno de Sōtatsu, \
+propiedad del Kennin-ji. Desde 2014, las colecciones se presentan en el ala Heisei \
+Chishinkan de Taniguchi Yoshio, el arquitecto de la ampliación del MoMA de Nueva York: \
+un largo volumen horizontal de piedra y vidrio, cuyo gran vestíbulo se baña de \
+luz. El pabellón de 1895 fue entonces rebautizado Meiji Kotokan."""
+ici = """
+El edificio de ARTEON toma prestada del ala de Taniguchi su sobriedad: muros claros color \
+de papel y de piedra, largas perspectivas, luz uniforme. Se entra por el sur en \
+el Gran vestíbulo, de dieciocho metros de ancho y nueve de alto. Al norte se abre la Galería de los \
+biombos, de treinta metros de largo, donde se responden Kōrin, Tōhaku y Sōtatsu. Desde allí se \
+accede al oeste a la Sala de las cerámicas y sus vitrinas, al norte a la Sala de la \
+pintura coreana, y al este a la Sala de los rollos, consagrada a los relatos pintados de \
+la época de Heian."""
+
+[[salles]]
+nom = "El Gran vestíbulo"
+theme = "La entrada, clara y alta, como el vestíbulo acristalado del ala Heisei Chishinkan."
+murs = "#ece7de"
+x = 0
+z = 0
+largeur = 18
+profondeur = 8
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La Galería de los biombos"
+theme = "Los grandes biombos japoneses: los lirios de Kōrin, los pinos de Tōhaku, los dioses del viento y del trueno de Sōtatsu."
+murs = "#e3d9c6"
+x = 0
+z = -11
+largeur = 30
+profondeur = 14
+hauteur = 7
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La Sala de las cerámicas"
+theme = "En vitrina, un celadón de Goryeo, una jarra luna de Joseon y un plato de los hermanos Ogata."
+murs = "#e6e0d4"
+x = -21
+z = -11
+largeur = 12
+profondeur = 14
+hauteur = 5
+
+[[salles]]
+nom = "La Sala de la pintura coreana"
+theme = "La Corea de Joseon pintada del natural: el monte Inwang de Jeong Seon y una lucha de aldea de Kim Hong-do."
+murs = "#ebe3d3"
+x = 0
+z = -24
+largeur = 14
+profondeur = 12
+hauteur = 5
+
+[[salles]]
+nom = "La Sala de los rollos"
+theme = "Los rollos narrativos de la época de Heian: la Historia de Genji y los animales traviesos del Chōjū-giga."
+murs = "#e2d8c5"
+x = 21
+z = -11
+largeur = 12
+profondeur = 14
+hauteur = 5
+
+[[oeuvres]]
+titre = "Jarrón maebyeong con grullas y nubes"
+artiste = "Corée, dynastie Goryeo"
+annee = "segunda mitad del siglo XII"
+image = "maebyeong-grues.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:청자_상감_구름_학_무늬_매병_고려-靑磁象嵌雲鶴文梅甁_高麗-Maebyeong_decorated_with_cranes_and_clouds_MET_DP240189.jpg"
+technique = "Gres con decoración incrustada bajo cubierta de celadón, alt. 33,5 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Unas grullas blancas vuelan entre pequeñas nubes sobre el verde pálido de un celadón: el decorado no está pintado, está incrustado en la arcilla."
+description = """
+Un jarrón de algo más de treinta centímetros de alto, de hombro ancho y redondeado, que \
+se estrecha hacia abajo y se ensancha ligeramente en el pie; un cuello muy corto, de labio \
+repulgado, deja solo una pequeña abertura. Toda la superficie está cubierta de un vidriado \
+verde pálido, translúcido, recorrido por finas craqueladuras. Sobre ese fondo, unas grullas blancas \
+vuelan en todas direcciones, con las alas desplegadas, unas subiendo hacia el cuello, otras \
+descendiendo en picado, con el cuello tendido. Entre ellas flotan pequeñas nubes blancas en forma de \
+seta, prolongadas por una larga cola ondulante. En el pie, una greca \
+blanca cierra el decorado. Fotografiado entero sobre un fondo gris, el jarrón se \
+presenta aquí ampliado más de tres veces."""
+evocation = """
+En toda Asia oriental, la grulla es el ave de la longevidad y la montura de los \
+inmortales taoístas; las nubes evocan el cielo donde estos moran. En un jarrón \
+destinado al vino, este vuelo de aves forma un deseo de larga vida y de serenidad, dirigido \
+a comensales refinados. La forma maebyeong, tomada del meiping chino, significa \
+«jarrón de ciruelo»: a menudo se explica este nombre por la costumbre de colocar en él una rama de \
+ciruelo en flor, pero estos jarrones servían ante todo para conservar el alcohol. El verde del \
+celadón buscaba recordar el jade, piedra preciosa entre todas. Este jarrón expresa el \
+gusto de una aristocracia nutrida de budismo y de cultura china, que supo \
+inventar, con la incrustación, un decorado que solo pertenece a Corea."""
+histoire = """
+El reino de Goryeo, que dio su nombre a Corea, lleva el celadón a su apogeo en el \
+siglo XII. Los principales hornos se encuentran en el suroeste de la península, en \
+Gangjin y Buan, cerca del mar, desde donde las piezas llegan por barco a la capital, \
+Kaesong. En 1123, un enviado del emperador de China, Xu Jing, permanece en Kaesong; en \
+su relato de viaje, elogia el color de los celadones coreanos, que los habitantes, \
+anota, comparan con el del martín pescador. A principios del siglo XX, numerosas \
+tumbas de Goryeo, en torno a Kaesong, son excavadas o saqueadas, y sus celadones \
+llegan al mercado del arte, en Japón y luego en Occidente. En ese contexto el \
+marchante de arte japonés Yamanaka Sadajirō ofrece este jarrón al Metropolitan Museum, en \
+1911."""
+facture = """
+El alfarero torneó el jarrón de gres y luego, con la arcilla todavía húmeda pero firme, grabó con \
+cuchillo las grullas, las nubes y la greca. Rellena los huecos de arcilla blanca o \
+negra, rasca el excedente para que la superficie vuelva a quedar lisa, y realiza una primera \
+cocción. Aplica después el vidriado, cargado de un poco de hierro, y cuece el jarrón en un \
+horno privado de oxígeno: eso es lo que da el verde azulado. Esta técnica \
+de incrustación, llamada sanggam, es propia de Corea. Las patas y los picos de las \
+grullas, trazados con una línea negra más fina que el blanco, están también incrustados."""
+details = [
+  "Las grullas que suben y las que descienden en picado, con la cabeza hacia abajo.",
+  "Las patas y el pico de las aves, en fina línea negra incrustada.",
+  "La cola ondulante que prolonga cada pequeña nube.",
+  "La red de craqueladuras del vidriado, visible en el hombro.",
+  "La greca blanca sobre el pie.",
+]
+themes = ["celadón", "grulla", "longevidad", "incrustación", "goryeo"]
+anecdote = """
+El más célebre maebyeong con grullas y nubes, conservado en el museo Kansong de Seúl, \
+está clasificado como tesoro nacional. El coleccionista Jeon Hyeong-pil lo había comprado en 1935 a \
+un marchante japonés, por una suma considerable, para conservar ese patrimonio en \
+Corea."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jarra luna"
+artiste = "Corée, dynastie Joseon"
+annee = "segunda mitad del siglo XVIII"
+image = "jarre-lune.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:백자_달항아리_조선-白磁壺_朝鮮-Moon_Jar_MET_DP231899.jpg"
+technique = "Porcelana, alt. 38,7 cm, diám. 33 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una jarra de porcelana blanca casi redonda, sin decoración alguna: su belleza reside en la forma, en la blancura y en sus imperfecciones."
+description = """
+Una gran jarra casi esférica, algo más alta que ancha, apoyada sobre un pequeño \
+pie anular; un cuello corto y recto, apenas ensanchado, abre la panza hacia arriba. \
+No lleva decoración alguna, ni pintada ni grabada, solo un vidriado blanco, lechoso, \
+ligeramente azulado en algunos puntos. La redondez no es perfecta: el perfil se hincha \
+más de un lado que del otro. Unas manchas rosadas, color carne o de óxido \
+pálido, se extienden en bandas horizontales por la panza; algunos puntos negros salpican la \
+superficie cerca del pie, donde el vidriado deja ver la pasta. De treinta y nueve \
+centímetros de altura real, la jarra se presenta aquí ampliada algo más de tres veces."""
+evocation = """
+El nombre de jarra luna, que solo data del siglo XX, dice bien lo que se ve en ella: un \
+astro blanco, lleno, algo irregular, como la luna que se levanta. Estas jarras reflejan \
+el ideal de la dinastía Joseon, gobernada según el neoconfucianismo, que apreciaba la \
+sencillez, la frugalidad y la pureza del blanco, color que vestían también la mayoría \
+de los coreanos en su ropa de todos los días. Se ha visto en ellas la imagen de una belleza sin \
+artificio, que acepta la asimetría y los accidentes de la cocción. En el siglo XX, \
+artistas coreanos como el pintor Kim Whanki, que las coleccionaba y las pintaba, \
+hicieron de ellas un emblema de la identidad coreana; ceramistas de todo el mundo las \
+imitan hoy."""
+histoire = """
+Las jarras luna se produjeron sobre todo entre finales del siglo XVII y el XVIII, \
+en los hornos oficiales de Gwangju, al sureste de Seúl, que suministraban la \
+porcelana de la corte. Se ignora el uso exacto de cada una: podían contener \
+provisiones o alcohol, o simplemente ser admiradas. Su tamaño planteaba un desafío \
+técnico, pues una forma tan ancha no podía tornearse de una sola vez en una \
+pasta de porcelana. Esta ingresó en el Metropolitan Museum con la colección de arte \
+asiático del coleccionista estadounidense Harry G. C. Packard, adquirida por el museo en \
+1975, en parte por donación, en parte por compra. Solo subsiste un número limitado de estas \
+grandes jarras, conservadas en Corea, Japón, Europa y Estados Unidos."""
+facture = """
+El alfarero torneó por separado dos grandes cuencos hemisféricos y luego los ensambló \
+borde contra borde antes de modelar el cuello y el pie: la unión, a media altura, \
+explica el ligero abultamiento y la asimetría del perfil. La pasta, un caolín muy puro, está \
+cubierta por un vidriado transparente que adquiere, a alta temperatura, ese blanco lechoso. \
+En el horno calentado con leña, el calor nunca era perfectamente uniforme, y la jarra \
+se hundió un poco. Las manchas rosadas procederían de la cocción o de lo que la \
+jarra contuvo, que habría impregnado la porcelana."""
+details = [
+  "El perfil, más abombado de un lado que del otro.",
+  "Las bandas rosadas que atraviesan la panza a media altura.",
+  "El cuello corto, apenas ensanchado, de un blanco más amarillento.",
+  "Los puntos negros y la pasta desnuda cerca del pie.",
+]
+themes = ["porcelana", "blanco", "luna", "sencillez", "joseon"]
+anecdote = """
+En 1935, el ceramista inglés Bernard Leach compra una jarra luna en Seúl y la \
+lleva a Inglaterra diciendo, según se cuenta, que se llevaba la felicidad consigo. \
+Hoy se conserva en el British Museum, en Londres."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Plato cuadrado con chorlitos sobre las olas"
+artiste = "Ogata Kenzan"
+annee = "hacia 1700"
+image = "plat-pluviers.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ogata_Korin_-_Square_Dish_with_Design_of_Plovers_over_Waves_-_1966.365_-_Cleveland_Museum_of_Art.tif"
+technique = "Gres, decoración de óxido de hierro bajo vidriado, 22 × 22 × 2,7 cm; decoración pintada por Ogata Kōrin"
+collection = "Cleveland Museum of Art"
+note = "Kenzan modeló y coció este plato; su hermano mayor, el pintor Kōrin, trazó en él con pincel veloz unos chorlitos que vuelan sobre las olas."
+description = """
+Un plato cuadrado y poco profundo, de veintidós centímetros de lado, de bordes rectos, \
+fotografiado en diagonal sobre un fondo gris. La pasta, color crema, está cubierta por un \
+vidriado transparente finamente craquelado. En el fondo del plato, pintada en marrón negruzco, una \
+gran ola se enrosca a la izquierda y sus líneas de espuma se despliegan hacia la derecha; \
+encima, pequeños pájaros de alas en forma de corazón, los chorlitos, vuelan en \
+bandada. Cerca del borde derecho, unos caracteres trazados con pincel forman la firma \
+del pintor. En los cuatro bordes exteriores corre un decorado continuo de roleos y \
+nubes, donde se abre, en primer plano, una gran flor. El plato se presenta aquí \
+ampliado unas cinco veces."""
+evocation = """
+El chorlito, chidori en japonés, es un ave de orilla cantada desde hace siglos por \
+la poesía cortesana: sus gritos en la playa, las noches de invierno, expresan la soledad y el \
+frío. Asociado a las olas, forma un motivo clásico que los Ogata retoman con \
+una libertad nueva. Este plato ilustra un ideal en el que la pintura, la poesía y el objeto \
+de uso no se separan: un plato para pasteles de la ceremonia del té se convierte en el \
+soporte de una pintura firmada. Atestigua también la complicidad de dos hermanos, nacidos \
+en una rica familia de comerciantes de sedas de Kioto, uno pintor mundano y \
+célebre, el otro alfarero y letrado, enamorado de la soledad."""
+histoire = """
+En 1699, Ogata Kenzan abre su propio horno en Narutaki, al noroeste de Kioto; su \
+nombre de artista, que significa «montaña del noroeste», procede de esa ubicación. Su \
+hermano Kōrin, pintor ya reconocido, acude a decorar algunas de sus piezas. El trabajo \
+se reparte: Kenzan modela el plato, Kōrin pinta en él su motivo, Kenzan aplica el vidriado \
+y se encarga de la cocción. Cada uno firma: Kōrin junto a su dibujo, Kenzan en el reverso. Este \
+plato formaba parte de un servicio destinado a presentar los pasteles que acompañan al \
+té. Perteneció a la colección Ōkōchi, en Tokio, antes de ser vendido por un marchante \
+tokiota al museo de Cleveland, en 1966. Otros platos cuadrados pintados por Kōrin se \
+conservan en Japón."""
+facture = """
+Un plato cuadrado no se tornea: se monta a partir de placas de arcilla ensambladas. \
+Kōrin pinta en él con óxido de hierro, que se vuelve marrón negruzco con la cocción, con un pincel veloz \
+y seguro: la ola en unas pocas curvas, los pájaros en simples manchas dobles. Kenzan \
+cubre luego todo con un vidriado transparente, que al enfriarse adquirió una fina \
+red de craqueladuras. El contraste entre ese dibujo libre, casi caligráfico, en el \
+fondo del plato, y la greca densa y regular de los bordes es característico del arte de los \
+dos hermanos."""
+details = [
+  "La gran ola, a la izquierda, cuya espuma se despliega en líneas paralelas.",
+  "Los chorlitos, reducidos cada uno a dos manchas en forma de corazón.",
+  "La firma de Kōrin, a la derecha, junto a su dibujo.",
+  "La flor abierta en el borde exterior, en primer plano.",
+  "La fina red de craqueladuras del vidriado.",
+]
+themes = ["cerámica", "chorlito", "ola", "té", "rinpa"]
+anecdote = """
+Hacia los setenta años, Kenzan deja Kioto para instalarse en Edo, la actual \
+Tokio. Allí sigue pintando y haciendo cerámicas hasta su muerte, en 1743, a los \
+ochenta años."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "El monte Inwang después de la lluvia"
+artiste = "Jeong Seon"
+annee = "1751"
+image = "inwang-apres-la-pluie.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Inwangjesaekdo.jpg"
+technique = "Tinta sobre papel, 79,2 × 138,2 cm"
+collection = "Museo Nacional de Corea, Seúl"
+note = "Las rocas aún mojadas del monte Inwang, sobre Seúl, emergen de la bruma que sube de los valles: la obra más célebre del paisaje coreano «de vista real»."
+description = """
+Una montaña ocupa casi todo el ancho de la hoja. En el centro, una enorme pared \
+de granito redondeada, pintada de un negro profundo, se alza como una cúpula; a su alrededor, \
+crestas más claras, salpicadas de pequeñas manchas de tinta que figuran los árboles, \
+se escalonan hasta el borde superior. Delgadas cascadas, nacidas de la lluvia, descienden \
+por los barrancos. Toda la parte baja está sumergida en una bruma blanca de la que emergen \
+copas de pinos. Abajo a la derecha, entre los árboles, aparece el tejado de una casa; \
+más abajo, hacia la izquierda, cuelgan las ramas ligeras de un sauce. Arriba a la derecha, \
+una breve inscripción vertical da el título, el nombre de pincel del pintor y la \
+fecha, seguidos de dos sellos."""
+evocation = """
+El título coreano, Inwang jesaek do, significa «el monte Inwang que se despeja tras la \
+lluvia»: el pintor capta el instante en que cesa el aguacero, en que la roca aún está negra \
+de agua y la bruma se levanta. El monte Inwang domina al oeste el palacio real de Seúl, \
+y Jeong Seon vivía a sus pies: pinta un paisaje que veía cada día. Según \
+una interpretación extendida, la obra estaría ligada a su amigo de siempre, el poeta Yi \
+Byeong-yeon, gravemente enfermo ese año y muerto poco después; la casa de abajo \
+sería la suya, y el cielo que se despeja, un deseo de curación. Nada lo prueba, pero \
+esta lectura dice la emoción que se atribuye a este cuadro, pintado por un hombre de \
+setenta y cinco años."""
+histoire = """
+Jeong Seon pinta este paisaje en 1751, como indica la inscripción, durante un mes \
+intercalar del calendario lunar. Hasta entonces, los pintores coreanos representaban \
+sobre todo montañas imaginarias, a la manera china; él hace de la capital y \
+de sus alrededores un tema digno de la gran pintura. En el siglo XX, la obra pertenece \
+a la colección de Lee Kun-hee, presidente del grupo Samsung, y está clasificada como tesoro \
+nacional de Corea. Tras la muerte de Lee Kun-hee, en 2020, su familia dona al Estado \
+miles de obras y objetos de su colección; en abril de 2021, el cuadro ingresa \
+así en el Museo Nacional de Corea, en Seúl. Su exposición, ese mismo año, atrae a \
+multitudes de visitantes."""
+facture = """
+Jeong Seon invierte la lógica habitual de la tinta: la gran pared rocosa, que \
+cabría esperar clara, es la masa más oscura de la hoja, aplicada con amplias pinceladas \
+cargadas de tinta, repetidas de arriba abajo como el agua que chorrea. Las \
+crestas vecinas se modelan con trazos más secos, y los árboles se reducen a manchas \
+horizontales, a la manera de ciertos maestros chinos. La bruma no está pintada: \
+es el papel dejado en reserva, perfilado con aguadas grises. El encuadre, muy cerrado, corta \
+la cima con el borde de la hoja, como si la montaña desbordara el cuadro."""
+details = [
+  "La gran pared negra del centro, pintada con trazos verticales repetidos.",
+  "Las delgadas cascadas blancas que descienden de los barrancos.",
+  "El tejado de una casa entre los pinos, abajo a la derecha.",
+  "Las ramas ligeras de un sauce, abajo, hacia la izquierda.",
+  "La inscripción y los dos sellos del pintor, arriba a la derecha.",
+]
+themes = ["montaña", "lluvia", "bruma", "seúl", "paisaje"]
+anecdote = """
+El monte Inwang se sigue viendo desde el centro de Seúl. Un sendero bordea hoy \
+la antigua muralla de la ciudad, que recorre sus crestas, y se puede comparar allí el \
+paisaje real con el cuadro pintado hace más de dos siglos y medio."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "La lucha (Ssireum)"
+artiste = "Kim Hong-do"
+annee = "finales del siglo XVIII"
+image = "lutte-ssireum.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Danwon_Ssireum.jpg"
+technique = "Tinta y colores ligeros sobre papel, hoja de álbum, aprox. 27 × 22,7 cm"
+collection = "Museo Nacional de Corea, Seúl"
+note = "Dos luchadores se agarran en medio de un círculo de espectadores: una página del álbum de escenas de género de Kim Hong-do, el pintor de la vida cotidiana de Joseon."
+description = """
+En el centro de la hoja, sobre un fondo vacío, dos hombres con pantalón y chaqueta de tela \
+se agarran: uno ha levantado al otro, que se desploma, con una pierna en el aire. Alrededor, \
+sentados en el suelo, los espectadores forman un círculo abierto. Arriba, dos grupos apretados \
+miran, inclinados hacia delante; algunos, tocados con el sombrero negro de anchas alas de los \
+hombres casados y de los letrados, se abanican, otros han dejado el sombrero a su lado. \
+A la izquierda, de pie, un muchacho sostiene una bandeja: es un vendedor de golosinas, que \
+mira hacia otro lado. Abajo a la derecha, dos hombres se echan hacia atrás, con la boca abierta, \
+como si los luchadores fueran a caerles encima. Varios pares de zapatos están colocados \
+en el suelo, a la derecha."""
+evocation = """
+El ssireum, lucha tradicional en la que cada adversario agarra la banda de tela anudada a \
+la cintura y al muslo del otro, era el gran entretenimiento de las fiestas de \
+aldea, en particular de la fiesta de Dano, en el quinto mes lunar. Kim Hong-do \
+hace de ello una pequeña comedia humana: letrados y campesinos, viejos y jóvenes comparten el mismo \
+espectáculo, cada uno con su reacción, tensión, diversión o espanto. La composición guía \
+la mirada: los espectadores de abajo, que se echan hacia atrás, anuncian hacia qué lado \
+va a caer el luchador. Estas pinturas de costumbres, llamadas pungsokhwa, muestran el interés \
+nuevo del siglo XVIII coreano por la vida de la gente corriente, que se une a la \
+búsqueda de una pintura propiamente coreana, como en Jeong Seon."""
+histoire = """
+La hoja pertenece a un álbum de veinticinco escenas de género, el Danwon pungsokdo \
+cheop, conservado en el Museo Nacional de Corea y clasificado como tesoro de Corea. En él se ven también \
+una fragua, una escuela de aldea, un joven bailarín, mujeres lavando la ropa a la orilla \
+de un arroyo, un transbordador en un río. El álbum no está fechado; se sitúa \
+generalmente a finales del siglo XVIII, cuando Kim Hong-do, pintor de la corte, está en la \
+cima de su reputación bajo el rey Jeongjo. Se ignora para quién fue realizado. Estas \
+pequeñas imágenes se han vuelto tan familiares en Corea que ilustran los manuales \
+escolares y se han reproducido en innumerables objetos, sellos y carteles."""
+facture = """
+Kim Hong-do traza sus figuras con una línea de tinta flexible y veloz, más marcada en los \
+pliegues de las ropas, y luego las realza con aguadas ligeras, grises, ocres o azuladas. \
+Suprime todo decorado, ni árbol ni casa: el suelo desnudo de la hoja y el círculo de los \
+espectadores bastan para crear el espacio. Los rostros, redondos, de ojos rasgados, están \
+tratados con humor y variedad, cada uno con su expresión. La composición en anillo \
+concentra la atención en los luchadores sin dejar de permitir que la mirada circule de un grupo \
+a otro."""
+details = [
+  "El joven vendedor de golosinas, con la bandeja en la mano, que no mira el combate.",
+  "Los dos espectadores de abajo a la derecha, echados hacia atrás, con la boca abierta.",
+  "Los sombreros negros dejados en el suelo, a la izquierda.",
+  "Los zapatos colocados en el suelo, a la derecha.",
+  "La pierna levantada del luchador que se desploma.",
+]
+themes = ["lucha", "fiesta", "aldea", "vida cotidiana", "joseon"]
+anecdote = """
+Desde hace mucho se ha observado que uno de los espectadores tiene las manos dibujadas al revés, \
+la derecha en lugar de la izquierda. Simple descuido o guiño del pintor, este \
+detalle se ha convertido en una de las curiosidades más comentadas de la pintura coreana."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Los lirios (biombo de la derecha)"
+artiste = "Ogata Kōrin"
+annee = "hacia 1701–1705"
+image = "iris-korin.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:KORIN-Irises-R.jpg"
+technique = "Biombo de seis paneles, tinta y colores sobre papel con hojas de oro, aprox. 151 × 360 cm (uno de un par)"
+collection = "Museo Nezu, Tokio"
+note = "Matas de lirios azules se suceden sobre un fondo de oro, como un motivo de tela: el biombo más célebre de la escuela Rinpa."
+description = """
+Seis paneles verticales, reunidos en un biombo, forman una única superficie de oro. Sobre este \
+fondo liso, sin horizonte ni suelo, matas de lirios se suceden de izquierda a derecha en \
+un friso ondulante: largas hojas verde vivo, rectas o ligeramente inclinadas, y \
+flores de un azul profundo, casi negro algunas, más claro otras. Los \
+grupos suben y luego bajan, dejando entre sí vacíos de oro. No se ve ni \
+agua, ni puente, ni personaje. El fondo está hecho de cuadrados de hoja de oro, cuyas \
+juntas se adivinan. Abajo a la derecha, una firma a la tinta y un sello redondo identifican al \
+pintor. El segundo biombo del par, que no se presenta aquí, prolonga el friso \
+hacia la izquierda."""
+evocation = """
+Los lirios remiten a un episodio célebre de los Cuentos de Ise, colección de relatos poéticos \
+del siglo X: un noble que ha abandonado la capital llega a Yatsuhashi, los «Ocho \
+Puentes», donde florecen lirios al borde de una marisma; compone un poema cuyos \
+versos comienzan cada uno por una sílaba de la palabra kakitsubata, lirio, y sus compañeros lloran \
+al pensar en Kioto. Kōrin suprime el puente, los viajeros, el paisaje: solo quedan \
+las flores, y el espectador culto reconoce la historia. Reducir un relato a un motivo \
+decorativo, para una élite que amaba esas alusiones literarias, está en el corazón de la \
+estética Rinpa. La obra habla también del mundo de Kōrin, hijo de mercaderes de telas, \
+para quien la pintura y el diseño textil estaban próximos."""
+histoire = """
+Kōrin pinta este par de biombos hacia 1701–1705, poco después de recibir el título \
+honorífico de hokkyō, que menciona en su firma. Se ignora para quién. Los \
+biombos pertenecieron durante mucho tiempo al Nishi Hongan-ji, uno de los grandes templos de Kioto, \
+que los conservó durante más de dos siglos. Ingresan después en la \
+colección del industrial Nezu Kaichirō; tras su muerte, en 1940, su residencia de Tokio \
+y sus colecciones se convierten en el museo Nezu, que abre al público en 1941. Clasificados como \
+tesoro nacional, los dos biombos son tan frágiles que solo se muestran una vez \
+al año, en primavera, en la estación en que florecen los lirios del jardín del museo."""
+facture = """
+Kōrin aplica sus colores en planos uniformes, sin sombra ni modelado: el azul de azurita para las \
+flores, el verde de malaquita para las hojas, dos pigmentos minerales molidos, espesos y \
+mates, que destacan sobre el oro. Algunas matas se repiten casi idénticas de un \
+panel a otro; se ha pensado que utilizaba plantillas, como en el teñido de las \
+telas que vendía su familia. El ritmo, regular pero variado, recuerda el de un \
+motivo de kimono. Desplegado en zigzag, el biombo hacía además jugar la luz sobre \
+el oro, panel tras panel."""
+details = [
+  "Los grupos de flores que se repiten de un panel a otro, casi idénticos.",
+  "Los dos azules de las flores, uno muy oscuro, otro más claro.",
+  "Los cuadrados de hoja de oro y sus juntas, visibles en el fondo.",
+  "La firma y el sello redondo de Kōrin, abajo a la derecha.",
+]
+themes = ["lirios", "oro", "poesía", "rinpa", "motivo"]
+anecdote = """
+Más tarde, Kōrin retoma el tema en otro par de biombos, donde pinta esta \
+vez el puente de madera en zigzag que atraviesa los lirios. Estos Lirios de Yatsuhashi se \
+conservan hoy en el Metropolitan Museum de Nueva York."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.6
+
+[[oeuvres]]
+titre = "Pinos en la niebla (biombo de la derecha)"
+artiste = "Hasegawa Tōhaku"
+annee = "finales del siglo XVI"
+image = "pins-dans-la-brume.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Hasegawa_Tohaku_-_Pine_Trees_(Shōrin-zu_byōbu)_-_right_hand_screen.jpg"
+technique = "Biombo de seis paneles, tinta sobre papel, 156,8 × 356 cm (uno de un par)"
+collection = "Museo Nacional de Tokio"
+note = "Unos pocos pinos aparecen y se desvanecen en la niebla: con tinta sola y mucho papel vacío, Tōhaku pinta la humedad del aire."
+description = """
+Sobre seis paneles de papel ligeramente beige, bordeados de seda dorada y de una fina \
+varilla lacada, unos pinos surgen del blanco. A la izquierda, un grupo de troncos apretados: \
+el más nítido, en el tercer panel, lleva ramas frondosas de un negro profundo, \
+mientras que tras él otros pinos, más pálidos, se disuelven en el gris. En el \
+centro, dos paneles quedan casi vacíos, atravesados solo por la sombra de un árbol \
+lejano. A la derecha, un pino aislado se inclina, con sus largas ramas extendidas, acompañado \
+de siluetas apenas visibles. Al pie de los árboles, unos trazos sugieren el suelo. \
+Nada más: ni cielo, ni montaña, ni línea de horizonte."""
+evocation = """
+El biombo no describe un lugar preciso sino un estado del aire: la mañana, quizá, \
+o un día de niebla, cuando los árboles cercanos se recortan y los demás \
+se desvanecen. El vacío no es una carencia: figura la propia bruma y deja al \
+espectador completar la escena. Se ha querido ver en él los pinares del litoral de Noto, la \
+región natal del pintor, o un momento de duelo tras la muerte de su hijo, en 1593; \
+estas lecturas siguen siendo hipótesis. La obra se relaciona a menudo con la sensibilidad \
+del budismo zen y con la pintura china de Muqi, a quien Tōhaku admiraba. En oposición \
+a los fondos de oro de su época, se ha convertido en una de las pinturas más queridas de \
+Japón."""
+histoire = """
+Venido de la provincia de Noto, Hasegawa Tōhaku se impone en Kioto en la década de 1590 frente \
+a la escuela Kanō, que domina los grandes encargos. No se sabe ni cuándo ni para quién \
+pintó estos pinos, ni siquiera si se trata de una obra acabada: las hojas de papel están \
+unidas de manera irregular, y a veces se juzga que los sellos son más tardíos. Por eso \
+algunos historiadores ven en ella un boceto, quizá preparatorio de una decoración de \
+puertas correderas, montado después como biombo. El par pertenece hoy al \
+Museo Nacional de Tokio y está clasificado como tesoro nacional. Frágil, solo se \
+presenta al público unas semanas al año, casi siempre en torno al Año \
+Nuevo."""
+facture = """
+Todo está hecho con tinta, más o menos diluida, sobre un papel sin preparación. Tōhaku \
+pinta las agujas de pino con un gesto veloz, con un pincel ancho, quizá hecho de \
+paja, que deja trazos secos y nerviosos. Los árboles del primer plano se \
+trazan con tinta casi pura; los del fondo, en aguada muy clara, con contornos \
+que se pierden en el papel. Este trabajo de los valores, del negro al gris más pálido, \
+crea una profundidad sin perspectiva, con un solo color."""
+details = [
+  "El pino más negro, en el tercer panel, y los árboles pálidos tras él.",
+  "Los dos paneles del centro, casi vacíos.",
+  "El pino inclinado, a la derecha, y sus largas ramas.",
+  "Los trazos secos del pincel en las agujas.",
+  "Los pocos trazos del suelo al pie de los troncos.",
+]
+themes = ["pinos", "bruma", "tinta", "vacío", "zen"]
+anecdote = """
+Tōhaku se presentaba como el heredero, en la quinta generación, del gran pintor a la \
+tinta Sesshū, muerto casi un siglo antes. Se vinculaba así a la más \
+prestigiosa tradición japonesa de la pintura monocroma."""
+salle = 2
+mur = "nord"
+place = 8
+largeur = 3.6
+
+[[oeuvres]]
+titre = "Los dioses del viento y del trueno"
+artiste = "Tawaraya Sōtatsu"
+annee = "principios del siglo XVII"
+image = "dieux-vent-tonnerre.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Wind_God_and_Thunder_God_Screens_by_Tawaraya_Sotatsu_hi-res.png"
+technique = "Par de biombos de dos paneles, tinta y colores sobre papel con hojas de oro, 154,5 × 169,8 cm cada uno"
+collection = "Templo Kennin-ji, Kioto (en depósito en el Museo Nacional de Kioto)"
+note = "Dos dioses irrumpen de las nubes en los dos extremos de un cielo de oro: a la izquierda, el dios del trueno golpea sus tambores; a la derecha, el dios del viento despliega su saco."
+description = """
+Dos biombos dorados, de dos paneles cada uno, están colocados uno junto a otro. En el de la \
+izquierda, el dios del trueno, Raijin, de cuerpo blanco, surge en lo alto de una nube oscura: \
+a su alrededor, un anillo de pequeños tambores que golpea con sus baquetas; tiene el \
+cabello erizado, un rictus feroz, y una bufanda flota tras él. En el de la \
+derecha, el dios del viento, Fūjin, de cuerpo verde, acude desde el borde sobre otra \
+nube, sosteniendo sobre su cabeza un largo saco blanco hinchado, del que escapan los \
+vientos. Las dos figuras están empujadas hacia los bordes; entre ellas, un vasto espacio \
+de oro permanece vacío. Las nubes, marrones y grises, están hechas de manchas difusas."""
+evocation = """
+Fūjin y Raijin son divinidades antiguas, venidas de la India y de China con el \
+budismo, que se ven también en estatuas en los templos japoneses. Aquí parecen \
+irrumpir en el cielo en el mismo instante, como para desencadenar una tormenta. Se han leído \
+los dos biombos como una imagen de las fuerzas de la naturaleza, a la vez amenazadoras y \
+benéficas, puesto que la lluvia y el viento hacen también crecer el arroz. La comedia de los \
+rostros, casi caricaturescos, atempera el terror. El vacío dorado del centro, cargado de \
+tensión entre las dos figuras, se cita a menudo como ejemplo del gusto japonés por \
+el espacio dejado libre."""
+histoire = """
+La obra no está firmada ni fechada; se atribuye a Sōtatsu, que dirigía en Kioto un \
+taller de pintura de abanicos, el Tawaraya, y trabajaba con el calígrafo \
+Hon'ami Kōetsu. Se piensa que la pintó al final de su carrera, en la década de 1620 \
+o de 1630. Los biombos pertenecen al Kennin-ji, el templo zen más antiguo de Kioto, \
+fundado en 1202, que los confió al Museo Nacional de Kioto; el templo muestra a sus \
+visitantes una reproducción fiel. Clasificados como tesoro nacional, se consideran \
+una de las obras fundadoras de la escuela Rinpa: Kōrin los copió casi un siglo \
+más tarde, y Sakai Hōitsu, en el siglo XIX, copió a su vez la versión de Kōrin."""
+facture = """
+Sobre el fondo de hojas de oro cuadradas, Sōtatsu pinta los cuerpos en planos espesos, blanco \
+para Raijin, verde para Fūjin, perfilados con contornos flexibles a la tinta. Las nubes están \
+pintadas con la técnica del tarashikomi, que contribuyó a perfeccionar: se \
+deposita una tinta o un color sobre otro todavía húmedo, y se mezclan en \
+aureolas irregulares, imprevisibles. Las figuras, en parte cortadas por el borde de los \
+biombos, parecen entrar en el cuadro y salir de él, lo que da una impresión de \
+movimiento."""
+details = [
+  "El anillo de tambores de Raijin, cortado por el borde superior del biombo.",
+  "El saco de viento blanco que Fūjin sostiene sobre su cabeza.",
+  "Las nubes oscuras hechas de manchas que se funden unas con otras.",
+  "Las bufandas que flotan tras los dos dioses.",
+  "El gran espacio de oro vacío en el centro del par.",
+]
+themes = ["dioses", "tormenta", "oro", "rinpa", "vacío"]
+anecdote = """
+Se comparan a menudo los dioses de Sōtatsu con las estatuas de Fūjin y de Raijin esculpidas en el \
+siglo XIII para el Sanjūsangen-dō, el templo situado justo enfrente del Museo Nacional de \
+Kioto: el pintor podría haberse inspirado en ellas."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "La historia de Genji, capítulo «Azumaya»"
+artiste = "Japon, époque de Heian"
+annee = "primera mitad del siglo XII"
+image = "genji-azumaya.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Genji_emaki_azumaya.jpg"
+technique = "Pintura de un rollo ilustrado (emaki), colores y tinta sobre papel, alt. aprox. 22 cm"
+collection = "Museo de Arte Tokugawa, Nagoya"
+note = "En un aposento del palacio, unas damas leen, miran imágenes y se hacen peinar: una escena del más antiguo rollo ilustrado de la Historia de Genji."
+description = """
+Se contempla el interior de una morada aristocrática desde arriba y en diagonal, como si el \
+tejado hubiera sido retirado. Vigas, cortinas de bambú y tabiques correderos \
+adornados con paisajes recortan la escena en diagonales. En el centro, una pantalla de tela \
+malva, suspendida de un bastidor, separa dos grupos. A la izquierda, una dama con ropas grises \
+se ocupa de la larga cabellera negra de otra; más allá, una dama con vestido claro \
+sostiene un cuaderno abierto y lee. Arriba, una joven apoyada en el codo, con ropas verdes y \
+rojas, se inclina. A la derecha, una dama con vestido crema de motivos de círculos está sentada, con \
+el cabello negro derramado sobre los hombros, junto a un montón de telas de colores. Los \
+rostros, pálidos, se reducen a unos pocos trazos."""
+evocation = """
+La Historia de Genji, escrita hacia el año 1000 por Murasaki Shikibu, dama de honor en la corte \
+imperial, se presenta a menudo como una de las primeras novelas de la historia. El \
+capítulo «Azumaya», «el pabellón del Este», pertenece a su última parte. La \
+tradición reconoce en esta escena a la joven Ukifune, que mira imágenes mientras \
+una sirvienta lee el texto en voz alta, y a su hermanastra Naka no Kimi, a quien se peina \
+los cabellos. Nada parece ocurrir; pero el lector sabe que Ukifune acaba \
+de escapar a los avances de un príncipe, y adivina la inquietud bajo este momento de calma. Estas \
+pinturas expresan el mono no aware, la sensibilidad melancólica ante la fragilidad de \
+las cosas, que cultivaba la corte de Heian."""
+histoire = """
+Los rollos ilustrados de la Historia de Genji se realizaron en el siglo XII, más de un \
+siglo después de la novela, sin duda para la corte imperial. Comprendían en origen \
+varios rollos, en los que pasajes de texto caligrafiados sobre papel decorado \
+alternaban con pinturas. Solo quedan una veintena de escenas pintadas, \
+repartidas entre el museo de Arte Tokugawa, en Nagoya, que conserva la mayor parte, y \
+el museo Gotoh, en Tokio. Para protegerlas, las hojas se conservan hoy \
+por separado, planas. Atribuidas durante mucho tiempo al pintor de corte Fujiwara no Takayoshi, \
+se consideran ahora obra de varios pintores y calígrafos \
+anónimos. Están clasificadas como tesoro nacional."""
+facture = """
+Los pintores trabajan según el método llamado tsukuri-e, la «pintura construida»: \
+un primer dibujo a la tinta, luego capas espesas de pigmentos minerales opacos y, \
+por último, los contornos y los detalles retrazados a la tinta. El tejado se suprime para mostrar \
+el interior, procedimiento llamado fukinuki yatai, el «tejado soplado». Los rostros siguen la \
+convención del hikime kagibana, «ojos de línea, nariz de gancho», que vuelve a los \
+personajes casi intercambiables: la emoción pasa por las posturas, las telas y \
+la composición en diagonal. Los colores han sufrido mucho, y el desconchado \
+deja ver en algunos puntos el dibujo subyacente."""
+details = [
+  "La dama que lee, en el centro, con un cuaderno abierto entre las manos.",
+  "La larga cabellera negra que se peina, a la izquierda.",
+  "La pantalla de tela malva, de cintas flotantes, que divide la estancia.",
+  "Los rostros blancos de ojos reducidos a una línea.",
+  "Los paisajes pintados en los tabiques, arriba.",
+]
+themes = ["novela", "corte", "mujeres", "lectura", "heian"]
+anecdote = """
+Otra escena de estos rollos, del capítulo «Suzumushi», figura en el reverso del \
+billete japonés de 2000 yenes, emitido en el año 2000, junto a un retrato de Murasaki Shikibu."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.8
+
+[[oeuvres]]
+titre = "Chōjū-giga, la lucha de la rana y la liebre"
+artiste = "Japon, époque de Heian"
+annee = "siglo XII"
+image = "choju-giga-sumo.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Chouju_1st_scroll-05.jpg"
+technique = "Tinta sobre papel, rollo horizontal, alt. aprox. 30 cm (detalle del primer rollo)"
+collection = "Templo Kōzan-ji, Kioto"
+note = "Una rana derriba a una liebre ante la mirada de los espectadores: una escena del rollo cómico más célebre de Japón, trazada solo con tinta."
+description = """
+El rollo se lee de derecha a izquierda. A la derecha, al borde de un prado poblado de hierbas y \
+matorrales, dos liebres de pie miran a una rana y a una liebre que se agarran: \
+la rana muerde la oreja de su adversaria. Más a la izquierda, el desenlace del combate: la \
+liebre, proyectada, cae de espaldas, con las patas en el aire, mientras que la rana \
+victoriosa, erguida sobre las patas traseras, abre bien la boca; una línea curva \
+escapa de ella, como un grito o un soplo. En el extremo izquierdo, otras ranas \
+ruedan por el suelo o se incorporan. No hay texto ni color, solo la tinta \
+negra sobre el papel, con unas matas de hierba y el contorno de una orilla."""
+evocation = """
+Los animales se comportan como humanos: luchan, hacen fiesta, se bañan \
+y, más adelante en el mismo rollo, celebran un oficio en el que una rana hace de \
+estatua de Buda y un mono de monje. Se ha visto en ello una sátira del clero y \
+de la sociedad de la época, pero también un simple juego, lleno de humor y de observación. \
+La viveza del trazo, el encadenamiento de escenas sin palabras y la expresividad de las \
+actitudes hacen que a menudo se presenten estos rollos como un lejano antepasado del \
+manga. La victoria de la pequeña rana sobre la gran liebre se ha convertido en una de las \
+imágenes más populares de Japón."""
+histoire = """
+Los Chōjū-jinbutsu-giga, «caricaturas de animales y humanos», forman cuatro \
+rollos conservados en el Kōzan-ji, un templo de las montañas al noroeste de Kioto, restaurado \
+a principios del siglo XIII por el monje Myōe. No están firmados ni fechados y no \
+forman un conjunto homogéneo: el primero, el de los animales, el más célebre, \
+se remonta al siglo XII, otros son más tardíos. La tradición los atribuye al \
+monje pintor Toba Sōjō, sin pruebas. Los sellos del templo, estampados en las juntas de las \
+hojas, atestiguan su presencia en el Kōzan-ji. Clasificados como tesoro nacional, los rollos \
+están depositados en los museos nacionales de Tokio y de Kioto, y el templo presenta \
+copias de ellos."""
+facture = """
+El pintor trabaja solo con tinta, con un pincel flexible que pasa del trazo fino al \
+trazo marcado en un solo gesto. Unas pocas líneas bastan para la musculatura de un \
+muslo de rana o el impulso de una liebre que cae; ligeras aguadas grises marcan el \
+pelaje, las manchas de la piel, el suelo. El rollo está concebido como una sucesión continua, \
+que el lector desenrolla sección por sección: las escenas se encadenan sin separación, \
+unidas por el paisaje, y el movimiento de las figuras arrastra la mirada de derecha a izquierda, \
+en el sentido de la lectura."""
+details = [
+  "La rana que muerde la oreja de la liebre, a la derecha.",
+  "La liebre proyectada, con las patas en el aire, en el centro.",
+  "El soplo que sale de la boca de la rana victoriosa.",
+  "Las dos liebres espectadoras, de pie a la derecha.",
+  "Los sellos rectangulares del templo en las juntas del papel.",
+]
+themes = ["animales", "humor", "sátira", "tinta", "manga"]
+anecdote = """
+Desenrollado por completo, el primer rollo, el de los animales, mide más de once metros de \
+largo, y no contiene una sola línea de texto: todo el relato pasa por la imagen."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 4.2
+
+[[artistes]]
+nom = "Corée, dynastie Goryeo"
+vie = "Corea, 918–1392"
+biographie = """
+El reino de Goryeo es fundado en 918 por el general Wang Geon, que reunifica la \
+península e instala su capital en Kaesong; el nombre occidental de Corea procede del \
+suyo. Durante casi cinco siglos, una aristocracia cortesana gobierna un Estado \
+profundamente budista: los monasterios, ricos y poderosos, encargan sutras \
+copiados en oro, pinturas religiosas de gran finura y objetos de culto en \
+bronce. Bajo Goryeo, Corea graba las cerca de ochenta mil tablillas de \
+madera del canon budista, la Tripitaka Koreana, aún conservadas en el templo Haein-sa, \
+e imprime en 1377 el libro más antiguo conservado en caracteres metálicos \
+móviles, el Jikji, hoy en la Biblioteca Nacional de Francia. El reino \
+mantiene estrechos vínculos con la China de los Song, de la que admira la cultura y la \
+cerámica. En el siglo XIII, sufre las invasiones mongolas y se convierte en vasallo del \
+imperio de los Yuan. Debilitado, es derrocado en 1392 por el general Yi Seong-gye, \
+fundador de la dinastía Joseon."""
+style = """
+Los alfareros de Goryeo, inspirados al principio por los celadones chinos, se emancipan de ellos \
+en el siglo XII. Buscan un verde azulado y translúcido, y formas flexibles, \
+a veces esculpidas en loto, en melón o en animal. Su gran invención es \
+la incrustación, el sanggam: un decorado grabado y luego relleno de arcilla blanca y negra, bajo \
+el vidriado. Grullas, nubes, sauces, juncos y aves acuáticas componen en él paisajes \
+poéticos. Estos celadones siguen siendo el símbolo del arte de Goryeo y una referencia para los \
+ceramistas coreanos de hoy."""
+
+[[artistes]]
+nom = "Corée, dynastie Joseon"
+vie = "Corea, 1392–1910"
+biographie = """
+Fundada en 1392 por Yi Seong-gye, la dinastía Joseon reina más de cinco siglos sobre \
+Corea desde su nueva capital, Hanyang, la actual Seúl. Hace del \
+neoconfucianismo la doctrina del Estado: exámenes de funcionarios, culto a los \
+antepasados, respeto a las jerarquías e ideal de frugalidad impregnan la vida de la corte y \
+de los letrados, los yangban. En el siglo XV, el rey Sejong hace crear el alfabeto coreano, el \
+hangeul. El país atraviesa después duras pruebas: las invasiones japonesas de 1592 \
+a 1598, y luego las invasiones manchúes de 1627 y 1636. El siglo XVIII, bajo los reyes \
+Yeongjo y Jeongjo, es un tiempo de renovación, en que letrados y artistas se interesan \
+más por la realidad coreana, sus paisajes y sus costumbres. En el siglo XIX, Joseon \
+se cierra al mundo y sufre luego la presión de las potencias extranjeras; el reino \
+se convierte en el imperio de Corea en 1897, antes de ser anexionado por Japón en 1910."""
+style = """
+A la cerámica coloreada de Goryeo, Joseon prefiere la porcelana blanca, producida para \
+la corte en los hornos oficiales de Gwangju. A menudo está desnuda, o decorada con azul \
+de cobalto, importado a gran precio, o con óxido de hierro marrón. Las formas son amplias, \
+sobrias, algo irregulares, y los alfareros aceptan los accidentes de la cocción. La \
+jarra luna es su forma más célebre. Esta estética de lo natural sedujo a los \
+maestros del té japoneses y, en el siglo XX, a los ceramistas occidentales."""
+
+[[artistes]]
+nom = "Jeong Seon"
+vie = "Hanyang (Seúl), 1676 – Hanyang, 1759"
+biographie = """
+Jeong Seon, cuyo nombre de pincel es Gyeomjae, nace en 1676 en Hanyang, la capital de \
+Joseon, en una familia de letrados de modesta fortuna. Estudia los clásicos \
+confucianos y se forma en la pintura, que le granjea muy pronto reputación. Ocupa \
+varios cargos oficiales, entre ellos el de magistrado de Yangcheon, al oeste de la \
+capital. Frecuenta un círculo de letrados y poetas, entre ellos Yi \
+Byeong-yeon, su amigo de siempre, con quien intercambia poemas y pinturas. Desde \
+joven, recorre los montes Kumgang, los «montes de Diamante», al noreste de la \
+península, que pinta toda su vida, en particular en una gran vista de conjunto fechada en \
+1734. Representa también los alrededores de la capital, las orillas del río Han, los \
+pabellones y los valles donde vivió, al pie del monte Inwang. Muere en 1759, a los \
+ochenta y tres años, tras una carrera excepcionalmente larga y fecunda. Sus \
+obras se reparten hoy entre los museos coreanos, entre ellos el Museo Nacional de \
+Corea y el museo Kansong, y colecciones privadas."""
+style = """
+Jeong Seon es el maestro del jingyeong sansu, el «paisaje de vista real»: en lugar de \
+retomar las montañas ideales de la pintura china, pinta lugares coreanos \
+precisos, que ha recorrido. Adapta para ello las técnicas chinas: trazos \
+verticales apretados para los acantilados de granito, manchas de tinta para la vegetación, fuertes \
+contrastes de negro y de blanco. Sus composiciones, a menudo cerradas y vistas desde arriba, \
+dan una impresión de masa y de presencia física. Inspiró a toda una \
+generación de pintores coreanos."""
+
+[[artistes]]
+nom = "Kim Hong-do"
+vie = "Corea, 1745 – hacia 1806"
+biographie = """
+Kim Hong-do, conocido por su nombre de pincel Danwon, nace en 1745 en una familia sin \
+título de nobleza. Siendo aún niño, estudia pintura con el letrado y pintor \
+Kang Sehwang, que seguirá siendo su protector. Entra joven en el Dohwaseo, la oficina real \
+de pintura, y se convierte en el pintor favorito del rey Jeongjo: participa en los retratos \
+oficiales del rey Yeongjo y luego de Jeongjo, pinta biombos para el palacio, y el rey \
+lo envía a dibujar los montes Kumgang para que le traiga sus imágenes. Como recompensa, \
+recibe cargos de funcionario, entre ellos el de magistrado del distrito de Yeonpung. \
+Sobresale en todos los géneros: paisajes, retratos, pintura budista, flores y \
+aves, animales, y sobre todo escenas de la vida cotidiana, que le dieron fama. \
+Tras la muerte de Jeongjo, en 1800, sus últimos años son más difíciles, y los \
+documentos escasean; se piensa que muere hacia 1806, enfermo y sin fortuna."""
+style = """
+Kim Hong-do da a la pintura de género coreana sus cartas de nobleza. Sus escenas \
+de aldea, de mercado o de taller, pintadas en pequeñas hojas, captan los \
+gestos del trabajo y del ocio con un trazo de tinta vivo, con colores ligeros y \
+mucho humor. Suprime el decorado para concentrar la atención en los \
+personajes, siempre retratados con acierto. Su influencia fue inmensa: su joven colega Shin \
+Yun-bok y numerosos pintores populares siguieron el camino que él había abierto."""
+
+[[artistes]]
+nom = "Ogata Kōrin"
+vie = "Kioto, 1658 – Kioto, 1716"
+biographie = """
+Ogata Kōrin nace en 1658 en Kioto, segundo hijo de un rico comerciante de sedas, el \
+Kariganeya, proveedor de telas de lujo de la emperatriz Tōfukumon-in y de las \
+grandes familias de la corte. Crece entre telas y motivos de kimonos, y \
+se inicia en el teatro nō, la caligrafía y la ceremonia del té; su familia está \
+emparentada con la de Hon'ami Kōetsu. A la muerte de su padre, en 1687, hereda una \
+fortuna que dilapida en pocos años por afición al lujo. Se vuelve entonces hacia la \
+pintura para vivir, y recibe en 1701 el título honorífico de hokkyō. Reside en \
+Edo de 1704 a 1709 aproximadamente, al servicio de un señor y de ricos mercaderes, y regresa luego \
+a Kioto, donde manda construir una casa-taller. Pinta biombos, rollos \
+y abanicos, y diseña decorados para las lacas, las telas y las cerámicas \
+de su hermano menor, Kenzan. Muere en Kioto en 1716. Sus motivos, difundidos por \
+libros de modelos, nutrieron las artes decorativas japonesas y luego el japonismo europeo."""
+style = """
+Kōrin lleva a su cima el arte decorativo inaugurado por Sōtatsu, a quien admiraba y \
+copiaba. Sus formas son estilizadas, sus colores aplicados en planos deslumbrantes sobre el oro, \
+sus composiciones rítmicas como motivos de tela; sabe también pintar a la tinta \
+con espontaneidad. Su nombre dio el de la escuela Rinpa, y los «motivos Kōrin» se \
+convirtieron, ya en el siglo XVIII, en un repertorio corriente de los artesanos japoneses."""
+
+[[artistes]]
+nom = "Hasegawa Tōhaku"
+vie = "Nanao (provincia de Noto), 1539 – Edo, 1610"
+biographie = """
+Hasegawa Tōhaku nace en 1539 en Nanao, en la provincia de Noto, a orillas del mar del \
+Japón, y es adoptado por una familia de tintoreros. Comienza pintando \
+imágenes budistas para los templos de su región. Hacia 1571, a los treinta y pocos años, \
+se instala en Kioto, donde estudia las pinturas chinas conservadas en los templos \
+zen, en particular las de Muqi, y frecuenta al maestro del té Sen no Rikyū. Rivaliza \
+con la escuela Kanō, que domina los grandes encargos. A principios de la década de 1590, su \
+taller decora un templo fundado por Toyotomi Hideyoshi en memoria de su hijo muerto en \
+la infancia: las pinturas de arces y cerezos en flor sobre fondo de oro que \
+subsisten están hoy en el Chishaku-in, en Kioto. Su hijo y principal \
+colaborador, Kyūzō, muere en 1593. Tōhaku recibe los títulos honoríficos de hokkyō \
+y luego de hōgen. Llamado a Edo por el shogun en 1610, cae enfermo durante el viaje y \
+muere poco después de su llegada."""
+style = """
+Tōhaku domina dos maneras opuestas: la pintura decorativa de colores vivos sobre \
+fondo de oro, propia de la época de Momoyama, y la pintura a la tinta monocroma, heredada \
+de los maestros chinos y de Sesshū. En esta alcanza una libertad nueva, en la que el \
+vacío, la bruma y los degradados de gris cuentan tanto como las formas. Sus Pinos en la \
+niebla pasan por la cima de la pintura a la tinta japonesa."""
+
+[[artistes]]
+nom = "Tawaraya Sōtatsu"
+vie = "Kioto, hacia 1570 – hacia 1640"
+biographie = """
+Se sabe muy poco de la vida de Sōtatsu, de quien se ignoran incluso las fechas exactas \
+de nacimiento y de muerte. Dirige en Kioto, a principios del siglo XVII, un taller llamado \
+Tawaraya, que produce abanicos pintados, papeles decorados y pinturas para \
+una clientela acomodada. En 1602, participa en la restauración de los sutras ilustrados \
+ofrecidos en el siglo XII por el clan Taira al santuario de Itsukushima, lo que lo pone en \
+contacto con el arte de Heian. Colabora con Hon'ami Kōetsu, calígrafo, alfarero y \
+creador de lacas, figura mayor de la cultura de Kioto: Sōtatsu pinta con oro y \
+plata grullas, ciervos o flores en largos rollos, sobre los que Kōetsu \
+caligrafía poemas clásicos. Su reputación crece: recibe el título \
+honorífico de hokkyō y trabaja para aristócratas de la corte y grandes \
+templos. Muere hacia 1640. Su taller le sobrevive algún tiempo, y las atribuciones \
+entre el maestro y sus sucesores siguen siendo a veces discutidas."""
+style = """
+Sōtatsu renueva la pintura decorativa japonesa. Retoma los temas de la \
+literatura y de la pintura clásicas, pero los simplifica en grandes formas coloreadas \
+sobre fondos de oro o de plata, con encuadres audaces y vastos espacios vacíos. \
+Desarrolla la técnica del tarashikomi, colores aplicados sobre un fondo todavía \
+húmedo. Kōrin, en el siglo siguiente, y luego Sakai Hōitsu retomaron su estilo: a \
+esta corriente se le dio el nombre de Rinpa, «la escuela de Kōrin»."""
+
+[[artistes]]
+nom = "Japon, époque de Heian"
+vie = "Japón, 794–1185"
+biographie = """
+La época de Heian comienza en 794, cuando el emperador Kanmu instala su capital en \
+Heian-kyō, la actual Kioto, y termina en 1185 con la victoria del clan Minamoto, que \
+funda poco después el primer shogunato. Durante casi cuatro siglos, una aristocracia \
+cortesana, dominada por la familia Fujiwara, cultiva un arte de vivir refinado, hecho de \
+poesía, música, perfumes, caligrafía y etiqueta. Japón toma \
+distancia de China e inventa sus propias formas: los silabarios kana, que \
+permiten escribir la lengua japonesa; una literatura en prosa a menudo debida a \
+mujeres, como la Historia de Genji de Murasaki Shikibu o el Libro de la almohada de Sei \
+Shōnagon; y el yamato-e, la pintura «a la japonesa», consagrada a los paisajes, a las \
+estaciones y a la vida del país. Los monasterios budistas, poderosos, encargan \
+también pinturas y esculturas. Al final del período, los rollos ilustrados, los \
+emaki, conocen su primera edad de oro, antes de que las guerras civiles cierren \
+la época."""
+style = """
+Los rollos narrativos, o emaki, se despliegan de derecha a izquierda, sección por sección, \
+entre las manos de un lector. Siguen dos maneras: la pintura coloreada y \
+cuidada de la Historia de Genji, de pigmentos espesos, para la literatura de corte; y el dibujo \
+a la tinta, vivo y movido, lleno de humor, de los Chōjū-giga o de las leyendas de \
+templos. Los pintores permanecen casi siempre anónimos. Estos rollos fijaron durante \
+siglos las convenciones del relato en imágenes en Japón."""
+
+[[artistes]]
+nom = "Ogata Kenzan"
+vie = "Kioto, 1663 – Edo, 1743"
+biographie = """
+Ogata Kenzan nace en 1663 en Kioto, tercer hijo del rico comerciante de sedas que es \
+también el padre de Kōrin, su mayor por cinco años. A diferencia de su hermano, lleva una \
+vida retirada y estudiosa, consagrada a los clásicos chinos, al budismo zen, a la \
+poesía y a la caligrafía. Aprende cerámica en el entorno de Nonomura \
+Ninsei, el gran alfarero de Kioto. En 1699, abre su propio horno en Narutaki, al \
+noroeste de la capital, de donde su nombre de artista. Allí produce platos, cuencos y \
+recipientes para el té y la mesa, cuyos decorados, pintados por él mismo o por \
+Kōrin, asocian imagen y poesía. En 1712, se instala en la propia ciudad de Kioto, \
+donde su taller trabaja para una clientela más amplia. Hacia 1731, parte a Edo, donde \
+pasa el final de su vida, pintando y modelando todavía cerámicas. Allí muere en \
+1743. Su nombre, retomado por sucesores, dio origen a un linaje de alfareros."""
+style = """
+Kenzan hace de la cerámica un soporte de pintura y de poesía. Sus piezas, de formas \
+simples, cuadradas o en forma de flor, llevan decorados pintados con óxido de hierro, con \
+cobalto o con esmaltes, de una libertad de pincel inédita, acompañados a veces de poemas \
+caligrafiados. El diálogo con su hermano Kōrin fijó una estética que marcó \
+duraderamente la cerámica japonesa, hasta los alfareros del siglo XX, como el inglés \
+Bernard Leach, formado en Japón por un alfarero del linaje de los Kenzan."""

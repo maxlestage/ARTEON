@@ -1,0 +1,389 @@
+[exposition]
+ordre = 50
+nom_court = "Vermeer & Rembrandt"
+mouvement = "Dutch Golden Age"
+cadre = "ebene"
+couleur = "#7a5a2e"
+titre = "Vermeer and Rembrandt, the Dutch Golden Age"
+artiste = "Vermeer and Rembrandt"
+dates = "17th century"
+accroche = "Virtual exhibition · Vermeer and Rembrandt"
+introduction = """
+Two giants of 17th-century Dutch painting: Rembrandt and his dramatic chiaroscuro, Vermeer and his quiet light that enters through the window. Ten canvases, from the Anatomy Lesson to the Girl with a Pearl Earring, ending with the Night Watch at the far end of the gallery."""
+vitrine = "jeune-fille-perle.jpg"
+
+[musee]
+nom = "Rijksmuseum"
+ville = "Amsterdam, Netherlands"
+architecte = "Pierre Cuypers"
+construction = "1876–1885"
+presentation = """
+The national museum of the Netherlands was born in The Hague in 1800 and moved to Amsterdam in 1808. To give it a true palace, the State entrusted Pierre Cuypers, a champion of the Gothic Revival, with a red-brick building, constructed from 1876 to 1885, which combines Gothic towers and high roofs with Dutch Renaissance ornament; a vaulted passage runs right through it, still used today by cyclists. On the first floor, the gallery of honor, lined with alcoves, leads like the nave of a church to the Night Watch room, designed for Rembrandt's painting. After ten years of work led by the Spanish architects Cruz y Ortiz, the museum reopened in 2013, with its covered courtyards and restored painted decoration. The Dutch Golden Age can be seen there in full: Rembrandt, Frans Hals, Jan Steen, and four paintings by Vermeer, including the Milkmaid."""
+ici = """
+ARTEON's building takes up the axis of the Rijksmuseum: a gallery of honor leading to the Night Watch. One enters from the south into "The Gallery of Honor · Rembrandt", thirty meters long and nine meters wide, with grayish beige walls. In its northern part, two doors face each other: to the east Vermeer's cabinet, to the west the Delft cabinet, two small, square, low-ceilinged rooms with very pale gray walls, made for intimate paintings. At the end of the gallery, the Night Watch room, square and taller, presents the canvas at its actual size."""
+
+[[salles]]
+nom = "The Gallery of Honor · Rembrandt"
+theme = "1632–1668: faces emerging from the shadows, from the group portrait to the last self-portraits."
+murs = "#ddd3c4"
+x = 0
+z = 0
+largeur = 9
+profondeur = 30
+hauteur = 7
+portes = ["sud", "nord", { mur = "est", position = -5 }, { mur = "ouest", position = 5 }]
+
+[[salles]]
+nom = "Vermeer's Cabinet"
+theme = "c. 1658–1668: silent interiors, a soft light coming from the left."
+murs = "#dfe4e6"
+x = 8.5
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5
+
+[[salles]]
+nom = "The Delft Cabinet"
+theme = "c. 1660–1668: his city under a great sky, and a scholar bending over the celestial globe."
+murs = "#e2e5e0"
+x = -8.5
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5
+
+[[salles]]
+nom = "The Night Watch Room"
+theme = "1642: Captain Banninck Cocq's company, at actual size, at the end of the gallery."
+murs = "#cdbfb3"
+x = 0
+z = -22
+largeur = 14
+profondeur = 14
+hauteur = 8
+
+[[oeuvres]]
+titre = "The Anatomy Lesson of Dr. Nicolaes Tulp"
+artiste = "Rembrandt"
+annee = "1632"
+image = "lecon-anatomie.jpg"
+technique = "Oil on canvas, 169.5 × 216.5 cm"
+collection = "Mauritshuis, The Hague"
+note = "Rembrandt is 26: his first major commission, a group portrait caught in the midst of a dissection."
+description = """
+In a dark room, the corpse of a man lies diagonally across a table, the body livid, the lower abdomen covered with a cloth. At the right, seated, Dr. Nicolaes Tulp, in a broad-brimmed black hat and white collar, grasps with forceps the muscles of the left forearm, already dissected, while his raised left hand mimics the movement of fingers curling. Seven surgeons in black, their necks encircled by a ruff or a white collar, crowd around him in a pyramid: some lean toward the arm, one looks out at us, others fix their eyes on the large book open at the dead man's feet. The one at the back holds a sheet bearing the names of the participants. The light falls on the corpse and on the faces, and leaves the rest in shadow."""
+evocation = """
+The painting is at once a collective portrait and a lesson in morality. Each surgeon paid to appear in the work and wanted to be recognizable, but Rembrandt makes of their gathering a moment of shared attention: it has been seen as the triumph of knowledge founded on observation, at the time when Amsterdam was becoming a great scientific center. Tulp's gesture, which shows how the human hand works, has been read as a tribute to the ingenuity of the Creator, an idea dear to the anatomists of the day. Opposite, the body of the executed man reminds us that death awaits everyone: the public dissection was also a meditation on the fragility of life. The young painter asserts his ambition here: to rival the masters of the group portrait by introducing drama into it."""
+histoire = """
+The public dissection took place in Amsterdam in January 1632, on the body of Aris Kindt, a thief who had just been hanged. The surgeons' guild regularly commissioned group portraits to adorn its hall; Tulp, in charge of the city's anatomy lessons, chose the young Rembrandt, recently arrived from Leiden. The painting launched his career in Amsterdam and brought him many portrait commissions. It remained hanging with the surgeons for nearly two centuries. In 1828, the surgeons' widows' fund wished to sell it to replenish its funds; King William I bought it for the Mauritshuis in The Hague, where it has been displayed ever since."""
+facture = """
+Rembrandt breaks with the rows of aligned heads of earlier group portraits: the faces are tiered in a pyramid and converge on the dissected arm and Tulp's hand. The light, coming from the left, sculpts the faces and makes the corpse the brightest patch of the painting, in a chiaroscuro inherited from Caravaggesque painting. The blacks of the clothing are nuanced, the collars and ruffs painted with precision; the flesh of the dead man, a greenish white, contrasts with the pinkish complexion of the living."""
+details = [
+  "Tulp's raised left hand, which imitates the movement of the fingers he is explaining.",
+  "The sheet held by the surgeon at the back, with the list of those present.",
+  "The large book open at the corpse's feet, no doubt an anatomical treatise.",
+  "Tulp's hat, the only headgear in the painting, a sign of his rank.",
+  "The contrast between the greenish skin of the dead man and the pinkish faces of the living.",
+]
+themes = ["science", "medicine", "death", "group portrait", "body"]
+anecdote = """
+Nicolaes Tulp was originally named Claes Pieterszoon. He adopted the name Tulp, "tulip" in Dutch, after the tulip-shaped sign of the house where he lived, and made this flower his emblem."""
+salle = 1
+mur = "est"
+position = 7
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Self-Portrait"
+artiste = "Rembrandt"
+annee = "1659"
+image = "autoportrait-rembrandt.jpg"
+technique = "Oil on canvas, 84.5 × 66 cm"
+collection = "National Gallery of Art, Washington"
+note = "Ruined, at 53, Rembrandt paints himself without indulgence: a marked face, lit within the shadow."
+description = """
+Rembrandt portrays himself half-length, in three-quarter view, his gaze turned toward us. He wears a dark beret and a warm brown coat, whose folds are lost in the darkness of the background. His hands, clasped in front of him, are barely indicated and remain in the half-light. All the light is concentrated on the face: a furrowed brow, bags under the eyes, heavy cheeks, skin marked by age. Locks of curly gray hair emerge from the beret. No accessory, no setting, not even a brush or a palette to recall his profession: nothing distracts from the face and the gaze, at once weary and attentive, which seems to question the viewer as much as the painter himself."""
+evocation = """
+Painted in the wake of his bankruptcy, this portrait is often read as an examination of conscience: a man who has lost everything except his art, and looks himself in the face. Rembrandt is the painter who depicted himself most before the modern era, some forty times in paint, not counting prints and drawings; set end to end, these self-portraits form a kind of autobiography, from the ambitious young man to the old one. Here, no more fanciful costume or flattering pose: the truth of aging flesh becomes the subject. Historians point out that these paintings were also sought after by collectors, and not merely intimate confessions; but the gravity of this gaze has made it the very image of the artist facing himself."""
+histoire = """
+In 1656, overwhelmed by debts after buying his large house on the Jodenbreestraat and years of acquiring paintings and collector's items, Rembrandt obtained a cessio bonorum, a form of bankruptcy that spared him debtors' prison. His collections were dispersed at auction in 1657 and 1658, the house was sold, and he moved to a more modest neighborhood. It was in these difficult years that he painted this self-portrait, signed and dated 1659. He nevertheless continued to work and to receive prestigious commissions, such as The Syndics of the Drapers' Guild in 1662. The painting was acquired in the 20th century by the American financier Andrew W. Mellon, who gave it in 1937 to the National Gallery of Art in Washington, for which his collection formed the core."""
+facture = """
+The brushwork changes from zone to zone: the face is built in thick layers, laid on and reworked, in which the paste catches the light like the relief of the skin; the clothing and hands are brushed more broadly, almost left in a sketch state. Rembrandt limits his palette to browns, ochres and warm blacks, with a few reds in the flesh tones. The side lighting leaves part of the face in a transparent shadow. This contrast between the highly worked face and the freedom of the rest directs the viewer's eye straight to the eyes."""
+details = [
+  "The wrinkles of the forehead, rendered by the very thickness of the paint.",
+  "The clasped hands, barely sketched in the shadow at the bottom of the painting.",
+  "The gray locks escaping from the beret, on either side of the face.",
+  "The coat brushed in broad strokes, which melts into the dark background.",
+]
+themes = ["self-portrait", "old age", "introspection", "ruin"]
+anecdote = """
+The inventory drawn up at his bankruptcy, in 1656, reveals an astonishing collection owned by Rembrandt: paintings by Italian and Flemish masters, albums of prints, antique busts, weapons, shells, objects from the Indies… Everything was sold at auction."""
+salle = 1
+mur = "est"
+position = -11
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Bathsheba at Her Bath"
+artiste = "Rembrandt"
+annee = "1654"
+image = "bethsabee.jpg"
+technique = "Oil on canvas, 142 × 142 cm"
+collection = "Musée du Louvre, Paris"
+note = "Bathsheba holds King David's letter: a pensive nude, painted from his companion Hendrickje."
+description = """
+A young nude woman, life-size, is seated on a bed covered with fabrics, her body almost frontal, her head tilted to one side, her gaze lost downward. In her right hand, resting on her thigh, she holds an open letter. At her feet, an old maidservant dressed in dark clothing, her head covered, is washing or drying her feet. The background is almost black; beneath the young woman, a rumpled white sheet, and behind her a gold brocade, compose a sumptuous setting. A few jewels, a bracelet and ornaments in her hair, emphasize her nudity. The body, very luminous, occupies the center of the square painting, and nothing disturbs the face-to-face between the woman and her thoughts."""
+evocation = """
+The story comes from the second book of Samuel: from the terrace of his palace, King David sees Bathsheba bathing, summons her and seduces her; she becomes pregnant, and David sends her husband Uriah to die in battle. The Bible says nothing of a letter: Rembrandt adds it to condense the drama into a single moment. Where other painters showed a bather being spied upon, he shows a woman reflecting on what is demanded of her, torn between obedience to the king and fidelity to her husband. In her melancholy has been seen a foreboding of misfortunes to come. The painted body is not idealized: it is that of a real woman, with her belly, her folds, her flesh."""
+histoire = """
+Signed and dated 1654, the painting belongs to a difficult year for Rembrandt and his companion Hendrickje Stoffels. Pregnant, she was summoned by the council of the Reformed Church, reprimanded for living with the painter out of wedlock and barred from communion; their daughter Cornelia was born in the autumn. A widower of Saskia, Rembrandt could not remarry without losing the use of his first wife's inheritance, reserved for their son Titus. For whom the painting was made is unknown. After passing through various collections, it was acquired by the Parisian physician and collector Louis La Caze, who bequeathed it to the Louvre in 1869 with more than five hundred paintings."""
+facture = """
+Rembrandt builds the body through light rather than drawing: a warm, creamy paste, laid in supple layers, models the volumes without a sharp contour. The fabrics are handled with great freedom, in broad strokes of the brush, with golden impastos for the brocade. Bathsheba's pose, it has been shown, takes up antique figures known through prints, which the painter transforms into an intimate scene. The maidservant, in shadow, counterpoints the lit body, and the life-size figures give the scene an almost monumental presence."""
+details = [
+  "King David's letter, held limply in Bathsheba's right hand.",
+  "The tilted face, the lowered eyes, absorbed in thought.",
+  "The old maidservant, in shadow, bent over her mistress's feet.",
+  "The gold brocade behind the young woman, painted in thick touches.",
+  "The rumpled white sheet, the brightest area after the body.",
+]
+themes = ["Bible", "nude", "desire", "melancholy", "dilemma"]
+anecdote = """
+Physicians have thought they recognized, in a shadow on Bathsheba's left breast, the signs of a tumor, and supposed that the model suffered from one. The hypothesis, unverifiable, has caused much ink to flow and remains a famous example of a diagnosis made on a painting."""
+salle = 1
+mur = "ouest"
+position = -7
+largeur = 1.4
+
+[[oeuvres]]
+titre = "The Return of the Prodigal Son"
+artiste = "Rembrandt"
+annee = "c. 1668"
+image = "fils-prodigue.jpg"
+technique = "Oil on canvas, 262 × 205 cm"
+collection = "State Hermitage Museum, Saint Petersburg"
+note = "The father lays his hands on the shoulders of his kneeling son: one of the last canvases, and among the most moving."
+description = """
+In a golden half-light, an old man with half-closed eyes, dressed in a ample red cloak, bends over a young man kneeling against him and lays both hands on his back. The son, seen from behind, has a shaved head and tattered clothing of an earthy yellow; he has lost a sandal, and the sole of his bare foot, dirty and callused, turns toward us. He presses his head against his father's chest. At the right, standing, a bearded man, also draped in red, observes the scene, stiff, his hands resting on a staff: he is identified as the elder brother. Other figures remain in the background, including a seated man who watches, and silhouettes barely visible in the shadow at the back."""
+evocation = """
+The parable, in the Gospel of Luke, tells of the younger son who demands his share of the inheritance, squanders it, then returns wretched to his father, who welcomes him with joy, to the great dismay of the elder brother who stayed faithful. Rembrandt paints neither the feast nor the son's downfall, but the moment of forgiveness, silent and unconditional. The father's hands are its heart: it has often been remarked that they seem different, one broad and masculine, the other finer, and in this has been seen the union of paternal and maternal tenderness. The gap between the embracing group and the brother who stands apart raises the question of jealousy and justice. Painted at the end of a life marked by bereavements, the painting has been read as Rembrandt's spiritual testament."""
+histoire = """
+The date of the painting is uncertain: it is generally placed in the last years of Rembrandt, who died in 1669, a year after his son Titus. Some historians think that secondary parts, notably the background figures, may have been completed by another painter. For whom it was painted and what its course was during the following century are unknown. In 1766, it was bought in Paris for Empress Catherine II of Russia, who was then assembling in Saint Petersburg the collections of the Hermitage, one of the great museums of Europe. It has been kept there ever since, and is among the museum's most famous works."""
+facture = """
+Rembrandt paints here with extreme freedom: the paint, thick and rough on the son's rags and the father's cloak, is laid on with a broad brush, sometimes reworked and scraped, while the background dissolves in brown, transparent glazes. The range is reduced to reds, ochres and browns, which the light makes glow. The composition is off-center: the group of father and son occupies the left, the brightest light falling on their heads and on the hands, while the elder brother, also lit, faces it at the right. The figures are almost life-size."""
+details = [
+  "The father's two hands, different in shape, resting on the son's back.",
+  "The son's bare foot, out of his worn sandal, with its dirty sole.",
+  "The son's shaved head, like that of a prisoner or a beggar.",
+  "The short sword still hanging from his belt, the last sign of his rank.",
+  "The elder brother, standing at the right, who looks on without approaching.",
+]
+themes = ["Bible", "forgiveness", "family", "fatherhood", "old age"]
+anecdote = """
+Moved by a poster of this painting, the Dutch priest Henri Nouwen went to contemplate it at length at the Hermitage. He drew from it a book of meditation, "The Return of the Prodigal Son", published in 1992 and translated into many languages."""
+salle = 1
+mur = "ouest"
+position = 11
+largeur = 1.6
+
+[[oeuvres]]
+titre = "The Milkmaid"
+artiste = "Johannes Vermeer"
+annee = "c. 1658"
+image = "laitiere.jpg"
+technique = "Oil on canvas, 45.5 × 41 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "A maidservant pours milk in the light of the window: the bread seems sprinkled with points of light."
+description = """
+In a corner of a kitchen lit by a window at the left, a sturdy maidservant, standing, slowly pours a thin stream of milk from an earthenware pot into a vessel set on the table. She wears a white cap, a yellow bodice with rolled-up sleeves, a red skirt and a blue apron. In front of her, on a blue-green tablecloth, a basket and pieces of bread, and a blue jug. The bare, whitewashed wall bears a nail and traces of holes; a basket and a copper pail hang near the window, one pane of which is broken. On the floor, at the right, a wooden foot warmer, and a row of Delft tiles at the foot of the wall."""
+evocation = """
+Nothing spectacular: a servant absorbed in an everyday gesture. But Vermeer gives this gesture an almost solemn gravity, and the figure, solidly planted, has the presence of a statue. Historians see in it the praise of the domestic virtues dear to Dutch society: order, cleanliness, patient work. This seriousness was not a given: in the painting and literature of the time, milkmaids and kitchen girls were often the object of bawdy innuendo. A small Cupid painted on a tile, and the foot warmer, associated with desire in emblem books, recall this register, which the woman's dignity keeps at bay. It has also been supposed that she was preparing a bread pudding, which would explain the stale bread on the table."""
+histoire = """
+The painting dates from Vermeer's first years of maturity, around 1658–1660, shortly after he abandoned religious and mythological subjects for interior scenes. It perhaps belonged to his chief patron, the Delft man Pieter van Ruijven. It was in any case in the sale of the collection of Jacob Dissius, in Amsterdam, in 1696, described as a maidservant pouring milk, "extremely well done", and knocked down for 175 guilders, one of the highest prices of the sale. In the 19th century, it belonged to the Six family in Amsterdam. In 1908, the Rijksmuseum bought it from their heirs with the help of the State and the Rembrandt Association."""
+facture = """
+Vermeer lays on the light in small touches: on the bread, the basket and the jug, dots of pale paint, slightly in relief, make the surfaces sparkle; they are called "pointillés". The blue of the apron and the tablecloth is natural ultramarine, drawn from lapis lazuli, a very costly pigment that he used without stinting. Examination of the painting has shown that he first painted an object hanging on the wall and a laundry basket near the foot warmer, then erased them to strip the scene bare. The viewpoint, slightly from below, makes the servant loom larger."""
+details = [
+  "The points of light on the bread crust and on the wicker of the basket.",
+  "The thin stream of milk, almost motionless, flowing from the pot.",
+  "The nail driven into the wall, with its tiny shadow.",
+  "The broken pane of the window, at the upper left.",
+  "The Delft tiles at the foot of the wall, one of which shows a little Cupid.",
+]
+themes = ["interior", "light", "work", "everyday life", "servant"]
+anecdote = """
+The Rijksmuseum lends The Milkmaid only exceptionally. In 2009, however, she crossed the Atlantic for an exhibition entirely devoted to her at the Metropolitan Museum in New York, around the museum's Dutch paintings."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.6
+
+[[oeuvres]]
+titre = "View of Delft"
+artiste = "Johannes Vermeer"
+annee = "c. 1660–1661"
+image = "vue-delft.jpg"
+technique = "Oil on canvas, 96.5 × 115.7 cm"
+collection = "Mauritshuis, The Hague"
+note = "His city, seen from the opposite shore, under a great sky: Proust held it to be the most beautiful painting in the world."
+description = """
+Across a broad stretch of water, the city of Delft extends in a long horizontal band: brick ramparts, red and bluish roofs, and two fortified gates, that of Schiedam, at the left, with its clock, and that of Rotterdam, at the right, flanked by two turrets. Behind, the tower of the Nieuwe Kerk shines in the sun, while the buildings in the foreground remain in the shadow of a cloud. Boats, including two large fishing boats, are moored at the right. On the sandy bank of the foreground, at the left, a few small figures chat. Above, the sky occupies more than half the canvas, with great white and gray clouds layered one above another."""
+evocation = """
+Vermeer invents nothing: every monument can be recognized, and the painting still serves as a document on 17th-century Delft. He did, however, slightly recompose the view to balance the masses, and it is less the topography than the light that is its subject: a calm morning, under a changing sky, when the sun strikes the heart of the city. Some have seen in the sunlit tower of the Nieuwe Kerk, where William of Orange lies buried, a discreet tribute to the House of Orange and to civic pride. A few years earlier, in 1654, the explosion of a powder magazine had devastated part of Delft; the serenity of this view has been read as the portrait of a pacified city, sure of itself."""
+histoire = """
+Vermeer painted his native city around 1660–1661 from the south shore of the harbor, probably from an upstairs window of a house. The painting no doubt belonged to Pieter van Ruijven; it appears in 1696 at the Dissius sale in Amsterdam, where it reached 200 guilders, the highest price of the Vermeers in the sale. In 1822, King William I acquired it at auction for the Mauritshuis, which had just opened its doors in The Hague. In 1921, it was lent to Paris for an exhibition of Dutch painting at the Jeu de Paume: Proust, ill, went to see it again, a year and a half before his death. The painting has scarcely left The Hague since."""
+facture = """
+Vermeer works the material as much as the color: the bricks and roofs are rendered with a granular paste, and tiny grains of pale paint, laid in relief on the hulls of the boats and the façades, catch the light like real reflections. The reflections in the water are elongated and simplified. The play of shadow and light, with the nearby buildings in shadow and the roofs in the background lit, creates depth. It has been asked whether he used a camera obscura, the optical instrument that projects an image: the question remains debated."""
+details = [
+  "The sunlit roofs at the right, where people look for the \"little patch of yellow wall\".",
+  "The clock of the Schiedam gate, which shows a little past seven.",
+  "The pale tower of the Nieuwe Kerk, bathed in sunlight behind the roofs.",
+  "The small figures on the sandy bank, at the left.",
+  "The grains of paint in relief on the hulls of the boats, at the right.",
+]
+themes = ["city", "landscape", "sky", "water", "light"]
+anecdote = """
+In "The Prisoner", Proust has the writer Bergotte die before the View of Delft, as he contemplates a "little patch of yellow wall" he had never noticed. The novelist lent his character the faintness he had himself felt at the 1921 exhibition."""
+salle = 3
+mur = "nord"
+position = 0
+largeur = 1.16
+
+[[oeuvres]]
+titre = "Girl with a Pearl Earring"
+artiste = "Johannes Vermeer"
+annee = "c. 1665"
+image = "jeune-fille-perle.jpg"
+technique = "Oil on canvas, 44.5 × 39 cm"
+collection = "Mauritshuis, The Hague"
+note = "A blue turban, a pearl, a glance over the shoulder: an imaginary face that has become one of the most famous."
+description = """
+Against a dark, plain background, a young girl turns toward us over her shoulder, as if she had just been called. She wears an ultramarine blue turban knotted on her head, from which a length of yellow cloth falls, and a yellow-brown jacket from which a white collar emerges. From her ear hangs a large pearl, which reflects the light and the white of the collar. Her large eyes fix the viewer; her parted, moist lips gleam with small touches of light. The light comes from the left and gently models the face, without marked contours. No setting, no object: only a face, a gaze and a pearl, caught in a suspended movement."""
+evocation = """
+This is not a portrait but a "tronie", a word that then designated a study of a head, often costumed, which collectors bought for its beauty or expression, without concern for the sitter's identity. The turban evokes the dreamed-of Orient of the 17th-century Dutch. It is not known who posed: the painter's eldest daughter, Maria, has been proposed, without proof. This mystery, together with the ambiguity of the gaze, at once shy and direct, and the parted mouth, as if about to speak, has fed countless interpretations. She has been nicknamed "the Mona Lisa of the North": like Leonardo's portrait, she seems to form a personal relationship with each viewer."""
+histoire = """
+Vermeer painted it around 1665, no doubt for the market rather than on commission. Its trace is then lost: it has been thought to be recognizable among the "tronies" of the 1696 Dissius sale, without certainty. In 1881, in poor condition, it was bought at an auction in The Hague by the collector Arnoldus Andries des Tombe, for two guilders and thirty cents. At his death in 1902, he bequeathed it to the Mauritshuis with other paintings. It has been the museum's star ever since. Tracy Chevalier's novel (1999) and the film made from it in 2003, with Scarlett Johansson, gave it worldwide fame."""
+facture = """
+Vermeer reduces his palette to a few colors: the natural ultramarine of the turban, yellows, ochres, lead white. The transitions are very soft, almost without contours, notably on the bridge of the nose, which melts into the cheek. The pearl itself is an illusion: only a few touches, a bright highlight at the top and a pale glow at the bottom, without even the hook that would hold it to the ear. A scientific study carried out by the Mauritshuis in 2018 revealed that the background, now black, originally showed a green curtain, and that the girl had eyelashes, which have become invisible to the naked eye."""
+details = [
+  "The reflection of the white collar in the lower part of the pearl.",
+  "The small touches of light at the corner of the lips.",
+  "The bridge of the nose, without any contour, melting into the cheek.",
+  "The yellow length of the turban, falling behind the head.",
+  "The tiny reflection of light in each of the eyes.",
+]
+themes = ["portrait", "gaze", "Orient", "mystery", "tronie"]
+anecdote = """
+After a tour of Japan, the United States and Italy between 2012 and 2014, the Mauritshuis decided that the painting would travel no more. The sole exception: in 2023, it was lent for a few weeks to the great Vermeer exhibition at the Rijksmuseum in Amsterdam."""
+salle = 2
+mur = "est"
+position = 0
+largeur = 0.55
+
+[[oeuvres]]
+titre = "The Art of Painting"
+artiste = "Johannes Vermeer"
+annee = "c. 1666–1668"
+image = "art-peinture.jpg"
+technique = "Oil on canvas, 120 × 100 cm"
+collection = "Kunsthistorisches Museum, Vienna"
+note = "A painter seen from behind paints the muse of History: Vermeer kept this painting all his life."
+description = """
+A heavy tapestry curtain, drawn back at the left, reveals a studio. A painter seen from behind, in a black slashed doublet, red hose and beret, sits before his easel; he is beginning to paint the laurel wreath of his model. She, standing near the window, is a young woman dressed in blue, crowned with laurel, who holds a trumpet and a large yellow book, her eyes lowered. On the table, a plaster mask, an open book, fabrics. On the wall extends a large map of the Seventeen Provinces of the Netherlands, and a gilt copper chandelier, without candles, hangs from the beamed ceiling. On the floor, a black and white marble tiling."""
+evocation = """
+The model embodies Clio, the muse of History, recognizable by the attributes given her in Cesare Ripa's Iconologia, a widely read handbook of symbols: the laurel of glory, the trumpet of fame, the book of history. The painting is thus an allegory: painting, by representing History, ensures glory. The map, where a fold separates the North, which became the United Provinces, from the South that remained Spanish, and the chandelier surmounted by the Habsburg double-headed eagle have been read as allusions to the division of the Netherlands. The faceless painter has made people dream of a self-portrait; nothing proves it, but the work certainly tells of the high idea Vermeer had of his art."""
+histoire = """
+Vermeer painted this large picture around 1666–1668, with no known commission, and kept it at home until his death in 1675. Overwhelmed by debts, his widow Catharina Bolnes transferred it to her mother, Maria Thins, to shield it from creditors; the trustee of the estate, the scientist Antonie van Leeuwenhoek, contested the maneuver. The painting then passed from hand to hand and, in the 19th century, belonged to the Counts Czernin in Vienna, under the name of Pieter de Hooch, before being restored to Vermeer. In 1940, Hitler bought it from the Czernin family for the museum he planned at Linz. Found in 1945 in the Altaussee salt mine, it was returned to Austria and assigned to the Kunsthistorisches Museum."""
+facture = """
+The composition is a play of successive planes: the curtain, in the foreground, creates a threshold effect, then come the chair, the painter, and finally the model and the map, lit by an invisible window at the left. The tiled floor in perspective leads the eye toward the back. Vermeer used to stick a pin at the vanishing point and attach a thread to it to trace the perspective lines: its trace has been found in several of his paintings. Each material receives its own treatment: the reflections of the chandelier, the grain of the tapestry, the folds and inscriptions of the map, the ultramarine blue of the gown."""
+details = [
+  "The painter's discreet signature, on the lower edge of the map, near the model.",
+  "The slashes of the doublet, which show the white shirt.",
+  "The plaster mask set on the table, turned toward the ceiling.",
+  "The double-headed eagle at the top of the chandelier.",
+  "The first laurel leaves sketched on the canvas on the easel.",
+]
+themes = ["studio", "allegory", "history", "painting", "map"]
+anecdote = """
+In 2011, Austria refused to return the painting to the heirs of the Czernin family, who maintained that the 1940 sale to Hitler had been forced: the commission in charge of restitutions judged that it had not been concluded under duress."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "The Astronomer"
+artiste = "Johannes Vermeer"
+annee = "1668"
+image = "astronome.jpg"
+technique = "Oil on canvas, 51 × 45 cm"
+collection = "Musée du Louvre, Paris"
+note = "A scholar reaches out to a celestial globe, in the light of the window."
+description = """
+In a study lit by a window at the left, a man with long hair, dressed in a loose blue-green dressing gown, sits and leans toward a celestial globe set on the table. With his right hand, he brushes its surface, as if to make the heavens turn; the other hand rests on the edge of the table, near an open book. A thick carpet with colored patterns covers the table, on which an astrolabe can be seen. Behind him, a cupboard holds a few books; on the wall hangs a painting representing Moses saved from the waters. The stained-glass panes of the window let through a soft light that falls on the face, the hand and the globe."""
+evocation = """
+The painting celebrates the modern scholar, at the hour when the United Provinces were a great hearth of the sciences: astronomy, cartography, optics. The book open on the table has been identified as a treatise by Adriaan Metius, open at the passage that recommends seeking from God the inspiration to study the stars. The Moses saved from the waters, on the wall, has been interpreted in the same sense: Moses, raised at the Egyptian court, was held to be learned in all the wisdom of the Egyptians, astronomy included. Science and faith are thus not opposed here. It has been supposed that the model was Antonie van Leeuwenhoek, a Delft scientist born the same year as Vermeer, an attractive hypothesis but never demonstrated."""
+histoire = """
+Signed and dated 1668, it is one of the very few dated canvases by Vermeer. It no doubt forms a pair with The Geographer, preserved in the Städel Museum in Frankfurt, in which the same model and the same gown are recognizable; the two paintings passed together through several sales in the 18th century. At the end of the 19th century, The Astronomer entered the collection of the Rothschild family in Paris. Seized by the Nazis in 1940 and destined for Hitler's collection, it was returned to the family after the war. In 1983, it entered the Louvre by dation, that is, in payment of inheritance taxes, and it is today one of the museum's only two Vermeers, with The Lacemaker."""
+facture = """
+The light from the window slides over the face, the globe and the folds of the gown, while the background remains in a golden half-light. Vermeer describes with precision instruments that he no doubt knew directly: the globe corresponds to a model published by Jodocus Hondius in 1600, whose constellation figures can be recognized. The carpet, rendered in thick touches of color, contrasts with the gown, painted in broad planes of blue. The tight composition places the scholar and the globe on the diagonal of the light."""
+details = [
+  "The scholar's right hand, resting on the globe among the constellations.",
+  "The signature and the date, inscribed on the door of the cupboard.",
+  "The astrolabe set on the table carpet.",
+  "The painting of Moses saved from the waters, partly visible at the right.",
+  "The small diamonds of the window's stained glass, from which the light comes.",
+]
+themes = ["science", "astronomy", "knowledge", "light", "interior"]
+anecdote = """
+When the Nazis seized the painting from the Rothschilds, they affixed on the back a small swastika-shaped stamp, which designated it as confiscated property. The mark is still visible on the back of the canvas."""
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 0.6
+
+[[oeuvres]]
+titre = "The Night Watch"
+artiste = "Rembrandt"
+annee = "1642"
+image = "ronde-nuit.jpg"
+technique = "Oil on canvas, 379.5 × 453.5 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "Captain Banninck Cocq's militia sets off: a group portrait that became a scene of theater."
+description = """
+At the center, Captain Frans Banninck Cocq, in black with a red sash, steps toward us and extends his left hand while speaking to his lieutenant, Willem van Ruytenburch, dressed all in light yellow and wearing a feathered hat. Around them, a company of militiamen sets itself in motion in cheerful disorder: a man in red loads his musket, another blows on the priming pan, a third fires; a standard-bearer brandishes the banner, a drummer beats his drum at the right, a dog barks. Pikes and lances cross at the top. At the left, a little girl dressed in gold, bathed in light, wears a dead chicken at her belt. Behind, a stone arch, and a shield on which the names of the guardsmen are inscribed."""
+evocation = """
+The painting is a collective portrait: the members of the company who paid to appear are represented in it, but Rembrandt blends them into an action instead of lining them up. It has been seen as the pride of a civic militia, guarantor of the order and liberties of the city, at a time when these companies had lost most of their military role and were becoming honorary societies. The luminous little girl is often interpreted as an allegorical figure of the company of arquebusiers: the chicken's claws recall their emblem. The general movement, the march toward the viewer, have made the painting an image of the drive and prosperity of the Dutch Republic in the Golden Age."""
+histoire = """
+Around 1639, Captain Banninck Cocq's company commissioned this painting for the great hall of the Kloveniersdoelen, seat of the Amsterdam arquebusiers, which received a whole series of company portraits by different painters. Completed in 1642, the year of Saskia's death, it did not provoke the scandal that legend has imagined. In 1715, transported to the town hall, it was trimmed on all sides to fit a wall; at the left, two figures disappeared. It then entered the national collections. During the Second World War, it was hidden, rolled up, in shelters, notably a cave near Maastricht. The Rijksmuseum, whose building opened in 1885, reserves a room for it at the end of its gallery of honor."""
+facture = """
+Rembrandt upsets the genre of the militia portrait: instead of rows of equally lit heads, he creates a dramatic scene in which the light isolates a few figures, the captain, the lieutenant, the little girl, and leaves the others in half-light. The shadow of the captain's hand, cast on the lieutenant's costume, gives the measure of the space. The golden embroideries are painted in thicknesses that catch the light. The title, which appeared well after the painter's death, comes from the darkened varnish that dimmed the canvas: the scene in fact takes place in broad daylight."""
+details = [
+  "The shadow of the captain's left hand on the lieutenant's yellow jacket.",
+  "The little girl in the golden dress, with a dead chicken hanging from her belt.",
+  "The dog barking near the drum, at the right.",
+  "The shield above the arch, on which the names of the guardsmen are inscribed.",
+  "The militiaman in red, at the left, busy loading his musket.",
+]
+themes = ["militia", "group portrait", "movement", "chiaroscuro", "Amsterdam"]
+anecdote = """
+Since 2019, the "Operation Night Watch" project has been studying and restoring the painting before the public's eyes, in a glass chamber. In 2021, the parts cut off in 1715 were reconstituted with the help of artificial intelligence, based on an old copy by Gerrit Lundens, and exhibited for a time beside the original."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 4.5
+
+[[artistes]]
+nom = "Johannes Vermeer"
+vie = "Delft, baptized 31 October 1632 – Delft, buried 15 December 1675"
+biographie = """
+Johannes Vermeer was baptized in Delft in 1632. His father, Reynier Jansz, a silk weaver, kept an inn on the main square and dealt in paintings. Nothing is known of the young man's training. In April 1653, he married Catharina Bolnes, from a well-off Catholic family, and probably converted to Catholicism; the couple settled with Catharina's mother, Maria Thins, in the Catholic quarter of the city. The same year, he joined the Guild of Saint Luke, of which he would several times be one of the officers. His first paintings were mythological and religious scenes; around 1657, he turned to the domestic interiors that would make his fame. He painted slowly, two paintings a year on average by some estimates, and had a loyal patron, Pieter van Ruijven, who owned a large part of his work. The couple had fifteen children, eleven of whom were still living at his death. In 1672, the French invasion of the United Provinces collapsed the art market; overwhelmed by debts, Vermeer died suddenly at forty-three, and his widow would say that he had sunk into despair. Quickly forgotten, he was rediscovered in the mid-19th century by the French critic Théophile Thoré-Bürger. Some thirty-five paintings are attributed to him today."""
+style = """
+Vermeer is the painter of quiet light: almost always coming from a window at the left, it bathes interiors in which one or two figures read, write, play music or work. His colors are limpid, dominated by natural ultramarine blue and yellow, and he renders reflections with small points of light. His compositions, of rigorous geometry, freeze an ordinary moment in a suspended silence. His use of the camera obscura is still debated. Rare, long forgotten, he became in the 20th century one of the most admired painters, from Proust to Dalí, and a reference for all interior painting."""
+
+[[artistes]]
+nom = "Rembrandt"
+vie = "Leiden, 15 July 1606 – Amsterdam, 4 October 1669"
+biographie = """
+Rembrandt Harmenszoon van Rijn was born in Leiden, the son of a well-to-do miller. Enrolled for a time at the university, he chose painting: three years of apprenticeship with Jacob van Swanenburgh in Leiden, then six months in Amsterdam with Pieter Lastman, a history painter trained in Italy. Back in Leiden, he worked alongside Jan Lievens; both were noticed by Constantijn Huygens, secretary to the stadtholder. Around 1631, he settled in Amsterdam with the art dealer Hendrick Uylenburgh, whose cousin Saskia he married in 1634. A sought-after portraitist, he bought in 1639 a large house on the Jodenbreestraat, today's Rembrandt House, and trained many pupils. But bereavements accumulated: three children died in infancy, and Saskia died in 1642, shortly after the birth of their son Titus. He then lived with Hendrickje Stoffels, with whom he had a daughter, Cornelia. His collector's expenses and the decline in commissions led him to bankruptcy in 1656; his house and possessions were sold. He nevertheless continued to paint and to receive important commissions, such as The Syndics of the Drapers' Guild. Hendrickje died in 1663, Titus in 1668. Rembrandt died the following year and was buried in the Westerkerk in Amsterdam, in a rented grave whose exact location is unknown today."""
+style = """
+Rembrandt is the master of chiaroscuro: a warm, golden light brings a face, a hand, an object out of the shadow, and concentrates emotion. His touch evolves from a smooth precision, in the 1630s, toward an ever thicker and freer paint, worked with the brush and sometimes the knife, which gives flesh and fabrics a striking relief. A painter, draftsman and printmaker of the first rank, he renewed the group portrait as well as the biblical scene, seeking psychological truth rather than ideal beauty. His pupils, from Ferdinand Bol to Carel Fabritius, spread his manner; in the 19th century, Delacroix and Van Gogh admired him profoundly."""

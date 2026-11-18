@@ -3,6 +3,7 @@
 // (donnees/liste.json pour parcourir et chercher, donnees/fiches-NN.json pour le détail),
 // les vignettes viennent du site (v/<œuvre>.jpg), l'image en grand du musée qui la publie.
 // Écrit par outils/monde_web.py dans monde/ ; adresses en #/… (une seule page).
+import { chargerCatalogue, langue, lien, lienPage, nombre, t, titreSiecle } from "./commun.js";
 import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
@@ -13,17 +14,38 @@ const echapper = (t) => String(t ?? "").replace(/[&<>"']/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const plier = (t) => String(t ?? "").replace(/œ/g, "oe").replace(/Œ/g, "oe").replace(/æ/g, "ae")
   .normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-const nombre = (n) => n.toLocaleString("fr-FR");
+const cite = (s) => t(`« ${s} »`, `“${s}”`, `«${s}»`);
+const oeuvresN = (n) => (n === 1 ? t("1 œuvre", "1 work", "1 obra") : `${nombre(n)} ${t("œuvres", "works", "obras")}`);
+
+// Les catégories (outils/collections_monde.py) restent en français dans les données et les
+// adresses ; seul leur nom affiché change de langue.
+const CATEGORIES = {
+  "Peinture": ["Painting", "Pintura"], "Dessin": ["Drawing", "Dibujo"], "Estampe": ["Print", "Estampa"],
+  "Photographie": ["Photography", "Fotografía"], "Sculpture": ["Sculpture", "Escultura"],
+  "Céramique": ["Ceramics", "Cerámica"], "Textile et costume": ["Textiles and costume", "Textiles e indumentaria"],
+  "Mobilier": ["Furniture", "Mobiliario"], "Verre": ["Glass", "Vidrio"], "Bijoux": ["Jewellery", "Joyería"],
+  "Armes et armures": ["Arms and armour", "Armas y armaduras"], "Livres et manuscrits": ["Books and manuscripts", "Libros y manuscritos"],
+  "Monnaies et médailles": ["Coins and medals", "Monedas y medallas"], "Instruments de musique": ["Musical instruments", "Instrumentos musicales"],
+  "Orfèvrerie et métal": ["Metalwork", "Orfebrería y metal"], "Autres objets": ["Other objects", "Otros objetos"],
+};
+const categorie = (c) => (CATEGORIES[c] ? t(c, ...CATEGORIES[c]) : c);
+// « Artiste inconnu » : la valeur des données (et la clé des recherches), affichée dans la langue de la page.
+const nomArtiste = (a) => (a === "Artiste inconnu" ? t(a, "Unknown artist", "Artista desconocido") : a);
+// Les villes et licences des musées (index.json) sont écrites en français.
+const localiser = (texte) => (langue === "fr" ? String(texte ?? "") : String(texte ?? "")
+  .replace("États-Unis", t("États-Unis", "United States", "Estados Unidos"))
+  .replace("Images et données", t("Images et données", "Images and data", "Imágenes y datos"))
+  .replace(" ; textes de présentation", t(" ; textes de présentation", "; descriptive texts", "; textos de presentación")));
 const rangSiecle = (y) => y <= -100000 ? -999999 : (y < 0 ? -(Math.floor((-y - 1) / 100) + 1) : Math.floor((y - 1) / 100) + 1);
 
 // Une ligne de liste.json : [titre, artiste, date, année, catégorie, musée, ratio].
 const T = 0, A = 1, D = 2, Y = 3, C = 4, K = 5;
 
 async function charger() {
-  racine.innerHTML = `<p class="monde-chargement">Ouverture des collections…</p>`;
+  racine.innerHTML = `<p class="monde-chargement">${t("Ouverture des collections…", "Opening the collections…", "Abriendo las colecciones…")}</p>`;
   const [index, liste] = await Promise.all([
-    jsonGarde("donnees/index.json"),
-    jsonGarde("donnees/liste.json"),
+    jsonGarde(lien("monde/donnees/index.json")),
+    jsonGarde(lien("monde/donnees/liste.json")),
   ]);
   etat.index = index;
   etat.liste = liste;
@@ -44,7 +66,7 @@ function filtrer(route) {
   if (route.type === "recherche") {
     const mots = plier(route.valeur).split(/\s+/).filter(Boolean);
     if (!mots.length) return tous;
-    if (!etat.plies) etat.plies = L.map((l) => plier(`${l[T]} ${l[A]} ${l[D]} ${l[C]} ${etat.index.musees[l[K]].nom}`));
+    if (!etat.plies) etat.plies = L.map((l) => plier(`${l[T]} ${l[A]} ${l[D]} ${l[C]} ${langue === "fr" ? "" : categorie(l[C])} ${etat.index.musees[l[K]].nom}`));
     return tous.filter((i) => mots.every((m) => etat.plies[i].includes(m)));
   }
   return tous;
@@ -60,9 +82,16 @@ function afficher() {
   if (r.type === "oeuvre") return fiche(r.valeur);
   // Les œuvres liées à une exposition : chargées à la première demande.
   if (r.type === "exposition" && !etat.expositions) {
-    racine.innerHTML = `<p class="monde-chargement">Ouverture de l'exposition…</p>`;
-    jsonGarde("donnees/expositions.json").catch(() => ({}))
-      .then((e) => { etat.expositions = e; if (route().type === "exposition") afficher(); });
+    racine.innerHTML = `<p class="monde-chargement">${t("Ouverture de l'exposition…", "Opening the exhibition…", "Abriendo la exposición…")}</p>`;
+    // Le nom de l'exposition vient du catalogue de la langue de la page (expositions.json est en français).
+    Promise.all([
+      jsonGarde(lien("monde/donnees/expositions.json")).catch(() => ({})),
+      langue === "fr" ? null : chargerCatalogue().catch(() => null),
+    ]).then(([e, c]) => {
+      for (const ex of c?.exhibitions || []) if (e[ex.slug]) e[ex.slug].nom = ex.short_name || ex.title || e[ex.slug].nom;
+      etat.expositions = e;
+      if (route().type === "exposition") afficher();
+    });
     return;
   }
   const vues = filtrer(r);
@@ -71,30 +100,35 @@ function afficher() {
   const ix = etat.index;
   const titre = {
     musee: ix.musees.find((m) => m.cle === r.valeur)?.nom,
-    categorie: r.valeur, siecle: ix.siecles.find((s) => String(s[0]) === r.valeur)?.[1],
-    artiste: r.valeur, recherche: r.valeur ? `« ${r.valeur} »` : "",
-    exposition: etat.expositions?.[r.valeur] ? `Exposition « ${etat.expositions[r.valeur].nom} »` : "",
-  }[r.type] || "Toutes les œuvres";
+    categorie: categorie(r.valeur), siecle: ix.siecles.some((s) => String(s[0]) === r.valeur) ? titreSiecle(Number(r.valeur)) : "",
+    artiste: nomArtiste(r.valeur), recherche: r.valeur ? cite(r.valeur) : "",
+    exposition: etat.expositions?.[r.valeur] ? `${t("Exposition", "Exhibition", "Exposición")} ${cite(etat.expositions[r.valeur].nom)}` : "",
+  }[r.type] || t("Toutes les œuvres", "All works", "Todas las obras");
   racine.innerHTML = `
-    <h1 class="monde-titre">Les collections du monde</h1>
-    <p class="monde-lead">${nombre(ix.total)} œuvres du domaine public, choisies dans les collections ouvertes
-      de ${ix.musees.length} grands musées. Les images en grand viennent des musées eux-mêmes (CC0).</p>
+    <h1 class="monde-titre">${t("Les collections du monde", "World collections", "Las colecciones del mundo")}</h1>
+    <p class="monde-lead">${t(
+      `${nombre(ix.total)} œuvres du domaine public, choisies dans les collections ouvertes
+      de ${ix.musees.length} grands musées. Les images en grand viennent des musées eux-mêmes (CC0).`,
+      `${nombre(ix.total)} public-domain works, selected from the open collections
+      of ${ix.musees.length} major museums. Full-size images come from the museums themselves (CC0).`,
+      `${nombre(ix.total)} obras de dominio público, elegidas en las colecciones abiertas
+      de ${ix.musees.length} grandes museos. Las imágenes en grande proceden de los propios museos (CC0).`)}</p>
     <div class="monde-musees">${ix.musees.map((m) => `
       <a class="monde-musee${r.type === "musee" && r.valeur === m.cle ? " actif" : ""}" style="--couleur:${m.couleur}" href="#/musee/${m.cle}">
-        <strong>${echapper(m.nom)}</strong><span>${echapper(m.ville)} · ${nombre(m.oeuvres)} œuvres</span></a>`).join("")}</div>
+        <strong>${echapper(m.nom)}</strong><span>${echapper(localiser(m.ville))} · ${oeuvresN(m.oeuvres)}</span></a>`).join("")}</div>
     <div class="monde-barre">
-      <input type="search" id="monde-q" placeholder="Un titre, un artiste, une technique, une année…" value="${r.type === "recherche" ? echapper(r.valeur) : ""}" aria-label="Chercher">
-      <select id="monde-cat" aria-label="Catégorie"><option value="">Toutes les catégories</option>
-        ${ix.categories.map(([c, n]) => `<option${r.type === "categorie" && r.valeur === c ? " selected" : ""} value="${echapper(c)}">${echapper(c)} (${nombre(n)})</option>`).join("")}</select>
-      <select id="monde-siecle" aria-label="Siècle"><option value="">Tous les siècles</option>
-        ${ix.siecles.map(([rang, t, n]) => `<option${r.type === "siecle" && r.valeur === String(rang) ? " selected" : ""} value="${rang}">${echapper(t)} (${nombre(n)})</option>`).join("")}</select>
-      <button id="monde-hasard" type="button">🎲 Au hasard</button>
-      ${r.type ? `<a class="monde-lien" href="#/">Tout voir</a>` : ""}
+      <input type="search" id="monde-q" placeholder="${t("Un titre, un artiste, une technique, une année…", "A title, an artist, a medium, a year…", "Un título, un artista, una técnica, un año…")}" value="${r.type === "recherche" ? echapper(r.valeur) : ""}" aria-label="${t("Chercher", "Search", "Buscar")}">
+      <select id="monde-cat" aria-label="${t("Catégorie", "Category", "Categoría")}"><option value="">${t("Toutes les catégories", "All categories", "Todas las categorías")}</option>
+        ${ix.categories.map(([c, n]) => `<option${r.type === "categorie" && r.valeur === c ? " selected" : ""} value="${echapper(c)}">${echapper(categorie(c))} (${nombre(n)})</option>`).join("")}</select>
+      <select id="monde-siecle" aria-label="${t("Siècle", "Century", "Siglo")}"><option value="">${t("Tous les siècles", "All centuries", "Todos los siglos")}</option>
+        ${ix.siecles.map(([rang, , n]) => `<option${r.type === "siecle" && r.valeur === String(rang) ? " selected" : ""} value="${rang}">${echapper(titreSiecle(rang))} (${nombre(n)})</option>`).join("")}</select>
+      <button id="monde-hasard" type="button">🎲 ${t("Au hasard", "Surprise me", "Al azar")}</button>
+      ${r.type ? `<a class="monde-lien" href="#/">${t("Tout voir", "See all", "Ver todo")}</a>` : ""}
     </div>
-    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${vues.length === 1 ? "1 œuvre" : `${nombre(vues.length)} œuvres`}${r.type === "exposition"
-      ? ` liées dans les collections du monde, de la plus ancienne à la plus récente · <a href="../${encodeURIComponent(r.valeur)}/">← la visite de l'exposition</a>` : ""}</p>
+    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${oeuvresN(vues.length)}${r.type === "exposition"
+      ? ` ${t("liées dans les collections du monde, de la plus ancienne à la plus récente", "related in the world collections, from oldest to most recent", "relacionadas en las colecciones del mundo, de la más antigua a la más reciente")} · <a href="${lienPage(`${encodeURIComponent(r.valeur)}/`)}">← ${t("la visite de l'exposition", "visit the exhibition", "la visita de la exposición")}</a>` : ""}</p>
     <div class="monde-grille" id="monde-grille"></div>
-    <button class="monde-plus" id="monde-plus" type="button">Afficher plus</button>`;
+    <button class="monde-plus" id="monde-plus" type="button">${t("Afficher plus", "Show more", "Mostrar más")}</button>`;
   let attente;
   const q = document.getElementById("monde-q");
   q.addEventListener("input", () => {
@@ -115,8 +149,8 @@ function afficher() {
 
 function carte(i) {
   const l = etat.liste[i], id = etat.ids[i];
-  const ligne = [l[A], l[D]].filter(Boolean).join(" · ");
-  return `<a class="monde-carte" href="#/oeuvre/${id}"><img loading="lazy" decoding="async" src="${l[7] || `v/${id}.webp`}" alt=""><b>${echapper(l[T])}</b><span>${echapper(ligne)}</span></a>`;
+  const ligne = [nomArtiste(l[A]), l[D]].filter(Boolean).join(" · ");
+  return `<a class="monde-carte" href="#/oeuvre/${id}"><img loading="lazy" decoding="async" src="${l[7] || lien(`monde/v/${id}.webp`)}" alt=""><b>${echapper(l[T])}</b><span>${echapper(ligne)}</span></a>`;
 }
 
 function plus() {
@@ -132,7 +166,7 @@ function plus() {
 async function detail(i) {
   const part = Math.floor(i / etat.index.parFichier);
   if (!etat.fiches.has(part)) {
-    const nom = `donnees/fiches-${String(part).padStart(3, "0")}.json`;
+    const nom = lien(`monde/donnees/fiches-${String(part).padStart(3, "0")}.json`);
     etat.fiches.set(part, jsonGarde(nom));
   }
   return (await etat.fiches.get(part))[i % etat.index.parFichier];
@@ -140,7 +174,7 @@ async function detail(i) {
 
 async function fiche(id) {
   const i = etat.position.get(id);
-  if (i == null) { racine.innerHTML = `<p class="monde-chargement">Cette œuvre n'est pas dans les collections. <a href="#/">Retour</a></p>`; return; }
+  if (i == null) { racine.innerHTML = `<p class="monde-chargement">${t("Cette œuvre n'est pas dans les collections.", "This work is not in the collections.", "Esta obra no está en las colecciones.")} <a href="#/">${t("Retour", "Back", "Volver")}</a></p>`; return; }
   const l = etat.liste[i], m = etat.index.musees[l[K]];
   racine.innerHTML = `<p class="monde-chargement">…</p>`;
   const f = await detail(i);
@@ -149,27 +183,28 @@ async function fiche(id) {
   const ici = vues.indexOf(i);
   const voisin = (d) => (ici >= 0 && vues[ici + d] != null ? etat.ids[vues[ici + d]] : null);
   const avant = voisin(-1), apres = voisin(1);
-  const faits = [["Date", l[D]], ["Technique", f.m], ["Mesures", f.s], ["Catégorie", l[C]], ["Origine", f.o],
-    ["Musée", `${m.nom}, ${m.ville}`], ["Où la voir", f.g]].filter(([, v]) => v);
+  const faits = [[t("Date", "Date", "Fecha"), l[D]], [t("Technique", "Medium", "Técnica"), f.m], [t("Mesures", "Dimensions", "Medidas"), f.s],
+    [t("Catégorie", "Category", "Categoría"), categorie(l[C])], [t("Origine", "Origin", "Origen"), f.o],
+    [t("Musée", "Museum", "Museo"), `${m.nom}, ${localiser(m.ville)}`], [t("Où la voir", "Where to see it", "Dónde verla"), f.g]].filter(([, v]) => v);
   const memes = l[A] && l[A] !== "Artiste inconnu"
     ? [...etat.liste.keys()].filter((j) => j !== i && etat.liste[j][A] === l[A]).slice(0, 12) : [];
   racine.innerHTML = `
-    <a class="monde-retour" href="#/">← Toutes les œuvres</a>
+    <a class="monde-retour" href="#/">← ${t("Toutes les œuvres", "All works", "Todas las obras")}</a>
     <div class="monde-fiche">
       <div class="monde-image"><img id="monde-img" src="${l[7] || `v/${id}.webp`}" alt="${echapper(l[T])}"></div>
       <div>
         <h1>${echapper(l[T])}</h1>
-        <p class="monde-artiste"><a href="../explorer/#/artiste/${encodeURIComponent(l[A])}" title="Le catalogue complet de l'artiste">${echapper(l[A])}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
+        <p class="monde-artiste"><a href="${lienPage(`explorer/#/artiste/${encodeURIComponent(l[A])}`)}" title="${t("Le catalogue complet de l'artiste", "The artist's complete catalogue", "El catálogo completo del artista")}">${echapper(nomArtiste(l[A]))}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
         <dl class="monde-cartel">${faits.map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
-        ${f.x ? `<div class="monde-texte"><p>${echapper(f.x)}</p>${m.cle === "chicago" ? `<p class="monde-note">Texte : Art Institute of Chicago, CC BY 4.0.</p>` : ""}</div>` : ""}
+        ${f.x ? `<div class="monde-texte"><p>${echapper(f.x)}</p>${m.cle === "chicago" ? `<p class="monde-note">${t("Texte : Art Institute of Chicago, CC BY 4.0.", "Text: Art Institute of Chicago, CC BY 4.0.", "Texto: Art Institute of Chicago, CC BY 4.0.")}</p>` : ""}</div>` : ""}
         <div class="monde-nav">
-          ${avant ? `<a href="#/oeuvre/${avant}">‹ Précédente</a>` : ""}${apres ? `<a href="#/oeuvre/${apres}">Suivante ›</a>` : ""}
-          ${f.w ? `<a href="${echapper(f.w)}" target="_blank" rel="noopener">La fiche du musée ↗</a>` : ""}
+          ${avant ? `<a href="#/oeuvre/${avant}">‹ ${t("Précédente", "Previous", "Anterior")}</a>` : ""}${apres ? `<a href="#/oeuvre/${apres}">${t("Suivante", "Next", "Siguiente")} ›</a>` : ""}
+          ${f.w ? `<a href="${echapper(f.w)}" target="_blank" rel="noopener">${t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a>` : ""}
         </div>
-        <p class="monde-note">${echapper(m.licence)}</p>
+        <p class="monde-note">${echapper(localiser(m.licence))}</p>
       </div>
     </div>
-    ${memes.length ? `<section class="monde-section"><h2>Du même artiste</h2><div class="monde-grille">${memes.map(carte).join("")}</div></section>` : ""}`;
+    ${memes.length ? `<section class="monde-section"><h2>${t("Du même artiste", "By the same artist", "Del mismo artista")}</h2><div class="monde-grille">${memes.map(carte).join("")}</div></section>` : ""}`;
   window.scrollTo(0, 0);
   if (f.u) {
     const grande = new Image();
@@ -179,5 +214,5 @@ async function fiche(id) {
 }
 
 charger().catch((e) => {
-  racine.innerHTML = `<p class="monde-chargement">Les collections n'ont pas pu s'ouvrir (${echapper(e.message)}).</p>`;
+  racine.innerHTML = `<p class="monde-chargement">${t("Les collections n'ont pas pu s'ouvrir", "The collections could not be opened", "No se han podido abrir las colecciones")} (${echapper(e.message)}).</p>`;
 });

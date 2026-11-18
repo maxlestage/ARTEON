@@ -26,6 +26,19 @@ use crate::tour::Focus;
 
 /// Le début des adresses du site (`/ARTEON` sur GitHub Pages, rien sur un domaine) : ce
 /// qui précède `/<exposition>` dans l'adresse de la page.
+/// La racine du site, sans la langue (`/ARTEON/en/monet/galerie` → `/ARTEON`) : là où
+/// sont les fichiers communs (données, images).
+pub(crate) fn files_path(slug: &str) -> String {
+    let base = base_path(slug);
+    for l in crate::langue::Lang::ALL {
+        if !l.prefix().is_empty() && let Some(root) = base.strip_suffix(l.prefix()) {
+            return root.to_owned();
+        }
+    }
+    base
+}
+
+/// La racine des pages, avec la langue (`/ARTEON/en/monet/galerie` → `/ARTEON/en`).
 pub(crate) fn base_path(slug: &str) -> String {
     let path = web_sys::window()
         .and_then(|w| w.location().pathname().ok())
@@ -97,7 +110,7 @@ pub fn start_when_loaded(
     let cancelled = Rc::new(Cell::new(false));
     let (canvas, slot, stop) = (canvas.clone(), scene.clone(), cancelled.clone());
     wasm_bindgen_futures::spawn_local(async move {
-        let url = format!("{}/donnees/{}.bin", base_path(ex.slug), ex.slug);
+        let url = format!("{}/donnees/{}.bin", files_path(ex.slug), ex.slug);
         let loaded = fetch_bytes(&url)
             .await
             .and_then(|bytes| ExhibitionData::new(ex, bytes));
@@ -193,7 +206,7 @@ pub fn attach(
 ) -> Option<Commands> {
     let shell = canvas.closest(".viewer-shell").ok().flatten()?;
     let document = web_sys::window()?.document()?;
-    let base = base_path(ex.slug);
+    let base = files_path(ex.slug);
     // L'API Fullscreen a-t-elle été utilisée (pour savoir si sa sortie doit tout fermer) ?
     let native = Rc::new(Cell::new(false));
     // Un glissé vient-il d'avoir lieu (le clic qui suit ne compte pas) ?
@@ -317,7 +330,7 @@ pub fn attach(
         let texts: crate::texts::SharedTexts = Default::default();
         let filling = texts.clone();
         wasm_bindgen_futures::spawn_local(async move {
-            let url = format!("{}/donnees/{}.json", base_path(ex.slug), ex.slug);
+            let url = format!("{}/donnees/{}", files_path(ex.slug), crate::langue::lang().texts_file(ex.slug));
             if let Ok(bytes) = fetch_bytes(&url).await
                 && let Some(loaded) = crate::texts::Texts::parse(&String::from_utf8_lossy(&bytes))
             {

@@ -1,0 +1,922 @@
+[exposition]
+ordre = 145
+nom_court = "Escultura"
+mouvement = "La escultura, del Renacimiento a Rodin"
+cadre = "vitrine"
+couleur = "#6b4f2e"
+titre = "La escultura, del mármol de Miguel Ángel al bronce de Rodin"
+artiste = "Miguel Ángel, Bernini, Canova, Carpeaux, Rodin, Claudel, Degas…"
+dates = "1513–1909"
+accroche = "Exposición virtual · Museo Rodin, París"
+introduction = """
+Cuatro siglos de escultura, del mármol que Miguel Ángel arranca al bloque hasta el \
+bronce de Rodin, que hace de la materia un drama y de la superficie una vibración. \
+La visita reúne diez obras de nueve escultores, de Bernini a Maillol, presentadas mediante \
+fotografías en vitrinas, como en un gabinete de aficionado. El edificio \
+se inspira en el hôtel Biron, donde Rodin se instaló en 1908 y que se ha convertido en el museo \
+Rodin: un vestíbulo donde aguarda El pensador y luego una sucesión de cuatro salones de \
+boiseries claras, alineados como frente al jardín."""
+vitrine = "baiser.jpg"
+
+[musee]
+nom = "Museo Rodin (hôtel Biron)"
+ville = "París, Francia"
+architecte = "Jean Aubert"
+construction = "1727–1732"
+presentation = """
+El hôtel Biron se construye entre 1727 y 1732, en la rue de Varenne, para Abraham Peyrenc de \
+Moras, un financiero enriquecido. Toma más tarde el nombre del mariscal de Biron, que \
+lo ocupa a partir de 1753 y manda trazar sus jardines. En el siglo XIX, las \
+religiosas del Sagrado Corazón instalan en él un internado de señoritas. Cuando la ley \
+les prohíbe enseñar, en 1904, deben marcharse, y el Estado alquila las estancias \
+a artistas: Matisse, Cocteau, la bailarina Isadora Duncan, el poeta Rilke, que \
+da a conocer el lugar a Rodin. El escultor alquila allí unos salones a partir de 1908. En \
+1916, dona al Estado sus obras y sus colecciones, con la condición de que se \
+presenten aquí: el museo abre en 1919, dos años después de su muerte. En los salones de \
+boiseries rocalla, iluminados por altas ventanas, pueden verse hoy sus \
+mármoles, sus yesos y la sala de Camille Claudel; el jardín alberga El pensador, \
+La puerta del Infierno y Los burgueses de Calais."""
+ici = """
+El edificio de ARTEON evoca la planta baja del hôtel Biron. Se entra por el sur \
+en el vestíbulo, donde El pensador recibe al visitante. Al norte se abre el gran \
+salón, de siete metros y medio de altura, consagrado a La puerta del Infierno. Da paso a una \
+sucesión de salones alineados de oeste a este, como los que dan al jardín: al \
+oeste, la galería de los maestros antiguos, de Miguel Ángel a Canova; al este, la sala \
+Claudel y Degas y, al final de la sucesión, la sala «Después de Rodin». Los muros, \
+crema, gris perla o verde pálido, recuerdan las boiseries pintadas del hôtel."""
+
+[[salles]]
+nom = "El vestíbulo"
+theme = "La entrada del hôtel, donde El pensador de Rodin recibe al visitante."
+murs = "#e9e2d4"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La galería de los maestros antiguos"
+theme = "Tres siglos de mármol: el Esclavo de Miguel Ángel, la Bacanal del joven Bernini y la Psique de Canova."
+murs = "#d9d3c5"
+x = -13
+z = -10
+largeur = 14
+profondeur = 12
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "El gran salón, en torno a La puerta del Infierno"
+theme = "Dante en escultura: el Ugolino de Carpeaux y El beso de Rodin, nacido de los amantes del Infierno."
+murs = "#e6dfcf"
+x = 0
+z = -10
+largeur = 12
+profondeur = 12
+hauteur = 7.5
+portes = ["est"]
+
+[[salles]]
+nom = "Claudel y Degas"
+theme = "Dos contemporáneos de Rodin: La edad madura de Camille Claudel y la Pequeña bailarina de Degas."
+murs = "#d8ddd0"
+x = 13
+z = -10
+largeur = 14
+profondeur = 12
+hauteur = 6.5
+portes = ["est"]
+
+[[salles]]
+nom = "Después de Rodin"
+theme = "Dos herederos que buscan el orden y la masa: Bourdelle y Maillol."
+murs = "#e4d9c6"
+x = 25
+z = -10
+largeur = 10
+profondeur = 12
+hauteur = 7
+
+[[oeuvres]]
+titre = "El pensador"
+artiste = "Auguste Rodin"
+annee = "modelo hacia 1880"
+image = "penseur.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:The_Thinker_MET_DP-13618-011.jpg"
+technique = "Bronce, en su tamaño original (unos 72 cm de altura)"
+collection = "Museo Metropolitano de Arte, Nueva York"
+note = "Concebido para dominar La puerta del Infierno, el poeta sentado ante su obra se ha convertido en la imagen misma del pensamiento."
+description = """
+Un hombre desnudo está sentado sobre una roca, inclinado hacia delante. Su barbilla reposa en el dorso de \
+su mano derecha, cuyo codo se apoya, curiosamente, en el muslo izquierdo: todo el \
+busto se retuerce para lograr este gesto. La mano izquierda cuelga, relajada, sobre la rodilla. Los \
+pies, poderosos, se agarran a la roca, con los dedos encogidos. La espalda está \
+arqueada, los hombros son macizos, el cuello grueso; el rostro, en sombra, mira hacia \
+abajo, como hacia un abismo. Ningún atributo, ningún vestido, ninguna inscripción \
+dice quién es. En la fotografía, la pátina oscura del bronce atrapa la luz \
+en los relieves de los músculos y deja las hendiduras en la negrura."""
+evocation = """
+Rodin pensaba primero en Dante, sentado sobre La puerta del Infierno y meditando su \
+poema ante los condenados que se agitan a sus pies. Al salir de la Puerta, la \
+figura pierde su nombre: se convierte en «el Pensador», el hombre que reflexiona y, para \
+muchos, la imagen del esfuerzo intelectual. Rodin explicaba que su personaje no \
+piensa solo con la frente fruncida sino con todos sus músculos, hasta los \
+dedos de los pies crispados: el pensamiento es aquí un trabajo físico, casi un sufrimiento. Este \
+cuerpo de atleta, heredado de Miguel Ángel, se ha leído también como el del obrero o \
+el del creador, y el propio artista lo eligió para velar sobre su tumba."""
+histoire = """
+En 1880, el Estado encarga a Rodin una puerta monumental para un futuro museo de Artes \
+Decorativas. El escultor elige el Infierno de Dante y coloca en el centro del tímpano una \
+figura sentada, de unos 70 cm de altura, a la que llama «el Poeta». El museo no ve \
+nunca la luz, pero Rodin sigue trabajando en la Puerta y extrae de ella figuras \
+independientes. El pensador se expone solo desde finales de los años 1880 y se amplía \
+en 1902–1904 hasta casi dos metros. Este gran bronce, donado por suscripción, se \
+instala ante el Panteón en 1906, antes de incorporarse al jardín del museo Rodin en \
+1922. El bronce del Museo Metropolitano de Nueva York, presentado aquí, recupera el tamaño \
+original de la figura, el que tiene en la Puerta."""
+facture = """
+Rodin modela primero en arcilla; después la figura se vacía en yeso y se funde en \
+bronce a la cera perdida o a la arena; cada tirada recibe su pátina. El modelado \
+nunca es liso: pequeños bultos y hendiduras hacen vibrar la luz sobre la \
+piel. La pose cerrada, replegada sobre sí misma, da a la figura la compacidad de un \
+bloque, que Rodin admiraba en Miguel Ángel. Las manos y los pies, deliberadamente \
+grandes, concentran la fuerza. La versión ampliada se realizó con la ayuda de un \
+especialista de la reducción y la ampliación mecánicas, Henri Lebossé."""
+details = [
+  "El codo derecho apoyado en el muslo izquierdo, que retuerce todo el busto.",
+  "Los dedos del pie derecho, encogidos sobre el borde de la roca.",
+  "La mano izquierda, abandonada, que contrasta con la tensión de la derecha.",
+  "Las arcadas superciliares en voladizo, que hunden la mirada en la sombra.",
+]
+themes = ["pensamiento", "dante", "cuerpo", "bronce", "meditación"]
+anecdote = """
+Rodin reposa con su compañera Rose Beuret en el jardín de su casa de Meudon, cerca \
+de París. Sobre su tumba, muertos ambos en 1917, vela una gran tirada de \
+El pensador, según el deseo del escultor."""
+salle = 1
+mur = "ouest"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "El esclavo moribundo"
+artiste = "Michel-Ange"
+annee = "1513–1516"
+image = "esclave-mourant.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Dying_slave_Louvre_MR_1590,_Louvre.jpg"
+technique = "Mármol, 2,28 m de altura"
+collection = "Museo del Louvre, París"
+note = "Esculpida para la tumba del papa Julio II y luego descartada del proyecto, la figura parece deslizarse entre el sueño y la agonía."
+description = """
+Un joven desnudo, mayor que el natural, se mantiene en pie, con el peso del cuerpo sobre la \
+pierna derecha y la izquierda flexionada. Su brazo derecho está replegado sobre el pecho, donde una \
+delgada banda de tela le ciñe el torso; el brazo izquierdo, alzado, pasa por detrás de la cabeza. \
+La cabeza está echada hacia atrás, los ojos cerrados, la boca entreabierta. El cuerpo \
+parece deslizarse, como atrapado por el sueño o por la muerte. Detrás de él, contra la \
+pierna izquierda, un bloque apenas desbastado deja adivinar la silueta de un mono. El \
+mármol pulido de la piel contrasta con las partes que han quedado en bruto, estriadas por las \
+herramientas, en la parte baja de la estatua. En la fotografía, la figura blanca se destaca sobre \
+la penumbra de una sala del Louvre."""
+evocation = """
+El título de «Esclavo moribundo» no es de Miguel Ángel: no se sabe exactamente \
+qué debían representar estos cautivos. Se ha visto en ellos las provincias sometidas por el \
+papa, las artes liberales privadas de su protector a la muerte de Julio II o, según \
+la lectura neoplatónica, el alma prisionera del cuerpo que aspira a liberarse. \
+El mono, símbolo tradicional de la imitación, haría entonces de esta figura una \
+alegoría de la pintura o de la escultura. Pero la obra habla ante todo por el \
+cuerpo: belleza ideal, sensualidad del abandono, ligadura que oprime el pecho. El \
+contraste entre el abandono de este cautivo y la torsión violenta de su compañero, \
+el Esclavo rebelde, formaba sin duda parte del proyecto."""
+histoire = """
+En 1505, el papa Julio II encarga a Miguel Ángel una tumba colosal, poblada de \
+decenas de estatuas. El proyecto, interrumpido sin cesar, se reduce tras la muerte del \
+papa en 1513; es entonces cuando el artista esculpe los dos Esclavos del Louvre. Finalmente \
+no encontraron lugar en la tumba, terminada en 1545 en la iglesia de \
+San Pedro in Vincoli, en Roma, en torno al Moisés. Miguel Ángel los regala a Roberto \
+Strozzi, un exiliado florentino que lo había acogido durante una enfermedad; Strozzi los \
+dona al rey Francisco I. Pasan al condestable Anne de Montmorency, en el castillo \
+de Écouen, y luego al cardenal de Richelieu, en su castillo del Poitou. Confiscados en la \
+Revolución, ingresan en el Louvre en 1794."""
+facture = """
+Miguel Ángel talla directamente el bloque de mármol de Carrara, atacando la figura \
+por una cara, como si la liberara de la piedra. Las marcas de la gradina, cincel \
+dentado, son todavía visibles en las partes inacabadas, mientras que el torso y las \
+piernas han sido pulidos. Este contraste, llamado non finito, fascinó a los \
+escultores de los siglos siguientes, Rodin el primero. La pose en espiral, el \
+contrapposto y la cabeza echada hacia atrás derivan de lo antiguo, en particular del \
+Laocoonte, descubierto en Roma en 1506, que Miguel Ángel había visto salir de la tierra."""
+details = [
+  "La banda de tela tensa sobre el pecho, único signo de cautiverio.",
+  "El mono apenas esbozado, en el bloque tras la pierna izquierda.",
+  "Las huellas del cincel dentado en el mármol que ha quedado en bruto, abajo.",
+  "Los párpados cerrados y la boca entreabierta del rostro echado hacia atrás.",
+]
+themes = ["renacimiento", "cautiverio", "mármol", "inacabado", "cuerpo"]
+anecdote = """
+Miguel Ángel habló toda su vida de la «tragedia de la sepultura»: la tumba de \
+Julio II, encargada en 1505, lo ocupó, entre contratos sucesivos y \
+pleitos, durante cuarenta años."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Bacanal: un fauno provocado por unos niños"
+artiste = "Le Bernin"
+annee = "hacia 1616–1617"
+image = "bacchanale-faune.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bacchanal-_A_Faun_Teased_by_Children_MET_DP248148.jpg"
+technique = "Mármol, esculpido junto con su padre, Pietro Bernini"
+collection = "Museo Metropolitano de Arte, Nueva York"
+note = "Una obra de juventud, tallada a los dieciocho años junto a su padre: la virtuosidad de Bernini ya se anuncia en ella."
+description = """
+Un joven fauno desnudo, coronado de pámpanos, trepa por el tronco de un árbol. Con el cuerpo \
+arqueado hacia atrás, tiende el brazo derecho hacia los racimos de uva y las frutas que \
+cuelgan de una rama, arriba. Dos niños mofletudos, apretados el uno contra el otro, \
+se han encaramado junto a las frutas y lo rechazan o lo importunan; uno de ellos ríe \
+abiertamente. Al pie del árbol, un tercer niño ha caído de espaldas, con las \
+piernas en el aire. El tronco, rodeado de una vid, lleva una piel de fiera cuya cabeza \
+cuelga en la parte baja de la composición. El conjunto forma una espiral ascendente, que se \
+descubre al rodear la escultura: cada lado ofrece una escena \
+distinta."""
+evocation = """
+El fauno y los niños pertenecen al cortejo de Baco, dios del vino: la escena \
+es una fiesta, una imagen de la abundancia y de la embriaguez alegre. El deseo del fauno \
+por las frutas, que los niños le disputan, puede leerse como un juego sobre la \
+tentación o simplemente como una comedia campestre, a la manera de los poetas \
+antiguos. Para los historiadores, la obra muestra sobre todo a un joven que quiere \
+probar que puede rivalizar con los escultores de la Antigüedad, de los que las \
+colecciones romanas estaban repletas. El movimiento, el instante captado y la alegría \
+anuncian el estilo que Bernini impondrá en Roma pocos años más tarde."""
+histoire = """
+Bernini creció en el taller de su padre, Pietro Bernini, escultor florentino \
+establecido en Roma. Hacia 1616–1617, padre e hijo trabajan juntos en este \
+grupo, destinado sin duda a un jardín o a la galería de un coleccionista. La parte \
+de cada uno es objeto de debate: la concepción audaz y la ejecución de las figuras se \
+atribuyen a menudo al hijo, de unos dieciocho años entonces, mientras que el padre \
+habría guiado el conjunto. El grupo permaneció largo tiempo poco conocido del público. Es \
+hoy una de las piezas maestras de la escultura barroca en el Museo Metropolitano \
+de Arte de Nueva York, donde se descubren, al rodearlo, sus distintas \
+caras."""
+facture = """
+El grupo está tallado en un solo bloque de mármol, vaciado con audacia: los brazos \
+tendidos, los racimos y los pies de los niños se destacan en el vacío. Bernini \
+varía las superficies para imitar las materias: piel pulida y brillante, cabellos \
+excavados con trépano, corteza estriada, hojas de vid recortadas, pelaje de la piel de \
+fiera. Esta capacidad de hacer olvidar la piedra será su sello, en \
+el Apolo y Dafne o el Rapto de Proserpina de la villa Borghese. La \
+composición en espiral invita a rodear la obra."""
+details = [
+  "El niño que ríe, arriba, con la mejilla contra la de su compañero.",
+  "Los racimos de uva, excavados uno a uno en el mármol.",
+  "El niño caído de espaldas, al pie del árbol.",
+  "La cabeza de la piel de fiera, que cuelga a lo largo del tronco.",
+  "Las orejas puntiagudas y la corona de pámpanos del fauno.",
+]
+themes = ["barroco", "baco", "infancia", "virtuosismo", "mármol"]
+anecdote = """
+Bernini pasaba por niño prodigio: según sus primeros biógrafos, dibujó \
+aún niño, ante el papa Pablo V, una cabeza de san Pablo, y el papa habría \
+predicho que sería el Miguel Ángel de su tiempo."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Psique reanimada por el beso del Amor"
+artiste = "Antonio Canova"
+annee = "1787–1793"
+image = "psyche-ranimee.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Psyche_revived_Louvre_MR1777.jpg"
+technique = "Mármol, 1,55 × 1,68 m"
+collection = "Museo del Louvre, París"
+note = "El Amor se inclina para despertar a Psique de un sueño mortal: dos cuerpos que se buscan, en forma de X."
+description = """
+Una joven medio tendida sobre una roca se incorpora y alza los brazos para \
+rodear el rostro de un joven alado. Él, con una rodilla en tierra tras ella, la \
+sostiene con un brazo pasado bajo sus hombros y pone la otra mano sobre su pecho. \
+Sus rostros se rozan, a punto de besarse. Las grandes alas del Amor \
+se alzan hacia el cielo, mientras las piernas de Psique se estiran hacia la derecha: \
+los dos cuerpos dibujan una X, cuyo centro es el círculo formado por los brazos \
+en torno a las dos cabezas. Un paño se desliza sobre las caderas de Psique. En la foto, tomada \
+en el Louvre, el mármol blanco se destaca sobre un muro de piedra dorado por la luz."""
+evocation = """
+El tema procede de El asno de oro, novela latina de Apuleyo. Psique, mortal amada por \
+el Amor, debe traer de los Infiernos un cofrecillo de belleza que no ha de abrir; \
+curiosa, lo abre y cae en un sueño de muerte, hasta que el Amor la \
+despierta. Canova elige el instante más tierno: el retorno a la vida por el amor. \
+Psique significa el alma en griego; el mito se ha leído como la historia del alma humana \
+que, tras pruebas, se une al amor divino. La escultura ha sido para muchos el \
+modelo del neoclasicismo: una sensualidad serena, sin violencia, detenida en el umbral del \
+beso."""
+histoire = """
+En 1787, en Roma, un coleccionista escocés, el coronel John Campbell, encarga a \
+Canova un grupo según Apuleyo. El escultor trabaja en él hasta 1793, pero \
+la obra no se entrega a su comitente. Es adquirida a principios del siglo XIX \
+por Joachim Murat, cuñado de Napoleón, e ingresa en el Louvre en 1824. \
+Canova esculpió de ella una segunda versión, conservada en el museo del Hermitage, en \
+San Petersburgo. El grupo del Louvre es hoy una de las esculturas más \
+admiradas del museo, en la galería Miguel Ángel, no lejos de los dos Esclavos, donde la \
+luz natural resbala sobre el mármol pulido."""
+facture = """
+Canova modelaba primero un boceto en arcilla y luego un modelo de yeso a tamaño \
+natural, jalonado de puntos de referencia metálicos; sus ayudantes desbastaban el mármol a \
+partir de esos puntos, y él se reservaba el acabado. Pulía las \
+superficies con esmero y les aplicaba, según se dice, una ligera pátina de cera para \
+suavizar la blancura y dar a la piedra la tibieza de la piel. Las alas, \
+talladas muy finamente, y los brazos vaciados atestiguan una virtuosidad técnica \
+extrema. La composición está pensada para verse desde varios puntos de vista."""
+details = [
+  "El círculo de los brazos de Psique en torno a la cabeza del Amor.",
+  "Las dos alas erguidas, finas como plumas verdaderas.",
+  "La mano del Amor posada bajo el seno de Psique.",
+  "El paño que se desliza sobre las caderas y cae sobre la roca.",
+]
+themes = ["neoclasicismo", "amor", "mitología", "beso", "mármol"]
+anecdote = """
+En El asno de oro, el Amor despierta a Psique no con un beso, sino con un pinchazo \
+inofensivo de su flecha; Canova prefirió, para su escultura, la imagen de un beso \
+suspendido."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Ugolino y sus hijos"
+artiste = "Jean-Baptiste Carpeaux"
+annee = "1865–1867"
+image = "ugolin.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Ugolino_and_His_Sons_MET_DP247545.jpg"
+technique = "Mármol, casi dos metros de altura, según el modelo de 1857–1861"
+collection = "Museo Metropolitano de Arte, Nueva York"
+note = "Un padre emparedado con sus hijos, que se muerde los dedos de desesperación: el Infierno de Dante en mármol."
+description = """
+Sobre una roca, un hombre anciano, desnudo y musculoso, está sentado, con los pies crispados uno \
+sobre otro. Se lleva las manos a la boca y se muerde los dedos; su mirada fija, \
+bajo las cejas fruncidas, se pierde en el vacío. A su alrededor se aprietan cuatro \
+muchachos. Uno, arrodillado, alza hacia él un rostro suplicante y se aferra a su \
+pierna. Otro, más joven, se acurruca contra su rodilla. El más pequeño ya está \
+desplomado, tendido sobre los muslos de su hermano. Los cuerpos se apilan en pirámide, \
+desde la pierna del padre hasta su cabeza. El grupo reposa sobre un pedestal octogonal; en \
+la fotografía, el mármol blanco se destaca sobre un fondo gris liso."""
+evocation = """
+En el canto XXXIII del Infierno, Dante encuentra al conde Ugolino della Gherardesca, \
+señor pisano emparedado en una torre con sus hijos y nietos, y condenado a \
+morir de hambre. Sus hijos le ofrecen su propia carne para alimentarlo. Carpeaux \
+capta el momento en que el padre, viendo su sufrimiento, se roe las manos de dolor, \
+mientras ellos creen que tiene hambre. Los versos más sombríos del poema, que dejan \
+adivinar un desenlace terrible, alimentaron la imaginación romántica. La obra expresa la \
+angustia de un padre impotente y la intensidad de una escultura que quiere conmover \
+tanto como la pintura de historia."""
+histoire = """
+Premio de Roma en 1854, Carpeaux debe enviar desde la Villa Médicis trabajos que \
+prueben sus progresos. Elige, contra el parecer de la Academia, un tema sacado de \
+Dante y no de la Antigüedad, y un grupo complejo donde se esperaba una figura. \
+Modelado en Roma entre 1857 y 1861, el yeso es finalmente aceptado y fundido en \
+bronce; expuesto en París, asienta la reputación de su autor. Este bronce está \
+hoy en el museo de Orsay. Una versión en mármol, del mismo tamaño, se talla después \
+en 1865–1867: es la que conserva el Museo Metropolitano de Nueva York, \
+donde se erige en el gran patio de la escultura europea."""
+facture = """
+Carpeaux busca la lección de Miguel Ángel, cuyas figuras de la capilla Sixtina estudia en \
+Roma, y del Laocoonte antiguo, otro drama de un padre y de sus hijos. Los \
+cuerpos, muy anatómicos, encajan en una pirámide apretada, que hay que \
+rodear para comprender su estructura. Las superficies conservan la energía del \
+modelado: músculos tensos, venas salientes, mechones en desorden. El mármol fue \
+tallado por oficiales según el modelo del artista, que supervisó su \
+acabado."""
+details = [
+  "Los dedos del padre, llevados a la boca y mordidos.",
+  "Los dedos de los pies del padre, crispados unos sobre otros.",
+  "El rostro del hijo arrodillado, alzado hacia su padre.",
+  "El niño más pequeño, desplomado, ya sin fuerzas.",
+]
+themes = ["dante", "infierno", "paternidad", "desesperación", "romanticismo"]
+anecdote = """
+Rodin, que admiraba a Carpeaux, colocó también a Ugolino y sus hijos en La puerta \
+del Infierno: el padre, a cuatro patas, se arrastra sobre los cuerpos de sus hijos, \
+como una bestia."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.6
+
+[[oeuvres]]
+titre = "El beso"
+artiste = "Auguste Rodin"
+annee = "1882–1898"
+image = "baiser.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Rodin_TheKiss_20050609.JPG"
+technique = "Mármol, 1,82 m de altura"
+collection = "Museo Rodin, París"
+note = "Paolo y Francesca, los amantes del Infierno de Dante, sorprendidos en el instante de su primer beso."
+description = """
+Sobre un bloque de mármol que ha quedado en bruto, un hombre y una mujer desnudos están sentados, abrazados. La \
+mujer ha pasado el brazo alrededor del cuello del hombre y alza hacia él su rostro; una \
+de sus piernas reposa sobre la de su compañero. El hombre se inclina para besarla; \
+su mano, posada en el muslo de la mujer, parece dudar en tocarla, y la otra \
+sostiene un libro, casi oculto. Los rostros, medio ocultos, se unen en lo \
+alto del grupo. Los cuerpos son lisos y pulidos, la roca rugosa. La fotografía \
+muestra la obra en un salón del hôtel Biron, ante boiseries oscuras, sobre un \
+parqué de motivos."""
+evocation = """
+El grupo representa ante todo a Paolo Malatesta y Francesca da Rimini, a quienes Dante \
+encuentra en el círculo de los lujuriosos: leyendo juntos la historia de Lancelot \
+y Ginebra, se besaron, y el marido de Francesca los mató. Rodin los \
+muestra antes de la falta y del castigo, en el ímpetu del deseo. Una vez fuera de la \
+Puerta del Infierno, el grupo pierde su relato y se convierte en «el Beso», imagen \
+universal del amor carnal, tierno y compartido. Se ha subrayado a menudo que la \
+mujer toma la iniciativa tanto como el hombre. Para el propio Rodin, la obra seguía siendo \
+más tradicional que sus búsquedas más audaces."""
+histoire = """
+Rodin modela la pareja hacia 1882 para La puerta del Infierno y luego la retira de la \
+composición, quizá porque su felicidad concuerda mal con la desesperación de las \
+demás figuras. El grupo conoce pronto el éxito en yeso y en bronce. En 1888, \
+el Estado encarga una ampliación en mármol; Rodin la hace tallar por \
+oficiales y la presenta en el Salón de 1898, junto al yeso de su Balzac. Expuesto \
+después en el museo del Luxemburgo, entonces museo de los artistas vivos, se incorpora al museo Rodin, en el hôtel Biron, con la apertura \
+de este en 1919. El beso es hoy la obra más célebre del museo, \
+presentada en la planta baja."""
+facture = """
+Como la mayoría de los escultores de su tiempo, Rodin no tallaba él mismo sus \
+mármoles: modelaba en arcilla, y unos oficiales trasladaban el modelo a la \
+piedra mediante puntos, bajo su control. Exige aquí un pulido muy suave sobre \
+los cuerpos, que parecen bañados de luz, y deja en bruto el bloque en el que \
+están sentados: la vida nace de la materia informe, a la manera del non finito de \
+Miguel Ángel. La composición es cerrada, casi cúbica, y los dos cuerpos se \
+responden en diagonales."""
+details = [
+  "La mano del hombre, posada en el muslo de la mujer, apenas apoyada.",
+  "El brazo de la mujer, pasado tras el cuello de su amante.",
+  "El contraste entre la piel pulida y la roca dejada en bruto.",
+  "El libro que sostiene el hombre, recuerdo de la lectura que perdió a los amantes.",
+]
+themes = ["amor", "dante", "beso", "mármol", "deseo"]
+anecdote = """
+Existen tres grandes mármoles de El beso tallados en vida de Rodin: el \
+del Estado francés, en el museo Rodin, el encargado por el coleccionista Edward Perry \
+Warren, hoy en la Tate de Londres, y el de Carl Jacobsen, en la Ny \
+Carlsberg Glyptotek de Copenhague."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.8
+
+[[oeuvres]]
+titre = "La edad madura"
+artiste = "Camille Claudel"
+annee = "1899 (segunda versión)"
+image = "age-mur.jpg"
+credit = "Photo : Jean-Pierre Dalbéra"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Lâge_mur_(Musée_Rodin)_(4921654776).jpg"
+technique = "Bronce, fundición hacia 1913"
+collection = "Museo Rodin, París (donación de Paul Claudel, 1952)"
+note = "Un hombre maduro se aleja, arrastrado por una vieja, mientras una joven de rodillas tiende los brazos hacia él."
+description = """
+Sobre una base alargada, ondulada como una ola o un terreno en pendiente, tres figuras \
+desnudas se suceden. A la izquierda, una vieja descarnada, envuelta en un gran paño \
+que ondea tras ella como alas, arrastra a un hombre de edad madura sujetándolo \
+por los hombros. Él avanza tambaleándose, con las rodillas flexionadas, el brazo izquierdo tendido hacia \
+atrás. A la derecha, una joven arrodillada tiende los dos brazos hacia él; sus \
+manos ya no se tocan. Todo el grupo se inclina hacia la izquierda, como arrastrado. En \
+la fotografía, tomada en el museo Rodin, el bronce oscuro se destaca ante los muros \
+rosas y el gran espejo de un salón."""
+evocation = """
+La obra se ha leído como una alegoría del paso del tiempo: el hombre deja la juventud \
+para seguir a la vejez, o a la muerte, que se lo lleva. Pero casi siempre se ve en ella \
+también la historia de la artista: Rodin, dividido entre Camille Claudel, la joven \
+suplicante, y su compañera Rose Beuret, a quien sigue apegado. Paul Claudel, \
+hermano de Camille, veía en ella a su hermana de rodillas, suplicante, abandonada. Claudel \
+va sin embargo más allá del relato personal: el vacío entre las manos, el movimiento del \
+paño, la pendiente del suelo hacen de la separación un drama universal, esculpido con una \
+fuerza que solo a ella pertenece."""
+histoire = """
+Camille Claudel concibe el grupo en 1893–1894, en el momento en que se separa de \
+Rodin. El Estado encarga un bronce en 1895, pero el encargo se anula en 1899, \
+decisión en la que la escultora vio la mano de Rodin. Retoma entonces \
+la composición, hace una segunda versión y la manda fundir en 1902 para un \
+coleccionista, el capitán Tissier: ese bronce está en el museo de Orsay. El ejemplar \
+del museo Rodin, fundido hacia 1913, el año en que Camille Claudel es internada, fue \
+donado en 1952 por Paul Claudel. Se presenta en el hôtel Biron en la sala \
+consagrada a la escultora."""
+facture = """
+Claudel construye su grupo sobre una diagonal que parte de la joven y asciende \
+hacia el paño de la vieja, siguiendo los brazos tendidos. El paño, hinchado \
+como una vela, es un alarde de virtuosismo: arrastra la composición. Los \
+cuerpos, modelados con precisión, conservan las lecciones del taller de Rodin, pero la \
+escultora añade una narración en friso, que se lee de derecha a izquierda. En la \
+primera versión, el hombre sostenía aún la mano de la joven; en la \
+segunda, las manos se han separado."""
+details = [
+  "El vacío entre las manos de la joven y la del hombre.",
+  "El paño de la vieja, hinchado como alas.",
+  "Las rodillas flexionadas del hombre, que avanza a su pesar.",
+  "La base en pendiente, que arrastra a todo el grupo hacia la izquierda.",
+]
+themes = ["separación", "vejez", "destino", "autobiografía", "bronce"]
+anecdote = """
+La joven arrodillada fue editada también sola en bronce, con el título de \
+La suplicante, por el fundidor y marchante Eugène Blot, que apoyó a Camille Claudel \
+en sus años difíciles."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Pequeña bailarina de catorce años"
+artiste = "Edgar Degas"
+annee = "1878–1881"
+image = "petite-danseuse.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Edgar_Degas,_Little_Dancer_Aged_Fourteen,_1878-1881,_NGA_110292.jpg"
+technique = "Cera, cabello, cinta de seda, tutú y zapatillas de tela; casi un metro de altura"
+collection = "Galería Nacional de Arte, Washington"
+note = "La única escultura que Degas expuso: una pequeña bailarina de la Ópera, de cera, vestida con un tutú de verdad."
+description = """
+Una adolescente delgada está de pie, con la cabeza alzada, los ojos entornados. Sus manos \
+están unidas a la espalda, sus brazos tendidos hacia atrás, y su pierna derecha está \
+adelantada, con el pie vuelto hacia fuera, en una posición de danza en reposo. \
+Lleva un corpiño ajustado, un tutú de tul y zapatillas; su cabello, cabello \
+auténtico, está recogido en una trenza con una cinta. El rostro, con la barbilla adelantada y los \
+labios apretados, no está idealizado. En la fotografía, la cera tostada de la piel \
+contrasta con la tela amarillenta del corpiño y el gris del tutú, sobre un fondo gris liso."""
+evocation = """
+Degas muestra una «petite rat» de la Ópera, una de esas niñas de familias pobres \
+que ingresaban muy jóvenes en la escuela de danza. La pose orgullosa, con la barbilla en alto, dice a la \
+vez la disciplina del oficio y una forma de desafío. En 1881, los críticos se \
+escandalizan: hablan de fealdad, de vicio, de tipo criminal, lo que dice mucho sobre \
+la mirada que se dirigía entonces a estas niñas. Hoy se ve más bien una figura \
+de una verdad asombrosa y una de las obras más modernas de su tiempo: la \
+escultura abandona el mármol y el mito por la realidad de la vida moderna."""
+histoire = """
+La modelo es Marie van Goethem, joven alumna de la escuela de danza de la Ópera de París, \
+de una familia de origen belga. Degas trabaja en la figura a partir de 1878, \
+dibujando a su modelo desde todos los ángulos y modelando primero una versión desnuda. \
+Anunciada en 1880, la escultura solo se presenta en la sexta exposición de los \
+impresionistas, en 1881, en una vitrina de cristal. Después ya no sale del \
+taller. Tras la muerte de Degas en 1917, la cera se encuentra y se vacía en \
+bronce, a partir de 1922, en una treintena de ejemplares. La cera original, \
+adquirida por el coleccionista Paul Mellon, ingresó en la National Gallery of Art \
+con su colección."""
+facture = """
+Degas modela la figura en cera coloreada sobre una armadura de metal, con materiales \
+de recuperación para rellenarla. Luego la viste con ropas auténticas: corpiño, \
+tutú de tul, zapatillas de tela, peluca de cabello auténtico y cinta de seda. Recubre en parte las telas de cera para fundirlas con la \
+figura. Esta mezcla de materias, entonces inédita en la escultura culta, recuerda \
+las muñecas y las figuras de cera anatómicas; anuncia los ensamblajes del siglo \
+XX."""
+details = [
+  "La cinta anudada sobre la trenza de cabello auténtico.",
+  "Las manos unidas a la espalda, con los brazos tendidos.",
+  "El pie derecho adelantado y vuelto hacia fuera.",
+  "La barbilla alzada y los ojos entornados.",
+]
+themes = ["danza", "ópera", "infancia", "cera", "vida moderna"]
+anecdote = """
+En la exposición de 1881, la bailarina se presentaba en una vitrina de cristal, \
+como un espécimen de museo: una elección deliberada de Degas, que reforzó el malestar \
+de numerosos visitantes."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Heracles arquero"
+artiste = "Antoine Bourdelle"
+annee = "1909"
+image = "herakles-archer.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Herakles_the_Archer_-_MET_-_24.232.jpg"
+technique = "Bronce con pátina dorada"
+collection = "Museo Metropolitano de Arte, Nueva York"
+note = "El héroe, con el arco tenso, apunta a las aves del lago Estínfalo: una línea de fuerza que rompe con el modelado de Rodin."
+description = """
+Un hombre desnudo, de músculos nudosos, tensa un gran arco. Su pie derecho se apoya muy alto \
+sobre una roca, con la pierna replegada en horizontal, mientras que la izquierda, tendida hacia \
+atrás, se apoya en el suelo. El busto se inclina hacia delante; el brazo izquierdo, tendido, \
+sostiene el arco cuya curva se alza sobre él, y el brazo derecho tira de la \
+cuerda. La cabeza, de perfil, apunta a un blanco invisible. El cuerpo y el arco forman una \
+figura geométrica, hecha de líneas rectas y ángulos. En la fotografía, el \
+bronce dorado se recorta ante un gran ventanal abierto a unos árboles."""
+evocation = """
+El tema es uno de los doce trabajos de Hércules: matar a las aves monstruosas del lago \
+Estínfalo, de plumas de bronce. Bourdelle hace de él un símbolo de la energía humana \
+concentrada en un fin. La obra fue saludada como un manifiesto: tras el modelado \
+tembloroso de Rodin, recupera el rigor de la escultura griega arcaica, \
+que Bourdelle admiraba, y la construcción por grandes planos. Expresa una \
+tensión extrema, pero dominada, casi arquitectónica. A principios del siglo XX, \
+abre el camino a una escultura que busca menos la vida que la estructura."""
+histoire = """
+Bourdelle, tras quince años como oficial de Rodin, busca su propio camino. En \
+1909, modela el Heracles a partir de un oficial deportista, el comandante Doyen-Parigot, \
+que posa para él en esa difícil posición. La obra se expone en el Salón de la \
+Sociedad Nacional de Bellas Artes en 1910 y obtiene un éxito inmediato. El \
+coleccionista Gabriel Thomas financia la primera fundición. El escultor realiza \
+después varias versiones, de tamaños diferentes. El ejemplar del Museo Metropolitano \
+de Nueva York ingresó allí en 1924, en vida del artista. Otros están en el \
+museo Bourdelle de París, en el museo de Orsay y en Montauban, su ciudad natal."""
+facture = """
+Bourdelle construye la figura por planos nítidos, como un arquitecto: los músculos \
+se simplifican en masas angulosas, los contornos son tajantes. La composición \
+descansa en triángulos y diagonales, en el plano mismo del arco, de modo que \
+la escultura se lee casi como un relieve, de frente. La roca, tratada en bloques \
+en bruto, sirve de contrapeso. La cabeza, de rostro estilizado, recuerda a los guerreros de los \
+frontones del templo de Egina, que pueden verse en Múnich."""
+details = [
+  "El pie derecho, colocado muy alto sobre la roca.",
+  "El arco inmenso, cuya curva domina toda la figura.",
+  "Los músculos de la espalda, tratados en planos angulosos.",
+  "El rostro de perfil, tenso hacia el blanco.",
+]
+themes = ["mitología", "héroe", "tensión", "arcaísmo", "bronce"]
+anecdote = """
+El taller de Bourdelle, en el barrio de Montparnasse, se ha convertido en el museo \
+Bourdelle, abierto en 1949; la calle donde se encuentra, la antigua impasse du Maine, \
+lleva hoy su nombre."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "El Mediterráneo"
+artiste = "Aristide Maillol"
+annee = "1902–1905"
+image = "mediterranee.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:La_Méditerranée_-_Aristide_Maillol_-_Musée_du_Louvre_Sculptures_des_jardins_FNAC_9492_-_TU_254.jpg"
+technique = "Bronce"
+collection = "Jardín de las Tullerías, París (Museo del Louvre)"
+note = "Una mujer sentada, con la cabeza apoyada en la mano: ni historia ni drama, solo volúmenes en equilibrio."
+description = """
+Una mujer desnuda está sentada sobre un pedestal bajo. Su pierna derecha está replegada y alzada, \
+con la rodilla en alto; la izquierda está tendida bajo ella. Su codo derecho se apoya en esa \
+rodilla y su mano sostiene la cabeza, inclinada, mientras que la mano izquierda se apoya \
+en el pedestal. El rostro, calmo, de rasgos regulares, mira hacia abajo. Las \
+formas son plenas, los hombros anchos, los muslos poderosos; todo el cuerpo \
+se inscribe en un volumen compacto. La fotografía muestra el bronce, de pátina \
+verdín, colocado sobre un pedestal de piedra en una alameda de las Tullerías, \
+ante árboles podados."""
+evocation = """
+Maillol dio a su estatua el nombre del mar de su infancia, en Banyuls: no \
+cuenta nada, encarna una tierra, una luz, un equilibrio. Después de Rodin, que \
+esculpía el movimiento y la pasión, propone la calma y la mesura, en el \
+espíritu de la escultura griega. La pose de la cabeza en la mano, imagen tradicional \
+de la meditación, no remite aquí a ningún relato. Se ha visto en ella el punto de partida de un clasicismo moderno, atento a las solas \
+formas, que marcó toda la escultura del período de entreguerras."""
+histoire = """
+Maillol, que acaba de dejar la pintura y el tapiz por la escultura, \
+trabaja en esta figura a principios de siglo, según su esposa, Clotilde. El yeso, \
+expuesto en el Salón de Otoño de 1905, causa sensación. El conde alemán Harry Kessler, \
+su mecenas, encarga una versión en piedra. Mucho más tarde, en 1923, el Estado \
+encarga un mármol, terminado en 1927, hoy en el museo de Orsay. Los bronces de \
+Maillol instalados en los jardines del Carrousel y de las Tullerías proceden de la \
+donación de Dina Vierny, su última modelo, aceptada en 1964 por André Malraux, \
+entonces ministro de Asuntos Culturales."""
+facture = """
+Maillol modela volúmenes simples y cerrados: el cuerpo se inscribe en un cubo, \
+casi sin vacío entre los miembros. Las superficies son lisas, sin los accidentes \
+de luz caros a Rodin; los detalles se borran ante la masa. Las proporciones, \
+robustas, rechazan la elegancia alargada de los desnudos académicos. Este gusto por la forma \
+plena viene de la Antigüedad griega, de las esculturas egipcias y del arte románico \
+de su Rosellón natal, pero también de la obra de Gauguin, a quien conoció en tiempos de los \
+Nabis."""
+details = [
+  "La cabeza, apoyada en la mano, inclinada hacia abajo.",
+  "La rodilla derecha alzada, que sirve de apoyo al codo.",
+  "La mano izquierda, plana sobre el pedestal.",
+  "El perfil compacto del cuerpo, sin brazo separado en el vacío.",
+]
+themes = ["clasicismo", "mediterráneo", "desnudo", "calma", "bronce"]
+anecdote = """
+En el Salón de Otoño de 1905, el escritor André Gide escribió a propósito de la estatua: \
+«Es bella; no significa nada; es una obra silenciosa». Ese \
+mismo Salón causaba escándalo con los lienzos de Matisse y sus amigos, los fauves."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 2.0
+
+[[artistes]]
+nom = "Michel-Ange"
+vie = "Caprese (Toscana), 6 de marzo de 1475 – Roma, 18 de febrero de 1564"
+biographie = """
+Michelangelo Buonarroti nace en una familia florentina de pequeña nobleza. Aprendiz \
+del pintor Domenico Ghirlandaio, pronto llama la atención de Lorenzo de Médici, que \
+lo acoge en su palacio y en su jardín de esculturas antiguas. En Roma, \
+esculpe a los veinticuatro años la Piedad de San Pedro; de regreso en Florencia, \
+talla el David, terminado en 1504, que lo convierte en el primer escultor de Italia. El \
+papa Julio II lo llama a Roma para su tumba y luego le impone pintar la bóveda \
+de la capilla Sixtina (1508–1512). La tumba, reducida año tras año, lo ocupa \
+durante cuatro décadas. En Florencia, concibe para los Médici la Sacristía \
+Nueva de San Lorenzo y sus sepulcros. Instalado definitivamente en Roma en 1534, \
+pinta el Juicio Final de la Sixtina, escribe poemas y se convierte en arquitecto de \
+la basílica de San Pedro, de la que traza la cúpula. Muere a casi \
+ochenta y nueve años, trabajando aún en una Piedad que quedó inacabada. Sus \
+contemporáneos lo llamaban «el divino»."""
+style = """
+Miguel Ángel se quería ante todo escultor: decía liberar la figura prisionera \
+del bloque. Sus cuerpos heroicos, musculosos, a menudo en torsión, expresan la fuerza y \
+la angustia del alma. Muchas de sus estatuas quedan inacabadas, y ese non finito, \
+donde la figura parece surgir de la piedra, fascinó a los siglos siguientes, hasta \
+Rodin. Su influencia en la escultura y la pintura europeas es inmensa."""
+
+[[artistes]]
+nom = "Le Bernin"
+vie = "Nápoles, 7 de diciembre de 1598 – Roma, 28 de noviembre de 1680"
+biographie = """
+Gian Lorenzo Bernini es hijo del escultor florentino Pietro Bernini, que \
+se instala en Roma cuando el niño tiene siete u ocho años. Formado en el taller paterno, \
+pronto es notado por los grandes coleccionistas romanos, en particular el \
+cardenal Escipión Borghese, para quien esculpe en los años 1620 el Rapto de \
+Proserpina, el David y Apolo y Dafne. El papa Urbano VIII, elegido en 1623, hace de \
+él el artista oficial de Roma: traza el baldaquino de bronce de San Pedro y \
+después, bajo Alejandro VII, la columnata de la plaza de San Pedro. Realiza también la \
+capilla Cornaro y su Éxtasis de santa Teresa, y la fuente de los Cuatro Ríos, en \
+la plaza Navona. Escultor, arquitecto, urbanista, decorador de teatro, domina la \
+vida artística romana durante medio siglo. En 1665, Luis XIV lo invita a París \
+para el proyecto del Louvre; sus planos no se aceptan, pero esculpe un célebre \
+busto del rey, hoy en Versalles. Muere en Roma a los ochenta y un años."""
+style = """
+Bernini hace del mármol una materia viva: carne que cede bajo los dedos, \
+cabellos, follajes, telas que vuelan. Capta el instante de una acción, como un \
+director de escena, y une escultura, arquitectura y luz en un espectáculo total. \
+Su arte define el barroco romano y fue imitado en toda la Europa católica."""
+
+[[artistes]]
+nom = "Antonio Canova"
+vie = "Possagno (Véneto), 1 de noviembre de 1757 – Venecia, 13 de octubre de 1822"
+biographie = """
+Hijo de un cantero, criado por su abuelo, Antonio Canova se forma en \
+Venecia, donde abre muy joven su propio taller. En 1781, se instala en Roma, \
+de la que apenas volverá a salir. El grupo de Teseo y el Minotauro y luego las tumbas \
+de los papas Clemente XIV y Clemente XIII lo hacen célebre en toda Europa. Los \
+soberanos y los coleccionistas se disputan sus obras: Psique y el Amor, \
+Hebe, las Tres Gracias. Napoleón lo hace venir a París y le encarga su retrato \
+como Marte pacificador; su hermana Paulina Borghese posa para la Venus victoriosa. \
+Tras la caída del Imperio, en 1815, Canova es enviado a París por el papa para \
+recuperar las obras de arte llevadas de Roma por los ejércitos franceses, y trae de vuelta gran parte de ellas. \
+Colmado de honores, hace construir en su pueblo natal de Possagno un templo inspirado en el Panteón, donde está enterrado. Su taller de \
+yesos se ha convertido allí en museo."""
+style = """
+Canova es el maestro del neoclasicismo: formas ideales, inspiradas en lo antiguo, \
+composiciones claras, una belleza calma donde la emoción permanece contenida. \
+Trabajaba la superficie del mármol con un esmero extremo, hasta darle la suavidad \
+de la piel. Para sus contemporáneos, era el nuevo Fidias; los románticos \
+le reprocharon su frialdad."""
+
+[[artistes]]
+nom = "Jean-Baptiste Carpeaux"
+vie = "Valenciennes, 11 de mayo de 1827 – Courbevoie, 12 de octubre de 1875"
+biographie = """
+Hijo de un albañil, Jean-Baptiste Carpeaux sigue a su familia a París, donde estudia en la \
+Petite École de dibujo y luego en la Escuela de Bellas Artes, en el taller de François \
+Rude. Tras varios fracasos, obtiene el Premio de Roma en 1854. En la Villa \
+Médicis, estudia a Miguel Ángel y compone, pese a las reticencias de la Academia, \
+su grupo de Ugolino. De regreso en París, se convierte en el escultor favorito del Segundo \
+Imperio: retrata al príncipe imperial y a la princesa Matilde, y \
+decora el pabellón de Flore, en el Louvre. Para la fachada de la nueva Ópera de Charles Garnier, \
+esculpe La danza, desvelada en 1869: la desnudez alegre de sus bailarinas causa \
+escándalo, y un desconocido arroja una botella de tinta sobre el grupo. Realiza \
+después la fuente del Observatorio, con las Cuatro Partes del mundo. Enfermo de \
+cáncer, en conflicto con su esposa, muere a los cuarenta y ocho años. Su taller \
+difundió numerosas reducciones de sus obras."""
+style = """
+Carpeaux rompe con la contención neoclásica: sus figuras ríen, bailan, sufren, \
+y el modelado conserva la viveza del boceto. Heredero de Rude y admirador de \
+Miguel Ángel, busca el movimiento y la expresión. Sus bustos captan la \
+personalidad de sus modelos, a menudo sorprendidos con una sonrisa. Por la energía de su \
+modelado y su gusto por el drama, abre el camino a Rodin."""
+
+[[artistes]]
+nom = "Auguste Rodin"
+vie = "París, 12 de noviembre de 1840 – Meudon, 17 de noviembre de 1917"
+biographie = """
+Hijo de un empleado de la prefectura de policía, Auguste Rodin aprende dibujo en la \
+Petite École, pero fracasa tres veces en el concurso de la Escuela de Bellas Artes. \
+Trabaja largo tiempo como ornamentista y oficial para otros escultores, en París \
+y luego en Bruselas. En 1864, conoce a Rose Beuret, su compañera de toda la vida. \
+Un viaje a Italia, en 1875–1876, le revela a Miguel Ángel. Su Edad de bronce, expuesta \
+en 1877, es tan verídica que se le acusa de haberla moldeado del natural. En 1880, el Estado le \
+encarga La puerta del Infierno, inspirada en Dante, en la que trabajará hasta \
+su muerte, y de la que nacen El pensador y El beso. Vienen después Los burgueses de \
+Calais y el Balzac, rechazado por sus comitentes en 1898. De 1883 a 1892 aproximadamente, \
+vive una relación apasionada con la escultora Camille Claudel. La Exposición \
+Universal de 1900, donde presenta sus obras en un pabellón propio, le \
+procura una gloria internacional. Instalado en Meudon y en el hôtel Biron, dona en \
+1916 su obra al Estado; se casa con Rose en enero de 1917 y muere pocos meses \
+después de ella."""
+style = """
+Rodin libera la escultura de las convenciones académicas: modela por bultos y \
+hendiduras que hacen vibrar la luz, conserva la huella de los dedos, se atreve con el fragmento, \
+lo inacabado, el ensamblaje de figuras. El cuerpo expresa el pensamiento y la pasión. \
+Considerado el padre de la escultura moderna, formó o influyó en Claudel, \
+Bourdelle, Brancusi y muchos otros."""
+
+[[artistes]]
+nom = "Camille Claudel"
+vie = "Fère-en-Tardenois (Aisne), 8 de diciembre de 1864 – Montfavet (Vaucluse), 19 de octubre de 1943"
+biographie = """
+Hermana mayor del poeta Paul Claudel, Camille Claudel modela la arcilla desde la infancia. En \
+Nogent-sur-Seine, el escultor Alfred Boucher la alienta; en París, sigue los \
+cursos de la academia Colarossi. Boucher la presenta a Rodin, que la admite \
+hacia 1884 en su taller: trabaja en las manos y los pies de las figuras de \
+La puerta del Infierno y de Los burgueses de Calais. Se convierte en su alumna, su \
+colaboradora, su modelo y su amante. Esculpe Sakountala, El vals, \
+retratos impresionantes. La ruptura con Rodin, en los años 1890, la deja \
+sola, sin protector ni dinero; crea entonces sus obras más \
+personales, La edad madura, Las conversadoras, La ola. Poco a poco, se aísla, se cree \
+perseguida por Rodin y destruye una parte de sus obras. En marzo de 1913, una \
+semana después de la muerte de su padre, su familia la hace internar. Pasa los treinta \
+últimos años de su vida en un asilo, en Ville-Évrard y luego en Montdevergues, cerca \
+de Aviñón, sin volver a esculpir. Un museo le está consagrado en Nogent-sur-Seine \
+desde 2017."""
+style = """
+Formada junto a Rodin, Camille Claudel se distingue de él por el gusto del relato, de las \
+composiciones en movimiento y de los pequeños grupos de la vida cotidiana, inspirados \
+a veces en el arte japonés. Trabaja con virtuosismo el mármol, el ónice y el \
+bronce. Largo tiempo reducida a su papel junto a Rodin, hoy se la reconoce \
+como una escultora mayor."""
+
+[[artistes]]
+nom = "Edgar Degas"
+vie = "París, 19 de julio de 1834 – París, 27 de septiembre de 1917"
+biographie = """
+Hijo de un banquero, Edgar Degas renuncia al derecho por la pintura. Ingresa \
+brevemente en la Escuela de Bellas Artes, admira a Ingres y pasa tres años en Italia, \
+de 1856 a 1859, copiando a los maestros. Comienza con cuadros de historia y \
+retratos, y luego se vuelca en la vida moderna: carreras de caballos, cafés-concierto, \
+lavanderas y, sobre todo, bailarinas de la Ópera, a las que observa en los ensayos y \
+entre bastidores. Participa en la organización de las exposiciones impresionistas a partir \
+de 1874, rechazando al mismo tiempo la etiqueta y la pintura al aire libre. Practica el \
+pastel, el grabado, el monotipo, la fotografía. Con la vista en declive, trabaja cada vez \
+más en escultura, en el secreto de su taller, modelando en cera \
+bailarinas, caballos y mujeres en su aseo. Solo muestra al público una \
+escultura, la Pequeña bailarina de catorce años, en 1881. A su muerte, se encuentran \
+en el taller más de ciento cincuenta ceras, muchas de las cuales se funden después en \
+bronce."""
+style = """
+Degas compone como un fotógrafo: encuadres cortados, puntos de vista picados, \
+gestos captados al vuelo. Dibujante sin par, busca la verdad del movimiento y \
+del oficio. En escultura, trabaja la cera con libertad, como un estudio, y se atreve a \
+mezclar materiales reales. Sus ceras, descubiertas tras su muerte, fueron una \
+revelación para los escultores del siglo XX."""
+
+[[artistes]]
+nom = "Antoine Bourdelle"
+vie = "Montauban, 30 de octubre de 1861 – Le Vésinet, 1 de octubre de 1929"
+biographie = """
+Hijo de un ebanista, Antoine Bourdelle aprende a tallar la madera en \
+el taller paterno, estudia luego en la Escuela de Bellas Artes de Toulouse y en la de \
+París, que abandona pronto, rechazando la enseñanza académica. Se instala en \
+el barrio de Montparnasse, donde conservará su taller toda la vida. Su monumento \
+a los muertos de la guerra de 1870, en Montauban, terminado a principios de siglo, sorprende por \
+su violencia expresiva. De 1893 a 1908, trabaja como oficial para Rodin, \
+que lo estima mucho. Se libera de él con el Heracles arquero, en 1909, y después \
+con los relieves del teatro de los Campos Elíseos, inspirados en Isadora Duncan. \
+Realiza grandes monumentos, entre ellos el del general Alvear en Buenos Aires y el \
+del poeta Adam Mickiewicz en París. Profesor en la academia de la Grande Chaumière, \
+forma a numerosos alumnos, entre ellos Alberto Giacometti y Germaine Richier. \
+Su taller se convirtió en el museo Bourdelle en 1949."""
+style = """
+Bourdelle busca en la escultura griega arcaica y en el arte románico una \
+grandeza arquitectónica: planos tajantes, volúmenes simplificados, composiciones \
+construidas. Conserva de Rodin el sentido del drama y de la energía, pero los somete a \
+la estructura. Su arte establece el vínculo entre Rodin y la escultura monumental del siglo \
+XX."""
+
+[[artistes]]
+nom = "Aristide Maillol"
+vie = "Banyuls-sur-Mer, 8 de diciembre de 1861 – Banyuls-sur-Mer, 27 de septiembre de 1944"
+biographie = """
+Nacido a orillas del Mediterráneo, en los Pirineos Orientales, Aristide Maillol sube \
+a París para ser pintor e ingresa en la Escuela de Bellas Artes. Se une a los \
+Nabis, pinta lienzos decorativos y funda en Banyuls un taller de tapices. \
+Hacia 1900, una enfermedad de los ojos lo obliga a abandonar ese trabajo minucioso: se \
+consagra a la escultura, primero en madera y terracota, luego en piedra y \
+bronce. El Mediterráneo, presentado en el Salón de Otoño de 1905, lo hace célebre. El \
+conde Harry Kessler se convierte en su mecenas, lo lleva a Grecia en 1908 y publica \
+libros ilustrados con sus xilografías. Maillol reparte su vida entre \
+Marly-le-Roi y Banyuls, y esculpe casi únicamente el cuerpo femenino, así como \
+monumentos a los muertos para las ciudades de su región. A partir de 1934, Dina Vierny \
+se convierte en su modelo; fundará en París el museo Maillol. Muere en 1944, a \
+consecuencia de un accidente de automóvil."""
+style = """
+Maillol opone a Rodin una escultura de la calma y de la plenitud: mujeres de \
+formas plenas, de poses sencillas, de volúmenes cerrados y superficies lisas. \
+Recupera el espíritu de la Grecia clásica sin copiarla. Su clasicismo moderno \
+marcó profundamente la escultura europea de la primera mitad del siglo XX."""

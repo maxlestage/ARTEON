@@ -1,0 +1,441 @@
+[exposition]
+ordre = 80
+nom_court = "Realismo"
+mouvement = "Realismo e impresionismo"
+cadre = "dore"
+couleur = "#3d5a4c"
+titre = "Del realismo a la vida moderna"
+artiste = "Courbet, Millet, Rosa Bonheur, Manet, Degas, Caillebotte, Pissarro"
+dates = "1849–1882"
+accroche = "Exposición virtual · National Gallery of Art, Washington"
+introduction = """
+A mediados del siglo XIX, el realismo hace bajar la gran pintura del Olimpo: paso a los campesinos, a los obreros, a los entierros de aldea y a las calles de París. Courbet, Millet y Rosa Bonheur muestran el campo tal como es; Manet, Degas, Caillebotte y Pissarro pintan la vida moderna y abren el camino al impresionismo. El edificio se inspira en el West Building de la National Gallery of Art de Washington: una alta rotonda de columnas en el centro, una galería a cada lado y, al este, un gabinete en enfilada."""
+vitrine = "dejeuner-sur-l-herbe.jpg"
+
+[musee]
+nom = "National Gallery of Art, West Building"
+ville = "Washington, Estados Unidos"
+architecte = "John Russell Pope"
+construction = "1937–1941"
+presentation = """
+Banquero y antiguo secretario del Tesoro, Andrew W. Mellon ofrece a la nación, en 1937, su colección de cuadros y los fondos para construir un museo en el National Mall. El arquitecto John Russell Pope diseña un templo neoclásico de mármol rosado de Tennessee; muere poco después del comienzo de las obras, que sus socios concluyen. El edificio, hoy llamado West Building, abre en marzo de 1941. En su centro, la rotonda, coronada por una cúpula inspirada en el Panteón de Roma, está rodeada de columnas de mármol verde oscuro y alberga una fuente rematada por un Mercurio. Dos largas galerías de escultura parten hacia el este y hacia el oeste y distribuyen las salas de pintura, iluminadas por lucernarios. El museo presenta la pintura europea de la Edad Media al siglo XIX, desde Leonardo da Vinci, del que conserva el único cuadro visible en las Américas, hasta Manet, Monet y Degas. En 1978 se añadió el East Building, diseñado por Ieoh Ming Pei."""
+ici = """
+El edificio de ARTEON retoma el plano del West Building: una rotonda en el centro, galerías a ambos lados. Se entra por el sur, en el vestíbulo del Mall, y después en la rotonda, cuadrada, de catorce metros de altura, donde cuelgan El almuerzo sobre la hierba y Olympia. Al oeste se abre «Galería oeste · El realismo»; al este, «Galería este · La vida moderna», dos salas de dieciocho metros de largo de muros color crema. Al fondo de la galería este, una última puerta conduce al «Gabinete este · La ciudad y la aldea»."""
+
+[[salles]]
+nom = "El vestíbulo del Mall"
+theme = "La entrada por el lado del Mall, como en Washington: una escalera conduce a la rotonda."
+murs = "#ebe3d6"
+x = 0
+z = 0
+largeur = 14
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La rotonda"
+theme = "1863: bajo la cúpula, los dos lienzos de Manet que causaron escándalo, El almuerzo sobre la hierba y Olympia."
+murs = "#e2dccd"
+x = 0
+z = -12
+largeur = 16
+profondeur = 16
+hauteur = 14
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "Galería oeste · El realismo"
+theme = "1849–1857: Courbet, Millet y Rosa Bonheur pintan el campo, sus campesinos, sus animales y sus duelos."
+murs = "#e9dfcc"
+x = -17
+z = -12
+largeur = 18
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "Galería este · La vida moderna"
+theme = "1873–1882: unos obreros en un piso parisino, una clase de danza en la Ópera y el bar del Folies-Bergère."
+murs = "#e7e0d0"
+x = 17
+z = -12
+largeur = 18
+profondeur = 10
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "El gabinete este · La ciudad y la aldea"
+theme = "1877: el mismo año, una calle de París bajo la lluvia y una aldea de Pontoise en invierno."
+murs = "#ece4d4"
+x = 32
+z = -12
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[oeuvres]]
+titre = "El almuerzo sobre la hierba"
+artiste = "Édouard Manet"
+annee = "1863"
+image = "dejeuner-sur-l-herbe.jpg"
+technique = "Óleo sobre lienzo, 208 × 264,5 cm"
+collection = "Museo de Orsay, París"
+note = "Una mujer desnuda entre dos hombres vestidos a la moda: rechazado en el Salón de 1863, el cuadro causó escándalo en el Salón de los Rechazados."
+description = """
+En un claro, a orillas de un río, tres personajes están sentados sobre la hierba. Una joven desnuda, con la barbilla apoyada en la mano, nos mira directamente a los ojos, sin pudor. A su lado, dos jóvenes vestidos a la moda de la década de 1860, chaqueta oscura y pantalón claro, prosiguen su conversación; el de la derecha, tocado con un gorro con borla, tiende la mano en un gesto de orador. En primer plano, a la izquierda, las ropas de la mujer, un vestido azul y un sombrero de paja, han sido arrojadas de cualquier manera junto a una cesta volcada de la que ruedan unas frutas y un panecillo redondo. Más lejos, una segunda mujer en camisa se inclina hacia el agua. Los árboles enmarcan la escena como el telón de un teatro."""
+evocation = """
+El escándalo no procede del desnudo, omnipresente en la pintura de Salón, sino de su contexto: no es una ninfa ni una diosa, es una parisina de hoy, sentada junto a dos hombres vestidos como estudiantes o artistas, que mira fijamente al espectador. El público ve en ello una merienda campestre de costumbres dudosas. Manet, por su parte, retoma un tema consagrado por los maestros, la fiesta campestre, que el Louvre ilustra con el Concierto campestre atribuido a Tiziano, para mostrar que se puede pintar la propia época con la misma ambición. Se ha leído en él un desafío lanzado al academicismo, un homenaje irónico a la tradición o una reflexión sobre la mirada: la mujer nos observa tanto como nosotros a ella."""
+histoire = """
+Manet presenta el lienzo en el Salón de 1863 con el título El baño. El jurado lo rechaza, como a miles de otras obras ese año. Ante las protestas, Napoleón III autoriza una exposición de los cuadros rechazados, que se llamará el Salón de los Rechazados. El almuerzo atrae allí a la multitud, las risas y los sarcasmos, y convierte a Manet, a su pesar, en cabeza de fila de una joven generación. La mujer tiene por modelo a Victorine Meurent; los hombres son un hermano del pintor y el escultor neerlandés Ferdinand Leenhoff, cuya hermana Suzanne se casará con Manet unos meses más tarde. Adquirido en 1878 por el barítono Jean-Baptiste Faure, el cuadro es donado al Estado en 1906 por el coleccionista Étienne Moreau-Nélaton; ingresa en el Louvre en 1934 y después en el Museo de Orsay en 1986."""
+facture = """
+Manet pinta por amplios planos de color, sin las transiciones suaves del modelado académico: el cuerpo de la mujer, de un blanco crudo, iluminado de frente, parece casi plano sobre el fondo oscuro. Los negros de las chaquetas, profundos y aterciopelados, proceden de Velázquez y de Goya, a quienes admira. El paisaje, pintado con rapidez, parece un decorado pintado, y la bañista del fondo, demasiado grande para su lugar, desafía la perspectiva. El grupo de los tres personajes retoma el de tres divinidades en un grabado de Marcantonio Raimondi según Rafael, El juicio de Paris. La naturaleza muerta del primer plano es un alarde de virtuosismo."""
+details = [
+  "El camachuelo que vuela en lo alto, en el centro, entre las ramas.",
+  "La pequeña rana escondida en la hierba, abajo a la izquierda.",
+  "Las cerezas, los higos y el panecillo redondo escapados de la cesta.",
+  "La barca amarrada a la orilla, a la derecha.",
+  "El bastón que sostiene con descuido el hombre de la derecha.",
+]
+themes = ["escándalo", "desnudo", "modernidad", "naturaleza", "mirada"]
+anecdote = """
+Picado en su amor propio, Claude Monet emprendió en 1865 su propio Almuerzo sobre la hierba, un inmenso lienzo al aire libre, sin desnudo. Deteriorado por la humedad, fue cortado por el propio pintor: dos grandes fragmentos se conservan en el Museo de Orsay."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Olympia"
+artiste = "Édouard Manet"
+annee = "1863"
+image = "olympia.jpg"
+technique = "Óleo sobre lienzo, 130,5 × 190 cm"
+collection = "Museo de Orsay, París"
+note = "Una mujer de su tiempo en la pose de una Venus de Tiziano: en el Salón de 1865, el lienzo desató los insultos."
+description = """
+Una joven desnuda yace en una cama de sábanas y almohadas blancas, apoyada en grandes cojines, con un chal de flores deslizado bajo ella. Solo lleva una cinta de terciopelo negro anudada al cuello, un brazalete de oro, una orquídea rosa en sus cabellos rojizos y una babucha dorada; la otra babucha ha resbalado sobre la sábana. Su mano izquierda reposa plana sobre el muslo. Nos mira, serena, sin sonreír. Detrás de ella, una criada negra de vestido rosa le presenta un gran ramo envuelto en papel blanco. A los pies de la cama, a la derecha, un gato negro, con la cola erguida, mira fijamente al espectador con sus ojos amarillos. El fondo está cerrado por un tapiz oscuro y una cortina verde."""
+evocation = """
+Para los contemporáneos, el título y los accesorios no dejan lugar a dudas: Olympia es una cortesana, y en el ramo se ve el homenaje de un cliente, que ocuparía el lugar del espectador. Manet retoma la pose de la Venus de Urbino de Tiziano, pero sustituye a la diosa por una mujer real, de cuerpo sin idealizar, y al perrito dormido, símbolo de fidelidad, por un gato negro al acecho, asociado a la noche y al deseo. La mirada directa de Olympia invierte los papeles: es ella quien evalúa a quien la mira. Desde hace algunas décadas, los historiadores se interesan también por la criada, durante mucho tiempo ignorada, y por su modelo, una mujer llamada Laure, que vivía en París y posó varias veces para Manet."""
+histoire = """
+Pintada en 1863, el mismo año que El almuerzo sobre la hierba y con la misma modelo, Victorine Meurent, Olympia no se expone hasta el Salón de 1865. El escándalo es inmediato: unos visitantes amenazan el lienzo, la administración lo hace vigilar y luego colgar muy alto, y la prensa se burla de una mujer considerada fea e indecente. Manet conserva el cuadro hasta su muerte, en 1883. En 1889 y 1890, Claude Monet organiza una suscripción entre amigos y aficionados para comprarlo a la viuda del pintor, evitar que salga al extranjero y ofrecerlo al Estado. Olympia ingresa entonces en el Museo del Luxemburgo, reservado a los artistas vivos o recientemente fallecidos, y después en el Louvre, antes de incorporarse al Museo de Orsay en 1986."""
+facture = """
+Manet suprime casi el modelado: el cuerpo de Olympia es una forma clara, perfilada con un trazo oscuro, iluminada de frente, lo que los críticos le reprocharon como falta de relieve. Juega con acordes audaces entre los blancos de la sábana, de la almohada y del papel del ramo, y los negros y verdes oscuros del fondo, donde el gato y la criada casi se funden. El ramo, pintado con toques rápidos y libres, es un pequeño cuadro dentro del cuadro. El lienzo dialoga con Tiziano, a quien Manet había copiado en los Uffizi de Florencia, y con Goya, cuya Maja desnuda ofrece otro desnudo de mirada franca."""
+details = [
+  "La firma y la fecha, abajo a la izquierda, en el borde de la cama.",
+  "El gato negro de ojos amarillos, a la derecha del todo, a los pies de la cama.",
+  "La orquídea rosa prendida en los cabellos rojizos.",
+  "La babucha dorada que queda en el pie, y la que ha resbalado sobre la sábana.",
+  "La fina cinta de terciopelo negro anudada alrededor del cuello.",
+]
+themes = ["desnudo", "escándalo", "mirada", "cortesana", "modernidad"]
+anecdote = """
+Fue Georges Clemenceau, presidente del Consejo y amigo de Monet, quien ordenó en 1907 el traslado de Olympia del Museo del Luxemburgo al Louvre: cuarenta y dos años después del escándalo del Salón, la cortesana entraba entre los maestros."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Un entierro en Ornans"
+artiste = "Gustave Courbet"
+annee = "1849–1850"
+image = "enterrement-a-ornans.jpg"
+technique = "Óleo sobre lienzo, 315 × 668 cm"
+collection = "Museo de Orsay, París"
+note = "Un entierro de aldea pintado con el formato de un cuadro de historia: con este lienzo, Courbet hace entrar la vida ordinaria en la gran pintura."
+description = """
+Sobre un lienzo de casi siete metros de largo, una multitud enlutada se agrupa alrededor de una fosa recién cavada, en el cementerio de Ornans, en el Franco Condado. A la izquierda, los portadores sostienen el ataúd cubierto con un paño blanco, precedidos por el crucifijo alzado contra el cielo gris. En el centro, el cura lee el oficio, rodeado de monaguillos y de dos pertigueros de túnica roja; ante él, el sepulturero, con una rodilla en tierra, aguarda. A la derecha, los hombres de traje negro y luego las mujeres de toca blanca, pañuelo en mano, forman un largo muro sombrío. Un perro blanco se ha deslizado en primer plano. Detrás, los acantilados calizos que dominan el valle del Loue cierran el horizonte. Los personajes, a tamaño natural, se alinean como un friso, sin protagonista principal."""
+evocation = """
+Courbet da a gente corriente, el cura, notables, viñadores, sus propias hermanas, la dignidad y el formato reservados hasta entonces a las escenas religiosas, mitológicas o históricas. No hay cielo abierto, ni ángel, ni consuelo: solo la muerte tal como se vive en una pequeña ciudad de provincia, con sus distracciones y sus pañuelos. Courbet habría dicho más tarde que este cuadro era en realidad el entierro del romanticismo. También se ha leído en él un manifiesto político: pintado al día siguiente de la revolución de 1848 y de la instauración del sufragio universal masculino, hace del pueblo de un municipio rural el tema de un lienzo monumental. El cráneo colocado al borde de la fosa recuerda la fragilidad de la vida, sin énfasis, como un simple hecho."""
+histoire = """
+Courbet pinta el lienzo en Ornans, su ciudad natal, entre el verano de 1849 y 1850, en una estancia de la casa familiar tan estrecha que no puede tomar ninguna distancia para juzgar el conjunto. Los habitantes acuden a posar uno a uno; entre las mujeres se reconoce a las tres hermanas del pintor. El cuadro se expone en el Salón que se abre en París a finales del año 1850. Los críticos se indignan por la fealdad de los rostros y la trivialidad del tema, tratado a una escala juzgada desmesurada; otros saludan un arte nuevo, fiel a lo real, y Courbet se convierte en cabeza de fila del realismo. Permaneció en su familia tras su muerte; el cuadro es donado al Estado en 1881 por su hermana Juliette; ingresa en el Louvre y después en el Museo de Orsay a su apertura, en 1986."""
+facture = """
+Courbet trabaja sobre una preparación oscura, de la que hace surgir los rostros y los blancos: sobrepellices, tocas, paño mortuorio, medias del sepulturero. La paleta, voluntariamente austera, está dominada por los negros, que modula con gran riqueza, realzados solo por el rojo de los pertigueros. La pasta es espesa y generosa. La composición rechaza la pirámide clásica: las figuras se estiran en un largo friso horizontal, apretadas unas contra otras bajo una franja de cielo bajo. Courbet se inspira en las imágenes populares y en los grandes retratos de grupo holandeses más que en los modelos académicos."""
+details = [
+  "El cráneo colocado sobre la tierra, al borde de la fosa, en el centro del primer plano.",
+  "El paño mortuorio blanco, sembrado de lágrimas y de huesos cruzados negros, a la izquierda.",
+  "Los dos pertigueros de rostros rubicundos y túnicas rojas, detrás del cura.",
+  "El crucifijo que se recorta solo sobre el cielo, por encima de la multitud.",
+  "El perro blanco, en primer plano a la derecha, indiferente a la ceremonia.",
+]
+themes = ["muerte", "provincia", "pueblo", "religión", "manifiesto"]
+anecdote = """
+Para la Exposición Universal de 1855, el jurado rechaza este lienzo y El taller del pintor. Courbet construye entonces a sus expensas, muy cerca, su propio pabellón, al que bautiza «Del Realismo»: una de las primeras exposiciones individuales organizadas por un artista él mismo."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Labranza en el Nivernais"
+artiste = "Rosa Bonheur"
+annee = "1849"
+image = "labourage-nivernais.jpg"
+technique = "Óleo sobre lienzo, 134 × 260 cm"
+collection = "Museo de Orsay, París"
+note = "Dos yuntas de bueyes voltean la tierra de una ladera del Nièvre: el encargo del Estado que convirtió a Rosa Bonheur en una celebridad."
+description = """
+En una ladera, bajo un gran cielo claro, dos yuntas de bueyes avanzan de izquierda a derecha trazando su surco. La primera ocupa toda la mitad derecha del cuadro: animales macizos, blancos y rojizos, uncidos de dos en dos por un yugo fijado a los cuernos, con la cabeza baja por el esfuerzo. Un boyero de sombrero negro alza su larga aguijada en medio de ellos; detrás, un labrador en camisa blanca guía el arado de madera. Más lejos, a la izquierda, sigue la segunda yunta, conducida por otros campesinos. En primer plano, la tierra recién removida forma grandes terrones pardos. Más allá, una colina arbolada, unas nubes y un vasto cielo azul pálido ocupan más de la mitad del lienzo."""
+evocation = """
+El cuadro celebra la tierra y a quienes la trabajan, al día siguiente de la revolución de 1848, cuando la República busca imágenes del pueblo y de la Francia rural. A menudo se lo ha relacionado con las primeras páginas de la novela de George Sand, La charca del diablo (1846), donde el narrador contempla a un labrador que conduce sus bueyes en el Berry. Pero en Rosa Bonheur los verdaderos héroes son los animales: su fuerza, su peso, su paciencia están expresados con un respeto casi fraterno, sin sentimentalismo. La obra traduce su convicción de que los animales merecen ser estudiados con tanta atención como los hombres. Para una mujer, pintar a esta escala, en un género considerado viril, era en sí una afirmación."""
+histoire = """
+En 1848, Rosa Bonheur, de veintiséis años, obtiene una medalla de primera clase en el Salón, y el Estado le encarga un cuadro. Elige pintar el Nivernais, cuyos bueyes y paisajes estudia sobre el terreno, y un momento preciso del trabajo agrícola: el sombrage, la primera labor, que voltea y airea la tierra. Expuesto en el Salón de 1849, el lienzo conoce un gran éxito y consolida su reputación, que pronto llegará a Inglaterra y a los Estados Unidos. El cuadro se expone en el Museo del Luxemburgo, consagrado a los artistas vivos, y después se incorpora a las colecciones del Louvre; se presenta en el Museo de Orsay desde 1986."""
+facture = """
+Rosa Bonheur pinta con la precisión de una naturalista: cada buey tiene su pelaje, su musculatura, su mirada, fruto de innumerables estudios realizados en granjas, ferias y mataderos. La pincelada es lisa y cuidada en los animales, más libre en la tierra, donde unos empastes pardos dan relieve a los terrones. La composición en largo friso, con los animales desfilando de perfil, recuerda los bajorrelieves antiguos. La luz franca acentúa el pelaje claro de los bueyes, que se recorta sobre la colina verde y sobre el cielo inmenso."""
+details = [
+  "El boyero que blande su aguijada en medio de la primera yunta.",
+  "El buey rojizo, único animal oscuro entre los pelajes claros.",
+  "Los yugos atados a los cuernos, a la manera del Nivernais.",
+  "Los terrones de tierra removida, pintados uno a uno en primer plano.",
+  "La firma de la artista, abajo del todo a la derecha.",
+]
+themes = ["animales", "labranza", "campo", "trabajo", "tierra"]
+anecdote = """
+Para estudiar a los animales sin ser importunada en las ferias de ganado y los mataderos, Rosa Bonheur obtuvo de la prefectura de policía un «permiso de travestimiento», que la autorizaba a llevar pantalón, prohibido a las mujeres en París sin dispensa."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Las espigadoras"
+artiste = "Jean-François Millet"
+annee = "1857"
+image = "glaneuses.jpg"
+technique = "Óleo sobre lienzo, 83,5 × 110 cm"
+collection = "Museo de Orsay, París"
+note = "Tres campesinas recogen las espigas olvidadas tras la cosecha: Millet da a los más pobres del campo una grandeza de estatua."
+description = """
+En primer plano de un campo segado, tres mujeres recogen las espigas que han quedado sobre el rastrojo. Dos de ellas están inclinadas hasta el suelo, una tendiendo la mano hacia una espiga, la otra apretando ya un puñado de tallos; la tercera, a medio incorporar, se dispone a agacharse a su vez. Sus tocas azul, roja y ocre son las únicas notas vivas del cuadro. Detrás de ellas, en una luz dorada de finales de verano, la llanura se extiende hasta perderse de vista: enormes almiares, un carro cargado de gavillas, una multitud de segadores trabajando, una granja. A la derecha, un hombre a caballo vigila la cosecha. Todo el ancho del campo separa a las espigadoras de esa abundancia."""
+evocation = """
+El espigueo era un antiguo derecho concedido a los más pobres: tras la cosecha, podían recoger lo que los segadores habían dejado. Millet hace de él la imagen del trabajo más humilde, repetido sin fin, con la espalda encorvada. No cuenta ninguna anécdota: los rostros permanecen en la sombra, los cuerpos macizos y lentos tienen la gravedad de figuras bíblicas, y a menudo se ha relacionado la escena con la historia de Rut espigando en el campo de Booz, que había pintado unos años antes. Bajo el Segundo Imperio, una parte de la crítica ve en ella, sin embargo, una provocación, casi una llamada a la revuelta, a causa del contraste entre la miseria del primer plano y la riqueza del fondo. Millet, por su parte, se defendía de hacer política."""
+histoire = """
+Establecido desde 1849 en Barbizon, en el linde del bosque de Fontainebleau, Millet observa durante años a las espigadoras de la llanura de Chailly. De ello extrae dibujos, después un aguafuerte, antes de pintar este lienzo, expuesto en el Salón de 1857. El crítico Paul de Saint-Victor ve en él «las tres Parcas del pauperismo». El cuadro se vende a un precio modesto. Pero la reputación de Millet crece tras su muerte, en 1875, y sus obras alcanzan entonces sumas considerables. En 1890, el lienzo ingresa en el Louvre gracias a Jeanne-Alexandrine Pommery, viuda de un negociante de champán de Reims, que lo dona al Estado. Se presenta en el Museo de Orsay desde 1986."""
+facture = """
+Millet construye el lienzo en dos registros claramente separados: abajo, en una sombra ligera, las tres figuras macizas de contornos simplificados; arriba, la llanura bañada de luz, pintada con toques finos y claros que se pierden en la calima. Los tres cuerpos forman un friso rítmico, como un movimiento descompuesto: agacharse, recoger, incorporarse. La gama está dominada por los ocres, los pardos y los dorados del rastrojo, realzados por tres notas de color en las tocas y las mangas. El modelado suave, casi esculpido, debe mucho a Miguel Ángel y a Poussin, a quienes Millet admiraba."""
+details = [
+  "El diminuto jinete que vigila la cosecha, en el extremo derecho.",
+  "Los almiares y el carro cargado de gavillas, a la izquierda, en la luz.",
+  "El puñado de espigas que aprieta la espigadora del medio.",
+  "La mano de la espigadora de la izquierda, que roza el suelo.",
+  "La bandada de pájaros que gira en el cielo, arriba a la derecha.",
+]
+themes = ["trabajo", "campesinos", "pobreza", "cosecha", "campo"]
+anecdote = """
+En 2000, la cineasta Agnès Varda se inspira en este cuadro para su documental Los espigadores y la espigadora, dedicado a quienes, todavía hoy, recogen los restos de los campos, de los mercados y de los contenedores de basura."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Los acuchilladores de parqué"
+artiste = "Gustave Caillebotte"
+annee = "1875"
+image = "raboteurs-de-parquet.jpg"
+technique = "Óleo sobre lienzo, 102 × 146,5 cm"
+collection = "Museo de Orsay, París"
+note = "Tres obreros con el torso desnudo rascan el suelo de un piso parisino: rechazado en el Salón, el cuadro fue una de las revelaciones de la exposición impresionista de 1876."
+description = """
+En la estancia vacía de un piso burgués, de muros cubiertos de boiserie gris, tres obreros de rodillas, con el torso desnudo, rascan el viejo barniz del parqué. Dos de ellos, en el centro y a la derecha, tiran uno junto a otro de su rasqueta hacia sí; el tercero, a la izquierda, trabaja solo, inclinado hacia el suelo. Largas virutas claras se enroscan a su alrededor. Al fondo, una puerta balconera abierta a un balcón de hierro forjado deja entrar una luz suave que resbala sobre las tablillas y hace brillar las partes ya raspadas. A la derecha, una botella de vino y un vaso aguardan la pausa; se ha dejado un martillo sobre el suelo, y unas ropas amontonadas en el rincón de la estancia."""
+evocation = """
+Caillebotte, hijo de una rica familia parisina, mira el trabajo manual allí donde se hace, en un interior burgués en plena reforma. Lo pinta sin pintoresquismo, sin miserabilismo y sin mensaje moral, como un espectáculo de cuerpos en movimiento, de gestos repetidos y precisos. Se ha visto en él un homenaje al oficio, pero también una imagen del París haussmanniano, donde se construye y se reforma sin cesar. Los cuerpos flacos, el esfuerzo, el vino recuerdan la dureza del trabajo; al mismo tiempo, la luz y el ritmo de los brazos dan a la escena una belleza casi coreográfica. A los críticos de la época, en cambio, les llamó la atención sobre todo la audacia del tema y lo extraño del punto de vista."""
+histoire = """
+Caillebotte pinta la escena en el hotel particular familiar de la rue de Miromesnil, en París, donde ha instalado su taller. En 1875, presenta el lienzo en el Salón, donde el jurado lo rechaza, juzgando vulgar el tema. Al año siguiente, invitado por sus amigos Degas y Renoir, lo expone con los impresionistas, en su segunda exposición, en la galería del marchante Durand-Ruel. Allí es muy comentado; Émile Zola le reprocha, sin embargo, una exactitud demasiado fotográfica, que juzga burguesa. Tras la muerte de Caillebotte, en 1894, sus herederos, su hermano Martial y el pintor Auguste Renoir, albacea testamentario, ofrecen el cuadro al Estado. Ingresa en el Museo del Luxemburgo, después en el Louvre, antes de incorporarse al Museo de Orsay en 1986."""
+facture = """
+Caillebotte adopta un punto de vista picado, como si el espectador estuviera de pie sobre los obreros: el parqué sube casi hasta lo alto del cuadro y sus tablillas huyen en diagonal hacia la ventana, acentuando la perspectiva. Formado en el taller del pintor académico Léon Bonnat, pinta con una precisión y un acabado cuidados que lo distinguen de sus amigos impresionistas. La luz a contraluz, procedente de la ventana, pone reflejos plateados sobre la madera y modela las espaldas y los brazos. La paleta se limita a los pardos, los grises y los ocres."""
+details = [
+  "Las virutas de madera que se enroscan sobre el suelo.",
+  "La botella de vino y el vaso, colocados a la derecha.",
+  "El balcón de hierro forjado, a contraluz, detrás de la puerta balconera.",
+  "El contraste entre las tablillas ya raspadas, claras, y las que todavía están oscuras.",
+  "La firma y la fecha, abajo a la derecha.",
+]
+themes = ["trabajo", "obreros", "París", "luz", "perspectiva"]
+anecdote = """
+Se considera este lienzo una de las primerísimas representaciones de los obreros urbanos en la pintura francesa: hasta entonces, los pintores realistas habían mostrado sobre todo a los trabajadores del campo, como las espigadoras de Millet."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "La clase de danza"
+artiste = "Edgar Degas"
+annee = "1873–1876"
+image = "classe-de-danse.jpg"
+technique = "Óleo sobre lienzo, 85 × 75 cm"
+collection = "Museo de Orsay, París"
+note = "Final de la lección en la Ópera: alrededor del viejo maestro de ballet Jules Perrot, las bailarinas se estiran, charlan y esperan."
+description = """
+En una alta sala de muros verde pálido, adornada con pilastras de falso mármol y un gran marco de puerta, una veintena de jóvenes bailarinas con tutú blanco rodean a un viejo maestro de ballet apoyado en un largo bastón. En el centro, una alumna adopta la pose para ejecutar un paso ante él. Pero la mayoría no mira: a la izquierda, una, sentada sobre el piano, se rasca la espalda, otra se abanica; en primer plano, una muchacha vista de espaldas, con un lazo rojo en el pelo y una ancha faja verde, se ajusta el atuendo. Al fondo, a la derecha, unas madres esperan a sus hijas. El entarimado, visto desde arriba, ocupa toda la parte inferior del cuadro, con una regadera en el ángulo izquierdo."""
+evocation = """
+Degas no muestra el espectáculo sino sus bastidores: el cansancio, la espera, el aburrimiento, los pequeños gestos que nadie debería ver. Las alumnas de la Ópera, a menudo de familias modestas, son aquí trabajadoras en aprendizaje, a las que se apodaba «petits rats». La presencia de las madres, al fondo, recuerda las esperanzas, y a veces los cálculos, que rodeaban a estas muchachas. El viejo maestro, figura de la edad de oro del ballet romántico, encarna una disciplina y una tradición frente a una juventud distraída. Para Degas, este mundo es sobre todo un laboratorio del movimiento: observa en él cómo un cuerpo se sostiene, se retuerce, se relaja."""
+histoire = """
+Degas comienza el cuadro hacia 1873 y lo concluye en 1876, tras numerosos estudios de bailarinas, dibujados a partir de modelos que posan en su taller. La sala evoca la antigua Ópera de la rue Le Peletier, destruida por un incendio en octubre de 1873: Degas la recompone, pues, en parte de memoria. El maestro de ballet es Jules Perrot, célebre bailarín y coreógrafo, que había regulado parte de las danzas de Giselle en 1841. Otra versión, de composición distinta, se conserva en el Metropolitan Museum of Art de Nueva York. El lienzo es legado al Louvre en 1911 por el coleccionista Isaac de Camondo, junto con otras obras de Degas, y se encuentra en el Museo de Orsay desde 1986."""
+facture = """
+Degas compone como un fotógrafo o un grabador japonés: punto de vista elevado, entarimado en diagonal que huye hacia el fondo, figuras cortadas por el borde del marco, vacío en el centro. Las tablillas del suelo conducen la mirada hacia el maestro de ballet. El color, muy claro, descansa en la armonía de los blancos vaporosos de los tutús y del verde pálido de los muros, realzada por las cintas, verdes, azules, rojas, y por el negro del piano. La pincelada, fina y nerviosa, conserva la precisión del dibujo, que Degas situaba por encima de todo."""
+details = [
+  "La bailarina sentada sobre el piano, que se rasca la espalda.",
+  "El perrito a los pies de la bailarina de la faja verde.",
+  "El abanico rojo abierto, justo detrás de la muchacha vista de espaldas.",
+  "Las madres de las bailarinas, agrupadas al fondo a la derecha.",
+  "El gran marco de puerta, en el centro, que deja ver una ventana al otro lado.",
+]
+themes = ["danza", "ópera", "movimiento", "bastidores", "juventud"]
+anecdote = """
+La regadera verde del primer plano no está ahí por casualidad: se regaba el suelo de las salas de ensayo para abatir el polvo e impedir que las bailarinas resbalaran. Degas pintó en ella, con malicia, su firma."""
+salle = 4
+mur = "sud"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Un bar en el Folies-Bergère"
+artiste = "Édouard Manet"
+annee = "1882"
+image = "bar-aux-folies-bergere.jpg"
+technique = "Óleo sobre lienzo, 96 × 130 cm"
+collection = "Courtauld Gallery, Londres"
+note = "El último gran lienzo de Manet: una camarera cansada, de frente a nosotros, y detrás de ella, en un espejo, todo el esplendor de un café-concierto parisino."
+description = """
+Una joven camarera está de pie detrás del mostrador de mármol de un bar, con las manos apoyadas en el borde, de cara a nosotros. Lleva una chaqueta de terciopelo azul noche ribeteada de encaje, un medallón al cuello y un pequeño ramillete en el corpiño. Sobre el mostrador se alinean botellas de champán, de cerveza inglesa y de licor verde, una copa de cristal llena de naranjas y un vaso donde se sumergen dos rosas. Detrás de ella, un inmenso espejo refleja la sala del Folies-Bergère: las arañas, los globos luminosos, la multitud del balcón y, arriba a la izquierda, los pies calzados de verde de una acróbata en su trapecio. A la derecha, el reflejo de la camarera se inclina hacia un cliente con sombrero de copa."""
+evocation = """
+En medio del ruido y de la luz, la camarera parece ausente, perdida en sus pensamientos, aislada de la fiesta que sirve. Su reflejo, en cambio, parece enfrascado en una conversación con el cliente: dos actitudes, dos momentos, quizá la mujer pública y la mujer íntima. En el Folies-Bergère, algunas camareras pasaban por dejarse cortejar, y se ha llegado a preguntar si ella no formaba parte, como las botellas y las frutas, de lo que se ofrece al cliente. El cuadro habla también de la ciudad moderna, de sus placeres y de la soledad que se siente en ella en medio de la multitud. Pintado por un Manet ya muy enfermo, se ha leído a menudo como un adiós a la vida parisina que tanto había amado."""
+histoire = """
+Manet, gravemente enfermo, pinta el lienzo durante el invierno de 1881-1882 en su taller de la rue d'Amsterdam, tras haber tomado apuntes in situ, en el célebre café-concierto de la rue Richer. Hace reconstruir allí un mostrador con sus botellas, y una verdadera camarera del Folies-Bergère, llamada Suzon, acude a posar. El cuadro se expone en el Salón de 1882, el último en que participa Manet; muere al año siguiente, a los cincuenta y un años. El lienzo pertenece después al compositor Emmanuel Chabrier, amigo del pintor, y luego pasa por varias colecciones antes de ser adquirido en 1926 por el industrial británico Samuel Courtauld. Es hoy la obra estrella de la Courtauld Gallery, en Londres."""
+facture = """
+Manet pinta deprisa y con franqueza, con una pincelada ancha y visible que hace vibrar los reflejos del espejo, mientras que la naturaleza muerta del mostrador, en primer plano, es de una nitidez deslumbrante: vidrio, etiquetas, piel de las frutas. La luz artificial, fría y difusa, borra casi las sombras. Toda la composición descansa en una paradoja óptica: el reflejo de la camarera y del cliente está desplazado hacia la derecha, lo que sería imposible si nos halláramos frente a ella. Manet sacrifica voluntariamente la verosimilitud al efecto, y deja al espectador en la turbación."""
+details = [
+  "Los pequeños pies calzados de verde de una acróbata, arriba a la izquierda.",
+  "La firma y la fecha, pintadas en la etiqueta de una botella, a la izquierda.",
+  "La copa de cristal llena de naranjas, a la derecha del mostrador.",
+  "La espectadora de vestido blanco acodada en el balcón, a la izquierda.",
+  "El cliente de bigote y sombrero de copa, que solo existe en el espejo.",
+]
+themes = ["París", "café-concierto", "espejo", "soledad", "vida moderna"]
+anecdote = """
+Las botellas marcadas con un triángulo rojo son de cerveza inglesa Bass: ese triángulo fue, en 1876, la primerísima marca registrada en el Reino Unido. Manet deslizó así en su cuadro uno de los primeros logotipos de la historia."""
+salle = 4
+mur = "nord"
+place = 4
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Calle de París, tiempo lluvioso"
+artiste = "Gustave Caillebotte"
+annee = "1877"
+image = "rue-de-paris-temps-de-pluie.jpg"
+technique = "Óleo sobre lienzo, 212,2 × 276,2 cm"
+collection = "Art Institute of Chicago"
+note = "Una encrucijada nueva del barrio de Europa, bajo la lluvia: la gran ciudad moderna, sus perspectivas y sus transeúntes, pintada a la escala de un cuadro de historia."
+description = """
+Una encrucijada parisina, un día de lluvia. Los adoquines mojados relucen bajo un cielo gris. En primer plano a la derecha, una pareja elegante camina bajo un mismo paraguas: el hombre con sombrero de copa y levita, la mujer con abrigo oscuro, un velillo sobre el rostro y una perla en la oreja. Van a cruzarse con un transeúnte, cortado por el borde del cuadro, del que solo se ven la espalda y el paraguas. En el centro, una gran farola verde divide el lienzo en dos. A la izquierda, al otro lado de la calzada, transeúntes aislados cruzan, un coche de caballos espera, y un edificio de ángulo agudo, como la proa de un barco, separa dos calles que huyen hacia el fondo."""
+evocation = """
+Caillebotte pinta el París transformado por el barón Haussmann bajo el Segundo Imperio: calles anchas, edificios de piedra sillar alineados, farolas, aceras. Es la ciudad de los burgueses que pasean, pero también la del anonimato: cada cual se resguarda bajo su paraguas, nadie se mira, la pareja parece absorta en sus pensamientos. Se ha visto en ello una imagen de la soledad moderna en medio de la multitud, y un retrato del medio social al que pertenecía el pintor. La lluvia, que lo unifica todo en una misma luz gris, transforma la calle en un espacio casi abstracto, donde las líneas rectas de las fachadas responden a las curvas de los paraguas."""
+histoire = """
+La escena se sitúa en la encrucijada formada por las calles de Turín, de Moscú y de San Petersburgo, cerca de la estación de Saint-Lazare, en el barrio de Europa, entonces recientísimo. Caillebotte prepara el lienzo mediante numerosos dibujos y un boceto pintado. Lo presenta en 1877 en la tercera exposición impresionista, que él financió y organizó en gran parte, junto a obras de Monet, Renoir, Pissarro y Degas. La crítica advierte sobre todo sus grandes dimensiones y su sorprendente perspectiva. Tras pasar por colecciones particulares, el cuadro es adquirido en 1964 por el Art Institute of Chicago, del que se ha convertido en una de las obras más célebres."""
+facture = """
+El formato monumental, más de dos metros por casi tres, hace entrar al espectador en la calle, a la altura de transeúntes a tamaño natural. La perspectiva está muy acentuada, y el encuadre, con sus figuras cortadas por el borde, evoca la fotografía. La farola y su línea vertical dividen el lienzo en dos partes, una abierta y profunda, la otra cerrada por las figuras cercanas. La factura es lisa y precisa en primer plano, más difusa en la lejanía, como en el aire húmedo de un día de lluvia. Dominan los grises, los azules y los beiges, realzados por el verde de la farola."""
+details = [
+  "La perla en la oreja de la mujer, bajo su velillo.",
+  "La farola verde, en el centro, que parte el cuadro en dos.",
+  "La firma y la fecha, abajo a la izquierda, sobre los adoquines.",
+  "La rueda roja del coche de caballos, a la izquierda.",
+  "Los adoquines, más grandes en primer plano, que se achican hacia el fondo.",
+]
+themes = ["ciudad", "lluvia", "París", "soledad", "perspectiva"]
+anecdote = """
+La encrucijada sigue existiendo: es hoy la plaza de Dublín, en el distrito 8 de París. El edificio en forma de proa sigue en pie, y en él se puede encontrar casi exactamente el punto de vista del pintor."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Los tejados rojos, rincón de aldea, efecto de invierno"
+artiste = "Camille Pissarro"
+annee = "1877"
+image = "toits-rouges.jpg"
+technique = "Óleo sobre lienzo, 54,5 × 65,6 cm"
+collection = "Museo de Orsay, París"
+note = "Un caserío de Pontoise visto a través de una cortina de árboles desnudos: el paisaje tejido con pequeños toques de Pissarro, el decano y pilar del grupo impresionista."
+description = """
+Al pie de una colina, un grupo de casas campesinas de muros claros y tejados de tejas rojas se apiña en medio de un huerto. Es invierno: los árboles frutales, sin hojas, levantan ante las casas una red de troncos delgados y ramas finas, a través de la cual se adivinan los hastiales, las chimeneas, una ventana. En primer plano, hierba verde y un camino de tierra parda. Por encima de los tejados, la pendiente de la colina, cubierta de campos rojizos y de setos, sube casi hasta lo alto del cuadro y deja solo un estrecho retazo de cielo gris azulado. Todo vibra en una luz fría y clara."""
+evocation = """
+Pissarro pinta el campo más corriente, el de los alrededores de París, sin monumento ni acontecimiento: un rincón de aldea, árboles, una estación. Lo que le interesa es la manera en que la luz de invierno hace cantar las tejas rojas contra los verdes y los grises. Su mirada, profundamente apegada a la vida rural, no busca ni lo pintoresco ni la anécdota. La red de árboles situada entre nosotros y las casas crea una impresión de intimidad, como si descubriéramos el caserío caminando por el huerto. Se ve a menudo en él uno de los mayores logros del período de Pontoise, cuando Pissarro trabaja junto a Cézanne."""
+histoire = """
+Establecido en Pontoise de 1872 a 1882, Pissarro pinta incansablemente esta villa del Vexin y sus alrededores. Este lienzo representa la côte des Bœufs, en el caserío de l'Hermitage, donde vive. El cuadro pertenece después a Gustave Caillebotte, que compra muchas obras a sus amigos para apoyarlos. A su muerte, en 1894, Caillebotte lega su colección al Estado: tras largas negociaciones y una viva polémica, solo una parte es aceptada y presentada en 1897 en el Museo del Luxemburgo. Los tejados rojos forman parte de ella. El lienzo se incorpora después al Louvre, y al Museo de Orsay en 1986."""
+facture = """
+Pissarro construye el lienzo mediante una multitud de pequeños toques espesos, puestos en todos los sentidos, que dan a la superficie una textura apretada, casi tejida. Superpone dos planos: la red lineal de los árboles en primer plano y, detrás, los volúmenes simples de las casas, hastiales y tejados tratados como bloques de color. Esta atención a la estructura recuerda sus intercambios con Cézanne en la misma época. Los complementarios, rojo de las tejas y verde de la hierba, se exaltan mutuamente, mientras que el horizonte situado muy alto reduce el cielo a una estrecha franja."""
+details = [
+  "Las chimeneas blancas que asoman entre las ramas.",
+  "La estrecha franja de cielo, en lo más alto.",
+  "Los troncos finos y claros de los árboles frutales, como una reja ante las casas.",
+  "La firma y la fecha, abajo a la derecha.",
+]
+themes = ["paisaje", "invierno", "aldea", "campo", "luz"]
+anecdote = """
+Pissarro es el único pintor que participó en las ocho exposiciones impresionistas, de 1874 a 1886. Cézanne, que trabajó a su lado en Pontoise, se presentará más tarde como «discípulo de Pissarro»."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[artistes]]
+nom = "Gustave Courbet"
+vie = "Ornans (Doubs), 10 de junio de 1819 – La Tour-de-Peilz (Suiza), 31 de diciembre de 1877"
+biographie = """
+Hijo de un rico terrateniente de Ornans, en el Franco Condado, Gustave Courbet llega a París en 1839, oficialmente para estudiar derecho. Se forma sobre todo por sí solo, copiando en el Louvre a los maestros españoles, flamencos y holandeses, y pinta numerosos autorretratos románticos. Admitido en el Salón desde 1844, se impone tras la revolución de 1848 con La sobremesa en Ornans, Los picapedreros y Un entierro en Ornans, que causan escándalo. Amigo de Baudelaire, de Champfleury y del pensador socialista Proudhon, reivindica el nombre de «realista». En 1855, rechazado en parte en la Exposición Universal, abre su propio pabellón. Paisajes del Jura, escenas de caza, desnudos y marinas hacen después su fortuna. Republicano, rechaza la Legión de Honor en 1870 y participa en la Comuna de París en 1871. Considerado responsable de la destrucción de la columna Vendôme, es encarcelado y después condenado a pagar su reconstrucción. Arruinado, se exilia en Suiza en 1873 y muere en La Tour-de-Peilz, a orillas del Lemán."""
+style = """
+Courbet quiere pintar lo que ve y nada más: ni ángeles, ni dioses, ni historia antigua. Su pintura es sólida y terrena, construida sobre fondos oscuros, con una pasta espesa que a menudo extiende con espátula, sobre todo en sus paisajes de rocas y olas. Al dar a la vida ordinaria las dimensiones de la gran pintura, abrió el camino a Manet y a los impresionistas, e hizo del realismo un combate artístico y político."""
+
+[[artistes]]
+nom = "Jean-François Millet"
+vie = "Gruchy, Gréville-Hague (Mancha), 4 de octubre de 1814 – Barbizon, 20 de enero de 1875"
+biographie = """
+Nacido en una familia de campesinos acomodados del Cotentin, Jean-François Millet trabaja en el campo antes de aprender pintura en Cherburgo. Una beca de la ciudad le permite partir en 1837 a París, donde entra en el taller de Paul Delaroche. Vive al principio con dificultad de retratos y de graciosas escenas pastorales. Viudo en 1844, comparte después su vida con Catherine Lemaire, que le dará nueve hijos. En 1849, se instala en Barbizon, en el linde del bosque de Fontainebleau, junto a su amigo el paisajista Théodore Rousseau. Consagra allí desde entonces su obra a los campesinos: El sembrador, Las espigadoras, El Ángelus. Pobre durante mucho tiempo, criticado por quienes ven en él a un pintor socialista, es por fin reconocido en la Exposición Universal de 1867 y recibe la Legión de Honor al año siguiente. Muere en Barbizon en 1875. Su gloria póstuma es inmensa, y Van Gogh, que lo veneraba, copiará buen número de sus composiciones."""
+style = """
+Millet simplifica las formas para dar a los campesinos la grandeza de estatuas: contornos firmes, gestos lentos, rostros a menudo en la sombra. Sus colores sordos, ocres, pardos y grises dorados, y sus luces de crepúsculo crean una atmósfera grave, casi religiosa. Excelente dibujante, pastelista y grabador, hizo del trabajo del campo un tema noble, y su influencia marcó a Van Gogh, Pissarro y Seurat."""
+
+[[artistes]]
+nom = "Rosa Bonheur"
+vie = "Burdeos, 16 de marzo de 1822 – Thomery (Sena y Marne), 25 de mayo de 1899"
+biographie = """
+Hija del pintor Raymond Bonheur, adepto de las ideas saint-simonianas que propugnan la igualdad de los sexos, Rosa Bonheur crece en París, donde su padre le enseña el dibujo. Copia a los maestros en el Louvre y estudia incansablemente a los animales, en las granjas, los mercados de caballos y los mataderos. Expone en el Salón desde 1841 y obtiene una medalla de primera clase en 1848. Labranza en el Nivernais, en 1849, y después La feria de caballos, hoy en el Metropolitan Museum de Nueva York, hacen de ella una de las artistas más célebres de su tiempo, en Francia, en Gran Bretaña y en los Estados Unidos. En 1860, se instala en el castillo de By, en Thomery, cerca del bosque de Fontainebleau, con su compañera Nathalie Micas y toda una casa de fieras. En 1865, es la primera mujer artista condecorada con la Legión de Honor. Recibe a Buffalo Bill en 1889 y hace su retrato. Al final de su vida, la pintora estadounidense Anna Klumpke se convierte en su compañera y su biógrafa."""
+style = """
+Rosa Bonheur es la gran pintora animalista del siglo XIX. Su arte descansa en una observación científica de la anatomía y del comportamiento de los animales, expresada mediante un dibujo preciso, una pincelada cuidada y un sentido del movimiento de las masas. Sus composiciones en friso, sus grandes formatos y sus luces claras dan a los caballos y a los bueyes la nobleza que otros reservaban a los héroes. Sigue siendo también una figura pionera de la independencia de las mujeres artistas."""
+
+[[artistes]]
+nom = "Édouard Manet"
+vie = "París, 23 de enero de 1832 – París, 30 de abril de 1883"
+biographie = """
+Hijo de un alto magistrado parisino, Édouard Manet suspende el examen de ingreso en la Escuela Naval y se embarca en 1848 como alumno piloto rumbo a Río de Janeiro. A su regreso, su padre acepta que se haga pintor: pasa seis años en el taller de Thomas Couture, copia a los maestros en el Louvre y viaja a Holanda y a Italia. Admira a Velázquez y a Goya, a quien descubre en España en 1865. Notado en el Salón de 1861, causa escándalo con El almuerzo sobre la hierba en 1863, y después con Olympia en 1865. Defendido por Baudelaire y por Émile Zola, se convierte en la figura de referencia de los jóvenes pintores que frecuentan el café Guerbois, Monet, Renoir, Degas, Bazille. Sin embargo, se niega a exponer con los impresionistas y sigue buscando el reconocimiento del Salón. Se casa en 1863 con Suzanne Leenhoff. En la década de 1870, aclara su paleta y pinta al aire libre con Monet en Argenteuil. Aquejado de una grave enfermedad, recibe la Legión de Honor en 1881 y muere a los cincuenta y un años."""
+style = """
+Manet pinta su época con los medios de los maestros antiguos: grandes formatos, composiciones tomadas de Tiziano, Rafael o Velázquez, pero temas modernos y miradas directas. Simplifica el modelado, pone colores francos en amplias superficies planas y hace del negro un verdadero color. Esta pintura plana y luminosa, que asume su pincelada, liberó a sus menores: se le tiene a menudo por el primer pintor moderno."""
+
+[[artistes]]
+nom = "Edgar Degas"
+vie = "París, 19 de julio de 1834 – París, 27 de septiembre de 1917"
+biographie = """
+Hijo de un banquero parisino, Edgar Degas renuncia al derecho por la pintura, ingresa brevemente en la Escuela de Bellas Artes en 1855 y venera a Ingres. Pasa tres años en Italia, donde copia a los maestros del Renacimiento y pinta La familia Bellelli, retrato de su tía y de su familia. De regreso en París, abandona poco a poco la pintura de historia por la vida moderna: hipódromos, cafés, lavanderas, modistas y sobre todo bailarinas de la Ópera. En 1872-1873, reside en Nueva Orleans, cuna de la familia de su madre. Participa en siete de las ocho exposiciones impresionistas, si bien rechaza la etiqueta y prefiere llamarse realista. Practica el pastel, el monotipo, la fotografía y la escultura: su Pequeña bailarina de catorce años, de cera vestida con telas de verdad, causa sensación en 1881. Su vista declina a partir de la década de 1870. Misántropo, enemistado con varios amigos a raíz del caso Dreyfus, vive sus últimos años casi ciego y muere en París en 1917."""
+style = """
+Degas es ante todo un dibujante. Compone sus escenas como instantáneas: encuadres descentrados, figuras cortadas, vistas picadas, influidos por las estampas japonesas y la fotografía. Observa el cuerpo en el trabajo, bailarinas, planchadoras, jinetes, con una precisión casi científica. Pintor de taller más que de aire libre, inventa sin cesar técnicas, en particular en el pastel, que lleva hasta colores deslumbrantes."""
+
+[[artistes]]
+nom = "Gustave Caillebotte"
+vie = "París, 19 de agosto de 1848 – Gennevilliers (Altos del Sena), 21 de febrero de 1894"
+biographie = """
+Hijo de un rico industrial parisino, Gustave Caillebotte obtiene una licenciatura en derecho en 1868 y después sirve en la guardia nacional móvil durante la guerra de 1870. Estudia luego pintura en el taller de Léon Bonnat e ingresa en la Escuela de Bellas Artes en 1873. La muerte de su padre le deja una gran fortuna. Rechazado en el Salón en 1875, se une a los impresionistas, expone con ellos desde 1876 y se convierte en su principal organizador y mecenas: financia exposiciones, compra lienzos de Monet, Renoir, Pissarro, Degas, Sisley y Cézanne, paga a veces el alquiler de sus amigos. Sus grandes lienzos, El puente de Europa y Calle de París, tiempo lluvioso, muestran el París haussmanniano. Pinta también el campo de la propiedad familiar de Yerres. Apasionado de la navegación, dibuja y construye veleros en Petit-Gennevilliers, donde se instala, cultiva un jardín y reúne con su hermano Martial una célebre colección de sellos. Muere a los cuarenta y cinco años, legando su colección impresionista al Estado."""
+style = """
+Caillebotte une la precisión del dibujo académico y los temas de los impresionistas. Sus perspectivas picadas o fugadas, sus encuadres audaces y sus figuras cortadas recuerdan la fotografía. Pinta la ciudad moderna, sus calles, sus puentes, sus balcones, y el trabajo de los obreros, con una factura lisa y tonos gris azulado. Eclipsado durante mucho tiempo por su papel de mecenas, es hoy reconocido como un gran pintor del París moderno."""
+
+[[artistes]]
+nom = "Camille Pissarro"
+vie = "Charlotte-Amalie, Saint Thomas (Antillas danesas), 10 de julio de 1830 – París, 13 de noviembre de 1903"
+biographie = """
+Nacido en las Antillas en una familia judía de comerciantes, Camille Pissarro es enviado a un internado cerca de París y después regresa a trabajar en el comercio paterno. En 1852, parte a dibujar a Venezuela con el pintor danés Fritz Melbye, antes de establecerse en París en 1855. Allí recibe los consejos de Corot y conoce en la Academia Suiza a Monet y a Cézanne. Durante la guerra de 1870, se refugia en Londres; su casa de Louveciennes es saqueada y gran parte de sus lienzos destruidos. De 1872 a 1882, vive en Pontoise, donde trabaja con Cézanne y Gauguin, y después se instala en Éragny, en el Oise. Hacia 1885, adopta durante unos años la técnica puntillista de Seurat. Padre de ocho hijos, durante mucho tiempo en apuros económicos, próximo a las ideas anarquistas, sufre al final de su vida una enfermedad de los ojos que le obliga a pintar tras una ventana: de ello extrae sus grandes series de bulevares parisinos y de puertos. Muere en París en 1903."""
+style = """
+Pissarro es el pintor del campo habitado: huertos, caminos, aldeas, mercados, campesinos trabajando. Su pincelada, hecha de pequeñas hachuras apretadas, teje superficies vibrantes, y su sólida construcción de las formas alimentó a Cézanne. Abierto a todas las búsquedas, pasó por el neoimpresionismo antes de renunciar a él. Paciente y generoso, fue el maestro y el apoyo de varias generaciones de pintores."""

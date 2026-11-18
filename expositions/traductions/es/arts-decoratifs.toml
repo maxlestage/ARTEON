@@ -1,0 +1,462 @@
+[exposition]
+ordre = 165
+nom_court = "Artes decorativas"
+mouvement = "Art Nouveau y Art Déco, las artes decorativas"
+cadre = "vitrine"
+couleur = "#566b34"
+titre = "Del Art Nouveau al Art Déco, el arte en la casa"
+artiste = "Tiffany, Gallé, Daum, Guimard, Mackintosh, Ruhlmann, Lalique…"
+dates = "1897–1926"
+accroche = "Exposición virtual · Museo de Artes Decorativas, París"
+introduction = """
+Hacia 1890, unos artistas se niegan a copiar los estilos del pasado y quieren llevar el arte a todas partes: a una lámpara, una silla, un jarrón o un cartel. El Art Nouveau extrae sus líneas de las plantas y los insectos, de Nancy a Glasgow y de París a Nueva York; en los años veinte, el Art Déco le responde con la geometría, las maderas preciosas y el vidrio moldeado. La visita reúne diez objetos, de 1897 a 1926, presentados en vitrina. El edificio se inspira en el Museo de Artes Decorativas de París, instalado en el pabellón de Marsan, en el Louvre: una gran nave de catorce metros de altura, desde la que se accede a las galerías."""
+vitrine = "magnolias-et-iris.jpg"
+
+[musee]
+nom = "Museo de Artes Decorativas"
+ville = "París, Francia"
+construction = "Inaugurado en 1905 en el pabellón de Marsan del Louvre"
+presentation = """
+En 1864, industriales, artistas y coleccionistas fundan en París la Unión Central de Bellas Artes Aplicadas a la Industria: quieren que los objetos fabricados en Francia sigan siendo bellos en la era de la máquina. Convertida en 1882 en la Unión Central de Artes Decorativas, la asociación reúne colecciones y obtiene del Estado el pabellón de Marsan, en el extremo oeste del ala del Louvre que bordea la rue de Rivoli. Este pabellón, incendiado en 1871 junto con el palacio de las Tullerías durante la Comuna, había sido reconstruido poco después. El museo abre allí en 1905. En el corazón del edificio, una vasta nave cubierta por una montera de cristal da acceso a galerías distribuidas en varios niveles. Allí se sigue la historia de los objetos desde la Edad Media hasta nuestros días: mobiliario, cerámica, vidrio, orfebrería, papeles pintados, juguetes, carteles. Las salas Art Nouveau y Art Déco son célebres, con las piezas del apartamento de la modista Jeanne Lanvin, diseñadas por Armand-Albert Rateau. Tras diez años de renovación, el museo reabrió en 2006."""
+ici = """
+El edificio de ARTEON retoma la idea de la nave del museo parisino. Se entra por el sur en «La nave», de veinte metros de largo y catorce de alto, con muros del color de la piedra, donde un cartel de Mucha y un gran jarrón de Guimard reciben al visitante. Al oeste se abre la galería «Nancy, el vidrio y la naturaleza», de un verde pálido; al este, «Tiffany, la luz de Nueva York», color de miel. Al norte, la galería «París y Glasgow, la línea» enfrenta dos asientos y conduce después a la última sala, «1925, el Art Déco»."""
+
+[[salles]]
+nom = "La nave"
+theme = "La entrada, tan alta como la nave del museo parisino: un cartel de Mucha y un jarrón monumental de Guimard."
+murs = "#ebe3d4"
+x = 0
+z = 0
+largeur = 14
+profondeur = 20
+hauteur = 14
+portes = ["sud", "ouest", "est", "nord"]
+
+[[salles]]
+nom = "Nancy, el vidrio y la naturaleza"
+theme = "Émile Gallé y los hermanos Daum: en Nancy, el vidrio se vuelve flor, fruto e insecto."
+murs = "#dfe2cc"
+x = -13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "Tiffany, la luz de Nueva York"
+theme = "Una vidriera de paisaje y una lámpara de glicinia: el vidrio de colores de los talleres de Louis Comfort Tiffany."
+murs = "#eadcc0"
+x = 13
+z = 0
+largeur = 12
+profondeur = 12
+hauteur = 8
+
+[[salles]]
+nom = "París y Glasgow, la línea"
+theme = "Dos asientos frente a frente: la curva vegetal de Guimard y el rigor de Mackintosh."
+murs = "#e6dccf"
+x = 0
+z = -16
+largeur = 14
+profondeur = 12
+hauteur = 7
+portes = ["nord"]
+
+[[salles]]
+nom = "1925, el Art Déco"
+theme = "El lujo de los años veinte: una rinconera de Ruhlmann y un jarrón de Lalique."
+murs = "#e8d9c3"
+x = 0
+z = -28
+largeur = 14
+profondeur = 12
+hauteur = 7
+
+[[oeuvres]]
+titre = "Job"
+artiste = "Alphonse Mucha"
+annee = "1898"
+image = "affiche-job.jpg"
+cadre = "estampe"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Alphonse_Mucha_-_Job_-_Google_Art_Project.jpg"
+technique = "Litografía en color, 141 × 93,8 cm"
+collection = "National Gallery of Australia, Canberra"
+note = "Un cartel para el papel de fumar Job: la cabellera de la fumadora invade toda la imagen."
+description = """
+Una joven está sentada de frente, envuelta en un largo vestido rosa que le deja los hombros desnudos. Con una mano levantada sostiene un cigarrillo cuyo humo se eleva en una cinta azulada; con la otra, apoyada en la rodilla, un pequeño librillo de papel de fumar marcado con la palabra JOB. Su cabello negro, salpicado de flores rojas, se despliega a ambos lados del cuerpo en mechones enroscados que descienden hasta el borde inferior del cartel. Tras ella, un gran círculo verde le hace las veces de aureola. En lo alto, las tres letras JOB, enormes y marrones, se recortan sobre un fondo amarillo sembrado de un monograma repetido; el mismo monograma sirve de broche a su vestido. Bajo la imagen, una línea de texto nombra al impresor parisino, F. Champenois."""
+evocation = """
+Mucha no muestra el producto: vende un sueño. La fumadora, con los ojos entornados, parece absorta en un placer apacible, y el humo de su cigarrillo se une a las volutas de su cabello. Esta mujer ideal, a la vez sensual y distante, ocupa todo el espacio, mientras que el nombre de la marca, repetido por doquier, se graba en la memoria del transeúnte. El círculo tras su cabeza recuerda las aureolas de los iconos bizantinos, que Mucha admiraba: en ello se ha visto una manera de sacralizar la publicidad. El cartel habla también de una época en que una mujer que fuma sigue siendo una imagen audaz, que atrae tanto como provoca."""
+histoire = """
+Job es una marca de papel de fumar fundada en Perpiñán por la familia Bardou: su nombre procede de las iniciales de Jean Bardou, J y B, separadas por un rombo que el público leyó como una O. En la década de 1890, la firma encarga carteles a los artistas de moda. Mucha, que se había hecho famoso de golpe con el cartel de Gismonda para Sarah Bernhardt, pegado por todo París a principios de 1895, le dibuja un primero en 1896 y después este, más grande, en 1898. Está impreso en litografía por Champenois, el impresor al que Mucha está vinculado por contrato. Los aficionados coleccionan entonces los carteles con pasión: se habla de «afichomanía». Este ejemplar fue adquirido en 1974 por la National Gallery of Australia, en Canberra."""
+facture = """
+El cartel es una litografía en color: cada tinta se dibuja en una piedra distinta, y la hoja pasa sucesivamente bajo cada una de ellas. Mucha perfila sus formas con un trazo marrón o negro de grosor variable, como el plomo de una vidriera, y las rellena después con colores suaves y planos: rosa, verde agua, amarillo. El modelado es ligero, salvo en el rostro y las manos. La composición se inscribe en un marco de letras y círculos, y los cabellos, convertidos en arabescos casi abstractos, organizan todo el espacio. Se reconoce en ella la lección de las estampas japonesas, entonces de moda en París."""
+details = [
+  "El humo del cigarrillo, que se desenrolla como una cinta de seda.",
+  "El pequeño librillo de papel marcado con la palabra JOB, en la mano apoyada sobre la rodilla.",
+  "El broche del vestido, que retoma el monograma de la marca.",
+  "El pie desnudo que asoma bajo el vestido, en la parte inferior de la imagen.",
+  "La firma de Mucha, abajo a la izquierda, y el nombre del impresor bajo la imagen.",
+]
+themes = ["cartel", "publicidad", "cabellera", "mujer", "litografía"]
+anecdote = """
+Las mujeres de cabellos en arabesco de Mucha tuvieron tanto éxito que, hacia 1900, en París se hablaba de «estilo Mucha» para designar todo el Art Nouveau. El artista, que se consideraba ante todo pintor, acabó irritándose por ello."""
+salle = 1
+mur = "nord"
+place = 1
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Jarrón des Binelles"
+artiste = "Hector Guimard"
+annee = "1903"
+image = "vase-des-binelles.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Vase_des_Binelles_MET_DP324639.jpg"
+technique = "Gres esmaltado, Manufacture nationale de Sèvres, 130,2 × 39,1 × 39,7 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un jarrón más alto que un niño, diseñado por el arquitecto de las entradas del metro de París y cocido en Sèvres."
+description = """
+El jarrón, de 1,30 metros de altura, tiene la silueta de una columna que se ensancha hacia arriba. Sus cuatro ángulos forman nervaduras que suben desde el pie como tallos, se separan cerca de la parte superior y se curvan en ganchos sobre la abertura, a la manera de cuernos o de brotes. Entre estas nervaduras, la pared está perforada, en lo alto, por largas aberturas en forma de almendra. Cerca del pie, una espiral en relieve se enrolla sobre sí misma. Toda la superficie está cubierta por un vidriado de un beige verdoso, salpicado de manchas azules que centellean como cristales. No se representa ninguna flor ni ningún animal: es la propia forma la que parece viva. En la fotografía, el jarrón está colocado sobre un pedestal gris."""
+evocation = """
+Guimard no copia la naturaleza: retiene su movimiento, la savia que asciende, el tallo que se retuerce. El jarrón parece haber brotado más que haber sido fabricado. Su nombre recuerda la rue des Binelles, en Sèvres, donde el arquitecto acababa de construir el Castel Henriette, una villa toda de curvas: el jarrón retoma algunas de sus formas, como un fragmento de casa convertido en objeto. En él se reconoce la ambición del Art Nouveau de unir todas las artes, de la fachada al tirador de la puerta, y la idea, muy querida por Guimard, de que un arquitecto debe diseñar cada detalle. El jarrón expresa también la voluntad de una manufactura estatal, Sèvres, de demostrar que sabe ser moderna."""
+histoire = """
+Fundada en el siglo XVIII, manufactura real y luego nacional, Sèvres busca hacia 1900 renovar sus modelos. Bajo el impulso de Alexandre Sandier, director de los trabajos artísticos desde 1897, recurre a creadores externos, entre ellos Hector Guimard, que diseña para ella varios jarrones. El Jarrón des Binelles se edita en gres en unos pocos ejemplares, cinco según el Cleveland Museum of Art, que conserva uno. Estas piezas espectaculares estaban destinadas a las exposiciones y a ricos aficionados. Tras la Primera Guerra Mundial, Guimard cae en el olvido; no se lo redescubre hasta los años sesenta. El ejemplar del Metropolitan Museum procede de la colección de cerámicas de Robert A. Ellison Jr. y fue adquirido por el museo en 2013."""
+facture = """
+El jarrón es de gres, una arcilla cocida a muy alta temperatura que se vuelve dura e impermeable. Su forma, con los ángulos vaciados y los ganchos, no tiene nada de pieza torneada: es un volumen de arquitecto, concebido como un pequeño monumento. El vidriado debe sus manchas centelleantes a los cristales que se forman en el esmalte durante la cocción y el enfriamiento: su dibujo nunca es del todo igual de un ejemplar a otro. Los ceramistas de 1900 buscaban estos efectos en parte imprevisibles, que daban a cada pieza un aspecto natural, próximo a la piedra o al liquen."""
+details = [
+  "Los ganchos de la parte superior, que se curvan sobre la abertura.",
+  "La espiral cerca del pie, como el báculo de un helecho.",
+  "Las aberturas en forma de almendra practicadas entre las nervaduras.",
+  "Las manchas azules del vidriado, que centellean como escarcha.",
+]
+themes = ["cerámica", "arquitectura", "línea", "Sèvres", "naturaleza"]
+anecdote = """
+En 1900, Guimard diseña para el metro de París unas entradas de fundición pintadas de verde, con lámparas en forma de brotes. Varias fueron regaladas a ciudades extranjeras: una de ellas adorna desde 1967 la estación Square-Victoria, en Montreal."""
+salle = 1
+mur = "nord"
+place = 4
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Jarrón de colquicos"
+artiste = "Émile Gallé"
+annee = "hacia 1900"
+image = "vase-crocus-automne.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%22Autumn_Crocus%22_Vase_MET_DT1081.jpg"
+technique = "Vidrio, altura 44,1 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un largo tallo de vidrio donde se abren flores de otoño: Gallé hace del jarrón la propia planta. Título del museo: «Autumn Crocus»."
+description = """
+El jarrón, de 44 centímetros de altura, es estrecho y esbelto como un tallo. Descansa sobre un pie ancho y bajo, oscuro y brillante, de bordes ondulados, que evoca un bulbo o una mata posada en el suelo. El cuerpo del jarrón, casi blanco en lo alto, se tiñe hacia abajo de rojo y violeta, y toda su superficie está recorrida por finas estrías malvas verticales, como las nervaduras de una hoja. Sobre este fondo suben largos tallos marrones; llevan flores en relieve: una gran corola anaranjada abierta hacia arriba y, a su alrededor, flores azules y violetas todavía entreabiertas. Unos estambres amarillos, hechos de finos hilos de vidrio, brotan de las corolas."""
+evocation = """
+El colquico, que los ingleses llaman «azafrán de otoño», florece en los prados a finales del verano y en otoño, sin hojas, cuando el resto de la naturaleza declina. A menudo se han leído las flores de fin de estación, abundantes en Gallé, como imágenes del paso del tiempo y de la melancolía. El jarrón no representa solo una flor: su propia forma, con el pie en bulbo y el cuerpo en tallo, se convierte en la planta. Esta fusión del objeto y del modelo natural está en el corazón del Art Nouveau de Nancy. Traduce la convicción de Gallé de que el artista debe observar la naturaleza como un sabio antes de interpretarla como un poeta."""
+histoire = """
+Hacia 1900, Gallé está en la cumbre de su gloria. En la Exposición Universal de París de ese año, sus vidrios y sus muebles valen a su casa de Nancy las más altas recompensas. Sus talleres emplean entonces a varios centenares de obreros y producen a la vez piezas únicas, largamente trabajadas, y series más asequibles. Este jarrón, de flores aplicadas una a una, pertenece a las piezas más cuidadas. Tras la muerte de Gallé, en 1904, la empresa prosigue su producción hasta 1936. El jarrón ingresó en el Metropolitan Museum of Art en 1984, donación de Lloyd y Barbara Macklowe, marchantes y coleccionistas neoyorquinos especialistas en Art Nouveau."""
+facture = """
+El vidrio está soplado en varias capas, teñidas en la masa con óxidos metálicos, lo que produce el degradado del blanco lechoso al rojo violáceo. Las finas estrías malvas quedan atrapadas en el espesor. Las flores parecen hechas de trozos de vidrio de color aplicados en caliente sobre la pared y modelados después: una técnica próxima a la marquetería de vidrio, que Gallé patenta en 1898. Los estambres son hilos de vidrio amarillo estirados. El pie, oscuro con reflejos cobrizos, contrasta con la claridad del cuello. El conjunto tiene tanto de escultura como de vidriera."""
+details = [
+  "La gran flor anaranjada de la parte superior, con sus estambres amarillos.",
+  "Las finas estrías malvas que recorren todo el vidrio.",
+  "El pie oscuro de reflejos cobrizos, que evoca un bulbo.",
+  "El degradado del blanco lechoso en lo alto al rojo violáceo abajo.",
+]
+themes = ["vidrio", "flores", "otoño", "Nancy", "botánica"]
+anecdote = """
+En la puerta de sus talleres de Nancy, Gallé había hecho esculpir su divisa: «Mi raíz está en lo profundo de los bosques». Esta puerta se conserva hoy en el Museo de la Escuela de Nancy."""
+salle = 2
+mur = "ouest"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jarrón en forma de calabaza"
+artiste = "Daum frères"
+annee = "hacia 1910"
+image = "vase-calebasse-daum.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2018.259"
+technique = "Vidrio soplado y moldeado, polvos vitrificados, decoración aplicada grabada a la rueda, altura 34,9 cm"
+collection = "Cleveland Museum of Art"
+note = "Una calabaza de vidrio, agujereada como un fruto roído, donde se posan dos insectos: el humor y la virtuosidad de los Daum."
+description = """
+El jarrón, de 35 centímetros de altura, imita una calabaza, ese fruto de la familia de las cucurbitáceas con dos abultamientos. Su rabillo, en lo alto, se alza en un lazo de vidrio rayado de verde y amarillo. En el costado, una amplia abertura irregular, de bordes rizados, recuerda un agujero roído en la corteza. La piel del fruto, amarilla y verde, está jaspeada de manchas naranjas, rojas y azules, y sembrada de pequeños granos en relieve. Un largo zarcillo de vidrio amarillo se enrosca alrededor de la panza. Cerca de la abertura, dos pequeños insectos de un rojo oscuro, dispuestos en relieve, parecen dirigirse hacia el agujero. Nada evoca un jarrón corriente: el objeto se hace pasar por un fruto hallado en el huerto."""
+evocation = """
+En Nancy, los artistas del Art Nouveau toman sus modelos tanto de la huerta como del jardín: calabazas, setas, umbelas. Esta calabaza roída habla del ciclo de la naturaleza, en el que el fruto madura, se estropea y alimenta a los insectos. Se puede ver en ella una meditación sobre el paso del tiempo, pero también un juego: el objeto engaña a la vista y divierte. El jarrón muestra que los hermanos Daum, que se adentraron en el vidrio artístico tras los pasos de Gallé, encontraron su propio camino, más orientado hacia los efectos de materia y de color. Testimonia, en fin, la admiración de los artistas de 1900 por Japón, cuyo arte ama la calabaza y los pequeños insectos."""
+histoire = """
+La vidriera Daum es, ante todo, un asunto de familia: en la década de 1870, el notario Jean Daum se hace cargo en Nancy de una vidriería que fabrica vasos de mesa y botellas. Sus hijos Auguste y Antonin la desarrollan tras su muerte, en 1885. Impresionados por el éxito de Gallé en la Exposición Universal de 1889, crean a principios de la década de 1890 un taller de vidrio artístico, pronto recompensado en la Exposición de 1900. Hacia 1910, la casa multiplica los experimentos con colores atrapados en el vidrio, como en este jarrón. Tras pasar por varias colecciones privadas y subastas públicas, fue adquirido por el Cleveland Museum of Art en 2018, en una subasta celebrada en Nueva York."""
+facture = """
+El vidriero sopla la paraison, la bola de vidrio fundido, en un molde que le da su forma de doble abultamiento. La rueda aún caliente sobre polvos de vidrio de colores, que se funden en la superficie y crean esos jaspeados naranjas, verdes y azules: es lo que se llama polvos vitrificados. El rabillo, el zarcillo y los insectos se añaden en caliente, y después algunos detalles se retocan a la rueda, una pequeña muela que graba el vidrio frío. Los bordes rizados de la abertura muestran que el vidrio se trabajó cuando aún estaba blando."""
+details = [
+  "El rabillo de vidrio rayado de verde y amarillo, que se curva en la parte superior.",
+  "Los dos insectos de rojo oscuro posados cerca del agujero.",
+  "El zarcillo amarillo que casi rodea la panza.",
+  "Los pequeños granos de colores en relieve, sembrados por toda la piel.",
+]
+themes = ["vidrio", "fruto", "insectos", "Nancy", "japonismo"]
+anecdote = """
+En 1901, Antonin Daum funda con Émile Gallé, Louis Majorelle y Victor Prouvé la Escuela de Nancy, una alianza de artistas e industriales lorenenses: pese a su rivalidad comercial, Gallé y los Daum defienden juntos el arte de su ciudad."""
+salle = 2
+mur = "ouest"
+place = 3
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Magnolias e iris"
+artiste = "Tiffany Studios"
+annee = "hacia 1908"
+image = "magnolias-et-iris.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Magnolias_and_Irises_MET_DT9363.jpg"
+technique = "Vidriera, vidrio Favrile y plomo, 153 × 106,7 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una vidriera sin santos ni ángeles: un paisaje al atardecer, visto a través de ramas de magnolio."
+description = """
+En primer plano, dos jóvenes magnolios de troncos finos enmarcan la escena; sus ramas cubiertas de grandes flores crema llenan toda la parte superior de la vidriera. Al pie de los árboles, matas de iris violetas, malvas y azul noche se alzan entre largas hojas verdes. Más allá se extiende un lago o un ancho río, que se adentra serpenteando entre colinas azules. El cielo, surcado de nubes, pasa del violeta al rosa y al amarillo pálido: es la hora del ocaso, o la del alba. No aparece ningún personaje. Los plomos que sujetan los trozos de vidrio dibujan los troncos, las ramas y el contorno de cada pétalo, y una orla oscura enmarca el conjunto."""
+evocation = """
+En el siglo XIX, las vidrieras representaban de ordinario santos y escenas de la Biblia. Tiffany Studios populariza en Estados Unidos otro género: la vidriera de paisaje, a menudo encargada en memoria de un difunto, para una iglesia o un mausoleo. La naturaleza sustituye en ella al relato religioso. Las flores que se abren, el agua que se aleja hacia el horizonte, la luz de la tarde hablan de paz y de tránsito más que de muerte. De buen grado se lee en el magnolio, que florece a comienzos de la primavera, y en el iris emblemas de renovación. En una casa, una vidriera así convertía además una ventana en jardín perpetuo."""
+histoire = """
+Louis Comfort Tiffany, primero pintor, se volvió hacia la vidriera a finales de la década de 1870. Treinta años más tarde, sus talleres neoyorquinos, convertidos en Tiffany Studios en 1902, entregan un gran número de ventanales para iglesias, edificios públicos y residencias privadas. Como la mayoría de estas obras, esta vidriera, realizada hacia 1908, es fruto de un trabajo colectivo: unos dibujantes componían una maqueta en color, y luego unos artesanos elegían el vidrio pieza a pieza entre inmensas reservas, lo cortaban y lo ensamblaban. Olvidadas tras la Primera Guerra Mundial, estas vidrieras volvieron a ser muy admiradas a partir de los años sesenta. Esta ingresó en el Metropolitan Museum of Art en 1981, donada anónimamente en memoria del Sr. y la Sra. A. B. Frank."""
+facture = """
+Tiffany evita en lo posible pintar sobre el vidrio, como hacían los vidrieros tradicionales para las sombras y los detalles. Casi todo se obtiene del propio vidrio: vidrio opalescente, lechoso y matizado, del que fue, junto con John La Farge, uno de los grandes promotores; vidrios jaspeados o plisados según los efectos buscados. Para dar profundidad a un color, a veces se superponen varias placas. El nombre de Favrile, elegido por Tiffany, designa sus vidrios coloreados en la masa. El plomo, de grosor variable, sirve también de dibujo, como un trazo de tinta."""
+details = [
+  "Los pétalos de los magnolios, crema y rosados, recortados uno a uno en el vidrio.",
+  "El río que serpentea entre las colinas hasta el horizonte.",
+  "Los iris del primer plano, del malva al azul casi negro.",
+  "Las bandas de nubes, hechas de vidrios de colores mezclados.",
+]
+themes = ["vidriera", "paisaje", "luz", "flores", "vidrio"]
+anecdote = """
+Tiffany eclipsó durante mucho tiempo a sus colaboradores. Hoy los historiadores atribuyen a Agnes Northrop, que ingresó en sus talleres en la década de 1880, buena parte de los diseños de sus vidrieras de flores y de paisajes."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Lámpara «Glicinia»"
+artiste = "Tiffany Studios"
+annee = "hacia 1902–1910"
+image = "lampe-glycine.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2018.261"
+technique = "Vidrio ensamblado con cobre, bronce, altura 43,2 cm, diámetro 26,7 cm"
+collection = "Cleveland Museum of Art"
+note = "Una lámpara diseñada por Clara Driscoll: el pie es un tronco, la pantalla una cascada de racimos de glicinia."
+description = """
+La lámpara, de 43 centímetros de altura, parece un pequeño árbol. Su pie de bronce, con pátina verde y marrón, figura un tronco nudoso que surge de una base redonda donde se extienden las raíces. En lo alto, unas ramas de bronce caladas forman la parte superior de la pantalla. De ellas caen cientos de pequeños trozos de vidrio azules, malvas, blancos y turquesa: son las flores de la glicinia, agrupadas en racimos. Entre ellas, unas pocas hojas verdes. El borde inferior de la pantalla no es recto: termina en puntas irregulares, allí donde acaban los racimos, como una glicinia que cuelga de un emparrado. Encendida, la lámpara hace brillar todas estas flores desde el interior."""
+evocation = """
+La glicinia, llegada de Asia, estaba de moda en los jardines hacia 1900, y sus racimos colgantes seducían a los aficionados al arte japonés. La lámpara hace de ella un objeto poético: por la noche, en un salón, recrea la sombra florida de un emparrado de primavera. El pie en forma de tronco y la pantalla en forma de follaje borran la frontera entre el objeto útil y la escultura, como quería el Art Nouveau. Cuenta también la llegada de la electricidad a los hogares: la luz ya no es una llama que hay que vigilar, sino una fuente que se puede vestir de colores."""
+histoire = """
+El modelo Glicinia fue diseñado a principios del siglo XX por Clara Wolcott Driscoll, que dirigía en Tiffany el departamento de las mujeres encargadas de elegir y cortar el vidrio. Según el Cleveland Museum of Art, valió a Tiffany Studios un gran premio en la Exposición Internacional de Turín, en 1902. La versión presentada aquí, más pequeña que el modelo grande, es conocida con el nombre de «Pony». Estas lámparas, fabricadas a mano en series, eran objetos de lujo. Pasadas de moda tras la Primera Guerra Mundial, volvieron a ser muy buscadas a partir de los años sesenta. Esta fue legada al museo de Cleveland por el coleccionista Charles Maurer, fallecido en 2016."""
+facture = """
+Cada trozo de vidrio se elige por su color y su transparencia, se corta según una plantilla y se rodea de una fina cinta de cobre. Las piezas se ensamblan sobre un molde en forma de cúpula y se sueldan entre sí con estaño: esta técnica permite trozos mucho más pequeños y formas mucho más libres que el plomo de las vidrieras. El pie, de bronce fundido y patinado, se fabrica en los talleres de Tiffany. Los tonos pasan del azul profundo al blanco, como en un racimo real iluminado por el sol."""
+details = [
+  "Las raíces del pie, que se extienden sobre la base como sobre el suelo.",
+  "Las ramas de bronce caladas, en la parte superior de la pantalla.",
+  "El borde inferior recortado en puntas, al ritmo de los racimos.",
+  "Las pocas hojas verdes ocultas entre las flores.",
+]
+themes = ["lámpara", "luz", "glicinia", "vidrio", "electricidad"]
+anecdote = """
+El papel de Clara Driscoll no se reveló hasta mediados de la década de 2000: unos historiadores encontraron sus cartas, que muestran que ella y su equipo de mujeres diseñaron buen número de lámparas atribuidas durante mucho tiempo al propio Louis Comfort Tiffany."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Silla"
+artiste = "Hector Guimard"
+annee = "hacia 1907"
+image = "chaise-guimard.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1985.96"
+technique = "Peral, cuero repujado, 108 × 45,4 × 50,4 cm"
+collection = "Cleveland Museum of Art"
+note = "Una silla donde la madera parece correr como la savia: la línea «en golpe de látigo» de Guimard."
+description = """
+La silla, de 1,08 metros de altura, está tallada en una madera rubia y cálida, el peral. Su respaldo, muy alto, está formado por dos montantes que se separan al subir y se reúnen en lo alto, como dos tallos en torno a una hoja. Entre ellos, un panel de cuero marrón en forma de escudo, con la punta hacia abajo, está fijado con una hilera de clavos dorados. Bajo el cuero, la madera se vacía en una larga hendidura puntiaguda. El asiento, tapizado de cuero, está bordeado también de clavos. En el cinturón, por delante, una pequeña escultura en relieve dibuja una voluta. Las patas, ligeramente arqueadas, se ensanchan abajo como pezuñas. Casi no se ve ningún ángulo recto ni ninguna juntura."""
+evocation = """
+Guimard quería muebles que no copiaran ningún estilo antiguo: ni Luis XV, ni Renacimiento, sino un lenguaje nacido de la observación de la naturaleza, no para representar sus flores, sino para recuperar sus fuerzas. Sus líneas se tensan, se estiran y se enroscan como tallos en crecimiento; se habla de línea «en golpe de látigo». La silla parece haber brotado de un solo impulso, pasando la madera del pie al respaldo sin ruptura. Expresa el ideal del arquitecto total: Guimard diseñaba para sus casas la fachada, las rejas, los papeles pintados, los tiradores y el mobiliario, para que todo hablara el mismo idioma."""
+histoire = """
+Hacia 1907, Guimard es un arquitecto reconocido: ha construido el Castel Béranger, edificio parisino premiado en el primer concurso de fachadas de la Ciudad de París, y ha diseñado las entradas del metro. Concibe también mobiliario para sus clientes y para sus propios interiores. Estos muebles, tallados a mano, costaban caros y se produjeron en pequeño número. Tras la Primera Guerra Mundial, el gusto cambia y el Art Nouveau se juzga pasado de moda, incluso ridículo; Guimard cae en el olvido. Sus muebles vuelven al mercado a partir de los años sesenta, cuando se redescubre el Art Nouveau. Esta silla fue comprada en 1985 por el Cleveland Museum of Art a un marchante neoyorquino."""
+facture = """
+El peral es una madera frutal densa, de grano fino, que se deja esculpir en todos los sentidos sin astillarse. Los montantes no están simplemente ensamblados: están esculpidos para que las uniones desaparezcan bajo transiciones fluidas. Las molduras se adelgazan y se ensanchan como músculos. El cuero, trabajado y claveteado, añade una nota cálida y suave. La influencia del arquitecto belga Victor Horta, cuyas obras Guimard descubre en Bruselas en 1895, se lee en esta manera de hacer de la propia estructura un ornamento."""
+details = [
+  "El panel de cuero en forma de escudo, bordeado de clavos dorados.",
+  "La hendidura puntiaguda vaciada bajo el respaldo, como la nervadura de una hoja.",
+  "La pequeña voluta esculpida en el cinturón del asiento.",
+  "Las patas que se ensanchan en pezuña a ras del suelo.",
+]
+themes = ["mobiliario", "madera", "línea", "golpe de látigo", "París"]
+anecdote = """
+Guimard hacía de su nombre una marca: hizo editar postales de sus edificios bajo el título «Le Style Guimard». Sus detractores, por su parte, se burlaban del Art Nouveau llamándolo «style nouille» (estilo fideo)."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Sillón de los salones de té de Argyle Street"
+artiste = "Charles Rennie Mackintosh"
+annee = "1897"
+image = "fauteuil-argyle-street.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/156437"
+technique = "Roble teñido, relleno de crin moderno, 96,4 × 57,2 × 45,8 cm"
+collection = "Art Institute of Chicago"
+note = "Un sillón de salón de té, oscuro y severo, que dos medias lunas recortadas parecen hacer volar."
+description = """
+El sillón, de 96 centímetros de altura, está hecho de tablas de roble teñido de un marrón casi negro. El respaldo recto se compone de una ancha tabla llena en lo alto, bajo la cual unos montantes verticales dejan pasar la luz. Los reposabrazos descansan sobre dos costados macizos, como dos paneles, cada uno perforado por un recorte en forma de media luna, o de pájaro con las alas desplegadas. La parte inferior de los costados se hunde en arco. El asiento está tapizado con una tela verde moderna. Abajo, un doble travesaño horizontal une la parte delantera con la trasera. El conjunto es macizo y geométrico, casi sin ornamento: solo los recortes y algunas curvas suavizan el rigor de las líneas."""
+evocation = """
+En Glasgow, los salones de té eran lugares de moda, donde la gente se encontraba sin alcohol, en la época en que el movimiento de templanza combatía las tabernas. Kate Cranston, que los dirigía, quería decorados modernos que distinguieran sus establecimientos. Los recortes del sillón, que el Art Institute of Chicago compara con un pájaro en vuelo, muestran cómo Mackintosh hace nacer la poesía de una estructura casi arquitectónica. Frente a la silla de Guimard, toda curvas, este sillón muestra el otro rostro del Art Nouveau: el de la línea recta y la geometría, que anuncia el diseño del siglo XX."""
+histoire = """
+En 1897, Catherine Cranston, llamada Kate, abre un nuevo salón de té en Argyle Street, en el centro de Glasgow. Confía la decoración al diseñador George Walton y el mobiliario al joven arquitecto Charles Rennie Mackintosh, que acaba de pintar para ella unos frisos murales en su salón de Buchanan Street. Este sillón pertenece a ese conjunto: se ve uno semejante en una fotografía antigua de la sala del almuerzo. Se ignora cuántos ejemplares se fabricaron. Este permaneció en la familia de una empleada del establecimiento antes de ser donado al Art Institute of Chicago, en 2000, por Neville y John Bryan."""
+facture = """
+El sillón está construido en roble, una madera robusta, ensamblado con tablas y montantes rectos, sin molduras ni esculturas. Mackintosh lo hace teñir de un marrón muy oscuro, lo que unifica las superficies y subraya la silueta, como una sombra recortada. Trabaja por planos: los costados macizos, la tabla del respaldo, los vacíos entre los montantes. Los recortes en media luna juegan con la luz que los atraviesa. Se ha comparado esta sencillez con el movimiento inglés Arts and Crafts, apegado a los materiales francos, y con el arte japonés, que Mackintosh admiraba."""
+details = [
+  "Los dos recortes en media luna, como pájaros en vuelo, en los costados.",
+  "Los montantes verticales del respaldo, entre los cuales pasa la luz.",
+  "El doble travesaño bajo que une las patas.",
+  "La parte inferior de los costados, que se hunde en arco.",
+]
+themes = ["mobiliario", "geometría", "Glasgow", "salón de té", "roble"]
+anecdote = """
+En 1900, Mackintosh y su esposa Margaret Macdonald son invitados a exponer en la Secesión vienesa. Su sala causa sensación y marca de forma duradera a Josef Hoffmann y Koloman Moser, que fundan tres años después los Wiener Werkstätte."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Rinconera con jarrón de flores"
+artiste = "Jacques-Émile Ruhlmann"
+annee = "hacia 1923"
+image = "encoignure-ruhlmann.jpg"
+credit = "Photo : Brooklyn Museum"
+licence = "Aucune restriction connue (Brooklyn Museum)"
+source = "https://commons.wikimedia.org/wiki/File:Emile-Jacques_Ruhlmann_(French,_1879-1933)._Corner_Cabinet,_ca._1923..jpg"
+technique = "Chapa de amaranto sobre caoba, incrustaciones de marfil, 126,7 × 80,6 × 59,7 cm"
+collection = "Brooklyn Museum, Nueva York"
+note = "Un mueble de esquina de maderas preciosas, donde un ramo de marfil estalla sobre la madera oscura: el lujo Art Déco."
+description = """
+Este mueble de esquina, de 1,27 metros de altura, está hecho para alojarse en el rincón de una habitación: su fachada, ligeramente abombada, está formada por una sola puerta. La madera, de un marrón rojizo profundo, está pulida como una laca. En el centro de la puerta, un gran medallón oval contiene una decoración incrustada de marfil y madera oscura: un jarrón estriado, muy alargado, del que brota un ramo de flores estilizadas de corolas redondas, tan denso que llena todo el óvalo. Un filete de diminutos puntos de marfil subraya los bordes de la puerta y de los montantes. El mueble descansa sobre tres patas finas y fusiformes, rematadas por zuecos de marfil."""
+evocation = """
+Ruhlmann retoma un mueble típico del siglo XVIII francés, la rinconera, y lo moderniza sin perder nada de su elegancia. El jarrón de flores, motivo clásico, se convierte en una imagen geométrica y rítmica: las estrías del jarrón, la simetría, el contraste del negro y el blanco anuncian el Art Déco. Este mueble se dirige a una clientela riquísima, que quiere un lujo discreto, hecho de maderas raras y acabados perfectos. Se lee también en él el reverso de ese lujo: el marfil y las maderas exóticas procedían en gran parte de las colonias, en una época en que poco importaba el precio humano y natural de su explotación."""
+histoire = """
+Ruhlmann repite varias veces este modelo de rinconera con jarrón florido, con variantes: un mueble vecino conservado en el Art Institute of Chicago se fecha hacia 1916. Este data de hacia 1923, dos años antes de la Exposición Internacional de Artes Decorativas e Industriales Modernas de 1925, que consagra a Ruhlmann y cuyo nombre daría más tarde el del estilo Art Déco. Sus muebles, de ejecución muy cuidada, se producen en pequeño número y se venden muy caros. Este fue adquirido por el Brooklyn Museum en 1971, gracias a varios donantes, en el momento en que se redescubría el gusto de los años veinte."""
+facture = """
+La chapa consiste en pegar finas láminas de madera preciosa sobre un armazón más corriente, aquí de caoba. Ruhlmann elige el amaranto, una madera tropical de tono rojo violáceo, y hace pulir su superficie hasta dejarla lisa como un espejo. El medallón es una marquetería: numerosas piezas pequeñas de marfil y madera oscura, cortadas y ensambladas como un rompecabezas. Los filetes de puntos de marfil, los zuecos de marfil y las patas fusiformes, que aligeran la silueta, son firmas de su estilo."""
+details = [
+  "El jarrón estriado del medallón, del que brota el ramo.",
+  "El filete de puntos de marfil que recorre la puerta.",
+  "Los zuecos de marfil en el extremo de las patas fusiformes.",
+  "La fachada ligeramente abombada, que atrapa la luz.",
+]
+themes = ["mobiliario", "Art Déco", "ebanistería", "flores", "lujo"]
+anecdote = """
+Ruhlmann no quería que su empresa le sobreviviera: había pedido que se cerrara tras su muerte. En efecto, sus talleres cesan su actividad poco después de su fallecimiento, en 1933."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.15
+
+[[oeuvres]]
+titre = "Jarrón «Torbellinos»"
+artiste = "René Lalique"
+annee = "1926"
+image = "vase-tourbillons.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%22Tourbillons%22_(Whirlwinds)_Vase_MET_DP108180.jpg"
+technique = "Vidrio, realces de esmalte negro, 20 × 20,3 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un jarrón de vidrio grueso, excavado con espirales subrayadas de negro: el movimiento detenido en la materia."
+description = """
+El jarrón, de 20 centímetros de altura, tiene la forma de un grueso cilindro de costados ligeramente abombados. Su pared de vidrio incoloro, muy gruesa, está esculpida con amplios motivos en relieve que se enroscan como olas, báculos o torbellinos de viento, de ahí su nombre. Estas volutas se superponen y parecen girar alrededor del jarrón. Sus aristas están subrayadas con esmalte negro, que dibuja grandes curvas oscuras sobre el vidrio transparente. Según el ángulo de visión, la luz atraviesa el vidrio, se quiebra en los relieves y hace aparecer reflejos plateados. La abertura, ancha y redonda, está cortada en seco. Ningún motivo es figurativo: la decoración es puro movimiento."""
+evocation = """
+Veinticinco años antes, Lalique diseñaba joyas pobladas de mujeres-libélula y de flores. Con Torbellinos pasa a un lenguaje casi abstracto: ya no se representa la naturaleza, sino solo su energía, la del viento o la del agua que gira. El jarrón sirve así de vínculo entre el Art Nouveau, del que conserva las curvas, y el Art Déco, del que adopta la fuerza geométrica y el contraste del negro y el blanco. Expresa también el espíritu de los años veinte, fascinados por la velocidad y el movimiento, y la voluntad de Lalique de producir en serie bellos objetos, accesibles a una clientela más amplia que la de sus joyas únicas."""
+histoire = """
+Después de 1900, Lalique, entonces el joyero más célebre de París, se vuelve hacia el vidrio. Diseña primero frascos de perfume para François Coty, luego abre su propia vidriería en Combs-la-Ville, cerca de París, en 1909, y a principios de los años veinte una gran fábrica en Wingen-sur-Moder, en Alsacia. El jarrón Torbellinos se crea en 1926, un año después de la Exposición de Artes Decorativas de 1925, donde Lalique había presentado su propio pabellón y una gran fuente de vidrio. El modelo conoce un gran éxito y forma parte de las creaciones más célebres de la casa. Este ejemplar ingresó en el Metropolitan Museum of Art en 2004."""
+facture = """
+Para producir en serie, Lalique moldea su vidrio: la materia fundida se sopla o se prensa en un molde de metal que le da de golpe su forma y su relieve. Los torbellinos, muy profundos, exigen una pared gruesa: el jarrón pesa casi cinco kilos. Tras el enfriamiento, el vidrio se pule, y el esmalte negro, aplicado en los huecos y en las aristas, se cuece para fijarlo. El contraste entre el vidrio claro, brillante como el cristal, y el negro mate da al objeto su efecto gráfico."""
+details = [
+  "Las aristas de las volutas, subrayadas con un trazo de esmalte negro.",
+  "Los reflejos plateados de la luz en el espesor del vidrio.",
+  "El ritmo de los torbellinos, que parecen girar alrededor del jarrón.",
+  "La abertura redonda, nítida, cortada a ras.",
+]
+themes = ["vidrio", "Art Déco", "movimiento", "abstracción", "serie"]
+anecdote = """
+Lalique decoró también trenes y transatlánticos: se le deben paneles de vidrio para coches del Orient-Express en 1929, y luego luminarias para el comedor del transatlántico Normandie, puesto en servicio en 1935."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[artistes]]
+nom = "Alphonse Mucha"
+vie = "Ivančice (Moravia), 24 de julio de 1860 – Praga, 14 de julio de 1939"
+biographie = """
+Nacido en Moravia, entonces provincia del Imperio austríaco, Alfons Mucha trabaja primero como pintor de decorados teatrales en Viena, y luego decora el castillo de un conde que le paga los estudios en la Academia de Bellas Artes de Múnich. Llegado a París en 1887, sigue los cursos de la Academia Julian y de la Academia Colarossi y vive de sus ilustraciones. A finales de 1894, casi por casualidad, dibuja el cartel de Gismonda para Sarah Bernhardt: pegado por todo París a principios de 1895, lo hace célebre. La actriz le firma un contrato de seis años y el impresor Champenois lo contrata. Carteles, paneles decorativos, calendarios, joyas y una tienda para el joyero Georges Fouquet: se convierte en uno de los rostros del Art Nouveau. Tras varias estancias en Estados Unidos, regresa a Bohemia en 1910 y dedica casi veinte años a la Epopeya eslava, una serie de veinte lienzos inmensos sobre la historia de los pueblos eslavos. En 1918 diseña los primeros sellos y billetes de la Checoslovaquia independiente. Detenido e interrogado por la Gestapo tras la invasión alemana de 1939, muere unos meses más tarde."""
+style = """
+Mucha creó una imagen inmediatamente reconocible: una joven de cabellos desplegados en arabescos, inscrita en un círculo o un arco, rodeada de flores y de motivos repetidos. Su trazo perfilado, sus colores suaves y sus composiciones muy ordenadas deben mucho a los iconos bizantinos, al arte popular de su Moravia natal y a las estampas japonesas. Hizo del cartel un arte de pleno derecho e inspiró la ilustración hasta el cómic y el grafismo psicodélico de los años sesenta."""
+
+[[artistes]]
+nom = "Hector Guimard"
+vie = "Lyon, 10 de marzo de 1867 – Nueva York, 20 de mayo de 1942"
+biographie = """
+Hector Guimard nace en Lyon y estudia en París, en la Escuela Nacional de Artes Decorativas y luego en la Escuela de Bellas Artes. Sus primeras construcciones siguen marcadas por la mezcla de estilos antiguos. El giro se produce en 1895, durante un viaje a Bruselas donde descubre el hôtel Tassel de Victor Horta: una arquitectura donde la estructura y el ornamento son una sola cosa. Retoma entonces por completo el proyecto del Castel Béranger, un edificio del distrito 16 en el que lo diseña todo, desde la fachada hasta los papeles pintados; terminado en 1898, es premiado en el primer concurso de fachadas de la Ciudad de París. En 1900, la Compañía del Ferrocarril Metropolitano le encarga las entradas de las estaciones: sus edículos y sus cercados de fundición verde se convierten en el símbolo del París de 1900. Construye después villas, hoteles particulares y edificios, entre ellos su propio hôtel de la avenue Mozart, tras su matrimonio en 1909 con la pintora estadounidense Adeline Oppenheim. Después de la guerra, su estilo pasa de moda. En 1938, inquieto por el auge del antisemitismo, pues su esposa es judía, parte hacia Nueva York, donde muere en 1942, casi olvidado."""
+style = """
+Guimard es el gran representante parisino del Art Nouveau. No copia las plantas: retiene su crecimiento, su tensión, la curva que se retuerce y se enrosca, y extrae de ello un lenguaje abstracto de líneas «en golpe de látigo». Arquitecto total, lo diseña todo, de las fachadas a los muebles, de la fundición industrial a los jarrones. Sus entradas de metro, ensambladas a partir de elementos estandarizados producidos en serie, muestran que quería también poner el arte al alcance de todos."""
+
+[[artistes]]
+nom = "Émile Gallé"
+vie = "Nancy, 4 de mayo de 1846 – Nancy, 23 de septiembre de 1904"
+biographie = """
+Hijo de un comerciante de loza y vidrio de Nancy, Émile Gallé recibe una formación muy amplia: estudia botánica, filosofía y dibujo, y luego aprende alemán y la técnica del vidrio en Weimar y en la vidriería de Meisenthal, en Lorena. Tras la guerra de 1870, se hace cargo de la empresa familiar, que transforma poco a poco en taller de arte. Sus vidrios, sus lozas y pronto sus muebles ornados de plantas le valen un triunfo en la Exposición Universal de 1889 y luego en la de 1900. Botánico reconocido, cultiva en su jardín numerosísimas especies, que se convierten en los modelos de su obra. Hombre comprometido, defiende públicamente al capitán Dreyfus, a riesgo de perder clientes. En 1901 funda la Escuela de Nancy, alianza de las industrias artísticas de la ciudad, de la que es el primer presidente. Aquejado de leucemia, muere en 1904, a los cincuenta y ocho años. Su viuda, Henriette, prosigue la empresa, que cerrará en 1936."""
+style = """
+Gallé hace del vidrio un medio de expresión poética. Multiplica las técnicas, capas de colores superpuestas, grabado al ácido y a la rueda, inclusiones, marquetería de vidrio, para obtener efectos de materia inéditos. Sus decoraciones de plantas e insectos, observados como un sabio, suelen ir acompañadas de versos de poetas inscritos en el vidrio: son sus «vidrios parlantes». Hizo de Nancy uno de los grandes focos del Art Nouveau."""
+
+[[artistes]]
+nom = "Daum frères"
+vie = "Nancy (Lorena), vidriería familiar; Auguste Daum (1853–1909) y Antonin Daum (1864–1930)"
+biographie = """
+Jean Daum, notario en Bitche, en el Mosela, abandona la región anexionada por Alemania tras 1871 y se instala en Nancy. En la década de 1870 toma el control de una vidriería en la que había invertido dinero, y que fabrica vasos de mesa, botellas y vajilla corriente. A su muerte, en 1885, sus hijos se hacen cargo de la empresa: Auguste, el mayor, formado en derecho, la dirige; Antonin, ingeniero, se ocupa de la creación. Tras la Exposición Universal de 1889, en la que triunfa Gallé, los dos hermanos se lanzan al vidrio artístico y abren un taller de decoración, donde trabaja en particular el dibujante Henri Bergé. Su éxito es rápido, y la casa es recompensada en la Exposición Universal de 1900. Antonin Daum participa en 1901 en la fundación de la Escuela de Nancy. Hacia 1906, los Daum relanzan la pasta de vidrio con Amalric Walter. Después de la Primera Guerra Mundial, la casa pasa al Art Déco, con jarrones gruesos, grabados profundamente al ácido, de formas geométricas. La empresa lleva todavía hoy el nombre de la familia."""
+style = """
+Los Daum comparten con Gallé el gusto por las plantas, los paisajes lorenenses y los insectos, pero su vidrio se distingue por la riqueza de los colores atrapados en la masa, los polvos vitrificados y los paisajes grabados al ácido que cambian con la luz. Más industrial que la de Gallé, su producción asocia piezas únicas y grandes series. Supo atravesar los estilos, del Art Nouveau al Art Déco."""
+
+[[artistes]]
+nom = "Tiffany Studios"
+vie = "Nueva York, 1902–1932; fundados por Louis Comfort Tiffany (Nueva York, 1848 – Nueva York, 1933)"
+biographie = """
+Louis Comfort Tiffany nace en Nueva York en 1848, hijo de Charles Lewis Tiffany, fundador de la célebre joyería Tiffany & Co. En lugar de hacerse cargo del negocio paterno, se hace pintor, alumno de George Inness y de Samuel Colman, y viaja por Europa y el norte de África. A finales de la década de 1870 se vuelve hacia las artes decorativas y el vidrio, que juzga capaz de rendir la luz mejor que la pintura. Su empresa de decoración acondiciona en 1882 varios salones de la Casa Blanca, para el presidente Chester Arthur. En 1894 da el nombre de Favrile a sus vidrios soplados. En París, el marchante Siegfried Bing, cuya galería L'Art nouveau abre en 1895, lo da a conocer en Europa. En 1902, sus talleres adoptan el nombre de Tiffany Studios. Centenares de artesanos trabajan allí, y las mujeres desempeñan un papel capital: Clara Driscoll diseña numerosas lámparas, Agnes Northrop numerosas vidrieras. Tiffany se hace construir en Long Island una vasta propiedad, Laurelton Hall. Su estilo pasa de moda tras la guerra; Tiffany Studios quiebra en 1932, y Tiffany muere al año siguiente."""
+style = """
+Tiffany quiere pintar con el propio vidrio, sin recubrirlo de pintura. Sus talleres perfeccionan vidrios opalescentes, jaspeados, plisados o irisados, de colores matizados en la masa, que dan vida a los paisajes, a las flores y a los cielos. Sus lámparas de vidrio ensamblado con cinta de cobre y sus jarrones Favrile irisados se han convertido en el símbolo del Art Nouveau estadounidense, muy imitado hasta hoy."""
+
+[[artistes]]
+nom = "Charles Rennie Mackintosh"
+vie = "Glasgow, 7 de junio de 1868 – Londres, 10 de diciembre de 1928"
+biographie = """
+Hijo de un agente de policía de Glasgow, Charles Rennie Mackintosh entra a los dieciséis años como aprendiz en casa de un arquitecto y sigue los cursos nocturnos de la Glasgow School of Art. Con su amigo Herbert MacNair y las hermanas Margaret y Frances Macdonald, forma el grupo que será apodado «los Cuatro», que inventa un estilo de líneas estiradas y figuras estilizadas. En 1896 gana el concurso para el nuevo edificio de la escuela de arte de Glasgow, construido en dos fases hasta 1909: es su obra maestra. Ese mismo año comienza su larga colaboración con Kate Cranston, para quien concibe la decoración y el mobiliario de varios salones de té, entre ellos los Willow Tea Rooms en 1903. Se casa con Margaret Macdonald en 1900 y expone con ella en la Secesión de Viena ese mismo año. Construye también Hill House, cerca de Glasgow, para el editor Walter Blackie. Pero los encargos escasean: en 1914 deja Glasgow, se instala en Londres y, de 1923 a 1927, en el sur de Francia, en Port-Vendres, donde pinta acuarelas. Enfermo, muere en Londres en 1928."""
+style = """
+Mackintosh combina el rigor de la línea recta y la dulzura de motivos florales muy estilizados, como la célebre «rosa de Glasgow». Sus muebles, a menudo muy altos, pintados de blanco o teñidos de negro, están concebidos como elementos de arquitectura, en interiores enteramente diseñados por él. Más admirado en Viena y en Alemania que en su país mientras vivió, hoy se le considera uno de los precursores del diseño moderno."""
+
+[[artistes]]
+nom = "Jacques-Émile Ruhlmann"
+vie = "París, 28 de agosto de 1879 – París, 15 de noviembre de 1933"
+biographie = """
+Hijo de un empresario de pintura de edificios de origen alsaciano, Jacques-Émile Ruhlmann se hace cargo en 1907, a la muerte de su padre, del negocio familiar, que vende también papeles pintados y espejos. Sin formación de ebanista, diseña sin embargo muebles, que hace ejecutar por artesanos, y los expone por primera vez en el Salón de Otoño de 1913. Después de la guerra, funda con Pierre Laurent una empresa que reúne pintura, decoración y ebanistería, e instala sus propios talleres. En la Exposición Internacional de Artes Decorativas e Industriales Modernas de 1925, su Hôtel du collectionneur, un pabellón cuya decoración y mobiliario concibe, causa sensación y lo consagra como el mayor ebanista de su tiempo. Sus clientes son grandes fortunas, banqueros, industriales o maharajás, y el Estado le encarga también muebles. Muere en 1933, a los cincuenta y cuatro años, y sus talleres cierran según su voluntad."""
+style = """
+Ruhlmann es el gran ebanista del Art Déco. Sus muebles retoman la elegancia y las proporciones del mobiliario francés del siglo XVIII, pero simplificadas: líneas puras, patas fusiformes, fachadas abombadas. La decoración se reduce a la belleza de las maderas raras, ébano de Macasar, amboina, amaranto, y a finos filetes de marfil. Su exigencia de perfección, hasta en las partes invisibles, ha hecho de sus piezas objetos entre los más buscados del siglo XX."""
+
+[[artistes]]
+nom = "René Lalique"
+vie = "Aÿ (Marne), 6 de abril de 1860 – París, mayo de 1945"
+biographie = """
+Nacido en la Champaña, René Lalique entra a los dieciséis años, tras la muerte de su padre, como aprendiz en casa del joyero parisino Louis Aucoc. Estudia después dos años en Inglaterra, y luego diseña joyas para grandes casas antes de abrir su propio taller en 1885. En la década de 1890 inventa una joya nueva, en la que materiales modestos, cuerno, esmalte, vidrio, se mezclan con el oro y las piedras. Sarah Bernhardt y el coleccionista Calouste Gulbenkian lo admiran, y la Exposición Universal de 1900 lo consagra. Pero pronto se vuelve hacia el vidrio. A partir de 1907 diseña frascos para el perfumista François Coty, luego abre una vidriería en Combs-la-Ville en 1909 y otra, más grande, en Wingen-sur-Moder, en Alsacia, a principios de los años veinte. Jarrones, estatuillas, luminarias, tapones de radiador para automóviles, paneles para trenes y transatlánticos: hace del vidrio moldeado un arte de lo cotidiano. En la Exposición de 1925 presenta su propio pabellón y una fuente monumental. Muere en París al final de la Segunda Guerra Mundial, en 1945."""
+style = """
+Joyero del Art Nouveau, Lalique se convierte en vidriero del Art Déco. Su vidrio moldeado, a menudo satinado u opalescente, a veces realzado con esmalte o pátina, juega con el contraste de lo mate y lo brillante. Mujeres, animales, plantas y motivos abstractos adquieren en él un relieve escultórico. Al producir en serie objetos de gran calidad, demostró que la industria podía estar al servicio de la belleza."""

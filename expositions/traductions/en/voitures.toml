@@ -1,0 +1,476 @@
+[exposition]
+ordre = 172
+nom_court = "Cars"
+mouvement = "The automobile, from its origins to the Roaring Twenties"
+cadre = "vitrine"
+couleur = "#4b5d6e"
+titre = "Cars: The Automobile from the Pioneers to the Roaring Twenties"
+artiste = "Cugnot, Benz, Panhard et Levassor, De Dion-Bouton, Rolls-Royce, Ford, Hispano-Suiza, Bugatti…"
+dates = "1770–1929"
+accroche = "Virtual exhibition · Cité de l'Automobile – Musée national, Schlumpf Collection, Mulhouse"
+introduction = """
+In a century and a half, the car passes from an engineer's dream to an everyday object. The visit brings together ten pieces, from Cugnot's steam fardier, built for the army of Louis XV, to Ettore Bugatti's Bugatti Royale, by way of Carl Benz's tricycle, the first Panhard et Levassor cars, the little De Dion-Bouton of 1900, the Rolls-Royce Silver Ghost, the Ford Model T and Dubonnet's wooden Hispano-Suiza. Two images complete the route: a print by Toulouse-Lautrec and the Michelin Bibendum poster. The building is inspired by the Cité de l'Automobile in Mulhouse, housed in a former spinning mill: a series of workshops leads to a great hall whose aisles are lined with lamp-posts, where the luxury cars of the Roaring Twenties shine."""
+vitrine = "bugatti-royale-napoleon.jpg"
+
+[musee]
+nom = "Cité de l'Automobile – Musée national, Schlumpf Collection"
+ville = "Mulhouse, France"
+construction = "Former nineteenth-century spinning mill; museum opened in 1982"
+presentation = """
+The Mulhouse museum was born of a secret passion. The brothers Hans and Fritz Schlumpf, textile manufacturers, owned wool spinning mills in Alsace. From the late 1950s, Fritz bought old cars without counting the cost, above all Bugattis, and had them restored in the buildings of one of their factories in Mulhouse, away from prying eyes. In 1976, the company collapsed and the brothers left for Switzerland; in early 1977, the workers occupying the factory discovered the immense collection. The State had it listed as a historic monument, then an association bought it and in 1982 opened the Musée national de l'automobile, which became the Cité de l'Automobile in 2006. More than four hundred cars are displayed there, including two Bugatti Royales, in an immense hall lit by hundreds of lamp-posts inspired by those of the Pont Alexandre-III in Paris."""
+ici = """
+ARTEON's building takes up the idea of the spinning mill turned into a museum. Visitors enter from the south into the Pioneers' Workshop, with pale brick walls, 7 metres high, then pass to the Belle Époque room, cream-coloured, and to the workshop of the car for everyone, grey like a factory shed. Next comes the great hall, 28 metres long and 10 high, with midnight-blue walls like the aisles of Mulhouse, where the luxury cars are lined up as under the lamp-posts of the Alsatian museum. The visit ends in a small salon the colour of old paper, devoted to the image of the automobile. The cars are shown at their real size, in large wall display cases."""
+
+[[salles]]
+nom = "The Pioneers' Workshop"
+theme = "The beginnings of the automobile, before 1900: Cugnot's steam fardier, Benz's tricycle and one of the first Panhard et Levassor cars."
+murs = "#d9cbb8"
+x = 0
+z = 0
+largeur = 18
+profondeur = 12
+hauteur = 7
+portes = ["sud", "est"]
+
+[[salles]]
+nom = "The Belle Époque"
+theme = "The automobile of the Belle Époque, between racing and grand touring: a De Dion-Bouton of 1900 and the Rolls-Royce Silver Ghost."
+murs = "#e6dccb"
+x = 18
+z = 0
+largeur = 18
+profondeur = 12
+hauteur = 7
+portes = ["est"]
+
+[[salles]]
+nom = "The Car for Everyone"
+theme = "The car mass-produced and sold at a low price: the Model T Ford, built in more than fifteen million examples."
+murs = "#d3d3cf"
+x = 34
+z = 0
+largeur = 14
+profondeur = 12
+hauteur = 6
+portes = ["est"]
+
+[[salles]]
+nom = "The Great Hall"
+theme = "The luxury of the Roaring Twenties, beneath the lamp-posts: André Dubonnet's wooden Hispano-Suiza and Ettore Bugatti's Bugatti Royale."
+murs = "#2f3b4a"
+x = 55
+z = 0
+largeur = 28
+profondeur = 20
+hauteur = 10
+portes = ["est"]
+
+[[salles]]
+nom = "The Poster Salon"
+theme = "The image of the automobile: a print by Toulouse-Lautrec and the first poster of the Michelin Bibendum."
+murs = "#ebe1cc"
+x = 75
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+
+[[oeuvres]]
+titre = "Steam Fardier"
+artiste = "Nicolas-Joseph Cugnot"
+annee = "1770"
+image = "fardier-cugnot.jpg"
+licence = "CC0"
+credit = "Photo : Joe deSousa"
+source = "https://commons.wikimedia.org/wiki/File:Joseph_Cugnot%27s_1770_Fardier_%C3%A0_Vapeur,_Mus%C3%A9e_des_arts_et_m%C3%A9tiers,_Paris_2015.jpg"
+technique = "Oak, wrought iron, copper and bronze boiler and cylinders; length approximately 7.25 m"
+collection = "Musée des Arts et Métiers, Paris"
+note = "The oldest surviving motor vehicle in the world: a heavy artillery wagon driven by steam, built for the army of Louis XV."
+description = """
+A long chassis of oak beams rests on three wooden wheels bound with iron: two large wheels at the rear, at left in the photograph, and a single wheel at the front, at right. Above this front wheel hangs an enormous copper boiler, round as a cooking pot, topped by two vertical cylinders and a curved pipe. Iron connecting rods and ratchets transmit the motion of the pistons to the front wheel. In the middle of the chassis, a small wooden seat for the driver faces a steering bar; beneath it hangs a wicker basket. The fardier is displayed on a platform, surrounded by a railing, in front of three tall arched windows of the museum's former church."""
+evocation = """
+The fardier is nothing like a pleasure carriage: it is a machine of war. After the Seven Years' War, the French army sought to move its heavy cannon faster, until then drawn by teams of horses. Cugnot conceived of replacing the horses with the power of steam, then used only in stationary machines, to pump water from mines. His wagon is the first vehicle to move under its own power on a road. Slow, heavy, hard to steer, it was never put into service, but it marks the beginning of a long history: that of the machine that moves by itself, later to be called the automobile."""
+histoire = """
+A military engineer from Lorraine, Nicolas-Joseph Cugnot presented a first scale model of his vehicle in 1769. Supported by the minister Choiseul and by General Gribeauval, inspector of artillery, he obtained permission to have a full-size fardier built at the Paris Arsenal, completed in 1770 and tried the following year. The machine advances at a few kilometres an hour and must stop often to raise steam again. The fall from favour of Choiseul, at the end of 1770, put an end to the project. The fardier remained stored at the Arsenal; it entered in 1800 the Conservatoire des arts et métiers, founded a few years earlier, where it is still on display."""
+facture = """
+The fardier combines the skills of the wheelwright and those of the boilermaker. The chassis, the spoked wheels and the seat are made like those of the artillery wagons of the period, in assembled oak reinforced with ironwork. The copper boiler, heated by a firebox placed beneath, sends steam into two bronze cylinders whose pistons work in turn. A system of ratchets converts their back-and-forth motion into rotation of the front wheel, which is both driving and steering. The whole weight of the boiler, carried overhanging in front of the wheel, made steering very hard."""
+details = [
+  "The copper boiler, round as a cooking pot, hung at the front.",
+  "The two vertical cylinders rising above the front wheel.",
+  "The iron ratchets that turn the driving wheel.",
+  "The driver's small seat, in the middle of the long chassis.",
+  "The wicker basket hanging beneath the chassis.",
+]
+themes = ["steam", "artillery", "invention", "enlightenment", "pioneers"]
+anecdote = """
+A legend has it that, during a trial, the fardier knocked down a wall, which would make it the first road accident. No document of the time confirms this, but the story has been told since the nineteenth century."""
+salle = 1
+mur = "nord"
+position = 0
+largeur = 8.4
+
+[[oeuvres]]
+titre = "Benz Patent-Motorwagen No. 1"
+artiste = "Carl Benz"
+annee = "1886"
+image = "benz-patent-motorwagen.jpg"
+credit = "Photo : Deutsches Museum, Munich"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:View_of_Left_Side_of_Benz_Patent_Motorwagen_in_Deutsches_Museum.jpg"
+technique = "Steel tubes, wood, leather, brass and copper; single-cylinder four-stroke engine of 954 cm³, under one horsepower; three wire-spoked wheels"
+collection = "Deutsches Museum, Munich"
+note = "The tricycle patented by Carl Benz in January 1886: the first car designed from the outset around a petrol engine."
+description = """
+The tricycle is seen in profile, against a white background. At the front, on the left, a small wheel with fine steel spokes is held by a fork, like that of a bicycle. A long vertical column carries the steering crank at its top. At the centre, a floor of black wooden slats leads to a two-seater bench of buttoned leather, with a rounded back. Behind the bench, between the two large spoked rear wheels, one sees the engine: a copper tank, a sphere of shining brass, tubes and, lying flat, a large flywheel. A chain transmits the motion to the rear wheels."""
+evocation = """
+The Motorwagen is a modest machine, almost fragile: an enlarged bicycle, a carriage seat and a small engine. Yet it heralds a new world. Until then, engines had been installed on horse-drawn carriages; Benz designed an entire vehicle around his petrol engine, chassis, steering and transmission included. The German patent he filed on 29 January 1886 is often regarded as the birth certificate of the automobile. In August 1888, his wife Bertha proved that the machine could be useful: with her two sons, she drove more than a hundred kilometres, from Mannheim to Pforzheim, in an improved version."""
+histoire = """
+Carl Benz built his tricycle in his Mannheim workshop in 1885 and filed the patent in January 1886; the first public trials took place in the city's streets during the summer. Passers-by mocked this horseless carriage that went pop-pop-pop. Benz then improved his model and began to sell it, notably in France, thanks to the Parisian agent Émile Roger. This first example, car no. 1, was given by its maker to the Deutsches Museum in Munich, the great German museum of science and technology, where it has been on display since the early twentieth century. The many examples seen in other museums are replicas."""
+facture = """
+Benz borrows heavily from the bicycle, then in full expansion: a frame of steel tubes, wire-spoked wheels, a chain. The engine, of his own design, is a single-cylinder four-stroke lying at the rear; its large horizontal flywheel regulates the rotation. The fuel evaporates in a surface carburettor, and ignition is electric, by a coil and a battery. The cooling water evaporates little by little and has to be topped up. A belt, a differential and then two chains transmit the power to the rear wheels; the vehicle reaches about 16 km/h. The choice of three wheels spared Benz from solving the problem of steering two front wheels."""
+details = [
+  "The steering crank at the top of the long column.",
+  "The large flywheel lying flat behind the bench.",
+  "The brass sphere and the copper tank of the engine.",
+  "The chain that drives the rear wheels.",
+  "The floor of black wooden slats.",
+]
+themes = ["engine", "patent", "invention", "germany", "pioneers"]
+anecdote = """
+During her 1888 journey, Bertha Benz had to improvise: she bought solvent at a pharmacy in Wiesloch to refuel, and cleared a fuel line with a hatpin."""
+salle = 1
+mur = "sud"
+position = -5
+largeur = 3.2
+
+[[oeuvres]]
+titre = "Panhard et Levassor Car of 1891"
+artiste = "Panhard et Levassor"
+annee = "1891"
+image = "panhard-levassor-1891.jpg"
+licence = "Domaine public"
+credit = "Photo : Alf van Beem"
+source = "https://commons.wikimedia.org/wiki/File:1891_Panhard_%26_Levassor,_1,75cv_12kmh_moteur_Daimler_P2C_Gavois_(inv_5103)_photo_1.JPG"
+technique = "Wood, iron, leather and brass; Daimler two-cylinder engine at the front, 1.75 hp; speed approximately 12 km/h"
+collection = "Cité de l'Automobile – Musée national, Schlumpf Collection, Mulhouse"
+note = "One of the first cars sold by Panhard et Levassor, with the engine at the front: the layout of almost every car of the following century."
+description = """
+The car is seen from the front three-quarter view. It still resembles a small carriage: four spoked wooden wheels, larger at the rear, and a raised black leather hood sheltering a buttoned bench. But at the front, where one would expect a horse, stands a box of black wood pierced with ventilation slots: it contains the engine. On its face, a large brass monogram intertwines the letters P and L. A round lantern, brass lubricators and a starting handle protrude from the body. Beneath the chassis, the transmission chains can be made out. At right, in the background, another of the museum's early cars appears."""
+evocation = """
+This car marks a tipping point. Its forms are those of a horse-drawn carriage, but its layout is already that of the modern automobile: the engine at the front, then the clutch, the gearbox and the transmission to the rear wheels. This scheme, which would be called the “Panhard system”, would prevail for decades. It also shows France's place in the beginnings of the automobile: the engine is German, invented by Gottlieb Daimler, but it was Parisian manufacturers who made from it the first cars sold in series, before racing and motor shows made Paris the capital of the new industry."""
+histoire = """
+René Panhard and Émile Levassor made woodworking machinery in Paris. In the late 1880s, they obtained the right to build Gottlieb Daimler's engines in France, through the widow of Édouard Sarazin, who became Levassor's wife. After trials with an engine placed in the centre, Levassor chose in 1891 to put it at the front. The first cars were sold the same year to private customers. The Mulhouse museum presents this one as the car of the abbé Gavois, a priest who was one of the marque's first buyers. It now belongs to the national collection of the Cité de l'Automobile."""
+facture = """
+The body and wheels are the work of a coachbuilder, as for a horse-drawn carriage: painted wood, ironwork, leather for the hood and the bench. The novelty is mechanical. The V-twin engine, built under Daimler licence, is enclosed in a wooden box at the front; it turns at a few hundred revolutions per minute and develops less than two horsepower. A friction clutch and a gear-wheel gearbox make it possible to start and change pace, then chains drive the rear wheels. The wheels are bound with iron: pneumatic tyres would come only after 1895."""
+details = [
+  "The brass PL monogram on the engine box.",
+  "The leather hood raised above the buttoned bench.",
+  "The ventilation slots of the wooden box.",
+  "The round lantern fixed on the side of the engine.",
+  "The wooden wheels bound with iron, larger at the rear.",
+]
+themes = ["engine", "paris", "invention", "horse-drawn carriage", "pioneers"]
+anecdote = """
+In 1895, Émile Levassor arrived first in the Paris–Bordeaux–Paris race, after nearly 49 hours on the road, almost without leaving the wheel. A monument pays tribute to him at the Porte Maillot in Paris."""
+salle = 1
+mur = "sud"
+position = 5
+largeur = 2.2
+
+[[oeuvres]]
+titre = "De Dion-Bouton Vis-à-Vis"
+artiste = "De Dion-Bouton"
+annee = "1900"
+image = "de-dion-bouton-vis-a-vis.jpg"
+licence = "CC0"
+credit = "Photo : Alf van Beem"
+source = "https://commons.wikimedia.org/wiki/File:1900_De_Dion-bouton3.5-HP_Vis-%C3%A0-Vis.JPG"
+technique = "Steel, wood, leather and brass; De Dion-Bouton single-cylinder engine of 3.5 hp placed at the rear"
+collection = "Louwman Museum, The Hague"
+note = "The little car that popularised the automobile in Europe around 1900: two passengers seated facing the driver, hence its name."
+description = """
+The little car is seen from the front three-quarter view, on a white plinth, in front of a dark blue wall. It has two black leather benches facing each other: the higher one, at the back, is the driver's; the other, at the front, takes two passengers seated with their backs to the road. Between them, a steering column is crowned with a small wheel and brass levers. The body is black, lined with dark red, and the front is fitted with a brass plate. Two large lanterns of polished brass shine at the side. The four wheels have cream-coloured metal spokes and pneumatic tyres. Another early car appears at left."""
+evocation = """
+With its passengers seated facing the driver, as in a horse-drawn carriage, the vis-à-vis is a sociable car: one chats in it as much as one travels. It embodies the Belle Époque of the automobile, that moment when the car, still reserved for the rich, became a fashionable pastime, with its fur coats, goggles and veils against the dust. The Comte de Dion, its maker, is its society figure: founder of the Automobile Club de France, organiser of races, he made speed a spectacle. His small, light engines, sold to many manufacturers, then powered thousands of cars and tricycles in Europe."""
+histoire = """
+The Comte Albert de Dion, the mechanic Georges Bouton and his brother-in-law Charles Trépardoux founded their firm in Paris in 1883; they first built steam vehicles. In 1894, a De Dion steam tractor arrived first in the Paris–Rouen trial, often regarded as the first motor competition. The company then turned to the petrol engine: its small single-cylinder, which ran much faster than the engines of the period, first powered tricycles, then light cars such as this vis-à-vis. Around 1900, De Dion-Bouton was one of the largest manufacturers in the world. This example is preserved at the Louwman Museum, the automobile museum in The Hague."""
+facture = """
+The secret of the car is its engine: a light, water-cooled single-cylinder that turns at nearly 1,500 revolutions per minute, almost twice as fast as its competitors, and thus delivers more power for a reduced weight. It is placed at the rear, under the driver's bench. The transmission uses the De Dion axle, an ingenious rear suspension invented by the workshop, still used much later on racing cars. The body, of wood and painted sheet metal, is carefully finished, with coloured lines, leather trim and brass accessories that had to be polished after every outing."""
+details = [
+  "The two leather benches facing each other.",
+  "The brass levers at the top of the steering column.",
+  "The two large lanterns of polished brass.",
+  "The cream-coloured spoked wheels and their pneumatic tyres.",
+  "The dark red lines on the black body.",
+]
+themes = ["belle époque", "light car", "racing", "paris", "brass"]
+anecdote = """
+In 1900, the Comte de Dion financed the creation of the sports newspaper L'Auto, which three years later organised the first Tour de France cycle race."""
+salle = 2
+mur = "sud"
+position = -4
+largeur = 3.0
+
+[[oeuvres]]
+titre = "The Rolls-Royce Silver Ghost, Claude Johnson at the Wheel"
+artiste = "Rolls-Royce"
+annee = "1907"
+image = "rolls-royce-silver-ghost.jpg"
+licence = "Domaine public"
+cadre = "noir"
+source = "https://commons.wikimedia.org/wiki/File:Rolls_Royce_Silver_Ghost_1907.jpg"
+technique = "Anonymous photograph published in 1908 in W. Eden Hooper's “The Motor Car: A History and Souvenir”; the car: 40/50 HP chassis, 7-litre six-cylinder engine, aluminium-coloured paintwork"
+collection = "Photograph published in 1908; the car, AX 201, is still preserved in England"
+note = "The car that made Rolls-Royce's reputation, photographed in the year it was built: the Silver Ghost."
+description = """
+A black-and-white photograph, on a book page, shows a large open car stopped on cobblestones. Its pale, almost white bodywork shines like metal. One can see, from the front three-quarter view, the big headlamps, the tall, narrow radiator, the flowing wings and the wheels with pale wooden spokes. Five men in caps and coats sit aboard; a sixth, in a long dust coat, driving goggles on his cap, stands in front of the rear door. At the wheel, according to the caption, sits Claude Johnson. Beneath the image, a caption in English reads: “The famous Rolls-Royce six-cylinder Silver Ghost car”."""
+evocation = """
+The photograph was taken to extol an exceptional car, and it succeeds. Everything speaks of quiet solidity: the pale mass of the bodywork, the men settled as in a drawing room, the standing chauffeur who seems to guard the vehicle. For Rolls-Royce, a young firm founded in 1906, the Silver Ghost had to prove that one could build a car that was silent, smooth and tireless. The name chosen by Claude Johnson plays on these two qualities: the silver of the bodywork and the silence of a ghost. Ever since, the marque has been synonymous with luxury, and this car is probably the most famous in its history."""
+histoire = """
+Charles Rolls, an aristocrat passionate about motoring, and Henry Royce, an engineer from Manchester, joined forces in 1904. In 1906, they presented the six-cylinder 40/50 HP chassis. The twelfth example, registered AX 201, was painted aluminium and fitted with silver-plated accessories; Claude Johnson, the firm's commercial director, christened it Silver Ghost. In 1907, the car covered some 15,000 miles, more than 24,000 kilometres, between London and Glasgow and on the roads of Scotland, under the supervision of the Automobile Club, with very few breakdowns. Sold on, it was bought back by Rolls-Royce in 1948. This photograph was published as early as 1908 in a book on the automobile."""
+facture = """
+The photograph, taken in broad daylight, plays on the contrast between the pale bodywork and the passengers' dark clothing; the photographer placed himself at the front three-quarter to show both the length of the car and its radiator, which became the emblem of the marque. Reproduced by halftone, a technique that made it possible to print photographs in books, it retains a slight grain on the page. The car itself is a piece of careful engineering: a six-cylinder engine of about 7 litres, renowned for its silence, a robust chassis and an open touring body, made by hand."""
+details = [
+  "The pale bodywork, painted aluminium.",
+  "The tall, narrow radiator, flanked by two big headlamps.",
+  "The standing passenger in a dust coat, goggles on his cap.",
+  "The wheels with pale wooden spokes.",
+  "The cobblestones of the street beneath the wheels.",
+]
+themes = ["luxury", "belle époque", "england", "photography", "endurance"]
+anecdote = """
+The registration AX 201 of the Silver Ghost has remained attached to the car; it is often said to be the most valuable automobile in the world, even though it has never been offered for sale since being bought back by Rolls-Royce."""
+salle = 2
+mur = "nord"
+position = 0
+largeur = 5.4
+
+[[oeuvres]]
+titre = "Ford Model T Touring"
+artiste = "Ford Motor Company"
+annee = "1913"
+image = "ford-t-1913.jpg"
+credit = "Photo : Mariordo (Mario Roberto Duran Ortiz)"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:1913_Ford_Model_T_Touring_01_2012_DC_00476.JPG"
+technique = "Vanadium steel, wood, leather and brass; 2.9-litre four-cylinder engine, 20 hp; two-speed planetary gearbox"
+collection = "National Museum of American History, Smithsonian Institution, Washington"
+note = "The car that put America on the road: produced in more than fifteen million examples between 1908 and 1927."
+description = """
+The Model T is seen from the front three-quarter view, on a carpeted platform, in front of a blue background. It is a five-seat touring car, high on its wheels: a beige canvas hood stretched over bows shelters two benches of black buttoned leather. The body is black and glossy; a board of varnished wood separates the bonnet from the driving position. At the front, the brass radiator bears the name Ford in cursive letters, between two large brass headlamps. The wheels are of wood painted black, with twelve spokes, with pale tyres. A vertical windscreen stands before the steering wheel."""
+evocation = """
+Henry Ford wanted to build “a car for the great multitude”, solid enough for the bad roads of the American countryside and cheap enough for a workman to buy. The Model T kept that promise. Simple to drive and to repair, it transformed the lives of farmers, country doctors and families discovering holidays on the road. It also changed work: to produce it, Ford invented the moving assembly line, which became the model for the whole industry of the twentieth century. Nicknamed “Tin Lizzie”, it remains the symbol of the automobile's entry into everyday life."""
+histoire = """
+The Model T was introduced in October 1908 and made in Detroit, then at the Highland Park plant. In 1913, Ford put the moving assembly line into service there: the assembly time for a chassis fell from more than twelve hours to about an hour and a half, and the price of the car dropped year after year. In 1914, Ford doubled his workers' wages, to five dollars a day. When production stopped in 1927, more than fifteen million Model Ts had been built. This 1913 example is on display at the National Museum of American History in Washington; according to the museum, it was fitted at its owner's request with an electric starter and headlamps."""
+facture = """
+The Model T is designed to be mass-produced and repaired by anyone. Its four-cylinder engine, cast in a single block with a removable cylinder head, is simple and robust. Ford used vanadium steel, lighter and stronger than ordinary steel. The planetary gearbox is operated by foot, with three pedals, which requires a particular apprenticeship. The car is high on its wheels to clear ruts, and its transverse-spring suspension lets it follow deformed roads. The parts are interchangeable: they were bought from a catalogue and fitted by the owner."""
+details = [
+  "The name Ford in cursive letters on the brass radiator.",
+  "The two large brass headlamps on either side of the radiator.",
+  "The beige canvas hood stretched over its bows.",
+  "The board of varnished wood between the bonnet and the driving position.",
+  "The twelve-spoke wooden wheels.",
+]
+themes = ["mass production", "america", "factory", "assembly line", "democratisation"]
+anecdote = """
+Henry Ford is said to have declared that the customer could choose any colour, so long as it was black: from 1914 to 1925, the Model T was delivered only in black, a paint that dried faster than the others."""
+salle = 3
+mur = "nord"
+position = 0
+largeur = 4.2
+
+[[oeuvres]]
+titre = "Hispano-Suiza H6C “Tulipwood” Torpedo"
+artiste = "Hispano-Suiza"
+annee = "1924"
+image = "hispano-suiza-tulipwood.jpg"
+credit = "Photo : Prova MO"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:1924_Hispano_Suiza_H6C_Tulipwood_Torpedo_front.jpg"
+technique = "H6C chassis, 8-litre straight-six engine; Nieuport-Astra body of wooden strips riveted to a light framework"
+collection = "Private collection"
+note = "The racing and prestige car of the driver André Dubonnet, with a wooden body riveted like an aircraft hull."
+description = """
+The car is seen from the front three-quarter view, on a black platform. Its whole body is of varnished wood, golden brown, made of narrow strips fixed by thousands of small copper rivets. The rounded wings, the bonnets and the tapering tail are also of wood. At the front, a chromed radiator bears the name Hispano in slanted script, between two headlamps protected by a grille. The wheels have coppery metal spokes, and a spare wheel is fixed on the side, behind the bonnet pierced with ventilation louvres. A large ribbed pipe emerges from the bonnet. Behind the car, a large screen shows images of car interiors."""
+evocation = """
+The Tulipwood sums up the sporting luxury of the Roaring Twenties. Its owner, André Dubonnet, heir to the famous aperitif brand, was a flying ace in the Great War and a racing driver. He asked the aircraft maker Nieuport-Astra for a body as light as a wing: wood, the material of the aircraft of the day, becomes here a sign of elegance. The car thus combines speed, aviation and a taste for precious materials. The marque itself is linked to aviation: on its radiators flies a silver stork, in memory of Georges Guynemer's Escadrille des Cigognes, whose aircraft had Hispano-Suiza engines."""
+histoire = """
+Founded in Barcelona in 1904, the Hispano-Suiza company owes its name to its engineer, the Swiss Marc Birkigt. During the First World War, its aircraft engines powered thousands of Allied fighters. In 1919, the marque presented at the Paris Salon the H6, a grand-luxury car built in France, whose six-cylinder engine derives from that experience. The H6C version, more powerful, was intended for sport. In 1924, André Dubonnet had his bodied by Nieuport-Astra and entered it in racing. The car, preserved since in private collections, has been exhibited in the United States, notably at the Blackhawk Museum in California, and offered at auction in Monterey in 2022."""
+facture = """
+The body is built like an aircraft fuselage: thin strips of wood are laid on a light framework, then fixed by copper rivets, aligned in long rows that trace the forms of the car. The wood, sanded and varnished, shows its grain. Under the bonnet, Birkigt's engine is a straight six in aluminium alloy, with overhead camshaft. The H6 is also one of the first cars with brakes on all four wheels, assisted by a mechanical servo driven by the gearbox, a system so effective that Rolls-Royce bought the licence."""
+details = [
+  "The rows of copper rivets on the varnished wooden strips.",
+  "The name Hispano in slanted script on the radiator.",
+  "The grilles that protect the two headlamps.",
+  "The coppery spoked wheels and the spare wheel on the side.",
+  "The ventilation louvres on the side of the bonnet.",
+]
+themes = ["luxury", "roaring twenties", "wood", "aviation", "racing"]
+anecdote = """
+The car's nickname, “Tulipwood”, designates a precious wood; some specialists nonetheless think its body is rather of mahogany. The nickname has stuck."""
+salle = 4
+mur = "sud"
+position = 0
+largeur = 5.5
+
+[[oeuvres]]
+titre = "Bugatti Type 41 Royale, “Coupé Napoléon”"
+artiste = "Ettore Bugatti"
+annee = "c. 1929"
+image = "bugatti-royale-napoleon.jpg"
+credit = "Photo : Aurélien Boffy"
+licence = "CC BY 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Bugatti_Royale_Coup%C3%A9_Napol%C3%A9on.jpg"
+technique = "12.7-litre straight-eight engine; wheelbase 4.30 m, length approximately 6.40 m; town coupé body"
+collection = "Cité de l'Automobile – Musée national, Schlumpf Collection, Mulhouse"
+note = "Ettore Bugatti's personal car, on the prototype chassis of the Royale: the largest and most luxurious automobile of its time."
+description = """
+The immense Royale is seen from the front three-quarter view on a red carpet, in an aisle of the Mulhouse museum lit by globe lamp-posts. Its bodywork is black and blue: a long black bonnet, light blue sides and a closed roof over the rear, while the chauffeur's place, at the front, is open. Large black wings stretch in a curve from the front wheels to the running boards. The chromed horseshoe radiator is flanked by two enormous headlamps; at the top, a small statuette of an elephant rearing on its hind legs serves as the mascot. The wheels have solid hubcaps. Behind, other cars from the collection."""
+evocation = """
+Ettore Bugatti wanted to build the car of kings. The Royale was to rival the greatest Rolls-Royces and attract the sovereigns of Europe; it arrived at the moment of the 1929 crisis, and only six were built, of which three were sold. It has remained the symbol of a luxury without measure, that of the waning Roaring Twenties. The Coupé Napoléon, which Bugatti used himself, also has a family dimension: the elephant on the radiator cap takes up a sculpture by his brother Rembrandt Bugatti, an animal sculptor who died in 1916. The car thus combines art and mechanics, as their father Carlo, a designer of furniture, had done."""
+histoire = """
+Ettore Bugatti, an Italian settled in Molsheim, in Alsace, conceived the Royale in the mid-1920s. The prototype, on chassis 41100, was running by 1926 and received several successive bodies; the town coupé body, known as the “Coupé Napoléon”, dates from the late 1920s. Bugatti kept it for his personal use, and it remained in the family after his death in 1947. In 1963, the Schlumpf brothers bought a group of cars kept at Molsheim by the Bugatti family, including this one. Discovered with the rest of their collection in 1977, it is today one of the two Royales on display at the Cité de l'Automobile in Mulhouse."""
+facture = """
+Everything about the Royale is outsized. Its eight-cylinder in-line engine, of nearly 13 litres, derives from an aircraft-engine project; cast in one piece with its cylinders and head, it is carved from blocks machined with the watchmaker's precision that made Bugatti's reputation. The wheels, in cast alloy, carry the brake drums. The body of the Coupé Napoléon takes up the form of chauffeur-driven cars: the driver in the open air, the owner in a closed saloon, lit by windows at the rear. The taut lines of the bonnet and wings announce the style of Jean Bugatti, Ettore's son."""
+details = [
+  "The rearing elephant on the radiator cap, after Rembrandt Bugatti.",
+  "The chromed horseshoe radiator, signature of the marque.",
+  "The two enormous headlamps on either side of the radiator.",
+  "The light blue sides between the bonnet and the black wings.",
+  "The globe lamp-posts of the museum aisle.",
+]
+themes = ["luxury", "roaring twenties", "alsace", "excess", "collection"]
+anecdote = """
+The Royale's engine had a second life: for lack of buyers for the car, Bugatti used it to power railcars, fast trains that ran in France until the 1950s."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 7.5
+
+[[oeuvres]]
+titre = "The Motorist (L'Automobiliste)"
+artiste = "Henri de Toulouse-Lautrec"
+annee = "1896–1898"
+image = "lautrec-automobiliste.jpg"
+licence = "CC0"
+cadre = "estampe"
+source = "https://commons.wikimedia.org/wiki/File:Henri_de_Toulouse-Lautrec,_The_Motorist_(L%27automobiliste),_1896,_NGA_33915.jpg"
+technique = "Lithograph in black on paper"
+collection = "National Gallery of Art, Washington (Rosenwald Collection, 1947.7.157)"
+note = "A driver wrapped in fur races down the road in a cloud of dust: Lautrec captures in a few strokes the new figure of the motorist."
+description = """
+In the foreground, at left, a massive man sits at the wheel of a car of which we see only the front, at the bottom of the image, and the spoked steering wheel. He is wrapped in an enormous fur coat, its hairs drawn with nervous hatching; a flat cap and round goggles frame his moustached face. His gloved right hand grips a lever. Behind him, a great cloud of dust or smoke rises towards the sky. At right, barely sketched in line, an elegant woman in a long dress walks away at the roadside, followed by a small dog. In the margin, at the bottom, a handwritten pencil inscription."""
+evocation = """
+Lautrec, painter of cabarets and circuses, took an interest in every novelty of modern life: the bicycle, the theatre, and now the automobile. He shows less the machine than the man it transforms. His driver, almost a caricature, is no more than a mass of fur, goggles and determination, launched into a whirlwind of dust. The contrast with the lady walking with her small dog, light, drawn in a fine line, is full of irony: the old world, that of strolling, watches the new one go by. The driver is traditionally identified as the artist's cousin, Dr Gabriel Tapié de Céleyran."""
+histoire = """
+Henri de Toulouse-Lautrec practised lithography intensively from 1891, for posters, music-sheet covers and prints sold to collectors. The Motorist dates from the late 1890s, as the first cars were beginning to circulate on the roads of France; the National Gallery of Art dates it to 1896, other catalogues to 1898. The plate, issued in a small edition, appears in the catalogue of Lautrec's printed work compiled by Loys Delteil. This impression is part of the immense print collection of the American collector Lessing J. Rosenwald, given to the National Gallery of Art in Washington, and entered the museum in 1947."""
+facture = """
+Lithography allows Lautrec to draw directly on the stone, with a greasy crayon, with the same freedom as on a sheet of paper. He contrasts two manners here: tight, vigorous hatching, almost black, for the fur coat and the dust, and a fine, barely pressed line for the walker and the landscape. The whites of the paper become the road and the sky. The framing, cut off sharply at the steering wheel and the edge of the car, comes from Japanese prints and from photography, which Lautrec admired: it gives the viewer the impression of sitting next to the driver."""
+details = [
+  "The round goggles and flat cap of the driver.",
+  "The nervous hatching of the fur coat.",
+  "The spoked steering wheel, cut by the edge of the image.",
+  "The walker sketched in line, and her small dog.",
+  "The artist's monogram in a circle, at lower left.",
+]
+themes = ["print", "modern life", "speed", "caricature", "belle époque"]
+anecdote = """
+Lautrec also loved cycling: in 1896, he drew for Simpson cycles the poster “La Chaîne Simpson”, for which the racer Constant Huret posed."""
+salle = 5
+mur = "est"
+position = 0
+largeur = 0.6
+
+[[oeuvres]]
+titre = "Nunc est bibendum!!… The Michelin Tyre Drinks Up Obstacles!"
+artiste = "O'Galop (Marius Rossillon)"
+annee = "1898"
+image = "michelin-nunc-est-bibendum.jpg"
+licence = "Domaine public"
+cadre = "noir"
+source = "https://commons.wikimedia.org/wiki/File:Michelin_Poster_1898.jpg"
+technique = "Colour lithographed poster (reproduction)"
+collection = "Advertising poster for Michelin; examples in several collections"
+note = "The first appearance of Bibendum, the man made of tyres, raising his cup of nails and shards of glass."
+description = """
+Against a blue-green background, a white figure made of a stack of tyres, a pince-nez on his nose, sits at a table covered with a white cloth. With his right hand he raises a cup filled with nails and pieces of glass, ready to be drunk. On either side, two other figures made of tyres, deflated and grimacing, one of them marked “Pneu X”, seem in a bad way. At the top, in large red letters, one reads “Nunc est bibendum!!…”, then “that is to say:”. At the bottom, on the cloth: “To your health, the Michelin tyre drinks up obstacles!”. O'Galop's signature is at right."""
+evocation = """
+The poster turns a technical argument into an unforgettable image. The road of 1898 was strewn with horseshoe nails and shards: the Michelin tyre, it says, swallows them without puncturing, whereas competing tyres, deflated, cut a sorry figure. The Latin phrase comes from an ode by Horace, “now is the time to drink”, and the man of tyres takes his name from it: Bibendum. He would become one of the most famous advertising characters in the world. The poster also shows that the automobile creates a whole trade around itself, tyres, fuel, guides and road maps, which advertising immediately seized upon."""
+histoire = """
+The brothers André and Édouard Michelin took over a rubber company in Clermont-Ferrand in 1889. They developed a removable bicycle tyre, then in 1895 entered in the Paris–Bordeaux–Paris race a car fitted with pneumatic tyres, the Éclair. According to the company's tradition, the sight of a stack of tyres at the Lyon exhibition of 1894 gave Édouard the idea of a character. In 1898, the illustrator O'Galop took up for Michelin a poster project rejected by a brewery, in which a drinker raises his tankard: Bibendum was born. This reproduction was digitised from a calendar."""
+facture = """
+O'Galop, a humorous illustrator, builds the poster like a newspaper cartoon: clean outlines, flat areas of colour, expressive characters. Bibendum is made of stacked bicycle tyres, white as rubber then was, before carbon black was added. The red of the letters and the blue-green of the background stand out vividly, as a street poster, made to be read from afar, requires. The text, mixing Latin and French, is integrated into the image: it reads from top to bottom, like a funny story with its punchline, “the Michelin tyre drinks up obstacles”."""
+details = [
+  "The cup of nails and shards of glass raised by Bibendum.",
+  "The pince-nez perched on the nose of the man of tyres.",
+  "The deflated competitor marked “Pneu X”.",
+  "The large red letters of the Latin phrase.",
+  "O'Galop's signature, at right above the text.",
+]
+themes = ["poster", "advertising", "tyre", "humour", "belle époque"]
+anecdote = """
+Bibendum is white because tyres were: it was not until the 1910s that carbon black was added to rubber, making it more durable and giving tyres their present colour."""
+salle = 5
+mur = "nord"
+position = 0
+largeur = 1.3
+
+[[artistes]]
+nom = "Nicolas-Joseph Cugnot"
+vie = "Void (Lorraine), 26 February 1725 – Paris, 2 October 1804"
+biographie = """
+Born in Lorraine, Nicolas-Joseph Cugnot became a military engineer and served in the Austrian army, where he took an interest in fortifications and machines. Returning to Paris around 1763, he published works on the military art and fortification. He became passionate about the power of steam, then used mainly to pump water from mines, and proposed using it to haul cannon. With the support of the Duc de Choiseul, Minister of War, and General Gribeauval, he built a first model in 1769, then in 1770 the great fardier now in the Conservatoire des arts et métiers. The project was abandoned after Choiseul's fall from favour. Cugnot received a pension from the king, lost during the Revolution and then reinstated by Bonaparte shortly before his death."""
+
+[[artistes]]
+nom = "Carl Benz"
+vie = "Mühlburg (Karlsruhe), 25 November 1844 – Ladenburg, 4 April 1929"
+biographie = """
+The son of a locomotive driver who died when he was two, Carl Benz studied mechanical engineering at the polytechnic school in Karlsruhe. After several jobs, he founded a workshop in Mannheim where he developed two-stroke gas engines, then a four-stroke petrol engine. In 1885, he built a tricycle around this engine and in January 1886 filed the patent for the Motorwagen. His wife Bertha, who had invested her dowry in the business, made in 1888 the first long journey by automobile. Benz & Cie became in the 1890s one of the first great manufacturers in the world, with the Velo, a small car sold in series. In 1926, the firm merged with the Daimler-Motoren-Gesellschaft to form Daimler-Benz, the house of Mercedes-Benz cars."""
+
+[[artistes]]
+nom = "Panhard et Levassor"
+vie = "Paris, 1886 (partnership); René Panhard, 1841–1908; Émile Levassor, 1843–1897"
+biographie = """
+René Panhard and Émile Levassor, both engineers who had graduated from the École centrale, ran a woodworking-machinery firm on the avenue d'Ivry in Paris. Through Édouard Sarazin, Gottlieb Daimler's representative in France, they discovered the petrol engine; after Sarazin's death, his widow Louise, who held the licence, married Levassor in 1890. The firm then built Daimler engines and, from 1891, cars sold to private customers, with the engine at the front. Levassor, an excellent driver, won the Paris–Bordeaux–Paris race in 1895, but died in 1897 of the effects of a racing accident. The company Panhard et Levassor remained for decades one of the great names of French motoring, before being absorbed by Citroën in 1965."""
+
+[[artistes]]
+nom = "De Dion-Bouton"
+vie = "Paris and Puteaux, 1883–1932; Albert de Dion, 1856–1946; Georges Bouton, 1847–1938"
+biographie = """
+The Comte Albert de Dion, a wealthy young aristocrat passionate about mechanics, went into partnership in 1883 with Georges Bouton, a maker of mechanical toys, and his brother-in-law Charles Trépardoux. The workshop first built steam cars and tractors, then, from 1895, small high-speed petrol engines that powered tricycles and light cars. These engines, sold to dozens of manufacturers in France and abroad, made the Puteaux factory one of the most important in the world around 1900. The Comte de Dion founded in 1895 the Automobile Club de France with Baron de Zuylen and the journalist Paul Meyan, and later became a deputy and senator. The marque declined after the First World War and ceased producing cars in the early 1930s."""
+
+[[artistes]]
+nom = "Rolls-Royce"
+vie = "Manchester then Derby (England), founded in 1906; Charles Rolls, 1877–1910; Henry Royce, 1863–1933"
+biographie = """
+Henry Royce, the son of a ruined miller, learned engineering in the railway workshops and founded in Manchester a firm making electrical equipment. Dissatisfied with his French car, he built his own automobiles in 1904, of remarkable quality. Charles Rolls, the son of a lord, a driver and car dealer in London, undertook to sell all of his output: Rolls-Royce Limited was founded in 1906. The commercial director Claude Johnson made the 40/50 HP Silver Ghost the showcase of the marque. Rolls died in 1910 in an aeroplane accident; Royce, ill, directed design from his home in the south of England. During the war, the firm also built aircraft engines, which became, along with luxury cars, its great speciality."""
+
+[[artistes]]
+nom = "Ford Motor Company"
+vie = "Detroit (Michigan), founded in 1903; Henry Ford, 1863–1947"
+biographie = """
+Henry Ford, the son of Michigan farmers, worked as a mechanic and then as an engineer at the Edison Illuminating Company in Detroit. He built his first car, the Quadricycle, in 1896. After two failures, he founded in 1903 the Ford Motor Company, which launched the Model T in 1908. To produce it at a low price, Ford organised the Highland Park plant around the moving assembly line, put into service in 1913, and sharply raised wages in 1914 to retain his workers. The success was immense: by the late 1910s, one car in two in the United States was a Model T. The Model T was replaced in 1927 by the Model A. Henry Ford, a controversial figure for his political positions and his antisemitism, ran the company until 1945."""
+
+[[artistes]]
+nom = "Hispano-Suiza"
+vie = "Barcelona, founded in 1904, and Bois-Colombes (France); Marc Birkigt, 1878–1953"
+biographie = """
+Hispano-Suiza, “the Spanish-Swiss”, was founded in Barcelona in 1904 by the businessman Damián Mateu and the Swiss engineer Marc Birkigt, born in Geneva. King Alfonso XIII of Spain, a great enthusiast, gave his name to a sports model of 1911. The marque then opened a factory in France, at Levallois and then at Bois-Colombes. During the First World War, Birkigt's V8 aircraft engine powered thousands of Allied fighters, including the SPADs of Georges Guynemer. After the war, the French branch produced cars of the greatest luxury, the H6 and then the twelve-cylinder J12, famous for their engineering and their coachwork. In the 1930s, the company abandoned the automobile to devote itself to aircraft engines."""
+
+[[artistes]]
+nom = "Ettore Bugatti"
+vie = "Milan, 15 September 1881 – Paris, 21 August 1947"
+biographie = """
+The son of Carlo Bugatti, a Milanese designer of furniture and objets d'art, and brother of the animal sculptor Rembrandt Bugatti, Ettore Bugatti grew up in an artistic milieu. He designed tricycles and cars very young for several manufacturers, then founded in 1909 his own marque at Molsheim, in Alsace, then German. His cars, light, powerful and perfectly finished, won hundreds of races, like the Type 35, one of the most victorious racing cars in history. He also designed cars of the greatest luxury, including the Royale, as well as railcars and aircraft engines. His son Jean designed in the 1930s the marque's most beautiful bodies, before killing himself testing a car in 1939."""
+
+[[artistes]]
+nom = "Henri de Toulouse-Lautrec"
+vie = "Albi, 24 November 1864 – Château de Malromé (Gironde), 9 September 1901"
+biographie = """
+Born into an old aristocratic family of the South of France, Henri de Toulouse-Lautrec broke both legs in adolescence; they stopped growing. He then devoted himself to drawing and painting, studied in Paris in the studios of Bonnat and Cormon, and settled in Montmartre. He became the painter of cabarets, dance halls, circuses and brothels, and befriended the stage artists Aristide Bruant, Jane Avril and Yvette Guilbert. From 1891, with the Moulin Rouge poster, he renewed the art of the poster and of colour lithography, influenced by Japanese prints. Worn out by alcohol, he died at 36, leaving more than 700 paintings, thousands of drawings and some 350 prints and posters."""
+
+[[artistes]]
+nom = "O'Galop (Marius Rossillon)"
+vie = "Lyon, 1867 – Carnac, 1946"
+biographie = """
+Marius Rossillon, who signed O'Galop, was a French humorous cartoonist and illustrator. He contributed to many satirical and illustrated newspapers of the late nineteenth and early twentieth centuries, and drew children's books, postcards and posters. In 1898, he created for the Michelin brothers the character of Bibendum, the man made of tyres, who would remain associated with the marque and its guides. He went on drawing him for years for Michelin's advertisements. Curious about new techniques, he also made animated films in the 1910s and 1920s, notably educational cartoons and public-health films, which makes him one of the French pioneers of animated cinema."""

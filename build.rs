@@ -512,7 +512,82 @@ fn main() {
         "// Écrit par build.rs à partir de expositions/*.toml : ne pas modifier.\n\n\
          /// Les expositions, dans l'ordre de l'accueil.\npub static EXHIBITIONS: &[Exhibition] = &[\n",
     );
+    // Les mêmes expositions en anglais et en espagnol (expositions/traductions/<langue>/) :
+    // les textes traduits, tout le reste identique ; sans traduction, le français.
+    let mut traduites: Vec<(&str, String)> = LANGUES.iter().map(|l| (*l, String::new())).collect();
     for (name, slug, file) in &parsed {
+        let debut_fr = out.len();
+        francais(&mut out, &data_dir, name, slug, file);
+        let code_fr = out[debut_fr..].to_owned();
+        for (langue, code) in &mut traduites {
+            let chemin = format!("expositions/traductions/{langue}/{slug}.toml");
+            match traduction(&chemin, file) {
+                Some(tr) => {
+                    let cle = format!("{slug}.{langue}");
+                    let cache = cache_root().join(format!("{cle}-{:016x}", cache_key(&chemin, slug, &tr)));
+                    if let Ok(c) = std::fs::read_to_string(cache.join("code.rs")) {
+                        code.push_str(&c);
+                        for entry in std::fs::read_dir(cache.join("files")).into_iter().flatten().flatten() {
+                            std::fs::copy(entry.path(), data_dir.join(entry.file_name())).expect("copie depuis le cache");
+                        }
+                        continue;
+                    }
+                    let debut = code.len();
+                    let mut brouillon = Vec::new();
+                    brouillon.extend_from_slice(b"ARTN\x01\0\0\0");
+                    exhibition(code, &mut brouillon, &data_dir, &chemin, slug, &tr);
+                    std::fs::write(data_dir.join(format!("{cle}.json")), texts_json(name, &tr))
+                        .expect("écriture des textes traduits");
+                    save_to_cache(&cache, &cle, &code[debut..], &data_dir);
+                }
+                None => code.push_str(&code_fr),
+            }
+        }
+    }
+    out.push_str("];\n");
+    for (langue, code) in &traduites {
+        out.push_str(&format!(
+            "\n/// Les expositions en {} (les textes longs restent hors du WebAssembly, comme en français).\npub static EXHIBITIONS_{}: &[Exhibition] = &[\n{code}];\n",
+            if *langue == "en" { "anglais" } else { "espagnol" },
+            langue.to_uppercase()
+        ));
+    }
+    std::fs::write(out_dir.join("expositions.rs"), out).expect("écriture de expositions.rs");
+}
+
+/// Les langues traduites (le français est la langue d'origine).
+const LANGUES: [&str; 2] = ["en", "es"];
+
+/// La traduction d'une exposition, si elle existe et qu'elle a la même structure que le
+/// français (mêmes œuvres, mêmes salles, mêmes artistes) ; sinon, un avertissement.
+fn traduction(chemin: &str, fr: &File) -> Option<File> {
+    println!("cargo::rerun-if-changed={chemin}");
+    let texte = std::fs::read_to_string(chemin).ok()?;
+    let tr: File = match toml::from_str(&texte) {
+        Ok(f) => f,
+        Err(e) => {
+            println!("cargo::warning={chemin} : traduction mal écrite, ignorée ({})", e.to_string().lines().next().unwrap_or(""));
+            return None;
+        }
+    };
+    let meme = tr.oeuvres.len() == fr.oeuvres.len()
+        && tr.sculptures.len() == fr.sculptures.len()
+        && tr.salles.len() == fr.salles.len()
+        && tr.artistes.len() == fr.artistes.len()
+        && tr.oeuvres.iter().zip(&fr.oeuvres).all(|(a, b)| a.image == b.image && a.salle == b.salle && a.artiste == b.artiste)
+        && tr.sculptures.iter().zip(&fr.sculptures).all(|(a, b)| a.modele == b.modele && a.artiste == b.artiste)
+        && tr.artistes.iter().zip(&fr.artistes).all(|(a, b)| a.nom == b.nom);
+    if !meme {
+        println!("cargo::warning={chemin} : la traduction ne suit pas le fichier français (python3 outils/traductions.py verifier), ignorée");
+        return None;
+    }
+    Some(tr)
+}
+
+/// Une exposition en français : son code, ses données et ses textes (repris du cache
+/// quand rien n'a changé).
+fn francais(out: &mut String, data_dir: &Path, name: &str, slug: &str, file: &File) {
+    {
         // Une exposition déjà calculée avec exactement les mêmes fichiers (pour l'autre
         // cible, ou lors d'un déploiement précédent) est reprise du cache.
         let cache = cache_root().join(format!("{slug}-{:016x}", cache_key(name, slug, file)));
@@ -526,12 +601,12 @@ fn main() {
                 std::fs::copy(entry.path(), data_dir.join(entry.file_name()))
                     .expect("copie depuis le cache");
             }
-            continue;
+            return;
         }
         let start = out.len();
         let mut data = Vec::new();
         data.extend_from_slice(b"ARTN\x01\0\0\0");
-        exhibition(&mut out, &mut data, &data_dir, name, slug, file);
+        exhibition(out, &mut data, data_dir, name, slug, file);
         std::fs::write(data_dir.join(format!("{slug}.bin")), &data).expect("écriture des données");
         // Les textes longs, que le navigateur télécharge à la demande (ils ne sont pas
         // compilés dans le WebAssembly) : notices, artistes, bâtiment, fichier source.
@@ -540,10 +615,8 @@ fn main() {
             texts_json(name, file),
         )
         .expect("écriture des textes");
-        save_to_cache(&cache, slug, &out[start..], &data_dir);
+        save_to_cache(&cache, slug, &out[start..], data_dir);
     }
-    out.push_str("];\n");
-    std::fs::write(out_dir.join("expositions.rs"), out).expect("écriture de expositions.rs");
 }
 
 /// Le plan du musée : les salles du fichier, placées par leurs `x` et `z` ; ou, si aucune

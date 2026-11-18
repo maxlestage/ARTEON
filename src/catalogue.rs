@@ -12,7 +12,7 @@
 
 use paquets::serde_json::{Value, json};
 
-use arteon::artworks::{Artist, Artwork, Credit, EXHIBITIONS, Exhibition, Notice, Sculpture};
+use arteon::artworks::{Artist, Artwork, Credit, Exhibition, Notice, Sculpture};
 
 /// Arrondi au centimètre (le JSON reste lisible et léger).
 fn cm(v: f32) -> f64 {
@@ -167,7 +167,8 @@ pub fn catalogue() -> Value {
     json!({
         "version": VERSION,
         "name": "ARTEON",
-        "exhibitions": EXHIBITIONS.iter().map(exhibition).collect::<Vec<_>>(),
+        "exhibitions": arteon::langue::lang().exhibitions().iter().map(exhibition).collect::<Vec<_>>(),
+        "language": arteon::langue::lang().code(),
     })
 }
 
@@ -179,6 +180,7 @@ pub fn catalogue_json() -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use arteon::artworks::EXHIBITIONS;
 
     #[test]
     fn every_exhibition_and_work_is_in_the_catalogue() {

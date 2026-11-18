@@ -1,0 +1,443 @@
+[exposition]
+ordre = 70
+nom_court = "Romanticismo"
+mouvement = "Romanticismo"
+cadre = "baroque"
+couleur = "#8e2a2a"
+titre = "El Romanticismo, la tempestad y el sueño"
+artiste = "Füssli, Blake, Goya, Friedrich, Turner, Constable, Géricault, Delacroix"
+dates = "1781–1839"
+accroche = "Exposición virtual · Museo del Louvre, París"
+introduction = """
+Entre finales del siglo XVIII y mediados del XIX, los pintores románticos prefieren la emoción a la regla, y el sueño, la naturaleza salvaje y la actualidad candente a los modelos antiguos. De La pesadilla de Füssli al Temerario de Turner, la visita reúne diez obras de ocho artistas de Inglaterra, España, Alemania y Francia: visiones, guerras, naufragios, revoluciones y paisajes infinitos. El edificio se inspira en las grandes salas rojas del Louvre, Daru y Mollien, altísimas, donde cuelgan los inmensos formatos de la pintura francesa del siglo XIX, y en un gabinete más íntimo reservado al paisaje."""
+vitrine = "radeau-meduse.jpg"
+
+[musee]
+nom = "Museo del Louvre"
+ville = "París, Francia"
+construction = "museo inaugurado en 1793"
+presentation = """
+Fortaleza levantada por Felipe Augusto hacia 1200 y después palacio de los reyes de Francia, ampliado reinado tras reinado, el Louvre se convierte en museo durante la Revolución: el Museo Central de las Artes abre sus puertas el 10 de agosto de 1793 en la Gran Galería. Napoleón III culmina el palacio al hacer construir, por Louis Visconti y luego Hector Lefuel, de 1852 a 1857, las alas del Nuevo Louvre, entre ellas el ala Denon, que lleva el nombre de Vivant Denon, primer director del museo bajo Napoleón I. Se sube por la escalera Daru, en cuya cima se alza la Victoria de Samotracia. En la primera planta, las salas Daru y Mollien, de muros rojos e iluminadas por altos lucernarios, acogen los grandes formatos de la pintura francesa del siglo XIX, desde La coronación de Napoleón de David hasta La balsa de la Medusa de Géricault y La Libertad guiando al pueblo de Delacroix. Desde 1989, se entra en el museo por la pirámide de cristal de Ieoh Ming Pei."""
+ici = """
+El edificio de ARTEON reproduce la sucesión de salas rojas del ala Denon. Se entra por el sur, en el rellano Daru, y después en «El salón Denon · Visiones y pesadillas», de planta cuadrada y muros rosa viejo. Desde allí se abren, en enfilada, dos grandes salas de doce metros de altura, pintadas del mismo rojo: al oeste «La sala Daru · Goya» y al este «La sala Mollien · La historia en marcha», donde aguardan La balsa de la Medusa y La Libertad. Al norte del salón, el gabinete de los paisajes, pequeño y bajo, de muros claros, reúne a Friedrich, Turner y Constable."""
+
+[[salles]]
+nom = "El rellano Daru"
+couloir = true
+theme = "El rellano de la escalera Daru, desde donde se accede a las grandes salas de pintura."
+murs = "#e9e2d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "El salón Denon · Visiones y pesadillas"
+theme = "1781–1805: en Londres, Füssli y Blake abren la pintura al sueño, al miedo y a las visiones."
+murs = "#d9a99a"
+x = 0
+z = -10
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "La sala Daru · Goya"
+theme = "1814–1823: la guerra y la locura, de los fusilamientos del 3 de mayo a las Pinturas negras."
+murs = "#c97a6c"
+x = -15
+z = -10
+largeur = 18
+profondeur = 12
+hauteur = 12
+
+[[salles]]
+nom = "La sala Mollien · La historia en marcha"
+theme = "1819–1830: el naufragio de la Medusa y la revolución de Julio, la actualidad pintada en gran formato."
+murs = "#c97a6c"
+x = 15
+z = -10
+largeur = 18
+profondeur = 12
+hauteur = 12
+
+[[salles]]
+nom = "El gabinete de los paisajes"
+theme = "1808–1839: la bruma y el mar de Friedrich, el ocaso de Turner, la campiña de Constable."
+murs = "#e6dfd1"
+x = 0
+z = -19
+largeur = 10
+profondeur = 6
+hauteur = 5.5
+
+[[oeuvres]]
+titre = "La pesadilla"
+artiste = "Johann Heinrich Füssli"
+annee = "1781"
+image = "cauchemar.jpg"
+technique = "Óleo sobre lienzo, 101,6 × 127 cm"
+collection = "Detroit Institute of Arts, Detroit"
+note = "Un demonio agazapado sobre una durmiente, una cabeza de caballo de ojos vacíos: el cuadro que hizo estremecerse a Londres en 1782."
+description = """
+Una joven vestida de blanco yace recostada hacia atrás en una cama, con la cabeza y un brazo colgando en el vacío y los ojos cerrados, como desvanecida. Sobre su pecho está agazapado un pequeño demonio velludo, un íncubo de rostro desencajado, que mira fijamente al espectador. A la izquierda, entre las cortinas de un rojo oscuro de la alcoba, surge una cabeza de caballo de ojos blancos y sin pupilas. En primer plano, una pequeña mesa redonda sostiene un espejo, un frasco y un tarro. Todo lo demás queda sumido en la sombra. La luz cae sobre el cuerpo de la durmiente, sobre la seda de su camisón y sobre los ropajes amarillos y rojos que resbalan de la cama hasta el suelo, y hace resaltar la diagonal de su cuerpo abandonado."""
+evocation = """
+El cuadro no cuenta ninguna historia tomada de la Biblia o de la mitología: muestra un estado, el mal sueño, y la angustia de la durmiente que no puede despertar. El demonio sentado sobre el pecho recoge una antigua creencia, la de un espíritu que viene a oprimir a los durmientes; la cabeza de caballo juega con la palabra inglesa nightmare, cuya segunda mitad evoca a la yegua. También se ha visto en ella una escena cargada de erotismo, con ese cuerpo ofrecido y ese intruso nocturno. A finales del siglo de las Luces, que quería iluminarlo todo con la razón, Füssli abre la pintura al mundo del sueño, del miedo y del inconsciente, que explorarán los románticos y después los surrealistas."""
+histoire = """
+Füssli, zuriqués establecido en Londres, expone el lienzo en la Royal Academy en la primavera de 1782. El éxito es inmediato y le da fama. El editor John Raphael Smith manda grabar enseguida una estampa a Thomas Burke, en 1783, que se vende ampliamente y reporta mucho más que el propio cuadro. El pintor realizará varias versiones más, una de ellas, hacia 1790-1791, conservada en la Goethe-Haus de Fráncfort. El tema es parodiado al instante por los caricaturistas políticos ingleses, que sustituyen a la durmiente por los estadistas del momento. En el reverso del lienzo de Detroit se halla un retrato inacabado de una joven, en la que se ha propuesto reconocer a Anna Landolt, sobrina de su amigo Lavater, de quien estaba enamorado. El cuadro ingresó en el Detroit Institute of Arts en 1955."""
+facture = """
+Füssli compone como en el teatro: un espacio estrecho, cerrado por cortinas, una luz de candilejas que recorta las figuras sobre un fondo casi negro. El cuerpo de la mujer dibuja una larga curva que atraviesa todo el lienzo, en contrapunto con la masa compacta del demonio. El dibujo de los cuerpos, de miembros estirados y poses forzadas, procede de su estudio de Miguel Ángel en Roma, donde pasó ocho años. La pintura, bastante fluida, juega con unos pocos acordes: el blanco nacarado del camisón, el rojo de los cortinajes, el ocre del ropaje."""
+details = [
+  "Los ojos de la cabeza de caballo, redondos y blancos, sin pupila alguna.",
+  "La mirada del demonio, dirigida no a la durmiente sino a nosotros.",
+  "El brazo de la joven que cuelga hasta el suelo, con la mano abierta.",
+  "Sobre la mesa, el pequeño espejo y los frascos, objetos de tocador corrientes.",
+]
+themes = ["sueño", "noche", "demonio", "angustia", "fantástico"]
+anecdote = """
+Se cuenta que Sigmund Freud había colgado un grabado de La pesadilla en su vivienda de Viena, en el número 19 de la Berggasse. El cuadro, que muestra el sueño como un drama interior, se ha relacionado a menudo con La interpretación de los sueños."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.27
+
+[[oeuvres]]
+titre = "Newton"
+artiste = "William Blake"
+annee = "1795–hacia 1805"
+image = "newton.jpg"
+technique = "Impresión en color, tinta y acuarela sobre papel, 46 × 60 cm"
+collection = "Tate Britain, Londres"
+note = "El sabio, desnudo en el fondo del mar, solo ve la figura que traza con el compás: la razón, para Blake, es una prisión."
+description = """
+Un joven desnudo, musculoso, de cabello rizado, está sentado sobre una roca cubierta de líquenes y corales, en el fondo de lo que parece un mar oscuro. Inclinado hacia delante, dobla la espalda hasta casi tocarse las rodillas. Con la mano derecha apoya las puntas de un compás sobre un rollo de papel desplegado en el suelo, donde se adivinan un triángulo y un arco de círculo; con la izquierda sostiene el otro extremo del rollo. Un paño blanco cuelga de su hombro. Su perfil, purísimo, está por entero vuelto hacia el dibujo. Detrás de él, la roca forma una masa hormigueante de colores, rojos, ocres y verdes; delante, el fondo azul negruzco está vacío."""
+evocation = """
+Para Blake, Isaac Newton encarna la razón que mide el mundo y lo encierra en leyes. Su héroe posee la belleza de un atleta griego, pero está encorvado, con los ojos clavados en el papel: no ve ni la prodigiosa roca que tiene detrás ni la inmensidad que lo rodea. El poeta-pintor opone esta visión única, puramente calculadora, a la imaginación, que es la única que da acceso al espíritu. El compás recuerda al del dios creador, Urizen, en sus libros proféticos. A menudo se lee en ella una crítica de la Ilustración y de la ciencia de su tiempo, pero la figura sigue siendo tan bella que también se ha visto en ella una admiración ambivalente por el genio del sabio."""
+histoire = """
+La imagen pertenece a la serie de las doce Grandes Estampas en color que Blake concibe en 1795, en Lambeth, con temas tomados de la Biblia, de Shakespeare, de Milton y de su propia mitología. Cada tema se tiraba solo en unos pocos ejemplares, retocados uno a uno. Esta prueba fue tirada y retomada más tarde, hacia 1805, de ahí su doble fecha. A menudo se la relaciona con Nabucodonosor, el rey convertido en bestia: dos figuras del hombre disminuido, uno por la razón sola, el otro por la locura. Blake vendía estas hojas a su principal mecenas, Thomas Butts. Durante mucho tiempo reservada a un círculo reducido, la lámina ingresó en la Tate en 1939, donada por el coleccionista W. Graham Robertson, gran defensor del artista."""
+facture = """
+Blake inventa aquí un procedimiento cercano al monotipo. Primero pinta el motivo con colores espesos sobre un soporte rígido y luego presiona contra él una hoja de papel: al despegarse, el color deja una textura granulosa y veteada, muy visible en la roca. Después retoma cada prueba con tinta y acuarela, precisando los contornos y el modelado del cuerpo. El dibujo, firme y lineal, procede de su formación de grabador y de su admiración por Miguel Ángel."""
+details = [
+  "La textura veteada de la roca, obtenida al despegar el papel de la pintura.",
+  "Las puntas del compás apoyadas sobre el rollo, en la punta de los dedos.",
+  "Los dedos de los pies del sabio, que sobresalen sobre el papel.",
+  "Bajo la roca, cerca de la pierna, una forma pálida que evoca un animal marino.",
+]
+themes = ["ciencia", "razón", "imaginación", "desnudo", "visión"]
+anecdote = """
+Frente a la British Library, en Londres, una gran estatua de bronce de Eduardo Paolozzi, Newton según Blake (1995), retoma la pose de esta estampa: el sabio inclinado, compás en mano, midiendo el suelo."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "El tres de mayo de 1808 en Madrid"
+artiste = "Francisco de Goya"
+annee = "1814"
+image = "tres-de-mayo.jpg"
+technique = "Óleo sobre lienzo, 268 × 347 cm"
+collection = "Museo del Prado, Madrid"
+note = "La noche que sigue al levantamiento de Madrid, unos patriotas son fusilados por los soldados de Napoleón: la primera gran imagen moderna de la guerra."
+description = """
+La escena transcurre de noche, al pie de una colina desnuda, a las puertas de Madrid, de la que se divisan el campanario y los tejados. A la derecha, una hilera de soldados franceses, vistos de espaldas, con el rostro oculto, apunta sus fusiles. A la izquierda, frente a ellos, un grupo de madrileños espera la muerte. En el centro, un hombre de camisa blanca y pantalón amarillo, de rodillas, abre los brazos en cruz, con los ojos desorbitados. A su alrededor, un fraile reza con las manos juntas y otros se cubren el rostro. En el suelo yacen ya cuerpos ensangrentados; detrás, una fila de condenados sube hacia el lugar de la ejecución. Un gran farol cúbico colocado en el suelo ilumina con violencia a la víctima."""
+evocation = """
+Goya invierte la pintura de historia: no hay héroe victorioso ni general, sino anónimos frente a una máquina de matar. Los soldados, sin rostro, forman un único bloque mecánico; las víctimas, en cambio, tienen cada una su propio miedo. El hombre de blanco, con los brazos abiertos, recuerda a Cristo en la cruz, y se ha advertido en su mano la marca de una herida que evoca los estigmas. El farol, que debería iluminar, sirve aquí para apuntar. El cuadro, pintado tras la derrota de Napoleón en España, rinde homenaje al pueblo de Madrid, pero dice sobre todo el horror de la guerra, sin gloria ni consuelo. Manet y luego Picasso, con su Masacre en Corea, lo recordarán."""
+histoire = """
+El 2 de mayo de 1808, los madrileños se alzan contra las tropas francesas que ocupan la ciudad; esa noche y al día siguiente, Murat manda fusilar a numerosos prisioneros, en particular en la montaña del Príncipe Pío. Seis años más tarde, en febrero de 1814, cuando los franceses han abandonado España, Goya propone al gobierno de la Regencia perpetuar con el pincel los episodios heroicos de la insurrección. Pinta dos grandes lienzos, El dos de mayo, la carga de los mamelucos, y este Tres de mayo. El rey Fernando VII, restablecido en el trono, apenas los pone en valor: permanecen mucho tiempo en los depósitos y no figuran en el catálogo del Prado hasta 1872. Durante la guerra civil, son evacuados junto con las colecciones del museo."""
+facture = """
+La composición opone dos masas: a la derecha, los soldados en diagonal, alineados como una sola arma; a la izquierda, un grupo desordenado de cuerpos y gestos. Entre ellos, un vacío estrecho que los cañones de los fusiles casi franquean. Toda la luz procede del farol, colocado en el suelo, y se concentra sobre la camisa blanca. Goya pinta deprisa, a grandes pinceladas, dejando contornos difusos y rostros apenas esbozados. La gama es sombría, parda y negra, realzada por el blanco, el amarillo y el rojo de la sangre."""
+details = [
+  "El farol colocado en el suelo, única fuente de luz de la escena.",
+  "Las palmas abiertas del hombre de blanco, como las de un crucificado.",
+  "El fraile tonsurado que reza, arrodillado a su lado.",
+  "Al fondo, el campanario y las casas de Madrid, apagados en la noche.",
+  "La sangre que corre por el suelo, en primer plano a la izquierda.",
+]
+themes = ["guerra", "ejecución", "noche", "pueblo", "historia"]
+anecdote = """
+De rodillas, el hombre de camisa blanca parece ya tan alto como los soldados en pie: si se levantara, los superaría a todos. Goya agrandó a la víctima, sin duda para que dominara la escena."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 3.47
+
+[[oeuvres]]
+titre = "Saturno devorando a un hijo"
+artiste = "Francisco de Goya"
+annee = "1820–1823"
+image = "saturne.jpg"
+technique = "Pintura mural al óleo trasladada a lienzo, 143,5 × 81,4 cm"
+collection = "Museo del Prado, Madrid"
+note = "Una de las Pinturas negras que Goya pintó solo para sí en los muros de su casa, cerca de Madrid."
+description = """
+Sobre un fondo enteramente negro surge un gigante de cabello gris desordenado, en cuclillas, con las rodillas flexionadas. Sus ojos están desorbitados, de un blanco espantoso, y su boca, muy abierta, muerde un cuerpo humano. Aprieta entre sus dos puños enormes ese cuerpo desnudo cuya cabeza ya ha desaparecido; la sangre, de un rojo vivo, corre sobre la carne blanca. El cuerpo de la víctima, de caderas y piernas de adulto, cuelga hacia abajo. El resto de la figura del dios, sus hombros, sus muslos, su rodilla lívida abajo a la derecha, se pierde en la oscuridad. No hay ni decorado, ni lugar, ni suelo: solo esta aparición que parece surgir de la noche."""
+evocation = """
+El mito antiguo cuenta que Saturno, el Crono griego, devoraba a sus hijos para que ninguno le arrebatara el trono. Goya hace de ello una escena de locura y espanto: el dios parece aterrorizado él mismo por su gesto, como si no pudiera detenerse. Siendo Saturno también el dios del tiempo, se ha visto en él el tiempo que todo lo consume; otros leen una imagen de España devorando a sus propios hijos en la guerra y la represión, o del poder absoluto de Fernando VII. Saturno era, en fin, el planeta de la melancolía: pintada por un hombre viejo, sordo y enfermo, la escena se ha relacionado con sus angustias íntimas. Goya no dejó ninguna explicación."""
+histoire = """
+En 1819, Goya, que tiene más de setenta años y es sordo desde hace tiempo, compra una casa de campo a orillas del Manzanares, cerca de Madrid, conocida como la Quinta del Sordo. Cubre directamente los muros de dos estancias con catorce grandes pinturas al óleo, sin encargo ni público, a las que hoy se llama las Pinturas negras. Saturno se hallaba en la planta baja, en el comedor. Los títulos actuales no son suyos. En 1873, el barón Émile d'Erlanger compra la casa; las pinturas son separadas de los muros y trasladadas a lienzo, mostradas en la Exposición Universal de París en 1878 y donadas al Prado en 1881."""
+facture = """
+Goya pinta al óleo directamente sobre el enlucido del muro, con una paleta reducida al negro, los ocres, los grises y el blanco, realzada solo por el rojo de la sangre. La pincelada es rápida, ancha, a veces brutal: trabaja sin duda con pincel y quizá con espátula, dejando la materia a la vista. La figura, encuadrada demasiado grande para el espacio, casi toca los bordes y parece querer salirse de ellos. Conocía el Saturno de Rubens, conservado en las colecciones reales, pero le quita toda elegancia."""
+details = [
+  "Los ojos blancos y redondos, en los que se lee tanto miedo como rabia.",
+  "Los dedos del gigante que se hunden en la espalda de la víctima.",
+  "El rojo de la sangre, único color vivo de todo el cuadro.",
+  "La rodilla clara abajo a la derecha, que surge de la sombra.",
+]
+themes = ["mitología", "locura", "tiempo", "violencia", "pinturas negras"]
+anecdote = """
+Una fotografía tomada por Jean Laurent hacia 1874, antes del traslado a lienzo, muestra un estado algo distinto de la pintura: ciertas partes de la figura, hoy perdidas en la sombra, son allí más legibles. El traslado dañó y modificó la obra."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 0.85
+
+[[oeuvres]]
+titre = "La balsa de la Medusa"
+artiste = "Théodore Géricault"
+annee = "1818–1819"
+image = "radeau-meduse.jpg"
+technique = "Óleo sobre lienzo, 491 × 716 cm"
+collection = "Museo del Louvre, París"
+note = "Trece días a la deriva tras el naufragio de una fragata francesa: el suceso convertido en cuadro de historia, que causó escándalo en el Salón de 1819."
+description = """
+Sobre una balsa improvisada, sacudida por un mar encrespado, una veintena de hombres se amontonan, muertos, moribundos o supervivientes. En primer plano, unos cadáveres resbalan hacia el agua; a la izquierda, un anciano envuelto en un paño rojo sostiene sobre las rodillas el cuerpo de un joven y mira al vacío. Detrás, una vela hinchada y un mástil sujeto con cuerdas. Los cuerpos se elevan hacia la derecha en una pirámide de brazos tendidos, hasta un hombre negro subido a un barril, que agita un paño hacia el horizonte. Allá a lo lejos, diminuta, se distingue la silueta de un navío. El cielo está cargado de nubes sombrías, desgarradas por un resplandor amarillo, y una enorme ola se alza a la izquierda."""
+evocation = """
+Géricault convierte un suceso reciente en una epopeya trágica, a la escala de la pintura de historia. El cuadro dice la desesperación y la esperanza entremezcladas: de la muerte, abajo, a la petición de auxilio, arriba, todo el lienzo se tensa hacia ese navío casi invisible. En el momento elegido, los náufragos aún no saben si los verán. Para el público de 1819, la obra era también una acusación: el naufragio se atribuía a un comandante nombrado por favor político bajo la Restauración. Al colocar a un hombre negro en la cima de la pirámide, cuando se debatía la abolición de la trata, Géricault adoptó una posición que a menudo se ha subrayado. La balsa se ha convertido en una imagen de la humanidad abandonada a sí misma."""
+histoire = """
+En julio de 1816, la fragata Medusa, que lleva colonos a Senegal, encalla frente a Mauritania. Por falta de botes, unas ciento cincuenta personas son abandonadas en una balsa; recogidos trece días después por el bergantín Argus, solo sobreviven una quincena. El relato de dos supervivientes, el cirujano Savigny y el ingeniero Corréard, publicado en 1817, revela las matanzas y el canibalismo. Géricault los conoce, hace construir una maqueta de la balsa y estudia miembros amputados y moribundos en el hospital Beaujon. Expuesto en el Salón de 1819 con el título Escena de naufragio, el cuadro divide a la crítica. Se muestra después en Londres en 1820, con gran éxito. Tras la muerte del pintor, en 1824, ingresa en el Louvre."""
+facture = """
+La composición descansa sobre dos pirámides: la de la vela y el mástil, a la izquierda, y la de los cuerpos, que culmina con el hombre del paño, a la derecha. Las diagonales cruzadas dan el movimiento del oleaje. Géricault modela los cuerpos como esculturas, con una luz dura procedente de la izquierda, en el espíritu de Miguel Ángel y de Caravaggio. La paleta es sombría, hecha de pardos, ocres y verdes. Empleó betún, un pigmento que con el tiempo se ennegrece y se agrieta: el cuadro se ha oscurecido mucho."""
+details = [
+  "En el horizonte, a la derecha, la diminuta silueta del bergantín Argus.",
+  "El anciano del manto rojo que vela el cuerpo de un joven.",
+  "El hombre negro en lo alto, agitando un paño rojo y blanco.",
+  "Los cuerpos de los muertos, abajo, que ya resbalan hacia el agua.",
+  "La enorme ola que se alza a la izquierda, detrás de la vela.",
+]
+themes = ["naufragio", "muerte", "esperanza", "actualidad", "mar"]
+anecdote = """
+El joven Eugène Delacroix, amigo de Géricault, posó para uno de los náufragos: tradicionalmente se le reconoce en el cuerpo tendido boca abajo sobre la balsa, en primer plano, con el brazo extendido. Quedó conmocionado por el cuadro inacabado."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 4.5
+
+[[oeuvres]]
+titre = "La Libertad guiando al pueblo"
+artiste = "Eugène Delacroix"
+annee = "1830"
+image = "liberte.jpg"
+technique = "Óleo sobre lienzo, 260 × 325 cm"
+collection = "Museo del Louvre, París"
+note = "El 28 de julio de 1830, sobre una barricada parisina: una alegoría de carne y hueso guía a los insurgentes contra Carlos X."
+description = """
+Una mujer con gorro frigio y el pecho desnudo escala una barricada de adoquines y vigas, blandiendo con una mano la bandera tricolor y con la otra un fusil con bayoneta. Se vuelve hacia quienes la siguen. A la izquierda, un hombre con levita y sombrero de copa empuña una escopeta de caza; a su lado, un obrero armado con un sable. A la derecha, un chiquillo tocado con una boina blande dos pistolas mientras grita. Al pie de la barricada, un herido se incorpora hacia ella; en primer plano yacen cadáveres, un insurgente medio desnudo y soldados de uniforme. Al fondo, entre el humo, se divisan las torres de Notre-Dame."""
+evocation = """
+Delacroix mezcla la alegoría y el reportaje. La Libertad no es una estatua antigua sino una mujer del pueblo, vigorosa, descalza, que marcha al combate; a su alrededor, los insurgentes de todas las condiciones, burgueses, obreros, un niño, figuran la unión del pueblo durante las Tres Gloriosas. La bandera tricolor, prohibida bajo la Restauración, recupera su lugar en lo alto de la composición. Los muertos del primer plano recuerdan el precio de la victoria. El cuadro se ha convertido en la imagen misma de la República y de la revuelta: en el chiquillo de las pistolas se ha visto un modelo para el Gavroche de Los miserables, y la figura de la Libertad ha inspirado innumerables carteles."""
+histoire = """
+Los días 27, 28 y 29 de julio de 1830, París se subleva contra las ordenanzas de Carlos X, que tiene que abdicar. Delacroix, que no ha combatido, empieza el lienzo en otoño; escribe a su hermano que, a falta de haber vencido por la patria, pintará para ella. El cuadro se expone en el Salón de 1831 y es adquirido por el Estado bajo Luis Felipe. Pero la imagen, juzgada demasiado revolucionaria, es retirada pronto de los muros del museo y devuelta al artista. Reaparece en la Exposición Universal de 1855 e ingresa en el Louvre en 1874. Una restauración concluida en 2024 eliminó los barnices amarilleados que lo oscurecían y devolvió a los colores su brillo original."""
+facture = """
+La composición es una pirámide, cuya base está formada por los cuerpos tendidos y cuya cima es la bandera. La Libertad parece salir del cuadro y marchar hacia el espectador. Delacroix concentra la luz sobre la Libertad y sobre la bandera, cuyo azul, blanco y rojo se repiten, a modo de ecos, en las ropas del herido y de varias figuras. La pincelada es viva y visible, el humo está pintado con amplias brochadas. Recuerda La balsa de la Medusa de Géricault, su mayor, en la composición y en los cuerpos del primer plano."""
+details = [
+  "La firma y la fecha, Eug. Delacroix 1830, en rojo sobre una viga a la derecha.",
+  "Las torres de Notre-Dame entre el humo, a la derecha de la Libertad.",
+  "El herido de blusa azul, faja roja y camisa blanca, con los colores de la bandera.",
+  "El chiquillo de las dos pistolas, que grita mientras avanza.",
+  "El soldado muerto a la derecha, de uniforme, con el chacó caído a su lado.",
+]
+themes = ["revolución", "libertad", "alegoría", "París", "bandera"]
+anecdote = """
+A partir de 1979, el billete de cien francos reprodujo La Libertad guiando al pueblo, junto con el retrato de Delacroix: durante casi veinte años, los franceses llevaron el cuadro en el bolsillo."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 3.25
+
+[[oeuvres]]
+titre = "El caminante sobre el mar de nubes"
+artiste = "Caspar David Friedrich"
+annee = "hacia 1817"
+image = "voyageur.jpg"
+technique = "Óleo sobre lienzo, 94,8 × 74,8 cm"
+collection = "Hamburger Kunsthalle, Hamburgo"
+note = "Un hombre visto de espaldas, en la cima de una roca, ante un paisaje ahogado en la bruma: la imagen misma del Romanticismo alemán."
+description = """
+En el centro del cuadro, un hombre está de pie sobre una punta de roca oscura, de espaldas, de cara al paisaje. Lleva una levita verde oscuro y se apoya en un bastón; el viento le levanta el cabello pelirrojo. Ante él y bajo él se extiende un mar de niebla del que emergen crestas rocosas, cumbres pobladas de pinos y, a lo lejos, una montaña en forma de cono. A la derecha, una alta formación rocosa se recorta contra el horizonte. Más lejos aún, cadenas de montañas azuladas se pierden en un cielo nuboso, claro y lechoso. La silueta del caminante ocupa exactamente el eje vertical del lienzo, y su cabeza se sitúa en el punto donde se cruzan las líneas de las montañas."""
+evocation = """
+Friedrich coloca al espectador justo detrás del caminante: vemos lo que él ve, sin conocer su rostro ni sus pensamientos. Este personaje de espaldas, su figura predilecta, invita a la contemplación. El paisaje, en parte oculto por las nubes, sugiere el infinito, la grandeza de la naturaleza frente al hombre, lo que los filósofos llamaban lo sublime. Se ha leído en él una meditación sobre la soledad, sobre el lugar del individuo en el mundo, o una experiencia religiosa. El atuendo, una levita a la alemana, ha hecho suponer un homenaje a un combatiente de las guerras de liberación contra Napoleón. El cuadro se ha convertido en el emblema del Romanticismo, hasta el punto de ilustrar innumerables cubiertas de libros."""
+histoire = """
+Se desconoce la fecha exacta del cuadro; se sitúa hacia 1817, en la época en que Friedrich, establecido en Dresde, es reconocido pero todavía discutido. Las rocas y las cumbres proceden del macizo de arenisca del Elba, la Suiza sajona, que el pintor recorría a pie dibujando. No pintaba del natural: recomponía en el taller, a partir de esos apuntes, un paisaje que no existe tal cual. Olvidado como su autor durante décadas tras su muerte, el cuadro solo se hace célebre en el siglo XX, con el redescubrimiento de Friedrich. La Hamburger Kunsthalle lo adquiere en 1970; es hoy su obra más conocida."""
+facture = """
+Friedrich construye el cuadro con rigor: la figura se sitúa sobre el eje central, las pendientes de las montañas convergen hacia su cabeza. El contraste es neto entre la roca oscura, nítida y detallada del primer plano, y el lejano claro, difuso, casi inmaterial, que da la impresión de profundidad. La pintura es lisa, sin pincelada visible, aplicada en capas finas. Los tonos fríos, grises, azules, blancos, expresan la humedad del aire y la luz difusa de la niebla."""
+details = [
+  "El cabello del caminante, levantado por el viento.",
+  "El bastón en el que se apoya, apenas visible a la derecha.",
+  "Los pequeños pinos sobre las crestas que emergen de la bruma, a la derecha.",
+  "La montaña en forma de cono, a la izquierda, casi borrada por la niebla.",
+]
+themes = ["paisaje", "montaña", "niebla", "soledad", "sublime"]
+anecdote = """
+El personaje visto de espaldas es tan típico de Friedrich que los historiadores alemanes le han dado un nombre, la Rückenfigur, la figura de espaldas. El pintor la emplea en numerosos cuadros para hacer entrar al espectador en el paisaje."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "El monje junto al mar"
+artiste = "Caspar David Friedrich"
+annee = "1808–1810"
+image = "moine-mer.jpg"
+technique = "Óleo sobre lienzo, 110 × 171,5 cm"
+collection = "Alte Nationalgalerie, Berlín"
+note = "Una diminuta silueta ante un mar negro y un cielo inmenso: el paisaje más radical de su tiempo."
+description = """
+El lienzo está casi vacío. Abajo, una franja de duna clara, arenosa, ondula de izquierda a derecha. Encima, una delgada franja de mar muy oscuro, casi negro, salpicada de algunas crestas de espuma y de gaviotas blancas. Todo lo demás, más de las tres cuartas partes del cuadro, lo ocupa el cielo: abajo, un manto de bruma gris azulada, pesada, que sube del mar; más arriba, unas nubes blancas iluminadas y luego un azul que se aclara hacia lo alto. Sobre la duna, a la izquierda del centro, se yergue una pequeña figura vestida de oscuro, un monje visto de espaldas, que mira el mar. No hay ni barco, ni árbol, ni orilla lejana."""
+evocation = """
+Nada guía la mirada: ni primer plano, ni camino, ni objeto con que medir la distancia. El espectador se encuentra, como el monje, ante el vacío. Se ha visto en él al hombre solo ante el infinito, ante Dios o ante la muerte, y a menudo un autorretrato espiritual del pintor. El escritor Heinrich von Kleist describió la impresión de hallarse ante este cuadro como si a uno le hubieran arrancado los párpados. Para muchos historiadores, es una de las primeras obras en que la pintura abandona la composición clásica; mucho más tarde se la ha comparado con las grandes superficies de color de Mark Rothko."""
+histoire = """
+Friedrich pinta el lienzo entre 1808 y 1810 en Dresde, a partir de recuerdos de la isla de Rügen, en el Báltico, que recorrió en varias ocasiones. Lo expone en la Academia de Berlín en el otoño de 1810, junto con su pareja, La abadía en el robledal. El público queda desconcertado, pero el rey de Prusia Federico Guillermo III compra los dos lienzos, a petición de su hijo, el príncipe heredero, de quince años. Ese mismo año, Friedrich es elegido miembro de la Academia de Berlín. Los dos cuadros han permanecido juntos en las colecciones prusianas, hoy en la Alte Nationalgalerie, donde fueron restaurados de 2013 a 2016."""
+facture = """
+La composición, toda ella en bandas horizontales, es de una simplicidad inaudita para la época. Friedrich suprimió durante el trabajo lo que habría podido tranquilizar al ojo: el examen científico ha revelado veleros sobre el mar, que luego borró. La pintura se aplica en capas finas y numerosas, alisadas, sin huella de pincel, lo que produce esos pasajes suavísimos del gris al azul. La figura, minúscula, da por sí sola la escala de la inmensidad."""
+details = [
+  "El monje, minúsculo, única vertical de todo el cuadro.",
+  "Las gaviotas, simples puntos blancos sobre el mar.",
+  "Las crestas de espuma sobre el mar negro.",
+  "Las nubes blancas iluminadas en medio del cielo, única nota luminosa.",
+]
+themes = ["mar", "soledad", "infinito", "cielo", "meditación"]
+anecdote = """
+La imagen científica ha mostrado que Friedrich había pintado primero dos veleros sobre el mar. Los cubrió, prefiriendo dejar al monje absolutamente solo ante el horizonte."""
+salle = 5
+mur = "ouest"
+place = 1
+largeur = 1.7
+
+[[oeuvres]]
+titre = "El Temerario remolcado a su último amarradero"
+artiste = "Joseph Mallord William Turner"
+annee = "1839"
+image = "temeraire.jpg"
+technique = "Óleo sobre lienzo, 90,7 × 121,6 cm"
+collection = "National Gallery, Londres"
+note = "Un navío héroe de Trafalgar, remolcado por un pequeño vapor hacia el desguace, bajo una puesta de sol llameante."
+description = """
+Sobre el Támesis, a la hora del ocaso, un gran navío de guerra de tres palos, de un blanco fantasmal, se desliza sobre el agua en calma. Lo arrastra un pequeño remolcador de vapor, oscuro y achaparrado, cuya alta chimenea escupe un humo rojizo. A la derecha, el sol se pone en una explosión de rojos, naranjas y amarillos que incendia las nubes y se refleja en el río. Una boya negra flota en primer plano a la derecha. A la izquierda, el cielo es más frío, azulado, y en él se distingue una fina luna creciente. A lo lejos, otros veleros y la orilla baja, apenas visibles. El gran barco y su remolcador se reflejan juntos en el agua inmóvil."""
+evocation = """
+El cuadro opone dos mundos: el viejo navío de velas, pálido como un espectro, y el remolcador de vapor, negro y activo, que lo conduce a su fin. Se lee en él el final de una época heroica, la de la marina de Nelson, y la llegada de la era industrial. El sol poniente, por un lado, y la luna que sale, por el otro, redoblan esa idea de un día que acaba. Turner no toma partido de manera simple: la máquina es fea, pero potente y viva. La nostalgia, la gloria y la muerte se mezclan en este crepúsculo. Para muchos británicos, es una imagen de la grandeza nacional y de su declive."""
+histoire = """
+El HMS Temeraire, navío de 98 cañones, se distinguió en la batalla de Trafalgar en 1805, justo detrás del Victory de Nelson. Desarmado, se vende en 1838 y es remolcado desde Sheerness hasta Rotherhithe, en el Támesis, para ser desguazado. Turner extrae de ello este cuadro, expuesto en la Royal Academy en 1839 con un largo título, El Temerario combatiendo, remolcado hasta su último amarradero para ser desguazado. La crítica lo elogia. El pintor se niega a venderlo y lo conserva en su taller; a su muerte, lo lega a la nación junto con cientos de otras obras. Ingresó en la National Gallery como parte del legado Turner."""
+facture = """
+Turner se tomó libertades con la realidad: el navío había sido despojado de sus palos antes de su último viaje, y él se los devuelve por la belleza de la imagen. El navío está pintado en capas finas y transparentes, casi translúcidas, mientras que el cielo del ocaso está trabajado en pasta espesa, casi en relieve. La composición juega con la oposición de los colores fríos, a la izquierda, y cálidos, a la derecha. La línea de horizonte baja deja al cielo lo esencial del lienzo."""
+details = [
+  "La fina luna creciente en el cielo azulado, arriba a la izquierda.",
+  "La chimenea del remolcador y su humo anaranjado.",
+  "La boya negra que flota, en primer plano a la derecha.",
+  "La pequeña bandera blanca que ondea sobre el humo.",
+  "La pasta espesa del sol poniente, casi en relieve.",
+]
+themes = ["mar", "crepúsculo", "industria", "nostalgia", "navío"]
+anecdote = """
+En 2005, una encuesta de la BBC designó este cuadro como el más querido por los británicos. Desde 2020, figura, junto con un autorretrato de Turner, en el billete de veinte libras del Banco de Inglaterra."""
+salle = 5
+mur = "est"
+place = 1
+largeur = 1.22
+
+[[oeuvres]]
+titre = "El carro de heno"
+artiste = "John Constable"
+annee = "1821"
+image = "charrette-foin.jpg"
+technique = "Óleo sobre lienzo, 130,2 × 185,4 cm"
+collection = "National Gallery, Londres"
+note = "Un carro cruza un vado a orillas del Stour, en el Suffolk de su infancia: la campiña inglesa, pintada como nunca antes de él."
+description = """
+Un carro de madera vacío, tirado por caballos, cruza lentamente el vado de un río poco profundo. Dos hombres lo conducen. A la izquierda, una pequeña casa de ladrillo y madera con tejado rojo, rodeada de árboles, se refleja en el agua; una mujer saca agua en la orilla. En primer plano, sobre el camino, un perrito blanco y negro mira el carro. En el centro, grandes árboles de follaje espeso; a la derecha, una pradera soleada se extiende hasta un linde lejano donde se adivinan segadores en faena. Un pescador se oculta entre los juncos a la derecha. Un gran cielo de verano, surcado de nubes blancas y grises, cubre toda la mitad superior."""
+evocation = """
+Constable pinta la campiña de su infancia, en torno al molino de su padre, sin héroes ni ruinas antiguas: una escena corriente de trabajo rural, un día de verano. Esta elección, en 1821, es casi un manifiesto: el paisaje más sencillo merece un gran formato, antaño reservado a la historia. Se percibe en él el profundo apego del pintor a esos lugares, que, decía, estaban en el origen de su vocación. En una Inglaterra que se industrializa, el cuadro ha ido adquiriendo valor de símbolo: el de una campiña ideal, apacible e inmutable, convertida en una de las imágenes más populares del país."""
+histoire = """
+El lugar es real: el Stour, cerca del molino de Flatford, en el Suffolk, que poseía el padre de Constable; la casa de la izquierda era la de un granjero vecino, Willy Lott. El pintor, establecido en Londres, trabaja a partir de los estudios que hizo allí. Realiza primero un boceto al óleo a tamaño natural, hoy en el Victoria and Albert Museum. El cuadro se expone en la Royal Academy en 1821 con el título Paisaje: mediodía, sin encontrar comprador. En 1824, el marchante John Arrowsmith lo compra y lo expone en el Salón de París, donde recibe una medalla de oro del rey Carlos X e impresiona a los jóvenes pintores franceses. Fue donado a la National Gallery en 1886."""
+facture = """
+Constable observa la naturaleza con una precisión casi científica, en particular las nubes, que estudia sistemáticamente en esa misma época. Su pincelada es fragmentada, viva, con pequeñas manchas de blanco puro puestas sobre las hojas y sobre el agua para expresar los reflejos de la luz, que los críticos llamaban la nieve de Constable. Los verdes, variados, son los de la naturaleza y no los pardos convencionales de los paisajes de taller. Estas audacias impresionarán a Delacroix y después a la escuela de Barbizon."""
+details = [
+  "El perrito en la orilla, que observa el carro.",
+  "La mujer que saca agua delante de la casa de Willy Lott.",
+  "El pescador medio oculto entre los juncos, a la derecha.",
+  "Los toques de blanco puro sobre las hojas y sobre el agua.",
+]
+themes = ["campiña", "río", "cielo", "trabajo", "verano"]
+anecdote = """
+La casa de Willy Lott sigue existiendo, en Flatford, a orillas del Stour. El lugar, propiedad del National Trust, atrae cada año a visitantes que acuden a encontrar el punto de vista del cuadro, casi inalterado dos siglos después."""
+salle = 5
+mur = "sud"
+place = 1
+largeur = 1.85
+
+[[artistes]]
+nom = "Johann Heinrich Füssli"
+vie = "Zúrich, 7 de febrero de 1741 – Putney Hill (Londres), 16 de abril de 1825"
+biographie = """
+Hijo de un pintor de Zúrich, Johann Heinrich Füssli estudia primero teología y se hace pastor, junto con su amigo Johann Kaspar Lavater. En 1762, ambos denuncian públicamente los abusos de un magistrado de la ciudad; el escándalo los empuja a abandonar Suiza. Tras una estancia en Alemania, Füssli se instala en Londres en 1764, donde vive de traducciones y escritos. Animado por Joshua Reynolds, se vuelca en la pintura y parte para Roma en 1770. Pasa allí ocho años estudiando a Miguel Ángel y la Antigüedad. De regreso en Londres, alcanza la gloria en 1782 con La pesadilla. Bajo el nombre anglicizado de Henry Fuseli, emprende una Galería Milton, inspirada en El paraíso perdido, e ilustra a Shakespeare para la galería del editor Boydell. Elegido miembro de la Royal Academy en 1790, llega a ser en ella profesor de pintura y después director de las escuelas, y forma a toda una generación de artistas. Amigo de la feminista Mary Wollstonecraft y admirado por William Blake, muere a los ochenta y cuatro años y es sepultado en la catedral de San Pablo de Londres."""
+style = """
+Füssli pinta escenas de sueño, de terror y de visiones tomadas de Shakespeare, de Milton o de las leyendas nórdicas. Sus figuras, de cuerpos alargados y gestos exagerados, proceden de Miguel Ángel y del manierismo; sus composiciones, iluminadas como un escenario de teatro, aíslan a unos pocos actores sobre fondos oscuros. Introduce en la pintura lo fantástico y el inconsciente, y anuncia el Romanticismo, y luego el simbolismo y el surrealismo."""
+
+[[artistes]]
+nom = "William Blake"
+vie = "Londres, 28 de noviembre de 1757 – Londres, 12 de agosto de 1827"
+biographie = """
+Hijo de un calcetero de Soho, William Blake afirma haber tenido visiones desde la infancia. A los catorce años, entra como aprendiz con el grabador James Basire, que lo envía a dibujar los sepulcros de la abadía de Westminster; allí descubre el arte gótico. Sigue después los cursos de la Royal Academy y se casa en 1782 con Catherine Boucher, que lo ayudará toda su vida en su trabajo de impresor. Hacia 1788, inventa un procedimiento de grabado en relieve que le permite imprimir juntos sus poemas y sus imágenes, que luego colorea a mano: son los Cantos de inocencia y de experiencia, y después sus libros proféticos, poblados de dioses de su invención. De 1800 a 1803, vive en Felpham, a orillas del mar, junto al poeta William Hayley; allí un soldado lo acusa de sedición y después es absuelto. Su exposición individual de 1809 es un fracaso. Apoyado por unos pocos fieles, Thomas Butts y después el joven pintor John Linnell, ilustra al final de su vida el Libro de Job y la Divina Comedia. Muere pobre, casi olvidado."""
+style = """
+Blake es a la vez poeta, grabador y pintor. Su dibujo, lineal y firme, heredado del grabado, del arte gótico y de Miguel Ángel, cuenta más que el color, que aplica en acuarela o mediante procedimientos de impresión de su invención. Rechaza la imitación de la naturaleza y pinta sus visiones: cuerpos idealizados, figuras cósmicas, símbolos de una mitología personal. Redescubierto por los prerrafaelitas, fascinó a los simbolistas y a la contracultura del siglo XX."""
+
+[[artistes]]
+nom = "Francisco de Goya"
+vie = "Fuendetodos (Aragón), 30 de marzo de 1746 – Burdeos, 16 de abril de 1828"
+biographie = """
+Nacido en un pueblo de Aragón, Francisco de Goya y Lucientes se forma en Zaragoza y viaja a Italia en 1771. Establecido en Madrid, dibuja a partir de 1775 cartones para la Real Fábrica de Tapices, con escenas de fiestas y juegos populares. Miembro de la Academia de San Fernando, retratista muy solicitado, llega a ser pintor de cámara del rey en 1789. En 1792-1793, una grave enfermedad lo deja sordo para siempre. Su arte se vuelve entonces más libre y más sombrío: publica en 1799 los Caprichos, aguafuertes que se burlan de la superstición y de los vicios de la sociedad, y pinta en 1800 La familia de Carlos IV. La invasión napoleónica de 1808 y la guerra que sigue le inspiran los Desastres de la guerra y los dos grandes lienzos del 2 y del 3 de mayo de 1808. Bajo el reinado absolutista de Fernando VII, se retira a su casa cerca del Manzanares, que cubre con las Pinturas negras. En 1824, se exilia a Francia y se establece en Burdeos, donde sigue pintando y experimentando con la litografía hasta su muerte, a los ochenta y dos años."""
+style = """
+Goya pasa de la gracia rococó de los cartones de tapiz a una pintura cada vez más libre, rápida y expresiva. Heredero de Velázquez, cuyos cuadros graba, pinta a grandes pinceladas, con una economía de medios asombrosa, y se atreve a mostrar la violencia, la locura y la crueldad sin embellecerlas. Pintor de corte y testigo crítico de su tiempo, grabador genial, abre el camino a Delacroix, a Manet y después al expresionismo."""
+
+[[artistes]]
+nom = "Théodore Géricault"
+vie = "Ruan, 26 de septiembre de 1791 – París, 26 de enero de 1824"
+biographie = """
+Nacido en Ruan en una familia acomodada, Théodore Géricault crece en París. Apasionado por los caballos, se forma con Carle Vernet, pintor de escenas ecuestres, y después con Pierre-Narcisse Guérin, y copia incansablemente a los maestros en el Louvre. En el Salón de 1812, a los veintiún años, triunfa con un Oficial de cazadores a caballo de la guardia imperial cargando, lienzo de un ímpetu inédito. Dos años más tarde, su Coracero herido abandonando el fuego, pintado en el momento de la caída del Imperio, es peor acogido. En 1816-1817, reside en Italia, donde descubre a Miguel Ángel y prepara una gran Carrera de caballos libres en Roma. De regreso en París, dedica más de un año a La balsa de la Medusa, expuesta en el Salón de 1819. Se lleva el cuadro a Inglaterra, donde descubre la pintura inglesa y pinta el Derby de Epsom. Debilitado por varias caídas de caballo y por la enfermedad, realiza aún una serie de retratos de alienados para un médico, y muere a los treinta y dos años, tras una larga agonía."""
+style = """
+Géricault da a la actualidad y a la vida moderna la grandeza de la pintura de historia. Su dibujo potente, nutrido de Miguel Ángel y del estudio del cuerpo y de los caballos, se alía con una pintura sombría, contrastada, de pasta densa. Busca la verdad hasta en el sufrimiento, la locura y la muerte, sin idealizar. Su carrera, muy breve, abrió el camino al Romanticismo francés y marcó profundamente a Delacroix y después a Courbet."""
+
+[[artistes]]
+nom = "Eugène Delacroix"
+vie = "Charenton-Saint-Maurice, 26 de abril de 1798 – París, 13 de agosto de 1863"
+biographie = """
+Eugène Delacroix crece en una familia de notables del Imperio. Alumno de Pierre-Narcisse Guérin, amigo de Géricault, debuta en el Salón de 1822 con La barca de Dante. Dos años después, Escenas de las matanzas de Quíos, inspirado en la guerra de independencia griega, lo convierte en el jefe de filas de la escuela romántica, frente a los herederos de David y a Ingres. La muerte de Sardanápalo, en 1827, causa escándalo por su violencia y su sensualidad. En 1830, celebra la revolución de Julio con La Libertad guiando al pueblo. En 1832, acompaña a una misión diplomática a Marruecos: los colores, la luz y los trajes del norte de África nutrirán toda su obra. Recibe después grandes encargos de decoración, en el Palais-Bourbon, en el Senado, en el techo de la galería de Apolo del Louvre y en la capilla de los Santos Ángeles de la iglesia de Saint-Sulpice. Elegido miembro de la Academia de Bellas Artes en 1857, tras varios fracasos, lleva un célebre Diario. Muere en su vivienda de la rue de Furstenberg, convertida en el museo nacional Eugène-Delacroix."""
+style = """
+Para Delacroix, el color prima sobre el dibujo. Admirador de Rubens y de los venecianos, construye sus cuadros mediante contrastes de tonos complementarios, pinceladas vivas y visibles, composiciones en movimiento. Toma sus temas de la historia, la literatura, la actualidad y Oriente. Su libertad de pincelada y su reflexión sobre el color abrieron el camino a los impresionistas y a los neoimpresionistas, que lo consideraban un precursor."""
+
+[[artistes]]
+nom = "Caspar David Friedrich"
+vie = "Greifswald, 5 de septiembre de 1774 – Dresde, 7 de mayo de 1840"
+biographie = """
+Nacido en Greifswald, pequeño puerto del Báltico entonces sueco, Caspar David Friedrich es hijo de un fabricante de velas y de jabón. Su infancia está marcada por los duelos: su madre muere cuando él tiene siete años, y en 1787 su hermano Christoffer se ahoga al intentar socorrerlo tras una caída bajo el hielo. Estudia en la Academia de Copenhague de 1794 a 1798 y después se establece en Dresde, donde vivirá toda su vida. Recorre a pie la isla de Rügen, las montañas del Harz y la Suiza sajona, llenando sus cuadernos de dibujos. En 1808, su Retablo de Tetschen, una cruz en la montaña concebida como cuadro de altar, desata una viva polémica. En 1810, Prusia compra El monje junto al mar y La abadía en el robledal, y es elegido miembro de la Academia de Berlín. Se casa con Caroline Bommer en 1818. Profesor en la Academia de Dresde, va perdiendo poco a poco el favor del público; un ataque cerebral, en 1835, le impide casi pintar. Olvidado a su muerte, es redescubierto a principios del siglo XX."""
+style = """
+Friedrich pinta paisajes meditativos, cargados de sentido espiritual: brumas, mares, ruinas, montañas, claros de luna, a menudo contemplados por figuras vistas de espaldas. Sus composiciones, simétricas y despojadas, oponen un primer plano preciso a lejanías infinitas. Su pintura lisa, de transiciones suavísimas, expresa la luz del alba y del crepúsculo. Hizo del paisaje una experiencia interior, y su radicalidad fue saludada por los simbolistas y después por los pintores abstractos."""
+
+[[artistes]]
+nom = "Joseph Mallord William Turner"
+vie = "Londres, 23 de abril de 1775 – Londres, 19 de diciembre de 1851"
+biographie = """
+Hijo de un barbero de Covent Garden, Joseph Mallord William Turner ingresa a los catorce años en las escuelas de la Royal Academy. Acuarelista precoz, expone desde 1790 y recorre Inglaterra y el País de Gales para dibujar paisajes y monumentos, que difunden los grabadores. Elegido académico en 1802, a los veintiséis años, se mide en sus lienzos con Claudio de Lorena y los grandes paisajistas, y llega a ser profesor de perspectiva. Gran viajero, descubre los Alpes en 1802, Italia en 1819 y después Venecia, cuya luz transforma su pintura. Sus lienzos se vuelven cada vez más libres, hechos de luz, vapor y tempestades, y desconciertan a una parte de la crítica, mientras que el joven John Ruskin sale en su defensa en Pintores modernos, en 1843. Rico y reservado, vive retirado al final de su vida en Chelsea, bajo un nombre falso. Lega a la nación lo esencial de su obra, varios cientos de pinturas y millares de dibujos y acuarelas, repartidos hoy entre la Tate y la National Gallery. Es enterrado en la catedral de San Pablo."""
+style = """
+Turner parte de un paisaje clásico, al modo de Claudio de Lorena, para ir hacia una pintura de la luz y de los elementos. Sus lienzos, donde la forma se disuelve en el sol, la bruma, la nieve o el vapor, mezclan veladuras transparentes y empastes. La acuarela, practicada toda su vida, le enseña la fluidez y los efectos de luz. Admirado por los impresionistas, se le tiene a menudo por un precursor de la abstracción."""
+
+[[artistes]]
+nom = "John Constable"
+vie = "East Bergholt (Suffolk), 11 de junio de 1776 – Londres, 31 de marzo de 1837"
+biographie = """
+Hijo de un rico molinero y comerciante de grano del Suffolk, John Constable crece en el valle del Stour, entre los molinos de Flatford y de Dedham. Destinado al comercio familiar, consigue en 1799 marcharse a estudiar en las escuelas de la Royal Academy, en Londres. Los comienzos son lentos: rechaza el paisaje idealizado de moda y pinta lo que conoce, la campiña de su infancia, a menudo al aire libre. En 1816, tras siete años de noviazgo contrariado por la familia de la joven, se casa con Maria Bicknell. A partir de 1819, expone cada año en la Royal Academy grandes paisajes de casi dos metros, sus seis pies, entre ellos El carro de heno. El Salón de París de 1824 le vale una medalla de oro y la admiración de los pintores franceses, mientras que en Inglaterra el reconocimiento tarda. Establecido en Hampstead, estudia allí incansablemente las nubes. La muerte de Maria, en 1828, lo abruma. Elegido académico solo en 1829, publica con el grabador David Lucas mezzotintas de sus paisajes y muere de repente en Londres."""
+style = """
+Constable quiere pintar la naturaleza tal como la ve, con la frescura de un estudio del natural. Sus bocetos al óleo, rápidos y libres, y sus estudios de cielo, anotados con la hora y el viento, se cuentan entre los más modernos de su tiempo. En sus grandes cuadros, conserva esa viveza mediante pinceladas quebradas y destellos de blanco. Marcó a Delacroix, a la escuela de Barbizon y, a través de ellos, al impresionismo."""

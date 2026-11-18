@@ -1,0 +1,438 @@
+[exposition]
+ordre = 220
+nom_court = "El arte de los muros"
+mouvement = "Pintura mural y arte urbano"
+cadre = "aucun"
+couleur = "#b23a12"
+titre = "Antes del street art, el arte de los muros"
+artiste = "Roma, Teotihuacan, Carle Vernet, Jules Chéret, China de los Yuan, España románica…"
+dates = "Siglo I a. C. – 1886"
+accroche = "Exposición virtual · Urban Nation Museum, Berlín"
+introduction = """
+No se esperó al grafiti neoyorquino, al Muro de Berlín ni a Banksy para pintar los muros y convertir la calle en una galería. Los romanos cubrían de frescos las estancias de sus villas y escribían en las fachadas de Pompeya consignas electorales y palabras garabateadas, que los arqueólogos italianos llamaron graffiti. Los habitantes de Teotihuacan pintaban de rojo los muros de sus palacios; los monjes de China y de Castilla hacían cubrir las paredes de sus templos con imágenes inmensas; en el siglo XIX, el cartel de colores invade las calles de París. El street art de hoy está protegido por los derechos de autor de sus creadores: la visita muestra, pues, a sus antepasados, nueve obras de dominio público, del siglo I antes de nuestra era a 1886. El edificio se inspira en el Urban Nation Museum de Berlín: una fachada de acogida, una larga galería de muros pintados y salas altas como medianeras de edificio."""
+vitrine = "boscoreale-salle-l.jpg"
+
+[musee]
+nom = "Urban Nation Museum for Urban Contemporary Art"
+ville = "Berlín, Alemania"
+architecte = "GRAFT (transformación del edificio)"
+construction = "Edificio de finales del siglo XIX; museo inaugurado en 2017"
+presentation = """
+El Museum for Urban Contemporary Art, conocido como Urban Nation, ocupa un edificio de finales del siglo XIX en el número 7 de la Bülowstraße, en el barrio de Schöneberg, cerca de la Nollendorfplatz. El proyecto nace en 2013 por iniciativa de la Stiftung Berliner Leben, fundación creada por la sociedad municipal de vivienda Gewobag: primero, murales encargados a artistas en fachadas de la ciudad; después, un museo, abierto al público en septiembre de 2017. El estudio de arquitectura berlinés GRAFT transformó el edificio y unió sus salas con pasarelas. La fachada, en la esquina de la Zietenstraße, está concebida como un soporte modulable: artistas invitados la repintan a intervalos regulares, de modo que el edificio cambia de cara. La exposición inaugural reunía a más de 150 artistas, desde Shepard Fairey hasta la fotógrafa Martha Cooper, cuya biblioteca, dedicada a la fotografía callejera y a la historia del grafiti, está instalada en el museo. Urban Nation afirma así que un arte nacido al margen, a menudo de manera ilegal, tiene ya su lugar en una institución."""
+ici = """
+El edificio de ARTEON retoma la idea de una fachada de acogida y de salas de muros de hormigón claro, pero las dedica a los antepasados del street art. Se entra por el sur en «La fachada», vestíbulo ancho y bajo, y se pasa al norte a «Los muros pintados de Roma», galería de treinta metros donde se recorren los frescos de las villas del Vesubio. Al norte se abren dos puertas: al oeste, «Los muros de Teotihuacan», de diez metros de altura, para las procesiones pintadas de la gran ciudad mexicana; al este, «París, el cartel en la calle», para el pegador de carteles de Carle Vernet y la Viviane de Jules Chéret. Ambas conducen a «Los grandes frescos de los templos», larga sala de doce metros de altura donde el Buda de la Medicina se despliega a lo largo de más de quince metros."""
+
+[[salles]]
+nom = "La fachada"
+theme = "La entrada, como la fachada de Urban Nation que unos artistas repintan con regularidad: desde siempre, el muro sirve de soporte a las imágenes."
+murs = "#e4dfd6"
+x = 0
+z = 0
+largeur = 16
+profondeur = 6
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Los muros pintados de Roma"
+theme = "Las villas y las casas del Vesubio: la guirnalda de la sala L de Boscoreale, Perseo y Andrómeda de Boscotrecase, un grifo de Pompeya."
+murs = "#ece6da"
+x = 0
+z = -7
+largeur = 30
+profondeur = 8
+hauteur = 6
+
+[[salles]]
+nom = "Los muros de Teotihuacan"
+theme = "La mayor ciudad de la América antigua pintaba de rojo los muros de sus palacios: dos fragmentos de una procesión del barrio de Tlacuilapaxco."
+murs = "#ddd8cf"
+x = -9
+z = -17
+largeur = 12
+profondeur = 12
+hauteur = 10
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "París, el cartel en la calle"
+theme = "Cuando el muro se vuelve periódico y galería: el pegador de carteles de Carle Vernet, a principios del siglo XIX, y la Viviane de Jules Chéret, en 1886."
+murs = "#efe5d3"
+x = 9
+z = -17
+largeur = 12
+profondeur = 12
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Los grandes frescos de los templos"
+theme = "Muros inmensos pintados por equipos anónimos: el Buda de la Medicina de un monasterio chino y el león de un monasterio de Castilla."
+murs = "#e8ddd0"
+x = 0
+z = -29
+largeur = 30
+profondeur = 12
+hauteur = 12
+
+[[oeuvres]]
+titre = "Pared oeste de la sala L de la villa de Publio Fannio Sinistor, en Boscoreale"
+artiste = "Rome, fin de la République"
+annee = "hacia 50–40 a. C."
+image = "boscoreale-salle-l.jpg"
+credit = "Photo : Metropolitan Museum of Art"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/247008"
+technique = "Fresco, 195,6 × 271,8 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una pesada guirnalda de follaje y frutos, una máscara, una serpiente: el decorado de una estancia de villa romana, sepultado por el Vesubio en el año 79."
+description = """
+Sobre un muro rojo rosado, dividido por altas pilastras amarillas, una espesa guirnalda de hojas, frutos y espigas corre de un borde a otro. A la izquierda, está sujeta a una cabeza de toro dorada, adornada con cintas y sartas de perlas; unas cintas claras se enroscan en el follaje. Bajo la guirnalda cuelgan unos objetos: una máscara dorada de viejo sileno, calvo y barbudo, que mira fijamente al espectador; una cesta de mimbre de la que sale una serpiente erguida, ante un disco oscuro; a la derecha, un pequeño objeto de bronce en forma de campana. Más arriba, una cornisa de hojas sostiene una banda de paneles verdes y amarillos, luego un friso púrpura sembrado de finos tallos verdes y una segunda cornisa, esculpida en trampantojo."""
+evocation = """
+Todo aquí habla de Dioniso, el dios del vino y del teatro, cuyas fiestas reunían cantos, danzas y máscaras. El sileno es uno de sus compañeros; la cesta con la serpiente recuerda la cista mística, el cesto sagrado de sus misterios; el disco y la campana evocan sin duda el pandero y los címbalos que marcaban el ritmo de sus cortejos. La cabeza de toro adornada con cintas es la de una víctima de sacrificio. La guirnalda cargada de frutos de todas las estaciones habla de la abundancia del campo. Para el rico propietario, este decorado transformaba una estancia de su villa en un santuario en fiesta, a imagen de las guirnaldas verdaderas que se colgaban de los muros los días de celebración."""
+histoire = """
+La villa de Publio Fannio Sinistor se hallaba en Boscoreale, en las laderas del Vesubio, a unos kilómetros al norte de Pompeya. Sus muros fueron pintados hacia 50–40 antes de nuestra era, y luego la casa quedó sepultada por la erupción del año 79. Sacada a la luz en 1900, fue despojada de sus frescos, cortados por paneles y vendidos en subasta en París en 1903. El Metropolitan Museum adquirió entonces un conjunto importante, que incluye esta pared de la estancia que los arqueólogos designan con la letra L, y una cámara entera, remontada en sus salas. Los demás paneles de la villa están hoy dispersos entre varios museos, en Italia y en Europa."""
+facture = """
+Es un fresco: los colores, diluidos en agua, se aplican sobre un enlucido de cal todavía húmedo, en el que se incorporan al secarse. El decorado pertenece al segundo estilo pompeyano, que imita arquitecturas en relieve: las cornisas, las pilastras y los paneles de mármol de colores están pintados en trampantojo, con sus sombras y sus luces. Sobre este marco riguroso, el pintor arroja una guirnalda tratada con pinceladas rápidas, casi impresionistas, en la que cada hoja se aplica de un solo toque de pincel. Las partes claras, arriba a la izquierda y abajo, son lagunas rellenadas durante la restauración."""
+details = [
+  "La máscara dorada de sileno, de frente calva y barba rizada.",
+  "La serpiente que sale de la cesta de mimbre y tiende la cabeza hacia la izquierda.",
+  "La cabeza de toro adornada con sartas de perlas, de donde se sujeta la guirnalda.",
+  "La pequeña campana de bronce colgada a la derecha, sobre el fondo rojo.",
+  "La cornisa de hojas, pintada en trampantojo sobre las pilastras.",
+]
+themes = ["fresco", "dioniso", "guirnalda", "trampantojo", "pompeya"]
+anecdote = """
+Las casas de la región del Vesubio no se pintaban solo por dentro: en las fachadas de Pompeya, pintores especializados trazaban en grandes letras rojas llamamientos a votar por tal o cual candidato, y los transeúntes grababan en ellas mensajes, dibujos e insultos."""
+salle = 2
+mur = "nord"
+place = 5
+largeur = 2.75
+
+[[oeuvres]]
+titre = "Perseo y Andrómeda en un paisaje"
+artiste = "Rome impériale"
+annee = "última década del siglo I a. C."
+image = "persee-andromede.jpg"
+credit = "Photo : Metropolitan Museum of Art"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/250945"
+technique = "Fresco, 159,4 × 118,8 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "El héroe Perseo acude volando en socorro de Andrómeda, encadenada a una roca: un cuadro de leyenda pintado en el muro de una villa imperial."
+description = """
+En un gran marco negro que termina en punta, como un frontón, se abre un paisaje marino bañado por una luz azul verdosa. En el centro se alza una alta roca violácea; a media altura, una joven vestida de amarillo, con los brazos abiertos, está encadenada a ella: es Andrómeda. A la izquierda, Perseo llega volando, desnudo bajo un manto rojo que ondea al viento, con el arma en alto. Abajo a la izquierda, el monstruo marino emerge del agua, con la cabeza erizada de crestas. A la derecha, ante un palacio de columnas, volvemos a encontrar a Perseo, que estrecha la mano de un rey de larga túnica. Abajo a la derecha, una mujer envuelta en ropajes está sentada sobre una roca. Al fondo, árboles y edificios se pierden en la bruma."""
+evocation = """
+El mito lo cuentan los poetas griegos y latinos, y Ovidio en las Metamorfosis. Como la reina Casiopea se había jactado de ser más hermosa que las Nereidas, los dioses envían un monstruo a devastar el reino; para aplacarlo, el rey Cefeo debe entregarle a su hija Andrómeda. Perseo, que regresa de matar a la Gorgona Medusa, la ve, mata al monstruo y se casa con ella. El pintor reúne varios momentos en una misma imagen: la llegada del héroe, la joven ofrecida, el monstruo y luego el acuerdo pactado con Cefeo. Perdidos en la inmensidad del paisaje, los personajes parecen minúsculos: la leyenda se vuelve ensoñación, una vista de costa por la que pasea la mirada."""
+histoire = """
+La pintura adornaba una estancia de la villa imperial de Boscotrecase, al pie del Vesubio, que perteneció sin duda a Agripa, amigo y yerno del emperador Augusto, y luego a su hijo Agripa Póstumo. Hacía pareja con otro paisaje mitológico, Polifemo y Galatea, conservado también en el Metropolitan Museum. La villa, sepultada por la erupción del año 79, fue descubierta a principios del siglo XX durante las obras de una línea de ferrocarril; sus frescos fueron entonces separados de los muros, y el sitio volvió a desaparecer poco después bajo las cenizas de una erupción del Vesubio. El Metropolitan Museum adquirió varias de sus pinturas en 1920."""
+facture = """
+El cuadro pertenece al tercer estilo pompeyano, aparecido bajo Augusto: el muro ya no se abre a arquitecturas en trampantojo, sino que se convierte en una superficie plana, a menudo oscura, en cuyo centro se coloca una pintura como un cuadro colgado. El paisaje es casi monocromo, tratado con ligeras pinceladas de azul y de verde; los lejanos se desdibujan en la bruma, lo que da una impresión de profundidad. Las figuras se resuelven en unas pocas pinceladas, con realces claros. Este gusto por los paisajes sagrados y mitológicos, muy en boga en tiempos de Augusto, procedía de la pintura helenística."""
+details = [
+  "Andrómeda, con los brazos abiertos, encadenada a media altura de la roca.",
+  "Perseo en vuelo, a la izquierda, con el manto rojo hinchado por el viento.",
+  "Las crestas blancas del monstruo marino, abajo a la izquierda.",
+  "A la derecha, Perseo estrechando la mano del rey Cefeo ante el palacio.",
+  "La mujer envuelta en ropajes sentada sobre una roca, abajo a la derecha.",
+]
+themes = ["mitología", "paisaje", "héroe", "mar", "fresco"]
+anecdote = """
+Para acercarse a Medusa, cuya mirada convertía en piedra, Perseo había recibido de los dioses unas sandalias aladas y un escudo pulido como un espejo: solo miró al monstruo en su reflejo."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 1.25
+
+[[oeuvres]]
+titre = "Grifo sobre un entablamento"
+artiste = "Rome impériale"
+annee = "siglo I d. C."
+image = "griffon-pompei.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1981.20"
+technique = "Fragmento de fresco"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Un fragmento de muro de Pompeya: un grifo alado monta guardia sobre una cornisa pintada, en medio de un fondo blanco."
+description = """
+Sobre un fondo blanco crema, recorrido por finas grietas, un grifo está de pie, de perfil, vuelto hacia la izquierda. Tiene el cuerpo y las patas de un león, pintados en gris azulado, la cabeza y el pico de un ave de presa, y dos alas erguidas, una gris, la otra ocre y rosa; su cola fina cae tras él. Se apoya en el borde de un entablamento dorado, pintado como una moldura de madera o de piedra, bajo el cual corre un friso rosa y púrpura adornado con pequeños motivos. A la izquierda, un tallo rojo que termina en volutas avanza hacia él, como una rama de candelabro o de roleo. Los bordes del fragmento, irregulares, dejan ver el grosor del enlucido."""
+evocation = """
+Animal fabuloso venido de Oriente, el grifo une la fuerza del león, rey de los animales, y la vista penetrante del águila, reina de las aves. Griegos y luego romanos hacen de él un guardián: vela por los tesoros, por las tumbas, y acompaña a Apolo o a la diosa Némesis. Pintado en el muro de una casa, protege y divierte a la vez. Posado sobre una cornisa suspendida en el vacío, pertenece a esas arquitecturas de fantasía, ligeras e imposibles, que los pintores de Pompeya gustaban de hacer flotar sobre fondos claros. Cabe imaginar, más allá del fragmento, todo un muro poblado de columnillas, candelabros, pájaros y pequeñas criaturas."""
+histoire = """
+La ficha del museo vincula este fragmento con Pompeya, sin precisar la casa de la que procede. Sepultada en el año 79 bajo las cenizas del Vesubio, la ciudad se excava a partir del siglo XVIII. Durante mucho tiempo se cortaron en los muros los trozos de pintura considerados más bellos, para las colecciones del rey de Nápoles y después para las de aficionados de todo el mundo; muchos fragmentos aislados, como este, perdieron así su contexto. El Cleveland Museum of Art lo adquirió en 1981. Da testimonio de una pintura doméstica corriente, hecha por talleres que decoraban en serie las casas de una ciudad próspera."""
+facture = """
+El fondo blanco, liso, deja respirar los motivos, lo cual es frecuente en los decorados del siglo I de nuestra era. El grifo está pintado con mano rápida, casi esbozada: unos toques de gris, de ocre y de rosa bastan para modelar el cuerpo, las plumas y la melena. El entablamento, en cambio, está construido con esmero, por bandas paralelas de amarillo, ocre y pardo que imitan el relieve de una moldura iluminada desde arriba. El tallo rojo, dibujado con un trazo flexible, muestra la soltura de los pintores para trazar ornamentos sin modelo. El fragmento ha sido montado sobre un soporte moderno."""
+details = [
+  "El pico abierto del grifo y su ojo redondo.",
+  "Las dos alas erguidas, una gris, la otra ocre y rosa.",
+  "Las patas de león apoyadas en el borde dorado de la cornisa.",
+  "El tallo rojo con volutas que avanza desde la izquierda.",
+  "La red de grietas que recorre el fondo blanco.",
+]
+themes = ["grifo", "animal fabuloso", "pompeya", "decoración", "fresco"]
+anecdote = """
+La palabra graffiti nació en Pompeya: así llamaron los arqueólogos italianos del siglo XIX a los miles de inscripciones raspadas en el enlucido de los muros de la ciudad, del verbo graffiare, «arañar, rasguñar»."""
+salle = 2
+mur = "sud"
+place = 8
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Fragmento de pintura mural: rito de autosacrificio con maguey"
+artiste = "Teotihuacan"
+annee = "500–600 d. C."
+image = "teotihuacan-maguey.jpg"
+credit = "Photo : Art Institute of Chicago"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/14968"
+technique = "Enlucido de cal y pigmentos minerales, 63,8 × 95 cm"
+collection = "Art Institute of Chicago, Chicago"
+note = "Un sacerdote en gran atavío avanza rezando por la lluvia. Fotografía ampliada: el fragmento mide 64 × 95 cm."
+description = """
+Sobre un fondo rojo oscuro, un hombre ricamente vestido avanza de perfil hacia la izquierda. Lleva un tocado inmenso, hecho de largas plumas que se abren tras su cabeza, un collar de gruesas perlas redondas y, en la cintura, un adorno circular. Ante su rostro se enrolla una gran voluta adornada con conchas y plantas: es su palabra, su plegaria, hecha visible. A izquierda y derecha se alzan formas triangulares terminadas en puntas oscuras: hojas de maguey, una especie de agave, plantadas en objetos rayados. Arriba, una banda de cheurones recorre el borde. Las figuras están dibujadas en rosa claro y en rojo más oscuro sobre el rojo del fondo."""
+evocation = """
+Según el museo, el hombre es un sacerdote de la lluvia, y la voluta que sale de su boca, decorada con conchas y plantas, indica que reza por el agua y por la prosperidad de las cosechas, tan preciosas en esta alta meseta seca. Las espinas del maguey servían para perforarse la piel y ofrecer la sangre a los dioses, rito extendido en el México antiguo: de ahí el título dado al fragmento. Repetida a lo largo de un muro, esta figura formaba una procesión sin fin, que acompañaba a quienes pasaban por la estancia. La imagen no cuenta una historia: fija en el muro una plegaria perpetua, como una inscripción."""
+histoire = """
+Teotihuacan, al noreste de la actual Ciudad de México, fue entre 200 y 650 de nuestra era la mayor ciudad de las Américas, poblada por más de cien mil habitantes; los aztecas, que descubrieron sus ruinas siglos más tarde, la llamaron «el lugar de los dioses». Sus pirámides, sus templos, sus palacios y sus casas estaban cubiertos de pinturas. Este fragmento pertenecía a un ciclo pintado en los muros interiores de un palacio aristocrático, el conjunto residencial de Tlacuilapaxco. Como muchas pinturas de Teotihuacan, fue separado de su muro antes de entrar en un museo. El fragmento de Cleveland, presentado enfrente, muestra una figura casi idéntica, que procedería del mismo conjunto."""
+facture = """
+Los pintores de Teotihuacan trabajaban sobre un enlucido de cal fino y alisado, que pulían tras aplicar los colores para darle un ligero brillo. Su paleta se basa en pigmentos minerales, entre los que destaca un rojo de óxido de hierro, la hematita, declinado en varios tonos. El dibujo se traza primero a línea y luego se rellena con superficies planas; no hay sombra ni perspectiva. Las figuras, estilizadas y codificadas, se repiten casi idénticas, como si se trasladaran a partir de un modelo. Esta manera hace pensar en un motivo de tejido o en una plantilla, y da al muro la unidad de un tapiz."""
+details = [
+  "El tocado de largas plumas que se abre en abanico tras la cabeza.",
+  "La voluta de la palabra, adornada con conchas, ante el rostro.",
+  "El collar de gruesas perlas redondas y el adorno circular del cinturón.",
+  "Las hojas de maguey de puntas oscuras, a izquierda y derecha.",
+  "La banda de cheurones que recorre el borde superior.",
+]
+themes = ["procesión", "plegaria", "lluvia", "méxico antiguo", "rojo"]
+anecdote = """
+El maguey alimentó al México antiguo de muchas maneras: sus fibras daban hilo y papel, sus espinas agujas, y su savia fermentada el pulque, bebida ritual mucho más antigua que el tequila."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Fragmento de pintura mural: dignatario y hojas de maguey"
+artiste = "Teotihuacan"
+annee = "500–550 d. C."
+image = "tlacuilapaxco.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1963.252"
+technique = "Fresco sobre fragmento de muro"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Un dignatario en traje de gala canta y vierte una ofrenda: formaba parte de una fila de figuras idénticas que desfilaba alrededor de un patio."
+description = """
+En un marco bordeado de cheurones, sobre un fondo rojo oscuro, un hombre con gran traje avanza de perfil hacia la izquierda. Su rostro, pequeño, desaparece casi bajo un tocado monumental: una cabeza de animal estilizada, de ojo redondo, de la que brota un penacho de largas plumas. Lleva un collar de perlas redondas, un gran adorno circular en la cintura, un cinturón y sandalias atadas. Ante él se enrolla una gran voluta decorada; de su mano tendida cae un flujo de ofrendas. A cada lado se alzan hojas de maguey, triangulares, erizadas de puntas. Sobre el marco, un friso más ancho muestra una cinta ondulante sembrada de puntos, entre motivos en forma de estrellas."""
+evocation = """
+El museo ve en él a un hombre de la élite que canta o reza, con su palabra materializada en la voluta, y que vierte con una mano una libación llena de flores, mientras la otra sostiene una bolsa de incienso. Las espinas del maguey, delante y detrás de él, podrían evocar la sangre ofrecida a los dioses y el pulque, bebida ritual extraída de la savia de la planta. El personaje no tiene nombre: encarna una función, un rango, un gesto sagrado. Repetido idéntico alrededor de un patio, formaba un cortejo inmóvil, que decía a los visitantes la piedad y la riqueza de la familia que allí vivía."""
+histoire = """
+Según el Cleveland Museum of Art, esta figura formaba parte de una hilera de personajes idénticos que desfilaban por los muros de un patio, en uno de los ricos conjuntos de viviendas de Teotihuacan, sin duda el de Tlacuilapaxco. Estos grandes conjuntos, rodeados de altos muros ciegos, albergaban a varias familias en torno a patios interiores, y sus muros estaban a menudo cubiertos de pinturas. Como muchas pinturas de la ciudad, este fragmento fue separado de su muro en el siglo XX, en condiciones mal conocidas; el museo lo adquirió en 1963. Hace pareja con el fragmento de Chicago presentado enfrente, casi idéntico."""
+facture = """
+Como toda la pintura de Teotihuacan, la imagen se construye en camafeo de rojos, del rosa pálido al pardo, sobre un fondo de hematita. El dibujo, de gran precisión, detalla cada pluma del tocado, cada perla del collar, cada espina del maguey, sin buscar nunca el relieve. El pintor organiza la superficie como un tejido: bandas de cheurones, friso de motivos repetidos y luego el registro principal, marcado por las hojas puntiagudas. Las grietas y las lagunas, visibles a la derecha, muestran que la capa pictórica, muy fina, sufrió durante el desprendimiento. El fragmento está hoy fijado sobre un soporte moderno."""
+details = [
+  "El pequeño rostro del dignatario, casi oculto bajo el tocado.",
+  "El ojo redondo de la cabeza de animal que forma la parte superior del tocado.",
+  "El flujo de ofrendas que cae de la mano tendida.",
+  "Las hojas de maguey erizadas de puntas, a izquierda y derecha.",
+  "La cinta sembrada de puntos que ondula en el friso superior.",
+]
+themes = ["procesión", "ofrenda", "traje", "méxico antiguo", "repetición"]
+anecdote = """
+Los aztecas, llegados siglos después del abandono de la ciudad, visitaban sus ruinas como un lugar sagrado: según sus mitos, fue en Teotihuacan donde los dioses, arrojándose a una hoguera, dieron nacimiento al sol y a la luna."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 2.8
+
+[[oeuvres]]
+titre = "El pegador de carteles"
+artiste = "Carle Vernet"
+annee = "hacia 1820"
+image = "colleur-d-affiches.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1966.352"
+technique = "Litografía coloreada a mano"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Subido a su escalera, un cartelero pega los programas de los teatros en un muro de París. Estampa presentada ampliada."
+description = """
+Contra la esquina de un muro de piedra, un hombre subido a una escalera de madera pega un cartel. Visto de perfil, lleva un sombrero de copa abollado, una chaqueta azul, un pantalón pardo y, metido en el cinturón, un trapo a rayas. Con una mano aplasta la hoja, con la otra la alisa con una gran brocha. El muro está ya cubierto de carteles de color, azules, rosas, amarillos, que se superponen: en ellos se lee «Théâtre royal de l'Opéra-Comique», el título «Raoul, sire de C…» y otros nombres de teatros. Al pie de la escalera esperan el cubo de cola y un mojón de piedra. Bajo la imagen se lee «Afficheur», la firma de Carle Vernet y el nombre del impresor Delpech; arriba a la derecha, «N° 84»."""
+evocation = """
+Carle Vernet observa un oficio de la calle con la curiosidad de un reportero. El cartelero es el antepasado directo de los pegadores y grafiteros de hoy: es él quien hace del muro de la ciudad un soporte de imágenes y de palabras, renovado cada día. Las hojas pegadas unas sobre otras anuncian los espectáculos de la noche y transforman la esquina de la calle en un periódico público, que cada cual lee al pasar. Vernet hace de él un personaje pintoresco, de ropas gastadas pero de pose segura, casi elegante, como un pintor ante su lienzo. La escena, sin caricatura, guarda la memoria de un gesto que se repetiría millones de veces en el París del siglo XIX."""
+histoire = """
+La lámina forma parte de una serie de Gritos de París, esas imágenes de los pequeños oficios de la calle, vendedores ambulantes, aguadores o afiladores, que artistas y editores publicaban desde el siglo XVI. Carle Vernet dibuja una larga serie al natural, numerada y publicada a principios de los años 1820 por François-Séraphin Delpech, uno de los primeros grandes impresores litógrafos de París. La litografía, inventada en Baviera a finales del siglo XVIII, acababa de llegar a Francia, y Vernet fue uno de los primeros pintores en adoptarla. Las pruebas se vendían en negro o, a mayor precio, coloreadas a mano, como esta. El Cleveland Museum of Art la adquirió en 1966."""
+facture = """
+La litografía permite dibujar directamente sobre la piedra con un lápiz graso y luego imprimir el dibujo sin pasar por el grabado. Vernet saca de ella un trazo flexible, negros aterciopelados y grises matizados, visibles en las piedras del muro y en la sombra proyectada del hombre. Los colores, aplicados después a la acuarela, se reservan a los carteles y a las ropas: se destacan sobre un decorado dejado casi en blanco y negro. La figura, aislada en el centro de la hoja, sin fondo, se asemeja a una lámina de catálogo, lo que conviene a una serie de tipos parisinos."""
+details = [
+  "La brocha de cola que el cartelero sostiene en la mano derecha.",
+  "El título «Raoul, sire de C…» en el cartel azul de la Opéra-Comique.",
+  "El cubo de cola colocado al pie de la escalera.",
+  "El trapo a rayas metido en el cinturón.",
+  "El número «N° 84», arriba a la derecha, que sitúa la lámina en la serie.",
+]
+themes = ["cartel", "oficio", "parís", "calle", "litografía"]
+anecdote = """
+Desde la Revolución, el papel blanco estaba reservado a los carteles oficiales de las autoridades: los anuncios de particulares y de teatros debían imprimirse en papel de color. Por eso el muro de Carle Vernet es azul, rosa y amarillo."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Viviane, cartel para el Eden-Théâtre"
+artiste = "Jules Chéret"
+annee = "1886"
+image = "viviane.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1972.1126"
+technique = "Litografía en color"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Una bailarina con tutú amarillo gira bajo un título gigante: el cartel de ballet según Chéret, hecho para verse de lejos, en la calle."
+description = """
+Arriba, en mayúsculas negras, «Eden-Théâtre»; debajo, en enormes letras rojas sombreadas de blanco, «Viviane». En el centro, una joven bailarina rubia, con tutú amarillo pálido, gira sobre una punta, con un brazo levantado sobre la cabeza y la falda alzada por el movimiento. Tras ella, un personaje de traje negro y cabellos rizados parece bailar con ella; a la derecha, una mujer coronada, de larga túnica dorada, avanza. Abajo a la izquierda, en un triángulo rojo anaranjado, pequeños jinetes con armadura galopan. Abajo, en rojo, el texto anuncia un «ballet en 5 actos y 9 cuadros» de Edmond Gondinet, con música de Raoul Pugno y Clément Lippacher. La firma de Chéret está a la derecha."""
+evocation = """
+Viviane es el hada de las leyendas del rey Arturo, la Dama del Lago que hechizó al encantador Merlín: los caballeros del rincón rojo y la dama coronada remiten a ese mundo de novelas de caballerías. Pero Chéret no busca contar el ballet. Da su impulso, su luz, su promesa de placer: una joven risueña en pleno movimiento, que parece salir del cartel. Este tipo de figura, alegre, ligera, siempre bailando, se convierte en su sello, hasta el punto de que se llamará «chérettes» a sus heroínas. Sobre los muros grises de París, el cartel aportaba un destello de color y de fiesta que los transeúntes nunca habían visto en la calle."""
+histoire = """
+El Eden-Théâtre, gran sala de espectáculos abierta en 1883 cerca de la Ópera, era célebre por sus ballets de gran espectáculo, con decorados suntuosos y centenares de figurantes. Viviane se estrena allí en 1886. Chéret, que dirige entonces el taller de carteles de la imprenta Chaix, dibuja el anuncio: en el margen izquierdo se lee «Imprimerie Chaix (succursale Chéret), 18, rue Brunel». El editor de música Heugel, cuya dirección figura abajo, publicaba la partitura. Pegados por centenares en muros, columnas y empalizadas, estos carteles estaban hechos para durar unas semanas; este escapó a la cola y a la lluvia, y el Cleveland Museum of Art lo adquirió en 1972."""
+facture = """
+Chéret imprime sus carteles en litografía, con una piedra por color: aquí, el negro del dibujo, el rojo, el amarillo y el azul, que se superponen para dar otros matices. Aplica los fondos con degradados y salpicaduras, finas proyecciones de tinta que dan un grano vibrante, visible en el cielo y en torno a la bailarina. El dibujo, nervioso, deja abiertos los contornos, como un boceto. El rotulado no está pegado a la imagen: forma parte de la composición, y el gran título rojo, en perspectiva, se lee a decenas de metros. El triángulo anaranjado, en diagonal, dinamiza toda la hoja."""
+details = [
+  "El gran título «Viviane» en letras rojas sombreadas de blanco.",
+  "El tutú amarillo de la bailarina, alzado por la pirueta.",
+  "Los pequeños caballeros que galopan en el triángulo rojo, abajo a la izquierda.",
+  "La dama coronada, de larga túnica dorada, a la derecha.",
+  "En el margen izquierdo, la dirección de la imprenta Chaix.",
+]
+themes = ["cartel", "danza", "teatro", "color", "leyenda artúrica"]
+anecdote = """
+En los años 1890, los carteles de Chéret se volvieron tan codiciados que los coleccionistas los despegaban de los muros o pagaban a los carteleros para obtener ejemplares: se habló de «affichomanie». Las obras de street art conocen hoy la misma suerte."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "El Buda de la Medicina Bhaishajyaguru (Yaoshi fo)"
+artiste = "Chine, dynastie Yuan"
+annee = "hacia 1319"
+image = "bouddha-de-medecine.jpg"
+credit = "Photo : Metropolitan Museum of Art"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/42716"
+technique = "Pigmentos al agua sobre un enlucido de arcilla mezclada con paja, 7,52 × 15,11 m"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una pintura mural de más de quince metros, procedente de un monasterio de Shanxi: el Buda que cura, rodeado de su corte celestial."
+description = """
+En el centro de este inmenso muro, más alto que sus dos alas, el Buda de la Medicina está sentado de frente, vestido con una túnica roja, ante un gran nimbo claro; con una mano levantada y la otra apoyada en la rodilla, mira de frente. A ambos lados se sientan dos grandes bodhisattvas coronados, también ellos con nimbo, rodeados de personajes de pie con las manos juntas o cargadas de ofrendas. En los lados se alinean guardianes con armadura, armados, de rostros a veces amenazadores. Arriba, seres celestes flotan sobre nubes azules y verdes. Abajo, tres grandes discos claros y pequeñas figuras ocupan el primer plano. Los colores, apagados por el tiempo, mezclan verde, rojo, ocre y blanco."""
+evocation = """
+Bhaishajyaguru, Yaoshi fo en chino, es el Buda de la Medicina: hizo el voto de curar las enfermedades del cuerpo y del espíritu, y reina sobre una tierra pura de Oriente, hecha de lapislázuli. Los dos bodhisattvas que lo rodean son tradicionalmente los de la luz del sol y de la luz de la luna, y los guardianes con armadura son los generales celestes que protegen a sus fieles. Colocada en la sala de un monasterio, la imagen acogía a monjes y visitantes como una aparición: una corte celestial, ordenada y serena, que ocupaba todo el campo de visión. Ante ella se acudía a rezar por la salud y por una larga vida."""
+histoire = """
+La pintura fue realizada hacia 1319 para el monasterio inferior de Guangsheng, en Hongtong, en la provincia de Shanxi, en el norte de China, bajo la dinastía mongola de los Yuan. A principios del siglo XX, las pinturas murales del monasterio se venden: esta fue cortada en paneles para ser transportada y luego reensamblada. El coleccionista Arthur M. Sackler la ofreció al Metropolitan Museum en 1965; desde entonces ocupa todo un muro de una galería dedicada al arte chino. Otra gran pintura del mismo monasterio se conserva en el Nelson-Atkins Museum of Art de Kansas City. Como muchos frescos de street art cortados y vendidos, abandonó el lugar para el que fue hecha."""
+facture = """
+La pintura no es un fresco en sentido estricto: los colores, ligados al agua, se aplicaron sobre un enlucido seco, hecho de arcilla mezclada con paja para que se sujetara mejor al muro. Un decorado así era obra de un taller de pintores profesionales, que trabajaban a partir de modelos y de patrones, y se repartían el trabajo. El dibujo, a la tinta, es de gran flexibilidad en los ropajes y las bufandas que flotan; los colores minerales, verdes, rojos, ocres y blancos, rellenan luego las formas. La composición, estrictamente simétrica y jerarquizada, coloca las figuras principales en el centro y las hace mayores que las demás."""
+details = [
+  "El gran nimbo claro tras la cabeza del Buda.",
+  "La túnica roja del Buda, única mancha de color vivo en el centro.",
+  "Las coronas labradas de los dos bodhisattvas sentados.",
+  "Los guardianes con armadura, en las alas izquierda y derecha.",
+  "Los seres celestes que flotan sobre las nubes, en lo más alto.",
+]
+themes = ["budismo", "curación", "monasterio", "china", "monumental"]
+anecdote = """
+El Buda de la Medicina es también venerado en Japón con el nombre de Yakushi: el Yakushi-ji, uno de los grandes templos de Nara, le está dedicado y lleva su nombre."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 15.6
+
+[[oeuvres]]
+titre = "León del monasterio de San Pedro de Arlanza"
+artiste = "Espagne, art roman"
+annee = "después de 1200"
+image = "lion-arlanza.jpg"
+credit = "Photo : Metropolitan Museum of Art"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/471061"
+technique = "Fresco trasladado a lienzo, en dos paneles, 332,7 × 335,3 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un león de gesto fiero, mayor que el natural, pintado en el muro de un monasterio de Castilla: uno de los animales fabulosos del arte románico."
+description = """
+Sobre un fondo dividido en bandas ocre y gris azulado, un inmenso león avanza hacia la izquierda, de perfil, pero vuelve hacia nosotros su cabeza vista de frente. Sus grandes ojos redondos nos miran fijamente bajo unas cejas fruncidas, y su boca muestra dos hileras de dientes. Su melena está hecha de mechones en forma de llamas; su cuerpo rosa está recorrido por líneas flexibles que dibujan los músculos. Su larga cola describe un bucle sobre su lomo y termina en un mechón en forma de hoja. A la izquierda se alza un árbol estilizado de hojas escamadas; a la derecha, una arcada de dos columnas se abre a un fondo oscuro. Debajo, un friso de roleos rojos y blancos está en parte borrado."""
+evocation = """
+En el arte románico, el león es una imagen de doble sentido: símbolo de fuerza y de vigilancia, puede representar a Cristo resucitado o al guardián del lugar santo, pero también la amenaza del mal. Pintado mayor que el natural en el muro de un monasterio, este león de mirada fija vigila a quienes pasan. Su aspecto, a la vez feroz y cómico, muestra que los pintores conocían al animal sobre todo por imágenes, tejidos, marfiles o manuscritos, más que del natural. El árbol y la arcada evocan un jardín o un palacio. Estos grandes animales formaban parte de un decorado de bestias reales y fabulosas, dragones y otras criaturas, que poblaban los muros."""
+histoire = """
+El león procede del monasterio benedictino de San Pedro de Arlanza, cerca de Burgos, en Castilla, vinculado a la memoria del conde Fernán González, héroe fundador de Castilla, que fue enterrado allí. Fue pintado después de 1200 en una de las salas del monasterio. Abandonado en el siglo XIX, tras la supresión de las órdenes religiosas en España, el monasterio cae en ruinas; a principios del siglo XX, sus pinturas se separan de los muros y se venden. Una parte se encuentra hoy en el Museo Nacional de Arte de Cataluña, en Barcelona; el león, por su parte, cruzó el Atlántico para unirse a las colecciones medievales del Metropolitan Museum de Nueva York."""
+facture = """
+La pintura fue probablemente desprendida del muro mediante la técnica del strappo: se pega sobre la superficie pintada una tela impregnada de cola fuerte y luego se arranca, llevándose la delgada capa de color, que se traslada después a un nuevo soporte. Por eso la obra es hoy un fresco sobre lienzo. El pintor románico trabaja con grandes superficies planas, rodeadas por un trazo rojo pardo seguro y rítmico; los pelos, los músculos y las garras se convierten en motivos ornamentales. Las bandas de color del fondo, sin paisaje ni profundidad, y la cenefa en zigzag, a la izquierda, recuerdan los decorados de tejidos preciosos, en particular los de la España musulmana."""
+details = [
+  "Los grandes ojos redondos y las cejas fruncidas del león, vuelto hacia nosotros.",
+  "Las dos hileras de dientes de la boca de gesto fiero.",
+  "La cola en bucle, terminada en un mechón en forma de hoja.",
+  "El árbol de hojas escamadas, a la izquierda.",
+  "La arcada de dos columnas, a la derecha, sobre un fondo oscuro.",
+]
+themes = ["león", "arte románico", "monasterio", "animal", "castilla"]
+anecdote = """
+La suerte de las pinturas de Arlanza no tiene nada de excepcional: todavía hoy, obras de street art, algunas de Banksy, se cortan junto con su muro para venderse en subasta, a menudo contra la opinión de sus autores."""
+salle = 5
+mur = "nord"
+place = 7
+largeur = 3.6
+
+[[artistes]]
+nom = "Rome, fin de la République"
+vie = "Italia romana, siglos II–I a. C."
+biographie = """
+En los siglos II y I antes de nuestra era, Roma, dueña de Italia, conquista Grecia y el Oriente helenístico. Obras de arte y artistas griegos afluyen, y la aristocracia romana adopta con pasión la cultura griega. Las familias ricas se hacen construir, en la bahía de Nápoles y en torno al Vesubio, lujosas villas de campo y de costa, donde se retiran lejos de los asuntos de Roma. Boscoreale, Oplontis, Pompeya o Herculano han conservado numerosos ejemplos. Sus muros están enteramente pintados por equipos de artesanos anónimos, que trabajan a partir de modelos griegos y se transmiten sus conocimientos. La erupción del Vesubio, en el año 79 de nuestra era, fijó bajo la ceniza estos decorados, redescubiertos a partir del siglo XVIII."""
+style = """
+La pintura mural de esta época pertenece al segundo estilo pompeyano: el muro ya no se limita a imitar placas de mármol, sino que se abre en trampantojo a columnatas, cornisas, jardines o grandes figuras. Los colores son intensos, domina el rojo, y el modelado por la luz procede de la pintura griega. Estos frescos son casi todo lo que nos queda de la gran pintura antigua."""
+
+[[artistes]]
+nom = "Rome impériale"
+vie = "Roma y el Imperio romano, finales del siglo I a. C. – siglo I d. C."
+biographie = """
+En el año 27 antes de nuestra era, Octavio recibe el nombre de Augusto y se convierte en el primer emperador romano. La paz que instaura favorece un auge sin precedentes de la construcción: en Roma, templos y foros; en Campania, villas de la familia imperial y casas de notables. Los pintores, organizados en talleres, decoran los muros de estancia en estancia, con especialistas para los fondos, los ornamentos y las figuras. El gusto cambia varias veces en un siglo: tras las arquitecturas en trampantojo de finales de la República llegan muros más sobrios y luego, bajo Nerón y sus sucesores, decorados exuberantes. En Pompeya, duramente golpeada por un terremoto en el año 62, numerosas casas se estaban redecorando cuando la erupción del 79 las sepultó."""
+style = """
+Bajo Augusto, el tercer estilo pompeyano vuelve a cerrar el muro: grandes fondos lisos, negros, rojos o blancos, finas arquitecturas puramente decorativas y, en el centro, un cuadro de mito o de paisaje. El cuarto estilo, en el siglo I de nuestra era, reintroduce la profundidad en arquitecturas de fantasía, ligeras e imposibles, pobladas de figuras, animales y criaturas fabulosas."""
+
+[[artistes]]
+nom = "Teotihuacan"
+vie = "Altiplano central de México, hacia el siglo I a. C. – siglo VII d. C."
+biographie = """
+Teotihuacan se alza en un valle al noreste de la actual Ciudad de México. Modesta aglomeración en el siglo I antes de nuestra era, se convierte en pocos siglos en una metrópolis organizada según un plano regular, en torno a una gran avenida bordeada por la pirámide del Sol y la pirámide de la Luna. Entre 200 y 650 es la mayor ciudad de las Américas, poblada por más de cien mil habitantes, centro religioso, militar y comercial cuya influencia se extiende hasta el país maya. Sus habitantes viven en vastos conjuntos residenciales, de muros cubiertos de pinturas. Se ignora la lengua que hablaban y el nombre que daban a su ciudad. Hacia el siglo VI o VII, el centro es incendiado y la ciudad declina; los aztecas, que veneraban sus ruinas, la llamaron Teotihuacan, «el lugar de los dioses»."""
+style = """
+La pintura de Teotihuacan es una de las grandes tradiciones murales del mundo antiguo. Se basa en un enlucido de cal alisado y en una paleta de pigmentos minerales, en la que domina el rojo. Las figuras, dioses, sacerdotes, animales, plantas, se ven de perfil, estilizadas y repetidas en procesiones o en motivos, sin perspectiva ni sombra, en un orden que recuerda la escritura y el textil."""
+
+[[artistes]]
+nom = "Carle Vernet"
+vie = "Burdeos, 14 de agosto de 1758 – París, 17 de noviembre de 1836"
+biographie = """
+Antoine Charles Horace Vernet, llamado Carle Vernet, es hijo de Claude Joseph Vernet, célebre pintor de marinas, y padre de Horace Vernet, futuro pintor de batallas: tres generaciones de pintores en un siglo. Formado junto a su padre y al pintor Lépicié, obtiene en 1782 el gran premio de Roma. Durante la Revolución pierde a su hermana, guillotinada en 1794. Se da a conocer por sus caballos, que dibuja y pinta con una ciencia poco común, sus escenas de caza y de carreras, y por sus caricaturas de los Incroyables y las Merveilleuses, los jóvenes elegantes del Directorio. Bajo el Imperio, pinta las campañas de Napoleón. A partir de los años 1810, se apodera de la litografía, recién llegada a Francia, y multiplica las láminas de caballos, de soldados y de tipos parisinos, entre ellas una serie de Gritos de París."""
+style = """
+Carle Vernet es un observador vivo y preciso, más cómodo en el dibujo y la estampa que en la gran pintura de historia. Sus caballos, esbeltos y nerviosos, hicieron su reputación; sus escenas de calle, tomadas del natural, mezclan exactitud documental y humor ligero. Figura entre los artistas que hicieron de la litografía un arte popular a principios del siglo XIX."""
+
+[[artistes]]
+nom = "Jules Chéret"
+vie = "París, 31 de mayo de 1836 – Niza, 23 de septiembre de 1932"
+biographie = """
+Hijo de un obrero tipógrafo, Jules Chéret entra a los trece años como aprendiz en casa de un litógrafo y sigue clases nocturnas de dibujo. Establecido en Londres de 1859 a 1866, descubre allí los grandes carteles ingleses en color. A su regreso, funda en París su propia imprenta, equipada con prensas inglesas, y revoluciona el cartel francés: grandes litografías en color, figuras en movimiento, rotulado integrado en la imagen. En 1881 cede su taller a la imprenta Chaix, de la que sigue siendo director artístico. Dibuja para los teatros, los music-halls, los bailes, los aperitivos o el petróleo de alumbrado, más de un millar de carteles en total, y recibe la Legión de Honor en 1890. Hacia 1900 se dedica más a la pintura decorativa. Retirado en Niza, muere allí a los noventa y seis años; el museo de Bellas Artes de la ciudad lleva su nombre."""
+style = """
+Chéret es el padre del cartel ilustrado moderno. Sus composiciones, hechas para la calle, se basan en unos pocos colores vivos superpuestos, una figura femenina ligera y danzante, y letras dibujadas que forman cuerpo con la imagen. Da a la publicidad la gracia de la fiesta galante, y abre el camino a Toulouse-Lautrec, a Mucha y a todos los cartelistas de la Belle Époque."""
+
+[[artistes]]
+nom = "Chine, dynastie Yuan"
+vie = "China, 1271–1368"
+biographie = """
+Nieto de Gengis Kan, Kublai Kan funda en 1271 la dinastía Yuan y completa algunos años más tarde la conquista de China: por primera vez, todo el país está gobernado por soberanos mongoles, desde su capital de Dadu, la actual Pekín. Los Yuan protegen ampliamente las religiones, y el budismo, en sus formas china y tibetana, goza de gran favor. En las provincias del norte, y en particular en Shanxi, se construyen o restauran templos y monasterios, y sus salas se cubren de pinturas murales por talleres itinerantes de pintores profesionales, de los que solo nos han llegado algunos nombres a través de inscripciones. En 1368, una revuelta expulsa a los mongoles y funda la dinastía Ming."""
+style = """
+La pintura mural religiosa de los Yuan prolonga las tradiciones de los Tang y los Song: composiciones monumentales y simétricas, divinidades hieráticas en el centro, cortejos de figuras a los lados, dibujo a la tinta de gran flexibilidad, realzado con colores minerales. Se distingue de la pintura de los letrados, a la tinta sobre seda o sobre papel, que triunfa en la misma época."""
+
+[[artistes]]
+nom = "Espagne, art roman"
+vie = "Reinos cristianos del norte de la península ibérica, siglos XI–XIII"
+biographie = """
+En los siglos XI y XII, los reinos cristianos del norte de España, Castilla, León, Aragón, condados catalanes, se extienden hacia el sur a costa de la España musulmana. A lo largo de los caminos de la peregrinación a Santiago de Compostela, iglesias y monasterios se multiplican, y sus muros se cubren de pinturas: ábsides donde trona Cristo en majestad, naves donde se despliegan relatos bíblicos, salas monásticas adornadas con animales y motivos. Los pintores, a menudo itinerantes, trabajan de una obra a otra y difunden los modelos venidos de Francia, de Italia o de Bizancio, pero también del arte de la España musulmana. En el siglo XX, muchas de estas pinturas fueron separadas de los muros para ser salvadas o vendidas, y se encuentran hoy en Barcelona, en Madrid o en Estados Unidos."""
+style = """
+La pintura románica española se reconoce por sus grandes superficies planas de colores vivos, rodeadas de un trazo grueso, por sus figuras estilizadas de grandes ojos y por sus fondos en bandas horizontales, sin paisaje ni profundidad. Hombres y animales se convierten en ornamentos poderosos, hechos para leerse de lejos, en la penumbra de las iglesias."""

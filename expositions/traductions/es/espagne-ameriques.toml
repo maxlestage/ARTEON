@@ -1,0 +1,967 @@
+[exposition]
+ordre = 135
+nom_court = "España y América"
+mouvement = "España y América Latina en el siglo XIX"
+cadre = "dore"
+couleur = "#9a4a22"
+titre = "España y América Latina, las dos orillas de una pintura"
+artiste = "Fortuny, Sorolla, Casas, Zuloaga, Velasco, Herrán, Pedro Américo…"
+dates = "1851–1913"
+accroche = "Exposición virtual · Museo Nacional de Arte (MUNAL), Ciudad de México"
+introduction = """
+En el siglo XIX, mientras España busca su imagen entre la luz de \
+Sorolla y la España negra de Zuloaga, las jóvenes naciones de América Latina \
+inventan la suya: el valle de México de Velasco, el grito de independencia de \
+Brasil, el campesino de São Paulo, el velorio de un niño en Puerto Rico. La visita reúne \
+diez pintores, de Madrid y Barcelona a Ciudad de México, São Paulo, Buenos Aires y San \
+Juan. El edificio se inspira en el Museo Nacional de Arte de México, instalado en un \
+palacio de principios del siglo XX: un vestíbulo, un gran salón de recepción en el centro \
+y unas salas que lo rodean por tres lados."""
+vitrine = "paseo-orillas-mar.jpg"
+
+[musee]
+nom = "Museo Nacional de Arte (MUNAL)"
+ville = "Ciudad de México, México"
+architecte = "Silvio Contri"
+construction = "1904–1911"
+presentation = """
+El Museo Nacional de Arte de México ocupa el antiguo palacio de la Secretaría de \
+Comunicaciones y Obras Públicas, en la calle de Tacuba, en el centro histórico. Bajo la \
+presidencia de Porfirio Díaz, el arquitecto italiano Silvio Contri lo construye a partir de \
+1904 en un estilo ecléctico, que mezcla referencias neoclásicas y renacentistas: fachada \
+de piedra, gran escalera de honor de doble tramo, salón de recepción con el techo pintado \
+con una Alegoría del Progreso. Su fachada da a la plaza Manuel Tolsá, donde se alza el \
+Caballito, la estatua ecuestre de Carlos IV, obra de Manuel Tolsá. \
+El palacio se convierte en museo el 23 de julio de 1982 y es restaurado a finales de los años \
+noventa. Sus salas recorren el arte mexicano desde la época colonial hasta mediados del siglo \
+XX; las vistas del valle de México de José María Velasco y las telas de \
+Saturnino Herrán figuran entre sus tesoros."""
+ici = """
+ARTEON retoma la ordenación del palacio: se entra por el sur en el vestíbulo de la \
+plaza Tolsá, de muros de piedra clara, y luego en el salón de recepción, la mayor \
+sala, de 24 metros de largo y 10 de alto, de muros rojo ladrillo, consagrada a \
+España. Tres salas lo rodean: al oeste, la sala de México, de muros ocre; al \
+este, la sala de Brasil, de un verde pálido; y al norte, por último, la sala del Río de la Plata \
+y del Caribe, de muros rosa empolvado, donde concluye la visita."""
+
+[[salles]]
+nom = "El vestíbulo de la plaza Tolsá"
+theme = "La entrada del palacio, frente a la plaza donde se alza la estatua ecuestre de Carlos IV."
+murs = "#e6ddcc"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "El salón de recepción"
+theme = "España: la boda de Fortuny, la playa de Sorolla, el tándem de Casas y las viejas de Zuloaga."
+murs = "#b97361"
+x = 0
+z = -11
+largeur = 24
+profondeur = 14
+hauteur = 10
+portes = ["nord", "est", "ouest"]
+
+[[salles]]
+nom = "México"
+theme = "El valle de México visto por Velasco y las flores de los muertos de Saturnino Herrán."
+murs = "#dcbf93"
+x = -18
+z = -11
+largeur = 12
+profondeur = 14
+hauteur = 8
+
+[[salles]]
+nom = "Brasil"
+theme = "El grito de independencia pintado por Pedro Américo y el campesino de São Paulo de Almeida Júnior."
+murs = "#b4c0a2"
+x = 18
+z = -11
+largeur = 12
+profondeur = 14
+hauteur = 8
+
+[[salles]]
+nom = "El Río de la Plata y el Caribe"
+theme = "Manuelita Rosas con vestido rojo en Buenos Aires y el velorio de un niño en Puerto Rico."
+murs = "#dcc0b8"
+x = 0
+z = -24
+largeur = 14
+profondeur = 12
+hauteur = 8
+
+[[oeuvres]]
+titre = "La vicaría (La boda española)"
+artiste = "Marià Fortuny"
+annee = "1868–1870"
+image = "vicaria.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Mari%C3%A0_Fortuny_-_The_Spanish_Wedding_-_Google_Art_Project.jpg"
+technique = "Óleo sobre tabla, 60 × 93,5 cm"
+collection = "Museo Nacional de Arte de Cataluña, Barcelona"
+note = "En la sacristía de una iglesia madrileña, una boda con trajes del siglo XVIII firma el registro: el cuadro que dio a Fortuny la fama en París."
+description = """
+En una amplia sala de muros adornados con tapices, acaba de celebrarse una boda. \
+A la izquierda, ante unas estanterías de libros, el novio se inclina sobre la mesa para \
+firmar el registro, bajo la mirada de un sacerdote de sotana negra. En el centro, la novia, con \
+vestido de seda clara, espera rodeada de los testigos, de amigas con vestidos rosas y de \
+hombres con trajes bordados, tricornios y calzones de satén. Tras ellos, una reja de \
+hierro forjado cierra una capilla. A la derecha, sobre un banco de madera, un torero con traje de \
+luces y una manola con mantilla contemplan la escena, mientras un anciano \
+de torso desnudo, un religioso mendicante, atraviesa la estancia. En primer plano, un brasero de \
+cobre colocado sobre el embaldosado y un papel caído en el suelo."""
+evocation = """
+Fortuny no pinta una boda de su tiempo: viste a sus personajes como \
+en tiempos de Goya, a quien admiraba, y compone una España de fantasía, elegante y \
+pintoresca, tal como los coleccionistas de París gustaban de soñarla. El cuadro \
+contrapone dos mundos: la sociedad refinada de la boda, en el centro, y el pueblo, a la \
+derecha, con el torero y la manola que asisten a la ceremonia como espectadores. \
+Se ha visto en él una comedia de costumbres, llena de ironía: cada cual desempeña su papel, el sacerdote, \
+los testigos, los curiosos. El tema cuenta, sin embargo, menos que el espectáculo de la \
+pintura misma, que transforma sedas, dorados y baldosas en un centelleo \
+de pinceladas. A este gusto por el detalle precioso la crítica española lo llamó \
+«preciosismo»."""
+histoire = """
+Fortuny comienza el cuadro en Roma en 1868, poco después de su boda en Madrid con \
+Cecilia de Madrazo, hija del pintor Federico de Madrazo, y lo termina en París en \
+1870. Trabaja entonces bajo contrato con el gran marchante parisino Adolphe \
+Goupil. Expuesta en la galería de este en la primavera de 1870, La vicaría causa \
+sensación: Goupil la vende a una coleccionista, la señora Cassin, por 70 000 francos, \
+uno de los precios más altos pagados entonces por un cuadro de un artista vivo. De la \
+noche a la mañana, Fortuny se convierte en uno de los pintores más buscados de Europa, \
+en particular por los coleccionistas estadounidenses. Tras pasar por varias colecciones, \
+la tela es hoy uno de los cuadros más célebres del Museo Nacional de Arte de \
+Cataluña, en Barcelona."""
+facture = """
+Sobre una pequeña tabla, Fortuny pinta con minuciosidad de miniaturista, con la \
+punta de un pincel muy fino: cada figura mide apenas unos centímetros. La \
+pincelada, viva y nerviosa, aplica toques de blanco y de oro que hacen centellear las \
+sedas, los bordados y el metal. El decorado, inventado, reúne elementos que el \
+pintor dibujó en iglesias y en casas de anticuarios. La luz cae desde arriba \
+a la izquierda y se desliza sobre la boda, mientras los lados quedan en una penumbra dorada."""
+details = [
+  "El novio inclinado sobre la mesa, pluma en mano, para firmar el registro.",
+  "El torero y la manola sentados en el banco, a la derecha, como simples espectadores.",
+  "El brasero de cobre colocado sobre el embaldosado, en primer plano a la izquierda.",
+  "El papel blanco caído en el suelo, en medio del pavimento rojo.",
+  "La firma de Fortuny y la fecha, en el ángulo inferior izquierdo.",
+]
+themes = ["boda", "españa", "trajes", "preciosismo", "goya"]
+anecdote = """
+El hijo de Fortuny, Mariano Fortuny y Madrazo, nacido en 1871, se convierte en Venecia en un \
+creador célebre: inventa el vestido Delphos, de seda finamente plisada, que lucían \
+las elegantes de principios del siglo XX. Su palacio veneciano es hoy el museo \
+Fortuny."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Paseo a orillas del mar"
+artiste = "Joaquín Sorolla"
+annee = "1909"
+image = "paseo-orillas-mar.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Joaqu%C3%ADn_Sorolla_y_Bastida_-_Strolling_along_the_Seashore_-_Google_Art_Project.jpg"
+technique = "Óleo sobre lienzo, 205 × 200 cm"
+collection = "Museo Sorolla, Madrid"
+note = "La esposa y la hija mayor del pintor caminan por la playa de Valencia, con los vestidos blancos levantados por el viento."
+description = """
+Dos mujeres vestidas de blanco caminan sobre la arena, a orillas del mar. A la izquierda, la \
+mayor sujeta con la mano un gran sombrero de paja, del que escapa un largo velo \
+violeta que el viento hace ondear tras ella; con la otra mano, sostiene una \
+sombrilla cerrada, cuya tela se hincha. A la derecha, una joven de talle \
+fino, con el cabello recogido en un moño, avanza sin sombrero y lleva este en la \
+mano; su mirada se dirige hacia un lado. El pintor las ve desde un punto de vista \
+ligeramente picado: no hay horizonte, solo la franja azul del mar y \
+la espuma de las olas, arriba, y la arena dorada, abajo. Las sombras de las dos mujeres, \
+violetas, se alargan sobre la playa."""
+evocation = """
+Sorolla pinta aquí a su esposa, Clotilde García del Castillo, y a su hija mayor, \
+María, durante el verano de 1909, en una playa de Valencia. Todo el cuadro es una imagen \
+de la felicidad familiar y del ocio de la burguesía a principios del siglo XX: se \
+pasea a orillas del agua, con vestido de verano, por el placer del aire y de la luz. \
+Pero el verdadero tema quizá sea el viento: levanta los velos, pega los \
+vestidos, hincha la sombrilla y da a la escena un movimiento que parece captado al vuelo. \
+Los blancos, que toman los reflejos azules del mar y dorados de la arena, muestran lo \
+que Sorolla buscaba ante todo: pintar la luz mediterránea, la más \
+deslumbrante que existe, al aire libre y sin trampas."""
+histoire = """
+A comienzos de 1909, Sorolla triunfa en Nueva York: la exposición que le dedica la \
+Hispanic Society of America atrae a cerca de 160 000 visitantes en un mes, y la \
+mayoría de las telas se venden. De regreso en España, pasa el verano en Valencia, su \
+ciudad natal, con su familia, y pinta en la playa una serie de grandes cuadros, \
+entre ellos este. No lo vende: la tela permanece en su casa de Madrid, construida \
+en 1910 y 1911. Tras la muerte del pintor, en 1923, su viuda lega la casa y una \
+gran parte de las obras al Estado español; el museo Sorolla abre allí sus puertas en \
+1932. El cuadro, uno de los más queridos del museo, ha sido reproducido en innumerables \
+carteles y tarjetas postales."""
+facture = """
+Sorolla pinta in situ, a orillas del agua, sobre un lienzo muy grande, con una pincelada \
+ancha, rápida y empastada, aplicada sin retoques. Los vestidos blancos están hechos de \
+decenas de matices: azul, malva, rosa, amarillo pálido, según la tela reciba el \
+sol o la sombra. Las sombras, coloreadas de violeta, proceden de las lecciones del \
+impresionismo, pero el dibujo sigue siendo firme. El encuadre picado, sin cielo, y el \
+corte de las figuras recuerdan la fotografía y las estampas japonesas."""
+details = [
+  "El largo velo violeta que se escapa del sombrero de Clotilde.",
+  "La sombrilla blanca que el viento hincha como una vela.",
+  "El sombrero de paja que María lleva en la mano, con su cinta azul oscuro.",
+  "Las sombras violetas de las dos mujeres sobre la arena.",
+  "La firma y la fecha, abajo a la izquierda.",
+]
+themes = ["mar", "luz", "viento", "familia", "aire libre"]
+anecdote = """
+El suegro de Sorolla, Antonio García Peris, era fotógrafo en Valencia. Se \
+conservan numerosas fotografías del pintor trabajando en la playa, ante \
+telas inmensas, a veces resguardado del sol bajo una sombrilla o una tela tendida."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Ramon Casas y Pere Romeu en un tándem"
+artiste = "Ramon Casas"
+annee = "1897"
+image = "tandem.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Ramon_Casas_-_Ramon_Casas_and_Pere_Romeu_on_a_Tandem_-_Google_Art_Project.jpg"
+technique = "Óleo sobre lienzo, 191 × 215 cm"
+collection = "Museo Nacional de Arte de Cataluña, Barcelona"
+note = "El pintor y su amigo, dueño de la taberna Els Quatre Gats, pedalean juntos: la enseña de la bohemia modernista de Barcelona."
+description = """
+Dos hombres barbudos, vestidos de blanco, pedalean en un tándem, vistos de perfil, sobre un fondo \
+liso color papel de estraza. Delante, Ramon Casas, tocado con un sombrero de tela, con la \
+pipa en la boca, se inclina sobre el manillar, con una chaqueta oscura enrollada ante sí. \
+Detrás, Pere Romeu, alto y delgado, con gorra blanca en la cabeza, se yergue y \
+vuelve hacia nosotros un rostro crispado por el esfuerzo. Ambos llevan calzón \
+abombado, altos calcetines rayados y zapatos bajos. La bicicleta negra, de ruedas \
+finas, ocupa todo el ancho del cuadro. A lo lejos, a la izquierda, una simple línea \
+dibuja la silueta de Barcelona, con una chimenea de fábrica. Arriba a la izquierda, \
+unas hojas de árbol sobresalen del marco."""
+evocation = """
+Este doble retrato humorístico es un manifiesto. A finales del siglo XIX, la \
+bicicleta es el símbolo mismo de la modernidad, de la velocidad y del deporte, y el \
+tándem dice la amistad y la empresa común: Casas y Romeu acaban de lanzar \
+juntos Els Quatre Gats, una taberna que será el corazón del modernismo catalán. El \
+cuadro se burla con cariño de sus dos héroes, uno absorto en su pipa, el otro \
+haciendo muecas, y toma el contrapié de la pintura oficial y de sus grandes temas. \
+Dice también el orgullo de una Barcelona industrial, cuyas chimeneas \
+aparecen en el horizonte, abierta a París y a la vanguardia. Cuando Casas lo \
+sustituye, en 1901, por una tela en la que los dos amigos van en automóvil, la \
+broma se convierte en una imagen del paso de un siglo a otro."""
+histoire = """
+Pere Romeu, que había frecuentado el cabaret del Chat Noir en París, abre en junio de 1897, \
+con el apoyo de Casas y de Santiago Rusiñol, la taberna Els Quatre Gats, en la \
+planta baja de la Casa Martí, un edificio neogótico del arquitecto Josep Puig \
+i Cadafalch. Casas pinta este gran cuadro para decorar la sala. Según varias \
+fuentes, una inscripción en catalán, hoy cortada, figuraba en el lado derecho. \
+En 1901, la tela es sustituida por Ramon Casas y Pere Romeu en automóvil, y la \
+revista Pèl & Ploma reproduce las dos imágenes como el fin del siglo XIX y el comienzo \
+del XX. El cuadro pasa después a manos privadas; el museo de Barcelona lo adquiere en \
+1963. Una copia adorna hoy la taberna, que sigue abierta."""
+facture = """
+Casas se inspira aquí en el cartel, arte del que es uno de los maestros en España: \
+contornos negros marcados, planos de color, un fondo liso dejado casi vacío, como \
+el papel de una litografía. La tela, apenas preparada, se transparenta en algunos puntos. \
+El dibujo, de gran seguridad, lo dice todo en pocas líneas: la tensión de las piernas, \
+la espalda encorvada, el esfuerzo. Solo los rostros, los calcetines rayados y los detalles de la \
+bicicleta están tratados con mayor precisión."""
+details = [
+  "La pipa de Casas, delante, inclinado sobre el manillar.",
+  "La mirada de Pere Romeu, vuelta hacia el espectador.",
+  "La silueta de Barcelona y su chimenea de fábrica, a la izquierda, en el horizonte.",
+  "El farol fijado en la parte delantera del tándem.",
+  "Los calcetines rayados de colores vivos de los dos ciclistas.",
+]
+themes = ["bicicleta", "amistad", "modernismo", "humor", "barcelona"]
+anecdote = """
+En febrero de 1900, Els Quatre Gats acoge la primera exposición individual de un \
+joven pintor de dieciocho años, Pablo Picasso, asiduo de la taberna: cuelga allí \
+una serie de retratos de sus amigos, dibujados en respuesta a los célebres retratos al \
+carboncillo de Casas."""
+salle = 2
+mur = "nord"
+place = 6
+largeur = 2.15
+
+[[oeuvres]]
+titre = "Las brujas de San Millán"
+artiste = "Ignacio Zuloaga"
+annee = "1907"
+image = "brujas-san-millan.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Las_brujas_de_San_Mill%C3%A1n_-_Ignacio_Zuloaga_Zabaleta.jpg"
+technique = "Óleo sobre lienzo, 204 × 198 cm"
+collection = "Museo Nacional de Bellas Artes, Buenos Aires"
+note = "Siete viejas de Castilla, agrupadas en la noche: la España negra de Zuloaga, adquirida por Buenos Aires en 1910."
+description = """
+Sobre un fondo de colinas sombrías, bajo un cielo de noche, siete viejas se \
+mantienen muy juntas unas a otras. A la izquierda, dos mujeres de pie, vestidas de \
+negro: una, de perfil, sostiene una rueca; la otra, de gruesas gafas redondas, \
+lleva una cesta de mimbre en el brazo. En el centro, dos mujeres sentadas en el suelo, \
+envueltas en mantones pardos y rojos, alzan los ojos. A la derecha, una mujer encorvada \
+sobre su bastón asoma la cabeza de su manto, y otra, envuelta en un mantón verde, con los \
+ojos entornados, permanece inmóvil; una última, en primer plano, se ve de espaldas. Ante \
+ellas, en el suelo, un farol de hojalata. Una luz fría golpea los \
+rostros arrugados y las manos nudosas."""
+evocation = """
+El título habla de brujas, pero el cuadro no muestra ninguna magia: solo \
+campesinas ancianas, con sus herramientas y sus pobres ropas, a quienes la noche y \
+la iluminación vuelven inquietantes. Zuloaga retoma una tradición española, la de las \
+brujas y las viejas de Goya, para pintar una Castilla ruda, pobre e \
+inmóvil. Es la España que los escritores de la generación del 98, tras la \
+pérdida de las últimas colonias, querían mirar de frente, lejos del folclore feliz. \
+La crítica de la época oponía de buen grado esta España negra de Zuloaga a \
+la España blanca y luminosa de Sorolla. Los rostros, pintados con respeto, \
+dan sin embargo a estas mujeres una dignidad grave, casi escultórica."""
+histoire = """
+Zuloaga pinta la tela en los últimos meses de 1907 en Segovia, donde vive su tío, el \
+ceramista Daniel Zuloaga; hace posar a viejas segovianas y a criadas de \
+su tío. El cuadro se presenta en 1908 en el Salón de la Sociedad Nacional de \
+Bellas Artes, en París, y después en Nueva York en 1909. En 1910, Zuloaga es el pintor más \
+representado de la Exposición Internacional de Arte del Centenario, en Buenos Aires, que \
+celebra los cien años de la Revolución de Mayo: muestra allí treinta y seis obras. Con \
+esa ocasión, el Estado argentino adquiere varias de sus telas, entre ellas esta, para el \
+Museo Nacional de Bellas Artes, donde sigue hoy."""
+facture = """
+Zuloaga compone su cuadro como una escena de teatro: las figuras se destacan sobre \
+un fondo plano, casi un decorado pintado. La luz, fría y violenta, cae sobre las \
+cabezas como un foco, a la manera de los tenebristas españoles del siglo XVII. \
+Los colores son apagados, negros, pardos, verdes mortecinos y rojos oscuros, y el \
+dibujo, muy marcado, subraya cada arruga. Las figuras se organizan en triángulos, \
+en torno a las dos mujeres sentadas."""
+details = [
+  "Las gafas redondas de la mujer de pie, que le dan un aire extraño.",
+  "La rueca cargada de lana, a la izquierda.",
+  "El farol de hojalata colocado en primer plano.",
+  "La mujer encorvada sobre su bastón, que asoma la cabeza de su manto.",
+]
+themes = ["vejez", "castilla", "noche", "españa negra", "brujas"]
+anecdote = """
+Zuloaga era también coleccionista: poseía en su taller de París una gran \
+tela del Greco, hoy en el Metropolitan Museum de Nueva York con el título \
+La apertura del quinto sello. El joven Picasso la vio allí; se la cita a menudo entre \
+las fuentes de Las señoritas de Avignon."""
+salle = 2
+mur = "sud"
+place = 6
+largeur = 2.0
+
+[[oeuvres]]
+titre = "El valle de México desde el cerro de Santa Isabel"
+artiste = "José María Velasco"
+annee = "1875"
+image = "valle-de-mexico.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_Mar%C3%ADa_Velasco_-_The_Valley_of_Mexico_from_the_Santa_Isabel_Mountain_Range_-_Google_Art_Project.jpg"
+technique = "Óleo sobre lienzo, 137,5 × 226 cm"
+collection = "Museo Nacional de Arte (MUNAL), Ciudad de México"
+note = "Desde lo alto de una colina, el valle de México se extiende hasta los volcanes nevados: el paisaje convertido en emblema de la nación."
+description = """
+La mirada parte de una colina cubierta de rocas rojas y de matorrales, en \
+primer plano, y se hunde sobre una inmensa llanura. A la izquierda, al pie de las rocas, una \
+mujer indígena de falda roja, con una carga a la espalda, camina con un niño. Más \
+lejos, un montículo redondeado oculta una parte del valle; tras él se extienden las \
+aguas pálidas del lago de Texcoco y unas tierras llanas donde se adivinan caminos y, \
+al fondo, la ciudad de México. En el horizonte, a la izquierda, se alzan los dos \
+volcanes cubiertos de nieve, el Popocatépetl y el Iztaccíhuatl. El cielo ocupa casi \
+la mitad de la tela: grandes nubes blancas y grises se acumulan en él, y un chaparrón \
+cae a lo lejos, a la derecha."""
+evocation = """
+Velasco no pinta solo un hermoso panorama: hace del valle de México, \
+cuna de la antigua Tenochtitlan de los aztecas y corazón del país, una imagen de la \
+nación entera. Los volcanes, ligados a una leyenda de amantes desdichados, la ciudad, \
+los lagos y la mujer indígena en primer plano reúnen la naturaleza, la historia y \
+el pueblo. En un México que apenas sale de las guerras de la Reforma y de \
+la intervención francesa, este paisaje apacible y grandioso propone una imagen de unidad \
+y de orgullo. Los historiadores ven en él también la mirada de un científico: cada roca, \
+cada planta, cada nube está observada con la exactitud de un naturalista. El \
+cuadro se ha convertido en uno de los símbolos visuales de México."""
+histoire = """
+Velasco vive al pie del Tepeyac, al norte de la ciudad de México, y recorre sin cesar las \
+colinas que dominan el valle. Entre 1875 y 1892, pinta una docena de \
+vistas, y esta, tomada desde el cerro de Santa Isabel, es la más célebre. Sus \
+grandes paisajes representan después a México en las exposiciones internacionales, en \
+Filadelfia, París y Chicago, y le valen una fama que rebasa su país. \
+La tela pertenece hoy al Museo Nacional de Arte, en la ciudad de México, que conserva el \
+conjunto más importante de sus obras. En 2025, la National Gallery de Londres \
+dedicó a Velasco una exposición, la primera que ha consagrado a un artista \
+de América Latina."""
+facture = """
+Discípulo del paisajista italiano Eugenio Landesio en la Academia de San Carlos, Velasco \
+construye su cuadro con rigor: un primer plano oscuro y detallado, un valle \
+que se aclara a medida que se aleja, montañas azuladas en el horizonte. La \
+perspectiva aérea, que palidece los colores a lo lejos, da una impresión \
+de espacio inmenso. Su formación científica se lee en la precisión de las rocas, de \
+la vegetación y de las nubes. Algunos elementos, como las cumbres, están recompuestos \
+de memoria."""
+details = [
+  "Los dos volcanes nevados, a la izquierda, en el horizonte.",
+  "La mujer de falda roja y el niño que descienden por el sendero, abajo a la izquierda.",
+  "El chaparrón que cae bajo las nubes, a lo lejos a la derecha.",
+  "Las aguas pálidas del lago de Texcoco, en medio de la llanura.",
+]
+themes = ["paisaje", "valle", "volcanes", "nación", "méxico"]
+anecdote = """
+En la Academia de San Carlos, donde enseña perspectiva y paisaje, Velasco tuvo \
+entre sus alumnos al joven Diego Rivera, que más tarde le rindió homenaje \
+como a uno de sus maestros."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.26
+
+[[oeuvres]]
+titre = "La ofrenda"
+artiste = "Saturnino Herrán"
+annee = "1913"
+image = "la-ofrenda.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Saturnino_Herr%C3%A1n_-_The_offering_-_Google_Art_Project.jpg"
+technique = "Óleo sobre lienzo, 182 × 210 cm"
+collection = "Museo Nacional de Arte (MUNAL), Ciudad de México"
+note = "Para el día de Muertos, una familia cruza los canales de Xochimilco en una barca cargada de flores de cempasúchil."
+description = """
+Una larga barca de fondo plano, una trajinera, se desliza sobre el agua verde de un canal. \
+Está cargada de gruesos manojos de flores anaranjadas, los cempasúchiles, o claveles \
+de las Indias. De pie en el centro, un joven de camisa blanca, con un tallo en la mano, \
+lleva un ramo al hombro. Tras él, un anciano de bigote blanco y \
+gran sombrero sostiene la larga pértiga que hace avanzar la barca. A la izquierda, un hombre \
+barbudo, con la cabeza gacha, se envuelve en su sarape; a la derecha, una mujer sentada, de \
+espaldas, lleva un bebé dormido en su rebozo, y una niña nos mira. Al \
+fondo, bajo los arcos de madera de la barca, otras embarcaciones cargadas \
+de gente se suceden por el canal."""
+evocation = """
+En México, para el día de Muertos, a principios de noviembre, se adornan las tumbas y los \
+altares con cempasúchil, la flor anaranjada cuyo color y perfume guían, según se dice, \
+las almas de los difuntos. Herrán reúne en la barca todas las edades de la vida: el bebé, \
+la niña, el joven, la mujer, los dos ancianos. Se ha visto en ello una imagen del \
+río de la vida que lleva a cada uno hacia la muerte, tema grave tratado sin lo macabro. La \
+tela está pintada en 1913, en plena revolución mexicana, y algunos historiadores leen en ella \
+la inquietud de un país en guerra. Afirma sobre todo una identidad nueva: \
+la de un México mestizo e indígena, digno y recogido, que Herrán sitúa en el centro \
+de la gran pintura."""
+histoire = """
+Saturnino Herrán tiene veintiséis años cuando pinta La ofrenda, en la ciudad de México, donde hizo \
+toda su carrera sin salir nunca a estudiar a Europa. Formado en la Academia de San \
+Carlos, busca pintar temas mexicanos con los medios de la pintura \
+moderna de su tiempo, la del simbolismo y el modernismo. Los canales de Xochimilco, \
+al sur de la capital, donde circulan aún las trajineras cargadas de flores y de \
+verduras, le proporcionan el escenario. El cuadro es hoy una de las obras más \
+conocidas del Museo Nacional de Arte, que conserva buena parte de la \
+producción del artista, muerto a los treinta y un años."""
+facture = """
+Herrán combina un dibujo sólido y académico, aprendido en San Carlos, con un color \
+decorativo: verdes y ocres mates, casi apagados, sobre los que estalla \
+el naranja vivo de las flores. La composición, muy apretada, corta las figuras y la \
+barca con los bordes del marco y estrecha a los personajes en primer plano. El punto de \
+vista picado y la línea de horizonte situada muy alta recuerdan las búsquedas de los \
+pintores europeos del Art Nouveau y del simbolismo."""
+details = [
+  "Los manojos de cempasúchil anaranjado, que llenan toda la parte baja de la barca.",
+  "El bebé dormido en el rebozo de su madre, a la derecha.",
+  "La mirada grave de la niña, vuelta hacia nosotros.",
+  "La fila de barcas cargadas de gente, a lo lejos, arriba a la izquierda.",
+  "La firma y la fecha, abajo a la izquierda.",
+]
+themes = ["día de muertos", "flores", "edades de la vida", "xochimilco", "méxico"]
+anecdote = """
+Herrán dejó inconclusa su gran obra, Nuestros dioses, un friso previsto para el nuevo \
+Teatro Nacional de México: en el centro, imaginaba a la diosa azteca Coatlicue \
+fundida con Cristo en la cruz, imagen del México mestizo."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 2.1
+
+[[oeuvres]]
+titre = "¡Independencia o muerte!"
+artiste = "Pedro Américo"
+annee = "1888"
+image = "independencia-ou-morte.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Pedro_Am%C3%A9rico_-_Independ%C3%AAncia_ou_Morte_-_Google_Art_Project.jpg"
+technique = "Óleo sobre lienzo, 415 × 760 cm"
+collection = "Museo Paulista (Museo del Ipiranga), Universidad de São Paulo"
+note = "El 7 de septiembre de 1822, a orillas del Ipiranga, el príncipe Pedro proclama la independencia de Brasil. La inmensa tela mide más de siete metros: aquí se presenta reducida."
+description = """
+Sobre una colina de tierra roja, a orillas de un arroyo, un grupo de jinetes de \
+uniforme se detiene. En el centro, montado en un caballo bayo, el príncipe Pedro alza su espada \
+hacia el cielo. A su alrededor, sus compañeros agitan los sombreros. A la derecha, la \
+guardia de honor, de uniformes blancos y cascos con crines, acude al galope, con los \
+sables en alto, levantando polvo; algunos jinetes cruzan el arroyo, \
+en primer plano. Detrás de ellos, una casa baja de tejado de tejas. A la izquierda, un \
+boyero descalzo, con sombrero de paja, se ha detenido con sus bueyes y su \
+carreta para contemplar la escena. Arriba, un gran cielo de nubes doradas cubre \
+la mitad de la tela."""
+evocation = """
+La tela fija el episodio fundador de Brasil: el 7 de septiembre de 1822, cerca de São Paulo, \
+el príncipe regente Pedro de Braganza, hijo del rey de Portugal, rompe con Lisboa. \
+Pedro Américo hace de ello una escena heroica, ordenada como una batalla, en torno al \
+gesto de la espada. Los historiadores han subrayado que embellece los hechos: el príncipe \
+viajaba sin duda en una mula, con una pequeña escolta, en traje de camino. El \
+propio pintor afirmaba que la realidad inspira al pintor pero no lo esclaviza. \
+El boyero, a la izquierda, introduce al pueblo, simple testigo de una decisión tomada por \
+las élites. Reproducida en los manuales escolares, la imagen ha moldeado para \
+generaciones de brasileños la representación de su independencia."""
+histoire = """
+En 1886, la comisión encargada del monumento del Ipiranga, en São Paulo, acepta la oferta \
+de Pedro Américo de pintar la proclamación de la independencia para el futuro edificio. \
+El contrato le concede tres años; pinta la tela en Florencia, donde vive, y la \
+termina en 1888, un año antes del plazo. Se presenta el 8 de abril de 1888 en \
+la Academia de Bellas Artes de Florencia. Algunos críticos acusan entonces al pintor \
+de haber imitado cuadros de batallas de Meissonier; los historiadores de hoy \
+ven más bien un diálogo asumido con la pintura de historia de su tiempo. La tela \
+se instala en el salón de honor del Museo Paulista, donde sigue \
+expuesta, tras la gran restauración del museo concluida en 2022."""
+facture = """
+Pedro Américo, formado en Río de Janeiro y luego en París, domina todas las reglas de la \
+gran pintura de historia académica. La composición se organiza en dos masas: el \
+grupo del príncipe, arriba, en la colina, y la ola de la guardia, en diagonal, que \
+se precipita hacia él. Los uniformes, los arreos y los caballos están detallados con \
+precisión documental. El paisaje, la tierra roja y la vegetación de São Paulo, \
+fueron estudiados sobre el terreno."""
+details = [
+  "El príncipe Pedro, con la espada en alto, en la cima de la colina.",
+  "El boyero y su carreta de bueyes, testigos de la escena, a la izquierda.",
+  "Los cascos de crines negras de la guardia de honor.",
+  "Los jinetes que cruzan el arroyo del Ipiranga, en primer plano.",
+  "La casa baja de tejado de tejas, a la derecha.",
+]
+themes = ["historia", "independencia", "brasil", "jinetes", "nación"]
+anecdote = """
+La tela, encargada para glorificar la monarquía brasileña, se termina en 1888. \
+Al año siguiente, el 15 de noviembre de 1889, el emperador Pedro II, hijo del héroe del \
+cuadro, es derrocado: es la República la que inaugura en 1895 el museo donde \
+cuelga."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 3.6
+
+[[oeuvres]]
+titre = "Campesino cortando tabaco (Caipira picando fumo)"
+artiste = "Almeida Júnior"
+annee = "1893"
+image = "caipira-picando-fumo.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Almeida_J%C3%BAnior_-_Caipira_Cutting_Tobacco_-_Google_Art_Project.jpg"
+technique = "Óleo sobre lienzo, 202 × 141 cm"
+collection = "Pinacoteca del Estado de São Paulo"
+note = "Sentado al sol ante su casa, un campesino del interior de São Paulo corta su tabaco para liar un cigarrillo."
+description = """
+Un hombre de edad madura está sentado en una viga de madera, ante su casa, a pleno \
+sol. Lleva una camisa blanca abierta sobre el pecho y un pantalón de tela \
+gris, remangado y manchado de tierra; va descalzo. Con la cabeza gacha, talla con un \
+cuchillo una cuerda de tabaco negro que sostiene en la mano izquierda; tras la \
+oreja, un trozo de hoja de maíz servirá para liar el cigarrillo. Detrás de él, \
+el muro de la casa de bahareque se ha desconchado y deja ver los ladrillos y el \
+entramado de madera; a la derecha, una puerta de tablas grises. En el suelo, tierra \
+seca, piedras, virutas y la sombra de un follaje que mancha el suelo, \
+abajo a la derecha."""
+evocation = """
+El caipira es el pequeño campesino del interior del estado de São Paulo, a menudo mestizo, \
+al que los citadinos miraban entonces con desprecio. Almeida Júnior, nacido él mismo en una \
+pequeña ciudad de ese interior, Itu, lo pinta a tamaño natural, como a un héroe de \
+pintura de historia, pero ocupado en un gesto cotidiano y lento. El cuadro no se burla, \
+no denuncia: muestra la dignidad tranquila de un hombre en su pobre \
+casa, y el tiempo que pasa sin prisa. Se ve en él una de las primeras imágenes de un \
+Brasil visto desde dentro, libre de la mirada europea y del exotismo. Para \
+muchos historiadores, Almeida Júnior anuncia así la búsqueda de una identidad \
+brasileña que los modernistas proseguirán en los años veinte."""
+histoire = """
+De regreso de París en 1882 tras seis años de estudios, Almeida Júnior se instala en São \
+Paulo, pero pasa gran parte de su tiempo en Itu y en la campiña \
+circundante. En los años 1890, abandona los temas religiosos e históricos \
+por una serie de escenas de la vida de los caipiras: Caipira picando fumo, en 1893, es \
+la más célebre. La tela pertenece hoy a la Pinacoteca del Estado de São \
+Paulo, el museo de arte más antiguo de la ciudad, fundado en 1905, que conserva un gran \
+conjunto de sus obras. Se ha convertido en una de las imágenes más conocidas de la \
+pintura brasileña del siglo XIX."""
+facture = """
+Discípulo de Alexandre Cabanel en la Escuela de Bellas Artes de París, Almeida Júnior aplica \
+el rigor del dibujo académico a un tema realista, que a menudo se compara con \
+Courbet y Jules Bastien-Lepage. Su gran originalidad radica en la luz: un \
+sol tropical, blanco y abrumador, que palidece los colores de la tierra y del muro y \
+cava sombras nítidas. Las manos, los pies y el rostro, curtidos, están pintados \
+con particular atención."""
+details = [
+  "El trozo de hoja de maíz prendido tras la oreja del campesino.",
+  "La cuerda de tabaco negro y el cuchillo, en sus manos.",
+  "Los pies descalzos posados sobre la tierra seca.",
+  "El muro de bahareque desconchado, que deja ver el entramado de madera.",
+  "La firma y la fecha, abajo a la derecha.",
+]
+themes = ["campesino", "trabajo", "sol", "brasil", "realismo"]
+anecdote = """
+Almeida Júnior muere trágicamente el 13 de noviembre de 1899, apuñalado en una calle de \
+Piracicaba por el marido de la mujer a la que amaba, con quien lo unía el parentesco. \
+Tenía cuarenta y nueve años."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.41
+
+[[oeuvres]]
+titre = "Retrato de Manuelita Rosas"
+artiste = "Prilidiano Pueyrredón"
+annee = "1851"
+image = "manuelita-rosas.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Retrato_de_Manuelita_Rosas_-_Prilidiano_Pueyrred%C3%B3n.jpg"
+technique = "Óleo sobre lienzo, 199 × 166 cm"
+collection = "Museo Nacional de Bellas Artes, Buenos Aires"
+note = "La hija del gobernador Juan Manuel de Rosas, con vestido rojo, color del partido federal: un retrato oficial encargado por los partidarios del régimen."
+description = """
+Una joven morena está de pie, de cuerpo entero, en un salón de cortinajes oscuros. \
+Lleva un gran vestido de terciopelo rojo con volantes, cubierto de encajes \
+blancos bordados, y lazos en la cintura; los hombros descubiertos. Una \
+diadema brilla en su cabello, adornado con una flor roja, y un collar de piedras \
+rodea su cuello; brazaletes de oro ciñen sus muñecas. Su mano derecha se apoya \
+en una consola de mármol, sobre una carta; a su lado, un gran jarrón de porcelana \
+con un ramo de flores. A la derecha, un sillón tapizado de terciopelo rojo. El \
+rostro, apenas sonriente, se vuelve hacia nosotros con dulzura."""
+evocation = """
+Manuela Rosas, llamada Manuelita, es la hija de Juan Manuel de Rosas, que gobierna \
+Buenos Aires con mano de hierro desde los años 1830. Anfitriona de su padre, \
+pasaba por suavizar el régimen e interceder en favor de los perseguidos. El retrato \
+es una imagen política: el rojo, llamado punzó, es el color de los federales, el partido \
+de Rosas, que todos debían llevar so pena de resultar sospechosos. La carta colocada bajo su \
+mano recuerda su papel de intermediaria, a quien se dirigían súplicas. Pero \
+Pueyrredón, procedente de una familia largo tiempo exiliada bajo Rosas, pinta también a una mujer \
+real, de rostro sencillo y benévolo, lejos de un icono. Pocos meses después, \
+el régimen se derrumbaba."""
+histoire = """
+En 1850, una comisión de partidarios de Rosas decide ofrecer a Manuelita su \
+retrato y confía su ejecución al joven Prilidiano Pueyrredón. El formato y el \
+color del vestido le son impuestos. El pintor hace observar que el efecto del rojo \
+punzó sería desastroso; se decide entonces cubrir el vestido de encajes para \
+atenuar su brillo. El retrato debe presentarse durante un homenaje a Manuelita, en \
+1851. En febrero de 1852, Rosas es derrotado en Caseros y se exilia en Inglaterra con su \
+hija. En 1903, el marido de Manuelita, Máximo Terrero, dona el cuadro al Museo \
+Histórico Nacional; pasa después al Museo Nacional de Bellas Artes de Buenos \
+Aires, en los años treinta."""
+facture = """
+Pueyrredón sigue la tradición del retrato de aparato europeo: figura de cuerpo entero, \
+cortinajes, mobiliario lujoso, fondo oscuro que hace resaltar el vestido. Cuida las \
+materias con virtuosismo: el terciopelo profundo, la transparencia de los encajes, el brillo \
+de las joyas y de la porcelana. El rostro, en cambio, está tratado con sencillez, \
+sin adulación. Se conserva también un estudio preparatorio de la cabeza en el Museo \
+Nacional de Bellas Artes."""
+details = [
+  "La carta deslizada bajo la mano derecha de Manuelita.",
+  "Los encajes blancos que cubren el vestido rojo para atenuar su brillo.",
+  "La flor roja y la pequeña diadema en su cabello.",
+  "El jarrón de porcelana decorado con oro y su ramo, a la izquierda.",
+]
+themes = ["retrato", "poder", "rojo", "argentina", "política"]
+anecdote = """
+En Argentina, el 3 de noviembre, aniversario de la muerte de Prilidiano Pueyrredón en \
+1870, es el Día Nacional del Artista Plástico, en homenaje a quien se \
+considera el primer gran pintor del país."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.66
+
+[[oeuvres]]
+titre = "El velorio"
+artiste = "Francisco Oller"
+annee = "1893"
+image = "el-velorio.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:El_Velorio_by_Francisco_Oller.jpg"
+technique = "Óleo sobre lienzo, 240 × 400 cm"
+collection = "Museo de Historia, Antropología y Arte, Universidad de Puerto Rico, San Juan"
+note = "En una casa campesina de Puerto Rico, se celebra el velorio de un niño muerto, convertido en «angelito»: la obra maestra de Oller."
+description = """
+El interior de una gran choza de madera con techo de paja está lleno de gente. En el \
+centro, sobre una mesa cubierta con un mantel de encaje, reposa un niño muerto, \
+vestido de blanco y coronado de flores. A su alrededor, todo es fiesta: a la izquierda, \
+parejas bailan, un hombre toca la guitarra, otros beben; en medio, un \
+anciano encorvado sobre su bastón, un hombre que lanza su sombrero, un muchacho que retrocede \
+riendo. A la derecha, un sacerdote de negro, sentado, parece incómodo, mientras un hombre \
+le habla y una mujer de pañuelo blanco alza los brazos. Del techo cuelgan \
+mazorcas de maíz, un racimo de plátanos, un cerdo asado. Unos perros corren por el suelo. Por las \
+puertas se vislumbra el campo verde y unas palmeras."""
+evocation = """
+El baquiné, o velorio del angelito, era una costumbre popular de Puerto Rico, \
+de origen africano y español: un niño bautizado, muerto inocente, va derecho al \
+cielo, y se celebra su partida con cantos, bailes y bebidas. Oller, \
+hombre de la Ilustración y del progreso, pinta esta fiesta con mirada crítica: veía en ella \
+una superstición grosera, una orgía de apetitos brutales, según sus propias \
+palabras. El cuadro contrapone el lado claro de la fiesta, a la izquierda, y el lado sombrío, a la \
+derecha, donde los padres y el sacerdote permanecen ajenos al bullicio. Hoy se \
+ve en él sobre todo un retrato colectivo de la sociedad rural puertorriqueña, \
+los jíbaros, con sus negros, sus mestizos y sus blancos, y una imagen fundadora de \
+la identidad de la isla."""
+histoire = """
+Oller comienza el cuadro en 1891 en una plantación de caña de azúcar de Carolina, \
+cerca de San Juan, perteneciente a la familia Elzaburu: dos de sus miembros posan \
+para el sacerdote y el sacristán, y unos trabajadores agrícolas y sus familias para las \
+demás figuras. Expuesta en 1893 en San Juan, con motivo de la exposición del cuarto \
+centenario del descubrimiento de Puerto Rico, la tela escandaliza a una parte de la crítica, \
+que la juzga vulgar, pero el público se reconoce en ella. Se muestra después en el Salón \
+de París en 1895. Propiedad de la Biblioteca Insular, es adquirida en 1915 por \
+la Universidad de Puerto Rico, de cuyo museo está en el origen."""
+facture = """
+Oller frecuentó en París a Courbet, Pissarro y Cézanne, y el cuadro asocia estas dos \
+herencias: el realismo, para esta gran escena de la vida popular pintada a \
+la escala de la pintura de historia, y una luz clara, venida del \
+impresionismo, que entra por las puertas y baña los muros de madera. La \
+composición, pululante, multiplica las pequeñas escenas y los objetos cotidianos, a \
+modo de inventario. El color es vivo, iluminado con blancos y rosas."""
+details = [
+  "El niño muerto coronado de flores, sobre la mesa del mantel de encaje.",
+  "El cerdo asado colgado bajo el techo, por encima de las cabezas.",
+  "El guitarrista sentado, a la izquierda.",
+  "El paisaje verde y las palmeras, vislumbrados por la puerta y la ventana.",
+  "Los dos perros que corren entre las piernas de los invitados.",
+]
+themes = ["velorio", "fiesta", "muerte", "puerto rico", "vida rural"]
+anecdote = """
+En la primera exposición del cuadro, un cronista de San Juan contó que \
+numerosos visitantes afirmaban reconocer, entre los invitados del velorio, a \
+parientes o vecinos."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 3.6
+
+[[artistes]]
+nom = "Marià Fortuny"
+vie = "Reus (Cataluña), 11 de junio de 1838 – Roma, 21 de noviembre de 1874"
+biographie = """
+Marià Fortuny i Marsal, huérfano muy joven, es criado en Reus por su abuelo, \
+artesano. A los catorce años, ingresa en la escuela de la Llotja de Barcelona. En 1857, una \
+beca lo lleva a Roma. Tres años después, la Diputación de Barcelona lo envía a \
+Marruecos para seguir la guerra que España libra allí: descubre la luz del norte de \
+África, que nutrirá toda su obra, y pinta La batalla de Tetuán. Sus escenas \
+orientalistas y sus cuadros de género con trajes del siglo XVIII seducen al \
+marchante parisino Goupil, que le ofrece un contrato. En 1867, se casa en Madrid con \
+Cecilia de Madrazo, hija del pintor Federico de Madrazo. El éxito de La vicaría, en \
+1870, lo convierte en uno de los pintores más caros de Europa. Se instala después en \
+Granada, cerca de la Alhambra, y luego en Portici, cerca de Nápoles, en busca de una \
+pintura más libre. Muere en Roma, a los treinta y seis años, víctima de la malaria."""
+style = """
+Fortuny es el maestro del «preciosismo»: cuadros de pequeño formato, de una \
+virtuosidad deslumbrante, donde la pincelada viva y los toques luminosos hacen centellear \
+los tejidos y los objetos. Acuarelista y grabador de primer orden, influyó en \
+toda una generación de pintores españoles e italianos, y sus últimas obras, \
+pintadas al aire libre, anuncian la pintura de luz de Sorolla."""
+
+[[artistes]]
+nom = "Joaquín Sorolla"
+vie = "Valencia (España), 27 de febrero de 1863 – Cercedilla, 10 de agosto de 1923"
+biographie = """
+Joaquín Sorolla y Bastida pierde a sus padres, víctimas del cólera, a los dos \
+años; lo crían una tía y un tío cerrajero en Valencia. Estudia en \
+la escuela de bellas artes de la ciudad, obtiene en 1885 una beca para Roma y \
+reside en París, donde descubre el naturalismo y la pintura al aire libre. En 1888, \
+se casa con Clotilde García del Castillo, hija de un fotógrafo, que será su modelo \
+toda la vida; tienen tres hijos. Instalado en Madrid, se da a conocer con \
+cuadros de tema social y luego triunfa con sus escenas de playa: gran premio en \
+la Exposición Universal de París en 1900, exposición en la galería Georges Petit en \
+1906 y, sobre todo, en la Hispanic Society of America de Nueva York en 1909. Su \
+fundador, Archer Huntington, le encarga Visión de España, catorce inmensos \
+lienzos sobre las regiones del país, terminados en 1919. En junio de 1920, mientras pinta \
+en su jardín, lo golpea una hemiplejía; ya no volverá a pintar y muere tres años \
+más tarde."""
+style = """
+Sorolla es el pintor de la luz mediterránea. Trabajando al aire libre sobre \
+grandes lienzos, con una pincelada ancha, rápida y segura, capta el sol sobre el \
+mar, los reflejos sobre los cuerpos mojados y las telas blancas. Próximo al \
+impresionismo sin adoptar su pincelada dividida, conserva un dibujo firme. Su \
+«luminismo» marcó la pintura española y tuvo un inmenso éxito en América."""
+
+[[artistes]]
+nom = "Ramon Casas"
+vie = "Barcelona, 4 de enero de 1866 – Barcelona, 29 de febrero de 1932"
+biographie = """
+Ramon Casas i Carbó nace en una familia acomodada de Barcelona, enriquecida en Cuba. A \
+los quince años, parte a París y entra en el taller del retratista Carolus-Duran. \
+Reparte después su vida entre París y Barcelona y vive un tiempo en Montmartre, \
+sobre el Moulin de la Galette, con su amigo Santiago Rusiñol. De regreso en \
+Cataluña, se convierte con él en el cabeza de fila del modernismo: apoya la \
+taberna Els Quatre Gats, abierta en 1897, y funda revistas como Pèl & Ploma. \
+Pintor de la vida moderna, pinta también temas graves de la actualidad, como \
+una ejecución pública a garrote o una carga de la guardia civil contra \
+obreros. Realiza una larga galería de retratos al carboncillo de las personalidades \
+de su tiempo y se convierte en un cartelista afamado, para el anís del Mono o el \
+champán Codorníu. Pasa sus últimos años entre Barcelona y su casa de \
+Sant Benet de Bages, donde se casa en 1922 con su antigua modelo, Júlia Peraire."""
+style = """
+Casas aúna la elegancia del retrato mundano, aprendida junto a Carolus-Duran, y la \
+mirada directa de los pintores de la vida moderna, Manet o Degas. Su dibujo, de gran \
+seguridad, y su sentido de la composición, nutrido por el cartel y la estampa \
+japonesa, dan a sus obras una modernidad inmediata. Hizo entrar a la \
+pintura catalana en la Europa de la Belle Époque."""
+
+[[artistes]]
+nom = "Ignacio Zuloaga"
+vie = "Eibar (País Vasco), 26 de julio de 1870 – Madrid, 31 de octubre de 1945"
+biographie = """
+Ignacio Zuloaga y Zabaleta nace en una familia de artesanos célebres por sus \
+metales damasquinados; su tío Daniel es ceramista en Segovia. Tras una estancia en \
+Roma, se instala en 1890 en París, donde se relaciona con Rusiñol, Casas, y después con \
+Rodin y el pintor Émile Bernard. Poco reconocido al principio en España, reside en \
+Andalucía y luego sobre todo en Castilla, en Segovia, donde encuentra sus modelos: campesinos, \
+enanos, toreros, gitanos, viejas. Se casa en 1899 con Valentine Dethomas, hermana \
+de un pintor francés. Sus envíos a los Salones de París, y luego sus exposiciones en \
+Europa, en América del Sur y en Estados Unidos, le procuran una gloria \
+internacional, mientras la crítica española le reprocha dar una imagen \
+sombría del país. Gran aficionado al arte, posee telas del Greco y de Goya. En \
+1925, adquiere el castillo de Pedraza, en Castilla, y funda un museo en Zumaia, \
+en el País Vasco. Muere en Madrid en 1945."""
+style = """
+Zuloaga pinta una España áspera y dramática, heredada del Greco, de Velázquez y de \
+Goya: figuras monumentales, dibujo marcado, colores apagados, paisajes de Castilla \
+bajo cielos de tormenta. Próximo a los escritores de la generación del 98, fijó \
+la imagen de una España negra y austera, opuesta a la luz de Sorolla, y \
+fue uno de los pintores españoles más célebres de su tiempo."""
+
+[[artistes]]
+nom = "José María Velasco"
+vie = "Temascalcingo (México), 6 de julio de 1840 – Villa de Guadalupe Hidalgo, 26 de agosto de 1912"
+biographie = """
+José María Velasco Gómez nace en una familia modesta del Estado de México, que \
+se instala pronto en la capital. Ingresa en 1858 en la Academia de San Carlos, donde \
+el paisajista italiano Eugenio Landesio le enseña la pintura de paisaje y la \
+perspectiva. Apasionado por las ciencias, estudia también botánica, zoología y \
+geología, se hace miembro de la Sociedad Mexicana de Historia Natural e ilustra sus \
+publicaciones con láminas de plantas y aves. Sucede a Landesio como \
+profesor en San Carlos, donde forma a numerosos alumnos. Instalado en Guadalupe, al \
+pie del Tepeyac, pinta incansablemente el valle de México, sus volcanes, sus lagos \
+y sus haciendas, pero también los ferrocarriles y los puentes que transforman el \
+país. Sus telas representan a México en las exposiciones internacionales de \
+Filadelfia en 1876, de París en 1889 y de Chicago en 1893. Muere en 1912, \
+al comienzo de la revolución mexicana."""
+style = """
+Velasco es el gran paisajista de México. A la composición clásica aprendida de \
+Landesio, añade la observación de un naturalista: geología de las rocas, especies \
+vegetales, formación de las nubes. Sus vastos panoramas, de luz límpida, \
+dieron al país una imagen de sí mismo e hicieron del paisaje un género nacional, que \
+retomarán los pintores del siglo XX."""
+
+[[artistes]]
+nom = "Saturnino Herrán"
+vie = "Aguascalientes (México), 9 de julio de 1887 – Ciudad de México, 8 de octubre de 1918"
+biographie = """
+Saturnino Herrán Guinchard es hijo de un profesor de Aguascalientes, que alienta \
+su don para el dibujo. Tras la muerte de su padre, a principios de siglo, se instala \
+con su madre en la ciudad de México e ingresa en la Academia de San Carlos. Sigue allí las enseñanzas del \
+pintor catalán Antonio Fabrés, y luego de Germán Gedovius, y se codea con otros estudiantes \
+llamados a un gran futuro, como Diego Rivera. Para vivir, trabaja como \
+dibujante y enseña dibujo. Sin salir nunca de México, se forja una \
+manera personal, nutrida del simbolismo y del Art Nouveau europeos, que pone al \
+servicio de temas mexicanos: trabajadores, mujeres del pueblo, leyendas indígenas, \
+fiestas populares. En 1914, se casa con Rosario Arellano, que le da un hijo. Ese mismo \
+año, emprende un vasto proyecto decorativo, Nuestros dioses, para el nuevo Teatro \
+Nacional. Una enfermedad del estómago se lo lleva en 1918, a los treinta y un años, antes de que \
+pudiera terminarlo."""
+style = """
+Herrán es el principal representante del modernismo mexicano. Asocia un dibujo \
+académico sólido a un color decorativo, de tonos mates iluminados con toques vivos, \
+y a composiciones apretadas y monumentales. Al hacer de los indígenas y de los mestizos \
+los héroes de la gran pintura, prepara el terreno del muralismo mexicano de los \
+años veinte."""
+
+[[artistes]]
+nom = "Pedro Américo"
+vie = "Areia (Brasil), 29 de abril de 1843 – Florencia, 7 de octubre de 1905"
+biographie = """
+Pedro Américo de Figueiredo e Melo nace en la provincia de Paraíba, en el \
+Nordeste de Brasil. Niño prodigio del dibujo, acompaña a los diez años una expedición \
+científica por el interior del país y luego ingresa en la Academia Imperial de \
+Bellas Artes de Río de Janeiro. Gracias a una beca del emperador Pedro II, parte a \
+estudiar a París, en la Escuela de Bellas Artes, y sigue también cursos de ciencias y de \
+filosofía; obtiene un doctorado en la universidad de Bruselas. De regreso en \
+Brasil, enseña en la Academia Imperial y pinta grandes escenas de historia, \
+entre ellas La batalla de Avaí, episodio de la guerra del Paraguay, que suscita polémica. Se \
+instala después en Florencia, donde pinta ¡Independencia o muerte!. Tras la \
+proclamación de la República, es elegido diputado de la Asamblea Constituyente en \
+1890. Autor de novelas y ensayos, vuelve a vivir en Italia, donde muere en \
+1905."""
+style = """
+Pedro Américo es el gran pintor de historia del Brasil imperial. Formado en las reglas \
+académicas europeas, compone vastas telas de puestas en escena \
+espectaculares, detalladas con precisión documental. Sus imágenes, reproducidas \
+en los manuales escolares, fijaron en la memoria colectiva los grandes episodios \
+de la historia nacional, desde la independencia hasta la guerra del Paraguay."""
+
+[[artistes]]
+nom = "Almeida Júnior"
+vie = "Itu (Brasil), 8 de mayo de 1850 – Piracicaba, 13 de noviembre de 1899"
+biographie = """
+José Ferraz de Almeida Júnior nace en Itu, pequeña ciudad del interior del estado de \
+São Paulo. Notado muy pronto por sus dibujos, ingresa en 1869 en la Academia \
+Imperial de Bellas Artes de Río de Janeiro, donde es alumno de Victor Meirelles. \
+De regreso en Itu, abre un taller de retratista. En 1876, el emperador Pedro II, \
+de paso por la ciudad, ve sus obras y le concede una pensión para estudiar en \
+Europa. En París, entra en el taller de Alexandre Cabanel en la Escuela de \
+Bellas Artes y expone en el Salón. De vuelta en Brasil en 1882, se instala en São Paulo, \
+pinta retratos, escenas religiosas e históricas, y da clases. Pero \
+es pintando la vida de los caipiras, los campesinos del interior, como encuentra su \
+camino, en los años 1890: Caipira picando fumo, La lectura, Saudade. Su carrera \
+se interrumpe bruscamente en 1899, cuando es asesinado en Piracicaba."""
+style = """
+Almeida Júnior aplica el oficio académico aprendido en París a temas brasileños \
+de lo cotidiano. Su realismo, atento a los gestos, a los rostros y a los interiores \
+modestos, y su luz tropical, blanca y cruda, lo convierten en el primer pintor en \
+mirar el Brasil rural sin exotismo. Los modernistas brasileños de los años veinte \
+lo saludaron como un precursor."""
+
+[[artistes]]
+nom = "Prilidiano Pueyrredón"
+vie = "Buenos Aires, 24 de enero de 1823 – San Isidro, 3 de noviembre de 1870"
+biographie = """
+Prilidiano Pueyrredón es hijo de Juan Martín de Pueyrredón, héroe de \
+la independencia y director supremo de las Provincias Unidas del Río de la Plata. Opuesta \
+al gobernador Juan Manuel de Rosas, su familia vive exiliada en Europa y en Brasil \
+durante gran parte de su juventud. Estudia en París ingeniería y \
+arquitectura, a la vez que se forma en la pintura, y reside en Río de Janeiro. \
+De regreso en Buenos Aires en 1849, pinta allí el retrato de Manuelita Rosas, que lo \
+hace célebre. Tras la caída de Rosas, trabaja como arquitecto e ingeniero, \
+en particular en la reforma de la Pirámide de Mayo, en 1856, en la plaza principal de \
+la ciudad. Pinta numerosos retratos de la buena sociedad, pero también escenas \
+del campo argentino, con sus gauchos y sus estancias, y desnudos que causan \
+escándalo. Pasa sus últimos años en su casa de San Isidro, a orillas del Río de \
+la Plata, donde muere a los cuarenta y siete años."""
+style = """
+Pueyrredón es considerado el primer gran pintor argentino. Retratista \
+atento, formado en las lecciones del academicismo europeo, cuida las materias y el \
+parecido. En sus escenas rurales, de luz clara y observación \
+precisa, fija por primera vez la vida de la pampa, abriendo el camino a una \
+pintura nacional."""
+
+[[artistes]]
+nom = "Francisco Oller"
+vie = "San Juan (Puerto Rico), 17 de junio de 1833 – San Juan, 17 de mayo de 1917"
+biographie = """
+Francisco Manuel Oller y Cestero nace en una familia acomodada de San Juan, entonces \
+colonia española. Aprende el dibujo en su ciudad y luego parte a estudiar a Madrid, en \
+la Academia de San Fernando, con Federico de Madrazo. En 1858, se instala en \
+París, entra en el taller de Thomas Couture y frecuenta la Academia Suiza, donde traba \
+amistad con Camille Pissarro, nacido como él en el Caribe, y con Paul \
+Cézanne. Admira a Courbet y expone en el Salón. Entre varias estancias en Europa, \
+vuelve a Puerto Rico, donde abre una academia de dibujo y pintura. Defensor de \
+la abolición de la esclavitud y de la instrucción pública, pinta los paisajes, las \
+plantaciones y la gente de su isla, y bodegones de frutas tropicales. En \
+los años 1880, se establece definitivamente en Puerto Rico. Allí pinta El velorio y \
+La escuela del maestro Rafael Cordero, homenaje a un maestro negro. Muere en San Juan \
+en 1917."""
+style = """
+Oller es uno de los raros pintores latinoamericanos que se codearon con los \
+impresionistas desde sus comienzos. Su arte asocia el realismo de Courbet, en la \
+elección de temas populares, y la luz clara y la pincelada libre de los \
+impresionistas. Se le considera el padre de la pintura puertorriqueña y uno \
+de los primeros en haber dado al arte del Caribe una identidad propia."""

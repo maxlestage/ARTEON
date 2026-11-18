@@ -1,0 +1,965 @@
+[exposition]
+ordre = 57
+nom_court = "Vidrios"
+mouvement = "El arte del vidrio, de la Antigüedad al Art Nouveau"
+cadre = "vitrine"
+couleur = "#2a7280"
+titre = "Vidrios, treinta y cinco siglos de arte del vidrio"
+artiste = "Gallé, Tiffany, Lalique, Hermann Schwinger, Jacob Sang, vidrieros de Egipto, de Roma, de El Cairo y de Murano…"
+dates = "hacia 1386 a. C. – 1912"
+accroche = "Exposición virtual · Corning Museum of Glass, Corning (Nueva York)"
+introduction = """
+El vidrio nace de la arena, de la sosa o de la potasa, y del fuego: una materia banal \
+que se convierte, en manos de los vidrieros, en una de las más preciosas que existen. La \
+visita sigue diez objetos a lo largo de más de tres mil años, desde un frasco de perfume modelado en \
+Egipto en tiempos de Akenatón hasta los jarrones de Gallé, de Tiffany y de Lalique. En \
+el camino se encuentran el retrato de oro de un joven alejandrino, una lámpara de mezquita esmaltada \
+para un emir de El Cairo, un vaso de Murano tejido con hilos blancos, y las escenas grabadas \
+a la rueda por los maestros de Núremberg y de Ámsterdam. El edificio se inspira en el Corning \
+Museum of Glass, en el estado de Nueva York, el mayor museo del mundo dedicado al \
+vidrio: se entra por un ala completamente blanca, bañada de luz, antes de recorrer \
+las galerías históricas."""
+vitrine = "vase-paon-tiffany.jpg"
+
+[musee]
+nom = "Corning Museum of Glass"
+ville = "Corning, Nueva York, Estados Unidos"
+architecte = "Harrison & Abramovitz (1951), Gunnar Birkerts (1980), Thomas Phifer and Partners (2015)"
+construction = "1951–2015"
+presentation = """
+Corning, pequeña ciudad del norte del estado de Nueva York, vive del vidrio desde que la \
+vidriería Corning Glass Works se instaló allí en 1868. En 1951, con motivo de su centenario, \
+la empresa funda un museo dedicado al arte y a la historia del vidrio, alojado en un \
+edificio de vidrio y acero diseñado por el estudio Harrison & Abramovitz. En junio de 1972, \
+la crecida del río Chemung, engrosado por el huracán Agnes, inunda las galerías y \
+daña centenares de objetos, restaurados con paciencia. Un nuevo edificio, obra del \
+arquitecto Gunnar Birkerts, abre en 1980. En 2015, la Contemporary Art + Design \
+Wing de Thomas Phifer añade un ala revestida de paneles de vidrio blanco: una vasta \
+galería completamente blanca, iluminada por una luz natural difusa que cae del techo, \
+y un taller en forma de anfiteatro donde se sopla el vidrio ante el público. Las galerías \
+históricas recorren treinta y cinco siglos de vidrio; la biblioteca Rakow, vecina, \
+es la gran biblioteca mundial del vidrio."""
+ici = """
+El edificio de ARTEON toma del Corning Museum sus dos rostros. Se entra por el sur \
+en «El ala blanca», un gran volumen de dieciséis metros por doce, de ocho \
+metros de altura, de muros blancos como la galería de Thomas Phifer: permanece vacío, para que \
+se mire primero la luz. Al norte comienzan las galerías históricas, cuatro \
+salas en hilera de oeste a este, como un recorrido cronológico: la Antigüedad, de \
+muros gris arena; el Islam y Venecia, de un azul de laguna pálido; el vidrio grabado, gris \
+perla; por último, la sala del Art Nouveau, más amplia y más alta, de un verde agua. Los \
+objetos, a menudo de pocos centímetros de altura, se presentan allí ampliados en \
+vitrinas murales sobre fondo claro."""
+
+[[salles]]
+nom = "El ala blanca"
+theme = "La entrada, toda blanca y bañada de luz difusa, como la galería contemporánea abierta en Corning en 2015."
+murs = "#f3f3f0"
+x = 0
+z = 0
+largeur = 16
+profondeur = 12
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "El vidrio antiguo"
+theme = "Los primeros vasos de vidrio de Egipto, el vidrio soplado en molde en Roma y un retrato de oro de Alejandría."
+murs = "#ddd8cc"
+x = 0
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "De El Cairo a Murano"
+theme = "El vidrio esmaltado de los mamelucos y luego el vidrio de filigrana de Murano, que domina Europa en el Renacimiento."
+murs = "#d3dfe2"
+x = 12
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "El vidrio grabado"
+theme = "El vidrio grabado a la rueda: un vaso de Núremberg y luego un vidrio inglés de plomo grabado en Ámsterdam."
+murs = "#dcdcda"
+x = 24
+z = -11
+largeur = 12
+profondeur = 10
+hauteur = 5.5
+portes = ["est"]
+
+[[salles]]
+nom = "El Art Nouveau"
+theme = "El vidrio se convierte en arte: las orquídeas de Émile Gallé, el pavo real de Louis Comfort Tiffany y las ranas de René Lalique."
+murs = "#d2e0d6"
+x = 37
+z = -11
+largeur = 14
+profondeur = 12
+hauteur = 7
+
+[[oeuvres]]
+titre = "Frasco de perfume en forma de ánfora"
+artiste = "Égypte, Nouvel Empire"
+annee = "hacia 1386–1330 a. C."
+image = "amphore-egyptienne.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/544828"
+technique = "Vidrio modelado sobre núcleo, decoración de hilos de vidrio estirados en festones; altura 15,3 cm, diámetro 6 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un ánfora en miniatura de vidrio azul noche, rayada con festones blancos, amarillos y turquesa, hecha para contener un aceite perfumado en tiempos de Amenhotep III y de Akenatón."
+description = """
+El frasco reproduce en miniatura la forma de un ánfora, la gran jarra de la Antigüedad, \
+pero cabría en la mano: mide apenas quince centímetros. Su panza en \
+forma de huevo, de un azul noche profundo, descansa sobre un pequeño pie ensanchado. Dos asas en \
+anillo, del mismo azul, se curvan sobre los hombros. La decoración se compone de hilos de vidrio \
+blanco, amarillo anaranjado y turquesa, que dibujan bandas de festones en zigzag, como \
+olas o plumas, separadas por líneas rectas. El largo cuello está completamente \
+cubierto de galones apretados. El borde de la boca y el del pie se subrayan con un \
+cordón torcido, rayado de azul y blanco. En algunos puntos, la superficie muestra pequeñas \
+manchas claras, huellas de la alteración del vidrio."""
+evocation = """
+En Egipto, el vidrio fue al principio una materia real. Se lo comparaba con las piedras \
+preciosas: el azul oscuro imitaba el lapislázuli, el turquesa la piedra del Sinaí. \
+Los primeros recipientes de vidrio aparecen en el valle del Nilo hacia 1500 a. \
+C., en tiempos de Tutmosis III, quizá gracias a artesanos llegados del Próximo Oriente \
+tras sus campañas militares. Siguen siendo raros y costosos, reservados al palacio, a los \
+templos y a los grandes dignatarios. Estos pequeños frascos contenían aceites perfumados \
+y ungüentos, indispensables para el aseo de los vivos, pero también para los ritos \
+funerarios. Dar a un frasco de vidrio la forma de un ánfora era jugar con las \
+escalas: la jarra de los almacenes se convierte en una joya de tocador."""
+histoire = """
+El frasco data del final de la dinastía XVIII, bajo los reinados de Amenhotep III y \
+de Akenatón, la edad de oro del vidrio egipcio. Los arqueólogos han hallado talleres \
+de vidrieros en las grandes residencias reales de esa época, en el palacio de Malqata, \
+cerca de Tebas, y en Amarna, la capital fundada por Akenatón. Se ignora dónde fue \
+descubierto este frasco. El Metropolitan Museum lo adquirió en 1926 gracias a una donación del mecenas Edward \
+S. Harkness, uno de los grandes bienhechores de su departamento egipcio. Tras el fin del \
+Imperio Nuevo, la producción de vasos de vidrio decae en Egipto durante varios \
+siglos; la técnica del núcleo renacerá más tarde en Mesopotamia y luego en el mundo \
+griego."""
+facture = """
+El soplado aún no existía. El vidriero modelaba primero un núcleo de arcilla mezclada \
+con arena o materia orgánica, con la forma del interior del frasco, alrededor de una \
+varilla de metal. Lo recubría de vidrio azul fundido y enrollaba luego alrededor hilos de \
+vidrio de color, que estiraba hacia arriba y hacia abajo con una punta para \
+dibujar los festones. Haciendo rodar el objeto aún caliente sobre una piedra plana, hacía \
+penetrar los hilos en la pared. Añadía después las asas, el pie y los cordones. \
+Una vez enfriado el vidrio, retiraba la varilla y raspaba el núcleo. El azul procede del \
+cobalto, el blanco y el amarillo de compuestos de antimonio."""
+details = [
+  "Los festones en zigzag, blancos, amarillos y turquesa, sobre la panza azul noche.",
+  "Los galones apretados que cubren todo el cuello.",
+  "Las dos asas en anillo apoyadas en los hombros.",
+  "Los cordones torcidos azul y blanco del borde y del pie.",
+]
+themes = ["egipto", "perfume", "vidrio sobre núcleo", "ánfora", "azul"]
+anecdote = """
+El mismo procedimiento, hilos de vidrio estirados en forma de plumas, reaparece más de tres mil años \
+después en los jarrones de Louis Comfort Tiffany, presentados en la última sala de \
+esta exposición."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Frasco de dos rostros (frasco jánico)"
+artiste = "Empire romain, Méditerranée orientale"
+annee = "siglos II–IV"
+image = "flacon-janus.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1923.945"
+technique = "Vidrio soplado en molde; altura 6,4 cm, diámetro 4,6 cm"
+collection = "Cleveland Museum of Art"
+note = "Un frasco de seis centímetros de altura, soplado en un molde en forma de doble cabeza, cuya superficie, irisada por el tiempo, oculta el color violeta original."
+description = """
+El pequeño frasco tiene la forma de dos cabezas unidas por la parte posterior del cráneo, coronadas \
+por un largo cuello cilíndrico de boca ribeteada. Aquí se ve uno de los dos rostros, de \
+frente: un rostro lleno y juvenil, de grandes ojos almendrados, nariz recta, boca \
+pequeña. Una cabellera de gruesos mechones ondulados lo enmarca y desciende a los lados \
+hasta la altura de las mejillas. El segundo rostro, vuelto hacia atrás, es casi \
+idéntico. Toda la superficie está cubierta de una irisación cambiante, en la que se mezclan \
+reflejos de plata, malva, verde y oro; en algunos puntos, pequeñas escamas se han \
+desprendido. El frasco cabe entero en el hueco de la mano."""
+evocation = """
+Estos frascos se llaman jánicos, por Jano, el dios romano de los dos rostros, \
+guardián de las puertas y de los comienzos, que mira a la vez delante y detrás de sí. \
+El Cleveland Museum señala, sin embargo, que estos rostros, imberbes y de sexo incierto, \
+apenas se parecen a Jano, por lo general barbado: otros frascos contraponen un rostro \
+grave y un rostro sonriente. Estos objetos no celebran, pues, necesariamente a un dios; \
+divertían la vista y hacían precioso un simple recipiente de aceite perfumado. Dicen \
+sobre todo la gran novedad del vidrio romano: gracias al soplado, lo que era un lujo \
+se convierte en un objeto corriente, que podía fabricarse en serie y venderse por todo \
+el Imperio."""
+histoire = """
+Los frascos con cabeza humana fueron muy comunes en el mundo romano del siglo II al IV; \
+se fabricaron en el Mediterráneo oriental, de donde procede sin duda este, \
+pero también en Renania. La mayoría se han hallado en tumbas, donde se \
+depositaban con su contenido. El frasco ingresó en el Cleveland Museum of Art en 1923, \
+donado por Jeptha H. Wade, uno de los fundadores del museo, que le regaló numerosos \
+objetos. Como muchos vidrios antiguos, pasó siglos bajo tierra, y \
+ese enterramiento le dio su apariencia actual: según el museo, \
+la irisación que cubre la superficie enmascara un color original próximo al violeta."""
+facture = """
+El soplado del vidrio se inventa en el siglo I a. C. en la costa sirio-palestina \
+: el vidriero recoge una bola de vidrio fundido en el extremo de una caña hueca y la infla \
+con su aliento. Muy pronto se sopla también el vidrio en moldes, de terracota o \
+de piedra, formados por dos mitades que llevan el relieve en hueco. Aquí, la paraison, la \
+burbuja de vidrio caliente, se sopló en un molde en forma de doble cabeza, que \
+imprimió de una vez los rostros y los mechones; el cuello se estiró y ribeteó después, \
+fuera del molde. Con el tiempo, la humedad del suelo alteró la superficie en láminas muy \
+finas, que descomponen la luz como una pompa de jabón."""
+details = [
+  "Los grandes ojos almendrados del rostro vuelto hacia nosotros.",
+  "Los mechones ondulados que enmarcan el rostro, impresos por el molde.",
+  "El perfil del segundo rostro, que se adivina en el lado derecho.",
+  "Los reflejos malvas, verdes y dorados de la irisación.",
+  "La boca ribeteada, replegada en caliente sobre sí misma.",
+]
+themes = ["roma", "vidrio soplado", "jano", "irisación", "perfume"]
+anecdote = """
+La irisación de los vidrios antiguos fascinaba a los vidrieros del Art Nouveau: Louis Comfort \
+Tiffany, coleccionista de vidrios antiguos, trató de obtener en su horno los reflejos \
+que siglos de enterramiento habían dado a los vidrios romanos."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Medallón con el retrato de Gennadios"
+artiste = "Alexandrie, Égypte romaine"
+annee = "250–300"
+image = "medaillon-gennadios.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/466645"
+technique = "Vidrio, pan de oro y realces de color; diámetro 4,1 cm, grosor 0,6 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "El retrato de un joven dibujado con punta en una hoja de oro, sobre un disco de vidrio azul de cuatro centímetros: una de las obras maestras del vidrio dorado antiguo."
+description = """
+Sobre un pequeño disco de vidrio azul casi negro, un joven aparece en busto, de \
+tres cuartos, con la mirada vuelta hacia nuestra izquierda. Está enteramente dibujado en oro: \
+una cabellera espesa de rizos apretados, grandes ojos de mirada intensa, mejillas \
+llenas, una boca cerrada. El modelado del rostro y de los hombros se logra con \
+miles de rayitas muy finas, como en un grabado. Lleva una túnica y un \
+manto echado sobre el hombro. A su alrededor, un filete de oro sigue el borde del medallón, y \
+una inscripción griega en letras de oro se lee en tres fragmentos: ΓΕΝΝΑΔΙ a la izquierda, \
+ΧΡΩΜΑΤΙ a la derecha, ΠΑΜΜΟΥϹΙ abajo. El borde del disco está desportillado en algunos puntos."""
+evocation = """
+El retrato tiene la presencia de un rostro vivo: nada hay idealizado en este joven de \
+rasgos singulares, que recuerda los retratos pintados sobre madera de las momias del Fayum, \
+realizados en Egipto en la misma época. La inscripción da su nombre, Gennadios, y lo elogia \
+; se entiende por lo general como un elogio de su talento, el de un hombre consumado \
+en el arte de las Musas, sin duda un músico. Estos medallones, preciosos e íntimos, \
+conservaban la imagen de un ser querido u honraban un éxito; podían montarse como \
+joya u ofrecerse como regalo. Dan testimonio también de Alejandría, la gran metrópoli griega de \
+el Egipto romano, famosa por sus talleres de vidrieros y por su gusto por el lujo \
+refinado."""
+histoire = """
+El medallón se hizo entre 250 y 300, sin duda en Alejandría, de donde proceden la \
+mayoría de los retratos de este tipo. Solo se conoce un pequeño número, todos de \
+gran finura, lo que sugiere un mismo taller o un pequeño grupo de artesanos muy \
+especializados. Algunos se conservaron durante siglos como reliquias o como \
+joyas: el más célebre, que muestra a una madre y a sus dos hijos, fue engastado en la \
+Edad Media en la cruz de Desiderio, en Brescia, entre piedras preciosas. Se ignora \
+el recorrido del de Gennadios antes de su llegada al Metropolitan Museum, que lo \
+adquirió en 1926 gracias al Fletcher Fund. Se conserva con las colecciones de arte \
+medieval del museo, junto a los vidrios dorados paleocristianos."""
+facture = """
+El vidrio dorado, que los italianos llaman fondo d'oro, encierra una hoja de oro entre \
+dos capas de vidrio. El artesano colocaba primero una hoja de oro muy fina sobre el \
+disco de vidrio azul. Con una punta fina, raspaba en ella el dibujo: retiraba el oro \
+alrededor de la figura y trazaba en el rostro, el cabello y las vestiduras \
+redes de rayitas, más o menos apretadas, que dejan transparentar el fondo oscuro \
+y crean las sombras. Algunos toques de color completaban el retrato. Todo \
+se protegía después con una capa de vidrio, fundida por encima, que sella el oro y \
+evita que se desgaste. El trabajo, hecho casi con lupa, exigía una mano \
+de una seguridad extraordinaria."""
+details = [
+  "Los rizos apretados de la cabellera, dibujados uno a uno en el oro.",
+  "Las rayitas muy finas que modelan las mejillas y el cuello.",
+  "La mirada vuelta de lado, de pupilas oscuras.",
+  "Las tres palabras griegas de la inscripción, a la izquierda, a la derecha y abajo.",
+  "El filete de oro que sigue el borde del medallón.",
+]
+themes = ["retrato", "oro", "alejandría", "música", "vidrio dorado"]
+anecdote = """
+El medallón mide apenas cuatro centímetros: en la vitrina, el rostro de Gennadios \
+no es más grande que una uña, y solo con lupa se descubre la \
+finura de las rayitas."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Lámpara de mezquita para el mausoleo del emir Aydakin al-Bunduqdar"
+artiste = "Égypte, sultanat mamelouk"
+annee = "poco después de 1285"
+image = "lampe-aydakin.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/447000"
+technique = "Vidrio soplado, asas aplicadas, pie replegado, esmaltado y dorado; altura 26,4 cm, diámetro de la abertura 21 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una lámpara de vidrio esmaltado de azul, rojo y oro, hecha para la tumba de un emir de El Cairo, antiguo amo del sultán Baybars, cuyas armas lleva: dos arcos dorso con dorso."
+description = """
+La lámpara tiene la forma de un gran jarrón: un pie bajo, una panza abombada y un ancho cuello \
+ensanchado en embudo. El vidrio, ligeramente teñido de pardo, es transparente. Alrededor de la \
+panza corre una ancha banda azul donde se destaca, en reserva, una inscripción árabe en \
+grandes letras esbeltas, perfiladas de rojo y realzadas con oro. Está interrumpida por \
+medallones rojos donde figuran dos arcos dorso con dorso, dibujados en oro. Pequeñas \
+asas de vidrio, colocadas en la panza, servían para colgarla. El cuello lleva una \
+segunda inscripción, en letras azules sobre un fondo de roleos, entre otros \
+medallones con arcos. Frisos de pequeños motivos rojos subrayan el borde y la base \
+del cuello."""
+evocation = """
+Una lámpara de mezquita no solo alumbraba: daba forma a la luz divina. \
+Muchas llevan un versículo del Corán, la sura de la Luz, que compara a Dios con una \
+lámpara en un nicho, «la lámpara está en un cristal, y el cristal es como un astro \
+brillante». Colgadas por decenas en las mezquitas, las madrasas y las tumbas, \
+hacían brillar las inscripciones en la penumbra. Esta honra también a un \
+hombre. Los medallones llevan las armas del emir, pues los mamelucos, antiguos esclavos \
+militares convertidos en señores de Egipto, se distinguían por emblemas ligados a su \
+cargo en la corte. Los dos arcos son los de un bunduqdar, el portador del arco del \
+sultán."""
+histoire = """
+Aydakin al-Bunduqdar fue un emir de la corte de El Cairo en el siglo XIII. Había comprado \
+como esclavo militar a un joven turco, Baybars, que llegó a ser uno de los mayores sultanes \
+mamelucos y conservó toda su vida el sobrenombre de al-Bunduqdari, «el hombre de al-Bunduqdar». \
+Aydakin murió en 1285; fue enterrado en El Cairo en un mausoleo para el cual esta \
+lámpara fue hecha, poco después de su muerte. Se ignora cuándo salió de El Cairo; en el siglo XIX, \
+los coleccionistas europeos buscaban estas lámparas. El financiero J. \
+Pierpont Morgan la adquiere; fue donada en 1917 al Metropolitan Museum, junto con gran parte de \
+su colección. En la exposición vecina dedicada a las artes del Islam, puede verse \
+otra lámpara del Met, la del emir Qawsun."""
+facture = """
+La lámpara se sopla y luego se modela con la caña: el pie es un borde de vidrio replegado \
+sobre sí mismo, las asas son gotas de vidrio estiradas y pegadas en caliente. La decoración \
+se pinta después con esmaltes, polvos de vidrio coloreados con óxidos \
+metálicos y mezclados con un aglutinante, y con oro. El vidriero volvía a poner la lámpara en el \
+horno, a una temperatura lo bastante alta para fundir los esmaltes sobre el vidrio, pero lo bastante \
+baja para no deformar el objeto: una operación delicada, a menudo repetida para \
+cada color. Los vidrieros de Siria y de Egipto llevaron esta técnica a su \
+perfección en los siglos XIII y XIV; los de Venecia la retomarán a finales de la \
+Edad Media."""
+details = [
+  "Los dos arcos dorso con dorso, en oro, en los medallones rojos.",
+  "Las grandes letras de la inscripción, en reserva sobre la banda azul.",
+  "Las pequeñas asas de vidrio que permitían colgar la lámpara.",
+  "La inscripción azul del cuello, sobre un fondo de finos roleos.",
+  "El pie replegado, de borde grueso, bajo la panza.",
+]
+themes = ["islam", "mamelucos", "luz", "esmalte", "caligrafía"]
+anecdote = """
+En el siglo XIX, estas lámparas eran tan buscadas que vidrieros europeos, como el \
+parisino Philippe-Joseph Brocard, empezaron a imitarlas. El Cleveland Museum conserva \
+una lámpara de mezquita esmaltada hecha en Francia a finales del siglo XIX."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Vaso de vidrio de filigrana (vetro a reticello)"
+artiste = "Venise, verreries de Murano"
+annee = "hacia 1600"
+image = "gobelet-reticello.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/223422"
+technique = "Vidrio incoloro soplado con filigrana blanca en retícula (vetro a reticello); altura 17,2 cm"
+collection = "Art Institute of Chicago"
+note = "Un vaso de Murano tejido con una fina red de hilos de vidrio blanco, tan regular que se diría un encaje o un trabajo de cestería."
+description = """
+El vaso se ensancha ampliamente, como una corola, sobre un botón aplastado y un \
+pie en forma de campana, bordeado por un dobladillo. El vidrio, incoloro y muy delgado, está \
+atravesado de lado a lado por una red de hilos blancos opacos que se cruzan en \
+diagonal y forman pequeños rombos regulares, una retícula que cubre la copa, el \
+botón y el pie. Hacia arriba, los hilos se separan y se inclinan siguiendo \
+el ensanchamiento de la pared; cerca del borde se distinguen claramente dos series de espirales \
+que giran en sentidos contrarios. En el centro de cada rombo, una minúscula burbuja de aire \
+ha quedado atrapada. Sobre el fondo gris de la fotografía, el objeto parece casi \
+inmaterial."""
+evocation = """
+Este vaso no tiene más decoración que la materia misma: es el vidrio que se convierte en \
+encaje. En los siglos XVI y XVII, Murano domina el mercado europeo del vidrio de lujo, \
+y las mesas de los príncipes y de los ricos mercaderes se adornan con estos objetos ligeros, \
+frágiles y costosos. Según el Art Institute, estos vasos de retícula eran muy \
+buscados por la nobleza para adornar las mesas de fiesta, como signo de riqueza y \
+de buen gusto. Responden al gusto del Renacimiento por la virtuosidad: se admira \
+tanto la dificultad vencida como la belleza del objeto. Su finura dice también su \
+fragilidad, y es casi un milagro que tales vidrios hayan llegado hasta \
+nosotros."""
+histoire = """
+Ya en 1291, Venecia obliga a sus vidrieros a instalar sus hornos en la isla de Murano, para \
+alejar el riesgo de incendio de la ciudad y guardar mejor los secretos del oficio. En el \
+siglo XV ponen a punto el cristallo, un vidrio casi incoloro, claro como \
+el cristal de roca, y luego, en las primeras décadas del siglo XVI, el vidrio de \
+filigrana, decorado con hilos de vidrio blanco. A pesar de las leyes que les prohibían \
+abandonar la laguna, numerosos vidrieros venecianos parten a trabajar al extranjero: \
+su manera, la «façon de Venise», se difunde por toda Europa. Nada se sabe del \
+primer propietario de este vaso. El Art Institute of Chicago lo adquirió gracias al \
+fondo Mary Swissler Oldberg; se exhibe en sus galerías de artes decorativas."""
+facture = """
+El Art Institute describe el procedimiento. El vidriero dispone una junto a otra finas varillas de \
+vidrio blanco y las envuelve en una masa de vidrio incoloro fundido; hace rodar el conjunto, \
+lo sopla en forma de tubo y lo tuerce para que los hilos se enrollen en espiral. \
+Prepara un segundo tubo, cuyos hilos giran en el otro sentido, y lo sopla en \
+el interior del primero: las dos paredes se sueldan, y las espirales cruzadas forman \
+la retícula. En cada cruce, una pequeña burbuja de aire queda encerrada entre las dos \
+capas. El vidrio se modela después como vaso, con su botón y su pie, sin \
+que el dibujo se desdibuje: un trabajo de gran maestría."""
+details = [
+  "Los pequeños rombos regulares de la retícula blanca.",
+  "La burbuja de aire atrapada en el centro de cada rombo.",
+  "Las dos series de espirales cruzadas, bien visibles cerca del borde.",
+  "El botón aplastado que une la copa con el pie.",
+  "El dobladillo del pie, replegado en caliente.",
+]
+themes = ["venecia", "murano", "filigrana", "renacimiento", "virtuosidad"]
+anecdote = """
+Los vidrieros de Murano gozaban de privilegios excepcionales: sus hijas podían casarse \
+con nobles venecianos sin que los hijos perdieran su rango. Pero quien partía a \
+ejercer su arte al extranjero se exponía a duras penas."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Vaso con vista de la Panierplatz de Núremberg"
+artiste = "Hermann Schwinger"
+annee = "hacia 1680"
+image = "gobelet-schwinger.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/1950.389"
+technique = "Vidrio soplado, grabado a la rueda; altura 31,1 cm, diámetro 13,5 cm"
+collection = "Cleveland Museum of Art"
+note = "Un alto vaso de pie adornado con collarines, en el que el grabador nuremburgués Hermann Schwinger representó una plaza de su ciudad y a dos porteadores que se reparten una carga."
+description = """
+El vaso, de treinta y un centímetros de altura, se compone de una copa en forma de campana, \
+de un largo tallo y de un ancho pie plano. El tallo alterna discos planos apilados, \
+collarines y engrosamientos huecos, uno redondo y otro en forma de pera. En la \
+copa, grabada en gris mate sobre el vidrio transparente, se extiende una vista de ciudad: \
+casas de entramado de madera, tejados, una puerta, grandes árboles de follaje denso, una \
+empalizada. En primer plano, en la plaza, dos hombres caminan uno detrás de otro, \
+llevando juntos sobre los hombros una larga viga en la que se lee una inscripción. Bajo \
+la escena, una banda de escritura gótica rodea la copa. El pie está grabado con \
+ramas frondosas."""
+evocation = """
+La escena es a la vez una vista de Núremberg, la Panierplatz, y una alegoría, como \
+indica el Cleveland Museum. Las inscripciones dan su sentido. En la viga se \
+lee: «Es ruhet auf beiden», «descansa sobre los dos»; y alrededor de la \
+copa: «Deine Last ist meine Last. Ruhest du, so hab ich Rast», «Tu carga es \
+mi carga. Si tú descansas, yo descanso». Es una imagen de la amistad, o \
+quizá del matrimonio, en que cada uno lleva su parte de la carga común. Se imagina este \
+vaso alzado durante una comida, y la divisa leída en voz alta. Los vasos grabados \
+servían así de regalos y de recuerdos, cargados de deseos, de divisas y de imágenes."""
+histoire = """
+Hermann Schwinger (1640–1683) es uno de los mejores grabadores sobre vidrio de Núremberg. \
+La ciudad se había convertido, en el siglo XVII, en el gran foco de este arte en Alemania, después de \
+que Georg Schwanhardt, alumno de Caspar Lehmann, grabador del emperador Rodolfo II en \
+Praga, se estableciera allí. El Cleveland Museum clasifica el vidrio del vaso en la \
+producción de Bohemia, cuyas vidrierías abastecían a los grabadores. El vaso está \
+firmado y fechado. A principios del siglo XX pertenecía al coleccionista vienés Max \
+Strauss, cuya colección se vendió en subasta en Viena en 1922. Pasa después \
+a los marchantes Rosenberg y Stiebel, en Nueva York, antes de ser comprado en 1950 por el \
+Cleveland Museum gracias al fondo John L. Severance."""
+facture = """
+El grabado a la rueda retoma las herramientas de los grabadores de piedras finas. El artesano \
+utiliza pequeñas ruedas de cobre, de diámetros variados, montadas en un torno y \
+untadas con una mezcla de aceite y polvo abrasivo. No mueve la herramienta: es \
+el vidrio lo que presenta contra la rueda que gira, guiándolo con una precisión \
+extrema. La rueda desgasta la superficie y deja un hueco mate y gris, más o menos profundo, \
+que se lee como un dibujo en grisalla; algunas partes se dejan pulidas para \
+atrapar la luz. Esta técnica requiere un vidrio grueso y duro; los vasos de \
+Núremberg, con sus tallos de engrosamientos huecos y de collarines, ponían en valor la copa \
+grabada."""
+details = [
+  "Los dos porteadores que comparten la misma viga sobre los hombros.",
+  "La pequeña inscripción grabada en la viga.",
+  "Las casas de entramado de madera y el follaje denso de los árboles.",
+  "Los collarines apilados del tallo, alrededor del engrosamiento hueco.",
+  "Las ramas grabadas en el pie.",
+]
+themes = ["grabado", "núremberg", "amistad", "divisa", "barroco"]
+anecdote = """
+El grabador trabajaba «al revés» de la luz: un hueco grabado parece claro sobre un \
+fondo oscuro y oscuro sobre un fondo claro. Los fotógrafos de museo iluminan, pues, estos \
+vidrios sobre un fondo negro, para hacer aparecer el dibujo."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Vaso con tapa con escena de parturienta"
+artiste = "Jacob Sang (gravure), verrerie anglaise"
+annee = "1750–1770"
+image = "gobelet-jacob-sang.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/266209"
+technique = "Vidrio de plomo soplado, grabado a la rueda; altura 25,8 cm, diámetro 11,5 cm"
+collection = "Art Institute of Chicago"
+note = "Un vaso de vidrio inglés de plomo, grabado en Ámsterdam con una alcoba de parturienta y con un brindis por la salud de la madre y del niño."
+description = """
+El vaso, coronado por su tapa, se alza sobre un fondo negro que hace resaltar el \
+grabado. La copa, en forma de campana, descansa sobre un pie corto cuyo botón está \
+sembrado de burbujas de aire dispuestas en corona. En el frente, una gran escena ocupa la \
+copa: una cama con dosel, de cortinas recogidas, donde una mujer está sentada, apoyada en \
+sus almohadas; a su lado, una nodriza se halla junto a una cuna. El suelo es un embaldosado en \
+perspectiva. A lo largo del borde corre una inscripción en letras capitales. La tapa \
+abombada está grabada con una guirnalda de follaje; termina en un botón de burbujas \
+torcidas y una punta facetada."""
+evocation = """
+El vaso pertenece al ritual del nacimiento en las Provincias Unidas del siglo XVIII. \
+Según el Art Institute, servía el kandeel, una bebida nutritiva de huevos, \
+alcohol y canela, ofrecida a la parturienta y a sus visitas. El grabado muestra \
+precisamente esa alcoba: la joven madre en la cama, la nodriza que mece al niño, un \
+tendedero de pañales, sillas y una mesa dispuesta con golosinas y dos vasos \
+semejantes a este. La inscripción lleva el brindis: «'t Welvaaren van de Kraamvrouw \
+en Kindje», «por la salud de la parturienta y de su hijo». En una época en que \
+el parto seguía siendo peligroso, el vaso celebra un nacimiento feliz y reúne \
+a la familia en torno a la madre."""
+histoire = """
+El grabado se atribuye a Jacob Sang, activo en Ámsterdam en la década de 1750, uno de los \
+grabadores más hábiles y reputados de la ciudad según el Art Institute. En los \
+Países Bajos, la demanda de vidrios personalizados era inmensa: se grababan para las \
+bodas, los nacimientos, los éxitos comerciales o los acontecimientos políticos. El \
+vidrio, por su parte, procede de Inglaterra, cuyos vidrios de plomo eran muy apreciados por los \
+grabadores holandeses. El vaso fue encargado por la familia de los barones van \
+Slingelandt y se transmitió en la familia hasta el siglo XXI. Pasa después \
+al marchante Frides Laméris, en Ámsterdam, antes de ser comprado en 2023 por el Art \
+Institute of Chicago."""
+facture = """
+En 1674, el inglés George Ravenscroft patenta un vidrio en el que el óxido de plomo \
+sustituye una parte de la potasa. Este vidrio de plomo, el futuro cristal, es pesado, \
+muy claro y refracta fuertemente la luz; es también más blando, por tanto ideal \
+para el grabado a la rueda, que puede excavar en él relieves muy finos y sombras \
+matizadas. Sang aprovecha esta materia: las cortinas de la cama, los pliegues de las sábanas y \
+el embaldosado se modelan con huecos más o menos profundos. El soplador inglés, \
+por su parte, dejó en el botón del tallo una corona de burbujas de aire, obtenidas \
+pinchando el vidrio caliente y recubriéndolo después con una nueva capa de vidrio: un adorno típico de los vidrios \
+ingleses del siglo XVIII."""
+details = [
+  "La joven madre sentada en la cama con dosel de cortinas recogidas.",
+  "La nodriza sentada junto a la cuna.",
+  "El embaldosado del suelo, grabado en perspectiva.",
+  "La corona de burbujas de aire en el botón del pie.",
+  "La guirnalda de follaje grabada en la tapa.",
+]
+themes = ["nacimiento", "grabado", "ámsterdam", "vidrio de plomo", "brindis"]
+anecdote = """
+Los grabadores holandeses compraban tan gustosamente los vidrios ingleses que hicieron de ellos \
+su soporte favorito: en las colecciones se encuentran a menudo vidrios soplados \
+en Newcastle o en Londres y grabados en los Países Bajos."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jarrón de las orquídeas"
+artiste = "Émile Gallé"
+annee = "hacia 1900"
+image = "vase-orchidees-galle.jpg"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/45125"
+technique = "Vidrio doblado, grabado al ácido y a la rueda; 29,4 × 14,3 × 11,8 cm"
+collection = "Art Institute of Chicago"
+note = "Orquídeas zapatito de Venus surgen en el espesor de un vidrio ámbar y púrpura: Gallé esculpe el vidrio como una piedra de varias capas."
+description = """
+El jarrón es un simple cilindro, de treinta centímetros de altura, de borde ligeramente engrosado. \
+Su fondo es un vidrio ámbar, de un amarillo de miel que vira al anaranjado y, en algunos puntos, \
+al rojo. Encima se destacan en relieve, de un púrpura muy oscuro, tallos y \
+flores de orquídeas. Se reconocen sus pétalos rayados de finas nervaduras, su sépalo \
+superior erguido como una capucha y, en el centro, su labelo hinchado en forma de pequeño \
+zueco. Algunas flores se abren ampliamente, otras no son aún más que capullos. \
+Abajo, largas hojas nervadas suben desde el pie y se curvan. La parte alta del \
+jarrón es más oscura, como si las flores salieran de la sombra hacia la luz."""
+evocation = """
+Gallé fue a la vez vidriero, ebanista y apasionado botánico, miembro de la Sociedad \
+central de horticultura de Nancy; cultivaba y estudiaba las plantas que \
+representaba. Las orquídeas, llegadas de los invernaderos donde la Belle Époque las coleccionaba \
+a precio de oro, fascinaban a sus contemporáneos por sus formas extrañas, casi animales \
+: el zapatito de Venus parece un pequeño zapato. Gallé no se contenta con copiarlas. \
+Al hacerlas surgir de la profundidad del vidrio, medio sumergidas en la penumbra, \
+les da una vida misteriosa, próxima a los poemas simbolistas que amaba. Para él, \
+el objeto de arte debía hablar de la naturaleza, pero también del alma: este jarrón es un invernadero \
+en miniatura, y una ensoñación."""
+histoire = """
+Nacido en Nancy en 1846, hijo de un comerciante de lozas y vidrios, Émile Gallé estudia \
+botánica y química, y luego aprende el oficio del vidrio en Meisenthal, en Lorena. \
+Se hace cargo de la empresa familiar, que sus envíos a las Exposiciones Universales de París \
+hacen célebre, en 1878, en 1889 y luego en 1900, donde triunfa. En 1901 funda con \
+otros artistas la Escuela de Nancy, de la que es el primer presidente. Muere en 1904 \
+; su vidriería sigue produciendo durante casi treinta años jarrones firmados con su nombre. Este, fechado \
+hacia 1900, ingresó en el Art Institute of Chicago por donación de Mrs. Cyrus Bentley. Otra \
+pieza de Gallé, el jarrón de los cólquicos del Metropolitan Museum, se presenta en \
+la exposición dedicada a las artes decorativas."""
+facture = """
+El jarrón está hecho de vidrios superpuestos: el vidriero sopla una primera paraison ámbar \
+y la recubre después con una o varias capas de vidrio de color. La decoración se \
+talla luego en ese espesor, como en un camafeo. Gallé emplea ácido fluorhídrico, \
+que corroe el vidrio: se protege el motivo con un barniz y luego se sumerge el jarrón en el \
+baño, que disuelve la capa superior alrededor de las flores. Los detalles, nervaduras de los \
+pétalos y de las hojas, se retoman a la rueda. Según el espesor de vidrio púrpura \
+dejado en su sitio, el color va del rojo transparente al casi negro: es ese juego \
+de profundidades el que da a la decoración su modelado y su luz."""
+details = [
+  "El labelo hinchado en forma de zueco, en el corazón de cada orquídea.",
+  "Las finas rayas de los pétalos, retomadas a la rueda.",
+  "Los capullos aún cerrados en el extremo de los tallos.",
+  "Las largas hojas nervadas que suben desde el pie.",
+  "El fondo ámbar que pasa del amarillo de miel al rojo.",
+]
+themes = ["art nouveau", "orquídeas", "nancy", "naturaleza", "camafeo"]
+anecdote = """
+En la puerta de sus talleres de Nancy, Gallé había hecho grabar una divisa: «Mi \
+raíz está en el fondo de los bosques». Resume su arte, en el que cada objeto nace de \
+la observación de las plantas."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Jarrón de las plumas de pavo real"
+artiste = "Louis Comfort Tiffany"
+annee = "1893–1896"
+image = "vase-paon-tiffany.jpg"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/9480"
+technique = "Vidrio Favrile soplado; 35,9 × 29,2 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Uno de los primeros jarrones de vidrio Favrile de Tiffany: una flor de vidrio irisado que se abre en abanico, cubierta de plumas de pavo real."
+description = """
+El jarrón tiene la forma de una flor o de un abanico abierto. De una panza redonda y baja \
+sube un largo cuello estrecho, que se ensancha bruscamente en una vasta corola ondulada, \
+pellizcada a los lados y que cae en dos puntas. Todo el objeto es de un verde oliva, \
+atravesado por finas líneas más oscuras que parten del pie, suben a lo largo del cuello y \
+se despliegan en la corola como las barbas de una pluma. En lo alto, estas líneas \
+se enroscan alrededor de cuatro «ojos» de pavo real, manchas azul noche perfiladas de violeta \
+y de dorado. La superficie está irisada: según el ángulo, se cubre de reflejos rosas, \
+violetas, azules y dorados. El borde de la corola, de un verde más claro, está ligeramente \
+ribeteado."""
+evocation = """
+El pavo real es uno de los emblemas del Esteticismo y del Art Nouveau, de la Peacock Room \
+de Whistler en Londres a las joyas de Lalique. Dice el gusto de la época por la belleza \
+pura, por el color y el lujo, y también por Oriente, de donde llegó el ave. Tiffany, \
+pintor de formación, encontraba en él un motivo ideal para su vidrio, cuyos colores \
+cambian con la luz como los de una pluma. No representa el ave: \
+transforma el propio jarrón en rueda de pavo real, y la materia en plumaje. Esta fusión de \
+la forma y la decoración, inspirada por la naturaleza, está en el corazón del Art Nouveau, y hace \
+de este jarrón una escultura tanto como un recipiente."""
+histoire = """
+Louis Comfort Tiffany (1848–1933), hijo del fundador de la célebre joyería \
+neoyorquina, se había dado a conocer primero como pintor, luego como decorador y \
+creador de vidrieras. En 1893 abre su propia vidriería en Corona, en Queens, \
+con el vidriero inglés Arthur J. Nash, y lanza el vidrio Favrile. Este jarrón figura entre \
+las primeras realizaciones del taller. Ya en 1896, el magnate del azúcar Henry O. \
+Havemeyer, gran coleccionista y cliente de Tiffany, que había decorado su casa \
+neoyorquina, regala al Metropolitan Museum un conjunto de jarrones Favrile, entre ellos \
+este. En París, el marchante Siegfried Bing expone el vidrio de Tiffany desde 1895 \
+en su galería, la Maison de l'Art Nouveau."""
+facture = """
+Favrile es un nombre inventado por Tiffany, a partir de una vieja palabra inglesa, fabrile, «del \
+artesano»; según el Cleveland Museum, debía sonar francés, precioso y \
+artesanal. La decoración de plumas se obtiene en caliente: el soplador coloca sobre la paraison \
+hilos de vidrio de color y luego los estira con un gancho para dibujar las barbas \
+y los ojos, antes de dar al jarrón su forma final. La irisación procede de sales \
+metálicas aplicadas sobre el vidrio aún caliente, que forman en la superficie una película \
+muy fina en la que la luz se descompone. Tiffany buscaba así recuperar el brillo \
+de los vidrios antiguos irisados por el enterramiento, que coleccionaba."""
+details = [
+  "Los cuatro «ojos» de pavo real azul noche, en lo alto de la corola.",
+  "Las líneas finas que suben desde el pie como las barbas de una pluma.",
+  "Los reflejos rosas y violetas de la irisación.",
+  "La corola pellizcada que cae en dos puntas.",
+  "La panza redonda y baja, de un verde más intenso.",
+]
+themes = ["art nouveau", "pavo real", "irisación", "nueva york", "vidrio favrile"]
+anecdote = """
+Tiffany creó también vidrieras, mosaicos y lámparas: su vidriera «Magnolias \
+e iris» y la lámpara «Glicina» de sus talleres se presentan en la exposición \
+dedicada a las artes decorativas."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Jarrón «Ranas y nenúfares»"
+artiste = "René Lalique"
+annee = "1909–1912"
+image = "vase-grenouilles-lalique.jpg"
+licence = "CC0"
+source = "https://clevelandart.org/art/2007.180"
+technique = "Vidrio moldeado, colado y aplicado, patinado; 21 × 29,8 cm"
+collection = "Cleveland Museum of Art"
+note = "Uno de los primeros jarrones de René Lalique: sobre un vidrio escarchado como agua turbia, ranas de un verde profundo se apiñan sobre hojas de nenúfar."
+description = """
+El jarrón tiene una forma baja y achaparrada, una panza ancha y angulosa coronada por un cuello \
+corto y ensanchado. El vidrio es incoloro, pero deslustrado y satinado, como agua turbia. \
+En el hombro, grandes hojas de nenúfar, patinadas de gris, se extienden en relieve; \
+sus largos tallos ondulados descienden hasta el pie, y se adivinan botones de \
+flores. Sobre las hojas, una decena de ranas se aprietan unas contra \
+otras, en cuclillas. Son de un verde intenso y brillante, del verde esmeralda al verde \
+casi negro, con las patas replegadas y el dorso marcado de líneas. En la parte baja de la \
+panza se lee la firma moldeada «R. LALIQUE»."""
+evocation = """
+El Cleveland Museum ve en él la imagen de un pantano brumoso, un motivo típico del Art \
+Nouveau. El estanque, con sus plantas acuáticas y sus pequeños animales, es uno de los \
+temas favoritos de los artistas de la época, nutridos de estampas japonesas: un mundo \
+oculto, húmedo, entre el agua y el aire, donde la vida bulle. Lalique saca de ello un efecto \
+casi teatral: la transparencia velada del vidrio sugiere la profundidad del agua, \
+mientras que las ranas, de un color vivo, parecen salidas de la superficie. \
+El contraste entre el vidrio mate y el vidrio brillante, entre el gris y el verde, \
+anima el objeto. No falta el humor: estas ranas apretadas como en una balsa \
+tienen algo de vivo y de cómico."""
+histoire = """
+René Lalique (1860–1945), célebre al principio como joyero, se vuelve hacia el vidrio a \
+comienzos del siglo XX. Hacia 1907 diseña frascos de perfume para François Coty; \
+en 1909 alquila y luego compra una vidriería en Combs-la-Ville, cerca de París. Este jarrón, \
+según el Cleveland Museum, es un testimonio temprano de sus investigaciones sobre el vidrio \
+de arte, antes de la producción en serie de sus célebres jarrones moldeados de los años veinte. En el \
+siglo XX pasa por varias colecciones, en América y en Japón, y por \
+ventas en Phillips y en Christie's de Nueva York. El Cleveland Museum lo compra en 2007 \
+gracias al fondo John L. Severance. El jarrón «Remolinos», de 1926, se presenta en \
+la exposición dedicada a las artes decorativas."""
+facture = """
+Lalique asocia aquí varias técnicas, como explica el Cleveland Museum: el \
+cuerpo del jarrón está moldeado, las ranas están hechas de vidrio verde colado y aplicado \
+sobre la pared. El vidrio incoloro se deslustra después, sin duda con ácido, para darle \
+su aspecto satinado, y se deposita una pátina gris en los huecos de las hojas \
+y de los tallos para subrayar el relieve. Detalle ingenioso, Lalique colocó pequeñas \
+láminas de metal detrás de las ranas: devuelven hacia la mirada una \
+luz de un verde oscuro y profundo. El artista, acostumbrado al esmalte y a las \
+piedras de color, traspone al vidrio sus investigaciones de joyero."""
+details = [
+  "Las ranas verdes en cuclillas, apretadas unas contra otras.",
+  "Las hojas de nenúfar patinadas de gris, en el hombro.",
+  "Los largos tallos ondulados que descienden hacia el pie.",
+  "El vidrio deslustrado, mate y satinado, como agua turbia.",
+  "La firma moldeada «R. LALIQUE», en la parte baja de la panza.",
+]
+themes = ["art nouveau", "ranas", "estanque", "vidrio moldeado", "lalique"]
+anecdote = """
+La vidriería que Lalique fundó en 1921 en Wingen-sur-Moder, en Alsacia, sigue fabricando \
+cristal con su nombre. Murió en 1945: los jarrones que creó antes de 1931 están \
+hoy en el dominio público."""
+salle = 5
+mur = "sud"
+place = 3
+largeur = 1.4
+
+[[artistes]]
+nom = "Égypte, Nouvel Empire"
+vie = "Valle del Nilo, hacia 1550–1070 a. C."
+biographie = """
+El Imperio Nuevo comienza hacia 1550 antes de nuestra era, cuando los reyes de Tebas expulsan \
+a los hicsos, llegados de Asia, que reinaban en el norte del país. Bajo la dinastía XVIII, \
+la de los Tutmosis y los Amenhotep, Egipto se convierte en un imperio que se extiende desde \
+Nubia hasta el Éufrates. Las campañas militares de Tutmosis III ponen al país \
+en estrecho contacto con el Próximo Oriente, donde ya se fabrica vidrio: es en esa \
+época cuando aparecen en Egipto los primeros vasos de vidrio. Bajo Amenhotep III, el \
+país conoce una prosperidad inaudita; su hijo Akenatón impone el culto del disco \
+solar Atón y funda una nueva capital, Amarna. Los talleres reales producen allí \
+vidrio de color para vasos, incrustaciones y joyas. El Imperio Nuevo \
+es también la época de Tutankamón, de Ramsés II y de los grandes templos de Karnak y de \
+Luxor."""
+style = """
+El vidrio egipcio del Imperio Nuevo es un vidrio de color, opaco o casi, que \
+imita las piedras preciosas: azul oscuro del lapislázuli, turquesa, blanco, amarillo. \
+Los vasos, pequeños, se modelan alrededor de un núcleo y se decoran con hilos de vidrio estirados \
+en festones, en zigzags o en plumas. Sus formas retoman a menudo las de los vasos \
+de piedra o de cerámica, en miniatura."""
+
+[[artistes]]
+nom = "Empire romain, Méditerranée orientale"
+vie = "Siria, Palestina, Egipto y Asia Menor, siglo I a. C. – siglo IV"
+biographie = """
+Las provincias orientales del Imperio romano, Siria, Judea, Egipto, son desde hace \
+siglos los grandes focos del vidrio en el Mediterráneo. En la costa \
+sirio-palestina se inventa, en el siglo I antes de nuestra era, el soplado del \
+vidrio, que trastoca el oficio: un recipiente que exigía horas de trabajo se \
+hace ahora en pocos minutos. Los vidrieros, a menudo itinerantes, difunden la \
+técnica por todo el Imperio, en Italia, en la Galia y en Renania, en torno a Colonia. \
+Algunos firman sus obras, como Ennión, activo en Sidón en el siglo I. El vidrio \
+se convierte en un material corriente: se utiliza para frascos, botellas, \
+copas, vajilla de mesa e incluso cristales de ventana. Las tumbas de todo el mundo romano \
+han proporcionado millares de estos objetos, a menudo irisados por su larga estancia en la \
+tierra."""
+style = """
+El vidrio romano es sobre todo un vidrio soplado, delgado y ligero, de un verde azulado natural \
+o coloreado de azul, ámbar o violeta. El soplado en molde permite repetir \
+formas en relieve: cabezas humanas, frutos, motivos vegetales, inscripciones. Los \
+vidrieros juegan con la transparencia y el color más que con la decoración pintada."""
+
+[[artistes]]
+nom = "Alexandrie, Égypte romaine"
+vie = "Alejandría, Egipto, siglo III"
+biographie = """
+Fundada por Alejandro Magno en 331 antes de nuestra era, Alejandría fue la capital de \
+el Egipto de los Ptolomeos y luego, tras la conquista romana en 30 a. C., una de las \
+mayores ciudades del Imperio. Ciudad de lengua griega, poblada de griegos, \
+egipcios y judíos, era célebre por su faro, su biblioteca, sus \
+sabios y su comercio. Sus artesanos trabajaban para una clientela rica y \
+refinada: orfebres, grabadores de piedras finas, pintores y vidrieros. Los talleres \
+alejandrinos tenían fama de producir vidrios de gran lujo, vidrios \
+de mosaico, vidrios tallados y vidrios dorados. En el siglo III realizan pequeños \
+retratos en hoja de oro sobre vidrio azul, de una finura excepcional, que muestran \
+a hombres, mujeres y familias de la ciudad, a veces nombrados por una \
+inscripción griega."""
+style = """
+Los retratos en vidrio dorado de Alejandría son verdaderos dibujos en oro: el modelado \
+nace de rayitas muy finas, raspadas con punta en la hoja de metal, como en \
+un grabado. Los rostros, individualizados y expresivos, recuerdan los retratos \
+pintados del Fayum. El fondo azul oscuro hace brillar el oro como sobre un cielo nocturno."""
+
+[[artistes]]
+nom = "Égypte, sultanat mamelouk"
+vie = "Egipto y Siria, 1250–1517"
+biographie = """
+Los mamelucos eran esclavos militares, comprados jóvenes en las estepas de \
+la actual Rusia meridional o en el Cáucaso, convertidos al islam y formados en el oficio \
+de las armas. En 1250 toman el poder en Egipto y fundan un sultanato que \
+se extiende pronto a Siria. Su sultán Baybars detiene a los mongoles y expulsa poco a poco \
+a los cruzados del Levante. Durante más de dos siglos y medio, El Cairo es la \
+mayor ciudad del mundo islámico: los sultanes y los emires hacen construir mezquitas, \
+madrasas, hospitales y mausoleos, que dotan de mobiliario precioso, \
+lámparas de vidrio esmaltado, candelabros y jofainas de metal incrustado, coranes iluminados. \
+Los talleres de Siria y de Egipto llevan entonces el arte del vidrio esmaltado y dorado a su \
+perfección. El sultanato cae en 1517 bajo los golpes de los otomanos."""
+style = """
+El arte mameluco ama las grandes inscripciones árabes, en letras esbeltas, que llevan \
+los nombres y los títulos de los sultanes y de los emires, y los blasones, emblemas ligados a su \
+cargo. Sobre el vidrio, el esmalte azul, rojo, blanco y el oro se destacan sobre un vidrio \
+transparente, a menudo ligeramente teñido, que deja pasar la luz."""
+
+[[artistes]]
+nom = "Venise, verreries de Murano"
+vie = "Murano, laguna de Venecia, desde el siglo XIII"
+biographie = """
+El vidrio se trabaja en Venecia desde la alta Edad Media. En 1291, la República \
+obliga a sus vidrieros a trasladar sus hornos a la vecina isla de Murano, para \
+proteger la ciudad de los incendios y mantener bajo control los secretos del oficio. Los \
+vidrieros, organizados en corporación, gozan allí de importantes privilegios, pero les \
+está prohibido ejercer fuera de la laguna. En el siglo XV, Angelo Barovier y sus \
+contemporáneos ponen a punto el cristallo, un vidrio casi incoloro; se añaden \
+pronto el esmalte, el vidrio opaco blanco llamado lattimo, el vidrio craquelado y el vidrio de \
+filigrana. En los siglos XVI y XVII, Murano domina el mercado europeo del vidrio de \
+lujo, y sus vidrieros emigrados difunden la «façon de Venise» hasta Inglaterra y \
+los Países Bajos. La isla ha seguido siendo hasta hoy un gran centro vidriero."""
+style = """
+El vidrio de Murano es un vidrio sódico, ligero, que permanece mucho tiempo maleable: los \
+vidrieros lo estiran, lo pellizcan y lo soplan en paredes muy delgadas. En lugar de \
+grabarlo, lo decoran en la masa, con hilos de vidrio blanco o de color, o \
+en caliente, con alas, cordones y botones aplicados."""
+
+[[artistes]]
+nom = "Hermann Schwinger"
+vie = "Núremberg, 1640 – Núremberg, 1683"
+biographie = """
+Hermann Schwinger es un grabador sobre vidrio de Núremberg, activo en la segunda mitad \
+del siglo XVII. Su ciudad era entonces el principal foco del grabado sobre vidrio en \
+Alemania. Este arte había sido introducido allí por Georg Schwanhardt el Viejo, alumno de \
+Caspar Lehmann, el grabador de piedras finas del emperador Rodolfo II en Praga, que \
+había aplicado al vidrio las técnicas de la glíptica. En torno a Schwanhardt y a \
+sus hijos se forma una escuela de grabadores de los que Schwinger es uno de los mejores \
+representantes. Los grabadores nuremburgueses decoran altos vasos de tallo adornado con \
+collarines y engrosamientos huecos, a menudo hechos de vidrio de Bohemia o de vidrio \
+local. Schwinger graba en ellos paisajes, vistas de ciudades, escenas alegóricas e \
+inscripciones, de gran finura, y firma una parte de sus obras."""
+style = """
+Schwinger graba a la rueda, en hueco mate, paisajes de una precisión de dibujante: \
+casas, árboles de follaje denso, figuras minúsculas. Sus escenas se desarrollan por \
+toda la copa, como un panorama, y van a menudo acompañadas de divisas en \
+escritura gótica que les dan sentido."""
+
+[[artistes]]
+nom = "Jacob Sang (gravure), verrerie anglaise"
+vie = "Jacob Sang: Países Bajos, hacia 1720 – 1786, activo en Ámsterdam en la década de 1750"
+biographie = """
+Jacob Sang es un grabador sobre vidrio de Ámsterdam, activo a mediados del siglo XVIII, \
+sin duda de origen alemán. Figura \
+entre los grabadores más hábiles y reputados de la ciudad. En los Países Bajos, la \
+demanda de vidrios personalizados era inmensa: se encargaban para bodas, \
+nacimientos, éxitos comerciales, navíos o acontecimientos políticos. Sang \
+graba escudos de armas, escenas de género, alegorías e inscripciones, y firma \
+algunas de sus obras. Como muchos grabadores holandeses, trabaja sobre \
+vidrios soplados en Inglaterra. Desde que George Ravenscroft patentó en 1674 \
+un vidrio que contenía óxido de plomo, las vidrierías inglesas producen un vidrio \
+pesado, muy claro y brillante, más blando que los demás, que los grabadores de los \
+Países Bajos aprecian particularmente."""
+style = """
+Sang asocia la claridad del vidrio inglés de plomo a un grabado a la rueda muy cuidado, \
+donde las superficies mates y pulidas se combinan para modelar los volúmenes. Sus escenas, \
+nítidamente compuestas, van a menudo acompañadas de inscripciones en neerlandés, brindis y \
+divisas, que recuerdan la función del vidrio en las fiestas familiares."""
+
+[[artistes]]
+nom = "Émile Gallé"
+vie = "Nancy, 1846 – Nancy, 1904"
+biographie = """
+Hijo de un comerciante de lozas y vidrios de Nancy, Émile Gallé estudia \
+botánica, mineralogía y dibujo, reside en Alemania y luego aprende el oficio \
+del vidrio en Meisenthal, en Lorena. Se hace cargo de la empresa familiar, que \
+transforma en taller de arte, y añade en 1885 un taller de ebanistería. Sus envíos \
+a las Exposiciones Universales de París, en 1878, en 1889 y en 1900, lo hacen \
+célebre. Botánico apasionado, observa las plantas y los insectos de Lorena y \
+se inspira también en el arte japonés. Hombre comprometido, defiende públicamente al \
+capitán Dreyfus. En 1901 funda con otros artistas la Escuela de Nancy, de la que \
+es el primer presidente. Muere de leucemia en 1904; sus talleres prosiguen \
+tras él una producción de jarrones firmados con su nombre."""
+style = """
+Gallé hace del vidrio una materia poética. Superpone capas de color, encierra en ellas \
+inclusiones, burbujas y hojas de metal, y luego talla la decoración al \
+ácido y a la rueda, como un camafeo. Sus jarrones muestran flores, follaje e \
+insectos, a veces acompañados de versos grabados: son sus «vidrios parlantes»."""
+
+[[artistes]]
+nom = "Louis Comfort Tiffany"
+vie = "Nueva York, 1848 – Nueva York, 1933"
+biographie = """
+Hijo de Charles Lewis Tiffany, fundador de la célebre joyería neoyorquina, Louis \
+Comfort Tiffany se forma primero como pintor y viaja por Europa y por el norte de \
+África. Se vuelve luego hacia la decoración de interiores y después hacia la vidriera, donde \
+inventa vidrios de color matizado en la masa, sin pintura. En 1893 abre \
+su propia vidriería en Corona, en el barrio neoyorquino de Queens, con el vidriero \
+inglés Arthur J. Nash, y lanza el vidrio Favrile, de superficies irisadas. Sus talleres, \
+convertidos en Tiffany Studios en 1902, producen jarrones, vidrieras, mosaicos, lámparas y \
+joyas. Expuesto en París por el marchante Siegfried Bing y premiado en la Exposición \
+Universal de 1900, se convierte en el gran representante estadounidense del Art Nouveau. \
+Tras la guerra, su estilo pasa de moda; muere en 1933."""
+style = """
+Tiffany piensa el vidrio como pintor: busca el color y la luz en la \
+materia misma. Sus jarrones Favrile, de formas suaves de flores o de calabazas, están \
+decorados en caliente con hilos y manchas de vidrio estirados en plumas, en hojas o en \
+olas, y cubiertos de una irisación cambiante inspirada en los vidrios antiguos."""
+
+[[artistes]]
+nom = "René Lalique"
+vie = "Aÿ (Marne), 1860 – París, 1945"
+biographie = """
+Nacido en Champaña, René Lalique hace su aprendizaje con un joyero parisino y \
+estudia dibujo en París y en Londres. Abre su propio taller en 1885 y se convierte, \
+en los años 1890, en el más inventivo de los joyeros del Art Nouveau: asocia \
+el oro, el esmalte, el cuerno y el vidrio a piedras elegidas por su color más que \
+por su precio, y triunfa en la Exposición Universal de 1900. Se vuelve después \
+hacia el vidrio. Hacia 1907 diseña frascos de perfume para François Coty; en \
+1909 alquila y luego compra una vidriería en Combs-la-Ville, cerca de París, y funda \
+otra en 1921 en Wingen-sur-Moder, en Alsacia. Sus jarrones, frascos, lámparas y \
+mascotas de radiador de vidrio moldeado, producidos en serie, hacen de él uno de los grandes \
+nombres del Art Déco."""
+style = """
+Lalique juega con el contraste del vidrio mate y el vidrio pulido, de lo transparente y \
+lo opalescente, y con pátinas que subrayan el relieve. El vidrio moldeado le permite \
+reproducir sus modelos en número, sin perder la nitidez del dibujo. Sus motivos \
+proceden de la naturaleza: flores, aves, peces, insectos, ranas."""

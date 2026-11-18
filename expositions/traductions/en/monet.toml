@@ -1,0 +1,542 @@
+[exposition]
+ordre = 90
+nom_court = "Monet"
+mouvement = "Impressionism"
+cadre = "dore"
+couleur = "#2f7d6d"
+titre = "Monet, Light at Work"
+artiste = "Claude Monet"
+dates = "1840–1926"
+accroche = "Virtual exhibition · Claude Monet"
+introduction = """
+From the garden at Ville-d'Avray to the water lilies of Giverny, follow sixty years of painting in pursuit of light: the rising sun that gave Impressionism its name, railway stations and flag-draped streets, the series of haystacks and cathedrals, then the water and flowers of the garden, all the way to abstraction."""
+vitrine = "nympheas.jpg"
+
+[musee]
+nom = "Musée d'Orsay"
+ville = "Paris, France"
+architecte = "Victor Laloux"
+construction = "1898–1900"
+presentation = """
+For the Exposition Universelle of 1900, the Paris–Orléans railway company had a station and hotel designed by Victor Laloux built on the Left Bank, opposite the Tuileries. Behind its stone façades, the Gare d'Orsay concealed an immense hall of iron and glass; it was inaugurated on 14 July 1900. Its platforms soon proved too short for modern trains, and it ceased to serve main-line traffic in 1939. Saved from demolition, it was converted into a museum by the architects Renaud Bardon, Pierre Colboc and Jean-Paul Philippon, with interior designs by Gae Aulenti, and opened in December 1986. The central nave, beneath the glass roof, houses nineteenth-century sculpture, and the great clocks recall the station. Devoted to the arts from 1848 to 1914, Orsay holds the largest collection of Impressionist paintings in the world, including dozens of canvases by Monet, from the Gare Saint-Lazare to the Rouen Cathedrals."""
+ici = """
+ARTEON's building borrows from Orsay its nave beneath a glass roof, and from the Orangerie the white room of the Water Lilies. Visitors enter from the south into the sculpture nave, thirty-six metres long and ten metres high, where three nineteenth-century American sculptures stand. In its northern half, two doors face each other: to the west, Room I · The Birth of Impressionism; to the east, Room II · The City and the Series, with its blue-grey walls. At the end of the nave, Room III · The Water Lilies, wide and low, with white walls, concludes the visit."""
+
+[[salles]]
+nom = "The Sculpture Nave"
+theme = "Beneath the glass roof of the former station, nineteenth-century sculpture, in the years when Monet was starting out."
+murs = "#e9e3d6"
+x = 0
+z = 0
+largeur = 12
+profondeur = 36
+hauteur = 10
+portes = ["sud", "nord", { mur = "ouest", position = 6 }, { mur = "est", position = -6 }]
+
+[[salles]]
+nom = "Room I · The Birth of Impressionism"
+theme = "1866–1875: painting outdoors, capturing a moment of light; a painting of 1872 gives the movement its name."
+murs = "#efe9dc"
+x = -11
+z = -6
+largeur = 10
+profondeur = 14
+hauteur = 6
+
+[[salles]]
+nom = "Room II · The City and the Series"
+theme = "1877–1903: the steam of railway stations, streets in festival, then the same motif painted at every hour of the day."
+murs = "#e3e6ea"
+x = 11
+z = -6
+largeur = 10
+profondeur = 14
+hauteur = 6
+
+[[salles]]
+nom = "Room III · The Water Lilies"
+theme = "1906–1922: the pond at Giverny, painted to the point of abstraction, in a white room like the Orangerie."
+murs = "#f4f2ec"
+x = 0
+z = -25
+largeur = 16
+profondeur = 14
+hauteur = 5
+
+[[oeuvres]]
+titre = "Women in the Garden"
+annee = "1866"
+image = "femmes-jardin.jpg"
+technique = "Oil on canvas, 255 × 205 cm"
+collection = "Musée d'Orsay, Paris"
+note = "An immense canvas painted outdoors: Monet dug a trench in the garden so that he could reach the top of the picture."
+description = """
+Four young women in summer dresses stand in a corner of a garden flooded with sunlight. On the left, one sits in the grass, her vast pale patterned dress spread around her like a corolla; she holds a parasol that casts a coloured shadow over her face, and a bouquet rests in her lap. Behind her, two other women stand near a tree trunk, flowers in hand; one buries her face in the bouquet she is smelling. On the right, a fourth rushes towards a bed of rosebushes to pick a flower, caught in mid-movement. A sandy path curves across the foreground, barred by the shadow of the foliage. The background is closed off by a thick curtain of greenery: the whole gaze is drawn to the light falling on the white fabrics."""
+evocation = """
+The canvas tells no story: no anecdote, no historical episode, no allegory. This is precisely what made it disconcerting in 1867. Monet transposes here, onto a format so immense that it had until then been reserved for history subjects, a simple scene of modern life: young bourgeois women, dressed in the latest fashion, on a summer afternoon. The true subject is the light that filters through the leaves and settles on the fabrics. Historians see in it an ambitious response to Manet's Luncheon on the Grass and to Courbet's large figure paintings, with a new demand: to paint everything directly from the motif. The faces, barely individualised, matter less than the overall effect; Camille, the painter's companion, is said to have posed for several of the figures, so that the canvas seems to show one and the same young woman from various angles."""
+histoire = """
+Monet began the canvas in the spring of 1866 in the garden of a rented house at Ville-d'Avray, near Paris, after giving up on finishing his gigantic Luncheon on the Grass. Determined to execute everything outdoors, he continued it through the summer, then finished it at Honfleur, where he had withdrawn to escape his creditors. Submitted to the Salon of 1867, it was rejected by the jury. His friend Frédéric Bazille, who was better off, bought it to help him. After Bazille's death in battle in 1870, the canvas returned to Monet through Manet, and the painter kept it for half a century. In 1921, at the initiative of his friend Georges Clemenceau, the State bought it from him: a gesture of recognition towards the old master, so long rejected by the institutions. After a time at the Louvre, it has been displayed at the Musée d'Orsay since 1986."""
+facture = """
+Monet worked entirely from the motif, which obliged him to wait for the sun to return in order to recover the same effects. The light is built up through bold contrasts: dazzling whites of the dresses in the sun, shadows that are not grey but tinted with blue, green and mauve. On the seated woman's face, the shadow cast by the parasol takes on the colour of the fabric, an effect he would often return to. The figures, with a modelling that is still firm, owe much to the fashion plates of the day; the foliage, by contrast, is laid in with broad juxtaposed patches, without preliminary drawing."""
+details = [
+  "The coloured shadow that the parasol casts over the seated woman's face.",
+  "The patches of sun breaking through the foliage and dappling the sandy path.",
+  "The seated woman's patterned dress, spread out in the grass like a corolla.",
+  "On the right, the hand reaching towards a rose, frozen in mid-motion.",
+  "The bouquet raised to her face, almost hiding one young woman's features.",
+]
+themes = ["garden", "open air", "light", "fashion", "summer"]
+anecdote = """
+When the State bought the canvas in 1921, it paid 200,000 francs to a Monet who had become famous; fifty-five years earlier, Bazille had acquired it for 2,500 francs, paid in small monthly instalments in order to support his penniless friend."""
+salle = 2
+mur = "ouest"
+place = 1
+largeur = 1.8
+
+[[oeuvres]]
+titre = "The Magpie"
+annee = "1868–1869"
+image = "la-pie.jpg"
+technique = "Oil on canvas, 89 × 130 cm"
+collection = "Musée d'Orsay, Paris"
+note = "A snow landscape near Étretat in which the shadows are blue: the Salon rejected it."
+description = """
+A snow-covered field stretches beneath a pale sky. A fence of woven branches crosses the canvas, interrupted on the left by a small wooden gate; perched on its post is a magpie, the only black spot in the entire composition. Behind the fence, on the right, stand low houses with snow-laden roofs, surrounded by trees whose branches bend under the weight. The sun, low on the horizon, lights the scene from behind: the hedge casts shadows on the snow that lengthen to the foreground. The lower part of the picture is nothing but a vast white expanse, barely modelled by hollows and tracks. No figure, no movement: only the landscape numbed by cold, the motionless trees and the watchful bird."""
+evocation = """
+The Magpie is a meditation on silence and cold, but also on the colour of light. Monet shows that snow is never simply white: it takes on yellow where the sun touches it, blue and violet in the shadow. This observation, which has since become commonplace, baffled a public used to the brown or grey shadows of studio painting. The magpie, a small black accent on the gate, holds the gaze and gives the scale of the white immensity; it has been seen as the discreet presence of life in a frozen world, like a single note in a score. The canvas also speaks of the young Monet's situation: a painter of precarious means, living far from Paris, seeking his path away from the subjects the Salon expected."""
+histoire = """
+Monet painted the canvas during the winter of 1868–1869, in the area around Étretat, where he had settled with Camille and their son Jean, born in August 1867. He was then benefiting from the support of a Le Havre shipowner, Louis-Joachim Gaudibert, who had commissioned a portrait of his wife. The snow landscape is a genre that Gustave Courbet had brought back into favour, and Monet devoted himself to it passionately during those Norman winters. Sent to the Salon of 1869, the canvas was rejected by the jury. It then remained for more than a century in private collections, little seen by the public and absent from the great narratives of Impressionism. It entered the national collections only in 1984, following a purchase by the State, and joined the Musée d'Orsay when it opened in 1986."""
+facture = """
+The whole canvas rests on a restricted range of whites, yet none is pure: Monet mixes them with yellow, pink, blue and lilac according to their exposure to the light. The shadows are laid in in plain blue, without black. The brushwork varies with the materials: thick and creamy for the packed snow of the foreground, finer and more nervous for the frost-covered branches. The composition, strongly horizontal, is given rhythm by the line of the fence and the vertical of the gate, against which the bird's single dark point stands out."""
+details = [
+  "The magpie, perched on the post of the gate, the only black element in the picture.",
+  "The blue shadows of the fence, stretched across the snow.",
+  "The golden light of the winter sun striking the tops of the hedges.",
+  "The roofs of the houses, on the right, half buried under snow.",
+]
+themes = ["snow", "winter", "landscape", "coloured shadows", "normandy"]
+anecdote = """
+Monet painted more than a hundred snow landscapes over his lifetime. In January 1880, at Vétheuil, he even painted the Seine locked in ice, then the break-up, when the blocks cracked and drifted down the river."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Impression, Sunrise"
+annee = "1872"
+image = "impression-soleil-levant.jpg"
+technique = "Oil on canvas, 48 × 63 cm"
+collection = "Musée Marmottan Monet, Paris"
+note = "The port of Le Havre in mist. A mocking critic took from its title the name “Impressionists”."
+description = """
+The port of Le Havre at early morning, wrapped in a blue-grey mist. At the centre, a small orange sun, sharp as a pastille, rises above the water; its reflection breaks into a column of short orange strokes that descends towards us. In the foreground, a dark boat carrying two figures glides over the water; two other, paler craft fade out behind it. In the background one can make out the masts of sailing ships, the port's cranes and chimneys whose smoke mingles with the fog. Sky and water almost merge, in the same tones of blue, grey and orange-pink: there is neither a clear horizon line nor precise detail, only forms gradually emerging from the dawning light."""
+evocation = """
+The canvas captures a fleeting moment, the one when the sun pierces the mist, and makes it the very subject of the picture. The title says so: this is not a view of Le Havre but an impression, that is, the sensation of an instant. For many historians, the work is also an image of modernity: an industrial port, its cranes and smoke, in the aftermath of the war of 1870, in a France that was rebuilding itself. It has been seen as a symbol of hope, the sun rising over a wounded country, even though Monet never presented it that way. Having become the emblem of an entire movement, it sums up the Impressionist ambition: to paint not things, but the light and air that envelop them, in the passing of time."""
+histoire = """
+Monet painted the canvas in 1872 from a hotel room overlooking the outer harbour of Le Havre, the city of his childhood. He exhibited it in Paris on 15 April 1874, on the boulevard des Capucines, in the former studio of the photographer Nadar, at the first exhibition of the group that would become the Impressionists. He would later recount that he was asked for a title for the catalogue and simply proposed “Impression”. On 25 April, Louis Leroy published his mocking article, “The Exhibition of the Impressionists”, in Le Charivari. The canvas then belonged to Ernest Hoschedé, at whose sale the physician and collector Georges de Bellio acquired it in 1878. His daughter and son-in-law, Victorine and Eugène Donop de Monchy, gave it to the Musée Marmottan in 1940. Stolen in 1985, it was recovered in Corsica in 1990."""
+facture = """
+The paint is laid on in thin, fluid layers, so diluted that the canvas shows through in places. A few brushstrokes suffice to depict a boat or a mast; the water is made of rapid horizontal touches, the sun's reflection of small orange commas, thicker in texture. Monet works fast, to fix an effect that lasts only a few minutes. The palette is reduced to blue-grey and orange, two complementary colours that heighten one another. It has been seen as recalling Turner, whose paintings Monet saw in London in 1870–1871, and Japanese prints in the simplification of forms."""
+details = [
+  "The orange disc of the sun, set almost flat against the grey sky.",
+  "The sun's reflection, made of a few superimposed orange strokes on the water.",
+  "The two figures in the foreground boat, reduced to dark patches.",
+  "On the left, the masts and cranes dissolving in the mist.",
+  "The signature and date, “Claude Monet 72”, at lower left.",
+]
+themes = ["port", "mist", "dawn", "sun", "modernity"]
+anecdote = """
+In 2014, the American astronomer Donald Olson, cross-referencing the height of the sun, tide tables and weather records, proposed dating the scene precisely to 13 November 1872, at around 7:35 in the morning."""
+salle = 2
+mur = "ouest"
+place = 3
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Poppies"
+annee = "1873"
+image = "coquelicots.jpg"
+technique = "Oil on canvas, 50 × 65 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Near Argenteuil, Camille and their son Jean cross a field dotted with red."
+description = """
+On a summer's day, a rolling meadow slopes gently down towards us. On the left, a broad stream of red poppies crosses the grass on the diagonal. In the foreground, a woman in a dark dress, a parasol in her hand, walks along with a small boy in a straw hat, half sunk in the tall grass. Higher up, near the crest, a second pair, a woman with a parasol and a child, descends the hill. On the right, a row of trees closes the horizon, and a house can be glimpsed among their foliage. The sky, very wide, takes up nearly half of the canvas; it is crossed by white, cottony clouds. The whole scene breathes the warmth and slowness of an afternoon stroll in the countryside."""
+evocation = """
+The painting celebrates a simple happiness: a family walk in the countryside of Argenteuil, a few years after the war and the Commune. The two pairs, at the top and bottom of the hill, have often been read as the same walkers at two moments of their stroll; the picture would thus suggest the passing of time, in the manner of a sequence. The poppies, wild and ephemeral flowers, reinforce this impression of fleetingness. Monet seeks neither narrative nor heavy-handed symbol: the figures are almost patches of colour among others, blended into the landscape. What matters is the sensation of a luminous summer, and the image of the peaceful life that the painter, although often short of money, was then enjoying at Argenteuil."""
+histoire = """
+Monet settled at Argenteuil, on the banks of the Seine, at the end of 1871, after stays in London and the Netherlands. He lived there until 1878 with Camille and Jean, and this period was one of the most fruitful of his career; his friends Renoir, Sisley and Manet came to paint alongside him. Poppies was painted in the surrounding area in the summer of 1873. The following spring, the canvas appeared at the first Impressionist exhibition, in 1874, alongside Impression, Sunrise. It then passed through several collections, up to that of the painter, art historian and collector Étienne Moreau-Nélaton, who gave it to the Louvre in 1906 together with all his modern paintings. It has been displayed at the Musée d'Orsay since 1986."""
+facture = """
+Monet builds the canvas through colour oppositions rather than drawing. The poppies are simple patches of bright red laid on the green of the grass, its complementary colour, which makes them vibrate; their size diminishes with distance, which deepens the space. The diagonal of flowers, linking the two pairs, structures the whole composition. The figures are sketched in a few touches, the child's face reduced to a pale patch. The sky, painted with broad, mobile strokes of the brush, contrasts with the smaller, tighter touch of the meadow."""
+details = [
+  "The parasol of the woman in the foreground, standing out against the sky.",
+  "The second pair, at the top of the slope, reduced to two silhouettes.",
+  "The poppies, simple red dots, with no petals or stems drawn.",
+  "The house glimpsed among the trees, on the right.",
+]
+themes = ["poppies", "countryside", "family", "summer", "stroll"]
+anecdote = """
+Étienne Moreau-Nélaton's 1906 donation to the Louvre also included Manet's Luncheon on the Grass: the scandalous canvas of the Salon des Refusés of 1863 and Monet's peaceful stroll entered the national collections together."""
+salle = 2
+mur = "ouest"
+place = 4
+largeur = 1.3
+
+[[oeuvres]]
+titre = "The Promenade, Woman with a Parasol"
+annee = "1875"
+image = "femme-ombrelle.jpg"
+technique = "Oil on canvas, 100 × 81 cm"
+collection = "National Gallery of Art, Washington"
+note = "Camille and Jean seen from below, against the sky: the wind, the clouds and the green shadow of the parasol."
+description = """
+A young woman dressed in white stands at the top of a flowery bank, seen from below, as if the painter were sitting in the grass. She holds a tilted parasol and turns towards us a face half hidden by a veil. The wind lifts the veil and the folds of her dress, and bends the grasses at her feet. Slightly set back, behind the crest, a small boy in a round hat appears only from the waist up. The woman's silhouette stands out against the light, against a blue sky crossed by white clouds that fills almost the whole surface of the picture. Her dress, in shadow, takes on blues and yellows, and the green of the meadow rises in reflections in the fabric. The horizon line is so low that nothing of the surrounding landscape can be seen."""
+evocation = """
+The painting has the lightness of a family snapshot: Camille and Jean, the painter's wife and son, caught during a walk. The low viewpoint nevertheless gives the young woman an almost monumental presence, like a figure raised against the sky. Everything speaks of movement and the passing instant: the wind, the clouds, the gaze turned towards the painter. It has been seen as the expression of a peaceful marital happiness; what followed gives the canvas a melancholy resonance, since Camille died four years later, in 1879, at the age of thirty-two. The picture also speaks of Monet's ambition to paint the human figure outdoors, not posed in a studio, but bathed in, and almost dissolved by, light."""
+histoire = """
+Monet painted the canvas at Argenteuil in the summer of 1875, in the meadows near the house where he lived with Camille and Jean, then seven years old. He showed it in the spring of 1876 at the second Impressionist exhibition, organised at the dealer Paul Durand-Ruel's gallery on the rue Le Peletier. The press was still very hostile to these canvases, judged slapdash, but this type of outdoor figure became one of the painter's signatures. The painting later left France for the United States. It belonged to Paul Mellon, son of the banker Andrew Mellon, founder of the National Gallery of Art, and to his wife Rachel, known as Bunny; the couple gave it to the Washington museum in 1983, among many French works from their collection."""
+facture = """
+The canvas is painted with visible rapidity: broad, supple touches for the sky, small lively crisscrossing strokes for the grass shaken by the wind. Monet plays with backlighting: the figure, lit from behind, is never truly white, but nuanced with blues, yellows and greens reflected from the sky and the meadow. The face is merely sketched, barely distinct beneath the veil. The low angle and very low horizon isolate the silhouette against the sky, a bold framing for the period, recalling the choices of Japanese prints."""
+details = [
+  "The veil floating before Camille's face, lifted by the wind.",
+  "Jean, half hidden behind the bank, looking towards the painter.",
+  "The touches of yellow scattered in the grass at the young woman's feet.",
+  "The green reflections of the meadow that colour the lower part of the white dress.",
+]
+themes = ["portrait", "wind", "sky", "family", "open air"]
+anecdote = """
+In 1886, eleven years later, Monet took up the same motif again at Giverny with Suzanne Hoschedé, the daughter of his companion Alice: he made two canvases from it, now in the Musée d'Orsay, in which the model's face remains almost erased."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Gare Saint-Lazare"
+annee = "1877"
+image = "gare-saint-lazare.jpg"
+technique = "Oil on canvas, 75 × 104 cm"
+collection = "Musée d'Orsay, Paris"
+note = "Under the glass roof, the steam of the locomotives becomes light: Monet painted twelve versions."
+description = """
+We stand beneath the great hall of the Gare Saint-Lazare in Paris. A double-pitched iron framework, glazed with skylights, frames the scene like an immense triangle. At the centre, a black locomotive advances towards us, spewing a cloud of white and bluish steam that rises to the glass roof. On either side, other trains stand along the platforms, where small figures of travellers and railway staff move about. In the foreground, the rails converge towards the viewer. In the background, beyond the open end of the hall, the façades of the buildings of the Europe district appear in the light, half veiled by smoke. Everything contrasts: the shadow of the hall and the brilliance of daylight, the heaviness of the machines and the lightness of the steam."""
+evocation = """
+To paint a railway station in 1877 was to choose the most modern motif imaginable: the railway, a symbol of speed, industry and progress. Where Salon painters still sought beauty in Antiquity or mythology, Monet found it in the smoke of locomotives and the iron of glass roofs. Émile Zola, a defender of the Impressionists, praised these canvases and judged that artists should find the poetry of railway stations as their fathers had found that of forests and rivers. Steam plays here the role that clouds or mist play elsewhere: a changing, almost immaterial substance that catches the light. It is not the machine that we admire, but the atmosphere it creates, an urban landscape recomposed by light."""
+histoire = """
+At the beginning of 1877, Monet, who was still living at Argenteuil, rented a small pied-à-terre on the rue de Moncey, not far from the station, and obtained permission to paint inside it and along the tracks. Within a few months he produced a series of views, from the platforms, beneath the hall or at the foot of the Pont de l'Europe. In April he showed several at the third Impressionist exhibition, where they attracted the attention of the critics. This one was acquired by the painter and collector Gustave Caillebotte, a friend and financial supporter of the group. On his death in 1894, Caillebotte bequeathed his collection to the State; after long discussions only part of it was accepted, including this canvas, displayed at the Musée du Luxembourg from 1897, then at the Louvre and finally at the Musée d'Orsay."""
+facture = """
+Monet does not describe the station as an engineer would: the lines of the framework, clean and geometric, serve as a fixed frame for everything that moves. Within this triangle, the steam is painted in thick, swirling touches of white, blue, pink and grey, laid on in full impasto. The locomotives are dark masses without mechanical detail, the travellers mere commas. The contrast between the shadow of the hall and the dazzling light of the background creates depth, while the smoke unifies the whole."""
+details = [
+  "The bluish steam rising to the glass roof and making it almost transparent.",
+  "The travellers and railway staff, reduced to a few dark touches on the platform.",
+  "The sunlit buildings in the background, glimpsed through the smoke.",
+  "The rails in the foreground, converging towards the viewer.",
+]
+themes = ["station", "steam", "modernity", "paris", "railway"]
+anecdote = """
+The Gare Saint-Lazare also inspired Monet's friends: Manet set The Railway (1873) in its surroundings, and Caillebotte painted The Pont de l'Europe (1876), which spans the tracks just outside the station."""
+salle = 3
+mur = "est"
+place = 1
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Rue Montorgueil, Festival of 30 June 1878"
+annee = "1878"
+image = "rue-montorgueil.jpg"
+technique = "Oil on canvas, 81 × 50 cm"
+collection = "Musée d'Orsay, Paris"
+note = "A Paris street decked with flags for the Exposition Universelle: a crowd and banners in vibrating touches."
+description = """
+Seen from above, from a balcony, a Paris street recedes towards the back of the picture, lined with tall façades. Dozens of tricolour flags hang from the windows on either side and seem to snap in the wind; their blues, whites and reds invade almost the entire surface. Below, the roadway is occupied by a dense crowd, rendered by a multitude of small dark and light touches. In the distance, the street is lost in a white light. The vertical format, tall and narrow, accentuates the impression of depth and the vertigo of the plunging gaze. No face or particular figure can be made out: the façades themselves almost disappear behind the fabrics, and the true subject is the festival, its movement and its brilliance."""
+evocation = """
+The canvas celebrates a moment of collective, patriotic jubilation. On 30 June 1878, Paris celebrated peace and the recovery of the country, seven years after the defeat of 1870 and the Commune. For the young and still fragile Third Republic, it was an occasion to assert its colours; the tricolour, omnipresent, takes on the value of a manifesto. Monet was hardly a political painter, but he captured the energy of a city in festival and of a nation rediscovering itself. The crowd, dissolved into touches of colour, becomes a collective being, and the fluttering flags make the street a living organism. It is often seen as one of the most joyful images of modern life left by the Impressionists."""
+histoire = """
+On 30 June 1878, in the midst of the Exposition Universelle, the government organised a great Festival of Peace; 14 July would not become the national holiday until 1880. Monet, who was then living in Paris in great financial difficulty, walked the streets with his equipment. He painted two canvases that day: this one, the rue Montorgueil, and a view of the rue Saint-Denis, now in the Musée des Beaux-Arts in Rouen. The same day, Manet painted the flag-decked rue Mosnier, which he could see from his studio. The canvas was shown the following year at the fourth Impressionist exhibition. Long in private hands, it is now held at the Musée d'Orsay, a few metro stops from the street it depicts."""
+facture = """
+Monet paints fast, in a few hours, to capture the festival before it disperses. The flags are made of juxtaposed touches, short and energetic, of blue, white and red, which vibrate against one another without ever forming a precise outline. The crowd is treated the same way, in small brushstrokes, like a swarming mass. The plunging perspective and tight vertical framing recall the urban views of Japanese prints. Almost abstract in places, the canvas has often been compared, for its freedom of colour, to the researches of the Fauves thirty years later."""
+details = [
+  "The flags in the foreground, so close that they seem to brush the viewer.",
+  "The crowd, below, made of countless small faceless touches.",
+  "The luminous background, where the street dissolves into a dazzling white.",
+  "The façades almost entirely hidden by the tricolour fabrics.",
+]
+themes = ["festival", "paris", "flags", "crowd", "republic"]
+anecdote = """
+Monet would recount that he was walking that day with his equipment when he spotted a balcony: he went up to ask permission to paint there, obtained it, then came back down incognito once his work was finished."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "Wheatstacks (End of Summer)"
+annee = "1890–1891"
+image = "meules.jpg"
+technique = "Oil on canvas, 60 × 100 cm"
+collection = "Art Institute of Chicago"
+note = "Two wheat stacks at Giverny: the first of the great series, in which only the time of day changes."
+description = """
+In a harvested field near Giverny, two wheat stacks stand side by side, one large, the other smaller. Their form is simple: a rounded base capped by a conical roof, like two small straw huts. The late-day sun lights them from the side and casts blue and violet shadows over the thatch. Behind them, a line of trees and a few houses close the horizon, at the foot of bluish hills. The sky, pale and veiled, fills a broad horizontal band. Nothing happens, no peasant, no animal, no cart: only two massive shapes set in the warm light of late summer, whose outlines vibrate slightly in the air."""
+evocation = """
+With the Wheatstacks, the subject becomes almost indifferent: what counts is time, the hour, the season, the atmosphere. By repeating the same motif under different lights, Monet shows that an object has no fixed appearance and that our perception is constantly changing. The stacks, grain reserves for a whole year, also evoke the nourishing earth, the cycle of the seasons and the permanence of the rural world, at a time when France was industrialising; some historians have seen in them a celebration of the national terroir. Through their pared-down form and massive presence they take on the look of rustic monuments, and herald the series that would follow."""
+histoire = """
+The stacks stood in a field next to the house at Giverny, where Monet had settled in 1883. He began painting them at the end of the summer of 1890 and continued through the autumn and winter, until the beginning of 1891, multiplying the canvases. He then wrote to his friend the critic Gustave Geffroy that he was working relentlessly on a series of different effects, that the sun was setting so fast he could not keep up with it, and that he had to work very hard to render instantaneity. In May 1891, the Durand-Ruel gallery exhibited fifteen Wheatstacks: the success was immediate and the canvases sold within days, notably to American collectors. The Art Institute of Chicago today holds one of the most important groups from this series."""
+facture = """
+Monet worked on several canvases at once, moving from one to another as the hours passed in order to follow the evolution of the light, then reworked them at length in the studio to harmonise the series. The brushwork is dense, crossed, layered in thick coats that give the surface a granular texture. No colour is local: the golden straw is mingled with orange, pink and violet, the shadows with blue and mauve. The framing, simple and almost frontal, leaves all the room to the variations of colour."""
+details = [
+  "The blue-violet shadows stretching at the foot of the stacks.",
+  "The fringe of light that outlines the contour of the straw roofs.",
+  "The houses and trees in the background, melting into the warm haze.",
+  "The stubble of the harvested field, rendered in small crisscrossing touches.",
+]
+themes = ["series", "countryside", "light", "seasons", "giverny"]
+anecdote = """
+In 1896, in Moscow, the young Vassily Kandinsky came upon one of Monet's Haystacks. He would recount that he had at first not recognised the subject without the help of the catalogue, and that this shock revealed to him the power of colour alone, detached from the object."""
+salle = 3
+mur = "est"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Rouen Cathedral, Harmony in Blue"
+annee = "1893"
+image = "cathedrale-rouen.jpg"
+technique = "Oil on canvas, 91 × 63 cm"
+collection = "Musée d'Orsay, Paris"
+note = "The portal in the morning sun, painted from a window opposite: the stone dissolves into light."
+description = """
+The west façade of Rouen Cathedral fills the whole canvas, seen from very close and cut off at the top by the frame: neither the tops of the towers nor the spire can be seen. At the centre, the great Gothic portal opens beneath a high, finely carved arcade; above it one can make out the galleries and the rose window. On the left, the Tour Saint-Romain rises in part. The sky appears only in a narrow strip, at the sides. The stone, still plunged in the morning shadow, is bathed in deep blues, while the first touches of sun, golden and rosy, catch the reliefs, pinnacles and sculptures. No passer-by, no life on the square: only the worked mass of the building, as if suspended in the air."""
+evocation = """
+By painting the same façade more than thirty times, Monet transforms a monument laden with history and faith into a mere screen on which light plays. The cathedral, a symbol of permanence, paradoxically becomes the image of instability: it changes colour, substance and almost shape from one hour to the next. It has been seen as a reflection on time and perception, and some have read in it a quasi-religious meditation on light, which seems to emanate from the stone itself. The choice of a Gothic masterpiece, an emblem of the national heritage, is not insignificant either in a France then rediscovering its Middle Ages. Monet nevertheless makes of it less a monument than a living substance."""
+histoire = """
+Monet worked at Rouen over two winters, from February to April 1892, then in 1893. He rented in succession rooms in buildings opposite the cathedral, above shops, from which he painted the façade at different times of day. Back at Giverny, he reworked the canvases at length to harmonise the whole, and dated several of them 1894. In May 1895 he exhibited about twenty of them at Durand-Ruel's. Georges Clemenceau devoted an enthusiastic article to them in La Justice, “Revolution of Cathedrals”, and wished the State to buy the entire series, which did not happen. Count Isaac de Camondo, a great collector, brought several together, including this one, and bequeathed them to the Louvre in 1911; they are now in the Musée d'Orsay."""
+facture = """
+The material is the most striking element of the series: Monet superimposes, layer after layer, a thick and rugged paste, worked with an almost dry brush, which ends up resembling the stone itself. The outlines of the architecture disappear beneath this coloured crust. The palette is deliberately limited, here dominated by blues and violets, set off with touches of ochre and orange, complementary colours that make the surface vibrate. The tight framing removes all context, like a close-up. The effect of light is only fully legible from a distance."""
+details = [
+  "The central portal, whose sculptures dissolve in the blue shadow.",
+  "The first touches of sun, golden, on the pinnacles and reliefs.",
+  "The rough surface of the paint, imitating the grain of the stone.",
+  "The narrow strip of sky, almost the same colour as the façade.",
+]
+themes = ["series", "cathedral", "gothic", "light", "rouen"]
+anecdote = """
+During his stay in Rouen, Monet wrote to Alice Hoschedé that he had spent a night of nightmares: the cathedral was collapsing on top of him, and it appeared to him now blue, now pink, now yellow."""
+salle = 3
+mur = "est"
+place = 4
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Houses of Parliament, Sunset"
+annee = "1903"
+image = "parlement-londres.jpg"
+technique = "Oil on canvas, 81 × 92 cm"
+collection = "National Gallery of Art, Washington"
+note = "Painted from St Thomas's Hospital: the silhouette of Parliament drowned in the orange fog of the Thames."
+description = """
+Across the Thames, the silhouette of the Palace of Westminster, seat of the British Parliament, stands in shadow against a blazing sky. Its neo-Gothic towers and spires, violet-blue, seem cut out of the mist, without any architectural detail. The setting sun, veiled by the fog, spreads an orange light behind the building that sets the whole sky ablaze. The river fills the lower half of the canvas; it returns these colours in long orange, pink and violet strokes that undulate on its surface. The boundary between bank and water is almost invisible, and the building seems to float. Everything is enveloped in the same heavy atmosphere, where air, water and stone seem made of the same luminous substance."""
+evocation = """
+Parliament, a symbol of British power and of parliamentary democracy, becomes in Monet's hands an almost unreal apparition, without weight or substance, dissolving in the fog. The architecture is no more than a pretext: the true subject is the atmosphere of London, that blend of mist, industrial smoke and filtered light that the painter judged unique. It has been seen as a tribute to Turner, whose paintings he had admired during his London exile, and as a dialogue with the Nocturnes of his friend Whistler. The picture also speaks of the fascination of Monet, then over sixty, with a city that he associated with his youth and with difficult years."""
+histoire = """
+Monet had stayed in London during the war of 1870, and had met there the dealer Paul Durand-Ruel, who would become his principal supporter. He returned in the autumn of 1899, then at the beginning of 1900 and 1901. Staying at the Savoy Hotel, he painted Waterloo Bridge and Charing Cross Bridge from his room; for Parliament, he obtained permission to work at St Thomas's Hospital, on the opposite bank. He undertook a very large number of canvases, which he completed at Giverny over several years. In May 1904, Durand-Ruel exhibited thirty-seven of these views of the Thames, with great success. This canvas, dated 1903, later belonged to the New York collector Chester Dale, whose collection entered the National Gallery of Art in 1963."""
+facture = """
+Monet paints in successive layers, first from the motif and then at length in the studio, seeking unity of colour rather than topographical fidelity. The picture rests on two families of complementary colours: blues and violets for the building and the shadows, oranges and pinks for the sky and its reflections. The silhouette of the palace has no sharp outlines; it is made of vertical touches that melt into the background. On the water, the brushwork becomes horizontal and broken to suggest the movement of the river. The whole, heavily worked, nevertheless keeps the appearance of a fleeting vision."""
+details = [
+  "The towers of the palace, reduced to violet silhouettes without detail.",
+  "The orange reflections glittering on the Thames in horizontal touches.",
+  "The sky where fog and the light of the setting sun mingle.",
+  "The line of the bank, almost invisible, between the palace and the water.",
+]
+themes = ["london", "fog", "river", "sunset", "series"]
+anecdote = """
+The palace that Monet painted was then almost new: the old Parliament burned down in October 1834, a fire that Turner witnessed and painted, before it was rebuilt in the neo-Gothic style by Charles Barry and Augustus Pugin."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Water Lilies"
+annee = "1906"
+image = "nympheas.jpg"
+technique = "Oil on canvas, 89.9 × 94.1 cm"
+collection = "Art Institute of Chicago"
+note = "No more bank or sky: only the surface of the pond at Giverny, its flowers and the reflections of clouds."
+description = """
+The canvas shows only the surface of a pond, seen from close up and from above, with no bank or horizon. Islands of water-lily leaves, flat and rounded, float in irregular groups; a few pink and white flowers open among them like points of light. Between the leaves, the dark water reflects the sky and clouds in broad blue and white expanses, as well as the deep green of the trees and willows that edge the pool, outside the picture. Top and bottom merge: one can no longer quite tell what floats on the surface, what lies beneath the water and what is reflected from above. The eye wanders from one island to another without finding a foothold."""
+evocation = """
+With the Water Lilies, Monet makes of a corner of his garden a complete world. By removing the bank and the sky, he forces the gaze to plunge into the water, where surface, depth and reflection mingle. The painting becomes a place of contemplation, almost of meditation; it has often been compared to the Japanese sensibility that Monet admired. For many historians, these canvases mark the passage from the representation of a landscape to a painting of pure sensation, and prepare the great panels of the Orangerie. They also speak of the ageing painter's withdrawal into his garden, which he had shaped himself and which became for him the entire universe."""
+histoire = """
+In 1893, Monet bought a plot of land on the other side of the road and railway line that bordered his property at Giverny. He obtained permission to divert part of the Ru, an arm of the Epte, in order to dig a pond there, despite the concern of neighbouring peasants, who feared that these exotic plants would poison the water. He planted water lilies there, enlarged the pond in 1901, and made it his principal motif. In 1909, the Durand-Ruel gallery presented forty-eight of these canvases under the title “The Water Lilies, Series of Water Landscapes”. This one, painted in 1906, later belonged to the great Chicago collector Martin A. Ryerson, whose collection entered the Art Institute in 1933."""
+facture = """
+Monet abandons traditional perspective here: no more vanishing point, no more horizon line. The composition rests on the distribution of the islands of leaves, which seem to drift slowly, and on the verticals of the reflections. The brushwork varies with what it describes: small, dense, horizontal touches for the leaves, broader and more fluid strokes for the water and the reflections of the sky. The colours, very closely attuned, blues, greens and violets punctuated with pink, create an almost musical harmony. The near-square format, unusual for a landscape, accentuates the absence of orientation."""
+details = [
+  "The water-lily flowers, a few pink and white touches laid on in relief.",
+  "The reflection of a white cloud crossing the dark water.",
+  "The vertical reflections of the trees on the bank, themselves invisible.",
+  "The leaves that shrink towards the top of the canvas and suggest depth.",
+]
+themes = ["water", "garden", "reflections", "giverny", "contemplation"]
+anecdote = """
+Monet bought his coloured water lilies from the horticulturist Joseph Bory Latour-Marliac, at Temple-sur-Lot, whose pink and yellow hybrids had caused a sensation at the Exposition Universelle of 1889 in Paris."""
+salle = 4
+mur = "nord"
+position = -3.5
+largeur = 1.6
+
+[[oeuvres]]
+titre = "The Japanese Footbridge"
+annee = "1920–1922"
+image = "pont-japonais.jpg"
+technique = "Oil on canvas, 89 × 116 cm"
+collection = "Museum of Modern Art, New York"
+note = "Almost blind, Monet paints from memory the bridge in his garden: reds and golds that foreshadow abstraction."
+description = """
+At first glance, the subject can barely be made out: a tangle of red, orange, yellow and green touches invades the whole canvas. Gradually a shape emerges: the arch of a footbridge spanning the pond at Giverny, caught in a teeming vegetation. The wisteria that covers the bridge and the plants around it merge with it into a dense, blazing mass. At the bottom, a few darker tones suggest the water of the pond. There is no sky, no horizon, no marker of scale. The motif, painted twenty years earlier in a calm light and harmonies of greens and blues, appears here as a blaze of colours, almost unrecognisable."""
+evocation = """
+These last views of the bridge have often been read in light of Monet's illness: the cataract, which clouded his sight, altered his perception of colours, the blues fading in favour of yellows, reds and browns. But they also express a new freedom, a painting of gesture and memory, in which the motif matters less than emotion. They have been seen as the expression of anguish, that of an old man who feels his sight slipping away, and at the same time of a fierce energy. Long neglected, judged to be the works of a diminished painter, these canvases were rehabilitated after 1945, when the American Abstract Expressionist painters recognised in them a precursor."""
+histoire = """
+The wooden footbridge, painted green, was built in the water garden at Giverny shortly after the creation of the pond, in the 1890s; Monet conceived it inspired by the Japanese prints he collected. He first painted it as a series in 1899. Around 1918–1924, suffering from cataracts, he returned to it in a sequence of far more violent canvases, which he kept in his studio. Operated on in the right eye in 1923, he partly recovered his sight. After his death, these canvases remained at Giverny, with his son Michel, until the 1950s, when dealers and museums, notably American ones, began to take an interest in them. The Museum of Modern Art in New York acquired this one through the Mrs. Simon Guggenheim Fund."""
+facture = """
+The paint is applied in thick layers, rubbed, scratched, sometimes crushed, with an energy that leaves the trace and direction of each brushstroke visible. The tones, saturated and warm, are superimposed without blending, letting the lower layers show through. The drawing has almost disappeared: the arch of the bridge is suggested only by a lighter curve in the mass. The fairly large format and the tight framing, with no distance at all, plunge the viewer into the very substance of the paint."""
+details = [
+  "The pale curve of the arch, at mid-height, discernible within the coloured mass.",
+  "The brush marks, left visible in the thick paste.",
+  "The few dark tones, at the bottom, that suggest the water of the pond.",
+  "The wisteria of the bridge, become a tangle of reds and oranges.",
+]
+themes = ["garden", "japonisme", "abstraction", "old age", "colour"]
+anecdote = """
+Left abandoned after the Second World War, the house and garden at Giverny were restored thanks to numerous patrons, largely American, and opened to the public in 1980; the Japanese bridge was rebuilt there exactly as it had been."""
+salle = 4
+mur = "nord"
+position = 3.2
+largeur = 2.2
+
+[[sculptures]]
+titre = "The Greek Slave"
+artiste = "Hiram Powers"
+annee = "1843"
+modele = "greek-slave.stl"
+technique = "Plaster (original model)"
+collection = "Smithsonian American Art Museum, Washington"
+note = "The plaster model of the most famous sculpture of its day, modelled in Florence and exhibited in London in 1851."
+description = """
+A young nude woman, standing and life-size, adopts a calm pose, her weight on one leg, in the manner of ancient statues. Her wrists are bound by a chain: one hand rests on a pillar, the other, lowered, veils her nudity. The face, turned away, tilts to the side, the gaze lowered, with an expression of serene resignation. Draped over the pillar are her clothes, a fringed cloth, as well as a hanging cross and locket, signs of her Christian faith and her family ties. The body is smooth, the forms full and soft, the hair knotted in a chignon. The figure, conceived to be contemplated from all sides, invites the visitor to walk around it."""
+evocation = """
+Powers gave his work a precise subject: a young Greek woman captured by the Turks during the Greek War of Independence and exhibited naked in a slave market. Her nudity, in principle unacceptable to the American public of the day, is justified by this story: it is suffered, not offered, and the young woman remains pure through her faith, which the cross recalls. The sculptor himself insisted on this moral reading. In the United States, the work took on an unexpected resonance: while slavery was legal there, abolitionists saw in it the image of the condition of Black slaves, and turned it against those who admired the statue without seeing slavery at home. It thus concentrates the moral contradictions of its time."""
+histoire = """
+Powers modelled the statue in clay in Florence between 1841 and 1843, then made from it this plaster model, from which his assistants carved the marbles. The first version, completed in 1844, was bought by an English officer and remained in England. Another toured the United States from 1847 to 1849: more than a hundred thousand visitors paid to see it, and clergymen vouched for its morality. Shown at the Crystal Palace during the London Great Exhibition of 1851, it became one of the most famous sculptures in the world. Powers had six life-size marble versions made, and numerous reductions. The plaster, which had remained in the Florentine studio, was acquired with many other models by the Smithsonian in 1968."""
+facture = """
+Like most Neoclassical sculptors, Powers first modelled the figure in clay, took a plaster cast from it, then entrusted the carving of the marble to Italian assistants, reserving the finishing touches for himself. This plaster is therefore the original of the work, the matrix of all the versions. The small metal markers set into its surface allowed measurements to be transferred precisely to the block of marble by means of a pointing machine. The pose draws directly on the Medici Venus, which Powers could see in Florence, in the Uffizi, but the modelling is softer and more naturalistic."""
+details = [
+  "The chain that binds the young woman's two wrists.",
+  "The cross and the locket hanging from the pillar, beside her clothes.",
+  "The small metal points scattered over the plaster, traces of the pointing process.",
+  "The face turned to the side, avoiding the viewer's gaze.",
+]
+themes = ["neoclassicism", "slavery", "nude", "captivity", "faith"]
+anecdote = """
+In 1851, in London, the African American abolitionist William Wells Brown, himself a former slave, placed beside the statue a caricature from the magazine Punch, “The Virginian Slave”, showing a chained Black woman in the same pose."""
+salle = 1
+x = 0
+z = 10
+hauteur = 1.66
+matiere = "platre"
+socle = 0.6
+
+[[sculptures]]
+titre = "The Dying Tecumseh"
+artiste = "Ferdinand Pettrich"
+annee = "1856"
+modele = "tecumseh.stl"
+technique = "Marble"
+collection = "Smithsonian American Art Museum, Washington"
+note = "The Shawnee chief, killed in battle in 1813, stretched out like an ancient hero: a Neoclassical marble."
+description = """
+A Native American warrior lies on the ground, his upper body raised and leaning against a rock, as if in a final effort. His head bows; a wound marks his temple. His right hand still grips a tomahawk, as if he refused to let go of his weapon. The body, powerfully muscled and almost naked, is dressed only in a loincloth and a few ornaments. The figure extends in length, in the manner of the dying heroes that filled the corners of ancient pediments, and invites the viewer to walk around it to follow its lines. The white marble, carefully polished, gives the body a presence both sensual and idealised. No trace of the battle surrounds him: the hero is alone before his death."""
+evocation = """
+Pettrich represents Tecumseh according to the codes of the ancient hero, on the model of the dying warriors of Greek and Roman sculpture, such as the famous Dying Gaul of the Capitoline Museums. This choice makes the vanquished adversary a noble and tragic figure. The sculpture thus participates in the myth of the “noble savage” and in the idea, widespread in the nineteenth century, of the inevitable disappearance of Native American peoples. Historians stress an ambiguity here: the tribute paid to the courage of the Shawnee chief coexists with a vision that turns conquest into heroic fatality, at the very moment when the American government was deporting the Indian nations west of the Mississippi, in application of the Indian Removal Act of 1830."""
+histoire = """
+Tecumseh, a Shawnee chief, tried in the early nineteenth century to unite the Native American nations against the advance of American settlers, together with his brother Tenskwatawa, known as the Prophet. An ally of the British during the War of 1812, he was killed on 5 October 1813 at the Battle of the Thames, in what is now Ontario, and his body was never identified with certainty. Having arrived in the United States in 1835, the German sculptor Ferdinand Pettrich conceived the figure in the following years, while hoping to obtain official commissions in Washington. He had it carved in marble only in 1856, long after leaving America. The work was then kept for a long time in the Capitol, before being transferred to the national collections, today the Smithsonian American Art Museum."""
+facture = """
+Trained in the studio of Bertel Thorvaldsen in Rome, Pettrich applies here the Neoclassical lesson: idealised anatomy, smooth and polished surfaces, clean contours, restrained emotion. The white marble, without any colour, removes the subject from all documentary realism and ties it to the world of Antiquity. The elongated, diagonal composition leads the eye from the hand clenched on the weapon to the bowed head. The elements specific to Shawnee culture, ornaments or weapon, are reduced to a few attributes, subordinated to the beauty of the nude."""
+details = [
+  "The tomahawk that the warrior's right hand still grips.",
+  "The wound at the temple, discreet, indicating the cause of death.",
+  "The musculature of the torso, modelled like that of an ancient athlete.",
+  "The rock on which the body rests, treated more summarily than the figure.",
+]
+themes = ["neoclassicism", "native americans", "hero", "death", "history"]
+anecdote = """
+Colonel Richard Mentor Johnson boasted of having killed Tecumseh at the Battle of the Thames; this claim to glory, never proven, helped him become Vice President of the United States from 1837 to 1841, under Martin Van Buren."""
+salle = 1
+x = 0
+z = 0
+hauteur = 0.94
+matiere = "marbre"
+socle = 0.7
+
+[[sculptures]]
+titre = "Old Arrow Maker"
+artiste = "Edmonia Lewis"
+annee = "1866–1872"
+modele = "arrow-maker.stl"
+technique = "Marble"
+collection = "Smithsonian American Art Museum, Washington"
+note = "By the first recognised African American and Native American woman sculptor: a father and his daughter, after Longfellow's poem."
+description = """
+On a single base, two figures sit side by side, forming a compact group. The old man, bent over his work, shapes an arrowhead from a flake of stone, absorbed in the precision of his gesture. Beside him, his daughter weaves a rush mat laid across her lap. The scene is set, according to the poem that inspired it, in the land of the Dakotas, before the arrow maker's tent, not far from the Falls of Minnehaha. The two figures, one concentrated on his work, the other more dreamy, fit within a pyramidal silhouette. The format is modest, about fifty centimetres high, which invites the viewer to come close to observe the hands and tools. Nothing dramatic: it is a scene of daily life, steeped in calm and tenderness."""
+evocation = """
+The work illustrates an episode from The Song of Hiawatha (1855) by Henry Wadsworth Longfellow, a poem then immensely popular: Minnehaha, “Laughing Water”, lives with her father, the old arrow maker, before the hero Hiawatha comes to ask for her hand in marriage. Lewis chooses a peaceful moment, without the hero, centred on the bond between a father and his daughter and on the work of hands. For an artist of Ojibwe descent through her mother, this subject was also a way of representing Indigenous peoples with dignity, far from images of menacing savages or dying warriors. Historians nevertheless point out that it passes through the filter of a poem written by a white man, with its thoroughly Romantic idealisation."""
+histoire = """
+Edmonia Lewis settled in Rome around 1865–1866 and opened her studio there. She quickly found in Longfellow's poem a source of inspiration and produced several busts and groups devoted to Hiawatha and Minnehaha, which particularly pleased American travellers and collectors passing through. The group of the Old Arrow Maker was conceived as early as 1866, then carved in marble several times; this version dates from 1872. The artist met Longfellow during her stay in Rome, in the late 1860s, and subsequently made his bust, now at Harvard University. These Native American subjects assured Lewis's studio of a loyal clientele for nearly two decades."""
+facture = """
+Unlike many sculptors settled in Rome, who entrusted the carving of their marbles to Italian assistants, Lewis insisted on carrying out a large part of the work herself, notably so that no one could dispute that her works were truly by her own hand. The group obeys the principles of Neoclassicism: white marble, smooth surfaces, measured gestures. But the artist introduces precise details, hairstyles, clothing and tools, that anchor the scene in a particular culture. The small format suits a private clientele."""
+details = [
+  "The old man's hands, busy chipping an arrowhead.",
+  "The rush mat that the young woman weaves on her lap.",
+  "The hairstyles and clothing, sculpted with great care for detail.",
+  "The pyramidal form of the group, which unites father and daughter.",
+]
+themes = ["native americans", "family", "literature", "neoclassicism", "work"]
+anecdote = """
+The Death of Cleopatra, presented by Lewis in Philadelphia in 1876, had an astonishing fate: it long served as the funerary monument of a racehorse named Cleopatra, near Chicago, before being rediscovered and donated to the Smithsonian in 1994."""
+salle = 1
+x = 0
+z = -11
+hauteur = 0.55
+matiere = "marbre"
+socle = 1.0
+
+[[artistes]]
+nom = "Claude Monet"
+vie = "Paris, 14 November 1840 – Giverny, 5 December 1926"
+biographie = """
+Born in Paris, Oscar-Claude Monet grew up in Le Havre, where he first became known for his caricatures. Around 1857–1858, the painter Eugène Boudin introduced him to open-air painting, which would become the rule of his entire life. In Paris, he frequented the Académie Suisse, where he met Camille Pissarro, then, after military service in Algeria, the studio of Charles Gleyre, where he became friends with Renoir, Sisley and Bazille. His first seascapes were accepted at the Salon in 1865, but his bolder canvases were often rejected, and poverty pursued him for twenty years. In 1870 he married Camille Doncieux, mother of his son Jean, then took refuge in London during the war, where he met the dealer Paul Durand-Ruel. Settled at Argenteuil, he organised with his friends the first Impressionist exhibition in 1874. Camille died in 1879, a year and a half after the birth of their second son, Michel. Monet then lived with Alice Hoschedé and her children, settled at Giverny in 1883 and married Alice in 1892. The series of the 1890s finally brought him success and comfort. He devoted his last thirty years to his water garden and the Water Lilies, despite the death of Alice in 1911, that of his son Jean in 1914 and a cataract that threatened his sight. In the aftermath of the armistice of 1918, he offered the State his Grandes Décorations; they were installed at the Orangerie in 1927, a few months after his death."""
+style = """
+Monet is the painter who pushed the Impressionist principle furthest: to paint not objects, but the light and atmosphere that envelop them at a given moment. His fragmented brushwork, made of juxtaposed commas of colour, his coloured shadows and his near-abandonment of black make his canvases immediately recognisable. From 1890, he invented the series, painting the same motif at different hours and seasons, to show that perception is constantly changing. In his last years, the Water Lilies, with no horizon or point of reference, opened the way to abstract painting; the American Abstract Expressionists, after 1945, would see in him a precursor."""
+
+[[artistes]]
+nom = "Hiram Powers"
+vie = "Woodstock (Vermont), 29 July 1805 – Florence, 27 June 1873"
+biographie = """
+The son of Vermont farmers, Hiram Powers followed his family to Ohio and grew up in Cincinnati, then a booming pioneer town. Ingenious and skilled with his hands, he first worked as a mechanic, then at the Western Museum in Cincinnati, where he made and animated wax figures, including a striking evocation of Dante's Inferno. He learned modelling from a sculptor in the city and discovered a talent for portraiture. Supported by the wealthy patron Nicholas Longworth, he left in 1834 for Washington, where he made busts of many notable figures, including President Andrew Jackson. In 1837 he settled in Florence, a great centre of Neoclassical sculpture, where he would remain until his death. His studio became an essential stop for American and English travellers, and he became friends with the poets Elizabeth Barrett Browning and Robert Browning. The triumph of The Greek Slave, exhibited in Europe and the United States, made him the most famous American sculptor of his time. He subsequently produced many busts and ideal figures, such as the Fisher Boy, Proserpine, Eve and the allegorical figure of America. An inventor in his spare time, he devised tools for working marble. He died in Florence in 1873 and lies in the English Cemetery."""
+style = """
+Powers is one of the great representatives of American Neoclassicism. He borrows from Antiquity its ideals of beauty, calm and purity of form, but adds a supple, naturalistic modelling and an attention to the texture of skin that owes much to his practice of portraiture. His busts, of great likeness, were much sought after. His ideal figures combine the ancient nude with moral or Christian stories, which made them acceptable to the puritan public of his country. The Greek Slave largely contributed to the acceptance of sculpture and the nude in the United States, and opened the way for the many American sculptors who came to work in Italy."""
+
+[[artistes]]
+nom = "Ferdinand Pettrich"
+vie = "Dresden, 1798 – Rome, 1872"
+biographie = """
+The son of the sculptor Franz Pettrich, Ferdinand Pettrich was born in Dresden, in Saxony, and trained at first with his father. He then left for Rome, where he became a pupil of the Danish sculptor Bertel Thorvaldsen, one of the major figures of European Neoclassicism. In 1835 he emigrated to the United States, hoping to find public commissions in a young nation that was then adorning its official buildings, beginning with the Capitol. He worked in Washington and Philadelphia, but his official projects came to little. During these years, he took an interest in the Native American delegations that came to negotiate in the capital and made portraits of their chiefs, as well as figures inspired by their history, including that of Tecumseh. Disappointed by America, he went to Brazil in the early 1840s and worked for the court of Emperor Pedro II, for whom he executed portraits and decorations. He finally returned to Rome in the 1850s and ended his days there. His work, divided among three continents, bears witness to the movement of European Neoclassical artists in the nineteenth century, to their quest for commissions in new nations and to the period's fascination with the peoples of the New World."""
+style = """
+A pupil of Thorvaldsen, Pettrich remains faithful to the Neoclassical ideal: idealised nudes, polished marble, poses inspired by ancient statuary, restrained emotion. His originality lies in the choice of his subjects: he represents Native Americans whom he was able to observe in Washington, applying to them the codes of the Greek or Roman hero. This blend of observation and idealisation, typical of his time, helped fix the Romantic image of the heroic and doomed “Indian”. His work, little known to the general public, today interests historians for what it reveals of the European view of America."""
+
+[[artistes]]
+nom = "Edmonia Lewis"
+vie = "Probably Greenbush (New York State), c. 1844 – London, 17 September 1907"
+biographie = """
+Edmonia Lewis was born to a father of Afro-Haitian origin and a mother of Ojibwe and African descent. Orphaned very young, she was raised in part by her mother's family, who named her “Wildfire”. Thanks to the support of her brother, she entered Oberlin College, in Ohio, in 1859, one of the few institutions to admit women and Black students. In 1862 she was accused there of having poisoned two white classmates; defended by the Black lawyer John Mercer Langston, she was acquitted, but suffered a violent assault and had to leave the school without a degree. In Boston she trained with the sculptor Edward Brackett and became known for portraits of abolitionists, notably a bust of Colonel Robert Gould Shaw, the sale of whose copies financed her departure for Europe. In Rome, where she settled around 1865–1866, she joined the circle of American women sculptors gathered around Harriet Hosmer. There she created works inspired by African American history, such as Forever Free, which celebrates emancipation, and Native American subjects drawn from Longfellow. Her Death of Cleopatra was one of the sensations of the Centennial Exhibition in Philadelphia in 1876. Converted to Catholicism, she received commissions from wealthy visitors, until Neoclassical taste fell out of fashion. Her last years are poorly known; only in 2011 did research establish that she had died in London in 1907."""
+style = """
+Edmonia Lewis worked in the Neoclassical tradition then dominant in Rome: white marble, smooth surfaces, references to Antiquity and literature. But she brought into it subjects almost absent from the sculpture of her time: the emancipation of slaves, the dignity of Black women, the life of Native American peoples. By claiming mastery of the entire process, down to the carving of the marble, she fully asserted her status as an artist. The first sculptor of African and Native American descent to gain international recognition, long forgotten, she is today being rediscovered as a pioneering figure, whose work questions the relationships between art, identity and American history."""

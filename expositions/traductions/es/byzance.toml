@@ -1,0 +1,493 @@
+[exposition]
+ordre = 8
+nom_court = "Bizancio"
+mouvement = "Bizancio y el Oriente cristiano"
+cadre = "dore"
+couleur = "#7d5a12"
+titre = "Bizancio y el Oriente cristiano, el cielo de oro"
+artiste = "Rávena, Constantinopla, Angelos Akotantos, Egipto copto, Armenia, Etiopía…"
+dates = "siglos VI–XVII"
+accroche = "Exposición virtual · Santa Sofía, Estambul"
+introduction = """
+Durante mil años, desde Justiniano hasta la caída de Constantinopla en 1453, el Imperio bizantino inventa un arte del oro y de la presencia: mosaicos en los que el emperador se codea con los santos, iconos que se rezan y se besan, marfiles y libros de Evangelios preciosos como relicarios. La visita sigue este arte desde Rávena hasta Creta, y después entre los demás cristianos de Oriente, en Egipto, Armenia y Etiopía, a lo largo de once obras. El edificio se inspira en Santa Sofía de Estambul: un nártex alargado, una nave cuadrada muy alta bajo la cúpula, dos naves laterales y, al fondo, un ábside."""
+vitrine = "vierge-de-vladimir.jpg"
+
+[musee]
+nom = "Santa Sofía"
+ville = "Estambul, Turquía"
+architecte = "Antemio de Trales e Isidoro de Mileto"
+construction = "532–537"
+presentation = """
+En 532, la revuelta de Niká arrasa Constantinopla y la basílica de la Sabiduría divina, Hagia Sophia, se convierte en humo. El emperador Justiniano la manda reconstruir de inmediato a dos sabios, el matemático Antemio de Trales e Isidoro de Mileto: la nueva iglesia se consagra en 537. Su cúpula, de unos treinta y un metros de anchura, parece flotar sobre la nave gracias a la corona de cuarenta ventanas abiertas en su base. Hundida en 558 tras varios seísmos, se reconstruye más alta. Durante nueve siglos, Santa Sofía es la catedral del Imperio, donde se corona a los emperadores. Tras la toma de la ciudad por Mehmed II en 1453, se convierte en mezquita: se le añaden minaretes y los mosaicos figurativos se cubren poco a poco de revoque. Museo desde 1934, fue devuelta al culto musulmán en 2020. Todavía pueden verse los mármoles de Justiniano y, en las tribunas, los mosaicos descubiertos en el siglo XX, entre ellos la Deesis."""
+ici = """
+El edificio de ARTEON retoma la disposición de Santa Sofía. Se entra por el sur en el nártex, un largo vestíbulo de veinticuatro metros. Este se abre a la nave bajo la cúpula, una sala cuadrada de veinticuatro metros de lado y veinte de altura, de muros color oro, donde se reúnen los mosaicos. Al oeste, la nave lateral de los iconos; al este, la nave lateral del tesoro, más baja y más íntima. Al norte, al fondo de la nave, el ábside presenta las cristiandades de Oriente: Egipto, Armenia y Etiopía."""
+
+[[salles]]
+nom = "El nártex"
+theme = "El largo vestíbulo de entrada, como aquel en el que los fieles de Santa Sofía esperaban antes de entrar en la nave."
+murs = "#e5d8bc"
+x = 0
+z = 0
+largeur = 24
+profondeur = 6
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La nave bajo la cúpula"
+theme = "Los mosaicos: Justiniano y Teodora en Rávena, la Deesis de Santa Sofía."
+murs = "#d9c493"
+x = 0
+z = -15
+largeur = 24
+profondeur = 24
+hauteur = 20
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "La nave lateral de los iconos"
+theme = "El Cristo del Sinaí, la Virgen de Vladimir y una Virgen de la Ternura cretense."
+murs = "#e3cfa5"
+x = -17
+z = -15
+largeur = 10
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "La nave lateral del tesoro"
+theme = "Las artes preciosas de Constantinopla: un marfil esculpido y una página de Evangelios iluminada."
+murs = "#ddcbb2"
+x = 17
+z = -15
+largeur = 10
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "El ábside de las cristiandades de Oriente"
+theme = "Un icono tejido de Egipto, un Evangelio armenio de plata y una página de Evangelio etíope."
+murs = "#e7d5b0"
+x = 0
+z = -32
+largeur = 12
+profondeur = 10
+hauteur = 10
+
+[[oeuvres]]
+titre = "El emperador Justiniano y su corte"
+artiste = "Mosaïstes de Ravenne"
+annee = "hacia 547"
+image = "justinien.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meister_von_San_Vitale_in_Ravenna_003.jpg"
+technique = "Mosaico mural: teselas de pasta de vidrio, de piedra y de oro"
+collection = "Basílica de San Vital, Rávena (muro norte del ábside)"
+note = "El emperador bizantino, el obispo Maximiano y su séquito llevan a la iglesia el pan de la eucaristía, sobre un fondo de oro."
+description = """
+Sobre un fondo de oro, una docena de hombres se mantienen de pie, de frente, alineados como para una fotografía oficial. En el centro, el emperador Justiniano lleva una corona de perlas y un nimbo, y un gran manto de púrpura prendido al hombro por una fíbula de piedras preciosas. Sostiene una amplia copa de oro. A su izquierda, calvo y enjuto, el obispo Maximiano, cuyo nombre está escrito sobre su cabeza, blande una cruz engastada de gemas; dos diáconos lo siguen con un libro de Evangelios adornado de piedras y un incensario humeante. A la derecha del emperador vienen unos dignatarios con manto blanco de banda púrpura y, después, unos soldados apretados tras un escudo marcado con el monograma de Cristo. Los pies, calzados con sandalias, se apoyan en un suelo verde sin profundidad."""
+evocation = """
+La escena muestra una procesión: el emperador lleva el pan de la eucaristía, como Teodora, en el muro de enfrente, lleva el vino. Justiniano nunca estuvo en Rávena, pero la imagen lo hace presente para siempre en el santuario, junto al altar. Su nimbo dice que reina por voluntad de Dios, y la composición reúne los tres pilares de su poder: la Iglesia con Maximiano, la administración con los dignatarios, el ejército con los soldados. A veces se ha comparado a los compañeros del emperador con los apóstoles reunidos en torno a Cristo. Los historiadores aún discuten la identidad de algunos personajes, como el hombre situado a la derecha del emperador, a veces reconocido como el general Belisario."""
+histoire = """
+La iglesia de San Vital se comienza hacia 526, cuando Rávena pertenece al reino ostrogodo, gracias al dinero de un rico banquero, Juliano el Argentario. En 540, los ejércitos de Justiniano recuperan la ciudad: la iglesia pasa a ser un escaparate del poder bizantino en Italia. El obispo Maximiano, nombrado por el emperador, la consagra en 547 o 548; los mosaicos del ábside, entre ellos este panel, datan de esos años. Rávena sigue siendo después, durante dos siglos, la sede del gobernador bizantino de Italia. El panel nunca ha abandonado su muro; junto con los demás monumentos paleocristianos de la ciudad, San Vital figura en la lista del Patrimonio Mundial de la Unesco desde 1996."""
+facture = """
+El mosaicista ensambla miles de pequeños cubos, las teselas, hundidos en mortero fresco: piedra para algunos tonos, pasta de vidrio coloreada para los demás y hoja de oro entre dos capas de vidrio para el fondo. Las teselas, colocadas ligeramente en sesgo, captan la luz de las ventanas y hacen vibrar el oro. Los rostros, de grandes ojos marcados por las ojeras, están individualizados, pero los cuerpos, sin volumen, se alinean en un ritmo regular de verticales blancas y púrpuras. Ninguna sombra, ningún paisaje: el espacio terrenal se borra ante una presencia solemne."""
+details = [
+  "El nombre MAXIMIANVS, escrito con teselas negras sobre la cabeza del obispo.",
+  "La fíbula de piedras preciosas que prende el manto de púrpura del emperador.",
+  "El crismón, monograma de Cristo, en el gran escudo verde de los soldados.",
+  "El incensario humeante que balancea el diácono del extremo derecho.",
+  "Los pies de los personajes, que se superponen sin llegar a posarse en el suelo.",
+]
+themes = ["emperador", "poder", "procesión", "oro", "mosaico"]
+anecdote = """
+Ni Justiniano ni Teodora pusieron jamás los pies en Rávena. Sus retratos en mosaico hacen allí las veces de presencia: en la Antigüedad, la imagen oficial del emperador lo representaba en todo el Imperio, hasta el punto de que se le rendían honores como a su propia persona."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "La emperatriz Teodora y su séquito"
+artiste = "Mosaïstes de Ravenne"
+annee = "hacia 547"
+image = "theodora.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meister_von_San_Vitale_in_Ravenna_006.jpg"
+technique = "Mosaico mural: teselas de pasta de vidrio, de piedra y de oro"
+collection = "Basílica de San Vital, Rávena (muro sur del ábside)"
+note = "Frente a Justiniano, la emperatriz lleva el cáliz del vino de la misa, rodeada de sus damas de la corte."
+description = """
+La emperatriz Teodora se alza en el centro, con nimbo, bajo una hornacina en forma de concha. Lleva una diadema de la que cuelgan largas hileras de perlas, un pesado collar de piedras preciosas y un manto de púrpura cuyo borde está bordado con tres personajes en marcha. Sostiene un cáliz de oro adornado de gemas. A la izquierda, un dignatario levanta la cortina de una puerta, junto a una fuente que brota de una columnilla; otro hombre está a su lado. A la derecha, sus damas la siguen, vestidas con telas de motivos, de rojo, verde y blanco. Sobre ellas, un tapiz rayado de azul, blanco y rojo aparece recogido. Una ancha orla adornada de cabujones enmarca el conjunto."""
+evocation = """
+Teodora responde a Justiniano: lleva el vino de la eucaristía como él el pan, y la pareja imperial parece así participar para siempre en la misa que se celebra en el ábside. Los tres personajes bordados en su manto son los Reyes Magos que llevan sus presentes al Niño: la emperatriz también hace su ofrenda. La puerta, la cortina y la fuente sugieren que se halla en el umbral, a punto de entrar en la iglesia. En esta imagen se ha visto la revancha de una mujer de origen modesto, hija de un domador de osos del Hipódromo y antigua actriz, que llegó a ser la igual del emperador. También se ha propuesto reconocer a su lado a Antonina, la esposa del general Belisario, sin certeza."""
+histoire = """
+El panel se realiza al mismo tiempo que el de Justiniano, para la consagración de San Vital en 547 o 548. Teodora muere en Constantinopla en 548: la imagen es, pues, uno de los últimos retratos hechos en vida suya, o casi. El historiador de corte Procopio, que la admira en sus escritos oficiales, la abruma en su Historia secreta, y en parte a través de él se ha formado su leyenda. En 532, durante la revuelta de Niká, habría convencido a Justiniano de no huir de la ciudad. Como el de su esposo, su retrato ha permanecido en su sitio durante catorce siglos."""
+facture = """
+El mosaicista juega con la riqueza de los textiles: los vestidos de las damas de la corte forman un catálogo de motivos, rombos, flores, rayas, realizados tesela a tesela. Las perlas de la diadema y del collar están hechas de teselas de nácar o de vidrio blanco, que captan la luz. Como en el panel de Justiniano, las figuras son frontales, sin sombra, alineadas sobre un suelo verde; pero aquí la arquitectura, con la hornacina, la puerta y la fuente, esboza un lugar. El gran nimbo de oro destaca la cabeza de la emperatriz sobre la concha de la hornacina."""
+details = [
+  "Los tres Reyes Magos bordados en oro en el bajo del manto de Teodora.",
+  "Los largos colgantes de perlas que caen de la diadema hasta los hombros.",
+  "La fuente sobre su columnilla, a la izquierda, junto a la puerta.",
+  "La cortina levantada por el dignatario, que deja entrever la sombra de una estancia.",
+  "Las telas de motivos distintos de cada una de las damas de la corte.",
+]
+themes = ["emperatriz", "ofrenda", "perlas", "corte", "mosaico"]
+anecdote = """
+Según Procopio, durante la revuelta de Niká de 532, cuando Justiniano pensaba en huir, Teodora habría declarado que la púrpura imperial es un hermoso sudario. El emperador se quedó, la revuelta fue aplastada, y fue tras esa revuelta cuando se construyó la nueva Santa Sofía."""
+salle = 2
+mur = "nord"
+place = 6
+largeur = 3.0
+
+[[oeuvres]]
+titre = "La Deesis"
+artiste = "Byzance"
+annee = "hacia 1261"
+image = "deesis-sainte-sophie.jpg"
+cadre = "aucun"
+credit = "Photo : Myrabella"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Deesis_mosaic_Hagia_Sophia.jpg"
+technique = "Mosaico mural: teselas de pasta de vidrio, de piedra y de oro"
+collection = "Santa Sofía, Estambul (tribuna sur)"
+note = "Cristo entre la Virgen y san Juan Bautista, que rezan por la humanidad: el mosaico más célebre de Santa Sofía."
+description = """
+Sobre un fondo de oro, destacan tres grandes figuras en busto. En el centro, Cristo, con un nimbo crucífero, bendice con la mano derecha y sostiene con la izquierda un libro de Evangelios de cubierta de oro. Viste una túnica dorada y un manto azul. A la izquierda, la Virgen, con un velo oscuro, inclina la cabeza hacia él; a la derecha, san Juan Bautista, con el pelo y la barba en mechones desordenados y la frente arrugada, también se inclina. Unas letras griegas dan sus nombres: MP ΘΥ para la Madre de Dios, IC XC para Jesucristo y «san Juan el Precursor». Toda la mitad inferior del panel ha desaparecido: solo queda un revoque gris sobre el que flotan los fragmentos de mosaico."""
+evocation = """
+Deesis significa en griego «oración» o «súplica». La Virgen y Juan Bautista, los dos testigos más cercanos a Cristo, interceden ante él por los hombres el día del Juicio. El tema está muy extendido en Bizancio, tanto en los iconos como en lo alto de las iconostasis. Lo que aquí llama la atención es la humanidad de los rostros: la tristeza contenida de la Virgen, la inquietud de Juan, la dulzura grave de Cristo. A menudo se han comparado estos rostros, modelados como en pintura, con el arte italiano que se inventa en ese mismo momento, con Cimabue y Giotto. Las lagunas, lejos de borrar la imagen, le dan la presencia frágil de una aparición."""
+histoire = """
+En 1204, los cruzados de la cuarta cruzada toman y saquean Constantinopla, que permanece en manos de los latinos hasta 1261. La mayoría de los historiadores fechan la Deesis en los años posteriores a la reconquista de la ciudad por Miguel VIII Paleólogo, cuando Santa Sofía es devuelta al culto ortodoxo; otros la sitúan antes, en el siglo XII. El panel adorna la tribuna sur, la galería del piso superior. Después de 1453, la iglesia, convertida en mezquita, ve cómo sus mosaicos figurativos se van cubriendo poco a poco de revoque. Se descubren en los años treinta por el Instituto Bizantino de América, dirigido por Thomas Whittemore. La mitad inferior del panel, en cambio, está perdida."""
+facture = """
+Las teselas de los rostros son minúsculas y están colocadas en líneas apretadas que siguen los volúmenes, como las pinceladas de un pintor: se pasa sin brusquedad del rosa al verde oliva de las sombras. El mosaicista eligió teselas de colores muy matizados para modelar las mejillas, los párpados, los mechones de la barba. Las letras y los contornos se trazan con teselas oscuras. El fondo de oro, dispuesto en hileras regulares, refleja la luz cambiante de las ventanas de la tribuna."""
+details = [
+  "Las letras IC XC a ambos lados de la cabeza de Cristo.",
+  "Los mechones revueltos de san Juan Bautista, el profeta del desierto.",
+  "El libro de Evangelios engastado de piedras que sostiene Cristo.",
+  "La cruz inscrita en el nimbo de Cristo, reservada solo a él.",
+  "Los fragmentos del manto de la Virgen, que flotan sobre el revoque gris.",
+]
+themes = ["intercesión", "juicio", "rostro", "oro", "mosaico"]
+anecdote = """
+No lejos de la Deesis, en las tribunas, una inscripción en el suelo lleva el nombre de Henricus Dandolo: recuerda al dogo de Venecia Enrico Dandolo, que dirigió la cuarta cruzada contra Constantinopla y murió en la ciudad en 1205."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "El Cristo Pantocrátor del Sinaí"
+artiste = "Byzance"
+annee = "siglo VI"
+image = "pantocrator-du-sinai.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg"
+technique = "Encáustica sobre tabla, 84 × 45,5 cm"
+collection = "Monasterio de Santa Catalina del Sinaí, Egipto"
+note = "Uno de los iconos más antiguos que se conservan: Cristo, señor de todo, pintado a la cera en tiempos de Justiniano."
+description = """
+Cristo aparece en busto, de frente, ante una arquitectura apenas esbozada: un muro bajo, una hornacina, un cielo azul en el que brillan dos estrellas. Un gran nimbo de oro, rodeado de azul y decorado con una cruz casi borrada, rodea su cabeza. Sus cabellos largos y castaños caen por detrás del hombro izquierdo; su barba es corta. Viste una túnica y un manto de color pardo purpúreo. Con la mano derecha bendice; con la izquierda aprieta contra sí un grueso libro de Evangelios, cuya cubierta de oro está adornada con una cruz, piedras y perlas. Su rostro no es simétrico: para el espectador, la mitad izquierda es serena y dulce, la mitad derecha más severa, con una ceja levantada y un ojo más grande."""
+evocation = """
+Pantocrátor significa en griego «el que lo sostiene todo»: Cristo es aquí el señor del mundo, el juez y el salvador. La asimetría del rostro ha sido muy comentada: en ella se han visto las dos naturalezas de Cristo, divina y humana, reunidas en una sola persona, o también la misericordia y la justicia. La mirada directa, que se fija en cada fiel, hace del icono un encuentro más que un retrato. El libro precioso recuerda que Cristo es la Palabra de Dios. Junto con algunos otros iconos del Sinaí, esta imagen es uno de los escasos testimonios del arte de los iconos anterior a la querella de las imágenes, que hizo destruir un gran número de ellos en los siglos VIII y IX."""
+histoire = """
+El icono fue pintado sin duda en Constantinopla, en el siglo VI, quizá para el monasterio que el emperador Justiniano manda fortificar al pie del monte Sinaí. Al siglo siguiente, la conquista árabe deja el monasterio fuera del Imperio: cuando los emperadores iconoclastas mandan destruir las imágenes religiosas, entre 726 y 843, sus órdenes no llegan al Sinaí. El icono se conserva allí desde hace catorce siglos. Repintado con el paso del tiempo, fue limpiado y restaurado en 1962, lo que reveló la pintura original. El historiador del arte Kurt Weitzmann lo dio a conocer junto con los demás iconos antiguos del monasterio, que alberga la colección de iconos bizantinos más rica del mundo."""
+facture = """
+El icono está pintado a la encáustica: los pigmentos se mezclan con cera caliente, aplicada con pincel o con espátula, como en los retratos funerarios del Fayum, en el Egipto romano. La cera da una materia espesa y luminosa, y permite pasajes suaves en el rostro, del rosa al pardo. El modelado, las sombras, la luz que viene de la izquierda pertenecen todavía a la pintura antigua. Solo el oro del nimbo y la frontalidad anuncian el arte más abstracto de los siglos siguientes."""
+details = [
+  "Los dos ojos de Cristo, de tamaño y expresión diferentes.",
+  "Los dos dedos levantados de la mano derecha, en gesto de bendición.",
+  "Las perlas y las piedras de la cubierta del libro de Evangelios.",
+  "Las dos estrellas doradas en el cielo azul, a ambos lados del nimbo.",
+  "El muro y la hornacina del fondo, como en un retrato antiguo.",
+]
+themes = ["cristo", "icono", "mirada", "encáustica", "sinaí"]
+anecdote = """
+El monasterio de Santa Catalina, donde se conserva el icono, está habitado sin interrupción desde el siglo VI. Sus murallas de granito, levantadas bajo Justiniano, siguen en pie, y su biblioteca guarda uno de los fondos de manuscritos más antiguos del mundo."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La Virgen de Vladimir"
+artiste = "Byzance"
+annee = "hacia 1130"
+image = "vierge-de-vladimir.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Vladimirskaja_ikona_Bo%C5%BEiej_Materi.jpg"
+technique = "Temple sobre tabla, 104 × 69 cm"
+collection = "Galería Tretiakov, Moscú (iglesia de San Nicolás de Tolmachi)"
+note = "Pintada en Constantinopla, el más venerado de los iconos rusos: la Virgen aprieta contra su mejilla al Niño, que la abraza."
+description = """
+Sobre un fondo de oro desgastado, la Virgen aparece de medio cuerpo, envuelta en un manto oscuro que le cubre la cabeza, bordeado de oro y marcado con una estrella en la frente. Lleva al Niño en el brazo derecho y apoya la mano izquierda en el pecho. El Niño, con túnica dorada, se arroja contra ella: su mejilla toca la de su madre, su brazo izquierdo le rodea el cuello y por debajo asoma la planta de su pie. La Virgen no lo mira: sus ojos oscuros, bajo unas cejas arqueadas, se vuelven hacia el espectador. Alrededor, el ancho borde de la tabla está cubierto de lagunas y de huellas de clavos. En los ángulos superiores, las letras griegas abreviadas nombran a la Madre de Dios."""
+evocation = """
+El icono pertenece al tipo de la Virgen de la Ternura, Eleúsa en griego, que los rusos llaman Umilenie. El abrazo del Niño dice el amor de una madre, pero la mirada grave de la Virgen, vuelta hacia nosotros, dice que ella ya conoce la Pasión por venir: la ternura se mezcla con dolor. Para los rusos, el icono se ha convertido en la protectora de Moscú y de todo el país. Se le han atribuido varias liberaciones de la ciudad: se la ha llevado en procesión en los momentos de peligro y ha presenciado la coronación de los zares. Es así, a la vez, una obra de arte bizantina y un símbolo nacional ruso."""
+histoire = """
+El icono se pinta en Constantinopla, sin duda hacia 1130, y se envía poco después a Kiev. En 1155, el príncipe Andrés Bogoliubski se lo lleva al norte, a Vladimir, de la que toma el nombre. En 1395, cuando Tamerlán amenaza Moscú, se lo traslada allí; acaba por quedarse en la catedral de la Dormición del Kremlin. Repintado y dañado varias veces, es restaurado en 1918: se descubre entonces que solo los rostros, y algunos fragmentos, se remontan al siglo XII, pues el resto fue rehecho entre los siglos XIII y XVI. Ingresado en la Galería Tretiakov en 1930, se expone desde 1999 en la iglesia de San Nicolás de Tolmachi, contigua al museo, donde de nuevo se reza ante él."""
+facture = """
+Los rostros, única parte original, muestran la finura de la pintura de Constantinopla en el siglo XII. El pintor aplica primero un fondo oliva, el sankir, y luego construye las luces con capas finas y transparentes de tonos claros, hasta los realces en el caballete de la nariz y bajo los ojos. Los rasgos se trazan con una línea flexible y segura: la curva de las cejas, la boca pequeña, la nariz larga. Los vestidos del Niño están surcados por finas líneas de oro que hacen centellear la tela."""
+details = [
+  "Las dos mejillas de la madre y del Niño, pegadas una contra otra.",
+  "La planta del pie izquierdo del Niño, visible bajo su túnica dorada.",
+  "El brazo del Niño que rodea el cuello de su madre.",
+  "La estrella bordada en el velo de la Virgen, sobre la frente.",
+  "Las líneas de oro que surcan la túnica del Niño.",
+]
+themes = ["virgen", "ternura", "icono", "rusia", "constantinopla"]
+anecdote = """
+Según la tradición, Tamerlán dio media vuelta en 1395 el mismo día en que el icono llegaba a Moscú. La Iglesia rusa conmemora todavía cada año este encuentro, el 26 de agosto del calendario juliano, es decir, el 8 de septiembre del nuestro."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Virgen de la Ternura (Eleúsa)"
+artiste = "Angelos Akotantos"
+annee = "hacia 1425–1450"
+image = "eleousa-akotantos.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2010.154"
+technique = "Temple y oro sobre tabla, 96 × 70 cm"
+collection = "Cleveland Museum of Art"
+note = "Atribuida al mayor pintor de la Creta veneciana: una Virgen de la Ternura destinada a una iconostasis."
+description = """
+La Virgen, en busto, se recorta sobre un fondo de oro agrietado, en una tabla de remate redondeado. Está envuelta en un manto rojo oscuro, el maforio, que le cubre la cabeza y los hombros; debajo asoma un gorro azul, y tres estrellas de oro adornan su frente y sus hombros. Inclina la cabeza hacia el Niño, que lleva en el brazo izquierdo y sostiene con la mano derecha, de largos dedos. El Niño, vestido con una túnica azul pálido sembrada de pequeños motivos y un manto anaranjado, aprieta su mejilla contra la de su madre y alza los ojos hacia ella. Sostiene un rollo; tiene las piernas cruzadas y los pies desnudos asoman. El bajo de la manga de la Virgen está bordeado por un fleco de oro."""
+evocation = """
+Como la Virgen de Vladimir, colgada a su lado, este icono pertenece al tipo de la Eleúsa, la Virgen de la Ternura. Tres siglos las separan: la fórmula se ha transmitido de generación en generación, pues un icono debe permanecer fiel a su modelo. Pero el pintor cretense pone en él su propia dulzura, más serena: la mirada de la Virgen está baja, melancólica, y el Niño, en lugar de arrojarse contra ella, la mira. El rollo que sostiene recuerda que él es también la Palabra de Dios. Grande y visible desde lejos, el icono estaba sin duda colocado sobre una iconostasis, el tabique que separa a los fieles del santuario en las iglesias ortodoxas."""
+histoire = """
+Desde principios del siglo XIII, Creta pertenece a Venecia. En Candía, la actual Heraclión, talleres de pintores griegos trabajan a la vez para las iglesias ortodoxas y para clientes católicos, y exportan sus iconos por todo el Mediterráneo. El museo de Cleveland atribuye este a Angelos Akotantos, el más reputado de ellos en la primera mitad del siglo XV. Su recorrido anterior al siglo XX se desconoce; pasa por un marchante romano en 1989 y luego por una colección privada de Roma, antes de ser adquirido por el museo de Cleveland en 2010."""
+facture = """
+El pintor trabaja al temple de huevo sobre una tabla de madera preparada, y aplica el fondo con hoja de oro. Las carnaciones se construyen según el método cretense: un fondo pardo verdoso y luego luces cada vez más claras, aplicadas en pequeños toques paralelos que se ven en la mejilla y el cuello de la Virgen. Los pliegues del manto rojo se dibujan con largas líneas oscuras y angulosas. En los vestidos del Niño, finos trazos de oro hacen brillar la tela. El contorno es nítido, el modelado suave: es la elegancia que dará fama a la escuela cretense."""
+details = [
+  "Las tres estrellas de oro sobre el velo, signo de la virginidad de María.",
+  "Los pequeños toques claros paralelos que modelan el cuello de la Virgen.",
+  "El rollo apretado en la mano del Niño.",
+  "Los pies desnudos y cruzados del Niño, en la parte baja de la tabla.",
+  "El fleco de oro en el borde de la manga de la Virgen, a la izquierda.",
+]
+themes = ["virgen", "ternura", "creta", "icono", "venecia"]
+anecdote = """
+Según el museo de Cleveland, es la única obra conocida de Angelos Akotantos en Estados Unidos. Los iconos cretenses viajaban lejos: a principios del siglo XVI, el emperador de Etiopía Lebna Dengel envió monjes a comprarlos para sus iglesias."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 1.2
+
+[[oeuvres]]
+titre = "La Virgen con el Niño entronizados (marfil Stroganov)"
+artiste = "Byzance"
+annee = "950–1025"
+image = "ivoire-stroganoff.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1925.1293"
+technique = "Marfil esculpido, 25,3 × 17,2 × 1,8 cm"
+collection = "Cleveland Museum of Art"
+note = "Una placa de marfil esculpida en Constantinopla, aquí ampliada: en realidad mide 25 cm de alto."
+description = """
+En un marco estrecho, la Virgen está sentada de frente sobre un trono monumental de respaldo recortado en lóbulos, guarnecido con dos gruesos cojines y adornado con rosetas. Sus pies descansan en un escabel, colocado a su vez sobre una amplia tarima decorada con piedras preciosas esculpidas. Lleva al Niño sobre las rodillas, en el centro exacto de la placa. El Niño, con nimbo, alza la mano derecha para bendecir y sostiene un rollo con la izquierda. La Virgen apoya una mano en su hombro. En los ángulos superiores, dos ángeles en busto, con las alas desplegadas, tienden las manos hacia ellos. Una inscripción griega recorre el frente de la tarima. Las columnillas del trono están esculpidas a calados."""
+evocation = """
+La Virgen es aquí el trono mismo de Cristo: el Niño, sentado erguido sobre sus rodillas, no tiene nada de lactante. Bendice como un adulto, con el rostro impasible, para hacer visible el misterio de la Encarnación, Dios hecho hombre. Los ángeles, a medio cuerpo, parecen surgir del cielo para señalar este misterio al fiel. El lujo del trono, de la tarima y de los cojines recoge el de la corte imperial: María aparece como emperatriz celestial. Esta imagen, tallada en marfil, materia rara y costosa, servía para la oración privada de grandes personajes de Constantinopla."""
+histoire = """
+La placa se esculpe en Constantinopla hacia el año mil, en la época de la dinastía macedónica, cuando los talleres de la capital producen sus más hermosos marfiles. No se sabe para quién. Pasa después por una larga serie de colecciones: en París, luego en Inglaterra, con el anticuario Francis Douce, muerto en 1834, y más tarde en Roma, en la colección del conde Serguéi Stroganov, estadista e historiador del arte ruso, que le dejó su nombre. Pasada a la colección Malcolm y vendida en Christie's en 1913, fue donada en 1925 al museo de Cleveland por el mecenas Jeptha Homer Wade."""
+facture = """
+El marfil de elefante, importado de África o de la India, se talla en forma de placa y luego se vacía con cincel y gubia: el fondo se rebaja varios milímetros para hacer resaltar las figuras en alto relieve. El escultor detalla con precisión de orfebre los pliegues del manto, las rosetas del respaldo, los cabujones de la tarima, los mechones de los ángeles. Las finas vetas que surcan la superficie son las del propio marfil. En origen, algunos detalles estaban quizá realzados con oro o con color."""
+details = [
+  "La mano del Niño levantada para bendecir, con dos dedos extendidos.",
+  "Los dos cojines del trono, hinchados y ceñidos en los extremos.",
+  "Las rosetas esculpidas en el respaldo en forma de lóbulos.",
+  "La inscripción griega grabada en el frente de la tarima.",
+  "Las finas estrías naturales del marfil en todo el fondo.",
+]
+themes = ["marfil", "virgen", "trono", "ángeles", "constantinopla"]
+anecdote = """
+El conde Serguéi Stroganov, que dio su nombre al marfil, fundó en 1825 en Moscú una escuela de dibujo para artesanos. Todavía existe: es la Academia Stroganov de artes industriales."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "San Mateo, página de un leccionario"
+artiste = "Byzance"
+annee = "1057–1063"
+image = "lectionnaire-saint-matthieu.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1942.1512"
+technique = "Temple y oro sobre vitela, 28,8 × 24,3 cm"
+collection = "Cleveland Museum of Art"
+note = "El evangelista escribe bajo una arcada de oro: una página de un libro regalado por una emperatriz a un monasterio de Constantinopla."
+description = """
+Bajo una arcada sostenida por dos columnas de mármol oscuro de capiteles dorados, san Mateo está sentado en un asiento guarnecido con un cojín rojo. Anciano, de barba y cabellos blancos, viste una túnica azul y un manto beige. Inclinado, escribe en un cuaderno apoyado sobre sus rodillas. Ante él, un mueble de madera oscura, un atril-armario, sostiene un tintero e instrumentos. El suelo es de mármol verde veteado de blanco, y el fondo, de hoja de oro. Sobre él, su nombre está escrito en letras griegas rojas. Alrededor de la imagen, el pergamino ha quedado desnudo; está gastado, manchado y desgarrado en algunos puntos del borde derecho."""
+evocation = """
+Los retratos de los cuatro evangelistas abren tradicionalmente los libros de Evangelios, en todo el mundo cristiano. Garantizan la autenticidad del texto: Mateo, Marcos, Lucas y Juan pasaban por testigos directos de la vida de Cristo, o por allegados de testigos. El modelo viene de la Antigüedad, cuando se colocaba el retrato del autor al frente de sus obras: Mateo se parece a un filósofo griego. El oro del fondo lo sitúa, sin embargo, fuera del tiempo, en la luz divina. El cuidado puesto en las herramientas del copista, tintero, plumas, recuerda también el trabajo de los monjes que copiaban estos libros."""
+histoire = """
+Esta página procede de un leccionario, un libro que reúne los pasajes de los Evangelios leídos durante la misa, en el orden del año litúrgico. Según el museo de Cleveland, el libro fue regalado en 1063 al monasterio de la Santísima Trinidad de Calki, una de las islas de los Príncipes, cerca de Constantinopla, por la emperatriz Catalina, esposa de Isaac I Comneno, emperador de 1057 a 1059. En una fecha desconocida, el libro fue desmembrado y sus páginas dispersadas, como tantos manuscritos iluminados. Esta fue adquirida en 1942 por el museo de Cleveland al marchante neoyorquino Dikran Kelekian."""
+facture = """
+El pintor trabaja sobre vitela, una piel de ternero finamente preparada. Aplica primero la hoja de oro del fondo, bruñida con el bruñidor para que brille, y luego los colores al temple, en capas delgadas. Los pliegues del manto se logran con líneas claras y oscuras que sugieren el volumen, a la manera antigua. El mármol del suelo y de las columnas se imita con vetas pintadas. Con el tiempo, el color se ha desconchado en algunos lugares, en el hombro de Mateo y en el atril, dejando ver el pergamino."""
+details = [
+  "El nombre del evangelista, ὁ ἅγιος Ματθαῖος, en letras rojas sobre el oro.",
+  "El tintero y las herramientas de copista colocados sobre el atril.",
+  "El cojín rojo del asiento, bajo el manto de Mateo.",
+  "Las vetas blancas del mármol verde, en el suelo.",
+  "Las columnas de mármol rojo oscuro y sus capiteles dorados.",
+]
+themes = ["evangelista", "escritura", "manuscrito", "oro", "constantinopla"]
+anecdote = """
+Los primeros leccionarios bizantinos recibían a menudo encuadernaciones de orfebrería, cubiertas de metal precioso, de piedras preciosas y a veces de marfil: el propio libro se llevaba en procesión y los fieles lo besaban."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Icono tejido de la Virgen con el Niño"
+artiste = "Égypte copte"
+annee = "siglo VI"
+image = "icone-tissee-copte.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1967.144"
+technique = "Tapiz de lana, 178,7 × 110,5 cm"
+collection = "Cleveland Museum of Art"
+note = "Un icono raro, tejido con más de veinte colores de lana en Egipto, antes de la querella de las imágenes."
+description = """
+En el centro del tapiz, la Virgen, vestida de azul oscuro, se sienta en trono de frente sobre un asiento guarnecido con un cojín rojo; sostiene al Niño sobre sus rodillas. Dos arcángeles de alas azules, con túnica blanca, se mantienen a su lado, con un largo bastón en la mano, ante dos columnas. Una inscripción griega, encima, nombra a san Miguel, santa María y san Gabriel. Más arriba, Cristo se sienta en trono en una gloria circular, entre dos ángeles, sobre un cielo estrellado. Una ancha orla de follaje, flores y frutos, entre ellos granadas, enmarca el conjunto; lleva medallones en los que aparecen los bustos de los apóstoles, cada uno nombrado en griego. Amplias lagunas agujerean el tejido, sobre todo en la parte superior."""
+evocation = """
+Este tapiz es un verdadero icono: se colgaba en el muro de una iglesia para venerarlo. Superpone dos imágenes, la Virgen con el Niño en la tierra y Cristo en gloria en el cielo, unidas por los ángeles: en ellas se ha visto la Encarnación y la Majestad divina reunidas. Los apóstoles de la orla forman como una corte a su alrededor. Los frutos y las flores evocan el paraíso, un jardín exuberante en el corazón de un país de desierto. Los grandes ojos fijos, los rostros redondos, los colores francos son típicos del Egipto cristiano, donde se llama coptos a los cristianos y a su arte."""
+histoire = """
+El tapiz se teje en Egipto en el siglo VI, cuando el país forma todavía parte del Imperio bizantino, como atestiguan las inscripciones griegas. No se sabe en qué iglesia estuvo colgado. El clima seco de Egipto ha permitido la conservación de numerosos textiles de esa época, a menudo hallados en tumbas, pero un icono tejido de este tamaño es excepcional. El museo de Cleveland lo adquiere en 1967 a una coleccionista neoyorquina, Mrs. Paul Mallon; se ignora su recorrido anterior. Junto con los iconos del Sinaí, es una de las escasas imágenes religiosas conservadas anteriores a la crisis iconoclasta."""
+facture = """
+Es un tapiz: los hilos de trama de lana teñida, de más de veinte colores, se pasan a mano entre los hilos de urdimbre y se aprietan hasta ocultarlos, zona de color por zona de color. Los tejedores funden los tonos para modelar los rostros y los pliegues, como lo haría un pintor. Según el museo, un tapiz así costaba más caro que una pintura en aquella época. Los hilos de lana se han desgastado de forma desigual, lo que explica los agujeros: el fondo oscuro que aparece debajo es el tejido sobre el que hoy está montado."""
+details = [
+  "La inscripción griega sobre los arcángeles y la Virgen.",
+  "El disco marcado con una cruz que sostiene el ángel de la derecha.",
+  "Las granadas rojas y las flores de la orla.",
+  "Los bustos de los apóstoles en los medallones, nombrados en griego.",
+  "Cristo en gloria, arriba, en un círculo azul sembrado de estrellas.",
+]
+themes = ["tapiz", "virgen", "ángeles", "egipto", "copto"]
+anecdote = """
+Los textiles coptos fueron exhumados por millares a finales del siglo XIX en las necrópolis egipcias, en particular en Antinoópolis, excavada por el francés Albert Gayet a partir de 1896, y después dispersados entre los museos de todo el mundo."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Evangelio armenio con cubierta de plata"
+artiste = "Arménie"
+annee = "manuscrito: siglo XIII; encuadernación: 1691"
+image = "evangeliaire-armenien.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/446861"
+technique = "Tinta y temple sobre pergamino; encuadernación de plata dorada repujada, esmaltes, piedras y vidrios de colores, 26 × 18,7 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un libro de los Evangelios armenio, revestido cuatro siglos después con una encuadernación de orfebrería: el libro mide 26 cm de alto."
+description = """
+El libro se presenta cerrado, de pie, visto de frente. Su cubierta de plata dorada está trabajada en relieve. En el centro, una placa muestra la Natividad: la Virgen tendida junto al Niño envuelto en pañales en su pesebre, José de pie, el buey y la mula encima, y unos pastores que se acercan. En la parte alta de la escena, rebaños, jinetes que siguen una estrella, los Reyes Magos y una hilera de cabezas de ángeles. El fondo es de esmalte azul turquesa. Bajo la escena corre una inscripción. Alrededor, una ancha orla de esmalte verde está cubierta de sarmientos de vid, racimos de uva y piedras de color: granates, turquesas, cabujones azules. Por un lado se entrevé el lomo del libro, guarnecido de terciopelo verde."""
+evocation = """
+Para los armenios, el libro de los Evangelios es más que un texto: es un objeto sagrado, llevado en procesión, besado, a veces considerado protector. Se transmitía de generación en generación, se rescataba cuando había sido robado, se hacía encuadernar de nuevo cuando se desgastaba. Aquí, un manuscrito del siglo XIII recibe en 1691 un ropaje de orfebrería digno de su valor. La Natividad recuerda que el Evangelio anuncia el nacimiento del Salvador; la vid, imagen de Cristo y del vino eucarístico, lo rodea. El libro une dos épocas de la historia armenia, el reino de Cilicia y la diáspora."""
+histoire = """
+El manuscrito fue copiado y pintado en el siglo XIII, probablemente en Cilicia, el reino armenio fundado en el sudeste de Asia Menor, cuyos talleres de iluminación viven entonces su edad de oro. El museo no precisa dónde se realizó la encuadernación, fechada en 1691; la inscripción armenia muestra que fue encargada por armenios. A finales del siglo XVII, las comunidades armenias están dispersas entre el Imperio otomano, Persia y Europa, y sus mercaderes financian trabajos así para sus iglesias. El libro ingresó en el Metropolitan Museum of Art en 1916, donación de Mrs. Edward S. Harkness."""
+facture = """
+La cubierta está hecha de láminas de plata trabajadas al repujado: el orfebre golpea el metal por el revés para hacer resaltar las figuras y luego precisa los detalles con el cincel por el derecho. Algunas partes están doradas. Los fondos están cubiertos de esmaltes de colores, polvo de vidrio fundido en los huecos del metal, azul para el cielo de la Natividad, verde para la orla. Piedras y vidrios de colores, engastados en bezeles, dan ritmo al marco. En el interior, las páginas de pergamino están escritas a tinta y pintadas al temple."""
+details = [
+  "La estrella, arriba a la derecha, que siguen los Reyes Magos a caballo.",
+  "El buey y la mula inclinados sobre el pesebre.",
+  "La hilera de cabezas de ángeles entre las nubes, en lo alto de la escena.",
+  "Los racimos de uva en relieve en la orla de esmalte verde.",
+  "La gran turquesa y los granates engastados en el marco.",
+]
+themes = ["evangelio", "natividad", "orfebrería", "esmalte", "armenia"]
+anecdote = """
+Armenia es considerada tradicionalmente el primer reino que adoptó el cristianismo como religión oficial, a principios del siglo IV. Su alfabeto, creado hacia 405 por el monje Mesrop Mashtots, sirvió primero para traducir la Biblia."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "San Lucas, página de un libro de los Evangelios"
+artiste = "Éthiopie chrétienne"
+annee = "hacia 1440–1480"
+image = "evangeliaire-ethiopien-saint-luc.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1999.212"
+technique = "Tinta y temple sobre vitela, 37 × 25 cm"
+collection = "Cleveland Museum of Art"
+note = "El evangelista Lucas y su toro, pintados en Tigray, al norte de Etiopía, con colores vivos y motivos geométricos."
+description = """
+San Lucas está sentado de tres cuartos, sobre un bloque adornado con un motivo de aspas, bajo una arcada. Tiene largos cabellos grises y una barba gris dibujada trazo a trazo. Sostiene en la mano izquierda un libro abierto, blanco, y en la derecha una larga caña con la que escribe. Su túnica está enteramente cubierta de líneas onduladas anaranjadas y rojas, que dibujan los pliegues como curvas de nivel. Su nimbo se recorta sobre un fondo verde, y la parte baja del fondo está rayada de naranja. Encima, en el arco de la arcada, un toro salta junto a unas líneas de escritura ge’ez. Una orla de motivos geométricos rodea la página, de pergamino atezado y bordes gastados."""
+evocation = """
+El toro es el símbolo de Lucas, uno de los cuatro animales que representan a los evangelistas desde los primeros siglos cristianos. El retrato sigue un modelo llegado de la Antigüedad a través de los libros coptos, siríacos y bizantinos: el autor sentado que escribe. Pero el pintor etíope lo transforma en un dibujo coloreado, de líneas rítmicas y grandes ojos almendrados, muy lejos del modelado griego. El texto en ge’ez, la lengua litúrgica de la Iglesia etíope, es una oración cuyo sentido es aproximadamente: «Haced esta imagen de san Lucas con este toro; que su oración y sus bendiciones estén con nosotros. Amén.»"""
+histoire = """
+La página procede de un libro de los Evangelios realizado en la región de Tigray, al norte de Etiopía, hacia 1440–1480, bajo el reinado de Zara Yaqob o de sus sucesores, una época de gran actividad para los monasterios y sus talleres de copia. El libro fue desmembrado más tarde, y sus páginas pasaron al mercado del arte. Esta fue adquirida en 1999 por el museo de Cleveland a un librero de libros antiguos de Ohio. Como muchos manuscritos etíopes sacados del país, el libro fue cortado para venderse página a página, una práctica hoy muy criticada."""
+facture = """
+El pintor traza primero todos los contornos a tinta, con un trazo seguro, y luego rellena las superficies con colores francos, sin sombra ni degradado: amarillo, verde, naranja, rojo. El volumen se sustituye por el ritmo de las líneas, que cubren la túnica con una red ondulante. La orla de la página, hecha de cheurones y entrelazos, recuerda los motivos de los tejidos y de las cruces etíopes. El soporte es un pergamino grueso, que se ha oscurecido y deshilachado con el uso."""
+details = [
+  "El toro, símbolo de Lucas, arriba en la arcada.",
+  "Las líneas de escritura ge’ez junto al toro.",
+  "La larga caña que el evangelista apoya sobre su libro.",
+  "Las líneas onduladas anaranjadas que dibujan los pliegues de la túnica.",
+  "Las bandas anaranjadas que rayan el fondo, a la izquierda, bajo el brazo del santo.",
+]
+themes = ["evangelista", "manuscrito", "etiopía", "ge’ez", "color"]
+anecdote = """
+El cristianismo se convirtió en religión oficial del reino de Aksum, en el norte de la actual Etiopía, hacia mediados del siglo IV, bajo el rey Ezana: mucho antes de la evangelización de la mayoría de los países del norte de Europa."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[artistes]]
+nom = "Mosaïstes de Ravenne"
+vie = "Rávena (Italia), siglos V–VI"
+biographie = """
+Rávena, en la costa adriática, se convierte en 402 en la capital del Imperio romano de Occidente, al abrigo de sus marismas. La emperatriz Gala Placidia hace construir allí un pequeño mausoleo cubierto de mosaicos azul noche. Tras la caída del Imperio de Occidente, la ciudad es la capital del rey ostrogodo Teodorico, que reina sobre Italia de 493 a 526 y hace decorar la iglesia de San Apolinar el Nuevo. En 540, los ejércitos del emperador bizantino Justiniano toman la ciudad: San Vital y luego San Apolinar in Classe, consagrada en 549, reciben las más bellas decoraciones de su tiempo. Rávena sigue siendo después la sede del gobernador bizantino de Italia, el exarca, hasta su toma por los lombardos en 751. Los mosaicistas que trabajaron en estas obras son anónimos. Los historiadores discuten si venían de Constantinopla o si formaban un taller local, formado en los modelos de la capital; es probable que ambos se mezclaran. Ocho monumentos de la ciudad figuran conjuntamente en la lista del Patrimonio Mundial de la Unesco desde 1996."""
+style = """
+Los mosaicos de Rávena muestran el paso del arte romano al arte bizantino: las figuras pierden su volumen y su sombra, se colocan de frente sobre un fondo de oro o de azul profundo y se alinean en filas solemnes. El color es deslumbrante, y los rostros de grandes ojos están, sin embargo, individualizados. Este lenguaje del oro y de la frontalidad, que hace de la imagen una presencia más que una escena, marcará todo el arte cristiano de Oriente y, más tarde, a los primitivos italianos."""
+
+[[artistes]]
+nom = "Byzance"
+vie = "Imperio bizantino, Constantinopla, 330–1453"
+biographie = """
+En 330, el emperador Constantino inaugura su nueva capital en el sitio de la antigua Bizancio, a orillas del Bósforo: Constantinopla. Cuando el Imperio romano de Occidente desaparece en 476, el de Oriente continúa durante cerca de mil años; hoy se lo llama Imperio bizantino, pero sus habitantes se decían romanos. Bajo Justiniano, en el siglo VI, alcanza su mayor extensión y construye Santa Sofía. Desde alrededor de 726 hasta 843, la querella de las imágenes divide el Imperio: los iconoclastas hacen destruir las representaciones de Cristo y de los santos, hasta que el culto de los iconos se restablece definitivamente. Bajo la dinastía macedónica, en los siglos X y XI, los talleres de la capital producen marfiles, manuscritos, esmaltes y sedas de lujo. En 1204, los cruzados saquean Constantinopla; la ciudad es recuperada en 1261 por Miguel VIII Paleólogo, y el arte conoce un último auge. El 29 de mayo de 1453, los otomanos de Mehmed II toman la ciudad. El arte bizantino sobrevive en los países ortodoxos, desde Grecia hasta Rusia, y en los talleres de la Creta veneciana."""
+style = """
+El arte bizantino es ante todo un arte religioso e imperial. Privilegia la frontalidad, el fondo de oro que sitúa a las figuras fuera del tiempo, tipos fijados por la tradición para que cada imagen siga siendo fiel a su modelo. El icono no es un simple cuadro: el respeto rendido a la imagen pasa, según los teólogos, a la persona representada. Sin embargo, de siglo en siglo, los artistas renuevan estas fórmulas, desde la elegancia antigua del año mil hasta la humanidad conmovida de los rostros del siglo XIII."""
+
+[[artistes]]
+nom = "Angelos Akotantos"
+vie = "Candía (Creta), activo en la primera mitad del siglo XV"
+biographie = """
+Angelos Akotantos vive en Candía, la actual Heraclión, capital de Creta, entonces posesión de Venecia. La ciudad alberga en el siglo XV una importante corporación de pintores griegos, que trabajan para las iglesias ortodoxas de la isla, para clientes católicos y para la exportación. Akotantos es uno de los más reputados. Se le conoce por documentos de archivo venecianos, entre ellos un testamento fechado en 1436, y por iconos firmados en griego «de la mano de Angelos». Entre estos, una Virgen Kardiotissa, conservada en el Museo Bizantino y Cristiano de Atenas, es una de las más célebres. Muere a mediados del siglo XV, poco antes o poco después de la caída de Constantinopla, que empuja a numerosos artistas bizantinos a refugiarse en Creta. Sus modelos, copiados y recopiados, fijan por mucho tiempo los tipos de la escuela cretense, que seguirán Andreas Ritzos a finales del siglo y, en el siglo siguiente, el joven Domínikos Theotokópoulos, futuro Greco, nacido en Candía."""
+style = """
+Akotantos reúne la tradición de Constantinopla y una precisión nueva: contornos nítidos, carnaciones modeladas con finos toques claros paralelos, pliegues angulosos y rítmicos, abundante oro. Sus Vírgenes tienen una dulzura grave y contenida. Esta manera elegante, fácil de transmitir mediante dibujos de modelos, se convierte en la firma de la escuela cretense, cuyos iconos se difunden desde Venecia hasta Etiopía."""
+
+[[artistes]]
+nom = "Égypte copte"
+vie = "Egipto cristiano, desde el siglo IV"
+biographie = """
+Según la tradición, el evangelista Marcos habría fundado la Iglesia de Alejandría. El cristianismo se extiende por Egipto desde los primeros siglos, y el país se convierte, en el siglo IV, en la cuna del monacato cristiano, con san Antonio, ermitaño del desierto, y san Pacomio, que funda las primeras comunidades de monjes. En el concilio de Calcedonia, en 451, buena parte de los cristianos de Egipto rechaza la definición de la naturaleza de Cristo adoptada por el Imperio: su Iglesia se separa de la de Constantinopla. La palabra copto viene del árabe qubt, que a su vez procede del griego Aiguptios, egipcio. La conquista árabe, entre 639 y 642, hace pasar Egipto a la dominación musulmana, pero los coptos siguen siendo numerosos y forman todavía hoy la comunidad cristiana más importante de Oriente Próximo. Su arte, conocido por las iglesias y los monasterios, las pinturas murales, las esculturas y sobre todo los textiles conservados por la arena seca, mezcla la herencia del Egipto grecorromano y los temas cristianos."""
+style = """
+El arte copto ama los colores francos, los rostros redondos de grandes ojos fijos, las figuras frontales y simplificadas, y las decoraciones exuberantes de follaje, frutos y animales. Hereda los retratos del Fayum y el arte helenístico de Alejandría, pero avanza hacia una estilización cada vez más marcada. Sus tejidos de lana y de lino, a menudo tejidos en tapiz, figuran entre los más bellos textiles de la Antigüedad tardía."""
+
+[[artistes]]
+nom = "Arménie"
+vie = "Armenia, Cilicia y diáspora armenia, desde el siglo IV"
+biographie = """
+Según la tradición, el rey Tiridates III, convertido por san Gregorio el Iluminador, hace del cristianismo la religión oficial de Armenia a principios del siglo IV. Hacia 405, el monje Mesrop Mashtots inventa un alfabeto propio para la lengua armenia, que permite traducir la Biblia y da origen a una rica literatura. Situada entre Bizancio, Persia y después el mundo árabe y turco, Armenia pierde a menudo su independencia. A finales del siglo XII, unos príncipes armenios fundan en Cilicia, en el sudeste de Asia Menor, un reino que dura hasta 1375: sus monasterios producen los más bellos manuscritos iluminados armenios, entre ellos los del pintor Toros Roslin en el siglo XIII. Tras su caída, los armenios se dispersan por el Imperio otomano, Persia, Crimea, Polonia e incluso la India. Grandes mercaderes, financian iglesias, manuscritos y objetos litúrgicos, y conservan con fervor los libros antiguos, que hacen encuadernar de nuevo o rescatan cuando les han sido arrebatados."""
+style = """
+La iluminación armenia se distingue por sus colores vivos y saturados, sus tablas de cánones adornadas con aves y plantas, sus márgenes poblados de ornamentos y una lectura personal de los modelos bizantinos. Los orfebres armenios, por su parte, sobresalen en la plata repujada, los esmaltes y las piedras preciosas de las encuadernaciones y los relicarios. Las cruces de piedra esculpidas, los jachkar, son otra creación propia del arte armenio."""
+
+[[artistes]]
+nom = "Éthiopie chrétienne"
+vie = "Reino de Aksum y después imperio de Etiopía, desde el siglo IV"
+biographie = """
+En el siglo IV, el rey Ezana de Aksum, en el norte de la actual Etiopía, se convierte al cristianismo bajo la influencia de Frumencio, un cristiano de Tiro al que Atanasio de Alejandría consagra obispo. La Iglesia etíope queda después vinculada a la de Alejandría, que le envía sus obispos hasta el siglo XX. Su lengua litúrgica es el ge’ez, la antigua lengua de Aksum, escrita en un alfabeto propio. En el siglo XII o XIII, bajo el rey Lalibela, se excavan en la roca las célebres iglesias que llevan su nombre. En el siglo XV, el emperador Zara Yaqob, que reina de 1434 a 1468, reforma la Iglesia y fomenta la copia y la ilustración de los libros sagrados en los monasterios. Los vínculos con el Mediterráneo se refuerzan entonces: llegan a Etiopía iconos cretenses, y un pintor veneciano, Nicolò Brancaleon, trabaja en la corte a finales de siglo. Las iglesias y los monasterios etíopes conservan todavía hoy miles de manuscritos iluminados."""
+style = """
+La pintura etíope, sobre pergamino, sobre tabla o sobre los muros de las iglesias, privilegia el trazo de tinta negra, los colores puros aplicados en superficies planas, el amarillo, el rojo, el verde, y los grandes ojos almendrados vueltos hacia el espectador. Los pliegues se convierten en motivos, las orlas se cubren de entrelazos y cheurones. Heredera de los modelos coptos, siríacos y bizantinos, los transforma en un lenguaje gráfico muy reconocible."""

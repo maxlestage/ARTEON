@@ -1,0 +1,863 @@
+[exposition]
+ordre = 40
+nom_court = "Barroco"
+mouvement = "Barroco"
+cadre = "baroque"
+couleur = "#7a2e2a"
+titre = "El Barroco, el teatro de la luz"
+artiste = "Caravaggio, Artemisia, Rubens, Velázquez, Poussin…"
+dates = "1599–1678"
+accroche = "Exposición virtual · Museo del Prado, Madrid"
+introduction = """
+En el siglo XVII, la pintura europea busca captar y conmover: luz dramática de Caravaggio, \
+carnes palpitantes de Rubens, verdad inquietante de Velázquez, pero también orden sereno de \
+Poussin y de Claudio de Lorena. La visita reúne a nueve pintores, de Roma a Sevilla y de \
+Amberes a Lorena, en diez lienzos. El edificio se inspira en el Museo del Prado de Madrid: una \
+larga galería central abovedada de muros rojo oscuro y, en su centro, la sala donde Las \
+Meninas esperan al visitante."""
+vitrine = "menines.jpg"
+
+[musee]
+nom = "Museo del Prado"
+ville = "Madrid, España"
+architecte = "Juan de Villanueva"
+construction = "1785–1819"
+presentation = """
+En 1785, Carlos III encarga a Juan de Villanueva la construcción, en el Paseo del Prado, de un \
+gabinete de historia natural, pieza maestra de un barrio consagrado a las ciencias junto con el \
+vecino Jardín Botánico. Las obras, interrumpidas por la guerra contra Napoleón, concluyen bajo \
+Fernando VII, que instala en él los cuadros de las colecciones reales: el Real Museo de \
+Pintura y Escultura abre sus puertas el 19 de noviembre de 1819. El edificio neoclásico, de \
+ladrillo y granito, se extiende a lo largo del paseo; en el centro de su fachada, un pórtico \
+de columnas forma la Puerta de Velázquez. En el interior, una larga galería abovedada, \
+iluminada desde lo alto, distribuye las salas. Como los reyes de España coleccionaron a \
+Tiziano, Rubens, El Bosco y a sus propios pintores de corte, el Prado reúne los mayores \
+conjuntos de Velázquez y de Goya, con Las Meninas y El tres de mayo de 1808. Rafael Moneo lo \
+amplió en 2007 en torno al claustro de los Jerónimos."""
+ici = """
+El edificio de ARTEON retoma la disposición del Prado: una entrada en medio de la fachada y \
+una larga galería que lo atraviesa. Se entra por el sur en el vestíbulo de Velázquez y luego en \
+la galería central, de cuarenta metros de largo y doce de alto, de muros rojo oscuro. Enfrente, \
+al norte, se abre la sala de Las Meninas, cuadrada, de muros verde grisáceo. En el extremo \
+oeste de la galería, la sala «El claroscuro», también roja; en el extremo este, la sala «El \
+paisaje clásico», de un verde pálido."""
+
+[[salles]]
+nom = "El vestíbulo de Velázquez"
+theme = "La entrada, como la Puerta de Velázquez que se abre en medio de la larga fachada del Prado."
+murs = "#e6dccb"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La galería central"
+theme = "Bajo la bóveda, la sensualidad de Rubens, el fervor de Murillo y el recogimiento de Zurbarán."
+murs = "#b26a5c"
+x = 0
+z = -9
+largeur = 40
+profondeur = 10
+hauteur = 12
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "La sala de Las Meninas"
+theme = "Velázquez, pintor del rey: Las Meninas al fondo, y La fragua de Vulcano, pintada en Roma."
+murs = "#97a38c"
+x = 0
+z = -20
+largeur = 12
+profondeur = 12
+hauteur = 9
+
+[[salles]]
+nom = "El claroscuro"
+theme = "Caravaggio y sus herederos: la Vocación de san Mateo, la Judit de Artemisia, el Tramposo de La Tour."
+murs = "#a95a4e"
+x = -26
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "El paisaje clásico"
+theme = "Poussin y Claudio de Lorena en Roma: la Arcadia de los pastores y un puerto al atardecer."
+murs = "#b7bfa8"
+x = 26
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+[[oeuvres]]
+titre = "La vocación de san Mateo"
+artiste = "Le Caravage"
+annee = "1599–1600"
+image = "vocation-saint-matthieu.jpg"
+technique = "Óleo sobre lienzo, 322 × 340 cm"
+collection = "Capilla Contarelli, iglesia de San Luis de los Franceses, Roma"
+note = "Un rayo de luz atraviesa una estancia oscura: Cristo señala al recaudador de impuestos que va a seguirlo."
+description = """
+En una sala desnuda de muros grises, cinco hombres están sentados en torno a una mesa donde se \
+cuenta dinero. Visten las ropas de la Roma de 1600: jubones rayados, sombreros de plumas, \
+espada al cinto. A la derecha, casi en la sombra, acaban de entrar dos hombres descalzos y \
+envueltos en ropajes a la antigua: Cristo, del que apenas se ve el rostro y la mano tendida, y \
+san Pedro, de espaldas. La mano de Cristo señala a uno de los jugadores. Un barbudo, en el \
+centro, se señala a sí mismo con el dedo, como para decir «¿yo?», mientras que al extremo de \
+la mesa un joven, con la cabeza baja, sigue recogiendo las monedas. Sobre los personajes, una \
+ventana de cristales empañados permanece oscura: la luz viene de otra parte, de arriba a la \
+derecha, y sigue el gesto de Cristo."""
+evocation = """
+El Evangelio cuenta en una frase que Jesús vio a Mateo, el publicano, sentado en la mesa de los \
+impuestos, y le dijo: «Sígueme». Caravaggio hace de esta llamada un instante suspendido, justo \
+antes de la decisión. La luz que cae en diagonal se ha leído como la imagen de la gracia \
+divina que irrumpe en un mundo ordinario, en medio del dinero y del juego. La mano de Cristo \
+recuerda casi la de Adán en la Creación de Miguel Ángel, en la Capilla Sixtina: la salvación \
+responde a la creación. Los historiadores discuten todavía la identidad de Mateo: el barbudo \
+que se señala, como quiere la lectura tradicional, o el joven inclinado sobre las monedas, que \
+aún no ha levantado los ojos. Esta vacilación forma parte de la fuerza del cuadro."""
+histoire = """
+El cardenal francés Mathieu Cointrel, llamado Contarelli, fallecido en 1585, había dejado con \
+qué decorar su capilla funeraria en San Luis de los Franceses, la iglesia de los franceses de \
+Roma. Tras años de retraso, el encargo de los dos lienzos laterales, consagrados a la vocación \
+y al martirio de san Mateo, recae en 1599 en Caravaggio, gracias a su protector, el cardenal \
+Francesco Maria Del Monte. Es su primer encargo público. Instalados en 1600, los dos lienzos \
+causan sensación y hacen célebre a su autor de la noche a la mañana. El pintor añade después \
+el cuadro de altar, San Mateo y el ángel, cuya primera versión es rechazada. A diferencia de \
+la mayoría de las obras de esta exposición, la Vocación nunca ha abandonado el lugar para el \
+que fue pintada: sigue colgada en la capilla."""
+facture = """
+Caravaggio pinta directamente sobre el lienzo, sin dibujo preparatorio conocido; se han \
+detectado en la preparación pequeñas incisiones que le servían de referencias. Sobre un fondo \
+pardo muy oscuro, solo hace surgir lo que la luz toca: rostros, manos, mangas blancas. Es el \
+contraste violento que se llamará tenebrismo. Los colores francos, rojo, amarillo, verde, se \
+reservan para los jóvenes vestidos a la moda. El examen con rayos X ha mostrado que san Pedro \
+fue añadido en un segundo momento: en un principio, Cristo entraba solo."""
+details = [
+  "La mano de Cristo, entreabierta, que recuerda la de Adán en Miguel Ángel.",
+  "El anciano de gafas que se inclina sobre el dinero, sin ver nada.",
+  "La ventana de postigo abierto, cuyos cristales siguen oscuros.",
+  "Los pies descalzos de Cristo y de Pedro, frente a los zapatos y las plumas de los jugadores.",
+  "Las monedas que el joven del extremo de la mesa sigue reuniendo.",
+]
+themes = ["luz", "vocación", "evangelio", "dinero", "claroscuro"]
+anecdote = """
+En la iglesia de San Luis de los Franceses, la capilla Contarelli está sumida en la penumbra: \
+hay que introducir una moneda en una caja para encender la iluminación unos instantes, y ver \
+entonces los tres cuadros de Caravaggio salir de la sombra."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "Judit decapitando a Holofernes"
+artiste = "Artemisia Gentileschi"
+annee = "hacia 1620"
+image = "judith-holopherne.jpg"
+technique = "Óleo sobre lienzo, 199 × 162,5 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Judit y su criada sujetan al general asirio y le cortan el cuello: la escena bíblica más violenta del siglo."
+description = """
+Sobre un lecho de sábanas blancas, un hombre tumbado de espaldas, con la cabeza hacia el \
+espectador, se debate. Dos mujeres lo dominan. La criada, tocada con un turbante, pesa con todo \
+su peso sobre su pecho y le inmoviliza los brazos. Judit, con vestido de seda dorada de mangas \
+remangadas, le sujeta firmemente el pelo con una mano y, con la otra, le hunde una espada en el \
+cuello. La sangre brota en hilos y resbala por la sábana hasta el borde del colchón. El rostro \
+de Holofernes, con los ojos muy abiertos, expresa el terror. Los tres cuerpos forman un \
+entramado de brazos que converge hacia la hoja, en el centro exacto del lienzo. Alrededor, el \
+fondo es completamente negro: la tienda del general, sumida en la noche, ha desaparecido."""
+evocation = """
+El libro de Judit cuenta cómo una viuda judía salva su ciudad de Betulia, asediada por el \
+ejército asirio, seduciendo y luego matando al general Holofernes. El tema era corriente, pero \
+Artemisia hace de él un acto físico, casi un trabajo de carnicería, en el que las dos mujeres \
+actúan juntas con fría determinación. A menudo se ha leído el cuadro a la luz de su vida: \
+violada en 1611 por el pintor Agostino Tassi, tuvo que afrontar un juicio humillante. Muchos \
+ven en él una venganza pintada; otros historiadores advierten contra esta lectura demasiado \
+biográfica y recuerdan que se trata ante todo de una demostración de oficio, destinada a \
+rivalizar con Caravaggio en un tema que él mismo había tratado."""
+histoire = """
+Artemisia había pintado una primera versión del tema hacia 1612-1613, hoy en el Museo de \
+Capodimonte, en Nápoles. Establecida en Florencia tras su matrimonio, retoma la composición, \
+más grande y más refinada, hacia 1620, sin duda para el gran duque Cosme II de Médici. Según \
+una tradición a menudo repetida, la gran duquesa habría encontrado el cuadro tan espantoso que \
+se lo habría relegado a un rincón oscuro del palacio Pitti, y la pintora habría necesitado el \
+apoyo de su amigo Galileo para obtener su pago. Durante mucho tiempo poco mirada, la obra \
+permaneció en las colecciones de los Médici, pasadas al Estado, y pertenece hoy a los Uffizi, \
+donde figura entre los cuadros más admirados."""
+facture = """
+Artemisia aprendió de su padre, Orazio Gentileschi, amigo de Caravaggio, la pintura del modelo \
+vivo y la iluminación lateral que recorta las figuras sobre el negro. A ello añade un lujo de \
+telas típicamente florentino: seda adamascada del vestido, terciopelo rojo de la colcha, \
+sábana blanca arrugada. La composición está construida en triángulo en torno a la hoja, y los \
+brazos de los tres personajes se cruzan como los radios de una rueda. Los chorros de sangre, \
+pintados en arcos regulares, son de una precisión casi clínica."""
+details = [
+  "El brazalete de Judit, adornado con medallones donde se reconoce a Ártemis, que da nombre a la pintora.",
+  "Los chorros de sangre que dibujan arcos, y los regueros sobre la sábana blanca.",
+  "La empuñadura de la espada, en forma de cruz, justo en el centro del cuadro.",
+  "El puño apretado de la criada sobre el pecho de Holofernes.",
+]
+themes = ["biblia", "violencia", "heroína", "mujeres", "claroscuro"]
+anecdote = """
+En 1616, Artemisia Gentileschi se convierte en la primera mujer admitida en la Accademia delle \
+Arti del Disegno de Florencia, la academia fundada bajo Cosme I de Médici, que le permitía \
+comprar ella misma sus colores y firmar sus propios contratos."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.62
+
+[[oeuvres]]
+titre = "El tramposo del as de diamantes"
+artiste = "Georges de La Tour"
+annee = "hacia 1636–1638"
+image = "tricheur-as-de-carreau.jpg"
+technique = "Óleo sobre lienzo, 106 × 146 cm"
+collection = "Museo del Louvre, París"
+note = "En torno a una partida de cartas, tres cómplices se conciertan para desplumar a un joven ingenuo."
+description = """
+Cuatro personajes se mantienen alrededor de una mesa cubierta con un tapete verde, sobre un \
+fondo oscuro. A la derecha, un joven ricamente vestido, con sombrero de plumas y jubón \
+bordado, mira su juego sin sospechar nada; ante él, un montón de monedas de oro. En el centro, \
+una mujer de escote adornado con perlas, tocada con un turbante rojo de plumas, lanza una \
+mirada oblicua a su criada, que le sirve un vaso de vino. A la izquierda, un hombre de rostro \
+en sombra se vuelve hacia nosotros: a su espalda, saca de su cinturón un as de diamantes, que \
+se dispone a deslizar en su juego. Nadie habla, pero las miradas y las manos cuentan toda la \
+historia."""
+evocation = """
+El cuadro escenifica, según una lectura corriente en el siglo XVII, las tres tentaciones que \
+pierden a la juventud: el juego, el vino y la lujuria. El joven es una figura del hijo \
+pródigo, destinado a la ruina. Pero La Tour no predica: nos hace cómplices. El tramposo nos \
+mira, y somos los únicos que vemos su carta oculta, como en el teatro cuando el público sabe \
+más que la víctima. La escena retoma un tema puesto de moda en Roma por Caravaggio, en sus \
+Tramposos, pero La Tour hace de ella una comedia silenciosa y estática, de una ironía muy \
+fría. Se ha visto en ella un reflejo de la sociedad de la Lorena en guerra, donde el dinero y \
+la astucia decidían a menudo la suerte de los hombres."""
+histoire = """
+Como casi toda la obra de La Tour, el cuadro no está documentado por ningún texto de su época, \
+y su fecha solo se conoce por el estilo. El pintor hizo dos versiones: una, con un as de \
+tréboles, se encuentra en el Kimbell Art Museum de Fort Worth, en Texas; la otra, con un as de \
+diamantes, es esta. Olvidada durante cerca de tres siglos, reaparece en el siglo XX en una \
+colección particular, en el momento en que se redescubre a su autor. Su adquisición por el \
+Museo del Louvre, en 1972, hizo mucho ruido y suscitó vivos debates. Figura hoy entre los \
+cuadros más populares del departamento de pinturas."""
+facture = """
+En este cuadro «diurno», iluminado por una luz del día lateral, La Tour simplifica las formas \
+hasta la geometría: el rostro de la cortesana es un óvalo casi perfecto, la mesa un bloque, \
+las manos pequeñas arquitecturas. Las superficies son lisas, sin huella de pincel visible. Las \
+telas, por el contrario, están detalladas con esmero: bordados del jubón, rayas del corpiño, \
+plumas de los tocados. La gama juega con rojos y oros que resaltan sobre el fondo negro."""
+details = [
+  "El as de diamantes sacado del cinturón, a espaldas del tramposo.",
+  "Los ojos de la cortesana, vueltos de lado hacia la criada, sin mover la cabeza.",
+  "El vaso de vino tinto que la criada sostiene en la mano.",
+  "Las monedas de oro apiladas ante el joven, listas para cambiar de manos.",
+]
+themes = ["juego", "trampa", "vicios", "miradas", "comedia"]
+anecdote = """
+La Tour había sido completamente olvidado. En 1915, el historiador del arte alemán Hermann Voss \
+le devuelve dos nocturnos del museo de Nantes; la exposición de los «Pintores de la realidad» \
+en la Orangerie, en París en 1934, termina de devolverlo a la luz."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.46
+
+[[oeuvres]]
+titre = "Las tres Gracias"
+artiste = "Pierre Paul Rubens"
+annee = "hacia 1630–1635"
+image = "trois-graces.jpg"
+technique = "Óleo sobre tabla de roble, 221 × 181 cm"
+collection = "Museo del Prado, Madrid"
+note = "Las tres diosas de la gracia y de la alegría, enlazadas en un jardín: un himno a la carne, conservado por Rubens hasta su muerte."
+description = """
+Tres mujeres desnudas se sujetan por los hombros y la cintura, en una ronda inmóvil, en medio \
+de un paisaje abierto. La del centro se ve de espaldas; sus dos compañeras, de tres cuartos, se \
+vuelven hacia ella e intercambian miradas tiernas. Un velo transparente pasa de una a otra y \
+subraya la curva de los cuerpos. Sobre ellas, una guirnalda de rosas cuelga entre dos árboles, \
+y un paño blanco está colgado de una rama. A la derecha, una fuente de piedra esculpida lleva \
+un pequeño Amor que sostiene una cornucopia de la que mana el agua. A la izquierda, a lo \
+lejos, unos ciervos pacen en una pradera bañada de luz. Las carnes, muy claras, se recortan \
+sobre el cielo azul y los verdes del jardín."""
+evocation = """
+Hijas de Zeus según la mitología griega, las tres Gracias, Aglaya, Eufrósine y Talía, \
+encarnan la belleza, la alegría y la abundancia; su ronda simboliza desde la Antigüedad la \
+generosidad, el don que circula y regresa. Rubens retoma la pose clásica, una figura de \
+espaldas entre dos de frente, pero la libra de toda frialdad de estatua. Sus Gracias son \
+mujeres de carne, de cuerpos plenos y pieles nacaradas, el ideal de belleza de la Flandes del \
+siglo XVII. A menudo se han reconocido en la Gracia de la izquierda los rasgos de Helena \
+Fourment, con la que el pintor se casó en 1630, a los cincuenta y tres años, cuando ella tenía \
+dieciséis: el cuadro sería también un canto de amor y de felicidad de su vejez."""
+histoire = """
+Rubens pinta este cuadro para sí mismo, en los años felices de su segundo matrimonio, y lo \
+conserva en su casa de Amberes hasta su muerte, en 1640. En la venta de sus bienes, el rey de \
+España Felipe IV, su mayor admirador, hace comprar por sus agentes varios cuadros del taller, \
+entre ellos este. La obra llega así a Madrid y a los palacios reales, donde permanece cerca de \
+dos siglos antes de entrar en el Museo del Prado, abierto en 1819 para presentar al público \
+las colecciones de la Corona. Gracias a esta pasión de Felipe IV, el Prado posee hoy uno de los \
+conjuntos más ricos del mundo de cuadros de Rubens."""
+facture = """
+Rubens pinta sobre una gran tabla de roble, con capas finas y fluidas que dejan adivinar por \
+momentos el fondo claro. Las carnaciones se construyen con veladuras superpuestas: blanco \
+nacarado, rosas, y ligeros reflejos azulados en las sombras, que dan a la piel su \
+transparencia. La pincelada, muy libre en el paisaje y la guirnalda, se vuelve más fundida en \
+los cuerpos. La composición se organiza en torno al velo que une las tres figuras y a la \
+diagonal de los brazos."""
+details = [
+  "El velo transparente que pasa de una Gracia a otra y las une.",
+  "Los diminutos ciervos en la pradera, a la izquierda, bajo los árboles.",
+  "El pequeño Amor de piedra sobre la fuente, a la derecha, con su cornucopia.",
+  "El número de inventario real, pintado en blanco en la esquina inferior izquierda.",
+]
+themes = ["mitología", "desnudo", "belleza", "amor", "jardín"]
+anecdote = """
+Durante su estancia en Madrid en 1628-1629, Rubens traba amistad con el joven Velázquez, \
+veintidós años menor: según Francisco Pacheco, suegro de Velázquez, los dos pintores visitan \
+juntos el monasterio de El Escorial."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.81
+
+[[oeuvres]]
+titre = "La Inmaculada Concepción de los Venerables, llamada «de Soult»"
+artiste = "Bartolomé Esteban Murillo"
+annee = "hacia 1678"
+image = "immaculee-conception.jpg"
+technique = "Óleo sobre lienzo, 274 × 190 cm"
+collection = "Museo del Prado, Madrid"
+note = "La Virgen se eleva sobre una nube, llevada por una nube de angelitos: el modelo sevillano de la Inmaculada Concepción."
+description = """
+En el centro de un cielo dorado, una joven vestida con una túnica blanca y un gran manto azul \
+se eleva, con las manos cruzadas sobre el pecho y los ojos vueltos hacia lo alto. Un halo \
+luminoso brilla alrededor de su cabeza, y una fina media luna aparece bajo sus pies. A su \
+alrededor, una nube de angelitos rollizos forma una espiral: algunos sostienen ramas y cintas, \
+otros la miran o juegan entre las nubes, otros no son más que cabezas aladas que se funden en \
+la bruma. El manto, levantado por el viento, se enrolla en torno a su cuerpo y acompaña el \
+movimiento ascendente. El fondo pasa del oro luminoso, alrededor del rostro, a grises azulados \
+en las esquinas."""
+evocation = """
+El dogma de la Inmaculada Concepción, que afirma que María fue concebida sin pecado original, \
+no era aún oficial en el siglo XVII, pero Sevilla lo defendía con pasión. Murillo fijó su \
+imagen para generaciones: una muchacha muy joven, pura y dulce, entre el cielo y la tierra, \
+según la mujer «vestida del sol, con la luna bajo los pies» del Apocalipsis. Los colores, \
+blanco de la pureza y azul del cielo, se convierten en los de la Virgen en toda la iconografía \
+católica. Tras la peste que había matado a cerca de la mitad de los sevillanos en 1649, estas \
+visiones tiernas y consoladoras respondían a la necesidad de consuelo de una ciudad probada. \
+El cuadro pertenece al último período de Murillo, el más vaporoso."""
+histoire = """
+El canónigo Justino de Neve, amigo y mecenas de Murillo, encarga el cuadro para la iglesia del \
+hospital de los Venerables Sacerdotes de Sevilla, un asilo para los sacerdotes ancianos que él \
+había fundado. Durante la ocupación francesa de Sevilla, el mariscal Soult, gran saqueador de \
+obras de arte, se apodera de él. En su venta póstuma, en 1852, el Museo del Louvre lo compra \
+por 615 300 francos: es entonces el precio más alto jamás pagado por un cuadro. Permanece en \
+el Louvre cerca de noventa años, hasta 1941, cuando el gobierno de Vichy lo cede a la España \
+de Franco en el marco de un intercambio de obras de arte. Entra entonces en el Museo del Prado."""
+facture = """
+Murillo practica aquí su «estilo vaporoso»: los contornos se disuelven en una luz dorada, los \
+angelitos nacen de la bruma con toques ligeros y transparentes. Solo la figura de la Virgen \
+está construida con volúmenes netos, lo que la hace avanzar hacia nosotros. La composición \
+dibuja una espiral ascendente, típica del barroco, desde el grupo de ángeles de abajo hasta el \
+rostro alzado. Los pliegues del manto azul, muy amplios, dan movimiento a una figura por lo \
+demás inmóvil."""
+details = [
+  "La fina media luna bajo los pies de la Virgen, medio oculta entre las nubes.",
+  "Los angelitos de abajo, que tienden los brazos hacia ella.",
+  "El rostro alzado de María, vuelto hacia una luz que no se ve.",
+  "Las cabezas de ángeles casi borradas en la bruma dorada, arriba a la izquierda.",
+]
+themes = ["virgen", "devoción", "cielo", "ángeles", "sevilla"]
+anecdote = """
+El regreso del cuadro a España, en 1941, formaba parte de un intercambio más amplio: el mismo \
+acuerdo devolvió también a Madrid la Dama de Elche, busto ibérico conservado en el Louvre \
+desde 1897, y Francia recibió a cambio otros cuadros españoles."""
+salle = 2
+mur = "nord"
+place = 9
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Agnus Dei"
+artiste = "Francisco de Zurbarán"
+annee = "hacia 1635–1640"
+image = "agnus-dei.jpg"
+technique = "Óleo sobre lienzo, 37,3 × 62 cm"
+collection = "Museo del Prado, Madrid"
+note = "Un cordero de patas atadas, tendido sobre una piedra: una imagen del sacrificio de Cristo, de una sencillez absoluta."
+description = """
+Sobre un fondo enteramente negro, un cordero yace sobre una losa de piedra gris, visto de \
+perfil. Sus cuatro patas están atadas con un cordel, y sus pezuñas sobresalen del borde de la \
+piedra, hacia nosotros. Su cabeza reposa plana, con los ojos entornados, en una actitud de \
+abandono total; unos pequeños cuernos enroscados enmarcan su oreja. Su vellón, muy blanco, \
+está rendido rizo a rizo y atrapa toda la luz, que viene de la izquierda. No hay nada más: ni \
+paisaje, ni personaje, ni inscripción, ni aureola. El pequeño formato refuerza la impresión de \
+intimidad, como si el animal estuviera allí puesto, al alcance de la mano."""
+evocation = """
+El cordero es uno de los símbolos más antiguos de Cristo: san Juan Bautista lo señala como «el \
+Cordero de Dios que quita el pecado del mundo», y el profeta Isaías anuncia un siervo llevado \
+como cordero al matadero, sin abrir la boca. El animal de patas atadas, tendido como sobre un \
+altar, evoca, pues, la Pasión y el sacrificio aceptado. Pero Zurbarán no recurre a ningún \
+atributo religioso: la meditación nace solo de la presencia del animal, de su dulzura y de su \
+vulnerabilidad. Se han relacionado estos cuadros con la espiritualidad de las órdenes \
+monásticas para las que trabajaba, hecha de silencio y de contemplación. La obra es también un \
+bodegón, en sentido propio: una vida que va a ser ofrecida."""
+histoire = """
+Zurbarán pintó varias versiones de este motivo, en su taller de Sevilla, hacia 1635-1640. \
+Algunas llevan una aureola y una inscripción latina, como la del Museo de Arte de San Diego, \
+en California; la del Prado, la más despojada, no tiene ninguna. Se ignora para quién fueron \
+hechas: su pequeño formato sugiere cuadros de devoción privada, destinados a un oratorio o a \
+una celda de convento más que a una iglesia. Conservado durante mucho tiempo en colecciones \
+particulares, el lienzo de Madrid entró en el Prado a finales del siglo XX, donde se ha \
+convertido en una de las imágenes más reproducidas de la pintura española."""
+facture = """
+Zurbarán aplica al tema religioso el rigor de los bodegones, las naturalezas muertas \
+españolas: un objeto único, iluminado lateralmente, colocado al borde de una repisa sobre un \
+fondo negro. La lana está modelada en pequeños rizos de pasta espesa, casi en relieve, que \
+contrastan con la superficie lisa de la piedra. El claroscuro, heredado de Caravaggio, aísla \
+al animal y le da una presencia escultórica. El dibujo, de una precisión extrema, no deja nada \
+al azar."""
+details = [
+  "El cordel que ata las cuatro patas, justo al borde de la losa.",
+  "Los rizos de lana, pintados uno a uno en relieve.",
+  "El ojo entornado del cordero, casi dormido.",
+  "Las pezuñas que sobresalen de la piedra, como si salieran del cuadro.",
+]
+themes = ["sacrificio", "cordero", "símbolo", "silencio", "naturaleza muerta"]
+anecdote = """
+Cuando la clientela sevillana se vuelve hacia Murillo, el taller de Zurbarán exporta por barco \
+series enteras de cuadros a la América española, especialmente a Lima y Buenos Aires: santos, \
+apóstoles y vírgenes parten por decenas."""
+salle = 2
+mur = "sud"
+place = 3
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Las Meninas"
+artiste = "Diego Velázquez"
+annee = "1656"
+image = "menines.jpg"
+technique = "Óleo sobre lienzo, 318 × 276 cm"
+collection = "Museo del Prado, Madrid"
+note = "La pequeña infanta, sus damas de honor, sus enanos, su perro y el propio pintor: el cuadro más comentado de la historia del arte."
+description = """
+En una alta sala del palacio real, en primer plano, la pequeña infanta Margarita Teresa, de \
+cinco años, con vestido blanco de guardainfante, está rodeada de dos damas de honor, las \
+«meninas»: una, arrodillada, le ofrece un búcaro rojo en una bandeja, la otra esboza una \
+reverencia. A la derecha, una enana, Mari Bárbola, y un enano, Nicolasito Pertusato, que \
+apoya el pie sobre un gran perro adormilado. Detrás, una dueña con hábito de viuda habla con \
+un guardia. A la izquierda, ante un inmenso lienzo visto de espaldas, el propio Velázquez, con \
+pincel y paleta en la mano, mira hacia nosotros. Al fondo, un espejo refleja al rey Felipe IV y \
+a la reina Mariana, y en el marco de una puerta, un hombre se detiene en los peldaños, en la \
+luz."""
+evocation = """
+¿A quién se mira y quién nos mira? El espejo sugiere que el rey y la reina están en nuestro \
+lugar, ante el cuadro: la infanta y su séquito habrían venido a verlos posar. Velázquez \
+invierte así el orden habitual del retrato y nos sitúa en el corazón de un juego de miradas \
+sin fin. El pintor se representa en él a la par con la familia real, lo que se ha leído como \
+una reivindicación de la nobleza de su arte, en una época en que la pintura pasaba todavía por \
+un oficio manual. El filósofo Michel Foucault abrió Las palabras y las cosas, en 1966, con un \
+análisis de este cuadro; el pintor napolitano Luca Giordano lo habría llamado «la teología de \
+la pintura»."""
+histoire = """
+Velázquez, pintor de la corte desde 1623, pinta el lienzo en 1656 en el Cuarto del Príncipe \
+del Alcázar de Madrid, el aposento del antiguo príncipe heredero que le servía de taller. Los \
+inventarios del palacio lo llaman entonces La familia de Felipe IV; el título de Las Meninas \
+no aparece hasta 1843, en un catálogo del Prado. El cuadro, propiedad del rey, permanece en \
+los aposentos privados y solo lo ven unos pocos allegados. En 1734, escapa al incendio que \
+destruye el Alcázar. Pasa entonces al nuevo Palacio Real y luego entra en el Museo del Prado en \
+su apertura, en 1819. Hoy ocupa la sala 12, en el corazón del museo, a mitad de la galería \
+central."""
+facture = """
+Velázquez pinta con pinceladas rápidas y separadas que, de cerca, no describen nada y, de \
+lejos, se vuelven telas, cabellos, reflejos: las cintas de la infanta no son más que unos \
+cuantos trazos de rosa. Da cuerpo sobre todo al aire de la estancia. La luz entra por las \
+ventanas de la derecha, se posa sobre el grupo del primer plano y luego se extingue \
+progresivamente hacia el techo, antes de reaparecer en la puerta del fondo. La gama, muy \
+contenida, juega con los grises, los negros y los blancos, realzados con toques de rojo."""
+details = [
+  "La cruz roja de la orden de Santiago en el pecho del pintor, añadida después de 1659.",
+  "El espejo del fondo, donde se reflejan, borrosos, el rey y la reina.",
+  "José Nieto, aposentador de la reina, en silueta en la puerta luminosa.",
+  "El pie del pequeño Nicolasito sobre el lomo del mastín, que no se inmuta.",
+  "El pequeño búcaro rojo que la menina tiende a la infanta.",
+]
+themes = ["corte", "mirada", "autorretrato", "infancia", "espejo", "pintura"]
+anecdote = """
+En 1656, Velázquez no era aún caballero: la cruz de la orden de Santiago, que recibió en 1659, \
+fue pintada sobre su jubón más tarde. Una leyenda cuenta que el rey Felipe IV la trazó él \
+mismo, tras la muerte del pintor."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.76
+
+[[oeuvres]]
+titre = "La fragua de Vulcano"
+artiste = "Diego Velázquez"
+annee = "1630"
+image = "forge-de-vulcain.jpg"
+technique = "Óleo sobre lienzo, 223 × 290 cm"
+collection = "Museo del Prado, Madrid"
+note = "Apolo viene a anunciar a Vulcano que su mujer Venus lo engaña con Marte: un mito antiguo en una fragua española."
+description = """
+En una fragua oscura, cinco hombres con el torso desnudo interrumpen su trabajo. A la \
+izquierda, un joven coronado de laurel, aureolado de luz y envuelto en un manto anaranjado, \
+levanta el dedo para hablar: es el dios Apolo. Frente a él, junto al yunque donde enrojece una \
+pieza de metal, Vulcano, el herrero cojo de venda blanca, lo mira boquiabierto. Sus cuatro \
+ayudantes, los cíclopes, permanecen inmóviles: uno de espaldas, otro inclinado sobre una \
+armadura, otros dos junto al hogar. De los muros cuelgan piezas de armadura, y sobre la \
+campana de la chimenea, a la derecha, hay una pequeña jarra blanca. Por la puerta abierta, a \
+la izquierda, se vislumbra un cielo azul."""
+evocation = """
+Velázquez ilustra un episodio de las Metamorfosis de Ovidio: Apolo, el dios del sol que todo lo \
+ve, revela a Vulcano que Venus, su esposa, lo engaña con Marte, el dios de la guerra. Ironía \
+cruel, Vulcano está justamente forjando una armadura, quizá para su rival. El pintor elige el \
+instante de la noticia, cuando cada uno encaja el golpe, y lo trata como una escena de la vida \
+cotidiana: sus dioses y sus cíclopes son artesanos madrileños, de cuerpos verdaderos y rostros \
+atónitos. Se ha visto en él a la vez una lección de pintura del desnudo, hecha para rivalizar \
+con los italianos, y una reflexión sobre la luz divina que entra en el taller del artesano."""
+histoire = """
+Velázquez pinta el lienzo en Roma en 1630, durante su primer viaje a Italia, que Felipe IV le \
+había permitido emprender para estudiar a los maestros antiguos y modernos. Realiza al mismo \
+tiempo La túnica de José, hoy en el monasterio de El Escorial. No son encargos: el pintor los \
+hace por iniciativa propia, como demostraciones de lo que ha aprendido. De regreso a Madrid, \
+los conserva unos años, y luego el rey los compra en 1634 para el palacio del Buen Retiro, que \
+hace decorar entonces. La Fragua pasa después a las colecciones reales y entra en el Museo del \
+Prado en el siglo XIX."""
+facture = """
+La estancia en Italia transforma la manera de Velázquez. Abandona los fondos pardos y el \
+claroscuro violento de sus comienzos sevillanos por una luz más pareja y una gama más clara, \
+hecha de grises, ocres y pardos cálidos. Los cuerpos desnudos, estudiados del modelo y de las \
+estatuas antiguas, se disponen en friso, como un bajorrelieve. El color vivo se reserva para el \
+manto de Apolo, único elemento sobrenatural de la escena. La jarra blanca anuncia al pintor de \
+naturalezas muertas."""
+details = [
+  "La corona de laurel y el halo de luz alrededor de la cabeza de Apolo.",
+  "La pequeña jarra blanca sobre la campana de la chimenea, arriba a la derecha.",
+  "El trozo de metal enrojecido sobre el yunque, que Vulcano sujeta con unas tenazas.",
+  "La sandalia azul de Apolo, única nota de color frío en el suelo.",
+]
+themes = ["mitología", "desnudo", "fragua", "noticia", "trabajo"]
+anecdote = """
+En la mitología, los cíclopes, ayudantes de Vulcano, tienen un solo ojo en medio de la frente. \
+Velázquez ignora este detalle: sus herreros tienen dos ojos, como cualquier obrero de su \
+tiempo."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 2.9
+
+[[oeuvres]]
+titre = "Los pastores de la Arcadia (Et in Arcadia ego)"
+artiste = "Nicolas Poussin"
+annee = "hacia 1638–1640"
+image = "et-in-arcadia-ego.jpg"
+technique = "Óleo sobre lienzo, 85 × 121 cm"
+collection = "Museo del Louvre, París"
+note = "Tres pastores descifran una inscripción en un sepulcro: incluso en el país de la felicidad, la muerte está presente."
+description = """
+En un paisaje de colinas y árboles bajo un cielo azul surcado de nubes, tres pastores y una \
+joven se mantienen en torno a un gran sepulcro de piedra. Uno de los pastores, con una rodilla \
+en tierra, sigue con el dedo las letras grabadas en la piedra: ET IN ARCADIA EGO. Otro, \
+apoyado en el monumento, inclina la cabeza para leer. El tercero se vuelve hacia la mujer, de \
+pie a la derecha, con vestido azul y manto amarillo, la mano en la cadera, y parece preguntarle \
+el sentido de la inscripción. Ella lo escucha, tranquila, con la mirada baja. Las figuras, \
+pocas, se disponen a uno y otro lado del sepulcro, como en un bajorrelieve antiguo."""
+evocation = """
+La Arcadia es, desde Virgilio, el país ideal de los pastores, de la poesía y del amor. La \
+frase latina, «Et in Arcadia ego», significa «Yo también estoy en la Arcadia»: es la Muerte \
+quien habla, o quizá el difunto enterrado allí. Los pastores descubren que la propia felicidad \
+es mortal. En una primera versión, pintada hacia 1627 y conservada en Chatsworth, en \
+Inglaterra, Poussin mostraba una escena más agitada; aquí, la sorpresa deja paso a la \
+meditación. El historiador Erwin Panofsky mostró cómo el cuadro se desliza de una advertencia, \
+«recuerda que vas a morir», hacia una ensoñación melancólica sobre el pasado. La mujer, \
+serena, se ha leído como una figura de la sabiduría."""
+histoire = """
+Poussin pinta el lienzo en Roma, donde vive desde 1624, poco antes de su estancia en París, \
+adonde Luis XIII y Richelieu lo llaman en 1640. No se conoce con certeza al comitente. El tema \
+mismo venía de Italia: el pintor Guercino había representado ya a dos pastores que descubrían \
+un cráneo colocado sobre una piedra con la misma inscripción. El cuadro entra en las \
+colecciones de Luis XIV en 1685 y pasa luego al Museo del Louvre con la Revolución. Se \
+convierte en los siglos XVIII y XIX en una de las imágenes emblemáticas del clasicismo \
+francés, copiada y meditada por los alumnos de la Academia."""
+facture = """
+Poussin construye su cuadro con el rigor de un arquitecto. Para ordenar sus composiciones, \
+disponía en una caja pequeñas figuras de cera vestidas con paños que iluminaba como una escena \
+de teatro. Los cuatro personajes, inspirados en la escultura antigua, se equilibran en torno \
+al sepulcro, y los gestos de las manos guían la mirada hacia la inscripción. Los colores, azul, \
+amarillo, rojo, se responden de una figura a otra. El paisaje, sobrio, sirve de marco a la \
+reflexión."""
+details = [
+  "La inscripción grabada, ET IN ARCADIA EGO, bajo el dedo del pastor arrodillado.",
+  "La sombra del brazo del pastor sobre la piedra, en la que se ha querido ver una guadaña.",
+  "La mano que la joven, a la derecha, posa sobre el hombro del pastor.",
+  "Las montañas azuladas en el horizonte, a la izquierda, bajo un cielo nuboso.",
+]
+themes = ["muerte", "arcadia", "pastores", "meditación", "antigüedad"]
+anecdote = """
+A partir de los años 1960, el cuadro ha alimentado teorías esotéricas sin fundamento, que \
+vinculan el sepulcro con un supuesto tesoro de Rennes-le-Château, en el Aude. Los historiadores \
+del arte nunca han hallado en ello el menor indicio serio."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.25
+
+[[oeuvres]]
+titre = "Puerto de mar con el embarque de la reina de Saba"
+artiste = "Claude Lorrain"
+annee = "1648"
+image = "embarquement-reine-de-saba.jpg"
+technique = "Óleo sobre lienzo, 149 × 197 cm"
+collection = "National Gallery, Londres"
+note = "Al sol naciente, la reina de Saba deja su palacio para ir a visitar al rey Salomón."
+description = """
+Un puerto imaginario se abre al mar, frente al sol, que se levanta justo sobre el horizonte. A \
+la derecha, un palacio de columnas, coronado de estatuas, desciende hacia el muelle por una \
+gran escalinata: la reina de Saba y su séquito bajan los peldaños, hacia una barca que la \
+espera. A la izquierda se alzan las ruinas de un templo de columnas corintias, tras las cuales \
+están amarrados unos veleros. En el centro, una torre redonda y un arco que cierran la rada, y \
+un gran navío anclado. En primer plano, unos porteadores cargan cofres en barcas. El reflejo \
+del sol traza sobre el agua un camino de luz que conduce directamente al espectador."""
+evocation = """
+La Biblia cuenta que la reina de Saba, habiendo oído hablar de la sabiduría del rey Salomón, \
+partió a encontrarlo con camellos cargados de aromas, de oro y de piedras preciosas. Claudio \
+elige el momento de la partida, pero la reina ocupa solo un pequeño lugar: el verdadero tema \
+es la luz de la mañana, que inunda el cielo, se refleja en el agua y dora las fachadas. Esta \
+partida hacia lo desconocido evoca el viaje, la esperanza, la promesa de un encuentro. El \
+paisaje, a la vez antiguo y moderno, compone una especie de edad de oro soñada, donde la \
+historia sagrada se mezcla con la vida de un gran puerto mediterráneo. Se ha visto en él el \
+nacimiento de un paisaje poético, hecho para la contemplación."""
+histoire = """
+Claudio pinta el cuadro en Roma en 1648 para Federico Mauricio de La Tour d'Auvergne, duque de \
+Bouillon, como pareja del Paisaje con el matrimonio de Isaac y Rebeca, conservado también en \
+Londres. Guarda una copia dibujada en su Liber Veritatis, el libro donde consignaba cada uno \
+de sus cuadros para distinguirlos de las falsificaciones. Tras varios propietarios, los dos \
+lienzos llegan a Inglaterra, donde Claudio era especialmente admirado, y forman parte de la \
+colección de John Julius Angerstein. En 1824, la compra de esta colección por el Estado \
+británico da origen a la National Gallery: este puerto de mar es, pues, uno de sus primeros \
+cuadros."""
+facture = """
+Claudio es uno de los primeros pintores en colocar el propio sol en su cuadro y en pintar a \
+contraluz. Toda la composición está regulada sobre este punto luminoso: los edificios, entre \
+bastidores a uno y otro lado como en un escenario, abren una perspectiva hacia el horizonte. \
+La luz se degrada del amarillo pálido al azul, y la perspectiva aérea hace palidecer los \
+lejanos. Las figuras, muy pequeñas, fueron a veces confiadas, según sus biógrafos, a \
+colaboradores."""
+details = [
+  "El disco del sol, apenas levantado, a ras del horizonte.",
+  "El cortejo de la reina de Saba, en los peldaños del palacio, a la derecha.",
+  "Los cofres de presentes que se cargan en la barca, en primer plano.",
+  "El reflejo del sol que ondula sobre el agua hasta la parte baja del cuadro.",
+]
+themes = ["puerto", "sol", "viaje", "biblia", "paisaje"]
+anecdote = """
+Turner admiraba tanto este cuadro que legó dos de sus propios lienzos a la nación con una \
+condición: que fueran colgados junto a dos Claudios, entre ellos este. Todavía hoy pueden \
+verse lado a lado en la National Gallery."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.97
+
+[[artistes]]
+nom = "Le Caravage"
+vie = "Milán, 29 de septiembre de 1571 – Porto Ercole, 18 de julio de 1610"
+biographie = """
+Michelangelo Merisi nace en Milán y crece en Caravaggio, la villa lombarda de la que tomará el \
+nombre. Aprendiz en Milán del pintor Simone Peterzano, llega a Roma a comienzos de los años \
+1590, sin dinero ni relaciones, y pinta al principio frutas y jóvenes disfrazados para \
+mercaderes. El cardenal Francesco Maria Del Monte se fija en él, lo aloja en su palacio y le \
+consigue en 1599 el encargo de la capilla Contarelli, que lo hace célebre. Siguen grandes \
+cuadros de iglesia, algunos de los cuales son rechazados porque los santos tienen en ellos \
+pies sucios y rostros del pueblo. Pendenciero, a menudo armado, pasa varias veces por la \
+cárcel. En mayo de 1606, mata a Ranuccio Tomassoni en una riña y debe huir de Roma, condenado a \
+muerte. Trabaja en Nápoles, luego en Malta, donde es armado caballero antes de ser encarcelado \
+y expulsado de la orden, y después en Sicilia. En 1610, cuando espera el perdón del papa, \
+muere en la costa toscana, a los treinta y ocho años, en el camino de regreso a Roma."""
+style = """
+Caravaggio pinta del modelo vivo, sin idealizar: arrugas, uñas negras, frutas estropeadas. \
+Sumerge sus escenas en la oscuridad y las ilumina con un haz violento que esculpe los cuerpos, \
+y encuadra a sus personajes de cerca, a media figura, como si estuvieran en nuestro espacio. \
+Esta revolución hizo nacer en toda Europa el «caravaggismo»: Artemisia Gentileschi, Georges de \
+La Tour, el joven Velázquez, Ribera o Rembrandt le deben mucho."""
+
+[[artistes]]
+nom = "Artemisia Gentileschi"
+vie = "Roma, 8 de julio de 1593 – Nápoles, hacia 1654"
+biographie = """
+Hija del pintor Orazio Gentileschi, amigo de Caravaggio, Artemisia aprende su oficio en el \
+taller paterno, en Roma, pues las mujeres no tienen acceso a las academias. En 1611, es violada \
+por Agostino Tassi, un pintor que su padre le había dado como profesor. Orazio presenta una \
+denuncia: en el juicio, en 1612, la joven es sometida a tortura para probar la veracidad de su \
+testimonio. Casada poco después, se instala en Florencia, donde trabaja para los Médici, traba \
+amistad con Galileo y se convierte en 1616 en la primera mujer miembro de la Accademia delle \
+Arti del Disegno. Reside después en Roma y en Venecia, y luego se establece en Nápoles a partir \
+de 1630. Hacia 1638, se reúne con su padre en Londres, en la corte de Carlos I, antes de \
+regresar a Nápoles, donde dirige un taller hasta su muerte. Olvidada durante siglos, es \
+redescubierta en el siglo XX y figura hoy entre los pintores más estudiados del barroco."""
+style = """
+Artemisia retoma el naturalismo y el claroscuro de Caravaggio, pero con una atención \
+particular a las telas, a las joyas y a las carnaciones, heredada del gusto florentino. Pinta \
+sobre todo heroínas de la Biblia y de la historia antigua, Judit, Susana, Lucrecia, Cleopatra, \
+que muestra activas, resueltas, a menudo en lucha. Sus composiciones, poderosas y teatrales, \
+la han impuesto como una de las grandes figuras del caravaggismo."""
+
+[[artistes]]
+nom = "Georges de La Tour"
+vie = "Vic-sur-Seille (ducado de Lorena), 14 de marzo de 1593 – Lunéville, 30 de enero de 1652"
+biographie = """
+Hijo de un panadero de Vic-sur-Seille, en Lorena, entonces ducado independiente, Georges de La \
+Tour recibe una formación de la que casi nada se sabe; quizá viajó a Italia o a los Países \
+Bajos, donde habría descubierto la pintura caravaggista. En 1617, se casa con Diane Le Nerf, \
+hija de una familia noble, y se instala en 1620 en Lunéville, donde se convierte en un \
+notable acomodado, conocido por su carácter duro con los campesinos. La guerra de los Treinta \
+Años devasta Lorena: la peste, las hambrunas y los ejércitos no perdonan a Lunéville, \
+incendiada en 1638. La Tour reside entonces en París y recibe el título de «pintor ordinario \
+del rey»; Luis XIII habría guardado en su cámara uno de sus cuadros de san Sebastián. De \
+regreso en Lunéville, muere allí en 1652, pocos días después de su esposa, probablemente de una \
+epidemia. Su nombre se hunde luego en el olvido, hasta su redescubrimiento en el siglo XX. No \
+se le conocen hoy más que unos cuarenta cuadros."""
+style = """
+La Tour pintó escenas «diurnas», iluminadas por la luz del día, como El tramposo, y sobre todo \
+«nocturnos» donde una sola vela hace surgir de la sombra figuras recogidas, como sus \
+Magdalenas o su San José carpintero. Su arte se basa en una simplificación extrema de las \
+formas, volúmenes lisos y geométricos, un silencio y una inmovilidad que dan a sus cuadros una \
+gravedad casi moderna."""
+
+[[artistes]]
+nom = "Pierre Paul Rubens"
+vie = "Siegen (Westfalia), 28 de junio de 1577 – Amberes, 30 de mayo de 1640"
+biographie = """
+Nacido en Westfalia, adonde su padre, protestante, se había exiliado, Rubens crece en Amberes \
+tras la muerte de este, recibe una sólida educación humanista y se forma con varios pintores \
+de la ciudad. De 1600 a 1608, vive en Italia al servicio del duque de Mantua, estudia a \
+Tiziano, a Miguel Ángel y la Antigüedad, y cumple en 1603 una primera misión en España. De \
+regreso en Amberes, se convierte en pintor de la corte de los archiduques Alberto e Isabel, se \
+casa con Isabella Brant y abre un inmenso taller, del que salen retablos, decoraciones y \
+retratos para toda Europa: el ciclo de María de Médici para el palacio del Luxemburgo, el techo \
+de Whitehall en Londres. Diplomático, negocia la paz entre España e Inglaterra en 1629-1630 y \
+recibe el título de caballero. Viudo en 1626, se casa en 1630 con Helena Fourment, que le \
+inspira sus cuadros más sensuales. Muere en Amberes en 1640, en la cima de su gloria."""
+style = """
+Rubens es el pintor del movimiento y de la abundancia: composiciones en espiral, cuerpos \
+poderosos, carnes nacaradas, colores cálidos aplicados con una pincelada fluida y rápida. Une \
+la lección de los venecianos, la monumentalidad de Miguel Ángel y el sentido flamenco del \
+detalle. Su influencia es inmensa, de Van Dyck a Watteau, Delacroix y Renoir; a finales del \
+siglo XVII, los «rubenistas» defenderán contra los partidarios de Poussin la primacía del \
+color sobre el dibujo."""
+
+[[artistes]]
+nom = "Bartolomé Esteban Murillo"
+vie = "Sevilla, bautizado el 1 de enero de 1618 – Sevilla, 3 de abril de 1682"
+biographie = """
+Último de los catorce hijos de un barbero-cirujano de Sevilla, Murillo queda huérfano a los \
+diez años y es criado por su hermana mayor y su cuñado. Se forma con el pintor Juan del \
+Castillo y empieza pintando cuadros de devoción vendidos en serie, una parte de los cuales \
+parte hacia América. Sevilla es entonces el gran puerto del Imperio español, pero la peste de \
+1649 mata en ella a cerca de la mitad de la población. En los años 1650, Murillo se convierte \
+en el pintor más solicitado de la ciudad, eclipsando a Zurbarán. Trabaja para la catedral, los \
+conventos y las cofradías, como la de la Caridad, para la que pinta una gran serie de obras de \
+misericordia. En 1660, funda con Francisco Herrera el Joven una academia de dibujo de la que \
+es el primer presidente. Viudo en 1663, permanece en Sevilla toda su vida. Muere en 1682, poco \
+después de una caída de andamio ocurrida, según la tradición, mientras pintaba un retablo para \
+los Capuchinos de Cádiz."""
+style = """
+Murillo es el pintor de la ternura: vírgenes juveniles, niños Jesús y pequeños san Juan, pero \
+también pilluelos de las calles de Sevilla, pintados con afecto y humor. Su manera evoluciona \
+de un claroscuro heredado de Zurbarán hacia un «estilo vaporoso» de contornos fundidos y tonos \
+dorados. Considerado en los siglos XVIII y XIX el mayor pintor español, fijó la imagen de la \
+Inmaculada Concepción en toda la catolicidad."""
+
+[[artistes]]
+nom = "Francisco de Zurbarán"
+vie = "Fuente de Cantos (Extremadura), bautizado el 7 de noviembre de 1598 – Madrid, 27 de agosto de 1664"
+biographie = """
+Hijo de un comerciante de Extremadura, Zurbarán parte a los quince años a hacer su aprendizaje \
+a Sevilla. Se instala primero en Llerena, cerca de su pueblo natal, y luego, llamado por las \
+grandes órdenes religiosas, regresa a Sevilla, donde el cabildo de la ciudad lo invita a \
+establecerse en 1629. Se convierte allí en el pintor de los monjes: cartujos, jerónimos, \
+franciscanos, dominicos y mercedarios le encargan grandes ciclos para sus conventos, entre \
+ellos los del monasterio de Guadalupe y de la cartuja de Jerez. En 1634, es llamado a Madrid \
+para pintar una serie de los Trabajos de Hércules destinada al palacio del Buen Retiro, donde \
+trata a Velázquez. Pero a partir de los años 1640, el gusto sevillano se vuelve hacia Murillo, \
+más suave; Zurbarán trabaja cada vez más para la exportación a América. En 1658, se instala en \
+Madrid, suaviza su manera, y muere allí en 1664 en una situación modesta."""
+style = """
+Zurbarán pinta figuras monumentales e inmóviles, monjes en meditación, santas con vestidos de \
+seda, con un claroscuro heredado de Caravaggio y un dibujo de gran nitidez. Sus blancos, en \
+particular los de los hábitos monásticos, figuran entre los más bellos de la pintura. Sus \
+escasos bodegones, unos pocos objetos alineados sobre un fondo negro, han fascinado a los \
+pintores modernos por su desnudez."""
+
+[[artistes]]
+nom = "Diego Velázquez"
+vie = "Sevilla, bautizado el 6 de junio de 1599 – Madrid, 6 de agosto de 1660"
+biographie = """
+Diego Rodríguez de Silva y Velázquez entra a los doce años en el taller del pintor sevillano \
+Francisco Pacheco, con cuya hija, Juana, se casa en 1618. Sus primeras obras, escenas de cocina \
+y de taberna, muestran la influencia de Caravaggio. En 1623, pinta al joven rey Felipe IV, que \
+lo nombra pintor de cámara: ya no abandonará Madrid, salvo para dos viajes a Italia, en \
+1629-1631 y luego en 1649-1651, donde pinta el retrato del papa Inocencio X. Rubens, llegado a \
+Madrid en 1628, lo anima a estudiar a los maestros italianos. En palacio, Velázquez acumula \
+cargos: organiza las decoraciones, compra cuadros para el rey y se convierte en 1652 en \
+aposentador mayor de palacio. En 1659, consigue por fin ser armado caballero de la orden de \
+Santiago, tras una larga investigación sobre sus orígenes. En 1660, organiza las ceremonias de \
+la boda de Luis XIV y de la infanta María Teresa, en la isla de los Faisanes, y muere poco \
+después de su regreso a Madrid."""
+style = """
+Velázquez pasa de un naturalismo sombrío y preciso a una pintura cada vez más libre, donde unas \
+pocas pinceladas bastan para sugerir una tela o un reflejo. Pinta el aire y la luz de una \
+estancia, y mira con la misma dignidad al rey, a los enanos de la corte y a los artesanos. \
+Manet, que descubre sus cuadros en Madrid en 1865, lo llama el «pintor de los pintores»; los \
+impresionistas y Picasso le deben mucho."""
+
+[[artistes]]
+nom = "Nicolas Poussin"
+vie = "Les Andelys (Normandía), junio de 1594 – Roma, 19 de noviembre de 1665"
+biographie = """
+Nacido cerca de Les Andelys, en Normandía, Nicolas Poussin decide muy joven ser pintor y se \
+traslada a París, donde lleva una vida difícil durante una decena de años. Tras dos intentos \
+fallidos, llega a Roma en 1624 y permanece allí casi toda su vida. Encuentra allí a un \
+protector, el erudito Cassiano dal Pozzo, que le abre su biblioteca y sus colecciones de \
+antigüedades, y una clientela de aficionados cultos, a menudo franceses. En 1640, Luis XIII y \
+Richelieu lo llaman a París como primer pintor del rey, pero las intrigas de la corte y las \
+grandes decoraciones del Louvre lo cansan: vuelve a partir hacia Roma en 1642. Pinta allí, \
+para coleccionistas fieles como Paul Fréart de Chantelou, cuadros de caballete de gran \
+profundidad: la serie de los Siete Sacramentos, paisajes, y por último Las cuatro estaciones. \
+Enfermo, con las manos temblorosas, muere en Roma en 1665 y es enterrado en la iglesia de San \
+Lorenzo in Lucina."""
+style = """
+Poussin es el maestro del clasicismo francés: composiciones pensadas como demostraciones, \
+donde cada gesto y cada color tienen su razón, inspiradas en Rafael y en la escultura antigua. \
+Quería que la pintura se dirigiera al espíritu tanto como a los ojos. La Academia Real hizo de \
+su arte un modelo, y los «poussinistas» defendieron en ella la primacía del dibujo; David, \
+Ingres y Cézanne se reclamaron de él."""
+
+[[artistes]]
+nom = "Claude Lorrain"
+vie = "Chamagne (ducado de Lorena), hacia 1600 – Roma, 23 de noviembre de 1682"
+biographie = """
+Claude Gellée, llamado el Lorenés, nace en un pueblo de los Vosgos lorenenses, en una familia \
+modesta. Huérfano, parte muy joven a Italia; según sus primeros biógrafos, habría sido empleado \
+al principio como pastelero o sirviente. En Roma, se convierte en ayudante del pintor de \
+paisajes y decorados Agostino Tassi, y luego pasa dos años en Nápoles. Tras un breve regreso a \
+Lorena, se instala definitivamente en Roma en 1627. En los años 1630, su reputación de \
+paisajista está hecha: el papa Urbano VIII, cardenales, príncipes romanos y el rey de España \
+Felipe IV, para su palacio del Buen Retiro, le encargan cuadros. Para protegerse de los \
+imitadores, lleva desde 1635 aproximadamente el Liber Veritatis, una recopilación de cerca de \
+doscientos dibujos que reproducen sus lienzos, hoy en el British Museum. No se casa, pero cría \
+a una hija, Agnese, y vive rodeado de sus sobrinos hasta su muerte, en Roma, en 1682."""
+style = """
+Claudio inventa el paisaje ideal: puertos y campiñas antiguos bañados de una luz dorada, \
+construidos como escenarios de teatro, donde pequeñas figuras cuentan una historia bíblica o \
+mitológica. Observa la naturaleza al aire libre, en la campiña romana, pero la recompone en el \
+taller. Sus cuadros modelaron el gusto inglés por el jardín paisajista e inspiraron a Turner."""

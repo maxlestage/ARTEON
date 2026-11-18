@@ -1,0 +1,894 @@
+[exposition]
+ordre = 168
+nom_court = "Bicicletas"
+mouvement = "La bicicleta, de la draisiana a la Belle Époque"
+cadre = "vitrine"
+couleur = "#2e6b7a"
+titre = "La reina pequeña, un siglo de bicicleta"
+artiste = "Drais, Michaux, Starley, Marey, Béraud, Toulouse-Lautrec, Mucha…"
+dates = "hacia 1820 – 1902"
+accroche = "Exposición virtual · Museo de Arte e Industria, Saint-Étienne"
+introduction = """
+En 1817, un barón de Baden se monta en una máquina de madera de dos ruedas y la \
+impulsa con los pies: es la draisiana. Medio siglo después, unos pedales fijados a la \
+rueda delantera dan origen al velocípedo; luego la rueda crece hasta superar la \
+altura de un hombre: es el biciclo. En la década de 1880, la cadena y dos ruedas casi \
+iguales dan por fin la bicicleta de seguridad, que conquista las ciudades, a las \
+mujeres y los velódromos. La visita sigue diez etapas de esta historia, desde las \
+propias máquinas hasta las imágenes que inspiraron: la cronofotografía de Marey, el \
+Bosque de Bolonia de Jean Béraud, los carteles de Toulouse-Lautrec y de Mucha. El \
+edificio se inspira en el Museo de Arte e Industria de Saint-Étienne, la ciudad del \
+ciclo, cuyas máquinas antiguas reposan bajo bóvedas de ladrillo y piedra."""
+vitrine = "chaine-simpson.jpg"
+
+[musee]
+nom = "Museo de Arte e Industria"
+ville = "Saint-Étienne, Francia"
+architecte = "Étienne Boisson (palacio de las Artes)"
+construction = "a partir de 1846"
+presentation = """
+En 1833, el ayuntamiento de Saint-Étienne crea un fondo destinado a un futuro museo, \
+sin darle todavía muros. A partir de 1846, el arquitecto Étienne Boisson levanta un \
+edificio previsto para la subprefectura; se convierte en el palacio de las Artes, que \
+alberga el museo y la biblioteca municipal. En 1851, la ciudad compra buena parte de \
+la colección de armas del mariscal Oudinot. En 1889 nace el Museo de Arte e Industria, \
+que reúne las bellas artes y las artes industriales; Marius Vachon es su primer \
+conservador. El museo presenta hoy las tres industrias que hicieron la ciudad: las \
+armas, las cintas y los ciclos. Según el museo, la primera bicicleta francesa se \
+fabricó en Saint-Étienne en 1886. Su colección de ciclos se formó sobre todo después \
+de la Segunda Guerra Mundial, gracias a las donaciones de la cámara sindical del ciclo \
+de Saint-Étienne y de la Manufacture française d'armes et cycles, la futura \
+Manufrance, y a las compras del conservador Maurice Allemand, que soñaba con un museo \
+nacional del ciclo."""
+ici = """
+El edificio de ARTEON conserva del museo de Saint-Étienne sus salas bajas de paredes \
+de piedra rubia y de ladrillo, donde las máquinas antiguas se alinean como en un \
+taller. Se entra por el sur en la sala de los pioneros, color piedra, donde esperan \
+la draisiana y el velocípedo. Siguen, de oeste a este, la sala del velocípedo y del \
+biciclo, más alta por sus ruedas gigantes, y luego la de la bicicleta de seguridad, \
+de paredes de ladrillo claro. La sala de la carrera y de la Belle Époque, más amplia, \
+reúne la ciencia y la pintura; la visita termina en el gabinete de los carteles, como \
+en una valla parisina de 1900."""
+
+[[salles]]
+nom = "Los pioneros"
+theme = "Antes del pedal: la draisiana de 1817, que se impulsa con los pies, y luego el velocípedo de pedales de la década de 1860."
+murs = "#ddcdb2"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 4.5
+portes = ["sud", "est"]
+
+[[salles]]
+nom = "Del velocípedo al biciclo"
+theme = "El velocípedo Michaux del museo de Saint-Étienne y luego el biciclo, cuya rueda delantera crece hasta la altura de la cadera."
+murs = "#d6c0a0"
+x = 10
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5
+portes = ["est"]
+
+[[salles]]
+nom = "La bicicleta de seguridad"
+theme = "La cadena y dos ruedas casi iguales: el Rover de 1885 y la bicicleta moderna."
+murs = "#dcc3b0"
+x = 20
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 4.5
+portes = ["est"]
+
+[[salles]]
+nom = "La carrera y la Belle Époque"
+theme = "El ciclista ante el aparato de Marey, y el París elegante que pedalea por el Bosque de Bolonia."
+murs = "#d9d4c4"
+x = 31
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 6
+portes = ["est"]
+
+[[salles]]
+nom = "El gabinete de los carteles"
+theme = "La bicicleta en los muros de París: Toulouse-Lautrec para la cadena Simpson, Mucha para los ciclos Perfecta."
+murs = "#e3d6bf"
+x = 42
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5.5
+
+[[oeuvres]]
+titre = "Draisiana (Laufmaschine)"
+artiste = "D'après Karl von Drais"
+annee = "hacia 1820"
+image = "draisienne.jpg"
+credit = "Photo : Daderot"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Draisine_or_Laufmaschine,_c._1820_-_Kurpf%C3%A4lzisches_Museum_der_Stadt_Heidelberg_-_Heidelberg,_Germany_-_DSC01526.jpg"
+technique = "Madera de cerezo y de conífera pintadas, hierro, cuero acolchado"
+collection = "Kurpfälzisches Museum, Heidelberg (inv. GH 98)"
+note = "La «máquina de correr» del barón Drais: uno se sienta a horcajadas y avanza empujando el suelo con los pies. Es la antepasada de todas las bicicletas."
+description = """
+Una viga de madera pintada de amarillo, ribeteada de filetes negros, une dos ruedas \
+del mismo tamaño, de radios de madera y llanta con aro de hierro. En medio, un sillín \
+de cuero acolchado, colocado muy bajo, permite al conductor tocar el suelo con los dos \
+pies. Delante, un pequeño apoyo acolchado, montado sobre un montante, servía para \
+descansar los brazos y empujar con el vientre. La rueda delantera está sujeta por una \
+horquilla que pivota: un largo timón de madera, rematado por una empuñadura curva, \
+permite dirigirla. Un tornillo de hierro, delante, regula el conjunto. No hay pedal, \
+ni cadena, ni freno visible: solo madera, hierro y cuero, ensamblados por un \
+carretero."""
+evocation = """
+La draisiana descansa en una idea que parecía una locura: mantenerse en equilibrio \
+sobre dos ruedas alineadas. Hasta entonces, un vehículo tenía tres o cuatro ruedas, y \
+se viajaba a pie o a caballo. Karl von Drais demuestra que, avanzando con suficiente \
+rapidez, no se cae, y que se puede ir más deprisa que un caminante sin cansar a un \
+caballo. Se ha relacionado su invento con el «año sin verano» de 1816, cuando una \
+erupción volcánica en Indonesia arruinó las cosechas en Europa e hizo escasear la \
+avena de los caballos; el propio Drais presentaba su máquina como sustituta del \
+caballo. Por primera vez, el hombre se convertía él solo en su propio motor."""
+histoire = """
+Karl von Drais, funcionario forestal del gran ducado de Baden, presenta su \
+Laufmaschine en 1817 en Mannheim. El 12 de junio de 1817 recorre unos 14 kilómetros \
+en aproximadamente una hora, mucho más deprisa que un peatón. En abril de 1818 hace \
+una demostración en París, cerca del jardín de Luxemburgo. La máquina conoce una \
+breve moda en Francia, donde se la llama velocípedo o draisiana, y en Inglaterra, \
+donde se convierte en el «hobby horse» de los dandis. Se fabrican en todas partes, a \
+menudo según el modelo de Drais, y después la moda pasa. Este ejemplar, fechado hacia \
+1820, se conserva en el Museo del Palatinado Electoral, en Heidelberg, no lejos de \
+Mannheim, donde todo empezó."""
+facture = """
+La draisiana es más obra de carretero y de carpintero que de mecánico. La viga está \
+tallada en madera de cerezo, lo bastante flexible para amortiguar los golpes, y las \
+ruedas están hechas como las de los carruajes de caballos: un cubo, radios de madera y \
+una llanta recubierta de un aro de hierro. El único órgano verdaderamente nuevo es el \
+pivote de dirección: la rueda delantera gira en torno a un eje vertical accionado por \
+el timón. Las antiguas draisianas conocidas pesan entre 17 y 23 kilos aproximadamente. \
+La pintura amarilla con filetes, como la de una calesa, recuerda que estas máquinas se \
+compraban como coches de lujo."""
+details = [
+  "El timón de madera rematado por una empuñadura curva, antepasado del manillar.",
+  "El sillín de cuero acolchado, colocado muy bajo para que los pies toquen el suelo.",
+  "El apoyo acolchado donde se posaban los antebrazos.",
+  "Las llantas de madera con aro de hierro, como ruedas de carreta.",
+  "Los filetes negros pintados sobre la madera amarilla, a la manera de un coche de lujo.",
+]
+themes = ["draisiana", "invento", "madera", "equilibrio", "1817"]
+anecdote = """
+Para bajar una cuesta, el conductor levantaba los pies y se dejaba rodar: era ya el \
+placer de la rueda libre."""
+salle = 1
+mur = "nord"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Velocípedo de pedales"
+artiste = "Michaux et Cie, puis Compagnie parisienne"
+annee = "1869"
+image = "velocipede-1869.jpg"
+credit = "Photo : Romainbehar"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Amplepuis_-_Mus%C3%A9e_Barth%C3%A9lemy_Thimonnier_-_Salle_des_cycles_-_V%C3%A9locip%C3%A8de,_1869.jpg"
+technique = "Hierro forjado, madera, cuero"
+collection = "Musée Barthélemy Thimonnier, Amplepuis"
+note = "Unos pedales fijados directamente al cubo de la rueda delantera: el velocípedo, nacido en París en la década de 1860, es la primera máquina que avanza sin tocar el suelo."
+description = """
+La máquina se ve de perfil, apoyada en un suelo de guijarros. Una larga viga de hierro \
+forjado, ligeramente curva, une la rueda delantera, algo más grande, con la trasera. \
+Las ruedas tienen radios de madera oscura y llantas con aro. En el centro de la rueda \
+delantera, dos manivelas llevan pedales: cada vuelta de pedal hace dar una vuelta a la \
+rueda. Encima, la horquilla termina en un manillar recto de empuñaduras de madera \
+torneada. Delante, un reposapiés en voluta de hierro forjado permitía levantar las \
+piernas en las bajadas. El sillín de cuero está colocado sobre un muelle de ballesta; \
+un cordón, tendido a lo largo de la viga, acciona un freno que roza la rueda \
+trasera."""
+evocation = """
+Con el velocípedo, el ciclista deja por fin el suelo: sus pies ya no empujan la \
+tierra, giran. Hay que aprender a mantener el equilibrio rodando, y se abren \
+picaderos cubiertos para ejercitarse. Sobre los adoquines y los caminos empedrados, \
+las ruedas de madera con aro de hierro transmiten cada golpe, y los ingleses apodan a \
+la máquina «boneshaker», la sacudehuesos. Pero el velocípedo se pone pronto de moda: \
+se organizan carreras, se publican periódicos, y la Francia de los últimos años del \
+Segundo Imperio se apasiona por este caballo de hierro que no come avena."""
+histoire = """
+Según la tradición, hacia 1861, en el taller parisino del cerrajero Pierre Michaux y \
+de su hijo Ernest, se fijan por primera vez pedales a la rueda delantera de una \
+draisiana. La empresa Michaux crece con rapidez a finales de la década de 1860 y se \
+convierte en 1869 en la Compagnie parisienne, a la que pertenece esta máquina fechada \
+en 1869. Ese mismo año se disputa la primera gran carrera en carretera de ciudad a \
+ciudad, de París a Ruan. La guerra de 1870 corta bruscamente el auge de la industria \
+francesa, y es en Inglaterra donde la máquina sigue evolucionando. El museo de \
+Amplepuis, en el Ródano, lleva el nombre de Barthélemy Thimonnier, el inventor de la \
+máquina de coser."""
+facture = """
+El velocípedo sale del taller del herrero: la viga en serpentín, hecha primero de una \
+pieza de fundición, es aquí de hierro forjado, más resistente. Las ruedas siguen \
+fabricándose como las de los carruajes, con radios y llantas de madera. El pedalier \
+es solo un eje acodado que atraviesa el cubo de la rueda delantera: sin cadena, sin \
+desmultiplicación. Cuanto mayor es la rueda, más se avanza con cada vuelta de pedal, \
+y por eso la rueda delantera crecerá pronto. El freno, accionado por un cordón que se \
+tensa al girar el manillar, aprieta una zapata contra la rueda trasera."""
+details = [
+  "Los pedales montados en el cubo de la rueda delantera.",
+  "El reposapiés en voluta de hierro forjado, delante.",
+  "El sillín de cuero colocado sobre un largo muelle de ballesta.",
+  "El cordón del freno, tendido a lo largo de la viga.",
+  "Las empuñaduras de madera torneada en el extremo del manillar.",
+]
+themes = ["velocípedo", "pedal", "michaux", "parís", "segundo imperio"]
+anecdote = """
+El apodo inglés de «sacudehuesos» dice bastante de la comodidad de la máquina: habrá \
+que esperar al neumático, a finales de la década de 1880, para rodar con suavidad."""
+salle = 1
+mur = "ouest"
+place = 1
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Biciclo"
+artiste = "Fabricants de cycles anonymes"
+annee = "finales del siglo XIX"
+image = "grand-bi.jpg"
+credit = "Photo : Hélène Rival"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Cycle_06.jpg"
+technique = "Acero, caucho, cuero, madera"
+collection = "Musée d'Art et d'Industrie, Saint-Étienne"
+note = "Una rueda delantera inmensa y una pequeña rueda trasera: el biciclo, máquina rápida y arriesgada de los deportistas de las décadas de 1870 y 1880, presentado aquí en las salas del museo de Saint-Étienne."
+description = """
+Contra un muro de grandes piedras rubias, la máquina se alza de tres cuartos. La \
+rueda delantera, muy alta, está hecha de una fina llanta de acero y de decenas de \
+radios metálicos tensos como cuerdas. En el centro, el cubo lleva una manivela y un \
+pedal de metal. Sobre la rueda, la horquilla enlaza con un manillar de brazos \
+curvados hacia abajo, rematados por empuñaduras de madera en forma de pera. El sillín \
+de cuero está colocado casi en lo alto de la rueda. Detrás, un tubo de acero curvo, la \
+espina dorsal, abraza la rueda delantera y desciende hasta una diminuta rueda \
+trasera, que parece servir solo para mantener el conjunto en pie."""
+evocation = """
+El biciclo es la máquina de una juventud deportiva y audaz. Encaramado a casi metro y \
+medio de altura, el ciclista domina a los transeúntes y va más rápido que cualquier \
+velocípedo. Pero la menor piedra, el menor frenazo pueden proyectarlo de cabeza por \
+encima del manillar: la caída tiene incluso un nombre en inglés, «taking a header». \
+El biciclo es, pues, sobre todo cosa de jóvenes ágiles, que forman clubes, llevan \
+uniformes y corren en pista. Las mujeres, los niños y las personas prudentes esperan \
+una máquina más segura; el biciclo sigue siendo la imagen misma del ciclismo heroico \
+del siglo XIX."""
+histoire = """
+Tras la guerra de 1870, la industria del velocípedo se desarrolla sobre todo en \
+Inglaterra, en Coventry. Para ir más deprisa sin cadena, se agranda la rueda motriz: \
+una vuelta de pedal hace recorrer a la máquina la circunferencia de la rueda \
+delantera. Hacia 1870, James Starley y William Hillman lanzan el Ariel, una máquina \
+enteramente metálica de ruedas de radios tensos, y el biciclo se impone durante unos \
+quince años. En Francia se le llama grand-bi, en Inglaterra «ordinary» y luego \
+«penny-farthing», por dos monedas de tamaños muy distintos. Este modelo pertenece al \
+departamento de ciclos del Museo de Arte e Industria, cuya colección se formó sobre \
+todo después de 1945."""
+facture = """
+El biciclo es una obra maestra de ligereza. La rueda delantera ya no tiene radios de \
+madera, sino finos radios de acero tensos entre el cubo y la llanta: la rueda ya no \
+se apoya en los radios de abajo, sino que está suspendida de los de arriba, como \
+nuestras ruedas actuales. El cuadro está hecho de un tubo de acero hueco, más ligero \
+que el hierro macizo. Las llantas reciben un bandaje de caucho macizo, que amortigua \
+un poco los golpes. El diámetro de la rueda delantera se elegía según la longitud de \
+las piernas del ciclista, que debía alcanzar los pedales: cada máquina estaba, en \
+cierto modo, hecha a medida."""
+details = [
+  "Las decenas de radios de acero tensos de la gran rueda.",
+  "Las empuñaduras de madera en forma de pera en el extremo del manillar.",
+  "El sillín de cuero colocado casi en lo alto de la rueda.",
+  "El tubo curvo de la espina dorsal que abraza la rueda.",
+  "La diminuta rueda trasera, casi un contrapeso.",
+]
+themes = ["biciclo", "velocidad", "acero", "deporte", "saint-étienne"]
+anecdote = """
+El nombre inglés «penny-farthing» compara las dos ruedas con un penique, gran moneda \
+de bronce, y con un farthing, que valía la cuarta parte de un penique y era mucho más \
+pequeño."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Velocípedo Michaux"
+artiste = "Michaux et Cie, puis Compagnie parisienne"
+annee = "1869"
+image = "velocipede-michaux.jpg"
+credit = "Photo : Hélène Rival"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Cycle_21.jpg"
+technique = "Hierro forjado, madera, cuero"
+collection = "Musée d'Art et d'Industrie, Saint-Étienne"
+note = "La parte alta de un velocípedo Michaux de 1869, vista de cerca en las salas abovedadas del museo de Saint-Étienne: manillar, reposapiés en voluta y sillín sobre muelle."
+description = """
+La fotografía se acerca a la parte alta de la máquina, ante un muro de piedras y \
+ladrillos y una puerta en arco. El manillar, una barra de hierro recta, termina en \
+dos largas empuñaduras de madera oscura; está fijado mediante una tuerca en lo alto \
+de una columna de dirección torneada, adornada con finos anillos. Más abajo, un \
+reposapiés de hierro forjado se enrolla en una gran voluta, como la cabeza de un \
+violín. Detrás, el sillín de cuero rojizo está colocado sobre un largo muelle de \
+ballesta sujeto con tuercas de mariposa. Abajo se adivina la llanta de madera de la \
+rueda delantera y, a la derecha, la pequeña rueda trasera."""
+evocation = """
+Vista de cerca, la máquina revela su origen: es un objeto de herrero y de cerrajero, \
+más próximo a una verja de jardín o a una barandilla de escalera que a una bicicleta \
+moderna. La voluta del reposapiés, inútil para avanzar, dice el gusto por el adorno de \
+una época que quería que las máquinas fueran bellas. El manillar ancho, de \
+empuñaduras de madera, recuerda las varas de un pequeño carruaje. En Saint-Étienne, \
+ciudad de armeros y de herreros, este velocípedo parisino evoca los comienzos de una \
+industria que se convertirá, a finales de siglo, en uno de los orgullos de la ciudad."""
+histoire = """
+Según la tradición, el cerrajero parisino Pierre Michaux y su hijo Ernest fijaron \
+hacia 1861 pedales a la rueda delantera de una draisiana. El taller se convierte en \
+una verdadera empresa a finales de la década de 1860, y allí se fabrican entonces \
+cientos de máquinas, antes de la creación de la Compagnie parisienne en 1869. Este \
+velocípedo, fechado en 1869, pertenece al departamento de ciclos del Museo de Arte e \
+Industria de Saint-Étienne, que conserva dos velocípedos Michaux entre las piezas \
+maestras de su colección. La colección de ciclos del museo se constituyó sobre todo \
+después de la Segunda Guerra Mundial, gracias a los industriales de Saint-Étienne."""
+facture = """
+Todo aquí está trabajado a la fragua. La columna de dirección está torneada y \
+decorada con anillos, el manillar es una barra de hierro curvada en los extremos, y \
+el reposapiés está martilleado y enrollado en caliente, como una forja artística. El \
+sillín no está colocado directamente sobre el cuadro: descansa sobre un largo muelle \
+de acero que corre hasta la parte trasera de la máquina y amortigua un poco los \
+golpes de las ruedas de madera con aro de hierro. Unas tuercas de mariposa, que se \
+aflojan a mano, permiten adelantar o retrasar el sillín según la talla del ciclista."""
+details = [
+  "Las largas empuñaduras de madera oscura del manillar.",
+  "El reposapiés de hierro forjado enrollado en voluta.",
+  "El sillín de cuero rojizo colocado sobre su muelle de ballesta.",
+  "Las tuercas de mariposa que sirven para regular el sillín.",
+  "La puerta en arco y los ladrillos del muro, detrás de la máquina.",
+]
+themes = ["velocípedo", "michaux", "hierro forjado", "saint-étienne", "ornamento"]
+anecdote = """
+En las bajadas, el ciclista apoyaba los pies en la voluta delantera y dejaba que los \
+pedales giraran solos: la rueda delantera, sin rueda libre, los arrastraba sin \
+cesar."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Bicicleta de seguridad Rover"
+artiste = "John Kemp Starley"
+annee = "1885"
+image = "rover.jpg"
+credit = "Photo : Jonathan Cardy"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Rover_safety_bicycle_of_1885_(right).jpg"
+technique = "Acero, caucho, cuero"
+collection = "Science Museum, Londres"
+note = "Dos ruedas casi iguales, una cadena que mueve la rueda trasera, el ciclista sentado entre las ruedas: con el Rover, la bicicleta adopta la forma que aún tiene hoy."
+description = """
+La bicicleta está suspendida del techo por finos cables, y se ve desde abajo. Sus dos \
+ruedas, de radios de acero y bandajes de caucho macizo, tienen casi el mismo tamaño. \
+El cuadro aún no tiene forma de rombo: dos tubos curvos parten de la pipa de la \
+horquilla, uno hacia el sillín y otro descendiendo hacia el pedalier, como un cuello \
+de cisne. En el centro, un plato dentado lleva las manivelas y los pedales; una \
+cadena lo une al piñón de la rueda trasera. El sillín de cuero está colocado sobre un \
+muelle encima de la rueda trasera. Delante, el manillar curvado termina en \
+empuñaduras claras."""
+evocation = """
+El Rover hace honor a su nombre de «bicicleta de seguridad». Sentado abajo, entre dos \
+ruedas de tamaño razonable, el ciclista pone el pie en tierra cuando quiere y ya no \
+corre el riesgo de ser proyectado hacia delante. La cadena permite hacer girar la \
+rueda trasera más deprisa que los pedales: se conserva la velocidad del biciclo sin \
+tener su altura. Ahora todo el mundo puede montar en bicicleta: las mujeres, los \
+niños, los obreros que van a la fábrica, los carteros, los soldados. En una decena de \
+años, la bicicleta de seguridad hace desaparecer el biciclo y se convierte en uno de \
+los objetos más extendidos del mundo."""
+histoire = """
+John Kemp Starley, sobrino de James Starley, el «padre de la industria del ciclo» de \
+Coventry, presenta su Rover en 1885. Otros constructores habían probado ya la \
+transmisión por cadena, pero el Rover se impone por su sencillez y sus prestaciones, \
+y sus modelos sucesivos fijan la arquitectura de la bicicleta: dos ruedas próximas, \
+la cadena hacia la rueda trasera y después un cuadro en rombo. En 1888, el escocés \
+John Boyd Dunlop patenta el neumático, que completa la revolución. La empresa de \
+Starley tomará más tarde el nombre de Rover y fabricará automóviles. El Science \
+Museum de Londres conserva este Rover de 1885 en sus colecciones de transporte."""
+facture = """
+El Rover reúne técnicas nacidas en los talleres de Coventry: tubos de acero huecos, \
+rodamientos de bolas, radios de acero tensos. La novedad es la transmisión: una \
+cadena de rodillos une un gran plato a un pequeño piñón fijado en la rueda trasera. \
+La relación entre sus dientes sustituye al tamaño de la rueda: un piñón pequeño hace \
+recorrer con cada vuelta de pedal tanto camino como una inmensa rueda de biciclo. El \
+cuadro de este primer modelo, hecho de tubos curvados, es aún flexible; sus sucesores \
+adoptarán el cuadro en rombo, más rígido, que se encuentra en casi todas las \
+bicicletas actuales."""
+details = [
+  "La cadena que une el plato con el piñón de la rueda trasera.",
+  "Los dos tubos curvos del cuadro, en cuello de cisne.",
+  "Las dos ruedas casi iguales, con bandajes de caucho macizo.",
+  "El sillín de cuero sobre su muelle, encima de la rueda trasera.",
+  "El manillar curvado de empuñaduras claras.",
+]
+themes = ["bicicleta", "cadena", "seguridad", "coventry", "invento"]
+anecdote = """
+En polaco, la bicicleta se dice «rower»: el nombre de la máquina de Starley se ha \
+convertido en una palabra de la lengua."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Bicicleta «La Souplette»"
+artiste = "Fabricants de cycles anonymes"
+annee = "1897"
+image = "souplette.jpg"
+credit = "Photo : Hélène Rival"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Cycle_16.jpg"
+technique = "Cuadro de madera curvada y acero, cuero, caucho"
+collection = "Musée d'Art et d'Industrie, Saint-Étienne"
+note = "Una bicicleta de seguridad fabricada en París en 1897, cuyo cuadro de madera curvada debía absorber las sacudidas del camino."
+description = """
+La bicicleta se presenta de perfil ante un muro de piedras rubias iluminado desde \
+abajo, sostenida por dos soportes. Sus dos ruedas tienen el mismo tamaño, con llantas \
+pardo rojizas y radios finos. El cuadro tiene ya casi la forma de un rombo: un tubo \
+horizontal, un tubo oblicuo hacia el pedalier y un tubo del sillín. Pero atrás, un \
+largo arco curvo envuelve la rueda y alcanza la parte alta del cuadro, como un \
+muelle. El pedalier lleva un plato calado; la cadena corre hasta el piñón de la rueda \
+trasera. El sillín de cuero oscuro está montado alto, y el manillar levantado termina \
+en empuñaduras de madera clara."""
+evocation = """
+A finales de la década de 1890, la bicicleta de seguridad ha ganado la partida, y los \
+constructores rivalizan en ideas para hacerla más cómoda, más ligera o más elegante. \
+El neumático suaviza ya el camino, pero los adoquines y los caminos rurales siguen \
+sacudiendo al ciclista. El cuadro de madera curvada de la Souplette, cuyo nombre lo \
+dice todo, busca absorber esos golpes con la flexibilidad misma del material. Como \
+tantos otros inventos de esos años de fiebre, no se impuso, pero muestra la \
+inventiva de una industria entonces en plena expansión en Francia."""
+histoire = """
+Según la presentación del Museo de Arte e Industria, esta bicicleta se fabricó en \
+París en 1897. Esos años son los de la edad de oro de la bicicleta en Francia: los \
+fabricantes se cuentan por centenares, de París a Saint-Étienne, donde casas como la \
+Manufacture française d'armes et cycles venden sus máquinas por catálogo en todo el \
+país. El museo de Saint-Étienne reunió, después de la Segunda Guerra Mundial, \
+máquinas de todos los orígenes para trazar la historia técnica del ciclo; la \
+Souplette comparte allí espacio con un monociclo, una bicicleta sin cadena de la \
+década de 1880 y las máquinas de Vélocio, pionero de Saint-Étienne del cicloturismo."""
+facture = """
+La madera curvada es una técnica de la ebanistería del siglo XIX, hecha célebre por \
+las sillas vienesas de Michael Thonet: se ablanda la madera con vapor y luego se \
+curva en un molde, donde conserva su forma al secarse. Aplicada a la bicicleta, \
+permite realizar piezas de cuadro flexibles y ligeras. El resto de la máquina retoma \
+las soluciones de la bicicleta de seguridad: ruedas iguales de radios de acero, \
+transmisión por cadena, pedalier central y sillín de cuero regulable. El contraste \
+entre la madera curvada y el acero constituye la originalidad del objeto."""
+details = [
+  "El largo arco curvo que envuelve la rueda trasera.",
+  "Las llantas pardo rojizas y sus finos radios.",
+  "El plato calado del pedalier y su cadena.",
+  "Las empuñaduras de madera clara del manillar levantado.",
+]
+themes = ["bicicleta", "madera curvada", "comodidad", "invento", "saint-étienne"]
+anecdote = """
+Los catálogos de venta por correspondencia de finales del siglo XIX ofrecían decenas \
+de modelos y de accesorios: la bicicleta se compraba ya a distancia."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Cronofotografía de un hombre en bicicleta"
+artiste = "Étienne-Jules Marey"
+annee = "hacia 1885–1890"
+image = "marey-cycliste.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:%C3%89tienne_Jules_Marey,_Chronophotograph_of_a_Man_on_a_Bicycle,_c._1885-1890,_NGA_125658.jpg"
+technique = "Placa de vidrio para proyección (diapositiva); imagen 4 × 7,5 cm, placa 8,8 × 10,2 cm"
+collection = "National Gallery of Art, Washington"
+note = "El fisiólogo Marey descompone el movimiento de un ciclista en cinco imágenes superpuestas en una sola placa: el tiempo se hace visible."
+description = """
+Sobre un fondo negro, un mismo hombre aparece cinco veces de izquierda a derecha, con \
+unas fracciones de segundo de intervalo. Vestido de blanco, con un gorro claro y \
+barbudo, pedalea con la espalda algo encorvada y las manos sobre un manillar. Sus \
+piernas, en cada imagen, ocupan una posición distinta: se ve subir la rodilla y bajar \
+el pedal. Las ruedas de su máquina, ceñidas de finos radios, se superponen de una \
+imagen a otra en anillos transparentes, de tamaños diferentes. Abajo, una orla clara, \
+hecha de bandas y adoquines, marca la pista. La placa ha tomado un tono cálido, pardo \
+sepia, y algunas manchas de polvo la salpican."""
+evocation = """
+Marey no busca hacer una bella imagen: quiere comprender cómo trabaja el cuerpo. Al \
+fijar en una misma placa las posiciones sucesivas del ciclista, hace visible lo que \
+el ojo no puede captar, la sucesión de gestos que hace avanzar la máquina. La \
+National Gallery of Art recuerda que Marey hizo probablemente esta imagen en el marco \
+de investigaciones sobre una indumentaria deportiva que cansara menos. Pero sus \
+cronofotografías fascinaron también a los artistas: cubistas, futuristas y dadaístas \
+encontraron en ellas una manera de pintar el movimiento y la velocidad, que la \
+bicicleta encarnaba tan bien."""
+histoire = """
+Étienne-Jules Marey, profesor del Collège de France y miembro de la Academia de \
+Medicina, estudia desde la década de 1860 el movimiento de los seres vivos. En 1882 \
+instala la Estación Fisiológica cerca del Bosque de Bolonia, donde atletas, soldados \
+y caballos desfilan ante un gran cobertizo pintado de negro. Allí perfecciona la \
+cronofotografía sobre placa fija y luego sobre película, y prepara así la invención \
+del cine. Esta placa de vidrio, hecha para proyectarse ante un público, muestra que \
+presentaba sus imágenes en conferencias. Ingresó en la National Gallery of Art de \
+Washington por donación de Mary y David Robinson."""
+facture = """
+Para obtener esta imagen, Marey modifica un aparato fotográfico: detrás del objetivo, \
+dejado abierto, gira un disco de metal perforado con ranuras a intervalos regulares. \
+Cada vez que pasa una ranura, la placa recibe una breve exposición. El ciclista, \
+vestido de blanco, se recorta sobre el fondo negro, que no impresiona la placa: sus \
+imágenes sucesivas se suman sin difuminarse. El resultado se transfiere a una placa \
+de vidrio para la proyección luminosa, la «linterna mágica» de los conferenciantes. \
+El número y la separación de las imágenes dependen de la velocidad del disco y de la \
+del sujeto."""
+details = [
+  "Las cinco siluetas sucesivas del mismo ciclista.",
+  "La rodilla que sube y baja de una imagen a otra.",
+  "Las ruedas superpuestas en anillos transparentes.",
+  "El gorro claro y el traje blanco que se recortan sobre el negro.",
+  "La orla de la pista, en la parte baja de la placa.",
+]
+themes = ["cronofotografía", "movimiento", "ciencia", "tiempo", "deporte"]
+anecdote = """
+Para algunos estudios, Marey vestía a sus modelos enteramente de negro, con bandas y \
+puntos blancos en los miembros: entonces solo las líneas del esqueleto aparecían en \
+la placa."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "El Chalet du Cycle en el Bosque de Bolonia"
+artiste = "Jean Béraud"
+annee = "hacia 1900"
+image = "chalet-du-cycle.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:B%C3%A9raud_-_Le_Chalet_du_Cycle_au_bois_de_Boulogne,_Vers_1900.jpg"
+technique = "Óleo sobre madera, 53,5 × 65 cm"
+collection = "Musée Carnavalet – Histoire de Paris"
+note = "En el Bosque de Bolonia, unas parisinas con pantalón bombacho toman algo en la terraza de un chalet donde se alquilan y se reparan bicicletas: la Belle Époque en bicicleta."
+description = """
+Bajo grandes árboles, una alameda de arena se abre a la bruma clara del bosque. A la \
+derecha, un chalet de madera roja con balcón alberga a un alquilador de bicicletas: \
+ante la puerta, unos hombres con ropa de trabajo se afanan en torno a las máquinas. \
+En el centro, una joven con pantalón bombacho blanco monta en su bicicleta, mientras \
+un perrito blanco y negro trota hacia ella. A la izquierda, una terraza de café reúne \
+a paseantes con canotier y a ciclistas: en primer plano, una mujer de pantalón blanco \
+y lazo rojo y otra de negro, con las piernas cruzadas, están sentadas en torno a \
+veladores de mármol, con un sifón azul. Un farol se alza en medio de la alameda."""
+evocation = """
+Hacia 1900, la bicicleta está de moda en la buena sociedad parisina, y el Bosque de \
+Bolonia es su salón. Se va allí en bicicleta, se alquila una máquina, se dejan ver. \
+Jean Béraud, cronista infatigable de la vida parisina, capta sobre todo una \
+revolución: la de las mujeres. Para pedalear, han abandonado las faldas largas por el \
+pantalón bombacho, al que también se llama bloomer, y esta indumentaria, que causó \
+escándalo, les da una libertad nueva. Sentadas solas en una terraza, con las piernas \
+cruzadas, estas ciclistas afirman una independencia que la bicicleta contribuyó a \
+darles."""
+histoire = """
+Jean Béraud (1849–1935) pasó su vida pintando París: los bulevares, los cafés, los \
+teatros, las iglesias y los paseos de moda. Compone sus cuadros como escenas de \
+comedia, con una multitud de personajes captados del natural. El Chalet du Cycle era \
+un establecimiento del Bosque de Bolonia donde se podía alquilar, guardar o hacer \
+reparar la bicicleta y refrescarse. El cuadro, fechado hacia 1900, pertenece al museo \
+Carnavalet, el museo de la historia de París, que lo ha publicado en acceso libre \
+junto con el conjunto de las colecciones de los museos de la Ciudad de París."""
+facture = """
+Béraud pinta aquí sobre un panel de madera, de pequeño formato, con una pincelada \
+rápida y ligera, casi un boceto. El fondo, sumido en una bruma malva y verde, está \
+tratado con amplias pinceladas; los personajes del primer plano, en cambio, se \
+precisan con acentos vivos: el lazo rojo, el sifón azul, los pantalones de un blanco \
+deslumbrante. Las bicicletas están dibujadas con un trazo fino y seguro, ruedas y \
+cuadros incluidos. Los grandes troncos verticales, el farol y el chalet construyen la \
+profundidad de la alameda, que conduce la mirada hacia la luz del fondo."""
+details = [
+  "La ciclista de pantalón bombacho blanco que monta en su máquina.",
+  "El perrito blanco y negro que corre hacia ella.",
+  "El sifón azul sobre el velador de mármol.",
+  "Los mecánicos inclinados sobre las bicicletas, ante el chalet.",
+  "El lazo rojo de la joven sentada a la izquierda.",
+]
+themes = ["belle époque", "parís", "mujeres", "ocio", "bosque de bolonia"]
+anecdote = """
+El pantalón bombacho de las ciclistas suscitó debate hasta en los periódicos: se \
+discutía con seriedad si una mujer podía llevarlo en la ciudad."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 0.85
+
+[[oeuvres]]
+titre = "La cadena Simpson"
+artiste = "Henri de Toulouse-Lautrec"
+annee = "1896"
+image = "chaine-simpson.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:La_cha%C3%AEne_Simpson_-_DPLA_-_d3a83b8b004f27d56e503fd8835955a3.jpg"
+technique = "Litografía en color (cartel), aproximadamente 83 × 120 cm, impresa por Chaix, París"
+collection = "Boston Public Library (colección Albert H. Wiggin)"
+note = "Toulouse-Lautrec, apasionado de las carreras ciclistas, pinta al corredor Constant Huret inclinado sobre su máquina para promocionar una nueva cadena de bicicleta."
+description = """
+El título, en grandes letras rojas, cruza toda la parte alta del cartel. En primer \
+plano, un corredor rubio con maillot azul, la mandíbula apretada, se inclina sobre una \
+bicicleta de pista de la que se ve el gran plato dentado. A la derecha, otros dos \
+corredores de azul pedalean en un tándem, cortados por el borde del cartel. La pista \
+es una ancha banda amarilla. Al fondo, dos hombres con bombín miran la carrera, junto \
+a una pequeña orquesta de rojo, y una larga máquina montada por una fila de corredores \
+pasa en el horizonte. Abajo a la izquierda, en rojo, la dirección del representante: \
+«L. B. Spoke, director para Francia, 25, boulevard Haussmann»."""
+evocation = """
+En la década de 1890, las carreras ciclistas apasionan a París tanto como el teatro, y \
+los velódromos atraen a multitudes. Los campeones corren tras máquinas de varias \
+plazas, que los protegen del viento e imponen un ritmo infernal: son las largas \
+máquinas visibles en el horizonte. Toulouse-Lautrec frecuenta estos velódromos con su \
+amigo Tristan Bernard, entonces director de velódromo. Capta el esfuerzo del corredor, \
+su nuca tensa, sus antebrazos duros, con la misma agudeza que a las bailarinas del \
+Moulin Rouge. El cartel muestra la bicicleta como el gran espectáculo moderno de la \
+Belle Époque."""
+histoire = """
+El londinense William Spears Simpson había inventado una cadena de palanca que debía \
+hacer el pedaleo más eficaz. Su representante en Francia, Louis Bouglé, amigo de \
+Toulouse-Lautrec, que firmaba sus artículos con el seudónimo inglés de «Spoke», el \
+radio, le encarga un cartel en 1896. Una primera versión, Cycle Michael, es rechazada: \
+el dibujo de la máquina se consideraba inexacto. Lautrec realiza una segunda, en la \
+que el campeón Constant Huret corre con la cadena Simpson. El Art Institute of \
+Chicago, que conserva también este cartel, subraya que esta versión es más dinámica y \
+representa las bicicletas con más realismo."""
+facture = """
+Lautrec dibuja directamente sobre la piedra litográfica, con pincel y lápiz, y luego \
+proyecta tinta con un cepillo para obtener las finas salpicaduras del «crachis», \
+visibles en la pista y en las ropas. El cartel emplea solo tres tintas, azul, rojo y \
+amarillo, aplicadas en grandes planos sin modelado, a la manera de las estampas \
+japonesas que admiraba. El encuadre corta a los corredores de la derecha y coloca la \
+pista en diagonal, lo que da la impresión de una carrera que pasa ante nosotros. El \
+monograma del artista y la fecha, 96, figuran abajo a la derecha."""
+details = [
+  "El gran plato dentado de la bicicleta del corredor rubio.",
+  "Los dos corredores de la derecha en su tándem, cortados por el borde.",
+  "La fila de corredores sobre una larga máquina, en el horizonte.",
+  "Los dos espectadores con bombín, al fondo de la pista.",
+  "El monograma de Lautrec y la fecha 96, abajo a la derecha.",
+]
+themes = ["cartel", "carrera", "velódromo", "litografía", "toulouse-lautrec"]
+anecdote = """
+El apodo de Louis Bouglé, «Spoke», significa «radio de rueda» en inglés: un nombre \
+hecho a medida para un hombre de la bicicleta."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Cycles Perfecta"
+artiste = "Alfons Mucha"
+annee = "1902"
+image = "cycles-perfecta.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Alfons_Mucha_-_Cycles_Perfecta,_1902.jpg"
+technique = "Litografía en color (cartel), impresa por F. Champenois, París"
+collection = "Fundación Mucha, Praga (un ejemplar)"
+note = "Una joven de cabellos sueltos se apoya en el manillar de su bicicleta: Mucha asocia la máquina a la libertad y a la velocidad, sin mostrar el camino."
+description = """
+Bajo una cartela blanca en la que se inscriben en letras rojas las palabras «Cycles \
+Perfecta», una joven se inclina hacia nosotros, con los antebrazos cruzados sobre el \
+manillar de una bicicleta de la que solo se ve la parte alta del cuadro y un trozo de \
+rueda. Tiene la piel clara, las mejillas rosadas y una leve sonrisa. Su larga cabellera \
+pelirroja se agita en todos los sentidos, en mechones ondulados que invaden todo el \
+fondo azul verdoso. Su vestido rojo anaranjado resbala del hombro y deja ver una blusa \
+blanca con volantes; un gran lazo rojo flota en su cintura. Abajo a la derecha, la \
+firma de Mucha; abajo, el nombre del impresor Champenois."""
+evocation = """
+Mucha no muestra ni el camino, ni el paisaje, ni siquiera la bicicleta entera. Todo \
+el movimiento está en la cabellera, que el viento levanta como si la joven acabara de \
+bajar una cuesta a toda velocidad. La bicicleta se convierte aquí en una promesa de \
+libertad, y su público es femenino: en la Belle Époque, permite a las mujeres salir \
+solas, viajar, hacer deporte. El cartel no ensalza las cualidades técnicas de la \
+máquina, sino la sensación que procura. La seducción del dibujo, típica del Art \
+Nouveau, hace del objeto industrial un objeto de ensueño."""
+histoire = """
+Alfons Mucha, nacido en Moravia en 1860, se instala en París en 1887. En 1894, su \
+cartel para Sarah Bernhardt en Gismonda lo hace célebre de la noche a la mañana, y \
+dibuja después carteles, calendarios y paneles decorativos para numerosas marcas. Su \
+estilo, hecho de jóvenes de cabelleras ondulantes, de curvas y de colores suaves, se \
+convierte para el público en el «estilo Mucha», una de las imágenes mismas del Art \
+Nouveau. El cartel para los ciclos Perfecta data de 1902. Fue impreso en F. \
+Champenois, el impresor parisino con el que Mucha trabajaba bajo contrato."""
+facture = """
+Como en sus otros carteles, Mucha construye la imagen sobre un dibujo de contorno \
+negro marcado, que la litografía llena después de colores aplicados en planos \
+ligeramente degradados. Los cabellos están tratados como un ornamento: sus mechones \
+se enroscan en volutas que llenan todo el espacio, hasta el borde del marco. La \
+cartela del título, arriba, está separada de la imagen por una simple orla, y la \
+rotulación, dibujada por el artista, forma parte de la composición. La paleta, \
+dominada por los rojizos, los rojos y un azul verdoso apagado, une a la mujer, el \
+vestido y la máquina en una misma armonía cálida."""
+details = [
+  "La cabellera pelirroja cuyos mechones llenan todo el fondo.",
+  "Los antebrazos cruzados sobre el manillar, de empuñaduras claras.",
+  "El gran lazo rojo que flota en la cintura.",
+  "El trozo de rueda, abajo a la izquierda, único recuerdo de la máquina.",
+  "La firma de Mucha, abajo a la derecha.",
+]
+themes = ["cartel", "art nouveau", "mujeres", "libertad", "mucha"]
+anecdote = """
+La marca Perfecta está hoy olvidada, pero su cartel se ha convertido en una de las \
+imágenes más reproducidas de Mucha."""
+salle = 5
+mur = "sud"
+place = 2
+largeur = 1.0
+
+[[artistes]]
+nom = "D'après Karl von Drais"
+vie = "Karl von Drais, Karlsruhe 1785 – Karlsruhe 1851"
+biographie = """
+Karl Friedrich Christian Ludwig, barón von Drais, nace en 1785 en Karlsruhe, en el \
+país de Baden. Estudia ciencias forestales, arquitectura y física, y se convierte en \
+funcionario forestal del gran duque de Baden, un cargo que le deja tiempo para \
+inventar. Imagina un carruaje de cuatro ruedas movido por la fuerza de los brazos, \
+una máquina de escribir de teclado y un aparato para anotar la música tocada al \
+piano. Su gran invento sigue siendo la Laufmaschine, la «máquina de correr» de 1817, \
+que presenta en Mannheim y después en París en 1818 y que hace patentar en el país de \
+Baden. La máquina es copiada en todas partes, en Francia con el nombre de draisiana, \
+en Inglaterra con el de «hobby horse», pero su inventor no obtiene de ella ni fortuna \
+ni gloria. Sus opiniones liberales y las desgracias de su familia le acarrean \
+problemas; durante la revolución de Baden de 1848–1849, renuncia a su título de \
+barón. Muere pobre en Karlsruhe en 1851. Las draisianas conservadas fueron \
+fabricadas por diversos carreteros según su modelo."""
+style = """
+Una máquina de carretero: viga y ruedas de madera, herrajes, sillín de cuero. Su \
+genio reside en una sola idea, el equilibrio sobre dos ruedas alineadas, y en un solo \
+órgano verdaderamente nuevo, la rueda delantera que pivota para dirigir la máquina."""
+
+[[artistes]]
+nom = "Michaux et Cie, puis Compagnie parisienne"
+vie = "París, décadas de 1860 – 1870"
+biographie = """
+Pierre Michaux (1813–1883) es un cerrajero y carrocero instalado en París, en el \
+barrio de los Campos Elíseos. Según la tradición, en su taller, hacia 1861, se \
+fijan por primera vez manivelas y pedales a la rueda delantera de una draisiana, \
+quizá por iniciativa de su hijo Ernest. La atribución del invento ha sido discutida, \
+en particular en favor del obrero Pierre Lallement, que hizo patentar una máquina \
+semejante en Estados Unidos en 1866. Michaux, asociado desde 1868 con los hermanos \
+Olivier, ricos industriales, transforma el taller en una verdadera fábrica y produce \
+cientos de velocípedos, vendidos en Francia y en el extranjero. En 1869, los Olivier \
+retoman el negocio con el nombre de Compagnie parisienne des vélocipèdes. La moda del \
+velocípedo alcanza entonces su apogeo, con sus carreras, sus picaderos y sus \
+periódicos, antes de que la guerra de 1870 venga a interrumpir el auge de esta \
+primera industria del ciclo en Francia."""
+style = """
+Máquinas de fragua y de cerrajería: cuadro de hierro, primero de fundición y luego \
+forjado, ruedas de madera con aro de hierro, pedales en la rueda delantera, sillín \
+sobre muelle de ballesta y freno de cordón. Las volutas y los filetes pintados dicen \
+el gusto de una época que quería que las máquinas fueran también objetos elegantes."""
+
+[[artistes]]
+nom = "Fabricants de cycles anonymes"
+vie = "Europa, finales del siglo XIX"
+biographie = """
+De la década de 1870 a 1900, centenares de talleres y fábricas producen biciclos y \
+luego bicicletas en Inglaterra, Francia, Alemania y Estados Unidos. Coventry, en \
+Inglaterra, se convierte en la capital de esta industria, con los Starley, Hillman, \
+Singer o Rudge. En Francia, París cuenta con numerosos constructores, y Saint-Étienne, \
+ciudad de armeros habituados al trabajo de precisión del metal, se vuelve a su vez \
+hacia el ciclo a partir de la década de 1880: la Manufacture française d'armes et \
+cycles, futura Manufrance, vende sus bicicletas Hirondelle por catálogo en todo el \
+país. Muchas máquinas conservadas en los museos ya no llevan placa ni marca legible, o \
+proceden de pequeños fabricantes cuya historia es mal conocida. Testimonian, sin \
+embargo, la variedad de ideas y de ensayos de esos años de invención, antes de que la \
+bicicleta de seguridad, de cuadro en rombo y neumáticos, se convirtiera en el modelo \
+común."""
+style = """
+Tubos de acero huecos, radios tensos, rodamientos de bolas, bandajes de caucho y \
+luego neumáticos: los fabricantes comparten las mismas técnicas, pero rivalizan en \
+inventos para el cuadro, la transmisión, la comodidad o la ligereza, como el cuadro \
+de madera curvada de la Souplette."""
+
+[[artistes]]
+nom = "John Kemp Starley"
+vie = "Walthamstow 1854 – Coventry 1901"
+biographie = """
+John Kemp Starley nace en 1854 cerca de Londres. Hacia 1872 se une en Coventry a su \
+tío James Starley, inventor prolífico al que se apoda el padre de la industria del \
+ciclo, y trabaja con él en biciclos y triciclos. En 1877 se asocia con William \
+Sutton, un apasionado del ciclismo, para fundar su propia empresa, Starley & Sutton. \
+Allí concibe en 1885 el Rover, una bicicleta de seguridad de transmisión por cadena \
+hacia la rueda trasera, cuyos modelos sucesivos fijan la forma de la bicicleta \
+moderna. El éxito es tal que la empresa toma el nombre de J. K. Starley & Co. y luego \
+se convierte en la Rover Cycle Company. John Kemp Starley muere en 1901, a los \
+cuarenta y seis años. Tras su muerte, la empresa se lanza a la motocicleta y después \
+al automóvil, y el nombre de Rover sigue siendo durante mucho tiempo el de una marca \
+de coches británicos. En polaco, la palabra «rower», que designa la bicicleta, \
+procede del nombre de su máquina."""
+style = """
+Un ingeniero pragmático más que un inventor genial: reúne soluciones ya conocidas, la \
+cadena, las ruedas iguales, los tubos de acero, y las ajusta hasta obtener una máquina \
+segura, rápida y fácil de producir."""
+
+[[artistes]]
+nom = "Étienne-Jules Marey"
+vie = "Beaune 1830 – París 1904"
+biographie = """
+Étienne-Jules Marey nace en Beaune en 1830. Médico y fisiólogo, consagra su vida al \
+estudio del movimiento: el de la sangre, el corazón, los músculos, la marcha y el \
+vuelo. Inventa primero aparatos que registran estos movimientos en forma de curvas, \
+como el esfigmógrafo, que traza el pulso. Profesor del Collège de France a partir de \
+1869, descubre hacia 1878 las fotografías de caballos al galope de Eadweard Muybridge \
+y se vuelve hacia la fotografía. En 1882 inventa un fusil fotográfico que toma doce \
+imágenes por segundo, y luego perfecciona la cronofotografía sobre placa fija y sobre \
+película, en la Estación Fisiológica que funda cerca del Bosque de Bolonia. \
+Corredores, saltadores, soldados, ciclistas, caballos y pájaros desfilan ante sus \
+objetivos. Sus trabajos preparan la invención del cine e inspiran a los pintores del \
+movimiento. Muere en París en 1904."""
+style = """
+Imágenes de sabio, hechas para medir: fondo negro, modelos vestidos de blanco o \
+marcados con bandas claras, imágenes sucesivas tomadas a intervalos regulares en una \
+misma placa. Su belleza nace de ese rigor."""
+
+[[artistes]]
+nom = "Jean Béraud"
+vie = "San Petersburgo 1849 – París 1935"
+biographie = """
+Jean Béraud nace en 1849 en San Petersburgo, donde su padre, escultor, trabaja en las \
+obras de una catedral. Su familia se instala después en París. Comienza estudios de \
+derecho, interrumpidos por la guerra de 1870, y luego entra en el taller del \
+retratista Léon Bonnat. A partir de la década de 1870 expone en el Salón escenas de la \
+vida parisina que le dan reputación: bulevares animados, terrazas de café, salidas de \
+teatro, bailes, iglesias, bastidores de la Ópera, paseos del Bosque de Bolonia. Pinta \
+con la misma atención a las elegantes, las obreras, los cocheros y los vendedores \
+ambulantes, y se convierte en el cronista más fiel del París de finales del siglo XIX \
+y de la Belle Époque. Miembro fundador de la Société nationale des beaux-arts en \
+1890, es conocido también por algunos grandes cuadros religiosos trasladados al París \
+de su tiempo. Muere en París en 1935."""
+style = """
+Una pintura precisa y viva, que compone pequeñas comedias urbanas con una multitud de \
+personajes esbozados del natural. Béraud observa los trajes, las actitudes y los \
+objetos nuevos, como la bicicleta, con ojo de cronista."""
+
+[[artistes]]
+nom = "Henri de Toulouse-Lautrec"
+vie = "Albi 1864 – Saint-André-du-Bois 1901"
+biographie = """
+Henri de Toulouse-Lautrec nace en 1864 en Albi, en una antigua familia aristocrática. \
+Frágil, se rompe las dos piernas en la adolescencia, que dejan de crecer. Se consagra \
+a la pintura, estudia en París en los talleres de Bonnat y de Cormon, y se instala en \
+Montmartre. Allí pinta los bailes, los cafés cantantes, los circos y los burdeles, y \
+retrata a sus amigos y a las estrellas de su tiempo, Aristide Bruant, Jane Avril o \
+Yvette Guilbert. A partir de 1891, con el cartel del Moulin Rouge, renueva el arte \
+del cartel y de la litografía en color. Apasionado del deporte, frecuenta los \
+velódromos con su amigo Tristan Bernard y dibuja a los campeones ciclistas. Agotado \
+por el alcohol, es atendido en una clínica en 1899 y muere en 1901 en el castillo de \
+Malromé, cerca de Burdeos, a los treinta y seis años. Su madre dona buena parte de su \
+obra a la ciudad de Albi."""
+style = """
+Un dibujo nervioso que capta la actitud y el carácter en unos pocos trazos, grandes \
+planos de color venidos de las estampas japonesas, encuadres audaces que cortan las \
+figuras, y el «crachis» proyectado con cepillo sobre la piedra."""
+
+[[artistes]]
+nom = "Alfons Mucha"
+vie = "Ivančice 1860 – Praga 1939"
+biographie = """
+Alfons Mucha nace en 1860 en Ivančice, en Moravia. Tras unos comienzos como pintor de \
+decorados de teatro en Viena, estudia en Múnich y se instala en París en 1887, donde \
+vive de ilustraciones. A finales de 1894 dibuja con urgencia el cartel de Gismonda \
+para Sarah Bernhardt: su éxito es inmediato, y la actriz le confía sus carteles \
+durante seis años. Bajo contrato con el impresor F. Champenois, dibuja carteles \
+publicitarios para galletas, champán, papel de fumar o bicicletas, calendarios y \
+paneles decorativos, así como joyas para Georges Fouquet. Su estilo se convierte en \
+uno de los símbolos del Art Nouveau. De regreso en Bohemia, se consagra a partir de \
+1910 a la Epopeya eslava, veinte inmensos lienzos sobre la historia de los pueblos \
+eslavos, y dibuja los primeros sellos y billetes de Checoslovaquia. Detenido por la \
+Gestapo en 1939, muere en Praga poco después."""
+style = """
+Jóvenes de cabelleras ondulantes, contornos negros marcados, colores suaves en \
+planos, volutas y círculos decorativos: el «estilo Mucha» hace de cada cartel un \
+objeto de arte."""

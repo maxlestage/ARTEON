@@ -1,0 +1,467 @@
+[exposition]
+ordre = 20
+nom_court = "Renacimiento"
+mouvement = "Renacimiento italiano"
+cadre = "dore"
+couleur = "#7a2e2e"
+titre = "El Renacimiento italiano, la invención del hombre"
+artiste = "Botticelli, Leonardo, Rafael, Miguel Ángel, Tiziano…"
+dates = "1460–1538"
+accroche = "Exposición virtual · Galería de los Uffizi, Florencia"
+introduction = """
+En el siglo XV, Florencia redescubre la Antigüedad, inventa la perspectiva y coloca al hombre en el centro del cuadro; un siglo más tarde, Roma y Venecia llevan esta revolución a su cumbre. De Filippo Lippi a Tiziano, diez pinturas cuentan este paso, desde las madonas del Quattrocento hasta los desnudos venecianos. El edificio se inspira en la Galería de los Uffizi de Vasari: un largo corredor en U bordeado de salas, la sala Botticelli, la Tribuna roja de los Médici y el pequeño corredor que bordea el Arno."""
+vitrine = "naissance-de-venus.jpg"
+
+[musee]
+nom = "Galería de los Uffizi"
+ville = "Florencia, Italia"
+architecte = "Giorgio Vasari"
+construction = "1560–1581"
+presentation = """
+En 1560, Cosme I de Médici encarga a Giorgio Vasari la construcción, entre el Palazzo Vecchio y el Arno, de un edificio para las oficinas, los uffizi, de las magistraturas de Florencia. Concluido en 1581 por Alfonso Parigi y Bernardo Buontalenti, el edificio dibuja una U muy alargada en torno a una plaza estrecha abierta al río, bordeada por un pórtico de pietra serena, la piedra gris de la Toscana. En 1565, Vasari lo une al palacio Pitti mediante un corredor que cruza el Arno por el Ponte Vecchio. Desde 1581, Francisco I de Médici instala en el último piso una galería de antigüedades y cuadros, y manda construir a Buontalenti la Tribuna, sala octogonal bajo una cúpula incrustada de nácar. En 1737, Ana María Luisa, la última de los Médici, lega las colecciones a Florencia con la condición de que nunca salgan de ella. Abierta al público en el siglo XVIII, la galería presenta hoy una de las más ricas colecciones de pintura italiana: Giotto, Botticelli, Leonardo, Miguel Ángel, Rafael, Tiziano."""
+ici = """
+El edificio de ARTEON retoma la U de los Uffizi. Se entra por el sur en la sala de la gran escalera y luego se sube hacia el norte por «El primer corredor · El Quattrocento», de veinticuatro metros de largo. En su flanco este se abren la sala Botticelli, cuadrada, y luego la Tribuna, más pequeña y más alta, cuyos muros rojos recuerdan el estuche del tesoro de los Médici. Al final, el corredor sobre el Arno, de treinta metros de largo, atraviesa el edificio de este a oeste y conduce a la última sala, «El corredor oeste · Venecia», que desciende hacia el sur entre Giorgione y Tiziano."""
+
+[[salles]]
+nom = "La gran escalera"
+theme = "La entrada y la escalera de Vasari, que conduce al largo corredor de los Médici."
+murs = "#ece5d8"
+x = 12
+z = 3
+largeur = 8
+profondeur = 6
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "El primer corredor · El Quattrocento"
+theme = "1460–1480: Filippo Lippi, Piero della Francesca y Mantegna, el siglo de la perspectiva."
+murs = "#efe9dc"
+x = 12
+z = -12
+largeur = 6
+profondeur = 24
+hauteur = 7
+portes = ["nord"]
+
+[[salles]]
+nom = "La sala Botticelli"
+theme = "1472–1486: la Primavera, el Nacimiento de Venus y la Anunciación del joven Leonardo."
+murs = "#e7e1d2"
+x = 21
+z = -6
+largeur = 12
+profondeur = 12
+hauteur = 8
+portes = ["ouest"]
+
+[[salles]]
+nom = "La Tribuna"
+theme = "Hacia 1505: Miguel Ángel y Rafael en Florencia, en el estuche rojo del tesoro de los Médici."
+murs = "#b4544a"
+x = 19
+z = -18
+largeur = 8
+profondeur = 8
+hauteur = 10
+portes = ["ouest"]
+
+[[salles]]
+nom = "El corredor sobre el Arno"
+couloir = true
+theme = "El pequeño corredor, abierto al río y al Ponte Vecchio."
+murs = "#eee8db"
+x = 0
+z = -27
+largeur = 30
+profondeur = 6
+hauteur = 6
+
+[[salles]]
+nom = "El corredor oeste · Venecia"
+theme = "1506–1538: Giorgione y Tiziano, el color y la luz de Venecia."
+murs = "#e6d8c6"
+x = -12
+z = -14
+largeur = 6
+profondeur = 20
+hauteur = 7
+portes = ["nord"]
+
+[[oeuvres]]
+titre = "La Virgen con el Niño y dos ángeles"
+artiste = "Filippo Lippi"
+annee = "hacia 1460–1465"
+image = "vierge-deux-anges.jpg"
+technique = "Temple sobre tabla, 95 × 63,5 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Apodada «la Lippina»: una Virgen como una joven florentina elegante, ante una ventana abierta a un paisaje."
+description = """
+La Virgen está sentada de perfil, con las manos juntas, en un sillón del que solo se ve el brazo esculpido en volutas, en primer plano. Lleva un vestido azul oscuro y un tocado sabio de velos transparentes y cintas, salpicado de perlas. Ante ella, dos ángeles, del segundo de los cuales solo se ve el rostro, sostienen al Niño Jesús, que tiende los brazos hacia su madre. El ángel del primer plano se vuelve hacia nosotros con una amplia sonrisa de niño travieso. Toda la escena está enmarcada por una ventana de piedra gris, pintada en trampantojo como un verdadero marco. Detrás, un vasto paisaje de colinas, rocas y ríos se extiende hasta una ciudad lejana, bajo un cielo pálido."""
+evocation = """
+Lippi acerca lo divino a la vida cotidiana. Su Virgen ya no es un icono lejano sobre fondo de oro, sino una mujer joven y real, a la moda de Florencia, cuyo peinado y perfil evocan los retratos de damas de la época. Una antigua tradición, recogida por Vasari, quiere que tenga los rasgos de Lucrezia Buti, la religiosa a quien el pintor, monje él mismo, raptó en Prato y que le dio un hijo, el pintor Filippino Lippi; nada permite probarlo. El ángel que sonríe al espectador crea una complicidad nueva: nos invita a entrar en la escena. El paisaje abierto, por último, dice la curiosidad del Quattrocento por el mundo visible, que la pintura quiere en adelante mostrar tal como es."""
+histoire = """
+La tabla data de la madurez de Lippi, a comienzos de los años 1460, cuando el monje carmelita trabaja sobre todo en Prato, donde pinta los frescos del coro de la catedral. Se ignora para quién fue ejecutada: su formato mediano sugiere una obra de devoción privada, destinada a una morada más que a una iglesia. El cuadro tuvo un éxito inmediato en el taller: su discípulo Sandro Botticelli retomó la composición, casi trazo por trazo, en varias Vírgenes de juventud. Conservado en las colecciones de los grandes duques de Toscana, fue trasladado a los Uffizi a finales del siglo XVIII desde la villa del Poggio Imperiale. Es hoy una de las imágenes más reproducidas del museo."""
+facture = """
+Lippi pinta al temple, con finas pinceladas superpuestas, lo que da a los rostros una suavidad nacarada. Recuerda a Masaccio, a quien había visto pintar en el convento del Carmine, por el volumen de los cuerpos, pero añade una línea flexible y graciosa que se transmitirá a Botticelli. La ventana pintada, que hace de marco, es una invención notable: separa el espacio del espectador del del cuadro. El paisaje, con sus rocas en agujas y sus lejanías azuladas, se inspira quizá en la pintura flamenca, muy admirada en Florencia."""
+details = [
+  "El velo transparente y las perlas del tocado de la Virgen.",
+  "El ángel que sonríe mirando al espectador, en primer plano.",
+  "El brazo en volutas del sillón, abajo a la izquierda.",
+  "El marco de piedra gris, enteramente pintado en trampantojo.",
+  "La ciudad y las rocas en agujas del paisaje, detrás de la Virgen.",
+]
+themes = ["virgen con el niño", "ángeles", "paisaje", "devoción", "elegancia"]
+anecdote = """
+Monje indisciplinado, Lippi fue sacado varias veces de apuros por Cosme de Médici, su protector. Vasari cuenta que Cosme lo encerró un día en su palacio para que terminara un encargo, y que el pintor se escapó descolgándose por la ventana con unas sábanas anudadas."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "El díptico de los duques de Urbino"
+artiste = "Piero della Francesca"
+annee = "hacia 1465–1475"
+image = "ducs-urbino.jpg"
+technique = "Temple y óleo sobre tabla, dos tablas de 47 × 33 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Battista Sforza y Federico da Montefeltro, frente a frente y de perfil, sobre las colinas de su ducado."
+description = """
+Dos tablas se miran de frente. A la izquierda, Battista Sforza, condesa de Urbino, se ve de perfil, con la tez muy pálida, los cabellos rubios trenzados y enrollados en cintas blancas, bajo un velo y una pequeña diadema de perlas. Lleva un vestido negro de manga de brocado de oro y un collar de perlas. A la derecha, su esposo Federico da Montefeltro le responde, también de perfil, con vestido y gorro de un rojo deslumbrante, la nariz marcada por una profunda muesca. Detrás de ellos se extiende un mismo paisaje, visto desde muy alto: colinas, campos, ciudades fortificadas, un lago por el que se deslizan barcas, hasta las montañas azuladas del horizonte. Los dos rostros se recortan nítidamente sobre el cielo."""
+evocation = """
+El perfil, heredado de las medallas antiguas, hace de estos retratos imágenes oficiales, casi monedas: celebra el poder, la dignidad y la memoria de la pareja más que su intimidad. El paisaje común que corre de una tabla a otra dice la unión de los esposos y su dominio sobre el territorio de Urbino. A menudo se ha pensado que el retrato de Battista, muerta muy joven en 1472 tras haber dado un hijo a Federico, es póstumo, lo que explicaría su palidez de cera. El duque, célebre condotiero y gran humanista, se muestra como hombre de guerra y de saber: el díptico es el retrato de una corte que hacía de Urbino uno de los focos más refinados del Renacimiento."""
+histoire = """
+Piero della Francesca trabajó en varias ocasiones para Federico da Montefeltro, señor y luego duque de Urbino, cuyo palacio reunía artistas, matemáticos y letrados. El díptico fue sin duda pintado hacia la muerte de Battista Sforza, en 1472; la fecha sigue discutida. En el reverso, Piero pintó los triunfos de los dos esposos, sobre carros tirados por caballos blancos y unicornios, acompañados de inscripciones latinas en su gloria. Las tablas, quizá unidas originalmente por bisagras, permanecieron en Urbino hasta 1631: a la extinción de la familia della Rovere, heredera de los Montefeltro, pasaron a Florencia con la herencia de Vittoria della Rovere, esposa del gran duque Fernando II de Médici."""
+facture = """
+Piero, matemático tanto como pintor, construye sus figuras como volúmenes puros: el cuello de Battista es una columna, el gorro de Federico un cilindro. La luz clara y pareja, sin sombras dramáticas, baña los rostros y el paisaje con una misma serenidad. El paisaje, minucioso y lejano, recuerda a los pintores flamencos, cuyas obras se apreciaban en la corte de Urbino; Piero emplea además el óleo, técnica llegada del Norte, para las veladuras. La perspectiva aérea, que azulea y aclara las lejanías, da una profundidad inmensa a estas pequeñas tablas."""
+details = [
+  "La nariz aguileña y entallada de Federico, y su boca apretada.",
+  "El lunar y las arrugas de la mejilla del duque, pintados sin complacencia.",
+  "El peinado de Battista, trenzado con cintas blancas y salpicado de pedrería.",
+  "Las barcas minúsculas sobre el lago, detrás de Federico.",
+  "Las ciudades fortificadas y las torres, asentadas sobre las colinas.",
+]
+themes = ["retrato", "perfil", "poder", "pareja", "paisaje", "perspectiva"]
+anecdote = """
+Federico es representado siempre de perfil izquierdo: en un torneo había perdido el ojo derecho, y la lanza le había entallado también la nariz. Se dice que después hizo recortar el caballete de su nariz para ampliar su campo de visión."""
+salle = 2
+mur = "ouest"
+place = 4
+largeur = 1.5
+
+[[oeuvres]]
+titre = "El Cristo muerto"
+artiste = "Andrea Mantegna"
+annee = "hacia 1480"
+image = "christ-mort.jpg"
+technique = "Temple sobre lienzo, 68 × 81 cm"
+collection = "Pinacoteca de Brera, Milán"
+note = "El cuerpo de Cristo visto desde sus pies: uno de los escorzos más impresionantes de la pintura."
+description = """
+El cuerpo de Cristo, tendido sobre una losa de mármol rosa, se ve desde los pies, como si el espectador se hallara al extremo de la mesa. Las plantas de los pies, atravesadas por los clavos, están en primer plano; el cuerpo se alarga luego hacia lo alto del cuadro, cubierto por un sudario de pliegues profundos, hasta la cabeza caída sobre un cojín. Las manos, colocadas a lo largo del cuerpo, muestran también sus heridas. A la izquierda, apretados en un rincón, tres personajes lloran: la Virgen anciana que se enjuga los ojos con un pañuelo, san Juan con las manos juntas y, casi fuera del marco, María Magdalena. A la derecha, un pequeño vaso de ungüento recuerda los perfumes del embalsamamiento. La estancia es oscura y desnuda."""
+evocation = """
+Mantegna coloca al espectador lo más cerca posible de la muerte, casi contra el cadáver. Ni paisaje, ni ángeles, ni gloria: solo un cuerpo pesado, lívido, presentado en su materialidad. Este punto de vista nos hace testigos del duelo, junto a los plañideros, e invita a meditar sobre las heridas y el sacrificio de Cristo, como hacían las devociones de la época. El contraste entre la contención del cuerpo y el dolor de los rostros deformados por las lágrimas es impresionante. Los historiadores ven también en él una demostración: el pintor, apasionado de la perspectiva y de la escultura antigua, prueba que puede representar el cuerpo humano desde el ángulo más difícil que existe."""
+histoire = """
+La fecha de este cuadro se debate, entre los años 1470 y el final de la vida del pintor. Parece que permaneció en el taller de Mantegna, en Mantua, donde era pintor de la corte de los Gonzaga. A su muerte, en 1506, sus hijos lo encontraron entre sus bienes y lo ofrecieron a la venta; fue adquirido poco después por el cardenal Segismundo de Gonzaga. Tras un largo recorrido por colecciones privadas, ingresó en 1824 en la Pinacoteca de Brera, el gran museo de Milán creado en la época napoleónica, donde es hoy una de las obras más célebres. Su destino primero sigue siendo desconocido; su pequeño formato sugiere un cuadro de meditación privada."""
+facture = """
+Mantegna pinta al temple sobre un lienzo fino, en una gama casi monocroma de grises, rosas apagados y pardos, que da al cuerpo el color de la piedra. El sudario, de pliegues cavados como en mármol, delata su admiración por la escultura. El escorzo no es matemáticamente exacto: los pies son más pequeños de lo que deberían y la cabeza más grande, pues una perspectiva rigurosa habría ocultado el busto tras enormes pies. Mantegna corrige la óptica para que la mirada recorra todo el cuerpo, hasta el rostro."""
+details = [
+  "Los agujeros de los clavos en las plantas de los pies y en el dorso de las manos.",
+  "El rostro de la Virgen, arrugado y torcido por las lágrimas, a la izquierda.",
+  "El vaso de ungüento colocado sobre la losa, arriba a la derecha.",
+  "Los pliegues del sudario, esculpidos como en mármol.",
+]
+themes = ["pasión", "muerte", "duelo", "perspectiva", "escorzo"]
+anecdote = """
+Los pies de Cristo son voluntariamente demasiado pequeños. Si Mantegna hubiera aplicado exactamente las leyes de la perspectiva que tan bien dominaba, habrían ocultado una gran parte del cuerpo: el pintor sacrificó la exactitud a la emoción."""
+salle = 2
+mur = "ouest"
+place = 6
+largeur = 1.15
+
+[[oeuvres]]
+titre = "La Primavera"
+artiste = "Sandro Botticelli"
+annee = "hacia 1480"
+image = "printemps.jpg"
+technique = "Temple sobre tabla, 207 × 319 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "En un bosque de naranjos, Venus acoge el regreso de la primavera: un cuadro mitológico profano, algo raro en Florencia."
+description = """
+Nueve figuras se alinean sobre una pradera sembrada de flores, ante un bosquecillo de naranjos cargados de frutos. En el centro, algo retrasada, Venus, vestida de blanco y rojo, levanta la mano en un gesto de bienvenida; sobre ella, Cupido, con los ojos vendados, dispara una flecha. A la derecha, Céfiro, el viento de la primavera, azul e hinchado, atrapa a la ninfa Cloris, de cuya boca salen flores; a su lado, Flora, coronada y vestida con un traje bordado de flores, las esparce a manos llenas. A la izquierda, las tres Gracias bailan cogidas de las manos, entre velos transparentes, y Mercurio, con la espada al cinto, aleja las nubes con su caduceo."""
+evocation = """
+El sentido exacto del cuadro sigue siendo uno de los grandes enigmas de la historia del arte. Se lee en él primero el ciclo de la estación: de derecha a izquierda, el viento de marzo fecunda la tierra, que se cubre de flores, bajo el reinado de Venus. Los historiadores han propuesto fuentes literarias, como los Fastos de Ovidio, donde Cloris se convierte en Flora, y los poemas de Poliziano, amigo de los Médici. También se ha visto una alegoría neoplatónica, inspirada en Marsilio Ficino, en la que el amor terrenal se eleva hacia el amor espiritual, o bien un homenaje a un matrimonio. Las naranjas, los mala medica, evocarían a los propios Médici. El cuadro celebra la belleza, el amor y el renacer de la naturaleza."""
+histoire = """
+La Primavera se menciona en 1499 en el inventario del palacio florentino de Lorenzo di Pierfrancesco de Médici, primo de Lorenzo el Magnífico, para quien fue sin duda pintada; se ha propuesto vincularla con su matrimonio, en 1482. A mediados del siglo XVI, Vasari la vio, junto con el Nacimiento de Venus, en la villa medicea de Castello. El cuadro, olvidado como su autor durante siglos, fue redescubierto en el siglo XIX, cuando Botticelli fascinó a los prerrafaelitas ingleses. Tras pasar por la Galería de la Academia, se expone en los Uffizi desde 1919. Una restauración, concluida en 1982, le devolvió sus colores claros bajo barnices ennegrecidos."""
+facture = """
+Botticelli pinta al temple sobre grandes tablas de álamo ensambladas. El fondo oscuro del bosquecillo hace resaltar los cuerpos claros, alineados como en un friso, sin profundidad real: el pintor prefiere el ritmo de las siluetas a la perspectiva. Todo descansa en la línea: contornos nítidos, velos transparentes de pliegues ondulantes, cabellos sueltos, cuerpos alargados y ligeros que apenas parecen tocar el suelo. La pradera es una alfombra de flores pintadas una a una, con la precisión de un herbario, en el espíritu de los tapices de millefleurs."""
+details = [
+  "Las flores que salen de la boca de Cloris, perseguida por Céfiro.",
+  "Cupido, con los ojos vendados, que apunta a una de las tres Gracias.",
+  "El vestido de Flora, bordado de aciano, rosas y margaritas.",
+  "Mercurio, a la izquierda, que aparta las nubes con su caduceo.",
+  "Las naranjas doradas del bosquecillo, sobre las figuras.",
+]
+themes = ["mitología", "primavera", "amor", "flores", "médici", "danza"]
+anecdote = """
+Unos botánicos han examinado la pradera del cuadro flor por flor: han reconocido en ella varias decenas de especies reales del campo toscano en primavera, entre ellas lirios, acianos, nomeolvides y fresas."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 3.2
+
+[[oeuvres]]
+titre = "El nacimiento de Venus"
+artiste = "Sandro Botticelli"
+annee = "hacia 1484–1486"
+image = "naissance-de-venus.jpg"
+technique = "Temple sobre lienzo, 172,5 × 278,5 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Empujada por los vientos, la diosa nacida de la espuma llega a la orilla sobre una concha: la belleza pagana vuelve a la pintura."
+description = """
+En el centro, Venus, desnuda, de pie sobre una gran concha de vieira, se desliza sobre el mar hacia la orilla. Se cubre el pecho con una mano y el sexo con su larga cabellera pelirroja, que el viento levanta. A la izquierda, Céfiro, el viento del oeste, enlazado a una figura femenina, sin duda la brisa Aura, sopla para empujar la concha; unas rosas caen a su alrededor. A la derecha, en la orilla arbolada, una joven vestida con un traje blanco sembrado de acianos, una Hora, diosa de las estaciones, avanza para cubrir a la diosa con un manto rosa bordado de flores. El mar, rayado de pequeñas olas en V, se extiende hasta el horizonte, bajo un cielo pálido."""
+evocation = """
+El cuadro ilustra el mito antiguo del nacimiento de Venus, salida de la espuma del mar, tal como lo cantaban Hesíodo y luego Poliziano en sus Stanze. Es una de las primeras grandes imágenes de desnudo femenino desde la Antigüedad, y una de las primeras obras mitológicas de este tamaño en Florencia. En el espíritu de los humanistas neoplatónicos en torno a los Médici, se ha visto en ella el nacimiento de la belleza ideal, reflejo de la belleza divina, que eleva el alma. Venus conserva la pose púdica de las estatuas antiguas que Botticelli pudo ver, pero su rostro melancólico y lejano le da una gracia irreal, casi espiritual."""
+histoire = """
+No se conoce con certeza al comitente: como en el caso de la Primavera, se piensa en un miembro de la rama menor de los Médici, quizá Lorenzo di Pierfrancesco. Vasari describe los dos cuadros a mediados del siglo XVI en la villa medicea de Castello, cerca de Florencia. El Nacimiento de Venus ingresó en los Uffizi en 1815. Juzgado durante mucho tiempo manierista y olvidado, Botticelli fue redescubierto en el siglo XIX por los críticos y los pintores ingleses, y esta Venus se convirtió en una de las imágenes más célebres del mundo. Ha seguido ocupando el corazón de la sala Botticelli de los Uffizi, de la que es hoy la obra más contemplada."""
+facture = """
+Botticelli pinta sobre lienzo, soporte todavía raro en Florencia para una obra de esta dimensión, con un temple claro y magro que da a la superficie un aspecto mate. Realza con oro los cabellos de Venus, las hojas de los naranjos y las alas de los vientos. La composición es casi simétrica, organizada en torno a la diosa. El dibujo domina: contornos fluidos, olas reducidas a un motivo decorativo, cuerpos alargados con desprecio de la anatomía. El largo cuello de Venus y su hombro caído son imposibles, pero crean esa línea ondulante que constituye toda la gracia de la figura."""
+details = [
+  "Los reflejos de oro en la cabellera de Venus.",
+  "Las rosas que caen en torno a los vientos, a la izquierda.",
+  "Las pequeñas olas en forma de V, como un motivo de tela.",
+  "El manto rosa bordado de margaritas que tiende la Hora, a la derecha.",
+  "Los juncos, abajo a la izquierda, y el borde dorado de la concha.",
+]
+themes = ["mitología", "venus", "belleza", "desnudo", "mar", "antigüedad"]
+anecdote = """
+Una tenaz leyenda quiere que Venus tenga los rasgos de Simonetta Vespucci, la bella genovesa admirada en Florencia, muerta en 1476. Ningún documento lo prueba, y el cuadro fue pintado cerca de diez años después de su desaparición."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 2.78
+
+[[oeuvres]]
+titre = "La Anunciación"
+artiste = "Léonard de Vinci"
+annee = "hacia 1472–1476"
+image = "annonciation.jpg"
+technique = "Óleo y temple sobre tabla, 98 × 217 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Una de las primeras obras de Leonardo, pintada hacia los veinte años en el taller de Verrocchio."
+description = """
+La escena transcurre en un jardín, ante una villa toscana. A la izquierda, el ángel Gabriel, arrodillado en la hierba florida, con un lirio en la mano, levanta dos dedos para bendecir y anunciar a María que llevará en su seno al hijo de Dios. A la derecha, la Virgen está sentada ante el ángulo de la casa, de sillares de esquina en relieve. Interrumpe su lectura, con la mano derecha apoyada sobre un libro abierto, y levanta la mano izquierda en señal de sorpresa. El libro reposa sobre un atril de mármol ricamente esculpido. Entre las dos figuras, un muro bajo abre la vista a una hilera de cipreses y de árboles oscuros y luego a una lejanía de puerto, montañas y agua, anegada en bruma azul."""
+evocation = """
+La Anunciación, tema muy frecuente, se convierte en el joven Leonardo en un encuentro sereno y solemne. El lirio del ángel dice la pureza de María; es también el emblema de Florencia. El jardín cerrado, separado del mundo por un muro bajo, recuerda el hortus conclusus, imagen tradicional de la virginidad. El gesto de María, mezcla de asombro y de aceptación, traduce el momento del diálogo evangélico. Pero lo que más llama la atención es el lugar concedido a la naturaleza: la pradera florida, los árboles, el paisaje brumoso del fondo testimonian ya la curiosidad de Leonardo por el mundo real, la botánica y la atmósfera."""
+histoire = """
+El cuadro procede de la iglesia de San Bartolomeo a Monteoliveto, cerca de Florencia. Fue pintado en el taller de Andrea del Verrocchio, donde se formó Leonardo, sin duda con la participación de otros miembros del taller; el atril se inspira directamente en la tumba de Piero y Giovanni de Médici, esculpida por Verrocchio para la iglesia de San Lorenzo. Ingresó en los Uffizi en 1867 y entonces se atribuía a Domenico Ghirlandaio. Solo tras largas discusiones los historiadores lo reconocieron como una obra de juventud de Leonardo, atribución hoy ampliamente admitida. Los Uffizi conservan también el Bautismo de Cristo de Verrocchio, en el que el joven Leonardo pintó uno de los ángeles."""
+facture = """
+Leonardo mezcla temple y óleo, lo que le permite pasajes más suaves. Los pliegues de los vestidos, de una amplitud escultórica, recuerdan los estudios de ropajes que pintaba sobre tela de lino, a partir de tejidos empapados en arcilla. Al fondo, la perspectiva atmosférica, que difumina las montañas en un velo azulado, anuncia su manera futura. Ciertas torpezas delatan la juventud del pintor: el brazo derecho de María, demasiado largo, y la relación incierta entre la Virgen, el atril y el edificio, que se han explicado por un cuadro concebido para ser visto de soslayo, desde la derecha."""
+details = [
+  "El lirio blanco que sostiene el ángel, emblema de pureza y de Florencia.",
+  "El atril de mármol, esculpido con motivos inspirados en la Antigüedad.",
+  "Las flores de la pradera, pintadas una a una.",
+  "El puerto y las montañas, en la bruma azul, en el centro del cuadro.",
+]
+themes = ["anunciación", "ángel", "virgen", "jardín", "paisaje", "perspectiva"]
+anecdote = """
+Las alas del ángel, pintadas por Leonardo a partir de alas de ave reales, fueron alargadas más tarde por otra mano, de forma más torpe: todavía se distingue el retoque."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 2.17
+
+[[oeuvres]]
+titre = "El Tondo Doni (La Sagrada Familia)"
+artiste = "Michel-Ange"
+annee = "hacia 1505–1507"
+image = "tondo-doni.jpg"
+technique = "Temple y óleo sobre tabla, diámetro 120 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "La única pintura sobre tabla acabada que se atribuye sin discusión a Miguel Ángel, pintada para un rico mercader florentino."
+description = """
+En un cuadro redondo, la Sagrada Familia forma un bloque compacto en primer plano. La Virgen, sentada en el suelo, con las piernas dobladas bajo un vestido azul, se vuelve en una poderosa torsión para recoger al Niño que le tiende san José, sentado tras ella, barbudo y calvo. Los brazos musculosos de María, sus anchos hombros, su vestido rosa de pliegues tensos hacen de ella una figura casi heroica. Tras un muro bajo, el pequeño san Juan Bautista, vestido con una piel de animal, alza los ojos hacia el grupo. Al fondo, sobre un hemiciclo de piedra, cinco jóvenes desnudos, sentados o de pie, descansan o se abrazan, ante un paisaje de colinas y lago."""
+evocation = """
+El cuadro superpone varias edades de la historia de la salvación, según una lectura a menudo propuesta: al fondo, los desnudos figuran a la humanidad pagana, anterior a la Ley; san Juan, en el límite, es el último profeta; en primer plano, la Sagrada Familia abre el tiempo de la gracia. El Niño, sostenido por encima de la cabeza de María, parece evocar también su destino futuro. Miguel Ángel, escultor ante todo, impone una visión nueva: cuerpos monumentales, en movimiento, que expresan la fuerza más que la dulzura. Los desnudos del fondo, sin justificación narrativa evidente, anuncian los Ignudi que pintará poco después en el techo de la Capilla Sixtina."""
+histoire = """
+El cuadro fue encargado por Agnolo Doni, rico mercader de paños florentino, quizá con ocasión de su matrimonio con Maddalena Strozzi, en 1504, o del nacimiento de su hija, en 1507. Los tondi, cuadros redondos, eran entonces objetos de devoción apreciados en las moradas privadas. Miguel Ángel lo pintó en Florencia, entre la conclusión del David y su partida a Roma. La tabla ha conservado su marco original, de madera esculpida y dorada, sin duda diseñado por el propio artista, adornado con cabezas en relieve y con las lunas crecientes de las armas de los Strozzi. Pasado después a las colecciones de los Médici, es hoy una de las joyas de los Uffizi."""
+facture = """
+Miguel Ángel pinta como esculpe: las figuras, delimitadas por un contorno nítido, tienen la dureza del mármol. Aplica colores vivos y ácidos, rosa, naranja, azul claro, verde, en superficies lisas, con reflejos cambiantes, los cangianti, que modelan los volúmenes en lugar de fundirlos en la sombra. Estamos lejos del sfumato de Leonardo. La composición en espiral, inscrita en el círculo, da al grupo un movimiento ascendente. Esta paleta y estos cuerpos retorcidos inspirarán directamente a los pintores manieristas, Pontormo y Rosso Fiorentino."""
+details = [
+  "La torsión de la Virgen, que se vuelve para tomar al Niño.",
+  "El pequeño san Juan, tras el muro bajo, a la derecha.",
+  "Los jóvenes desnudos del fondo, sentados sobre un muro de piedra.",
+  "Los colores cambiantes del vestido rosa y del manto naranja de José.",
+]
+themes = ["sagrada familia", "cuerpo", "escultura", "tondo", "desnudo"]
+anecdote = """
+Según Vasari, Agnolo Doni encontró demasiado elevado el precio de setenta ducados que pedía Miguel Ángel. El pintor retiró entonces el cuadro y exigió el doble; el mercader, que quería su tondo, acabó pagando ciento cuarenta ducados."""
+salle = 4
+mur = "est"
+place = 1
+largeur = 1.2
+
+[[oeuvres]]
+titre = "La Virgen del jilguero"
+artiste = "Raphaël"
+annee = "hacia 1505–1506"
+image = "vierge-chardonneret.jpg"
+technique = "Óleo sobre tabla, 107 × 77 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Pintada en Florencia para la boda de un amigo, rota por un derrumbe en 1548, restaurada en 2008."
+description = """
+La Virgen está sentada sobre una roca, en medio de una pradera, con un libro abierto en la mano izquierda. Vestida con un traje rojo y un manto azul, baja los ojos con dulzura hacia los dos niños de pie contra sus rodillas. A la izquierda, el pequeño san Juan Bautista, vestido con una piel de animal, con una escudilla en el cinto, sostiene entre las manos un jilguero que presenta al Niño Jesús. Este, de pie entre las piernas de su madre, con el pie apoyado sobre el de ella, tiende la mano para acariciar al pájaro. Detrás, un paisaje apacible se extiende hasta el horizonte: un puente, un río, árboles frágiles, una ciudad y montañas azuladas bajo un cielo nublado."""
+evocation = """
+Bajo la apariencia de una escena tierna y familiar, el cuadro anuncia la Pasión. El jilguero, que según la tradición se alimenta de cardos y espinas, era el emblema de la corona de espinas de Cristo; una leyenda contaba también que había recibido su mancha roja al pincharse en la frente de Cristo. El libro que sostiene María, el de las Escrituras, hace de ella el trono de la Sabiduría divina. Rafael retoma así un tema grave, pero lo envuelve en una armonía serena: miradas que se cruzan, gestos delicados, naturaleza apaciguada. Es la imagen misma del ideal de belleza y de equilibrio al que su nombre sigue asociado."""
+histoire = """
+Vasari cuenta que Rafael, establecido en Florencia, pintó este cuadro para su amigo Lorenzo Nasi, con ocasión de su boda. En 1548, un corrimiento de tierras derribó la casa de los Nasi, y la tabla se rompió en numerosos fragmentos. Fue pegada de inmediato, pero las grietas y los sucesivos repintes la desfiguraron poco a poco. Ingresada en las colecciones de los Médici, se conserva en los Uffizi. Una restauración de casi diez años, dirigida por el Opificio delle Pietre Dure de Florencia y concluida en 2008, consolidó la madera y devolvió al cuadro sus colores originales."""
+facture = """
+En Florencia, el joven Rafael estudia a Leonardo: le toma prestada la composición en pirámide, en la que las tres figuras se inscriben en un triángulo estable, y el modelado suavizado de los rostros. Pero conserva la claridad y la limpidez de su maestro Perugino. Los colores puros, rojo y azul, responden al verde de la pradera. La luz es pareja, el paisaje se aclara hacia el horizonte según la perspectiva aérea. Todo está regido por la mesura: los gestos se encadenan, las miradas unen las figuras y nada viene a turbar el equilibrio del conjunto."""
+details = [
+  "El jilguero, minúsculo, entre las manos de san Juan.",
+  "El pie del Niño apoyado sobre el de su madre.",
+  "La escudilla de san Juan, colgada de su cinto.",
+  "El puente y la ciudad, en el paisaje a izquierda y derecha.",
+  "Las finas líneas de fractura, todavía perceptibles de cerca.",
+]
+themes = ["virgen con el niño", "infancia", "pájaro", "paisaje", "armonía"]
+anecdote = """
+La restauración concluida en 2008 exigió una decena de años de trabajo, mucho más que el tiempo que Rafael pasó en Florencia, de 1504 a 1508. Liberado de sus barnices amarillentos, el cuadro ha recuperado un cielo y un manto de un azul intenso."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "La tempestad"
+artiste = "Giorgione"
+annee = "hacia 1506–1508"
+image = "tempete.jpg"
+technique = "Óleo sobre lienzo, 82 × 73 cm"
+collection = "Gallerie dell'Accademia, Venecia"
+note = "Una tormenta, un soldado, una madre que amamanta: el cuadro más enigmático del Renacimiento veneciano."
+description = """
+Un paisaje atravesado por un río ocupa todo el cuadro. A la izquierda, un joven con traje rojo y blanco, apoyado en una larga asta, mira hacia la derecha. Junto a él se alzan un muro bajo de ladrillos y dos tramos de columnas rotas. A la derecha, al otro lado del agua, una mujer casi desnuda, con una tela blanca sobre los hombros, está sentada en la hierba y amamanta a un niño; vuelve hacia nosotros una mirada grave. Entre ellos, un puente de madera salva el río y conduce a una ciudad de muros blancos, con una cúpula y torres. Encima, el cielo verde oscuro está desgarrado por un relámpago, señal de la tormenta que se acerca."""
+evocation = """
+Nadie sabe qué representa este cuadro, y quizá ese sea su tema. En él se ha visto a Adán y Eva tras la caída, una escena mitológica, una alegoría de la Fortuna, la Fuerza y la Caridad, o bien una meditación sobre la naturaleza todopoderosa. Las columnas rotas evocarían la fragilidad de las cosas humanas, el relámpago el poder divino. Para muchos historiadores, Giorgione inventa aquí un cuadro de poesía más que de historia: los personajes, aislados, sin diálogo, se funden en el paisaje, y es la atmósfera de la tormenta, la luz extraña que precede a la lluvia, lo que se convierte en el verdadero tema de la obra."""
+histoire = """
+La tempestad es una de las escasas obras atribuidas con certeza a Giorgione. En 1530, el erudito veneciano Marcantonio Michiel la describe en la casa del patricio Gabriele Vendramin, uno de los grandes coleccionistas de Venecia, como un pequeño paisaje sobre lienzo con la tormenta, una gitana y un soldado. El cuadro había sido sin duda pintado para un aficionado refinado, capaz de saborear su enigma. Pasó después por varias colecciones venecianas, en particular la de los príncipes Giovanelli, a quienes el Estado italiano lo compró en 1932 para las Gallerie dell'Accademia de Venecia, donde se expone desde entonces."""
+facture = """
+Giorgione pinta al óleo, directamente sobre el lienzo, sin dibujo preparatorio riguroso: compone y corrige pintando. Los colores, aplicados en capas transparentes, se funden unos en otros y crean una atmósfera húmeda y vibrante. El verde profundo del cielo, el relámpago blanco y los follajes dorados por la última luz construyen el espacio mejor que una perspectiva geométrica. Esta pintura por el color y la luz, el colorito veneciano, se opone al disegno florentino y será desarrollada por Tiziano."""
+details = [
+  "El relámpago, casi en el centro del cielo, sobre la ciudad.",
+  "Las dos columnas rotas sobre su basa, detrás del joven.",
+  "La mirada de la mujer, vuelta hacia el espectador.",
+  "El pequeño pájaro blanco sobre el tejado de una casa, a la derecha.",
+]
+themes = ["paisaje", "tormenta", "enigma", "naturaleza", "venecia"]
+anecdote = """
+Una radiografía reveló que, en lugar del joven, Giorgione había pintado primero a una mujer desnuda sentada a la orilla del agua, quizá bañándose. Este arrepentimiento muestra que improvisaba su tema durante el trabajo."""
+salle = 6
+mur = "ouest"
+place = 5
+largeur = 1.0
+
+[[oeuvres]]
+titre = "La Venus de Urbino"
+artiste = "Titien"
+annee = "1538"
+image = "venus-urbino.jpg"
+technique = "Óleo sobre lienzo, 119 × 165 cm"
+collection = "Galería de los Uffizi, Florencia"
+note = "Una joven desnuda, tendida sobre un lecho, mira al espectador: el modelo del desnudo recostado durante siglos."
+description = """
+Una joven rubia yace desnuda sobre un lecho deshecho, de sábanas blancas, colocado sobre un colchón rojo. Apoyada en dos almohadas, sostiene un ramillete de rosas en la mano derecha y coloca la izquierda sobre su vientre. Vuelve la cabeza hacia nosotros y nos mira con franqueza. A sus pies, un perrito pelirrojo y blanco duerme hecho un ovillo. La mitad izquierda de la estancia está cerrada por una cortina verde oscuro; a la derecha, una sala más clara, pavimentada con losas, se abre al fondo a una ventana en la que se ve un árbol en maceta y el cielo del atardecer. Dos criadas rebuscan allí en un arcón nupcial para sacar vestidos."""
+evocation = """
+Nada indica realmente que se trate de la diosa: ni Cupido, ni atributo mitológico, solo las rosas y el mirto de la ventana, plantas de Venus. La mujer se encuentra en una rica morada veneciana, en el momento íntimo del aseo. Muchos historiadores leen el cuadro como una imagen del matrimonio: el arcón nupcial, el perro, símbolo de fidelidad, las rosas del amor. Otros ven en él ante todo una pintura sensual destinada al placer de un príncipe. La mirada directa, a la vez tranquila y provocadora, constituye toda la modernidad de la obra: el espectador ya no es un mirón oculto, sino que es mirado. Manet lo recordará para su Olympia."""
+histoire = """
+El cuadro fue comprado a Tiziano en 1538 por Guidobaldo della Rovere, hijo del duque de Urbino, que lo designa en su correspondencia simplemente como la mujer desnuda; se convirtió en duque de Urbino ese mismo año. La obra permaneció en Urbino y luego en Pésaro en las colecciones de los della Rovere hasta 1631: llegó entonces a Florencia con la herencia de Vittoria della Rovere, esposa del gran duque Fernando II de Médici, como el díptico de Piero della Francesca. Expuesta más tarde en la Tribuna de los Uffizi, admirada, copiada y a veces criticada por su desnudez, es uno de los cuadros más célebres del museo."""
+facture = """
+Tiziano retoma la pose de la Venus dormida de Giorgione, conservada en Dresde, que él mismo había concluido tras la muerte de su mayor; pero despierta la figura y la traslada a un interior. El cuerpo, modelado con pasajes de luz dorada casi sin contorno, se destaca sobre el blanco de las sábanas y el verde oscuro de la cortina. La composición queda cortada en dos por el borde de la cortina, que cae sobre el sexo de la mujer. Los rojos del colchón y del vestido de la criada, que se responden, equilibran el conjunto: el color construye el cuadro."""
+details = [
+  "El perrito dormido a los pies del lecho.",
+  "El ramillete de rosas en la mano derecha de la joven.",
+  "Al fondo, la criada arrodillada, con la cabeza hundida en el arcón nupcial.",
+  "La maceta de mirto colocada en el alféizar de la ventana.",
+  "El anillo en el meñique de la mano izquierda.",
+]
+themes = ["desnudo", "venus", "matrimonio", "intimidad", "sensualidad", "venecia"]
+anecdote = """
+De visita en los Uffizi, el escritor estadounidense Mark Twain quedó escandalizado por este cuadro: en su relato de viaje A Tramp Abroad, de 1880, lo califica de la imagen más obscena del mundo, observando que ningún escritor se atrevería a describir con palabras lo que todos los visitantes acuden a contemplar."""
+salle = 6
+mur = "sud"
+place = 1
+largeur = 1.65
+
+[[artistes]]
+nom = "Filippo Lippi"
+vie = "Florencia, hacia 1406 – Spoleto, 1469"
+biographie = """
+Huérfano, Filippo Lippi es confiado de niño al convento de los carmelitas de Santa Maria del Carmine, en Florencia, donde pronuncia sus votos en 1421. Allí ve a Masaccio pintar los frescos de la capilla Brancacci, que deciden su vocación. Monje poco hecho para la vida religiosa, obtiene la protección de Cosme de Médici, que le confía encargos y lo saca de varios apuros. Pinta retablos, Vírgenes y Anunciaciones para las iglesias y las familias de Florencia. En 1452 se instala en Prato para pintar los frescos del coro de la catedral, dedicados a san Esteban y a san Juan Bautista. Allí rapta a Lucrezia Buti, una joven religiosa; de su unión nace en 1457 Filippino Lippi, que será también un gran pintor. El escándalo es inmenso, pero la intervención de los Médici le evita lo peor. Forma en su taller al joven Sandro Botticelli. En 1467 parte a Spoleto, donde decora el ábside de la catedral; muere allí en 1469, y Lorenzo el Magnífico le hará erigir un monumento funerario."""
+style = """
+Lippi enlaza la gravedad de Masaccio con la gracia de la segunda mitad del siglo. Humaniza las figuras sagradas: sus Vírgenes son jóvenes florentinas de peinados elegantes, sus ángeles niños traviesos. Sus líneas flexibles, sus velos transparentes, sus paisajes abiertos tras ventanas pintadas se reconocen a primera vista. A través de Botticelli, su discípulo, y de su hijo Filippino, su manera graciosa marcó profundamente la pintura florentina."""
+
+[[artistes]]
+nom = "Piero della Francesca"
+vie = "Borgo San Sepolcro (Toscana), hacia 1415-1420 – Borgo San Sepolcro, 12 de octubre de 1492"
+biographie = """
+Hijo de un mercader de Borgo San Sepolcro, pequeña ciudad del alto valle del Tíber, Piero della Francesca se forma como pintor y estudia matemáticas. En 1439 trabaja en Florencia junto a Domenico Veneziano, y descubre el arte de Masaccio, de Brunelleschi y la perspectiva. Lleva después una carrera itinerante, al servicio de las cortes de Italia central: Ferrara, Rímini con Segismundo Malatesta, Roma y, sobre todo, Urbino, donde Federico da Montefeltro lo acoge en varias ocasiones. Su gran obra maestra es el ciclo de frescos de la Leyenda de la Vera Cruz, en la iglesia de San Francesco de Arezzo, pintado en los años 1450-1460. Pinta también la Flagelación de Urbino, el Bautismo de Cristo de Londres y el retablo de Brera, donde figura Federico arrodillado. Siempre ligado a su ciudad natal, donde ejerce cargos públicos, consagra sus últimos años a la escritura de tratados eruditos sobre aritmética, perspectiva y cuerpos geométricos. Muere en 1492, el mismo día en que Cristóbal Colón alcanza América."""
+style = """
+Piero construye sus cuadros como demostraciones: perspectiva rigurosa, figuras reducidas a volúmenes simples, proporciones calculadas. Una luz clara y serena, sin sombras violentas, baña sus escenas con una inmovilidad solemne. Sus personajes, de rostros impasibles, parecen fuera del tiempo. Olvidado durante mucho tiempo, fue redescubierto en el siglo XX, y pintores modernos, de Seurat a los metafísicos italianos, admiraron su geometría silenciosa."""
+
+[[artistes]]
+nom = "Andrea Mantegna"
+vie = "Isola di Carturo (Véneto), hacia 1431 – Mantua, 13 de septiembre de 1506"
+biographie = """
+Nacido cerca de Padua, Andrea Mantegna entra muy joven en el taller del pintor Francesco Squarcione, que lo adopta y lo forma al contacto con su colección de antigüedades. Padua, ciudad universitaria donde trabajaron Giotto y Donatello, es entonces un foco del humanismo. Todavía adolescente, Mantegna pinta los frescos de la capilla Ovetari en la iglesia de los Eremitani, casi enteramente destruidos por un bombardeo en 1944. En 1453 se casa con Nicolosia, hija del pintor veneciano Jacopo Bellini y hermana de Giovanni Bellini, sobre quien ejerce una fuerte influencia. En 1460 se convierte en pintor de la corte de los Gonzaga en Mantua, puesto que ocupa hasta su muerte. Pinta allí la célebre Cámara de los Esposos del palacio ducal, concluida en 1474, cuyo techo se abre en trampantojo al cielo, y luego la gran serie de los Triunfos de César, hoy en Hampton Court. Coleccionista de antigüedades, grabador innovador, trabaja también para Isabel de Este, esposa del marqués Francisco II de Gonzaga. Muere en Mantua en 1506."""
+style = """
+Mantegna es el pintor de la piedra y de la Antigüedad: sus figuras tienen la dureza de las estatuas, sus arquitecturas y sus trajes se reconstruyen con una precisión de arqueólogo. Lleva la perspectiva hasta los puntos de vista más audaces, techos vistos desde abajo y cuerpos en escorzo. Su dibujo incisivo, sus colores fríos y sus grabados, difundidos por toda Europa, marcaron a Bellini y a Durero."""
+
+[[artistes]]
+nom = "Sandro Botticelli"
+vie = "Florencia, hacia 1445 – Florencia, 17 de mayo de 1510"
+biographie = """
+Alessandro Filipepi, hijo de un curtidor florentino, debe su apodo de Botticelli, barrilito, a uno de sus hermanos mayores. Tras un probable aprendizaje con un orfebre, entra a comienzos de los años 1460 en el taller de Filippo Lippi y luego frecuenta el de Verrocchio. Abre su propio taller hacia 1470 y se convierte en el pintor favorito del círculo de los Médici y de los humanistas que los rodean. En 1481-1482, el papa Sixto IV lo llama a Roma con otros maestros para pintar los muros de la Capilla Sixtina. De regreso en Florencia, pinta sus grandes composiciones mitológicas, la Primavera y el Nacimiento de Venus, y numerosas Vírgenes en tondo. En los años 1490, Florencia se ve conmocionada por los sermones del dominico Savonarola; la pintura de Botticelli se vuelve más austera y atormentada, como en la Calumnia de Apeles o la Natividad mística. Realiza también una serie de dibujos para la Divina Comedia de Dante. Pasado de moda al final de su vida, muere en 1510. No será realmente redescubierto hasta el siglo XIX."""
+style = """
+Botticelli es ante todo un dibujante: la línea, flexible y nerviosa, define las formas, anima los velos y las cabelleras levantadas por el viento. Sus figuras, alargadas y ligeras, de rostro melancólico, parecen flotar más que andar. Prefiere el ritmo decorativo a la perspectiva y la poesía a la verosimilitud. Olvidado durante tres siglos, fascinó a los prerrafaelitas y al Art Nouveau, y su Venus se ha convertido en un icono universal de la belleza."""
+
+[[artistes]]
+nom = "Léonard de Vinci"
+vie = "Vinci (Toscana), 15 de abril de 1452 – Amboise, 2 de mayo de 1519"
+biographie = """
+Hijo ilegítimo de un notario, Leonardo crece en Vinci, cerca de Florencia, y entra a finales de los años 1460 en el taller de Andrea del Verrocchio, pintor, escultor y orfebre. Aprende allí todas las técnicas y pinta sus primeras obras, entre ellas la Anunciación. Hacia 1482 parte a Milán, al servicio de Ludovico Sforza, como ingeniero, organizador de fiestas y pintor: realiza allí la Virgen de las rocas y la Última Cena, en el convento de Santa Maria delle Grazie. Tras la caída de Ludovico, en 1499, lleva una vida itinerante entre Venecia, Florencia, donde comienza la Gioconda, Milán y Roma. Llena miles de páginas de cuadernos, escritos de derecha a izquierda, sobre anatomía, el vuelo de las aves, el agua, la óptica y las máquinas. En 1516, el rey Francisco I lo invita a Francia y lo instala en el castillo del Clos Lucé, cerca del castillo de Amboise, donde muere en 1519. Deja muy pocos cuadros acabados, pero una reputación de genio universal."""
+style = """
+Leonardo quiere pintar la naturaleza tal como la ve el ojo. Inventa el sfumato, un modelado fundido, sin contornos, que envuelve las formas en una sombra suave, y la perspectiva aérea, que azulea y difumina las lejanías. Sus composiciones en pirámide, sus figuras captadas en un movimiento del alma y sus paisajes brumosos fueron imitados por Rafael y por toda la generación siguiente."""
+
+[[artistes]]
+nom = "Michel-Ange"
+vie = "Caprese (Toscana), 6 de marzo de 1475 – Roma, 18 de febrero de 1564"
+biographie = """
+Michelangelo Buonarroti, hijo de un magistrado florentino, entra en 1488 en el taller del pintor Domenico Ghirlandaio y luego frecuenta el jardín de esculturas de los Médici, donde Lorenzo el Magnífico lo distingue. En Roma esculpe la Piedad de San Pedro, concluida en 1499; en Florencia, de 1501 a 1504, el David, símbolo de la República. Es entonces cuando pinta para Agnolo Doni el único cuadro sobre tabla acabado que se le atribuye sin reservas. En 1508, el papa Julio II le encarga el techo de la Capilla Sixtina, que pinta casi solo hasta 1512. Trabaja después en la tumba de Julio II, en el Moisés, en la capilla funeraria de los Médici en San Lorenzo. De regreso en Roma, pinta el Juicio Final en el muro del altar de la Sixtina, concluido en 1541, y se convierte luego en arquitecto de la basílica de San Pedro, cuya cúpula diseña. Poeta, escribe también sonetos. Muere en Roma a casi ochenta y nueve años; su cuerpo es devuelto a Florencia."""
+style = """
+Escultor ante todo, Miguel Ángel hace del cuerpo humano, sobre todo desnudo y masculino, el medio de expresar todas las pasiones. Sus figuras, poderosas, retorcidas, a menudo inacabadas en escultura, parecen luchar contra la materia. En pintura, aplica colores vivos y cambiantes sobre formas escultóricas. Su terribilità, esa fuerza grandiosa e inquieta, abrió el camino al manierismo y al arte barroco."""
+
+[[artistes]]
+nom = "Raphaël"
+vie = "Urbino, 1483 – Roma, 6 de abril de 1520"
+biographie = """
+Raffaello Sanzio es hijo de Giovanni Santi, pintor y poeta de la corte de Urbino, que muere cuando el niño tiene once años. El joven se forma después con Perugino, cuya manera asimila tan bien que a veces se confunden sus obras. De 1504 a 1508 vive sobre todo en Florencia, donde descubre a Leonardo y a Miguel Ángel y pinta una serie de Vírgenes con el Niño, entre ellas la Virgen del jilguero. En 1508, el papa Julio II lo llama a Roma para decorar sus apartamentos del Vaticano: las Estancias, con la Escuela de Atenas, figuran entre las cumbres del Renacimiento. Bajo León X, dirige un taller muy numeroso, dibuja los cartones de los tapices de la Sixtina, es nombrado arquitecto de San Pedro y encargado de levantar los monumentos de la Roma antigua. Pinta también retratos, como el de Baldassare Castiglione. Muere de forma repentina a los treinta y siete años; es enterrado en el Panteón."""
+style = """
+Rafael hizo la síntesis de su tiempo: la dulzura de Leonardo, la fuerza de Miguel Ángel, la claridad de Perugino. Sus composiciones, de equilibrio perfecto, sus figuras graciosas y sus colores límpidos encarnan el ideal clásico. Durante más de tres siglos, las academias de toda Europa lo tuvieron por el modelo absoluto del gran pintor, antes de que los prerrafaelitas lo rechazaran."""
+
+[[artistes]]
+nom = "Giorgione"
+vie = "Castelfranco Véneto, hacia 1477-1478 – Venecia, 1510"
+biographie = """
+Se sabe muy poco de Giorgio da Castelfranco, apodado Giorgione, el gran Giorgio. Nacido en una pequeña ciudad de la tierra firme veneciana, se forma probablemente en Venecia en el entorno de Giovanni Bellini. Trabaja sobre todo para un círculo de patricios cultivados, aficionados a la música, a la poesía y a los cuadros de pequeño formato, de temas a veces enigmáticos. Se le atribuye con certeza un número muy reducido de obras: el retablo de Castelfranco, la Tempestad, los Tres filósofos de Viena, el retrato de Laura. En 1508 pinta con el joven Tiziano los frescos de la fachada del Fondaco dei Tedeschi, el almacén de los mercaderes alemanes en Venecia, de los que solo quedan fragmentos. Muere de peste en otoño de 1510, a los treinta años aproximadamente. Varios de sus cuadros inacabados son terminados por Tiziano, como la Venus dormida de Dresde, de modo que la frontera entre sus dos obras sigue discutida."""
+style = """
+Giorgione transformó la pintura veneciana en unos pocos años. Pinta directamente al óleo, sin dibujo previo, y deja que el color y la luz modelen las formas. Sus personajes soñadores se funden en paisajes cargados de atmósfera, donde la emoción cuenta más que la historia narrada. Sus cuadros de poesía, sin tema evidente, abrieron el camino a Tiziano y al paisaje moderno."""
+
+[[artistes]]
+nom = "Titien"
+vie = "Pieve di Cadore (Véneto), hacia 1488-1490 – Venecia, 27 de agosto de 1576"
+biographie = """
+Tiziano Vecellio nace en las montañas del Cadore y llega de niño a Venecia. Se forma con Giovanni Bellini y luego trabaja junto a Giorgione, de quien concluye varias obras tras su muerte en 1510. En 1518, la gigantesca Asunción de la iglesia de los Frari lo convierte en el primer pintor de Venecia. Pinta después para las cortes de Italia, los Este de Ferrara, los Gonzaga de Mantua, los della Rovere de Urbino, y luego para el emperador Carlos V, que lo hace conde palatino en 1533 y caballero, y para su hijo Felipe II de España, a quien envía sus grandes mitologías, las poesías. Retratista solicitado por papas y príncipes, dirige un taller activo durante más de sesenta años. En sus últimos años, su pintura se vuelve cada vez más libre, casi informe, hecha de toques empastados aplicados a veces con el dedo. Muere en Venecia en 1576, durante una epidemia de peste; es enterrado en los Frari."""
+style = """
+Tiziano es el maestro del color. Construye sus cuadros por capas sucesivas de óleo, en veladuras transparentes y toques espesos, y hace nacer las formas de la luz más que del dibujo. Sus desnudos dorados, sus retratos penetrantes y sus mitologías sensuales fijaron durante siglos los modelos del género. Rubens, Velázquez, Rembrandt, y luego Delacroix y Manet se midieron todos con él."""

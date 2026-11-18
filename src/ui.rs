@@ -13,6 +13,7 @@ use eframe::egui::{
 };
 
 use crate::artworks::{Exhibition, Side, Work};
+
 use crate::editor::{self, ArtEdit, SculptEdit};
 use crate::gallery::{Mode, SharedControl};
 use crate::museum;
@@ -118,34 +119,34 @@ impl MuseumUi {
                 ui.set_max_width(ctx.content_rect().width() - 40.0);
                 ui.horizontal_wrapped(|ui| {
                     let guided = mode == Mode::Guided;
-                    if self.toggle(ui, guided, "🎬 Guidée").on_hover_text("La caméra vous emmène d'œuvre en œuvre").clicked() {
+                    if self.toggle(ui, guided, crate::langue::t("🎬 Guidée", "🎬 Guided", "🎬 Guiada")).on_hover_text(crate::langue::t("La caméra vous emmène d'œuvre en œuvre", "The camera takes you from work to work", "La cámara le lleva de obra en obra")).clicked() {
                         self.set_mode(Mode::Guided);
                     }
-                    if self.toggle(ui, !guided, "🚶 Libre").on_hover_text("Se promener soi-même : ZQSD/WASD, flèches, souris ; au doigt, deux joysticks").clicked() {
+                    if self.toggle(ui, !guided, crate::langue::t("🚶 Libre", "🚶 Free", "🚶 Libre")).on_hover_text(crate::langue::t("Se promener soi-même : ZQSD/WASD, flèches, souris ; au doigt, deux joysticks", "Walk around yourself: WASD, arrows, mouse; by touch, two joysticks", "Pasear uno mismo: WASD, flechas, ratón; con el dedo, dos joysticks")).clicked() {
                         self.set_mode(Mode::Free);
                     }
                     ui.separator();
-                    if self.toggle(ui, false, "‹").on_hover_text("Œuvre précédente").clicked() {
+                    if self.toggle(ui, false, "‹").on_hover_text(crate::langue::t("Œuvre précédente", "Previous work", "Obra anterior")).clicked() {
                         self.step(-1);
                     }
-                    if guided && self.toggle(ui, paused, if paused { "▶" } else { "❚❚" }).on_hover_text("Pause").clicked() {
+                    if guided && self.toggle(ui, paused, if paused { "▶" } else { "❚❚" }).on_hover_text(crate::langue::t("Pause", "Pause", "Pausa")).clicked() {
                         let mut c = self.control.borrow_mut();
                         c.paused = !c.paused;
                     }
-                    if self.toggle(ui, false, "›").on_hover_text("Œuvre suivante").clicked() {
+                    if self.toggle(ui, false, "›").on_hover_text(crate::langue::t("Œuvre suivante", "Next work", "Obra siguiente")).clicked() {
                         self.step(1);
                     }
                     ui.separator();
-                    if self.toggle(ui, self.show_map, "🗺 Plan").clicked() {
+                    if self.toggle(ui, self.show_map, crate::langue::t("🗺 Plan", "🗺 Plan", "🗺 Plano")).clicked() {
                         self.show_map = !self.show_map;
                     }
-                    if self.toggle(ui, self.show_list, "☰ Œuvres").clicked() {
+                    if self.toggle(ui, self.show_list, crate::langue::t("☰ Œuvres", "☰ Works", "☰ Obras")).clicked() {
                         self.show_list = !self.show_list;
                     }
-                    if self.toggle(ui, self.building, "🏛 Le musée").on_hover_text("Le bâtiment et ses salles").clicked() {
+                    if self.toggle(ui, self.building, crate::langue::t("🏛 Le musée", "🏛 The museum", "🏛 El museo")).on_hover_text(crate::langue::t("Le bâtiment et ses salles", "The building and its rooms", "El edificio y sus salas")).clicked() {
                         self.building = !self.building;
                     }
-                    if self.toggle(ui, self.editing, "✏ Éditer").on_hover_text("Déplacer les œuvres, puis télécharger le fichier de l'exposition").clicked() {
+                    if self.toggle(ui, self.editing, crate::langue::t("✏ Éditer", "✏ Edit", "✏ Editar")).on_hover_text(crate::langue::t("Déplacer les œuvres, puis télécharger le fichier de l'exposition", "Move the works, then download the exhibition file", "Mover las obras y luego descargar el archivo de la exposición")).clicked() {
                         self.editing = !self.editing;
                         if self.editing {
                             self.set_mode(Mode::Free);
@@ -154,10 +155,10 @@ impl MuseumUi {
                     }
                     ui.separator();
                     if (self.actions.is_full)() {
-                        if self.toggle(ui, false, "✕").on_hover_text("Quitter le plein écran").clicked() {
+                        if self.toggle(ui, false, "✕").on_hover_text(crate::langue::t("Quitter le plein écran", "Exit full screen", "Salir de pantalla completa")).clicked() {
                             (self.actions.exit)();
                         }
-                    } else if self.toggle(ui, false, "⛶").on_hover_text("Plein écran").clicked() {
+                    } else if self.toggle(ui, false, "⛶").on_hover_text(crate::langue::t("Plein écran", "Full screen", "Pantalla completa")).clicked() {
                         (self.actions.enter)();
                     }
                 });
@@ -239,7 +240,7 @@ impl MuseumUi {
                         ui.label(RichText::new(note).color(Color32::from_gray(225)));
                     }
                     ui.horizontal_wrapped(|ui| {
-                        if self.toggle(ui, self.reading, "📖 Tout savoir").clicked() {
+                        if self.toggle(ui, self.reading, crate::langue::t("📖 Tout savoir", "📖 All about it", "📖 Todo sobre la obra")).clicked() {
                             self.reading = !self.reading;
                             if self.reading {
                                 // La visite attend le lecteur devant l'œuvre.
@@ -247,7 +248,7 @@ impl MuseumUi {
                             }
                         }
                         if matches!(focus, Focus::Art(_))
-                            && self.toggle(ui, false, "Voir en HD").clicked()
+                            && self.toggle(ui, false, crate::langue::t("Voir en HD", "View in HD", "Ver en HD")).clicked()
                         {
                             (self.actions.open_hd)();
                         }
@@ -289,7 +290,7 @@ impl MuseumUi {
                 .size(15.5)
                 .color(self.accent.gamma_multiply(1.6))
         };
-        egui::Window::new("Tout savoir")
+        egui::Window::new(crate::langue::t("Tout savoir", "All about it", "Todo sobre la obra"))
             .id(egui::Id::unique("notice"))
             .open(&mut open)
             .collapsible(false)
@@ -341,7 +342,7 @@ impl MuseumUi {
                         let Some(texts) = texts.as_ref() else {
                             ui.add_space(10.0);
                             ui.spinner();
-                            ui.label(text("Chargement de la notice…"));
+                            ui.label(text(crate::langue::t("Chargement de la notice…", "Loading the notice…", "Cargando la ficha…")));
                             return;
                         };
                         let empty = crate::texts::WorkText::default();
@@ -353,7 +354,7 @@ impl MuseumUi {
                         }
                         if !notice.details.is_empty() {
                             ui.add_space(10.0);
-                            ui.label(heading("À regarder de près"));
+                            ui.label(heading(crate::langue::t("À regarder de près", "Look closely", "Para mirar de cerca")));
                             for d in &notice.details {
                                 ui.label(text(&format!("•  {d}")));
                             }
@@ -365,13 +366,13 @@ impl MuseumUi {
                                 .corner_radius(CornerRadius::same(8))
                                 .inner_margin(egui::Margin::same(8))
                                 .show(ui, |ui| {
-                                    ui.label(heading("Le saviez-vous ?"));
+                                    ui.label(heading(crate::langue::t("Le saviez-vous ?", "Did you know?", "¿Sabía que…?")));
                                     ui.label(text(&notice.anecdote));
                                 });
                         }
                         if let Some(about) = texts.artists.get(artist) {
                             ui.add_space(10.0);
-                            egui::CollapsingHeader::new(heading(&format!("L'artiste : {artist}")))
+                            egui::CollapsingHeader::new(heading(&crate::tf!("L'artiste : {}", "The artist: {}", "El artista: {}", artist)))
                                 .id_salt(("artiste", artist))
                                 .show(ui, |ui| {
                                     ui.label(
@@ -382,13 +383,13 @@ impl MuseumUi {
                                     ui.label(text(&about.biography));
                                     if !about.style.is_empty() {
                                         ui.add_space(6.0);
-                                        ui.label(heading("Sa manière"));
+                                        ui.label(heading(crate::langue::t("Sa manière", "Technique", "Su estilo")));
                                         ui.label(text(&about.style));
                                     }
                                 });
                         }
                         ui.add_space(10.0);
-                        if ui.button("Sa page sur le site ↗").clicked() {
+                        if ui.button(crate::langue::t("Sa page sur le site ↗", "Its page on the site ↗", "Su página en el sitio ↗")).clicked() {
                             let url = format!(
                                 "{}/{}/oeuvres/{}",
                                 crate::viewer::base_path(ex.slug),
@@ -421,7 +422,7 @@ impl MuseumUi {
                 .size(15.5)
                 .color(self.accent.gamma_multiply(1.6))
         };
-        egui::Window::new("Le musée")
+        egui::Window::new(crate::langue::t("Le musée", "The museum", "El museo"))
             .id(egui::Id::unique("batiment"))
             .open(&mut open)
             .collapsible(false)
@@ -436,7 +437,7 @@ impl MuseumUi {
                         match ex.museum {
                             Some(m) => {
                                 ui.label(
-                                    RichText::new("Inspiré de")
+                                    RichText::new(crate::langue::t("Inspiré de", "Inspired by", "Inspirado en"))
                                         .small()
                                         .color(Color32::from_gray(170)),
                                 );
@@ -464,7 +465,7 @@ impl MuseumUi {
                                         }
                                         if !t.here.is_empty() {
                                             ui.add_space(10.0);
-                                            ui.label(heading("Dans ARTEON"));
+                                            ui.label(heading(crate::langue::t("Dans ARTEON", "In ARTEON", "En ARTEON")));
                                             ui.label(text(&t.here));
                                         }
                                     }
@@ -483,13 +484,13 @@ impl MuseumUi {
                             }
                         }
                         ui.add_space(10.0);
-                        ui.label(heading("Les salles"));
+                        ui.label(heading(crate::langue::t("Les salles", "The rooms", "Las salas")));
                         for (n, (i, room)) in ex.galleries().enumerate() {
                             let works = ex.works_in_room(i).len() + ex.sculptures_in_room(i).len();
-                            let line = format!("{}. {} · {works} œuvre(s)", n + 1, room.name);
+                            let line = crate::tf!("{}. {} · {} œuvre(s)", "{}. {} · {} work(s)", "{}. {} · {} obra(s)", n + 1, room.name, works);
                             if ui
                                 .add(egui::Label::new(text(&line)).sense(Sense::click()))
-                                .on_hover_text("S'y rendre")
+                                .on_hover_text(crate::langue::t("S'y rendre", "Go there", "Ir allí"))
                                 .clicked()
                             {
                                 self.set_mode(Mode::Free);
@@ -499,7 +500,7 @@ impl MuseumUi {
                         ui.add_space(6.0);
                         ui.label(
                             RichText::new(
-                                "Le plan (bouton 🗺) montre les salles, les portes et les œuvres.",
+                                crate::langue::t("Le plan (bouton 🗺) montre les salles, les portes et les œuvres.", "The plan (🗺 button) shows the rooms, doors and works.", "El plano (botón 🗺) muestra las salas, las puertas y las obras."),
                             )
                             .small()
                             .color(Color32::from_gray(170)),
@@ -534,7 +535,7 @@ impl MuseumUi {
             .show(ctx, |ui| {
                 self.frame().show(ui, |ui| {
                     ui.label(
-                        RichText::new("Plan du musée")
+                        RichText::new(crate::langue::t("Plan du musée", "Museum plan", "Plano del museo"))
                             .strong()
                             .color(Color32::WHITE),
                     );
@@ -669,7 +670,7 @@ impl MuseumUi {
             .show(ctx, |ui| {
                 self.frame().show(ui, |ui| {
                     ui.set_max_width(300.0);
-                    ui.label(RichText::new("Les œuvres").strong().color(Color32::WHITE));
+                    ui.label(RichText::new(crate::langue::t("Les œuvres", "The works", "Las obras")).strong().color(Color32::WHITE));
                     egui::ScrollArea::vertical()
                         .max_height(height)
                         .show(ui, |ui| {
@@ -729,7 +730,7 @@ impl MuseumUi {
     fn editor(&mut self, ctx: &egui::Context) {
         let ex = self.ex;
         let mut open = self.editing;
-        egui::Window::new("Éditeur du musée")
+        egui::Window::new(crate::langue::t("Éditeur du musée", "Museum editor", "Editor del museo"))
             .open(&mut open)
             .default_pos([12.0, 70.0])
             .default_width(320.0)
@@ -739,7 +740,7 @@ impl MuseumUi {
                 let label = |f: Option<Focus>| match f {
                     Some(Focus::Art(i)) => format!("🖼 {}", ex.artworks[i].title),
                     Some(Focus::Sculpture(i)) => format!("🗿 {}", ex.sculptures[i].title),
-                    None => "Choisir une œuvre…".to_owned(),
+                    None => crate::langue::t("Choisir une œuvre…", "Choose a work…", "Elegir una obra…").to_owned(),
                 };
                 egui::ComboBox::from_id_salt("oeuvre").width(290.0).selected_text(label(self.selected)).show_ui(ui, |ui| {
                     for i in 0..ex.artworks.len() {
@@ -750,11 +751,11 @@ impl MuseumUi {
                     }
                 });
                 ui.horizontal(|ui| {
-                    if ui.button("L'œuvre regardée").clicked() {
+                    if ui.button(crate::langue::t("L'œuvre regardée", "The work in view", "La obra que se mira")).clicked() {
                         self.selected = self.control.borrow().current;
                     }
                     if let Some(focus) = self.selected
-                        && ui.button("Y aller").clicked()
+                        && ui.button(crate::langue::t("Y aller", "Go there", "Ir allí")).clicked()
                     {
                         self.control.borrow_mut().go_to = Some(focus);
                     }
@@ -764,7 +765,7 @@ impl MuseumUi {
                     Some(Focus::Art(i)) => self.edit_art(ui, i),
                     Some(Focus::Sculpture(i)) => self.edit_sculpture(ui, i),
                     None => {
-                        ui.label("Choisissez une œuvre dans la liste, sur le plan, ou regardez-la puis « L'œuvre regardée ».");
+                        ui.label(crate::langue::t("Choisissez une œuvre dans la liste, sur le plan, ou regardez-la puis « L'œuvre regardée ».", "Choose a work in the list, on the plan, or look at it and press “The work in view”.", "Elija una obra en la lista, en el plano, o mírela y pulse «La obra que se mira»."));
                     }
                 }
                 ui.separator();
@@ -779,7 +780,7 @@ impl MuseumUi {
         let ex = self.ex;
         let mut e: ArtEdit = self.control.borrow().edits.art(ex, i);
         let before = e;
-        egui::ComboBox::from_label("Salle")
+        egui::ComboBox::from_label(crate::langue::t("Salle", "Room", "Sala"))
             .selected_text(ex.rooms[e.room].name)
             .show_ui(ui, |ui| {
                 for (r, room) in ex.galleries() {
@@ -798,7 +799,7 @@ impl MuseumUi {
         ui.add(
             egui::Slider::new(&mut e.position, -half..=half)
                 .step_by(0.05)
-                .text("position (m)"),
+                .text(crate::langue::t("position (m)", "position (m)", "posición (m)")),
         );
         ui.add(
             egui::Slider::new(
@@ -806,7 +807,7 @@ impl MuseumUi {
                 0.3..=(room.wall_length(e.side) - 1.0).max(0.4),
             )
             .step_by(0.05)
-            .text("largeur (m)"),
+            .text(crate::langue::t("largeur (m)", "width (m)", "ancho (m)")),
         );
         if e != before {
             let mut c = self.control.borrow_mut();
@@ -823,7 +824,7 @@ impl MuseumUi {
         let ex = self.ex;
         let mut e: SculptEdit = self.control.borrow().edits.sculpture(ex, i);
         let before = e;
-        egui::ComboBox::from_label("Salle")
+        egui::ComboBox::from_label(crate::langue::t("Salle", "Room", "Sala"))
             .selected_text(ex.rooms[e.room].name)
             .show_ui(ui, |ui| {
                 for (r, room) in ex.galleries() {
@@ -837,12 +838,12 @@ impl MuseumUi {
         ui.add(
             egui::Slider::new(&mut e.x, -hw..=hw)
                 .step_by(0.05)
-                .text("x, vers l'est (m)"),
+                .text(crate::langue::t("x, vers l'est (m)", "x, eastward (m)", "x, hacia el este (m)")),
         );
         ui.add(
             egui::Slider::new(&mut e.z, -hd..=hd)
                 .step_by(0.05)
-                .text("z, vers le sud (m)"),
+                .text(crate::langue::t("z, vers le sud (m)", "z, southward (m)", "z, hacia el sur (m)")),
         );
         ui.add(
             egui::Slider::new(&mut e.rotation, -180.0..=180.0)
@@ -852,12 +853,12 @@ impl MuseumUi {
         ui.add(
             egui::Slider::new(&mut e.height, 0.1..=(room.height - 0.5).max(0.2))
                 .step_by(0.01)
-                .text("hauteur (m)"),
+                .text(crate::langue::t("hauteur (m)", "height (m)", "altura (m)")),
         );
         ui.add(
             egui::Slider::new(&mut e.plinth, 0.0..=1.5)
                 .step_by(0.05)
-                .text("socle (m)"),
+                .text(crate::langue::t("socle (m)", "plinth (m)", "pedestal (m)")),
         );
         if e != before {
             let mut c = self.control.borrow_mut();
@@ -873,12 +874,12 @@ impl MuseumUi {
     fn problems(&self, ui: &mut egui::Ui, problems: Vec<String>) {
         if problems.is_empty() {
             ui.label(
-                RichText::new("✔ Cette place est valide").color(Color32::from_rgb(120, 200, 140)),
+                RichText::new(crate::langue::t("✔ Cette place est valide", "✔ This place is valid", "✔ Este lugar es válido")).color(Color32::from_rgb(120, 200, 140)),
             );
         }
         for p in problems {
             ui.label(
-                RichText::new(format!("⚠ {p} : la publication serait refusée"))
+                RichText::new(crate::tf!("⚠ {} : la publication serait refusée", "⚠ {}: publishing would be refused", "⚠ {}: la publicación sería rechazada", p))
                     .color(Color32::from_rgb(240, 150, 110)),
             );
         }
@@ -891,38 +892,41 @@ impl MuseumUi {
             let c = self.control.borrow();
             c.edits.arts.len() + c.edits.sculptures.len()
         };
-        ui.label(format!("{count} œuvre(s) déplacée(s). Le fichier expositions/{}.toml garde tout le reste tel quel.", ex.slug));
+        ui.label(crate::tf!("{} œuvre(s) déplacée(s). Le fichier expositions/{}.toml garde tout le reste tel quel.", "{} work(s) moved. The file expositions/{}.toml keeps everything else as it is.", "{} obra(s) movida(s). El archivo expositions/{}.toml conserva todo lo demás tal cual.", count, ex.slug));
         ui.add_enabled_ui(count > 0, |ui| {
             ui.horizontal_wrapped(|ui| {
                 let file = format!("{}.toml", ex.slug);
                 let source = self.texts.borrow().as_ref().map(|t| t.source.clone());
                 let Some(source) = source.filter(|s| !s.is_empty()) else {
                     ui.spinner();
-                    ui.label("Le fichier de l'exposition se charge…");
+                    ui.label(crate::langue::t("Le fichier de l'exposition se charge…", "The exhibition file is loading…", "El archivo de la exposición se está cargando…"));
                     return;
                 };
-                if ui.button("⬇ Télécharger").clicked() {
+                if ui.button(crate::langue::t("⬇ Télécharger", "⬇ Download", "⬇ Descargar")).clicked() {
                     let text = editor::patched_toml(&source, ex, &self.control.borrow().edits);
                     (self.actions.download)(&file, &text);
-                    self.notice = Some(format!(
-                        "{file} téléchargé : remplacez expositions/{file} dans le dépôt."
+                    self.notice = Some(crate::tf!(
+                        "{} téléchargé : remplacez expositions/{} dans le dépôt.",
+                        "{} downloaded: replace expositions/{} in the repository.",
+                        "{} descargado: sustituya expositions/{} en el repositorio.",
+                        file, file
                     ));
                 }
-                if ui.button("📋 Copier").clicked() {
+                if ui.button(crate::langue::t("📋 Copier", "📋 Copy", "📋 Copiar")).clicked() {
                     let text = editor::patched_toml(&source, ex, &self.control.borrow().edits);
                     (self.actions.copy)(&text);
-                    self.notice = Some("Copié : collez-le dans l'éditeur de GitHub.".to_owned());
+                    self.notice = Some(crate::langue::t("Copié : collez-le dans l'éditeur de GitHub.", "Copied: paste it into GitHub's editor.", "Copiado: péguelo en el editor de GitHub.").to_owned());
                 }
-                if ui.button("Publier sur GitHub ↗").clicked() {
+                if ui.button(crate::langue::t("Publier sur GitHub ↗", "Publish on GitHub ↗", "Publicar en GitHub ↗")).clicked() {
                     let text = editor::patched_toml(&source, ex, &self.control.borrow().edits);
                     (self.actions.copy)(&text);
                     (self.actions.open)(&format!("{REPOSITORY}/edit/master/expositions/{file}"));
                     self.notice = Some(
-                        "Fichier copié : sur GitHub, remplacez tout le texte par le vôtre et validez."
+                        crate::langue::t("Fichier copié : sur GitHub, remplacez tout le texte par le vôtre et validez.", "File copied: on GitHub, replace all the text with yours and commit.", "Archivo copiado: en GitHub, sustituya todo el texto por el suyo y valide.")
                             .to_owned(),
                     );
                 }
-                if ui.button("Annuler tout").clicked() {
+                if ui.button(crate::langue::t("Annuler tout", "Undo all", "Deshacer todo")).clicked() {
                     let mut c = self.control.borrow_mut();
                     c.edits.arts.clear();
                     c.edits.sculptures.clear();

@@ -4,8 +4,16 @@
 
 import { jsonGarde } from "./memoire.js";
 
-/** Le début des adresses du site (`/ARTEON` sur GitHub Pages). */
-export const base = location.pathname.replace(/\/(musees|explorer|monde)\/.*$/, "");
+/** La langue de la page : celle de `<html lang>` (fr, en ou es). Les pages en anglais et en
+ * espagnol sont sous /en/ et /es/ ; les fichiers (images, données) sont communs. */
+export const langue = ["en", "es"].includes(document.documentElement.lang) ? document.documentElement.lang : "fr";
+const prefixe = langue === "fr" ? "" : `/${langue}`;
+
+/** Un texte de l'interface dans la langue de la page : `t("Œuvres", "Works", "Obras")`. */
+export const t = (fr, en, es) => (langue === "en" ? en : langue === "es" ? es : fr);
+
+/** Le début des adresses du site (`/ARTEON` sur GitHub Pages), sans la langue. */
+export const base = location.pathname.replace(/\/(musees|explorer|monde)\/.*$/, "").replace(/\/(en|es)$/, "");
 
 export const echapper = (t) => String(t ?? "").replace(/[&<>"']/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -13,22 +21,25 @@ export const echapper = (t) => String(t ?? "").replace(/[&<>"']/g, (c) =>
 export const plier = (t) => String(t ?? "").replace(/œ/g, "oe").replace(/Œ/g, "oe").replace(/æ/g, "ae")
   .replace(/Æ/g, "ae").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
-export const nombre = (n) => n.toLocaleString("fr-FR");
+export const nombre = (n) => n.toLocaleString(t("fr-FR", "en-GB", "es-ES"));
 
 /** L'adresse d'un chemin du site (`tableaux/van-gogh/iris.jpg`). */
 export const lien = (chemin) => `${base}/${String(chemin).replace(/^\//, "")}`;
 
+/** L'adresse d'une page du site dans la langue de la page (`credits/` → `/ARTEON/en/credits/`). */
+export const lienPage = (chemin) => `${base}${prefixe}/${String(chemin).replace(/^\//, "")}`;
+
 /** Le catalogue du site : expositions, salles (avec leur plan), artistes, œuvres. */
 let catalogue;
 export function chargerCatalogue() {
-  catalogue ??= jsonGarde(lien("catalogue.json"), 3600e3);
+  catalogue ??= jsonGarde(lien(langue === "fr" ? "catalogue.json" : `${langue}/catalogue.json`), 3600e3);
   return catalogue;
 }
 
 /** Les adresses des pages du site pour une œuvre, une exposition, une galerie. */
-export const pageOeuvre = (ex, w) => lien(`${ex.slug}/oeuvres/${w.slug}/`);
-export const pageExposition = (ex) => lien(`${ex.slug}/`);
-export const pageGalerie = (ex, w) => lien(`${ex.gallery}/`) + (w ? `#${w.slug}` : "");
+export const pageOeuvre = (ex, w) => lienPage(`${ex.slug}/oeuvres/${w.slug}/`);
+export const pageExposition = (ex) => lienPage(`${ex.slug}/`);
+export const pageGalerie = (ex, w) => lienPage(`${ex.gallery}/`) + (w ? `#${w.slug}` : "");
 
 const ROMAINS = { I: 1, V: 5, X: 10, L: 50, C: 100 };
 
@@ -76,8 +87,13 @@ export function romain(n) {
 export const rangSiecle = (y) => y <= -100000 ? -999999 : (y < 0 ? -(Math.floor((-y - 1) / 100) + 1) : Math.floor((y - 1) / 100) + 1);
 
 export function titreSiecle(r) {
-  if (r === -999999) return "Avant l'histoire";
+  if (r === -999999) return t("Avant l'histoire", "Prehistory", "Prehistoria");
   const n = Math.abs(r);
+  if (langue === "en") {
+    const suffixe = n % 100 >= 11 && n % 100 <= 13 ? "th" : ({ 1: "st", 2: "nd", 3: "rd" })[n % 10] || "th";
+    return `${n}${suffixe} century${r < 0 ? " BC" : ""}`;
+  }
+  if (langue === "es") return `Siglo ${romain(n)}${r < 0 ? " a. C." : ""}`;
   return `${romain(n)}${n === 1 ? "ᵉʳ" : "ᵉ"} siècle${r < 0 ? " av. J.-C." : ""}`;
 }
 

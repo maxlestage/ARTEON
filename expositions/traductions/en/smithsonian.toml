@@ -1,0 +1,1265 @@
+[exposition]
+ordre = 110
+nom_court = "Smithsonian"
+mouvement = "American Art of the 19th Century"
+cadre = "dore"
+couleur = "#8a3b2e"
+titre = "America in the 19th Century: Painting and Sculpture"
+artiste = "American Painters and Sculptors"
+dates = "1836–1899"
+accroche = "Virtual Exhibition · Smithsonian Museums"
+introduction = """
+A museum inspired by those of the Smithsonian in Washington: a great covered court \
+where Greenough's George Washington presides, landscapes of the Hudson and the \
+Sierra Nevada, portraits by Whistler, Sargent and Eakins, sculptures by \
+John Rogers, and an Asian cabinet in the spirit of the Freer Gallery. The sculptures are \
+3D scans from the Smithsonian, freely available to the public."""
+vitrine = "mere-whistler.jpg"
+
+[musee]
+nom = "Smithsonian American Art Museum"
+ville = "Washington, United States"
+construction = "1836–1867"
+presentation = """
+The Smithsonian American Art Museum occupies, together with the National Portrait Gallery, the former \
+Patent Office in Washington, where patents for inventions were once filed. Begun in \
+1836 and completed in 1867, this vast neoclassical quadrangle with porticoes, its \
+architecture inspired by Greek temples, is one of the oldest public buildings in \
+the capital. During the Civil War it served as a hospital, and Walt Whitman came to \
+tend the wounded there; in 1865 it hosted the ball for Lincoln's second inauguration. \
+Threatened with demolition in the 1950s, it was saved and entrusted to the Smithsonian, which \
+opened its two museums there in 1968. Since 2007, its inner court, the Kogod Courtyard, has been \
+covered by an undulating glass canopy designed by Foster and Partners. The museum traces \
+American art from the colonial era, from the landscapes of the Hudson River School to \
+contemporary works."""
+ici = """
+ARTEON keeps its plan around a court. The covered court, a square 20 metres on \
+each side and 12 metres high, beneath a glass roof, welcomes visitors from the south, at the foot of \
+Greenough's George Washington. Three rooms surround it: to the west, American \
+Landscapes, with pale green walls; to the north, Portraits, with pink walls, both \
+6 metres high; to the east, Genre Sculptures, lower, with pearl-grey walls. \
+A door on the north side of the latter opens onto the smallest room, the Asian \
+Cabinet, with sand-coloured walls, where the visit ends."""
+
+[[salles]]
+nom = "The Covered Court"
+theme = "Beneath the glass roof, the colossal statue of George Washington, sculpted in Florence for the Capitol."
+murs = "#ece6da"
+x = 0
+z = 0
+largeur = 20
+profondeur = 20
+hauteur = 12
+portes = ["sud", "ouest", "nord", "est"]
+
+[[salles]]
+nom = "American Landscapes"
+theme = "1836–1868: the Hudson, Niagara Falls and the Sierra Nevada, a grand and untamed nature."
+murs = "#e4e6dc"
+x = -15
+z = 0
+largeur = 10
+profondeur = 16
+hauteur = 6
+
+[[salles]]
+nom = "Portraits"
+theme = "1871–1899: Whistler's mother, Madame X, Dr. Gross's clinic, and Winslow Homer's sea."
+murs = "#e6dfd8"
+x = 0
+z = -16
+largeur = 16
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Genre Sculptures"
+theme = "1864–1869: John Rogers's plaster groups, and the life mask of Lincoln."
+murs = "#e3e3e6"
+x = 15
+z = 0
+largeur = 10
+profondeur = 12
+hauteur = 5
+portes = ["nord"]
+
+[[salles]]
+nom = "The Asian Cabinet"
+theme = "6th century: a Chinese Buddha whose robe tells of the realms of existence, as at the Freer Gallery."
+murs = "#d9d2c4"
+x = 15
+z = -11
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+[[oeuvres]]
+titre = "The Oxbow (The Bend of the Connecticut)"
+artiste = "Thomas Cole"
+annee = "1836"
+image = "oxbow.jpg"
+technique = "Oil on canvas, 130.8 × 193 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "After the storm, the river traces a loop: on one side the wild forest, on the other the cultivated fields."
+description = """
+From the summit of Mount Holyoke in Massachusetts, the gaze plunges down to the Connecticut \
+Valley. The canvas is divided in two. On the left, a dark forest and a \
+lightning-struck tree with broken branches cling to the escarpment, while the storm \
+moves off, still letting fall curtains of rain over the hills. On the right, beneath a \
+clearing sky, the river describes a broad loop amid cultivated fields, \
+pastures and groves; thin wisps of smoke rise from the farms and small boats \
+glide over the water. In the foreground, almost hidden among the rocks, a tiny \
+painter in a hat sits before his easel and turns back toward us; \
+beside him lie a parasol and a portfolio. The diagonal of the storm \
+and that of the hill lead the eye from shadow into light."""
+evocation = """
+The painting is often read as a dialogue between two Americas: wild nature, \
+sublime and threatening, and the landscape tamed by settlers, peaceful and prosperous. \
+Cole does not decide outright. In his writings, he celebrates the beauty of untouched \
+expanses and worries at seeing them cleared at great speed; some historians \
+therefore see in the cultivated valley a promise, others the beginning of a loss. \
+The passing storm may represent a moment of turning, that of a country choosing its \
+path. By portraying himself at work, at the junction of the two worlds, the painter \
+claims his role as witness and interpreter of the land, at a time when the young \
+United States sought in its landscapes a grandeur comparable to the ruins and \
+cathedrals of Europe."""
+histoire = """
+Cole painted The Oxbow in 1835–1836, while working on The Course of Empire, the great \
+cycle of five canvases commissioned by the New York merchant Luman Reed. He intended this \
+large-format landscape for the annual exhibition of the National Academy of Design in New \
+York, and chose an already famous site: the meander seen from Mount Holyoke was one of the \
+stops on the picturesque tour of New England, reproduced in guidebooks and \
+engravings. The canvas was shown at the Academy in 1836, the very year Cole published his \
+“Essay on American Scenery,” a plea for the distinctive beauty of the sites of the New \
+World. The full title, highly descriptive, specifies that it is a view taken after a \
+thunderstorm. The work then passed through private collections before being given to the \
+Metropolitan Museum of Art in 1908 by Mrs. Russell Sage."""
+facture = """
+Cole contrasts two ways of painting: on the left, vigorous impasto, twisted trunks \
+and dark greens verging on black; on the right, a smoother paint surface, with tender \
+greens and golden ochres, where the fields are detailed with the tip of the brush. \
+The panoramic format and elevated viewpoint draw on the tradition of topographical views \
+and European landscapes, from Claude Lorrain to Turner, which Cole had \
+studied on his journey of 1829–1832. The light breaking through the clouds above \
+the valley unifies the composition and dramatises the passage from one world to the other."""
+details = [
+  "At the bottom, in the centre, the painter himself, tiny, seated before his easel.",
+  "On the left, the lightning-struck tree with shattered branches, emblem of wild nature.",
+  "The curtain of rain still falling on the hills at left.",
+  "The thin wisps of smoke rising from the farms in the valley.",
+  "On the hill in the background, the cleared plots in which some have read letters.",
+]
+themes = ["landscape", "wild nature", "storm", "river", "self-portrait"]
+anecdote = """
+Historians have thought they could make out, in the clearings of the hill in the background, \
+Hebrew letters forming the word Noah and, read upside down as if from the sky, \
+Shaddai, “the Almighty.” A divine signature hidden in the landscape? \
+The hypothesis remains debated."""
+salle = 2
+mur = "ouest"
+position = -5
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Among the Sierra Nevada, California"
+artiste = "Albert Bierstadt"
+annee = "1868"
+image = "sierra-nevada.jpg"
+technique = "Oil on canvas, 183 × 305 cm"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Painted in Rome from his sketches of the West: a grand, almost divine vision of California's mountains."
+description = """
+In the heart of a mountain amphitheatre, a still lake reflects snow-capped peaks that \
+seem to rise out of the mist. Light pierces a stormy sky, falls in slanting rays \
+on the granite cliffs and sets the centre of the canvas ablaze. On the right, a waterfall \
+tumbles down a vertiginous wall and vanishes into vapour; on the left, tall dark \
+trees frame the scene like a theatre curtain. In the foreground, on the shore, \
+deer have paused at the water's edge, and waterbirds alight or take \
+flight on the surface. Not a trace of humankind: no path, no house, no traveller. \
+The immense canvas, more than three metres wide, places the viewer before a panorama at once \
+precise and impossible, so completely is everything gathered into a single glance."""
+evocation = """
+Bierstadt composes a kind of American Garden of Eden, a promised land bathed in an \
+almost religious light. The rays piercing the clouds have often been read as \
+the sign of a blessing bestowed on the West, just as the United States completes the \
+conquest of the continent: the first transcontinental railroad was inaugurated the \
+following year, in 1869. The painting exalts the idea of “Manifest Destiny,” the conviction \
+that the nation was called to extend to the Pacific. But it passes over in silence \
+the Native American peoples who lived in these valleys and were driven from them. Today it is seen \
+as much as a celebration of grand nature as an idealised, \
+almost promotional image of a territory offered to settlers and investors."""
+histoire = """
+Bierstadt discovered the Sierra Nevada and the Yosemite Valley in 1863, on a long \
+journey west with the writer Fitz Hugh Ludlow, and brought back numerous \
+studies painted on the spot. Five years later, during a stay in Europe, he \
+composed in his Rome studio this imaginary view, assembled from his \
+sketches: no real place corresponds exactly to this panorama. Before sending it to \
+America, he exhibited it in Europe, notably in London and Berlin, to make \
+the American West known to European audiences and establish his reputation there. The canvas then joined \
+a private American collection. It was bequeathed to the Smithsonian American Art \
+Museum in 1977 by Helen Huntington Hull, and has since ranked among the museum's \
+masterpieces."""
+facture = """
+Trained in Düsseldorf, Bierstadt applies the method of that school: meticulous drawing, \
+a smooth surface in which the brushwork disappears, a precision extending to the reflections in \
+the water and the silhouettes of the animals. He combines this realism of detail with a \
+theatrical staging: backlighting, violent contrasts between zones of shadow and breaks of \
+light, trees as wings, peaks arranged like a stage set. The warm tones of the \
+centre, golden and rosy, are set against the cold blues of the mountains and the deep greens \
+of the foreground. The very large format, conceived to be exhibited alone, contributes to the \
+effect."""
+details = [
+  "The waterfall, on the right, falling from a high wall into a cloud of vapour.",
+  "The deer paused at the lake's edge, in the foreground.",
+  "The rays of sunlight piercing the clouds and striking the cliffs.",
+  "The waterbirds rippling the surface of the lake.",
+  "The almost perfect reflection of the mountains in the water.",
+]
+themes = ["mountain", "American West", "light", "lake", "wild nature"]
+anecdote = """
+Bierstadt's travelling companion in 1863, the writer Fitz Hugh Ludlow, was married to \
+a certain Rosalie. The couple divorced soon afterward, and in 1866 Rosalie married the \
+painter, who took her the following year on his long European stay."""
+salle = 2
+mur = "ouest"
+position = 0.5
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Niagara"
+artiste = "Frederic Edwin Church"
+annee = "1857"
+image = "niagara.jpg"
+technique = "Oil on canvas, 101.6 × 229.9 cm"
+collection = "National Gallery of Art, Washington"
+note = "No shore in the foreground: the viewer stands at the edge of the void, above the falls."
+description = """
+The viewer is suspended above the void, at the very spot where the water \
+tips over. There is no bank, no rock, no stroller to serve as a point of reference: the foreground \
+is filled by the green and white sheet of the river sliding toward the precipice. \
+Horseshoe Falls, the great cataract seen from the Canadian side, traces a vast curve that \
+recedes toward the back, to the horizon where a distant shore, low and \
+wooded, appears. An immense cloud of spray rises from the abyss and mingles with the sky. On the right, a \
+rainbow forms in the mist. The very elongated format, more than twice as \
+wide as it is high, stretches the falls from edge to edge and gives the eye the sensation of \
+sweeping across the whole landscape in a single movement."""
+evocation = """
+In the mid-19th century, Niagara was the great natural symbol of the United States, their \
+answer to the monuments of Europe. Church makes it a physical experience: with no solid \
+ground underfoot, the viewer feels the vertigo and the power of the water, what the \
+age called the sublime, a mixture of dread and wonder. The rainbow, \
+biblical sign of the covenant between God and humankind after the Flood, has often been \
+interpreted as a promise made to the nation, in a Protestant America that \
+saw in its landscapes the mark of Creation. It has also been seen as an almost \
+scientific vision, faithful to the outlook of Alexander von Humboldt, whom Church admired: nature \
+observed with exactness, yet grasped as a living whole, in perpetual motion."""
+histoire = """
+Church visited Niagara several times in 1856 and made numerous drawings and \
+oil sketches from every angle, before painting the large canvas in his \
+New York studio in the spring of 1857. The painting was shown alone in the gallery of the \
+dealers Williams, Stevens & Williams, and thousands of visitors paid admission to \
+see it; a chromolithograph ensured its circulation. It was then exhibited in \
+London, where it drew great notice, before returning to the United States. Shown at the \
+Exposition Universelle in Paris in 1867, it won a medal there. The Corcoran Gallery of Art in \
+Washington bought it in 1876. When that museum closed in 2014, its collection was \
+dispersed, and Niagara joined the National Gallery of Art."""
+facture = """
+Church paints with an almost photographic precision: one can make out the transparency \
+of the green water at the edge of the falls, the foam trailing away, the light passing through \
+the spray. His brushwork remains invisible, as with his teacher Thomas Cole and the \
+landscapists of the Hudson River School, but he breaks with their compositions framed \
+by trees and rocks. The panoramic format, borrowed from panoramas and topographical \
+views, and the suppression of the foreground are bold choices. The \
+colours remain restrained, greens, bluish whites and golden greys, so that the whole effect \
+rests on the movement of the water and the light."""
+details = [
+  "The brink of the falls, in the foreground, where the water turns translucent as it tips over.",
+  "The rainbow, on the right, born in the mist.",
+  "The cloud of spray merging with the clouds in the sky.",
+  "The distant line of the shore, very low, which heightens the sense of immensity.",
+]
+themes = ["water", "sublime", "landscape", "nation", "rainbow"]
+anecdote = """
+Ten years later, Church returned to the subject with a vertical painting, Niagara Falls, \
+from the American Side (1867), in which the cataract this time falls from the top to the bottom of \
+the canvas. It is held at the Scottish National Gallery in Edinburgh."""
+salle = 2
+mur = "ouest"
+position = 5.6
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Arrangement in Grey and Black No. 1 (Portrait of the Artist's Mother)"
+artiste = "James McNeill Whistler"
+annee = "1871"
+image = "mere-whistler.jpg"
+technique = "Oil on canvas, 144.3 × 162.4 cm"
+collection = "Musée d'Orsay, Paris"
+note = "The painter wanted a harmony of grey and black; the world saw in it the portrait of all mothers."
+description = """
+An elderly lady dressed in black sits in profile, turned to the left, her hands \
+resting in her lap, holding a white handkerchief. She wears a white lace cap \
+and matching lace cuffs. Her feet rest on a small footstool. \
+The setting is reduced to almost nothing: a grey wall, a black baseboard, a dark curtain \
+on the left, scattered with light motifs, and, hanging on the wall, a frame with a wide white \
+mount containing a print by the artist of the Thames. The woman does not look at \
+the viewer; she gazes at a point before her, motionless. The horizontal \
+and vertical lines of the wall, the frame and the curtain build a network of rectangles \
+into which the silhouette, with its very straight back, fits as a dark shape."""
+evocation = """
+Whistler wanted the painting to be looked at as a composition of forms and \
+tones, in the manner of a piece of music, hence his title “arrangement.” He \
+defended art for art's sake and mocked those who sought sentiment in it. The \
+public nevertheless saw something quite different: the austere dignity of an aged mother, her \
+patience, a kind of almost religious recollection. Anna McNeill Whistler, a \
+pious and rigorous woman, had joined her son in London during the Civil War. \
+Over time, the work became an icon of motherhood, and even a symbol of \
+America during the crisis of the 1930s. This gap between the painter's intention \
+and the public's reading is part of its history and its fame."""
+histoire = """
+The painting was made in 1871 in Whistler's house in Chelsea, on the banks of the \
+Thames. According to the account handed down, the pose, first planned standing, proved \
+too tiring for Anna Whistler, then over sixty, and was replaced by \
+a seated pose. In 1872, the work was shown at the Royal Academy in London, where it \
+was nearly rejected. Whistler, often short of money, later pawned it. In \
+1891, thanks in part to the support of Stéphane Mallarmé and Georges Clemenceau, the French \
+State bought it for the Musée du Luxembourg, devoted to living artists: for \
+Whistler, this was a consecration. The painting then passed to the Louvre and, in 1986, to the \
+Musée d'Orsay. It has travelled widely, notably to the United States in 1932–1934."""
+facture = """
+The palette is deliberately reduced to greys, blacks and whites, with a few barely perceptible \
+warm tones. Whistler applies very thinned paint, in thin, almost transparent \
+layers, which he wipes away and reworks until he achieves the desired harmony. \
+The composition, made of flat planes and interlocking rectangles, owes much to the \
+Japanese prints the artist collected, like the patterned curtain, and to \
+Velázquez, whom he admired for his blacks and greys. The strict profile, cut out against the \
+wall, also recalls the tradition of medals and silhouettes."""
+details = [
+  "The white handkerchief the old lady holds in her hands.",
+  "The small footstool beneath her feet, lifting her from the floor.",
+  "The dark patterned curtain, on the left, inspired by Japanese fabrics.",
+  "The framed picture on the wall: an etching by Whistler of the Thames.",
+  "The lace of the cap and cuffs, the only touches of bright white.",
+]
+themes = ["mother", "portrait", "harmony", "grey", "Japonisme"]
+anecdote = """
+In 1934, the United States Post Office issued a Mother's Day stamp reproducing the \
+painting, with the inscription “In memory and in honor of the mothers of America.” The \
+portrait of Mrs. Whistler then became a national image."""
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 1.6
+
+[[oeuvres]]
+titre = "The Gross Clinic (Dr. Gross's Clinic)"
+artiste = "Thomas Eakins"
+annee = "1875"
+image = "gross-clinic.jpg"
+technique = "Oil on canvas, 243.8 × 198.1 cm"
+collection = "Philadelphia Museum of Art and Pennsylvania Academy of the Fine Arts"
+note = "An operation in the Philadelphia amphitheatre: the surgeon turns, scalpel in his bloodied hand."
+description = """
+In the amphitheatre of the Jefferson Medical College in Philadelphia, Dr. Samuel D. \
+Gross, his grey hair dishevelled, has paused in mid-operation to address \
+the students. He holds a scalpel in his right hand, his fingers reddened with blood. \
+Before him, on the table, the patient, a young man of whom one sees little but the \
+opened thigh and the feet, is surrounded by the team: assistants hold the \
+incision open, another holds a cloth soaked in chloroform over his face. On the \
+left, a woman in black, probably a relative of the patient, shields her eyes with a \
+convulsive gesture. In the tiers sunk in half-darkness, students look on; \
+an assistant takes notes. Light falls from a skylight and illuminates the surgeon's \
+forehead."""
+evocation = """
+Eakins makes the surgeon a modern hero, a man of science with sure knowledge, in the \
+line of Rembrandt's The Anatomy Lesson of Dr. Nicolaes Tulp. The contrast between the master's calm \
+and the woman's horror sets reason against emotion, science against fear. \
+The operation performed, which made it possible to treat a bone infection without amputating the \
+leg, illustrates the progress of American surgery, of which Philadelphia was a \
+great centre. The raw realism of the blood and flesh was received as a provocation; \
+today it is seen as the assertion of truth as painting's supreme value, \
+and as Eakins's ambition to show the modern life of his city, its scientists and its \
+institutions, without embellishing anything."""
+histoire = """
+Eakins, who had taken anatomy courses at the Jefferson Medical College, painted this \
+large picture in 1875 in the hope of showing it at the Centennial Exhibition, \
+held in Philadelphia in 1876. The fine arts jury rejected it, \
+probably shocked by its crudeness; the canvas was finally hung in the army's \
+medical pavilion, among hospital equipment. Critics were divided: \
+some hailed the power of the portrait, others were horrified. In 1878, \
+the Jefferson Medical College alumni association bought it for a modest sum \
+and gave it to the school, where it remained for more than a century. When the university decided \
+to sell it, in 2006, a public mobilisation enabled the Philadelphia Museum of Art \
+and the Pennsylvania Academy of the Fine Arts to acquire it jointly."""
+facture = """
+Eakins builds the scene in chiaroscuro, in the manner of Rembrandt and the Spanish painters, \
+Velázquez and Ribera, whom he had studied at the Prado. The background is almost black, \
+and the light, concentrated on Gross's forehead, his hand and the wound, draws a \
+pyramid of light. His training under Jean-Léon Gérôme in Paris shows in the \
+precision of the drawing and the solidity of the volumes. A fine connoisseur of anatomy and \
+perspective, he prepared his compositions through rigorous studies. The red of the \
+blood, the only vivid colour in a range of browns and blacks, immediately draws the eye \
+to the surgeon's hand."""
+details = [
+  "Gross's scalpel and bloodied fingers, at the centre of the light.",
+  "The woman in black, on the left, hiding her face with a clenched hand.",
+  "At the far right, among the spectators, Eakins has portrayed himself drawing.",
+  "No gloves or gowns: in 1875, surgeons operated in frock coats.",
+  "The chloroform cloth placed over the patient's face.",
+]
+themes = ["medicine", "science", "realism", "portrait", "Philadelphia"]
+anecdote = """
+In 2006, Thomas Jefferson University agreed to sell the painting for 68 million \
+dollars to the National Gallery of Art in Washington and the Crystal Bridges museum in \
+Arkansas. Philadelphia raised the sum within the allotted time to keep the work in \
+the city."""
+salle = 3
+mur = "nord"
+position = -4
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Madame X (Madame Pierre Gautreau)"
+artiste = "John Singer Sargent"
+annee = "1883–1884"
+image = "madame-x.jpg"
+technique = "Oil on canvas, 208.6 × 109.9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "The portrait caused a scandal at the Salon: Sargent left Paris. He considered it the best he had ever painted."
+description = """
+A young woman stands, her body turned toward us and her head in profile. She \
+wears a black satin gown with a plunging neckline, held on the shoulders by \
+thin straps adorned with jewels. Her skin, of a pearly whiteness, contrasts \
+violently with the black of the fabric and the warm brown background. Her right hand rests on \
+a small table, the wrist turned back in a tense gesture; the left holds a folded \
+fan. In her upswept hair gleams a small crescent-moon diadem. \
+No other accessory, no setting distracts the eye: everything rests on the \
+silhouette, the contrast of black and white and the line of the profile, as sharp as that \
+of a medal."""
+evocation = """
+Sargent wanted to paint a famous beauty of society Paris, Virginie Amélie Avegno, \
+born in New Orleans and wife of the banker Pierre Gautreau, like him an \
+American settled in France. The portrait celebrates a cold, sculptural elegance, \
+almost abstract. The crescent moon evokes Diana, the huntress of mythology, \
+a haughty and unattainable goddess. But the Paris of 1884 saw in it an image of arrogance and \
+flaunted allure, that of a woman who makes a spectacle of her beauty. The painting \
+speaks of the ambition of a twenty-eight-year-old painter who wanted to make a splash \
+at the Salon, and of the narrow line separating daring from scandal in the polite \
+society of the Third Republic."""
+histoire = """
+Sargent himself approached his model, who agreed to pose; the sittings took place in \
+Paris and, in the summer of 1883, on the Gautreau estate at Paramé, in Brittany. Shown \
+at the Salon of 1884 under the title “Portrait of Mme ***,” the painting unleashed mockery \
+and indignation. Critics objected to the pallor of the skin, the pose, and above all the right \
+strap, then painted slipping down the arm, judged indecent. The sitter's mother asked \
+Sargent to withdraw the work, which he refused to do. He then repainted the strap \
+on the shoulder and kept the canvas in his studio. As Parisian commissions dried up, he \
+settled in London in 1886. In 1916, he sold the painting to the Metropolitan Museum of Art \
+under a title that withholds the sitter's name: Madame X."""
+facture = """
+A pupil of Carolus-Duran, Sargent commands a quick, fluid painting style inherited from \
+Velázquez and Frans Hals. Here he holds back his virtuosity: the brushwork remains supple in \
+the gown and the background, but the flesh is treated in smooth surfaces, of a white tinged with \
+grey and lilac, which evokes the powder with which the young woman covered herself. The \
+tall, narrow framing and the silhouette cut out against a plain background recall the full-length portraits by \
+Velázquez and Manet. The contour is of an almost graphic sharpness."""
+details = [
+  "The diamond crescent moon in her hair, attribute of Diana.",
+  "The right strap, repainted on the shoulder after the Salon scandal.",
+  "The right hand clenched on the edge of the small table.",
+  "The slightly rosy ear, the only touch of colour in a very pale face.",
+  "The folded fan, almost invisible against the black satin.",
+]
+themes = ["portrait", "elegance", "scandal", "Paris", "fashion"]
+anecdote = """
+Sargent also painted a second version of the portrait, left unfinished, which he kept \
+in his studio. It was bought in 1925, the year of his death, by the Tate in London, \
+where it remains today."""
+salle = 3
+mur = "nord"
+position = 3.5
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Child's Bath (The Bath)"
+artiste = "Mary Cassatt"
+annee = "1893"
+image = "bain-enfant.jpg"
+technique = "Oil on canvas, 100.3 × 66.1 cm"
+collection = "Art Institute of Chicago"
+note = "Seen from above, like a Japanese print: the tenderness of an everyday gesture."
+description = """
+A seated woman holds on her lap a small child half wrapped in a white towel \
+and washes its feet in a basin set on the floor. Both heads \
+bowed, they gaze at the water; the woman's hand encircles the child's foot, while the child \
+leans one hand on her knee. The woman wears a loose gown with broad \
+light, colourful stripes. Around them, the intimacy of a bedroom: a rug with \
+floral patterns, a pitcher on the floor, at right, and, at the top of the painting, a painted \
+piece of furniture. The very high viewpoint plunges onto the scene, so that the floor seems to \
+rise like a wall and the two figures fill almost the whole height of the \
+canvas."""
+evocation = """
+Mary Cassatt devoted a large part of her work to women and children, not \
+as sentimental allegories, but as observed scenes of daily \
+life. Here, tenderness is conveyed through a simple, concentrated gesture, shared in \
+silence. The gazes converge on the same point, the water in the basin, and create \
+an intimacy from which the viewer is almost excluded. It has been seen as a modern vision of \
+motherhood, made of attention and care rather than religious idealisation, \
+the opposite of the Madonnas and Child of tradition. Some historians also stress \
+the topicality of the bath theme, at a time when hygiene and the upbringing of young \
+children were becoming new concerns for bourgeois families."""
+histoire = """
+Cassatt painted The Child's Bath in 1893, the year she produced the great \
+mural “Modern Woman” for the Woman's Building at the Chicago World's \
+Fair, and when the Durand-Ruel gallery devoted an important solo exhibition to her in Paris. \
+Settled in France since 1874, close to Degas, who had invited her to \
+exhibit with the Impressionists, she was then at the peak of her career. The year \
+1890 had been decisive: the great exhibition of Japanese prints at the École des \
+Beaux-Arts had pushed her to renew her manner, first in colour printmaking, \
+then in painting. The painting was acquired by the Art Institute of Chicago \
+in 1910, during the artist's lifetime, and has since ranked among the museum's most popular \
+works."""
+facture = """
+The composition owes much to Japanese prints by Utamaro and his contemporaries: \
+plunging view, tilted floor, juxtaposed decorative patterns, absence of horizon, \
+figures tightly packed within the frame. The stripes of the gown, the flowered rug and the painted \
+furniture answer one another as flat surfaces of colour, while the child's flesh \
+is modelled with softness. The brushwork, free and visible in the fabrics, remains \
+Impressionist, but the drawing, firm and precise, shows the influence of Degas. The \
+light, fresh colours convey the soft light of a bedroom."""
+details = [
+  "The two heads bowed toward the water, looking at the same point.",
+  "The child's foot held in the woman's hand, above the basin.",
+  "The pitcher set on the rug, at right.",
+  "The stripes of the gown, contrasting with the child's bare skin.",
+  "The patterned rug, seen from above, rising to the middle of the painting.",
+]
+themes = ["motherhood", "childhood", "intimacy", "Japonisme", "daily life"]
+anecdote = """
+Mary Cassatt never married and had no children. For her scenes of motherhood, \
+she used posed models, often women and children from her circle or \
+neighbourhood, who were not necessarily mother and child in real life."""
+salle = 3
+mur = "est"
+position = 0
+largeur = 0.9
+
+[[oeuvres]]
+titre = "The Gulf Stream"
+artiste = "Winslow Homer"
+annee = "1899"
+image = "gulf-stream.jpg"
+technique = "Oil on canvas, 71.4 × 124.8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A lone sailor on a dismasted boat, ringed by sharks, a waterspout on the horizon."
+description = """
+On the open sea, a Black man, bare-chested, lies half-reclined on the deck of a small \
+crippled boat, which lists dangerously. The mast is broken; stalks of sugar \
+cane spill from the hold. Around the boat, sharks circle in the dark \
+blue waves, jaws open. The man does not look at them: he stares out to sea, looking weary \
+or resigned. On the right, on the horizon, a waterspout rises between sea and clouds; \
+far off to the left, almost invisible, a sailing ship passes. A few flying \
+fish lie on the deck. The powerful swell lifts the boat and closes off the horizon, \
+isolating the sailor in the middle of the ocean, with no land or help in sight."""
+evocation = """
+Homer paints a meditation on the human condition in the face of an indifferent nature: a \
+lone man, deprived of any means of action, threatened at once by the sharks, the storm \
+and the drift. The choice of a Black sailor, at the end of the 19th century, has prompted \
+many readings. It has been seen as an evocation of the history of slavery and of \
+the Atlantic slave trade, and of the precarious situation of African Americans after the failure of \
+Reconstruction. Others read it as a more personal painting: Homer, ageing, \
+had just lost his father in 1898, and the work takes on overtones of meditation on \
+death. The quiet strength of the figure, who faces his fate without giving way to panic, has also \
+been stressed by historians."""
+histoire = """
+The painting grew out of several of Homer's stays in the Caribbean and Florida, notably \
+in the Bahamas in 1884–1885 and in 1898–1899. There he had painted in watercolour Black \
+sailors, sharks and boats, some of whose sheets directly foreshadow the \
+composition. Back in his studio at Prouts Neck, on the coast of Maine, he \
+completed the large canvas in 1899. Exhibited from 1900, notably at the Pennsylvania \
+Academy of the Fine Arts, it intrigued and disturbed by the harshness of its subject, and struggled \
+to find a buyer. In 1906, the jury of the National Academy of \
+Design exhibition unanimously recommended its purchase by the Metropolitan Museum of Art, which acquired it \
+the same year."""
+facture = """
+Homer, who came from illustration and watercolour, paints here with a broad, energetic \
+touch. The waves are built up in great strokes of the brush, deep blues, \
+greens and the white of foam. The composition rests on an unstable diagonal: the \
+listing boat, the sloping deck, the man's body following the slope. The reds and \
+browns of the boat and the sugar cane cut against the blues of the water. The waterspout and \
+the distant ship are reduced to a few touches, so that everything converges on \
+the man and the sharks."""
+details = [
+  "The sugar cane stalks spilling from the hold.",
+  "The flying fish stranded on the deck.",
+  "The waterspout rising on the horizon, at right.",
+  "The tiny ship, far off at the back left, too distant to bring help.",
+  "The stump of the broken mast.",
+]
+themes = ["sea", "solitude", "danger", "death", "Caribbean"]
+anecdote = """
+Irritated by questions about the sailor's fate, Homer wrote to his dealer that the \
+curious could be reassured: the man did not die of hunger, was not devoured by the \
+sharks nor struck by the waterspout, and was rescued by a ship that does not appear in the \
+painting."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.4
+
+[[sculptures]]
+titre = "George Washington"
+artiste = "Horatio Greenough"
+annee = "1840"
+modele = "washington.stl"
+technique = "Marble"
+collection = "National Museum of American History, Washington"
+note = "Commissioned for the Capitol rotunda: Washington bare-chested, as an ancient Zeus. The shocked public had it moved."
+description = """
+Seated on a massive throne, George Washington is portrayed bare-chested, like a god of \
+Antiquity. A draped cloak covers his legs and falls over the seat; he wears \
+sandals. His right arm is raised, the index finger pointing to the sky, while \
+in his left hand he presents a sheathed sword, the hilt turned toward the \
+viewer. The grave face is that of the hero of Independence, but the \
+powerful body is that of the Jupiter of ancient sculptors. The sides of the throne are adorned with \
+bas-reliefs: Apollo driving the chariot of the Sun, and the infant Hercules strangling the \
+serpents sent against him. At the back, small figures represent Christopher \
+Columbus and a Native American. The statue stands more than three metres high."""
+evocation = """
+Greenough wanted to give the young republic a monument worthy of Antiquity, by \
+portraying its founder in the guise of Zeus, after the colossal statue that \
+Phidias had sculpted for Olympia and that was known only through \
+descriptions. The gesture has been read as a political message: the raised hand points to the \
+higher source of power, while the outstretched sword, hilt first, recalls that \
+Washington gave up his command and renounced power, like the Roman Cincinnatus. \
+The reliefs of the throne associate America with light and nascent strength. But \
+to the American public, little familiar with neoclassical art, the nudity of the father of the \
+nation seemed shocking, even ridiculous: the work reveals the gap between a \
+learned ideal and the taste of a democracy."""
+histoire = """
+In 1832, for the centenary of Washington's birth, Congress commissioned from \
+Greenough, then living in Florence, a statue intended for the Capitol rotunda. The \
+sculptor worked on it for nearly eight years, having the work carved from an enormous block \
+of marble. Completed in 1840, the statue crossed the Atlantic and was installed in the \
+rotunda in 1841. The reception was disastrous: it was poorly lit, its mass unsettling \
+and its nudity shocking. As early as 1843, it was moved to the east lawn of the Capitol, exposed \
+to the weather; a wooden shelter was even built to protect it. In 1908, it was \
+transferred to the Smithsonian, in the Castle building, then, in 1964, to the new \
+museum of history and technology, now the National Museum of American History."""
+facture = """
+Greenough follows the neoclassical teaching he received in Rome in the circle of the Danish \
+sculptor Bertel Thorvaldsen: idealised forms, smooth surfaces, references to the antique. \
+He first modelled the figure, from which a plaster model was made, then the statue was \
+carved in white marble with the help of Italian craftsmen, following the practice of \
+Florentine workshops. The head is inspired by the bust of Washington made from life \
+by Jean-Antoine Houdon in 1785, while the torso and pose take up the type of the \
+enthroned Zeus. The drapery, with its deep folds, contrasts with the polish of the skin."""
+details = [
+  "The right index finger raised toward the sky.",
+  "The sheathed sword, held out hilt first, sign of the renunciation of power.",
+  "The antique-style sandals emerging from the drapery.",
+  "On the sides of the throne, Apollo on his chariot and the infant Hercules with the serpents.",
+]
+themes = ["hero", "antiquity", "nation", "neoclassicism", "power"]
+anecdote = """
+The statue provoked much mockery in Washington: people joked about a president \
+fresh from the bath, or stretching out his arm to ask for his clothes. No other \
+official effigy of the father of the nation was so ridiculed."""
+salle = 1
+x = 0
+z = 0
+hauteur = 3.4
+matiere = "marbre"
+socle = 0.8
+
+[[sculptures]]
+titre = "The Wounded Scout, a Friend in the Swamp"
+artiste = "John Rogers"
+annee = "1864"
+modele = "wounded-scout.stl"
+technique = "Painted plaster"
+collection = "Smithsonian American Art Museum, Washington"
+note = "During the Civil War, a fugitive slave supports a wounded Union soldier: a group sold in the thousands."
+description = """
+In a swamp, a barefoot Black man, dressed in a worn shirt and trousers, \
+supports a Union army soldier, wounded and at the end of his strength. The soldier, in \
+uniform, puts an arm around his rescuer's shoulders and slumps against him. \
+The Black man holds him firmly, his body taut with effort and vigilance. At their \
+feet, among the reeds and grasses of the marsh, a snake slithers, a reminder of the \
+dangers of the place. The group, about sixty centimetres high, is designed to be \
+seen from all sides, set on a table or a parlour mantelpiece. The full title, \
+“The Wounded Scout, a Friend in the Swamp,” underscores the bond of trust uniting \
+the two figures."""
+evocation = """
+The group celebrates the help that fugitive slaves and Black Southerners \
+gave to Union soldiers, by guiding them, hiding them or nursing them. \
+In 1864, as the war raged and Black regiments fought in \
+the federal army, the work asserts a fraternity between whites and Blacks in the struggle \
+against slavery. Its ambiguities have nonetheless been noted: the Black man is a \
+devoted rescuer, but in the service of the white soldier, in a role that remains that of \
+the auxiliary. For the Northern families who bought it, this group was a sign of \
+patriotic and abolitionist commitment, and a reminder of the sacrifices of the war, \
+installed in the heart of the home."""
+histoire = """
+John Rogers conceived The Wounded Scout in 1864, in the midst of the Civil War, when \
+his plaster groups had already won over the Northern public. He had begun with \
+subjects related to slavery, such as The Slave Auction in 1859, then multiplied scenes \
+of the lives of soldiers and civilians during the conflict, which answered the current events \
+his buyers were living through. The Wounded Scout ranks among his greatest successes. Like \
+his other groups, it was sold by catalogue and in the artist's showroom \
+in New York, at a price accessible to middle-class families. The \
+Smithsonian American Art Museum holds many Rogers groups; this one is \
+among the works digitised in 3D and made freely available."""
+facture = """
+Rogers first modelled his figures in clay, then had a bronze model cast, from \
+which flexible moulds were made. These moulds made it possible to cast plaster \
+copies in series, assembled and then covered with a uniform putty-coloured paint, \
+which evokes stone or bronze and hides imperfections. The precision of the \
+detail, in the folds of the clothing, the hands or the reeds, is remarkable for \
+mass production. The compact, almost pyramidal composition ensures the solidity of \
+the object and its legibility from every side."""
+details = [
+  "The soldier's arm around his rescuer's shoulders.",
+  "The Black man's bare feet, planted on the swamp floor.",
+  "The snake slipping between the reeds, at their feet.",
+  "The care given to the folds of the clothing and the soldier's uniform.",
+]
+themes = ["Civil War", "slavery", "fraternity", "rescue", "genre sculpture"]
+anecdote = """
+To protect himself against pirated copies, Rogers had his creations patented: most of \
+his groups bear, inscribed in the plaster, his name and the patent notice with its \
+date. He thus built one of the first mass-produced popular art businesses in the \
+United States."""
+salle = 4
+x = -2.5
+z = 2
+hauteur = 0.6
+matiere = "#b9ab93"
+socle = 1.0
+
+[[sculptures]]
+titre = "The Fugitive's Story"
+artiste = "John Rogers"
+annee = "1869"
+modele = "fugitives-story.stl"
+technique = "Painted plaster"
+collection = "Smithsonian American Art Museum, Washington"
+note = "A woman on the run tells her story to three abolitionists, among them the poet Whittier."
+description = """
+A young Black woman, simply dressed, holds her baby close and tells \
+of her escape to three men gathered around her. They are not anonymous figures: \
+Rogers portrayed three great figures of abolitionism, the poet John Greenleaf \
+Whittier, the pastor Henry Ward Beecher and the journalist William Lloyd Garrison. Their \
+faces are recognisable portraits, with features marked by age. The men, \
+in frock coats, listen gravely; their attitudes, leaning or attentive, \
+all converge on the woman and her child. The group makes up a small theatrical \
+scene, with its gestures and glances, frozen in plaster like a tableau \
+vivant, and reveals itself gradually as one walks around it."""
+evocation = """
+Made in 1869, four years after the abolition of slavery by the Thirteenth Amendment, \
+the group pays retrospective homage to the activists who had fought slavery \
+for decades. The fugitive, a mother protecting her child, embodies the humanity denied \
+by slavery and the force of testimony, which was one of the abolitionists' principal \
+weapons: accounts by escaped slaves, lectures, newspapers. The three men \
+represent the moral conscience of the North through poetry, religion and the press. It is \
+noted today that the woman's voice is at the centre of the scene, but that the \
+heroes whose names are remembered are the three white men: the group reflects the \
+limits of its time as much as its ideals."""
+histoire = """
+John Rogers, who shared abolitionist convictions, devoted this group in 1869 \
+to men whom the Northern public knew and admired. The year before, he \
+had already portrayed real figures in The Council of War, in which Lincoln \
+confers with General Grant and Secretary of War Stanton. Like his other \
+works, The Fugitive's Story was designed to be reproduced in plaster and sold by \
+catalogue, in a format suited to the bourgeois parlour. The subject, more meditative than his \
+war scenes, addresses a public sensitive to the memory of the antislavery \
+struggle, in the aftermath of a conflict that had cost hundreds of thousands \
+of lives. The Smithsonian American Art Museum holds a copy, digitised in 3D \
+and made freely available."""
+facture = """
+Here, the main challenge is likeness: Rogers must make famous faces recognisable, \
+widely circulated at the time through photography and engraving. He \
+modelled them carefully in clay, before following his usual process: bronze model, \
+flexible moulds, plaster casts painted in a uniform tint. The arrangement \
+of the four figures in a circle obliges the viewer to walk around the group, each \
+side offering a different face or gesture. The details of the clothing and hands \
+are precise despite the small size of the whole."""
+details = [
+  "The baby the fugitive holds close.",
+  "The faces of the three abolitionists, true portraits.",
+  "The frock coats and hands, modelled with precision despite the small size.",
+  "The uniform tint unifying the whole, typical of Rogers's groups.",
+]
+themes = ["abolitionism", "slavery", "testimony", "motherhood", "genre sculpture"]
+anecdote = """
+William Lloyd Garrison, one of the three listeners, had published his newspaper The \
+Liberator weekly from 1831 to the end of 1865: he ceased publication once \
+slavery had been abolished by the Thirteenth Amendment, considering his mission accomplished."""
+salle = 4
+x = 2.5
+z = 2
+hauteur = 0.56
+matiere = "#b9ab93"
+socle = 1.0
+
+[[sculptures]]
+titre = "Life Mask of Abraham Lincoln"
+artiste = "Clark Mills"
+annee = "1865"
+modele = "lincoln-mask.stl"
+technique = "Plaster, cast from life"
+collection = "National Portrait Gallery, Washington"
+note = "Cast two months before his assassination: the face of a president worn out by four years of war."
+description = """
+The face of Abraham Lincoln appears as it was in February 1865, eyes closed, \
+cast directly on the skin. The cheeks are hollow, the cheekbones prominent, deep \
+wrinkles cross the forehead and frame the mouth. A short beard covers the \
+chin and jaw, without a moustache, as in his last photographic \
+portraits. On the right cheek, near the mouth, the president's mole can be made out. \
+The lips are pressed together, the eyelids heavy. The mask is limited to the \
+face, without the neck or hair. This is not an interpreted sculpture, but an \
+imprint, of an almost unsettling precision, of every fold and every contour of the \
+skin."""
+evocation = """
+Unlike a painted or sculpted portrait, the mask neither flatters nor idealises: it \
+keeps the exact trace of the features, like a photograph in relief. Compared with the first \
+mask of Lincoln, taken by Leonard Volk in 1860, before his election, this one shows \
+how much four years of civil war marked the man: thinness, weariness, \
+gravity. It is often presented as the most poignant testimony to the personal price \
+paid by the president to preserve the Union and abolish slavery. Taken a few \
+weeks before the victory and the assassination of 14 April 1865, it has taken on the value of a \
+relic. The closed eyes, required by the technique, retrospectively give it \
+the appearance of a death mask, although Lincoln was then very much alive."""
+histoire = """
+Clark Mills, sculptor of the equestrian statue of Andrew Jackson in Washington, whose \
+foundry had also cast the statue of Freedom crowning the dome of the Capitol, \
+made this cast in February 1865, probably with a view to a bust or statue of the \
+president. Lincoln had just been re-elected and began his second term on 4 March. The original mould \
+made it possible to take several plaster copies over the years, and casts \
+circulated among sculptors and collectors. Together with Volk's, Mills's mask \
+has become a reference document for knowing Lincoln's true face, \
+often consulted by the artists who devoted monuments to him. The copy in \
+the National Portrait Gallery was digitised in 3D by the Smithsonian."""
+facture = """
+Life casting follows an ancient technique: the face, coated with a greasy substance \
+so that the plaster adheres neither to skin nor hair, is covered with liquid plaster, \
+which is left to set for a few minutes before being removed. This yields a hollow mould, \
+into which plaster is then poured to obtain the mask in relief. The \
+sitter must remain perfectly still, eyes closed. Mills, a former plasterer trained \
+on the building sites of Charleston, had mastered this process. The white plaster, with no colour \
+or retouching, preserves the texture of the skin, the beard and the finest wrinkles."""
+details = [
+  "The mole on the right cheek, near the mouth.",
+  "The deep furrows running from the nose to the corners of the lips.",
+  "The beard without a moustache, whose texture can be sensed.",
+  "The closed eyelids, heavy with fatigue.",
+]
+themes = ["portrait", "Civil War", "president", "memory", "casting"]
+anecdote = """
+John Hay, one of Lincoln's secretaries, later wrote that this mask was of an \
+unspeakable sadness: the face of a man on whom grief and cares had \
+done their worst, without managing to defeat him."""
+salle = 4
+x = 0
+z = -2
+hauteur = 0.3
+matiere = "platre"
+socle = 1.15
+
+[[sculptures]]
+titre = "Buddha Robed with the Realms of Existence"
+artiste = "Chine, dynastie des Qi du Nord"
+annee = "550–577"
+modele = "buddha.stl"
+technique = "Limestone"
+collection = "Freer Gallery of Art, Washington"
+note = "The “Cosmic Buddha”: on his robe, in light relief, the six realms of existence, from the heavens to the hells."
+description = """
+This large standing stone Buddha has lost his head and hands, but his body retains \
+an imposing presence. He wears the monastic robe, which falls straight to the \
+ankles and clings to the almost cylindrical body without forming marked folds. The whole \
+surface of the robe is covered with scenes sculpted in very low relief and \
+incised lines. Toward the top, palaces and celestial beings evoke the realms of the \
+gods; lower down unfold scenes of the human world, with figures, \
+buildings and trees; at the very bottom, near the hem, the hells appear, \
+where tormented damned souls can be made out. One must come very close, and walk around \
+the statue, to begin to read these images."""
+evocation = """
+In Buddhist thought, beings are endlessly reborn in six realms: those of the \
+gods, demigods, humans, animals, hungry ghosts and the damned of the \
+hells, according to the weight of their deeds. By carrying these realms on his robe, the Buddha \
+appears to encompass the entire universe: his presence extends to all beings, \
+even the most unfortunate, and offers each the possibility of deliverance. Many \
+specialists identify him with the cosmic Buddha Vairocana, described in the Flower \
+Garland Sutra as containing all worlds within himself; others see in him the \
+historical Buddha, Shakyamuni. For the faithful of the 6th century, this image was a \
+support for meditation on each being's place in the cycle of rebirths."""
+histoire = """
+The statue was sculpted in northern China under the Northern Qi dynasty (550–577), \
+a period of great Buddhist fervour when the court and aristocracy funded temples \
+and cave sanctuaries. The exact temple from which it comes is unknown. Like many \
+Chinese Buddhist sculptures, it left China in the early 20th century, in \
+a context of unrest and looting of religious sites that fed the Western art \
+market. It entered the Freer Gallery of Art in 1923, the year the museum \
+opened, founded thanks to the bequest of the collector Charles Lang Freer. In the early \
+2010s, the Smithsonian digitised it in 3D, which made it possible to decipher better the \
+scenes on the robe, difficult to read on the worn stone."""
+facture = """
+The statue is carved from a fine-grained limestone, which lends itself to meticulous \
+work. The almost cylindrical body and the robe clinging to the skin are \
+characteristic of the Northern Qi style, marked by the Indian art of the Gupta period: \
+the cascading drapery of the previous period gives way to a smooth garment, become \
+almost a support. On this surface, the sculptor incised and modelled in very low \
+relief the scenes of the realms of existence, as he would have done on a painting. \
+Originally, the statue was probably painted, which made these scenes far more \
+legible."""
+details = [
+  "At the top of the robe, the palaces and celestial beings representing the heavens.",
+  "Near the hem, the scenes of the hells and their damned.",
+  "The smooth surface of the robe, which clings to the body without marked folds.",
+  "The breaks at the neck and arms: the head and hands are lost.",
+]
+themes = ["Buddhism", "cosmos", "rebirth", "China", "spirituality"]
+anecdote = """
+This Buddha was one of the first objects the Smithsonian put online in 3D, in 2013: \
+anyone can now rotate the statue on their screen and observe the scenes on \
+the robe under lighting impossible to achieve in the gallery."""
+salle = 5
+x = 0
+z = 0
+hauteur = 1.5
+matiere = "pierre"
+socle = 0.4
+
+[[artistes]]
+nom = "Thomas Cole"
+vie = "Bolton (England), 1 February 1801 – Catskill (New York), 11 February 1848"
+biographie = """
+Born in Lancashire at the height of the Industrial Revolution, Thomas Cole was first \
+apprenticed to an engraver of designs for printed cloth. In 1818, his family emigrated \
+to the United States; he lived in Philadelphia and then in Ohio, where he became an \
+itinerant portraitist and learned painting almost on his own. Settled in New York in 1825, he went up \
+the Hudson and painted the Catskill Mountains: his first landscapes were bought by the \
+painters John Trumbull and Asher B. Durand, and success was immediate. From 1829 to 1832, \
+he travelled in England and Italy, where he studied Claude Lorrain, Turner and the Roman \
+ruins. On his return, the merchant Luman Reed commissioned The Course of Empire, five \
+canvases on the birth, glory and fall of a civilisation (1833–1836). In 1836, \
+he married Maria Bartow and settled at Cedar Grove in Catskill, where he took in his only \
+true pupil, Frederic Church. He also painted the cycle The Voyage of Life (1840), \
+returned to Europe in 1841–1842, and died of pleurisy in 1848, at forty-seven. \
+Durand paid tribute to him in Kindred Spirits (1849)."""
+style = """
+Cole is regarded as the founder of the Hudson River School, the first truly American \
+landscape movement. He combines careful observation of nature, recorded \
+in drawings made on the spot, with a learned composition reworked in the studio. \
+His landscapes often oppose shadow and light, the wild and the cultivated, and \
+carry a moral or religious dimension: for him, American nature was a \
+book in which Creation could be read. His allegorical cycles, such as The Course of Empire, \
+extend this reflection on the destiny of nations. Durand, Church and the whole \
+following generation of landscapists drew on his example."""
+
+[[artistes]]
+nom = "Albert Bierstadt"
+vie = "Solingen (Prussia), 7 January 1830 – New York, 18 February 1902"
+biographie = """
+Born in the Rhineland, Albert Bierstadt was only one year old when his family emigrated to New Bedford, \
+a whaling port in Massachusetts. In 1853, he returned to Germany to study at \
+Düsseldorf, whose academy then attracted many Americans; there he mixed with Emanuel \
+Leutze and Worthington Whittredge, and travelled through the Alps and Italy. Back in 1857, he \
+joined in 1859 the expedition of the surveyor Frederick W. Lander to the Rocky \
+Mountains, from which he brought back sketches and photographs. His large canvases of the West, \
+such as The Rocky Mountains, Lander's Peak (1863), made him one of the most \
+famous and best-paid painters in America. In 1863, he discovered Yosemite; in 1866, \
+he married Rosalie, the ex-wife of the writer Fitz Hugh Ludlow. He stayed in Europe from \
+1867 to 1869, then painted California, Canada and Alaska. But from the 1880s \
+on, taste changed: critics judged his canvases theatrical, his large house \
+at Irvington, on the Hudson, burned in 1882, and his affairs declined until \
+bankruptcy in 1895. He died in New York in 1902, almost forgotten."""
+style = """
+Bierstadt marries the precision of the Düsseldorf school, meticulous drawing and a smooth \
+surface, with a sense of spectacle inherited from Romanticism. His views of the West are \
+recomposed in the studio from studies made on the spot: he gathers peaks, \
+waterfalls, lakes and golden light to create an ideal image, grander than \
+nature. He exhibited his giant canvases alone, like events. His images \
+contributed greatly to shaping the vision of the West in American and \
+European opinion, and fed interest in sites such as Yosemite. Mocked for his \
+grandiloquence late in life, he was rediscovered in the second half of the 20th \
+century."""
+
+[[artistes]]
+nom = "Frederic Edwin Church"
+vie = "Hartford (Connecticut), 4 May 1826 – New York, 7 April 1900"
+biographie = """
+Son of a wealthy Hartford businessman, Frederic Edwin Church became in 1844 \
+a pupil of Thomas Cole at Catskill, a rare privilege: Cole trained practically no \
+other disciple. By 1848, at twenty-two, he was elected a member of the National Academy \
+of Design. Passionate about the writings of the naturalist Alexander von Humboldt, he left in \
+1853 for Colombia and Ecuador, where he returned in 1857. Niagara (1857) and then The \
+Heart of the Andes (1859) caused a sensation: exhibited alone, the canvases drew paying \
+crowds. There followed Twilight in the Wilderness (1860), The Icebergs (1861), \
+after a voyage off Labrador, and Cotopaxi (1862). In 1860, he married Isabel \
+Carnes; the death of two of their children, in 1865, affected him deeply. He then travelled \
+in Europe and the Near East (1867–1869), then had Olana built above \
+the Hudson, a Persian-inspired residence whose grounds he also designed. From \
+the 1870s, rheumatism gradually prevented him from painting. He died in \
+New York in 1900, by which time his style had gone out of fashion."""
+style = """
+Church takes the ambitions of the Hudson River School to their peak. He combines the exactness \
+of a naturalist, attentive to geology, botany and the phenomena of the sky, with \
+the pursuit of grand effects: blazing sunsets, volcanoes, ice, \
+cataracts. His smooth, meticulous painting renders both the transparency of water \
+and the incandescence of clouds. He conceived his large canvases as spectacles, \
+shown alone, with carefully designed lighting and monumental framing. Famous in his \
+lifetime, forgotten in the early 20th century, he is today regarded as one of the \
+greatest American landscape painters."""
+
+[[artistes]]
+nom = "James McNeill Whistler"
+vie = "Lowell (Massachusetts), 11 July 1834 – London, 17 July 1903"
+biographie = """
+James Abbott McNeill Whistler spent part of his childhood in Saint Petersburg, where \
+his father, an engineer, built a railway line for the tsar. Back in the \
+United States, he entered the military academy at West Point, from which he was dismissed in 1854, \
+then learned etching while working as a cartographer. In 1855, he left for Paris, \
+attended the studio of Charles Gleyre and befriended Fantin-Latour and Courbet. Settled \
+in London in 1859, he divided his life between the two capitals. His Symphony in White, No. \
+1, The White Girl, caused a sensation at the Salon des Refusés in 1863. He \
+collected Far Eastern porcelain and prints, and painted his “nocturnes” \
+of the Thames and his “arrangements.” In 1877, the critic John Ruskin accused him of having \
+flung a pot of paint in the public's face; Whistler sued him for \
+libel, which he won in 1878, but with damages of one farthing, a quarter of a \
+penny. Ruined by the costs, he went bankrupt in 1879 and left to make etchings in Venice. The \
+1880s and 1890s finally brought him recognition, in France as in \
+England. He died in London in 1903."""
+style = """
+Whistler claims art for art's sake: painting should neither narrate nor moralise, \
+but create a harmony of forms and colours, like music. Hence his titles, \
+“symphonies,” “arrangements,” “nocturnes.” His palette is often reduced to \
+a few neighbouring tones, applied in thin, fluid layers. He borrows from Japanese \
+prints their asymmetrical compositions, flat areas of colour and framing, and from \
+Velázquez the art of greys and blacks. A first-rate printmaker, he also renewed \
+etching. His conception of an autonomous painting, detached from subject, foreshadows \
+abstraction and left its mark on the Symbolists as on the moderns."""
+
+[[artistes]]
+nom = "Thomas Eakins"
+vie = "Philadelphia, 25 July 1844 – Philadelphia, 25 June 1916"
+biographie = """
+Thomas Eakins spent almost his whole life in his native city, Philadelphia. After \
+studies at the Pennsylvania Academy of the Fine Arts, supplemented by anatomy courses \
+at the Jefferson Medical College, he left in 1866 for Paris. There he studied at the École des \
+Beaux-Arts in the studio of Jean-Léon Gérôme, also worked with Léon Bonnat and the \
+sculptor Augustin Dumont, then discovered Velázquez and Ribera in 1869 at the Prado \
+in Madrid. Back in 1870, he painted the rowers of the Schuylkill River, then The \
+Gross Clinic in 1875. A teacher at the Pennsylvania Academy from \
+1876, then director, he imposed there the study of the nude model and dissection. In 1886, he \
+was forced to resign after removing the loincloth from a male model in front of \
+female students. A passionate photographer, he collaborated with Eadweard Muybridge on the \
+study of motion. In 1884, he married the painter Susan Macdowell, his former \
+pupil. Long kept at the margins, he painted The Agnew Clinic in 1889 and \
+received a few honours only late in life. He died in Philadelphia in 1916."""
+style = """
+Eakins is the great American realist painter of his century. To the academic rigour \
+learned from Gérôme, he adds a scientific knowledge of anatomy, \
+perspective and movement, studied through dissection and photography. His \
+paintings, built with geometric precision, refuse all flattery: his \
+portraits show the wrinkles, the fatigue, the introspection. His dark palette and \
+chiaroscuro owe much to the Spanish masters and to Rembrandt. Misunderstood in his \
+lifetime, he is recognised in the 20th century as a major figure; through his pupil Thomas \
+Anshutz, teacher of Robert Henri, he also influenced the realists of the \
+Ashcan School."""
+
+[[artistes]]
+nom = "John Singer Sargent"
+vie = "Florence, 12 January 1856 – London, 14 April 1925"
+biographie = """
+Born in Florence to American parents settled in Europe, John Singer Sargent grew up \
+amid family travels between Italy, France, Switzerland and Germany, and did not \
+discover the United States until the age of twenty. In 1874, he entered the studio of the portraitist \
+Carolus-Duran in Paris and quickly made his mark at the Salon, with Fumée d'ambre gris (1880), \
+El Jaleo (1882) and The Daughters of Edward Darley Boit (1882). The scandal of Madame X, in \
+1884, slowed his Parisian career: in 1886, he settled in London, in the \
+Chelsea district. Painted in the village of Broadway, Carnation, Lily, Lily, Rose \
+(1885–1886) was bought by the Tate in 1887. Sargent became the most \
+sought-after portraitist of English and American high society. Around 1907, tired of commissions, \
+he almost gave up portraiture for watercolour and for large mural decorations at the \
+Boston Public Library and the Museum of Fine Arts, Boston. Sent to the front in 1918 \
+as a war painter, he brought back Gassed (1919). He died in London in \
+1925."""
+style = """
+Sargent is famous for his virtuosity: a quick, broad and fluid touch, often \
+applied in a single go, which gives an impression of total ease. Heir to \
+Velázquez and Frans Hals through Carolus-Duran's teaching, he also practised \
+Impressionism alongside Monet, at Giverny. His portraits capture the elegance, \
+the social rank and the personality of his sitters, with a keen sense of fabrics, \
+reflections and poses. His watercolours, free and luminous, rank among the finest \
+of their time. Long judged superficial by modernist critics, he has \
+regained a leading place since the 1980s."""
+
+[[artistes]]
+nom = "Mary Cassatt"
+vie = "Allegheny City, Pennsylvania, 22 May 1844 – Le Mesnil-Théribus, Oise, 14 June 1926"
+biographie = """
+From a well-to-do Pennsylvania family, Mary Cassatt spent part of her childhood \
+in Europe. She studied at the Pennsylvania Academy of the Fine Arts, then left in 1866 \
+for Paris, where the École des Beaux-Arts remained closed to women: she took private \
+lessons, notably from Jean-Léon Gérôme, and copied the masters at the Louvre. \
+Accepted at the Salon as early as 1868, she settled permanently in Paris in 1874. In 1877, Edgar \
+Degas invited her to exhibit with the Impressionists; she took part in their exhibitions \
+of 1879, 1880, 1881 and 1886, the only American in the group. Her parents and her sister Lydia \
+joined her in Paris. After the great exhibition of Japanese prints in 1890, she \
+produced a series of colour prints. In 1893, she painted a vast decoration \
+for the Woman's Building at the Chicago Exposition, now lost. An adviser to \
+American collectors such as Louisine and Henry Havemeyer, she helped bring \
+Impressionism into the museums of the United States. Suffering from cataracts, she \
+stopped working around 1914 and died at her château of Beaufresne, in the Oise."""
+style = """
+Mary Cassatt applies Impressionist modernity to a world she knew from \
+within: the lives of women, motherhood, tea, reading, the theatre box. \
+Trained in rigorous drawing, an admirer of Degas, she favours the construction of \
+figures and unexpected framing over the dissolution of forms in \
+light. Japanese prints inspired in her plunging views, flat areas of colour and \
+decorative patterns. She was also a remarkable printmaker, notably in her colour \
+prints of 1891, combining drypoint and aquatint. Her work opened the way for \
+American women artists and gave the theme of mother and child a modern \
+gaze."""
+
+[[artistes]]
+nom = "Winslow Homer"
+vie = "Boston, 24 February 1836 – Prouts Neck (Maine), 29 September 1910"
+biographie = """
+Son of a Boston merchant, Winslow Homer learned the trade with a lithographer, \
+then became a freelance illustrator for the weekly Harper's Weekly. During the \
+Civil War, he followed the Army of the Potomac and drew the daily life of the \
+soldiers; his painting Prisoners from the Front (1866) made him known and was shown at \
+the Exposition Universelle in Paris in 1867, a city where he stayed nearly a year. In the \
+1870s, he painted rural childhood, country schools, outdoor leisure, \
+and took up watercolour. A stay of about twenty months at Cullercoats, a North Sea fishing \
+village, in 1881–1882, transformed his art: the sea, storms and \
+men's struggle against the elements became his great subjects. In 1883, he \
+settled at Prouts Neck, on the coast of Maine, where he lived in solitude facing the ocean. \
+He nonetheless travelled to Florida, the Bahamas, Bermuda, and the forests of the \
+Adirondacks and Quebec, from which he brought back brilliant watercolours. Unmarried \
+and secretive, he died in his studio at Prouts Neck in 1910."""
+style = """
+Homer is, with Eakins, one of the great painters of American realism. Coming from \
+illustration, he retains a sense of clear composition and an immediately \
+legible narrative. His painting is frank, built in broad masses, with a \
+vigorous touch that gives weight to water and rocks. He observes nature without \
+sentimentality: the sea is powerful, often threatening, and man measures himself against \
+forces beyond him. His watercolours, of exceptional freedom and luminosity, \
+raised the medium to the rank of high art in the United States. He is \
+often held to be the most American of the painters of his century."""
+
+[[artistes]]
+nom = "Horatio Greenough"
+vie = "Boston, 6 September 1805 – Somerville (Massachusetts), 18 December 1852"
+biographie = """
+Son of a wealthy Boston real-estate developer, Horatio Greenough took an interest in \
+sculpture very young and studied at Harvard. In 1825, he left for Rome, where he frequented \
+the circle of the Danish sculptor Bertel Thorvaldsen. After a brief return to the \
+United States, he settled in 1828 in Florence, becoming one of the first American \
+sculptors to make a career in Italy, where marble, craftsmen and antique \
+models were to be found. The writer James Fenimore Cooper, his first great patron, commissioned from him \
+a group of singing cherubs, then backed his candidacy for the statue of \
+Washington, which Congress entrusted to him in 1832. He also made for the Capitol The \
+Rescue, a group showing a pioneer protecting his family from a Native American \
+warrior, installed in 1853 and removed in 1958. Back in the United States in 1851, \
+he published essays on architecture and objects, in which he defended the idea that form \
+should follow from function. He died suddenly of brain fever in 1852, at \
+forty-seven."""
+style = """
+Greenough belongs to the neoclassical generation trained in Italy in the wake of \
+Canova and Thorvaldsen: he seeks ideal beauty, pure forms and reference to \
+Greek and Roman Antiquity. His George Washington pushes this logic \
+to the limit, at the risk of offending the American public. But he was also an \
+original thinker: in his writings, he criticises the imitation of past styles in architecture \
+and advocates forms dictated by use, taking ships and \
+machines as models. These ideas make him a forerunner of functionalism, often linked with \
+the phrase “form follows function” of the architect Louis Sullivan."""
+
+[[artistes]]
+nom = "John Rogers"
+vie = "Salem (Massachusetts), 30 October 1829 – New Canaan (Connecticut), 26 July 1904"
+biographie = """
+From a Salem family, John Rogers interrupted his studies for reasons of \
+health and worked as a machinist in machine shops, then for a \
+railroad company in Hannibal, Missouri. An amateur sculptor, he modelled \
+small clay figures in his spare time. In 1858, he left to study in Europe, in \
+Paris and then Rome, but the neoclassical teaching disappointed him and he returned after \
+a few months. In 1859, a small group, The Checker Players, was a great success \
+at a charity sale in Chicago. Rogers settled in New York, exhibited The Slave \
+Auction, then founded his business: he designed genre groups and \
+reproduced them in plaster to sell at moderate prices, by catalogue. During the Civil \
+War, his scenes of soldiers and civilians met with immense success. He thus created \
+several dozen models, sold in tens of thousands of copies, \
+until illness forced him to cease his activity in the 1890s. He spent \
+his last years in New Canaan, where his studio is preserved today."""
+style = """
+The “Rogers groups” are three-dimensional genre scenes, small, \
+narrative and accessible, the opposite of the idealised marble statues of the period. \
+In them Rogers tells stories of daily life, war, literature \
+or theatre, with a precise realism of faces, costumes and objects, and an \
+often tender humour. His innovation was also industrial: serial casting, painted \
+plaster, patents, mail-order sales. He brought sculpture into \
+thousands of American middle-class homes, and his groups have become precious \
+documents on the feelings and debates of his time, in particular on \
+slavery and war."""
+
+[[artistes]]
+nom = "Clark Mills"
+vie = "Onondaga County (New York State), 1810 – Washington, 12 January 1883"
+biographie = """
+An orphan at a young age, Clark Mills grew up in New York State and worked at various \
+manual trades before becoming a plasterer and stucco worker. Settled in Charleston, \
+South Carolina, in the 1830s, he developed a method of life casting that \
+allowed him to make busts at low cost; a bust of the politician \
+John C. Calhoun made him known. In 1848, having never seen an equestrian statue, he \
+won the commission for a monument to Andrew Jackson for Washington. He built \
+his own foundry and, after several failures, succeeded in casting the statue, \
+unveiled in 1853 in Lafayette Square, opposite the White House: the rearing horse, \
+balanced on its hind legs, is a technical feat, and it was the first \
+bronze equestrian statue cast in the United States. He then made an equestrian statue \
+of George Washington, unveiled in 1860. Between 1860 and 1862, his foundry cast \
+Thomas Crawford's statue of Freedom, which crowns the dome of the Capitol, with the \
+decisive help of Philip Reid, a worker whom he held in slavery. He died in \
+Washington in 1883."""
+style = """
+Mills was self-taught, trained by the craft practice of plaster and casting \
+rather than by academies. His talent was above all technical: life casting, \
+bronze founding, mastery of the balance of masses, as shown by Jackson's rearing horse, \
+which stands with no support other than its hind legs. His portraits, based on \
+the direct imprint of faces, favour likeness over \
+idealisation. Though his style seemed naïve to sculptors trained in Europe, he played a \
+pioneering role in the birth of art founding in the United States and in the monumental \
+statuary of Washington."""
+
+[[artistes]]
+nom = "Chine, dynastie des Qi du Nord"
+vie = "Northern China, 550–577, capital Ye (in present-day Hebei province)"
+biographie = """
+In the 6th century, China was divided among several rival dynasties. In the north, after \
+the breakup of the Northern Wei, the Northern Qi, in the east, and the Northern \
+Zhou, in the west, fought one another. Founded in 550 by Gao Yang, the Northern Qi dynasty ruled from \
+Ye, its capital; its court blended Chinese traditions and the cultures of the peoples of the \
+steppes. Its rulers were fervent Buddhists: they funded temples, \
+monasteries and cave sanctuaries, such as those at Xiangtangshan, carved into the \
+mountains near the capital. The sculptures were the work of workshops of anonymous \
+stone carvers, working on commission from the court, monks or pious laypeople \
+who hoped thereby to accumulate merit. Brought from India along the routes of Central \
+Asia, Buddhism then experienced a prodigious rise, and many texts were \
+translated, such as the Flower Garland Sutra, which describes a universe in which every \
+particle contains all worlds. In 577, the Northern Zhou, who were persecuting \
+Buddhism, conquered the kingdom of the Qi and extended the destruction there. In 581, the \
+Sui dynasty soon reunified China and restored the religion. The discovery in 1996, \
+at Qingzhou, in Shandong, of hundreds of buried statues revealed the brilliance of the \
+sculpture of this period."""
+style = """
+Northern Qi sculpture marks a turning point. To the slender silhouettes and cascading \
+drapery of the Northern Wei succeed fuller, almost cylindrical bodies, \
+wrapped in thin robes clinging to the skin, in the manner of the Indian sculpture \
+of the Gupta period, whose models reached China through Central Asia. The \
+faces become rounder and more serene. The statues were often painted \
+and gilded, sometimes covered with patterns. This more natural style, attentive to the volume of the \
+body, prepares the art of the Sui and Tang dynasties, the golden age of Chinese Buddhist \
+sculpture."""

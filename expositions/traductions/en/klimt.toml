@@ -1,0 +1,551 @@
+[exposition]
+ordre = 170
+nom_court = "Klimt"
+mouvement = "Vienna Secession"
+cadre = "dore"
+couleur = "#a8821c"
+titre = "Klimt, Gold and Life"
+artiste = "Gustav Klimt"
+dates = "1862–1918"
+accroche = "Virtual exhibition · Gustav Klimt"
+introduction = """
+In the Vienna of 1900, Gustav Klimt founded the Secession and covered his canvases \
+with gold, spirals and mosaics. The Kiss, Adele Bloch-Bauer, the allegories \
+of life and death: seven paintings, from the landscapes of Lake Attersee to the \
+last great compositions."""
+vitrine = "baiser.jpg"
+
+[musee]
+nom = "Upper Belvedere"
+ville = "Vienna, Austria"
+architecte = "Johann Lukas von Hildebrandt"
+construction = "1717–1723"
+presentation = """
+The Belvedere is the summer residence that Prince Eugene of Savoy, victor over the \
+Ottomans, had built at the gates of Vienna by Johann Lukas von Hildebrandt: two \
+Baroque palaces face each other at opposite ends of a terraced garden. The Upper \
+Belvedere, completed in 1723, was used for festivities and receptions; its centrepiece is \
+the Marble Hall, two storeys high, with a ceiling painted by Carlo Carlone. It was here \
+that the State Treaty restoring Austria's sovereignty was signed in 1955. Having passed to the \
+Habsburgs, the palace housed the imperial picture gallery from 1781, open to the \
+public. Today it presents Austrian art and the largest collection in the world \
+of paintings by Klimt, including The Kiss, bought by the state as early as 1908, and Judith."""
+ici = """
+ARTEON retains the Marble Hall and its height. The vestibule, a low passage without \
+works, opens to the north onto The Marble Hall, 18 metres long and 9 high, with pale lilac-grey \
+walls. One crosses it to reach, to the west, Room I · The Secession, \
+then, to the east, Room II · The Golden Period, two twin galleries 6 metres high. \
+The visit ends in the Marble Hall itself, where The Kiss waits at the far end, on \
+the north wall."""
+
+[[salles]]
+nom = "The Vestibule"
+couloir = true
+murs = "#e8e2d6"
+x = 0
+z = 0
+largeur = 12
+profondeur = 6
+hauteur = 4.5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Room I · The Secession"
+theme = "1900–1905: the first square landscapes and the great allegories of life."
+murs = "#eae5dc"
+x = -11
+z = -12
+largeur = 10
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Room II · The Golden Period"
+theme = "1907–1908: gold leaf, Byzantine motifs and portraits of Viennese society."
+murs = "#e9e1cf"
+x = 11
+z = -12
+largeur = 10
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "The Marble Hall"
+theme = "1907–1915: life, death, and The Kiss at the far end of the palace's tallest hall."
+murs = "#e6e3ea"
+x = 0
+z = -12
+largeur = 12
+profondeur = 18
+hauteur = 9
+portes = [{ mur = "ouest", position = 0 }, { mur = "est", position = 0 }]
+
+[[oeuvres]]
+titre = "Attersee"
+annee = "1900"
+image = "attersee.jpg"
+technique = "Oil on canvas, 80 × 80 cm"
+collection = "Leopold Museum, Vienna"
+note = "Nothing but the water of the lake, in turquoise touches: one of his first square landscapes, almost abstract."
+description = """
+Almost the whole canvas is taken up by the water of the lake, seen from above and close up. No \
+boat, no bather, no shore in the foreground: only a shifting surface \
+made of small touches of turquoise, sea green and blue that cross one another. At the very \
+top, a thin strip of land closes off the horizon, so narrow that one barely notices it. \
+The reflections of the sky and the vegetation blend with the colour of the water in patches that \
+shimmer, lighter here, darker there. The perfectly square format removes \
+any privileged direction: the eye follows no path, no vanishing line; it \
+floats on the lake like a swimmer, without bearings, carried by the sole movement of the \
+ripples."""
+evocation = """
+Klimt makes the landscape an experience of contemplation rather than a description. By \
+eliminating every picturesque motif, he keeps only light and water: it has been seen as a \
+form of meditation, almost an image of infinity, in which the lake becomes a boundless \
+expanse. For the painter of the great allegories, attacked that same year over his ceiling \
+of Philosophy intended for the university, these landscapes were also a refuge: they \
+tell no story and provoke no one. Art historians stress above all \
+their modernity. By pushing the horizon up to the upper edge and by \
+filling the surface with an almost uniform pattern, Klimt anticipates a painting that \
+tends toward abstraction, long before the great colour fields of twentieth-century \
+painting."""
+histoire = """
+In the summer of 1900, Klimt stayed for the first time on the shores of the Attersee, in \
+the Salzkammergut, with the family of his companion Emilie Flöge. He would return almost \
+every summer until 1916, first to Litzlberg, then to Kammer and finally near Unterach. \
+These holidays were periods of intense work: far from portrait commissions, \
+he painted most of his landscapes there, sometimes finishing them in his Vienna studio. \
+This canvas is one of the first to come out of these stays. Easier to sell than the \
+great allegories, the landscapes readily found buyers among \
+Viennese collectors. The painting now belongs to the Leopold Museum in \
+Vienna, which houses the collection assembled after the Second World War by \
+the ophthalmologist Rudolf Leopold, a great champion of Klimt and Schiele."""
+facture = """
+Klimt borrows his divided brushstroke from Neo-Impressionism, but without a scientific \
+system: the small commas of colour, laid side by side, remain free and \
+vibrant. The range, restricted to blues and greens, gives the surface its unity. \
+The very tight framing and the horizon pushed to the very top recall the \
+Japanese prints that Klimt admired, and photography. The square format, which he adopted for \
+almost all his landscapes, became his signature and turns nature into a decorative \
+surface, without perspective or foreground."""
+details = [
+  "At the very top, the thin strip of shore that serves as the only landmark.",
+  "The small touches of different colours, which blend when one steps back.",
+  "The total absence of any human figure, boat or house.",
+  "The exactly square format, which prevents the gaze from running off toward a vanishing point.",
+]
+themes = ["landscape", "lake", "water", "contemplation", "abstraction"]
+anecdote = """
+To frame his landscapes, Klimt used a viewfinder, a simple piece of cardboard with a \
+window cut in it, and sometimes a telescope or opera glasses. These instruments \
+brought the motif closer and flattened depth, hence his tight views, without \
+foreground."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "The Three Ages of Woman"
+annee = "1905"
+image = "trois-ages.jpg"
+technique = "Oil on canvas, 180 × 180 cm"
+collection = "Galleria Nazionale d'Arte Moderna, Rome"
+note = "The child, the mother and the old woman: a meditation on the passing of time."
+description = """
+Against a dark brown and grey ground, three nude figures stand out. At the centre and on the \
+right, a young mother, eyes closed, head bowed, holds close a small \
+sleeping girl whose cheek rests on her breast. Their hair merges into \
+a bluish veil sprinkled with flowers and small ornamental motifs. On the left, in profile, \
+an old woman stands, head lowered, her face hidden behind her hand \
+and her long grey hair. Her body is painted without indulgence: swollen belly, \
+sagging breasts, thin, veined arms. The almost bare ground is enlivened only by \
+golden patches and a decorated vertical band that envelops the group of the mother and \
+child, leaving the old woman apart."""
+evocation = """
+The title says the essential: childhood, maturity and old age, three stages of a single \
+cycle. The group of mother and child, surrounded by ornament, seems protected from \
+time in a peaceful sleep; the old woman, excluded from this decorative cocoon, alone bears \
+the weight of declining flesh. Her gesture, shame or grief, has been read as the \
+mourning of a lost youth. It has been seen as a very fin-de-siècle vision, contemporary with \
+Freud, of woman reduced to her biological destiny, from fertility to decline. \
+The painting extends Klimt's meditations on the cycle of life, already at the heart of \
+his Philosophy ceiling, in which a column of human bodies, from newborn to \
+old man, drifts through the cosmos."""
+histoire = """
+Klimt painted this large square canvas in 1905, the year he left the Secession with \
+his friends of the “Klimt group” and gave up, after years of controversy, delivering his \
+ceilings for the University of Vienna. The painting was not a commission: it is an \
+allegory he chose to paint for himself. In 1911 it was among the works \
+that Klimt sent to the International Exhibition of Fine Arts in Rome, organized for \
+the fiftieth anniversary of Italian unity, where the painter was awarded a prize. The Italian state \
+then bought it for the Galleria Nazionale d'Arte Moderna. That is how one of \
+Klimt's great allegories came to be in Rome, in the palace on the Valle Giulia, at the \
+edge of the Villa Borghese park, where it has been kept for over a century."""
+facture = """
+Klimt combines two manners in a single painting. The bodies are modelled with \
+precision, almost cruelly for the old woman, whose grey skin and veins \
+are rendered with a realism inherited from his academic training. Around them, the \
+canvas becomes on the contrary flat and decorative: veil, hair and ground turn \
+into patches, dots and geometric motifs that anticipate the golden period. The \
+square format and the composition without depth give the group the look of an icon. \
+The colours remain muted, browns, greys and blues, awakened by a few flashes \
+of gold."""
+details = [
+  "The old woman's hand, hiding her face.",
+  "The sleeping child's cheek, resting on her mother's breast.",
+  "The flowers mingled with the young mother's hair.",
+  "The prominent veins of the arms and the swollen belly of the old woman.",
+  "The ornamented veil of mother and child, facing the bare ground behind the old woman.",
+]
+themes = ["ages of life", "motherhood", "old age", "time", "allegory"]
+anecdote = """
+The old woman's silhouette has often been compared to a sculpture by Rodin, “\
+She Who Was Once the Beautiful Helmet-Maker's Wife,” inspired by a poem by François Villon in which an \
+aged beauty mourns her ageing body. Klimt admired the French sculptor."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.8
+
+[[oeuvres]]
+titre = "Adele Bloch-Bauer I"
+annee = "1907"
+image = "adele.jpg"
+technique = "Oil, silver and gold on canvas, 138 × 138 cm"
+collection = "Neue Galerie, New York"
+note = "The golden portrait of a Viennese industrialist's wife, stolen by the Nazis and returned to her heirs in 2006."
+description = """
+Adele Bloch-Bauer sits facing us in an armchair, but one can hardly make out where \
+her dress, the seat and the background end: everything dissolves into a surface of gold. Only \
+her pale face with red lips, her bare shoulders and her clasped hands held at \
+chest height, fingers intertwined, emerge, painted realistically. She wears a \
+choker set with stones. Her dress is covered with stylized eyes, \
+triangles and rectangles; the armchair is recognizable by its golden spirals. At lower \
+left, a green patch breaks the gold and perhaps suggests the floor. The format is square, \
+and the figure occupies almost its whole height, like a weightless apparition, without \
+shadow and without depth."""
+evocation = """
+The painting is the summit of Klimt's golden period and the very image of the Vienna of \
+1900, rich, cultured and cosmopolitan. Adele, who held a salon frequented by \
+writers, musicians and politicians, appears in it less as a person \
+than as an idol, almost a Byzantine icon. The gold does not merely flatter her: it \
+encloses her. The contrast between fragile flesh and frozen adornment has been read as a \
+reflection on the condition of the woman of the upper middle class, admired and \
+a prisoner of her setting. The eyes borrowed from ancient Egypt add a measure of \
+mystery. Since its restitution, the portrait has also become a symbol of Nazi \
+plunder and of the struggle of Jewish families to recover their property."""
+histoire = """
+The portrait was commissioned by Ferdinand Bloch-Bauer, a sugar industrialist, for his \
+wife Adele. Klimt worked on it from 1903 to 1907 and accumulated more than a hundred \
+preparatory drawings. Shown in Vienna as early as 1908, it hung in the couple's \
+home. Adele died in 1925, asking her husband to bequeath her Klimts one day to the \
+Austrian Gallery. In 1938, after the Anschluss, Ferdinand fled and his property was \
+confiscated; the portrait entered the Austrian Gallery in 1941, renamed “Lady in \
+Gold” to conceal the sitter's Jewish identity. His niece Maria Altmann obtained its \
+restitution in 2006, after proceedings that went as far as the Supreme Court of the United States \
+and then an arbitration in Austria. Ronald Lauder then bought it for the Neue Galerie in \
+New York."""
+facture = """
+Klimt combines oil paint with gold and silver leaf, applied over preparatory \
+layers sometimes worked in slight relief, in the manner of a goldsmith. \
+He drew on the Byzantine mosaics of Ravenna, discovered on a trip in \
+1903, in particular that of the Empress Theodora at San Vitale. The contrast is \
+total between the flesh, softly modelled, and the immense flat surface of ornaments, \
+where depth disappears. The motifs draw on Egypt, archaic Greece and the \
+decorative research of the Wiener Werkstätte, the art workshops founded in Vienna in \
+1903."""
+details = [
+  "The stylized, Egyptian-inspired eyes that dot the dress.",
+  "The hands with interlaced fingers, clenched before the chest.",
+  "The choker, the only clearly legible jewel amid the gold.",
+  "The golden spirals that outline the back and arms of the armchair.",
+  "The green area at lower left, the only breathing space in the gold.",
+]
+themes = ["portrait", "gold", "vienna 1900", "byzantine", "plunder"]
+anecdote = """
+In June 2006, Ronald Lauder paid 135 million dollars for this portrait, at the time the \
+highest price ever reached by a painting. The story of its restitution \
+inspired the film “Woman in Gold” (2015), with Helen Mirren in the role of \
+Maria Altmann."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Hope II"
+annee = "1907–1908"
+image = "esperance.jpg"
+technique = "Oil, gold and platinum on canvas, 110.5 × 110.5 cm"
+collection = "Museum of Modern Art, New York"
+note = "A pregnant woman, eyes lowered, wrapped in a patterned gown: at her feet, women in prayer."
+description = """
+A pregnant young woman is seen in profile, her head bent forward, her eyes closed. \
+Her rounded belly can be guessed beneath a full, bell-shaped gown, covered with \
+circles, squares and gold and coloured motifs, from which emerge her bare shoulders and \
+her face. Close to her belly, a small skull slips into the decoration \
+of the gown, barely visible at first glance. At the bottom of the painting, three women with \
+bowed faces, eyes closed, seem to pray or collect themselves, as if kneeling \
+at the feet of the future mother. The dark ground, flecked with gold, isolates the figures. The square \
+format focuses attention on this vertical silhouette that rises from the group of \
+three women to the profile of the young woman."""
+evocation = """
+The expectation of a child, which gives the painting its title, is here shot through with anxiety. \
+The skull hidden near the belly recalls that life and death are linked from the \
+very beginning, at a time when childbirth remained perilous for mother and \
+child alike. The three women at the bottom have been seen now as figures of prayer, who \
+implore a happy outcome, now as mourners foretelling a bereavement. The \
+future mother, absorbed in thought, seems to protect her child as much as to withdraw into \
+herself. Klimt takes up a theme he had treated provocatively a few \
+years earlier, but transposes it into an inward, meditative register, in which \
+ornament envelops anxiety without making it disappear."""
+histoire = """
+The painting follows a first version, Hope I (1903), which showed an \
+entirely nude pregnant woman surrounded by monstrous figures and skulls. Judged \
+too shocking to be shown to the public in 1903, it was bought by Fritz \
+Waerndorfer, co-founder of the Wiener Werkstätte, who kept it, it is said, behind \
+closed shutters. It is now in the National Gallery of Canada in Ottawa. \
+For the second version, painted in the midst of the golden period, Klimt clothes his model and \
+replaces the monsters with women in prayer. The painting was acquired in 1978 by the \
+Museum of Modern Art in New York, thanks in particular to funds from Ronald and Jo Carole \
+Lauder and to the dealer Serge Sabarsky, two great promoters of Viennese art in the \
+United States."""
+facture = """
+Klimt here combines oil with gold and platinum, which give the motifs of the gown a \
+metallic sheen that changes with the light, warmer or cooler. The gown forms \
+a large flat surface, a mosaic of red, blue and green circles, squares and rectangles, \
+that contrasts with the delicate modelling of the face and shoulders. The \
+profile, clean and pure, recalls the figures on Greek vases or Egyptian reliefs. The \
+vertical composition, almost column-shaped, rises from the three bowed heads \
+to that of the mother."""
+details = [
+  "The small skull concealed near the future mother's belly.",
+  "The young woman's lowered eyelids, as if listening to her child.",
+  "The three women's faces lined up at the bottom of the canvas.",
+  "The reflections of the platinum, colder than those of the gold.",
+]
+themes = ["motherhood", "hope", "death", "prayer", "gold"]
+anecdote = """
+In German, “guter Hoffnung sein,” to be of good hope, means to be expecting a \
+child. The original title, Die Hoffnung, plays on this double meaning: hope and \
+pregnancy. The Viennese viewer of the time understood the allusion immediately."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Death and Life"
+annee = "1910–1915"
+image = "mort-vie.jpg"
+technique = "Oil on canvas, 178 × 198 cm"
+collection = "Leopold Museum, Vienna"
+note = "On the left, Death in a cloak of crosses; on the right, the tangle of the living, who sleep without seeing him."
+description = """
+The painting is cut in two by a void. On the left, Death stands, a skeleton \
+with a grimacing skull wrapped in a dark cloak covered with crosses and funerary motifs; \
+he holds a red club and watches the living. On the right, a compact mass \
+of entwined bodies floats like a coloured island: a mother holding her baby, an \
+old woman, young women, a man embracing his companion. Almost all have \
+their eyes closed and seem to sleep, unaware of the presence that lies in wait for them. Their \
+bodies are caught in fabrics with patterns of flowers, circles and brightly coloured \
+rectangles, which contrast with the plain, dark ground. Between the two groups, \
+nothing: a bare space that separates Death from the living."""
+evocation = """
+Klimt takes up the old theme of the danse macabre, but without spectacular terror: \
+Death does not strike yet, he waits. Facing him, humanity is represented at all \
+its ages, from birth to old age, united by love and sleep. This collective \
+sleep has been read as a way of saying that life goes on ignoring its end, \
+or that love and motherhood are the only answer to death. The circle of the living, \
+renewed by births, seems to prevail by its coloured vitality over the \
+isolated, dark figure of the skeleton. Completed during the First World War, the \
+painting retrospectively took on a tragic resonance, in a Vienna that saw \
+its soldiers dying and soon its empire."""
+histoire = """
+Klimt began the painting around 1910. In a first state, on a gold ground, he \
+showed it at the International Exhibition in Rome in 1911. Dissatisfied, he reworked it \
+over several years: around 1915 he replaced the gold with a dark, plain ground, \
+altered the composition and enriched the group of the living, thus renouncing \
+the aesthetic of the golden period. It is one of his last great allegories: \
+Klimt died three years later, in 1918. The painting now belongs to the Leopold \
+Museum, opened in 2001 in Vienna's MuseumsQuartier, where it hangs near the \
+works of Egon Schiele. The young painter, who admired Klimt, had himself treated the \
+theme of death and the maiden in gripping canvases, and died the same \
+year as his elder."""
+facture = """
+The shift from gold to a dark, matte ground marks the end of the golden period: the \
+ornaments are no longer metal but pure colours, laid in small juxtaposed \
+patches, red, blue, violet and green. The bodies, softly modelled, interlock like the pieces of a puzzle in the decorated \
+fabrics. The composition plays on asymmetry: Death, vertical and isolated, faces an oblique mass of \
+the living, and the empty space between them creates all the painting's tension. One has seen in it the echo \
+of the vivid colour of the Fauves and Klimt's attraction to textiles."""
+details = [
+  "Death's cloak, studded with crosses.",
+  "The red club held by the skeleton.",
+  "The baby asleep in its mother's arms, at the heart of the group of the living.",
+  "The dark void that separates Death from the tangle of bodies.",
+]
+themes = ["death", "life", "danse macabre", "ages of life", "sleep"]
+anecdote = """
+The first state of the painting, on a gold ground, is known thanks to a photograph taken \
+at the Rome exhibition in 1911. Comparison shows that Klimt almost \
+entirely repainted his canvas, changing the ground and the number of figures."""
+salle = 4
+mur = "ouest"
+position = -5
+largeur = 2.0
+
+[[oeuvres]]
+titre = "The Virgin"
+annee = "1913"
+image = "la-vierge.jpg"
+technique = "Oil on canvas, 190 × 200 cm"
+collection = "National Gallery Prague"
+note = "Sleeping young women, tangled in a spiral of coloured fabrics: a young girl's dream."
+description = """
+At the centre of a large, almost square composition, a young woman sleeps, her head \
+bowed, her eyes closed, her face peaceful. Around her, other young women, \
+nude or half-clothed, are caught in the same whirlwind: one arches her back, others \
+curl up on themselves or huddle together, yet another seems to be waking. \
+Their bodies are intertwined in an immense drapery of bright colours, violet, pink, \
+orange and blue, sprinkled with flowers, circles and spirals, which forms a kind of floating \
+island. All around, the midnight-blue ground, almost black, lets one make out neither floor nor \
+horizon: the group seems suspended in the void, as in the space of a dream, weightless \
+and without direction."""
+evocation = """
+The title guides the reading: traditionally one sees the sleeping girl at the \
+centre and, around her, her dreams or the stages of her awakening to sensuality and to the \
+life of a woman. The poses of the other figures, from abandon to withdrawal, have been understood \
+as the successive states of a single person, from innocence to desire. Sleep, \
+for Klimt, is often a moment of inner life rather than simple rest. The \
+painting reflects the atmosphere of a Vienna where Freud had published The Interpretation of \
+Dreams in 1900 and where female sexuality was becoming a subject of study and debate. It \
+also shows a Klimt who, after gold, celebrates colour, youth and the vitality \
+of the body."""
+histoire = """
+Painted in 1913, The Virgin belongs to Klimt's last years, when he had \
+abandoned gold for highly coloured compositions. It is not a commission but a \
+great allegory, like Death and Life, which it echoes with its group of bodies \
+floating in the void. By this date Klimt was an artist recognized throughout \
+Central Europe and exhibited regularly outside Vienna. The painting later entered the \
+public collections of Prague, then one of the great cities of Austria-Hungary: \
+it was only after 1918, with the birth of Czechoslovakia, that it found itself \
+abroad. Kept by the National Gallery, it is one of the few great \
+allegories by Klimt on view outside Austria, and one of the jewels of its collections \
+of modern art."""
+facture = """
+Klimt here abandons gold leaf in favour of a dazzling palette, in which violets, \
+pinks, oranges and blues dominate. The ornaments are no longer geometric \
+and metallic but floral, inspired by the fabrics and the Far Eastern art that \
+Klimt collected. The spiral composition winds the bodies around the central figure \
+and sets them off against an almost uniform dark ground, which heightens the colours. \
+The bodies, with their supple outlines, keep the elegant line inherited from his countless \
+drawings from the model."""
+details = [
+  "The peaceful face of the sleeping girl, at the centre of the whirlwind.",
+  "The flowers and spirals that cover the immense drapery.",
+  "The midnight-blue ground, without floor or horizon, in which the group seems to float.",
+  "The intertwined arms and legs, hard to attribute to any one figure.",
+]
+themes = ["dream", "sleep", "youth", "femininity", "colour"]
+anecdote = """
+Klimt drew tirelessly the models who posed in his studio, asleep, \
+reclining or abandoned. He left several thousand drawings, far more than \
+paintings, and many of the poses in The Virgin derive from them."""
+salle = 4
+mur = "est"
+position = 5
+largeur = 2.0
+
+[[oeuvres]]
+titre = "The Kiss"
+annee = "1907–1908"
+image = "baiser.jpg"
+technique = "Oil and gold leaf on canvas, 180 × 180 cm"
+collection = "Österreichische Galerie Belvedere, Vienna"
+note = "Two lovers embracing at the edge of a flowering meadow, wrapped in gold: Vienna's most famous work."
+description = """
+At the edge of a small flowering meadow that stops abruptly, as at the edge of a cliff, a couple \
+embrace against a speckled gold ground. The man, crowned with ivy, bends his head to \
+kiss the woman's cheek; his face is almost entirely hidden. She kneels, \
+eyes closed, her head thrown back on his shoulder, one hand resting on her \
+companion's neck, flowers in her hair. Their bodies merge into a \
+single golden form: the man's tunic is covered with black, white and \
+silver rectangles, the woman's dress with circles and coloured floral motifs. The bare feet \
+of the woman, curled tight, extend beyond the edge of the meadow, above the golden void."""
+evocation = """
+The Kiss has become the universal image of love, but it is more ambiguous than it \
+appears. The woman, her eyes closed, seems at once to surrender and to hold back; her \
+clenched hands and feet, at the edge of the void, have prompted talk of an ecstasy that borders on \
+danger. The motifs have been read as symbols: masculine rectangles for the man, \
+feminine circles and flowers for the woman, united in a single envelope of gold. People have \
+wished to recognize Klimt and his companion Emilie Flöge in the couple, without any \
+proof. The gold, borrowed from icons, makes this embrace a moment outside time, \
+almost sacred. The painting finally sums up the ambition of the Secession: to unite painting and \
+decorative arts in a total work of art."""
+histoire = """
+Klimt painted The Kiss in 1907–1908, at the height of his golden period, a few years \
+after the exhausting quarrel over the university paintings. The work was shown in \
+1908 at the Kunstschau, the great art exhibition organized in Vienna by Klimt and his \
+friends after their departure from the Secession, under the title “Lovers.” During \
+the exhibition, the Ministry of Education bought it for the state's Moderne Galerie, \
+ancestor of the Belvedere, for 25,000 crowns, a considerable sum. The \
+painting has not left Austrian public collections since. It hangs \
+in the Upper Belvedere, the former palace of Prince Eugene of Savoy, where it \
+attracts visitors from around the world every year."""
+facture = """
+Klimt lays gold leaf over the oil paint, applied in layers and \
+sometimes in slight relief, with a goldsmith's skill. The contrast between the \
+faces and hands, painted delicately, and the garments reduced to flat \
+surfaces of ornament gives the impression of an apparition. The square format, the ground without \
+depth and the silhouette of the couple, united in a single elongated form, concentrate \
+the whole gaze on the embrace. The meadow, sprinkled with small flowers, recalls medieval \
+tapestries, while the gold evokes icons and Byzantine mosaics."""
+details = [
+  "The woman's toes, curled at the edge of the meadow as at the edge of a precipice.",
+  "The man's crown of ivy and the flowers in the woman's hair.",
+  "The black and white rectangles of the tunic, set against the coloured circles of the dress.",
+  "The man's hands framing the woman's face and turning it toward him.",
+  "The fine golden flecks scattered over the ground, like stardust.",
+]
+themes = ["love", "couple", "gold", "embrace", "byzantine"]
+anecdote = """
+For Valentine's Day 2022, the Belvedere cut a high-definition digital reproduction of \
+The Kiss into 10,000 fragments, sold online as NFTs: \
+an unexpected way of bringing the work of 1908 into the digital age."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 1.8
+
+[[artistes]]
+nom = "Gustav Klimt"
+vie = "Baumgarten, near Vienna, 14 July 1862 – Vienna, 6 February 1918"
+biographie = """
+Gustav Klimt was born in 1862 in Baumgarten, at the gates of Vienna, the second of seven \
+children of Ernst Klimt, a gold engraver from Bohemia, and Anna Finster. The family \
+was modest. At fourteen he entered the Vienna School of Arts and Crafts, where his \
+brother Ernst joined him. With him and their friend Franz Matsch, he founded a company \
+of decorators that won major official commissions: ceilings of the staircases \
+of the Burgtheater, paintings for the grand staircase of the Kunsthistorisches Museum. In 1892, the \
+death of his father and then of his brother Ernst shook him profoundly. In 1897 he founded with \
+other artists the Vienna Secession, of which he was the first president, to \
+open Austria to modern European art. The large canvases commissioned for \
+the University of Vienna, Philosophy, Medicine and Jurisprudence, set off \
+a scandal: Klimt abandoned the commission in 1905 and left the Secession. These canvases \
+would be destroyed in a fire in 1945. The golden period then began, with The Kiss \
+and the portraits of upper-middle-class women, then the mosaic frieze of the \
+Palais Stoclet in Brussels. He never married, had several illegitimate children and \
+shared his life with the fashion designer Emilie Flöge, with whom he spent his summers on the \
+Attersee. He supported young artists, foremost among them Egon \
+Schiele. Struck by a stroke in January 1918, he died in Vienna on 6 February."""
+style = """
+Trained in a very assured academic painting, Klimt soon moved beyond historical realism \
+to a painting in which the human body, finely modelled, stands out against flat \
+decorative surfaces. His most recognizable mark is the use of gold leaf \
+and of ornaments borrowed from Byzantium, Egypt, archaic Greece and Japanese \
+art. Women, sensual or disquieting, and the great themes of love, \
+life and death dominate his work; his square landscapes, meanwhile, verge on \
+abstraction. By erasing the boundary between painting and decorative arts, he \
+embodied Viennese Art Nouveau and opened the way for the Expressionism of Schiele and \
+Kokoschka."""

@@ -1,0 +1,849 @@
+[exposition]
+ordre = 140
+nom_court = "Van Gogh"
+mouvement = "Post-Impressionism"
+cadre = "bois"
+couleur = "#1d3f8f"
+titre = "Van Gogh, Colour in Motion"
+artiste = "Vincent van Gogh"
+dates = "1853–1890"
+accroche = "Virtual exhibition · Vincent van Gogh"
+introduction = """
+From the potato eaters of Nuenen to the last wheat field at Auvers, \
+walk in 3D through five years of painting that changed colour for ever. \
+Every canvas is rebuilt brushstroke by brushstroke, in relief, in three galleries \
+arranged around a tall, bright atrium."""
+vitrine = "nuit-etoilee.jpg"
+
+[musee]
+nom = "Van Gogh Museum"
+ville = "Amsterdam, Netherlands"
+architecte = "Gerrit Rietveld"
+construction = "opened in 1973"
+presentation = """
+When Vincent died in 1890, his paintings passed to his brother Theo, then to Theo’s widow, \
+Johanna van Gogh-Bonger, who devoted her life to making them known. Their son, \
+Vincent Willem, transferred the collection to a foundation, and the Dutch state built \
+a museum for it on Amsterdam’s Museumplein. Designed by Gerrit Rietveld, a leading figure of the \
+De Stijl movement, and completed after his death in 1964, the building opened in \
+1973: a simple volume of concrete and glass, organised around a tall central space \
+bathed in overhead light, from which a staircase serves the upper floors. In 1999 an oval \
+wing by Kisho Kurokawa was added for temporary exhibitions. The museum holds the \
+largest collection of Van Gogh’s work in the world: more than two hundred paintings, some \
+five hundred drawings and most of his letters, from The Potato Eaters to \
+the Sunflowers."""
+ici = """
+The ARTEON building takes up Rietveld’s guiding idea. The atrium, a square \
+10 metres on each side and 9 metres high, with almost white walls, entered from the south, \
+leads to all the galleries. The visit follows the painter’s life: to the west, \
+Room I · Nuenen and Paris, with beige walls; you return to the atrium to reach, to the \
+north, Room II · Arles, the largest, in a pale straw yellow; finally, to the east, \
+Room III · Saint-Rémy and Auvers, with blue-grey walls. Five metres high, the three \
+galleries feel intimate after the soaring atrium."""
+
+[[salles]]
+nom = "The Atrium"
+couloir = true
+murs = "#f2f0ea"
+x = 0
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 9
+portes = ["sud", "ouest", "nord", "est"]
+
+[[salles]]
+nom = "Room I · Nuenen and Paris"
+theme = "1885–1887: the dark earth of Brabant, then the light of Paris and the first self-portraits."
+murs = "#e7e1d3"
+x = -10
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+[[salles]]
+nom = "Room II · Arles"
+theme = "1888: the southern sun, chrome yellows and blue nights on the banks of the Rhône."
+murs = "#efe3c4"
+x = 0
+z = -11
+largeur = 14
+profondeur = 12
+hauteur = 5
+
+[[salles]]
+nom = "Room III · Saint-Rémy and Auvers"
+theme = "1889–1890: swirling skies, the flowers of the asylum and the wheat fields of Auvers."
+murs = "#dfe4e8"
+x = 11
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 5
+
+[[oeuvres]]
+titre = "The Potato Eaters"
+annee = "1885"
+image = "mangeurs-pommes-de-terre.jpg"
+technique = "Oil on canvas, 82 × 114 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "A peasant family by lamplight: the first great composition, painted in earth browns."
+description = """
+Five peasants are gathered around a table in a low room with a beamed ceiling. \
+A hanging oil lamp lights their bony faces and gnarled hands. On the left, a young man \
+turns towards a young woman in a white cap; on the right, an older man holds out his cup \
+to an old woman who is pouring the coffee. In the foreground, a girl seen from behind \
+stands out as a dark silhouette against the light. All of them take from a single dish of \
+potatoes. On the wall one can make out a clock and a small devotional picture; behind, \
+a window and a few utensils. The tight framing shuts the family into an almost suffocating \
+space, where each is caught in the same circle of yellow light, while the corners of the \
+room are lost in shadow."""
+evocation = """
+Van Gogh wanted to show, as he explained to his brother, that these people eating their \
+potatoes under the lamp had dug the earth with the very hands they were dipping \
+into the dish: a meal honestly earned by manual labour. Far from idealised \
+rural scenes, he refuses to flatter his models and gives them coarse, almost \
+caricatured features that bring them closer to the tubers they harvest. Some have read in it \
+a form of silent, almost religious communion around a shared meal. \
+The work also expresses the ambition of the young painter, a pastor’s son who had broken with his \
+background: to become a painter of peasants, in the line of Jean-François Millet, whom he \
+admired deeply. It is a social as much as an artistic profession of faith, running against \
+the grain of the light, pleasing painting then triumphant in Paris."""
+histoire = """
+Van Gogh painted the canvas in April 1885 in Nuenen, a village in Brabant where his father had been \
+pastor, a few weeks after his father’s sudden death. He had been preparing since \
+winter with numerous studies of heads and hands, and the De Groot family, \
+neighbours, served as his models. He also made a smaller painted sketch of it, and \
+a lithograph that he sent to his friends. The painter Anthon van Rappard, his friend \
+for years, criticised this lithograph so harshly that their friendship did not survive it. \
+Van Gogh sent the large canvas to Theo in Paris, but it found no \
+buyer. It stayed in the family and today belongs to the Vincent \
+van Gogh Foundation, ranking among the masterpieces of the Van Gogh Museum in Amsterdam."""
+facture = """
+The palette is deliberately dark: browns, olive greens and greys, which Van \
+Gogh compared to the colour of a dusty, unpeeled potato. The lamplight, \
+the only source of illumination, creates strong contrasts and sculpts the \
+faces in abrupt planes, in the chiaroscuro tradition of Dutch masters \
+such as Rembrandt. The brushwork is thick and emphatic, especially in the hands and \
+heads. One also senses the legacy of the Hague School, notably of Jozef Israëls, \
+a painter of peasant interiors whom Van Gogh admired."""
+details = [
+  "The hanging oil lamp, whose light falls on the dish.",
+  "The girl seen from behind, a dark silhouette edged with light.",
+  "The hands with prominent knuckles, holding forks and cups.",
+  "The clock and the small devotional picture hanging on the wall.",
+  "The old woman pouring the coffee, on the right.",
+]
+themes = ["peasants", "meal", "family", "labour", "chiaroscuro"]
+anecdote = """
+Two years later, when he was already painting with the bright colours of Paris, Van \
+Gogh was still writing to his sister Willemien that this picture of peasants eating potatoes \
+remained, in his eyes, the best thing he had done."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Self-Portrait"
+annee = "1887"
+image = "autoportrait-1887.jpg"
+technique = "Oil on cardboard, 41 × 32.5 cm"
+collection = "Art Institute of Chicago"
+note = "In Paris, Van Gogh discovers pointillism: the face is built up from small touches of pure colour."
+description = """
+Van Gogh portrays himself in bust length, in three-quarter view, his gaze turned towards the viewer. \
+He wears a dark jacket; his red beard and close-cropped red hair frame a \
+face with prominent cheekbones and a clear forehead. Nothing places the scene: the background \
+is a field of small coloured touches that vibrate around the head. The face \
+itself is made of juxtaposed strokes of green, red, yellow and orange, which \
+blend at a distance into living flesh tones. The expression is grave, a little tense, and \
+no accessory distracts the attention. The small format, painted on cardboard, \
+reinforces the impression of an intimate study, made quickly in front of the mirror, in which the \
+painter observes himself as much as he experiments with a new way of painting."""
+evocation = """
+This unflinchingly scrutinised face speaks first of a quest for identity: in Paris, Van \
+Gogh is searching for himself as man and as painter, and the self-portrait becomes his \
+laboratory. The intense, almost anxious gaze has often been linked to his \
+nervous temperament. But the work speaks above all of modernity: by adopting the divided \
+brushwork of the Neo-Impressionists, the former painter of the Brabant peasants shows that he \
+wants to join the Parisian avant-garde. For him it is not a matter of applying a \
+theory, but of making colour vibrate to convey a presence. It has been seen as the \
+decisive passage between the sombre realism of his early years and the expressive painting that \
+would make him famous in Arles: in a few months, the painter of brown earth had become \
+a colourist."""
+histoire = """
+Van Gogh arrived in Paris in March 1886 and moved in with his brother Theo, first in rue \
+Laval, then at 54 rue Lepic, in Montmartre. For a few months he attended the studio of the \
+painter Fernand Cormon, where he met Henri de Toulouse-Lautrec and Émile Bernard, and \
+discovered the Impressionists and Neo-Impressionists in dealers’ shops and exhibitions. \
+In spring 1887 he painted alongside Paul Signac at Asnières \
+and tried out Georges Seurat’s divided brushwork: this portrait dates from that period. \
+In two years he made more than twenty self-portraits in Paris, often on \
+cheap supports such as this cardboard. The painting entered the Art Institute of \
+Chicago in 1954, through the Joseph Winterbotham Collection, a fund intended for the purchase of \
+European art."""
+facture = """
+Van Gogh borrows from Seurat and Signac the principle of divided brushwork, but without their \
+scientific rigour: his dots lengthen into dashes, change direction and \
+follow the volumes of the face. He juxtaposes complementary colours, the orange of \
+the beard against blues and greens, reds against greens in the flesh, \
+so that they intensify one another. The light no longer comes from a specific source, \
+as at Nuenen: it springs from the colour itself, and the mixing takes place in the eye \
+of the viewer."""
+details = [
+  "The green and red dashes that model the cheek and forehead.",
+  "The red beard, laid on in orange touches against a cooler background.",
+  "The background alive with small, tightly packed touches, with no setting at all.",
+  "The pale eyes, with their fixed, slightly anxious gaze.",
+]
+themes = ["self-portrait", "paris", "pointillism", "complementary colours", "identity"]
+anecdote = """
+In March 1886, Van Gogh arrived in Paris without warning and sent Theo a note \
+scribbled in pencil: he was waiting for him at the Louvre, in the Salon Carré. The two brothers \
+would live together for two years."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Self-Portrait with Grey Felt Hat"
+annee = "1887"
+image = "autoportrait-feutre.jpg"
+technique = "Oil on canvas, 44 × 37.5 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "The brushstrokes radiate around the head like a halo: the late style is already here."
+description = """
+The painter shows himself in bust length, almost full face, wearing a grey felt hat and \
+a blue jacket. His face, with hollow cheeks, a red beard and red hair, \
+is turned slightly to one side, but the pale eyes fix the viewer with \
+intensity. Around him, the background consists only of short parallel strokes, blue \
+and orange, that radiate from the head like a crown. The jacket itself is \
+streaked with lines of colour, and the hat, far from being uniformly grey, is full \
+of bluish reflections. No object, no setting: everything is concentrated on the face, which \
+seems to emerge from the vibrating background like an apparition, with an almost \
+sculptural presence."""
+evocation = """
+After two years in Paris, Van Gogh presents himself here as a city dweller, wearing the \
+felt hat of the bourgeois rather than the straw hat he sports in other \
+self-portraits. The penetrating gaze and hollow cheeks also betray fatigue: \
+he would later say that he left Paris ill and exhausted, longing for the calm and sun \
+of the South. The radiance of the brushstrokes around the head has been compared to a halo, \
+as if the painter were claiming an almost religious vocation for art, he who \
+had wanted to be a pastor. Above all, the work asserts that he has found his way: a \
+personal language in which colour and the direction of the brushstroke express as much as the \
+features of the face."""
+histoire = """
+The painting was made in the winter of 1887–1888, shortly before Van Gogh left for \
+Arles in February 1888. It is one of the most accomplished of the Paris self-portraits, a \
+synthesis of everything he had learned from the Impressionists, Seurat and \
+Signac. Like most of his canvases, it remained with Theo, who died in January \
+1891, only six months after his brother. His widow, Johanna van Gogh-Bonger, kept \
+a large part of the work and devoted her life to making it known, organising \
+exhibitions and sales. Their son, Vincent Willem, entrusted the collection in 1962 to the \
+Vincent van Gogh Foundation, which placed it on loan at the Van Gogh Museum, inaugurated in \
+Amsterdam in 1973."""
+facture = """
+Van Gogh here pushes divided brushwork towards a personal system: short, \
+thick strokes, all directed, which follow the shape of the head in the face and radiate all \
+around in the background. He organises the canvas in pairs of complementaries: blue and \
+orange in the background, the orange-red of the beard against the greens of the flesh. The \
+paint, laid on thickly, catches the light. This rhythm of brushstrokes, at once \
+structured and nervous, anticipates the moving skies of Saint-Rémy and already departs from \
+orthodox Neo-Impressionism."""
+details = [
+  "The blue and orange strokes of the background, which radiate around the head.",
+  "The coloured reflections on the grey felt of the hat.",
+  "The green and red touches that model the hollow cheeks.",
+  "The pale, almost transparent eyes, fixed on the viewer.",
+]
+themes = ["self-portrait", "paris", "complementary colours", "modernity", "identity"]
+anecdote = """
+Because he painted himself in a mirror, Van Gogh saw himself reversed: his self-portraits do not \
+show him as others saw him. He tells his sister that he bought a good \
+mirror on purpose, having no money to pay for models."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Sunflowers"
+annee = "1888"
+image = "tournesols.jpg"
+technique = "Oil on canvas, 92.1 × 73 cm"
+collection = "National Gallery, London"
+note = "Painted to decorate Gauguin’s bedroom in Arles: a symphony of yellows on a yellow ground."
+description = """
+A terracotta vase standing on a table holds some fifteen sunflowers. Nothing \
+else: the table, in a deeper yellow, and the wall, in a pale yellow, meet \
+along a simple horizontal line. The flowers are at every stage of their life: \
+some fully open, with petals like a crown, others still fresh, \
+others withered, reduced to their heart bristling with seeds, the petals drooping like \
+wisps of flame. The stems cross, the heads turn in every \
+direction, some seen from the front, others in profile or from below. The bouquet, \
+broad and bushy, overflows the vase on every side. The painter signed “Vincent” \
+directly on the belly of the vase, as one signs a decorated object."""
+evocation = """
+For Van Gogh, the sunflower is almost a personal emblem: he wrote to Theo that \
+other painters are associated with the peony or the hollyhock, but that he had \
+rather taken the sunflower for himself. Yellow stands for him for the light of the South, warmth and \
+a form of hope. Painted to welcome Gauguin, these bouquets speak of friendship and the \
+dream of a shared studio, the “Studio of the South”. The side-by-side presence of open \
+and withered flowers has also been read as a meditation on the cycle of life, from \
+splendour to death, in the tradition of Dutch vanitas painting. Finally, one can see in it a \
+painter’s wager: to achieve a dazzling picture with a single colour, played across \
+all its tones."""
+histoire = """
+In August 1888, at Arles, Van Gogh awaited the arrival of Paul Gauguin, whom he hoped to \
+persuade to found a community of artists with him. To decorate the Yellow House, \
+he painted four canvases of sunflowers in a few days, working fast because the \
+flowers wilt. This one is the fourth. Gauguin arrived on 23 October and admired these \
+bouquets. In January 1889, after the December crisis, Vincent painted several \
+repetitions, including those now in the Van Gogh Museum in Amsterdam and the Philadelphia Museum of \
+Art. The London canvas, which had stayed in the family, was bought in 1924 by the \
+National Gallery thanks to the fund created by the industrialist Samuel Courtauld for the \
+acquisition of modern French painting."""
+facture = """
+Van Gogh takes up a challenge: painting yellow on yellow. He uses the then-recent chrome \
+yellows, from lemon to orange, and makes them vibrate with small accents \
+of green, brown and blue. The paint is very thick: the centres of the flowers are \
+modelled in relief, almost sculpted with the brush, while the background is brushed more \
+evenly. Dark outlines encircle the forms in places, as in Japanese \
+prints and the Cloisonnist canvases of his friend Émile Bernard. The \
+frontal composition, without depth, makes this bouquet an almost \
+decorative image."""
+details = [
+  "The signature “Vincent”, painted on the belly of the vase.",
+  "The centres of the withered flowers, in relief, bristling with seeds.",
+  "The horizontal line separating the table from the wall, the only marker of space.",
+  "The petals twisting like flames on the most mature flowers.",
+]
+themes = ["flowers", "still life", "yellow", "friendship", "cycle of life"]
+anecdote = """
+At the end of 1888, Gauguin painted Van Gogh painting sunflowers. According to the \
+account he gave much later, Vincent exclaimed on seeing the portrait: “\
+That is certainly me, but me gone mad.”"""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Starry Night over the Rhône"
+annee = "1888"
+image = "nuit-etoilee-rhone.jpg"
+technique = "Oil on canvas, 72.5 × 92 cm"
+collection = "Musée d’Orsay, Paris"
+note = "The gas lamps of Arles are reflected in the river beneath the Great Bear."
+description = """
+Night has fallen over the Rhône, at Arles. In a vast blue-green sky, seven stars \
+trace the Great Bear, each surrounded by a pale halo. In the distance, the line of \
+quays and houses is punctuated by gas lamps, whose yellow and orange reflections \
+stretch across the water in long trembling columns. The river, a deep blue, \
+spans the whole width of the canvas. On the bank in the foreground, boats are \
+moored, and a couple strolls arm in arm at the water’s edge. \
+The sky fills the upper half of the painting, and its stars answer the \
+lights of the town, as if earth and sky were reflecting each other’s brilliance. \
+The whole breathes the calm of a late-summer evening."""
+evocation = """
+Van Gogh had long dreamed of painting a starry sky. The night here is neither \
+threatening nor gloomy: it is full of colour, and the modern gas lighting \
+converses with the distant light of the stars. The couple in the foreground gives the \
+scene a peaceful tenderness. For him the stars had an almost spiritual import: a few weeks \
+earlier, he had written to Theo that the sight of them always made him dream, and wondered why the luminous \
+points of the sky should be less accessible than the black points of towns on a map, adding that, as we \
+take the train to go to Tarascon, we take death to go to a star. \
+This painting has often been read as a moment of calm before the storm of the months \
+that followed."""
+histoire = """
+Van Gogh painted the canvas at the end of September 1888 on the Rhône embankment, a few \
+minutes from the Yellow House where he had just settled. He worked on the spot, at \
+night, and described the colours of his picture to Theo in a letter. It is one of the \
+few canvases exhibited in his lifetime: in September 1889, Theo sent it to the Salon des \
+Indépendants in Paris, together with Irises. After the painter’s death, the work \
+remained in private hands until 1975, when Mr and Mrs Robert Kahn-Sriber \
+donated it to the French state. It is now displayed at the Musée d’Orsay, which \
+also holds the small version of The Bedroom, painted at Saint-Rémy."""
+facture = """
+Van Gogh composes with a range of blues, Prussian blue, ultramarine, cobalt, enhanced \
+with greens and violets, and reserves the yellows and oranges for the lights. The stars \
+are laid on in thick radiating touches, ringed with halos. The reflections on the water \
+are rendered by long, broken vertical strokes that suggest the movement of the \
+river. He paints without black: darkness is born of deep blues. The regular, still \
+fairly calm brushwork and the horizontal composition give the scene a \
+serenity that the skies of Saint-Rémy would no longer have."""
+details = [
+  "The seven stars of the Great Bear, each with its halo.",
+  "The reflections of the gas lamps, stretched into yellow columns on the water.",
+  "The couple walking at the river’s edge, in the foreground.",
+  "The boats moored on the bank.",
+]
+themes = ["night", "stars", "river", "light", "arles"]
+anecdote = """
+It is said that Van Gogh painted at night with candles fixed to his hat. \
+No reliable source confirms it: in his letters, he explains only that he \
+works on the spot, at night, by the light of the town."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "The Bedroom"
+annee = "1888"
+image = "chambre-arles.jpg"
+technique = "Oil on canvas, 72.4 × 91.3 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "His room in the Yellow House, in bold flat colour: “absolute rest”, he wrote to Gauguin."
+description = """
+The room is narrow and slightly askew: the back wall, pierced by a window \
+with half-open green shutters, seems to slant away. A large yellow wooden bed occupies \
+the right, with two pale green pillows and a red blanket. Two straw chairs, \
+yellow too, face each other, and a small washstand holds a basin, \
+a jug and bottles. On the left wall hangs a mirror. On the right \
+wall, above the bed, a landscape and two portraits are hung, and clothes hang from \
+pegs. The red-tiled floor rushes towards the back in sharply accentuated perspective. No \
+figure: only the objects, simple and few, tell of the occupant’s life."""
+evocation = """
+Van Gogh wanted the mere sight of the picture to rest the mind, or rather the imagination, \
+as he wrote to Theo: it is colour, not subject, that must suggest \
+rest and sleep. The room is also the heart of his Arlesian dream: he had just \
+furnished the Yellow House, the first house truly his own, which he hoped to share with \
+other painters. The paired objects, two chairs, two pillows, two \
+portraits, have been interpreted as a sign of a desire for company, on the eve of \
+Gauguin’s arrival. Yet the slightly lopsided space and the dizzying perspective \
+let an unease surface. This paradox between a longing for peace and an undercurrent of tension \
+gives this portrait of a place its strength."""
+histoire = """
+Van Gogh painted his bedroom in mid-October 1888, in the Yellow House, place Lamartine \
+in Arles. The painting is part of the decoration he was preparing to welcome \
+Gauguin, and he sent a sketch of it to Theo. In early 1889, while he was \
+in hospital, a flood of the Rhône made the house damp and the canvas was damaged. At \
+Saint-Rémy, in September 1889, he painted two repetitions: one of the same size, \
+now at the Art Institute of Chicago, the other smaller, intended for his mother and \
+sister, kept at the Musée d’Orsay. The original version, which stayed in the family, is \
+in the Van Gogh Museum. The Yellow House itself was destroyed by bombing \
+in 1944."""
+facture = """
+Van Gogh himself details his colours in a letter to Gauguin: pale lilac walls, \
+a broken red floor, chrome-yellow chairs and bed, very pale lime-green pillows and sheet, \
+blood-red blanket, orange washstand, blue basin, green window. He suppresses shadows and paints in flat tints, \
+outlined with contours, in the manner of Japanese prints, while keeping a visible, thick brushstroke. \
+Analyses have shown that the walls, now blue, were originally violet: the unstable \
+red pigment has faded."""
+details = [
+  "The green shutters of the window, half open to the outside.",
+  "The two pillows side by side on the large yellow bed.",
+  "The small mirror with a black frame, hung on the left wall.",
+  "Above the bed, the portraits of his friends Eugène Boch and Paul-Eugène Milliet.",
+  "The red floor tiles, painted in rapid strokes that accelerate the perspective.",
+]
+themes = ["interior", "rest", "home", "japonisme", "solitude"]
+anecdote = """
+In 2016, for an exhibition bringing together the three versions of the painting, the Art Institute \
+of Chicago had the room reconstructed at full scale and offered it for \
+rent on Airbnb, for a few dollars a night."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Café Terrace at Night"
+annee = "1888"
+image = "terrasse-cafe.jpg"
+technique = "Oil on canvas, 80.7 × 65.3 cm"
+collection = "Kröller-Müller Museum, Otterlo"
+note = "A night without black: the yellow of the terrace against the deep blue of the starry sky."
+description = """
+A café terrace, lit by a large lantern hung beneath the yellow awning, \
+occupies the left of the canvas. Customers sit around small round tables, \
+while a waiter in a white apron moves among them. The golden light \
+spreads over the wall, the awning and the cobblestones of the square, which take on orange, \
+pink and violet tones. On the right, a street recedes between dark façades with lit \
+windows; passers-by walk towards the far end, where a carriage can be made out. Above \
+the rooftops, a band of deep blue sky is sown with stars, painted like \
+large pale flowers. The eye thus glides from the lively terrace up to the sky, \
+following the street that sinks into the night."""
+evocation = """
+Van Gogh wrote to Theo that it often seemed to him that night is even more richly \
+coloured than day: this painting is the proof. It sets two worlds against each other, the \
+artificial, convivial warmth of the lit terrace and the calm immensity of the \
+starry sky. It has been seen as an image of modern life, with its cafés and new \
+lighting, as described in the literature of his time: Van Gogh himself refers to \
+the opening of Maupassant’s Bel-Ami, where a Parisian café appears at night. The stars, \
+which appear here for the first time in his work, herald a motif that \
+would become essential for him, charged with a form of spirituality and hope."""
+histoire = """
+Van Gogh painted the canvas in mid-September 1888 on the place du Forum, in the heart of Arles, \
+setting up his easel outdoors, at night. He describes it in a letter to his sister \
+Willemien, stressing the pleasure of painting on the spot, at night. It is the \
+first canvas in which he depicts a starry sky, a few days before Starry Night \
+over the Rhône. The work was later acquired by Helene Kröller-Müller, a wealthy Dutch \
+collector who, in the early twentieth century, gathered nearly \
+ninety paintings by Van Gogh and was one of the first to grasp his \
+importance. In 1938 she opened her museum in the heart of the Hoge Veluwe National Park, \
+at Otterlo, where the canvas is still displayed."""
+facture = """
+The painting rests on the contrast of complementaries: the yellow and orange of the \
+terrace against the blue and violet of the sky. Van Gogh builds the darkness with \
+deep blues, dark greens and violets. He outlines the forms with dark contours, \
+in the manner of Japanese prints. The perspective plunges towards the end of the \
+street and guides the eye from the terrace to the sky. The cobblestones are rendered with \
+small, rounded, coloured touches, like a mosaic, and the stars are laid on \
+in thick paste over the blue."""
+details = [
+  "The waiter in a white apron, among the tables.",
+  "The large lantern hung on the wall, source of all the yellow light.",
+  "The cobblestones of the square, in small pink, orange and violet touches.",
+  "The flower-like stars, in the band of sky above the street.",
+  "The carriage that can be made out at the end of the street.",
+]
+themes = ["night", "café", "stars", "city", "light"]
+anecdote = """
+The café still exists on the place du Forum in Arles. It has taken the name of Café Van \
+Gogh and now sports a yellow façade recalling the painting, drawing visitors \
+from around the world every year."""
+salle = 3
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Night Café"
+annee = "1888"
+image = "cafe-de-nuit.jpg"
+technique = "Oil on canvas, 72.4 × 92.1 cm"
+collection = "Yale University Art Gallery, New Haven"
+note = "Blood red and bitter green: a café where “one can ruin oneself, go mad, commit crimes”."
+description = """
+We discover the room of an almost deserted café, shortly after midnight, as the \
+clock on the back wall shows. In the centre, a green billiard table casts a \
+long shadow on the floor. Four hanging lamps, surrounded by yellow and orange halos, \
+light the room harshly. Along the red walls, a few solitary customers are \
+slumped at tables, drowsing or with their heads in their arms. Near the billiard table, a \
+man in a light suit, the proprietor, stands looking towards us. At the back, a counter laden with \
+bottles and a door veiled by a curtain, opening onto a brighter room. The \
+yellow floor seems to tip towards the viewer, and empty chairs wait in the \
+foreground."""
+evocation = """
+Van Gogh meant to make this café a place of desolation: he wrote to Theo that he had \
+tried to express the terrible human passions with red and green. The \
+colours clash instead of harmonising, and the raw light of the lamps, \
+without warmth, heightens the unease. The isolated drinkers and the night prowlers, who \
+come here because they cannot pay for lodgings, compose an image of urban loneliness. \
+The proprietor, standing motionless, seems to rule over this space like a disquieting \
+guardian. This is no longer the social realism of Nuenen, but a painting in which \
+colour directly carries emotion, which would make this canvas a reference for \
+the Expressionists of the twentieth century."""
+histoire = """
+The Café de la Gare, place Lamartine, was run by Joseph and Marie Ginoux; Van Gogh \
+lodged there for several months before moving in next door, at the Yellow House. In early September \
+1888, he spent three nights painting the room, sleeping during the day. He wrote to Theo that \
+it was one of the ugliest canvases he had done, but that he judged it \
+equivalent, though different, to The Potato Eaters. In November, Gauguin \
+in turn painted the same café, with Marie Ginoux in the foreground. The canvas was acquired \
+by the great Moscow collector Ivan Morozov, nationalised after the Revolution, \
+then sold by the Soviet government in 1933. The American Stephen C. Clark \
+bequeathed it in 1961 to Yale University."""
+facture = """
+Van Gogh plays on dissonances: blood-red walls, green ceiling and \
+billiard table, yellow floor. He sets complementaries against each other not to soothe them but \
+to make them scream. The halos of the lamps, made of concentric circles of yellow \
+and orange touches, anticipate the swirling stars of Saint-Rémy. The plunging perspective, \
+very pronounced, stretches the room and gives the feeling that the floor is giving way. \
+The dark contours and flat tints owe much to Japanese prints, but the \
+thick paint remains very present."""
+details = [
+  "The clock at the back, showing a little past midnight.",
+  "The long, dark shadow cast by the billiard table on the yellow floor.",
+  "The concentric halos around the four lamps.",
+  "The proprietor in white, standing near the billiard table, looking towards us.",
+  "The curtain over the back door, opening onto a brighter room.",
+]
+themes = ["night", "café", "solitude", "colour", "unease"]
+anecdote = """
+At the beginning of the twenty-first century, a descendant of Ivan Morozov claimed the painting in \
+American courts, arguing that it had been despoiled by the Soviet state. The \
+courts ruled in favour of Yale University, which still holds it."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Irises"
+annee = "1889"
+image = "iris.jpg"
+technique = "Oil on canvas, 74.3 × 94.3 cm"
+collection = "J. Paul Getty Museum, Los Angeles"
+note = "Painted in the garden of the Saint-Rémy asylum in his first week: a single white iris among the blue ones."
+description = """
+The gaze plunges into a bed of irises in bloom, seen from very close, with no horizon or \
+sky. The blue-violet flowers, with undulating petals, rise on long \
+blade-like green leaves that cross one another. They occupy almost the whole width \
+of the canvas, each with its own form, some fully open, others still in \
+bud. Among them a single white iris stands out. In the foreground, the earth is \
+a reddish brown; at the back, the garden grass and a clump of orange flowers \
+light up the composition. The framing cuts the plants at the edges, as if the \
+bed continued beyond the painting. The eye moves from one flower to another without \
+ever finding a centre, as in a garden one wanders through."""
+evocation = """
+Painted in the very first days of his voluntary confinement, Irises testify \
+to a renewed vital impulse: painting is for Van Gogh a way of holding illness \
+at bay. The walled garden of the asylum becomes a world in itself, teeming and luminous. \
+Each flower seems to have its own personality, twisting, bending or standing tall like \
+a living being. The isolated white iris has often been interpreted as a figure of \
+solitude, even as a symbolic self-portrait of the painter among others, but this \
+is only one reading among others. What strikes most is the absence \
+of apparent anguish: the canvas celebrates spring, growth and the simple beauty \
+of plants."""
+histoire = """
+On 8 May 1889, after several crises, Van Gogh entered the Saint-Paul-de-Mausole asylum \
+at Saint-Rémy-de-Provence of his own free will. He was allowed to paint in the \
+garden, and he at once set about the irises in bloom. He regarded the canvas as a \
+study, but Theo sent it to the Salon des Indépendants in September 1889. In 1892, the \
+critic Octave Mirbeau, one of the painter’s first champions, bought it for 300 \
+francs. In November 1987, it was sold at auction in New York for 53.9 million \
+dollars to the Australian businessman Alan Bond, a world record at the time. \
+Unable to pay for it in full, he had to part with it, and the J. Paul Getty \
+Museum in Los Angeles acquired it in 1990."""
+facture = """
+Irises owes much to Japanese prints: emphatic contours, flat areas of \
+colour, close, cropped framing, absence of deep perspective. Van Gogh combines this with \
+his own thick, nervous brushwork, which follows the movement of the leaves and \
+petals. He plays the complementaries against each other, the blue-violet of the flowers against \
+the orange of the background flowers and the reddish brown of the earth. Research has shown \
+that the irises were originally more violet: the red pigment mixed with the blue faded \
+over time."""
+details = [
+  "The single white iris, isolated among the blue flowers.",
+  "The blade-like leaves, crossing like swords.",
+  "The reddish-brown earth of the foreground.",
+  "The orange flowers in the background, a counterpoint to the blue of the irises.",
+  "The dark contours around each petal, in the Japanese manner.",
+]
+themes = ["flowers", "garden", "japonisme", "spring", "asylum"]
+anecdote = """
+In 1987, the buyer of Irises was able to bid only thanks to a loan provided half \
+by Sotheby’s, the auction house itself. Revealed afterwards, this practice \
+caused a scandal and cast doubt on the soaring prices of the period."""
+salle = 4
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "The Starry Night"
+annee = "1889"
+image = "nuit-etoilee.jpg"
+technique = "Oil on canvas, 73.7 × 92.1 cm"
+collection = "Museum of Modern Art, New York"
+note = "The view from his asylum window before dawn: a sky swirling above the sleeping village."
+description = """
+Beneath an immense sky, a small village sleeps at the foot of blue hills. The sky occupies \
+most of the canvas: great swirls of light coil like \
+waves, and a double spiral rolls at its centre. Eleven stars blaze, \
+surrounded by yellow and white halos, and at upper right shines a crescent moon, \
+orange and ringed with light. Near the cypress, a star larger and brighter than \
+the others: the morning star. In the foreground, on the left, a dark cypress leaps \
+like a flame to the top of the picture. In the village, houses with lit windows \
+surround a church with a slender steeple, and the hills undulate, \
+echoing the movement of the sky."""
+evocation = """
+The Starry Night has become the very image of Van Gogh, and one often reads in it the \
+torments of his illness. But the painter also expresses in it a long-standing fascination with \
+the stars, which he associated with infinity and the beyond. The cypress, a tree of \
+cemeteries in Provence, links earth to sky: it has been seen as a symbol of death as much as \
+a surge towards eternity. The church, which looks more like those of Brabant, has \
+been interpreted as a memory of his native land. The contrast between the \
+peaceful village and the seething sky suggests a nature traversed by energies that the sleeping \
+human does not perceive. In 1971, Don McLean’s song Vincent, which begins with “\
+Starry, starry night”, further increased the painting’s fame."""
+histoire = """
+Van Gogh painted the canvas around mid-June 1889 at the Saint-Rémy asylum. From the barred \
+window of his room, facing east, he saw a walled wheat field and, \
+beyond it, hills. He was not allowed to paint in his room: he worked \
+by day in a ground-floor studio, relying on his studies and his \
+memory, and added the village and the cypress. He wrote to Theo that he had seen the countryside before \
+sunrise, with the morning star, very large. Not very satisfied, he later confided \
+to Émile Bernard that he had let himself go and made the stars too large. After \
+several owners, including the poet Julien Leclercq, the canvas entered the \
+Museum of Modern Art in New York in 1941, through an exchange of works bequeathed by Lillie P. Bliss."""
+facture = """
+Everything is movement: Van Gogh paints in thick, curving, rhythmic touches that \
+follow the forms and draw the eye into a continuous whirl. The sky is \
+built with deep blues, against which the yellows of the stars burst. The \
+cypress, almost black, is modelled in long, undulating vertical strokes that \
+oppose the horizontals of the village and the spirals of the sky. The village, drawn more \
+rectilinearly, provides a calm counterpoint. The strongly marked relief of the \
+paint catches the light and gives the sky an almost physical presence."""
+details = [
+  "The orange crescent moon, at upper right, wrapped in a halo.",
+  "The great double spiral rolling at the centre of the sky.",
+  "The morning star, larger and brighter, near the cypress.",
+  "The slender steeple of the church, rising above the rooftops.",
+  "The yellow windows of the houses, the only traces of human life.",
+]
+themes = ["night", "sky", "stars", "cypress", "village"]
+anecdote = """
+Astronomers have verified that in spring 1889, the planet Venus did shine at \
+dawn in the sky over Saint-Rémy: the morning star that Van Gogh says he saw from his \
+window is very probably she."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Almond Blossom"
+annee = "1890"
+image = "amandier.jpg"
+technique = "Oil on canvas, 73.3 × 92.4 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "A gift for the birth of his nephew: blossoming branches against a blue sky, in the Japanese manner."
+description = """
+Branches of almond in blossom stand out against a turquoise-blue sky, with no ground or \
+horizon. Seen from below, as if one were lying beneath the tree, they spread across \
+the whole surface of the canvas and divide into ever finer twigs. The \
+flowers, white tinged with pink, are shown at different stages: some \
+wide open, revealing their centres, others still in pink buds. The branches, \
+a greenish brown, are ringed with dark contours and twist supplely. The \
+framing cuts the twigs at the edges, so that the scene seems a fragment of a \
+larger tree. Nothing disturbs this dialogue between the blue of the sky and the \
+fragility of the flowers."""
+evocation = """
+The almond is the first tree to flower, at the end of winter: it symbolises \
+renewal and life beginning again. By choosing it to greet the birth of his \
+nephew, Van Gogh gives the newborn an emblem of hope and growth. The \
+painting, conceived to hang in the parents’ bedroom, also speaks of the deep affection \
+that binds him to Theo and his wife Johanna. Painted in a period of relative calm, \
+just before a new crisis, it takes on the value of a fragile promise. The \
+serenity of the image, its luminous sky and its decorative elegance testify to an \
+appeasement rarely found to this degree in his Saint-Rémy work."""
+histoire = """
+On 31 January 1890, Johanna, Theo’s wife, gave birth to a boy, whom his parents \
+named Vincent Willem, after his uncle. Touched, Vincent immediately set about painting \
+this picture at the Saint-Rémy asylum, in February 1890; he told his mother that he \
+intended it for their bedroom. Soon afterwards, he was struck by a severe crisis that \
+prevented him from working for almost two months. Theo and Jo eventually hung the \
+canvas above the piano in their Paris drawing room. It stayed in the family after the death \
+of the two brothers, belongs to the Vincent van Gogh Foundation and has become one \
+of the best-loved works in the Van Gogh Museum."""
+facture = """
+The influence of Japanese prints is at its height here: clean contours, flat areas of \
+colour, a motif seen close up and cut by the frame, a plain ground without perspective. Van Gogh, \
+who had collected these prints since Antwerp and Paris, makes their language his own. The \
+blue of the sky, laid on in tight touches, acts as a setting for the white of the flowers, itself \
+nuanced with pink and green. The flowers are painted in thick paste, which gives them \
+relief, while the branches are traced with a supple line. The reduced range \
+creates a luminous, calm harmony."""
+details = [
+  "The pink buds, next to the flowers already open.",
+  "The dark contours that outline the branches, as in a print.",
+  "The relief of the white flowers, painted in thick paste.",
+  "The twigs cut by the edges of the painting, in the Japanese manner.",
+]
+themes = ["flowers", "birth", "spring", "japonisme", "family"]
+anecdote = """
+The nephew for whom this almond tree was painted, Vincent Willem van Gogh, who became an engineer, \
+created the foundation behind the Van Gogh Museum. He died in 1978, having seen the \
+museum open in 1973 that now displays his birth gift."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Wheatfield with Crows"
+annee = "1890"
+image = "champ-ble-corbeaux.jpg"
+technique = "Oil on canvas, 50.5 × 103 cm"
+collection = "Van Gogh Museum, Amsterdam"
+note = "Auvers-sur-Oise, July 1890: a stormy sky, three paths and a flight of crows. He dies a few weeks later."
+description = """
+A field of ripe wheat stretches across the whole width of this very elongated canvas, beneath a \
+stormy dark-blue sky, almost black in the heights, where two paler clouds float. \
+Three paths cross it: the central one, reddish brown and edged with green grass, \
+advances towards the back and breaks off abruptly in the midst of the wheat; the other two \
+lead off to the left and right and leave the frame. Above the field, a \
+flock of black crows, painted with a single stroke, flies up or dives towards the ears. The \
+golden-yellow wheat, stirred, seems to bend under the wind. No human figure, no \
+house: nothing but earth, sky and birds."""
+evocation = """
+Because it was painted shortly before his death, this painting has long been read as a \
+testament. The threatening sky, the crows and the path that breaks off have been \
+interpreted as ill omens, perhaps more than is warranted. Van Gogh then wrote \
+to Theo and Johanna that he had painted immense stretches of wheat under troubled skies, \
+and that he had had no trouble expressing in them sadness and extreme loneliness. \
+But he adds that he hopes to show in them also what he sees of the healthy and fortifying \
+in the countryside. The work lies in this fragile balance between anguish and vitality, \
+between the menace of the sky and the fullness of the ripe wheat."""
+histoire = """
+On 20 May 1890, Van Gogh left Saint-Rémy for Auvers-sur-Oise, north of Paris, where \
+he was looked after by Dr Paul Gachet, a physician and art lover. He lodged at the Ravoux \
+inn and painted at a frenzied pace: more than seventy paintings in barely over \
+two months. In early July, back from a tense visit to Theo in Paris, he painted this \
+field under the storm. On 27 July, he shot himself with a revolver, in \
+circumstances never entirely clarified, and died two days later at the inn, \
+Theo at his bedside. The painting, which stayed in the family, belongs to the Vincent \
+van Gogh Foundation."""
+facture = """
+At Auvers, Van Gogh adopts a double-square format, very elongated, which he uses for \
+a series of panoramic landscapes. The paint is laid on quickly, in thick, broad touches, often \
+into still-wet colour. Complementaries clash: the yellow of the wheat against the blue of the sky, the \
+red of the path against the green of the grass. The crows are reduced to signs, simple black Vs \
+traced in a single gesture. Rather than leading the eye to a vanishing point, the \
+paths open out towards the viewer, which makes the space unstable."""
+details = [
+  "The central path, which stops dead in the midst of the wheat.",
+  "The crows, reduced to black V-shaped signs.",
+  "The two pale clouds, isolated in the dark sky.",
+  "The bands of green grass edging the red path.",
+]
+themes = ["landscape", "wheat", "storm", "crows", "solitude"]
+anecdote = """
+Contrary to a persistent legend, this is probably not his last canvas. Researchers at the \
+Van Gogh Museum attribute that role instead to Tree Roots, an unfinished \
+painting he was working on in the very last days of his life."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.4
+
+[[artistes]]
+nom = "Vincent van Gogh"
+vie = "Groot-Zundert (Netherlands), 30 March 1853 – Auvers-sur-Oise, 29 July 1890"
+biographie = """
+The son of a Protestant pastor, Vincent van Gogh grew up in Dutch Brabant. At \
+sixteen he joined Goupil & Cie, art dealers, and worked in The Hague, \
+London and Paris, before being dismissed in 1876. He then turned to religion, \
+failed to become a pastor and preached among the miners of the Borinage in Belgium. It was \
+there, in 1880, at twenty-seven, that he decided to become an artist. His younger brother Theo, \
+an art dealer in Paris, supported him financially to the end and received from him \
+hundreds of letters, an irreplaceable testimony to his thought. After years of \
+apprenticeship in Brussels, The Hague and Nuenen, where he painted peasants, he passed through \
+Antwerp and then joined Theo in Paris in 1886: there he discovered Impressionism, \
+Neo-Impressionism and Japanese prints, and his palette brightened. In February \
+1888, he left for Arles, where he dreamed of founding a studio of the South. Gauguin joined \
+him there, but the cohabitation was short-lived: in December 1888, during a crisis, Van \
+Gogh mutilated his left ear. Subject to crises whose nature is still debated, \
+he entered the Saint-Rémy-de-Provence asylum in 1889, where he painted tirelessly, then \
+settled in May 1890 at Auvers-sur-Oise. On 27 July, shot and wounded, he died \
+two days later. He sold very few canvases in his lifetime, even though the \
+critic Albert Aurier was beginning to notice him. Thanks to Johanna van Gogh-Bonger, \
+Theo’s widow, who published his letters and had his works exhibited, his fame became \
+worldwide in the early twentieth century."""
+style = """
+Van Gogh’s painting is recognisable at first glance: a thick, visible brushstroke, \
+in short strokes, hatching or swirls, which gives each surface, \
+sky, field or face, a movement of its own. He uses colour freely and \
+expressively, playing on contrasts of complementaries, not to copy nature \
+but to convey emotions. From Japanese prints, he retains the emphatic contours, \
+flat areas and bold framing. His work, some 850 paintings and nearly \
+1,300 drawings made in ten years, opened the way to the Fauvism of Matisse, Derain \
+and Vlaminck, and to German Expressionism, which owe him this freedom of \
+colour and gesture."""

@@ -12,6 +12,7 @@ pub mod artworks;
 pub mod data;
 pub mod editor;
 pub mod gallery;
+pub mod langue;
 pub mod museum;
 pub mod surfaces;
 pub mod tour;
@@ -23,11 +24,16 @@ mod ui;
 #[cfg(target_arch = "wasm32")]
 mod viewer;
 
-use artworks::{EXHIBITIONS, Exhibition};
+use artworks::Exhibition;
+use langue::t;
 
 /// L'exposition nommée par les paramètres de l'îlot (la première si elle est inconnue).
 fn exhibition(props: &str) -> &'static Exhibition {
-    Exhibition::find(props.trim()).unwrap_or(&EXHIBITIONS[0])
+    // `monet` ou `monet@en` : l'exposition, et la langue de la page.
+    let (slug, code) = props.trim().split_once('@').unwrap_or((props.trim(), "fr"));
+    let lang = langue::Lang::from_code(code);
+    langue::set_lang(lang);
+    lang.exhibitions().iter().find(|e| e.slug == slug).unwrap_or(&lang.exhibitions()[0])
 }
 
 fn control(class: &'static str, label: &'static str, text: &'static str) -> Element {
@@ -41,7 +47,11 @@ fn control(class: &'static str, label: &'static str, text: &'static str) -> Elem
 
 /// Le poids des données d'une exposition, en clair.
 fn megabytes(ex: &Exhibition) -> String {
-    format!("{:.1} Mo", ex.data_size as f32 / 1_000_000.0).replace('.', ",")
+    let mb = ex.data_size as f32 / 1_000_000.0;
+    match langue::lang() {
+        langue::Lang::En => format!("{mb:.1} MB"),
+        _ => format!("{mb:.1} Mo").replace('.', ","),
+    }
 }
 
 /// L'îlot du musée : la scène, et autour d'elle l'interface de visite. Toucher la scène
@@ -55,8 +65,10 @@ pub fn gallery_scene(props: &str) -> Node {
                 .class("scene scene-gallery")
                 .attr(
                     "aria-label",
-                    format!(
+                    crate::tf!(
                         "Le musée de l'exposition {} en 3D : toucher pour le plein écran",
+                        "The museum of the exhibition {} in 3D: touch for full screen",
+                        "El museo de la exposición {} en 3D: toque para pantalla completa",
                         ex.title
                     ),
                 )
@@ -66,27 +78,27 @@ pub fn gallery_scene(props: &str) -> Node {
         .child(
             canvas()
                 .class("egui-layer")
-                .attr("aria-label", "Commandes de la visite"),
+                .attr("aria-label", t("Commandes de la visite", "Tour controls", "Controles de la visita")),
         )
         .child(
             p().class("viewer-loading")
-                .text(format!("Ouverture du musée… ({})", megabytes(ex))),
+                .text(crate::tf!("Ouverture du musée… ({})", "Opening the museum… ({})", "Abriendo el museo… ({})", megabytes(ex))),
         )
         .child(
             div()
                 .class("viewer-sticks")
                 .attr("aria-hidden", "true")
-                .child(span().class("stick stick-move").text("avancer"))
-                .child(span().class("stick stick-look").text("regarder")),
+                .child(span().class("stick stick-move").text(t("avancer", "move", "avanzar")))
+                .child(span().class("stick stick-look").text(t("regarder", "look", "mirar"))),
         )
         .child(
             div()
                 .class("viewer-hd")
                 .attr("role", "dialog")
-                .attr("aria-label", "La toile en haute définition")
+                .attr("aria-label", t("La toile en haute définition", "The painting in high definition", "El cuadro en alta definición"))
                 .child(img().class("hd-img").attr("alt", ""))
                 .child(p().class("hd-title"))
-                .child(control("hd-close", "Fermer", "✕ Fermer")),
+                .child(control("hd-close", t("Fermer", "Close", "Cerrar"), t("✕ Fermer", "✕ Close", "✕ Cerrar"))),
         )
         .into()
 }
@@ -98,8 +110,10 @@ pub fn showcase_scene(props: &str) -> Node {
         .class("scene scene-showcase")
         .attr(
             "aria-label",
-            format!(
+            crate::tf!(
                 "Une toile de l'exposition {} sur un chevalet tournant, en 3D",
+                "A painting from the exhibition {} on a turning easel, in 3D",
+                "Un cuadro de la exposición {} en un caballete giratorio, en 3D",
                 ex.title
             ),
         )
