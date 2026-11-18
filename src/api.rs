@@ -552,6 +552,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     let poids_max = std::env::var("ARTEON_API_MO").ok().and_then(|v| v.parse::<usize>().ok()).unwrap_or(150) * 1_000_000;
     let poids = AtomicUsize::new(0);
     let faits: Mutex<Vec<(usize, String)>> = Mutex::new(Vec::new());
+    let a_refaire: Mutex<Vec<usize>> = Mutex::new(Vec::new());
     std::thread::scope(|s| {
         for _ in 0..fils.max(1) {
             s.spawn(|| loop {
@@ -559,14 +560,23 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 let Some((k, noms)) = groupes.get(i) else { break };
                 let nom_fichier = fichier_de(k);
                 let gardee = cache.map(|c| c.join(format!("{nom_fichier}.json")));
-                let frais = gardee.as_ref().and_then(|g| std::fs::metadata(g).ok()).and_then(|m| m.modified().ok())
-                    .and_then(|t| t.elapsed().ok())
-                    .is_some_and(|age| age < Duration::from_secs(7 * 24 * 3600))
-                    // Une réponse où un musée manquait se refait à la construction suivante.
-                    && gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
-                        .and_then(|t| serde_json::from_str::<Value>(&t).ok())
-                        .is_some_and(|v| v["manquants"].as_array().is_none_or(|m| m.is_empty()));
+                let age = gardee.as_ref().and_then(|g| std::fs::metadata(g).ok()).and_then(|m| m.modified().ok())
+                    .and_then(|t| t.elapsed().ok());
+                // Les musées qui manquaient à la réponse gardée (une réponse d'avant ce suivi
+                // n'en dit rien : elle se refait).
+                let manquants = gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                    .and_then(|t| serde_json::from_str::<Value>(&t).ok())
+                    .and_then(|v| v["manquants"].as_array().map(|m| m.len()));
+                let frais = age.is_some_and(|a| a < Duration::from_secs(7 * 24 * 3600)) && manquants.is_some();
                 let corps = if frais {
+                    // Une réponse où un musée manquait sert en attendant ; elle se refait à la
+                    // fin, s'il reste du temps, une fois par jour au plus.
+                    if manquants.is_some_and(|n| n > 0)
+                        && age.is_some_and(|a| a > Duration::from_secs(24 * 3600))
+                        && let Ok(mut r) = a_refaire.lock()
+                    {
+                        r.push(i);
+                    }
                     gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
                 } else if Instant::now() < fin {
                     let r = oeuvres_de(&noms[0]);
@@ -587,6 +597,33 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 {
                     f.push((i, nom_fichier));
                 }
+            });
+        }
+    });
+    // S'il reste du temps : les réponses où un musée manquait, dans l'ordre des artistes.
+    let mut a_refaire = a_refaire.into_inner().unwrap_or_default();
+    a_refaire.sort_unstable();
+    let suivant = AtomicUsize::new(0);
+    std::thread::scope(|s| {
+        for _ in 0..fils.max(1) {
+            s.spawn(|| loop {
+                let n = suivant.fetch_add(1, Ordering::SeqCst);
+                let Some(&i) = a_refaire.get(n) else { break };
+                if Instant::now() >= fin {
+                    break;
+                }
+                let (k, noms) = &groupes[i];
+                let nom_fichier = fichier_de(k);
+                let r = oeuvres_de(&noms[0]);
+                let texte = r.to_string();
+                if let Some(c) = cache {
+                    let _ = std::fs::write(c.join(format!("{nom_fichier}.json")), &texte);
+                }
+                let publie = dossier.join(format!("{nom_fichier}.json"));
+                if publie.exists() {
+                    let _ = std::fs::write(publie, &texte);
+                }
+                calcules.fetch_add(1, Ordering::SeqCst);
             });
         }
     });

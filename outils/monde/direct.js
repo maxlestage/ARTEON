@@ -66,7 +66,15 @@ async function chercher(nom, cleNom, alias) {
     const index = await chargerIndex();
     const fichier = index && (index.noms?.[nom] || index.cles?.[cleNom(nom)]);
     if (fichier) {
-      return { ...(await jsonGarde(lien(`api/${fichier}.json`), 24 * 3600e3)), source: "statique" };
+      const r = { ...(await jsonGarde(lien(`api/${fichier}.json`), 24 * 3600e3)), source: "statique" };
+      // Un musée n'avait pas répondu au calcul : le navigateur le lui demande, lui.
+      if (r.manquants?.length) {
+        const plus = await chezLesMusees(nom, cleNom, alias, r.manquants).catch(() => []);
+        const vus = new Set(r.oeuvres.map((o) => o.id));
+        r.oeuvres = [...r.oeuvres, ...plus.filter((o) => !vus.has(o.id))].sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9));
+        r.total = r.oeuvres.length;
+      }
+      return r;
     }
   } catch { /* pas encore publiée pour cet artiste */ }
   // 2. Le serveur Paquets (avec sa mémoire d'un jour) ; 12 secondes au plus.
@@ -77,7 +85,13 @@ async function chercher(nom, cleNom, alias) {
     clearTimeout(minuterie);
     if (r.ok) return { ...(await r.json()), source: "api" };
   } catch { /* le serveur dort : on demande aux musées */ }
+  const oeuvres = await chezLesMusees(nom, cleNom, alias);
+  return { nom, total: oeuvres.length, oeuvres, source: "musees" };
+}
 
+/** Le moteur générique, dans le navigateur : les musées de sources.json (ou seulement ceux
+ * de `seulement`), interrogés directement. */
+async function chezLesMusees(nom, cleNom, alias, seulement) {
   const cle = cleNom(nom);
   const noms = [nom, ...Object.entries(alias).filter(([, c]) => c === cle).map(([v]) => v)];
   const meme = (trouve) => {
@@ -142,10 +156,10 @@ async function chercher(nom, cleNom, alias) {
     return out;
   }
 
-  const lots = await Promise.all((await chargerSources()).map((s) => interroger(s).catch(() => [])));
+  const choisies = (await chargerSources()).filter((s) => !seulement || seulement.includes(s.cle));
+  const lots = await Promise.all(choisies.map((s) => interroger(s).catch(() => [])));
   const vus = new Set();
-  const oeuvres = lots.flat().filter((o) => !vus.has(o.id) && vus.add(o.id)).sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9));
-  return { nom, total: oeuvres.length, oeuvres, source: "musees" };
+  return lots.flat().filter((o) => !vus.has(o.id) && vus.add(o.id)).sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9));
 }
 
 /** Les noms des musées décrits (pour les légendes). */
