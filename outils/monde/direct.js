@@ -8,7 +8,7 @@
 // d'avant 1931).
 
 import { lien, plier } from "./commun.js";
-import { garder, jsonGarde, relire } from "./memoire.js";
+import { garder, jsonGarde, relire, versionDuSite } from "./memoire.js";
 
 /** L'adresse du serveur ARTEON (Heroku). */
 export const API = "https://arteon-1ed4594ee106.herokuapp.com";
@@ -49,7 +49,8 @@ const chargerIndex = () => (indexStatique ??= jsonGarde(lien("api/index.json")).
 
 /** Un catalogue de l'API statique, publié compressé (gzip) : le navigateur le décompresse. */
 async function jsonGz(adresse) {
-  const r = await fetch(adresse);
+  const version = await versionDuSite();
+  const r = await fetch(version ? `${adresse}?v=${encodeURIComponent(version)}` : adresse);
   if (!r.ok) throw new Error(`${r.status}`);
   const texte = await new Response(r.body.pipeThrough(new DecompressionStream("gzip"))).text();
   return JSON.parse(texte);

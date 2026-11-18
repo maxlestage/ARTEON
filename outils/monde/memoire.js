@@ -7,6 +7,18 @@
 const BASE = "arteon", MAGASIN = "reponses";
 const gzip = typeof CompressionStream !== "undefined" && typeof DecompressionStream !== "undefined";
 
+// La version du site (monde/donnees/version.json, réécrit à chaque mise en ligne, toujours
+// demandé au réseau). Les fichiers de données vont ensemble : la liste des œuvres, leurs
+// identifiants et leurs fiches doivent venir de la même mise en ligne, sinon le titre d'une
+// œuvre se retrouve sous l'image d'une autre. Chaque adresse gardée porte donc la version,
+// et la mémoire est vidée quand la version change.
+let versionDemandee;
+export function versionDuSite() {
+  versionDemandee ??= fetch(new URL("donnees/version.json", import.meta.url), { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null)).then((d) => (d && d.v ? String(d.v) : null)).catch(() => null);
+  return versionDemandee;
+}
+
 let ouverture;
 function ouvrir() {
   ouverture ??= new Promise((ok) => {
@@ -17,6 +29,21 @@ function ouvrir() {
       r.onerror = () => ok(null);
       r.onblocked = () => ok(null);
     } catch { ok(null); }
+  }).then(async (db) => {
+    // Une nouvelle mise en ligne : tout ce qui était gardé est oublié.
+    const version = await versionDuSite();
+    if (!db || !version) return db;
+    await new Promise((fini) => {
+      try {
+        const magasin = db.transaction(MAGASIN, "readwrite").objectStore(MAGASIN);
+        const lue = magasin.get("__version");
+        lue.onsuccess = () => {
+          if (lue.result !== version) { magasin.clear(); magasin.put(version, "__version"); }
+        };
+        magasin.transaction.oncomplete = magasin.transaction.onerror = magasin.transaction.onabort = () => fini();
+      } catch { fini(); }
+    });
+    return db;
   });
   return ouverture;
 }
@@ -62,7 +89,11 @@ export async function relire(cle, duree) {
 /** Le JSON d'une adresse : depuis la mémoire du navigateur s'il a moins de `duree`
  * millisecondes, sinon depuis le réseau (puis gardé, compressé). */
 export async function jsonGarde(adresse, duree = 12 * 3600e3) {
-  const url = new URL(adresse, location.href).href;
+  const complete = new URL(adresse, location.href);
+  // Les fichiers du site portent la version de la mise en ligne : jamais de mélange.
+  const version = complete.origin === location.origin ? await versionDuSite() : null;
+  if (version) complete.searchParams.set("v", version);
+  const url = complete.href;
   const deja = await relire(url, duree);
   if (deja != null) return deja;
   const r = await fetch(url);
