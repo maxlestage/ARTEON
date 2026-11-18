@@ -5,31 +5,21 @@
 //  2. pour chaque artiste de l'exposition, toutes ses autres œuvres libres de droits dans
 //     les musées du monde, par l'API ARTEON (direct.js : Chicago, Cleveland, New York,
 //     Copenhague, Minneapolis, Europeana, Wikidata).
-// Tout s'affiche de soi-même à mesure que l'on descend, sans bouton.
-import { echapper, lien, lienPage, nombre, plier, t } from "./commun.js";
+// Tout s'affiche de soi-même, en entier, sans bouton et sans attendre que l'on descende.
+import { echapper, lien, lienPage, nombre, plier, t, toutAfficher } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { jsonGarde } from "./memoire.js";
 
-const PAR_LOT = 240;
 const zone = document.getElementById("oeuvres-liees");
 const oeuvresN = (n) => (n === 1 ? t("1 œuvre", "1 work", "1 obra") : `${nombre(n)} ${t("œuvres", "works", "obras")}`);
 
-/** Une grille qui se remplit à mesure que sa fin approche de l'écran. */
+/** Une grille qui montre toutes ses œuvres, sans bouton et sans attendre. */
 function derouler(section, oeuvres, carte, compte) {
-  const grille = section.querySelector(".monde-grille");
-  const fin = document.createElement("div");
-  section.append(fin);
-  let montrees = 0;
-  const plus = () => {
-    if (montrees >= oeuvres.length) return;
-    grille.insertAdjacentHTML("beforeend", oeuvres.slice(montrees, montrees + PAR_LOT).map(carte).join(""));
-    montrees = Math.min(montrees + PAR_LOT, oeuvres.length);
-    compte.textContent = montrees < oeuvres.length
-      ? `${nombre(montrees)} / ${nombre(oeuvres.length)} ${t("œuvres affichées : la suite arrive en descendant", "works shown: more appear as you scroll", "obras mostradas: aparecen más al bajar")}`
-      : `${oeuvresN(oeuvres.length)}, ${t("toutes affichées", "all shown", "todas mostradas")}`;
-  };
-  plus();
-  new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) plus(); }, { rootMargin: "1500px" }).observe(fin);
+  toutAfficher(section.querySelector(".monde-grille"), oeuvres, carte, (montrees, total) => {
+    compte.textContent = montrees < total
+      ? `${nombre(montrees)} / ${nombre(total)} ${t("œuvres : affichage en cours…", "works: loading…", "obras: cargando…")}`
+      : `${oeuvresN(total)}, ${t("toutes affichées", "all shown", "todas mostradas")}`;
+  });
 }
 
 /** La clé d'un artiste, comme dans Explorer (explorer.js, cleNom). */
@@ -73,7 +63,7 @@ async function ouvrir() {
   }
 
   // 2. Toutes les autres œuvres de chaque artiste, dans les musées du monde : une section
-  // par artiste, demandée à l'API quand elle approche de l'écran.
+  // par artiste, demandée à l'API dès l'ouverture de la page.
   const [alias, musees] = await Promise.all([
     jsonGarde(lien("monde/alias.json")).catch(() => ({})),
     nomsDesMusees().catch(() => ({})),
@@ -88,24 +78,21 @@ async function ouvrir() {
       <p class="monde-compte">${t("Recherche dans les musées…", "Searching the museums…", "Buscando en los museos…")}</p><div class="monde-grille"></div>`;
     zone.append(section);
     const compte = section.querySelector(".monde-compte");
-    let demande = false;
-    const observateur = new IntersectionObserver(async (e) => {
-      if (demande || !e.some((x) => x.isIntersecting)) return;
-      demande = true;
-      observateur.disconnect();
-      try {
-        const r = await oeuvresEnDirect(artiste, cle, alias);
-        const oeuvres = (r.oeuvres || []).filter((o) => !vues.has(o.id) && vues.add(o.id));
-        if (!oeuvres.length) { section.hidden = true; fini(); return; }
+    // Demandée tout de suite, un artiste après l'autre : rien à faire défiler pour tout voir.
+    try {
+      const r = await oeuvresEnDirect(artiste, cle, alias);
+      const oeuvres = (r.oeuvres || []).filter((o) => !vues.has(o.id) && vues.add(o.id));
+      if (!oeuvres.length) {
+        section.hidden = true;
+      } else {
         comptes.musees += oeuvres.length;
         annoncer();
         derouler(section, oeuvres, (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musees[o.musee] || "").split(" (")[0]}` : musees[o.musee]].filter(Boolean).join(" · "))}</span></a>`, compte);
-      } catch {
-        compte.textContent = t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not answer. Try again later.", "Los museos no respondieron. Inténtelo más tarde.");
       }
-      fini();
-    }, { rootMargin: "1200px" });
-    observateur.observe(section);
+    } catch {
+      compte.textContent = t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not answer. Try again later.", "Los museos no respondieron. Inténtelo más tarde.");
+    }
+    fini();
   }
   if (!artistes.length) { comptes.enCours = false; annoncer(); }
 }

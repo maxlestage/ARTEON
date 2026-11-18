@@ -112,3 +112,32 @@ export function carteOeuvre(ex, w, sousTitre) {
 
 /** Toutes les œuvres du catalogue, avec leur exposition. */
 export const toutes = (c) => c.exhibitions.flatMap((ex) => ex.works.map((w) => ({ ex, w })));
+
+/** Affiche TOUS les `elements` dans `conteneur` (une carte par élément), sans bouton et sans
+ * attendre que l'on descende : par paquets, pour que la page reste fluide pendant qu'elle se
+ * remplit. `progres(montres, total)` est appelé après chaque paquet. Au-delà de `max`
+ * éléments (des dizaines de milliers : la mémoire d'un téléphone n'y suffirait pas), la suite
+ * arrive quand la fin de la liste approche de l'écran. */
+export function toutAfficher(conteneur, elements, carte, progres, { lot = 400, max = 12000 } = {}) {
+  let montres = 0;
+  const fin = document.createElement("div");
+  conteneur.after(fin);
+  const proche = () => fin.getBoundingClientRect().top < innerHeight + 2500;
+  const paquet = () => {
+    if (!conteneur.isConnected || montres >= elements.length) return;
+    conteneur.insertAdjacentHTML("beforeend", elements.slice(montres, montres + lot).map(carte).join(""));
+    montres = Math.min(montres + lot, elements.length);
+    progres?.(montres, elements.length);
+    if (montres >= elements.length) { fin.remove(); return; }
+    // Tout de suite jusqu'à `max` ; ensuite seulement si la fin est près de l'écran.
+    if (montres < max || proche()) setTimeout(paquet, 40);
+  };
+  paquet();
+  // Au-delà de `max` : la suite quand on arrive en bas (vérifié aussi après chaque défilement).
+  const reprendre = () => {
+    if (!conteneur.isConnected || montres >= elements.length) { removeEventListener("scroll", reprendre); return; }
+    if (montres >= max && proche()) paquet();
+  };
+  addEventListener("scroll", reprendre, { passive: true });
+  new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) reprendre(); }, { rootMargin: "2500px" }).observe(fin);
+}

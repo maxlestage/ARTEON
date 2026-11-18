@@ -2,7 +2,7 @@
 // les collections du monde), la chronologie siècle par siècle, les thèmes, et le jeu
 // « Qui l'a fait ? » (le record est gardé dans le navigateur).
 
-import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, route, t, titreSiecle, toutes } from "./commun.js";
+import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, route, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { jsonGarde } from "./memoire.js";
 
@@ -160,21 +160,10 @@ async function listeArtistes(choisie) {
         + `<div class="monde-artistes">${trouves.slice(0, 300).map(ligne).join("")}${ailleurs}</div>`;
       return;
     }
-    // Une lettre compte des milliers d'artistes : 300 à la fois.
+    // Tous les artistes de la lettre, d'un coup (des milliers : par paquets, sans bouton).
     const ici = tous.filter((a) => lettreDe(a.nom) === lettre);
-    zone.innerHTML = `<h2 class="monde-lettre">${lettre} <small class="monde-note">${nombre(ici.length)} ${ici.length > 1 ? t("artistes", "artists", "artistas") : t("artiste", "artist", "artista")}</small></h2><div class="monde-artistes" id="lettre-liste"></div>
-      <button class="monde-plus" id="lettre-plus" type="button">${t("Afficher plus", "Show more", "Mostrar más")}</button>`;
-    const liste = document.getElementById("lettre-liste"), bouton = document.getElementById("lettre-plus");
-    let montres = 0;
-    const plus = () => {
-      liste.insertAdjacentHTML("beforeend", ici.slice(montres, montres + 300).map(ligne).join(""));
-      montres += 300;
-      bouton.hidden = montres >= ici.length;
-    };
-    bouton.addEventListener("click", plus);
-    plus();
-    // La suite s'affiche d'elle-même en descendant.
-    new IntersectionObserver((e) => { if (e[0].isIntersecting) plus(); }, { rootMargin: "1200px" }).observe(bouton);
+    zone.innerHTML = `<h2 class="monde-lettre">${lettre} <small class="monde-note">${nombre(ici.length)} ${ici.length > 1 ? t("artistes", "artists", "artistas") : t("artiste", "artist", "artista")}</small></h2><div class="monde-artistes" id="lettre-liste"></div>`;
+    toutAfficher(document.getElementById("lettre-liste"), ici, ligne);
   };
   document.getElementById("filtre").addEventListener("input", (e) => dessiner(e.target.value));
   dessiner("");
@@ -227,21 +216,12 @@ async function artiste(nom) {
         "Public domain (artist died in 1955 or earlier, work made before 1931) · images and records hosted by the museums",
         "Dominio público (artista fallecido en 1955 o antes, obra anterior a 1931) · imágenes y fichas en los museos")}${r.source === "musees"
         ? ` · ${t("directement chez les musées", "directly from the museums", "directamente de los museos")}` : ` · ${t("par l'API ARTEON", "via the ARTEON API", "a través de la API de ARTEON")}`}</p>
-      <div class="monde-grille" id="direct-grille"></div><button class="monde-plus" id="direct-plus" type="button">${t("Afficher plus", "Show more", "Mostrar más")}</button>`
+      <div class="monde-grille" id="direct-grille"></div>`
       : `<h2>${enDirect}</h2><p class="monde-note">${t("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.", "No other copyright-free works in the museums' open collections.", "Ninguna otra obra libre de derechos en las colecciones abiertas de los museos.")}</p>`;
-    // 300 à la fois : les catalogues des grands artistes comptent des milliers d'œuvres.
-    const grille = document.getElementById("direct-grille"), bouton = document.getElementById("direct-plus");
-    let montrees = 0;
+    // Toutes ses œuvres, d'un coup (des milliers parfois : par paquets, sans bouton).
+    const grille = document.getElementById("direct-grille");
     const carte = (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musee[o.musee] || "").split(" (")[0]}` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
-    const plus = () => {
-      if (!grille) return;
-      grille.insertAdjacentHTML("beforeend", nouvelles.slice(montrees, montrees + 300).map(carte).join(""));
-      montrees += 300;
-      if (bouton) bouton.hidden = montrees >= nouvelles.length;
-    };
-    bouton?.addEventListener("click", plus);
-    plus();
-    if (bouton) new IntersectionObserver((e) => { if (e[0].isIntersecting) plus(); }, { rootMargin: "1200px" }).observe(bouton);
+    if (grille) toutAfficher(grille, nouvelles, carte);
   } catch {
     zone.innerHTML = `<h2>${enDirect}</h2><p class="monde-note">${t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not respond. Please try again later.", "Los museos no han respondido. Vuelva a intentarlo más tarde.")}</p>`;
   }

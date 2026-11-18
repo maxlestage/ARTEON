@@ -3,12 +3,11 @@
 // (donnees/liste.json pour parcourir et chercher, donnees/fiches-NN.json pour le détail),
 // les vignettes viennent du site (v/<œuvre>.jpg), l'image en grand du musée qui la publie.
 // Écrit par outils/monde_web.py dans monde/ ; adresses en #/… (une seule page).
-import { chargerCatalogue, langue, lien, lienPage, nombre, t, titreSiecle } from "./commun.js";
+import { chargerCatalogue, langue, lien, lienPage, nombre, t, titreSiecle, toutAfficher } from "./commun.js";
 import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
 const etat = { index: null, liste: null, plies: null, fiches: new Map(), vues: [], montrees: 0 };
-const PAR_PAGE = 120;
 
 const echapper = (t) => String(t ?? "").replace(/[&<>"']/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -127,8 +126,7 @@ function afficher() {
     </div>
     <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${oeuvresN(vues.length)}${r.type === "exposition"
       ? ` ${t("liées dans les collections du monde, de la plus ancienne à la plus récente", "related in the world collections, from oldest to most recent", "relacionadas en las colecciones del mundo, de la más antigua a la más reciente")} · <a href="${lienPage(`${encodeURIComponent(r.valeur)}/`)}">← ${t("la visite de l'exposition", "visit the exhibition", "la visita de la exposición")}</a>` : ""}</p>
-    <div class="monde-grille" id="monde-grille"></div>
-    <button class="monde-plus" id="monde-plus" type="button">${t("Afficher plus", "Show more", "Mostrar más")}</button>`;
+    <div class="monde-grille" id="monde-grille"></div>`;
   let attente;
   const q = document.getElementById("monde-q");
   q.addEventListener("input", () => {
@@ -141,26 +139,14 @@ function afficher() {
   document.getElementById("monde-hasard").addEventListener("click", () => {
     location.hash = `#/oeuvre/${etat.ids[Math.floor(Math.random() * etat.ids.length)]}`;
   });
-  document.getElementById("monde-plus").addEventListener("click", plus);
-  plus();
-  const bouton = document.getElementById("monde-plus");
-  new IntersectionObserver((e) => { if (e[0].isIntersecting) plus(); }, { rootMargin: "800px" }).observe(bouton);
+  // Toutes les œuvres de la vue, sans bouton (au-delà de 12 000, la suite arrive en descendant).
+  toutAfficher(document.getElementById("monde-grille"), vues, carte);
 }
 
 function carte(i) {
   const l = etat.liste[i], id = etat.ids[i];
   const ligne = [nomArtiste(l[A]), l[D]].filter(Boolean).join(" · ");
   return `<a class="monde-carte" href="#/oeuvre/${id}"><img loading="lazy" decoding="async" src="${l[7] || lien(`monde/v/${id}.webp`)}" alt=""><b>${echapper(l[T])}</b><span>${echapper(ligne)}</span></a>`;
-}
-
-function plus() {
-  const grille = document.getElementById("monde-grille");
-  if (!grille) return;
-  const suite = etat.vues.slice(etat.montrees, etat.montrees + PAR_PAGE);
-  grille.insertAdjacentHTML("beforeend", suite.map(carte).join(""));
-  etat.montrees += suite.length;
-  const bouton = document.getElementById("monde-plus");
-  if (bouton) bouton.hidden = etat.montrees >= etat.vues.length;
 }
 
 async function detail(i) {
