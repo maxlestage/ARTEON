@@ -43,9 +43,23 @@ const lireJson = async (url, entetes = {}) => {
 let sources;
 const chargerSources = () => (sources ??= fetch(lien("monde/sources.json")).then((r) => r.json()).then((d) => d.sources));
 
-/** Toutes les œuvres de l'artiste dans les musées, en direct. */
+let indexStatique;
+const chargerIndex = () => (indexStatique ??= fetch(lien("api/index.json")).then((r) => (r.ok ? r.json() : null)).catch(() => null));
+
+/** Toutes les œuvres de l'artiste dans les musées : l'API publiée avec le site (calculée
+ * chaque semaine par le moteur de l'API Paquets), sinon le serveur Paquets, sinon les musées
+ * eux-mêmes, en direct. */
 export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
-  // L'API ARTEON d'abord (avec sa mémoire d'un jour) ; 12 secondes au plus.
+  // 1. L'API statique, publiée avec le site : immédiate, sans serveur.
+  try {
+    const index = await chargerIndex();
+    const fichier = index && (index.noms?.[nom] || index.cles?.[cleNom(nom)]);
+    if (fichier) {
+      const r = await fetch(lien(`api/${fichier}.json`));
+      if (r.ok) return { ...(await r.json()), source: "statique" };
+    }
+  } catch { /* pas encore publiée pour cet artiste */ }
+  // 2. Le serveur Paquets (avec sa mémoire d'un jour) ; 12 secondes au plus.
   try {
     const controle = new AbortController();
     const minuterie = setTimeout(() => controle.abort(), 12000);

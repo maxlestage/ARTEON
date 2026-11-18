@@ -236,11 +236,19 @@ fn lire(url: &str, entetes: &[(&str, &str)]) -> Option<Value> {
     for (k, v) in entetes {
         requete = requete.set(k, v);
     }
-    let texte = match requete.call() {
-        Ok(r) => r.into_string().ok()?,
-        Err(e) => {
-            eprintln!("api : {url} : {e}");
-            return None;
+    // Un musée qui demande de ralentir (429, 503) est réessayé un peu plus tard, deux fois.
+    let mut essai = 0;
+    let texte = loop {
+        match requete.clone().call() {
+            Ok(r) => break r.into_string().ok()?,
+            Err(ureq::Error::Status(code, _)) if (code == 429 || code == 503) && essai < 2 => {
+                essai += 1;
+                std::thread::sleep(Duration::from_secs(3 * essai));
+            }
+            Err(e) => {
+                eprintln!("api : {url} : {e}");
+                return None;
+            }
         }
     };
     serde_json::from_str(&texte).ok()
@@ -475,4 +483,97 @@ mod tests {
         assert!(!libre("1920", None, None, Some(1902)));
         assert_eq!(vie("Dutch, 1606–1669"), (Some(1606), Some(1669)));
     }
+}
+
+// ─── L'API statique ─────────────────────────────────────────────────────────
+
+/// Un nom de fichier stable pour la clé d'un artiste (FNV-1a, en hexadécimal).
+fn fichier_de(cle: &str) -> String {
+    let mut h: u64 = 0xcbf2_9ce4_8422_2325;
+    for b in cle.bytes() {
+        h = (h ^ u64::from(b)).wrapping_mul(0x100_0000_01b3);
+    }
+    format!("{h:016x}")
+}
+
+/// L'API publiée en fichiers, pour un site statique (GitHub Pages) : le catalogue complet de
+/// chaque artiste de `noms`, calculé par le même moteur que `/api/artiste`, dans
+/// `dossier/<fichier>.json`, et `dossier/index.json` qui relie chaque nom (et chaque clé) à
+/// son fichier. Les réponses de moins d'une semaine de `cache` sont reprises ; les autres
+/// sont recalculées, `fils` à la fois, tant qu'il reste du temps (`minutes`).
+pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: Option<&std::path::Path>, fils: usize)
+    -> std::io::Result<(usize, usize)>
+{
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    std::fs::create_dir_all(dossier)?;
+    if let Some(c) = cache {
+        std::fs::create_dir_all(c)?;
+    }
+    // Les noms, groupés par clé : un fichier par artiste.
+    let mut groupes: Vec<(String, Vec<String>)> = Vec::new();
+    let mut place: HashMap<String, usize> = HashMap::new();
+    for nom in noms {
+        let nom = nom.trim();
+        if nom.chars().count() < 2 || nom == "Artiste inconnu" {
+            continue;
+        }
+        let k = cle(nom);
+        match place.get(&k) {
+            Some(&i) => groupes[i].1.push(nom.to_owned()),
+            None => {
+                place.insert(k.clone(), groupes.len());
+                groupes.push((k, vec![nom.to_owned()]));
+            }
+        }
+    }
+    let fin = Instant::now() + Duration::from_secs(minutes * 60);
+    let suivant = AtomicUsize::new(0);
+    let calcules = AtomicUsize::new(0);
+    let faits: Mutex<Vec<(usize, String)>> = Mutex::new(Vec::new());
+    std::thread::scope(|s| {
+        for _ in 0..fils.max(1) {
+            s.spawn(|| loop {
+                let i = suivant.fetch_add(1, Ordering::SeqCst);
+                let Some((k, noms)) = groupes.get(i) else { break };
+                let nom_fichier = fichier_de(k);
+                let gardee = cache.map(|c| c.join(format!("{nom_fichier}.json")));
+                let frais = gardee.as_ref().and_then(|g| std::fs::metadata(g).ok()).and_then(|m| m.modified().ok())
+                    .and_then(|t| t.elapsed().ok())
+                    .is_some_and(|age| age < Duration::from_secs(7 * 24 * 3600));
+                let corps = if frais {
+                    gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                } else if Instant::now() < fin {
+                    let r = oeuvres_de(&noms[0]);
+                    let texte = r.to_string();
+                    if let Some(g) = &gardee {
+                        let _ = std::fs::write(g, &texte);
+                    }
+                    calcules.fetch_add(1, Ordering::SeqCst);
+                    Some(texte)
+                } else {
+                    // Plus de temps : la réponse de la semaine passée, s'il y en a une.
+                    gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                };
+                if let Some(corps) = corps
+                    && std::fs::write(dossier.join(format!("{nom_fichier}.json")), corps).is_ok()
+                    && let Ok(mut f) = faits.lock()
+                {
+                    f.push((i, nom_fichier));
+                }
+            });
+        }
+    });
+    let faits = faits.into_inner().unwrap_or_default();
+    let mut par_nom = serde_json::Map::new();
+    let mut par_cle = serde_json::Map::new();
+    for (i, nom_fichier) in &faits {
+        let (k, noms) = &groupes[*i];
+        par_cle.insert(k.clone(), json!(nom_fichier));
+        for n in noms {
+            par_nom.insert(n.clone(), json!(nom_fichier));
+        }
+    }
+    let index = json!({ "noms": par_nom, "cles": par_cle, "total": faits.len() });
+    std::fs::write(dossier.join("index.json"), index.to_string())?;
+    Ok((faits.len(), calcules.into_inner()))
 }

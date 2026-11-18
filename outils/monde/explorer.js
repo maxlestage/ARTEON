@@ -169,9 +169,21 @@ async function artiste(nom) {
     const musee = await nomsDesMusees().catch(() => ({}));
     document.getElementById("catalogue-titre").textContent = titre(toutes.length + nouvelles.length);
     zone.innerHTML = nouvelles.length ? `<h2>Dans les musées, en direct : ${nombre(nouvelles.length)} œuvres de plus</h2>
-      <p class="monde-note">Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées${r.source === "api" ? " · par l'API ARTEON" : ""}</p>
-      <div class="monde-grille">${nouvelles.map((o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · Europeana` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`).join("")}</div>`
+      <p class="monde-note">Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées${r.source === "musees" ? " · directement chez les musées" : " · par l'API ARTEON"}</p>
+      <div class="monde-grille" id="direct-grille"></div><button class="monde-plus" id="direct-plus" type="button">Afficher plus</button>`
       : `<h2>Dans les musées, en direct</h2><p class="monde-note">Aucune autre œuvre libre de droits dans les collections ouvertes des musées.</p>`;
+    // 300 à la fois : les catalogues des grands artistes comptent des milliers d'œuvres.
+    const grille = document.getElementById("direct-grille"), bouton = document.getElementById("direct-plus");
+    let montrees = 0;
+    const carte = (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · Europeana` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
+    const plus = () => {
+      if (!grille) return;
+      grille.insertAdjacentHTML("beforeend", nouvelles.slice(montrees, montrees + 300).map(carte).join(""));
+      montrees += 300;
+      if (bouton) bouton.hidden = montrees >= nouvelles.length;
+    };
+    bouton?.addEventListener("click", plus);
+    plus();
   } catch {
     zone.innerHTML = `<h2>Dans les musées, en direct</h2><p class="monde-note">Les musées n'ont pas répondu. Réessayer plus tard.</p>`;
   }

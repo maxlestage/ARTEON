@@ -1954,8 +1954,24 @@ fn main() -> std::io::Result<()> {
             println!("📦 {files} fichiers écrits dans {dir}");
             Ok(())
         }
+        // `cargo run --release -- api <dossier> <noms.txt> [minutes] [fils]` : l'API publiée en
+        // fichiers (le catalogue complet de chaque artiste), pour GitHub Pages. Le cache des
+        // réponses est dans ARTEON_API_CACHE (target/api-cache par défaut).
+        Some("api") => {
+            let dir = std::path::PathBuf::from(args.next().unwrap_or_else(|| "dist/api".into()));
+            let noms_txt = args.next().unwrap_or_else(|| "noms.txt".into());
+            let minutes = args.next().and_then(|m| m.parse().ok()).unwrap_or(25);
+            let fils = args.next().and_then(|m| m.parse().ok()).unwrap_or(4);
+            let cache = std::path::PathBuf::from(
+                std::env::var("ARTEON_API_CACHE").unwrap_or_else(|_| "target/api-cache".into()),
+            );
+            let noms: Vec<String> = std::fs::read_to_string(&noms_txt)?.lines().map(str::to_owned).collect();
+            let (publies, calcules) = api::publier(&dir, &noms, minutes, Some(&cache), fils)?;
+            println!("📦 API statique : {publies} artistes publiés ({calcules} recalculés) dans {}", dir.display());
+            Ok(())
+        }
         Some(other) => {
-            eprintln!("commande inconnue {other:?} : lancer sans argument, ou `export <dossier>`");
+            eprintln!("commande inconnue {other:?} : lancer sans argument, `export <dossier>` ou `api <dossier> <noms.txt>`");
             std::process::exit(2);
         }
         None => app().run(),

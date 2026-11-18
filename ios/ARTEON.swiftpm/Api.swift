@@ -177,6 +177,19 @@ enum LiveWorks {
     /// Toutes les œuvres libres de l'artiste dans les musées : par l'API ARTEON, sinon
     /// directement.
     static func of(_ name: String) async -> LiveCatalogue? {
+        // 1. L'API statique, publiée avec le site : immédiate, sans serveur.
+        if let index = try? await Api.site("api/index.json"),
+           let json = try? JSONSerialization.jsonObject(with: index) as? [String: Any] {
+            let byName = json["noms"] as? [String: String] ?? [:]
+            let byKey = json["cles"] as? [String: String] ?? [:]
+            if let file = byName[name] ?? byKey[ArtistKey.of(name)],
+               let data = try? await Api.site("api/\(file).json"),
+               var answer = try? JSONDecoder().decode(LiveCatalogue.self, from: data) {
+                answer.source = "statique"
+                return answer
+            }
+        }
+        // 2. Le serveur Paquets, 3. les musées eux-mêmes.
         var parts = URLComponents(url: Api.server.appendingPathComponent("api/artiste"), resolvingAgainstBaseURL: false)
         parts?.queryItems = [URLQueryItem(name: "nom", value: name)]
         if let url = parts?.url, let data = try? await Api.data(url, timeout: 12),
