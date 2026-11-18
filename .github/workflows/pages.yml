@@ -121,6 +121,14 @@ jobs:
           python3 outils/monde_web.py target/monde target/collections-cache/vignettes dist
           du -sh dist dist/monde
 
+      # Ce que la moisson a appris (fiches de Chicago et du Met, vignettes de la réserve) est
+      # gardé : la construction suivante repart de là, et les collections grandissent.
+      - uses: actions/cache/save@v4
+        if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        with:
+          path: target/collections-cache
+          key: collections-v1-pages-${{ github.run_id }}
+
       - name: Vérifier l'export
         run: |
           for f in index.html ajouter/index.html credits/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm \
