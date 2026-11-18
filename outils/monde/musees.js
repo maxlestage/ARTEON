@@ -2,7 +2,7 @@
 // pays ; chacun avec son histoire, ce qu'ARTEON lui emprunte et son plan interactif (toucher
 // une salle montre ses œuvres) ; et le Grand Musée ARTEON, un musée original en six ailes.
 
-import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, pageExposition, pageGalerie, plier, romain, route, t } from "./commun.js";
+import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, pageExposition, pageGalerie, plier, romain, route, rubrique, t } from "./commun.js";
 
 const racine = document.getElementById("monde");
 let C, batiments, pays;
@@ -107,8 +107,7 @@ function musee(nom) {
       <div><h1>${echapper(m.name)}</h1><p>${echapper(m.city)}</p></div></div>
     <dl class="monde-cartel">${[[t("Architecte", "Architect", "Arquitecto"), m.architect], [t("Construction", "Built", "Construcción"), m.built], [t("Pays", "Country", "País"), paysDe(m.city)]]
       .filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
-    ${m.presentation ? `<section class="monde-section"><h2 style="color:${ac}">${t("Le vrai musée", "The real museum", "El museo real")}</h2><p class="monde-texte">${echapper(m.presentation)}</p></section>` : ""}
-    ${m.here ? `<section class="monde-section"><h2 style="color:${ac}">${t("Ce qu'ARTEON lui emprunte", "What ARTEON borrows from it", "Lo que ARTEON toma de él")}</h2><p class="monde-texte">${echapper(m.here)}</p></section>` : ""}
+    ${m.presentation || m.here ? `<div class="folds">${m.presentation ? rubrique(t("Le vrai musée", "The real museum", "El museo real"), `<p>${echapper(m.presentation)}</p>`, true) : ""}${m.here ? rubrique(t("Ce qu'ARTEON lui emprunte", "What ARTEON borrows from it", "Lo que ARTEON toma de él"), `<p>${echapper(m.here)}</p>`) : ""}</div>` : ""}
     ${b.expos.map((ex, n) => `
       <section class="monde-section" data-expo="${n}">
         <h2>${b.expos.length > 1 ? echapper(ex.short_name || ex.title) : t("Le plan", "Floor plan", "El plano")}</h2>

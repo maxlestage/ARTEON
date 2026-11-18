@@ -430,6 +430,9 @@ body.viewer-open { overflow: hidden; }
 .fold-sign::after { top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); transition: transform .2s ease; }
 .fold[open] .fold-sign::after { transform: translateX(-50%) scaleY(0); }
 .fold-body { padding: 0 0 1.6rem; max-width: 46rem; line-height: 1.7; }
+.fold-body:has(table), .fold-body:has(pre), .fold-body:has(.slots-block) { max-width: none; }
+.fold-body .section-title { margin-top: 1.5rem; }
+.artist-card .folds, .building-text .folds { margin-top: 1rem; }
 .fold-body p { margin: 0 0 .9rem; }
 .fold-body p:last-child { margin-bottom: 0; }
 .themes { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }

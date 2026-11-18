@@ -1368,29 +1368,26 @@ fn building(ex: &'static Exhibition) -> Element {
         }));
     let text = match ex.museum {
         Some(m) => {
-            let facts: Vec<&str> = [m.city, m.architect, m.built]
-                .into_iter()
-                .filter(|t| !t.is_empty())
-                .collect();
+            let facts = [
+                (t("Ville", "City", "Ciudad"), m.city),
+                (t("Architecte", "Architect", "Arquitecto"), m.architect),
+                (t("Construction", "Built", "Construcción"), m.built),
+            ];
             let card = div()
                 .class("building-text")
                 .child(p().class("kicker").text(t("Inspiré de", "Inspired by", "Inspirado en")))
-                .child(h3().text(m.name));
-            let card = if facts.is_empty() {
-                card
-            } else {
-                card.child(p().class("muted").text(facts.join(" · ")))
-            };
-            let card = if m.presentation.is_empty() {
-                card
-            } else {
-                card.child(p().text(m.presentation))
-            };
-            if m.here.is_empty() {
-                card
-            } else {
-                card.child(h4().text(t("Dans ARTEON", "In ARTEON", "En ARTEON"))).child(p().text(m.here))
+                .child(h3().text(m.name))
+                .child(dl().class("facts").children(facts.into_iter().filter(|(_, v)| !v.is_empty()).map(
+                    |(label, value)| div().class("fact").child(dt().text(label)).child(dd().text(value)),
+                )));
+            let mut folds = div().class("folds");
+            if !m.presentation.is_empty() {
+                folds = folds.child(fold(t("Le musée", "The museum", "El museo"), true, p().text(m.presentation)));
             }
+            if !m.here.is_empty() {
+                folds = folds.child(fold(t("Dans ARTEON", "In ARTEON", "En ARTEON"), false, p().text(m.here)));
+            }
+            card.child(folds)
         }
         None => div().class("building-text").child(p().text(tf!(
             "Un bâtiment de {} salles, dessiné pour cette exposition.",
@@ -1423,18 +1420,14 @@ fn artist_card(artist: &Artist) -> Element {
     } else {
         block.child(p().class("muted small").text(artist.life))
     };
-    let block = if artist.biography.is_empty() {
-        block
-    } else {
-        block.child(p().text(artist.biography))
-    };
-    if artist.style.is_empty() {
-        block
-    } else {
-        block
-            .child(h4().text(t("Sa manière", "Technique", "Su estilo")))
-            .child(p().text(artist.style))
+    let mut folds = div().class("folds");
+    if !artist.biography.is_empty() {
+        folds = folds.child(fold(t("Sa vie", "Life", "Su vida"), false, p().text(artist.biography)));
     }
+    if !artist.style.is_empty() {
+        folds = folds.child(fold(t("Sa manière", "Technique", "Su estilo"), false, p().text(artist.style)));
+    }
+    block.child(folds)
 }
 
 /// Une rubrique repliable : son titre en capitales, un « + » à droite, et son texte qui
@@ -1700,19 +1693,9 @@ async fn credits(_req: Request) -> Page {
                 .child(td().text(s.artist))
                 .child(td().text(t("Scan 3D · Smithsonian Institution · CC0", "3D scan · Smithsonian Institution · CC0", "Escaneo 3D · Smithsonian Institution · CC0")))
         }));
-        details()
-            .class("credits-block")
-            .child(
-                summary()
-                    .child(strong().text(ex.title))
-                    .child(span().class("muted").text(tf!(
-                        " · {} œuvres",
-                        " · {} works",
-                        " · {} obras",
-                        ex.artworks.len() + ex.sculptures.len()
-                    ))),
-            )
-            .child(
+        fold(
+            tf!("{} · {} œuvres", "{} · {} works", "{} · {} obras", ex.title, ex.artworks.len() + ex.sculptures.len()),
+            false,
                 div().class("table-wrap").child(
                     table()
                         .class("credits-table")
@@ -1756,9 +1739,8 @@ async fn credits(_req: Request) -> Page {
         .child(h2().class("section-title").text(t("Mentions légales et vie privée", "Legal notice and privacy", "Aviso legal y privacidad")))
         .child(
             div()
-                .class("credits-legal")
-                .child(h3().text(t("Les œuvres encore protégées", "Works still under copyright", "Obras aún protegidas")))
-                .child(p().text(t(
+                .class("credits-legal folds")
+                .child(fold(t("Les œuvres encore protégées", "Works still under copyright", "Obras aún protegidas"), true, p().text(t(
                     "Les œuvres d'artistes morts après 1955, ou créées après 1930, sont encore protégées par le droit \
                      d'auteur dans une partie du monde : ARTEON ne les reproduit jamais. Elles peuvent être citées dans les \
                      textes, mais aucune image n'en est montrée, ni sur le site, ni dans le musée 3D, ni dans l'application. \
@@ -1773,9 +1755,8 @@ async fn credits(_req: Request) -> Page {
                      no se muestra ninguna imagen de ellas, ni en el sitio, ni en el museo 3D, ni en la aplicación. Las \
                      exposiciones dedicadas al arte del siglo XX muestran así a los pioneros y precursores, libres de \
                      derechos, de los movimientos recientes.",
-                )))
-                .child(h3().text(t("Les musées réels", "The real museums", "Los museos reales")))
-                .child(p().text(t(
+                ))))
+                .child(fold(t("Les musées réels", "The real museums", "Los museos reales"), false, p().text(t(
                     "ARTEON est un projet indépendant. Ses bâtiments s'inspirent de musées réels, dont les noms ne sont \
                      cités que pour dire ce qui a inspiré chaque plan : ARTEON n'est ni affilié à ces musées, ni approuvé \
                      ni soutenu par eux, et leurs noms restent la propriété de leurs titulaires. Les plans sont des \
@@ -1788,9 +1769,8 @@ async fn credits(_req: Request) -> Page {
                      se citan para indicar qué inspiró cada plano: ARTEON no está afiliado a estos museos, ni aprobado ni \
                      respaldado por ellos, y sus nombres siguen siendo propiedad de sus titulares. Los planos son \
                      interpretaciones libres, no levantamientos arquitectónicos.",
-                )))
-                .child(h3().text(t("Les licences libres", "Free licences", "Las licencias libres")))
-                .child(p().text(t(
+                ))))
+                .child(fold(t("Les licences libres", "Free licences", "Las licencias libres"), false, p().text(t(
                     "Une photographie sous licence CC BY ou CC BY-SA est toujours citée avec son auteur, sa licence et \
                      un lien vers sa source. Sa mosaïque dans le musée 3D est une adaptation de cette photographie : elle \
                      est partagée aux mêmes conditions, sous la même licence et avec le même crédit. Les photographies \
@@ -1803,9 +1783,8 @@ async fn credits(_req: Request) -> Page {
                      su fuente. Su mosaico en el museo 3D es una adaptación de esa fotografía: se comparte en las mismas \
                      condiciones, con la misma licencia y el mismo crédito. Las fotografías publicadas en CC0 por los \
                      museos y las obras de dominio público pueden reutilizarse libremente.",
-                )))
-                .child(h3().text(t("Vie privée", "Privacy", "Privacidad")))
-                .child(p().text(t(
+                ))))
+                .child(fold(t("Vie privée", "Privacy", "Privacidad"), false, p().text(t(
                     "ARTEON n'utilise ni cookie, ni traceur, ni publicité, et ne demande aucun compte. Les pages des \
                      collections du monde affichent les images en grand depuis les serveurs des musées (Art Institute of \
                      Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art), et le catalogue de \
@@ -1835,12 +1814,12 @@ async fn credits(_req: Request) -> Page {
                      datos del museo (IndexedDB): nunca se envía a ningún sitio y se borra con los datos del sitio, en los \
                      ajustes del navegador. La aplicación iOS pasa por la API de ARTEON: guarda una copia comprimida de la \
                      visita en curso (SQLite), que se borra al salir.",
-                ))),
+                ))))
         )
         .child(h2().class("section-title").text(t("Le code et les outils", "Code and tools", "El código y las herramientas")))
         .child(div().class("table-wrap").child(tools))
         .child(h2().class("section-title").text(t("Les reproductions, exposition par exposition", "Reproductions, exhibition by exhibition", "Las reproducciones, exposición por exposición")))
-        .children(per_exhibition);
+        .child(div().class("folds").children(per_exhibition));
     layout(
         t("Crédits et licences", "Credits and licences", "Créditos y licencias"),
         t(
@@ -2041,7 +2020,8 @@ Sa manière…""""##;
                     )),
                 )),
         )
-        .child(h2().class("section-title").text(t("Déplacer une œuvre depuis le musée", "Move a work from inside the museum", "Mover una obra desde el museo")))
+        .child(div().class("folds")
+            .child(fold(t("Déplacer une œuvre depuis le musée", "Move a work from inside the museum", "Mover una obra desde el museo"), false, div()
         .child(p().class("lead").text(t(
             "Dans la visite 3D, le bouton « Éditer » ouvre l'éditeur du musée : choisir une toile ou une sculpture \
              (ou « L'œuvre regardée »), puis sa salle, son mur et sa position avec les curseurs. La scène se met à jour \
@@ -2059,7 +2039,8 @@ Sa manière…""""##;
              cambian las líneas de colocación), «Copiar» lo pone en el portapapeles y «Publicar en GitHub» abre el \
              editor del archivo en el repositorio: solo queda pegar y validar.",
         )))
-        .child(h2().class("section-title").text(t("Un exemple", "An example", "Un ejemplo")))
+            ))
+            .child(fold(t("Un exemple", "An example", "Un ejemplo"), false, div()
         .child(pre().class("example").child(code().text(EXAMPLE)))
         .child(
             ul().class("rules")
@@ -2070,7 +2051,8 @@ Sa manière…""""##;
                 .child(li().child(strong().text(t("Une nouvelle exposition", "A new exhibition", "Una nueva exposición"))).child(span().text(t(" : copier un fichier de expositions/ sous un autre nom (par exemple renoir.toml : l'exposition sera à l'adresse /renoir), créer le dossier public/tableaux/renoir/ pour ses images, et changer les textes et les œuvres. Elle apparaît d'elle-même sur l'accueil et dans le menu.", ": copy a file from expositions/ under another name (for example renoir.toml: the exhibition will be at /renoir), create the folder public/tableaux/renoir/ for its images, and change the texts and the works. It appears by itself on the home page and in the menu.", ": copiar un archivo de expositions/ con otro nombre (por ejemplo renoir.toml: la exposición estará en /renoir), crear la carpeta public/tableaux/renoir/ para sus imágenes y cambiar los textos y las obras. Aparece sola en la portada y en el menú."))))
                 .child(li().child(strong().text(t("Une erreur ?", "A mistake?", "¿Un error?"))).child(span().text(t(" La compilation s'arrête avec un message en français qui dit quoi corriger (image introuvable, place déjà prise, toiles qui se chevauchent, tableau sur une porte, salles qui se chevauchent, sculpture contre un mur…), et le site en ligne reste tel quel.", " The build stops with a message (in French) saying what to fix (image not found, place already taken, overlapping paintings, a painting over a door, overlapping rooms, a sculpture against a wall…), and the live site stays as it is.", " La compilación se detiene con un mensaje (en francés) que indica qué corregir (imagen no encontrada, lugar ya ocupado, cuadros que se solapan, cuadro sobre una puerta, salas que se solapan, escultura contra un muro…), y el sitio en línea se queda como está.")))),
         )
-        .child(h2().class("section-title").text(t("Écrire la notice complète", "Write the full notice", "Escribir la ficha completa")))
+            ))
+            .child(fold(t("Écrire la notice complète", "Write the full notice", "Escribir la ficha completa"), false, div()
         .child(p().class("lead").text(t(
             "Chaque œuvre a sa page (/<exposition>/oeuvres/<nom de l'image>) et son panneau « Tout savoir » dans le musée 3D. \
              Ils affichent les champs facultatifs ci-dessous : ce que l'on voit, ce qu'elle évoque, son histoire, la manière, \
@@ -2083,7 +2065,8 @@ Sa manière…""""##;
              detalles para mirar, los temas y una anécdota, así como la biografía del artista.",
         )))
         .child(pre().class("example").child(code().text(NOTICE)))
-        .child(h2().class("section-title").text(t("Dessiner le plan du musée", "Draw the museum plan", "Dibujar el plano del museo")))
+            ))
+            .child(fold(t("Dessiner le plan du musée", "Draw the museum plan", "Dibujar el plano del museo"), false, div()
         .child(p().class("lead").text(t(
             "Sans plan, les salles s'enchaînent en enfilade, reliées par des couloirs. Avec un plan, chaque salle a sa place \
              (x vers l'est, z vers le sud, en mètres depuis le centre du musée), sa taille et ses portes : on dessine une \
@@ -2096,7 +2079,8 @@ Sa manière…""""##;
              de honor, una nave, un atrio… Una puerta se declara en un solo lado: la sala vecina recibe la suya.",
         )))
         .child(pre().class("example").child(code().text(PLAN)))
-        .child(h2().class("section-title").text(t("Présenter le bâtiment, choisir les cadres", "Present the building, choose the frames", "Presentar el edificio, elegir los marcos")))
+            ))
+            .child(fold(t("Présenter le bâtiment, choisir les cadres", "Present the building, choose the frames", "Presentar el edificio, elegir los marcos"), false, div()
         .child(p().class("lead").text(t(
             "Une section [musee] (nom, ville, architecte, construction, presentation, ici) présente le vrai musée dont \
              le bâtiment s'inspire, et ce qu'il lui emprunte : elle s'affiche dans « Le bâtiment », avec le plan des salles, \
@@ -2111,7 +2095,8 @@ Sa manière…""""##;
              3D. El marco de los cuadros se elige con cadre = \"dore\" en [exposition] (o en una obra): dore, baroque, \
              ebene, bois, blanc, noir, estampe o aucun.",
         )))
-        .child(h2().class("section-title").text(t("Ajouter une sculpture", "Add a sculpture", "Añadir una escultura")))
+            ))
+            .child(fold(t("Ajouter une sculpture", "Add a sculpture", "Añadir una escultura"), false, div()
         .child(p().class("lead").text(t(
             "Déposer le modèle 3D (STL, OBJ ou glTF) dans le dossier modeles/ : il est simplifié à la compilation pour \
              rester léger, posé sur un socle, et une vignette est dessinée pour le catalogue. Des scans libres de droits \
@@ -2124,13 +2109,16 @@ Sa manière…""""##;
              ejemplo, en el Smithsonian (3d.si.edu, licencia CC0).",
         )))
         .child(pre().class("example").child(code().text(SCULPTURE)))
-        .child(h2().class("section-title").text(t("Les emplacements", "The places", "Los lugares")))
+            ))
+            .child(fold(t("Les emplacements", "The places", "Los lugares"), false, div()
         .children(exhibitions().iter().map(|ex| {
             div()
                 .class("slots-block")
                 .child(h3().text(tf!("{} · expositions/{}.toml · images dans public/tableaux/{}/", "{} · expositions/{}.toml · images in public/tableaux/{}/", "{} · expositions/{}.toml · imágenes en public/tableaux/{}/", ex.short_name, ex.slug, ex.slug)))
                 .child(slots_table(ex))
-        }));
+        }))
+            ))
+        );
     layout(
         t("Ajouter une œuvre", "Add an artwork", "Añadir una obra"),
         t(
