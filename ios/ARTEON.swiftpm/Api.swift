@@ -67,6 +67,36 @@ enum Api {
     }
 }
 
+// MARK: - L'annuaire de tous les artistes
+
+/// Un artiste de l'annuaire (`monde/annuaire.json`, outils/annuaire.py) : tous les artistes du
+/// domaine public dont un musée montre une œuvre. Son catalogue vient de l'API, en direct.
+struct DirectoryArtist: Sendable, Equatable {
+    let key: String
+    let name: String
+    let life: String
+    let works: Int
+    /// Le nom sans accents ni majuscules, pour le tri et la recherche.
+    let sort: String
+
+    /// L'annuaire tel que le site le publie : `[[nom, naissance, mort, œuvres], …]`.
+    static func parse(_ data: Data) -> [DirectoryArtist] {
+        guard let rows = try? JSONSerialization.jsonObject(with: data) as? [[Any]] else { return [] }
+        return rows.compactMap { row in
+            guard row.count >= 4, let name = row[0] as? String, !name.isEmpty else { return nil }
+            let born = row[1] as? Int, died = row[2] as? Int
+            let life: String
+            switch (born, died) {
+            case let (b?, d?): life = "\(b)–\(d)"
+            case let (nil, d?): life = "mort en \(d)"
+            case let (b?, nil): life = "né en \(b)"
+            default: life = ""
+            }
+            return DirectoryArtist(key: ArtistKey.of(name), name: name, life: life, works: row[3] as? Int ?? 0, sort: folded(name))
+        }
+    }
+}
+
 // MARK: - Les collections du monde, lues sur le site
 
 extension WorldCollections {

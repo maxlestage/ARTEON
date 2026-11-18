@@ -109,6 +109,14 @@ jobs:
           key: collections-v1-${{ github.run_id }}
           restore-keys: collections-v1-
 
+      # L'annuaire de tous les artistes (outils/monde/annuaire.json) : refait chaque lundi
+      # d'après Wikidata ; si Wikidata ne répond pas, celui du dépôt reste.
+      - name: L'annuaire de tous les artistes
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        timeout-minutes: 50
+        run: python3 outils/annuaire.py --minutes 40
+
       - name: Les collections du monde (site)
         if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         continue-on-error: true
