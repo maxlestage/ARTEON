@@ -310,32 +310,68 @@ def main():
     # (/monde/#/exposition/<nom>), annoncée en tête de la page de l'exposition.
     liees = oeuvres_liees(catalogue, gardees)
     (sortie / "donnees" / "expositions.json").write_text(json.dumps(liees, **compact), encoding="utf-8")
+    mots_oeuvres = {"fr": ("œuvres", "en 3D"), "en": ("works", "in 3D"), "es": ("obras", "en 3D")}
     for slug, info in liees.items():
         n = len(info["indices"])
         if not n:
             continue
         propres = sum(len(ex["works"]) for ex in catalogue["exhibitions"] if ex["slug"] == slug)
+        # Les œuvres liées, prêtes à afficher sur la page « Œuvres » de l'exposition
+        # (outils/monde/liees.js) : identifiant, titre, artiste, date, vignette du musée.
+        (sortie / "donnees" / f"expo-{slug}.json").write_text(json.dumps(
+            [[gardees[i]["i"], gardees[i]["t"], gardees[i].get("a", ""), gardees[i].get("d", "")]
+             + ([gardees[i]["vu"]] if gardees[i].get("vu") else []) for i in info["indices"]], **compact), encoding="utf-8")
         for code, L in LANGUES.items():
-            page = (site / L["prefixe"].lstrip("/") / slug / "index.html") if L["prefixe"] else site / slug / "index.html"
-            if not page.exists():
-                continue
-            texte = page.read_text(encoding="utf-8")
-            if "monde-liees" in texte or '<section class="building"' not in texte:
-                continue
-            titre, phrase = {
+            dossier_langue = site / L["prefixe"].lstrip("/") if L["prefixe"] else site
+            p = f'{base}{L["prefixe"]}'
+            titre, phrase, titre_page, phrase_page = {
                 "fr": (f"Toutes les œuvres de l'exposition : {fine(propres + n)}",
-                       f"Les {propres} œuvres de la visite, et {fine(n)} œuvres liées dans les collections du monde, de la plus ancienne à la plus récente →"),
+                       f"Les {propres} œuvres de la visite, et {fine(n)} œuvres liées dans les collections du monde, toutes sur la même page →",
+                       f"Toutes les œuvres : {fine(n)} de plus dans les collections du monde",
+                       "Les œuvres des mêmes artistes et du même sujet dans les grands musées, de la plus ancienne à la plus récente."),
                 "en": (f"All the works of the exhibition: {fine(propres + n)}",
-                       f"The {propres} works on the tour, and {fine(n)} related works in the world collections, from oldest to most recent →"),
+                       f"The {propres} works on the tour, and {fine(n)} related works in the world collections, all on one page →",
+                       f"All the works: {fine(n)} more in the world collections",
+                       "Works by the same artists and on the same subject in the great museums, from oldest to most recent."),
                 "es": (f"Todas las obras de la exposición: {fine(propres + n)}",
-                       f"Las {propres} obras de la visita y {fine(n)} obras relacionadas en las colecciones del mundo, de la más antigua a la más reciente →"),
+                       f"Las {propres} obras de la visita y {fine(n)} obras relacionadas en las colecciones del mundo, todas en la misma página →",
+                       f"Todas las obras: {fine(n)} más en las colecciones del mundo",
+                       "Obras de los mismos artistas y del mismo tema en los grandes museos, de la más antigua a la más reciente."),
             }[code]
-            bloc = (f'<section class="monde-liees"><a class="monde-accueil" href="{base}{L["prefixe"]}/monde/#/exposition/{slug}"><div>'
-                    f'<strong>{titre}</strong><span>{phrase}</span></div></a></section>')
-            texte = texte.replace('<section class="building"', bloc + '<section class="building"', 1)
-            if "monde/app.css" not in texte:
-                texte = texte.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
-            page.write_text(texte, encoding="utf-8")
+            css = f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>'
+            # La présentation : l'annonce, qui mène à la page des œuvres.
+            page = dossier_langue / slug / "index.html"
+            if page.exists():
+                texte = page.read_text(encoding="utf-8")
+                if "monde-liees" not in texte and '<section class="building"' in texte:
+                    bloc = (f'<section class="monde-liees"><a class="monde-accueil" href="{p}/{slug}/oeuvres/#oeuvres-liees"><div>'
+                            f'<strong>{titre}</strong><span>{phrase}</span></div></a></section>')
+                    texte = texte.replace('<section class="building"', bloc + '<section class="building"', 1)
+                    if "monde/app.css" not in texte:
+                        texte = texte.replace("</head>", css, 1)
+                    page.write_text(texte, encoding="utf-8")
+            # La page des œuvres : toutes, à la suite de celles de la visite.
+            page = dossier_langue / slug / "oeuvres" / "index.html"
+            if page.exists():
+                texte = page.read_text(encoding="utf-8")
+                if 'id="oeuvres-liees"' not in texte and "</main>" in texte:
+                    bloc = (f'<section class="monde monde-suite" id="oeuvres-liees" data-exposition="{slug}">'
+                            f'<h2 class="section-title">{titre_page}</h2><p class="lead">{phrase_page}</p>'
+                            f'<p class="monde-compte"></p><div class="monde-grille"></div></section>')
+                    texte = texte.replace("</main>", bloc + "</main>", 1)
+                    if "monde/app.css" not in texte:
+                        texte = texte.replace("</head>", css, 1)
+                    texte = texte.replace("</body>", f'<script type="module" src="{base}/monde/liees.js"></script></body>', 1)
+                    page.write_text(texte, encoding="utf-8")
+            # L'accueil : la carte de l'exposition compte toutes ses œuvres.
+            accueil = dossier_langue / "index.html"
+            if accueil.exists():
+                texte = accueil.read_text(encoding="utf-8")
+                mot, en3d = mots_oeuvres[code]
+                neuf = re.sub(rf'(<article class="ex-card[^>]*id="{re.escape(slug)}".*?<p class="tag">)(\d+) {mot} · ',
+                              rf"\g<1>{fine(propres + n)} {mot} · \g<2> {en3d} · ", texte, count=1, flags=re.S)
+                if neuf != texte:
+                    accueil.write_text(neuf, encoding="utf-8")
     print(f"✓ expositions : {sum(len(v['indices']) for v in liees.values())} liens vers les collections du monde")
 
     taille = sum(f.stat().st_size for f in sortie.rglob("*") if f.is_file())

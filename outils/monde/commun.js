@@ -13,7 +13,8 @@ const prefixe = langue === "fr" ? "" : `/${langue}`;
 export const t = (fr, en, es) => (langue === "en" ? en : langue === "es" ? es : fr);
 
 /** Le début des adresses du site (`/ARTEON` sur GitHub Pages), sans la langue. */
-export const base = location.pathname.replace(/\/(musees|explorer|monde)\/.*$/, "").replace(/\/(en|es)$/, "");
+// D'après l'adresse de ce fichier (`<base>/monde/commun.js`) : juste sur toutes les pages.
+export const base = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 
 export const echapper = (t) => String(t ?? "").replace(/[&<>"']/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);

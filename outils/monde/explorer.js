@@ -173,6 +173,8 @@ async function listeArtistes(choisie) {
     };
     bouton.addEventListener("click", plus);
     plus();
+    // La suite s'affiche d'elle-même en descendant.
+    new IntersectionObserver((e) => { if (e[0].isIntersecting) plus(); }, { rootMargin: "1200px" }).observe(bouton);
   };
   document.getElementById("filtre").addEventListener("input", (e) => dessiner(e.target.value));
   dessiner("");
@@ -239,6 +241,7 @@ async function artiste(nom) {
     };
     bouton?.addEventListener("click", plus);
     plus();
+    if (bouton) new IntersectionObserver((e) => { if (e[0].isIntersecting) plus(); }, { rootMargin: "1200px" }).observe(bouton);
   } catch {
     zone.innerHTML = `<h2>${enDirect}</h2><p class="monde-note">${t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not respond. Please try again later.", "Los museos no han respondido. Vuelva a intentarlo más tarde.")}</p>`;
   }
