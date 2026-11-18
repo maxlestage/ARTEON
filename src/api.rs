@@ -589,9 +589,9 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 let frais = age.is_some_and(|a| a < Duration::from_secs(7 * 24 * 3600)) && manquants.is_some();
                 let corps = if frais {
                     // Une réponse où un musée manquait sert en attendant ; elle se refait à la
-                    // fin, s'il reste du temps, une fois par jour au plus.
+                    // fin, s'il reste du temps (pas plus d'une fois par heure).
                     if manquants.is_some_and(|n| n > 0)
-                        && age.is_some_and(|a| a > Duration::from_secs(24 * 3600))
+                        && age.is_some_and(|a| a > Duration::from_secs(3600))
                         && let Ok(mut r) = a_refaire.lock()
                     {
                         r.push(i);
