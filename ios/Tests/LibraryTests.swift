@@ -226,7 +226,7 @@ func lesPlansDesBatimentsSontLa() throws {
     #expect(index.countries.first?.name == "France")
     #expect(index.wings.count == 6)
     #expect(index.wings.first?.exhibitions.contains("tresors-de-la-terre") == true)
-    #expect(index.wings.last?.exhibitions.contains("street-art") == true)
+    #expect(index.wings.last?.exhibitions.contains("abstraction") == true)
 }
 
 // MARK: - Les collections du monde
