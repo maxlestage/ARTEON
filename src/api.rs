@@ -232,7 +232,11 @@ fn client() -> &'static ureq::Agent {
 }
 
 fn lire(url: &str, entetes: &[(&str, &str)]) -> Option<Value> {
-    let mut requete = client().get(url);
+    lire_en(url, entetes, 20)
+}
+
+fn lire_en(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Option<Value> {
+    let mut requete = client().get(url).timeout(Duration::from_secs(secondes));
     for (k, v) in entetes {
         requete = requete.set(k, v);
     }
@@ -313,8 +317,8 @@ fn remplir(modele: &str, valeurs: &HashMap<&str, String>) -> String {
     s
 }
 
-/// Les œuvres libres de l'artiste dans un musée.
-fn interroger(source: &Value, nom: &str) -> Vec<Value> {
+/// Les œuvres libres de l'artiste dans un musée, et si le musée n'a pas répondu.
+fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
     let cle_musee = en_texte(&source["cle"]);
     let entetes: Vec<(String, String)> = source["entetes"]
         .as_object()
@@ -322,11 +326,13 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
         .unwrap_or_default();
     let entetes: Vec<(&str, &str)> = entetes.iter().map(|(k, v)| (k.as_str(), v.as_str())).collect();
     let par_page = source["par_page"].as_u64().unwrap_or(100);
+    let delai = source["delai"].as_u64().unwrap_or(20);
     let pages = source["pages"].as_u64().unwrap_or(1);
 
     // Les fiches : directement dans les pages de résultats, ou une par une (le Met).
     let mut fiches = Vec::new();
     let mut ids = Vec::new();
+    let mut echec = false;
     for q in recherches(nom) {
         for page in 1..=pages {
             let url = source["recherche"]
@@ -337,7 +343,10 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
                 .replace("{page}", &page.to_string())
                 .replace("{offset}", &((page - 1) * par_page).to_string())
                 .replace("{debut}", &((page - 1) * par_page + 1).to_string());
-            let Some(r) = lire(&url, &entetes) else { break };
+            let Some(r) = lire_en(&url, &entetes, delai) else {
+                echec |= page == 1;
+                break;
+            };
             if let Some(champ) = source["ids"].as_str() {
                 ids.extend(chemin(&r, champ).as_array().cloned().unwrap_or_default());
                 break;
@@ -375,7 +384,7 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
 
     let champs = source["champs"].as_object().cloned().unwrap_or_default();
     let exige: Vec<String> = source["exige"].as_array().map(|a| a.iter().map(en_texte).collect()).unwrap_or_default();
-    fiches
+    let oeuvres = fiches
         .iter()
         .filter_map(|f| {
             let lire_champ = |nom: &str| champs.get(nom).and_then(Value::as_str).map(|c| chemin(f, c)).unwrap_or(&Value::Null);
@@ -427,12 +436,13 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
                 "fournisseur": valeurs.get("fournisseur").filter(|f| !f.is_empty()),
             }))
         })
-        .collect()
+        .collect();
+    (oeuvres, echec)
 }
 
 /// Toutes les œuvres libres de l'artiste dans tous les musées décrits, interrogés ensemble.
 pub fn oeuvres_de(nom: &str) -> Value {
-    let lots: Vec<Vec<Value>> = std::thread::scope(|s| {
+    let lots: Vec<(Vec<Value>, bool)> = std::thread::scope(|s| {
         sources()
             .iter()
             .map(|source| s.spawn(move || interroger(source, nom)))
@@ -441,10 +451,17 @@ pub fn oeuvres_de(nom: &str) -> Value {
             .map(|t| t.join().unwrap_or_default())
             .collect()
     });
+    // Les musées qui n'ont pas répondu (occupés, limités) : la réponse est incomplète.
+    let manquants: Vec<Value> = sources()
+        .iter()
+        .zip(&lots)
+        .filter(|(_, (_, echec))| *echec)
+        .map(|(source, _)| source["cle"].clone())
+        .collect();
     let mut vues = HashSet::new();
     let mut oeuvres: Vec<Value> = lots
         .into_iter()
-        .flatten()
+        .flat_map(|(l, _)| l)
         .filter(|o| vues.insert(o["id"].as_str().unwrap_or_default().to_owned()))
         .collect();
     let musees: serde_json::Map<String, Value> = sources()
@@ -456,7 +473,7 @@ pub fn oeuvres_de(nom: &str) -> Value {
         })
         .collect();
     oeuvres.sort_by_key(|o| o["annee"].as_i64().unwrap_or(i64::MAX));
-    json!({ "nom": nom, "total": oeuvres.len(), "musees": musees, "oeuvres": oeuvres })
+    json!({ "nom": nom, "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
 }
 
 #[cfg(test)]
@@ -539,7 +556,11 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 let gardee = cache.map(|c| c.join(format!("{nom_fichier}.json")));
                 let frais = gardee.as_ref().and_then(|g| std::fs::metadata(g).ok()).and_then(|m| m.modified().ok())
                     .and_then(|t| t.elapsed().ok())
-                    .is_some_and(|age| age < Duration::from_secs(7 * 24 * 3600));
+                    .is_some_and(|age| age < Duration::from_secs(7 * 24 * 3600))
+                    // Une réponse où un musée manquait se refait à la construction suivante.
+                    && gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                        .and_then(|t| serde_json::from_str::<Value>(&t).ok())
+                        .is_some_and(|v| v["manquants"].as_array().is_none_or(|m| m.is_empty()));
                 let corps = if frais {
                     gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
                 } else if Instant::now() < fin {

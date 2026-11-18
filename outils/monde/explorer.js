@@ -176,7 +176,7 @@ async function artiste(nom) {
     // 300 à la fois : les catalogues des grands artistes comptent des milliers d'œuvres.
     const grille = document.getElementById("direct-grille"), bouton = document.getElementById("direct-plus");
     let montrees = 0;
-    const carte = (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · Europeana` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
+    const carte = (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · ${(musee[o.musee] || "").split(" (")[0]}` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
     const plus = () => {
       if (!grille) return;
       grille.insertAdjacentHTML("beforeend", nouvelles.slice(montrees, montrees + 300).map(carte).join(""));

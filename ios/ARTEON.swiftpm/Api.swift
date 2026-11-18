@@ -29,7 +29,7 @@ enum Api {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.urlCache = URLCache(memoryCapacity: 64 * 1024 * 1024, diskCapacity: 0, diskPath: nil)
         configuration.requestCachePolicy = .useProtocolCachePolicy
-        configuration.timeoutIntervalForRequest = 20
+        configuration.timeoutIntervalForRequest = 120
         configuration.httpAdditionalHeaders = ["User-Agent": "ARTEON/3.0 (application iOS)"]
         return URLSession(configuration: configuration)
     }()
@@ -323,6 +323,7 @@ enum LiveWorks {
         let museum = source["cle"] as? String ?? ""
         let perPage = source["par_page"] as? Int ?? 100
         let pages = source["pages"] as? Int ?? 1
+        let delay = TimeInterval(source["delai"] as? Int ?? 20)
         let headers = (source["entetes"] as? [String: String]) ?? [:]
         let fields = (source["champs"] as? [String: String]) ?? [:]
         var records: [Any] = []
@@ -337,7 +338,7 @@ enum LiveWorks {
                     .replacingOccurrences(of: "{offset}", with: String((page - 1) * perPage))
                     .replacingOccurrences(of: "{debut}", with: String((page - 1) * perPage + 1))
                     .replacingOccurrences(of: "[", with: "%5B").replacingOccurrences(of: "]", with: "%5D")
-                guard let url = URL(string: address), let data = try? await Api.data(url, headers: headers),
+                guard let url = URL(string: address), let data = try? await Api.data(url, headers: headers, timeout: delay),
                       let json = try? JSONSerialization.jsonObject(with: data)
                 else { break }
                 if let key = source["ids"] as? String {
