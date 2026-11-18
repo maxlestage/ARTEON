@@ -3,7 +3,7 @@
 // « Qui l'a fait ? » (le record est gardé dans le navigateur).
 
 import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, plier, rangSiecle, route, titreSiecle, toutes } from "./commun.js";
-import { oeuvresEnDirect } from "./direct.js";
+import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 
 const racine = document.getElementById("monde");
 let C, oeuvres, artistes, siecles, themes;
@@ -158,7 +158,7 @@ async function artiste(nom) {
       <p class="monde-note">${[a.oeuvres.length ? `${nombre(a.oeuvres.length)} dans les expositions du musée` : "", a.monde.length ? `${nombre(a.monde.length)} dans les collections du monde` : ""].filter(Boolean).join(" · ")} · de la plus ancienne à la plus récente</p>
       <div class="monde-grille">${toutes.map((t) => t.html).join("")}</div></section>
     <section class="monde-section" id="en-direct"><h2>Dans les musées, en direct</h2>
-      <p class="monde-chargement">Recherche de toutes ses autres œuvres libres à Chicago, Cleveland et au Metropolitan Museum…</p></section>`;
+      <p class="monde-chargement">Recherche de toutes ses autres œuvres libres dans les musées (Chicago, Cleveland, New York, Copenhague)…</p></section>`;
   window.scrollTo(0, 0);
   const zone = document.getElementById("en-direct");
   try {
@@ -166,12 +166,12 @@ async function artiste(nom) {
     const r = await oeuvresEnDirect(a.nom, cleNom, ALIAS);
     if (route().valeur !== nom) return;
     const nouvelles = r.oeuvres.filter((o) => !deja.has(o.id));
-    const musee = { chicago: "Art Institute of Chicago", cleveland: "Cleveland Museum of Art", met: "Metropolitan Museum" };
+    const musee = await nomsDesMusees().catch(() => ({}));
     document.getElementById("catalogue-titre").textContent = titre(toutes.length + nouvelles.length);
     zone.innerHTML = nouvelles.length ? `<h2>Dans les musées, en direct : ${nombre(nouvelles.length)} œuvres de plus</h2>
       <p class="monde-note">Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées${r.source === "api" ? " · par l'API ARTEON" : ""}</p>
       <div class="monde-grille">${nouvelles.map((o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`).join("")}</div>`
-      : `<h2>Dans les musées, en direct</h2><p class="monde-note">Aucune autre œuvre libre de droits dans les collections ouvertes de Chicago, Cleveland et du Met.</p>`;
+      : `<h2>Dans les musées, en direct</h2><p class="monde-note">Aucune autre œuvre libre de droits dans les collections ouvertes des musées.</p>`;
   } catch {
     zone.innerHTML = `<h2>Dans les musées, en direct</h2><p class="monde-note">Les musées n'ont pas répondu. Réessayer plus tard.</p>`;
   }
