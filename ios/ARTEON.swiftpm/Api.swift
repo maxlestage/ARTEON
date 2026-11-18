@@ -445,7 +445,7 @@ enum LiveWorks {
                 thumbnail: fill(source["vignette"] as? String ?? "", values),
                 image: fill(source["grande"] as? String ?? "", values),
                 link: fill(source["lien"] as? String ?? "", values),
-                provider: values["fournisseur"].flatMap { $0.isEmpty ? nil : $0 }
+                provider: values["fournisseur"].flatMap { $0.isEmpty || $0.hasPrefix("http") ? nil : $0 }
             )
         }
     }
