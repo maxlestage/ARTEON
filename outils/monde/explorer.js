@@ -96,7 +96,8 @@ function chargerArtistes() {
 
 const total = (a) => a.oeuvres.length + a.monde.length;
 const lettreDe = (nom) => { const l = (plier(nom).replace(/^[^a-z0-9]+/, "")[0] || "#").toUpperCase(); return /[A-Z]/.test(l) ? l : "#"; };
-const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? lien(`monde/v/${a.monde[0].id}.jpg`) : "");
+const vignetteMonde = ({ l, id }) => l[7] || lien(`monde/v/${id}.jpg`);
+const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? vignetteMonde(a.monde[0]) : "");
 
 async function listeArtistes(choisie) {
   racine.innerHTML = menu("") + `<p class="monde-chargement">Ouverture du catalogue des artistes…</p>`;
@@ -134,7 +135,7 @@ async function listeArtistes(choisie) {
 }
 
 /** Une carte des collections du monde : la vignette, le titre, la date et le musée. */
-const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lien(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${lien(`monde/v/${id}.jpg`)}" alt=""><b>${echapper(l[0])}</b><span>${echapper([l[2], "collections du monde"].filter(Boolean).join(" · "))}</span></a>`;
+const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lien(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${vignetteMonde({ l, id })}" alt=""><b>${echapper(l[0])}</b><span>${echapper([l[2], "collections du monde"].filter(Boolean).join(" · "))}</span></a>`;
 
 async function artiste(nom) {
   racine.innerHTML = `<p class="monde-chargement">Ouverture du catalogue…</p>`;
