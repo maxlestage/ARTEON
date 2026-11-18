@@ -272,13 +272,8 @@ pub fn obstacles(ex: &Exhibition) -> Vec<Rect> {
 
 /// Les obstacles de `ex`, calculés une fois pour toutes les expositions.
 pub fn cached_obstacles(ex: &Exhibition) -> &'static [Rect] {
-    static ALL: std::sync::OnceLock<Vec<Vec<Rect>>> = std::sync::OnceLock::new();
-    let all = ALL.get_or_init(|| crate::artworks::EXHIBITIONS.iter().map(obstacles).collect());
-    let index = crate::artworks::EXHIBITIONS
-        .iter()
-        .position(|e| e.slug == ex.slug)
-        .unwrap_or(0);
-    &all[index]
+    static ALL: std::sync::Mutex<Vec<((usize, usize, usize), &'static [Rect])>> = std::sync::Mutex::new(Vec::new());
+    crate::artworks::once_per_exhibition(&ALL, ex, || obstacles(ex))
 }
 
 /// Un passage d'une salle à une autre, par une porte : `x`, `z` est le milieu de la porte,

@@ -40,6 +40,17 @@ impl ExhibitionData {
         ExhibitionData::new(ex, bytes)
     }
 
+    /// Les données d'un musée agrandi au moment de la visite ([`crate::aile`]) : celles du
+    /// fichier, suivies des mosaïques des œuvres ajoutées.
+    pub fn extended(bytes: Vec<u8>) -> ExhibitionData {
+        ExhibitionData { bytes }
+    }
+
+    /// Tous les octets.
+    pub fn bytes(&self) -> &[u8] {
+        &self.bytes
+    }
+
     /// Les cases d'une mosaïque.
     pub fn cells(&self, mosaic: &Mosaic) -> &[u8] {
         let start = mosaic.offset as usize;

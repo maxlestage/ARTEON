@@ -8,6 +8,7 @@
 
 use paquets::prelude::*;
 
+pub mod aile;
 pub mod artworks;
 pub mod data;
 pub mod editor;
@@ -130,14 +131,10 @@ fn play_gallery(canvas: &paquets::active::Dom, ex: &'static Exhibition) -> impl 
         c.go_to = Some(focus);
         c.paused = true;
     }
-    let commands = viewer::attach(canvas, ex, control.clone());
-    let running = viewer::start_when_loaded(canvas, ex, move |data| {
-        gallery::tour_app_with(ex, data, control)
-    });
-    move || {
-        drop(running); // arrête la visite quand l'îlot s'en va
-        drop(commands);
-    }
+    // La visite est dynamique : le musée du fichier, agrandi d'une aile où sont accrochées
+    // les œuvres liées des collections du monde (src/aile.rs), autant que le visiteur en veut.
+    let visit = viewer::start_visit(canvas, ex, control);
+    move || drop(visit) // arrête la visite quand l'îlot s'en va
 }
 
 #[cfg(not(target_arch = "wasm32"))]

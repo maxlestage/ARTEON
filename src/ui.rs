@@ -205,7 +205,7 @@ impl MuseumUi {
                     a.title,
                     format!("{} · {}", a.artist_in(ex), a.year),
                     a.note,
-                    format!("{} — {}", a.technique, a.collection),
+                    [a.technique, a.collection].into_iter().filter(|t| !t.is_empty()).collect::<Vec<_>>().join(" — "),
                 )
             }
             Focus::Sculpture(i) => {
@@ -390,12 +390,13 @@ impl MuseumUi {
                         }
                         ui.add_space(10.0);
                         if ui.button(crate::langue::t("Sa page sur le site ↗", "Its page on the site ↗", "Su página en el sitio ↗")).clicked() {
-                            let url = format!(
-                                "{}/{}/oeuvres/{}",
-                                crate::viewer::base_path(ex.slug),
-                                ex.slug,
-                                work.slug()
-                            );
+                            // Une œuvre de l'aile des collections a sa page dans les collections du monde.
+                            let extra = matches!(work, Work::Art(a) if a.is_extra());
+                            let url = if extra {
+                                format!("{}/monde/#/oeuvre/{}", crate::viewer::base_path(ex.slug), work.slug())
+                            } else {
+                                format!("{}/{}/oeuvres/{}", crate::viewer::base_path(ex.slug), ex.slug, work.slug())
+                            };
                             (self.actions.open)(&url);
                         }
                     });

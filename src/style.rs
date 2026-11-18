@@ -484,4 +484,10 @@ body.viewer-open { overflow: hidden; }
 .burger-langs a.current { background: var(--accent); border-color: var(--accent); color: var(--accent-fg, #fff); }
 @media (max-width: 640px) { .header-quick { display: none; } .burger-label { display: none; } .burger-button { padding: .5rem .6rem; } }
 
+/* ─── Le nombre d'œuvres de la visite 3D ──────────────────────────────── */
+.visit-size { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 0 0 1rem; }
+.visit-size-label { font-weight: 700; margin-right: .3rem; }
+.visit-size .chip { padding: .3rem .8rem; border-radius: 999px; font-size: .85rem; text-decoration: none; color: var(--fg); border: 1px solid var(--line); background: var(--card); }
+.visit-size .chip.current { background: var(--accent); border-color: var(--accent); color: var(--accent-fg, #fff); }
+
 "#;
