@@ -14,21 +14,27 @@
   donnees/liste.json    une ligne par œuvre, pour parcourir et chercher (titre, artiste,
                         date, année, catégorie, musée)
   donnees/fiches-NNN.json  le détail, par 1 000 œuvres (technique, texte, liens…)
-  v/<œuvre>.jpg         les vignettes (320 px) ; l'image en grand vient du musée
+  v/<œuvre>.webp        les vignettes (320 px, WebP) ; l'image en grand vient du musée
 
 Il ajoute aussi « Collections » au menu de toutes les pages et une entrée sur l'accueil.
-Bibliothèque standard de Python.
+Python et Pillow (pour les vignettes en WebP).
 """
 
+import concurrent.futures
 import json
 import re
 import shutil
-import unicodedata
 import sys
+import unicodedata
 from pathlib import Path
+
+from PIL import Image
 
 ICI = Path(__file__).resolve().parent
 PAR_FICHIER = 1000
+# Les vignettes hébergées sur le site (WebP, ~6 Ko) : au plus tant, pour que le site reste
+# sous la limite de GitHub Pages (1 Go). Au-delà, la vignette vient du musée.
+MAX_HEBERGEES = 120_000
 
 
 def rang(y):
@@ -121,6 +127,13 @@ def oeuvres_liees(catalogue, gardees):
     return resultat
 
 
+def en_webp(chemins):
+    """Une vignette JPEG du cache, réécrite en WebP (qualité 50 : ~6 Ko au lieu de ~10)."""
+    source, cible = chemins
+    with Image.open(source) as image:
+        image.convert("RGB").save(cible, "WEBP", quality=50, method=6)
+
+
 def main():
     if len(sys.argv) != 4:
         sys.exit(__doc__)
@@ -135,24 +148,30 @@ def main():
     (sortie / "donnees").mkdir(parents=True)
     (sortie / "v").mkdir()
 
-    # Les vignettes : seules les œuvres qui en ont une sont gardées.
-    gardees = []
-    for o in oeuvres:
-        source = vignettes / f"{o['i']}.jpg"
-        if source.exists():
-            shutil.copyfile(source, sortie / "v" / f"{o['i']}.jpg")
-            gardees.append(o)
+    # Les vignettes : seules les œuvres qui en ont une sont gardées, en WebP (deux fois plus
+    # léger que le JPEG : toutes les œuvres tiennent sur le site).
+    gardees = [o for o in oeuvres if (vignettes / f"{o['i']}.jpg").exists()]
 
-    # La réserve : toutes les autres œuvres libres trouvées par la moisson. Leurs vignettes
-    # restent chez les musées (le site resterait sinon trop lourd pour GitHub Pages).
-    hebergees = len(gardees)
+    # La réserve : toutes les autres œuvres libres trouvées par la moisson. Leur vignette est
+    # hébergée quand la moisson l'a téléchargée ; sinon elle vient du musée (« vu »).
     fichier_reserve = collections / "reserve.json"
     if fichier_reserve.exists():
         vus = {o["i"] for o in gardees}
         for o in json.loads(fichier_reserve.read_text(encoding="utf-8")):
-            if o.get("k") in position and o["i"] not in vus and o.get("vu"):
-                vus.add(o["i"])
-                gardees.append(o)
+            if o.get("k") not in position or o["i"] in vus:
+                continue
+            local = (vignettes / f"{o['i']}.jpg").exists()
+            if local and len(gardees) < MAX_HEBERGEES:
+                o.pop("vu", None)
+            elif not o.get("vu"):
+                continue  # ni vignette hébergée, ni vignette du musée
+            vus.add(o["i"])
+            gardees.append(o)
+    a_convertir = [o["i"] for o in gardees if not o.get("vu")]
+    hebergees = len(a_convertir)
+    with concurrent.futures.ProcessPoolExecutor() as pool:
+        list(pool.map(en_webp, [(vignettes / f"{i}.jpg", sortie / "v" / f"{i}.webp") for i in a_convertir],
+                      chunksize=500))
 
     liste = [[o["t"], o.get("a", ""), o.get("d", ""), o.get("y"), o.get("c", "Autres objets"),
               position[o["k"]], o.get("r")] + ([o["vu"]] if o.get("vu") else []) for o in gardees]

@@ -96,7 +96,7 @@ function chargerArtistes() {
 
 const total = (a) => a.oeuvres.length + a.monde.length;
 const lettreDe = (nom) => { const l = (plier(nom).replace(/^[^a-z0-9]+/, "")[0] || "#").toUpperCase(); return /[A-Z]/.test(l) ? l : "#"; };
-const vignetteMonde = ({ l, id }) => l[7] || lien(`monde/v/${id}.jpg`);
+const vignetteMonde = ({ l, id }) => l[7] || lien(`monde/v/${id}.webp`);
 const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? vignetteMonde(a.monde[0]) : "");
 
 async function listeArtistes(choisie) {
