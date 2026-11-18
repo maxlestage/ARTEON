@@ -1,5 +1,5 @@
 {
- "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…), {debut} (1, n+1…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artistes (champ) : une liste d'autres noms à essayer (textes, ou objets avec « def »). fournisseur (champ) : le musée qui conserve l'œuvre, pour un agrégateur. artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
+ "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…), {debut} (1, n+1…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artistes (champ) : une liste d'autres noms à essayer (textes, ou objets avec « def »). fournisseur (champ) : le musée qui conserve l'œuvre, pour un agrégateur. delai : les secondes à attendre une réponse (20 par défaut). artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
  "sources": [
   {
    "cle": "chicago",
@@ -174,6 +174,38 @@
    "vignette": "{apercu}",
    "grande": "{image}",
    "lien": "{page}"
+  },
+  {
+   "cle": "wikidata",
+   "nom": "Wikidata (les musées du monde)",
+   "_note": "Peintures, dessins, estampes et photographies (des œuvres en 2D : leur reproduction sur Wikimedia Commons est du domaine public comme elles) de tous les musées décrits dans Wikidata. Requête SPARQL sur query-main.wikidata.org.",
+   "recherche": "https://query-main.wikidata.org/sparql?format=json&query=SELECT%20%3Foeuvre%20%3FoeuvreLabel%20%3FartisteLabel%20%3Fimg%20%3Fan%20%3Fne%20%3Fmort%20%3FcollLabel%20WHERE%20%7B%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40en%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40fr%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40de%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40nl%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40it%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40es%20%7D%20%3Fartiste%20wdt%3AP31%20wd%3AQ5%20.%20VALUES%20%3Ftype%20%7B%20wd%3AQ3305213%20wd%3AQ93184%20wd%3AQ11060274%20wd%3AQ125191%20wd%3AQ18761202%20wd%3AQ15123870%20%7D%20%3Foeuvre%20wdt%3AP170%20%3Fartiste%20%3B%20wdt%3AP31%20%3Ftype%20%3B%20wdt%3AP18%20%3Fimage%20.%20BIND%28REPLACE%28STR%28%3Fimage%29%2C%20%22%5Ehttp%3A%22%2C%20%22https%3A%22%29%20AS%20%3Fimg%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP571%20%3Fdate%20%7D%20BIND%28YEAR%28%3Fdate%29%20AS%20%3Fan%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP569%20%3Fn%20%7D%20BIND%28YEAR%28%3Fn%29%20AS%20%3Fne%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP570%20%3Fm%20%7D%20BIND%28YEAR%28%3Fm%29%20AS%20%3Fmort%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP195%20%3Fcoll%20%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22fr%2Cen%2Cnl%2Cde%2Cit%2Ces%22.%20%7D%20%7D%20LIMIT%206000",
+   "par_page": 6000,
+   "pages": 1,
+   "liste": "results.bindings",
+   "entetes": {
+    "Accept": "application/sparql-results+json"
+   },
+   "champs": {
+    "id": "oeuvre.value",
+    "titre": "oeuvreLabel.value",
+    "artiste": "artisteLabel.value",
+    "ne": "ne.value",
+    "mort": "mort.value",
+    "date": "an.value",
+    "fin": "an.value",
+    "annee": "an.value",
+    "image": "img.value",
+    "page": "oeuvre.value",
+    "fournisseur": "collLabel.value"
+   },
+   "exige": [
+    "image"
+   ],
+   "vignette": "{image}?width=400",
+   "grande": "{image}?width=1280",
+   "lien": "{page}",
+   "delai": 90
   }
  ]
 }
