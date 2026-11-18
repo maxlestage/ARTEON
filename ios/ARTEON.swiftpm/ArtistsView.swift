@@ -207,6 +207,9 @@ struct ArtistView: View {
                         CollectionGrid(works: world.sorted { ($0.year ?? .max) < ($1.year ?? .max) })
                     }
 
+                    LiveWorksSection(name: artist.name, known: Set(world.map(\.id)))
+                        .padding(.top, 8)
+
                     let exhibitions = artist.exhibitions.compactMap(catalogue.exhibition)
                     if !exhibitions.isEmpty {
                         Text(exhibitions.count == 1 ? "L'exposition" : "Les expositions")
@@ -246,6 +249,8 @@ struct ArtistView: View {
                     Text("Dans les collections du monde, de la plus ancienne à la plus récente.")
                         .foregroundStyle(.secondary)
                     CollectionGrid(works: world.sorted { ($0.year ?? .max) < ($1.year ?? .max) })
+                    LiveWorksSection(name: name, known: Set(world.map(\.id)))
+                        .padding(.top, 8)
                 }
                 .padding()
                 .padding(.bottom, 32)
@@ -254,7 +259,104 @@ struct ArtistView: View {
             .navigationTitle(name)
             .navigationBarTitleDisplayMode(.inline)
         } else {
-            ContentUnavailableView("Artiste introuvable", systemImage: "person.slash")
+            // Un artiste qu'ARTEON ne montre pas encore : tout son catalogue vient des musées.
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    Text(name)
+                        .font(.largeTitle.bold())
+                    LiveWorksSection(name: name, known: [])
+                }
+                .padding()
+                .padding(.bottom, 32)
+            }
+            .background(Color(uiColor: .systemGroupedBackground))
+            .navigationTitle(name)
+            .navigationBarTitleDisplayMode(.inline)
         }
+    }
+}
+
+/// Toutes les autres œuvres libres de l'artiste, en direct des musées : par l'API ARTEON
+/// (le serveur Paquets), ou directement chez les musées s'il ne répond pas. Rien n'est gardé.
+struct LiveWorksSection: View {
+    let name: String
+    /// Les œuvres déjà montrées (les collections du monde), pour ne pas les répéter.
+    let known: Set<String>
+
+    @State private var result: LiveCatalogue?
+    @State private var museums: [String: String] = [:]
+    @State private var loading = true
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            if loading {
+                HStack(spacing: 10) {
+                    ProgressView()
+                    Text("Recherche de ses autres œuvres dans les musées…")
+                        .foregroundStyle(.secondary)
+                }
+            } else if let result {
+                let more = result.works.filter { !known.contains($0.id) }
+                Text(more.isEmpty ? "Dans les musées, en direct" : "Dans les musées, en direct : \(more.count.formatted()) œuvres de plus")
+                    .font(.title2.bold())
+                if more.isEmpty {
+                    Text("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text(result.source == "api"
+                         ? "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · par l'API ARTEON"
+                         : "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · directement chez les musées")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)], spacing: 12) {
+                        ForEach(more) { work in
+                            Link(destination: URL(string: work.link) ?? Api.server) {
+                                LiveWorkCard(work: work, museum: museums[work.museum] ?? work.museum)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+            } else {
+                Text("Les musées n'ont pas répondu.")
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .task(id: name) {
+            loading = true
+            async let names = LiveWorks.museumNames()
+            result = await LiveWorks.of(name)
+            museums = await names
+            loading = false
+        }
+    }
+}
+
+/// Une œuvre trouvée en direct : sa vignette (chez le musée), son titre, sa date, son musée.
+struct LiveWorkCard: View {
+    let work: LiveWork
+    let museum: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            RemoteImage(path: work.thumbnail, maxPixels: 480)
+                .frame(height: 170)
+                .frame(maxWidth: .infinity)
+                .clipped()
+            VStack(alignment: .leading, spacing: 2) {
+                Text(work.title)
+                    .font(.subheadline.bold())
+                    .lineLimit(2)
+                Text([work.date, museum].filter { !$0.isEmpty }.joined(separator: " · "))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            }
+            .padding(10)
+            .frame(maxWidth: .infinity, minHeight: 62, alignment: .topLeading)
+        }
+        .card()
+        .accessibilityElement(children: .combine)
     }
 }

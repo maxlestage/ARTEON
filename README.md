@@ -270,20 +270,20 @@ ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (i
 ## L'application iPad et iPhone (Swift)
 
 [`ios/`](ios/) est l'application native d'ARTEON en **Swift 6 et SwiftUI** (iOS 26 et
-plus, compilée avec Xcode 27.2), avec **tout le musée embarqué** : les expositions, toutes
-les œuvres et leurs notices, les images et les galeries 3D (le WebAssembly du site, servi
-par l'application elle-même) se visitent **sans Internet ni serveur**. Elle ajoute les
-vrais musées reproduits, pays par pays, avec le plan interactif de chaque bâtiment, un
-musée original (le Grand Musée ARTEON, qui réunit toutes les expositions en six ailes),
-les **collections du monde** (environ 50 000 œuvres du domaine public des collections
-ouvertes de Chicago, Cleveland, du Met et de Washington, fiches et vignettes hors ligne,
-écrites par [`outils/collections_monde.py`](outils/collections_monde.py)), les
-artistes de A à Z, la chronologie, les thèmes, les musées du monde, le jeu « Qui l'a
-fait ? », l'audioguide, le diaporama, l'œuvre du jour, la recherche, les favoris et
-l'historique. Sur l'iPad, **Swift Playgrounds** l'ouvre et la lance sans Mac ni compte
-payant (release « ipad ») ; avec un compte Apple Developer,
-[`ios.yml`](.github/workflows/ios.yml) l'envoie sur TestFlight. Voir
-[ios/README.md](ios/README.md).
+plus, compilée avec Xcode 27.2). Elle **n'embarque rien : tout passe par l'API**, et rien
+n'est gardé sur l'appareil (images en mémoire le temps de la visite seulement). Le musée,
+ses images, ses galeries 3D et les **collections du monde** viennent du site ARTEON ; toutes
+les œuvres de chaque artiste viennent de l'**API Paquets** (`/api/artiste?nom=…`, le
+serveur ARTEON, [`src/api.rs`](src/api.rs)), en direct des musées, ou des musées eux-mêmes
+si le serveur ne répond pas. Les musées interrogés sont décrits une seule fois, pour l'API,
+le site et l'application, dans [`outils/monde/sources.json`](outils/monde/sources.json)
+(un musée de plus = une entrée, sans code). L'application montre aussi les vrais musées
+reproduits avec le plan de chaque bâtiment, le Grand Musée ARTEON, les artistes de A à Z
+avec leur catalogue complet, la chronologie, les thèmes, le jeu « Qui l'a fait ? »,
+l'audioguide, le diaporama, l'œuvre du jour, la recherche, les favoris et l'historique.
+Sur l'iPad, **Swift Playgrounds** l'ouvre et la lance sans Mac ni compte payant (release
+« ipad ») ; avec un compte Apple Developer, [`ios.yml`](.github/workflows/ios.yml)
+l'envoie sur TestFlight. Voir [ios/README.md](ios/README.md).
 
 ## L'application iPad (Flutter)
 

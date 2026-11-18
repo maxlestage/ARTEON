@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Les collections du monde : des dizaines de milliers d'œuvres du domaine public, par
-/// musée, par catégorie, par siècle ; leurs fiches et leurs vignettes sont sur l'appareil.
+/// musée, par catégorie, par siècle ; tout vient du site ARTEON, rien n'est gardé.
 struct CollectionsView: View {
     @Environment(CatalogueStore.self) private var store
     @State private var query = ""
@@ -10,15 +10,20 @@ struct CollectionsView: View {
         Group {
             if let index = store.collections {
                 content(index)
-            } else if LocalMuseum.hasCollections {
+            } else if store.collectionsError && !store.loadingCollections {
+                ContentUnavailableView {
+                    Label("Les collections n'ont pas répondu", systemImage: "wifi.exclamationmark")
+                } description: {
+                    Text("Tout passe par l'API ARTEON : il faut Internet.")
+                } actions: {
+                    Button("Réessayer", systemImage: "arrow.clockwise") {
+                        Task { await store.loadCollections() }
+                    }
+                    .buttonStyle(.glassProminent)
+                }
+            } else {
                 ProgressView("Ouverture des collections…")
                     .task { await store.loadCollections() }
-            } else {
-                ContentUnavailableView(
-                    "Les collections ne sont pas dans cette copie",
-                    systemImage: "square.stack.3d.up.slash",
-                    description: Text("Cette application a été compilée sans les collections du monde (outils/collections_monde.py).")
-                )
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))
@@ -39,7 +44,7 @@ struct CollectionsView: View {
                 .padding()
             } else {
                 VStack(alignment: .leading, spacing: 24) {
-                    Text("\(index.count.formatted()) œuvres du domaine public, choisies dans les collections ouvertes de \(index.collections.museums.count) grands musées. Leurs fiches et leurs vignettes sont sur l'appareil ; l'image en grand se télécharge au premier regard, puis reste.")
+                    Text("\(index.count.formatted()) œuvres du domaine public, choisies dans les collections ouvertes de \(index.collections.museums.count) grands musées. Tout vient du site ARTEON ; l'image en grand vient du musée. Rien n'est gardé sur l'appareil.")
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: 760, alignment: .leading)
 
@@ -140,7 +145,7 @@ struct CollectionMuseumCard: View {
     }
 }
 
-/// La vignette d'une œuvre des collections, lue dans le paquet de son musée.
+/// La vignette d'une œuvre des collections, demandée au site ARTEON (ou au musée).
 struct CollectionThumb: View {
     let work: CollectionWork
     var contentMode: ContentMode = .fill
@@ -160,14 +165,13 @@ struct CollectionThumb: View {
             }
             .clipped()
             .task(id: work.id) {
-                guard let pack = store.collections?.collections.museum(work.museum)?.pack else { return }
-                image = await ImagePipeline.shared.collectionThumbnail(work, pack: pack)
+                image = await ImagePipeline.shared.collectionThumbnail(work)
             }
     }
 }
 
 /// L'image d'une œuvre des collections : la vignette tout de suite, puis l'image en grand,
-/// embarquée dans l'app (700 px, hors ligne).
+/// demandée au musée.
 struct CollectionImage: View {
     let work: CollectionWork
     var contentMode: ContentMode = .fit
@@ -196,13 +200,9 @@ struct CollectionImage: View {
             }
         }
         .task(id: work.id) {
-            // L'image en grand embarquée dans l'app (hors ligne), sinon celle du musée.
-            let pack = store.collections?.collections.museum(work.museum)?.largePack
-            if let local = await ImagePipeline.shared.collectionLarge(work, pack: pack) {
-                full = local
-                return
-            }
-            guard let url = work.imageURL, !LocalMuseum.isAvailable else { return }
+            // L'image en grand, chez le musée (son adresse est dans le détail de l'œuvre).
+            let detailed = work.imageURL == nil ? await store.details(work) : work
+            guard let url = detailed.imageURL else { return }
             loading = true
             let loaded = await ImagePipeline.shared.image(url, maxPixels: 2400)
             loading = false
@@ -273,15 +273,13 @@ struct CollectionRow: View {
     }
 }
 
-/// Les œuvres d'un musée, d'une catégorie, d'un siècle ou d'un artiste ; tout télécharger
-/// pour les voir en grand sans Internet.
+/// Les œuvres d'un musée, d'une catégorie, d'un siècle ou d'un artiste.
 struct CollectionListView: View {
     let filter: CollectionFilter
 
     @Environment(CatalogueStore.self) private var store
     @State private var category: String?
     @State private var shown = 300
-    @State private var downloader = Downloader()
 
     var body: some View {
         if let index = store.collections {
@@ -315,7 +313,6 @@ struct CollectionListView: View {
                         Text(works.count == 1 ? "1 œuvre" : "\(works.count.formatted()) œuvres")
                             .foregroundStyle(.secondary)
                         Spacer()
-                        DownloadButton(downloader: downloader, works: works)
                     }
                     CollectionGrid(works: Array(works.prefix(shown)))
                     if works.count > shown {
@@ -362,9 +359,12 @@ struct CollectionWorkView: View {
     @Environment(CatalogueStore.self) private var store
     @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var zooming = false
+    /// Le détail de l'œuvre (technique, texte du musée, image en grand), lu sur le site.
+    @State private var detailed: CollectionWork?
 
     var body: some View {
-        if let index = store.collections, let work = index.work(id) {
+        if let index = store.collections, let listed = index.work(id) {
+            let work = detailed?.id == id ? detailed! : listed
             let museum = index.collections.museum(work.museum)
             GeometryReader { geo in
                 if sizeClass == .regular && geo.size.width > geo.size.height * 1.1 {
@@ -394,6 +394,7 @@ struct CollectionWorkView: View {
             .navigationTitle(museum?.name ?? "Collections")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear { store.visited(work.key) }
+            .task(id: id) { detailed = await store.details(listed) }
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
                     let favorite = store.isFavorite(work.key)
@@ -570,89 +571,5 @@ struct CollectionZoom: View {
                 }
         }
         .preferredColorScheme(.dark)
-    }
-}
-
-// MARK: - Tout télécharger
-
-/// Télécharge les images en grand d'une liste d'œuvres, pour les voir sans Internet.
-@MainActor
-@Observable
-final class Downloader {
-    private(set) var done = 0
-    private(set) var total = 0
-    private(set) var running = false
-    @ObservationIgnored private var task: Task<Void, Never>?
-
-    func start(_ urls: [String]) {
-        guard !running else { return }
-        running = true
-        done = 0
-        total = urls.count
-        task = Task {
-            await withTaskGroup(of: Void.self) { group in
-                var next = 0
-                func add() {
-                    guard next < urls.count else { return }
-                    let url = urls[next]
-                    next += 1
-                    group.addTask { _ = await ImageStore.shared.file(for: url) }
-                }
-                for _ in 0..<6 { add() }
-                for await _ in group {
-                    if Task.isCancelled { group.cancelAll(); break }
-                    done += 1
-                    add()
-                }
-            }
-            running = false
-        }
-    }
-
-    func cancel() {
-        task?.cancel()
-        running = false
-    }
-}
-
-/// « Tout télécharger » : les images en grand d'une liste, avec la progression.
-struct DownloadButton: View {
-    let downloader: Downloader
-    let works: [CollectionWork]
-
-    @State private var confirm = false
-
-    var body: some View {
-        if LocalMuseum.isAvailable {
-            // Tout est dans l'app, les images en grand comprises.
-            EmptyView()
-        } else if downloader.running {
-            HStack(spacing: 8) {
-                ProgressView(value: Double(downloader.done), total: Double(max(downloader.total, 1)))
-                    .frame(width: 90)
-                Text("\(downloader.done)/\(downloader.total)")
-                    .font(.caption.monospacedDigit())
-                Button("Arrêter", systemImage: "stop.fill") { downloader.cancel() }
-                    .labelStyle(.iconOnly)
-            }
-        } else if downloader.total > 0, downloader.done >= downloader.total {
-            Label("Tout est sur l'appareil", systemImage: "checkmark.circle.fill")
-                .font(.caption)
-                .foregroundStyle(.green)
-        } else {
-            Button("Tout télécharger", systemImage: "arrow.down.circle") { confirm = true }
-                .font(.subheadline)
-                .confirmationDialog(
-                    "Télécharger les \(works.count.formatted()) images en grand ?",
-                    isPresented: $confirm,
-                    titleVisibility: .visible
-                ) {
-                    Button("Télécharger (environ \(max(1, works.count * 250 / 1000)) Mo)") {
-                        downloader.start(works.compactMap(\.imageURL))
-                    }
-                } message: {
-                    Text("Elles resteront sur l'appareil pour être vues sans Internet.")
-                }
-        }
     }
 }

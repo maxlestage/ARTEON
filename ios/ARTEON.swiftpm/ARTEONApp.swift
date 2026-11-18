@@ -1,5 +1,5 @@
-// ARTEON sur iPad et iPhone : le musée virtuel en SwiftUI, embarqué tout entier dans
-// l'application (il se visite sans Internet). Les expositions, les œuvres et leurs
+// ARTEON sur iPad et iPhone : le musée virtuel en SwiftUI. Tout passe par l'API (le site
+// ARTEON et le serveur Paquets) : rien du musée n'est gardé sur l'appareil. Les expositions, les œuvres et leurs
 // notices, les artistes, la chronologie, les thèmes, le jeu, l'audioguide, le
 // diaporama, la recherche, les favoris, les images en grand et les galeries 3D.
 
@@ -31,7 +31,7 @@ struct RootView: View {
                 SplashView(message: "Ouverture du musée…", retry: nil)
             case .failed(let message):
                 SplashView(
-                    message: "Le musée n'a pas pu ouvrir. Cette copie de l'application n'embarque pas le musée (voir ios/README.md) : il faut Internet la première fois.\n\(message)",
+                    message: "Le musée n'a pas pu ouvrir.\n\(message)",
                     retry: { Task { await store.load() } }
                 )
             case .ready(let catalogue):

@@ -30,18 +30,11 @@ targets:
           - .swiftpm
           - Musee
           - Musee/**
-      # Un musée embarqué, seulement si preparer-musee.sh l'a rempli (en développement) :
-      # l'app de la CI est légère et lit tout sur Nuage.
-      - path: ARTEON.swiftpm/Musee
-        type: folder
-        buildPhase: resources
-    # Le jeton Nuage en lecture seule de l'app, donné à la compilation (NUAGE_READ_TOKEN,
-    # un secret GitHub) : il n'est jamais dans le code.
+      # Rien n'est embarqué : tout passe par l'API (Api.swift).
     info:
       path: ARTEON-Info.plist
       properties:
-        ARTEONNuageToken: $(NUAGE_READ_TOKEN)
-        ARTEONNuage: https://nuage-f48a8945f31c.herokuapp.com
+        ARTEONSite: https://maxlestage.github.io/ARTEON/
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.maxlestage.arteon

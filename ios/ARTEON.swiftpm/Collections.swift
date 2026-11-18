@@ -1,8 +1,8 @@
 // Les collections du monde : des dizaines de milliers d'œuvres du domaine public, choisies
-// dans les collections ouvertes de grands musées (outils/collections_monde.py). Leurs
-// fiches et leurs vignettes sont dans l'application (Musee/collections/) ; l'image en
-// grand se télécharge au premier affichage, puis reste sur l'appareil. Rien que
-// Foundation : ce fichier se teste aussi sous Linux.
+// dans les collections ouvertes de grands musées (outils/collections_monde.py). Tout vient
+// du site ARTEON (Api.swift) : la liste, les vignettes, le détail de chaque œuvre ; l'image
+// en grand vient du musée. Rien n'est gardé sur l'appareil. Rien que Foundation : ce
+// fichier se teste aussi sous Linux.
 
 import Foundation
 
@@ -15,9 +15,9 @@ struct CollectionMuseum: Decodable, Hashable, Sendable, Identifiable {
     var color: String
     var licence: String
     var count: Int
-    /// Le fichier de ses vignettes (`vignettes-met.bin`).
-    var pack: String
-    /// Le fichier de ses images en grand, 700 px (`grandes-met.bin`), s'il y en a.
+    /// Le fichier de ses vignettes (`vignettes-met.bin`), dans l'ancien format embarqué.
+    var pack: String?
+    /// Le fichier de ses images en grand, 700 px (`grandes-met.bin`), dans l'ancien format.
     var largePack: String?
 
     var id: String { key }
@@ -57,6 +57,10 @@ struct CollectionWork: Decodable, Hashable, Sendable, Identifiable {
     var large: [Int]?
     /// Le musée (`met`).
     var museum: String
+    /// L'adresse de sa vignette (sur le site ARTEON, ou chez le musée).
+    var thumbURL: String? = nil
+    /// Sa place dans la liste du site (pour lire son détail).
+    var position: Int? = nil
 
     enum CodingKeys: String, CodingKey {
         case id = "i", title = "t", artist = "a", life = "v", date = "d", year = "y", medium = "m"
@@ -79,6 +83,8 @@ struct WorldCollections: Decodable, Sendable {
     var date: String
     var museums: [CollectionMuseum]
     var works: [CollectionWork]
+    /// Le nombre de fiches par fichier de détail sur le site (`fiches-NNN.json`).
+    var perFile: Int = 1000
 
     /// Les favoris des collections : `monde/<identifiant>`.
     static let favoritePrefix = "monde"
@@ -235,39 +241,5 @@ struct CollectionIndex: Sendable {
         guard !collections.works.isEmpty else { return [] }
         var rng = SplitMix64(seed: UInt64(truncatingIfNeeded: day) &* 2_654_435_761)
         return (0..<count).map { _ in collections.works[Int(rng.next() % UInt64(collections.works.count))] }
-    }
-}
-
-extension LocalMuseum {
-    /// Le fichier des collections du monde, s'il est dans l'application.
-    static var collectionsFile: URL? { stored("collections/collections.json") }
-
-    /// Les collections sont-elles à portée (sur l'appareil, ou sur Nuage) ?
-    static var hasCollections: Bool { collectionsFile != nil || Nuage.isConfigured }
-
-    /// Les octets de l'image en grand (700 px) d'une œuvre des collections, dans l'app.
-    static func largeImage(of work: CollectionWork, pack: String?, in root: URL? = nil) -> Data? {
-        guard let pack else { return nil }
-        return packBytes(work.large, pack: pack, in: root)
-    }
-
-    /// Les octets de la vignette d'une œuvre des collections, lus dans le paquet de son musée.
-    static func thumbnail(of work: CollectionWork, pack: String, in root: URL? = nil) -> Data? {
-        packBytes(work.thumb, pack: pack, in: root)
-    }
-
-    /// Les octets [décalage, longueur] d'un paquet des collections.
-    static func packBytes(_ range: [Int]?, pack: String, in root: URL? = nil) -> Data? {
-        guard let range, range.count == 2,
-              let url = root.map({ file("collections/\(pack)", in: $0) }) ?? stored("collections/\(pack)"),
-              let handle = try? FileHandle(forReadingFrom: url)
-        else { return nil }
-        defer { try? handle.close() }
-        do {
-            try handle.seek(toOffset: UInt64(range[0]))
-            return try handle.read(upToCount: range[1])
-        } catch {
-            return nil
-        }
     }
 }

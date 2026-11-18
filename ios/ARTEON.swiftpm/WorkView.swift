@@ -336,12 +336,10 @@ struct OtherWorks: View {
     }
 }
 
-/// Partager une œuvre : son image (du musée embarqué) et son cartel.
+/// Partager une œuvre : sa page sur le site ARTEON et son cartel.
 struct ShareWorkButton: View {
     let exhibition: Exhibition
     let work: Work
-
-    @State private var file: URL?
 
     private var caption: String {
         var lines = [work.title, work.byline]
@@ -351,17 +349,8 @@ struct ShareWorkButton: View {
     }
 
     var body: some View {
-        Group {
-            if let file {
-                ShareLink(item: file, subject: Text(work.title), message: Text(caption)) {
-                    Label("Partager", systemImage: "square.and.arrow.up")
-                }
-            } else {
-                ShareLink(item: caption, subject: Text(work.title)) {
-                    Label("Partager", systemImage: "square.and.arrow.up")
-                }
-            }
+        ShareLink(item: Site.url("\(exhibition.slug)/oeuvres/\(work.slug)/"), subject: Text(work.title), message: Text(caption)) {
+            Label("Partager", systemImage: "square.and.arrow.up")
         }
-        .task(id: work.image) { file = await ImageStore.shared.file(for: work.image) }
     }
 }

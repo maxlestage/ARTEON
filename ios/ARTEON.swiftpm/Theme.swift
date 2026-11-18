@@ -40,8 +40,9 @@ enum Route: Hashable {
     case collectionWork(String)
 }
 
-/// Les images, lues sur l'appareil et décodées à la taille où elles s'affichent : les
-/// vignettes restent légères, l'image en grand garde tous ses pixels.
+/// Les images, demandées au site (ou au musée) et décodées à la taille où elles
+/// s'affichent : les vignettes restent légères, l'image en grand garde tous ses pixels.
+/// Gardées en mémoire le temps de la visite, jamais sur l'appareil.
 actor ImagePipeline {
     static let shared = ImagePipeline()
 
@@ -55,8 +56,8 @@ actor ImagePipeline {
     func image(_ path: String, maxPixels: Int?) async -> UIImage? {
         let key = "\(maxPixels ?? 0)|\(path)" as NSString
         if let image = cache.object(forKey: key) { return image }
-        guard let file = await ImageStore.shared.file(for: path),
-              let source = CGImageSourceCreateWithURL(file as CFURL, nil)
+        guard let data = await ImageStore.shared.data(for: path),
+              let source = CGImageSourceCreateWithData(data as CFData, nil)
         else { return nil }
         var options: [CFString: Any] = [
             kCGImageSourceCreateThumbnailFromImageAlways: true,
@@ -72,40 +73,11 @@ actor ImagePipeline {
         return image
     }
 
-    /// Les octets d'une vignette : dans le paquet sur l'appareil, sinon déjà reçue, sinon
-    /// demandée à Nuage (quelques Ko du paquet, par `Range`), puis gardée.
-    private static func thumbnailBytes(_ work: CollectionWork, pack: String) async -> Data? {
-        if let data = LocalMuseum.thumbnail(of: work, pack: pack) { return data }
-        let file = LocalMuseum.downloads.appendingPathComponent("collections/vignettes/\(work.id).jpg")
-        if let data = try? Data(contentsOf: file) { return data }
-        guard Nuage.isConfigured, let range = work.thumb, range.count == 2,
-              let data = try? await NuageFiles.shared.bytes("collections/\(pack)", offset: range[0], length: range[1])
-        else { return nil }
-        try? FileManager.default.createDirectory(at: file.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try? data.write(to: file, options: .atomic)
-        return data
-    }
-
-    /// L'image en grand (700 px) d'une œuvre des collections, embarquée dans l'app.
-    func collectionLarge(_ work: CollectionWork, pack: String?) async -> UIImage? {
-        let key = "grande|\(work.id)" as NSString
-        if let image = cache.object(forKey: key) { return image }
-        guard let data = LocalMuseum.largeImage(of: work, pack: pack),
-              let image = UIImage(data: data)?.preparingForDisplay()
-        else { return nil }
-        cache.setObject(image, forKey: key, cost: data.count * 10)
-        return image
-    }
-
-    /// La vignette d'une œuvre des collections du monde, lue dans le paquet de son musée.
-    func collectionThumbnail(_ work: CollectionWork, pack: String) async -> UIImage? {
-        let key = "vignette|\(work.id)" as NSString
-        if let image = cache.object(forKey: key) { return image }
-        guard let data = await Self.thumbnailBytes(work, pack: pack),
-              let image = UIImage(data: data)?.preparingForDisplay()
-        else { return nil }
-        cache.setObject(image, forKey: key, cost: data.count * 8)
-        return image
+    /// La vignette d'une œuvre des collections du monde (WebP, sur le site ARTEON ou chez
+    /// le musée).
+    func collectionThumbnail(_ work: CollectionWork) async -> UIImage? {
+        guard let url = work.thumbURL else { return nil }
+        return await image(url, maxPixels: 640)
     }
 }
 

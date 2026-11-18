@@ -1,13 +1,11 @@
-# L'application iOS en Swift (ios/), avec tout le musée embarqué (elle se visite sans
-# Internet) :
-#   1. job « musee » (Linux) : le site exporté (catalogue, images, galeries 3D en
-#      WebAssembly) devient ios/ARTEON.swiftpm/Musee (ios/preparer-musee.sh) ; tests du
-#      modèle en Swift ;
+# L'application iOS en Swift (ios/). Elle n'embarque rien : tout passe par l'API (le site
+# ARTEON pour le musée, ses images, ses galeries 3D et les collections du monde ; le
+# serveur Paquets pour toutes les œuvres de chaque artiste). Rien n'est gardé sur l'appareil.
+#   1. job « modele » (Linux) : tests du modèle et du client de l'API en Swift ;
 #   2. job « ios » (Mac) : compilée et testée avec Xcode 27.2 (SDK iOS 27.2, Swift 6.4),
-#      captures d'écran sans réseau sur le simulateur iPad, l'App Playground complet à
-#      télécharger (artefact, et release « ipad » sur la branche par défaut), et envoi sur
-#      TestFlight quand les clés d'Apple sont là. Tout se règle et se lance depuis un
-#      téléphone.
+#      captures d'écran sur le simulateur iPad, l'App Playground à télécharger (artefact,
+#      et release « ipad » sur la branche par défaut), et envoi sur TestFlight quand les
+#      clés d'Apple sont là. Tout se règle et se lance depuis un téléphone.
 #
 # Pour l'installer sur l'iPad par TestFlight (compte Apple Developer, 99 € par an) :
 #   1. App Store Connect → Apps → « + » → Nouvelle app : iOS, nom ARTEON, identifiant de
@@ -61,74 +59,12 @@ env:
   IOS: "27.2"
 
 jobs:
-  musee:
-    name: Le musée embarqué
+  modele:
+    name: Le modèle et le client de l'API (Swift, Linux)
     runs-on: ubuntu-latest
-    # La première moisson des collections du monde (fiches, vignettes et images en grand)
-    # est longue ; ensuite, le cache.
-    timeout-minutes: 330
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: wasm32-unknown-unknown
-
-      - uses: Swatinem/rust-cache@v2
-
-      # Les expositions éphémères de la semaine, comme sur le site ; on s'en passe si un
-      # musée ne répond pas ou si le résultat ne se compile pas.
-      # Toujours : l'application embarque toutes les œuvres, éphémères comprises.
-      - name: Expositions éphémères
-        run: |
-          timeout 1500 python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
-          if ! cargo check --quiet --lib; then
-            echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
-            rm -f expositions/ephemere-*.toml
-            rm -rf public/tableaux/ephemere-*
-          fi
-
-      - name: Installer wasm-bindgen
-        run: |
-          version=$(grep -A1 '^name = "wasm-bindgen"$' Cargo.lock | sed -n 's/^version = "\(.*\)"$/\1/p')
-          test -n "$version" || { echo "wasm-bindgen absent de Cargo.lock"; exit 1; }
-          curl -sSfL --retry 3 "https://github.com/wasm-bindgen/wasm-bindgen/releases/download/${version}/wasm-bindgen-${version}-x86_64-unknown-linux-musl.tar.gz" \
-            | tar -xz --strip-components=1 -C "$HOME/.cargo/bin"
-          wasm-bindgen --version
-
-      # Le site exporté pour la racine de arteon://musee/, réduit à ce que lit l'application.
-      - name: Préparer le musée embarqué
-        run: ios/preparer-musee.sh
-
-      # Les collections du monde : des dizaines de milliers d'œuvres du domaine public
-      # (Chicago, Cleveland, le Met, Washington), fiches et vignettes. Le cache garde les
-      # vignettes d'une fois sur l'autre et les fiches une semaine.
-      - uses: actions/cache/restore@v4
-        with:
-          path: target/collections-cache
-          key: collections-v1-${{ github.run_id }}
-          restore-keys: collections-v1-
-
-      # Au plus 25 minutes de fiches (les musées ralentissent les machines de GitHub) ; ce
-      # qui manque sera pris au run suivant, grâce au cache.
-      - name: Les collections du monde
-        continue-on-error: true
-        timeout-minutes: 240
-        run: |
-          python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
-            || python3 -m pip install --quiet --break-system-packages pillow
-          python3 outils/collections_monde.py --total 50000 --minutes 25 \
-            --sortie ios/ARTEON.swiftpm/Musee/collections --cache target/collections-cache
-          du -sh ios/ARTEON.swiftpm/Musee ios/ARTEON.swiftpm/Musee/collections
-
-      # Le cache est gardé même si la moisson a été coupée.
-      - uses: actions/cache/save@v4
-        if: always()
-        with:
-          path: target/collections-cache
-          key: collections-v1-${{ github.run_id }}
-
-      # Le modèle (catalogue, index, jeu, musée embarqué) sous Linux, sur le vrai musée.
       - name: Tests du modèle (Swift)
         working-directory: ios
         run: |
@@ -139,30 +75,9 @@ jobs:
             echo "::notice::Swift n'est pas installé sur cette image : les tests tournent sur le Mac."
           fi
 
-      # Sur Nuage : l'app iOS n'embarque plus le musée, elle le lit là (puis le garde).
-      # Seules les nouveautés partent. Il faut le secret NUAGE_TOKEN : un jeton
-      # lecture-écriture de l'application arteon (console Nuage → arteon → Tokens).
-      - name: Envoyer sur Nuage
-        if: github.event_name != 'pull_request'
-        env:
-          NUAGE_TOKEN: ${{ secrets.NUAGE_TOKEN }}
-        run: |
-          if [ -z "$NUAGE_TOKEN" ]; then
-            echo "::notice::Pas de secret NUAGE_TOKEN : le musée n'est pas envoyé sur Nuage (Settings → Secrets → Actions)."
-            exit 0
-          fi
-          python3 outils/nuage_envoyer.py ios/ARTEON.swiftpm/Musee
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: musee
-          path: ios/ARTEON.swiftpm/Musee
-          retention-days: 7
-          if-no-files-found: error
-
   ios:
     name: Compiler, tester, capturer
-    needs: musee
+    needs: modele
     # Un simulateur qui gèle la machine n'immobilise pas le run pendant des heures.
     timeout-minutes: 75
     permissions:
@@ -173,28 +88,12 @@ jobs:
       run:
         working-directory: ios
     env:
-      # Le jeton Nuage en lecture seule, dans l'Info.plist de l'app (jamais dans le code).
-      NUAGE_READ_TOKEN: ${{ secrets.NUAGE_READ_TOKEN }}
       KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
       KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
       ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
       TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
     steps:
       - uses: actions/checkout@v7
-
-      # L'app est 100 % hors ligne : le musée préparé par le job « musee » (catalogue,
-      # images, galeries 3D, collections du monde) est embarqué dans l'application.
-      - uses: actions/download-artifact@v4
-        with:
-          name: musee
-          path: ios/ARTEON.swiftpm/Musee
-
-      - name: Le musée embarqué est là
-        run: |
-          test -s ARTEON.swiftpm/Musee/catalogue.json
-          test -s ARTEON.swiftpm/Musee/pkg/arteon_bg.wasm
-          test -s ARTEON.swiftpm/Musee/collections/collections.json || echo "::warning::pas de collections du monde"
-          du -sh ARTEON.swiftpm/Musee
 
       - name: Xcode 27.2
         run: |
@@ -217,7 +116,7 @@ jobs:
           set -o pipefail
           xcodebuild build -project ARTEON.xcodeproj -scheme ARTEON \
             -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
-            -derivedDataPath build CODE_SIGNING_ALLOWED=NO NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN" -quiet
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet
 
       - name: Tests sur le simulateur iPad
         if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
@@ -230,7 +129,7 @@ jobs:
           run_tests() {
             xcodebuild test -project ARTEON.xcodeproj -scheme ARTEON \
               -destination "platform=iOS Simulator,name=$IPAD,OS=$IOS" \
-              -derivedDataPath build CODE_SIGNING_ALLOWED=NO NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN" 2>&1 | tee "$RUNNER_TEMP/tests.log"
+              -derivedDataPath build CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/tests.log"
           }
           if ! run_tests; then
             # Un simulateur qui ne répond pas : on recommence une fois. Un vrai test en
@@ -271,12 +170,12 @@ jobs:
           "
           }
           mkdir -p captures
-          # -horsligne : l'application ne touche pas au réseau ; tout vient du musée embarqué.
+          # Tout passe par l'API : l'application lit le site ARTEON (le simulateur a Internet).
           shoot() {
             echo "▶ $prefix-$name"
             limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
-            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -horsligne "$@" || return 0
-            sleep "${wait:-8}"
+            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon "$@" || return 0
+            sleep "${wait:-14}"
             limit 60 xcrun simctl io "$udid" screenshot "captures/$prefix-$name.png" || echo "capture $name impossible"
           }
           for prefix in ipad iphone; do
@@ -285,7 +184,7 @@ jobs:
             limit 60 xcrun simctl boot "$udid" || true
             limit 240 xcrun simctl bootstatus "$udid" -b || true
             limit 180 xcrun simctl install "$udid" "$app" || continue
-            name=01-accueil wait=12 shoot
+            name=01-accueil wait=25 shoot
             name=03-oeuvre shoot -ouvrir van-gogh/tournesols
             name=04-musees shoot -onglet musees
             name=05-musee-plan shoot -ouvrir musee:Rijksmuseum
@@ -320,8 +219,8 @@ jobs:
             !ios/ARTEON.swiftpm/.swiftpm
           include-hidden-files: false
 
-      # Sur la branche par défaut : l'App Playground complet (avec le musée) dans la release
-      # « ipad », à une adresse fixe, à ouvrir sur l'iPad avec Swift Playgrounds.
+      # Sur la branche par défaut : l'App Playground (léger : tout passe par l'API) dans la
+      # release « ipad », à une adresse fixe, à ouvrir sur l'iPad avec Swift Playgrounds.
       - name: Publier l'App Playground (release « ipad »)
         if: github.ref_name == github.event.repository.default_branch
         continue-on-error: true
@@ -329,14 +228,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # Un fichier de release ne dépasse pas 2 Go : l'App Playground part sans les images
-          # en grand des collections (vignettes seulement) ; TestFlight a tout.
           zip -qry "$RUNNER_TEMP/ARTEON.swiftpm.zip" ARTEON.swiftpm -x 'ARTEON.swiftpm/.swiftpm/*' \
-            -x 'ARTEON.swiftpm/Musee/collections/grandes-*'
+            -x 'ARTEON.swiftpm/Musee/*'
           ls -la "$RUNNER_TEMP/ARTEON.swiftpm.zip"
+          notes="Toucher ARTEON.swiftpm.zip sur l'iPad, l'ouvrir dans Fichiers, puis toucher ARTEON.swiftpm : Swift Playgrounds l'ouvre. ▶ lance le musée. Tout passe par l'API ARTEON : il faut Internet, rien n'est gardé sur l'appareil. Refait à chaque push sur la branche par défaut."
           gh release view ipad >/dev/null 2>&1 || gh release create ipad --latest=false \
-            --title "ARTEON pour iPad (Swift Playgrounds)" \
-            --notes "Toucher ARTEON.swiftpm.zip sur l'iPad, l'ouvrir dans Fichiers, puis toucher ARTEON.swiftpm : Swift Playgrounds l'ouvre. ▶ lance le musée, entièrement hors ligne. Refait à chaque push sur la branche par défaut."
+            --title "ARTEON pour iPad (Swift Playgrounds)" --notes "$notes"
+          gh release edit ipad --notes "$notes" || true
           gh release upload ipad "$RUNNER_TEMP/ARTEON.swiftpm.zip" --clobber
 
       - name: Compiler pour l'appareil (sans signature)
@@ -344,8 +242,7 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild build -project ARTEON.xcodeproj -scheme ARTEON -configuration Release \
-            -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO \
-            NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN"
+            -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO
           du -sh build/Build/Products/Release-iphoneos/ARTEON.app
 
       - name: L'App Playground (Swift Playgrounds)
@@ -379,7 +276,7 @@ jobs:
           xcodebuild archive -project ARTEON.xcodeproj -scheme ARTEON -configuration Release \
             -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/ARTEON.xcarchive" \
             "${auth[@]}" DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic \
-            NUAGE_READ_TOKEN="$NUAGE_READ_TOKEN" \
+            \
             CURRENT_PROJECT_VERSION="${{ github.run_number }}"
           # L'export envoie directement l'application à App Store Connect (TestFlight).
           cat > "$RUNNER_TEMP/export.plist" <<PLIST
