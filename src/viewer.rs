@@ -255,7 +255,8 @@ pub fn attach(
             };
             let art = &ex.artworks[i];
             if let Some(image) = find(&shell, "hd-img") {
-                let _ = image.set_attribute("src", &format!("{base}{}", art.image_url()));
+                let src = if art.is_extra() { art.image_url() } else { format!("{base}{}", art.image_url()) };
+                let _ = image.set_attribute("src", &src);
                 let _ = image.set_attribute(
                     "alt",
                     &format!("{}, {} ({})", art.title, art.artist_in(ex), art.year),
@@ -558,4 +559,256 @@ fn held(control: &SharedControl, code: &str, down: bool, shift: bool) -> bool {
         _ => return false,
     }
     true
+}
+
+// ─── La visite dynamique ─────────────────────────────────────────────────────
+
+/// La visite en cours (ou en chargement) : la scène et ses commandes, arrêtées quand
+/// l'îlot s'en va.
+pub struct Visit {
+    scene: Rc<RefCell<Option<Box<dyn std::any::Any>>>>,
+    commands: Rc<RefCell<Option<Commands>>>,
+    cancelled: Rc<Cell<bool>>,
+}
+
+impl Drop for Visit {
+    fn drop(&mut self) {
+        self.cancelled.set(true);
+        self.scene.borrow_mut().take();
+        self.commands.borrow_mut().take();
+    }
+}
+
+/// Le nombre d'œuvres des collections à ajouter à la visite : `?oeuvres=48` dans
+/// l'adresse (0 : la visite du fichier, telle quelle), 24 sinon ; 120 au plus.
+fn wanted_extras() -> usize {
+    let search = web_sys::window()
+        .and_then(|w| w.location().search().ok())
+        .unwrap_or_default();
+    search
+        .trim_start_matches('?')
+        .split('&')
+        .find_map(|pair| pair.strip_prefix("oeuvres="))
+        .and_then(|n| n.parse::<usize>().ok())
+        .unwrap_or(24)
+        .min(120)
+}
+
+/// Une image chargée par le navigateur (ou rien si elle ne vient pas en dix secondes) :
+/// une promesse qui ne échoue jamais.
+fn load_image(src: &str) -> js_sys::Promise {
+    let src = src.to_owned();
+    js_sys::Promise::new(&mut |resolve, _reject| {
+        let Ok(image) = web_sys::HtmlImageElement::new() else {
+            let _ = resolve.call1(&wasm_bindgen::JsValue::NULL, &wasm_bindgen::JsValue::NULL);
+            return;
+        };
+        // Les pixels doivent pouvoir être lus : l'image est demandée avec CORS.
+        image.set_cross_origin(Some("anonymous"));
+        let loaded = {
+            let (resolve, image) = (resolve.clone(), image.clone());
+            Closure::once_into_js(move || {
+                let _ = resolve.call1(&wasm_bindgen::JsValue::NULL, &image);
+            })
+        };
+        let failed = || {
+            let resolve = resolve.clone();
+            Closure::once_into_js(move || {
+                let _ = resolve.call1(&wasm_bindgen::JsValue::NULL, &wasm_bindgen::JsValue::NULL);
+            })
+        };
+        image.set_onload(Some(loaded.unchecked_ref()));
+        image.set_onerror(Some(failed().unchecked_ref()));
+        if let Some(window) = web_sys::window() {
+            let _ = window.set_timeout_with_callback_and_timeout_and_arguments_0(failed().unchecked_ref(), 10_000);
+        }
+        image.set_src(&src);
+    })
+}
+
+/// Les œuvres liées de l'exposition à accrocher dans l'aile : `wanted` au plus, réparties
+/// sur toute la liste (de la plus ancienne à la plus récente), leurs vignettes chargées et
+/// transformées en mosaïques. Celles dont l'image ne se laisse pas lire sont sautées.
+async fn load_extras(ex: &'static Exhibition, wanted: usize) -> Vec<crate::aile::Extra> {
+    let files = files_path(ex.slug);
+    let url = format!("{files}/monde/donnees/expo-{}.json", ex.slug);
+    let Ok(bytes) = fetch_bytes(&url).await else {
+        return Vec::new();
+    };
+    let Ok(root) = js_sys::JSON::parse(&String::from_utf8_lossy(&bytes)) else {
+        return Vec::new();
+    };
+    if !js_sys::Array::is_array(&root) {
+        return Vec::new();
+    }
+    // (rang dans la liste, identifiant, titre, artiste, date, adresse de la vignette)
+    let all: Vec<(usize, String, String, String, String, Option<String>)> = js_sys::Array::from(&root)
+        .iter()
+        .enumerate()
+        .filter_map(|(i, row)| {
+            let row = js_sys::Array::from(&row);
+            let text = |k: u32| row.get(k).as_string().unwrap_or_default();
+            let id = text(0);
+            (!id.is_empty()).then(|| (i, id, text(1), text(2), text(3), row.get(4).as_string()))
+        })
+        .collect();
+    // D'abord les vignettes hébergées par le site (toujours lisibles), puis celles des musées.
+    let spread = |list: Vec<&(usize, String, String, String, String, Option<String>)>, n: usize| {
+        let len = list.len();
+        (0..n.min(len)).map(|i| list[i * len / n.min(len)].clone()).collect::<Vec<_>>()
+    };
+    let hosted: Vec<_> = all.iter().filter(|w| w.5.is_none()).collect();
+    let remote: Vec<_> = all.iter().filter(|w| w.5.is_some()).collect();
+    let mut chosen = spread(hosted, wanted);
+    if chosen.len() < wanted {
+        let missing = wanted - chosen.len();
+        chosen.extend(spread(remote, missing));
+    }
+    chosen.sort_by_key(|w| w.0);
+    let sources: Vec<String> = chosen
+        .iter()
+        .map(|w| w.5.clone().unwrap_or_else(|| format!("{files}/monde/v/{}.webp", w.1)))
+        .collect();
+    let promises = js_sys::Array::new();
+    for src in &sources {
+        promises.push(&load_image(src));
+    }
+    let Ok(images) = JsFuture::from(js_sys::Promise::all(&promises)).await else {
+        return Vec::new();
+    };
+    let images = js_sys::Array::from(&images);
+    let Some(document) = web_sys::window().and_then(|w| w.document()) else {
+        return Vec::new();
+    };
+    let Some(canvas) = document
+        .create_element("canvas")
+        .ok()
+        .and_then(|c| c.dyn_into::<web_sys::HtmlCanvasElement>().ok())
+    else {
+        return Vec::new();
+    };
+    let mut extras = Vec::new();
+    for (k, (_, id, title, artist, year, _)) in chosen.into_iter().enumerate() {
+        let Ok(image) = images.get(k as u32).dyn_into::<web_sys::HtmlImageElement>() else {
+            continue;
+        };
+        let (w, h) = (image.natural_width(), image.natural_height());
+        if w < 8 || h < 8 {
+            continue;
+        }
+        let ratio = w as f32 / h as f32;
+        let (cols, rows) = crate::aile::grid(ratio);
+        canvas.set_width(u32::from(cols));
+        canvas.set_height(u32::from(rows));
+        let Some(context) = canvas
+            .get_context("2d")
+            .ok()
+            .flatten()
+            .and_then(|c| c.dyn_into::<web_sys::CanvasRenderingContext2d>().ok())
+        else {
+            continue;
+        };
+        if context
+            .draw_image_with_html_image_element_and_dw_and_dh(&image, 0.0, 0.0, f64::from(cols), f64::from(rows))
+            .is_err()
+        {
+            continue;
+        }
+        // Une image venue d'un musée sans CORS ne se laisse pas lire : elle est sautée.
+        let Ok(pixels) = context.get_image_data(0.0, 0.0, f64::from(cols), f64::from(rows)) else {
+            continue;
+        };
+        let (palette, cells) = crate::aile::mosaic(&pixels.data());
+        extras.push(crate::aile::Extra {
+            id,
+            title: if title.is_empty() { crate::langue::t("Sans titre", "Untitled", "Sin título").to_owned() } else { title },
+            artist: if artist == "Artiste inconnu" {
+                crate::langue::t("Artiste inconnu", "Unknown artist", "Artista desconocido").to_owned()
+            } else {
+                artist
+            },
+            year,
+            image: sources[k].clone(),
+            ratio,
+            cols,
+            rows,
+            palette,
+            cells,
+        });
+    }
+    extras
+}
+
+/// Lance la visite du musée dans `canvas` : télécharge les données de l'exposition, ajoute
+/// l'aile des collections avec le nombre d'œuvres demandé (voir [`wanted_extras`]), puis
+/// branche les commandes et démarre la scène.
+pub fn start_visit(canvas: &Element, ex: &'static Exhibition, control: SharedControl) -> Visit {
+    let scene: Rc<RefCell<Option<Box<dyn std::any::Any>>>> = Rc::default();
+    let commands: Rc<RefCell<Option<Commands>>> = Rc::default();
+    let cancelled = Rc::new(Cell::new(false));
+    let (canvas, slot, hands, stop) = (canvas.clone(), scene.clone(), commands.clone(), cancelled.clone());
+    wasm_bindgen_futures::spawn_local(async move {
+        let shell = canvas.closest(".viewer-shell").ok().flatten();
+        let say = |message: &str| {
+            if let Some(text) = shell.as_ref().and_then(|s| find(s, "viewer-loading")) {
+                text.set_text_content(Some(message));
+            }
+        };
+        let url = format!("{}/donnees/{}.bin", files_path(ex.slug), ex.slug);
+        let loaded = fetch_bytes(&url).await.and_then(|bytes| ExhibitionData::new(ex, bytes));
+        if stop.get() {
+            return;
+        }
+        let data = match loaded {
+            Ok(data) => data,
+            Err(message) => {
+                say(&crate::tf!(
+                    "Le musée n'a pas pu s'ouvrir : {}",
+                    "The museum could not open: {}",
+                    "El museo no pudo abrirse: {}",
+                    message
+                ));
+                return;
+            }
+        };
+        // Le choix affiché sous la visite : la taille en cours est marquée.
+        let wanted = wanted_extras();
+        if let Some(document) = web_sys::window().and_then(|w| w.document())
+            && let Ok(Some(chip)) = document.query_selector(&format!(".visit-size a[data-oeuvres=\"{wanted}\"]"))
+        {
+            let _ = chip.class_list().add_1("current");
+        }
+        let (ex, data) = if wanted == 0 {
+            (ex, data)
+        } else {
+            say(crate::langue::t(
+                "Accrochage des œuvres des collections…",
+                "Hanging the works from the collections…",
+                "Colgando las obras de las colecciones…",
+            ));
+            let extras = load_extras(ex, wanted).await;
+            if stop.get() {
+                return;
+            }
+            match crate::aile::extend(ex, &data, extras) {
+                Some((bigger, more)) => (bigger, more),
+                None => (ex, data),
+            }
+        };
+        // Arrivé avec l'adresse d'une œuvre de l'aile (`#chicago-27992`) : la visite s'y arrête.
+        if control.borrow().go_to.is_none()
+            && let Some(focus) = focus_from_hash(ex)
+        {
+            let mut c = control.borrow_mut();
+            c.go_to = Some(focus);
+            c.paused = true;
+        }
+        *hands.borrow_mut() = attach(&canvas, ex, control.clone());
+        let running = crate::gallery::tour_app_with(ex, Rc::new(data), control).run_in(&canvas).ok();
+        *slot.borrow_mut() = Some(Box::new(running));
+        if let Some(shell) = shell {
+            let _ = shell.class_list().remove_1("is-loading");
+        }
+    });
+    Visit { scene, commands, cancelled }
 }

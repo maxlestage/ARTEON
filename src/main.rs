@@ -1124,15 +1124,45 @@ async fn gallery_page(_req: Request, ex: &'static Exhibition) -> Page {
                     "En visite guidée, la caméra traverse les salles et s'arrête devant chaque œuvre, en boucle. \
                      En visite libre, on marche où l'on veut : ZQSD ou WASD et la souris sur ordinateur, les deux \
                      joysticks sur téléphone. Le plan permet de se rendre d'un clic dans une salle ou devant une œuvre, \
-                     et l'éditeur de déplacer les œuvres.",
+                     et l'éditeur de déplacer les œuvres. La visite n'est pas figée : une aile s'ajoute au musée avec \
+                     les œuvres liées des collections du monde, autant que vous en choisissez ci-dessous.",
                     "On the guided tour, the camera moves through the rooms and stops in front of each work, in a loop. \
                      On the free tour, you walk wherever you like: WASD and the mouse on a computer, the two joysticks \
-                     on a phone. The plan takes you to a room or a work in one click, and the editor lets you move the works.",
+                     on a phone. The plan takes you to a room or a work in one click, and the editor lets you move the works. \
+                     The tour is not fixed: a wing is added to the museum with related works from the world collections, \
+                     as many as you choose below.",
                     "En la visita guiada, la cámara recorre las salas y se detiene ante cada obra, en bucle. \
                      En la visita libre, se camina por donde se quiera: WASD y el ratón en el ordenador, los dos joysticks \
-                     en el teléfono. El plano lleva con un clic a una sala o ante una obra, y el editor permite mover las obras.",
+                     en el teléfono. El plano lleva con un clic a una sala o ante una obra, y el editor permite mover las obras. \
+                     La visita no es fija: se añade un ala al museo con las obras relacionadas de las colecciones del mundo, \
+                     tantas como elija abajo.",
                 ))),
         )
+        // La visite est dynamique : le visiteur choisit combien d'œuvres liées des collections
+        // du monde sont accrochées dans l'aile ajoutée au musée (src/aile.rs).
+        .child(if ex.ephemeral {
+            nav()
+        } else {
+            let own = ex.artworks.len() + ex.sculptures.len();
+            nav()
+                .class("visit-size")
+                .attr("aria-label", t("Le nombre d'œuvres de la visite", "Number of works in the tour", "Número de obras de la visita"))
+                .child(span().class("visit-size-label").text(t(
+                    "Œuvres dans la visite :",
+                    "Works in the tour:",
+                    "Obras en la visita:",
+                )))
+                .children([0usize, 24, 48, 96, 120].into_iter().map(|n| {
+                    a().class("chip")
+                        .href(u(&format!("/{}/galerie?oeuvres={n}", ex.slug)))
+                        .attr("data-oeuvres", n.to_string())
+                        .text(if n == 0 {
+                            tf!("{} (l'accrochage d'origine)", "{} (the original hang)", "{} (el montaje original)", own)
+                        } else {
+                            tf!("{} + {} des collections", "{} + {} from the collections", "{} + {} de las colecciones", own, n)
+                        })
+                }))
+        })
         .child(div().class("viewer").child(island("gallery", island_props(ex), gallery_scene)))
         .child(div().class("grid room-legend").children(ex.galleries().map(|(i, room)| {
             div()

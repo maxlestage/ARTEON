@@ -173,7 +173,11 @@ fn color([r, g, b]: [u8; 3]) -> Color {
 fn image_url(ex: &Exhibition, art: &Artwork) -> String {
     #[cfg(target_arch = "wasm32")]
     {
-        format!("{}{}", crate::viewer::files_path(ex.slug), art.image_url())
+        if art.is_extra() {
+            art.image_url()
+        } else {
+            format!("{}{}", crate::viewer::files_path(ex.slug), art.image_url())
+        }
     }
     #[cfg(not(target_arch = "wasm32"))]
     {

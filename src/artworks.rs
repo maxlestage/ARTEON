@@ -185,6 +185,27 @@ impl Work {
     }
 }
 
+/// Garde un calcul fait une fois par exposition (le parcours, les obstacles…). L'exposition
+/// est reconnue à ses salles et à ses œuvres : celles du fichier, ou celles d'un musée
+/// agrandi d'une aile au moment de la visite ([`crate::aile`]).
+pub fn once_per_exhibition<T: Send + Sync + 'static>(
+    cache: &'static std::sync::Mutex<Vec<((usize, usize, usize), &'static [T])>>,
+    ex: &Exhibition,
+    make: impl FnOnce() -> Vec<T>,
+) -> &'static [T] {
+    let key = (ex.rooms.as_ptr() as usize, ex.artworks.as_ptr() as usize, ex.sculptures.as_ptr() as usize);
+    if let Ok(known) = cache.lock()
+        && let Some((_, value)) = known.iter().find(|(k, _)| *k == key)
+    {
+        return value;
+    }
+    let value: &'static [T] = Box::leak(make().into_boxed_slice());
+    if let Ok(mut known) = cache.lock() {
+        known.push((key, value));
+    }
+    value
+}
+
 impl Exhibition {
     /// Toutes les œuvres, toiles puis sculptures.
     pub fn works(&'static self) -> impl Iterator<Item = Work> {
@@ -475,7 +496,17 @@ impl Artwork {
 
     /// L'adresse de l'image, pour les pages.
     pub fn image_url(&self) -> String {
-        format!("/tableaux/{}", self.image)
+        if self.is_extra() {
+            self.image.to_owned()
+        } else {
+            format!("/tableaux/{}", self.image)
+        }
+    }
+
+    /// Une œuvre ajoutée au moment de la visite (l'aile des collections) : son image a une
+    /// adresse complète, elle n'est pas dans `public/tableaux/`.
+    pub fn is_extra(&self) -> bool {
+        self.image.starts_with("http") || self.image.starts_with('/')
     }
 }
 

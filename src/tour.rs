@@ -4,9 +4,8 @@
 //! la visite revient à l'entrée. Une fonction pure du temps : elle se teste sans
 //! navigateur.
 
-use std::sync::OnceLock;
 
-use crate::artworks::{EXHIBITIONS, Exhibition, Sculpture};
+use crate::artworks::{Exhibition, Sculpture};
 use crate::museum::{self, Passage};
 
 /// Ce que regarde le visiteur à un arrêt.
@@ -340,22 +339,10 @@ fn detour(ex: &Exhibition, list: &mut Vec<Stop>, room: usize, a: [f32; 3], b: [f
 
 /// Les bancs et les sculptures de tout le musée, vus de dessus : (x, z, rayon).
 fn all_round_obstacles(ex: &Exhibition) -> &'static [(f32, f32, f32)] {
-    static ALL: OnceLock<Vec<Vec<(f32, f32, f32)>>> = OnceLock::new();
-    let all = ALL.get_or_init(|| {
-        EXHIBITIONS
-            .iter()
-            .map(|e| {
-                (0..e.rooms.len())
-                    .flat_map(|r| round_obstacles(e, r))
-                    .collect()
-            })
-            .collect()
-    });
-    let index = EXHIBITIONS
-        .iter()
-        .position(|e| e.slug == ex.slug)
-        .unwrap_or(0);
-    &all[index]
+    static ALL: std::sync::Mutex<Vec<((usize, usize, usize), &'static [(f32, f32, f32)])>> = std::sync::Mutex::new(Vec::new());
+    crate::artworks::once_per_exhibition(&ALL, ex, || {
+        (0..ex.rooms.len()).flat_map(|r| round_obstacles(ex, r)).collect()
+    })
 }
 
 /// Écarte un point de trajet des bancs et des sculptures : s'il entre dans leur cercle de
@@ -381,13 +368,8 @@ fn steer_clear(ex: &Exhibition, mut p: [f32; 3]) -> [f32; 3] {
 
 /// Le parcours de `ex`, calculé une fois pour toutes les expositions.
 pub fn stops(ex: &Exhibition) -> &'static [Stop] {
-    static PLANS: OnceLock<Vec<Vec<Stop>>> = OnceLock::new();
-    let plans = PLANS.get_or_init(|| EXHIBITIONS.iter().map(plan).collect());
-    let index = EXHIBITIONS
-        .iter()
-        .position(|e| e.slug == ex.slug)
-        .unwrap_or(0);
-    &plans[index]
+    static PLANS: std::sync::Mutex<Vec<((usize, usize, usize), &'static [Stop])>> = std::sync::Mutex::new(Vec::new());
+    crate::artworks::once_per_exhibition(&PLANS, ex, || plan(ex))
 }
 
 /// La durée du trajet entre deux arrêts : selon la distance et l'angle à tourner.
@@ -556,6 +538,7 @@ pub fn time_of(ex: &Exhibition, focus: Focus) -> Option<f32> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::artworks::EXHIBITIONS;
     use crate::museum::obstacles;
 
     /// Un téléphone en portrait, un écran carré, un écran large.
