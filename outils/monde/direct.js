@@ -8,6 +8,7 @@
 // d'avant 1931).
 
 import { lien, plier } from "./commun.js";
+import { garder, jsonGarde, relire } from "./memoire.js";
 
 /** L'adresse du serveur ARTEON (Heroku). */
 export const API = "https://arteon-1ed4594ee106.herokuapp.com";
@@ -41,22 +42,31 @@ const lireJson = async (url, entetes = {}) => {
 };
 
 let sources;
-const chargerSources = () => (sources ??= fetch(lien("monde/sources.json")).then((r) => r.json()).then((d) => d.sources));
+const chargerSources = () => (sources ??= jsonGarde(lien("monde/sources.json")).then((d) => d.sources));
 
 let indexStatique;
-const chargerIndex = () => (indexStatique ??= fetch(lien("api/index.json")).then((r) => (r.ok ? r.json() : null)).catch(() => null));
+const chargerIndex = () => (indexStatique ??= jsonGarde(lien("api/index.json")).catch(() => null));
 
 /** Toutes les œuvres de l'artiste dans les musées : l'API publiée avec le site (calculée
  * chaque semaine par le moteur de l'API Paquets), sinon le serveur Paquets, sinon les musées
  * eux-mêmes, en direct. */
 export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
+  // 0. La mémoire du navigateur : ce catalogue a déjà été demandé aujourd'hui.
+  const memoire = `artiste:${cleNom(nom)}`;
+  const deja = await relire(memoire, 24 * 3600e3);
+  if (deja) return deja;
+  const resultat = await chercher(nom, cleNom, alias);
+  if (resultat.total) garder(memoire, resultat);
+  return resultat;
+}
+
+async function chercher(nom, cleNom, alias) {
   // 1. L'API statique, publiée avec le site : immédiate, sans serveur.
   try {
     const index = await chargerIndex();
     const fichier = index && (index.noms?.[nom] || index.cles?.[cleNom(nom)]);
     if (fichier) {
-      const r = await fetch(lien(`api/${fichier}.json`));
-      if (r.ok) return { ...(await r.json()), source: "statique" };
+      return { ...(await jsonGarde(lien(`api/${fichier}.json`), 24 * 3600e3)), source: "statique" };
     }
   } catch { /* pas encore publiée pour cet artiste */ }
   // 2. Le serveur Paquets (avec sa mémoire d'un jour) ; 12 secondes au plus.

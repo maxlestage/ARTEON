@@ -34,8 +34,20 @@ enum Api {
         return URLSession(configuration: configuration)
     }()
 
-    /// Les octets d'une adresse (une erreur si le serveur ne répond pas 200).
+    /// Les octets d'une adresse (une erreur si le serveur ne répond pas 200) : de la mémoire
+    /// de la visite (SQLite, effacée en quittant) si l'adresse a déjà été demandée.
     static func data(_ url: URL, headers: [String: String] = [:], timeout: TimeInterval = 20) async throws -> Data {
+        #if canImport(SQLite3)
+        if let kept = await SessionStore.shared.get(url.absoluteString) { return kept }
+        #endif
+        let data = try await network(url, headers: headers, timeout: timeout)
+        #if canImport(SQLite3)
+        await SessionStore.shared.put(url.absoluteString, data)
+        #endif
+        return data
+    }
+
+    private static func network(_ url: URL, headers: [String: String], timeout: TimeInterval) async throws -> Data {
         var request = URLRequest(url: url)
         request.timeoutInterval = timeout
         for (name, value) in headers { request.setValue(value, forHTTPHeaderField: name) }
