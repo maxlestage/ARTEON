@@ -303,9 +303,9 @@ struct LiveWorksSection: View {
                     Text("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.")
                         .foregroundStyle(.secondary)
                 } else {
-                    Text(result.source == "api"
-                         ? "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · par l'API ARTEON"
-                         : "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · directement chez les musées")
+                    Text(result.source == "musees"
+                         ? "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · directement chez les musées"
+                         : "Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · par l'API ARTEON")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)], spacing: 12) {

@@ -129,6 +129,35 @@ jobs:
           path: target/collections-cache
           key: collections-v1-pages-${{ github.run_id }}
 
+      # L'API publiée en fichiers : le catalogue complet de chaque artiste (expositions, puis
+      # les 3 000 artistes les plus riches des collections), calculé par le moteur de l'API
+      # Paquets (src/api.rs) en direct des musées, dans dist/api/. Le site et l'application
+      # la lisent d'abord : elle marche sans serveur. Les réponses de moins d'une semaine sont
+      # reprises du cache ; le reste se calcule au fil des constructions (25 minutes par fois).
+      - uses: actions/cache/restore@v4
+        if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        with:
+          path: target/api-cache
+          key: api-v1-${{ github.run_id }}
+          restore-keys: api-v1-
+
+      - name: L'API statique (les œuvres de chaque artiste)
+        if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        continue-on-error: true
+        timeout-minutes: 40
+        run: |
+          python3 outils/api_noms.py dist 3000 > target/noms.txt
+          wc -l target/noms.txt
+          ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt 25 4 2> target/api.log || true
+          tail -3 target/api.log
+          du -sh dist/api dist
+
+      - uses: actions/cache/save@v4
+        if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        with:
+          path: target/api-cache
+          key: api-v1-${{ github.run_id }}
+
       - name: Vérifier l'export
         run: |
           for f in index.html ajouter/index.html credits/index.html 404.html .nojekyll pkg/arteon.js pkg/arteon_bg.wasm \

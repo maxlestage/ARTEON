@@ -15,9 +15,15 @@ private func fixture() throws -> Catalogue {
 
 /// Le vrai catalogue, tel que l'API le sert (le site ARTEON), quand le réseau répond.
 private let live: Catalogue? = {
+    #if os(Linux)
+    // Le réseau de Foundation sous Linux plante parfois à la sortie des tests : ces
+    // vérifications tournent sur le Mac (xcodebuild test).
+    return nil
+    #else
     guard let data = try? Data(contentsOf: URL(string: "https://maxlestage.github.io/ARTEON/catalogue.json")!)
     else { return nil }
     return try? Catalogue.decode(data)
+    #endif
 }()
 
 @Test func lesDatesDesCartelsSeLisent() {
