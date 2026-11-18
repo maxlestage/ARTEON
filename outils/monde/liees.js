@@ -99,7 +99,7 @@ async function ouvrir() {
         if (!oeuvres.length) { section.hidden = true; fini(); return; }
         comptes.musees += oeuvres.length;
         annoncer();
-        derouler(section, oeuvres, (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · ${(musees[o.musee] || "").split(" (")[0]}` : musees[o.musee]].filter(Boolean).join(" · "))}</span></a>`, compte);
+        derouler(section, oeuvres, (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musees[o.musee] || "").split(" (")[0]}` : musees[o.musee]].filter(Boolean).join(" · "))}</span></a>`, compte);
       } catch {
         compte.textContent = t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not answer. Try again later.", "Los museos no respondieron. Inténtelo más tarde.");
       }

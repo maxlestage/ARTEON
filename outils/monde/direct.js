@@ -151,7 +151,7 @@ async function chezLesMusees(nom, cleNom, alias, seulement) {
       const valeurs = Object.fromEntries(Object.keys(source.champs).map((k) => [k, enTexte(champ(f, k))]));
       out.push({ id: `${source.cle}-${valeurs.id}`, titre: valeurs.titre, artiste, date, annee: anneeDe(champ(f, "annee")),
         technique: valeurs.technique, musee: source.cle, vignette: remplir(source.vignette, valeurs),
-        image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs), fournisseur: valeurs.fournisseur || null });
+        image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs), fournisseur: valeurs.fournisseur && !valeurs.fournisseur.startsWith("http") ? valeurs.fournisseur : null });
     }
     return out;
   }

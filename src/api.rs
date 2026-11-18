@@ -433,7 +433,7 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
                 "artiste": artiste, "date": date, "annee": annee_de(lire_champ("annee")),
                 "technique": valeurs.get("technique").cloned().unwrap_or_default(),
                 "musee": cle_musee, "vignette": modele("vignette"), "image": modele("grande"), "lien": modele("lien"),
-                "fournisseur": valeurs.get("fournisseur").filter(|f| !f.is_empty()),
+                "fournisseur": valeurs.get("fournisseur").filter(|f| !f.is_empty() && !f.starts_with("http")),
             }))
         })
         .collect();
