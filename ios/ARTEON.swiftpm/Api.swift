@@ -209,8 +209,10 @@ struct LiveCatalogue: Decodable, Sendable {
     var works: [LiveWork]
     /// `api` (le serveur Paquets) ou `musees` (l'application elle-même).
     var source: String = "api"
+    /// Les musées qui n'avaient pas répondu quand la réponse a été calculée.
+    var missing: [String]? = nil
 
-    enum CodingKeys: String, CodingKey { case name = "nom", total, works = "oeuvres" }
+    enum CodingKeys: String, CodingKey { case name = "nom", total, works = "oeuvres", missing = "manquants" }
 }
 
 enum LiveWorks {
@@ -228,6 +230,13 @@ enum LiveWorks {
                let data = try? await Api.site("api/\(file).json"),
                var answer = try? JSONDecoder().decode(LiveCatalogue.self, from: data) {
                 answer.source = "statique"
+                // Un musée n'avait pas répondu au calcul : l'application le lui demande, elle.
+                if let missing = answer.missing, !missing.isEmpty, let more = await direct(name, only: Set(missing)) {
+                    let known = Set(answer.works.map(\.id))
+                    answer.works = (answer.works + more.works.filter { !known.contains($0.id) })
+                        .sorted { ($0.year ?? .max) < ($1.year ?? .max) }
+                    answer.total = answer.works.count
+                }
                 return answer
             }
         }
@@ -329,8 +338,9 @@ enum LiveWorks {
         values.reduce(template) { $0.replacingOccurrences(of: "{\($1.key)}", with: $1.value) }
     }
 
-    static func direct(_ name: String) async -> LiveCatalogue? {
-        guard let sources = await sources() else { return nil }
+    static func direct(_ name: String, only: Set<String>? = nil) async -> LiveCatalogue? {
+        guard let all = await sources() else { return nil }
+        let sources = all.filter { source in only.map { $0.contains(source["cle"] as? String ?? "") } ?? true }
         let key = ArtistKey.of(name)
         let names = [name] + ArtistKey.aliases.filter { $0.value == key }.map(\.key)
         let lists = await withTaskGroup(of: [LiveWork].self) { group in
