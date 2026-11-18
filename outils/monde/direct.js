@@ -71,7 +71,7 @@ export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
     let fiches = [], ids = [];
     for (const q of noms) for (let page = 1; page <= pages; page++) {
       const url = source.recherche.replace("{q}", encodeURIComponent(q)).replace("{n}", parPage)
-        .replace("{page}", page).replace("{offset}", (page - 1) * parPage);
+        .replace("{page}", page).replace("{offset}", (page - 1) * parPage).replace("{debut}", (page - 1) * parPage + 1);
       let r;
       try { r = await lireJson(url, entetes); } catch { break; }
       if (source.ids) { ids.push(...(chemin(r, source.ids) || [])); break; }
@@ -96,7 +96,16 @@ export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
       if (Object.entries(source.egal || {}).some(([k, attendu]) => enTexte(champ(f, k)) !== enTexte(attendu))) continue;
       let artiste = enTexte(champ(f, "artiste"));
       if (source.artiste_jusqua) artiste = artiste.split(source.artiste_jusqua)[0];
-      if (!meme(artiste)) continue;
+      if (!meme(artiste)) {
+        // Les autres noms possibles (Europeana : les libellés de ses entités).
+        const autres = (champ(f, "artistes") || []).map((v) => (v && typeof v === "object" ? enTexte(v.def) : enTexte(v)));
+        // Seulement quand le créateur est un identifiant (une adresse) : un photographe nommé
+        // qui a photographié l'œuvre n'en est pas l'auteur.
+        const identifiant = artiste === "" || artiste.startsWith("http");
+        const trouve = identifiant && autres.find((a) => meme(a));
+        if (!trouve) continue;
+        artiste = trouve;
+      }
       let ne = anneeDe(champ(f, "ne")), mort = anneeDe(champ(f, "mort"));
       if (ne == null && mort == null) [ne, mort] = vie(champ(f, "vie"));
       const date = enTexte(champ(f, "date"));
@@ -104,7 +113,7 @@ export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
       const valeurs = Object.fromEntries(Object.keys(source.champs).map((k) => [k, enTexte(champ(f, k))]));
       out.push({ id: `${source.cle}-${valeurs.id}`, titre: valeurs.titre, artiste, date, annee: anneeDe(champ(f, "annee")),
         technique: valeurs.technique, musee: source.cle, vignette: remplir(source.vignette, valeurs),
-        image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs) });
+        image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs), fournisseur: valeurs.fournisseur || null });
     }
     return out;
   }

@@ -170,7 +170,7 @@ async function artiste(nom) {
     document.getElementById("catalogue-titre").textContent = titre(toutes.length + nouvelles.length);
     zone.innerHTML = nouvelles.length ? `<h2>Dans les musées, en direct : ${nombre(nouvelles.length)} œuvres de plus</h2>
       <p class="monde-note">Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées${r.source === "api" ? " · par l'API ARTEON" : ""}</p>
-      <div class="monde-grille">${nouvelles.map((o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`).join("")}</div>`
+      <div class="monde-grille">${nouvelles.map((o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur ? `${o.fournisseur} · Europeana` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`).join("")}</div>`
       : `<h2>Dans les musées, en direct</h2><p class="monde-note">Aucune autre œuvre libre de droits dans les collections ouvertes des musées.</p>`;
   } catch {
     zone.innerHTML = `<h2>Dans les musées, en direct</h2><p class="monde-note">Les musées n'ont pas répondu. Réessayer plus tard.</p>`;

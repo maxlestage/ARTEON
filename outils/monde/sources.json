@@ -1,5 +1,5 @@
 {
- "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
+ "_": "Les musées interrogés en direct (src/api.rs pour l'API Paquets, outils/monde/direct.js pour le site). Pour ajouter un musée : une entrée de plus, sans code. recherche : l'adresse, avec {q} (le nom, encodé), {n} (par_page), {page} (1, 2…) et {offset} (0, n, 2n…), {debut} (1, n+1…). liste : où sont les résultats ; ou ids + detail : une liste d'identifiants, puis une adresse par fiche (au plus max). champs : où lire chaque valeur dans une fiche (« a.0.b » : le champ b du premier élément de a). exige : les champs qui doivent être présents (et vrais). egal : des champs qui doivent avoir exactement cette valeur. vignette, grande, lien : des modèles, avec {champ}. artistes (champ) : une liste d'autres noms à essayer (textes, ou objets avec « def »). fournisseur (champ) : le musée qui conserve l'œuvre, pour un agrégateur. artiste_jusqua : couper le nom de l'artiste à ce texte. Règle commune : domaine public en Europe comme aux États-Unis (artiste mort en 1955 ou avant, œuvre d'avant 1931).",
  "sources": [
   {
    "cle": "chicago",
@@ -145,6 +145,35 @@
    "vignette": "https://1.api.artsmia.org/400/{id}.jpg",
    "grande": "https://1.api.artsmia.org/800/{id}.jpg",
    "lien": "https://collections.artsmia.org/art/{id}"
+  },
+  {
+   "cle": "europeana",
+   "nom": "Europeana (musées d'Europe)",
+   "_cle_api": "wskey=api2demo : la clé publique d'essai d'Europeana ; la remplacer par une clé gratuite (pro.europeana.eu/page/get-api).",
+   "recherche": "https://api.europeana.eu/record/v2/search.json?wskey=api2demo&query=who:%22{q}%22&qf=RIGHTS:*publicdomain*&qf=TYPE:IMAGE&media=true&rows={n}&start={debut}&profile=rich",
+   "par_page": 100,
+   "pages": 10,
+   "liste": "items",
+   "champs": {
+    "id": "id",
+    "titre": "title.0",
+    "artiste": "dcCreator.0",
+    "date": "year.0",
+    "annee": "year.0",
+    "apercu": "edmPreview.0",
+    "image": "edmIsShownBy.0",
+    "page": "guid",
+    "fournisseur": "dataProvider.0",
+    "public": "rights.0",
+    "artistes": "edmAgentLabel"
+   },
+   "exige": [
+    "apercu",
+    "public"
+   ],
+   "vignette": "{apercu}",
+   "grande": "{image}",
+   "lien": "{page}"
   }
  ]
 }
