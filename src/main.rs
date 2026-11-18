@@ -623,17 +623,6 @@ fn artwork_card(ex: &Exhibition, art: &Artwork, index: usize) -> Element {
         .child(more_link(ex, art.slug, &art.notice))
 }
 
-/// Un cube en CSS 3D, aux couleurs du musée, qui tourne dans l'en-tête.
-fn css_cube() -> Element {
-    div().class("cube-stage").attr("aria-hidden", "true").child(
-        div().class("cube").children(
-            ["front", "back", "right", "left", "top", "bottom"]
-                .into_iter()
-                .map(|face| span().class(format!("face {face}"))),
-        ),
-    )
-}
-
 /// Le titre, lettre par lettre, chaque lettre arrivant un peu après la précédente.
 /// Les mots ne se coupent pas : la ligne passe à la ligne entre deux mots.
 fn animated_title(text: &'static str) -> Element {
@@ -695,10 +684,15 @@ async fn home(_req: Request) -> Page {
         .map(|e| e.artworks.len() + e.sculptures.len())
         .sum();
     let rooms: usize = exhibitions().iter().map(|e| e.rooms.len()).sum();
-    let covers: Vec<(&Exhibition, &Artwork)> = exhibitions()
+    // Quatre œuvres en vitrine, prises tout au long de l'histoire de l'art (et non les trois
+    // premières expositions) : de l'Antiquité aux modernes.
+    let with_cover: Vec<(&Exhibition, &Artwork)> = exhibitions()
         .iter()
+        .filter(|e| !e.ephemeral)
         .filter_map(|e| e.cover().map(|a| (e, a)))
-        .take(3)
+        .collect();
+    let covers: Vec<(&Exhibition, &Artwork)> = (0..4.min(with_cover.len()))
+        .map(|i| with_cover[i * with_cover.len() / 4])
         .collect();
     let content = div()
         .child(
@@ -740,8 +734,7 @@ async fn home(_req: Request) -> Page {
                         .attr("aria-hidden", "true")
                         .children(covers.iter().enumerate().map(|(i, (ex, art))| {
                             div().class(format!("cover-frame c{i}")).child(picture(ex, art, false))
-                        }))
-                        .child(css_cube()),
+                        })),
                 ),
         )
         .child(
