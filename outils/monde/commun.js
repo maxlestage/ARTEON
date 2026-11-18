@@ -141,3 +141,11 @@ export function toutAfficher(conteneur, elements, carte, progres, { lot = 400, m
   addEventListener("scroll", reprendre, { passive: true });
   new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) reprendre(); }, { rootMargin: "2500px" }).observe(fin);
 }
+
+/** Une rubrique repliable (comme sur les pages des œuvres) : un titre en capitales, un « + »,
+ * et son contenu (`html`, déjà échappé) qui s'ouvre d'un toucher. */
+export const rubrique = (titre, html, ouverte = false) =>
+  `<details class="fold"${ouverte ? " open" : ""}><summary><span>${echapper(titre)}</span><span class="fold-sign" aria-hidden="true"></span></summary><div class="fold-body">${html}</div></details>`;
+
+/** Un renseignement du cartel : son nom, sa valeur dessous. */
+export const renseignement = (nom, valeur) => (valeur ? `<div class="fact"><dt>${echapper(nom)}</dt><dd>${echapper(valeur)}</dd></div>` : "");

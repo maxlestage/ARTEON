@@ -2,7 +2,7 @@
 // les collections du monde), la chronologie siècle par siècle, les thèmes, et le jeu
 // « Qui l'a fait ? » (le record est gardé dans le navigateur).
 
-import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, route, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
+import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, renseignement, route, rubrique, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { jsonGarde } from "./memoire.js";
 
@@ -187,8 +187,8 @@ async function artiste(nom) {
   const enDirect = t("Dans les musées, en direct", "Live from the museums", "En los museos, en directo");
   racine.innerHTML = `<a class="monde-retour" href="#/lettre/${encodeURIComponent(lettreDe(a.nom))}">← ${t("Les artistes", "Artists", "Los artistas")}</a>
     <h1 class="monde-titre">${echapper(a.nom)}</h1>
-    <p class="monde-artiste">${echapper([a.vie, a.style].filter(Boolean).join(" · "))}</p>
-    ${a.bio ? `<p class="monde-texte">${echapper(a.bio)}</p>` : ""}
+    ${a.vie ? `<dl class="facts">${renseignement(t("Sa vie en dates", "Life dates", "Fechas"), a.vie)}</dl>` : ""}
+    ${a.bio || a.style ? `<div class="folds">${a.bio ? rubrique(t("Sa vie", "Life", "Su vida"), `<p>${echapper(a.bio)}</p>`, true) : ""}${a.style ? rubrique(t("Sa manière", "Technique", "Su estilo"), `<p>${echapper(a.style)}</p>`) : ""}</div>` : ""}
     <section class="monde-section"><h2 id="catalogue-titre">${titre(toutes.length)}</h2>
       <p class="monde-note">${[
         a.oeuvres.length ? `${nombre(a.oeuvres.length)} ${t("dans les expositions du musée", "in the museum's exhibitions", "en las exposiciones del museo")}` : "",
