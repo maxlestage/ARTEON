@@ -24,10 +24,10 @@ impl WorkText {
     /// Les rubriques non vides, avec leur titre.
     pub fn sections(&self) -> Vec<(&'static str, &str)> {
         [
-            ("Ce que l'on voit", self.description.as_str()),
-            ("Ce qu'elle évoque", self.evocation.as_str()),
-            ("Son histoire", self.story.as_str()),
-            ("La manière", self.manner.as_str()),
+            (crate::langue::t("Ce que l'on voit", "What you see", "Lo que se ve"), self.description.as_str()),
+            (crate::langue::t("Ce qu'elle évoque", "What it evokes", "Lo que evoca"), self.evocation.as_str()),
+            (crate::langue::t("Son histoire", "Its history", "Su historia"), self.story.as_str()),
+            (crate::langue::t("La manière", "The technique", "La técnica"), self.manner.as_str()),
         ]
         .into_iter()
         .filter(|(_, t)| !t.is_empty())

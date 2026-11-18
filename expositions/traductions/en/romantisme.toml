@@ -1,0 +1,867 @@
+[exposition]
+ordre = 70
+nom_court = "Romanticism"
+mouvement = "Romanticism"
+cadre = "baroque"
+couleur = "#8e2a2a"
+titre = "Romanticism: Storm and Dream"
+artiste = "Füssli, Blake, Goya, Friedrich, Turner, Constable, Géricault, Delacroix"
+dates = "1781–1839"
+accroche = "Virtual exhibition · Musée du Louvre, Paris"
+introduction = """
+Between the late eighteenth century and the middle of the nineteenth, the Romantic painters \
+preferred emotion to rules, and dreams, wild nature and burning current events to the \
+models of antiquity. From Füssli’s Nightmare to Turner’s Temeraire, the visit brings together \
+ten works by eight artists from England, Spain, Germany and France: visions, wars, \
+shipwrecks, revolutions and infinite landscapes. The building is inspired by the great red \
+galleries of the Louvre, the Daru and Mollien rooms, very high-ceilinged, where the immense \
+formats of nineteenth-century French painting hang, and by a more intimate cabinet \
+reserved for landscape."""
+vitrine = "radeau-meduse.jpg"
+
+[musee]
+nom = "Musée du Louvre"
+ville = "Paris, France"
+construction = "museum opened in 1793"
+presentation = """
+A fortress built by Philip Augustus around 1200, then a palace of the kings of France \
+enlarged reign after reign, the Louvre became a museum during the Revolution: the Muséum \
+central des arts opened on 10 August 1793 in the Grande Galerie. Napoleon III completed the \
+palace by having Louis Visconti and then Hector Lefuel build, from 1852 to 1857, the wings \
+of the Nouveau Louvre, including the Denon wing, named after Vivant Denon, the museum’s \
+first director under Napoleon I. Visitors climb the Daru staircase, at the top of which \
+stands the Winged Victory of Samothrace. On the first floor, the red-walled Daru and Mollien \
+rooms, lit by high skylights, house the very large formats of nineteenth-century French \
+painting, from David’s Coronation of Napoleon to Géricault’s Raft of the Medusa and \
+Delacroix’s Liberty Leading the People. Since 1989, visitors have entered the museum \
+through Ieoh Ming Pei’s glass pyramid."""
+ici = """
+ARTEON’s building takes up the sequence of red rooms of the Denon wing. You enter from \
+the south onto the Daru landing, then into “The Denon Salon · Visions and Nightmares”, \
+square, with dusty-pink walls. From there, in enfilade, two great galleries twelve metres \
+high, painted the same red, open out: to the west “The Daru Room · Goya”, to the east \
+“The Mollien Room · History on the March”, where the Raft of the Medusa and Liberty \
+await. To the north of the salon, the small, low cabinet of landscapes, with pale walls, \
+brings together Friedrich, Turner and Constable."""
+
+[[salles]]
+nom = "The Daru Landing"
+couloir = true
+theme = "The landing of the Daru staircase, from which one enters the great painting galleries."
+murs = "#e9e2d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 8
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Denon Salon · Visions and Nightmares"
+theme = "1781–1805: in London, Füssli and Blake open painting to dreams, fear and visions."
+murs = "#d9a99a"
+x = 0
+z = -10
+largeur = 12
+profondeur = 12
+hauteur = 9
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "The Daru Room · Goya"
+theme = "1814–1823: war and madness, from the executions of 3 May to the Black Paintings."
+murs = "#c97a6c"
+x = -15
+z = -10
+largeur = 18
+profondeur = 12
+hauteur = 12
+
+[[salles]]
+nom = "The Mollien Room · History on the March"
+theme = "1819–1830: the wreck of the Medusa and the July Revolution, current events painted on a monumental scale."
+murs = "#c97a6c"
+x = 15
+z = -10
+largeur = 18
+profondeur = 12
+hauteur = 12
+
+[[salles]]
+nom = "The Cabinet of Landscapes"
+theme = "1808–1839: Friedrich’s mist and sea, Turner’s sunset, Constable’s countryside."
+murs = "#e6dfd1"
+x = 0
+z = -19
+largeur = 10
+profondeur = 6
+hauteur = 5.5
+
+[[oeuvres]]
+titre = "The Nightmare"
+artiste = "Johann Heinrich Füssli"
+annee = "1781"
+image = "cauchemar.jpg"
+technique = "Oil on canvas, 101.6 × 127 cm"
+collection = "Detroit Institute of Arts, Detroit"
+note = "A demon crouching on a sleeping woman, a horse’s head with empty eyes: the painting that made London shudder in 1782."
+description = """
+A young woman dressed in white is thrown back across a bed, her head and one arm hanging \
+into the void, her eyes closed, as if in a faint. Crouching on her chest is a small hairy \
+demon, an incubus with a grimacing face, who stares at the viewer. At left, between the \
+dark red curtains of the alcove, a horse’s head with blank white eyes looms out. In the \
+foreground, a small round table holds a mirror, a flask and a pot. Everything else is \
+plunged into shadow. Light falls on the sleeper’s body, on the silk of her chemise and on \
+the yellow and red drapery sliding from the bed to the floor, and brings out the diagonal \
+of her abandoned body."""
+evocation = """
+The painting tells no story drawn from the Bible or mythology: it shows a state, the bad \
+dream, and the anguish of a sleeper who cannot wake. The demon sitting on the chest takes \
+up an ancient belief in a spirit that comes to crush sleepers; the horse’s head plays on \
+the English word nightmare, whose second half evokes the mare. Some have also seen an \
+erotically charged scene, with this offered body and this nocturnal intruder. At the end \
+of the Age of Enlightenment, which wanted to illuminate everything by reason, Füssli \
+opened painting to the world of dreams, fear and the unconscious, which the Romantics and \
+then the Surrealists would explore."""
+histoire = """
+Füssli, a native of Zurich settled in London, exhibited the canvas at the Royal Academy in \
+the spring of 1782. Its success was immediate and made his reputation. The publisher John \
+Raphael Smith at once had Thomas Burke engrave a print of it, in 1783, which sold widely \
+and earned far more than the painting itself. The painter would produce several other \
+versions, one of which, c. 1790–91, is in the Goethe-Haus in Frankfurt. The subject was \
+promptly parodied by English political caricaturists, who replaced the sleeper with the \
+statesmen of the day. On the back of the Detroit canvas is an unfinished portrait of a \
+young woman, in whom it has been proposed to recognize Anna Landolt, niece of his friend \
+Lavater, with whom he was in love. The painting entered the Detroit Institute of Arts in \
+1955."""
+facture = """
+Füssli composes as in the theatre: a narrow space closed off by curtains, footlight \
+illumination cutting the figures out against an almost black ground. The woman’s body \
+traces a long curve across the whole canvas, in counterpoint to the compact mass of the \
+demon. The drawing of the bodies, with their stretched limbs and forced poses, comes from \
+his study of Michelangelo in Rome, where he spent eight years. The paint, fairly fluid, \
+plays on a few chords: the pearly white of the chemise, the red of the hangings, the ochre \
+of the drapery."""
+details = [
+  "The eyes of the horse’s head, round and white, with no pupil at all.",
+  "The demon’s gaze, turned not toward the sleeper but toward us.",
+  "The young woman’s arm hanging to the floor, the hand open.",
+  "On the table, the little mirror and the flasks, ordinary toilet objects.",
+]
+themes = ["dream", "night", "demon", "anguish", "fantastic"]
+anecdote = """
+It is said that Sigmund Freud had hung an engraving of The Nightmare in his Vienna \
+apartment at 19 Berggasse. The painting, which shows the dream as an inner drama, has \
+often been linked to The Interpretation of Dreams."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.27
+
+[[oeuvres]]
+titre = "Newton"
+artiste = "William Blake"
+annee = "1795–c. 1805"
+image = "newton.jpg"
+technique = "Colour print, ink and watercolour on paper, 46 × 60 cm"
+collection = "Tate Britain, London"
+note = "The scientist, naked on the sea floor, sees only the figure he traces with his compass: for Blake, reason is a prison."
+description = """
+A naked, muscular young man with curly hair sits on a rock covered with lichens and \
+corals, at the bottom of what looks like a dark sea. Leaning forward, he bends his back \
+until it almost touches his knees. With his right hand he sets the points of a compass on \
+a scroll of paper unrolled on the ground, where a triangle and an arc of a circle can be \
+made out; with his left hand he holds the other end of the scroll. A white drapery hangs \
+from his shoulder. His very pure profile is turned entirely toward the drawing. Behind him, \
+the rock forms a teeming mass of colours, reds, ochres and greens; in front, the blue-black \
+ground is empty."""
+evocation = """
+For Blake, Isaac Newton embodies the reason that measures the world and shuts it up in \
+laws. His hero has the beauty of a Greek athlete, but he is bent over, his eyes fixed on \
+the paper: he sees neither the prodigious rock behind him nor the immensity around him. \
+The poet-painter sets this single, purely calculating vision against the imagination, \
+which alone gives access to the spirit. The compass recalls that of the creator god, \
+Urizen, in his prophetic books. It is often read as a critique of the Enlightenment and \
+the science of his day, but the figure remains so beautiful that some have also seen an \
+ambivalent admiration for the scientist’s genius."""
+histoire = """
+The image belongs to the series of twelve Large Colour Prints that Blake conceived in \
+1795, in Lambeth, with subjects taken from the Bible, Shakespeare, Milton and his own \
+mythology. Each subject was printed in only a few copies, retouched one by one. This \
+impression was pulled and reworked later, around 1805, hence its double date. It is often \
+compared with Nebuchadnezzar, the king turned beast: two figures of diminished man, one by \
+reason alone, the other by madness. Blake sold these sheets to his chief patron, Thomas \
+Butts. Long kept out of public view, the print entered the Tate in 1939, given by the \
+collector W. Graham Robertson, a great champion of the artist."""
+facture = """
+Blake invents here a process close to monotype. He first paints the motif in thick colours \
+on a rigid support, then presses a sheet of paper against it: as it peels away, the \
+colour leaves a grainy, marbled texture, very visible in the rock. He then reworks each \
+impression in ink and watercolour, sharpening the contours and the modelling of the body. \
+The firm, linear drawing comes from his training as an engraver and his admiration for \
+Michelangelo."""
+details = [
+  "The marbled texture of the rock, obtained by peeling the paper off the paint.",
+  "The points of the compass resting on the scroll, at his fingertips.",
+  "The scientist’s toes spilling over onto the paper.",
+  "Beneath the rock, near the leg, a pale shape suggesting a sea creature.",
+]
+themes = ["science", "reason", "imagination", "nude", "vision"]
+anecdote = """
+In front of the British Library in London, a large bronze statue by Eduardo Paolozzi, \
+Newton, after Blake (1995), takes up the pose of this print: the scientist bent over, \
+compass in hand, measuring the ground."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Third of May 1808"
+artiste = "Francisco de Goya"
+annee = "1814"
+image = "tres-de-mayo.jpg"
+technique = "Oil on canvas, 268 × 347 cm"
+collection = "Museo del Prado, Madrid"
+note = "The night after the Madrid uprising, patriots are shot by Napoleon’s soldiers: the first great modern image of war."
+description = """
+The scene takes place at night, at the foot of a bare hill, on the outskirts of Madrid, \
+whose steeple and rooftops can be glimpsed. At right, a row of French soldiers, seen from \
+behind, their faces hidden, shoulder their rifles. At left, facing them, a group of \
+Madrileños awaits death. At the centre, a man in a white shirt and yellow trousers, \
+kneeling, spreads his arms in the form of a cross, his eyes bulging. Around him, a monk \
+prays with clasped hands, others cover their faces. On the ground, bloodied bodies already \
+lie; behind, a line of condemned men climbs toward the place of execution. A large \
+cubic lantern set on the ground lights the victim harshly."""
+evocation = """
+Goya overturns history painting: there is no victorious hero and no general, only \
+anonymous people facing a killing machine. The soldiers, faceless, form a single \
+mechanical block; the victims each have their own fear. The man in white, arms \
+outstretched, recalls Christ on the cross, and a mark on his hand, evoking the stigmata, \
+has been noted. The lantern, which should illuminate, here serves to take aim. The \
+painting, made after Napoleon’s defeat in Spain, pays homage to the people of Madrid, but \
+above all it speaks of the horror of war, without glory or consolation. Manet and then \
+Picasso, with his Massacre in Korea, would remember it."""
+histoire = """
+On 2 May 1808, the people of Madrid rose up against the French troops occupying the city; \
+during the night and the next day, Murat had many prisoners shot, notably on the hill of \
+Príncipe Pío. Six years later, in February 1814, when the French had left Spain, Goya \
+proposed to the Regency government to perpetuate the heroic episodes of the uprising with \
+his brush. He painted two large canvases, the Second of May, the charge against the \
+Mamelukes, and this Third of May. King Ferdinand VII, restored to the throne, hardly \
+showcased them: they remained in storage for a long time and appeared in the Prado \
+catalogue only in 1872. During the Civil War, they were evacuated with the museum’s \
+collections."""
+facture = """
+The composition sets two masses against each other: at right, the soldiers on a diagonal, \
+lined up like a single weapon; at left, a disordered group of bodies and gestures. Between \
+them, a narrow gap, which the rifle barrels almost cross. All the light comes from the \
+lantern, set on the ground, and is concentrated on the white shirt. Goya paints fast, in \
+broad strokes of the brush, leaving blurred contours and barely sketched faces. The range \
+is dark, brown and black, relieved by the white, the yellow and the red of the blood."""
+details = [
+  "The lantern set on the ground, the scene’s only source of light.",
+  "The open palms of the man in white, like those of a crucified figure.",
+  "The tonsured monk praying, kneeling beside him.",
+  "In the background, the steeple and houses of Madrid, extinguished in the night.",
+  "The blood running on the ground, in the left foreground.",
+]
+themes = ["war", "execution", "night", "people", "history"]
+anecdote = """
+Kneeling, the man in the white shirt already looks as tall as the standing soldiers: if \
+he stood up, he would tower over them all. Goya enlarged the victim, no doubt so that he \
+would dominate the scene."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 3.47
+
+[[oeuvres]]
+titre = "Saturn Devouring His Son"
+artiste = "Francisco de Goya"
+annee = "1820–1823"
+image = "saturne.jpg"
+technique = "Mural painting in oil transferred to canvas, 143.5 × 81.4 cm"
+collection = "Museo del Prado, Madrid"
+note = "One of the Black Paintings that Goya made for himself alone on the walls of his house near Madrid."
+description = """
+Against an entirely black ground looms a giant with dishevelled grey hair, crouching, his \
+knees bent. His eyes are wide, a frightening white, and his gaping mouth bites into a \
+human body. He grips in his two enormous fists this naked body, whose head has already \
+disappeared; bright red blood runs over the white flesh. The victim’s body, with an \
+adult’s hips and legs, hangs downward. The rest of the god’s figure, his shoulders, his \
+thighs, his pallid knee at lower right, is lost in the darkness. There is no setting, no \
+place, no floor: only this apparition that seems to emerge from the night."""
+evocation = """
+The ancient myth tells that Saturn, the Greek Cronus, devoured his children so that none \
+of them would take his throne. Goya turns it into a scene of madness and dread: the god \
+seems himself terrified by his act, as if he could not stop. Since Saturn was also the \
+god of time, some have seen time consuming everything; others read an image of Spain \
+devouring its own children in war and repression, or of the absolute power of Ferdinand \
+VII. Saturn was, finally, the planet of melancholy: painted by an old, deaf and ailing \
+man, the scene has been linked to his private anxieties. Goya left no explanation."""
+histoire = """
+In 1819, Goya, who was over seventy and had long been deaf, bought a country house on the \
+banks of the Manzanares, near Madrid, known as the Quinta del Sordo, the House of the Deaf \
+Man. He covered the walls of two rooms directly with fourteen large oil paintings, with no \
+commission and no audience, which are now called the Black Paintings. Saturn was on the \
+ground floor, in the dining room. The current titles are not his. In 1873, Baron Émile \
+d’Erlanger bought the house; the paintings were detached from the walls and transferred \
+to canvas, shown at the Exposition Universelle in Paris in 1878, then given to the Prado \
+in 1881."""
+facture = """
+Goya paints in oil directly on the wall plaster, with a palette reduced to black, ochres, \
+greys and white, relieved only by the red of the blood. The touch is rapid, broad, \
+sometimes brutal: he probably worked with the brush and perhaps with the knife, leaving \
+the paint substance visible. The figure, framed too large for the space, almost touches \
+the edges and seems to want to break out. He knew Rubens’s Saturn, kept in the royal \
+collections, but he strips it of all elegance."""
+details = [
+  "The round white eyes, in which one reads as much fear as rage.",
+  "The giant’s fingers digging into the victim’s back.",
+  "The red of the blood, the only bright colour in the whole painting.",
+  "The pale knee at lower right, emerging from the shadow.",
+]
+themes = ["mythology", "madness", "time", "violence", "black paintings"]
+anecdote = """
+A photograph taken by Jean Laurent around 1874, before the transfer to canvas, shows a \
+slightly different state of the painting: certain parts of the figure, now lost in the \
+shadow, are more legible in it. The transfer damaged and altered the work."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 0.85
+
+[[oeuvres]]
+titre = "The Raft of the Medusa"
+artiste = "Théodore Géricault"
+annee = "1818–1819"
+image = "radeau-meduse.jpg"
+technique = "Oil on canvas, 491 × 716 cm"
+collection = "Musée du Louvre, Paris"
+note = "Thirteen days adrift after the wreck of a French frigate: a news story turned history painting, which caused a scandal at the Salon of 1819."
+description = """
+On a makeshift raft tossed by a heaving sea, some twenty men are crowded together, dead, \
+dying or surviving. In the foreground, corpses slip into the water; at left, an old man \
+draped in red holds a young man’s body on his knees and stares into space. Behind, a \
+swollen sail, a mast held by ropes. The bodies rise toward the right in a pyramid of \
+outstretched arms, up to a Black man perched on a barrel, who waves a cloth toward the \
+horizon. Out there, tiny, the silhouette of a ship can be made out. The sky is laden with \
+dark clouds, torn by a yellow glow, and an enormous wave rises at left."""
+evocation = """
+Géricault turns a recent news story into a tragic epic, on the scale of history painting. \
+The painting speaks of despair and hope intermingled: from death, below, to the call for \
+help, above, the whole canvas strains toward this almost invisible ship. At the chosen \
+moment, the castaways do not yet know whether they will be seen. For the public of 1819, \
+the work was also an accusation: the wreck was blamed on a captain appointed through \
+political favour under the Restoration. By placing a Black man at the top of the pyramid, \
+at a time when the abolition of the slave trade was being debated, Géricault took a \
+stand that has often been stressed. The raft has become an image of humanity left to \
+itself."""
+histoire = """
+In July 1816, the frigate Méduse, carrying settlers to Senegal, ran aground off \
+Mauritania. For lack of boats, about one hundred and fifty people were abandoned on a \
+raft; rescued thirteen days later by the brig Argus, only about fifteen survived. The \
+account by two survivors, the surgeon Savigny and the engineer Corréard, published in \
+1817, revealed the killings and the cannibalism. Géricault met them, had a model of the \
+raft built, and studied severed limbs and dying patients at the Beaujon hospital. \
+Exhibited at the Salon of 1819 under the title Scene of Shipwreck, the painting divided \
+the critics. It was then shown in London in 1820, with great success. After the painter’s \
+death, in 1824, it entered the Louvre."""
+facture = """
+The composition rests on two pyramids: that of the sail and mast, at left, and that of \
+the bodies, culminating with the man holding the cloth, at right. The crossing diagonals \
+give the movement of the swell. Géricault models the bodies like sculptures, with a hard \
+light coming from the left, in the spirit of Michelangelo and Caravaggio. The palette is \
+dark, made of browns, ochres and greens. He used bitumen, a pigment that darkens and \
+cracks over time: the painting has darkened considerably."""
+details = [
+  "On the horizon, at right, the tiny silhouette of the brig Argus.",
+  "The old man in the red cloak keeping watch over a young man’s body.",
+  "The Black man at the top, waving a red and white cloth.",
+  "The bodies of the dead, below, already slipping into the water.",
+  "The enormous wave rising at left, behind the sail.",
+]
+themes = ["shipwreck", "death", "hope", "current events", "sea"]
+anecdote = """
+The young Eugène Delacroix, a friend of Géricault, posed for one of the castaways: he is \
+traditionally recognized in the body stretched face down on the raft, in the foreground, \
+his arm outstretched. He was overwhelmed by the unfinished painting."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Liberty Leading the People"
+artiste = "Eugène Delacroix"
+annee = "1830"
+image = "liberte.jpg"
+technique = "Oil on canvas, 260 × 325 cm"
+collection = "Musée du Louvre, Paris"
+note = "On 28 July 1830, on a Parisian barricade: an allegory in flesh and blood leads the insurgents against Charles X."
+description = """
+A woman in a Phrygian cap, her breast bare, climbs a barricade of paving stones and \
+beams, brandishing the tricolour flag in one hand and a bayonet-fitted rifle in the \
+other. She turns toward those following her. At left, a man in a frock coat and top hat \
+holds a shotgun; beside him, a workman armed with a sabre. At right, a street urchin in a \
+beret brandishes two pistols, shouting. At the foot of the barricade, a wounded man \
+raises himself toward her; in the foreground lie corpses, a half-naked insurgent and \
+soldiers in uniform. In the background, in the smoke, the towers of Notre-Dame can be \
+glimpsed."""
+evocation = """
+Delacroix blends allegory and reportage. Liberty is not an ancient statue but a woman of \
+the people, vigorous, barefoot, marching into battle; around her, insurgents of all \
+conditions, bourgeois, workers, a child, embody the union of the people during the Three \
+Glorious Days. The tricolour flag, banned under the Restoration, regains its place at the \
+summit of the composition. The dead in the foreground recall the price of victory. The \
+painting has become the very image of the Republic and of revolt: the boy with the \
+pistols has been seen as a model for Gavroche in Les Misérables, and the figure of \
+Liberty has inspired countless posters."""
+histoire = """
+On 27, 28 and 29 July 1830, Paris rose up against the ordinances of Charles X, who had \
+to abdicate. Delacroix, who had not fought, began the canvas in the autumn; he wrote to \
+his brother that if he had not conquered for the fatherland, he would at least paint for \
+it. The painting was exhibited at the Salon of 1831 and bought by the State under \
+Louis-Philippe. But the image, judged too revolutionary, was soon taken off the walls and \
+returned to the artist. It reappeared at the Exposition Universelle of 1855 and entered \
+the Louvre in 1874. A restoration completed in 2024 removed the yellowed varnishes that \
+had darkened it and restored the colours’ original brilliance."""
+facture = """
+The composition is a pyramid, whose base is made of the stretched-out bodies and whose \
+apex is the flag. Liberty seems to step out of the painting and walk toward the viewer. \
+Delacroix concentrates the light on Liberty and on the flag, whose blue, white and red \
+are echoed in the clothing of the wounded man and of several figures. The touch is lively \
+and visible, the smoke broadly brushed. He remembers Géricault’s Raft of the Medusa, his \
+elder, for the composition and for the bodies of the foreground."""
+details = [
+  "The signature and date, Eug. Delacroix 1830, in red on a beam at right.",
+  "The towers of Notre-Dame in the smoke, to the right of Liberty.",
+  "The wounded man in a blue smock, red sash and white shirt, in the colours of the flag.",
+  "The boy with the two pistols, shouting as he advances.",
+  "The dead soldier at right, in uniform, his shako fallen beside him.",
+]
+themes = ["revolution", "liberty", "allegory", "Paris", "flag"]
+anecdote = """
+From 1979, the hundred-franc note reproduced Liberty Leading the People, together with \
+Delacroix’s portrait: for nearly twenty years, the French carried the painting in their \
+pockets."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 3.25
+
+[[oeuvres]]
+titre = "Wanderer above the Sea of Fog"
+artiste = "Caspar David Friedrich"
+annee = "c. 1817"
+image = "voyageur.jpg"
+technique = "Oil on canvas, 94.8 × 74.8 cm"
+collection = "Hamburger Kunsthalle, Hamburg"
+note = "A man seen from behind, on the summit of a rock, facing a landscape drowned in mist: the very image of German Romanticism."
+description = """
+At the centre of the painting, a man stands on a point of dark rock, seen from behind, \
+facing the landscape. He wears a dark green frock coat and leans on a cane; the wind \
+lifts his red hair. Before him and below him stretches a sea of fog from which rocky \
+crests, pine-clad summits and, in the distance, a cone-shaped mountain emerge. At right, \
+a tall rock formation stands out against the horizon. Farther still, bluish mountain \
+ranges are lost in a cloudy sky, pale and milky. The traveller’s silhouette occupies \
+exactly the vertical axis of the canvas, and his head lies at the point where the lines \
+of the mountains cross."""
+evocation = """
+Friedrich places the viewer just behind the traveller: we see what he sees, without \
+knowing his face or his thoughts. This figure seen from behind, his favourite, invites \
+contemplation. The landscape, partly hidden by the clouds, suggests the infinite, the \
+grandeur of nature before man, what the philosophers called the sublime. It has been read \
+as a meditation on solitude, on the place of the individual in the world, or as a \
+religious experience. The costume, a German-style frock coat, has led some to suppose a \
+tribute to a fighter of the wars of liberation against Napoleon. The painting has become \
+the emblem of Romanticism, to the point of illustrating countless book covers."""
+histoire = """
+The exact date of the painting is unknown; it is placed around 1817, when Friedrich, \
+settled in Dresden, was recognized but still debated. The rocks and summits come from the \
+Elbe Sandstone massif, Saxon Switzerland, which the painter roamed on foot, drawing. He \
+did not paint from the motif: in the studio, from these sketches, he recomposed a \
+landscape that does not exist as such. Forgotten, like its author, for decades after his \
+death, the painting became famous only in the twentieth century, with the rediscovery of \
+Friedrich. The Hamburger Kunsthalle acquired it in 1970; it is today its best-known \
+work."""
+facture = """
+Friedrich builds the painting with rigour: the figure is placed on the central axis, the \
+slopes of the mountains converge on his head. The contrast is sharp between the dark \
+rock, crisp and detailed, of the foreground, and the pale, blurred, almost immaterial \
+distance, which gives the impression of depth. The paint is smooth, with no visible \
+brushwork, laid on in thin layers. The cold tones, greys, blues, whites, convey the \
+dampness of the air and the diffuse light of the fog."""
+details = [
+  "The traveller’s hair, lifted by the wind.",
+  "The cane on which he leans, barely visible at right.",
+  "The small pines on the crests emerging from the mist, at right.",
+  "The cone-shaped mountain, at left, almost erased by the fog.",
+]
+themes = ["landscape", "mountain", "fog", "solitude", "sublime"]
+anecdote = """
+The figure seen from behind is so typical of Friedrich that German historians gave it a \
+name, the Rückenfigur, the figure from behind. The painter uses it in many paintings to \
+draw the viewer into the landscape."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "The Monk by the Sea"
+artiste = "Caspar David Friedrich"
+annee = "1808–1810"
+image = "moine-mer.jpg"
+technique = "Oil on canvas, 110 × 171.5 cm"
+collection = "Alte Nationalgalerie, Berlin"
+note = "A tiny silhouette before a black sea and an immense sky: the most radical landscape of its time."
+description = """
+The canvas is almost empty. At the bottom, a band of pale, sandy dune undulates from left \
+to right. Above, a thin band of very dark, almost black sea, dotted with a few crests of \
+foam and white gulls. All the rest, more than three quarters of the painting, is taken up \
+by the sky: below, a heavy sheet of grey-blue mist rising from the sea; higher up, a few \
+lit white clouds, then a blue that lightens toward the top. On the dune, left of centre, \
+stands a small figure dressed in dark clothes, a monk seen from behind, gazing at the \
+sea. There is no boat, no tree, no distant shore."""
+evocation = """
+Nothing guides the eye: no foreground, no path, no object by which to measure distance. \
+The viewer finds himself, like the monk, facing the void. It has been seen as man alone \
+before the infinite, before God or before death, and often as a spiritual self-portrait of \
+the painter. The writer Heinrich von Kleist described the feeling of standing before this \
+painting as if one’s eyelids had been cut away. For many historians, it is one of the \
+first works in which painting abandons classical composition; it has been compared, much \
+later, with the great colour fields of Mark Rothko."""
+histoire = """
+Friedrich painted the canvas between 1808 and 1810 in Dresden, from memories of the \
+island of Rügen, on the Baltic, which he had travelled several times. He exhibited it at \
+the Berlin Academy in autumn 1810, with its pendant, Abbey in an Oak Forest. The public \
+was baffled, but King Frederick William III of Prussia bought both canvases, at the \
+request of his fifteen-year-old son, the crown prince. That same year, Friedrich was \
+elected a member of the Berlin Academy. The two paintings have remained together in the \
+Prussian collections, today in the Alte Nationalgalerie, where they were restored from \
+2013 to 2016."""
+facture = """
+The composition, made entirely of horizontal bands, is of an unheard-of simplicity for \
+the period. Friedrich removed, as he worked, whatever might have reassured the eye: \
+scientific examination has revealed sailing ships on the sea, which he later painted \
+out. The paint is applied in thin, numerous, smoothed layers, with no trace of the brush, \
+which produces these very soft passages from grey to blue. The tiny figure alone gives \
+the scale of the immensity."""
+details = [
+  "The monk, tiny, the only vertical in the whole painting.",
+  "The gulls, mere white dots above the sea.",
+  "The crests of foam on the black sea.",
+  "The lit white clouds in the middle of the sky, the only luminous note.",
+]
+themes = ["sea", "solitude", "infinity", "sky", "meditation"]
+anecdote = """
+Scientific imaging has shown that Friedrich had first painted two sailing ships on the \
+sea. He covered them over, preferring to leave the monk absolutely alone before the \
+horizon."""
+salle = 5
+mur = "ouest"
+place = 1
+largeur = 1.7
+
+[[oeuvres]]
+titre = "The Fighting Temeraire Tugged to Her Last Berth"
+artiste = "Joseph Mallord William Turner"
+annee = "1839"
+image = "temeraire.jpg"
+technique = "Oil on canvas, 90.7 × 121.6 cm"
+collection = "National Gallery, London"
+note = "A hero of Trafalgar, towed by a small steam tug toward the breaker’s yard, beneath a blazing sunset."
+description = """
+On the Thames, at sunset, a great three-masted warship, ghostly white, glides over the \
+calm water. She is pulled by a small steam tug, dark and squat, whose tall funnel belches \
+russet smoke. At right, the sun sets in an explosion of reds, oranges and yellows that \
+sets the clouds ablaze and is reflected in the river. A black buoy floats in the \
+foreground at right. At left, the sky is colder, bluish, and a thin crescent moon can be \
+made out. In the distance, other sailing ships and the low shore, barely visible. The \
+great ship and her tug are reflected together in the still water."""
+evocation = """
+The painting sets two worlds against each other: the old sailing ship, pale as a spectre, \
+and the steam tug, black and busy, which leads her to her end. One reads in it the end of \
+a heroic era, that of Nelson’s navy, and the arrival of the industrial age. The setting \
+sun on one side, and the rising moon on the other, redouble the idea of a day coming to \
+a close. Turner does not take sides in any simple way: the machine is ugly, but powerful \
+and alive. Nostalgia, glory and death mingle in this twilight. For many Britons, it is an \
+image of national greatness and of its decline."""
+histoire = """
+HMS Temeraire, a ship of 98 guns, distinguished herself at the Battle of Trafalgar in \
+1805, just behind Nelson’s Victory. Decommissioned, she was sold in 1838 and towed from \
+Sheerness to Rotherhithe, on the Thames, to be broken up. Turner drew from this the \
+painting, exhibited at the Royal Academy in 1839 under a long title, The Fighting \
+Temeraire, tugged to her last berth to be broken up. It was acclaimed by the critics. The \
+painter refused to sell it and kept it in his studio; at his death, he bequeathed it to \
+the nation with hundreds of other works. It entered the National Gallery as part of the \
+Turner Bequest."""
+facture = """
+Turner took liberties with reality: the ship had been stripped of her masts before her \
+last voyage, and he gives them back to her for the beauty of the image. The ship is \
+painted in thin, transparent, almost translucent layers, while the sunset sky is worked \
+in thick paste, almost in relief. The composition plays on the opposition of cold colours, \
+at left, and warm ones, at right. The low horizon line leaves the sky most of the canvas."""
+details = [
+  "The thin crescent moon in the bluish sky, at upper left.",
+  "The tug’s funnel and its orange smoke.",
+  "The black buoy floating in the foreground at right.",
+  "The small white flag fluttering above the smoke.",
+  "The thick paste of the setting sun, almost in relief.",
+]
+themes = ["sea", "twilight", "industry", "nostalgia", "ship"]
+anecdote = """
+In 2005, a BBC poll named this painting the most beloved of the British. Since 2020, it \
+has appeared, with a self-portrait of Turner, on the Bank of England’s twenty-pound \
+note."""
+salle = 5
+mur = "est"
+place = 1
+largeur = 1.22
+
+[[oeuvres]]
+titre = "The Hay Wain"
+artiste = "John Constable"
+annee = "1821"
+image = "charrette-foin.jpg"
+technique = "Oil on canvas, 130.2 × 185.4 cm"
+collection = "National Gallery, London"
+note = "A wagon crosses a ford on the Stour, in the Suffolk of his childhood: the English countryside, painted as never before."
+description = """
+An empty wooden wagon, drawn by horses, slowly crosses the ford of a shallow river. Two \
+men drive it. At left, a small house of brick and timber with a red roof, surrounded by \
+trees, is reflected in the water; a woman draws water at the bank. In the foreground, on \
+the path, a small black and white dog watches the wagon. At the centre, tall trees with \
+dense foliage; at right, a sunlit meadow stretches to a distant edge where haymakers at \
+work can be made out. A fisherman hides in the reeds at right. A great summer sky, \
+crossed by white and grey clouds, covers the whole upper half."""
+evocation = """
+Constable paints the countryside of his childhood, around his father’s mill, with no hero \
+and no ancient ruin: an ordinary scene of rural labour, on a summer day. This choice, in \
+1821, is almost a manifesto: the simplest landscape deserves a large format, formerly \
+reserved for history. One feels the painter’s deep attachment to these places, which he \
+said were the origin of his vocation. In an England that was industrializing, the \
+painting gradually took on the value of a symbol: that of an ideal countryside, peaceful \
+and unchanging, which has become one of the country’s most popular images."""
+histoire = """
+The site is real: the Stour, near Flatford Mill, in Suffolk, which Constable’s father \
+owned; the house at left belonged to a neighbouring farmer, Willy Lott. The painter, \
+settled in London, worked from studies he had made there. He first made a full-size oil \
+sketch, now in the Victoria and Albert Museum. The painting was exhibited at the Royal \
+Academy in 1821 under the title Landscape: Noon, without finding a buyer. In 1824, the \
+dealer John Arrowsmith bought it and exhibited it at the Paris Salon, where it received a \
+gold medal from King Charles X and impressed the young French painters. It was given to \
+the National Gallery in 1886."""
+facture = """
+Constable observes nature with an almost scientific precision, in particular the clouds, \
+which he was studying systematically at that time. His touch is fragmented, lively, with \
+small flecks of pure white laid on the leaves and the water to render the reflections of \
+light, which critics called Constable’s snow. The greens, varied, are those of nature and \
+not the conventional browns of studio landscapes. These daring choices would impress \
+Delacroix and then the Barbizon school."""
+details = [
+  "The little dog on the bank, watching the wagon.",
+  "The woman drawing water in front of Willy Lott’s house.",
+  "The fisherman half hidden in the reeds, at right.",
+  "The touches of pure white on the leaves and on the water.",
+]
+themes = ["countryside", "river", "sky", "labour", "summer"]
+anecdote = """
+Willy Lott’s cottage still exists, at Flatford, on the banks of the Stour. The site, \
+owned by the National Trust, attracts visitors every year who come to find the painting’s \
+viewpoint, almost unchanged two centuries later."""
+salle = 5
+mur = "sud"
+place = 1
+largeur = 1.85
+
+[[artistes]]
+nom = "Johann Heinrich Füssli"
+vie = "Zurich, 7 February 1741 – Putney Hill (London), 16 April 1825"
+biographie = """
+The son of a Zurich painter, Johann Heinrich Füssli first studied theology and became a \
+pastor, together with his friend Johann Kaspar Lavater. In 1762 the two publicly \
+denounced the abuses of a city magistrate; the scandal drove them to leave Switzerland. \
+After a stay in Germany, Füssli settled in London in 1764, where he lived by translation \
+and writing. Encouraged by Joshua Reynolds, he turned to painting and left for Rome in \
+1770. There he spent eight years studying Michelangelo and antiquity. Back in London, he \
+achieved fame in 1782 with The Nightmare. Under the anglicized name of Henry Fuseli, he \
+undertook a Milton Gallery, inspired by Paradise Lost, and illustrated Shakespeare for \
+the publisher Boydell’s gallery. Elected to the Royal Academy in 1790, he became its \
+professor of painting and then Keeper of the schools, and trained a whole generation of \
+artists. A friend of the feminist Mary Wollstonecraft and admired by William Blake, he \
+died at the age of eighty-four and was buried in St Paul’s Cathedral in London."""
+style = """
+Füssli paints scenes of dream, terror and visions drawn from Shakespeare, Milton or Nordic \
+legends. His figures, with stretched bodies and exaggerated gestures, come from \
+Michelangelo and Mannerism; his compositions, lit like a theatre stage, isolate a few \
+actors against dark backgrounds. He brought the fantastic and the unconscious into \
+painting, and anticipated Romanticism, then Symbolism and Surrealism."""
+
+[[artistes]]
+nom = "William Blake"
+vie = "London, 28 November 1757 – London, 12 August 1827"
+biographie = """
+The son of a Soho hosier, William Blake claimed to have had visions from childhood. At \
+fourteen, he was apprenticed to the engraver James Basire, who sent him to draw the tombs \
+of Westminster Abbey; there he discovered Gothic art. He then attended classes at the \
+Royal Academy and in 1782 married Catherine Boucher, who would help him throughout his \
+life in his printing work. Around 1788, he invented a relief-etching process that allowed \
+him to print his poems and his images together, which he then coloured by hand: these are \
+the Songs of Innocence and of Experience, then his prophetic books, peopled with gods of \
+his own invention. From 1800 to 1803 he lived at Felpham, by the sea, with the poet \
+William Hayley; there he was accused of sedition by a soldier, then acquitted. His solo \
+exhibition of 1809 was a failure. Supported by a few faithful followers, Thomas Butts and \
+then the young painter John Linnell, he illustrated the Book of Job and the Divine \
+Comedy at the end of his life. He died poor, almost forgotten."""
+style = """
+Blake is at once poet, engraver and painter. His drawing, linear and firm, inherited from \
+engraving, Gothic art and Michelangelo, counts for more than colour, which he applies in \
+watercolour or through printing processes of his own invention. He rejects the imitation \
+of nature and paints his visions: idealized bodies, cosmic figures, symbols of a personal \
+mythology. Rediscovered by the Pre-Raphaelites, he fascinated the Symbolists and the \
+twentieth-century counterculture."""
+
+[[artistes]]
+nom = "Francisco de Goya"
+vie = "Fuendetodos (Aragon), 30 March 1746 – Bordeaux, 16 April 1828"
+biographie = """
+Born in an Aragonese village, Francisco de Goya y Lucientes trained in Zaragoza, then \
+travelled to Italy in 1771. Settled in Madrid, from 1775 he drew cartoons for the Royal \
+Tapestry Factory, scenes of festivities and popular games. A member of the San Fernando \
+Academy and a sought-after portraitist, he became painter to the king’s chamber in 1789. \
+In 1792–93, a serious illness left him permanently deaf. His art then became freer and \
+darker: in 1799 he published the Caprichos, etchings that mock superstition and the vices \
+of society, and in 1800 painted The Family of Charles IV. The Napoleonic invasion of 1808 \
+and the war that followed inspired the Disasters of War and the two great canvases of 2 \
+and 3 May 1808. Under the absolutist reign of Ferdinand VII, he withdrew to his house \
+near the Manzanares, which he covered with the Black Paintings. In 1824 he went into \
+exile in France and settled in Bordeaux, where he continued to paint and to experiment \
+with lithography until his death, at the age of eighty-two."""
+style = """
+Goya moves from the Rococo grace of the tapestry cartoons to a painting ever freer, \
+quicker and more expressive. An heir of Velázquez, whose paintings he engraved, he paints \
+in broad strokes, with a striking economy of means, and dares to show violence, madness \
+and cruelty without embellishing them. Court painter and critical witness of his time, \
+brilliant printmaker, he opens the way to Delacroix, to Manet, then to Expressionism."""
+
+[[artistes]]
+nom = "Théodore Géricault"
+vie = "Rouen, 26 September 1791 – Paris, 26 January 1824"
+biographie = """
+Born in Rouen into a well-off family, Théodore Géricault grew up in Paris. Passionate \
+about horses, he trained with Carle Vernet, a painter of equestrian scenes, then with \
+Pierre-Narcisse Guérin, and tirelessly copied the masters at the Louvre. At the Salon of \
+1812, at twenty-one, he triumphed with an Officer of the Imperial Guard’s Chasseurs \
+Charging, a canvas of unprecedented dash. Two years later, his Wounded Cuirassier \
+Leaving the Field, painted at the moment of the fall of the Empire, was less well \
+received. In 1816–17 he stayed in Italy, where he discovered Michelangelo and prepared a \
+great Race of the Riderless Horses in Rome. Back in Paris, he devoted more than a year to \
+The Raft of the Medusa, exhibited at the Salon of 1819. He took the painting to England, \
+where he discovered English painting and painted the Epsom Derby. Weakened by several \
+falls from horses and by illness, he still produced a series of portraits of the insane \
+for a physician, then died at thirty-two, after a long agony."""
+style = """
+Géricault gives current events and modern life the grandeur of history painting. His \
+powerful drawing, nourished by Michelangelo and by the study of the body and of horses, \
+is allied to a dark, contrasted painting in full impasto. He seeks truth even in \
+suffering, madness and death, without idealizing. His very short career opened the way to \
+French Romanticism and deeply marked Delacroix, and then Courbet."""
+
+[[artistes]]
+nom = "Eugène Delacroix"
+vie = "Charenton-Saint-Maurice, 26 April 1798 – Paris, 13 August 1863"
+biographie = """
+Eugène Delacroix grew up in a family of notables of the Empire. A pupil of \
+Pierre-Narcisse Guérin and a friend of Géricault, he made his debut at the Salon of 1822 \
+with The Barque of Dante. Two years later, Scenes from the Massacres at Chios, inspired \
+by the Greek War of Independence, made him the leader of the Romantic school, in \
+opposition to the heirs of David and to Ingres. The Death of Sardanapalus, in 1827, \
+caused a scandal by its violence and sensuality. In 1830 he celebrated the July \
+Revolution with Liberty Leading the People. In 1832 he accompanied a diplomatic mission \
+to Morocco: the colours, light and costumes of North Africa would nourish all his work. \
+He then received major commissions for decorative schemes, at the Palais-Bourbon, at the \
+Senate, on the ceiling of the Galerie d’Apollon at the Louvre and in the Chapel of the \
+Holy Angels in the church of Saint-Sulpice. Elected to the Académie des Beaux-Arts in \
+1857, after several failures, he kept a famous Journal. He died in his apartment on the \
+rue de Furstenberg, now the Musée national Eugène-Delacroix."""
+style = """
+For Delacroix, colour takes precedence over drawing. An admirer of Rubens and the \
+Venetians, he builds his paintings through contrasts of complementary tones, lively and \
+visible touches, and compositions in motion. He draws his subjects from history, \
+literature, current events and the Orient. His freedom of touch and his reflection on \
+colour opened the way to the Impressionists and the Neo-Impressionists, who regarded him \
+as a precursor."""
+
+[[artistes]]
+nom = "Caspar David Friedrich"
+vie = "Greifswald, 5 September 1774 – Dresden, 7 May 1840"
+biographie = """
+Born in Greifswald, a small Baltic port then under Swedish rule, Caspar David Friedrich \
+was the son of a candle and soap maker. His childhood was marked by bereavements: his \
+mother died when he was seven, and in 1787 his brother Christoffer drowned trying to \
+rescue him after he fell through the ice. He studied at the Copenhagen Academy from 1794 \
+to 1798, then settled in Dresden, where he would live all his life. He travelled on foot \
+through the island of Rügen, the Harz mountains and Saxon Switzerland, filling his \
+sketchbooks with drawings. In 1808, his Tetschen Altarpiece, a cross in the mountains \
+conceived as an altarpiece, set off a fierce controversy. In 1810, Prussia bought The Monk \
+by the Sea and Abbey in an Oak Forest, and he was elected to the Berlin Academy. He \
+married Caroline Bommer in 1818. A professor at the Dresden Academy, he gradually lost \
+the public’s favour; a stroke, in 1835, almost prevented him from painting. Forgotten at \
+his death, he was rediscovered in the early twentieth century."""
+style = """
+Friedrich paints meditative landscapes, charged with spiritual meaning: mists, seas, \
+ruins, mountains, moonlit nights, often contemplated by figures seen from behind. His \
+compositions, symmetrical and spare, set a precise foreground against infinite distances. \
+His smooth painting, with very gentle transitions, renders the light of dawn and dusk. He \
+made landscape an inner experience, and his radicalism was hailed by the Symbolists and \
+then by abstract painters."""
+
+[[artistes]]
+nom = "Joseph Mallord William Turner"
+vie = "London, 23 April 1775 – London, 19 December 1851"
+biographie = """
+The son of a Covent Garden barber, Joseph Mallord William Turner entered the Royal \
+Academy Schools at fourteen. An early watercolourist, he exhibited from 1790 and \
+travelled through England and Wales drawing landscapes and monuments, which engravers \
+circulated. Elected an academician in 1802, at twenty-six, he measured himself in his \
+canvases against Claude Lorrain and the great landscape painters, and became professor of \
+perspective there. A great traveller, he discovered the Alps in 1802, Italy in 1819, then \
+Venice, whose light transformed his painting. His canvases became ever freer, made of \
+light, vapour and storms, and baffled part of the critics, while the young John Ruskin \
+came to his defence in Modern Painters, in 1843. Rich and secretive, he lived in \
+retirement at the end of his life in Chelsea, under an assumed name. He bequeathed to the \
+nation the bulk of his work, several hundred paintings and thousands of drawings and \
+watercolours, today divided between the Tate and the National Gallery. He is buried in \
+St Paul’s Cathedral."""
+style = """
+Turner starts from a classical landscape, in the manner of Claude Lorrain, and moves \
+toward a painting of light and the elements. His canvases, in which form dissolves in \
+sun, mist, snow or steam, combine transparent glazes and impasto. Watercolour, practised \
+all his life, taught him fluidity and effects of light. Admired by the Impressionists, he \
+is often considered a precursor of abstraction."""
+
+[[artistes]]
+nom = "John Constable"
+vie = "East Bergholt (Suffolk), 11 June 1776 – London, 31 March 1837"
+biographie = """
+The son of a wealthy Suffolk miller and corn merchant, John Constable grew up in the \
+Stour valley, between the mills of Flatford and Dedham. Destined for the family business, \
+he obtained permission in 1799 to go and study at the Royal Academy Schools in London. \
+The beginnings were slow: he rejected the fashionable idealized landscape and painted \
+what he knew, the countryside of his childhood, often in the open air. In 1816, after \
+seven years of engagement thwarted by the young woman’s family, he married Maria \
+Bicknell. From 1819 he exhibited at the Royal Academy each year large landscapes nearly \
+two metres wide, his six-footers, including The Hay Wain. The Paris Salon of 1824 won \
+him a gold medal and the admiration of French painters, while in England recognition was \
+slow in coming. Settled in Hampstead, he studied the clouds tirelessly there. Maria’s \
+death, in 1828, overwhelmed him. Elected an academician only in 1829, he published with \
+the engraver David Lucas mezzotints of his landscapes and died suddenly in London."""
+style = """
+Constable wants to paint nature as he sees it, with the freshness of a study made on the \
+spot. His oil sketches, quick and free, and his sky studies, annotated with the time and \
+the wind, are among the most modern of their day. In his large paintings, he keeps this \
+liveliness through broken touches and flashes of white. He marked Delacroix, the Barbizon \
+school and, through them, Impressionism."""

@@ -4,7 +4,7 @@
 //! visiteurs qui préfèrent moins de mouvement.
 
 pub const CSS: &str = r#"
-:root {
+html:root {
   --red: #d4572a; --yellow: #f2b705; --blue: #1d3f8f; --green: #2f6b4f; --ink: #0f1a3a; --paper: #f4ecd8;
   --accent: #1d3f8f; --accent-fg: #fff; --radius: 14px;
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -13,7 +13,7 @@ pub const CSS: &str = r#"
 html { scroll-behavior: smooth; }
 /* Le thème de Paquets centre le body dans 72rem : ici, l'en-tête et le pied de page
    prennent toute la largeur, et c'est `.page` qui centre le contenu. */
-body { margin: 0; max-width: none; padding: 0; overflow-x: hidden; }
+html body { margin: 0; max-width: none; padding: 0; overflow-x: hidden; }
 .page { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 4rem; }
 .muted { color: var(--muted); }
 .kicker { text-transform: uppercase; letter-spacing: .18em; font-size: .8rem; color: var(--accent); font-weight: 700; margin: 0; }
@@ -443,4 +443,45 @@ body.viewer-open { overflow: hidden; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .hero-title .letter { opacity: 1; }
 }
+/* ─── Le menu « burger » : tout le musée derrière un bouton ─────────────── */
+.header-links { display: flex; align-items: center; gap: 1.1rem; }
+.header-links > a { color: var(--fg); text-decoration: none; font-weight: 600; }
+.header-links > a.current { color: var(--accent); }
+.burger { position: relative; }
+/* Le flou de l'en-tête enfermerait le panneau (position: fixed) : il s'efface quand le menu est ouvert. */
+.site-header:has(.burger[open]) { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
+.burger-button { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .55rem; padding: .45rem .8rem;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font-weight: 700; position: relative; z-index: 32; }
+.burger-button::-webkit-details-marker { display: none; }
+.burger-icon { display: inline-grid; gap: 4px; width: 18px; }
+.burger-icon span { display: block; height: 2px; border-radius: 2px; background: var(--fg); transition: transform .25s ease, opacity .2s ease; }
+.burger[open] .burger-icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger[open] .burger-icon span:nth-child(2) { opacity: 0; }
+.burger[open] .burger-icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.burger[open] > .burger-button { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+.burger[open]::before { content: ""; position: fixed; inset: 0; background: rgba(10, 16, 36, .45); z-index: 30; }
+.burger-panel { display: block; position: fixed; top: 0; right: 0; bottom: 0; width: min(25rem, 100vw); z-index: 31; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bg); box-shadow: -18px 0 50px rgba(0, 0, 0, .25); padding: 4.6rem 1.2rem 2rem; animation: burger-in .25s ease; }
+@keyframes burger-in { from { transform: translateX(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+.burger-list, .burger-exhibitions ul, .burger-langs { list-style: none; margin: 0; padding: 0; }
+.burger-list > li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .55rem .6rem; border-radius: 10px; }
+.burger-list > li:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+.burger-list > li > a { color: var(--fg); text-decoration: none; font-weight: 600; }
+.burger-list a.current { color: var(--accent); }
+.burger-list li.nav-group { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 1.1rem .6rem .3rem; }
+.burger-list li.nav-group:hover, .burger-list li.burger-wide:hover { background: none; }
+.burger-list li.burger-wide { display: block; padding: .2rem .6rem; }
+.burger-exhibitions summary { cursor: pointer; font-weight: 600; padding: .35rem 0; color: var(--fg); }
+.burger-exhibitions ul { max-height: 50vh; overflow-y: auto; margin: .3rem 0 .4rem; padding-left: .4rem; border-left: 2px solid var(--line); }
+.burger-exhibitions li { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; padding: .35rem .5rem; border-radius: 8px; }
+.burger-exhibitions li a { color: var(--fg); text-decoration: none; }
+.burger-exhibitions li.nav-group { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: .7rem .5rem .2rem; }
+.burger-exhibitions .nav-new { font-size: .66rem; font-weight: 700; text-transform: uppercase; color: var(--accent-fg, #fff); background: var(--accent); border-radius: 999px; padding: .08rem .42rem; margin-left: auto; }
+.burger-exhibitions .nav-artist { display: none; }
+.burger-list > li > .nav-artist { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.burger-langs { display: flex; gap: .5rem; flex-wrap: wrap; }
+.burger-langs a { display: inline-block; padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration: none; font-weight: 600; }
+.burger-langs a.current { background: var(--accent); border-color: var(--accent); color: var(--accent-fg, #fff); }
+@media (max-width: 640px) { .header-quick { display: none; } .burger-label { display: none; } .burger-button { padding: .5rem .6rem; } }
+
 "#;

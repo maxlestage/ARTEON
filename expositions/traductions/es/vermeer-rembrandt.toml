@@ -1,0 +1,770 @@
+[exposition]
+ordre = 50
+nom_court = "Vermeer & Rembrandt"
+mouvement = "Siglo de Oro neerlandés"
+cadre = "ebene"
+couleur = "#7a5a2e"
+titre = "Vermeer y Rembrandt, el Siglo de Oro neerlandés"
+artiste = "Vermeer y Rembrandt"
+dates = "siglo XVII"
+accroche = "Exposición virtual · Vermeer y Rembrandt"
+introduction = """
+Dos gigantes de la pintura neerlandesa del siglo XVII: Rembrandt y su \
+claroscuro dramático, Vermeer y su luz tranquila que entra por la \
+ventana. Diez lienzos, desde la Lección de anatomía hasta la Joven de la perla, y hasta \
+la Ronda de noche al fondo de la galería."""
+vitrine = "jeune-fille-perle.jpg"
+
+[musee]
+nom = "Rijksmuseum"
+ville = "Ámsterdam, Países Bajos"
+architecte = "Pierre Cuypers"
+construction = "1876–1885"
+presentation = """
+El museo nacional de los Países Bajos nace en La Haya en 1800 y se instala en Ámsterdam en 1808. \
+Para dotarlo de un verdadero palacio, el Estado confía a Pierre Cuypers, campeón del renacimiento \
+gótico, un edificio de ladrillo rojo, construido de 1876 a 1885, que combina torres y \
+altos tejados góticos con ornamentos del Renacimiento neerlandés; un pasaje abovedado \
+lo atraviesa de parte a parte, aún hoy transitado por los ciclistas. En la primera \
+planta, la galería de honor, flanqueada de alcobas, conduce como la nave de una iglesia a la \
+sala de la Ronda de noche, concebida para el cuadro de Rembrandt. Tras diez años de obras \
+dirigidas por los arquitectos españoles Cruz y Ortiz, el museo reabrió en 2013, con sus \
+patios cubiertos y sus decoraciones pintadas restauradas. Allí se ve el Siglo de Oro neerlandés al \
+completo: Rembrandt, Frans Hals, Jan Steen, y cuatro cuadros de Vermeer, entre ellos la \
+Lechera."""
+ici = """
+El edificio de ARTEON retoma el eje del Rijksmuseum: una galería de honor que conduce a la \
+Ronda de noche. Se entra por el sur en «La galería de honor · Rembrandt», de treinta metros de largo \
+y nueve de ancho, de muros beige grisáceo. En su parte norte, dos puertas se \
+miran de frente: al este el gabinete de Vermeer, al oeste el gabinete de Delft, dos pequeñas \
+estancias cuadradas y bajas, de muros gris muy pálido, hechas para cuadros íntimos. Al \
+fondo de la galería, la sala de la Ronda de noche, cuadrada y más alta, presenta el \
+lienzo a su tamaño real."""
+
+[[salles]]
+nom = "La galería de honor · Rembrandt"
+theme = "1632–1668: rostros que surgen de la sombra, del retrato de grupo a los últimos autorretratos."
+murs = "#ddd3c4"
+x = 0
+z = 0
+largeur = 9
+profondeur = 30
+hauteur = 7
+portes = ["sud", "nord", { mur = "est", position = -5 }, { mur = "ouest", position = 5 }]
+
+[[salles]]
+nom = "El gabinete de Vermeer"
+theme = "Hacia 1658–1668: interiores silenciosos, una luz suave llegada de la izquierda."
+murs = "#dfe4e6"
+x = 8.5
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5
+
+[[salles]]
+nom = "El gabinete de Delft"
+theme = "Hacia 1660–1668: su ciudad bajo un gran cielo, y un sabio inclinado sobre el globo celeste."
+murs = "#e2e5e0"
+x = -8.5
+z = -5
+largeur = 8
+profondeur = 8
+hauteur = 4.5
+
+[[salles]]
+nom = "La sala de la Ronda de noche"
+theme = "1642: la compañía del capitán Banninck Cocq, a su tamaño real, al fondo de la galería."
+murs = "#cdbfb3"
+x = 0
+z = -22
+largeur = 14
+profondeur = 14
+hauteur = 8
+
+[[oeuvres]]
+titre = "La lección de anatomía del doctor Tulp"
+artiste = "Rembrandt"
+annee = "1632"
+image = "lecon-anatomie.jpg"
+technique = "Óleo sobre lienzo, 169,5 × 216,5 cm"
+collection = "Mauritshuis, La Haya"
+note = "Rembrandt tiene 26 años: su primer gran encargo, un retrato de grupo captado en plena disección."
+description = """
+En una sala sombría, el cadáver de un hombre yace en diagonal sobre una mesa, con el \
+cuerpo lívido y el bajo vientre cubierto por un lienzo. A la derecha, sentado, el doctor Nicolaes \
+Tulp, con sombrero negro de ala ancha y cuello blanco, sujeta con unas pinzas los músculos \
+del antebrazo izquierdo, ya disecado, mientras su mano izquierda, levantada, imita el \
+movimiento de los dedos que se pliegan. Siete cirujanos de negro, con el cuello ceñido por una \
+gorguera o un cuello blanco, se apretujan a su alrededor en pirámide: algunos se inclinan \
+hacia el brazo, uno nos mira, otros fijan la vista en el gran libro abierto a los pies \
+del muerto. El del fondo sostiene una hoja en la que figuran los nombres de los participantes. \
+La luz cae sobre el cadáver y sobre los rostros, y deja el resto en la sombra."""
+evocation = """
+El cuadro es a la vez retrato colectivo y lección moral. Cada \
+cirujano pagaba por figurar en la obra y quería ser reconocible, pero \
+Rembrandt hace de su reunión un momento de atención compartida: se ha visto en ella el triunfo \
+de un saber fundado en la observación, en la época en que Ámsterdam se convierte en un gran centro \
+científico. El gesto de Tulp, que muestra cómo funciona la mano humana, se ha \
+leído como un homenaje al ingenio del Creador, idea cara a los anatomistas de la época. \
+Enfrente, el cuerpo del ajusticiado recuerda que la muerte espera a cada uno: la disección \
+pública era también una meditación sobre la fragilidad de la vida. El joven pintor \
+afirma en ella su ambición: rivalizar con los maestros del retrato de grupo \
+introduciendo el drama."""
+histoire = """
+La disección pública tuvo lugar en Ámsterdam en enero de 1632, sobre el cuerpo de Aris \
+Kindt, un ladrón que acababa de ser ahorcado. El gremio de cirujanos hacía \
+pintar con regularidad retratos de grupo para adornar su sala; Tulp, encargado de las \
+lecciones de anatomía de la ciudad, eligió al joven Rembrandt, llegado de Leiden hacía poco. \
+El cuadro lanzó su carrera en Ámsterdam y le valió numerosos encargos de \
+retratos. Permaneció colgado en casa de los cirujanos durante casi dos siglos. En \
+1828, la caja de viudas de los cirujanos quiso venderlo para sanear sus fondos; \
+el rey Guillermo I se hizo con él para el Mauritshuis de La Haya, donde se \
+expone desde entonces."""
+facture = """
+Rembrandt rompe con las hileras de cabezas alineadas de los retratos de grupo \
+anteriores: los rostros se escalonan en pirámide y convergen hacia el brazo disecado y \
+la mano de Tulp. La luz, llegada de la izquierda, esculpe los rostros y hace del \
+cadáver la mancha más clara del cuadro, según un claroscuro heredado de la \
+pintura caravaggista. Los negros de las ropas están matizados, los cuellos y las gorgueras \
+pintados con precisión; la carne del muerto, de un blanco verdoso, contrasta con la tez \
+rosada de los vivos."""
+details = [
+  "La mano izquierda levantada de Tulp, que imita el movimiento de los dedos que explica.",
+  "La hoja que sostiene el cirujano del fondo, con la lista de los nombres de los presentes.",
+  "El gran libro abierto a los pies del cadáver, sin duda un tratado de anatomía.",
+  "El sombrero de Tulp, único tocado del cuadro, signo de su rango.",
+  "El contraste entre la piel verdosa del muerto y los rostros rosados de los vivos.",
+]
+themes = ["ciencia", "medicina", "muerte", "retrato de grupo", "cuerpo"]
+anecdote = """
+Nicolaes Tulp se llamaba en origen Claes Pieterszoon. Adoptó el nombre de Tulp, \
+«tulipán» en neerlandés, por el rótulo en forma de tulipán de la casa en la que \
+vivía, y convirtió esta flor en su emblema."""
+salle = 1
+mur = "est"
+position = 7
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Autorretrato"
+artiste = "Rembrandt"
+annee = "1659"
+image = "autoportrait-rembrandt.jpg"
+technique = "Óleo sobre lienzo, 84,5 × 66 cm"
+collection = "National Gallery of Art, Washington"
+note = "Arruinado, a los 53 años, Rembrandt se pinta sin complacencia: un rostro marcado, iluminado en la sombra."
+description = """
+Rembrandt se representa a medio cuerpo, de tres cuartos, con la mirada vuelta hacia nosotros. \
+Lleva una boina oscura y un abrigo marrón de tonos cálidos, cuyos pliegues se pierden \
+en la oscuridad del fondo. Sus manos, juntas ante él, apenas están indicadas y \
+permanecen en penumbra. Toda la luz se concentra en el rostro: una frente arrugada, \
+bolsas bajo los ojos, mejillas pesadas, una piel marcada por la edad. Mechones de \
+cabello gris y rizado asoman bajo la boina. Ningún accesorio, ningún decorado, ni siquiera un \
+pincel o una paleta que recuerden su oficio: nada distrae del rostro y de la \
+mirada, a la vez cansada y atenta, que parece interrogar al espectador tanto como al \
+propio pintor."""
+evocation = """
+Pintado a raíz de su quiebra, este retrato se lee a menudo como un examen de \
+conciencia: un hombre que lo ha perdido todo, salvo su arte, y se mira de frente. Rembrandt \
+es el pintor que más se ha representado antes de la época moderna, unas cuarenta \
+veces en pintura, sin contar los grabados y los dibujos; puestos uno tras otro, estos \
+autorretratos forman una suerte de autobiografía, del joven ambicioso al \
+anciano. Aquí, ya no hay traje de fantasía ni pose favorecedora: la verdad de la \
+carne que envejece se convierte en el tema. Algunos historiadores recuerdan que estos cuadros \
+eran también buscados por los aficionados, y no solo confesiones íntimas; \
+pero la gravedad de esta mirada ha hecho de él la imagen misma del artista frente a sí mismo."""
+histoire = """
+En 1656, abrumado por las deudas tras la compra de su gran casa de la Jodenbreestraat y \
+años de adquisiciones de cuadros y objetos de colección, Rembrandt obtiene una \
+cesión de bienes, forma de quiebra que le evita la prisión por deudas. Sus \
+colecciones se dispersan en subastas en 1657 y 1658, la casa se vende, y se \
+instala en un barrio más modesto. En esos años difíciles pinta \
+este autorretrato, firmado y fechado en 1659. Sigue, sin embargo, trabajando y \
+recibiendo encargos prestigiosos, como Los síndicos de los pañeros en 1662. El \
+cuadro fue adquirido en el siglo XX por el financiero estadounidense Andrew W. Mellon, que \
+lo ofreció en 1937 a la National Gallery of Art de Washington, cuyo núcleo formó su colección."""
+facture = """
+La pincelada cambia según las zonas: el rostro está construido en capas espesas, aplicadas \
+y retomadas, donde la pasta atrapa la luz como el relieve de la piel; las ropas \
+y las manos se pintan más ampliamente, casi dejadas en estado de boceto. \
+Rembrandt limita su paleta a los marrones, los ocres y los negros cálidos, con algunos \
+rojos en las carnes. La iluminación lateral deja una parte del rostro en una sombra \
+transparente. Este contraste entre el rostro muy trabajado y la libertad del resto \
+dirige la mirada del espectador directamente hacia los ojos."""
+details = [
+  "Las arrugas de la frente, logradas por el propio espesor de la pintura.",
+  "Las manos juntas, apenas esbozadas en la sombra de la parte baja del cuadro.",
+  "Los mechones grises que escapan de la boina, a cada lado del rostro.",
+  "El abrigo pintado a grandes pinceladas, que se funde con el fondo oscuro.",
+]
+themes = ["autorretrato", "vejez", "introspección", "ruina"]
+anecdote = """
+El inventario levantado con ocasión de su quiebra, en 1656, revela en Rembrandt una colección \
+asombrosa: cuadros de maestros italianos y flamencos, álbumes de grabados, bustos \
+antiguos, armas, conchas, objetos llegados de las Indias… Todo se vendió en subasta."""
+salle = 1
+mur = "est"
+position = -11
+largeur = 0.85
+
+[[oeuvres]]
+titre = "Betsabé en el baño"
+artiste = "Rembrandt"
+annee = "1654"
+image = "bethsabee.jpg"
+technique = "Óleo sobre lienzo, 142 × 142 cm"
+collection = "Museo del Louvre, París"
+note = "Betsabé sostiene la carta del rey David: un desnudo pensativo, pintado a partir de su compañera Hendrickje."
+description = """
+Una joven desnuda, de tamaño natural, está sentada sobre una cama cubierta de telas, con el \
+cuerpo casi de frente, la cabeza inclinada hacia un lado, la mirada perdida hacia abajo. En su \
+mano derecha, apoyada sobre el muslo, sostiene una carta abierta. A sus pies, una \
+vieja criada vestida de oscuro, con la cabeza cubierta, se ocupa de lavarle o de \
+secarle los pies. El fondo es casi negro; bajo la joven, una sábana blanca \
+arrugada, y tras ella un brocado dorado componen un decorado suntuoso. Algunas \
+joyas, un brazalete y adornos en el cabello, subrayan su desnudez. El cuerpo, \
+muy luminoso, ocupa el centro del cuadro cuadrado, y nada viene a turbar el \
+cara a cara entre la mujer y sus pensamientos."""
+evocation = """
+El relato procede del segundo libro de Samuel: desde la terraza de su palacio, el rey \
+David ve a Betsabé en el baño, la hace venir y la seduce; ella queda encinta, y \
+David envía a su marido Urías a morir en el combate. La Biblia no habla de una carta: \
+Rembrandt la añade para condensar el drama en un solo instante. Allí donde otros pintores \
+mostraban a una bañista espiada, él muestra a una mujer que reflexiona sobre lo que se exige \
+de ella, dividida entre la obediencia al rey y la fidelidad a su esposo. Se ha visto en su \
+melancolía el presentimiento de las desgracias por venir. El cuerpo pintado no tiene nada de idealizado: \
+es el de una mujer real, con su vientre, sus pliegues, su carne."""
+histoire = """
+Firmado y fechado en 1654, el cuadro pertenece a un año difícil para Rembrandt y su \
+compañera Hendrickje Stoffels. Encinta, es convocada por el consejo de la Iglesia \
+reformada, reprendida por vivir con el pintor fuera del matrimonio y privada de la comunión; \
+su hija Cornelia nace en otoño. Viudo de Saskia, Rembrandt no podía volver a casarse \
+sin perder el usufructo de la herencia de su primera esposa, reservada a su hijo \
+Titus. Se ignora para quién se pintó el cuadro. Tras pasar por diversas \
+colecciones, fue adquirido por el médico y coleccionista parisino Louis La Caze, \
+que lo legó al Louvre en 1869 junto con más de quinientos cuadros."""
+facture = """
+Rembrandt construye el cuerpo con la luz más que con el dibujo: una pasta cálida \
+y cremosa, aplicada en capas suaves, modela los volúmenes sin contorno nítido. Las \
+telas se tratan con gran libertad, a anchas pinceladas, con \
+empastes dorados para el brocado. La pose de Betsabé retoma, según se ha mostrado, \
+figuras antiguas conocidas por grabados, que el pintor transforma en escena íntima. \
+La criada, en la sombra, hace contrapunto al cuerpo iluminado, y las figuras de tamaño \
+natural dan a la escena una presencia casi monumental."""
+details = [
+  "La carta del rey David, sostenida lánguidamente en la mano derecha de Betsabé.",
+  "El rostro inclinado, los ojos bajos, absorto en sus pensamientos.",
+  "La vieja criada, en la sombra, inclinada sobre los pies de su señora.",
+  "El brocado dorado tras la joven, pintado en toques espesos.",
+  "La sábana blanca arrugada, la zona más clara después del cuerpo.",
+]
+themes = ["biblia", "desnudo", "deseo", "melancolía", "dilema"]
+anecdote = """
+Unos médicos creyeron reconocer, en una sombra del seno izquierdo de Betsabé, los \
+signos de un tumor, y supusieron que la modelo lo padecía. La hipótesis, \
+inverificable, ha hecho correr mucha tinta y sigue siendo un ejemplo célebre de diagnóstico \
+hecho sobre una pintura."""
+salle = 1
+mur = "ouest"
+position = -7
+largeur = 1.4
+
+[[oeuvres]]
+titre = "El regreso del hijo pródigo"
+artiste = "Rembrandt"
+annee = "hacia 1668"
+image = "fils-prodigue.jpg"
+technique = "Óleo sobre lienzo, 262 × 205 cm"
+collection = "Museo del Hermitage, San Petersburgo"
+note = "El padre posa las manos sobre los hombros del hijo arrodillado: uno de los últimos lienzos, y de los más conmovedores."
+description = """
+En una penumbra dorada, un anciano de ojos entornados, vestido con un amplio manto rojo, \
+se inclina sobre un joven arrodillado junto a él y posa ambas manos sobre su espalda. \
+El hijo, visto de espaldas, tiene el cráneo rapado y ropas hechas jirones de un amarillo terroso; \
+ha perdido una sandalia, y la planta de su pie desnudo, sucio y callosa, se vuelve hacia \
+nosotros. Apoya la cabeza contra el pecho de su padre. A la derecha, de pie, un hombre \
+barbudo, también envuelto en rojo, observa la escena, rígido, con las manos apoyadas en un \
+bastón: se lo identifica con el hermano mayor. Otras figuras permanecen en segundo plano, entre ellas un \
+hombre sentado que mira, y siluetas apenas visibles en la sombra del fondo."""
+evocation = """
+La parábola, en el Evangelio de Lucas, cuenta cómo el hijo menor reclama su parte \
+de la herencia, la dilapida y vuelve después miserable junto a su padre, que lo acoge con \
+alegría, para disgusto del hermano mayor, que se había mantenido fiel. Rembrandt no pinta ni la fiesta ni la \
+caída del hijo, sino el instante del perdón, silencioso y sin condiciones. Las manos \
+del padre son su corazón: a menudo se ha observado que parecen diferentes, una \
+ancha y masculina, otra más fina, y se ha visto en ello la unión de una ternura \
+paterna y materna. La distancia entre el grupo abrazado y el hermano que se mantiene \
+apartado plantea la cuestión de los celos y de la justicia. Pintado al final de una vida \
+marcada por los duelos, el cuadro se ha leído como el testamento espiritual de Rembrandt."""
+histoire = """
+La fecha del cuadro es incierta: se sitúa generalmente en los últimos años \
+de Rembrandt, muerto en 1669, un año después de su hijo Titus. Algunos historiadores piensan \
+que partes secundarias, en particular figuras del fondo, pudieron ser \
+terminadas por otro pintor. Se ignora para quién fue pintado y cuál fue su \
+recorrido durante el siglo siguiente. En 1766 fue comprado en París para la emperatriz \
+Catalina II de Rusia, que reunía entonces en San Petersburgo las colecciones del \
+Hermitage, uno de los grandes museos de Europa. Se conserva allí desde entonces, y figura entre \
+las obras más célebres del museo."""
+facture = """
+Rembrandt pinta aquí con una libertad extrema: la materia, espesa y rugosa en los \
+harapos del hijo y el manto del padre, está aplicada con pincel ancho, a veces retomada \
+y rascada, mientras que el fondo se disuelve en veladuras marrones y transparentes. La \
+gama se reduce a los rojos, los ocres y los marrones, que la luz hace brillar como brasas. La \
+composición es descentrada: el grupo del padre y del hijo ocupa la izquierda, cayendo la luz \
+más viva sobre sus cabezas y sobre las manos, mientras que el hermano mayor, \
+también iluminado, les hace frente a la derecha. Las figuras son casi de tamaño natural."""
+details = [
+  "Las dos manos del padre, de forma distinta, posadas sobre la espalda del hijo.",
+  "El pie desnudo del hijo, salido de su sandalia gastada, de planta sucia.",
+  "El cráneo rapado del hijo, como el de un preso o un mendigo.",
+  "La espada corta aún colgada de su cinto, último signo de su rango.",
+  "El hermano mayor, de pie a la derecha, que mira sin acercarse.",
+]
+themes = ["biblia", "perdón", "familia", "paternidad", "vejez"]
+anecdote = """
+Conmovido por un cartel de este cuadro, el sacerdote neerlandés Henri Nouwen fue a \
+contemplarlo largamente al Hermitage. De ello sacó un libro de meditación, «El regreso \
+del hijo pródigo», publicado en 1992 y traducido a numerosas lenguas."""
+salle = 1
+mur = "ouest"
+position = 11
+largeur = 1.6
+
+[[oeuvres]]
+titre = "La lechera"
+artiste = "Johannes Vermeer"
+annee = "hacia 1658"
+image = "laitiere.jpg"
+technique = "Óleo sobre lienzo, 45,5 × 41 cm"
+collection = "Rijksmuseum, Ámsterdam"
+note = "Una criada vierte leche, en la luz de la ventana: el pan parece espolvoreado de puntos luminosos."
+description = """
+En un rincón de cocina iluminado por una ventana a la izquierda, una criada robusta, \
+de pie, vierte lentamente un fino hilo de leche de una jarra de barro en un recipiente \
+colocado sobre la mesa. Lleva una cofia blanca, un corpiño amarillo de mangas \
+remangadas, una falda roja y un delantal azul. Ante ella, sobre un mantel azul verdoso, \
+un cesto y trozos de pan, y una jarra azul. La pared desnuda, encalada, \
+muestra un clavo y huellas de agujeros; un cesto y un cubo de cobre cuelgan \
+junto a la ventana, en la que hay un cristal roto. En el suelo, a la derecha, un calentador de pies de \
+madera, y una hilera de azulejos de Delft al pie del muro."""
+evocation = """
+Nada espectacular: una criada absorta en un gesto cotidiano. Pero Vermeer \
+da a ese gesto una gravedad casi solemne, y la figura, sólidamente plantada, tiene la \
+presencia de una estatua. Los historiadores ven en ello el elogio de las virtudes domésticas caras a \
+la sociedad neerlandesa: el orden, la limpieza, el trabajo paciente. Esta seriedad no \
+era evidente: en la pintura y la literatura de la época, lecheras y criadas de \
+cocina eran a menudo objeto de insinuaciones picantes. Un pequeño Cupido pintado en \
+un azulejo, y el calentador de pies, asociado al deseo en los libros de emblemas, \
+recuerdan ese registro, que la dignidad de la mujer mantiene a distancia. Se ha supuesto también que \
+preparaba un pudin de pan, lo que explicaría el pan duro sobre \
+la mesa."""
+histoire = """
+El cuadro data de los primeros años de madurez de Vermeer, hacia 1658-1660, poco después de \
+que abandonara los temas religiosos y mitológicos por las escenas de interior. \
+Perteneció quizá a su principal mecenas, el delftés Pieter van Ruijven. Figuraba en todo caso en la \
+venta de la colección de Jacob Dissius, en Ámsterdam, en \
+1696, descrito como una criada que vierte leche, «extremadamente bien hecho», y adjudicado en \
+175 florines, uno de los precios más altos de la venta. En el siglo XIX, pertenecía \
+a la familia Six, en Ámsterdam. En 1908, el Rijksmuseum lo compró a sus herederos \
+gracias a la ayuda del Estado y de la asociación Rembrandt."""
+facture = """
+Vermeer coloca la luz con pequeños toques: sobre el pan, el cesto y la jarra, \
+puntos de pintura clara, ligeramente en relieve, hacen centellear las superficies; se \
+habla de «puntillismo». El azul del delantal y del mantel es ultramar natural, \
+extraído del lapislázuli, pigmento muy costoso que empleaba sin tasa. El examen del \
+cuadro ha mostrado que había pintado primero un objeto colgado de la pared y un cesto de \
+ropa junto al calentador, y luego los borró para despojar la escena. El \
+punto de vista, ligeramente en contrapicado, engrandece a la criada."""
+details = [
+  "Los puntos luminosos sobre la corteza del pan y sobre el mimbre del cesto.",
+  "El fino hilo de leche, casi inmóvil, que cae de la jarra.",
+  "El clavo hincado en la pared, con su diminuta sombra.",
+  "El cristal roto de la ventana, arriba a la izquierda.",
+  "Los azulejos de Delft al pie del muro, uno de los cuales muestra un pequeño Cupido.",
+]
+themes = ["interior", "luz", "trabajo", "cotidianidad", "criada"]
+anecdote = """
+El Rijksmuseum solo presta La lechera de manera excepcional. En 2009, sin embargo, cruzó \
+el Atlántico para una exposición enteramente dedicada a ella en el \
+Metropolitan Museum de Nueva York, en torno a los cuadros neerlandeses de la colección del \
+museo."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.6
+
+[[oeuvres]]
+titre = "Vista de Delft"
+artiste = "Johannes Vermeer"
+annee = "hacia 1660–1661"
+image = "vue-delft.jpg"
+technique = "Óleo sobre lienzo, 96,5 × 115,7 cm"
+collection = "Mauritshuis, La Haya"
+note = "Su ciudad, vista desde la otra orilla, bajo un gran cielo: Proust la tenía por el cuadro más bello del mundo."
+description = """
+Al otro lado de una amplia extensión de agua, la ciudad de Delft se extiende en una larga \
+franja horizontal: murallas de ladrillo, tejados rojos y azulados, y dos puertas \
+fortificadas, la de Schiedam, a la izquierda, con su reloj, y la de Rotterdam, a la \
+derecha, flanqueada por dos torrecillas. Detrás, la torre de la Iglesia Nueva brilla al \
+sol, mientras que los edificios del primer plano quedan a la sombra de una nube. Unos \
+barcos, entre ellos dos grandes barcas de pesca, están amarrados a la derecha. En la orilla \
+arenosa del primer plano, a la izquierda, unos pequeños personajes conversan. \
+Encima, el cielo ocupa más de la mitad del lienzo, con grandes nubes blancas \
+y grises que se escalonan."""
+evocation = """
+Vermeer no inventa nada: se reconoce cada monumento, y el cuadro sirve aún de \
+documento sobre la Delft del siglo XVII. Ha recompuesto, sin embargo, ligeramente la vista para \
+equilibrar las masas, y no es tanto la topografía como la luz lo que constituye el \
+tema: una mañana tranquila, bajo un cielo cambiante, en que el sol viene a herir el corazón de \
+la ciudad. Algunos han visto en la torre soleada de la Iglesia Nueva, donde reposa \
+Guillermo de Orange, un discreto homenaje a la casa de Orange y al orgullo cívico. \
+Unos años antes, en 1654, la explosión de un polvorín había devastado una \
+parte de Delft; la serenidad de esta vista se ha leído como el retrato de una ciudad \
+apaciguada, segura de sí misma."""
+histoire = """
+Vermeer pinta su ciudad natal hacia 1660-1661 desde la orilla sur del puerto, probablemente \
+desde una ventana del piso superior de una casa. El cuadro perteneció sin duda a Pieter van \
+Ruijven; figura en 1696 en la venta Dissius, en Ámsterdam, donde alcanza 200 \
+florines, el precio más alto de los Vermeer de la venta. En 1822, el rey Guillermo I \
+lo adquirió en subasta para el Mauritshuis, que acababa de abrir sus puertas en La Haya. \
+En 1921, fue prestado a París para una exposición de pintura neerlandesa en el Jeu de \
+Paume: Proust, enfermo, acudió para volver a verlo, año y medio antes de su muerte. El \
+cuadro apenas ha salido de La Haya desde entonces."""
+facture = """
+Vermeer trabaja la materia tanto como el color: los ladrillos y los tejados están \
+logrados con una pasta granulosa, y minúsculos granos de pintura clara, aplicados en \
+relieve sobre los cascos de los barcos y las fachadas, atrapan la luz como \
+reflejos reales. Los reflejos en el agua son alargados y simplificados. El juego de sombra y \
+de luz, con los edificios cercanos en sombra y los tejados del fondo iluminados, \
+crea la profundidad. Se ha discutido si utilizó una cámara oscura, \
+el instrumento óptico que proyecta una imagen: la cuestión sigue debatida."""
+details = [
+  "Los tejados soleados a la derecha, donde se busca el «pequeño lienzo de pared amarilla».",
+  "El reloj de la puerta de Schiedam, que marca poco más de las siete.",
+  "La torre clara de la Iglesia Nueva, bañada de sol tras los tejados.",
+  "Los pequeños personajes en la orilla arenosa, a la izquierda.",
+  "Los granos de pintura en relieve sobre los cascos de las barcas, a la derecha.",
+]
+themes = ["ciudad", "paisaje", "cielo", "agua", "luz"]
+anecdote = """
+En «La prisionera», Proust hace morir al escritor Bergotte ante la Vista de \
+Delft, mientras contempla un «pequeño lienzo de pared amarilla» en el que nunca había \
+reparado. El novelista atribuía a su personaje el malestar que él mismo había \
+sentido en la exposición de 1921."""
+salle = 3
+mur = "nord"
+position = 0
+largeur = 1.16
+
+[[oeuvres]]
+titre = "La joven de la perla"
+artiste = "Johannes Vermeer"
+annee = "hacia 1665"
+image = "jeune-fille-perle.jpg"
+technique = "Óleo sobre lienzo, 44,5 × 39 cm"
+collection = "Mauritshuis, La Haya"
+note = "Un turbante azul, una perla, una mirada por encima del hombro: un rostro imaginario convertido en uno de los más célebres."
+description = """
+Sobre un fondo oscuro y liso, una joven se vuelve hacia nosotros por encima del hombro, \
+como si acabaran de llamarla. Lleva un turbante azul ultramar anudado en la cabeza, \
+del que cae un paño de tela amarilla, y una chaqueta amarillo pardo de la que asoma un cuello blanco. \
+De su oreja pende una gran perla, que refleja la luz y el blanco del cuello. Sus \
+grandes ojos fijan al espectador; sus labios entreabiertos y húmedos brillan con \
+pequeños toques claros. La luz viene de la izquierda y modela suavemente el rostro, \
+sin contornos marcados. Ningún decorado, ningún objeto: solo un rostro, una mirada y \
+una perla, captados en un movimiento suspendido."""
+evocation = """
+No es un retrato sino una «tronie», palabra que designaba entonces un estudio de \
+cabeza, a menudo con disfraz, que los aficionados compraban por su belleza o su expresión, \
+sin preocuparse de la identidad de la modelo. El turbante evoca el Oriente soñado de los neerlandeses \
+del siglo XVII. Se ignora quién posó: se ha propuesto a la hija mayor del pintor, Maria, \
+sin pruebas. Este misterio, unido a la ambigüedad de la mirada, a la vez tímida y \
+directa, y a la boca entreabierta, como a punto de hablar, ha alimentado \
+innumerables interpretaciones. Se la ha apodado «la Mona Lisa del Norte»: como el \
+retrato de Leonardo, parece entablar con cada espectador una relación \
+personal."""
+histoire = """
+Vermeer la pintó hacia 1665, sin duda para el mercado más que por encargo. Después \
+se pierde su rastro: se pensó reconocerla entre las «tronies» de la venta \
+Dissius de 1696, sin certeza. En 1881, en mal estado, fue comprada en una \
+subasta en La Haya por el coleccionista Arnoldus Andries des Tombe, por \
+dos florines y treinta centavos. A su muerte en 1902, la legó al Mauritshuis junto con \
+otros cuadros. Es desde entonces la estrella del museo. La novela de Tracy Chevalier \
+(1999) y la película que se hizo de ella en 2003, con Scarlett Johansson, le han dado una \
+fama mundial."""
+facture = """
+Vermeer reduce su paleta a unos pocos colores: el ultramar natural del turbante, \
+amarillos, ocres, blanco de plomo. Las transiciones son muy suaves, casi sin \
+contornos, en particular en el caballete de la nariz, que se funde con la mejilla. La perla misma \
+es una ilusión: unos pocos toques, un reflejo vivo arriba y un resplandor pálido \
+abajo, sin siquiera el gancho que la sujetaría a la oreja. Un estudio científico \
+realizado por el Mauritshuis en 2018 reveló que el fondo, hoy negro, representaba en \
+origen una cortina verde, y que la joven tenía pestañas, hoy invisibles a \
+simple vista."""
+details = [
+  "El reflejo del cuello blanco en la parte baja de la perla.",
+  "Los pequeños toques de luz en la comisura de los labios.",
+  "El caballete de la nariz, sin contorno alguno, que se funde con la mejilla.",
+  "El paño amarillo del turbante, que cae tras la cabeza.",
+  "El minúsculo reflejo de luz en cada uno de los ojos.",
+]
+themes = ["retrato", "mirada", "oriente", "misterio", "tronie"]
+anecdote = """
+Tras una gira por Japón, Estados Unidos e Italia entre 2012 y 2014, el \
+Mauritshuis decidió que el cuadro no volvería a viajar. Única excepción: en 2023, \
+fue prestado unas semanas a la gran exposición Vermeer del Rijksmuseum, en \
+Ámsterdam."""
+salle = 2
+mur = "est"
+position = 0
+largeur = 0.55
+
+[[oeuvres]]
+titre = "El arte de la pintura"
+artiste = "Johannes Vermeer"
+annee = "hacia 1666–1668"
+image = "art-peinture.jpg"
+technique = "Óleo sobre lienzo, 120 × 100 cm"
+collection = "Kunsthistorisches Museum, Viena"
+note = "Un pintor de espaldas pinta a la musa de la Historia: Vermeer conservó este cuadro toda su vida."
+description = """
+Una pesada cortina de tapiz, recogida a la izquierda, descubre un taller. Un pintor visto de \
+espaldas, con jubón negro acuchillado, calzas rojas y boina, está sentado ante su \
+caballete; empieza a pintar la corona de laurel de su modelo. Esta, \
+de pie junto a la ventana, es una joven vestida de azul, coronada de laurel, \
+que sostiene una trompeta y un grueso libro amarillo, con los ojos bajos. Sobre la mesa, una \
+máscara de yeso, un libro abierto, telas. En la pared se extiende un gran mapa de las \
+Diecisiete Provincias de los Países Bajos, y una lámpara de cobre dorado, sin velas, cuelga del \
+techo de vigas. En el suelo, un pavimento de mármol blanco y negro."""
+evocation = """
+La modelo encarna a Clío, la musa de la Historia, reconocible por los atributos que le \
+daba la Iconología de Cesare Ripa, manual de símbolos muy leído: el laurel de la \
+gloria, la trompeta de la fama, el libro de la historia. El cuadro es así una \
+alegoría: la pintura, al representar la Historia, asegura la gloria. El mapa, donde \
+un pliegue separa el Norte, convertido en las Provincias Unidas, del Sur que siguió siendo español, y la \
+lámpara coronada por el águila bicéfala de los Habsburgo se han leído como alusiones \
+a la división de los Países Bajos. El pintor sin rostro ha hecho soñar con un autorretrato; \
+nada lo prueba, pero la obra dice con seguridad la alta idea que Vermeer tenía de \
+su arte."""
+histoire = """
+Vermeer pinta este gran cuadro hacia 1666-1668, sin encargo conocido, y lo guarda en \
+su casa hasta su muerte en 1675. Abrumada por las deudas, su viuda Catharina Bolnes lo cedió a \
+su madre, Maria Thins, para sustraerlo a los acreedores; el administrador de la \
+sucesión, el sabio Antonie van Leeuwenhoek, impugnó la maniobra. El cuadro pasó \
+después de mano en mano y, en el siglo XIX, perteneció a los condes Czernin, en Viena, \
+con el nombre de Pieter de Hooch, antes de serle devuelto a Vermeer. En 1940, Hitler lo compró \
+a la familia Czernin para el museo que proyectaba en Linz. Hallado en 1945 en la \
+mina de sal de Altaussee, fue entregado a Austria y atribuido al Kunsthistorisches \
+Museum."""
+facture = """
+La composición es un juego de planos sucesivos: la cortina, en primer plano, crea un \
+efecto de umbral, y vienen luego la silla, el pintor, por último la modelo y el mapa, \
+iluminados por una ventana invisible a la izquierda. El pavimento en perspectiva conduce la mirada \
+hacia el fondo. Vermeer clavaba un alfiler en el punto de fuga y le ataba un hilo \
+para trazar las líneas de perspectiva: se ha hallado su huella en varios de \
+sus cuadros. Cada materia recibe un tratamiento propio: los reflejos de la lámpara, el \
+grano del tapiz, los pliegues y las inscripciones del mapa, el azul ultramar del \
+vestido."""
+details = [
+  "La firma del pintor, discreta, en el borde inferior del mapa, cerca de la modelo.",
+  "Los acuchillados del jubón, que dejan ver la camisa blanca.",
+  "La máscara de yeso colocada sobre la mesa, vuelta hacia el techo.",
+  "El águila bicéfala en lo alto de la lámpara.",
+  "Las primeras hojas de laurel esbozadas en el lienzo del caballete.",
+]
+themes = ["taller", "alegoría", "historia", "pintura", "mapa"]
+anecdote = """
+En 2011, Austria se negó a devolver el cuadro a los herederos de la familia Czernin, \
+que sostenían que la venta de 1940 a Hitler había sido forzada: la comisión encargada \
+de las restituciones estimó que no se había concluido bajo coacción."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "El astrónomo"
+artiste = "Johannes Vermeer"
+annee = "1668"
+image = "astronome.jpg"
+technique = "Óleo sobre lienzo, 51 × 45 cm"
+collection = "Museo del Louvre, París"
+note = "Un sabio tiende la mano hacia un globo celeste, en la luz de la ventana."
+description = """
+En un gabinete de trabajo iluminado por una ventana a la izquierda, un hombre de largos \
+cabellos, vestido con una amplia bata azul verdosa, está sentado e inclinado hacia un \
+globo celeste colocado sobre la mesa. Con la mano derecha, roza su superficie, como \
+para hacer girar el cielo; la otra mano se apoya en el borde de la mesa, junto a un \
+libro abierto. Un grueso tapete de motivos coloreados cubre la mesa, donde se advierte un \
+astrolabio. Tras él, un armario sostiene algunos libros; en la pared cuelga un \
+cuadro que representa a Moisés salvado de las aguas. Las vidrieras de la ventana dejan pasar \
+una luz suave que cae sobre el rostro, la mano y el globo."""
+evocation = """
+El cuadro celebra al sabio moderno, en la hora en que las Provincias Unidas son un gran \
+foco de las ciencias: astronomía, cartografía, óptica. El libro abierto sobre la mesa ha \
+sido identificado como un tratado de Adriaan Metius, abierto por el pasaje que recomienda \
+buscar en Dios la inspiración para estudiar los astros. El Moisés salvado de las \
+aguas, en la pared, se ha interpretado en el mismo sentido: Moisés, criado en la corte de Egipto, \
+pasaba por instruido en toda la sabiduría de los egipcios, astronomía incluida. Ciencia \
+y fe no se oponen, pues, aquí. Se ha supuesto que el modelo era Antonie van \
+Leeuwenhoek, sabio delftés nacido el mismo año que Vermeer, hipótesis seductora pero \
+nunca demostrada."""
+histoire = """
+Firmado y fechado en 1668, es uno de los poquísimos lienzos fechados de Vermeer. Forma \
+sin duda pareja con El geógrafo, conservado en el Städel Museum de Fráncfort, donde \
+se reconoce el mismo modelo y la misma bata; los dos cuadros pasaron juntos \
+por varias ventas en el siglo XVIII. A finales del siglo XIX, El astrónomo entró \
+en la colección de la familia Rothschild, en París. Confiscado por los nazis en 1940 \
+y destinado a la colección de Hitler, fue devuelto a la familia tras la guerra. En \
+1983, ingresó en el Louvre por dación, es decir, en pago de derechos de sucesión, \
+y es hoy uno de los dos únicos Vermeer del museo, junto con La encajera."""
+facture = """
+La luz de la ventana se desliza sobre el rostro, el globo y los pliegues de la bata, mientras \
+que el fondo permanece en una penumbra dorada. Vermeer describe con precisión \
+instrumentos que sin duda conocía directamente: el globo corresponde a un modelo \
+publicado por Jodocus Hondius en 1600, del que se reconocen las figuras de constelaciones. \
+El tapete, logrado con espesos toques de color, contrasta con la bata, pintada por \
+amplios planos de azul. La composición, cerrada, sitúa al sabio y el globo en la \
+diagonal de la luz."""
+details = [
+  "La mano derecha del sabio, posada sobre el globo entre las constelaciones.",
+  "La firma y la fecha, inscritas en la puerta del armario.",
+  "El astrolabio colocado sobre el tapete de la mesa.",
+  "El cuadro de Moisés salvado de las aguas, en parte visible a la derecha.",
+  "Los pequeños rombos de la vidriera de la ventana, de donde viene la luz.",
+]
+themes = ["ciencia", "astronomía", "saber", "luz", "interior"]
+anecdote = """
+Cuando los nazis confiscaron el cuadro en casa de los Rothschild, estamparon en el reverso \
+un pequeño sello en forma de cruz gamada, que lo designaba como bien confiscado. La \
+marca sigue siendo visible en el dorso del lienzo."""
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 0.6
+
+[[oeuvres]]
+titre = "La ronda de noche"
+artiste = "Rembrandt"
+annee = "1642"
+image = "ronde-nuit.jpg"
+technique = "Óleo sobre lienzo, 379,5 × 453,5 cm"
+collection = "Rijksmuseum, Ámsterdam"
+note = "La milicia del capitán Banninck Cocq se pone en marcha: un retrato de grupo convertido en escena de teatro."
+description = """
+En el centro, el capitán Frans Banninck Cocq, de negro con una banda roja, avanza \
+hacia nosotros y tiende la mano izquierda mientras habla a su teniente, Willem van Ruytenburch, \
+vestido todo de amarillo claro y tocado con un sombrero de pluma. A su alrededor, una compañía de \
+milicianos se pone en movimiento en un alegre desorden: un hombre de rojo carga su \
+mosquete, otro sopla sobre la cazoleta, un tercero dispara; un portaestandarte \
+blande el estandarte, un tambor redobla a la derecha, un perro ladra. Picas y \
+lanzas se cruzan en lo alto. A la izquierda, una niña vestida de oro, bañada de \
+luz, lleva en el cinto un pollo muerto. Detrás, un arco de piedra, y un \
+escudete en el que están inscritos los nombres de los guardias."""
+evocation = """
+El cuadro es un retrato colectivo: los miembros de la compañía que pagaron por \
+figurar están representados en él, pero Rembrandt los funde en una acción en lugar de \
+alinearlos. Se ha visto en él el orgullo de una milicia burguesa, garante del orden y de las \
+libertades de la ciudad, en una época en que estas compañías habían perdido lo esencial de su \
+papel militar y se convertían en sociedades honoríficas. La niña luminosa se interpreta \
+a menudo como una figura alegórica de la compañía de arcabuceros: \
+las garras del pollo recuerdan su emblema. El movimiento general, la marcha hacia el \
+espectador, han hecho del cuadro una imagen del impulso y de la prosperidad de la \
+República neerlandesa en el Siglo de Oro."""
+histoire = """
+Hacia 1639, la compañía del capitán Banninck Cocq encargó este cuadro para la gran \
+sala del Kloveniersdoelen, sede de los arcabuceros de Ámsterdam, que recibió toda una \
+serie de retratos de compañías de distintos pintores. Concluido en 1642, el año de \
+la muerte de Saskia, no provocó el escándalo que la leyenda ha imaginado. En 1715, \
+trasladado al ayuntamiento, fue recortado por todos los lados para caber en un muro; \
+a la izquierda, dos personajes desaparecieron. Entró después en las colecciones \
+nacionales. Durante la Segunda Guerra Mundial, se lo ocultó, enrollado, en refugios, \
+en particular una gruta cerca de Maastricht. El Rijksmuseum, cuyo edificio abrió en \
+1885, le reserva una sala al fondo de su galería de honor."""
+facture = """
+Rembrandt sacude el género del retrato de milicia: en lugar de hileras de cabezas \
+igualmente iluminadas, crea una escena dramática en la que la luz aísla unas pocas \
+figuras, el capitán, el teniente, la niña, y deja a las demás en la \
+penumbra. La sombra de la mano del capitán, proyectada sobre el traje del teniente, \
+da la medida del espacio. Los bordados dorados están pintados en empastes que \
+atrapan la luz. El título, surgido mucho después de la muerte del pintor, viene del barniz \
+ennegrecido que oscurecía el lienzo: la escena transcurre en realidad a pleno día."""
+details = [
+  "La sombra de la mano izquierda del capitán sobre la chaqueta amarilla del teniente.",
+  "La niña de vestido dorado, con un pollo muerto colgado del cinto.",
+  "El perro que ladra junto al tambor, a la derecha.",
+  "El escudete sobre el arco, en el que están inscritos los nombres de los guardias.",
+  "El miliciano de rojo, a la izquierda, ocupado en cargar su mosquete.",
+]
+themes = ["milicia", "retrato de grupo", "movimiento", "claroscuro", "ámsterdam"]
+anecdote = """
+Desde 2019, la operación «Ronda de noche» estudia y restaura el cuadro ante los ojos \
+del público, en una jaula de cristal. En 2021, las partes cortadas en 1715 fueron \
+reconstituidas con la ayuda de la inteligencia artificial, a partir de una copia antigua de \
+Gerrit Lundens, y expuestas durante un tiempo junto al original."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 4.5
+
+[[artistes]]
+nom = "Johannes Vermeer"
+vie = "Delft, bautizado el 31 de octubre de 1632 – Delft, enterrado el 15 de diciembre de 1675"
+biographie = """
+Johannes Vermeer es bautizado en Delft en 1632. Su padre, Reynier Jansz, tejedor de \
+sedas, regenta una posada en la plaza mayor y comercia con cuadros. Se ignora \
+todo de la formación del joven. En abril de 1653, se casa con Catharina Bolnes, procedente \
+de una familia católica acomodada, y se convierte sin duda al catolicismo; la pareja \
+se instala en casa de la madre de Catharina, Maria Thins, en el barrio católico de la \
+ciudad. Ese mismo año, ingresa en el gremio de San Lucas, del que será varias veces \
+uno de los dirigentes. Sus primeros cuadros son escenas mitológicas y \
+religiosas; hacia 1657, se vuelve hacia los interiores domésticos que harán su \
+gloria. Pinta lentamente, dos cuadros al año de media según las estimaciones, y \
+cuenta con un mecenas fiel, Pieter van Ruijven, que poseyó buena parte de su \
+obra. La pareja tiene quince hijos, de los que once viven aún a su muerte. En 1672, \
+la invasión francesa de las Provincias Unidas hunde el mercado del arte; abrumado por \
+las deudas, Vermeer muere bruscamente a los cuarenta y tres años, y su viuda dirá que había \
+caído en la desesperación. Pronto olvidado, es redescubierto a mediados del siglo XIX por \
+el crítico francés Théophile Thoré-Bürger. Se le atribuyen hoy unos \
+treinta y cinco cuadros."""
+style = """
+Vermeer es el pintor de la luz tranquila: casi siempre llegada de una ventana \
+a la izquierda, baña interiores donde una o dos figuras leen, escriben, tocan \
+música o trabajan. Sus colores son límpidos, dominados por el azul \
+de ultramar natural y el amarillo, y traduce los reflejos con pequeños puntos \
+luminosos. Sus composiciones, de una geometría rigurosa, fijan un instante ordinario \
+en un silencio suspendido. Aún se discute su recurso a la cámara oscura. Escaso, \
+largo tiempo olvidado, se ha convertido en el siglo XX en uno de los pintores más admirados, de \
+Proust a Dalí, y en una referencia para toda la pintura de interior."""
+
+[[artistes]]
+nom = "Rembrandt"
+vie = "Leiden, 15 de julio de 1606 – Ámsterdam, 4 de octubre de 1669"
+biographie = """
+Rembrandt Harmenszoon van Rijn nace en Leiden, hijo de un molinero acomodado. Inscrito un tiempo \
+en la universidad, elige la pintura: tres años de aprendizaje con Jacob van \
+Swanenburgh en Leiden, y luego seis meses en Ámsterdam con Pieter Lastman, pintor de historia \
+formado en Italia. De regreso en Leiden, trabaja junto a Jan Lievens; ambos \
+llaman la atención de Constantijn Huygens, secretario del estatúder. Hacia 1631, \
+se instala en Ámsterdam en casa del marchante de arte Hendrick Uylenburgh, de cuya prima, \
+Saskia, se casa en 1634. Retratista muy solicitado, compra en 1639 una gran casa \
+en la Jodenbreestraat, la actual Casa de Rembrandt, y forma a numerosos discípulos. \
+Pero los duelos se acumulan: tres hijos mueren en la infancia, y Saskia fallece \
+en 1642, poco después del nacimiento de su hijo Titus. Vive después con Hendrickje \
+Stoffels, con quien tiene una hija, Cornelia. Sus gastos de coleccionista y el descenso \
+de los encargos lo llevan a la quiebra en 1656; su casa y sus bienes se venden. \
+Sigue, sin embargo, pintando y recibiendo encargos importantes, como Los \
+síndicos de los pañeros. Hendrickje muere en 1663, Titus en 1668. Rembrandt se extingue \
+al año siguiente y es enterrado en la Westerkerk de Ámsterdam, en una tumba alquilada cuyo \
+emplazamiento exacto se desconoce hoy."""
+style = """
+Rembrandt es el maestro del claroscuro: una luz cálida y dorada hace surgir de \
+la sombra un rostro, una mano, un objeto, y concentra la emoción. Su pincelada evoluciona de una \
+precisión lisa, en la década de 1630, hacia una materia cada vez más espesa y \
+libre, trabajada con pincel y a veces con espátula, que da a las carnes y a las \
+telas un relieve impresionante. Pintor, dibujante y grabador de primer orden, \
+renovó el retrato de grupo y la escena bíblica, buscando la verdad \
+psicológica antes que la belleza ideal. Sus discípulos, de Ferdinand Bol a Carel \
+Fabritius, difundieron su manera; en el siglo XIX, Delacroix y Van Gogh lo \
+admiraron profundamente."""

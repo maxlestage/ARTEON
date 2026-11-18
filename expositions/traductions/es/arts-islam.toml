@@ -1,0 +1,854 @@
+[exposition]
+ordre = 22
+nom_court = "Artes del Islam"
+mouvement = "Artes del Islam"
+cadre = "vitrine"
+couleur = "#1d5e6b"
+titre = "Las artes del Islam, de Córdoba a Isfahán"
+artiste = "Córdoba, Kairuán, El Cairo, Kashan, Isfahán, Iznik…"
+dates = "siglos IX–XVI"
+accroche = "Exposición virtual · Museo de Arte Islámico, Doha"
+introduction = """
+Desde las orillas del Atlántico hasta Irán, las tierras del Islam han hecho de la escritura, de la \
+geometría y del decorado vegetal un lenguaje común, declinado en el pergamino, la lana, \
+el vidrio, el metal, el marfil y la cerámica. La visita reúne diez objetos, desde el Corán \
+azul de Kairuán hasta las alfombras de las cortes safávida, mameluca y otomana, desde la lámpara de \
+mezquita de El Cairo hasta el plato de Iznik. El edificio se inspira en el Museo de Arte Islámico de \
+Doha, diseñado por I. M. Pei: un vestíbulo y luego un alto atrio donde se presentan las \
+grandes alfombras, en torno al cual se abren tres galerías."""
+vitrine = "tapis-ardabil.jpg"
+
+[musee]
+nom = "Museo de Arte Islámico"
+ville = "Doha, Catar"
+architecte = "Ieoh Ming Pei"
+construction = "inaugurado en 2008"
+presentation = """
+Para construir en Doha un museo dedicado a las artes del Islam, el emirato de Catar recurre \
+al arquitecto sino-estadounidense I. M. Pei, autor de la pirámide del Louvre. Este \
+viaja para estudiar la arquitectura islámica y encuentra su modelo en El Cairo, en la \
+fuente de abluciones de la mezquita de Ibn Tulun, una construcción del siglo XIII \
+de geometría desnuda. El museo, inaugurado a finales de 2008, se alza en una isla \
+ganada al mar, al final del malecón: un apilamiento de volúmenes cúbicos de \
+piedra caliza clara, que se estrechan en gradas hasta una torre central. En el interior, \
+un atrio de varias plantas asciende hasta una cúpula horadada por un óculo, donde el \
+cuadrado se transforma en octógono y luego en círculo; un inmenso ventanal se abre al mar \
+y a la ciudad. Las galerías, diseñadas por Jean-Michel Wilmotte, están sumidas en la \
+penumbra: cada objeto brilla allí en su vitrina. Las colecciones abarcan el arte \
+islámico desde España hasta Asia central y la India."""
+ici = """
+El edificio de ARTEON retoma la disposición del museo de Doha: un vestíbulo y luego un \
+atrio muy alto del que parten las galerías. Se entra por el sur en «El vestíbulo del \
+malecón», de muros de piedra clara. Al norte se abre «El atrio · Las grandes \
+alfombras», de dieciséis metros de altura, donde se tienden la alfombra de Ardabil y una alfombra otomana. \
+Tres galerías de seis metros de altura lo rodean: al oeste «El Cairo de los mamelucos \
+», al este «De Kashan a Iznik · La tierra y el fuego», y al norte, en el eje, «\
+Kairuán y Córdoba · La escritura y el marfil»."""
+
+[[salles]]
+nom = "El vestíbulo del malecón"
+theme = "La entrada, como en Doha, donde se deja la luz de la bahía por la piedra clara del museo de I. M. Pei."
+murs = "#ece4d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "El atrio · Las grandes alfombras"
+theme = "Bajo la alta cúpula, dos alfombras de corte del siglo XVI: la alfombra de Ardabil, firmada y fechada, y una alfombra otomana de tres arcadas."
+murs = "#e8dcc6"
+x = 0
+z = -13
+largeur = 22
+profondeur = 18
+hauteur = 16
+portes = ["ouest", "est", "nord"]
+
+[[salles]]
+nom = "El Cairo de los mamelucos"
+theme = "Siglos XIV–XVI: el vidrio esmaltado, el latón incrustado de plata y oro y la lana anudada de los talleres de El Cairo y de Siria."
+murs = "#e6d6bd"
+x = -18
+z = -13
+largeur = 14
+profondeur = 18
+hauteur = 6
+
+[[salles]]
+nom = "De Kashan a Iznik · La tierra y el fuego"
+theme = "1215–1590: una jarra calada de Kashan, el mihrab de cerámica de una madrasa de Isfahán y un plato de Iznik."
+murs = "#e4dac6"
+x = 18
+z = -13
+largeur = 14
+profondeur = 18
+hauteur = 6
+
+[[salles]]
+nom = "Kairuán y Córdoba · La escritura y el marfil"
+theme = "Siglos IX–X: el oro del Corán azul de Kairuán y el marfil esculpido del califato de Córdoba."
+murs = "#e9dfcd"
+x = 0
+z = -28
+largeur = 14
+profondeur = 12
+hauteur = 6
+
+[[oeuvres]]
+titre = "La alfombra de Ardabil"
+artiste = "Iran safavide"
+annee = "1539–1540"
+image = "tapis-ardabil.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Ardabil_Carpet_-_Google_Art_Project.jpg"
+technique = "Pelo de lana anudado sobre urdimbre y trama de seda, 1044 × 535,5 cm"
+collection = "Victoria and Albert Museum, Londres"
+note = "Una de las alfombras fechadas más antiguas: un sol de oro sobre un campo azul noche, firmada y fechada en el año 946 de la hégira."
+description = """
+De más de diez metros de largo, la alfombra despliega un campo azul noche cubierto de una fina \
+red de tallos en espiral, sembrados de flores y palmetas. En el centro, un gran \
+medallón amarillo en forma de estrella, de corazón azul pálido, irradia como un sol; está \
+rodeado de una corona de medallones ovalados, crema, rojos y verdes. A uno \
+y otro lado, en el eje de la alfombra, cuelga una lámpara de mezquita suspendida de cadenas: \
+una es más grande que la otra. En los cuatro ángulos, un cuarto del medallón \
+central se repite en amarillo. Una ancha cenefa, donde alternan cartuchos alargados y \
+medallones lobulados, enmarca el conjunto. En uno de los extremos, un pequeño cartucho claro \
+lleva tres líneas de escritura persa: un dístico de poesía, una firma y una \
+fecha."""
+evocation = """
+La inscripción da la clave de la alfombra. Sus dos primeras líneas citan al poeta Hafez: \
+«No tengo otro refugio en el mundo que tu umbral; mi cabeza no tiene otro abrigo que esta \
+puerta». La tercera firma: «Obra del esclavo del umbral, Maqsud de Kashan, 946». \
+El umbral es aquí el de un santuario, y Maqsud se declara humilde servidor, no esclavo \
+en sentido propio. Con frecuencia se ha leído el medallón como una cúpula vista desde abajo, de donde \
+cuelgan las lámparas, y el campo florido como un jardín del paraíso. La diferencia de \
+tamaño de las dos lámparas sigue discutiéndose: efecto de perspectiva, según unos; según \
+otros, imperfección deliberada, pues la perfección solo pertenecería a Dios."""
+histoire = """
+La alfombra habría sido encargada por la corte del sha Tahmasp para el santuario de Ardabil, \
+al noroeste de Irán, donde reposa el jeque sufí Safi al-Din, muerto en 1334 y \
+antepasado de la dinastía safávida. Viajeros británicos aún la ven allí en 1843. \
+Tras un terremoto que daña el santuario, se vende, con una alfombra \
+gemela, a una casa de Mánchester que la pone a la venta en 1892. William Morris, \
+consultado por el museo, la juzga de una «perfección singular»: el South Kensington \
+Museum, futuro Victoria and Albert Museum, la adquiere en marzo de 1893 por 2000 libras. Su \
+gemela, más pequeña y privada de su cenefa, que sirvió para repararla, se encuentra hoy \
+en el Museo de Arte del Condado de Los Ángeles."""
+facture = """
+El pelo está hecho de lana anudada, hebra a hebra, sobre una armadura de hilos de seda, a \
+razón de unos 5300 nudos por cada cuadrado de diez centímetros de lado. El campo \
+emplea una decena de colores obtenidos de tintes naturales, como el índigo o \
+la corteza de granada. Un dibujo así supone un modelo preparado por los artistas de la \
+corte y luego años de trabajo: hasta diez tejedores pudieron trabajar a la vez \
+en el telar. La composición es simétrica en los dos sentidos, en torno al medallón, \
+pero la red de roleos del fondo se repite sin fin, como si continuara bajo la \
+cenefa."""
+details = [
+  "El cartucho en uno de los extremos, con los versos de Hafez, la firma y la fecha.",
+  "Las dos lámparas suspendidas en el eje, de tamaños diferentes.",
+  "El pequeño corazón azul pálido en el centro del gran medallón amarillo.",
+  "Los cuartos de medallón amarillos que ocupan los cuatro ángulos del campo.",
+  "Las zonas desgastadas cerca de los bordes, donde el pelo ha desaparecido.",
+]
+themes = ["alfombra", "safávidas", "poesía", "santuario", "luz"]
+anecdote = """
+En el Victoria and Albert Museum, la alfombra reposa extendida, como en el suelo de un \
+santuario, en una gran vitrina instalada en 2006 en el centro de la galería Jameel. \
+Para preservar sus colores, solo se ilumina diez minutos, a cada hora y a \
+cada media hora."""
+salle = 2
+mur = "nord"
+position = -5.8
+largeur = 4.5
+
+[[oeuvres]]
+titre = "Alfombra de tres arcadas"
+artiste = "Empire ottoman"
+annee = "hacia 1575–1590"
+image = "tapis-ottoman-arcades.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Carpet_with_Triple-arch_Design_MET_DP166876.jpg"
+technique = "Urdimbre y trama de seda, pelo de lana y algodón, nudo asimétrico, 172,7 × 127 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una alfombra de oración de la corte otomana: tres arcos sobre columnas, una lámpara de mezquita y flores al pie de las columnas."
+description = """
+En el centro de la alfombra, tres arcos apuntados descansan sobre columnas pareadas, finas y \
+torsas, asentadas sobre basas escalonadas. El arco del medio, más ancho, deja ver un \
+fondo azul oscuro; los dos arcos laterales, un fondo rojo. De la cima del arco central \
+cuelga una lámpara de mezquita, de tres cadenillas. Al pie de las columnas crecen \
+ramos de flores, tulipanes y claveles. Sobre los arcos, un friso corre de un \
+borde a otro, donde se adivina una hilera de pequeños edificios con cúpula. Una ancha \
+cenefa azul claro encierra la escena: largas hojas dentadas se enroscan allí \
+alrededor de grandes flores abiertas, rojas y pardas."""
+evocation = """
+La alfombra de oración lleva la imagen de aquello hacia lo que se vuelve el fiel: el arco figura el \
+mihrab, el nicho que indica la dirección de La Meca, y la lámpara recuerda el versículo \
+coránico que compara la luz de Dios con una lámpara colocada en un nicho. Aquí, el \
+nicho único se convierte en una arcada de tres arcos, como el interior de una mezquita; se ha visto en ella \
+la evocación de un santuario, incluso de La Meca o de Jerusalén, sin que ninguna \
+lectura se imponga. Las flores al pie de las columnas, tulipanes y claveles, son las \
+de los jardines otomanos, y transforman el espacio de la oración en jardín."""
+histoire = """
+Esta alfombra pertenece a un pequeño grupo de alfombras de oración de arcadas tejidas para la corte \
+otomana en la segunda mitad del siglo XVI. Sus dibujos proceden del taller \
+imperial de dibujo, el nakkaşhane, que proporcionaba los modelos de las cerámicas, los \
+tejidos y las encuadernaciones. Tras la conquista de Egipto en 1517, los tejedores de El Cairo \
+trabajan para los otomanos, y órdenes del sultán Murad III, en los años \
+1580, los hacen venir a Estambul: se duda para estas alfombras entre las dos ciudades, \
+inclinándose el Met por Estambul. La alfombra perteneció al coleccionista estadounidense James F. \
+Ballard, que la donó al Metropolitan Museum en 1922 junto con gran parte de su \
+colección de alfombras."""
+facture = """
+La alfombra asocia tres fibras: la seda para la urdimbre y la trama, que da una base \
+fina y sólida, la lana para la mayor parte del pelo, y el algodón para los blancos, \
+más brillantes. El nudo asimétrico y la gran densidad del tejido permiten \
+curvas flexibles, lejos de los dibujos geométricos de las alfombras de aldea. El estilo floral \
+de la corte, con sus hojas dentadas en forma de sable y sus tulipanes, es el mismo \
+que el de los azulejos de Iznik de la misma época. Los fondos rojos y azules, desgastados, \
+dejan ver las variaciones de los baños de tinte."""
+details = [
+  "La lámpara de mezquita suspendida bajo el arco central, de tres cadenillas.",
+  "Las columnas pareadas, torsas, sobre sus basas escalonadas.",
+  "Los tulipanes y los claveles que crecen al pie de las columnas.",
+  "La hilera de edificios con cúpula en el friso sobre los arcos.",
+]
+themes = ["alfombra", "oración", "otomanos", "flores", "arquitectura"]
+anecdote = """
+Las lámparas representadas en las alfombras de oración otomanas son las, de vidrio o de \
+cerámica, que colgaban realmente en las mezquitas. La galería de El Cairo presenta \
+una, hecha para el emir Qawsun dos siglos y medio antes."""
+salle = 2
+mur = "nord"
+position = 5.0
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Alfombra mameluca"
+artiste = "Sultanat mamelouk"
+annee = "principios del siglo XVI"
+image = "tapis-mamelouk.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Mamluk_Carpet_MET_DP168735.jpg"
+technique = "Lana (urdimbre, trama y pelo), nudo asimétrico, 213,4 × 266,7 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Rojo, azul y verde: un calidoscopio de estrellas y octógonos tejido en El Cairo, en vísperas de la conquista otomana."
+description = """
+La alfombra, más ancha que alta, es enteramente geométrica. En el centro, un gran \
+medallón octogonal verde azulado encierra una roseta roja donde se entrelazan estrellas \
+y nudos. Alrededor, un octógono más vasto se divide en compartimentos: estrellas de \
+ocho puntas, pequeños octógonos, triángulos verdes con las puntas vueltas hacia el centro. \
+El conjunto se inscribe en un cuadrado, flanqueado a izquierda y derecha por dos bandas rojas \
+sembradas de pequeños motivos. La cenefa alterna largos cartuchos redondeados, azules \
+y verdes, y medallones redondos rojos. Ni una figura humana o animal: \
+solo formas que encajan unas en otras, hasta perderse de vista. Los bordes, deshilachados, conservan la \
+huella de cinco siglos de uso."""
+evocation = """
+Este dibujo sin principio ni fin se mira desde todos los lados, como una alfombra puesta en el suelo. \
+Se han relacionado estas composiciones con los pavimentos de mármol de colores y los techos \
+pintados que adornaban los palacios y las madrasas de los mamelucos: la alfombra prolongaba, \
+en lana, el decorado de la arquitectura. Su geometría, hecha de estrellas que nacen unas \
+de otras, ilustra una idea cara al arte islámico: un orden que se repite y \
+podría extenderse hasta el infinito. La gama reducida de colores, rojo cereza, azul y \
+verde, era tan característica que formaba una especie de marca de los talleres de El \
+Cairo."""
+histoire = """
+Las alfombras llamadas mamelucas aparecen en El Cairo en la segunda mitad del siglo XV, \
+y su producción continúa algún tiempo después de la conquista otomana de 1517. Eran \
+buscadas hasta en Europa, en Italia como en España, donde cubrían los \
+suelos y las mesas de los palacios. Tras la conquista, los talleres adoptan poco a poco el \
+estilo floral querido por Estambul, como muestra la alfombra de arcadas del atrio. Este \
+ejemplar perteneció al coleccionista James F. Ballard, que lo donó al \
+Metropolitan Museum de Nueva York en 1922, junto con la alfombra otomana presentada en esta \
+exposición."""
+facture = """
+Todo es de lana: la urdimbre, la trama y el pelo, anudado con el nudo asimétrico. \
+La lana de las alfombras mamelucas es famosa por su lustre, que hace centellear los \
+rojos. Los tejedores se contentan con tres colores principales, realzados con \
+toques de amarillo y de blanco, pero juegan con sus matices: se ven, en las bandas \
+laterales y alrededor del medallón, pasajes del azul al verde debidos a baños de \
+tinte diferentes. El dibujo descansa sobre un trazado geométrico riguroso, construido a \
+partir del octógono y de la estrella de ocho puntas."""
+details = [
+  "La roseta entrelazada en el corazón del medallón central.",
+  "Los triángulos verdes que apuntan hacia el centro, como flechas.",
+  "Las pequeñas plantas estilizadas, por pares, en las bandas laterales.",
+  "Los pasajes del azul al verde, de una banda a otra.",
+]
+themes = ["alfombra", "geometría", "mamelucos", "el cairo", "estrella"]
+anecdote = """
+El 11 de junio de 1489, el papa Inocencio VIII compra siete alfombras, que los documentos \
+pontificios dicen expedidas de El Cairo, «donde se fabrican». Una alfombra mameluca \
+figura también en un cuadro pintado en Venecia por Paris Bordone en 1534."""
+salle = 3
+mur = "ouest"
+position = 0.0
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Lámpara de mezquita del emir Qawsun"
+artiste = "Sultanat mamelouk"
+annee = "hacia 1329–1335"
+image = "lampe-qawsun.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Mosque_Lamp_of_Amir_Qawsun_MET_DP214293.jpg"
+technique = "Vidrio soplado, esmaltado y dorado, altura 35,9 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una lámpara de vidrio de 36 cm de altura, presentada ampliada, a nombre de un emir copero del sultán: la copa, su emblema, aparece en ella seis veces."
+description = """
+La lámpara tiene la forma de un gran jarrón: un cuello ensanchado en embudo, una panza redonda y un \
+pie alto y ancho. En la panza, asas de vidrio permitían enganchar las \
+cadenas de suspensión. El vidrio, transparente y ligeramente pardo, está cubierto de esmaltes. \
+En el cuello, una banda de escritura azul se despliega alrededor de grandes medallones redondos: \
+en el centro de cada uno, sobre fondo amarillo, se destaca una copa rojo oscuro. En la panza, \
+inmensas letras azules, perfiladas de rojo, se lanzan hacia lo alto entre las asas; \
+nombran al emir que regaló la lámpara. Roleos muy finos, pintados de rojo y \
+realzados con oro, llenan los espacios entre las bandas y cubren el pie."""
+evocation = """
+Una lámpara de mezquita es una luz que habla. Una pequeña lamparilla de aceite, colocada en el \
+interior, hacía brillar el vidrio; las letras de esmalte se recortaban entonces en \
+sombra sobre la luz. El cuello lleva un pasaje de la sura 24 del Corán, la sura de \
+la Luz, donde la luz de Dios se compara con una lámpara colocada en un nicho, en \
+un cristal semejante a un astro resplandeciente. El objeto ilustra así el texto que lleva. \
+La inscripción de la panza y la copa, emblema del cargo de copero, recuerdan \
+también la generosidad del emir: ofrecer la iluminación de una mezquita era una obra \
+piadosa y un signo de prestigio."""
+histoire = """
+Sayf al-Din Qawsun es uno de los emires más poderosos del sultán al-Nasir Muhammad, \
+de quien es copero. Funda en El Cairo una mezquita hacia 1329-1330 y un palacio; la \
+lámpara, fechada en esos años, estaba sin duda destinada a una de sus fundaciones. Tras \
+la muerte del sultán en 1341, Qawsun es durante un tiempo el hombre fuerte del régimen, antes de ser \
+detenido y luego ejecutado en 1342. Cientos de lámparas de este tipo colgaban en las \
+mezquitas, las madrasas y los mausoleos de El Cairo. Buscadas por los coleccionistas \
+europeos en el siglo XIX, muchas han salido de Egipto: esta fue donada al \
+Metropolitan Museum en 1917 por el banquero J. Pierpont Morgan."""
+facture = """
+La lámpara se sopla con la caña y luego se añaden en caliente el pie y las asas. La \
+decoración se pinta con esmaltes, es decir, vidrio coloreado molido y mezclado con un aglutinante, \
+y luego el objeto se recuece a una temperatura lo bastante baja para fundir el esmalte sin \
+deformar la lámpara. El oro se aplica del mismo modo. El azul, el rojo, el blanco, el \
+amarillo y el oro forman una paleta restringida, colocada con gran precisión: los \
+contornos rojos de las letras y los roleos, trazados con pincel, tienen el grosor de un \
+cabello."""
+details = [
+  "La copa roja sobre fondo amarillo, emblema del copero, en los medallones del cuello.",
+  "Las grandes letras azules de la panza, que suben entre las asas.",
+  "Las asas de vidrio donde se sujetaban las cadenas.",
+  "Los roleos rojos y dorados, muy finos, en el pie.",
+]
+themes = ["vidrio", "luz", "caligrafía", "mamelucos", "mezquita"]
+anecdote = """
+El pie de la lámpara lleva la firma de Ali ibn Muhammad al-Barmaki: es uno de los \
+únicos nombres de artesanos conocidos de todo el vidrio esmaltado y dorado de la época mameluca, \
+casi siempre anónimo."""
+salle = 3
+mur = "nord"
+position = 0.0
+largeur = 0.8
+
+[[oeuvres]]
+titre = "El Bautisterio de San Luis"
+artiste = "Sultanat mamelouk"
+annee = "hacia 1330–1340"
+image = "baptistere-saint-louis.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Baptistère_de_Saint_Louis_-_Musée_du_Louvre_Arts_de_l'Islam_LP_16.jpg"
+technique = "Aleación de cobre martillada, cincelada e incrustada de plata, oro y pasta negra, 23,2 × 50 cm"
+collection = "Museo del Louvre, París"
+note = "Una jofaina mameluca firmada seis veces por Muhammad ibn al-Zayn, que sirvió para el bautismo de los niños de Francia: 50 cm de diámetro, presentada ampliada."
+description = """
+La jofaina, ancha y ensanchada, está enteramente cubierta de un decorado de plata y oro sobre el \
+latón oscuro. En la pared exterior, un friso de personajes de pie rodea \
+el objeto: dignatarios y sirvientes de largas túnicas, que llevan \
+armas, vasos o animales. Cuatro medallones redondos lo interrumpen, donde \
+jinetes cazan. La pared interior retoma la misma disposición: dos medallones \
+muestran a un príncipe en su trono, otros dos escudos. En el fondo, que se \
+entrevé en el centro, nadan peces y otros animales acuáticos. Los rostros, \
+redondos, de ojos alargados, están grabados con una precisión de miniatura."""
+evocation = """
+El decorado desgrana los placeres y los deberes de una corte: la caza, el combate, el \
+servicio del príncipe. Se ignora para quién se hizo la jofaina, pero estas escenas \
+se dirigen a las élites militares del sultanato, esos emires de origen turco que \
+se reconocían en sus trajes y sus armas. El dibujo recuerda la pintura de los \
+manuscritos de la época: una escena de batalla se compara con una ilustración del \
+Shahnameh pintado en Tabriz hacia 1330. El fondo poblado de peces hace de la jofaina una \
+pequeña mar, una imagen que cobra un sentido nuevo cuando el objeto se convierte, en Francia, en una \
+jofaina para el agua del bautismo."""
+histoire = """
+La jofaina está firmada en seis lugares: «obra del maestro Muhammad ibn al-Zayn». Se \
+ignora cómo llegó a Francia; se conserva desde hace mucho tiempo en el \
+tesoro de la Sainte-Chapelle del castillo de Vincennes. Sirve para el bautismo del futuro \
+Luis XIII en 1606, y luego para el del conde de Chambord en 1821, para el cual se añaden \
+dos blasones con las armas de Francia en los medallones interiores. En 1856, se \
+utiliza aún para el bautismo del príncipe imperial, hijo de Napoleón III. Pertenece \
+hoy al departamento de Artes del Islam del Louvre, del que es uno de los objetos \
+más célebres."""
+facture = """
+La jofaina se martillea en una lámina de aleación de cobre. El decorado se cincela después \
+: el artesano ahueca el metal, aloja en él finas hojas de plata y de oro que martillea \
+para fijarlas, y luego rellena el fondo de pasta negra para hacer resaltar las figuras. \
+Los detalles de los rostros y de los trajes se graban en la plata. Esta técnica, \
+aparecida en Jorasán, al noreste de Irán, pasa por Mosul antes de llegar a Damasco \
+y a El Cairo. Las figuras, que cubren todo el objeto, se vuelven más raras en el curso del \
+siglo XIV, sustituidas poco a poco por grandes inscripciones."""
+details = [
+  "Los jinetes cazando en los medallones de la pared exterior.",
+  "Los blasones de flores de lis añadidos en 1821 en dos medallones interiores.",
+  "Los peces y animales acuáticos grabados en el fondo.",
+  "Los rostros redondos, de ojos alargados, grabados en la plata.",
+]
+themes = ["metal", "corte", "caza", "mamelucos", "bautismo"]
+anecdote = """
+Su nombre es un anacronismo: Luis IX, San Luis, murió en 1270, varias \
+décadas antes de que la jofaina se fabricara. Este nombre tradicional le \
+ha quedado, sin embargo, y con él se exhibe en el Louvre."""
+salle = 3
+mur = "sud"
+position = 0.0
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Jarra calada con arpías y esfinges"
+artiste = "Céramistes de Kashan et d'Ispahan"
+annee = "1215–1216 (612 de la hégira)"
+image = "cruche-kashan.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Pierced_Jug_with_Harpies_and_Sphinxes_MET_DP170372.jpg"
+technique = "Pasta silícea calada, pintada bajo vidriado turquesa transparente, altura 20,8 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Una jarra de 21 cm, presentada ampliada, de doble pared: la pared exterior, calada como un encaje, alberga arpías y esfinges."
+description = """
+La jarra tiene una panza redonda, un cuello recto y un asa. Su pared exterior está perforada \
+de parte a parte: entre tallos que se enroscan, se distinguen arpías, aves de \
+cabeza humana, esfinges y cuadrúpedos moteados que corren. Tras este \
+encaje, una segunda pared, llena, contiene el líquido. El decorado está pintado en negro \
+y en azul de cobalto, y luego recubierto de un vidriado turquesa transparente que da a \
+todo el objeto su color de mar. Bajo el borde del cuello y en la parte baja de la panza, dos \
+bandas llevan inscripciones persas en letras negras sobre fondo turquesa."""
+evocation = """
+Las inscripciones son poemas. Alrededor del cuello corren versos del poeta persa Rukn \
+al-Din Qummi; cerca de la base, un poema de amor anónimo, en el que el amante se \
+lamenta de haber atado su alma a los bucles de la amada, contiene la fecha de fabricación. \
+La jarra pertenece al mundo refinado de los banquetes y de la poesía. Las criaturas \
+híbridas, arpías y esfinges, son frecuentes en el arte de Irán de esta época; se \
+han visto en ellas figuras de buena suerte o imágenes de un paraíso poblado de seres \
+maravillosos, más que los monstruos de la mitología griega cuyo nombre llevan."""
+histoire = """
+Fechada en 612 de la hégira, es decir, 1215-1216, la jarra se hizo unos años antes de \
+las invasiones mongolas que asolan Irán a partir de 1219. Se atribuye a \
+Kashan, ciudad del centro de Irán que era entonces el gran foco de la cerámica de \
+lujo: se producía allí vajilla pintada, con reflejo metálico o esmaltada, y azulejos \
+para los santuarios. Se conocen varias jarras caladas de este tipo, algunas de las cuales \
+llevan una fecha, lo que las convierte en referencias preciosas para los historiadores. \
+Esta fue comprada en 1932 por el Metropolitan Museum de Nueva York."""
+facture = """
+La jarra es de pasta silícea, una mezcla de cuarzo molido, frita de vidrio y \
+un poco de arcilla blanca, puesta a punto para imitar la blancura y la finura de la \
+porcelana china. El alfarero monta primero la pared interior y luego la pared \
+exterior, que cala con cuchillo cuando la pasta aún no está del todo seca. \
+Pinta después el decorado en negro y en azul, y lo cubre todo con un vidriado \
+turquesa. El trabajo exige gran habilidad: la pared calada, muy frágil, se \
+rompe al menor movimiento en falso."""
+details = [
+  "Los dos rostros humanos de las arpías, en medio de la panza.",
+  "La pared interior, más clara, que se entrevé por los agujeros.",
+  "Los cuadrúpedos moteados que corren alrededor del cuello.",
+  "Las bandas de poesía persa, bajo el borde y cerca de la base.",
+]
+themes = ["cerámica", "poesía", "criaturas", "irán", "turquesa"]
+anecdote = """
+Kashan ha dado su nombre a la cerámica: en persa, la palabra kashi designa el azulejo de \
+revestimiento esmaltado. En 1301, Abu'l-Qasim, miembro de una familia de alfareros de la ciudad, \
+escribe un tratado que describe la fabricación de la pasta silícea."""
+salle = 4
+mur = "nord"
+position = 0.0
+largeur = 0.75
+
+[[oeuvres]]
+titre = "Mihrab de la madrasa Imami de Isfahán"
+artiste = "Céramistes de Kashan et d'Ispahan"
+annee = "1354–1355 (755 de la hégira)"
+image = "mihrab-isfahan.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Mihrab_(Prayer_Niche)_MET_DP235035.jpg"
+technique = "Mosaico de azulejos de cerámica con vidriado monocromo, tallados y ensamblados, 343,1 × 288,7 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "El nicho de oración de una escuela coránica de Isfahán, hecho de miles de fragmentos de cerámica: un revestimiento de arquitectura de más de tres metros."
+description = """
+Un nicho de arco apuntado se hunde en un gran marco rectangular. El marco está bordeado \
+por una ancha banda de escritura: altas letras blancas sobre fondo azul oscuro, que \
+suben por los lados y corren por arriba. Más cerca del arco, una banda blanca \
+lleva una escritura angulosa, el cúfico, en letras azul oscuro. Sobre el arco, \
+roleos blancos y turquesa se enlazan sobre fondo azul. En el hueco del nicho, \
+una red de estrellas y hexágonos cubre la semicúpula, y luego una siembra de flores y \
+de aspas tapiza el fondo, interrumpida por un panel rectangular: una \
+inscripción en escritura cursiva, blanca y dorada. Todo está hecho de pequeños trozos de \
+cerámica."""
+evocation = """
+El mihrab indica a los fieles la dirección de La Meca, hacia la que rezan; es \
+el corazón de toda mezquita y de toda sala de oración. Sus inscripciones \
+explican su sentido. La gran banda cita versículos de la sura 9 del Corán, que \
+hablan de quienes cuidan las mezquitas de Dios; el arco lleva palabras del \
+Profeta, y el panel central una sentencia según la cual la mezquita es la morada \
+de los hombres piadosos. La luz del sol, deslizándose por las facetas desiguales de la \
+cerámica, hacía centellear todo el nicho."""
+histoire = """
+Este mihrab adornaba una madrasa, una escuela de teología, fundada en 755 de la hégira, es decir, \
+en 1354, en Isfahán, y llamada hoy madrasa Imami. Irán vivía entonces bajo \
+dinastías locales, tras el hundimiento del imperio mongol de los ilkhánidas. Desmontado a \
+finales de los años 1920, el mihrab se envía a Filadelfia, donde el museo de la \
+universidad lo conserva, y luego el Metropolitan Museum de Nueva York lo adquiere en 1939. A \
+mediados de los años 1920, alfareros de Isfahán habían restaurado una parte: la parte baja \
+del nicho y el comienzo y el final de la gran banda de inscripción."""
+facture = """
+Es un mosaico de cerámica. Los azulejos se cuecen primero, cada uno cubierto de un \
+solo color: azul oscuro, turquesa, blanco, amarillo ocre, verde. Se tallan después \
+en pequeñas piezas siguiendo el dibujo y luego se ensamblan boca abajo, antes de \
+verter mortero por el dorso para formar grandes paneles. La técnica, más lenta que \
+la pintura sobre azulejo, da colores francos y contornos de una nitidez \
+perfecta. Se desarrolla en Irán en el siglo XIV y cubrirá, en los siglos siguientes, \
+las cúpulas y las fachadas de las grandes mezquitas."""
+details = [
+  "El panel central del nicho, con su inscripción blanca y dorada.",
+  "Las altas letras blancas de la gran banda sobre fondo azul oscuro.",
+  "La banda blanca de escritura cúfica que sigue el trazado del arco.",
+  "Las estrellas y los hexágonos de la semicúpula.",
+  "Las finas bandas de rombos que separan cada parte del decorado."
+]
+themes = ["cerámica", "arquitectura", "oración", "caligrafía", "irán"]
+anecdote = """
+El mihrab pesa más de dos toneladas. Desmontado en paneles en Isfahán, cruzó \
+el Atlántico antes de ser vuelto a montar en Nueva York, donde constituye uno de los referentes de las \
+galerías de arte islámico del Metropolitan Museum."""
+salle = 4
+mur = "est"
+position = 0.0
+largeur = 2.88
+
+[[oeuvres]]
+titre = "Plato con dos pájaros entre flores"
+artiste = "Empire ottoman"
+annee = "hacia 1575–1590"
+image = "plat-iznik.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Dish_Depicting_Two_Birds_among_Flowering_Plants_MET_DP131621.jpg"
+technique = "Pasta silícea pintada bajo vidriado transparente, diámetro 28,4 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un plato de Iznik de 28 cm de diámetro, presentado ampliado: dos pájaros en un ramo de claveles, tulipanes y jacintos."
+description = """
+Sobre el fondo blanco del plato, un ramo brota de una mata de largas hojas verdes. \
+Se reconocen en él una gran flor roja abierta, un clavel rojo, jacintos y un \
+tulipán azules, y una rama de flores de ciruelo. Dos pájaros azul y verde, de \
+larga cola, se han posado entre los tallos: uno, arriba, se inclina hacia una flor, \
+el otro, abajo, se sostiene sobre una gran hoja dentada. El ala, el borde del plato, \
+está cubierta de una siembra de espirales blancas sobre fondo azul, interrumpida por reservas \
+blancas adornadas con pequeñas flores rojas. El borde, recortado en festones, está perfilado con un \
+filete pardo."""
+evocation = """
+Las flores de Iznik son las de los jardines otomanos: el tulipán, el clavel, el jacinto \
+y la rosa, que la corte gustaba de cultivar y que se encuentran en los azulejos, los \
+tejidos y las encuadernaciones. El decorado no es un ramo copiado del natural, sino un jardín \
+ideal, donde los tallos se doblan sin romperse y cada flor conserva su color puro. Los \
+pájaros, raros en estos platos, añaden movimiento y vida. La cenefa de \
+espirales es un recuerdo de las cenefas de olas y de rocas de las porcelanas \
+chinas, muy coleccionadas en la corte de Estambul."""
+histoire = """
+La ciudad de Iznik, la antigua Nicea, al noroeste de Anatolia, produce a partir de \
+finales del siglo XV una cerámica fina, al principio azul y blanca a imitación de la \
+porcelana china. A mediados del siglo XVI, sus talleres trabajan para la corte \
+y para las grandes mezquitas de Estambul, revestidas de miles de azulejos. Este plato \
+data de la gran época de Iznik, bajo el reinado de Murad III, de 1574 a 1595. Fue \
+donado al Metropolitan Museum en 1959 por James J. Rorimer, entonces director del museo, \
+en homenaje al conservador Maurice S. Dimand."""
+facture = """
+El plato es de pasta silícea, recubierta de un engobe blanco muy puro que sirve de fondo. \
+El pintor traza los contornos en negro y luego aplica el azul de cobalto, el turquesa, el \
+verde y el rojo, antes de cubrirlo todo con un vidriado transparente y brillante. El \
+rojo, puesto a punto hacia mediados del siglo XVI, está hecho de una tierra rica en hierro; \
+aplicado en capa espesa, forma un ligero relieve bajo los dedos. Dominar este rojo \
+sin que corra o ennegrezca en la cocción es una de las grandes proezas de los alfareros \
+de Iznik."""
+details = [
+  "El rojo en relieve del clavel y de la gran flor, en lo alto del ramo.",
+  "El pájaro de arriba que se inclina hacia una flor.",
+  "Las espirales blancas sobre fondo azul del ala.",
+  "El tulipán azul, al pie del ramo.",
+]
+themes = ["cerámica", "flores", "pájaros", "otomanos", "iznik"]
+anecdote = """
+En el siglo XIX, los coleccionistas europeos llamaban a estas cerámicas «lozas de \
+Rodas», porque muchas habían sido compradas en la isla de Rodas. Solo más tarde se \
+devolvieron a Iznik, cuando se reconoció su verdadero origen."""
+salle = 4
+mur = "sud"
+position = 0.0
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Folio del Corán azul"
+artiste = "Ifriqiya"
+annee = "segunda mitad del siglo IX – mediados del siglo X"
+image = "coran-bleu.jpg"
+cadre = "estampe"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Folio_from_the_%22Blue_Qur%27an%22_MET_DP167100.jpg"
+technique = "Oro y plata sobre pergamino teñido con índigo, 30,4 × 40,2 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Oro sobre un pergamino azul noche: una página de uno de los manuscritos más célebres del arte islámico."
+description = """
+La página es más ancha que alta. Sobre el pergamino de un azul profundo, quince líneas \
+de escritura de oro se alinean con una regularidad perfecta. Las letras, angulosas y \
+alargadas en horizontal, pertenecen al cúfico, la más antigua de las grandes \
+escrituras del Corán. Están espaciadas de manera que llenen exactamente cada línea, \
+aun a costa de partir una palabra de una línea a otra. No hay título ni imagen. A la derecha, \
+en el margen, un medallón redondo de plata, hoy ennegrecido por la oxidación, \
+marcaba una división del texto. El borde del folio, desgastado e irregular, lleva las \
+huellas de los siglos y de los montajes sucesivos."""
+evocation = """
+La página reproduce un pasaje de la sura 30, ar-Rum, los Romanos. Pero se \
+contempla tanto como se lee: el cúfico sin puntos ni vocales se dirigía a \
+lectores que ya conocían el texto de memoria, y la belleza de la escritura \
+celebraba la palabra divina. El oro sobre fondo azul evoca un cielo nocturno o piedras \
+preciosas. Con frecuencia se ha relacionado este lujo con los manuscritos imperiales bizantinos, escritos \
+en oro y en plata sobre pergamino púrpura: el Corán azul habría sido una respuesta \
+deslumbrante, en el mundo islámico, a esos libros de prestigio."""
+histoire = """
+El manuscrito, cuyos folios están hoy dispersos, no está firmado ni fechado. \
+Su origen sigue discutiéndose: se ha atribuido a Bagdad, a la España omeya o a \
+Irán, pero la mayoría de los especialistas piensan hoy en el norte de África, y \
+más precisamente en Kairuán, en Túnez. La mayoría de los folios conocidos se \
+conservan en Túnez, y un antiguo inventario de la biblioteca de la Gran Mezquita \
+de Kairuán parece describir un Corán escrito en oro sobre pergamino azul. Las demás páginas \
+se han dispersado en museos y colecciones de todo el mundo."""
+facture = """
+El pergamino, hecho de piel animal, se tiñó con índigo, una técnica rara. Las \
+letras se trazan en oro, y los signos que separaban los versículos se colocaban en \
+plata; este metal se ha ennegrecido con el tiempo, como el medallón del margen. El \
+calígrafo traza las letras con el cálamo, una caña tallada, respetando \
+proporciones precisas: astiles verticales cortos, ligaduras horizontales alargadas. La \
+anchura de la página, mayor que su altura, es típica de los coranes cúficos de \
+esa época."""
+details = [
+  "El gran medallón de plata ennegrecida, en el margen derecho.",
+  "Las ligaduras horizontales muy alargadas entre ciertas letras.",
+  "El pequeño signo redondo dorado que separa dos versículos, hacia abajo a la izquierda.",
+  "Los bordes irregulares del pergamino y las huellas de antiguos montajes.",
+]
+themes = ["corán", "caligrafía", "oro", "manuscrito", "kairuán"]
+anecdote = """
+El Corán azul es uno de los pocos manuscritos coránicos sobre pergamino teñido. Sus \
+folios salen muy raramente al mercado: el Metropolitan Museum de Nueva York solo \
+pudo adquirir el suyo en 2004."""
+salle = 5
+mur = "nord"
+position = -2.2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Píxide de al-Mughira"
+artiste = "Califat de Cordoue"
+annee = "968 (357 de la hégira)"
+image = "pyxide-al-mughira.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Pyxide_d'al-Mughira_-_Musée_du_Louvre_Arts_de_l'Islam_OA_4068.jpg"
+technique = "Marfil de elefante esculpido, altura aproximada 15 cm"
+collection = "Museo del Louvre, París"
+note = "Una caja de marfil de unos quince centímetros, presentada ampliada, esculpida para un hijo del califa de Córdoba."
+description = """
+La caja es un cilindro cerrado por una tapa en cúpula. Toda su superficie está esculpida \
+en relieve profundo. En la panza, cuatro grandes medallones de ocho lóbulos, bordeados de \
+perlas, encierran cada uno una escena. El que se ve aquí muestra a dos jinetes, a \
+uno y otro lado de una palmera, que recogen dátiles; águilas se posan en las \
+palmas. Los demás medallones representan una escena de corte, con un tañedor de laúd, \
+leones que atacan toros y jóvenes que sacan huevos de los nidos. Entre los \
+medallones bullen animales, aves y follaje. En el borde de la \
+tapa, una inscripción en letras cúficas rodea la caja."""
+evocation = """
+La inscripción invoca la bendición de Dios, la alegría y la dicha sobre al-Mughira, \
+hijo del comendador de los creyentes, y da la fecha de 357 de la hégira. Al-Mughira era \
+el hijo menor del califa Abd al-Rahman III. Los historiadores han propuesto leer las \
+imágenes como un mensaje político: la palmera, emblema de los omeyas llegados de Siria, \
+la escena de corte, las fieras que derriban a sus presas. Se ha visto en ello un recordatorio de los \
+derechos del joven príncipe a la sucesión, o, por el contrario, una advertencia. Estas \
+lecturas siguen debatiéndose; la caja, hecha para contener perfumes o joyas, \
+es en todo caso un presente de muy alto rango."""
+histoire = """
+La píxide fue esculpida en 968, sin duda en los talleres de Madinat al-Zahra, la \
+ciudad-palacio fundada cerca de Córdoba por Abd al-Rahman III. Su destinatario tuvo un \
+final trágico: a la muerte de su hermanastro, el califa al-Hakam II, en 976, al-Mughira \
+fue ejecutado por los partidarios del joven Hisham II, que temían que reclamase \
+el trono. Este destino da un relieve particular a los votos de dicha grabados en la \
+tapa. La caja pertenece hoy al departamento de Artes del Islam del \
+Louvre, que conserva uno de los más bellos conjuntos de marfiles andalusíes."""
+facture = """
+La caja está tallada en una sección de colmillo de elefante, un marfil llegado de África \
+por las rutas comerciales. El escultor vacía el cilindro y luego libera las figuras \
+en un relieve tan profundo que algunas partes casi se separan del fondo. Los \
+medallones perlados, los follajes y los animales se imbrican sin dejar vacío. El \
+relieve ha perdido los colores o las incrustaciones que quizá lo animaban. Los \
+talleres del califato de Córdoba produjeron, en pocas décadas, un conjunto de \
+píxides y de cofrecillos esculpidos para la familia y el entorno de los califas."""
+details = [
+  "Los dos jinetes que recogen dátiles a uno y otro lado de la palmera.",
+  "Las águilas posadas en las palmas, sobre los jinetes.",
+  "La inscripción cúfica alrededor de la tapa, que nombra a al-Mughira.",
+  "Las fieras y los animales esculpidos en la cúpula de la tapa.",
+]
+themes = ["marfil", "al-andalus", "corte", "palmera", "omeyas"]
+anecdote = """
+La palmera recuerda a Abd al-Rahman I, el fundador de la dinastía omeya de España, \
+llegado de Siria: según la tradición, compuso un poema a una palmera de su jardín de \
+Córdoba, exiliada como él lejos de su tierra natal."""
+salle = 5
+mur = "nord"
+position = 2.2
+largeur = 0.7
+
+[[artistes]]
+nom = "Iran safavide"
+vie = "Irán, 1501–1736"
+biographie = """
+La dinastía safávida toma su nombre del jeque Safi al-Din, un maestro sufí muerto en 1334, \
+cuya cofradía, establecida en Ardabil, al noroeste de Irán, gana con el correr de las \
+generaciones un poder militar. En 1501, su descendiente Ismail, de apenas \
+catorce años, se hace proclamar sha en Tabriz e impone el chiismo duodecimano como \
+religión de Estado, lo que marca duraderamente a Irán. Su hijo Tahmasp, que reina de 1524 \
+a 1576, protege las artes: su taller real reúne calígrafos, pintores, encuadernadores \
+y dibujantes, que proporcionan también modelos a los tejedores de alfombras y de \
+sedas. La capital pasa de Tabriz a Qazvin y luego, bajo Abbas I, a Isfahán, que \
+el sha transforma a partir de 1598 en torno a una inmensa plaza bordeada de mezquitas y \
+de palacios. Las alfombras safávidas, de medallones, de jardines o de animales, tejidas de lana \
+y a veces de seda, de hilos de oro y de plata, se regalan a los soberanos extranjeros y se \
+exportan hasta Europa. La dinastía se debilita en el siglo XVII; en 1722, tropas \
+afganas toman Isfahán, y el último soberano safávida es apartado en \
+1736."""
+style = """
+El arte safávida ama las composiciones amplias y ordenadas: un medallón central, \
+enjutas, un campo cubierto de roleos floridos, nubes y palmetas que \
+se enroscan con soltura. Los mismos dibujos pasan del manuscrito a la alfombra, de la \
+encuadernación a la cerámica, gracias a los modelos del taller real. Las alfombras de corte, de una \
+finura extrema, han fijado durante siglos la imagen de la «alfombra persa»."""
+
+[[artistes]]
+nom = "Sultanat mamelouk"
+vie = "Egipto y Siria, 1250–1517"
+biographie = """
+Los mamelucos son en origen soldados esclavos, comprados de niños en las estepas \
+de Asia central o del Cáucaso, convertidos y formados en el oficio de las armas. En 1250, los \
+de la dinastía ayubí se apoderan del poder en Egipto. Diez años después, en 1260, \
+detienen a los mongoles en Ayn Yalut, en Palestina, y luego expulsan a los últimos Estados \
+cruzados con la toma de Acre en 1291. Su sultanato se extiende de Egipto a Siria y \
+protege las ciudades santas de La Meca y Medina. El poder no se transmite allí \
+siempre de padre a hijo: los emires, jefes militares, se disputan el trono. El \
+Cairo se convierte en una de las mayores ciudades del mundo, y los sultanes y los emires la \
+cubren de mezquitas, madrasas, mausoleos y hospitales, a menudo reunidos en \
+complejos. El reinado de al-Nasir Muhammad, en la primera mitad del siglo XIV, \
+marca una cumbre. Cada emir ostenta un emblema que recuerda su cargo en la corte: la \
+copa del copero, la espada del portaespada. En 1516 y 1517, los ejércitos otomanos de \
+Selim I conquistan Siria y luego Egipto, y ponen fin al sultanato."""
+style = """
+El arte mameluco es un arte de encargo, al servicio de una élite militar que afirma \
+su rango mediante sus fundaciones piadosas. Sobresale en los objetos preciosos: el vidrio \
+esmaltado y dorado, el metal incrustado de plata y oro, los coranes de gran formato y luego \
+las alfombras. Las grandes inscripciones, de letras altas y esbeltas, se convierten allí poco \
+a poco en el decorado principal, junto a los emblemas y a una geometría rigurosa."""
+
+[[artistes]]
+nom = "Empire ottoman"
+vie = "Anatolia, Balcanes y Próximo Oriente, hacia 1300–1922"
+biographie = """
+El Imperio otomano nace hacia 1300 de un pequeño principado turco del noroeste de \
+Anatolia, dirigido por Osmán, que le da su nombre. Sus sucesores se extienden por \
+Anatolia y los Balcanes. En 1453, Mehmed II toma Constantinopla, que se convierte \
+con el nombre de Estambul en la capital del imperio. En el siglo XVI, Selim I conquista \
+Siria y Egipto en 1516-1517, y su hijo Solimán el Magnífico, que reina de 1520 a \
+1566, lleva el imperio a su apogeo, de Hungría a Irak y al norte de África. La \
+corte organiza la creación artística: el taller imperial de dibujo, el nakkaşhane, \
+proporciona los modelos de los manuscritos, los tejidos, las alfombras y las cerámicas, y \
+el arquitecto Sinan construye en Estambul y en Edirne mezquitas cubiertas de azulejos \
+de Iznik. Los talleres de alfombras de Anatolia, como los de Ushak, exportan sus \
+producciones hacia Europa, donde los pintores las representan en sus cuadros. \
+El imperio, debilitado a partir del siglo XVIII, desaparece tras la Primera Guerra \
+Mundial, en 1922."""
+style = """
+El estilo de la corte otomana, fijado a mediados del siglo XVI, es un arte de la flor: \
+tulipanes, claveles, jacintos, rosas y capullos de ciruelo, mezclados con largas hojas \
+dentadas en forma de sable. Los colores son francos, con el azul, el turquesa, \
+el verde y un rojo brillante. El mismo repertorio pasa del dibujo del taller imperial \
+a los azulejos, los platos, las sedas y las alfombras."""
+
+[[artistes]]
+nom = "Céramistes de Kashan et d'Ispahan"
+vie = "Irán, siglos XII–XIV"
+biographie = """
+A partir del siglo XII, Kashan, ciudad del centro de Irán al pie de las montañas, \
+se convierte en el gran foco de la cerámica de lujo del mundo iranio. Sus alfareros ponen \
+a punto o perfeccionan la pasta silícea, blanca y fina, y aplican en ella todas \
+las técnicas: decoración pintada bajo vidriado, reflejo metálico de brillos dorados, esmaltes \
+de pequeño fuego. Algunas familias de alfareros son conocidas por sus firmas en \
+azulejos y vasos, como la de Abu Tahir, uno de cuyos miembros, Abu'l-Qasim, redacta en \
+1301 un tratado sobre la fabricación de la cerámica. Los talleres de Kashan suministran \
+revestimientos con reflejo metálico para los santuarios de todo Irán, mihrabs y frisos de \
+azulejos en estrella y en cruz. Las invasiones mongolas, a partir de 1219, asolan el \
+país, pero la producción se reanuda bajo la dinastía mongola de los ilkhánidas, que \
+encargan grandes decorados de cerámica. En el siglo XIV, en Isfahán, en Yazd o en \
+Kermán, se desarrolla el mosaico de cerámica, hecho de piezas talladas, que cubrirá \
+más tarde las fachadas de las mezquitas timúridas y safávidas."""
+style = """
+Los ceramistas iranios de esta época buscan el brillo de la porcelana china y \
+lo superan por el color: el turquesa, el azul de cobalto, el reflejo dorado. Sus \
+decorados asocian poesía persa, figuras de corte, criaturas fantásticas y \
+caligrafía coránica. El mosaico de cerámica del siglo XIV lleva el arte del \
+revestimiento a una precisión geométrica nueva."""
+
+[[artistes]]
+nom = "Ifriqiya"
+vie = "Túnez y este de la actual Argelia, siglos IX–X"
+biographie = """
+Ifriqiya es el nombre árabe de la provincia que corresponde aproximadamente a la actual \
+Túnez. Conquistada a finales del siglo VII, tiene por capital Kairuán, fundada en \
+670. En 800, el califa abasí de Bagdad confía su gobierno a Ibrahim ibn \
+al-Aglab, cuyos descendientes, los aglabíes, reinan durante un siglo reconociendo \
+a la vez la autoridad del califa. Reconstruyen la Gran Mezquita de Kairuán, \
+cuyo mihrab está adornado con azulejos con reflejo metálico llegados de Irak, y conquistan Sicilia. La \
+ciudad es entonces un gran centro de estudios religiosos, y la biblioteca de la Gran \
+Mezquita ha conservado hasta nuestros días coranes y libros sobre pergamino. En 909, \
+los fatimíes, una dinastía chií que se reclama de Fátima, la hija del Profeta, \
+derrocan a los aglabíes y fundan la ciudad de Mahdia, en la costa. En 969, \
+conquistan Egipto y fundan El Cairo, donde se instalan unos años más \
+tarde, dejando Ifriqiya a sus gobernadores."""
+style = """
+Los coranes de Ifriqiya de esta época se copian sobre pergamino, en un formato más \
+ancho que alto, en escritura cúfica: letras angulosas, de ligaduras alargadas, \
+pocas líneas por página, a menudo sin puntos ni vocales. El oro, la plata y los \
+colores sirven para marcar los versículos y las suras. El Corán azul lleva este lujo al \
+extremo, con sus letras de oro sobre fondo teñido."""
+
+[[artistes]]
+nom = "Califat de Cordoue"
+vie = "Al-Ándalus (península ibérica), 929–1031"
+biographie = """
+En 756, Abd al-Rahman, un príncipe omeya escapado de la matanza de su familia en Damasco, \
+funda en Córdoba un emirato independiente de Bagdad. En 929, su descendiente Abd al-Rahman \
+III se proclama califa, comendador de los creyentes, frente a los califas abasíes de Bagdad \
+y a los fatimíes del norte de África. Hace construir cerca de Córdoba una ciudad-palacio, \
+Madinat al-Zahra, donde trabajan los mejores artesanos del país. Su hijo al-Hakam II, \
+que reina de 961 a 976, príncipe letrado que reúne una inmensa biblioteca, amplía la \
+Gran Mezquita de Córdoba y hace colocar en ella mosaicos de oro por un artesano enviado desde \
+Bizancio. Tras su muerte, el poder pasa al visir al-Mansur, el Almanzor de las crónicas \
+cristianas, que gobierna en nombre del joven califa Hisham II. A comienzos del siglo XI, \
+estalla una guerra civil, Madinat al-Zahra es saqueada y el califato se abole en 1031 \
+; al-Ándalus se divide en pequeños reinos. Muchos marfiles del califato han ido a \
+parar después a los tesoros de las iglesias cristianas."""
+style = """
+Los talleres del califato de Córdoba esculpieron en marfil cajas redondas, las \
+píxides, y cofrecillos rectangulares, cubiertos de roleos, animales y escenas \
+de corte, a menudo con una inscripción a nombre de su destinatario. El decorado, denso y \
+simétrico, mezcla herencias del Oriente omeya, de Bizancio y de la Antigüedad."""

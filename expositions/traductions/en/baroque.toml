@@ -1,0 +1,449 @@
+[exposition]
+ordre = 40
+nom_court = "Baroque"
+mouvement = "Baroque"
+cadre = "baroque"
+couleur = "#7a2e2a"
+titre = "The Baroque, the Theater of Light"
+artiste = "Caravaggio, Artemisia, Rubens, Velázquez, Poussin…"
+dates = "1599–1678"
+accroche = "Virtual exhibition · Prado Museum, Madrid"
+introduction = """
+In the 17th century, European painting sought to seize and to move: Caravaggio's dramatic light, Rubens's quivering flesh, Velázquez's unsettling truthfulness, but also the serene order of Poussin and Claude Lorrain. The visit brings together nine painters, from Rome to Seville and from Antwerp to Lorraine, in ten canvases. The building is inspired by the Prado Museum in Madrid: a long vaulted central gallery with dark red walls and, at its middle, the room where Las Meninas awaits the visitor."""
+vitrine = "menines.jpg"
+
+[musee]
+nom = "Prado Museum"
+ville = "Madrid, Spain"
+architecte = "Juan de Villanueva"
+construction = "1785–1819"
+presentation = """
+In 1785, Charles III entrusted Juan de Villanueva with the construction, on the Paseo del Prado, of a natural history cabinet, the centerpiece of a district devoted to the sciences together with the neighboring botanical garden. The works, interrupted by the war against Napoleon, were completed under Ferdinand VII, who installed in it the paintings of the royal collections: the Royal Museum of Painting and Sculpture opened on 19 November 1819. The neoclassical building, of brick and granite, stretches along the promenade; at the center of its façade, a columned portico forms the Velázquez Door. Inside, a long vaulted gallery, lit from above, distributes the rooms. The kings of Spain having collected Titian, Rubens, Bosch and their own court painters, the Prado holds the greatest ensembles of Velázquez and Goya, with Las Meninas and The Third of May 1808. Rafael Moneo enlarged it in 2007 around the cloister of the Jerónimos."""
+ici = """
+The ARTEON building takes up the layout of the Prado: an entrance in the middle of the façade and a long gallery running through it. One enters from the south into the Velázquez vestibule, then into the central gallery, forty meters long and twelve high, with dark red walls. Opposite, to the north, opens the room of Las Meninas, square, with gray-green walls. At the west end of the gallery, the room “Chiaroscuro”, red as well; at the east end, the room “The Classical Landscape”, in a pale green."""
+
+[[salles]]
+nom = "The Velázquez Vestibule"
+theme = "The entrance, like the Velázquez Door that opens in the middle of the long façade of the Prado."
+murs = "#e6dccb"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Central Gallery"
+theme = "Beneath the vault, the sensuality of Rubens, the fervor of Murillo and the recollection of Zurbarán."
+murs = "#b26a5c"
+x = 0
+z = -9
+largeur = 40
+profondeur = 10
+hauteur = 12
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "The Room of Las Meninas"
+theme = "Velázquez, painter to the king: Las Meninas at the far end, and The Forge of Vulcan painted in Rome."
+murs = "#97a38c"
+x = 0
+z = -20
+largeur = 12
+profondeur = 12
+hauteur = 9
+
+[[salles]]
+nom = "Chiaroscuro"
+theme = "Caravaggio and his heirs: the Calling of Saint Matthew, Artemisia's Judith, La Tour's Cheat."
+murs = "#a95a4e"
+x = -26
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "The Classical Landscape"
+theme = "Poussin and Claude Lorrain in Rome: the Arcadia of the shepherds and a seaport at sunset."
+murs = "#b7bfa8"
+x = 26
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 7
+
+[[oeuvres]]
+titre = "The Calling of Saint Matthew"
+artiste = "Le Caravage"
+annee = "1599–1600"
+image = "vocation-saint-matthieu.jpg"
+technique = "Oil on canvas, 322 × 340 cm"
+collection = "Contarelli Chapel, church of San Luigi dei Francesi, Rome"
+note = "A ray of light crosses a dark room: Christ points to the tax collector who is about to follow him."
+description = """
+In a bare room with gray walls, five men sit around a table on which money is being counted. They wear the clothes of Rome in 1600: striped doublets, plumed hats, swords at their sides. At the right, almost in shadow, two barefoot men draped in antique fashion have just entered: Christ, of whom one sees little more than the face and the outstretched hand, and Saint Peter, seen from behind. Christ's hand points to one of the players. A bearded man at the center points to himself, as if to say “me?”, while at the end of the table a young man, head bowed, goes on gathering the coins. Above the figures, a window with veiled panes remains dark: the light comes from elsewhere, from the upper right, and follows Christ's gesture."""
+evocation = """
+The Gospel tells in a single sentence that Jesus saw Matthew, the tax collector, sitting at the tax office, and said to him: “Follow me.” Caravaggio turns this call into a suspended instant, just before the decision. The light that falls diagonally has been read as the image of divine grace breaking into an ordinary world, amid money and gambling. Christ's hand almost repeats that of Adam in Michelangelo's Creation, in the Sistine Chapel: salvation answers creation. Historians still debate the identity of Matthew: the bearded man who points to himself, as the traditional reading has it, or the young man bent over the coins, who has not yet raised his eyes. This hesitation is part of the painting's power."""
+histoire = """
+The French cardinal Mathieu Cointrel, known as Contarelli, who died in 1585, had left funds to decorate his funerary chapel in San Luigi dei Francesi, the church of the French in Rome. After years of delay, the commission for the two side canvases, devoted to the calling and the martyrdom of Saint Matthew, fell in 1599 to Caravaggio, thanks to his patron, Cardinal Francesco Maria Del Monte. It was his first public commission. Installed in 1600, the two canvases caused a sensation and made their author famous overnight. The painter then added the altarpiece, Saint Matthew and the Angel, whose first version was rejected. Unlike most of the works in this exhibition, the Calling has never left the place for which it was painted: it still hangs in the chapel."""
+facture = """
+Caravaggio paints directly on the canvas, with no known preparatory drawing; small incisions that served him as guides have been noted in the ground layer. On a very dark brown background, he lets emerge only what the light touches: faces, hands, white sleeves. It is the violent contrast that would be called tenebrism. The frank colors, red, yellow, green, are reserved for the fashionably dressed young men. X-ray examination has shown that Saint Peter was added at a second stage: at the outset, Christ entered alone."""
+details = [
+  "Christ's hand, half open, which recalls that of Adam in Michelangelo.",
+  "The old man with spectacles who leans over the money, seeing nothing.",
+  "The window with its open shutter, whose panes remain dark.",
+  "The bare feet of Christ and Peter, against the shoes and feathers of the players.",
+  "The coins that the young man at the end of the table is still gathering.",
+]
+themes = ["light", "calling", "Gospel", "money", "chiaroscuro"]
+anecdote = """
+In the church of San Luigi dei Francesi, the Contarelli Chapel is plunged in half-light: one must slip a coin into a box to switch on the lighting for a few moments, and then see Caravaggio's three paintings emerge from the shadow."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 3.4
+
+[[oeuvres]]
+titre = "Judith Beheading Holofernes"
+artiste = "Artemisia Gentileschi"
+annee = "c. 1620"
+image = "judith-holopherne.jpg"
+technique = "Oil on canvas, 199 × 162.5 cm"
+collection = "Uffizi Gallery, Florence"
+note = "Judith and her maidservant hold down the Assyrian general and cut his throat: the most violent biblical scene of the century."
+description = """
+On a bed with white sheets, a man thrown backward, head toward the viewer, struggles. Two women overpower him. The maidservant, wearing a turban, presses with all her weight on his chest and pins his arms. Judith, in a gold silk dress with sleeves rolled up, holds his hair firmly with one hand and with the other drives a sword into his neck. Blood spurts in streams and runs down the sheet to the edge of the mattress. Holofernes's face, eyes wide open, expresses terror. The three bodies form a tangle of arms converging on the blade, at the exact center of the canvas. Around them, the background is entirely black: the general's tent, plunged in night, has vanished."""
+evocation = """
+The Book of Judith tells how a Jewish widow saves her city of Bethulia, besieged by the Assyrian army, by seducing and then killing the general Holofernes. The subject was common, but Artemisia makes it a physical act, almost a butcher's work, in which the two women act together with cold determination. The painting has often been read in light of her life: raped in 1611 by the painter Agostino Tassi, she had had to endure a humiliating trial. Many see in it a painted revenge; other historians warn against this overly biographical reading and recall that it is first of all a demonstration of craft, meant to rival Caravaggio on a subject he had himself treated."""
+histoire = """
+Artemisia had painted a first version of the subject around 1612–1613, now in the Capodimonte Museum in Naples. Settled in Florence after her marriage, she took up the composition again, larger and more refined, around 1620, probably for Grand Duke Cosimo II de' Medici. According to a tradition often repeated, the grand duchess found the painting so frightening that it was relegated to a dark corner of the Pitti Palace, and the painter needed the support of her friend Galileo to obtain payment for it. Long little regarded, the work remained in the Medici collections, which passed to the State, and now belongs to the Uffizi, where it counts among the most admired paintings."""
+facture = """
+Artemisia learned from her father, Orazio Gentileschi, a friend of Caravaggio, painting from the live model and the side lighting that sets figures off against black. She adds to it a luxury of fabrics typical of Florence: the damask silk of the dress, the red velvet of the cover, the crumpled white sheet. The composition is built as a triangle around the blade, and the arms of the three figures cross like the spokes of a wheel. The jets of blood, painted in regular arcs, are of almost clinical precision."""
+details = [
+  "Judith's bracelet, ornamented with medallions in which Artemis, the painter's namesake, can be recognized.",
+  "The jets of blood that draw arcs, and the trickles on the white sheet.",
+  "The cross-shaped hilt of the sword, right at the center of the painting.",
+  "The maidservant's clenched fist on Holofernes's chest.",
+]
+themes = ["Bible", "violence", "heroine", "women", "chiaroscuro"]
+anecdote = """
+In 1616, Artemisia Gentileschi became the first woman admitted to the Accademia delle Arti del Disegno in Florence, the academy founded under Cosimo I de' Medici, which allowed her to buy her own colors and to sign her own contracts."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 1.62
+
+[[oeuvres]]
+titre = "The Cheat with the Ace of Diamonds"
+artiste = "Georges de La Tour"
+annee = "c. 1636–1638"
+image = "tricheur-as-de-carreau.jpg"
+technique = "Oil on canvas, 106 × 146 cm"
+collection = "Louvre Museum, Paris"
+note = "Around a game of cards, three accomplices conspire to fleece a naive young man."
+description = """
+Four figures stand around a table covered with a green cloth, against a dark background. At the right, a richly dressed young man, in a plumed hat and embroidered doublet, looks at his hand without suspecting anything; before him, a pile of gold coins. At the center, a woman with a pearl-trimmed neckline, wearing a red turban with feathers, casts a sidelong glance at her maidservant, who pours her a glass of wine. At the left, a man with his face in shadow turns toward us: behind his back, he draws from his belt an ace of diamonds, which he is about to slip into his hand. No one speaks, but the glances and the hands tell the whole story."""
+evocation = """
+The painting stages, according to a common 17th-century reading, the three temptations that ruin the young: gambling, wine and lust. The young man is a figure of the prodigal son, doomed to ruin. But La Tour does not preach: he makes us accomplices. The cheat looks at us, and we are the only ones to see his hidden card, as in the theater when the audience knows more than the victim. The scene takes up a theme made fashionable in Rome by Caravaggio, in his Cardsharps, but La Tour makes of it a silent, frozen comedy, of very cold irony. It has been seen as a reflection of the society of war-torn Lorraine, where money and cunning often decided men's fate."""
+histoire = """
+Like almost all of La Tour's work, the painting is documented by no text of its time, and its date is known only from style. The painter made two versions: one, with an ace of clubs, is in the Kimbell Art Museum in Fort Worth, Texas; the other, with an ace of diamonds, is this one. Forgotten for nearly three centuries, it reappeared in the 20th century in a private collection, at the moment when its author was being rediscovered. Its acquisition by the Louvre, in 1972, caused a great stir and sparked lively debate. It now counts among the most popular paintings of the Department of Paintings."""
+facture = """
+In this “day” painting, lit by a side daylight, La Tour simplifies forms to the point of geometry: the courtesan's face is an almost perfect oval, the table a block, the hands small pieces of architecture. The surfaces are smooth, with no visible trace of the brush. The fabrics, on the contrary, are carefully detailed: embroidery of the doublet, stripes of the bodice, feathers of the headdresses. The palette plays on reds and golds that stand out against the black background."""
+details = [
+  "The ace of diamonds drawn from the belt, behind the cheat's back.",
+  "The courtesan's eyes, turned sideways toward the maidservant, without moving her head.",
+  "The glass of red wine that the maidservant holds in her hand.",
+  "The gold coins piled before the young man, ready to change hands.",
+]
+themes = ["gambling", "cheating", "vices", "glances", "comedy"]
+anecdote = """
+La Tour had been completely forgotten. In 1915, the German art historian Hermann Voss restored to him two nocturnal scenes in the museum in Nantes; the exhibition “Painters of Reality” at the Orangerie, in Paris in 1934, completed his return to the light."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.46
+
+[[oeuvres]]
+titre = "The Three Graces"
+artiste = "Pierre Paul Rubens"
+annee = "c. 1630–1635"
+image = "trois-graces.jpg"
+technique = "Oil on oak panel, 221 × 181 cm"
+collection = "Prado Museum, Madrid"
+note = "The three goddesses of grace and joy, entwined in a garden: a hymn to flesh, kept by Rubens until his death."
+description = """
+Three nude women hold one another by the shoulders and waist, in a motionless round, in the middle of an open landscape. The one at the center is seen from behind; her two companions, in three-quarter view, turn toward her and exchange tender glances. A transparent veil passes from one to the other and underlines the curve of the bodies. Above them, a garland of roses is hung between two trees, and a white cloth is draped over a branch. At the right, a fountain of carved stone bears a little Cupid who holds a cornucopia from which the water flows. At the left, in the distance, deer graze in a meadow bathed in light. The very pale flesh stands out against the blue sky and the greens of the garden."""
+evocation = """
+Daughters of Zeus in Greek mythology, the three Graces, Aglaia, Euphrosyne and Thalia, embody beauty, joy and abundance; their round has symbolized since Antiquity generosity, the gift that circulates and returns. Rubens takes up the classical pose, one figure from behind between two seen from the front, but frees it of all statue-like coldness. His Graces are women of flesh, with full bodies and pearly skin, the ideal of beauty of 17th-century Flanders. In the Grace at the left, the features of Hélène Fourment have often been recognized, whom the painter married in 1630, at fifty-three, when she was sixteen: the painting would thus also be a song of love and of happiness in his old age."""
+histoire = """
+Rubens painted this canvas for himself, in the happy years of his second marriage, and kept it in his house in Antwerp until his death, in 1640. At the sale of his possessions, King Philip IV of Spain, his greatest admirer, had his agents buy several paintings from the studio, including this one. The work thus reached Madrid and the royal palaces, where it remained for nearly two centuries before entering the Prado Museum, opened in 1819 to present the collections of the Crown to the public. It is thanks to this passion of Philip IV that the Prado today holds one of the richest ensembles of paintings by Rubens in the world."""
+facture = """
+Rubens paints on a large oak panel, with thin, fluid layers that here and there let the pale ground show through. The flesh tones are built in superimposed glazes: pearly white, pinks, and light bluish reflections in the shadows, which give the skin its transparency. The touch, very free in the landscape and the garland, becomes more blended on the bodies. The composition is organized around the veil that links the three figures and the diagonal of the arms."""
+details = [
+  "The transparent veil that passes from one Grace to another and links them.",
+  "The tiny deer in the meadow, at the left, under the trees.",
+  "The little stone Cupid on the fountain, at the right, with his cornucopia.",
+  "The royal inventory number, painted in white in the lower left corner.",
+]
+themes = ["mythology", "nude", "beauty", "love", "garden"]
+anecdote = """
+During his stay in Madrid in 1628–1629, Rubens befriended the young Velázquez, twenty-two years his junior: according to Francisco Pacheco, Velázquez's father-in-law, the two painters visited the monastery of the Escorial together."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.81
+
+[[oeuvres]]
+titre = "The Immaculate Conception of the Venerables (the “Soult Immaculate Conception”)"
+artiste = "Bartolomé Esteban Murillo"
+annee = "c. 1678"
+image = "immaculee-conception.jpg"
+technique = "Oil on canvas, 274 × 190 cm"
+collection = "Prado Museum, Madrid"
+note = "The Virgin rises on a cloud, borne by a swarm of cherubs: the Sevillian model of the Immaculate Conception."
+description = """
+At the center of a golden sky, a young woman in a white dress and a large blue mantle rises, hands crossed on her chest, eyes turned upward. A luminous halo shines around her head, and a thin crescent moon appears under her feet. All around her, a swarm of plump cherubs forms a spiral: some hold branches and ribbons, others look at her or play in the clouds, still others are only winged heads that melt into the haze. The mantle, lifted by the wind, wraps around her body and accompanies the upward movement. The background passes from luminous gold, around the face, to bluish grays in the corners."""
+evocation = """
+The dogma of the Immaculate Conception, which holds that Mary was conceived without original sin, was not yet official in the 17th century, but Seville defended it with passion. Murillo fixed its image for generations: a very young girl, pure and gentle, between heaven and earth, after the woman “clothed with the sun, with the moon under her feet” of the Apocalypse. The colors, white for purity and blue for heaven, became those of the Virgin in all Catholic iconography. After the plague that had killed nearly half the people of Seville in 1649, these tender and consoling visions answered the need for comfort of a stricken city. The painting belongs to Murillo's last period, the most vaporous."""
+histoire = """
+Canon Justino de Neve, friend and patron of Murillo, commissioned the painting for the church of the Hospital of the Venerable Priests in Seville, a retirement home for elderly priests that he had founded. During the French occupation of Seville, Marshal Soult, a great plunderer of artworks, seized it. At the sale of his estate, in 1852, the Louvre bought it for 615,300 francs: it was then the highest price ever paid for a painting. It remained in the Louvre for nearly ninety years, until 1941, when the Vichy government ceded it to Franco's Spain as part of an exchange of artworks. It then entered the Prado Museum."""
+facture = """
+Murillo practices here his “vaporous style”: contours dissolve in a golden light, the cherubs are born of the haze in light, transparent touches. Only the figure of the Virgin is built with clear volumes, which makes her advance toward us. The composition draws an ascending spiral, typical of the Baroque, from the group of angels at the bottom to the raised face. The folds of the blue mantle, very ample, give movement to an otherwise motionless figure."""
+details = [
+  "The thin crescent moon under the Virgin's feet, half hidden in the clouds.",
+  "The cherubs at the bottom, who stretch out their arms toward her.",
+  "Mary's raised face, turned toward a light that cannot be seen.",
+  "The angels' heads almost effaced in the golden haze, at the upper left.",
+]
+themes = ["Virgin", "devotion", "heaven", "angels", "Seville"]
+anecdote = """
+The painting's return to Spain, in 1941, was part of a wider exchange: the same agreement also returned to Madrid the Lady of Elche, an Iberian bust held in the Louvre since 1897, France receiving in exchange other Spanish paintings."""
+salle = 2
+mur = "nord"
+place = 9
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Agnus Dei"
+artiste = "Francisco de Zurbarán"
+annee = "c. 1635–1640"
+image = "agnus-dei.jpg"
+technique = "Oil on canvas, 37.3 × 62 cm"
+collection = "Prado Museum, Madrid"
+note = "A lamb with its legs bound, lying on a stone: an image of Christ's sacrifice, of absolute simplicity."
+description = """
+Against an entirely black background, a lamb lies on a slab of gray stone, seen in profile. Its four legs are tied with a small cord, and its hooves project beyond the edge of the stone, toward us. Its head rests flat, eyes half closed, in an attitude of total surrender; small coiled horns frame its ear. Its fleece, very white, is rendered curl by curl and catches all the light, which comes from the left. There is nothing else: no landscape, no figure, no inscription, no halo. The small format reinforces the impression of intimacy, as if the animal had been laid there, within arm's reach."""
+evocation = """
+The lamb is one of the oldest symbols of Christ: Saint John the Baptist calls him “the Lamb of God, who takes away the sin of the world”, and the prophet Isaiah foretells a servant led like a lamb to the slaughter, who does not open his mouth. The animal with bound legs, lying as on an altar, thus evokes the Passion and the sacrifice accepted. But Zurbarán uses no religious attribute: meditation arises only from the animal's presence, its gentleness and its vulnerability. These paintings have been linked to the spirituality of the monastic orders for which he worked, made of silence and contemplation. The work is also a still life, in the literal sense: a life that is about to be offered."""
+histoire = """
+Zurbarán painted several versions of this motif, in his Seville workshop, around 1635–1640. Some bear a halo and a Latin inscription, like the one in the San Diego Museum of Art, in California; the one in the Prado, the barest, has neither. It is not known for whom they were made: their small format suggests paintings for private devotion, meant for an oratory or a convent cell rather than a church. Long kept in private collections, the Madrid canvas entered the Prado at the end of the 20th century, where it has become one of the most reproduced images of Spanish painting."""
+facture = """
+Zurbarán applies to the religious subject the rigor of the bodegones, Spanish still lifes: a single object, lit from the side, set on the edge of a ledge against a black background. The wool is modeled in small curls of thick paint, almost in relief, which contrast with the smooth surface of the stone. The chiaroscuro, inherited from Caravaggio, isolates the animal and gives it a sculptural presence. The drawing, of extreme precision, leaves nothing to chance."""
+details = [
+  "The cord that binds the four legs, right at the edge of the slab.",
+  "The locks of wool, painted one by one in relief.",
+  "The lamb's half-closed eye, almost asleep.",
+  "The hooves that project beyond the stone, as if they were coming out of the painting.",
+]
+themes = ["sacrifice", "lamb", "symbol", "silence", "still life"]
+anecdote = """
+When Seville's clientele turned to Murillo, Zurbarán's workshop shipped entire series of paintings to Spanish America, notably to Lima and Buenos Aires: saints, apostles and Virgins left by the dozens."""
+salle = 2
+mur = "sud"
+place = 3
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Las Meninas"
+artiste = "Diego Velázquez"
+annee = "1656"
+image = "menines.jpg"
+technique = "Oil on canvas, 318 × 276 cm"
+collection = "Prado Museum, Madrid"
+note = "The little infanta, her maids of honor, her dwarfs, her dog, and the painter himself: the most commented-upon painting in the history of art."
+description = """
+In a tall room of the royal palace, in the foreground, the little infanta Margarita Teresa, five years old, in a white dress with a farthingale, is surrounded by two maids of honor, the “meninas”: one, kneeling, offers her a red jug on a tray, the other makes a curtsy. At the right, a dwarf woman, Mari Bárbola, and a dwarf man, Nicolasito Pertusato, who rests his foot on a large drowsing dog. Behind, a duenna in widow's dress speaks to a guard. At the left, before an immense canvas seen from behind, Velázquez himself, brush and palette in hand, looks toward us. In the background, a mirror reflects King Philip IV and Queen Mariana, and in the frame of a door, a man pauses on the steps, in the light."""
+evocation = """
+Whom are we looking at, and who is looking at us? The mirror suggests that the king and queen stand in our place, before the painting: the infanta and her retinue would have come to watch them pose. Velázquez thus inverts the usual order of the portrait, and places us at the heart of an endless play of glances. The painter represents himself there on equal terms with the royal family, which has been read as a claim to the nobility of his art, at a time when painting still passed for a manual trade. The philosopher Michel Foucault opened The Order of Things, in 1966, with an analysis of this painting; the Neapolitan painter Luca Giordano is said to have called it “the theology of painting”."""
+histoire = """
+Velázquez, court painter since 1623, painted the canvas in 1656 in the Cuarto del Príncipe of the Alcázar of Madrid, the apartment of the former crown prince that served him as a studio. The palace inventories then call it The Family of Philip IV; the title of Las Meninas appears only in 1843, in a Prado catalogue. The painting, the king's property, remained in the private apartments and was seen only by a few intimates. In 1734, it escaped the fire that destroyed the Alcázar. It then passed to the new Royal Palace, then entered the Prado Museum at its opening, in 1819. Today it occupies Room 12, at the heart of the museum, halfway along the central gallery."""
+facture = """
+Velázquez paints in quick, separate touches that, up close, describe nothing and, from afar, become fabric, hair, reflections: the infanta's ribbons are only a few streaks of pink. Above all he gives body to the air of the room. The light enters through the windows at the right, settles on the group in the foreground, then gradually fades toward the ceiling, before reappearing in the door at the back. The palette, very restrained, plays on grays, blacks and whites, enhanced by touches of red."""
+details = [
+  "The red cross of the Order of Santiago on the painter's chest, added after 1659.",
+  "The mirror at the back, in which the king and queen are reflected, blurred.",
+  "José Nieto, the queen's chamberlain, in silhouette in the bright doorway.",
+  "Little Nicolasito's foot resting on the back of the mastiff, which does not flinch.",
+  "The small red jug, a búcaro, that the menina holds out to the infanta.",
+]
+themes = ["court", "gaze", "self-portrait", "childhood", "mirror", "painting"]
+anecdote = """
+In 1656, Velázquez was not yet a knight: the cross of the Order of Santiago, which he received in 1659, was painted on his doublet later. A legend has it that King Philip IV drew it himself, after the painter's death."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.76
+
+[[oeuvres]]
+titre = "The Forge of Vulcan"
+artiste = "Diego Velázquez"
+annee = "1630"
+image = "forge-de-vulcain.jpg"
+technique = "Oil on canvas, 223 × 290 cm"
+collection = "Prado Museum, Madrid"
+note = "Apollo comes to tell Vulcan that his wife Venus is deceiving him with Mars: an ancient myth in a Spanish forge."
+description = """
+In a dark forge, five bare-chested men break off their work. At the left, a young man crowned with laurel, haloed in light and draped in an orange mantle, raises a finger to speak: it is the god Apollo. Facing him, near the anvil where a piece of metal glows red, Vulcan, the lame smith with a white headband, gazes at him, mouth agape. His four assistants, the Cyclopes, stand frozen: one from behind, another bent over a piece of armor, two others near the hearth. On the walls hang pieces of armor, and on the hood of the chimney, at the right, sits a small white jug. Through the open door, at the left, a blue sky can be glimpsed."""
+evocation = """
+Velázquez illustrates an episode from Ovid's Metamorphoses: Apollo, the sun god who sees everything, reveals to Vulcan that Venus, his wife, is deceiving him with Mars, the god of war. A cruel irony, Vulcan is precisely forging a piece of armor, perhaps for his rival. The painter chooses the instant of the news, as each one absorbs the shock, and treats it as a scene of daily life: his gods and his Cyclopes are Madrid artisans, with real bodies and astonished faces. It has been seen both as a lesson in painting the nude, made to rival the Italians, and as a reflection on the divine light that enters the craftsman's workshop."""
+histoire = """
+Velázquez painted the canvas in Rome in 1630, during his first journey to Italy, which Philip IV had allowed him to undertake to study the old and modern masters. He made at the same time Joseph's Bloody Coat Brought to Jacob, now in the monastery of the Escorial. These were not commissions: the painter made them on his own initiative, as demonstrations of what he had learned. Back in Madrid, he kept them for a few years, then the king bought them in 1634 for the Buen Retiro palace, which he was then having decorated. The Forge then passed into the royal collections and entered the Prado Museum in the 19th century."""
+facture = """
+The stay in Italy transformed Velázquez's manner. He abandoned the brown grounds and violent chiaroscuro of his early Sevillian years for a more even light and a lighter palette, made of grays, ochres and warm browns. The nude bodies, studied from the model and from ancient statues, are arranged in a frieze, like a bas-relief. Vivid color is reserved for Apollo's mantle, the only supernatural element of the scene. The white jug foreshadows the painter of still lifes."""
+details = [
+  "The laurel crown and the halo of light around Apollo's head.",
+  "The small white jug on the hood of the chimney, at the upper right.",
+  "The reddened piece of metal on the anvil, which Vulcan holds with tongs.",
+  "Apollo's blue sandal, the only note of cool color on the floor.",
+]
+themes = ["mythology", "nude", "forge", "news", "labor"]
+anecdote = """
+In mythology, the Cyclopes, Vulcan's assistants, have only one eye in the middle of the forehead. Velázquez ignores this detail: his smiths have two eyes, like any workman of his time."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 2.9
+
+[[oeuvres]]
+titre = "The Arcadian Shepherds (Et in Arcadia ego)"
+artiste = "Nicolas Poussin"
+annee = "c. 1638–1640"
+image = "et-in-arcadia-ego.jpg"
+technique = "Oil on canvas, 85 × 121 cm"
+collection = "Louvre Museum, Paris"
+note = "Three shepherds decipher an inscription on a tomb: even in the land of happiness, death is present."
+description = """
+In a landscape of hills and trees under a blue sky crossed by clouds, three shepherds and a young woman stand around a large stone tomb. One of the shepherds, one knee on the ground, follows with his finger the letters carved in the stone: ET IN ARCADIA EGO. Another, leaning on the monument, tilts his head to read. The third turns toward the woman, standing at the right, in a blue dress and yellow mantle, her hand on her hip, and seems to ask her the meaning of the inscription. She listens, calm, her gaze lowered. The few figures are arranged on either side of the tomb, as on an ancient bas-relief."""
+evocation = """
+Arcadia has been, since Virgil, the ideal land of shepherds, poetry and love. The Latin phrase, “Et in Arcadia ego”, means “I too am in Arcadia”: it is Death who speaks, or perhaps the dead man buried there. The shepherds discover that happiness itself is mortal. In a first version, painted around 1627 and kept at Chatsworth, in England, Poussin showed a more agitated scene; here, surprise gives way to meditation. The historian Erwin Panofsky showed how the painting slides from a warning, “remember that you must die”, toward a melancholy reverie on the past. The serene woman has been read as a figure of wisdom."""
+histoire = """
+Poussin painted the canvas in Rome, where he had lived since 1624, shortly before his stay in Paris, where Louis XIII and Richelieu summoned him in 1640. The patron is not known with certainty. The theme itself came from Italy: the painter Guercino had already depicted two shepherds discovering a skull set on a stone bearing the same inscription. The painting entered the collections of Louis XIV in 1685, then passed to the Louvre at the Revolution. In the 18th and 19th centuries it became one of the emblematic images of French classicism, copied and meditated upon by the students of the Academy."""
+facture = """
+Poussin builds his painting with the rigor of an architect. To arrange his compositions, he placed in a box small draped wax figures that he lit like a theater scene. The four figures, inspired by ancient sculpture, balance one another around the tomb, and the gestures of the hands guide the eye toward the inscription. The colors, blue, yellow, red, answer one another from figure to figure. The sober landscape serves as a setting for reflection."""
+details = [
+  "The carved inscription, ET IN ARCADIA EGO, under the kneeling shepherd's finger.",
+  "The shadow of the shepherd's arm on the stone, in which some have wished to see a scythe.",
+  "The hand the young woman rests on the shepherd's shoulder, at the right.",
+  "The bluish mountains on the horizon, at the left, under a cloudy sky.",
+]
+themes = ["death", "Arcadia", "shepherds", "meditation", "antiquity"]
+anecdote = """
+From the 1960s, the painting fed unfounded esoteric theories linking the tomb to a supposed treasure of Rennes-le-Château, in the Aude. Art historians have never found the slightest serious clue to it."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.25
+
+[[oeuvres]]
+titre = "Seaport with the Embarkation of the Queen of Sheba"
+artiste = "Claude Lorrain"
+annee = "1648"
+image = "embarquement-reine-de-saba.jpg"
+technique = "Oil on canvas, 149 × 197 cm"
+collection = "National Gallery, London"
+note = "At sunrise, the Queen of Sheba leaves her palace to go and visit King Solomon."
+description = """
+An imaginary harbor opens onto the sea, facing the sun, which rises just above the horizon. At the right, a palace with columns, crowned with statues, descends to the quay by a great staircase: the Queen of Sheba and her retinue go down the steps toward a boat that awaits her. At the left rise the ruins of a temple with Corinthian columns, behind which sailing ships are moored. At the center, a round tower and an arch closing the roadstead, and a large ship at anchor. In the foreground, porters load chests into boats. The reflection of the sun traces on the water a path of light that leads straight to the viewer."""
+evocation = """
+The Bible tells that the Queen of Sheba, having heard of the wisdom of King Solomon, set out to meet him with camels laden with spices, gold and precious stones. Claude chooses the moment of departure, but the queen occupies only a small place: the true subject is the morning light, which floods the sky, is reflected in the water and gilds the façades. This departure toward the unknown evokes travel, hope, the promise of an encounter. The landscape, at once ancient and modern, composes a kind of dreamed golden age, in which sacred history mingles with the life of a great Mediterranean port. It has been seen as the birth of a poetic landscape, made for contemplation."""
+histoire = """
+Claude painted the picture in Rome in 1648 for Frédéric-Maurice de La Tour d'Auvergne, Duke of Bouillon, as a pendant to the Landscape with the Marriage of Isaac and Rebecca, also kept in London. He kept a drawn copy of it in his Liber Veritatis, the book in which he recorded each of his paintings to distinguish them from forgeries. After several owners, the two canvases reached England, where Claude was particularly admired, and became part of the collection of John Julius Angerstein. In 1824, the purchase of this collection by the British State gave birth to the National Gallery: this seaport is therefore one of its very first paintings."""
+facture = """
+Claude is one of the first painters to place the sun itself in his painting, and to paint against the light. The whole composition is arranged around this luminous point: the buildings, in the wings on either side as on a stage, open a perspective toward the horizon. The light fades from pale yellow to blue, and aerial perspective makes the distances pale. The figures, very small, were sometimes entrusted, according to his biographers, to collaborators."""
+details = [
+  "The disk of the sun, barely risen, at the level of the horizon.",
+  "The retinue of the Queen of Sheba, on the palace steps at the right.",
+  "The chests of gifts being loaded into the boat, in the foreground.",
+  "The reflection of the sun rippling on the water down to the bottom of the painting.",
+]
+themes = ["port", "sun", "journey", "Bible", "landscape"]
+anecdote = """
+Turner so admired this painting that he bequeathed two of his own canvases to the nation on one condition: that they be hung next to two Claudes, including this one. They can still be seen side by side at the National Gallery."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.97
+
+[[artistes]]
+nom = "Le Caravage"
+vie = "Milan, 29 September 1571 – Porto Ercole, 18 July 1610"
+biographie = """
+Michelangelo Merisi was born in Milan and grew up in Caravaggio, the Lombard town whose name he would take. An apprentice in Milan to the painter Simone Peterzano, he arrived in Rome in the early 1590s, without money or connections, and at first painted fruit and young men in costume for dealers. Cardinal Francesco Maria Del Monte noticed him, lodged him in his palace and obtained for him in 1599 the commission for the Contarelli Chapel, which made him famous. There followed large church paintings, some of which were rejected because the saints in them had dirty feet and the faces of common people. Quarrelsome, often armed, he was jailed several times. In May 1606, he killed Ranuccio Tomassoni in a brawl and had to flee Rome, condemned to death. He worked in Naples, then in Malta, where he was made a knight before being imprisoned and expelled from the order, then in Sicily. In 1610, while hoping for a papal pardon, he died on the Tuscan coast, at thirty-eight, on the way back to Rome."""
+style = """
+Caravaggio paints from the live model, without idealizing: wrinkles, black fingernails, spoiled fruit. He plunges his scenes into darkness and lights them with a violent beam that sculpts the bodies, and frames his figures close up, half-length, as if they were in our space. This revolution gave rise throughout Europe to “Caravaggism”: Artemisia Gentileschi, Georges de La Tour, the young Velázquez, Ribera and Rembrandt owe him much."""
+
+[[artistes]]
+nom = "Artemisia Gentileschi"
+vie = "Rome, 8 July 1593 – Naples, c. 1654"
+biographie = """
+The daughter of the painter Orazio Gentileschi, a friend of Caravaggio, Artemisia learned her craft in her father's workshop, in Rome, since women had no access to the academies. In 1611, she was raped by Agostino Tassi, a painter whom her father had given her as a teacher. Orazio filed a complaint: at the trial, in 1612, the young woman was tortured to prove the truthfulness of her testimony. Married shortly afterward, she settled in Florence, where she worked for the Medici, befriended Galileo and in 1616 became the first woman member of the Accademia delle Arti del Disegno. She then stayed in Rome and Venice, and settled in Naples from 1630. Around 1638, she joined her father in London, at the court of Charles I, before returning to Naples, where she ran a workshop until her death. Forgotten for centuries, she was rediscovered in the 20th century and is now among the most studied painters of the Baroque."""
+style = """
+Artemisia takes up Caravaggio's naturalism and chiaroscuro, but with particular attention to fabrics, jewels and flesh tones, inherited from Florentine taste. She paints above all heroines of the Bible and ancient history, Judith, Susanna, Lucretia, Cleopatra, whom she shows active, resolute, often in struggle. Her compositions, powerful and theatrical, established her as one of the great figures of Caravaggism."""
+
+[[artistes]]
+nom = "Georges de La Tour"
+vie = "Vic-sur-Seille (Duchy of Lorraine), 14 March 1593 – Lunéville, 30 January 1652"
+biographie = """
+The son of a baker of Vic-sur-Seille, in Lorraine, then an independent duchy, Georges de La Tour received a training of which almost nothing is known; he may have traveled to Italy or the Netherlands, where he would have discovered Caravaggesque painting. In 1617, he married Diane Le Nerf, daughter of a noble family, and in 1620 settled in Lunéville, where he became a prosperous notable, known for his harsh character toward the peasants. The Thirty Years' War ravaged Lorraine: plague, famine and armies spared not Lunéville, burned in 1638. La Tour then stayed in Paris and received the title of “painter ordinary to the king”; Louis XIII is said to have kept one of his paintings of Saint Sebastian in his bedchamber. Back in Lunéville, he died there in 1652, a few days after his wife, probably of an epidemic. His name then sank into oblivion, until his rediscovery in the 20th century. Only about forty paintings are known by him today."""
+style = """
+La Tour painted “day” scenes, lit by daylight, like The Cheat, and above all “nocturnes” in which a single candle brings recollected figures out of the shadow, like his Magdalenes or his Saint Joseph the Carpenter. His art rests on an extreme simplification of forms, smooth and geometric volumes, a silence and a stillness that give his paintings an almost modern gravity."""
+
+[[artistes]]
+nom = "Pierre Paul Rubens"
+vie = "Siegen (Westphalia), 28 June 1577 – Antwerp, 30 May 1640"
+biographie = """
+Born in Westphalia, where his father, a Protestant, had gone into exile, Rubens grew up in Antwerp after his father's death, received a solid humanist education and trained with several painters of the city. From 1600 to 1608, he lived in Italy in the service of the Duke of Mantua, studied Titian, Michelangelo and the Antique, and in 1603 carried out a first mission to Spain. Back in Antwerp, he became court painter to the archdukes Albert and Isabella, married Isabella Brant and opened an immense workshop, from which came altarpieces, decorations and portraits for all of Europe: the cycle of Marie de' Medici for the Luxembourg Palace, the ceiling of Whitehall in London. A diplomat, he negotiated peace between Spain and England in 1629–1630 and received the title of knight. A widower in 1626, he married Hélène Fourment in 1630, who inspired his most sensual paintings. He died in Antwerp in 1640, at the height of his glory."""
+style = """
+Rubens is the painter of movement and abundance: spiral compositions, powerful bodies, pearly flesh, warm colors laid on with a fluid and rapid touch. He unites the lesson of the Venetians, the monumentality of Michelangelo and the Flemish sense of detail. His influence is immense, from Van Dyck to Watteau, Delacroix and Renoir; at the end of the 17th century, the “Rubenists” would defend, against the partisans of Poussin, the primacy of color over drawing."""
+
+[[artistes]]
+nom = "Bartolomé Esteban Murillo"
+vie = "Seville, baptized 1 January 1618 – Seville, 3 April 1682"
+biographie = """
+The last of the fourteen children of a barber-surgeon of Seville, Murillo was orphaned at ten and raised by his elder sister and brother-in-law. He trained with the painter Juan del Castillo and began by painting devotional pictures sold in series, some of which went to America. Seville was then the great port of the Spanish Empire, but the plague of 1649 killed nearly half of its population. In the 1650s, Murillo became the most sought-after painter of the city, eclipsing Zurbarán. He worked for the cathedral, convents and confraternities, such as that of the Charity, for which he painted a large series of works of mercy. In 1660, he founded with Francisco Herrera the Younger a drawing academy of which he was the first president. A widower in 1663, he remained in Seville all his life. He died in 1682, shortly after a fall from scaffolding which occurred, according to tradition, while he was painting an altarpiece for the Capuchins of Cádiz."""
+style = """
+Murillo is the painter of tenderness: youthful Virgins, Christ Child and little Saint Johns, but also little beggars of the streets of Seville, painted with affection and humor. His manner evolves from a chiaroscuro inherited from Zurbarán toward a “vaporous style” with blended contours and golden tones. Considered in the 18th and 19th centuries the greatest Spanish painter, he fixed the image of the Immaculate Conception throughout Catholic Christendom."""
+
+[[artistes]]
+nom = "Francisco de Zurbarán"
+vie = "Fuente de Cantos (Extremadura), baptized 7 November 1598 – Madrid, 27 August 1664"
+biographie = """
+The son of an Extremaduran merchant, Zurbarán left at fifteen to serve his apprenticeship in Seville. He first settled in Llerena, near his native village, then, summoned by the great religious orders, returned to Seville, where the city council invited him to settle in 1629. There he became the painter of monks: Carthusians, Hieronymites, Franciscans, Dominicans and Mercedarians commissioned from him great cycles for their convents, among them those of the monastery of Guadalupe and the charterhouse of Jerez. In 1634, he was called to Madrid to paint a series of the Labors of Hercules intended for the Buen Retiro palace, where he rubbed shoulders with Velázquez. But from the 1640s, Sevillian taste turned toward Murillo, gentler; Zurbarán worked more and more for export to America. In 1658, he settled in Madrid, softened his manner, and died there in 1664 in modest circumstances."""
+style = """
+Zurbarán paints monumental, motionless figures, monks in meditation, female saints in silk robes, with a chiaroscuro inherited from Caravaggio and a very sharp drawing. His whites, especially those of monastic habits, are among the most beautiful in painting. His rare still lifes, a few objects lined up against a black background, fascinated modern painters by their bareness."""
+
+[[artistes]]
+nom = "Diego Velázquez"
+vie = "Seville, baptized 6 June 1599 – Madrid, 6 August 1660"
+biographie = """
+Diego Rodríguez de Silva y Velázquez entered at twelve the workshop of the Sevillian painter Francisco Pacheco, whose daughter, Juana, he married in 1618. His first works, kitchen and tavern scenes, show the influence of Caravaggio. In 1623, he painted the young King Philip IV, who named him court painter: he would no longer leave Madrid, except for two journeys to Italy, in 1629–1631 and then in 1649–1651, during which he painted the portrait of Pope Innocent X. Rubens, who came to Madrid in 1628, encouraged him to study the Italian masters. At the palace, Velázquez accumulated offices: he organized the decorations, bought paintings for the king and in 1652 became palace marshal. In 1659, he at last obtained a knighthood in the Order of Santiago, after a long inquiry into his origins. In 1660, he organized the ceremonies of the marriage of Louis XIV and the infanta Maria Theresa, on the Island of Pheasants, and died shortly after his return to Madrid."""
+style = """
+Velázquez moves from a dark and precise naturalism to an increasingly free painting, in which a few touches suffice to suggest a fabric or a reflection. He paints the air and light of a room, and looks with the same dignity at the king, the court dwarfs and the artisans. Manet, who discovered his paintings in Madrid in 1865, called him the “painter of painters”; the Impressionists and Picasso owe him much."""
+
+[[artistes]]
+nom = "Nicolas Poussin"
+vie = "Les Andelys (Normandy), June 1594 – Rome, 19 November 1665"
+biographie = """
+Born near Les Andelys, in Normandy, Nicolas Poussin decided very young to be a painter and went up to Paris, where he led a difficult life for about ten years. After two failed attempts, he reached Rome in 1624 and remained there almost all his life. He found there a protector, the scholar Cassiano dal Pozzo, who opened to him his library and his collections of antiquities, and a clientele of cultivated amateurs, often French. In 1640, Louis XIII and Richelieu summoned him to Paris as first painter to the king, but the intrigues of the court and the great decorations of the Louvre wearied him: he left again for Rome as early as 1642. There he painted, for faithful collectors such as Paul Fréart de Chantelou, easel paintings of great depth: the series of the Seven Sacraments, landscapes, and finally The Four Seasons. Ill, his hands trembling, he died in Rome in 1665 and was buried in the church of San Lorenzo in Lucina."""
+style = """
+Poussin is the master of French classicism: compositions conceived as demonstrations, in which every gesture and every color has its reason, inspired by Raphael and ancient sculpture. He wished painting to address the mind as much as the eyes. The Royal Academy made his art a model, and the “Poussinistes” defended in it the primacy of drawing; David, Ingres and Cézanne claimed descent from him."""
+
+[[artistes]]
+nom = "Claude Lorrain"
+vie = "Chamagne (Duchy of Lorraine), c. 1600 – Rome, 23 November 1682"
+biographie = """
+Claude Gellée, known as Claude Lorrain, was born in a village of the Lorraine Vosges, into a modest family. An orphan, he left very young for Italy; according to his first biographers, he was at first employed as a pastry cook or servant. In Rome, he became the assistant of the landscape and decorative painter Agostino Tassi, then spent two years in Naples. After a brief return to Lorraine, he settled permanently in Rome in 1627. In the 1630s, his reputation as a landscape painter was made: Pope Urban VIII, cardinals, Roman princes and King Philip IV of Spain, for his Buen Retiro palace, commissioned paintings from him. To protect himself from imitators, from about 1635 he kept the Liber Veritatis, a collection of nearly two hundred drawings reproducing his canvases, now in the British Museum. He did not marry, but raised a daughter, Agnese, and lived surrounded by his nephews until his death, in Rome, in 1682."""
+style = """
+Claude invents the ideal landscape: ancient ports and countrysides bathed in a golden light, built like theater scenes, in which small figures tell a biblical or mythological story. He observes nature in the open air, in the Roman countryside, but recomposes it in the studio. His paintings shaped the English taste for the landscape garden and inspired Turner."""

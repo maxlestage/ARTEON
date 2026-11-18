@@ -1,0 +1,472 @@
+[exposition]
+ordre = 24
+nom_court = "Ceramics"
+mouvement = "Ceramics and Porcelain of the World"
+cadre = "vitrine"
+couleur = "#2f4f7f"
+titre = "Ceramics and Porcelain of the World: Earth and Fire"
+artiste = "Jingdezhen, Longquan, raku, Zuni, Gubbio, Delft, Meissen, Sèvres, Wedgwood…"
+dates = "13th–19th century"
+accroche = "Virtual exhibition · Musée national de Céramique, Sèvres"
+introduction = """
+Ceramics is the most universal of the arts: everywhere, people have shaped clay and hardened it in fire. The visit takes you around the world in ten pieces, from the celadon of the Song and the blue-and-white of the Ming to the famille rose enamels of the Qing, from a Japanese tea bowl to a Zuni water jar, from Italian maiolica to Delftware, and on to the porcelains of Meissen and Sèvres and Wedgwood's stoneware. The building draws its inspiration from the Musée national de Céramique at Sèvres, born of the collections assembled by Alexandre Brongniart: a vestibule opens onto a long gallery devoted to China, from which three rooms lead off, devoted to hand-modelled clay, to the tin-glazed earthenwares and to the manufactories of Europe."""
+vitrine = "jarre-dragon-xuande.jpg"
+
+[musee]
+nom = "Musée national de Céramique"
+ville = "Sèvres, France"
+construction = "1876"
+presentation = """
+In 1740, a porcelain manufactory was established at the Château de Vincennes; it moved in 1756 to Sèvres, into a vast building constructed for it, and Louis XV bought it in 1759 to make it a royal manufactory. In 1800, the scholar Alexandre Brongniart took over its direction, which he would keep for nearly half a century. A mineralogist and chemist, he gathered ceramics from every country and every period in order to study clays, glazes and firings, and in 1824 he founded a museum of ceramics and glass, open to scholars and craftsmen alike. In 1876, the manufactory and its museum left their old premises for new buildings, raised on the banks of the Seine, at the entrance to the park of Saint-Cloud. The collections present the terracottas of Antiquity, the stoneware and porcelain of Asia, the earthenware of Europe and the output of Sèvres itself. Since 2010, museum and manufactory have formed a single institution, Sèvres – Cité de la céramique, where craftsmen still throw and paint porcelain by hand."""
+ici = """
+The ARTEON building borrows its principle from the Sèvres museum: to classify ceramics by great families, as Brongniart wished, and to show them in display cases. You enter from the south into the Brongniart vestibule, with its cream walls, then into the Gallery of China, thirty metres long and eight metres high, with walls of pale celadon green. To the north opens the room "Clay Modelled by Hand", the colour of clay, where a Japanese bowl stands beside a Zuni jar; to the west, the room of European earthenware; to the east, that of the European manufactories, from Meissen to Wedgwood."""
+
+[[salles]]
+nom = "The Brongniart Vestibule"
+theme = "The entrance, in homage to Alexandre Brongniart, who founded the ceramics museum at Sèvres in 1824."
+murs = "#ece4d4"
+x = 0
+z = 0
+largeur = 12
+profondeur = 8
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Gallery of China"
+theme = "Five centuries of Chinese ceramics: the celadon of the Song, the blue-and-white of the Ming, the famille rose enamels of the Qing."
+murs = "#dfe3d2"
+x = 0
+z = -9
+largeur = 30
+profondeur = 10
+hauteur = 8
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Clay Modelled by Hand"
+theme = "Without a potter's wheel: a raku tea bowl from Japan and a water jar from the Zuni Pueblo."
+murs = "#e2cfb4"
+x = 0
+z = -19
+largeur = 10
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "The Earthenwares of Europe"
+theme = "Clay beneath a white tin glaze: a lustred maiolica dish from Gubbio and a flower pyramid from Delft."
+murs = "#e8dfcd"
+x = -21
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[salles]]
+nom = "The Manufactories of Europe"
+theme = "The secret of porcelain unlocked in Europe: Meissen, Sèvres, and Wedgwood's jasper."
+murs = "#e6dccb"
+x = 21
+z = -9
+largeur = 12
+profondeur = 10
+hauteur = 6
+
+[[oeuvres]]
+titre = "Meiping Vase"
+artiste = "Chine, fours de Longquan"
+annee = "13th century"
+image = "meiping-longquan.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1957.52.jpg"
+technique = "Porcelaneous stoneware with celadon glaze, h. 23.5 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "A vase with a rounded shoulder, covered in a bluish-green glaze that imitates jade: the celadon of the Southern Song. It stands 23.5 cm high."
+description = """
+The vase rises from a narrow foot, swells into a broad, rounded shoulder, then narrows abruptly into a tiny neck, barely wider than a spout. This is the meiping form, the "plum vase". There is no painted or incised decoration: the whole surface is covered with a single thick glaze, a pale green shading into blue, milky and soft as polished stone. Wide, regular horizontal fluting girdles the body from shoulder to foot; the glaze pools in the hollows and takes on a deeper tone there. The slightly elongated silhouette stands alone, without any ornament: form and colour are enough."""
+evocation = """
+The potters of Longquan sought to imitate jade, the most precious stone in China, a symbol of purity and virtue for the literati. Under the Song, the cultivated elite preferred the beauty of a just form and a single colour to elaborate decoration: this taste for restraint, which has been compared to monochrome painting and to the thought of Chan Buddhism, made reserve a mark of refinement. The name meiping, given later, recalls the practice of displaying in such vases a single branch of plum blossom, the first flowering at the end of winter and the emblem of the scholar who withstands adversity; originally, however, these vases served mainly to store wine. In it one sees the ideal of an art that withdraws behind its material."""
+histoire = """
+The kilns of Longquan, in the hills of south-western Zhejiang, had produced green-glazed stoneware since the Northern Song period. When the Song court, driven out of Kaifeng by the Jurchen in 1127, settled in Hangzhou, in the same province, their production gained in refinement: it was in the 13th century that these thick bluish-green glazes appeared. Long tunnel kilns, built along the hillsides, fired thousands of pieces in each load, sold throughout the empire and exported by sea to Japan, Southeast Asia, the Middle East and the coast of East Africa. This vase was purchased in 1957 by the Cleveland museum, through the John L. Severance Fund, from the dealer Men-Chu Wang."""
+facture = """
+The vase is thrown in a pale, hard body close to porcelain, then covered with several successive layers of glaze: the Longquan potters fired the piece lightly, dipped it again, and repeated the process until the glaze was sometimes thicker than the wall itself. Fired at high temperature in an oxygen-starved kiln, the small amount of iron contained in the glaze takes on this green tint, while the bubbles and crystals left in suspension give it its milky depth. The Chinese call this tone fenqing, "powdered green"."""
+details = [
+  "The tiny neck, almost a simple spout, at the top of a very broad shoulder.",
+  "The horizontal fluting that marks the whole height of the body.",
+  "The darker streaks of glaze where it thickens in the hollows.",
+  "The complete absence of painted decoration: colour alone is the ornament.",
+]
+themes = ["celadon", "jade", "china", "song", "monochrome"]
+anecdote = """
+The word "celadon" is French. It is said to come from Céladon, the shepherd in love in L'Astrée, the novel by Honoré d'Urfé published from 1607 onwards, who wore pale green ribbons: the colour of Chinese stoneware reminded 17th-century collectors of this hero."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Dragon Jar"
+artiste = "Chine, fours impériaux de Jingdezhen"
+annee = "reign of Xuande (1426–1435)"
+image = "jarre-dragon-xuande.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DT5083.jpg"
+technique = "Porcelain with underglaze cobalt-blue decoration, h. 48.3 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A great dragon winds around this imperial jar, which bears the mark of the Xuande emperor on its shoulder. It stands 48.3 cm high."
+description = """
+The jar, as wide as it is tall, has a powerful shoulder, a short neck and a narrow base. All around the body runs a blue dragon on a white ground: with open jaws and flowing mane, its scaly body unfolds in a long undulation, and its clawed feet grasp at the void. Around it float clouds with curled heads. On the shoulder, a line of small characters inscribes the reign mark of Xuande. The neck is encircled by a frieze of clouds, and the lower body by a crown of stylised lotus petals, standing like a palisade. The cobalt ranges from a deep blue, almost black in the scales, to lighter tones on the dragon's belly."""
+evocation = """
+In China the dragon is a beneficent creature, master of waters and rain, and has long been the emblem of the emperor, the Son of Heaven. On a piece from the imperial kilns, it asserts the power of the Ming dynasty, which drove out the Mongols in 1368 and now ruled over a prosperous empire. Its body in motion, among the clouds, speaks of the energy that links heaven and earth. Blue-and-white, produced mainly for export under the Mongols, became under the first Ming emperors a court art: Chinese connoisseurs have always ranked the porcelains of the Xuande reign among the finest ever made."""
+histoire = """
+Under the Ming, the city of Jingdezhen, in Jiangxi province, housed kilns under the control of the court, which supplied the palace in Beijing with tableware and ceremonial vases. Pieces were ordered in series and inspected one by one; excavations have uncovered, broken and buried, those that had been rejected. The Xuande emperor, who reigned from 1426 to 1435, was a scholar, himself a painter, attentive to the arts: it was during his reign that the inscription of the imperial mark on porcelain became systematic. It is not known when the jar left China; it was given to the Metropolitan Museum in 1937 by Robert E. Tod."""
+facture = """
+Jingdezhen porcelain combines two materials: kaolin, a white clay, and a ground feldspathic stone. The decoration is painted with a brush in cobalt oxide on the unfired piece, then covered with a transparent glaze: a single firing, at around 1,300 °C, fixes everything. The cobalt used at the time, imported from the Persian world, gives an intense blue, dotted with almost black spots where the pigment has concentrated: Chinese connoisseurs learned to love these accidents, the sign of pieces of this period. Large jars of this type were built in several parts thrown separately, then joined before firing."""
+details = [
+  "The Xuande reign mark, in small characters aligned on the shoulder.",
+  "The dragon's scales, drawn one by one, in an almost black blue.",
+  "The dragon's feet, claws outstretched.",
+  "The crown of lotus petals at the base of the body.",
+  "The frieze of clouds around the neck.",
+]
+themes = ["porcelain", "blue and white", "dragon", "emperor", "ming"]
+anecdote = """
+Chinese blue-and-white travelled the world: imitated in Iran, Turkey and Japan, then in Delft and England, it is among the most copied ceramic decorations in history. The Delft pyramid, in a neighbouring room, is one of its heirs."""
+salle = 2
+mur = "nord"
+place = 7
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Vase with Peaches"
+artiste = "Chine, fours impériaux de Jingdezhen"
+annee = "reign of Qianlong (1736–1795)"
+image = "vase-aux-peches.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1944.184.1.jpg"
+technique = "Porcelain with famille rose enamel decoration, h. 51.4 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "On this large imperial vase, a peach tree in flower and fruit winds around the body: a wish for long life. It stands 51.4 cm high."
+description = """
+The vase has the shape known as tianqiuping, the "celestial globe vase": an almost spherical body topped by a long straight neck. On the white ground, an old gnarled peach tree rises from the base of the body and throws its branches all around the vase. Large peaches, of a deep pink fading to yellow, hang in clusters among soft green and turquoise leaves. The painter has brought together on the tree both blossoms and fruit: white and pink flowers, buds, ripe peaches. A lighter branch climbs to the neck, where it blooms once more. The trunk, grey and brown, is rendered with its knots and bark, as in a painting on silk."""
+evocation = """
+In China the peach is the fruit of immortality: according to legend, the Queen Mother of the West cultivates in her garden on Mount Kunlun peach trees whose fruits, ripening every three thousand years, give eternal life. A vase covered with peaches is therefore a wish for longevity, given for a birthday, for example. Vases of this type often bear nine peaches: in Chinese, jiu means "nine" and, pronounced the same, "long-lasting". In this decoration where flower and fruit stand side by side, one also reads the cycle of the seasons gathered into a single image of abundance, in the heart of the long reign of Qianlong, one of the most prosperous in Chinese history."""
+histoire = """
+The famille rose owes its name, given in the 19th century by the French collector Albert Jacquemart, to a pink enamel obtained from gold, which arrived in China around 1720 through Europeans, probably Jesuits in the service of the Kangxi emperor. Under Yongzheng and then Qianlong, the workshops of Jingdezhen and those of the Beijing palace mastered these enamels perfectly and produced pieces of extreme finesse for the court. This vase belonged to Elisabeth Severance Prentiss, a Cleveland philanthropist, who bequeathed it to the museum in 1944 together with its pair."""
+facture = """
+The famille rose enamels are painted on porcelain that has already been fired and glazed, then fixed by a second firing, at low temperature, in a small muffle kiln. Their novelty lies in the opaque white, arsenic-based, that the painter mixes with the colours: he can thus grade the tones, from deep pink to pale pink, and model the volume of the fruit. The leaves are laid in flat areas of green and turquoise, the veins and trunk outlined with a fine line. The regularity of the globe and the flawless whiteness of the ground bear witness to the mastery of the imperial kilns."""
+details = [
+  "The peaches, whose pink melts into pale yellow, as on a real fruit.",
+  "The gnarled trunk rising from the base of the body.",
+  "The flowering branch climbing along the neck.",
+  "The flowers and buds alongside the ripe fruit on the same tree.",
+]
+themes = ["porcelain", "famille rose", "peach", "longevity", "qing"]
+anecdote = """
+The Qianlong emperor, a great collector, had poems he had composed himself in their honour engraved on ancient ceramics in his collections. Under his reign, imperial porcelain imitated everything: bronze, jade, wood, lacquer."""
+salle = 2
+mur = "sud"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Black Raku Tea Bowl"
+artiste = "Japon, céramique raku"
+annee = "early 17th century"
+image = "bol-raku-noir.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:MET_DP247421.jpg"
+technique = "Earthenware with black raku glaze, 9.2 × 9.5 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "A bowl modelled by hand, without a wheel, for the tea ceremony: the art of deliberate irregularity. It stands 9.2 cm high and is shown here greatly enlarged."
+description = """
+The bowl is almost cylindrical, barely wider than it is tall, with straight walls that swell slightly towards the bottom and a short foot. Its rim is not quite round: it undulates and flattens in places, and the wall retains slight facets, traces of the spatula that formed it. The whole surface is covered with a black glaze, matte and grainy, in which reddish-brown glints appear. Nothing is decorated: form, weight, material and colour are everything. The bowl is made to be held in both hands, at face height, while one drinks the whisked green tea."""
+evocation = """
+This bowl belongs to the world of the tea ceremony as shaped by the master Sen no Rikyū in the 16th century: an art of hospitality founded on simplicity, restraint and attention to the present moment. The taste known as wabi prefers the rustic to the sumptuous, the irregular to the perfect, the worn to the new. The black of the bowl, which sets off the bright green of the tea, invites contemplation. Its asymmetry is not clumsiness: it makes each bowl unique, and, in the Japanese tradition, a bowl may be given a name, a history, a line of owners. It has been seen as the exact opposite of smooth, perfect Chinese imperial porcelain."""
+histoire = """
+Raku was born in Kyoto in the 1570s–1580s, when the potter Chōjirō, who until then had made roof tiles, produced for Sen no Rikyū the first hand-formed tea bowls. According to tradition, the regent Toyotomi Hideyoshi later gave the family a seal bearing the character raku, "joy, ease", taken from the name of his palace, the Jurakudai: the word remained with the family and its ceramics. This bowl, from the Momoyama period or the very first years of the Edo period, is not attributed to any particular potter. The Metropolitan Museum acquired it in 1917, from the Rogers Fund."""
+facture = """
+The bowl is not thrown: it is modelled by hand from a ball of clay, then thinned and hollowed with a spatula. After a first firing, it receives several coats of a glaze made from a ground black stone, rich in iron and manganese. Firing is done piece by piece, in a small kiln heated with charcoal and fanned with bellows; when the glaze has melted, the potter removes the glowing bowl with long tongs and lets it cool abruptly in the air. This shock gives the black its deep, slightly rough appearance."""
+details = [
+  "The irregular rim, which undulates and flattens in places.",
+  "The slight facets left by the spatula on the wall.",
+  "The reddish-brown glints in the black of the glaze.",
+  "The low, narrow foot, on which the bowl seems to sit set back.",
+]
+themes = ["tea ceremony", "wabi", "raku", "japan", "imperfection"]
+anecdote = """
+The Raku family of Kyoto has perpetuated this art for more than four centuries: its successive heads bear the name Raku Kichizaemon, and the present heir is the sixteenth in the line. In the West, the word also designates a rapid firing technique inspired by this tradition."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Water Jar with Rain-Bird Design"
+artiste = "Pueblo de Zuni"
+annee = "1850–1860"
+image = "jarre-zuni-oiseau-de-pluie.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1937.898.jpg"
+technique = "Earthenware with white slip, painted decoration in black and red, 25.5 × 33 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "A water jar painted by a Zuni potter of New Mexico, where scrolls and hooks represent the bird that brings the rain. It is 33 cm wide."
+description = """
+The jar is wide and squat: a round body, a pronounced shoulder, a short straight neck. On a creamy white ground, a black design covers almost the entire surface. On the body, large stepped forms, filled with fine oblique hatching, interlock with one another; at the centre, a large circle outlined in black, extended by a hook, draws the eye. Fringes of vertical lines hang like the teeth of a comb. The neck bears another frieze, where an oval form and stepped motifs reappear. Small touches of reddish brown enliven the black. The base, coated in dark brown, has been left undecorated."""
+evocation = """
+In the arid lands of the American Southwest, rain is the very condition of life, and a large part of Zuni religious life is turned towards it. The "rain bird", which specialists recognise in these scrolls and hooks, associates the bird, messenger between earth and sky, with water-laden clouds; the stepped forms often evoke, in Pueblo art, terraced clouds. Painted on a jar used to carry and keep water, this decoration is both ornament and prayer. The precise meaning of each motif, transmitted within the community, is however not always known to researchers."""
+histoire = """
+The jar was made around 1850–1860 at Zuni Pueblo, in western New Mexico, a territory the United States had just annexed after the war with Mexico. Among the Zuni, pottery is women's work, and they pass on techniques and motifs to one another; the potter did not leave her name. From 1879, expeditions of the Smithsonian Institution carried thousands of Zuni pots off to Washington, and collectors began to seek them out. This one was given in 1937 to the Cleveland museum by Amelia Elizabeth White, a collector based in Santa Fe and a defender of Native American arts. It is not known in what circumstances it had left the pueblo."""
+facture = """
+The jar is built without a wheel, by coiling: the potter stacks ropes of clay, then smooths and thins the wall with a piece of gourd. She then covers it with a white slip, a fine clay diluted in water, applied in several coats. The decoration is painted with a brush cut from a chewed yucca leaf: the black is drawn from plants and minerals, the red from an ochre earth. Firing is done in the open air, the jar placed under a shelter of fuel, often sheep dung, which burns for a few hours."""
+details = [
+  "The large circle at the centre of the body, outlined in black and extended by a hook.",
+  "The fine oblique hatching that fills the stepped forms.",
+  "The fringes of vertical lines, like curtains of rain.",
+  "The small red touches set among the black.",
+  "The dark, undecorated base on which the jar rests.",
+]
+themes = ["pueblo", "rain", "bird", "water", "native american"]
+anecdote = """
+Zuni women carried these jars full of water on their heads, resting on a small ring woven from yucca. The base of these jars is, moreover, slightly concave, so that they sit firmly on this ring."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Dish with the Three Graces"
+artiste = "Maestro Giorgio Andreoli"
+annee = "c. 1525"
+image = "plat-trois-graces.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1945.2.jpg"
+technique = "Painted maiolica (tin-glazed earthenware) with metallic lustre, diam. 44.8 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "The Three Graces, nude beneath palm trees in an Italian landscape: a show dish from Gubbio, enhanced with golden glints. It is 44.8 cm in diameter."
+description = """
+At the centre of the dish, in a medallion, three nude young women stand entwined on a meadow: the one in the middle, seen from behind, rests her hands on the shoulders of her companions, who face the viewer and are shown in three-quarter view. They wear red necklaces and have their hair pinned up. Behind them rise three palm trees; in the distance stretch hills, a river and, on the left, a town with red roofs. On either side, two fountains pour blue water beside draperies laid on pedestals. The wide rim of the dish, the marli, bears a frieze of foliage and lozenges set in medallions, on a blue ground. Everywhere, golden and iridescent glints play across the surface."""
+evocation = """
+The Three Graces, daughters of Zeus in Greek mythology, personify beauty, joy and abundance; ancient authors also saw in them the benefits that one gives, receives and returns. Their group, with the central figure seen from behind, takes up a famous antique composition, rediscovered in the Renaissance and spread by engraving. On a large show dish, displayed on a sideboard rather than used at table, this secular subject speaks of the taste of the Italian courts for Antiquity and humanist culture. The lustre, which makes the piece shine in candlelight, gives plain earthenware the brilliance of a precious metal."""
+histoire = """
+Gubbio, a small town in Umbria then belonging to the duchy of Urbino, owes its ceramic fame to the workshop of Maestro Giorgio Andreoli, a specialist in metallic lustre. In the early 16th century, this workshop lustred its own pieces and also received others, painted elsewhere, to add these glints. The dish bore a signature and a date, recorded in the 19th century, but it was broken, and they disappeared during the repair. It belonged to the Russian collector Alexandre Basilewsky, in Paris, whose collection was bought in 1884 by Tsar Alexander III for the Hermitage in Saint Petersburg. Later leaving that museum, it passed through the New York dealer Rosenberg & Stiebel before entering the Cleveland museum in 1945."""
+facture = """
+Maiolica is earthenware covered with an opaque white tin glaze, on which one paints with metallic oxides: cobalt blue, copper green, antimony yellow, iron orange, manganese purple. After the firing of this decoration, the Gubbio workshop adds the lustre: a mixture of silver and copper compounds, applied with a brush to certain areas, then fixed by a further firing, at low temperature, in a thick smoke. The metals are then deposited in a very thin film that returns the light in glints of gold and ruby. This technique, which came from the Islamic world via Spain, was a jealously guarded workshop secret."""
+details = [
+  "The middle Grace, seen from behind, who embraces her two companions.",
+  "The red necklaces at the throats of the three young women.",
+  "The small town with red roofs, in the distance on the left.",
+  "The two fountains whose blue water flows beside the draperies.",
+  "The golden glints of the lustre on the marli and the rim of the dish.",
+]
+themes = ["maiolica", "mythology", "renaissance", "lustre", "beauty"]
+anecdote = """
+The word "maiolica" is said to come from Majorca: the lustred earthenwares of Spain reached Italy aboard ships calling at that island, and the Italians gave this name to the ceramics they admired, before applying it to their own production."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Flower Pyramid"
+artiste = "Faïencerie De Metaale Pot"
+annee = "c. 1692–1700"
+image = "pyramide-a-fleurs-delft.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Bloempiramide,_BK-2004-4-A.jpg"
+technique = "Blue-painted tin-glazed earthenware, eleven elements, h. 156 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "A tiered tower of blue earthenware, bristling with spouts into which cut flowers were placed: the luxury of Holland at the end of the 17th century. It stands 1.56 m high."
+description = """
+More than a metre and a half tall, the pyramid rises like a pagoda. It rests on a square pedestal carried by four recumbent lions. On the face of the pedestal, in an interior opening onto a garden, figures dressed in Chinese fashion converse, one of them playing a stringed instrument. Above, figures with women's busts, ending in scrolls, support a platform from which nine square tiers rise, ever smaller. Each tier is fitted at the corners with tubular spouts into which the flower stems were slipped, and painted with small scenes, figures and vases of flowers. At the summit, a woman's bust crowns the whole. Everything is painted in cobalt blue on a white ground."""
+evocation = """
+In the 17th century, flowers, and tulips above all, were in the United Provinces an object of passion, knowledge and speculation: during the "tulip mania" of 1636–1637, the bulb of a rare variety could sell for the price of a house. A pyramid like this one made it possible to compose a spectacular bouquet, each flower isolated in its spout, and to display at once one's wealth and one's taste. Its decoration also speaks of Europe's fascination with China, known through the porcelains brought back by the East India Company: pagoda, figures and landscapes are imagined after them, by painters who had never seen Asia."""
+histoire = """
+In the 17th century, Delft saw many of its old breweries, in decline, converted into earthenware factories. When the troubles at the end of the Ming disrupted the arrival of Chinese porcelain, in the middle of the century, the Delft potters took over and imitated blue-and-white. Flower pyramids were fashionable at the end of the century, particularly at the court of William III of Orange and his wife Mary II, queen of England, who filled her residences with them. This pyramid is attributed to the De Metaale Pot factory, then directed by Lambertus van Eenhoorn. It forms a pair with a second pyramid; the Rijksmuseum bought them together in 2004, with the help of several foundations and patrons."""
+facture = """
+Delftware is earthenware covered with a white tin glaze, which imitates the whiteness of porcelain without having its hardness or translucency. The decoration is painted in cobalt on the still-raw glaze, which drinks up the colour like paper: the painter must work quickly and without second thoughts. Each tier is shaped and fired separately, then the elements are stacked one on top of another. The hollow tiers served as water reservoirs, in which the stems were steeped. The design, in a blue shaded from the lightest to the darkest, is inspired by Chinese porcelains of the late 17th century."""
+details = [
+  "The woman's bust that crowns the top of the pyramid.",
+  "The tubular spouts at the corners of each tier, intended for flower stems.",
+  "The musician playing a stringed instrument, on the face of the pedestal.",
+  "The four recumbent lions that serve as feet.",
+  "The figures with women's busts and scrolls that carry the platform.",
+]
+themes = ["earthenware", "delft", "flowers", "tulip", "chinoiserie"]
+anecdote = """
+Of the many earthenware factories active in Delft in the 17th century, only one has survived to the present day: De Porceleyne Fles, founded in 1653 and known as Royal Delft, where earthenware is still painted by hand."""
+salle = 4
+mur = "ouest"
+place = 2
+largeur = 0.7
+
+[[oeuvres]]
+titre = "Plate from the Swan Service"
+artiste = "Johann Joachim Kändler"
+annee = "1737–1741"
+image = "assiette-service-aux-cygnes.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1951.103.jpg"
+technique = "Hard-paste porcelain with relief decoration, enamels and gilding, diam. 42 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Two swans and a heron in relief in a shell-shaped dish, bearing the arms of Count Brühl: the most famous porcelain service of the 18th century. It is 42 cm in diameter."
+description = """
+The dish, with its undulating rim, is almost entirely white. Its whole hollow is sculpted in relief: broad ribs radiate from the top like those of a scallop shell. At the centre, two swans swim face to face among the reeds, on water stirred by eddies; above them, a heron takes flight, wings spread. On the marli, bouquets of flowers and small insects are painted in bright colours, and the rim is picked out with a fine gold scallop. At the top, a coat of arms surmounted by crowns and supported by two lions bears the combined arms of Count Heinrich von Brühl and his wife, born Countess Kolowrat-Krakowsky."""
+evocation = """
+The whole service is a hymn to water: swans, herons, shells, reeds, fish and sea deities answer one another from piece to piece. The theme is said to play on the name of the patron: in German, Brühl denotes a damp meadow, a marshy pasture. For the minister of the Elector of Saxony, this service was an instrument of prestige: great court dinners, with their hundreds of matching pieces, were a staging of power. The almost bare white of the reliefs, barely enlivened with flowers, also speaks of the pride of Meissen, the first European manufactory to master true porcelain, able to rival China and Japan."""
+histoire = """
+Count Heinrich von Brühl, favourite and then prime minister of Augustus III, Elector of Saxony and King of Poland, became director of the Meissen manufactory in 1733. Between 1737 and 1741 he had made for himself a dinner service of more than two thousand pieces, modelled by Johann Joachim Kändler with his collaborator Johann Friedrich Eberlein. The service remained in the Brühl family until the 20th century; since dispersed, it is shared among many museums and collections. This plate, which passed through the Brühl palace in Warsaw and through Count Szembek, a descendant of the family, was given to the Cleveland museum in 1951 by the firm of Rosenberg & Stiebel, for the museum's thirty-fifth anniversary."""
+facture = """
+Meissen hard-paste porcelain is made of kaolin, feldspar and quartz, fired at about 1,400 °C: it is white, hard, translucent in thin section. For a service of this scale, Kändler first sculpted an original model, from which plaster moulds were taken; the paste was pressed into them, so that each plate faithfully reproduces the relief, like a small sculpture. The reliefs remain white, to let the light play over the ripples of the water and the feathers of the birds. The flowers on the marli, painted in enamel, are inspired by the porcelains of the Far East, much sought after at the Saxon court."""
+details = [
+  "The two swans facing each other amid the reeds.",
+  "The heron taking flight, wings open, above them.",
+  "The radiating ribs of the shell sculpted into the bottom of the dish.",
+  "The Brühl coat of arms, supported by two lions, at the top of the marli.",
+  "The small insects painted among the flowers.",
+]
+themes = ["porcelain", "meissen", "swan", "water", "rococo"]
+anecdote = """
+The secret of hard-paste porcelain was unlocked in Saxony around 1708 by the alchemist Johann Friedrich Böttger, whom King Augustus the Strong held prisoner so that he would make gold for him. He did not find gold, but the "white gold" that made the fortune of Saxony."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The King's Tureen"
+artiste = "Manufacture de Sèvres"
+annee = "1756–1757"
+image = "terrine-du-roi.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1949.15.jpg"
+technique = "Soft-paste porcelain, green ground, painted and gilded decoration, h. 24.2 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "A footed tureen on a green ground, adorned with cupids painted in gilded cartouches: the luxury of the early years of Sèvres. It stands 24.2 cm high."
+description = """
+The tureen, oval and swelling, rests on four curved feet, ornamented with gilded acanthus leaves, and extends at the sides into pierced handles shaped like twisted branches. Its domed lid is surmounted by an orange-yellow fruit surrounded by green leaves, which serves as a knob. The ground is a bright, luminous green, framed by gold scrollwork. On the body, a large white cartouche shows two plump cupids, seated on clouds, playing with a garland of flowers, beside a quiver and arrows. On the lid, another cartouche presents a small trophy of attributes resting on a cloud."""
+evocation = """
+Cupids, flowers and clouds belong to the repertoire of the rococo, the art of grace and pleasure that triumphed in France under Louis XV, and of which François Boucher is the most famous painter. A tureen was used to present stews and soups at table; but so precious a piece was made to be admired as much as to be used. It speaks of the art of living of an elite for whom the meal was a spectacle, and of the ambition of a manufactory supported by the king and by Madame de Pompadour, which wished to surpass Meissen. The cupids playing in the sky turn a kitchen vessel into a small scene of amiable mythology."""
+histoire = """
+Founded at Vincennes around 1740, the manufactory moved in 1756 to Sèvres, halfway between Paris and Versailles. This tureen is among its first productions there: the letter D painted under the piece, between the two interlaced Ls of Louis XV's cipher, corresponds to the year 1756. The cartouches are associated with the painter Charles-Nicolas Dodin, a specialist in figures, who joined the manufactory in 1754 and would work there for nearly fifty years. The model bears the name "the king's tureen". The Cleveland museum bought the piece in 1949, through the John L. Severance Fund."""
+facture = """
+Before 1770, Sèvres did not have the kaolin needed for hard-paste porcelain: it produced a so-called soft-paste porcelain, made of a glassy frit mixed with clay, fired at a lower temperature. More fragile and harder to work, it offers in return a glaze in which the colours melt slightly, producing tones of particular softness and brilliance. The green ground is laid in an even coat, leaving white cartouches that are then painted with a fine brush, in the manner of miniatures. The gold, applied as a powder and then burnished, draws the scrollwork and picks out the reliefs of the feet and handles."""
+details = [
+  "The two cupids seated on the clouds, with their garland of flowers.",
+  "The fruit surrounded by leaves that serves as the lid's knob.",
+  "The scrolled feet, covered with gilded acanthus leaves.",
+  "The pierced handles shaped like twisted branches.",
+  "The gold scrollwork framing the cartouches on the green ground.",
+]
+themes = ["porcelain", "sèvres", "rococo", "cupids", "tableware"]
+anecdote = """
+Each piece of Sèvres bears a letter that gives its year: A for 1753, B for 1754, and so on. Having reached Z in 1777, the manufactory began again with doubled letters, AA, BB… Thanks to this system, Sèvres porcelains can be dated to the year."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Portland Vase"
+artiste = "Josiah Wedgwood"
+annee = "c. 1790"
+image = "vase-portland.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Clevelandart_1918.823.jpg"
+technique = "Fine stoneware known as jasper, black, with applied white reliefs, h. 26.4 cm"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "The copy in \"jasper\" stoneware of a famous Roman cameo-glass vase: Wedgwood's great technical challenge. It stands 26.4 cm high."
+description = """
+The vase has the shape of a squat amphora: an ovoid body, a narrow neck, two handles falling from the shoulders. On the black ground, white figures in relief stand out like cameos. On the left, a draped man emerges from a portico; at the centre, a young woman seated on a rock holds on her lap a serpent, or a sea monster, which rears up towards her; above, a small Cupid armed with a bow flies; on the right, a bearded man gazes at her, leaning on a rock. A tree with fine branches spreads its foliage above the scene. The foot is picked out with a thin white line."""
+evocation = """
+The meaning of the scene, already mysterious on the ancient vase, has never been established with certainty. The most frequent interpretations see in it the wedding of the hero Peleus and the sea nymph Thetis, future parents of Achilles, or an allegory of love and death; others have read in it an episode from the story of Augustus. For Wedgwood and his contemporaries, the essential lay elsewhere: to reproduce the most admired vase of Antiquity was to show that English industry could equal the art of the Ancients. This vase became one of the emblems of neoclassicism, that return to Antiquity which swept all of Europe at the end of the 18th century."""
+histoire = """
+The original vase, in cameo glass, was made in Rome around the beginning of our era. In the 17th century it belonged to the Barberini family, then to the diplomat and collector William Hamilton, who sold it to the Duchess of Portland; it keeps her name. In 1786, her son, the third Duke of Portland, lent it to Josiah Wedgwood. It took the potter nearly four years to achieve a satisfactory copy, at the price of countless trials: pieces cracked or warped, reliefs came away in the firing. The first edition, completed around 1790, comprised only a few dozen examples. This vase was given to the Cleveland museum in 1918 by Mrs. L. E. Holden. The original is preserved in the British Museum."""
+facture = """
+Jasper, perfected by Wedgwood around 1774–1775 after thousands of trials noted in his notebooks, is a fine, unglazed stoneware, based on barium sulphate, which can be tinted throughout: blue, green, lilac, yellow or, as here, black. The figures are moulded separately in a white paste, then applied one by one to the still-damp vase, before firing. To imitate the cameo glass of the original, in which the dark ground shows through the thinnest parts of the white glass, the reliefs were retouched by hand, thinned and chiselled, to create shadows and transparencies."""
+details = [
+  "The small Cupid flying above the scene, bow in hand.",
+  "The seated woman holding on her lap a serpent or a sea monster.",
+  "The man emerging from a portico, on the left.",
+  "The white reliefs thinned to the point of letting the black ground show through.",
+]
+themes = ["neoclassicism", "antiquity", "jasper", "wedgwood", "cameo"]
+anecdote = """
+In 1845, a visitor to the British Museum smashed the ancient vase into a great many pieces. Patiently glued back together, it was restored again in 1948, then in the late 1980s. Wedgwood's copies preserve the memory of its state before the disaster."""
+salle = 5
+mur = "sud"
+place = 2
+largeur = 0.8
+
+[[artistes]]
+nom = "Chine, fours de Longquan"
+vie = "Longquan region, Zhejiang province (China), 10th–17th century"
+biographie = """
+Longquan is a region of wooded hills in south-western Zhejiang, rich in clay, wood and watercourses: everything potters need. Green-glazed stoneware was fired there from the Northern Song period, in the line of the Yue celadons, produced further north in the same province. Production took off in the 12th century, when the Song court, driven out of Kaifeng by the Jurchen, settled in Hangzhou: demand from the elites of the South and from maritime trade never ceased to grow. The potters built so-called "dragon" kilns along the hillsides, long brick tunnels in which thousands of pieces were fired at once. In the 13th century, they perfected the thick bluish-green glazes that made their fame. Under the Yuan and in the early Ming, Longquan still supplied the court and exported massively, from Japan to Egypt and the coasts of East Africa; then the blue-and-white of Jingdezhen gradually supplanted it. Archaeologists have identified a very large number of kiln sites in the region."""
+style = """
+Longquan celadon is recognised by its simple, full forms, often borrowed from ancient bronzes or ritual objects, and by its thick glaze, a soft, milky green reminiscent of jade. The decoration, when there is any, remains restrained: a few flutes, incised petals, fish moulded in relief. This taste for discreet perfection profoundly marked the ceramics of East Asia, and the Longquan celadons, preserved as treasures in Japan, were imitated as far as Europe."""
+
+[[artistes]]
+nom = "Chine, fours impériaux de Jingdezhen"
+vie = "Jingdezhen, Jiangxi province (China), since the 11th century"
+biographie = """
+Jingdezhen, a city in north-eastern Jiangxi, owes its name to the Jingde era (1004–1007) of the Song emperor Zhenzong, who had porcelain made there for the palace. The neighbouring mountains supply kaolin and porcelain stone, the forests the wood for the kilns, and the river allows the pieces to be shipped. Under the Yuan, the potters perfected there the underglaze cobalt-blue decoration. From the beginning of the Ming dynasty, imperial kilns were established there: they worked for the court according to precise orders, under the supervision of officials. Under the Qing, the manufactory enjoyed a new golden age thanks to learned directors such as Tang Ying, in post under Yongzheng and Qianlong, who multiplied technical inventions. The city, where thousands of specialised workers laboured, also exported all over the world: it was through Jingdezhen that Europe discovered porcelain. The French Jesuit François-Xavier d'Entrecolles described its secrets in two famous letters, in 1712 and 1722. Jingdezhen remains today the Chinese capital of porcelain."""
+style = """
+The imperial porcelains of Jingdezhen are distinguished by the perfection of their white, fine paste and by the rigour of their decoration, often drawn from models designed at court: dragons, phoenixes, flowers and fruits bearing wishes. The cobalt blue of the Ming, then the famille verte and famille rose enamels under the Qing, fixed for the whole world the image of Chinese porcelain. Their forms and motifs were copied from Iran to Japan, and from Delft to Meissen."""
+
+[[artistes]]
+nom = "Japon, céramique raku"
+vie = "Kyoto (Japan), since the late 16th century"
+biographie = """
+Raku ceramics were born in Kyoto in the Momoyama period, in the circle of the tea master Sen no Rikyū (1522–1591). In the service of the warlords Oda Nobunaga and then Toyotomi Hideyoshi, he led the tea ceremony towards extreme simplicity, and sought bowls that answered this ideal. He had them made by Chōjirō, a craftsman who made roof tiles and terracotta figures. Chōjirō shaped by hand, without a wheel, black or red bowls, sober and grave, fired one at a time. After his death, his workshop was handed down from generation to generation in a family that took the name Raku, according to tradition thanks to a seal given by Hideyoshi. In the 17th century, other artists appropriated the technique, such as Hon'ami Kōetsu, a calligrapher and man of letters, whose bowls are among the most admired. Tea masters give the bowls poetic names and keep them in inscribed wooden boxes, handed down with their history. The Raku family continues its work in Kyoto today."""
+style = """
+Raku is recognised by its light, porous clay, its irregular hand-modelled forms, and its thick black or red glazes. The bowl is conceived for the hand and for the lips as much as for the eye. This aesthetic of wabi, made of simplicity and accepted imperfection, nourished all of Japanese ceramics, and then, in the 20th century, that of Western potters, from Bernard Leach to the American ceramists who invented a "raku" of their own."""
+
+[[artistes]]
+nom = "Pueblo de Zuni"
+vie = "Zuni River valley, New Mexico (United States)"
+biographie = """
+The Zuni, who call themselves A:shiwi, live in the valley of the Zuni River, in western New Mexico, on lands inhabited by their ancestors for centuries. Like the other Pueblo peoples, Hopi, Acoma or Laguna, they live in villages of multi-storey houses of stone and adobe, and grow corn in a dry country. In 1540, the Spanish expedition of Francisco Vásquez de Coronado, in search of the legendary "seven cities of Cibola", reached their villages. Then came the missionaries, the Pueblo Revolt of 1680 against the Spanish, and, in 1848, annexation by the United States. Despite these upheavals, the Zuni have kept their language, their ceremonies and their arts: pottery, silver and turquoise jewellery, carved fetishes. Ceramics, made by women for water, grain and ceremonies, transmit an ancient repertoire of motifs. At the end of the 19th century, scholars such as Frank Hamilton Cushing, who lived several years among them, and many collectors made this pottery known far beyond the pueblo."""
+style = """
+Zuni pottery is recognised by its cream-white slip, on which the potter paints in black and reddish brown all-over designs: rosettes, stepped forms, hatching, the scrolls of the "rain bird", and sometimes deer with a line linking the mouth to the heart. The jars have a wide body and a short neck. This style, still alive, is practised today by Zuni potters, women and men."""
+
+[[artistes]]
+nom = "Maestro Giorgio Andreoli"
+vie = "Intra, on Lake Maggiore, c. 1465 – Gubbio, 1553"
+biographie = """
+Giorgio Andreoli was born around 1465 at Intra, on the shore of Lake Maggiore. He settled with his brothers in Gubbio, a small town in Umbria dependent on the Dukes of Urbino, and obtained citizenship there at the end of the 15th century. There he directed a ceramics workshop whose renown rested on one speciality: metallic lustre, that iridescent film which gives earthenware its glints of gold and ruby. His ruby red, in particular, was highly renowned. The workshop reached its peak between about 1515 and 1540: it lustred its own pieces, but also dishes painted by other workshops, notably in Urbino, which were sent to it to receive this decoration. Many pieces bear on the reverse his abbreviated signature, "M° G°", and a date, traced in lustre. His sons, including Vincenzo, known as Maestro Cencio, continued his activity. The maiolica of Gubbio, already sought after by Renaissance princes, was passionately collected in the 19th century and now figures in the greatest museums."""
+style = """
+Maestro Giorgio is first of all a master of lustre rather than a painter of scenes: his art consists in making the surface of the maiolica shimmer. His dishes combine the ornamental borders of the Renaissance, scrollwork, grotesques, trophies, with mythological or biblical subjects often taken from engravings, enhanced with golden and red glints. This shimmering luxury, inherited from Hispano-Moresque earthenware, made Gubbio, with Deruta, the great centre of Italian lustred maiolica."""
+
+[[artistes]]
+nom = "Faïencerie De Metaale Pot"
+vie = "Delft (United Provinces), 17th–18th century"
+biographie = """
+The De Metaale Pot factory, "the Metal Pot", is one of the many manufactories that made Delft famous in the 17th and 18th centuries. The town, in the heart of Holland, between The Hague and Rotterdam, was then prosperous: it housed one of the chambers of the East India Company, whose ships brought back cargoes of Chinese porcelain from Asia. When the war accompanying the fall of the Ming, in the middle of the 17th century, disrupted the Chinese kilns, shipments became scarce: the Delft potters seized the opportunity and imitated blue-and-white. Many settled in former breweries, numerous in a town where beer-making was in decline. Each factory had its sign and its mark: the Porcelain Axe, the Rose, the Peacock, the Porcelain Claw, the Metal Pot. At the end of the 17th century, under the direction of Lambertus van Eenhoorn, De Metaale Pot produced pieces of great luxury, including flower pyramids, like its rival De Grieksche A of Adrianus Kocx, supplier to Queen Mary II. In the 18th century, competition from European porcelain and English creamware led to the decline of Delft."""
+style = """
+Delftware is recognised by its milky white glaze and its cobalt-blue decoration, sometimes polychrome, of great freedom of brush. Its painters borrow from China pagodas, figures and flowers, which they mingle with Dutch landscapes, biblical scenes and coats of arms. Its show pieces, pyramids, tulip vases, plaques, spread throughout Europe, and "Delft blue" was imitated from London to Frankfurt."""
+
+[[artistes]]
+nom = "Johann Joachim Kändler"
+vie = "Fischbach (Saxony), 15 June 1706 – Meissen, 18 May 1775"
+biographie = """
+The son of a pastor, Johann Joachim Kändler was born in 1706 at Fischbach, near Dresden. He learned sculpture from Benjamin Thomae, court sculptor, and took part in the decoration of the palaces of Augustus the Strong, Elector of Saxony and King of Poland. Noticed by the prince, he entered the Meissen porcelain manufactory, founded some twenty years earlier, in 1731, and became its master modeller as early as 1733. Augustus the Strong first commissioned from him large animals, eagles, peacocks, monkeys, for the Japanese Palace in Dresden, a technical challenge: these pieces often cracked in the firing. Kändler understood that porcelain lent itself better to small scale: he created figurines, characters from the commedia dell'arte, shepherds, ladies in crinolines, musicians, birds, often intended to adorn the tables of feasts. For Count Brühl, he designed the swan service, the most ambitious work of his career. Over more than forty years, he modelled a considerable number of designs, and remained in the service of the manufactory until his death, at Meissen, in 1775."""
+style = """
+Kändler thinks as a Baroque sculptor: his figures are in motion, caught in a gesture, a twist, an exchanged glance, and his reliefs, like those of the swan service, transform everyday objects into sculptures. He established porcelain as an art in its own right in Europe, and his figurines, copied by every manufactory, from Chelsea to Nymphenburg, fixed for a long time the genre of the porcelain statuette."""
+
+[[artistes]]
+nom = "Manufacture de Sèvres"
+vie = "Vincennes, c. 1740 – Sèvres, since 1756"
+biographie = """
+The manufactory was born around 1740 at the Château de Vincennes, where workmen from the Chantilly manufactory tried to unlock the secret of porcelain. Supported by financiers, then by Louis XV and Madame de Pompadour, it moved in 1756 to Sèvres, near the Château de Bellevue which belonged to the marquise. In 1759, the king bought it: it became a royal manufactory, and its pieces served as diplomatic gifts throughout Europe. It surrounded itself with artists: the goldsmith Jean-Claude Duplessis designed the forms, the sculptor Étienne Maurice Falconet directed the sculpture workshop, François Boucher supplied models. From 1770, it also produced hard-paste porcelain, thanks to the kaolin discovered near Limoges. The Revolution, then Napoleon, maintained the manufactory, which from 1800 was directed by the scholar Alexandre Brongniart. In the 19th and 20th centuries, it welcomed new artists and new techniques, from Art Nouveau stoneware to contemporary creations. Still in operation, it produces by hand, in its buildings of 1876, pieces commissioned by the State and works by guest artists."""
+style = """
+The Sèvres style of the 18th century is recognised by its intense colour grounds, sky blue, lapis blue, green, pink, framed by chased gold, and by its cartouches painted like miniatures: cupids, landscapes, birds, flowers. Its forms, often designed by Duplessis, follow the suppleness of the rococo before bending to neoclassical taste. Imitated throughout Europe, the manufactory long embodied French luxury."""
+
+[[artistes]]
+nom = "Josiah Wedgwood"
+vie = "Burslem (Staffordshire), 1730 – Etruria (Staffordshire), 3 January 1795"
+biographie = """
+Josiah Wedgwood was born in 1730 at Burslem, in Staffordshire, into a family of potters. He began working at the age of nine, after his father's death, in the family workshop. Struck by smallpox in childhood, he was left with a diseased leg, which was amputated in 1768. No longer able to work the wheel, he devoted himself to experimentation: he noted in his notebooks thousands of trials of clay bodies and glazes. Setting up on his own in 1759, he perfected a cream-coloured fine earthenware, adopted by Queen Charlotte, who allowed him to call it "Queen's ware". In 1769, with his partner Thomas Bentley, he opened near Stoke a model manufactory named Etruria, in homage to the Etruscans, to whom Greek vases were then attributed. There he created black basalt, then jasper. A pioneer of industry, he divided labour, opened showrooms in London, published catalogues, supported the building of canals. A member of the Royal Society, he fought the slave trade and circulated a famous medallion bearing the inscription "Am I not a man and a brother?" His grandson was the naturalist Charles Darwin."""
+style = """
+Wedgwood knew how to combine art and industry: simple, elegant forms, reproducible in large numbers, consistent quality, and decoration entrusted to artists such as the sculptor John Flaxman. His pale blue jasper with white reliefs, inspired by ancient cameos, became the very image of English neoclassicism. His methods of manufacture and sale made him one of the fathers of modern industry."""

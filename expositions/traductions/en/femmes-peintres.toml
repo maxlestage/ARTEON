@@ -1,0 +1,931 @@
+[exposition]
+ordre = 105
+nom_court = "Women Painters"
+mouvement = "Women painters, 16th–20th century"
+cadre = "dore"
+couleur = "#8a3a5c"
+titre = "Women Painters, Four Centuries of Vision"
+artiste = "Anguissola, Leyster, Kauffman, Morisot, Cassatt, Valadon…"
+dates = "1555–1923"
+accroche = "Virtual exhibition · National Museum of Women in the Arts, Washington"
+introduction = """
+For centuries, women were kept out of the academies, the studios and the life-drawing \
+classes: those who painted did so through talent and sheer persistence, often thanks to \
+an artist father or husband. This visit brings together ten of them, from the Cremona of \
+1555 to the Paris of the 1920s: family portraits, genre scenes, flowers, self-portraits \
+that lay claim to a profession, Impressionism and modernity. The building is inspired by \
+the National Museum of Women in the Arts in Washington, a former Masonic temple that in \
+1987 became the first major museum devoted to women artists: you enter through its great \
+marble hall with its mezzanine, before passing into the salons."""
+vitrine = "berceau.jpg"
+
+[musee]
+nom = "National Museum of Women in the Arts"
+ville = "Washington, United States"
+architecte = "Waddy Butler Wood"
+construction = "1907–1908"
+presentation = """
+In 1981, the collector Wilhelmina Cole Holladay and her husband Wallace founded a museum \
+in Washington devoted to women artists, who were then almost absent from the major \
+collections. In 1983 they bought a former Masonic temple, built in 1907–1908 in the \
+Renaissance Revival style by the architect Waddy Butler Wood, a few streets from the \
+White House. Restored, the building opened to the public in 1987. Its heart is the Great \
+Hall, a two-storey marble state room lit by chandeliers, from which a double staircase \
+rises to the mezzanine. The galleries present a collection of several thousand works, \
+from the Renaissance to the present day, from Lavinia Fontana and Clara Peeters to Frida \
+Kahlo and Louise Bourgeois. After two years of renovation, the museum reopened in \
+October 2023."""
+ici = """
+ARTEON follows the layout of the temple. The Great Hall, a light-filled room 16 metres \
+by 14 and 10 metres high, welcomes visitors from the south. To the west opens Salon I · \
+The Pioneers, with powder-pink walls. To the north, two doors cut into the end wall, \
+where the double staircase rises in the real museum, lead to The Mezzanine · The \
+Impressionists, as large as the hall but here on the same level, and 6.5 metres high. \
+Finally, you return through the hall to the east and Salon II · Light and Freedom, with \
+cream walls. The two salons, 5.5 metres high, are more intimate."""
+
+[[salles]]
+nom = "The Great Hall"
+theme = "Beneath the chandeliers, the marble hall and its double staircase: Labille-Guiard and her two pupils welcome the visitor."
+murs = "#efe7dc"
+x = 0
+z = 0
+largeur = 16
+profondeur = 14
+hauteur = 10
+portes = ["sud", "ouest", "est", { mur = "nord", position = -5 }, { mur = "nord", position = 5 }]
+
+[[salles]]
+nom = "Salon I · The Pioneers"
+theme = "1555–1794: from the Renaissance to Neoclassicism, women make their mark in portraiture, genre scenes and still life."
+murs = "#ead8cf"
+x = -13
+z = 0
+largeur = 10
+profondeur = 12
+hauteur = 5.5
+
+[[salles]]
+nom = "The Mezzanine · The Impressionists"
+theme = "1872–1878: Morisot, Gonzalès and Cassatt paint modern life, seen from inside homes and theatre boxes."
+murs = "#ece4d4"
+x = 0
+z = -14
+largeur = 16
+profondeur = 14
+hauteur = 6.5
+
+[[salles]]
+nom = "Salon II · Light and Freedom"
+theme = "1891–1923: the northern light of Anna Ancher, the modern woman of Suzanne Valadon."
+murs = "#e6dccb"
+x = 13
+z = 0
+largeur = 10
+profondeur = 12
+hauteur = 5.5
+
+[[oeuvres]]
+titre = "Self-Portrait with Two Pupils"
+artiste = "Adélaïde Labille-Guiard"
+annee = "1785"
+image = "autoportrait-deux-eleves.jpg"
+technique = "Oil on canvas, 210.8 × 151.1 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "Life-size, in a satin gown, the painter shows herself at work surrounded by two pupils: a plea for the place of women in art."
+description = """
+In a studio plunged in half-light, an elegant woman sits before a large easel, of which \
+only the back of the canvas can be seen. She wears a blue-grey satin gown with silvery \
+highlights and a straw hat trimmed with ostrich feathers and blue ribbons. Palette and \
+brushes in one hand, a brush in the other, the long rod of her maulstick slipped under \
+her arm, she turns towards us as though we were her sitter. Behind her green velvet \
+armchair, two young women stand pressed close together: one looks at us, the other \
+gazes intently at the canvas. In the background, in shadow, one can make out the bust of \
+an elderly man and a statuette of a draped woman. On the right, on a red velvet stool, \
+lie rolls of paper and a pink piece of fabric."""
+evocation = """
+The work is a manifesto. Two years earlier, Labille-Guiard had been admitted to the \
+Royal Academy of Painting, which allowed no more than four women at a time and whose \
+school remained closed to female students. By painting herself life-size, in a format \
+normally reserved for state portraits, surrounded by two young women whom she is \
+training herself, she asserts that a woman can not only paint, but teach and pass on \
+her art. Her refined attire also answers the malicious rumours that attributed her \
+talent to a man’s help: it is she who holds the brush. Finally, the picture conveys \
+solidarity: the two pupils, arms entwined, form with their mistress a small community of \
+artists, and the gaze of one of them takes us to witness."""
+histoire = """
+Adélaïde Labille-Guiard exhibited the painting at the Salon of 1785 at the Louvre. The \
+two pupils have been identified: Marie-Gabrielle Capet, who would become a recognised \
+portraitist and remained with her mistress until the latter’s death, and Marie-Marguerite \
+Carreaux de Rosemond, who died young in 1788. The bust in the background represents the \
+artist’s father. In 1790, in the midst of the Revolution, Labille-Guiard spoke at the \
+Academy to ask that women be admitted without any limit on their number. The painting \
+remained in her family until the early twentieth century, then passed into private \
+collections; it was given to the Metropolitan Museum of Art in New York in 1953 by \
+Julia A. Berwind."""
+facture = """
+Trained in pastel under Maurice Quentin de La Tour, Labille-Guiard shows herself here to \
+be a virtuoso colourist in oil: the satin of the gown, with its crisp folds and silvery \
+highlights, is a tour de force. Every material is differentiated: straw, feather, \
+velvet, the wood of the easel, the plaster of the bust. The pyramidal composition \
+culminates in the heads of the pupils and is balanced by the great oblique of the easel \
+on the left. The light, coming from the left, sets the three women against an almost \
+uniform brown-green background."""
+details = [
+  "On the upright of the easel, at lower left, the signature and the date.",
+  "The silvery highlights of the satin, rendered with touches of pure white.",
+  "The ostrich feathers of the hat, undulating above the head.",
+  "In the background, in shadow, the bust of the artist’s father.",
+  "On the red velvet stool, the rolls of paper and the pink fabric.",
+]
+themes = ["self-portrait", "studio", "teaching", "academy", "solidarity"]
+anecdote = """
+On 31 May 1783, the Royal Academy admitted Adélaïde Labille-Guiard and Élisabeth Vigée \
+Le Brun on the same day. The public delighted in setting the two portraitists against \
+each other as rivals: one was the protégée of Marie Antoinette, the other would become, \
+in 1787, the painter of the King’s aunts, Mesdames."""
+salle = 1
+mur = "nord"
+position = -0.2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "The Game of Chess"
+artiste = "Sofonisba Anguissola"
+annee = "1555"
+image = "partie-d-echecs.jpg"
+technique = "Oil on canvas, 72 × 97 cm"
+collection = "National Museum, Poznań"
+note = "Three of the artist’s sisters and their maid around a chessboard: they play, smile, look at one another, a rarity in a portrait of 1555."
+description = """
+In front of a large tree and an open landscape, three richly dressed young girls are \
+gathered around a table covered with an Oriental carpet, on which a chessboard has been \
+placed. On the left, the eldest, Lucia, in an orange brocade gown, rests one hand on the \
+board and raises her eyes towards us, calm and self-assured. Opposite her, Minerva, in \
+black and gold, lifts her hand as if to concede the game or to protest. Between them, \
+little Europa watches her sister with a broad, amused smile. Behind Minerva, an old \
+maid tilts her head to follow the game. Pearl necklaces, embroidered caps and lace \
+collars speak of the family’s rank. In the background stretches a bluish landscape of \
+hills, water and villages, almost a dreamlike view."""
+evocation = """
+The subject is a discreet statement: chess was regarded as a game of intelligence and \
+strategy, prized by men and by courts. To show sisters at play, one of whom is \
+visibly winning, is to celebrate their wit as much as their grace. It has been seen as \
+a reflection of the exceptional education that Amilcare Anguissola gave his six \
+daughters: letters, music, painting. Lucia’s gaze, turned outwards, seems to address the \
+painter herself, like a complicity between sisters. Above all, the work blends portrait \
+and genre scene: recognisable faces, but caught in a lively moment, with smiles and \
+gestures that the stiff, solemn portraits of the period scarcely ever showed."""
+histoire = """
+Sofonisba Anguissola was little more than twenty when she painted this canvas, in \
+Cremona, in the family home. She signed and dated it on the edge of the chessboard, in \
+Latin, presenting herself as Amilcare’s daughter. Around 1566, the historian Giorgio \
+Vasari, passing through Cremona, saw the painting at her father’s house and described it \
+with admiration: the figures, he wrote in essence, seem alive and lack only speech. The \
+canvas then passed through several major collections, including that of Lucien \
+Bonaparte, Napoleon’s brother, before being acquired in Paris in 1823 by the Polish \
+count Atanazy Raczyński. His collection is now displayed in the National Museum in \
+Poznań, Poland."""
+facture = """
+Anguissola paints each face with a portraitist’s precision, but links them through a \
+network of glances and gestures that passes from one figure to the next. The fabrics are \
+treated with care: the sheen of the brocade, gold embroidery, pearls, lace. The \
+figures, cut off at half length by the table, occupy the foreground in front of a \
+landscape whose distances turn blue, in the manner of the Lombard and Venetian painters. \
+The chessboard in perspective and the finely drawn hands show the training she received \
+in Cremona under Bernardino Campi and then Bernardino Gatti."""
+details = [
+  "On the edge of the chessboard, the Latin inscription bearing the signature and the date.",
+  "Minerva’s raised hand, on the right, which seems to concede or to protest.",
+  "The broad smile of little Europa, rare in a sixteenth-century portrait.",
+  "The Oriental carpet covering the table, with its geometric patterns.",
+  "The wrinkled face of the maid, at the far right.",
+]
+themes = ["family", "sisters", "game", "chess", "renaissance"]
+anecdote = """
+It was at the end of the fifteenth century, in Spain and Italy, that the queen in chess \
+became the most powerful piece in the game, able to cross the whole board. When Sofonisba \
+painted her sisters, this all-powerful “lady” had existed for only a few decades."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Self-Portrait"
+artiste = "Judith Leyster"
+annee = "c. 1630"
+image = "autoportrait-leyster.jpg"
+technique = "Oil on canvas, 74.6 × 65.1 cm"
+collection = "National Gallery of Art, Washington"
+note = "Brush in hand, she turns towards us with a smile: a young painter confident in her talent, in front of the fiddler she is painting."
+description = """
+A young woman sits in three-quarter view, her right arm resting on the back of her \
+chair, and turns towards us, her mouth slightly open as if about to speak. She wears a \
+dark dress with pink-violet silk sleeves, an immense white lace ruff and a light cap \
+that frees her forehead. In her right hand she holds a very fine brush whose tip almost \
+touches the canvas; in her left, her palette and a handful of brushes. On the right, on \
+the easel, a painting in progress: a laughing fiddler in a blue beret plays as he \
+sways. The background is a plain grey-brown wall, where nothing distracts from the \
+face, the hands and the work."""
+evocation = """
+This portrait is a demonstration. Leyster shows herself twice over: as a portraitist, \
+through her own lively, smiling face, and as a genre painter, through the cheerful \
+musician on the easel, a subject that made the success of the Haarlem studios. The open \
+mouth and relaxed pose break with the rigid dignity of portraits of the period and \
+recall the art of Frans Hals. It has often been remarked that she is not in working \
+dress: the ruff and the silk say that she presents herself as a respectable woman of \
+means, and not as a mere craftswoman. One reads in it the pride of a young woman who \
+lays claim to an almost entirely male profession, and to the right to excel in it."""
+histoire = """
+Leyster was in her early twenties when she painted this picture, in Haarlem. It is \
+thought that she presented it when she entered the city’s Guild of Saint Luke in 1633, \
+one of the very first women to be admitted as a master: she could then open a studio and \
+train apprentices. After her death her name faded; her paintings, signed with a discreet \
+monogram, were sold as works by Frans Hals. It was only in 1893 that the Dutch \
+historian Cornelis Hofstede de Groot restored her œuvre to her. This portrait entered \
+the National Gallery of Art in Washington in 1949, a gift of Robert Woods Bliss and his \
+wife, already correctly attributed to the artist."""
+facture = """
+The brushwork is rapid, visible, dashing: the lace of the ruff is made of small white \
+accents laid on the surface, the highlights of the silk of a few strokes of the brush. \
+Leyster learned this freedom in the circle of Frans Hals. She contrasts the face, \
+softly modelled, with the fiddler on the easel, painted more summarily, like a sketch. \
+The palette is sober, greys, blacks and whites, enlivened by the pink of the sleeve and \
+the red of the skirt. The diagonal of the arm and the brush links the artist to her \
+work."""
+details = [
+  "The very fine brush, held lightly, its tip brushing the canvas.",
+  "The lace of the ruff, rendered with small white touches.",
+  "The fiddler in the blue beret, laughing as he plays.",
+  "The palette and the handful of brushes, at lower right.",
+  "The back of the chair, cut off by the left edge of the painting.",
+]
+themes = ["self-portrait", "studio", "music", "golden age", "haarlem"]
+anecdote = """
+Examination of the painting revealed that Leyster had first painted a female face on the \
+easel, before covering it with the fiddler. The picture within the picture thus changed \
+subject along the way, passing from portrait to genre scene."""
+salle = 2
+mur = "sud"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Flowers in a Vase"
+artiste = "Rachel Ruysch"
+annee = "c. 1685"
+image = "fleurs-dans-un-vase.jpg"
+technique = "Oil on canvas, 57 × 43.5 cm"
+collection = "National Gallery, London"
+note = "A profuse bouquet springing from the shadows, painted by a woman in her early twenties who would become the most famous flower painter of her day."
+description = """
+On a stone ledge, a glass vase almost invisible in the shadows holds a profuse bouquet \
+that rises diagonally. At the centre, a large pale pink peony with a green heart draws \
+the eye first. Around it bloom orange martagon lilies, white clusters of hawthorn and \
+snowball viburnum, blue and white columbines, and yellow honeysuckle that falls \
+towards the bottom. Ears of ripe wheat and long grasses shoot upwards. On the right, \
+isolated, a dark red peony bud. A stem bearing a seed capsule spills over the ledge, \
+towards us. Looking closely, one discovers small insects hidden among the flowers and \
+foliage."""
+evocation = """
+Such a bouquet never existed as it stands: it brings together spring flowers and \
+already ripe ears of wheat, which do not grow at the same time. The painter composes it \
+from studies made in different seasons, to create an ideal image of nature. In \
+seventeenth-century Holland, such still lifes also speak of the passing of time: the \
+flower in full bloom, the bud and the drooping stem remind us that beauty is brief, \
+like life. It has been seen as an echo of the scientific culture of her family: \
+Rachel’s father, Frederik Ruysch, an anatomist and botanist, collected natural \
+specimens. She paints each species with a naturalist’s exactness, but arranges it with \
+a very personal sense of drama."""
+histoire = """
+Rachel Ruysch painted this canvas around 1685, in Amsterdam, when she was only in her \
+early twenties and had barely left the studio of her master, Willem van Aelst, one of \
+the city’s finest flower painters. His influence can be recognised in the dark \
+background and the asymmetrical, diagonal composition. She went on to build an \
+exceptional career of more than sixty years: her bouquets fetched higher prices than \
+those of many painters of her time, and the Elector Palatine Johann Wilhelm named her \
+court painter in Düsseldorf. The painting entered the National Gallery in London in \
+1974, thanks to the bequest of the collector Alan Evans."""
+facture = """
+Ruysch works in thin layers of oil, almost without a trace of the brush, to render the \
+texture of each petal: the velvet of the peony, the wax of the lilies, the delicacy of \
+the columbines. The light, coming from the left, sculpts the palest flowers against the \
+almost black background, while the leaves plunge into shadow. The composition traces a \
+curve, from the ears at the top down to the stem that hangs in front of the ledge, and \
+refuses symmetry. The barely visible vase leaves the bouquet as if suspended in the \
+darkness."""
+details = [
+  "The grasshopper almost hidden in the honeysuckle, at the base of the bouquet.",
+  "The tiny ants running over the flowers.",
+  "The red peony bud, isolated to the right of the bouquet.",
+  "The ears of ripe wheat, at the very top, mingled with spring flowers.",
+  "The stem drooping over the edge of the ledge, towards us.",
+]
+themes = ["flowers", "still life", "botany", "vanitas", "golden age"]
+anecdote = """
+In 1723, Rachel Ruysch and her husband won a large prize in an Amsterdam lottery. She \
+nonetheless carried on painting: she was still working in her eighties and proudly \
+inscribed her age next to her signature."""
+salle = 2
+mur = "sud"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Self-Portrait Hesitating between the Arts of Music and Painting"
+artiste = "Angelica Kauffman"
+annee = "1794"
+image = "entre-musique-et-peinture.jpg"
+technique = "Oil on canvas"
+collection = "National Trust, Nostell Priory (Yorkshire)"
+note = "Like Hercules at the crossroads, the painter must choose: Music holds her by the hand, Painting points her to a temple at the top of a mountain."
+description = """
+Three young women dressed in the antique style fill the whole width of the canvas. At \
+the centre, in a white gown with a blue and gold sash, Angelica Kauffman portrays \
+herself as a young woman. On the left, seated before a column and a heavy curtain, \
+Music, in a red gown and mauve scarf, crowned with flowers, a score on her lap, \
+tenderly holds her right hand. On the right, standing, Painting, in blue, with yellow \
+sleeves and a floating red scarf, holds a palette and brushes and stretches her arm \
+towards the distance: at the summit of a steep mountain stands a small circular \
+temple. The artist, her head inclined towards Music, is already moving her left hand \
+towards the palette, as if her gesture had chosen before her gaze."""
+evocation = """
+Kauffman takes up a famous theme from Antiquity, Hercules at the crossroads, torn \
+between easy pleasure and demanding virtue. Here, the choice is that of a vocation. \
+Music represents a talent she also possessed, and an easier path; Painting shows the \
+steep road that leads to the temple of glory. The artist’s gaze, turned towards Music \
+with regret and tenderness, and her hand stretched towards the palette speak of a \
+farewell rather than a hesitation. Painted by a woman at the height of her reputation, \
+the picture also recalls that a career as a history painter was a difficult choice for \
+a woman: in recent times it has become an emblematic image in the history of women \
+artists."""
+histoire = """
+Angelica Kauffman painted this picture in Rome in 1794, when she was over fifty and her \
+studio on the Via Sistina received cultivated Europe. The subject refers back to her \
+youth: a child prodigy, she sang and played as well as she drew, and it is said that she \
+once had to choose between a career as a singer and painting. She had already treated \
+the theme a few years earlier, in another version. The large format and the learned \
+reference to Hercules show that she placed herself among the history painters, the most \
+prestigious genre. The painting is now kept at Nostell Priory, a Yorkshire house owned \
+by the National Trust."""
+facture = """
+The composition, in the form of a frieze, aligns the three figures parallel to the \
+picture plane, as on an antique bas-relief, a principle dear to Neoclassicism. The pure \
+colours, red, white, blue and yellow, answer one another from figure to figure. The \
+drawing is clean, the drapery supple and smooth, the faces idealised with regular \
+profiles. A diagonal links the score held by Music, the artist’s arm and the raised arm \
+of Painting to the temple, drawing the eye from left to right, from the past towards \
+the future."""
+details = [
+  "The crown of violet flowers in the hair of Music.",
+  "The two clasped hands of Music and the artist, at the centre.",
+  "The palette, with its few touches of colour, held by Painting.",
+  "At the very top right, the small temple on the mountain.",
+  "The red scarf of Painting, lifted by the wind.",
+]
+themes = ["self-portrait", "vocation", "music", "allegory", "neoclassicism"]
+anecdote = """
+In 1768, Angelica Kauffman was one of only two women among the founding members of the \
+Royal Academy in London, together with the flower painter Mary Moser. It was then not \
+until 1936 that another woman was elected a full member."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "The Cradle"
+artiste = "Berthe Morisot"
+annee = "1872"
+image = "berceau.jpg"
+technique = "Oil on canvas, 56 × 46 cm"
+collection = "Musée d’Orsay, Paris"
+note = "Edma, the artist’s sister, watches over her sleeping daughter: an intimate image of motherhood, shown at the first Impressionist exhibition."
+description = """
+A young woman in a dark dress sits on the left, her chin resting on her hand, gazing at \
+a cradle. The baby sleeps, half hidden behind the muslin veil that cascades down from \
+the top of the cradle. The mother’s other hand rests on the edge, near the veil, and the \
+line of her gaze leads the eye from her face to the child’s. The background is divided \
+between a light curtain on the left and a section of dark wall on the right. All the \
+rest is a play of whites, net curtains, sheet, muslin, pillow, barely tinted with pink, \
+grey and blue. A black ribbon at the young woman’s neck and a few pink edgings punctuate \
+this whiteness."""
+evocation = """
+The picture reads first as a peaceful image of motherhood, but it is more ambiguous \
+than it appears. Edma, who had painted alongside Berthe since childhood, gave up \
+painting when she married in 1869. Her dreamy, almost melancholy gaze has been \
+interpreted as that of a woman contemplating the life she chose, or that was imposed on \
+her. The veil that separates mother from child creates both protection and distance. \
+For Berthe, still unmarried in 1872, it is also the portrait of her closest sister, \
+painted with an attention that only the intimacy of a home and trust between two women \
+allow."""
+histoire = """
+Berthe Morisot painted the canvas in 1872, shortly after the birth of Blanche, the \
+daughter of Edma and her husband, the naval officer Adolphe Pontillon. Two years later, \
+she showed it at the first exhibition of the group soon to be called the Impressionists, \
+which opened on 15 April 1874 in the former studio of the photographer Nadar, on the \
+Boulevard des Capucines. The critics, often hostile to the group, were kinder to this \
+delicate picture, but it found no buyer. It remained in the family, notably with \
+Blanche, the baby of the cradle now grown up, before being acquired by the Louvre in \
+1930. Shown at the Jeu de Paume, it joined the Musée d’Orsay when it opened in 1986."""
+facture = """
+Morisot works in long, light strokes that let the paint breathe. She builds almost the \
+whole picture from whites, pinkish, bluish or grey, laid in transparent layers that \
+convey the lightness of the muslin. Edma’s dark dress and the dark section of wall on \
+the right serve as counterpoint. The composition rests on a diagonal, from the mother’s \
+face to the baby, crossed by that of the veil. The tight framing encloses the viewer in \
+the intimacy of the room."""
+details = [
+  "The muslin of the cradle, made of almost transparent white touches.",
+  "Edma’s hand resting on the edge of the cradle.",
+  "The baby’s face, barely sketched behind the veil.",
+  "The black ribbon at the young mother’s neck.",
+  "The pink edging that borders the veil, on the diagonal.",
+]
+themes = ["motherhood", "sleep", "intimacy", "sisters", "impressionism"]
+anecdote = """
+Berthe Morisot was the only woman to exhibit at the first Impressionist exhibition, in \
+1874. She took part in all the following ones except one, that of 1879, the year after \
+the birth of her daughter Julie."""
+salle = 3
+mur = "nord"
+position = -0.2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "A Box at the Théâtre des Italiens"
+artiste = "Eva Gonzalès"
+annee = "c. 1874"
+image = "loge-aux-italiens.jpg"
+technique = "Oil on canvas, 98 × 130 cm"
+collection = "Musée d’Orsay, Paris"
+note = "A young woman in evening dress and her companion in a theatre box: rejected by the Salon of 1874, the canvas was accepted there five years later."
+description = """
+A young woman in a pale blue evening gown, with bare shoulders, leans on the red \
+velvet edge of a theatre box. She wears a black velvet ribbon at her neck, a rose in \
+her hair and another at her bodice, long white gloves and a gold bracelet. She holds a \
+pair of ivory opera glasses and looks at us with a dreamy, slightly absent air. Behind \
+her, a bearded man in a black tailcoat and white shirt front stands in profile and looks \
+to the right, out of the picture, towards the stage or the auditorium. On the left, a \
+heavy red and gold curtain with tassels frames the box; on the ledge lies a bouquet \
+wrapped in white paper, made of blue flowers around a rose. The background is almost \
+black."""
+evocation = """
+The theatre is one of the great subjects of modern life for the painters of the 1870s: \
+one goes there to see the performance, but also to be seen. Gonzalès gives a calm and \
+enigmatic version of it. The two figures do not look at each other: the woman turns \
+towards us, the man towards an elsewhere we cannot see, and this absence of exchange \
+creates a silent distance. It has been read as a reflection on the place of woman in the \
+box, exposed to view like an ornament, with her flowers, her gloves and her jewels, but \
+whose pensive face hints at an inner life. The picture also shows the ambition of a \
+young painter who takes on a large format and a fashionable subject."""
+histoire = """
+Eva Gonzalès painted the canvas around 1874, having two people close to her pose: her \
+younger sister Jeanne and the engraver Henri Guérard, whom Eva would marry in 1879. She \
+submitted it to the Salon of 1874, whose jury rejected it. Faithful to the example of \
+her master Manet, she did not join the Impressionists, who opened their first \
+exhibition the same year, and persevered with the official Salon. She submitted the \
+painting again in 1879, and this time it was accepted. After the artist’s premature \
+death in 1883, it remained in her family. Her son, Jean Guérard, gave it to the State \
+in 1927; it has been displayed at the Musée d’Orsay since 1986."""
+facture = """
+Manet’s lesson is everywhere: bold contrasts between the black of the tailcoat, the \
+dark background and the whiteness of the flesh, the gloves and the shirt front; colours \
+laid in broad planes, without needless half-tones; figures framed closely, at half \
+length, as in a photograph. Gonzalès adds a personal softness in the pale blue of the \
+gown and the pearly treatment of the skin. The bouquet and the tasselled curtain, \
+brushed freely, frame the scene. The large format gives the figures an almost \
+life-size presence."""
+details = [
+  "The ivory opera glasses, held in the white-gloved hand.",
+  "The bouquet wrapped in white paper, resting on the ledge at left.",
+  "The black velvet ribbon and its pendant, at the young woman’s neck.",
+  "The gilt studs that adorn the red velvet edge of the box.",
+  "The artist’s signature, at lower left, beneath the bouquet.",
+]
+themes = ["theatre", "modern life", "couple", "gaze", "paris"]
+anecdote = """
+Eva Gonzalès was the only official pupil of Édouard Manet, who painted her portrait in \
+1870, showing her in a white dress before her easel. She died in May 1883, a few days \
+after giving birth to her son, and less than a week after the death of Manet."""
+salle = 3
+mur = "est"
+position = -0.2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Little Girl in a Blue Armchair"
+artiste = "Mary Cassatt"
+annee = "1878"
+image = "fauteuil-bleu.jpg"
+technique = "Oil on canvas, 89.5 × 129.8 cm"
+collection = "National Gallery of Art, Washington"
+note = "A child slumped, weary, in a drawing room overrun with blue armchairs: Cassatt paints the boredom of childhood without a hint of sentimentality."
+description = """
+A little girl is sprawled in a large blue armchair, legs apart, one arm folded behind \
+her head, her gaze lost to the side. She wears a white dress with ruffles, a tartan sash \
+and dark patterned stockings. Her armchair, covered in a sky-blue fabric sprinkled with \
+flowers and foliage, occupies almost the whole right half of the picture. In another \
+armchair, on the left, a small griffon dog sleeps curled in a ball. Behind, a sofa and \
+a third armchair in the same fabric, set on a grey-brown floor, lead the eye towards \
+the bright windows at the back. At the centre, the empty floor forms a large, \
+strangely bare space. At lower left, the artist’s signature."""
+evocation = """
+Far from the well-behaved, smiling children of the painting of her day, Cassatt shows a \
+bored little girl, in a relaxed pose that was thought improper for a young girl. She is \
+not an ornament of the drawing room, but a person with a mood of her own. The art \
+historian Griselda Pollock saw in it one of the most radical images of childhood of \
+its time. The oversized armchairs, which seem almost to swallow her, speak of a child’s \
+place in a world of adults. The sleeping dog answers her like a double: two idle \
+creatures in a bourgeois interior. The work also asserts the gaze of an artist who \
+observes childhood without sentimentality."""
+histoire = """
+Cassatt painted the canvas in Paris in 1878, shortly after meeting Edgar Degas, who had \
+invited her to exhibit with the Impressionists. Degas found her the model, the daughter \
+of friends of his, advised her and, according to her, worked on the background \
+himself. She sent the picture to the American section of the 1878 Exposition \
+Universelle, whose jury rejected it. Twenty-five years later, in a letter to the dealer \
+Ambroise Vollard, who had just bought it from her, she still voiced her anger. The \
+painting then passed to the Parisian dealer Hector Brame, and in 1963 was acquired by \
+the collector Paul Mellon and his wife, who gave it in 1983 to the National Gallery of \
+Art in Washington."""
+facture = """
+The brushwork is of unusual freedom: on the armchairs, the pattern of the fabric is \
+rendered with rapid strokes, in red, yellow and green zigzags, that verge on \
+abstraction. The off-centre composition, cut by the edges, and the large empty area of \
+floor recall Degas and the Japanese prints that the two artists admired. The viewpoint \
+is low, almost at the child’s height. Blues dominate, set off by the white of the dress \
+and the tartan of the sash. Study of the painting at the National Gallery has confirmed \
+Degas’s intervention in the background."""
+details = [
+  "The signature “Mary Cassatt”, at lower left.",
+  "The little griffon asleep in the armchair on the left.",
+  "The arm folded behind the head, a gesture of abandon and boredom.",
+  "The patterns of the fabric, painted in bright, almost abstract zigzags.",
+  "The bright windows at the back, barely sketched.",
+]
+themes = ["childhood", "boredom", "interior", "dog", "impressionism"]
+anecdote = """
+The little dog in the painting is a Brussels Griffon, probably given by Degas, who had \
+it from the painter Ludovic-Napoléon Lepic, a breeder of the type. Cassatt remained \
+faithful to griffons all her life."""
+salle = 3
+mur = "ouest"
+position = -0.2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Sunshine in the Blue Room"
+artiste = "Anna Ancher"
+annee = "1891"
+image = "soleil-chambre-bleue.jpg"
+technique = "Oil on canvas, 65.2 × 58.8 cm"
+collection = "Skagens Museum, Skagen (Denmark)"
+note = "Her daughter Helga, absorbed in her work, in her grandmother’s blue sitting room: the real subject is the light."
+description = """
+In a room with deep blue walls, a fair-haired little girl sits with her back to us near \
+a window, bent over some crochet work. The sun enters through the windows with their \
+orange curtains, on the right, and casts on the left-hand wall two large patches of \
+white light, in which the shadows of the plants on the sill are cut out. The rays also \
+stretch across the floor in yellow bands. Around the child are chairs with blue seats, \
+a small table covered with a red cloth, a round stool. At upper left, in shadow, a \
+framed portrait. At the back, between the two windows, a piece of furniture topped by a \
+mirror. The child’s hair, caught in the backlight, glows like a flame."""
+evocation = """
+Nothing happens, and that is the whole subject. Anna Ancher captures a suspended moment \
+of domestic life, the silence of a room where a child works without knowing she is \
+watched. The true protagonist is the northern light, raking and changing, which turns \
+the blue wall into a vibrating surface and projects the shadows of the plants like a \
+picture within the picture. It has been seen as an echo of seventeenth-century Dutch \
+interiors, with their women busy beside a window, but seen with a modern sensibility. \
+The picture also evokes the transmission between three generations of women: the \
+grandmother whose room it is, the mother who paints, the daughter absorbed in her \
+work."""
+histoire = """
+Anna Ancher painted this picture in 1891 in Skagen, at the northern tip of Denmark, \
+where she was born and where an artists’ colony had formed around the inn run by her \
+parents. The room is her mother’s sitting room, the child’s grandmother’s: the full \
+Danish title says so. The model is Helga, the only daughter of Anna and the painter \
+Michael Ancher, born in 1883. Anna would often paint the interiors of the family home \
+and of her own house, under different lights. The painting belongs to the Skagens \
+Museum, founded in 1908 by painters of the colony, including Michael Ancher, and by the \
+hotelier Degn Brøndum, Anna’s brother."""
+facture = """
+Ancher builds the picture through colour: an intense blue for the wall, warmed by the \
+orange of the curtains and the yellow of the rays on the floor. The brushwork is broad \
+and visible, especially in the patches of sunlight, laid on thickly with bluish whites. \
+This attention to complementary colours and to light brings the work close to \
+Impressionism. The figure, small and seen from behind, is only one element of the \
+composition, on a par with the chairs and the windows."""
+details = [
+  "The shadows of the windowsill plants, cast on the blue wall.",
+  "The child’s fair hair, lit by the backlight.",
+  "The bands of yellow sunlight on the floor.",
+  "The framed portrait, at upper left, in shadow.",
+  "The signature and the date, at lower right.",
+]
+themes = ["light", "interior", "childhood", "blue", "skagen"]
+anecdote = """
+Anna and Michael Ancher appeared together on the old Danish 1,000-krone banknote: a rare \
+honour for a couple of painters, and for a woman artist. Their house in Skagen, \
+preserved with its furniture, can be visited today."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Blue Room"
+artiste = "Suzanne Valadon"
+annee = "1923"
+image = "chambre-bleue.jpg"
+technique = "Oil on canvas, 90 × 116 cm"
+collection = "Centre Pompidou, Paris (on deposit at the Musée des Beaux-Arts, Limoges)"
+note = "An odalisque of a new kind: in striped pyjamas, a cigarette on her lips, books beside her, she poses for no one."
+description = """
+A full-figured, dark-haired woman lies on a bed covered with a blue bedspread \
+patterned with large white and yellow leaves. She wears a pink top with thin straps and \
+pyjama trousers with broad green and white stripes; her feet are bare. Propped on a big \
+white pillow, a cigarette at the corner of her lips, she looks elsewhere, lost in \
+thought. On the left, two books, one red, one yellow, lie on the bed. Blue hangings \
+frame the scene like a theatre curtain, in front of a wall papered with plant motifs in \
+faded tones, pink, ochre and green. At lower left, the signature and the date."""
+evocation = """
+Valadon takes up an ancient subject of painting, the reclining woman, from Titian’s \
+Venus of Urbino to Manet’s Olympia, and turns it upside down. Her model is neither \
+nude, nor offered, nor idealised: she is dressed for comfort, smokes, has read or is \
+about to read, and does not care about the viewer. The books beside her signal an inner \
+life. This canvas has often been seen as an image of the freedom of the modern woman of \
+the 1920s, painted by an artist who had herself been a model for Renoir, Puvis de \
+Chavannes and Toulouse-Lautrec, and who knew from the inside the painters’ gaze on the \
+female body."""
+histoire = """
+Suzanne Valadon painted The Blue Room in 1923, in Paris, at nearly sixty, at the moment \
+when her painting was at last meeting with success among dealers and collectors. The \
+picture entered the national collections as early as the 1920s, a sign of official \
+recognition rare for a woman painter in her lifetime. It now belongs to the Centre \
+Pompidou, Musée national d’art moderne, which has deposited it at the Musée des \
+Beaux-Arts in Limoges, in the artist’s native Limousin. It was one of the highlights of \
+the major Valadon retrospective shown at the Centre Pompidou-Metz in 2023, then at the \
+Centre Pompidou in Paris in 2025."""
+facture = """
+Valadon outlines her forms with a dark, emphatic line, a legacy of her skill as a \
+draughtswoman, encouraged by Degas. Within these contours, the colour is laid in bold, \
+saturated flat areas: the deep blue of the fabrics, the acid green of the stripes, the \
+pink of the top. The decorative patterns of the bedspread and the wallpaper, almost as \
+present as the figure, recall Matisse, but Valadon refuses any conventional elegance: \
+the body is massive, the feet broad, the face unpainted. The figure stretches across \
+the full width of the canvas."""
+details = [
+  "The cigarette on her lips, a detail then thought improper in a woman.",
+  "The two books, red and yellow, lying on the bed at left.",
+  "The dark line that outlines the arm, the leg and the bare feet.",
+  "The white leaves of the blue bedspread, laid on like stencils.",
+  "The signature and the date, at lower left.",
+]
+themes = ["woman", "modernity", "interior", "odalisque", "freedom"]
+anecdote = """
+Before becoming a painter, Suzanne Valadon was called Marie-Clémentine. According to \
+tradition, it was Toulouse-Lautrec who nicknamed her Suzanne, in allusion to the \
+biblical episode of Susanna and the Elders, because she posed for painters older than \
+herself."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[artistes]]
+nom = "Sofonisba Anguissola"
+vie = "Cremona, c. 1532 – Palermo, 16 November 1625"
+biographie = """
+Sofonisba was the eldest of the six daughters of Amilcare Anguissola, a cultivated minor \
+nobleman of Cremona, in Lombardy, who had all his children educated. She learned \
+painting under Bernardino Campi, then Bernardino Gatti: an apprenticeship with a master, \
+exceptional for a young girl. Her father brought her works to the attention of \
+influential figures; Michelangelo himself, according to the sources of the time, \
+encouraged her and commented on her drawings. In 1559, her reputation earned her a \
+summons to the Spanish court in Madrid, as lady-in-waiting to the young queen \
+Elisabeth of Valois, wife of Philip II, whom she taught to draw; there she painted many \
+portraits of the royal family. Married in the early 1570s to a Sicilian nobleman, \
+Fabrizio de Moncada, she settled in Sicily. Widowed, she married a Genoese ship’s \
+captain, Orazio Lomellino, and lived in Genoa and then Palermo. In 1624, very old and \
+almost blind, she received a visit from the young Anthony van Dyck, who drew her and \
+noted down her remarks on painting. She died in Palermo the following year, at over \
+ninety."""
+style = """
+Anguissola renewed the portrait by bringing life into it: smiles, exchanged glances, \
+gestures caught from life, where tradition preferred the solemn pose. Her many \
+self-portraits, at the easel, at the harpsichord or with a book in hand, make her one of \
+the first artists to construct her own image. Attentive to naturalness and to detail, in \
+the Lombard tradition, she showed that a woman could achieve a European reputation and \
+opened the way for court portraitists."""
+
+[[artistes]]
+nom = "Judith Leyster"
+vie = "Haarlem, baptised 28 July 1609 – Heemstede, 10 February 1660"
+biographie = """
+Judith Leyster was born in Haarlem in 1609 into a family of brewers and clothmakers; the \
+name of her father’s brewery, the Pole Star (Leyster), became the family’s name. As early \
+as 1628, when she was not yet twenty, a chronicler of the city listed her among the \
+talented painters. She worked in the circle of Frans Hals, though it is not known \
+whether she was his pupil. In 1633 she was admitted as a master to the Haarlem Guild of \
+Saint Luke, which allowed her to keep a studio and train apprentices. In 1635 she \
+brought before the guild a dispute with Frans Hals, who had taken in an apprentice who \
+had left her without permission. In 1636 she married the painter Jan Miense Molenaer; \
+the couple settled in Amsterdam, then returned to Heemstede, near Haarlem. A mother of \
+several children, she painted far less from then on, but probably took part in her \
+husband’s business. She died in 1660. Forgotten for more than two centuries, her works \
+attributed to Hals or to Molenaer, she was rediscovered in 1893 by the historian \
+Cornelis Hofstede de Groot."""
+style = """
+Leyster excels in genre scenes: musicians, drinkers, children at play, often lit by \
+candle or lantern. Her lively, free brushwork recalls that of Frans Hals, so much so \
+that her paintings were long attributed to him, but her night scenes and her more \
+intimate interiors, such as The Proposition, in which a man offers money to a woman who \
+is sewing, reveal a gaze of her own. She signed with a monogram, her initials pierced by \
+a star."""
+
+[[artistes]]
+nom = "Rachel Ruysch"
+vie = "The Hague, 3 June 1664 – Amsterdam, 12 August 1750"
+biographie = """
+Rachel Ruysch was born in The Hague in 1664 and grew up in Amsterdam, in a learned \
+milieu: her father, Frederik Ruysch, professor of anatomy and botany, owned a famous \
+cabinet of curiosities filled with natural specimens, which she observed from \
+childhood. Her mother, Maria Post, was the daughter of the architect Pieter Post. At \
+about fifteen, she was apprenticed to Willem van Aelst, one of the best flower painters \
+in Amsterdam. In 1693 she married the portraitist Juriaen Pool, with whom she had ten \
+children, without ever ceasing to paint. In 1701 she was admitted, with her husband, to \
+the painters’ confraternity of The Hague. From 1708 to 1716 she was court painter to \
+the Elector Palatine Johann Wilhelm, in Düsseldorf, who commissioned paintings from \
+her for himself and for his circle. After the Elector’s death, she returned to \
+Amsterdam. Her career lasted nearly seventy years: celebrated by poets in her \
+lifetime, she painted until well past eighty and died in Amsterdam in 1750."""
+style = """
+Ruysch took the flower still life to an extreme refinement: asymmetrical, animated \
+compositions, bouquets that seem to overflow the frame, a dark background from which \
+the colours spring. Each flower, each insect, each drop of water is rendered with a \
+naturalist’s exactness, inherited from her father’s scientific milieu. Slowly painted \
+and relatively few in number, her pictures were among the most sought after of her \
+time."""
+
+[[artistes]]
+nom = "Angelica Kauffman"
+vie = "Chur (Switzerland), 30 October 1741 – Rome, 5 November 1807"
+biographie = """
+The daughter of the painter Joseph Johann Kauffman, Angelica was born in Chur, in the \
+Grisons, and grew up between Switzerland, Austria and Italy, where her father took her \
+as commissions required. A child prodigy, she spoke several languages, sang and \
+painted from adolescence. In Italy, in Florence, Rome and Naples, she copied the old \
+masters and frequented Neoclassical circles; in 1764 she painted the portrait of the art \
+historian Johann Joachim Winckelmann. In 1766 she settled in London, where she enjoyed \
+immediate success as a portraitist and history painter, befriended Joshua Reynolds and, \
+in 1768, became one of the founding members of the Royal Academy. In 1781 she married \
+the decorative painter Antonio Zucchi and settled in Rome the following year. Her \
+studio on the Via Sistina became a meeting place for cultivated Europe: Goethe, during \
+his Italian journey, visited her assiduously. She died in Rome in 1807, and her solemn \
+funeral was organised by the sculptor Antonio Canova."""
+style = """
+Kauffman is one of the great figures of Neoclassicism. She dared to paint history, the \
+most prestigious genre, almost reserved for men, and willingly chose heroines of \
+Antiquity and of literature. Her figures with pure profiles, her supple drapery, her \
+soft colours and her frieze-like compositions were widely circulated through engraving \
+and reproduced on porcelain, furniture and interior decoration, notably that of the \
+architect Robert Adam."""
+
+[[artistes]]
+nom = "Adélaïde Labille-Guiard"
+vie = "Paris, 11 April 1749 – Paris, 24 April 1803"
+biographie = """
+The daughter of a Parisian merchant, Adélaïde Labille trained first in miniature under \
+François-Élie Vincent, then in pastel under Maurice Quentin de La Tour, and finally in \
+oil painting under her first master’s son, François-André Vincent. Married in 1769 to \
+Louis-Nicolas Guiard, she separated from him about ten years later. A member of the \
+Académie de Saint-Luc, she exhibited her pastels and portraits there with success. On \
+31 May 1783 she was admitted to the Royal Academy of Painting and Sculpture. In 1787 \
+she became first painter to Mesdames, the aunts of Louis XVI. During the Revolution, \
+she painted deputies of the Constituent Assembly and argued for the admission of women \
+to the Academy and for their training. In 1793 she had to destroy a large canvas \
+commissioned by the Count of Provence, the king’s brother, which had become suspect. \
+She continued to teach, surrounded by her pupils, married François-André Vincent, her \
+lifelong companion, in 1800, and died in Paris in 1803."""
+style = """
+A virtuoso pastellist before turning to oil, Labille-Guiard is a portraitist of great \
+frankness: she flatters her sitters little and renders faces, fabrics and accessories \
+with precision. Her state portraits rival those of Vigée Le Brun, with a more sober \
+realism. Through her teaching and her commitment, she helped open access to artistic \
+training for women."""
+
+[[artistes]]
+nom = "Berthe Morisot"
+vie = "Bourges, 14 January 1841 – Paris, 2 March 1895"
+biographie = """
+The daughter of a senior civil servant, Berthe Morisot grew up in Paris in a \
+comfortable milieu. With her sister Edma, she took drawing lessons and then copied the \
+masters at the Louvre; the two young women received advice from Camille Corot, who \
+introduced them to open-air painting. Berthe exhibited at the Salon from 1864. In 1868 \
+she met Édouard Manet, who painted her several times, notably in The Balcony. In 1874 \
+she broke with the Salon and took part in the first Impressionist exhibition; the same \
+year she married Eugène Manet, the painter’s brother, who supported her career. Their \
+daughter Julie was born in 1878. One of the most loyal members of the group, Morisot \
+counted Degas, Monet, Renoir and the poet Stéphane Mallarmé among her friends. In \
+1894 the State bought one of her canvases for the Musée du Luxembourg. She died the \
+following year, at fifty-four, of an illness contracted while nursing her daughter."""
+style = """
+Morisot has the freest brushwork in Impressionism: rapid strokes, often zigzagging, that \
+sometimes leave the canvas visible and give her pictures the look of a sketch. She \
+paints chiefly the lives of the women and children of her milieu, interiors, gardens, \
+dressing, in a clear light and harmonies of pearly whites. Long reduced to the role of \
+Manet’s model, she is now recognised as one of the major figures of the movement."""
+
+[[artistes]]
+nom = "Mary Cassatt"
+vie = "Allegheny City (Pennsylvania), 22 May 1844 – Le Mesnil-Théribus (Oise), 14 June 1926"
+biographie = """
+Born near Pittsburgh into a well-off family, Mary Cassatt spent part of her childhood \
+in Europe. She studied at the Pennsylvania Academy of the Fine Arts in Philadelphia, \
+then settled in Paris in 1866, despite her father’s reluctance. She copied the masters \
+at the Louvre, travelled in Italy, Spain and the Netherlands, and exhibited at the \
+Salon from 1868. In 1877, Edgar Degas invited her to join the Impressionists: she \
+exhibited with them in 1879, 1880, 1881 and 1886, the only American in the group. From \
+the 1880s she devoted herself chiefly to the theme of mother and child. In 1890, a \
+major exhibition of Japanese prints at the École des Beaux-Arts inspired in her a \
+series of colour prints of great modernity. An adviser to wealthy American collectors, \
+notably Louisine and Henry Havemeyer, she helped bring Impressionism into American \
+museums. Afflicted by cataracts, she had to stop painting around 1914 and died in 1926 \
+at her château of Beaufresne, in the Oise."""
+style = """
+Cassatt combines the rigour of drawing, learned from the old masters and from Degas, \
+with the clear colour of the Impressionists. Her scenes of women and children, closely \
+framed, capture everyday gestures with accuracy and without sentimentality. The \
+influence of Japanese prints can be seen in her off-centre compositions, her flat \
+areas of colour and her clean lines, above all in her colour prints of 1890–1891."""
+
+[[artistes]]
+nom = "Eva Gonzalès"
+vie = "Paris, 19 April 1849 – Paris, 6 May 1883"
+biographie = """
+The daughter of the novelist Emmanuel Gonzalès, who presided over the Société des gens \
+de lettres, Eva Gonzalès grew up in Paris among writers and artists. From 1866 she \
+attended the classes of the painter Charles Chaplin, who ran a studio reserved for \
+women. In 1869 she became the pupil of Édouard Manet and posed for him: the portrait he \
+exhibited at the Salon of 1870 shows her in a white dress, painting before an easel. \
+She herself made her Salon debut the same year. Like her master, she did not take part \
+in the Impressionist exhibitions and continued to show her work at the official Salon, \
+despite rejections. She painted scenes of modern life, portraits, pastels and still \
+lifes, often with her sister Jeanne as model. In 1879 she married the engraver Henri \
+Guérard. She died in May 1883, aged thirty-four, a few days after the birth of her son \
+and shortly after the death of Manet. A retrospective exhibition was devoted to her in \
+Paris as early as 1885."""
+style = """
+Gonzalès remains faithful to Manet’s manner: bold contrasts, deep blacks, luminous flat \
+areas, sharply cut figures. Her subjects are those of modern life, theatre boxes, \
+interiors, women at their toilette, treated with a restrained elegance. Over the years \
+her palette lightens and her pastels grow softer through contact with Impressionism, \
+though she never adopts the broken brushwork of her friends."""
+
+[[artistes]]
+nom = "Suzanne Valadon"
+vie = "Bessines-sur-Gartempe (Haute-Vienne), 23 September 1865 – Paris, 7 April 1938"
+biographie = """
+Marie-Clémentine Valadon was born in the Limousin, the illegitimate daughter of a \
+laundress who soon moved to Paris. She grew up in Montmartre, took on a string of odd \
+jobs, worked for a time in a circus, and then, as a teenager, became a model for \
+painters: Pierre Puvis de Chavannes, Auguste Renoir, Henri de Toulouse-Lautrec. She \
+observed them and drew as a self-taught artist. In 1883 she gave birth to a son, the \
+future painter Maurice Utrillo. Edgar Degas, to whom she showed her drawings, \
+encouraged her, bought sheets from her and introduced her to engraving. In 1894 she was \
+the first woman admitted to the Société nationale des beaux-arts. Married in 1896 to \
+Paul Mousis, a well-off businessman, she gradually devoted herself to oil painting. \
+Around 1909 she left him for André Utter, a painter and friend of her son, twenty-one \
+years her junior, whom she married in 1914. In the 1920s she at last found success, \
+exhibited regularly and sold well. She died in Paris in 1938."""
+style = """
+Valadon draws first, and her painting keeps the strength of line: dark, emphatic \
+contours enclose solid bodies, painted without idealisation. Her female nudes, the work \
+of a woman who had herself been a model, break with the tradition of the male gaze. Her \
+bright colours and decorative backgrounds bring her close to Gauguin and the Nabis, but \
+she attached herself to no group and followed a highly personal path."""
+
+[[artistes]]
+nom = "Anna Ancher"
+vie = "Skagen (Denmark), 18 August 1859 – Skagen, 15 April 1935"
+biographie = """
+Anna Brøndum was born in Skagen, a small fishing port at the far north of Jutland, \
+where her parents ran the town’s inn. From the 1870s the place attracted painters who \
+came in search of the exceptional light of this coast, and the inn became their \
+meeting place. The young Anna drew in their midst; she then attended, in Copenhagen, \
+from 1875 to 1878, the women’s drawing school of the landscape painter Vilhelm Kyhn. In \
+1880 she married the painter Michael Ancher, one of the artists of the colony; their \
+daughter Helga was born in 1883. Although a married woman was often expected to give up \
+painting, she continued her work. In 1888–1889 she studied in Paris under Pierre Puvis \
+de Chavannes. She exhibited in Denmark and abroad and became one of the most esteemed \
+painters of her country. She spent almost her whole life in Skagen, where her house, \
+preserved as she left it, is now a museum."""
+style = """
+Anna Ancher is the painter of light in interiors. She depicts the daily life of Skagen, \
+women at work, old men, children, rooms flooded with sun, with constant attention to \
+colour and reflections. Her taste for pure colours and simplified forms, bolder than \
+that of many painters of the colony, foreshadows modern painting. She remains one of \
+the great figures of Danish painting."""

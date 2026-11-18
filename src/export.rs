@@ -110,10 +110,13 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             write(path, prefix_urls(&res.text(), &base).as_bytes())?;
         }
     }
-    // Le catalogue de l'application iPad : ses chemins sont relatifs, il est écrit tel quel.
-    let res = client.get("/catalogue.json").await;
-    if res.status() == 200 {
-        write("/catalogue.json", res.text().as_bytes())?;
+    // Le catalogue de l'application iPhone et iPad, dans chaque langue : ses chemins sont
+    // relatifs, il est écrit tel quel. Et la feuille de style, commune à toutes les pages.
+    for path in ["/catalogue.json", "/en/catalogue.json", "/es/catalogue.json", "/style.css"] {
+        let res = client.get(path).await;
+        if res.status() == 200 {
+            write(path, res.text().as_bytes())?;
+        }
     }
     // Les fichiers sont servis tels quels : pas de traitement Jekyll sur GitHub Pages.
     write(".nojekyll", b"")?;

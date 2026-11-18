@@ -1,0 +1,476 @@
+[exposition]
+ordre = 300
+nom_court = "Tesoros de la Tierra"
+mouvement = "Historia natural: minerales, fósiles y meteoritos"
+cadre = "vitrine"
+couleur = "#5b4b78"
+titre = "Tesoros de la Tierra, minerales, fósiles y meteoritos"
+artiste = "Golconda, el Mont Blanc, Solnhofen, Whitby, el mar Báltico, Gibeon…"
+dates = "Hace 4500 millones de años – hoy"
+accroche = "Exposición virtual · Museo Nacional de Historia Natural, París"
+introduction = """
+Aquí, el artista es la naturaleza, y cada obra lleva el nombre del lugar que la ha entregado: las minas de Golconda, las fisuras del Mont Blanc, las canteras de Solnhofen, los acantilados de Whitby, las playas del Báltico. La visita reúne diez tesoros, desde un meteorito más antiguo que la Tierra hasta el diamante Hope, desde un trilobites de más de 500 millones de años hasta el arqueópterix, mitad ave, mitad dinosaurio. El edificio se inspira en el Museo Nacional de Historia Natural, en el Jardin des Plantes de París: una alta nave bajo cubierta de cristal, como la de la Gran Galería de la Evolución, se abre al oeste a una galería de mineralogía y al este a la sala de los mares antiguos. Cada objeto se presenta allí en una vitrina profunda, a menudo ampliado para que el ojo capte sus detalles."""
+vitrine = "diamant-hope.jpg"
+
+[musee]
+nom = "Gran Galería de la Evolución"
+ville = "París, Francia (Jardin des Plantes)"
+architecte = "Jules André; renovación: Paul Chemetov y Borja Huidobro"
+construction = "1877–1889; reabierta en 1994"
+presentation = """
+El Museo Nacional de Historia Natural nace en 1793 en el antiguo Jardín Real de las plantas medicinales, fundado en el siglo XVII en la margen izquierda del Sena. Para sus colecciones de zoología, el arquitecto Jules André levanta, de 1877 a 1889, una vasta galería: una nave cubierta por una inmensa cristalera, bordeada de balcones superpuestos sostenidos por columnas de fundición. Cerrada en 1965 por falta de mantenimiento, es renovada por Paul Chemetov y Borja Huidobro y reabre en 1994 con el nombre de Gran Galería de la Evolución. En la nave, una caravana de animales naturalizados de la sabana africana desfila bajo una luz que varía como la del cielo. El jardín cuenta con otras galerías: la de Mineralogía y Geología, construida durante la monarquía de Julio por Charles Rohault de Fleury, que expone meteoritos, gemas y cristales gigantes, y la de Paleontología y Anatomía Comparada, abierta en 1898, donde se alza todavía el diplodocus donado por Andrew Carnegie en 1908."""
+ici = """
+El edificio de ARTEON reúne en una sola construcción las galerías del Jardin des Plantes. Se entra por el sur en el vestíbulo, color piedra, donde aguarda un meteorito. Se abre al norte a la gran nave, de 24 metros de largo y 14 de alto, como la nave bajo cristalera de la Gran Galería de la Evolución. Al oeste, una puerta conduce a la galería de Mineralogía, más baja, de muros gris perla, donde brillan las gemas y los cristales. Al este, la sala de los mares antiguos, de un verde agua pálido, reúne trilobites, amonites y nautilo. Se regresa por último a la nave, donde aguardan el diplodocus, el arqueópterix y el ámbar."""
+
+[[salles]]
+nom = "El vestíbulo"
+theme = "La entrada, donde una rebanada de meteorito recuerda que la Tierra nació, como él, hace 4500 millones de años."
+murs = "#e6dfd2"
+x = 0
+z = 0
+largeur = 12
+profondeur = 6
+hauteur = 6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "La gran nave"
+theme = "La vida en tierra firme en el Jurásico y el Eoceno: el diplodocus de Carnegie, el arqueópterix y un insecto atrapado en ámbar."
+murs = "#e3dccb"
+x = 0
+z = -15
+largeur = 13
+profondeur = 24
+hauteur = 14
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "La galería de Mineralogía"
+theme = "Los tesoros minerales: el diamante Hope, una fluorita rosa del Mont Blanc y una geoda de amatista de Brasil."
+murs = "#dcd8d2"
+x = -15
+z = -15
+largeur = 17
+profondeur = 10
+hauteur = 7
+
+[[salles]]
+nom = "Los mares antiguos"
+theme = "La vida en los océanos, del trilobites del Cámbrico al amonite del Jurásico y al nautilo de hoy."
+murs = "#d3e0da"
+x = 13
+z = -15
+largeur = 13
+profondeur = 10
+hauteur = 6
+
+[[oeuvres]]
+titre = "Rebanada del meteorito de Gibeon"
+artiste = "Gibeon, Namibie"
+annee = "Formado hace unos 4500 millones de años"
+image = "meteorite-gibeon.jpg"
+credit = "Photo : Kevin Walsh"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg"
+technique = "Hierro meteorítico (aleación de hierro y níquel), octaedrita fina del grupo IVA; rebanada aserrada, pulida y atacada con ácido"
+collection = "Colección no especificada (fotografía de Kevin Walsh, 2002)"
+note = "Una rebanada de hierro caído del cielo, aserrada, pulida y luego atacada con ácido: aparece entonces un entramado de láminas metálicas, las figuras de Widmanstätten, que solo se forman en el corazón de un asteroide."
+description = """
+Sobre un fondo negro se destaca una placa de metal de contorno irregular, cortada con sierra de un bloque mayor. Su superficie, de un gris plateado, no es lisa: está enteramente cubierta por una red de bandas rectas y estrechas, que se cruzan según tres o cuatro direcciones. Dibujan triángulos, rombos y paralelogramos, como los hilos sacados de un tejido o las ramitas de un haz de leña. Algunas bandas brillan, otras parecen más oscuras según el modo en que devuelven la luz; los pequeños espacios que encierran tienen una textura más fina, casi granulosa. En los bordes, la rebanada se deshilacha en puntas y muescas, allí donde pasaba la superficie bruta del meteorito."""
+evocation = """
+Este dibujo geométrico es el archivo de un mundo desaparecido. Hace unos 4500 millones de años, en el nacimiento del sistema solar, se forman pequeños planetas en torno al joven Sol; en algunos, el metal fundido cae al centro y forma un núcleo. Las figuras de Widmanstätten solo nacen si ese metal se enfría con extrema lentitud, a razón de unos pocos grados por millón de años, en un cuerpo enterrado bajo kilómetros de roca. Una colisión rompió después ese asteroide, y uno de sus fragmentos terminó por cruzarse en el camino de la Tierra. Tocar una rebanada así es tocar el corazón de un astro, al que ninguna perforación permitirá jamás llegar en nuestro propio planeta."""
+histoire = """
+Los meteoritos de Gibeon cayeron mucho antes de la historia escrita, en una lluvia de fragmentos dispersos a lo largo de cientos de kilómetros en el sur de Namibia, en torno a la pequeña ciudad de Gibeon que les dio su nombre. Los nama, que viven en la región, extraían de ellos hierro para fabricar herramientas y puntas de armas. Los europeos los descubren en el siglo XIX: en la década de 1830, muestras traídas por un explorador británico son reconocidas en Londres como hierro llegado del espacio. Desde entonces se han recogido cientos de masas, de unos pocos gramos a varios cientos de kilos. Namibia las protege hoy como patrimonio nacional, y una treintena de las más grandes se exponen al aire libre, en una plaza de la capital, Windhoek."""
+facture = """
+El hierro de Gibeon contiene alrededor de un 8 % de níquel. Al enfriarse, se separó en dos aleaciones: la kamacita, pobre en níquel, en anchas láminas, y la taenita, más rica, en finos ribetes. Para revelarlas, se sierra el meteorito, se pule la rebanada como un espejo y luego se ataca con un ácido diluido, que corroe ambos metales a velocidades distintas. Las láminas se orientan según las caras de un octaedro: de ahí el nombre de octaedrita. Las de Gibeon son muy estrechas, menos de medio milímetro, lo que la clasifica entre las octaedritas finas."""
+details = [
+  "Las bandas paralelas que reaparecen según solo tres o cuatro direcciones.",
+  "Los pequeños triángulos entre las láminas, rellenos de una textura más fina.",
+  "El contraste entre láminas brillantes y láminas mates, que cambia con la luz.",
+  "El contorno irregular, que sigue la forma del bloque de origen.",
+]
+themes = ["meteorito", "espacio", "hierro", "cristal", "sistema solar"]
+anecdote = """
+Se habla de «figuras de Widmanstätten», por el nombre del conde austríaco Alois von Beckh-Widmanstätten, que las observó en Viena en 1808. Pero el británico William Thomson ya las había descrito unos años antes, en Nápoles: por eso se las llama a veces «estructuras de Thomson»."""
+salle = 1
+mur = "est"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "El diamante Hope"
+artiste = "Mines de Golconde, Inde"
+annee = "Diamante indio conocido desde el siglo XVII; talla actual atestiguada en 1812; fotografía de 1974"
+image = "diamant-hope.jpg"
+credit = "Photo : Smithsonian Institution Archives"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:The_Hope_Diamond_-_SIA.jpg"
+technique = "Diamante azul de 45,52 quilates (25,6 × 21,8 mm), engastado en un colgante rodeado de dieciséis diamantes blancos"
+collection = "National Museum of Natural History, Smithsonian Institution, Washington"
+note = "El diamante azul más famoso del mundo: 45,52 quilates para algo más de 2,5 cm de largo, mostrado aquí muy ampliado. Fue tallado a partir del «Azul de Francia» de Luis XIV, robado en 1792."
+description = """
+En el centro de un colgante, una piedra ovalada de un azul profundo, casi negro en sus partes oscuras, devuelve la luz con sus facetas: triángulos y rombos más claros, de un azul acero, se encienden en su superficie. Su contorno no es del todo regular, ligeramente abombado de un lado. A su alrededor, una corona de dieciséis diamantes incoloros, tallados unos en pera y otros en cojín, centellea con reflejos blancos y violetas. Arriba, una anilla une la joya a una cadena de diamantes, borrosa al fondo; abajo cuelga un pequeño aro. La fotografía, tomada en 1974 por los servicios del Smithsonian, muestra la joya posada sobre un fondo de tela gris azulado."""
+evocation = """
+Pocas piedras han hecho soñar tanto. El diamante Hope resume tres siglos de historia: el esplendor de Luis XIV, la caída de la monarquía, la fortuna de los banqueros y de las herederas estadounidenses. Los periódicos de principios del siglo XX le inventaron una maldición, que habría golpeado a todos sus propietarios; se piensa que fue alimentada por los propios comerciantes, para hacer la piedra más deseable. Encarna también una idea democrática: el diamante más famoso del mundo pertenece hoy al público y se contempla gratuitamente, en un museo nacional. Por último, plantea un enigma de física: un diamante es carbono puro, y su color azul se debe solo a unos pocos átomos extraños."""
+histoire = """
+En 1668, el comerciante francés Jean-Baptiste Tavernier vende a Luis XIV un gran diamante azul comprado en la India, de más de 110 quilates. En 1673, el joyero de la corte, Jean Pittan, lo vuelve a tallar en una piedra de unos 69 quilates, el «Azul de Francia». Luis XV lo hace montar en 1749 en una insignia de la orden del Toisón de Oro. En septiembre de 1792 es robado junto con las joyas de la Corona en el Garde-Meuble, en París. Una piedra azul de 45 quilates reaparece en Londres en 1812 y entra después en la colección del banquero Henry Philip Hope, cuyo nombre conserva. Pierre Cartier la vende en 1911 a Evalyn Walsh McLean; tras su muerte, Harry Winston la compra y la dona al Smithsonian en 1958. En 2007, un molde de plomo del Azul de Francia, hallado en el Museo de París, confirmó que el Hope procedía de él."""
+facture = """
+El diamante Hope está tallado en cojín, con una corona de facetas arriba y un pabellón más profundo abajo, que devuelve la luz hacia el ojo. Su color procede de trazas de boro, unos pocos átomos por cada millón de átomos de carbono: absorben una parte de la luz roja y amarilla y solo dejan pasar el azul. Es un diamante llamado de tipo IIb, una categoría muy rara. Tiene otra propiedad asombrosa: iluminado con rayos ultravioleta y sumido de nuevo en la oscuridad, luce unos segundos con un resplandor rojo anaranjado. La joya que lo rodea, una montura de dieciséis diamantes blancos y una cadena de cuarenta y cinco diamantes, realza su color oscuro."""
+details = [
+  "El contorno algo asimétrico de la piedra azul.",
+  "Las facetas del pabellón, que se iluminan en triángulos de un azul más claro.",
+  "Los dieciséis diamantes blancos, donde alternan las tallas en pera y en cojín.",
+  "La anilla, arriba, que sujeta el colgante a la cadena.",
+]
+themes = ["diamante", "azul", "luis xiv", "leyenda", "gema"]
+anecdote = """
+En 1958, Harry Winston envió el diamante al Smithsonian por correo, certificado, en un simple paquete de papel kraft asegurado por un millón de dólares. El embalaje, con sus sellos y su matasellos, se conserva hoy en el Museo Postal Nacional de Washington."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Fluorita rosa sobre cuarzo ahumado"
+artiste = "Massif du Mont-Blanc, France"
+annee = "Cristalizada en una fisura del granito, durante el levantamiento de los Alpes"
+image = "fluorite-aiguille-verte.jpg"
+credit = "Photo : Marie-Lan Taÿ Pamart"
+licence = "CC BY 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Fluorite_on_smoky_quartz_Aiguille_Verte_MNHN_Minéralogie.jpg"
+technique = "Fluorita (fluoruro de calcio) en octaedros, sobre un cristal de cuarzo ahumado; procedente de la Aiguille Verte (Alta Saboya)"
+collection = "Galería de Mineralogía y Geología, Museo Nacional de Historia Natural, París"
+note = "Octaedros de fluorita rosa anaranjado posados sobre un cristal de cuarzo ahumado: uno de los tesoros de las fisuras de cristales del macizo del Mont Blanc, recogido en la Aiguille Verte."
+description = """
+Un conjunto de cristales rosa salmón, casi anaranjados, se aferra a un cristal más oscuro, gris pardo, que se alza en lo alto de la composición: un cuarzo ahumado, del que se ve la cara plana y la punta. Los cristales rosas tienen caras triangulares muy nítidas; varios son octaedros casi perfectos, como dos pirámides pegadas por la base. Se apilan y se superponen, de tamaños diversos, los más grandes en el centro, los más pequeños en racimo en los bordes. Su superficie no está pulida: parece escarchada, finamente estriada o labrada con pequeños escalones. Atravesados por la luz de la vitrina, los bordes de los cristales se vuelven translúcidos y se encienden en un rosa más vivo sobre el pedestal gris pálido."""
+evocation = """
+Este objeto habla de la alta montaña. Procede de una fisura del granito, a varios miles de metros de altitud, adonde hubo que trepar, excavar y descender con la piedra a la espalda. Para los cristaleros de Chamonix, la fluorita rosa es el más bello tesoro del macizo, mucho más rara que el cuarzo. Su geometría fascina también: el octaedro, de ocho caras triangulares iguales, es uno de los cinco sólidos regulares que Platón asociaba a los elementos del mundo, y la naturaleza lo produce aquí sin ayuda de mano alguna. El contraste entre el rosa tierno y el cuarzo oscuro, en fin, tiene algo de composición de pintor, como una flor posada sobre una roca."""
+histoire = """
+La Aiguille Verte, de 4122 metros de altura, domina el valle de Chamonix; el inglés Edward Whymper realiza su primera ascensión en 1865, con dos guías suizos. Mucho antes que los alpinistas, cazadores de cristales, los cristaleros, recorrían ya los glaciares y las paredes del macizo en busca de los «hornos»: cavidades del granito tapizadas de cuarzo, que se localizan por una veta blanca en la roca. Las fluoritas rosas son allí raras y codiciadas. Este espécimen pertenece a las colecciones del Museo Nacional de Historia Natural y se expone en su galería de Mineralogía y Geología, en el Jardin des Plantes, junto a otros minerales de los Alpes franceses."""
+facture = """
+La fluorita es un fluoruro de calcio. En las fisuras de los Alpes, suele cristalizar en octaedros más que en cubos. Su color rosa, raro, se atribuye a minúsculos defectos del edificio cristalino, ligados a trazas de tierras raras y a la radiactividad natural del granito. El cuarzo ahumado debe también su tono pardo a esa radiactividad, que actúa sobre trazas de aluminio. Ambos minerales crecieron lentamente en aguas calientes cargadas de elementos disueltos que circulaban por la roca fisurada, mientras la cadena de los Alpes se levantaba."""
+details = [
+  "Las caras triangulares de los octaedros rosas, nítidas como facetas talladas.",
+  "La superficie escarchada y estriada de los cristales, que nunca ha sido pulida.",
+  "El cristal de cuarzo ahumado, gris pardo, que sirve de soporte al conjunto.",
+  "Los bordes translúcidos donde la luz hace virar el rosa al anaranjado.",
+]
+themes = ["mineral", "cristal", "montaña", "alpes", "color"]
+anecdote = """
+La fluorita dio su nombre a la fluorescencia. En 1852, el físico británico George Gabriel Stokes acuña esta palabra al estudiar el resplandor que emiten algunas fluoritas cuando se las ilumina con luz ultravioleta."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Geoda de amatista"
+artiste = "Coulées de lave de la Serra Geral, Brésil"
+annee = "Comienzos del Cretácico, hace unos 130 millones de años"
+image = "geode-amethyste.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Amethyst_geode_(Serra_Geral_Formation,_Lower_Cretaceous;_southeastern_Brazil)_1_(32934451701).jpg"
+technique = "Cuarzo (variedad amatista) y calcedonia, en una cavidad de una colada de basalto"
+collection = "Mineral Museum, Montana Bureau of Mines and Geology, Butte (Montana)"
+note = "Una burbuja de gas prisionera de una colada de lava, tapizada poco a poco por miles de cristales violetas: las geodas de amatista del sur de Brasil figuran entre las más grandes del mundo."
+description = """
+La geoda ha sido abierta y se presenta como un gran óvalo hueco, tendido sobre su pedestal. En el exterior, una corteza de roca de un gris verdoso forma la cáscara. Justo en el interior corre un borde blanco y gris, liso, como un ribete de porcelana. Luego vienen los cristales: miles de pequeñas pirámides apretadas, apuntando hacia el centro, de un violeta pálido cerca del borde, cada vez más oscuro hacia el fondo de la cavidad, donde algunas zonas parecen grises o casi negras. Arriba a la derecha, un pequeño grupo de cristales blancos y brillantes, sin duda de calcita, se destaca sobre el violeta. La luz atrapa las puntas y hace centellear toda la pared."""
+evocation = """
+La geoda es el tesoro oculto por excelencia: una piedra banal y gris por fuera, una gruta de cristales por dentro. Ha alimentado las leyendas de cavernas maravillosas y de piedras que encierran un mundo. Su color, el violeta, fue durante mucho tiempo el del poder y el de la Iglesia: los obispos llevaban un anillo de amatista. Pero la geoda habla sobre todo del tiempo: cada cristal creció átomo a átomo, a partir de un agua que rezumaba en la lava enfriada, durante duraciones que superan la imaginación. Recuerda también que la belleza mineral nace a veces de los cataclismos: aquí, de una de las mayores erupciones de la historia de la Tierra."""
+histoire = """
+Hace unos 130 millones de años, cuando América del Sur y África comienzan a separarse, inmensas coladas de basalto se extienden por el sur del continente, en capas sucesivas que forman hoy la Serra Geral. En la lava aún líquida quedan atrapadas burbujas de gas; mucho más tarde, aguas cargadas de sílice se infiltran en ellas y las llenan de cristales. En el estado de Rio Grande do Sul, en Brasil, y en la región vecina de Artigas, en Uruguay, los mineros siguen la capa de lava rica en geodas excavando galerías en la ladera de la colina. Las geodas, extraídas con martillo neumático, se serran y se venden en todo el mundo. Esta se expone en el museo de mineralogía de Butte, en Montana."""
+facture = """
+El crecimiento sigue un orden preciso. Las aguas que circulan por la cavidad depositan primero una fina capa de calcedonia, una sílice de cristales invisibles a simple vista: es el borde blanco. Luego el cuarzo cristaliza en prismas de los que solo asoma la punta, todas orientadas hacia el vacío central. El color de la amatista procede de trazas de hierro, transformadas por la radiactividad natural de las rocas. Es frágil: calentada a unos cientos de grados, la amatista se vuelve amarillo anaranjado, y buena parte de las «citrinas» vendidas en joyería son amatistas calentadas."""
+details = [
+  "La corteza de basalto gris verdoso, que formaba la pared de la burbuja de gas.",
+  "El ribete blanco de calcedonia, primera capa depositada en la cavidad.",
+  "Las puntas de los cristales, todas dirigidas hacia el centro.",
+  "El pequeño grupo de cristales blancos, arriba a la derecha.",
+  "El violeta que se oscurece hacia el fondo de la geoda.",
+]
+themes = ["mineral", "geoda", "cristal", "violeta", "volcán"]
+anecdote = """
+La palabra amatista procede del griego amethystos, «que no está ebrio». Los griegos creían que esta piedra protegía de la embriaguez, y se cuenta que bebían el vino en copas de amatista."""
+salle = 3
+mur = "sud"
+place = 3
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Trilobites Elrathia kingii"
+artiste = "Schistes de Wheeler, Utah"
+annee = "Cámbrico medio, hace algo más de 500 millones de años"
+image = "trilobite-elrathia.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Elrathia_kingii_(fossil_trilobite)_(Wheeler_Formation,_Middle_Cambrian;_House_Range,_western_Utah,_USA)_3.jpg"
+technique = "Caparazón fosilizado (calcita) en una pizarra arcillosa; unos 2,6 cm de ancho"
+collection = "Colección no especificada (fotografía de James St. John)"
+note = "De apenas 2,6 cm de ancho, mostrado aquí muy ampliado, este trilobites vivía en el fondo de un mar del Cámbrico, hace más de 500 millones de años. Es uno de los fósiles más extendidos del mundo."
+description = """
+Sobre la piedra gris, un pequeño animal ovalado, de un negro brillante, parece aún posado en el fondo del mar. Su cuerpo se divide en tres bandas a lo largo: un eje central abombado y dos lóbulos laterales más planos, de ahí el nombre de trilobites, «de tres lóbulos». Arriba, la cabeza forma una ancha media luna; en su centro se alza un abultamiento alargado, la glabela. El cuerpo está hecho de una docena de anillos articulados, apretados como las láminas de una armadura, que terminan a cada lado en una punta redondeada. Abajo, una pequeña cola en forma de escudo cierra el conjunto. El caparazón, negro, se destaca con nitidez sobre la roca más clara, ligeramente agrietada."""
+evocation = """
+El trilobites es uno de los primeros grandes éxitos de la vida animal. Aparece en el Cámbrico, cuando los océanos se pueblan de una súbita diversidad de formas, y fue uno de los primeros animales en poseer verdaderos ojos. Los trilobites vivieron cerca de 270 millones de años antes de desaparecer en la gran extinción del final del Pérmico. Este no tiene nada de excepcional: ni espinas ni ojos gigantes. Los paleontólogos estadounidenses lo apodan con cariño «Joe Trilobite», el trilobites corriente. Eso es precisamente lo que lo hace conmovedor: permite ver la vida cotidiana de un fondo marino, más de doscientos millones de años antes de los primeros dinosaurios."""
+histoire = """
+Elrathia kingii fue descrito en 1870 por el paleontólogo estadounidense Fielding Meek, que le dio el nombre de Clarence King, el geólogo que dirigía entonces el estudio del paralelo 40 a través del Oeste estadounidense. Procede de las pizarras de Wheeler, en las montañas de la House Range, al oeste de Utah. Las canteras de la región han proporcionado cantidades considerables: los explotadores parten la roca en placas y extraen miles de especímenes cada año. Por eso Elrathia es el trilobites que se encuentra con más frecuencia en las tiendas de fósiles y en las colecciones de aficionados de todo el mundo. Este espécimen fue fotografiado por el geólogo James St. John."""
+facture = """
+Como los insectos y los cangrejos, los trilobites eran artrópodos: su cuerpo estaba protegido por un caparazón articulado, reforzado con calcita, que debían abandonar para crecer. Muchos fósiles son, de hecho, mudas, y no animales muertos. Solo se ha conservado ese caparazón mineralizado; las patas, las antenas y las branquias han desaparecido. En las pizarras de Wheeler, un lodo fino depositado en un agua tranquila y pobre en oxígeno cubrió los caparazones sin dispersarlos. La roca se parte según sus capas y revela el fósil intacto, a menudo de un negro que contrasta con el gris de la pizarra."""
+details = [
+  "Los tres lóbulos a lo largo del cuerpo, que dieron su nombre al grupo.",
+  "La glabela, el abultamiento alargado en medio de la cabeza.",
+  "Los anillos articulados del tórax, terminados en puntas redondeadas.",
+  "La pequeña cola en escudo, en la parte baja del fósil.",
+]
+themes = ["fósil", "cámbrico", "mar", "trilobites", "artrópodo"]
+anecdote = """
+Según testimonios recogidos en el siglo XX, los utes de Utah llevaban trilobites como amuleto, para protegerse de la enfermedad. El nombre que les daban evocaba pequeños insectos de agua alojados en una casa de piedra."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Amonite Dactylioceras commune"
+artiste = "Falaises de Whitby, Angleterre"
+annee = "Jurásico inferior, hace unos 180 millones de años"
+image = "ammonite-whitby.jpg"
+credit = "Photo : Fred Cherrygarden"
+licence = "CC BY-SA 4.0"
+source = "https://commons.wikimedia.org/wiki/File:Dactylioceras_commune.jpg"
+technique = "Concha fosilizada en una roca arcillosa; 7 cm de diámetro"
+collection = "Colección particular (colección Cherrygarden)"
+note = "Un amonite de 7 cm, mostrado aquí ampliado, hallado en Whitby, en la costa de Yorkshire. Estas conchas enrolladas eran para los habitantes serpientes convertidas en piedra."
+description = """
+Una concha enrollada en espiral plana, de un gris antracita, se destaca sobre un fondo blanco. Se cuentan varias vueltas, cada vez más anchas del centro hacia el exterior, encajadas unas en otras como una cuerda enrollada. Cada vuelta está adornada con costillas finas y apretadas, regulares como los dientes de un peine, que irradian del centro hacia el borde; cerca del exterior se desdoblan. El centro de la espiral, minúsculo, forma una pequeña concavidad. A la derecha, la concha desaparece en parte en la roca que aún la envuelve, una ganga gris y lisa; abajo, la última vuelta, más gastada, deja ver el relieve de las costillas visto de perfil."""
+evocation = """
+El amonite es una de las formas más familiares de la paleontología, y una de las más misteriosas para quienes lo hallaban sin comprenderlo. Su espiral evocó una serpiente enroscada, un cuerno de carnero, una rueda. Para los geólogos es también un reloj: las especies de amonites se sucedieron tan deprisa y estuvieron tan extendidas que permiten datar las rocas con un margen de menos de un millón de años. Su desaparición, hace 66 millones de años, al mismo tiempo que la de los grandes dinosaurios, recuerda por último la fragilidad de los grupos más prósperos: los amonites habían poblado los mares durante más de trescientos millones de años."""
+histoire = """
+Los acantilados de Whitby, en la costa de North Yorkshire, proporcionan amonites desde hace siglos: las tormentas y los desprendimientos los sueltan de la roca, y se recogen en la playa. Una leyenda los vincula a santa Hilda, la abadesa que fundó en el siglo VII la abadía de Whitby: habría convertido en piedra las serpientes que infestaban el lugar. Los comerciantes esculpían a veces una cabeza de serpiente en el extremo de la espiral para vender estas «piedras de serpiente» a los visitantes, y tres amonites figuran en el escudo de la ciudad. Este espécimen, hallado en Whitby, pertenece a una colección privada y fue fotografiado por su propietario."""
+facture = """
+El amonite era un molusco cefalópodo, primo de los pulpos, las sepias y el nautilo. Su concha estaba dividida en cámaras por tabiques; el animal vivía en la última, la más grande, y regulaba su flotación llenando las demás de gas o de líquido. El nombre Dactylioceras significa aproximadamente «cuerno en anillos»: alude a las costillas apretadas que rodean cada vuelta. En Whitby, los amonites se conservan a menudo en nódulos, bolas de roca más dura formadas a su alrededor en el lodo del fondo marino, que los protegieron del aplastamiento."""
+details = [
+  "Las costillas apretadas que irradian en cada vuelta de la espira.",
+  "El desdoblamiento de las costillas cerca del borde exterior.",
+  "La minúscula concavidad del centro, donde el animal comenzó su concha.",
+  "La ganga de roca gris, aún adherida a la derecha.",
+]
+themes = ["fósil", "jurásico", "mar", "espiral", "leyenda"]
+anecdote = """
+La palabra amonite procede del dios egipcio Amón, representado con cuernos de carnero. El escritor romano Plinio el Viejo llamaba a estos fósiles «cuernos de Amón», por su parecido con un cuerno enrollado."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Concha de nautilo, en corte"
+artiste = "Récifs de l'Indo-Pacifique"
+annee = "Especie actual, de un linaje de casi 500 millones de años"
+image = "nautile.jpg"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_(YPM_IZ_047418).jpeg"
+technique = "Concha de Nautilus pompilius aserrada en dos (aragonito y nácar); unos 18 cm"
+collection = "Yale Peabody Museum, New Haven (Connecticut)"
+note = "Una concha de nautilo aserrada en dos, de unos 18 cm de largo: sus cámaras sucesivas dibujan una espiral perfecta, y la gran cámara donde vivía el animal brilla de nácar."
+description = """
+La concha, cortada en dos a lo largo, se presenta sobre un fondo negro. A la derecha, una espiral de tabiques curvos, de un pardo dorado, se enrolla en torno a un minúsculo centro blanco: se cuentan allí una treintena de cámaras en forma de media luna, cada vez más grandes a medida que se alejan del corazón. A la izquierda se abre la última cámara, con mucho la más vasta, lisa y vacía, tapizada de un nácar crema que se tiñe de reflejos rosas, verdes y dorados según la luz. El borde exterior de la concha, más mate, dibuja una curva continua, desde el pico puntiagudo de la abertura, abajo a la izquierda, hasta la cima de la espiral."""
+evocation = """
+El nautilo es uno de los emblemas de la belleza natural. Su espiral, que crece sin cambiar de forma, ha fascinado a matemáticos y artistas. En el Renacimiento, los orfebres montaban conchas de nautilo sobre pies de plata dorada para hacer copas de aparato, orgullo de los gabinetes de curiosidades de los príncipes. Julio Verne dio su nombre al submarino del capitán Nemo. Para los biólogos es también un testigo: el nautilo es el último representante de un linaje de cefalópodos con concha que ya existía antes de los amonites y les sobrevivió. Cortar su concha es hacer visible la historia de toda una vida, cámara tras cámara."""
+histoire = """
+El nautilo cameral vive en el Indo-Pacífico, desde Filipinas e Indonesia hasta Australia y las islas Fiyi, a lo largo de las pendientes abruptas de los arrecifes de coral, a menudo a varios cientos de metros de profundidad; sube de noche para alimentarse. Sus conchas, muy buscadas, se han pescado durante mucho tiempo en gran número para el comercio de recuerdos y de nácar. Como crece lentamente y se reproduce poco, sus poblaciones han disminuido; en 2016 fue incluido en el apéndice II del convenio de Washington (CITES), que regula su comercio internacional. Este espécimen pertenece al Yale Peabody Museum; su fotografía fue publicada por el museo en el dominio público."""
+facture = """
+La concha está hecha de aragonito, una forma del carbonato de calcio. A medida que crece, el animal avanza en su concha y construye tras de sí un nuevo tabique: las cámaras vacías, llenas de gas y de un poco de líquido, sirven de flotador. Un fino tubo de tejido vivo, el sifón, las atraviesa todas y permite regular la cantidad de líquido, como los lastres de un submarino. El interior de la gran cámara está tapizado de nácar, hecho de minúsculas plaquetas apiladas que descomponen la luz en reflejos irisados."""
+details = [
+  "La treintena de cámaras en media luna, cada vez más grandes hacia el exterior.",
+  "El minúsculo centro blanco, primera cámara del animal.",
+  "Los reflejos rosas y verdes del nácar en la gran cámara.",
+  "El pico puntiagudo de la abertura, abajo a la izquierda.",
+]
+themes = ["concha", "espiral", "mar", "nácar", "cefalópodo"]
+anecdote = """
+A menudo se lee que la espiral del nautilo sigue el número áureo. Es una idea preconcebida: las mediciones de numerosas conchas muestran que su espiral se ensancha según una proporción distinta, y variable de un individuo a otro."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "El arqueópterix de Berlín"
+artiste = "Gisement de Solnhofen, Allemagne"
+annee = "Jurásico superior, hace unos 150 millones de años; descubierto hacia 1876"
+image = "archeopteryx-berlin.jpg"
+credit = "Photo : H. Raab"
+licence = "CC BY-SA 3.0"
+source = "https://commons.wikimedia.org/wiki/File:Archaeopteryx_lithographica_(Berlin_specimen).jpg"
+technique = "Esqueleto e improntas de plumas en una placa de caliza litográfica"
+collection = "Museum für Naturkunde, Berlín"
+note = "Plumas y alas de ave, pero dientes, dedos con garras y una larga cola ósea de reptil: el espécimen de Berlín, el más completo de los arqueópterix, es uno de los fósiles más célebres del mundo."
+description = """
+Sobre una placa de caliza beige, hendida por largas fisuras, un animal del tamaño de una paloma yace con las alas extendidas. Se distinguen con nitidez los huesos, finos y claros, y alrededor la impronta de las plumas, que irradian en abanico de cada brazo. La cabeza, pequeña, está echada hacia atrás, a la izquierda, con el cuello curvado sobre el lomo; se adivinan los dientes en el hocico. Las dos patas, plegadas, descienden hacia la parte baja de la placa y terminan en pies de dedos con garras. Entre ellas, una larga cola hecha de vértebras se dirige hacia abajo a la izquierda, bordeada a cada lado por una hilera de plumas que dibuja una cola de arrastre."""
+evocation = """
+El arqueópterix se ha convertido en el símbolo de la evolución. El primer esqueleto se descubre en 1861, apenas dos años después de la publicación de El origen de las especies de Charles Darwin, y ofrece lo que reclamaban sus adversarios: una forma intermedia entre dos grandes grupos. Hoy se sabe que no es el antepasado directo de las aves, sino uno de los representantes de una familia de pequeños dinosaurios con plumas de los que descienden las aves. La postura del espécimen de Berlín, con la cabeza echada hacia atrás y el cuello arqueado, es la de numerosos fósiles de animales muertos en el agua: confiere a esta placa una intensidad dramática, como un instante congelado."""
+histoire = """
+El espécimen de Berlín sale a la luz hacia 1876 cerca de Eichstätt, en Baviera, en una cantera de caliza. Pasa por varias manos y luego la familia Häberlein, que ya había vendido el primer esqueleto al British Museum, lo pone a la venta. Para que no abandone Alemania, el industrial Werner von Siemens lo compra en 1880; el museo de historia natural de la universidad de Berlín se lo recompra al año siguiente. Es el primer arqueópterix descubierto con la cabeza completa. Se expone hoy en una sala del Museum für Naturkunde de Berlín. La fotografía muestra el original, y no uno de los numerosos moldes que circulan de él."""
+facture = """
+La caliza de Solnhofen es de un grano extraordinariamente fino: se formó a partir de un lodo calcáreo depositado en el fondo de lagunas de aguas estancadas, tan saladas y pobres en oxígeno que los carroñeros no vivían en ellas. Los cadáveres caídos al fondo quedaban cubiertos sin ser despedazados, y el lodo pudo conservar la huella de cada pluma, hasta las barbas. El fósil fue liberado de la piedra con aguja, grano a grano. Se distinguen aquí dos clases de plumas: las grandes plumas asimétricas de las alas, semejantes a las de las aves voladoras, y las de la cola, dispuestas por pares."""
+details = [
+  "Las plumas de las alas, cuya impronta irradia en abanico en torno a los brazos.",
+  "La cabeza echada hacia atrás, al final del cuello curvado.",
+  "Las garras en la punta de los dedos de los pies, en la parte baja de la placa.",
+  "La larga cola ósea, bordeada por una pluma a cada lado de cada vértebra.",
+]
+themes = ["fósil", "dinosaurio", "ave", "evolución", "jurásico"]
+anecdote = """
+Según un relato muy repetido, el campesino que descubrió el espécimen de Berlín, Jakob Niemeyer, lo habría cedido para poder comprar una vaca. Pocos años después, el fósil se vendía por 20 000 marcos."""
+salle = 2
+mur = "ouest"
+place = 6
+largeur = 1.3
+
+[[oeuvres]]
+titre = "Escarabajo atrapado en ámbar del Báltico"
+artiste = "Forêts d'ambre de la Baltique"
+annee = "Eoceno, hace unos 45 millones de años"
+image = "ambre-coleoptere.jpg"
+credit = "Photo : James St. John"
+licence = "CC BY 2.0"
+source = "https://commons.wikimedia.org/wiki/File:Beetle_in_amber_(Amber_Formation,_Middle_Eocene;_Yantarnyi,_Samland_Peninsula_along_the_Baltic_Sea,_far-western_Russia)_(15111983330).jpg"
+technique = "Ámbar (resina fósil) que contiene un escarabajo de unos 3,5 mm; vista al microscopio"
+collection = "Colección no especificada (fotografía de James St. John)"
+note = "Un escarabajo de 3,5 mm pegado a una colada de resina hace unos 45 millones de años, visto aquí al microscopio: el ámbar lo ha conservado con sus más mínimos relieves."
+description = """
+La imagen es una ampliación muy grande. En una materia translúcida de un amarillo dorado, que vira al naranja y al pardo en los bordes, un pequeño insecto alargado ocupa el centro. Es un escarabajo, visto de espaldas, con la cabeza arriba: su cuerpo pardo oscuro está cubierto de filas regulares de minúsculos puntos hundidos, alineados como las mallas de un tejido de punto. Se adivinan la cabeza, el corselete y los dos élitros, las alas duras que protegen el dorso. A su alrededor, la resina no es uniforme: zonas más claras, casi luminosas, alternan con velos más oscuros. Arriba a la derecha, una mancha roja marca la curva del borde de la piedra."""
+evocation = """
+El ámbar es una cápsula del tiempo. El insecto se posó en una colada de resina, quedó pegado a ella, y la resina lo cubrió: 45 millones de años después, sigue ahí, intacto, como si acabara de morir. Nada evoca mejor la inmovilidad del tiempo geológico. Estas inclusiones hicieron soñar mucho antes que la ciencia: se veían en ellas moscas y hormigas sepultadas en oro, y los poetas latinos ya se maravillaban. Siguen haciendo soñar desde que una novela y luego una película imaginaron hacer renacer dinosaurios a partir de un mosquito conservado en ámbar, idea que el estado real del ADN fósil hace imposible."""
+histoire = """
+Hace unos 45 millones de años, en el Eoceno, vastos bosques de coníferas cubrían el norte de Europa, bajo un clima más cálido que el actual. Su resina, arrastrada por los ríos, se acumuló en una capa de arena arcillosa que los mineros llaman la «tierra azul». El mayor yacimiento se encuentra en la península de Sambia, cerca de Kaliningrado, en Rusia, donde la mina a cielo abierto de Yantarny suministra lo esencial del ámbar mundial. Este escarabajo procede de allí. Desde la prehistoria, el mar arranca también trozos de ámbar de las capas submarinas y los arroja a las playas después de las tormentas: ya se recogía para hacerlo viajar, por la ruta del ámbar, hasta el Mediterráneo."""
+facture = """
+Fresca, la resina es pegajosa y viscosa. Enterrada, pierde poco a poco sus elementos volátiles, sus moléculas se unen en largas cadenas y se endurece en copal y luego, con millones de años, en ámbar. El insecto engullido se deseca en ese estuche sin aire, y la resina moldea cada relieve, hasta los pelos y las puntuaciones del caparazón. El ámbar es ligero: flota en el agua muy salada, propiedad que se utiliza para distinguirlo de sus imitaciones. La fotografía, tomada a través de un microscopio, muestra el insecto mucho más grande que una letra de este texto."""
+details = [
+  "Las filas de pequeños puntos hundidos en los élitros del escarabajo.",
+  "La cabeza y el corselete, en la parte alta del cuerpo.",
+  "Las zonas claras y oscuras de la resina en torno al insecto.",
+  "La curva rojiza del borde de la piedra, arriba a la derecha.",
+]
+themes = ["ámbar", "insecto", "bosque", "eoceno", "tiempo"]
+anecdote = """
+Los griegos llamaban al ámbar élektron. Habían observado que, una vez frotado, atrae briznas y polvo: de esa palabra procede, mucho más tarde, la palabra electricidad."""
+salle = 2
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[oeuvres]]
+titre = "El Diplodocus de Carnegie, montado en el Museo en 1908"
+artiste = "Formation de Morrison, Wyoming"
+annee = "Jurásico superior, hace unos 150 millones de años; molde y fotografía de 1908"
+image = "diplodocus-paris.jpg"
+cadre = "noir"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Carnegie_Diplodocus,_Paris_LCCN2014681898_(cropped).jpg"
+technique = "Fotografía (negativo en vidrio) de la agencia Bain News Service; molde de yeso de un esqueleto de unos 25 m de largo"
+collection = "Library of Congress, Washington (fotografía); galería de Paleontología y Anatomía Comparada, Museo Nacional de Historia Natural, París (molde)"
+note = "En 1908, el multimillonario estadounidense Andrew Carnegie regala a Francia el molde de su diplodocus. Se le ve aquí durante el montaje en la galería de Paleontología del Museo, donde sigue estando."
+description = """
+La fotografía está tomada desde arriba, desde el balcón de una galería de museo. En el centro, el esqueleto de un dinosaurio gigante está siendo ensamblado sobre una tarima de madera. Se reconoce la enorme pelvis y las patas traseras, rectas como columnas, y luego la caja torácica, a la derecha, cuyas costillas descienden como las cuadernas del casco de un navío. La larga cola desciende en curva hacia abajo a la izquierda hasta el suelo. Alrededor, obreros con bata y caballeros de traje observan o trabajan; un hombre está encaramado en lo más alto, cerca del lomo. Escaleras, vitrinas llenas de fósiles y altas ventanas completan la escena. Arriba, una inscripción blanca indica: Carnegie Diplodocus, Paris."""
+evocation = """
+Esta imagen cuenta el nacimiento de una pasión: la del público por los dinosaurios. A comienzos del siglo XX, estos gigantes llegados de América atraen a las multitudes en los museos de Europa. Habla también de la época de los grandes mecenas: al regalar moldes de su diplodocus a los soberanos y a los jefes de Estado, Andrew Carnegie, rey del acero convertido en filántropo y militante de la paz, hacía de la ciencia un instrumento de diplomacia. Los obreros, diminutos al pie del esqueleto, dan la escala del monstruo. Y el propio lugar habla: es la galería que los visitantes del Jardin des Plantes recorren todavía hoy, con el mismo diplodocus en el centro."""
+histoire = """
+En julio de 1899, un equipo del Carnegie Museum de Pittsburgh descubre un esqueleto de saurópodo en Sheep Creek, en Wyoming. El paleontólogo John Bell Hatcher lo describe en 1901 con el nombre de Diplodocus carnegii, en honor de su mecenas. El rey Eduardo VII, que ha visto un dibujo en casa de Carnegie, desea uno para Londres: un molde completo se inaugura en 1905 en el museo de historia natural de Londres. Siguen otros, en Berlín, París, Viena, Bolonia, San Petersburgo, La Plata, Madrid o Ciudad de México. El molde parisino es montado en 1908 por un equipo llegado de Pittsburgh, bajo la dirección del director del Carnegie Museum, William Jacob Holland. Sigue erguido en la galería de Paleontología, abierta en 1898."""
+facture = """
+Cada hueso fue moldeado y luego reproducido en yeso reforzado, antes de ser ensamblado sobre una armadura de hierro que sostiene el conjunto. La pose es la que entonces se imaginaba: patas rectas bajo el cuerpo, cola arrastrando hasta el suelo. Los paleontólogos piensan hoy que la cola se mantenía horizontal, por encima del suelo, para equilibrar el largo cuello. La fotografía, tomada sobre una placa de vidrio por la agencia neoyorquina Bain News Service, forma parte de un inmenso fondo conservado en la Biblioteca del Congreso; su leyenda fue inscrita directamente sobre el negativo. Se presenta aquí en un marco negro."""
+details = [
+  "Las patas traseras, rectas como columnas, sobre la tarima de madera.",
+  "Las espinas de las vértebras, erguidas a lo largo del lomo.",
+  "La cola que desciende hasta el suelo, abajo a la izquierda.",
+  "El hombre encaramado en lo más alto del esqueleto, cerca del lomo.",
+  "La inscripción blanca, arriba, trazada sobre el negativo.",
+]
+themes = ["dinosaurio", "jurásico", "museo", "fotografía", "mecenazgo"]
+anecdote = """
+El molde de Londres, apodado Dippy, recibió a los visitantes del museo de historia natural durante más de un siglo. En 2017 cedió su lugar en el gran vestíbulo al esqueleto de una ballena azul, y salió después de gira por el Reino Unido."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.8
+
+[[artistes]]
+nom = "Gibeon, Namibie"
+vie = "Sur de Namibia, en torno a la ciudad de Gibeon; caída prehistórica"
+biographie = """
+El campo de meteoritos de Gibeon se extiende por el sur de Namibia, en la región de Hardap, en el corazón del Gran Namaqualand, un país de áridas mesetas. La caída tuvo lugar mucho antes de la historia escrita: un gran bloque de hierro, al entrar en la atmósfera, se rompió en una lluvia de fragmentos esparcidos a lo largo de cientos de kilómetros. Los nama, ganaderos de la región, conocían estas piedras pesadas y extraían de ellas metal para sus herramientas y sus armas. En el siglo XIX, muestras traídas a Europa son reconocidas como hierro meteorítico, y la región se convierte en uno de los lugares más ricos del mundo en meteoritos metálicos. Se han recogido cientos de masas, algunas de varios cientos de kilos. El cuerpo de origen era el núcleo metálico de un pequeño asteroide, formado en los primeros millones de años del sistema solar y luego puesto al descubierto y fragmentado por colisiones. Para frenar el saqueo, Namibia ha hecho de los meteoritos de Gibeon un patrimonio protegido; una treintena de grandes masas se exponen en Windhoek, la capital."""
+style = """
+El hierro de Gibeon es una octaedrita fina del grupo IVA, una aleación de hierro y níquel con alrededor de un 8 % de níquel. Una vez aserrado, pulido y atacado con ácido, revela figuras de Widmanstätten muy apretadas, de láminas estrechas y regulares, de gran elegancia. Es relativamente estable y se presta al pulido: joyeros, relojeros y cuchilleros lo utilizan para esferas, anillos o hojas, lo que lo ha convertido en uno de los meteoritos más extendidos en el mercado."""
+
+[[artistes]]
+nom = "Mines de Golconde, Inde"
+vie = "Valle del Krishna, Decán (India meridional); diamantes explotados desde la Antigüedad hasta el siglo XIX"
+biographie = """
+Durante siglos, la India fue la única fuente de diamantes conocida en el mundo. Las piedras se extraían de los aluviones del valle del Krishna, en el Decán, donde miles de mineros excavaban y lavaban las gravas. Se tallaban y vendían en Golconda, una fortaleza y ciudad mercantil cercana a la actual Hyderabad, capital del sultanato de los Qutb Shahi de 1518 hasta su conquista por el emperador mogol Aurangzeb en 1687. El nombre de Golconda acabó designando todas las minas de la región y convirtiéndose en sinónimo de riqueza fabulosa. En el siglo XVII, el comerciante francés Jean-Baptiste Tavernier hace allí varios viajes y describe las minas, entre ellas la de Kollur, en el Krishna, de donde procedería el gran diamante azul vendido a Luis XIV. Los más célebres diamantes históricos nacieron allí: el Koh-i-Noor, hoy en las joyas de la corona británica, el Regente, expuesto en el Louvre, y el diamante Hope. El descubrimiento de yacimientos en Brasil, en el siglo XVIII, y luego en Sudáfrica, en el XIX, pone fin a la supremacía india."""
+style = """
+Los diamantes de Golconda son famosos por su excepcional limpidez: muchos pertenecen al tipo IIa, casi desprovistos de nitrógeno, de una transparencia que los joyeros comparan a la del agua. Algunos son de color, como el azul del Hope. Tallados primero en la India según formas que conservaban la mayor cantidad de materia, a menudo se volvieron a tallar en Europa. La expresión «diamante de Golconda» designa todavía hoy, en las subastas, una piedra antigua de rara pureza."""
+
+[[artistes]]
+nom = "Massif du Mont-Blanc, France"
+vie = "Alpes occidentales, entre Francia, Italia y Suiza; granito de unos 300 millones de años, fisuras nacidas del levantamiento de los Alpes"
+biographie = """
+El macizo del Mont Blanc, que culmina a más de 4800 metros, está hecho en lo esencial de un granito muy antiguo, nacido hace unos 300 millones de años en las profundidades de una cadena montañosa hoy desaparecida. Durante la formación de los Alpes, este granito fue retomado, levantado y fracturado. Por las fisuras abiertas por estos movimientos circularon aguas calientes, cargadas de elementos disueltos, que tapizaron las cavidades de cristales: cuarzos límpidos o ahumados, fluoritas rosas, adularias. Los habitantes del valle de Chamonix los buscan desde hace siglos. Estos cristaleros, que recorrían los glaciares mucho antes que los alpinistas, son de los primeros en conocer la alta montaña; el sabio ginebrino Horace-Bénédict de Saussure, que alcanza la cima del Mont Blanc en 1787, habla de ellos en sus relatos de viaje. El oficio se perpetúa hoy, regulado por normas locales, y las piezas más hermosas ingresan en los museos: la galería de Mineralogía del Museo, en París, presenta varias."""
+style = """
+Los cristales del Mont Blanc son cristales de fisura: crecieron libremente en el vacío de una cavidad, lo que les da formas nítidas y caras brillantes. El macizo es célebre por sus cuarzos ahumados, a veces casi negros, y sobre todo por sus fluoritas rosas en octaedros, entre las más hermosas del mundo. Su asociación, el rosa sobre el pardo, es la firma de los grandes hallazgos de los cristaleros."""
+
+[[artistes]]
+nom = "Coulées de lave de la Serra Geral, Brésil"
+vie = "Cuenca del Paraná (sur de Brasil, Uruguay, Paraguay, Argentina); comienzos del Cretácico, hace unos 130 millones de años"
+biographie = """
+Hace unos 130 millones de años, el supercontinente de Gondwana comienza a desgarrarse: América del Sur y África se alejan, y el océano Atlántico Sur se abre poco a poco entre ellas. Este desgarro se acompaña de erupciones de una magnitud inaudita. Por largas fisuras, inmensos volúmenes de lava basáltica se extienden en coladas sucesivas sobre el sur de América del Sur, y sobre la región que será Namibia, al otro lado del futuro océano. Apiladas, estas coladas forman hoy la Serra Geral, mesetas de roca oscura de más de un kilómetro de espesor en algunos lugares; las cataratas del Iguazú, en la frontera de Brasil y Argentina, se precipitan desde lo alto de estos basaltos. En algunas coladas, la lava estaba repleta de burbujas de gas. Mucho más tarde, aguas subterráneas ricas en sílice rellenaron estas cavidades de calcedonia, ágata y cuarzo. Rio Grande do Sul, en Brasil, y la región de Artigas, en Uruguay, se han convertido en los primeros productores mundiales de geodas de amatista."""
+style = """
+Las geodas de la Serra Geral se reconocen por su cáscara de basalto gris verdoso, su ribete de calcedonia y sus cristales de amatista apretados, de un violeta a menudo profundo. Algunas, alargadas como grutas, superan la talla de un hombre. De ellas se extraen también las ágatas bandeadas de Brasil, a menudo teñidas, y cristales de calcita que se posan sobre la amatista."""
+
+[[artistes]]
+nom = "Schistes de Wheeler, Utah"
+vie = "House Range, oeste de Utah (Estados Unidos); Cámbrico medio, hace algo más de 500 millones de años"
+biographie = """
+Hace algo más de 500 millones de años, el oeste de la actual América del Norte estaba bordeado por un mar tropical, cercano al ecuador. Al pie de una plataforma calcárea, en una depresión donde el agua era tranquila y pobre en oxígeno, un lodo fino se acumulaba lentamente. Cubrió a los animales que vivían o morían en el fondo, y se convirtió en una roca laminada, las pizarras de Wheeler, que afloran hoy en las montañas de la House Range, al oeste de Utah, en un paisaje de desierto. Es la época de la «explosión cámbrica», en la que aparecen en poco tiempo la mayoría de los grandes grupos de animales. Los trilobites dominan estos fondos marinos, pero las pizarras de Wheeler han proporcionado también esponjas, medusas y animales de cuerpo blando, conservados como en las célebres pizarras de Burgess, en Canadá. Explotadas por canteras comerciales, suministran por sí solas gran parte de los trilobites vendidos en el mundo, y siguen interesando a los investigadores."""
+style = """
+Los fósiles de las pizarras de Wheeler se reconocen por su caparazón negro y brillante, de calcita, que contrasta con una pizarra gris claro y se desprende con facilidad al partir la roca. Los trilobites son allí numerosos, completos y bien articulados, a menudo de especies de pequeño tamaño, como Elrathia kingii. Su abundancia los convierte en una puerta de entrada ideal a la paleontología."""
+
+[[artistes]]
+nom = "Falaises de Whitby, Angleterre"
+vie = "Costa de North Yorkshire; Jurásico inferior, hace unos 180 millones de años"
+biographie = """
+Los acantilados de Whitby, en la costa del mar del Norte, están hechos de rocas oscuras depositadas hace unos 180 millones de años, en el Jurásico inferior, en el fondo de un mar poco oxigenado. Rebosan de fósiles: amonites, belemnites, peces y grandes reptiles marinos como los ictiosaurios y los plesiosaurios. Su historia humana está ligada a estas piedras. En el siglo VII, santa Hilda funda en el acantilado una abadía cuyas ruinas dominan todavía la ciudad. Del siglo XVII al XIX se explotan las pizarras para extraer alumbre, utilizado para fijar los tintes, y los canteros sacan a la luz numerosos esqueletos. Whitby es también célebre por su azabache, una madera fósil negra y brillante; tras la muerte del príncipe Alberto en 1861, la reina Victoria lanza su moda para las joyas de luto. Por último, en esta costa hace Bram Stoker desembarcar al vampiro en su novela Drácula, aparecida en 1897. Los desprendimientos renuevan sin cesar los fósiles, que los paseantes recogen en las playas."""
+style = """
+Los fósiles de Whitby se distinguen por su conservación en nódulos, bolas de roca dura, y por su tono oscuro, a veces dorado por la pirita. Los amonites son allí tan numerosos que los geólogos han podido dividir el tiempo en zonas que llevan sus nombres. Dactylioceras, de costillas finas y apretadas, es la especie más típica, la de las «piedras de serpiente» de la leyenda."""
+
+[[artistes]]
+nom = "Récifs de l'Indo-Pacifique"
+vie = "Pendientes de los arrecifes de coral, de Filipinas a las islas Fiyi y Australia; en la actualidad"
+biographie = """
+El nautilo cameral vive en las aguas tropicales del Indo-Pacífico, desde Filipinas e Indonesia hasta Nueva Guinea, el norte de Australia y las islas Fiyi. Frecuenta las pendientes abruptas que bordean los arrecifes de coral, a profundidades de a menudo varios cientos de metros, y sube de noche hacia aguas menos profundas para cazar o alimentarse de carroña. Lleva alrededor de la boca decenas de tentáculos sin ventosas y ve el mundo a través de unos ojos muy simples, sin cristalino, que funcionan como una cámara oscura. Su linaje, el de los nautiloideos, se remonta a casi 500 millones de años: sus conchas, rectas o enrolladas, poblaban ya los mares de la época de los trilobites, y sobrevivieron a las grandes extinciones que se llevaron a los amonites. El nautilo crece lentamente, vive una veintena de años y pone pocos huevos. La pesca intensiva de sus conchas ha hecho retroceder sus poblaciones: desde 2017, su comercio internacional está sometido a permisos."""
+style = """
+Vista desde fuera, la concha del nautilo es blanca, rayada de llamas pardo rojizas que se difuminan hacia la abertura. En corte, revela su belleza oculta: una espiral de cámaras regulares, de un pardo dorado, y una gran cámara tapizada de nácar irisado. Los orfebres del Renacimiento la pulían para hacer aparecer el nácar y la montaban en copa preciosa."""
+
+[[artistes]]
+nom = "Gisement de Solnhofen, Allemagne"
+vie = "Valle del Altmühl, Baviera; Jurásico superior, hace unos 150 millones de años"
+biographie = """
+Hace unos 150 millones de años, Baviera estaba cubierta por un mar cálido salpicado de islas y arrecifes, en el borde del océano Tetis. Entre los arrecifes se extendían lagunas de aguas estancadas, muy saladas y sin oxígeno en el fondo. Un lodo calcáreo muy fino se depositaba allí en capas delgadas, que dieron la caliza de Solnhofen, explotada hoy en las canteras del valle del Altmühl, en torno a Solnhofen y Eichstätt. Desde la época romana se extraen de ella losas para suelos y tejados. En 1796, Alois Senefelder descubre que se puede imprimir a partir de estas piedras perfectamente lisas: es la invención de la litografía, que hará la fortuna de las canteras. Los obreros que parten las placas sacan a la luz fósiles de una finura inigualada: peces, cangrejos, límulos, libélulas, pterosaurios, el pequeño dinosaurio Compsognathus y sobre todo el arqueópterix. Una pluma aislada es descrita en 1861, y el primer esqueleto se descubre el mismo año; hoy se conocen una docena."""
+style = """
+Los fósiles de Solnhofen parecen grabados: aplastados entre dos láminas de caliza beige, conservan los contornos más delicados, alas de insectos, membranas de pterosaurios, plumas. Se encuentran incluso huellas de pisadas, y el rastro de un límulo que termina en el cuerpo del animal muerto. Este yacimiento es uno de los grandes modelos de lo que los paleontólogos llaman una conservación excepcional."""
+
+[[artistes]]
+nom = "Forêts d'ambre de la Baltique"
+vie = "Norte de Europa, en el Eoceno, hace unos 45 millones de años; yacimientos de la península de Sambia (Kaliningrado, Rusia)"
+biographie = """
+Hace unos 45 millones de años, en el Eoceno, el clima de la Tierra era mucho más cálido que el actual, y grandes bosques de coníferas y de frondosas cubrían el norte de Europa, en las tierras de la actual Escandinavia. Sus árboles producían resina en abundancia. Arrastrada por los ríos, se acumuló en los sedimentos de un delta, donde se transformó lentamente en ámbar. Estos depósitos afloran hoy en torno al mar Báltico, sobre todo en la península de Sambia, cerca de Kaliningrado, donde la mina de Yantarny explota la capa de «tierra azul». El mar arranca también trozos que arroja a las playas después de las tormentas. Desde la prehistoria, el ámbar báltico es buscado e intercambiado: viajaba hasta el Mediterráneo por la ruta del ámbar, y los romanos lo apreciaban. En la Edad Media, los caballeros teutónicos controlan su recolección. En el siglo XVIII, la Cámara de Ámbar, regalada por el rey de Prusia al zar Pedro el Grande, es una de las decoraciones más famosas de Europa; desaparece durante la Segunda Guerra Mundial."""
+style = """
+El ámbar del Báltico, llamado succinita, va del amarillo miel al pardo rojizo, transparente o lechoso. Es célebre por la riqueza de sus inclusiones: insectos, arañas, flores, plumas, pelos de mamíferos, conservados en tres dimensiones con una precisión que ningún otro fósil alcanza. Los científicos han descrito en él miles de especies desaparecidas, que hacen revivir el bosque del Eoceno."""
+
+[[artistes]]
+nom = "Formation de Morrison, Wyoming"
+vie = "Oeste de Estados Unidos, de Montana a Nuevo México; Jurásico superior, hace unos 155 a 148 millones de años"
+biographie = """
+La formación Morrison es un conjunto de capas de areniscas, arcillas y calizas que aflora en el oeste de Estados Unidos, de Montana a Nuevo México. Lleva el nombre de la pequeña ciudad de Morrison, en Colorado, cerca de la cual se descubren huesos de dinosaurios en 1877. Hace unos 150 millones de años era una vasta llanura atravesada por ríos, de clima cálido y seco, salpicada de lagos y de bosques de coníferas y helechos. Es el yacimiento de dinosaurios más célebre de América: ha proporcionado Diplodocus, Apatosaurus, Brontosaurus, Camarasaurus, Stegosaurus y Allosaurus. A finales del siglo XIX es escenario de la «guerra de los huesos» entre los paleontólogos rivales Othniel Marsh y Edward Drinker Cope, que se disputan las mejores canteras, en particular en Wyoming. En 1909, un investigador del Carnegie Museum, Earl Douglass, descubre en Utah un muro entero de osamentas, hoy protegido en el Dinosaur National Monument."""
+style = """
+La formación Morrison es el reino de los saurópodos, esos gigantes de largo cuello y larga cola, y de sus depredadores. Sus huesos, a menudo bien conservados y a veces hallados en esqueletos casi completos, han permitido los primeros grandes montajes de dinosaurios en los museos. Diplodocus, Stegosaurus o Allosaurus, todos procedentes de estas capas, han fijado para el gran público la imagen misma del dinosaurio."""

@@ -2,7 +2,7 @@
 // les collections du monde), la chronologie siècle par siècle, les thèmes, et le jeu
 // « Qui l'a fait ? » (le record est gardé dans le navigateur).
 
-import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, plier, rangSiecle, route, titreSiecle, toutes } from "./commun.js";
+import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, route, t, titreSiecle, toutes } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { jsonGarde } from "./memoire.js";
 
@@ -44,10 +44,13 @@ function indexer() {
   themes = [...parTheme.values()].sort((a, b) => b.oeuvres.length - a.oeuvres.length);
 }
 
+const oeuvresN = (n) => (n === 1 ? t("1 œuvre", "1 work", "1 obra") : `${nombre(n)} ${t("œuvres", "works", "obras")}`);
+
 const menu = (actif) => `
-  <h1 class="monde-titre">Explorer</h1>
-  <div class="monde-onglets">${[["", "Les artistes"], ["chronologie", "La chronologie"], ["themes", "Les thèmes"], ["jeu", "Qui l'a fait ?"]]
-    .map(([k, t]) => `<a class="${actif === k ? "actif" : ""}" href="#/${k}">${t}</a>`).join("")}</div>`;
+  <h1 class="monde-titre">${t("Explorer", "Explore", "Explorar")}</h1>
+  <div class="monde-onglets">${[["", t("Les artistes", "Artists", "Los artistas")], ["chronologie", t("La chronologie", "Timeline", "La cronología")],
+    ["themes", t("Les thèmes", "Themes", "Los temas")], ["jeu", t("Qui l'a fait ?", "Who made it?", "¿Quién la hizo?")]]
+    .map(([k, nom]) => `<a class="${actif === k ? "actif" : ""}" href="#/${k}">${nom}</a>`).join("")}</div>`;
 
 // Le catalogue de tous les artistes : ceux des expositions (avec leur biographie) et ceux
 // des collections du monde, réunis par nom. Chargé à la première visite des artistes.
@@ -95,7 +98,7 @@ function chargerArtistes() {
     });
     for (const [nom, ne, mort, n] of annuaire) {
       const cle = cleNom(nom), deja = parCle.get(cle);
-      const vie = ne && mort ? `${ne}–${mort}` : mort ? `mort en ${mort}` : ne ? `né en ${ne}` : "";
+      const vie = ne && mort ? `${ne}–${mort}` : mort ? `${t("mort en", "died", "murió en")} ${mort}` : ne ? `${t("né en", "born", "nació en")} ${ne}` : "";
       if (deja) { deja.ailleurs = Math.max(deja.ailleurs || 0, n); deja.vie ||= vie; }
       else parCle.set(cle, { nom, vie, style: "", bio: "", oeuvres: [], monde: [], ailleurs: n });
     }
@@ -112,22 +115,33 @@ const vignetteMonde = ({ l, id }) => l[7] || lien(`monde/v/${id}.webp`);
 const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? vignetteMonde(a.monde[0]) : "");
 
 async function listeArtistes(choisie) {
-  racine.innerHTML = menu("") + `<p class="monde-chargement">Ouverture du catalogue des artistes…</p>`;
+  racine.innerHTML = menu("") + `<p class="monde-chargement">${t("Ouverture du catalogue des artistes…", "Opening the catalogue of artists…", "Abriendo el catálogo de artistas…")}</p>`;
   const { tous } = await chargerArtistes();
   if (route().type !== "" && route().type !== "lettre") return;
   const lettres = [...new Set(tous.map((a) => lettreDe(a.nom)))].sort((a, b) => (a === "#") - (b === "#") || a.localeCompare(b));
   const lettre = lettres.includes(choisie) ? choisie : lettres[0];
   racine.innerHTML = menu("") + `
-    <p class="monde-lead">${nombre(tous.length)} artistes, ateliers et cultures : ceux des expositions, ceux des
+    <p class="monde-lead">${t(
+      `${nombre(tous.length)} artistes, ateliers et cultures : ceux des expositions, ceux des
       collections du monde, et tous ceux dont un musée montre une œuvre libre de droits. Pour chacun, le
       catalogue complet de ses œuvres. Un artiste absent de la liste ? Écrire son nom : ARTEON le cherche
-      dans les musées.</p>
-    <div class="monde-barre"><input type="search" id="filtre" placeholder="Un nom, un style…" aria-label="Chercher un artiste"></div>
-    <nav class="monde-alphabet" aria-label="Les lettres">${lettres.map((l) => `<a class="${l === lettre ? "actif" : ""}" href="#/lettre/${encodeURIComponent(l)}">${l}</a>`).join("")}</nav>
+      dans les musées.`,
+      `${nombre(tous.length)} artists, workshops and cultures: those in the exhibitions, those in the
+      world collections, and every one whose copyright-free work is shown by a museum. For each, the
+      complete catalogue of their works. An artist missing from the list? Type their name: ARTEON will search
+      the museums for them.`,
+      `${nombre(tous.length)} artistas, talleres y culturas: los de las exposiciones, los de las
+      colecciones del mundo y todos aquellos de los que un museo muestra una obra libre de derechos. Para cada uno,
+      el catálogo completo de sus obras. ¿Falta un artista en la lista? Escriba su nombre: ARTEON lo busca
+      en los museos.`)}</p>
+    <div class="monde-barre"><input type="search" id="filtre" placeholder="${t("Un nom, un style…", "A name, a style…", "Un nombre, un estilo…")}" aria-label="${t("Chercher un artiste", "Search for an artist", "Buscar un artista")}"></div>
+    <nav class="monde-alphabet" aria-label="${t("Les lettres", "Letters", "Las letras")}">${lettres.map((l) => `<a class="${l === lettre ? "actif" : ""}" href="#/lettre/${encodeURIComponent(l)}">${l}</a>`).join("")}</nav>
     <div id="artistes"></div>`;
   const zone = document.getElementById("artistes");
   const ligne = (a) => `<a class="monde-artiste-ligne" href="#/artiste/${encodeURIComponent(a.nom)}">${vignetteDe(a) ? `<img loading="lazy" src="${vignetteDe(a)}" alt="">` : "<i></i>"}
-      <span><b>${echapper(a.nom)}</b><small>${echapper([a.vie, a.style].filter(Boolean).join(" · ") || (a.oeuvres.length ? "Dans les expositions" : a.monde.length ? "Dans les collections du monde" : "Dans les musées du monde"))}</small></span><em>${nombre(total(a))}</em></a>`;
+      <span><b>${echapper(a.nom)}</b><small>${echapper([a.vie, a.style].filter(Boolean).join(" · ") || (a.oeuvres.length ? t("Dans les expositions", "In the exhibitions", "En las exposiciones")
+        : a.monde.length ? t("Dans les collections du monde", "In the world collections", "En las colecciones del mundo")
+        : t("Dans les musées du monde", "In the world's museums", "En los museos del mundo")))}</small></span><em>${nombre(total(a))}</em></a>`;
   const dessiner = (q) => {
     const f = plier(q.trim());
     if (f.length >= 2) {
@@ -139,17 +153,17 @@ async function listeArtistes(choisie) {
       // N'importe quel artiste : le nom écrit se cherche tel quel dans tous les musées.
       const ecrit = q.trim();
       const ailleurs = f.length >= 3 && !trouves.some((a) => plier(a.nom) === f)
-        ? `<a class="monde-artiste-ligne" href="#/artiste/${encodeURIComponent(ecrit)}"><i></i><span><b>Chercher « ${echapper(ecrit)} » dans tous les musées</b><small>Son catalogue, en direct des musées du monde</small></span><em>→</em></a>` : "";
+        ? `<a class="monde-artiste-ligne" href="#/artiste/${encodeURIComponent(ecrit)}"><i></i><span><b>${t(`Chercher « ${echapper(ecrit)} » dans tous les musées`, `Search all museums for “${echapper(ecrit)}”`, `Buscar «${echapper(ecrit)}» en todos los museos`)}</b><small>${t("Son catalogue, en direct des musées du monde", "Their catalogue, live from the world's museums", "Su catálogo, en directo de los museos del mundo")}</small></span><em>→</em></a>` : "";
       zone.innerHTML = (trouves.length
-        ? `<p class="monde-compte">${nombre(trouves.length)} artiste${trouves.length > 1 ? "s" : ""}${trouves.length > 300 ? " (les 300 premiers)" : ""}</p>`
-        : `<p class="monde-chargement">Pas encore dans la liste.</p>`)
+        ? `<p class="monde-compte">${nombre(trouves.length)} ${trouves.length > 1 ? t("artistes", "artists", "artistas") : t("artiste", "artist", "artista")}${trouves.length > 300 ? ` ${t("(les 300 premiers)", "(the first 300)", "(los 300 primeros)")}` : ""}</p>`
+        : `<p class="monde-chargement">${t("Pas encore dans la liste.", "Not in the list yet.", "Todavía no está en la lista.")}</p>`)
         + `<div class="monde-artistes">${trouves.slice(0, 300).map(ligne).join("")}${ailleurs}</div>`;
       return;
     }
     // Une lettre compte des milliers d'artistes : 300 à la fois.
     const ici = tous.filter((a) => lettreDe(a.nom) === lettre);
-    zone.innerHTML = `<h2 class="monde-lettre">${lettre} <small class="monde-note">${nombre(ici.length)} artistes</small></h2><div class="monde-artistes" id="lettre-liste"></div>
-      <button class="monde-plus" id="lettre-plus" type="button">Afficher plus</button>`;
+    zone.innerHTML = `<h2 class="monde-lettre">${lettre} <small class="monde-note">${nombre(ici.length)} ${ici.length > 1 ? t("artistes", "artists", "artistas") : t("artiste", "artist", "artista")}</small></h2><div class="monde-artistes" id="lettre-liste"></div>
+      <button class="monde-plus" id="lettre-plus" type="button">${t("Afficher plus", "Show more", "Mostrar más")}</button>`;
     const liste = document.getElementById("lettre-liste"), bouton = document.getElementById("lettre-plus");
     let montres = 0;
     const plus = () => {
@@ -165,10 +179,10 @@ async function listeArtistes(choisie) {
 }
 
 /** Une carte des collections du monde : la vignette, le titre, la date et le musée. */
-const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lien(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${vignetteMonde({ l, id })}" alt=""><b>${echapper(l[0])}</b><span>${echapper([l[2], "collections du monde"].filter(Boolean).join(" · "))}</span></a>`;
+const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lienPage(`monde/#/oeuvre/${id}`)}"><img loading="lazy" decoding="async" src="${vignetteMonde({ l, id })}" alt=""><b>${echapper(l[0])}</b><span>${echapper([l[2], t("collections du monde", "world collections", "colecciones del mundo")].filter(Boolean).join(" · "))}</span></a>`;
 
 async function artiste(nom) {
-  racine.innerHTML = `<p class="monde-chargement">Ouverture du catalogue…</p>`;
+  racine.innerHTML = `<p class="monde-chargement">${t("Ouverture du catalogue…", "Opening the catalogue…", "Abriendo el catálogo…")}</p>`;
   const { parCle } = await chargerArtistes();
   // Un artiste qu'ARTEON ne montre pas encore : son catalogue vient tout entier des musées.
   const a = parCle.get(cleNom(nom)) || { nom, vie: "", style: "", bio: "", oeuvres: [], monde: [] };
@@ -178,16 +192,22 @@ async function artiste(nom) {
     ...a.oeuvres.map(({ ex, w }) => ({ y: annee(w.year), html: carteOeuvre(ex, w, [w.year, ex.short_name || ex.title].filter(Boolean).join(" · ")) })),
     ...a.monde.map((m) => ({ y: m.l[3], html: carteMonde(m) })),
   ].sort((x, y) => (x.y ?? 1e9) - (y.y ?? 1e9));
-  const titre = (n) => `Le catalogue complet : ${n === 1 ? "1 œuvre" : `${nombre(n)} œuvres`}`;
-  racine.innerHTML = `<a class="monde-retour" href="#/lettre/${encodeURIComponent(lettreDe(a.nom))}">← Les artistes</a>
+  const titre = (n) => `${t("Le catalogue complet : ", "Complete catalogue: ", "El catálogo completo: ")}${oeuvresN(n)}`;
+  const enDirect = t("Dans les musées, en direct", "Live from the museums", "En los museos, en directo");
+  racine.innerHTML = `<a class="monde-retour" href="#/lettre/${encodeURIComponent(lettreDe(a.nom))}">← ${t("Les artistes", "Artists", "Los artistas")}</a>
     <h1 class="monde-titre">${echapper(a.nom)}</h1>
     <p class="monde-artiste">${echapper([a.vie, a.style].filter(Boolean).join(" · "))}</p>
     ${a.bio ? `<p class="monde-texte">${echapper(a.bio)}</p>` : ""}
     <section class="monde-section"><h2 id="catalogue-titre">${titre(toutes.length)}</h2>
-      <p class="monde-note">${[a.oeuvres.length ? `${nombre(a.oeuvres.length)} dans les expositions du musée` : "", a.monde.length ? `${nombre(a.monde.length)} dans les collections du monde` : "", toutes.length ? "de la plus ancienne à la plus récente" : "Ses œuvres viennent des musées, en direct"].filter(Boolean).join(" · ")}</p>
-      <div class="monde-grille">${toutes.map((t) => t.html).join("")}</div></section>
-    <section class="monde-section" id="en-direct"><h2>Dans les musées, en direct</h2>
-      <p class="monde-chargement">Recherche de toutes ses œuvres libres de droits dans les musées du monde…</p></section>`;
+      <p class="monde-note">${[
+        a.oeuvres.length ? `${nombre(a.oeuvres.length)} ${t("dans les expositions du musée", "in the museum's exhibitions", "en las exposiciones del museo")}` : "",
+        a.monde.length ? `${nombre(a.monde.length)} ${t("dans les collections du monde", "in the world collections", "en las colecciones del mundo")}` : "",
+        toutes.length ? t("de la plus ancienne à la plus récente", "from oldest to most recent", "de la más antigua a la más reciente")
+          : t("Ses œuvres viennent des musées, en direct", "Their works come live from the museums", "Sus obras llegan de los museos, en directo"),
+      ].filter(Boolean).join(" · ")}</p>
+      <div class="monde-grille">${toutes.map((o) => o.html).join("")}</div></section>
+    <section class="monde-section" id="en-direct"><h2>${enDirect}</h2>
+      <p class="monde-chargement">${t("Recherche de toutes ses œuvres libres de droits dans les musées du monde…", "Searching the world's museums for all their copyright-free works…", "Buscando todas sus obras libres de derechos en los museos del mundo…")}</p></section>`;
   window.scrollTo(0, 0);
   const zone = document.getElementById("en-direct");
   try {
@@ -197,10 +217,16 @@ async function artiste(nom) {
     const nouvelles = r.oeuvres.filter((o) => !deja.has(o.id));
     const musee = await nomsDesMusees().catch(() => ({}));
     document.getElementById("catalogue-titre").textContent = titre(toutes.length + nouvelles.length);
-    zone.innerHTML = nouvelles.length ? `<h2>Dans les musées, en direct : ${nombre(nouvelles.length)} œuvre${nouvelles.length > 1 ? "s" : ""}${toutes.length ? " de plus" : ""}</h2>
-      <p class="monde-note">Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées${r.source === "musees" ? " · directement chez les musées" : " · par l'API ARTEON"}</p>
-      <div class="monde-grille" id="direct-grille"></div><button class="monde-plus" id="direct-plus" type="button">Afficher plus</button>`
-      : `<h2>Dans les musées, en direct</h2><p class="monde-note">Aucune autre œuvre libre de droits dans les collections ouvertes des musées.</p>`;
+    const n = nouvelles.length;
+    zone.innerHTML = n ? `<h2>${enDirect}${t(" : ", ": ", ": ")}${toutes.length
+        ? (n > 1 ? `${nombre(n)} ${t("œuvres de plus", "more works", "obras más")}` : t("1 œuvre de plus", "1 more work", "1 obra más"))
+        : oeuvresN(n)}</h2>
+      <p class="monde-note">${t("Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées",
+        "Public domain (artist died in 1955 or earlier, work made before 1931) · images and records hosted by the museums",
+        "Dominio público (artista fallecido en 1955 o antes, obra anterior a 1931) · imágenes y fichas en los museos")}${r.source === "musees"
+        ? ` · ${t("directement chez les musées", "directly from the museums", "directamente de los museos")}` : ` · ${t("par l'API ARTEON", "via the ARTEON API", "a través de la API de ARTEON")}`}</p>
+      <div class="monde-grille" id="direct-grille"></div><button class="monde-plus" id="direct-plus" type="button">${t("Afficher plus", "Show more", "Mostrar más")}</button>`
+      : `<h2>${enDirect}</h2><p class="monde-note">${t("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.", "No other copyright-free works in the museums' open collections.", "Ninguna otra obra libre de derechos en las colecciones abiertas de los museos.")}</p>`;
     // 300 à la fois : les catalogues des grands artistes comptent des milliers d'œuvres.
     const grille = document.getElementById("direct-grille"), bouton = document.getElementById("direct-plus");
     let montrees = 0;
@@ -214,27 +240,27 @@ async function artiste(nom) {
     bouton?.addEventListener("click", plus);
     plus();
   } catch {
-    zone.innerHTML = `<h2>Dans les musées, en direct</h2><p class="monde-note">Les musées n'ont pas répondu. Réessayer plus tard.</p>`;
+    zone.innerHTML = `<h2>${enDirect}</h2><p class="monde-note">${t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not respond. Please try again later.", "Los museos no han respondido. Vuelva a intentarlo más tarde.")}</p>`;
   }
 }
 
 function chronologie() {
   racine.innerHTML = menu("chronologie") + `
-    <p class="monde-lead">Toutes les œuvres du musée, de la plus ancienne à la plus récente, siècle par siècle.</p>
-    <div class="monde-barre"><select id="aller" aria-label="Aller au siècle"><option value="">Aller au siècle…</option>
-      ${siecles.map((s) => `<option value="s${s.r}">${echapper(s.titre)} (${s.oeuvres.length})</option>`).join("")}</select></div>
-    ${siecles.map((s) => `<section class="monde-section" id="s${s.r}"><h2>${echapper(s.titre)} <small class="monde-note">${s.oeuvres.length} œuvres ·
-        <a href="${lien(`monde/#/siecle/${s.r}`)}">dans les collections du monde</a></small></h2>
+    <p class="monde-lead">${t("Toutes les œuvres du musée, de la plus ancienne à la plus récente, siècle par siècle.", "Every work in the museum, from oldest to most recent, century by century.", "Todas las obras del museo, de la más antigua a la más reciente, siglo a siglo.")}</p>
+    <div class="monde-barre"><select id="aller" aria-label="${t("Aller au siècle", "Go to century", "Ir al siglo")}"><option value="">${t("Aller au siècle…", "Go to century…", "Ir al siglo…")}</option>
+      ${siecles.map((s) => `<option value="s${s.r}">${echapper(s.titre)} (${nombre(s.oeuvres.length)})</option>`).join("")}</select></div>
+    ${siecles.map((s) => `<section class="monde-section" id="s${s.r}"><h2>${echapper(s.titre)} <small class="monde-note">${oeuvresN(s.oeuvres.length)} ·
+        <a href="${lienPage(`monde/#/siecle/${s.r}`)}">${t("dans les collections du monde", "in the world collections", "en las colecciones del mundo")}</a></small></h2>
       <div class="monde-rangee">${s.oeuvres.map(({ ex, w }) => carteOeuvre(ex, w)).join("")}</div></section>`).join("")}`;
   document.getElementById("aller").addEventListener("change", (e) => document.getElementById(e.target.value)?.scrollIntoView({ behavior: "smooth" }));
 }
 
 function listeThemes(choisi) {
-  const t = choisi && themes.find((x) => x.titre === choisi);
-  racine.innerHTML = menu("themes") + (t ? `
-    <a class="monde-retour" href="#/themes">← Tous les thèmes</a><h2>${echapper(t.titre)} <small class="monde-note">${t.oeuvres.length} œuvres</small></h2>
-    <div class="monde-grille">${t.oeuvres.map(({ ex, w }) => carteOeuvre(ex, w)).join("")}</div>` : `
-    <p class="monde-lead">${themes.length} thèmes : la nuit, la mer, l'amour, la mort, le portrait…</p>
+  const theme = choisi && themes.find((x) => x.titre === choisi);
+  racine.innerHTML = menu("themes") + (theme ? `
+    <a class="monde-retour" href="#/themes">← ${t("Tous les thèmes", "All themes", "Todos los temas")}</a><h2>${echapper(theme.titre)} <small class="monde-note">${oeuvresN(theme.oeuvres.length)}</small></h2>
+    <div class="monde-grille">${theme.oeuvres.map(({ ex, w }) => carteOeuvre(ex, w)).join("")}</div>` : `
+    <p class="monde-lead">${nombre(themes.length)} ${t("thèmes : la nuit, la mer, l'amour, la mort, le portrait…", "themes: night, the sea, love, death, the portrait…", "temas: la noche, el mar, el amor, la muerte, el retrato…")}</p>
     <div class="monde-themes">${themes.map((x) => `<a href="#/themes/${encodeURIComponent(x.titre)}">${echapper(x.titre)} <span>${x.oeuvres.length}</span></a>`).join("")}</div>`);
   window.scrollTo(0, 0);
 }
@@ -262,9 +288,9 @@ function jeu() {
   }
   choix.sort(() => Math.random() - 0.5);
   racine.innerHTML = menu("jeu") + `
-    <p class="monde-lead">🔥 Série : <b>${serie}</b> · 🏆 Record : <b>${record()}</b></p>
-    <div class="jeu-image"><img src="${lien(w.image)}" alt="L'œuvre à reconnaître"></div>
-    <h2>Qui a fait cette œuvre ?</h2>
+    <p class="monde-lead">🔥 ${t("Série :", "Streak:", "Racha:")} <b>${serie}</b> · 🏆 ${t("Record :", "Best:", "Récord:")} <b>${record()}</b></p>
+    <div class="jeu-image"><img src="${lien(w.image)}" alt="${t("L'œuvre à reconnaître", "The work to identify", "La obra que hay que reconocer")}"></div>
+    <h2>${t("Qui a fait cette œuvre ?", "Who made this work?", "¿Quién hizo esta obra?")}</h2>
     <div class="jeu-choix">${choix.map((c) => `<button type="button" data-nom="${echapper(c)}">${echapper(c)}</button>`).join("")}</div>
     <div id="jeu-suite"></div>`;
   racine.querySelectorAll(".jeu-choix button").forEach((b) => b.addEventListener("click", () => {
@@ -278,7 +304,7 @@ function jeu() {
     if (serie > record()) garderRecord(serie);
     document.getElementById("jeu-suite").innerHTML = `
       <p><b>${echapper(w.title)}</b> · ${echapper(w.year)} · ${echapper(ex.short_name || ex.title)}</p>
-      <div class="monde-nav"><a href="${lien(`${ex.slug}/oeuvres/${w.slug}/`)}">Voir la notice</a><a href="#/jeu" id="jeu-encore">${bon ? "Suivante ›" : "Rejouer"}</a></div>`;
+      <div class="monde-nav"><a href="${lienPage(`${ex.slug}/oeuvres/${w.slug}/`)}">${t("Voir la notice", "View the description", "Ver la ficha")}</a><a href="#/jeu" id="jeu-encore">${bon ? `${t("Suivante", "Next", "Siguiente")} ›` : t("Rejouer", "Play again", "Volver a jugar")}</a></div>`;
     document.getElementById("jeu-encore").addEventListener("click", (e) => { e.preventDefault(); jeu(); });
   }));
 }
@@ -293,10 +319,10 @@ function afficher() {
   listeArtistes();
 }
 
-racine.innerHTML = `<p class="monde-chargement">Ouverture du musée…</p>`;
+racine.innerHTML = `<p class="monde-chargement">${t("Ouverture du musée…", "Opening the museum…", "Abriendo el museo…")}</p>`;
 chargerCatalogue().then((c) => {
   C = c;
   indexer();
   window.addEventListener("hashchange", afficher);
   afficher();
-}).catch((e) => { racine.innerHTML = `<p class="monde-chargement">Le musée n'a pas pu s'ouvrir (${echapper(e.message)}).</p>`; });
+}).catch((e) => { racine.innerHTML = `<p class="monde-chargement">${t("Le musée n'a pas pu s'ouvrir", "The museum could not be opened", "No se ha podido abrir el museo")} (${echapper(e.message)}).</p>`; });

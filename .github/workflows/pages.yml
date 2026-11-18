@@ -156,7 +156,11 @@ jobs:
         run: |
           python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
-          ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt 25 4 2> target/api.log || true
+          # La place qui reste sous la limite de GitHub Pages (1 Go), le site en trois langues compris.
+          reste=$(( 960 - $(du -sm dist | cut -f1) ))
+          [ "$reste" -gt 0 ] || reste=1
+          echo "place pour l'API : ${reste} Mo"
+          ARTEON_API_MO=$reste ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt 25 4 2> target/api.log || true
           tail -3 target/api.log
           du -sh dist/api dist
 
@@ -182,7 +186,8 @@ jobs:
           # Chaque exposition a ses trois pages, sa scène 3D et toutes ses images.
           for toml in expositions/*.toml; do
             slug=$(basename "$toml" .toml)
-            for f in "$slug/index.html" "$slug/galerie/index.html" "$slug/oeuvres/index.html"; do
+            for f in "$slug/index.html" "$slug/galerie/index.html" "$slug/oeuvres/index.html" \
+                     "en/$slug/index.html" "es/$slug/oeuvres/index.html"; do
               test -e "dist/$f" || { echo "manquant : dist/$f"; exit 1; }
             done
             grep -q 'pkg/arteon_bg.wasm' "dist/$slug/galerie/index.html"

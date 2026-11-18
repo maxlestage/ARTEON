@@ -137,10 +137,10 @@ impl Notice {
     /// Les rubriques de texte non vides, avec leur titre.
     pub fn sections(&self) -> impl Iterator<Item = (&'static str, &'static str)> {
         [
-            ("Ce que l'on voit", self.description),
-            ("Ce qu'elle évoque", self.evocation),
-            ("Son histoire", self.story),
-            ("La manière", self.manner),
+            (crate::langue::t("Ce que l'on voit", "What you see", "Lo que se ve"), self.description),
+            (crate::langue::t("Ce qu'elle évoque", "What it evokes", "Lo que evoca"), self.evocation),
+            (crate::langue::t("Son histoire", "Its history", "Su historia"), self.story),
+            (crate::langue::t("La manière", "The technique", "La técnica"), self.manner),
         ]
         .into_iter()
         .filter(|(_, text)| !text.is_empty())

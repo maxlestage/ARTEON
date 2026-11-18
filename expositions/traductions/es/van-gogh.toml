@@ -1,0 +1,426 @@
+[exposition]
+ordre = 140
+nom_court = "Van Gogh"
+mouvement = "Posimpresionismo"
+cadre = "bois"
+couleur = "#1d3f8f"
+titre = "Van Gogh, el color en movimiento"
+artiste = "Vincent van Gogh"
+dates = "1853–1890"
+accroche = "Exposición virtual · Vincent van Gogh"
+introduction = """
+De Los comedores de patatas de Nuenen al último campo de trigo de Auvers, recorra en 3D cinco años de pintura que cambiaron el color para siempre. Cada lienzo ha sido reconstruido pincelada a pincelada, en relieve, en tres salas dispuestas en torno a un atrio alto y luminoso."""
+vitrine = "nuit-etoilee.jpg"
+
+[musee]
+nom = "Museo Van Gogh"
+ville = "Ámsterdam, Países Bajos"
+architecte = "Gerrit Rietveld"
+construction = "inaugurado en 1973"
+presentation = """
+A la muerte de Vincent en 1890, sus lienzos pasan a su hermano Theo y, después, a la viuda de este, Johanna van Gogh-Bonger, que consagra su vida a darlos a conocer. Su hijo, Vincent Willem, cede la colección a una fundación, y el Estado neerlandés construye para ella un museo en el Museumplein de Ámsterdam. Diseñado por Gerrit Rietveld, figura del movimiento De Stijl, y terminado tras su muerte, ocurrida en 1964, el edificio abre sus puertas en 1973: un volumen sencillo de hormigón y cristal, organizado en torno a un alto espacio central bañado por la luz cenital, desde el que una escalera da acceso a las plantas. En 1999 se le añade un ala ovalada obra de Kisho Kurokawa, destinada a las exposiciones temporales. El museo conserva el mayor conjunto del mundo de obras de Van Gogh: más de doscientos cuadros, unos quinientos dibujos y la mayor parte de sus cartas, desde Los comedores de patatas hasta Los girasoles."""
+ici = """
+El edificio de ARTEON retoma la idea maestra de Rietveld. El atrio, un cuadrado de 10 metros de lado y 9 metros de altura, de muros casi blancos, al que se entra por el sur, distribuye todas las salas. La visita sigue la vida del pintor: al oeste, la Sala I · Nuenen y París, de muros beige; se regresa al atrio para llegar, al norte, a la Sala II · Arlés, la más grande, de un amarillo paja pálido; por último, al este, la Sala III · Saint-Rémy y Auvers, de muros gris azulado. Con sus 5 metros de altura, las tres salas resultan íntimas tras el impulso del atrio."""
+
+[[salles]]
+nom = "El atrio"
+couloir = true
+murs = "#f2f0ea"
+x = 0
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 9
+portes = ["sud", "ouest", "nord", "est"]
+
+[[salles]]
+nom = "Sala I · Nuenen y París"
+theme = "1885–1887: las tierras oscuras del Brabante, después la luz de París y los primeros autorretratos."
+murs = "#e7e1d3"
+x = -10
+z = 0
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+[[salles]]
+nom = "Sala II · Arlés"
+theme = "1888: el sol del Mediodía, los amarillos de cromo y las noches azules a orillas del Ródano."
+murs = "#efe3c4"
+x = 0
+z = -11
+largeur = 14
+profondeur = 12
+hauteur = 5
+
+[[salles]]
+nom = "Sala III · Saint-Rémy y Auvers"
+theme = "1889–1890: los cielos que se arremolinan, las flores del asilo y los trigales de Auvers."
+murs = "#dfe4e8"
+x = 11
+z = 0
+largeur = 12
+profondeur = 10
+hauteur = 5
+
+[[oeuvres]]
+titre = "Los comedores de patatas"
+annee = "1885"
+image = "mangeurs-pommes-de-terre.jpg"
+technique = "Óleo sobre lienzo, 82 × 114 cm"
+collection = "Van Gogh Museum, Ámsterdam"
+note = "Una familia campesina a la luz de una lámpara: la primera gran composición, pintada en tierras pardas."
+description = """
+Cinco campesinos están reunidos en torno a una mesa, en una estancia baja de techo con vigas. Una lámpara de petróleo colgada ilumina sus rostros huesudos y sus manos nudosas. A la izquierda, un joven se vuelve hacia una muchacha con cofia blanca; a la derecha, un hombre de más edad tiende su taza a una anciana que sirve el café. En primer plano, una niña vista de espaldas se recorta como una silueta oscura contra la luz. Todos toman de una única fuente de patatas. En la pared se distinguen un reloj y una pequeña imagen piadosa; al fondo, una ventana y algunos utensilios. El encuadre cerrado encierra a la familia en un espacio casi asfixiante, donde cada uno queda atrapado en el mismo círculo de luz amarilla, mientras los rincones de la estancia se pierden en la sombra."""
+evocation = """
+Van Gogh quería mostrar, como explica a su hermano, que esa gente que come sus patatas bajo la lámpara ha cavado la tierra con las mismas manos que mete en la fuente: una comida honradamente ganada con el trabajo manual. Lejos de las escenas rurales idealizadas, se niega a embellecer a sus modelos y les da rasgos rudos, casi caricaturescos, que los acercan a los tubérculos que recogen. Se ha leído en ella una forma de comunión silenciosa, casi religiosa, en torno a una comida compartida. La obra expresa también la ambición del joven pintor, hijo de pastor en ruptura con su entorno: convertirse en un pintor de campesinos, en la estela de Jean-François Millet, a quien admiraba profundamente. Es una profesión de fe social tanto como artística, a contracorriente de la pintura clara y amable que triunfaba entonces en París."""
+histoire = """
+Van Gogh pinta el lienzo en abril de 1885 en Nuenen, pueblo del Brabante donde su padre era pastor, pocas semanas después de la muerte repentina de este. Se prepara desde el invierno multiplicando los estudios de cabezas y de manos, y la familia De Groot, unos vecinos, le sirve de modelo. Realiza también un boceto pintado, más pequeño, y una litografía que envía a sus amigos. El pintor Anthon van Rappard, amigo suyo desde hacía años, critica tan duramente esa litografía que su amistad no lo sobrevive. Van Gogh envía el gran lienzo a Theo, a París, pero no encuentra comprador. Conservado en la familia, pertenece hoy a la Fundación Vincent van Gogh y es una de las obras más destacadas del Van Gogh Museum de Ámsterdam."""
+facture = """
+La paleta es deliberadamente sombría: pardos, verdes oliva y grises, que Van Gogh compara con el color de una patata polvorienta sin pelar. La luz de la lámpara, única fuente de iluminación, crea fuertes contrastes y esculpe los rostros en planos abruptos, en la tradición del claroscuro de los maestros holandeses como Rembrandt. La pincelada es gruesa y marcada, sobre todo en las manos y las cabezas. Se percibe también la herencia de la Escuela de La Haya, y en particular de Jozef Israëls, pintor de interiores campesinos al que Van Gogh admiraba."""
+details = [
+  "La lámpara de petróleo colgada, cuya luz cae sobre la fuente.",
+  "La niña de espaldas, silueta oscura bordeada de luz.",
+  "Las manos de articulaciones prominentes, que sostienen tenedores y tazas.",
+  "El reloj y la pequeña imagen piadosa colgados de la pared.",
+  "La anciana que sirve el café, a la derecha.",
+]
+themes = ["campesinos", "comida", "familia", "trabajo", "claroscuro"]
+anecdote = """
+Dos años más tarde, cuando ya pinta con los colores claros de París, Van Gogh escribe todavía a su hermana Willemien que ese cuadro de los campesinos comiendo patatas sigue siendo, a su juicio, lo mejor que ha hecho."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.7
+
+[[oeuvres]]
+titre = "Autorretrato"
+annee = "1887"
+image = "autoportrait-1887.jpg"
+technique = "Óleo sobre cartón, 41 × 32,5 cm"
+collection = "Art Institute of Chicago"
+note = "En París, Van Gogh descubre el puntillismo: el rostro se construye con pequeñas pinceladas de colores puros."
+description = """
+Van Gogh se representa de busto, de tres cuartos, con la mirada dirigida al espectador. Lleva una chaqueta oscura; su barba y su cabello pelirrojos, cortos, enmarcan un rostro de pómulos salientes y frente despejada. Nada sitúa la escena: el fondo es un campo de pequeñas pinceladas de color que vibran en torno a la cabeza. El propio rostro está hecho de trazos yuxtapuestos, verdes, rojos, amarillos y anaranjados, que se funden a distancia en una carnación viva. La expresión es grave, algo tensa, y ningún accesorio distrae la atención. El pequeño formato, pintado sobre cartón, refuerza la impresión de un estudio íntimo, hecho con rapidez ante el espejo, donde el pintor se observa tanto como experimenta una nueva manera de pintar."""
+evocation = """
+Este rostro escrutado sin complacencia habla ante todo de una búsqueda de identidad: en París, Van Gogh se busca como hombre y como pintor, y el autorretrato se convierte en su laboratorio. La mirada intensa, casi inquieta, se ha relacionado a menudo con su temperamento nervioso. Pero la obra habla sobre todo de modernidad: al adoptar la pincelada dividida de los neoimpresionistas, el antiguo pintor de los campesinos del Brabante muestra que quiere unirse a la vanguardia parisina. No se trata para él de aplicar una teoría, sino de hacer vibrar el color para dar presencia. Se ha visto en ella el paso decisivo entre el realismo sombrío de sus comienzos y la pintura expresiva que le dará fama en Arlés: en pocos meses, el pintor de las tierras pardas se ha convertido en colorista."""
+histoire = """
+Van Gogh llega a París en marzo de 1886 y se instala en casa de su hermano Theo, primero en la rue Laval y después en el número 54 de la rue Lepic, en Montmartre. Frecuenta durante unos meses el taller del pintor Fernand Cormon, donde conoce a Henri de Toulouse-Lautrec y a Émile Bernard, y descubre en las galerías y en las exposiciones a los impresionistas y a los neoimpresionistas. En la primavera de 1887 pinta junto a Paul Signac en Asnières y ensaya la pincelada dividida de Georges Seurat: este retrato data de ese período. En dos años realiza en París más de una veintena de autorretratos, a menudo sobre soportes baratos como este cartón. El cuadro ingresó en 1954 en el Art Institute of Chicago, con cargo a la colección Joseph Winterbotham, un fondo destinado a la compra de arte europeo."""
+facture = """
+Van Gogh toma de Seurat y Signac el principio de la pincelada dividida, pero sin su rigor científico: sus puntos se alargan en guiones, cambian de dirección y siguen los volúmenes del rostro. Yuxtapone colores complementarios, el anaranjado de la barba contra los azules y los verdes, rojos contra verdes en la carne, para que se exalten mutuamente. La luz ya no procede de una fuente precisa, como en Nuenen: nace del propio color, y la mezcla se produce en el ojo del espectador."""
+details = [
+  "Los guiones verdes y rojos que modelan la mejilla y la frente.",
+  "La barba pelirroja, aplicada en pinceladas anaranjadas contra un fondo más frío.",
+  "El fondo animado de pequeñas pinceladas apretadas, sin decorado alguno.",
+  "Los ojos claros, de mirada fija y algo inquieta.",
+]
+themes = ["autorretrato", "parís", "puntillismo", "colores complementarios", "identidad"]
+anecdote = """
+En marzo de 1886, Van Gogh se presenta en París sin avisar y hace llegar a Theo una nota garabateada a lápiz: lo espera en el Louvre, en el Salon carré. Los dos hermanos vivirán juntos durante dos años."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Autorretrato con sombrero de fieltro gris"
+annee = "1887"
+image = "autoportrait-feutre.jpg"
+technique = "Óleo sobre lienzo, 44 × 37,5 cm"
+collection = "Van Gogh Museum, Ámsterdam"
+note = "Las pinceladas irradian en torno a la cabeza como una aureola: el estilo de su última etapa ya está aquí."
+description = """
+El pintor se muestra de busto, casi de frente, con un sombrero de fieltro gris y una chaqueta azul. Su rostro de mejillas hundidas, de barba y cabello pelirrojos, está ligeramente vuelto hacia un lado, pero los ojos claros se fijan en el espectador con intensidad. A su alrededor, el fondo está hecho solo de pinceladas cortas y paralelas, azules y anaranjadas, que irradian desde la cabeza como una corona. La propia chaqueta está estriada de trazos de color, y el sombrero, lejos de ser uniformemente gris, se carga de reflejos azulados. Ningún objeto, ningún decorado: todo se concentra en el rostro, que parece surgir del fondo vibrante como una aparición, con una presencia casi escultórica."""
+evocation = """
+Al cabo de dos años en París, Van Gogh se presenta aquí como un hombre de ciudad, tocado con el fieltro de los burgueses en lugar del sombrero de paja que luce en otros autorretratos. La mirada penetrante y las mejillas hundidas delatan también el cansancio: más tarde dirá que dejó París enfermo y agotado, anhelando la calma y el sol del Mediodía. El resplandor de las pinceladas en torno a la cabeza se ha comparado con una aureola, como si el pintor reivindicara una vocación casi religiosa por el arte, él que había querido ser pastor. La obra afirma sobre todo que ha encontrado su camino: un lenguaje personal en el que el color y la dirección de la pincelada expresan tanto como los rasgos del rostro."""
+histoire = """
+El cuadro se pinta durante el invierno de 1887-1888, poco antes de la partida de Van Gogh hacia Arlés, en febrero de 1888. Es uno de los más logrados de los autorretratos parisinos, una síntesis de todo lo que ha aprendido en contacto con los impresionistas, con Seurat y con Signac. Como la mayor parte de sus lienzos, queda en poder de Theo, que muere en enero de 1891, solo seis meses después de su hermano. Su viuda, Johanna van Gogh-Bonger, conserva gran parte de la obra y consagra su vida a darla a conocer, organizando exposiciones y ventas. Su hijo, Vincent Willem, confía en 1962 la colección a la Fundación Vincent van Gogh, que la deposita en el Van Gogh Museum, inaugurado en Ámsterdam en 1973."""
+facture = """
+Van Gogh lleva aquí la pincelada dividida hacia un sistema personal: trazos cortos y gruesos, todos orientados, que siguen la forma de la cabeza en el rostro e irradian a su alrededor en el fondo. Organiza el lienzo en parejas de complementarios: azul y anaranjado en el fondo, rojo anaranjado de la barba contra los verdes de la carnación. La materia, aplicada en pasta, capta la luz. Este ritmo de las pinceladas, a la vez estructurado y nervioso, anuncia los cielos en movimiento de Saint-Rémy y se aleja ya del neoimpresionismo ortodoxo."""
+details = [
+  "Los trazos azules y anaranjados del fondo, que irradian en torno a la cabeza.",
+  "Los reflejos de color sobre el fieltro gris del sombrero.",
+  "Las pinceladas verdes y rojas que modelan las mejillas hundidas.",
+  "Los ojos claros, casi transparentes, que fijan al espectador.",
+]
+themes = ["autorretrato", "parís", "colores complementarios", "modernidad", "identidad"]
+anecdote = """
+Como se pinta ante un espejo, Van Gogh se ve invertido: sus autorretratos no lo muestran tal como lo veían los demás. Cuenta a su hermana que compró un buen espejo expresamente, por falta de dinero para pagar modelos."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Los girasoles"
+annee = "1888"
+image = "tournesols.jpg"
+technique = "Óleo sobre lienzo, 92,1 × 73 cm"
+collection = "National Gallery, Londres"
+note = "Pintados para decorar la habitación de Gauguin en Arlés: una sinfonía de amarillos sobre fondo amarillo."
+description = """
+Un jarrón de barro cocido colocado sobre una mesa contiene una quincena de girasoles. Nada más: la mesa, de un amarillo más intenso, y la pared, de un amarillo pálido, se unen en una simple línea horizontal. Las flores están en todas las etapas de su vida: unas plenamente abiertas, con los pétalos en corona; otras todavía frescas; otras marchitas, reducidas a su corazón erizado de semillas, con los pétalos cayendo como lenguas de fuego. Los tallos se cruzan, las cabezas se vuelven en todas direcciones, unas vistas de frente, otras de perfil o desde abajo. El ramo, amplio y tupido, desborda el jarrón por todos lados. El pintor firmó «Vincent» directamente sobre la panza del jarrón, como se firma un objeto decorado."""
+evocation = """
+Para Van Gogh, el girasol es casi un emblema personal: escribe a Theo que otros pintores se asocian con la peonía o la malvarrosa, pero que a él le corresponde un poco el girasol. El amarillo representa para él la luz del Mediodía, el calor y una forma de esperanza. Pintados para acoger a Gauguin, estos ramos hablan de amistad y del sueño de un taller compartido, el «taller del Mediodía». La presencia, una junto a otra, de flores abiertas y marchitas se ha leído también como una meditación sobre el ciclo de la vida, del esplendor a la muerte, en la tradición de las vanitas holandesas. Cabe ver, por último, una apuesta de pintor: lograr un cuadro deslumbrante con un solo color, declinado en todos sus tonos."""
+histoire = """
+En agosto de 1888, en Arlés, Van Gogh espera la llegada de Paul Gauguin, a quien confía convencer de fundar con él una comunidad de artistas. Para decorar la Casa Amarilla, pinta en pocos días cuatro lienzos de girasoles, trabajando deprisa porque las flores se marchitan. Este es el cuarto. Gauguin llega el 23 de octubre y admira esos ramos. En enero de 1889, tras la crisis de diciembre, Vincent pinta varias repeticiones, entre ellas las del Van Gogh Museum de Ámsterdam y el Philadelphia Museum of Art. El lienzo de Londres, conservado en la familia, fue adquirido en 1924 por la National Gallery gracias al fondo creado por el industrial Samuel Courtauld para la compra de pintura francesa moderna."""
+facture = """
+Van Gogh afronta un desafío: pintar amarillo sobre amarillo. Emplea los amarillos de cromo, entonces recientes, del limón al anaranjado, y los hace vibrar con pequeños acentos de verde, pardo y azul. La materia es muy espesa: los corazones de las flores están modelados en relieve, casi esculpidos con el pincel, mientras que el fondo se trabaja de manera más uniforme. Contornos oscuros rodean por momentos las formas, como en las estampas japonesas y en los lienzos cloisonnistas de su amigo Émile Bernard. La composición frontal, sin profundidad, hace de este ramo una imagen casi decorativa."""
+details = [
+  "La firma «Vincent», pintada en la panza del jarrón.",
+  "Los corazones de las flores marchitas, en relieve, erizados de semillas.",
+  "La línea horizontal que separa la mesa de la pared, único punto de referencia del espacio.",
+  "Los pétalos que se retuercen como llamas en las flores más maduras.",
+]
+themes = ["flores", "naturaleza muerta", "amarillo", "amistad", "ciclo de la vida"]
+anecdote = """
+A finales de 1888, Gauguin pinta a Van Gogh pintando girasoles. Según el relato que hizo mucho después, Vincent habría exclamado ante el retrato: «Soy yo, pero yo vuelto loco.»"""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La noche estrellada sobre el Ródano"
+annee = "1888"
+image = "nuit-etoilee-rhone.jpg"
+technique = "Óleo sobre lienzo, 72,5 × 92 cm"
+collection = "Museo de Orsay, París"
+note = "Las farolas de gas de Arlés se reflejan en el río bajo la Osa Mayor."
+description = """
+Ha caído la noche sobre el Ródano, en Arlés. En un vasto cielo azul verdoso, siete estrellas dibujan la Osa Mayor, cada una rodeada de un halo claro. A lo lejos, la línea de los muelles y las casas está puntuada por las farolas de gas, cuyos reflejos amarillos y anaranjados se alargan sobre el agua en largas columnas temblorosas. El río, de un azul profundo, ocupa todo el ancho del lienzo. En la orilla del primer plano hay barcas amarradas, y una pareja pasea del brazo junto al agua. El cielo llena la mitad superior del cuadro, y sus estrellas responden a las luces de la ciudad, como si la tierra y el cielo se devolvieran su resplandor. El conjunto respira la calma de una tarde de finales de verano."""
+evocation = """
+Van Gogh soñaba desde hacía tiempo con pintar un cielo estrellado. La noche no es aquí ni amenazadora ni lúgubre: está llena de colores, y el alumbrado moderno de gas dialoga con la luz lejana de las estrellas. La pareja del primer plano da a la escena una ternura apacible. Las estrellas tenían para él un alcance casi espiritual: unas semanas antes escribía a Theo que su visión siempre le hacía soñar, y se preguntaba por qué los puntos luminosos del cielo habrían de ser menos accesibles que los puntos negros de las ciudades en un mapa, añadiendo que, así como se toma el tren para ir a Tarascón, se toma la muerte para ir a una estrella. Con frecuencia se ha leído este cuadro como un momento de sosiego, antes de la tormenta de los meses siguientes."""
+histoire = """
+Van Gogh pinta el lienzo a finales de septiembre de 1888 en el muelle del Ródano, a pocos minutos de la Casa Amarilla donde acaba de instalarse. Trabaja en el lugar, de noche, y describe a Theo en una carta los colores de su cuadro. Es uno de los pocos lienzos expuestos en vida: en septiembre de 1889, Theo lo envía al Salon des Indépendants de París, junto con Los lirios. Tras la muerte del pintor, la obra permanece en manos privadas hasta 1975, año en que el señor y la señora Robert Kahn-Sriber la donan al Estado francés. Hoy se expone en el Museo de Orsay, que conserva también la pequeña versión de La habitación, pintada en Saint-Rémy."""
+facture = """
+Van Gogh compone con una gama de azules, azul de Prusia, ultramar, cobalto, realzada con verdes y violetas, y reserva los amarillos y los anaranjados para las luces. Las estrellas se aplican en gruesas pinceladas radiantes, rodeadas de halos. Los reflejos en el agua se logran con largos trazos verticales, quebrados, que sugieren el movimiento del río. Pinta sin negro: la oscuridad nace de los azules profundos. La pincelada, regular, todavía bastante serena, y la composición horizontal dan a la escena una placidez que ya no tendrán los cielos de Saint-Rémy."""
+details = [
+  "Las siete estrellas de la Osa Mayor, cada una con su halo.",
+  "Los reflejos de las farolas de gas, alargados en columnas amarillas sobre el agua.",
+  "La pareja que camina junto al río, en primer plano.",
+  "Las barcas amarradas en la orilla.",
+]
+themes = ["noche", "estrellas", "río", "luz", "arlés"]
+anecdote = """
+Se cuenta que Van Gogh pintaba de noche con velas fijadas en su sombrero. Ninguna fuente fiable lo confirma: en sus cartas, solo explica que trabaja en el lugar, de noche, a la luz de la ciudad."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "El dormitorio en Arlés"
+annee = "1888"
+image = "chambre-arles.jpg"
+technique = "Óleo sobre lienzo, 72,4 × 91,3 cm"
+collection = "Van Gogh Museum, Ámsterdam"
+note = "Su habitación de la Casa Amarilla, en colores planos y francos: «un reposo absoluto», escribe a Gauguin."
+description = """
+La habitación es estrecha y está ligeramente torcida: la pared del fondo, abierta por una ventana de postigos verdes entornados, parece huir en diagonal. Una gran cama de madera amarilla ocupa la derecha, con dos almohadas verde pálido y una manta roja. Dos sillas de paja, también amarillas, se miran de frente, y un pequeño tocador sostiene una palangana, una jarra y unos frascos. En la pared de la izquierda cuelga un espejo. En la pared de la derecha, sobre la cama, hay colgados un paisaje y dos retratos, y de unas perchas penden prendas de ropa. El suelo de baldosas rojas huye hacia el fondo en una perspectiva acentuada. No hay personajes: solo los objetos, sencillos y escasos, cuentan la vida de su ocupante."""
+evocation = """
+Van Gogh quería que la sola visión del cuadro descansara la cabeza, o más bien la imaginación, como escribe a Theo: es el color, y no el tema, lo que debe sugerir el reposo y el sueño. La habitación es también el corazón de su sueño arlesiano: acaba de arreglar la Casa Amarilla, la primera casa verdaderamente suya, que espera compartir con otros pintores. Los objetos por pares, dos sillas, dos almohadas, dos retratos, se han interpretado como signo de un deseo de compañía, en vísperas de la llegada de Gauguin. Sin embargo, el espacio algo desvencijado y la perspectiva vertiginosa dejan aflorar una inquietud. Esta paradoja entre la aspiración a la paz y la tensión sorda constituye la fuerza de este retrato de un lugar."""
+histoire = """
+Van Gogh pinta su habitación a mediados de octubre de 1888, en la Casa Amarilla, en la place Lamartine de Arlés. El cuadro forma parte de la decoración que prepara para recibir a Gauguin, y envía un boceto a Theo. A comienzos de 1889, mientras está hospitalizado, una crecida del Ródano vuelve húmeda la casa y el lienzo resulta dañado. En Saint-Rémy, en septiembre de 1889, pinta dos repeticiones: una del mismo formato, hoy en el Art Institute of Chicago, y otra más pequeña, destinada a su madre y a su hermana, conservada en el Museo de Orsay. La versión original, conservada en la familia, se encuentra en el Van Gogh Museum. La Casa Amarilla, por su parte, fue destruida por un bombardeo en 1944."""
+facture = """
+Van Gogh detalla él mismo sus colores en una carta a Gauguin: paredes lila pálido, suelo de un rojo quebrado, sillas y cama amarillo de cromo, almohadas y sábana verde limón muy pálido, manta rojo sangre, tocador anaranjado, palangana azul, ventana verde. Suprime las sombras y pinta con tintas planas, rodeadas de contornos, a la manera de las estampas japonesas, aunque conserva una pincelada visible y espesa. Los análisis han mostrado que las paredes, hoy azules, eran originalmente violetas: el pigmento rojo, poco estable, se ha desvanecido."""
+details = [
+  "Los postigos verdes de la ventana, entornados hacia el exterior.",
+  "Las dos almohadas, una junto a otra, sobre la gran cama amarilla.",
+  "El pequeño espejo de marco negro, colgado de la pared de la izquierda.",
+  "Sobre la cama, los retratos de sus amigos Eugène Boch y Paul-Eugène Milliet.",
+  "Las baldosas rojas del suelo, pintadas con trazos rápidos que aceleran la perspectiva.",
+]
+themes = ["interior", "reposo", "hogar", "japonismo", "soledad"]
+anecdote = """
+En 2016, con motivo de una exposición que reunía las tres versiones del cuadro, el Art Institute of Chicago hizo reconstruir la habitación a tamaño natural y la ofreció en alquiler en Airbnb, por unos pocos dólares la noche."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Terraza de café por la noche"
+annee = "1888"
+image = "terrasse-cafe.jpg"
+technique = "Óleo sobre lienzo, 80,7 × 65,3 cm"
+collection = "Museo Kröller-Müller, Otterlo"
+note = "Una noche sin negro: el amarillo de la terraza contra el azul profundo del cielo estrellado."
+description = """
+Una terraza de café, iluminada por un gran farol colgado bajo el toldo amarillo, ocupa la izquierda del lienzo. Los clientes están sentados en torno a pequeñas mesas redondas, mientras un camarero con delantal blanco circula entre ellas. La luz dorada se extiende sobre la pared, el toldo y los adoquines de la plaza, que adquieren tonos anaranjados, rosados y violetas. A la derecha, una calle se adentra entre fachadas oscuras de ventanas iluminadas; unos transeúntes caminan hacia el fondo, donde se adivina un carruaje. Sobre los tejados, una franja de cielo azul profundo está sembrada de estrellas, pintadas como grandes flores claras. La mirada se desliza así desde la animada terraza hasta el cielo, siguiendo la calle que se hunde en la noche."""
+evocation = """
+Van Gogh escribe a Theo que a menudo le parece que la noche es aún más ricamente colorida que el día: este cuadro lo demuestra. Opone dos mundos, el calor artificial y acogedor de la terraza iluminada y la inmensidad serena del cielo estrellado. Se ha visto en él una imagen de la vida moderna, con sus cafés y su nuevo alumbrado, tal como la describía la literatura de su tiempo: el propio Van Gogh evoca el comienzo de Bel-Ami, de Maupassant, donde aparece un café parisino por la noche. Las estrellas, que aparecen aquí por primera vez en su obra, anuncian un motivo que llegará a ser esencial para él, cargado de una forma de espiritualidad y de esperanza."""
+histoire = """
+Van Gogh pinta el lienzo a mediados de septiembre de 1888 en la place du Forum, en el corazón de Arlés, instalando su caballete al aire libre, de noche. Lo describe en una carta a su hermana Willemien, insistiendo en el placer de pintar en el lugar, de noche. Es el primer lienzo en que representa un cielo estrellado, pocos días antes de La noche estrellada sobre el Ródano. La obra fue adquirida más tarde por Helene Kröller-Müller, rica coleccionista neerlandesa que reunió, a comienzos del siglo XX, cerca de noventa cuadros de Van Gogh y fue una de las primeras en calibrar su importancia. En 1938 abre su museo en el corazón del parque nacional de Hoge Veluwe, en Otterlo, donde el lienzo sigue expuesto."""
+facture = """
+El cuadro se apoya en el contraste de los complementarios: el amarillo y el anaranjado de la terraza contra el azul y el violeta del cielo. Van Gogh construye la oscuridad con azules profundos, verdes sombríos y violetas. Rodea las formas con contornos oscuros, a la manera de las estampas japonesas. La perspectiva se hunde hacia el fondo de la calle y guía la mirada de la terraza al cielo. Los adoquines se resuelven con pequeñas pinceladas redondeadas y coloreadas, como un mosaico, y las estrellas se aplican en pasta espesa sobre el azul."""
+details = [
+  "El camarero con delantal blanco, entre las mesas.",
+  "El gran farol colgado de la pared, fuente de toda la luz amarilla.",
+  "Los adoquines de la plaza, en pequeñas pinceladas rosadas, anaranjadas y violetas.",
+  "Las estrellas semejantes a flores, en la franja de cielo sobre la calle.",
+  "El carruaje que se distingue al fondo de la calle.",
+]
+themes = ["noche", "café", "estrellas", "ciudad", "luz"]
+anecdote = """
+El café sigue existiendo en la place du Forum, en Arlés. Ha tomado el nombre de Café Van Gogh y luce ahora una fachada amarilla que recuerda al cuadro, atrayendo cada año a visitantes de todo el mundo."""
+salle = 3
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "El café de noche"
+annee = "1888"
+image = "cafe-de-nuit.jpg"
+technique = "Óleo sobre lienzo, 72,4 × 92,1 cm"
+collection = "Yale University Art Gallery, New Haven"
+note = "Rojo sangre y verde amargo: un café donde «uno puede arruinarse, volverse loco, cometer crímenes»."
+description = """
+Se descubre la sala de un café casi desierto, poco después de medianoche, como indica el reloj colgado al fondo. En el centro, una mesa de billar verde proyecta sobre el suelo una larga sombra. Cuatro lámparas colgadas, rodeadas de halos amarillos y anaranjados, iluminan la estancia con crudeza. A lo largo de las paredes rojas, algunos clientes solitarios están desplomados en las mesas, adormilados o con la cabeza entre los brazos. Junto al billar, de pie, un hombre de traje claro, el patrón, mira hacia nosotros. Al fondo, un mostrador cargado de botellas y una puerta velada por una cortina, que da a una estancia más clara. El suelo amarillo parece volcarse hacia el espectador, y unas sillas vacías aguardan en primer plano."""
+evocation = """
+Van Gogh quiso hacer de este café un lugar de desolación: escribe a Theo que ha intentado expresar con el rojo y el verde las terribles pasiones humanas. Los colores chocan entre sí en lugar de armonizarse, y la luz cruda de las lámparas, sin calor, acentúa el malestar. Los bebedores aislados y los noctámbulos, que acuden allí por no poder pagar un alojamiento, componen una imagen de soledad urbana. El patrón, de pie e inmóvil, parece reinar sobre ese espacio como un inquietante guardián. Ya no es el realismo social de Nuenen, sino una pintura en la que el color transmite directamente la emoción, lo que hará de este lienzo una referencia para los expresionistas del siglo XX."""
+histoire = """
+El Café de la Gare, en la place Lamartine, estaba regentado por Joseph y Marie Ginoux; Van Gogh se aloja allí varios meses antes de mudarse al lado, a la Casa Amarilla. A principios de septiembre de 1888, pasa tres noches pintando la sala, durmiendo de día. Escribe a Theo que es uno de los lienzos más feos que ha hecho, pero que lo considera equivalente, aunque distinto, a Los comedores de patatas. En noviembre, Gauguin pinta a su vez el mismo café, con Marie Ginoux en primer plano. El lienzo es adquirido por el gran coleccionista moscovita Iván Morózov, nacionalizado tras la revolución y luego vendido por el gobierno soviético en 1933. El estadounidense Stephen C. Clark lo lega en 1961 a la Universidad de Yale."""
+facture = """
+Van Gogh juega con las disonancias: rojo sangre de las paredes, verde del techo y del billar, amarillo del suelo. Opone los complementarios no para apaciguarlos, sino para hacerlos gritar. Los halos de las lámparas, hechos de círculos concéntricos de pinceladas amarillas y anaranjadas, anuncian los astros arremolinados de Saint-Rémy. La perspectiva picada, muy acentuada, estira la estancia y da la sensación de que el suelo se desvanece. Los contornos oscuros y las superficies planas deben mucho a las estampas japonesas, pero la materia, espesa, sigue muy presente."""
+details = [
+  "El reloj del fondo, que marca poco más de medianoche.",
+  "La sombra larga y oscura que proyecta el billar sobre el suelo amarillo.",
+  "Los halos concéntricos en torno a las cuatro lámparas.",
+  "El patrón de blanco, de pie junto al billar, que mira hacia nosotros.",
+  "La cortina de la puerta del fondo, que da a una estancia más clara.",
+]
+themes = ["noche", "café", "soledad", "color", "malestar"]
+anecdote = """
+A comienzos del siglo XXI, un descendiente de Iván Morózov reclamó el cuadro ante la justicia estadounidense, al considerar que había sido expoliado por el Estado soviético. Los tribunales dieron la razón a la Universidad de Yale, que lo conserva todavía."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Los lirios"
+annee = "1889"
+image = "iris.jpg"
+technique = "Óleo sobre lienzo, 74,3 × 94,3 cm"
+collection = "J. Paul Getty Museum, Los Ángeles"
+note = "Pintado en el jardín del asilo de Saint-Rémy, la primera semana: un único lirio blanco entre los azules."
+description = """
+La mirada se sumerge en un macizo de lirios en flor, visto de muy cerca, sin horizonte ni cielo. Las flores azul violáceo, de pétalos ondulados, se alzan sobre largas hojas verdes en forma de hoja de espada que se entrecruzan. Ocupan casi todo el ancho del lienzo, cada una con su forma propia, unas abiertas, otras todavía en capullo. Entre ellas se destaca un lirio blanco, único. En primer plano, la tierra es de un pardo rojizo; al fondo, la hierba del jardín y una mata de flores anaranjadas iluminan la composición. El encuadre corta las plantas en los bordes, como si el macizo se prolongara más allá del cuadro. El ojo circula de una flor a otra sin encontrar jamás un centro, como en un jardín que se recorre."""
+evocation = """
+Pintados en los primerísimos días de su internamiento voluntario, Los lirios dan testimonio de un impulso vital recobrado: la pintura es para Van Gogh un medio de mantener la enfermedad a distancia. El jardín cerrado del asilo se convierte en un mundo en sí mismo, exuberante y luminoso. Cada flor parece tener su personalidad, retorcerse, inclinarse o erguirse como un ser vivo. El lirio blanco aislado se ha interpretado a menudo como una figura de la soledad, incluso como un autorretrato simbólico del pintor entre los demás, pero esta no es más que una lectura entre otras. Lo que más llama la atención es la ausencia de angustia aparente: el lienzo celebra la primavera, el crecimiento y la belleza sencilla de las plantas."""
+histoire = """
+El 8 de mayo de 1889, tras varias crisis, Van Gogh ingresa voluntariamente en el asilo de Saint-Paul-de-Mausole, en Saint-Rémy-de-Provence. Se le autoriza a pintar en el jardín, y se lanza enseguida sobre los lirios en flor. Considera el lienzo un estudio, pero Theo lo envía al Salon des Indépendants de septiembre de 1889. En 1892, el crítico Octave Mirbeau, uno de los primeros defensores del pintor, lo compra por 300 francos. En noviembre de 1987 se vende en subasta en Nueva York por 53,9 millones de dólares al empresario australiano Alan Bond, un récord mundial en su momento. Incapaz de pagarlo por completo, este debe deshacerse de él, y el J. Paul Getty Museum de Los Ángeles lo adquiere en 1990."""
+facture = """
+Los lirios deben mucho a las estampas japonesas: contornos marcados, superficies planas de color, encuadre cercano y cortado, ausencia de perspectiva profunda. Van Gogh les asocia su pincelada propia, espesa y nerviosa, que sigue el movimiento de las hojas y los pétalos. Hace jugar los complementarios, el azul violáceo de las flores contra el anaranjado de las flores del fondo y el pardo rojizo de la tierra. Las investigaciones han mostrado que los lirios eran originalmente más violetas: el pigmento rojo mezclado con el azul se ha desvanecido con el tiempo."""
+details = [
+  "El único lirio blanco, aislado en medio de las flores azules.",
+  "Las hojas en forma de hoja de espada, que se cruzan como espadas.",
+  "La tierra pardo rojiza del primer plano.",
+  "Las flores anaranjadas del fondo, contrapunto del azul de los lirios.",
+  "Los contornos oscuros que rodean cada pétalo, a la japonesa.",
+]
+themes = ["flores", "jardín", "japonismo", "primavera", "asilo"]
+anecdote = """
+En 1987, el comprador de Los lirios solo pudo pujar gracias a un préstamo concedido en una mitad por Sotheby's, la propia casa de subastas. Revelada después, esta práctica provocó un escándalo y arrojó dudas sobre la escalada de precios de la época."""
+salle = 4
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "La noche estrellada"
+annee = "1889"
+image = "nuit-etoilee.jpg"
+technique = "Óleo sobre lienzo, 73,7 × 92,1 cm"
+collection = "Museum of Modern Art, Nueva York"
+note = "La vista desde su ventana en el asilo, antes del alba: un cielo que se arremolina sobre el pueblo dormido."
+description = """
+Bajo un cielo inmenso, un pequeño pueblo duerme al pie de unas colinas azules. El cielo ocupa la mayor parte del lienzo: grandes volutas de luz se enroscan en él como olas, y una doble espiral gira en su centro. Once estrellas llamean, rodeadas de halos amarillos y blancos, y arriba a la derecha brilla una luna creciente anaranjada, cercada de luz. Junto al ciprés, una estrella más grande y más clara que las demás: la estrella de la mañana. En primer plano, a la izquierda, un ciprés oscuro se lanza como una llama hasta lo alto del cuadro. En el pueblo, unas casas de ventanas iluminadas rodean una iglesia de campanario afilado, y las colinas ondulan retomando el movimiento del cielo."""
+evocation = """
+La noche estrellada se ha convertido en la imagen misma de Van Gogh, y en ella se leen a menudo los tormentos de su enfermedad. Pero el pintor expresa también una antigua fascinación por las estrellas, que asociaba con el infinito y el más allá. El ciprés, árbol de los cementerios en Provenza, une la tierra con el cielo: se ha visto en él un símbolo de muerte tanto como un impulso hacia la eternidad. La iglesia, que se parece más a las del Brabante, se ha interpretado como un recuerdo del país natal. El contraste entre el pueblo apacible y el cielo en ebullición sugiere una naturaleza atravesada por energías que el hombre dormido no percibe. En 1971, la canción Vincent, de Don McLean, que comienza con «Starry, starry night», aumentó aún más la fama del cuadro."""
+histoire = """
+Van Gogh pinta el lienzo hacia mediados de junio de 1889 en el asilo de Saint-Rémy. Desde la ventana enrejada de su habitación, orientada al este, ve un campo de trigo cercado por muros y, más allá, unas colinas. No tiene derecho a pintar en su habitación: trabaja de día en un taller de la planta baja, apoyándose en sus estudios y en su memoria, y añade el pueblo y el ciprés. Escribe a Theo que vio el campo antes de la salida del sol, con la estrella de la mañana, muy grande. Poco satisfecho, confía más tarde a Émile Bernard que se dejó llevar a hacer estrellas demasiado grandes. Tras varios propietarios, entre ellos el poeta Julien Leclercq, el lienzo ingresa en 1941 en el Museum of Modern Art de Nueva York, por canje de obras legadas por Lillie P. Bliss."""
+facture = """
+Todo es movimiento: Van Gogh pinta con pinceladas espesas, curvas y rítmicas, que siguen las formas y arrastran el ojo en un torbellino continuo. El cielo se construye con azules profundos, contra los que estallan los amarillos de los astros. El ciprés, casi negro, se modela con largas pinceladas onduladas y verticales que se oponen a las horizontales del pueblo y a las espirales del cielo. El pueblo, dibujado de manera más rectilínea, aporta un contrapunto sereno. El relieve de la materia, muy marcado, capta la luz y da al cielo una presencia casi física."""
+details = [
+  "La luna creciente anaranjada, arriba a la derecha, envuelta en un halo.",
+  "La gran doble espiral que gira en el centro del cielo.",
+  "La estrella de la mañana, más grande y más clara, junto al ciprés.",
+  "El campanario afilado de la iglesia, que se alza sobre los tejados.",
+  "Las ventanas amarillas de las casas, únicas huellas de vida humana.",
+]
+themes = ["noche", "cielo", "estrellas", "ciprés", "pueblo"]
+anecdote = """
+Unos astrónomos han comprobado que, en la primavera de 1889, el planeta Venus brillaba efectivamente al alba en el cielo de Saint-Rémy: la estrella de la mañana que Van Gogh dice haber visto desde su ventana es muy probablemente ella."""
+salle = 4
+mur = "nord"
+place = 3
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Almendro en flor"
+annee = "1890"
+image = "amandier.jpg"
+technique = "Óleo sobre lienzo, 73,3 × 92,4 cm"
+collection = "Van Gogh Museum, Ámsterdam"
+note = "Un regalo por el nacimiento de su sobrino: ramas en flor sobre un cielo azul, a la japonesa."
+description = """
+Unas ramas de almendro en flor se recortan sobre un cielo azul turquesa, sin suelo ni horizonte. Vistas desde abajo, como si uno estuviera tumbado bajo el árbol, se extienden por toda la superficie del lienzo y se ramifican en ramitas cada vez más finas. Las flores, blancas teñidas de rosa, están representadas en diferentes etapas: algunas bien abiertas, mostrando su corazón, otras todavía en capullos rosados. Las ramas, de un pardo verdoso, están rodeadas de contornos oscuros y se retuercen con soltura. El encuadre corta las ramitas en los bordes, de modo que la escena parece un fragmento de un árbol más vasto. Nada viene a turbar este diálogo entre el azul del cielo y la fragilidad de las flores."""
+evocation = """
+El almendro es el primer árbol en florecer, a finales del invierno: simboliza la renovación y la vida que vuelve a empezar. Al elegirlo para saludar el nacimiento de su sobrino, Van Gogh ofrece al recién nacido un emblema de esperanza y de crecimiento. El cuadro, pensado para colgarse en el dormitorio de los padres, habla también del profundo afecto que lo une a Theo y a su esposa Johanna. Pintado en un período de relativa calma, justo antes de una nueva crisis, adquiere el valor de una promesa frágil. La serenidad de la imagen, su cielo luminoso y su elegancia decorativa dan testimonio de un sosiego que rara vez se encuentra en tal grado en su obra de Saint-Rémy."""
+histoire = """
+El 31 de enero de 1890, Johanna, la esposa de Theo, da a luz a un niño, al que sus padres llaman Vincent Willem, como su tío. Este, conmovido, se pone enseguida a pintar este cuadro en el asilo de Saint-Rémy, en febrero de 1890; anuncia a su madre que lo destina a su dormitorio. Poco después, sufre una grave crisis que le impide trabajar durante casi dos meses. Theo y Jo acaban colgando el lienzo sobre el piano de su salón, en París. Conservado en la familia tras la muerte de los dos hermanos, pertenece a la Fundación Vincent van Gogh y se ha convertido en una de las obras más queridas del Van Gogh Museum."""
+facture = """
+La influencia de las estampas japonesas alcanza aquí su cima: contornos nítidos, superficies planas de color, motivo visto de cerca y cortado por el marco, fondo liso sin perspectiva. Van Gogh, que coleccionaba esos grabados desde Amberes y París, se apropia de su lenguaje. El azul del cielo, aplicado en pinceladas apretadas, sirve de estuche al blanco de las flores, a su vez matizado de rosa y de verde. Las flores se pintan en pasta espesa, lo que les da relieve, mientras que las ramas se trazan con un trazo flexible. La gama reducida crea una armonía luminosa y serena."""
+details = [
+  "Los capullos rosados, junto a las flores ya abiertas.",
+  "Los contornos oscuros que rodean las ramas, como en una estampa.",
+  "El relieve de las flores blancas, pintadas en pasta espesa.",
+  "Las ramitas cortadas por los bordes del cuadro, a la japonesa.",
+]
+themes = ["flores", "nacimiento", "primavera", "japonismo", "familia"]
+anecdote = """
+El sobrino para quien se pintó este almendro, Vincent Willem van Gogh, convertido en ingeniero, creó la fundación que dio origen al Van Gogh Museum. Fallecido en 1978, vio abrirse en 1973 el museo que expone hoy su regalo de nacimiento."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Campo de trigo con cuervos"
+annee = "1890"
+image = "champ-ble-corbeaux.jpg"
+technique = "Óleo sobre lienzo, 50,5 × 103 cm"
+collection = "Van Gogh Museum, Ámsterdam"
+note = "Auvers-sur-Oise, julio de 1890: un cielo de tormenta, tres caminos y una bandada de cuervos. Muere unas semanas más tarde."
+description = """
+Un campo de trigo maduro se extiende por todo el ancho de este lienzo muy alargado, bajo un cielo de tormenta azul oscuro, casi negro en las alturas, donde flotan dos nubes más claras. Tres caminos lo atraviesan: el del centro, pardo rojizo bordeado de hierba verde, avanza hacia el fondo y se interrumpe bruscamente en medio de los trigos; los otros dos parten hacia la izquierda y hacia la derecha y salen del cuadro. Sobre el campo, una nube de cuervos negros, pintados con un simple trazo, levanta el vuelo o se lanza en picado hacia las espigas. El trigo amarillo dorado, agitado, parece doblegarse bajo el viento. Ninguna figura humana, ninguna casa: nada más que la tierra, el cielo y los pájaros."""
+evocation = """
+Por haber sido pintado poco antes de su muerte, este cuadro se ha leído durante mucho tiempo como un testamento. El cielo amenazador, los cuervos y el camino que se interrumpe se han interpretado como presagios funestos, quizá más de lo debido. Van Gogh escribe entonces a Theo y Johanna que ha pintado inmensas extensiones de trigo bajo cielos turbulentos, y que no le costó expresar en ellas la tristeza y la soledad extrema. Pero añade que espera mostrar también lo que ve de sano y de fortificante en el campo. La obra se sostiene en este frágil equilibrio entre angustia y vitalidad, entre la amenaza del cielo y la plenitud de los trigos maduros."""
+histoire = """
+El 20 de mayo de 1890, Van Gogh deja Saint-Rémy para ir a Auvers-sur-Oise, al norte de París, donde lo atiende el doctor Paul Gachet, médico y aficionado al arte. Se aloja en la posada Ravoux y pinta a un ritmo desenfrenado: más de setenta cuadros en poco más de dos meses. A principios de julio, de regreso de una tensa visita a Theo en París, pinta este campo bajo la tormenta. El 27 de julio se hiere con un disparo de revólver, en circunstancias nunca del todo aclaradas, y muere dos días después en la posada, con Theo a su cabecera. El cuadro, conservado en la familia, pertenece a la Fundación Vincent van Gogh."""
+facture = """
+Van Gogh adopta en Auvers un formato de doble cuadrado, muy alargado, que utiliza para una serie de paisajes panorámicos. La pintura se aplica con rapidez, en pinceladas espesas y anchas, a menudo sobre el color todavía fresco. Los complementarios se enfrentan: el amarillo de los trigos contra el azul del cielo, el rojo del camino contra el verde de la hierba. Los cuervos se reducen a signos, simples uves negras trazadas de un gesto. En lugar de conducir la mirada hacia un punto de fuga, los caminos se abren hacia el espectador, lo que vuelve inestable el espacio."""
+details = [
+  "El camino central, que se detiene en seco en medio de los trigos.",
+  "Los cuervos, reducidos a signos negros en forma de V.",
+  "Las dos nubes claras, aisladas en el cielo oscuro.",
+  "Las franjas de hierba verde que bordean el camino rojo.",
+]
+themes = ["paisaje", "trigo", "tormenta", "cuervos", "soledad"]
+anecdote = """
+Contrariamente a una leyenda tenaz, no es probablemente su último lienzo. Los investigadores del Van Gogh Museum atribuyen más bien ese papel a Raíces de árboles, un cuadro que quedó inacabado y en el que trabajaba en los últimos días de su vida."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.4
+
+[[artistes]]
+nom = "Vincent van Gogh"
+vie = "Groot-Zundert (Países Bajos), 30 de marzo de 1853 – Auvers-sur-Oise, 29 de julio de 1890"
+biographie = """
+Hijo de un pastor protestante, Vincent van Gogh crece en el Brabante neerlandés. A los dieciséis años entra en Goupil & Cie, marchantes de arte, y trabaja en La Haya, Londres y París, antes de ser despedido en 1876. Se vuelca entonces hacia la religión, fracasa en su intento de ser pastor y predica entre los mineros del Borinage, en Bélgica. Es allí, en 1880, a los veintisiete años, donde decide hacerse artista. Su hermano menor Theo, marchante de arte en París, lo apoya económicamente hasta el final y recibe de él centenares de cartas, testimonio insustituible de su pensamiento. Tras años de aprendizaje en Bruselas, La Haya y Nuenen, donde pinta a los campesinos, pasa por Amberes y se reúne con Theo en París en 1886: allí descubre el impresionismo, el neoimpresionismo y las estampas japonesas, y su paleta se aclara. En febrero de 1888 parte hacia Arlés, donde sueña con fundar un taller del Mediodía. Gauguin se une a él allí, pero la convivencia termina pronto: en diciembre de 1888, durante una crisis, Van Gogh se mutila la oreja izquierda. Sujeto a crisis cuya naturaleza sigue siendo objeto de debate, ingresa en 1889 en el asilo de Saint-Rémy-de-Provence, donde pinta sin descanso, y se instala en mayo de 1890 en Auvers-sur-Oise. El 27 de julio, herido de bala, muere dos días después. Vendió muy pocos lienzos en vida, aunque el crítico Albert Aurier empezaba a reparar en él. Gracias a Johanna van Gogh-Bonger, viuda de Theo, que publica sus cartas y hace exponer sus obras, su fama se hace mundial a comienzos del siglo XX."""
+style = """
+La pintura de Van Gogh se reconoce a primera vista: una pincelada espesa y visible, en trazos cortos, en rayados o en torbellinos, que da a cada superficie, cielo, campo o rostro, un movimiento propio. Emplea el color de manera libre y expresiva, jugando con los contrastes de complementarios, no para copiar la naturaleza sino para traducir emociones. De las estampas japonesas retiene los contornos marcados, las superficies planas y los encuadres audaces. Su obra, unos 850 cuadros y cerca de 1300 dibujos realizados en diez años, abrió el camino al fauvismo de Matisse, Derain y Vlaminck, y al expresionismo alemán, que le deben esa libertad del color y del gesto."""

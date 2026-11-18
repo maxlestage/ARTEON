@@ -1,0 +1,871 @@
+[exposition]
+ordre = 75
+nom_court = "Ukiyo-e"
+mouvement = "Ukiyo-e, the Japanese Woodblock Print"
+cadre = "estampe"
+couleur = "#2c4a7e"
+titre = "Ukiyo-e, Pictures of the Floating World"
+artiste = "Hokusai, Hiroshige, Utamaro, Sharaku…"
+dates = "1759–1857"
+accroche = "Virtual exhibition · Tokyo National Museum"
+introduction = """
+Ukiyo-e, \"pictures of the floating world\": in Edo, present-day Tokyo, prints carved \
+on wood and sold for the price of a bowl of noodles show kabuki actors, \
+fashionable beauties, and then landscapes and legends. The visit follows this golden age, \
+from Harunobu's first colour prints to Hiroshige's One Hundred Views of Edo, \
+by way of Hokusai's Great Wave, with, as a counterpoint, a painting on silk \
+by Itō Jakuchū. The building is inspired by the Honkan of the Tokyo National Museum and by \
+Japanese houses: low rooms with paper-coloured walls, linked by a \
+long veranda, the engawa. The prints, which measure about thirty centimetres, \
+are shown enlarged."""
+vitrine = "grande-vague.jpg"
+
+[musee]
+nom = "Tokyo National Museum"
+ville = "Tokyo, Japan"
+architecte = "Watanabe Jin (Honkan)"
+construction = "Honkan opened in 1938"
+presentation = """
+Founded in 1872, the Tokyo National Museum is the oldest museum in Japan. Set \
+in Ueno Park, it occupies several buildings; the first, designed by \
+the English architect Josiah Conder, was ruined by the Great Kantō Earthquake \
+of 1923. The Honkan, the main building that replaced it, is the work of Watanabe Jin \
+and opened in 1938: a Western-style reinforced-concrete construction, crowned with a great \
+Japanese tiled roof, in the style known as \"Imperial Crown\". A \
+monumental staircase leads to the upper floor, where the galleries follow the history of Japanese art, \
+from prehistory to the Edo period. Ukiyo-e prints, which light damages, are \
+displayed there on rotation, a few weeks at a time, in a gallery devoted to them; the museum holds thousands, along with paintings, swords, \
+lacquerware, kimonos and numerous national treasures."""
+ici = """
+ARTEON's building borrows from the Honkan its print galleries and from the Japanese house \
+its human-scale plan: ceilings of three to four metres, walls the colour of \
+washi paper. One enters from the south into the genkan, which opens onto \"The Engawa · The One Hundred \
+Views of Edo\", a long veranda of nearly twenty metres. To the north, it serves Room \
+I · Hokusai and Fuji, to the west, and Room III · Visions, to the east. Between them, \
+Room II · Beauties and Actors links them: one passes through it from Room I to Room \
+III, before returning to the veranda."""
+
+[[salles]]
+nom = "The Genkan"
+theme = "The entrance to the house: one leaves the street for the floating world of Edo."
+murs = "#ece4d2"
+x = 0
+z = 0
+largeur = 10
+profondeur = 6
+hauteur = 3.6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Engawa · The One Hundred Views of Edo"
+theme = "1857: along the veranda, three seasons of Edo seen by Hiroshige, from plum blossoms to the New Year's foxes."
+murs = "#efe7d6"
+x = 0
+z = -5
+largeur = 19.6
+profondeur = 4
+hauteur = 3.0
+
+[[salles]]
+nom = "Room I · Hokusai and Fuji"
+theme = "c. 1830–1832: the Great Wave and Red Fuji, two views of the sacred mountain."
+murs = "#f0e9da"
+x = -6.525
+z = -10.25
+largeur = 6.55
+profondeur = 6.5
+hauteur = 3.2
+portes = ["sud"]
+
+[[salles]]
+nom = "Room II · Beauties and Actors"
+theme = "1766–1794: Harunobu's young woman, Utamaro's celebrities and Sharaku's kabuki actor."
+murs = "#ebe2cf"
+x = 0
+z = -12
+largeur = 6.5
+profondeur = 10
+hauteur = 3.8
+portes = [{ mur = "ouest", position = -1.75 }, { mur = "est", position = 1.75 }]
+
+[[salles]]
+nom = "Room III · Visions"
+theme = "1759 and c. 1844: Jakuchū's blazing roosters, painted on silk, and Kuniyoshi's giant skeleton."
+murs = "#ede5d4"
+x = 6.525
+z = -10.25
+largeur = 6.55
+profondeur = 6.5
+hauteur = 3.4
+portes = ["sud"]
+
+[[oeuvres]]
+titre = "Plum Garden at Kameido"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "pruniers-kameido.jpg"
+technique = "Nishiki-e print (colour woodblock), vertical ōban format, approximately 36 × 24 cm"
+collection = "Rijksmuseum, Amsterdam"
+note = "A sheet from the One Hundred Famous Views of Edo: the trunk of an old plum tree bars the image, and the flowering garden appears behind it."
+description = """
+In the foreground, an enormous plum-tree trunk, almost black, crosses the whole image \
+diagonally; it is so close that it runs out of the frame at top and left. From its branches \
+spring a few twigs covered with white, yellow-hearted blossoms, drawn one by \
+one. Behind it stretches the garden: dozens of smaller flowering plum trees, \
+a bamboo fence and tiny strollers admiring the trees. The ground is \
+green, the sky passes from vivid red, at the top, to pinkish white near the horizon. In the \
+upper left corner, the angle of a dark roof. At upper right, two cartouches \
+give the name of the series and that of the place; at lower left, Hiroshige's signature \
+in a red cartouche."""
+evocation = """
+The blossoming of the plum trees, at the end of winter, is in Japan the first festival of \
+spring, before that of the cherry trees: families went to contemplate the flowers and \
+to breathe in their scent in the still-cold air. The plum, which blooms on gnarled \
+and nearly dead wood, has also long been an image of perseverance and \
+renewal. Hiroshige places the viewer in the garden itself, hidden behind the tree, \
+like a stroller who has come too close. This daring framing, \
+which slices off the main motif and pushes the figures into the distance, has been seen as one \
+of the most modern inventions of the Japanese print: nature is no longer a \
+backdrop, it becomes the subject, seen at human height."""
+histoire = """
+The print belongs to the One Hundred Famous Views of Edo, Hiroshige's last great series, \
+published by the publisher Uoya Eikichi from 1856 to 1858; it bears the date \
+1857. The Kameido garden, east of the Sumida, was a renowned place for strolling: \
+people came to see the Garyūbai, the \"reclining dragon plum\", a tree so old that \
+its branches drooped to the ground. Historians have stressed that the series, \
+begun shortly after the great earthquake that ravaged Edo in 1855, celebrates a \
+city in reconstruction and its rediscovered pleasures. Like all the sheets in the \
+series, this one was printed in many copies. This impression is kept at the \
+Rijksmuseum in Amsterdam."""
+facture = """
+The One Hundred Views all adopt the vertical format, unusual for landscape. \
+Hiroshige pushes to the extreme the device of the giant foreground, borrowed in part \
+from the Western perspectives he knew through \"Dutch-style\" prints. \
+The sky is printed in bokashi: the printer wiped the ink on the block to \
+obtain a continuous gradation from red to white. The contrast between the dark trunk, with its \
+irregular contours, and the white flowers reserved in the paper gives the image \
+its strength."""
+details = [
+  "The black trunk running out of the frame at left, top and bottom.",
+  "The tiny strollers behind the bamboo fence.",
+  "The gradation of the sky, from vivid red to pinkish white.",
+  "The white, yellow-hearted blossoms, drawn one by one.",
+  "Hiroshige's signature in the red cartouche, at lower left.",
+]
+themes = ["spring", "plum", "garden", "Edo", "Japonisme"]
+anecdote = """
+The Garyūbai owed its name, \"reclining dragon plum\", to its branches that \
+drooped to the ground and took root again there, like a dragon stretched out. The tree and the \
+garden disappeared in the great flood of 1910. In 1887, Van Gogh copied this \
+print in oils."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Sudden Shower over Shin-Ōhashi Bridge and Atake"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "averse-ohashi.jpg"
+technique = "Nishiki-e print, vertical ōban format, approximately 36 × 24 cm"
+collection = "Brooklyn Museum, New York"
+note = "A summer storm surprises passers-by on the great bridge over the Sumida: the most famous image of rain in Japanese art."
+description = """
+Seen from above, a long wooden bridge crosses the image diagonally, from lower left to \
+the right. Passers-by hurry across, bent beneath the downpour: two people huddled \
+under an umbrella, a man in a straw hat, others sheltering \
+under a mat. The rain falls in thousands of fine, dark lines covering the whole \
+image. On the grey river, a standing man poles a long wooden raft. \
+On the far bank, the Atake district is no more than a silhouette of trees \
+drowned in mist. At the top, a black cloud weighs on the scene. The bridge's piers, \
+cross-braced, plunge into the dark blue water in the foreground."""
+evocation = """
+Hiroshige captures a moment of ordinary Edo life: the summer storm that bursts without \
+warning and sends everyone running. There is neither hero nor event, only \
+anonymous people surprised by the weather, and the viewer almost feels wet. \
+It has often been seen as an expression of the Japanese sense of impermanence: a \
+fleeting moment, caught on the fly, that will be past in a few minutes. The contrast between the \
+little hurrying figures and the raftsman, alone and motionless on the river, has \
+also been read as a meditation on the human condition. For European \
+artists, this rain drawn in lines was a revelation: one could depict \
+bad weather itself."""
+histoire = """
+The print, dated 1857, belongs to the One Hundred Famous Views of Edo, published by Uoya \
+Eikichi. The Shin-Ōhashi bridge, the \"new great bridge\", had spanned the Sumida since \
+1693. The Atake district, on the east bank, took its name from the Atake maru, an immense \
+shogunal ship long moored at that spot. Hiroshige was then about sixty \
+years old; he died the following year, before the series was finished. His prints \
+reached Europe in great numbers after the opening of Japan, and the \
+Impressionist painters collected them. This impression is part of the complete series \
+of the One Hundred Views held at the Brooklyn Museum in New York."""
+facture = """
+The rain is the engraver's feat: hundreds of parallel lines, of extreme fineness, \
+cut in the wood at slightly different angles, which \
+gives the impression of an oblique, shifting downpour. The black cloud is printed in \
+gradation, like the depth of the river. The plunging viewpoint, the bridge cut off by \
+the edge of the image and the absence of clear sky are among the boldnesses of this \
+late series."""
+details = [
+  "The two passers-by huddled under a single umbrella, at left on the bridge.",
+  "The lines of rain, which are not all slanted the same way.",
+  "The man poling his raft, alone in the middle of the river.",
+  "The Atake shore, reduced to a grey silhouette.",
+  "The cross-bracing of the bridge piers, in the foreground.",
+]
+themes = ["rain", "bridge", "storm", "Edo", "Japonisme"]
+anecdote = """
+In 1887, in Paris, Vincent van Gogh copied this print in oils, exaggerating its \
+colours, and surrounded it with a painted border covered with ideograms copied from other \
+prints. The painting, Bridge in the Rain, is now in the Van Gogh Museum in \
+Amsterdam."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Foxfires on New Year's Eve at the Changing Tree, Ōji"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "feux-renards-oji.jpg"
+technique = "Nishiki-e print, vertical ōban format, approximately 36 × 24 cm"
+collection = "Brooklyn Museum, New York"
+note = "On New Year's Eve, the foxes of the whole region gather beneath an old tree before going to the Inari shrine."
+description = """
+In the winter night, a great bare tree spreads its black branches over a dark blue sky \
+dotted with stars. At its foot, some twenty white foxes are gathered, \
+seated or standing; near the head of each glows a small orange flame. On \
+the left, other foxes arrive behind the trunk. In the dark plain, in the distance, \
+a long line of small lights approaches: more foxes on their way. Haystacks \
+stand in the fields, and one makes out on the horizon the dark mass of a \
+wood. On the left, a few pine branches add a touch of green to the night. The \
+cartouches of the series and the title occupy the upper right corner."""
+evocation = """
+In Japan, the fox is the messenger of Inari, the deity of rice and prosperity, \
+and is also believed to be a magical being able to take human form. The \"foxfires\", \
+those mysterious glows seen at night in the countryside, were attributed to them. \
+Hiroshige shows here the invisible world that borders the world of the \
+peasants: the marvellous settles amid familiar fields. According to belief, \
+peasants counted these fires to predict the next year's harvest. In a \
+series devoted to real places in Edo, this sheet, one of the few to depict \
+a legend, closes the winter cycle on a note of mystery and hope."""
+histoire = """
+The print, dated 1857, bears the number 118 of the One Hundred Famous Views of Edo: it is the \
+last of the section devoted to winter. Ōji, then a village north of Edo, \
+housed the most venerated Inari shrine of the Kantō region. Legend \
+had it that on New Year's Eve the foxes of the eight provinces gathered beneath \
+a great hackberry, the Shōzoku enoki, the \"costume tree\", to put on their \
+ceremonial garb before visiting the shrine. The tree has disappeared, but a \
+small shrine still marks its location. This impression is kept at the \
+Brooklyn Museum in New York, with the entire series."""
+facture = """
+Hiroshige makes the night a material: the deep blue of the sky darkens toward the \
+top in a gradation, and the stars are tiny dots reserved in the paper. \
+The foxes, outlined in fine strokes, keep the whiteness of the paper, which makes them \
+glow in the darkness. The flames are printed in vivid orange, the only warm colour \
+of the image. The line of lights shrinking toward the horizon creates depth without \
+any perspective lines."""
+details = [
+  "The small flame floating near the head of each fox.",
+  "The line of lights approaching in the distance across the plain.",
+  "The stars, simple dots of white paper in the blue sky.",
+  "The haystacks, on the right, in the winter fields.",
+]
+themes = ["night", "fox", "legend", "New Year", "winter"]
+anecdote = """
+The legend lives again each year: since the early 1990s, the people of Ōji \
+have organised, on the night of 31 December, a procession of foxes, in which the participants, \
+made up or masked as foxes, walk by lantern light to the Inari shrine."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Under the Wave off Kanagawa (The Great Wave)"
+artiste = "Katsushika Hokusai"
+annee = "c. 1830–1832"
+image = "grande-vague.jpg"
+technique = "Nishiki-e print (colour woodblock), 25.7 × 37.9 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "The most famous sheet of the Thirty-Six Views of Mount Fuji: a giant wave is about to crash down on three boats, while Fuji, tiny, waits in the distance."
+description = """
+On the left, an immense wave rears up and curls over the sea; its foam \
+breaks into white claws that seem ready to seize the men. Three long, \
+slender boats plunge into the troughs. Their rowers, huddled against one \
+another, cling on, heads bowed. At the centre, far in the background, Mount Fuji appears, \
+a small snow-capped cone, wedged between two waves. In the foreground, a \
+smaller wave repeats exactly its shape, like a second Fuji of water. The sky, a \
+pale beige, darkens toward the horizon, where a few clouds pass. At upper left, \
+a cartouche gives the name of the series and the title of the print, with beside it the \
+artist's signature."""
+evocation = """
+The image sets the boundless force of nature against the fragility of men, who \
+nevertheless keep rowing. In the midst of this chaos, Fuji remains still: the \
+sacred mountain, a symbol of permanence, seems tiny and yet unshakeable. Its \
+name has been linked to words meaning \"without equal\" and \"immortal\", and the mountain \
+was the object of a veritable cult in Edo. It has also been noted that the image reads \
+differently according to the direction of the gaze: from right to left, like Japanese text, the \
+wave rushes toward the viewer; from left to right, in the Western way, it seems to \
+recede. Hokusai, at over seventy, sums up here all his art of movement \
+caught in a suspended instant."""
+histoire = """
+The print opens the series of the Thirty-Six Views of Mount Fuji, published around 1830–1832 by \
+the publisher Nishimuraya Yohachi. Hokusai, who was over seventy, was emerging from \
+difficult years, marked by illness and money worries. The series was such a \
+success that ten further views were added, making forty-six sheets. The \
+Great Wave was printed in thousands of copies, sold at low prices. Arriving in \
+Europe after the opening of Japan, its impressions fascinated the painters, \
+musicians and writers of Japonisme. This impression, of fine freshness, is part \
+of the collection assembled by Louisine and Henry O. Havemeyer, bequeathed to the \
+Metropolitan Museum of Art in New York in 1929."""
+facture = """
+Hokusai uses Prussian blue, a synthetic pigment recently imported, more \
+intense and more durable than vegetable indigo. The very low horizon line comes from \
+the Western perspectives he had studied in Dutch engravings. \
+The print is a team effort: Hokusai draws, an engraver cuts one woodblock per \
+colour, a printer lays down the colours one by one by hand on the paper, and \
+the publisher finances and sells."""
+details = [
+  "The claws of foam at the crest of the wave, like hooked fingers.",
+  "Snow-capped Fuji, very small, in the hollow of the waves.",
+  "The small wave in the foreground, which has the shape of Fuji.",
+  "The rowers lying in the bottom of the boats, heads bowed.",
+  "The signature beside the cartouche: Hokusai aratame Iitsu hitsu.",
+]
+themes = ["sea", "wave", "Fuji", "Prussian blue", "nature"]
+anecdote = """
+Claude Debussy had an impression of the Great Wave in his study. For the \
+cover of the score of La Mer, published in 1905, he had Hokusai's wave reproduced, \
+without Fuji or the boats."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "South Wind, Clear Sky (Red Fuji)"
+artiste = "Katsushika Hokusai"
+annee = "c. 1830–1832"
+image = "fuji-rouge.jpg"
+technique = "Nishiki-e print, 25.4 × 37.8 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "At daybreak in late summer, Fuji reddens under the rising sun: one mountain, one sky, and nothing else."
+description = """
+The mountain fills the whole right-hand part of the image: an immense brick-red \
+triangle rising to the top edge. Near the summit, streaks of white snow \
+run down the dark rock. At the foot, a broad blue-green band is \
+covered with a multitude of small trees, rendered by tiny touches packed \
+like fur. On the left, the deep blue sky is crossed by long rows of \
+small white clouds, aligned like scales. There is no village, no traveller, no \
+boat: no human presence. At upper left, the title cartouche and \
+Hokusai's signature stand out against the sky."""
+evocation = """
+The Japanese title, Gaifū kaisei, means \"south wind, clear sky\": the gentle breeze \
+of late summer that chases away the mist and reveals the mountain at daybreak. \
+Hokusai reduces Fuji to its simplest form, almost a sign, and makes of it a \
+monumental, silent presence. For the people of Edo, Fuji was a \
+sacred mountain, which confraternities of pilgrims climbed each summer and of which small \
+copies were even made in the city's shrines. This stripped-down image, without a single \
+figure, has been seen as a form of religious contemplation \
+as much as a landscape. Even today, Red Fuji is considered in Japan to be \
+an auspicious image."""
+histoire = """
+The print is part of the Thirty-Six Views of Mount Fuji, published around 1830–1832 by \
+Nishimuraya Yohachi, like the Great Wave. The series took advantage of the vogue for the cult \
+of Fuji in Edo, and of the arrival of a new pigment, Prussian blue. Red Fuji \
+was printed in large numbers and impressions vary greatly from one printing to another: \
+soft, nuanced colours here, a more frank and uniform red elsewhere. With the \
+Great Wave and Thunderstorm Beneath the Summit, it forms the most famous trio of the \
+series. This impression entered the Metropolitan Museum of Art in New York in 1939, \
+with the collection bequeathed by Henry L. Phillips."""
+facture = """
+Few blocks, few colours: the red, two blues, the green and the white of the paper \
+are enough. The sky and the mountain are printed in gradations, obtained by wiping \
+the ink on the wooden block before each impression. The trees are small repeated \
+marks, almost a textile pattern. The grain of the wood, visible in the flat areas, enlivens \
+the large surfaces. The composition rests on two diagonals meeting at the \
+summit, off-centre to the right."""
+details = [
+  "The streaks of snow running down from the summit like drips.",
+  "The small trees packed at the foot of the mountain, like fur.",
+  "The rows of white clouds, aligned like scales.",
+  "The summit off-centre to the right, almost at the edge of the image.",
+]
+themes = ["Fuji", "mountain", "dawn", "sky", "landscape"]
+anecdote = """
+The phenomenon really exists: in late summer and early autumn, when the \
+snow has melted, Fuji sometimes takes on a red tint at sunrise. The Japanese \
+call it aka-Fuji, \"Red Fuji\", and photographers watch for this moment."""
+salle = 3
+mur = "ouest"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Young Woman Admiring Plum Blossoms at Night"
+artiste = "Suzuki Harunobu"
+annee = "c. 1766"
+image = "harunobu-prunier-nuit.jpg"
+technique = "Nishiki-e print with blind embossing (karazuri), 32.4 × 21 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "On a veranda, a young woman raises a lantern toward a flowering plum tree: one of the first full-colour prints."
+description = """
+A young woman stands on a wooden veranda, beside an orange balustrade that \
+crosses the image diagonally. Dressed in a long striped kimono ornamented with round medallions, \
+she stretches out her arm and raises a paper lantern on the end of a pole, to light \
+a flowering plum branch that reaches out above her. The background is entirely \
+black: it is night. The white, yellow-hearted blossoms stand out against the darkness. \
+On the right, a pale rock emerges from the shadow, and at the top a beige band suggests \
+a layer of mist. The veranda floor, at the bottom, is a pale beige. The young woman \
+has the soft, round face and the tiny hands and feet typical of Harunobu."""
+evocation = """
+The scene is at once simple and poetic: a nocturnal stroll to see the \
+first flowers of spring. It has been linked to a famous poem from the Kokinshū, \
+the tenth-century imperial anthology, in which Ōshikōchi no Mitsune writes that the darkness \
+of a spring night hides the colour of the plum blossoms, but cannot hide \
+their fragrance. The raised lantern expresses this desire to see what the night conceals. \
+Harunobu's figures, fragile and ageless, seem to live in a dream world \
+rather than in the real Edo. This refinement, nourished by literary references, was \
+intended for a cultivated public who liked to recognise, behind the image, a poem or a \
+legend."""
+histoire = """
+In 1765, circles of wealthy Edo amateurs commissioned from Harunobu illustrated \
+calendars, which they exchanged at New Year. For these luxury images, engravers and \
+printers perfected printing in some ten colours, with precise registration marks to align each \
+block: this was the birth of nishiki-e, the \"brocade picture\". Publishers immediately took up the process \
+for the general public. This print, made around 1766, dates from these years of invention. \
+The plain black background, difficult to print without marks, is rare at the time. It entered the Metropolitan \
+Museum of Art in New York in 1929."""
+facture = """
+The chūban format, smaller than the ōban, suits the intimacy of Harunobu's scenes. \
+The large black flat area sets off the flowers and the lantern, left in the \
+whiteness of the paper. Certain parts are blind-embossed, without ink (karazuri): the \
+paper, pressed on a carved block, keeps a slight relief visible in raking \
+light. The colours, of vegetable origin, have softened with time."""
+details = [
+  "The six-sided paper lantern, held on the end of a pole.",
+  "The yellow-hearted plum blossoms, against the black background.",
+  "The round medallions of the striped kimono.",
+  "The pale rock, on the right, emerging from the shadow.",
+]
+themes = ["night", "plum", "spring", "poetry", "young woman"]
+anecdote = """
+The painter Shiba Kōkan relates in his memoirs that after Harunobu's death, in \
+1770, he drew prints in his style and signed them with his name, without anyone \
+noticing."""
+salle = 4
+mur = "ouest"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Three Beauties of the Present Day"
+artiste = "Kitagawa Utamaro"
+annee = "c. 1793"
+image = "trois-beautes.jpg"
+technique = "Nishiki-e print, ōban format, approximately 37 × 25 cm"
+collection = "Museum of Fine Arts, Boston"
+note = "The three most admired young women in Edo around 1793: a singer and two teahouse waitresses."
+description = """
+Three young women are shown in bust, in close-up, arranged in a triangle. \
+At the top, the singer Tomimoto Toyohina lowers her eyes to the left. At lower \
+left, Naniwaya Okita holds a cloth draped over her shoulder; at lower right, \
+Takashima Ohisa holds a round fan decorated with a pattern of oak leaves, her \
+emblem. All three wear tall lacquered hairstyles, studded with combs and \
+pins. Their faces closely resemble one another, a pale oval with narrow eyes and \
+small red lips. The background is plain, a very light grey. At upper right, a \
+cartouche gives the title and the names of the three women; Utamaro's signature is read \
+on the left."""
+evocation = """
+The print bears witness to a veritable culture of celebrity in eighteenth-century \
+Edo. These young women were not courtesans but personalities known \
+to all: Okita served in a teahouse near the Sensō-ji temple, in Asakusa, \
+Ohisa in her family's shop in Ryōgoku, and customers came to see them as \
+one goes to see a star. Their portraits sold like photographs of idols. \
+Utamaro plays on a paradox: he idealises the three faces according to the canon of beauty \
+of his time, but differentiates them by tiny nuances, the curve of an eyebrow, the \
+shape of an eye, which connoisseurs knew how to recognise."""
+histoire = """
+The print was published around 1793 by Tsutaya Jūzaburō, the boldest publisher in \
+Edo, who had made Utamaro his star. Okita and Ohisa, rivals in popularity, \
+were then portrayed by many artists, and people spoke of the \"three beauties \
+of the Kansei era\". These are also the years of the Kansei reforms, \
+by which the government sought to suppress luxury and entertainments. \
+Utamaro took up this trio several times in different forms. This impression is \
+kept at the Museum of Fine Arts in Boston, whose collection of Japanese prints, \
+one of the richest outside Japan, owes much to the collector William Sturgis \
+Bigelow."""
+facture = """
+Utamaro was one of the first to frame women in bust, in close-up, in the manner \
+of actor portraits. The faces are made of only a few lines, without shadow \
+or modelling. All the virtuosity lies in the hairstyles: the engraver cut one by one \
+the fine hairs of the forehead and nape. The pyramidal composition and the restrained palette, \
+made of blacks, ochres and a few reds, give the image great \
+elegance."""
+details = [
+  "Ohisa's round fan, with its emblem of oak leaves.",
+  "The fine hairs of the nape and temples, engraved one by one.",
+  "The cartouche at upper right, naming the three young women.",
+  "The tiny differences between the three faces.",
+]
+themes = ["beauty", "portrait", "celebrity", "Edo", "women"]
+anecdote = """
+Shortly afterward, censorship forbade inscribing on prints the names of young women \
+who were not courtesans. Utamaro and his publishers got around \
+the ban with rebuses: little drawings whose reading gave the name of the \
+sitter."""
+salle = 4
+mur = "nord"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Actor Ōtani Oniji III as the Servant Edobei"
+artiste = "Tōshūsai Sharaku"
+annee = "1794"
+image = "sharaku-oniji.jpg"
+technique = "Nishiki-e print on a black mica ground, ōban format, approximately 38 × 25 cm"
+collection = "Tokyo National Museum"
+note = "A kabuki actor in the role of a brigand, hands clenched forward: the most famous of Sharaku's portraits."
+description = """
+Against a dark, glittering grey background, a man is seen in bust, three-quarter view, his \
+face turned to the right. His black eyebrows are knitted, his eyes stare \
+hard at an invisible adversary, his mouth is clamped in a downturned line. His \
+hair is gathered in a tight topknot, with the shaved forehead of common men. He \
+wears a striped garment of brown and ochre over a black kimono, and throws forward both \
+hands, fingers spread, as if to seize or threaten. These hands look astonishingly \
+small in relation to the face. On the shoulder, a round emblem bears the actor's \
+crest. At right, Sharaku's signature, and beneath it the publisher's mark."""
+evocation = """
+Edobei is a brutal servant, a henchman about to rob his victim: \
+Sharaku makes of him a figure of concentrated menace, tense as a spring. But \
+behind the character, it is the actor he shows, with his own features, his jaw, his wrinkles, which \
+contrasts with the flattering portraits of the day. It has \
+often been supposed that this unsparing realism displeased the actors and their \
+admirers, and would explain the brevity of Sharaku's career, but this is \
+only a hypothesis. To the modern eye, these faces close to caricature, of striking \
+intensity, count among the most expressive portraits in Japanese \
+art."""
+histoire = """
+In the fifth month of 1794, at the Kawarazaki-za theatre in Edo, Ōtani Oniji III played the \
+role of Edobei in the play Koi nyōbō somewake tazuna. The same month, the publisher Tsutaya \
+Jūzaburō launched an unknown artist, Sharaku, with a spectacular series of twenty-eight \
+bust portraits of actors on a black mica ground, including this one. Ten months later, \
+Sharaku stopped publishing and disappeared. Forgotten in Japan, he was rediscovered by \
+Western collectors in the late nineteenth century. The impression in the Tokyo National Museum, \
+one of the finest known, is designated an Important Cultural Property of Japan."""
+facture = """
+The ground is printed with mica (kira-zuri): a mineral powder mixed with the colour, which \
+glitters in the light and gives the portrait a precious sheen. Sharaku simplifies \
+forms to the extreme: large dark surfaces of the garment, sharp lines of the \
+face, pronounced asymmetry of the eyes and mouth. The hands, deliberately \
+reduced, heighten the tension of the gesture. The tight framing, which cuts the body at the \
+waist, comes from the bust-length actor portraits made fashionable a few years earlier \
+by the artists of the Katsukawa school."""
+details = [
+  "The hands with spread fingers, astonishingly small.",
+  "The knitted eyebrows and the mouth clamped downward.",
+  "The glitter of the mica ground, as the angle changes.",
+  "The vertical signature at right: Tōshūsai Sharaku ga.",
+]
+themes = ["kabuki", "actor", "portrait", "theatre", "caricature"]
+anecdote = """
+It was a German, Julius Kurth, who made Sharaku's fame: in a book of 1910, \
+he ranked him among the greatest portraitists in history. Since then, Sharaku's prints \
+have become among the most sought-after of all Japanese prints."""
+salle = 4
+mur = "est"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Princess Takiyasha Summoning a Skeleton Spectre"
+artiste = "Utagawa Kuniyoshi"
+annee = "c. 1844"
+image = "takiyasha-squelette.jpg"
+technique = "Nishiki-e print, triptych of three ōban sheets, approximately 36 × 74 cm"
+collection = "British Museum, London"
+note = "In a ruined palace, a sorceress princess conjures up a giant skeleton to terrify two warriors."
+description = """
+The image unfolds across three sheets. On the left, Princess Takiyasha, in a \
+sumptuous red and blue kimono, reads aloud from a scroll of incantations, beneath a \
+torn bamboo blind hanging from a lattice ceiling. At the centre, two warriors, \
+the samurai Ōya no Tarō Mitsukuni and his companion, crouch on the floor, \
+facing the monster. Above them, across the full width of the central and \
+right sheets, a gigantic skeleton surges from the darkness: it leans through the \
+torn blind, its empty sockets turned toward the men, its long bony fingers \
+resting on the bamboo slats. The floor is strewn with debris."""
+evocation = """
+The print belongs to the taste of the time for ghost stories and \
+tales of vengeance, which kabuki theatre and illustrated novels staged with \
+delight. Takiyasha is the daughter of the rebel Taira no Masakado, killed in 940; she \
+seeks to avenge her father by magic, and the warrior Mitsukuni is sent to \
+fight her. The giant skeleton embodies the supernatural threat, but also death \
+itself leaning over the living. Kuniyoshi plays like a virtuoso on the effect of \
+surprise: the viewer, like the warriors, discovers the monster all at once. \
+The image shows how much the nineteenth-century print loved spectacle and the thrill."""
+histoire = """
+Kuniyoshi drew on a novel by Santō Kyōden published in 1806, in which Takiyasha, withdrawn \
+in her father's old ruined palace at Sōma, gathers conspirators and calls on \
+sorcery. In the novel, Mitsukuni faces a crowd of skeletons; Kuniyoshi \
+replaces them with a single giant skeleton, far more striking. The triptych was \
+published around 1844, in the years following the Tenpō reforms, when \
+censorship forbade portraits of actors and courtesans and pushed artists toward \
+historical and legendary subjects. This impression is kept at the British Museum \
+in London."""
+facture = """
+The triptych, three ōban sheets sold together, allows a very wide composition, \
+which Kuniyoshi exploits by carrying the skeleton across from one sheet to the next. The \
+skeleton has an anatomical accuracy rare in Japanese art: historians \
+think that Kuniyoshi had studied Western anatomy books brought in by \
+the Dutch. The black ground, the bone white and the few vivid colours of the \
+princess create a theatrical contrast."""
+details = [
+  "The scroll of incantations read by the princess, at left.",
+  "The skeleton's bony fingers resting on the bamboo blind.",
+  "The samurai Mitsukuni, at the centre, staring at the monster.",
+  "The red cartouches naming the characters.",
+  "Kuniyoshi's signature at the bottom of each of the three sheets.",
+]
+themes = ["fantastic", "skeleton", "legend", "warrior", "triptych"]
+anecdote = """
+Takiyasha's father, Taira no Masakado, has remained a feared figure. His tomb, the \
+Kubizuka, still stands among the office towers of Ōtemachi, in Tokyo, and \
+tradition holds that those who tried to move it were struck by misfortune."""
+salle = 5
+mur = "nord"
+place = 1
+largeur = 2.1
+
+[[oeuvres]]
+titre = "Rooster and Hen with Hydrangeas"
+artiste = "Itō Jakuchū"
+annee = "1759"
+image = "jakuchu-coqs-hortensias.jpg"
+technique = "Colours on silk, hanging scroll, approximately 142 × 80 cm"
+collection = "Museum of the Imperial Collections (Sannomaru Shōzōkan), Tokyo"
+note = "One of the thirty scrolls of the Colourful Realm of Living Beings, painted for a Kyoto temple: a rooster and a hen beneath a cascade of hydrangeas."
+description = """
+At the bottom of the composition, a rooster with russet and brown plumage, its crest bright red, \
+bends toward the ground; its long black tail curves in an arc above him. On the \
+right, a hen with plumage speckled brown and white pecks, head lowered. \
+Behind them, a dark rock dotted with blue-green moss. Above, blue and white \
+hydrangeas descend in tight clusters from the top of the scroll, with their \
+broad leaves. Pink flowers blossom near the rooster, and white flowers \
+at the foot of the rock. At upper left, a small bird perches on a branch. On \
+the left, a vertical inscription gives the date and the painter's signature, followed by \
+two red seals."""
+evocation = """
+This scroll belongs to the Dōshoku sai-e, the \"Colourful Realm of Living Beings\", a \
+set of thirty paintings of birds, flowers, insects and fish. Jakuchū, \
+a fervent Buddhist, offered it to a temple: for him, every living being, from the rooster to the \
+flower, possesses Buddha-nature and deserves to be painted with the same fervour. It has \
+been seen as an almost ecstatic celebration of life, in which the abundance of forms and \
+colours expresses the richness of the world. The rooster, a familiar animal, becomes under his \
+brush a blazing, almost fantastic creature. This work is not a popular \
+print but a unique painting, made to last."""
+histoire = """
+The inscription dates the work to the autumn of 1759. Jakuchū, a former Kyoto greengrocer \
+who had given up his business to paint, worked for about ten years on \
+this series. He offered it to the Zen temple Shōkoku-ji in Kyoto, together with a Buddha \
+triptych, in 1765 and then in 1770, to adorn religious ceremonies. In 1889, the \
+temple, in difficulty, gave the thirty scrolls to the imperial family, who paid \
+it a large sum in return. They are now kept at the Museum of the \
+Imperial Collections in Tokyo, and were designated a national treasure in 2021."""
+facture = """
+Jakuchū uses a very fine silk and mineral pigments of the best quality, \
+which explain the freshness of the colours after more than two and a half centuries. He sometimes \
+also paints on the back of the silk, to nuance the hues seen through transparency. \
+Every feather, every petal is drawn with obsessive precision, but the \
+composition, very dense and without depth, remains decorative. He draws on \
+Chinese paintings of birds and flowers and on direct observation."""
+details = [
+  "The feathers of the rooster's neck, drawn one by one, like golden flames.",
+  "The hydrangea petals, blue or white, each outlined with a fine line.",
+  "The small bird perched at the very top left.",
+  "The inscription at left, which dates the painting to autumn 1759.",
+  "The dots of blue-green moss on the dark rock.",
+]
+themes = ["rooster", "flowers", "birds", "nature", "Buddhism"]
+anecdote = """
+According to an old tradition, Jakuchū raised roosters in his garden and observed them \
+at length before painting them. Roosters are, indeed, one of the subjects he \
+depicted most often."""
+salle = 5
+mur = "est"
+place = 1
+largeur = 0.9
+
+[[artistes]]
+nom = "Katsushika Hokusai"
+vie = "Edo (Tokyo), 1760 – Edo, 10 May 1849"
+biographie = """
+Born in the Honjo district, east of Edo, Hokusai was first an apprentice woodblock engraver. In 1778, he entered the studio of Katsukawa Shunshō, a specialist in \
+actor portraits, and signed his first prints with the name Shunrō. After leaving this \
+studio, he turned his hand to everything: novel illustrations, luxury prints for poetry \
+circles, paintings, drawing manuals. He constantly changed his artist name, more than \
+thirty times, and according to tradition moved more than ninety times. \
+From 1814 appeared the volumes of the Manga, thousands of sketches of people, \
+animals and things. Around 1830, at over seventy, he published the \
+Thirty-Six Views of Mount Fuji, which made him famous, then the One Hundred Views of Mount Fuji. \
+He then signed himself \"the old man mad about drawing\". Poor to the end, helped by his daughter Ōi, \
+herself a painter, he died at eighty-eight in Edo, regretting, it is said, \
+not having a few more years to become a true painter. Discovered in \
+Europe in the second half of the nineteenth century, he became for Westerners the very figure of \
+Japanese art."""
+style = """
+Hokusai is an insatiable draughtsman who wants to capture everything: the movement of water, \
+the gestures of craftsmen, the shape of mountains. He combines Japanese and \
+Chinese tradition with the Western perspective discovered in Dutch engravings. \
+His compositions, based on simple geometric forms, circles and triangles, \
+have the force of a sign. The Prussian blue, the bold framing and the energy of the \
+line in his landscapes deeply marked the Impressionists, Art Nouveau and \
+the whole modern image."""
+
+[[artistes]]
+nom = "Utagawa Hiroshige"
+vie = "Edo (Tokyo), 1797 – Edo, 12 October 1858"
+biographie = """
+Born Andō Tokutarō into a family of low-ranking samurai in charge of firefighting \
+at Edo Castle, Hiroshige lost both parents around the age of \
+twelve and inherited his father's post. Shortly afterward he entered the studio \
+of Utagawa Toyohiro and received the name Hiroshige. He first drew actors and \
+beauties, without great success. Landscape revealed him: in 1833–1834 appeared the \
+Fifty-Three Stations of the Tōkaidō, the great road between Edo and Kyoto, which enjoyed \
+immense success. He had already given up his post as a fireman, in 1823, to devote himself \
+to printmaking. He published dozens of series of views, from the Kisokaidō to the famous sites of \
+Edo, as well as pictures of flowers and birds. In 1856, he became a Buddhist \
+monk and undertook the One Hundred Famous Views of Edo, his last great series. He \
+died in 1858, probably carried off by the cholera epidemic that struck the city. His \
+prints, which arrived in Europe en masse, were collected by Van Gogh, Monet and \
+Whistler."""
+style = """
+Hiroshige is the poet of landscape and the seasons. Gentler than Hokusai, he captures \
+the atmosphere of a place at a precise moment: rain, snow, mist, \
+moonlight. His gradations of blue, red and grey, his giant foregrounds and \
+cropped framings inspired the Impressionists and Van Gogh, who copied him. He also shows, \
+with humour and tenderness, travellers and ordinary people."""
+
+[[artistes]]
+nom = "Suzuki Harunobu"
+vie = "c. 1725 – Edo (Tokyo), 1770"
+biographie = """
+Little is known of Harunobu's youth, or of his training. His first known \
+works, actor portraits printed in two or three colours, date from \
+the late 1750s. His style owes much to the Kyoto painter Nishikawa \
+Sukenobu, whose illustrated books showed graceful, fragile women. The \
+turning point came in 1765: wealthy Edo amateurs, gathered in poetry circles, \
+commissioned from him illustrated calendars, which they exchanged at New Year. With the \
+engravers and printers, Harunobu perfected for them full-colour printing, \
+with some ten blocks: nishiki-e. Publishers then sold these \
+images to the public, who snapped them up. In five years, until his sudden death in 1770, \
+Harunobu produced several hundred prints: young lovers, scenes of daily \
+life, elegant parodies of classical poetry, portraits of the famous \
+teahouse waitress Kasamori Osen. He became the most imitated master of his \
+time, to the point that others signed his name after his death."""
+style = """
+Harunobu creates a world of softness and dream, peopled with young people of \
+slender silhouettes, tiny hands and almost identical faces. His small-format prints \
+play on tender colours, plain grounds and blind embossing. He loves \
+hidden literary allusions, which the cultivated viewer was expected to recognise. His \
+invention of nishiki-e opens the golden age of the colour print."""
+
+[[artistes]]
+nom = "Kitagawa Utamaro"
+vie = "c. 1753 – Edo (Tokyo), 1806"
+biographie = """
+Utamaro's place and date of birth remain uncertain. He trained with the \
+painter Toriyama Sekien, known for his illustrated books of fantastic creatures. In the \
+early 1780s, he met the publisher Tsutaya Jūzaburō, who housed him, published him \
+and made him his star. He first became known through magnificent books \
+illustrated with comic poems, including the Book of Insects of 1788, with observations \
+of great finesse. Around 1791–1793, he invented the bust-length portrait of a woman, in \
+close-up, and became the undisputed master of bijin-ga, pictures of beautiful women: \
+courtesans of the Yoshiwara district, famous waitresses, mothers and children, women at \
+work. After Tsutaya's death in 1797, he worked for many publishers. In \
+1804, he was arrested for depicting the great warlord Toyotomi Hideyoshi, \
+a forbidden subject, and sentenced to wear handcuffs for fifty days. He died \
+two years later. In 1891, Edmond de Goncourt devoted a book to him that made his \
+reputation in Europe."""
+style = """
+Utamaro is the painter of feminine beauty. His women, slender with elongated faces, \
+are captured in their intimacy: a hairstyle, a gesture, a glance. He \
+frames his sitters in close-up, in bust, and makes of the face, the nape and the \
+hair, engraved with extreme finesse, the heart of the image. His supple line and \
+mica grounds fascinated the Japonistes, from Goncourt to Toulouse-Lautrec."""
+
+[[artistes]]
+nom = "Tōshūsai Sharaku"
+vie = "Active in Edo (Tokyo) in 1794–1795; dates of birth and death unknown"
+biographie = """
+Sharaku is the enigma of the Japanese print. He appears suddenly in the fifth month of \
+1794, when the publisher Tsutaya Jūzaburō publishes all at once twenty-eight large bust portraits \
+of kabuki actors, on a black mica ground, signed with this unknown name. In the \
+following months appeared other series, full-length and increasingly \
+conventional; then, in early 1795, after about one hundred and forty prints in ten \
+months, Sharaku vanished without a trace. His identity has caused much \
+ink to flow: some have wanted to see in him Hokusai, Utamaro or other known artists. A note \
+written in 1844 by the scholar Saitō Gesshin identifies him with Saitō Jūrōbei, a Noh actor \
+in the service of the lord of Awa, and documents found since have strengthened this \
+hypothesis, now the most widely accepted. Little appreciated in his day, Sharaku fell into \
+oblivion in Japan. He was rediscovered by Western collectors, and in 1910 \
+the book by the German Julius Kurth established him as one of the great portraitists of \
+art history."""
+style = """
+Sharaku shows actors without beautifying them: hooked noses, heavy jaws, wrinkles, \
+shifty glances, clenched hands. He simplifies forms, accentuates asymmetries and \
+places his figures on glittering mica grounds. The result is part \
+psychological portrait and part caricature, of an intensity that the Japanese print \
+had never reached and would scarcely reach again."""
+
+[[artistes]]
+nom = "Utagawa Kuniyoshi"
+vie = "Edo (Tokyo), 1797 – Edo, 1861"
+biographie = """
+The son of an Edo silk dyer, Kuniyoshi entered around 1811 the studio of the great \
+Utagawa Toyokuni, master of actor portraits. His beginnings were difficult, and he \
+lived for several years in poverty. Success came around 1827 with a series \
+devoted to the one hundred and eight heroes of the Suikoden, a Chinese novel of brigands with hearts of gold, \
+which launched the vogue for warrior prints, musha-e. Kuniyoshi became its \
+master, but he also turned his hand to landscape, legends, comic scenes and \
+animals. During the Tenpō reforms, from 1842, censorship forbade \
+portraits of actors and courtesans: he got around it with mischief, lending the \
+actors' features to cats, frogs or fish, and slipped \
+satirical allusions to the authorities into his triptychs. A great lover of cats, he \
+always kept several in his studio. He trained many pupils, including Tsukioka \
+Yoshitoshi, one of the last great masters of the print. He died in Edo in 1861."""
+style = """
+Kuniyoshi is the master of the spectacular: warriors in the midst of battle, monsters, \
+ghosts, giant whales, often spread across triptychs. He borrows from \
+Western engraving modelling, perspective and anatomy, and mixes them with an \
+overflowing imagination and constant humour. His bold compositions and \
+taste for the fantastic foreshadow manga and inspired the art of Japanese tattooing."""
+
+[[artistes]]
+nom = "Itō Jakuchū"
+vie = "Kyoto, 1716 – Kyoto, 1800"
+biographie = """
+The eldest son of a wealthy vegetable wholesaler of the Nishiki market in Kyoto, Jakuchū \
+took over the family business at twenty-three, on his father's death. But \
+trade interested him little: he studied painting, first with a master of the \
+Kanō school, then by copying the Chinese paintings kept in the temples of \
+Kyoto, and above all by observing nature. Around the age of forty, he left the business to \
+his younger brother to devote himself entirely to painting. Close to the Zen monk \
+Daiten, of the Shōkoku-ji temple, who is said to have given him his artist name, he painted for \
+about ten years the thirty scrolls of the Colourful Realm of Living Beings, offered \
+to the temple. He also practised monochrome ink painting, with great freedom, and invented original \
+techniques, such as his screens divided into thousands of small squares. The \
+great fire of Kyoto, in 1788, destroyed his house; he spent his last years \
+near the Sekihō-ji temple, south of the city, where he drew statues of disciples \
+of the Buddha. Long neglected, he is today one of the most admired painters in \
+Japan."""
+style = """
+Jakuchū is a singular painter, who belongs to no school. He unites the \
+almost scientific precision of observation, feather by feather and petal by petal, \
+with a decorative and sometimes strange imagination. His colours, of exceptional intensity and \
+freshness, and his dense compositions, without depth, give \
+his birds and flowers an almost supernatural presence. He is not an \
+ukiyo-e artist, but a contemporary of the first masters of the colour \
+print."""

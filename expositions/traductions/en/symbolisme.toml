@@ -1,0 +1,452 @@
+[exposition]
+ordre = 160
+nom_court = "Symbolism"
+mouvement = "Symbolism and Art Nouveau"
+cadre = "dore"
+couleur = "#5e3a6e"
+titre = "Symbolism: Dreams, Myths and Visions"
+artiste = "Moreau, Redon, Munch, Böcklin, Rossetti, Millais, Mucha…"
+dates = "1851–1914"
+accroche = "Virtual exhibition · Musée Gustave-Moreau, Paris, and Tate Britain, London"
+introduction = """
+Against realism and Impressionism, the Symbolists sought to paint what the eye cannot see: dreams, myth, anguish, death and desire. The visit follows this current from the English Pre-Raphaelites of the mid-century to the visions of Redon, by way of Munch’s The Scream, Böcklin’s Isle of the Dead and the Art Nouveau arabesques of Mucha. The building is modelled on Gustave Moreau’s house-studio in Paris, whose very tall great studio is covered with paintings from floor to ceiling, and, for the English room, on the galleries of Tate Britain in London."""
+vitrine = "cri.jpg"
+
+[musee]
+nom = "Musée Gustave-Moreau"
+ville = "Paris, France"
+architecte = "Albert Lafon"
+construction = "opened in 1903"
+presentation = """
+At 14 rue de La Rochefoucauld, in the Nouvelle Athènes district, Gustave Moreau’s parents bought a town house in 1852 where the painter would live until his death. As he grew older, Moreau thought about the future of his work: in 1895 he had the architect Albert Lafon raise the house to create two immense superimposed studios, conceived from the outset as a museum and linked by a spectacular spiral staircase. On his death in 1898 he bequeathed to the State the house and everything in it; the museum opened in 1903, with Georges Rouault, his former pupil at the École des Beaux-Arts, as its first curator. Visitors can still see the artist’s small apartment, with its furniture and mementoes, then the studios, where paintings, watercolours and cartoons cover the walls from floor to ceiling, while thousands of drawings sleep in cabinets with pivoting panels."""
+ici = """
+ARTEON follows the same progression, from the house to the studio, on a single level. The small, low vestibule welcomes visitors from the south with Mucha’s Zodiac. To the north opens The Great Studio, ten metres high, with pinkish-beige walls, where the French canvases crowd the back wall as at Moreau’s. Two side doors lead, to the west, to The Pre-Raphaelite Gallery, square, in the manner of the rooms of Tate Britain, then, to the east, to The Northern Room, the lowest of the three large rooms, where the visit ends."""
+
+[[salles]]
+nom = "The Vestibule"
+theme = "1896: Art Nouveau welcomes the visitor, with Alfons Mucha’s Zodiac."
+murs = "#ece4d8"
+x = 0
+z = 0
+largeur = 10
+profondeur = 8
+hauteur = 5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Great Studio"
+theme = "1881–1914: Puvis de Chavannes, Gustave Moreau and Odilon Redon, French Symbolism on a single wall."
+murs = "#eadacb"
+x = 0
+z = -11
+largeur = 12
+profondeur = 14
+hauteur = 10
+portes = ["ouest", "est"]
+
+[[salles]]
+nom = "The Pre-Raphaelite Gallery"
+theme = "1851–1888: Ophelia, Beatrice and the Lady of Shalott, the tragic heroines of the English painters."
+murs = "#e7e0cf"
+x = -12
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 7
+
+[[salles]]
+nom = "The Northern Room"
+theme = "1880–1896: Böcklin’s Isle of the Dead, Munch’s The Scream and Khnopff’s sphinx."
+murs = "#e6e0d8"
+x = 12
+z = -11
+largeur = 12
+profondeur = 12
+hauteur = 6
+
+[[oeuvres]]
+titre = "Zodiac"
+artiste = "Alfons Mucha"
+annee = "1896"
+image = "zodiaque.jpg"
+cadre = "estampe"
+technique = "Colour lithograph, 65.7 × 48.2 cm"
+collection = "Mucha Foundation, Prague (one of the proofs)"
+note = "A woman’s profile crowned with jewels, the twelve signs of the zodiac as a halo: the quintessential image of Parisian Art Nouveau."
+description = """
+A young woman is seen in profile, turned to the left, her eyes lowered. Her long orange hair escapes in locks that undulate to the edges of the image and end in scrolls. She wears a diadem laden with stones, stylised snowflakes and crystal pendants, and a heavy necklace of pearls and cabochons over a dress strewn with stars. Behind her head, a large disc serves as a halo: on its outer ring, medallions show the twelve signs of the zodiac. The whole is set within an ornamental frame with rounded corners, with foliage at the top, purple interlacing at the sides and, at the bottom, two discs and a small frieze of flying figures drawn in pink line."""
+evocation = """
+Zodiac sums up what would soon be called the “Mucha style”: an ideal woman, neither portrait nor precise allegory, transformed into a decorative icon. The halo, borrowed from Byzantine mosaics and icons, makes this secular figure a kind of modern saint, queen of time and the stars. It has been seen as an image of the cycle of the year, since the work was meant to serve as a calendar, but also as the dream of an eternal beauty outside history. The “whiplash” hair, a signature motif of Art Nouveau, turns nature into ornament. The work also speaks of the new place of the printed image: an art for everyone, pinned to the wall or framed in a drawing room, rivalling painting."""
+histoire = """
+Having arrived in Paris in 1887, the Czech Alfons Mucha became famous overnight in January 1895 with the poster for Gismonda for Sarah Bernhardt. He then signed a contract with the Paris printer Ferdinand Champenois, and Zodiac was his first work for him: a calendar intended for the firm itself. The design appealed to Léon Deschamps, director of the review La Plume, who bought the rights to make it the review’s calendar for 1897. The image was a great success and exists in at least nine variants, with or without text: this one, printed without lettering, was sold as a decorative panel. Proofs are now scattered among many museums and collections, including that of the Mucha Foundation."""
+facture = """
+Mucha draws his model, then the printer transfers each colour onto a different lithographic stone: the image is born of their superimposition. The drawing rests on a dark, regular outline that encircles each form, like the lead of a stained-glass window, and on flat areas of soft colours, ochre, pink, verdigris and purple. The composition is built around circles: the halo, the medallions, the discs at the bottom, to which the free curves of the hair respond. The influence of the Japanese print can be read in the clean profile, without shadow, and in the taste for decorative surface."""
+details = [
+  "In the halo, the signs of the zodiac, each with its astrological symbol.",
+  "The diadem, set with snowflakes and crystal pendants.",
+  "The locks of hair that spill beyond the frame and curl into scrolls.",
+  "At lower right, the crescent moon, facing the solar disc on the left.",
+  "The signature “Mucha” on the starry dress, at right.",
+]
+themes = ["art nouveau", "woman", "stars", "ornament", "poster"]
+anecdote = """
+Mucha disliked the label “Art Nouveau”: for him, art could not be a fashion, it had to be eternal. After 1910 he devoted nearly twenty years to the Slav Epic, twenty giant canvases on the history of the Slavic peoples, given to the city of Prague in 1928."""
+salle = 1
+mur = "nord"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "The Poor Fisherman"
+artiste = "Pierre Puvis de Chavannes"
+annee = "1881"
+image = "pauvre-pecheur.jpg"
+technique = "Oil on canvas, 155.5 × 192.5 cm"
+collection = "Musée d’Orsay, Paris"
+note = "A motionless fisherman, hands clasped, in a boat: poverty turned into silent meditation, which the young Symbolists adored."
+description = """
+In the foreground, a grey boat is moored at the edge of a flat shore. A thin, bearded man, dressed in a worn shirt and black trousers, stands in it, head bowed, hands crossed before him. Beside him rises an oblique mast, and in the water hangs the net stretched between two curved poles. Behind, on a meadow strewn with small yellow flowers, a girl bends to pick flowers and a tiny child lies on a pink cloth. In the background stretches a vast expanse of calm water, beneath a pale sky, closed off by low hills. Everything is still, nothing moves: neither water, nor wind, nor the figures."""
+evocation = """
+Puvis de Chavannes does not describe a social news item: he transforms poverty into a timeless image of the human condition. The fisherman seems to pray or to wait, and viewers have seen in him in turn resignation, faith, hope carried by the children, and even a figure of Christ. This mixture of simplicity and mystery thrilled the young painters of the 1880s: the canvas shows that a picture can suggest an idea or a state of mind instead of telling a story. The muted palette and stripped-down forms speak of sadness, but also of a strange peace. In the age of triumphant naturalism, Puvis proves that one can move without anecdote or effect."""
+histoire = """
+Puvis de Chavannes, famous for his large mural paintings, showed The Poor Fisherman at the Salon of 1881. The public and part of the critics were disconcerted: the painting was reproached for its dull colours, its drawing judged clumsy and its lack of verisimilitude. But the young artists saw it as a manifesto. The canvas first belonged to the collector Émile Boivin; in 1887 the State bought it through the dealer Paul Durand-Ruel and placed it in the Musée du Luxembourg, devoted to living artists. To compensate Boivin, Puvis painted a second, vertical version, now in the National Museum of Western Art in Tokyo. The painting passed to the Louvre in 1929, then to the Musée d’Orsay when it opened in 1986."""
+facture = """
+Puvis paints in oil, but with the matt, pale look of fresco, as in his mural decorations. The range is deliberately reduced: greys, beiges, muted greens, barely enlivened by the pink of the cloth and the yellow flowers. The forms are simplified, the contours clean, the shadows almost absent. The composition is rigorous: the oblique mast and the vertical silhouette of the fisherman stand out against the horizontals of the water and hills. This art of synthesis and flat colour deeply marked Gauguin, Seurat and the Nabis."""
+details = [
+  "The fisherman’s crossed hands, between prayer and waiting.",
+  "The net stretched on its poles, plunging into the water at left.",
+  "The baby lying on a pink cloth, the only spot of warm colour.",
+  "At lower right, the signature and the date, 1881.",
+]
+themes = ["poverty", "sea", "silence", "meditation", "family"]
+anecdote = """
+Puvis did not paint in fresco: his great schemes for the Panthéon, the Sorbonne and the Boston Public Library are canvases painted in his studio and then marouflaged, that is, glued onto the walls."""
+salle = 2
+mur = "nord"
+place = 1
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Jupiter and Semele"
+artiste = "Gustave Moreau"
+annee = "1894–1895"
+image = "jupiter-semele.jpg"
+technique = "Oil on canvas, 213 × 118 cm"
+collection = "Musée Gustave-Moreau, Paris"
+note = "A mortal struck down by the splendour of the god she loves: Moreau’s last great finished painting, streaming with gemstones."
+description = """
+At the centre of a fabulous palace, with neither floor nor roof, Jupiter sits enthroned facing us, immense and hieratic, his head surrounded by a blazing red nimbus. He holds a lyre and a flower; on his right thigh, Semele, nude and white, falls backwards, her breast bloodied, struck down. The throne and columns are covered with ornaments, flowers and gemstones. At the foot of the throne, a great black eagle spreads its wings; all around appear Sorrow holding a sword, a great Pan and Death holding a lily. At lower left, Hecate carries the crescent moon. In the corners crowd strange beings, half buried in shadow and jewels."""
+evocation = """
+The myth comes from Ovid: Semele, loved by Jupiter, is persuaded by the jealous Juno to demand that the god show himself to her in all his glory, and dies consumed by the vision. Moreau makes of it a meditation on the divine: according to the long text he wrote to explain the painting, Semele dies struck down and, with her, dies the genius of earthly love. It has been seen as an allegory of the elevation of the soul, which cannot contemplate the absolute without being annihilated, and as an image of artistic creation itself. The figures of Death, Sorrow and Pan recall that the earthly world remains below, crushed. For the Decadent writers, Moreau was the painter of impossible dreams."""
+histoire = """
+Moreau thought of the subject from the late 1880s and painted several versions and sketches, including a small canvas now in his museum. He worked chiefly on the large composition in 1894 and 1895, while teaching at the École des Beaux-Arts, where his pupils included Matisse and Rouault. It is one of the last great paintings he finished before his death in 1898. Moreau bequeathed to the State his house on rue de La Rochefoucauld, which from 1895 he had enlarged with two vast superimposed studios in order to show his entire body of work. The museum opened in 1903 with Georges Rouault as its first curator. Jupiter and Semele holds a place of honour there, among hundreds of paintings and thousands of drawings."""
+facture = """
+Moreau superimposes a very fluid, at times almost abstract painting and a network of minute details traced with a fine brush, in the manner of a goldsmith. The ornaments, jewels and architecture are inspired by Indian, Persian and Byzantine art and by miniatures, which he studied in books and museums. The very tall format and pyramidal composition lead the eye from the teeming, dark bottom to the luminous summit, where the blue of the sky and the red of the nimbus reign. The whites of Semele and of Death stand out like flashes of light in this profusion."""
+details = [
+  "The red nimbus, radiating like a sheaf of flames, behind Jupiter’s head.",
+  "The blood flowing down Semele’s side, as she falls back on the god’s thigh.",
+  "Beneath Jupiter’s right foot, a serpent biting its tail, symbol of eternity.",
+  "The great black eagle, Jupiter’s bird, with wings spread at the foot of the throne.",
+  "At lower left, Hecate and her crescent moon.",
+]
+themes = ["mythology", "divine", "death", "love", "orientalism"]
+anecdote = """
+In À rebours, Huysmans’s novel of 1884, the hero des Esseintes collects the works of Gustave Moreau and gazes long at his Salome: the book made Moreau the idol of an entire Decadent and Symbolist generation."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "The Cyclops"
+artiste = "Odilon Redon"
+annee = "c. 1914"
+image = "cyclope.jpg"
+technique = "Oil on cardboard mounted on wood, 65.8 × 52.7 cm"
+collection = "Kröller-Müller Museum, Otterlo"
+note = "A one-eyed giant spies, from behind the mountain, a nymph asleep among the flowers."
+description = """
+A hill covered with flowers and rocks fills almost the whole canvas, in a mass of violet, pink, green, orange and brown colours. Behind the crest, above, rises the enormous round head of a giant, resting on broad bare shoulders: an almost featureless, childlike face, dominated by a single immense eye, open and round. He looks downward, to the right. There, lying among the flowers, a nude young woman sleeps, her face hidden, her flesh-coloured body almost melted into the vegetation. The cloudy sky, bluish grey and whitish, opens behind the giant. No shadow, no clear perspective: everything seems to float."""
+evocation = """
+Redon takes up an episode from Ovid’s Metamorphoses: the Cyclops Polyphemus, in love with the nymph Galatea, who wants nothing to do with him. The monster, usually terrifying, becomes here shy, almost touching, hidden behind the mountain and not daring to approach the sleeping beauty. It has been seen as an image of impossible desire, of the gaze that contemplates without being able to possess, and even of the painter himself, an immense eye set upon the world. Some historians also recall the one-eyed giants of the folk tales of Aquitaine, where Redon grew up. The great eye, an obsessive motif of his lithographs, passes here from nightmare to coloured dream."""
+histoire = """
+For more than twenty years Redon worked almost solely in black, in charcoal and lithography, peopling his albums with floating eyes, severed heads and hybrid beings. From the 1890s he turned to colour, pastel and then oil, and his subjects became more serene: flowers, myths, boats and religious visions. The Cyclops belongs to these last years; its date is debated, between the late 1890s and 1914, but it is most often placed around 1914. It is now kept in the Kröller-Müller Museum in Otterlo, in the Netherlands, in the middle of a forest, also famous for its large collection of paintings by Van Gogh."""
+facture = """
+The paint is thick and irregular, made of juxtaposed touches, scraped or laid on in light layers that let the colours vibrate. Redon treats the hill as a carpet of precious stones, without contour or precise drawing, on the edge of abstraction. Only the giant and the nymph are modelled more simply, in flesh tones. The painter, admired by the Nabis, combines here the memory of his blacks, in the round head and fixed eye, with an explosion of colour that the Fauves and the Surrealists would look at with interest."""
+details = [
+  "The single eye, at the centre of the forehead, with no eyebrow or visible eyelid.",
+  "The giant’s shoulders, resting on the crest as if he were hiding.",
+  "At right, the sleeping nymph, her face hidden in her arm.",
+  "At lower right, the signature “Odilon Redon”.",
+]
+themes = ["mythology", "dream", "gaze", "desire", "colour"]
+anecdote = """
+In 1883, in his album of lithographs Les Origines, Redon had already imagined a “misshapen polyp” floating on the shores, “a sort of smiling and hideous cyclops”: thirty years later, the black monster has become a shy and colourful giant."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 0.9
+
+[[oeuvres]]
+titre = "Ophelia"
+artiste = "John Everett Millais"
+annee = "1851–1852"
+image = "ophelie.jpg"
+technique = "Oil on canvas, 76.2 × 111.8 cm"
+collection = "Tate Britain, London"
+note = "Ophelia floats, singing, before she sinks: every flower, every blade of grass of the English river was painted from nature."
+description = """
+A young woman floats on her back in a dark river, her eyes open, her mouth half open, her hands raised out of the water, palms open. Her dress embroidered with silver, swollen with water, spreads around her and begins to sink. Flowers escape from her hands and drift: red poppy, pansies, daisies, violets. All around, the bank is overgrown with vegetation: a willow leaning over the water, nettles, reeds on the left, a wild rose with white flowers, purple loosestrife on the right. A robin is perched on a branch at upper left. The top of the painting is arched, which gives the scene the look of a secular altarpiece."""
+evocation = """
+Millais illustrates the death of Ophelia as recounted by Queen Gertrude in Shakespeare’s Hamlet: driven mad by her father’s death, the girl falls into a brook and lets herself be carried away, singing. The flowers have a meaning that the Victorian public knew how to read: the poppy for death, pansies for vain love, violets for fidelity and early death, daisies for innocence. The nature, of dazzling and indifferent precision, contrasts with the human drama. The painting fixed for a long time the image of the young woman dead and beautiful, between innocence, madness and sensuality, a figure who would haunt poets and painters, from Rimbaud, who devoted a poem to her in 1870, to Redon."""
+histoire = """
+Millais, one of the three founders of the Pre-Raphaelite Brotherhood in 1848, first painted the landscape, in the open air, beside the River Hogsmill near Ewell in Surrey, during the summer and autumn of 1851, working long hours each day. He then painted the figure in his London studio during the winter. The painting was exhibited at the Royal Academy in 1852; critics were divided, but the precision of the landscape was striking. It was sold to the dealer Henry Farrer, passed through several collections, and was then bought by the sugar manufacturer Henry Tate, who gave it to the nation in 1894 with his collection: it formed the core of the Tate Gallery, opened in 1897 at Millbank."""
+facture = """
+True to Pre-Raphaelite principles, Millais paints each plant from nature, with a botanist’s precision, on a canvas prepared in white so that the colours remain clear and luminous. He lays on the tones in small touches, with a fine brush, without melting them into a penumbra as the academic painters did. The light is even, with no precise source, which gives every detail the same intensity. The composition, horizontal and tight, without sky, encloses the viewer in the river, as close as possible to the figure."""
+details = [
+  "The robin on the willow branch, at upper left.",
+  "The red poppy floating near Ophelia’s right hand.",
+  "The necklace of violets around her neck.",
+  "The willow and the nettles of the bank, symbols of forsaken love and pain.",
+  "The silver embroidery of the dress, glittering under the water.",
+]
+themes = ["shakespeare", "death", "nature", "flowers", "madness"]
+anecdote = """
+The model, Elizabeth Siddal, posed for hours in a bath filled with water, heated by lamps placed beneath it. One day the lamps went out without the painter noticing: she caught a chill, and her father threatened the painter with legal action until he agreed to pay the doctor’s fees."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Beata Beatrix"
+artiste = "Dante Gabriel Rossetti"
+annee = "c. 1864–1870"
+image = "beata-beatrix.jpg"
+technique = "Oil on canvas, 86.4 × 66 cm"
+collection = "Tate Britain, London"
+note = "Dante’s Beatrice on the threshold of death, in the likeness of the wife Rossetti had just lost."
+description = """
+A woman with long red hair, seen half-length, is seated, her head thrown back, her eyes closed, her lips parted. She wears a green dress over a dark violet tunic, and her hands are joined, resting on a ledge. A red bird, haloed, descends towards her and drops a white poppy into her hands. Behind her, on a parapet, a sundial casts its shadow. The background is bathed in a golden, misty light: one can make out a bridge over a river, and two figures, one dressed in red on the left, the other dark on the right, who seem to look at each other over the young woman’s head."""
+evocation = """
+Rossetti depicts Beatrice, the beloved of Dante, as the poet describes her in the Vita Nuova, at the moment of her death in Florence in 1290: not the agony, but a kind of ecstasy, a spiritual passage to the beyond. The red bird is a messenger of death, the poppy evokes sleep, and it has also been seen as an allusion to laudanum, derived from opium, which had killed Elizabeth Siddal. The sundial would mark the ninth hour, nine being Beatrice’s number in Dante. In the background, the bridge of Florence and the figures of Love in red and of Dante complete the dream. The painting is at once a tribute and a mourning."""
+histoire = """
+Elizabeth Siddal, a model of the Pre-Raphaelites and herself a painter and poet, married Rossetti in 1860. She died in February 1862 of an overdose of laudanum. Rossetti, who had always compared himself to Dante, of whom his father, an Italian exile in London, was a leading scholar, undertook this posthumous portrait around 1864, painted from memory and from his drawings of her. He finished it around 1870. The painting was very successful and Rossetti made several replicas, one of them in the Art Institute of Chicago. The original version then belonged to Lord Mount-Temple; in 1889 his widow presented it to the nation in his memory. It thus entered the national collections and then the Tate."""
+facture = """
+Rossetti abandons here the precision of his early Pre-Raphaelite days for a softer, more vaporous painting, in which the contours dissolve into a golden light. The colours, green, red and violet, have a symbolic value: the green of hope, the violet of mourning, the red of love and death. The face, bathed in light and surrounded by a halo of hair, becomes the luminous centre of the painting. This way of making the female face a silent icon heralds the female “heads” that would dominate the end of his career."""
+details = [
+  "The haloed red bird holding the white poppy in its beak.",
+  "The sundial behind the young woman, and its shadow.",
+  "In the background, the bridge over the Arno, which places the scene in Florence.",
+  "The two figures, Love in red at left and Dante at right.",
+  "At lower left, Rossetti’s monogram.",
+]
+themes = ["mourning", "love", "dante", "death", "ecstasy"]
+anecdote = """
+On the day of Elizabeth Siddal’s burial, Rossetti slipped the manuscript of his poems into her coffin. Seven years later, in 1869, he had it exhumed at Highgate Cemetery and published the poems in his collection Poems, in 1870."""
+salle = 3
+mur = "sud"
+place = 2
+largeur = 0.95
+
+[[oeuvres]]
+titre = "The Lady of Shalott"
+artiste = "John William Waterhouse"
+annee = "1888"
+image = "dame-de-shalott.jpg"
+technique = "Oil on canvas, 153 × 200 cm"
+collection = "Tate Britain, London"
+note = "Struck by a curse, the Lady leaves her tower and lets herself drift towards Camelot, where she will die."
+description = """
+A young woman in a long white dress sits in a boat on a river lined with reeds and autumn trees. Her long red hair falls over her shoulders; her mouth is half open and her gaze lost in the distance. With her left hand she holds the chain that tethered the boat to the bank and that she has just undone. Beneath her, a large tapestry, red, pink and gold, spills out of the boat and trails in the water. At the front, near a lantern and a carved prow, stand three candles. In the background, the trees open onto a pale late-day sky and a distant hill."""
+evocation = """
+The painting illustrates Alfred Tennyson’s poem The Lady of Shalott: shut in a tower on an island, the Lady weaves endlessly what she sees of the world in a mirror, for a curse will strike her if she looks directly towards Camelot. One day she glimpses Lancelot in the mirror, turns to the window, and the mirror cracks. Waterhouse shows the moment when, resigned, she sets off down the river singing her last song. It has been seen as the image of the artist who leaves the world of reflections for real life and dies of it, and of the Victorian woman imprisoned in her role. The candles recall that death is near."""
+histoire = """
+Waterhouse, born in Rome in 1849 to painter parents, first made his name with classical subjects. With The Lady of Shalott, exhibited at the Royal Academy in 1888, he turned to the Arthurian legends dear to the Pre-Raphaelites, forty years after the founding of their Brotherhood, but with a freer touch, marked by French open-air painting. The painting was bought by Henry Tate, who gave it to the nation in 1894 with his collection. It is now one of the most popular works at Tate Britain in London."""
+facture = """
+Waterhouse combines the precise drawing of the figure, an academic legacy, with a broader handling in the landscape, in which one recognises the influence of French open-air painting and of Jules Bastien-Lepage. The reeds in the foreground are brushed in with lively strokes, the water treated in dark reflections. The white dress, brightly lit, stands out against the brown and green mass of the trees and at once draws the eye. The warm-coloured tapestry balances the composition, while the black boat, on a diagonal, draws the gaze to the right, in the direction of the current and of death."""
+details = [
+  "The chain that the Lady still holds in her left hand.",
+  "On the tapestry, the scenes she wove while looking in her mirror.",
+  "The three candles and the lantern at the front of the boat.",
+  "The autumn leaves floating on the water, at lower right.",
+  "The birds in the reeds, at left.",
+]
+themes = ["arthurian legend", "poetry", "fate", "river", "solitude"]
+anecdote = """
+Waterhouse returned twice to Tennyson’s poem: in 1894 with The Lady of Shalott Looking at Lancelot, now in Leeds, and in 1915 with “I am half sick of shadows”, kept in Toronto. Three moments of the same story, almost thirty years apart."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Isle of the Dead"
+artiste = "Arnold Böcklin"
+annee = "1880"
+image = "ile-des-morts.jpg"
+technique = "Oil on canvas, 111 × 155 cm"
+collection = "Kunstmuseum, Basel"
+note = "A boat glides towards an island of rocks and cypresses: the first version of the painting that set all Europe dreaming."
+description = """
+On a still, dark sea, beneath a stormy grey-blue sky, rises a small rocky island. Its cliffs, lit by a golden light, form what look like two arms enclosing a cove. In the rock are cut doors and windows, like tombs. At the centre, a cluster of tall black cypresses rises towards the sky. A boat approaches the shore: a rower, seen from behind, propels it, and at the front stands a figure wrapped in white, before an object draped in white that resembles a coffin. No sound, no wind: the silence is total."""
+evocation = """
+Böcklin specifies nothing: who is dead, who accompanies the deceased, where the island lies. The painting evokes the voyage to the beyond, Charon’s boat on the Styx, the last passage. Cypresses have been the trees of cemeteries since Antiquity. It has often been described as a “picture to dream by”. The image fascinated to the point of obsession: viewers have seen in it the peace of death, but also its anguish, and many German homes had a reproduction; Strindberg evokes it at the end of his play The Ghost Sonata. For the Surrealists, and first of all for Giorgio De Chirico, this mute architecture and strange light open the way to metaphysical painting."""
+histoire = """
+Böcklin, a Swiss painter born in Basel, was then living in Florence. He completed this first version in May 1880, for his patron Alexander Günther, but ended up keeping it. In April, while the canvas was unfinished, Marie Berna, a young widow, visited his studio and asked him for a similar painting: he painted for her a smaller version on wood, now in the Metropolitan Museum in New York, and added, at her request, the coffin and the white figure, which he then also transferred to this first canvas. The title was given in 1883 by the Berlin dealer Fritz Gurlitt. Böcklin painted at least five versions. This one was acquired in 1920 by the Gottfried Keller Foundation and deposited in the Kunstmuseum in Basel."""
+facture = """
+The composition is of great simplicity: a dark central mass, the cypresses, between two pale cliffs, on the horizontal of the sea. The light comes from the left, low, without visible source, as at twilight or under the moon. Böcklin contrasts the cold blues of sea and sky with the warm ochres of the rock, and places the only truly white spot, the standing figure, at the lower centre of the canvas, at the exact place where the gaze rests. The handling remains smooth and discreet, almost classical, so that nothing disturbs the impression of silence."""
+details = [
+  "The standing figure, draped in white, at the front of the boat.",
+  "The coffin covered with a white cloth, just in front of her.",
+  "The dark openings cut into the cliff, like tombs.",
+  "At lower left, the painter’s monogram “AB”.",
+]
+themes = ["death", "voyage", "island", "silence", "cypress"]
+anecdote = """
+The composer Sergei Rachmaninoff wrote his symphonic poem The Isle of the Dead in 1909 after seeing a black-and-white reproduction of the painting. He is said to have remarked that, had he seen the original in colour, he would probably not have written his music."""
+salle = 4
+mur = "nord"
+place = 2
+largeur = 1.55
+
+[[oeuvres]]
+titre = "The Scream"
+artiste = "Edvard Munch"
+annee = "1893"
+image = "cri.jpg"
+technique = "Tempera and crayon on cardboard, 91 × 73.5 cm"
+collection = "Nasjonalmuseet, Oslo"
+note = "On a bridge, beneath a blood-coloured sky, a figure covers its ears: the very image of modern anguish."
+description = """
+In the foreground, a hairless human figure, with a pale face hollowed like a skull, stands on a bridge or raised road, bordered by a railing that runs diagonally to the left. It raises its hands to its cheeks, eyes wide, mouth open in a cry or a howl. Its dark body undulates like a flame. Further along the bridge, two figures in hats walk away, indifferent. Behind, a midnight-blue fjord winds between hills, with two small boats. Above, the sky is streaked with long undulating bands of red, orange and yellow, like a conflagration."""
+evocation = """
+Munch recounted several times the experience from which the painting was born: walking at sunset with two friends, he saw the sky turn blood red, stopped, exhausted, and felt a great infinite scream pass through nature. It is therefore not the figure that screams, but the world around it, and it covers its ears. The painting turns anguish into a landscape: the lines of the sky, the water and the body undulate together. It has been seen as the loneliness of modern man, the fear of madness that haunted Munch, the death of his loved ones, and the figure has been compared to a Peruvian mummy exhibited in Paris. The Scream has become the universal icon of anxiety."""
+histoire = """
+The scene is set on Ekeberg hill, which overlooks Kristiania, present-day Oslo, and its fjord. Munch noted the memory as early as 1892, then painted this version in 1893, while dividing his life between Berlin and Norway. It was exhibited the same year in a series of paintings on love, the core of his Frieze of Life. Munch made several versions of the subject: two in pastel or crayon, a lithograph in 1895, a tempera around 1910. This version entered the National Gallery in Oslo in 1910, thanks to a gift from the collector Olaf Schou. Stolen on 12 February 1994, the day of the opening of the Lillehammer Olympic Games, it was recovered in May of the same year. It is now in the Nasjonalmuseet."""
+facture = """
+Munch paints on raw cardboard, left visible in places, which gives the work a quick, unfinished look. He mixes tempera, laid on in fluid layers, with strokes of crayon that accentuate the undulations. The colours are arbitrary and violent: the orange-red of the sky answers the blue of the fjord. Two systems of lines are opposed: the rigid straight lines of the bridge, which plunge towards the background, and the curves of the landscape and the body. This expressive distortion, in the service of emotion, makes Munch one of the fathers of Expressionism."""
+details = [
+  "The hands pressed to the ears, as if to shut out the scream.",
+  "The two walkers in hats, at the far end of the bridge, who see nothing.",
+  "The two small boats on the fjord, at the centre.",
+  "The strip of raw cardboard visible along the right edge.",
+  "At lower left, the signature “E. Munch 1893”.",
+]
+themes = ["anguish", "solitude", "twilight", "expressionism", "nature"]
+anecdote = """
+In the sky, at upper left, a short sentence is written in pencil: “Can only have been painted by a madman”. Long attributed to a malicious visitor, it was recognised in 2021, through the study of the handwriting, as being in Munch’s own hand."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Caresses"
+artiste = "Fernand Khnopff"
+annee = "1896"
+image = "caresses.jpg"
+technique = "Oil on canvas, 50.5 × 150 cm"
+collection = "Royal Museums of Fine Arts of Belgium, Brussels"
+note = "A young man and a sphinx with a cheetah’s body, cheek to cheek: the enigma of desire, painted by the great Belgian Symbolist."
+description = """
+On a very elongated canvas, a young man with red hair, bare-chested, a blue and grey loincloth tied at the waist, stands at left and looks straight at us. In his right hand he holds a staff topped with wings and a blue ball. Pressed against him is a creature with the body of a spotted cheetah and the head of a woman with blonde hair, her eyes half closed, who leans her cheek against his and rests a paw on his hip. Her long spotted tail unfolds to the right. In the background are a dark cypress, a white wall bearing signs, two blue columns, and a reddish desert landscape beneath a pale sky."""
+evocation = """
+Khnopff draws on the myth of Oedipus and the Sphinx, and on the canvas that Gustave Moreau had devoted to it in 1864. But the confrontation has become an embrace: the sphinx no longer poses a riddle, she caresses, and the young man seems to hesitate between surrender and resistance. It has been seen as the opposition between mind and sensuality, art letting itself be seduced by the flesh, or the fin-de-siècle theme of the femme fatale. The work long bore the title L’Art, and the winged staff might designate the artist. The two faces, which strangely resemble each other, are inspired by the painter’s sister, Marguerite: the young man’s androgyny blurs the boundary between the sexes still further."""
+histoire = """
+Khnopff painted this canvas in Brussels in 1896, at the height of his reputation. A founding member of the avant-garde circle Les XX in 1883, he also exhibited in Paris, at Joséphin Péladan’s Rose+Croix Salons, and looked towards England, where he admired Burne-Jones and wrote for the review The Studio. His works were much admired in Vienna: the Vienna Secession gave him a prominent place, and Klimt took a lesson from his enigmatic figures. The painting, known under several titles, L’Art, Caresses or The Caresses of the Sphinx, is now one of the masterpieces of the Symbolist collections of the Royal Museums of Fine Arts of Belgium in Brussels, displayed in the Fin-de-Siècle Museum."""
+facture = """
+The very elongated frieze format recalls ancient bas-reliefs and obliges the gaze to glide from left to right, from the young man’s face to the sphinx’s tail. Khnopff paints with a fine, smooth touch, in a pale range of beiges, ochres and pinks, barely enlivened by the blue of the columns and the loincloth. He often worked from his own photographs, which he retouched and recomposed. The even light and the absence of strong shadow give the scene a dreamlike stillness, reinforced by the enigmatic, empty setting."""
+details = [
+  "The winged staff topped with a blue ball, in the young man’s hand.",
+  "The mysterious inscriptions on the white wall at the centre.",
+  "The cheetah’s paw resting on the young man’s hip.",
+  "The two blue columns standing alone in the landscape, at right.",
+]
+themes = ["sphinx", "desire", "androgyny", "mythology", "femme fatale"]
+anecdote = """
+In the early twentieth century Khnopff had built for himself in Brussels a white, blue and gold house-studio, conceived as a temple dedicated to himself. It was demolished in 1938; only photographs remain."""
+salle = 4
+mur = "sud"
+place = 2
+largeur = 2.0
+
+[[artistes]]
+nom = "Alfons Mucha"
+vie = "Ivančice (Moravia), 24 July 1860 – Prague, 14 July 1939"
+biographie = """
+Born in Moravia, then part of the Austrian Empire, Alfons Mucha first worked as a theatre scene painter in Vienna, then, thanks to a patron, studied in Munich. He settled in Paris in 1887, attended classes at the Académies Julian and Colarossi and lived precariously from his illustrations. At the end of 1894, almost by chance, he designed the poster for Gismonda for Sarah Bernhardt: posted across Paris in January 1895, it caused a sensation. The tragic actress entrusted him with all her posters for six years, and the printer Champenois took him under contract. Posters, decorative panels, jewellery for Fouquet, advertisements: his style became the very image of Art Nouveau. He decorated the Bosnia and Herzegovina Pavilion at the 1900 Exposition Universelle. After several stays in the United States, he returned to Bohemia in 1910 to devote nearly twenty years to the Slav Epic. He designed the first banknotes and stamps of independent Czechoslovakia in 1918. Arrested and interrogated by the Gestapo in 1939, he died shortly afterwards in Prague."""
+style = """
+Mucha created an immediately recognisable language: an ideal woman, often in profile, her hair spread in arabesques, set within a circle or halo and surrounded by flowers, jewels and ornaments. He combines a dark, regular outline with soft colours, and blends Byzantine, Japanese and Slavic sources. His Documents décoratifs of 1902, a collection of models, spread his style through the applied arts. Rediscovered in the 1960s, he inspired the psychedelic poster and comic art."""
+
+[[artistes]]
+nom = "Pierre Puvis de Chavannes"
+vie = "Lyon, 14 December 1824 – Paris, 24 October 1898"
+biographie = """
+The son of a mining engineer, Pierre Puvis de Chavannes gave up engineering studies after an illness and discovered Italy, which decided his vocation. He trained briefly with Delacroix and then with Thomas Couture, but soon found his own way alone. His first submissions to the Salon were often rejected; success came in the 1860s with large allegorical compositions intended for the museum in Amiens. He then became the great mural painter of the Third Republic: the life of Saint Geneviève at the Panthéon, the Sacred Grove for the amphitheatre of the Sorbonne, the decorations of the museums of Lyon and Rouen, of the Paris Hôtel de Ville and of the Boston Public Library. In 1890 he took part in founding the Société Nationale des Beaux-Arts, of which he became president. Admired by young painters and institutions alike, he married in 1897 Princess Marie Cantacuzène, his companion of long standing, who died a few months before him."""
+style = """
+Puvis simplifies forms, reduces colours to pale, matt tones, and suppresses detail and movement to attain a calm, timeless grandeur. His figures, motionless in stripped-down landscapes, suggest an idea rather than tell a story. This language of silence and flat colour made him the common precursor of Symbolism, of Gauguin, of Seurat, of the Nabis and even of the young Picasso of the Blue Period."""
+
+[[artistes]]
+nom = "Gustave Moreau"
+vie = "Paris, 6 April 1826 – Paris, 18 April 1898"
+biographie = """
+The son of a Parisian architect, Gustave Moreau entered the École des Beaux-Arts in the studio of François-Édouard Picot, but it was Théodore Chassériau, his elder, who marked him most. From 1857 to 1859 he stayed in Italy, where he tirelessly copied the masters of the Renaissance. He triumphed at the Salon of 1864 with Oedipus and the Sphinx, then exhibited in 1876 his Salome and the watercolour The Apparition, which fascinated writers from Huysmans to Jean Lorrain. Gradually he withdrew from the Salon and worked in the secrecy of his studio, accumulating projects and sketches. Elected to the Académie des Beaux-Arts in 1888, he became a professor at the École des Beaux-Arts in 1891: his teaching, free and open, trained Matisse, Rouault and Marquet. Shortly before his death he turned his house on rue de La Rochefoucauld into a museum, which he bequeathed to the State with several thousand works. The Musée Gustave-Moreau opened in 1903."""
+style = """
+Moreau is the great painter of myth and learned reverie. He overloads his canvases with architecture, jewels and ornaments borrowed from India, Persia and Byzantium, traced with a fine brush on grounds sometimes painted very freely, almost abstract. His heroines, Salome, Semele, Galatea, embody the femme fatale or the unattainable ideal. He gave Symbolism its most precious images, and the freedom of his sketches appealed to the Fauves and the Surrealists."""
+
+[[artistes]]
+nom = "Odilon Redon"
+vie = "Bordeaux, 20 April 1840 – Paris, 6 July 1916"
+biographie = """
+Bertrand Jean Redon, known as Odilon, spent a solitary childhood on the family estate of Peyrelebade, in the Médoc. He studied architecture for a time, then painting in Paris in Gérôme’s studio, without success. His real encounter was with the engraver Rodolphe Bresdin, in Bordeaux, who taught him etching and the freedom of the imagination. For more than twenty years Redon worked in black, in charcoal and lithography: the albums Dans le rêve in 1879, À Edgar Poe, Les Origines or Hommage à Goya peopled his work with floating eyes, severed heads and monsters. Huysmans celebrated him in À rebours in 1884, and the Symbolist poets, Mallarmé foremost, became his friends. Around 1890, after the birth of his son Arï, he turned to colour, pastel and oil, and painted flowers, myths and large decorative schemes, such as those of the Abbey of Fontfroide. The Nabis revered him, and he exhibited at the Armory Show in New York in 1913."""
+style = """
+Redon wished, in his own words, to put the logic of the visible at the service of the invisible. His blacks, of a deep velvety quality, give life to creatures born of dream and of the science of his time, microbes and hybrid beings. His colours, later, are laid on in precious touches that seem to radiate. Independent of any school, he opened the way for the Nabis, Matisse and the Surrealists, who saw in him a precursor."""
+
+[[artistes]]
+nom = "John Everett Millais"
+vie = "Southampton, 8 June 1829 – London, 13 August 1896"
+biographie = """
+A child prodigy, John Everett Millais entered the Royal Academy Schools at the age of eleven, the youngest pupil ever admitted. In 1848 he founded, with William Holman Hunt and Dante Gabriel Rossetti, the Pre-Raphaelite Brotherhood, which wished to return to the sincerity of the painters before Raphael and to the scrupulous study of nature. His Christ in the House of His Parents, in 1850, provoked a scandal, and Charles Dickens attacked it violently. The critic John Ruskin came to the group’s defence; Millais fell in love with Ruskin’s wife, Effie Gray, who obtained an annulment of her marriage and married the painter in 1855. Millais then became one of the richest and most popular artists in England, a sought-after portraitist and the author of sentimental scenes such as Bubbles, used in a soap advertisement. Made a baronet in 1885 and elected president of the Royal Academy a few months before his death, he was buried in St Paul’s Cathedral."""
+style = """
+In his Pre-Raphaelite years, Millais painted with minute precision, from nature, in clear, brilliant colours, and composed scenes laden with symbols. He then evolved towards a broader, freer touch, inspired by Velázquez and the old masters. Ophelia remains one of the most reproduced images in English painting and the model for a whole line of beautiful Symbolist dead women."""
+
+[[artistes]]
+nom = "Dante Gabriel Rossetti"
+vie = "London, 12 May 1828 – Birchington-on-Sea, 9 April 1882"
+biographie = """
+The son of Gabriele Rossetti, an Italian poet and patriot exiled in London and a scholar of Dante, and brother of the poet Christina Rossetti, Dante Gabriel grew up between painting and literature. A pupil for a time of Ford Madox Brown, he founded the Pre-Raphaelite Brotherhood in 1848 with Millais and Hunt. He met Elizabeth Siddal, who became his model, his pupil and, in 1860, his wife; her death in 1862 devastated him. Settled afterwards in Chelsea, in a house on Cheyne Walk where he kept a menagerie, he painted a series of ideal female figures, inspired by Fanny Cornforth, Alexa Wilding and above all Jane Morris, wife of his friend William Morris. His Poems, published in 1870, were attacked as immoral; exhausted and dependent on chloral, he suffered a serious breakdown in 1872 and died ten years later on the coast of Kent. He influenced Burne-Jones, Morris and the whole Aesthetic movement."""
+style = """
+Painter and poet, Rossetti blends the two arts: he wrote sonnets for his paintings and inscribed verses on their frames. After the precision of his early Pre-Raphaelite days, he painted half-length women, with abundant hair, full lips and a distant gaze, in rich, warm colours. These icons of beauty and dream heralded European Symbolism and the Aestheticism of the end of the century."""
+
+[[artistes]]
+nom = "John William Waterhouse"
+vie = "Rome, 1849 (baptised 6 April) – London, 10 February 1917"
+biographie = """
+The son of two English painters settled in Rome, John William Waterhouse spent his early years in Italy before the family returned to London. He helped his father in the studio, then in 1870 entered the Royal Academy Schools. His first successes were classical scenes in the taste of Lawrence Alma-Tadema, such as Saint Eulalia, in 1885. With The Lady of Shalott, in 1888, he turned to the subjects dear to the Pre-Raphaelites: the Arthurian legend, Tennyson, Keats, Shakespeare and Greek myths. Elected a member of the Royal Academy in 1895, he painted Hylas and the Nymphs the following year, then a long series of sorceresses, mermaids and nymphs. Settled in St John’s Wood, he led a quiet life, married to the painter Esther Kenworthy. His painting, which fell out of fashion after his death in 1917, has found an immense public again since the 1970s."""
+style = """
+Often called “the modern Pre-Raphaelite”, Waterhouse unites the poetic subjects and dreamy women of Rossetti with the freer touch of French open-air painting and of Jules Bastien-Lepage. His compositions are clear, his figures solidly drawn, his landscapes vibrant. He carried the Pre-Raphaelite tradition into the twentieth century and fixed, for the general public, the image of the heroines of legend and mythology."""
+
+[[artistes]]
+nom = "Arnold Böcklin"
+vie = "Basel, 16 October 1827 – San Domenico di Fiesole, 16 January 1901"
+biographie = """
+Born in Basel, Arnold Böcklin studied painting in Düsseldorf, then travelled to Geneva, Brussels and Paris before discovering Rome in 1850: Italy and its ancient landscape became the heart of his work. The beginnings were difficult, and for a long time he lived in straitened circumstances. He taught for a while at the newly founded art school in Weimar, painted frescoes in Basel, then lived in turn in Munich, Florence and Zurich. His canvases peopled with centaurs, naiads, fauns and tritons first brought him mockery, then, from the 1880s, immense fame, above all in Germany, where he was regarded as the greatest living painter. In 1872 he painted himself with Death playing the violin behind his shoulder. Struck by a stroke in 1892, he settled near Florence, at Fiesole, where he died in 1901. Several of his children died young, and death is one of his constant themes."""
+style = """
+Böcklin blends the classical heritage of Italy with a Nordic imagination, powerful and at times brutal. His landscapes, rigorously constructed, take on a strange atmosphere, and his mythological creatures have a fleshly, almost comic presence. His painting, in frank colours, often in tempera, nourished German Symbolism, Max Klinger, Giorgio De Chirico and metaphysical painting, then the Surrealists, who admired his mystery."""
+
+[[artistes]]
+nom = "Edvard Munch"
+vie = "Ådalsbruk, Løten (Norway), 12 December 1863 – Ekely, near Oslo, 23 January 1944"
+biographie = """
+Edvard Munch grew up in Kristiania, present-day Oslo, in a family marked by illness: his mother died of tuberculosis when he was five, his elder sister Sophie when he was thirteen. He abandoned his engineering studies for painting and frequented the Kristiania bohemians. A scholarship took him to Paris in 1889, where he discovered Impressionism, Gauguin and Van Gogh. In 1892 his exhibition in Berlin caused a scandal and had to close after a week: the affair contributed to the birth of the Berlin Secession. Munch lived there for several years and composed the Frieze of Life, a cycle on love, anguish and death, of which The Scream is part. Exhausted by alcohol and breakdowns, he sought treatment in Copenhagen in 1908–1909, then returned to Norway. He painted the large canvases of the Aula of the University of Oslo and lived in seclusion at Ekely. In 1937 the Nazis removed his works from German museums. He bequeathed his output to the city of Oslo."""
+style = """
+Munch paints states of mind rather than appearances: he simplifies forms, distorts bodies and landscape, and uses violent, symbolic colours. His undulating lines, close to Art Nouveau, unite the figure and its setting in a single emotion. An innovative printmaker, he renewed the woodcut and lithography. He is considered one of the fathers of Expressionism, which developed in Germany in his wake."""
+
+[[artistes]]
+nom = "Fernand Khnopff"
+vie = "Grembergen (Belgium), 12 September 1858 – Brussels, 12 November 1921"
+biographie = """
+Fernand Khnopff spent part of his childhood in Bruges, a silent city that would haunt his work. He began studying law, abandoned it for the Académie des Beaux-Arts in Brussels, then discovered in Paris, at the Exposition Universelle of 1878, the works of Gustave Moreau and Edward Burne-Jones. In 1883 he founded, with James Ensor and other young artists, the circle Les XX, a hotbed of the Belgian avant-garde. He then exhibited at Joséphin Péladan’s Rose+Croix Salons in Paris, then at the Vienna Secession, where he enjoyed great success. His sister Marguerite, his favourite model, appears in many of his paintings. He illustrated Georges Rodenbach’s Bruges-la-Morte, designed sets and costumes for the Théâtre de la Monnaie, and wrote for the English review The Studio. In the early twentieth century he had built for himself in Brussels a house-studio conceived as a temple. In 1908 he married Marthe Worms, from whom he was divorced soon after."""
+style = """
+Khnopff is the most refined of the Belgian Symbolists: motionless figures, fixed gazes, androgynous faces, empty and enigmatic settings. He works with a fine, smooth touch, in pale ranges, often from his own photographs. Silence, memory, withdrawal into oneself and the mystery of desire are his themes. His influence was great in Vienna, notably on Gustav Klimt."""

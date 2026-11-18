@@ -205,56 +205,74 @@ def main():
         if fichier.suffix in (".js", ".css", ".json"):
             shutil.copyfile(fichier, sortie / fichier.name)
 
-    # Les pages : l'accueil exporté, dont on garde l'en-tête, le style et le pied.
-    accueil = (site / "index.html").read_text(encoding="utf-8")
-    base = re.search(r'<a class="logo" href="([^"]*)/"', accueil).group(1)
-    debut, fin = accueil.index('<main class="page">'), accueil.index("</main>") + len("</main>")
-
-    def ecrire(dossier, titre, script):
-        page = (accueil[:debut]
-                + f'<main class="page"><div class="monde" id="monde"><noscript>{titre} demande JavaScript.'
-                  "</noscript></div></main>"
-                + accueil[fin:])
-        page = re.sub(r"<title>[^<]*</title>", f"<title>{titre} · ARTEON</title>", page, count=1)
-        page = page.replace(' class="current"', "").replace(' aria-current="page"', "")
-        page = page.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
-        page = page.replace("</body>", f'<script type="module" src="{base}/monde/{script}"></script></body>', 1)
-        (site / dossier).mkdir(parents=True, exist_ok=True)
-        (site / dossier / "index.html").write_text(page, encoding="utf-8")
-
-    ecrire("monde", "Les collections du monde", "app.js")
-    ecrire("musees", "Les musées", "musees.js")
-    ecrire("explorer", "Explorer", "explorer.js")
-
-    # « Musées », « Collections » et « Explorer » dans le menu de toutes les pages.
-    liens = (f'<a href="{base}/musees/">Musées</a><a href="{base}/monde/">Collections</a>'
-             f'<a href="{base}/explorer/">Explorer</a>')
-    for fichier in site.rglob("*.html"):
-        texte = fichier.read_text(encoding="utf-8")
-        if liens in texte or "</details><a href=" not in texte:
+    # Les pages, dans chaque langue (/, /en/, /es/) : l'accueil exporté de cette langue,
+    # dont on garde l'en-tête (le menu), le style et le pied.
+    LANGUES = {
+        "fr": {"prefixe": "", "js": "demande JavaScript.", "monde": "Les collections du monde", "musees": "Les musées", "explorer": "Explorer"},
+        "en": {"prefixe": "/en", "js": "needs JavaScript.", "monde": "World collections", "musees": "Museums", "explorer": "Explore"},
+        "es": {"prefixe": "/es", "js": "necesita JavaScript.", "monde": "Colecciones del mundo", "musees": "Museos", "explorer": "Explorar"},
+    }
+    fine = lambda n: f"{n:,}".replace(",", " ")
+    accueil_fr = (site / "index.html").read_text(encoding="utf-8")
+    base = re.search(r'<a class="logo" href="([^"]*)/"', accueil_fr).group(1)
+    for code, L in LANGUES.items():
+        dossier_langue = site / L["prefixe"].lstrip("/") if L["prefixe"] else site
+        if not (dossier_langue / "index.html").exists():
             continue
-        texte = texte.replace("</details><a href=", f"</details>{liens}<a href=", 1)
-        fichier.write_text(texte, encoding="utf-8")
+        accueil = (dossier_langue / "index.html").read_text(encoding="utf-8")
+        debut, fin = accueil.index('<main class="page">'), accueil.index("</main>") + len("</main>")
 
-    # L'accueil : le vrai nombre d'œuvres, et l'entrée des musées, des collections, d'Explorer.
-    accueil = (site / "index.html").read_text(encoding="utf-8")
-    fine = lambda n: f"{n:,}".replace(",", "\u202f")
-    entree = (f'<div class="monde-entrees">'
-              f'<a class="monde-accueil" href="{base}/monde/"><div><strong>Les collections du monde</strong>'
-              f'<span>{fine(len(gardees))} œuvres du domaine public de {len(musees)} grands musées : '
-              "Chicago, Cleveland, New York, Washington. Chercher, parcourir, regarder en grand.</span></div></a>"
-              f'<a class="monde-accueil musees" href="{base}/musees/"><div><strong>Les musées</strong>'
-              "<span>Les vrais musées reproduits dans ARTEON, leurs plans salle par salle, et le Grand Musée ARTEON.</span></div></a>"
-              f'<a class="monde-accueil explorer" href="{base}/explorer/"><div><strong>Explorer</strong>'
-              "<span>Les artistes de A à Z, la chronologie, les thèmes, et le jeu « Qui l'a fait ? ».</span></div></a>"
-              "</div>")
-    if "monde-entrees" not in accueil and '<section class="exhibitions ephemeral"' in accueil:
-        accueil = accueil.replace('<section class="exhibitions ephemeral"', entree + '<section class="exhibitions ephemeral"', 1)
-        accueil = accueil.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
-    (site / "index.html").write_text(accueil, encoding="utf-8")
+        def ecrire(dossier, titre, script):
+            page = (accueil[:debut]
+                    + f'<main class="page"><div class="monde" id="monde"><noscript>{titre} {L["js"]}'
+                      "</noscript></div></main>"
+                    + accueil[fin:])
+            page = re.sub(r"<title>[^<]*</title>", f"<title>{titre} · ARTEON</title>", page, count=1)
+            page = page.replace(' class="current"', "").replace(' aria-current="page"', "")
+            # Les liens vers les autres langues : cette page-ci, pas l'accueil.
+            for autre in LANGUES.values():
+                racine = f'{base}{autre["prefixe"]}/'
+                page = page.replace(f'hreflang="{[k for k, v in LANGUES.items() if v is autre][0]}" href="{racine}"',
+                                    f'hreflang="{[k for k, v in LANGUES.items() if v is autre][0]}" href="{racine}{dossier}/"')
+                page = page.replace(f'href="{racine}" hreflang=', f'href="{racine}{dossier}/" hreflang=')
+            page = page.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
+            page = page.replace("</body>", f'<script type="module" src="{base}/monde/{script}"></script></body>', 1)
+            (dossier_langue / dossier).mkdir(parents=True, exist_ok=True)
+            (dossier_langue / dossier / "index.html").write_text(page, encoding="utf-8")
 
-    # Les mêmes nombres partout : le pied de page de chaque page et l'accueil comptent
-    # les œuvres des expositions ET des collections du monde, et tous leurs artistes.
+        ecrire("monde", L["monde"], "app.js")
+        ecrire("musees", L["musees"], "musees.js")
+        ecrire("explorer", L["explorer"], "explorer.js")
+
+        # L'accueil : l'entrée des musées, des collections et d'Explorer.
+        p = f'{base}{L["prefixe"]}'
+        textes = {
+            "fr": (f"Les collections du monde", f"{fine(len(gardees))} œuvres du domaine public de {len(musees)} grands musées : "
+                   "Chicago, Cleveland, New York, Washington. Chercher, parcourir, regarder en grand.",
+                   "Les musées", "Les vrais musées reproduits dans ARTEON, leurs plans salle par salle, et le Grand Musée ARTEON.",
+                   "Explorer", "Les artistes de A à Z, la chronologie, les thèmes, et le jeu « Qui l'a fait ? »."),
+            "en": ("World collections", f"{fine(len(gardees))} public-domain works from {len(musees)} great museums: "
+                   "Chicago, Cleveland, New York, Washington. Search, browse, view them large.",
+                   "Museums", "The real museums reproduced in ARTEON, their plans room by room, and the Grand ARTEON Museum.",
+                   "Explore", "Artists from A to Z, the timeline, themes, and the “Who made it?” game."),
+            "es": ("Colecciones del mundo", f"{fine(len(gardees))} obras de dominio público de {len(musees)} grandes museos: "
+                   "Chicago, Cleveland, Nueva York, Washington. Buscar, recorrer, ver en grande.",
+                   "Museos", "Los museos reales reproducidos en ARTEON, sus planos sala por sala y el Gran Museo ARTEON.",
+                   "Explorar", "Los artistas de la A a la Z, la cronología, los temas y el juego «¿Quién lo hizo?»."),
+        }[code]
+        entree = (f'<div class="monde-entrees">'
+                  f'<a class="monde-accueil" href="{p}/monde/"><div><strong>{textes[0]}</strong><span>{textes[1]}</span></div></a>'
+                  f'<a class="monde-accueil musees" href="{p}/musees/"><div><strong>{textes[2]}</strong><span>{textes[3]}</span></div></a>'
+                  f'<a class="monde-accueil explorer" href="{p}/explorer/"><div><strong>{textes[4]}</strong><span>{textes[5]}</span></div></a>'
+                  "</div>")
+        if "monde-entrees" not in accueil and '<section class="exhibitions ephemeral"' in accueil:
+            accueil = accueil.replace('<section class="exhibitions ephemeral"', entree + '<section class="exhibitions ephemeral"', 1)
+            accueil = accueil.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
+        (dossier_langue / "index.html").write_text(accueil, encoding="utf-8")
+
+    # Les mêmes nombres partout, dans les trois langues : le pied de page de chaque page et
+    # l'accueil comptent les œuvres des expositions ET des collections du monde, et tous
+    # leurs artistes.
     catalogue = json.loads((site / "catalogue.json").read_text(encoding="utf-8"))
     noms = {w.get("artist") or ex.get("artist") for ex in catalogue["exhibitions"] for w in ex["works"]}
     noms |= {o.get("a") for o in gardees}
@@ -266,16 +284,24 @@ def main():
     artistes = len({cle_nom(n) for n in noms})
     oeuvres_expositions = sum(len(ex["works"]) for ex in catalogue["exhibitions"])
     oeuvres = oeuvres_expositions + len(gardees)
-    chiffre = r"\d[\d\u202f\u00a0 ]*"
+    chiffre = r"\d[\d  , ]*"
+    mots = [  # (expositions, œuvres, artistes, « artistes et ateliers »)
+        ("expositions", "œuvres", "artistes", "artistes et ateliers"),
+        ("exhibitions", "works", "artists", "artists and workshops"),
+        ("exposiciones", "obras", "artistas", "artistas y talleres"),
+    ]
     for fichier in site.rglob("*.html"):
         texte = fichier.read_text(encoding="utf-8")
-        neuf = re.sub(rf"(class=\"footer-figures\">{chiffre} expositions · ){chiffre} œuvres · {chiffre} artistes",
-                      rf"\g<1>{fine(oeuvres)} œuvres · {fine(artistes)} artistes", texte)
-        neuf = re.sub(rf"{chiffre} artistes et ateliers : ", f"{fine(artistes)} artistes et ateliers : ", neuf)
-        neuf = re.sub(rf"<strong>{chiffre}</strong><span>œuvres</span>",
-                      f"<strong>{fine(oeuvres)}</strong><span>œuvres</span>", neuf)
-        neuf = re.sub(rf"<strong>{chiffre}</strong><span>artistes</span>",
-                      f"<strong>{fine(artistes)}</strong><span>artistes</span>", neuf)
+        neuf = texte
+        for ex_, oe, ar, ateliers in mots:
+            neuf = re.sub(rf"(class=\"footer-figures\">{chiffre} {ex_} · ){chiffre} {oe} · {chiffre} {ar}",
+                          rf"\g<1>{fine(oeuvres)} {oe} · {fine(artistes)} {ar}", neuf)
+            neuf = re.sub(rf"{chiffre} {ateliers}: ", f"{fine(artistes)} {ateliers}: ", neuf)
+            neuf = re.sub(rf"{chiffre} {ateliers} : ", f"{fine(artistes)} {ateliers} : ", neuf)
+            neuf = re.sub(rf"<strong>{chiffre}</strong><span>{oe}</span>",
+                          f"<strong>{fine(oeuvres)}</strong><span>{oe}</span>", neuf)
+            neuf = re.sub(rf"<strong>{chiffre}</strong><span>{ar}</span>",
+                          f"<strong>{fine(artistes)}</strong><span>{ar}</span>", neuf)
         if neuf != texte:
             fichier.write_text(neuf, encoding="utf-8")
     print(f"✓ partout : {fine(oeuvres)} œuvres ({oeuvres_expositions} dans les expositions), {fine(artistes)} artistes")
@@ -285,22 +311,31 @@ def main():
     liees = oeuvres_liees(catalogue, gardees)
     (sortie / "donnees" / "expositions.json").write_text(json.dumps(liees, **compact), encoding="utf-8")
     for slug, info in liees.items():
-        page = site / slug / "index.html"
         n = len(info["indices"])
-        if not n or not page.exists():
-            continue
-        texte = page.read_text(encoding="utf-8")
-        if "monde-liees" in texte or '<section class="building"' not in texte:
+        if not n:
             continue
         propres = sum(len(ex["works"]) for ex in catalogue["exhibitions"] if ex["slug"] == slug)
-        bloc = (f'<section class="monde-liees"><a class="monde-accueil" href="{base}/monde/#/exposition/{slug}"><div>'
-                f'<strong>Toutes les œuvres de l\'exposition : {fine(propres + n)}</strong>'
-                f'<span>Les {propres} œuvres de la visite, et {fine(n)} œuvres liées dans les collections du monde, '
-                f'de la plus ancienne à la plus récente →</span></div></a></section>')
-        texte = texte.replace('<section class="building"', bloc + '<section class="building"', 1)
-        if "monde/app.css" not in texte:
-            texte = texte.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
-        page.write_text(texte, encoding="utf-8")
+        for code, L in LANGUES.items():
+            page = (site / L["prefixe"].lstrip("/") / slug / "index.html") if L["prefixe"] else site / slug / "index.html"
+            if not page.exists():
+                continue
+            texte = page.read_text(encoding="utf-8")
+            if "monde-liees" in texte or '<section class="building"' not in texte:
+                continue
+            titre, phrase = {
+                "fr": (f"Toutes les œuvres de l'exposition : {fine(propres + n)}",
+                       f"Les {propres} œuvres de la visite, et {fine(n)} œuvres liées dans les collections du monde, de la plus ancienne à la plus récente →"),
+                "en": (f"All the works of the exhibition: {fine(propres + n)}",
+                       f"The {propres} works on the tour, and {fine(n)} related works in the world collections, from oldest to most recent →"),
+                "es": (f"Todas las obras de la exposición: {fine(propres + n)}",
+                       f"Las {propres} obras de la visita y {fine(n)} obras relacionadas en las colecciones del mundo, de la más antigua a la más reciente →"),
+            }[code]
+            bloc = (f'<section class="monde-liees"><a class="monde-accueil" href="{base}{L["prefixe"]}/monde/#/exposition/{slug}"><div>'
+                    f'<strong>{titre}</strong><span>{phrase}</span></div></a></section>')
+            texte = texte.replace('<section class="building"', bloc + '<section class="building"', 1)
+            if "monde/app.css" not in texte:
+                texte = texte.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
+            page.write_text(texte, encoding="utf-8")
     print(f"✓ expositions : {sum(len(v['indices']) for v in liees.values())} liens vers les collections du monde")
 
     taille = sum(f.stat().st_size for f in sortie.rglob("*") if f.is_file())

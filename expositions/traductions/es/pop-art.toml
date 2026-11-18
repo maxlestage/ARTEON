@@ -1,0 +1,996 @@
+[exposition]
+ordre = 200
+nom_court = "Antes del pop art"
+mouvement = "Cartel, trampantojo, caricatura, collage"
+cadre = "noir"
+couleur = "#b3122e"
+titre = "Antes del pop art, la imagen popular, de las estrellas del cartel a los collages"
+artiste = "Toulouse-Lautrec, Mucha, Harnett, Peto, Gillray, McCay, Gris, Schwitters…"
+dates = "1808–1920"
+accroche = "Exposición virtual · Museum Ludwig, Colonia"
+introduction = """
+El pop art de los años sesenta no surgió de la nada. Cuando Andy Warhol repite el rostro \
+de Marilyn Monroe, cuando Roy Lichtenstein amplía una viñeta de cómic o cuando Claes \
+Oldenburg esculpe una hamburguesa gigante, retoman imágenes que el cartel, el \
+trampantojo, la caricatura y el collage habían vuelto familiares mucho antes que ellos. \
+Como las obras del pop art están protegidas por derechos de autor, esta exposición \
+muestra a sus antecesores, ya de dominio público: diez obras de 1808 a 1920, desde las \
+estrellas de Toulouse-Lautrec y de Mucha hasta los billetes de banco pintados de John \
+Haberle, desde la tienda de caricaturas de Gillray hasta el Little Nemo de Winsor McCay, \
+desde el Fantômas de Juan Gris hasta los collages de Kurt Schwitters. El edificio se \
+inspira en el Museum Ludwig de Colonia, una de las grandes colecciones de pop art de \
+Europa: un vestíbulo, una gran nave de doce metros de altura y tres salas blancas \
+alrededor. Los grabados y los cuadros pequeños se presentan aquí ampliados."""
+vitrine = "jane-avril.jpg"
+
+[musee]
+nom = "Museum Ludwig"
+ville = "Colonia, Alemania"
+architecte = "Peter Busmann y Godfrid Haberer"
+construction = "inaugurado en 1986"
+presentation = """
+En 1976, los coleccionistas Peter e Irene Ludwig, industriales del chocolate de \
+Aquisgrán, donan a la ciudad de Colonia unas 350 obras de arte moderno, entre ellas un \
+conjunto excepcional de pop art estadounidense; a cambio, la ciudad se compromete a \
+construir un museo que lleve su nombre. El edificio, diseñado por Peter Busmann y \
+Godfrid Haberer, abre sus puertas en 1986 entre la catedral y el Rin. Al principio \
+alberga también el Wallraf-Richartz-Museum, que lo abandona en 2001 para instalarse en \
+un edificio propio. Se reconoce por sus cubiertas en diente de sierra, cuyos lucernarios \
+reparten por las salas una luz uniforme; bajo la plaza vecina se encuentra la sala de \
+conciertos de la Filarmónica. Hoy pueden verse allí Warhol, Lichtenstein, Rauschenberg, \
+Johns y Oldenburg, una de las colecciones de Picasso más importantes, la vanguardia \
+rusa y una rica colección de fotografías."""
+ici = """
+Como en el Museum Ludwig, amplios volúmenes blancos se abren unos a otros. Se entra por \
+el sur al vestíbulo, sobrio, de siete metros de altura, y luego a la gran nave, de \
+veinte metros de ancho y doce de alto, donde «Las estrellas del cartel» reúnen la Jane \
+Avril de Toulouse-Lautrec y la Sarah Bernhardt como Lorenzaccio de Mucha. Al oeste, la \
+sala «Los objetos cotidianos» reúne los trampantojos de Harnett, de Peto, de Haberle y \
+de Raphaelle Peale; al este, «La risa y el cómic» cuelga a Gillray y el Little Nemo de \
+Winsor McCay; al norte, «Papeles pegados y collages» muestra el Fantômas de Juan Gris y \
+la Pequeña danza de Kurt Schwitters. Todos los muros son de un blanco cálido."""
+
+[[salles]]
+nom = "El vestíbulo"
+theme = "La entrada, sobria y blanca, como el vestíbulo del museo de Colonia, entre la catedral y el Rin: aquí comienza un siglo de imágenes populares, del que saldrá el pop art."
+murs = "#ece8e1"
+x = 0
+z = 0
+largeur = 14
+profondeur = 10
+hauteur = 7
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Las estrellas del cartel"
+theme = "Antes de las Marilyn de Warhol, las estrellas en los muros de París: la bailarina Jane Avril por Toulouse-Lautrec y Sarah Bernhardt por Mucha."
+murs = "#f2eee6"
+x = 0
+z = -13
+largeur = 20
+profondeur = 16
+hauteur = 12
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "Los objetos cotidianos"
+theme = "El trampantojo estadounidense, antecesor de las latas de sopa y de los dólares de Warhol: Harnett, Peto, Haberle y Raphaelle Peale pintan un pollo, cartas, billetes y frutas hasta engañar al ojo."
+murs = "#eee8dd"
+x = -18
+z = -13
+largeur = 16
+profondeur = 16
+hauteur = 10
+
+[[salles]]
+nom = "La risa y el cómic"
+theme = "La caricatura inglesa de Gillray y el Little Nemo de Winsor McCay: las imágenes de prensa cuyas viñetas ampliará algún día Lichtenstein."
+murs = "#f1ebe2"
+x = 18
+z = -13
+largeur = 16
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "Papeles pegados y collages"
+theme = "Periódicos, novelas populares, billetes y envoltorios: Juan Gris y Kurt Schwitters introducen en el arte los impresos de la calle, como harán después los collages pop."
+murs = "#efe8dc"
+x = 0
+z = -27
+largeur = 16
+profondeur = 12
+hauteur = 9
+
+[[oeuvres]]
+titre = "Jane Avril"
+artiste = "Henri de Toulouse-Lautrec"
+annee = "1899"
+image = "jane-avril.jpg"
+credit = "Photo : National Gallery of Art, Washington"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.42691.html"
+technique = "Litografía en cinco colores (cartel) sobre papel vitela fino, 56 × 38 cm"
+collection = "National Gallery of Art, Washington"
+note = "La bailarina del Moulin Rouge, con una serpiente enroscada sobre su vestido negro: el último cartel que Toulouse-Lautrec dibuja para su amiga Jane Avril."
+description = """
+Sobre el fondo desnudo del papel, de color crema, una bailarina se retuerce, vista casi \
+de cuerpo entero. Su largo vestido negro, de una sola mancha plana, dibuja una \
+silueta sinuosa que desciende hasta el borde inferior de la hoja, donde se ensancha una \
+enagua roja. Una serpiente de anillos amarillos y verde azulado se enrosca alrededor \
+de su cuerpo, de las rodillas al hombro, y apoya la cabeza sobre su pecho. Con el busto \
+inclinado y los brazos doblados a la altura del rostro, separa unas manos abiertas, \
+como garras; su rostro pálido, enmarcado por cabellos amarillos, se inclina bajo un \
+enorme sombrero de plumas rojas que invade la parte alta del cartel. A la izquierda, \
+el nombre JANE Avril está trazado en letras negras dibujadas a mano. En el borde \
+derecho, en pequeño, se lee el nombre del impresor, H. Stern, París; abajo a la \
+derecha, el monograma del artista dentro de un círculo y la fecha 1899."""
+evocation = """
+Jane Avril es una de las estrellas del Montmartre de la década de 1890 y una de las \
+amigas más fieles de Lautrec. Bailarina fina y extraña, apodada «la Mélinite», por el \
+nombre de un explosivo, contrasta con la exuberancia de La Goulue por una gracia \
+nerviosa y melancólica. La serpiente hace de ella una encantadora, una Eva o una \
+criatura fatal, y prolonga las ondulaciones de su baile. Pero la imagen vale sobre \
+todo como signo: un cuerpo negro, un nombre, tres o cuatro colores, que el transeúnte \
+reconoce a primera vista desde el otro lado de la calle. Es ya lo que hará Andy Warhol \
+con sus estrellas, reducidas a un rostro y a unas pocas manchas planas, y repetidas \
+como carteles."""
+histoire = """
+Nacida Jeanne Beaudon en 1868, Jane Avril tiene una infancia difícil y pasa, siendo \
+adolescente, varios meses en el hospital de la Salpêtrière. Después baila en el baile \
+Bullier, en el Moulin Rouge y en el Jardin de Paris, donde Lautrec se fija en ella. La \
+retrata a menudo: en 1893 le dedica el cartel del Jardin de Paris y la muestra como \
+elegante espectadora en el del Divan japonais. Este cartel, impreso en 1899 por H. \
+Stern en París, es el último que dibuja para ella; ese mismo año, el artista, minado \
+por el alcohol, es internado varias semanas en una clínica de Neuilly. En aquellos \
+años, la moda de la «affichomanie» empuja a los aficionados a coleccionar carteles, \
+que se despegan de los muros o se compran directamente a los impresores."""
+facture = """
+La litografía permite a Lautrec dibujar directamente sobre la piedra, con lápiz o con \
+pincel, y luego estampar cada color a partir de una piedra distinta: cinco en este \
+caso. El dibujo se reduce a lo esencial: un contorno flexible, casi caligráfico, y \
+grandes superficies de color uniforme que se leen de lejos. El vestido negro es una \
+sola masa, sin modelado, sobre la que la serpiente traza un arabesco claro, donde el \
+amarillo se desliza hacia el azul mediante un leve degradado. El papel dejado en \
+reserva sirve de fondo, y el rotulado, trazado a mano, forma parte de la imagen. Esta \
+economía de medios, heredada de las estampas japonesas, es la del cartel moderno y, \
+más tarde, la de las serigrafías del pop art."""
+details = [
+  "La serpiente amarilla y azul, enroscada alrededor del vestido, con la cabeza apoyada en el pecho.",
+  "El sombrero de plumas rojas, que invade toda la parte alta del cartel.",
+  "Las manos abiertas y separadas, como en un gesto de danza o de hechizo.",
+  "El nombre JANE Avril, en letras dibujadas a mano, colocado sobre el vacío del fondo.",
+  "El monograma de Lautrec dentro de un círculo, sobre la fecha 1899.",
+]
+themes = ["cartel", "danza", "estrella", "montmartre", "serpiente"]
+anecdote = """
+Jane Avril, que más tarde publicó sus recuerdos, reconoció deber a Lautrec buena \
+parte de su fama, nacida del primer cartel que él le dedicó en 1893."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Lorenzaccio (Sarah Bernhardt)"
+artiste = "Alfons Mucha"
+annee = "1896–1900"
+image = "lorenzaccio.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1973.1018"
+technique = "Litografía en color, reducción del cartel publicado en la revista Les Maîtres de l'Affiche (lámina 114, imprenta Chaix, París)"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Sarah Bernhardt con jubón negro, en un papel de hombre: el cartel de Mucha para el Lorenzaccio de Musset, en la reducción publicada por la revista Les Maîtres de l'Affiche."
+description = """
+En el centro de una gran hoja de márgenes claros, una banda vertical muy estrecha \
+contiene todo el cartel. Un joven de cabello castaño y corto, vestido con un jubón \
+oscuro y un amplio manto pardo de mangas abullonadas, está de pie, pensativo, con una \
+mano llevada a la boca; con la otra aprieta contra sí un libro de encuadernación \
+verde. Una daga cuelga de su cinturón bordado. Detrás de él, un fondo de follaje \
+dorado y motivos de brocado se inscribe en una arcada, bordeada por las palabras \
+SARAH BERNHARDT, ANNO DOMINI y MDCCCXCVI. Arriba, dos dragones de alas desplegadas, \
+uno verde pálido, el otro blanco, se ensañan con un escudo de oro sembrado de bolas \
+rojas. Una cartela anuncia el título, LORENZACCIO, pieza de Alfred de Musset, y otra, \
+abajo, el Théâtre de la Renaissance. En el margen, una leyenda indica Les Maîtres de \
+l'Affiche, lámina 114."""
+evocation = """
+Sarah Bernhardt es la primera gran estrella moderna: su voz, sus vestidos, sus \
+caprichos y sus giras ocupan las portadas de los periódicos de todo el mundo, y vigila \
+de cerca su imagen. En 1896, con más de cincuenta años, interpreta a Lorenzo de \
+Médicis, el joven que, en la Florencia del siglo XVI, se hace compañero de libertinaje \
+de su primo, el duque Alejandro, para asesinarlo mejor. Mucha la muestra meditando, con \
+la mano sobre los labios, como vacilando en el umbral del crimen; el dragón que muerde \
+las armas de los Médicis se interpreta a menudo como la imagen de la tiranía. La \
+actriz, su nombre y su papel se funden en un icono, como harán más tarde las estrellas \
+de cine serigrafiadas por Warhol."""
+histoire = """
+Escrito en 1834, el Lorenzaccio de Alfred de Musset pasaba por irrepresentable: \
+demasiado largo, con demasiados personajes y decorados. Sarah Bernhardt lo estrena por \
+fin en escena en diciembre de 1896, en una adaptación de Armand d'Artois, en el \
+Théâtre de la Renaissance, que ella dirige entonces. Desde el éxito de Gismonda, a \
+principios de 1895, Mucha dibuja sus carteles, impresos por F. Champenois, cuyo nombre \
+figura al pie de la composición. El cartel original, de unos dos metros de altura, se \
+pegaba en las calles de París. La hoja que aquí se presenta es una reducción, publicada \
+en Les Maîtres de l'Affiche, una revista mensual lanzada en 1895 por la imprenta Chaix \
+bajo la dirección de Jules Chéret, que ofrecía a los coleccionistas, hasta 1900, los \
+mejores carteles de Europa en formato pequeño."""
+facture = """
+Mucha retoma aquí el formato que inventó para Gismonda: una banda vertical muy \
+estrecha que hace de la actriz una figura de cuerpo entero, casi a su tamaño real en \
+el cartel original, como un santo en una vidriera. El contorno es oscuro y regular, \
+los colores son apagados: pardos, dorados, verdes pálidos, con algunos toques de rojo \
+en el escudo y en la liga. El fondo se cubre de motivos de brocado y de roleos, y el \
+rotulado, de capitales dibujadas, se integra en el decorado de la arcada. La \
+reducción, estampada también en litografía, conserva la riqueza de la gama cromática. \
+Las superficies planas perfiladas y el texto mezclado con la imagen anuncian todo el \
+diseño gráfico del siglo XX."""
+details = [
+  "La mano llevada a los labios, gesto de vacilación de Lorenzo antes del asesinato.",
+  "El dragón verde pálido que muerde el escudo de oro con bolas rojas de los Médicis.",
+  "El nombre SARAH BERNHARDT y la fecha MDCCCXCVI, inscritos alrededor de la arcada.",
+  "La daga en el cinturón y el libro de encuadernación verde, apretado contra el cuerpo.",
+  "La leyenda del margen: Les Maîtres de l'Affiche, lámina 114, imprenta Chaix.",
+]
+themes = ["cartel", "teatro", "estrella", "art nouveau", "travestismo"]
+anecdote = """
+Sarah Bernhardt interpretó varios papeles masculinos: después de Lorenzo, será Hamlet \
+en 1899 y luego el hijo de Napoleón en El aguilucho de Edmond Rostand, en 1900."""
+salle = 2
+mur = "nord"
+place = 5
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Para la cena del domingo (For Sunday's Dinner)"
+artiste = "William Michael Harnett"
+annee = "1888"
+image = "for-sundays-dinner.jpg"
+credit = "Photo : Art Institute of Chicago"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/111377"
+technique = "Óleo sobre lienzo, 94,3 × 53,6 cm"
+collection = "Art Institute of Chicago, Chicago"
+note = "Un pollo desplumado cuelga de una vieja puerta de madera: un trampantojo tan preciso que parece que pudiera tocarse la piel granulosa del ave."
+description = """
+Sobre una puerta de tablas pintadas de un verde muy oscuro, casi negro, un pollo cuelga \
+cabeza abajo, atado por una pata a un clavo con una cuerda. La otra pata, amarilla, se \
+abre hacia la izquierda, con los dedos crispados. El cuerpo, casi enteramente \
+desplumado, muestra una piel amarillenta y granulosa de la que cuelgan aún algunas \
+plumillas blancas; el cuello, cortado, cuelga hasta abajo, con la cabeza de un rojo \
+oscuro vuelta hacia el suelo. Una sombra suave se proyecta sobre la puerta, a la \
+derecha. A los lados, pesados herrajes de latón: dos bisagras a la derecha, arriba y \
+abajo, y una doble placa de cerradura recortada a la izquierda. Clavos, agujeros, \
+grietas y una pluma caída salpican la madera gastada. Abajo a la izquierda se lee la \
+firma HARNETT y la fecha 1888."""
+evocation = """
+El título habla de una comida familiar: el pollo del domingo, que se prepara como en la \
+granja. La puerta de tablas rugosas, con herrajes antiguos y clavos oxidados, evoca una \
+cocina de campo y, con ella, la nostalgia de una América rural y más sencilla, en el \
+momento en que las ciudades crecen a toda velocidad. Pero la imagen es también cruda: \
+el cuello cortado, la carne desnuda, las plumas olvidadas recuerdan la muerte del \
+animal, como en los bodegones de caza holandeses. Harnett no cuenta una historia; \
+presenta un objeto, solo, de frente, a su tamaño real. Ese gusto por el objeto banal \
+convertido en protagonista será el de los pintores pop, de Warhol a Oldenburg."""
+histoire = """
+Nacido en Irlanda y criado en Filadelfia, Harnett fue primero grabador de platería \
+antes de hacerse pintor de bodegones. Tras seis años en Europa, sobre todo en Múnich, \
+regresa en 1886 a Estados Unidos y se instala en Nueva York. Su fama se debe entonces \
+a After the Hunt, gran trampantojo de caza y armas de caza colgado en un saloon \
+neoyorquino, donde, según se dice, los clientes iban a comprobar si los objetos eran \
+reales. For Sunday's Dinner data de esos años neoyorquinos, cuatro años antes de su \
+muerte, en 1892. Olvidado después de su muerte, Harnett no es redescubierto hasta \
+finales de la década de 1930, cuando Estados Unidos busca las raíces de un arte \
+nacional. El cuadro pertenece hoy al Art Institute de Chicago."""
+facture = """
+El trampantojo se basa en unas pocas reglas que Harnett aplica con rigor: un fondo \
+plano y cercano, aquí la puerta, que impide toda profundidad; objetos a su tamaño \
+real; una luz lateral que proyecta sombras nítidas. En ese espacio estrecho, el pintor \
+detalla cada materia: las fibras y las grietas de la madera, el metal picado de los \
+herrajes, la piel del ave erizada de poros y de cañones de plumas, el plumón blanco \
+colocado en pequeños toques empastados. La pincelada casi desaparece, como si la \
+pintura quisiera hacerse olvidar. El formato vertical y estrecho, el de un panel de \
+puerta, refuerza la ilusión de un objeto colgado allí, delante de nosotros."""
+details = [
+  "Las pequeñas plumillas blancas que siguen pegadas a la piel granulosa.",
+  "La pata abierta, de dedos crispados, que traza una diagonal hacia la izquierda.",
+  "Las bisagras de latón, a la derecha, cuya forma responde a la del pollo.",
+  "La doble placa de cerradura recortada y la pluma caída, a la izquierda.",
+  "La firma y la fecha, abajo a la izquierda, como inscritas en la madera.",
+]
+themes = ["trampantojo", "bodegón", "cocina", "objeto", "campo"]
+anecdote = """
+Harnett había pintado también billetes de banco; según un relato muy repetido, los \
+servicios del Tesoro estadounidense, encargados de perseguir la moneda falsa, le habrían \
+advertido contra estas imágenes demasiado parecidas."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.6
+
+[[oeuvres]]
+titre = "Tarjetero con una jota de corazones (Card Rack with a Jack of Hearts)"
+artiste = "John Frederick Peto"
+annee = "hacia 1895"
+image = "card-rack.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1973.30"
+technique = "Óleo sobre lienzo"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Cartas, un naipe, un retrato de Lincoln y recortes de periódico metidos bajo las cintas de un tarjetero: el tablón de anuncios de una vida corriente."
+description = """
+Sobre una tabla pintada de un verde casi negro, unas cintas pardas, clavadas en \
+cuadrado y cruzadas en X, sujetan una pequeña colección de papeles. Arriba, un naipe, \
+la jota de corazones, asoma tras un sobre verde agua y una libreta verde de canto \
+rojo, colocada de través. Abajo a la izquierda, un papel amarillo doblado, una tarjeta \
+parda y una pequeña fotografía: el retrato de Abraham Lincoln, reconocible por su \
+barba. A la derecha, un sobre azul está metido bajo una cinta cuyo extremo deshilachado \
+cuelga en el vacío. Alrededor, otras huellas: esquinas de papel amarillo arrancadas, \
+todavía sujetas por sus chinchetas, arriba a la izquierda; una tarjeta blanca; cifras \
+garabateadas; las iniciales J.F.P. grabadas en la madera, arriba a la derecha; y, por \
+último, abajo, una etiqueta rota, un recorte de periódico, una cerilla y una colilla."""
+evocation = """
+Los tarjeteros eran los tablones de anuncios del siglo XIX: en ellos se metían el \
+correo, las tarjetas, los recortes de periódico, todo lo que convenía tener a mano. \
+Peto hace de él el retrato de una existencia a través de sus papeles, y el reflejo de \
+un deseo muy humano de coleccionar y de recordar. Nada es precioso: todo está gastado, \
+roto, deshilachado, como si el tiempo hubiera pasado sobre esos objetos. La fotografía \
+de Lincoln, el presidente asesinado en 1865, que Peto coloca a menudo en sus cuadros, \
+añade una nota de duelo y de memoria nacional. Esta mezcla de impresos anónimos, de \
+naipe y de rostro célebre anuncia los ensamblajes de Robert Rauschenberg y los paneles \
+de imágenes del pop art."""
+histoire = """
+Peto se forma en la Academia de Bellas Artes de Pensilvania, en Filadelfia, y se hace \
+amigo de Harnett, cuyo trabajo admira. Pero no conoce su éxito. En 1889 se instala en \
+Island Heights, pequeña estación balnearia de Nueva Jersey, donde pinta lejos de las \
+exposiciones y toca la corneta en las reuniones religiosas del verano. A su muerte, en \
+1907, es casi desconocido. Varios de sus cuadros reciben después falsas firmas de \
+Harnett, más cotizado, y no es hasta hacia 1950 cuando el historiador Alfred \
+Frankenstein devuelve a cada uno sus obras. Peto pintó tarjeteros durante toda su \
+carrera; este, de la década de 1890, se conserva hoy en el Cleveland Museum of Art."""
+facture = """
+Peto pinta con más libertad que Harnett. Sus objetos tienen contornos algo difuminados, \
+colores apagados aplicados en toques visibles y una luz suave que los baña más que los \
+recorta. La ilusión depende ante todo de la composición: todo está plano, en el plano \
+mismo del cuadro, de modo que ningún objeto delata la superficie del lienzo. Las \
+sombras proyectadas de las cintas y de los papeles, los bordes doblados, los desgarros \
+y los hilos que cuelgan crean el relieve; hasta la colilla, abajo, parece a punto de \
+caer del marco. Las manchas de color, el verde de la libreta, el azul del sobre, el \
+amarillo del papel, se responden sobre el fondo oscuro como en una composición \
+abstracta."""
+details = [
+  "La jota de corazones que asoma arriba, tras el sobre verde agua.",
+  "El pequeño retrato fotográfico de Abraham Lincoln, en la parte baja del tarjetero.",
+  "Las iniciales J.F.P., como grabadas con cuchillo en la madera, arriba a la derecha.",
+  "Las esquinas de papel amarillo arrancadas, que siguen bajo sus chinchetas.",
+  "La colilla y la cerilla, abajo, que parecen salirse del cuadro.",
+]
+themes = ["trampantojo", "papeles", "memoria", "lincoln", "objeto"]
+anecdote = """
+Los tarjeteros de Peto tuvieron primero un uso comercial: ya en 1879 pintó uno para una \
+compañía de carbón de Filadelfia, que lo exhibió como un rótulo."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Imitación"
+artiste = "John Haberle"
+annee = "1887"
+image = "imitation.jpg"
+credit = "Photo : National Gallery of Art, Washington"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.106596.html"
+technique = "Óleo sobre lienzo, 25,4 × 35,6 cm"
+collection = "National Gallery of Art, Washington"
+note = "Un billete de un dólar, un billete de cincuenta centavos, sellos y monedas, todo pintado, hasta el marco: el título confiesa el juego de manos."
+description = """
+Todo lo que se ve está pintado, incluido el marco. Una moldura de madera clara, de \
+vetas anaranjadas, rodea un fondo oscuro, pardo violáceo, sobre el que se han colocado \
+dos billetes de banco estadounidenses. El mayor, un billete de un dólar arrugado, \
+gastado, rasgado en los bordes, muestra en el centro el retrato de George Washington \
+en un medallón, la palabra ONE, números de serie rojos y la inscripción Washington, \
+D.C. Encima, un pequeño billete de cincuenta centavos, la «moneda fraccionaria» de la \
+época, lleva un retrato de hombre y un sello dorado. Arriba a la derecha, una moneda \
+de cobre; a su lado, la firma J. Haberle, New Haven, Ct., 1887. Sobre el propio marco, \
+abajo a la izquierda, sobresalen una pequeña fotografía de un hombre barbudo, sellos \
+de correos, uno azul y otro verde oliva, una moneda de plata y fragmentos de sellos; \
+abajo, una etiqueta lleva el nombre del artista."""
+evocation = """
+El título, Imitación, es un desafío lanzado al espectador: aquí todo es falso, y sin \
+embargo todo parece poder cogerse con la punta de los dedos. Pintar dinero es jugar \
+con dos ilusiones a la vez: la de la pintura, que hace creer en un objeto, y la del \
+papel moneda, que hace creer en un valor. En la América de finales del siglo XIX, \
+donde se debate con aspereza el valor del papel moneda frente al oro, estos billetes \
+arrugados, pasados de mano en mano, hablan también de la vida cotidiana y de las \
+pequeñas sumas. Setenta y cinco años después, en 1962, Andy Warhol pintará a su vez \
+billetes de un dólar, alineados como en una plancha de imprenta."""
+histoire = """
+John Haberle pasa casi toda su vida en New Haven, en Connecticut. Formado como grabador \
+y litógrafo, trabaja también en el museo Peabody de la Universidad de Yale, donde \
+dibuja para el paleontólogo Othniel Charles Marsh. Sus cuadros de dinero, expuestos \
+desde mediados de la década de 1880, causan sensación por su precisión. Rozan lo \
+prohibido: la ley estadounidense castiga la reproducción de moneda, y el Tesoro vigila. \
+Imitación, firmado y fechado en 1887, pertenece a esa serie en la que Haberle lleva la \
+ilusión lo más lejos posible, hasta pintar el marco y los objetos que parecen estar \
+pegados en él. El cuadro se conserva hoy en la National Gallery of Art de Washington."""
+facture = """
+Haberle lleva la precisión aún más lejos que Harnett. Reproduce a pincel las \
+guilloquis de los billetes, sus letras ornamentadas, los números, las firmas y el \
+grabado fino de los retratos, a una escala tan pequeña que hay que acercarse para \
+verla. Imita también el desgaste: pliegues, roturas del papel, manchas, desgarros. El \
+marco pintado prolonga el juego: los sellos y la fotografía parecen pegados sobre la \
+moldura, fuera del cuadro, como si la ilusión desbordara hacia nuestro mundo. El fondo \
+oscuro y neutro, sin profundidad, y la luz uniforme impiden al ojo medir el espacio; \
+todo parece colocado sobre la superficie misma del lienzo, a su tamaño real."""
+details = [
+  "El retrato de George Washington, en el centro del billete de un dólar arrugado.",
+  "Los números de serie rojos, pintados cifra por cifra.",
+  "La pequeña fotografía de un hombre barbudo, colocada sobre el marco pintado.",
+  "Los sellos de correos y sus fragmentos, que desbordan sobre la moldura.",
+  "La firma J. Haberle, New Haven, arriba a la derecha del fondo oscuro.",
+]
+themes = ["trampantojo", "dinero", "billete", "ilusión", "objeto"]
+anecdote = """
+Cuando uno de sus cuadros de dinero se expuso en Chicago, un crítico afirmó que los \
+billetes eran billetes verdaderos pegados sobre el lienzo; Haberle hizo examinar el \
+cuadro, que resultó estar enteramente pintado."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Bodegón, fresas, nueces, etc. (Still Life—Strawberries, Nuts, &c.)"
+artiste = "Raphaelle Peale"
+annee = "1822"
+image = "strawberries-nuts.jpg"
+credit = "Photo : Art Institute of Chicago"
+licence = "CC0"
+source = "https://www.artic.edu/artworks/120154"
+technique = "Óleo sobre tabla de madera, 41,1 × 57,8 cm"
+collection = "Art Institute of Chicago, Chicago"
+note = "Una copa de cristal llena de fresas, una naranja, nueces y porcelana de China: la abundancia de la joven América, dispuesta sobre una repisa."
+description = """
+Sobre una repisa de madera desnuda, ante un fondo oscuro, unos objetos se alinean de \
+izquierda a derecha como en un escenario. En el centro, una gran copa de cristal con \
+pie, cerrada por una tapa con pomo, está llena hasta el borde de fresas rojas \
+apretadas unas contra otras. Delante de ella, en un ancho cuenco de porcelana blanca, \
+una naranja adornada con dos hojas verdes se alza sobre un lecho de avellanas y \
+almendras. A la izquierda, un azucarero de dos asas, decorado con un medallón en el \
+que se ve una figura sentada junto a un ancla, ante el mar y un navío, descansa sobre \
+una pila de platillos. A la derecha, una jarra de crema blanca de borde dorado y, sobre \
+la repisa, un pequeño racimo de frutos secos aún unidos a su tallo, quizá pasas, que \
+cae hasta el borde. Abajo a la derecha se lee la firma Raphaelle Peale Pinxt 1822."""
+evocation = """
+Raphaelle Peale pinta aquí riquezas modestas, pero escogidas. La porcelana fabricada \
+en China para el mercado estadounidense es un lujo importado, signo de la prosperidad \
+y del poderío comercial de la joven república; el ancla, atributo tradicional de la \
+Esperanza, recuerda los barcos que la traen. Las fresas podrían proceder de un \
+invernadero, cultivadas fuera de temporada, un experimento que la familia Peale \
+llevaba a cabo en su granja cerca de Filadelfia. El orden perfecto de los objetos, \
+alineados como mercancías en un escaparate, hace del bodegón un elogio del bienestar \
+doméstico y del comercio. Siglo y medio después, las latas de sopa de Warhol dirán a \
+su vez la abundancia estadounidense, en hileras."""
+histoire = """
+Raphaelle Peale es hijo de Charles Willson Peale, pintor, naturalista y fundador en \
+Filadelfia de uno de los primeros museos de Estados Unidos. Como sus hermanos, \
+llamados Rembrandt, Rubens o Titian, recibe el nombre de un gran pintor y aprende el \
+oficio junto a su padre. Es uno de los primeros artistas estadounidenses en \
+especializarse en el bodegón, género entonces poco estimado, y lo expone desde la \
+década de 1810 en la Academia de Bellas Artes de Pensilvania. Esta tabla de 1822 \
+data de los últimos años de su vida, marcados por la enfermedad y las estrecheces; \
+muere en 1825. Alimentado por los bodegones holandeses del siglo XVII, su arte abre el \
+camino a los trampantojos de Harnett y de Peto, colgados en la misma sala."""
+facture = """
+Peale pinta sobre una tabla de madera, de grano liso, que permite una ejecución \
+minuciosa y casi invisible. La composición es de gran sencillez: una repisa \
+horizontal, un fondo oscuro, una luz procedente de la izquierda que hace brillar el \
+cristal y la porcelana y modela cada fruta. El pintor distingue con esmero las \
+materias: la transparencia de la copa y los reflejos de su tapa, la piel rugosa de la \
+naranja, el brillo de las avellanas, el esmalte blanco del cuenco, la decoración \
+pintada del azucarero. Los objetos apenas se superponen, cada uno conserva su lugar, \
+lo que da al cuadro una calma solemne, entre el puesto del mercader y el altar."""
+details = [
+  "Las fresas amontonadas tras el cristal, ligeramente deformadas por su curvatura.",
+  "La naranja de las dos hojas, colocada como una corona sobre las nueces.",
+  "El medallón del azucarero de porcelana de China, con su ancla y su navío.",
+  "La jarra de crema de borde dorado, que se recorta sobre el fondo oscuro.",
+  "La firma Raphaelle Peale Pinxt 1822, trazada en el borde de la repisa.",
+]
+themes = ["bodegón", "frutas", "porcelana", "abundancia", "comercio"]
+anecdote = """
+Raphaelle Peale pintó también un célebre «engaño», Venus Rising from the Sea—A \
+Deception: una toalla blanca, pintada en trampantojo, parece colgar delante de un \
+cuadro de desnudo que casi oculta por completo."""
+salle = 3
+mur = "nord"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Very Slippy Weather (Tiempo muy resbaladizo)"
+artiste = "James Gillray"
+annee = "1808"
+image = "very-slippy-weather.jpg"
+credit = "Photo : National Gallery of Art, Washington"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.96111.html"
+technique = "Aguafuerte y buril coloreados a mano sobre papel vitela, según una idea del reverendo John Sneyd; plancha de cobre de 26,1 × 20,5 cm"
+collection = "National Gallery of Art, Washington"
+note = "Un anciano caballero resbala en el hielo ante la tienda donde Gillray vende sus caricaturas, expuestas en el escaparate a la vista de todo Londres."
+description = """
+Una calle empedrada de Londres, en invierno. En primer plano, un anciano calvo, con \
+frac verde, chaleco a rayas y calzones amarillos, cae de espaldas sobre la acera \
+resbaladiza: una pierna calzada con bota sale volando, su sombrero se va hacia atrás \
+junto con la peluca, el bastón se le escapa, monedas de oro ruedan por el empedrado. \
+Todavía sostiene en la mano un termómetro. Un perrito ladra a la izquierda, un \
+chiquillo de chaqueta violeta ríe a la derecha. Detrás de él, unos transeúntes le dan \
+la espalda: un elegante con monóculo, un oficial de casaca roja tocado con un \
+inmenso bicornio de plumero, un hombre con tricornio, otro con abrigo pardo. \
+Cautivados, miran el escaparate de una tienda cubierta de estampas coloreadas, en tres \
+filas, cuyos títulos se pueden leer. Encima brilla el rótulo dorado HUMPHREY; a la \
+derecha, tras la puerta del número 27, un cliente con sombrero observa la calle."""
+evocation = """
+Gillray pone en escena su propia tienda: el escaparate de Hannah Humphrey, su editora, \
+donde sus estampas nuevas atraían cada día a los curiosos. Los transeúntes se \
+apiñan allí como ante una pantalla, tan absortos que no ven al anciano que cae a sus \
+espaldas. El gag es doble: la caída, eterno resorte de la farsa, y el termómetro que la \
+víctima blande, como para comprobar que de verdad hiela. Pero la imagen dice sobre \
+todo el lugar que ocupaba la caricatura en el Londres de 1800: una imagen popular, \
+vendida en hojas, mirada en la calle por todas las clases, del oficial al chiquillo. \
+Es ya la cultura de masas que celebrará el pop art, siglo y medio más tarde."""
+histoire = """
+A finales del siglo XVIII, Londres es la capital de la caricatura, y James Gillray es \
+su maestro. Sus estampas, que ridiculizan al rey Jorge III, a los ministros y a \
+Napoleón, son editadas y vendidas por Hannah Humphrey, en cuya casa se aloja. En 1797, \
+la tienda se instala en el número 27 de St James's Street, en el corazón del barrio de \
+los elegantes clubes. Very Slippy Weather se publica el 10 de febrero de 1808, como \
+indica la línea grabada bajo la imagen. La idea se debe al reverendo John Sneyd, amigo \
+de Gillray, aficionado que le proporcionaba temas. En el escaparate se reconocen \
+varias de sus láminas de éxito, entre ellas Taking Physick o Tiddy-Doll, donde \
+Napoleón aparece como un panadero que mete reyes de pan de jengibre en el horno. Tres \
+años después, la enfermedad mental pondrá fin a su carrera."""
+facture = """
+Gillray graba sobre cobre al aguafuerte, dibujando libremente con la punta en el \
+barniz, y luego refuerza ciertos trazos con el buril. El trazo es vivo, nervioso, \
+lleno de accidentes: rostros desencajados, pliegues de la ropa, adoquines redondos de \
+la calzada. El coloreado se hace después a mano, hoja por hoja, a la acuarela, por \
+coloristas al servicio de la editora: verde del frac, rojo del uniforme, amarillo de \
+los calzones y del marco. La composición está construida como una escena de teatro, \
+con la caída en primer plano, el público en segundo y el escaparate como decorado. Las \
+pequeñas estampas del escaparate, dibujadas en miniatura con sus títulos, forman una \
+imagen dentro de la imagen."""
+details = [
+  "El termómetro que el anciano blande en su caída.",
+  "El sombrero que sale volando con la peluca, y las monedas de oro que ruedan por el empedrado.",
+  "Las caricaturas del escaparate, cuyos títulos se leen, como Taking Physick.",
+  "El oficial del gran bicornio de plumero, que ni siquiera se vuelve.",
+  "El perrito que ladra y el chiquillo que ríe, a ambos lados del anciano.",
+]
+themes = ["caricatura", "calle", "londres", "humor", "estampa"]
+anecdote = """
+El nombre de Hannah Humphrey brilla en letras de oro sobre el escaparate: Gillray, que \
+trabajó casi únicamente para ella desde la década de 1790, murió en 1815 en esa misma \
+casa de St James's Street."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Little Nemo in Slumberland: la ascensión al gran polo Norte (Climbing the Great North Pole)"
+artiste = "Winsor McCay"
+annee = "1907"
+image = "little-nemo-north-pole.jpg"
+credit = "Photo : National Gallery of Art, Washington"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.142154.html"
+technique = "Pluma, pincel y tinta negra sobre trazos de lápiz, sobre cartón en dos partes, 70,5 × 54,6 cm (dibujo)"
+collection = "National Gallery of Art, Washington"
+note = "El dibujo original de una página dominical: Nemo y sus compañeros escalan el polo Norte, de donde soplan todas las nieves, antes de despertar en la cama."
+description = """
+La gran hoja, dibujada con tinta negra sobre un cartón amarillento, consta de trece \
+viñetas. Arriba, el título LITTLE NEMO IN SLUMBERLAND se extiende en grandes letras \
+blancas de las que cuelgan carámbanos. En un palacio de hielo de bóvedas chorreantes de \
+estalactitas, un anciano de larga nariz y gorro puntiagudo muestra a dos niños \
+abrigados, Nemo y una niña, un inmenso pilar: el gran polo Norte, «de mil pies de \
+alto», de donde parten todas las nieves y todos los vientos. Los niños suben la \
+escalera que se enrosca a su alrededor. En la tercera fila, dos tubos gigantes, uno en \
+forma de campana, escupen el agua y el viento que la transforma en nieve; la tormenta \
+se levanta e invade las viñetas de copos blancos sobre fondo negro. En la última fila, \
+los niños se pierden en la nieve y luego Nemo despierta en su cama, regañado por haber \
+apartado las mantas."""
+evocation = """
+Cada domingo, de 1905 a 1911, en el New York Herald, Nemo, un niño cuyo nombre latino \
+significa «nadie», parte en sueños hacia el reino de Slumberland, y cada página \
+termina con su despertar. Aquí, el sueño se vuelve frío y miedo: la escalera \
+resbaladiza, el reloj helado, la nieve que engulle a los niños traducen la sensación \
+del durmiente que ha apartado las sábanas. La explicación final, prosaica y \
+divertida, devuelve al mundo real. McCay hace de la página de periódico, imagen \
+barata desechada al día siguiente, un espectáculo de hadas. Lichtenstein y Warhol \
+beberán a su vez de esa cultura de los cómics dominicales, de los que copiarán los \
+héroes, los bocadillos y los colores de imprenta."""
+histoire = """
+Little Nemo in Slumberland aparece por primera vez el 15 de octubre de 1905 en el \
+suplemento dominical en color del New York Herald. Esta lámina, marcada con un \
+copyright de 1907 a nombre del periódico, lleva en el margen la mención a lápiz «Mar 3 \
+», sin duda su fecha de publicación, el domingo 3 de marzo de 1907. McCay entregaba al \
+periódico sus dibujos en blanco y negro, a gran escala; los grabadores y los impresores \
+del Herald preparaban después los colores, siguiendo las indicaciones escritas en los \
+márgenes. El dibujo, hecho de dos cartones ensamblados, ha conservado esas anotaciones \
+de taller, valiosas para comprender la fabricación de los periódicos ilustrados. Se \
+conserva hoy en la National Gallery of Art de Washington."""
+facture = """
+McCay dibuja primero a lápiz, luego entinta a pluma contornos finos y regulares y \
+rellena a pincel las grandes masas negras. La lámina está pensada para el color, \
+ausente aquí: las notas escritas arriba y abajo de la hoja precisan que el polo y los \
+personajes deben imprimirse solo con la plancha negra, y «el resto en la plancha azul». \
+El blanco y negro puro revela aún mejor la virtuosidad del dibujante: arquitectura de \
+hielo en perspectiva, estalactitas innumerables, copos de nieve resueltos con cientos \
+de pequeños círculos blancos sobre fondo negro. El tamaño de las viñetas varía, y las \
+últimas, invadidas por la nieve, se vuelven casi abstractas antes del regreso a la \
+cama."""
+details = [
+  "El título de la página, en el que cada letra lleva carámbanos.",
+  "La escalera en espiral que se enrosca alrededor del polo, viñeta tras viñeta.",
+  "Los dos tubos gigantes que fabrican la nieve, en la tercera fila.",
+  "Los copos dibujados uno a uno, en pequeños círculos blancos, sobre fondo negro.",
+  "Las instrucciones para el impresor, escritas a mano arriba y abajo de la hoja.",
+]
+themes = ["cómic", "sueño", "nieve", "infancia", "periódico"]
+anecdote = """
+A partir de 1906, McCay actúa también en los escenarios de music-hall, donde dibuja a \
+toda velocidad ante el público; allí presentará más tarde sus primeros dibujos \
+animados."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 2.4
+
+[[oeuvres]]
+titre = "Fantômas"
+artiste = "Juan Gris"
+annee = "1915"
+image = "fantomas.jpg"
+credit = "Photo : National Gallery of Art, Washington"
+licence = "CC0"
+source = "https://www.nga.gov/collection/art-object-page.56101.html"
+technique = "Óleo sobre lienzo, 59,8 × 73,3 cm"
+collection = "National Gallery of Art, Washington"
+note = "Una novela popular, un periódico, una pipa y un frutero sobre una mesa: el bodegón cubista se abre a la cultura de los quioscos."
+description = """
+Sobre una mesa de madera de vetas pintadas, vista a la vez de frente y desde arriba, \
+unos objetos se superponen en planos recortados, como papeles pegados unos sobre otros. \
+A la izquierda, la cubierta verde de una novela lleva el título FANTÔMAS en letras \
+negras y una máscara negra; debajo, columnas de texto y, al lado, el número 65 \
+rodeado de blanco. En el centro y a la derecha, un diario doblado deja leer LE JOURNAL, \
+dos veces. Una pipa negra se recorta sobre un fondo verde. Una copa con pie y un \
+frutero no son más que contornos blancos, trazados como con tiza, que atraviesan los \
+planos. Arriba, un zócalo de madera moldurada y un muro malva; a la derecha, una \
+cortina roja; abajo a la derecha, una tela de rombos grises y negros. Toques de \
+amarillo, de azul y de verde estallan sobre el conjunto."""
+evocation = """
+Fantômas, «el genio del crimen», es el héroe negro de una serie de novelas populares de \
+Pierre Souvestre y Marcel Allain, publicadas a partir de 1911 y llevadas a la pantalla \
+por Louis Feuillade en 1913 y 1914. Baratas, vendidas con cubiertas chillonas, estas \
+novelas encantan a los poetas de vanguardia: Guillaume Apollinaire y Max Jacob, amigos \
+de Gris, fundan una «Sociedad de amigos de Fantômas». Al colocar la novela de quiosco \
+y el diario junto a la pipa y el frutero, Gris hace de la cultura de los quioscos un \
+tema de pintura, en pie de igualdad con los objetos nobles del bodegón. La máscara, \
+figura del disfraz, dice también el juego del cuadro, donde todo es imitación y \
+apariencia."""
+histoire = """
+Juan Gris pinta Fantômas en París en 1915, en plena guerra. Español, no es movilizado, \
+pero sus amigos están en el frente y su marchante, Daniel-Henry Kahnweiler, ciudadano \
+alemán, ha tenido que abandonar Francia; sus bienes han sido puestos bajo secuestro. \
+Gris vive entonces en grandes apuros. Desde 1912, siguiendo a Picasso y a Braque, ha \
+practicado el papel pegado, hecho de periódicos, papeles pintados y etiquetas. En \
+1915 vuelve a la pintura al óleo, pero imitando a pincel los efectos del collage: \
+falsa madera, recortes de periódico, motivos impresos. El cuadro, firmado abajo a la \
+izquierda, pertenece a esta serie de bodegones. Se conserva hoy en la National Gallery \
+of Art de Washington."""
+facture = """
+Gris construye el cuadro como un collage, pero todo está pintado. Los grandes planos \
+de bordes nítidos se superponen, sombreados con un leve halo oscuro que los despega \
+como hojas de papel colocadas unas sobre otras. La madera de la mesa, resuelta en \
+finas vetas regulares, imita los papeles de «falsa madera» que los cubistas pegaban en \
+sus composiciones. Las letras del periódico y de la novela están pintadas como \
+fragmentos impresos, cortados por el borde de los planos. Los propios objetos no son \
+más que contornos blancos, colocados sobre las manchas planas de color. El resultado \
+tiene a la vez del trampantojo y de la abstracción, y se une, por otro camino, a los \
+pintores de la sala vecina."""
+details = [
+  "La cubierta verde de la novela, con su título FANTÔMAS y su máscara negra.",
+  "Las letras LE JOURNAL, cortadas y repetidas, como fragmentos de prensa.",
+  "La pipa negra sobre su fondo verde, a la derecha del cuadro.",
+  "Los contornos blancos de una copa y de un frutero, que atraviesan los planos.",
+  "Las falsas vetas de madera, que imitan un papel pegado.",
+]
+themes = ["cubismo", "novela popular", "periódico", "bodegón", "máscara"]
+anecdote = """
+Antes de dedicarse a la pintura, Gris se ganaba la vida en París dibujando para \
+periódicos satíricos como L'Assiette au beurre: la imagen popular fue su primer \
+oficio."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 2.6
+
+[[oeuvres]]
+titre = "Pequeña danza (Mz. 65. Kleiner Tanz)"
+artiste = "Kurt Schwitters"
+annee = "1920"
+image = "little-dance.jpg"
+credit = "Photo : Cleveland Museum of Art"
+licence = "CC0"
+source = "https://clevelandart.org/art/1963.1"
+technique = "Collage de papeles impresos, rasgados y recortados, montado sobre una hoja de cartón"
+collection = "Cleveland Museum of Art, Cleveland"
+note = "Billetes, envoltorio de caramelos y letras de carteles: con los desechos de la ciudad, Schwitters compone una pequeña danza de colores."
+description = """
+En el centro de una hoja de montaje gris, un pequeño rectángulo está cubierto de \
+papeles rasgados y recortados, pegados en todos los sentidos. Los tonos dominantes son \
+el beige, el pardo y el gris: papel kraft, cartón, papeles de embalaje arrugados. \
+Fragmentos de carteles o de periódicos muestran grandes letras rojas y negras, \
+cortadas, ilegibles. En el centro se amontonan pequeños billetes: uno, bordeado de \
+rayas negras y naranjas, lleva el número 21.00, otro el número 3145, un tercero una \
+banda roja. Abajo a la derecha, un papel impreso en azul se lee en parte: se reconoce \
+el envoltorio de caramelos «Siesta» de la casa Wildhagen, que anuncia caramelos con \
+jugos de fruta naturales. Bajo el collage, a lápiz, el artista ha escrito Mz. 65. \
+Kleiner Tanz y ha firmado Kurt Schwitters 1920."""
+evocation = """
+El título, Pequeña danza, invita a mirar el collage como un movimiento. Los \
+fragmentos oblicuos parecen girar alrededor del centro, y el rojo, en unas pocas \
+manchas, salta de un borde a otro entre los blancos, los grises y los ocres, como un \
+bailarín en medio de la multitud. Los materiales, por su parte, proceden de la vida \
+cotidiana de la Alemania de posguerra: billetes, envoltorios de golosinas, jirones de \
+carteles. Schwitters no pretende denunciar, como los dadaístas de Berlín; recoge esos \
+restos y les da una belleza nueva. El desecho publicitario convertido en materia del \
+arte anuncia los collages de Richard Hamilton y de Eduardo Paolozzi, que inaugurarán \
+el pop art británico en la década de 1950."""
+histoire = """
+En 1919, en Hannover, Schwitters inventa la palabra Merz, tomada de un fragmento de la \
+inscripción Commerz- und Privatbank recortado de un anuncio, para designar un arte \
+hecho de todos los materiales. La declina en cuadros, en poemas, en espectáculos y, \
+para sus pequeños collages sobre papel, en Merzzeichnungen, «dibujos Merz»: eso es lo \
+que significa la abreviatura Mz. inscrita bajo la obra, seguida de su número, 65. En \
+1920 realiza un gran número de ellos, con lo que recoge en la calle, en los tranvías y \
+en las papeleras. En 1923 funda su revista Merz y se convierte en una de las grandes \
+figuras del dadá en Alemania. El collage se conserva hoy en el Cleveland Museum of \
+Art."""
+facture = """
+Schwitters rasga y recorta sus papeles, los superpone, los pega y luego los cubre en \
+parte para hallar un equilibrio de formas y de colores. Los bordes rasgados, \
+irregulares, alternan con los cortes nítidos de las tijeras. Las letras impresas se \
+eligen por su forma más que por su sentido: un 0, un fragmento de palabra, cifras. El \
+pequeño formato obliga a una composición apretada, donde cada trozo cuenta. Los \
+planos oblicuos, heredados del cubismo y del futurismo, dan al rectángulo su impulso. \
+El papel ha amarilleado y se ha oscurecido con el tiempo, lo que acentúa hoy la gama \
+cálida de los ocres y los pardos, de donde el rojo resalta con tanta más viveza."""
+details = [
+  "El billete bordeado de rayas negras y naranjas, marcado 21.00, en el centro.",
+  "El envoltorio de caramelos «Siesta», impreso en azul, abajo a la derecha.",
+  "Las grandes letras rojas, cortadas, arriba y en el borde izquierdo.",
+  "Los bordes rasgados del papel kraft, junto a los cortes nítidos de las tijeras.",
+  "La inscripción a lápiz Mz. 65. Kleiner Tanz, bajo el collage.",
+]
+themes = ["collage", "merz", "dadá", "publicidad", "desechos"]
+anecdote = """
+Schwitters era también poeta: su Ursonate, «sonata primitiva» hecha de sílabas sin \
+significado, dura casi cuarenta minutos si se recita entera."""
+salle = 5
+mur = "nord"
+place = 3
+largeur = 2.0
+
+[[artistes]]
+nom = "Henri de Toulouse-Lautrec"
+vie = "Albi, 24 de noviembre de 1864 – castillo de Malromé (Gironda), 9 de septiembre de 1901"
+biographie = """
+Henri de Toulouse-Lautrec nace en una antigua familia aristocrática del Mediodía. \
+Siendo adolescente se rompe las dos piernas en 1878 y 1879: dejan de crecer, \
+probablemente a causa de una enfermedad ósea hereditaria. Se consagra entonces al \
+dibujo, se forma en París con Bonnat y luego en el taller de Cormon, donde frecuenta a \
+Émile Bernard y a Vincent van Gogh. Instalado en Montmartre, pinta sus cabarés, sus \
+bailes y sus estrellas: Aristide Bruant, La Goulue, Jane Avril, Yvette Guilbert. Su \
+cartel para el Moulin Rouge, en 1891, lo hace célebre; dibujará una treintena, y \
+centenares de litografías. Minado por el alcohol, es internado en 1899 en una clínica \
+de Neuilly. Muere a los treinta y seis años en el castillo de Malromé, en casa de su \
+madre."""
+style = """
+Lautrec es ante todo un dibujante: una línea rápida, nerviosa, que capta una actitud, \
+un tic, un rostro en unos pocos trazos. Toma de Degas y de las estampas japonesas los \
+encuadres cortados y las vistas en picado. Sus carteles, de superficies planas \
+francas y rotulado integrado, fundaron el cartel moderno e hicieron de las estrellas de \
+Montmartre imágenes tan conocidas como las marcas."""
+
+[[artistes]]
+nom = "Alfons Mucha"
+vie = "Ivančice (Moravia), 24 de julio de 1860 – Praga, 14 de julio de 1939"
+biographie = """
+Nacido en Moravia, entonces en el Imperio austríaco, Alfons Mucha trabaja primero como \
+pintor de decorados de teatro en Viena y luego estudia en Múnich gracias a un \
+protector. Instalado en París en 1887, sigue los cursos de las academias Julian y \
+Colarossi y vive con dificultad de sus ilustraciones. A finales de 1894, dibuja casi \
+por casualidad el cartel de Gismonda para Sarah Bernhardt: pegado en París a \
+principios de 1895, causa sensación. La trágica le confía sus carteles durante seis \
+años, y el impresor Champenois lo contrata. Carteles, paneles decorativos, joyas, \
+anuncios: su estilo se convierte en la imagen misma del Art Nouveau. De regreso en \
+Bohemia en 1910, dedica casi veinte años a la Epopeya eslava y luego diseña los \
+primeros billetes y sellos de Checoslovaquia. Detenido e interrogado por la Gestapo en \
+1939, muere poco después en Praga."""
+style = """
+Mucha creó un lenguaje inmediatamente reconocible: una figura ideal, inscrita en una \
+arcada o en un círculo, rodeada de ornamentos, de flores y de letras dibujadas, con un \
+contorno oscuro y regular y colores suaves. Hizo del cartel un arte de pleno derecho, \
+y su estilo, redescubierto en los años sesenta, inspiró el cartel psicodélico y el \
+cómic."""
+
+[[artistes]]
+nom = "William Michael Harnett"
+vie = "Clonakilty (Irlanda), 10 de agosto de 1848 – Nueva York, 29 de octubre de 1892"
+biographie = """
+Nacido en el condado de Cork, en Irlanda, en plena hambruna, William Michael Harnett \
+llega de niño a Filadelfia con su familia. Adolescente, aprende el oficio de grabador \
+de platería, a la vez que sigue clases nocturnas en la Academia de Bellas Artes de \
+Pensilvania y luego, en Nueva York, en la Cooper Union y en la National Academy of \
+Design. Hacia 1875 empieza a pintar bodegones: jarras, pipas, periódicos, libros, \
+billetes de banco. De 1880 a 1886 reside en Europa, sobre todo en Múnich, donde su \
+manera se afina. En 1885, en París, pinta After the Hunt, gran trampantojo de \
+trofeos de caza que le da fama en Estados Unidos. De regreso en Nueva York, aquejado \
+de reumatismo, muere en 1892, a los cuarenta y cuatro años. Largo tiempo olvidado, es \
+redescubierto a finales de la década de 1930."""
+style = """
+Harnett es el maestro del trampantojo estadounidense. Elige objetos modestos y \
+gastados, pipas, libros con las esquinas dobladas, instrumentos de música, caza, y los \
+pinta a su tamaño real, contra un fondo plano y cercano, con una precisión que borra la \
+pincelada. Sus composiciones sabias, heredadas de los holandeses, han seducido al \
+público de los saloons y de los grandes almacenes tanto como a los coleccionistas."""
+
+[[artistes]]
+nom = "John Frederick Peto"
+vie = "Filadelfia, 21 de mayo de 1854 – Nueva York, 23 de noviembre de 1907"
+biographie = """
+John Frederick Peto crece en Filadelfia y estudia a finales de la década de 1870 en la \
+Academia de Bellas Artes de Pensilvania, donde expone después bodegones. Allí traba \
+amistad con William Michael Harnett, seis años mayor que él, cuyo ejemplo es decisivo. \
+Pero no conoce ni la gloria ni a los grandes compradores. En 1889 se instala con su \
+familia en Island Heights, en la costa de Nueva Jersey, donde toca la corneta en las \
+reuniones religiosas del verano. Allí pinta durante casi veinte años, apartado, \
+tarjeteros, libros gastados, linternas y puertas de armario. A su muerte, en 1907, está \
+olvidado; algunas de sus telas se venden incluso con el nombre de Harnett, con \
+falsas firmas, hasta que el historiador Alfred Frankenstein le devuelve, hacia 1950, \
+su nombre y su obra."""
+style = """
+Peto pinta los mismos temas que Harnett, pero con una pincelada más libre, una luz más \
+suave y objetos más pobres, abollados, rotos, como roídos por el tiempo. Sus \
+composiciones planas, hechas de planos y de manchas de color, y su melancolía \
+silenciosa se han emparentado en el siglo XX con la pintura moderna."""
+
+[[artistes]]
+nom = "John Haberle"
+vie = "New Haven (Connecticut), 1856 – New Haven, 1933"
+biographie = """
+John Haberle nace en New Haven y pasa allí casi toda su vida. Aprende el grabado y la \
+litografía, trabaja para impresores y luego es contratado en el museo Peabody de la \
+Universidad de Yale, donde dibuja para el paleontólogo Othniel Charles Marsh. Sigue \
+también clases en la National Academy of Design de Nueva York. A mediados de la década \
+de 1880 se da a conocer por sus trampantojos de billetes, sellos y recortes de \
+periódico, tan convincentes que se sospecha que son collages. Pinta después \
+composiciones más vastas, como A Bachelor's Drawer, un cajón de soltero lleno de \
+billetes, tarjetas y fotografías, o Grandma's Hearthstone, una chimenea de tamaño \
+natural. Problemas de vista lo obligan poco a poco a renunciar a ese trabajo \
+minucioso. Muere en su ciudad natal en 1933."""
+style = """
+Haberle lleva el trampantojo hasta el desafío. Elige objetos planos, billetes, sellos, \
+fotografías, etiquetas, que puede reproducir a su tamaño exacto sin que el ojo \
+descubra la trampa, y juega con humor con lo verdadero y lo falso, hasta en sus \
+títulos. Sus cuadros son también archivos de la cultura impresa de su tiempo."""
+
+[[artistes]]
+nom = "Raphaelle Peale"
+vie = "Annapolis (Maryland), 17 de febrero de 1774 – Filadelfia, 4 de marzo de 1825"
+biographie = """
+Raphaelle Peale es hijo de Charles Willson Peale, retratista de George Washington, \
+naturalista y fundador en Filadelfia de un museo de historia natural y de retratos. \
+Formado por su padre, trabaja con él en el museo, donde prepara animales \
+disecados, y pinta retratos y miniaturas. A partir de la década de 1810 se dedica \
+sobre todo al bodegón, un género que América considera entonces menor, y se convierte \
+en su primer gran especialista en su país. Su vida es difícil: la gota, el alcohol y \
+probablemente los productos tóxicos empleados en taxidermia arruinan su salud, y sus \
+cuadros se venden mal. Muere en Filadelfia en 1825, a los cincuenta y un años. Sus \
+bodegones figuran hoy entre las obras más admiradas de la pintura estadounidense \
+antigua."""
+style = """
+Peale compone bodegones sobrios y rigurosos: unas pocas frutas, una fuente, un vaso, \
+alineados sobre una repisa ante un fondo oscuro, bajo una luz franca. Heredero de los \
+holandeses del siglo XVII, busca la claridad más que la abundancia, y resuelve cada \
+materia con una precisión que roza el trampantojo. Es el gran antecesor del bodegón \
+estadounidense."""
+
+[[artistes]]
+nom = "James Gillray"
+vie = "Chelsea (Londres), 13 de agosto de 1756 – Londres, 1 de junio de 1815"
+biographie = """
+Hijo de un antiguo soldado, James Gillray crece en Chelsea en la comunidad de los \
+hermanos moravos, una Iglesia protestante austera. Aprende primero el grabado de \
+letras y luego ingresa en 1778 en las escuelas de la Royal Academy. Pero es la \
+caricatura lo que lo hace célebre. A partir de la década de 1790 trabaja casi \
+exclusivamente para la editora Hannah Humphrey, en cuya casa vive, en Bond Street y \
+luego en el número 27 de St James's Street. Ridiculiza por turno al rey Jorge III, a \
+los ministros William Pitt y Charles James Fox, a la Revolución francesa y a Napoleón, \
+al que reduce a un «pequeño Boney» furioso. Sus estampas circulan hasta el continente. \
+Hacia 1810, su vista y su razón declinan; tras un intento de suicidio, deja de grabar \
+y muere en 1815, en la casa de St James's Street."""
+style = """
+Gillray fijó las reglas de la caricatura política moderna: personajes deformados pero \
+reconocibles, bocadillos de texto que salen de las bocas, composiciones profusas \
+llenas de detalles que leer. Su aguafuerte rápido y violento y sus colores aplicados a \
+mano hacen de cada lámina un espectáculo. Es uno de los antecesores directos del \
+dibujo de prensa y del cómic."""
+
+[[artistes]]
+nom = "Winsor McCay"
+vie = "Canadá o Míchigan, hacia 1867 – Nueva York, 26 de julio de 1934"
+biographie = """
+Los orígenes de Zenas Winsor McCay siguen siendo inciertos: habría nacido en Canadá o \
+en Míchigan, entre 1867 y 1871. Crece en Míchigan, donde recibe las únicas \
+lecciones verdaderas de su vida de un profesor de dibujo de perspectiva. Trabaja \
+primero para circos y museos de curiosidades populares, de los que pinta los carteles \
+y los decorados, y luego se hace dibujante de prensa en Cincinnati. En 1903 entra en \
+el New York Herald, donde crea Little Sammy Sneeze y Dream of the Rarebit Fiend y, \
+en 1905, Little Nemo in Slumberland. Pionero de la animación, realiza una primera \
+película a partir de Little Nemo en 1911 y luego Gertie el dinosaurio en 1914. Al \
+servicio del magnate de la prensa William Randolph Hearst, dedica sus últimos años \
+sobre todo a dibujos editoriales, y muere en Nueva York en 1934."""
+style = """
+McCay es el primer gran virtuoso del cómic: aprovecha toda la superficie de la página, \
+hace variar el tamaño de las viñetas según el relato y dibuja arquitecturas de una \
+precisión asombrosa. Su trazo claro, marcado por el Art Nouveau, sirve a un imaginario \
+del sueño y de la metamorfosis que ha influido en generaciones de autores y ha abierto \
+el camino al dibujo animado."""
+
+[[artistes]]
+nom = "Juan Gris"
+vie = "Madrid, 23 de marzo de 1887 – Boulogne-sur-Seine, 11 de mayo de 1927"
+biographie = """
+José Victoriano González-Pérez estudia ingeniería en Madrid y luego se orienta hacia \
+el dibujo. En 1906 se instala en París, en el Bateau-Lavoir, en Montmartre, donde ve \
+nacer el cubismo en el taller de su vecino y compatriota Picasso. Para vivir, dibuja \
+para periódicos satíricos como L'Assiette au beurre. Se dedica a la pintura a partir \
+de 1910 y expone por primera vez en 1912, en el Salon des indépendants; ese mismo \
+año realiza sus primeros papeles pegados y firma un contrato con el marchante \
+Daniel-Henry Kahnweiler. Durante la guerra permanece en Francia, en gran pobreza, y se \
+convierte en uno de los representantes más rigurosos del cubismo. En la década de \
+1920 crea decorados y trajes para los Ballets Rusos. Enfermo, muere en 1927, a los \
+cuarenta años."""
+style = """
+Gris es el gran arquitecto del cubismo. Parte de una estructura abstracta, una \
+cuadrícula de líneas y planos de color, y hace aparecer en ella los objetos de todos \
+los días: periódicos, botellas, pipas, naipes. Sus colores francos, su composición \
+calculada y la nitidez de sus formas marcaron toda la pintura constructiva de los \
+años veinte."""
+
+[[artistes]]
+nom = "Kurt Schwitters"
+vie = "Hannover, 20 de junio de 1887 – Kendal (Inglaterra), 8 de enero de 1948"
+biographie = """
+Hijo de comerciantes acomodados de Hannover, Kurt Schwitters estudia pintura en la \
+Academia de Dresde. Durante la guerra trabaja como dibujante industrial en una \
+fábrica. En 1919 inventa Merz, un arte hecho de todos los materiales, desechos \
+incluidos, y expone sus primeros cuadros-collage en Berlín, en la galería Der Sturm. \
+Mantenido al margen por los dadaístas berlineses, crea su propio dadá en Hannover, con \
+su revista Merz, sus poemas sonoros y sus espectáculos, y construye en su casa el \
+Merzbau, una arquitectura interior que invade varias habitaciones. Calificado de \
+artista degenerado por los nazis, huye a Noruega en 1937 y luego a Gran Bretaña en \
+1940, donde es internado varios meses en la isla de Man. Termina su vida en la región \
+de los Lagos y muere en Kendal en 1948."""
+style = """
+Schwitters hace arte con todo: billetes, etiquetas, envoltorios, madera, cuerdas, \
+palabras y sonidos. Sus collages siguen siendo, sin embargo, composiciones rigurosas, \
+donde cada fragmento cuenta por su color y su forma. Su manera de recoger los \
+desechos de la cultura de consumo abrió el camino al pop art, a los nuevos realistas y \
+al arte de hoy."""

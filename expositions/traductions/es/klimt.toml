@@ -1,0 +1,552 @@
+[exposition]
+ordre = 170
+nom_court = "Klimt"
+mouvement = "Secesión vienesa"
+cadre = "dore"
+couleur = "#a8821c"
+titre = "Klimt, el oro y la vida"
+artiste = "Gustav Klimt"
+dates = "1862–1918"
+accroche = "Exposición virtual · Gustav Klimt"
+introduction = """
+En la Viena de 1900, Gustav Klimt funda la Secesión y cubre sus lienzos de oro, de \
+espirales y de mosaicos. El beso, Adele Bloch-Bauer, las alegorías de la vida y de la \
+muerte: siete lienzos, desde los paisajes del lago Attersee hasta las últimas grandes \
+composiciones."""
+vitrine = "baiser.jpg"
+
+[musee]
+nom = "Belvedere Superior"
+ville = "Viena, Austria"
+architecte = "Johann Lukas von Hildebrandt"
+construction = "1717–1723"
+presentation = """
+El Belvedere es la residencia de verano que el príncipe Eugenio de Saboya, vencedor de \
+los otomanos, hace construir a las puertas de Viena por Johann Lukas von Hildebrandt: \
+dos palacios barrocos se responden en los dos extremos de un jardín en terrazas. El \
+Belvedere Superior, terminado en 1723, servía para fiestas y recepciones; su pieza \
+maestra es el salón de mármol, de dos pisos de altura, con el techo pintado por Carlo \
+Carlone. Allí se firma, en 1955, el tratado de Estado que devuelve a Austria su \
+soberanía. Pasado a los Habsburgo, el palacio alberga desde 1781 la galería de pintura \
+imperial, abierta al público. Presenta hoy el arte austríaco y la mayor colección del \
+mundo de cuadros de Klimt, entre ellos El beso, adquirido por el Estado ya en 1908, y \
+Judith."""
+ici = """
+ARTEON conserva de él el salón de mármol y su altura. El vestíbulo, un paso bajo y sin \
+obras, se abre al norte al Salón de mármol, de 18 metros de largo y 9 de alto, de \
+muros gris lila pálido. Se lo atraviesa para llegar, al oeste, a la Sala I · La \
+Secesión y, al este, a la Sala II · El período dorado, dos salas gemelas de 6 metros de \
+altura. La visita termina en el propio salón de mármol, donde El beso aguarda al \
+fondo, en el muro norte."""
+
+[[salles]]
+nom = "El vestíbulo"
+couloir = true
+murs = "#e8e2d6"
+x = 0
+z = 0
+largeur = 12
+profondeur = 6
+hauteur = 4.5
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "Sala I · La Secesión"
+theme = "1900–1905: los primeros paisajes cuadrados y las grandes alegorías de la vida."
+murs = "#eae5dc"
+x = -11
+z = -12
+largeur = 10
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Sala II · El período dorado"
+theme = "1907–1908: la hoja de oro, los motivos bizantinos y los retratos de la sociedad vienesa."
+murs = "#e9e1cf"
+x = 11
+z = -12
+largeur = 10
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "El salón de mármol"
+theme = "1907–1915: la vida, la muerte y El beso al fondo de la sala más alta del palacio."
+murs = "#e6e3ea"
+x = 0
+z = -12
+largeur = 12
+profondeur = 18
+hauteur = 9
+portes = [{ mur = "ouest", position = 0 }, { mur = "est", position = 0 }]
+
+[[oeuvres]]
+titre = "Attersee"
+annee = "1900"
+image = "attersee.jpg"
+technique = "Óleo sobre lienzo, 80 × 80 cm"
+collection = "Leopold Museum, Viena"
+note = "Nada más que el agua del lago, en toques turquesa: uno de sus primeros paisajes cuadrados, casi abstracto."
+description = """
+Casi todo el lienzo está ocupado por el agua del lago, vista desde arriba y de cerca. \
+Ni barca, ni bañista, ni orilla en primer plano: solo una superficie en movimiento \
+hecha de pequeños toques turquesa, verde agua y azules que se entrecruzan. En lo más \
+alto, una estrecha franja de tierra firme cierra el horizonte, tan angosta que apenas \
+se advierte. Los reflejos del cielo y de la vegetación se mezclan con el color del agua \
+en manchas que se estremecen, más claras aquí, más oscuras allá. El formato \
+perfectamente cuadrado suprime toda dirección privilegiada: el ojo no sigue ningún \
+camino, ninguna línea de fuga, flota sobre el lago como un nadador, sin referencia, \
+llevado solo por el movimiento de las pequeñas olas."""
+evocation = """
+Klimt hace del paisaje una experiencia de contemplación más que una descripción. Al \
+eliminar todo motivo pintoresco, solo conserva la luz y el agua: se ha visto en ello \
+una forma de meditación, casi una imagen del infinito, en la que el lago se convierte \
+en una extensión sin orillas. Para el pintor de las grandes alegorías, atacado ese \
+mismo año por su techo de la Filosofía destinado a la universidad, estos paisajes eran \
+también un refugio: no cuentan nada y no provocan a nadie. Los historiadores del arte \
+subrayan sobre todo su modernidad. Al empujar el horizonte hasta el borde superior y \
+llenar la superficie con un motivo casi uniforme, Klimt anuncia una pintura que tiende \
+a la abstracción, mucho antes de las grandes superficies de color de la pintura del \
+siglo XX."""
+histoire = """
+En el verano de 1900, Klimt pasa por primera vez una temporada a orillas del Attersee, \
+en el Salzkammergut, con la familia de su compañera Emilie Flöge. Volverá casi cada \
+verano hasta 1916, primero a Litzlberg, luego a Kammer y por último cerca de Unterach. \
+Estas vacaciones son períodos de trabajo intenso: lejos de los encargos de retratos, \
+pinta allí lo esencial de sus paisajes, que a veces termina en el taller de Viena. \
+Este lienzo es uno de los primeros nacidos de esas estancias. Más fáciles de colocar \
+que las grandes alegorías, los paisajes encuentran de buen grado comprador entre los \
+coleccionistas vieneses. El cuadro pertenece hoy al Leopold Museum de Viena, que reúne \
+la colección formada después de la Segunda Guerra Mundial por el oftalmólogo Rudolf \
+Leopold, gran defensor de Klimt y de Schiele."""
+facture = """
+Klimt toma del neoimpresionismo su pincelada dividida, pero sin sistema científico: \
+las pequeñas comas de color, puestas unas junto a otras, siguen siendo libres y \
+vibrantes. La gama, restringida a los azules y los verdes, da a la superficie su \
+unidad. El encuadre muy cerrado y el horizonte desplazado a lo más alto recuerdan las \
+estampas japonesas, que Klimt admiraba, y la fotografía. El formato cuadrado, que \
+adopta para casi todos sus paisajes, se convierte en su firma y transforma la \
+naturaleza en superficie decorativa, sin perspectiva ni primer plano."""
+details = [
+  "En lo más alto, la estrecha franja de orilla que sirve de único punto de referencia.",
+  "Los pequeños toques de colores diferentes, que se mezclan cuando uno se aleja.",
+  "La ausencia total de figura humana, de barca o de casa.",
+  "El formato exactamente cuadrado, que impide que la mirada huya hacia un punto de fuga.",
+]
+themes = ["paisaje", "lago", "agua", "contemplación", "abstracción"]
+anecdote = """
+Para encuadrar sus paisajes, Klimt utilizaba un visor, simple cartón con una ventana \
+recortada, y a veces un catalejo o unos prismáticos de teatro. Estos instrumentos \
+acercaban el motivo y aplastaban la profundidad, de ahí sus vistas cerradas, sin \
+primer plano."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Las tres edades de la mujer"
+annee = "1905"
+image = "trois-ages.jpg"
+technique = "Óleo sobre lienzo, 180 × 180 cm"
+collection = "Galleria Nazionale d'Arte Moderna, Roma"
+note = "La niña, la madre y la anciana: una meditación sobre el paso del tiempo."
+description = """
+Sobre un fondo oscuro, pardo y gris, se recortan tres figuras desnudas. En el centro y \
+a la derecha, una joven madre, con los ojos cerrados y la cabeza inclinada, estrecha \
+contra sí a una niña dormida cuya mejilla reposa sobre su pecho. Sus cabelleras se \
+funden en un velo azulado sembrado de flores y de pequeños motivos ornamentales. A la \
+izquierda, de perfil, una anciana está de pie, con la cabeza baja, el rostro oculto \
+tras su mano y su larga cabellera gris. Su cuerpo está pintado sin complacencia: \
+vientre hinchado, senos caídos, brazos enflaquecidos y surcados de venas. El fondo, \
+casi desnudo, solo está animado por manchas doradas y por una banda vertical decorada \
+que envuelve al grupo de la madre y la niña, dejando a la anciana apartada."""
+evocation = """
+El título dice lo esencial: infancia, madurez y vejez, tres etapas de un mismo ciclo. \
+El grupo de la madre y la niña, rodeado de ornamentos, parece protegido del tiempo en \
+un sueño apacible; la anciana, excluida de este capullo decorativo, carga sola con el \
+peso de la carne que declina. Su gesto, vergüenza o pena, se ha leído como el duelo \
+por una juventud perdida. Se ha visto en ello una visión muy fin de siècle, \
+contemporánea de Freud, de la mujer reducida a su destino biológico, de la fecundidad \
+al declive. El cuadro prolonga las meditaciones de Klimt sobre el ciclo de la vida, \
+ya en el centro de su techo de la Filosofía, donde una columna de cuerpos humanos, del \
+recién nacido al anciano, se desplaza por el cosmos."""
+histoire = """
+Klimt pinta este gran lienzo cuadrado en 1905, el año en que deja la Secesión con sus \
+amigos del «grupo Klimt» y renuncia, tras años de polémica, a entregar sus techos para \
+la universidad de Viena. El cuadro no es un encargo: es una alegoría que decide pintar \
+para sí mismo. En 1911 figura entre las obras que Klimt envía a la Exposición \
+Internacional de Bellas Artes de Roma, organizada para el cincuentenario de la unidad \
+italiana, donde el pintor es premiado. El Estado italiano lo adquiere entonces para la \
+Galleria Nazionale d'Arte Moderna. Así es como una de las grandes alegorías de Klimt \
+se encuentra en Roma, en el palacio de Valle Giulia, al borde del parque de Villa \
+Borghese, donde se conserva desde hace más de un siglo."""
+facture = """
+Klimt reúne dos maneras en un mismo cuadro. Los cuerpos están modelados con precisión, \
+casi con crueldad en el caso de la anciana, cuya piel gris y cuyas venas se resuelven \
+con un realismo heredado de su formación académica. A su alrededor, el lienzo se \
+vuelve en cambio plano y decorativo: velo, cabelleras y fondo se transforman en \
+manchas, en puntos y en motivos geométricos que anuncian el período dorado. El formato \
+cuadrado y la composición sin profundidad dan al grupo el aire de un icono. Los \
+colores siguen siendo apagados, pardos, grises y azules, avivados por unos pocos \
+destellos de oro."""
+details = [
+  "La mano de la anciana, que le oculta el rostro.",
+  "La mejilla de la niña dormida, apoyada en el pecho de su madre.",
+  "Las flores mezcladas con la cabellera de la joven madre.",
+  "Las venas marcadas de los brazos y el vientre hinchado de la anciana.",
+  "El velo ornamentado de la madre y la niña, frente al fondo desnudo tras la anciana.",
+]
+themes = ["edades de la vida", "maternidad", "vejez", "tiempo", "alegoría"]
+anecdote = """
+La silueta de la anciana se ha comparado a menudo con una escultura de Rodin, «La que \
+fue la bella Heaulmière», inspirada en un poema de François Villon en el que una antigua \
+belleza llora su cuerpo envejecido. Klimt admiraba al escultor francés."""
+salle = 2
+mur = "ouest"
+place = 2
+largeur = 1.8
+
+[[oeuvres]]
+titre = "Adele Bloch-Bauer I"
+annee = "1907"
+image = "adele.jpg"
+technique = "Óleo, plata y oro sobre lienzo, 138 × 138 cm"
+collection = "Neue Galerie, Nueva York"
+note = "El retrato de oro de la esposa de un industrial vienés, robado por los nazis y devuelto a sus herederos en 2006."
+description = """
+Adele Bloch-Bauer está sentada de frente en un sillón, pero apenas se distingue dónde \
+terminan su vestido, el asiento y el fondo: todo se funde en una superficie de oro. \
+Solo emergen, pintados de manera realista, su rostro pálido de labios rojos, sus \
+hombros desnudos y sus manos juntas a la altura del pecho, con los dedos entrelazados. \
+Lleva un collar ceñido al cuello, engastado de piedras. Su vestido está cubierto de \
+ojos estilizados, de triángulos y de rectángulos; el sillón se reconoce por sus \
+espirales doradas. Abajo a la izquierda, una mancha verde rompe el oro y sugiere quizá \
+el suelo. El formato es cuadrado, y la figura ocupa casi toda su altura, como una \
+aparición sin peso, sin sombra y sin profundidad."""
+evocation = """
+El cuadro es la cumbre del período dorado de Klimt y la imagen misma de la Viena de \
+1900, rica, culta y cosmopolita. Adele, que mantenía un salón frecuentado por \
+escritores, músicos y políticos, aparece en él menos como una persona que como un ídolo, \
+casi un icono bizantino. El oro no solo la favorece: la encierra. El contraste entre la \
+carne frágil y el adorno rígido se ha leído como una reflexión sobre la condición de la \
+mujer de la alta burguesía, admirada y prisionera de su decorado. Los ojos tomados del \
+antiguo Egipto añaden una parte de misterio. Desde su restitución, el retrato se ha \
+convertido también en un símbolo de los expolios nazis y de la lucha de las familias \
+judías por recuperar sus bienes."""
+histoire = """
+El retrato lo encarga Ferdinand Bloch-Bauer, industrial del azúcar, para su esposa \
+Adele. Klimt trabaja en él de 1903 a 1907 y acumula más de un centenar de dibujos \
+preparatorios. Mostrado en Viena desde 1908, se cuelga en la residencia del \
+matrimonio. Adele muere en 1925 pidiendo a su marido que lega algún día sus Klimt a la \
+Galería Austríaca. En 1938, tras el Anschluss, Ferdinand huye y sus bienes son \
+confiscados; el retrato entra en 1941 en la Galería Austríaca, rebautizado «Dama de \
+oro» para ocultar la identidad judía de la modelo. Su sobrina Maria Altmann obtiene su \
+restitución en 2006, tras un proceso llevado hasta el Tribunal Supremo de Estados \
+Unidos y luego un arbitraje en Austria. Ronald Lauder lo adquiere entonces para la \
+Neue Galerie de Nueva York."""
+facture = """
+Klimt combina la pintura al óleo con la hoja de oro y de plata, aplicada sobre capas \
+preparatorias a veces trabajadas en leve relieve, a la manera de un orfebre. Se inspira \
+en los mosaicos bizantinos de Rávena, descubiertos en un viaje en 1903, en particular \
+en el de la emperatriz Teodora en San Vital. El contraste es total entre la carne, \
+modelada con suavidad, y la inmensa superficie plana de los ornamentos, donde la \
+profundidad desaparece. Los motivos beben de Egipto, de la Grecia arcaica y de las \
+investigaciones decorativas de los Wiener Werkstätte, los talleres de arte fundados en \
+Viena en 1903."""
+details = [
+  "Los ojos estilizados, de inspiración egipcia, que salpican el vestido.",
+  "Las manos de dedos entrelazados, crispadas ante el pecho.",
+  "El collar ceñido al cuello, única joya bien legible en medio del oro.",
+  "Las espirales doradas que dibujan el respaldo y los reposabrazos del sillón.",
+  "La zona verde abajo a la izquierda, único respiro en el oro.",
+]
+themes = ["retrato", "oro", "viena 1900", "bizantino", "expolio"]
+anecdote = """
+En junio de 2006, Ronald Lauder pagó 135 millones de dólares por este retrato, entonces \
+el precio más alto jamás alcanzado por un cuadro. La historia de su restitución \
+inspiró la película «La dama de oro» (2015), con Helen Mirren en el papel de Maria \
+Altmann."""
+salle = 3
+mur = "est"
+place = 2
+largeur = 1.4
+
+[[oeuvres]]
+titre = "La esperanza II"
+annee = "1907–1908"
+image = "esperance.jpg"
+technique = "Óleo, oro y platino sobre lienzo, 110,5 × 110,5 cm"
+collection = "Museum of Modern Art, Nueva York"
+note = "Una mujer embarazada, con los ojos bajos, envuelta en un vestido de motivos: a sus pies, mujeres en oración."
+description = """
+Una joven embarazada se ve de perfil, con la cabeza inclinada hacia delante y los ojos \
+cerrados. Su vientre redondeado se adivina bajo un amplio vestido en forma de campana, \
+cubierto de círculos, de cuadrados y de motivos dorados y coloreados, del que emergen \
+sus hombros desnudos y su rostro. Muy cerca de su vientre, una pequeña calavera se \
+desliza en la decoración del vestido, apenas visible a primera vista. En la parte baja \
+del cuadro, tres mujeres de rostros inclinados, con los ojos cerrados, parecen rezar o \
+recogerse, como arrodilladas a los pies de la futura madre. El fondo oscuro, \
+salpicado de oro, aísla las figuras. El formato cuadrado concentra la atención en esta \
+silueta vertical que se eleva desde el grupo de las tres mujeres hasta el perfil de la \
+joven."""
+evocation = """
+La espera de un hijo, que da título al cuadro, está aquí atravesada de inquietud. La \
+calavera oculta junto al vientre recuerda que la vida y la muerte están unidas desde \
+el origen, en una época en que el parto seguía siendo peligroso tanto para la madre \
+como para el hijo. Las tres mujeres de abajo se han visto unas veces como figuras de \
+oración, que imploran un desenlace feliz, y otras como plañideras que anuncian un \
+duelo. La futura madre, recogida, parece proteger a su hijo tanto como replegarse en \
+sí misma. Klimt retoma un tema que había tratado de forma provocadora unos años antes, \
+pero lo traslada a un registro interior y meditativo, donde el ornamento envuelve la \
+angustia sin hacerla desaparecer."""
+histoire = """
+El cuadro sigue a una primera versión, La esperanza I (1903), que mostraba a una mujer \
+embarazada enteramente desnuda, rodeada de figuras monstruosas y de cráneos. Juzgada \
+demasiado chocante para mostrarse al público en 1903, fue adquirida por Fritz \
+Waerndorfer, cofundador de los Wiener Werkstätte, que la guardaba, según se dice, tras \
+postigos cerrados. Se encuentra hoy en el Museo de Bellas Artes de Canadá, en Ottawa. \
+Para la segunda versión, pintada en pleno período dorado, Klimt viste a su modelo y \
+sustituye los monstruos por mujeres en oración. El cuadro fue adquirido en 1978 por el \
+Museum of Modern Art de Nueva York, gracias en particular a los fondos de Ronald y Jo \
+Carole Lauder y al marchante Serge Sabarsky, dos grandes promotores del arte vienés \
+en Estados Unidos."""
+facture = """
+Klimt asocia aquí el óleo con el oro y el platino, que dan a los motivos del vestido \
+un brillo metálico cambiante según la luz, más cálido o más frío. El vestido forma una \
+gran superficie plana, un mosaico de círculos, cuadrados y rectángulos rojos, azules y \
+verdes, que contrasta con el delicado modelado del rostro y de los hombros. El \
+perfil, nítido y puro, recuerda las figuras de los vasos griegos o de los relieves \
+egipcios. La composición vertical, casi en forma de columna, asciende desde las tres \
+cabezas inclinadas hasta la de la madre."""
+details = [
+  "La pequeña calavera disimulada junto al vientre de la futura madre.",
+  "Los párpados bajos de la joven, que parece escuchar a su hijo.",
+  "Los tres rostros de mujer alineados en la parte baja del lienzo.",
+  "Los reflejos del platino, más fríos que los del oro.",
+]
+themes = ["maternidad", "esperanza", "muerte", "oración", "oro"]
+anecdote = """
+En alemán, «guter Hoffnung sein», estar de buena esperanza, significa esperar un hijo. \
+El título original, Die Hoffnung, juega con este doble sentido: la esperanza y el \
+embarazo. El visitante vienés de la época comprendía la alusión de inmediato."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Muerte y vida"
+annee = "1910–1915"
+image = "mort-vie.jpg"
+technique = "Óleo sobre lienzo, 178 × 198 cm"
+collection = "Leopold Museum, Viena"
+note = "A la izquierda, la muerte con manto de cruces; a la derecha, el enredo de los vivos, que duermen sin verla."
+description = """
+El cuadro está cortado en dos por un vacío. A la izquierda, la Muerte se mantiene de \
+pie, esqueleto de cráneo desencajado envuelto en un manto oscuro cubierto de cruces y \
+de motivos funerarios; sostiene una maza roja y observa a los vivos. A la derecha, una \
+masa compacta de cuerpos entrelazados flota como una isla de colores: una madre con su \
+bebé, una anciana, mujeres jóvenes, un hombre que abraza a su compañera. Casi todos \
+tienen los ojos cerrados y parecen dormir, inconscientes de la presencia que los \
+acecha. Sus cuerpos están envueltos en telas de motivos de flores, de círculos y de \
+rectángulos vivamente coloreados, que contrastan con el fondo liso y oscuro. Entre los \
+dos grupos, nada: un espacio desnudo que separa a la Muerte de los vivos."""
+evocation = """
+Klimt retoma el viejo tema de la danza macabra, pero sin terror espectacular: la \
+Muerte aún no golpea, espera. Frente a ella, la humanidad está representada en todas \
+sus edades, del nacimiento a la vejez, unida por el amor y el sueño. Este sueño \
+colectivo se ha leído como una manera de decir que la vida continúa ignorando su fin, \
+o que el amor y la maternidad son la única respuesta a la muerte. El círculo de los \
+vivos, que se renueva con los nacimientos, parece imponerse por su vitalidad colorida \
+a la figura aislada y sombría del esqueleto. Terminado durante la Primera Guerra \
+Mundial, el cuadro ha adquirido retrospectivamente una resonancia trágica, en una \
+Viena que veía morir a sus soldados y pronto a su imperio."""
+histoire = """
+Klimt comienza el cuadro hacia 1910. En un primer estado, sobre fondo de oro, lo \
+presenta en la Exposición Internacional de Roma en 1911. Insatisfecho, lo retoma \
+durante varios años: hacia 1915 sustituye el oro por un fondo oscuro y liso, modifica \
+la composición y enriquece el grupo de los vivos, renunciando así a la estética del \
+período dorado. Es una de sus últimas grandes alegorías: Klimt muere tres años \
+después, en 1918. El cuadro pertenece hoy al Leopold Museum, inaugurado en 2001 en el \
+MuseumsQuartier de Viena, donde se encuentra junto a las obras de Egon Schiele. El \
+joven pintor, que admiraba a Klimt, había tratado él mismo el tema de la muerte y la \
+doncella en lienzos impresionantes, y murió el mismo año que su mayor."""
+facture = """
+El paso del oro a un fondo oscuro y mate marca el fin del período dorado: los \
+ornamentos ya no son de metal sino de colores puros, aplicados en pequeñas manchas \
+yuxtapuestas, rojas, azules, violetas y verdes. Los cuerpos, de modelado flexible, \
+encajan como las piezas de un rompecabezas en las telas decoradas. La composición \
+juega con la asimetría: la Muerte, vertical y aislada, se enfrenta a una masa oblicua \
+de vivos, y el espacio vacío entre ellos crea toda la tensión del cuadro. Se ha visto \
+en ello el eco del color vivo de los fauves y el interés de Klimt por los tejidos."""
+details = [
+  "El manto de la Muerte, tachonado de cruces.",
+  "La maza roja que sostiene el esqueleto.",
+  "El bebé dormido en brazos de su madre, en el corazón del grupo de los vivos.",
+  "El vacío oscuro que separa a la Muerte del enredo de los cuerpos.",
+]
+themes = ["muerte", "vida", "danza macabra", "edades de la vida", "sueño"]
+anecdote = """
+Se conoce el primer estado del cuadro, sobre fondo dorado, gracias a una fotografía \
+tomada durante la exposición de Roma de 1911. La comparación muestra que Klimt repintó \
+casi por completo su lienzo, cambiando el fondo y el número de figuras."""
+salle = 4
+mur = "ouest"
+position = -5
+largeur = 2.0
+
+[[oeuvres]]
+titre = "La virgen"
+annee = "1913"
+image = "la-vierge.jpg"
+technique = "Óleo sobre lienzo, 190 × 200 cm"
+collection = "Galería Nacional de Praga"
+note = "Jóvenes dormidas, enredadas en una espiral de telas de colores: el sueño de una muchacha."
+description = """
+En el centro de una gran composición casi cuadrada, una joven duerme, con la cabeza \
+inclinada, los ojos cerrados y el rostro apacible. A su alrededor, otras jóvenes, \
+desnudas o semivestidas, están atrapadas en el mismo torbellino: una se arquea, otras \
+se enroscan sobre sí mismas o se acurrucan, otra más parece despertar. Sus cuerpos se \
+entremezclan en un inmenso drapeado de colores vivos, violeta, rosa, anaranjado y azul, \
+sembrado de flores, de círculos y de espirales, que forma una especie de isla \
+flotante. Alrededor, el fondo azul noche, casi negro, no deja adivinar ni suelo ni \
+horizonte: el grupo parece suspendido en el vacío, como en el espacio de un sueño, sin \
+peso y sin dirección."""
+evocation = """
+El título orienta la lectura: se ve tradicionalmente a la muchacha dormida en el \
+centro y, a su alrededor, sus sueños o las etapas de su despertar a la sensualidad y a \
+la vida de mujer. Las poses de las demás figuras, del abandono al repliegue, se han \
+entendido como los estados sucesivos de una misma persona, de la inocencia al deseo. El \
+sueño, en Klimt, es a menudo un momento de vida interior más que un simple descanso. El \
+cuadro refleja la atmósfera de una Viena donde Freud había publicado La interpretación \
+de los sueños en 1900 y donde la sexualidad femenina se convertía en tema de estudio y \
+de debate. Muestra también a un Klimt que, tras el oro, celebra el color, la juventud \
+y la vitalidad del cuerpo."""
+histoire = """
+Pintada en 1913, La virgen pertenece a los últimos años de Klimt, cuando ha \
+abandonado el oro por composiciones muy coloridas. No es un encargo sino una gran \
+alegoría, como Muerte y vida, a la que hace eco con su grupo de cuerpos flotando en el \
+vacío. En esa fecha, Klimt es un artista reconocido en toda Europa central y expone con \
+regularidad fuera de Viena. El cuadro entra después en las colecciones públicas de \
+Praga, entonces una de las grandes ciudades de Austria-Hungría: solo después de 1918, \
+con el nacimiento de Checoslovaquia, se encuentra en el extranjero. Conservado por la \
+Galería Nacional, es una de las pocas grandes alegorías de Klimt visibles fuera de \
+Austria y una de las joyas de sus colecciones de arte moderno."""
+facture = """
+Klimt abandona aquí la hoja de oro en favor de una paleta deslumbrante, en la que \
+dominan los violetas, los rosas, los anaranjados y los azules. Los ornamentos ya no \
+son geométricos y metálicos sino florales, inspirados en los tejidos y en el arte del \
+Extremo Oriente que Klimt coleccionaba. La composición en espiral enrolla los cuerpos \
+alrededor de la figura central y los recorta sobre un fondo oscuro casi uniforme, que \
+aviva los colores. Los cuerpos, de contornos flexibles, conservan la línea elegante \
+heredada de sus innumerables dibujos del natural."""
+details = [
+  "El rostro apacible de la muchacha dormida, en el centro del torbellino.",
+  "Las flores y las espirales que cubren el inmenso drapeado.",
+  "El fondo azul noche, sin suelo ni horizonte, donde el grupo parece flotar.",
+  "Los brazos y las piernas entremezclados, que cuesta atribuir a cada figura.",
+]
+themes = ["sueño", "dormir", "juventud", "feminidad", "color"]
+anecdote = """
+Klimt dibujaba sin descanso a las modelos que posaban en su taller, dormidas, \
+tumbadas o abandonadas. Dejó varios miles de dibujos, muchos más que cuadros, y \
+muchas de las poses de La virgen proceden de ellos."""
+salle = 4
+mur = "est"
+position = 5
+largeur = 2.0
+
+[[oeuvres]]
+titre = "El beso"
+annee = "1907–1908"
+image = "baiser.jpg"
+technique = "Óleo y hoja de oro sobre lienzo, 180 × 180 cm"
+collection = "Österreichische Galerie Belvedere, Viena"
+note = "Dos amantes abrazados al borde de un prado florido, envueltos en oro: la obra más célebre de Viena."
+description = """
+Al borde de un pequeño prado florido que se interrumpe de golpe, como al borde de un \
+acantilado, una pareja se abraza sobre un fondo de oro moteado. El hombre, coronado de \
+hiedra, inclina la cabeza para besar la mejilla de la mujer; su rostro está casi \
+enteramente oculto. Ella está arrodillada, con los ojos cerrados, la cabeza echada \
+hacia atrás sobre el hombro, una mano sobre la nuca de su compañero y flores en el \
+cabello. Sus cuerpos se confunden en una sola forma dorada: la túnica del hombre está \
+cubierta de rectángulos negros, blancos y plateados, el vestido de la mujer de \
+círculos y de motivos florales coloreados. Los pies desnudos de la mujer, crispados, \
+sobresalen del borde del prado, sobre el vacío dorado."""
+evocation = """
+El beso se ha convertido en la imagen universal del amor, pero es más ambiguo de lo que \
+parece. La mujer, con los ojos cerrados, parece a la vez abandonarse y contenerse; sus \
+manos y sus pies crispados, al borde del vacío, han hecho hablar de un éxtasis que \
+roza el peligro. Los motivos se han leído como símbolos: rectángulos masculinos para el \
+hombre, círculos y flores femeninos para la mujer, reunidos en una misma envoltura de \
+oro. Se ha querido reconocer a Klimt y a su compañera Emilie Flöge en la pareja, sin \
+ninguna prueba. El oro, tomado de los iconos, hace de este abrazo un momento fuera del \
+tiempo, casi sagrado. El cuadro resume, en fin, la ambición de la Secesión: unir \
+pintura y artes decorativas en una obra de arte total."""
+histoire = """
+Klimt pinta El beso en 1907-1908, en la cumbre de su período dorado, pocos años \
+después de la agotadora querella de las pinturas de la universidad. La obra se presenta \
+en 1908 en la Kunstschau, la gran exposición de arte organizada en Viena por Klimt y \
+sus amigos tras su salida de la Secesión, con el título «Pareja de enamorados». \
+Durante la exposición, el Ministerio de Instrucción Pública la adquiere para la Moderne \
+Galerie del Estado, antecesora del Belvedere, por 25 000 coronas, una suma \
+considerable. El cuadro no ha abandonado desde entonces las colecciones públicas \
+austríacas. Está colgado en el Belvedere Superior, el antiguo palacio del príncipe \
+Eugenio de Saboya, donde atrae cada año a visitantes de todo el mundo."""
+facture = """
+Klimt superpone a la pintura al óleo hoja de oro, aplicada en capas y a veces en leve \
+relieve, con una destreza de orfebre. El contraste entre los rostros y las manos, \
+pintados con delicadeza, y las vestiduras reducidas a superficies planas de ornamentos \
+da la impresión de una aparición. El formato cuadrado, el fondo sin profundidad y la \
+silueta de la pareja, reunida en una sola forma alargada, concentran toda la mirada en \
+el abrazo. El prado, sembrado de pequeñas flores, recuerda los tapices medievales, \
+mientras que el oro evoca los iconos y los mosaicos bizantinos."""
+details = [
+  "Los dedos de los pies de la mujer, crispados al borde del prado como al borde de un precipicio.",
+  "La corona de hiedra del hombre y las flores en el cabello de la mujer.",
+  "Los rectángulos negros y blancos de la túnica, opuestos a los círculos coloreados del vestido.",
+  "Las manos del hombre que enmarcan el rostro de la mujer y lo vuelven hacia él.",
+  "Los finos destellos dorados esparcidos por el fondo, como un polvo de estrellas.",
+]
+themes = ["amor", "pareja", "oro", "abrazo", "bizantino"]
+anecdote = """
+Por San Valentín de 2022, el Belvedere dividió una reproducción digital en alta \
+definición de El beso en 10 000 fragmentos, vendidos en línea en forma de NFT: una \
+manera inesperada de hacer entrar la obra de 1908 en la era digital."""
+salle = 4
+mur = "nord"
+position = 0
+largeur = 1.8
+
+[[artistes]]
+nom = "Gustav Klimt"
+vie = "Baumgarten, cerca de Viena, 14 de julio de 1862 – Viena, 6 de febrero de 1918"
+biographie = """
+Gustav Klimt nace en 1862 en Baumgarten, a las puertas de Viena, segundo de los siete \
+hijos de Ernst Klimt, grabador en oro llegado de Bohemia, y de Anna Finster. La \
+familia es modesta. A los catorce años ingresa en la Escuela de Artes Decorativas de \
+Viena, adonde se une a él su hermano Ernst. Con él y su compañero Franz Matsch, \
+funda una compañía de decoradores que obtiene grandes encargos oficiales: techos de \
+las escaleras del Burgtheater, pinturas de la gran escalera del Kunsthistorisches \
+Museum. En 1892, la muerte de su padre y luego de su hermano Ernst lo trastorna. En \
+1897 funda con otros artistas la Secesión vienesa, de la que es primer presidente, \
+para abrir Austria al arte moderno europeo. Los grandes lienzos encargados para la \
+universidad de Viena, la Filosofía, la Medicina y la Jurisprudencia, desencadenan un \
+escándalo: Klimt renuncia al encargo en 1905 y abandona la Secesión. Estos lienzos \
+desaparecerán en un incendio en 1945. Se abre entonces el período dorado, con El beso \
+y los retratos de mujeres de la alta burguesía, y luego el friso en mosaico del \
+palacio Stoclet en Bruselas. Nunca se casa, tiene varios hijos naturales y comparte su \
+vida con la diseñadora de moda Emilie Flöge, con quien pasa sus veranos a orillas del \
+Attersee. Apoya a los jóvenes artistas, entre los que destaca Egon Schiele. Víctima \
+de un ataque en enero de 1918, muere en Viena el 6 de febrero."""
+style = """
+Formado en una pintura académica muy segura, Klimt supera pronto el realismo \
+histórico hacia una pintura en la que el cuerpo humano, modelado con finura, se \
+recorta sobre superficies decorativas planas. Su marca más reconocible es el empleo de \
+la hoja de oro y de ornamentos tomados de Bizancio, de Egipto, de la Grecia arcaica y \
+del arte japonés. Las mujeres, sensuales o inquietantes, y los grandes temas del amor, \
+de la vida y de la muerte dominan su obra; sus paisajes cuadrados, por su parte, rozan \
+la abstracción. Al borrar la frontera entre pintura y artes decorativas, encarnó el \
+Art Nouveau vienés y abrió el camino al expresionismo de Schiele y de Kokoschka."""

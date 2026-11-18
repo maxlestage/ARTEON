@@ -1,0 +1,493 @@
+[exposition]
+ordre = 8
+nom_court = "Byzantium"
+mouvement = "Byzantium and the Christian East"
+cadre = "dore"
+couleur = "#7d5a12"
+titre = "Byzantium and the Christian East, Heaven in Gold"
+artiste = "Ravenna, Constantinople, Angelos Akotantos, Coptic Egypt, Armenia, Ethiopia…"
+dates = "6th–17th century"
+accroche = "Virtual exhibition · Hagia Sophia, Istanbul"
+introduction = """
+For a thousand years, from Justinian to the fall of Constantinople in 1453, the Byzantine Empire developed an art of gold and presence: mosaics in which the emperor stands beside the saints, icons that the faithful pray to and kiss, and ivories and Gospel books as precious as reliquaries. The visit follows this art from Ravenna to Crete, then to the other Eastern Christians, in Egypt, Armenia and Ethiopia, across eleven works. The building is inspired by Hagia Sophia in Istanbul: an elongated narthex, a very tall square nave beneath the dome, two side aisles and, at the far end, an apse."""
+vitrine = "vierge-de-vladimir.jpg"
+
+[musee]
+nom = "Hagia Sophia"
+ville = "Istanbul, Turkey"
+architecte = "Anthemius of Tralles and Isidore of Miletus"
+construction = "532–537"
+presentation = """
+In 532 the Nika riot ravaged Constantinople, and the basilica of Divine Wisdom, Hagia Sophia, went up in smoke. Emperor Justinian had it rebuilt at once by two scholars, the mathematician Anthemius of Tralles and Isidore of Miletus: the new church was consecrated in 537. Its dome, about thirty-one metres wide, seems to float above the nave thanks to the ring of forty windows pierced at its base. It collapsed in 558 after earthquakes and was rebuilt higher. For nine centuries Hagia Sophia was the cathedral of the Empire, where emperors were crowned. After Mehmed II took the city in 1453, it became a mosque: minarets were added and the figural mosaics were gradually covered with plaster. A museum from 1934, it was returned to Muslim worship in 2020. One can still see Justinian’s marbles and, in the galleries, the mosaics uncovered in the 20th century, including the Deësis."""
+ici = """
+ARTEON’s building takes up the layout of Hagia Sophia. One enters from the south into the narthex, a long vestibule twenty-four metres wide. It opens onto the nave beneath the dome, a square hall twenty-four metres on each side and twenty metres high, with gold-coloured walls, where the mosaics are gathered. To the west lies the aisle of the icons; to the east, the aisle of the treasury, lower and more intimate. To the north, at the far end of the nave, the apse presents the Christian East: Egypt, Armenia and Ethiopia."""
+
+[[salles]]
+nom = "The Narthex"
+theme = "The long entrance vestibule, like the one where the faithful of Hagia Sophia waited before entering the nave."
+murs = "#e5d8bc"
+x = 0
+z = 0
+largeur = 24
+profondeur = 6
+hauteur = 9
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "The Nave beneath the Dome"
+theme = "The mosaics: Justinian and Theodora at Ravenna, the Deësis of Hagia Sophia."
+murs = "#d9c493"
+x = 0
+z = -15
+largeur = 24
+profondeur = 24
+hauteur = 20
+portes = ["nord", "ouest", "est"]
+
+[[salles]]
+nom = "The Aisle of the Icons"
+theme = "The Christ of Sinai, the Virgin of Vladimir and a Cretan Virgin of Tenderness."
+murs = "#e3cfa5"
+x = -17
+z = -15
+largeur = 10
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "The Aisle of the Treasury"
+theme = "The precious arts of Constantinople: a carved ivory and an illuminated Gospel page."
+murs = "#ddcbb2"
+x = 17
+z = -15
+largeur = 10
+profondeur = 16
+hauteur = 8
+
+[[salles]]
+nom = "The Apse of the Eastern Christians"
+theme = "A woven icon from Egypt, an Armenian Gospel book in silver and an Ethiopian Gospel page."
+murs = "#e7d5b0"
+x = 0
+z = -32
+largeur = 12
+profondeur = 10
+hauteur = 10
+
+[[oeuvres]]
+titre = "Emperor Justinian and His Court"
+artiste = "Mosaïstes de Ravenne"
+annee = "c. 547"
+image = "justinien.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meister_von_San_Vitale_in_Ravenna_003.jpg"
+technique = "Wall mosaic: glass-paste, stone and gold tesserae"
+collection = "Basilica of San Vitale, Ravenna (north wall of the apse)"
+note = "The Byzantine emperor, Bishop Maximian and their retinue bring the bread of the Eucharist to the church, against a gold ground."
+description = """
+Against a gold ground, a dozen men stand facing forward, lined up as if for an official photograph. At the centre, Emperor Justinian wears a crown of pearls and a halo, and a great purple mantle fastened at the shoulder by a brooch set with gems. He holds a broad gold bowl. To his left, bald and thin, Bishop Maximian, whose name is written above his head, brandishes a jewelled cross; two deacons follow him with a Gospel book adorned with stones and a smoking censer. To the emperor’s right come dignitaries in white mantles with a purple band, then soldiers crowded behind a shield marked with the monogram of Christ. The feet, in sandals, rest on a flat green ground without depth."""
+evocation = """
+The scene shows a procession: the emperor brings the bread of the Eucharist, just as Theodora, on the opposite wall, brings the wine. Justinian never came to Ravenna, but the image makes him present forever in the sanctuary, close to the altar. His halo says that he rules by the will of God, and the composition combines the three pillars of his power: the Church with Maximian, the administration with the dignitaries, the army with the soldiers. The emperor’s companions have sometimes been compared to the apostles gathered around Christ. Historians still debate the identity of some of the figures, such as the man placed at the emperor’s right, sometimes recognised as General Belisarius."""
+histoire = """
+The church of San Vitale was begun around 526, when Ravenna belonged to the Ostrogothic kingdom, with money from a wealthy banker, Julian the Argentarius. In 540 Justinian’s armies retook the city: the church became a showcase of Byzantine power in Italy. Bishop Maximian, appointed by the emperor, consecrated it in 547 or 548; the apse mosaics, including this panel, date from those years. Ravenna then remained the seat of the Byzantine governor of Italy for two centuries. The panel has never left its wall; together with the city’s other early Christian monuments, San Vitale has been a UNESCO World Heritage Site since 1996."""
+facture = """
+The mosaicist assembles thousands of small cubes, the tesserae, pressed into fresh mortar: stone for some tones, coloured glass paste for others, and gold leaf sandwiched between two layers of glass for the ground. The tesserae, set slightly at an angle, catch the light from the windows and make the gold shimmer. The faces, with large, dark-rimmed eyes, are individualised, but the bodies, without volume, line up in a regular rhythm of white and purple verticals. There is no shadow and no landscape: earthly space fades before a solemn presence."""
+details = [
+  "The name MAXIMIANVS, written in black tesserae above the bishop’s head.",
+  "The jewelled brooch that fastens the emperor’s purple mantle.",
+  "The chi-rho, the monogram of Christ, on the soldiers’ large green shield.",
+  "The smoking censer swung by the deacon at the far right.",
+  "The figures’ feet, which overlap without ever quite settling on the ground.",
+]
+themes = ["emperor", "power", "procession", "gold", "mosaic"]
+anecdote = """
+Neither Justinian nor Theodora ever set foot in Ravenna. Their mosaic portraits stand in for their presence: in Antiquity, the emperor’s official image represented him everywhere in the Empire, so much so that it was honoured as if it were the man himself."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Empress Theodora and Her Retinue"
+artiste = "Mosaïstes de Ravenne"
+annee = "c. 547"
+image = "theodora.jpg"
+cadre = "aucun"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Meister_von_San_Vitale_in_Ravenna_006.jpg"
+technique = "Wall mosaic: glass-paste, stone and gold tesserae"
+collection = "Basilica of San Vitale, Ravenna (south wall of the apse)"
+note = "Facing Justinian, the empress brings the chalice of the Mass wine, surrounded by her ladies-in-waiting."
+description = """
+Empress Theodora stands at the centre, haloed, beneath a shell-shaped niche. She wears a diadem from which hang long strands of pearls, a heavy necklace of gems and a purple mantle whose hem is embroidered with three figures in procession. She holds a gold chalice set with jewels. On the left, a dignitary lifts the curtain of a doorway, near a fountain gushing from a small column; another man stands beside him. On the right, her ladies follow her, dressed in patterned fabrics of red, green and white. Above them, a blue, white and red striped hanging is drawn back. A wide border set with cabochons frames the whole."""
+evocation = """
+Theodora answers Justinian: she brings the wine of the Eucharist as he brings the bread, and the imperial couple thus seems to take part forever in the Mass celebrated in the apse. The three figures embroidered on her mantle are the Magi bringing their gifts to the Child: the empress, too, makes an offering. The door, the curtain and the fountain suggest that she is on the threshold, about to enter the church. This image has been read as the vindication of a woman of humble origin, the daughter of a bear-keeper at the Hippodrome and a former actress, who became the equal of the emperor. It has also been proposed, without certainty, that the woman at her side is Antonina, the wife of General Belisarius."""
+histoire = """
+The panel was made at the same time as Justinian’s, for the consecration of San Vitale in 547 or 548. Theodora died in Constantinople in 548: the image is therefore one of the last portraits made in her lifetime, or nearly so. The court historian Procopius, who admires her in his official writings, vilifies her in his Secret History, and her legend was formed in part through him. In 532, during the Nika riot, she is said to have persuaded Justinian not to flee the city. Like her husband’s, her portrait has remained in place for fourteen centuries."""
+facture = """
+The mosaicist plays on the richness of the textiles: the ladies’ gowns form a catalogue of patterns, lozenges, flowers and stripes, rendered tessera by tessera. The pearls of the diadem and the necklace are made of mother-of-pearl or white glass tesserae, which catch the light. As with Justinian, the figures are frontal, without shadow, lined up on a green ground; but here the architecture, with the niche, the door and the fountain, gives a sketch of a place. The great gold halo sets the empress’s head off against the shell of the niche."""
+details = [
+  "The three Magi embroidered in gold on the hem of Theodora’s mantle.",
+  "The long pendants of pearls falling from the diadem to the shoulders.",
+  "The fountain on its small column, on the left, near the door.",
+  "The curtain lifted by the dignitary, revealing the shadow of a room.",
+  "The differently patterned fabrics of each of the ladies-in-waiting.",
+]
+themes = ["empress", "offering", "pearls", "court", "mosaic"]
+anecdote = """
+According to Procopius, during the Nika riot of 532, as Justinian was thinking of fleeing, Theodora declared that the imperial purple makes a fine shroud. The emperor stayed, the revolt was crushed, and it was after this riot that the new Hagia Sophia was built."""
+salle = 2
+mur = "nord"
+place = 6
+largeur = 3.0
+
+[[oeuvres]]
+titre = "The Deësis"
+artiste = "Byzance"
+annee = "c. 1261"
+image = "deesis-sainte-sophie.jpg"
+cadre = "aucun"
+credit = "Photo : Myrabella"
+licence = "CC0"
+source = "https://commons.wikimedia.org/wiki/File:Deesis_mosaic_Hagia_Sophia.jpg"
+technique = "Wall mosaic: glass-paste, stone and gold tesserae"
+collection = "Hagia Sophia, Istanbul (south gallery)"
+note = "Christ between the Virgin and Saint John the Baptist, who pray for humanity: the most famous mosaic in Hagia Sophia."
+description = """
+Against a gold ground, three large half-length figures stand out. At the centre, Christ, haloed with a cross, blesses with his right hand and holds in his left a Gospel book with a gold cover. He wears a golden tunic and a blue mantle. On the left, the Virgin, veiled in dark cloth, bows her head towards him; on the right, Saint John the Baptist, his hair and beard in unruly locks, his brow furrowed, leans in as well. Greek letters give their names: MP ΘΥ for the Mother of God, IC XC for Jesus Christ, and “Saint John the Forerunner”. The whole lower half of the panel has vanished: only a grey plaster remains, on which fragments of mosaic float."""
+evocation = """
+Deësis means “prayer” or “supplication” in Greek. The Virgin and John the Baptist, the two witnesses closest to Christ, intercede with him on behalf of mankind on the Day of Judgement. The theme is widespread in Byzantium, on icons as at the top of iconostases. What strikes one here is the humanity of the faces: the Virgin’s restrained sadness, John’s anxiety, Christ’s grave gentleness. These faces, modelled as in painting, have often been compared with the Italian art being invented at the same moment, with Cimabue and Giotto. The losses, far from erasing the image, give it the fragile presence of an apparition."""
+histoire = """
+In 1204 the crusaders of the Fourth Crusade took and sacked Constantinople, which remained in Latin hands until 1261. Most historians date the Deësis to the years following the recapture of the city by Michael VIII Palaiologos, when Hagia Sophia was returned to Orthodox worship; others place it earlier, in the 12th century. The panel adorns the south gallery, the upper-storey gallery. After 1453, the church, now a mosque, had its figural mosaics gradually covered with plaster. They were uncovered in the 1930s by the Byzantine Institute of America, directed by Thomas Whittemore. The lower half of the panel, however, is lost."""
+facture = """
+The tesserae of the faces are tiny and set in tight lines that follow the volumes, like a painter’s brushstrokes: one passes smoothly from pink to the olive green of the shadows. The mosaicist chose tesserae of very subtle colours to model the cheeks, the eyelids and the locks of the beard. The letters and contours are traced in dark tesserae. The gold ground, laid in regular rows, reflects the changing light of the gallery windows."""
+details = [
+  "The letters IC XC on either side of Christ’s head.",
+  "The unruly locks of Saint John the Baptist, the prophet of the desert.",
+  "The jewelled Gospel book held by Christ.",
+  "The cross inscribed in Christ’s halo, reserved for him alone.",
+  "The fragments of the Virgin’s mantle, floating on the grey plaster.",
+]
+themes = ["intercession", "judgement", "face", "gold", "mosaic"]
+anecdote = """
+Not far from the Deësis, in the galleries, an inscription in the floor bears the name Henricus Dandolo: it recalls the Doge of Venice Enrico Dandolo, who led the Fourth Crusade against Constantinople and died in the city in 1205."""
+salle = 2
+mur = "sud"
+place = 2
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Christ Pantocrator of Sinai"
+artiste = "Byzance"
+annee = "6th century"
+image = "pantocrator-du-sinai.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg"
+technique = "Encaustic on panel, 84 × 45.5 cm"
+collection = "Saint Catherine’s Monastery, Sinai, Egypt"
+note = "One of the oldest surviving icons: Christ, ruler of all, painted in wax in the time of Justinian."
+description = """
+Christ appears in half-length, facing forward, before barely sketched architecture: a low wall, a niche, a blue sky where two stars shine. A large gold halo, ringed in blue and decorated with an almost vanished cross, surrounds his head. His long brown hair falls behind his left shoulder; his beard is short. He wears a tunic and a brown-purple mantle. With his right hand he blesses; with his left he clasps to himself a thick Gospel book, whose gold cover is adorned with a cross, stones and pearls. His face is not symmetrical: to the viewer, the left half is calm and gentle, the right half more severe, with a raised eyebrow and a larger eye."""
+evocation = """
+Pantocrator means “he who holds all things” in Greek: Christ is here the master of the world, judge and saviour. The asymmetry of the face has often been discussed: it has been seen as the two natures of Christ, divine and human, united in a single person, or as mercy and justice. The direct gaze, which fixes each worshipper, makes the icon an encounter rather than a portrait. The precious book recalls that Christ is the Word of God. With a few other icons from Sinai, this image is one of the rare witnesses to the art of icons before the Iconoclast controversy, which led to the destruction of a great many in the 8th and 9th centuries."""
+histoire = """
+The icon was probably painted in Constantinople in the 6th century, perhaps for the monastery that Emperor Justinian had fortified at the foot of Mount Sinai. In the following century the Arab conquest placed the monastery outside the Empire: when the iconoclast emperors had religious images destroyed, between 726 and 843, their orders did not reach Sinai. The icon has been kept on the spot for fourteen centuries. Repainted over time, it was cleaned and restored in 1962, which revealed the original painting. The art historian Kurt Weitzmann brought it to wider attention along with the monastery’s other early icons; the monastery holds the richest collection of Byzantine icons in the world."""
+facture = """
+The icon is painted in encaustic: the pigments are mixed with hot wax, applied with a brush or spatula, as in the funerary portraits of the Fayum in Roman Egypt. The wax gives a thick, luminous material and allows soft transitions on the face, from pink to brown. The modelling, the shadows and the light coming from the left still belong to ancient painting. Only the gold of the halo and the frontality herald the more abstract art of the following centuries."""
+details = [
+  "Christ’s two eyes, different in size and expression.",
+  "The two raised fingers of the right hand, in a gesture of blessing.",
+  "The pearls and stones on the cover of the Gospel book.",
+  "The two golden stars in the blue sky, on either side of the halo.",
+  "The wall and niche in the background, as in an ancient portrait.",
+]
+themes = ["christ", "icon", "gaze", "encaustic", "sinai"]
+anecdote = """
+Saint Catherine’s Monastery, where the icon is kept, has been inhabited without interruption since the 6th century. Its granite walls, raised under Justinian, still stand, and its library holds one of the oldest collections of manuscripts in the world."""
+salle = 3
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Virgin of Vladimir"
+artiste = "Byzance"
+annee = "c. 1130"
+image = "vierge-de-vladimir.jpg"
+licence = "Domaine public"
+source = "https://commons.wikimedia.org/wiki/File:Vladimirskaja_ikona_Bo%C5%BEiej_Materi.jpg"
+technique = "Tempera on panel, 104 × 69 cm"
+collection = "Tretyakov Gallery, Moscow (Church of St Nicholas in Tolmachi)"
+note = "Painted in Constantinople, the most venerated of Russian icons: the Virgin presses to her cheek the Child who embraces her."
+description = """
+Against a worn gold ground, the Virgin appears half-length, wrapped in a dark mantle that covers her head, edged with gold and marked with a star on the forehead. She carries the Child on her right arm and places her left hand on her chest. The Child, in a golden tunic, throws himself against her: his cheek touches his mother’s, his left arm goes around her neck, and the sole of his foot can be seen protruding at the bottom. The Virgin does not look at him: her dark eyes, beneath arched eyebrows, are turned towards the viewer. Around them, the wide edge of the panel is covered with losses and nail marks. In the upper corners, abbreviated Greek letters name the Mother of God."""
+evocation = """
+The icon belongs to the type of the Virgin of Tenderness, Eleousa in Greek, which the Russians call Umilenie. The Child’s embrace speaks of a mother’s love, but the Virgin’s grave gaze, turned towards us, says that she already knows the Passion to come: tenderness is mingled with sorrow. For the Russians, the icon became the protector of Moscow and of the whole country. Several deliverances of the city have been attributed to it: it was carried in procession in moments of danger and witnessed the coronation of tsars. It is thus at once a Byzantine work of art and a Russian national symbol."""
+histoire = """
+The icon was painted in Constantinople, probably around 1130, and sent shortly afterwards to Kiev. In 1155 Prince Andrei Bogolyubsky took it north to Vladimir, from which it takes its name. In 1395, when Tamerlane threatened Moscow, it was brought there; it eventually stayed, in the Dormition Cathedral of the Kremlin. Repainted and damaged several times, it was restored in 1918: it was then discovered that only the faces, and a few fragments, date from the 12th century, the rest having been redone between the 13th and 16th centuries. Entering the Tretyakov Gallery in 1930, it has been displayed since 1999 in the Church of St Nicholas in Tolmachi, adjoining the museum, where people once again pray before it."""
+facture = """
+The faces, the only original part, show the refinement of Constantinopolitan painting in the 12th century. The painter first lays down an olive ground, the sankir, then builds up the lights with fine, transparent layers of pale tones, up to the highlights on the bridge of the nose and under the eyes. The features are drawn with a supple, sure line: the curve of the eyebrows, the small mouth, the long nose. The Child’s garments are streaked with fine gold lines that make the fabric glimmer."""
+details = [
+  "The two cheeks of mother and Child, pressed against one another.",
+  "The sole of the Child’s left foot, visible beneath his golden tunic.",
+  "The Child’s arm passing around his mother’s neck.",
+  "The star embroidered on the Virgin’s veil, above the forehead.",
+  "The gold lines streaking the Child’s tunic.",
+]
+themes = ["virgin", "tenderness", "icon", "russia", "constantinople"]
+anecdote = """
+According to tradition, Tamerlane turned back in 1395 on the very day the icon arrived in Moscow. The Russian Church still commemorates this encounter every year, on 26 August in the Julian calendar, which is 8 September in ours."""
+salle = 3
+mur = "ouest"
+place = 2
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Virgin of Tenderness (Eleousa)"
+artiste = "Angelos Akotantos"
+annee = "c. 1425–1450"
+image = "eleousa-akotantos.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/2010.154"
+technique = "Tempera and gold on panel, 96 × 70 cm"
+collection = "Cleveland Museum of Art"
+note = "Attributed to the greatest painter of Venetian Crete: a Virgin of Tenderness intended for an iconostasis."
+description = """
+The Virgin, in half-length, stands out against a crackled gold ground, on a panel with a rounded top. She is wrapped in a dark red mantle, the maphorion, which covers her head and shoulders; a blue cap shows beneath it, and three gold stars adorn her forehead and shoulders. She inclines her head towards the Child, whom she carries on her left arm and supports with her right hand, with its long fingers. The Child, dressed in a pale blue tunic scattered with small motifs and an orange mantle, presses his cheek against his mother’s and looks up at her. He holds a scroll; his legs are crossed and his bare feet protrude. The lower edge of the Virgin’s sleeve is bordered with a gold fringe."""
+evocation = """
+Like the Virgin of Vladimir, hanging beside it, this icon belongs to the type of the Eleousa, the Virgin of Tenderness. Three centuries separate them: the formula was handed down from generation to generation, because an icon must remain faithful to its model. But the Cretan painter brings his own calmer gentleness: the Virgin’s gaze is lowered, melancholy, and the Child, instead of throwing himself against her, looks at her. The scroll he holds recalls that he is also the Word of God. Large and visible from afar, the icon was probably placed on an iconostasis, the screen that separates the faithful from the sanctuary in Orthodox churches."""
+histoire = """
+Since the early 13th century, Crete had belonged to Venice. At Candia, present-day Heraklion, workshops of Greek painters worked both for Orthodox churches and for Catholic clients, and exported their icons throughout the Mediterranean. The Cleveland museum attributes this one to Angelos Akotantos, the most renowned of them in the first half of the 15th century. Its history before the 20th century is unknown; it passed to a Roman dealer in 1989, then into a private collection in Rome, before being bought by the Cleveland museum in 2010."""
+facture = """
+The painter works in egg tempera on a prepared wooden panel, and lays the ground in gold leaf. The flesh is built up following the Cretan method: a brown-green base, then lights of increasing paleness, laid in small parallel touches that can be seen on the Virgin’s cheek and neck. The folds of the red mantle are drawn with long, dark, angular lines. On the Child’s garments, fine strokes of gold make the fabric shine. The outline is crisp, the modelling soft: it is the elegance that would make the reputation of the Cretan school."""
+details = [
+  "The three gold stars on the veil, a sign of Mary’s virginity.",
+  "The small parallel pale touches that model the Virgin’s neck.",
+  "The scroll clasped in the Child’s hand.",
+  "The Child’s crossed bare feet, at the bottom of the panel.",
+  "The gold fringe at the edge of the Virgin’s sleeve, on the left.",
+]
+themes = ["virgin", "tenderness", "crete", "icon", "venice"]
+anecdote = """
+According to the Cleveland museum, this is the only known work by Angelos Akotantos in the United States. Cretan icons travelled far: in the early 16th century, the emperor of Ethiopia Lebna Dengel sent monks to buy some for his churches."""
+salle = 3
+mur = "ouest"
+place = 3
+largeur = 1.2
+
+[[oeuvres]]
+titre = "Virgin and Child Enthroned (Stroganoff Ivory)"
+artiste = "Byzance"
+annee = "950–1025"
+image = "ivoire-stroganoff.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1925.1293"
+technique = "Carved ivory, 25.3 × 17.2 × 1.8 cm"
+collection = "Cleveland Museum of Art"
+note = "An ivory plaque carved in Constantinople, enlarged here: in reality it is 25 cm high."
+description = """
+In a narrow frame, the Virgin sits facing forward on a monumental throne with a lobed back, furnished with two large cushions and decorated with rosettes. Her feet rest on a footstool, itself set on a broad platform decorated with carved gems. She holds the Child on her lap, at the exact centre of the plaque. The Child, haloed, raises his right hand in blessing and holds a scroll in his left. The Virgin rests one hand on his shoulder. In the upper corners, two half-length angels with outspread wings reach out their hands towards them. A Greek inscription runs along the front of the platform. The small columns of the throne are carved in openwork."""
+evocation = """
+The Virgin is here the very throne of Christ: the Child, sitting upright on her lap, is nothing like an infant. He blesses like an adult, his face impassive, to make visible the mystery of the Incarnation, God made man. The angels, shown half-length, seem to emerge from heaven to point out this mystery to the worshipper. The luxury of the throne, the platform and the cushions echoes that of the imperial court: Mary is presented as a heavenly empress. In ivory, a rare and costly material, this image served for the private prayer of great figures of Constantinople."""
+histoire = """
+The plaque was carved in Constantinople around the year 1000, in the era of the Macedonian dynasty, when the capital’s workshops were producing their finest ivories. It is not known for whom. It then passed through a long series of collections: in Paris, then in England with the antiquarian Francis Douce, who died in 1834, then in Rome in the collection of Count Sergei Stroganov, Russian statesman and art historian, who gave it his name. It passed into the Malcolm collection and was sold at Christie’s in 1913; in 1925 it was given to the Cleveland museum by the patron Jeptha Homer Wade."""
+facture = """
+Elephant ivory, imported from Africa or India, is cut into a plaque, then hollowed out with chisel and gouge: the background is lowered by several millimetres so that the figures stand out in high relief. The sculptor details with a goldsmith’s precision the folds of the mantle, the rosettes of the backrest, the cabochons of the platform and the locks of the angels. The fine veins streaking the surface are those of the ivory itself. Originally, some details were perhaps highlighted with gold or colour."""
+details = [
+  "The Child’s hand raised in blessing, two fingers extended.",
+  "The two cushions of the throne, plump and tied at the ends.",
+  "The rosettes carved into the lobed backrest.",
+  "The Greek inscription engraved on the front of the platform.",
+  "The fine natural streaks of the ivory across the whole background.",
+]
+themes = ["ivory", "virgin", "throne", "angels", "constantinople"]
+anecdote = """
+Count Sergei Stroganov, who gave his name to the ivory, founded in 1825 in Moscow a drawing school for craftsmen. It still exists today: it is the Stroganov Academy of Industrial Arts."""
+salle = 4
+mur = "est"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Saint Matthew, Leaf from a Lectionary"
+artiste = "Byzance"
+annee = "1057–1063"
+image = "lectionnaire-saint-matthieu.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1942.1512"
+technique = "Tempera and gold on vellum, 28.8 × 24.3 cm"
+collection = "Cleveland Museum of Art"
+note = "The evangelist writes beneath a golden arch: a leaf from a book given by an empress to a monastery in Constantinople."
+description = """
+Beneath an arch supported by two columns of dark marble with gilded capitals, Saint Matthew sits on a seat furnished with a red cushion. Elderly, with white beard and hair, he wears a blue tunic and a beige mantle. Bent forward, he writes in a notebook resting on his knees. In front of him, a piece of dark wooden furniture, a cabinet-lectern, holds an inkwell and instruments. The floor is of green marble veined with white, and the background of gold leaf. Above him, his name is inscribed in red Greek letters. Around the image, the parchment has been left bare; it is worn, stained and torn in places along its right edge."""
+evocation = """
+Portraits of the four evangelists traditionally open Gospel books throughout the Christian world. They vouch for the authenticity of the text: Matthew, Mark, Luke and John were held to be direct witnesses of the life of Christ, or close to witnesses. The model comes from Antiquity, when the author’s portrait was placed at the head of his works: Matthew looks like a Greek philosopher. The gold of the background nevertheless places him outside time, in the divine light. The care given to the scribe’s tools, inkwell and pens, also recalls the work of the monks who copied these books."""
+histoire = """
+This leaf comes from a lectionary, a book that gathers the Gospel passages read during the Mass, in the order of the liturgical year. According to the Cleveland museum, the book was given in 1063 to the monastery of the Holy Trinity at Chalke, one of the Princes’ Islands near Constantinople, by Empress Catherine, wife of Isaac I Komnenos, emperor from 1057 to 1059. At an unknown date the book was dismembered and its pages dispersed, like many illuminated manuscripts. This one was bought in 1942 by the Cleveland museum from the New York dealer Dikran Kelekian."""
+facture = """
+The painter works on vellum, a finely prepared calfskin. He first lays the gold leaf of the background, burnished so that it shines, then the colours in tempera, in thin layers. The folds of the mantle are rendered by light and dark lines that suggest volume, in the ancient manner. The marble of the floor and columns is imitated by painted veining. With time, the colour has flaked in places, on Matthew’s shoulder and on the lectern, revealing the parchment."""
+details = [
+  "The evangelist’s name, ὁ ἅγιος Ματθαῖος, in red letters on the gold.",
+  "The inkwell and the scribe’s tools set on the lectern.",
+  "The red cushion of the seat, beneath Matthew’s mantle.",
+  "The white veins of the green marble on the floor.",
+  "The columns of dark red marble and their gilded capitals.",
+]
+themes = ["evangelist", "writing", "manuscript", "gold", "constantinople"]
+anecdote = """
+The earliest Byzantine lectionaries often received goldsmith’s bindings, covered with precious metal, gems and sometimes ivory: the book itself was carried in procession and kissed by the faithful."""
+salle = 4
+mur = "est"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Woven Icon of the Virgin and Child"
+artiste = "Égypte copte"
+annee = "6th century"
+image = "icone-tissee-copte.jpg"
+cadre = "aucun"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1967.144"
+technique = "Wool tapestry, 178.7 × 110.5 cm"
+collection = "Cleveland Museum of Art"
+note = "A rare icon, woven in more than twenty colours of wool in Egypt, before the Iconoclast controversy."
+description = """
+At the centre of the tapestry, the Virgin, dressed in dark blue, sits enthroned facing forward on a seat furnished with a red cushion; she holds the Child on her lap. Two archangels with blue wings, in white tunics, stand at her sides, a long staff in hand, in front of two columns. A Greek inscription above names Saint Michael, Saint Mary and Saint Gabriel. Higher up, Christ sits enthroned in a round glory, between two angels, on a starry sky. A wide border of foliage, flowers and fruit, including pomegranates, frames the whole; it carries medallions in which appear the busts of the apostles, each named in Greek. Large losses pierce the fabric, especially at the top."""
+evocation = """
+This tapestry is a true icon: it was hung on the wall of a church to be venerated. It superimposes two images, the Virgin and Child on earth and Christ in glory in heaven, linked by the angels: it has been read as the Incarnation and the divine Majesty brought together. The apostles of the border form a kind of court around them. The fruit and flowers evoke paradise, a lush garden in the heart of a desert land. The large fixed eyes, the round faces and the bold colours are typical of Christian Egypt, where the Christians and their art are called Coptic."""
+histoire = """
+The tapestry was woven in Egypt in the 6th century, when the country was still part of the Byzantine Empire, as the Greek inscriptions attest. It is not known in which church it hung. Egypt’s dry climate has preserved many textiles of this period, often found in tombs, but a woven icon of this size is exceptional. The Cleveland museum bought it in 1967 from a New York collector, Mrs Paul Mallon; its earlier history is unknown. With the Sinai icons, it is among the rare religious images preserved from before the iconoclast crisis."""
+facture = """
+It is a tapestry: the weft threads of dyed wool, in more than twenty colours, are passed by hand between the warp threads and packed down until they hide them, area of colour by area of colour. The weavers blend the hues to model faces and folds, as a painter would. According to the museum, such a tapestry cost more than a painting at the time. The wool threads have worn unevenly, which explains the holes: the dark ground that shows beneath is the fabric on which it is now mounted."""
+details = [
+  "The Greek inscription above the archangels and the Virgin.",
+  "The disc marked with a cross held by the angel on the right.",
+  "The red pomegranates and the flowers of the border.",
+  "The busts of the apostles in the medallions, named in Greek.",
+  "Christ in glory, at the top, in a blue circle scattered with stars.",
+]
+themes = ["tapestry", "virgin", "angels", "egypt", "coptic"]
+anecdote = """
+Coptic textiles were unearthed by the thousand at the end of the 19th century in Egyptian necropolises, notably at Antinoë, excavated by the Frenchman Albert Gayet from 1896, and then dispersed among museums around the world."""
+salle = 5
+mur = "nord"
+place = 2
+largeur = 1.5
+
+[[oeuvres]]
+titre = "Armenian Gospel Book with Silver Cover"
+artiste = "Arménie"
+annee = "manuscript: 13th century; binding: 1691"
+image = "evangeliaire-armenien.jpg"
+cadre = "vitrine"
+licence = "CC0"
+source = "https://www.metmuseum.org/art/collection/search/446861"
+technique = "Ink and tempera on parchment; binding of embossed silver gilt, enamel, coloured stones and glass, 26 × 18.7 cm"
+collection = "Metropolitan Museum of Art, New York"
+note = "An Armenian Gospel book, clothed four centuries later in a goldsmith’s binding: the book is 26 cm high."
+description = """
+The book is shown closed, upright, seen from the front. Its silver-gilt cover is worked in relief. At the centre, a plaque shows the Nativity: the Virgin reclining beside the Child swaddled in his manger, Joseph standing, the ox and the ass above, and shepherds approaching. In the upper part of the scene, flocks, horsemen following a star, the Magi, and a row of angels’ heads. The ground is turquoise-blue enamel. Beneath the scene runs an inscription. Around it, a broad border of green enamel is covered with vine scrolls, bunches of grapes and coloured stones: garnets, turquoises, blue cabochons. At the side one glimpses the spine of the book, covered in green velvet."""
+evocation = """
+For the Armenians, the Gospel book is more than a text: it is a sacred object, carried in procession, kissed, sometimes regarded as protective. It was handed down from generation to generation, bought back when it had been stolen, and rebound when it wore out. Here, a 13th-century manuscript receives in 1691 a goldsmith’s garment worthy of its value. The Nativity recalls that the Gospel announces the birth of the Saviour; the vine, image of Christ and of the Eucharistic wine, surrounds it. The book links two eras of Armenian history, the kingdom of Cilicia and the diaspora."""
+histoire = """
+The manuscript was copied and painted in the 13th century, probably in Cilicia, the Armenian kingdom founded in the south-east of Asia Minor, whose illumination workshops were then enjoying their golden age. The museum does not specify where the binding, dated 1691, was made; the Armenian inscription shows that it was commissioned by Armenians. At the end of the 17th century, Armenian communities were scattered between the Ottoman Empire, Persia and Europe, and their merchants financed such works for their churches. The book entered the Metropolitan Museum of Art in 1916, a gift of Mrs Edward S. Harkness."""
+facture = """
+The cover is made of silver sheets worked in repoussé: the goldsmith strikes the metal from the back to make the figures stand out, then refines the details with a chasing tool from the front. Some parts are gilded. The grounds are covered with coloured enamels, powdered glass fused in hollows of the metal, blue for the sky of the Nativity, green for the border. Stones and coloured glass, set in bezels, punctuate the frame. Inside, the parchment pages are written in ink and painted in tempera."""
+details = [
+  "The star, at upper right, followed by the Magi on horseback.",
+  "The ox and the ass leaning over the manger.",
+  "The row of angels’ heads in the clouds at the top of the scene.",
+  "The bunches of grapes in relief in the green enamel border.",
+  "The large turquoise and the garnets set in the frame.",
+]
+themes = ["gospel", "nativity", "goldsmithing", "enamel", "armenia"]
+anecdote = """
+Armenia is traditionally considered the first kingdom to have adopted Christianity as its official religion, in the early 4th century. Its alphabet, created around 405 by the monk Mesrop Mashtots, was first used to translate the Bible."""
+salle = 5
+mur = "ouest"
+place = 2
+largeur = 0.8
+
+[[oeuvres]]
+titre = "Saint Luke, Leaf from a Gospel Book"
+artiste = "Éthiopie chrétienne"
+annee = "c. 1440–1480"
+image = "evangeliaire-ethiopien-saint-luc.jpg"
+licence = "CC0"
+source = "https://www.clevelandart.org/art/1999.212"
+technique = "Ink and tempera on vellum, 37 × 25 cm"
+collection = "Cleveland Museum of Art"
+note = "The evangelist Luke and his ox, painted in Tigray, in northern Ethiopia, in bright colours and geometric patterns."
+description = """
+Saint Luke sits in three-quarter view, on a block decorated with a lattice pattern, beneath an arch. He has long grey hair and a grey beard drawn line by line. In his left hand he holds an open white book, and in his right a long reed pen with which he writes. His robe is entirely covered with wavy orange and red lines, which draw the folds like contour lines. His halo stands out against a green ground, and the lower part of the ground is striped with orange. Above, in the curve of the arch, an ox leaps beside a few lines of Ge’ez script. A border of geometric patterns surrounds the page, whose parchment is browned and worn at the edges."""
+evocation = """
+The ox is the symbol of Luke, one of the four animals that have represented the evangelists since the early Christian centuries. The portrait follows a model that came down from Antiquity through Coptic, Syriac and Byzantine books: the seated author writing. But the Ethiopian painter transforms it into a colourful drawing, with rhythmic lines and large almond-shaped eyes, very far from Greek modelling. The text in Ge’ez, the liturgical language of the Ethiopian Church, is a prayer whose meaning is roughly: “Make this image of Saint Luke with this ox; may his prayer and his blessings be with us. Amen.”"""
+histoire = """
+The leaf comes from a Gospel book made in the Tigray region, in northern Ethiopia, around 1440–1480, under the reign of Zara Yaqob or his successors, a time of great activity for the monasteries and their copying workshops. The book was later dismembered, and its pages entered the art market. This one was bought in 1999 by the Cleveland museum from an Ohio dealer in rare books. Like many Ethiopian manuscripts that have left the country, the book was cut up to be sold page by page, a practice now widely criticised."""
+facture = """
+The painter first traces all the outlines in ink, with a sure line, then fills the surfaces with bold colours, without shadow or gradation: yellow, green, orange, red. Volume is replaced by the rhythm of the lines, which cover the robe with an undulating network. The page border, made of chevrons and interlace, recalls the patterns of weavings and Ethiopian crosses. The support is a thick parchment, which has darkened and frayed with use."""
+details = [
+  "The ox, symbol of Luke, at the top in the arch.",
+  "The lines of Ge’ez script beside the ox.",
+  "The long reed pen that the evangelist rests on his book.",
+  "The wavy orange lines that draw the folds of the robe.",
+  "The orange bands striping the ground, on the left, beneath the saint’s arm.",
+]
+themes = ["evangelist", "manuscript", "ethiopia", "ge'ez", "colour"]
+anecdote = """
+Christianity became the official religion of the kingdom of Aksum, in what is now northern Ethiopia, around the middle of the 4th century, under King Ezana: well before the evangelisation of most countries of northern Europe."""
+salle = 5
+mur = "est"
+place = 2
+largeur = 0.9
+
+[[artistes]]
+nom = "Mosaïstes de Ravenne"
+vie = "Ravenna (Italy), 5th–6th century"
+biographie = """
+Ravenna, on the Adriatic coast, became in 402 the capital of the Western Roman Empire, sheltered by its marshes. Empress Galla Placidia had a small mausoleum built there, covered with midnight-blue mosaics. After the fall of the Western Empire, the city was the capital of the Ostrogothic king Theodoric, who ruled Italy from 493 to 526 and had the church of Sant’Apollinare Nuovo decorated. In 540 the armies of the Byzantine emperor Justinian took the city: San Vitale, then Sant’Apollinare in Classe, consecrated in 549, received the finest decorations of their time. Ravenna then remained the seat of the Byzantine governor of Italy, the exarch, until its capture by the Lombards in 751. The mosaicists who worked on these building sites are anonymous. Historians debate whether they came from Constantinople or formed a local workshop trained in the models of the capital; it is likely that the two mingled. Eight monuments of the city have been inscribed together as a UNESCO World Heritage Site since 1996."""
+style = """
+The mosaics of Ravenna show the passage from Roman to Byzantine art: figures lose their volume and shadow, are placed frontally against a ground of gold or deep blue, and line up in solemn rows. The colour is dazzling, yet the faces with their large eyes are individualised. This language of gold and frontality, which makes the image a presence rather than a scene, would mark all Eastern Christian art and, later, the Italian Primitives."""
+
+[[artistes]]
+nom = "Byzance"
+vie = "Byzantine Empire, Constantinople, 330–1453"
+biographie = """
+In 330 Emperor Constantine inaugurated his new capital on the site of ancient Byzantium, on the Bosphorus: Constantinople. When the Western Roman Empire disappeared in 476, the Eastern one continued for nearly a thousand years; it is now called the Byzantine Empire, but its inhabitants called themselves Romans. Under Justinian, in the 6th century, it reached its greatest extent and built Hagia Sophia. From about 726 to 843 the Iconoclast controversy divided the Empire: the iconoclasts had representations of Christ and the saints destroyed, before the veneration of icons was definitively restored. Under the Macedonian dynasty, in the 10th and 11th centuries, the capital’s workshops produced ivories, manuscripts, enamels and luxury silks. In 1204 the crusaders sacked Constantinople; the city was retaken in 1261 by Michael VIII Palaiologos, and art enjoyed a last flowering. On 29 May 1453 the Ottomans of Mehmed II took the city. Byzantine art survived in the Orthodox countries, from Greece to Russia, and in the workshops of Venetian Crete."""
+style = """
+Byzantine art is first of all a religious and imperial art. It favours frontality, the gold ground that places figures outside time, and types fixed by tradition so that each image remains faithful to its model. The icon is not a mere picture: according to theologians, the respect paid to the image passes to the person represented. Yet from century to century artists renewed these formulas, from the ancient elegance of the year 1000 to the moving humanity of the faces of the 13th century."""
+
+[[artistes]]
+nom = "Angelos Akotantos"
+vie = "Candia (Crete), active in the first half of the 15th century"
+biographie = """
+Angelos Akotantos lived in Candia, present-day Heraklion, the capital of Crete, then a possession of Venice. In the 15th century the city housed an important guild of Greek painters, who worked for the island’s Orthodox churches, for Catholic clients and for export. Akotantos was one of the most renowned. He is known from Venetian archival documents, including a will dated 1436, and from icons signed in Greek “by the hand of Angelos”. Among these, a Virgin Kardiotissa, kept in the Byzantine and Christian Museum in Athens, is one of the most famous. He died in the middle of the 15th century, shortly before or after the fall of Constantinople, which drove many Byzantine artists to take refuge in Crete. His models, copied and copied again, fixed for a long time the types of the Cretan school, followed by Andreas Ritzos at the end of the century and, in the next, by the young Doménikos Theotokópoulos, the future El Greco, born in Candia."""
+style = """
+Akotantos combines the tradition of Constantinople with a new precision: crisp outlines, flesh modelled with fine parallel pale touches, angular, rhythmic folds, abundant gold. His Virgins have a grave, restrained gentleness. This elegant manner, easy to transmit through pattern drawings, became the signature of the Cretan school, whose icons spread from Venice to Ethiopia."""
+
+[[artistes]]
+nom = "Égypte copte"
+vie = "Christian Egypt, from the 4th century"
+biographie = """
+According to tradition, the evangelist Mark founded the Church of Alexandria. Christianity spread in Egypt from the earliest centuries, and in the 4th century the country became the cradle of Christian monasticism, with Saint Anthony, hermit of the desert, and Saint Pachomius, who founded the first communities of monks. At the Council of Chalcedon, in 451, a large part of Egypt’s Christians rejected the definition of Christ’s nature adopted by the Empire: their Church separated from that of Constantinople. The word Copt comes from the Arabic qubt, itself derived from the Greek Aiguptios, Egyptian. The Arab conquest, between 639 and 642, brought Egypt under Muslim rule, but the Copts remained numerous and still form the largest Christian community in the Near East today. Their art, known through churches and monasteries, wall paintings, sculptures and above all textiles preserved by the dry sand, blends the heritage of Greco-Roman Egypt with Christian themes."""
+style = """
+Coptic art loves bold colours, round faces with large fixed eyes, frontal and simplified figures, and teeming decoration of foliage, fruit and animals. It inherits from the Fayum portraits and the Hellenistic art of Alexandria, but moves towards an ever more marked stylisation. Its wool and linen fabrics, often woven as tapestry, rank among the finest textiles of Late Antiquity."""
+
+[[artistes]]
+nom = "Arménie"
+vie = "Armenia, Cilicia and the Armenian diaspora, from the 4th century"
+biographie = """
+According to tradition, King Tiridates III, converted by Saint Gregory the Illuminator, made Christianity the official religion of Armenia in the early 4th century. Around 405, the monk Mesrop Mashtots invented an alphabet specific to the Armenian language, which made it possible to translate the Bible and gave birth to a rich literature. Placed between Byzantium, Persia, and then the Arab and Turkish world, Armenia often lost its independence. At the end of the 12th century, Armenian princes founded in Cilicia, in the south-east of Asia Minor, a kingdom that lasted until 1375: its monasteries produced the finest Armenian illuminated manuscripts, including those of the painter Toros Roslin in the 13th century. After its fall, the Armenians dispersed across the Ottoman Empire, Persia, Crimea, Poland and as far as India. Great merchants, they financed churches, manuscripts and liturgical objects, and fervently preserved old books, which they had rebound or bought back when they had been taken."""
+style = """
+Armenian illumination is distinguished by its vivid, saturated colours, its canon tables adorned with birds and plants, its margins peopled with ornaments, and a personal reading of Byzantine models. Armenian goldsmiths, for their part, excel in repoussé silver, enamels and the gemwork of bindings and reliquaries. The carved stone crosses, the khachkars, are another creation unique to Armenian art."""
+
+[[artistes]]
+nom = "Éthiopie chrétienne"
+vie = "Kingdom of Aksum, then Ethiopian empire, from the 4th century"
+biographie = """
+In the 4th century, King Ezana of Aksum, in what is now northern Ethiopia, converted to Christianity under the influence of Frumentius, a Christian from Tyre whom Athanasius of Alexandria consecrated bishop. The Ethiopian Church thereafter remained tied to that of Alexandria, which sent it its bishops until the 20th century. Its liturgical language is Ge’ez, the ancient language of Aksum, written in its own alphabet. In the 12th or 13th century, under King Lalibela, the famous churches that bear his name were carved out of the rock. In the 15th century, Emperor Zara Yaqob, who reigned from 1434 to 1468, reformed the Church and encouraged the copying and illustration of sacred books in the monasteries. Ties with the Mediterranean were then strengthened: Cretan icons arrived in Ethiopia, and a Venetian painter, Nicolò Brancaleon, worked at court at the end of the century. Ethiopian churches and monasteries still preserve thousands of illuminated manuscripts today."""
+style = """
+Ethiopian painting, on parchment, on wood or on church walls, favours the black ink line, pure colours laid in flat areas, yellow, red, green, and large almond-shaped eyes turned towards the viewer. Folds become patterns, borders are covered with interlace and chevrons. Heir to Coptic, Syriac and Byzantine models, it transforms them into a very recognisable graphic language."""

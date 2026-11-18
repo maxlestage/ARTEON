@@ -1,0 +1,438 @@
+[exposition]
+ordre = 75
+nom_court = "Ukiyo-e"
+mouvement = "Ukiyo-e, el grabado japonés"
+cadre = "estampe"
+couleur = "#2c4a7e"
+titre = "Ukiyo-e, las imágenes del mundo flotante"
+artiste = "Hokusai, Hiroshige, Utamaro, Sharaku…"
+dates = "1759–1857"
+accroche = "Exposición virtual · Museo Nacional de Tokio"
+introduction = """
+Ukiyo-e, «imágenes del mundo flotante»: en Edo, la actual Tokio, estampas grabadas en madera y vendidas por el precio de un cuenco de fideos muestran a los actores de kabuki, a las bellezas de moda y, después, los paisajes y las leyendas. La visita sigue esta edad de oro, de las primeras estampas en color de Harunobu a las Cien vistas de Edo de Hiroshige, pasando por La gran ola de Hokusai, con una pintura sobre seda de Itō Jakuchū como contrapunto. El edificio se inspira en el Honkan del Museo Nacional de Tokio y en las casas japonesas: salas bajas de paredes color papel, unidas por una larga galería, el engawa. Las estampas, que miden unos treinta centímetros, se presentan ampliadas."""
+vitrine = "grande-vague.jpg"
+
+[musee]
+nom = "Museo Nacional de Tokio"
+ville = "Tokio, Japón"
+architecte = "Watanabe Jin (Honkan)"
+construction = "Honkan abierto en 1938"
+presentation = """
+Fundado en 1872, el Museo Nacional de Tokio es el museo más antiguo de Japón. Instalado en el parque de Ueno, ocupa varios edificios; el primero, diseñado por el arquitecto inglés Josiah Conder, quedó arruinado por el gran terremoto de Kantō en 1923. El Honkan, el edificio principal que lo sustituye, es obra de Watanabe Jin y abre en 1938: una construcción de hormigón armado a la occidental, coronada por un gran tejado de tejas a la japonesa, en el estilo llamado «de la corona imperial». Una escalera monumental conduce a la planta superior, donde las salas siguen la historia del arte japonés, de la prehistoria a la época de Edo. Las estampas ukiyo-e, que la luz deteriora, se exponen allí por turnos, unas semanas cada vez, en una sala que les está dedicada; el museo conserva miles, junto con pinturas, sables, lacas, quimonos y numerosos tesoros nacionales."""
+ici = """
+El edificio de ARTEON toma del Honkan sus salas de estampas y de la casa japonesa su planta a escala humana: techos de tres a cuatro metros, paredes color papel washi. Se entra por el sur en el genkan, que da a «El engawa · Las cien vistas de Edo», larga galería de casi veinte metros. Al norte, esta comunica con la sala I · Hokusai y el Fuji, al oeste, y con la sala III · Visiones, al este. Entre ambas, la sala II · Bellezas y actores las une: se pasa por ella de la sala I a la sala III, antes de volver a la galería."""
+
+[[salles]]
+nom = "El genkan"
+theme = "La entrada de la casa: se deja la calle para entrar en el mundo flotante de Edo."
+murs = "#ece4d2"
+x = 0
+z = 0
+largeur = 10
+profondeur = 6
+hauteur = 3.6
+portes = ["sud", "nord"]
+
+[[salles]]
+nom = "El engawa · Las cien vistas de Edo"
+theme = "1857: a lo largo de la galería, tres estaciones de Edo vistas por Hiroshige, de los ciruelos en flor a los zorros de Año Nuevo."
+murs = "#efe7d6"
+x = 0
+z = -5
+largeur = 19.6
+profondeur = 4
+hauteur = 3.0
+
+[[salles]]
+nom = "Sala I · Hokusai y el Fuji"
+theme = "Hacia 1830–1832: La gran ola y el Fuji rojo, dos vistas de la montaña sagrada."
+murs = "#f0e9da"
+x = -6.525
+z = -10.25
+largeur = 6.55
+profondeur = 6.5
+hauteur = 3.2
+portes = ["sud"]
+
+[[salles]]
+nom = "Sala II · Bellezas y actores"
+theme = "1766–1794: la joven de Harunobu, las celebridades de Utamaro y el actor de kabuki de Sharaku."
+murs = "#ebe2cf"
+x = 0
+z = -12
+largeur = 6.5
+profondeur = 10
+hauteur = 3.8
+portes = [{ mur = "ouest", position = -1.75 }, { mur = "est", position = 1.75 }]
+
+[[salles]]
+nom = "Sala III · Visiones"
+theme = "1759 y hacia 1844: los gallos resplandecientes de Jakuchū, pintados sobre seda, y el esqueleto gigante de Kuniyoshi."
+murs = "#ede5d4"
+x = 6.525
+z = -10.25
+largeur = 6.55
+profondeur = 6.5
+hauteur = 3.4
+portes = ["sud"]
+
+[[oeuvres]]
+titre = "El jardín de los ciruelos en Kameido"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "pruniers-kameido.jpg"
+technique = "Estampa nishiki-e (grabado en madera a color), formato ōban vertical, unos 36 × 24 cm"
+collection = "Rijksmuseum, Ámsterdam"
+note = "Una lámina de las Cien vistas famosas de Edo: el tronco de un viejo ciruelo corta la imagen, y el jardín en flor aparece detrás."
+description = """
+En primer plano, un enorme tronco de ciruelo, casi negro, atraviesa toda la imagen en diagonal; está tan cerca que se sale del encuadre por arriba y por la izquierda. De sus ramas salen unos ramilletes cubiertos de flores blancas de corazón amarillo, dibujadas una a una. Detrás se extiende el jardín: decenas de ciruelos en flor, más pequeños, una cerca de bambú y diminutos paseantes que admiran los árboles. El suelo es verde, el cielo pasa del rojo vivo, arriba, al blanco rosado cerca del horizonte. En la esquina superior izquierda, el ángulo de un tejado oscuro. Arriba a la derecha, dos cartuchos dan el nombre de la serie y el del lugar; abajo a la izquierda, la firma de Hiroshige en un cartucho rojo."""
+evocation = """
+La floración de los ciruelos, a finales del invierno, es en Japón la primera fiesta de la primavera, antes de la de los cerezos: se iba en familia a contemplar las flores y a respirar su perfume todavía en el frío. El ciruelo, que florece sobre una madera nudosa y casi muerta, es también desde hace mucho una imagen de la perseverancia y del renacer. Hiroshige sitúa al espectador en el propio jardín, oculto tras el árbol, como un paseante que se hubiera acercado demasiado. Se ha visto en este encuadre audaz, que corta el motivo principal y relega a los personajes a lo lejos, una de las invenciones más modernas del grabado japonés: la naturaleza ya no es un decorado, sino el tema, visto a la altura de una persona."""
+histoire = """
+La estampa pertenece a las Cien vistas famosas de Edo, la última gran serie de Hiroshige, publicada por el editor Uoya Eikichi de 1856 a 1858; lleva la fecha de 1857. El jardín de Kameido, al este del Sumida, era un lugar de paseo célebre: se acudía a ver el Garyūbai, el «ciruelo del dragón acostado», un árbol tan viejo que sus ramas caían hasta el suelo. Los historiadores han subrayado que la serie, iniciada poco después del gran terremoto que devastó Edo en 1855, celebra una ciudad en reconstrucción y sus placeres recobrados. Como todas las láminas de la serie, esta se tiró en numerosos ejemplares. Este se conserva en el Rijksmuseum de Ámsterdam."""
+facture = """
+Las Cien vistas adoptan todas el formato vertical, inusual para el paisaje. Hiroshige lleva aquí al extremo el recurso del primer plano gigante, tomado en parte de las perspectivas occidentales que conocía por las estampas «a la holandesa». El cielo está impreso en bokashi: el grabador limpiaba la tinta sobre la plancha para obtener un degradado continuo del rojo al blanco. El contraste entre el tronco oscuro, de contornos irregulares, y las flores blancas reservadas en el papel da a la imagen su fuerza."""
+details = [
+  "El tronco negro que se sale del encuadre a la izquierda, arriba y abajo.",
+  "Los diminutos paseantes tras la cerca de bambú.",
+  "El degradado del cielo, del rojo vivo al blanco rosado.",
+  "Las flores blancas de corazón amarillo, dibujadas una a una.",
+  "La firma de Hiroshige en el cartucho rojo, abajo a la izquierda.",
+]
+themes = ["primavera", "ciruelo", "jardín", "edo", "japonismo"]
+anecdote = """
+El Garyūbai debía su nombre, «ciruelo del dragón acostado», a sus ramas que caían al suelo y volvían a echar raíces en él, como un dragón tendido. El árbol y el jardín desaparecieron durante la gran inundación de 1910. En 1887, Van Gogh copió esta estampa al óleo."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Lluvia repentina sobre el puente Shin-Ōhashi en Atake"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "averse-ohashi.jpg"
+technique = "Estampa nishiki-e, formato ōban vertical, unos 36 × 24 cm"
+collection = "Brooklyn Museum, Nueva York"
+note = "Una tormenta de verano sorprende a los transeúntes en el gran puente del Sumida: la imagen de la lluvia más célebre del arte japonés."
+description = """
+Visto desde lo alto, un largo puente de madera atraviesa la imagen en diagonal, de abajo a la izquierda hacia la derecha. Unos transeúntes se apresuran por él, encorvados bajo el aguacero: dos personas apretadas bajo un paraguas, un hombre con sombrero de paja, otros que se protegen con una estera. La lluvia cae en miles de trazos finos y oscuros que cubren toda la imagen. Sobre el río gris, un hombre de pie empuja con una pértiga una larga balsa de madera. En la otra orilla, el barrio de Atake no es más que una silueta de árboles ahogada en la bruma. Arriba, una nube negra pesa sobre la escena. Los pilares del puente, en entramado, se hunden en el agua azul oscuro del primer plano."""
+evocation = """
+Hiroshige capta un instante de la vida corriente de Edo: la tormenta de verano que estalla sin avisar y hace correr a todo el mundo. No hay héroe ni acontecimiento, solo anónimos sorprendidos por el tiempo, y el espectador casi tiene la impresión de mojarse. Con frecuencia se ha visto en ella una expresión del sentimiento japonés de la impermanencia: un momento fugaz, captado al vuelo, que habrá pasado en pocos minutos. El contraste entre las pequeñas siluetas apresuradas y el hombre de la balsa, solo e inmóvil en el río, se ha leído también como una meditación sobre la condición humana. Para los artistas europeos, esta lluvia dibujada con líneas fue una revelación: se podía representar el mal tiempo mismo."""
+histoire = """
+La estampa, fechada en 1857, pertenece a las Cien vistas famosas de Edo, publicadas por Uoya Eikichi. El puente Shin-Ōhashi, el «nuevo gran puente», cruzaba el Sumida desde 1693. El barrio de Atake, en la orilla este, tomaba su nombre del Atake maru, un inmenso navío del shogun amarrado allí durante mucho tiempo. Hiroshige tenía entonces unos sesenta años; murió al año siguiente, antes del final de la serie. Sus estampas llegaron a Europa en gran número tras la apertura de Japón, y los pintores impresionistas las coleccionaron. Este ejemplar forma parte de la serie completa de las Cien vistas conservada en el Brooklyn Museum de Nueva York."""
+facture = """
+La lluvia es la proeza del grabador: cientos de trazos paralelos, de una finura extrema, tallados en la madera con inclinaciones ligeramente distintas, lo que da la impresión de un aguacero oblicuo y cambiante. La nube negra está impresa en degradado, como la profundidad del río. El punto de vista picado, el puente cortado por el borde de la imagen y la ausencia de cielo despejado pertenecen a las audacias de esta serie tardía."""
+details = [
+  "Los dos transeúntes apretados bajo un mismo paraguas, a la izquierda del puente.",
+  "Los trazos de lluvia, que no están todos inclinados del mismo modo.",
+  "El hombre que empuja su balsa, solo en medio del río.",
+  "La orilla de Atake, reducida a una silueta gris.",
+  "El entramado de los pilares del puente, en primer plano.",
+]
+themes = ["lluvia", "puente", "tormenta", "edo", "japonismo"]
+anecdote = """
+En 1887, en París, Vincent van Gogh copió esta estampa al óleo, exagerando sus colores, y la rodeó de un marco pintado cubierto de ideogramas copiados de otras estampas. El cuadro, El puente bajo la lluvia, se encuentra hoy en el Museo Van Gogh de Ámsterdam."""
+salle = 2
+mur = "nord"
+place = 3
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Fuegos de zorros la noche de Año Nuevo, bajo el árbol de los trajes en Ōji"
+artiste = "Utagawa Hiroshige"
+annee = "1857"
+image = "feux-renards-oji.jpg"
+technique = "Estampa nishiki-e, formato ōban vertical, unos 36 × 24 cm"
+collection = "Brooklyn Museum, Nueva York"
+note = "La noche de Año Nuevo, los zorros de toda la región se reúnen bajo un viejo árbol antes de ir al santuario de Inari."
+description = """
+En la noche de invierno, un gran árbol desnudo extiende sus ramas negras sobre un cielo azul oscuro salpicado de estrellas. A su pie, una veintena de zorros blancos están reunidos, sentados o de pie; junto a la cabeza de cada uno brilla una pequeña llama anaranjada. A la izquierda, otros zorros llegan por detrás del tronco. En la llanura oscura, a lo lejos, se acerca una larga fila de pequeñas luces: otros zorros en camino. Unos almiares de paja se alzan en los campos, y en el horizonte se adivina la masa oscura de un bosque. A la izquierda, unas ramas de pino ponen una pincelada de verde en la noche. Los cartuchos de la serie y del título ocupan el ángulo superior derecho."""
+evocation = """
+En Japón, el zorro es el mensajero de Inari, la divinidad del arroz y de la prosperidad, y pasa también por un ser mágico capaz de adoptar forma humana. Los «fuegos de zorros», esos resplandores misteriosos que se divisaban de noche en el campo, se les atribuían. Hiroshige muestra aquí el mundo invisible que convive con el mundo de los campesinos: lo maravilloso se instala en medio de campos familiares. Según la creencia, los campesinos contaban esos fuegos para predecir la cosecha del año siguiente. En una serie dedicada a lugares reales de Edo, esta lámina, una de las pocas que representan una leyenda, cierra el ciclo del invierno con una nota de misterio y esperanza."""
+histoire = """
+La estampa, fechada en 1857, lleva el número 118 de las Cien vistas famosas de Edo: es la última de la parte dedicada al invierno. Ōji, entonces una aldea al norte de Edo, albergaba el santuario de Inari más venerado de la región de Kantō. La leyenda decía que, la noche de Año Nuevo, los zorros de las ocho provincias se reunían bajo un gran almez, el Shōzoku enoki, el «árbol de los trajes», para vestirse allí con sus ropas de ceremonia antes de visitar el santuario. El árbol ha desaparecido, pero un pequeño santuario marca todavía su emplazamiento. Este ejemplar se conserva en el Brooklyn Museum de Nueva York, con toda la serie."""
+facture = """
+Hiroshige hace de la noche una materia: el azul profundo del cielo se oscurece hacia arriba mediante un degradado, y las estrellas son diminutos puntos reservados en el papel. Los zorros, trazados con un trazo fino, conservan la blancura del papel, lo que los hace brillar en la oscuridad. Las llamas están impresas en naranja vivo, único color cálido de la imagen. La fila de luces que se empequeñece hacia el horizonte crea profundidad sin ninguna línea de perspectiva."""
+details = [
+  "La pequeña llama que flota junto a la cabeza de cada zorro.",
+  "La fila de luces que se acerca a lo lejos en la llanura.",
+  "Las estrellas, simples puntos de papel blanco en el cielo azul.",
+  "Los almiares de paja, a la derecha, en los campos de invierno.",
+]
+themes = ["noche", "zorro", "leyenda", "año nuevo", "invierno"]
+anecdote = """
+La leyenda revive cada año: desde principios de la década de 1990, los habitantes de Ōji organizan, la noche del 31 de diciembre, una procesión de zorros, en la que los participantes, maquillados o enmascarados como zorros, caminan con farolillos hasta el santuario de Inari."""
+salle = 2
+mur = "nord"
+place = 4
+largeur = 1.1
+
+[[oeuvres]]
+titre = "Bajo la ola, frente a Kanagawa (La gran ola de Kanagawa)"
+artiste = "Katsushika Hokusai"
+annee = "hacia 1830–1832"
+image = "grande-vague.jpg"
+technique = "Estampa nishiki-e (grabado en madera a color), 25,7 × 37,9 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "La lámina más célebre de las Treinta y seis vistas del monte Fuji: una ola gigante va a abatirse sobre tres barcas, mientras el Fuji, diminuto, aguarda a lo lejos."
+description = """
+A la izquierda, una ola inmensa se alza y se curva sobre el mar; su espuma se recorta en garras blancas que parecen dispuestas a atrapar a los hombres. Tres largas barcas esbeltas se hunden en los senos de las olas. Sus remeros, apretados unos contra otros, se aferran con la cabeza gacha. En el centro, al fondo, aparece el monte Fuji, pequeño cono de cima nevada, encajado entre dos olas. En primer plano, una ola más pequeña repite exactamente su forma, como un segundo Fuji de agua. El cielo, de un beige pálido, se oscurece hacia el horizonte, por donde pasan algunas nubes. Arriba a la izquierda, un cartucho da el nombre de la serie y el título de la estampa, con la firma del artista a su lado."""
+evocation = """
+La imagen opone la fuerza desmesurada de la naturaleza y la fragilidad de los hombres, que a pesar de todo siguen remando. En medio de este caos, el Fuji permanece inmóvil: la montaña sagrada, símbolo de permanencia, parece minúscula y sin embargo inquebrantable. Su nombre se ha relacionado con palabras que significan «sin igual» e «inmortal», y la montaña era objeto de un verdadero culto en Edo. Se ha observado también que la imagen se lee de forma distinta según el sentido de la mirada: de derecha a izquierda, como un texto japonés, la ola se abalanza hacia el espectador; de izquierda a derecha, a la occidental, parece alejarse. Hokusai, con más de setenta años, resume en ella todo su arte del movimiento captado en un instante suspendido."""
+histoire = """
+La estampa abre la serie de las Treinta y seis vistas del monte Fuji, publicada hacia 1830–1832 por el editor Nishimuraya Yohachi. Hokusai, que tiene más de setenta años, sale de unos años difíciles, marcados por la enfermedad y los apuros de dinero. La serie tiene tanto éxito que se le añaden diez vistas más, hasta sumar cuarenta y seis láminas. La gran ola se tiró en miles de ejemplares, vendidos a bajo precio. Llegadas a Europa tras la apertura de Japón, sus pruebas fascinaron a pintores, músicos y escritores del japonismo. Este ejemplar, de una bella frescura, forma parte de la colección reunida por Louisine y Henry O. Havemeyer, legada al Metropolitan Museum of Art de Nueva York en 1929."""
+facture = """
+Hokusai emplea el azul de Prusia, un pigmento sintético importado hacía poco, más intenso y duradero que el índigo vegetal. La línea de horizonte muy baja procede de las perspectivas occidentales que había estudiado en los grabados holandeses. La estampa es un trabajo de equipo: Hokusai dibuja, un grabador talla una plancha de madera por color, un impresor aplica los colores uno a uno a mano sobre el papel, y el editor financia y vende."""
+details = [
+  "Las garras de espuma en la cima de la ola, como dedos ganchudos.",
+  "El Fuji nevado, minúsculo, en el hueco de las olas.",
+  "La pequeña ola del primer plano, que tiene la forma del Fuji.",
+  "Los remeros tendidos en el fondo de las barcas, con la cabeza gacha.",
+  "La firma junto al cartucho: Hokusai aratame Iitsu hitsu.",
+]
+themes = ["mar", "ola", "fuji", "azul de prusia", "naturaleza"]
+anecdote = """
+Claude Debussy tenía una copia de La gran ola en su despacho. Para la cubierta de la partitura de La mer, publicada en 1905, hizo reproducir la ola de Hokusai, sin el Fuji ni las barcas."""
+salle = 3
+mur = "nord"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Viento del sur, cielo despejado (El Fuji rojo)"
+artiste = "Katsushika Hokusai"
+annee = "hacia 1830–1832"
+image = "fuji-rouge.jpg"
+technique = "Estampa nishiki-e, 25,4 × 37,8 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Al amanecer de finales del verano, el Fuji se enrojece bajo el sol naciente: una montaña, un cielo y nada más."
+description = """
+La montaña ocupa toda la parte derecha de la imagen: un inmenso triángulo rojo ladrillo que se eleva hasta el borde superior. Cerca de la cima, estelas de nieve blanca descienden por la roca oscura. Al pie, una ancha banda azul verdosa está cubierta de multitud de arbolillos, figurados por diminutas pinceladas apretadas como un pelaje. A la izquierda, el cielo azul profundo está atravesado por largas hileras de pequeñas nubes blancas, alineadas como escamas. No hay aldea, ni viajero, ni barco: ninguna presencia humana. Arriba a la izquierda, el cartucho del título y la firma de Hokusai se recortan sobre el cielo."""
+evocation = """
+El título japonés, Gaifū kaisei, significa «viento del sur, cielo despejado»: la suave brisa de finales del verano que despeja la bruma y descubre la montaña al amanecer. Hokusai reduce el Fuji a su forma más simple, casi un signo, y hace de él una presencia monumental y silenciosa. Para los habitantes de Edo, el Fuji era una montaña sagrada, que cofradías de peregrinos escalaban cada verano y de la que se reproducían incluso pequeñas copias en los santuarios de la ciudad. Se ha visto en esta imagen desnuda, sin un solo personaje, una forma de contemplación religiosa tanto como un paisaje. Todavía hoy, el Fuji rojo pasa en Japón por una imagen de buen augurio."""
+histoire = """
+La estampa forma parte de las Treinta y seis vistas del monte Fuji, publicadas hacia 1830–1832 por Nishimuraya Yohachi, como La gran ola. La serie aprovechaba la moda del culto al Fuji en Edo y la llegada de un nuevo pigmento, el azul de Prusia. El Fuji rojo se tiró en gran número y las pruebas varían mucho de una tirada a otra: colores suaves y matizados aquí, rojo más franco y uniforme en otras. Junto con La gran ola y La tormenta bajo la cima, forma el trío más célebre de la serie. Este ejemplar ingresó en el Metropolitan Museum of Art de Nueva York en 1939, con la colección legada por Henry L. Phillips."""
+facture = """
+Pocas planchas, pocos colores: el rojo, dos azules, el verde y el blanco del papel bastan. El cielo y la montaña están impresos en degradados, obtenidos limpiando la tinta sobre la plancha de madera antes de cada tirada. Los árboles son pequeñas marcas repetidas, casi un motivo textil. El grano de la madera, visible en las superficies planas, anima las grandes extensiones. La composición se apoya en dos diagonales que se unen en la cima, descentrada hacia la derecha."""
+details = [
+  "Las estelas de nieve que descienden de la cima como regueros.",
+  "Los arbolillos apretados al pie de la montaña, como un pelaje.",
+  "Las hileras de nubes blancas, alineadas en escamas.",
+  "La cima descentrada hacia la derecha, casi al borde de la imagen.",
+]
+themes = ["fuji", "montaña", "amanecer", "cielo", "paisaje"]
+anecdote = """
+El fenómeno existe de verdad: a finales del verano y principios del otoño, cuando la nieve se ha derretido, el Fuji adopta a veces un tono rojo al salir el sol. Los japoneses lo llaman aka-Fuji, el «Fuji rojo», y los fotógrafos acechan ese momento."""
+salle = 3
+mur = "ouest"
+place = 1
+largeur = 1.4
+
+[[oeuvres]]
+titre = "Joven contemplando flores de ciruelo de noche"
+artiste = "Suzuki Harunobu"
+annee = "hacia 1766"
+image = "harunobu-prunier-nuit.jpg"
+technique = "Estampa nishiki-e con grabado en relieve seco (karazuri), 32,4 × 21 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "En una veranda, una joven alza un farol hacia un ciruelo en flor: una de las primeras estampas a todo color."
+description = """
+Una joven se encuentra en una veranda de madera, junto a una balaustrada naranja que atraviesa la imagen en diagonal. Vestida con un largo quimono rayado adornado con medallones redondos, tiende el brazo y alza un farol de papel en el extremo de una vara para iluminar una rama de ciruelo en flor que se adelanta sobre ella. El fondo es enteramente negro: es de noche. Las flores blancas de corazón amarillo se destacan sobre la oscuridad. A la derecha, una roca clara emerge de la sombra, y arriba una banda beige figura una capa de bruma. El suelo de la veranda, abajo, es de un beige pálido. La joven tiene el rostro suave y redondo, y las manos y los pies menudos, típicos de Harunobu."""
+evocation = """
+La escena es a la vez sencilla y poética: un paseo nocturno para ver las primeras flores de la primavera. Se la ha relacionado con un célebre poema del Kokinshū, la antología imperial del siglo X, en el que Ōshikōchi no Mitsune escribe que la oscuridad de una noche de primavera oculta el color de las flores de ciruelo, pero no puede ocultar su perfume. El farol en alto expresa ese deseo de ver lo que la noche roba. Los personajes de Harunobu, frágiles y sin edad, parecen vivir en un mundo de ensueño más que en el Edo real. Este refinamiento, nutrido de referencias literarias, estaba destinado a un público culto que gustaba de reconocer, tras la imagen, un poema o una leyenda."""
+histoire = """
+En 1765, círculos de aficionados acaudalados de Edo encargan a Harunobu calendarios ilustrados, que se intercambian por Año Nuevo. Para estas imágenes de lujo, grabadores e impresores perfeccionan la impresión a una decena de colores, con marcas precisas para ajustar cada plancha: es el nacimiento del nishiki-e, la «imagen de brocado». Los editores retoman enseguida el procedimiento para el gran público. Esta estampa, realizada hacia 1766, data de esos años de invención. El fondo negro liso, difícil de imprimir sin huellas, es raro en la época. Ingresó en el Metropolitan Museum of Art de Nueva York en 1929."""
+facture = """
+El formato chūban, más pequeño que el ōban, conviene a la intimidad de las escenas de Harunobu. La gran superficie negra realza las flores y el farol, dejados en la blancura del papel. Algunas partes están grabadas en relieve seco, sin tinta (karazuri): el papel, prensado sobre una plancha grabada, conserva un ligero relieve visible con luz rasante. Los colores, de origen vegetal, se han suavizado con el tiempo."""
+details = [
+  "El farol de papel de seis caras, sostenido en el extremo de una vara.",
+  "Las flores de ciruelo de corazón amarillo, sobre el fondo negro.",
+  "Los medallones redondos del quimono rayado.",
+  "La roca clara, a la derecha, que sale de la sombra.",
+]
+themes = ["noche", "ciruelo", "primavera", "poesía", "joven"]
+anecdote = """
+El pintor Shiba Kōkan cuenta en sus memorias que, tras la muerte de Harunobu, en 1770, dibujó estampas a su estilo y las firmó con su nombre, sin que nadie se diera cuenta."""
+salle = 4
+mur = "ouest"
+place = 3
+largeur = 1.0
+
+[[oeuvres]]
+titre = "Tres bellezas de nuestro tiempo"
+artiste = "Kitagawa Utamaro"
+annee = "hacia 1793"
+image = "trois-beautes.jpg"
+technique = "Estampa nishiki-e, formato ōban, unos 37 × 25 cm"
+collection = "Museum of Fine Arts, Boston"
+note = "Las tres jóvenes más admiradas de Edo hacia 1793: una cantante y dos camareras de casas de té."
+description = """
+Tres jóvenes están representadas de busto, en primer plano, dispuestas en triángulo. Arriba, la cantante Tomimoto Toyohina baja los ojos hacia la izquierda. Abajo a la izquierda, Naniwaya Okita sostiene una tela drapeada sobre el hombro; abajo a la derecha, Takashima Ohisa sostiene un abanico redondo adornado con un motivo de hojas de roble, su emblema. Las tres llevan altos peinados lacados, prendidos con peines y alfileres. Sus rostros se parecen mucho, de un óvalo pálido con ojos estrechos y pequeños labios rojos. El fondo es liso, de un gris muy claro. Arriba a la derecha, un cartucho da el título y los nombres de las tres mujeres; la firma de Utamaro se lee a la izquierda."""
+evocation = """
+La estampa da testimonio de una verdadera cultura de la celebridad en el Edo del siglo XVIII. Estas jóvenes no eran cortesanas sino personalidades conocidas de todos: Okita servía en una casa de té cerca del templo Sensō-ji, en Asakusa, Ohisa en la tienda de su familia en Ryōgoku, y los clientes acudían a verlas como se va a ver a una estrella. Sus retratos se vendían como fotografías de ídolos. Utamaro juega con una paradoja: idealiza los tres rostros según el canon de belleza de su tiempo, pero los diferencia con ínfimos matices, la curva de una ceja, la forma de un ojo, que los aficionados sabían reconocer."""
+histoire = """
+La estampa es publicada hacia 1793 por Tsutaya Jūzaburō, el editor más audaz de Edo, que había hecho de Utamaro su estrella. Okita y Ohisa, rivales en popularidad, fueron entonces representadas por numerosos artistas, y se habló de las «tres bellezas de la era Kansei». Son también los años de las reformas de la era Kansei, con las que el gobierno trataba de reprimir el lujo y las diversiones. Utamaro retomó varias veces este trío bajo formas distintas. Este ejemplar se conserva en el Museum of Fine Arts de Boston, cuya colección de estampas japonesas, una de las más ricas fuera de Japón, debe mucho al coleccionista William Sturgis Bigelow."""
+facture = """
+Utamaro fue uno de los primeros en encuadrar a las mujeres de busto, en primer plano, a la manera de los retratos de actores. Los rostros están hechos solo de unas pocas líneas, sin sombra ni modelado. Toda la virtuosidad está en los peinados: el grabador talló uno a uno los finos cabellos de la frente y la nuca. La composición piramidal y la paleta contenida, hecha de negros, ocres y algunos rojos, dan a la imagen una gran elegancia."""
+details = [
+  "El abanico redondo de Ohisa, con su emblema de hojas de roble.",
+  "Los finos cabellos de la nuca y las sienes, grabados uno a uno.",
+  "El cartucho arriba a la derecha, que nombra a las tres jóvenes.",
+  "Las ínfimas diferencias entre los tres rostros.",
+]
+themes = ["belleza", "retrato", "celebridad", "edo", "mujeres"]
+anecdote = """
+Poco después, la censura prohibió inscribir en las estampas el nombre de las jóvenes que no eran cortesanas. Utamaro y sus editores eludieron la prohibición con acertijos: pequeños dibujos cuya lectura daba el nombre de la modelo."""
+salle = 4
+mur = "nord"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "El actor Ōtani Oniji III en el papel del criado Edobei"
+artiste = "Tōshūsai Sharaku"
+annee = "1794"
+image = "sharaku-oniji.jpg"
+technique = "Estampa nishiki-e sobre fondo de mica negra, formato ōban, unos 38 × 25 cm"
+collection = "Museo Nacional de Tokio"
+note = "Un actor de kabuki en un papel de bandido, con las manos crispadas hacia delante: el más célebre de los retratos de Sharaku."
+description = """
+Sobre un fondo gris oscuro y centelleante, se ve a un hombre de busto, de tres cuartos, con el rostro vuelto hacia la derecha. Sus cejas negras están fruncidas, sus ojos fijan duramente a un adversario invisible, su boca se aprieta en una línea caída. Sus cabellos están recogidos en un moño apretado, con la frente rasurada de los hombres del pueblo. Lleva una prenda rayada marrón y ocre sobre un quimono negro, y lanza hacia delante ambas manos, con los dedos separados, como para agarrar o amenazar. Esas manos parecen sorprendentemente pequeñas en comparación con el rostro. En el hombro, un emblema redondo lleva el blasón del actor. A la derecha, la firma de Sharaku y, bajo ella, la marca del editor."""
+evocation = """
+Edobei es un criado brutal, un matón que se dispone a despojar a su víctima: Sharaku hace de él una figura de amenaza concentrada, tensa como un resorte. Pero tras el personaje, lo que muestra es al actor, con sus rasgos propios, su mandíbula, sus arrugas, lo que contrasta con los retratos aduladores de la época. Se ha supuesto a menudo que este realismo sin complacencia disgustó a los actores y a sus admiradores, y explicaría la brevedad de la carrera de Sharaku, pero no es más que una hipótesis. Para la mirada moderna, estos rostros próximos a la caricatura, de una intensidad asombrosa, figuran entre los retratos más expresivos del arte japonés."""
+histoire = """
+En el quinto mes de 1794, en el teatro Kawarazaki-za de Edo, Ōtani Oniji III interpreta el papel de Edobei en la obra Koi nyōbō somewake tazuna. Ese mismo mes, el editor Tsutaya Jūzaburō lanza a un artista desconocido, Sharaku, con una espectacular serie de veintiocho retratos de actores de busto sobre fondo de mica negra, entre ellos este. Diez meses después, Sharaku deja de publicar y desaparece. Olvidado en Japón, es redescubierto por los coleccionistas occidentales a finales del siglo XIX. El ejemplar del Museo Nacional de Tokio, uno de los más bellos conocidos, está clasificado como bien cultural importante de Japón."""
+facture = """
+El fondo está impreso con mica (kira-zuri): un polvo mineral mezclado con el color, que centellea bajo la luz y da al retrato un brillo precioso. Sharaku simplifica las formas al extremo: grandes superficies oscuras de la prenda, líneas nítidas del rostro, asimetría marcada de los ojos y la boca. Las manos, voluntariamente reducidas, acentúan la tensión del gesto. El encuadre cerrado, que corta el cuerpo a la altura de la cintura, viene de los retratos de actores de busto puestos de moda unos años antes por los artistas de la escuela Katsukawa."""
+details = [
+  "Las manos de dedos separados, sorprendentemente pequeñas.",
+  "Las cejas fruncidas y la boca apretada hacia abajo.",
+  "El centelleo del fondo de mica, al cambiar de ángulo.",
+  "La firma vertical a la derecha: Tōshūsai Sharaku ga.",
+]
+themes = ["kabuki", "actor", "retrato", "teatro", "caricatura"]
+anecdote = """
+Fue un alemán, Julius Kurth, quien dio la fama a Sharaku: en un libro de 1910, lo situaba entre los mayores retratistas de la historia. Desde entonces, las pruebas de Sharaku se han convertido en unas de las más buscadas de todo el grabado japonés."""
+salle = 4
+mur = "est"
+place = 1
+largeur = 1.1
+
+[[oeuvres]]
+titre = "La princesa Takiyasha y el espectro esqueleto"
+artiste = "Utagawa Kuniyoshi"
+annee = "hacia 1844"
+image = "takiyasha-squelette.jpg"
+technique = "Estampa nishiki-e, tríptico de tres hojas ōban, unos 36 × 74 cm"
+collection = "British Museum, Londres"
+note = "En un palacio en ruinas, una princesa hechicera hace surgir un esqueleto gigante para aterrorizar a dos guerreros."
+description = """
+La imagen se despliega en tres hojas. A la izquierda, la princesa Takiyasha, con un suntuoso quimono rojo y azul, lee en voz alta un rollo de conjuros, bajo una persiana de bambú desgarrada que pende de un techo enrejado. En el centro, dos guerreros, el samurái Ōya no Tarō Mitsukuni y su compañero, están en cuclillas sobre el entarimado, frente al monstruo. Sobre ellos, a lo ancho de las hojas central y derecha, un esqueleto gigantesco surge de la oscuridad: se inclina a través de la persiana desgarrada, con las órbitas vacías vueltas hacia los hombres y los largos dedos óseos posados sobre las lamas de bambú. El suelo está sembrado de escombros."""
+evocation = """
+La estampa pertenece al gusto de la época por las historias de fantasmas y de venganza, que el teatro kabuki y las novelas ilustradas escenificaban con deleite. Takiyasha es la hija del rebelde Taira no Masakado, muerto en 940; busca vengar a su padre mediante la magia, y el guerrero Mitsukuni es enviado a combatirla. El esqueleto gigante encarna la amenaza sobrenatural, pero también la muerte misma que se inclina sobre los vivos. Kuniyoshi juega con virtuosismo con el efecto sorpresa: el espectador, como los guerreros, descubre el monstruo de golpe. La imagen muestra cuánto amaba el grabado del siglo XIX lo espectacular y el escalofrío."""
+histoire = """
+Kuniyoshi se inspira en una novela de Santō Kyōden publicada en 1806, en la que Takiyasha, retirada en el viejo palacio en ruinas de su padre en Sōma, reúne a conjurados y recurre a la brujería. En la novela, Mitsukuni se enfrenta a una multitud de esqueletos; Kuniyoshi los sustituye por un solo esqueleto gigante, mucho más impresionante. El tríptico se publica hacia 1844, en los años posteriores a las reformas de la era Tenpō, cuando la censura prohíbe los retratos de actores y cortesanas y empuja a los artistas hacia los temas históricos y legendarios. Este ejemplar se conserva en el British Museum de Londres."""
+facture = """
+El tríptico, tres hojas ōban vendidas juntas, permite una composición muy amplia, que Kuniyoshi aprovecha haciendo pasar el esqueleto de una hoja a otra. El esqueleto tiene una exactitud anatómica rara en el arte japonés: los historiadores piensan que Kuniyoshi había estudiado obras de anatomía occidentales difundidas por los holandeses. El fondo negro, el blanco óseo y los pocos colores vivos de la princesa crean un contraste teatral."""
+details = [
+  "El rollo de conjuros que lee la princesa, a la izquierda.",
+  "Los dedos óseos del esqueleto posados sobre la persiana de bambú.",
+  "El samurái Mitsukuni, en el centro, que fija al monstruo.",
+  "Los cartuchos rojos que dan el nombre de los personajes.",
+  "La firma de Kuniyoshi al pie de cada una de las tres hojas.",
+]
+themes = ["fantástico", "esqueleto", "leyenda", "guerrero", "tríptico"]
+anecdote = """
+El padre de Takiyasha, Taira no Masakado, siguió siendo una figura temida. Su tumba, el Kubizuka, se encuentra todavía en medio de las torres de oficinas de Ōtemachi, en Tokio, y la tradición dice que quienes quisieron trasladarla fueron golpeados por la desgracia."""
+salle = 5
+mur = "nord"
+place = 1
+largeur = 2.1
+
+[[oeuvres]]
+titre = "Gallo y gallina con hortensias"
+artiste = "Itō Jakuchū"
+annee = "1759"
+image = "jakuchu-coqs-hortensias.jpg"
+technique = "Colores sobre seda, rollo vertical, unos 142 × 80 cm"
+collection = "Museo de las Colecciones Imperiales (Sannomaru Shōzōkan), Tokio"
+note = "Uno de los treinta rollos del Reino colorido de los seres vivos, pintado para un templo de Kioto: un gallo y una gallina bajo una cascada de hortensias."
+description = """
+En la parte baja de la composición, un gallo de plumaje rojizo y pardo, de cresta rojo vivo, se inclina hacia el suelo; su larga cola negra se curva en arco sobre él. A la derecha, una gallina de plumaje moteado de pardo y blanco picotea con la cabeza baja. Tras ellos, una roca oscura salpicada de musgo azul verdoso. Encima, hortensias azules y blancas descienden en racimos apretados desde lo alto del rollo, con sus amplias hojas. Flores rosas se abren junto al gallo, y flores blancas al pie de la roca. Arriba a la izquierda, un pajarillo se posa en una rama. A la izquierda, una inscripción vertical da la fecha y la firma del pintor, seguida de dos sellos rojos."""
+evocation = """
+Este rollo pertenece al Dōshoku sai-e, el «Reino colorido de los seres vivos», un conjunto de treinta pinturas de aves, flores, insectos y peces. Jakuchū, budista fervoroso, lo ofreció a un templo: para él, cada ser vivo, del gallo a la flor, posee la naturaleza de Buda y merece ser pintado con el mismo fervor. Se ha visto en él una celebración casi extática de la vida, en la que la abundancia de formas y colores expresa la riqueza del mundo. El gallo, animal familiar, se convierte bajo su pincel en una criatura resplandeciente, casi fantástica. Esta obra no es una estampa popular sino una pintura única, ejecutada para durar."""
+histoire = """
+La inscripción fecha la obra en el otoño de 1759. Jakuchū, antiguo verdulero de Kioto que dejó su negocio para pintar, trabaja unos diez años en esta serie. La ofrece al templo zen Shōkoku-ji de Kioto, con un tríptico de Buda, en 1765 y luego en 1770, para adornar las ceremonias religiosas. En 1889, el templo, en dificultades, ofrece los treinta rollos a la familia imperial, que le entrega a cambio una fuerte suma. Hoy se conservan en el Museo de las Colecciones Imperiales, en Tokio, y fueron declarados tesoro nacional en 2021."""
+facture = """
+Jakuchū utiliza una seda muy fina y pigmentos minerales de la mejor calidad, que explican la frescura de los colores tras más de dos siglos y medio. A veces pinta también por el reverso de la seda, para matizar los tonos vistos por transparencia. Cada pluma, cada pétalo está dibujado con una precisión obsesiva, pero la composición, muy densa y sin profundidad, sigue siendo decorativa. Se inspira en las pinturas chinas de aves y flores y en la observación directa."""
+details = [
+  "Las plumas del cuello del gallo, dibujadas una a una, como llamas doradas.",
+  "Los pétalos de hortensia, azules o blancos, cada uno perfilado con un trazo fino.",
+  "El pajarillo posado arriba a la izquierda.",
+  "La inscripción a la izquierda, que fecha la pintura en el otoño de 1759.",
+  "Los puntos de musgo azul verdoso sobre la roca oscura.",
+]
+themes = ["gallo", "flores", "aves", "naturaleza", "budismo"]
+anecdote = """
+Según una antigua tradición, Jakuchū criaba gallos en su jardín y los observó largamente antes de pintarlos. Los gallos son, en efecto, uno de los temas que más a menudo representó."""
+salle = 5
+mur = "est"
+place = 1
+largeur = 0.9
+
+[[artistes]]
+nom = "Katsushika Hokusai"
+vie = "Edo (Tokio), 1760 – Edo, 10 de mayo de 1849"
+biographie = """
+Nacido en el barrio de Honjo, al este de Edo, Hokusai es primero aprendiz de grabador en madera. En 1778 entra en el taller de Katsukawa Shunshō, especialista en retratos de actores, y firma sus primeras estampas con el nombre de Shunrō. Tras dejar ese taller, lo toca todo: ilustraciones de novelas, estampas de lujo para los círculos de poetas, pinturas, manuales de dibujo. Cambia sin cesar de nombre artístico, más de una treintena de veces, y según la tradición se muda más de noventa veces. A partir de 1814 aparecen los volúmenes de la Manga, miles de bocetos de gentes, animales y cosas. Hacia 1830, con más de setenta años, publica las Treinta y seis vistas del monte Fuji, que lo hacen célebre, y luego las Cien vistas del monte Fuji. Firma entonces «el viejo loco por el dibujo». Pobre hasta el final, ayudado por su hija Ōi, también pintora, muere a los ochenta y ocho años en Edo lamentando, según se dice, no haber tenido unos años más para llegar a ser un verdadero pintor. Descubierto en Europa en la segunda mitad del siglo XIX, se convierte en la figura misma del arte japonés para los occidentales."""
+style = """
+Hokusai es un dibujante insaciable, que quiere captarlo todo: el movimiento del agua, los gestos de los artesanos, la forma de las montañas. Combina la tradición japonesa y china con la perspectiva occidental, descubierta en los grabados holandeses. Sus composiciones, basadas en formas geométricas simples, círculos y triángulos, tienen una fuerza de signo. El azul de Prusia, los encuadres audaces y la energía del trazo de sus paisajes marcaron profundamente a los impresionistas, al Art Nouveau y a toda la imagen moderna."""
+
+[[artistes]]
+nom = "Utagawa Hiroshige"
+vie = "Edo (Tokio), 1797 – Edo, 12 de octubre de 1858"
+biographie = """
+Nacido Andō Tokutarō en una familia de samuráis de baja categoría encargados de la lucha contra incendios en el castillo de Edo, Hiroshige pierde a sus dos padres hacia los doce años y hereda el cargo de su padre. Poco después entra en el taller de Utagawa Toyohiro y recibe el nombre de Hiroshige. Dibuja primero actores y bellezas, sin gran éxito. El paisaje lo revela: en 1833–1834 aparecen las Cincuenta y tres estaciones del Tōkaidō, la gran ruta entre Edo y Kioto, que obtienen un éxito inmenso. Ya había cedido su cargo de bombero, en 1823, para dedicarse a la estampa. Publica decenas de series de vistas, del Kisokaidō a los lugares célebres de Edo, así como imágenes de flores y aves. En 1856 se hace monje budista y emprende las Cien vistas famosas de Edo, su última gran serie. Muere en 1858, probablemente víctima de la epidemia de cólera que azota la ciudad. Sus estampas, llegadas en masa a Europa, son coleccionadas por Van Gogh, Monet y Whistler."""
+style = """
+Hiroshige es el poeta del paisaje y de las estaciones. Más tierno que Hokusai, capta la atmósfera de un lugar en un momento preciso: la lluvia, la nieve, la bruma, el claro de luna. Sus degradados de azul, rojo y gris, sus primeros planos gigantes y sus encuadres cortados inspiraron a los impresionistas y a Van Gogh, que lo copió. Muestra también, con humor y ternura, a los viajeros y a la gente corriente."""
+
+[[artistes]]
+nom = "Suzuki Harunobu"
+vie = "Hacia 1725 – Edo (Tokio), 1770"
+biographie = """
+Se sabe poco de la juventud de Harunobu, ni de su formación. Sus primeras obras conocidas, retratos de actores impresos en dos o tres colores, datan de finales de la década de 1750. Su estilo debe mucho al pintor de Kioto Nishikawa Sukenobu, cuyos libros ilustrados mostraban mujeres graciosas y frágiles. El giro llega en 1765: aficionados acaudalados de Edo, reunidos en círculos de poesía, le encargan calendarios ilustrados, que se intercambian por Año Nuevo. Con los grabadores y los impresores, Harunobu perfecciona para ellos la impresión a todo color, con una decena de planchas: el nishiki-e. Los editores venden después estas imágenes al público, que se las disputa. En cinco años, hasta su muerte repentina en 1770, Harunobu produce varios cientos de estampas: jóvenes enamorados, escenas de la vida cotidiana, elegantes parodias de la poesía clásica, retratos de la célebre camarera de casa de té Kasamori Osen. Se convierte en el maestro más imitado de su tiempo, hasta el punto de que otros firmaron con su nombre tras su muerte."""
+style = """
+Harunobu crea un mundo de dulzura y ensueño, poblado de jóvenes de siluetas finas, manos menudas y rostros casi idénticos. Sus estampas de pequeño formato juegan con colores tiernos, fondos lisos y el grabado en relieve seco. Le gustan las alusiones literarias ocultas, que el espectador culto debía reconocer. Su invención del nishiki-e abre la edad de oro de la estampa en color."""
+
+[[artistes]]
+nom = "Kitagawa Utamaro"
+vie = "Hacia 1753 – Edo (Tokio), 1806"
+biographie = """
+El lugar y la fecha de nacimiento de Utamaro siguen siendo inciertos. Se forma con el pintor Toriyama Sekien, conocido por sus libros ilustrados de criaturas fantásticas. A comienzos de la década de 1780 conoce al editor Tsutaya Jūzaburō, que lo aloja, lo publica y hace de él su estrella. Se da a conocer primero por magníficos libros ilustrados de poemas cómicos, entre ellos el Libro de los insectos de 1788, de observaciones de gran finura. Hacia 1791–1793 inventa el retrato de mujer de busto, en primer plano, y se convierte en el maestro indiscutible de los bijin-ga, las imágenes de mujeres hermosas: cortesanas del barrio de Yoshiwara, camareras célebres, madres e hijos, mujeres trabajando. Tras la muerte de Tsutaya en 1797, trabaja para numerosos editores. En 1804 es arrestado por haber representado al gran caudillo Toyotomi Hideyoshi, tema prohibido, y condenado a llevar grilletes durante cincuenta días. Muere dos años después. En 1891, Edmond de Goncourt le dedica un libro que establece su reputación en Europa."""
+style = """
+Utamaro es el pintor de la belleza femenina. Sus mujeres, esbeltas y de rostros alargados, están captadas en su intimidad: un peinado, un gesto, una mirada. Encuadra a sus modelos en primer plano, de busto, y hace del rostro, de la nuca y del cabello, grabados con una finura extrema, el corazón de la imagen. Su línea flexible y sus fondos de mica fascinaron a los japonistas, de Goncourt a Toulouse-Lautrec."""
+
+[[artistes]]
+nom = "Tōshūsai Sharaku"
+vie = "Activo en Edo (Tokio) en 1794–1795; fechas de nacimiento y muerte desconocidas"
+biographie = """
+Sharaku es el enigma del grabado japonés. Aparece de pronto en el quinto mes de 1794, cuando el editor Tsutaya Jūzaburō publica de golpe veintiocho grandes retratos de actores de kabuki de busto, sobre fondo de mica negra, firmados con ese nombre desconocido. En los meses siguientes aparecen otras series, de cuerpo entero y cada vez más convencionales; luego, a comienzos de 1795, tras unas ciento cuarenta estampas en diez meses, Sharaku desaparece sin dejar rastro. Su identidad ha hecho correr mucha tinta: se ha querido ver en él a Hokusai, Utamaro u otros artistas conocidos. Una nota escrita en 1844 por el erudito Saitō Gesshin lo identifica con Saitō Jūrōbei, un actor de nō al servicio del señor de Awa, y documentos hallados desde entonces han reforzado esta hipótesis, hoy la más aceptada. Poco apreciado en su tiempo, Sharaku cae en el olvido en Japón. Es redescubierto por los coleccionistas occidentales, y en 1910 el libro del alemán Julius Kurth lo consagra como uno de los grandes retratistas de la historia del arte."""
+style = """
+Sharaku muestra a los actores sin embellecerlos: narices ganchudas, mandíbulas pesadas, arrugas, miradas bizcas, manos crispadas. Simplifica las formas, acentúa las asimetrías y sitúa sus figuras sobre fondos de mica centelleantes. El resultado participa a la vez del retrato psicológico y de la caricatura, con una intensidad que el grabado japonés nunca había alcanzado y que apenas volverá a alcanzar."""
+
+[[artistes]]
+nom = "Utagawa Kuniyoshi"
+vie = "Edo (Tokio), 1797 – Edo, 1861"
+biographie = """
+Hijo de un tintorero de seda de Edo, Kuniyoshi entra hacia 1811 en el taller del gran Utagawa Toyokuni, maestro de los retratos de actores. Sus comienzos son difíciles, y vive varios años en la pobreza. El éxito llega hacia 1827 con una serie dedicada a los ciento ocho héroes del Suikoden, una novela china de bandidos de gran corazón, que lanza la moda de las estampas de guerreros, los musha-e. Kuniyoshi se convierte en su maestro, pero toca también el paisaje, las leyendas, las escenas cómicas y los animales. Durante las reformas de la era Tenpō, a partir de 1842, la censura prohíbe los retratos de actores y cortesanas: la esquiva con malicia, prestando los rasgos de los actores a gatos, ranas o peces, y desliza alusiones satíricas al poder en sus trípticos. Gran amante de los gatos, siempre tenía varios en su taller. Forma a numerosos alumnos, entre ellos Tsukioka Yoshitoshi, uno de los últimos grandes maestros de la estampa. Muere en Edo en 1861."""
+style = """
+Kuniyoshi es el maestro de lo espectacular: guerreros en pleno combate, monstruos, fantasmas, ballenas gigantes, a menudo desplegados en trípticos. Toma del grabado occidental el modelado, la perspectiva y la anatomía, y los mezcla con una imaginación desbordante y un humor constante. Sus composiciones audaces y su gusto por lo fantástico anuncian el manga e inspiraron el arte del tatuaje japonés."""
+
+[[artistes]]
+nom = "Itō Jakuchū"
+vie = "Kioto, 1716 – Kioto, 1800"
+biographie = """
+Hijo mayor de un rico mayorista de verduras del mercado de Nishiki, en Kioto, Jakuchū se hace cargo del negocio familiar a los veintitrés años, a la muerte de su padre. Pero el comercio le interesa poco: estudia pintura, primero con un maestro de la escuela Kanō, luego copiando las pinturas chinas conservadas en los templos de Kioto y, sobre todo, observando la naturaleza. Hacia los cuarenta años deja el negocio a su hermano menor para dedicarse por entero a la pintura. Cercano al monje zen Daiten, del templo Shōkoku-ji, que le habría dado su nombre de artista, pinta durante una decena de años los treinta rollos del Reino colorido de los seres vivos, ofrecidos al templo. Practica también la tinta monocroma, de gran libertad, e inventa técnicas originales, como sus biombos divididos en miles de pequeños cuadrados. El gran incendio de Kioto, en 1788, destruye su casa; pasa sus últimos años cerca del templo Sekihō-ji, al sur de la ciudad, donde dibuja estatuas de discípulos de Buda. Largo tiempo descuidado, es hoy uno de los pintores más admirados de Japón."""
+style = """
+Jakuchū es un pintor singular, que no pertenece a ninguna escuela. Une la precisión casi científica de la observación, pluma a pluma y pétalo a pétalo, a una imaginación decorativa y a veces extraña. Sus colores, de una intensidad y una frescura excepcionales, y sus composiciones densas, sin profundidad, dan a sus aves y a sus flores una presencia casi sobrenatural. No es un artista del ukiyo-e, sino un contemporáneo de los primeros maestros del grabado en color."""

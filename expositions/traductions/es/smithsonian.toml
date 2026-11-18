@@ -1,0 +1,1265 @@
+[exposition]
+ordre = 110
+nom_court = "Smithsonian"
+mouvement = "Arte estadounidense del siglo XIX"
+cadre = "dore"
+couleur = "#8a3b2e"
+titre = "América en el siglo XIX, pintura y escultura"
+artiste = "Pintores y escultores estadounidenses"
+dates = "1836–1899"
+accroche = "Exposición virtual · Museos del Smithsonian"
+introduction = """
+Un museo inspirado en los del Smithsonian en Washington: un gran patio cubierto \
+presidido por el George Washington de Greenough, los paisajes del Hudson y de la \
+Sierra Nevada, los retratos de Whistler, Sargent y Eakins, las esculturas de \
+John Rogers y un gabinete asiático como el de la Freer Gallery. Las esculturas son \
+escaneos 3D del Smithsonian, de libre acceso."""
+vitrine = "mere-whistler.jpg"
+
+[musee]
+nom = "Smithsonian American Art Museum"
+ville = "Washington, Estados Unidos"
+construction = "1836–1867"
+presentation = """
+El Smithsonian American Art Museum ocupa, junto con la National Portrait Gallery, el antiguo \
+Patent Office de Washington, donde en otro tiempo se registraban las patentes de invención. Iniciado en \
+1836 y concluido en 1867, este vasto cuadrilátero neoclásico con pórticos, de una \
+arquitectura inspirada en los templos griegos, es uno de los edificios públicos más antiguos de \
+la capital. Durante la guerra de Secesión sirve de hospital, y Walt Whitman acude a él para \
+velar a los heridos; en 1865 se celebra allí el baile de la segunda investidura de Lincoln. \
+Amenazado de demolición en la década de 1950, se salva y se confía al Smithsonian, que \
+abre en él sus dos museos en 1968. Desde 2007, su patio interior, el Kogod Courtyard, está \
+cubierto por una cubierta acristalada ondulante diseñada por Foster and Partners. El museo recorre \
+el arte estadounidense desde la época colonial, de los paisajes de la Hudson River School a las \
+obras contemporáneas."""
+ici = """
+ARTEON conserva su planta en torno a un patio. El patio cubierto, un cuadrado de 20 metros de \
+lado y 12 metros de altura, bajo una cubierta acristalada, recibe al visitante por el sur, a los pies del \
+George Washington de Greenough. Tres salas lo rodean: al oeste, Los paisajes \
+estadounidenses, de paredes verde pálido; al norte, Los retratos, de paredes rosadas, ambas \
+de 6 metros de altura; al este, Las esculturas de género, más bajas, de paredes gris perla. \
+Una puerta al norte de esta última da acceso a la sala más pequeña, El gabinete \
+asiático, de paredes color arena, donde concluye la visita."""
+
+[[salles]]
+nom = "El patio cubierto"
+theme = "Bajo la cubierta acristalada, la estatua colosal de George Washington, esculpida en Florencia para el Capitolio."
+murs = "#ece6da"
+x = 0
+z = 0
+largeur = 20
+profondeur = 20
+hauteur = 12
+portes = ["sud", "ouest", "nord", "est"]
+
+[[salles]]
+nom = "Los paisajes estadounidenses"
+theme = "1836–1868: el Hudson, las cataratas del Niágara y la Sierra Nevada, una naturaleza grandiosa y salvaje."
+murs = "#e4e6dc"
+x = -15
+z = 0
+largeur = 10
+profondeur = 16
+hauteur = 6
+
+[[salles]]
+nom = "Los retratos"
+theme = "1871–1899: la madre de Whistler, Madame X, la clínica del doctor Gross y el mar de Winslow Homer."
+murs = "#e6dfd8"
+x = 0
+z = -16
+largeur = 16
+profondeur = 12
+hauteur = 6
+
+[[salles]]
+nom = "Las esculturas de género"
+theme = "1864–1869: los grupos de yeso de John Rogers y la mascarilla de Lincoln moldeada del natural."
+murs = "#e3e3e6"
+x = 15
+z = 0
+largeur = 10
+profondeur = 12
+hauteur = 5
+portes = ["nord"]
+
+[[salles]]
+nom = "El gabinete asiático"
+theme = "Siglo VI: un Buda chino cuya túnica narra los mundos de la existencia, como en la Freer Gallery."
+murs = "#d9d2c4"
+x = 15
+z = -11
+largeur = 10
+profondeur = 10
+hauteur = 5
+
+[[oeuvres]]
+titre = "The Oxbow (El meandro del Connecticut)"
+artiste = "Thomas Cole"
+annee = "1836"
+image = "oxbow.jpg"
+technique = "Óleo sobre lienzo, 130,8 × 193 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Tras la tormenta, el río dibuja un meandro: a un lado el bosque salvaje, al otro los campos cultivados."
+description = """
+Desde la cima del monte Holyoke, en Massachusetts, la mirada se hunde en el valle \
+del Connecticut. El lienzo se divide en dos. A la izquierda, un bosque oscuro y un árbol \
+fulminado por el rayo, de ramas rotas, se aferran al escarpe, mientras la tormenta \
+se aleja soltando aún cortinas de lluvia sobre las colinas. A la derecha, bajo un \
+cielo que se despeja, el río describe un amplio meandro entre campos cultivados, \
+pastos y bosquecillos; finas columnas de humo se elevan de las granjas y pequeños barcos \
+se deslizan sobre el agua. En primer plano, casi oculto entre las rocas, un pintor \
+diminuto, con sombrero, está sentado ante su caballete y se vuelve hacia nosotros; \
+junto a él se ven una sombrilla y una carpeta de dibujos. La diagonal de la tormenta \
+y la de la colina conducen el ojo de la sombra a la luz."""
+evocation = """
+A menudo se lee el cuadro como un diálogo entre dos Américas: la naturaleza salvaje, \
+sublime y amenazadora, y el paisaje domesticado por los colonos, apacible y próspero. \
+Cole no se decanta con claridad. En sus escritos celebra la belleza de las extensiones \
+vírgenes y se inquieta al verlas desbrozadas a gran velocidad; algunos historiadores \
+ven por ello en el valle cultivado una promesa, otros el comienzo de una pérdida. \
+La tormenta que pasa puede representar un momento de cambio, el de un país que elige su \
+camino. Al representarse trabajando, en el punto de unión de los dos mundos, el pintor \
+reivindica su papel de testigo e intérprete del territorio, en una época en que los jóvenes \
+Estados Unidos buscan en sus paisajes una grandeza comparable a las ruinas y a las \
+catedrales de Europa."""
+histoire = """
+Cole pinta The Oxbow en 1835-1836, mientras trabaja en El curso del Imperio, el gran \
+ciclo de cinco lienzos encargado por el comerciante neoyorquino Luman Reed. Destina este \
+paisaje de gran formato a la exposición anual de la National Academy of Design, en Nueva \
+York, y elige un lugar ya célebre: el meandro visto desde el monte Holyoke era una de las \
+etapas del turismo pintoresco en Nueva Inglaterra, reproducido en guías y \
+grabados. El lienzo se expone en la Academia en 1836, el mismo año en que Cole publica su « \
+Ensayo sobre el paisaje americano», alegato en favor de la belleza propia de los parajes del Nuevo \
+Mundo. El título completo, muy descriptivo, precisa que se trata de una vista tomada después de una \
+tormenta. La obra pasa luego por colecciones privadas antes de ser donada al \
+Metropolitan Museum of Art en 1908 por Mrs. Russell Sage."""
+facture = """
+Cole contrapone dos maneras de pintar: a la izquierda, empastes vigorosos, troncos \
+retorcidos y verdes oscuros casi negros; a la derecha, una pintura más lisa, de \
+verdes tiernos y ocres dorados, donde los campos se detallan con la punta del pincel. \
+El formato panorámico y el punto de vista elevado retoman la tradición de las vistas \
+topográficas y de los paisajes europeos, de Claudio de Lorena a Turner, que Cole había \
+estudiado durante su viaje de 1829-1832. La luz, que horada las nubes sobre \
+el valle, unifica la composición y dramatiza el paso de un mundo a otro."""
+details = [
+  "Abajo, en el centro, el propio pintor, diminuto, sentado ante su caballete.",
+  "A la izquierda, el árbol fulminado de ramas quebradas, emblema de la naturaleza salvaje.",
+  "La cortina de lluvia que aún cae sobre las colinas de la izquierda.",
+  "Las finas columnas de humo que se elevan de las granjas del valle.",
+  "En la colina del fondo, las parcelas desbrozadas en las que se ha creído leer unas letras.",
+]
+themes = ["paisaje", "naturaleza salvaje", "tormenta", "río", "autorretrato"]
+anecdote = """
+Algunos historiadores han creído descifrar, en los claros de la colina del fondo, \
+unas letras hebreas que forman la palabra Noé y, leídas al revés, como desde el cielo, \
+Shaddai, «el Todopoderoso». ¿Una firma divina oculta en el paisaje? \
+La hipótesis sigue siendo discutida."""
+salle = 2
+mur = "ouest"
+position = -5
+largeur = 1.9
+
+[[oeuvres]]
+titre = "Among the Sierra Nevada, California"
+artiste = "Albert Bierstadt"
+annee = "1868"
+image = "sierra-nevada.jpg"
+technique = "Óleo sobre lienzo, 183 × 305 cm"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Pintada en Roma a partir de sus bocetos del Oeste: una visión grandiosa, casi divina, de las montañas de California."
+description = """
+En el corazón de un circo de montañas, un lago inmóvil refleja cumbres nevadas que \
+parecen surgir de la bruma. La luz atraviesa un cielo de tormenta, cae en rayos oblicuos \
+sobre los acantilados de granito e incendia el centro del lienzo. A la derecha, una cascada \
+se precipita por una pared vertiginosa y se pierde en el vapor; a la izquierda, grandes árboles \
+oscuros enmarcan la escena como el telón de un teatro. En primer plano, en la orilla, \
+unos ciervos se han detenido al borde del agua, y aves acuáticas se posan o \
+alzan el vuelo sobre la superficie. Ni rastro humano: ni sendero, ni casa, ni viajero. \
+El inmenso lienzo, de más de tres metros de ancho, sitúa al visitante ante un panorama a \
+la vez preciso e imposible, tanto es lo que se reúne en una sola mirada."""
+evocation = """
+Bierstadt compone una especie de jardín del Edén estadounidense, una tierra prometida bañada por una \
+luz casi religiosa. Los rayos que atraviesan las nubes se han leído a menudo como \
+signo de una bendición concedida al Oeste, en el momento en que Estados Unidos culmina la \
+conquista del continente: el primer ferrocarril transcontinental se inaugura al año \
+siguiente, en 1869. El cuadro exalta la idea de «destino manifiesto», la convicción \
+de que la nación estaba llamada a extenderse hasta el Pacífico. Pero silencia \
+a los pueblos amerindios que vivían en esos valles y eran expulsados de ellos. Hoy se ve en él \
+tanto una celebración de la naturaleza grandiosa como una imagen idealizada, \
+casi publicitaria, de un territorio ofrecido a colonos e inversores."""
+histoire = """
+Bierstadt descubre la Sierra Nevada y el valle de Yosemite en 1863, durante un largo \
+viaje hacia el Oeste con el escritor Fitz Hugh Ludlow, y trae de él numerosos \
+estudios pintados del natural. Cinco años después, durante una estancia en Europa, \
+compone en su taller de Roma esta vista imaginaria, ensamblada a partir de sus \
+bocetos: ningún lugar real corresponde exactamente a este panorama. Antes de enviarla a \
+América, la expone en Europa, en particular en Londres y en Berlín, para dar a conocer \
+el Oeste americano al público europeo y afianzar allí su reputación. El lienzo pasa \
+después a una colección privada estadounidense. Es legado al Smithsonian American Art \
+Museum en 1977 por Helen Huntington Hull, y desde entonces figura entre las obras emblemáticas del \
+museo."""
+facture = """
+Formado en Düsseldorf, Bierstadt aplica el método de esta escuela: un dibujo minucioso, \
+una superficie lisa en la que la pincelada desaparece, una precisión que llega hasta los reflejos en \
+el agua y las siluetas de los animales. Combina este realismo del detalle con una puesta en \
+escena teatral: contraluz, violentos contrastes entre zonas de sombra y claros de \
+luz, árboles a modo de bastidores, cumbres dispuestas como un decorado. Los tonos cálidos del \
+centro, dorados y rosados, se oponen a los azules fríos de las montañas y a los verdes profundos \
+de los primeros planos. El formato muy grande, pensado para exponerse en solitario, contribuye al \
+efecto."""
+details = [
+  "La cascada, a la derecha, que cae de una alta pared en una nube de vapor.",
+  "Los ciervos detenidos al borde del lago, en primer plano.",
+  "Los rayos de sol que atraviesan las nubes e hieren los acantilados.",
+  "Las aves acuáticas que rizan la superficie del lago.",
+  "El reflejo casi perfecto de las montañas en el agua.",
+]
+themes = ["montaña", "oeste estadounidense", "luz", "lago", "naturaleza salvaje"]
+anecdote = """
+El compañero de viaje de Bierstadt en 1863, el escritor Fitz Hugh Ludlow, estaba casado con \
+una tal Rosalie. La pareja se divorció poco después, y en 1866 Rosalie se casó con el \
+pintor, que se la llevó al año siguiente a su larga estancia europea."""
+salle = 2
+mur = "ouest"
+position = 0.5
+largeur = 3.0
+
+[[oeuvres]]
+titre = "Niagara"
+artiste = "Frederic Edwin Church"
+annee = "1857"
+image = "niagara.jpg"
+technique = "Óleo sobre lienzo, 101,6 × 229,9 cm"
+collection = "National Gallery of Art, Washington"
+note = "Sin orilla en primer plano: el espectador está al borde del vacío, sobre las cataratas."
+description = """
+El espectador se encuentra suspendido sobre el vacío, en el punto preciso en que el agua \
+se despeña. No hay orilla, ni roca, ni paseante que sirva de referencia: el primer \
+plano lo ocupa la lámina verde y blanca del río que se desliza hacia el precipicio. \
+La Herradura, la gran catarata vista desde el lado canadiense, dibuja una vasta curva que \
+se hunde hacia el fondo, hasta el horizonte donde se perfila una orilla lejana, baja y \
+boscosa. Una inmensa nube de rocío sube del abismo y se mezcla con el cielo. A la derecha, un \
+arcoíris se forma en la bruma. El formato muy alargado, más de dos veces más \
+ancho que alto, estira la catarata de un borde a otro y da a la mirada la sensación de \
+recorrer todo el paisaje de un solo movimiento."""
+evocation = """
+A mediados del siglo XIX, el Niágara es el gran símbolo natural de Estados Unidos, su \
+respuesta a los monumentos de Europa. Church lo convierte en una experiencia física: sin tierra \
+firme bajo los pies, el visitante siente el vértigo y la potencia del agua, lo que la \
+época llamaba lo sublime, mezcla de temor y asombro. El arcoíris, \
+signo bíblico de la alianza entre Dios y los hombres tras el Diluvio, se ha \
+interpretado a menudo como una promesa dirigida a la nación, en una América protestante que \
+veía en sus paisajes la huella de la Creación. También se ha visto en él una visión casi \
+científica, fiel a la mirada de Alexander von Humboldt, a quien Church admiraba: la naturaleza \
+observada con exactitud, pero concebida como un todo vivo, en perpetuo movimiento."""
+histoire = """
+Church viaja al Niágara en varias ocasiones en 1856 y multiplica los dibujos y los \
+bocetos al óleo, desde todos los ángulos, antes de pintar el gran lienzo en su \
+taller de Nueva York en la primavera de 1857. El cuadro se presenta en solitario en la galería de los \
+marchantes Williams, Stevens & Williams, y miles de visitantes pagan su entrada para \
+verlo; una cromolitografía asegura su difusión. Se expone después en \
+Londres, donde llama mucho la atención, y regresa luego a Estados Unidos. Presentado en la Exposición \
+Universal de París de 1867, obtiene en ella una medalla. La Corcoran Gallery of Art de \
+Washington lo adquiere en 1876. Al cierre de ese museo, en 2014, su colección se \
+dispersa, y el Niagara pasa a la National Gallery of Art."""
+facture = """
+Church pinta con una precisión casi fotográfica: se distingue la transparencia \
+del agua verde al borde de la catarata, la espuma que se deshilacha, la luz que atraviesa \
+el rocío. Su pincelada permanece invisible, como la de su maestro Thomas Cole y la de los \
+paisajistas de la escuela del Hudson, pero rompe con sus composiciones enmarcadas \
+por árboles y rocas. El formato panorámico, tomado de los panoramas y de las vistas \
+topográficas, y la supresión del primer plano son decisiones audaces. Los \
+colores se mantienen contenidos, verdes, blancos azulados y grises dorados, para que todo el efecto \
+resida en el movimiento del agua y en la luz."""
+details = [
+  "El borde de la catarata, en primer plano, donde el agua se vuelve translúcida al despeñarse.",
+  "El arcoíris, a la derecha, que nace en la bruma.",
+  "La nube de rocío que se confunde con las nubes del cielo.",
+  "La línea lejana de la orilla, muy baja, que acentúa la inmensidad.",
+]
+themes = ["agua", "sublime", "paisaje", "nación", "arcoíris"]
+anecdote = """
+Diez años después, Church volvió sobre el tema con un cuadro vertical, Las cataratas del \
+Niágara vistas desde el lado estadounidense (1867), en el que la catarata cae esta vez de arriba abajo del \
+lienzo. Se conserva en la Scottish National Gallery, en Edimburgo."""
+salle = 2
+mur = "ouest"
+position = 5.6
+largeur = 2.2
+
+[[oeuvres]]
+titre = "Arreglo en gris y negro n.º 1 (La madre del artista)"
+artiste = "James McNeill Whistler"
+annee = "1871"
+image = "mere-whistler.jpg"
+technique = "Óleo sobre lienzo, 144,3 × 162,4 cm"
+collection = "Museo de Orsay, París"
+note = "El pintor quería una armonía de grises y negros; el mundo vio en ella el retrato de todas las madres."
+description = """
+Una anciana vestida de negro está sentada de perfil, vuelta hacia la izquierda, con las manos \
+posadas sobre las rodillas, sosteniendo un pañuelo blanco. Lleva una cofia de encaje \
+blanco y puños de encaje a juego. Sus pies descansan sobre un pequeño taburete. \
+El decorado queda reducido a casi nada: un muro gris, un zócalo negro, una cortina oscura, \
+a la izquierda, salpicada de motivos claros y, colgado de la pared, un marco con un amplio paspartú \
+blanco que contiene una estampa del artista que representa el Támesis. La mujer no mira \
+al espectador; fija la vista en un punto frente a ella, inmóvil. Las líneas horizontales \
+y verticales del muro, del marco y de la cortina construyen una red de rectángulos en \
+la que la silueta, de espalda muy recta, se inscribe como una forma oscura."""
+evocation = """
+Whistler quería que se mirase este cuadro como una composición de formas y de \
+tonos, a la manera de una pieza de música, de ahí su título de «arreglo». \
+Defendía el arte por el arte y se burlaba de quienes buscaban en él un sentimiento. El \
+público, sin embargo, vio en él algo muy distinto: la austera dignidad de una madre anciana, su \
+paciencia, una forma de recogimiento casi religioso. Anna McNeill Whistler, mujer \
+piadosa y rigurosa, se había reunido con su hijo en Londres durante la guerra de Secesión. \
+Con el tiempo, la obra se ha convertido en un icono de la maternidad, e incluso en un símbolo de \
+Estados Unidos durante la crisis de los años treinta. Este desajuste entre la intención del pintor \
+y la lectura del público forma parte de su historia y de su fama."""
+histoire = """
+El cuadro se pinta en 1871 en la casa de Whistler en Chelsea, a orillas del \
+Támesis. Según el relato transmitido, la pose, prevista en un principio de pie, resultó \
+demasiado fatigosa para Anna Whistler, de más de sesenta años, y fue sustituida por \
+una pose sentada. En 1872, la obra se presenta en la Royal Academy de Londres, donde \
+estuvo a punto de ser rechazada. Whistler, a menudo escaso de dinero, la empeña más tarde. En \
+1891, gracias en particular al apoyo de Stéphane Mallarmé y de Georges Clemenceau, el Estado \
+francés la adquiere para el Museo del Luxemburgo, consagrado a los artistas vivos: para \
+Whistler, es una consagración. El cuadro pasa después al Louvre y, en 1986, al \
+Museo de Orsay. Ha viajado mucho, en particular a Estados Unidos en 1932-1934."""
+facture = """
+La paleta se reduce deliberadamente a grises, negros y blancos, con algunos \
+tonos cálidos apenas perceptibles. Whistler aplica una pintura muy diluida, en capas \
+finas y casi transparentes, que limpia y retoma hasta obtener la armonía \
+buscada. La composición, hecha de planos planos y de rectángulos encajados, debe mucho \
+a las estampas japonesas que el artista coleccionaba, como la cortina de motivos, y a \
+Velázquez, a quien admiraba por sus negros y sus grises. El perfil estricto, recortado sobre el \
+muro, recuerda también la tradición de las medallas y de las siluetas."""
+details = [
+  "El pañuelo blanco que la anciana sostiene entre las manos.",
+  "El pequeño taburete bajo sus pies, que la separa del suelo.",
+  "La cortina oscura de motivos, a la izquierda, inspirada en los tejidos japoneses.",
+  "El marco en la pared: un aguafuerte de Whistler que representa el Támesis.",
+  "Los encajes de la cofia y de los puños, únicos toques de blanco vivo.",
+]
+themes = ["madre", "retrato", "armonía", "gris", "japonismo"]
+anecdote = """
+En 1934, el servicio de correos de Estados Unidos emitió con motivo del Día de la Madre un sello que reproducía el \
+cuadro, con la inscripción « In memory and in honor of the mothers of America ». El \
+retrato de la señora Whistler se convirtió entonces en una imagen nacional."""
+salle = 3
+mur = "ouest"
+position = 0
+largeur = 1.6
+
+[[oeuvres]]
+titre = "The Gross Clinic (La clínica del doctor Gross)"
+artiste = "Thomas Eakins"
+annee = "1875"
+image = "gross-clinic.jpg"
+technique = "Óleo sobre lienzo, 243,8 × 198,1 cm"
+collection = "Philadelphia Museum of Art y Pennsylvania Academy of the Fine Arts"
+note = "Una operación en el anfiteatro de Filadelfia: el cirujano se vuelve, con el bisturí ensangrentado en la mano."
+description = """
+En el anfiteatro del Jefferson Medical College de Filadelfia, el doctor Samuel D. \
+Gross, de cabello gris alborotado, se ha interrumpido en plena operación para dirigirse \
+a los estudiantes. Sostiene un bisturí en la mano derecha, con los dedos enrojecidos de sangre. \
+Ante él, sobre la mesa, el paciente, un joven del que apenas se ve más que el \
+muslo abierto y los pies, está rodeado por el equipo: unos ayudantes mantienen \
+abierta la incisión, otro sostiene sobre su rostro un paño empapado en cloroformo. A la \
+izquierda, una mujer de negro, sin duda una pariente del enfermo, se protege los ojos con un \
+gesto convulso. En las gradas sumidas en la penumbra, unos estudiantes observan; \
+un ayudante toma notas. La luz cae de un tragaluz e ilumina la frente del \
+cirujano."""
+evocation = """
+Eakins hace del cirujano un héroe moderno, un hombre de ciencia de saber seguro, en la \
+estela de La lección de anatomía del doctor Tulp de Rembrandt. El contraste entre la calma \
+del maestro y el espanto de la mujer opone la razón a la emoción, la ciencia al miedo. \
+La operación practicada, que permitía tratar una infección del hueso sin amputar la \
+pierna, ilustra los progresos de la cirugía estadounidense, de la que Filadelfia era \
+un gran centro. El realismo crudo de la sangre y de la carne fue recibido como una provocación; \
+hoy se ve en él la afirmación de la verdad como valor supremo de la pintura \
+y la ambición de Eakins de mostrar la vida moderna de su ciudad, sus sabios y sus \
+instituciones, sin embellecer nada."""
+histoire = """
+Eakins, que había seguido cursos de anatomía en el Jefferson Medical College, pinta este \
+gran cuadro en 1875 con la esperanza de presentarlo en la Exposición Universal del \
+Centenario, organizada en Filadelfia en 1876. El jurado de la sección de bellas artes \
+lo descarta, sin duda escandalizado por su crudeza; el lienzo acaba colgado en el \
+pabellón médico del ejército, entre el material hospitalario. La crítica se divide: \
+unos saludan la fuerza del retrato, otros se horrorizan. En 1878, \
+la asociación de antiguos alumnos del Jefferson Medical College lo adquiere por una suma \
+modesta y lo dona a la escuela, donde permanece más de un siglo. Cuando la universidad decide \
+venderlo, en 2006, una movilización pública permite al Philadelphia Museum of Art \
+y a la Pennsylvania Academy of the Fine Arts adquirirlo conjuntamente."""
+facture = """
+Eakins construye la escena en claroscuro, a la manera de Rembrandt y de los pintores \
+españoles, Velázquez y Ribera, a quienes había estudiado en el Prado. El fondo es casi negro, \
+y la luz, concentrada sobre la frente de Gross, su mano y la herida, dibuja una \
+pirámide luminosa. Su formación junto a Jean-Léon Gérôme, en París, se advierte en la \
+precisión del dibujo y la solidez de los volúmenes. Gran conocedor de la anatomía y de la \
+perspectiva, preparaba sus composiciones mediante rigurosos estudios. El rojo de la \
+sangre, único color vivo en una gama de marrones y negros, atrae de inmediato la mirada \
+hacia la mano del cirujano."""
+details = [
+  "El bisturí y los dedos ensangrentados de Gross, en el centro de la luz.",
+  "La mujer de negro, a la izquierda, que se oculta el rostro con una mano crispada.",
+  "En el extremo derecho, entre los espectadores, Eakins se ha representado dibujando.",
+  "Ni guantes ni batas: en 1875, los cirujanos operan con levita.",
+  "El paño de cloroformo colocado sobre el rostro del paciente.",
+]
+themes = ["medicina", "ciencia", "realismo", "retrato", "filadelfia"]
+anecdote = """
+En 2006, la Universidad Thomas Jefferson aceptó vender el cuadro por 68 millones de \
+dólares a la National Gallery of Art de Washington y al museo Crystal Bridges, en \
+Arkansas. Filadelfia reunió la suma en el plazo concedido para conservar la obra en \
+la ciudad."""
+salle = 3
+mur = "nord"
+position = -4
+largeur = 2.0
+
+[[oeuvres]]
+titre = "Madame X (Madame Pierre Gautreau)"
+artiste = "John Singer Sargent"
+annee = "1883–1884"
+image = "madame-x.jpg"
+technique = "Óleo sobre lienzo, 208,6 × 109,9 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "El retrato causó escándalo en el Salón: Sargent abandonó París. Lo consideraba el mejor que había pintado."
+description = """
+Una joven se mantiene en pie, con el cuerpo vuelto hacia nosotros y la cabeza de perfil. \
+Lleva un vestido de satén negro de profundo escote, sujeto a los hombros por \
+finos tirantes adornados con piedras. Su piel, de una blancura nacarada, contrasta \
+violentamente con el negro de la tela y el fondo pardo y cálido. Su mano derecha se apoya en \
+un velador, con la muñeca vuelta en un gesto tenso; la izquierda sostiene un abanico \
+plegado. En su pelo recogido brilla una pequeña diadema en forma de media luna. \
+Ningún otro accesorio, ningún decorado distrae la mirada: todo descansa en la \
+silueta, el contraste del negro y el blanco y la línea del perfil, nítido como el \
+de una medalla."""
+evocation = """
+Sargent quería pintar a una belleza célebre del París mundano, Virginie Amélie Avegno, \
+nacida en Nueva Orleans y esposa del banquero Pierre Gautreau, estadounidense como él \
+e instalado en Francia. El retrato celebra una elegancia fría y escultórica, \
+casi abstracta. La media luna evoca a Diana, la cazadora de la mitología, \
+diosa altiva e inaccesible. Pero el París de 1884 vio en ella una imagen de arrogancia y \
+de seducción exhibida, la de una mujer que hace de su belleza un espectáculo. El cuadro \
+dice la ambición de un joven pintor de veintiocho años que quería dar un golpe de efecto \
+en el Salón, y la estrecha frontera que separaba la audacia del escándalo en la buena \
+sociedad de la Tercera República."""
+histoire = """
+Sargent solicita él mismo a su modelo, que acepta posar; las sesiones tienen lugar en \
+París y, en el verano de 1883, en la propiedad de los Gautreau en Paramé, en Bretaña. Presentado \
+en el Salón de 1884 con el título «Retrato de la señora ***», el cuadro desata burlas \
+e indignación. Se critica la palidez de la piel, la pose y, sobre todo, el tirante \
+derecho, pintado entonces caído sobre el brazo, juzgado indecente. La madre de la modelo pide a \
+Sargent que retire la obra, a lo que él se niega. Después repinta el tirante sobre \
+el hombro y conserva el lienzo en su taller. Al escasear los encargos parisinos, \
+se instala en Londres en 1886. En 1916 vende el cuadro al Metropolitan Museum of Art \
+bajo un título que silencia el nombre de la modelo: Madame X."""
+facture = """
+Alumno de Carolus-Duran, Sargent domina una pintura rápida y fluida, heredada de \
+Velázquez y de Frans Hals. Aquí contiene su virtuosismo: la pincelada sigue siendo suelta en \
+el vestido y el fondo, pero la carne se trata en superficies lisas, de un blanco teñido de \
+gris y de lila, que evoca los polvos con que la joven se cubría. El encuadre \
+vertical y estrecho, la silueta recortada sobre un fondo liso recuerdan los retratos de \
+cuerpo entero de Velázquez y de Manet. El contorno es de una nitidez casi gráfica."""
+details = [
+  "La media luna de diamantes, en el cabello, atributo de Diana.",
+  "El tirante derecho, repintado sobre el hombro tras el escándalo del Salón.",
+  "La mano derecha crispada sobre el borde del velador.",
+  "La oreja ligeramente rosada, único toque de color en un rostro muy pálido.",
+  "El abanico plegado, casi invisible contra el satén negro.",
+]
+themes = ["retrato", "elegancia", "escándalo", "parís", "moda"]
+anecdote = """
+Sargent pintó también una segunda versión del retrato, que dejó inacabada y conservó \
+en su taller. Fue adquirida en 1925, el año de su muerte, por la Tate, en Londres, \
+donde se encuentra todavía."""
+salle = 3
+mur = "nord"
+position = 3.5
+largeur = 1.1
+
+[[oeuvres]]
+titre = "The Child's Bath (El baño)"
+artiste = "Mary Cassatt"
+annee = "1893"
+image = "bain-enfant.jpg"
+technique = "Óleo sobre lienzo, 100,3 × 66,1 cm"
+collection = "Art Institute of Chicago"
+note = "Vista desde arriba, como una estampa japonesa: la ternura de un gesto cotidiano."
+description = """
+Una mujer sentada sostiene sobre las rodillas a un niño pequeño envuelto a medias en una toalla \
+blanca y le lava los pies en una palangana colocada en el suelo. Ambas con la cabeza \
+inclinada, miran el agua; la mano de la mujer rodea el pie del niño, que \
+se apoya con una mano en su rodilla. La mujer lleva un amplio vestido de anchas rayas \
+claras y de colores. A su alrededor, la intimidad de una habitación: una alfombra de motivos \
+florales, una jarra en el suelo, a la derecha, y, en la parte alta del cuadro, un mueble \
+pintado. El punto de vista, muy elevado, se abisma sobre la escena, de modo que el suelo parece \
+alzarse como una pared y las dos figuras ocupan casi toda la altura del \
+lienzo."""
+evocation = """
+Mary Cassatt dedicó gran parte de su obra a las mujeres y los niños, no \
+como alegorías sentimentales, sino como escenas observadas de la vida \
+cotidiana. Aquí, la ternura se expresa mediante un gesto simple y concentrado, compartido en \
+silencio. Las miradas convergen en el mismo punto, el agua de la palangana, y crean \
+una intimidad de la que el espectador queda casi excluido. Se ha visto en ella una visión moderna de la \
+maternidad, hecha de atención y cuidado más que de idealización religiosa, en \
+oposición a las Vírgenes con el Niño de la tradición. Algunos historiadores subrayan también \
+la actualidad del tema del baño, en una época en que la higiene y la educación de los niños \
+pequeños se convertían en preocupaciones nuevas para las familias burguesas."""
+histoire = """
+Cassatt pinta The Child's Bath en 1893, el año en que realiza la gran pintura \
+mural «La mujer moderna», destinada al Woman's Building de la Exposición Universal de \
+Chicago, y en que la galería Durand-Ruel le dedica en París una importante exposición \
+individual. Instalada en Francia desde 1874, vinculada a Degas, que la había invitado a \
+exponer con los impresionistas, se encuentra entonces en la cumbre de su carrera. El año \
+1890 había sido decisivo: la gran exposición de estampas japonesas de la École des \
+Beaux-Arts la había impulsado a renovar su manera, primero en el grabado en \
+color y después en la pintura. El cuadro es adquirido por el Art Institute of Chicago \
+en 1910, en vida de la artista, y desde entonces figura entre las obras más populares \
+del museo."""
+facture = """
+La composición debe mucho a las estampas japonesas de Utamaro y de sus contemporáneos: \
+vista cenital, suelo enderezado, motivos decorativos yuxtapuestos, ausencia de horizonte, \
+figuras apretadas en el encuadre. Las rayas del vestido, la alfombra florida y el mueble \
+pintado se responden como superficies planas de color, mientras que la carne del \
+niño se modela con suavidad. La pincelada, libre y visible en los tejidos, sigue siendo \
+impresionista, pero el dibujo, firme y preciso, muestra la influencia de Degas. Los \
+colores claros y frescos traducen la luz suave de una habitación."""
+details = [
+  "Las dos cabezas inclinadas hacia el agua, que miran el mismo punto.",
+  "El pie del niño sostenido en la mano de la mujer, sobre la palangana.",
+  "La jarra colocada sobre la alfombra, a la derecha.",
+  "Las rayas del vestido, que contrastan con la piel desnuda del niño.",
+  "La alfombra de motivos, vista desde arriba, que asciende hasta la mitad del cuadro.",
+]
+themes = ["maternidad", "infancia", "intimidad", "japonismo", "cotidianidad"]
+anecdote = """
+Mary Cassatt nunca se casó ni tuvo hijos. Para sus escenas de maternidad, \
+hacía posar a modelos, a menudo mujeres y niños de su entorno o \
+de su vecindario, que no eran necesariamente madre e hijo en la vida real."""
+salle = 3
+mur = "est"
+position = 0
+largeur = 0.9
+
+[[oeuvres]]
+titre = "The Gulf Stream"
+artiste = "Winslow Homer"
+annee = "1899"
+image = "gulf-stream.jpg"
+technique = "Óleo sobre lienzo, 71,4 × 124,8 cm"
+collection = "Metropolitan Museum of Art, Nueva York"
+note = "Un marinero solo en una barca desarbolada, rodeado de tiburones, con una tromba marina en el horizonte."
+description = """
+En alta mar, un hombre negro, con el torso desnudo, está medio tendido en la cubierta de una pequeña \
+barca a la deriva, que escora peligrosamente. El mástil está roto; tallos de caña de \
+azúcar se escapan de la bodega. Alrededor del barco, tiburones dan vueltas en las olas \
+azul oscuro, con las fauces abiertas. El hombre no los mira: fija la vista en el horizonte, con aire cansado \
+o resignado. A la derecha, en el horizonte, una tromba marina se alza entre el mar y las nubes; \
+muy lejos, a la izquierda, casi invisible, pasa un velero. Algunos peces \
+voladores yacen en la cubierta. El oleaje, poderoso, levanta la barca y cierra el horizonte, \
+aislando al marinero en medio del océano, sin tierra ni socorro a la vista."""
+evocation = """
+Homer pinta una meditación sobre la condición humana frente a una naturaleza indiferente: un \
+hombre solo, privado de todo medio de actuar, amenazado a la vez por los tiburones, la tormenta \
+y la deriva. La elección de un marinero negro, a finales del siglo XIX, ha suscitado \
+numerosas lecturas. Se ha visto en ella una evocación de la historia de la esclavitud y de la \
+trata atlántica, y de la situación precaria de los afroamericanos tras el fracaso de la \
+Reconstrucción. Otros leen en ella un cuadro más personal: Homer, ya envejecido, \
+acababa de perder a su padre en 1898, y la obra adquiere acentos de meditación sobre la \
+muerte. Los historiadores han subrayado también la fuerza serena del personaje, que \
+afronta la situación sin ceder al pánico."""
+histoire = """
+El cuadro nace de varias estancias de Homer en el Caribe y en Florida, en particular \
+en las Bahamas en 1884-1885 y en 1898-1899. Allí había pintado a la acuarela marineros \
+negros, tiburones y barcas, algunas de cuyas hojas anuncian directamente la \
+composición. De regreso en su taller de Prouts Neck, en la costa de Maine, \
+realiza el gran lienzo en 1899. Expuesto a partir de 1900, en particular en la Pennsylvania \
+Academy of the Fine Arts, intriga e inquieta por la dureza de su tema, y le cuesta \
+encontrar comprador. En 1906, el jurado de la exposición de la National Academy of \
+Design recomienda por unanimidad su adquisición al Metropolitan Museum of Art, que lo adquiere \
+ese mismo año."""
+facture = """
+Homer, procedente de la ilustración y de la acuarela, pinta aquí con una pincelada amplia y \
+enérgica. Las olas se construyen con grandes pinceladas, azules profundos, \
+verdes y blancos de espuma. La composición descansa en una diagonal inestable: la barca \
+escorada, la cubierta inclinada, el cuerpo del hombre que sigue la pendiente. Los rojos y los \
+marrones del barco y de la caña de azúcar contrastan con los azules del agua. La tromba y \
+el velero lejano se reducen a unos pocos toques, para que todo converja en \
+el hombre y los tiburones."""
+details = [
+  "Los tallos de caña de azúcar que desbordan de la bodega.",
+  "Los peces voladores varados en la cubierta.",
+  "La tromba marina que se alza en el horizonte, a la derecha.",
+  "El diminuto velero, en el fondo a la izquierda, demasiado lejos para prestar auxilio.",
+  "El tocón del mástil roto.",
+]
+themes = ["mar", "soledad", "peligro", "muerte", "caribe"]
+anecdote = """
+Molesto por las preguntas sobre la suerte del marinero, Homer escribió a su marchante que se \
+podía tranquilizar a los curiosos: el hombre no murió de hambre, ni fue devorado por los \
+tiburones ni alcanzado por la tromba, y fue salvado por un barco que no aparece en el \
+cuadro."""
+salle = 2
+mur = "nord"
+place = 2
+largeur = 1.4
+
+[[sculptures]]
+titre = "George Washington"
+artiste = "Horatio Greenough"
+annee = "1840"
+modele = "washington.stl"
+technique = "Mármol"
+collection = "National Museum of American History, Washington"
+note = "Encargada para la rotonda del Capitolio: Washington con el torso desnudo, como un Zeus antiguo. El público, escandalizado, la hizo trasladar."
+description = """
+Sentado en un trono macizo, George Washington aparece con el torso desnudo, como un dios de \
+la Antigüedad. Un manto drapeado cubre sus piernas y cae sobre el asiento; \
+calza sandalias. Su brazo derecho está alzado, con el índice apuntando al cielo, mientras que \
+con la mano izquierda presenta una espada envainada, con la empuñadura vuelta hacia el \
+espectador. El rostro grave es el del héroe de la Independencia, pero el cuerpo \
+poderoso es el del Júpiter de los escultores antiguos. Los costados del trono están ornados con \
+bajorrelieves: Apolo conduciendo el carro del Sol y Hércules niño estrangulando a las \
+serpientes enviadas contra él. En la parte trasera, pequeñas figuras representan a Cristóbal \
+Colón y a un amerindio. La estatua supera los tres metros de altura."""
+evocation = """
+Greenough quería dar a la joven república un monumento digno de la Antigüedad, \
+representando a su fundador con los rasgos de Zeus, según la estatua colosal que \
+Fidias había esculpido para Olimpia y que solo se conocía por \
+descripciones. El gesto se ha leído como un mensaje político: la mano alzada señala la \
+fuente superior del poder, mientras que la espada tendida, con la empuñadura por delante, recuerda que \
+Washington devolvió su mando y renunció al poder, como el romano Cincinato. \
+Los relieves del trono asocian América a la luz y a la fuerza naciente. Pero \
+para el público estadounidense, poco familiarizado con el arte neoclásico, la desnudez del padre de la \
+nación pareció escandalosa, incluso ridícula: la obra revela el desajuste entre un ideal \
+erudito y el gusto de una democracia."""
+histoire = """
+En 1832, con motivo del centenario del nacimiento de Washington, el Congreso encarga a \
+Greenough, instalado en Florencia, una estatua destinada a la rotonda del Capitolio. El \
+escultor trabaja en ella casi ocho años, haciendo tallar la obra en un enorme bloque \
+de mármol. Concluida en 1840, la estatua cruza el Atlántico y se instala en la \
+rotonda en 1841. La acogida es desastrosa: está mal iluminada, su masa inquieta y \
+su desnudez escandaliza. Ya en 1843 es trasladada al césped este del Capitolio, expuesta \
+a la intemperie; incluso se construye un cobertizo de madera para protegerla. En 1908 es \
+trasladada al Smithsonian, al edificio del Castle, y después, en 1964, al nuevo \
+museo de historia y tecnología, convertido en el National Museum of American History."""
+facture = """
+Greenough sigue la enseñanza neoclásica recibida en Roma en el entorno del escultor \
+danés Bertel Thorvaldsen: formas idealizadas, superficies lisas, referencias a lo antiguo. \
+Modela primero la figura, de la que se saca un modelo en yeso, y después la estatua se \
+talla en mármol blanco con la ayuda de operarios italianos, según la costumbre de los \
+talleres florentinos. La cabeza se inspira en el busto de Washington realizado del natural \
+por Jean-Antoine Houdon en 1785, mientras que el torso y la pose retoman el tipo del \
+Zeus entronizado. El paño, de pliegues profundos, contrasta con el pulido de la piel."""
+details = [
+  "El índice derecho alzado hacia el cielo.",
+  "La espada envainada, tendida con la empuñadura por delante, signo de la renuncia al poder.",
+  "Las sandalias a la antigua que asoman bajo el paño.",
+  "En los costados del trono, Apolo en su carro y Hércules niño con las serpientes.",
+]
+themes = ["héroe", "antigüedad", "nación", "neoclasicismo", "poder"]
+anecdote = """
+La estatua suscitó muchas burlas en Washington: se bromeaba sobre un presidente \
+que salía del baño o que tendía el brazo para reclamar su ropa. Ninguna otra \
+efigie oficial del padre de la nación fue tan escarnecida."""
+salle = 1
+x = 0
+z = 0
+hauteur = 3.4
+matiere = "marbre"
+socle = 0.8
+
+[[sculptures]]
+titre = "The Wounded Scout, a Friend in the Swamp"
+artiste = "John Rogers"
+annee = "1864"
+modele = "wounded-scout.stl"
+technique = "Yeso pintado"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Durante la guerra de Secesión, un esclavo fugitivo sostiene a un soldado de la Unión herido: un grupo vendido en miles de ejemplares."
+description = """
+En un pantano, un hombre negro descalzo, vestido con una camisa y un pantalón raídos, \
+sostiene a un soldado del ejército de la Unión, herido y sin fuerzas. El soldado, de \
+uniforme, pasa un brazo por los hombros de su salvador y se abandona contra él. \
+El hombre negro lo sujeta con firmeza, con el cuerpo tenso por el esfuerzo y la atención. A sus \
+pies, entre los juncos y las hierbas del pantano, se desliza una serpiente, recordatorio de los \
+peligros del lugar. El grupo, de unos sesenta centímetros de altura, está concebido para ser \
+visto desde todos los lados, colocado sobre una mesa o una repisa de salón. El título completo, « \
+El explorador herido, un amigo en el pantano», subraya la relación de confianza que une \
+a los dos personajes."""
+evocation = """
+El grupo celebra la ayuda que los esclavos fugitivos y los afroamericanos del Sur \
+prestaban a los soldados de la Unión, guiándolos, ocultándolos o cuidándolos. \
+En 1864, cuando la guerra arrecia y regimientos negros combaten en \
+el ejército federal, la obra afirma una fraternidad entre blancos y negros en la lucha \
+contra la esclavitud. Se han señalado, no obstante, sus ambigüedades: el hombre negro es en ella un \
+salvador abnegado, pero al servicio del soldado blanco, en un papel que sigue siendo el \
+del auxiliar. Para las familias del Norte que lo compraban, este grupo era un signo de \
+compromiso patriótico y abolicionista, y un recuerdo de los sacrificios de la guerra, \
+instalado en el corazón del hogar."""
+histoire = """
+John Rogers concibe The Wounded Scout en 1864, en plena guerra de Secesión, cuando \
+sus grupos de yeso ya habían conquistado al público del Norte. Había empezado por \
+temas ligados a la esclavitud, como La venta de esclavos en 1859, y luego multiplicó las escenas \
+de la vida de los soldados y de los civiles durante el conflicto, que respondían a la actualidad \
+vivida por sus compradores. The Wounded Scout figura entre sus mayores éxitos. Como \
+los demás grupos, se vende por catálogo y en la sala de exposición del \
+artista en Nueva York, a un precio accesible para las familias de clase media. El \
+Smithsonian American Art Museum conserva numerosos grupos de Rogers; este forma \
+parte de las obras digitalizadas en 3D y difundidas en libre acceso."""
+facture = """
+Rogers modela primero sus figuras en arcilla, luego hace fundir un modelo de bronce, a \
+partir del cual se realizan moldes flexibles. Estos moldes permiten vaciar en \
+serie pruebas de yeso, ensambladas y cubiertas con una pintura uniforme de color \
+masilla, que evoca la piedra o el bronce y disimula las imperfecciones. La precisión del \
+detalle, en los pliegues de la ropa, las manos o los juncos, es notable para una \
+producción en serie. La composición compacta, casi piramidal, asegura la solidez \
+del objeto y su legibilidad desde todos los lados."""
+details = [
+  "El brazo del soldado pasado por los hombros de su salvador.",
+  "Los pies descalzos del hombre negro, apoyados en el suelo del pantano.",
+  "La serpiente que se desliza entre los juncos, a sus pies.",
+  "El esmero puesto en los pliegues de la ropa y en el uniforme del soldado.",
+]
+themes = ["guerra de secesión", "esclavitud", "fraternidad", "socorro", "escultura de género"]
+anecdote = """
+Para protegerse de las copias piratas, Rogers patentó sus creaciones: la mayoría de \
+sus grupos llevan, inscritos en el yeso, su nombre y la mención de la patente con su \
+fecha. Construyó así una de las primeras empresas de arte popular en serie de \
+Estados Unidos."""
+salle = 4
+x = -2.5
+z = 2
+hauteur = 0.6
+matiere = "#b9ab93"
+socle = 1.0
+
+[[sculptures]]
+titre = "The Fugitive's Story"
+artiste = "John Rogers"
+annee = "1869"
+modele = "fugitives-story.stl"
+technique = "Yeso pintado"
+collection = "Smithsonian American Art Museum, Washington"
+note = "Una mujer fugitiva cuenta su historia a tres abolicionistas, entre ellos el poeta Whittier."
+description = """
+Una joven negra, vestida con sencillez, estrecha a su bebé contra sí y relata \
+su huida a tres hombres reunidos a su alrededor. No son figuras anónimas: \
+Rogers ha representado a tres grandes figuras del abolicionismo, el poeta John Greenleaf \
+Whittier, el pastor Henry Ward Beecher y el periodista William Lloyd Garrison. Sus \
+rostros son retratos reconocibles, de rasgos marcados por la edad. Los hombres, \
+de levita, escuchan con gravedad; sus actitudes, inclinadas o atentas, \
+convergen todas hacia la mujer y su hijo. El grupo compone una pequeña escena de \
+teatro, con sus gestos y sus miradas, detenida en el yeso a la manera de un cuadro \
+viviente, y se descubre poco a poco al darle la vuelta."""
+evocation = """
+Realizado en 1869, cuatro años después de la abolición de la esclavitud por la Decimotercera Enmienda, \
+el grupo rinde un homenaje retrospectivo a los militantes que habían combatido la esclavitud \
+durante décadas. La fugitiva, madre que protege a su hijo, encarna la humanidad negada \
+por la esclavitud y la fuerza del testimonio, que fue una de las principales armas de los \
+abolicionistas: relatos de esclavos evadidos, conferencias, periódicos. Los tres hombres \
+representan la conciencia moral del Norte a través de la poesía, la religión y la prensa. Hoy se \
+observa que la palabra de la mujer está en el centro de la escena, pero que los \
+héroes cuyos nombres se recuerdan son los tres hombres blancos: el grupo refleja los \
+límites de su época tanto como sus ideales."""
+histoire = """
+John Rogers, que compartía las convicciones abolicionistas, dedica este grupo en 1869 \
+a hombres a quienes el público del Norte conocía y admiraba. El año anterior, \
+ya había representado a personalidades reales en The Council of War, donde Lincoln \
+discute con el general Grant y el secretario de Guerra Stanton. Como sus demás \
+obras, The Fugitive's Story está concebido para reproducirse en yeso y venderse por \
+catálogo, en un formato adaptado al salón burgués. El tema, más meditativo que sus \
+escenas de guerra, se dirige a un público sensible a la memoria de la lucha \
+antiesclavista, tras un conflicto que había costado cientos de miles \
+de vidas. El Smithsonian American Art Museum conserva un ejemplar, digitalizado en 3D \
+y difundido en libre acceso."""
+facture = """
+Aquí, lo principal es el parecido: Rogers debe hacer reconocibles unos \
+rostros célebres, ampliamente difundidos entonces por la fotografía y el grabado. Los \
+modela con esmero en arcilla, antes de seguir su procedimiento habitual: modelo de \
+bronce, moldes flexibles, vaciados en yeso pintados con un tono uniforme. La disposición \
+de las cuatro figuras en círculo obliga al espectador a dar la vuelta al grupo, ofreciendo cada \
+lado un rostro o un gesto distinto. Los detalles de las ropas y de las manos \
+son precisos a pesar del pequeño tamaño del conjunto."""
+details = [
+  "El bebé que la fugitiva estrecha contra sí.",
+  "Los rostros de los tres abolicionistas, auténticos retratos.",
+  "Las levitas y las manos, modeladas con precisión a pesar del pequeño tamaño.",
+  "El tono uniforme que unifica el conjunto, típico de los grupos de Rogers.",
+]
+themes = ["abolicionismo", "esclavitud", "testimonio", "maternidad", "escultura de género"]
+anecdote = """
+William Lloyd Garrison, uno de los tres oyentes, había publicado su periódico The \
+Liberator cada semana de 1831 a finales de 1865: dejó de editarlo una vez \
+abolida la esclavitud por la Decimotercera Enmienda, al considerar cumplida su misión."""
+salle = 4
+x = 2.5
+z = 2
+hauteur = 0.56
+matiere = "#b9ab93"
+socle = 1.0
+
+[[sculptures]]
+titre = "Mascarilla de Abraham Lincoln"
+artiste = "Clark Mills"
+annee = "1865"
+modele = "lincoln-mask.stl"
+technique = "Yeso, moldeado del natural"
+collection = "National Portrait Gallery, Washington"
+note = "Moldeada dos meses antes de su asesinato: el rostro de un presidente agotado por cuatro años de guerra."
+description = """
+El rostro de Abraham Lincoln aparece tal como era en febrero de 1865, con los ojos cerrados, \
+moldeado directamente sobre la piel. Las mejillas están hundidas, los pómulos salientes, \
+arrugas profundas surcan la frente y enmarcan la boca. Una barba corta cubre la \
+barbilla y la mandíbula, sin bigote, como en sus últimos retratos \
+fotográficos. En la mejilla derecha, cerca de la boca, se distingue el lunar \
+del presidente. Los labios están apretados, los párpados pesados. La mascarilla se limita al \
+rostro, sin el cuello ni el cabello. No es una escultura interpretada, sino una \
+impronta, de una precisión casi turbadora, de cada pliegue y cada relieve de la \
+piel."""
+evocation = """
+A diferencia de un retrato pintado o esculpido, la mascarilla ni halaga ni idealiza: \
+guarda la huella exacta de los rasgos, como una fotografía en relieve. Comparada con la primera \
+mascarilla de Lincoln, tomada por Leonard Volk en 1860, antes de su elección, esta muestra \
+cuánto marcaron al hombre cuatro años de guerra civil: adelgazamiento, fatiga, \
+gravedad. A menudo se la presenta como el testimonio más conmovedor del precio personal \
+pagado por el presidente para preservar la Unión y abolir la esclavitud. Tomada pocas \
+semanas antes de la victoria y del asesinato del 14 de abril de 1865, ha adquirido valor de \
+reliquia. Los ojos cerrados, que impone la técnica, le dan retrospectivamente \
+el aspecto de una máscara mortuoria, aunque Lincoln estaba entonces bien vivo."""
+histoire = """
+Clark Mills, el escultor de la estatua ecuestre de Andrew Jackson en Washington, cuya \
+fundición había colado también la estatua de la Libertad que corona la cúpula del Capitolio, \
+realiza este vaciado en febrero de 1865, sin duda con vistas a un busto o una estatua del \
+presidente. Lincoln acaba de ser reelegido e inicia su segundo mandato el 4 de marzo. El molde \
+original permite sacar varias pruebas de yeso a lo largo de los años, y copias \
+circulan entre escultores y coleccionistas. Junto con la de Volk, la mascarilla de \
+Mills se ha convertido en un documento de referencia para conocer el verdadero rostro de Lincoln, \
+consultado a menudo por los artistas que le han dedicado monumentos. El ejemplar de \
+la National Portrait Gallery ha sido digitalizado en 3D por el Smithsonian."""
+facture = """
+El moldeado del natural sigue una técnica antigua: el rostro, untado con una sustancia grasa \
+para que el yeso no se adhiera a la piel ni al vello, se cubre de yeso líquido, \
+que se deja fraguar unos minutos antes de retirarlo. Se obtiene un molde en \
+hueco, en el que luego se vierte yeso para obtener la mascarilla en relieve. El \
+modelo debe permanecer perfectamente inmóvil, con los ojos cerrados. Mills, antiguo yesero formado \
+en las obras de Charleston, dominaba este procedimiento. El yeso blanco, sin color \
+ni retoques, restituye la textura de la piel, la barba y las más mínimas arrugas."""
+details = [
+  "El lunar en la mejilla derecha, cerca de la boca.",
+  "Los surcos profundos que descienden de la nariz hacia las comisuras de los labios.",
+  "La barba sin bigote, cuya textura se adivina.",
+  "Los párpados cerrados, pesados de cansancio.",
+]
+themes = ["retrato", "guerra de secesión", "presidente", "memoria", "moldeado"]
+anecdote = """
+John Hay, uno de los secretarios de Lincoln, escribió más tarde que esta mascarilla era de una \
+tristeza indecible: el rostro de un hombre sobre el que el dolor y las preocupaciones \
+habían hecho su peor obra, sin lograr, sin embargo, vencerlo."""
+salle = 4
+x = 0
+z = -2
+hauteur = 0.3
+matiere = "platre"
+socle = 1.15
+
+[[sculptures]]
+titre = "Buda vestido con una túnica que figura los mundos de la existencia"
+artiste = "Chine, dynastie des Qi du Nord"
+annee = "550–577"
+modele = "buddha.stl"
+technique = "Caliza"
+collection = "Freer Gallery of Art, Washington"
+note = "El «Buda cósmico»: en su túnica, en ligero relieve, los seis mundos de la existencia, de los paraísos a los infiernos."
+description = """
+Este gran Buda de piedra, de pie, ha perdido la cabeza y las manos, pero su cuerpo conserva \
+una presencia imponente. Viste la túnica monástica, que cae recta hasta los \
+tobillos y se ajusta al cuerpo, casi cilíndrico, sin formar pliegues marcados. Toda la \
+superficie de esta túnica está cubierta de escenas esculpidas en muy bajo relieve y de \
+líneas grabadas. En lo alto, palacios y seres celestes evocan los mundos de los \
+dioses; más abajo se despliegan escenas del mundo de los humanos, con personajes, \
+edificios y árboles; abajo del todo, junto al dobladillo, aparecen los infiernos, \
+donde se adivinan condenados atormentados. Hay que acercarse mucho, y dar la vuelta a \
+la estatua, para empezar a leer estas imágenes."""
+evocation = """
+En el pensamiento budista, los seres renacen sin cesar en seis mundos: los de los \
+dioses, los semidioses, los humanos, los animales, los espíritus hambrientos y los condenados de los \
+infiernos, según el peso de sus actos. Al llevar estos mundos en su túnica, el Buda \
+aparece como abarcando el universo entero: su presencia se extiende a todos los seres, \
+hasta los más desdichados, y ofrece a cada uno la posibilidad de la liberación. Muchos \
+especialistas lo identifican con el Buda cósmico Vairocana, descrito en el Sutra de \
+la Guirnalda de Flores como conteniendo en sí todos los mundos; otros ven en él al \
+Buda histórico, Shakyamuni. Para los fieles del siglo VI, esta imagen era un \
+soporte de meditación sobre el lugar de cada ser en el ciclo de los renacimientos."""
+histoire = """
+La estatua fue esculpida en el norte de China bajo la dinastía de los Qi del Norte (550-577), \
+período de gran fervor budista en que la corte y la aristocracia financiaban templos \
+y cuevas santuario. Se ignora el templo exacto del que procede. Como muchas \
+esculturas budistas chinas, salió de China a comienzos del siglo XX, en \
+un contexto de disturbios y de saqueo de los lugares religiosos que alimentaba el mercado del \
+arte occidental. Ingresa en la Freer Gallery of Art en 1923, el año de la apertura \
+del museo, fundado gracias al legado del coleccionista Charles Lang Freer. A comienzos de la década \
+de 2010, el Smithsonian la digitalizó en 3D, lo que permitió descifrar mejor las \
+escenas de la túnica, difíciles de leer sobre la piedra desgastada."""
+facture = """
+La estatua está tallada en una caliza de grano fino, que se presta a un trabajo \
+minucioso. El cuerpo casi cilíndrico y la túnica pegada a la piel son \
+característicos del estilo de los Qi del Norte, marcado por el arte indio de la época gupta: \
+a los drapeados en cascada del período anterior sucede una vestidura lisa, convertida \
+casi en un soporte. Sobre esta superficie, el escultor grabó y modeló en muy bajo \
+relieve las escenas de los mundos de la existencia, como lo habría hecho con una pintura. En \
+origen, la estatua estaba probablemente pintada, lo que hacía estas escenas mucho más \
+legibles."""
+details = [
+  "En lo alto de la túnica, los palacios y los seres celestes que figuran los paraísos.",
+  "Junto al dobladillo, las escenas de los infiernos y sus condenados.",
+  "La superficie lisa de la túnica, que se ajusta al cuerpo sin pliegues marcados.",
+  "Las roturas del cuello y de los brazos: la cabeza y las manos han desaparecido.",
+]
+themes = ["budismo", "cosmos", "renacimiento", "china", "espiritualidad"]
+anecdote = """
+Este Buda fue uno de los primeros objetos que el Smithsonian puso en línea en 3D, en 2013: \
+ahora cualquiera puede hacer girar la estatua en su pantalla y observar las escenas de \
+la túnica bajo iluminaciones imposibles de obtener en la galería."""
+salle = 5
+x = 0
+z = 0
+hauteur = 1.5
+matiere = "pierre"
+socle = 0.4
+
+[[artistes]]
+nom = "Thomas Cole"
+vie = "Bolton (Inglaterra), 1 de febrero de 1801 – Catskill (Nueva York), 11 de febrero de 1848"
+biographie = """
+Nacido en Lancashire, en plena revolución industrial, Thomas Cole es primero \
+aprendiz de un grabador de motivos para telas estampadas. En 1818, su familia emigra \
+a Estados Unidos; vive en Filadelfia y luego en Ohio, donde se hace retratista \
+itinerante y aprende pintura casi por sí solo. Establecido en Nueva York en 1825, remonta \
+el Hudson y pinta los montes Catskill: sus primeros paisajes son adquiridos por los \
+pintores John Trumbull y Asher B. Durand, y el éxito es inmediato. De 1829 a 1832, \
+viaja por Inglaterra e Italia, donde estudia a Claudio de Lorena, a Turner y las ruinas \
+romanas. A su regreso, el comerciante Luman Reed le encarga El curso del Imperio, cinco \
+lienzos sobre el nacimiento, la gloria y la caída de una civilización (1833-1836). En 1836, \
+se casa con Maria Bartow y se establece en Catskill, en Cedar Grove, donde acoge a su único \
+verdadero discípulo, Frederic Church. Pinta aún el ciclo del Viaje de la vida (1840), \
+vuelve a Europa en 1841-1842 y muere de pleuresía en 1848, a los cuarenta y siete años. \
+Durand le rinde homenaje en Kindred Spirits (1849)."""
+style = """
+Cole es considerado el fundador de la escuela del Hudson, primer movimiento de \
+paisaje propiamente estadounidense. Asocia una observación atenta de la naturaleza, anotada \
+en dibujos tomados del natural, con una composición erudita recompuesta en el taller. \
+Sus paisajes contraponen a menudo la sombra y la luz, lo salvaje y lo cultivado, y \
+poseen una dimensión moral o religiosa: para él, la naturaleza estadounidense era un \
+libro en el que se leía la Creación. Sus ciclos alegóricos, como El curso del Imperio, \
+prolongan esta reflexión sobre el destino de las naciones. Durand, Church y toda la \
+generación siguiente de paisajistas se nutrieron de su ejemplo."""
+
+[[artistes]]
+nom = "Albert Bierstadt"
+vie = "Solingen (Prusia), 7 de enero de 1830 – Nueva York, 18 de febrero de 1902"
+biographie = """
+Nacido en Renania, Albert Bierstadt tiene solo un año cuando su familia emigra a New Bedford, \
+puerto ballenero de Massachusetts. En 1853 regresa a Alemania para estudiar en \
+Düsseldorf, cuya academia atrae entonces a numerosos estadounidenses; allí trata a Emanuel \
+Leutze y a Worthington Whittredge, y recorre los Alpes e Italia. De vuelta en 1857, \
+se une en 1859 a la expedición del agrimensor Frederick W. Lander hacia las montañas \
+Rocosas, de la que trae bocetos y fotografías. Sus grandes lienzos del Oeste, \
+como Las Montañas Rocosas, pico de Lander (1863), lo convierten en uno de los pintores más \
+célebres y mejor pagados de América. En 1863 descubre Yosemite; en 1866 \
+se casa con Rosalie, la exmujer del escritor Fitz Hugh Ludlow. Reside en Europa de \
+1867 a 1869, y luego pinta California, Canadá y Alaska. Pero a partir de la década de \
+1880 el gusto cambia: la crítica juzga teatrales sus lienzos, su gran casa \
+de Irvington, a orillas del Hudson, se incendia en 1882, y sus negocios decaen hasta la \
+quiebra en 1895. Muere en Nueva York en 1902, casi olvidado."""
+style = """
+Bierstadt une la precisión de la escuela de Düsseldorf, dibujo minucioso y superficie \
+lisa, con un sentido del espectáculo heredado del romanticismo. Sus vistas del Oeste están \
+recompuestas en el taller a partir de estudios tomados del natural: reúne en ellas cumbres, \
+cascadas, lagos y luces doradas para crear una imagen ideal, más grandiosa que \
+la realidad. Exponía sus lienzos gigantes en solitario, como acontecimientos. Sus imágenes \
+contribuyeron decisivamente a forjar la visión del Oeste en la opinión estadounidense y \
+europea, y alimentaron el interés por lugares como Yosemite. Objeto de burla por su \
+grandilocuencia al final de su vida, fue redescubierto en la segunda mitad del siglo \
+XX."""
+
+[[artistes]]
+nom = "Frederic Edwin Church"
+vie = "Hartford (Connecticut), 4 de mayo de 1826 – Nueva York, 7 de abril de 1900"
+biographie = """
+Hijo de un rico hombre de negocios de Hartford, Frederic Edwin Church se convierte en 1844 \
+en alumno de Thomas Cole en Catskill, privilegio raro: Cole prácticamente no formó a \
+ningún otro discípulo. Ya en 1848, a los veintidós años, es elegido miembro de la National Academy \
+of Design. Apasionado por los escritos del naturalista Alexander von Humboldt, parte en \
+1853 hacia Colombia y Ecuador, adonde vuelve en 1857. Niagara (1857) y luego El \
+corazón de los Andes (1859) causan sensación: expuestos en solitario, los lienzos atraen a multitudes \
+de pago. Siguen Crepúsculo en la naturaleza salvaje (1860), Los icebergs (1861), \
+tras un viaje frente a las costas de Labrador, y Cotopaxi (1862). En 1860 se casa con Isabel \
+Carnes; la muerte de dos de sus hijos, en 1865, lo afecta profundamente. Viaja \
+después por Europa y Oriente Próximo (1867-1869), y luego hace construir sobre \
+el Hudson Olana, una residencia de inspiración persa cuyo parque también diseña. A \
+partir de la década de 1870, el reumatismo le impide poco a poco pintar. Muere en \
+Nueva York en 1900, cuando su estilo ha pasado de moda."""
+style = """
+Church lleva a su cima las ambiciones de la escuela del Hudson. Alía la exactitud \
+de un naturalista, atento a la geología, la botánica y los fenómenos del cielo, con \
+la búsqueda de efectos grandiosos: puestas de sol ardientes, volcanes, hielos, \
+cataratas. Su pintura, lisa y minuciosa, expresa tanto la transparencia del agua \
+como la incandescencia de las nubes. Concebía sus grandes lienzos como espectáculos, \
+presentados en solitario, con una iluminación estudiada y un marco monumental. Célebre en \
+vida, olvidado a comienzos del siglo XX, hoy se le considera uno de los mayores \
+paisajistas estadounidenses."""
+
+[[artistes]]
+nom = "James McNeill Whistler"
+vie = "Lowell (Massachusetts), 11 de julio de 1834 – Londres, 17 de julio de 1903"
+biographie = """
+James Abbott McNeill Whistler pasa parte de su infancia en San Petersburgo, donde \
+su padre, ingeniero, construye una línea de ferrocarril para el zar. De vuelta en \
+Estados Unidos, ingresa en la academia militar de West Point, de la que es expulsado en 1854, \
+y luego aprende grabado trabajando como cartógrafo. En 1855 parte hacia París, \
+frecuenta el taller de Charles Gleyre y entabla amistad con Fantin-Latour y Courbet. Establecido \
+en Londres en 1859, reparte su vida entre las dos capitales. Su Sinfonía en blanco n.º \
+1, La joven de blanco, causa sensación en el Salón de los Rechazados de 1863. \
+Colecciona porcelanas y estampas de Extremo Oriente, pinta sus «nocturnos» \
+del Támesis y sus «arreglos». En 1877, el crítico John Ruskin lo acusa de haber \
+arrojado un bote de pintura a la cara del público; Whistler le interpone una demanda por \
+difamación, que gana en 1878, pero con una indemnización de un farthing, un cuarto de \
+penique. Arruinado por los gastos, quiebra en 1879 y se marcha a grabar a Venecia. Las \
+décadas de 1880 y 1890 le aportan por fin el reconocimiento, tanto en Francia como en \
+Inglaterra. Muere en Londres en 1903."""
+style = """
+Whistler reivindica el arte por el arte: la pintura no debe ni narrar ni moralizar, \
+sino crear una armonía de formas y colores, como la música. De ahí sus títulos, « \
+sinfonías», «arreglos», «nocturnos». Su paleta se reduce a menudo a \
+unos pocos tonos próximos, aplicados en capas finas y fluidas. Toma de las estampas \
+japonesas sus composiciones asimétricas, sus planos de color y sus encuadres, y de \
+Velázquez el arte de los grises y los negros. Grabador de primer orden, renovó también \
+el aguafuerte. Su concepción de una pintura autónoma, desligada del tema, anuncia \
+la abstracción y marcó tanto a los simbolistas como a los modernos."""
+
+[[artistes]]
+nom = "Thomas Eakins"
+vie = "Filadelfia, 25 de julio de 1844 – Filadelfia, 25 de junio de 1916"
+biographie = """
+Thomas Eakins pasa casi toda su vida en su ciudad natal, Filadelfia. Tras \
+estudiar en la Pennsylvania Academy of the Fine Arts, completados con cursos de anatomía \
+en el Jefferson Medical College, parte en 1866 hacia París. Allí estudia en la École des \
+Beaux-Arts en el taller de Jean-Léon Gérôme, trabaja también con Léon Bonnat y con el \
+escultor Augustin Dumont, y descubre en 1869 a Velázquez y a Ribera en el Museo del Prado, \
+en Madrid. De regreso en 1870, pinta a los remeros del río Schuylkill y, después, La \
+clínica del doctor Gross en 1875. Profesor en la Pennsylvania Academy a partir de \
+1876, y luego director, impone en ella el estudio del modelo desnudo y la disección. En 1886, \
+se ve obligado a dimitir tras retirar el taparrabos a un modelo masculino ante \
+alumnas. Apasionado por la fotografía, colabora con Eadweard Muybridge en \
+el estudio del movimiento. En 1884 se casa con la pintora Susan Macdowell, su antigua \
+alumna. Mantenido largo tiempo al margen, pinta La clínica del doctor Agnew en 1889 y solo \
+recibe tardíamente algunos honores. Muere en Filadelfia en 1916."""
+style = """
+Eakins es el gran pintor realista estadounidense de su siglo. Al rigor académico \
+aprendido con Gérôme, añade un conocimiento científico de la anatomía, de la \
+perspectiva y del movimiento, estudiados mediante la disección y la fotografía. Sus \
+cuadros, construidos con una precisión geométrica, rechazan toda adulación: sus \
+retratos muestran las arrugas, el cansancio, la introspección. Su paleta oscura y su \
+claroscuro deben mucho a los maestros españoles y a Rembrandt. Incomprendido en \
+vida, es reconocido en el siglo XX como una figura mayor; a través de su alumno Thomas \
+Anshutz, maestro de Robert Henri, influyó también en los realistas de la escuela \
+Ashcan."""
+
+[[artistes]]
+nom = "John Singer Sargent"
+vie = "Florencia, 12 de enero de 1856 – Londres, 14 de abril de 1925"
+biographie = """
+Nacido en Florencia de padres estadounidenses establecidos en Europa, John Singer Sargent crece al \
+compás de los viajes familiares entre Italia, Francia, Suiza y Alemania, y no \
+descubre Estados Unidos hasta los veinte años. En 1874 ingresa en París en el taller del \
+retratista Carolus-Duran y se impone pronto en el Salón, con Humo de ámbar gris (1880), \
+El Jaleo (1882) o Las hijas de Edward Darley Boit (1882). El escándalo de Madame X, en \
+1884, frena su carrera parisina: en 1886 se instala en Londres, en el \
+barrio de Chelsea. Pintado en el pueblo de Broadway, Carnation, Lily, Lily, Rose \
+(1885-1886) es adquirido por la Tate en 1887. Sargent se convierte en el retratista más \
+solicitado de la alta sociedad inglesa y estadounidense. Hacia 1907, cansado de los encargos, \
+abandona casi el retrato por la acuarela y por grandes decoraciones murales en la \
+Boston Public Library y en el Museum of Fine Arts de Boston. Enviado al frente en 1918 \
+como pintor de guerra, trae de él Gaseados (Gassed, 1919). Muere en Londres en \
+1925."""
+style = """
+Sargent es célebre por su virtuosismo: una pincelada rápida, amplia y fluida, a menudo \
+dada de una sola vez, que produce una impresión de total desenvoltura. Heredero de \
+Velázquez y de Frans Hals por la enseñanza de Carolus-Duran, practicó también \
+el impresionismo junto a Monet, en Giverny. Sus retratos captan la elegancia, \
+el rango social y la personalidad de los modelos, con un agudo sentido de las telas, \
+los reflejos y las poses. Sus acuarelas, libres y luminosas, figuran entre las \
+más bellas de su tiempo. Juzgado superficial durante mucho tiempo por la crítica modernista, ha \
+recuperado desde los años ochenta un lugar de primer plano."""
+
+[[artistes]]
+nom = "Mary Cassatt"
+vie = "Allegheny City, Pensilvania, 22 de mayo de 1844 – Le Mesnil-Théribus, Oise, 14 de junio de 1926"
+biographie = """
+Procedente de una familia acomodada de Pensilvania, Mary Cassatt pasa parte de su infancia \
+en Europa. Estudia en la Pennsylvania Academy of the Fine Arts y parte en 1866 \
+hacia París, donde la École des Beaux-Arts sigue cerrada a las mujeres: toma clases \
+particulares, en particular con Jean-Léon Gérôme, y copia a los maestros en el Louvre. \
+Admitida en el Salón desde 1868, se instala definitivamente en París en 1874. En 1877, Edgar \
+Degas la invita a exponer con los impresionistas; participa en sus exposiciones \
+de 1879, 1880, 1881 y 1886, única estadounidense del grupo. Sus padres y su hermana Lydia \
+se reúnen con ella en París. Tras la gran exposición de estampas japonesas de 1890, \
+realiza una serie de grabados en color. En 1893 pinta una vasta decoración \
+para el Woman's Building de la Exposición de Chicago, hoy perdida. Asesora de \
+coleccionistas estadounidenses como Louisine y Henry Havemeyer, contribuye a hacer \
+entrar el impresionismo en los museos de Estados Unidos. Aquejada de cataratas, \
+deja de trabajar hacia 1914 y muere en su castillo de Beaufresne, en el Oise."""
+style = """
+Mary Cassatt aplica la modernidad impresionista a un universo que conoce \
+desde dentro: la vida de las mujeres, la maternidad, el té, la lectura, el palco de teatro. \
+Formada en un dibujo riguroso, admiradora de Degas, privilegia la construcción de las \
+figuras y los encuadres inesperados antes que la disolución de las formas en la \
+luz. Las estampas japonesas le inspiran vistas cenitales, planos de color y \
+motivos decorativos. Fue también una notable grabadora, en particular en sus estampas \
+en color de 1891, que combinan punta seca y aguatinta. Su obra abrió el camino a las \
+mujeres artistas estadounidenses y dio al tema de la madre y el niño una mirada \
+moderna."""
+
+[[artistes]]
+nom = "Winslow Homer"
+vie = "Boston, 24 de febrero de 1836 – Prouts Neck (Maine), 29 de septiembre de 1910"
+biographie = """
+Hijo de un comerciante de Boston, Winslow Homer aprende el oficio con un litógrafo, \
+y se convierte después en ilustrador independiente del semanario Harper's Weekly. Durante la \
+guerra de Secesión, sigue al ejército del Potomac y dibuja la vida cotidiana de los \
+soldados; su cuadro Prisioneros del frente (1866) lo da a conocer y figura en la \
+Exposición Universal de París de 1867, ciudad en la que reside cerca de un año. En la \
+década de 1870 pinta la infancia rural, las escuelas de campo, las actividades de \
+ocio al aire libre, y se inicia en la acuarela. Una estancia de unos veinte meses en Cullercoats, pueblo de \
+pescadores del mar del Norte, en 1881-1882, transforma su arte: el mar, las tempestades y \
+la lucha de los hombres contra los elementos pasan a ser sus grandes temas. En 1883 \
+se instala en Prouts Neck, en la costa de Maine, donde vive en soledad frente al océano. \
+Viaja, sin embargo, a Florida, a las Bahamas, a las Bermudas, y a los bosques de los \
+Adirondacks y de Quebec, de donde trae acuarelas deslumbrantes. Soltero y \
+reservado, muere en su taller de Prouts Neck en 1910."""
+style = """
+Homer es, junto con Eakins, uno de los grandes pintores del realismo estadounidense. Procedente de \
+la ilustración, conserva el sentido de una composición clara y de un relato inmediatamente \
+legible. Su pintura es franca, construida por grandes masas, con una pincelada \
+vigorosa que da peso al agua y a las rocas. Observa la naturaleza sin \
+sentimentalismo: el mar es en ella poderoso, a menudo amenazador, y el hombre se mide con \
+fuerzas que lo superan. Sus acuarelas, de una libertad y una luminosidad \
+excepcionales, elevaron este medio a la categoría de gran arte en Estados Unidos. Se le considera \
+a menudo el más estadounidense de los pintores de su siglo."""
+
+[[artistes]]
+nom = "Horatio Greenough"
+vie = "Boston, 6 de septiembre de 1805 – Somerville (Massachusetts), 18 de diciembre de 1852"
+biographie = """
+Hijo de un rico promotor inmobiliario de Boston, Horatio Greenough se interesa muy \
+joven por la escultura y estudia en Harvard. En 1825 parte hacia Roma, donde frecuenta \
+el entorno del escultor danés Bertel Thorvaldsen. Tras un breve regreso a \
+Estados Unidos, se establece en 1828 en Florencia, convirtiéndose en uno de los primeros escultores \
+estadounidenses en hacer carrera en Italia, donde se encuentran mármol, operarios y modelos \
+antiguos. El escritor James Fenimore Cooper, su primer gran protector, le encarga \
+un grupo de angelotes cantores y luego apoya su candidatura para la estatua de \
+Washington, que el Congreso le confía en 1832. Realiza también para el Capitolio El \
+rescate (The Rescue), grupo que muestra a un pionero que protege a su familia de un \
+guerrero amerindio, instalado en 1853 y retirado en 1958. De regreso en Estados Unidos en 1851, \
+publica ensayos sobre arquitectura y objetos, en los que defiende la idea de que la forma \
+debe derivar de la función. Muere bruscamente de una fiebre cerebral en 1852, a los \
+cuarenta y siete años."""
+style = """
+Greenough pertenece a la generación neoclásica formada en Italia en la estela de \
+Canova y de Thorvaldsen: busca la belleza ideal, las formas puras y la \
+referencia a la Antigüedad griega y romana. Su George Washington lleva esta lógica \
+hasta el final, con el riesgo de chocar al público estadounidense. Pero fue también un pensador \
+original: en sus escritos, critica la imitación de estilos antiguos en arquitectura \
+y propugna formas dictadas por el uso, tomando como modelos los barcos y las \
+máquinas. Estas ideas hacen de él un precursor del funcionalismo, a menudo relacionado con \
+la fórmula «la forma sigue a la función» del arquitecto Louis Sullivan."""
+
+[[artistes]]
+nom = "John Rogers"
+vie = "Salem (Massachusetts), 30 de octubre de 1829 – New Canaan (Connecticut), 26 de julio de 1904"
+biographie = """
+Procedente de una familia de Salem, John Rogers interrumpe sus estudios por razones de \
+salud y trabaja como mecánico en talleres de maquinaria, y después en una \
+compañía ferroviaria de Hannibal, en Misuri. Escultor aficionado, modela \
+pequeñas figuras de arcilla en sus ratos libres. En 1858 parte a estudiar a Europa, a \
+París y luego a Roma, pero la enseñanza neoclásica lo decepciona y regresa al cabo de \
+unos meses. En 1859, un pequeño grupo, Los jugadores de damas, obtiene un gran éxito \
+en una venta benéfica en Chicago. Rogers se instala en Nueva York, expone La \
+venta de esclavos y funda después su empresa: concibe grupos de género y los \
+reproduce en yeso para venderlos a precio moderado, por catálogo. Durante la guerra de \
+Secesión, sus escenas de soldados y civiles alcanzan un inmenso éxito. Crea \
+así varias decenas de modelos, vendidos en decenas de miles de ejemplares, \
+hasta que la enfermedad le obliga a cesar su actividad en la década de 1890. Pasa \
+sus últimos años en New Canaan, donde su taller se conserva hoy."""
+style = """
+Los «grupos Rogers» son escenas de género en tres dimensiones, pequeñas, \
+narrativas y accesibles, en las antípodas de las estatuas de mármol idealizadas de la época. \
+Rogers relata en ellos historias de la vida cotidiana, de la guerra, de la literatura \
+o del teatro, con un realismo preciso de los rostros, los trajes y los objetos, y un \
+humor a menudo tierno. Su innovación es también industrial: vaciado en serie, yeso \
+pintado, patentes, venta por correspondencia. Hizo entrar la escultura en \
+miles de hogares de la clase media estadounidense, y sus grupos se han convertido en \
+documentos valiosos sobre los sentimientos y los debates de su tiempo, en particular sobre \
+la esclavitud y la guerra."""
+
+[[artistes]]
+nom = "Clark Mills"
+vie = "Condado de Onondaga (estado de Nueva York), 1810 – Washington, 12 de enero de 1883"
+biographie = """
+Huérfano muy joven, Clark Mills crece en el estado de Nueva York y ejerce diversos \
+oficios manuales antes de hacerse yesero y estucador. Establecido en Charleston, en \
+Carolina del Sur, en la década de 1830, perfecciona un método de moldeado del \
+natural que le permite realizar bustos a bajo precio; un busto del político \
+John C. Calhoun lo da a conocer. En 1848, sin haber visto nunca una estatua ecuestre, \
+obtiene el encargo de un monumento a Andrew Jackson para Washington. Construye \
+él mismo su fundición y, tras varios fracasos, logra la fundición de la estatua, \
+inaugurada en 1853 en Lafayette Square, frente a la Casa Blanca: el caballo encabritado, \
+en equilibrio sobre sus patas traseras, es una hazaña técnica, y es la primera \
+estatua ecuestre de bronce fundida en Estados Unidos. Realiza después una estatua ecuestre \
+de George Washington, inaugurada en 1860. Entre 1860 y 1862, su fundición cuela la \
+estatua de la Libertad de Thomas Crawford, que corona la cúpula del Capitolio, con la \
+ayuda decisiva de Philip Reid, un obrero al que mantenía esclavizado. Muere en \
+Washington en 1883."""
+style = """
+Mills es un autodidacta, formado por la práctica artesanal del yeso y de la fundición \
+más que por las academias. Su talento es ante todo técnico: moldeado del natural, \
+fundición del bronce, dominio del equilibrio de las masas, como muestra el caballo encabritado de \
+Jackson, que se sostiene sin más apoyo que sus patas traseras. Sus retratos, basados \
+en la impronta directa de los rostros, privilegian el parecido más que \
+la idealización. Aunque su estilo pareció ingenuo a los escultores formados en Europa, desempeñó un \
+papel pionero en el nacimiento de la fundición artística en Estados Unidos y en la estatuaria \
+monumental de Washington."""
+
+[[artistes]]
+nom = "Chine, dynastie des Qi du Nord"
+vie = "China del Norte, 550–577, capital Ye (en la actual provincia de Hebei)"
+biographie = """
+En el siglo VI, China está dividida entre varias dinastías rivales. En el norte, tras \
+la desintegración de los Wei del Norte, se enfrentan los Qi del Norte, al este, y los Zhou del \
+Norte, al oeste. Fundada en 550 por Gao Yang, la dinastía de los Qi del Norte reina desde \
+Ye, su capital; su corte combina tradiciones chinas y culturas de los pueblos de las \
+estepas. Sus soberanos son fervientes budistas: financian templos, \
+monasterios y cuevas santuario, como las de Xiangtangshan, excavadas en las \
+montañas próximas a la capital. Las esculturas son obra de talleres de canteros \
+anónimos, que trabajaban por encargo de la corte, de monjes o de laicos piadosos \
+que esperaban acumular así méritos. Llegado de la India por las rutas de Asia \
+central, el budismo conoce entonces un auge prodigioso, y numerosos textos se \
+traducen, como el Sutra de la Guirnalda de Flores, que describe un universo en el que cada \
+partícula contiene todos los mundos. En 577, los Zhou del Norte, que perseguían el \
+budismo, conquistan el reino de los Qi y extienden en él las destrucciones. En 581, la \
+dinastía Sui reunifica pronto China y restaura la religión. El descubrimiento en 1996, \
+en Qingzhou, en Shandong, de cientos de estatuas enterradas reveló el esplendor de la \
+escultura de esta época."""
+style = """
+La escultura de los Qi del Norte marca un punto de inflexión. A las siluetas esbeltas y a los drapeados \
+en cascada de los Wei del Norte suceden cuerpos más plenos, casi cilíndricos, \
+envueltos en túnicas finas que se pegan a la piel, a la manera de la escultura india \
+de la época gupta, cuyos modelos llegaban a China por Asia central. Los \
+rostros se vuelven más redondos y más serenos. Las estatuas solían estar pintadas y \
+doradas, a veces cubiertas de motivos. Este estilo más natural, atento al volumen del \
+cuerpo, prepara el arte de las dinastías Sui y Tang, edad de oro de la escultura budista \
+china."""
