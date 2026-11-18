@@ -11,6 +11,7 @@ use arteon::artworks::{Artist, Artwork, EXHIBITIONS, Exhibition, Notice, Sculptu
 use arteon::tour::tour_duration;
 use arteon::{gallery_scene, showcase_scene};
 
+mod api;
 mod catalogue;
 mod export;
 mod style;
@@ -1931,6 +1932,8 @@ fn app() -> App {
     let data =
         std::env::var("ARTEON_DONNEES").unwrap_or_else(|_| arteon::artworks::DATA_DIR.to_owned());
     app.static_dir("/donnees", &data);
+    // L'API : toutes les œuvres d'un artiste, en direct des musées (src/api.rs).
+    api::routes(&mut app);
     app.fallback(not_found);
     app
 }
