@@ -343,7 +343,18 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
                 .replace("{page}", &page.to_string())
                 .replace("{offset}", &((page - 1) * par_page).to_string())
                 .replace("{debut}", &((page - 1) * par_page + 1).to_string());
-            let Some(r) = lire_en(&url, &entetes, delai) else {
+            // Une source qui n'accepte qu'une demande à la fois (Wikidata limite sévèrement les
+            // serveurs qui en envoient plusieurs) : les fils d'exécution passent l'un après l'autre.
+            let reponse = if source["un_a_la_fois"].as_bool().unwrap_or(false) {
+                static FILE: Mutex<()> = Mutex::new(());
+                let _tour = FILE.lock();
+                let r = lire_en(&url, &entetes, delai);
+                std::thread::sleep(Duration::from_millis(1200));
+                r
+            } else {
+                lire_en(&url, &entetes, delai)
+            };
+            let Some(r) = reponse else {
                 echec |= page == 1;
                 break;
             };
