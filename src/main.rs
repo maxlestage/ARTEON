@@ -1437,6 +1437,20 @@ fn artist_card(artist: &Artist) -> Element {
     }
 }
 
+/// Une rubrique repliable : son titre en capitales, un « + » à droite, et son texte qui
+/// s'ouvre d'un toucher (`<details>` : sans JavaScript).
+fn fold(title: impl Into<String>, open: bool, content: impl Into<Node>) -> Element {
+    details()
+        .class("fold")
+        .bool_attr("open", move || open)
+        .child(
+            summary()
+                .child(span().text(title.into()))
+                .child(span().class("fold-sign").attr("aria-hidden", "true")),
+        )
+        .child(div().class("fold-body").child(content))
+}
+
 /// La page d'une œuvre : sa reproduction, son cartel, et tout ce qu'il faut savoir.
 async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
     let catalogue = format!("/{}/oeuvres", ex.slug);
@@ -1530,33 +1544,38 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
                 .children(notice.themes.iter().map(|t| span().class("chip").text(*t))),
         )
     };
-    let mut body = div().class("notice");
-    for (title, text) in notice.sections() {
-        body = body.child(
-            section()
-                .class("notice-part reveal")
-                .child(h2().text(title))
-                .child(p().text(text)),
-        );
+    // La notice, bien rangée : une rubrique par ligne, qui s'ouvre d'un toucher (la première
+    // est ouverte). Les textes restent dans la page : on peut tout lire sans JavaScript.
+    let mut body = div().class("folds");
+    for (n, (title, text)) in notice.sections().enumerate() {
+        body = body.child(fold(title, n == 0, p().text(text)));
     }
     if !notice.details.is_empty() {
-        body = body.child(
-            section()
-                .class("notice-part reveal")
-                .child(h2().text(t("À regarder de près", "Look closely", "Para mirar de cerca")))
-                .child(
-                    ul().class("details")
-                        .children(notice.details.iter().map(|d| li().text(*d))),
-                ),
-        );
+        body = body.child(fold(
+            t("À regarder de près", "Look closely", "Para mirar de cerca"),
+            false,
+            ul().class("details").children(notice.details.iter().map(|d| li().text(*d))),
+        ));
     }
     if !notice.anecdote.is_empty() {
-        body = body.child(
-            aside()
-                .class("anecdote reveal")
-                .child(strong().text(t("Le saviez-vous ? ", "Did you know? ", "¿Sabía que…? ")))
-                .child(span().text(notice.anecdote)),
-        );
+        body = body.child(fold(
+            t("Le saviez-vous ?", "Did you know?", "¿Sabía que…?"),
+            false,
+            p().text(notice.anecdote),
+        ));
+    }
+    // L'artiste : sa vie et sa manière, dans la même liste de rubriques.
+    if let Some(about) = ex.artist_named(artist) {
+        let mut text = div().child(p().child(strong().text(about.name)).child(
+            span().class("muted").text(if about.life.is_empty() { String::new() } else { format!(" · {}", about.life) }),
+        ));
+        if !about.biography.is_empty() {
+            text = text.child(p().text(about.biography));
+        }
+        body = body.child(fold(t("L'artiste", "The artist", "El artista"), false, text));
+        if !about.style.is_empty() {
+            body = body.child(fold(t("Sa manière", "Technique", "Su estilo"), false, p().text(about.style)));
+        }
     }
     let neighbour = |w: Work, label: &'static str, class: &'static str| {
         a().class(class)
@@ -1584,13 +1603,6 @@ async fn work_page(_req: Request, ex: &'static Exhibition, work: Work) -> Page {
         )
         .child(div().class("work-head").child(image).child(cartel))
         .child(body)
-        .child(match ex.artist_named(artist) {
-            Some(about) => section()
-                .class("artists")
-                .child(h2().class("section-title").text(t("L'artiste", "The artist", "El artista")))
-                .child(artist_card(about)),
-            None => section(),
-        })
         // Toutes ses œuvres : celles des expositions et celles des collections du monde.
         .child(
             p().class("work-catalogue").child(

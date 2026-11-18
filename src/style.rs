@@ -412,10 +412,26 @@ body.viewer-open { overflow: hidden; }
 .work-frame img { width: 100%; height: auto; display: block; }
 .work-frame.plinth img { max-height: 520px; width: auto; }
 .work-cartel .lead { margin-top: 0; }
-.facts { display: grid; gap: .55rem; margin: 1.2rem 0 1.5rem; }
-.fact { display: grid; grid-template-columns: 8.5rem 1fr; gap: .8rem; padding-bottom: .55rem; border-bottom: 1px solid var(--line); }
-.fact dt { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
-.fact dd { margin: 0; }
+/* Le cartel, bien rangé : le nom de chaque renseignement, sa valeur dessous, un filet entre deux. */
+.facts { display: block; margin: 1.2rem 0 1.5rem; border-top: 1px solid var(--line); }
+.fact { display: block; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+.fact dt { color: var(--fg); font-weight: 600; font-size: 1rem; margin-bottom: .2rem; }
+.fact dd { margin: 0; color: var(--muted); line-height: 1.5; }
+/* Les rubriques repliables : un titre en capitales, un « + », le texte dessous. */
+.folds { margin-top: 2.5rem; border-top: 1px solid var(--line); }
+.fold { border-bottom: 1px solid var(--line); }
+.fold > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1.45rem 0; font-size: 1.02rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--fg); }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary:hover { color: var(--accent); }
+.fold-sign { position: relative; flex: none; width: 1.05rem; height: 1.05rem; }
+.fold-sign::before, .fold-sign::after { content: ""; position: absolute; background: currentColor; border-radius: 1px; }
+.fold-sign::before { left: 0; right: 0; top: 50%; height: 2px; transform: translateY(-50%); }
+.fold-sign::after { top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); transition: transform .2s ease; }
+.fold[open] .fold-sign::after { transform: translateX(-50%) scaleY(0); }
+.fold-body { padding: 0 0 1.6rem; max-width: 46rem; line-height: 1.7; }
+.fold-body p { margin: 0 0 .9rem; }
+.fold-body p:last-child { margin-bottom: 0; }
 .themes { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }
 .themes .chip { padding: .2rem .7rem; border-radius: 999px; font-size: .82rem; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--fg); }
 .notice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 3rem; margin-top: 3rem; }
@@ -436,7 +452,7 @@ body.viewer-open { overflow: hidden; }
 .work-nav .next { text-align: right; }
 @media (max-width: 820px) {
   .work-head, .notice { grid-template-columns: 1fr; gap: 1.5rem; }
-  .fact { grid-template-columns: 1fr; gap: .1rem; }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
