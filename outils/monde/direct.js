@@ -47,6 +47,14 @@ const chargerSources = () => (sources ??= jsonGarde(lien("monde/sources.json")).
 let indexStatique;
 const chargerIndex = () => (indexStatique ??= jsonGarde(lien("api/index.json")).catch(() => null));
 
+/** Un catalogue de l'API statique, publié compressé (gzip) : le navigateur le décompresse. */
+async function jsonGz(adresse) {
+  const r = await fetch(adresse);
+  if (!r.ok) throw new Error(`${r.status}`);
+  const texte = await new Response(r.body.pipeThrough(new DecompressionStream("gzip"))).text();
+  return JSON.parse(texte);
+}
+
 /** Toutes les œuvres de l'artiste dans les musées : l'API publiée avec le site (calculée
  * chaque semaine par le moteur de l'API Paquets), sinon le serveur Paquets, sinon les musées
  * eux-mêmes, en direct. */
@@ -66,7 +74,7 @@ async function chercher(nom, cleNom, alias) {
     const index = await chargerIndex();
     const fichier = index && (index.noms?.[nom] || index.cles?.[cleNom(nom)]);
     if (fichier) {
-      const r = { ...(await jsonGarde(lien(`api/${fichier}.json`), 24 * 3600e3)), source: "statique" };
+      const r = { ...(index.gz ? await jsonGz(lien(`api/${fichier}.json.gz`)) : await jsonGarde(lien(`api/${fichier}.json`), 24 * 3600e3)), source: "statique" };
       // Un musée n'avait pas répondu au calcul : le navigateur le lui demande, lui.
       if (r.manquants?.length) {
         const plus = await chezLesMusees(nom, cleNom, alias, r.manquants).catch(() => []);
