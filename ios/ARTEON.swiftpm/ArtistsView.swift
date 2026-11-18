@@ -1,53 +1,86 @@
 import SwiftUI
 
-/// Un artiste de la liste : celui d'une exposition (avec sa biographie), ou celui des
-/// collections du monde seulement ; les deux réunis par leur clé (`ArtistKey`).
+/// Un artiste de la liste : celui d'une exposition (avec sa biographie), celui des
+/// collections du monde, ou celui de l'annuaire (tous les artistes dont un musée montre une
+/// œuvre) ; réunis par leur clé (`ArtistKey`).
 struct ArtistItem: Identifiable, Hashable, Sendable {
     let id: String
     let name: String
     let line: String
     let museumWorks: Int
     let worldWorks: Int
-    var total: Int { museumWorks + worldWorks }
+    /// Les œuvres que les musées montrent ailleurs (l'annuaire).
+    let elsewhere: Int
+    /// Le nom sans accents ni majuscules (le tri, la recherche), et sa lettre.
+    let sort: String
+    let initial: String
 
-    var initial: String {
-        let first = folded(name).first { $0.isLetter || $0.isNumber }.map(String.init)?.uppercased() ?? "#"
-        return first.first?.isLetter == true ? first : "#"
+    var total: Int { max(museumWorks + worldWorks, elsewhere) }
+
+    init(id: String, name: String, line: String, museumWorks: Int, worldWorks: Int, elsewhere: Int = 0, sort: String? = nil) {
+        self.id = id
+        self.name = name
+        self.line = line
+        self.museumWorks = museumWorks
+        self.worldWorks = worldWorks
+        self.elsewhere = elsewhere
+        let key = sort ?? folded(name)
+        self.sort = key
+        let first = key.first { $0.isLetter || $0.isNumber }.map(String.init)?.uppercased() ?? "#"
+        self.initial = first.first?.isLetter == true && first.first?.isASCII == true ? first : "#"
     }
 }
 
-/// Tous les artistes : ceux des expositions et ceux des collections du monde, de A à Z,
-/// avec le nombre de toutes leurs œuvres.
+/// Tous les artistes : ceux des expositions, ceux des collections du monde et ceux de
+/// l'annuaire, de A à Z, avec le nombre de leurs œuvres. Un nom absent de la liste se cherche
+/// tel quel dans tous les musées.
 struct ArtistsView: View {
     let catalogue: Catalogue
 
     @Environment(CatalogueStore.self) private var store
     @State private var filter = ""
     @State private var all: [ArtistItem] = []
+    /// Les artistes de A à Z, lettre par lettre (calculé une fois : ils sont des dizaines de milliers).
+    @State private var letters: [(letter: String, artists: [ArtistItem])] = []
 
-    private var artists: [ArtistItem] {
-        let q = folded(filter.trimmingCharacters(in: .whitespaces))
-        guard q.count >= 2 else { return all }
-        let byName = all.filter { folded($0.name).contains(q) }.sorted { $0.total > $1.total }
+    private var query: String { filter.trimmingCharacters(in: .whitespaces) }
+
+    /// Les artistes trouvés : d'abord par le nom (les plus riches en œuvres en premier), puis
+    /// par le style et les dates ; 300 au plus.
+    private var found: [ArtistItem] {
+        let q = folded(query)
+        let byName = all.filter { $0.sort.contains(q) }.sorted { $0.total > $1.total }
+        if byName.count >= 300 { return Array(byName.prefix(300)) }
         let names = Set(byName.map(\.id))
-        return byName + all.filter { !names.contains($0.id) && folded($0.line).contains(q) }
+        return Array((byName + all.filter { !names.contains($0.id) && ($0.museumWorks > 0 ? folded($0.line) : $0.line).contains(q) }).prefix(300))
     }
 
     private var sections: [(letter: String, artists: [ArtistItem])] {
-        if filter.trimmingCharacters(in: .whitespaces).count >= 2 { return [("Résultats", artists)] }
-        var result: [(String, [ArtistItem])] = []
-        for artist in artists {
-            if result.last?.0 == artist.initial {
-                result[result.count - 1].1.append(artist)
-            } else {
-                result.append((artist.initial, [artist]))
-            }
-        }
-        return result
+        query.count >= 2 ? [("Résultats", found)] : letters
+    }
+
+    /// N'importe quel artiste : un nom écrit qui n'est pas dans la liste se cherche dans les musées.
+    private var elsewhere: String? {
+        let q = folded(query)
+        return q.count >= 3 && !all.contains { $0.sort == q } ? query : nil
     }
 
     var body: some View {
         List {
+            if let name = elsewhere {
+                Section {
+                    NavigationLink(value: Route.artist(name)) {
+                        Label {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Chercher « \(name) » dans tous les musées").font(.headline)
+                                Text("Son catalogue, en direct des musées du monde").font(.caption).foregroundStyle(.secondary)
+                            }
+                        } icon: {
+                            Image(systemName: "globe")
+                        }
+                    }
+                }
+            }
             ForEach(sections, id: \.letter) { section in
                 Section(section.letter) {
                     ForEach(section.artists) { artist in
@@ -64,17 +97,29 @@ struct ArtistsView: View {
         .overlay {
             if all.isEmpty {
                 ProgressView()
-            } else if artists.isEmpty, !filter.isEmpty {
+            } else if query.count >= 2, found.isEmpty, elsewhere == nil {
                 ContentUnavailableView.search(text: filter)
             }
         }
         .navigationTitle(all.isEmpty ? "Artistes" : "\(all.count.formatted()) artistes")
         .searchable(text: $filter, placement: .navigationBarDrawer(displayMode: .always), prompt: "Un nom, un style, un siècle…")
-        .task(id: "\(store.index?.artists.count ?? 0)-\(store.collections?.count ?? 0)") { all = Self.merge(store.index?.artists ?? [], store.collections) }
+        .task { await store.loadDirectory() }
+        .task(id: "\(store.index?.artists.count ?? 0)-\(store.collections?.count ?? 0)-\(store.directory.count)") {
+            all = Self.merge(store.index?.artists ?? [], store.collections, store.directory)
+            var result: [(letter: String, artists: [ArtistItem])] = []
+            for artist in all {
+                if result.last?.letter == artist.initial {
+                    result[result.count - 1].artists.append(artist)
+                } else {
+                    result.append((artist.initial, [artist]))
+                }
+            }
+            letters = result
+        }
     }
 
-    /// Les artistes des expositions et des collections, réunis par clé, de A à Z.
-    static func merge(_ museum: [ArtistEntry], _ world: CollectionIndex?) -> [ArtistItem] {
+    /// Les artistes des expositions, des collections et de l'annuaire, réunis par clé, de A à Z.
+    static func merge(_ museum: [ArtistEntry], _ world: CollectionIndex?, _ directory: [String: DirectoryArtist] = [:]) -> [ArtistItem] {
         var items: [String: ArtistItem] = [:]
         let counts = Dictionary((world?.artists ?? []).map { ($0.key, $0) }, uniquingKeysWith: { a, _ in a })
         for a in museum where !a.works.isEmpty {
@@ -89,7 +134,21 @@ struct ArtistsView: View {
         for (key, w) in counts where items[key] == nil {
             items[key] = ArtistItem(id: key, name: w.name, line: "Dans les collections du monde", museumWorks: 0, worldWorks: w.count)
         }
-        return items.values.sorted { folded($0.name).localizedStandardCompare(folded($1.name)) == .orderedAscending }
+        for (key, d) in directory {
+            if let known = items[key] {
+                items[key] = ArtistItem(
+                    id: key, name: known.name, line: known.line.hasPrefix("Dans les") && !d.life.isEmpty ? d.life : known.line,
+                    museumWorks: known.museumWorks, worldWorks: known.worldWorks, elsewhere: d.works, sort: known.sort
+                )
+            } else {
+                items[key] = ArtistItem(
+                    id: key, name: d.name, line: d.life.isEmpty ? "Dans les musées du monde" : d.life,
+                    museumWorks: 0, worldWorks: 0, elsewhere: d.works, sort: d.sort
+                )
+            }
+        }
+        // Les lettres d'abord (A à Z), puis les noms qui commencent autrement.
+        return items.values.sorted { ($0.initial == "#" ? 1 : 0, $0.sort) < ($1.initial == "#" ? 1 : 0, $1.sort) }
     }
 }
 
@@ -264,6 +323,9 @@ struct ArtistView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     Text(name)
                         .font(.largeTitle.bold())
+                    if let life = store.directory[ArtistKey.of(name)]?.life, !life.isEmpty {
+                        Text(life).font(.headline).foregroundStyle(.secondary)
+                    }
                     LiveWorksSection(name: name, known: [])
                 }
                 .padding()

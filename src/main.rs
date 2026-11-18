@@ -1567,7 +1567,9 @@ async fn credits(_req: Request) -> Page {
                 .child(p().text(
                     "ARTEON n'utilise ni cookie, ni traceur, ni publicité, et ne demande aucun compte. Les pages des \
                      collections du monde affichent les images en grand depuis les serveurs des musées (Art Institute of \
-                     Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art) : votre \
+                     Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art), et le catalogue de \
+                     chaque artiste interroge en direct ces musées, le Statens Museum for Kunst, le Minneapolis Institute \
+                     of Art, Europeana et Wikidata (images de Wikimedia Commons) : votre \
                      navigateur s'y connecte alors directement, comme pour toute image venue d'un autre site. Le record \
                      du jeu « Qui l'a fait ? » reste dans votre navigateur. Pour aller plus vite, le navigateur garde aussi \
                      une copie compressée des données du musée (IndexedDB) : elle n'est jamais envoyée ailleurs et \

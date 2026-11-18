@@ -258,6 +258,10 @@ def main():
     catalogue = json.loads((site / "catalogue.json").read_text(encoding="utf-8"))
     noms = {w.get("artist") or ex.get("artist") for ex in catalogue["exhibitions"] for w in ex["works"]}
     noms |= {o.get("a") for o in gardees}
+    # … et l'annuaire : tous les artistes du domaine public dont les musées montrent une œuvre.
+    annuaire = ICI / "monde" / "annuaire.json"
+    if annuaire.exists():
+        noms |= {a[0] for a in json.loads(annuaire.read_text(encoding="utf-8"))}
     noms -= {None, "", "Artiste inconnu"}
     artistes = len({cle_nom(n) for n in noms})
     oeuvres_expositions = sum(len(ex["works"]) for ex in catalogue["exhibitions"])

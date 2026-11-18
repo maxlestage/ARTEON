@@ -290,3 +290,13 @@ private func worldFixture() throws -> WorldCollections {
     #expect(ArtistKey.of("Henri Rousseau (le Douanier)") == "henri rousseau")
     #expect(ArtistKey.of("Goya (Francisco de Goya y Lucientes)") == "francisco de goya")
 }
+
+@Test func lAnnuaireDesArtistesSeLit() {
+    let data = Data(#"[["Rembrandt",1606,1669,1043],["Maître de Flémalle",null,1444,12],["Anna Ancher",1859,null,3],["",1,2,3]]"#.utf8)
+    let artists = DirectoryArtist.parse(data)
+    #expect(artists.count == 3)
+    #expect(artists[0].life == "1606–1669" && artists[0].works == 1043)
+    #expect(artists[1].life == "mort en 1444" && artists[1].sort == "maitre de flemalle")
+    #expect(artists[2].life == "né en 1859")
+    #expect(artists[0].key == ArtistKey.of("Rembrandt van Rijn") || artists[0].key == "rembrandt")
+}

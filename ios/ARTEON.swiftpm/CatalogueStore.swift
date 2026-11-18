@@ -147,6 +147,20 @@ final class CatalogueStore {
         }.value
     }
 
+    /// L'annuaire de tous les artistes (des dizaines de milliers), demandé au site.
+    private(set) var directory: [String: DirectoryArtist] = [:]
+    private var loadingDirectory = false
+
+    func loadDirectory() async {
+        guard directory.isEmpty, !loadingDirectory else { return }
+        loadingDirectory = true
+        defer { loadingDirectory = false }
+        guard let data = try? await Api.site("monde/annuaire.json") else { return }
+        directory = await Task.detached(priority: .utility) {
+            Dictionary(DirectoryArtist.parse(data).map { ($0.key, $0) }, uniquingKeysWith: { a, b in a.works >= b.works ? a : b })
+        }.value
+    }
+
     /// Les collections sont-elles en train d'arriver, ou le site n'a-t-il pas répondu ?
     private(set) var loadingCollections = false
     private(set) var collectionsError = false

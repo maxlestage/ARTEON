@@ -4,8 +4,8 @@
   python3 outils/api_noms.py <site> [nombre] > noms.txt
 
 Tous les artistes des expositions (catalogue.json), puis ceux des collections du monde
-(monde/donnees/liste.json), du plus riche en œuvres au moins riche, jusqu'à `nombre`
-(3 000 par défaut). Un nom par ligne. Bibliothèque standard de Python.
+(monde/donnees/liste.json), du plus riche en œuvres au moins riche, puis tous ceux de
+l'annuaire (outils/monde/annuaire.json), jusqu'à `nombre` (3 000 par défaut). Un nom par ligne. Bibliothèque standard de Python.
 """
 
 import collections
@@ -34,6 +34,17 @@ def main():
                 break
             if nom != "Artiste inconnu" and nom not in noms:
                 noms.append(nom)
+    # Puis l'annuaire (outils/annuaire.py) : tous les autres artistes, des plus riches aux
+    # moins riches.
+    annuaire = Path(__file__).parent / "monde" / "annuaire.json"
+    if annuaire.exists():
+        vus = set(noms)
+        for a in sorted(json.loads(annuaire.read_text(encoding="utf-8")), key=lambda a: -a[3]):
+            if len(noms) >= nombre:
+                break
+            if a[0] not in vus:
+                vus.add(a[0])
+                noms.append(a[0])
     print("\n".join(noms))
 
 

@@ -546,6 +546,11 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     let fin = Instant::now() + Duration::from_secs(minutes * 60);
     let suivant = AtomicUsize::new(0);
     let calcules = AtomicUsize::new(0);
+    // Le site a une taille limite : au-delà de ce poids (150 Mo, ou ARTEON_API_MO), les
+    // artistes suivants (les moins riches) ne sont pas publiés ; le site les demande alors
+    // aux musées, en direct.
+    let poids_max = std::env::var("ARTEON_API_MO").ok().and_then(|v| v.parse::<usize>().ok()).unwrap_or(150) * 1_000_000;
+    let poids = AtomicUsize::new(0);
     let faits: Mutex<Vec<(usize, String)>> = Mutex::new(Vec::new());
     std::thread::scope(|s| {
         for _ in 0..fils.max(1) {
@@ -576,6 +581,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
                 };
                 if let Some(corps) = corps
+                    && poids.fetch_add(corps.len(), Ordering::SeqCst) < poids_max
                     && std::fs::write(dossier.join(format!("{nom_fichier}.json")), corps).is_ok()
                     && let Ok(mut f) = faits.lock()
                 {
