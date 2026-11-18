@@ -182,7 +182,8 @@ async function fiche(id) {
         <h1>${echapper(l[T])}</h1>
         <p class="monde-artiste"><a href="${lienPage(`explorer/#/artiste/${encodeURIComponent(l[A])}`)}" title="${t("Le catalogue complet de l'artiste", "The artist's complete catalogue", "El catálogo completo del artista")}">${echapper(nomArtiste(l[A]))}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
         <dl class="monde-cartel">${faits.map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
-        ${f.x ? `<div class="monde-texte"><p>${echapper(f.x)}</p>${m.cle === "chicago" ? `<p class="monde-note">${t("Texte : Art Institute of Chicago, CC BY 4.0.", "Text: Art Institute of Chicago, CC BY 4.0.", "Texto: Art Institute of Chicago, CC BY 4.0.")}</p>` : ""}</div>` : ""}
+        ${f.x ? `<div class="folds"><details class="fold" open><summary><span>${t("Description", "Description", "Descripción")}</span><span class="fold-sign" aria-hidden="true"></span></summary>
+          <div class="fold-body monde-texte"><p>${echapper(f.x)}</p>${m.cle === "chicago" ? `<p class="monde-note">${t("Texte : Art Institute of Chicago, CC BY 4.0.", "Text: Art Institute of Chicago, CC BY 4.0.", "Texto: Art Institute of Chicago, CC BY 4.0.")}</p>` : ""}</div></details></div>` : ""}
         <div class="monde-nav">
           ${avant ? `<a href="#/oeuvre/${avant}">‹ ${t("Précédente", "Previous", "Anterior")}</a>` : ""}${apres ? `<a href="#/oeuvre/${apres}">${t("Suivante", "Next", "Siguiente")} ›</a>` : ""}
           ${f.w ? `<a href="${echapper(f.w)}" target="_blank" rel="noopener">${t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a>` : ""}

@@ -38,9 +38,11 @@
 .monde-fiche h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0 0 6px; line-height: 1.15; }
 .monde-artiste { font-size: 1.15rem; color: var(--muted); margin: 0 0 16px; }
 .monde-artiste a { color: inherit; }
-.monde-cartel { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0 0 18px; }
-.monde-cartel dt { color: var(--muted); font-size: .85rem; }
-.monde-cartel dd { margin: 0; }
+/* Le cartel, bien rangé : le nom de chaque renseignement, sa valeur dessous, un filet entre deux. */
+.monde-cartel { display: block; margin: 0 0 18px; border-bottom: 1px solid var(--line); }
+.monde-cartel dt { font-weight: 600; padding-top: 13px; border-top: 1px solid var(--line); }
+.monde-cartel dd { margin: 3px 0 13px; color: var(--muted); line-height: 1.5; }
+.monde-fiche .folds { margin-top: 0; border-top: 0; }
 .monde-texte { line-height: 1.6; }
 .monde-note { color: var(--muted); font-size: .85rem; margin-top: 10px; }
 .monde-retour { display: inline-block; margin-bottom: 16px; }
