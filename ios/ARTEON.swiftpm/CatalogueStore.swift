@@ -106,18 +106,21 @@ final class CatalogueStore {
             Task { await loadCollections() }
         }
         if catalogue == nil {
-            phase = .failed(lastUpdateError.map { "ARTEON a besoin d'Internet : tout passe par l'API, rien n'est gardé sur l'appareil. (\($0))" }
-                ?? "ARTEON a besoin d'Internet : tout passe par l'API, rien n'est gardé sur l'appareil.")
+            let message = L("ARTEON a besoin d'Internet : tout passe par l'API, rien n'est gardé sur l'appareil.",
+                            "ARTEON needs the Internet: everything comes from the API, nothing is kept on the device.",
+                            "ARTEON necesita Internet: todo pasa por la API, nada se guarda en el dispositivo.")
+            phase = .failed(lastUpdateError.map { "\(message) (\($0))" } ?? message)
         }
     }
 
-    /// Demande le catalogue au site ; garde l'actuel si le site ne répond pas.
+    /// Demande le catalogue au site, dans la langue de l'application (`catalogue.json`,
+    /// `en/catalogue.json`, `es/catalogue.json`) ; garde l'actuel si le site ne répond pas.
     func update() async {
         guard !updating else { return }
         updating = true
         defer { updating = false }
         do {
-            let data = try await Api.site("catalogue.json")
+            let data = try await Api.site(AppLanguage.current.catalogueFile)
             let c = try await Self.decode(data)
             await show(c, from: .online)
             lastUpdateError = nil

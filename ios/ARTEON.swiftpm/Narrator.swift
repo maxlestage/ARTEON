@@ -1,5 +1,6 @@
-// L'audioguide : la voix française de l'appareil lit le cartel et la notice d'une œuvre,
-// ou l'introduction d'une exposition. Sans Internet, même en mode silencieux.
+// L'audioguide : une voix de l'appareil, dans la langue de l'application (française,
+// anglaise ou espagnole), lit le cartel et la notice d'une œuvre, ou l'introduction d'une
+// exposition. Sans Internet, même en mode silencieux.
 
 import AVFoundation
 import Observation
@@ -71,12 +72,19 @@ final class Narrator {
         paused = false
     }
 
-    /// La plus belle voix française installée.
+    /// La plus belle voix installée dans la langue de l'application : de préférence celle
+    /// de la région de l'appareil (es-MX, en-US…), sinon fr-FR, en-GB, es-ES.
     private static var voice: AVSpeechSynthesisVoice? {
-        let french = AVSpeechSynthesisVoice.speechVoices().filter { $0.language.hasPrefix("fr") }
-        return french.max { a, b in
-            (a.language == "fr-FR" ? 10 : 0) + a.quality.rawValue < (b.language == "fr-FR" ? 10 : 0) + b.quality.rawValue
-        } ?? AVSpeechSynthesisVoice(language: "fr-FR")
+        let language = AppLanguage.current
+        let device = AVSpeechSynthesisVoice.currentLanguageCode()
+        let preferred = device.hasPrefix(language.rawValue) ? device : language.speechLanguage
+        let voices = AVSpeechSynthesisVoice.speechVoices().filter { $0.language.hasPrefix(language.rawValue) }
+        func score(_ v: AVSpeechSynthesisVoice) -> Int {
+            (v.language == preferred ? 20 : v.language == language.speechLanguage ? 10 : 0) + v.quality.rawValue
+        }
+        return voices.max { score($0) < score($1) }
+            ?? AVSpeechSynthesisVoice(language: preferred)
+            ?? AVSpeechSynthesisVoice(language: language.speechLanguage)
     }
 }
 
@@ -101,7 +109,7 @@ private final class SpeechDelegate: NSObject, AVSpeechSynthesizerDelegate, Senda
 struct ListenButton: View {
     let id: String
     let text: () -> String
-    var label: String = "Écouter"
+    var label: String = L("Écouter", "Listen", "Escuchar")
 
     @Environment(Narrator.self) private var narrator
 
@@ -111,11 +119,11 @@ struct ListenButton: View {
             narrator.toggle(id, text: text())
         } label: {
             Label(
-                reading ? (narrator.paused ? "Reprendre" : "Pause") : label,
+                reading ? (narrator.paused ? L("Reprendre", "Resume", "Reanudar") : L("Pause", "Pause", "Pausa")) : label,
                 systemImage: reading ? (narrator.paused ? "play.fill" : "pause.fill") : "speaker.wave.2.fill"
             )
         }
         .symbolEffect(.variableColor.iterative, isActive: reading && !narrator.paused)
-        .accessibilityHint("L'audioguide lit la notice à voix haute")
+        .accessibilityHint(L("L'audioguide lit la notice à voix haute", "The audio guide reads the notice aloud", "La audioguía lee la ficha en voz alta"))
     }
 }

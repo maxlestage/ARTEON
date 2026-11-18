@@ -22,21 +22,21 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $tab) {
-            Tab("Expositions", systemImage: "photo.artframe", value: AppTab.exhibitions) {
+            Tab(L("Expositions", "Exhibitions", "Exposiciones"), systemImage: "photo.artframe", value: AppTab.exhibitions) {
                 stack($exhibitionsPath) { HomeView(catalogue: catalogue) }
             }
-            Tab("Musées", systemImage: "building.columns", value: AppTab.museums) {
+            Tab(L("Musées", "Museums", "Museos"), systemImage: "building.columns", value: AppTab.museums) {
                 stack($museumsPath) { MuseumsView(catalogue: catalogue) }
             }
             if sizeClass != .compact {
-                Tab("Artistes", systemImage: "person.2", value: AppTab.artists) {
+                Tab(L("Artistes", "Artists", "Artistas"), systemImage: "person.2", value: AppTab.artists) {
                     stack($artistsPath) { ArtistsView(catalogue: catalogue) }
                 }
             }
-            Tab("Explorer", systemImage: "safari", value: AppTab.explore) {
+            Tab(L("Explorer", "Explore", "Explorar"), systemImage: "safari", value: AppTab.explore) {
                 stack($explorePath) { ExploreView(catalogue: catalogue) }
             }
-            Tab("Favoris", systemImage: "heart", value: AppTab.favorites) {
+            Tab(L("Favoris", "Favourites", "Favoritos"), systemImage: "heart", value: AppTab.favorites) {
                 stack($favoritesPath) { FavoritesView(catalogue: catalogue) }
             }
             Tab(value: AppTab.search, role: .search) {
@@ -182,9 +182,9 @@ struct RouteView: View {
 
     private var missing: some View {
         ContentUnavailableView(
-            "Introuvable",
+            L("Introuvable", "Not found", "No encontrado"),
             systemImage: "questionmark.square.dashed",
-            description: Text("Cette page n'est plus au catalogue.")
+            description: Text(L("Cette page n'est plus au catalogue.", "This page is no longer in the catalogue.", "Esta página ya no está en el catálogo."))
         )
     }
 }

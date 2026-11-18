@@ -68,7 +68,7 @@ jobs:
           shoot() {
             echo "▶ $name"
             limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
-            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon "$@" || return 0
+            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -AppleLanguages "(fr)" "$@" || return 0
             sleep "${wait:-10}"
             limit 60 xcrun simctl io "$udid" screenshot "captures/iphone-$name.png" || echo "capture $name impossible"
           }

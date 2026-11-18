@@ -3,7 +3,8 @@ import WebKit
 
 /// La galerie 3D de l'exposition (WebGL 2, écrite en Rust), en plein écran : visite
 /// guidée ou libre, plan, notices ; ouverte devant une œuvre si `work`. Elle vient du site
-/// ARTEON, comme tout le reste : rien n'est gardé sur l'appareil.
+/// ARTEON, comme tout le reste (la page dans la langue de l'application : `en/…/galerie/`) :
+/// rien n'est gardé sur l'appareil.
 struct GalleryView: View {
     let exhibition: Exhibition
     let work: String?
@@ -12,7 +13,7 @@ struct GalleryView: View {
     @State private var failed: String?
 
     private var url: URL {
-        let page = Site.url(exhibition.gallery + "/")
+        let page = Site.page(exhibition.gallery + "/")
         var components = URLComponents(url: page, resolvingAgainstBaseURL: true)
         components?.fragment = work
         return components?.url ?? page
@@ -25,11 +26,11 @@ struct GalleryView: View {
                 .ignoresSafeArea(edges: .bottom)
             if let failed {
                 ContentUnavailableView {
-                    Label("La galerie n'a pas pu s'ouvrir", systemImage: "view.3d")
+                    Label(L("La galerie n'a pas pu s'ouvrir", "The gallery could not open", "La galería no ha podido abrirse"), systemImage: "view.3d")
                 } description: {
                     Text(failed)
                 } actions: {
-                    Button("Réessayer", systemImage: "arrow.clockwise") {
+                    Button(L("Réessayer", "Try again", "Reintentar"), systemImage: "arrow.clockwise") {
                         self.failed = nil
                         reload += 1
                     }
@@ -38,11 +39,11 @@ struct GalleryView: View {
                 .foregroundStyle(.white)
             }
         }
-        .navigationTitle("Galerie 3D · \(exhibition.name)")
+        .navigationTitle(L("Galerie 3D", "3D gallery", "Galería 3D") + " · \(exhibition.name)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button("Recharger", systemImage: "arrow.clockwise") {
+                Button(L("Recharger", "Reload", "Recargar"), systemImage: "arrow.clockwise") {
                     failed = nil
                     reload += 1
                 }

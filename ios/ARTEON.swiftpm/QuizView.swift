@@ -20,9 +20,9 @@ struct QuizView: View {
                         .font(.title2.bold().monospacedDigit())
                         .foregroundStyle(.orange)
                         .contentTransition(.numericText())
-                        .accessibilityLabel("Série : \(score)")
+                        .accessibilityLabel(L("Série : \(score)", "Streak: \(score)", "Racha: \(score)"))
                     Spacer()
-                    Label("Record : \(store.quizBest)", systemImage: "trophy.fill")
+                    Label(L("Record : \(store.quizBest)", "Record: \(store.quizBest)", "Récord: \(store.quizBest)"), systemImage: "trophy.fill")
                         .font(.headline)
                         .foregroundStyle(.secondary)
                 }
@@ -33,9 +33,9 @@ struct QuizView: View {
                         .frame(maxHeight: 420)
                         .padding(8)
                         .background(Color.galleryWall, in: .rect(cornerRadius: 12))
-                        .accessibilityLabel("L'œuvre à reconnaître")
+                        .accessibilityLabel(L("L'œuvre à reconnaître", "The work to identify", "La obra que hay que reconocer"))
 
-                    Text("Qui a fait cette œuvre ?")
+                    Text(L("Qui a fait cette œuvre ?", "Who made this work?", "¿Quién hizo esta obra?"))
                         .font(.title2.bold())
 
                     if chosen != nil {
@@ -80,10 +80,10 @@ struct QuizView: View {
                     if chosen != nil {
                         HStack(spacing: 12) {
                             NavigationLink(value: Route.work(question.work)) {
-                                Label("Voir la notice", systemImage: "book")
+                                Label(L("Voir la notice", "See the notice", "Ver la ficha"), systemImage: "book")
                             }
                             .buttonStyle(.glass)
-                            Button(lost ? "Rejouer" : "Suivante", systemImage: lost ? "arrow.counterclockwise" : "arrow.right") {
+                            Button(lost ? L("Rejouer", "Play again", "Volver a jugar") : L("Suivante", "Next", "Siguiente"), systemImage: lost ? "arrow.counterclockwise" : "arrow.right") {
                                 next()
                             }
                             .buttonStyle(.glassProminent)
@@ -98,7 +98,7 @@ struct QuizView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("Qui l'a fait ?")
+        .navigationTitle(L("Qui l'a fait ?", "Who made it?", "¿Quién lo hizo?"))
         .navigationBarTitleDisplayMode(.inline)
         .sensoryFeedback(trigger: chosen) { _, new in
             guard let new, let question else { return nil }

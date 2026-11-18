@@ -12,7 +12,7 @@ struct ExhibitionView: View {
     private var spokenIntroduction: String {
         var parts = [exhibition.title + ".", exhibition.introduction]
         if let museum = exhibition.museum {
-            parts.append("Le bâtiment. \(museum.presentation) \(museum.here)")
+            parts.append(L("Le bâtiment. ", "The building. ", "El edificio. ") + "\(museum.presentation) \(museum.here)")
         }
         return parts.joined(separator: "\n")
     }
@@ -26,27 +26,27 @@ struct ExhibitionView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             NavigationLink(value: Route.gallery(exhibition.slug, work: nil)) {
-                                Label("Visiter en 3D", systemImage: "view.3d")
+                                Label(L("Visiter en 3D", "Visit in 3D", "Visitar en 3D"), systemImage: "view.3d")
                                     .font(.headline)
                                     .padding(.horizontal, 6)
                             }
                             .buttonStyle(.glassProminent)
                             .tint(accent)
 
-                            Button("Diaporama", systemImage: "play.rectangle") { slideshow = true }
+                            Button(L("Diaporama", "Slideshow", "Diapositivas"), systemImage: "play.rectangle") { slideshow = true }
                                 .buttonStyle(.glass)
 
-                            ListenButton(id: "exposition/\(exhibition.slug)", text: { spokenIntroduction }, label: "Écouter l'introduction")
+                            ListenButton(id: "exposition/\(exhibition.slug)", text: { spokenIntroduction }, label: L("Écouter l'introduction", "Listen to the introduction", "Escuchar la introducción"))
                                 .buttonStyle(.glass)
                         }
                     }
                     .scrollClipDisabled()
 
                     HStack(spacing: 16) {
-                        Label("\(exhibition.works.count) œuvres", systemImage: "photo.on.rectangle")
-                        Label("\(exhibition.rooms.filter { !$0.corridor }.count) salles", systemImage: "square.split.2x2")
+                        Label(worksCount(exhibition.works.count), systemImage: "photo.on.rectangle")
+                        Label(Lcount(exhibition.rooms.filter { !$0.corridor }.count, ("salle", "salles"), ("room", "rooms"), ("sala", "salas")), systemImage: "square.split.2x2")
                         if !exhibition.artists.isEmpty {
-                            Label(exhibition.artists.count == 1 ? "1 artiste" : "\(exhibition.artists.count) artistes", systemImage: "person.2")
+                            Label(Lcount(exhibition.artists.count, ("artiste", "artistes"), ("artist", "artists"), ("artista", "artistas")), systemImage: "person.2")
                         }
                     }
                     .font(.subheadline)
@@ -64,14 +64,14 @@ struct ExhibitionView: View {
                                 .frame(maxWidth: 760)
                         }
                         NavigationLink(value: Route.building(museum.name)) {
-                            Label("Le bâtiment : \(museum.name)", systemImage: "building.columns")
+                            Label(L("Le bâtiment : ", "The building: ", "El edificio: ") + museum.name, systemImage: "building.columns")
                         }
                         .buttonStyle(.glass)
                     }
 
                     ForEach(exhibition.worksByRoom, id: \.index) { group in
                         VStack(alignment: .leading, spacing: 10) {
-                            Text(group.room.name.isEmpty ? "Salle \(group.index + 1)" : group.room.name)
+                            Text(group.room.name.isEmpty ? L("Salle \(group.index + 1)", "Room \(group.index + 1)", "Sala \(group.index + 1)") : group.room.name)
                                 .font(.title2.bold())
                             if !group.room.theme.isEmpty {
                                 Text(group.room.theme)
@@ -93,14 +93,14 @@ struct ExhibitionView: View {
                     }
 
                     if !exhibition.artists.isEmpty {
-                        Text(exhibition.artists.count == 1 ? "L'artiste" : "Les artistes")
+                        Text(exhibition.artists.count == 1 ? L("L'artiste", "The artist", "El artista") : L("Les artistes", "The artists", "Los artistas"))
                             .font(.title2.bold())
                             .padding(.top, 18)
                         VStack(spacing: 0) {
                             ForEach(exhibition.artists) { artist in
                                 ArtistRow(artist: artist)
                                 NavigationLink(value: Route.artist(artist.name)) {
-                                    Label("Ses œuvres dans tout le musée", systemImage: "person.crop.rectangle.stack")
+                                    Label(L("Ses œuvres dans tout le musée", "Their works throughout the museum", "Sus obras en todo el museo"), systemImage: "person.crop.rectangle.stack")
                                         .font(.subheadline)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -173,7 +173,7 @@ struct MuseumCard: View {
         HStack(alignment: .top, spacing: 14) {
             Capsule().fill(accent).frame(width: 5)
             VStack(alignment: .leading, spacing: 8) {
-                Label("Le bâtiment", systemImage: "building.columns.fill")
+                Label(L("Le bâtiment", "The building", "El edificio"), systemImage: "building.columns.fill")
                     .font(.headline)
                     .foregroundStyle(accent)
                 Text([museum.name, museum.city].filter { !$0.isEmpty }.joined(separator: ", "))

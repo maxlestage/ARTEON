@@ -33,15 +33,15 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Toute l'histoire de l'art, dans la poche")
+                    Text(L("Toute l'histoire de l'art, dans la poche", "All of art history, in your pocket", "Toda la historia del arte, en el bolsillo"))
                         .font(.title3.italic())
                         .foregroundStyle(.tint)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
-                            StatCard(value: catalogue.exhibitions.count, label: "expositions", color: .arteonBlue)
-                            StatCard(value: catalogue.workCount + (store.collections?.count ?? 0), label: "œuvres", color: .arteonSun)
-                            StatCard(value: artistTotal, label: "artistes", color: .purple)
-                            StatCard(value: catalogue.roomCount, label: "salles en 3D", color: .green)
+                            StatCard(value: catalogue.exhibitions.count, label: L("expositions", "exhibitions", "exposiciones"), color: .arteonBlue)
+                            StatCard(value: catalogue.workCount + (store.collections?.count ?? 0), label: L("œuvres", "works", "obras"), color: .arteonSun)
+                            StatCard(value: artistTotal, label: L("artistes", "artists", "artistas"), color: .purple)
+                            StatCard(value: catalogue.roomCount, label: L("salles en 3D", "3D rooms", "salas en 3D"), color: .green)
                         }
                     }
                     .scrollClipDisabled()
@@ -56,22 +56,22 @@ struct HomeView: View {
                 let recent = catalogue.works(Array(store.history.prefix(12)))
                 if !recent.isEmpty {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Reprendre la visite")
+                        Text(L("Reprendre la visite", "Resume your visit", "Continuar la visita"))
                             .font(.title2.bold())
                             .padding(.horizontal)
                         WorkRow(items: recent)
                     }
                 }
 
-                Text("Les expositions")
+                Text(L("Les expositions", "Exhibitions", "Las exposiciones"))
                     .font(.title2.bold())
                     .padding(.horizontal)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
-                        chip("Tout", .all)
+                        chip(L("Tout", "All", "Todo"), .all)
                         if catalogue.exhibitions.contains(where: \.ephemeral) {
-                            chip("En ce moment", .now)
+                            chip(L("En ce moment", "Now on", "Ahora"), .now)
                         }
                         ForEach(catalogue.movements, id: \.self) { chip($0, .movement($0)) }
                     }
@@ -98,7 +98,7 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 NavigationLink(value: Route.settings) {
-                    Label("Réglages", systemImage: "gearshape")
+                    Label(L("Réglages", "Settings", "Ajustes"), systemImage: "gearshape")
                 }
             }
             if store.updating {
@@ -160,14 +160,14 @@ struct ExhibitionCard: View {
             Rectangle().fill(exhibition.accentColor).frame(height: 5)
             VStack(alignment: .leading, spacing: 4) {
                 if exhibition.ephemeral {
-                    Text("EN CE MOMENT")
+                    Text(L("EN CE MOMENT", "NOW ON", "AHORA"))
                         .font(.caption2.bold())
                         .foregroundStyle(exhibition.accentColor)
                 }
                 Text(exhibition.name)
                     .font(.headline)
                     .lineLimit(2)
-                Text([exhibition.movement, "\(exhibition.works.count) œuvres"]
+                Text([exhibition.movement, worksCount(exhibition.works.count)]
                     .filter { !$0.isEmpty }
                     .joined(separator: " · "))
                     .font(.caption)
@@ -220,7 +220,7 @@ struct DailyWorkCard: View {
                     .frame(height: 320)
                 LinearGradient(colors: [.clear, .black.opacity(0.75)], startPoint: .center, endPoint: .bottom)
                 VStack(alignment: .leading, spacing: 4) {
-                    Label("L'œuvre du jour", systemImage: "sun.max.fill")
+                    Label(L("L'œuvre du jour", "Work of the day", "La obra del día"), systemImage: "sun.max.fill")
                         .font(.caption.bold())
                         .textCase(.uppercase)
                         .foregroundStyle(Color.arteonSun)
@@ -241,7 +241,7 @@ struct DailyWorkCard: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
-        .accessibilityHint("Ouvre l'œuvre du jour")
+        .accessibilityHint(L("Ouvre l'œuvre du jour", "Opens the work of the day", "Abre la obra del día"))
     }
 }
 

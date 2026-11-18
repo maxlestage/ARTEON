@@ -7,14 +7,18 @@ import Foundation
 
 // MARK: - Les dates
 
-/// L'année d'une date écrite comme sur un cartel : « 1888 », « vers 2090 av. J.-C. »,
-/// « 1615–1705 », « XIIᵉ siècle », « IIIᵉ siècle – 1899 ». `nil` quand il n'y en a pas.
+/// L'année d'une date écrite comme sur un cartel, dans les trois langues du catalogue :
+/// « 1888 », « vers 2090 av. J.-C. », « 1615–1705 », « XIIᵉ siècle », « IIIᵉ siècle – 1899 » ;
+/// « c. 2090 BC », « 12th century » ; « hacia 2090 a. C. », « siglo XII ». `nil` quand il
+/// n'y en a pas.
 func yearValue(_ text: String) -> Int? {
     let lower = text.lowercased()
-    if lower.contains("milliard") || lower.contains("million") {
+    if lower.contains("milliard") || lower.contains("million") || lower.contains("billion")
+        || lower.contains("millones") || lower.contains("millón") {
         return -1_000_000
     }
     let before = lower.contains("av. j.-c") || lower.contains("av. j-c") || lower.contains("avant j")
+        || lower.range(of: #"\bb\.? ?c\.?(e\.?)?(\W|$)|\ba\. ?c\.|antes de cristo"#, options: .regularExpression) != nil
     let chars = Array(text)
 
     // Le premier nombre écrit en chiffres, et sa place.
@@ -35,6 +39,15 @@ func yearValue(_ text: String) -> Int? {
         k += 1
     }
 
+    // Un siècle en anglais (« 12th century », « 3rd–2nd century BC »).
+    if let number, number >= 1, number <= 30, lower.contains("centur") {
+        let suffix = String(chars[k..<min(k + 2, chars.count)]).lowercased()
+        if ["st", "nd", "rd", "th"].contains(suffix) {
+            let middle = (number - 1) * 100 + 50
+            return before ? -middle : middle
+        }
+    }
+
     // Un siècle en chiffres romains (« XIIᵉ », « IXe siècle »), s'il vient avant.
     if let century = romanCentury(in: chars), century.offset < numberStart {
         let middle = (century.value - 1) * 100 + 50
@@ -44,8 +57,8 @@ func yearValue(_ text: String) -> Int? {
     return before ? -number : number
 }
 
-/// Le premier siècle écrit en chiffres romains suivi de « ᵉ » (ou « e », « er »), et sa
-/// place dans le texte.
+/// Le premier siècle écrit en chiffres romains suivi de « ᵉ » (ou « e », « er »), ou
+/// précédé de « siglo » (« siglo XII », en espagnol), et sa place dans le texte.
 private func romanCentury(in chars: [Character]) -> (value: Int, offset: Int)? {
     let values: [Character: Int] = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100]
     var start = 0
@@ -63,6 +76,12 @@ private func romanCentury(in chars: [Character]) -> (value: Int, offset: Int)? {
             total += v < previous ? -v : v
             previous = max(previous, v)
         }
+        // En espagnol : « siglo XII », « siglos XV-XVI ».
+        let head = String(chars[..<start]).lowercased().trimmingCharacters(in: .whitespaces)
+        if head.hasSuffix("siglo") || head.hasSuffix("siglos"),
+           end == chars.count || !chars[end].isLetter, total > 0, total <= 30 {
+            return (total, start)
+        }
         // Le suffixe : « ᵉ », « ᵉʳ », « e », « er » (pour le premier siècle seulement).
         var after = end
         if after < chars.count, chars[after] == "ᵉ" || chars[after] == "e" {
@@ -78,14 +97,23 @@ private func romanCentury(in chars: [Character]) -> (value: Int, offset: Int)? {
     return nil
 }
 
-/// « XIXᵉ siècle », « Vᵉ siècle av. J.-C. », « Avant l'histoire ».
-func centuryLabel(_ year: Int) -> String {
-    if year <= -100_000 { return "Avant l'histoire" }
+/// « XIXᵉ siècle », « Vᵉ siècle av. J.-C. », « Avant l'histoire » ; « 19th century »,
+/// « 5th century BC », « Prehistory » ; « Siglo XIX », « Siglo V a. C. », « Prehistoria »
+/// (comme le site, outils/monde/commun.js).
+func centuryLabel(_ year: Int, in language: AppLanguage = .current) -> String {
+    if year <= -100_000 { return language.pick("Avant l'histoire", "Prehistory", "Prehistoria") }
     let before = year < 0
-    let n = before ? (-year - 1) / 100 + 1 : (year - 1) / 100 + 1
-    let roman = romanNumeral(max(n, 1))
-    let suffix = n == 1 ? "ᵉʳ" : "ᵉ"
-    return "\(roman)\(suffix) siècle" + (before ? " av. J.-C." : "")
+    let n = max(before ? (-year - 1) / 100 + 1 : (year - 1) / 100 + 1, 1)
+    let roman = romanNumeral(n)
+    switch language {
+    case .fr:
+        return "\(roman)\(n == 1 ? "ᵉʳ" : "ᵉ") siècle" + (before ? " av. J.-C." : "")
+    case .en:
+        let suffix = (11...13).contains(n % 100) ? "th" : [1: "st", 2: "nd", 3: "rd"][n % 10] ?? "th"
+        return "\(n)\(suffix) century" + (before ? " BC" : "")
+    case .es:
+        return "Siglo \(roman)" + (before ? " a. C." : "")
+    }
 }
 
 func romanNumeral(_ n: Int) -> String {
@@ -318,7 +346,7 @@ struct Building: Identifiable, Hashable, Sendable {
         }
         let last = text.split(separator: ",").last.map(String.init) ?? text
         let trimmed = last.trimmingCharacters(in: .whitespaces)
-        return trimmed.isEmpty ? "Ailleurs" : trimmed
+        return trimmed.isEmpty ? L("Ailleurs", "Elsewhere", "Otros lugares") : trimmed
     }
 }
 
@@ -344,12 +372,18 @@ extension MuseumIndex {
     /// expositions, de la plus ancienne à la plus récente (l'année médiane de leurs œuvres).
     static func wings(_ catalogue: Catalogue) -> [Wing] {
         let plan: [(title: String, subtitle: String, until: Int)] = [
-            ("L'aile des origines", "De la Terre aux premiers empires", 500),
-            ("L'aile des cathédrales", "Byzance, l'Islam, le Moyen Âge, l'Asie", 1400),
-            ("L'aile des palais", "Renaissance et Baroque", 1700),
-            ("L'aile des salons", "Des Lumières au romantisme", 1850),
-            ("L'aile de la lumière", "La seconde moitié du XIXᵉ siècle", 1900),
-            ("L'aile moderne", "Le XXᵉ siècle et aujourd'hui", Int.max),
+            (L("L'aile des origines", "The Wing of Origins", "El ala de los orígenes"),
+             L("De la Terre aux premiers empires", "From the Earth to the first empires", "De la Tierra a los primeros imperios"), 500),
+            (L("L'aile des cathédrales", "The Wing of Cathedrals", "El ala de las catedrales"),
+             L("Byzance, l'Islam, le Moyen Âge, l'Asie", "Byzantium, Islam, the Middle Ages, Asia", "Bizancio, el islam, la Edad Media, Asia"), 1400),
+            (L("L'aile des palais", "The Wing of Palaces", "El ala de los palacios"),
+             L("Renaissance et Baroque", "Renaissance and Baroque", "Renacimiento y Barroco"), 1700),
+            (L("L'aile des salons", "The Wing of Salons", "El ala de los salones"),
+             L("Des Lumières au romantisme", "From the Enlightenment to Romanticism", "De la Ilustración al Romanticismo"), 1850),
+            (L("L'aile de la lumière", "The Wing of Light", "El ala de la luz"),
+             L("La seconde moitié du XIXᵉ siècle", "The second half of the 19th century", "La segunda mitad del siglo XIX"), 1900),
+            (L("L'aile moderne", "The Modern Wing", "El ala moderna"),
+             L("Le XXᵉ siècle et aujourd'hui", "The 20th century and today", "El siglo XX y la actualidad"), Int.max),
         ]
         let dated = catalogue.exhibitions.map { ex -> (String, Int) in
             let years = ex.works.compactMap { yearValue($0.year) }.sorted()
@@ -442,7 +476,15 @@ enum Quiz {
                        "manufacture", "fours", "tradition", "style", "moines", "scriptorium", "faiencerie",
                        "maison ", "mines", "gisement", "formation", "falaises", "recifs", "forets", "coulees",
                        "massif", "schistes", "orfevres", "tisserands", "couturieres", "armuriers", "peintres-",
-                       "enlumineurs", "tapissiers", "mosaistes", "ceramistes", "studios"]
+                       "enlumineurs", "tapissiers", "mosaistes", "ceramistes", "studios",
+                       // Les mêmes, dans les catalogues anglais et espagnol.
+                       "anonymous", "workshop", "period", "dynasty", "kingdom", "kilns", "monks", "pottery",
+                       "deposit", "cliffs", "reefs", "forests", "lava flows", "goldsmiths", "weavers",
+                       "seamstresses", "armourers", "armorers", "illuminators", "tapestry", "mosaicists",
+                       "ceramists", "anonimo", "taller", "epoca", "dinastia", "imperio", "reino ", "hornos",
+                       "tradicion", "estilo", "monjes", "yacimiento", "acantilados", "arrecifes", "bosques",
+                       "coladas", "macizo", "esquistos", "orfebres", "tejedores", "costureras", "armeros",
+                       "iluminadores", "tapiceros", "mosaistas", "ceramistas", "estudios"]
         if generic.contains(where: { f.contains($0) }) { return false }
         // Une culture ou un lieu (« Japon, époque d'Edo », « Inde du Sud »).
         return !name.contains(",") && name.split(separator: " ").count >= 2
@@ -468,19 +510,20 @@ struct SplitMix64: RandomNumberGenerator, Sendable {
 
 extension Work {
     /// Le texte que lit l'audioguide : le cartel, puis la notice.
-    func spokenText(in exhibition: Exhibition) -> String {
+    func spokenText(in exhibition: Exhibition, language: AppLanguage = .current) -> String {
         var parts = ["\(title)."]
         if !artist.isEmpty { parts.append("\(artist).") }
         if !year.isEmpty { parts.append("\(year).") }
         if !note.isEmpty { parts.append(note) }
-        for section in notice.sections {
+        for section in notice.sections(in: language) {
             parts.append("\(section.title). \(section.text)")
         }
         if !notice.details.isEmpty {
-            parts.append("À regarder de près. " + notice.details.joined(separator: " "))
+            parts.append(language.pick("À regarder de près. ", "Look closely. ", "Para mirar de cerca. ")
+                + notice.details.joined(separator: " "))
         }
         if !notice.anecdote.isEmpty {
-            parts.append("Le saviez-vous ? \(notice.anecdote)")
+            parts.append(language.pick("Le saviez-vous ? ", "Did you know? ", "¿Sabía que…? ") + notice.anecdote)
         }
         return parts.joined(separator: "\n")
     }
