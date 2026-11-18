@@ -2,6 +2,8 @@
 // le catalogue, le texte sans accents, les dates des cartels et les siècles (comme dans
 // l'application iOS, Library.swift).
 
+import { jsonGarde } from "./memoire.js";
+
 /** Le début des adresses du site (`/ARTEON` sur GitHub Pages). */
 export const base = location.pathname.replace(/\/(musees|explorer|monde)\/.*$/, "");
 
@@ -19,7 +21,7 @@ export const lien = (chemin) => `${base}/${String(chemin).replace(/^\//, "")}`;
 /** Le catalogue du site : expositions, salles (avec leur plan), artistes, œuvres. */
 let catalogue;
 export function chargerCatalogue() {
-  catalogue ??= fetch(lien("catalogue.json")).then((r) => r.json());
+  catalogue ??= jsonGarde(lien("catalogue.json"), 3600e3);
   return catalogue;
 }
 

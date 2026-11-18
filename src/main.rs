@@ -1569,8 +1569,10 @@ async fn credits(_req: Request) -> Page {
                      collections du monde affichent les images en grand depuis les serveurs des musées (Art Institute of \
                      Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art) : votre \
                      navigateur s'y connecte alors directement, comme pour toute image venue d'un autre site. Le record \
-                     du jeu « Qui l'a fait ? » reste dans votre navigateur. L'application iOS embarque tout le musée et \
-                     fonctionne hors ligne.",
+                     du jeu « Qui l'a fait ? » reste dans votre navigateur. Pour aller plus vite, le navigateur garde aussi \
+                     une copie compressée des données du musée (IndexedDB) : elle n'est jamais envoyée ailleurs et \
+                     s'efface avec les données du site, dans les réglages du navigateur. L'application iOS passe par \
+                     l'API ARTEON : elle garde une copie compressée de la visite en cours (SQLite), effacée quand on la quitte.",
                 )),
         )
         .child(h2().class("section-title").text("Le code et les outils"))

@@ -4,6 +4,7 @@
 
 import { annee, carteOeuvre, chargerCatalogue, echapper, lien, nombre, plier, rangSiecle, route, titreSiecle, toutes } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
+import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
 let C, oeuvres, artistes, siecles, themes;
@@ -72,9 +73,9 @@ function cleNom(nom) {
 
 function chargerArtistes() {
   catalogueArtistes ??= Promise.all([
-    fetch(lien("monde/alias.json")).then((r) => (r.ok ? r.json() : {})).catch(() => ({})).then((a) => { ALIAS = a; }),
-    fetch(lien("monde/donnees/liste.json")).then((r) => (r.ok ? r.json() : [])).catch(() => []),
-    fetch(lien("monde/donnees/index.json")).then((r) => (r.ok ? r.json() : { ids: [] })).catch(() => ({ ids: [] })),
+    jsonGarde(lien("monde/alias.json")).catch(() => ({})).then((a) => { ALIAS = a; }),
+    jsonGarde(lien("monde/donnees/liste.json")).catch(() => []),
+    jsonGarde(lien("monde/donnees/index.json")).catch(() => ({ ids: [] })),
   ]).then(([, liste, index]) => {
     const parCle = new Map();
     for (const a of artistes) {

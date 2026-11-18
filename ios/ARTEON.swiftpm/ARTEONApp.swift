@@ -9,6 +9,12 @@ import SwiftUI
 struct ARTEONApp: App {
     @State private var store = CatalogueStore()
     @State private var narrator = Narrator()
+    @Environment(\.scenePhase) private var scenePhase
+
+    init() {
+        // Rien d'une visite précédente : la mémoire de la visite repart de zéro.
+        SessionStore.purgeNow()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -16,6 +22,15 @@ struct ARTEONApp: App {
                 .environment(store)
                 .environment(narrator)
                 .tint(.arteonBlue)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in
+                    SessionStore.purgeNow()
+                }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            // On quitte ARTEON : la mémoire de la visite (SQLite) est effacée.
+            if phase == .background {
+                Task { await SessionStore.shared.purge() }
+            }
         }
     }
 }

@@ -130,7 +130,7 @@ jobs:
           key: collections-v1-pages-${{ github.run_id }}
 
       # L'API publiée en fichiers : le catalogue complet de chaque artiste (expositions, puis
-      # les 3 000 artistes les plus riches des collections), calculé par le moteur de l'API
+      # tous les artistes des collections, des plus riches aux moins riches), calculé par le moteur de l'API
       # Paquets (src/api.rs) en direct des musées, dans dist/api/. Le site et l'application
       # la lisent d'abord : elle marche sans serveur. Les réponses de moins d'une semaine sont
       # reprises du cache ; le reste se calcule au fil des constructions (25 minutes par fois).
@@ -146,7 +146,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 40
         run: |
-          python3 outils/api_noms.py dist 3000 > target/noms.txt
+          python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
           ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt 25 4 2> target/api.log || true
           tail -3 target/api.log

@@ -3,6 +3,7 @@
 // (donnees/liste.json pour parcourir et chercher, donnees/fiches-NN.json pour le détail),
 // les vignettes viennent du site (v/<œuvre>.jpg), l'image en grand du musée qui la publie.
 // Écrit par outils/monde_web.py dans monde/ ; adresses en #/… (une seule page).
+import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
 const etat = { index: null, liste: null, plies: null, fiches: new Map(), vues: [], montrees: 0 };
@@ -21,8 +22,8 @@ const T = 0, A = 1, D = 2, Y = 3, C = 4, K = 5;
 async function charger() {
   racine.innerHTML = `<p class="monde-chargement">Ouverture des collections…</p>`;
   const [index, liste] = await Promise.all([
-    fetch("donnees/index.json").then((r) => r.json()),
-    fetch("donnees/liste.json").then((r) => r.json()),
+    jsonGarde("donnees/index.json"),
+    jsonGarde("donnees/liste.json"),
   ]);
   etat.index = index;
   etat.liste = liste;
@@ -60,7 +61,7 @@ function afficher() {
   // Les œuvres liées à une exposition : chargées à la première demande.
   if (r.type === "exposition" && !etat.expositions) {
     racine.innerHTML = `<p class="monde-chargement">Ouverture de l'exposition…</p>`;
-    fetch("donnees/expositions.json").then((x) => (x.ok ? x.json() : {})).catch(() => ({}))
+    jsonGarde("donnees/expositions.json").catch(() => ({}))
       .then((e) => { etat.expositions = e; if (route().type === "exposition") afficher(); });
     return;
   }
@@ -132,7 +133,7 @@ async function detail(i) {
   const part = Math.floor(i / etat.index.parFichier);
   if (!etat.fiches.has(part)) {
     const nom = `donnees/fiches-${String(part).padStart(3, "0")}.json`;
-    etat.fiches.set(part, fetch(nom).then((r) => r.json()));
+    etat.fiches.set(part, jsonGarde(nom));
   }
   return (await etat.fiches.get(part))[i % etat.index.parFichier];
 }

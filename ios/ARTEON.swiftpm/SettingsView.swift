@@ -8,6 +8,7 @@ struct SettingsView: View {
     @Environment(CatalogueStore.self) private var store
     @Environment(Narrator.self) private var narrator
     @State private var confirmFavorites = false
+    @State private var visitSize: Int64 = 0
 
     var body: some View {
         @Bindable var store = store
@@ -43,10 +44,17 @@ struct SettingsView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
+                LabeledContent("Mémoire de la visite", value: visitSize.formatted(.byteCount(style: .file)))
+                Button("Effacer la mémoire de la visite", role: .destructive) {
+                    Task {
+                        await SessionStore.shared.purge()
+                        visitSize = await SessionStore.shared.size()
+                    }
+                }
             } header: {
                 Text("L'API ARTEON")
             } footer: {
-                Text("Tout passe par l'API : le musée, ses images, les galeries 3D et les collections viennent du site ARTEON, et toutes les œuvres de chaque artiste de l'API Paquets, en direct des musées. Rien n'est gardé sur l'appareil.")
+                Text("Tout passe par l'API : le musée, ses images, les galeries 3D et les collections viennent du site ARTEON, et toutes les œuvres de chaque artiste de l'API Paquets, en direct des musées. Pendant la visite, une copie compressée (SQLite) évite de tout redemander ; elle est effacée quand on quitte ARTEON.")
             }
 
             Section {
@@ -99,6 +107,7 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Réglages")
+        .task { visitSize = await SessionStore.shared.size() }
         .confirmationDialog("Effacer tous les favoris ?", isPresented: $confirmFavorites, titleVisibility: .visible) {
             Button("Effacer les \(store.favorites.count) favoris", role: .destructive) { store.clearFavorites() }
         }

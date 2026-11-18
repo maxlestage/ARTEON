@@ -19,7 +19,7 @@ let package = Package(
                 "MainView.swift", "Narrator.swift", "FloorPlanView.swift", "MuseumsView.swift", "CollectionsView.swift", "QuizView.swift", "SearchView.swift",
                 "SettingsView.swift", "SlideshowView.swift", "Theme.swift", "WorkView.swift",
             ],
-            sources: ["Models.swift", "Library.swift", "CatalogueStore.swift", "Collections.swift", "Api.swift"]
+            sources: ["Models.swift", "Library.swift", "CatalogueStore.swift", "Collections.swift", "Api.swift", "SessionStore.swift"]
         ),
         .testTarget(
             name: "ARTEONTests",
