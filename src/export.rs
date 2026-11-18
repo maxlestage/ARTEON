@@ -107,7 +107,11 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
     for path in ["/manifest.webmanifest", "/sw.js"] {
         let res = client.get(path).await;
         if res.status() == 200 {
-            write(path, prefix_urls(&res.text(), &base).as_bytes())?;
+            let mut text = prefix_urls(&res.text(), &base);
+            if path == "/sw.js" {
+                text = network_only(&text, &base);
+            }
+            write(path, text.as_bytes())?;
         }
     }
     // Le catalogue de l'application iPhone et iPad, dans chaque langue : ses chemins sont
@@ -131,6 +135,22 @@ fn prefix_urls(text: &str, base: &str) -> String {
     } else {
         text.replace("\"/", &format!("\"{base}/"))
     }
+}
+
+/// Ce que le service worker ne garde jamais : les données et les scripts des collections, de
+/// Musées et d'Explorer (`/monde/`), l'API des artistes (`/api/`) et le catalogue. Ces
+/// fichiers vont ensemble et changent à chaque mise en ligne : servis depuis une vieille
+/// copie, le titre d'une œuvre se retrouverait sous l'image d'une autre. Ils ont leur
+/// propre mémoire, qui suit la version du site (outils/monde/memoire.js).
+fn network_only(worker: &str, base: &str) -> String {
+    let prefixes: Vec<String> = ["/monde/", "/api/", "/catalogue.json", "/en/catalogue.json", "/es/catalogue.json"]
+        .iter()
+        .map(|p| format!("\"{base}{p}\""))
+        .collect();
+    worker.replace(
+        "const NETWORK_ONLY = [];",
+        &format!("const NETWORK_ONLY = [{}];", prefixes.join(",")),
+    )
 }
 
 /// `"ARTEON/"` → `"/ARTEON"`, `"/"` → `""`.
@@ -263,6 +283,15 @@ mod tests {
             r##"const PRECACHE = ["/ARTEON/","/ARTEON/pkg/a.js","/ARTEON/icons/i.png"];const OFFLINE = "/ARTEON/";"##
         );
         assert_eq!(prefix_urls(worker, ""), worker);
+    }
+
+    #[test]
+    fn the_worker_never_keeps_the_collections_data() {
+        let worker = "const NETWORK_ONLY = [];const OFFLINE = \"/\";";
+        assert_eq!(
+            network_only(worker, "/ARTEON"),
+            "const NETWORK_ONLY = [\"/ARTEON/monde/\",\"/ARTEON/api/\",\"/ARTEON/catalogue.json\",\"/ARTEON/en/catalogue.json\",\"/ARTEON/es/catalogue.json\"];const OFFLINE = \"/\";"
+        );
     }
 
     #[test]

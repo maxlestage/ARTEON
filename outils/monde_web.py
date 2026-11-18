@@ -26,6 +26,7 @@ import json
 import re
 import shutil
 import sys
+import time
 import unicodedata
 from pathlib import Path
 
@@ -195,6 +196,9 @@ def main():
         "ids": [o["i"] for o in gardees],
     }
     compact = {"ensure_ascii": False, "separators": (",", ":")}
+    # La version de cette mise en ligne : les pages la demandent toujours au réseau et s'en
+    # servent pour ne jamais mélanger les fichiers de deux mises en ligne (memoire.js).
+    (sortie / "donnees" / "version.json").write_text(json.dumps({"v": f"{int(time.time()):x}"}), encoding="utf-8")
     (sortie / "donnees" / "index.json").write_text(json.dumps(index, **compact), encoding="utf-8")
     (sortie / "donnees" / "liste.json").write_text(json.dumps(liste, **compact), encoding="utf-8")
     for n in range(0, len(gardees), PAR_FICHIER):

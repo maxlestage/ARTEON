@@ -177,7 +177,7 @@ async function fiche(id) {
   racine.innerHTML = `
     <a class="monde-retour" href="#/">← ${t("Toutes les œuvres", "All works", "Todas las obras")}</a>
     <div class="monde-fiche">
-      <div class="monde-image"><img id="monde-img" src="${l[7] || `v/${id}.webp`}" alt="${echapper(l[T])}"></div>
+      <div class="monde-image"><img id="monde-img" src="${l[7] || lien(`monde/v/${id}.webp`)}" alt="${echapper(l[T])}"></div>
       <div>
         <h1>${echapper(l[T])}</h1>
         <p class="monde-artiste"><a href="${lienPage(`explorer/#/artiste/${encodeURIComponent(l[A])}`)}" title="${t("Le catalogue complet de l'artiste", "The artist's complete catalogue", "El catálogo completo del artista")}">${echapper(nomArtiste(l[A]))}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>
