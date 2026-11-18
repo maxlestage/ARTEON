@@ -1,0 +1,668 @@
+{
+ "_": "Les œuvres des collections du monde liées à chaque exposition (outils/monde_web.py). Une œuvre est liée si son artiste est exposé ou cité dans « artistes » (sauf « seulement_conditions »), ou si elle remplit TOUTES les conditions données : catégories, mots (titre, technique, origine), origine (origine, nationalité, artiste), de/a (années). « dans_titre » : les mots sont cherchés dans le titre seulement.",
+ "abstraction": {
+  "artistes": [
+   "Robert Delaunay",
+   "Fernand Léger",
+   "Juan Gris",
+   "Kurt Schwitters",
+   "Paul Klee",
+   "Vassily Kandinsky",
+   "Piet Mondrian",
+   "Franz Marc",
+   "August Macke",
+   "Alexej von Jawlensky",
+   "Louis Marcoussis",
+   "Albert Gleizes",
+   "Umberto Boccioni",
+   "Kazimir Malevich",
+   "El Lissitzky",
+   "Theo van Doesburg",
+   "Lyubov Popova",
+   "Hilma af Klint",
+   "Marsden Hartley",
+   "Morgan Russell",
+   "Natalia Goncharova",
+   "Mikhail Larionov",
+   "Francis Picabia"
+  ],
+  "de": 1900,
+  "a": 1930
+ },
+ "affiches-illustration": {
+  "categories": [
+   "Estampe",
+   "Dessin",
+   "Livres et manuscrits"
+  ],
+  "mots": "poster|affiche|illustrat|caricatur|comic|cartoon|vignette|book illustration|frontispiece",
+  "a": 1930,
+  "seulement_conditions": true,
+  "de": 1750
+ },
+ "afrique-oceanie-ameriques": {
+  "origine": "africa|nigeria|ghana|congo|mali|cameroon|ivory coast|côte d|gabon|benin|yoruba|\\bedo\\b|sierra leone|angola|zimbabwe|ethiopia|oceania|papua|new guinea|maori|hawai|polynesia|melanesia|micronesia|solomon|vanuatu|fiji|peru|mexic|maya|aztec|olmec|inca|andes|andean|colombia|ecuador|costa rica|panama|native american|lakota|navajo|pueblo|zuni|hopi|inuit|teotihuacan|moche|nazca|chancay|wari|veracruz|colima|jalisco|nayarit|mesoameric|guatemala|bolivia|chile|tlingit|haida|cheyenne|apache|plains|mississippian",
+  "seulement_conditions": true
+ },
+ "antiquite": {
+  "origine": "egypt|greek|greece|roman|rome|etrusc|assyria|mesopotam|sumer|babylon|achaemenid|cypr|hellenist|phoenic|anatolia|attic|corinth|boeotia|apulia|campania|magna graecia|minoan|mycenae|cycladic|near east|ancient iran|parthian|sasanian",
+  "a": 600,
+  "seulement_conditions": true
+ },
+ "architecture": {
+  "categories": [
+   "Dessin",
+   "Estampe",
+   "Photographie",
+   "Livres et manuscrits"
+  ],
+  "mots": "architect|façade|facade|cathedral|temple|palace|church|basilica|bridge|elevation|ground plan|tower|ruins of|interior of|capitol|mosque|castle|monument|dome",
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "armes-armures": {
+  "categories": [
+   "Armes et armures"
+  ],
+  "seulement_conditions": true
+ },
+ "art-contemporain": {
+  "categories": [
+   "Sculpture"
+  ],
+  "de": 1870,
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "art-et-science": {
+  "mots": "botan|flower|bird|insect|shell|anatom|natural history|plant|butterfl|fish|astronom|map of|globe|herbari|skeleton|zoolog|specimen|microscop|orrery|scientific",
+  "a": 1910,
+  "seulement_conditions": true,
+  "categories": [
+   "Dessin",
+   "Estampe",
+   "Livres et manuscrits",
+   "Peinture",
+   "Photographie"
+  ]
+ },
+ "arts-asie": {
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Livres et manuscrits"
+  ],
+  "origine": "china|chinese|iran|persia|mughal|safavid|timurid|qajar|bukhara|herat|tabriz|isfahan|shiraz|deccan|india",
+  "seulement_conditions": true
+ },
+ "arts-decoratifs": {
+  "categories": [
+   "Mobilier",
+   "Verre",
+   "Céramique",
+   "Orfèvrerie et métal",
+   "Bijoux",
+   "Textile et costume",
+   "Autres objets"
+  ],
+  "de": 1880,
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "arts-islam": {
+  "origine": "iran|persia|islamic|ottoman|turkey|mamluk|fatimid|ayyubid|abbasid|umayyad|nasrid|andalus|safavid|timurid|seljuk|syria|iraq|morocco|afghanistan|uzbekistan|samarqand|kashan|nishapur|damascus|cairo|anatolia",
+  "de": 600,
+  "a": 1900,
+  "seulement_conditions": true
+ },
+ "baroque": {
+  "categories": [
+   "Peinture",
+   "Sculpture",
+   "Dessin"
+  ],
+  "origine": "ital|spain|spanish|flanders|flemish|france|french|rome|naples|bologna|seville|madrid|genoa",
+  "de": 1590,
+  "a": 1720
+ },
+ "byzance": {
+  "origine": "byzant|coptic|constantinople|armenia|ethiopia|georgia|eastern mediterranean|russia.*1[2-7]th|crete.*1[5-7]th|novgorod|moscow.*1[5-7]",
+  "a": 1750,
+  "seulement_conditions": true,
+  "de": 300
+ },
+ "ceramiques": {
+  "categories": [
+   "Céramique"
+  ],
+  "seulement_conditions": true
+ },
+ "coree-japon": {
+  "origine": "korea|japan|joseon|goryeo|edo period|meiji|muromachi|kamakura|heian|momoyama|silla",
+  "a": 1912,
+  "seulement_conditions": true
+ },
+ "espagne-ameriques": {
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Sculpture"
+  ],
+  "origine": "spain|spanish|mexic|argentin|brazil|chile|peru|cuba|puerto ric|venezuela|colombia|uruguay|catalan|ecuador|guatemala|bolivia",
+  "de": 1800,
+  "a": 1930
+ },
+ "estampes-japonaises": {
+  "categories": [
+   "Estampe",
+   "Peinture",
+   "Livres et manuscrits"
+  ],
+  "origine": "japan|edo period|meiji",
+  "de": 1650,
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "europe-centrale": {
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Estampe",
+   "Sculpture"
+  ],
+  "origine": "czech|bohemia|polish|poland|hungar|austria|croat|serbia|romania|slovak|sloven|vienna|prague|budapest|krak",
+  "de": 1800,
+  "a": 1930
+ },
+ "expressionnisme": {
+  "artistes": [
+   "Ernst Ludwig Kirchner",
+   "Egon Schiele",
+   "Edvard Munch",
+   "Franz Marc",
+   "August Macke",
+   "Vassily Kandinsky",
+   "Alexej von Jawlensky",
+   "Paula Modersohn-Becker",
+   "Henri Matisse",
+   "André Derain",
+   "Raoul Dufy",
+   "Otto Mueller",
+   "Lovis Corinth",
+   "Käthe Kollwitz",
+   "Ernst Barlach",
+   "Gabriele Münter",
+   "Marianne von Werefkin",
+   "Albert Marquet",
+   "Henri Manguin",
+   "Charles Camoin",
+   "Kees van Dongen",
+   "Othon Friesz"
+  ],
+  "de": 1898,
+  "a": 1930
+ },
+ "femmes-peintres": {
+  "artistes": [
+   "Mary Cassatt",
+   "Berthe Morisot",
+   "Rosa Bonheur",
+   "Élisabeth Vigée Le Brun",
+   "Elisabeth Louise Vigée Le Brun",
+   "Angelica Kauffman",
+   "Adélaïde Labille-Guiard",
+   "Judith Leyster",
+   "Rachel Ruysch",
+   "Clara Peeters",
+   "Sofonisba Anguissola",
+   "Lavinia Fontana",
+   "Artemisia Gentileschi",
+   "Rosalba Carriera",
+   "Marie-Denise Villers",
+   "Eva Gonzalès",
+   "Marie Bracquemond",
+   "Suzanne Valadon",
+   "Paula Modersohn-Becker",
+   "Käthe Kollwitz",
+   "Cecilia Beaux",
+   "Lilla Cabot Perry",
+   "Elizabeth Nourse",
+   "Anna Ancher",
+   "Harriet Backer",
+   "Helene Schjerfbeck",
+   "Gwen John",
+   "Lilly Martin Spencer",
+   "Julia Margaret Cameron",
+   "Gertrude Käsebier",
+   "Frances Benjamin Johnston",
+   "Anne Vallayer-Coster",
+   "Marie-Guillemine Benoist",
+   "Maria Sibylla Merian",
+   "Elisabetta Sirani",
+   "Mary Beale",
+   "Louise Moillon",
+   "Constance Mayer",
+   "Emily Carr",
+   "Anna Mary Richards Brewster",
+   "Elizabeth Jane Gardner",
+   "Maria van Oosterwijck",
+   "Margaretha de Heer",
+   "Marguerite Gérard",
+   "Lady Elizabeth Butler",
+   "Susan Macdowell Eakins",
+   "Sarah Miriam Peale",
+   "Margaretta Angelica Peale",
+   "Anne Ryan",
+   "Mary Lightfoot",
+   "Theresa Bernstein",
+   "Jacqueline Marval",
+   "Marie Laurencin"
+  ]
+ },
+ "flandres-hollande": {
+  "categories": [
+   "Peinture",
+   "Dessin"
+  ],
+  "origine": "flemish|dutch|flanders|netherland|holland|antwerp|haarlem|amsterdam|utrecht|leiden|delft",
+  "de": 1580,
+  "a": 1720
+ },
+ "geants-xxe": {
+  "artistes": [
+   "Henri Matisse",
+   "Vassily Kandinsky",
+   "Paul Klee",
+   "Henri Rousseau",
+   "Odilon Redon",
+   "Amedeo Modigliani",
+   "Käthe Kollwitz",
+   "Paula Modersohn-Becker",
+   "Gwen John",
+   "Louis Marcoussis",
+   "Pierre Bonnard",
+   "Édouard Vuillard",
+   "Juan Gris",
+   "Fernand Léger",
+   "Piet Mondrian",
+   "Robert Delaunay",
+   "Raoul Dufy",
+   "André Derain",
+   "Maurice Utrillo"
+  ],
+  "de": 1900,
+  "a": 1930
+ },
+ "inde-asie-sud-est": {
+  "origine": "india|mughal|pahari|rajasthan|rajput|deccan|nepal|tibet|thailand|siam|cambodia|khmer|java|indonesia|burma|myanmar|sri lanka|vietnam|bengal|gandhara|chola|bhutan|laos|kashmir|punjab|gujarat|orissa|odisha|tamil|kerala|bali",
+  "seulement_conditions": true
+ },
+ "instruments-musique": {
+  "categories": [
+   "Instruments de musique"
+  ],
+  "seulement_conditions": true
+ },
+ "joyaux": {
+  "categories": [
+   "Bijoux",
+   "Orfèvrerie et métal"
+  ],
+  "seulement_conditions": true,
+  "mots": "gold|silver|gilt|jewel|enamel|gem|pearl|brooch|necklace|ring|earring|pendant|reliquar|chalice|crown|casket|ewer|tiara|bracelet|cameo|locket"
+ },
+ "klimt": {
+  "artistes": [
+   "Gustav Klimt",
+   "Egon Schiele",
+   "Koloman Moser",
+   "Otto Wagner",
+   "Joseph Maria Olbrich",
+   "Carl Moll",
+   "Richard Gerstl",
+   "Max Kurzweil",
+   "Alfred Roller",
+   "Emil Orlik",
+   "Ferdinand Andri"
+  ],
+  "origine": "austria|vienna|wiener",
+  "de": 1890,
+  "a": 1920,
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Estampe",
+   "Sculpture"
+  ]
+ },
+ "lumieres": {
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Sculpture"
+  ],
+  "origine": "france|french|england|english|british|italy|italian|venice|venetian|germany|german|spain|spanish|scotland|scottish|swiss|switzerland|swed",
+  "de": 1715,
+  "a": 1815
+ },
+ "manuscrits-textiles": {
+  "categories": [
+   "Livres et manuscrits",
+   "Textile et costume"
+  ],
+  "a": 1600,
+  "seulement_conditions": true
+ },
+ "mode-costume": {
+  "categories": [
+   "Textile et costume"
+  ],
+  "de": 1700,
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "moyen-age": {
+  "categories": [
+   "Peinture",
+   "Sculpture",
+   "Livres et manuscrits",
+   "Orfèvrerie et métal",
+   "Textile et costume",
+   "Dessin",
+   "Autres objets"
+  ],
+  "origine": "france|french|ital|germany|german|spain|spanish|england|english|flanders|flemish|netherland|austria|swiss|bohemia|limoges|paris|siena|florence|cologne|rhine|lower saxony|mosan|catalonia|castile|burgund",
+  "de": 500,
+  "a": 1520,
+  "seulement_conditions": true
+ },
+ "peinture-nordique": {
+  "origine": "norw|swed|danish|denmark|finn|finland|iceland|scandinav|copenhagen|stockholm|oslo|christiania|helsinki",
+  "de": 1800,
+  "a": 1930,
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Estampe",
+   "Sculpture"
+  ]
+ },
+ "peinture-russe": {
+  "origine": "russia|russian|moscow|st\\.? petersburg|ukrain",
+  "de": 1800,
+  "a": 1930,
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Estampe",
+   "Sculpture"
+  ]
+ },
+ "photographie": {
+  "categories": [
+   "Photographie"
+  ],
+  "a": 1879,
+  "seulement_conditions": true
+ },
+ "photographie-art": {
+  "categories": [
+   "Photographie"
+  ],
+  "de": 1880,
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "pop-art": {
+  "categories": [
+   "Estampe",
+   "Dessin",
+   "Peinture"
+  ],
+  "mots": "poster|affiche|advertis|trompe|caricatur|comic|cartoon|collage|card rack|letter rack|bank note|banknote|label|papier coll|playing card",
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "post-impressionnisme": {
+  "artistes": [
+   "Georges Seurat",
+   "Paul Signac",
+   "Henri-Edmond Cross",
+   "Henri de Toulouse-Lautrec",
+   "Pierre Bonnard",
+   "Édouard Vuillard",
+   "Paul Sérusier",
+   "Maurice Denis",
+   "Émile Bernard",
+   "Henri Rousseau",
+   "Théo van Rysselberghe",
+   "Maximilien Luce",
+   "Félix Vallotton",
+   "Ker-Xavier Roussel",
+   "Charles Angrand",
+   "Albert Dubois-Pillet",
+   "Louis Anquetin",
+   "Paul Ranson",
+   "Armand Guillaumin",
+   "Henri Rivière"
+  ],
+  "de": 1880,
+  "a": 1912
+ },
+ "realisme": {
+  "artistes": [
+   "Gustave Courbet",
+   "Jean-François Millet",
+   "Édouard Manet",
+   "Edgar Degas",
+   "Camille Pissarro",
+   "Alfred Sisley",
+   "Gustave Caillebotte",
+   "Berthe Morisot",
+   "Rosa Bonheur",
+   "Honoré Daumier",
+   "Jean-Baptiste-Camille Corot",
+   "Camille Corot",
+   "Henri Fantin-Latour",
+   "Frédéric Bazille",
+   "Jules Breton",
+   "Jules Bastien-Lepage",
+   "Léon Bonvin",
+   "François Bonvin",
+   "Charles-François Daubigny",
+   "Théodore Rousseau",
+   "Constant Troyon",
+   "Eugène Boudin",
+   "Johan Barthold Jongkind",
+   "Rosa Bonheur"
+  ],
+  "de": 1840,
+  "a": 1895
+ },
+ "renaissance-nord": {
+  "origine": "flemish|netherlandish|german|dutch|flanders|netherland|germany|bruges|ghent|antwerp|nuremberg|augsburg|cologne|brussels|swabia|franconia",
+  "de": 1400,
+  "a": 1580
+ },
+ "renaissance": {
+  "categories": [
+   "Peinture",
+   "Dessin",
+   "Sculpture",
+   "Estampe",
+   "Céramique",
+   "Orfèvrerie et métal"
+  ],
+  "origine": "ital|florence|florentine|venice|venetian|siena|sienese|rome|milan|ferrara|padua|urbino|mantua|bologna|umbria|lombard",
+  "de": 1400,
+  "a": 1580
+ },
+ "robes": {
+  "categories": [
+   "Textile et costume"
+  ],
+  "mots": "(?<!head)dress\\b|gown|\\brobe\\b|bodice|frock|ball gown|court dress|evening dress|wedding",
+  "de": 1700,
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "romantisme": {
+  "artistes": [
+   "Eugène Delacroix",
+   "Théodore Géricault",
+   "Francisco de Goya",
+   "Caspar David Friedrich",
+   "Joseph Mallord William Turner",
+   "John Constable",
+   "William Blake",
+   "Johann Heinrich Füssli",
+   "Henry Fuseli",
+   "Antoine-Jean Gros",
+   "Anne-Louis Girodet",
+   "Thomas Cole",
+   "Richard Parkes Bonington",
+   "John Martin",
+   "Carl Blechen",
+   "Ary Scheffer",
+   "Paul Huet",
+   "Théodore Chassériau",
+   "Samuel Palmer",
+   "Johan Christian Dahl",
+   "Carl Gustav Carus",
+   "Philipp Otto Runge"
+  ],
+  "de": 1775,
+  "a": 1850
+ },
+ "salon-academique": {
+  "artistes": [
+   "William Bouguereau",
+   "William-Adolphe Bouguereau",
+   "Alexandre Cabanel",
+   "Jean-Léon Gérôme",
+   "Ernest Meissonier",
+   "Jean-Louis-Ernest Meissonier",
+   "Thomas Couture",
+   "Paul Delaroche",
+   "Lawrence Alma-Tadema",
+   "Frederic Leighton",
+   "Elizabeth Jane Gardner",
+   "Carolus-Duran",
+   "Jules Lefebvre",
+   "Jean-Jacques Henner",
+   "Jean-Paul Laurens",
+   "Léon Bonnat",
+   "Jules Breton",
+   "Pascal Dagnan-Bouveret",
+   "Gustave Boulanger",
+   "Henri Gervex",
+   "Fernand Cormon",
+   "Édouard Detaille",
+   "Alphonse de Neuville",
+   "Ernest Hébert",
+   "Jean-Jacques Henner"
+  ],
+  "de": 1830,
+  "a": 1905
+ },
+ "sculpture": {
+  "categories": [
+   "Sculpture"
+  ],
+  "origine": "france|french|ital|germany|german|england|english|british|spain|spanish|flanders|flemish|netherland|dutch|austria|denmark|danish|american|united states|belgi",
+  "de": 1400,
+  "a": 1910,
+  "seulement_conditions": true
+ },
+ "smithsonian": {
+  "categories": [
+   "Peinture",
+   "Sculpture"
+  ],
+  "origine": "american|united states|america\\b|boston|new york|philadelphia",
+  "de": 1800,
+  "a": 1900
+ },
+ "street-art": {
+  "mots": "fresco|mural|wall painting|wall fragment|poster|affiche|bill poster|graffit|sgraffit|street",
+  "a": 1930,
+  "seulement_conditions": true
+ },
+ "symbolisme": {
+  "artistes": [
+   "Odilon Redon",
+   "Gustave Moreau",
+   "Pierre Puvis de Chavannes",
+   "Arnold Böcklin",
+   "Fernand Khnopff",
+   "Edward Burne-Jones",
+   "Dante Gabriel Rossetti",
+   "George Frederic Watts",
+   "Edvard Munch",
+   "Alfons Mucha",
+   "Aubrey Beardsley",
+   "Max Klinger",
+   "Jan Toorop",
+   "Giovanni Segantini",
+   "Eugène Carrière",
+   "Lucien Lévy-Dhurmer",
+   "Alexandre Séon",
+   "Franz von Stuck",
+   "John William Waterhouse",
+   "John Everett Millais",
+   "Félicien Rops",
+   "Carlos Schwabe",
+   "Hugo Simberg",
+   "Jean Delville",
+   "Gaetano Previati"
+  ],
+  "de": 1848,
+  "a": 1920
+ },
+ "tresors-de-la-terre": {
+  "mots": "meteorite|mineral specimen|fossil specimen|crystal specimen",
+  "seulement_conditions": true,
+  "dans_titre": true
+ },
+ "velos": {
+  "mots": "bicycl|cyclist|cycling|cycles |vélo|velocip|tricycle|bicycle",
+  "seulement_conditions": true
+ },
+ "venise": {
+  "origine": "venice|venetian|venezia|murano",
+  "a": 1800
+ },
+ "vermeer-rembrandt": {
+  "artistes": [
+   "Rembrandt",
+   "Johannes Vermeer",
+   "Pieter de Hooch",
+   "Gerard ter Borch",
+   "Gabriel Metsu",
+   "Nicolaes Maes",
+   "Carel Fabritius",
+   "Gerrit Dou",
+   "Frans van Mieris",
+   "Jan Steen",
+   "Ferdinand Bol",
+   "Govert Flinck",
+   "Jan Lievens",
+   "Aert de Gelder",
+   "Samuel van Hoogstraten",
+   "Gerbrand van den Eeckhout",
+   "Philips Koninck",
+   "Emanuel de Witte",
+   "Frans Hals"
+  ]
+ },
+ "verreries": {
+  "categories": [
+   "Verre"
+  ],
+  "seulement_conditions": true
+ },
+ "voitures": {
+  "mots": "automobile|motor car|motorcar|motor-car|racing car|chauffeur|limousine|motoring",
+  "seulement_conditions": true
+ }
+}

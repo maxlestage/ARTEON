@@ -39,6 +39,7 @@ function filtrer(route) {
   if (route.type === "categorie") return tous.filter((i) => L[i][C] === route.valeur);
   if (route.type === "siecle") { const r = Number(route.valeur); return tous.filter((i) => L[i][Y] != null && rangSiecle(L[i][Y]) === r); }
   if (route.type === "artiste") return tous.filter((i) => L[i][A] === route.valeur);
+  if (route.type === "exposition") return etat.expositions?.[route.valeur]?.indices ?? [];
   if (route.type === "recherche") {
     const mots = plier(route.valeur).split(/\s+/).filter(Boolean);
     if (!mots.length) return tous;
@@ -56,6 +57,13 @@ function route() {
 function afficher() {
   const r = route();
   if (r.type === "oeuvre") return fiche(r.valeur);
+  // Les œuvres liées à une exposition : chargées à la première demande.
+  if (r.type === "exposition" && !etat.expositions) {
+    racine.innerHTML = `<p class="monde-chargement">Ouverture de l'exposition…</p>`;
+    fetch("donnees/expositions.json").then((x) => (x.ok ? x.json() : {})).catch(() => ({}))
+      .then((e) => { etat.expositions = e; if (route().type === "exposition") afficher(); });
+    return;
+  }
   const vues = filtrer(r);
   etat.vues = vues;
   etat.montrees = 0;
@@ -64,6 +72,7 @@ function afficher() {
     musee: ix.musees.find((m) => m.cle === r.valeur)?.nom,
     categorie: r.valeur, siecle: ix.siecles.find((s) => String(s[0]) === r.valeur)?.[1],
     artiste: r.valeur, recherche: r.valeur ? `« ${r.valeur} »` : "",
+    exposition: etat.expositions?.[r.valeur] ? `Exposition « ${etat.expositions[r.valeur].nom} »` : "",
   }[r.type] || "Toutes les œuvres";
   racine.innerHTML = `
     <h1 class="monde-titre">Les collections du monde</h1>
@@ -81,7 +90,8 @@ function afficher() {
       <button id="monde-hasard" type="button">🎲 Au hasard</button>
       ${r.type ? `<a class="monde-lien" href="#/">Tout voir</a>` : ""}
     </div>
-    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${vues.length === 1 ? "1 œuvre" : `${nombre(vues.length)} œuvres`}</p>
+    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${vues.length === 1 ? "1 œuvre" : `${nombre(vues.length)} œuvres`}${r.type === "exposition"
+      ? ` liées dans les collections du monde, de la plus ancienne à la plus récente · <a href="../${encodeURIComponent(r.valeur)}/">← la visite de l'exposition</a>` : ""}</p>
     <div class="monde-grille" id="monde-grille"></div>
     <button class="monde-plus" id="monde-plus" type="button">Afficher plus</button>`;
   let attente;

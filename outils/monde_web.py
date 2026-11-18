@@ -75,6 +75,52 @@ def cle_nom(nom):
     return ALIAS.get(k, k)
 
 
+LIENS = json.loads((ICI / "monde" / "liens_expositions.json").read_text(encoding="utf-8"))
+
+
+def oeuvres_liees(catalogue, gardees):
+    """Pour chaque exposition, toutes les œuvres des collections du monde qui s'y rattachent
+    (outils/monde/liens_expositions.json) : celles de ses artistes, et celles qui
+    répondent à ses conditions (catégories, mots, origine, années). De la plus ancienne à la
+    plus récente."""
+    inconnu = cle_nom("Artiste inconnu")
+    cles = [cle_nom(o.get("a")) for o in gardees]
+    resultat = {}
+    for ex in catalogue["exhibitions"]:
+        if ex.get("ephemeral"):
+            continue
+        r = LIENS.get(ex["slug"], {})
+        noms = {cle_nom(w.get("artist") or ex.get("artist")) for w in ex["works"]}
+        noms |= {cle_nom(a) for a in r.get("artistes", [])}
+        noms -= {inconnu, ""}
+        categories = set(r.get("categories", []))
+        mots = re.compile(r["mots"], re.I) if r.get("mots") else None
+        origine = re.compile(r["origine"], re.I) if r.get("origine") else None
+        conditions = bool(categories or mots or origine)
+        de, a = r.get("de", -10**9), r.get("a", 10**9)
+        indices = []
+        for i, o in enumerate(gardees):
+            y = o.get("y")
+            if y is not None and not de <= y <= a:
+                continue
+            if cles[i] in noms and not r.get("seulement_conditions"):
+                indices.append(i)
+                continue
+            if not conditions:
+                continue
+            if categories and o.get("c", "Autres objets") not in categories:
+                continue
+            texte = o.get("t", "") if r.get("dans_titre") else f"{o.get('t', '')} {o.get('m', '')} {o.get('o', '')}"
+            if mots and not mots.search(texte):
+                continue
+            if origine and not origine.search(f"{o.get('o', '')} {o.get('v', '')} {o.get('a', '')}"):
+                continue
+            indices.append(i)
+        indices.sort(key=lambda i: (gardees[i].get("y") is None, gardees[i].get("y") or 0, gardees[i].get("t", "")))
+        resultat[ex["slug"]] = {"nom": ex.get("short_name") or ex["title"], "titre": ex["title"], "indices": indices}
+    return resultat
+
+
 def main():
     if len(sys.argv) != 4:
         sys.exit(__doc__)
@@ -198,6 +244,29 @@ def main():
         if neuf != texte:
             fichier.write_text(neuf, encoding="utf-8")
     print(f"✓ partout : {fine(oeuvres)} œuvres ({oeuvres_expositions} dans les expositions), {fine(artistes)} artistes")
+
+    # Chaque exposition : toutes ses œuvres liées dans les collections du monde, sur une page
+    # (/monde/#/exposition/<nom>), annoncée en tête de la page de l'exposition.
+    liees = oeuvres_liees(catalogue, gardees)
+    (sortie / "donnees" / "expositions.json").write_text(json.dumps(liees, **compact), encoding="utf-8")
+    for slug, info in liees.items():
+        page = site / slug / "index.html"
+        n = len(info["indices"])
+        if not n or not page.exists():
+            continue
+        texte = page.read_text(encoding="utf-8")
+        if "monde-liees" in texte or '<section class="building"' not in texte:
+            continue
+        propres = sum(len(ex["works"]) for ex in catalogue["exhibitions"] if ex["slug"] == slug)
+        bloc = (f'<section class="monde-liees"><a class="monde-accueil" href="{base}/monde/#/exposition/{slug}"><div>'
+                f'<strong>Toutes les œuvres de l\'exposition : {fine(propres + n)}</strong>'
+                f'<span>Les {propres} œuvres de la visite, et {fine(n)} œuvres liées dans les collections du monde, '
+                f'de la plus ancienne à la plus récente →</span></div></a></section>')
+        texte = texte.replace('<section class="building"', bloc + '<section class="building"', 1)
+        if "monde/app.css" not in texte:
+            texte = texte.replace("</head>", f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>', 1)
+        page.write_text(texte, encoding="utf-8")
+    print(f"✓ expositions : {sum(len(v['indices']) for v in liees.values())} liens vers les collections du monde")
 
     taille = sum(f.stat().st_size for f in sortie.rglob("*") if f.is_file())
     print(f"✓ /monde/ : {len(gardees)} œuvres, {taille / 1e6:.0f} Mo")
