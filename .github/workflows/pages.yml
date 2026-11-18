@@ -124,7 +124,10 @@ jobs:
         run: |
           python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
             || python3 -m pip install --quiet --break-system-packages pillow
-          python3 outils/collections_monde.py --total 50000 --minutes 15 --sans-grandes \
+          # Après une modification du site, la moisson est courte (le cache a déjà presque
+          # tout) pour une mise en ligne rapide ; la grande moisson est celle du lundi.
+          if [ "${{ github.event_name }}" = "push" ]; then fiches=4; reserve=4; else fiches=15; reserve=20; fi
+          python3 outils/collections_monde.py --total 50000 --minutes $fiches --minutes-reserve $reserve --sans-grandes \
             --sortie target/monde --cache target/collections-cache
           python3 outils/monde_web.py target/monde target/collections-cache/vignettes dist
           du -sh dist dist/monde
