@@ -151,10 +151,12 @@ struct LiveWork: Decodable, Hashable, Sendable, Identifiable {
     var thumbnail: String
     var image: String
     var link: String
+    /// Le musée qui conserve l'œuvre, quand elle vient d'un agrégateur (Europeana).
+    var provider: String? = nil
 
     enum CodingKeys: String, CodingKey {
         case id, title = "titre", date, year = "annee", medium = "technique", museum = "musee"
-        case thumbnail = "vignette", image, link = "lien"
+        case thumbnail = "vignette", image, link = "lien", provider = "fournisseur"
     }
 }
 
@@ -308,6 +310,7 @@ enum LiveWorks {
                     .replacingOccurrences(of: "{n}", with: String(perPage))
                     .replacingOccurrences(of: "{page}", with: String(page))
                     .replacingOccurrences(of: "{offset}", with: String((page - 1) * perPage))
+                    .replacingOccurrences(of: "{debut}", with: String((page - 1) * perPage + 1))
                     .replacingOccurrences(of: "[", with: "%5B").replacingOccurrences(of: "]", with: "%5D")
                 guard let url = URL(string: address), let data = try? await Api.data(url, headers: headers),
                       let json = try? JSONSerialization.jsonObject(with: data)
@@ -353,7 +356,17 @@ enum LiveWorks {
             if let cut = source["artiste_jusqua"] as? String, let r = artist.range(of: cut) {
                 artist = String(artist[..<r.lowerBound])
             }
-            guard sameArtist(name, artist) else { return nil }
+            if !sameArtist(name, artist) {
+                // Les autres noms possibles (Europeana : les libellés de ses entités).
+                let others = ((field("artistes") as? [Any]) ?? []).map { v in
+                    (v as? [String: Any]).map { text($0["def"]) } ?? text(v)
+                }
+                // Seulement quand le créateur est un identifiant (une adresse) : un photographe
+                // nommé qui a photographié l'œuvre n'en est pas l'auteur.
+                let identifier = artist.isEmpty || artist.hasPrefix("http")
+                guard identifier, let found = others.first(where: { sameArtist(name, $0) }) else { return nil }
+                artist = found
+            }
             var (birth, death) = (year(field("ne")), year(field("mort")))
             if birth == nil, death == nil { (birth, death) = life(text(field("vie"))) }
             let date = text(field("date"))
@@ -365,7 +378,8 @@ enum LiveWorks {
                 year: year(field("annee")), medium: values["technique"] ?? "", museum: museum,
                 thumbnail: fill(source["vignette"] as? String ?? "", values),
                 image: fill(source["grande"] as? String ?? "", values),
-                link: fill(source["lien"] as? String ?? "", values)
+                link: fill(source["lien"] as? String ?? "", values),
+                provider: values["fournisseur"].flatMap { $0.isEmpty ? nil : $0 }
             )
         }
     }

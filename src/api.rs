@@ -327,7 +327,8 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
                 .replace("{q}", &encoder(&q))
                 .replace("{n}", &par_page.to_string())
                 .replace("{page}", &page.to_string())
-                .replace("{offset}", &((page - 1) * par_page).to_string());
+                .replace("{offset}", &((page - 1) * par_page).to_string())
+                .replace("{debut}", &((page - 1) * par_page + 1).to_string());
             let Some(r) = lire(&url, &entetes) else { break };
             if let Some(champ) = source["ids"].as_str() {
                 ids.extend(chemin(&r, champ).as_array().cloned().unwrap_or_default());
@@ -385,8 +386,19 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
             if let Some(coupe) = source["artiste_jusqua"].as_str() {
                 artiste = artiste.split(coupe).next().unwrap_or_default().to_owned();
             }
+            // Les autres noms possibles (Europeana : les libellés de ses entités).
+            let autres: Vec<String> = lire_champ("artistes")
+                .as_array()
+                .map(|l| l.iter().map(|v| if v.is_object() { en_texte(&v["def"]) } else { en_texte(v) }).collect())
+                .unwrap_or_default();
+            // Seulement quand le créateur est un identifiant (une adresse) : un photographe
+            // nommé qui a photographié l'œuvre n'en est pas l'auteur.
+            let identifiant = artiste.is_empty() || artiste.starts_with("http");
             if !meme_artiste(nom, &artiste) {
-                return None;
+                match autres.iter().find(|a| identifiant && meme_artiste(nom, a)) {
+                    Some(a) => artiste = a.clone(),
+                    None => return None,
+                }
             }
             let (mut ne, mut mort) = (annee_de(lire_champ("ne")), annee_de(lire_champ("mort")));
             if ne.is_none() && mort.is_none() {
@@ -404,6 +416,7 @@ fn interroger(source: &Value, nom: &str) -> Vec<Value> {
                 "artiste": artiste, "date": date, "annee": annee_de(lire_champ("annee")),
                 "technique": valeurs.get("technique").cloned().unwrap_or_default(),
                 "musee": cle_musee, "vignette": modele("vignette"), "image": modele("grande"), "lien": modele("lien"),
+                "fournisseur": valeurs.get("fournisseur").filter(|f| !f.is_empty()),
             }))
         })
         .collect()

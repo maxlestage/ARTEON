@@ -311,7 +311,7 @@ struct LiveWorksSection: View {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)], spacing: 12) {
                         ForEach(more) { work in
                             Link(destination: URL(string: work.link) ?? Api.server) {
-                                LiveWorkCard(work: work, museum: museums[work.museum] ?? work.museum)
+                                LiveWorkCard(work: work, museum: work.provider.map { "\($0) · Europeana" } ?? museums[work.museum] ?? work.museum)
                             }
                             .buttonStyle(.plain)
                         }
