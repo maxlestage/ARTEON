@@ -141,6 +141,13 @@ function afficher() {
   });
   // Toutes les œuvres de la vue, sans bouton (au-delà de 12 000, la suite arrive en descendant).
   toutAfficher(document.getElementById("monde-grille"), vues, carte);
+  if (!vues.length) {
+    document.getElementById("monde-grille").insertAdjacentHTML("afterend", `<p class="monde-note">${t(
+      "Aucune œuvre ne correspond. Essayez un autre mot (les titres des musées sont souvent en anglais), ou cherchez un artiste dans l'Explorer.",
+      "No work matches. Try another word, or look for an artist in Explore.",
+      "Ninguna obra coincide. Pruebe con otra palabra (los títulos de los museos suelen estar en inglés) o busque un artista en Explorar.")}
+      <a href="${lienPage("explorer/")}">${t("Ouvrir l'Explorer", "Open Explore", "Abrir Explorar")} →</a></p>`);
+  }
 }
 
 function carte(i) {
@@ -177,7 +184,8 @@ async function fiche(id) {
   racine.innerHTML = `
     <a class="monde-retour" href="#/">← ${t("Toutes les œuvres", "All works", "Todas las obras")}</a>
     <div class="monde-fiche">
-      <div class="monde-image"><img id="monde-img" src="${l[7] || lien(`monde/v/${id}.webp`)}" alt="${echapper(l[T])}"></div>
+      <div class="monde-image"><img id="monde-img" src="${l[7] || lien(`monde/v/${id}.webp`)}" alt="${echapper(l[T])}"${l[6] > 0
+        ? ` style="aspect-ratio:${(1 / l[6]).toFixed(3)};width:min(100%, calc(78vh * ${(1 / l[6]).toFixed(3)}))"` : ""}></div>
       <div>
         <h1>${echapper(l[T])}</h1>
         <p class="monde-artiste"><a href="${lienPage(`explorer/#/artiste/${encodeURIComponent(l[A])}`)}" title="${t("Le catalogue complet de l'artiste", "The artist's complete catalogue", "El catálogo completo del artista")}">${echapper(nomArtiste(l[A]))}</a>${f.v ? ` · ${echapper(f.v)}` : ""}</p>

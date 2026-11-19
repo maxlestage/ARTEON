@@ -99,7 +99,7 @@ ROMAINS = ["", "Iᵉʳ", "IIᵉ", "IIIᵉ", "IVᵉ", "Vᵉ", "VIᵉ", "VIIᵉ", 
 def date_fr(date):
     """« c. 1890 », « 19th century », « 900–400 B.C. » en français."""
     d = (date or "").strip()
-    d = re.sub(r"\b(c\.|ca\.|circa|about)\s*", "vers ", d, flags=re.I)
+    d = re.sub(r"(?<![A-Za-z.])(c\.|ca\.|circa|about)\s*", "vers ", d, flags=re.I)
     d = re.sub(r"\bearly\s+", "début du ", d, flags=re.I)
     d = re.sub(r"\blate\s+", "fin du ", d, flags=re.I)
     d = re.sub(r"\bmid-?\s*", "milieu du ", d, flags=re.I)
@@ -109,8 +109,8 @@ def date_fr(date):
         return (ROMAINS[n] if n < len(ROMAINS) else f"{n}ᵉ") + " siècle"
 
     d = re.sub(r"(\d{1,2})(?:st|nd|rd|th)\s+century", siecle, d, flags=re.I)
-    d = re.sub(r"\b(B\.?C\.?E?\.?|BCE)\b", "av. J.-C.", d)
-    d = re.sub(r"\b(A\.?D\.?|CE)\b", "apr. J.-C.", d)
+    d = re.sub(r"\b(?:B\.C\.E\.|B\.C\.|BCE|BC)(?![A-Za-z])", "av. J.-C.", d)
+    d = re.sub(r"\b(?:A\.D\.|AD|C\.E\.|CE)(?![A-Za-z])", "apr. J.-C.", d)
     d = re.sub(r"(\d)-(\d)", r"\1–\2", d).replace(" or ", " ou ")
     return d[:1].upper() + d[1:] if d else "Date inconnue"
 
@@ -292,6 +292,22 @@ MUSEES = [
             "d'Europe, des armes, des arts décoratifs, de la photographie. En 2009, l'aile moderne de Renzo "
             "Piano, baignée de lumière, a agrandi le musée. Il publie librement en ligne les images de ses "
             "œuvres du domaine public, et dit lesquelles sont exposées dans ses salles."),
+        "en": {"titre": "Now at the Art Institute of Chicago", "lieu": "Chicago, United States",
+               "presentation": (
+                   "Built for the 1893 World's Columbian Exposition on Michigan Avenue and guarded by two bronze lions, the "
+                   "Art Institute of Chicago is one of the largest art museums in the United States. Its galleries hold a "
+                   "famous group of Impressionist and Post-Impressionist paintings (Seurat's Grande Jatte has been there "
+                   "since 1926) as well as art from Asia, Africa, the Americas and Europe, arms and armour, decorative arts "
+                   "and photography. In 2009 Renzo Piano's light-filled Modern Wing enlarged the museum. It freely publishes "
+                   "online the images of its public-domain works, and says which are on view in its galleries.")},
+        "es": {"titre": "Ahora en el Art Institute of Chicago", "lieu": "Chicago, Estados Unidos",
+               "presentation": (
+                   "Construido para la Exposición Universal de 1893 en Michigan Avenue y custodiado por dos leones de bronce, "
+                   "el Art Institute of Chicago es uno de los mayores museos de arte de Estados Unidos. Sus salas reúnen un "
+                   "célebre conjunto de pinturas impresionistas y postimpresionistas (la Grande Jatte de Seurat está allí "
+                   "desde 1926), además de arte de Asia, África, las Américas y Europa, armas, artes decorativas y "
+                   "fotografía. En 2009, el ala moderna de Renzo Piano, bañada de luz, amplió el museo. Publica libremente en "
+                   "línea las imágenes de sus obras de dominio público e indica cuáles están expuestas en sus salas.")},
     },
     {
         "slug": "ephemere-cleveland", "titre": "En ce moment au musée d'art de Cleveland", "ville": "Cleveland", "ordre": 402, "couleur": "#1f5c4a", "source": cleveland,
@@ -304,6 +320,22 @@ MUSEES = [
             "asiatique et de peinture européenne. En 2013, l'agrandissement de Rafael Viñoly a relié les "
             "bâtiments par un vaste atrium couvert. En 2019, le musée a placé sous licence CC0 les images de "
             "toutes ses œuvres du domaine public, et il indique celles qui sont exposées."),
+        "en": {"titre": "Now at the Cleveland Museum of Art", "lieu": "Cleveland, United States",
+               "architecte": "Hubbell & Benes; Rafael Viñoly (expansion)",
+               "presentation": (
+                   "Opened in 1916 in a white-marble neoclassical temple beside Wade Park, the Cleveland Museum of Art has "
+                   "always been free. Its collections span five thousand years of art, from ancient Egypt to contemporary "
+                   "art, with outstanding holdings of medieval art, Asian art and European painting. In 2013 Rafael Viñoly's "
+                   "expansion linked the buildings with a vast covered atrium. In 2019 the museum released the images of all "
+                   "its public-domain works under CC0, and it indicates which ones are on view.")},
+        "es": {"titre": "Ahora en el Museo de Arte de Cleveland", "lieu": "Cleveland, Estados Unidos",
+               "architecte": "Hubbell & Benes; Rafael Viñoly (ampliación)",
+               "presentation": (
+                   "Inaugurado en 1916 en un templo neoclásico de mármol blanco, junto a Wade Park, el Cleveland Museum of "
+                   "Art ha sido siempre gratuito. Sus colecciones abarcan cinco mil años de arte, del antiguo Egipto al arte "
+                   "contemporáneo, con conjuntos notables de arte medieval, arte asiático y pintura europea. En 2013, la "
+                   "ampliación de Rafael Viñoly unió los edificios mediante un gran atrio cubierto. En 2019 el museo puso "
+                   "bajo licencia CC0 las imágenes de todas sus obras de dominio público, e indica cuáles están expuestas.")},
     },
     {
         "slug": "ephemere-new-york", "titre": 'En ce moment au Metropolitan Museum de New York', "ville": "New York", "ordre": 403, "couleur": "#c8102e", "source": new_york,
@@ -316,6 +348,24 @@ MUSEES = [
             "de tous les continents, du temple égyptien de Dendour aux armures, aux instruments de musique, "
             "aux costumes et aux peintures européennes. Depuis 2017, il offre en CC0 les images de ses œuvres "
             "du domaine public, et indique la salle où chacune est exposée."),
+        "en": {"titre": "Now at the Metropolitan Museum of Art, New York", "lieu": "New York, United States",
+               "architecte": "Calvert Vaux and Jacob Wrey Mould; Richard Morris Hunt (façade)",
+               "presentation": (
+                   "Founded in 1870, the Metropolitan Museum of Art moved in 1880 to Central Park, into a building by "
+                   "Calvert Vaux and Jacob Wrey Mould, then in 1902 gained its great Beaux-Arts façade on Fifth Avenue. The "
+                   "“Met” is one of the largest museums in the world: five thousand years of art from every continent, from "
+                   "the Egyptian Temple of Dendur to armour, musical instruments, costumes and European paintings. Since "
+                   "2017 it has offered the images of its public-domain works under CC0, and it gives the gallery where "
+                   "each one is on view.")},
+        "es": {"titre": "Ahora en el Metropolitan Museum de Nueva York", "lieu": "Nueva York, Estados Unidos", "ville": "Nueva York",
+               "architecte": "Calvert Vaux y Jacob Wrey Mould; Richard Morris Hunt (fachada)",
+               "presentation": (
+                   "Fundado en 1870, el Metropolitan Museum of Art se instala en 1880 en Central Park, en un edificio de "
+                   "Calvert Vaux y Jacob Wrey Mould, y en 1902 recibe su gran fachada Beaux-Arts sobre la Quinta Avenida. El "
+                   "«Met» es uno de los mayores museos del mundo: cinco mil años de arte de todos los continentes, del templo "
+                   "egipcio de Dendur a las armaduras, los instrumentos musicales, los trajes y la pintura europea. Desde "
+                   "2017 ofrece con licencia CC0 las imágenes de sus obras de dominio público e indica la sala donde se "
+                   "expone cada una.")},
     },
 ]
 
@@ -368,6 +418,66 @@ def largeur_pour(oeuvre, ratio):
     largeur = max(0.7, min(largeur, 1.8))
     # La hauteur reste sous 2,6 m (les salles font 5 m).
     return round(min(largeur, 2.6 / max(ratio, 0.1)), 2)
+
+
+def date_es(date):
+    """« c. 1890 », « 19th century », « 900–400 B.C. » en espagnol."""
+    d = (date or "").strip()
+    d = re.sub(r"(?<![A-Za-z.])(c\.|ca\.|circa|about)\s*", "hacia ", d, flags=re.I)
+    d = re.sub(r"\bearly\s+", "principios del ", d, flags=re.I)
+    d = re.sub(r"\blate\s+", "finales del ", d, flags=re.I)
+    d = re.sub(r"\bmid-?\s*", "mediados del ", d, flags=re.I)
+    d = re.sub(r"(\d{1,2})(?:st|nd|rd|th)\s+century",
+               lambda m: "siglo " + (ROMAINS[int(m.group(1))].rstrip("ᵉʳ") if int(m.group(1)) < len(ROMAINS) else m.group(1)), d, flags=re.I)
+    d = re.sub(r"\b(?:B\.C\.E\.|B\.C\.|BCE|BC)(?![A-Za-z])", "a. C.", d)
+    d = re.sub(r"\b(?:A\.D\.|AD|C\.E\.|CE)(?![A-Za-z])", "d. C.", d)
+    d = re.sub(r"(\d)-(\d)", r"\1–\2", d).replace(" or ", " o ")
+    return d[:1].upper() + d[1:] if d else "Fecha desconocida"
+
+
+# Les textes écrits par le script, dans les trois langues du site.
+LANGUES = {
+    "fr": {
+        "mois": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+        "jour": "{j} {m} {a}", "epoques": "Toutes époques", "court": "Éphémère", "expo": "Exposition éphémère",
+        "artistes": "Artistes du monde entier", "semaine": "semaine du",
+        "salles": ["Première salle", "Deuxième salle", "Troisième salle", "Quatrième salle"],
+        "intro": "Une exposition qui change chaque semaine : {n} œuvres tirées au sort parmi celles que le {musee} ({lieu}) "
+                 "expose en ce moment dans ses salles, toutes dans le domaine public, photographiées et publiées en CC0 par "
+                 "le musée. Tirage de la semaine du {jour} : quand le musée change son accrochage, l'exposition change avec lui.",
+        "ici": "Le bâtiment d'ARTEON est une enfilade de {n} salles claires, reliées par des couloirs, où les œuvres sont "
+               "accrochées comme le musée les montre aujourd'hui : chacune garde, sur son cartel, la salle où on peut la voir en vrai.",
+        "theme": "Le tirage de la semaine, au {musee}.", "cartel": "Exposée en ce moment au {musee}",
+        "texte": "Le musée la présente ainsi (en anglais) :", "date": date_fr,
+    },
+    "en": {
+        "mois": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "jour": "{j} {m} {a}", "epoques": "All periods", "court": "Temporary", "expo": "Temporary exhibition",
+        "artistes": "Artists from around the world", "semaine": "week of",
+        "salles": ["First room", "Second room", "Third room", "Fourth room"],
+        "intro": "An exhibition that changes every week: {n} works drawn at random from those the {musee} ({lieu}) is "
+                 "showing in its galleries right now, all in the public domain, photographed and published under CC0 by "
+                 "the museum. Draw for the week of {jour}: when the museum changes its display, the exhibition changes with it.",
+        "ici": "The ARTEON building is a suite of {n} bright rooms linked by corridors, where the works hang as the museum "
+               "shows them today: each label keeps the gallery where the work can be seen in person.",
+        "theme": "This week's draw, at the {musee}.", "cartel": "On view now at the {musee}",
+        "texte": "The museum describes it as follows:",
+        "date": lambda d: re.sub(r"(\d)-(\d)", r"\1–\2", (d or "").strip()) or "Date unknown",
+    },
+    "es": {
+        "mois": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+        "jour": "{j} de {m} de {a}", "epoques": "Todas las épocas", "court": "Efímera", "expo": "Exposición efímera",
+        "artistes": "Artistas de todo el mundo", "semaine": "semana del",
+        "salles": ["Primera sala", "Segunda sala", "Tercera sala", "Cuarta sala"],
+        "intro": "Una exposición que cambia cada semana: {n} obras elegidas al azar entre las que el {musee} ({lieu}) "
+                 "expone ahora mismo en sus salas, todas de dominio público, fotografiadas y publicadas con licencia CC0 por "
+                 "el museo. Sorteo de la semana del {jour}: cuando el museo cambia su montaje, la exposición cambia con él.",
+        "ici": "El edificio de ARTEON es una sucesión de {n} salas luminosas, unidas por pasillos, donde las obras cuelgan "
+               "como el museo las muestra hoy: cada cartela conserva la sala donde puede verse la obra en persona.",
+        "theme": "El sorteo de la semana, en el {musee}.", "cartel": "Expuesta ahora en el {musee}",
+        "texte": "El museo la presenta así (en inglés):", "date": date_es,
+    },
+}
 
 
 # Les images des musées arrivent parfois très grandes (350 Ko pour une couverture de
@@ -428,59 +538,57 @@ def monter(musee, semaine, graine):
         raise RuntimeError(f"seulement {len(accrochees)} œuvres utilisables")
 
     lundi = datetime.date.fromisocalendar(semaine[0], semaine[1], 1)
-    mois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre",
-            "octobre", "novembre", "décembre"][lundi.month - 1]
-    jour = f"{lundi.day} {mois} {lundi.year}"
     annees = [int(a) for o, _, _ in accrochees for a in re.findall(r"\b(\d{4})\b", o["date"] or "")]
-    dates = f"{min(annees)}–{max(annees)}" if annees else "Toutes époques"
     salles = (len(accrochees) + 3) // 4
-    noms_salles = ["Première salle", "Deuxième salle", "Troisième salle", "Quatrième salle"]
-    lignes = [
-        "# Exposition éphémère, écrite par outils/ephemeres.py : ne pas modifier à la main.",
-        "", "[exposition]", f"ordre = {musee['ordre']}", f"nom_court = {chaine('Éphémère · ' + musee['ville'])}",
-        f"mouvement = {chaine('Exposition éphémère · ' + musee['ville'])}", "ephemere = true",
-        f"cadre = {chaine('dore')}", f"couleur = {chaine(musee['couleur'])}",
-        f"titre = {chaine(musee['titre'])}",
-        f"artiste = {chaine('Artistes du monde entier')}", f"dates = {chaine(dates)}",
-        f"accroche = {chaine('Exposition éphémère · ' + musee['musee'] + ' · semaine du ' + jour)}",
-        "introduction = " + chaine(
-            f"Une exposition qui change chaque semaine : {len(accrochees)} œuvres tirées au sort parmi celles que le "
-            f"{musee['musee']} ({musee['lieu']}) expose en ce moment dans ses salles, toutes dans le domaine public, "
-            f"photographiées et publiées en CC0 par le musée. Tirage de la semaine du {jour} : quand le musée change son "
-            "accrochage, l'exposition change avec lui."),
-        f"vitrine = {chaine(accrochees[0][1] + '.jpg')}",
-        "", "[musee]", f"nom = {chaine(musee['musee'])}", f"ville = {chaine(musee['lieu'])}",
-        f"architecte = {chaine(musee['architecte'])}", f"construction = {chaine(musee['construction'])}",
-        f"presentation = {chaine(musee['presentation'])}",
-        "ici = " + chaine(
-            f"Le bâtiment d'ARTEON est une enfilade de {salles} salles claires, reliées par des couloirs, où les "
-            "œuvres sont accrochées comme le musée les montre aujourd'hui : chacune garde, sur son cartel, la salle "
-            "où on peut la voir en vrai."),
-        "",
-    ]
-    for n in range(salles):
-        lignes += ["[[salles]]", f"nom = {chaine(noms_salles[n])}",
-                   f"theme = {chaine('Le tirage de la semaine, au ' + musee['musee'] + '.')}",
-                   "largeur = 12", "profondeur = 10", "hauteur = 5", ""]
     places = [("ouest", 1), ("ouest", 3), ("est", 1), ("est", 3)]
-    for i, (o, nom, ratio) in enumerate(accrochees):
-        mur, place = places[i % 4]
-        mesures, _ = dimensions_cm(o["mesures"])
-        technique = ", ".join(t for t in (technique_fr(o["technique"]), mesures) if t)
-        cartel = f"Exposée en ce moment au {musee['musee']}" + (f", {o['salle']}" if o["salle"] else "") + "."
-        lignes += [
-            "[[oeuvres]]", f"titre = {chaine(o['titre'][:140])}", f"artiste = {chaine(o['artiste'][:120])}",
-            f"annee = {chaine(date_fr(o['date']))}", f"image = {chaine(nom + '.jpg')}",
-            f"cadre = {chaine(cadre_pour(o['genre']))}", f"technique = {chaine(technique[:200])}",
-            f"collection = {chaine(musee['musee'] + ', ' + musee['lieu'].split(',')[0])}",
-            f"note = {chaine(cartel)}",
-            "licence = \"CC0\"", f"source = {chaine(o['lien'])}",
+    # Le même fichier dans les trois langues du site : le français dans expositions/, l'anglais
+    # et l'espagnol dans expositions/traductions/ (seuls les textes changent, voir
+    # outils/traductions.py). Les titres et les descriptions viennent du musée, en anglais.
+    for langue in ("fr", "en", "es"):
+        L, M = LANGUES[langue], {**musee, **musee.get(langue, {})}
+        jour = L["jour"].format(j=lundi.day, m=L["mois"][lundi.month - 1], a=lundi.year)
+        dates = f"{min(annees)}–{max(annees)}" if annees else L["epoques"]
+        lignes = [
+            "# Exposition éphémère, écrite par outils/ephemeres.py : ne pas modifier à la main.",
+            "", "[exposition]", f"ordre = {musee['ordre']}", f"nom_court = {chaine(L['court'] + ' · ' + M['ville'])}",
+            f"mouvement = {chaine(L['expo'] + ' · ' + M['ville'])}", "ephemere = true",
+            f"cadre = {chaine('dore')}", f"couleur = {chaine(musee['couleur'])}",
+            f"titre = {chaine(M['titre'])}",
+            f"artiste = {chaine(L['artistes'])}", f"dates = {chaine(dates)}",
+            f"accroche = {chaine(L['expo'] + ' · ' + musee['musee'] + ' · ' + L['semaine'] + ' ' + jour)}",
+            "introduction = " + chaine(L["intro"].format(n=len(accrochees), musee=musee["musee"], lieu=M["lieu"], jour=jour)),
+            f"vitrine = {chaine(accrochees[0][1] + '.jpg')}",
+            "", "[musee]", f"nom = {chaine(musee['musee'])}", f"ville = {chaine(M['lieu'])}",
+            f"architecte = {chaine(M['architecte'])}", f"construction = {chaine(musee['construction'])}",
+            f"presentation = {chaine(M['presentation'])}",
+            "ici = " + chaine(L["ici"].format(n=salles)),
+            "",
         ]
-        if o["texte"]:
-            lignes.append("description = " + chaine("Le musée la présente ainsi (en anglais) : « " + o["texte"][:1200] + " »"))
-        lignes += [f"salle = {i // 4 + 1}", f"mur = {chaine(mur)}", f"place = {place}",
-                   f"largeur = {largeur_pour(o, ratio)}", ""]
-    (RACINE / "expositions" / f"{musee['slug']}.toml").write_text("\n".join(lignes), encoding="utf-8")
+        for n in range(salles):
+            lignes += ["[[salles]]", f"nom = {chaine(L['salles'][n])}",
+                       f"theme = {chaine(L['theme'].format(musee=musee['musee']))}",
+                       "largeur = 12", "profondeur = 10", "hauteur = 5", ""]
+        for i, (o, nom, ratio) in enumerate(accrochees):
+            mur, place = places[i % 4]
+            mesures, _ = dimensions_cm(o["mesures"])
+            brute = re.sub(r"\s+", " ", (o["technique"] or "").strip())
+            technique = ", ".join(t for t in (technique_fr(o["technique"]) if langue == "fr" else brute[:1].upper() + brute[1:], mesures) if t)
+            cartel = L["cartel"].format(musee=musee["musee"]) + (f", {o['salle']}" if o["salle"] else "") + "."
+            lignes += [
+                "[[oeuvres]]", f"titre = {chaine(o['titre'][:140])}", f"artiste = {chaine(o['artiste'][:120])}",
+                f"annee = {chaine(L['date'](o['date']))}", f"image = {chaine(nom + '.jpg')}",
+                f"cadre = {chaine(cadre_pour(o['genre']))}", f"technique = {chaine(technique[:200])}",
+                f"collection = {chaine(musee['musee'] + ', ' + M['lieu'].split(',')[0])}",
+                f"note = {chaine(cartel)}",
+                "licence = \"CC0\"", f"source = {chaine(o['lien'])}",
+            ]
+            if o["texte"]:
+                lignes.append("description = " + chaine(L["texte"] + " « " + o["texte"][:1200] + " »"))
+            lignes += [f"salle = {i // 4 + 1}", f"mur = {chaine(mur)}", f"place = {place}",
+                       f"largeur = {largeur_pour(o, ratio)}", ""]
+        dossier_toml = RACINE / "expositions" if langue == "fr" else RACINE / "expositions" / "traductions" / langue
+        dossier_toml.mkdir(parents=True, exist_ok=True)
+        (dossier_toml / f"{musee['slug']}.toml").write_text("\n".join(lignes), encoding="utf-8")
     print(f"  {len(accrochees)} œuvres accrochées")
 
 
@@ -499,6 +607,8 @@ def main():
         except Exception as erreur:
             print(f"  {musee['musee']} est sauté : {erreur}", file=sys.stderr)
             (RACINE / "expositions" / f"{musee['slug']}.toml").unlink(missing_ok=True)
+            for langue in ("en", "es"):
+                (RACINE / "expositions" / "traductions" / langue / f"{musee['slug']}.toml").unlink(missing_ok=True)
             shutil.rmtree(RACINE / "public" / "tableaux" / musee["slug"], ignore_errors=True)
     print(f"{reussies} exposition(s) éphémère(s) sur {len(MUSEES)}")
 

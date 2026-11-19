@@ -1536,8 +1536,19 @@ mod tests {
             c.run = true;
         }
         let start = control.borrow().position;
-        for _ in 0..600 {
+        // Le pas dépend du temps réel écoulé : sur une machine rapide, 600 images passent
+        // en quelques millisecondes et le visiteur n'a presque pas avancé. On marche donc
+        // au moins 600 images, et jusqu'à avoir bougé (cinq secondes au plus).
+        let depart = std::time::Instant::now();
+        let mut images = 0;
+        loop {
             app.update();
+            images += 1;
+            let p = control.borrow().position;
+            let avance = (p[0] - start[0]).hypot(p[1] - start[1]) > 0.5;
+            if images >= 600 && (avance || depart.elapsed() > std::time::Duration::from_secs(5)) {
+                break;
+            }
         }
         let end = control.borrow().position;
         assert!(

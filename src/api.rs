@@ -475,6 +475,7 @@ pub fn oeuvres_de(nom: &str) -> Value {
         .flat_map(|(l, _)| l)
         .filter(|o| vues.insert(o["id"].as_str().unwrap_or_default().to_owned()))
         .collect();
+    let mut oeuvres = sans_doublons(std::mem::take(&mut oeuvres));
     let musees: serde_json::Map<String, Value> = sources()
         .iter()
         .map(|source| {
@@ -527,6 +528,27 @@ mod tests {
     }
 
     #[test]
+    fn une_oeuvre_donnee_deux_fois_n_est_gardee_qu_une_fois() {
+        let o = |id: &str, musee: &str, titre: &str, annee: i64, collection: Option<&str>| {
+            json!({ "id": id, "musee": musee, "titre": titre, "annee": annee, "fournisseur": collection })
+        };
+        let r = sans_doublons(vec![
+            o("chicago-1", "chicago", "Apples and Grapes", 1880, None),
+            // La même, par Wikidata : collection « Art Institute of Chicago ».
+            o("wikidata-1", "wikidata", "Apples and grapes", 1880, Some("Art Institute of Chicago")),
+            // Une autre œuvre du même titre, dans un autre musée : elle reste.
+            o("wikidata-2", "wikidata", "Apples and Grapes", 1880, Some("musée d'Orsay")),
+            // Même musée mais autre année : elle reste.
+            o("wikidata-3", "wikidata", "Apples and Grapes", 1881, Some("Art Institute of Chicago")),
+            // Le SMK s'appelle « SMK – Statens Museum for Kunst, Copenhague » dans les sources.
+            o("smk-1", "smk", "Interiør", 1901, None),
+            o("europeana-1", "europeana", "Interiør", 1901, Some("Statens Museum for Kunst")),
+        ]);
+        let ids: Vec<String> = r.iter().map(|o| en_texte(&o["id"])).collect();
+        assert_eq!(ids, ["chicago-1", "wikidata-2", "wikidata-3", "smk-1"]);
+    }
+
+    #[test]
     fn un_musee_qui_manque_partout_est_en_panne() {
         let m = |l: &[&str]| l.iter().map(|s| s.to_string()).collect::<Vec<_>>();
         let gardes = [m(&["met"]), m(&["met"]), m(&["met", "wikidata"]), m(&[])];
@@ -562,6 +584,51 @@ fn fichier_de(cle: &str) -> String {
 /// `dossier/<fichier>.json`, et `dossier/index.json` qui relie chaque nom (et chaque clé) à
 /// son fichier. Les réponses de moins d'une semaine de `cache` sont reprises ; les autres
 /// sont recalculées, `fils` à la fois, tant qu'il reste du temps (`minutes`).
+/// Sans les doublons : une œuvre qu'un musée interrogé donne lui-même et qu'un agrégateur
+/// (Wikidata, Europeana) donne aussi : même titre, même année, et la collection indiquée
+/// par l'agrégateur est ce musée. La fiche du musée reste. Deux œuvres de même titre dans
+/// deux musées différents (deux épreuves d'une gravure, deux « Autoportrait ») restent.
+fn sans_doublons(oeuvres: Vec<Value>) -> Vec<Value> {
+    let noms: Vec<(String, String)> =
+        sources().iter().map(|s| (en_texte(&s["cle"]), plier(&en_texte(&s["nom"])))).collect();
+    let cle_de = |o: &Value| {
+        let titre = plier(&en_texte(&o["titre"]));
+        o["annee"].as_i64().filter(|_| !titre.is_empty()).map(|annee| (titre, annee))
+    };
+    let chez: HashSet<(String, i64, String)> = oeuvres
+        .iter()
+        .filter_map(|o| cle_de(o).map(|(titre, annee)| (titre, annee, en_texte(&o["musee"]))))
+        .collect();
+    oeuvres
+        .into_iter()
+        .filter(|o| {
+            let Some(collection) = o["fournisseur"].as_str().map(plier).filter(|c| c.len() >= 8) else { return true };
+            let Some((titre, annee)) = cle_de(o) else { return true };
+            let musee = en_texte(&o["musee"]);
+            !noms.iter().any(|(cle, nom)| {
+                *cle != musee && nom.contains(&collection) && chez.contains(&(titre.clone(), annee, cle.clone()))
+            })
+        })
+        .collect()
+}
+
+/// Un catalogue gardé, tel qu'il se publie : sans les doublons (les catalogues calculés avant
+/// cette règle en portent encore), le total et les comptes par musée refaits.
+fn nettoyer(mut catalogue: Value) -> Value {
+    let Some(oeuvres) = catalogue["oeuvres"].as_array().cloned() else { return catalogue };
+    let avant = oeuvres.len();
+    let oeuvres = sans_doublons(oeuvres);
+    if oeuvres.len() != avant {
+        for source in sources() {
+            let cle = en_texte(&source["cle"]);
+            catalogue["musees"][cle.as_str()] = json!(oeuvres.iter().filter(|o| o["musee"] == cle.as_str()).count());
+        }
+        catalogue["total"] = json!(oeuvres.len());
+        catalogue["oeuvres"] = json!(oeuvres);
+    }
+    catalogue
+}
+
 /// Un catalogue recalculé, complété par celui qu'on gardait : quand un musée n'a pas répondu
 /// cette fois, ses œuvres de la fois d'avant restent (et il ne « manque » plus s'il avait
 /// répondu en entier). Un catalogue ne s'appauvrit donc jamais d'une construction à l'autre.
@@ -578,6 +645,7 @@ fn fusionner(ancien: Option<&Value>, nouveau: Value) -> Value {
             oeuvres.push(o.clone());
         }
     }
+    let mut oeuvres = sans_doublons(oeuvres);
     let manquants: Vec<&String> = absents
         .iter()
         .filter(|m| deja_absents.as_ref().is_none_or(|d| d.contains(m)))
@@ -728,7 +796,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     {
                         r.push(i);
                     }
-                    gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                    ancienne.map(|v| nettoyer(v).to_string())
                 } else if Instant::now() < fin {
                     let r = signer(fusionner(ancienne.as_ref(), oeuvres_de(&noms[0])));
                     let texte = r.to_string();
@@ -739,7 +807,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     Some(texte)
                 } else {
                     // Plus de temps : la réponse de la semaine passée, s'il y en a une.
-                    gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                    ancienne.map(|v| nettoyer(v).to_string())
                 };
                 if let Some(corps) = corps
                     && let Some(compresse) = gzip(&corps)

@@ -49,7 +49,7 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: bash outils/caches.sh collections-v1- api-v1- ephemeres-v1- ephemeres-v2-
+        run: bash outils/caches.sh collections-v1- api-v1- ephemeres-v2- ephemeres-v3-
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -70,8 +70,9 @@ jobs:
         with:
           path: |
             expositions/ephemere-*.toml
+            expositions/traductions/*/ephemere-*.toml
             public/tableaux/ephemere-*
-          key: ephemeres-v2-${{ steps.semaine.outputs.semaine }}
+          key: ephemeres-v3-${{ steps.semaine.outputs.semaine }}
 
       - name: Expositions éphémères
         run: |
@@ -86,7 +87,7 @@ jobs:
           fi
           if ! cargo check --quiet --lib; then
             echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
-            rm -f expositions/ephemere-*.toml
+            rm -f expositions/ephemere-*.toml expositions/traductions/*/ephemere-*.toml
             rm -rf public/tableaux/ephemere-*
           fi
 
@@ -96,8 +97,9 @@ jobs:
         with:
           path: |
             expositions/ephemere-*.toml
+            expositions/traductions/*/ephemere-*.toml
             public/tableaux/ephemere-*
-          key: ephemeres-v2-${{ steps.semaine.outputs.semaine }}
+          key: ephemeres-v3-${{ steps.semaine.outputs.semaine }}
 
       # wasm-bindgen-cli doit avoir exactement la version de Cargo.lock : on télécharge
       # le binaire officiel de cette version (pas de compilation, quelques secondes).

@@ -69,6 +69,20 @@ export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
   return resultat;
 }
 
+/** Sans les doublons (comme `sans_doublons` de src/api.rs) : une œuvre qu'un musée interrogé
+ *  donne lui-même et qu'un agrégateur (Wikidata, Europeana) donne aussi : même titre, même
+ *  année, et la collection indiquée par l'agrégateur est ce musée. La fiche du musée reste. */
+async function sansDoublons(oeuvres) {
+  const noms = (await chargerSources().catch(() => [])).map((s) => [s.cle, plier(s.nom)]);
+  const cleDe = (o) => (o.annee != null && plier(o.titre || "") ? `${plier(o.titre)}|${o.annee}` : null);
+  const chez = new Set(oeuvres.map((o) => cleDe(o) && `${cleDe(o)}|${o.musee}`).filter(Boolean));
+  return oeuvres.filter((o) => {
+    const collection = o.fournisseur ? plier(o.fournisseur) : "", cle = cleDe(o);
+    if (collection.length < 8 || !cle) return true;
+    return !noms.some(([musee, nom]) => musee !== o.musee && nom.includes(collection) && chez.has(`${cle}|${musee}`));
+  });
+}
+
 async function chercher(nom, cleNom, alias) {
   // 1. L'API statique, publiée avec le site : immédiate, sans serveur.
   try {
@@ -80,7 +94,7 @@ async function chercher(nom, cleNom, alias) {
       if (r.manquants?.length) {
         const plus = await chezLesMusees(nom, cleNom, alias, r.manquants).catch(() => []);
         const vus = new Set(r.oeuvres.map((o) => o.id));
-        r.oeuvres = [...r.oeuvres, ...plus.filter((o) => !vus.has(o.id))].sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9));
+        r.oeuvres = await sansDoublons([...r.oeuvres, ...plus.filter((o) => !vus.has(o.id))].sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9)));
         r.total = r.oeuvres.length;
       }
       return r;
@@ -94,7 +108,7 @@ async function chercher(nom, cleNom, alias) {
     clearTimeout(minuterie);
     if (r.ok) return { ...(await r.json()), source: "api" };
   } catch { /* le serveur dort : on demande aux musées */ }
-  const oeuvres = await chezLesMusees(nom, cleNom, alias);
+  const oeuvres = await sansDoublons(await chezLesMusees(nom, cleNom, alias));
   return { nom, total: oeuvres.length, oeuvres, source: "musees" };
 }
 

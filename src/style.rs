@@ -254,6 +254,7 @@ body.viewer-open { overflow: hidden; }
 /* ─── Le grand pied de page ───────────────────────────────────────────── */
 .site-footer { display: block; margin-top: 5rem; padding: 0; border: 0; background: #0b1430; color: #ece9e1; }
 .site-footer a { color: #ece9e1; }
+.footer-col a, .footer-bottom a { display: inline-block; padding: .2rem 0; }
 .site-footer .muted { color: #9a98a3; }
 .footer-band { display: grid; grid-template-columns: 3fr 1fr 2fr 1fr 4fr 1fr 2fr 2fr; height: 14px; }
 .footer-band span { transform-origin: bottom; animation: band 3.2s ease-in-out infinite; }

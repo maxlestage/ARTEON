@@ -118,7 +118,9 @@ const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0
 async function listeArtistes(choisie) {
   racine.innerHTML = menu("") + `<p class="monde-chargement">${t("Ouverture du catalogue des artistes…", "Opening the catalogue of artists…", "Abriendo el catálogo de artistas…")}</p>`;
   const { tous } = await chargerArtistes();
-  if (route().type !== "" && route().type !== "lettre") return;
+  // Entre-temps on est parti vers une autre page de l'Explorer : elle s'affiche d'elle-même.
+  // (Une adresse inconnue, elle, montre la liste : elle ne reste pas sur « Ouverture… ».)
+  if (["artiste", "chronologie", "themes", "jeu"].includes(route().type)) return;
   const lettres = [...new Set(tous.map((a) => lettreDe(a.nom)))].sort((a, b) => (a === "#") - (b === "#") || a.localeCompare(b));
   const lettre = lettres.includes(choisie) ? choisie : lettres[0];
   racine.innerHTML = menu("") + `
@@ -224,7 +226,7 @@ async function artiste(nom) {
     // Toutes ses œuvres, d'un coup (des milliers parfois : par paquets, sans bouton).
     const grille = document.getElementById("direct-grille");
     // Un clic ouvre l'œuvre en grand dans ARTEON (visionneuse.js) ; le lien mène chez le musée sans JavaScript.
-    const carte = (o) => `<a class="monde-carte" data-oeuvre="${echapper(o.id)}" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musee[o.musee] || "").split(" (")[0]}` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
+    const carte = (o) => `<a class="monde-carte" data-oeuvre="${echapper(o.id)}" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre || t("Sans titre", "Untitled", "Sin título"))}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musee[o.musee] || "").split(" (")[0]}` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
     if (grille) {
       toutAfficher(grille, nouvelles, carte);
       ouvrirAuClic(grille, nouvelles, musee);
