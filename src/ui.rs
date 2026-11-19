@@ -45,6 +45,8 @@ pub struct MuseumUi {
     busy: Rc<Cell<bool>>,
     accent: Color32,
     show_map: bool,
+    /// Le bas de la barre de boutons : les panneaux de droite s'ouvrent dessous.
+    below_bar: f32,
     show_list: bool,
     editing: bool,
     selected: Option<Focus>,
@@ -73,6 +75,7 @@ impl MuseumUi {
             busy,
             accent: Color32::from_rgb(r, g, b),
             show_map: false,
+            below_bar: 64.0,
             show_list: false,
             editing: false,
             selected: None,
@@ -294,7 +297,7 @@ impl MuseumUi {
             .id(egui::Id::unique("notice"))
             .open(&mut open)
             .collapsible(false)
-            .anchor(Align2::RIGHT_TOP, [-12.0, 64.0])
+            .anchor(Align2::RIGHT_TOP, [-12.0, self.below_bar])
             .fixed_size([width, (screen.height() - 90.0).max(200.0)])
             .frame(self.frame())
             .show(ctx, |ui| {
@@ -427,7 +430,7 @@ impl MuseumUi {
             .id(egui::Id::unique("batiment"))
             .open(&mut open)
             .collapsible(false)
-            .anchor(Align2::RIGHT_TOP, [-12.0, 64.0])
+            .anchor(Align2::RIGHT_TOP, [-12.0, self.below_bar])
             .fixed_size([width, (screen.height() - 90.0).max(200.0)])
             .frame(self.frame())
             .show(ctx, |ui| {
@@ -532,7 +535,7 @@ impl MuseumUi {
         let scale = side / (x1 - x0).max(z1 - z0).max(1.0);
         let size = Vec2::new((x1 - x0) * scale, (z1 - z0) * scale);
         egui::Area::new(egui::Id::unique("plan"))
-            .anchor(Align2::RIGHT_TOP, [-12.0, 64.0])
+            .anchor(Align2::RIGHT_TOP, [-12.0, self.below_bar])
             .show(ctx, |ui| {
                 self.frame().show(ui, |ui| {
                     ui.label(
@@ -948,6 +951,9 @@ impl eframe::App for MuseumUi {
             ctx.set_zoom_factor(1.05);
         }
         let bar = self.toolbar(&ctx);
+        // Les panneaux de droite s'ouvrent sous la barre : sur un écran étroit elle prend
+        // trois lignes, et ils la chevauchaient.
+        self.below_bar = (bar + 8.0).max(64.0);
         if self.show_map {
             self.map(&ctx);
         }
