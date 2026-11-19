@@ -249,7 +249,8 @@ enum LiveWorks {
                 // Un musée n'avait pas répondu au calcul : l'application le lui demande, elle.
                 if let missing = answer.missing, !missing.isEmpty, let more = await direct(name, only: Set(missing)) {
                     let known = Set(answer.works.map(\.id))
-                    answer.works = (answer.works + more.works.filter { !known.contains($0.id) })
+                    answer.works = withoutDuplicates(answer.works + more.works.filter { !known.contains($0.id) },
+                                                     sources: await sources() ?? [])
                         .sorted { ($0.year ?? .max) < ($1.year ?? .max) }
                     answer.total = answer.works.count
                 }
@@ -354,6 +355,26 @@ enum LiveWorks {
         values.reduce(template) { $0.replacingOccurrences(of: "{\($1.key)}", with: $1.value) }
     }
 
+    /// Sans les doublons (comme `sans_doublons` de src/api.rs) : une œuvre qu'un musée interrogé
+    /// donne lui-même et qu'un agrégateur (Wikidata, Europeana) donne aussi : même titre, même
+    /// année, et la collection indiquée par l'agrégateur est ce musée. La fiche du musée reste.
+    static func withoutDuplicates(_ works: [LiveWork], sources: [[String: Any]]) -> [LiveWork] {
+        let fold = { (s: String) in
+            folded(s).map { $0.isLetter || $0.isNumber ? String($0) : " " }.joined()
+                .split(separator: " ").joined(separator: " ")
+        }
+        let names = sources.map { (key: $0["cle"] as? String ?? "", name: fold($0["nom"] as? String ?? "")) }
+        let key = { (w: LiveWork) -> String? in
+            guard let year = w.year, !fold(w.title).isEmpty else { return nil }
+            return "\(fold(w.title))|\(year)"
+        }
+        let held = Set(works.compactMap { w in key(w).map { "\($0)|\(w.museum)" } })
+        return works.filter { w in
+            guard let collection = w.provider.map(fold), collection.count >= 8, let k = key(w) else { return true }
+            return !names.contains { $0.key != w.museum && $0.name.contains(collection) && held.contains("\(k)|\($0.key)") }
+        }
+    }
+
     static func direct(_ name: String, only: Set<String>? = nil) async -> LiveCatalogue? {
         guard let all = await sources() else { return nil }
         let sources = all.filter { source in only.map { $0.contains(source["cle"] as? String ?? "") } ?? true }
@@ -369,7 +390,7 @@ enum LiveWorks {
             return all
         }
         var seen = Set<String>()
-        let works = lists.flatMap { $0 }.filter { seen.insert($0.id).inserted }
+        let works = withoutDuplicates(lists.flatMap { $0 }.filter { seen.insert($0.id).inserted }, sources: all)
             .sorted { ($0.year ?? .max) < ($1.year ?? .max) }
         return LiveCatalogue(name: name, total: works.count, works: works, source: "musees")
     }

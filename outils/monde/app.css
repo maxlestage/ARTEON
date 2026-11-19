@@ -114,7 +114,9 @@
 .monde-themes a { padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
   color: inherit; text-decoration: none; }
 .monde-themes span { color: var(--muted); }
-.jeu-image { background: #ecebe6; border-radius: var(--radius); padding: 14px; display: flex; justify-content: center; }
+/* min-height : la place de l'image est réservée, les réponses ne sautent pas quand elle arrive. */
+.jeu-image { background: #ecebe6; border-radius: var(--radius); padding: 14px; display: flex; justify-content: center;
+  align-items: center; min-height: 448px; box-sizing: border-box; }
 .jeu-image img { max-width: 100%; max-height: 420px; }
 .jeu-choix { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .jeu-choix button { font: inherit; font-weight: 600; text-align: left; padding: 14px; border-radius: var(--radius);
