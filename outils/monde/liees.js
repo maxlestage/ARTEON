@@ -71,16 +71,24 @@ async function ouvrir() {
   const cle = cleDe(alias);
   let restants = artistes.length;
   const fini = () => { restants -= 1; if (restants <= 0) { comptes.enCours = false; annoncer(); } };
-  for (const artiste of artistes) {
+  // Les catalogues sont demandés trois à la fois (fichiers de l'API, ou musées en direct :
+  // pas plus, pour ne pas se faire limiter), et affichés dans l'ordre des artistes.
+  let actifs = 0;
+  const file = [];
+  const prendre = () => new Promise((r) => { if (actifs < 3) { actifs += 1; r(); } else file.push(r); });
+  const rendre = () => { const r = file.shift(); if (r) r(); else actifs -= 1; };
+  const demandes = artistes.map((artiste) => prendre().then(() => oeuvresEnDirect(artiste, cle, alias)).finally(rendre));
+  demandes.forEach((d) => d.catch(() => {}));
+  for (const [i, artiste] of artistes.entries()) {
     const section = document.createElement("section");
     section.className = "monde-liees-artiste";
     section.innerHTML = `<h2 class="section-title">${echapper(artiste)} · ${t("toutes ses œuvres dans les musées du monde", "all their works in the world's museums", "todas sus obras en los museos del mundo")}</h2>
       <p class="monde-compte">${t("Recherche dans les musées…", "Searching the museums…", "Buscando en los museos…")}</p><div class="monde-grille"></div>`;
     zone.append(section);
     const compte = section.querySelector(".monde-compte");
-    // Demandée tout de suite, un artiste après l'autre : rien à faire défiler pour tout voir.
+    // Tout est demandé dès l'ouverture : rien à faire défiler pour tout voir.
     try {
-      const r = await oeuvresEnDirect(artiste, cle, alias);
+      const r = await demandes[i];
       const oeuvres = (r.oeuvres || []).filter((o) => !vues.has(o.id) && vues.add(o.id));
       if (!oeuvres.length) {
         section.hidden = true;
