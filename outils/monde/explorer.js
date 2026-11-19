@@ -2,7 +2,7 @@
 // les collections du monde), la chronologie siècle par siècle, les thèmes, et le jeu
 // « Qui l'a fait ? » (le record est gardé dans le navigateur).
 
-import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, renseignement, route, rubrique, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
+import { annee, carteOeuvre, chargerCatalogue, choixVue, echapper, lien, lienPage, nombre, plier, rangSiecle, renseignement, route, rubrique, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { ouvrirAuClic } from "./visionneuse.js";
 import { jsonGarde } from "./memoire.js";
@@ -200,6 +200,8 @@ async function artiste(nom) {
       <div class="monde-grille">${toutes.map((o) => o.html).join("")}</div></section>
     <section class="monde-section" id="en-direct"><h2>${enDirect}</h2>
       <p class="monde-chargement">${t("Recherche de toutes ses œuvres libres de droits dans les musées du monde…", "Searching the world's museums for all their copyright-free works…", "Buscando todas sus obras libres de derechos en los museos del mundo…")}</p></section>`;
+  // Mosaïque ou cartes : pour voir toutes ses œuvres d'un coup d'œil et choisir.
+  document.getElementById("catalogue-titre").nextElementSibling.after(choixVue());
   window.scrollTo(0, 0);
   const zone = document.getElementById("en-direct");
   try {

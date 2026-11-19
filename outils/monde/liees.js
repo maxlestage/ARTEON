@@ -6,7 +6,7 @@
 //     les musées du monde, par l'API ARTEON (direct.js : Chicago, Cleveland, New York,
 //     Copenhague, Minneapolis, Europeana, Wikidata).
 // Tout s'affiche de soi-même, en entier, sans bouton et sans attendre que l'on descende.
-import { echapper, lien, lienPage, nombre, plier, t, toutAfficher } from "./commun.js";
+import { choixVue, echapper, lien, lienPage, nombre, plier, t, toutAfficher } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
 import { ouvrirAuClic } from "./visionneuse.js";
 import { jsonGarde } from "./memoire.js";
@@ -47,6 +47,10 @@ async function ouvrir() {
     const n = comptes.visite + comptes.collections + comptes.musees;
     total.textContent = `${t("Toutes les œuvres", "All the works", "Todas las obras")} : ${nombre(n)}${comptes.enCours ? "…" : ""}`;
   };
+
+  // Mosaïque ou cartes, pour les grilles des collections et des musées (celle de la visite
+  // 3D, peu nombreuse et avec ses notices, garde ses cartes).
+  zone.prepend(choixVue());
 
   // 1. Les œuvres liées des collections du monde.
   const liees = await jsonGarde(lien(`monde/donnees/expo-${nom}.json`)).catch(() => []);
