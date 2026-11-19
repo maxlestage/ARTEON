@@ -10,6 +10,9 @@ struct ARTEONApp: App {
     @State private var store = CatalogueStore()
     @State private var narrator = Narrator()
     @Environment(\.scenePhase) private var scenePhase
+    /// L'apparence choisie dans les réglages : « auto » suit l'appareil, « light » et « dark »
+    /// la forcent (comme le menu Apparence du site).
+    @AppStorage("apparence") private var appearance = "auto"
 
     init() {
         // Rien d'une visite précédente : la mémoire de la visite repart de zéro.
@@ -22,6 +25,7 @@ struct ARTEONApp: App {
                 .environment(store)
                 .environment(narrator)
                 .tint(.arteonBlue)
+                .preferredColorScheme(appearance == "light" ? .light : appearance == "dark" ? .dark : nil)
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in
                     SessionStore.purgeNow()
                 }

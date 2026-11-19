@@ -20,7 +20,17 @@ html:root, [style*="--accent"] {
   --accent-fill: color-mix(in srgb, var(--accent) 85%, #000);
 }
 @media (prefers-color-scheme: dark) {
-  html:root, [style*="--accent"] { --accent-ink: color-mix(in srgb, var(--accent) 52%, #fff); }
+  html:root:not([data-theme="light"]), html:not([data-theme="light"]) [style*="--accent"] {
+    --accent-ink: color-mix(in srgb, var(--accent) 52%, #fff);
+  }
+}
+/* Le thème choisi dans le menu (Apparence) : « Automatique » ne pose rien et suit l'appareil ;
+   « Clair » et « Sombre » posent data-theme sur <html> et l'emportent sur l'appareil. Les
+   couleurs sont celles du thème de Paquets. */
+html[data-theme="light"] { color-scheme: light; --bg: #fbfbfd; --fg: #16161d; --muted: #5d5d6e; --line: #e4e4ec; --card: #fff; }
+html[data-theme="dark"] { color-scheme: dark; --bg: #0d0d12; --fg: #ececf3; --muted: #9a9aae; --line: #26263a; --card: #15151d; }
+html[data-theme="dark"]:root, html[data-theme="dark"] [style*="--accent"] {
+  --accent-ink: color-mix(in srgb, var(--accent) 52%, #fff);
 }
 html a { color: var(--accent-ink, var(--accent)); }
 html nav a:hover { color: var(--accent-ink, var(--accent)); }
@@ -515,6 +525,9 @@ body.viewer-open { overflow: hidden; }
 .burger-list > li > .nav-artist { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .burger-langs { display: flex; gap: .5rem; flex-wrap: wrap; }
 .burger-langs a { display: inline-block; padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration: none; font-weight: 600; }
+/* (une règle plus générale du menu retirait leur marge intérieure aux pastilles) */
+.burger-list .burger-langs a { padding: .45rem .95rem; }
+.burger-theme a[aria-pressed="true"] { background: var(--accent-fill, var(--accent)); border-color: var(--accent); color: var(--accent-fg, #fff); }
 .burger-langs a.current { background: var(--accent-fill, var(--accent)); border-color: var(--accent); color: var(--accent-fg, #fff); }
 @media (max-width: 640px) { .header-quick { display: none; } .burger-label { display: none; } .burger-button { padding: .5rem .6rem; } }
 

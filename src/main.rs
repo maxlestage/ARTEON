@@ -127,10 +127,28 @@ fn burger_menu(current: &str) -> Element {
                                 .child(span().class("nav-artist").text("GitHub")),
                         )
                         .child(group(t("Langue", "Language", "Idioma")))
-                        .child(li().class("burger-wide").child(ul().class("burger-langs").children(langues))),
+                        .child(li().class("burger-wide").child(ul().class("burger-langs").children(langues)))
+                        // L'apparence : « Automatique » suit le réglage de l'appareil ; « Clair » et
+                        // « Sombre » le forcent (THEME_SCRIPT, retenu dans le navigateur).
+                        .child(group(t("Apparence", "Appearance", "Apariencia")))
+                        .child(li().class("burger-wide").child(
+                            div().class("burger-langs burger-theme").attr("role", "group").attr("aria-label", t("Apparence", "Appearance", "Apariencia")).children(
+                                [
+                                    ("auto", t("Automatique", "Automatic", "Automático")),
+                                    ("light", t("Clair", "Light", "Claro")),
+                                    ("dark", t("Sombre", "Dark", "Oscuro")),
+                                ]
+                                .map(|(choice, label)| a().href("#").attr("role", "button").attr("data-theme-choice", choice).text(label)),
+                            ),
+                        )),
                 ),
         )
 }
+
+/// Le thème choisi (menu → Apparence) : posé sur `<html data-theme>` avant le premier
+/// affichage (pas d'éclair blanc en sombre), retenu dans le navigateur. Sans choix, ou sur
+/// « Automatique », la page suit le réglage de l'appareil (`prefers-color-scheme`).
+const THEME_SCRIPT: &str = r#"<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("arteon-theme")}catch(e){}if(t==="light"||t==="dark")d.dataset.theme=t;function m(){var c=d.dataset.theme||"auto";document.querySelectorAll("[data-theme-choice]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.themeChoice===c))})}document.addEventListener("DOMContentLoaded",m);document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-theme-choice]");if(!b)return;e.preventDefault();var c=b.dataset.themeChoice;if(c==="auto"){delete d.dataset.theme;try{localStorage.removeItem("arteon-theme")}catch(x){}}else{d.dataset.theme=c;try{localStorage.setItem("arteon-theme",c)}catch(x){}}m()})})();</script>"#;
 
 /// Un texte pour une adresse (« Vincent van Gogh » → « Vincent%20van%20Gogh »).
 fn encode_fragment(text: &str) -> String {
@@ -214,6 +232,7 @@ fn layout(
         .prefetch(Prefetch::Hover)
         .stylesheet(style_url())
         .head(r#"<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png"/>"#)
+        .head(THEME_SCRIPT)
         .head(alternates)
         .body(
             header()
