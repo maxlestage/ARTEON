@@ -131,6 +131,24 @@ def oeuvres_liees(catalogue, gardees):
     return resultat
 
 
+def puces_de_visite(texte, n):
+    """Les puces « Œuvres dans la visite » de la page de la galerie 3D, ramenées aux œuvres
+    liées qui existent : avec 4 œuvres liées, « 10 + 24 des collections » devient
+    « 10 + 4 des collections » et les puces au-delà disparaissent."""
+    def puce(m):
+        valeur = int(m.group(2))
+        puce.vues.append(valeur)
+        if valeur == 0 or valeur <= n:
+            return m.group(0)
+        # La première puce au-dessus du nombre d'œuvres liées les montre toutes ; les suivantes s'en vont.
+        precedentes = [v for v in puce.vues[:-1] if v > 0]
+        if n == 0 or any(v >= n for v in precedentes):
+            return ""
+        return m.group(1) + m.group(3).replace(f"+ {valeur} ", f"+ {n} ", 1) + "</a>"
+    puce.vues = []
+    return re.sub(r'(<a class="chip[^"]*" href="[^"]*" data-oeuvres="(\d+)">)([^<]*)</a>', puce, texte)
+
+
 def en_webp(chemins):
     """Une vignette JPEG du cache, réécrite en WebP (qualité 50 : ~6 Ko au lieu de ~10).
     Le WebP est gardé à côté, dans le cache (`vignettes-webp/`) : la construction suivante
@@ -329,6 +347,16 @@ def main():
     liees = oeuvres_liees(catalogue, gardees)
     (sortie / "donnees" / "expositions.json").write_text(json.dumps(liees, **compact), encoding="utf-8")
     mots_oeuvres = {"fr": ("œuvres", "en 3D"), "en": ("works", "in 3D"), "es": ("obras", "en 3D")}
+    # Une exposition sans aucune œuvre liée : la visite n'a que son accrochage d'origine.
+    for ex in catalogue["exhibitions"]:
+        if ex["slug"] not in liees:
+            for L in LANGUES.values():
+                page = (site / L["prefixe"].lstrip("/") if L["prefixe"] else site) / ex["slug"] / "galerie" / "index.html"
+                if page.exists():
+                    texte = page.read_text(encoding="utf-8")
+                    ajuste = puces_de_visite(texte, 0)
+                    if ajuste != texte:
+                        page.write_text(ajuste, encoding="utf-8")
     for slug, info in liees.items():
         n = len(info["indices"])
         exposition = next(ex for ex in catalogue["exhibitions"] if ex["slug"] == slug)
@@ -370,6 +398,13 @@ def main():
                        f"Esta página las muestra todas: primero las {propres} de la visita 3D, luego las de las colecciones del mundo y después todas las obras de cada artista en los museos del mundo. Aparecen a medida que se baja."),
             }[code]
             css = f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>'
+            # La galerie 3D : les puces ne proposent que les œuvres liées qui existent.
+            page = dossier_langue / slug / "galerie" / "index.html"
+            if page.exists() and n < 120:
+                texte = page.read_text(encoding="utf-8")
+                ajuste = puces_de_visite(texte, n)
+                if ajuste != texte:
+                    page.write_text(ajuste, encoding="utf-8")
             # La présentation : l'annonce, qui mène à la page des œuvres.
             page = dossier_langue / slug / "index.html"
             if page.exists():
