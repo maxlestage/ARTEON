@@ -44,7 +44,16 @@ fi
 
 # Les données des expositions (mosaïques, sculptures, textes), écrites par build.rs dans
 # le dossier de compilation : copiées dans l'application (ARTEON_DONNEES, voir Procfile).
-donnees=$(ls -td "$target"/release/build/arteon-*/out/donnees | head -1)
+donnees=$(ls -td "$target"/release/build/arteon-*/out/donnees 2> /dev/null | head -1 || true)
+if [ -z "$donnees" ]; then
+  # Le cache du buildpack a gardé l'empreinte de build.rs mais perdu son dossier de sortie :
+  # Cargo croit les données à jour et ne relance pas build.rs (déploiements du 19/11 à
+  # 08 h 23 et 08 h 26 UTC). On force build.rs à tourner de nouveau.
+  echo "       données des expositions absentes du cache : build.rs relancé"
+  touch build.rs
+  cargo build --release --bin arteon
+  donnees=$(ls -td "$target"/release/build/arteon-*/out/donnees | head -1)
+fi
 rm -rf donnees
 cp -r "$donnees" donnees
 echo "       target/release/arteon et donnees/ ($(ls donnees | wc -l) fichiers) prêts"
