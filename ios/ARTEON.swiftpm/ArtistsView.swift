@@ -356,6 +356,10 @@ struct LiveWorksSection: View {
     @State private var result: LiveCatalogue?
     @State private var museums: [String: String] = [:]
     @State private var loading = true
+    /// L'œuvre ouverte en grand (LiveGallery.swift).
+    @State private var shown: LiveWork?
+    /// Mosaïque (des vignettes serrées, comme une galerie de photos) ou cartes avec les titres.
+    @AppStorage("vue-mosaique") private var mosaic = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -384,12 +388,37 @@ struct LiveWorksSection: View {
                             : L("par l'API ARTEON", "through the ARTEON API", "a través de la API de ARTEON")))
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)], spacing: 12) {
-                        ForEach(more) { work in
-                            Link(destination: URL(string: work.link) ?? Api.server) {
-                                LiveWorkCard(work: work, museum: work.provider.map { "\($0) · \((museums[work.museum] ?? work.museum).components(separatedBy: " (").first ?? "")" } ?? museums[work.museum] ?? work.museum)
+                    Picker(L("Affichage", "View", "Vista"), selection: $mosaic) {
+                        Text(L("Mosaïque", "Mosaic", "Mosaico")).tag(true)
+                        Text(L("Avec les titres", "With titles", "Con los títulos")).tag(false)
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(maxWidth: 360)
+                    // Toucher une œuvre l'ouvre en grand dans l'application (et non plus sur le
+                    // site du musée) ; on glisse ensuite de l'une à l'autre.
+                    if mosaic {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 84, maximum: 150), spacing: 2)], spacing: 2) {
+                            ForEach(more) { work in
+                                Button {
+                                    shown = work
+                                } label: {
+                                    RemoteImage(path: work.thumbnail, maxPixels: 320)
+                                        .aspectRatio(1, contentMode: .fit)
+                                }
+                                .buttonStyle(.plain)
+                                .accessibilityLabel(work.title)
                             }
-                            .buttonStyle(.plain)
+                        }
+                    } else {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)], spacing: 12) {
+                            ForEach(more) { work in
+                                Button {
+                                    shown = work
+                                } label: {
+                                    LiveWorkCard(work: work, museum: work.provider.map { "\($0) · \((museums[work.museum] ?? work.museum).components(separatedBy: " (").first ?? "")" } ?? museums[work.museum] ?? work.museum)
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
                     }
                 }
@@ -399,6 +428,9 @@ struct LiveWorksSection: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .fullScreenCover(item: $shown) { work in
+            LiveWorkViewer(works: (result?.works ?? []).filter { !known.contains($0.id) }, start: work, museums: museums, artist: name)
+        }
         .task(id: name) {
             loading = true
             async let names = LiveWorks.museumNames()
