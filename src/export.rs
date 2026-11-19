@@ -78,7 +78,23 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
             res.status()
         )));
     }
-    write("404.html", with_base(&res.text(), &base, &pages).as_bytes())?;
+    // GitHub Pages ne sert qu'un 404.html, quelle que soit la langue de l'adresse : celui du
+    // français, qui se remplace lui-même par celui de la langue quand l'adresse commence par
+    // /en/ ou /es/ (l'adresse reste celle que le visiteur a demandée).
+    for lang in ["en", "es"] {
+        let page = client.get(&format!("/{lang}/cette-page-n-existe-pas")).await;
+        if page.status() == 404 {
+            write(&format!("{lang}/404.html"), with_base(&page.text(), &base, &pages).as_bytes())?;
+        }
+    }
+    let script = format!(
+        "<script>(function(){{var m=location.pathname.slice({len}).match(/^\\/(en|es)\\//);\
+         if(m&&document.documentElement.lang!==m[1])fetch(\"{base}/\"+m[1]+\"/404.html\").then(function(r){{return r.ok?r.text():null}})\
+         .then(function(h){{if(h){{document.open();document.write(h);document.close()}}}})}})();</script></head>",
+        len = base.len()
+    );
+    let html = with_base(&res.text(), &base, &pages).replacen("</head>", &script, 1);
+    write("404.html", html.as_bytes())?;
 
     // Les fichiers statiques (`public/` : les images des tableaux, servies à `/…`), le
     // bundle du navigateur (`pkg/` : les îlots compilés en WebAssembly).

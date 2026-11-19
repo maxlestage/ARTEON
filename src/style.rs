@@ -272,7 +272,7 @@ body.viewer-open { overflow: hidden; }
 .footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
 .footer-wide { grid-column: span 2; }
 .footer-wide ul { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .45rem 1rem; }
-.footer-3d { font-size: .8rem; color: var(--yellow); }
+.footer-3d { font-size: .8rem; color: var(--yellow); min-width: 2rem; text-align: center; }
 .footer-col a { text-decoration: none; background: linear-gradient(var(--yellow), var(--yellow)) 0 100% / 0 2px no-repeat; transition: background-size .3s ease; }
 .footer-col a:hover { background-size: 100% 2px; }
 .footer-legal { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; border-top: 1px solid #262833; font-size: .88rem; }

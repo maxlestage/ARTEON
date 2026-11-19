@@ -113,7 +113,7 @@ function montrer(i) {
     </div>
     <div class="visionneuse-details"${etat.infos ? "" : " hidden"}>
       <dl class="monde-cartel">${faits.map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
-      ${o.lien ? `<p><a class="visionneuse-musee" href="${echapper(o.lien)}" target="_blank" rel="noopener">${t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a></p>` : ""}
+      ${o.lien ? `<p><a class="visionneuse-musee" href="${echapper(o.lien)}" target="_blank" rel="noopener">${o.musee === "wikidata" ? t("La fiche sur Wikidata", "On Wikidata", "La ficha en Wikidata") : t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a></p>` : ""}
       <p class="monde-note">${t("Domaine public · image et fiche chez le musée", "Public domain · image and record hosted by the museum", "Dominio público · imagen y ficha en el museo")}</p>
     </div>`;
   fiche.scrollTop = 0;
