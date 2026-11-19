@@ -650,11 +650,20 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     let poids = AtomicUsize::new(0);
     let faits: Mutex<Vec<(usize, String)>> = Mutex::new(Vec::new());
     let a_refaire: Mutex<Vec<usize>> = Mutex::new(Vec::new());
-    // D'abord les reprises : les catalogues gardés (depuis plus d'une heure) où manque un musée
-    // qui d'ordinaire répond. Dans l'ordre des artistes, pendant un quart du temps au plus ;
-    // ce que le musée donne cette fois s'ajoute à ce qu'on avait (`fusionner`).
+    // Chaque catalogue gardé porte l'empreinte des sources (outils/monde/sources.json) qui
+    // l'ont calculé : quand elles changent (une requête corrigée, un musée de plus), il est
+    // périmé et se reprend.
+    let empreinte = fichier_de(SOURCES);
+    let signer = |mut r: Value| {
+        r["sources"] = json!(empreinte);
+        r
+    };
+    // D'abord les reprises : les catalogues gardés où manque un musée qui d'ordinaire répond
+    // (depuis plus d'une heure), et ceux d'avant un changement des sources. Dans l'ordre des
+    // artistes, pendant la moitié du temps au plus ; ce que les musées donnent cette fois
+    // s'ajoute à ce qu'on avait (`fusionner`).
     if let Some(c) = cache {
-        let gardes: Vec<(usize, Vec<String>, Duration)> = groupes
+        let gardes: Vec<(usize, Vec<String>, Duration, bool)> = groupes
             .iter()
             .enumerate()
             .filter_map(|(i, (k, _))| {
@@ -662,20 +671,20 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 let age = std::fs::metadata(&g).ok()?.modified().ok()?.elapsed().ok()?;
                 let v: Value = serde_json::from_str(&std::fs::read_to_string(&g).ok()?).ok()?;
                 let m = v["manquants"].as_array()?.iter().map(en_texte).collect();
-                Some((i, m, age))
+                Some((i, m, age, v["sources"] != empreinte.as_str()))
             })
             .collect();
-        let pannes = en_panne(&gardes.iter().map(|(_, m, _)| m.clone()).collect::<Vec<_>>());
+        let pannes = en_panne(&gardes.iter().map(|(_, m, _, _)| m.clone()).collect::<Vec<_>>());
         let reprises: Vec<usize> = gardes
             .iter()
-            .filter(|(_, m, age)| {
-                *age > Duration::from_secs(3600)
-                    && *age < Duration::from_secs(7 * 24 * 3600)
-                    && m.iter().any(|source| !pannes.contains(source))
+            .filter(|(_, m, age, perime)| {
+                *age < Duration::from_secs(7 * 24 * 3600)
+                    && (*perime
+                        || (*age > Duration::from_secs(3600) && m.iter().any(|source| !pannes.contains(source))))
             })
-            .map(|(i, _, _)| *i)
+            .map(|(i, _, _, _)| *i)
             .collect();
-        let fin_reprises = Instant::now() + Duration::from_secs(minutes * 15);
+        let fin_reprises = Instant::now() + Duration::from_secs(minutes * 30);
         let suivant = AtomicUsize::new(0);
         std::thread::scope(|s| {
             for _ in 0..fils.max(1) {
@@ -688,7 +697,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     let (k, noms) = &groupes[i];
                     let g = c.join(format!("{}.json", fichier_de(k)));
                     let ancienne = std::fs::read_to_string(&g).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
-                    let r = fusionner(ancienne.as_ref(), oeuvres_de(&noms[0]));
+                    let r = signer(fusionner(ancienne.as_ref(), oeuvres_de(&noms[0])));
                     let _ = std::fs::write(&g, r.to_string());
                     calcules.fetch_add(1, Ordering::SeqCst);
                 });
@@ -721,7 +730,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     }
                     gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
                 } else if Instant::now() < fin {
-                    let r = fusionner(ancienne.as_ref(), oeuvres_de(&noms[0]));
+                    let r = signer(fusionner(ancienne.as_ref(), oeuvres_de(&noms[0])));
                     let texte = r.to_string();
                     if let Some(g) = &gardee {
                         let _ = std::fs::write(g, &texte);
@@ -760,7 +769,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 let ancienne = cache
                     .and_then(|c| std::fs::read_to_string(c.join(format!("{nom_fichier}.json"))).ok())
                     .and_then(|t| serde_json::from_str::<Value>(&t).ok());
-                let r = fusionner(ancienne.as_ref(), oeuvres_de(&noms[0]));
+                let r = signer(fusionner(ancienne.as_ref(), oeuvres_de(&noms[0])));
                 let texte = r.to_string();
                 if let Some(c) = cache {
                     let _ = std::fs::write(c.join(format!("{nom_fichier}.json")), &texte);
