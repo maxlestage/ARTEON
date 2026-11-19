@@ -8,6 +8,7 @@ struct SettingsView: View {
     @Environment(CatalogueStore.self) private var store
     @Environment(Narrator.self) private var narrator
     @State private var confirmFavorites = false
+    @AppStorage("apparence") private var appearance = "auto"
     @State private var visitSize: Int64 = 0
 
     var body: some View {
@@ -24,6 +25,19 @@ struct SettingsView: View {
                 LabeledContent(L("Salles en 3D", "3D rooms", "Salas en 3D"), value: "\(catalogue.roomCount)")
             } header: {
                 Text(L("Le musée", "The museum", "El museo"))
+            }
+
+            Section {
+                Picker(L("Apparence", "Appearance", "Apariencia"), selection: $appearance) {
+                    Text(L("Automatique", "Automatic", "Automático")).tag("auto")
+                    Text(L("Clair", "Light", "Claro")).tag("light")
+                    Text(L("Sombre", "Dark", "Oscuro")).tag("dark")
+                }
+                .pickerStyle(.segmented)
+            } header: {
+                Text(L("Apparence", "Appearance", "Apariencia"))
+            } footer: {
+                Text(L("« Automatique » suit le réglage de l'appareil.", "“Automatic” follows the device setting.", "«Automático» sigue el ajuste del dispositivo."))
             }
 
             Section {
