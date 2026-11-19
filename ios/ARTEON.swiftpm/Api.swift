@@ -355,6 +355,16 @@ enum LiveWorks {
         values.reduce(template) { $0.replacingOccurrences(of: "{\($1.key)}", with: $1.value) }
     }
 
+    /// Un titre sans balises HTML ni entités (comme `sans_balises` de src/api.rs).
+    static func withoutTags(_ text: String) -> String {
+        guard text.contains("<") || text.contains("&") else { return text }
+        var clean = text.replacingOccurrences(of: "</?[a-zA-Z][^>]*>", with: "", options: .regularExpression)
+        for (entity, sign) in [("&amp;", "&"), ("&quot;", "\""), ("&#39;", "'"), ("&apos;", "'"), ("&nbsp;", " "), ("&lt;", "<"), ("&gt;", ">")] {
+            clean = clean.replacingOccurrences(of: entity, with: sign)
+        }
+        return clean.split(whereSeparator: { $0 == " " || $0 == "\n" }).joined(separator: " ")
+    }
+
     /// Sans les doublons (comme `sans_doublons` de src/api.rs) : une œuvre qu'un musée interrogé
     /// donne lui-même et qu'un agrégateur (Wikidata, Europeana) donne aussi : même titre, même
     /// année, et la collection indiquée par l'agrégateur est ce musée. La fiche du musée reste.
@@ -477,7 +487,7 @@ enum LiveWorks {
             var values: [String: String] = [:]
             for k in fields.keys { values[k] = text(field(k)) }
             return LiveWork(
-                id: "\(museum)-\(values["id"] ?? "")", title: values["titre"] ?? "", date: date,
+                id: "\(museum)-\(values["id"] ?? "")", title: withoutTags(values["titre"] ?? ""), date: date,
                 year: year(field("annee")), medium: values["technique"] ?? "", museum: museum,
                 thumbnail: fill(source["vignette"] as? String ?? "", values),
                 image: fill(source["grande"] as? String ?? "", values),
