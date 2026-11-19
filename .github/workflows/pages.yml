@@ -17,7 +17,12 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
+    # Le lundi : la grande construction (annuaire, grande moisson, 90 minutes de catalogues).
     - cron: "17 5 * * 1"
+    # Toutes les trois heures : une construction ordinaire qui fait avancer les catalogues des
+    # artistes (45 minutes de calcul). Sans elle, ils n'avançaient qu'aux mises en ligne : au
+    # rythme d'environ 900 artistes par passage, les 47 000 sont faits en une semaine.
+    - cron: "23 */3 * * *"
 
 permissions:
   contents: read
@@ -154,7 +159,7 @@ jobs:
       # L'annuaire de tous les artistes (outils/monde/annuaire.json) : refait chaque lundi
       # d'après Wikidata ; si Wikidata ne répond pas, celui du dépôt reste.
       - name: L'annuaire de tous les artistes
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' && github.event.schedule == '17 5 * * 1'
         continue-on-error: true
         timeout-minutes: 50
         run: python3 outils/annuaire.py --minutes 40
@@ -168,7 +173,8 @@ jobs:
             || python3 -m pip install --quiet --break-system-packages pillow
           # Après une modification du site, la moisson est courte (le cache a déjà presque
           # tout) pour une mise en ligne rapide ; la grande moisson est celle du lundi.
-          if [ "${{ github.event_name }}" = "push" ]; then fiches=4; reserve=4; else fiches=15; reserve=20; fi
+          # (la grande moisson : le lundi, ou à la demande)
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event.schedule }}" = "23 */3 * * *" ]; then fiches=4; reserve=4; else fiches=15; reserve=20; fi
           python3 outils/collections_monde.py --total 50000 --minutes $fiches --minutes-reserve $reserve --sans-grandes \
             --sortie target/monde --cache target/collections-cache
           python3 outils/monde_web.py target/monde target/collections-cache/vignettes dist
@@ -224,7 +230,9 @@ jobs:
         timeout-minutes: 110
         run: |
           # 25 minutes de calcul après une modification ; 90 pour la construction du lundi.
-          if [ "${{ github.event_name }}" = "schedule" ]; then minutes=90; else minutes=25; fi
+          # (45 minutes aux passages de toutes les trois heures : personne n'attend la mise en ligne)
+          if [ "${{ github.event.schedule }}" = "17 5 * * 1" ]; then minutes=90
+          elif [ "${{ github.event_name }}" = "schedule" ]; then minutes=45; else minutes=25; fi
           python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
           # La place qui reste sous la limite de GitHub Pages (1 Go), le site en trois langues compris.
