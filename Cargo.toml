@@ -23,7 +23,9 @@ flate2 = "1"
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 paquets = { git = "https://github.com/maxlestage/Paquets", default-features = false, features = ["client"] }
 wasm-bindgen = "0.2"
-eframe = { version = "0.37", default-features = false, features = ["glow", "default_fonts"] }
+# Sans les polices par défaut d'egui : seule Ubuntu Light sert (src/viewer.rs, assets/fonts/) ;
+# la police à chasse fixe Hack (309 Ko) n'est jamais affichée. Les emoji viennent du navigateur.
+eframe = { version = "0.37", default-features = false, features = ["glow"] }
 # Les commandes de la galerie (plein écran, cartel, boutons, clavier) : src/viewer.rs.
 wasm-bindgen-futures = "0.4"
 js-sys = "0.3"
