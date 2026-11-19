@@ -353,6 +353,16 @@ body.viewer-open { overflow: hidden; }
 
 @media (max-width: 820px) {
   .hero { grid-template-columns: 1fr; text-align: center; min-height: auto; }
+  /* Sur un écran étroit, les œuvres avant le texte : le premier écran d'un musée montre des
+     tableaux (titre, sous-titre, images, puis le texte et les boutons). */
+  .hero { display: flex; flex-direction: column; gap: 1rem; }
+  .hero-text { display: contents; }
+  .hero-text > .kicker { order: 1; }
+  .hero-text > .hero-title { order: 2; }
+  .hero-text > .hero-sub { order: 3; }
+  .hero > .hero-visual { order: 4; width: 100%; }
+  .hero-text > .lead { order: 5; }
+  .hero-text > .row { order: 6; }
   .hero .row { justify-content: center; }
   .hero { padding-top: 2rem; }
   /* Sur un petit écran, les formes décoratives passeraient sur le titre et les boutons. */
