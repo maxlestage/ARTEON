@@ -134,11 +134,20 @@ jobs:
 
       # Ce que la moisson a appris (fiches de Chicago et du Met, vignettes de la réserve) est
       # gardé : la construction suivante repart de là, et les collections grandissent.
+      # Une sauvegarde par jour (et une pour la grande moisson du lundi), pas une par mise en
+      # ligne : à 1,3 Go pièce, dix mises en ligne dans la journée dépassaient les 10 Go de
+      # cache du dépôt, et GitHub effaçait alors les autres caches (celui de l'API compris).
+      - name: Le jour (pour la clé du cache)
+        id: jour
+        if: always()
+        run: echo "jour=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
       - uses: actions/cache/save@v4
         if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        continue-on-error: true
         with:
           path: target/collections-cache
-          key: collections-v1-pages-${{ github.run_id }}
+          key: collections-v1-pages-${{ github.event_name }}-${{ steps.jour.outputs.jour }}
 
       # L'API publiée en fichiers : le catalogue complet de chaque artiste (expositions, puis
       # tous les artistes des collections, des plus riches aux moins riches), calculé par le moteur de l'API
@@ -155,8 +164,10 @@ jobs:
       - name: L'API statique (les œuvres de chaque artiste)
         if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         continue-on-error: true
-        timeout-minutes: 40
+        timeout-minutes: 110
         run: |
+          # 25 minutes de calcul après une modification ; 90 pour la construction du lundi.
+          if [ "${{ github.event_name }}" = "schedule" ]; then minutes=90; else minutes=25; fi
           python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
           # La place qui reste sous la limite de GitHub Pages (1 Go), le site en trois langues compris.
@@ -164,7 +175,7 @@ jobs:
           reste=$(( 960 - $(du -sm --apparent-size dist | cut -f1) ))
           [ "$reste" -gt 0 ] || reste=1
           echo "place pour l'API : ${reste} Mo"
-          ARTEON_API_MO=$reste ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt 25 4 2> target/api.log || true
+          ARTEON_API_MO=$reste ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt $minutes 4 2> target/api.log || true
           tail -3 target/api.log
           du -sh --apparent-size dist/api dist
 
