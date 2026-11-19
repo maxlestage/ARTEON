@@ -84,6 +84,7 @@ function montrer(i) {
   apres.disabled = i === oeuvres.length - 1;
   // La vignette tout de suite, la grande image dès qu'elle est arrivée.
   const img = boite.querySelector(".visionneuse-image img");
+  img.removeAttribute("data-ok"); // l'image suivante n'apparaît qu'entière (un anneau tourne en attendant)
   img.src = o.vignette || o.image || "";
   img.alt = o.titre || "";
   // La grande image : chez Wikimedia, si la taille demandée est refusée (429, voir

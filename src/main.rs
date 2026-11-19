@@ -148,7 +148,13 @@ fn burger_menu(current: &str) -> Element {
 /// Le thème choisi (menu → Apparence) : posé sur `<html data-theme>` avant le premier
 /// affichage (pas d'éclair blanc en sombre), retenu dans le navigateur. Sans choix, ou sur
 /// « Automatique », la page suit le réglage de l'appareil (`prefers-color-scheme`).
-const THEME_SCRIPT: &str = r#"<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("arteon-theme")}catch(e){}if(t==="light"||t==="dark")d.dataset.theme=t;function m(){var c=d.dataset.theme||"auto";document.querySelectorAll("[data-theme-choice]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.themeChoice===c))})}document.addEventListener("DOMContentLoaded",m);document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-theme-choice]");if(!b)return;e.preventDefault();var c=b.dataset.themeChoice;if(c==="auto"){delete d.dataset.theme;try{localStorage.removeItem("arteon-theme")}catch(x){}}else{d.dataset.theme=c;try{localStorage.setItem("arteon-theme",c)}catch(x){}}m()})})();</script>"#;
+///
+/// Le même script marque chaque image quand elle a fini de se charger (`data-ok`) : les
+/// images du musée sont des JPEG progressifs, qui s'affichent d'abord en gros carrés puis
+/// s'affinent ; sur un réseau lent, l'œuvre restait « pixelisée » de longues secondes. Une
+/// image n'apparaît donc qu'entière, en fondu (style.rs : `html.js img:not([data-ok])`).
+/// Sans JavaScript, rien n'est caché.
+const THEME_SCRIPT: &str = r#"<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("arteon-theme")}catch(e){}if(t==="light"||t==="dark")d.dataset.theme=t;function m(){var c=d.dataset.theme||"auto";document.querySelectorAll("[data-theme-choice]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.themeChoice===c))})}d.classList.add("js");["load","error"].forEach(function(n){document.addEventListener(n,function(e){var i=e.target;if(i&&i.tagName==="IMG")i.setAttribute("data-ok","")},true)});document.addEventListener("DOMContentLoaded",m);document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-theme-choice]");if(!b)return;e.preventDefault();var c=b.dataset.themeChoice;if(c==="auto"){delete d.dataset.theme;try{localStorage.removeItem("arteon-theme")}catch(x){}}else{d.dataset.theme=c;try{localStorage.setItem("arteon-theme",c)}catch(x){}}m()})})();</script>"#;
 
 /// Un texte pour une adresse (« Vincent van Gogh » → « Vincent%20van%20Gogh »).
 fn encode_fragment(text: &str) -> String {

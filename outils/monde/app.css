@@ -201,3 +201,13 @@ html.visionneuse-ouverte { overflow: hidden; }
 .monde-mosaique .monde-carte.sans-image b { position: absolute; inset: 0; width: auto; height: auto; padding: 6px;
   clip-path: none; white-space: normal; display: flex; align-items: center; justify-content: center; text-align: center;
   font-size: .68rem; line-height: 1.2; color: var(--muted); }
+
+/* Pendant qu'une grande image se charge (elle n'apparaît qu'entière : style.rs), un anneau
+   tourne à sa place : le jeu, la fiche d'une œuvre, la visionneuse. */
+.jeu-image, .monde-image, .visionneuse-image { position: relative; }
+.jeu-image:has(img:not([data-ok]))::after, .monde-image:has(img:not([data-ok]))::after,
+.visionneuse-image:has(img:not([data-ok]))::after {
+  content: ""; position: absolute; top: calc(50% - 16px); left: calc(50% - 16px); width: 32px; height: 32px; border-radius: 50%;
+  border: 3px solid color-mix(in srgb, currentColor 22%, transparent); border-top-color: var(--accent-ink, currentColor);
+  animation: monde-anneau 1s linear infinite; }
+@keyframes monde-anneau { to { transform: rotate(360deg); } }

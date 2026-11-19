@@ -32,6 +32,10 @@ html[data-theme="dark"] { color-scheme: dark; --bg: #0d0d12; --fg: #ececf3; --mu
 html[data-theme="dark"]:root, html[data-theme="dark"] [style*="--accent"] {
   --accent-ink: color-mix(in srgb, var(--accent) 52%, #fff);
 }
+/* Une image n'apparaît qu'entièrement chargée, en fondu (voir THEME_SCRIPT dans main.rs) :
+   plus d'œuvre « pixelisée » pendant le chargement d'un JPEG progressif sur un réseau lent. */
+html.js img:not([data-ok]) { opacity: 0; }
+html.js img { transition: opacity .3s ease; }
 html a { color: var(--accent-ink, var(--accent)); }
 html nav a:hover { color: var(--accent-ink, var(--accent)); }
 html button, html .button, html input[type=submit] { background: var(--accent-fill, var(--accent)); }
