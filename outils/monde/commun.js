@@ -149,3 +149,31 @@ export const rubrique = (titre, html, ouverte = false) =>
 
 /** Un renseignement du cartel : son nom, sa valeur dessous. */
 export const renseignement = (nom, valeur) => (valeur ? `<div class="fact"><dt>${echapper(nom)}</dt><dd>${echapper(valeur)}</dd></div>` : "");
+
+/** Le choix de la vue des grilles d'œuvres : « Mosaïque » (des vignettes serrées, pour tout
+ *  voir d'un coup d'œil et toucher celle qu'on veut ; par défaut) ou « Avec les titres » (les
+ *  cartes). Retenu pour la suite (dans ce navigateur). Renvoie les deux boutons, à placer. */
+export function choixVue() {
+  let vue = "mosaique";
+  try { vue = localStorage.getItem("arteon-vue") || vue; } catch { /* navigation privée */ }
+  const choix = document.createElement("div");
+  choix.className = "monde-vue";
+  choix.setAttribute("role", "group");
+  choix.setAttribute("aria-label", t("Affichage des œuvres", "How works are shown", "Visualización de las obras"));
+  choix.innerHTML = `<button type="button" data-vue="mosaique">▦ ${t("Mosaïque", "Mosaic", "Mosaico")}</button>`
+    + `<button type="button" data-vue="cartes">☰ ${t("Avec les titres", "With titles", "Con los títulos")}</button>`;
+  const appliquer = () => {
+    document.documentElement.classList.toggle("monde-mosaique", vue === "mosaique");
+    for (const b of document.querySelectorAll(".monde-vue button")) b.setAttribute("aria-pressed", String(b.dataset.vue === vue));
+  };
+  choix.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-vue]");
+    if (!b) return;
+    vue = b.dataset.vue;
+    try { localStorage.setItem("arteon-vue", vue); } catch { /* navigation privée */ }
+    appliquer();
+  });
+  for (const b of choix.querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.vue === vue));
+  document.documentElement.classList.toggle("monde-mosaique", vue === "mosaique");
+  return choix;
+}

@@ -164,3 +164,18 @@ html.visionneuse-ouverte { overflow: hidden; }
   .visionneuse-fleche { display: none; }
   .visionneuse-fiche { max-height: 42vh; }
 }
+
+/* Le choix de la vue (commun.js, choixVue) et la mosaïque : des vignettes carrées serrées,
+   pour voir toutes les œuvres d'un coup d'œil et toucher celle qu'on veut. Les titres
+   restent lisibles par les lecteurs d'écran. */
+.monde-vue { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; }
+.monde-vue button { font: inherit; font-size: .9rem; padding: 8px 14px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--card); color: inherit; }
+.monde-vue button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.monde-mosaique .monde-grille { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 4px; }
+@media (min-width: 700px) { .monde-mosaique .monde-grille { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 6px; } }
+.monde-mosaique .monde-carte { position: relative; border: 0; border-radius: 6px; }
+.monde-mosaique .monde-carte:hover { transform: none; outline: 2px solid var(--accent); outline-offset: 1px; }
+.monde-mosaique .monde-carte img { height: auto; aspect-ratio: 1; }
+.monde-mosaique .monde-carte b, .monde-mosaique .monde-carte span { position: absolute; width: 1px; height: 1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
