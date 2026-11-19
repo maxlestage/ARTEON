@@ -1372,13 +1372,16 @@ fn building(ex: &'static Exhibition) -> Element {
     let rooms = ol()
         .class("plan-legend")
         .children(ex.galleries().map(|(i, room)| {
-            let works = ex.works_in_room(i).len() + ex.sculptures_in_room(i).len();
+            let works = match ex.works_in_room(i).len() + ex.sculptures_in_room(i).len() {
+                1 => t("1 œuvre", "1 work", "1 obra").to_owned(),
+                n => tf!("{} œuvres", "{} works", "{} obras", n),
+            };
             li().child(strong().text(room.name)).child(
                 span().class("muted small").text(
                     decimal(tf!(
-                        " · {:.0} × {:.0} m, {:.1} m sous plafond · {} œuvre(s)",
-                        " · {:.0} × {:.0} m, {:.1} m ceiling · {} work(s)",
-                        " · {:.0} × {:.0} m, {:.1} m de altura · {} obra(s)",
+                        " · {:.0} × {:.0} m, {:.1} m sous plafond · {}",
+                        " · {:.0} × {:.0} m, {:.1} m ceiling · {}",
+                        " · {:.0} × {:.0} m, {:.1} m de altura · {}",
                         room.width, room.depth, room.height, works
                     )),
                 ),
@@ -1739,16 +1742,16 @@ async fn credits(_req: Request) -> Page {
                      domaine public : leurs artistes sont morts en 1955 ou avant, et elles datent d'avant 1931. Quand la \
                      photographie d'une œuvre est sous licence libre (une sculpture ou un objet photographié par un \
                      particulier), son auteur et sa licence sont cités ci-dessous et sur la page de l'œuvre — \
-                     {} image(s) sont dans ce cas. Dans le musée 3D, les images sont réinterprétées en mosaïque.",
+                     c'est le cas de {} images. Dans le musée 3D, les images sont réinterprétées en mosaïque.",
                     "ARTEON is designed and developed by {}, in Rust, with Paquets. The works on show are in the public \
                      domain: their artists died in 1955 or earlier, and they date from before 1931. When the photograph \
                      of a work is under a free licence (a sculpture or an object photographed by an individual), its \
-                     author and licence are credited below and on the work's page — {} image(s) are in this case. In the \
+                     author and licence are credited below and on the work's page — this applies to {} images. In the \
                      3D museum, the images are reinterpreted as mosaics.",
                     "ARTEON está diseñado y desarrollado por {}, en Rust, con Paquets. Las obras expuestas son de dominio \
                      público: sus artistas murieron en 1955 o antes, y son anteriores a 1931. Cuando la fotografía de una \
                      obra tiene licencia libre (una escultura o un objeto fotografiado por un particular), su autor y su \
-                     licencia se citan abajo y en la página de la obra — {} imagen(es) están en este caso. En el museo 3D, \
+                     licencia se citan abajo y en la página de la obra — es el caso de {} imágenes. En el museo 3D, \
                      las imágenes se reinterpretan como mosaicos.",
                     AUTHOR,
                     attributed
