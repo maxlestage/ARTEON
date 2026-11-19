@@ -667,13 +667,35 @@ def main():
     octets = {c: [] for c in vivants}
     dossier = cache / "vignettes"
 
+    # Un musée qui refuse la machine (le Met répond 403 aux serveurs de GitHub) : après tant
+    # de refus de suite, on ne lui demande plus rien pendant cette moisson ; ses vignettes déjà
+    # dans le cache servent toujours. Sans cela, des milliers d'essais vains (13 minutes).
+    refus = {c: 0 for c in vivants}
+    REFUS_MAX = 200
+
+    def prendre(c, f):
+        deja = (dossier / f"{f['i']}.jpg").exists() and (
+            args.sans_grandes or (cache / f"grandes-{GRANDE}" / f"{f['i']}.jpg").exists())
+        if not deja and refus[c] >= REFUS_MAX:
+            return None
+        o = vignette(f, dossier, avec_grande=not args.sans_grandes)
+        if not deja:
+            refus[c] = 0 if o else refus[c] + 1
+            if refus[c] == REFUS_MAX:
+                dire(f"  {c} : {REFUS_MAX} refus de suite, plus de téléchargement (le cache seul)")
+        return o
+
     def remplir(c, cible):
         with concurrent.futures.ThreadPoolExecutor(args.fils) as pool:
             while len(gardees[c]) < cible and position[c] < len(classees[c]):
                 manque = cible - len(gardees[c])
                 lot = classees[c][position[c]:position[c] + max(manque + manque // 8, 24)]
                 position[c] += len(lot)
-                for f, o in zip(lot, pool.map(lambda f: vignette(f, dossier), lot)):
+                # Pour le site (--sans-grandes), la vignette suffit : l'image en grand vient
+                # du musée. L'exiger retéléchargeait toutes les grandes images à chaque
+                # construction (13 minutes) et écartait les œuvres d'un musée qui refuse la
+                # machine (le Met) alors que leur vignette était déjà dans le cache.
+                for f, o in zip(lot, pool.map(lambda f: prendre(c, f), lot)):
                     if o and len(gardees[c]) < cible:
                         gardees[c].append(f)
                         octets[c].append(o)
@@ -739,8 +761,9 @@ def main():
     # grandit d'une construction à l'autre) ; les autres restent chez les musées.
     fin = time.time() + args.minutes_reserve * 60
     def telecharger(cf):
-        return vignette(cf[1], dossier, avec_grande=False) is not None if time.time() < fin else \
-            (dossier / f"{cf[1]['i']}.jpg").exists()
+        if time.time() < fin and refus.get(cf[0], 0) < REFUS_MAX:
+            return vignette(cf[1], dossier, avec_grande=False) is not None
+        return (dossier / f"{cf[1]['i']}.jpg").exists()
     with concurrent.futures.ThreadPoolExecutor(args.fils) as pool:
         hebergees = list(pool.map(telecharger, candidates))
     # « vu » : la vignette chez le musée, toujours donnée. Le site héberge celles du cache tant
