@@ -34,9 +34,10 @@ from PIL import Image
 
 ICI = Path(__file__).resolve().parent
 PAR_FICHIER = 1000
-# Les vignettes hébergées sur le site (WebP, ~6 Ko) : au plus tant, pour que le site reste
-# sous la limite de GitHub Pages (1 Go). Au-delà, la vignette vient du musée.
-MAX_HEBERGEES = 120_000
+# Les vignettes hébergées sur le site (WebP, ~7 Ko) : au plus tant, pour que le site reste
+# sous la limite de GitHub Pages (1 Go) en laissant ~180 Mo aux catalogues des artistes
+# (dist/api). Au-delà, l'œuvre est montrée quand même : sa vignette vient du musée.
+MAX_HEBERGEES = 65_000
 
 
 def rang(y):
@@ -159,12 +160,14 @@ def main():
     fichier_reserve = collections / "reserve.json"
     if fichier_reserve.exists():
         vus = {o["i"] for o in gardees}
+        sur_le_site = len(gardees)
         for o in json.loads(fichier_reserve.read_text(encoding="utf-8")):
             if o.get("k") not in position or o["i"] in vus:
                 continue
             local = (vignettes / f"{o['i']}.jpg").exists()
-            if local and len(gardees) < MAX_HEBERGEES:
+            if local and sur_le_site < MAX_HEBERGEES:
                 o.pop("vu", None)
+                sur_le_site += 1
             elif not o.get("vu"):
                 continue  # ni vignette hébergée, ni vignette du musée
             vus.add(o["i"])

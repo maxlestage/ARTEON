@@ -504,6 +504,29 @@ mod tests {
     }
 
     #[test]
+    fn un_catalogue_refait_ne_s_appauvrit_pas() {
+        let ancien = json!({ "nom": "X", "manquants": ["met"], "oeuvres": [
+            { "id": "wikidata-1", "musee": "wikidata", "annee": 1650 },
+            { "id": "met-1", "musee": "met", "annee": 1640 },
+            { "id": "chicago-1", "musee": "chicago", "annee": 1630 } ] });
+        // Cette fois Wikidata et le Met n'ont pas répondu ; Chicago a une œuvre de plus.
+        let nouveau = json!({ "nom": "X", "manquants": ["wikidata", "met"], "oeuvres": [
+            { "id": "chicago-1", "musee": "chicago", "annee": 1630 },
+            { "id": "chicago-2", "musee": "chicago", "annee": 1660 } ] });
+        let r = fusionner(Some(&ancien), nouveau.clone());
+        let ids: Vec<String> = r["oeuvres"].as_array().unwrap().iter().map(|o| en_texte(&o["id"])).collect();
+        assert_eq!(ids, ["chicago-1", "met-1", "wikidata-1", "chicago-2"]);
+        assert_eq!(r["total"], 4);
+        // Wikidata avait répondu en entier la fois d'avant : il ne manque plus. Le Met, si.
+        assert_eq!(r["manquants"], json!(["met"]));
+        assert_eq!(r["musees"]["wikidata"], 1);
+        // Rien à compléter : le nouveau catalogue reste tel quel.
+        assert_eq!(fusionner(None, nouveau.clone()), nouveau);
+        let complet = json!({ "nom": "X", "manquants": [], "oeuvres": [] });
+        assert_eq!(fusionner(Some(&ancien), complet.clone()), complet);
+    }
+
+    #[test]
     fn le_domaine_public_se_verifie() {
         assert!(libre("1888", Some(1888), Some(1890), Some(1853)));
         assert!(!libre("1937", Some(1937), Some(1940), None));
@@ -529,6 +552,38 @@ fn fichier_de(cle: &str) -> String {
 /// `dossier/<fichier>.json`, et `dossier/index.json` qui relie chaque nom (et chaque clé) à
 /// son fichier. Les réponses de moins d'une semaine de `cache` sont reprises ; les autres
 /// sont recalculées, `fils` à la fois, tant qu'il reste du temps (`minutes`).
+/// Un catalogue recalculé, complété par celui qu'on gardait : quand un musée n'a pas répondu
+/// cette fois, ses œuvres de la fois d'avant restent (et il ne « manque » plus s'il avait
+/// répondu en entier). Un catalogue ne s'appauvrit donc jamais d'une construction à l'autre.
+fn fusionner(ancien: Option<&Value>, nouveau: Value) -> Value {
+    let Some(ancien) = ancien else { return nouveau };
+    let absents: Vec<String> = nouveau["manquants"].as_array().into_iter().flatten().map(en_texte).collect();
+    let Some(anciennes) = ancien["oeuvres"].as_array().filter(|_| !absents.is_empty()) else { return nouveau };
+    // Sans suivi des musées manquants (anciennes réponses), on ne sait pas s'il était complet.
+    let deja_absents: Option<Vec<String>> = ancien["manquants"].as_array().map(|m| m.iter().map(en_texte).collect());
+    let mut oeuvres: Vec<Value> = nouveau["oeuvres"].as_array().cloned().unwrap_or_default();
+    let mut vues: HashSet<String> = oeuvres.iter().map(|o| en_texte(&o["id"])).collect();
+    for o in anciennes {
+        if absents.contains(&en_texte(&o["musee"])) && vues.insert(en_texte(&o["id"])) {
+            oeuvres.push(o.clone());
+        }
+    }
+    let manquants: Vec<&String> = absents
+        .iter()
+        .filter(|m| deja_absents.as_ref().is_none_or(|d| d.contains(m)))
+        .collect();
+    let musees: serde_json::Map<String, Value> = sources()
+        .iter()
+        .map(|source| {
+            let cle = en_texte(&source["cle"]);
+            let n = oeuvres.iter().filter(|o| o["musee"] == cle.as_str()).count();
+            (cle, json!(n))
+        })
+        .collect();
+    oeuvres.sort_by_key(|o| o["annee"].as_i64().unwrap_or(i64::MAX));
+    json!({ "nom": nouveau["nom"], "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
+}
+
 /// Un texte compressé en gzip.
 fn gzip(texte: &str) -> Option<Vec<u8>> {
     use std::io::Write;
@@ -583,9 +638,9 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     .and_then(|t| t.elapsed().ok());
                 // Les musées qui manquaient à la réponse gardée (une réponse d'avant ce suivi
                 // n'en dit rien : elle se refait).
-                let manquants = gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
-                    .and_then(|t| serde_json::from_str::<Value>(&t).ok())
-                    .and_then(|v| v["manquants"].as_array().map(|m| m.len()));
+                let ancienne = gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
+                    .and_then(|t| serde_json::from_str::<Value>(&t).ok());
+                let manquants = ancienne.as_ref().and_then(|v| v["manquants"].as_array().map(|m| m.len()));
                 let frais = age.is_some_and(|a| a < Duration::from_secs(7 * 24 * 3600)) && manquants.is_some();
                 let corps = if frais {
                     // Une réponse où un musée manquait sert en attendant ; elle se refait à la
@@ -598,7 +653,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     }
                     gardee.as_ref().and_then(|g| std::fs::read_to_string(g).ok())
                 } else if Instant::now() < fin {
-                    let r = oeuvres_de(&noms[0]);
+                    let r = fusionner(ancienne.as_ref(), oeuvres_de(&noms[0]));
                     let texte = r.to_string();
                     if let Some(g) = &gardee {
                         let _ = std::fs::write(g, &texte);
@@ -634,7 +689,10 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 }
                 let (k, noms) = &groupes[i];
                 let nom_fichier = fichier_de(k);
-                let r = oeuvres_de(&noms[0]);
+                let ancienne = cache
+                    .and_then(|c| std::fs::read_to_string(c.join(format!("{nom_fichier}.json"))).ok())
+                    .and_then(|t| serde_json::from_str::<Value>(&t).ok());
+                let r = fusionner(ancienne.as_ref(), oeuvres_de(&noms[0]));
                 let texte = r.to_string();
                 if let Some(c) = cache {
                     let _ = std::fs::write(c.join(format!("{nom_fichier}.json")), &texte);

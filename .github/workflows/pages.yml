@@ -38,8 +38,18 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      actions: write # pour effacer les anciens caches (outils/caches.sh)
     steps:
       - uses: actions/checkout@v4
+
+      # Un seul cache des collections (près de 5 Go) et un seul des catalogues à la fois :
+      # au-delà de 10 Go, GitHub efface les autres caches du dépôt.
+      - name: Ménage des caches
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash outils/caches.sh collections-v1- api-v1-
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -142,12 +152,27 @@ jobs:
         if: always()
         run: echo "jour=$(date -u +%F)" >> "$GITHUB_OUTPUT"
 
+      # Ce qui ne sert pas au site (les images en grand d'anciennes moissons) ne se garde pas.
+      - name: Alléger le cache des collections
+        if: always()
+        continue-on-error: true
+        run: |
+          rm -rf target/collections-cache/grandes-*
+          du -sh target/collections-cache/* 2>/dev/null | sort -h | tail -12 || true
+
       - uses: actions/cache/save@v4
         if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         continue-on-error: true
         with:
           path: target/collections-cache
           key: collections-v1-pages-${{ github.event_name }}-${{ steps.jour.outputs.jour }}
+
+      - name: Ménage des caches (collections)
+        if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash outils/caches.sh collections-v1-
 
       # L'API publiée en fichiers : le catalogue complet de chaque artiste (expositions, puis
       # tous les artistes des collections, des plus riches aux moins riches), calculé par le moteur de l'API
@@ -184,6 +209,13 @@ jobs:
         with:
           path: target/api-cache
           key: api-v1-${{ github.run_id }}
+
+      - name: Ménage des caches (catalogues)
+        if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash outils/caches.sh api-v1-
 
       - name: Vérifier l'export
         run: |

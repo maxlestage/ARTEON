@@ -743,8 +743,10 @@ def main():
             (dossier / f"{cf[1]['i']}.jpg").exists()
     with concurrent.futures.ThreadPoolExecutor(args.fils) as pool:
         hebergees = list(pool.map(telecharger, candidates))
-    reserve = [{**{k: v for k, v in f.items() if not k.startswith("_")}, "k": c,
-                **({} if ok else {"vu": f["_vignette"]})} for (c, f), ok in zip(candidates, hebergees)]
+    # « vu » : la vignette chez le musée, toujours donnée. Le site héberge celles du cache tant
+    # qu'il a de la place (outils/monde_web.py) et prend les autres chez le musée.
+    reserve = [{**{k: v for k, v in f.items() if not k.startswith("_")}, "k": c, "vu": f["_vignette"]}
+               for c, f in candidates]
     if args.sans_grandes:
         (sortie / "reserve.json").write_text(
             json.dumps(reserve, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
