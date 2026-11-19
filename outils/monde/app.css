@@ -204,7 +204,11 @@ html.visionneuse-ouverte { overflow: hidden; }
 
 /* Pendant qu'une grande image se charge (elle n'apparaît qu'entière : style.rs), un anneau
    tourne à sa place : le jeu, la fiche d'une œuvre, la visionneuse. */
-.jeu-image, .monde-image, .visionneuse-image { position: relative; }
+/* (.monde-image est déjà positionnée : collante sur ordinateur ; sur téléphone elle devient
+   relative sans décalage — lui imposer « relative » partout la décalait de son « top » et
+   lui faisait recouvrir le titre.) */
+.jeu-image, .visionneuse-image { position: relative; }
+@media (max-width: 820px) { .monde-image { position: relative; top: auto; } }
 .jeu-image:has(img:not([data-ok]))::after, .monde-image:has(img:not([data-ok]))::after,
 .visionneuse-image:has(img:not([data-ok]))::after {
   content: ""; position: absolute; top: calc(50% - 16px); left: calc(50% - 16px); width: 32px; height: 32px; border-radius: 50%;
