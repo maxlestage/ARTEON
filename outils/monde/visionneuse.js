@@ -28,6 +28,12 @@ function construire() {
     </div>
     <div class="visionneuse-fiche"></div>`;
   document.body.append(boite);
+  boite.querySelector(".visionneuse-fiche").addEventListener("click", (e) => {
+    if (!e.target.closest(".visionneuse-infos")) return;
+    etat.infos = !etat.infos;
+    boite.querySelector(".visionneuse-details").hidden = !etat.infos;
+    e.target.closest(".visionneuse-infos").setAttribute("aria-expanded", String(etat.infos));
+  });
   boite.querySelector(".visionneuse-fermer").addEventListener("click", () => history.back());
   for (const b of boite.querySelectorAll(".visionneuse-fleche")) {
     b.addEventListener("click", () => montrer(etat.i + Number(b.dataset.pas)));
@@ -72,10 +78,21 @@ function montrer(i) {
   const img = boite.querySelector(".visionneuse-image img");
   img.src = o.vignette || o.image || "";
   img.alt = o.titre || "";
+  // La grande image : chez Wikimedia, si la taille demandée est refusée (429, voir
+  // commun.js), on essaie des tailles plus courantes.
   if (o.image && o.image !== o.vignette) {
-    const grande = new Image();
-    grande.onload = () => { if (etat && etat.i === i) img.src = o.image; };
-    grande.src = o.image;
+    const essais = [o.image];
+    if (/wikimedia\.org\//.test(o.image)) {
+      for (const w of ["960", "500"]) { const u = new URL(o.image); u.searchParams.set("width", w); essais.push(u.toString()); }
+    }
+    const essayer = (n) => {
+      if (n >= essais.length || !etat || etat.i !== i) return;
+      const grande = new Image();
+      grande.onload = () => { if (etat && etat.i === i) img.src = essais[n]; };
+      grande.onerror = () => setTimeout(() => essayer(n + 1), 400);
+      grande.src = essais[n];
+    };
+    essayer(0);
   }
   const musee = (musees[o.musee] || o.musee || "").split(" (")[0];
   const faits = [
@@ -85,18 +102,27 @@ function montrer(i) {
     [t("Collection", "Collection", "Colección"), o.fournisseur],
     [t("Source", "Source", "Fuente"), musee],
   ].filter(([, v]) => v);
-  boite.querySelector(".visionneuse-fiche").innerHTML = `
-    <h2>${echapper(o.titre || t("Sans titre", "Untitled", "Sin título"))}</h2>
-    <dl class="monde-cartel">${faits.map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
-    ${o.lien ? `<p><a class="visionneuse-musee" href="${echapper(o.lien)}" target="_blank" rel="noopener">${t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a></p>` : ""}
-    <p class="monde-note">${t("Domaine public · image et fiche chez le musée", "Public domain · image and record hosted by the museum", "Dominio público · imagen y ficha en el museo")}</p>`;
-  boite.querySelector(".visionneuse-fiche").scrollTop = 0;
+  // Comme une galerie de photos : l'image d'abord, le titre dessous ; la fiche complète se
+  // déplie d'un geste (et le reste pour les œuvres suivantes).
+  const fiche = boite.querySelector(".visionneuse-fiche");
+  fiche.innerHTML = `
+    <div class="visionneuse-tete">
+      <div><h2>${echapper(o.titre || t("Sans titre", "Untitled", "Sin título"))}</h2>
+        <p class="visionneuse-sous">${echapper([o.artiste, o.date].filter(Boolean).join(" · "))}</p></div>
+      <button type="button" class="visionneuse-infos" aria-expanded="${etat.infos}">ⓘ ${t("Fiche", "Details", "Ficha")}</button>
+    </div>
+    <div class="visionneuse-details"${etat.infos ? "" : " hidden"}>
+      <dl class="monde-cartel">${faits.map(([k, v]) => `<dt>${k}</dt><dd>${echapper(v)}</dd>`).join("")}</dl>
+      ${o.lien ? `<p><a class="visionneuse-musee" href="${echapper(o.lien)}" target="_blank" rel="noopener">${t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a></p>` : ""}
+      <p class="monde-note">${t("Domaine public · image et fiche chez le musée", "Public domain · image and record hosted by the museum", "Dominio público · imagen y ficha en el museo")}</p>
+    </div>`;
+  fiche.scrollTop = 0;
 }
 
 /** Ouvre la visionneuse sur `oeuvres[i]` (œuvres de l'API : titre, vignette, image, lien…). */
 export function ouvrir(oeuvres, i, musees = {}) {
   if (!boite) construire();
-  etat = { oeuvres, i, musees, depuis: document.activeElement };
+  etat = { oeuvres, i, musees, depuis: document.activeElement, infos: false };
   boite.hidden = false;
   document.documentElement.classList.add("visionneuse-ouverte");
   history.pushState({ visionneuse: true }, "");

@@ -177,3 +177,22 @@ export function choixVue() {
   document.documentElement.classList.toggle("monde-mosaique", vue === "mosaique");
   return choix;
 }
+
+/** Les images de Wikimedia Commons : seules les tailles courantes sont toujours prêtes ; les
+ *  autres sont fabriquées à la demande, et Commons les refuse (429) quand on en demande
+ *  beaucoup d'un coup (une galerie de 200 œuvres). Une image refusée est redemandée en
+ *  250 px (toujours prête), puis en 500, puis encore en 250 un peu plus tard ; sinon la
+ *  carte montre son titre à la place. Installé une fois, pour toutes les pages. */
+function reparerImages() {
+  document.addEventListener("error", (e) => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || !/wikimedia\.org\//.test(img.src)) return;
+    const essais = Number(img.dataset.essais || 0);
+    if (essais >= 3) { img.closest(".monde-carte")?.classList.add("sans-image"); return; }
+    img.dataset.essais = String(essais + 1);
+    const u = new URL(img.src);
+    u.searchParams.set("width", ["250", "500", "250"][essais]);
+    setTimeout(() => { img.src = u.toString(); }, 1200 * essais);
+  }, true);
+}
+if (typeof document !== "undefined") reparerImages();

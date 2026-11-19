@@ -179,3 +179,23 @@ html.visionneuse-ouverte { overflow: hidden; }
 .monde-mosaique .monde-carte img { height: auto; aspect-ratio: 1; }
 .monde-mosaique .monde-carte b, .monde-mosaique .monde-carte span { position: absolute; width: 1px; height: 1px; padding: 0;
   overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Comme une galerie de photos : la mosaïque presque sans joints, d'un bord à l'autre de
+   l'écran sur téléphone ; la visionneuse montre l'image en grand, la fiche se déplie. */
+.monde-mosaique .monde-grille { gap: 2px; }
+.monde-mosaique .monde-carte { border-radius: 0; background: var(--line); }
+@media (max-width: 700px) {
+  .monde-mosaique .monde-grille { width: 100vw; margin-left: calc(50% - 50vw); grid-template-columns: repeat(4, 1fr); gap: 2px; }
+}
+.visionneuse-tete { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.visionneuse-tete h2 { margin: 2px 0 2px; }
+.visionneuse-sous { margin: 0 0 8px; color: #b9bcc6; font-size: .92rem; }
+.visionneuse-infos { flex: none; padding: 8px 14px; font-size: .9rem; }
+.visionneuse-infos[aria-expanded="true"] { background: rgba(255, 255, 255, .22); }
+.visionneuse-details { padding-top: 6px; }
+.visionneuse-image img { border-radius: 0; }
+/* Une image que le musée n'a pas servie (commun.js) : le titre à la place. */
+.monde-carte.sans-image img { visibility: hidden; }
+.monde-mosaique .monde-carte.sans-image b { position: absolute; inset: 0; width: auto; height: auto; padding: 6px;
+  clip-path: none; white-space: normal; display: flex; align-items: center; justify-content: center; text-align: center;
+  font-size: .68rem; line-height: 1.2; color: var(--muted); }
