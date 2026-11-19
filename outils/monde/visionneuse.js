@@ -40,6 +40,14 @@ function construire() {
   }
   document.addEventListener("keydown", (e) => {
     if (boite.hidden) return;
+    // Tab reste dans la visionneuse (la page, derrière, est cachée).
+    if (e.key === "Tab") {
+      const cibles = [...boite.querySelectorAll("button:not([disabled]), a[href]")].filter((x) => x.offsetParent !== null);
+      const premier = cibles[0], dernier = cibles.at(-1);
+      if (!boite.contains(document.activeElement) || (e.shiftKey && document.activeElement === premier)) { e.preventDefault(); (e.shiftKey ? dernier : premier)?.focus(); }
+      else if (!e.shiftKey && document.activeElement === dernier) { e.preventDefault(); premier?.focus(); }
+      return;
+    }
     if (e.key === "Escape") history.back();
     else if (e.key === "ArrowLeft") montrer(etat.i - 1);
     else if (e.key === "ArrowRight") montrer(etat.i + 1);
