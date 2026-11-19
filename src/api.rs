@@ -527,6 +527,16 @@ mod tests {
     }
 
     #[test]
+    fn un_musee_qui_manque_partout_est_en_panne() {
+        let m = |l: &[&str]| l.iter().map(|s| s.to_string()).collect::<Vec<_>>();
+        let gardes = [m(&["met"]), m(&["met"]), m(&["met", "wikidata"]), m(&[])];
+        let pannes = en_panne(&gardes);
+        assert!(pannes.contains("met"));
+        assert!(!pannes.contains("wikidata"));
+        assert!(en_panne(&[]).is_empty());
+    }
+
+    #[test]
     fn le_domaine_public_se_verifie() {
         assert!(libre("1888", Some(1888), Some(1890), Some(1853)));
         assert!(!libre("1937", Some(1937), Some(1940), None));
@@ -584,6 +594,19 @@ fn fusionner(ancien: Option<&Value>, nouveau: Value) -> Value {
     json!({ "nom": nouveau["nom"], "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
 }
 
+/// Les musées « en panne » pour cette machine : ceux qui manquent à plus de la moitié des
+/// catalogues gardés (un musée qui refuse les machines de construction, par exemple). Les
+/// attendre ne sert à rien ; le site les interroge lui-même, depuis le navigateur.
+fn en_panne(manquants: &[Vec<String>]) -> HashSet<String> {
+    let mut absences: HashMap<&str, usize> = HashMap::new();
+    for m in manquants {
+        for source in m {
+            *absences.entry(source.as_str()).or_default() += 1;
+        }
+    }
+    absences.into_iter().filter(|(_, n)| n * 2 > manquants.len()).map(|(s, _)| s.to_owned()).collect()
+}
+
 /// Un texte compressé en gzip.
 fn gzip(texte: &str) -> Option<Vec<u8>> {
     use std::io::Write;
@@ -627,6 +650,51 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     let poids = AtomicUsize::new(0);
     let faits: Mutex<Vec<(usize, String)>> = Mutex::new(Vec::new());
     let a_refaire: Mutex<Vec<usize>> = Mutex::new(Vec::new());
+    // D'abord les reprises : les catalogues gardés (depuis plus d'une heure) où manque un musée
+    // qui d'ordinaire répond. Dans l'ordre des artistes, pendant un quart du temps au plus ;
+    // ce que le musée donne cette fois s'ajoute à ce qu'on avait (`fusionner`).
+    if let Some(c) = cache {
+        let gardes: Vec<(usize, Vec<String>, Duration)> = groupes
+            .iter()
+            .enumerate()
+            .filter_map(|(i, (k, _))| {
+                let g = c.join(format!("{}.json", fichier_de(k)));
+                let age = std::fs::metadata(&g).ok()?.modified().ok()?.elapsed().ok()?;
+                let v: Value = serde_json::from_str(&std::fs::read_to_string(&g).ok()?).ok()?;
+                let m = v["manquants"].as_array()?.iter().map(en_texte).collect();
+                Some((i, m, age))
+            })
+            .collect();
+        let pannes = en_panne(&gardes.iter().map(|(_, m, _)| m.clone()).collect::<Vec<_>>());
+        let reprises: Vec<usize> = gardes
+            .iter()
+            .filter(|(_, m, age)| {
+                *age > Duration::from_secs(3600)
+                    && *age < Duration::from_secs(7 * 24 * 3600)
+                    && m.iter().any(|source| !pannes.contains(source))
+            })
+            .map(|(i, _, _)| *i)
+            .collect();
+        let fin_reprises = Instant::now() + Duration::from_secs(minutes * 15);
+        let suivant = AtomicUsize::new(0);
+        std::thread::scope(|s| {
+            for _ in 0..fils.max(1) {
+                s.spawn(|| loop {
+                    let n = suivant.fetch_add(1, Ordering::SeqCst);
+                    let Some(&i) = reprises.get(n) else { break };
+                    if Instant::now() >= fin_reprises {
+                        break;
+                    }
+                    let (k, noms) = &groupes[i];
+                    let g = c.join(format!("{}.json", fichier_de(k)));
+                    let ancienne = std::fs::read_to_string(&g).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
+                    let r = fusionner(ancienne.as_ref(), oeuvres_de(&noms[0]));
+                    let _ = std::fs::write(&g, r.to_string());
+                    calcules.fetch_add(1, Ordering::SeqCst);
+                });
+            }
+        });
+    }
     std::thread::scope(|s| {
         for _ in 0..fils.max(1) {
             s.spawn(|| loop {
