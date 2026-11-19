@@ -135,3 +135,32 @@
 .monde-total { font-size: 1.05rem; line-height: 1.55; max-width: 44rem; margin: .6rem 0 1.2rem; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
 .monde-total strong { display: block; font-size: 1.35rem; margin-bottom: .2rem; }
 .monde-liees-artiste { margin-top: 2.5rem; }
+
+/* La visionneuse (visionneuse.js) : une œuvre des musées en grand, sans quitter ARTEON. */
+html.visionneuse-ouverte { overflow: hidden; }
+.visionneuse { position: fixed; inset: 0; z-index: 1000; display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+  background: #0c0e14; color: #f4f4f6; }
+.visionneuse[hidden] { display: none; }
+.visionneuse-barre { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: max(10px, env(safe-area-inset-top)) 16px 6px; font-variant-numeric: tabular-nums; color: #c9cbd3; }
+.visionneuse button { font: inherit; color: inherit; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px; cursor: pointer; }
+.visionneuse button:disabled { opacity: .3; cursor: default; }
+.visionneuse-fermer { width: 44px; height: 44px; font-size: 1.2rem; }
+.visionneuse-scene { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px;
+  padding: 0 8px; min-height: 0; touch-action: pan-y; }
+.visionneuse-fleche { width: 44px; height: 64px; font-size: 1.8rem; line-height: 1; }
+.visionneuse-image { margin: 0; height: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.visionneuse-image img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; background: rgba(255, 255, 255, .04); }
+.visionneuse-fiche { max-height: 38vh; overflow-y: auto; padding: 12px 20px max(16px, env(safe-area-inset-bottom));
+  width: min(760px, 100%); margin: 0 auto; box-sizing: border-box; }
+.visionneuse-fiche h2 { font-size: clamp(1.15rem, 3.5vw, 1.6rem); margin: 4px 0 10px; line-height: 1.2; }
+.visionneuse-fiche .monde-cartel { border-color: rgba(255, 255, 255, .15); margin-bottom: 12px; }
+.visionneuse-fiche .monde-cartel dt { border-color: rgba(255, 255, 255, .15); }
+.visionneuse-fiche .monde-cartel dd, .visionneuse-fiche .monde-note { color: #b9bcc6; }
+.visionneuse-musee { color: #9fc1ff; font-weight: 600; }
+@media (max-width: 600px) {
+  .visionneuse-scene { grid-template-columns: minmax(0, 1fr); padding: 0; }
+  .visionneuse-fleche { display: none; }
+  .visionneuse-fiche { max-height: 42vh; }
+}

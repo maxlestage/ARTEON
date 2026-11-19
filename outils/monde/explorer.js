@@ -4,6 +4,7 @@
 
 import { annee, carteOeuvre, chargerCatalogue, echapper, lien, lienPage, nombre, plier, rangSiecle, renseignement, route, rubrique, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
+import { ouvrirAuClic } from "./visionneuse.js";
 import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
@@ -220,8 +221,12 @@ async function artiste(nom) {
       : `<h2>${enDirect}</h2><p class="monde-note">${t("Aucune autre œuvre libre de droits dans les collections ouvertes des musées.", "No other copyright-free works in the museums' open collections.", "Ninguna otra obra libre de derechos en las colecciones abiertas de los museos.")}</p>`;
     // Toutes ses œuvres, d'un coup (des milliers parfois : par paquets, sans bouton).
     const grille = document.getElementById("direct-grille");
-    const carte = (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musee[o.musee] || "").split(" (")[0]}` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
-    if (grille) toutAfficher(grille, nouvelles, carte);
+    // Un clic ouvre l'œuvre en grand dans ARTEON (visionneuse.js) ; le lien mène chez le musée sans JavaScript.
+    const carte = (o) => `<a class="monde-carte" data-oeuvre="${echapper(o.id)}" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musee[o.musee] || "").split(" (")[0]}` : musee[o.musee]].filter(Boolean).join(" · "))}</span></a>`;
+    if (grille) {
+      toutAfficher(grille, nouvelles, carte);
+      ouvrirAuClic(grille, nouvelles, musee);
+    }
   } catch {
     zone.innerHTML = `<h2>${enDirect}</h2><p class="monde-note">${t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not respond. Please try again later.", "Los museos no han respondido. Vuelva a intentarlo más tarde.")}</p>`;
   }

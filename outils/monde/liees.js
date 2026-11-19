@@ -8,6 +8,7 @@
 // Tout s'affiche de soi-même, en entier, sans bouton et sans attendre que l'on descende.
 import { echapper, lien, lienPage, nombre, plier, t, toutAfficher } from "./commun.js";
 import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
+import { ouvrirAuClic } from "./visionneuse.js";
 import { jsonGarde } from "./memoire.js";
 
 const zone = document.getElementById("oeuvres-liees");
@@ -95,7 +96,8 @@ async function ouvrir() {
       } else {
         comptes.musees += oeuvres.length;
         annoncer();
-        derouler(section, oeuvres, (o) => `<a class="monde-carte" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musees[o.musee] || "").split(" (")[0]}` : musees[o.musee]].filter(Boolean).join(" · "))}</span></a>`, compte);
+        ouvrirAuClic(section.querySelector(".monde-grille"), oeuvres, musees);
+        derouler(section, oeuvres, (o) => `<a class="monde-carte" data-oeuvre="${echapper(o.id)}" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre)}</b><span>${echapper([o.date, o.fournisseur && !o.fournisseur.startsWith("http") ? `${o.fournisseur} · ${(musees[o.musee] || "").split(" (")[0]}` : musees[o.musee]].filter(Boolean).join(" · "))}</span></a>`, compte);
       }
     } catch {
       compte.textContent = t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not answer. Try again later.", "Los museos no respondieron. Inténtelo más tarde.");
