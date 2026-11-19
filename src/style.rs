@@ -524,4 +524,22 @@ body.viewer-open { overflow: hidden; }
 .visit-size .chip { padding: .3rem .8rem; border-radius: 999px; font-size: .85rem; text-decoration: none; color: var(--fg); border: 1px solid var(--line); background: var(--card); }
 .visit-size .chip.current { background: var(--accent-fill, var(--accent)); border-color: var(--accent); color: var(--accent-fg, #fff); }
 
+
+/* Sur téléphone, les expositions en deux colonnes compactes : 57 cartes d'une colonne
+   faisaient 46 700 px de défilement. L'image, le sur-titre, le titre, le nombre d'œuvres
+   et les deux boutons restent ; la liste des artistes et le texte sont sur la page de
+   l'exposition. */
+@media (max-width: 640px) {
+  .ex-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .ex-card { border-top-width: 4px; }
+  .ex-cover { height: 128px; }
+  .ex-body { padding: .7rem .75rem .85rem; gap: .3rem; }
+  .ex-body h3 { font-size: 1.02rem; line-height: 1.2; }
+  .ex-body .kicker { font-size: .6rem; letter-spacing: .08em; display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden; }
+  .ex-body .ex-artists, .ex-body > .muted { display: none; }
+  .ex-body .tag { font-size: .68rem; align-self: flex-start; border-radius: 10px; line-height: 1.4; padding: .25rem .5rem; }
+  .ex-body .row { gap: .35rem; margin-top: auto; padding-top: .3rem; flex-wrap: wrap; }
+  .ex-body .row .button { padding: .5em .75em; font-size: .76rem; flex: 1 1 auto; }
+}
 "#;
