@@ -178,8 +178,8 @@
   {
    "cle": "wikidata",
    "nom": "Wikidata (les musées du monde)",
-   "_note": "Peintures, dessins, estampes et photographies (des œuvres en 2D : leur reproduction sur Wikimedia Commons est du domaine public comme elles) de tous les musées décrits dans Wikidata. Requête SPARQL sur query-main.wikidata.org. L'artiste est cherché par son nom exact dans six langues ; la réponse le rend sous le nom demandé (« Katsushika Hokusai » s'appelle « Hokusai » en français : sans cela ses œuvres ne seraient pas reconnues).",
-   "recherche": "https://query-main.wikidata.org/sparql?format=json&query=SELECT%20%3Foeuvre%20%3FoeuvreLabel%20%3Fdemande%20%3Fimg%20%3Fan%20%3Fne%20%3Fmort%20%3FcollLabel%20WHERE%20%7B%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40en%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40fr%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40de%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40nl%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40it%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40es%20%7D%20%3Fartiste%20wdt%3AP31%20wd%3AQ5%20.%20BIND%28%22{q}%22%20AS%20%3Fdemande%29%20VALUES%20%3Ftype%20%7B%20wd%3AQ3305213%20wd%3AQ93184%20wd%3AQ11060274%20wd%3AQ125191%20wd%3AQ18761202%20wd%3AQ15123870%20%7D%20%3Foeuvre%20wdt%3AP170%20%3Fartiste%20%3B%20wdt%3AP31%20%3Ftype%20%3B%20wdt%3AP18%20%3Fimage%20.%20BIND%28REPLACE%28STR%28%3Fimage%29%2C%20%22%5Ehttp%3A%22%2C%20%22https%3A%22%29%20AS%20%3Fimg%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP571%20%3Fdate%20%7D%20BIND%28YEAR%28%3Fdate%29%20AS%20%3Fan%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP569%20%3Fn%20%7D%20BIND%28YEAR%28%3Fn%29%20AS%20%3Fne%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP570%20%3Fm%20%7D%20BIND%28YEAR%28%3Fm%29%20AS%20%3Fmort%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP195%20%3Fcoll%20%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22fr%2Cen%2Cnl%2Cde%2Cit%2Ces%22.%20%7D%20%7D%20LIMIT%206000",
+   "_note": "Peintures, dessins, estampes et photographies (des œuvres en 2D : leur reproduction sur Wikimedia Commons est du domaine public comme elles) de tous les musées décrits dans Wikidata. Requête SPARQL sur query-main.wikidata.org. L'artiste est cherché par son nom exact dans six langues ; la réponse le rend sous le nom demandé (« Katsushika Hokusai » s'appelle « Hokusai » en français : sans cela ses œuvres ne seraient pas reconnues). Une ligne par œuvre (GROUP BY) : sans cela, les combinaisons date × collection × image dépassaient la limite de 6 000 lignes pour les artistes très décrits (Monet) et la coupe, au hasard, changeait le nombre d'œuvres d'une fois à l'autre. Vignettes en 250 px : une taille que Wikimedia a toujours prête (les autres sont parfois refusées, 429).",
+   "recherche": "https://query-main.wikidata.org/sparql?format=json&query=SELECT%20%3Foeuvre%20%28SAMPLE%28%3Fol%29%20AS%20%3Ftitre%29%20%28SAMPLE%28%3Fimg%29%20AS%20%3Fimage%29%20%28MIN%28%3Fan%29%20AS%20%3Fannee%29%20%28MIN%28%3Fne%29%20AS%20%3Fnaissance%29%20%28MIN%28%3Fmort%29%20AS%20%3Fdeces%29%20%28SAMPLE%28%3Fcl%29%20AS%20%3Fcollection%29%20%28SAMPLE%28%3Fdemande%29%20AS%20%3Fnom%29%20WHERE%20%7B%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40en%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40fr%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40de%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40nl%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40it%20%7D%20UNION%20%7B%20%3Fartiste%20rdfs%3Alabel%20%22{q}%22%40es%20%7D%20%3Fartiste%20wdt%3AP31%20wd%3AQ5%20.%20BIND%28%22{q}%22%20AS%20%3Fdemande%29%20VALUES%20%3Ftype%20%7B%20wd%3AQ3305213%20wd%3AQ93184%20wd%3AQ11060274%20wd%3AQ125191%20wd%3AQ18761202%20wd%3AQ15123870%20%7D%20%3Foeuvre%20wdt%3AP170%20%3Fartiste%20%3B%20wdt%3AP31%20%3Ftype%20%3B%20wdt%3AP18%20%3Fimage0%20.%20BIND%28REPLACE%28STR%28%3Fimage0%29%2C%20%22%5Ehttp%3A%22%2C%20%22https%3A%22%29%20AS%20%3Fimg%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP571%20%3Fdate%20%7D%20BIND%28YEAR%28%3Fdate%29%20AS%20%3Fan%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP569%20%3Fn%20%7D%20BIND%28YEAR%28%3Fn%29%20AS%20%3Fne%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP570%20%3Fm%20%7D%20BIND%28YEAR%28%3Fm%29%20AS%20%3Fmort%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP195%20%3Fcoll%20%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22fr%2Cen%2Cnl%2Cde%2Cit%2Ces%22.%20%3Foeuvre%20rdfs%3Alabel%20%3Fol%20.%20%3Fcoll%20rdfs%3Alabel%20%3Fcl%20.%20%7D%20%7D%20GROUP%20BY%20%3Foeuvre%20LIMIT%206000",
    "par_page": 6000,
    "pages": 1,
    "liste": "results.bindings",
@@ -188,21 +188,21 @@
    },
    "champs": {
     "id": "oeuvre.value",
-    "titre": "oeuvreLabel.value",
-    "artiste": "demande.value",
-    "ne": "ne.value",
-    "mort": "mort.value",
-    "date": "an.value",
-    "fin": "an.value",
-    "annee": "an.value",
-    "image": "img.value",
+    "titre": "titre.value",
+    "artiste": "nom.value",
+    "ne": "naissance.value",
+    "mort": "deces.value",
+    "date": "annee.value",
+    "fin": "annee.value",
+    "annee": "annee.value",
+    "image": "image.value",
     "page": "oeuvre.value",
-    "fournisseur": "collLabel.value"
+    "fournisseur": "collection.value"
    },
    "exige": [
     "image"
    ],
-   "vignette": "{image}?width=400",
+   "vignette": "{image}?width=250",
    "grande": "{image}?width=1280",
    "lien": "{page}",
    "delai": 90,
