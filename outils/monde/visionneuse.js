@@ -87,19 +87,25 @@ function montrer(i) {
   img.removeAttribute("data-ok"); // l'image suivante n'apparaît qu'entière (un anneau tourne en attendant)
   img.src = o.vignette || o.image || "";
   img.alt = o.titre || "";
-  // La grande image : chez Wikimedia, si la taille demandée est refusée (429, voir
-  // commun.js), on essaie des tailles plus courantes.
+  // La grande image. Wikimedia refuse parfois une taille (429) quand la galerie vient de lui
+  // demander des centaines de vignettes : on essaie des tailles plus courantes, en laissant
+  // passer de plus en plus de temps, puis de nouveau la grande. En attendant, la vignette
+  // remplit l'écran (app.css).
   if (o.image && o.image !== o.vignette) {
-    const essais = [o.image];
+    const essais = [[o.image, 0]];
     if (/wikimedia\.org\//.test(o.image)) {
-      for (const w of ["960", "500"]) { const u = new URL(o.image); u.searchParams.set("width", w); essais.push(u.toString()); }
+      for (const [w, attente] of [["960", 1500], ["500", 3000], ["1280", 6000], ["960", 9000]]) {
+        const u = new URL(o.image);
+        u.searchParams.set("width", w);
+        essais.push([u.toString(), attente]);
+      }
     }
     const essayer = (n) => {
       if (n >= essais.length || !etat || etat.i !== i) return;
       const grande = new Image();
-      grande.onload = () => { if (etat && etat.i === i) img.src = essais[n]; };
-      grande.onerror = () => setTimeout(() => essayer(n + 1), 400);
-      grande.src = essais[n];
+      grande.onload = () => { if (etat && etat.i === i) img.src = essais[n][0]; };
+      grande.onerror = () => { if (n + 1 < essais.length) setTimeout(() => essayer(n + 1), essais[n + 1][1]); };
+      grande.src = essais[n][0];
     };
     essayer(0);
   }
