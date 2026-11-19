@@ -631,6 +631,10 @@ fn load_image(src: &str) -> js_sys::Promise {
 /// sur toute la liste (de la plus ancienne à la plus récente), leurs vignettes chargées et
 /// transformées en mosaïques. Celles dont l'image ne se laisse pas lire sont sautées.
 async fn load_extras(ex: &'static Exhibition, wanted: usize) -> Vec<crate::aile::Extra> {
+    // Une exposition éphémère n'a pas d'œuvres liées (pas de fichier à demander).
+    if ex.ephemeral || wanted == 0 {
+        return Vec::new();
+    }
     let files = files_path(ex.slug);
     let url = format!("{files}/monde/donnees/expo-{}.json", ex.slug);
     let Ok(bytes) = fetch_bytes(&url).await else {
@@ -662,8 +666,10 @@ async fn load_extras(ex: &'static Exhibition, wanted: usize) -> Vec<crate::aile:
     let remote: Vec<_> = all.iter().filter(|w| w.5.is_some()).collect();
     let mut chosen = spread(hosted, wanted);
     if chosen.len() < wanted {
+        // Le double : certains musées ne laissent pas lire leurs images (pas de CORS), elles
+        // sont sautées ; le surplus est retiré à la fin.
         let missing = wanted - chosen.len();
-        chosen.extend(spread(remote, missing));
+        chosen.extend(spread(remote, missing * 2));
     }
     chosen.sort_by_key(|w| w.0);
     let sources: Vec<String> = chosen
@@ -689,7 +695,8 @@ async fn load_extras(ex: &'static Exhibition, wanted: usize) -> Vec<crate::aile:
         return Vec::new();
     };
     let mut extras = Vec::new();
-    for (k, (_, id, title, artist, year, _)) in chosen.into_iter().enumerate() {
+    let mut from_museum = Vec::new();
+    for (k, (_, id, title, artist, year, remote)) in chosen.into_iter().enumerate() {
         let Ok(image) = images.get(k as u32).dyn_into::<web_sys::HtmlImageElement>() else {
             continue;
         };
@@ -720,6 +727,7 @@ async fn load_extras(ex: &'static Exhibition, wanted: usize) -> Vec<crate::aile:
             continue;
         };
         let (palette, cells) = crate::aile::mosaic(&pixels.data());
+        from_museum.push(remote.is_some());
         extras.push(crate::aile::Extra {
             id,
             title: if title.is_empty() { crate::langue::t("Sans titre", "Untitled", "Sin título").to_owned() } else { title },
@@ -735,6 +743,18 @@ async fn load_extras(ex: &'static Exhibition, wanted: usize) -> Vec<crate::aile:
             rows,
             palette,
             cells,
+        });
+    }
+    // Trop d'œuvres des musées ont répondu : le surplus est retiré, réparti sur la liste.
+    let surplus = extras.len().saturating_sub(wanted);
+    if surplus > 0 {
+        let places: Vec<usize> = from_museum.iter().enumerate().filter(|(_, m)| **m).map(|(i, _)| i).collect();
+        let n = surplus.min(places.len());
+        let dropped: std::collections::HashSet<usize> = (0..n).map(|i| places[i * places.len() / n]).collect();
+        let mut i = 0;
+        extras.retain(|_| {
+            i += 1;
+            !dropped.contains(&(i - 1))
         });
     }
     extras
