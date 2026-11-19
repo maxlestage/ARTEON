@@ -125,7 +125,7 @@ pub async fn export(mut app: App, out: &Path, base: &str) -> io::Result<usize> {
         if res.status() == 200 {
             let mut text = prefix_urls(&res.text(), &base);
             if path == "/sw.js" {
-                text = network_only(&text, &base);
+                text = fresh_code(&network_only(&text, &base));
             }
             write(path, text.as_bytes())?;
         }
@@ -170,6 +170,24 @@ fn network_only(worker: &str, base: &str) -> String {
 }
 
 /// `"ARTEON/"` → `"/ARTEON"`, `"/"` → `""`.
+/// Le code et les données d'abord par le réseau. Le service worker rendait tout de suite ce
+/// qu'il avait en cache (et se mettait à jour pour la fois suivante) : après une mise en
+/// ligne, la première visite recevait la nouvelle page avec l'ancien moteur 3D ou d'anciennes
+/// données. Les images, elles, ne changent pas : le cache d'abord, comme avant. Hors ligne
+/// (ou si le réseau met plus de quatre secondes), le cache sert toujours.
+fn fresh_code(worker: &str) -> String {
+    let before = "if (cached) {\n        event.waitUntil(network.catch(() => {}));\n        return cached;\n      }";
+    let after = "if (cached) {\n        \
+        if (/\\.(jpe?g|png|webp|gif|svg|ico|woff2?)$/.test(url.pathname)) {\n          \
+        event.waitUntil(network.catch(() => {}));\n          return cached;\n        }\n        \
+        return Promise.race([network, new Promise((resolve) => setTimeout(() => resolve(cached), 4000))])\n          \
+        .catch(() => cached);\n      }";
+    if !worker.contains(before) {
+        eprintln!("⚠ le service worker a changé de forme : il garde sa mise à jour différée");
+    }
+    worker.replace(before, after)
+}
+
 fn normalize_base(base: &str) -> String {
     let trimmed = base.trim().trim_matches('/');
     if trimmed.is_empty() {
@@ -308,6 +326,17 @@ mod tests {
             network_only(worker, "/ARTEON"),
             "const NETWORK_ONLY = [\"/ARTEON/monde/\",\"/ARTEON/api/\",\"/ARTEON/catalogue.json\",\"/ARTEON/en/catalogue.json\",\"/ARTEON/es/catalogue.json\"];const OFFLINE = \"/\";"
         );
+    }
+
+    #[test]
+    fn the_worker_asks_the_network_first_for_code_and_data() {
+        let worker = "    caches.match(request).then((cached) => {\n      const network = fetch(request).then((response) => keep(request, response));\n      if (cached) {\n        event.waitUntil(network.catch(() => {}));\n        return cached;\n      }\n      return network;\n    }),";
+        let out = fresh_code(worker);
+        assert!(out.contains("Promise.race([network"), "{out}");
+        assert!(out.contains(r"/\.(jpe?g|png|webp|gif|svg|ico|woff2?)$/.test(url.pathname)"), "{out}");
+        assert!(out.ends_with("return network;\n    }),"), "{out}");
+        // Une autre forme de worker reste telle quelle.
+        assert_eq!(fresh_code("autre"), "autre");
     }
 
     #[test]
