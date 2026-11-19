@@ -440,7 +440,7 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
             let modele = |m: &str| remplir(source[m].as_str().unwrap_or_default(), &valeurs);
             Some(json!({
                 "id": format!("{cle_musee}-{}", valeurs.get("id").cloned().unwrap_or_default()),
-                "titre": valeurs.get("titre").cloned().unwrap_or_default(),
+                "titre": sans_balises(valeurs.get("titre").map(String::as_str).unwrap_or_default()),
                 "artiste": artiste, "date": date, "annee": annee_de(lire_champ("annee")),
                 "technique": valeurs.get("technique").cloned().unwrap_or_default(),
                 "musee": cle_musee, "vignette": modele("vignette"), "image": modele("grande"), "lien": modele("lien"),
@@ -549,6 +549,16 @@ mod tests {
     }
 
     #[test]
+    fn les_titres_perdent_leurs_balises() {
+        assert_eq!(sans_balises("Emblem of the God Shiva (<em>Linga</em>)"), "Emblem of the God Shiva (Linga)");
+        assert_eq!(sans_balises("Tom &amp; Jerry&nbsp;: <i>étude</i>"), "Tom & Jerry : étude");
+        assert_eq!(sans_balises("Hauteur < 3 m, largeur > 2 m"), "Hauteur < 3 m, largeur > 2 m");
+        assert_eq!(sans_balises("Sans rien"), "Sans rien");
+        let c = nettoyer(json!({ "total": 1, "musees": {}, "oeuvres": [{ "id": "a-1", "musee": "a", "titre": "Une <em>étude</em>", "annee": 1 }] }));
+        assert_eq!(c["oeuvres"][0]["titre"], "Une étude");
+    }
+
+    #[test]
     fn un_musee_qui_manque_partout_est_en_panne() {
         let m = |l: &[&str]| l.iter().map(|s| s.to_string()).collect::<Vec<_>>();
         let gardes = [m(&["met"]), m(&["met"]), m(&["met", "wikidata"]), m(&[])];
@@ -584,6 +594,33 @@ fn fichier_de(cle: &str) -> String {
 /// `dossier/<fichier>.json`, et `dossier/index.json` qui relie chaque nom (et chaque clé) à
 /// son fichier. Les réponses de moins d'une semaine de `cache` sont reprises ; les autres
 /// sont recalculées, `fils` à la fois, tant qu'il reste du temps (`minutes`).
+/// Un titre sans balises HTML (« Emblem of Shiva (<em>Linga</em>) », chez certains musées) ni
+/// entités (« &amp; »).
+fn sans_balises(texte: &str) -> String {
+    if !texte.contains(['<', '&']) {
+        return texte.to_owned();
+    }
+    let mut net = String::with_capacity(texte.len());
+    let mut reste = texte;
+    while let Some(i) = reste.find('<') {
+        net.push_str(&reste[..i]);
+        let suite = &reste[i + 1..];
+        let balise = suite.starts_with(|c: char| c.is_ascii_alphabetic() || c == '/');
+        match suite.find('>').filter(|_| balise) {
+            Some(fin) => reste = &suite[fin + 1..],
+            None => {
+                net.push('<');
+                reste = suite;
+            }
+        }
+    }
+    net.push_str(reste);
+    for (entite, signe) in [("&amp;", "&"), ("&quot;", "\""), ("&#39;", "'"), ("&apos;", "'"), ("&nbsp;", " "), ("&lt;", "<"), ("&gt;", ">")] {
+        net = net.replace(entite, signe);
+    }
+    net.split_whitespace().collect::<Vec<_>>().join(" ")
+}
+
 /// Sans les doublons : une œuvre qu'un musée interrogé donne lui-même et qu'un agrégateur
 /// (Wikidata, Europeana) donne aussi : même titre, même année, et la collection indiquée
 /// par l'agrégateur est ce musée. La fiche du musée reste. Deux œuvres de même titre dans
@@ -615,9 +652,20 @@ fn sans_doublons(oeuvres: Vec<Value>) -> Vec<Value> {
 /// Un catalogue gardé, tel qu'il se publie : sans les doublons (les catalogues calculés avant
 /// cette règle en portent encore), le total et les comptes par musée refaits.
 fn nettoyer(mut catalogue: Value) -> Value {
-    let Some(oeuvres) = catalogue["oeuvres"].as_array().cloned() else { return catalogue };
+    let Some(mut oeuvres) = catalogue["oeuvres"].as_array().cloned() else { return catalogue };
     let avant = oeuvres.len();
+    let mut change = false;
+    for o in &mut oeuvres {
+        if let Some(titre) = o["titre"].as_str().filter(|t| t.contains(['<', '&'])) {
+            let net = sans_balises(titre);
+            change |= net != titre;
+            o["titre"] = json!(net);
+        }
+    }
     let oeuvres = sans_doublons(oeuvres);
+    if change && oeuvres.len() == avant {
+        catalogue["oeuvres"] = json!(oeuvres.clone());
+    }
     if oeuvres.len() != avant {
         for source in sources() {
             let cle = en_texte(&source["cle"]);

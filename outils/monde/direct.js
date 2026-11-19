@@ -69,6 +69,13 @@ export async function oeuvresEnDirect(nom, cleNom, alias = {}) {
   return resultat;
 }
 
+/** Un titre sans balises HTML ni entités (comme `sans_balises` de src/api.rs). */
+function sansBalises(texte) {
+  if (!/[<&]/.test(texte || "")) return texte || "";
+  const entites = { "&amp;": "&", "&quot;": '"', "&#39;": "'", "&apos;": "'", "&nbsp;": " ", "&lt;": "<", "&gt;": ">" };
+  return texte.replace(/<\/?[a-zA-Z][^>]*>/g, "").replace(/&(amp|quot|#39|apos|nbsp|lt|gt);/g, (e) => entites[e]).replace(/\s+/g, " ").trim();
+}
+
 /** Sans les doublons (comme `sans_doublons` de src/api.rs) : une œuvre qu'un musée interrogé
  *  donne lui-même et qu'un agrégateur (Wikidata, Europeana) donne aussi : même titre, même
  *  année, et la collection indiquée par l'agrégateur est ce musée. La fiche du musée reste. */
@@ -172,7 +179,7 @@ async function chezLesMusees(nom, cleNom, alias, seulement) {
       const date = enTexte(champ(f, "date"));
       if (!libre(date, anneeDe(champ(f, "fin")), mort, ne)) continue;
       const valeurs = Object.fromEntries(Object.keys(source.champs).map((k) => [k, enTexte(champ(f, k))]));
-      out.push({ id: `${source.cle}-${valeurs.id}`, titre: valeurs.titre, artiste, date, annee: anneeDe(champ(f, "annee")),
+      out.push({ id: `${source.cle}-${valeurs.id}`, titre: sansBalises(valeurs.titre), artiste, date, annee: anneeDe(champ(f, "annee")),
         technique: valeurs.technique, musee: source.cle, vignette: remplir(source.vignette, valeurs),
         image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs), fournisseur: valeurs.fournisseur && !valeurs.fournisseur.startsWith("http") ? valeurs.fournisseur : null });
     }
