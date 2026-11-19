@@ -266,29 +266,81 @@ impl Exhibition {
         self.sculptures.iter().filter(|s| s.room == room).collect()
     }
 
-    /// Les années couvertes par ses œuvres (« 1885–1890 »).
+    /// Les années couvertes par ses œuvres (« 1885–1890 », « 2090 av. J.-C. – 120 »).
     pub fn years(&self) -> String {
-        let numbers: Vec<u32> = self
+        let numbers: Vec<i32> = self
             .artworks
             .iter()
             .map(|a| a.year)
             .chain(self.sculptures.iter().map(|s| s.year))
-            .filter_map(|y| {
-                y.chars()
-                    .filter(char::is_ascii_digit)
-                    .take(4)
-                    .collect::<String>()
-                    .parse()
-                    .ok()
-            })
-            .filter(|y| *y > 999)
+            .flat_map(years_in)
             .collect();
-        match (numbers.iter().min(), numbers.iter().max()) {
-            (Some(first), Some(last)) if first != last => format!("{first}–{last}"),
-            (Some(year), _) => year.to_string(),
+        let bc = |y: i32| crate::tf!("{} av. J.-C.", "{} BC", "{} a. C.", -y);
+        match (numbers.iter().min().copied(), numbers.iter().max().copied()) {
+            (Some(first), Some(last)) if first == last => if first < 0 { bc(first) } else { first.to_string() },
+            (Some(first), Some(last)) if last < 0 => format!("{}–{}", -first, bc(last)),
+            (Some(first), Some(last)) if first < 0 => format!("{} – {last}", bc(first)),
+            (Some(first), Some(last)) => format!("{first}–{last}"),
             _ => "—".into(),
         }
     }
+}
+
+/// Les années d'un texte de date, négatives avant notre ère : « vers 1275 av. J.-C. » →
+/// [-1275] ; « 90–120 apr. J.-C. » → [90, 120] ; « 1885–90 » → [1885, 1890] ; « vers
+/// 50–40 av. J.-C. » → [-50, -40]. Les siècles (« XIXᵉ siècle », « 19th century ») et les
+/// nombres de plus de quatre chiffres ne sont pas des années.
+pub fn years_in(text: &str) -> Vec<i32> {
+    let lower = text.to_lowercase();
+    let era = |markers: &[&str], from: usize| markers.iter().filter_map(|m| lower[from..].find(m)).min();
+    let chars: Vec<(usize, char)> = lower.char_indices().collect();
+    let mut years: Vec<i32> = Vec::new();
+    let mut i = 0;
+    while i < chars.len() {
+        if !chars[i].1.is_ascii_digit() {
+            i += 1;
+            continue;
+        }
+        let start = i;
+        while i < chars.len() && chars[i].1.is_ascii_digit() {
+            i += 1;
+        }
+        let end = chars.get(i).map_or(lower.len(), |c| c.0);
+        let digits = &lower[chars[start].0..end];
+        let after = &lower[end..];
+        let century = ["th", "st ", "nd ", "rd ", "e ", "ᵉ", "er ", "ᵉʳ", "º", "o siglo"].iter().any(|s| after.starts_with(s))
+            || after.trim_start().starts_with("siècle");
+        // Ni un âge (« 4,5 milliards d'années », « 45 millions d'années »), ni la date d'une
+        // photographie (« ; photographie de 1974 »).
+        let head = &lower[..chars[start].0];
+        let age = after.trim_start().starts_with("milli") || after.trim_start().starts_with("billion")
+            || after.trim_start().starts_with("mil millones")
+            || (after.starts_with([',', '.']) && after[1..].starts_with(|c: char| c.is_ascii_digit()))
+            || (head.ends_with([',', '.']) && head[..head.len() - 1].ends_with(|c: char| c.is_ascii_digit()));
+        let photograph = head.rsplit(';').next().is_some_and(|clause| clause.contains("photo"));
+        let Ok(mut year) = digits.parse::<i32>() else { continue };
+        if digits.len() > 4 || century || year == 0 || age || photograph {
+            continue;
+        }
+        // « 1885–90 » : la fin d'une plage, écrite sur deux chiffres.
+        let dashed = lower[..chars[start].0].trim_end().ends_with(['–', '-', '/']);
+        if let Some(&previous) = years.last().filter(|p| digits.len() <= 2 && dashed && **p >= 1000) {
+            let full = previous / 100 * 100 + year;
+            year = if full < previous { full + 100 } else { full };
+        }
+        // Avant notre ère si le premier repère d'ère après le nombre le dit.
+        let before = era(&["av. j", "avant j", "b.c", " bc", "a. c.", "a.c.", "av. n"], end);
+        let common = era(&["apr. j", "ap. j", "a.d", " ad", "d. c.", "d.c."], end);
+        let negative = match (before, common) {
+            (Some(b), Some(c)) => b < c,
+            (Some(_), None) => true,
+            _ => false,
+        };
+        if year <= 2100 {
+            years.push(if negative { -year } else { year });
+        }
+    }
+    years
 }
 
 /// Un mur d'une salle.
@@ -605,6 +657,31 @@ pub fn css_rgb([r, g, b]: [u8; 3]) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// Les dates se lisent comme elles sont écrites (et non « 90–120 » → 9012).
+    #[test]
+    fn years_are_read_as_written() {
+        assert_eq!(years_in("vers 1275 av. J.-C."), [-1275]);
+        assert_eq!(years_in("90–120 apr. J.-C."), [90, 120]);
+        assert_eq!(years_in("vers 883–859 av. J.-C."), [-883, -859]);
+        assert_eq!(years_in("vers 50 av. J.-C. – 20 apr. J.-C."), [-50, 20]);
+        assert_eq!(years_in("1885–90"), [1885, 1890]);
+        assert_eq!(years_in("Vers 1857–61"), [1857, 1861]);
+        assert_eq!(years_in("1899-1901"), [1899, 1901]);
+        assert_eq!(years_in("c. 540–530 BC"), [-540, -530]);
+        assert_eq!(years_in("hacia 1405"), [1405]);
+        assert_eq!(years_in("IIIᵉ–IIᵉ siècle av. J.-C."), Vec::<i32>::new());
+        assert_eq!(years_in("19th century"), Vec::<i32>::new());
+        assert_eq!(years_in("Formée il y a environ 4,5 milliards d'années"), Vec::<i32>::new());
+        assert_eq!(years_in("Éocène, il y a environ 45 millions d'années"), Vec::<i32>::new());
+        assert_eq!(years_in("connu dès le XVIIᵉ siècle ; taille attestée en 1812 ; photographie de 1974"), [1812]);
+        assert_eq!(years_in("première moitié du Iᵉʳ siècle apr. J.-C."), Vec::<i32>::new());
+        // Aucune exposition n'annonce une année impossible.
+        for ex in EXHIBITIONS {
+            let all: Vec<i32> = ex.artworks.iter().flat_map(|a| years_in(a.year)).collect();
+            assert!(all.iter().all(|y| (-9999..=2030).contains(y)), "{} : {all:?}", ex.slug);
+        }
+    }
 
     /// Chaque œuvre a sa notice complète, chaque artiste sa biographie, et chaque œuvre
     /// sa page (des noms uniques).
