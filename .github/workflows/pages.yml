@@ -49,7 +49,7 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: bash outils/caches.sh collections-v1- api-v1-
+        run: bash outils/caches.sh collections-v1- api-v1- ephemeres-v1-
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -59,15 +59,42 @@ jobs:
 
       # Les expositions éphémères de la semaine, d'après les collections ouvertes des musées.
       # Un musée qui ne répond pas est sauté ; si le résultat ne se compile pas, on s'en passe.
+      # Elles changent chaque semaine : faites une fois par semaine (le lundi, ou à la première
+      # construction de la semaine), puis reprises du cache (3 à 7 minutes de gagnées).
+      - name: La semaine (pour la clé du cache)
+        id: semaine
+        run: echo "semaine=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache/restore@v4
+        id: ephemeres
+        with:
+          path: |
+            expositions/ephemere-*.toml
+            public/tableaux/ephemere-*
+          key: ephemeres-v1-${{ steps.semaine.outputs.semaine }}
+
       - name: Expositions éphémères
         run: |
-          # 25 minutes au plus : un musée qui ne répond plus ne bloque pas la mise en ligne.
-          timeout 1500 python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
+          if [ "${{ steps.ephemeres.outputs.cache-hit }}" = "true" ]; then
+            echo "les expositions éphémères de la semaine viennent du cache :"; ls expositions/ephemere-*.toml || true
+          else
+            # 25 minutes au plus : un musée qui ne répond plus ne bloque pas la mise en ligne.
+            timeout 1500 python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
+          fi
           if ! cargo check --quiet --lib; then
             echo "::warning::les expositions éphémères ne se compilent pas : elles sont retirées"
             rm -f expositions/ephemere-*.toml
             rm -rf public/tableaux/ephemere-*
           fi
+
+      - uses: actions/cache/save@v4
+        if: steps.ephemeres.outputs.cache-hit != 'true' && hashFiles('expositions/ephemere-*.toml') != ''
+        continue-on-error: true
+        with:
+          path: |
+            expositions/ephemere-*.toml
+            public/tableaux/ephemere-*
+          key: ephemeres-v1-${{ steps.semaine.outputs.semaine }}
 
       # wasm-bindgen-cli doit avoir exactement la version de Cargo.lock : on télécharge
       # le binaire officiel de cette version (pas de compilation, quelques secondes).

@@ -24,6 +24,7 @@ import concurrent.futures
 import html
 import json
 import re
+import os
 import shutil
 import sys
 import time
@@ -131,10 +132,17 @@ def oeuvres_liees(catalogue, gardees):
 
 
 def en_webp(chemins):
-    """Une vignette JPEG du cache, réécrite en WebP (qualité 50 : ~6 Ko au lieu de ~10)."""
-    source, cible = chemins
-    with Image.open(source) as image:
-        image.convert("RGB").save(cible, "WEBP", quality=50, method=6)
+    """Une vignette JPEG du cache, réécrite en WebP (qualité 50 : ~6 Ko au lieu de ~10).
+    Le WebP est gardé à côté, dans le cache (`vignettes-webp/`) : la construction suivante
+    le reprend tel quel au lieu de le refaire (65 000 conversions, 4 minutes)."""
+    source, garde, cible = chemins
+    if not (garde.exists() and garde.stat().st_size > 0 and garde.stat().st_mtime >= source.stat().st_mtime):
+        with Image.open(source) as image:
+            image.convert("RGB").save(garde, "WEBP", quality=50, method=6)
+    try:
+        os.link(garde, cible)
+    except OSError:
+        shutil.copyfile(garde, cible)
 
 
 def main():
@@ -175,8 +183,10 @@ def main():
     a_convertir = [o["i"] for o in gardees if not o.get("vu")]
     hebergees = len(a_convertir)
     with concurrent.futures.ProcessPoolExecutor() as pool:
-        list(pool.map(en_webp, [(vignettes / f"{i}.jpg", sortie / "v" / f"{i}.webp") for i in a_convertir],
-                      chunksize=500))
+        gardes = vignettes.parent / "vignettes-webp"
+        gardes.mkdir(exist_ok=True)
+        list(pool.map(en_webp, [(vignettes / f"{i}.jpg", gardes / f"{i}.webp", sortie / "v" / f"{i}.webp")
+                                for i in a_convertir], chunksize=500))
 
     liste = [[o["t"], o.get("a", ""), o.get("d", ""), o.get("y"), o.get("c", "Autres objets"),
               position[o["k"]], o.get("r")] + ([o["vu"]] if o.get("vu") else []) for o in gardees]
