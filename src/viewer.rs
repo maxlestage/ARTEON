@@ -355,6 +355,7 @@ pub fn attach(
                     Box::new(move |cc| {
                         // Le thème sombre, lisible sur la scène.
                         cc.egui_ctx.set_theme(eframe::egui::Theme::Dark);
+                        cc.egui_ctx.set_fonts(fonts());
                         Ok(Box::new(ui))
                     }),
                 )
@@ -811,4 +812,20 @@ pub fn start_visit(canvas: &Element, ex: &'static Exhibition, control: SharedCon
         }
     });
     Visit { scene, commands, cancelled }
+}
+
+/// Les polices de l'interface : Ubuntu Light (la police d'egui, licence UFL, assets/fonts/)
+/// pour tout le texte. Seule elle est embarquée : les emoji des boutons viennent des polices
+/// du navigateur, et la police à chasse fixe d'egui ne sert jamais.
+fn fonts() -> eframe::egui::FontDefinitions {
+    use eframe::egui::{FontData, FontDefinitions, FontFamily};
+    let mut fonts = FontDefinitions::empty();
+    fonts.font_data.insert(
+        "Ubuntu-Light".to_owned(),
+        std::sync::Arc::new(FontData::from_static(include_bytes!("../assets/fonts/Ubuntu-Light.ttf"))),
+    );
+    for family in [FontFamily::Proportional, FontFamily::Monospace] {
+        fonts.families.insert(family, vec!["Ubuntu-Light".to_owned()]);
+    }
+    fonts
 }
