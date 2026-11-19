@@ -383,19 +383,19 @@ def main():
                        f"{fine(n)} œuvres de plus dans les collections du monde",
                        "Les œuvres des mêmes artistes et du même sujet dans les grands musées, de la plus ancienne à la plus récente.",
                        f"Toutes les œuvres : {fine(propres + n)}…",
-                       f"Cette page les montre toutes : les {propres} de la visite 3D d'abord, puis celles des collections du monde, puis toutes les œuvres de chaque artiste dans les musées du monde. Elles s'affichent à mesure que l'on descend."),
+                       f"Cette page les montre toutes : les {propres} de la visite 3D d'abord, puis celles des collections du monde, puis toutes les œuvres de chaque artiste dans les musées du monde. Tout s'affiche de soi-même : touchez une œuvre pour la voir en grand."),
                 "en": ("All the works of the exhibition and its artists",
                        f"The {propres} works on the tour, {fine(n)} related works in the world collections, and every work by each artist in the museums, all on one page →",
                        f"{fine(n)} more works in the world collections",
                        "Works by the same artists and on the same subject in the great museums, from oldest to most recent.",
                        f"All the works: {fine(propres + n)}…",
-                       f"This page shows them all: the {propres} on the 3D tour first, then those in the world collections, then every work by each artist in the world's museums. They appear as you scroll down."),
+                       f"This page shows them all: the {propres} on the 3D tour first, then those in the world collections, then every work by each artist in the world's museums. Everything loads by itself: tap a work to see it full screen."),
                 "es": ("Todas las obras de la exposición y de sus artistas",
                        f"Las {propres} obras de la visita, {fine(n)} obras relacionadas en las colecciones del mundo y todas las obras de cada artista en los museos, en la misma página →",
                        f"{fine(n)} obras más en las colecciones del mundo",
                        "Obras de los mismos artistas y del mismo tema en los grandes museos, de la más antigua a la más reciente.",
                        f"Todas las obras: {fine(propres + n)}…",
-                       f"Esta página las muestra todas: primero las {propres} de la visita 3D, luego las de las colecciones del mundo y después todas las obras de cada artista en los museos del mundo. Aparecen a medida que se baja."),
+                       f"Esta página las muestra todas: primero las {propres} de la visita 3D, luego las de las colecciones del mundo y después todas las obras de cada artista en los museos del mundo. Todo se muestra solo: toque una obra para verla en grande."),
             }[code]
             css = f'<link rel="stylesheet" href="{base}/monde/app.css"/></head>'
             # La galerie 3D : les puces ne proposent que les œuvres liées qui existent.
