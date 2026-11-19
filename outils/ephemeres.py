@@ -370,6 +370,32 @@ def largeur_pour(oeuvre, ratio):
     return round(min(largeur, 2.6 / max(ratio, 0.1)), 2)
 
 
+# Les images des musées arrivent parfois très grandes (350 Ko pour une couverture de
+# l'accueil) : réduites comme celles des autres expositions (1 000 px au plus, JPEG 82).
+COTE_MAX, QUALITE_JPEG = 1000, 82
+
+
+def alleger(image):
+    """L'image réduite à COTE_MAX px de côté, si Pillow est là et qu'elle y gagne ; sinon telle quelle."""
+    try:
+        import io
+        from PIL import Image
+    except ImportError:
+        return image
+    try:
+        with Image.open(io.BytesIO(image)) as im:
+            if max(im.size) <= COTE_MAX and len(image) <= 150_000:
+                return image
+            im = im.convert("RGB")
+            im.thumbnail((COTE_MAX, COTE_MAX), Image.LANCZOS)
+            sortie = io.BytesIO()
+            im.save(sortie, "JPEG", quality=QUALITE_JPEG, optimize=True, progressive=True)
+            reduite = sortie.getvalue()
+            return reduite if len(reduite) < len(image) else image
+    except Exception:
+        return image
+
+
 def monter(musee, semaine, graine):
     alea = random.Random(f"{graine}-{musee['slug']}")
     print(f"• {musee['musee']}")
@@ -389,6 +415,7 @@ def monter(musee, semaine, graine):
         except Exception as erreur:
             print(f"  image introuvable : {o['titre']} ({erreur})", file=sys.stderr)
             continue
+        image = alleger(image)
         taille = taille_jpeg(image)
         if not taille or taille[0] < 300:
             continue

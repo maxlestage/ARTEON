@@ -49,7 +49,7 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: bash outils/caches.sh collections-v1- api-v1- ephemeres-v1-
+        run: bash outils/caches.sh collections-v1- api-v1- ephemeres-v1- ephemeres-v2-
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -71,13 +71,16 @@ jobs:
           path: |
             expositions/ephemere-*.toml
             public/tableaux/ephemere-*
-          key: ephemeres-v1-${{ steps.semaine.outputs.semaine }}
+          key: ephemeres-v2-${{ steps.semaine.outputs.semaine }}
 
       - name: Expositions éphémères
         run: |
           if [ "${{ steps.ephemeres.outputs.cache-hit }}" = "true" ]; then
             echo "les expositions éphémères de la semaine viennent du cache :"; ls expositions/ephemere-*.toml || true
           else
+            # Pillow réduit les images trop grandes (sinon elles restent telles quelles).
+            python3 -c "import PIL" 2>/dev/null || python3 -m pip install --quiet pillow \
+              || python3 -m pip install --quiet --break-system-packages pillow || true
             # 25 minutes au plus : un musée qui ne répond plus ne bloque pas la mise en ligne.
             timeout 1500 python3 outils/ephemeres.py || echo "pas d'exposition éphémère cette fois"
           fi
@@ -94,7 +97,7 @@ jobs:
           path: |
             expositions/ephemere-*.toml
             public/tableaux/ephemere-*
-          key: ephemeres-v1-${{ steps.semaine.outputs.semaine }}
+          key: ephemeres-v2-${{ steps.semaine.outputs.semaine }}
 
       # wasm-bindgen-cli doit avoir exactement la version de Cargo.lock : on télécharge
       # le binaire officiel de cette version (pas de compilation, quelques secondes).
