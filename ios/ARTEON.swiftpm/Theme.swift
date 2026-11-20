@@ -30,6 +30,8 @@ enum Route: Hashable {
     case themes
     case collections
     case techniques
+    case styles
+    case subject(key: String, name: String, family: String)
     case quiz
     case settings
     case building(String)

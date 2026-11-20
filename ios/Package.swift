@@ -17,7 +17,7 @@ let package = Package(
                 "Musee", "Assets.xcassets", "Package.swift", "ARTEONApp.swift", "ArtistsView.swift",
                 "ExhibitionView.swift", "ExploreView.swift", "GalleryView.swift", "HomeView.swift",
                 "MainView.swift", "Narrator.swift", "FloorPlanView.swift", "MuseumsView.swift", "CollectionsView.swift", "QuizView.swift", "SearchView.swift",
-                "SettingsView.swift", "SlideshowView.swift", "Theme.swift", "WorkView.swift", "LiveGallery.swift",
+                "SettingsView.swift", "SlideshowView.swift", "Theme.swift", "WorkView.swift", "LiveGallery.swift", "StylesView.swift",
             ],
             sources: ["Models.swift", "Library.swift", "CatalogueStore.swift", "Collections.swift", "Api.swift", "SessionStore.swift", "Language.swift"]
         ),

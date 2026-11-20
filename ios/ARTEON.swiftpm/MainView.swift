@@ -161,6 +161,10 @@ struct RouteView: View {
             GroupsView(catalogue: catalogue, kind: .collections)
         case .techniques:
             GroupsView(catalogue: catalogue, kind: .techniques)
+        case .styles:
+            StylesView()
+        case .subject(let key, let name, let family):
+            SubjectView(key: key, name: name, family: family)
         case .quiz:
             QuizView(catalogue: catalogue)
         case .settings:
