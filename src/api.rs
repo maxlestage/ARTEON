@@ -382,24 +382,30 @@ fn interroger_par(source: &Value, demande: Demande) -> (Vec<Value>, bool) {
                 static FILE: Mutex<Option<Instant>> = Mutex::new(None);
                 let mut repos = FILE.lock().unwrap_or_else(|e| e.into_inner());
                 if repos.is_some_and(|fin| Instant::now() < fin) {
-                    None
+                    Err(Some(429))
                 } else {
                     let r = demander(&url, &entetes, delai, 0);
                     if r == Err(Some(429)) {
                         *repos = Some(Instant::now() + Duration::from_secs(60));
                     }
                     std::thread::sleep(Duration::from_millis(1200));
-                    r.ok()
+                    r
                 }
             } else {
-                lire_en(&url, &entetes, delai)
+                demander(&url, &entetes, delai, 2)
             };
-            // Un sujet que le service officiel n'a pas donné (panne, limite, requête trop
-            // longue pour lui) : le repli décrit avec la requête (un miroir).
-            let reponse = reponse.or_else(|| {
-                let repli = source["sujet_repli"].as_str().filter(|_| matches!(demande, Demande::Sujet(_)))?;
-                lire_en(&repli.replace("{s}", &encoder(&q)), &entetes, 120)
-            });
+            // Un sujet que le premier service n'a pas donné (une panne) : le repli décrit avec
+            // la requête. Pas quand il demande seulement de ralentir (429) : il répondra dans
+            // une minute, alors que le repli (le service officiel de Wikidata) met une minute
+            // à abandonner cette requête.
+            let reponse = match reponse {
+                Ok(r) => Some(r),
+                Err(Some(429)) => None,
+                Err(_) => source["sujet_repli"]
+                    .as_str()
+                    .filter(|_| matches!(demande, Demande::Sujet(_)))
+                    .and_then(|repli| lire_en(&repli.replace("{s}", &encoder(&q)), &entetes, 120)),
+            };
             let Some(r) = reponse else {
                 echec |= page == 1;
                 break;
