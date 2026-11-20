@@ -16,6 +16,7 @@
 //! ```
 
 use std::collections::{HashMap, HashSet};
+use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::{Mutex, OnceLock};
 use std::time::{Duration, Instant};
 
@@ -231,11 +232,13 @@ fn client() -> &'static ureq::Agent {
     })
 }
 
-fn lire(url: &str, entetes: &[(&str, &str)]) -> Option<Value> {
-    lire_en(url, entetes, 20)
+fn lire_en(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Option<Value> {
+    demander(url, entetes, secondes).ok()
 }
 
-fn lire_en(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Option<Value> {
+/// La réponse d'un musée, ou son refus : le code HTTP (404 : la fiche n'existe plus ; 403,
+/// 429… : il ne veut pas répondre), `None` s'il n'a rien répondu de lisible.
+fn demander(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Result<Value, Option<u16>> {
     let mut requete = client().get(url).timeout(Duration::from_secs(secondes));
     for (k, v) in entetes {
         requete = requete.set(k, v);
@@ -244,18 +247,21 @@ fn lire_en(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Option<Value> 
     let mut essai = 0;
     let texte = loop {
         match requete.clone().call() {
-            Ok(r) => break r.into_string().ok()?,
+            Ok(r) => break r.into_string().map_err(|_| None)?,
             Err(ureq::Error::Status(code, _)) if (code == 429 || code == 503) && essai < 2 => {
                 essai += 1;
                 std::thread::sleep(Duration::from_secs(3 * essai));
             }
             Err(e) => {
                 eprintln!("api : {url} : {e}");
-                return None;
+                return Err(match e {
+                    ureq::Error::Status(code, _) => Some(code),
+                    _ => None,
+                });
             }
         }
     };
-    serde_json::from_str(&texte).ok()
+    serde_json::from_str(&texte).map_err(|_| None)
 }
 
 fn encoder(texte: &str) -> String {
@@ -376,13 +382,37 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
         ids.retain(|id| vus.insert(en_texte(id)));
         ids.truncate(source["max"].as_u64().unwrap_or(3000) as usize);
         let taille = ids.len().div_ceil(16).max(1);
+        // Une fiche refusée (403, 429, pas de réponse) : le musée n'a pas tout donné, et le
+        // catalogue le dit (`manquants`) pour que le site lui redemande, depuis le navigateur.
+        // Avant, il passait pour complet : 40 œuvres du Met pour Degas au lieu de 97. Une
+        // fiche qui n'existe plus (404) n'est pas un refus. Après 8 refus d'affilée, on
+        // n'insiste pas : le musée refuse cette machine, et 3 000 demandes de plus n'y
+        // changeront rien.
+        let refus = AtomicBool::new(false);
+        let affilee = AtomicUsize::new(0);
         fiches = std::thread::scope(|s| {
             ids.chunks(taille)
                 .map(|lot| {
-                    let entetes = &entetes;
+                    let (entetes, refus, affilee) = (&entetes, &refus, &affilee);
                     s.spawn(move || {
                         lot.iter()
-                            .filter_map(|id| lire(&detail.replace("{id}", &en_texte(id)), entetes))
+                            .filter_map(|id| {
+                                if affilee.load(Ordering::SeqCst) >= 8 {
+                                    return None;
+                                }
+                                match demander(&detail.replace("{id}", &en_texte(id)), entetes, 20) {
+                                    Ok(fiche) => {
+                                        affilee.store(0, Ordering::SeqCst);
+                                        Some(fiche)
+                                    }
+                                    Err(Some(404)) => None,
+                                    Err(_) => {
+                                        refus.store(true, Ordering::SeqCst);
+                                        affilee.fetch_add(1, Ordering::SeqCst);
+                                        None
+                                    }
+                                }
+                            })
                             .collect::<Vec<_>>()
                     })
                 })
@@ -391,6 +421,7 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
                 .flat_map(|t| t.join().unwrap_or_default())
                 .collect()
         });
+        echec |= refus.load(Ordering::SeqCst);
     }
 
     let champs = source["champs"].as_object().cloned().unwrap_or_default();
@@ -559,6 +590,29 @@ mod tests {
     }
 
     #[test]
+    fn un_catalogue_garde_se_complete_par_un_seul_musee() {
+        let garde = json!({ "nom": "Edgar Degas", "total": 2, "musees": { "met": 1, "wikidata": 1 }, "manquants": [],
+            "oeuvres": [{ "id": "met-1", "musee": "met", "titre": "Danseuse", "annee": 1880 },
+                        { "id": "wikidata-Q1", "musee": "wikidata", "titre": "La Classe de danse", "annee": 1874 }] });
+        let nouvelles = vec![json!({ "id": "met-1", "musee": "met", "titre": "Danseuse", "annee": 1880 }),
+                             json!({ "id": "met-2", "musee": "met", "titre": "Le Tub", "annee": 1886 })];
+        // Le musée a tout donné : ses œuvres nouvelles s'ajoutent, rien ne manque.
+        let c = completer(garde.clone(), "met", nouvelles.clone(), false);
+        assert_eq!(c["total"], 3);
+        assert_eq!(c["musees"]["met"], 2);
+        assert_eq!(c["manquants"], json!([]));
+        assert_eq!(c["oeuvres"][0]["id"], "wikidata-Q1"); // dans l'ordre des années
+        // Il a encore refusé des fiches : ce qu'il a donné reste, et il « manque ».
+        let c = completer(garde.clone(), "met", nouvelles, true);
+        assert_eq!(c["total"], 3);
+        assert_eq!(c["manquants"], json!(["met"]));
+        // Rien de nouveau et un refus : le catalogue ne perd rien.
+        let c = completer(garde, "met", Vec::new(), true);
+        assert_eq!(c["total"], 2);
+        assert_eq!(c["manquants"], json!(["met"]));
+    }
+
+    #[test]
     fn un_musee_qui_manque_partout_est_en_panne() {
         let m = |l: &[&str]| l.iter().map(|s| s.to_string()).collect::<Vec<_>>();
         let gardes = [m(&["met"]), m(&["met"]), m(&["met", "wikidata"]), m(&[]), m(&[]), m(&[]), m(&[]), m(&[]), m(&[]), m(&[])];
@@ -712,6 +766,33 @@ fn fusionner(ancien: Option<&Value>, nouveau: Value) -> Value {
     json!({ "nom": nouveau["nom"], "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
 }
 
+/// La version du calcul des catalogues. 2 : une fiche refusée par un musée compte comme une
+/// réponse incomplète (voir `interroger`). Un catalogue gardé d'avant se répare (`completer`).
+const MOTEUR: u64 = 2;
+
+/// Un catalogue gardé, complété par un seul musée redemandé : ses œuvres qu'on n'avait pas
+/// s'ajoutent ; s'il n'a pas tout donné cette fois encore, il « manque » (le site lui
+/// redemandera). Sert à réparer les catalogues d'avant `MOTEUR` 2 sans tout recalculer.
+fn completer(mut catalogue: Value, cle: &str, nouvelles: Vec<Value>, echec: bool) -> Value {
+    let mut oeuvres = catalogue["oeuvres"].as_array().cloned().unwrap_or_default();
+    let mut vues: HashSet<String> = oeuvres.iter().map(|o| en_texte(&o["id"])).collect();
+    oeuvres.extend(nouvelles.into_iter().filter(|o| vues.insert(en_texte(&o["id"]))));
+    let mut oeuvres = sans_doublons(oeuvres);
+    oeuvres.sort_by_key(|o| o["annee"].as_i64().unwrap_or(i64::MAX));
+    let mut manquants: Vec<String> = catalogue["manquants"].as_array().into_iter().flatten().map(en_texte).collect();
+    if echec && !manquants.iter().any(|m| m == cle) {
+        manquants.push(cle.to_owned());
+    }
+    for source in sources() {
+        let c = en_texte(&source["cle"]);
+        catalogue["musees"][c.as_str()] = json!(oeuvres.iter().filter(|o| o["musee"] == c.as_str()).count());
+    }
+    catalogue["total"] = json!(oeuvres.len());
+    catalogue["manquants"] = json!(manquants);
+    catalogue["oeuvres"] = json!(oeuvres);
+    catalogue
+}
+
 /// Les musées « en panne » pour cette machine : ceux qui manquent à plus d'un catalogue gardé
 /// sur cinq (un musée qui refuse les machines de construction, par exemple). Les attendre ne
 /// sert à rien ; le site les interroge lui-même, depuis le navigateur.
@@ -741,7 +822,6 @@ fn gzip(texte: &str) -> Option<Vec<u8>> {
 pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: Option<&std::path::Path>, fils: usize)
     -> std::io::Result<(usize, usize)>
 {
-    use std::sync::atomic::{AtomicUsize, Ordering};
     std::fs::create_dir_all(dossier)?;
     if let Some(c) = cache {
         std::fs::create_dir_all(c)?;
@@ -766,6 +846,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     let fin = Instant::now() + Duration::from_secs(minutes * 60);
     let suivant = AtomicUsize::new(0);
     let calcules = AtomicUsize::new(0);
+    let reparees = AtomicUsize::new(0);
     // Le site a une taille limite : au-delà de ce poids (150 Mo, ou ARTEON_API_MO), les
     // artistes suivants (les moins riches) ne sont pas publiés ; le site les demande alors
     // aux musées, en direct.
@@ -779,33 +860,42 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     let empreinte = fichier_de(SOURCES);
     let signer = |mut r: Value| {
         r["sources"] = json!(empreinte);
+        r["moteur"] = json!(MOTEUR);
         r
     };
     // D'abord les reprises : les catalogues gardés où manque un musée qui d'ordinaire répond
     // (depuis plus d'une heure), et ceux d'avant un changement des sources. Dans l'ordre des
     // artistes, pendant la moitié du temps au plus ; ce que les musées donnent cette fois
     // s'ajoute à ce qu'on avait (`fusionner`).
+    // Et les réparations : un catalogue d'avant `MOTEUR` 2 a pu passer pour complet alors
+    // qu'un musée à fiches (le Met) en avait refusé une partie. On ne redemande que ce musée.
+    let a_fiches: Vec<&Value> = sources().iter().filter(|s| s["detail"].is_string()).collect();
     if let Some(c) = cache {
-        let gardes: Vec<(usize, Vec<String>, Duration, bool)> = groupes
+        let gardes: Vec<(usize, Vec<String>, Duration, bool, bool)> = groupes
             .iter()
             .enumerate()
             .filter_map(|(i, (k, _))| {
                 let g = c.join(format!("{}.json", fichier_de(k)));
                 let age = std::fs::metadata(&g).ok()?.modified().ok()?.elapsed().ok()?;
                 let v: Value = serde_json::from_str(&std::fs::read_to_string(&g).ok()?).ok()?;
-                let m = v["manquants"].as_array()?.iter().map(en_texte).collect();
-                Some((i, m, age, v["sources"] != empreinte.as_str()))
+                let m: Vec<String> = v["manquants"].as_array()?.iter().map(en_texte).collect();
+                let a_reparer = v["moteur"].as_u64().unwrap_or(1) < MOTEUR
+                    && a_fiches.iter().any(|s| !m.contains(&en_texte(&s["cle"])));
+                Some((i, m, age, v["sources"] != empreinte.as_str(), a_reparer))
             })
             .collect();
-        let pannes = en_panne(&gardes.iter().map(|(_, m, _, _)| m.clone()).collect::<Vec<_>>());
-        let reprises: Vec<usize> = gardes
+        let pannes = en_panne(&gardes.iter().map(|(_, m, _, _, _)| m.clone()).collect::<Vec<_>>());
+        // (l'artiste, vrai s'il suffit de réparer)
+        let reprises: Vec<(usize, bool)> = gardes
             .iter()
-            .filter(|(_, m, age, perime)| {
-                *age < Duration::from_secs(7 * 24 * 3600)
-                    && (*perime
-                        || (*age > Duration::from_secs(3600) && m.iter().any(|source| !pannes.contains(source))))
+            .filter(|(_, _, age, _, _)| *age < Duration::from_secs(7 * 24 * 3600))
+            .filter_map(|(i, m, age, perime, a_reparer)| {
+                if *perime || (*age > Duration::from_secs(3600) && m.iter().any(|source| !pannes.contains(source))) {
+                    Some((*i, false))
+                } else {
+                    a_reparer.then_some((*i, true))
+                }
             })
-            .map(|(i, _, _, _)| *i)
             .collect();
         let fin_reprises = Instant::now() + Duration::from_secs(minutes * 30);
         let suivant = AtomicUsize::new(0);
@@ -813,16 +903,29 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
             for _ in 0..fils.max(1) {
                 s.spawn(|| loop {
                     let n = suivant.fetch_add(1, Ordering::SeqCst);
-                    let Some(&i) = reprises.get(n) else { break };
+                    let Some(&(i, reparer)) = reprises.get(n) else { break };
                     if Instant::now() >= fin_reprises {
                         break;
                     }
                     let (k, noms) = &groupes[i];
                     let g = c.join(format!("{}.json", fichier_de(k)));
                     let ancienne = std::fs::read_to_string(&g).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
-                    let r = signer(fusionner(ancienne.as_ref(), oeuvres_de(&noms[0])));
+                    let r = match ancienne {
+                        Some(mut garde) if reparer => {
+                            let deja: Vec<String> = garde["manquants"].as_array().into_iter().flatten().map(en_texte).collect();
+                            for source in a_fiches.iter().filter(|s| !deja.contains(&en_texte(&s["cle"]))) {
+                                let (nouvelles, echec) = interroger(source, &noms[0]);
+                                garde = completer(garde, &en_texte(&source["cle"]), nouvelles, echec);
+                            }
+                            reparees.fetch_add(1, Ordering::SeqCst);
+                            signer(garde)
+                        }
+                        ancienne => {
+                            calcules.fetch_add(1, Ordering::SeqCst);
+                            signer(fusionner(ancienne.as_ref(), oeuvres_de(&noms[0])))
+                        }
+                    };
                     let _ = std::fs::write(&g, r.to_string());
-                    calcules.fetch_add(1, Ordering::SeqCst);
                 });
             }
         });
@@ -921,5 +1024,9 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     // décompressent eux-mêmes (un hébergement statique ne le fait pas).
     let index = json!({ "noms": par_nom, "cles": par_cle, "total": faits.len(), "gz": true });
     std::fs::write(dossier.join("index.json"), index.to_string())?;
+    let reparees = reparees.into_inner();
+    if reparees > 0 {
+        println!("🔧 {reparees} catalogues gardés redemandés aux musées à fiches (réparation)");
+    }
     Ok((faits.len(), calcules.into_inner()))
 }
