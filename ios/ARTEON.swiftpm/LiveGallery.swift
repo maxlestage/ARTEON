@@ -100,7 +100,8 @@ struct LiveWorkViewer: View {
 
     private func caption(_ work: LiveWork) -> some View {
         let museum = (museums[work.museum] ?? work.museum).components(separatedBy: " (").first ?? work.museum
-        let byline = [artist, work.date].filter { !$0.isEmpty }.joined(separator: " · ")
+        // Une galerie d'artiste porte son nom ; celle d'un style, l'auteur de chaque œuvre.
+        let byline = [artist.isEmpty ? (work.artist ?? "") : artist, work.date].filter { !$0.isEmpty }.joined(separator: " · ")
         let linkTitle = work.museum == "wikidata"
             ? L("La fiche sur Wikidata", "On Wikidata", "La ficha en Wikidata")
             : L("La fiche du musée", "On the museum's website", "La ficha del museo")

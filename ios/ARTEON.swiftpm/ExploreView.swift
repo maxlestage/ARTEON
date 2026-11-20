@@ -46,6 +46,16 @@ struct ExploreView: View {
                         route: .artists
                     )
                     ExploreCard(
+                        title: L("Styles et genres", "Styles and genres", "Estilos y géneros"),
+                        subtitle: L("Mouvements, genres, techniques et sujets, dans les musées du monde",
+                                    "Movements, genres, techniques and subjects, in the world's museums",
+                                    "Movimientos, géneros, técnicas y temas, en los museos del mundo"),
+                        systemImage: "paintpalette",
+                        color: .brown,
+                        image: store.index?.artist(named: "Claude Monet")?.works.first ?? store.index?.themes.dropFirst().first?.works.first,
+                        route: .styles
+                    )
+                    ExploreCard(
                         title: L("Les thèmes", "Themes", "Los temas"),
                         subtitle: L("\(store.index?.themes.count ?? 0) thèmes : la nuit, la mer, l'amour…",
                                     "\(store.index?.themes.count ?? 0) themes: night, the sea, love…",

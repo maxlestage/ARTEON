@@ -48,9 +48,12 @@ Les sections plus bas qui parlent du « musée embarqué » décrivent l'ancienn
   côté), chacun avec sa biographie à lire ou à écouter, toutes ses œuvres et ses
   expositions.
 - **Explorer** : la **chronologie** (siècle par siècle, des météorites au street art), les
-  **thèmes** (la nuit, la mer, le portrait…), les **musées du monde** où voir les œuvres
-  en vrai, les **techniques**, une œuvre au hasard, et le jeu **« Qui l'a fait ? »** (une
-  œuvre, quatre artistes de la même époque, une série et un record).
+  **styles et genres** (près de 190 mouvements, genres, techniques et sujets : pour chacun,
+  ses œuvres libres de droits dans les musées du monde, les plus connues d'abord, en
+  mosaïque puis en grand ; `StylesView.swift`, lu sur le site : `monde/sujets.json` et
+  `api/sujets/`), les **thèmes** (la nuit, la mer, le portrait…), les **musées du monde** où
+  voir les œuvres en vrai, les **techniques**, une œuvre au hasard, et le jeu
+  **« Qui l'a fait ? »** (une œuvre, quatre artistes de la même époque, une série et un record).
 - **Favoris** et **œuvres vues**, avec diaporama ; **recherche** dans tout le musée (œuvres,
   artistes, expositions, thèmes), sans tenir compte des accents, mot par mot
   (« monet nuit »).

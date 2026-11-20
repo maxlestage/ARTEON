@@ -195,10 +195,97 @@ struct LiveWork: Decodable, Hashable, Sendable, Identifiable {
     var link: String
     /// Le musée qui conserve l'œuvre, quand elle vient d'un agrégateur (Europeana).
     var provider: String? = nil
+    /// Son auteur (utile pour un style ou un genre, qui réunit des artistes).
+    var artist: String? = nil
 
     enum CodingKeys: String, CodingKey {
         case id, title = "titre", date, year = "annee", medium = "technique", museum = "musee"
-        case thumbnail = "vignette", image, link = "lien", provider = "fournisseur"
+        case thumbnail = "vignette", image, link = "lien", provider = "fournisseur", artist = "artiste"
+    }
+}
+
+// MARK: - Les styles, les genres, les techniques et les sujets
+
+/// Un sujet (un style, un genre, une technique, un sujet représenté) : une entrée de
+/// `monde/sujets.json` (outils/monde/sujets.json, le même fichier que le site).
+struct Subject: Hashable, Sendable, Identifiable {
+    var key: String
+    var fr: String
+    var en: String
+    var es: String
+
+    var id: String { key }
+    var name: String { L(fr, en, es) }
+}
+
+/// Une famille de sujets : « Styles et mouvements », « Genres », « Techniques »…
+struct SubjectFamily: Hashable, Sendable, Identifiable {
+    var key: String
+    var fr: String
+    var en: String
+    var es: String
+    var subjects: [Subject]
+
+    var id: String { key }
+    var name: String { L(fr, en, es) }
+
+    /// Les familles de `sujets.json`.
+    static func parse(_ data: Data) -> [SubjectFamily] {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let families = json["familles"] as? [[String: Any]] else { return [] }
+        return families.compactMap { family in
+            guard let key = family["cle"] as? String else { return nil }
+            let subjects = (family["sujets"] as? [[String: Any]] ?? []).compactMap { subject -> Subject? in
+                guard let key = subject["cle"] as? String, let fr = subject["fr"] as? String else { return nil }
+                return Subject(key: key, fr: fr, en: subject["en"] as? String ?? fr, es: subject["es"] as? String ?? fr)
+            }
+            let fr = family["fr"] as? String ?? key
+            return SubjectFamily(key: key, fr: fr, en: family["en"] as? String ?? fr, es: family["es"] as? String ?? fr, subjects: subjects)
+        }
+    }
+}
+
+/// Ce que le site publie d'un sujet dans sa liste (`api/sujets/index.json`) : le nombre de ses
+/// œuvres et l'image de la plus connue.
+struct PublishedSubject: Sendable, Equatable {
+    var total: Int
+    var image: String
+
+    static func parse(_ data: Data) -> [String: PublishedSubject] {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let subjects = json["sujets"] as? [String: [String: Any]] else { return [:] }
+        return subjects.compactMapValues { subject in
+            (subject["total"] as? Int).map { PublishedSubject(total: $0, image: subject["image"] as? String ?? "") }
+        }
+    }
+}
+
+/// Le catalogue d'un sujet (`api/sujets/<clé>.json.gz`) : ses œuvres, les plus connues d'abord.
+struct SubjectCatalogue: Decodable, Sendable {
+    var total: Int
+    var works: [LiveWork]
+
+    enum CodingKeys: String, CodingKey { case total, works = "oeuvres" }
+}
+
+/// Les sujets, lus sur le site : la liste, ce qui est publié, et les œuvres de chacun
+/// (calculées par l'API, `arteon sujets`, à chaque construction du site).
+enum Subjects {
+    static func families() async -> [SubjectFamily] {
+        guard let data = try? await Api.site("monde/sujets.json") else { return [] }
+        return SubjectFamily.parse(data)
+    }
+
+    static func published() async -> [String: PublishedSubject] {
+        guard let data = try? await Api.site("api/sujets/index.json") else { return [:] }
+        return PublishedSubject.parse(data)
+    }
+
+    static func works(_ key: String) async -> [LiveWork]? {
+        guard let raw = try? await Api.site("api/sujets/\(key).json.gz"),
+              let data = LiveWorks.gunzip(raw),
+              let catalogue = try? JSONDecoder().decode(SubjectCatalogue.self, from: data) else { return nil }
+        return catalogue.works
     }
 }
 
