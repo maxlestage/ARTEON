@@ -22,6 +22,8 @@ on:
     # Toutes les trois heures : une construction ordinaire qui fait avancer les catalogues des
     # artistes (45 minutes de calcul). Sans elle, ils n'avançaient qu'aux mises en ligne : au
     # rythme d'environ 900 artistes par passage, les 47 000 sont faits en une semaine.
+    # GitHub lance souvent ses tâches planifiées avec des heures de retard : une construction
+    # lancée à la main (Actions → GitHub Pages → Run workflow) fait exactement la même chose.
     - cron: "23 */3 * * *"
 
 permissions:
@@ -174,7 +176,7 @@ jobs:
           # Après une modification du site, la moisson est courte (le cache a déjà presque
           # tout) pour une mise en ligne rapide ; la grande moisson est celle du lundi.
           # (la grande moisson : le lundi, ou à la demande)
-          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event.schedule }}" = "23 */3 * * *" ]; then fiches=4; reserve=4; else fiches=15; reserve=20; fi
+          if [ "${{ github.event.schedule }}" = "17 5 * * 1" ]; then fiches=15; reserve=20; else fiches=4; reserve=4; fi
           python3 outils/collections_monde.py --total 50000 --minutes $fiches --minutes-reserve $reserve --sans-grandes \
             --sortie target/monde --cache target/collections-cache
           python3 outils/monde_web.py target/monde target/collections-cache/vignettes dist
@@ -232,7 +234,7 @@ jobs:
           # 25 minutes de calcul après une modification ; 90 pour la construction du lundi.
           # (45 minutes aux passages de toutes les trois heures : personne n'attend la mise en ligne)
           if [ "${{ github.event.schedule }}" = "17 5 * * 1" ]; then minutes=90
-          elif [ "${{ github.event_name }}" = "schedule" ]; then minutes=45; else minutes=25; fi
+          elif [ "${{ github.event_name }}" = "push" ]; then minutes=25; else minutes=45; fi
           python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
           # La place qui reste sous la limite de GitHub Pages (1 Go), le site en trois langues compris.
