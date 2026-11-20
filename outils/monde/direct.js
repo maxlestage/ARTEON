@@ -134,14 +134,26 @@ async function chezLesMusees(nom, cleNom, alias, seulement) {
     return mots.length > 0 && mots.every((m) => dans.has(m)) && cle.split(" ").at(-1) === t.split(" ").at(-1);
   };
 
-  async function interroger(source) {
+  const choisies = (await chargerSources()).filter((s) => !seulement || seulement.includes(s.cle));
+  const lots = await Promise.all(choisies.map((s) => interroger(s, noms, meme).catch(() => [])));
+  const vus = new Set();
+  return lots.flat().filter((o) => !vus.has(o.id) && vus.add(o.id)).sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9));
+}
+
+/** Les œuvres libres qu'un musée donne pour ces questions : les noms d'un artiste (`meme` dit
+ *  si un nom trouvé est bien le sien), ou un sujet (pas de `meme` : tous les artistes ; la
+ *  requête est alors `modele`, et `repli` si elle ne répond pas). */
+async function interroger(source, questions, meme, modele = source.recherche, repli = null) {
     const parPage = source.par_page ?? 100, pages = source.pages ?? 1, entetes = source.entetes ?? {};
     let fiches = [], ids = [];
-    for (const q of noms) for (let page = 1; page <= pages; page++) {
-      const url = source.recherche.replace("{q}", encodeURIComponent(q)).replace("{n}", parPage)
+    for (const q of questions) for (let page = 1; page <= pages; page++) {
+      const adresse = (m) => m.replace("{q}", encodeURIComponent(q)).replace("{s}", encodeURIComponent(q)).replace("{n}", parPage)
         .replace("{page}", page).replace("{offset}", (page - 1) * parPage).replace("{debut}", (page - 1) * parPage + 1);
       let r;
-      try { r = await lireJson(url, entetes); } catch { break; }
+      try { r = await lireJson(adresse(modele), entetes); } catch {
+        if (!repli) break;
+        try { r = await lireJson(adresse(repli), entetes); } catch { break; }
+      }
       if (source.ids) { ids.push(...(chemin(r, source.ids) || [])); break; }
       const lot = (source.liste ? chemin(r, source.liste) : r) || [];
       fiches.push(...lot);
@@ -164,15 +176,17 @@ async function chezLesMusees(nom, cleNom, alias, seulement) {
       if (Object.entries(source.egal || {}).some(([k, attendu]) => enTexte(champ(f, k)) !== enTexte(attendu))) continue;
       let artiste = enTexte(champ(f, "artiste"));
       if (source.artiste_jusqua) artiste = artiste.split(source.artiste_jusqua)[0];
-      if (!meme(artiste)) {
-        // Les autres noms possibles (Europeana : les libellés de ses entités).
-        const autres = (champ(f, "artistes") || []).map((v) => (v && typeof v === "object" ? enTexte(v.def) : enTexte(v)));
-        // Seulement quand le créateur est un identifiant (une adresse) : un photographe nommé
-        // qui a photographié l'œuvre n'en est pas l'auteur.
-        const identifiant = artiste === "" || artiste.startsWith("http");
-        const trouve = identifiant && autres.find((a) => meme(a));
+      // Les autres noms possibles (Europeana : les libellés de ses entités).
+      const autres = () => (champ(f, "artistes") || []).map((v) => (v && typeof v === "object" ? enTexte(v.def) : enTexte(v)));
+      // Seulement quand le créateur est un identifiant (une adresse) : un photographe nommé
+      // qui a photographié l'œuvre n'en est pas l'auteur.
+      const identifiant = artiste === "" || artiste.startsWith("http");
+      if (meme && !meme(artiste)) {
+        const trouve = identifiant && autres().find((a) => meme(a));
         if (!trouve) continue;
         artiste = trouve;
+      } else if (!meme && identifiant) {
+        artiste = autres().find((a) => a && !a.startsWith("http")) || "";
       }
       let ne = anneeDe(champ(f, "ne")), mort = anneeDe(champ(f, "mort"));
       if (ne == null && mort == null) [ne, mort] = vie(champ(f, "vie"));
@@ -181,15 +195,50 @@ async function chezLesMusees(nom, cleNom, alias, seulement) {
       const valeurs = Object.fromEntries(Object.keys(source.champs).map((k) => [k, enTexte(champ(f, k))]));
       out.push({ id: `${source.cle}-${valeurs.id}`, titre: sansBalises(valeurs.titre), artiste, date, annee: anneeDe(champ(f, "annee")),
         technique: valeurs.technique, musee: source.cle, vignette: remplir(source.vignette, valeurs),
-        image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs), fournisseur: valeurs.fournisseur && !valeurs.fournisseur.startsWith("http") ? valeurs.fournisseur : null });
+        image: remplir(source.grande, valeurs), lien: remplir(source.lien, valeurs), fournisseur: valeurs.fournisseur && !valeurs.fournisseur.startsWith("http") ? valeurs.fournisseur : null,
+        ...(Number(valeurs.rang) >= 0 && valeurs.rang !== "" ? { rang: Number(valeurs.rang) } : {}) });
     }
     return out;
-  }
+}
 
-  const choisies = (await chargerSources()).filter((s) => !seulement || seulement.includes(s.cle));
-  const lots = await Promise.all(choisies.map((s) => interroger(s).catch(() => [])));
-  const vus = new Set();
-  return lots.flat().filter((o) => !vus.has(o.id) && vus.add(o.id)).sort((x, y) => (x.annee ?? 1e9) - (y.annee ?? 1e9));
+// ─── Les sujets : styles, genres, techniques, sujets représentés ─────────────
+
+let tableSujets;
+/** Les sujets et leurs familles (outils/monde/sujets.json, le même fichier que l'API). */
+export const chargerSujets = () => (tableSujets ??= jsonGarde(lien("monde/sujets.json")));
+
+/** Les sujets déjà publiés avec le site : { clé: { total, image } }. */
+export const sujetsPublies = () => jsonGarde(lien("api/sujets/index.json")).then((d) => d.sujets || {}).catch(() => ({}));
+
+/** Les œuvres libres d'un sujet (un style, un genre, une technique…), les plus connues
+ *  d'abord : le catalogue publié avec le site (src/api.rs, `publier_sujets`), sinon les
+ *  musées eux-mêmes, en direct, avec la même requête. */
+export async function oeuvresDuSujet(cle) {
+  const memoire = `sujet:${cle}`;
+  const deja = await relire(memoire, 24 * 3600e3);
+  if (deja) return deja;
+  let resultat;
+  try {
+    resultat = { ...(await jsonGz(lien(`api/sujets/${cle}.json.gz`))), source: "statique" };
+  } catch {
+    const [table, sources] = await Promise.all([chargerSujets(), chargerSources()]);
+    const famille = table.familles.find((f) => f.sujets.some((s) => s.cle === cle));
+    const sujet = famille?.sujets.find((s) => s.cle === cle);
+    if (!sujet) return { total: 0, oeuvres: [], source: "musees" };
+    const lots = await Promise.all(sources.map((source) => {
+      const plus = table.requetes?.[source.cle];
+      const valeur = sujet[source.cle] ?? (famille[source.cle] && sujet.id ? famille[source.cle].replace("{id}", sujet.id) : null);
+      if (!plus?.sujet || !valeur) return [];
+      const complete = { ...source, ...plus, champs: { ...source.champs, ...plus.champs } };
+      return interroger(complete, [valeur], null, plus.sujet, plus.sujet_repli).catch(() => []);
+    }));
+    const vus = new Set();
+    const oeuvres = lots.flat().filter((o) => !vus.has(o.id) && vus.add(o.id))
+      .sort((x, y) => (y.rang ?? 0) - (x.rang ?? 0) || (x.annee ?? 1e9) - (y.annee ?? 1e9)).slice(0, 2500);
+    resultat = { cle, total: oeuvres.length, oeuvres, source: "musees" };
+  }
+  if (resultat.total) garder(memoire, resultat);
+  return resultat;
 }
 
 /** Les noms des musées décrits (pour les légendes). */

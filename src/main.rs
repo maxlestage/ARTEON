@@ -116,6 +116,7 @@ fn burger_menu(current: &str) -> Element {
                         .child(entry("/monde/", t("Les collections du monde", "World collections", "Colecciones del mundo"), t("domaine public", "public domain", "dominio público")))
                         .child(group(t("Explorer", "Explore", "Explorar")))
                         .child(entry("/explorer/", t("Les artistes de A à Z", "Artists from A to Z", "Artistas de la A a la Z"), t("tous les artistes", "every artist", "todos los artistas")))
+                        .child(entry("/explorer/#/styles", t("Styles et genres", "Styles and genres", "Estilos y géneros"), t("mouvements, techniques", "movements, techniques", "movimientos, técnicas")))
                         .child(entry("/explorer/#/chronologie", t("La chronologie", "Timeline", "Cronología"), t("siècle par siècle", "century by century", "siglo a siglo")))
                         .child(entry("/explorer/#/themes", t("Les thèmes", "Themes", "Temas"), t("sujets et motifs", "subjects and motifs", "temas y motivos")))
                         .child(entry("/explorer/#/jeu", t("Qui l'a fait ?", "Who made it?", "¿Quién lo hizo?"), t("le jeu", "the game", "el juego")))
@@ -1811,7 +1812,10 @@ async fn credits(_req: Request) -> Page {
                      Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art), et le catalogue de \
                      chaque artiste interroge en direct ces musées, le Statens Museum for Kunst, le Minneapolis Institute \
                      of Art, Europeana et Wikidata (images de Wikimedia Commons) : votre \
-                     navigateur s'y connecte alors directement, comme pour toute image venue d'un autre site. Le record \
+                     navigateur s'y connecte alors directement, comme pour toute image venue d'un autre site. Les pages \
+                     des styles et des genres affichent des images de Wikimedia Commons ; si le catalogue d'un sujet \
+                     n'est pas encore publié avec le site, le navigateur le demande à QLever (un miroir de Wikidata, \
+                     université de Fribourg-en-Brisgau) ou à Wikidata. Le record \
                      du jeu « Qui l'a fait ? » reste dans votre navigateur. Pour aller plus vite, le navigateur garde aussi \
                      une copie compressée des données du musée (IndexedDB) : elle n'est jamais envoyée ailleurs et \
                      s'efface avec les données du site, dans les réglages du navigateur. L'application iOS passe par \
@@ -1821,7 +1825,9 @@ async fn credits(_req: Request) -> Page {
                      Metropolitan Museum of Art, National Gallery of Art), and each artist's catalogue queries these museums, \
                      the Statens Museum for Kunst, the Minneapolis Institute of Art, Europeana and Wikidata (images from \
                      Wikimedia Commons) live: your browser then connects to them directly, as for any image from another \
-                     site. The high score of the “Who made it?” game stays in your browser. To be faster, the browser also \
+                     site. The styles and genres pages show images from Wikimedia Commons; if a subject's catalogue is \
+                     not yet published with the site, the browser requests it from QLever (a mirror of Wikidata, \
+                     University of Freiburg) or from Wikidata. The high score of the “Who made it?” game stays in your browser. To be faster, the browser also \
                      keeps a compressed copy of the museum's data (IndexedDB): it is never sent anywhere and is erased with \
                      the site's data, in the browser settings. The iOS app goes through the ARTEON API: it keeps a compressed \
                      copy of the current visit (SQLite), erased when you quit it.",
@@ -1830,7 +1836,10 @@ async fn credits(_req: Request) -> Page {
                      of Chicago, Cleveland Museum of Art, Metropolitan Museum of Art, National Gallery of Art), y el catálogo \
                      de cada artista consulta en directo esos museos, el Statens Museum for Kunst, el Minneapolis Institute \
                      of Art, Europeana y Wikidata (imágenes de Wikimedia Commons): su navegador se conecta entonces \
-                     directamente a ellos, como con cualquier imagen de otro sitio. El récord del juego «¿Quién lo hizo?» \
+                     directamente a ellos, como con cualquier imagen de otro sitio. Las páginas de estilos y géneros \
+                     muestran imágenes de Wikimedia Commons; si el catálogo de un tema aún no está publicado con el \
+                     sitio, el navegador lo pide a QLever (un espejo de Wikidata, Universidad de Friburgo) o a \
+                     Wikidata. El récord del juego «¿Quién lo hizo?» \
                      se queda en su navegador. Para ir más rápido, el navegador guarda también una copia comprimida de los \
                      datos del museo (IndexedDB): nunca se envía a ningún sitio y se borra con los datos del sitio, en los \
                      ajustes del navegador. La aplicación iOS pasa por la API de ARTEON: guarda una copia comprimida de la \
@@ -2328,6 +2337,18 @@ fn main() -> std::io::Result<()> {
             let noms: Vec<String> = std::fs::read_to_string(&noms_txt)?.lines().map(str::to_owned).collect();
             let (publies, calcules) = api::publier(&dir, &noms, minutes, Some(&cache), fils)?;
             println!("📦 API statique : {publies} artistes publiés ({calcules} recalculés) dans {}", dir.display());
+            Ok(())
+        }
+        // `cargo run --release -- sujets <dossier> [minutes]` : les styles, les genres et les
+        // techniques (outils/monde/sujets.json) publiés en fichiers, comme les artistes.
+        Some("sujets") => {
+            let dir = std::path::PathBuf::from(args.next().unwrap_or_else(|| "dist/api/sujets".into()));
+            let minutes = args.next().and_then(|m| m.parse().ok()).unwrap_or(6);
+            let cache = std::path::PathBuf::from(
+                std::env::var("ARTEON_API_CACHE").unwrap_or_else(|_| "target/api-cache".into()),
+            );
+            let (publies, calcules) = api::publier_sujets(&dir, &cache, minutes)?;
+            println!("🎨 Styles et genres : {publies} sujets publiés ({calcules} recalculés) dans {}", dir.display());
             Ok(())
         }
         Some(other) => {

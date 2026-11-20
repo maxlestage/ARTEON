@@ -1,0 +1,1368 @@
+{
+ "_note": "Les sujets d'ARTEON : les styles et mouvements, les genres, les techniques, les sujets représentés. Chaque sujet est un ou plusieurs éléments de Wikidata (« id ») ; sa famille dit comment les œuvres s'y rattachent (« wikidata » : le motif SPARQL, où {id} est remplacé). « requetes » complète la description des musées (sources.json) pour chercher par sujet : la requête « sujet » ({s} = le motif), son repli, et les champs en plus. La requête va d'abord à QLever (qlever.dev, un miroir public de Wikidata à l'université de Fribourg-en-Brisgau, qui répond en 2 à 6 secondes), puis au service officiel (query-main.wikidata.org) si QLever ne répond pas : le service officiel met plus de 60 secondes sur cette requête et l'abandonne (504, mesuré le 20 novembre 2026). Seulement des œuvres en deux dimensions (peintures, dessins, estampes, photographies, fresques, enluminures… : leur reproduction est du domaine public comme elles), d'artistes morts en 1955 ou avant ; les plus connues d'abord (le nombre d'articles de Wikipédia sur l'œuvre), 2 500 au plus. Le même fichier pour l'API (src/api.rs), le site (direct.js) et l'application. Identifiants vérifiés et comptés sur Wikidata le 20 novembre 2026.",
+ "_requete": "PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wikibase: <http://wikiba.se/ontology#> SELECT ?oeuvre (SAMPLE(?t) AS ?titre) (SAMPLE(?img) AS ?image) (MIN(?an) AS ?annee) (MAX(?an) AS ?fin) (SAMPLE(?al) AS ?nom) (MIN(?ne) AS ?naissance) (MAX(?mo) AS ?deces) (SAMPLE(?cl) AS ?collection) (MAX(?sl) AS ?liens) WHERE { { SELECT ?oeuvre (MAX(?s0) AS ?sl) WHERE { {s} VALUES ?type { wd:Q3305213 wd:Q93184 wd:Q11060274 wd:Q125191 wd:Q18761202 wd:Q15123870 wd:Q18218093 wd:Q11835431 wd:Q12043905 wd:Q21647744 wd:Q18219090 wd:Q18396864 wd:Q89503149 wd:Q22669139 wd:Q282129 wd:Q21281546 wd:Q23657281 wd:Q48498 wd:Q132137 wd:Q22669850 wd:Q5078274 wd:Q56055236 wd:Q22669539 } ?oeuvre wdt:P31 ?type ; wdt:P18 ?i0 ; wdt:P170 ?a0 ; wikibase:sitelinks ?s0 . ?a0 wdt:P570 ?d0 . FILTER(YEAR(?d0) <= 1955) } GROUP BY ?oeuvre ORDER BY DESC(?sl) LIMIT 2500 } ?oeuvre wdt:P18 ?image0 ; wdt:P170 ?artiste . BIND(REPLACE(STR(?image0), \"^http:\", \"https:\") AS ?img) OPTIONAL { ?oeuvre wdt:P571 ?date } BIND(YEAR(?date) AS ?an) OPTIONAL { ?artiste wdt:P569 ?n } BIND(YEAR(?n) AS ?ne) OPTIONAL { ?artiste wdt:P570 ?m } BIND(IF(BOUND(?m), YEAR(?m), 2100) AS ?mo) OPTIONAL { ?oeuvre rdfs:label ?tf FILTER(LANG(?tf) = \"fr\") } OPTIONAL { ?oeuvre rdfs:label ?te FILTER(LANG(?te) = \"en\") } BIND(COALESCE(?tf, ?te) AS ?t) OPTIONAL { ?artiste rdfs:label ?af FILTER(LANG(?af) = \"fr\") } OPTIONAL { ?artiste rdfs:label ?ae FILTER(LANG(?ae) = \"en\") } BIND(COALESCE(?af, ?ae) AS ?al) OPTIONAL { ?oeuvre wdt:P195 ?coll . ?coll rdfs:label ?cl FILTER(LANG(?cl) = \"fr\") } } GROUP BY ?oeuvre",
+ "requetes": {
+  "wikidata": {
+   "sujet": "https://qlever.dev/api/wikidata?query=PREFIX%20wd%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fentity%2F%3E%20PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%20PREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%20PREFIX%20wikibase%3A%20%3Chttp%3A%2F%2Fwikiba.se%2Fontology%23%3E%20SELECT%20%3Foeuvre%20%28SAMPLE%28%3Ft%29%20AS%20%3Ftitre%29%20%28SAMPLE%28%3Fimg%29%20AS%20%3Fimage%29%20%28MIN%28%3Fan%29%20AS%20%3Fannee%29%20%28MAX%28%3Fan%29%20AS%20%3Ffin%29%20%28SAMPLE%28%3Fal%29%20AS%20%3Fnom%29%20%28MIN%28%3Fne%29%20AS%20%3Fnaissance%29%20%28MAX%28%3Fmo%29%20AS%20%3Fdeces%29%20%28SAMPLE%28%3Fcl%29%20AS%20%3Fcollection%29%20%28MAX%28%3Fsl%29%20AS%20%3Fliens%29%20WHERE%20%7B%20%7B%20SELECT%20%3Foeuvre%20%28MAX%28%3Fs0%29%20AS%20%3Fsl%29%20WHERE%20%7B%20{s}%20VALUES%20%3Ftype%20%7B%20wd%3AQ3305213%20wd%3AQ93184%20wd%3AQ11060274%20wd%3AQ125191%20wd%3AQ18761202%20wd%3AQ15123870%20wd%3AQ18218093%20wd%3AQ11835431%20wd%3AQ12043905%20wd%3AQ21647744%20wd%3AQ18219090%20wd%3AQ18396864%20wd%3AQ89503149%20wd%3AQ22669139%20wd%3AQ282129%20wd%3AQ21281546%20wd%3AQ23657281%20wd%3AQ48498%20wd%3AQ132137%20wd%3AQ22669850%20wd%3AQ5078274%20wd%3AQ56055236%20wd%3AQ22669539%20%7D%20%3Foeuvre%20wdt%3AP31%20%3Ftype%20%3B%20wdt%3AP18%20%3Fi0%20%3B%20wdt%3AP170%20%3Fa0%20%3B%20wikibase%3Asitelinks%20%3Fs0%20.%20%3Fa0%20wdt%3AP570%20%3Fd0%20.%20FILTER%28YEAR%28%3Fd0%29%20%3C%3D%201955%29%20%7D%20GROUP%20BY%20%3Foeuvre%20ORDER%20BY%20DESC%28%3Fsl%29%20LIMIT%202500%20%7D%20%3Foeuvre%20wdt%3AP18%20%3Fimage0%20%3B%20wdt%3AP170%20%3Fartiste%20.%20BIND%28REPLACE%28STR%28%3Fimage0%29%2C%20%22%5Ehttp%3A%22%2C%20%22https%3A%22%29%20AS%20%3Fimg%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP571%20%3Fdate%20%7D%20BIND%28YEAR%28%3Fdate%29%20AS%20%3Fan%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP569%20%3Fn%20%7D%20BIND%28YEAR%28%3Fn%29%20AS%20%3Fne%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP570%20%3Fm%20%7D%20BIND%28IF%28BOUND%28%3Fm%29%2C%20YEAR%28%3Fm%29%2C%202100%29%20AS%20%3Fmo%29%20OPTIONAL%20%7B%20%3Foeuvre%20rdfs%3Alabel%20%3Ftf%20FILTER%28LANG%28%3Ftf%29%20%3D%20%22fr%22%29%20%7D%20OPTIONAL%20%7B%20%3Foeuvre%20rdfs%3Alabel%20%3Fte%20FILTER%28LANG%28%3Fte%29%20%3D%20%22en%22%29%20%7D%20BIND%28COALESCE%28%3Ftf%2C%20%3Fte%29%20AS%20%3Ft%29%20OPTIONAL%20%7B%20%3Fartiste%20rdfs%3Alabel%20%3Faf%20FILTER%28LANG%28%3Faf%29%20%3D%20%22fr%22%29%20%7D%20OPTIONAL%20%7B%20%3Fartiste%20rdfs%3Alabel%20%3Fae%20FILTER%28LANG%28%3Fae%29%20%3D%20%22en%22%29%20%7D%20BIND%28COALESCE%28%3Faf%2C%20%3Fae%29%20AS%20%3Fal%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP195%20%3Fcoll%20.%20%3Fcoll%20rdfs%3Alabel%20%3Fcl%20FILTER%28LANG%28%3Fcl%29%20%3D%20%22fr%22%29%20%7D%20%7D%20GROUP%20BY%20%3Foeuvre",
+   "sujet_repli": "https://query-main.wikidata.org/sparql?format=json&query=PREFIX%20wd%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fentity%2F%3E%20PREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%20PREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%20PREFIX%20wikibase%3A%20%3Chttp%3A%2F%2Fwikiba.se%2Fontology%23%3E%20SELECT%20%3Foeuvre%20%28SAMPLE%28%3Ft%29%20AS%20%3Ftitre%29%20%28SAMPLE%28%3Fimg%29%20AS%20%3Fimage%29%20%28MIN%28%3Fan%29%20AS%20%3Fannee%29%20%28MAX%28%3Fan%29%20AS%20%3Ffin%29%20%28SAMPLE%28%3Fal%29%20AS%20%3Fnom%29%20%28MIN%28%3Fne%29%20AS%20%3Fnaissance%29%20%28MAX%28%3Fmo%29%20AS%20%3Fdeces%29%20%28SAMPLE%28%3Fcl%29%20AS%20%3Fcollection%29%20%28MAX%28%3Fsl%29%20AS%20%3Fliens%29%20WHERE%20%7B%20%7B%20SELECT%20%3Foeuvre%20%28MAX%28%3Fs0%29%20AS%20%3Fsl%29%20WHERE%20%7B%20{s}%20VALUES%20%3Ftype%20%7B%20wd%3AQ3305213%20wd%3AQ93184%20wd%3AQ11060274%20wd%3AQ125191%20wd%3AQ18761202%20wd%3AQ15123870%20wd%3AQ18218093%20wd%3AQ11835431%20wd%3AQ12043905%20wd%3AQ21647744%20wd%3AQ18219090%20wd%3AQ18396864%20wd%3AQ89503149%20wd%3AQ22669139%20wd%3AQ282129%20wd%3AQ21281546%20wd%3AQ23657281%20wd%3AQ48498%20wd%3AQ132137%20wd%3AQ22669850%20wd%3AQ5078274%20wd%3AQ56055236%20wd%3AQ22669539%20%7D%20%3Foeuvre%20wdt%3AP31%20%3Ftype%20%3B%20wdt%3AP18%20%3Fi0%20%3B%20wdt%3AP170%20%3Fa0%20%3B%20wikibase%3Asitelinks%20%3Fs0%20.%20%3Fa0%20wdt%3AP570%20%3Fd0%20.%20FILTER%28YEAR%28%3Fd0%29%20%3C%3D%201955%29%20%7D%20GROUP%20BY%20%3Foeuvre%20ORDER%20BY%20DESC%28%3Fsl%29%20LIMIT%202500%20%7D%20%3Foeuvre%20wdt%3AP18%20%3Fimage0%20%3B%20wdt%3AP170%20%3Fartiste%20.%20BIND%28REPLACE%28STR%28%3Fimage0%29%2C%20%22%5Ehttp%3A%22%2C%20%22https%3A%22%29%20AS%20%3Fimg%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP571%20%3Fdate%20%7D%20BIND%28YEAR%28%3Fdate%29%20AS%20%3Fan%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP569%20%3Fn%20%7D%20BIND%28YEAR%28%3Fn%29%20AS%20%3Fne%29%20OPTIONAL%20%7B%20%3Fartiste%20wdt%3AP570%20%3Fm%20%7D%20BIND%28IF%28BOUND%28%3Fm%29%2C%20YEAR%28%3Fm%29%2C%202100%29%20AS%20%3Fmo%29%20OPTIONAL%20%7B%20%3Foeuvre%20rdfs%3Alabel%20%3Ftf%20FILTER%28LANG%28%3Ftf%29%20%3D%20%22fr%22%29%20%7D%20OPTIONAL%20%7B%20%3Foeuvre%20rdfs%3Alabel%20%3Fte%20FILTER%28LANG%28%3Fte%29%20%3D%20%22en%22%29%20%7D%20BIND%28COALESCE%28%3Ftf%2C%20%3Fte%29%20AS%20%3Ft%29%20OPTIONAL%20%7B%20%3Fartiste%20rdfs%3Alabel%20%3Faf%20FILTER%28LANG%28%3Faf%29%20%3D%20%22fr%22%29%20%7D%20OPTIONAL%20%7B%20%3Fartiste%20rdfs%3Alabel%20%3Fae%20FILTER%28LANG%28%3Fae%29%20%3D%20%22en%22%29%20%7D%20BIND%28COALESCE%28%3Faf%2C%20%3Fae%29%20AS%20%3Fal%29%20OPTIONAL%20%7B%20%3Foeuvre%20wdt%3AP195%20%3Fcoll%20.%20%3Fcoll%20rdfs%3Alabel%20%3Fcl%20FILTER%28LANG%28%3Fcl%29%20%3D%20%22fr%22%29%20%7D%20%7D%20GROUP%20BY%20%3Foeuvre",
+   "champs": {
+    "fin": "fin.value",
+    "rang": "liens.value"
+   }
+  }
+ },
+ "familles": [
+  {
+   "cle": "styles",
+   "fr": "Styles et mouvements",
+   "en": "Styles and movements",
+   "es": "Estilos y movimientos",
+   "wikidata": "VALUES ?s { {id} } { ?oeuvre wdt:P135 ?s } UNION { ?oeuvre wdt:P170 ?c . ?c wdt:P135 ?s }",
+   "sujets": [
+    {
+     "cle": "art-gothique",
+     "id": "wd:Q46825 wd:Q947129 wd:Q10924220",
+     "fr": "Art gothique",
+     "en": "Gothic art",
+     "es": "Arte gótico"
+    },
+    {
+     "cle": "gothique-international",
+     "id": "wd:Q867769",
+     "fr": "Gothique international",
+     "en": "International Gothic",
+     "es": "Gótico internacional"
+    },
+    {
+     "cle": "pre-renaissance",
+     "id": "wd:Q979160",
+     "fr": "Pré-Renaissance",
+     "en": "Proto-Renaissance",
+     "es": "Prerrenacimiento"
+    },
+    {
+     "cle": "ecole-siennoise",
+     "id": "wd:Q1332178",
+     "fr": "École siennoise",
+     "en": "Sienese School",
+     "es": "Escuela sienesa"
+    },
+    {
+     "cle": "primitifs-flamands",
+     "id": "wd:Q443153",
+     "fr": "Primitifs flamands",
+     "en": "Early Netherlandish painting",
+     "es": "Primitivos flamencos"
+    },
+    {
+     "cle": "premiere-renaissance",
+     "id": "wd:Q1472236 wd:Q213523",
+     "fr": "Première Renaissance",
+     "en": "Early Renaissance",
+     "es": "Primer Renacimiento"
+    },
+    {
+     "cle": "renaissance",
+     "id": "wd:Q4692 wd:Q15885248",
+     "fr": "Renaissance",
+     "en": "Renaissance",
+     "es": "Renacimiento"
+    },
+    {
+     "cle": "renaissance-italienne",
+     "id": "wd:Q1404472 wd:Q2914470",
+     "fr": "Renaissance italienne",
+     "en": "Italian Renaissance",
+     "es": "Renacimiento italiano"
+    },
+    {
+     "cle": "haute-renaissance",
+     "id": "wd:Q1474884",
+     "fr": "Haute Renaissance",
+     "en": "High Renaissance",
+     "es": "Alto Renacimiento"
+    },
+    {
+     "cle": "ecole-florentine",
+     "id": "wd:Q3357314 wd:Q913340",
+     "fr": "École florentine",
+     "en": "Florentine School",
+     "es": "Escuela florentina"
+    },
+    {
+     "cle": "ecole-venitienne",
+     "id": "wd:Q610687",
+     "fr": "École vénitienne",
+     "en": "Venetian School",
+     "es": "Escuela veneciana"
+    },
+    {
+     "cle": "ecole-ombrienne",
+     "id": "wd:Q2478178",
+     "fr": "École ombrienne",
+     "en": "Umbrian School",
+     "es": "Escuela umbra"
+    },
+    {
+     "cle": "ecole-de-ferrare",
+     "id": "wd:Q1407578",
+     "fr": "École de Ferrare",
+     "en": "School of Ferrara",
+     "es": "Escuela de Ferrara"
+    },
+    {
+     "cle": "renaissance-allemande",
+     "id": "wd:Q2455000",
+     "fr": "Renaissance allemande",
+     "en": "German Renaissance",
+     "es": "Renacimiento alemán"
+    },
+    {
+     "cle": "renaissance-nordique",
+     "id": "wd:Q610877 wd:Q2632089",
+     "fr": "Renaissance nordique",
+     "en": "Northern Renaissance",
+     "es": "Renacimiento nórdico"
+    },
+    {
+     "cle": "renaissance-espagnole",
+     "id": "wd:Q430167 wd:Q5811586",
+     "fr": "Renaissance espagnole",
+     "en": "Spanish Renaissance",
+     "es": "Renacimiento español"
+    },
+    {
+     "cle": "ecole-de-fontainebleau",
+     "id": "wd:Q584084",
+     "fr": "École de Fontainebleau",
+     "en": "School of Fontainebleau",
+     "es": "Escuela de Fontainebleau"
+    },
+    {
+     "cle": "manierisme",
+     "id": "wd:Q131808 wd:Q3818926 wd:Q477134",
+     "fr": "Maniérisme",
+     "en": "Mannerism",
+     "es": "Manierismo"
+    },
+    {
+     "cle": "ecole-cretoise",
+     "id": "wd:Q1378978 wd:Q5732065",
+     "fr": "École crétoise",
+     "en": "Cretan School",
+     "es": "Escuela cretense"
+    },
+    {
+     "cle": "baroque",
+     "id": "wd:Q37853 wd:Q808561 wd:Q3624106",
+     "fr": "Baroque",
+     "en": "Baroque",
+     "es": "Barroco"
+    },
+    {
+     "cle": "baroque-flamand",
+     "id": "wd:Q1994273",
+     "fr": "Baroque flamand",
+     "en": "Flemish Baroque",
+     "es": "Barroco flamenco"
+    },
+    {
+     "cle": "baroque-italien",
+     "id": "wd:Q6076361",
+     "fr": "Baroque italien",
+     "en": "Italian Baroque",
+     "es": "Barroco italiano"
+    },
+    {
+     "cle": "baroque-espagnol",
+     "id": "wd:Q6076358 wd:Q530936",
+     "fr": "Baroque espagnol et Siècle d'or",
+     "en": "Spanish Baroque and Golden Age",
+     "es": "Barroco español y Siglo de Oro"
+    },
+    {
+     "cle": "caravagisme",
+     "id": "wd:Q62506 wd:Q1628039 wd:Q1464842",
+     "fr": "Caravagisme",
+     "en": "Caravaggism",
+     "es": "Caravaggismo"
+    },
+    {
+     "cle": "age-d-or-neerlandais",
+     "id": "wd:Q2352880 wd:Q520750 wd:Q252645",
+     "fr": "Âge d'or néerlandais",
+     "en": "Dutch Golden Age",
+     "es": "Siglo de Oro neerlandés"
+    },
+    {
+     "cle": "classicisme",
+     "id": "wd:Q170292",
+     "fr": "Classicisme",
+     "en": "Classicism",
+     "es": "Clasicismo"
+    },
+    {
+     "cle": "rococo",
+     "id": "wd:Q122960 wd:Q5668507",
+     "fr": "Rococo",
+     "en": "Rococo",
+     "es": "Rococó"
+    },
+    {
+     "cle": "neoclassicisme",
+     "id": "wd:Q14378 wd:Q577147",
+     "fr": "Néo-classicisme",
+     "en": "Neoclassicism",
+     "es": "Neoclasicismo"
+    },
+    {
+     "cle": "romantisme",
+     "id": "wd:Q37068 wd:Q3088366 wd:Q2477112 wd:Q1125039 wd:Q2614483",
+     "fr": "Romantisme",
+     "en": "Romanticism",
+     "es": "Romanticismo"
+    },
+    {
+     "cle": "style-troubadour",
+     "id": "wd:Q3501307 wd:Q3374359",
+     "fr": "Style troubadour",
+     "en": "Troubadour style",
+     "es": "Estilo trovador"
+    },
+    {
+     "cle": "nazareens",
+     "id": "wd:Q422681",
+     "fr": "Nazaréens",
+     "en": "Nazarene movement",
+     "es": "Nazarenos"
+    },
+    {
+     "cle": "biedermeier",
+     "id": "wd:Q154432",
+     "fr": "Biedermeier",
+     "en": "Biedermeier",
+     "es": "Biedermeier"
+    },
+    {
+     "cle": "age-d-or-danois",
+     "id": "wd:Q934618",
+     "fr": "Âge d'or danois",
+     "en": "Danish Golden Age",
+     "es": "Edad de Oro danesa"
+    },
+    {
+     "cle": "ecole-de-norwich",
+     "id": "wd:Q2141991",
+     "fr": "École de Norwich",
+     "en": "Norwich School",
+     "es": "Escuela de Norwich"
+    },
+    {
+     "cle": "ecole-de-barbizon",
+     "id": "wd:Q143357",
+     "fr": "École de Barbizon",
+     "en": "Barbizon School",
+     "es": "Escuela de Barbizon"
+    },
+    {
+     "cle": "hudson-river-school",
+     "id": "wd:Q943853 wd:Q1159870",
+     "fr": "Hudson River School",
+     "en": "Hudson River School",
+     "es": "Escuela del río Hudson"
+    },
+    {
+     "cle": "ecole-de-dusseldorf",
+     "id": "wd:Q680559",
+     "fr": "École de Düsseldorf",
+     "en": "Düsseldorf School",
+     "es": "Escuela de Düsseldorf"
+    },
+    {
+     "cle": "ecole-de-munich",
+     "id": "wd:Q319973",
+     "fr": "École de Munich",
+     "en": "Munich School",
+     "es": "Escuela de Múnich"
+    },
+    {
+     "cle": "realisme",
+     "id": "wd:Q10857409 wd:Q2642826 wd:Q667661",
+     "fr": "Réalisme",
+     "en": "Realism",
+     "es": "Realismo"
+    },
+    {
+     "cle": "naturalisme",
+     "id": "wd:Q55995 wd:Q55996",
+     "fr": "Naturalisme",
+     "en": "Naturalism",
+     "es": "Naturalismo"
+    },
+    {
+     "cle": "academisme",
+     "id": "wd:Q189458 wd:Q3268288",
+     "fr": "Académisme",
+     "en": "Academic art",
+     "es": "Academicismo"
+    },
+    {
+     "cle": "orientalisme",
+     "id": "wd:Q42865 wd:Q765606",
+     "fr": "Orientalisme",
+     "en": "Orientalism",
+     "es": "Orientalismo"
+    },
+    {
+     "cle": "preraphaelisme",
+     "id": "wd:Q184814",
+     "fr": "Préraphaélisme",
+     "en": "Pre-Raphaelites",
+     "es": "Prerrafaelismo"
+    },
+    {
+     "cle": "peinture-victorienne",
+     "id": "wd:Q19953535 wd:Q19953536 wd:Q2405999",
+     "fr": "Peinture victorienne et féerique",
+     "en": "Victorian and fairy painting",
+     "es": "Pintura victoriana y de hadas"
+    },
+    {
+     "cle": "esthetisme",
+     "id": "wd:Q256922",
+     "fr": "Esthétisme",
+     "en": "Aestheticism",
+     "es": "Esteticismo"
+    },
+    {
+     "cle": "arts-and-crafts",
+     "id": "wd:Q330369",
+     "fr": "Arts & Crafts",
+     "en": "Arts and Crafts",
+     "es": "Arts and Crafts"
+    },
+    {
+     "cle": "macchiaioli",
+     "id": "wd:Q574985",
+     "fr": "Macchiaioli",
+     "en": "Macchiaioli",
+     "es": "Macchiaioli"
+    },
+    {
+     "cle": "ambulants",
+     "id": "wd:Q109260",
+     "fr": "Ambulants",
+     "en": "Peredvizhniki (The Wanderers)",
+     "es": "Los Itinerantes"
+    },
+    {
+     "cle": "ecole-de-la-haye",
+     "id": "wd:Q1232633",
+     "fr": "École de La Haye",
+     "en": "Hague School",
+     "es": "Escuela de La Haya"
+    },
+    {
+     "cle": "costumbrismo",
+     "id": "wd:Q1136545 wd:Q5790159",
+     "fr": "Costumbrismo",
+     "en": "Costumbrismo",
+     "es": "Costumbrismo"
+    },
+    {
+     "cle": "impressionnisme",
+     "id": "wd:Q40415",
+     "fr": "Impressionnisme",
+     "en": "Impressionism",
+     "es": "Impresionismo"
+    },
+    {
+     "cle": "impressionnisme-americain",
+     "id": "wd:Q2477787",
+     "fr": "Impressionnisme américain",
+     "en": "American Impressionism",
+     "es": "Impresionismo estadounidense"
+    },
+    {
+     "cle": "impressionnisme-d-amsterdam",
+     "id": "wd:Q478717",
+     "fr": "Impressionnisme d'Amsterdam",
+     "en": "Amsterdam Impressionism",
+     "es": "Impresionismo de Ámsterdam"
+    },
+    {
+     "cle": "ecole-de-heidelberg",
+     "id": "wd:Q3032335",
+     "fr": "École de Heidelberg (Australie)",
+     "en": "Heidelberg School (Australia)",
+     "es": "Escuela de Heidelberg (Australia)"
+    },
+    {
+     "cle": "neo-impressionnisme",
+     "id": "wd:Q150091 wd:Q200034 wd:Q2487023",
+     "fr": "Néo-impressionnisme et pointillisme",
+     "en": "Neo-Impressionism and Pointillism",
+     "es": "Neoimpresionismo y puntillismo"
+    },
+    {
+     "cle": "postimpressionnisme",
+     "id": "wd:Q166713",
+     "fr": "Postimpressionnisme",
+     "en": "Post-Impressionism",
+     "es": "Postimpresionismo"
+    },
+    {
+     "cle": "ecole-de-pont-aven",
+     "id": "wd:Q382056 wd:Q889525 wd:Q847847",
+     "fr": "École de Pont-Aven et synthétisme",
+     "en": "Pont-Aven School and Synthetism",
+     "es": "Escuela de Pont-Aven y sintetismo"
+    },
+    {
+     "cle": "nabis",
+     "id": "wd:Q503708",
+     "fr": "Les Nabis",
+     "en": "Les Nabis",
+     "es": "Los Nabis"
+    },
+    {
+     "cle": "symbolisme",
+     "id": "wd:Q164800 wd:Q1879488 wd:Q846094",
+     "fr": "Symbolisme",
+     "en": "Symbolism",
+     "es": "Simbolismo"
+    },
+    {
+     "cle": "art-nouveau",
+     "id": "wd:Q34636 wd:Q1294605 wd:Q273495 wd:Q1122677",
+     "fr": "Art nouveau",
+     "en": "Art Nouveau",
+     "es": "Modernismo (Art Nouveau)"
+    },
+    {
+     "cle": "japonisme",
+     "id": "wd:Q751880",
+     "fr": "Japonisme",
+     "en": "Japonisme",
+     "es": "Japonismo"
+    },
+    {
+     "cle": "jeune-pologne",
+     "id": "wd:Q1133329",
+     "fr": "Jeune Pologne",
+     "en": "Young Poland",
+     "es": "Joven Polonia"
+    },
+    {
+     "cle": "peintres-de-skagen",
+     "id": "wd:Q726483",
+     "fr": "Peintres de Skagen",
+     "en": "Skagen Painters",
+     "es": "Pintores de Skagen"
+    },
+    {
+     "cle": "art-naif",
+     "id": "wd:Q281108 wd:Q848365",
+     "fr": "Art naïf et primitivisme",
+     "en": "Naïve art and Primitivism",
+     "es": "Arte naíf y primitivismo"
+    },
+    {
+     "cle": "fauvisme",
+     "id": "wd:Q166593",
+     "fr": "Fauvisme",
+     "en": "Fauvism",
+     "es": "Fovismo"
+    },
+    {
+     "cle": "expressionnisme",
+     "id": "wd:Q80113 wd:Q1362030 wd:Q117035",
+     "fr": "Expressionnisme",
+     "en": "Expressionism",
+     "es": "Expresionismo"
+    },
+    {
+     "cle": "cubisme",
+     "id": "wd:Q42934 wd:Q60367157 wd:Q519443",
+     "fr": "Cubisme et orphisme",
+     "en": "Cubism and Orphism",
+     "es": "Cubismo y orfismo"
+    },
+    {
+     "cle": "futurisme",
+     "id": "wd:Q131221 wd:Q1400843",
+     "fr": "Futurisme",
+     "en": "Futurism",
+     "es": "Futurismo"
+    },
+    {
+     "cle": "avant-garde-russe",
+     "id": "wd:Q1401605 wd:Q191970 wd:Q207103 wd:Q10336318",
+     "fr": "Avant-garde russe",
+     "en": "Russian avant-garde",
+     "es": "Vanguardia rusa"
+    },
+    {
+     "cle": "de-stijl",
+     "id": "wd:Q207445 wd:Q845421",
+     "fr": "De Stijl",
+     "en": "De Stijl",
+     "es": "De Stijl"
+    },
+    {
+     "cle": "bauhaus",
+     "id": "wd:Q124354",
+     "fr": "Bauhaus",
+     "en": "Bauhaus",
+     "es": "Bauhaus"
+    },
+    {
+     "cle": "dada",
+     "id": "wd:Q6034",
+     "fr": "Dada",
+     "en": "Dada",
+     "es": "Dadaísmo"
+    },
+    {
+     "cle": "surrealisme",
+     "id": "wd:Q39427",
+     "fr": "Surréalisme",
+     "en": "Surrealism",
+     "es": "Surrealismo"
+    },
+    {
+     "cle": "nouvelle-objectivite",
+     "id": "wd:Q160218",
+     "fr": "Nouvelle Objectivité",
+     "en": "New Objectivity",
+     "es": "Nueva Objetividad"
+    },
+    {
+     "cle": "ash-can-school",
+     "id": "wd:Q724976 wd:Q4745527",
+     "fr": "Ash Can School et réalisme américain",
+     "en": "Ashcan School and American Realism",
+     "es": "Escuela Ashcan y realismo estadounidense"
+    },
+    {
+     "cle": "ecole-de-paris",
+     "id": "wd:Q273506",
+     "fr": "École de Paris",
+     "en": "School of Paris",
+     "es": "Escuela de París"
+    },
+    {
+     "cle": "age-d-or-de-l-illustration",
+     "id": "wd:Q11498107",
+     "fr": "Âge d'or de l'illustration",
+     "en": "Golden Age of Illustration",
+     "es": "Edad de Oro de la ilustración"
+    },
+    {
+     "cle": "ukiyo-e",
+     "id": "wd:Q185905 wd:Q1192525 wd:Q2297646",
+     "fr": "Ukiyo-e",
+     "en": "Ukiyo-e",
+     "es": "Ukiyo-e"
+    },
+    {
+     "cle": "ecole-kano",
+     "id": "wd:Q252801",
+     "fr": "École Kanō",
+     "en": "Kanō School",
+     "es": "Escuela Kanō"
+    },
+    {
+     "cle": "ecole-rinpa",
+     "id": "wd:Q3179819",
+     "fr": "École Rinpa",
+     "en": "Rinpa School",
+     "es": "Escuela Rinpa"
+    },
+    {
+     "cle": "ecole-maruyama",
+     "id": "wd:Q11394770",
+     "fr": "École Maruyama",
+     "en": "Maruyama School",
+     "es": "Escuela Maruyama"
+    },
+    {
+     "cle": "yo-ga",
+     "id": "wd:Q1633309",
+     "fr": "Yō-ga (peinture japonaise à l'occidentale)",
+     "en": "Yōga (Western-style Japanese painting)",
+     "es": "Yōga (pintura japonesa de estilo occidental)"
+    },
+    {
+     "cle": "ecoles-chinoises",
+     "id": "wd:Q558875 wd:Q20020039 wd:Q116843676 wd:Q3376676",
+     "fr": "Écoles chinoises (Wu, Yushan, Xin'an, Shanghai)",
+     "en": "Chinese schools (Wu, Yushan, Xin'an, Shanghai)",
+     "es": "Escuelas chinas (Wu, Yushan, Xin'an, Shanghái)"
+    }
+   ]
+  },
+  {
+   "cle": "genres",
+   "fr": "Genres",
+   "en": "Genres",
+   "es": "Géneros",
+   "wikidata": "VALUES ?s { {id} } ?oeuvre wdt:P136 ?s .",
+   "sujets": [
+    {
+     "cle": "portrait",
+     "id": "wd:Q134307 wd:Q1400853",
+     "fr": "Portrait",
+     "en": "Portrait",
+     "es": "Retrato"
+    },
+    {
+     "cle": "autoportrait",
+     "id": "wd:Q192110",
+     "fr": "Autoportrait",
+     "en": "Self-portrait",
+     "es": "Autorretrato"
+    },
+    {
+     "cle": "portrait-de-groupe",
+     "id": "wd:Q1551015 wd:Q19547247 wd:Q19968941",
+     "fr": "Portrait de groupe et de famille",
+     "en": "Group and family portrait",
+     "es": "Retrato de grupo y de familia"
+    },
+    {
+     "cle": "portrait-equestre",
+     "id": "wd:Q3399515",
+     "fr": "Portrait équestre",
+     "en": "Equestrian portrait",
+     "es": "Retrato ecuestre"
+    },
+    {
+     "cle": "tronie",
+     "id": "wd:Q1433099",
+     "fr": "Tronie (tête d'expression)",
+     "en": "Tronie",
+     "es": "Tronie"
+    },
+    {
+     "cle": "art-religieux",
+     "id": "wd:Q2864737 wd:Q2414609 wd:Q3374349",
+     "fr": "Art religieux",
+     "en": "Religious art",
+     "es": "Arte religioso"
+    },
+    {
+     "cle": "peinture-mythologique",
+     "id": "wd:Q3374376 wd:Q115574326",
+     "fr": "Peinture mythologique",
+     "en": "Mythological painting",
+     "es": "Pintura mitológica"
+    },
+    {
+     "cle": "peinture-d-histoire",
+     "id": "wd:Q742333",
+     "fr": "Peinture d'histoire",
+     "en": "History painting",
+     "es": "Pintura de historia"
+    },
+    {
+     "cle": "allegorie",
+     "id": "wd:Q2839016",
+     "fr": "Allégorie",
+     "en": "Allegory",
+     "es": "Alegoría"
+    },
+    {
+     "cle": "scene-de-genre",
+     "id": "wd:Q1047337 wd:Q214127",
+     "fr": "Scène de genre",
+     "en": "Genre scene",
+     "es": "Escena de género"
+    },
+    {
+     "cle": "scene-d-interieur",
+     "id": "wd:Q18811686 wd:Q1666094",
+     "fr": "Scène d'intérieur",
+     "en": "Interior scene",
+     "es": "Escena de interior"
+    },
+    {
+     "cle": "pastorale",
+     "id": "wd:Q390001 wd:Q742530 wd:Q1185399",
+     "fr": "Pastorale et fête galante",
+     "en": "Pastoral and fête galante",
+     "es": "Pastoral y fiesta galante"
+    },
+    {
+     "cle": "paysage",
+     "id": "wd:Q191163",
+     "fr": "Paysage",
+     "en": "Landscape",
+     "es": "Paisaje"
+    },
+    {
+     "cle": "marine",
+     "id": "wd:Q158607",
+     "fr": "Marine",
+     "en": "Seascape",
+     "es": "Marina"
+    },
+    {
+     "cle": "paysage-urbain",
+     "id": "wd:Q1935974 wd:Q7766995",
+     "fr": "Paysage urbain",
+     "en": "Cityscape",
+     "es": "Paisaje urbano"
+    },
+    {
+     "cle": "veduta",
+     "id": "wd:Q166030 wd:Q2278308",
+     "fr": "Veduta et capriccio",
+     "en": "Veduta and capriccio",
+     "es": "Veduta y capricho"
+    },
+    {
+     "cle": "peinture-d-architecture",
+     "id": "wd:Q18353841 wd:Q18822288 wd:Q21074330",
+     "fr": "Peinture d'architecture",
+     "en": "Architectural painting",
+     "es": "Pintura de arquitectura"
+    },
+    {
+     "cle": "nocturne",
+     "id": "wd:Q7046534",
+     "fr": "Nocturne",
+     "en": "Nocturne",
+     "es": "Nocturno"
+    },
+    {
+     "cle": "nature-morte",
+     "id": "wd:Q170571 wd:Q61747235 wd:Q61409754",
+     "fr": "Nature morte",
+     "en": "Still life",
+     "es": "Bodegón"
+    },
+    {
+     "cle": "peinture-de-fleurs",
+     "id": "wd:Q12303833",
+     "fr": "Peinture de fleurs",
+     "en": "Flower painting",
+     "es": "Pintura de flores"
+    },
+    {
+     "cle": "vanite",
+     "id": "wd:Q733095",
+     "fr": "Vanité",
+     "en": "Vanitas",
+     "es": "Vanitas"
+    },
+    {
+     "cle": "trompe-l-oeil",
+     "id": "wd:Q468930",
+     "fr": "Trompe-l'œil",
+     "en": "Trompe-l'œil",
+     "es": "Trampantojo"
+    },
+    {
+     "cle": "nu",
+     "id": "wd:Q40446",
+     "fr": "Nu",
+     "en": "Nude",
+     "es": "Desnudo"
+    },
+    {
+     "cle": "art-animalier",
+     "id": "wd:Q16875712 wd:Q2302151",
+     "fr": "Art animalier",
+     "en": "Animal painting",
+     "es": "Pintura de animales"
+    },
+    {
+     "cle": "peinture-de-bataille",
+     "id": "wd:Q3374353 wd:Q383898",
+     "fr": "Peinture de bataille",
+     "en": "Battle painting",
+     "es": "Pintura de batallas"
+    },
+    {
+     "cle": "caricature",
+     "id": "wd:Q482919 wd:Q128758",
+     "fr": "Caricature et satire",
+     "en": "Caricature and satire",
+     "es": "Caricatura y sátira"
+    },
+    {
+     "cle": "sumi-e",
+     "id": "wd:Q756712 wd:Q116457653",
+     "fr": "Peinture à l'encre (sumi-e)",
+     "en": "Ink wash painting (sumi-e)",
+     "es": "Pintura a la tinta (sumi-e)"
+    },
+    {
+     "cle": "eventails-peints",
+     "id": "wd:Q50488927",
+     "fr": "Éventails peints",
+     "en": "Fan painting",
+     "es": "Abanicos pintados"
+    },
+    {
+     "cle": "bijin-ga",
+     "id": "wd:Q284521 wd:Q3304751",
+     "fr": "Bijin-ga et vues célèbres du Japon",
+     "en": "Bijin-ga and famous views of Japan",
+     "es": "Bijin-ga y vistas célebres de Japón"
+    }
+   ]
+  },
+  {
+   "cle": "techniques",
+   "fr": "Techniques",
+   "en": "Techniques",
+   "es": "Técnicas",
+   "wikidata": "VALUES ?s { {id} } { ?oeuvre wdt:P31 ?s } UNION { ?oeuvre wdt:P186 ?s }",
+   "sujets": [
+    {
+     "cle": "aquarelle",
+     "id": "wd:Q18761202 wd:Q3374389",
+     "fr": "Aquarelle",
+     "en": "Watercolour",
+     "es": "Acuarela"
+    },
+    {
+     "cle": "pastel",
+     "id": "wd:Q12043905 wd:Q189085",
+     "fr": "Pastel",
+     "en": "Pastel",
+     "es": "Pastel"
+    },
+    {
+     "cle": "gouache",
+     "id": "wd:Q21281546 wd:Q204330",
+     "fr": "Gouache",
+     "en": "Gouache",
+     "es": "Gouache"
+    },
+    {
+     "cle": "tempera",
+     "id": "wd:Q175166",
+     "fr": "Tempera",
+     "en": "Tempera",
+     "es": "Temple"
+    },
+    {
+     "cle": "fresque",
+     "id": "wd:Q22669139 wd:Q25631150",
+     "fr": "Fresque",
+     "en": "Fresco",
+     "es": "Fresco"
+    },
+    {
+     "cle": "peinture-sur-bois",
+     "id": "wd:Q106857709 wd:Q106857823 wd:Q106857865 wd:Q107103548",
+     "fr": "Peinture sur bois",
+     "en": "Panel painting",
+     "es": "Pintura sobre tabla"
+    },
+    {
+     "cle": "peinture-sur-cuivre",
+     "id": "wd:Q753",
+     "fr": "Peinture sur cuivre",
+     "en": "Painting on copper",
+     "es": "Pintura sobre cobre"
+    },
+    {
+     "cle": "fonds-d-or",
+     "id": "wd:Q929186 wd:Q897",
+     "fr": "Fonds d'or",
+     "en": "Gold ground",
+     "es": "Fondos de oro"
+    },
+    {
+     "cle": "peinture-sur-soie",
+     "id": "wd:Q37681",
+     "fr": "Peinture sur soie",
+     "en": "Painting on silk",
+     "es": "Pintura sobre seda"
+    },
+    {
+     "cle": "icone",
+     "id": "wd:Q132137",
+     "fr": "Icônes",
+     "en": "Icons",
+     "es": "Iconos"
+    },
+    {
+     "cle": "enluminure",
+     "id": "wd:Q48498",
+     "fr": "Enluminure",
+     "en": "Illuminated manuscripts",
+     "es": "Miniatura de manuscritos"
+    },
+    {
+     "cle": "miniature",
+     "id": "wd:Q282129 wd:Q82001",
+     "fr": "Miniature",
+     "en": "Miniature",
+     "es": "Miniatura"
+    },
+    {
+     "cle": "dessin",
+     "id": "wd:Q93184",
+     "fr": "Dessin",
+     "en": "Drawing",
+     "es": "Dibujo"
+    },
+    {
+     "cle": "esquisse",
+     "id": "wd:Q5078274 wd:Q2647254",
+     "fr": "Esquisses et études",
+     "en": "Sketches and studies",
+     "es": "Bocetos y estudios"
+    },
+    {
+     "cle": "fusain",
+     "id": "wd:Q1424515",
+     "fr": "Fusain",
+     "en": "Charcoal",
+     "es": "Carboncillo"
+    },
+    {
+     "cle": "sanguine",
+     "id": "wd:Q901944",
+     "fr": "Sanguine",
+     "en": "Red chalk",
+     "es": "Sanguina"
+    },
+    {
+     "cle": "pierre-noire",
+     "id": "wd:Q3387833 wd:Q183670",
+     "fr": "Pierre noire et craie",
+     "en": "Black chalk and chalk",
+     "es": "Piedra negra y tiza"
+    },
+    {
+     "cle": "graphite",
+     "id": "wd:Q5309 wd:Q14674 wd:Q6791777",
+     "fr": "Crayon et graphite",
+     "en": "Pencil and graphite",
+     "es": "Lápiz y grafito"
+    },
+    {
+     "cle": "encre",
+     "id": "wd:Q127418 wd:Q58344150 wd:Q12981547 wd:Q1469362",
+     "fr": "Encre et lavis",
+     "en": "Ink and wash",
+     "es": "Tinta y aguada"
+    },
+    {
+     "cle": "calligraphie",
+     "id": "wd:Q22669850",
+     "fr": "Calligraphie",
+     "en": "Calligraphy",
+     "es": "Caligrafía"
+    },
+    {
+     "cle": "estampe",
+     "id": "wd:Q11060274",
+     "fr": "Estampe",
+     "en": "Prints",
+     "es": "Estampa"
+    },
+    {
+     "cle": "eau-forte",
+     "id": "wd:Q18218093 wd:Q186986",
+     "fr": "Eau-forte",
+     "en": "Etching",
+     "es": "Aguafuerte"
+    },
+    {
+     "cle": "gravure",
+     "id": "wd:Q11835431 wd:Q747704 wd:Q18887969",
+     "fr": "Gravure au burin",
+     "en": "Engraving",
+     "es": "Grabado a buril"
+    },
+    {
+     "cle": "maniere-noire",
+     "id": "wd:Q21647744 wd:Q731980",
+     "fr": "Manière noire",
+     "en": "Mezzotint",
+     "es": "Manera negra"
+    },
+    {
+     "cle": "gravure-sur-bois",
+     "id": "wd:Q18219090",
+     "fr": "Gravure sur bois",
+     "en": "Woodcut",
+     "es": "Xilografía"
+    },
+    {
+     "cle": "lithographie",
+     "id": "wd:Q15123870 wd:Q89503149",
+     "fr": "Lithographie",
+     "en": "Lithography",
+     "es": "Litografía"
+    },
+    {
+     "cle": "aquatinte",
+     "id": "wd:Q18396864",
+     "fr": "Aquatinte",
+     "en": "Aquatint",
+     "es": "Aguatinta"
+    },
+    {
+     "cle": "pointe-seche",
+     "id": "wd:Q23657281 wd:Q542340",
+     "fr": "Pointe sèche",
+     "en": "Drypoint",
+     "es": "Punta seca"
+    },
+    {
+     "cle": "photographie",
+     "id": "wd:Q125191 wd:Q56055236",
+     "fr": "Photographie",
+     "en": "Photography",
+     "es": "Fotografía"
+    }
+   ]
+  },
+  {
+   "cle": "motifs",
+   "fr": "Sujets et motifs",
+   "en": "Subjects and motifs",
+   "es": "Temas y motivos",
+   "wikidata": "VALUES ?s { {id} } { ?oeuvre wdt:P180 ?s } UNION { ?oeuvre wdt:P921 ?s }",
+   "sujets": [
+    {
+     "cle": "vierge-a-l-enfant",
+     "id": "wd:Q9309699",
+     "fr": "Vierge à l'Enfant",
+     "en": "Madonna and Child",
+     "es": "Virgen con el Niño"
+    },
+    {
+     "cle": "annonciation",
+     "id": "wd:Q154326",
+     "fr": "Annonciation",
+     "en": "Annunciation",
+     "es": "Anunciación"
+    },
+    {
+     "cle": "nativite",
+     "id": "wd:Q51628 wd:Q1029715",
+     "fr": "Nativité et adoration des bergers",
+     "en": "Nativity and Adoration of the Shepherds",
+     "es": "Natividad y adoración de los pastores"
+    },
+    {
+     "cle": "adoration-des-mages",
+     "id": "wd:Q488841",
+     "fr": "Adoration des mages",
+     "en": "Adoration of the Magi",
+     "es": "Adoración de los Reyes Magos"
+    },
+    {
+     "cle": "sainte-famille",
+     "id": "wd:Q618057 wd:Q3427290 wd:Q837143",
+     "fr": "Sainte Famille et fuite en Égypte",
+     "en": "Holy Family and Flight into Egypt",
+     "es": "Sagrada Familia y huida a Egipto"
+    },
+    {
+     "cle": "bapteme-du-christ",
+     "id": "wd:Q217048",
+     "fr": "Baptême du Christ",
+     "en": "Baptism of Christ",
+     "es": "Bautismo de Cristo"
+    },
+    {
+     "cle": "cene",
+     "id": "wd:Q51633",
+     "fr": "La Cène",
+     "en": "The Last Supper",
+     "es": "La Última Cena"
+    },
+    {
+     "cle": "crucifixion",
+     "id": "wd:Q51636",
+     "fr": "Crucifixion",
+     "en": "Crucifixion",
+     "es": "Crucifixión"
+    },
+    {
+     "cle": "descente-de-croix",
+     "id": "wd:Q13365963 wd:Q3155356 wd:Q51637 wd:Q223689",
+     "fr": "Descente de croix, déploration et pietà",
+     "en": "Descent from the Cross, Lamentation and Pietà",
+     "es": "Descendimiento, lamentación y piedad"
+    },
+    {
+     "cle": "resurrection",
+     "id": "wd:Q51624",
+     "fr": "Résurrection",
+     "en": "Resurrection",
+     "es": "Resurrección"
+    },
+    {
+     "cle": "adam-et-eve",
+     "id": "wd:Q1135949",
+     "fr": "Adam et Ève",
+     "en": "Adam and Eve",
+     "es": "Adán y Eva"
+    },
+    {
+     "cle": "judith",
+     "id": "wd:Q13077250",
+     "fr": "Judith et Holopherne",
+     "en": "Judith and Holofernes",
+     "es": "Judit y Holofernes"
+    },
+    {
+     "cle": "suzanne",
+     "id": "wd:Q16930210",
+     "fr": "Suzanne et les vieillards",
+     "en": "Susanna and the Elders",
+     "es": "Susana y los viejos"
+    },
+    {
+     "cle": "saint-jerome",
+     "id": "wd:Q44248",
+     "fr": "Saint Jérôme",
+     "en": "Saint Jerome",
+     "es": "San Jerónimo"
+    },
+    {
+     "cle": "saint-jean-baptiste",
+     "id": "wd:Q40662",
+     "fr": "Saint Jean-Baptiste",
+     "en": "Saint John the Baptist",
+     "es": "San Juan Bautista"
+    },
+    {
+     "cle": "marie-madeleine",
+     "id": "wd:Q5989722 wd:Q63070",
+     "fr": "Marie Madeleine",
+     "en": "Mary Magdalene",
+     "es": "María Magdalena"
+    },
+    {
+     "cle": "saint-sebastien",
+     "id": "wd:Q65508996",
+     "fr": "Saint Sébastien",
+     "en": "Saint Sebastian",
+     "es": "San Sebastián"
+    },
+    {
+     "cle": "saint-francois",
+     "id": "wd:Q676555",
+     "fr": "Saint François d'Assise",
+     "en": "Saint Francis of Assisi",
+     "es": "San Francisco de Asís"
+    },
+    {
+     "cle": "sainte-catherine",
+     "id": "wd:Q179718",
+     "fr": "Sainte Catherine d'Alexandrie",
+     "en": "Saint Catherine of Alexandria",
+     "es": "Santa Catalina de Alejandría"
+    },
+    {
+     "cle": "anges",
+     "id": "wd:Q235113 wd:Q284865",
+     "fr": "Anges et putti",
+     "en": "Angels and putti",
+     "es": "Ángeles y putti"
+    },
+    {
+     "cle": "venus",
+     "id": "wd:Q47652",
+     "fr": "Vénus",
+     "en": "Venus",
+     "es": "Venus"
+    },
+    {
+     "cle": "cupidon",
+     "id": "wd:Q5011",
+     "fr": "Cupidon",
+     "en": "Cupid",
+     "es": "Cupido"
+    },
+    {
+     "cle": "arbres",
+     "id": "wd:Q10884 wd:Q4421",
+     "fr": "Arbres et forêts",
+     "en": "Trees and forests",
+     "es": "Árboles y bosques"
+    },
+    {
+     "cle": "fleurs",
+     "id": "wd:Q506 wd:Q1187930",
+     "fr": "Fleurs et bouquets",
+     "en": "Flowers and bouquets",
+     "es": "Flores y ramos"
+    },
+    {
+     "cle": "fruits",
+     "id": "wd:Q3314483 wd:Q10978 wd:Q1093742",
+     "fr": "Fruits",
+     "en": "Fruit",
+     "es": "Frutas"
+    },
+    {
+     "cle": "jardins",
+     "id": "wd:Q1107656",
+     "fr": "Jardins",
+     "en": "Gardens",
+     "es": "Jardines"
+    },
+    {
+     "cle": "montagnes",
+     "id": "wd:Q8502 wd:Q54050",
+     "fr": "Montagnes et collines",
+     "en": "Mountains and hills",
+     "es": "Montañas y colinas"
+    },
+    {
+     "cle": "neige",
+     "id": "wd:Q7561",
+     "fr": "Neige",
+     "en": "Snow",
+     "es": "Nieve"
+    },
+    {
+     "cle": "ciels",
+     "id": "wd:Q8074 wd:Q527",
+     "fr": "Ciels et nuages",
+     "en": "Skies and clouds",
+     "es": "Cielos y nubes"
+    },
+    {
+     "cle": "mer",
+     "id": "wd:Q165 wd:Q40080 wd:Q93352",
+     "fr": "Mer, plages et côtes",
+     "en": "Sea, beaches and coasts",
+     "es": "Mar, playas y costas"
+    },
+    {
+     "cle": "bateaux",
+     "id": "wd:Q35872 wd:Q1075310 wd:Q170483 wd:Q11446",
+     "fr": "Bateaux et voiliers",
+     "en": "Boats and sailing ships",
+     "es": "Barcos y veleros"
+    },
+    {
+     "cle": "rivieres",
+     "id": "wd:Q4022 wd:Q23397 wd:Q34038",
+     "fr": "Rivières, lacs et cascades",
+     "en": "Rivers, lakes and waterfalls",
+     "es": "Ríos, lagos y cascadas"
+    },
+    {
+     "cle": "la-seine",
+     "id": "wd:Q1471",
+     "fr": "La Seine",
+     "en": "The Seine",
+     "es": "El Sena"
+    },
+    {
+     "cle": "ponts",
+     "id": "wd:Q12280",
+     "fr": "Ponts",
+     "en": "Bridges",
+     "es": "Puentes"
+    },
+    {
+     "cle": "moulins",
+     "id": "wd:Q38720",
+     "fr": "Moulins à vent",
+     "en": "Windmills",
+     "es": "Molinos de viento"
+    },
+    {
+     "cle": "ruines",
+     "id": "wd:Q109607",
+     "fr": "Ruines",
+     "en": "Ruins",
+     "es": "Ruinas"
+    },
+    {
+     "cle": "eglises",
+     "id": "wd:Q16970",
+     "fr": "Églises",
+     "en": "Churches",
+     "es": "Iglesias"
+    },
+    {
+     "cle": "chevaux",
+     "id": "wd:Q726 wd:Q179226",
+     "fr": "Chevaux et cavaliers",
+     "en": "Horses and riders",
+     "es": "Caballos y jinetes"
+    },
+    {
+     "cle": "chiens",
+     "id": "wd:Q144",
+     "fr": "Chiens",
+     "en": "Dogs",
+     "es": "Perros"
+    },
+    {
+     "cle": "chats",
+     "id": "wd:Q146",
+     "fr": "Chats",
+     "en": "Cats",
+     "es": "Gatos"
+    },
+    {
+     "cle": "oiseaux",
+     "id": "wd:Q5113",
+     "fr": "Oiseaux",
+     "en": "Birds",
+     "es": "Aves"
+    },
+    {
+     "cle": "troupeaux",
+     "id": "wd:Q830 wd:Q11748378 wd:Q7368",
+     "fr": "Vaches et moutons",
+     "en": "Cows and sheep",
+     "es": "Vacas y ovejas"
+    },
+    {
+     "cle": "enfants",
+     "id": "wd:Q7569 wd:Q3010 wd:Q3031 wd:Q998",
+     "fr": "Enfants",
+     "en": "Children",
+     "es": "Niños"
+    },
+    {
+     "cle": "meres",
+     "id": "wd:Q7560",
+     "fr": "Mères",
+     "en": "Mothers",
+     "es": "Madres"
+    },
+    {
+     "cle": "lecture",
+     "id": "wd:Q199657 wd:Q571",
+     "fr": "Lecture et livres",
+     "en": "Reading and books",
+     "es": "Lectura y libros"
+    },
+    {
+     "cle": "paysans",
+     "id": "wd:Q838811",
+     "fr": "Paysans",
+     "en": "Peasants",
+     "es": "Campesinos"
+    },
+    {
+     "cle": "soldats",
+     "id": "wd:Q4991371 wd:Q485027",
+     "fr": "Soldats et armures",
+     "en": "Soldiers and armour",
+     "es": "Soldados y armaduras"
+    }
+   ]
+  }
+ ]
+}
