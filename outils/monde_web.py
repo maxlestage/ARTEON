@@ -31,6 +31,8 @@ import time
 import unicodedata
 from pathlib import Path
 
+from categories import affiner
+
 from PIL import Image
 
 ICI = Path(__file__).resolve().parent
@@ -206,11 +208,14 @@ def main():
         list(pool.map(en_webp, [(vignettes / f"{i}.jpg", gardes / f"{i}.webp", sortie / "v" / f"{i}.webp")
                                 for i in a_convertir], chunksize=500))
 
-    liste = [[o["t"], o.get("a", ""), o.get("d", ""), o.get("y"), o.get("c", "Autres objets"),
-              position[o["k"]], o.get("r")] + ([o["vu"]] if o.get("vu") else []) for o in gardees]
+    # La catégorie affichée : plus fine que celle de la moisson (outils/categories.py). Celle
+    # de la moisson reste dans les fiches, pour les liens avec les expositions.
+    fines = [affiner(o.get("c", "Autres objets"), o.get("t"), o.get("m"), o.get("o")) for o in gardees]
+    liste = [[o["t"], o.get("a", ""), o.get("d", ""), o.get("y"), fine,
+              position[o["k"]], o.get("r")] + ([o["vu"]] if o.get("vu") else []) for o, fine in zip(gardees, fines)]
     categories, siecles = {}, {}
-    for o in gardees:
-        categories[o.get("c", "Autres objets")] = categories.get(o.get("c", "Autres objets"), 0) + 1
+    for o, fine in zip(gardees, fines):
+        categories[fine] = categories.get(fine, 0) + 1
         if o.get("y") is not None:
             r = rang(o["y"])
             siecles[r] = siecles.get(r, 0) + 1
