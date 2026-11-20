@@ -561,9 +561,11 @@ mod tests {
     #[test]
     fn un_musee_qui_manque_partout_est_en_panne() {
         let m = |l: &[&str]| l.iter().map(|s| s.to_string()).collect::<Vec<_>>();
-        let gardes = [m(&["met"]), m(&["met"]), m(&["met", "wikidata"]), m(&[])];
+        let gardes = [m(&["met"]), m(&["met"]), m(&["met", "wikidata"]), m(&[]), m(&[]), m(&[]), m(&[]), m(&[]), m(&[]), m(&[])];
         let pannes = en_panne(&gardes);
+        // Le Met manque à 3 catalogues sur 10 : il refuse trop souvent pour qu'on l'attende.
         assert!(pannes.contains("met"));
+        // Wikidata à 1 sur 10 : un raté passager, qui se reprend.
         assert!(!pannes.contains("wikidata"));
         assert!(en_panne(&[]).is_empty());
     }
@@ -710,9 +712,14 @@ fn fusionner(ancien: Option<&Value>, nouveau: Value) -> Value {
     json!({ "nom": nouveau["nom"], "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
 }
 
-/// Les musées « en panne » pour cette machine : ceux qui manquent à plus de la moitié des
-/// catalogues gardés (un musée qui refuse les machines de construction, par exemple). Les
-/// attendre ne sert à rien ; le site les interroge lui-même, depuis le navigateur.
+/// Les musées « en panne » pour cette machine : ceux qui manquent à plus d'un catalogue gardé
+/// sur cinq (un musée qui refuse les machines de construction, par exemple). Les attendre ne
+/// sert à rien ; le site les interroge lui-même, depuis le navigateur.
+///
+/// Un sur cinq, pas un sur deux : le Met refuse ces machines une fois sur deux environ (48 %
+/// des catalogues le 20/11), juste sous l'ancien seuil. Les reprises lui redemandaient donc
+/// les mêmes artistes à chaque construction, pendant la moitié du temps, presque toujours pour
+/// rien, au lieu de calculer de nouveaux artistes. Un musée qui marche manque à moins de 1 %.
 fn en_panne(manquants: &[Vec<String>]) -> HashSet<String> {
     let mut absences: HashMap<&str, usize> = HashMap::new();
     for m in manquants {
@@ -720,7 +727,7 @@ fn en_panne(manquants: &[Vec<String>]) -> HashSet<String> {
             *absences.entry(source.as_str()).or_default() += 1;
         }
     }
-    absences.into_iter().filter(|(_, n)| n * 2 > manquants.len()).map(|(s, _)| s.to_owned()).collect()
+    absences.into_iter().filter(|(_, n)| n * 5 > manquants.len()).map(|(s, _)| s.to_owned()).collect()
 }
 
 /// Un texte compressé en gzip.
