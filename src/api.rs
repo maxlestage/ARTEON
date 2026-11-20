@@ -233,22 +233,23 @@ fn client() -> &'static ureq::Agent {
 }
 
 fn lire_en(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Option<Value> {
-    demander(url, entetes, secondes).ok()
+    demander(url, entetes, secondes, 2).ok()
 }
 
 /// La réponse d'un musée, ou son refus : le code HTTP (404 : la fiche n'existe plus ; 403,
 /// 429… : il ne veut pas répondre), `None` s'il n'a rien répondu de lisible.
-fn demander(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Result<Value, Option<u16>> {
+///
+/// Un musée qui demande de ralentir (429, 503) est réessayé un peu plus tard, `essais` fois.
+fn demander(url: &str, entetes: &[(&str, &str)], secondes: u64, essais: u64) -> Result<Value, Option<u16>> {
     let mut requete = client().get(url).timeout(Duration::from_secs(secondes));
     for (k, v) in entetes {
         requete = requete.set(k, v);
     }
-    // Un musée qui demande de ralentir (429, 503) est réessayé un peu plus tard, deux fois.
     let mut essai = 0;
     let texte = loop {
         match requete.clone().call() {
             Ok(r) => break r.into_string().map_err(|_| None)?,
-            Err(ureq::Error::Status(code, _)) if (code == 429 || code == 503) && essai < 2 => {
+            Err(ureq::Error::Status(code, _)) if (code == 429 || code == 503) && essai < essais => {
                 essai += 1;
                 std::thread::sleep(Duration::from_secs(3 * essai));
             }
@@ -323,9 +324,33 @@ fn remplir(modele: &str, valeurs: &HashMap<&str, String>) -> String {
     s
 }
 
+/// Ce qu'on demande à un musée : les œuvres d'un artiste, ou celles d'un sujet (un style, un
+/// genre, une technique : outils/monde/sujets.json), décrit par ce qu'il faut écrire dans la
+/// requête « sujet » de chaque musée.
+#[derive(Clone, Copy)]
+enum Demande<'a> {
+    Artiste(&'a str),
+    Sujet(&'a Value),
+}
+
 /// Les œuvres libres de l'artiste dans un musée, et si le musée n'a pas répondu.
 fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
+    interroger_par(source, Demande::Artiste(nom))
+}
+
+/// Les œuvres libres d'un artiste ou d'un sujet dans un musée, et si le musée n'a pas
+/// (tout) répondu.
+fn interroger_par(source: &Value, demande: Demande) -> (Vec<Value>, bool) {
     let cle_musee = en_texte(&source["cle"]);
+    // La requête et ce qu'on y écrit : le nom de l'artiste et ses variantes, ou le sujet.
+    let (modele, questions) = match demande {
+        Demande::Artiste(nom) => (source["recherche"].as_str().unwrap_or_default(), recherches(nom)),
+        Demande::Sujet(valeurs) => match (source["sujet"].as_str(), valeurs[cle_musee.as_str()].as_str()) {
+            (Some(modele), Some(valeur)) => (modele, vec![valeur.to_owned()]),
+            // Ce musée ne sait pas chercher par sujet, ou pas celui-ci.
+            _ => return (Vec::new(), false),
+        },
+    };
     let entetes: Vec<(String, String)> = source["entetes"]
         .as_object()
         .map(|o| o.iter().map(|(k, v)| (k.clone(), en_texte(v))).collect())
@@ -339,27 +364,42 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
     let mut fiches = Vec::new();
     let mut ids = Vec::new();
     let mut echec = false;
-    for q in recherches(nom) {
+    for q in questions {
         for page in 1..=pages {
-            let url = source["recherche"]
-                .as_str()
-                .unwrap_or_default()
+            let url = modele
                 .replace("{q}", &encoder(&q))
+                .replace("{s}", &encoder(&q))
                 .replace("{n}", &par_page.to_string())
                 .replace("{page}", &page.to_string())
                 .replace("{offset}", &((page - 1) * par_page).to_string())
                 .replace("{debut}", &((page - 1) * par_page + 1).to_string());
             // Une source qui n'accepte qu'une demande à la fois (Wikidata limite sévèrement les
             // serveurs qui en envoient plusieurs) : les fils d'exécution passent l'un après l'autre.
+            // Quand elle demande de ralentir (429 : pendant ses pannes, Wikidata n'accepte plus
+            // qu'une demande par minute), on la laisse en repos une minute : ses œuvres
+            // « manquent » aux catalogues calculés entre-temps, qui se complètent plus tard.
             let reponse = if source["un_a_la_fois"].as_bool().unwrap_or(false) {
-                static FILE: Mutex<()> = Mutex::new(());
-                let _tour = FILE.lock();
-                let r = lire_en(&url, &entetes, delai);
-                std::thread::sleep(Duration::from_millis(1200));
-                r
+                static FILE: Mutex<Option<Instant>> = Mutex::new(None);
+                let mut repos = FILE.lock().unwrap_or_else(|e| e.into_inner());
+                if repos.is_some_and(|fin| Instant::now() < fin) {
+                    None
+                } else {
+                    let r = demander(&url, &entetes, delai, 0);
+                    if r == Err(Some(429)) {
+                        *repos = Some(Instant::now() + Duration::from_secs(60));
+                    }
+                    std::thread::sleep(Duration::from_millis(1200));
+                    r.ok()
+                }
             } else {
                 lire_en(&url, &entetes, delai)
             };
+            // Un sujet que le service officiel n'a pas donné (panne, limite, requête trop
+            // longue pour lui) : le repli décrit avec la requête (un miroir).
+            let reponse = reponse.or_else(|| {
+                let repli = source["sujet_repli"].as_str().filter(|_| matches!(demande, Demande::Sujet(_)))?;
+                lire_en(&repli.replace("{s}", &encoder(&q)), &entetes, 120)
+            });
             let Some(r) = reponse else {
                 echec |= page == 1;
                 break;
@@ -400,7 +440,7 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
                                 if affilee.load(Ordering::SeqCst) >= 8 {
                                     return None;
                                 }
-                                match demander(&detail.replace("{id}", &en_texte(id)), entetes, 20) {
+                                match demander(&detail.replace("{id}", &en_texte(id)), entetes, 20, 2) {
                                     Ok(fiche) => {
                                         affilee.store(0, Ordering::SeqCst);
                                         Some(fiche)
@@ -453,11 +493,18 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
             // Seulement quand le créateur est un identifiant (une adresse) : un photographe
             // nommé qui a photographié l'œuvre n'en est pas l'auteur.
             let identifiant = artiste.is_empty() || artiste.starts_with("http");
-            if !meme_artiste(nom, &artiste) {
-                match autres.iter().find(|a| identifiant && meme_artiste(nom, a)) {
-                    Some(a) => artiste = a.clone(),
-                    None => return None,
+            match demande {
+                Demande::Artiste(nom) if !meme_artiste(nom, &artiste) => {
+                    match autres.iter().find(|a| identifiant && meme_artiste(nom, a)) {
+                        Some(a) => artiste = a.clone(),
+                        None => return None,
+                    }
                 }
+                // Un sujet réunit tous les artistes : le nom donné par le musée, s'il en donne un.
+                Demande::Sujet(_) if identifiant => {
+                    artiste = autres.iter().find(|a| !a.is_empty() && !a.starts_with("http")).cloned().unwrap_or_default();
+                }
+                _ => {}
             }
             let (mut ne, mut mort) = (annee_de(lire_champ("ne")), annee_de(lire_champ("mort")));
             if ne.is_none() && mort.is_none() {
@@ -469,14 +516,19 @@ fn interroger(source: &Value, nom: &str) -> (Vec<Value>, bool) {
             }
             let valeurs: HashMap<&str, String> = champs.keys().map(|k| (k.as_str(), en_texte(lire_champ(k)))).collect();
             let modele = |m: &str| remplir(source[m].as_str().unwrap_or_default(), &valeurs);
-            Some(json!({
+            let mut oeuvre = json!({
                 "id": format!("{cle_musee}-{}", valeurs.get("id").cloned().unwrap_or_default()),
                 "titre": sans_balises(valeurs.get("titre").map(String::as_str).unwrap_or_default()),
                 "artiste": artiste, "date": date, "annee": annee_de(lire_champ("annee")),
                 "technique": valeurs.get("technique").cloned().unwrap_or_default(),
                 "musee": cle_musee, "vignette": modele("vignette"), "image": modele("grande"), "lien": modele("lien"),
                 "fournisseur": valeurs.get("fournisseur").filter(|f| !f.is_empty() && !f.starts_with("http")),
-            }))
+            });
+            // La notoriété (le nombre d'articles de Wikipédia sur l'œuvre) : l'ordre d'un sujet.
+            if let Some(rang) = valeurs.get("rang").and_then(|r| r.parse::<u64>().ok()) {
+                oeuvre["rang"] = json!(rang);
+            }
+            Some(oeuvre)
         })
         .collect();
     (oeuvres, echec)
@@ -590,6 +642,44 @@ mod tests {
     }
 
     #[test]
+    fn les_sujets_sont_bien_decrits() {
+        let table: Value = serde_json::from_str(SUJETS).expect("sujets.json");
+        let mut cles = HashSet::new();
+        for famille in table["familles"].as_array().expect("familles") {
+            for langue in ["fr", "en", "es"] {
+                assert!(!en_texte(&famille[langue]).is_empty(), "famille {} sans nom {langue}", famille["cle"]);
+            }
+            for sujet in famille["sujets"].as_array().expect("sujets") {
+                let cle = en_texte(&sujet["cle"]);
+                // La clé sert d'adresse et de nom de fichier.
+                assert!(!cle.is_empty() && cle.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-'), "clé {cle}");
+                assert!(cles.insert(cle.clone()), "{cle} deux fois");
+                for langue in ["fr", "en", "es"] {
+                    assert!(!en_texte(&sujet[langue]).is_empty(), "{cle} sans nom {langue}");
+                }
+                // Des éléments de Wikidata : « wd:Q… », séparés par des espaces.
+                let ids = en_texte(&sujet["id"]);
+                assert!(!ids.is_empty() && ids.split(' ').all(|i| i.strip_prefix("wd:Q").is_some_and(|n| n.parse::<u64>().is_ok())), "{cle} : {ids}");
+            }
+        }
+        // Chaque sujet a de quoi interroger Wikidata : le motif de sa famille, avec ses éléments.
+        let sujets = sujets();
+        assert_eq!(sujets.len(), cles.len());
+        assert!(sujets.len() > 150);
+        for (cle, valeurs) in &sujets {
+            let motif = en_texte(&valeurs["wikidata"]);
+            assert!(motif.contains("wd:Q") && !motif.contains("{id}"), "{cle} : {motif}");
+        }
+        // La description de Wikidata, complétée pour les sujets ; celle des artistes ne change pas.
+        let wikidata = sources_des_sujets().iter().find(|s| s["cle"] == "wikidata").expect("wikidata");
+        assert!(en_texte(&wikidata["sujet"]).contains("{s}"));
+        assert!(en_texte(&wikidata["sujet_repli"]).contains("{s}"));
+        assert_eq!(wikidata["champs"]["rang"], "liens.value");
+        assert_eq!(wikidata["champs"]["titre"], "titre.value");
+        assert!(sources().iter().all(|s| s["sujet"].is_null()));
+    }
+
+    #[test]
     fn un_catalogue_garde_se_complete_par_un_seul_musee() {
         let garde = json!({ "nom": "Edgar Degas", "total": 2, "musees": { "met": 1, "wikidata": 1 }, "manquants": [],
             "oeuvres": [{ "id": "met-1", "musee": "met", "titre": "Danseuse", "annee": 1880 },
@@ -606,6 +696,11 @@ mod tests {
         let c = completer(garde.clone(), "met", nouvelles, true);
         assert_eq!(c["total"], 3);
         assert_eq!(c["manquants"], json!(["met"]));
+        // Il manquait, il a tout donné : il ne manque plus.
+        let mut manquait = garde.clone();
+        manquait["manquants"] = json!(["met", "wikidata"]);
+        let c = completer(manquait, "met", Vec::new(), false);
+        assert_eq!(c["manquants"], json!(["wikidata"]));
         // Rien de nouveau et un refus : le catalogue ne perd rien.
         let c = completer(garde, "met", Vec::new(), true);
         assert_eq!(c["total"], 2);
@@ -766,21 +861,186 @@ fn fusionner(ancien: Option<&Value>, nouveau: Value) -> Value {
     json!({ "nom": nouveau["nom"], "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
 }
 
+/// Les sujets : les styles, les genres et les techniques (outils/monde/sujets.json, le même
+/// fichier que le site), par familles.
+const SUJETS: &str = include_str!("../outils/monde/sujets.json");
+
+/// Les sujets, à plat : la clé de chacun et ce qu'il faut écrire dans la requête « sujet » de
+/// chaque musée (le sujet le dit lui-même, ou sa famille en donne le modèle, avec `{id}`).
+fn sujets() -> Vec<(String, Value)> {
+    let table: Value = serde_json::from_str(SUJETS).unwrap_or_default();
+    let mut liste = Vec::new();
+    for famille in table["familles"].as_array().into_iter().flatten() {
+        for sujet in famille["sujets"].as_array().into_iter().flatten() {
+            let mut valeurs = serde_json::Map::new();
+            for source in sources_des_sujets() {
+                let cle = en_texte(&source["cle"]);
+                let valeur = sujet[cle.as_str()].as_str().map(str::to_owned).or_else(|| {
+                    Some(famille[cle.as_str()].as_str()?.replace("{id}", sujet["id"].as_str()?))
+                });
+                if let Some(valeur) = valeur {
+                    valeurs.insert(cle, json!(valeur));
+                }
+            }
+            liste.push((en_texte(&sujet["cle"]), Value::Object(valeurs)));
+        }
+    }
+    liste
+}
+
+/// Les musées qui savent chercher par sujet : leur description (sources.json), complétée par
+/// `requetes` de sujets.json (la requête « sujet », son repli, des champs en plus). Les
+/// descriptions des musées ne changent donc pas, ni les catalogues d'artistes qui en dépendent.
+fn sources_des_sujets() -> &'static Vec<Value> {
+    static TABLE: OnceLock<Vec<Value>> = OnceLock::new();
+    TABLE.get_or_init(|| {
+        let table: Value = serde_json::from_str(SUJETS).unwrap_or_default();
+        sources()
+            .iter()
+            .filter_map(|source| {
+                let plus = table["requetes"][en_texte(&source["cle"]).as_str()].as_object()?;
+                let mut source = source.clone();
+                for (k, v) in plus {
+                    match (source[k.as_str()].as_object_mut(), v.as_object()) {
+                        (Some(deja), Some(ajouts)) => deja.extend(ajouts.clone()),
+                        _ => source[k.as_str()] = v.clone(),
+                    }
+                }
+                Some(source)
+            })
+            .collect()
+    })
+}
+
+/// Le plus d'œuvres publiées pour un sujet (les plus connues d'abord).
+const PAR_SUJET: usize = 2500;
+
+/// Les œuvres libres d'un sujet dans tous les musées qui savent le chercher : les plus
+/// connues d'abord (`rang`), puis les plus anciennes.
+fn oeuvres_du_sujet(valeurs: &Value) -> Value {
+    let sources = sources_des_sujets();
+    let lots: Vec<(Vec<Value>, bool)> = std::thread::scope(|s| {
+        sources
+            .iter()
+            .map(|source| s.spawn(move || interroger_par(source, Demande::Sujet(valeurs))))
+            .collect::<Vec<_>>()
+            .into_iter()
+            .map(|t| t.join().unwrap_or_default())
+            .collect()
+    });
+    let manquants: Vec<Value> =
+        sources.iter().zip(&lots).filter(|(_, (_, echec))| *echec).map(|(source, _)| source["cle"].clone()).collect();
+    let mut vues = HashSet::new();
+    let oeuvres: Vec<Value> =
+        lots.into_iter().flat_map(|(l, _)| l).filter(|o| vues.insert(en_texte(&o["id"]))).collect();
+    let mut oeuvres = sans_doublons(oeuvres);
+    oeuvres.sort_by_key(|o| (std::cmp::Reverse(o["rang"].as_u64().unwrap_or(0)), o["annee"].as_i64().unwrap_or(i64::MAX)));
+    oeuvres.truncate(PAR_SUJET);
+    let musees: serde_json::Map<String, Value> = sources
+        .iter()
+        .map(|source| {
+            let cle = en_texte(&source["cle"]);
+            let n = oeuvres.iter().filter(|o| o["musee"] == cle.as_str()).count();
+            (cle, json!(n))
+        })
+        .collect();
+    json!({ "total": oeuvres.len(), "musees": musees, "manquants": manquants, "oeuvres": oeuvres })
+}
+
+/// Les sujets publiés en fichiers, comme les artistes : `dossier/<clé>.json.gz` pour chacun
+/// (ses œuvres, les plus connues d'abord) et `dossier/index.json` (le nombre d'œuvres et une
+/// image de chacun, pour la liste). Un sujet gardé dans `cache` depuis moins d'une semaine
+/// n'est pas redemandé ; les autres le sont tant qu'il reste du temps (`minutes`).
+pub fn publier_sujets(dossier: &std::path::Path, cache: &std::path::Path, minutes: u64) -> std::io::Result<(usize, usize)> {
+    std::fs::create_dir_all(dossier)?;
+    std::fs::create_dir_all(cache)?;
+    let fin = Instant::now() + Duration::from_secs(minutes * 60);
+    let modeles: String = sources_des_sujets().iter().filter_map(|s| s["sujet"].as_str()).collect();
+    let (mut calcules, mut index) = (0, serde_json::Map::new());
+    // L'image de chaque sujet dans la liste : sa plus connue qui n'illustre pas déjà un autre
+    // sujet (sans cela, la Joconde illustrait trois Renaissances de suite).
+    let mut couvertures: HashSet<String> = HashSet::new();
+    for (cle, valeurs) in sujets() {
+        if cle.is_empty() || !cle.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-') {
+            continue;
+        }
+        // Un sujet gardé se périme quand sa requête change (le sujet lui-même, ou le modèle
+        // d'un musée).
+        let empreinte = fichier_de(&format!("{valeurs}{modeles}"));
+        let g = cache.join(format!("sujet-{cle}.json"));
+        let age = std::fs::metadata(&g).ok().and_then(|m| m.modified().ok()).and_then(|t| t.elapsed().ok());
+        let garde = std::fs::read_to_string(&g).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
+        let complet = garde.as_ref().is_some_and(|v| v["manquants"].as_array().is_some_and(|m| m.is_empty()));
+        let frais = garde.as_ref().is_some_and(|v| v["empreinte"] == empreinte.as_str())
+            && age.is_some_and(|a| a < Duration::from_secs(if complet { 7 * 24 * 3600 } else { 3600 }));
+        let catalogue = if frais || Instant::now() >= fin {
+            garde
+        } else {
+            let mut r = oeuvres_du_sujet(&valeurs);
+            // Un musée au repos (Wikidata, après un 429) : on attend son tour, deux fois au plus.
+            let mut attentes = 0;
+            while r["manquants"].as_array().is_some_and(|m| !m.is_empty())
+                && attentes < 2
+                && Instant::now() + Duration::from_secs(70) < fin
+            {
+                attentes += 1;
+                std::thread::sleep(Duration::from_secs(61));
+                r = oeuvres_du_sujet(&valeurs);
+            }
+            calcules += 1;
+            // Sans presser les services qui répondent : QLever refuse (429) au-delà d'une dizaine
+            // de demandes par minute (mesuré le 20/11/2026) ; on en fait cinq.
+            std::thread::sleep(Duration::from_secs(5));
+            // Une réponse incomplète ne remplace pas une réponse plus riche qu'on gardait.
+            let moins_bien = r["manquants"].as_array().is_some_and(|m| !m.is_empty())
+                && garde.as_ref().is_some_and(|v| v["total"].as_u64() >= r["total"].as_u64());
+            if moins_bien {
+                garde
+            } else {
+                r["cle"] = json!(cle);
+                r["empreinte"] = json!(empreinte);
+                let _ = std::fs::write(&g, r.to_string());
+                Some(r)
+            }
+        };
+        if let Some(c) = catalogue.filter(|c| c["total"].as_u64().unwrap_or(0) > 0)
+            && let Some(compresse) = gzip(&c.to_string())
+            && std::fs::write(dossier.join(format!("{cle}.json.gz")), compresse).is_ok()
+        {
+            let oeuvres = c["oeuvres"].as_array().cloned().unwrap_or_default();
+            let couverture = oeuvres
+                .iter()
+                .take(40)
+                .find(|o| !couvertures.contains(&en_texte(&o["id"])))
+                .or(oeuvres.first());
+            if let Some(o) = couverture {
+                couvertures.insert(en_texte(&o["id"]));
+            }
+            index.insert(cle, json!({ "total": c["total"], "image": couverture.map(|o| o["vignette"].clone()) }));
+        }
+    }
+    let publies = index.len();
+    std::fs::write(dossier.join("index.json"), json!({ "sujets": index }).to_string())?;
+    Ok((publies, calcules))
+}
+
 /// La version du calcul des catalogues. 2 : une fiche refusée par un musée compte comme une
 /// réponse incomplète (voir `interroger`). Un catalogue gardé d'avant se répare (`completer`).
 const MOTEUR: u64 = 2;
 
 /// Un catalogue gardé, complété par un seul musée redemandé : ses œuvres qu'on n'avait pas
-/// s'ajoutent ; s'il n'a pas tout donné cette fois encore, il « manque » (le site lui
-/// redemandera). Sert à réparer les catalogues d'avant `MOTEUR` 2 sans tout recalculer.
+/// s'ajoutent ; il « manque » s'il n'a pas tout donné cette fois (le site lui redemandera),
+/// et ne manque plus s'il a tout donné. Les reprises ne redemandent ainsi que le musée qui
+/// manquait, pas les six autres ; et les catalogues d'avant `MOTEUR` 2 se réparent de même.
 fn completer(mut catalogue: Value, cle: &str, nouvelles: Vec<Value>, echec: bool) -> Value {
     let mut oeuvres = catalogue["oeuvres"].as_array().cloned().unwrap_or_default();
     let mut vues: HashSet<String> = oeuvres.iter().map(|o| en_texte(&o["id"])).collect();
     oeuvres.extend(nouvelles.into_iter().filter(|o| vues.insert(en_texte(&o["id"]))));
     let mut oeuvres = sans_doublons(oeuvres);
     oeuvres.sort_by_key(|o| o["annee"].as_i64().unwrap_or(i64::MAX));
-    let mut manquants: Vec<String> = catalogue["manquants"].as_array().into_iter().flatten().map(en_texte).collect();
-    if echec && !manquants.iter().any(|m| m == cle) {
+    let mut manquants: Vec<String> =
+        catalogue["manquants"].as_array().into_iter().flatten().map(en_texte).filter(|m| m != cle).collect();
+    if echec {
         manquants.push(cle.to_owned());
     }
     for source in sources() {
@@ -884,17 +1144,33 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 Some((i, m, age, v["sources"] != empreinte.as_str(), a_reparer))
             })
             .collect();
-        let pannes = en_panne(&gardes.iter().map(|(_, m, _, _, _)| m.clone()).collect::<Vec<_>>());
-        // (l'artiste, vrai s'il suffit de réparer)
-        let reprises: Vec<(usize, bool)> = gardes
+        // En panne « en ce moment » : d'après les catalogues des trois dernières heures, s'il y
+        // en a assez. Pendant une panne de Wikidata, on ne lui redemande rien ; dès qu'il
+        // répond de nouveau, les catalogues calculés sans lui se complètent.
+        let recents: Vec<Vec<String>> =
+            gardes.iter().filter(|(_, _, age, _, _)| *age < Duration::from_secs(3 * 3600)).map(|(_, m, _, _, _)| m.clone()).collect();
+        let pannes = if recents.len() >= 50 {
+            en_panne(&recents)
+        } else {
+            en_panne(&gardes.iter().map(|(_, m, _, _, _)| m.clone()).collect::<Vec<_>>())
+        };
+        // (l'artiste, les musées à redemander ; aucun : tout le catalogue se recalcule)
+        let reprises: Vec<(usize, Vec<String>)> = gardes
             .iter()
             .filter(|(_, _, age, _, _)| *age < Duration::from_secs(7 * 24 * 3600))
             .filter_map(|(i, m, age, perime, a_reparer)| {
-                if *perime || (*age > Duration::from_secs(3600) && m.iter().any(|source| !pannes.contains(source))) {
-                    Some((*i, false))
-                } else {
-                    a_reparer.then_some((*i, true))
+                if *perime {
+                    return Some((*i, Vec::new()));
                 }
+                let mut a_redemander: Vec<String> = if *age > Duration::from_secs(3600) {
+                    m.iter().filter(|source| !pannes.contains(*source)).cloned().collect()
+                } else {
+                    Vec::new()
+                };
+                if *a_reparer {
+                    a_redemander.extend(a_fiches.iter().map(|s| en_texte(&s["cle"])).filter(|cle| !m.contains(cle)));
+                }
+                (!a_redemander.is_empty()).then_some((*i, a_redemander))
             })
             .collect();
         let fin_reprises = Instant::now() + Duration::from_secs(minutes * 30);
@@ -903,7 +1179,8 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
             for _ in 0..fils.max(1) {
                 s.spawn(|| loop {
                     let n = suivant.fetch_add(1, Ordering::SeqCst);
-                    let Some(&(i, reparer)) = reprises.get(n) else { break };
+                    let Some((i, a_redemander)) = reprises.get(n) else { break };
+                    let i = *i;
                     if Instant::now() >= fin_reprises {
                         break;
                     }
@@ -911,9 +1188,8 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     let g = c.join(format!("{}.json", fichier_de(k)));
                     let ancienne = std::fs::read_to_string(&g).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
                     let r = match ancienne {
-                        Some(mut garde) if reparer => {
-                            let deja: Vec<String> = garde["manquants"].as_array().into_iter().flatten().map(en_texte).collect();
-                            for source in a_fiches.iter().filter(|s| !deja.contains(&en_texte(&s["cle"]))) {
+                        Some(mut garde) if !a_redemander.is_empty() => {
+                            for source in sources().iter().filter(|s| a_redemander.contains(&en_texte(&s["cle"]))) {
                                 let (nouvelles, echec) = interroger(source, &noms[0]);
                                 garde = completer(garde, &en_texte(&source["cle"]), nouvelles, echec);
                             }
@@ -1026,7 +1302,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     std::fs::write(dossier.join("index.json"), index.to_string())?;
     let reparees = reparees.into_inner();
     if reparees > 0 {
-        println!("🔧 {reparees} catalogues gardés redemandés aux musées à fiches (réparation)");
+        println!("🔧 {reparees} catalogues gardés complétés (seul le musée qui manquait est redemandé)");
     }
     Ok((faits.len(), calcules.into_inner()))
 }

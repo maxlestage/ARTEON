@@ -237,13 +237,20 @@ jobs:
           elif [ "${{ github.event_name }}" = "push" ]; then minutes=25; else minutes=45; fi
           python3 outils/api_noms.py dist 100000 > target/noms.txt
           wc -l target/noms.txt
+          # Les styles, les genres, les techniques et les sujets (outils/monde/sujets.json) : un
+          # catalogue par sujet, gardé une semaine dans le même cache ; 10 minutes au plus (ils
+          # sont près de 190, à cinq par minute : la première fois, ils se remplissent en
+          # quatre constructions ; ensuite l'étape ne dure que quelques secondes).
+          ARTEON_API_CACHE=target/api-cache ./target/release/arteon sujets dist/api/sujets 10 2> target/sujets.log || true
+          tail -3 target/sujets.log
           # La place qui reste sous la limite de GitHub Pages (1 Go), le site en trois langues compris.
           # (la taille des fichiers, pas la place qu'ils occupent sur le disque : c'est elle qui compte)
           reste=$(( 960 - $(du -sm --apparent-size dist | cut -f1) ))
           [ "$reste" -gt 0 ] || reste=1
           echo "place pour l'API : ${reste} Mo"
           ARTEON_API_MO=$reste ARTEON_API_CACHE=target/api-cache ./target/release/arteon api dist/api target/noms.txt $minutes 4 2> target/api.log || true
-          tail -3 target/api.log
+          # Ce qui a manqué pendant le calcul : le nombre de refus par service et par code.
+          sed -E 's#^api : https?://([^/]+)/.* ([^:]*)$#\1 :\2#' target/api.log | sort | uniq -c | sort -rn | head -12
           du -sh --apparent-size dist/api dist
 
       - uses: actions/cache/save@v4

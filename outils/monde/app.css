@@ -114,6 +114,21 @@
 .monde-themes a { padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
   color: inherit; text-decoration: none; }
 .monde-themes span { color: var(--muted); }
+.monde-themes button { font: inherit; padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
+  color: var(--fg); cursor: pointer; }
+/* Les styles et les genres : une tuile par sujet, son œuvre la plus connue derrière son nom. */
+.monde-sujets { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.monde-sujet { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 130px;
+  padding: 10px 12px; border-radius: var(--radius); overflow: hidden; background: #2a2d36; color: #fff; text-decoration: none; }
+.monde-sujet[hidden] { display: none; }
+.monde-sujet img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.monde-sujet::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.15) 70%); }
+.monde-sujet b, .monde-sujet span { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+.monde-sujet b { font-size: .98rem; line-height: 1.2; }
+.monde-sujet span { font-size: .8rem; opacity: .9; }
+.monde-sujet:hover img, .monde-sujet:focus-visible img { transform: scale(1.04); }
+.monde-sujet img { transition: transform .25s ease, opacity .3s ease; }
+@media (max-width: 700px) { .monde-sujets { grid-template-columns: repeat(2, 1fr); gap: 8px; } .monde-sujet { min-height: 110px; } }
 /* min-height : la place de l'image est réservée, les réponses ne sautent pas quand elle arrive. */
 .jeu-image { background: #ecebe6; border-radius: var(--radius); padding: 14px; display: flex; justify-content: center;
   align-items: center; min-height: 448px; box-sizing: border-box; }

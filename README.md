@@ -267,6 +267,14 @@ ARTEON s'installe comme une application, sur téléphone comme sur ordinateur (i
 - Le service worker est généré en Rust par Paquets (pas une ligne de JavaScript écrite à la main) : les pages viennent du réseau d'abord, et de la copie gardée hors ligne ; les images, les données des expositions et les îlots 3D, du cache d'abord, mis à jour en arrière-plan ; une page jamais visitée hors ligne ouvre l'accueil. Chaque déploiement installe une nouvelle version, qui remplace les anciennes copies.
 - L'export pour GitHub Pages écrit le manifeste et le service worker avec le préfixe du site (`/ARTEON`) ; sur Heroku, ils sont servis à la racine.
 
+## Les styles, les genres, les techniques et les sujets
+
+Explorer → « Styles et genres » : près de 190 sujets en quatre familles (styles et mouvements, genres, techniques, sujets représentés), et pour chacun ses œuvres libres de droits dans les musées du monde, les plus connues d'abord, en mosaïque ou avec les titres, ouvertes en grand dans la visionneuse.
+
+- La liste est un fichier, [`outils/monde/sujets.json`](outils/monde/sujets.json) : chaque sujet est un ou plusieurs éléments de Wikidata, avec son nom en français, en anglais et en espagnol ; sa famille dit comment les œuvres s'y rattachent (le mouvement de l'œuvre ou de son auteur, le genre, la technique, ce qui est représenté). Un sujet de plus = une entrée, sans code.
+- L'API ne cherchait que par artiste ; le même moteur ([`src/api.rs`](src/api.rs), [`outils/monde/direct.js`](outils/monde/direct.js)) cherche maintenant aussi par sujet. `arteon sujets <dossier> [minutes]` publie un catalogue par sujet (`api/sujets/<clé>.json.gz`, et `api/sujets/index.json` pour la liste), gardé une semaine ; un sujet pas encore publié est demandé par le navigateur lui-même.
+- Les œuvres viennent de Wikidata, par [QLever](https://qlever.dev) (un miroir public, université de Fribourg-en-Brisgau) puis par le service officiel si QLever ne répond pas. Seulement des œuvres en deux dimensions (leur reproduction est du domaine public comme elles), d'artistes morts en 1955 ou avant, datées de 1930 au plus tard.
+
 ## L'application iPad et iPhone (Swift)
 
 [`ios/`](ios/) est l'application native d'ARTEON en **Swift 6 et SwiftUI** (iOS 26 et

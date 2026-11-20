@@ -1,9 +1,10 @@
 // Explorer le musée autrement, sur le site : les artistes de A à Z (et leurs œuvres dans
-// les collections du monde), la chronologie siècle par siècle, les thèmes, et le jeu
-// « Qui l'a fait ? » (le record est gardé dans le navigateur).
+// les collections du monde), les styles, genres, techniques et sujets (leurs œuvres dans les
+// musées du monde), la chronologie siècle par siècle, les thèmes, et le jeu « Qui l'a fait ? »
+// (le record est gardé dans le navigateur).
 
 import { annee, carteOeuvre, chargerCatalogue, choixVue, echapper, lien, lienPage, nombre, plier, rangSiecle, renseignement, route, rubrique, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
-import { nomsDesMusees, oeuvresEnDirect } from "./direct.js";
+import { chargerSujets, nomsDesMusees, oeuvresDuSujet, oeuvresEnDirect, sujetsPublies } from "./direct.js";
 import { ouvrirAuClic } from "./visionneuse.js";
 import { jsonGarde } from "./memoire.js";
 
@@ -49,7 +50,7 @@ const oeuvresN = (n) => (n === 1 ? t("1 œuvre", "1 work", "1 obra") : `${nombre
 
 const menu = (actif) => `
   <h1 class="monde-titre">${t("Explorer", "Explore", "Explorar")}</h1>
-  <div class="monde-onglets">${[["", t("Les artistes", "Artists", "Los artistas")], ["chronologie", t("La chronologie", "Timeline", "La cronología")],
+  <div class="monde-onglets">${[["", t("Les artistes", "Artists", "Los artistas")], ["styles", t("Styles et genres", "Styles and genres", "Estilos y géneros")], ["chronologie", t("La chronologie", "Timeline", "La cronología")],
     ["themes", t("Les thèmes", "Themes", "Los temas")], ["jeu", t("Qui l'a fait ?", "Who made it?", "¿Quién la hizo?")]]
     .map(([k, nom]) => `<a class="${actif === k ? "actif" : ""}" href="#/${k}">${nom}</a>`).join("")}</div>`;
 
@@ -120,7 +121,7 @@ async function listeArtistes(choisie) {
   const { tous } = await chargerArtistes();
   // Entre-temps on est parti vers une autre page de l'Explorer : elle s'affiche d'elle-même.
   // (Une adresse inconnue, elle, montre la liste : elle ne reste pas sur « Ouverture… ».)
-  if (["artiste", "chronologie", "themes", "jeu"].includes(route().type)) return;
+  if (["artiste", "chronologie", "themes", "jeu", "styles", "style"].includes(route().type)) return;
   const lettres = [...new Set(tous.map((a) => lettreDe(a.nom)))].sort((a, b) => (a === "#") - (b === "#") || a.localeCompare(b));
   const lettre = lettres.includes(choisie) ? choisie : lettres[0];
   racine.innerHTML = menu("") + `
@@ -247,6 +248,98 @@ function chronologie() {
   document.getElementById("aller").addEventListener("change", (e) => document.getElementById(e.target.value)?.scrollIntoView({ behavior: "smooth" }));
 }
 
+// Les styles et mouvements, les genres, les techniques et les sujets représentés
+// (outils/monde/sujets.json) : pour chacun, ses œuvres libres de droits dans les musées du
+// monde, les plus connues d'abord. Le catalogue de chaque sujet est publié avec le site
+// (api/sujets/) ; s'il ne l'est pas encore, le navigateur le demande lui-même.
+const nomSujet = (s) => t(s.fr, s.en, s.es);
+const pasDeReponse = () => t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not respond. Please try again later.", "Los museos no han respondido. Vuelva a intentarlo más tarde.");
+
+async function listeSujets() {
+  racine.innerHTML = menu("styles") + `<p class="monde-chargement">${t("Ouverture des styles et des genres…", "Opening the styles and genres…", "Abriendo los estilos y los géneros…")}</p>`;
+  let table, publies;
+  try { [table, publies] = await Promise.all([chargerSujets(), sujetsPublies()]); } catch {
+    if (route().type === "styles") racine.innerHTML = menu("styles") + `<p class="monde-chargement">${pasDeReponse()}</p>`;
+    return;
+  }
+  if (route().type !== "styles") return;
+  const n = table.familles.reduce((somme, f) => somme + f.sujets.length, 0);
+  const tuile = (s) => {
+    const p = publies[s.cle];
+    return `<a class="monde-sujet" href="#/style/${s.cle}" data-nom="${echapper(plier(`${s.fr} ${s.en} ${s.es}`))}">${p?.image ? `<img loading="lazy" decoding="async" src="${echapper(p.image)}" alt="">` : ""}<b>${echapper(nomSujet(s))}</b>${p?.total ? `<span>${oeuvresN(p.total)}</span>` : ""}</a>`;
+  };
+  racine.innerHTML = menu("styles") + `
+    <p class="monde-lead">${t(
+      `${nombre(n)} styles, genres, techniques et sujets, de l'art gothique au Bauhaus, du portrait à la nature morte, de la fresque à l'estampe. Pour chacun, ses œuvres libres de droits dans les musées du monde, les plus connues d'abord.`,
+      `${nombre(n)} styles, genres, techniques and subjects, from Gothic art to the Bauhaus, from portraits to still lifes, from frescoes to prints. For each, its copyright-free works in the world's museums, best known first.`,
+      `${nombre(n)} estilos, géneros, técnicas y temas, del arte gótico a la Bauhaus, del retrato al bodegón, del fresco a la estampa. Para cada uno, sus obras libres de derechos en los museos del mundo, las más conocidas primero.`)}</p>
+    <div class="monde-barre"><input type="search" id="filtre" placeholder="${t("Un style, un genre, un sujet…", "A style, a genre, a subject…", "Un estilo, un género, un tema…")}" aria-label="${t("Chercher un style ou un genre", "Search for a style or genre", "Buscar un estilo o un género")}"></div>
+    <div class="monde-themes" id="familles">${table.familles.map((f) => `<button type="button" data-famille="${f.cle}">${echapper(nomSujet(f))} <span>${f.sujets.length}</span></button>`).join("")}</div>
+    ${table.familles.map((f) => `<section class="monde-section" id="famille-${f.cle}"><h2>${echapper(nomSujet(f))} <small class="monde-note">${f.sujets.length}</small></h2>
+      <div class="monde-sujets">${f.sujets.map(tuile).join("")}</div></section>`).join("")}
+    <p class="monde-chargement" id="aucun-sujet" hidden>${t("Aucun style ni genre de ce nom.", "No style or genre by that name.", "Ningún estilo ni género con ese nombre.")}</p>`;
+  document.getElementById("familles").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-famille]");
+    if (b) document.getElementById(`famille-${b.dataset.famille}`)?.scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("filtre").addEventListener("input", (e) => {
+    const mots = plier(e.target.value).split(/\s+/).filter(Boolean);
+    let vus = 0;
+    for (const section of racine.querySelectorAll("section.monde-section")) {
+      let ici = 0;
+      for (const a of section.querySelectorAll(".monde-sujet")) {
+        a.hidden = !mots.every((m) => a.dataset.nom.includes(m));
+        if (!a.hidden) ici++;
+      }
+      section.hidden = ici === 0;
+      vus += ici;
+    }
+    document.getElementById("aucun-sujet").hidden = vus > 0;
+  });
+  window.scrollTo(0, 0);
+}
+
+async function pageSujet(cle) {
+  racine.innerHTML = `<p class="monde-chargement">${t("Ouverture…", "Opening…", "Abriendo…")}</p>`;
+  const table = await chargerSujets().catch(() => null);
+  if (route().type !== "style" || route().valeur !== cle) return;
+  const famille = table?.familles.find((f) => f.sujets.some((s) => s.cle === cle));
+  const sujet = famille?.sujets.find((s) => s.cle === cle);
+  const retour = `<a class="monde-retour" href="#/styles">← ${t("Styles et genres", "Styles and genres", "Estilos y géneros")}</a>`;
+  if (!sujet) {
+    racine.innerHTML = `${retour}<p class="monde-chargement">${table ? t("Ce style n'est pas dans la liste.", "This style is not in the list.", "Este estilo no está en la lista.") : pasDeReponse()}</p>`;
+    return;
+  }
+  racine.innerHTML = `${retour}
+    <h1 class="monde-titre">${echapper(nomSujet(sujet))}</h1>
+    <p class="monde-note">${echapper(nomSujet(famille))}</p>
+    <section class="monde-section" id="sujet-oeuvres"><p class="monde-chargement">${t("Recherche de ses œuvres libres de droits dans les musées du monde…", "Searching the world's museums for its copyright-free works…", "Buscando sus obras libres de derechos en los museos del mundo…")}</p></section>`;
+  window.scrollTo(0, 0);
+  const zone = document.getElementById("sujet-oeuvres");
+  try {
+    const r = await oeuvresDuSujet(cle);
+    if (route().type !== "style" || route().valeur !== cle) return;
+    const musee = await nomsDesMusees().catch(() => ({}));
+    if (!r.total) {
+      zone.innerHTML = `<p class="monde-note">${t("Aucune œuvre libre de droits trouvée pour l'instant.", "No copyright-free works found for now.", "Ninguna obra libre de derechos encontrada por ahora.")}</p>`;
+      return;
+    }
+    zone.innerHTML = `<h2>${oeuvresN(r.total)}</h2>
+      <p class="monde-note" id="sujet-note">${t("Les plus connues d'abord · Domaine public (artiste mort en 1955 ou avant, œuvre d'avant 1931) · images et fiches chez les musées",
+        "Best known first · Public domain (artist died in 1955 or earlier, work made before 1931) · images and records hosted by the museums",
+        "Las más conocidas primero · Dominio público (artista fallecido en 1955 o antes, obra anterior a 1931) · imágenes y fichas en los museos")}</p>
+      <div class="monde-grille" id="sujet-grille"></div>`;
+    // Mosaïque ou cartes, comme sur la page d'un artiste.
+    document.getElementById("sujet-note").after(choixVue());
+    const grille = document.getElementById("sujet-grille");
+    const carte = (o) => `<a class="monde-carte" data-oeuvre="${echapper(o.id)}" href="${echapper(o.lien)}" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="${echapper(o.vignette)}" alt=""><b>${echapper(o.titre || t("Sans titre", "Untitled", "Sin título"))}</b><span>${echapper([o.artiste, o.date].filter(Boolean).join(" · "))}</span></a>`;
+    toutAfficher(grille, r.oeuvres, carte);
+    ouvrirAuClic(grille, r.oeuvres, musee);
+  } catch {
+    zone.innerHTML = `<p class="monde-note">${pasDeReponse()}</p>`;
+  }
+}
+
 function listeThemes(choisi) {
   const theme = choisi && themes.find((x) => x.titre === choisi);
   racine.innerHTML = menu("themes") + (theme ? `
@@ -304,6 +397,8 @@ function jeu() {
 function afficher() {
   const r = route();
   if (r.type === "artiste") return artiste(r.valeur);
+  if (r.type === "styles") return listeSujets();
+  if (r.type === "style") return pageSujet(r.valeur);
   if (r.type === "chronologie") return chronologie();
   if (r.type === "themes") return listeThemes(r.valeur);
   if (r.type === "jeu") return jeu();
