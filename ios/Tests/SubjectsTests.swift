@@ -38,3 +38,39 @@ import Testing
         #expect(catalogue.works.first?.provider == "Mauritshuis")
     }
 }
+
+/// Les catégories découvertes dans Wikidata, et leurs œuvres demandées en direct.
+@Suite struct SubjectsLiveTests {
+    @Test func countsImagesAndQueriesAreRead() throws {
+        let json = #"""
+        {"requetes": {"wikidata": {"sujet": "https://qlever.dev/api/wikidata?query={s}", "sujet_repli": "https://query-main.wikidata.org/sparql?format=json&query={s}"}},
+         "familles": [{"cle": "motifs", "fr": "Sujets et motifs", "wikidata": "VALUES ?s { {id} } ?oeuvre wdt:P180 ?s .",
+           "sujets": [{"cle": "narguile", "id": "wd:Q102151", "fr": "Narguilé", "en": "Hookah", "es": "Narguile", "n": 22, "image": "https://x/a.jpg?width=250"},
+                      {"cle": "quai", "id": "wd:Q1", "fr": "Quai", "n": 15}]}]}
+        """#
+        let families = SubjectFamily.parse(Data(json.utf8))
+        #expect(families[0].pattern.contains("{id}"))
+        #expect(families[0].subjects[0].count == 22)
+        #expect(families[0].subjects[0].ids == "wd:Q102151")
+        #expect(families[0].subjects[0].image?.hasSuffix("width=250") == true)
+        #expect(families[0].subjects[1].image == nil)
+        #expect(SubjectFamily.queries(Data(json.utf8)).count == 2)
+    }
+
+    @Test func aLiveAnswerIsRankedAndFiltered() throws {
+        let json = #"""
+        {"results": {"bindings": [
+          {"oeuvre": {"value": "http://www.wikidata.org/entity/Q1"}, "titre": {"value": "Peu connue"}, "image": {"value": "https://c/a.jpg"}, "annee": {"value": "1800"}, "nom": {"value": "A"}, "liens": {"value": "1"}},
+          {"oeuvre": {"value": "http://www.wikidata.org/entity/Q2"}, "titre": {"value": "Célèbre"}, "image": {"value": "https://c/b.jpg"}, "annee": {"value": "1880"}, "nom": {"value": "B"}, "liens": {"value": "40"}, "collection": {"value": "Louvre"}},
+          {"oeuvre": {"value": "http://www.wikidata.org/entity/Q3"}, "titre": {"value": "Trop récente"}, "image": {"value": "https://c/c.jpg"}, "annee": {"value": "1925"}, "fin": {"value": "1940"}, "liens": {"value": "90"}},
+          {"oeuvre": {"value": "http://www.wikidata.org/entity/Q4"}, "titre": {"value": "Sans image"}, "liens": {"value": "99"}}
+        ]}}
+        """#
+        let works = try #require(Subjects.parse(Data(json.utf8)))
+        #expect(works.map(\.title) == ["Célèbre", "Peu connue"])
+        #expect(works[0].provider == "Louvre")
+        #expect(works[0].artist == "B")
+        #expect(works[0].thumbnail == "https://c/b.jpg?width=250")
+        #expect(works[0].year == 1880)
+    }
+}

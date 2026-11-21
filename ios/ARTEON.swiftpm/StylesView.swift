@@ -11,6 +11,9 @@ struct StylesView: View {
     @State private var published: [String: PublishedSubject] = [:]
     @State private var loading = true
     @State private var search = ""
+    /// Les familles dépliées (« Tout afficher ») : sinon les 24 premiers sujets de chacune.
+    @State private var unfolded: Set<String> = []
+    private static let first = 24
 
     private static func folded(_ text: String) -> String {
         text.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
@@ -47,11 +50,20 @@ struct StylesView: View {
                             .foregroundStyle(.secondary)
                     }
                     ForEach(families) { family in
-                        let subjects = shown(family)
+                        let all = shown(family)
+                        // Toutes les catégories de Wikidata : des milliers ; les premières d'abord,
+                        // le reste sur demande (une recherche les montre toutes).
+                        let open = !search.isEmpty || unfolded.contains(family.key)
+                        let subjects = open ? all : Array(all.prefix(Self.first))
                         if !subjects.isEmpty {
-                            Text(family.name)
-                                .font(.title2.bold())
-                                .padding(.top, 6)
+                            HStack(alignment: .firstTextBaseline) {
+                                Text(family.name)
+                                    .font(.title2.bold())
+                                Text(all.count.formatted())
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.top, 6)
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 10)], spacing: 10) {
                                 ForEach(subjects) { subject in
                                     NavigationLink(value: Route.subject(key: subject.key, name: subject.name, family: family.name)) {
@@ -59,6 +71,12 @@ struct StylesView: View {
                                     }
                                     .buttonStyle(.plain)
                                 }
+                            }
+                            if !open, all.count > Self.first {
+                                Button(L("Tout afficher (\(all.count.formatted()))", "Show all (\(all.count.formatted()))", "Mostrar todo (\(all.count.formatted()))")) {
+                                    unfolded.insert(family.key)
+                                }
+                                .buttonStyle(.bordered)
                             }
                         }
                     }
@@ -86,7 +104,7 @@ struct SubjectTile: View {
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            RemoteImage(path: published?.image.isEmpty == false ? published?.image : nil, tint: Color(white: 0.2), maxPixels: 480)
+            RemoteImage(path: published?.image.isEmpty == false ? published?.image : subject.image, tint: Color(white: 0.2), maxPixels: 480)
                 .frame(height: 120)
                 .frame(maxWidth: .infinity)
                 .clipped()
@@ -96,8 +114,8 @@ struct SubjectTile: View {
                     .font(.subheadline.bold())
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                if let published, published.total > 0 {
-                    Text(worksCount(published.total))
+                if let total = published.map(\.total) ?? (subject.count > 0 ? subject.count : nil), total > 0 {
+                    Text(worksCount(total))
                         .font(.caption)
                         .opacity(0.9)
                 }
@@ -182,7 +200,7 @@ struct SubjectView: View {
                         }
                     }
                 } else {
-                    Text(L("Ce sujet n'est pas encore publié. Réessayer un peu plus tard.", "This subject is not published yet. Please try again a little later.", "Este tema aún no está publicado. Vuelva a intentarlo un poco más tarde."))
+                    Text(L("Wikidata n'a pas répondu. Réessayer un peu plus tard.", "Wikidata did not respond. Please try again a little later.", "Wikidata no ha respondido. Vuelva a intentarlo un poco más tarde."))
                         .foregroundStyle(.secondary)
                 }
             }

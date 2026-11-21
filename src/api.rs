@@ -897,7 +897,13 @@ const SUJETS: &str = include_str!("../outils/monde/sujets.json");
 
 /// Les sujets, à plat : la clé de chacun et ce qu'il faut écrire dans la requête « sujet » de
 /// chaque musée (le sujet le dit lui-même, ou sa famille en donne le modèle, avec `{id}`).
+#[cfg(test)]
 fn sujets() -> Vec<(String, Value)> {
+    sujets_comptes().into_iter().map(|(cle, valeurs, _)| (cle, valeurs)).collect()
+}
+
+/// Les sujets, avec le nombre de leurs œuvres dans Wikidata (« n », outils/sujets_wikidata.py).
+fn sujets_comptes() -> Vec<(String, Value, u64)> {
     let table: Value = serde_json::from_str(SUJETS).unwrap_or_default();
     let mut liste = Vec::new();
     for famille in table["familles"].as_array().into_iter().flatten() {
@@ -912,7 +918,7 @@ fn sujets() -> Vec<(String, Value)> {
                     valeurs.insert(cle, json!(valeur));
                 }
             }
-            liste.push((en_texte(&sujet["cle"]), Value::Object(valeurs)));
+            liste.push((en_texte(&sujet["cle"]), Value::Object(valeurs), sujet["n"].as_u64().unwrap_or(0)));
         }
     }
     liste
@@ -990,7 +996,17 @@ pub fn publier_sujets(dossier: &std::path::Path, cache: &std::path::Path, minute
     // L'image de chaque sujet dans la liste : sa plus connue qui n'illustre pas déjà un autre
     // sujet (sans cela, la Joconde illustrait trois Renaissances de suite).
     let mut couvertures: HashSet<String> = HashSet::new();
-    for (cle, valeurs) in sujets() {
+    // Des milliers de sujets (toutes les catégories de Wikidata) : les plus riches d'abord, et
+    // pas plus de ARTEON_SUJETS_MO (40 Mo) publiés ; les autres, le navigateur les demande
+    // lui-même à QLever quand on les ouvre.
+    let poids_max = std::env::var("ARTEON_SUJETS_MO").ok().and_then(|v| v.parse::<usize>().ok()).unwrap_or(40) * 1_000_000;
+    let mut poids = 0;
+    let mut tous = sujets_comptes();
+    tous.sort_by_key(|(_, _, n)| std::cmp::Reverse(*n));
+    for (cle, valeurs, _) in tous {
+        if poids >= poids_max {
+            break;
+        }
         if cle.is_empty() || !cle.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-') {
             continue;
         }
@@ -1035,6 +1051,7 @@ pub fn publier_sujets(dossier: &std::path::Path, cache: &std::path::Path, minute
         };
         if let Some(c) = catalogue.filter(|c| c["total"].as_u64().unwrap_or(0) > 0)
             && let Some(compresse) = gzip(&c.to_string())
+            && { poids += compresse.len(); true }
             && std::fs::write(dossier.join(format!("{cle}.json.gz")), compresse).is_ok()
         {
             let oeuvres = c["oeuvres"].as_array().cloned().unwrap_or_default();

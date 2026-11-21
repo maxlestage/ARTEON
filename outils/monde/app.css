@@ -121,6 +121,11 @@
 .monde-sujet { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 130px;
   padding: 10px 12px; border-radius: var(--radius); overflow: hidden; background: #2a2d36; color: #fff; text-decoration: none; }
 .monde-sujet[hidden] { display: none; }
+/* Une catégorie sans image : son nom sur un fond d'encre. */
+.monde-sujet.sans-image { min-height: 84px; background: linear-gradient(135deg, #2a2d36, #1d3f8f); }
+.monde-sujet.sans-image::after { display: none; }
+.monde-plus { font: inherit; margin-top: 12px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); color: var(--fg); cursor: pointer; }
 .monde-sujet img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .monde-sujet::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.15) 70%); }
 .monde-sujet b, .monde-sujet span { position: relative; z-index: 1; text-shadow: 0 1px 3px rgba(0,0,0,.7); }

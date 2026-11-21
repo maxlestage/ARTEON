@@ -221,6 +221,12 @@ struct Subject: Hashable, Sendable, Identifiable {
     var fr: String
     var en: String
     var es: String
+    /// Ses éléments de Wikidata (« wd:Q40415 wd:Q… »).
+    var ids: String = ""
+    /// Le nombre de ses œuvres libres dans Wikidata.
+    var count: Int = 0
+    /// Une de ses œuvres (pour les premiers de chaque famille seulement).
+    var image: String? = nil
 
     var id: String { key }
     var name: String { L(fr, en, es) }
@@ -233,6 +239,8 @@ struct SubjectFamily: Hashable, Sendable, Identifiable {
     var en: String
     var es: String
     var subjects: [Subject]
+    /// Comment une œuvre se rattache à un sujet de la famille (SPARQL, {id} : ses éléments).
+    var pattern: String = ""
 
     var id: String { key }
     var name: String { L(fr, en, es) }
@@ -245,11 +253,21 @@ struct SubjectFamily: Hashable, Sendable, Identifiable {
             guard let key = family["cle"] as? String else { return nil }
             let subjects = (family["sujets"] as? [[String: Any]] ?? []).compactMap { subject -> Subject? in
                 guard let key = subject["cle"] as? String, let fr = subject["fr"] as? String else { return nil }
-                return Subject(key: key, fr: fr, en: subject["en"] as? String ?? fr, es: subject["es"] as? String ?? fr)
+                return Subject(key: key, fr: fr, en: subject["en"] as? String ?? fr, es: subject["es"] as? String ?? fr,
+                               ids: subject["id"] as? String ?? "", count: subject["n"] as? Int ?? 0,
+                               image: subject["image"] as? String)
             }
             let fr = family["fr"] as? String ?? key
-            return SubjectFamily(key: key, fr: fr, en: family["en"] as? String ?? fr, es: family["es"] as? String ?? fr, subjects: subjects)
+            return SubjectFamily(key: key, fr: fr, en: family["en"] as? String ?? fr, es: family["es"] as? String ?? fr,
+                                 subjects: subjects, pattern: family["wikidata"] as? String ?? "")
         }
+    }
+
+    /// La requête qui donne les œuvres d'un sujet (QLever, puis le service officiel).
+    static func queries(_ data: Data) -> [String] {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let wikidata = (json["requetes"] as? [String: Any])?["wikidata"] as? [String: Any] else { return [] }
+        return [wikidata["sujet"], wikidata["sujet_repli"]].compactMap { $0 as? String }
     }
 }
 
@@ -289,11 +307,56 @@ enum Subjects {
         return PublishedSubject.parse(data)
     }
 
+    /// Les œuvres d'un sujet : son catalogue publié avec le site, sinon Wikidata en direct (la
+    /// plupart des milliers de catégories ne sont pas publiées : le site les demande aussi).
     static func works(_ key: String) async -> [LiveWork]? {
-        guard let raw = try? await Api.site("api/sujets/\(key).json.gz"),
-              let data = LiveWorks.gunzip(raw),
-              let catalogue = try? JSONDecoder().decode(SubjectCatalogue.self, from: data) else { return nil }
-        return catalogue.works
+        if let raw = try? await Api.site("api/sujets/\(key).json.gz"),
+           let data = LiveWorks.gunzip(raw),
+           let catalogue = try? JSONDecoder().decode(SubjectCatalogue.self, from: data) {
+            return catalogue.works
+        }
+        return await live(key)
+    }
+
+    /// Les œuvres d'un sujet demandées à Wikidata (la même requête que le site et l'API).
+    static func live(_ key: String) async -> [LiveWork]? {
+        guard let data = try? await Api.site("monde/sujets.json") else { return nil }
+        let families = SubjectFamily.parse(data)
+        guard let family = families.first(where: { $0.subjects.contains { $0.key == key } }),
+              let subject = family.subjects.first(where: { $0.key == key }) else { return nil }
+        let pattern = family.pattern.replacingOccurrences(of: "{id}", with: subject.ids)
+        var allowed = CharacterSet.alphanumerics
+        allowed.insert(charactersIn: "-_.~")
+        let encoded = pattern.addingPercentEncoding(withAllowedCharacters: allowed) ?? pattern
+        for template in SubjectFamily.queries(data) {
+            guard let url = URL(string: template.replacingOccurrences(of: "{s}", with: encoded)),
+                  let answer = try? await Api.data(url, headers: ["Accept": "application/sparql-results+json"], timeout: 90),
+                  let works = parse(answer) else { continue }
+            return works
+        }
+        return nil
+    }
+
+    /// Les œuvres d'une réponse SPARQL de la requête des sujets : les plus connues d'abord.
+    static func parse(_ data: Data) -> [LiveWork]? {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let rows = (json["results"] as? [String: Any])?["bindings"] as? [[String: Any]] else { return nil }
+        func value(_ row: [String: Any], _ key: String) -> String {
+            (row[key] as? [String: Any])?["value"] as? String ?? ""
+        }
+        let ranked: [(LiveWork, Int)] = rows.compactMap { row in
+            let entity = value(row, "oeuvre"), image = value(row, "image")
+            guard !entity.isEmpty, !image.isEmpty else { return nil }
+            // Une œuvre d'après 1930 n'est pas encore libre (la requête a déjà écarté les artistes morts après 1955).
+            if let end = Int(value(row, "fin")), end > LiveWorks.lastYear { return nil }
+            let year = value(row, "annee")
+            let collection = value(row, "collection")
+            let work = LiveWork(id: "wikidata-\(entity)", title: value(row, "titre"), date: year, year: Int(year), medium: "",
+                                museum: "wikidata", thumbnail: "\(image)?width=250", image: "\(image)?width=1280", link: entity,
+                                provider: collection.isEmpty ? nil : collection, artist: value(row, "nom"))
+            return (work, Int(value(row, "liens")) ?? 0)
+        }
+        return ranked.sorted { $0.1 != $1.1 ? $0.1 > $1.1 : ($0.0.year ?? .max) < ($1.0.year ?? .max) }.map(\.0)
     }
 }
 
