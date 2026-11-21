@@ -4,7 +4,7 @@
   {
    "cle": "chicago",
    "nom": "Art Institute of Chicago",
-   "recherche": "https://api.artic.edu/api/v1/artworks/search?q={q}&query[term][is_public_domain]=true&fields=id,title,artist_title,artist_display,date_display,date_end,medium_display,image_id&limit={n}&page={page}",
+   "recherche": "https://api.artic.edu/api/v1/artworks/search?query[bool][must][0][match][artist_title][query]={q}&query[bool][must][0][match][artist_title][operator]=and&query[bool][must][1][term][is_public_domain]=true&query[bool][must][2][exists][field]=image_id&fields=id,title,artist_title,artist_display,date_display,date_end,medium_display,image_id&limit={n}&page={page}&sort[id]=asc",
    "par_page": 100,
    "pages": 10,
    "liste": "data",
@@ -27,7 +27,10 @@
    ],
    "vignette": "https://www.artic.edu/iiif/2/{image}/full/400,/0/default.jpg",
    "grande": "https://www.artic.edu/iiif/2/{image}/full/843,/0/default.jpg",
-   "lien": "https://www.artic.edu/artworks/{id}"
+   "lien": "https://www.artic.edu/artworks/{id}",
+   "au_dela": "https://api.artic.edu/api/v1/artworks/search?query[bool][must][0][match][artist_title][query]={q}&query[bool][must][0][match][artist_title][operator]=and&query[bool][must][1][term][is_public_domain]=true&query[bool][must][2][exists][field]=image_id&fields=id,title,artist_title,artist_display,date_display,date_end,medium_display,image_id&limit={n}&page={page}&sort[id]=desc",
+   "version": 2,
+   "_note": "Recherche par artiste (tous les mots du nom dans artist_title), seulement le domaine public avec une image. L'API ne donne pas plus de 10 pages de 100 (au-delà : 403) : quand elles sont pleines, « au_dela » refait la même recherche dans l'ordre inverse, soit jusqu'à 2 000 œuvres (Hiroshige : 1 678). Version 2 (21/11/2026) : avant, une recherche plein texte (q) dont l'artiste n'occupait souvent qu'une partie des 1 000 premiers résultats."
   },
   {
    "cle": "cleveland",
@@ -60,8 +63,8 @@
   {
    "cle": "met",
    "nom": "Metropolitan Museum of Art",
-   "recherche": "https://collectionapi.metmuseum.org/public/collection/v1.1/search?artistOrCulture=true&hasImages=true&q={q}",
-   "pages": 1,
+   "recherche": "https://collectionapi.metmuseum.org/public/collection/v1.1/search?artistOrCulture=true&hasImages=true&q={q}&limit={n}&offset={offset}",
+   "pages": 6,
    "ids": "objectIDs",
    "detail": "https://collectionapi.metmuseum.org/public/collection/v1/objects/{id}",
    "max": 3000,
@@ -86,7 +89,11 @@
    ],
    "vignette": "{image}",
    "grande": "{grand}",
-   "lien": "{page}"
+   "lien": "{page}",
+   "par_page": 500,
+   "version": 2,
+   "reprise_au_dessus": 100,
+   "_note": "La recherche ne donne que 100 identifiants si on ne demande pas plus, et 500 au plus par page (offset pour les suivants) ; puis une fiche par œuvre, 3 000 au plus. Version 2 (21/11/2026) : avant, 100 œuvres au plus par artiste (Daumier : 880 au Met, Rowlandson : 2 311) ; seuls les catalogues qui en avaient 100 sont redemandés."
   },
   {
    "cle": "smk",
@@ -122,7 +129,7 @@
    "nom": "Minneapolis Institute of Art",
    "recherche": "https://search.artsmia.org/artist:%22{q}%22?size={n}&from={offset}",
    "par_page": 100,
-   "pages": 10,
+   "pages": 40,
    "liste": "hits.hits",
    "champs": {
     "id": "_source.id",
@@ -144,13 +151,15 @@
    },
    "vignette": "https://1.api.artsmia.org/400/{id}.jpg",
    "grande": "https://1.api.artsmia.org/800/{id}.jpg",
-   "lien": "https://collections.artsmia.org/art/{id}"
+   "lien": "https://collections.artsmia.org/art/{id}",
+   "version": 2,
+   "reprise_au_dessus": 50
   },
   {
    "cle": "europeana",
    "nom": "Europeana (musées d'Europe)",
    "_cle_api": "wskey=api2demo : la clé publique d'essai d'Europeana ; la remplacer par une clé gratuite (pro.europeana.eu/page/get-api).",
-   "recherche": "https://api.europeana.eu/record/v2/search.json?wskey=api2demo&query=who:%22{q}%22&qf=RIGHTS:*publicdomain*&qf=TYPE:IMAGE&media=true&rows={n}&start={debut}&profile=rich",
+   "recherche": "https://api.europeana.eu/record/v2/search.json?wskey=api2demo&query=who:%22{q}%22&qf=RIGHTS:*publicdomain*&qf=TYPE:IMAGE&media=true&rows={n}&start={debut}&sort=europeana_id+asc&profile=rich",
    "par_page": 100,
    "pages": 10,
    "liste": "items",
@@ -173,7 +182,10 @@
    ],
    "vignette": "{apercu}",
    "grande": "{image}",
-   "lien": "{page}"
+   "lien": "{page}",
+   "au_dela": "https://api.europeana.eu/record/v2/search.json?wskey=api2demo&query=who:%22{q}%22&qf=RIGHTS:*publicdomain*&qf=TYPE:IMAGE&media=true&rows={n}&start={debut}&sort=europeana_id+desc&profile=rich",
+   "version": 2,
+   "reprise_au_dessus": 500
   },
   {
    "cle": "wikidata",
@@ -208,5 +220,6 @@
    "delai": 90,
    "un_a_la_fois": true
   }
- ]
+ ],
+ "_versions": "« version » (1 si absente) : à augmenter quand on change la façon d'interroger un musée. Seul ce musée est alors redemandé pour les catalogues déjà calculés (src/api.rs, publier). « au_dela » : la même recherche dans l'ordre inverse, faite seulement quand la première a rempli toutes ses pages (API limitées à 1 000 résultats)."
 }

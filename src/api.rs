@@ -364,7 +364,16 @@ fn interroger_par(source: &Value, demande: Demande) -> (Vec<Value>, bool) {
     let mut fiches = Vec::new();
     let mut ids = Vec::new();
     let mut echec = false;
+    // Une recherche limitée en pages (Chicago n'en donne pas plus de 10, soit 1 000 œuvres) :
+    // quand elle les a toutes remplies, il en reste ; « au_dela » est la même recherche dans
+    // l'ordre inverse, qui donne les suivantes (Hiroshige : 1 678 œuvres à Chicago).
+    let au_dela = source["au_dela"].as_str().filter(|_| matches!(demande, Demande::Artiste(_)));
     for q in questions {
+        let mut modeles = vec![modele];
+        let mut m = 0;
+        while m < modeles.len() {
+        let modele = modeles[m];
+        let mut plein = false;
         for page in 1..=pages {
             let url = modele
                 .replace("{q}", &encoder(&q))
@@ -407,20 +416,35 @@ fn interroger_par(source: &Value, demande: Demande) -> (Vec<Value>, bool) {
                     .and_then(|repli| lire_en(&repli.replace("{s}", &encoder(&q)), &entetes, 120)),
             };
             let Some(r) = reponse else {
-                echec |= page == 1;
+                // (la recherche « au-delà » qui ne répond pas n'efface pas ce qu'a donné la première)
+                echec |= page == 1 && m == 0;
                 break;
             };
-            if let Some(champ) = source["ids"].as_str() {
-                ids.extend(chemin(&r, champ).as_array().cloned().unwrap_or_default());
-                break;
-            }
-            let lot = source["liste"].as_str().map(|l| chemin(&r, l).clone()).unwrap_or(r);
+            // Des identifiants (le Met : 500 par page au plus), puis les fiches une par une.
+            let lot = match source["ids"].as_str() {
+                Some(champ) => chemin(&r, champ).clone(),
+                None => source["liste"].as_str().map(|l| chemin(&r, l).clone()).unwrap_or(r),
+            };
             let lot = lot.as_array().cloned().unwrap_or_default();
+            if source["ids"].is_string() {
+                let fini = (lot.len() as u64) < par_page;
+                ids.extend(lot);
+                if fini {
+                    break;
+                }
+                continue;
+            }
             let fini = (lot.len() as u64) < par_page;
             fiches.extend(lot);
             if fini {
                 break;
             }
+            plein |= page == pages;
+        }
+        if plein && m == 0 && let Some(suite) = au_dela {
+            modeles.push(suite);
+        }
+        m += 1;
         }
     }
     if let Some(detail) = source["detail"].as_str() {
@@ -1124,8 +1148,15 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     // l'ont calculé : quand elles changent (une requête corrigée, un musée de plus), il est
     // périmé et se reprend.
     let empreinte = fichier_de(SOURCES);
+    // La version de la description de chaque musée (« version » dans sources.json, 1 sinon) :
+    // quand on change la façon d'interroger un musée, on augmente la sienne, et seul ce musée
+    // est redemandé pour les catalogues gardés (avant, le moindre changement de sources.json
+    // faisait recalculer tous les catalogues, des dizaines de milliers).
+    let versions: serde_json::Map<String, Value> =
+        sources().iter().map(|s| (en_texte(&s["cle"]), json!(s["version"].as_u64().unwrap_or(1)))).collect();
     let signer = |mut r: Value| {
         r["sources"] = json!(empreinte);
+        r["versions"] = Value::Object(versions.clone());
         r["moteur"] = json!(MOTEUR);
         r
     };
@@ -1137,7 +1168,7 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
     // qu'un musée à fiches (le Met) en avait refusé une partie. On ne redemande que ce musée.
     let a_fiches: Vec<&Value> = sources().iter().filter(|s| s["detail"].is_string()).collect();
     if let Some(c) = cache {
-        let gardes: Vec<(usize, Vec<String>, Duration, bool, bool)> = groupes
+        let gardes: Vec<(usize, Vec<String>, Duration, Vec<String>, bool)> = groupes
             .iter()
             .enumerate()
             .filter_map(|(i, (k, _))| {
@@ -1147,7 +1178,27 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                 let m: Vec<String> = v["manquants"].as_array()?.iter().map(en_texte).collect();
                 let a_reparer = v["moteur"].as_u64().unwrap_or(1) < MOTEUR
                     && a_fiches.iter().any(|s| !m.contains(&en_texte(&s["cle"])));
-                Some((i, m, age, v["sources"] != empreinte.as_str(), a_reparer))
+                // Les musées dont la description a changé depuis ce catalogue (un catalogue
+                // d'avant les versions : tous les musées d'alors en version 1 ; un musée ajouté
+                // depuis n'y figure pas, il est demandé).
+                let anciennes = v["versions"].as_object();
+                // « reprise_au_dessus » : seulement si ce musée avait donné au moins autant d'œuvres
+                // (le Met n'en donnait jamais plus de 100 : un catalogue qui en a moins était complet).
+                let perimes: Vec<String> = sources()
+                    .iter()
+                    .filter(|source| {
+                        let cle = en_texte(&source["cle"]);
+                        let actuelle = source["version"].as_u64().unwrap_or(1);
+                        let avant = match anciennes {
+                            Some(a) => a.get(cle.as_str()).and_then(Value::as_u64).unwrap_or(0),
+                            None => 1,
+                        };
+                        let seuil = source["reprise_au_dessus"].as_u64().unwrap_or(0);
+                        avant < actuelle && v["musees"][cle.as_str()].as_u64().unwrap_or(0) >= seuil
+                    })
+                    .map(|source| en_texte(&source["cle"]))
+                    .collect();
+                Some((i, m, age, perimes, a_reparer))
             })
             .collect();
         // En panne « en ce moment » : d'après les catalogues des trois dernières heures, s'il y
@@ -1164,15 +1215,13 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
         let reprises: Vec<(usize, Vec<String>)> = gardes
             .iter()
             .filter(|(_, _, age, _, _)| *age < Duration::from_secs(7 * 24 * 3600))
-            .filter_map(|(i, m, age, perime, a_reparer)| {
-                if *perime {
-                    return Some((*i, Vec::new()));
-                }
+            .filter_map(|(i, m, age, perimes, a_reparer)| {
                 let mut a_redemander: Vec<String> = if *age > Duration::from_secs(3600) {
                     m.iter().filter(|source| !pannes.contains(*source)).cloned().collect()
                 } else {
                     Vec::new()
                 };
+                a_redemander.extend(perimes.iter().filter(|cle| !a_redemander.contains(cle)).cloned().collect::<Vec<_>>());
                 if *a_reparer {
                     a_redemander.extend(a_fiches.iter().map(|s| en_texte(&s["cle"])).filter(|cle| !m.contains(cle)));
                 }
@@ -1195,9 +1244,19 @@ pub fn publier(dossier: &std::path::Path, noms: &[String], minutes: u64, cache: 
                     let ancienne = std::fs::read_to_string(&g).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok());
                     let r = match ancienne {
                         Some(mut garde) if !a_redemander.is_empty() => {
-                            for source in sources().iter().filter(|s| a_redemander.contains(&en_texte(&s["cle"]))) {
-                                let (nouvelles, echec) = interroger(source, &noms[0]);
-                                garde = completer(garde, &en_texte(&source["cle"]), nouvelles, echec);
+                            // Les musées à redemander, ensemble.
+                            let reponses: Vec<(String, (Vec<Value>, bool))> = std::thread::scope(|s| {
+                                sources()
+                                    .iter()
+                                    .filter(|source| a_redemander.contains(&en_texte(&source["cle"])))
+                                    .map(|source| (en_texte(&source["cle"]), s.spawn(|| interroger(source, &noms[0]))))
+                                    .collect::<Vec<_>>()
+                                    .into_iter()
+                                    .map(|(cle, t)| (cle, t.join().unwrap_or_default()))
+                                    .collect()
+                            });
+                            for (cle, (nouvelles, echec)) in reponses {
+                                garde = completer(garde, &cle, nouvelles, echec);
                             }
                             reparees.fetch_add(1, Ordering::SeqCst);
                             signer(garde)
