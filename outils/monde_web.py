@@ -237,6 +237,19 @@ def main():
     (sortie / "donnees" / "version.json").write_text(json.dumps({"v": f"{int(time.time()):x}"}), encoding="utf-8")
     (sortie / "donnees" / "index.json").write_text(json.dumps(index, **compact), encoding="utf-8")
     (sortie / "donnees" / "liste.json").write_text(json.dumps(liste, **compact), encoding="utf-8")
+    # Les artistes des collections, en petit (quelques centaines de Ko au lieu des 3,6 Mo
+    # compressés de liste.json) : la liste de l'Explorer s'affiche avec, et liste.json n'arrive
+    # qu'ensuite, pour la page d'un artiste. [nom, nombre d'œuvres, identifiant et vignette
+    # chez le musée de la première].
+    artistes = {}
+    for o in gardees:
+        nom = o.get("a", "")
+        if nom and nom != "Artiste inconnu":
+            if nom in artistes:
+                artistes[nom][1] += 1
+            else:
+                artistes[nom] = [nom, 1, o["i"], o.get("vu", "")]
+    (sortie / "donnees" / "artistes.json").write_text(json.dumps(list(artistes.values()), **compact), encoding="utf-8")
     for n in range(0, len(gardees), PAR_FICHIER):
         fiches = [{k: o[k] for k in ("v", "m", "s", "o", "x", "u", "w", "g") if o.get(k)}
                   for o in gardees[n:n + PAR_FICHIER]]

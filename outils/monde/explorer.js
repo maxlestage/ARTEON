@@ -76,21 +76,17 @@ function cleNom(nom) {
   return ALIAS[k] ?? k;
 }
 
-function chargerArtistes() {
-  catalogueArtistes ??= Promise.all([
-    jsonGarde(lien("monde/alias.json")).catch(() => ({})).then((a) => { ALIAS = a; }),
+// Les œuvres des collections du monde de chaque artiste : liste.json (3,6 Mo compressés), lu
+// seulement quand il le faut (la page d'un artiste) ou une fois la liste affichée, sans la
+// retarder. La liste elle-même n'a besoin que de donnees/artistes.json (le nombre d'œuvres et
+// une vignette par artiste) : sur un téléphone en 4G, 12 s d'attente devenaient quelques-unes.
+let mondeCharge, mondeFini = false;
+function chargerMonde() {
+  mondeCharge ??= chargerArtistes().then(({ parCle }) => Promise.all([
     jsonGarde(lien("monde/donnees/liste.json")).catch(() => []),
     jsonGarde(lien("monde/donnees/index.json")).catch(() => ({ ids: [] })),
-    // L'annuaire : tous les artistes du domaine public dont un musée montre une œuvre
-    // (outils/annuaire.py) : [nom, naissance, mort, œuvres].
-    jsonGarde(lien("monde/annuaire.json"), 7 * 24 * 3600e3).catch(() => []),
-  ]).then(([, liste, index, annuaire]) => {
-    const parCle = new Map();
-    for (const a of artistes) {
-      const cle = cleNom(a.nom), deja = parCle.get(cle);
-      if (deja) { deja.oeuvres.push(...a.oeuvres); if (a.bio.length > deja.bio.length) Object.assign(deja, { vie: a.vie, style: a.style, bio: a.bio }); }
-      else parCle.set(cle, { ...a, oeuvres: [...a.oeuvres], monde: [] });
-    }
+  ]).then(([liste, index]) => {
+    for (const a of parCle.values()) a.monde = [];
     liste.forEach((l, i) => {
       const nom = l[1];
       if (!nom || nom === "Artiste inconnu") return;
@@ -98,6 +94,35 @@ function chargerArtistes() {
       if (!parCle.has(cle)) parCle.set(cle, { nom, vie: "", style: "", bio: "", oeuvres: [], monde: [] });
       parCle.get(cle).monde.push({ l, id: index.ids[i] });
     });
+    for (const a of parCle.values()) a.resume = null;
+    mondeFini = true;
+  }));
+  return mondeCharge;
+}
+
+function chargerArtistes() {
+  catalogueArtistes ??= Promise.all([
+    jsonGarde(lien("monde/alias.json")).catch(() => ({})).then((a) => { ALIAS = a; }),
+    // Le résumé des artistes des collections (outils/monde_web.py) : [nom, œuvres, id, vignette].
+    jsonGarde(lien("monde/donnees/artistes.json")).catch(() => null),
+    // L'annuaire : tous les artistes du domaine public dont un musée montre une œuvre
+    // (outils/annuaire.py) : [nom, naissance, mort, œuvres].
+    jsonGarde(lien("monde/annuaire.json"), 7 * 24 * 3600e3).catch(() => []),
+  ]).then(([, resume, annuaire]) => {
+    const parCle = new Map();
+    for (const a of artistes) {
+      const cle = cleNom(a.nom), deja = parCle.get(cle);
+      if (deja) { deja.oeuvres.push(...a.oeuvres); if (a.bio.length > deja.bio.length) Object.assign(deja, { vie: a.vie, style: a.style, bio: a.bio }); }
+      else parCle.set(cle, { ...a, oeuvres: [...a.oeuvres], monde: [] });
+    }
+    // Les artistes des collections du monde, en résumé (le détail : chargerMonde).
+    for (const [nom, n, id, vu] of resume || []) {
+      const cle = cleNom(nom);
+      if (!parCle.has(cle)) parCle.set(cle, { nom, vie: "", style: "", bio: "", oeuvres: [], monde: [] });
+      const a = parCle.get(cle);
+      a.resume ??= { n: 0, premiere: { l: vu ? { 7: vu } : [], id } };
+      a.resume.n += n;
+    }
     for (const [nom, ne, mort, n] of annuaire) {
       const cle = cleNom(nom), deja = parCle.get(cle);
       const vie = ne && mort ? `${ne}–${mort}` : mort ? `${t("mort en", "died", "murió en")} ${mort}` : ne ? `${t("né en", "born", "nació en")} ${ne}` : "";
@@ -105,20 +130,23 @@ function chargerArtistes() {
       else parCle.set(cle, { nom, vie, style: "", bio: "", oeuvres: [], monde: [], ailleurs: n });
     }
     const tous = [...parCle.values()].sort((a, b) => plier(a.nom).localeCompare(plier(b.nom)));
-    return { tous, parCle };
+    return { tous, parCle, resume: !!resume };
   });
   return catalogueArtistes;
 }
 
 // Le nombre d'œuvres connues : celles d'ARTEON, ou celles que les musées montrent ailleurs.
-const total = (a) => Math.max(a.oeuvres.length + a.monde.length, a.ailleurs || 0);
+const total = (a) => Math.max(a.oeuvres.length + (a.monde.length || a.resume?.n || 0), a.ailleurs || 0);
 const lettreDe = (nom) => { const l = (plier(nom).replace(/^[^a-z0-9]+/, "")[0] || "#").toUpperCase(); return /[A-Z]/.test(l) ? l : "#"; };
 const vignetteMonde = ({ l, id }) => l[7] || lien(`monde/v/${id}.webp`);
-const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? vignetteMonde(a.monde[0]) : "");
+const vignetteDe = (a) => (a.oeuvres[0] ? lien(a.oeuvres[0].w.image) : a.monde[0] ? vignetteMonde(a.monde[0])
+  : a.resume ? vignetteMonde(a.resume.premiere) : "");
 
 async function listeArtistes(choisie) {
   racine.innerHTML = menu("") + `<p class="monde-chargement">${t("Ouverture du catalogue des artistes…", "Opening the catalogue of artists…", "Abriendo el catálogo de artistas…")}</p>`;
-  const { tous } = await chargerArtistes();
+  const { tous, resume } = await chargerArtistes();
+  // Sans le résumé (un site d'avant donnees/artistes.json), les œuvres d'abord, comme avant.
+  if (!resume) await chargerMonde();
   // Entre-temps on est parti vers une autre page de l'Explorer : elle s'affiche d'elle-même.
   // (Une adresse inconnue, elle, montre la liste : elle ne reste pas sur « Ouverture… ».)
   if (["artiste", "chronologie", "themes", "jeu", "styles", "style"].includes(route().type)) return;
@@ -144,7 +172,7 @@ async function listeArtistes(choisie) {
   const zone = document.getElementById("artistes");
   const ligne = (a) => `<a class="monde-artiste-ligne" href="#/artiste/${encodeURIComponent(a.nom)}">${vignetteDe(a) ? `<img loading="lazy" src="${vignetteDe(a)}" alt="">` : "<i></i>"}
       <span><b>${echapper(a.nom)}</b><small>${echapper([a.vie, a.style].filter(Boolean).join(" · ") || (a.oeuvres.length ? t("Dans les expositions", "In the exhibitions", "En las exposiciones")
-        : a.monde.length ? t("Dans les collections du monde", "In the world collections", "En las colecciones del mundo")
+        : a.monde.length || a.resume ? t("Dans les collections du monde", "In the world collections", "En las colecciones del mundo")
         : t("Dans les musées du monde", "In the world's museums", "En los museos del mundo")))}</small></span><em>${nombre(total(a))}</em></a>`;
   const dessiner = (q) => {
     const f = plier(q.trim());
@@ -171,6 +199,9 @@ async function listeArtistes(choisie) {
   };
   document.getElementById("filtre").addEventListener("input", (e) => dessiner(e.target.value));
   dessiner("");
+  // La liste est là : les œuvres des collections arrivent maintenant, pour que la page d'un
+  // artiste s'ouvre aussitôt.
+  setTimeout(() => chargerMonde(), 1500);
 }
 
 /** Une carte des collections du monde : la vignette, le titre, la date et le musée. */
@@ -179,37 +210,57 @@ const carteMonde = ({ l, id }) => `<a class="monde-carte" href="${lienPage(`mond
 async function artiste(nom) {
   racine.innerHTML = `<p class="monde-chargement">${t("Ouverture du catalogue…", "Opening the catalogue…", "Abriendo el catálogo…")}</p>`;
   const { parCle } = await chargerArtistes();
+  if (route().type !== "artiste" || route().valeur !== nom) return;
+  // En même temps : ses œuvres des collections du monde (liste.json, souvent déjà là, voir
+  // listeArtistes) et celles des musées, en direct. La page s'affiche sans les attendre.
+  const monde = chargerMonde();
+  const direct = oeuvresEnDirect(nom, cleNom, ALIAS);
+  direct.catch(() => {});
   // Un artiste qu'ARTEON ne montre pas encore : son catalogue vient tout entier des musées.
   const a = parCle.get(cleNom(nom)) || { nom, vie: "", style: "", bio: "", oeuvres: [], monde: [] };
   // Le catalogue complet, du plus ancien au plus récent : les œuvres des expositions et
   // celles des collections du monde, ensemble ; puis, en direct, celles des musées.
-  const toutes = [
+  const catalogue = () => [
     ...a.oeuvres.map(({ ex, w }) => ({ y: annee(w.year), html: carteOeuvre(ex, w, [w.year, ex.short_name || ex.title].filter(Boolean).join(" · ")) })),
     ...a.monde.map((m) => ({ y: m.l[3], html: carteMonde(m) })),
   ].sort((x, y) => (x.y ?? 1e9) - (y.y ?? 1e9));
+  let toutes = catalogue();
+  const enRoute = !mondeFini && a.resume?.n;
+  const note = () => [
+    a.oeuvres.length ? `${nombre(a.oeuvres.length)} ${t("dans les expositions du musée", "in the museum's exhibitions", "en las exposiciones del museo")}` : "",
+    a.monde.length ? `${nombre(a.monde.length)} ${t("dans les collections du monde", "in the world collections", "en las colecciones del mundo")}` : "",
+    toutes.length ? t("de la plus ancienne à la plus récente", "from oldest to most recent", "de la más antigua a la más reciente")
+      : t("Ses œuvres viennent des musées, en direct", "Their works come live from the museums", "Sus obras llegan de los museos, en directo"),
+  ].filter(Boolean).join(" · ");
   const titre = (n) => `${t("Le catalogue complet : ", "Complete catalogue: ", "El catálogo completo: ")}${oeuvresN(n)}`;
   const enDirect = t("Dans les musées, en direct", "Live from the museums", "En los museos, en directo");
   racine.innerHTML = `<a class="monde-retour" href="#/lettre/${encodeURIComponent(lettreDe(a.nom))}">← ${t("Les artistes", "Artists", "Los artistas")}</a>
     <h1 class="monde-titre">${echapper(a.nom)}</h1>
     ${a.vie ? `<dl class="facts">${renseignement(t("Sa vie en dates", "Life dates", "Fechas"), a.vie)}</dl>` : ""}
     ${a.bio || a.style ? `<div class="folds">${a.bio ? rubrique(t("Sa vie", "Life", "Su vida"), `<p>${echapper(a.bio)}</p>`, true) : ""}${a.style ? rubrique(t("Sa manière", "Technique", "Su estilo"), `<p>${echapper(a.style)}</p>`) : ""}</div>` : ""}
-    <section class="monde-section"><h2 id="catalogue-titre">${titre(toutes.length)}</h2>
-      <p class="monde-note">${[
-        a.oeuvres.length ? `${nombre(a.oeuvres.length)} ${t("dans les expositions du musée", "in the museum's exhibitions", "en las exposiciones del museo")}` : "",
-        a.monde.length ? `${nombre(a.monde.length)} ${t("dans les collections du monde", "in the world collections", "en las colecciones del mundo")}` : "",
-        toutes.length ? t("de la plus ancienne à la plus récente", "from oldest to most recent", "de la más antigua a la más reciente")
-          : t("Ses œuvres viennent des musées, en direct", "Their works come live from the museums", "Sus obras llegan de los museos, en directo"),
-      ].filter(Boolean).join(" · ")}</p>
-      <div class="monde-grille">${toutes.map((o) => o.html).join("")}</div></section>
+    <section class="monde-section"><h2 id="catalogue-titre">${titre(toutes.length + (enRoute ? a.resume.n : 0))}</h2>
+      <p class="monde-note" id="catalogue-note">${note()}</p>
+      ${enRoute ? `<p class="monde-chargement" id="catalogue-attente">${t(`Ses ${nombre(a.resume.n)} œuvres des collections du monde arrivent…`, `Their ${nombre(a.resume.n)} works from the world collections are on their way…`, `Sus ${nombre(a.resume.n)} obras de las colecciones del mundo están llegando…`)}</p>` : ""}
+      <div class="monde-grille" id="catalogue-grille">${toutes.map((o) => o.html).join("")}</div></section>
     <section class="monde-section" id="en-direct"><h2>${enDirect}</h2>
       <p class="monde-chargement">${t("Recherche de toutes ses œuvres libres de droits dans les musées du monde…", "Searching the world's museums for all their copyright-free works…", "Buscando todas sus obras libres de derechos en los museos del mundo…")}</p></section>`;
   // Mosaïque ou cartes : pour voir toutes ses œuvres d'un coup d'œil et choisir.
   document.getElementById("catalogue-titre").nextElementSibling.after(choixVue());
   window.scrollTo(0, 0);
   const zone = document.getElementById("en-direct");
+  // Les œuvres des collections du monde arrivées : le catalogue se complète.
+  await monde.catch(() => {});
+  if (route().type !== "artiste" || route().valeur !== nom) return;
+  if (enRoute) {
+    toutes = catalogue();
+    document.getElementById("catalogue-attente")?.remove();
+    document.getElementById("catalogue-titre").textContent = titre(toutes.length);
+    document.getElementById("catalogue-note").textContent = note();
+    document.getElementById("catalogue-grille").innerHTML = toutes.map((o) => o.html).join("");
+  }
   try {
     const deja = new Set(a.monde.map((m) => m.id));
-    const r = await oeuvresEnDirect(a.nom, cleNom, ALIAS);
+    const r = await direct;
     if (route().valeur !== nom) return;
     const nouvelles = r.oeuvres.filter((o) => !deja.has(o.id));
     const musee = await nomsDesMusees().catch(() => ({}));
