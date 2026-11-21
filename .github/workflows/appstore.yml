@@ -1,0 +1,35 @@
+# App Store Connect préparé en une minute, sans attendre la construction de l'application :
+# la clé d'API vérifiée, l'identifiant de bundle com.maxlestage.arteon créé s'il manque (il
+# est alors proposé dans le formulaire « Nouvelle app » d'App Store Connect), l'équipe
+# trouvée, la fiche de l'application cherchée. Le résumé du run dit ce qui reste à faire.
+# Voir outils/app_store_connect.py ; la construction iOS (ios.yml) refait la même
+# vérification avant de signer. À lancer depuis un téléphone : Actions → App Store Connect →
+# Run workflow.
+
+name: App Store Connect
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - "outils/app_store_connect.py"
+      - ".github/workflows/appstore.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  preparer:
+    name: Identifiant de bundle, équipe, fiche de l'application
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ASC_KEY: ${{ secrets.ASC_KEY || secrets.APP_STORE_CONNECT_KEY }}
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID || secrets.APP_STORE_CONNECT_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID || secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Préparer App Store Connect
+        run: python3 outils/app_store_connect.py
