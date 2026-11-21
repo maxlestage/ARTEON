@@ -65,8 +65,8 @@ struct MainView: View {
     }
 
     /// Au lancement : `-ouvrir van-gogh`, `-ouvrir van-gogh/tournesols`,
-    /// `-ouvrir 3d:van-gogh` ouvrent cette page ; `-onglet artistes` cet onglet (pour les
-    /// captures d'écran de la CI).
+    /// `-ouvrir 3d:van-gogh`, `-ouvrir styles`, `-ouvrir style:baroque` ouvrent cette page ;
+    /// `-onglet artistes` cet onglet (pour les captures d'écran de la CI).
     private func openFromLaunchArguments() {
         let args = ProcessInfo.processInfo.arguments
         if let i = args.firstIndex(of: "-onglet"), i + 1 < args.count {
@@ -112,6 +112,15 @@ struct MainView: View {
         } else if target == "chronologie" {
             tab = .explore
             explorePath.append(Route.timeline)
+        } else if target == "styles" {
+            tab = .explore
+            explorePath.append(Route.styles)
+        } else if target.hasPrefix("style:") {
+            // `-ouvrir style:impressionnisme` (et `-voir 3` : sa 4ᵉ œuvre en grand).
+            let key = String(target.dropFirst(6))
+            tab = .explore
+            explorePath.append(Route.styles)
+            explorePath.append(Route.subject(key: key, name: key.replacingOccurrences(of: "-", with: " ").capitalized, family: ""))
         } else if let key = WorkKey(target), catalogue.work(key) != nil {
             exhibitionsPath.append(Route.exhibition(key.exhibition))
             exhibitionsPath.append(Route.work(key))

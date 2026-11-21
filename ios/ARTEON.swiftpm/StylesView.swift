@@ -202,6 +202,12 @@ struct SubjectView: View {
             works = await Subjects.works(key)
             museums = await names
             loading = false
+            // `-voir 3` au lancement : sa 4ᵉ œuvre en grand (pour les captures d'écran de la CI).
+            let args = ProcessInfo.processInfo.arguments
+            if let i = args.firstIndex(of: "-voir"), i + 1 < args.count, let n = Int(args[i + 1]),
+               let works, works.indices.contains(n) {
+                shown = works[n]
+            }
         }
     }
 }

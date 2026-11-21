@@ -27,8 +27,10 @@ enum Api {
     /// La session de toute l'application : en mémoire seulement.
     static let session: URLSession = {
         let configuration = URLSessionConfiguration.ephemeral
-        configuration.urlCache = URLCache(memoryCapacity: 64 * 1024 * 1024, diskCapacity: 0, diskPath: nil)
-        configuration.requestCachePolicy = .useProtocolCachePolicy
+        // Pas de cache d'URLSession : la mémoire de la visite (SessionStore) garde déjà chaque
+        // réponse, et 64 Mo de mémoire vive faisaient double emploi.
+        configuration.urlCache = nil
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         configuration.timeoutIntervalForRequest = 120
         configuration.httpAdditionalHeaders = ["User-Agent": "ARTEON/3.0 (application iOS)"]
         return URLSession(configuration: configuration)
@@ -42,7 +44,13 @@ enum Api {
         #endif
         let data = try await network(url, headers: headers, timeout: timeout)
         #if canImport(SQLite3)
-        await SessionStore.shared.put(url.absoluteString, data)
+        // Gardée pour la suite de la visite, sans faire attendre celui qui la demande (la
+        // compression d'un gros fichier prend du temps).
+        let key = url.absoluteString
+        Task.detached(priority: .utility) {
+            let (stored, packed) = SessionStore.pack(data)
+            await SessionStore.shared.put(key, stored: stored, packed: packed)
+        }
         #endif
         return data
     }

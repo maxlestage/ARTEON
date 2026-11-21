@@ -103,7 +103,12 @@ final class CatalogueStore {
             await update()
         }
         if collections == nil {
-            Task { await loadCollections() }
+            // Les collections du monde (3,6 Mo) : un peu après, pour laisser le réseau aux
+            // images de l'accueil. Une page qui en a besoin plus tôt les demande elle-même.
+            Task {
+                try? await Task.sleep(nanoseconds: 1_500_000_000)
+                await loadCollections()
+            }
         }
         if catalogue == nil {
             let message = L("ARTEON a besoin d'Internet : tout passe par l'API, rien n'est gardé sur l'appareil.",
@@ -141,8 +146,10 @@ final class CatalogueStore {
         guard collections == nil, !loadingCollections else { return }
         loadingCollections = true
         defer { loadingCollections = false }
-        guard let index = try? await Api.site("monde/donnees/index.json"),
-              let list = try? await Api.site("monde/donnees/liste.json")
+        // Les deux fichiers ensemble, pas l'un après l'autre.
+        async let indexFile = try? Api.site("monde/donnees/index.json")
+        async let listFile = try? Api.site("monde/donnees/liste.json")
+        guard let index = await indexFile, let list = await listFile
         else { collectionsError = true; return }
         collectionsError = false
         collections = await Task.detached(priority: .utility) {
@@ -219,23 +226,101 @@ actor ImageStore {
     static let shared = ImageStore()
 
     private var running: [URL: Task<Data?, Never>] = [:]
+    /// Les octets reçus, peu de temps (l'image décodée est gardée par ImagePipeline, et les
+    /// octets par la mémoire de la visite) : de quoi redécoder à une autre taille.
     private let memory: NSCache<NSURL, NSData> = {
         let cache = NSCache<NSURL, NSData>()
-        cache.totalCostLimit = 96 * 1024 * 1024
+        cache.totalCostLimit = 32 * 1024 * 1024
         return cache
     }()
+    /// Huit téléchargements à la fois : dans une galerie de 2 000 vignettes qu'on fait défiler,
+    /// des centaines de demandes partaient ensemble, celles de l'écran derrière toutes les
+    /// autres (et Wikimedia en refusait une partie).
+    private let turns = Turns(limit: 8)
 
     /// Les octets d'une image du site (`tableaux/van-gogh/iris.jpg`) ou d'une adresse complète.
+    /// `nil` aussi quand la tâche est annulée avant son tour (l'image a quitté l'écran).
     func data(for path: String) async -> Data? {
         let absolute = path.hasPrefix("https://") || path.hasPrefix("http://")
         let url = absolute ? (URL(string: path) ?? Site.url(path)) : Site.url(path)
         if let data = memory.object(forKey: url as NSURL) { return data as Data }
         if let task = running[url] { return await task.value }
-        let task = Task<Data?, Never> { try? await Api.data(url) }
+        guard await turns.enter() else { return nil }
+        // Pendant l'attente, une autre vue a pu demander la même image.
+        if let data = memory.object(forKey: url as NSURL) {
+            await turns.leave()
+            return data as Data
+        }
+        if let task = running[url] {
+            await turns.leave()
+            return await task.value
+        }
+        // Le téléchargement commencé va au bout, même si la vue disparaît : il sert au retour.
+        let task = Task<Data?, Never> {
+            if let data = try? await Api.data(url) { return data }
+            // Un refus passager (Wikimedia limite les rafales) : un second essai, un peu après.
+            try? await Task.sleep(nanoseconds: 1_200_000_000)
+            return try? await Api.data(url)
+        }
         running[url] = task
         let data = await task.value
         running[url] = nil
+        await turns.leave()
         if let data { memory.setObject(data as NSData, forKey: url as NSURL, cost: data.count) }
         return data
     }
+}
+
+/// Des tours : au plus `limit` travaux à la fois. Quand ils sont tous pris, le dernier arrivé
+/// passe le premier (dans une galerie qu'on fait défiler, c'est ce qui est à l'écran), et un
+/// demandeur annulé en attendant (sa vue a quitté l'écran) sort de la file.
+actor Turns {
+    private let limit: Int
+    private var active = 0
+    private var next: UInt64 = 0
+    private var waiting: [(id: UInt64, continuation: CheckedContinuation<Bool, Never>)] = []
+
+    init(limit: Int) {
+        self.limit = max(1, limit)
+    }
+
+    /// Attend son tour. `false` : la tâche a été annulée en attendant, et n'a pas de tour à
+    /// rendre ; `true` : à elle de jouer, puis d'appeler `leave()`.
+    func enter() async -> Bool {
+        if active < limit {
+            active += 1
+            return true
+        }
+        let id = next
+        next += 1
+        return await withTaskCancellationHandler {
+            await withCheckedContinuation { continuation in
+                if Task.isCancelled {
+                    continuation.resume(returning: false)
+                } else {
+                    waiting.append((id, continuation))
+                }
+            }
+        } onCancel: {
+            Task { await self.abandon(id) }
+        }
+    }
+
+    /// Rend son tour : il passe au dernier arrivé, s'il y en a un.
+    func leave() {
+        if let last = waiting.popLast() {
+            last.continuation.resume(returning: true)
+        } else {
+            active -= 1
+        }
+    }
+
+    private func abandon(_ id: UInt64) {
+        if let i = waiting.firstIndex(where: { $0.id == id }) {
+            waiting.remove(at: i).continuation.resume(returning: false)
+        }
+    }
+
+    /// Combien attendent leur tour (pour les tests).
+    var waitingCount: Int { waiting.count }
 }

@@ -46,19 +46,26 @@ struct LiveWorkViewer: View {
     let museums: [String: String]
     let artist: String
 
-    @State private var current: String
+    /// L'œuvre à l'écran (son identifiant) : suit le doigt, et place la galerie à l'ouverture.
+    @State private var current: String?
     @State private var details = false
     @Environment(\.dismiss) private var dismiss
+
+    /// La place de chaque œuvre (pour « 12 / 2 473 », sans reparcourir la liste à chaque image).
+    private let positions: [String: Int]
+    private let start: String
 
     init(works: [LiveWork], start: LiveWork, museums: [String: String], artist: String) {
         self.works = works
         self.museums = museums
         self.artist = artist
+        self.start = start.id
+        positions = Dictionary(works.enumerated().map { ($1.id, $0) }, uniquingKeysWith: { first, _ in first })
         _current = State(initialValue: start.id)
     }
 
     private var index: Int {
-        works.firstIndex { $0.id == current } ?? 0
+        current.flatMap { positions[$0] } ?? 0
     }
 
     var body: some View {
@@ -83,13 +90,26 @@ struct LiveWorkViewer: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
-                TabView(selection: $current) {
-                    ForEach(works) { work in
-                        LiveWorkPicture(work: work)
-                            .tag(work.id)
+                // Une page par œuvre, créée seulement quand elle approche de l'écran : un TabView
+                // en pages préparait les 2 500 œuvres d'un style dès l'ouverture.
+                ScrollViewReader { proxy in
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing: 0) {
+                            ForEach(works) { work in
+                                LiveWorkPicture(work: work)
+                                    .containerRelativeFrame(.horizontal)
+                            }
+                        }
+                        .scrollTargetLayout()
+                    }
+                    .scrollTargetBehavior(.paging)
+                    .scrollPosition(id: $current)
+                    .scrollIndicators(.hidden)
+                    .onAppear {
+                        // L'œuvre touchée, tout de suite (sans faire défiler les précédentes).
+                        proxy.scrollTo(start, anchor: .leading)
                     }
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
                 if works.indices.contains(index) {
                     caption(works[index])
                 }
