@@ -510,10 +510,16 @@ enum LiveWorks {
         let fields = (source["champs"] as? [String: String]) ?? [:]
         var records: [Any] = []
         var ids: [String] = []
+        // Une recherche limitée en pages (Chicago : 10 pages de 100) qui les a toutes remplies :
+        // « au_dela », la même dans l'ordre inverse, donne les suivantes (comme src/api.rs).
         for q in names {
+            var templates = [source["recherche"] as? String ?? ""]
+            var m = 0
+            while m < templates.count {
+            var full = false
             for page in 1...max(1, pages) {
                 let encoded = q.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? q
-                let address = (source["recherche"] as? String ?? "")
+                let address = templates[m]
                     .replacingOccurrences(of: "{q}", with: encoded)
                     .replacingOccurrences(of: "{n}", with: String(perPage))
                     .replacingOccurrences(of: "{page}", with: String(page))
@@ -523,32 +529,49 @@ enum LiveWorks {
                 guard let url = URL(string: address), let data = try? await Api.data(url, headers: headers, timeout: delay),
                       let json = try? JSONSerialization.jsonObject(with: data)
                 else { break }
+                // Des identifiants (le Met : 500 par page au plus), puis les fiches une par une.
                 if let key = source["ids"] as? String {
-                    ids += ((path(json, key) as? [Any]) ?? []).map(text)
-                    break
+                    let found = (path(json, key) as? [Any]) ?? []
+                    ids += found.map(text)
+                    if found.count < perPage { break }
+                    continue
                 }
                 let list = (source["liste"] as? String).map { path(json, $0) as? [Any] ?? [] } ?? (json as? [Any] ?? [])
                 records += list
                 if list.count < perPage { break }
+                if page == pages { full = true }
+            }
+            if full, m == 0, let more = source["au_dela"] as? String { templates.append(more) }
+            m += 1
             }
         }
         if let detail = source["detail"] as? String {
             var seen = Set<String>()
-            let wanted = ids.filter { seen.insert($0).inserted }.prefix(min(source["max"] as? Int ?? 3000, 300))
-            records = await withTaskGroup(of: Json?.self) { group in
-                for id in wanted {
-                    group.addTask {
-                        guard let url = URL(string: detail.replacingOccurrences(of: "{id}", with: id)),
-                              let data = try? await Api.data(url, headers: headers),
-                              let json = try? JSONSerialization.jsonObject(with: data)
-                        else { return nil }
-                        return Json(value: json)
+            let wanted = ids.filter { seen.insert($0).inserted }.prefix(min(source["max"] as? Int ?? 3000, 1000))
+            // Seize à la fois : mille demandes lancées ensemble attendraient leur tour dans
+            // URLSession, et les dernières dépasseraient leur délai avant même de partir.
+            let wantedIds = Array(wanted)
+            var all: [Any] = []
+            for start in stride(from: 0, to: wantedIds.count, by: 16) {
+                if Task.isCancelled { break }
+                let batch = wantedIds[start..<min(start + 16, wantedIds.count)]
+                let found = await withTaskGroup(of: Json?.self) { group in
+                    for id in batch {
+                        group.addTask {
+                            guard let url = URL(string: detail.replacingOccurrences(of: "{id}", with: id)),
+                                  let data = try? await Api.data(url, headers: headers),
+                                  let json = try? JSONSerialization.jsonObject(with: data)
+                            else { return nil }
+                            return Json(value: json)
+                        }
                     }
+                    var some: [Any] = []
+                    for await r in group { if let r { some.append(r.value) } }
+                    return some
                 }
-                var all: [Any] = []
-                for await r in group { if let r { all.append(r.value) } }
-                return all
+                all += found
             }
+            records = all
         }
         let required = (source["exige"] as? [String]) ?? []
         return records.compactMap { record in

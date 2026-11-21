@@ -146,26 +146,37 @@ async function chezLesMusees(nom, cleNom, alias, seulement) {
 async function interroger(source, questions, meme, modele = source.recherche, repli = null) {
     const parPage = source.par_page ?? 100, pages = source.pages ?? 1, entetes = source.entetes ?? {};
     let fiches = [], ids = [];
-    for (const q of questions) for (let page = 1; page <= pages; page++) {
-      const adresse = (m) => m.replace("{q}", encodeURIComponent(q)).replace("{s}", encodeURIComponent(q)).replace("{n}", parPage)
-        .replace("{page}", page).replace("{offset}", (page - 1) * parPage).replace("{debut}", (page - 1) * parPage + 1);
-      let r;
-      try { r = await lireJson(adresse(modele), entetes); } catch {
-        if (!repli) break;
-        try { r = await lireJson(adresse(repli), entetes); } catch { break; }
+    // Une recherche limitée en pages (Chicago : 10 pages de 100) qui les a toutes remplies :
+    // « au_dela », la même dans l'ordre inverse, donne les suivantes (comme src/api.rs).
+    for (const q of questions) {
+      const modeles = [modele];
+      for (let m = 0; m < modeles.length; m++) {
+        let plein = false;
+        for (let page = 1; page <= pages; page++) {
+          const adresse = (t) => t.replace("{q}", encodeURIComponent(q)).replace("{s}", encodeURIComponent(q)).replace("{n}", parPage)
+            .replace("{page}", page).replace("{offset}", (page - 1) * parPage).replace("{debut}", (page - 1) * parPage + 1);
+          let r;
+          try { r = await lireJson(adresse(modeles[m]), entetes); } catch {
+            if (!repli || m > 0) break;
+            try { r = await lireJson(adresse(repli), entetes); } catch { break; }
+          }
+          // Des identifiants (le Met : 500 par page au plus), puis les fiches une par une.
+          if (source.ids) { const lot = chemin(r, source.ids) || []; ids.push(...lot); if (lot.length < parPage) break; continue; }
+          const lot = (source.liste ? chemin(r, source.liste) : r) || [];
+          fiches.push(...lot);
+          if (lot.length < parPage) break;
+          if (page === pages) plein = true;
+        }
+        if (plein && m === 0 && meme && source.au_dela) modeles.push(source.au_dela);
       }
-      if (source.ids) { ids.push(...(chemin(r, source.ids) || [])); break; }
-      const lot = (source.liste ? chemin(r, source.liste) : r) || [];
-      fiches.push(...lot);
-      if (lot.length < parPage) break;
     }
     if (source.detail) {
-      // Les fiches une par une, douze à la fois (300 au plus depuis le navigateur ; l'API
-      // Paquets, elle, va jusqu'au bout).
-      ids = [...new Set(ids.map(String))].slice(0, Math.min(source.max ?? 3000, 300));
+      // Les fiches une par une, seize à la fois (1 000 au plus depuis le navigateur ; l'API
+      // Paquets, elle, va jusqu'à 3 000).
+      ids = [...new Set(ids.map(String))].slice(0, Math.min(source.max ?? 3000, 1000));
       fiches = [];
-      for (let i = 0; i < ids.length; i += 12) {
-        const lot = await Promise.all(ids.slice(i, i + 12).map((id) => lireJson(source.detail.replace("{id}", id), entetes).catch(() => null)));
+      for (let i = 0; i < ids.length; i += 16) {
+        const lot = await Promise.all(ids.slice(i, i + 16).map((id) => lireJson(source.detail.replace("{id}", id), entetes).catch(() => null)));
         fiches.push(...lot.filter(Boolean));
       }
     }
