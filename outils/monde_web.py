@@ -309,15 +309,15 @@ def main():
         p = f'{base}{L["prefixe"]}'
         textes = {
             "fr": (f"Les collections du monde", f"{fine(len(gardees))} œuvres du domaine public de {len(musees)} grands musées : "
-                   "Chicago, Cleveland, New York, Washington. Chercher, parcourir, regarder en grand.",
+                   "Chicago, Cleveland, New York, Washington (la National Gallery et le Smithsonian). Chercher, parcourir, regarder en grand.",
                    "Les musées", "Les vrais musées reproduits dans ARTEON, leurs plans salle par salle, et le Grand Musée ARTEON.",
                    "Explorer", "Les artistes de A à Z, la chronologie, les thèmes, et le jeu « Qui l'a fait ? »."),
             "en": ("World collections", f"{fine(len(gardees))} public-domain works from {len(musees)} great museums: "
-                   "Chicago, Cleveland, New York, Washington. Search, browse, view them large.",
+                   "Chicago, Cleveland, New York, Washington (the National Gallery and the Smithsonian). Search, browse, view them large.",
                    "Museums", "The real museums reproduced in ARTEON, their plans room by room, and the Grand ARTEON Museum.",
                    "Explore", "Artists from A to Z, the timeline, themes, and the “Who made it?” game."),
             "es": ("Colecciones del mundo", f"{fine(len(gardees))} obras de dominio público de {len(musees)} grandes museos: "
-                   "Chicago, Cleveland, Nueva York, Washington. Buscar, recorrer, ver en grande.",
+                   "Chicago, Cleveland, Nueva York, Washington (la National Gallery y el Smithsonian). Buscar, recorrer, ver en grande.",
                    "Museos", "Los museos reales reproducidos en ARTEON, sus planos sala por sala y el Gran Museo ARTEON.",
                    "Explorar", "Los artistas de la A a la Z, la cronología, los temas y el juego «¿Quién lo hizo?»."),
         }[code]
