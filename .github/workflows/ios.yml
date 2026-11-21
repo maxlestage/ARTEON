@@ -172,7 +172,7 @@ jobs:
       - name: Captures d'écran (iPad et iPhone)
         # Les captures ne bloquent jamais la suite (compilation, App Playground, TestFlight).
         continue-on-error: true
-        timeout-minutes: 20
+        timeout-minutes: 30
         run: |
           set -uo pipefail
           # Une commande qui ne rend pas la main est arrêtée au bout de $1 secondes.
@@ -222,6 +222,9 @@ jobs:
             fi
             name=12-collections shoot -ouvrir collections
             name=13-collection-met shoot -ouvrir collection:met
+            name=14-styles wait=18 shoot -ouvrir styles
+            name=15-style wait=18 shoot -ouvrir style:impressionnisme
+            name=16-visionneuse wait=18 shoot -ouvrir style:impressionnisme -voir 3
             limit 60 xcrun simctl shutdown "$udid" || true
           done
           ls -la captures

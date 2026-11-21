@@ -43,18 +43,32 @@ actor SessionStore {
         return data
     }
 
-    /// Garde les octets d'une adresse, compressés quand ils s'y prêtent (le JSON).
-    func put(_ key: String, _ data: Data) {
+    /// Les octets à garder et s'ils sont compressés : le JSON l'est (LZFSE) ; une image (JPEG,
+    /// PNG, WebP, GIF) ou un fichier gzip le sont déjà, on ne perd pas de temps à réessayer.
+    /// Hors de l'acteur : pendant qu'un gros fichier se compresse, les lectures continuent.
+    nonisolated static func pack(_ data: Data) -> (stored: Data, packed: Bool) {
+        let start = [UInt8](data.prefix(4))
+        let alreadyPacked = start.starts(with: [0xFF, 0xD8]) || start.starts(with: [0x89, 0x50, 0x4E, 0x47])
+            || start.starts(with: [0x52, 0x49, 0x46, 0x46]) || start.starts(with: [0x47, 0x49, 0x46])
+            || start.starts(with: [0x1F, 0x8B])
+        if !alreadyPacked, data.count > 512,
+           let smaller = try? (data as NSData).compressed(using: .lzfse) as Data,
+           smaller.count < data.count * 9 / 10 {
+            return (smaller, true)
+        }
+        return (data, false)
+    }
+
+    /// Garde les octets d'une adresse (préparés par `pack`).
+    func put(_ key: String, stored: Data, packed: Bool) {
         guard let db = open() else { return }
-        let packed = (try? (data as NSData).compressed(using: .lzfse) as Data).flatMap { $0.count < data.count * 9 / 10 ? $0 : nil }
-        let stored = packed ?? data
         var statement: OpaquePointer?
         defer { sqlite3_finalize(statement) }
         guard sqlite3_prepare_v2(db, "INSERT OR REPLACE INTO reponses VALUES (?, ?, ?, ?)", -1, &statement, nil) == SQLITE_OK
         else { return }
         sqlite3_bind_text(statement, 1, key, -1, Self.transient)
         _ = stored.withUnsafeBytes { sqlite3_bind_blob(statement, 2, $0.baseAddress, Int32(stored.count), Self.transient) }
-        sqlite3_bind_int(statement, 3, packed == nil ? 0 : 1)
+        sqlite3_bind_int(statement, 3, packed ? 1 : 0)
         sqlite3_bind_double(statement, 4, Date().timeIntervalSince1970)
         sqlite3_step(statement)
     }

@@ -45,20 +45,32 @@ enum Route: Hashable {
 /// Les images, demandées au site (ou au musée) et décodées à la taille où elles
 /// s'affichent : les vignettes restent légères, l'image en grand garde tous ses pixels.
 /// Gardées en mémoire le temps de la visite, jamais sur l'appareil.
-actor ImagePipeline {
+///
+/// Ce n'est plus un acteur : un acteur décodait les images une par une, et dans une galerie
+/// de centaines de vignettes chacune attendait toutes les précédentes. Les décodages se font
+/// maintenant en parallèle, sur tous les cœurs (le cache, un NSCache, supporte les accès
+/// simultanés), et une image dont la vue a quitté l'écran n'est plus décodée.
+final class ImagePipeline: Sendable {
     static let shared = ImagePipeline()
 
-    private let cache: NSCache<NSString, UIImage> = {
-        let cache = NSCache<NSString, UIImage>()
-        cache.totalCostLimit = 160 * 1024 * 1024
-        return cache
+    /// Le cache des images décodées (NSCache est sûr entre fils d'exécution).
+    private final class Decoded: @unchecked Sendable {
+        let images = NSCache<NSString, UIImage>()
+    }
+
+    private let decoded: Decoded = {
+        let decoded = Decoded()
+        // Selon la mémoire de l'appareil : 150 Mo sur un iPhone de 3 Go, 256 Mo au plus.
+        let share = Int(ProcessInfo.processInfo.physicalMemory / 20)
+        decoded.images.totalCostLimit = min(max(share, 64 * 1024 * 1024), 256 * 1024 * 1024)
+        return decoded
     }()
 
     /// `maxPixels` : le plus grand côté voulu, en pixels (`nil` : l'image entière).
     func image(_ path: String, maxPixels: Int?) async -> UIImage? {
         let key = "\(maxPixels ?? 0)|\(path)" as NSString
-        if let image = cache.object(forKey: key) { return image }
-        guard let data = await ImageStore.shared.data(for: path),
+        if let image = decoded.images.object(forKey: key) { return image }
+        guard let data = await ImageStore.shared.data(for: path), !Task.isCancelled,
               let source = CGImageSourceCreateWithData(data as CFData, nil)
         else { return nil }
         var options: [CFString: Any] = [
@@ -71,7 +83,7 @@ actor ImagePipeline {
             return nil
         }
         let image = UIImage(cgImage: cg)
-        cache.setObject(image, forKey: key, cost: cg.bytesPerRow * cg.height)
+        decoded.images.setObject(image, forKey: key, cost: cg.bytesPerRow * cg.height)
         return image
     }
 
@@ -117,7 +129,8 @@ struct RemoteImage: View {
         guard let path, !path.isEmpty else { return }
         if let loaded = await ImagePipeline.shared.image(path, maxPixels: maxPixels) {
             withAnimation(.easeOut(duration: 0.25)) { image = loaded }
-        } else {
+        } else if !Task.isCancelled {
+            // (une vue qui quitte l'écran avant son image n'a pas « échoué »)
             failed = true
         }
     }
