@@ -77,6 +77,28 @@ jobs:
             echo "::notice::Swift n'est pas installé sur cette image : les tests tournent sur le Mac."
           fi
 
+  # App Store Connect préparé tout de suite (une minute, sur Linux), sans attendre les
+  # 40 minutes de la compilation sur Mac : l'identifiant de bundle est créé s'il manque,
+  # pour qu'il soit proposé dans le formulaire « Nouvelle app » d'App Store Connect, et le
+  # résumé du run dit ce qui reste à faire. Le job Mac refait cette vérification avant
+  # de signer.
+  appstore:
+    name: App Store Connect (identifiant de bundle, équipe, fiche)
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.testflight) ||
+      (github.event_name == 'push' && github.ref_name == github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ASC_KEY: ${{ secrets.ASC_KEY || secrets.APP_STORE_CONNECT_KEY }}
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID || secrets.APP_STORE_CONNECT_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID || secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Préparer App Store Connect
+        run: python3 outils/app_store_connect.py
+
   ios:
     name: Compiler, tester, capturer
     needs: modele
