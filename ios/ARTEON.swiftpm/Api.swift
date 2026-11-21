@@ -112,6 +112,7 @@ extension WorldCollections {
     static let museumSites = [
         "chicago": "https://www.artic.edu", "cleveland": "https://www.clevelandart.org",
         "met": "https://www.metmuseum.org", "washington": "https://www.nga.gov",
+        "smithsonian": "https://www.si.edu",
     ]
 
     /// Les collections telles que le site les publie : `monde/donnees/index.json` (les

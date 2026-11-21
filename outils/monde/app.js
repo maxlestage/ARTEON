@@ -1,5 +1,5 @@
 // Les collections du monde, sur le site : des dizaines de milliers d'œuvres du domaine
-// public (Chicago, Cleveland, le Met, Washington). Les fiches arrivent en morceaux
+// public (Chicago, Cleveland, le Met, Washington, le Smithsonian). Les fiches arrivent en morceaux
 // (donnees/liste.json pour parcourir et chercher, donnees/fiches-NN.json pour le détail),
 // les vignettes viennent du site (v/<œuvre>.jpg), l'image en grand du musée qui la publie.
 // Écrit par outils/monde_web.py dans monde/ ; adresses en #/… (une seule page).

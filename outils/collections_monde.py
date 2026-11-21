@@ -2,13 +2,16 @@
 """Les collections du monde : des dizaines de milliers d'œuvres du domaine public, pour
 l'application iOS (ios/ARTEON.swiftpm/Musee/collections/).
 
-Le script interroge les collections ouvertes de quatre musées, qui publient en CC0 les
+Le script interroge les collections ouvertes de cinq institutions, qui publient en CC0 les
 données et les images de leurs œuvres du domaine public :
 
   - l'Art Institute of Chicago (api.artic.edu) ;
   - le Cleveland Museum of Art (openaccess-api.clevelandart.org) ;
   - le Metropolitan Museum of Art (collectionapi.metmuseum.org) ;
-  - la National Gallery of Art de Washington (données ouvertes en CSV, images IIIF).
+  - la National Gallery of Art de Washington (données ouvertes en CSV, images IIIF) ;
+  - les musées d'art du Smithsonian (Smithsonian Open Access : fichiers publics sur S3,
+    images ids.si.edu) : American Art Museum, National Portrait Gallery, musée d'art
+    asiatique, Cooper Hewitt, musée d'art africain, Hirshhorn.
 
 Il choisit les œuvres (les chefs-d'œuvre signalés par les musées et les peintures
 d'abord, puis la sculpture, le dessin, les objets…), garde de chacune une fiche et une
@@ -61,7 +64,7 @@ QUALITE_GRANDE = 72
 VERSION = 1
 
 # La part de chaque musée dans le total.
-PARTS = {"chicago": 0.30, "cleveland": 0.24, "met": 0.26, "washington": 0.20}
+PARTS = {"chicago": 0.26, "cleveland": 0.20, "met": 0.22, "washington": 0.17, "smithsonian": 0.15}
 
 MUSEES = {
     "chicago": {
@@ -83,6 +86,11 @@ MUSEES = {
         "nom": "National Gallery of Art", "ville": "Washington, États-Unis",
         "site": "https://www.nga.gov", "couleur": "#2b4a7a",
         "licence": "Images et données CC0 (National Gallery of Art Open Access)",
+    },
+    "smithsonian": {
+        "nom": "Smithsonian Institution", "ville": "Washington, États-Unis",
+        "site": "https://www.si.edu", "couleur": "#0f6e8c",
+        "licence": "Images et données CC0 (Smithsonian Open Access)",
     },
 }
 
@@ -458,11 +466,121 @@ def washington(combien, alea, cache):
     return fiches
 
 
-SOURCES = {"chicago": chicago, "cleveland": cleveland, "met": met, "washington": washington}
+# ─── Le Smithsonian ─────────────────────────────────────────────────────────
+
+# Les musées d'art du Smithsonian, dans ses données ouvertes (Smithsonian Open Access : des
+# fichiers publics, sans clé, l'API demandant une clé api.data.gov) : l'American Art Museum,
+# la National Portrait Gallery, le musée d'art asiatique (Freer et Sackler), le
+# Cooper Hewitt (design), le musée d'art africain, le Hirshhorn.
+SMITHSONIAN = "https://smithsonian-open-access.s3-us-west-2.amazonaws.com/metadata/edan"
+UNITES_SI = ["saam", "npg", "fsg", "chndm", "nmafa", "hmsg"]
+# Les rôles qui désignent l'auteur de l'œuvre (pas le modèle, l'éditeur ou l'imprimeur).
+AUTEURS_SI = {"Artist", "Maker", "Designer", "Painter", "Photographer", "Engraver", "Printmaker", "Sculptor",
+              "Draftsman", "Illustrator", "Calligrapher", "Collection Artist", "Artist (attributed to)", "Creator",
+              "Print Maker", "Attribution", "Attributed to", "Embroiderer", "Architect", "Lithographer",
+              "Manufacturer", "Weaver", "Potter", "Silversmith", "Goldsmith", "Cabinetmaker"}
+# « 19th century », « late 18th century » : le siècle, quand la notice ne donne pas d'année.
+SIECLE_SI = re.compile(r"\b(\d{1,2})(?:st|nd|rd|th) century\b", re.I)
+
+
+def auteur_si(noms):
+    """Le nom et la vie de l'auteur : « Winslow Homer, born Boston, MA 1836-died Prouts Neck,
+    ME 1910 » → (« Winslow Homer », « born Boston, MA 1836-died … 1910 ») ; « Cornell, Joseph »
+    → (« Joseph Cornell », « »)."""
+    for n in noms or []:
+        if n.get("label") not in AUTEURS_SI:
+            continue
+        texte = (n.get("content") or "").strip()
+        if not texte or texte.lower().startswith(("unidentified", "unknown")):
+            return "Artiste inconnu", ""
+        if "personal_name" in (n.get("flag") or []) and texte.count(",") == 1:
+            nom, prenom = (x.strip() for x in texte.split(","))
+            return f"{prenom} {nom}", ""
+        nom, _, vie = texte.partition(",")
+        # « James McNeill Whistler (1834-1903) » (le musée d'art asiatique) : la vie entre parenthèses.
+        entre = re.match(r"(.*?)\s*\(([^()]*\d{3,4}[^()]*)\)\s*$", nom)
+        if entre:
+            nom, vie = entre.group(1), entre.group(2)
+        return nom.strip(), vie.strip()
+    return "Artiste inconnu", ""
+
+
+def fiche_si(ligne):
+    """Une fiche d'un enregistrement du Smithsonian, ou None (pas d'image libre)."""
+    try:
+        c = json.loads(ligne).get("content") or {}
+    except ValueError:
+        return None
+    d = c.get("descriptiveNonRepeating") or {}
+    medias = [m for m in (d.get("online_media") or {}).get("media") or []
+              if m.get("type") == "Images" and (m.get("usage") or {}).get("access") == "CC0" and m.get("content")]
+    if not medias or (d.get("metadata_usage") or {}).get("access") != "CC0":
+        return None
+    m = medias[0]
+    t = c.get("freetext") or {}
+    premier = lambda cle, etiquette=None: next((x.get("content") for x in t.get(cle) or []
+                                               if etiquette is None or x.get("label") == etiquette), "")
+    artiste, vie = auteur_si(t.get("name"))
+    date = premier("date")
+    cat = categorie(premier("objectType"), premier("setName", "Department"), premier("physicalDescription", "Medium"))
+    largeur, hauteur = int(m.get("width") or 0), int(m.get("height") or 0)
+    unite = (d.get("unit_code") or "").lower()
+    an = annee(date)
+    if an is None:
+        siecle = SIECLE_SI.search(date or "")
+        an = int(siecle.group(1)) * 100 if siecle else None  # la fin du siècle : la date la plus prudente
+    # Ni date ni mort de l'artiste : rien ne prouve que l'œuvre est libre chez nous, même
+    # si le Smithsonian la publie en CC0 (une œuvre américaine récente peut l'être là-bas).
+    if an is None and mort_de(vie) is None:
+        return None
+    return fiche(
+        "smithsonian", d.get("record_ID") or m.get("idsId"), (d.get("title") or {}).get("content"), artiste,
+        vie=propre(vie, 160), date=propre(date, 80), annee=an,
+        technique=propre(premier("physicalDescription", "Medium"), 200),
+        mesures=propre(premier("physicalDescription", "Dimensions"), 160), categorie=cat,
+        origine=propre(premier("place") or premier("culture"), 80),
+        texte=propre(premier("notes"), 900),
+        image=m["content"] + "&max=1600", vignette=(m.get("thumbnail") or m["content"]) + "&max=320",
+        lien=d.get("record_link"), ratio=round(hauteur / largeur, 3) if largeur else None,
+        salle=propre(d.get("data_source"), 80),
+        # Les peintures de l'American Art Museum et les portraits de la National Portrait Gallery d'abord.
+        score=POIDS[cat] + (40 if unite in ("saam", "npg") else 0),
+    )
+
+
+def smithsonian(combien, alea):
+    """Les œuvres libres des musées d'art du Smithsonian : tous leurs fichiers ouverts (une
+    centaine de Mo), lus en parallèle."""
+    fichiers = []
+    for unite in UNITES_SI:
+        try:
+            fichiers += [u.strip() for u in lire(f"{SMITHSONIAN}/{unite}/index.txt").decode().split() if u.strip()]
+        except Exception as erreur:
+            dire(f"  smithsonian : {unite} sauté ({erreur})")
+    alea.shuffle(fichiers)
+    dire(f"  smithsonian : {len(fichiers)} fichiers")
+
+    def lot(url):
+        if trop_tard():
+            return []
+        try:
+            return [f for f in map(fiche_si, lire(url, essais=3).decode("utf-8", "replace").splitlines()) if f]
+        except Exception:
+            return []
+
+    fiches = []
+    with concurrent.futures.ThreadPoolExecutor(8) as pool:
+        for trouvees in pool.map(lot, fichiers):
+            fiches += trouvees
+    dire(f"  smithsonian : {len(fiches)} fiches avec une image libre")
+    return fiches
+
+
+SOURCES = {"chicago": chicago, "cleveland": cleveland, "met": met, "washington": washington, "smithsonian": smithsonian}
 
 # Combien de fiches chercher, au-delà de la part de chaque musée (Cleveland et Washington
 # donnent déjà tout d'un coup ; Chicago et le Met se moissonnent peu à peu).
-VISEE = {"chicago": 80000, "met": 120000}
+VISEE = {"chicago": 80000, "met": 120000, "smithsonian": 50000}
 
 
 # ─── Le choix, les vignettes, les fichiers ────────────────────────────────────
@@ -489,13 +607,15 @@ def mort_de(vie):
     9999 quand l'artiste est né après 1890 sans date de mort connue (peut-être vivant
     après 1955), ou None quand on ne sait pas."""
     vie = str(vie or "")
-    m = re.search(r"(1[0-9]{3})\s*[–-]\s*(1[0-9]{3}|20[0-9]{2})", vie)
+    # « 1841–1919 », et le Smithsonian : « 12 Feb 1880 - 3 Dec 1948 ».
+    m = re.search(r"(1[0-9]{3})\s*[–-]\s*(?:(?:c\.|ca\.)\s*)?(?:\d{1,2}\s+[A-Za-z]{3,9}\.?\s+)?(1[0-9]{3}|20[0-9]{2})", vie)
     if m:
         return int(m.group(2))
-    m = re.search(r"(?:died|d\.|mort[e]?)\s*(?:in\s*)?(1[0-9]{3}|20[0-9]{2})", vie, re.I)
+    # « died 1910 », « died Prouts Neck, ME 1910 » (le Smithsonian : le lieu avant l'année).
+    m = re.search(r"(?:died|d\.|mort[e]?)\s*(?:in\s*)?(?:[^0-9;]{0,60}?\s)?(1[0-9]{3}|20[0-9]{2})", vie, re.I)
     if m:
         return int(m.group(1))
-    m = re.search(r"(?:born|b\.|né[e]?)\s*(?:in\s*)?(1[0-9]{3}|20[0-9]{2})", vie, re.I) or \
+    m = re.search(r"(?:born|b\.|né[e]?)\s*(?:in\s*)?(?:[^0-9;]{0,60}?\s)?(1[0-9]{3}|20[0-9]{2})", vie, re.I) or \
         re.search(r"(1[0-9]{3}|20[0-9]{2})\s*[–-]\s*$", vie)
     if m:
         return 9999 if int(m.group(1)) > 1890 else None
@@ -617,7 +737,7 @@ def main():
     parser.add_argument("--sortie", default="ios/ARTEON.swiftpm/Musee/collections")
     parser.add_argument("--cache", default="target/collections-cache")
     parser.add_argument("--total", type=int, default=50000, help="le nombre d'œuvres voulu")
-    parser.add_argument("--musees", default=",".join(PARTS), help="chicago,cleveland,met,washington")
+    parser.add_argument("--musees", default=",".join(PARTS), help="chicago,cleveland,met,washington,smithsonian")
     parser.add_argument("--fils", type=int, default=24, help="téléchargements en parallèle")
     parser.add_argument("--sans-grandes", action="store_true",
                         help="ne pas écrire les paquets d'images en grand (le site n'en a pas besoin)")
