@@ -165,6 +165,10 @@ def en_webp(chemins):
         shutil.copyfile(garde, cible)
 
 
+# Les lignes de liste-debut.json : trois paquets de toutAfficher (commun.js), plus d'un écran.
+DEBUT = 1200
+
+
 def main():
     if len(sys.argv) != 4:
         sys.exit(__doc__)
@@ -237,6 +241,9 @@ def main():
     (sortie / "donnees" / "version.json").write_text(json.dumps({"v": f"{int(time.time()):x}"}), encoding="utf-8")
     (sortie / "donnees" / "index.json").write_text(json.dumps(index, **compact), encoding="utf-8")
     (sortie / "donnees" / "liste.json").write_text(json.dumps(liste, **compact), encoding="utf-8")
+    # Le début de la liste (les premières œuvres de la page « Toutes les œuvres ») : la page
+    # s'affiche avec lui, et liste.json (3,6 Mo compressés) arrive pendant qu'on regarde.
+    (sortie / "donnees" / "liste-debut.json").write_text(json.dumps(liste[:DEBUT], **compact), encoding="utf-8")
     # Les artistes des collections, en petit (quelques centaines de Ko au lieu des 3,6 Mo
     # compressés de liste.json) : la liste de l'Explorer s'affiche avec, et liste.json n'arrive
     # qu'ensuite, pour la page d'un artiste. [nom, nombre d'œuvres, identifiant et vignette

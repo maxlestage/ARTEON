@@ -70,16 +70,37 @@ const T = 0, A = 1, D = 2, Y = 3, C = 4, K = 5;
 
 async function charger() {
   racine.innerHTML = `<p class="monde-chargement">${t("Ouverture des collections…", "Opening the collections…", "Abriendo las colecciones…")}</p>`;
-  const [index, liste] = await Promise.all([
-    jsonGarde(lien("monde/donnees/index.json")),
-    jsonGarde(lien("monde/donnees/liste.json")),
-  ]);
+  // La liste complète (3,6 Mo compressés) et son début (liste-debut.json, quelques dizaines de
+  // Ko) : la page « Toutes les œuvres » s'affiche avec le début, et la suite s'ajoute quand la
+  // liste complète est là. Une recherche, un filtre ou une fiche l'attendent. La deuxième
+  // visite la trouve dans la mémoire du navigateur (memoire.js).
+  const complete = jsonGarde(lien("monde/donnees/liste.json"));
+  const index = await jsonGarde(lien("monde/donnees/index.json"));
   etat.index = index;
-  etat.liste = liste;
   etat.ids = index.ids;
   etat.position = new Map(index.ids.map((id, i) => [id, i]));
+  const debut = route().type ? null : await Promise.race([
+    complete.then(() => null),
+    jsonGarde(lien("monde/donnees/liste-debut.json")).catch(() => null),
+  ]);
   window.addEventListener("hashchange", afficher);
-  afficher();
+  if (debut?.length) {
+    etat.liste = debut;
+    etat.partielle = true;
+    afficher();
+  }
+  etat.liste = await complete;
+  etat.plies = null;
+  const avant = debut?.length || 0;
+  etat.partielle = false;
+  const grille = document.getElementById("monde-grille");
+  // Toujours sur « Toutes les œuvres » : la suite s'ajoute sous ce qui est affiché.
+  if (avant && !route().type && grille) {
+    etat.vues = [...etat.liste.keys()];
+    toutAfficher(grille, etat.vues.slice(avant), carte);
+  } else {
+    afficher();
+  }
 }
 
 function filtrer(route) {
@@ -106,6 +127,12 @@ function route() {
 
 function afficher() {
   const r = route();
+  // Une recherche, un filtre ou une fiche pendant que la liste complète arrive : elle les
+  // affichera (charger).
+  if (etat.partielle && r.type) {
+    racine.innerHTML = `<p class="monde-chargement">${t("Ouverture de toutes les œuvres…", "Opening all the works…", "Abriendo todas las obras…")}</p>`;
+    return;
+  }
   if (r.type === "oeuvre") return fiche(r.valeur);
   // Les œuvres liées à une exposition : chargées à la première demande.
   if (r.type === "exposition" && !etat.expositions) {
@@ -152,14 +179,15 @@ function afficher() {
       <button id="monde-hasard" type="button">🎲 ${t("Au hasard", "Surprise me", "Al azar")}</button>
       ${r.type ? `<a class="monde-lien" href="#/">${t("Tout voir", "See all", "Ver todo")}</a>` : ""}
     </div>
-    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${oeuvresN(vues.length)}${r.type === "exposition"
+    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${oeuvresN(etat.partielle ? ix.total : vues.length)}${r.type === "exposition"
       ? ` ${t("liées dans les collections du monde, de la plus ancienne à la plus récente", "related in the world collections, from oldest to most recent", "relacionadas en las colecciones del mundo, de la más antigua a la más reciente")} · <a href="${lienPage(`${encodeURIComponent(r.valeur)}/`)}">← ${t("la visite de l'exposition", "visit the exhibition", "la visita de la exposición")}</a>` : ""}</p>
     <div class="monde-grille" id="monde-grille"></div>`;
   let attente;
   const q = document.getElementById("monde-q");
   q.addEventListener("input", () => {
     clearTimeout(attente);
-    attente = setTimeout(() => { location.hash = q.value.trim() ? `#/recherche/${encodeURIComponent(q.value.trim())}` : "#/"; }, 350);
+    // Pas si l'on a quitté la page entre-temps (une œuvre touchée aussitôt après avoir tapé).
+    attente = setTimeout(() => { if (q.isConnected) location.hash = q.value.trim() ? `#/recherche/${encodeURIComponent(q.value.trim())}` : "#/"; }, 350);
   });
   if (r.type === "recherche") { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
   document.getElementById("monde-cat").addEventListener("change", (e) => { location.hash = e.target.value ? `#/categorie/${encodeURIComponent(e.target.value)}` : "#/"; });
