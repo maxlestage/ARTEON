@@ -244,6 +244,11 @@ def main():
     # Le début de la liste (les premières œuvres de la page « Toutes les œuvres ») : la page
     # s'affiche avec lui, et liste.json (3,6 Mo compressés) arrive pendant qu'on regarde.
     (sortie / "donnees" / "liste-debut.json").write_text(json.dumps(liste[:DEBUT], **compact), encoding="utf-8")
+    # L'en-tête de l'index, sans les 166 000 identifiants (656 Ko compressés) : seulement ceux du
+    # début de la liste. La page « Toutes les œuvres » s'affiche avec lui et liste-debut.json ;
+    # index.json complet (l'application iOS le lit aussi) arrive avec liste.json.
+    entete = {k: v for k, v in index.items() if k != "ids"} | {"idsDebut": index["ids"][:DEBUT]}
+    (sortie / "donnees" / "entete.json").write_text(json.dumps(entete, **compact), encoding="utf-8")
     # Les artistes des collections, en petit (quelques centaines de Ko au lieu des 3,6 Mo
     # compressés de liste.json) : la liste de l'Explorer s'affiche avec, et liste.json n'arrive
     # qu'ensuite, pour la page d'un artiste. [nom, nombre d'œuvres, identifiant et vignette
