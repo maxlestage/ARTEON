@@ -75,20 +75,28 @@ async function charger() {
   // liste complète est là. Une recherche, un filtre ou une fiche l'attendent. La deuxième
   // visite la trouve dans la mémoire du navigateur (memoire.js).
   const complete = jsonGarde(lien("monde/donnees/liste.json"));
-  const index = await jsonGarde(lien("monde/donnees/index.json"));
-  etat.index = index;
-  etat.ids = index.ids;
-  etat.position = new Map(index.ids.map((id, i) => [id, i]));
-  const debut = route().type ? null : await Promise.race([
+  // L'index complet porte les identifiants des 166 000 œuvres (656 Ko compressés) : la page
+  // « Toutes les œuvres » s'ouvre avec son en-tête (quelques Ko, les identifiants du début
+  // seulement) et le début de la liste ; l'index complet arrive avec la liste.
+  const indexComplet = jsonGarde(lien("monde/donnees/index.json"));
+  const prendreIndex = (index) => {
+    etat.index = index;
+    etat.ids = index.ids;
+    etat.position = new Map(index.ids.map((id, i) => [id, i]));
+  };
+  const entete = route().type ? null : await jsonGarde(lien("monde/donnees/entete.json")).catch(() => null);
+  const debut = entete ? await Promise.race([
     complete.then(() => null),
     jsonGarde(lien("monde/donnees/liste-debut.json")).catch(() => null),
-  ]);
+  ]) : null;
   window.addEventListener("hashchange", afficher);
-  if (debut?.length) {
+  if (debut?.length && entete.idsDebut?.length >= debut.length) {
+    prendreIndex({ ...entete, ids: entete.idsDebut });
     etat.liste = debut;
     etat.partielle = true;
     afficher();
   }
+  prendreIndex(await indexComplet);
   etat.liste = await complete;
   etat.plies = null;
   const avant = debut?.length || 0;
