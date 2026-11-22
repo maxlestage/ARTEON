@@ -84,11 +84,12 @@ async function charger() {
     etat.ids = index.ids;
     etat.position = new Map(index.ids.map((id, i) => [id, i]));
   };
-  const entete = route().type ? null : await jsonGarde(lien("monde/donnees/entete.json")).catch(() => null);
-  const debut = entete ? await Promise.race([
-    complete.then(() => null),
-    jsonGarde(lien("monde/donnees/liste-debut.json")).catch(() => null),
-  ]) : null;
+  // L'en-tête et le début de la liste, demandés ensemble.
+  const accueil = !route().type;
+  const enteteP = accueil ? jsonGarde(lien("monde/donnees/entete.json")).catch(() => null) : null;
+  const debutP = accueil ? jsonGarde(lien("monde/donnees/liste-debut.json")).catch(() => null) : null;
+  const entete = await enteteP;
+  const debut = entete ? await Promise.race([complete.then(() => null), debutP]) : null;
   window.addEventListener("hashchange", afficher);
   if (debut?.length && entete.idsDebut?.length >= debut.length) {
     prendreIndex({ ...entete, ids: entete.idsDebut });
