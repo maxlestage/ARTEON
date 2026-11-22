@@ -15,6 +15,7 @@
                         date, année, catégorie, musée)
   donnees/liste-c.json  index.json et liste.json ensemble, par colonnes : ce que lisent les
                         pages du site (un quart de moins à télécharger)
+  donnees/par-artiste/NNN.json  les œuvres de chaque artiste (pour sa page de l'Explorer)
   donnees/fiches-NNN.json  le détail, par 1 000 œuvres (technique, texte, liens…)
   v/<œuvre>.webp        les vignettes (320 px, WebP) ; l'image en grand vient du musée
 
@@ -181,6 +182,49 @@ GABARITS = {
 }
 
 
+def raccourcir(vu, identifiant, cle, gabarit):
+    """La vignette du musée sans son gabarit et l'identifiant sans le nom du musée (ou tels
+    quels, l'identifiant précédé de « = », quand ils ne suivent pas la règle)."""
+    court = vu or 0
+    avant, _, apres = gabarit.partition("{}")
+    if vu and avant and vu.startswith(avant):
+        milieu = vu[len(avant):].split("/")[0] if "{}" in apres else vu[len(avant):len(vu) - len(apres)]
+        if milieu and not milieu.startswith("http") and gabarit.replace("{}", milieu) == vu:
+            court = milieu
+    prefixe = cle + "-"
+    suite = identifiant[len(prefixe):]
+    return court, (suite if identifiant.startswith(prefixe) and not suite.startswith("=") else "=" + identifiant)
+
+
+# Les œuvres de chaque artiste, réparties en tant de fichiers (donnees/par-artiste/NNN.json) :
+# le même nombre et le même calcul que dans outils/monde/explorer.js (paquetDe).
+PAQUETS = 512
+
+
+def paquet_de(cle):
+    h = 0
+    code = cle.encode("utf-16-le")
+    for n in range(0, len(code), 2):
+        h = (h * 31 + code[n] + 256 * code[n + 1]) % 65521
+    return h % PAQUETS
+
+
+def par_artiste(liste, index):
+    """Les œuvres des collections rangées par artiste (sa clé, cle_nom), en PAQUETS fichiers de
+    quelques Ko : la page d'un artiste de l'Explorer lit le sien au lieu de toute la liste
+    (5 Mo compressés). Une œuvre : [musée, identifiant, titre, date, année, vignette]."""
+    cles = [m["cle"] for m in index["musees"]]
+    gabarits = [GABARITS.get(c, "") for c in cles]
+    paquets = [{} for _ in range(PAQUETS)]
+    for l, i in zip(liste, index["ids"]):
+        if not l[1] or l[1] == "Artiste inconnu":
+            continue
+        cle = cle_nom(l[1])
+        court, suite = raccourcir(l[7] if len(l) > 7 else "", i, cles[l[5]], gabarits[l[5]])
+        paquets[paquet_de(cle)].setdefault(cle, []).append([l[5], suite, l[0], l[2], l[3]] + ([court] if court else []))
+    return [{"musees": cles, "gabarits": gabarits, "artistes": p} for p in paquets]
+
+
 def en_colonnes(liste, index):
     """liste.json et index.json en un seul fichier, par colonnes (liste-c.json) : un quart de
     moins à télécharger (les valeurs qui se ressemblent se suivent, les artistes et les
@@ -195,17 +239,9 @@ def en_colonnes(liste, index):
         k = l[5]
         artistes.setdefault(l[1], len(artistes))
         categories.setdefault(l[4], len(categories))
-        vu, court = (l[7] if len(l) > 7 else ""), 0
-        if vu:
-            court = vu
-            avant, _, apres = gabarits[k].partition("{}")
-            if avant and vu.startswith(avant):
-                milieu = vu[len(avant):].split("/")[0] if "{}" in apres else vu[len(avant):len(vu) - len(apres)]
-                if milieu and not milieu.startswith("http") and gabarits[k].replace("{}", milieu) == vu:
-                    court = milieu
+        court, suite = raccourcir(l[7] if len(l) > 7 else "", i, cles[k], gabarits[k])
         vignettes.append(court)
-        prefixe = cles[k] + "-"
-        identifiants.append(i[len(prefixe):] if i.startswith(prefixe) and not i[len(prefixe):].startswith("=") else "=" + i)
+        identifiants.append(suite)
     return {k: v for k, v in index.items() if k != "ids"} | {
         "gabarits": gabarits,
         "artistes": list(artistes),
@@ -313,6 +349,10 @@ def main():
     if en_lignes(colonnes) != (liste, index["ids"]):
         sys.exit("liste-c.json ne redonne pas liste.json")
     (sortie / "donnees" / "liste-c.json").write_text(json.dumps(colonnes, **compact), encoding="utf-8")
+    # Les œuvres de chaque artiste, pour sa page de l'Explorer.
+    (sortie / "donnees" / "par-artiste").mkdir()
+    for n, paquet in enumerate(par_artiste(liste, index)):
+        (sortie / "donnees" / "par-artiste" / f"{n:03d}.json").write_text(json.dumps(paquet, **compact), encoding="utf-8")
     # Le début de la liste (les premières œuvres de la page « Toutes les œuvres ») : la page
     # s'affiche avec lui, et liste.json (3,6 Mo compressés) arrive pendant qu'on regarde.
     (sortie / "donnees" / "liste-debut.json").write_text(json.dumps(liste[:DEBUT], **compact), encoding="utf-8")
