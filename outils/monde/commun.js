@@ -186,9 +186,12 @@ export function choixVue() {
 function reparerImages() {
   document.addEventListener("error", (e) => {
     const img = e.target;
-    if (!(img instanceof HTMLImageElement) || !/wikimedia\.org\//.test(img.src)) return;
+    if (!(img instanceof HTMLImageElement)) return;
+    // Une image refusée ailleurs (le pare-feu d'un musée, une image retirée) : la carte montre
+    // son titre plutôt qu'une image cassée.
+    if (!/wikimedia\.org\//.test(img.src)) { img.closest(".monde-carte, .monde-sujet")?.classList.add("sans-image"); return; }
     const essais = Number(img.dataset.essais || 0);
-    if (essais >= 3) { img.closest(".monde-carte")?.classList.add("sans-image"); return; }
+    if (essais >= 3) { img.closest(".monde-carte, .monde-sujet")?.classList.add("sans-image"); return; }
     img.dataset.essais = String(essais + 1);
     const u = new URL(img.src);
     u.searchParams.set("width", ["250", "500", "250"][essais]);
