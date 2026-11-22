@@ -6,6 +6,7 @@
 import { annee, carteOeuvre, chargerCatalogue, choixVue, echapper, lien, lienPage, nombre, plier, rangSiecle, renseignement, route, rubrique, t, titreSiecle, toutAfficher, toutes } from "./commun.js";
 import { chargerSujets, nomsDesMusees, oeuvresDuSujet, oeuvresEnDirect, sujetsPublies } from "./direct.js";
 import { ouvrirAuClic } from "./visionneuse.js";
+import { chargerCollections } from "./liste.js";
 import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
@@ -76,16 +77,14 @@ function cleNom(nom) {
   return ALIAS[k] ?? k;
 }
 
-// Les œuvres des collections du monde de chaque artiste : liste.json (3,6 Mo compressés), lu
+// Les œuvres des collections du monde de chaque artiste : liste-c.json (5 Mo compressés), lu
 // seulement quand il le faut (la page d'un artiste) ou une fois la liste affichée, sans la
 // retarder. La liste elle-même n'a besoin que de donnees/artistes.json (le nombre d'œuvres et
 // une vignette par artiste) : sur un téléphone en 4G, 12 s d'attente devenaient quelques-unes.
 let mondeCharge, mondeFini = false;
 function chargerMonde() {
-  mondeCharge ??= chargerArtistes().then(({ parCle }) => Promise.all([
-    jsonGarde(lien("monde/donnees/liste.json")).catch(() => []),
-    jsonGarde(lien("monde/donnees/index.json")).catch(() => ({ ids: [] })),
-  ]).then(([liste, index]) => {
+  mondeCharge ??= chargerArtistes().then(({ parCle }) => chargerCollections()
+    .catch(() => ({ liste: [], index: { ids: [] } })).then(({ liste, index }) => {
     for (const a of parCle.values()) a.monde = [];
     liste.forEach((l, i) => {
       const nom = l[1];

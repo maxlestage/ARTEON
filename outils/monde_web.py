@@ -13,6 +13,8 @@
   donnees/index.json    les musées, les catégories, les siècles, les identifiants
   donnees/liste.json    une ligne par œuvre, pour parcourir et chercher (titre, artiste,
                         date, année, catégorie, musée)
+  donnees/liste-c.json  index.json et liste.json ensemble, par colonnes : ce que lisent les
+                        pages du site (un quart de moins à télécharger)
   donnees/fiches-NNN.json  le détail, par 1 000 œuvres (technique, texte, liens…)
   v/<œuvre>.webp        les vignettes (320 px, WebP) ; l'image en grand vient du musée
 
@@ -169,6 +171,71 @@ def en_webp(chemins):
 DEBUT = 1200
 
 
+# Les vignettes des musées (« vu ») : presque toutes suivent le gabarit de leur musée, et
+# seule la partie qui change est écrite dans liste-c.json (« {} » dans le gabarit).
+GABARITS = {
+    "washington": "https://api.nga.gov/iiif/{}/full/!320,320/0/default.jpg",
+    "smithsonian": "https://ids.si.edu/ids/deliveryService?id={}&max=320",
+    "met": "https://commons.wikimedia.org/wiki/Special:FilePath/{}?width=330",
+    "cleveland": "https://openaccess-cdn.clevelandart.org/{}/{}_web.jpg",
+}
+
+
+def en_colonnes(liste, index):
+    """liste.json et index.json en un seul fichier, par colonnes (liste-c.json) : un quart de
+    moins à télécharger (les valeurs qui se ressemblent se suivent, les artistes et les
+    catégories ne sont écrits qu'une fois, les identifiants sans le nom du musée, les
+    vignettes des musées sans leur gabarit). Les pages du site le déplient en lignes
+    (outils/monde/liste.js) ; liste.json et index.json restent pour l'application iOS."""
+    cles = [m["cle"] for m in index["musees"]]
+    gabarits = [GABARITS.get(c, "") for c in cles]
+    artistes, categories = {}, {}  # nom -> rang, dans l'ordre de première apparition
+    vignettes, identifiants = [], []
+    for l, i in zip(liste, index["ids"]):
+        k = l[5]
+        artistes.setdefault(l[1], len(artistes))
+        categories.setdefault(l[4], len(categories))
+        vu, court = (l[7] if len(l) > 7 else ""), 0
+        if vu:
+            court = vu
+            avant, _, apres = gabarits[k].partition("{}")
+            if avant and vu.startswith(avant):
+                milieu = vu[len(avant):].split("/")[0] if "{}" in apres else vu[len(avant):len(vu) - len(apres)]
+                if milieu and not milieu.startswith("http") and gabarits[k].replace("{}", milieu) == vu:
+                    court = milieu
+        vignettes.append(court)
+        prefixe = cles[k] + "-"
+        identifiants.append(i[len(prefixe):] if i.startswith(prefixe) and not i[len(prefixe):].startswith("=") else "=" + i)
+    return {k: v for k, v in index.items() if k != "ids"} | {
+        "gabarits": gabarits,
+        "artistes": list(artistes),
+        "noms": list(categories),
+        "t": [l[0] for l in liste],
+        "a": [artistes[l[1]] for l in liste],
+        "d": [l[2] for l in liste],
+        "y": [l[3] for l in liste],
+        "c": [categories[l[4]] for l in liste],
+        "k": [l[5] for l in liste],
+        "r": [l[6] for l in liste],
+        "v": vignettes,
+        "i": identifiants,
+    }
+
+
+def en_lignes(c):
+    """L'inverse d'en_colonnes (le même calcul que outils/monde/liste.js) : (liste, ids)."""
+    cles = [m["cle"] for m in c["musees"]]
+    liste, ids = [], []
+    for n in range(len(c["t"])):
+        k, v, i = c["k"][n], c["v"][n], c["i"][n]
+        ligne = [c["t"][n], c["artistes"][c["a"][n]], c["d"][n], c["y"][n], c["noms"][c["c"][n]], k, c["r"][n]]
+        if v:
+            ligne.append(v if v.startswith("http") else c["gabarits"][k].replace("{}", v))
+        liste.append(ligne)
+        ids.append(i[1:] if i.startswith("=") else f"{cles[k]}-{i}")
+    return liste, ids
+
+
 def main():
     if len(sys.argv) != 4:
         sys.exit(__doc__)
@@ -241,6 +308,11 @@ def main():
     (sortie / "donnees" / "version.json").write_text(json.dumps({"v": f"{int(time.time()):x}"}), encoding="utf-8")
     (sortie / "donnees" / "index.json").write_text(json.dumps(index, **compact), encoding="utf-8")
     (sortie / "donnees" / "liste.json").write_text(json.dumps(liste, **compact), encoding="utf-8")
+    # La même chose pour les pages du site, en un fichier et un quart plus léger.
+    colonnes = en_colonnes(liste, index)
+    if en_lignes(colonnes) != (liste, index["ids"]):
+        sys.exit("liste-c.json ne redonne pas liste.json")
+    (sortie / "donnees" / "liste-c.json").write_text(json.dumps(colonnes, **compact), encoding="utf-8")
     # Le début de la liste (les premières œuvres de la page « Toutes les œuvres ») : la page
     # s'affiche avec lui, et liste.json (3,6 Mo compressés) arrive pendant qu'on regarde.
     (sortie / "donnees" / "liste-debut.json").write_text(json.dumps(liste[:DEBUT], **compact), encoding="utf-8")
