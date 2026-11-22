@@ -136,7 +136,7 @@ struct StatsPanel: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
 
     var body: some View {
-        let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: .leading), count: sizeClass == .regular ? 4 : 2)
+        let columns = Array(repeating: GridItem(.flexible(), spacing: 16, alignment: .topLeading), count: sizeClass == .regular ? 4 : 2)
         LazyVGrid(columns: columns, alignment: .leading, spacing: 18) {
             ForEach(items.indices, id: \.self) { i in
                 let (value, label, color) = items[i]
@@ -147,13 +147,17 @@ struct StatsPanel: View {
                         .contentTransition(.numericText())
                         .minimumScaleFactor(0.7)
                         .lineLimit(1)
-                    HStack(spacing: 6) {
+                    // Un libellé long (« musées reproduits ») passe à la ligne au lieu de
+                    // déborder sur la colonne voisine.
+                    HStack(alignment: .firstTextBaseline, spacing: 6) {
                         Circle().fill(color).frame(width: 7, height: 7)
                         Text(label)
                             .font(.caption.weight(.semibold))
                             .textCase(.uppercase)
-                            .tracking(1.2)
+                            .tracking(1)
                             .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
                 .accessibilityElement(children: .combine)
