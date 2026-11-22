@@ -16,6 +16,7 @@
   donnees/liste-c.json  index.json et liste.json ensemble, par colonnes : ce que lisent les
                         pages du site (un quart de moins à télécharger)
   donnees/par-artiste/NNN.json  les œuvres de chaque artiste (pour sa page de l'Explorer)
+  donnees/debuts/<vue>.json     le début de chaque catégorie, musée et siècle (ouverts directement)
   donnees/par-oeuvre/NNN.json   chaque œuvre, avec son rang (pour sa fiche ouverte directement)
   donnees/fiches-NNN.json  le détail, par 1 000 œuvres (technique, texte, liens…)
   v/<œuvre>.webp        les vignettes (320 px, WebP) ; l'image en grand vient du musée
@@ -226,6 +227,28 @@ def par_artiste(liste, index):
     return [{"musees": cles, "gabarits": gabarits, "artistes": p} for p in paquets]
 
 
+# Les lignes du début d'une catégorie, d'un musée ou d'un siècle (donnees/debuts/) : un paquet
+# de toutAfficher (commun.js).
+DEBUT_VUE = 400
+
+
+def debuts_des_vues(liste, index):
+    """Le début de chaque catégorie, de chaque musée et de chaque siècle (les mêmes filtres que
+    outils/monde/app.js, filtrer) : la vue, ouverte directement, s'affiche avec lui au lieu
+    d'attendre toute la liste (5 Mo compressés). { nom du fichier : { n: le nombre d'œuvres de
+    la vue, ids, l: les premières lignes } } ; le nom porte la valeur en UTF-8, en hexadécimal."""
+    vues = {}
+    for n, l in enumerate(liste):
+        cles = [("categorie", l[4]), ("musee", index["musees"][l[5]]["cle"])]
+        if l[3] is not None:
+            cles.append(("siecle", str(rang(l[3]))))
+        for genre, valeur in cles:
+            vues.setdefault(f"{genre}-{valeur.encode('utf-8').hex()}", []).append(n)
+    return {nom: {"n": len(rangs), "ids": [index["ids"][n] for n in rangs[:DEBUT_VUE]],
+                  "l": [liste[n] for n in rangs[:DEBUT_VUE]]}
+            for nom, rangs in vues.items()}
+
+
 def par_oeuvre(liste, index):
     """Chaque œuvre des collections dans un des PAQUETS fichiers de quelques Ko, d'après son
     identifiant : sa fiche, ouverte directement, lit le sien au lieu de toute la liste (5 Mo
@@ -385,6 +408,10 @@ def main():
     (sortie / "donnees" / "par-oeuvre").mkdir()
     for n, paquet in enumerate(seules):
         (sortie / "donnees" / "par-oeuvre" / f"{n:03d}.json").write_text(json.dumps(paquet, **compact), encoding="utf-8")
+    # Le début de chaque catégorie, de chaque musée et de chaque siècle.
+    (sortie / "donnees" / "debuts").mkdir()
+    for nom, debut in debuts_des_vues(liste, index).items():
+        (sortie / "donnees" / "debuts" / f"{nom}.json").write_text(json.dumps(debut, **compact), encoding="utf-8")
     # Le début de la liste (les premières œuvres de la page « Toutes les œuvres ») : la page
     # s'affiche avec lui, et liste.json (3,6 Mo compressés) arrive pendant qu'on regarde.
     (sortie / "donnees" / "liste-debut.json").write_text(json.dumps(liste[:DEBUT], **compact), encoding="utf-8")
