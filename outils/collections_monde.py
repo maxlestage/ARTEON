@@ -327,34 +327,51 @@ def cleveland(combien, alea):
     return fiches
 
 
-def met(combien, alea, deja=frozenset()):
+def identifiants_met(cache):
+    """Les identifiants des objets du Met avec une image, par groupe (chefs-d'œuvre,
+    peintures, puis chaque département) : 500 par page, quatre recherches à la fois, et
+    gardés une semaine dans le cache. Avant, cent par page l'une après l'autre prenaient
+    les quatre minutes d'une construction rapide : il n'en restait rien pour les fiches."""
+    fichier = cache / "met-identifiants.json" if cache else None
+    if fichier and fichier.exists() and time.time() - fichier.stat().st_mtime < 7 * 86400:
+        try:
+            return json.loads(fichier.read_text(encoding="utf-8"))
+        except ValueError:
+            pass
     recherche = "https://collectionapi.metmuseum.org/public/collection/v1.1/search"
-    identifiants, vus = [], set()
 
-    def pages(filtres, maximum):
+    def pages(filtres, maximum=10000):
         trouves = []
-        for depart in range(0, min(maximum, 10000), 100):
-            if trop_tard():
-                break
+        for depart in range(0, maximum, 500):
             try:
                 lot = json_de(recherche + "?" + urllib.parse.urlencode(
-                    {"q": "*", "hasImages": "true", **filtres, "limit": "100", "offset": str(depart)}))
+                    {"q": "*", "hasImages": "true", **filtres, "limit": "500", "offset": str(depart)}))
             except Exception:
-                break
+                return trouves, False
             ids = lot.get("objectIDs") or []
             trouves += ids
-            if len(ids) < 100:
+            if len(ids) < 500:
                 break
-            time.sleep(0.4)
-        return trouves
+            time.sleep(0.2)
+        return trouves, True
 
+    filtres = [{"isHighlight": "true"}, {"departmentId": "11"}] + [
+        {"departmentId": str(d)} for d in (1, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19)]
+    with concurrent.futures.ThreadPoolExecutor(4) as pool:
+        resultats = list(pool.map(pages, filtres))
+    groupes = [ids for ids, _ in resultats]
+    # Gardés seulement si toutes les recherches ont abouti (sinon, redemandés la fois suivante).
+    if fichier and all(ok for _, ok in resultats):
+        fichier.write_text(json.dumps(groupes), encoding="utf-8")
+    return groupes
+
+
+def met(combien, alea, deja=frozenset(), cache=None):
+    identifiants, vus = [], set()
     # Les chefs-d'œuvre signalés, les peintures, puis tous les départements.
-    groupes = [pages({"isHighlight": "true"}, 10000), pages({"departmentId": "11"}, 10000)]
-    departements = [1, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19]
-    for d in departements:
-        ids = pages({"departmentId": str(d)}, 3000)
+    groupes = identifiants_met(cache)
+    for ids in groupes[2:]:
         alea.shuffle(ids)
-        groupes.append(ids)
     for groupe in groupes[:2]:
         for i in groupe:
             if i not in vus:
@@ -374,7 +391,7 @@ def met(combien, alea, deja=frozenset()):
     def objet(i):
         if trop_tard():
             return None
-        time.sleep(0.12)  # le Met : au plus quelques dizaines de requêtes par seconde
+        time.sleep(0.12)  # le Met : au plus 80 requêtes par seconde (8 fils : une quinzaine)
         try:
             o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", essais=3)
         except Exception:
@@ -397,7 +414,7 @@ def met(combien, alea, deja=frozenset()):
     # Ceux déjà dans le cache ne sont pas redemandés : chaque moisson en ajoute d'autres.
     identifiants = [i for i in identifiants if f"met-{i}" not in deja]
     fiches = []
-    with concurrent.futures.ThreadPoolExecutor(4) as pool:
+    with concurrent.futures.ThreadPoolExecutor(8) as pool:
         for depart in range(0, len(identifiants), 400):
             if len(fiches) >= combien * 1.2 or trop_tard():
                 break
@@ -720,7 +737,7 @@ def moissonner(cle, combien, cache, alea):
         if cle == "washington":
             nouvelles = source(combien, alea, cache)
         elif cle == "met":
-            nouvelles = source(max(1, combien - len(fiches)), alea, frozenset(f["i"] for f in fiches))
+            nouvelles = source(max(1, combien - len(fiches)), alea, frozenset(f["i"] for f in fiches), cache)
         else:
             nouvelles = source(combien, alea)
         # Les fiches d'avant et les nouvelles, réunies (une moisson interrompue continue).
