@@ -25,8 +25,11 @@ struct HomeView: View {
     /// Tous les artistes : ceux des expositions et ceux des collections du monde (le même
     /// nombre que sur le site).
     private var artistTotal: Int {
-        let museum = Set((store.index?.artists ?? []).filter { !$0.works.isEmpty }.map { ArtistKey.of($0.name) })
-        return museum.union(store.collections?.artistKeys ?? []).count
+        // Les deux ensembles de clés sont calculés une fois, avec les index ; on compte sans
+        // recopier les dizaines de milliers de clés des collections à chaque affichage.
+        let museum = store.index?.artistKeys ?? []
+        let world = store.collections?.artistKeys ?? []
+        return world.count + museum.filter { !world.contains($0) }.count
     }
 
     var body: some View {

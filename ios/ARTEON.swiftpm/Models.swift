@@ -9,7 +9,15 @@ let catalogueVersion = 1
 
 struct Catalogue: Decodable, Sendable {
     var version: Int
-    var exhibitions: [Exhibition]
+    var exhibitions: [Exhibition] {
+        // Une exposition changée : les places et les textes de recherche sont à refaire.
+        didSet { lookup = Lookup() }
+    }
+    /// Les places des expositions et des œuvres, et le texte de recherche de chaque œuvre :
+    /// calculés une fois, à la première demande (`work(_:)` est appelée pour chaque œuvre
+    /// d'une chronologie, d'un thème, des favoris… à chaque affichage), et partagés par les
+    /// copies du catalogue.
+    private var lookup = Lookup()
 
     enum CodingKeys: String, CodingKey {
         case version, exhibitions
@@ -37,15 +45,21 @@ struct Catalogue: Decodable, Sendable {
     }
 
     func exhibition(_ slug: String) -> Exhibition? {
-        exhibitions.first { $0.slug == slug }
+        lookup.places(exhibitions).exhibitions[slug].map { exhibitions[$0] }
     }
 
     /// Une œuvre par sa clé « exposition/œuvre ».
     func work(_ key: WorkKey) -> (Exhibition, Work)? {
-        guard let ex = exhibition(key.exhibition),
-              let work = ex.works.first(where: { $0.slug == key.work })
-        else { return nil }
-        return (ex, work)
+        guard let place = lookup.places(exhibitions).works[key] else { return nil }
+        let ex = exhibitions[place.0]
+        return (ex, ex.works[place.1])
+    }
+
+    /// Prépare les places et les textes de recherche (en arrière-plan, avec les index), pour
+    /// que la première recherche ou la première chronologie n'attende pas.
+    func prepareLookup() {
+        _ = lookup.places(exhibitions)
+        _ = lookup.searchTexts(exhibitions)
     }
 
     /// Toutes les œuvres, dans l'ordre du musée.
@@ -75,19 +89,30 @@ struct Catalogue: Decodable, Sendable {
         guard !words.isEmpty else { return [] }
         var strong: [(Exhibition, Work)] = []
         var weak: [(Exhibition, Work)] = []
-        for (ex, w) in allWorks {
-            let main = folded("\(w.title) \(w.artist)")
-            let all = main + " " + folded(
-                "\(w.technique) \(w.collection) \(w.year) \(w.notice.themes.joined(separator: " ")) \(ex.name) \(ex.movement)"
-            )
-            guard words.allSatisfy({ all.contains($0) }) else { continue }
-            if words.allSatisfy({ main.contains($0) }) {
-                strong.append((ex, w))
-            } else {
-                weak.append((ex, w))
+        // Les textes pliés une fois pour toutes, pas à chaque lettre tapée.
+        let texts = lookup.searchTexts(exhibitions)
+        for (i, ex) in exhibitions.enumerated() {
+            for (j, w) in ex.works.enumerated() {
+                let (main, all) = texts[i][j]
+                guard words.allSatisfy({ all.contains($0) }) else { continue }
+                if words.allSatisfy({ main.contains($0) }) {
+                    strong.append((ex, w))
+                } else {
+                    weak.append((ex, w))
+                }
             }
         }
         return strong + weak
+    }
+
+    /// Le texte de recherche d'une œuvre : son titre et son artiste (`main`), puis tout le
+    /// reste (`all`), sans accents ni majuscules.
+    fileprivate static func searchText(_ w: Work, in ex: Exhibition) -> (main: String, all: String) {
+        let main = folded("\(w.title) \(w.artist)")
+        let all = main + " " + folded(
+            "\(w.technique) \(w.collection) \(w.year) \(w.notice.themes.joined(separator: " ")) \(ex.name) \(ex.movement)"
+        )
+        return (main, all)
     }
 
     /// Les expositions dont le titre, le style ou l'artiste contient la recherche.
@@ -97,6 +122,47 @@ struct Catalogue: Decodable, Sendable {
         return exhibitions.filter {
             folded("\($0.title) \($0.shortName) \($0.movement) \($0.artist) \($0.kicker)").contains(q)
         }
+    }
+}
+
+/// Les index paresseux d'un catalogue (voir `Catalogue.lookup`). Une classe, pour être
+/// partagée par les copies du catalogue ; un verrou, car le catalogue passe d'une tâche à
+/// l'autre (les index se calculent en arrière-plan, l'affichage les lit sur le fil principal).
+private final class Lookup: @unchecked Sendable {
+    struct Places {
+        /// La place de chaque exposition (la première, si un nom revenait).
+        var exhibitions: [String: Int] = [:]
+        /// La place de chaque œuvre : son exposition, puis son rang dans l'exposition.
+        var works: [WorkKey: (Int, Int)] = [:]
+    }
+
+    private let lock = NSLock()
+    private var places: Places?
+    private var texts: [[(main: String, all: String)]]?
+
+    func places(_ exhibitions: [Exhibition]) -> Places {
+        lock.lock()
+        defer { lock.unlock() }
+        if let places { return places }
+        var built = Places()
+        for (i, ex) in exhibitions.enumerated() where built.exhibitions[ex.slug] == nil {
+            built.exhibitions[ex.slug] = i
+            for (j, w) in ex.works.enumerated() {
+                let key = WorkKey(exhibition: ex.slug, work: w.slug)
+                if built.works[key] == nil { built.works[key] = (i, j) }
+            }
+        }
+        places = built
+        return built
+    }
+
+    func searchTexts(_ exhibitions: [Exhibition]) -> [[(main: String, all: String)]] {
+        lock.lock()
+        defer { lock.unlock() }
+        if let texts { return texts }
+        let built = exhibitions.map { ex in ex.works.map { Catalogue.searchText($0, in: ex) } }
+        texts = built
+        return built
     }
 }
 
@@ -118,13 +184,23 @@ enum CatalogueError: LocalizedError, Equatable {
     }
 }
 
+/// La locale du pliage, créée une fois (et non à chaque appel : `folded` sert des dizaines
+/// de milliers de fois pour les index des collections et de l'annuaire).
+private let foldingLocale = Locale(identifier: "fr_FR")
+
 /// Le texte sans accents, en minuscules, pour chercher (« Œuvre » → « oeuvre »).
 func folded(_ s: String) -> String {
-    s.replacingOccurrences(of: "œ", with: "oe")
+    // Le cas le plus courant, un texte tout en ASCII : ni accents ni ligatures, seules les
+    // majuscules changent. Le même résultat, sans le pliage de Foundation.
+    if s.utf8.allSatisfy({ $0 < 0x80 }) { return s.lowercased() }
+    // Les ligatures ne se cherchent (quatre passages sur le texte) que s'il y en a une.
+    let ligature = s.unicodeScalars.contains { $0 == "œ" || $0 == "Œ" || $0 == "æ" || $0 == "Æ" }
+    let plain = !ligature ? s : s.replacingOccurrences(of: "œ", with: "oe")
         .replacingOccurrences(of: "Œ", with: "oe")
         .replacingOccurrences(of: "æ", with: "ae")
         .replacingOccurrences(of: "Æ", with: "ae")
-        .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: Locale(identifier: "fr_FR"))
+    return plain
+        .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: foldingLocale)
         .lowercased()
 }
 

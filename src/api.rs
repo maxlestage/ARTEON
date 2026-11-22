@@ -165,7 +165,7 @@ fn meme_artiste(demande: &str, trouve: &str) -> bool {
     // « Monet » est « Claude Monet », mais « Rembrandt » n'est pas « Rembrandt Peale ».
     let mots: Vec<&str> = k.split(' ').filter(|m| m.len() > 2).collect();
     let dans: HashSet<&str> = t.split(' ').collect();
-    !mots.is_empty() && mots.iter().all(|m| dans.contains(m)) && k.split(' ').last() == t.split(' ').last()
+    !mots.is_empty() && mots.iter().all(|m| dans.contains(m)) && k.rsplit(' ').next() == t.rsplit(' ').next()
 }
 
 // ─── Les dates ──────────────────────────────────────────────────────────────
@@ -224,11 +224,17 @@ fn vie(texte: &str) -> (Option<i64>, Option<i64>) {
 fn client() -> &'static ureq::Agent {
     static CLIENT: OnceLock<ureq::Agent> = OnceLock::new();
     CLIENT.get_or_init(|| {
-        ureq::AgentBuilder::new()
-            .try_proxy_from_env(true)
-            .timeout(Duration::from_secs(20))
+        ureq::Agent::config_builder()
+            .proxy(ureq::Proxy::try_from_env())
+            .timeout_global(Some(Duration::from_secs(20)))
             .user_agent(AGENT)
+            .tls_config(
+                ureq::tls::TlsConfig::builder()
+                    .root_certs(ureq::tls::RootCerts::PlatformVerifier)
+                    .build(),
+            )
             .build()
+            .into()
     })
 }
 
@@ -241,22 +247,31 @@ fn lire_en(url: &str, entetes: &[(&str, &str)], secondes: u64) -> Option<Value> 
 ///
 /// Un musée qui demande de ralentir (429, 503) est réessayé un peu plus tard, `essais` fois.
 fn demander(url: &str, entetes: &[(&str, &str)], secondes: u64, essais: u64) -> Result<Value, Option<u16>> {
-    let mut requete = client().get(url).timeout(Duration::from_secs(secondes));
-    for (k, v) in entetes {
-        requete = requete.set(k, v);
-    }
+    let requete = || {
+        let mut r = client()
+            .get(url)
+            .config()
+            .timeout_global(Some(Duration::from_secs(secondes)))
+            .build();
+        for (k, v) in entetes {
+            r = r.header(*k, *v);
+        }
+        r
+    };
     let mut essai = 0;
     let texte = loop {
-        match requete.clone().call() {
-            Ok(r) => break r.into_string().map_err(|_| None)?,
-            Err(ureq::Error::Status(code, _)) if (code == 429 || code == 503) && essai < essais => {
+        match requete().call() {
+            // Les plus grosses réponses (des milliers d'œuvres d'un musée) peuvent dépasser les
+            // 10 Mo que ureq lit par défaut.
+            Ok(r) => break r.into_body().with_config().limit(64 << 20).read_to_string().map_err(|_| None)?,
+            Err(ureq::Error::StatusCode(code)) if (code == 429 || code == 503) && essai < essais => {
                 essai += 1;
                 std::thread::sleep(Duration::from_secs(3 * essai));
             }
             Err(e) => {
                 eprintln!("api : {url} : {e}");
                 return Err(match e {
-                    ureq::Error::Status(code, _) => Some(code),
+                    ureq::Error::StatusCode(code) => Some(code),
                     _ => None,
                 });
             }
