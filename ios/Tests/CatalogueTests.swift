@@ -57,6 +57,19 @@ private func fixture() throws -> Catalogue {
     #expect(key.text == "van-gogh/tournesols")
 }
 
+@Test func lesPlacesDuCatalogueSuiventSesChangements() throws {
+    // Les places et les textes de recherche sont calculés une fois : un catalogue changé les
+    // refait, ses copies d'avant gardent les leurs.
+    var c = try fixture()
+    let key = try #require(WorkKey("van-gogh/tournesols"))
+    #expect(c.work(key) != nil && !c.search("tournesols").isEmpty)
+    let before = c
+    c.exhibitions.removeAll { $0.slug == "van-gogh" }
+    #expect(c.work(key) == nil && c.exhibition("van-gogh") == nil && c.search("tournesols").isEmpty)
+    #expect(before.work(key)?.1.title == "Les Tournesols" && !before.search("tournesols").isEmpty)
+    #expect(folded("Monet, NUIT") == "monet, nuit" && folded("Cœur d'Æsope") == "coeur d'aesope")
+}
+
 @Test func unCatalogueTropRecentEstRefuse() {
     let json = Data(#"{"version": 99, "exhibitions": []}"#.utf8)
     #expect(throws: CatalogueError.tooNew(99)) {

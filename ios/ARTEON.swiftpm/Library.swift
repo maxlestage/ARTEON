@@ -179,8 +179,17 @@ struct MuseumIndex: Sendable {
     let buildings: [Building]
     let countries: [CountryGroup]
     let wings: [Wing]
+    /// Les clés (`ArtistKey`) des artistes des expositions, pour les compter avec ceux des
+    /// collections du monde (l'accueil).
+    let artistKeys: Set<String>
+    /// La place de chaque artiste par son nom, et son nom et son style pliés pour la recherche.
+    private let artistPlaces: [String: Int]
+    private let artistSearch: [String]
 
     init(_ catalogue: Catalogue) {
+        // Les places des œuvres et les textes de recherche du catalogue, calculés ici, en
+        // arrière-plan, plutôt qu'à la première demande de l'affichage.
+        catalogue.prepareLookup()
         // Les artistes : ceux des notices et ceux des cartels.
         var byName: [String: ArtistEntry] = [:]
         var order: [String] = []
@@ -215,9 +224,15 @@ struct MuseumIndex: Sendable {
                 }
             }
         }
+        // Les noms pliés une fois chacun, pas à chaque comparaison du tri.
         artists = order.compactMap { byName[$0] }
             .filter { !$0.works.isEmpty }
-            .sorted { folded($0.name).compare(folded($1.name)) == .orderedAscending }
+            .map { (key: folded($0.name), entry: $0) }
+            .sorted { $0.key.compare($1.key) == .orderedAscending }
+            .map(\.entry)
+        artistKeys = Set(artists.map { ArtistKey.of($0.name) })
+        artistPlaces = Dictionary(artists.enumerated().map { ($1.name, $0) }, uniquingKeysWith: { first, _ in first })
+        artistSearch = artists.map { folded("\($0.name) \($0.style)") }
 
         // La chronologie.
         var dated: [(year: Int, key: WorkKey)] = []
@@ -259,6 +274,8 @@ struct MuseumIndex: Sendable {
     /// Les groupes d'œuvres qui partagent une valeur, les plus fournis d'abord.
     private static func groups(_ catalogue: Catalogue, _ values: (Work) -> [String]) -> [WorkGroup] {
         var map: [String: [WorkKey]] = [:]
+        // Les œuvres déjà rangées dans chaque groupe (un ensemble : pas de recherche dans la liste).
+        var members: [String: Set<WorkKey>] = [:]
         var display: [String: String] = [:]
         for (ex, w) in catalogue.allWorks {
             for value in values(w) {
@@ -266,17 +283,24 @@ struct MuseumIndex: Sendable {
                 guard !clean.isEmpty else { continue }
                 let id = folded(clean)
                 display[id] = display[id] ?? clean
-                if map[id]?.contains(ex.key(w)) != true {
-                    map[id, default: []].append(ex.key(w))
+                let key = ex.key(w)
+                if members[id, default: []].insert(key).inserted {
+                    map[id, default: []].append(key)
                 }
             }
         }
-        return map.map { WorkGroup(title: display[$0.key] ?? $0.key, works: $0.value) }
-            .sorted {
-                $0.works.count != $1.works.count
-                    ? $0.works.count > $1.works.count
-                    : folded($0.title) < folded($1.title)
+        // Les titres pliés une fois chacun, pas à chaque comparaison du tri.
+        let sortable: [(group: WorkGroup, sort: String)] = map.map { id, works in
+            let group = WorkGroup(title: display[id] ?? id, works: works)
+            return (group, folded(group.title))
+        }
+        return sortable
+            .sorted { a, b in
+                a.group.works.count != b.group.works.count
+                    ? a.group.works.count > b.group.works.count
+                    : a.sort < b.sort
             }
+            .map(\.group)
     }
 
     /// « Huile sur toile, 73 × 92 cm » → « Huile sur toile ».
@@ -293,32 +317,42 @@ struct MuseumIndex: Sendable {
     }
 
     func artist(named name: String) -> ArtistEntry? {
-        artists.first { $0.name == name }
+        artistPlaces[name].map { artists[$0] }
     }
 
     /// Les artistes dont le nom contient la recherche.
     func searchArtists(_ query: String) -> [ArtistEntry] {
         let q = folded(query.trimmingCharacters(in: .whitespacesAndNewlines))
         guard !q.isEmpty else { return [] }
-        return artists.filter { folded("\($0.name) \($0.style)").contains(q) }
+        return artists.indices.filter { artistSearch[$0].contains(q) }.map { artists[$0] }
     }
 }
 
 extension Catalogue {
     /// L'œuvre du jour : la même toute la journée, une autre le lendemain.
     func workOfTheDay(_ date: Date = Date(), calendar: Calendar = .current) -> (Exhibition, Work)? {
-        let works = allWorks.filter { $0.1.kind == .painting }
-        guard !works.isEmpty else { return nil }
+        // (Sans faire la liste de toutes les œuvres : l'accueil la demande à chaque affichage.)
+        let count = exhibitions.reduce(0) { total, ex in total + ex.works.count(where: { $0.kind == .painting }) }
+        guard count > 0 else { return nil }
         let day = calendar.ordinality(of: .day, in: .era, for: date) ?? 0
         // Un pas premier avec le nombre d'œuvres : on fait le tour sans répétition.
-        let index = (day &* 7919) % works.count
-        return works[(index + works.count) % works.count]
+        let index = (day &* 7919) % count
+        var remaining = (index + count) % count
+        for ex in exhibitions {
+            for w in ex.works where w.kind == .painting {
+                if remaining == 0 { return (ex, w) }
+                remaining -= 1
+            }
+        }
+        return nil
     }
 
     /// Les autres œuvres d'un artiste, ailleurs dans le musée.
     func works(by artist: String, except key: WorkKey? = nil) -> [(Exhibition, Work)] {
         guard !artist.isEmpty else { return [] }
-        return allWorks.filter { $0.1.artist == artist && $0.0.key($0.1) != key }
+        return exhibitions.flatMap { ex in
+            ex.works.filter { $0.artist == artist && ex.key($0) != key }.map { (ex, $0) }
+        }
     }
 
     /// Les œuvres de ces clés, dans leur ordre.

@@ -106,7 +106,7 @@ final class CatalogueStore {
             // Les collections du monde (3,6 Mo) : un peu après, pour laisser le réseau aux
             // images de l'accueil. Une page qui en a besoin plus tôt les demande elle-même.
             Task {
-                try? await Task.sleep(nanoseconds: 1_500_000_000)
+                try? await Task.sleep(for: .seconds(1.5))
                 await loadCollections()
             }
         }
@@ -259,7 +259,7 @@ actor ImageStore {
         let task = Task<Data?, Never> {
             if let data = try? await Api.data(url) { return data }
             // Un refus passager (Wikimedia limite les rafales) : un second essai, un peu après.
-            try? await Task.sleep(nanoseconds: 1_200_000_000)
+            try? await Task.sleep(for: .milliseconds(1200))
             return try? await Api.data(url)
         }
         running[url] = task
