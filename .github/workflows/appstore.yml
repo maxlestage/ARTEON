@@ -30,6 +30,6 @@ jobs:
       ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID || secrets.APP_STORE_CONNECT_ISSUER_ID }}
       TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Préparer App Store Connect
         run: python3 outils/app_store_connect.py
