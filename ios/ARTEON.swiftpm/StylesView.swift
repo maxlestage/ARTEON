@@ -5,25 +5,34 @@ import SwiftUI
 // `monde/sujets.json`, les œuvres de chaque sujet de `api/sujets/` (calculées par l'API à
 // chaque construction du site) : les plus connues d'abord, toutes du domaine public.
 
-/// La liste des sujets, par familles, avec une recherche.
+/// La liste des sujets : toutes les catégories confondues d'abord, des plus riches aux moins
+/// riches ; un bouton par famille (styles, genres, techniques…) ne montre qu'elle. Avec une
+/// recherche.
 struct StylesView: View {
     @State private var families: [SubjectFamily] = []
     @State private var published: [String: PublishedSubject] = [:]
     @State private var loading = true
     @State private var search = ""
-    /// Les familles dépliées (« Tout afficher ») : sinon les 24 premiers sujets de chacune.
-    @State private var unfolded: Set<String> = []
+    /// Le bouton choisi : `nil`, toutes les catégories confondues ; sinon la clé d'une famille.
+    @State private var chosen: String? = nil
+    /// Toutes les catégories confondues, chacune une fois, des plus riches aux moins riches.
+    @State private var everything: [(subject: Subject, family: String)] = []
+    /// « Tout afficher » : sinon les 24 premières.
+    @State private var unfolded = false
     private static let first = 24
 
     private static func folded(_ text: String) -> String {
         text.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
     }
 
-    private func shown(_ family: SubjectFamily) -> [Subject] {
+    /// Les sujets du bouton choisi, filtrés par la recherche.
+    private var shown: [(subject: Subject, family: String)] {
+        let all = chosen.flatMap { key in families.first { $0.key == key } }
+            .map { family in family.subjects.map { (subject: $0, family: family.name) } } ?? everything
         let words = Self.folded(search).split(separator: " ")
-        guard !words.isEmpty else { return family.subjects }
-        return family.subjects.filter { subject in
-            let names = Self.folded("\(subject.fr) \(subject.en) \(subject.es)")
+        guard !words.isEmpty else { return all }
+        return all.filter { item in
+            let names = Self.folded("\(item.subject.fr) \(item.subject.en) \(item.subject.es)")
             return words.allSatisfy { names.contains($0) }
         }
     }
@@ -45,40 +54,37 @@ struct StylesView: View {
                            "From Gothic art to the Bauhaus, from portraits to still lifes, from frescoes to prints: for each, its copyright-free works in the world's museums, best known first.",
                            "Del arte gótico a la Bauhaus, del retrato al bodegón, del fresco a la estampa: para cada uno, sus obras libres de derechos en los museos del mundo, las más conocidas primero."))
                         .foregroundStyle(.secondary)
-                    if !families.contains(where: { !shown($0).isEmpty }) {
-                        Text(L("Aucun style ni genre de ce nom.", "No style or genre by that name.", "Ningún estilo ni género con ese nombre."))
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            familyButton(nil, L("Toutes", "All", "Todas"), everything.count)
+                            ForEach(families) { familyButton($0.key, $0.name, $0.subjects.count) }
+                        }
+                    }
+                    let all = shown
+                    let open = !search.isEmpty || unfolded
+                    let items = open ? all : Array(all.prefix(Self.first))
+                    if all.isEmpty {
+                        Text(L("Aucune catégorie de ce nom.", "No category by that name.", "Ninguna categoría con ese nombre."))
+                            .foregroundStyle(.secondary)
+                    } else if !search.isEmpty {
+                        Text(all.count == 1 ? L("1 catégorie", "1 category", "1 categoría")
+                                            : L("\(all.count.formatted()) catégories", "\(all.count.formatted()) categories", "\(all.count.formatted()) categorías"))
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
-                    ForEach(families) { family in
-                        let all = shown(family)
-                        // Toutes les catégories de Wikidata : des milliers ; les premières d'abord,
-                        // le reste sur demande (une recherche les montre toutes).
-                        let open = !search.isEmpty || unfolded.contains(family.key)
-                        let subjects = open ? all : Array(all.prefix(Self.first))
-                        if !subjects.isEmpty {
-                            HStack(alignment: .firstTextBaseline) {
-                                Text(family.name)
-                                    .font(.title2.bold())
-                                Text(all.count.formatted())
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 10)], spacing: 10) {
+                        ForEach(items, id: \.subject.key) { item in
+                            NavigationLink(value: Route.subject(key: item.subject.key, name: item.subject.name, family: item.family)) {
+                                SubjectTile(subject: item.subject, published: published[item.subject.key])
                             }
-                            .padding(.top, 6)
-                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 10)], spacing: 10) {
-                                ForEach(subjects) { subject in
-                                    NavigationLink(value: Route.subject(key: subject.key, name: subject.name, family: family.name)) {
-                                        SubjectTile(subject: subject, published: published[subject.key])
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
-                            if !open, all.count > Self.first {
-                                Button(L("Tout afficher (\(all.count.formatted()))", "Show all (\(all.count.formatted()))", "Mostrar todo (\(all.count.formatted()))")) {
-                                    unfolded.insert(family.key)
-                                }
-                                .buttonStyle(.bordered)
-                            }
+                            .buttonStyle(.plain)
                         }
+                    }
+                    if !open, all.count > Self.first {
+                        Button(L("Tout afficher (\(all.count.formatted()))", "Show all (\(all.count.formatted()))", "Mostrar todo (\(all.count.formatted()))")) {
+                            unfolded = true
+                        }
+                        .buttonStyle(.bordered)
                     }
                 }
             }
@@ -87,13 +93,33 @@ struct StylesView: View {
         }
         .background(Color(uiColor: .systemGroupedBackground))
         .navigationTitle(L("Styles et genres", "Styles and genres", "Estilos y géneros"))
-        .searchable(text: $search, prompt: L("Un style, un genre, un sujet", "A style, a genre, a subject", "Un estilo, un género, un tema"))
+        .searchable(text: $search, prompt: L("Un style, un genre, un sujet, un musée", "A style, a genre, a subject, a museum", "Un estilo, un género, un tema, un museo"))
         .task {
             async let ready = Subjects.published()
             families = await Subjects.families()
             published = await ready
+            everything = SubjectFamily.merged(families, published)
             loading = false
         }
+    }
+
+    private func familyButton(_ key: String?, _ name: String, _ count: Int) -> some View {
+        let selected = chosen == key
+        return Button {
+            withAnimation(.snappy) { chosen = key; unfolded = false }
+        } label: {
+            HStack(spacing: 5) {
+                Text(name)
+                Text(count.formatted()).opacity(0.7)
+            }
+            .font(.subheadline.weight(selected ? .semibold : .regular))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 7)
+            .background(selected ? Color.accentColor : Color(uiColor: .secondarySystemGroupedBackground), in: .capsule)
+            .foregroundStyle(selected ? Color.white : Color.primary)
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 }
 

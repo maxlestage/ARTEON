@@ -246,6 +246,19 @@ struct SubjectFamily: Hashable, Sendable, Identifiable {
     var id: String { key }
     var name: String { L(fr, en, es) }
 
+    /// Toutes les catégories confondues : chacune une fois (un sujet peut être dans deux
+    /// familles, il garde la première), des plus riches aux moins riches ; à égalité, l'ordre
+    /// des familles et des sujets choisis à la main.
+    static func merged(_ families: [SubjectFamily], _ published: [String: PublishedSubject] = [:]) -> [(subject: Subject, family: String)] {
+        var seen = Set<String>()
+        let all = families.flatMap { family in family.subjects.map { (subject: $0, family: family.name) } }
+            .filter { seen.insert($0.subject.key).inserted }
+        let total = { (s: Subject) in published[s.key]?.total ?? s.count }
+        return all.enumerated()
+            .sorted { (total($0.element.subject), -$0.offset) > (total($1.element.subject), -$1.offset) }
+            .map(\.element)
+    }
+
     /// Les familles de `sujets.json`.
     static func parse(_ data: Data) -> [SubjectFamily] {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],

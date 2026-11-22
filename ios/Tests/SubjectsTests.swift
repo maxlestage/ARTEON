@@ -73,4 +73,21 @@ import Testing
         #expect(works[0].thumbnail == "https://c/b.jpg?width=250")
         #expect(works[0].year == 1880)
     }
+
+    @Test func toutesLesCategoriesConfondues() {
+        let a = SubjectFamily(key: "styles", fr: "Styles", en: "Styles", es: "Estilos", subjects: [
+            Subject(key: "baroque", fr: "Baroque", en: "Baroque", es: "Barroco", count: 50),
+            Subject(key: "gothique", fr: "Gothique", en: "Gothic", es: "Gótico", count: 10),
+        ])
+        let b = SubjectFamily(key: "genres", fr: "Genres", en: "Genres", es: "Géneros", subjects: [
+            Subject(key: "portrait", fr: "Portrait", en: "Portrait", es: "Retrato", count: 10),
+            Subject(key: "baroque", fr: "Baroque", en: "Baroque", es: "Barroco", count: 50),
+            Subject(key: "paysage", fr: "Paysage", en: "Landscape", es: "Paisaje", count: 5),
+        ])
+        let tout = SubjectFamily.merged([a, b], ["paysage": PublishedSubject(total: 900, image: "")])
+        // Chacune une fois, des plus riches aux moins riches (les œuvres publiées d'abord) ; à
+        // égalité, l'ordre des familles.
+        #expect(tout.map(\.subject.key) == ["paysage", "baroque", "gothique", "portrait"])
+        #expect(tout[1].family == "Styles")
+    }
 }

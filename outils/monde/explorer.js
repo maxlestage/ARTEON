@@ -306,9 +306,10 @@ function chronologie() {
 const nomSujet = (s) => t(s.fr, s.en, s.es);
 const pasDeReponse = () => t("Les musées n'ont pas répondu. Réessayer plus tard.", "The museums did not respond. Please try again later.", "Los museos no han respondido. Vuelva a intentarlo más tarde.");
 
-// Toutes les catégories de Wikidata (outils/sujets_wikidata.py) : des milliers. Chaque famille
-// montre d'abord ses premières (les sujets choisis à la main, puis les plus riches) ; « Tout
-// afficher » déplie le reste, et la recherche porte sur toutes.
+// Toutes les catégories de Wikidata (outils/sujets_wikidata.py) : des milliers. D'abord toutes
+// confondues, des plus riches aux moins riches ; un bouton par famille (styles, genres,
+// techniques…) ne montre qu'elle. Les premières, puis « Tout afficher » ; la recherche porte
+// sur toutes celles du bouton choisi.
 const PREMIERS = 24;
 
 async function listeSujets() {
@@ -325,43 +326,55 @@ async function listeSujets() {
     return `<a class="monde-sujet${image ? "" : " sans-image"}" href="#/style/${s.cle}">${image ? `<img loading="lazy" decoding="async" src="${echapper(image)}" alt="">` : ""}<b>${echapper(nomSujet(s))}</b>${total ? `<span>${oeuvresN(total)}</span>` : ""}</a>`;
   };
   const tous = table.familles.flatMap((f) => f.sujets.map((s) => ({ s, f, plie: plier(`${s.fr} ${s.en} ${s.es}`) })));
+  // Toutes les catégories confondues : chaque sujet une fois (un même sujet peut être dans deux
+  // familles), des plus riches aux moins riches.
+  const vus = new Set();
+  const confondus = tous.filter((x) => !vus.has(x.s.cle) && vus.add(x.s.cle))
+    .sort((a, b) => ((publies[b.s.cle]?.total || b.s.n || 0) - (publies[a.s.cle]?.total || a.s.n || 0)));
+  const groupes = [{ cle: "toutes", fr: "Toutes", en: "All", es: "Todas", liste: confondus },
+    ...table.familles.map((f) => ({ ...f, liste: tous.filter((x) => x.f === f) }))];
+  let choisi = groupes[0];
   racine.innerHTML = menu("styles") + `
     <p class="monde-lead">${t(
       `${nombre(n)} styles, genres, techniques, sujets et musées : toutes les catégories de Wikidata qui ont au moins douze œuvres libres de droits, de l'art gothique au Bauhaus, du portrait à la nature morte, de la fresque à l'estampe. Pour chacune, ses œuvres, les plus connues d'abord.`,
       `${nombre(n)} styles, genres, techniques, subjects and museums: every Wikidata category with at least twelve copyright-free works, from Gothic art to the Bauhaus, from portraits to still lifes, from frescoes to prints. For each, its works, best known first.`,
       `${nombre(n)} estilos, géneros, técnicas, temas y museos: todas las categorías de Wikidata con al menos doce obras libres de derechos, del arte gótico a la Bauhaus, del retrato al bodegón, del fresco a la estampa. Para cada una, sus obras, las más conocidas primero.`)}</p>
     <div class="monde-barre"><input type="search" id="filtre" placeholder="${t("Un style, un genre, un sujet, un musée…", "A style, a genre, a subject, a museum…", "Un estilo, un género, un tema, un museo…")}" aria-label="${t("Chercher une catégorie", "Search for a category", "Buscar una categoría")}"></div>
-    <div class="monde-themes" id="familles">${table.familles.map((f) => `<button type="button" data-famille="${f.cle}">${echapper(nomSujet(f))} <span>${nombre(f.sujets.length)}</span></button>`).join("")}</div>
-    <div id="sujets-recherche" hidden></div>
-    <div id="sujets-familles">${table.familles.map((f) => `<section class="monde-section" id="famille-${f.cle}"><h2>${echapper(nomSujet(f))} <small class="monde-note">${nombre(f.sujets.length)}</small></h2>
-      <div class="monde-sujets">${f.sujets.slice(0, PREMIERS).map(tuile).join("")}</div>
-      ${f.sujets.length > PREMIERS ? `<button type="button" class="monde-plus" data-deplier="${f.cle}">${t(`Tout afficher (${nombre(f.sujets.length)})`, `Show all (${nombre(f.sujets.length)})`, `Mostrar todo (${nombre(f.sujets.length)})`)}</button>` : ""}</section>`).join("")}</div>`;
-  document.getElementById("familles").addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-famille]");
-    if (b) document.getElementById(`famille-${b.dataset.famille}`)?.scrollIntoView({ behavior: "smooth" });
-  });
-  document.getElementById("sujets-familles").addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-deplier]");
-    if (!b) return;
-    const f = table.familles.find((x) => x.cle === b.dataset.deplier);
-    // Le reste de la famille, par paquets (des milliers de sujets pour les sujets représentés).
-    toutAfficher(b.previousElementSibling, f.sujets.slice(PREMIERS), tuile);
-    b.remove();
-  });
-  const recherche = document.getElementById("sujets-recherche"), familles = document.getElementById("sujets-familles");
-  document.getElementById("filtre").addEventListener("input", (e) => {
-    const mots = plier(e.target.value).split(/\s+/).filter(Boolean);
-    familles.hidden = mots.length > 0;
-    recherche.hidden = mots.length === 0;
-    if (!mots.length) return;
+    <div class="monde-themes" id="familles">${groupes.map((g) => `<button type="button" data-famille="${g.cle}" aria-pressed="${g === choisi}">${echapper(nomSujet(g))} <span>${nombre(g.liste.length)}</span></button>`).join("")}</div>
+    <div id="sujets-liste"></div>`;
+  const liste = document.getElementById("sujets-liste"), filtre = document.getElementById("filtre");
+  const montrer = () => {
+    const mots = plier(filtre.value).split(/\s+/).filter(Boolean);
+    for (const b of document.querySelectorAll("#familles button")) b.setAttribute("aria-pressed", String(b.dataset.famille === choisi.cle));
+    if (!mots.length) {
+      // Les premières ; « Tout afficher » déplie le reste, par paquets (des milliers).
+      const l = choisi.liste;
+      liste.innerHTML = `<div class="monde-sujets">${l.slice(0, PREMIERS).map((x) => tuile(x.s)).join("")}</div>
+        ${l.length > PREMIERS ? `<button type="button" class="monde-plus" data-deplier>${t(`Tout afficher (${nombre(l.length)})`, `Show all (${nombre(l.length)})`, `Mostrar todo (${nombre(l.length)})`)}</button>` : ""}`;
+      return;
+    }
     // Les noms qui commencent par le mot cherché d'abord, puis les plus riches.
-    const trouves = tous.filter((x) => mots.every((m) => x.plie.includes(m)))
+    const trouves = choisi.liste.filter((x) => mots.every((m) => x.plie.includes(m)))
       .sort((a, b) => (b.plie.startsWith(mots[0]) - a.plie.startsWith(mots[0])) || ((b.s.n || 0) - (a.s.n || 0)));
-    recherche.innerHTML = trouves.length
+    liste.innerHTML = trouves.length
       ? `<p class="monde-compte">${nombre(trouves.length)} ${trouves.length > 1 ? t("catégories", "categories", "categorías") : t("catégorie", "category", "categoría")}${trouves.length > 300 ? ` ${t("(les 300 premières)", "(the first 300)", "(las 300 primeras)")}` : ""}</p>
         <div class="monde-sujets">${trouves.slice(0, 300).map((x) => tuile(x.s)).join("")}</div>`
       : `<p class="monde-chargement">${t("Aucune catégorie de ce nom.", "No category by that name.", "Ninguna categoría con ese nombre.")}</p>`;
+  };
+  document.getElementById("familles").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-famille]");
+    if (!b) return;
+    choisi = groupes.find((g) => g.cle === b.dataset.famille) || groupes[0];
+    montrer();
   });
+  liste.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-deplier]");
+    if (!b) return;
+    toutAfficher(b.previousElementSibling, choisi.liste.slice(PREMIERS), (x) => tuile(x.s));
+    b.remove();
+  });
+  filtre.addEventListener("input", montrer);
+  montrer();
   window.scrollTo(0, 0);
 }
 
