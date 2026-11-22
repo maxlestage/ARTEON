@@ -100,6 +100,7 @@ _impression = threading.Lock()
 # L'heure à laquelle on arrête de demander des fiches (--minutes) : la moisson garde ce
 # qu'elle a, et la suivante continue grâce au cache.
 FIN_DES_FICHES = float("inf")
+FIN_DES_VIGNETTES = float("inf")
 
 
 def trop_tard():
@@ -367,7 +368,72 @@ def identifiants_met(cache):
     return groupes
 
 
+# Les œuvres du Met décrites sur Wikidata, avec leur image sur Wikimedia Commons (le Met y a
+# versé ses images libres) : le Met refuse ses fiches aux machines de GitHub, Wikidata non.
+REQUETE_MET = """PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?met (SAMPLE(?img) AS ?image) (SAMPLE(?titre) AS ?t) (SAMPLE(?auteur) AS ?a) (MAX(YEAR(?mort)) AS ?m)
+       (MIN(YEAR(?date)) AS ?y) (SAMPLE(?nature) AS ?n) WHERE {
+  ?o wdt:P3634 ?met ; wdt:P18 ?img .
+  OPTIONAL { ?o rdfs:label ?titre . FILTER(LANG(?titre) = "en") }
+  OPTIONAL { ?o wdt:P170 ?c . ?c rdfs:label ?auteur . FILTER(LANG(?auteur) = "en") OPTIONAL { ?c wdt:P570 ?mort } }
+  OPTIONAL { ?o wdt:P571 ?date }
+  OPTIONAL { ?o wdt:P31 ?i . ?i rdfs:label ?nature . FILTER(LANG(?nature) = "en") }
+} GROUP BY ?met"""
+
+
+PLANES = {"Peinture", "Dessin", "Estampe"}
+
+
+def met_wikidata(cache=None):
+    """Les fiches du Met tirées de Wikidata (une requête à QLever, gardée une semaine) :
+    seulement les œuvres dont la date ou la mort de l'artiste est connue, pour la règle du
+    domaine public."""
+    fichier = cache / "met-wikidata.json" if cache else None
+    lignes = None
+    if fichier and fichier.exists() and time.time() - fichier.stat().st_mtime < 7 * 86400:
+        try:
+            lignes = json.loads(fichier.read_text(encoding="utf-8"))
+        except ValueError:
+            lignes = None
+    if lignes is None:
+        try:
+            reponse = json_de("https://qlever.dev/api/wikidata?" + urllib.parse.urlencode({"query": REQUETE_MET}),
+                              {"Accept": "application/sparql-results+json"}, essais=3)
+        except Exception as erreur:
+            dire(f"  met : Wikidata injoignable ({erreur})")
+            return []
+        lignes = [{k: v["value"] for k, v in b.items()} for b in reponse["results"]["bindings"]]
+        if fichier and lignes:
+            fichier.write_text(json.dumps(lignes, ensure_ascii=False), encoding="utf-8")
+    fiches = []
+    for l in lignes:
+        y, m = int(l["y"]) if l.get("y") else None, int(l["m"]) if l.get("m") else None
+        if y is None and m is None or "commons.wikimedia.org/wiki/Special:FilePath/" not in l.get("image", ""):
+            continue
+        image = l["image"].replace("http://", "https://", 1)
+        cat = categorie(l.get("n"), l.get("t"))
+        # Les images versées par le Met (« … MET DP123.jpg », CC0) ; d'une autre main, seulement
+        # les œuvres planes (une reproduction fidèle d'une œuvre du domaine public l'est aussi),
+        # jamais la photographie d'un objet, qui a son propre auteur et sa licence.
+        if not re.search(r"(^|%20|_)MET(%20|_)", image.rsplit("/", 1)[-1]) and cat not in PLANES:
+            continue
+        fiches.append(fiche(
+            "met", l["met"], l.get("t"), l.get("a") or "Artiste inconnu",
+            vie=f"died {m}" if m else "", date=str(y) if y is not None else "", annee=y, categorie=cat,
+            # Des largeurs que Commons garde toutes prêtes.
+            image=image + "?width=1280", vignette=image + "?width=330",
+            lien=f"https://www.metmuseum.org/art/collection/search/{l['met']}",
+            score=POIDS[cat],
+        ))
+    dire(f"  met : {len(fiches)} fiches de Wikidata ({len(lignes)} œuvres avec une image)")
+    return fiches
+
+
 def met(combien, alea, deja=frozenset(), cache=None):
+    # D'abord Wikidata (rapide) ; puis les fiches du Met lui-même, plus complètes, quand il
+    # les donne : elles remplacent celles de Wikidata.
+    par_wikidata = [f for f in met_wikidata(cache) if f["i"] not in deja]
     identifiants, vus = [], set()
     # Les chefs-d'œuvre signalés, les peintures, puis tous les départements.
     groupes = identifiants_met(cache)
@@ -427,7 +493,8 @@ def met(combien, alea, deja=frozenset(), cache=None):
                 break
             fiches += [f for f in pool.map(objet, identifiants[depart:depart + 400]) if f]
     dire(f"  met : {len(fiches)} fiches" + (f" (refus : {dict(refus)})" if refus else ""))
-    return fiches
+    directes = {f["i"] for f in fiches}
+    return [f for f in par_wikidata if f["i"] not in directes] + fiches
 
 
 def washington(combien, alea, cache):
@@ -814,19 +881,28 @@ def main():
     # Un musée qui refuse la machine (le Met répond 403 aux serveurs de GitHub) : après tant
     # de refus de suite, on ne lui demande plus rien pendant cette moisson ; ses vignettes déjà
     # dans le cache servent toujours. Sans cela, des milliers d'essais vains (13 minutes).
-    refus = {c: 0 for c in vivants}
+    # Compté par serveur d'images : le Met refuse depuis son serveur, mais ses œuvres venues
+    # de Wikidata ont leur image sur Wikimedia Commons, qui répond.
+    refus = collections.Counter()
     REFUS_MAX = 200
+    # Une construction rapide (--minutes) ne télécharge des vignettes que six minutes de plus :
+    # au-delà, seules celles du cache servent, et la suivante continue. Sans limite, un musée
+    # nouvellement ouvert (les 16 000 œuvres du Met par Wikidata) en demandait vingt minutes.
+    global FIN_DES_VIGNETTES
+    if args.minutes:
+        FIN_DES_VIGNETTES = time.time() + 6 * 60
 
     def prendre(c, f):
         deja = (dossier / f"{f['i']}.jpg").exists() and (
             args.sans_grandes or (cache / f"grandes-{GRANDE}" / f"{f['i']}.jpg").exists())
-        if not deja and refus[c] >= REFUS_MAX:
+        serveur = (c, urllib.parse.urlparse(source(f)).netloc)
+        if not deja and (refus[serveur] >= REFUS_MAX or time.time() > FIN_DES_VIGNETTES):
             return None
         o = vignette(f, dossier, avec_grande=not args.sans_grandes)
         if not deja:
-            refus[c] = 0 if o else refus[c] + 1
-            if refus[c] == REFUS_MAX:
-                dire(f"  {c} : {REFUS_MAX} refus de suite, plus de téléchargement (le cache seul)")
+            refus[serveur] = 0 if o else refus[serveur] + 1
+            if refus[serveur] == REFUS_MAX:
+                dire(f"  {c} : {REFUS_MAX} refus de suite de {serveur[1]}, plus de téléchargement (le cache seul)")
         return o
 
     def remplir(c, cible):
@@ -896,7 +972,9 @@ def main():
     pris = {f["i"] for f in fiches_finales}
     candidates = []
     for c in (vivants if args.sans_grandes else []):  # pour le site seulement, pas pour l'app
-        for f in classees[c][position[c]:]:
+        # Toutes celles qui ne sont pas exposées, même passées (vignette refusée par le musée,
+        # ou temps des vignettes écoulé) : le navigateur prend leur vignette chez le musée.
+        for f in classees[c]:
             if f["i"] in pris or not f.get("_vignette"):
                 continue
             pris.add(f["i"])
@@ -905,7 +983,7 @@ def main():
     # grandit d'une construction à l'autre) ; les autres restent chez les musées.
     fin = time.time() + args.minutes_reserve * 60
     def telecharger(cf):
-        if time.time() < fin and refus.get(cf[0], 0) < REFUS_MAX:
+        if time.time() < fin and refus[(cf[0], urllib.parse.urlparse(cf[1].get("_vignette") or "").netloc)] < REFUS_MAX:
             return vignette(cf[1], dossier, avec_grande=False) is not None
         return (dossier / f"{cf[1]['i']}.jpg").exists()
     with concurrent.futures.ThreadPoolExecutor(args.fils) as pool:
