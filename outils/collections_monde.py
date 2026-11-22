@@ -34,6 +34,7 @@ Bibliothèque standard de Python, et Pillow pour réduire les images.
 """
 
 import argparse
+import collections
 import concurrent.futures
 import csv
 import datetime
@@ -387,14 +388,20 @@ def met(combien, alea, deja=frozenset(), cache=None):
                     vus.add(i)
                     identifiants.append(i)
     dire(f"  met : {len(identifiants)} identifiants")
+    # Les refus du Met, comptés : il refuse parfois les machines de GitHub (403).
+    refus = collections.Counter()
 
     def objet(i):
         if trop_tard():
             return None
         time.sleep(0.12)  # le Met : au plus 80 requêtes par seconde (8 fils : une quinzaine)
         try:
-            o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", essais=3)
-        except Exception:
+            o = json_de(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", essais=2)
+        except urllib.error.HTTPError as erreur:
+            refus[erreur.code] += 1
+            return None
+        except Exception as erreur:
+            refus[type(erreur).__name__] += 1
             return None
         if not (o.get("isPublicDomain") and o.get("primaryImageSmall")):
             return None
@@ -419,7 +426,7 @@ def met(combien, alea, deja=frozenset(), cache=None):
             if len(fiches) >= combien * 1.2 or trop_tard():
                 break
             fiches += [f for f in pool.map(objet, identifiants[depart:depart + 400]) if f]
-    dire(f"  met : {len(fiches)} fiches")
+    dire(f"  met : {len(fiches)} fiches" + (f" (refus : {dict(refus)})" if refus else ""))
     return fiches
 
 
