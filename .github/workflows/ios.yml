@@ -172,7 +172,7 @@ jobs:
       - name: Captures d'écran (iPad et iPhone)
         # Les captures ne bloquent jamais la suite (compilation, App Playground, TestFlight).
         continue-on-error: true
-        timeout-minutes: 30
+        timeout-minutes: 40
         run: |
           set -uo pipefail
           # Une commande qui ne rend pas la main est arrêtée au bout de $1 secondes.
@@ -198,16 +198,33 @@ jobs:
           shoot() {
             echo "▶ $prefix-$name"
             limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
-            limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -AppleLanguages "(fr)" "$@" || return 0
-            sleep "${wait:-14}"
-            limit 60 xcrun simctl io "$udid" screenshot "captures/$prefix-$name.png" || echo "capture $name impossible"
+            # Une capture manquée (l'application pas encore lancée, le simulateur occupé) est
+            # refaite une fois.
+            for essai in 1 2; do
+              limit 60 xcrun simctl launch "$udid" com.maxlestage.arteon -AppleLanguages "(fr)" "$@" &&
+                sleep "${wait:-14}" &&
+                limit 60 xcrun simctl io "$udid" screenshot "captures/$prefix-$name.png" && return 0
+              echo "capture $name manquée (essai $essai)"
+              limit 30 xcrun simctl terminate "$udid" com.maxlestage.arteon 2>/dev/null || true
+              sleep 5
+            done
+          }
+          # Le simulateur démarré et l'application installée. Un démarrage raté (le
+          # simulateur iPhone finit parfois en échec après sa migration de données, et
+          # l'installation reste alors bloquée) est repris une fois sur un simulateur effacé.
+          pret() {
+            limit 60 xcrun simctl boot "$udid" || true
+            limit 240 xcrun simctl bootstatus "$udid" -b && limit 180 xcrun simctl install "$udid" "$app"
           }
           for prefix in ipad iphone; do
             if [ "$prefix" = ipad ]; then udid=$(device "$IPAD"); else udid=$(device "iPhone"); fi
             [ -n "$udid" ] || { echo "pas de simulateur $prefix"; continue; }
-            limit 60 xcrun simctl boot "$udid" || true
-            limit 240 xcrun simctl bootstatus "$udid" -b || true
-            limit 180 xcrun simctl install "$udid" "$app" || continue
+            if ! pret; then
+              echo "simulateur $prefix pas prêt : effacé et redémarré"
+              limit 60 xcrun simctl shutdown "$udid" || true
+              limit 120 xcrun simctl erase "$udid" || true
+              pret || { echo "simulateur $prefix toujours pas prêt"; continue; }
+            fi
             name=01-accueil wait=25 shoot
             name=03-oeuvre shoot -ouvrir van-gogh/tournesols
             name=04-musees shoot -onglet musees
