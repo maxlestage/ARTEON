@@ -116,6 +116,9 @@
 .monde-themes span { color: var(--muted); }
 .monde-themes button { font: inherit; padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
   color: var(--fg); cursor: pointer; }
+.monde-themes button[aria-pressed="true"] { background: var(--accent-fill, var(--accent)); color: var(--accent-fg); border-color: var(--accent); }
+.monde-themes button[aria-pressed="true"] span { color: inherit; opacity: .8; }
+#sujets-liste { margin-top: 14px; }
 /* Les styles et les genres : une tuile par sujet, son œuvre la plus connue derrière son nom. */
 .monde-sujets { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
 .monde-sujet { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 130px;
