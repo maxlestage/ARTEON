@@ -89,6 +89,8 @@ async function charger() {
   const entete = await enteteP;
   const debut = entete ? await Promise.race([complete.then(() => null), debutP]) : null;
   window.addEventListener("hashchange", afficher);
+  // Une fiche ouverte directement (un lien, un favori) : elle s'affiche sans attendre la liste.
+  if (route().type === "oeuvre") afficher();
   if (debut?.length && entete.idsDebut?.length >= debut.length) {
     prendreIndex({ ...entete, ids: entete.idsDebut });
     etat.liste = debut;
@@ -102,8 +104,15 @@ async function charger() {
   const avant = debut?.length || 0;
   etat.partielle = false;
   const grille = document.getElementById("monde-grille");
-  // Toujours sur « Toutes les œuvres » : la suite s'ajoute sous ce qui est affiché.
-  if (avant && !route().type && grille) {
+  const r = route();
+  if (etat.seule && r.type === "oeuvre" && r.valeur === etat.seule && document.getElementById("monde-voisins")) {
+    // La fiche affichée sans la liste : il ne lui manquait que ses voisines et les œuvres du même artiste.
+    const i = etat.position.get(etat.seule);
+    etat.seule = null;
+    document.getElementById("monde-voisins").innerHTML = voisines(i);
+    document.getElementById("monde-memes").innerHTML = duMemeArtiste(i, etat.liste[i]);
+  } else if (avant && !route().type && grille) {
+    // Toujours sur « Toutes les œuvres » : la suite s'ajoute sous ce qui est affiché.
     etat.vues = [...etat.liste.keys()];
     toutAfficher(grille, etat.vues.slice(avant), carte);
   } else {
@@ -137,7 +146,9 @@ function afficher() {
   const r = route();
   // Une recherche, un filtre ou une fiche pendant que la liste complète arrive : elle les
   // affichera (charger).
-  if (etat.partielle && r.type) {
+  etat.seule = null;
+  if ((!etat.liste || etat.partielle) && r.type === "oeuvre") return fiche(r.valeur);
+  if (!etat.liste || (etat.partielle && r.type)) {
     racine.innerHTML = `<p class="monde-chargement">${t("Ouverture de toutes les œuvres…", "Opening all the works…", "Abriendo todas las obras…")}</p>`;
     return;
   }
@@ -220,31 +231,82 @@ function carte(i) {
   return `<a class="monde-carte" href="#/oeuvre/${id}"><img loading="lazy" decoding="async" src="${l[7] || lien(`monde/v/${id}.webp`)}" alt=""><b>${echapper(l[T])}</b><span>${echapper(ligne)}</span></a>`;
 }
 
-async function detail(i) {
-  const part = Math.floor(i / etat.index.parFichier);
+async function detail(i, parFichier = etat.index.parFichier) {
+  const part = Math.floor(i / parFichier);
   if (!etat.fiches.has(part)) {
     const nom = lien(`monde/donnees/fiches-${String(part).padStart(3, "0")}.json`);
     etat.fiches.set(part, jsonGarde(nom));
   }
-  return (await etat.fiches.get(part))[i % etat.index.parFichier];
+  return (await etat.fiches.get(part))[i % parFichier];
 }
 
-async function fiche(id) {
-  const i = etat.position.get(id);
-  if (i == null) { racine.innerHTML = `<p class="monde-chargement">${t("Cette œuvre n'est pas dans les collections.", "This work is not in the collections.", "Esta obra no está en las colecciones.")} <a href="#/">${t("Retour", "Back", "Volver")}</a></p>`; return; }
-  const l = etat.liste[i], m = etat.index.musees[l[K]];
-  racine.innerHTML = `<p class="monde-chargement">…</p>`;
-  const f = await detail(i);
-  if (route().valeur !== id) return;
+// Une œuvre sans la liste complète (5 Mo compressés) : donnees/par-oeuvre/NNN.json
+// (outils/monde_web.py, par_oeuvre) range les œuvres en PAQUETS fichiers de quelques Ko,
+// d'après leur identifiant (le même calcul que paquet_de). Une œuvre : son rang dans la liste,
+// puis sa ligne. Avec l'en-tête de l'index (les musées), c'est tout ce qu'il faut à sa fiche.
+const PAQUETS = 512;
+function paquetDe(cle) {
+  let h = 0;
+  for (let i = 0; i < cle.length; i++) h = (h * 31 + cle.charCodeAt(i)) % 65521;
+  return String(h % PAQUETS).padStart(3, "0");
+}
+const seules = new Map();
+function oeuvreSeule(id) {
+  if (!seules.has(id)) {
+    seules.set(id, Promise.all([
+      jsonGarde(lien("monde/donnees/entete.json")),
+      jsonGarde(lien(`monde/donnees/par-oeuvre/${paquetDe(id)}.json`)),
+    ]).then(([index, p]) => {
+      if (!p.oeuvres[id]) return null;
+      const [i, ...l] = p.oeuvres[id];
+      if (l[7] && !l[7].startsWith("http")) l[7] = p.gabarits[l[K]].replaceAll("{}", l[7]);
+      return { index, i, l };
+    }).catch(() => null));
+  }
+  return seules.get(id);
+}
+
+// La précédente et la suivante dans la vue, et douze œuvres du même artiste : avec toute la liste.
+function voisines(i) {
   const vues = etat.vues.length ? etat.vues : [...etat.liste.keys()];
   const ici = vues.indexOf(i);
   const voisin = (d) => (ici >= 0 && vues[ici + d] != null ? etat.ids[vues[ici + d]] : null);
   const avant = voisin(-1), apres = voisin(1);
+  return `${avant ? `<a href="#/oeuvre/${avant}">‹ ${t("Précédente", "Previous", "Anterior")}</a>` : ""}${apres ? `<a href="#/oeuvre/${apres}">${t("Suivante", "Next", "Siguiente")} ›</a>` : ""}`;
+}
+function duMemeArtiste(i, l) {
+  const memes = l[A] && l[A] !== "Artiste inconnu"
+    ? [...etat.liste.keys()].filter((j) => j !== i && etat.liste[j][A] === l[A]).slice(0, 12) : [];
+  return memes.length ? `<section class="monde-section"><h2>${t("Du même artiste", "By the same artist", "Del mismo artista")}</h2><div class="monde-grille">${memes.map(carte).join("")}</div></section>` : "";
+}
+
+async function fiche(id) {
+  // Pendant que la liste complète arrive : la fiche avec le petit fichier de l'œuvre ; ses
+  // voisines et les œuvres du même artiste s'ajoutent quand la liste est là (charger).
+  let seule = null;
+  if (!etat.liste || etat.partielle) {
+    racine.innerHTML = `<p class="monde-chargement">${t("Ouverture de l'œuvre…", "Opening the work…", "Abriendo la obra…")}</p>`;
+    window.scrollTo(0, 0);
+    seule = await oeuvreSeule(id);
+    const r = route();
+    if ((etat.liste && !etat.partielle) || r.type !== "oeuvre" || r.valeur !== id) return;
+    if (!seule) {
+      racine.innerHTML = `<p class="monde-chargement">${t("Ouverture de toutes les œuvres…", "Opening all the works…", "Abriendo todas las obras…")}</p>`;
+      return;
+    }
+  }
+  const i = seule ? seule.i : etat.position.get(id);
+  if (i == null) { racine.innerHTML = `<p class="monde-chargement">${t("Cette œuvre n'est pas dans les collections.", "This work is not in the collections.", "Esta obra no está en las colecciones.")} <a href="#/">${t("Retour", "Back", "Volver")}</a></p>`; return; }
+  const l = seule ? seule.l : etat.liste[i], index = seule ? seule.index : etat.index, m = index.musees[l[K]];
+  if (!seule) racine.innerHTML = `<p class="monde-chargement">…</p>`;
+  const f = await detail(i, index.parFichier);
+  if (route().type !== "oeuvre" || route().valeur !== id) return;
+  // La liste complète est arrivée entre-temps : c'est elle qui affiche la fiche (charger).
+  if (seule && etat.liste && !etat.partielle) return;
+  etat.seule = seule ? id : null;
   const faits = [[t("Date", "Date", "Fecha"), l[D]], [t("Technique", "Medium", "Técnica"), f.m], [t("Mesures", "Dimensions", "Medidas"), f.s],
     [t("Catégorie", "Category", "Categoría"), categorie(l[C])], [t("Origine", "Origin", "Origen"), f.o],
     [t("Musée", "Museum", "Museo"), `${m.nom}, ${localiser(m.ville)}`], [t("Où la voir", "Where to see it", "Dónde verla"), f.g]].filter(([, v]) => v);
-  const memes = l[A] && l[A] !== "Artiste inconnu"
-    ? [...etat.liste.keys()].filter((j) => j !== i && etat.liste[j][A] === l[A]).slice(0, 12) : [];
   racine.innerHTML = `
     <a class="monde-retour" href="#/">← ${t("Toutes les œuvres", "All works", "Todas las obras")}</a>
     <div class="monde-fiche">
@@ -257,13 +319,13 @@ async function fiche(id) {
         ${f.x ? `<div class="folds"><details class="fold" open><summary><span>${t("Description", "Description", "Descripción")}</span><span class="fold-sign" aria-hidden="true"></span></summary>
           <div class="fold-body monde-texte"><p>${echapper(f.x)}</p>${m.cle === "chicago" ? `<p class="monde-note">${t("Texte : Art Institute of Chicago, CC BY 4.0.", "Text: Art Institute of Chicago, CC BY 4.0.", "Texto: Art Institute of Chicago, CC BY 4.0.")}</p>` : ""}</div></details></div>` : ""}
         <div class="monde-nav">
-          ${avant ? `<a href="#/oeuvre/${avant}">‹ ${t("Précédente", "Previous", "Anterior")}</a>` : ""}${apres ? `<a href="#/oeuvre/${apres}">${t("Suivante", "Next", "Siguiente")} ›</a>` : ""}
+          <span id="monde-voisins" style="display:contents">${seule ? "" : voisines(i)}</span>
           ${f.w ? `<a href="${echapper(f.w)}" target="_blank" rel="noopener">${t("La fiche du musée", "On the museum's website", "La ficha del museo")} ↗</a>` : ""}
         </div>
         <p class="monde-note">${echapper(localiser(m.licence))}</p>
       </div>
     </div>
-    ${memes.length ? `<section class="monde-section"><h2>${t("Du même artiste", "By the same artist", "Del mismo artista")}</h2><div class="monde-grille">${memes.map(carte).join("")}</div></section>` : ""}`;
+    <div id="monde-memes">${seule ? "" : duMemeArtiste(i, l)}</div>`;
   window.scrollTo(0, 0);
   if (f.u) {
     const grande = new Image();
