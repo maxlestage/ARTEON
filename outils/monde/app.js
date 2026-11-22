@@ -82,26 +82,34 @@ async function charger() {
     etat.ids = index.ids;
     etat.position = new Map(index.ids.map((id, i) => [id, i]));
   };
-  // L'en-tête et le début de la liste, demandés ensemble.
-  const accueil = !route().type;
-  const enteteP = accueil ? jsonGarde(lien("monde/donnees/entete.json")).catch(() => null) : null;
-  const debutP = accueil ? jsonGarde(lien("monde/donnees/liste-debut.json")).catch(() => null) : null;
+  // L'en-tête et le début de la liste, demandés ensemble. Une catégorie, un musée ou un siècle
+  // ouverts directement ont aussi leur début (donnees/debuts/, outils/monde_web.py) :
+  // { n: le nombre d'œuvres de la vue, ids, l: les premières lignes }.
+  const r0 = route(), ouverte = cleRoute(r0), accueil = !r0.type;
+  const fichier = accueil ? "liste-debut.json"
+    : ["categorie", "musee", "siecle"].includes(r0.type) && r0.valeur ? `debuts/${r0.type}-${hexa(r0.valeur)}.json` : null;
+  const enteteP = fichier ? jsonGarde(lien("monde/donnees/entete.json")).catch(() => null) : null;
+  const debutP = fichier ? jsonGarde(lien(`monde/donnees/${fichier}`)).catch(() => null) : null;
   const entete = await enteteP;
-  const debut = entete ? await Promise.race([complete.then(() => null), debutP]) : null;
+  const lu = entete ? await Promise.race([complete.then(() => null), debutP]) : null;
+  const debut = accueil ? lu : lu?.l;
+  const idsDebut = (accueil ? entete?.idsDebut : lu?.ids) || [];
   window.addEventListener("hashchange", afficher);
   // Une fiche ouverte directement (un lien, un favori) : elle s'affiche sans attendre la liste.
   if (route().type === "oeuvre") afficher();
-  if (debut?.length && entete.idsDebut?.length >= debut.length) {
-    prendreIndex({ ...entete, ids: entete.idsDebut });
+  if (debut?.length && idsDebut.length >= debut.length && cleRoute(route()) === ouverte) {
+    prendreIndex({ ...entete, ids: idsDebut });
     etat.liste = debut;
     etat.partielle = true;
+    etat.debutDe = ouverte;
+    etat.totalDebut = accueil ? entete.total : lu.n;
     afficher();
   }
   const tout = await complete;
   prendreIndex(tout.index);
   etat.liste = tout.liste;
   etat.plies = null;
-  const avant = debut?.length || 0;
+  const avant = etat.partielle ? debut.length : 0;
   etat.partielle = false;
   const grille = document.getElementById("monde-grille");
   const r = route();
@@ -111,10 +119,12 @@ async function charger() {
     etat.seule = null;
     document.getElementById("monde-voisins").innerHTML = voisines(i);
     document.getElementById("monde-memes").innerHTML = duMemeArtiste(i, etat.liste[i]);
-  } else if (avant && !route().type && grille) {
-    // Toujours sur « Toutes les œuvres » : la suite s'ajoute sous ce qui est affiché.
-    etat.vues = [...etat.liste.keys()];
-    toutAfficher(grille, etat.vues.slice(avant), carte);
+  } else if (avant && cleRoute(r) === ouverte && grille) {
+    // Toujours sur la même vue : la suite s'ajoute sous ce qui est affiché (si le début
+    // affiché est bien celui de la vue complète).
+    etat.vues = filtrer(r);
+    if (!idsDebut.slice(0, avant).every((id, j) => etat.ids[etat.vues[j]] === id)) afficher();
+    else if (etat.vues.length > avant) toutAfficher(grille, etat.vues.slice(avant), carte);
   } else {
     afficher();
   }
@@ -137,6 +147,10 @@ function filtrer(route) {
   return tous;
 }
 
+const cleRoute = (r) => `${r.type}/${r.valeur}`;
+// Le nom du fichier du début d'une vue : sa valeur en UTF-8, en hexadécimal (comme monde_web.py).
+const hexa = (texte) => [...new TextEncoder().encode(texte)].map((o) => o.toString(16).padStart(2, "0")).join("");
+
 function route() {
   const [, type, ...reste] = decodeURIComponent(location.hash.replace(/^#\/?/, "#/")).split("/");
   return { type: type || "", valeur: reste.join("/") };
@@ -148,7 +162,7 @@ function afficher() {
   // affichera (charger).
   etat.seule = null;
   if ((!etat.liste || etat.partielle) && r.type === "oeuvre") return fiche(r.valeur);
-  if (!etat.liste || (etat.partielle && r.type)) {
+  if (!etat.liste || (etat.partielle && cleRoute(r) !== etat.debutDe)) {
     racine.innerHTML = `<p class="monde-chargement">${t("Ouverture de toutes les œuvres…", "Opening all the works…", "Abriendo todas las obras…")}</p>`;
     return;
   }
@@ -167,7 +181,8 @@ function afficher() {
     });
     return;
   }
-  const vues = filtrer(r);
+  // Avec le début seulement : ses lignes sont celles de la vue, dans l'ordre.
+  const vues = etat.partielle ? [...etat.liste.keys()] : filtrer(r);
   etat.vues = vues;
   etat.montrees = 0;
   const ix = etat.index;
@@ -198,7 +213,7 @@ function afficher() {
       <button id="monde-hasard" type="button">🎲 ${t("Au hasard", "Surprise me", "Al azar")}</button>
       ${r.type ? `<a class="monde-lien" href="#/">${t("Tout voir", "See all", "Ver todo")}</a>` : ""}
     </div>
-    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${oeuvresN(etat.partielle ? ix.total : vues.length)}${r.type === "exposition"
+    <p class="monde-compte"><strong>${echapper(titre)}</strong> · ${oeuvresN(etat.partielle ? etat.totalDebut : vues.length)}${r.type === "exposition"
       ? ` ${t("liées dans les collections du monde, de la plus ancienne à la plus récente", "related in the world collections, from oldest to most recent", "relacionadas en las colecciones del mundo, de la más antigua a la más reciente")} · <a href="${lienPage(`${encodeURIComponent(r.valeur)}/`)}">← ${t("la visite de l'exposition", "visit the exhibition", "la visita de la exposición")}</a>` : ""}</p>
     <div class="monde-grille" id="monde-grille"></div>`;
   let attente;
