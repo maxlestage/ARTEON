@@ -16,6 +16,7 @@
   donnees/liste-c.json  index.json et liste.json ensemble, par colonnes : ce que lisent les
                         pages du site (un quart de moins à télécharger)
   donnees/par-artiste/NNN.json  les œuvres de chaque artiste (pour sa page de l'Explorer)
+  donnees/par-oeuvre/NNN.json   chaque œuvre, avec son rang (pour sa fiche ouverte directement)
   donnees/fiches-NNN.json  le détail, par 1 000 œuvres (technique, texte, liens…)
   v/<œuvre>.webp        les vignettes (320 px, WebP) ; l'image en grand vient du musée
 
@@ -225,6 +226,30 @@ def par_artiste(liste, index):
     return [{"musees": cles, "gabarits": gabarits, "artistes": p} for p in paquets]
 
 
+def par_oeuvre(liste, index):
+    """Chaque œuvre des collections dans un des PAQUETS fichiers de quelques Ko, d'après son
+    identifiant : sa fiche, ouverte directement, lit le sien au lieu de toute la liste (5 Mo
+    compressés). Une œuvre : son rang dans la liste, puis sa ligne (la vignette du musée
+    sans son gabarit)."""
+    cles = [m["cle"] for m in index["musees"]]
+    gabarits = [GABARITS.get(c, "") for c in cles]
+    paquets = [{} for _ in range(PAQUETS)]
+    for n, (l, i) in enumerate(zip(liste, index["ids"])):
+        court, _ = raccourcir(l[7] if len(l) > 7 else "", i, cles[l[5]], gabarits[l[5]])
+        paquets[paquet_de(i)][i] = [n] + l[:7] + ([court] if court else [])
+    return [{"gabarits": gabarits, "oeuvres": p} for p in paquets]
+
+
+def ligne_seule(paquets, identifiant):
+    """Le rang et la ligne d'une œuvre relus dans son paquet (le même calcul que
+    outils/monde/app.js, oeuvreSeule)."""
+    p = paquets[paquet_de(identifiant)]
+    n, *l = p["oeuvres"][identifiant]
+    if len(l) > 7 and not l[7].startswith("http"):
+        l[7] = p["gabarits"][l[5]].replace("{}", l[7])
+    return n, l
+
+
 def en_colonnes(liste, index):
     """liste.json et index.json en un seul fichier, par colonnes (liste-c.json) : un quart de
     moins à télécharger (les valeurs qui se ressemblent se suivent, les artistes et les
@@ -353,6 +378,13 @@ def main():
     (sortie / "donnees" / "par-artiste").mkdir()
     for n, paquet in enumerate(par_artiste(liste, index)):
         (sortie / "donnees" / "par-artiste" / f"{n:03d}.json").write_text(json.dumps(paquet, **compact), encoding="utf-8")
+    # Chaque œuvre, pour sa fiche ouverte directement.
+    seules = par_oeuvre(liste, index)
+    if any(ligne_seule(seules, i) != (n, l) for n, (l, i) in enumerate(zip(liste, index["ids"]))):
+        sys.exit("par-oeuvre ne redonne pas liste.json")
+    (sortie / "donnees" / "par-oeuvre").mkdir()
+    for n, paquet in enumerate(seules):
+        (sortie / "donnees" / "par-oeuvre" / f"{n:03d}.json").write_text(json.dumps(paquet, **compact), encoding="utf-8")
     # Le début de la liste (les premières œuvres de la page « Toutes les œuvres ») : la page
     # s'affiche avec lui, et liste.json (3,6 Mo compressés) arrive pendant qu'on regarde.
     (sortie / "donnees" / "liste-debut.json").write_text(json.dumps(liste[:DEBUT], **compact), encoding="utf-8")
