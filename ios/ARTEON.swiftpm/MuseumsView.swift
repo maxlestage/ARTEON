@@ -33,17 +33,11 @@ struct MuseumsView: View {
                     GrandMuseumCard(catalogue: catalogue)
                     WorldCollectionsCard()
 
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
-                            StatCard(value: store.index?.buildings.count ?? 0, label: L("musées reproduits", "museums reproduced", "museos reproducidos"), color: .arteonBlue)
-                            StatCard(value: store.index?.countries.count ?? 0, label: L("pays", "countries", "países"), color: .teal)
-                            StatCard(value: 1, label: L("musée original", "original museum", "museo original"), color: .arteonSun)
-                        if let collections = store.collections {
-                            StatCard(value: collections.count, label: L("œuvres des collections", "works in the collections", "obras de las colecciones"), color: .orange)
-                        }
-                        }
-                    }
-                    .scrollClipDisabled()
+                    StatsPanel(items: [
+                        (store.index?.buildings.count ?? 0, L("musées reproduits", "museums reproduced", "museos reproducidos"), Color.arteonBlue),
+                        (store.index?.countries.count ?? 0, L("pays", "countries", "países"), Color.teal),
+                        (1, L("musée original", "original museum", "museo original"), Color.arteonSun),
+                    ] + (store.collections.map { [($0.count, L("œuvres des collections", "works in the collections", "obras de las colecciones"), Color.orange)] } ?? []))
                 }
 
                 ForEach(countries) { country in
