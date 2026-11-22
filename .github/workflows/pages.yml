@@ -47,7 +47,7 @@ jobs:
       id-token: write
       actions: write # pour effacer les anciens caches (outils/caches.sh)
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Un seul cache des collections (près de 5 Go) et un seul des catalogues à la fois :
       # au-delà de 10 Go, GitHub efface les autres caches du dépôt.
@@ -72,7 +72,7 @@ jobs:
         id: semaine
         run: echo "semaine=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v6
         id: ephemeres
         with:
           path: |
@@ -98,7 +98,7 @@ jobs:
             rm -rf public/tableaux/ephemere-*
           fi
 
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v6
         if: steps.ephemeres.outputs.cache-hit != 'true' && hashFiles('expositions/ephemere-*.toml') != ''
         continue-on-error: true
         with:
@@ -133,7 +133,7 @@ jobs:
       - name: Configurer Pages
         id: pages
         if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         # Si Pages ne peut pas être activé automatiquement, l'export continue avec le
         # chemin `/<dépôt>` (le bon pour https://<compte>.github.io/<dépôt>/).
         continue-on-error: true
@@ -151,7 +151,7 @@ jobs:
       # Les collections du monde (des dizaines de milliers d'œuvres du domaine public) : la
       # page /monde/, ses données et ses vignettes. Le cache est celui de l'application iOS
       # (même moisson) : seules les nouveautés se téléchargent. Sur la branche par défaut.
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v6
         if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         with:
           path: target/collections-cache
@@ -200,7 +200,7 @@ jobs:
           rm -rf target/collections-cache/grandes-*
           du -sh target/collections-cache/* 2>/dev/null | sort -h | tail -12 || true
 
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v6
         if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         continue-on-error: true
         with:
@@ -219,7 +219,7 @@ jobs:
       # Paquets (src/api.rs) en direct des musées, dans dist/api/. Le site et l'application
       # la lisent d'abord : elle marche sans serveur. Les réponses de moins d'une semaine sont
       # reprises du cache ; le reste se calcule au fil des constructions (25 minutes par fois).
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v6
         if: github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         with:
           path: target/api-cache
@@ -253,7 +253,7 @@ jobs:
           sed -E 's#^api : https?://([^/]+)/.* ([^:]*)$#\1 :\2#' target/api.log | sort | uniq -c | sort -rn | head -12
           du -sh --apparent-size dist/api dist
 
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v6
         if: always() && github.event_name != 'pull_request' && github.ref_name == (github.event.repository.default_branch || 'master')
         with:
           path: target/api-cache
@@ -301,9 +301,11 @@ jobs:
             echo "✓ $slug ($pages pages d'œuvres)"
           done
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+          # Le fichier .nojekyll (src/export.rs) commence par un point.
+          include-hidden-files: true
 
   deploy:
     name: Déployer sur GitHub Pages
@@ -318,4 +320,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

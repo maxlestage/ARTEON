@@ -124,6 +124,10 @@ struct CollectionIndex: Sendable {
     let categories: [(name: String, count: Int)]
     /// Les siècles (rang de `centuryRank`) et leur nombre d'œuvres, du plus ancien.
     let centuries: [(rank: Int, title: String, count: Int)]
+    /// Les clés des artistes des collections (sans « Artiste inconnu »), pour les compter
+    /// avec ceux des expositions (`ArtistKey`). Calculées une fois : l'accueil les compte à
+    /// chaque affichage, et elles sont des dizaines de milliers.
+    let artistKeys: Set<String>
 
     init(_ collections: WorldCollections) {
         self.collections = collections
@@ -134,9 +138,18 @@ struct CollectionIndex: Sendable {
         var centuries: [Int: (title: String, count: Int)] = [:]
         searchText.reserveCapacity(collections.works.count)
         let translated = AppLanguage.current != .fr
+        // La clé de chaque nom d'artiste, calculée une fois par nom (des dizaines de milliers de
+        // noms pour plus de cent mille œuvres).
+        var keyOfName: [String: String] = [:]
         for (i, w) in collections.works.enumerated() {
             positions[w.id] = i
-            let artist = ArtistKey.of(w.artist)
+            let artist: String
+            if let known = keyOfName[w.artist] {
+                artist = known
+            } else {
+                artist = ArtistKey.of(w.artist)
+                keyOfName[w.artist] = artist
+            }
             // La catégorie aussi dans la langue de l'application (« painting », « pintura »).
             let category = w.category.map { c in translated ? "\(c) \(CollectionCategory.display(c))" : c } ?? ""
             searchText.append(folded(
@@ -154,15 +167,10 @@ struct CollectionIndex: Sendable {
         self.byArtist = byArtist
         self.categories = categories.map { ($0.key, $0.value) }.sorted { $0.count > $1.count }
         self.centuries = centuries.map { ($0.key, $0.value.title, $0.value.count) }.sorted { $0.rank < $1.rank }
+        self.artistKeys = Set(byArtist.keys).subtracting(["", ArtistKey.of("Artiste inconnu")])
     }
 
     var count: Int { collections.works.count }
-
-    /// Les clés des artistes des collections (sans « Artiste inconnu »), pour les compter
-    /// avec ceux des expositions (`ArtistKey`).
-    var artistKeys: Set<String> {
-        Set(byArtist.keys).subtracting(["", ArtistKey.of("Artiste inconnu")])
-    }
 
     /// Les artistes des collections : leur clé, le nom le plus fréquent et leur nombre d'œuvres.
     var artists: [(key: String, name: String, count: Int)] {
@@ -205,14 +213,18 @@ struct CollectionIndex: Sendable {
         case .artist(let name):
             return (byArtist[ArtistKey.of(name)] ?? []).prefix(limit).map { all[$0] }
         case .search(let query):
-            let words = folded(query.trimmingCharacters(in: .whitespacesAndNewlines))
-                .split(separator: " ").map(String.init)
+            let words = Self.searchWords(query)
             guard !words.isEmpty else { return [] }
             for (i, text) in searchText.enumerated() where words.allSatisfy({ text.contains($0) }) {
                 if !add(all[i]) { break }
             }
         }
         return result
+    }
+
+    /// Les mots d'une recherche, sans accents ni majuscules.
+    private static func searchWords(_ query: String) -> [String] {
+        folded(query.trimmingCharacters(in: .whitespacesAndNewlines)).split(separator: " ").map(String.init)
     }
 
     /// Le nombre d'œuvres d'un filtre.
@@ -223,7 +235,11 @@ struct CollectionIndex: Sendable {
         case .category(let name): return categories.first { $0.name == name }?.count ?? 0
         case .century(let rank): return centuries.first { $0.rank == rank }?.count ?? 0
         case .artist(let name): return byArtist[ArtistKey.of(name)]?.count ?? 0
-        case .search: return works(filter).count
+        case .search(let query):
+            // Compter sans copier les œuvres trouvées.
+            let words = Self.searchWords(query)
+            guard !words.isEmpty else { return 0 }
+            return searchText.count(where: { text in words.allSatisfy { text.contains($0) } })
         }
     }
 

@@ -189,6 +189,52 @@ actor CollectionDetails {
     }
 }
 
+// MARK: - Les fichiers du site lus une fois par visite
+
+/// Deux fichiers du site que chaque page d'artiste relisait : l'index de l'API statique
+/// (`api/index.json`, plus de 4 Mo, des dizaines de milliers de noms) et la description des
+/// musées (`monde/sources.json`). Ils sont demandés une fois et décodés une fois ; deux
+/// demandes en même temps (le catalogue et les noms des musées d'une même page) n'en font
+/// qu'une. Un échec n'est pas gardé : la demande suivante réessaie.
+actor SiteMemo {
+    static let shared = SiteMemo()
+
+    private var index: Task<LiveWorks.StaticIndex?, Never>?
+    private var sourcesTask: Task<Json?, Never>?
+
+    func staticIndex() async -> LiveWorks.StaticIndex? {
+        let task = index ?? Task {
+            guard let data = try? await Api.site("api/index.json"),
+                  let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+            else { return nil }
+            return LiveWorks.StaticIndex(
+                byName: json["noms"] as? [String: String] ?? [:],
+                byKey: json["cles"] as? [String: String] ?? [:],
+                gz: json["gz"] as? Bool ?? false
+            )
+        }
+        index = task
+        let value = await task.value
+        if value == nil, index == task { index = nil }
+        return value
+    }
+
+    /// La liste `sources` de `monde/sources.json`.
+    func sources() async -> Json? {
+        let task = sourcesTask ?? Task {
+            guard let data = try? await Api.site("monde/sources.json"),
+                  let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let list = json["sources"] as? [[String: Any]]
+            else { return nil }
+            return Json(value: list)
+        }
+        sourcesTask = task
+        let value = await task.value
+        if value == nil, sourcesTask == task { sourcesTask = nil }
+        return value
+    }
+}
+
 // MARK: - Toutes les œuvres d'un artiste, en direct des musées
 
 /// Une œuvre trouvée en direct dans un musée.
@@ -407,12 +453,8 @@ enum LiveWorks {
     /// directement.
     static func of(_ name: String) async -> LiveCatalogue? {
         // 1. L'API statique, publiée avec le site : immédiate, sans serveur.
-        if let index = try? await Api.site("api/index.json"),
-           let json = try? JSONSerialization.jsonObject(with: index) as? [String: Any] {
-            let byName = json["noms"] as? [String: String] ?? [:]
-            let byKey = json["cles"] as? [String: String] ?? [:]
-            // Les catalogues sont publiés compressés (`gz`) : l'application les décompresse.
-            let gz = json["gz"] as? Bool ?? false
+        if let index = await SiteMemo.shared.staticIndex() {
+            let (byName, byKey, gz) = (index.byName, index.byKey, index.gz)
             if let file = byName[name] ?? byKey[ArtistKey.of(name)],
                let raw = try? await Api.site(gz ? "api/\(file).json.gz" : "api/\(file).json"),
                let data = gz ? gunzip(raw) : raw,
@@ -450,10 +492,7 @@ enum LiveWorks {
     // Le moteur générique, comme src/api.rs et outils/monde/direct.js.
 
     private static func sources() async -> [[String: Any]]? {
-        guard let data = try? await Api.site("monde/sources.json"),
-              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
-        else { return nil }
-        return json["sources"] as? [[String: Any]]
+        await SiteMemo.shared.sources()?.value as? [[String: Any]]
     }
 
     static func years(_ text: String) -> [Int] {
@@ -537,6 +576,15 @@ enum LiveWorks {
         return clean.split(whereSeparator: { $0 == " " || $0 == "\n" }).joined(separator: " ")
     }
 
+    /// L'index de l'API statique (`api/index.json`) : le fichier de chaque artiste, par son
+    /// nom ou par sa clé.
+    struct StaticIndex: Sendable {
+        var byName: [String: String]
+        var byKey: [String: String]
+        /// Les catalogues sont publiés compressés (`gz`) : l'application les décompresse.
+        var gz: Bool
+    }
+
     /// Sans les doublons (comme `sans_doublons` de src/api.rs) : une œuvre qu'un musée interrogé
     /// donne lui-même et qu'un agrégateur (Wikidata, Europeana) donne aussi : même titre, même
     /// année, et la collection indiquée par l'agrégateur est ce musée. La fiche du musée reste.
@@ -546,15 +594,17 @@ enum LiveWorks {
                 .split(separator: " ").joined(separator: " ")
         }
         let names = sources.map { (key: $0["cle"] as? String ?? "", name: fold($0["nom"] as? String ?? "")) }
-        let key = { (w: LiveWork) -> String? in
-            guard let year = w.year, !fold(w.title).isEmpty else { return nil }
-            return "\(fold(w.title))|\(year)"
+        // La clé de chaque œuvre, calculée une fois (le titre plié servait jusqu'à quatre fois).
+        let keys: [String?] = works.map { w in
+            guard let year = w.year else { return nil }
+            let title = fold(w.title)
+            return title.isEmpty ? nil : "\(title)|\(year)"
         }
-        let held = Set(works.compactMap { w in key(w).map { "\($0)|\(w.museum)" } })
-        return works.filter { w in
-            guard let collection = w.provider.map(fold), collection.count >= 8, let k = key(w) else { return true }
+        let held = Set(zip(works, keys).compactMap { w, k in k.map { "\($0)|\(w.museum)" } })
+        return zip(works, keys).filter { w, k in
+            guard let collection = w.provider.map(fold), collection.count >= 8, let k else { return true }
             return !names.contains { $0.key != w.museum && $0.name.contains(collection) && held.contains("\(k)|\($0.key)") }
-        }
+        }.map(\.0)
     }
 
     static func direct(_ name: String, only: Set<String>? = nil) async -> LiveCatalogue? {

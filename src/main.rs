@@ -2229,6 +2229,10 @@ macro_rules! in_lang {
 /// L'application : le même serveur pour `paquets dev` et pour l'export statique.
 fn app() -> App {
     let mut app = App::new();
+    // Les pages, le catalogue JSON, les feuilles de style, le JavaScript et le WebAssembly
+    // en Brotli (ou gzip) : trois à dix fois moins à télécharger. Les images passent telles
+    // quelles, et l'export statique (qui ne demande aucune compression) n'est pas touché.
+    app.middleware(middleware::compress());
     // L'application installable (PWA) : le manifeste, les icônes et le service worker, qui
     // garde les pages visitées, les images et les îlots 3D pour la visite hors ligne.
     app.pwa(
@@ -2255,7 +2259,7 @@ fn app() -> App {
         Response::new()
             .content_type("text/css; charset=utf-8")
             .header("cache-control", "public, max-age=31536000, immutable")
-            .send(style::CSS.to_owned())
+            .send(style::CSS)
     });
     for l in Lang::ALL {
         let p = l.prefix();
@@ -2263,18 +2267,16 @@ fn app() -> App {
         app.get(&format!("{p}/ajouter"), move |req: Request| in_lang!(l, add_artwork(req)));
         app.get(&format!("{p}/credits"), move |req: Request| in_lang!(l, credits(req)));
         // Le catalogue complet, pour l'application iPhone et iPad : un par langue.
-        let catalogue_json = std::sync::Arc::new({
+        // Calculé une fois pour toute la vie du serveur, puis servi sans copie.
+        let catalogue_json: &'static str = {
             set_lang(l);
-            catalogue::catalogue_json()
-        });
-        app.get(&format!("{p}/catalogue.json"), move |_req: Request| {
-            let body = catalogue_json.clone();
-            async move {
-                Response::new()
-                    .content_type("application/json; charset=utf-8")
-                    .header("access-control-allow-origin", "*")
-                    .send(body.as_str().to_owned())
-            }
+            Box::leak(catalogue::catalogue_json().into_boxed_str())
+        };
+        app.get(&format!("{p}/catalogue.json"), move |_req: Request| async move {
+            Response::new()
+                .content_type("application/json; charset=utf-8")
+                .header("access-control-allow-origin", "*")
+                .send(catalogue_json)
         });
         for ex in l.exhibitions() {
             app.get(&format!("{p}/{}", ex.slug), move |req: Request| {
