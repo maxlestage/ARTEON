@@ -1,9 +1,10 @@
 // Les collections du monde, sur le site : des dizaines de milliers d'œuvres du domaine
 // public (Chicago, Cleveland, le Met, Washington, le Smithsonian). Les fiches arrivent en morceaux
-// (donnees/liste.json pour parcourir et chercher, donnees/fiches-NN.json pour le détail),
+// (donnees/liste-c.json pour parcourir et chercher, donnees/fiches-NN.json pour le détail),
 // les vignettes viennent du site (v/<œuvre>.jpg), l'image en grand du musée qui la publie.
 // Écrit par outils/monde_web.py dans monde/ ; adresses en #/… (une seule page).
 import { chargerCatalogue, langue, lien, lienPage, nombre, t, titreSiecle, toutAfficher } from "./commun.js";
+import { chargerCollections } from "./liste.js";
 import { jsonGarde } from "./memoire.js";
 
 const racine = document.getElementById("monde");
@@ -65,20 +66,17 @@ const localiser = (texte) => (langue === "fr" ? String(texte ?? "") : String(tex
   .replace(" ; textes de présentation", t(" ; textes de présentation", "; descriptive texts", "; textos de presentación")));
 const rangSiecle = (y) => y <= -100000 ? -999999 : (y < 0 ? -(Math.floor((-y - 1) / 100) + 1) : Math.floor((y - 1) / 100) + 1);
 
-// Une ligne de liste.json : [titre, artiste, date, année, catégorie, musée, ratio].
+// Une ligne de la liste (liste.js) : [titre, artiste, date, année, catégorie, musée, ratio].
 const T = 0, A = 1, D = 2, Y = 3, C = 4, K = 5;
 
 async function charger() {
   racine.innerHTML = `<p class="monde-chargement">${t("Ouverture des collections…", "Opening the collections…", "Abriendo las colecciones…")}</p>`;
-  // La liste complète (3,6 Mo compressés) et son début (liste-debut.json, quelques dizaines de
-  // Ko) : la page « Toutes les œuvres » s'affiche avec le début, et la suite s'ajoute quand la
-  // liste complète est là. Une recherche, un filtre ou une fiche l'attendent. La deuxième
-  // visite la trouve dans la mémoire du navigateur (memoire.js).
-  const complete = jsonGarde(lien("monde/donnees/liste.json"));
-  // L'index complet porte les identifiants des 166 000 œuvres (656 Ko compressés) : la page
-  // « Toutes les œuvres » s'ouvre avec son en-tête (quelques Ko, les identifiants du début
-  // seulement) et le début de la liste ; l'index complet arrive avec la liste.
-  const indexComplet = jsonGarde(lien("monde/donnees/index.json"));
+  // La liste complète avec son index (liste-c.json, 5 Mo compressés) et son début
+  // (liste-debut.json, quelques dizaines de Ko) : la page « Toutes les œuvres » s'affiche avec
+  // le début et l'en-tête de l'index (quelques Ko, les identifiants du début seulement), et la
+  // suite s'ajoute quand la liste complète est là. Une recherche, un filtre ou une fiche
+  // l'attendent. La deuxième visite la trouve dans la mémoire du navigateur (memoire.js).
+  const complete = chargerCollections();
   const prendreIndex = (index) => {
     etat.index = index;
     etat.ids = index.ids;
@@ -97,8 +95,9 @@ async function charger() {
     etat.partielle = true;
     afficher();
   }
-  prendreIndex(await indexComplet);
-  etat.liste = await complete;
+  const tout = await complete;
+  prendreIndex(tout.index);
+  etat.liste = tout.liste;
   etat.plies = null;
   const avant = debut?.length || 0;
   etat.partielle = false;
